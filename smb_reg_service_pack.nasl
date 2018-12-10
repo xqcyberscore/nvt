@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smb_reg_service_pack.nasl 11420 2018-09-17 06:33:13Z cfischer $
+# $Id: smb_reg_service_pack.nasl 12702 2018-12-07 10:33:41Z cfischer $
 #
 # SMB Registry : Windows Build Number and Service Pack Version
 #
@@ -53,10 +53,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10401");
-  script_version("$Revision: 11420 $");
+  script_version("$Revision: 12702 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 08:33:13 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-07 11:33:41 +0100 (Fri, 07 Dec 2018) $");
   script_tag(name:"creation_date", value:"2008-08-27 12:14:14 +0200 (Wed, 27 Aug 2008)");
   script_name("SMB Registry : Windows Build Number and Service Pack Version");
   script_category(ACT_GATHER_INFO);
@@ -66,6 +66,8 @@ if(description)
   script_dependencies("smb_registry_access.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/registry_access");
+
+  script_xref(name:"URL", value:"https://docs.greenbone.net/GSM-Manual/gos-4/en/vulnerabilitymanagement.html#requirements-on-target-systems-with-windows");
 
   script_tag(name:"summary", value:"Detection of installed Windows build number and
   Service Pack version.
@@ -106,7 +108,15 @@ csdVer = registry_get_sz( key:"SOFTWARE\Microsoft\Windows NT\CurrentVersion", it
 if( ! csdVer ) csdVer = "NO_Service_Pack";
 
 key = "SYSTEM\CurrentControlSet\Control\Session Manager\Environment";
-if( ! registry_key_exists( key:key ) ) exit( 0 );
+if( ! registry_key_exists( key:key ) ) {
+  report  = "It was not possible to access the registry key 'SYSTEM\CurrentControlSet\Control\Session Manager\Environment'";
+  report += " due to e.g. missing access permissions of the scanning user. Authenticated scans might be incomplete, ";
+  report += "please check the references how to correctly configure the user account for Authenticated scans.";
+  set_kb_item( name:"SMB/registry_access_missing_permissions/report", value:report );
+  set_kb_item( name:"SMB/registry_access_missing_permissions", value:TRUE );
+  log_message( port:0, data:report );
+  exit( 0 );
+}
 
 arch = registry_get_sz( key:key, item:"PROCESSOR_ARCHITECTURE" );
 if( "64" >< arch ) {

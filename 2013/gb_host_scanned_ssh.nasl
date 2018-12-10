@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_host_scanned_ssh.nasl 11658 2018-09-27 14:21:41Z cfischer $
+# $Id: gb_host_scanned_ssh.nasl 12724 2018-12-09 16:45:47Z cfischer $
 #
 # Leave information on scanned hosts
 #
@@ -28,18 +28,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103625");
-  script_version("$Revision: 11658 $");
+  script_version("$Revision: 12724 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 16:21:41 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-09 17:45:47 +0100 (Sun, 09 Dec 2018) $");
   script_tag(name:"creation_date", value:"2012-12-14 10:37:58 +0100 (Fri, 14 Dec 2012)");
   script_name("Leave information on scanned hosts");
   script_category(ACT_END);
-  script_tag(name:"qod_type", value:"remote_vul");
   script_family("General");
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
-  script_mandatory_keys("login/SSH/success");
   script_dependencies("host_scan_end.nasl", "gather-package-list.nasl");
+  script_mandatory_keys("login/SSH/success");
 
   script_add_preference(name:"Enable", type:"checkbox", value:"no");
 
@@ -60,7 +59,7 @@ if(description)
   No details about the actual scan results are stored on the scanned host.
 
   By default, this routine is disabled even it is selected to run. To activate
-  it, it needs to be explictely enabled with its corresponding preference switch.
+  it, it needs to be explicitly enabled with its corresponding preference switch.
 
   The preference 'Message' may contain 3 placeholder where respective content
   will be inserted into the message when the message is finally created on the
@@ -81,6 +80,8 @@ if(description)
   this routine are used. Error is reported when the access rights are not
   sufficient or symbolic links detected.");
 
+  script_tag(name:"qod_type", value:"remote_vul");
+
   exit(0);
 }
 
@@ -88,6 +89,11 @@ include("ssh_func.inc");
 
 enabled = script_get_preference("Enable");
 if("yes" >!< enabled)exit(0);
+
+if(get_kb_item("ssh/no_linux_shell")){
+  log_message(port:0, data:"Target system does not offer a standard shell. Can not continue.");
+  exit(0);
+}
 
 soc = ssh_login_or_reuse_connection();
 if(!soc)exit(0);

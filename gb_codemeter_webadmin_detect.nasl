@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_codemeter_webadmin_detect.nasl 9434 2018-04-11 08:37:16Z cfischer $
+# $Id: gb_codemeter_webadmin_detect.nasl 12708 2018-12-07 15:11:27Z cfischer $
 #
 # CodeMeter WebAdmin Version Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801988");
-  script_version("$Revision: 9434 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-11 10:37:16 +0200 (Wed, 11 Apr 2018) $");
+  script_version("$Revision: 12708 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-07 16:11:27 +0100 (Fri, 07 Dec 2018) $");
   script_tag(name:"creation_date", value:"2011-10-04 16:55:13 +0200 (Tue, 04 Oct 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -55,17 +55,39 @@ include("cpe.inc");
 
 port = get_http_port( default:22350 );
 banner = get_http_banner( port:port );
-res = http_get_cache( item:"/home.html", port:port ) ;
+
+url = "/home.html";
+res = http_get_cache( item:url, port:port );
+
+url2 = "/index.html";
+res2 = http_get_cache( item:url2, port:port );
 
 if( "<title>CodeMeter | WebAdmin</title>" >!< res &&
     "WIBU-SYSTEMS HTML Served Page" >!< res &&
+    "<title>CodeMeter | WebAdmin</title>" >!< res2 &&
+    "WIBU-SYSTEMS HTML Served Page" >!< res2 &&
     "Server: WIBU-SYSTEMS HTTP Server" >!< banner ) exit( 0 );
 
 version = "unknown";
 install = "/";
 
-ver = eregmatch( pattern:"WebAdmin Version.*[^\n]Version ([0-9.]+)", string:res );
-if( ! isnull( ver[1] ) ) version = ver[1];
+# Older versions:
+ver = eregmatch( pattern:"WebAdmin Version[^\n]+Version ([0-9.]+)", string:res );
+if( ver[1] ) {
+  version = ver[1];
+  conclUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
+}
+
+# Newer versions:
+if( version == "unknown" ) {
+  # <p><span class="t-webadmin-version">WebAdmin Version</span>: <span class="bld">6.40</span></p>
+  # <p><span class="t-webadmin-version">WebAdmin Version</span>: <span class="bld">6.50</span></p>
+  ver = eregmatch( pattern:'>WebAdmin Version[^\n]+>([0-9.]+)<', string:res2 );
+  if( ver[1] ) {
+    version = ver[1];
+    conclUrl = report_vuln_url( port:port, url:url2, url_only:TRUE );
+  }
+}
 
 set_kb_item( name:"www/"+ port + "/CodeMeter_WebAdmin", value:version );
 set_kb_item( name:"CodeMeter_WebAdmin/installed", value:TRUE );
@@ -80,6 +102,7 @@ log_message( data:build_detection_report( app:"CodeMeter WebAdmin",
                                           version:version,
                                           install:install,
                                           cpe:cpe,
+                                          concludedUrl:conclUrl,
                                           concluded:ver[0] ),
                                           port:port );
 

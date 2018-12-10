@@ -1,14 +1,11 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_kde_konqueror_detect.nasl 11279 2018-09-07 09:08:31Z cfischer $
+# $Id: secpod_kde_konqueror_detect.nasl 12733 2018-12-10 09:17:04Z cfischer $
 #
 # KDE Konqueror Version Detection
 #
 # Authors:
 # Nikita MR <rnikita@secpod.com>
-#
-# Updated by: <jan-oliver.wagner@greenbone.net> on 2011-11-22
-# Revised to comply with Change Request #57.
 #
 # Copyright (c) 2009 SecPod, http://www.secpod.com
 #
@@ -29,12 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900902");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11279 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:08:31 +0200 (Fri, 07 Sep 2018) $");
+  script_version("$Revision: 12733 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-10 10:17:04 +0100 (Mon, 10 Dec 2018) $");
   script_tag(name:"creation_date", value:"2009-07-31 07:37:13 +0200 (Fri, 31 Jul 2009)");
   script_tag(name:"cvss_base", value:"0.0");
-  script_tag(name:"qod_type", value:"executable_version");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("KDE Konqueror Version Detection");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
@@ -45,8 +41,11 @@ if(description)
 
   script_tag(name:"summary", value:"Detects the installed version of KDE Konqueror.
 
-The script logs in via ssh, searches for executable 'konqueror' and
-queries the found executables via command line option '-v'.");
+  The script logs in via ssh, searches for executable 'konqueror' and
+  queries the found executables via command line option '-v'.");
+
+  script_tag(name:"qod_type", value:"executable_version");
+
   exit(0);
 }
 
@@ -56,36 +55,25 @@ include("cpe.inc");
 include("host_details.inc");
 
 sock = ssh_login_or_reuse_connection();
-if(!sock){
+if(!sock)
   exit(0);
-}
 
-konqerName = find_file(file_name:"konqueror", file_path:"/", useregex:TRUE,
-                       regexpar:"$", sock:sock);
+konqerName = find_file(file_name:"konqueror", file_path:"/", useregex:TRUE, regexpar:"$", sock:sock);
 foreach executableFile (konqerName)
 {
   executableFile = chomp(executableFile);
-  konqerVer = get_bin_version(full_prog_name:executableFile, version_argv:"-v",
-                 ver_pattern:"Konqueror: ([0-9.]+).?((rc|RC)?[0-9]+)?", sock:sock);
+  konqerVer = get_bin_version(full_prog_name:executableFile, version_argv:"-v", ver_pattern:"Konqueror: ([0-9.]+).?((rc|RC)?[0-9]+)?", sock:sock);
 
-  if(konqerVer[1] != NULL)
+  if(konqerVer[1])
   {
-    if(konqerVer[2] != NULL){
-       Ver = konqerVer[1] + "." + konqerVer[2];
-     }
+    if(!isnull(konqerVer[2]))
+      ver = konqerVer[1] + "." + konqerVer[2];
     else
-      Ver = konqerVer[1];
+      ver = konqerVer[1];
 
-    set_kb_item(name:"KDE/Konqueror/Ver", value:Ver);
+    set_kb_item(name:"KDE/Konqueror/Ver", value:ver);
 
-    cpe = build_cpe(value:Ver, exp:"Konqueror: ([0-9.]+)", base:"cpe:/a:kde:konqueror:");
-    if(!isnull(cpe))
-      register_product(cpe:cpe, location:executableFile);
-
-    log_message(data:'Detected KDE Konqueror version: ' + Ver +
-        '\nLocation: ' + executableFile +
-        '\nCPE: '+ cpe +
-        '\n\nConcluded from version identification result:\n' + konqerVer[max_index(konqerVer)-1]);
+    register_and_report_cpe(app:"KDE Konqueror", ver:ver, base:"cpe:/a:kde:konqueror:", expr:"([0-9.]+)", regPort:0, insloc:executableFile, concluded:konqerVer[0], regService:"ssh-login" );
   }
 }
 

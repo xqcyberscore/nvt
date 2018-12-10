@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service_3digits.nasl 10899 2018-08-10 13:49:35Z cfischer $
+# $Id: find_service_3digits.nasl 12708 2018-12-07 15:11:27Z cfischer $
 #
 # Service Detection (3 ASCII digit codes like FTP, SMTP, NNTP...)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14773");
-  script_version("$Revision: 10899 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:49:35 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 12708 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-07 16:11:27 +0100 (Fri, 07 Dec 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -39,6 +39,8 @@ if(description)
   script_dependencies("find_service.nasl"); # cifs445.nasl
   script_require_ports("Services/three_digits");
   # "rpcinfo.nasl", "dcetest.nasl"
+
+  script_xref(name:"URL", value:"https://community.greenbone.net/c/vulnerability-tests");
 
   script_tag(name:"summary", value:"This plugin performs service detection.
 
@@ -97,7 +99,7 @@ if( help ) {
 
 if( help !~ '^50[0-9]' ) {
 
-  if( "ARTICLE" >< help || "NEWGROUPS" >< help || "XHDR" >< help || "XOVER" >< help ) {
+  if( "ARTICLE" >< help || "NEWGROUPS" >< help || "XHDR" >< help || "XOVER" >< help || banner =~ "^[0-9]{3} .*(NNTP|NNRP)" >< banner ) {
     report_service( port:port, svc:"nntp", banner:banner );
     close( soc );
     exit( 0 );
@@ -248,9 +250,9 @@ if( substr( banner, 0, 3 ) == '200 ' ) {
 register_service( port:port, proto:'unknown' );
 set_unknown_banner( port:port, banner:banner );
 
-report  = 'Although this service answers with 3 digit ASCII codes like FTP, SMTP or NNTP servers, OpenVAS was unable to identify it.\n\n';
+report  = 'Although this service answers with 3 digit ASCII codes like FTP, SMTP or NNTP servers, the Scanner was unable to identify it.\n\n';
 report += 'This is highly suspicious and might be a backdoor; in this case, your system is compromised and a cracker can control it remotely.\n\n';
-report += '** If you know what it is, consider this message as a false alert and please report it to the OpenVAS team.\n\n';
+report += '** If you know what it is, consider this message as a false alert and please report it to the referenced community portal.\n\n';
 report += 'Solution : disinfect or reinstall your operating system.';
 
 log_message( port:port, data:report );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_edir_ncp_mem_crptn_vuln_lin.nasl 11125 2018-08-26 21:14:30Z cfischer $
+# $Id: gb_novell_edir_ncp_mem_crptn_vuln_lin.nasl 12741 2018-12-10 12:18:00Z cfischer $
 #
 # Novell eDirectory NCP Memory Corruption Vulnerability - (Linux)
 #
@@ -24,11 +24,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:novell:edirectory";
+
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800138");
-  script_version("$Revision: 11125 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-26 23:14:30 +0200 (Sun, 26 Aug 2018) $");
+  script_version("$Revision: 12741 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-10 13:18:00 +0100 (Mon, 10 Dec 2018) $");
   script_tag(name:"creation_date", value:"2008-11-21 14:18:03 +0100 (Fri, 21 Nov 2008)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -38,40 +40,28 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/success");
-  script_exclude_keys("ssh/no_linux_shell");
+  script_dependencies("secpod_novell_prdts_detect_lin.nasl");
+  script_mandatory_keys("Novell/eDir/Lin/Ver");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/32395");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/46138");
   script_xref(name:"URL", value:"http://support.novell.com/docs/Readmes/InfoDocument/patchbuilder/readme_5037180.html");
   script_xref(name:"URL", value:"http://support.novell.com/docs/Readmes/InfoDocument/patchbuilder/readme_5037181.html");
+  script_xref(name:"URL", value:"http://download.novell.com/Download?buildid=DwSGwHlu4pc~");
+  script_xref(name:"URL", value:"http://download.novell.com/Download?buildid=wxO984kvjmc~");
 
   script_tag(name:"impact", value:"Successful exploitation allows attackers to corrupt process memory,
-  which will allow remote code execution on the target machines or can cause
-  denial of service condition.
-
-  Impact Level: Application");
+  which will allow remote code execution on the target machines or can cause denial of service condition.");
 
   script_tag(name:"affected", value:"Novell eDirectory before 8.7.3 SP10 and 8.8 SP2 and prior on Linux.");
 
   script_tag(name:"insight", value:"The flaw is due to a use-after-free error in the NetWare Core
-  Protocol(NCP) engine when handling 'Get NCP Extension Information by
-  Name' Requests.");
+  Protocol(NCP) engine when handling 'Get NCP Extension Information by Name' Requests.");
 
   script_tag(name:"summary", value:"This host is running Novell eDirectory and is prone to Memory
   Corruption Vulnerability.");
 
-  script_tag(name:"solution", value:"Upgrade to 8.7.3 SP10 FTF1 or 8.8 SP3, or
-  Apply the available patch from below link,
-
-  http://download.novell.com/Download?buildid=DwSGwHlu4pc~
-
-  http://download.novell.com/Download?buildid=wxO984kvjmc~
-
-  *****
-  NOTE: Ignore this warning if above mentioned patch is already applied.
-  *****");
+  script_tag(name:"solution", value:"Upgrade to 8.7.3 SP10 FTF1 or 8.8 SP3.");
 
   script_tag(name:"qod_type", value:"executable_version_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -79,23 +69,21 @@ if(description)
   exit(0);
 }
 
-include("ssh_func.inc");
+include("host_details.inc");
 include("version_func.inc");
 
-sock = ssh_login_or_reuse_connection();
-if( ! sock ) exit( 0 );
+if( ! infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE ) )
+  exit( 0 );
 
-eDirVer = get_bin_version( full_prog_name:"ndsd", version_argv:"--version", ver_pattern:"Novell eDirectory ([0-9.]+ (SP[0-9]+)?)", sock:sock );
-ssh_close_connection();
-if( ! eDirVer[1] ) exit( 0 );
+vers = infos['version'];
+path = infos['location'];
 
-eDirVer = ereg_replace( pattern:" ", string:eDirVer[1], replace:"." );
-if( version_in_range( version:eDirVer, test_version:"8.8", test_version2:"8.8.SP2" ) ) {
-  report = report_fixed_ver( installed_version:eDirVer, fixed_version:"8.8.SP3" );
+if( version_in_range( version:vers, test_version:"8.8", test_version2:"8.8.SP2" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"8.8.SP3", install_path:path );
   security_message( port:0, data:report );
   exit( 0 );
-} else if( version_is_less( version:eDirVer, test_version:"8.7.3.SP10" ) ){
-  report = report_fixed_ver( installed_version:eDirVer, fixed_version:"8.7.3.SP10" );
+} else if( version_is_less( version:vers, test_version:"8.7.3.SP10" ) ){
+  report = report_fixed_ver( installed_version:vers, fixed_version:"8.7.3.SP10", install_path:path );
   security_message( port:0, data:report );
   exit( 0 );
 }

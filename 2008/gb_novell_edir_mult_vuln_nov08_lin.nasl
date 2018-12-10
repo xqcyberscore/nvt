@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_edir_mult_vuln_nov08_lin.nasl 11125 2018-08-26 21:14:30Z cfischer $
+# $Id: gb_novell_edir_mult_vuln_nov08_lin.nasl 12741 2018-12-10 12:18:00Z cfischer $
 #
 # Novell eDirectory Multiple Vulnerabilities Nov08 - (Linux)
 #
@@ -24,11 +24,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:novell:edirectory";
+
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800136");
-  script_version("$Revision: 11125 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-26 23:14:30 +0200 (Sun, 26 Aug 2018) $");
+  script_version("$Revision: 12741 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-10 13:18:00 +0100 (Mon, 10 Dec 2018) $");
   script_tag(name:"creation_date", value:"2008-11-21 14:18:03 +0100 (Fri, 21 Nov 2008)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -38,9 +40,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
   script_family("Buffer overflow");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/success");
-  script_exclude_keys("ssh/no_linux_shell");
+  script_dependencies("secpod_novell_prdts_detect_lin.nasl");
+  script_mandatory_keys("Novell/eDir/Lin/Ver");
 
   script_xref(name:"URL", value:"http://securitytracker.com/alerts/2008/Aug/1020785.html");
   script_xref(name:"URL", value:"http://securitytracker.com/alerts/2008/Aug/1020786.html");
@@ -48,12 +49,11 @@ if(description)
   script_xref(name:"URL", value:"http://securitytracker.com/alerts/2008/Aug/1020788.html");
   script_xref(name:"URL", value:"http://www.novell.com/support/viewContent.do?externalId=3426981");
   script_xref(name:"URL", value:"http://www.novell.com/documentation/edir873/sp10_readme/netware/readme.txt");
+  script_xref(name:"URL", value:"http://support.novell.com/patches.html");
 
   script_tag(name:"impact", value:"Successful exploitation allows remote code execution on the target
   machines or can allow disclosure of potentially sensitive information or
-  can cause denial of service condition.
-
-  Impact Level: Application");
+  can cause denial of service condition.");
 
   script_tag(name:"affected", value:"Novell eDirectory 8.8 SP2 and prior on Linux.");
 
@@ -64,11 +64,9 @@ if(description)
   - boundary error in HTTP language header and HTTP content-length header.
 
   - HTTP protocol stack(HTTPSTK) that does not properly filter HTML code from
-    user-supplied input.");
+  user-supplied input.");
 
-  script_tag(name:"solution", value:"Update to 8.8 Service Pack 3.
-
-  http://support.novell.com/patches.html");
+  script_tag(name:"solution", value:"Update to 8.8 Service Pack 3.");
 
   script_tag(name:"summary", value:"This host is running Novell eDirectory and is prone to Multiple
   Vulnerabilities.");
@@ -79,19 +77,17 @@ if(description)
   exit(0);
 }
 
-include("ssh_func.inc");
+include("host_details.inc");
 include("version_func.inc");
 
-sock = ssh_login_or_reuse_connection();
-if( ! sock ) exit( 0 );
+if( ! infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE ) )
+  exit( 0 );
 
-eDirVer = get_bin_version( full_prog_name:"ndsd", version_argv:"--version", ver_pattern:"Novell eDirectory ([0-9.]+ (SP[0-9]+)?)", sock:sock );
-ssh_close_connection();
-if( ! eDirVer[1] ) exit( 0 );
+vers = infos['version'];
+path = infos['location'];
 
-eDirVer = ereg_replace( pattern:" ", string:eDirVer[1], replace:"." );
-if( version_is_less( version:eDirVer, test_version:"8.8.SP3" ) ) {
-  report = report_fixed_ver( installed_version:eDirVer, fixed_version:"8.8.SP3" );
+if( version_is_less( version:vers, test_version:"8.8.SP3" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"8.8.SP3", install_path:path );
   security_message( port:0, data:report );
   exit( 0 );
 }

@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jetty_sec_bypass_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
+# $Id: gb_jetty_sec_bypass_vuln.nasl 12711 2018-12-07 21:05:48Z cfischer $
 #
-# Jetty Security Bypass Vulnerability
+# Jetty < 9.4.6.20170531 Security Bypass Vulnerability (Linux)
 #
 # Authors:
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
@@ -27,36 +27,30 @@
 
 CPE = "cpe:/a:eclipse:jetty";
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140261");
-  script_version("$Revision: 12106 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
+  script_version("$Revision: 12711 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-07 22:05:48 +0100 (Fri, 07 Dec 2018) $");
   script_tag(name:"creation_date", value:"2017-08-01 11:31:21 +0700 (Tue, 01 Aug 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-
   script_cve_id("CVE-2017-9735");
   script_bugtraq_id(99104);
-
-  script_tag(name:"qod_type", value:"remote_banner_unreliable");
-
-  script_tag(name:"solution_type", value:"VendorFix");
-
-  script_name("Jetty Security Bypass Vulnerability");
-
+  script_name("Jetty < 9.4.6.20170531 Security Bypass Vulnerability (Linux)");
   script_category(ACT_GATHER_INFO);
-
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
-  script_family("Web application abuses");
-  script_dependencies("gb_jetty_detect.nasl");
-  script_mandatory_keys("Jetty/installed");
+  script_family("Web Servers");
+  script_dependencies("gb_jetty_detect.nasl", "os_detection.nasl");
+  script_mandatory_keys("Jetty/installed", "Host/runs_unixoide");
+
+  script_xref(name:"URL", value:"https://github.com/eclipse/jetty.project/issues/1556");
 
   script_tag(name:"summary", value:"Jetty is prone to a security bypass vulnerability.");
 
   script_tag(name:"insight", value:"Jetty through is prone to a timing channel in util/security/Password.java,
-which makes it easier for remote attackers to obtain access by observing elapsed times before rejection of
-incorrect passwords.");
+  which makes it easier for remote attackers to obtain access by observing elapsed times before rejection of
+  incorrect passwords.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
@@ -64,7 +58,8 @@ incorrect passwords.");
 
   script_tag(name:"solution", value:"Update to version 9.4.6.v20170531 or later.");
 
-  script_xref(name:"URL", value:"https://github.com/eclipse/jetty.project/issues/1556");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);
 }

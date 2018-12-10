@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gather-package-list.nasl 12560 2018-11-28 13:36:42Z cfischer $
+# $Id: gather-package-list.nasl 12731 2018-12-10 08:34:59Z cfischer $
 #
 # Determine OS and list of installed packages via SSH login
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.50282");
-  script_version("$Revision: 12560 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-28 14:36:42 +0100 (Wed, 28 Nov 2018) $");
+  script_version("$Revision: 12731 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-10 09:34:59 +0100 (Mon, 10 Dec 2018) $");
   script_tag(name:"creation_date", value:"2008-01-17 22:05:49 +0100 (Thu, 17 Jan 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -2026,6 +2026,28 @@ if( "CentOS release 2" >< rls ) {
   exit( 0 );
 }
 
+# nb: Keep above the Ubuntu check below so that we're not exiting early without setting the OpenVPN AS infos.
+rls = ssh_cmd( socket:sock, cmd:"cat /etc/issue", return_errors:FALSE );
+
+if( "No such file or directory" >!< rls && strlen( rls ) )
+  _unknown_os_info += '/etc/issue: ' + rls + '\n\n';
+
+match = eregmatch( pattern:"^Univention (Managed Client|Mobile Client|DC Master|DC Backup|DC Slave|Memberserver|Corporate Server) ([2][.][0-4])-[0-9]+-[0-9]+", string:rls );
+if( ! isnull( match ) ) {
+  buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
+  if( ! isnull( buf ) ) {
+    register_packages( buf:buf );
+    log_message( port:port, data:"We are able to login and detect that you are running " + match[0] );
+    register_detected_os( os:"Univention Corporate Server " + match[2], oskey:"UCS" + match[2] );
+    exit( 0 );
+  }
+}
+
+if( "OpenVPN Access Server Appliance" >< rls ) {
+  # nb: Used in gb_openvpn_access_server_version.nasl
+  set_kb_item( name:"ssh/login/openvpn_as/etc_issue", value:rls );
+}
+
 # Hmmm...is it Ubuntu?
 rls = ssh_cmd( socket:sock, cmd:"cat /etc/lsb-release", return_errors:FALSE );
 
@@ -2279,22 +2301,6 @@ if( rls =~ 'DISTRIB_ID=("|\')?Univention("|\')?' ) {
     register_packages( buf:buf );
     log_message( port:port, data:"We are able to login and detect that you are running " + ucs_desrciption[1] );
     register_detected_os( os:ucs_description[1], oskey:"UCS" + ucs_release[1] );
-    exit( 0 );
-  }
-}
-
-rls = ssh_cmd( socket:sock, cmd:"cat /etc/issue", return_errors:FALSE );
-
-if( "No such file or directory" >!< rls && strlen( rls ) )
-  _unknown_os_info += '/etc/issue: ' + rls + '\n\n';
-
-match = eregmatch( pattern:"^Univention (Managed Client|Mobile Client|DC Master|DC Backup|DC Slave|Memberserver|Corporate Server) ([2][.][0-4])-[0-9]+-[0-9]+", string:rls );
-if( ! isnull( match ) ) {
-  buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
-  if( ! isnull( buf ) ) {
-    register_packages( buf:buf );
-    log_message( port:port, data:"We are able to login and detect that you are running " + match[0] );
-    register_detected_os( os:"Univention Corporate Server " + match[2], oskey:"UCS" + match[2] );
     exit( 0 );
   }
 }

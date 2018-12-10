@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_smb_windows_detect.nasl 11182 2018-09-03 08:10:36Z cfischer $
+# $Id: gb_smb_windows_detect.nasl 12703 2018-12-07 11:49:32Z cfischer $
 #
 # SMB Windows Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103621");
-  script_version("$Revision: 11182 $");
+  script_version("$Revision: 12703 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 10:10:36 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-07 12:49:32 +0100 (Fri, 07 Dec 2018) $");
   script_tag(name:"creation_date", value:"2012-12-11 10:59:09 +0200 (Tue, 11 Dec 2012)");
   script_name("SMB Windows Detection");
   script_category(ACT_GATHER_INFO);
@@ -68,9 +68,10 @@ if( isnull( csdVer ) ) {
   if( ! isnull( csdVer[0] ) ) csdVer = csdVer[0];
 }
 
-function register_win_version( cpe_base, win_vers, servpack, os_name, is64bit ) {
+function register_win_version( cpe_base, win_vers, servpack, os_name, os_edition, os_branch, is64bit ) {
 
-  local_var cpe_base, win_vers, servpack, os_name, is64bit, cpe;
+  local_var cpe_base, win_vers, servpack, os_name, os_edition, os_branch, is64bit;
+  local_var cpe;
 
   servpack = ereg_replace( string:servpack, pattern:"Service Pack ", replace:"sp", icase:TRUE );
 
@@ -79,13 +80,45 @@ function register_win_version( cpe_base, win_vers, servpack, os_name, is64bit ) 
     if( isnull( win_vers ) ) win_vers = "";
 
     cpe = cpe_base + ":" + win_vers + ":" + servpack;
-    if( is64bit ) cpe += ":x64";
+    if( is64bit && os_edition )
+      cpe += ":" + os_edition + "_x64";
+    else if( is64bit )
+      cpe += ":x64";
+
   } else if( ! isnull( win_vers ) && strlen( win_vers ) > 0 ) {
     cpe = cpe_base + ":" + win_vers;
-    if( is64bit ) cpe += "::x64";
+    if( os_edition && os_branch ) {
+      cpe += ":" + os_branch + ":" + os_edition;
+      if( is64bit )
+        cpe += "_x64";
+    } else if( os_edition ) {
+      cpe += "::" + os_edition;
+      if( is64bit )
+        cpe += "_x64";
+    } else if( os_branch ) {
+      cpe += ":" + os_branch;
+      if( is64bit )
+        cpe += ":x64";
+    } else if( is64bit ) {
+      cpe += "::x64";
+    }
   } else {
     cpe = cpe_base;
-    if( is64bit ) cpe += ":::x64";
+    if( os_edition && os_branch ) {
+      cpe += "::" + os_branch + ":" + os_edition;
+      if( is64bit )
+        cpe += "_x64";
+    } else if( os_edition ) {
+      cpe += ":::" + os_edition;
+      if( is64bit )
+        cpe += "_x64";
+    } else if( os_branch ) {
+      cpe += "::" + os_branch;
+      if( is64bit )
+        cpe += ":x64";
+    } else if( is64bit ) {
+      cpe += ":::x64";
+    }
   }
 
   register_and_report_os( os:os_name, cpe:cpe, banner_type:banner_type, desc:SCRIPT_DESC, runs_key:"windows" );
@@ -178,12 +211,35 @@ if( winVal == "6.3" && "Windows Embedded 8.1" >< winName ) {
 }
 
 if( winVal == "6.3" && "Windows 10" >< winName ) {
+
   vers = "";
-  if( ver = get_version_from_build( string:build, win_name:"win10" ) ) vers = ver;
-  if( "x64" >< arch )
-    register_win_version( cpe_base:"cpe:/o:microsoft:windows_10", win_vers:vers, servpack:csdVer, os_name:winName, is64bit:TRUE );
+  os_branch = "";
+  os_edition = "";
+  if( ver = get_version_from_build( string:build, win_name:"win10" ) )
+    vers = ver;
+
+  if( "LTSB" >< winName )
+    os_branch = "ltsb";
+  else if( "LTSC" >< winName )
+    os_branch = "ltsc";
   else
-    register_win_version( cpe_base:"cpe:/o:microsoft:windows_10", win_vers:vers, servpack:csdVer, os_name:winName );
+    os_branch = "cb";
+
+  if( "Enterprise" >< winName )
+    os_edition = "enterprise";
+  else if( "Education" >< winName )
+    os_edition = "education";
+  else if( "Home" >< winName )
+    os_edition = "home";
+  else if( "Pro" >< winName )
+    os_edition = "pro";
+  else
+    os_edition += "unknown_edition";
+
+  if( "x64" >< arch )
+    register_win_version( cpe_base:"cpe:/o:microsoft:windows_10", win_vers:vers, servpack:csdVer, os_name:winName, os_branch:os_branch, os_edition:os_edition, is64bit:TRUE );
+  else
+    register_win_version( cpe_base:"cpe:/o:microsoft:windows_10", win_vers:vers, servpack:csdVer, os_name:winName, os_branch:os_branch, os_edition:os_edition );
 }
 
 if( winVal == "6.3" && "Windows Server 2016" >< winName ) {

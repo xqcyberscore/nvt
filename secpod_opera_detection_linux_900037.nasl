@@ -1,20 +1,14 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_opera_detection_linux_900037.nasl 12413 2018-11-19 11:11:31Z cfischer $
+# $Id: secpod_opera_detection_linux_900037.nasl 12733 2018-12-10 09:17:04Z cfischer $
 #
-# Opera Version Detection for Linux
+# Opera Version Detection (Linux)
 #
 # Authors:
 # Chandan S <schandan@secpod.com>
 #
 # Copyright:
 # Copyright (c) 2008 SecPod, http://www.secpod.com
-#
-# Modified to detect Beta Versions
-#  - Sharath S <sharaths@secpod.com> On 2009-09-02
-#
-# Updated By : Rachana Shetty <srachana@secpod.com> on 2012-04-06
-#  - Updated according CR 57 and updated to get version from Ubuntu and Debian.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -33,13 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900037");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 12413 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-19 12:11:31 +0100 (Mon, 19 Nov 2018) $");
+  script_version("$Revision: 12733 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-10 10:17:04 +0100 (Mon, 10 Dec 2018) $");
   script_tag(name:"creation_date", value:"2008-08-22 10:29:01 +0200 (Fri, 22 Aug 2008)");
   script_tag(name:"cvss_base", value:"0.0");
-  script_tag(name:"qod_type", value:"executable_version");
-  script_name("Opera Version Detection for Linux");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_name("Opera Version Detection (Linux)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2008 SecPod");
   script_family("Product detection");
@@ -51,6 +44,8 @@ if(description)
 
   The script logs in via ssh, searches for executable 'opera' and
   greps the version executable found.");
+
+  script_tag(name:"qod_type", value:"executable_version");
 
   exit(0);
 }
@@ -65,9 +60,6 @@ if(!sock){
   exit(0);
 }
 
-grep = find_bin(prog_name:"grep", sock:sock);
-grep = chomp(grep[0]);
-
 garg[0] = "-o";
 garg[1] = "-m1";
 garg[2] = "-a";
@@ -76,91 +68,63 @@ garg[5] = string("Internal\\ build\\ [0-9]\\+");
 garg[6] = string("Build\\ number:.*");
 checkdupOpera = ""; # nb: To make openvas-nasl-lint happy...
 
-operaName = find_file(file_name:"opera", file_path:"/", useregex:TRUE,
-                      regexpar:"$", sock:sock);
+operaName = find_file(file_name:"opera", file_path:"/", useregex:TRUE, regexpar:"$", sock:sock);
+if(!operaName){
+  ssh_close_connection();
+  exit(0);
+}
 
+foreach binaryName(operaName){
 
-foreach binaryName(operaName)
-{
   binaryName = chomp(binaryName);
+  if(!binaryName) continue;
 
-  operaVer = get_bin_version(full_prog_name:binaryName, version_argv:"-version",
-                             ver_pattern:"Opera ([0-9.]+) (Build ([0-9]+))?", sock:sock);
+  operaVer = get_bin_version(full_prog_name:binaryName, version_argv:"-version", ver_pattern:"Opera ([0-9.]+) (Build ([0-9]+))?", sock:sock);
 
-  if(operaVer && operaVer[1] && operaVer[3]){
+  if(operaVer && operaVer[1] && operaVer[3])
     operaBuildVer = operaVer[1] + "." + operaVer[3];
+
+  if(operaVer && operaVer[1])
+    operaVer = operaVer[1];
+
+  if(!operaVer) {
+    arg1 = garg[0] + " " + garg[1] + " " + garg[2] + " " + raw_string(0x22) + garg[3] + raw_string(0x22) + " " + binaryName;
+    arg2 = garg[0] + " " + garg[1] + " " + garg[2] + " " + raw_string(0x22) + garg[5] + raw_string(0x22) + " " + binaryName;
+    arg3 = garg[0] + " " + garg[1] + " " + garg[2] + " " + raw_string(0x22) + garg[6] + raw_string(0x22) + " " + binaryName;
+
+    operaVer = get_bin_version(full_prog_name:"grep", version_argv:arg1, ver_pattern:"Opera ([0-9]+\.[0-9]+)", sock:sock);
+    operaVer = operaVer[1];
   }
 
-  if(operaVer && operaVer[1]){
-     operaVer = operaVer[1];
-  }
-
-  if(!operaVer)
-  {
-    if(islocalhost())
-    {
-      garg[4] = binaryName;
-      arg1 = garg;
-    }
-    else
-    {
-      arg1 = garg[0] + " " + garg[1] + " " + garg[2] + " " + raw_string(0x22) +
-             garg[3] + raw_string(0x22) + " " + binaryName;
-      arg2 = garg[0] + " " + garg[1] + " " + garg[2] + " " + raw_string(0x22) +
-             garg[5] + raw_string(0x22) + " " + binaryName;
-      arg3 = garg[0] + " " + garg[1] + " " + garg[2] + " " + raw_string(0x22) +
-             garg[6] + raw_string(0x22) + " " + binaryName;
-     }
-
-     operaVer = get_bin_version(full_prog_name:grep, version_argv:arg1,
-                                ver_pattern:"Opera ([0-9]+\.[0-9]+)", sock:sock);
-
-     operaVer = operaVer[1];
-  }
-
-  if(!isnull(operaVer))
-  {
-    if(operaVer + ", ">< checkdupOpera){
+  if(operaVer){
+    if(operaVer + ", ">< checkdupOpera)
       continue;
-    }
 
-    checkdupOpera  +=  operaVer + ", ";
+    checkdupOpera += operaVer + ", ";
 
     set_kb_item(name:"Opera/Linux/Version", value:operaVer);
 
-    cpe = build_cpe(value:operaVer, exp:"^([0-9.]+)", base:"cpe:/a:opera:opera:");
-    if(!isnull(cpe))
-       register_product(cpe:cpe, location:binaryName);
+    register_and_report_cpe(app:"Opera", ver:operaVer, base:"cpe:/a:opera:opera:", expr:"([0-9.]+)", regPort:0, insloc:binaryName, concluded:operaVer, regService:"ssh-login");
 
-    log_message(data:'Detected Opera version: ' + operaVer +
-      '\nLocation: ' + binaryName +
-      '\nCPE: '+ cpe +
-      '\n\nConcluded from version identification result:\n' + operaVer);
+    if(!operaBuildVer){
 
-    if(!operaBuildVer)
-    {
-      operaBuildVer = get_bin_version(full_prog_name:grep, version_argv:arg2,
-                      ver_pattern:"Internal [B|b]uild ([0-9]+)", sock:sock);
+      operaBuildVer = get_bin_version(full_prog_name:"grep", version_argv:arg2, ver_pattern:"Internal [B|b]uild ([0-9]+)", sock:sock);
 
-      if(!operaBuildVer[1])
-      {
-        operaBuildVer = get_bin_version(full_prog_name:grep, version_argv:arg3,
-                                        ver_pattern:"Build number:.*", sock:sock);
+      if(!operaBuildVer[1]){
+        operaBuildVer = get_bin_version(full_prog_name:"grep", version_argv:arg3, ver_pattern:"Build number:.*", sock:sock);
         operaBuildVer = operaBuildVer[1] - raw_string(0x00);
-        operaBuildVer = eregmatch(pattern:"Build number:([0-9]+)",
-                                  string:operaBuildVer);
-        if(operaBuildVer && operaBuildVer[1]){
+        operaBuildVer = eregmatch(pattern:"Build number:([0-9]+)", string:operaBuildVer);
+        if(operaBuildVer && operaBuildVer[1])
           operaBuildVer = operaVer + operaBuildVer[1];
-        }
       }
     }
 
-    if(!isnull(operaBuildVer))
-    {
+    if(!isnull(operaBuildVer)){
       buildVer = operaBuildVer;
       set_kb_item(name:"Opera/Build/Linux/Ver", value:buildVer);
-      ssh_close_connection();
     }
   }
 }
-close(sock);
+
+ssh_close_connection();
+exit(0);

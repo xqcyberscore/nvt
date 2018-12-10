@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sun_java_sys_web_serv_xss_vuln_lin.nasl 11116 2018-08-26 13:08:29Z cfischer $
+# $Id: gb_sun_java_sys_web_serv_xss_vuln_lin.nasl 12729 2018-12-10 07:52:19Z cfischer $
 #
 # Sun Java System Web Server XSS Vulnerability (Linux)
 #
@@ -24,11 +24,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:sun:java_system_web_server";
+
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800812");
-  script_version("$Revision: 11116 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-26 15:08:29 +0200 (Sun, 26 Aug 2018) $");
+  script_version("$Revision: 12729 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-10 08:52:19 +0100 (Mon, 10 Dec 2018) $");
   script_tag(name:"creation_date", value:"2009-06-19 09:45:44 +0200 (Fri, 19 Jun 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -39,30 +41,23 @@ if(description)
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/success");
-  script_exclude_keys("ssh/no_linux_shell");
+  script_dependencies("gb_sun_one_java_sys_web_serv_detect_lin.nasl");
+  script_mandatory_keys("Sun/JavaSysWebServ/Lin/Ver");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/35338");
   script_xref(name:"URL", value:"http://sunsolve.sun.com/search/document.do?assetkey=1-21-116648-23-1");
+  script_xref(name:"URL", value:"http://sunsolve.sun.com/search/document.do?assetkey=1-66-259588-1");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code,
-  gain sensitive information by conducting XSS attacks in the context of a
-  affected site.
-
-  Impact Level: System/Application");
+  gain sensitive information by conducting XSS attacks in the context of a affected site.");
 
   script_tag(name:"affected", value:"Sun Java System Web Server versions 6.1 and before 6.1 SP11 on Linux.");
 
   script_tag(name:"insight", value:"The Flaw is due to error in 'Reverse Proxy Plug-in' which is not properly
-  sanitized the input data before being returned to the user. This can be
-  exploited to inject arbitrary web script or HTML via the query string in
-  situations that result in a 502 Gateway error.");
+  sanitized the input data before being returned to the user. This can be exploited to inject arbitrary web
+  script or HTML via the query string in situations that result in a 502 Gateway error.");
 
-  script_tag(name:"solution", value:"Update to Web Server version 6.1 SP11
-
-  http://www.sun.com/download/index.jsp
-
-  http://sunsolve.sun.com/search/document.do?assetkey=1-66-259588-1");
+  script_tag(name:"solution", value:"Update to Web Server version 6.1 SP11 or later.");
 
   script_tag(name:"summary", value:"This host has Sun Java Web Server running on Linux, which is prone
   to Cross-Site Scripting vulnerability.");
@@ -73,33 +68,19 @@ if(description)
   exit(0);
 }
 
-include("ssh_func.inc");
+include("host_details.inc");
 include("version_func.inc");
 
-sock = ssh_login_or_reuse_connection();
-if( ! sock ) exit( 0 );
+if( ! infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE ) )
+  exit( 0 );
 
-paths = find_bin( prog_name:"webservd", sock:sock );
-foreach jswsBin( paths ) {
+vers = infos['version'];
+path = infos['location'];
 
-  jswsBin = chomp( jswsBin );
-  if( ! jswsBin ) continue;
-
-  jswsVer = get_bin_version( full_prog_name:jswsBin, sock:sock, version_argv:"-v", ver_pattern:"Sun (ONE |Java System )Web Server ([0-9.]+)(SP[0-9]+)?([^0-9.]|$)" );
-  if( ! isnull( jswsVer[2] ) ) {
-    if( ! isnull( jswsVer[3] ) )
-      jswsVer = jswsVer[2] + "." + jswsVer[3];
-    else
-      jswsVer = jswsVer[2];
-
-    if( version_in_range( version:jswsVer, test_version:"6.1", test_version2:"6.1.SP10" ) ) {
-      report = report_fixed_ver( installed_version:jswsVer, fixed_version:"6.1.SP11", install_path:jswsBin );
-      security_message( port:0, data:report );
-      ssh_close_connection();
-      exit( 0 );
-    }
-  }
+if( version_in_range( version:vers, test_version:"6.1", test_version2:"6.1.SP10" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"6.1.SP11", install_path:path );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
 
-ssh_close_connection();
 exit( 99 );

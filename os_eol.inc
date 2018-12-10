@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: os_eol.inc 11726 2018-10-02 13:23:56Z cfischer $
+# $Id: os_eol.inc 12704 2018-12-07 12:53:01Z cfischer $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 11726 $
+# $Revision: 12704 $
 #
 ###############################################################################
 
@@ -1021,35 +1021,92 @@ eol_cpes['cpe:/o:microsoft:windows_vista::sp2:x86'] = '2017-04-11';
 eol_cpes['cpe:/o:microsoft:windows_vista::sp2:x64'] = '2017-04-11';
 
 #Windows 10 (https://support.microsoft.com/en-US/help/13853/windows-lifecycle-fact-sheet)
-#nb: Enterprise and Education editions for versions 1511, 1607, 1703 and 1709 will receive an additional 6 months of servicing after the end of service date.
 eol_urls['cpe:/o:microsoft:windows_10'] = 'https://support.microsoft.com/en-US/help/13853/windows-lifecycle-fact-sheet';
 eol_names['cpe:/o:microsoft:windows_10'] = 'Windows 10';
 
-# nb: This is the Windows 10 Enterprise 2015 LTSB branch which
-# has support until October 13, 2025. As we currently can't differ
-# between CB and LTS in the CPE the following is commented out:
-# eol_cpes['cpe:/o:microsoft:windows_10:1507'] = '2017-05-09';
+eol_cpes['cpe:/o:microsoft:windows_10:1507:cb:enterprise_x64'] = '2017-05-09';
+eol_cpes['cpe:/o:microsoft:windows_10:1507:cb:enterprise'] = '2017-05-09';
+eol_cpes['cpe:/o:microsoft:windows_10:1507:cb:pro_x64'] = '2017-05-09';
+eol_cpes['cpe:/o:microsoft:windows_10:1507:cb:pro'] = '2017-05-09';
+eol_cpes['cpe:/o:microsoft:windows_10:1507:cb:home_x64'] = '2017-05-09';
+eol_cpes['cpe:/o:microsoft:windows_10:1507:cb:home'] = '2017-05-09';
+eol_cpes['cpe:/o:microsoft:windows_10:1507:cb:education_x64'] = '2017-05-09';
+eol_cpes['cpe:/o:microsoft:windows_10:1507:cb:education'] = '2017-05-09';
 
-# CB Home: October 10, 2017
-# CB Enterprise/Eductaion: + 6 month
-eol_cpes['cpe:/o:microsoft:windows_10:1511'] = '2018-04-10';
+# nb: This is the Windows 10 Enterprise 2015 LTSB branch.
+eol_cpes['cpe:/o:microsoft:windows_10:1507:ltsb:enterprise_x64'] = '2025-10-14';
+eol_cpes['cpe:/o:microsoft:windows_10:1507:ltsb:enterprise'] = '2025-10-14';
 
-# CB Home: April 10, 2018
-# CB Enterprise/Eductaion: + 6 month
-# nb: This is the Windows 10 Enterprise 2016 LTSB branch which
-# has support until October 13, 2026. As we currently can't differ
-# between CB and LTS in the CPE the following is commented out:
-# eol_cpes['cpe:/o:microsoft:windows_10:1607'] = '2018-10-10';
+eol_cpes['cpe:/o:microsoft:windows_10:1511:cb:enterprise_x64'] = '2017-10-10';
+eol_cpes['cpe:/o:microsoft:windows_10:1511:cb:enterprise'] = '2017-10-10';
+eol_cpes['cpe:/o:microsoft:windows_10:1511:cb:education_x64'] = '2017-10-10';
+eol_cpes['cpe:/o:microsoft:windows_10:1511:cb:education'] = '2017-10-10';
+eol_cpes['cpe:/o:microsoft:windows_10:1511:cb:pro_x64'] = '2017-10-10';
+eol_cpes['cpe:/o:microsoft:windows_10:1511:cb:pro'] = '2017-10-10';
+eol_cpes['cpe:/o:microsoft:windows_10:1511:cb:home_x64'] = '2017-10-10';
+eol_cpes['cpe:/o:microsoft:windows_10:1511:cb:home'] = '2017-10-10';
 
-# CB Home: October 9, 2018
-# CB Enterprise/Eductaion: + 6 month
-eol_cpes['cpe:/o:microsoft:windows_10:1703'] = '2019-04-09'; 
+# nb: This is the Windows 10 Enterprise 2016 LTSB branch.
+eol_cpes['cpe:/o:microsoft:windows_10:1607:ltsb:enterprise_x64'] = '2026-10-13';
+eol_cpes['cpe:/o:microsoft:windows_10:1607:ltsb:enterprise'] = '2026-10-13';
 
-# CB Home: April 9, 2019
-# CB Enterprise/Eductaion: + 6 month
-eol_cpes['cpe:/o:microsoft:windows_10:1709'] = '2019-10-09';
+eol_cpes['cpe:/o:microsoft:windows_10:1607:cb:enterprise_x64'] = '2019-04-09';
+eol_cpes['cpe:/o:microsoft:windows_10:1607:cb:enterprise'] = '2019-04-09';
+eol_cpes['cpe:/o:microsoft:windows_10:1607:cb:education_x64'] = '2019-04-09';
+eol_cpes['cpe:/o:microsoft:windows_10:1607:cb:education'] = '2019-04-09';
+eol_cpes['cpe:/o:microsoft:windows_10:1607:cb:pro_x64'] = '2018-04-10';
+eol_cpes['cpe:/o:microsoft:windows_10:1607:cb:pro'] = '2018-04-10';
+eol_cpes['cpe:/o:microsoft:windows_10:1607:cb:home_x64'] = '2018-04-10';
+eol_cpes['cpe:/o:microsoft:windows_10:1607:cb:home'] = '2018-04-10';
 
-eol_cpes['cpe:/o:microsoft:windows_10:1803'] = '2019-11-12';
+eol_cpes['cpe:/o:microsoft:windows_10:1703:cb:enterprise_x64'] = '2019-10-08';
+eol_cpes['cpe:/o:microsoft:windows_10:1703:cb:enterprise'] = '2019-10-08';
+eol_cpes['cpe:/o:microsoft:windows_10:1703:cb:education_x64'] = '2019-10-08';
+eol_cpes['cpe:/o:microsoft:windows_10:1703:cb:education'] = '2019-10-08';
+eol_cpes['cpe:/o:microsoft:windows_10:1703:cb:pro_x64'] = '2018-10-09';
+eol_cpes['cpe:/o:microsoft:windows_10:1703:cb:pro'] = '2018-10-09';
+eol_cpes['cpe:/o:microsoft:windows_10:1703:cb:home_x64'] = '2018-10-09';
+eol_cpes['cpe:/o:microsoft:windows_10:1703:cb:home'] = '2018-10-09';
+
+eol_cpes['cpe:/o:microsoft:windows_10:1709:cb:enterprise_x64'] = '2020-04-14';
+eol_cpes['cpe:/o:microsoft:windows_10:1709:cb:enterprise'] = '2020-04-14';
+eol_cpes['cpe:/o:microsoft:windows_10:1709:cb:education_x64'] = '2020-04-14';
+eol_cpes['cpe:/o:microsoft:windows_10:1709:cb:education'] = '2020-04-14';
+eol_cpes['cpe:/o:microsoft:windows_10:1709:cb:pro_x64'] = '2019-04-09';
+eol_cpes['cpe:/o:microsoft:windows_10:1709:cb:pro'] = '2019-04-09';
+eol_cpes['cpe:/o:microsoft:windows_10:1709:cb:home_x64'] = '2019-04-09';
+eol_cpes['cpe:/o:microsoft:windows_10:1709:cb:home'] = '2019-04-09';
+
+eol_cpes['cpe:/o:microsoft:windows_10:1803:cb:enterprise_x64'] = '2020-11-10';
+eol_cpes['cpe:/o:microsoft:windows_10:1803:cb:enterprise'] = '2020-11-10';
+eol_cpes['cpe:/o:microsoft:windows_10:1803:cb:education_x64'] = '2020-11-10';
+eol_cpes['cpe:/o:microsoft:windows_10:1803:cb:education'] = '2020-11-10';
+eol_cpes['cpe:/o:microsoft:windows_10:1803:cb:pro_x64'] = '2019-11-12';
+eol_cpes['cpe:/o:microsoft:windows_10:1803:cb:pro'] = '2019-11-12';
+eol_cpes['cpe:/o:microsoft:windows_10:1803:cb:home_x64'] = '2019-11-12';
+eol_cpes['cpe:/o:microsoft:windows_10:1803:cb:home'] = '2019-11-12';
+
+# nb: This is the Windows 10 Enterprise LTCS 2019 LTSB branch.
+eol_cpes['cpe:/o:microsoft:windows_10:1809:ltsc:enterprise_x64'] = '2029-01-09';
+eol_cpes['cpe:/o:microsoft:windows_10:1809:ltsc:enterprise'] = '2029-01-09';
+
+eol_cpes['cpe:/o:microsoft:windows_10:1809:cb:enterprise_x64'] = '2021-05-11';
+eol_cpes['cpe:/o:microsoft:windows_10:1809:cb:enterprise'] = '2021-05-11';
+eol_cpes['cpe:/o:microsoft:windows_10:1809:cb:education_x64'] = '2021-05-11';
+eol_cpes['cpe:/o:microsoft:windows_10:1809:cb:education'] = '2021-05-11';
+eol_cpes['cpe:/o:microsoft:windows_10:1809:cb:pro_x64'] = '2021-05-11';
+eol_cpes['cpe:/o:microsoft:windows_10:1809:cb:pro'] = '2021-05-11';
+eol_cpes['cpe:/o:microsoft:windows_10:1809:cb:home_x64'] = '2021-05-11';
+eol_cpes['cpe:/o:microsoft:windows_10:1809:cb:home'] = '2021-05-11';
+
+#eol_cpes['cpe:/o:microsoft:windows_10:1903:cb:enterprise_x64'] = '';
+#eol_cpes['cpe:/o:microsoft:windows_10:1903:cb:enterprise'] = '';
+#eol_cpes['cpe:/o:microsoft:windows_10:1903:cb:education_x64'] = '';
+#eol_cpes['cpe:/o:microsoft:windows_10:1903:cb:education'] = '';
+#eol_cpes['cpe:/o:microsoft:windows_10:1903:cb:pro_x64'] = '';
+#eol_cpes['cpe:/o:microsoft:windows_10:1903:cb:pro'] = '';
+#eol_cpes['cpe:/o:microsoft:windows_10:1903:cb:home_x64'] = '';
+#eol_cpes['cpe:/o:microsoft:windows_10:1903:cb:home'] = '';
 
 function os_reached_eol( cpe, debug ) {
 

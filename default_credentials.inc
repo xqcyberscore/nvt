@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: default_credentials.inc 12179 2018-11-01 07:49:50Z ckuersteiner $
+# $Id: default_credentials.inc 12710 2018-12-07 19:40:26Z cfischer $
 #
 # Default Credentials
 #
@@ -25,7 +25,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301
 # USA.
 #
-# $Revision: 12179 $
+# $Revision: 12710 $
 #
 ###############################################################################
 
@@ -229,7 +229,8 @@ credentials = make_list(
 "root:toor:kali linux,backtrack linux:all",
 "msfadmin:msfadmin:metasploitable:ssh",
 "root:abcd1234:trango:all",
-"root:nutanix/4u:nutanix:ssh"
+"root:nutanix/4u:nutanix:ssh",
+"foo:bar:wazuh:http" # foo:$apr1$qdSLixxe$4syV8RRHWSSsvo8Gu6rZ.1 from user file of wazuh-api
 );
 
 uploaded_credentials = get_kb_list( "default_credentials/credentials" );

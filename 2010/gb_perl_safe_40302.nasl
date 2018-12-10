@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_perl_safe_40302.nasl 8228 2017-12-22 07:29:52Z teissa $
+# $Id: gb_perl_safe_40302.nasl 12740 2018-12-10 11:49:57Z cfischer $
 #
 # Perl Safe Module 'reval()' and 'rdo()' Restriction-Bypass Vulnerabilities
 #
@@ -24,64 +24,61 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "The Perl Safe module is prone to multiple restriction-bypass
-vulnerabilities. Successful exploits could allow an attacker
-to execute arbitrary Perl code outside of the restricted root.
+CPE = "cpe:/a:rafael_garcia-suarez:safe";
 
-Versions prior to Safe 2.25 are vulnerable.";
-
-tag_solution = "Updates are available. Please see the references for more information.";
-
-if (description)
+if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.100672");
- script_version("$Revision: 8228 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-22 08:29:52 +0100 (Fri, 22 Dec 2017) $");
- script_tag(name:"creation_date", value:"2010-06-14 14:19:59 +0200 (Mon, 14 Jun 2010)");
- script_bugtraq_id(40302);
- script_cve_id("CVE-2010-1168");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_oid("1.3.6.1.4.1.25623.1.0.100672");
+  script_version("$Revision: 12740 $");
+  script_bugtraq_id(40302);
+  script_cve_id("CVE-2010-1168");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-10 12:49:57 +0100 (Mon, 10 Dec 2018) $");
+  script_tag(name:"creation_date", value:"2010-06-14 14:19:59 +0200 (Mon, 14 Jun 2010)");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_name("Perl Safe Module 'reval()' and 'rdo()' Restriction-Bypass Vulnerabilities");
+  script_category(ACT_GATHER_INFO);
+  script_family("General");
+  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
+  script_dependencies("gb_perl_modules_detect_lin.nasl");
+  script_mandatory_keys("perl/linux/modules/safe/detected");
 
- script_name("Perl Safe Module 'reval()' and 'rdo()' Restriction-Bypass Vulnerabilities");
+  script_xref(name:"URL", value:"https://www.securityfocus.com/bid/40302");
+  script_xref(name:"URL", value:"https://bugzilla.redhat.com/show_bug.cgi?id=CVE-2010-1168");
+  script_xref(name:"URL", value:"http://permalink.gmane.org/gmane.comp.security.oss.general/2932");
+  script_xref(name:"URL", value:"http://blogs.perl.org/users/rafael_garcia-suarez/2010/03/new-safepm-fixes-security-hole.html");
+  script_xref(name:"URL", value:"http://cpansearch.perl.org/src/RGARCIA/Safe-2.27/Changes");
+  script_xref(name:"URL", value:"http://search.cpan.org/~rgarcia/Safe-2.27/Safe.pm");
 
- script_xref(name : "URL" , value : "https://www.securityfocus.com/bid/40302");
- script_xref(name : "URL" , value : "https://bugzilla.redhat.com/show_bug.cgi?id=CVE-2010-1168");
- script_xref(name : "URL" , value : "http://permalink.gmane.org/gmane.comp.security.oss.general/2932");
- script_xref(name : "URL" , value : "http://blogs.perl.org/users/rafael_garcia-suarez/2010/03/new-safepm-fixes-security-hole.html");
- script_xref(name : "URL" , value : "http://cpansearch.perl.org/src/RGARCIA/Safe-2.27/Changes");
- script_xref(name : "URL" , value : "http://search.cpan.org/~rgarcia/Safe-2.27/Safe.pm");
+  script_tag(name:"summary", value:"The Perl Safe module is prone to multiple restriction-bypass
+  vulnerabilities.");
 
- script_tag(name:"qod_type", value:"executable_version");
- script_category(ACT_GATHER_INFO);
- script_family("General");
- script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("login/SSH/success");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  script_tag(name:"impact", value:"Successful exploits could allow an attacker
+  to execute arbitrary Perl code outside of the restricted root.");
+
+  script_tag(name:"affected", value:"Versions prior to Safe 2.25 are vulnerable.");
+
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
+
+  script_tag(name:"qod_type", value:"executable_version_unreliable");
+  script_tag(name:"solution_type", value:"VendorFix");
+
+  exit(0);
 }
 
-include("ssh_func.inc");
+include("host_details.inc");
 include("version_func.inc");
+ 
+if( ! infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE ) )
+  exit( 0 );
+ 
+vers = infos['version'];
+path = infos['location'];
 
-sock = ssh_login_or_reuse_connection();
-if(!sock){
-    exit(0);
+if( version_is_less( version:vers, test_version:"2.25" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"2.25", install_path:path );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
-
-cmd  = "perl -MSafe -e 'print";
-cmd += '"$Safe::VERSION"';
-cmd += "'"; 
-
-version = ssh_cmd(socket:sock, cmd:cmd, timeout:60);
-
-if(!version || "not found" >< version || "@INC" >< version || version !~ "^[0-9.]+$")exit(0); 
-
-if(version_is_less(version: version, test_version: "2.25")) {
-  security_message(0);
-}  
-
-ssh_close_connection();
-exit(0);
+ 
+exit( 99 );

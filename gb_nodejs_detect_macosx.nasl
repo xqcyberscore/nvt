@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nodejs_detect_macosx.nasl 11279 2018-09-07 09:08:31Z cfischer $
+# $Id: gb_nodejs_detect_macosx.nasl 12706 2018-12-07 14:02:55Z cfischer $
 #
 # Node.js Version Detection (Mac OS X)
 #
@@ -27,12 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813474");
-  script_version("$Revision: 11279 $");
+  script_version("$Revision: 12706 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:08:31 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-07 15:02:55 +0100 (Fri, 07 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-07-10 11:02:12 +0530 (Tue, 10 Jul 2018)");
   script_name("Node.js Version Detection (Mac OS X)");
+  script_category(ACT_GATHER_INFO);
+  script_family("Product detection");
+  script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/osx_name");
+  script_exclude_keys("ssh/no_linux_shell");
 
   script_tag(name:"summary", value:"Detects the installed version of
   Node.js on MAC OS X.
@@ -41,11 +47,7 @@ if(description)
   'node -v'.");
 
   script_tag(name:"qod_type", value:"executable_version");
-  script_category(ACT_GATHER_INFO);
-  script_family("Product detection");
-  script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/osx_name");
+
   exit(0);
 }
 
@@ -75,4 +77,4 @@ foreach nodebin (paths)
   }
 }
 ssh_close_connection();
-exit(99);
+exit(0);

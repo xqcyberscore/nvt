@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_pidgin_intgr_overflow_lin_900009.nasl 9349 2018-04-06 07:02:25Z cfischer $
+# $Id: secpod_pidgin_intgr_overflow_lin_900009.nasl 12728 2018-12-10 07:40:26Z cfischer $
 # Description: Pidgin MSN SLP Message Integer Overflow Vulnerabilities (Linux)
 #
 # Authors:
@@ -23,79 +23,59 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ##############################################################################
 
-tag_impact = "Remote attacker can execute arbitrary code by sending
-        specially crafted SLP message with the privilege of a user.
- Impact Level : SYSTEM";
-
-tag_solution = "Upgrade to Pidgin Version 2.4.3,
- http://www.pidgin.im/download/";
-
-
-tag_summary = "The host is running Pidgin, which is prone to integer
- overflow vulnerability.";
-
-tag_affected = "Pidgin Version prior to 2.4.3 on Linux (All).";
-tag_insight = "The flaw is due to errors in the msn_slplink_process_msg
-        function in libpurple/protocols/msnp9/slplink.c and
-        libpurple/protocols/msn/slplink.c files, which fails to perform
-        adequate boundary checks on user-supplied data.";
-
+CPE = "cpe:/a:pidgin:pidgin";
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.900009");
- script_version("$Revision: 9349 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2008-08-22 10:29:01 +0200 (Fri, 22 Aug 2008)");
- script_bugtraq_id(29956);
- script_cve_id("CVE-2008-2927");
- script_copyright("Copyright (C) 2008 SecPod");
- script_tag(name:"cvss_base", value:"6.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"executable_version");
- script_family("General");
- script_name("Pidgin MSN SLP Message Integer Overflow Vulnerabilities (Linux)");
- script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("login/SSH/success");
- script_exclude_keys("ssh/no_linux_shell");
- script_tag(name : "affected" , value : tag_affected);
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "impact" , value : tag_impact);
- script_xref(name : "URL" , value : "http://www.pidgin.im/news/security/?id=24");
- exit(0);
+  script_oid("1.3.6.1.4.1.25623.1.0.900009");
+  script_version("$Revision: 12728 $");
+  script_bugtraq_id(29956);
+  script_cve_id("CVE-2008-2927");
+  script_copyright("Copyright (C) 2008 SecPod");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-10 08:40:26 +0100 (Mon, 10 Dec 2018) $");
+  script_tag(name:"creation_date", value:"2008-08-22 10:29:01 +0200 (Fri, 22 Aug 2008)");
+  script_category(ACT_GATHER_INFO);
+  script_family("General");
+  script_name("Pidgin MSN SLP Message Integer Overflow Vulnerabilities (Linux)");
+  script_dependencies("secpod_pidgin_detect_lin.nasl");
+  script_mandatory_keys("Pidgin/Lin/Ver");
+
+  script_xref(name:"URL", value:"http://www.pidgin.im/news/security/?id=24");
+
+  script_tag(name:"affected", value:"Pidgin Version prior to 2.4.3 on Linux (All).");
+
+  script_tag(name:"insight", value:"The flaw is due to errors in the msn_slplink_process_msg
+  function in libpurple/protocols/msnp9/slplink.c and libpurple/protocols/msn/slplink.c files,
+  which fails to perform adequate boundary checks on user-supplied data.");
+
+  script_tag(name:"summary", value:"The host is running Pidgin, which is prone to integer
+  overflow vulnerability.");
+
+  script_tag(name:"solution", value:"Upgrade to Pidgin Version 2.4.3.");
+
+  script_tag(name:"impact", value:"Remote attacker can execute arbitrary code by sending
+  specially crafted SLP message with the privilege of a user.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"executable_version_unreliable");
+
+  exit(0);
 }
 
-include("ssh_func.inc");
+include("host_details.inc");
+include("version_func.inc");
 
- foreach item (get_kb_list("ssh/login/rpms"))
- {
-       if("pidgin~" >< item)
-        {
-		if(egrep(pattern:"^pidgin~([01]\..*|2\.([0-3](\..*)?|" +
-                                 "4(\.[0-2])?))($|[^.0-9])", string:item))
-		{
-                        security_message(0);
-                	exit(0);
-		}
-        } 
- } 
+if( ! infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE ) )
+  exit( 0 );
 
- sock = ssh_login_or_reuse_connection();
- if(!sock){
-	exit(0);
- }
+vers = infos['version'];
+path = infos['location'];
 
- pidginVer = ssh_cmd(socket:sock, cmd:"pidgin --version");
- ssh_close_connection();
+if( version_is_less( version:vers, test_version:"2.4.3" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"2.4.3", install_path:path );
+  security_message( port:0, data:report );
+}
 
- if(!pidginVer){
-	exit(0);
- }
-
- if(egrep(pattern:"Pidgin ([01]\..*|2\.([0-3](\..*)?|4(\.[0-2])?))($|[^.0-9])",
-	  string:pidginVer)){
- 	security_message(0);
- }
+exit( 0 );

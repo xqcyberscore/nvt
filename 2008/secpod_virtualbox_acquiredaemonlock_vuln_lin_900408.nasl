@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_virtualbox_acquiredaemonlock_vuln_lin_900408.nasl 9349 2018-04-06 07:02:25Z cfischer $
+# $Id: secpod_virtualbox_acquiredaemonlock_vuln_lin_900408.nasl 12728 2018-12-10 07:40:26Z cfischer $
 # Description: Sun xVM VirtualBox Insecure Temporary Files Vulnerability (Linux)
 #
 # Authors:
@@ -23,58 +23,60 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ##############################################################################
 
-tag_impact = "Successful exploitation will let the attacker perform malicious actions
-  with the escalated previleges.
-  Impact Level: Application";
-tag_affected = "Sun xVM VirutalBox version prior to 2.0.6 versions on all Linux platforms.";
-tag_insight = "Error is due to insecured handling of temporary files in the 'AcquireDaemonLock'
-  function in ipcdUnix.cpp. This allows local users to overwrite arbitrary
-  files via a symlink attack on a '/tmp/.vbox-$USER-ipc/lock' temporary file.";
-tag_solution = "Upgrade to the latest version 2.0.6 or above.
-  http://www.virtualbox.org/wiki/Downloads";
-tag_summary = "This host is installed with Sun xVM VirtualBox and is prone to
-  Insecure Temporary Files vulnerability.";
+CPE = "cpe:/a:sun:xvm_virtualbox";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900408");
-  script_version("$Revision: 9349 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
-  script_tag(name:"creation_date", value:"2008-12-10 17:58:14 +0100 (Wed, 10 Dec 2008)");
+  script_version("$Revision: 12728 $");
   script_bugtraq_id(32444);
   script_cve_id("CVE-2008-5256");
   script_copyright("Copyright (C) 2008 SecPod");
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-10 08:40:26 +0100 (Mon, 10 Dec 2018) $");
+  script_tag(name:"creation_date", value:"2008-12-10 17:58:14 +0100 (Wed, 10 Dec 2008)");
   script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"executable_version");
   script_family("General");
   script_name("Sun xVM VirtualBox Insecure Temporary Files Vulnerability (Linux)");
-  script_xref(name : "URL" , value : "http://secunia.com/Advisories/32851");
-  script_xref(name : "URL" , value : "http://www.virtualbox.org/wiki/Changelog");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/success");
-  script_exclude_keys("ssh/no_linux_shell");
+  script_dependencies("secpod_sun_virtualbox_detect_lin.nasl");
+  script_mandatory_keys("Sun/VirtualBox/Lin/Ver");
 
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_xref(name:"URL", value:"http://secunia.com/Advisories/32851");
+  script_xref(name:"URL", value:"http://www.virtualbox.org/wiki/Changelog");
+
+  script_tag(name:"impact", value:"Successful exploitation will let the attacker perform malicious actions
+  with the escalated previleges.");
+
+  script_tag(name:"affected", value:"Sun xVM VirutalBox version prior to 2.0.6 versions on all Linux platforms.");
+
+  script_tag(name:"insight", value:"Error is due to insecured handling of temporary files in the 'AcquireDaemonLock'
+  function in ipcdUnix.cpp. This allows local users to overwrite arbitrary
+  files via a symlink attack on a '/tmp/.vbox-$USER-ipc/lock' temporary file.");
+
+  script_tag(name:"solution", value:"Upgrade to the latest version 2.0.6 or later.");
+
+  script_tag(name:"summary", value:"This host is installed with Sun xVM VirtualBox and is prone to
+  Insecure Temporary Files vulnerability.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"executable_version_unreliable");
+
   exit(0);
 }
 
-include("ssh_func.inc");
+include("host_details.inc");
+include("version_func.inc");
 
-sock = ssh_login_or_reuse_connection();
-if(sock)
-{
-  xvm_linux = ssh_cmd(socket:sock, cmd:"VBoxDeleteIF -v", timeout:120);
-  ssh_close_connection();
-  if("VirtualBox" >< xvm_linux){
-    pattern = "version ([0-1](\..*)?|2\.0(\.[0-5])?)$";
-    if(egrep(pattern:pattern, string:xvm_linux)){
-      security_message(0);
-    }
-  }
+if( ! infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE ) )
+  exit( 0 );
+
+vers = infos['version'];
+path = infos['location'];
+
+if( version_is_less( version:vers, test_version:"2.0.6" ) ){
+  report = report_fixed_ver( installed_version:vers, fixed_version:"2.0.6", install_path:path );
+  security_message( port:0, data:report );
 }
+
+exit( 0 );

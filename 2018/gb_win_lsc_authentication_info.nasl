@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_win_lsc_authentication_info.nasl 12042 2018-10-23 14:09:36Z cfischer $
+# $Id: gb_win_lsc_authentication_info.nasl 12702 2018-12-07 10:33:41Z cfischer $
 #
 # Windows LSC Authenticated Scan Info Consolidation
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108442");
-  script_version("$Revision: 12042 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-23 16:09:36 +0200 (Tue, 23 Oct 2018) $");
+  script_version("$Revision: 12702 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-07 11:33:41 +0100 (Fri, 07 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-05-16 07:49:52 +0200 (Wed, 16 May 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -40,6 +40,8 @@ if(description)
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/transport", "SMB/name", "SMB/login", "SMB/password");
   script_exclude_keys("SMB/samba");
+
+  script_xref(name:"URL", value:"https://docs.greenbone.net/GSM-Manual/gos-4/en/vulnerabilitymanagement.html#requirements-on-target-systems-with-windows");
 
   script_tag(name:"summary", value:"This script consolidates various technical information about
   authenticated scans for Windows targets.");
@@ -78,6 +80,7 @@ kb_array = make_array( "WMI/access_successful", "Access via WMI possible",
                        "SMB/NTLMSSP", "Enable NTLMSSP",
                        "SMB/dont_send_ntlmv1", "Only use NTLMv2",
                        "SMB/dont_send_in_cleartext", "Never send SMB credentials in clear text",
+                       "SMB/registry_access_missing_permissions", "Missing access permissions to the registry",
                        "SMB/CSDVersion", "Name of the most recent service pack installed" );
 
 foreach kb_item( keys( kb_array ) ) {
@@ -145,6 +148,13 @@ if( ! get_kb_item( "SMB/registry_access" ) ) {
   if( error = get_kb_item( "SMB/registry_access/error" ) ) {
     report += '\n' + error;
   }
+}
+
+miss_perm = get_kb_item( "SMB/registry_access_missing_permissions" );
+if( miss_perm ) {
+  miss_report = get_kb_item( "SMB/registry_access_missing_permissions/report" );
+  if( miss_report )
+    report += '\n' + miss_report;
 }
 
 log_message( port:0, data:report );

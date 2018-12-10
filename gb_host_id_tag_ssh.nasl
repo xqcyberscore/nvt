@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_host_id_tag_ssh.nasl 11585 2018-09-25 07:09:41Z cfischer $
+# $Id: gb_host_id_tag_ssh.nasl 12724 2018-12-09 16:45:47Z cfischer $
 #
 # Leave Host Identification Tag on scanned host (SSH)
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108157");
-  script_version("$Revision: 11585 $");
+  script_version("$Revision: 12724 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 09:09:41 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-09 17:45:47 +0100 (Sun, 09 Dec 2018) $");
   script_tag(name:"creation_date", value:"2017-05-10 09:37:58 +0200 (Wed, 10 May 2017)");
   script_name("Leave Host Identification Tag on scanned host (SSH)");
   script_category(ACT_END);
@@ -50,7 +50,7 @@ if(description)
   about the actual scan results are stored on the scanned host.
 
   By default, this routine is disabled even it is selected to run. To activate
-  it, it needs to be explictely enabled with its corresponding preference switch.
+  it, it needs to be explicitly enabled with its corresponding preference switch.
 
   The file is named gvm_host_id_tag.txt and placed within the home directory (~/) of
   the user which was used to scan the target system.");

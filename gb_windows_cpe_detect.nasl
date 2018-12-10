@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_windows_cpe_detect.nasl 11613 2018-09-26 07:07:19Z cfischer $
+# $Id: gb_windows_cpe_detect.nasl 12703 2018-12-07 11:49:32Z cfischer $
 #
 # Windows Application CPE Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96207");
-  script_version("$Revision: 11613 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:07:19 +0200 (Wed, 26 Sep 2018) $");
+  script_version("$Revision: 12703 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-07 12:49:32 +0100 (Fri, 07 Dec 2018) $");
   script_tag(name:"creation_date", value:"2011-04-26 12:54:47 +0200 (Tue, 26 Apr 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -1588,8 +1588,35 @@ if (OSVER == "6.3"){
       register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:"cpe:/o:microsoft:windows_server_2016", desc:SCRIPT_DESC);
     }
     else if ("Windows 10" >< OSNAME){
+
       cpe = "cpe:/o:microsoft:windows_10";
-      if( ver = get_version_from_build( string:build, win_name:"win10" ) ) cpe += ":" + ver;
+
+      if( ver = get_version_from_build( string:build, win_name:"win10" ) )
+        cpe += ":" + ver;
+      else
+        cpe += ":";
+
+      if ("LTSB" >< OSNAME)
+        cpe += ":ltsb";
+      else if ("LTSC" >< OSNAME)
+        cpe += ":ltsc";
+      else
+        cpe += ":cb";
+
+      if ("Enterprise" >< OSNAME)
+        cpe += ":enterprise";
+      else if ("Education" >< OSNAME)
+        cpe += ":education";
+      else if ("Home" >< OSNAME)
+        cpe += ":home";
+      else if ("Pro" >< OSNAME)
+        cpe += ":pro";
+      else
+        cpe += ":unknown_edition";
+
+      if (x64 == "1")
+        cpe += "_x64";
+
       register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe, desc:SCRIPT_DESC);
     }
     else if ("Windows Embedded 8.1" >< OSNAME){

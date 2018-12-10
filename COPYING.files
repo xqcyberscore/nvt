@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Fri, 07 Dec 2018 09:49:10 +0100
+# Automatically created on:  Mon, 10 Dec 2018 14:11:14 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -36001,6 +36001,7 @@
 2017/gb_jenkins_java_deserialization_vul_07_2017.nasl: GPLv2+
 2017/gb_jetbrains_loc_file_disc_vuln.nasl: GPLv2+
 2017/gb_jetty_sec_bypass_vuln.nasl: GPLv2+
+2017/gb_jetty_sec_bypass_vuln_win.nasl: GPLv2+
 2017/gb_jira_cve-2016-6285.nasl: GPLv2+
 2017/gb_joomla_98022.nasl: GPLv2+
 2017/gb_joomla_core_xss_vuln_july17.nasl: GPLv2+
@@ -39255,6 +39256,9 @@
 2018/debian/deb_4347.nasl: GPLv2+
 2018/debian/deb_4348.nasl: GPLv2+
 2018/debian/deb_4349.nasl: GPLv2+
+2018/debian/deb_4350.nasl: GPLv2+
+2018/debian/deb_4351.nasl: GPLv2+
+2018/debian/deb_4352.nasl: GPLv2+
 2018/debian/deb_dla_1000.nasl: GPLv2+
 2018/debian/deb_dla_1001.nasl: GPLv2+
 2018/debian/deb_dla_1002.nasl: GPLv2+
@@ -39994,7 +39998,9 @@
 2018/e107/gb_e107_mult_vuln1.nasl: GPLv2+
 2018/e107/gb_e107_mult_vuln.nasl: GPLv2+
 2018/eclipse/gb_eclipse_jetty_server_fake_pipeline_sec_bypass_vuln.nasl: GPLv2+
+2018/eclipse/gb_eclipse_jetty_server_fake_pipeline_sec_bypass_vuln_win.nasl: GPLv2+
 2018/eclipse/gb_eclipse_jetty_server_invalidfileexception_info_disclosure_vuln.nasl: GPLv2+
+2018/eclipse/gb_eclipse_jetty_server_invalidfileexception_info_disclosure_vuln_win.nasl: GPLv2+
 2018/elasticsearch/gb_elasticsearch_CVE-2015-4165.nasl: GPLv2+
 2018/elasticsearch/gb_elasticsearch_CVE-2018-17244_lin.nasl: GPLv2+
 2018/elasticsearch/gb_elasticsearch_CVE-2018-17244_win.nasl: GPLv2+
@@ -42985,6 +42991,7 @@
 2018/samba/gb_samba_priv_esc_vuln_nov18.nasl: GPLv2+
 2018/samsung/gb_samsung_printer_snmp_pw_discl_vuln.nasl: GPLv2+
 2018/samsung/gb_samsung_syncthru_web_service_xss_n_csrf_vuln.nasl: GPLv2+
+2018/samsung/gb_samsung_web_viewer_dvr_default_credentials.nasl: GPLv2+
 2018/sangoma/gb_sangoma_nsc_rce_vuln.nasl: GPLv2+
 2018/sanyo/gb_sanyo_network_camera_default_credentials.nasl: GPLv2+
 2018/seagate/gb_seagate_personalcloud_dir_trav_vuln.nasl: GPLv2+
@@ -45009,7 +45016,9 @@ gb_pelco_videoxpert_detect.nasl: GPLv2+
 gb_pentaho_ga_ba_suite_remote_detect.nasl: GPLv2+
 gb_pentaho_ga_pdi_suite_remote_detect.nasl: GPLv2+
 gb_peplink_balance_webadmin_detect.nasl: GPLv2+
+gb_perl_detect_lin.nasl: GPLv2+
 gb_perl_detect_win.nasl: GPLv2+
+gb_perl_modules_detect_lin.nasl: GPLv2+
 gb_pfsense_detect_http.nasl: GPLv2+
 gb_pfsense_detect.nasl: GPLv2+
 gb_pfsense_detect_snmp.nasl: GPLv2+
@@ -45236,11 +45245,27 @@ gb_snort_detect_lin.nasl: GPLv2+
 gb_snortreport_detect.nasl: GPLv2+
 gb_soda_pdf_detect_win.nasl: GPLv2+
 gb_softnas_detect.nasl: GPLv2+
+gb_solarwinds_acm_detect_win.nasl: GPLv2+
 gb_solarwinds_fsm_detect.nasl: GPLv2+
+gb_solarwinds_ipam_detect_win.nasl: GPLv2+
 gb_solarwinds_log_event_manager_version.nasl: GPLv2+
 gb_solarwinds_log_event_manager_web_detect.nasl: GPLv2+
+gb_solarwinds_nam_detect_win.nasl: GPLv2+
+gb_solarwinds_nom_detect_win.nasl: GPLv2+
+gb_solarwinds_olm_detect_win.nasl: GPLv2+
+gb_solarwinds_orion_ncm_detect_win.nasl: GPLv2+
+gb_solarwinds_orion_npm_detect_win.nasl: GPLv2+
+gb_solarwinds_orion_nta_detect_win.nasl: GPLv2+
+gb_solarwinds_sam_detect_win.nasl: GPLv2+
+gb_solarwinds_scm_detect_win.nasl: GPLv2+
+gb_solarwinds_srm_detect_win.nasl: GPLv2+
 gb_solarwinds_storage_resource_monitor_detect.nasl: GPLv2+
+gb_solarwinds_udt_detect_win.nasl: GPLv2+
 gb_solarwinds_virtualization_manager_webdetect.nasl: GPLv2+
+gb_solarwinds_vman_detect_win.nasl: GPLv2+
+gb_solarwinds_vnqm_detect_win.nasl: GPLv2+
+gb_solarwinds_web_toolset_detect_win.nasl: GPLv2+
+gb_solarwinds_wpm_detect_win.nasl: GPLv2+
 gb_sonatype_nexus_detect.nasl: GPLv2+
 gb_sonic_spot_audioactive_player_detect.nasl: GPLv2+
 gb_sonicwall_universal_management_detect.nasl: GPLv2+
@@ -45292,6 +45317,7 @@ gb_sun_java_sys_web_proxy_server_detect.nasl: GPLv2+
 gb_sun_java_sys_web_serv_detect.nasl: GPLv2+
 gb_sun_java_web_console_detect.nasl: GPLv2+
 gb_sunny_webbox_remote_detect.nasl: GPLv2+
+gb_sun_one_java_sys_web_serv_detect_lin.nasl: GPLv2+
 gb_sun_oracle_ilo_detect.nasl: GPLv2+
 gb_superantispyware_detect.nasl: GPLv2+
 gb_swarmpit_detect.nasl: GPLv2+
@@ -62059,6 +62085,7 @@ gsf/2018/rhel/gb_RHSA-2018_3738-01_ruby.nasl: GPLv2+
 gsf/2018/rhel/gb_RHSA-2018_3760-01_ghostscript.nasl: GPLv2+
 gsf/2018/rhel/gb_RHSA-2018_3761-01_ghostscript.nasl: GPLv2+
 gsf/2018/rockwellautomation/gb_rockwell_micrologix_1100_mult_vuln.nasl: GPLv2+
+gsf/2018/rockwellautomation/gb_rockwell_micrologix_1400_dos_vuln.nasl: GPLv2+
 gsf/2018/rockwellautomation/gb_rockwell_micrologix_1400_mult_vuln1.nasl: GPLv2+
 gsf/2018/rockwellautomation/gb_rockwell_micrologix_1400_mult_vuln.nasl: GPLv2+
 gsf/2018/rockwellautomation/gb_rockwell_micrologix_buf_overflow_vuln.nasl: GPLv2+

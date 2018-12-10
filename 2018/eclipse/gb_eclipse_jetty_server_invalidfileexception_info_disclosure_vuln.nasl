@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_eclipse_jetty_server_invalidfileexception_info_disclosure_vuln.nasl 12045 2018-10-24 06:51:17Z mmartin $
+# $Id: gb_eclipse_jetty_server_invalidfileexception_info_disclosure_vuln.nasl 12711 2018-12-07 21:05:48Z cfischer $
 #
-# Eclipse Jetty Server InvalidPathException Information Disclosure Vulnerability
+# Eclipse Jetty Server InvalidPathException Information Disclosure Vulnerability (Linux)
 #
 # Authors:
 # Rajat Mishra <rajatm@secpod.com>
@@ -29,14 +29,21 @@ CPE = "cpe:/a:eclipse:jetty";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813552");
-  script_version("$Revision: 12045 $");
+  script_version("$Revision: 12711 $");
   script_cve_id("CVE-2018-12536");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 08:51:17 +0200 (Wed, 24 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-07 22:05:48 +0100 (Fri, 07 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-07-05 12:17:02 +0530 (Thu, 05 Jul 2018)");
-  script_tag(name:"qod_type", value:"remote_banner");
-  script_name("Eclipse Jetty Server InvalidPathException Information Disclosure Vulnerability");
+  script_name("Eclipse Jetty Server InvalidPathException Information Disclosure Vulnerability (Linux)");
+  script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
+  script_category(ACT_GATHER_INFO);
+  script_family("Web Servers");
+  script_dependencies("gb_jetty_detect.nasl", "os_detection.nasl");
+  script_mandatory_keys("Jetty/installed", "Host/runs_unixoide");
+
+  script_xref(name:"URL", value:"https://bugs.eclipse.org/bugs/show_bug.cgi?id=535670");
+  script_xref(name:"URL", value:"https://www.eclipse.org/jetty/");
 
   script_tag(name:"summary", value:"The host is installed with Eclipse Jetty
   Server and is prone to information disclosure vulnerability.");
@@ -57,25 +64,20 @@ if(description)
   refer to Reference links.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name:"URL", value:"https://bugs.eclipse.org/bugs/show_bug.cgi?id=535670");
-  script_xref(name:"URL", value:"https://www.eclipse.org/jetty/");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
-  script_category(ACT_GATHER_INFO);
-  script_family("Web application abuses");
-  script_dependencies("gb_jetty_detect.nasl");
-  script_mandatory_keys("Jetty/installed");
   exit(0);
 }
 
 include("host_details.inc");
 include("version_func.inc");
 
-if(!jPort = get_app_port(cpe:CPE)){
+if(!jPort = get_app_port(cpe:CPE))
   exit(0);
-}
 
-infos = get_app_version_and_location( cpe:CPE, port:jPort, exit_no_version:TRUE);
+if(!infos = get_app_version_and_location( cpe:CPE, port:jPort, exit_no_version:TRUE))
+  exit(0);
+
 jVer = infos['version'];
 jPath = infos['location'];
 
@@ -86,8 +88,7 @@ else if(version_in_range(version:jVer, test_version:"9.4.0", test_version2:"9.4.
   fix = "9.4.11.v20180605";
 }
 
-if(fix)
-{
+if(fix){
   report = report_fixed_ver(installed_version:jVer, fixed_version:fix, install_path:jPath);
   security_message(data:report, port:jPort);
   exit(0);

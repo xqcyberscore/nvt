@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_openjdk_detect.nasl 11029 2018-08-17 09:30:04Z cfischer $
+# $Id: secpod_openjdk_detect.nasl 12706 2018-12-07 14:02:55Z cfischer $
 #
 # OpenJDK Version Detection
 #
@@ -27,21 +27,23 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900334");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11029 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 11:30:04 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 12706 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-07 15:02:55 +0100 (Fri, 07 Dec 2018) $");
   script_tag(name:"creation_date", value:"2009-05-13 10:01:19 +0200 (Wed, 13 May 2009)");
   script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("OpenJDK Version Detection");
-  script_tag(name:"qod_type", value:"executable_version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Product detection");
-  script_mandatory_keys("login/SSH/success");
   script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("login/SSH/success");
+  script_exclude_keys("ssh/no_linux_shell");
 
   script_tag(name:"summary", value:"This script detects the installed version of OpenJDK and sets
   the reuslt in KB.");
+
+  script_tag(name:"qod_type", value:"executable_version");
 
   exit(0);
 }
@@ -68,17 +70,14 @@ foreach binName (paths)
 
   dump = ver;
 
-  if("OpenJDK" >< ver)
-  {
-    if((ver[1] && ver[2]) != NULL){
+  if("OpenJDK" >< ver){
+    if((ver[1] && !isnull(ver[2]))){
       ver = ver[1] + "." + ver[2];
-    }
-    else{
+    }else{
       ver = ver[1];
     }
 
-    if(ver != NULL)
-    {
+    if(ver){
       set_kb_item(name:"OpenJDK/Ver", value:ver);
       ssh_close_connection();
 
@@ -95,4 +94,6 @@ foreach binName (paths)
     }
   }
 }
+
 ssh_close_connection();
+exit(0);

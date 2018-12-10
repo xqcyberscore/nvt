@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_unprotected_web_app_installers.nasl 12572 2018-11-29 09:40:42Z cfischer $
+# $Id: gb_unprotected_web_app_installers.nasl 12726 2018-12-10 06:49:52Z cfischer $
 #
 # Unprotected Web App Installers (HTTP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107307");
-  script_version("$Revision: 12572 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-29 10:40:42 +0100 (Thu, 29 Nov 2018) $");
+  script_version("$Revision: 12726 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-10 07:49:52 +0100 (Mon, 10 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-05-07 12:00:20 +0200 (Mon, 07 May 2018)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"cvss_base", value:"5.0");
@@ -95,7 +95,8 @@ genericfiles = make_array(
 "/recovery/install/", 'Shopware installer#-#<title>Shopware .* - Installer</title>',
 "/setup/index.php", 'CubeCart / phpMyAdmin installer#-#<title>(CubeCart .* Installer|phpMyAdmin setup)</title>',
 "/setup/setup.php", 'WaWision WaWi, ERP CRM installer#-#<title>WaWision Installer</title>',
-"/tao/install/", 'TAO installer#-#<title>TAO Installation</title>'
+"/tao/install/", 'TAO installer#-#<title>TAO Installation</title>',
+"/install/", "phpBB installer#-#<title>Introduction</title>#-#<span>Install</span></a></li>"
 );
 
 # nb: Used later without the cgi_dirs() result

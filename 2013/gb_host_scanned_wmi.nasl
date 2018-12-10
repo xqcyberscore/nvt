@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_host_scanned_wmi.nasl 11538 2018-09-21 19:50:22Z cfischer $
+# $Id: gb_host_scanned_wmi.nasl 12724 2018-12-09 16:45:47Z cfischer $
 #
 # Leave information on scanned Windows hosts
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96171");
-  script_version("$Revision: 11538 $");
+  script_version("$Revision: 12724 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 21:50:22 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-09 17:45:47 +0100 (Sun, 09 Dec 2018) $");
   script_tag(name:"creation_date", value:"2013-03-03 10:37:58 +0100 (Sun, 03 Mar 2013)");
   script_name("Leave information on scanned Windows hosts");
   script_category(ACT_END);
@@ -49,7 +49,7 @@ if(description)
   No details about the actual scan results are stored on the scanned host.
 
   By default, this routine is disabled even it is selected to run. To activate
-  it, it needs to be explictely enabled with its corresponding preference switch.
+  it, it needs to be explicitly enabled with its corresponding preference switch.
 
   The preference 'Message' may contain 3 placeholder where respective content
   will be inserted into the message when the message is finally created on the

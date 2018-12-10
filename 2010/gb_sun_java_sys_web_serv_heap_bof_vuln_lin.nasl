@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sun_java_sys_web_serv_heap_bof_vuln_lin.nasl 11119 2018-08-26 14:11:51Z cfischer $
+# $Id: gb_sun_java_sys_web_serv_heap_bof_vuln_lin.nasl 12718 2018-12-08 12:55:00Z cfischer $
 #
 # Sun Java System Web Server Multiple Heap-based Buffer Overflow Vulnerabilities (Linux)
 #
@@ -24,11 +24,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:sun:java_system_web_server";
+
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800160");
-  script_version("$Revision: 11119 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-26 16:11:51 +0200 (Sun, 26 Aug 2018) $");
+  script_version("$Revision: 12718 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-08 13:55:00 +0100 (Sat, 08 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-02-02 07:26:26 +0100 (Tue, 02 Feb 2010)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -38,9 +40,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2010 Greenbone Networks GmbH");
   script_family("Buffer overflow");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/success");
-  script_exclude_keys("ssh/no_linux_shell");
+  script_dependencies("gb_sun_one_java_sys_web_serv_detect_lin.nasl");
+  script_mandatory_keys("Sun/JavaSysWebServ/Lin/Ver");
 
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/55792");
   script_xref(name:"URL", value:"http://securitytracker.com/alerts/2010/Jan/1023488.html");
@@ -48,9 +49,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation lets the attackers to cause the application to crash
   or execute arbitrary code on the system by sending an overly long request in
-  an 'Authorization: Digest' header.
-
-  Impact Level: System/Application");
+  an 'Authorization: Digest' header.");
 
   script_tag(name:"affected", value:"Sun Java System Web Server version 7.0 update 7 on Linux.");
 
@@ -59,8 +58,7 @@ if(description)
   server to crash via a long string in an 'Authorization: Digest' HTTP
   header.");
 
-  script_tag(name:"solution", value:"Upgrade to Sun Java System Web Server version 7.0 update 8 or later.
-  For updates refer to http://www.sun.com/");
+  script_tag(name:"solution", value:"Upgrade to Sun Java System Web Server version 7.0 update 8 or later.");
 
   script_tag(name:"summary", value:"This host has Sun Java Web Server running which is prone to
   multiple Heap-based Buffer Overflow Vulnerabilities.");
@@ -71,35 +69,19 @@ if(description)
   exit(0);
 }
 
-include("ssh_func.inc");
+include("host_details.inc");
 include("version_func.inc");
 
-jswsSock = ssh_login_or_reuse_connection();
-if( ! jswsSock ) exit( 0 );
+if( ! infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE ) )
+  exit( 0 );
 
-paths = find_file( file_name:"webservd", file_path:"/", useregex:TRUE, regexpar:"$", sock:jswsSock );
+vers = infos['version'];
+path = infos['location'];
 
-foreach sjswsBin( paths ) {
-
-  sjswsBin = chomp( sjswsBin );
-  if( ! sjswsBin ) continue;
-
-  sjswsVer = get_bin_version( full_prog_name:sjswsBin, sock:jswsSock, version_argv:"-v", ver_pattern:"Sun (ONE |Java System )Web Server ([0-9.]+)(SP|U)?([0-9]+)?([^0-9.]|$)" );
-  if( sjswsVer[2] ) {
-    if( ! isnull( sjswsVer[4] ) ) {
-      sjswsVer = sjswsVer[2] + "." + sjswsVer[4];
-    } else {
-      sjswsVer = sjswsVer[2];
-    }
-
-    if( version_is_equal( version:sjswsVer, test_version:"7.0.7" ) ) {
-      report = report_fixed_ver( installed_version:sjswsVer, fixed_version:"7.0.8", install_path:sjswsBin );
-      security_message( port:0, data:report );
-      ssh_close_connection();
-      exit( 0 );
-    }
-  }
+if( version_is_equal( version:vers, test_version:"7.0.7" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"7.0.8", install_path:path );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
 
-ssh_close_connection();
 exit( 99 );

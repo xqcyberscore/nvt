@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: smb_nativelanman.nasl 12696 2018-12-07 07:19:11Z cfischer $
+# $Id: smb_nativelanman.nasl 12703 2018-12-07 11:49:32Z cfischer $
 #
 # SMB NativeLanMan
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102011");
-  script_version("$Revision: 12696 $");
+  script_version("$Revision: 12703 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-07 08:19:11 +0100 (Fri, 07 Dec 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-07 12:49:32 +0100 (Fri, 07 Dec 2018) $");
   script_tag(name:"creation_date", value:"2009-09-18 16:06:42 +0200 (Fri, 18 Sep 2009)");
   script_name("SMB NativeLanMan");
   script_category(ACT_GATHER_INFO);
@@ -297,6 +297,26 @@ for( x = l-3; x > 0 && c < 3; x = x - 2 ) {
 
             if( ver = get_version_from_build( string:os_str, win_name:"win10" ) )
               cpe += ":" + ver;
+            else
+              cpe += ":";
+
+            if( "ltsb" >< os_str_lo )
+              cpe += ":ltsb";
+            else if( "ltsc" >< os_str_lo )
+              cpe += ":ltsc";
+            else
+              cpe += ":cb";
+
+            if( "enterprise" >< os_str_lo )
+              cpe += ":enterprise";
+            else if( "education" >< os_str_lo )
+              cpe += ":education";
+            else if( "home" >< os_str_lo )
+              cpe += ":home";
+            else if( "pro" >< os_str_lo )
+              cpe += ":pro";
+            else
+              cpe += ":unknown_edition";
 
             register_and_report_os( os:os_str, cpe:cpe, banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
           } else if( "windows 5.1" >< os_str_lo && "windows 2000 lan manager" >< smb_str_lo ) {
