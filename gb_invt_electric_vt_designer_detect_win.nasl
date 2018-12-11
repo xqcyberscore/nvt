@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_invt_electric_vt_designer_detect_win.nasl 12626 2018-12-03 13:47:37Z mmartin $
+# $Id: gb_invt_electric_vt_designer_detect_win.nasl 12753 2018-12-11 08:48:01Z mmartin $
 #
 # INVT Electric VT Designer Version Detection (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107397");
-  script_version("$Revision: 12626 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-03 14:47:37 +0100 (Mon, 03 Dec 2018) $");
+  script_version("$Revision: 12753 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-11 09:48:01 +0100 (Tue, 11 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-12-03 14:46:08 +0100 (Mon, 03 Dec 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -90,7 +90,7 @@ foreach key (key_list) {
     set_kb_item(name:"invt_electric/vt_designer/win/ver", value:version);
 
     register_and_report_cpe(app:"INVT Electric VT Designer", ver:version, concluded:concluded,
-    base:"cpe:/a:invt_electric:vt_designer:", expr:"^([0-9.]+)", insloc:location);
+    base:"cpe:/a:invt_electric:vt_designer:", expr:"^([0-9.]+)", insloc:location, regService:"smb-login", regPort:0);
 
     exit(0);
   }

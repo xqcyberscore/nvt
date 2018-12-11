@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_master_ip_camera01_detect.nasl 11408 2018-09-15 11:35:21Z cfischer $
+# $Id: gb_master_ip_camera01_detect.nasl 12754 2018-12-11 09:39:53Z cfischer $
 #
-# MASTER IP CAMERA 01 Remote Detection
+# Master IP Camera Remote Detection
 #
 # Authors:
 # Shakeel <bshakeel@secpod.com>
@@ -27,57 +27,50 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812657");
-  script_version("$Revision: 11408 $");
+  script_version("$Revision: 12754 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 13:35:21 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-11 10:39:53 +0100 (Tue, 11 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-01-22 12:19:43 +0530 (Mon, 22 Jan 2018)");
-  script_name("MASTER IP CAMERA 01 Remote Detection");
-
-  script_tag(name:"summary", value:"Detection of running version of
-  MASTER IP CAMERA 01.
-
-  This script sends HTTP GET request and try to ensure the presence of
-  MASTER IP CAMERA 01.");
-
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_name("Master IP Camera Remote Detection");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("find_service.nasl", "http_version.nasl");
-  script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_dependencies("gb_get_http_banner.nasl");
+  script_mandatory_keys("thttpd/banner");
+
+  script_tag(name:"summary", value:"This script tries to detect a Master IP Camera
+  and its version.");
+
+  script_tag(name:"qod_type", value:"remote_banner");
 
   exit(0);
 }
 
 include("http_func.inc");
-include("host_details.inc");
 include("http_keepalive.inc");
+include("host_details.inc");
 
-ipPort = get_http_port(default:80);
+port = get_http_port(default:80);
+res = http_get_cache(item:"/web/index.html", port:port);
 
-rcvRes = http_get_cache(item:"/web/index.html", port:ipPort);
-
-if(rcvRes =~ "Server:.thttpd" && ("<title>ipCAM<" >< rcvRes || "<title>Camera<" >< rcvRes) &&
-   "cgi-bin/hi3510" >< rcvRes && ">OCX" >< rcvRes)
+if(res =~ "Server:.thttpd" && ("<title>ipCAM<" >< res || "<title>Camera<" >< res) &&
+   "cgi-bin/hi3510" >< res && ">OCX" >< res)
 {
 
   version = "unknown";
-
   set_kb_item(name:"MasterIP/Camera/Detected", value:TRUE);
 
   ## creating new cpe for this product
   cpe = "cpe:/h:masterip:masterip_camera";
 
-  register_product(cpe:cpe, location:"/", port:ipPort);
+  register_product(cpe:cpe, location:"/", port:port, service:"www");
 
-  log_message(data:build_detection_report(app:"MasterIP Camera 01",
+  log_message(data:build_detection_report(app:"Master IP Camera",
                                           version:version,
                                           install:"/",
-                                          cpe:cpe,
-                                          concluded:version),
-                                          port:ipPort);
-  exit(0);
+                                          cpe:cpe),
+                                          port:port);
 }
+
 exit(0);

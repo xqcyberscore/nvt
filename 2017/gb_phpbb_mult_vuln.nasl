@@ -1,8 +1,8 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpbb_mult_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
+# $Id: gb_phpbb_mult_vuln.nasl 12754 2018-12-11 09:39:53Z cfischer $
 #
-# phpBB Multiple Vulnerabilities
+# phpBB < 3.1.11, 3.2.x < 3.2.1 Multiple Vulnerabilities
 #
 # Authors:
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
@@ -25,24 +25,24 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = 'cpe:/a:phpbb:phpbb';
+CPE = "cpe:/a:phpbb:phpbb";
 
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140291");
-  script_version("$Revision: 12106 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
+  script_version("$Revision: 12754 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-11 10:39:53 +0100 (Tue, 11 Dec 2018) $");
   script_tag(name:"creation_date", value:"2017-08-10 16:43:53 +0700 (Thu, 10 Aug 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2017-1000419");
 
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_name("phpBB Multiple Vulnerabilities");
+  script_name("phpBB < 3.1.11, 3.2.x < 3.2.1 Multiple Vulnerabilities");
 
   script_category(ACT_GATHER_INFO);
 
@@ -58,8 +58,8 @@ if (description)
   script_tag(name:"insight", value:"phpBB is prone to multiple vulnerabilities:
 
   - Server-side request forgery (SSRF) vulnerability in the remote avatar functionality which could be used to
-perform service discovery on internal and external networks as well as retrieve images which are usually
-restricted to local access. (CVE-2017-1000419)
+  perform service discovery on internal and external networks as well as retrieve images which are usually
+  restricted to local access. (CVE-2017-1000419)
 
   - Cross-site scripting vulnerability via version check files.");
 
@@ -84,18 +84,16 @@ if (!version = get_app_version(cpe: CPE, port: port))
   exit(0);
 
 if (version_is_less(version: version, test_version: "3.1.11")) {
-  vuln = TRUE;
   fix = "3.1.11";
 }
 
 if (version =~ "^3\.2\.") {
   if (version_is_less(version: version, test_version: "3.2.1")) {
-    vuln = TRUE;
     fix = "3.2.1";
   }
 }
 
-if (vuln) {
+if (fix) {
   report = report_fixed_ver(installed_version: version, fixed_version: fix);
   security_message(port: port, data: report);
   exit(0);

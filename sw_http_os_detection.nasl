@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_http_os_detection.nasl 12563 2018-11-28 15:16:22Z cfischer $
+# $Id: sw_http_os_detection.nasl 12754 2018-12-11 09:39:53Z cfischer $
 #
 # HTTP OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111067");
-  script_version("$Revision: 12563 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-28 16:16:22 +0100 (Wed, 28 Nov 2018) $");
+  script_version("$Revision: 12754 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-11 10:39:53 +0100 (Tue, 11 Dec 2018) $");
   script_tag(name:"creation_date", value:"2015-12-10 16:00:00 +0100 (Thu, 10 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -82,20 +82,16 @@ function check_http_banner( port, banner ) {
     # Server: EWS-NIC5/15.18
     # Server: EWS-NIC5/96.55
     # Running on different printers from e.g. Xerox, Dell or Epson. The OS is undefined so just return...
-    # nb: Keep in single quotes
     if( egrep( pattern:"^Server: EWS-NIC5/[0-9.]+$", string:banner ) ) return;
 
     # Server: CTCFC/1.0
     # Commtouch Anti-Spam Daemon (ctasd.bin) running on Windows and Linux (e.g. IceWarp Suite)
-    # nb: Keep in single quotes
     if( egrep( pattern:"^Server: CTCFC/[0-9.]+$", string:banner ) ) return;
 
     # e.g. Server: SimpleHTTP/0.6 Python/2.7.5 -> Python is cross-platform
-    # nb: Keep in single quotes
     if( egrep( pattern:"^Server: SimpleHTTP/[0-9.]+ Python/[0-9.]+$", string:banner ) ) return;
 
     # e.g. Server: MX4J-HTTPD/1.0 -> Java implementation, cross-patform
-    # nb: Keep in single quotes
     if( egrep( pattern:"^Server: MX4J-HTTPD/[0-9.]+$", string:banner ) ) return;
 
     # e.g. Server: libwebsockets or server: libwebsockets
@@ -104,6 +100,10 @@ function check_http_banner( port, banner ) {
     # e.g. Server: mt-daapd/svn-1696 or Server: mt-daapd/0.2.4.1
     # Cross-Platform
     if( egrep( pattern:"^Server: mt-daapd/?([0-9.]+|svn-[0-9]+)?$", string:banner, icase:TRUE ) ) return;
+
+    # e.g. Server: Mongoose/6.3 or Server: Mongoose
+    # Cross-Platform
+    if( egrep( pattern:"^Server: Mongoose/?[0-9.]*$", string:banner, icase:TRUE ) ) return;
 
     if( banner == "Server:" ||
         banner == "Server: " ||
@@ -892,7 +892,7 @@ function check_php_banner( port, host ) {
     phpBanner = get_http_banner( port:port, file:"/index.php" );
   }
 
-  phpBanner = egrep( pattern:"^X-Powered-By: PHP/.*$", string:phpBanner, icase:TRUE );
+  phpBanner = egrep( pattern:"^X-Powered-By: PHP/.+$", string:phpBanner, icase:TRUE );
   if( ! phpBanner ) {
     # nb: Currently set by sw_apcu_info.nasl and gb_phpinfo_output_detect.nasl but could be extended by other PHP scripts providing such info
     phpscriptsUrls = get_kb_list( "php/banner/from_scripts/" + host + "/" + port + "/urls" );
@@ -907,8 +907,9 @@ function check_php_banner( port, host ) {
       }
     }
   } else {
-    phpBanner = chomp( phpBanner );
     banner_type = "PHP Server banner";
+    phpBanner = chomp( phpBanner );
+    if( egrep( pattern:"^X-Powered-By: PHP/[0-9.]+$", string:banner ) ) return;
   }
 
   if( phpBanner ) {

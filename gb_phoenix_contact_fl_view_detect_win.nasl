@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phoenix_contact_fl_view_detect_win.nasl 12641 2018-12-04 09:12:22Z mmartin $
+# $Id: gb_phoenix_contact_fl_view_detect_win.nasl 12753 2018-12-11 08:48:01Z mmartin $
 #
 # PHOENIX CONTACT FL VIEW Version Detection (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107388");
-  script_version("$Revision: 12641 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-04 10:12:22 +0100 (Tue, 04 Dec 2018) $");
+  script_version("$Revision: 12753 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-11 09:48:01 +0100 (Tue, 11 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-12-04 10:12:59 +0100 (Tue, 04 Dec 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -104,7 +104,7 @@ foreach key (key_list) {
   set_kb_item(name:"phoenixcontact/fl_view/win/detected", value:TRUE);
   set_kb_item(name:"phoenixcontact/fl_view/win/ver", value:version);
 
-  register_and_report_cpe(app:appName , ver:version, concluded:concluded,base:"cpe:/a:phoenixcontact-software:fl_view:", expr:"^([0-9.]+)", insloc:location);
+  register_and_report_cpe(app:appName , ver:version, concluded:concluded,base:"cpe:/a:phoenixcontact-software:fl_view:", expr:"^([0-9.]+)", insloc:location, regService:"smb-login", regPort:0);
   exit(0);
 }}
 exit(0);

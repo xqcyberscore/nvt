@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_solarwinds_srm_detect_win.nasl 12717 2018-12-08 12:10:53Z mmartin $
+# $Id: gb_solarwinds_srm_detect_win.nasl 12753 2018-12-11 08:48:01Z mmartin $
 #
 # SolarWinds Storage Resource Monitor Version Detection (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107411");
-  script_version("$Revision: 12717 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-08 13:10:53 +0100 (Sat, 08 Dec 2018) $");
+  script_version("$Revision: 12753 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-11 09:48:01 +0100 (Tue, 11 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-12-08 13:04:17 +0100 (Sat, 08 Dec 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -87,7 +87,7 @@ foreach key (key_list) {
     set_kb_item(name:"solarwinds/srm/win/ver", value:version);
 
     register_and_report_cpe(app:appName, ver:version, concluded:concluded,
-    base:"cpe:/a:solarwinds:storage_resource_monitor:", expr:"^([0-9.]+)", insloc:location);
+    base:"cpe:/a:solarwinds:storage_resource_monitor:", expr:"^([0-9.]+)", insloc:location, regService:"smb-login", regPort:0);
 
     exit(0);
   }

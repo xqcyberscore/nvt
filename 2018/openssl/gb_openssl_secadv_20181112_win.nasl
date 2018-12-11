@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_secadv_20181112_win.nasl 12480 2018-11-22 08:23:06Z cfischer $
+# $Id: gb_openssl_secadv_20181112_win.nasl 12744 2018-12-10 13:48:33Z cfischer $
 #
 # OpenSSL: Microarchitecture timing vulnerability in ECC scalar multiplication (CVE-2018-5407) (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108484");
-  script_version("$Revision: 12480 $");
+  script_version("$Revision: 12744 $");
   script_cve_id("CVE-2018-5407");
   script_bugtraq_id(105897);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-22 09:23:06 +0100 (Thu, 22 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-10 14:48:33 +0100 (Mon, 10 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-11-22 07:48:19 +0100 (Thu, 22 Nov 2018)");
   script_name("OpenSSL: Microarchitecture timing vulnerability in ECC scalar multiplication (CVE-2018-5407) (Windows)");
   script_category(ACT_GATHER_INFO);
@@ -69,7 +69,7 @@ if(description)
 
   script_tag(name:"solution", value:"Upgrade OpenSSL to version 1.0.2q, 1.1.0i or later. See the references for more details.");
 
-  script_tag(name:"qod_type", value:"remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);

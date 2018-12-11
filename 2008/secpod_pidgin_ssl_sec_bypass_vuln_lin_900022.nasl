@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_pidgin_ssl_sec_bypass_vuln_lin_900022.nasl 12459 2018-11-21 10:42:58Z cfischer $
+# $Id: secpod_pidgin_ssl_sec_bypass_vuln_lin_900022.nasl 12742 2018-12-10 13:10:25Z cfischer $
 #
 # Pidgin NSS plugin SSL Certificate Validation Security Bypass Vulnerability (Linux)
 #
@@ -24,23 +24,24 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ##############################################################################
 
+CPE = "cpe:/a:pidgin:pidgin";
+
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900022");
-  script_version("$Revision: 12459 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-21 11:42:58 +0100 (Wed, 21 Nov 2018) $");
-  script_tag(name:"creation_date", value:"2008-08-22 10:29:01 +0200 (Fri, 22 Aug 2008)");
+  script_version("$Revision: 12742 $");
   script_cve_id("CVE-2008-3532");
   script_bugtraq_id(30553);
   script_copyright("Copyright (C) 2008 SecPod");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-10 14:10:25 +0100 (Mon, 10 Dec 2018) $");
+  script_tag(name:"creation_date", value:"2008-08-22 10:29:01 +0200 (Fri, 22 Aug 2008)");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_name("Pidgin NSS plugin SSL Certificate Validation Security Bypass Vulnerability (Linux)");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/success");
-  script_exclude_keys("ssh/no_linux_shell");
+  script_dependencies("secpod_pidgin_detect_lin.nasl");
+  script_mandatory_keys("Pidgin/Lin/Ver");
 
   script_xref(name:"URL", value:"http://developer.pidgin.im/ticket/6500");
   script_xref(name:"URL", value:"http://developer.pidgin.im/attachment/ticket/6500/nss-cert-verify.patch");
@@ -63,34 +64,19 @@ if(description)
   exit(0);
 }
 
-include("ssh_func.inc");
+include("host_details.inc");
 include("version_func.inc");
 
-foreach item (get_kb_list("ssh/login/rpms")) {
-  if("pidgin~" >< item) {
-    if(egrep(pattern:"^pidgin~([01]\..*|2\.([0-3](\..*)?|4(\.[0-3])?))($|[^.0-9])", string:item)) {
-      report = report_fixed_ver(installed_version:item, fixed_version:"See references");
-      security_message(port:0, data:report );
-      exit(0);
-    }
-  }
+if( ! infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE ) )
+  exit( 0 );
+
+vers = infos['version'];
+path = infos['location'];
+
+if( version_is_less_equal( version:vers, test_version:"2.4.3" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"See references", install_path:path );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
 
-sock = ssh_login_or_reuse_connection();
-if(!sock){
-  exit(0);
-}
-
-pidginVer = ssh_cmd(socket:sock, cmd:"pidgin --version");
-ssh_close_connection();
-
-if(!pidginVer){
-  exit(0);
-}
-
-if(egrep(pattern:"Pidgin ([01]\..*|2\.([0-3](\..*)?|4(\.[0-3])?))($|[^.0-9])", string:pidginVer)){
-  report = report_fixed_ver(installed_version:pidginVer, fixed_version:"See references");
-  security_message(port:0, data:report);
-}
-
-exit(0);
+exit( 99 );

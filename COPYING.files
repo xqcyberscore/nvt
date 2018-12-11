@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Mon, 10 Dec 2018 14:11:14 +0100
+# Automatically created on:  Tue, 11 Dec 2018 12:06:19 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -38941,6 +38941,7 @@
 2018/centos/gb_CESA-2018_3409_java_centos6.nasl: GPLv2+
 2018/centos/gb_CESA-2018_3522_spice-server_centos6.nasl: GPLv2+
 2018/centos/gb_CESA-2018_3531_thunderbird_centos6.nasl: GPLv2+
+2018/centos/gb_CESA-2018_3760_ghostscript_centos6.nasl: GPLv2+
 2018/centos/gb_fedora_2018_46f3f13c68_libgxps_fc27.nasl: GPLv2+
 2018/centos/gb_fedora_2018_5392896132_dhcp_fc26.nasl: GPLv2+
 2018/centos/gb_fedora_2018_98684f429b_xen_fc27.nasl: GPLv2+
@@ -39759,6 +39760,7 @@
 2018/debian/deb_dla_1601.nasl: GPLv2+
 2018/debian/deb_dla_1602.nasl: GPLv2+
 2018/debian/deb_dla_1603.nasl: GPLv2+
+2018/debian/deb_dla_1604.nasl: GPLv2+
 2018/debian/deb_dla_547.nasl: GPLv2+
 2018/debian/deb_dla_613.nasl: GPLv2+
 2018/debian/deb_dla_693.nasl: GPLv2+
@@ -40748,6 +40750,7 @@
 2018/fedora/gb_fedora_2018_8e27ad96ed_glibc_fc26.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_8e4d871867_samba_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_8ed5eff2c0_kernel_fc26.nasl: GPLv2+
+2018/fedora/gb_fedora_2018_8f0d2429d3_bird_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_8f4b3fa844_sharutils_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_8f5a50e4d7_slurm_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_8fb4a6185e_firefox_fc27.nasl: GPLv2+
@@ -42674,6 +42677,28 @@
 2018/opensuse/gb_suse_2018_3947_1.nasl: GPLv2+
 2018/opensuse/gb_suse_2018_3948_1.nasl: GPLv2+
 2018/opensuse/gb_suse_2018_3951_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_3998_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4002_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4003_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4004_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4005_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4007_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4029_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4030_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4031_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4032_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4034_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4038_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4041_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4042_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4043_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4046_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4050_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4051_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4053_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4054_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4055_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4056_1.nasl: GPLv2+
 2018/openvpn/gb_openvpn_win_dos_vuln.nasl: GPLv2+
 2018/openwebanalytics/gb_open_web_analytics_php_obj_inj_vuln.nasl: GPLv2+
 2018/openxchange/gb_open_xchange_appsuite_content_spoof_vuln_june18.nasl: GPLv2+
@@ -42842,10 +42867,14 @@
 2018/php/gb_php_fpm_loop_dos_vuln_win.nasl: GPLv2+
 2018/php/gb_php_http_parsing_unspecified_vuln_lin.nasl: GPLv2+
 2018/php/gb_php_http_parsing_unspecified_vuln_win.nasl: GPLv2+
+2018/php/gb_php_imap_mail_dos_vuln_lin.nasl: GPLv2+
+2018/php/gb_php_imap_mail_dos_vuln_win.nasl: GPLv2+
 2018/php/gb_php_integer_overflow_vuln_aug18_lin.nasl: GPLv2+
 2018/php/gb_php_integer_overflow_vuln_aug18_win.nasl: GPLv2+
 2018/php/gb_php_mult_heap_overflow_vuln_lin.nasl: GPLv2+
 2018/php/gb_php_mult_heap_overflow_vuln_win.nasl: GPLv2+
+2018/php/gb_php_mult_vuln_dec18_lin.nasl: GPLv2+
+2018/php/gb_php_mult_vuln_dec18_win.nasl: GPLv2+
 2018/php/gb_php_mult_vuln_may18_lin.nasl: GPLv2+
 2018/php/gb_php_mult_vuln_may18_win.nasl: GPLv2+
 2018/php/gb_php_out_of_bounds_access_vuln_lin.nasl: GPLv2+
@@ -43502,6 +43531,7 @@
 2018/ubuntu/gb_ubuntu_USN_3829_1.nasl: GPLv2+
 2018/ubuntu/gb_ubuntu_USN_3830_1.nasl: GPLv2+
 2018/ubuntu/gb_ubuntu_USN_3831_1.nasl: GPLv2+
+2018/ubuntu/gb_ubuntu_USN_3831_2.nasl: GPLv2+
 2018/ubuntu/gb_ubuntu_USN_3832_1.nasl: GPLv2+
 2018/ubuntu/gb_ubuntu_USN_3833_1.nasl: GPLv2+
 2018/ubuntu/gb_ubuntu_USN_3834_1.nasl: GPLv2+
@@ -43509,6 +43539,9 @@
 2018/ubuntu/gb_ubuntu_USN_3836_1.nasl: GPLv2+
 2018/ubuntu/gb_ubuntu_USN_3836_2.nasl: GPLv2+
 2018/ubuntu/gb_ubuntu_USN_3837_1.nasl: GPLv2+
+2018/ubuntu/gb_ubuntu_USN_3838_1.nasl: GPLv2+
+2018/ubuntu/gb_ubuntu_USN_3839_1.nasl: GPLv2+
+2018/ubuntu/gb_ubuntu_USN_3840_1.nasl: GPLv2+
 2018/universal_media_server/gb_universal_media_server_xxe_vuln.nasl: GPLv2+
 2018/vbulletin/gb_vbulletin_543_open_redirect_vuln.nasl: GPLv2+
 2018/vbulletin/gb_vbulletin_url_param_open_redirect_vuln.nasl: GPLv2+
@@ -45246,13 +45279,19 @@ gb_snortreport_detect.nasl: GPLv2+
 gb_soda_pdf_detect_win.nasl: GPLv2+
 gb_softnas_detect.nasl: GPLv2+
 gb_solarwinds_acm_detect_win.nasl: GPLv2+
+gb_solarwinds_administration_service_detect_win.nasl: GPLv2+
+gb_solarwinds_basic_log_manager_detect_win.nasl: GPLv2+
+gb_solarwinds_collector_detect_win.nasl: GPLv2+
+gb_solarwinds_cortex_orion_integration_detect_win.nasl: GPLv2+
 gb_solarwinds_fsm_detect.nasl: GPLv2+
+gb_solarwinds_information_service_detect_win.nasl: GPLv2+
 gb_solarwinds_ipam_detect_win.nasl: GPLv2+
 gb_solarwinds_log_event_manager_version.nasl: GPLv2+
 gb_solarwinds_log_event_manager_web_detect.nasl: GPLv2+
 gb_solarwinds_nam_detect_win.nasl: GPLv2+
 gb_solarwinds_nom_detect_win.nasl: GPLv2+
 gb_solarwinds_olm_detect_win.nasl: GPLv2+
+gb_solarwinds_orion_core_service_detect_win.nasl: GPLv2+
 gb_solarwinds_orion_ncm_detect_win.nasl: GPLv2+
 gb_solarwinds_orion_npm_detect_win.nasl: GPLv2+
 gb_solarwinds_orion_nta_detect_win.nasl: GPLv2+
@@ -45260,7 +45299,9 @@ gb_solarwinds_sam_detect_win.nasl: GPLv2+
 gb_solarwinds_scm_detect_win.nasl: GPLv2+
 gb_solarwinds_srm_detect_win.nasl: GPLv2+
 gb_solarwinds_storage_resource_monitor_detect.nasl: GPLv2+
+gb_solarwinds_tftp_server_detect_win.nasl: GPLv2+
 gb_solarwinds_udt_detect_win.nasl: GPLv2+
+gb_solarwinds_virtual_infrastructure_monitor_detect_win.nasl: GPLv2+
 gb_solarwinds_virtualization_manager_webdetect.nasl: GPLv2+
 gb_solarwinds_vman_detect_win.nasl: GPLv2+
 gb_solarwinds_vnqm_detect_win.nasl: GPLv2+

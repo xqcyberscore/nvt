@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_terramaster_mult_vuln.nasl 12646 2018-12-04 10:49:34Z ckuersteiner $
+# $Id: gb_terramaster_mult_vuln.nasl 12744 2018-12-10 13:48:33Z cfischer $
 #
 # Terramaster TOS <= 3.1.03 Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:noontec:terramaster";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141751");
-  script_version("$Revision: 12646 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-04 11:49:34 +0100 (Tue, 04 Dec 2018) $");
+  script_version("$Revision: 12744 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-10 14:48:33 +0100 (Mon, 10 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-12-04 17:22:47 +0700 (Tue, 04 Dec 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -55,7 +55,7 @@ if (description)
   script_dependencies("gb_terramaster_nas_detect.nasl");
   script_mandatory_keys("terramaster_nas/detected");
 
-  script_tag(name:"summary", value:"Terramaster TOS is prone to multiple vulnerabilites.");
+  script_tag(name:"summary", value:"Terramaster TOS is prone to multiple vulnerabilities.");
 
   script_tag(name:"vuldetect", value:"Sends a crafted HTTP POST request and checks the response.");
 

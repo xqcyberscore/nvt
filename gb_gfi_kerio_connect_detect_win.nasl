@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gfi_kerio_connect_detect_win.nasl 12695 2018-12-06 15:51:07Z mmartin $
+# $Id: gb_gfi_kerio_connect_detect_win.nasl 12753 2018-12-11 08:48:01Z mmartin $
 #
 # GFI Kerio Connect Version Detection (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107400");
-  script_version("$Revision: 12695 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-06 16:51:07 +0100 (Thu, 06 Dec 2018) $");
+  script_version("$Revision: 12753 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-11 09:48:01 +0100 (Tue, 11 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-12-06 16:50:35 +0100 (Thu, 06 Dec 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -90,7 +90,7 @@ foreach key (key_list) {
     set_kb_item(name:"kerio/connect/win/ver", value:version);
 
     register_and_report_cpe(app:appName, ver:version, concluded:concluded,
-    base:"cpe:/a:kerio:connect:", expr:"^([0-9.]+)", insloc:location);
+    base:"cpe:/a:kerio:connect:", expr:"^([0-9.]+)", insloc:location, regService:"smb-login", regPort:0);
 
     exit(0);
   }

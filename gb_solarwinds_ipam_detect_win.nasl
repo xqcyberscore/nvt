@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_solarwinds_ipam_detect_win.nasl 12714 2018-12-08 09:58:02Z mmartin $
+# $Id: gb_solarwinds_ipam_detect_win.nasl 12753 2018-12-11 08:48:01Z mmartin $
 #
 # SolarWinds IP Address Manager Version Detection (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107403");
-  script_version("$Revision: 12714 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-08 10:58:02 +0100 (Sat, 08 Dec 2018) $");
+  script_version("$Revision: 12753 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-11 09:48:01 +0100 (Tue, 11 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-12-07 16:38:42 +0100 (Fri, 07 Dec 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -87,7 +87,7 @@ foreach key (key_list) {
     set_kb_item(name:"solarwinds/ipam/win/ver", value:version);
 
     register_and_report_cpe(app:appName, ver:version, concluded:concluded,
-    base:"cpe:/a:solarwinds:ip_address_manager:", expr:"^([0-9.]+)", insloc:location);
+    base:"cpe:/a:solarwinds:ip_address_manager:", expr:"^([0-9.]+)", insloc:location, regService:"smb-login", regPort:0);
 
     exit(0);
   }

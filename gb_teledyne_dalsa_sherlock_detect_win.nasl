@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_teledyne_dalsa_sherlock_detect_win.nasl 12549 2018-11-27 13:45:56Z mmartin $
+# $Id: gb_teledyne_dalsa_sherlock_detect_win.nasl 12753 2018-12-11 08:48:01Z mmartin $
 #
 # Teledyne DALSA Sherlock Machine Vision Version Detection (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107385");
-  script_version("$Revision: 12549 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-27 14:45:56 +0100 (Tue, 27 Nov 2018) $");
+  script_version("$Revision: 12753 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-11 09:48:01 +0100 (Tue, 11 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-11-27 14:45:01 +0100 (Tue, 27 Nov 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -99,7 +99,7 @@ foreach key (key_list) {
   set_kb_item(name:"teledyne_dalsa/sherlock_machine_vision/win/detected", value:TRUE);
 
   register_and_report_cpe(app:appName , ver:version, concluded:concluded,
-                          base:cpe, expr:"^([0-9.]+)", insloc:location);
+                          base:cpe, expr:"^([0-9.]+)", insloc:location, regService:"smb-login", regPort:0);
   }
 }
 exit(0);

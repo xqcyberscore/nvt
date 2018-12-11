@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dameware_remote_support_detect_win.nasl 12536 2018-11-26 16:23:29Z mmartin $
+# $Id: gb_dameware_remote_support_detect_win.nasl 12753 2018-12-11 08:48:01Z mmartin $
 #
 # DameWare Remote Support Version Detection (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107383");
-  script_version("$Revision: 12536 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-26 17:23:29 +0100 (Mon, 26 Nov 2018) $");
+  script_version("$Revision: 12753 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-11 09:48:01 +0100 (Tue, 11 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-11-26 17:23:16 +0100 (Mon, 26 Nov 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -90,7 +90,7 @@ foreach key (key_list) {
   set_kb_item(name:"dameware/remote_support/win/ver", value:version);
 
   register_and_report_cpe(app:"DameWare Remote Support" , ver:version, concluded:concluded,
-                          base:"cpe:/a:dameware:remote_support:", expr:"^([0-9.]+)", insloc:location);
+                          base:"cpe:/a:dameware:remote_support:", expr:"^([0-9.]+)", insloc:location, regService:"smb-login", regPort:0);
   exit(0);
   }
 }

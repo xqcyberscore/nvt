@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qnap_qts_nas-201811-29.nasl 12617 2018-12-03 09:36:48Z cfischer $
+# $Id: gb_qnap_qts_nas-201811-29.nasl 12744 2018-12-10 13:48:33Z cfischer $
 #
-# QNAP QTS < 4.2.6 build 20180829 XSS Vulnerabilitiy
+# QNAP QTS < 4.2.6 build 20180829 XSS Vulnerability
 #
 # Authors:
 # Christian Fischer <christian.fischer@greenbone.net>
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108493");
-  script_version("$Revision: 12617 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-03 10:36:48 +0100 (Mon, 03 Dec 2018) $");
+  script_version("$Revision: 12744 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-10 14:48:33 +0100 (Mon, 10 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-12-03 10:27:18 +0100 (Mon, 03 Dec 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -40,7 +40,7 @@ if(description)
 
   script_cve_id("CVE-2018-0716");
 
-  script_name("QNAP QTS < 4.2.6 build 20180829 XSS Vulnerabilitiy");
+  script_name("QNAP QTS < 4.2.6 build 20180829 XSS Vulnerability");
 
   script_category(ACT_GATHER_INFO);
 

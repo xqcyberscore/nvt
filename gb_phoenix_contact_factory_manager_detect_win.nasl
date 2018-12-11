@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phoenix_contact_factory_manager_detect_win.nasl 12640 2018-12-04 09:10:04Z mmartin $
+# $Id: gb_phoenix_contact_factory_manager_detect_win.nasl 12753 2018-12-11 08:48:01Z mmartin $
 #
 # PHOENIX CONTACT Factory Manager Version Detection (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107387");
-  script_version("$Revision: 12640 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-04 10:10:04 +0100 (Tue, 04 Dec 2018) $");
+  script_version("$Revision: 12753 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-11 09:48:01 +0100 (Tue, 11 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-12-04 10:06:14 +0100 (Tue, 04 Dec 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -103,7 +103,7 @@ foreach key (key_list) {
   set_kb_item(name:"phoenixcontact/factory_manager/win/detected", value:TRUE);
   set_kb_item(name:"phoenixcontact/factory_manager/win/ver", value:version);
 
-  register_and_report_cpe(app:"Phoenix Contact " +appName, ver:version, concluded:concluded,base:"cpe:/a:phoenixcontact-software:factory_manager:", expr:"^([0-9.]+)", insloc:location);
+  register_and_report_cpe(app:"Phoenix Contact " +appName, ver:version, concluded:concluded,base:"cpe:/a:phoenixcontact-software:factory_manager:", expr:"^([0-9.]+)", insloc:location, regService:"smb-login", regPort:0);
   exit(0);
 }}
 exit(0);

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_webex_productivity_tools_detect_win.nasl 12664 2018-12-05 12:25:39Z mmartin $
+# $Id: gb_cisco_webex_productivity_tools_detect_win.nasl 12753 2018-12-11 08:48:01Z mmartin $
 #
 # Cisco WebEx Productivity Tools Version Detection (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107375");
-  script_version("$Revision: 12664 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-05 13:25:39 +0100 (Wed, 05 Dec 2018) $");
+  script_version("$Revision: 12753 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-11 09:48:01 +0100 (Tue, 11 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-12-05 13:13:22 +0100 (Wed, 05 Dec 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -94,7 +94,7 @@ foreach key (key_list) {
     set_kb_item(name:"cisco/webex_productivity_tools/win/ver", value:version);
 
     register_and_report_cpe(app:appName, ver:version, concluded:concluded,
-    base:"cpe:/a:cisco:webex_productivity_tools:", expr:"^([0-9.]+)", insloc:location);
+    base:"cpe:/a:cisco:webex_productivity_tools:", expr:"^([0-9.]+)", insloc:location, regService:"smb-login", regPort:0);
 
     exit(0);
   }

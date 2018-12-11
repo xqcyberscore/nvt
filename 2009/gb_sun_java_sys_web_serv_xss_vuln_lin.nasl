@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sun_java_sys_web_serv_xss_vuln_lin.nasl 12729 2018-12-10 07:52:19Z cfischer $
+# $Id: gb_sun_java_sys_web_serv_xss_vuln_lin.nasl 12746 2018-12-10 15:26:37Z cfischer $
 #
 # Sun Java System Web Server XSS Vulnerability (Linux)
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:sun:java_system_web_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800812");
-  script_version("$Revision: 12729 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-10 08:52:19 +0100 (Mon, 10 Dec 2018) $");
+  script_version("$Revision: 12746 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-10 16:26:37 +0100 (Mon, 10 Dec 2018) $");
   script_tag(name:"creation_date", value:"2009-06-19 09:45:44 +0200 (Fri, 19 Jun 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -40,7 +40,6 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("gather-package-list.nasl");
   script_dependencies("gb_sun_one_java_sys_web_serv_detect_lin.nasl");
   script_mandatory_keys("Sun/JavaSysWebServ/Lin/Ver");
 

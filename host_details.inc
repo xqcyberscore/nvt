@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: host_details.inc 12700 2018-12-07 08:18:55Z ckuersteiner $
+# $Id: host_details.inc 12751 2018-12-11 07:48:20Z cfischer $
 #
 # Centralized and organized host information base
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 12700 $
+# $Revision: 12751 $
 #
 ###############################################################################
 
@@ -849,7 +849,7 @@ function get_app_location( cpe, port, nofork, skip_port, default ) {
     return;
   }
 
-  if( ! port && ! nofork && ! skip_port )
+  if( isnull( port ) && ! nofork && ! skip_port )
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#get_app_location" );
 
   return get_app_details( cpe:cpe, type:"location", port:port, nofork:nofork, default:default );
