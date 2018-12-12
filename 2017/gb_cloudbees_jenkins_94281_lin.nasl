@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cloudbees_jenkins_94281_lin.nasl 11919 2018-10-16 09:49:19Z mmartin $
+# $Id: gb_cloudbees_jenkins_94281_lin.nasl 12761 2018-12-11 14:32:20Z cfischer $
 #
 # CloudBees Jenkins 'Java Deserialization' Remote Code Execution Vulnerability (Linux)
 #
@@ -24,17 +24,17 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/a:cloudbees:jenkins";
+CPE = "cpe:/a:jenkins:jenkins";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108063");
-  script_version("$Revision: 11919 $");
+  script_version("$Revision: 12761 $");
   script_cve_id("CVE-2016-9299");
   script_bugtraq_id(94281);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-16 11:49:19 +0200 (Tue, 16 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-11 15:32:20 +0100 (Tue, 11 Dec 2018) $");
   script_tag(name:"creation_date", value:"2017-01-30 13:00:00 +0100 (Mon, 30 Jan 2017)");
   script_name("CloudBees Jenkins 'Java Deserialization' Remote Code Execution Vulnerability (Linux)");
   script_category(ACT_GATHER_INFO);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cloudbees_jenkins_mult_xss_vuln_aug16_win.nasl 12313 2018-11-12 08:53:51Z asteins $
+# $Id: gb_cloudbees_jenkins_mult_xss_vuln_aug16_win.nasl 12761 2018-12-11 14:32:20Z cfischer $
 #
 # Jenkins Multiple Cross Site Scripting Vulnerabilities August16 (Windows)
 #
@@ -24,17 +24,17 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/a:cloudbees:jenkins";
+CPE = "cpe:/a:jenkins:jenkins";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808275");
-  script_version("$Revision: 12313 $");
+  script_version("$Revision: 12761 $");
   script_cve_id("CVE-2012-0324", "CVE-2012-0325");
   script_bugtraq_id(52384);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-11 15:32:20 +0100 (Tue, 11 Dec 2018) $");
   script_tag(name:"creation_date", value:"2016-08-04 13:00:05 +0530 (Thu, 04 Aug 2016)");
   script_name("Jenkins Multiple Cross Site Scripting Vulnerabilities August16 (Windows)");
 

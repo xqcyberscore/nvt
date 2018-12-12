@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jenkins_20171214_2_win.nasl 12120 2018-10-26 11:13:20Z mmartin $
+# $Id: gb_jenkins_20171214_2_win.nasl 12761 2018-12-11 14:32:20Z cfischer $
 #
 # Jenkins CSRF Protection Delay Vulnerability (Windows)
 #
@@ -24,18 +24,18 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/a:cloudbees:jenkins";
+CPE = "cpe:/a:jenkins:jenkins";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112197");
-  script_version("$Revision: 12120 $");
+  script_version("$Revision: 12761 $");
 
   script_cve_id("CVE-2017-1000504");
 
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-11 15:32:20 +0100 (Tue, 11 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-01-29 10:05:00 +0100 (Mon, 29 Jan 2018)");
   script_name("Jenkins CSRF Protection Delay Vulnerability (Windows)");
   script_category(ACT_GATHER_INFO);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jenkins_20171011_lin.nasl 11863 2018-10-12 09:42:02Z mmartin $
+# $Id: gb_jenkins_20171011_lin.nasl 12761 2018-12-11 14:32:20Z cfischer $
 #
 # Jenkins Multiple Vulnerabilities Oct 17 (Linux)
 #
@@ -24,19 +24,19 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/a:cloudbees:jenkins";
+CPE = "cpe:/a:jenkins:jenkins";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112106");
-  script_version("$Revision: 11863 $");
+  script_version("$Revision: 12761 $");
 
   script_cve_id("CVE-2017-1000393", "CVE-2017-1000394", "CVE-2017-1000395", "CVE-2017-1000396",
 "CVE-2017-1000398", "CVE-2017-1000399", "CVE-2017-1000400", "CVE-2017-1000401", "CVE-2012-6153");
 
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-11 15:32:20 +0100 (Tue, 11 Dec 2018) $");
   script_tag(name:"creation_date", value:"2017-11-07 10:05:00 +0100 (Tue, 07 Nov 2017)");
   script_name("Jenkins Multiple Vulnerabilities Oct 17 (Linux)");
   script_category(ACT_GATHER_INFO);

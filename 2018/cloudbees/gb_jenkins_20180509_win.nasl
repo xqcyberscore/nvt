@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jenkins_20180509_win.nasl 12120 2018-10-26 11:13:20Z mmartin $
+# $Id: gb_jenkins_20180509_win.nasl 12761 2018-12-11 14:32:20Z cfischer $
 #
 # Jenkins < 2.121 and < 2.107.3 LTS Multiple Vulnerabilities (Windows)
 #
@@ -24,16 +24,16 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/a:cloudbees:jenkins";
+CPE = "cpe:/a:jenkins:jenkins";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112298");
-  script_version("$Revision: 12120 $");
+  script_version("$Revision: 12761 $");
   script_cve_id("CVE-2018-1000192", "CVE-2018-1000193", "CVE-2018-1000194", "CVE-2018-1000195");
   script_tag(name:"cvss_base", value:"5.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-11 15:32:20 +0100 (Tue, 11 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-06-07 12:00:00 +0200 (Thu, 07 Jun 2018)");
   script_name("Jenkins < 2.121 and < 2.107.3 LTS Multiple Vulnerabilities (Windows)");
   script_category(ACT_GATHER_INFO);

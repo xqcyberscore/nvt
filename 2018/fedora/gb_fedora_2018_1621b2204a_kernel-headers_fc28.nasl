@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_1621b2204a_kernel-headers_fc28.nasl 12661 2018-12-05 10:53:21Z santu $
+# $Id: gb_fedora_2018_1621b2204a_kernel-headers_fc28.nasl 12767 2018-12-12 08:39:09Z asteins $
 #
 # Fedora Update for kernel-headers FEDORA-2018-1621b2204a
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875311");
-  script_version("$Revision: 12661 $");
+  script_version("$Revision: 12767 $");
   script_cve_id("CVE-2018-18710");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-05 11:53:21 +0100 (Wed, 05 Dec 2018) $");
+  script_tag(name:"cvss_base", value:"2.1");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-12 09:39:09 +0100 (Wed, 12 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-12-04 08:24:05 +0100 (Tue, 04 Dec 2018)");
   script_name("Fedora Update for kernel-headers FEDORA-2018-1621b2204a");
   script_category(ACT_GATHER_INFO);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tdesktop_info_disclosure_vuln_win.nasl 12477 2018-11-22 07:50:21Z cfischer $
+# $Id: gb_tdesktop_info_disclosure_vuln_win.nasl 12767 2018-12-12 08:39:09Z asteins $
 #
 # Telegram Desktop Information Disclosure Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:telegram:tdesktop";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814310");
-  script_version("$Revision: 12477 $");
+  script_version("$Revision: 12767 $");
   script_cve_id("CVE-2018-17780");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-22 08:50:21 +0100 (Thu, 22 Nov 2018) $");
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-12 09:39:09 +0100 (Wed, 12 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-11-09 17:30:33 +0530 (Fri, 09 Nov 2018)");
   script_name("Telegram Desktop Information Disclosure Vulnerability (Windows)");
 

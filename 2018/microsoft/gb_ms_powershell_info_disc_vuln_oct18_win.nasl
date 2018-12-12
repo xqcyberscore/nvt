@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_powershell_info_disc_vuln_oct18_win.nasl 11902 2018-10-15 09:26:53Z santu $
+# $Id: gb_ms_powershell_info_disc_vuln_oct18_win.nasl 12767 2018-12-12 08:39:09Z asteins $
 #
 # Microsoft PowerShell Core Information Disclosure Vulnerability Oct18 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:microsoft:powershell";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814090");
-  script_version("$Revision: 11902 $");
+  script_version("$Revision: 12767 $");
   script_cve_id("CVE-2018-8292");
-  script_tag(name:"cvss_base", value:"2.1");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 11:26:53 +0200 (Mon, 15 Oct 2018) $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-12 09:39:09 +0100 (Wed, 12 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-10-11 11:56:04 +0530 (Thu, 11 Oct 2018)");
   script_name("Microsoft PowerShell Core Information Disclosure Vulnerability Oct18 (Windows)");
 

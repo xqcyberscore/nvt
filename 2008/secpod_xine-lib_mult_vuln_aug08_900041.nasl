@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_xine-lib_mult_vuln_aug08_900041.nasl 12743 2018-12-10 13:27:06Z cfischer $
+# $Id: secpod_xine-lib_mult_vuln_aug08_900041.nasl 12767 2018-12-12 08:39:09Z asteins $
 # Description: xine-lib Multiple Vulnerabilities (Aug-08)
 #
 # Authors:
@@ -26,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900041");
-  script_version("$Revision: 12743 $");
+  script_version("$Revision: 12767 $");
   script_cve_id("CVE-2008-5236");
-  script_tag(name:"cvss_base", value:"5.1");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-10 14:27:06 +0100 (Mon, 10 Dec 2018) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-12 09:39:09 +0100 (Wed, 12 Dec 2018) $");
   script_tag(name:"creation_date", value:"2008-08-27 11:53:45 +0200 (Wed, 27 Aug 2008)");
   script_category(ACT_GATHER_INFO);
   script_family("Buffer overflow");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mfsa_2018-15_2018-17_win.nasl 11544 2018-09-21 20:30:26Z cfischer $
+# $Id: gb_mozilla_firefox_mfsa_2018-15_2018-17_win.nasl 12767 2018-12-12 08:39:09Z asteins $
 #
 # Mozilla Firefox Security Updates(mfsa_2018-15_2018-17)-Windows
 #
@@ -29,15 +29,15 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813619");
-  script_version("$Revision: 11544 $");
+  script_version("$Revision: 12767 $");
   script_cve_id("CVE-2018-12359", "CVE-2018-12360", "CVE-2018-5156", "CVE-2018-12370",
                 "CVE-2018-5186", "CVE-2018-5187", "CVE-2018-5188", "CVE-2018-12361",
                 "CVE-2018-12358", "CVE-2018-12362", "CVE-2018-12363", "CVE-2018-12364",
                 "CVE-2018-12365", "CVE-2018-12366", "CVE-2018-12367", "CVE-2018-12368",
                 "CVE-2018-12369", "CVE-2018-12361");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 22:30:26 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-12 09:39:09 +0100 (Wed, 12 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-06-27 16:01:13 +0530 (Wed, 27 Jun 2018)");
   script_name("Mozilla Firefox Security Updates(mfsa_2018-15_2018-17)-Windows");
 

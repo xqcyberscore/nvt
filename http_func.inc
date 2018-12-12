@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: http_func.inc 11948 2018-10-18 06:33:54Z cfischer $
+# $Id: http_func.inc 12757 2018-12-11 12:22:00Z cfischer $
 #
 # Methods to handle HTTP
 #
@@ -24,9 +24,14 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 11948 $
+# $Revision: 12757 $
 #
 ###############################################################################
+
+# Enables to include the OID of the VT within the HTTP user agent of get_http_user_agent()
+# for debugging purposes on the target / targets logfiles.
+global_var _http_ua_include_oid;
+_http_ua_include_oid = FALSE;
 
 # @brief Returns a HTTP User Agent string which can be used by VTs within the
 #        User-Agent: header of HTTP requests.
@@ -57,6 +62,10 @@ function get_http_user_agent() {
       ua = default;
     }
   }
+
+  # nb: See description of the variable for the purpose
+  if( _http_ua_include_oid )
+    ua = str_replace( string:ua, find:")", replace:") (OID:" + get_script_oid() + ")", count:1 );
 
   return ua;
 }

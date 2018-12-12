@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jenkins_20170426_win.nasl 11977 2018-10-19 07:28:56Z mmartin $
+# $Id: gb_jenkins_20170426_win.nasl 12761 2018-12-11 14:32:20Z cfischer $
 #
 # Jenkins Security Advisory Apr17 - Multiple Vulnerabilities (Windows)
 #
@@ -24,13 +24,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/a:cloudbees:jenkins";
+CPE = "cpe:/a:jenkins:jenkins";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107157");
-  script_version("$Revision: 11977 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 12761 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-11 15:32:20 +0100 (Tue, 11 Dec 2018) $");
   script_tag(name:"creation_date", value:"2017-04-28 12:09:09 +0200 (Fri, 28 Apr 2017)");
   script_cve_id("CVE-2017-1000353", "CVE-2017-1000354", "CVE-2017-1000355", "CVE-2017-1000356");
   script_bugtraq_id(98056);
@@ -62,7 +62,7 @@ if(description)
 
   - impersonate any other Jenkins user on the same instance.
 
-  - crash the Java process. ");
+  - crash the Java process.");
 
   script_tag(name:"affected", value:"The following products are vulnerable:
     Jenkins LTS 2.46.1 and prior, Jenkins 2.56 and prior.");

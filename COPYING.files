@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Tue, 11 Dec 2018 12:06:19 +0100
+# Automatically created on:  Wed, 12 Dec 2018 10:14:39 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -38971,6 +38971,10 @@
 2018/cloudbees/gb_jenkins_20180718_win.nasl: GPLv2+
 2018/cloudbees/gb_jenkins_20180815_lin.nasl: GPLv2+
 2018/cloudbees/gb_jenkins_20180815_win.nasl: GPLv2+
+2018/cloudbees/gb_jenkins_20181010_lin.nasl: GPLv2+
+2018/cloudbees/gb_jenkins_20181010_win.nasl: GPLv2+
+2018/cloudbees/gb_jenkins_20181215_lin.nasl: GPLv2+
+2018/cloudbees/gb_jenkins_20181215_win.nasl: GPLv2+
 2018/cloudbees/gb_jenkins_xss_n_info_disc_vuln_apr18_lin.nasl: GPLv2+
 2018/cloudbees/gb_jenkins_xss_n_info_disc_vuln_apr18_win.nasl: GPLv2+
 2018/cmsmadesimple/gb_cms_made_simple_mult_xss_vuln.nasl: GPLv2+
@@ -39260,6 +39264,7 @@
 2018/debian/deb_4350.nasl: GPLv2+
 2018/debian/deb_4351.nasl: GPLv2+
 2018/debian/deb_4352.nasl: GPLv2+
+2018/debian/deb_4353.nasl: GPLv2+
 2018/debian/deb_dla_1000.nasl: GPLv2+
 2018/debian/deb_dla_1001.nasl: GPLv2+
 2018/debian/deb_dla_1002.nasl: GPLv2+
@@ -42903,6 +42908,8 @@
 2018/phpmyadmin/gb_phpmyadmin_csrf_vuln_PMASA-2018-2.nasl: GPLv2+
 2018/phpmyadmin/gb_phpmyadmin_file_incl_vuln_PMASA-2018-4_lin.nasl: GPLv2+
 2018/phpmyadmin/gb_phpmyadmin_file_incl_vuln_PMASA-2018-4_win.nasl: GPLv2+
+2018/phpmyadmin/gb_phpmyadmin_mult_vuln_PMASA-2018-6_8_lin.nasl: GPLv2+
+2018/phpmyadmin/gb_phpmyadmin_mult_vuln_PMASA-2018-6_8_win.nasl: GPLv2+
 2018/phpmyadmin/gb_phpmyadmin_security_bypass_vuln_PMASA-2017-8.nasl: GPLv2+
 2018/phpmyadmin/gb_phpmyadmin_xss_vuln_feb18_lin.nasl: GPLv2+
 2018/phpmyadmin/gb_phpmyadmin_xss_vuln_feb18_win.nasl: GPLv2+
@@ -42910,6 +42917,8 @@
 2018/phpmyadmin/gb_phpmyadmin_xss_vuln_PMASA-2018-3_win.nasl: GPLv2+
 2018/phpmyadmin/gb_phpmyadmin_xss_vuln_PMASA-2018-5_lin.nasl: GPLv2+
 2018/phpmyadmin/gb_phpmyadmin_xss_vuln_PMASA-2018-5_win.nasl: GPLv2+
+2018/phpmyadmin/gb_phpmyadmin_xss_vuln_PMASA-2018-7_lin.nasl: GPLv2+
+2018/phpmyadmin/gb_phpmyadmin_xss_vuln_PMASA-2018-7_win.nasl: GPLv2+
 2018/phpmyfaq/gb_phpmyfaq_mult_vuln_sep18.nasl: GPLv2+
 2018/phpunit/gb_phpunit_rce.nasl: GPLv2+
 2018/pidgin/gb_pidgin_code_execution_vuln_win_jul18.nasl: GPLv2+
@@ -45168,6 +45177,8 @@ gb_riverbed_steelhead_http_detect.nasl: GPLv2+
 gb_riverbed_steelhead_ssh_detect.nasl: GPLv2+
 gb_rmi_registry_detect.nasl: GPLv2+
 gb_robo_ftp_client_detect.nasl: GPLv2+
+gb_rockwell_micrologix_consolidation.nasl: GPLv2+
+gb_rockwell_micrologix_ethernetip_detect.nasl: GPLv2+
 gb_rockwell_micrologix_http_detect.nasl: GPLv2+
 gb_ros_detect.nasl: GPLv2+
 gb_rpi_cam_control_detect.nasl: GPLv2+
@@ -45283,20 +45294,25 @@ gb_solarwinds_administration_service_detect_win.nasl: GPLv2+
 gb_solarwinds_basic_log_manager_detect_win.nasl: GPLv2+
 gb_solarwinds_collector_detect_win.nasl: GPLv2+
 gb_solarwinds_cortex_orion_integration_detect_win.nasl: GPLv2+
+gb_solarwinds_dpa_integration_components_detect_win.nasl: GPLv2+
 gb_solarwinds_fsm_detect.nasl: GPLv2+
+gb_solarwinds_highavailability_detect_win.nasl: GPLv2+
 gb_solarwinds_information_service_detect_win.nasl: GPLv2+
 gb_solarwinds_ipam_detect_win.nasl: GPLv2+
 gb_solarwinds_log_event_manager_version.nasl: GPLv2+
 gb_solarwinds_log_event_manager_web_detect.nasl: GPLv2+
+gb_solarwinds_mibs_detect_win.nasl: GPLv2+
 gb_solarwinds_nam_detect_win.nasl: GPLv2+
 gb_solarwinds_nom_detect_win.nasl: GPLv2+
 gb_solarwinds_olm_detect_win.nasl: GPLv2+
 gb_solarwinds_orion_core_service_detect_win.nasl: GPLv2+
 gb_solarwinds_orion_ncm_detect_win.nasl: GPLv2+
+gb_solarwinds_orion_netpath_detect_win.nasl: GPLv2+
 gb_solarwinds_orion_npm_detect_win.nasl: GPLv2+
 gb_solarwinds_orion_nta_detect_win.nasl: GPLv2+
 gb_solarwinds_sam_detect_win.nasl: GPLv2+
 gb_solarwinds_scm_detect_win.nasl: GPLv2+
+gb_solarwinds_sftp_server_detect_win.nasl: GPLv2+
 gb_solarwinds_srm_detect_win.nasl: GPLv2+
 gb_solarwinds_storage_resource_monitor_detect.nasl: GPLv2+
 gb_solarwinds_tftp_server_detect_win.nasl: GPLv2+
@@ -61310,6 +61326,7 @@ gsf/2018/f5/gb_f5_big_ip_K39512927.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K40507733.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K40625021.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K41704442.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K42027747.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K42142782.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K42378447.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K43121447.nasl: GPLv2+
@@ -61942,6 +61959,19 @@ gsf/2018/qnap/gb_qnap_qcenter_nas-201807-10.nasl: GPLv2+
 gsf/2018/quest/gb_netvault_backup_mult_vuln.nasl: GPLv2+
 gsf/2018/quest/gb_quest_kace_sma_mult_vuln.nasl: GPLv2+
 gsf/2018/rainbowfish/gb_pacsone_dir_trav_vuln.nasl: GPLv2+
+gsf/2018/redhat/gb_keycloak_dos_vuln_jul18.nasl: GPLv2+
+gsf/2018/redhat/gb_keycloak_dos_vuln_mar17.nasl: GPLv2+
+gsf/2018/redhat/gb_keycloak_improper_brute_force_detection_vuln.nasl: GPLv2+
+gsf/2018/redhat/gb_keycloak_incorrect_permissions_check_vuln.nasl: GPLv2+
+gsf/2018/redhat/gb_keycloak_invalid_cert_auth_vuln.nasl: GPLv2+
+gsf/2018/redhat/gb_keycloak_mult_vuln_aug17.nasl: GPLv2+
+gsf/2018/redhat/gb_keycloak_mult_vuln_jan17.nasl: GPLv2+
+gsf/2018/redhat/gb_keycloak_mult_vuln_sep14.nasl: GPLv2+
+gsf/2018/redhat/gb_keycloak_open_redirect_vuln.nasl: GPLv2+
+gsf/2018/redhat/gb_keycloak_saml_vuln.nasl: GPLv2+
+gsf/2018/redhat/gb_keycloak_sess_highjack_vuln.nasl: GPLv2+
+gsf/2018/redhat/gb_keycloak_url_spoof_vuln.nasl: GPLv2+
+gsf/2018/redhat/gb_keycloak_xss_vuln_sep18.nasl: GPLv2+
 gsf/2018/redhat/gb_rh_openshift_dos_vuln.nasl: GPLv2+
 gsf/2018/redhat/gb_rh_openshift_xss_vuln.nasl: GPLv2+
 gsf/2018/redlion/gb_redlion_hmi_no_auth_vuln.nasl: GPLv2+
@@ -62125,6 +62155,7 @@ gsf/2018/rhel/gb_RHSA-2018_3665-01_NetworkManager.nasl: GPLv2+
 gsf/2018/rhel/gb_RHSA-2018_3738-01_ruby.nasl: GPLv2+
 gsf/2018/rhel/gb_RHSA-2018_3760-01_ghostscript.nasl: GPLv2+
 gsf/2018/rhel/gb_RHSA-2018_3761-01_ghostscript.nasl: GPLv2+
+gsf/2018/rockwellautomation/gb_rockwell_micrologix_1100_dos_vuln.nasl: GPLv2+
 gsf/2018/rockwellautomation/gb_rockwell_micrologix_1100_mult_vuln.nasl: GPLv2+
 gsf/2018/rockwellautomation/gb_rockwell_micrologix_1400_dos_vuln.nasl: GPLv2+
 gsf/2018/rockwellautomation/gb_rockwell_micrologix_1400_mult_vuln1.nasl: GPLv2+

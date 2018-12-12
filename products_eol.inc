@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: products_eol.inc 12077 2018-10-25 08:47:44Z cfischer $
+# $Id: products_eol.inc 12764 2018-12-12 07:44:24Z cfischer $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -22,7 +22,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 12077 $
+# $Revision: 12764 $
 #
 ###############################################################################
 
@@ -120,25 +120,27 @@ eol_cpes[ 'cpe:/a:ibm:lotus_domino' ] = make_array(
 # https://www.ilias.de/docu/ilias.php?ref_id=1719&obj_id=6543&cmd=layout&cmdClass=illmpresentationgui&cmdNode=wc&baseClass=ilLMPresentationGUI
 # nb: The EOL dates for the older releases where no such date is available the date of the last release of the branch was taken from the second link
 eol_cpes[ 'cpe:/a:ilias:ilias' ] = make_array(
-  'versions', '5.0:2017-07-31;4.4:2016-07-31;4.3:2015-07-28;4.2:2014-07-31;4.1:2013-02-03;4.0:2012-02-03;3.10:2010-10-06;3.9:2010-02-01;3.8:2008-02-04;3.7:2007-07-26;3.6:2007-07-26;3.5:2006-10-23;3.4:2006-09-05;3.3:2005-03-09;3.2:2005-02-04;3.1:2004-07-11;3.0:2004-06-21;2.4:2004-06-21',
+  'versions', '5.1:2018-08-01;5.0:2017-07-31;4.4:2016-07-31;4.3:2015-07-28;4.2:2014-07-31;4.1:2013-02-03;4.0:2012-02-03;3.10:2010-10-06;3.9:2010-02-01;3.8:2008-02-04;3.7:2007-07-26;3.6:2007-07-26;3.5:2006-10-23;3.4:2006-09-05;3.3:2005-03-09;3.2:2005-02-04;3.1:2004-07-11;3.0:2004-06-21;2.4:2004-06-21',
   'version_regex', '^([0-9]+\\.[0-9]+)'
 );
 
 # https://www.isc.org/downloads/
 eol_cpes[ 'cpe:/a:isc:bind' ] = make_array(
-  'versions',      '9.8:2014-09-30;9.7:2012-11-30;9.6:2014-02-28;9.5:2010-07-30;9.4:2009-12-31;9.3:2008-12-31;9.2:2007-09-30;9.1:2001-07-31;8.99:2007-08-31;4.99:2001-12-31',
+  'versions',      '9.10:2018-07-31;9.9:2018-07-31;9.8:2014-09-30;9.7:2012-11-30;9.6:2014-02-28;9.5:2010-07-30;9.4:2009-12-31;9.3:2008-12-31;9.2:2007-09-30;9.1:2001-07-31;8.99:2007-08-31;4.99:2001-12-31',
   'version_regex', '^([0-9]+\\.[0-9]+)'
 );
 
 # https://docs.joomla.org/What_version_of_Joomla!_should_you_use%3F
+# nb: The EOL date is always the release date of the next major release, e.g.
+# 3.8.0 released 2017-09-19 -> EOL of 3.7
 eol_cpes[ 'cpe:/a:joomla:joomla' ] = make_array(
-  'versions',      '3.7:2017-09-19;3.6:2017-04-25;3.5:2016-07-12;3.4:2016-03-21;3.3:2015-02-24;3.2:2014-10-01;3.1:2013-12-01;3.0:2013-05-01;2.5:2014-12-31;1.7:2012-02-01;1.6:2011-08-01;1.5:2012-09-01;1.0:2009-07-22',
+  'versions',      '3.8:2018-10-30;3.7:2017-09-19;3.6:2017-04-25;3.5:2016-07-12;3.4:2016-03-21;3.3:2015-02-24;3.2:2014-10-01;3.1:2013-12-01;3.0:2013-05-01;2.5:2014-12-31;1.7:2012-02-01;1.6:2011-08-01;1.5:2012-09-01;1.0:2009-07-22',
   'version_regex', '^([0-9]+\\.[0-9]+)'
 );
 
 # https://mariadb.org/about/maintenance-policy/
 eol_cpes[ 'cpe:/a:mariadb:mariadb' ] = make_array(
-  'versions',      '10.2:2022-05-23;10.1:2020-10-17;10.0:2019-03-31;5.5:2020-04-11;5.3:2017-03-01;5.2:2015-11-10;5.1:2015-02-01',
+  'versions',      '10.3:2023-05-25;10.2:2022-05-23;10.1:2020-10-17;10.0:2019-03-31;5.5:2020-04-11;5.3:2017-03-01;5.2:2015-11-10;5.1:2015-02-01',
   'version_regex', '^([0-9]+\\.[0-9]+)'
 );
 
@@ -208,8 +210,15 @@ eol_cpes[ 'cpe:/a:microsoft:sql_server' ] = make_array(
 # mysql:mysql is <= 5.5.9, newer versions have oracle:mysql
 # https://en.wikipedia.org/wiki/MySQL#Release_history
 # https://www.mysql.com/support/eol-notice.html (Sustaining Support means EOL)
+# http://www.oracle.com/us/support/library/lifetime-support-technology-069183.pdf
 eol_cpes[ 'cpe:/a:mysql:mysql' ] = make_array(
   'versions',      '5.1:2013-12-04;5.0:2012-01-09;4.1:2009-12-31;4.0:2008-12-31;3.2:2006-08-01',
+  'version_regex', '^([0-9]+\\.[0-9]+)'
+);
+
+# No EOL versions yet
+eol_cpes[ 'cpe:/a:oracle:mysql' ] = make_array(
+  'versions',      '',
   'version_regex', '^([0-9]+\\.[0-9]+)'
 );
 
@@ -271,15 +280,10 @@ eol_cpes[ 'cpe:/a:novell:service_desk' ] = make_array(
 
 # https://www.openssl.org/policies/releasestrat.html
 # EOL date for 1.0.0 is not available, so EOL of 1.0.1 was copied
+# "Version 1.1.0 will be supported until one year after the release of 1.1.1" -> 1.1.1 was released on 11-Sep-2018
 eol_cpes[ 'cpe:/a:openssl:openssl' ] = make_array(
-  'versions',      '1.1.0:2019-05-31;1.0.2:2019-12-31;1.0.1:2016-07-06;1.0.0:2016-07-06;0.9.8:2014-12-23',
+  'versions',      '1.1.0:2019-09-11;1.0.2:2019-12-31;1.0.1:2016-07-06;1.0.0:2016-07-06;0.9.8:2014-12-23',
   'version_regex', '^([0-9]+\\.[0-9]+\\.[0-9]+)'
-);
-
-# No EOL versions yet
-eol_cpes[ 'cpe:/a:oracle:mysql' ] = make_array(
-  'versions',      '',
-  'version_regex', '^([0-9]+\\.[0-9]+)'
 );
 
 # https://en.wikipedia.org/wiki/OTRS
@@ -299,13 +303,13 @@ eol_cpes[ 'cpe:/a:owncloud:owncloud' ] = make_array(
 # https://lists.pfsense.org/pipermail/list/2012-April/002017.html
 # EOL date is mainly the release date of the next release
 eol_cpes[ 'cpe:/a:pfsense:pfsense' ] = make_array(
-  'versions',      '2.2:2016-04-12;2.1:2015-01-23;2.0:2013-09-15;1.2:2011-09-17;1.1:2008-02-25;1.0:unknown',
+  'versions',      '2.3:2017-10-12;2.2:2016-04-12;2.1:2015-01-23;2.0:2013-09-15;1.2:2011-09-17;1.1:2008-02-25;1.0:unknown',
   'version_regex', '^([0-9]+\\.[0-9]+)'
 );
 
 # https://secure.php.net/eol.php and https://secure.php.net/supported-versions.php
 eol_cpes[ 'cpe:/a:php:php' ] = make_array(
-  'versions',      '7.2:2020-11-30;7.1:2019-12-01;7.0:2018-12-03;5.6:2018-12-31;5.5:2016-07-21;5.4:2015-09-03;5.3:2014-08-14;5.2:2011-01-06;5.1:2006-08-24;5.0:2005-09-05;4.4:2008-08-07;4.3:2005-03-31;4.2:2002-09-06;4.1:2002-03-12;4.0:2001-06-23;3.0:2000-10-20',
+  'versions',      '7.3:2021-12-06;7.2:2020-11-30;7.1:2019-12-01;7.0:2018-12-03;5.6:2018-12-31;5.5:2016-07-21;5.4:2015-09-03;5.3:2014-08-14;5.2:2011-01-06;5.1:2006-08-24;5.0:2005-09-05;4.4:2008-08-07;4.3:2005-03-31;4.2:2002-09-06;4.1:2002-03-12;4.0:2001-06-23;3.0:2000-10-20',
   'version_regex', '^([0-9]+\\.[0-9]+)'
 );
 
@@ -321,7 +325,7 @@ eol_cpes[ 'cpe:/a:phpmailer_project:phpmailer' ] = make_array(
 # EOL basically means all branches like 4.2 listed at https://www.phpmyadmin.net/files/
 # but not as "maintained" at https://www.phpmyadmin.net/downloads/
 eol_cpes[ 'cpe:/a:phpmyadmin:phpmyadmin' ] = make_array(
-  'versions',      '4.6:unknown;4.5:unknown;4.4:2017-01-23;4.3:unknown;4.2:unknown;4.1:unknown;3.5:unknown;3.4:unknown;3.3:unknown;3.2:unknown;3.1:unknown;3.0:unknown;2.11:2011-07-12;2.10:unknown;2.9:unknown;2.8:unknown;2.7:unknown;2.6:unknown;2.5:unknown;2.4:unknown;2.3:unknown;2.2:unknown;2.1:unknown;2.0:unknown;1.3:unknown;1.2:unknown;1.1:unknown;0.9:unknown',
+  'versions',      '4.7:unknown;4.6:unknown;4.5:unknown;4.4:2017-01-23;4.3:unknown;4.2:unknown;4.1:unknown;3.5:unknown;3.4:unknown;3.3:unknown;3.2:unknown;3.1:unknown;3.0:unknown;2.11:2011-07-12;2.10:unknown;2.9:unknown;2.8:unknown;2.7:unknown;2.6:unknown;2.5:unknown;2.4:unknown;2.3:unknown;2.2:unknown;2.1:unknown;2.0:unknown;1.3:unknown;1.2:unknown;1.1:unknown;0.9:unknown',
   'version_regex', '^([0-9]+\\.[0-9]+)'
 );
 
@@ -358,7 +362,7 @@ eol_cpes[ 'cpe:/a:redhat:jboss_operations_network' ] = make_array(
 
 # https://wiki.samba.org/index.php/Samba_Release_Planning
 eol_cpes[ 'cpe:/a:samba:samba' ] = make_array(
-  'versions',      '4.4:2017-09-21;4.3:2017-03-07;4.2:2016-09-07;4.1:2016-03-22;4.0:2015-09-08;3.6:2015-03-04;3.5:2013-10-11;3.4:2012-12-11;3.3:2011-08-09;3.2:2010-03-01;3.0:2009-08-05',
+  'versions',      '4.6:2018-09-13;4.5:2018-03-13;4.4:2017-09-21;4.3:2017-03-07;4.2:2016-09-07;4.1:2016-03-22;4.0:2015-09-08;3.6:2015-03-04;3.5:2013-10-11;3.4:2012-12-11;3.3:2011-08-09;3.2:2010-03-01;3.0:2009-08-05',
   'version_regex', '^([0-9]+\\.[0-9]+)'
 );
 

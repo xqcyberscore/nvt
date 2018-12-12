@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2018_3760_ghostscript_centos6.nasl 12755 2018-12-11 10:50:43Z santu $
+# $Id: gb_CESA-2018_3760_ghostscript_centos6.nasl 12767 2018-12-12 08:39:09Z asteins $
 #
 # CentOS Update for ghostscript CESA-2018:3760 centos6
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882974");
-  script_version("$Revision: 12755 $");
+  script_version("$Revision: 12767 $");
   script_cve_id("CVE-2018-16509");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-11 11:50:43 +0100 (Tue, 11 Dec 2018) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-12 09:39:09 +0100 (Wed, 12 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-12-07 07:39:31 +0100 (Fri, 07 Dec 2018)");
   script_name("CentOS Update for ghostscript CESA-2018:3760 centos6 ");
   script_category(ACT_GATHER_INFO);

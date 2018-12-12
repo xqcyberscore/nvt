@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_4007_1.nasl 12755 2018-12-11 10:50:43Z santu $
+# $Id: gb_suse_2018_4007_1.nasl 12767 2018-12-12 08:39:09Z asteins $
 #
 # SuSE Update for postgresql94 openSUSE-SU-2018:4007-1 (postgresql94)
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852156");
-  script_version("$Revision: 12755 $");
+  script_version("$Revision: 12767 $");
   script_cve_id("CVE-2018-10915");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-11 11:50:43 +0100 (Tue, 11 Dec 2018) $");
+  script_tag(name:"cvss_base", value:"6.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-12 09:39:09 +0100 (Wed, 12 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-12-10 07:36:25 +0100 (Mon, 10 Dec 2018)");
   script_name("SuSE Update for postgresql94 openSUSE-SU-2018:4007-1 (postgresql94)");
   script_category(ACT_GATHER_INFO);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jenkins_20180718_lin.nasl 12120 2018-10-26 11:13:20Z mmartin $
+# $Id: gb_jenkins_20180718_lin.nasl 12761 2018-12-11 14:32:20Z cfischer $
 #
 # Jenkins < 2.133 and < 2.121.2 LTS Multiple Vulnerabilities (Linux)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112331");
-  script_version("$Revision: 12120 $");
+  script_version("$Revision: 12761 $");
   script_cve_id("CVE-2018-1999001", "CVE-2018-1999002", "CVE-2018-1999003", "CVE-2018-1999004",
   "CVE-2018-1999005", "CVE-2018-1999006", "CVE-2018-1999007");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-11 15:32:20 +0100 (Tue, 11 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-07-24 10:15:00 +0200 (Tue, 24 Jul 2018)");
   script_name("Jenkins < 2.133 and < 2.121.2 LTS Multiple Vulnerabilities (Linux)");
   script_category(ACT_GATHER_INFO);
@@ -79,7 +79,7 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-CPE = "cpe:/a:cloudbees:jenkins";
+CPE = "cpe:/a:jenkins:jenkins";
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:TRUE ) ) exit( 0 );

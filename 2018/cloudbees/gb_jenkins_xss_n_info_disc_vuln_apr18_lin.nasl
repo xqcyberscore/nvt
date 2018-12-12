@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jenkins_xss_n_info_disc_vuln_apr18_lin.nasl 12120 2018-10-26 11:13:20Z mmartin $
+# $Id: gb_jenkins_xss_n_info_disc_vuln_apr18_lin.nasl 12761 2018-12-11 14:32:20Z cfischer $
 #
 # Jenkins Cross Site Scripting And Information disclosure Vulnerabilities Apr18 (Linux)
 #
@@ -24,16 +24,16 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/a:cloudbees:jenkins";
+CPE = "cpe:/a:jenkins:jenkins";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813316");
-  script_version("$Revision: 12120 $");
+  script_version("$Revision: 12761 $");
   script_cve_id("CVE-2018-1000169", "CVE-2018-1000170");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-11 15:32:20 +0100 (Tue, 11 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-04-23 16:40:26 +0530 (Mon, 23 Apr 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Jenkins Cross Site Scripting And Information disclosure Vulnerabilities Apr18 (Linux)");

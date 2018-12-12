@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1567.nasl 12222 2018-11-06 07:21:42Z cfischer $
+# $Id: deb_dla_1567.nasl 12767 2018-12-12 08:39:09Z asteins $
 #
 # Auto-generated from advisory DLA 1567-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891567");
-  script_version("$Revision: 12222 $");
+  script_version("$Revision: 12767 $");
   script_cve_id("CVE-2018-18718");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1567-1] gthumb security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-06 08:21:42 +0100 (Tue, 06 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-12 09:39:09 +0100 (Wed, 12 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-11-06 00:00:00 +0100 (Tue, 06 Nov 2018)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"4.6");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

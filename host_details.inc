@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: host_details.inc 12751 2018-12-11 07:48:20Z cfischer $
+# $Id: host_details.inc 12766 2018-12-12 08:34:25Z ckuersteiner $
 #
 # Centralized and organized host information base
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 12751 $
+# $Revision: 12766 $
 #
 ###############################################################################
 
@@ -134,6 +134,7 @@ OS_CPE_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.108494", # gb_codesys_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.141684", # gb_simatic_hmi_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.141766", # gb_wago_plc_consolidation.nasl
+    "1.3.6.1.4.1.25623.1.0.141772", # gb_rockwell_micrologix_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.96207",  # gb_windows_cpe_detect.nasl
     "1.3.6.1.4.1.25623.1.0.50282",  # gather-package-list.nasl
     "1.3.6.1.4.1.25623.1.0.105614", # gb_cisco_pis_version.nasl
@@ -235,6 +236,7 @@ OS_TXT_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.108494", # gb_codesys_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.141684", # gb_simatic_hmi_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.141766", # gb_wago_plc_consolidation.nasl
+    "1.3.6.1.4.1.25623.1.0.141772", # gb_rockwell_micrologix_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.96207",  # gb_windows_cpe_detect.nasl
     "1.3.6.1.4.1.25623.1.0.50282",  # gather-package-list.nasl
     "1.3.6.1.4.1.25623.1.0.105614", # gb_cisco_pis_version.nasl

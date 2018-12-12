@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_solarwinds_sam_detect_win.nasl 12753 2018-12-11 08:48:01Z mmartin $
+# $Id: gb_solarwinds_sam_detect_win.nasl 12756 2018-12-11 11:23:23Z mmartin $
 #
 # SolarWinds Server & Application Monitor Version Detection (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107409");
-  script_version("$Revision: 12753 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-11 09:48:01 +0100 (Tue, 11 Dec 2018) $");
+  script_version("$Revision: 12756 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-11 12:23:23 +0100 (Tue, 11 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-12-08 12:44:41 +0100 (Sat, 08 Dec 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -60,9 +60,11 @@ if (!os_arch)
 
 if ("x86" >< os_arch) {
   key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\");
+  location = "C:\Program Files\SolarWinds\Orion";
 } else if ("x64" >< os_arch) {
   key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\",
                        "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\");
+  location = "C:\Program Files (x86)\SolarWinds\Orion";
 }
 
 if (isnull(key_list)) exit(0);
@@ -74,8 +76,6 @@ foreach key (key_list) {
     if(!appName || appName !~ "SolarWinds Server & Application Monitor") continue;
     version = "unknown";
     concluded += "SolarWinds SAM";
-    # location not set in registry, assuming this path from install on win10 x64
-    location = "C:\Program Files (x86)\SolarWinds\Orion";
 
     # wrong Version in "DisplayVersion"
     ver = eregmatch(string:appName, pattern:"([0-9.]+)");

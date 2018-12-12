@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cloudbees_jenkins_mult_vuln01_june16_lin.nasl 12051 2018-10-24 09:14:54Z asteins $
+# $Id: gb_cloudbees_jenkins_mult_vuln01_june16_lin.nasl 12761 2018-12-11 14:32:20Z cfischer $
 #
 # CloudBees Jenkins Multiple Vulnerabilities-01-June16 (Linux)
 #
@@ -24,16 +24,16 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/a:cloudbees:jenkins";
+CPE = "cpe:/a:jenkins:jenkins";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807341");
-  script_version("$Revision: 12051 $");
+  script_version("$Revision: 12761 $");
   script_cve_id("CVE-2015-1806", "CVE-2015-1807", "CVE-2015-1808", "CVE-2015-18010");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-11 15:32:20 +0100 (Tue, 11 Dec 2018) $");
   script_tag(name:"creation_date", value:"2016-06-22 14:01:42 +0530 (Wed, 22 Jun 2016)");
   script_name("CloudBees Jenkins Multiple Vulnerabilities-01-June16 (Linux)");
 

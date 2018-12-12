@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jenkins_java_deserialization_vul_07_2017.nasl 12163 2018-10-30 08:27:15Z cfischer $
+# $Id: gb_jenkins_java_deserialization_vul_07_2017.nasl 12761 2018-12-11 14:32:20Z cfischer $
 #
 # Jenkins Deserialization Vulnerability - CVE-2016-0792
 #
@@ -24,17 +24,17 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/a:cloudbees:jenkins";
+CPE = "cpe:/a:jenkins:jenkins";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107230");
-  script_version("$Revision: 12163 $");
+  script_version("$Revision: 12761 $");
   script_cve_id("CVE-2016-0792");
   script_name("Jenkins Deserialization Vulnerability - CVE-2016-0792");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-30 09:27:15 +0100 (Tue, 30 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-11 15:32:20 +0100 (Tue, 11 Dec 2018) $");
   script_tag(name:"creation_date", value:"2017-08-10 12:09:09 +0200 (Thu, 10 Aug 2017)");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

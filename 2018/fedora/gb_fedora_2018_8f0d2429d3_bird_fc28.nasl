@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_8f0d2429d3_bird_fc28.nasl 12755 2018-12-11 10:50:43Z santu $
+# $Id: gb_fedora_2018_8f0d2429d3_bird_fc28.nasl 12767 2018-12-12 08:39:09Z asteins $
 #
 # Fedora Update for bird FEDORA-2018-8f0d2429d3
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875347");
-  script_version("$Revision: 12755 $");
+  script_version("$Revision: 12767 $");
   script_cve_id("CVE-2018-12066");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-11 11:50:43 +0100 (Tue, 11 Dec 2018) $");
+  script_tag(name:"cvss_base", value:"2.1");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-12 09:39:09 +0100 (Wed, 12 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-12-07 08:09:48 +0100 (Fri, 07 Dec 2018)");
   script_name("Fedora Update for bird FEDORA-2018-8f0d2429d3");
   script_category(ACT_GATHER_INFO);

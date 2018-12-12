@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_fpm_loop_dos_vuln_win.nasl 12120 2018-10-26 11:13:20Z mmartin $
+# $Id: gb_php_fpm_loop_dos_vuln_win.nasl 12762 2018-12-11 15:47:20Z cfischer $
 #
 # PHP 'PHP-FPM' Denial of Service Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812519");
-  script_version("$Revision: 12120 $");
+  script_version("$Revision: 12762 $");
   script_cve_id("CVE-2015-9253");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-11 16:47:20 +0100 (Tue, 11 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-02-20 17:49:27 +0530 (Tue, 20 Feb 2018)");
   script_name("PHP 'PHP-FPM' Denial of Service Vulnerability (Windows)");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -42,6 +42,7 @@ if(description)
   script_dependencies("gb_php_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("php/installed", "Host/runs_windows");
 
+  script_xref(name:"URL", value:"https://bugs.php.net/bug.php?id=73342");
   script_xref(name:"URL", value:"https://bugs.php.net/bug.php?id=70185");
   script_xref(name:"URL", value:"https://github.com/php/php-src/pull/3287");
   script_xref(name:"URL", value:"https://www.futureweb.at/security/CVE-2015-9253");

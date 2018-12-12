@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_b68776e5b0_kernel_fc27.nasl 12661 2018-12-05 10:53:21Z santu $
+# $Id: gb_fedora_2018_b68776e5b0_kernel_fc27.nasl 12767 2018-12-12 08:39:09Z asteins $
 #
 # Fedora Update for kernel FEDORA-2018-b68776e5b0
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875334");
-  script_version("$Revision: 12661 $");
+  script_version("$Revision: 12767 $");
   script_cve_id("CVE-2018-18710", "CVE-2018-14633", "CVE-2018-17182", "CVE-2018-5391", "CVE-2018-15471", "CVE-2018-3620", "CVE-2018-3646", "CVE-2018-14734", "CVE-2018-14678", "CVE-2018-13405", "CVE-2018-13053", "CVE-2018-12896", "CVE-2018-13093", "CVE-2018-13094", "CVE-2018-13095", "CVE-2018-12714", "CVE-2018-12633", "CVE-2018-12232", "CVE-2018-10853", "CVE-2018-11506", "CVE-2018-10840", "CVE-2018-3639", "CVE-2018-1120", "CVE-2018-10322", "CVE-2018-10323", "CVE-2018-1108", "CVE-2018-10021", "CVE-2017-18232", "CVE-2018-7995", "CVE-2018-8043", "CVE-2018-7757", "CVE-2018-5803", "CVE-2018-1065", "CVE-2018-1000026", "CVE-2018-5750", "CVE-2018-1000004", "CVE-2018-5344", "CVE-2018-5332", "CVE-2018-5333", "CVE-2017-17862", "CVE-2017-17863", "CVE-2017-17864", "CVE-2017-17852", "CVE-2017-17853", "CVE-2017-17854", "CVE-2017-17855", "CVE-2017-17856", "CVE-2017-17857", "CVE-2017-17741", "CVE-2017-17712", "CVE-2017-17449", "CVE-2017-17450", "CVE-2017-17448", "CVE-2017-17558", "CVE-2017-8824", "CVE-2017-1000405", "CVE-2017-16649", "CVE-2017-16650", "CVE-2017-16644", "CVE-2017-16647", "CVE-2017-15115", "CVE-2017-16532", "CVE-2017-16538", "CVE-2017-12193");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-05 11:53:21 +0100 (Wed, 05 Dec 2018) $");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-12 09:39:09 +0100 (Wed, 12 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-12-04 08:34:37 +0100 (Tue, 04 Dec 2018)");
   script_name("Fedora Update for kernel FEDORA-2018-b68776e5b0");
   script_category(ACT_GATHER_INFO);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_argus_surveillance_dvr_mult_vuln.nasl 12068 2018-10-25 07:21:15Z mmartin $
+# $Id: gb_argus_surveillance_dvr_mult_vuln.nasl 12767 2018-12-12 08:39:09Z asteins $
 #
 # Argus Surveillance DVR Multiple Vulnerabilities
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:argus_surveillance:dvr";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141409");
-  script_version("$Revision: 12068 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:21:15 +0200 (Thu, 25 Oct 2018) $");
+  script_version("$Revision: 12767 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-12 09:39:09 +0100 (Wed, 12 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-08-29 14:19:28 +0700 (Wed, 29 Aug 2018)");
-  script_tag(name:"cvss_base", value:"7.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2018-15745");
 

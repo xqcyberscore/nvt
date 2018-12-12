@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_keycloak_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
+# $Id: gb_keycloak_detect.nasl 12758 2018-12-11 13:26:23Z asteins $
 #
 # Keycloak Detection
 #
@@ -30,12 +30,13 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.140066");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11885 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 12758 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-11 14:26:23 +0100 (Tue, 11 Dec 2018) $");
   script_tag(name:"creation_date", value:"2016-11-17 10:30:27 +0100 (Thu, 17 Nov 2016)");
   script_name("Keycloak Detection");
 
-  script_tag(name:"summary", value:"The script sends a connection request to the server and attempts to extract the version number from the reply.");
+  script_tag(name:"summary", value:"The script sends a connection request to the server and attempts
+  to detect Keycloak and also to extract its version number from the reply.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -60,8 +61,8 @@ buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
 if( "<title>Welcome to Keycloak</title>" >!< buf || ">Administration Console<" >!< buf ) exit( 0 );
 
-set_kb_item( name:"keycloak/installed", value:TRUE );
-cpe = 'cpe:/a:keycloak:keycloak';
+set_kb_item( name:"keycloak/detected", value:TRUE );
+cpe = 'cpe:/a:redhat:keycloak';
 
 url = '/auth/admin/master/console/';
 req = http_get( item:url, port:port );

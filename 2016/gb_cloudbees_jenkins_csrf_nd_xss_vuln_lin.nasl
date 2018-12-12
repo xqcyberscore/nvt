@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cloudbees_jenkins_csrf_nd_xss_vuln_lin.nasl 12431 2018-11-20 09:21:00Z asteins $
+# $Id: gb_cloudbees_jenkins_csrf_nd_xss_vuln_lin.nasl 12761 2018-12-11 14:32:20Z cfischer $
 #
 # Jenkins CSRF And XSS Vulnerabilities (Linux)
 #
@@ -24,17 +24,17 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/a:cloudbees:jenkins";
+CPE = "cpe:/a:jenkins:jenkins";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807348");
-  script_version("$Revision: 12431 $");
+  script_version("$Revision: 12761 $");
   script_cve_id("CVE-2013-2034", "CVE-2013-2033", "CVE-2013-1808");
   script_bugtraq_id(59631, 59634, 58257);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-20 10:21:00 +0100 (Tue, 20 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-11 15:32:20 +0100 (Tue, 11 Dec 2018) $");
   script_tag(name:"creation_date", value:"2016-07-14 13:00:47 +0530 (Thu, 14 Jul 2016)");
   script_name("Jenkins CSRF And XSS Vulnerabilities (Linux)");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_6ed251c42b_spamassassin_fc27.nasl 11734 2018-10-03 11:48:15Z santu $
+# $Id: gb_fedora_2018_6ed251c42b_spamassassin_fc27.nasl 12767 2018-12-12 08:39:09Z asteins $
 #
 # Fedora Update for spamassassin FEDORA-2018-6ed251c42b
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875123");
-  script_version("$Revision: 11734 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-03 13:48:15 +0200 (Wed, 03 Oct 2018) $");
+  script_version("$Revision: 12767 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-12 09:39:09 +0100 (Wed, 12 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-10-03 17:02:14 +0530 (Wed, 03 Oct 2018)");
   script_cve_id("CVE-2017-15705", "CVE-2018-11780", "CVE-2018-11781", "CVE-2016-1238");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for spamassassin FEDORA-2018-6ed251c42b");
   script_tag(name:"summary", value:"Check the version of spamassassin");
