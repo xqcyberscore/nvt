@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-110.nasl 11922 2018-10-16 10:24:25Z asteins $
+# $Id: gb_ms16-110.nasl 12768 2018-12-12 09:09:14Z cfischer $
 #
 # Microsoft Windows Multiple Vulnerabilities (3178467)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809041");
-  script_version("$Revision: 11922 $");
+  script_version("$Revision: 12768 $");
   script_cve_id("CVE-2016-3346", "CVE-2016-3352", "CVE-2016-3368", "CVE-2016-3369");
   script_bugtraq_id(92846, 92852, 92847, 92850);
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:24:25 +0200 (Tue, 16 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-12 10:09:14 +0100 (Wed, 12 Dec 2018) $");
   script_tag(name:"creation_date", value:"2016-09-14 08:01:49 +0530 (Wed, 14 Sep 2016)");
   script_name("Microsoft Windows Multiple Vulnerabilities (3178467)");
 
@@ -57,12 +57,19 @@ if(description)
   user's NTLM password hash and to cause denial of service condition.");
 
   script_tag(name:"affected", value:"Microsoft Windows 10 x32/x64.
+
   Microsoft Windows 8.1 x32/x64 Edition.
+
   Microsoft Windows Server 2012/2012R2.
+
   Microsoft Windows 10 Version 1511 x32/x64.
+
   Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior.
+
   Microsoft Windows Vista x32/x64 Edition Service Pack 2 and prior.
+
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2 and prior.
+
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
@@ -96,14 +103,14 @@ if(hotfix_check_sp(winVista:3, win7:2, win7x64:2, win2008:3, win2008r2:2, winVis
   exit(0);
 }
 
-sysPath = smb_get_systemroot();
+sysPath = smb_get_system32root();
 if(!sysPath ){
   exit(0);
 }
 
-lsVer = fetch_file_version(sysPath:sysPath, file_name:"System32\Lsasrv.dll");
-ntVer = fetch_file_version(sysPath:sysPath, file_name:"System32\Ntdsai.dll");
-EdgeVer = fetch_file_version(sysPath:sysPath, file_name:"System32\Edgehtml.dll");
+lsVer = fetch_file_version(sysPath:sysPath, file_name:"lsasrv.dll");
+ntVer = fetch_file_version(sysPath:sysPath, file_name:"ntdsai.dll");
+EdgeVer = fetch_file_version(sysPath:sysPath, file_name:"edgehtml.dll");
 if(!lsVer && !ntVer && !EdgeVer){
   exit(0);
 }
@@ -185,7 +192,7 @@ else if(hotfix_check_sp(win10:1, win10x64:1) > 0)
 
 if(VULN1)
 {
-  report = 'File checked:     ' + sysPath + "\system32\Ntdsai.dll"+ '\n' +
+  report = 'File checked:     ' + sysPath + "\ntdsai.dll" + '\n' +
            'File version:     ' + ntVer  + '\n' +
            'Vulnerable range: ' + Vulnerable_range + '\n' ;
   security_message(data:report);
@@ -194,7 +201,7 @@ if(VULN1)
 
 if(VULN2)
 {
-  report = 'File checked:     ' + sysPath + "\system32\Lsasrv.dll"+ '\n' +
+  report = 'File checked:     ' + sysPath + "\lsasrv.dll" + '\n' +
            'File version:     ' + lsVer  + '\n' +
            'Vulnerable range: ' + Vulnerable_range + '\n' ;
   security_message(data:report);
@@ -203,7 +210,7 @@ if(VULN2)
 
 if(VULN3)
 {
-  report = 'File checked:     ' + sysPath + "\system32\Edgehtml.dll"+ '\n' +
+  report = 'File checked:     ' + sysPath + "\edgehtml.dll" + '\n' +
            'File version:     ' + EdgeVer  + '\n' +
            'Vulnerable range: ' + Vulnerable_range + '\n' ;
   security_message(data:report);

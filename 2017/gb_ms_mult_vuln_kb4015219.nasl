@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_mult_vuln_kb4015219.nasl 11879 2018-10-12 12:48:49Z mmartin $
+# $Id: gb_ms_mult_vuln_kb4015219.nasl 12768 2018-12-12 09:09:14Z cfischer $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4015219)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810922");
-  script_version("$Revision: 11879 $");
+  script_version("$Revision: 12768 $");
   script_cve_id("CVE-2017-0202", "CVE-2017-0203", "CVE-2017-0205", "CVE-2017-0208",
                 "CVE-2017-0210", "CVE-2017-0211", "CVE-2017-0192", "CVE-2017-0191",
                 "CVE-2017-0189", "CVE-2017-0188", "CVE-2017-0186", "CVE-2017-0185",
@@ -38,7 +38,7 @@ if(description)
                 "CVE-2017-0156", "CVE-2017-0093", "CVE-2017-0058", "CVE-2013-6629");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:48:49 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-12 10:09:14 +0100 (Wed, 12 Dec 2018) $");
   script_tag(name:"creation_date", value:"2017-04-12 10:47:16 +0530 (Wed, 12 Apr 2017)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4015219)");
 
@@ -108,26 +108,25 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-
 if(hotfix_check_sp(win10:1, win10x64:1) <= 0){
   exit(0);
 }
 
-sysPath = smb_get_systemroot();
-if(!sysPath ){
+sysPath = smb_get_system32root();
+if(!sysPath){
   exit(0);
 }
 
-edgeVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Edgehtml.dll");
+edgeVer = fetch_file_version(sysPath:sysPath, file_name:"edgehtml.dll");
 if(!edgeVer){
   exit(0);
 }
@@ -136,7 +135,7 @@ if(hotfix_check_sp(win10:1, win10x64:1) > 0)
 {
   if(version_in_range(version:edgeVer, test_version:"11.0.10586.0", test_version2:"11.0.10586.872"))
   {
-    report = 'File checked:     ' + sysPath + "\system32\Edgehtml.dll" + '\n' +
+    report = 'File checked:     ' + sysPath + "\edgehtml.dll" + '\n' +
              'File version:     ' + edgeVer  + '\n' +
              'Vulnerable range: 11.0.10586.0 - 11.0.10586.872\n' ;
     security_message(data:report);

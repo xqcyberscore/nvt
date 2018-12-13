@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_windows_unquoted_path_vulnerabilities.nasl 12046 2018-10-24 06:53:57Z cfischer $
+# $Id: gb_unquoted_path_vulnerabilities_win.nasl 12776 2018-12-12 13:46:33Z cfischer $
 #
 # Microsoft Windows Unquoted Path Vulnerability
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107303");
-  script_version("$Revision: 12046 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 08:53:57 +0200 (Wed, 24 Oct 2018) $");
+  script_version("$Revision: 12776 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-12 14:46:33 +0100 (Wed, 12 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-03-23 08:14:54 +0100 (Fri, 23 Mar 2018)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"cvss_base", value:"9.3");

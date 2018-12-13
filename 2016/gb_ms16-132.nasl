@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-132.nasl 11903 2018-10-15 10:26:16Z asteins $
+# $Id: gb_ms16-132.nasl 12768 2018-12-12 09:09:14Z cfischer $
 #
 # Microsoft Graphics Component Multiple Vulnerabilities (3199120)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809466");
-  script_version("$Revision: 11903 $");
+  script_version("$Revision: 12768 $");
   script_cve_id("CVE-2016-7210", "CVE-2016-7205", "CVE-2016-7217", "CVE-2016-7256");
   script_bugtraq_id(94030, 94033, 94066, 94156);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 12:26:16 +0200 (Mon, 15 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-12 10:09:14 +0100 (Wed, 12 Dec 2018) $");
   script_tag(name:"creation_date", value:"2016-11-09 09:56:10 +0530 (Wed, 09 Nov 2016)");
   script_name("Microsoft Graphics Component Multiple Vulnerabilities (3199120)");
 
@@ -101,13 +101,13 @@ if(hotfix_check_sp(winVista:3, winVistax64:3, win7:2, win7x64:2, win2008:3, win2
   exit(0);
 }
 
-sysPath = smb_get_systemroot();
+sysPath = smb_get_system32root();
 if(!sysPath ){
   exit(0);
 }
 
-dllver = fetch_file_version(sysPath:sysPath, file_name:"System32\Fontsub.dll");
-edgeVer = fetch_file_version(sysPath:sysPath, file_name:"System32\Edgehtml.dll");
+dllver = fetch_file_version(sysPath:sysPath, file_name:"fontsub.dll");
+edgeVer = fetch_file_version(sysPath:sysPath, file_name:"edgehtml.dll");
 if(!dllver && !edgeVer){
   exit(0);
 }
@@ -175,7 +175,7 @@ else if(hotfix_check_sp(win10:1, win10x64:1) > 0 && edgeVer)
 
 if(VULN)
 {
-  report = 'File checked:     ' + sysPath + "\System32\Fontsub.dll" + '\n' +
+  report = 'File checked:     ' + sysPath + "\fontsub.dll" + '\n' +
            'File version:     ' + dllver  + '\n' +
            'Vulnerable range: ' + Vulnerable_range + '\n' ;
   security_message(data:report);
@@ -184,7 +184,7 @@ if(VULN)
 
 if(VULN2)
 {
-  report = 'File checked:     ' + sysPath + "\System32\edgehtml.dll" + '\n' +
+  report = 'File checked:     ' + sysPath + "\edgehtml.dll" + '\n' +
            'File version:     ' + edgeVer  + '\n' +
            'Vulnerable range: ' + Vulnerable_range2 + '\n' ;
   security_message(data:report);

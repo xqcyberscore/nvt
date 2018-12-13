@@ -1,6 +1,6 @@
 #############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-124.nasl 12051 2018-10-24 09:14:54Z asteins $
+# $Id: gb_ms16-124.nasl 12768 2018-12-12 09:09:14Z cfischer $
 #
 # Microsoft Windows Registry Multiple Vulnerabilities (3193227)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809440");
-  script_version("$Revision: 12051 $");
+  script_version("$Revision: 12768 $");
   script_cve_id("CVE-2016-0070", "CVE-2016-0073", "CVE-2016-0075", "CVE-2016-0079");
   script_bugtraq_id(93354, 93355, 93356, 93357);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-12 10:09:14 +0100 (Wed, 12 Dec 2018) $");
   script_tag(name:"creation_date", value:"2016-10-12 08:40:20 +0530 (Wed, 12 Oct 2016)");
   script_name("Microsoft Windows Registry Multiple Vulnerabilities (3193227)");
 
@@ -50,6 +50,7 @@ if(description)
   to gain access to information not intended to be available to the user.");
 
   script_tag(name:"affected", value:"Microsoft Windows Vista x32/x64 Edition Service Pack 2
+
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2
 
   Microsoft Windows 7 x32/x64 Edition Service Pack 1
@@ -83,6 +84,7 @@ if(description)
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS16-124");
+
   exit(0);
 }
 
@@ -97,33 +99,33 @@ if(hotfix_check_sp(winVista:3, win7:2, win7x64:2, winVistax64:3, win2008:3, win2
   exit(0);
 }
 
-kerPath = smb_get_systemroot();
+kerPath = smb_get_system32root();
 if(!kerPath ){
   exit(0);
 }
 
-kerVer = fetch_file_version(sysPath: kerPath, file_name:"System32\Ntoskrnl.exe");
-edgeVer = fetch_file_version(sysPath: kerPath, file_name:"System32\Edgehtml.dll");
+kerVer = fetch_file_version(sysPath: kerPath, file_name:"ntoskrnl.exe");
+edgeVer = fetch_file_version(sysPath: kerPath, file_name:"edgehtml.dll");
 if(!kerVer && !edgeVer){
   exit(0);
 }
 
-if (kerVer =~ "^(6\.0\.6002\.1)"){
+if (kerVer =~ "^6\.0\.6002\.1"){
   Vulnerable_range = "Less than 6.0.6002.19697";
 }
-else if (kerVer =~ "^(6\.0\.6002\.2)"){
+else if (kerVer =~ "^6\.0\.6002\.2"){
   Vulnerable_range = "6.0.6002.23000 - 6.0.6002.24019";
 }
-else if (kerVer =~ "^(6\.1\.7601)"){
+else if (kerVer =~ "^6\.1\.7601"){
   Vulnerable_range = "Less than 6.1.7601.23564";
 }
-else if (kerVer =~ "^(6\.2\.9200)"){
+else if (kerVer =~ "^6\.2\.9200"){
   Vulnerable_range = "Less than 6.2.9200.22001";
 }
-else if (kerVer =~ "^(6\.3\.9600\.1)"){
+else if (kerVer =~ "^6\.3\.9600\.1"){
   Vulnerable_range = "Less than 6.3.9600.18505";
 }
-else if (kerVer =~ "^(10\.0\.10240)"){
+else if (kerVer =~ "^10\.0\.10240"){
   Vulnerable_range = "Less than 10.0.10240.17146";
 }
 
@@ -183,7 +185,7 @@ if(hotfix_check_sp(win10:1, win10x64:1) > 0)
 
 if(VULN)
 {
-  report = 'File checked:     ' + kerPath + "\system32\Ntoskrnl.exe" + '\n' +
+  report = 'File checked:     ' + kerPath + "\ntoskrnl.exe" + '\n' +
            'File version:     ' + kerVer  + '\n' +
            'Vulnerable range: ' + Vulnerable_range + '\n' ;
   security_message(data:report);
@@ -192,7 +194,7 @@ if(VULN)
 
 if(VULN2)
 {
-  report = 'File checked:     ' + kerPath + "\System32\Edgehtml.dll" + '\n' +
+  report = 'File checked:     ' + kerPath + "\edgehtml.dll" + '\n' +
            'File version:     ' + edgeVer  + '\n' +
            'Vulnerable range: ' + Vulnerable_range2 + '\n' ;
   security_message(data:report);

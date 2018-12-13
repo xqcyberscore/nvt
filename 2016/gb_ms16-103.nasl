@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-103.nasl 11938 2018-10-17 10:08:39Z asteins $
+# $Id: gb_ms16-103.nasl 12768 2018-12-12 09:09:14Z cfischer $
 #
 # Microsoft ActiveSyncProvider Universal Outlook Information Disclosure Vulnerability (3182332)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808292");
-  script_version("$Revision: 11938 $");
+  script_version("$Revision: 12768 $");
   script_cve_id("CVE-2016-3312");
   script_bugtraq_id(92307);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-17 12:08:39 +0200 (Wed, 17 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-12 10:09:14 +0100 (Wed, 12 Dec 2018) $");
   script_tag(name:"creation_date", value:"2016-08-10 08:32:49 +0530 (Wed, 10 Aug 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft ActiveSyncProvider Universal Outlook Information Disclosure Vulnerability (3182332)");
@@ -66,9 +66,9 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");
@@ -80,12 +80,12 @@ if(hotfix_check_sp(win10:1, win10x64:1) <= 0){
   exit(0);
 }
 
-sysPath = smb_get_systemroot();
+sysPath = smb_get_system32root();
 if(!sysPath ){
   exit(0);
 }
 
-dllVer = fetch_file_version(sysPath:sysPath, file_name:"system32\edgehtml.dll");
+dllVer = fetch_file_version(sysPath:sysPath, file_name:"edgehtml.dll");
 if(!dllVer){
   exit(0);
 }
@@ -106,7 +106,7 @@ if(hotfix_check_sp(win10:1, win10x64:1) > 0)
 
 if(VULN)
 {
-  report = 'File checked:     ' + sysPath + "\system32\edgehtml.dll" + '\n' +
+  report = 'File checked:     ' + sysPath + "\edgehtml.dll" + '\n' +
            'File version:     ' + dllVer  + '\n' +
            'Vulnerable range: ' + Vulnerable_range + '\n' ;
   security_message(data:report);

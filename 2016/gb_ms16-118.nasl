@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-118.nasl 11969 2018-10-18 14:53:42Z asteins $
+# $Id: gb_ms16-118.nasl 12768 2018-12-12 09:09:14Z cfischer $
 #
 # Microsoft Internet Explorer Multiple Vulnerabilities (3192887)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807899");
-  script_version("$Revision: 11969 $");
+  script_version("$Revision: 12768 $");
   script_cve_id("CVE-2016-3267", "CVE-2016-3298", "CVE-2016-3331", "CVE-2016-3382",
                 "CVE-2016-3383", "CVE-2016-3384", "CVE-2016-3385", "CVE-2016-3387",
                 "CVE-2016-3388", "CVE-2016-3390", "CVE-2016-3391");
@@ -37,7 +37,7 @@ if(description)
                     93392, 93379, 93381);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-12 10:09:14 +0100 (Wed, 12 Dec 2018) $");
   script_tag(name:"creation_date", value:"2016-10-12 08:21:08 +0530 (Wed, 12 Oct 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Internet Explorer Multiple Vulnerabilities (3192887)");
@@ -85,6 +85,7 @@ if(description)
   script_dependencies("gb_ms_ie_detect.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("MS/IE/Version");
+
   exit(0);
 }
 
@@ -104,13 +105,13 @@ if(!ieVer || !(ieVer =~ "^(9|10|11)")){
   exit(0);
 }
 
-iePath = smb_get_systemroot();
+iePath = smb_get_system32root();
 if(!iePath ){
   exit(0);
 }
 
-iedllVer = fetch_file_version(sysPath:iePath, file_name:"system32\Mshtml.dll");
-edgedllVer = fetch_file_version(sysPath:iePath, file_name:"system32\edgehtml.dll");
+iedllVer = fetch_file_version(sysPath:iePath, file_name:"mshtml.dll");
+edgedllVer = fetch_file_version(sysPath:iePath, file_name:"edgehtml.dll");
 if(!iedllVer && !edgedllVer){
   exit(0);
 }
@@ -155,7 +156,7 @@ else if(hotfix_check_sp(win10:1, win10x64:1) > 0)
     VULN = TRUE ;
   }
 
-  ## AS Windows 10 has commulative update, checking for 'System32/edgehtml.dll' file < 11.0.10586.633
+  ## AS Windows 10 has commulative update, checking for 'system32/edgehtml.dll' file < 11.0.10586.633
   else if(version_in_range(version:edgedllVer, test_version:"11.0.10586.0", test_version2:"11.0.10586.632"))
   {
     Vulnerable_range2 = "11.0.10586.0 - 11.0.10586.632";
@@ -171,7 +172,7 @@ else if(hotfix_check_sp(win10:1, win10x64:1) > 0)
 
 if(VULN)
 {
-  report = 'File checked:     ' + iePath + "\system32\Mshtml.dll" + '\n' +
+  report = 'File checked:     ' + iePath + "\mshtml.dll" + '\n' +
            'File version:     ' + iedllVer  + '\n' +
            'Vulnerable range: ' + Vulnerable_range + '\n' ;
   security_message(data:report);
@@ -180,7 +181,7 @@ if(VULN)
 
 if(VULN2)
 {
-  report = 'File checked:     ' + iePath + "\system32\edgehtml.dll" + '\n' +
+  report = 'File checked:     ' + iePath + "\edgehtml.dll" + '\n' +
            'File version:     ' + edgedllVer + '\n' +
            'Vulnerable range: ' + Vulnerable_range2 + '\n' ;
   security_message(data:report);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_orangeworm_kwampirs_trojan_detect.nasl 10918 2018-08-10 17:32:46Z cfischer $
+# $Id: gb_orangeworm_kwampirs_trojan_detect.nasl 12784 2018-12-13 10:33:24Z cfischer $
 #
 # Orangeworm Kwampirs Trojan Detection
 #
@@ -27,23 +27,22 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107306");
-  script_version("$Revision: 10918 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 19:32:46 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 12784 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-13 11:33:24 +0100 (Thu, 13 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-04-26 15:23:05 +0100 (Thu, 26 Apr 2018)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"cvss_base", value:"10.0");
   script_name("Orangeworm Kwampirs Trojan Detection");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
-  script_family("Windows");
+  script_family("Malware");
   script_dependencies("gb_wmi_access.nasl");
-
   script_mandatory_keys("WMI/access_successful");
 
   script_xref(name:"URL", value:"https://www.symantec.com/blogs/threat-intelligence/orangeworm-targets-healthcare-us-europe-asia");
   script_xref(name:"URL", value:"http://www.virusresearch.org/kwampirs-trojan-removal/");
 
-  script_tag(name:"summary", value:"The script tries to detect the Orangeworm Kwampirs Trojan in various ways.");
+  script_tag(name:"summary", value:"The script tries to detect the Orangeworm Kwampirs Trojan via various known Indicators of Compromise (IOC).");
 
   script_tag(name:"insight", value:"The Orangeworm group is using a repurposed Trojan called Kwampirs to set up persistent remote access after they infiltrate
   victim organizations. Kwampirs is not especially stealthy and can be detected using indicators of compromise and activity on the target system. The Trojan
@@ -65,19 +64,14 @@ if(description)
 include("host_details.inc");
 include("smb_nt.inc");
 
-host    = get_host_ip();
-usrname = kb_smb_login();
-passwd  = kb_smb_password();
-if( ! host || ! usrname || ! passwd ) exit( 0 );
+infos = kb_smb_wmi_connectinfo();
+if( ! infos ) exit( 0 );
 
-domain = kb_smb_domain();
-if( domain ) usrname = domain + '\\' + usrname;
-
-handle = wmi_connect( host:host, username:usrname, password:passwd );
+handle = wmi_connect( host:infos["host"], username:infos["username_wmi_smb"], password:infos["password"] );
 if( ! handle ) exit( 0 );
 
 # nb: Make sure to update the foreach loop below if adding new fields here
-query = "select Description,DisplayName,Name,PathName from Win32_Service";
+query = "SELECT Description, DisplayName, Name, PathName FROM Win32_Service";
 services = wmi_query( wmi_handle:handle, query:query );
 wmi_close( wmi_handle:handle );
 if( ! services ) exit( 0 );
@@ -89,6 +83,7 @@ foreach service( services_list ) {
   if( service == "Description|DisplayName|Name|PathName" ) continue; # nb: Just ignoring the header, make sure to update this if you add additional fields to the WMI query above
 
   service_split = split( service, sep:"|", keep:FALSE );
+  if( max_index( service_split ) < 3 ) continue;
   display_name  = service_split[1];
   service_name  = service_split[2];
   path_name     = service_split[3];
@@ -104,7 +99,7 @@ foreach service( services_list ) {
 }
 
 if( SERVICES_VULN ) {
-  report  = "Trojan.Kwampirs, a backdoor Trojan that provides attackers with remote access to this computer, has been found:";
+  report  = "Trojan.Kwampirs, a backdoor Trojan that provides attackers with remote access to this computer, has been found based on the following IoCs:";
   report += '\n\nDescription|DisplayName|Name|PathName\n';
   report += services_report;
   security_message( port:0, data:report );

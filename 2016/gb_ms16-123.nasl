@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-123.nasl 11969 2018-10-18 14:53:42Z asteins $
+# $Id: gb_ms16-123.nasl 12768 2018-12-12 09:09:14Z cfischer $
 #
 # Microsoft Windows Kernel-Mode Drivers Privilege Elevation Vulnerabilities (3192892)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809343");
-  script_version("$Revision: 11969 $");
+  script_version("$Revision: 12768 $");
   script_cve_id("CVE-2016-3266", "CVE-2016-3376", "CVE-2016-7185", "CVE-2016-7211",
                 "CVE-2016-3341");
   script_bugtraq_id(93384, 93388, 93389, 93391);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-12 10:09:14 +0100 (Wed, 12 Dec 2018) $");
   script_tag(name:"creation_date", value:"2016-10-12 07:44:40 +0530 (Wed, 12 Oct 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Kernel-Mode Drivers Privilege Elevation Vulnerabilities (3192892)");
@@ -55,13 +55,21 @@ if(description)
   take control over the affected system.");
 
   script_tag(name:"affected", value:"Microsoft Windows Vista x32/x64 Edition Service Pack 2
+
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2
+
   Microsoft Windows 7 x32/x64 Edition Service Pack 1
+
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1
+
   Microsoft Windows 8.1 x32/x64 Edition
+
   Microsoft Windows Server 2012/2012R2
+
   Microsoft Windows 10 x32/x64
+
   Microsoft Windows 10 Version 1511 x32/x64
+
   Microsoft Windows 10 Version 1607 x32/x64");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
@@ -78,10 +86,9 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
-  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/library/security/MS16-123");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");
@@ -94,14 +101,14 @@ if(hotfix_check_sp(winVista:3, winVistax64:3, win7:2, win7x64:2, win2008:3, win2
   exit(0);
 }
 
-sysPath = smb_get_systemroot();
+sysPath = smb_get_system32root();
 if(!sysPath ){
   exit(0);
 }
 
-win32Ver = fetch_file_version(sysPath:sysPath, file_name:"System32\Win32k.sys");
-mrxVer = fetch_file_version(sysPath:sysPath, file_name:"System32\Drivers\Mrxdav.sys");
-edgeVer = fetch_file_version(sysPath:sysPath, file_name:"System32\Edgehtml.dll");
+win32Ver = fetch_file_version(sysPath:sysPath, file_name:"win32k.sys");
+mrxVer = fetch_file_version(sysPath:sysPath, file_name:"drivers\mrxdav.sys");
+edgeVer = fetch_file_version(sysPath:sysPath, file_name:"edgehtml.dll");
 if(!win32Ver && !mrxVer && !edgeVer){
   exit(0);
 }
@@ -178,7 +185,7 @@ else if(hotfix_check_sp(win10:1, win10x64:1) > 0 && edgeVer)
 
 if(VULN)
 {
-  report = 'File checked:     ' + sysPath + "\System32\Win32k.sys" + '\n' +
+  report = 'File checked:     ' + sysPath + "\win32k.sys" + '\n' +
            'File version:     ' + win32Ver  + '\n' +
            'Vulnerable range: ' + Vulnerable_range + '\n' ;
   security_message(data:report);
@@ -187,7 +194,7 @@ if(VULN)
 
 else if(VULN1)
 {
-  report = 'File checked:     ' + sysPath + "\System32\Drivers\Mrxdav.sys" + '\n' +
+  report = 'File checked:     ' + sysPath + "\drivers\mrxdav.sys" + '\n' +
            'File version:     ' + mrxVer  + '\n' +
            'Vulnerable range: ' + Vulnerable_range1 + '\n' ;
   security_message(data:report);
@@ -196,7 +203,7 @@ else if(VULN1)
 
 else if(VULN2)
 {
-  report = 'File checked:     ' + sysPath + "\System32\Edgehtml.dll" + '\n' +
+  report = 'File checked:     ' + sysPath + "\edgehtml.dll" + '\n' +
            'File version:     ' + edgeVer  + '\n' +
            'Vulnerable range: ' + Vulnerable_range2 + '\n' ;
   security_message(data:report);

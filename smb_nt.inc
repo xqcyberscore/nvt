@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: smb_nt.inc 12649 2018-12-04 12:15:30Z cfischer $
+# $Id: smb_nt.inc 12785 2018-12-13 10:41:09Z cfischer $
 #
 # Methods for handling SMB
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 12649 $
+# $Revision: 12785 $
 #
 ###############################################################################
 
@@ -6806,6 +6806,7 @@ function registry_get_sz( key, item, type ) {
 
     # Place value into the KB
     if( ! isnull( r3_value ) ) {
+      r3_value = chomp( r3_value ); # Sometimes we're getting a trailing newline back so make sure that this is removed.
       set_kb_item( name:kb_proxy_key, value:r3_value );
     } else {
       r3_value = FALSE;

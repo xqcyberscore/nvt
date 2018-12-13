@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-126.nasl 12313 2018-11-12 08:53:51Z asteins $
+# $Id: gb_ms16-126.nasl 12768 2018-12-12 09:09:14Z cfischer $
 #
 # Microsoft Internet Messaging API Information Disclosure Vulnerability (3196067)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809345");
-  script_version("$Revision: 12313 $");
+  script_version("$Revision: 12768 $");
   script_cve_id("CVE-2016-3298");
   script_bugtraq_id(93392);
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-12 10:09:14 +0100 (Wed, 12 Dec 2018) $");
   script_tag(name:"creation_date", value:"2016-10-12 08:11:15 +0530 (Wed, 12 Oct 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Internet Messaging API Information Disclosure Vulnerability (3196067)");
@@ -73,6 +73,7 @@ if(description)
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/library/security/MS16-126");
+
   exit(0);
 }
 
@@ -88,14 +89,14 @@ if(hotfix_check_sp(winVista:3, winVistax64:3, win7:2, win7x64:2, win2008:3, win2
   exit(0);
 }
 
-sysPath = smb_get_systemroot();
+sysPath = smb_get_system32root();
 if(!sysPath ){
   exit(0);
 }
 
-Win32Ver = fetch_file_version(sysPath:sysPath, file_name:"System32\Win32k.sys");
-oleVer = fetch_file_version(sysPath:sysPath, file_name:"System32\Inetcomm.dll");
-edgeVer = fetch_file_version(sysPath:sysPath, file_name:"System32\edgehtml.dll");
+Win32Ver = fetch_file_version(sysPath:sysPath, file_name:"win32k.sys");
+oleVer = fetch_file_version(sysPath:sysPath, file_name:"inetcomm.dll");
+edgeVer = fetch_file_version(sysPath:sysPath, file_name:"edgehtml.dll");
 if(!Win32Ver && !oleVer && !edgeVer){
   exit(0);
 }
@@ -162,7 +163,7 @@ else if(hotfix_check_sp(win10:1, win10x64:1) > 0 && edgeVer)
 
 if(VULN)
 {
-  report = 'File checked:     ' + sysPath + "\System32\Win32k.sys" + '\n' +
+  report = 'File checked:     ' + sysPath + "\win32k.sys" + '\n' +
            'File version:     ' + Win32Ver  + '\n' +
            'Vulnerable range: ' + Vulnerable_range + '\n' ;
   security_message(data:report);
@@ -171,7 +172,7 @@ if(VULN)
 
 else if(VULN1)
 {
-  report = 'File checked:     ' + sysPath + "\System32\Inetcomm.dll" + '\n' +
+  report = 'File checked:     ' + sysPath + "\inetcomm.dll" + '\n' +
            'File version:     ' + oleVer  + '\n' +
            'Vulnerable range: ' + Vulnerable_range1 + '\n' ;
   security_message(data:report);
@@ -180,7 +181,7 @@ else if(VULN1)
 
 else if(VULN2)
 {
-  report = 'File checked:     ' + sysPath + "\System32\edgehtml.dll" + '\n' +
+  report = 'File checked:     ' + sysPath + "\edgehtml.dll" + '\n' +
            'File version:     ' + edgeVer  + '\n' +
            'Vulnerable range: ' + Vulnerable_range2 + '\n' ;
   security_message(data:report);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-094.nasl 12051 2018-10-24 09:14:54Z asteins $
+# $Id: gb_ms16-094.nasl 12768 2018-12-12 09:09:14Z cfischer $
 #
 # Microsoft Windows Secure Boot Security Feature Bypass Vulnerability(3177404)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808196");
-  script_version("$Revision: 12051 $");
+  script_version("$Revision: 12768 $");
   script_cve_id("CVE-2016-3287");
   script_bugtraq_id(91604);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-12 10:09:14 +0100 (Wed, 12 Dec 2018) $");
   script_tag(name:"creation_date", value:"2016-07-13 12:13:04 +0530 (Wed, 13 Jul 2016)");
   script_name("Microsoft Windows Secure Boot Security Feature Bypass Vulnerability(3177404)");
 
@@ -50,8 +50,11 @@ if(description)
   integrity validation for bitLocker and the device encryption security features.");
 
   script_tag(name:"affected", value:"Microsoft Windows 8.1 x32/x64 Edition
+
   Microsoft Windows Server 2012/2012R2
+
   Microsoft Windows 10 x32/x64
+
   Windows 10 Version 1511 32-bit/64-bit.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
@@ -73,7 +76,6 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
@@ -83,12 +85,12 @@ if(hotfix_check_sp(win2012:1, win2012R2:1, win8_1:1, win8_1x64:1, win10:1, win10
   exit(0);
 }
 
-sysPath = smb_get_systemroot();
+sysPath = smb_get_system32root();
 if(!sysPath ){
   exit(0);
 }
 
-ciVer = fetch_file_version(sysPath:sysPath, file_name:"System32\ci.dll");
+ciVer = fetch_file_version(sysPath:sysPath, file_name:"ci.dll");
 if(ciVer)
 {
   if(hotfix_check_sp(win2012:1) > 0)
@@ -112,14 +114,14 @@ if(ciVer)
 
 if(VULN)
 {
-  report = 'File checked:     ' + sysPath + "\system32\ci.dll" + '\n' +
+  report = 'File checked:     ' + sysPath + "\ci.dll" + '\n' +
            'File version:     ' + ciVer  + '\n' +
            'Vulnerable range: ' + Vulnerable_range + '\n' ;
   security_message(data:report);
   exit(0);
 }
 
-WinEdgeVer = fetch_file_version(sysPath:sysPath, file_name:"System32\Edgehtml.dll");
+WinEdgeVer = fetch_file_version(sysPath:sysPath, file_name:"edgehtml.dll");
 if(!WinEdgeVer){
   exit(0);
 }
@@ -139,7 +141,7 @@ if(hotfix_check_sp(win10:1, win10x64:1) > 0)
 
 if(VULN1)
 {
-  report = 'File checked:     ' + sysPath + "\system32\Edgehtml.dll" + '\n' +
+  report = 'File checked:     ' + sysPath + "\edgehtml.dll" + '\n' +
            'File version:     ' + WinEdgeVer  + '\n' +
            'Vulnerable range: ' + Vulnerable_range + '\n' ;
   security_message(data:report);

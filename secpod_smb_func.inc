@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: secpod_smb_func.inc 11621 2018-09-26 10:00:23Z cfischer $
+# $Id: secpod_smb_func.inc 12770 2018-12-12 10:35:08Z cfischer $
 #
 # SMB Functions
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 11621 $
+# $Revision: 12770 $
 #
 ###############################################################################
 
@@ -34,6 +34,51 @@
 #
 # This script is released under the GNU GPLv2
 ###############################################################################
+
+# @brief Returns the version of a file (in the form of an array) saved within
+#        the KB tree "SMB/lsc_file_version_cache/".
+#
+# @param file_name The file name to get the version for. Currently supported: edgehtml.dll or mshtml.dll
+#
+# @note You need to add gb_smb_lsc_fetch_file_ver.nasl as a dependency to your VT
+#       if you want to use this function. Also take note of the current supported
+#       file names in the file_name parameter.
+#
+# @return An array containing the full file path and the version of the file,
+#         NULL in the case no file_name was passed to the function or the file name
+#         isn't supported by this function / by gb_smb_lsc_fetch_file_ver.nasl and
+#         FALSE if no file version is available. The array indices are the following:
+#
+#         ret_array["path"]    = the full path of the file (e.g. C:\WINDOWS\system32\edgehtml.dll)
+#         ret_array["version"] = the version of the file (e.g. 11.0.16299.785)
+#
+function smb_get_fileversion_from_cache( file_name ) {
+
+  local_var file_name;
+  local_var infos, ret_array;
+
+  if( ! file_name ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#file_name#-#smb_get_fileversion_from_cache" );
+    return;
+  }
+
+  if( file_name != "edgehtml.dll" && file_name != "mshtml.dll" ) {
+    set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#smb_get_fileversion_from_cache: Unsupported file name '" + file_name + "' passed. Currently supported: edgehtml.dll or mshtml.dll." );
+    return;
+  }
+
+  infos = get_kb_item( "SMB/lsc_file_version_cache/" + file_name + "/infos" );
+  if( ! infos )
+    return FALSE;
+
+  info_list = split( infos, sep:"#--#", keep:FALSE );
+  if( max_index( info_list ) != 2 ) # nb: Something wrong...
+    return FALSE;
+
+  ret_arr["path"]    = info_list[0];
+  ret_arr["version"] = info_list[1];
+  return ret_arr;
+}
 
 # Get File version or product version reading through a file. An
 # offset can be sent indicating the start location. By default

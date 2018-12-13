@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mega_extension_trojan_win.nasl 12410 2018-11-19 10:06:05Z cfischer $
+# $Id: gb_google_chrome_mega_extension_trojan_win.nasl 12784 2018-12-13 10:33:24Z cfischer $
 #
 # Google Chrome MEGA Extension Trojan-Windows
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813789");
-  script_version("$Revision: 12410 $");
+  script_version("$Revision: 12784 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-19 11:06:05 +0100 (Mon, 19 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-13 11:33:24 +0100 (Thu, 13 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-09-10 12:21:10 +0530 (Mon, 10 Sep 2018)");
   script_name("Google Chrome MEGA Extension Trojan-Windows");
 
@@ -65,7 +65,7 @@ if(description)
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
-  script_family("General");
+  script_family("Malware");
   script_dependencies("gb_google_chrome_detect_portable_win.nasl", "smb_reg_service_pack.nasl", "gb_wmi_access.nasl");
   script_mandatory_keys("GoogleChrome/Win/Ver", "WMI/access_successful", "SMB/WindowsVersion");
 

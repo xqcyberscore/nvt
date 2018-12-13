@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service4.nasl 10906 2018-08-10 14:50:26Z cfischer $
+# $Id: find_service4.nasl 12779 2018-12-12 19:14:16Z cfischer $
 #
 # Service Detection with 'JSON' Request
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108199");
-  script_version("$Revision: 10906 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:50:26 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 12779 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-12 20:14:16 +0100 (Wed, 12 Dec 2018) $");
   script_tag(name:"creation_date", value:"2017-07-20 14:08:04 +0200 (Thu, 20 Jul 2017)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -81,6 +81,14 @@ if( '\0' >< r )
 if( r =~ "^ZBXD" ) {
   register_service( port:port, proto:"zabbix", message:"A Zabbix Server seems to be running on this port." );
   log_message( port:port, data:"A Zabbix Server seems to be running on this port." );
+  exit( 0 );
+}
+
+# nb: SqueezeCenter CLI, running on 9090/tcp. This service is echoing back our request
+# from above in an URL encoded form. e.g. <openvas/>\r\n is returned as %3Copenvas%2F%3E\r\n
+if( r == '%7B%22request%22%3A%22active checks%22%7D\n' ) {
+  register_service( port:port, proto:"squeezecenter_cli", message:"A Logitech SqueezeCenter/Media Server CLI service seems to be running on this port." );
+  log_message( port:port, data:"A Logitech SqueezeCenter/Media Server CLI service seems to be running on this port." );
   exit( 0 );
 }
 

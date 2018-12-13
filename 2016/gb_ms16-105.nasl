@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-105.nasl 11969 2018-10-18 14:53:42Z asteins $
+# $Id: gb_ms16-105.nasl 12768 2018-12-12 09:09:14Z cfischer $
 #
 # Microsoft Edge Multiple Vulnerabities (3183043)
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809042");
-  script_version("$Revision: 11969 $");
+  script_version("$Revision: 12768 $");
   script_cve_id("CVE-2016-3247", "CVE-2016-3291", "CVE-2016-3294", "CVE-2016-3295",
                 "CVE-2016-3297", "CVE-2016-3325", "CVE-2016-3330", "CVE-2016-3350",
                 "CVE-2016-3351", "CVE-2016-3370", "CVE-2016-3374", "CVE-2016-3377");
   script_bugtraq_id(92828, 92834, 92789, 92830, 92829, 92832, 92807, 92793);
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-12 10:09:14 +0100 (Wed, 12 Dec 2018) $");
   script_tag(name:"creation_date", value:"2016-09-14 08:01:49 +0530 (Wed, 14 Sep 2016)");
   script_name("Microsoft Edge Multiple Vulnerabities (3183043)");
 
@@ -62,6 +62,7 @@ if(description)
   obtain information to further compromise a target system.");
 
   script_tag(name:"affected", value:"Microsoft Windows 10 x32/x64.
+
   Microsoft Windows 10 Version 1511 x32/x64.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
@@ -94,12 +95,12 @@ if(hotfix_check_sp(win10:1, win10x64:1) <= 0){
   exit(0);
 }
 
-edgePath = smb_get_systemroot();
+edgePath = smb_get_system32root();
 if(!edgePath){
   exit(0);
 }
 
-if(!edgeVer = fetch_file_version(sysPath: edgePath, file_name:"system32\Edgehtml.dll")){;
+if(!edgeVer = fetch_file_version(sysPath: edgePath, file_name:"edgehtml.dll")){;
   exit(0);
 }
 
@@ -119,7 +120,7 @@ if(hotfix_check_sp(win10:1, win10x64:1) > 0)
 
 if(VULN)
 {
-  report = 'File checked:     ' + edgePath + "\system32\Edgehtml.dll"+ '\n' +
+  report = 'File checked:     ' + edgePath + "\edgehtml.dll"+ '\n' +
            'File version:     ' + edgeVer  + '\n' +
            'Vulnerable range: ' + Vulnerable_range + '\n' ;
   security_message(data:report);

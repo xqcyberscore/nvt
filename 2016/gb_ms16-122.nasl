@@ -1,6 +1,6 @@
 #############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-122.nasl 12051 2018-10-24 09:14:54Z asteins $
+# $Id: gb_ms16-122.nasl 12768 2018-12-12 09:09:14Z cfischer $
 #
 # Microsoft Video Control Remote Code Execution Vulnerability (3195360)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809063");
-  script_version("$Revision: 12051 $");
+  script_version("$Revision: 12768 $");
   script_cve_id("CVE-2016-0142");
   script_bugtraq_id(93378);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-12 10:09:14 +0100 (Wed, 12 Dec 2018) $");
   script_tag(name:"creation_date", value:"2016-10-12 08:50:54 +0530 (Wed, 12 Oct 2016)");
   script_name("Microsoft Video Control Remote Code Execution Vulnerability (3195360)");
 
@@ -50,10 +50,15 @@ if(description)
   administrative user rights.");
 
   script_tag(name:"affected", value:"Microsoft Windows Vista x32/x64 Edition Service Pack 2
+
   Microsoft Windows 7 x32/x64 Edition Service Pack 1
+
   Microsoft Windows 8.1 x32/x64 Edition
+
   Microsoft Windows 10 x32/x64
+
   Microsoft Windows 10 Version 1511 x32/x64
+
   Microsoft Windows 10 Version 1607 x32/x64");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
@@ -73,6 +78,7 @@ if(description)
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS16-122");
+
   exit(0);
 }
 
@@ -87,27 +93,27 @@ if(hotfix_check_sp(winVista:3, win7:2, win7x64:2, winVistax64:3, win8_1:1, win8_
   exit(0);
 }
 
-vidPath = smb_get_systemroot();
+vidPath = smb_get_system32root();
 if(!vidPath ){
   exit(0);
 }
 
-vidVer = fetch_file_version(sysPath: vidPath, file_name:"System32\Msvidctl.dll");
-edgVer = fetch_file_version(sysPath: vidPath, file_name:"System32\Edgehtml.dll");
+vidVer = fetch_file_version(sysPath: vidPath, file_name:"msvidctl.dll");
+edgVer = fetch_file_version(sysPath: vidPath, file_name:"edgehtml.dll");
 if(!vidVer && !edgVer){
   exit(0);
 }
 
-if (vidVer =~ "^(6\.5\.6002\.1)"){
+if (vidVer =~ "^6\.5\.6002\.1"){
   Vulnerable_range = "Less than 6.5.6002.19689";
 }
-else if (vidVer =~ "^(6\.5\.6002\.2)"){
+else if (vidVer =~ "^6\.5\.6002\.2"){
   Vulnerable_range = "6.5.6002.23000 - 6.5.6002.24013";
 }
-else if (vidVer =~ "^(6\.5\.7601)"){
+else if (vidVer =~ "^6\.5\.7601"){
   Vulnerable_range = "Less than 6.5.7601.23544";
 }
-else if (vidVer =~ "^(6\.5\.9600\.1)"){
+else if (vidVer =~ "^6\.5\.9600\.1"){
   Vulnerable_range = "Less than 6.5.9600.18464";
 }
 
@@ -157,7 +163,7 @@ if(hotfix_check_sp(win10:1, win10x64:1) > 0)
 
 if(VULN)
 {
-  report = 'File checked:     ' + vidPath + "\system32\Msvidctl.dll" + '\n' +
+  report = 'File checked:     ' + vidPath + "\msvidctl.dll" + '\n' +
            'File version:     ' + vidVer  + '\n' +
            'Vulnerable range: ' + Vulnerable_range + '\n' ;
   security_message(data:report);
@@ -166,7 +172,7 @@ if(VULN)
 
 else if(VULN1)
 {
-  report = 'File checked:     ' + vidPath + "\system32\Edgehtml.dll" + '\n' +
+  report = 'File checked:     ' + vidPath + "\edgehtml.dll" + '\n' +
            'File version:     ' + edgVer  + '\n' +
            'Vulnerable range: ' + Vulnerable_range1 + '\n' ;
   security_message(data:report);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-130.nasl 11961 2018-10-18 10:49:40Z asteins $
+# $Id: gb_ms16-130.nasl 12768 2018-12-12 09:09:14Z cfischer $
 #
 # Microsoft Windows Multiple Vulnerabilities (3199172)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809465");
-  script_version("$Revision: 11961 $");
+  script_version("$Revision: 12768 $");
   script_cve_id("CVE-2016-7221", "CVE-2016-7222", "CVE-2016-7212");
   script_bugtraq_id(94021, 94023, 94027);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-12 10:09:14 +0100 (Wed, 12 Dec 2018) $");
   script_tag(name:"creation_date", value:"2016-11-09 08:29:26 +0530 (Wed, 09 Nov 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Multiple Vulnerabilities (3199172)");
@@ -56,11 +56,17 @@ if(description)
   crafted application.");
 
   script_tag(name:"affected", value:"Microsoft Windows Vista x32/x64 Edition Service Pack 2
+
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2
+
   Microsoft Windows 7 x32/x64 Edition Service Pack 1
+
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1
+
   Microsoft Windows 8.1 x32/x64 Edition
+
   Microsoft Windows Server 2012/2012R2
+
   Microsoft Windows 10 x32/x64");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
@@ -78,6 +84,7 @@ if(description)
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS16-130");
+
   exit(0);
 }
 
@@ -92,15 +99,15 @@ if(hotfix_check_sp(winVista:3, winVistax64:3, win7:2, win7x64:2, win2008:3, win2
   exit(0);
 }
 
-sysPath = smb_get_systemroot();
+sysPath = smb_get_system32root();
 if(!sysPath ){
   exit(0);
 }
 
-sysVer = fetch_file_version(sysPath:sysPath, file_name:"System32\Win32k.sys");
-edgeVer = fetch_file_version(sysPath:sysPath, file_name:"System32\Edgehtml.dll");
-asyVer = fetch_file_version(sysPath:sysPath, file_name:"System32\Asycfilt.dll");
-ctfdll = fetch_file_version(sysPath:sysPath, file_name:"system32\Msctf.dll");
+sysVer = fetch_file_version(sysPath:sysPath, file_name:"win32k.sys");
+edgeVer = fetch_file_version(sysPath:sysPath, file_name:"edgehtml.dll");
+asyVer = fetch_file_version(sysPath:sysPath, file_name:"asycfilt.dll");
+ctfdll = fetch_file_version(sysPath:sysPath, file_name:"msctf.dll");
 if(!sysVer && !edgeVer && !asyVer && !ctfdll){
   exit(0);
 }
@@ -185,7 +192,7 @@ else if(hotfix_check_sp(win10:1, win10x64:1) > 0 && edgeVer)
 
 if(VULN)
 {
-  report = 'File checked:     ' + sysPath + "\System32\Win32k.sys" + '\n' +
+  report = 'File checked:     ' + sysPath + "\win32k.sys" + '\n' +
            'File version:     ' + sysVer  + '\n' +
            'Vulnerable range: ' + Vulnerable_range + '\n' ;
   security_message(data:report);
@@ -194,7 +201,7 @@ if(VULN)
 
 else if(VULN2)
 {
-  report = 'File checked:     ' + sysPath + "\System32\edgehtml.dll" + '\n' +
+  report = 'File checked:     ' + sysPath + "\edgehtml.dll" + '\n' +
            'File version:     ' + edgeVer  + '\n' +
            'Vulnerable range: ' + Vulnerable_range2 + '\n' ;
   security_message(data:report);
@@ -203,7 +210,7 @@ else if(VULN2)
 
 else if(VULN3)
 {
-  report = 'File checked:     ' + sysPath + "\System32\Asycfilt.dll" + '\n' +
+  report = 'File checked:     ' + sysPath + "\asycfilt.dll" + '\n' +
            'File version:     ' + asyVer  + '\n' +
            'Vulnerable range: ' + Vulnerable_range3 + '\n' ;
   security_message(data:report);
@@ -212,11 +219,11 @@ else if(VULN3)
 
 else if(VULN4)
 {
-  report = 'File checked:     ' + sysPath + "\System32\Msctf.dll" + '\n' +
+  report = 'File checked:     ' + sysPath + "\msctf.dll" + '\n' +
            'File version:     ' + ctfdll  + '\n' +
            'Vulnerable range: ' + Vulnerable_range4 + '\n' ;
   security_message(data:report);
   exit(0);
 }
-exit(0);
 
+exit(0);

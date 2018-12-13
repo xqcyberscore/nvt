@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotnet_framework_ms16-155.nasl 12455 2018-11-21 09:17:27Z cfischer $
+# $Id: gb_dotnet_framework_ms16-155.nasl 12768 2018-12-12 09:09:14Z cfischer $
 #
 # Microsoft .NET Framework Information Disclosure Vulnerability (3205640)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809760");
-  script_version("$Revision: 12455 $");
+  script_version("$Revision: 12768 $");
   script_cve_id("CVE-2016-7270");
   script_bugtraq_id(94741);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-12 10:09:14 +0100 (Wed, 12 Dec 2018) $");
   script_tag(name:"creation_date", value:"2016-12-14 15:04:05 +0530 (Wed, 14 Dec 2016)");
   script_name("Microsoft .NET Framework Information Disclosure Vulnerability (3205640)");
   script_tag(name:"summary", value:"This host is missing an important security
@@ -81,8 +81,8 @@ if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2, win8_1:1, win8_1x64:1,
   exit(0);
 }
 
-sysPath = smb_get_systemroot();
-if(!sysPath ){
+sysPath = smb_get_system32root();
+if(!sysPath){
   exit(0);
 }
 
@@ -120,13 +120,13 @@ if(registry_key_exists(key:key))
 
 if(hotfix_check_sp(win10:1, win10x64:1, win2016:1) > 0)
 {
-  edgeVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Edgehtml.dll");
+  edgeVer = fetch_file_version(sysPath:sysPath, file_name:"edgehtml.dll");
   if(!edgeVer){
     exit(0);
   }
   if(edgeVer && version_in_range(version:edgeVer, test_version:"11.0.14393.0", test_version2:"11.0.14393.575"))
   {
-    report = 'File checked:     ' + sysPath + "\system32\Edgehtml.dll" + '\n' +
+    report = 'File checked:     ' + sysPath + "\edgehtml.dll" + '\n' +
              'File version:     ' + edgeVer  + '\n' +
              'Vulnerable range: 11.0.14393.0 - 11.0.14393.575' + '\n' ;
     security_message(data:report);

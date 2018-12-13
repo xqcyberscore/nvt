@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms17-009.nasl 11879 2018-10-12 12:48:49Z mmartin $
+# $Id: gb_ms17-009.nasl 12768 2018-12-12 09:09:14Z cfischer $
 #
 # Microsoft Windows PDF Library Memory Corruption Vulnerability (4010319)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810622");
-  script_version("$Revision: 11879 $");
+  script_version("$Revision: 12768 $");
   script_cve_id("CVE-2017-0023");
   script_bugtraq_id(96075);
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:48:49 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-12 10:09:14 +0100 (Wed, 12 Dec 2018) $");
   script_tag(name:"creation_date", value:"2017-03-15 08:29:25 +0530 (Wed, 15 Mar 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows PDF Library Memory Corruption Vulnerability (4010319)");
@@ -50,10 +50,15 @@ if(description)
   in the context of the current user.");
 
   script_tag(name:"affected", value:"Microsoft Windows 8.1 x32/x64
+
   Microsoft Windows Server 2012/2012R2
+
   Microsoft Windows 10 x32/x64
+
   Microsoft Windows 10 Version 1511 x32/x64
+
   Microsoft Windows 10 Version 1607 x32/x64
+
   Microsoft Windows Server 2016 x64");
 
   script_tag(name:"solution", value:"Run Windows update and update the
@@ -70,7 +75,7 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
-  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS17-009");
+
   exit(0);
 }
 
@@ -85,14 +90,14 @@ if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012:1, win2012R2:1, win10:1,
   exit(0);
 }
 
-sysPath = smb_get_systemroot();
+sysPath = smb_get_system32root();
 if(!sysPath ){
   exit(0);
 }
 
-pdfVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Windows.data.pdf.dll");
-pdfVer1 = fetch_file_version(sysPath:sysPath, file_name:"system32\Win32k.sys");
-edgeVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Edgehtml.dll");
+pdfVer = fetch_file_version(sysPath:sysPath, file_name:"windows.data.pdf.dll");
+pdfVer1 = fetch_file_version(sysPath:sysPath, file_name:"win32k.sys");
+edgeVer = fetch_file_version(sysPath:sysPath, file_name:"edgehtml.dll");
 if(!pdfVer && !pdfVer1 && !edgeVer){
   exit(0);
 }
@@ -140,7 +145,7 @@ else if(hotfix_check_sp(win10:1, win10x64:1, win2016:1) > 0 && edgeVer)
 
 if(VULN)
 {
-  report = 'File checked:     ' + sysPath + "\system32\Windows.data.pdf.dll" + '\n' +
+  report = 'File checked:     ' + sysPath + "\windows.data.pdf.dll" + '\n' +
            'File version:     ' + pdfVer  + '\n' +
            'Vulnerable range: ' + Vulnerable_range + '\n' ;
   security_message(data:report);
@@ -149,7 +154,7 @@ if(VULN)
 
 if(VULN2)
 {
-  report = 'File checked:     ' + sysPath + "\system32\Win32k.sys" + '\n' +
+  report = 'File checked:     ' + sysPath + "\win32k.sys" + '\n' +
            'File version:     ' + pdfVer1  + '\n' +
            'Vulnerable range: ' + Vulnerable_range + '\n' ;
   security_message(data:report);
@@ -158,7 +163,7 @@ if(VULN2)
 
 if(VULN3)
 {
-  report = 'File checked:     ' + sysPath + "\system32\Edgehtml.dll" + '\n' +
+  report = 'File checked:     ' + sysPath + "\edgehtml.dll" + '\n' +
            'File version:     ' + edgeVer  + '\n' +
            'Vulnerable range: ' + Vulnerable_range + '\n' ;
   security_message(data:report);

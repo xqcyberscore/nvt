@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms17-022.nasl 12291 2018-11-09 14:55:44Z cfischer $
+# $Id: gb_ms17-022.nasl 12768 2018-12-12 09:09:14Z cfischer $
 #
 # MS Windows XML Core Services Information Disclosure Vulnerability (4010321)
 #
@@ -23,14 +23,15 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810623");
-  script_version("$Revision: 12291 $");
+  script_version("$Revision: 12768 $");
   script_cve_id("CVE-2017-0022");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 15:55:44 +0100 (Fri, 09 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-12 10:09:14 +0100 (Wed, 12 Dec 2018) $");
   script_tag(name:"creation_date", value:"2017-03-15 10:03:11 +0530 (Wed, 15 Mar 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("MS Windows XML Core Services Information Disclosure Vulnerability (4010321)");
@@ -80,9 +81,9 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");
@@ -95,14 +96,14 @@ if(hotfix_check_sp(winVista:3, winVistax64:3, win2008x64:3, win2008:3, win7:2, w
   exit(0);
 }
 
-mssysPath = smb_get_systemroot();
-if(!mssysPath ){
+mssysPath = smb_get_system32root();
+if(!mssysPath){
   exit(0);
 }
 
-msdllVer = fetch_file_version(sysPath:mssysPath, file_name:"system32\Msxml3.dll");
-pdfVer = fetch_file_version(sysPath:mssysPath, file_name:"system32\Windows.data.pdf.dll");
-edgeVer = fetch_file_version(sysPath:mssysPath, file_name:"system32\Edgehtml.dll");
+msdllVer = fetch_file_version(sysPath:mssysPath, file_name:"msxml3.dll");
+pdfVer = fetch_file_version(sysPath:mssysPath, file_name:"windows.data.pdf.dll");
+edgeVer = fetch_file_version(sysPath:mssysPath, file_name:"edgehtml.dll");
 if(!msdllVer && !pdfVer && !edgeVer){
   exit(0);
 }
@@ -170,7 +171,7 @@ else if(hotfix_check_sp(win10:1, win10x64:1, win2016:1) > 0 && edgeVer)
 
 if(VULN1)
 {
-  report = 'File checked:     ' + mssysPath + "\system32\Msxml3.dll" + '\n' +
+  report = 'File checked:     ' + mssysPath + "\msxml3.dll" + '\n' +
            'File version:     ' + msdllVer  + '\n' +
            'Vulnerable range: ' + Vulnerable_range + '\n' ;
   security_message(data:report);
@@ -179,7 +180,7 @@ if(VULN1)
 
 if(VULN2)
 {
-  report = 'File checked:     ' + mssysPath + "\system32\Windows.data.pdf.dll" + '\n' +
+  report = 'File checked:     ' + mssysPath + "\windows.data.pdf.dll" + '\n' +
            'File version:     ' + pdfVer  + '\n' +
            'Vulnerable range: ' + Vulnerable_range + '\n' ;
   security_message(data:report);
@@ -188,7 +189,7 @@ if(VULN2)
 
 if(VULN3)
 {
-  report = 'File checked:     ' + mssysPath + "\system32\Edgehtml.dll" + '\n' +
+  report = 'File checked:     ' + mssysPath + "\edgehtml.dll" + '\n' +
            'File version:     ' + edgeVer  + '\n' +
            'Vulnerable range: ' + Vulnerable_range + '\n' ;
   security_message(data:report);

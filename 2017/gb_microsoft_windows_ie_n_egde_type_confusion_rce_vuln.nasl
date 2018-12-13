@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_windows_ie_n_egde_type_confusion_rce_vuln.nasl 11879 2018-10-12 12:48:49Z mmartin $
+# $Id: gb_microsoft_windows_ie_n_egde_type_confusion_rce_vuln.nasl 12768 2018-12-12 09:09:14Z cfischer $
 #
 # Microsoft Edge and Internet Explorer Type Confusion Remote Code Execution Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810577");
-  script_version("$Revision: 11879 $");
+  script_version("$Revision: 12768 $");
   script_cve_id("CVE-2017-0037");
   script_bugtraq_id(96088);
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:48:49 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-12 10:09:14 +0100 (Wed, 12 Dec 2018) $");
   script_tag(name:"creation_date", value:"2017-03-01 14:28:21 +0530 (Wed, 01 Mar 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Edge and Internet Explorer Type Confusion Remote Code Execution Vulnerability");
@@ -78,9 +78,9 @@ if(description)
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS17-006");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");
@@ -92,14 +92,14 @@ if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2, win2012R2:1, win8_1:1,
   exit(0);
 }
 
-sysPath = smb_get_systemroot();
+sysPath = smb_get_system32root();
 if(!sysPath){
   exit(0);
 }
 
-iedllVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Mshtml.dll");
+iedllVer = fetch_file_version(sysPath:sysPath, file_name:"mshtml.dll");
 
-edgeVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Edgehtml.dll");
+edgeVer = fetch_file_version(sysPath:sysPath, file_name:"edgehtml.dll");
 
 if(!edgeVer && !iedllVer){
   exit(0);
@@ -146,7 +146,7 @@ else if(hotfix_check_sp(win10:1, win10x64:1) > 0)
 
 if(VULN1)
 {
-  report = 'File checked:     ' + sysPath + "\System32\Mshtml.dll" + '\n' +
+  report = 'File checked:     ' + sysPath + "\mshtml.dll" + '\n' +
            'File version:     ' +  iedllVer + '\n' +
            'Vulnerable range: ' + Vulnerable_range1 + '\n' ;
   security_message(data:report);
@@ -155,7 +155,7 @@ if(VULN1)
 
 else if(VULN2)
 {
-  report = 'File checked:     ' + sysPath + "\System32\Edgehtml.dll" + '\n' +
+  report = 'File checked:     ' + sysPath + "\edgehtml.dll" + '\n' +
            'File version:     ' + edgeVer  + '\n' +
            'Vulnerable range: ' + Vulnerable_range2 + '\n' ;
   security_message(data:report);
@@ -163,4 +163,3 @@ else if(VULN2)
 }
 
 exit(0);
-

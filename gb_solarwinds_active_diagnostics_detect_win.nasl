@@ -1,8 +1,8 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_webex_productivity_tools_detect_win.nasl 12753 2018-12-11 08:48:01Z mmartin $
+# $Id: gb_solarwinds_active_diagnostics_detect_win.nasl 12778 2018-12-12 16:54:34Z mmartin $
 #
-# Cisco WebEx Productivity Tools Version Detection (Windows)
+# SolarWinds Active Diagnostics Version Detection (Windows)
 #
 # Authors:
 # Michael Martin <michael.martin@greenbone.net>
@@ -26,13 +26,13 @@
 
 if(description)
 {
-  script_oid("1.3.6.1.4.1.25623.1.0.107375");
-  script_version("$Revision: 12753 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-11 09:48:01 +0100 (Tue, 11 Dec 2018) $");
-  script_tag(name:"creation_date", value:"2018-12-05 13:13:22 +0100 (Wed, 05 Dec 2018)");
+  script_oid("1.3.6.1.4.1.25623.1.0.107434");
+  script_version("$Revision: 12778 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-12 17:54:34 +0100 (Wed, 12 Dec 2018) $");
+  script_tag(name:"creation_date", value:"2018-12-12 17:53:52 +0100 (Wed, 12 Dec 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_name("Cisco WebEx Productivity Tools Version Detection (Windows)");
+  script_name("SolarWinds Active Diagnostics Version Detection (Windows)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Product detection");
@@ -41,7 +41,7 @@ if(description)
   script_require_ports(139, 445);
 
   script_tag(name:"summary", value:"This script detects the installed version
-  of Cisco WebEx Productivity Tools for Windows.");
+  of SolarWinds Active Diagnostics for Windows.");
 
   script_tag(name:"qod_type", value:"registry");
 
@@ -60,9 +60,11 @@ if (!os_arch)
 
 if ("x86" >< os_arch) {
   key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\");
+  location = "C:\Program Files\SolarWinds\Orion";
 } else if ("x64" >< os_arch) {
   key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\",
                        "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\");
+  location = "C:\Program Files (x86)\SolarWinds\Orion";
 }
 
 if (isnull(key_list)) exit(0);
@@ -71,30 +73,20 @@ foreach key (key_list) {
   foreach item (registry_enum_keys(key:key)) {
 
     appName = registry_get_sz(key:key + item, item:"DisplayName");
-
-    if(!appName || appName !~ "Cisco WebEx Productivity Tools") continue;
+    if(!appName || appName !~ "SolarWinds Active Diagnostics") continue;
     version = "unknown";
-    location = "unknown";
+    concluded += "SolarWinds Active Diagnostics";
+     # wrong Version in "DisplayVersion"
+    ver = eregmatch(string:appName, pattern:"([0-9.]+)");
 
-    loc = registry_get_sz(key:key + item, item:"DisplayIcon");
-    if(loc) {
-      split = split( loc, sep:"\" );
-      location = ereg_replace(string:loc, pattern:split[max_index(split) - 1], replace:'');
-    }
+    if(ver[1]) version = ver[1];
+    concluded += " " + version;
 
-
-    vers = registry_get_sz(key:key + item, item:"DisplayVersion");
-    if(vers){
-      version = vers;
-      concluded += appName + " " + version;
-    }
-
-    set_kb_item(name:"cisco/webex/win/detected", value:TRUE);
-    set_kb_item(name:"cisco/webex_productivity_tools/win/detected", value:TRUE);
-    set_kb_item(name:"cisco/webex_productivity_tools/win/ver", value:version);
+    set_kb_item(name:"solarwinds/active_diagnostics/detected", value:TRUE);
+    set_kb_item(name:"solarwinds/active_diagnostics/win/ver", value:version);
 
     register_and_report_cpe(app:appName, ver:version, concluded:concluded,
-    base:"cpe:/a:cisco:webex_productivity_tools:", expr:"^([0-9.]+)", insloc:location, regService:"smb-login", regPort:0);
+    base:"cpe:/a:solarwinds:active_diagnostics:", expr:"^([0-9.]+)", insloc:location, regService:"smb-login", regPort:0);
 
     exit(0);
   }

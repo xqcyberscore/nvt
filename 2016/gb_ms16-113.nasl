@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-113.nasl 12455 2018-11-21 09:17:27Z cfischer $
+# $Id: gb_ms16-113.nasl 12768 2018-12-12 09:09:14Z cfischer $
 #
 # Microsoft Windows Secure Kernel Mode Information Disclosure Vulnerability (3185876)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809311");
-  script_version("$Revision: 12455 $");
+  script_version("$Revision: 12768 $");
   script_cve_id("CVE-2016-3344");
   script_bugtraq_id(92855);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-12 10:09:14 +0100 (Wed, 12 Dec 2018) $");
   script_tag(name:"creation_date", value:"2016-09-14 08:50:02 +0530 (Wed, 14 Sep 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Secure Kernel Mode Information Disclosure Vulnerability (3185876)");
@@ -49,6 +49,7 @@ if(description)
   to read sensitive information on the target system.");
 
   script_tag(name:"affected", value:"Microsoft Windows 10 x32/x64
+
   Microsoft Windows 10 Version 1511 x32/x64");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
@@ -67,9 +68,9 @@ if(description)
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/library/security/MS16-113");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");
@@ -80,12 +81,12 @@ if(hotfix_check_sp(win10:1, win10x64:1) <= 0){
   exit(0);
 }
 
-sysPath = smb_get_systemroot();
+sysPath = smb_get_system32root();
 if(!sysPath ){
   exit(0);
 }
 
-edgeVer = fetch_file_version(sysPath:sysPath, file_name:"System32\Edgehtml.dll");
+edgeVer = fetch_file_version(sysPath:sysPath, file_name:"edgehtml.dll");
 if(!edgeVer){
   exit(0);
 }
@@ -105,7 +106,7 @@ if(hotfix_check_sp(win10:1, win10x64:1) > 0)
 
 if(VULN)
 {
-  report = 'File checked:     ' + sysPath + "\System32\Edgehtml.dll" + '\n' +
+  report = 'File checked:     ' + sysPath + "\edgehtml.dll" + '\n' +
            'File version:     ' + edgeVer  + '\n' +
            'Vulnerable range: ' + Vulnerable_range + '\n' ;
   security_message(data:report);

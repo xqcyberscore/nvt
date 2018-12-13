@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-066.nasl 12149 2018-10-29 10:48:30Z asteins $
+# $Id: gb_ms16-066.nasl 12768 2018-12-12 09:09:14Z cfischer $
 #
 # Microsoft Windows Virtual Secure Mode Security Feature Bypass vulnerability (3155451)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807693");
-  script_version("$Revision: 12149 $");
+  script_version("$Revision: 12768 $");
   script_cve_id("CVE-2016-0181");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-12 10:09:14 +0100 (Wed, 12 Dec 2018) $");
   script_tag(name:"creation_date", value:"2016-05-11 19:18:46 +0530 (Wed, 11 May 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Virtual Secure Mode Security Feature Bypass vulnerability (3155451)");
@@ -49,6 +49,7 @@ if(description)
   attacker to bypass a security feature.");
 
   script_tag(name:"affected", value:"Microsoft Windows 10 x32/x64
+
   Microsoft Windows 10 Version 1511 x32/x64");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
@@ -66,9 +67,9 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");
@@ -79,12 +80,12 @@ if(hotfix_check_sp(win10:1, win10x64:1) <= 0){
   exit(0);
 }
 
-sysPath = smb_get_systemroot();
-if(!sysPath ){
+sysPath = smb_get_system32root();
+if(!sysPath){
   exit(0);
 }
 
-sysVer = fetch_file_version(sysPath:sysPath, file_name:"System32\Edgehtml.dll");
+sysVer = fetch_file_version(sysPath:sysPath, file_name:"edgehtml.dll");
 if(!sysVer){
   exit(0);
 }
@@ -106,7 +107,7 @@ if(hotfix_check_sp(win10:1, win10x64:1) > 0)
 
 if(VULN)
 {
-  report = 'File checked:     ' + sysPath + "\System32\Edgehtml.dll" + '\n' +
+  report = 'File checked:     ' + sysPath + "\edgehtml.dll" + '\n' +
            'File version:     ' + sysVer  + '\n' +
            'Vulnerable range: ' + Vulnerable_range + '\n' ;
   security_message(data:report);

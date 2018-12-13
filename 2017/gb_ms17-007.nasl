@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms17-007.nasl 11879 2018-10-12 12:48:49Z mmartin $
+# $Id: gb_ms17-007.nasl 12768 2018-12-12 09:09:14Z cfischer $
 #
 # Microsoft Edge Multiple Vulnerabilities (4013071)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810808");
-  script_version("$Revision: 11879 $");
+  script_version("$Revision: 12768 $");
   script_cve_id("CVE-2017-0009", "CVE-2017-0010", "CVE-2017-0011", "CVE-2017-0012",
                 "CVE-2017-0015", "CVE-2017-0017", "CVE-2017-0023", "CVE-2017-0032",
                 "CVE-2017-0033", "CVE-2017-0034", "CVE-2017-0035", "CVE-2017-0037",
@@ -38,7 +38,7 @@ if(description)
                 "CVE-2017-0140", "CVE-2017-0141", "CVE-2017-0150", "CVE-2017-0151");
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:48:49 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-12 10:09:14 +0100 (Wed, 12 Dec 2018) $");
   script_tag(name:"creation_date", value:"2017-03-15 08:29:28 +0530 (Wed, 15 Mar 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Edge Multiple Vulnerabilities (4013071)");
@@ -68,8 +68,11 @@ if(description)
   origin policy.");
 
   script_tag(name:"affected", value:"Microsoft Windows 10 x32/x64
+
   Microsoft Windows Server 2016 x64
+
   Microsoft Windows 10 Version 1511 x32/x64
+
   Microsoft Windows 10 Version 1607 x32/x64");
 
   script_tag(name:"solution", value:"Run Windows update and update the
@@ -87,9 +90,9 @@ if(description)
   script_require_ports(139, 445);
   script_mandatory_keys("MS/Edge/Installed");
   script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS17-007");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");
@@ -100,12 +103,12 @@ if(hotfix_check_sp(win10:1, win10x64:1, win2016:1) <= 0){
   exit(0);
 }
 
-sysPath = smb_get_systemroot();
+sysPath = smb_get_system32root();
 if(!sysPath ){
   exit(0);
 }
 
-edgeVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Edgehtml.dll");
+edgeVer = fetch_file_version(sysPath:sysPath, file_name:"edgehtml.dll");
 if(!edgeVer){
   exit(0);
 }
@@ -132,7 +135,7 @@ if(hotfix_check_sp(win10:1, win10x64:1, win2016:1) > 0)
 
   if(VULN)
   {
-    report = 'File checked:     ' + sysPath + "\system32\Edgehtml.dll" + '\n' +
+    report = 'File checked:     ' + sysPath + "\edgehtml.dll" + '\n' +
              'File version:     ' + edgeVer  + '\n' +
              'Vulnerable range: ' + Vulnerable_range + '\n' ;
     security_message(data:report);

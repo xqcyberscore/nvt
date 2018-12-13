@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotnet_framework_ms16-120.nasl 12455 2018-11-21 09:17:27Z cfischer $
+# $Id: gb_dotnet_framework_ms16-120.nasl 12768 2018-12-12 09:09:14Z cfischer $
 #
 # Microsoft .NET Framework Information Disclosure Vulnerability (3192884)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809706");
-  script_version("$Revision: 12455 $");
+  script_version("$Revision: 12768 $");
   script_cve_id("CVE-2016-3209");
   script_bugtraq_id(93385);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-12 10:09:14 +0100 (Wed, 12 Dec 2018) $");
   script_tag(name:"creation_date", value:"2016-10-12 13:56:09 +0530 (Wed, 12 Oct 2016)");
   script_name("Microsoft .NET Framework Information Disclosure Vulnerability (3192884)");
 
@@ -86,8 +86,8 @@ if(hotfix_check_sp(winVista:3, winVistax64:3, win7:2, win7x64:2, win2008:3,
   exit(0);
 }
 
-sysPath = smb_get_systemroot();
-if(!sysPath ){
+sysPath = smb_get_system32root();
+if(!sysPath){
   exit(0);
 }
 
@@ -185,8 +185,7 @@ if(registry_key_exists(key:key))
 ##https://support.microsoft.com/en-in/kb/3189051
 ##Can lead to FP not covering
 
-
-edgeVer = fetch_file_version(sysPath:sysPath, file_name:"System32\Edgehtml.dll");
+edgeVer = fetch_file_version(sysPath:sysPath, file_name:"edgehtml.dll");
 if(hotfix_check_sp(win10:1, win10x64:1) > 0 && edgeVer)
 {
   if(version_is_less(version:edgeVer, test_version:"11.0.10240.17146"))
@@ -235,11 +234,10 @@ else if(VULN3)
 
 else if(VULN4)
 {
-  report = 'File checked:     ' + sysPath + "System32\Drivers\Edgehtml.dll" + '\n' +
+  report = 'File checked:     ' + sysPath + "\edgehtml.dll" + '\n' +
            'File version:     ' + edgeVer  + '\n' +
            'Vulnerable range: ' + vulnerable_range4 + '\n' ;
   security_message(data:report);
   exit(0);
 }
 exit(0);
-

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ldap_detect.nasl 8145 2017-12-15 13:31:58Z cfischer $
+# $Id: ldap_detect.nasl 12779 2018-12-12 19:14:16Z cfischer $
 #
 # LDAP Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100082");
-  script_version("$Revision: 8145 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:31:58 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 12779 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-12 20:14:16 +0100 (Wed, 12 Dec 2018) $");
   script_tag(name:"creation_date", value:"2009-03-27 12:39:47 +0100 (Fri, 27 Mar 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -36,8 +36,9 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Service detection");
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
-  # LDAP Detection is currently quite fragile so keep all of those in here to catch the most common services before
-  script_dependencies("find_service.nasl", "find_service1.nasl", "find_service2.nasl", "find_service_3digits.nasl");
+  # The LDAP Detection is currently quite fragile so using find_service6.nasl which pulls in all
+  # other find_service* ones catch the most common services before.
+  script_dependencies("find_service6.nasl");
   script_require_ports("Services/unknown", 389, 636);
 
   script_tag(name:"summary", value:"A LDAP Server is running at this host.

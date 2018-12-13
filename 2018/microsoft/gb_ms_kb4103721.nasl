@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4103721.nasl 12120 2018-10-26 11:13:20Z mmartin $
+# $Id: gb_ms_kb4103721.nasl 12768 2018-12-12 09:09:14Z cfischer $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4103721)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813339");
-  script_version("$Revision: 12120 $");
+  script_version("$Revision: 12768 $");
   script_cve_id("CVE-2018-0765", "CVE-2018-0954", "CVE-2018-0955", "CVE-2018-0958",
                 "CVE-2018-0959", "CVE-2018-0961", "CVE-2018-1022", "CVE-2018-1025",
                 "CVE-2018-1039", "CVE-2018-8112", "CVE-2018-8114", "CVE-2018-8122",
@@ -40,7 +40,7 @@ if(description)
                 "CVE-2018-0946", "CVE-2018-0953", "CVE-2018-0886");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-12 10:09:14 +0100 (Wed, 12 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-05-09 10:15:05 +0530 (Wed, 09 May 2018)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4103721)");
 
@@ -126,7 +126,7 @@ if(!edgeVer){
 
 if(version_in_range(version:edgeVer, test_version:"11.0.17134.0", test_version2:"11.0.17134.47"))
 {
-  report = report_fixed_ver(file_checked:sysPath + "\Edgehtml.dll",
+  report = report_fixed_ver(file_checked:sysPath + "\edgehtml.dll",
                             file_version:edgeVer, vulnerable_range:"11.0.17134.0 - 11.0.17134.47");
   security_message(data:report);
   exit(0);

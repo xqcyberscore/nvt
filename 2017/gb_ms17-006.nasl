@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms17-006.nasl 11874 2018-10-12 11:28:04Z mmartin $
+# $Id: gb_ms17-006.nasl 12768 2018-12-12 09:09:14Z cfischer $
 #
 # Microsoft Internet Explorer Multiple Vulnerabilities (4013073)
 #
@@ -23,18 +23,19 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/a:microsoft:ie";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810625");
-  script_version("$Revision: 11874 $");
+  script_version("$Revision: 12768 $");
   script_cve_id("CVE-2017-0008", "CVE-2017-0009", "CVE-2017-0012", "CVE-2017-0018",
                 "CVE-2017-0033", "CVE-2017-0037", "CVE-2017-0040", "CVE-2017-0049",
                 "CVE-2017-0059", "CVE-2017-0130", "CVE-2017-0149", "CVE-2017-0154");
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-12 10:09:14 +0100 (Wed, 12 Dec 2018) $");
   script_tag(name:"creation_date", value:"2017-03-15 12:07:36 +0530 (Wed, 15 Mar 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Internet Explorer Multiple Vulnerabilities (4013073)");
@@ -78,6 +79,7 @@ if(description)
   script_dependencies("gb_ms_ie_detect.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("MS/IE/Version");
+
   exit(0);
 }
 
@@ -93,14 +95,14 @@ if(hotfix_check_sp(winVista:3, winVistax64:3, win2008:3, win2008x64:3, win2012:1
   exit(0);
 }
 
-iePath = smb_get_systemroot();
+iePath = smb_get_system32root();
 if(!iePath ){
   exit(0);
 }
 
-iedllVer = fetch_file_version(sysPath:iePath, file_name:"system32\Mshtml.dll");
-oleVer = fetch_file_version(sysPath:iePath, file_name:"System32\Inetcomm.dll");
-edgeVer = fetch_file_version(sysPath:iePath, file_name:"System32\edgehtml.dll");
+iedllVer = fetch_file_version(sysPath:iePath, file_name:"mshtml.dll");
+oleVer = fetch_file_version(sysPath:iePath, file_name:"inetcomm.dll");
+edgeVer = fetch_file_version(sysPath:iePath, file_name:"edgehtml.dll");
 if(!iedllVer && !oleVer && !edgeVer){
   exit(0);
 }
@@ -173,7 +175,7 @@ else if(hotfix_check_sp(win10:1, win10x64:1, win2016:1) > 0 && edgeVer)
 
 if(VULN)
 {
-  report = 'File checked:     ' + iePath + "\system32\Mshtml.dll" + '\n' +
+  report = 'File checked:     ' + iePath + "\mshtml.dll" + '\n' +
            'File version:     ' + iedllVer  + '\n' +
            'Vulnerable range: ' + Vulnerable_range + '\n' ;
   security_message(data:report);
@@ -182,7 +184,7 @@ if(VULN)
 
 else if(VULN1)
 {
-  report = 'File checked:     ' + iePath + "\System32\Inetcomm.dll" + '\n' +
+  report = 'File checked:     ' + iePath + "\inetcomm.dll" + '\n' +
            'File version:     ' + oleVer  + '\n' +
            'Vulnerable range: ' + Vulnerable_range + '\n' ;
   security_message(data:report);
@@ -191,7 +193,7 @@ else if(VULN1)
 
 else if(VULN2)
 {
-  report = 'File checked:     ' + iePath + "\System32\edgehtml.dll" + '\n' +
+  report = 'File checked:     ' + iePath + "\edgehtml.dll" + '\n' +
            'File version:     ' + edgeVer  + '\n' +
            'Vulnerable range: ' + Vulnerable_range + '\n' ;
   security_message(data:report);
