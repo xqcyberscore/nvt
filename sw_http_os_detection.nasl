@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_http_os_detection.nasl 12754 2018-12-11 09:39:53Z cfischer $
+# $Id: sw_http_os_detection.nasl 12793 2018-12-13 14:23:39Z cfischer $
 #
 # HTTP OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111067");
-  script_version("$Revision: 12754 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-11 10:39:53 +0100 (Tue, 11 Dec 2018) $");
+  script_version("$Revision: 12793 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-13 15:23:39 +0100 (Thu, 13 Dec 2018) $");
   script_tag(name:"creation_date", value:"2015-12-10 16:00:00 +0100 (Thu, 10 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -67,6 +67,21 @@ function check_http_banner( port, banner ) {
 
     # BigIP Load Balancer on the frontend, registering this could report/use a wrong OS for the backend server
     if( banner == "Server: BigIP" ) return;
+
+    # aMule Server is cross-patform
+    if( banner == "Server: aMule" ) return;
+
+    # Transmission Server is cross-platform
+    if( banner == "Server: Transmission" ) return;
+
+    # Logitech Media Server is cross-platform
+    if( banner == "Server: Logitech Media Server" ||
+        egrep( pattern:"^Server: Logitech Media Server\([0-9.]+\)$", string:banner ) ||
+        egrep( pattern:"^Server: Logitech Media Server\([0-9.]+\ - [0-9.]+)$", string:banner ) )
+      return;
+
+    # NZBGet is cross-platform
+    if( "Server: nzbget" >< banner ) return;
 
     # API TCP listener is cross-platform
     if( "Server: Icinga" >< banner ) return;
@@ -909,7 +924,7 @@ function check_php_banner( port, host ) {
   } else {
     banner_type = "PHP Server banner";
     phpBanner = chomp( phpBanner );
-    if( egrep( pattern:"^X-Powered-By: PHP/[0-9.]+$", string:banner ) ) return;
+    if( egrep( pattern:"^X-Powered-By: PHP/[0-9.]+$", string:phpBanner ) ) return;
   }
 
   if( phpBanner ) {

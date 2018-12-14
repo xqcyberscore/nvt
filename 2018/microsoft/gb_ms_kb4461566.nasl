@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4461566.nasl 12777 2018-12-12 16:20:50Z santu $
+# $Id: gb_ms_kb4461566.nasl 12795 2018-12-13 15:11:36Z cfischer $
 #
 # Microsoft Excel Viewer 2007 Service Pack 3 Information Disclosure Vulnerability (KB4461566)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814529");
-  script_version("$Revision: 12777 $");
+  script_version("$Revision: 12795 $");
   script_cve_id("CVE-2018-8627");
   script_bugtraq_id(106120);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-12 17:20:50 +0100 (Wed, 12 Dec 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-13 16:11:36 +0100 (Thu, 13 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-12-12 12:30:30 +0530 (Wed, 12 Dec 2018)");
   script_name("Microsoft Excel Viewer 2007 Service Pack 3 Information Disclosure Vulnerability (KB4461566)");
 
@@ -61,12 +61,10 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_office_products_version_900032.nasl");
-  script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_office_products_version_900032.nasl");
   script_mandatory_keys("SMB/Office/XLView/Version");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("host_details.inc");

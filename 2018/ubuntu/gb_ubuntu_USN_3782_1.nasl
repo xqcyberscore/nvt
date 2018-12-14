@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3782_1.nasl 12126 2018-10-26 13:00:10Z cfischer $
+# $Id: gb_ubuntu_USN_3782_1.nasl 12799 2018-12-14 07:38:54Z ckuersteiner $
 #
 # Ubuntu Update for liblouis USN-3782-1
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843671");
-  script_version("$Revision: 12126 $");
+  script_version("$Revision: 12799 $");
   script_cve_id("CVE-2018-12085", "CVE-2018-17294");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 15:00:10 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-14 08:38:54 +0100 (Fri, 14 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:05:08 +0200 (Fri, 26 Oct 2018)");
   script_name("Ubuntu Update for liblouis USN-3782-1");
   script_category(ACT_GATHER_INFO);

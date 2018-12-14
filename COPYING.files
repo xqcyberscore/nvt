@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Thu, 13 Dec 2018 14:45:49 +0100
+# Automatically created on:  Fri, 14 Dec 2018 13:50:53 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -39266,6 +39266,7 @@
 2018/debian/deb_4351.nasl: GPLv2+
 2018/debian/deb_4352.nasl: GPLv2+
 2018/debian/deb_4353.nasl: GPLv2+
+2018/debian/deb_4354.nasl: GPLv2+
 2018/debian/deb_dla_1000.nasl: GPLv2+
 2018/debian/deb_dla_1001.nasl: GPLv2+
 2018/debian/deb_dla_1002.nasl: GPLv2+
@@ -41348,7 +41349,6 @@
 2018/freetype/gb_freetype_dos_vuln_win.nasl: GPLv2+
 2018/gb_compromised_webapp_detect.nasl: GPLv2+
 2018/gb_echo_service_reporting.nasl: GPLv2+
-2018/gb_emotet_trojan_detect.nasl: GPLv2+
 2018/gb_ftp_anonymous_detect.nasl: GPLv2+
 2018/gb_gpon_router_mult_vuln.nasl: GPLv2+
 2018/gb_http_cleartext_creds_submit.nasl: GPLv2+
@@ -61399,6 +61399,7 @@ gsf/2018/f5/gb_f5_big_ip_K54130510.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K54562183.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K54610514.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K54924436.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K55001100.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K55129614.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K55225440.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K58084500.nasl: GPLv2+
@@ -61460,6 +61461,7 @@ gsf/2018/fortinet/gb_fortinet_fortios_FG-IR-18-101.nasl: GPLv2+
 gsf/2018/fortinet/gb_fortinet_fortios_FG-IR-18-157.nasl: GPLv2+
 gsf/2018/fortinet/gb_fortinet_fortios_FG-IR-18-325.nasl: GPLv2+
 gsf/2018/fortinet/gb_fortiweb_FG-IR-17-279.nasl: GPLv2+
+gsf/2018/gb_emotet_trojan_detect.nasl: GPLv2+
 gsf/2018/gb_mult_ip_cameras_mult_vuln.nasl: GPLv2+
 gsf/2018/harmonic/gb_harmonic_nsg_9000_devices_mult_vuln.nasl: GPLv2+
 gsf/2018/hashicorp/gb_hashicorp_consul_rexec_rce_vuln.nasl: GPLv2+
@@ -61516,6 +61518,7 @@ gsf/2018/ibm/gb_ibm_bigfix_mult_vuln_may18.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_bigfix_os_command_injection_vuln_apr18.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_datapower_gateway_ibm10740033.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_datapower_gateway_ibm10744557.nasl: GPLv2+
+gsf/2018/ibm/gb_ibm_datapower_gateway_mult_vuln1.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_datapower_gateway_mult_vuln.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_datapower_gateway_xee_vuln_swg22015055.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_db2_ats_priv_esc_vuln.nasl: GPLv2+
@@ -62350,6 +62353,7 @@ gsf/2018/wso2/gb_wso2_identity_server_xss_vuln.nasl: GPLv2+
 gsf/2018/xovis/gb_xovis_pc_mult_vuln.nasl: GPLv2+
 gsf/2018/zabbix/gb_zabbix_xxe_vuln.nasl: GPLv2+
 gsf/2018/zend/gb_zendserver_xss_vuln.nasl: GPLv2+
+gsf/2018/zohocorp/gb_manageengine_adaudit_plus_dos_vuln.nasl: GPLv2+
 gsf/2018/zohocorp/gb_manageengine_adaudit_plus_sql_inj_vuln.nasl: GPLv2+
 gsf/2018/zohocorp/gb_manageengine_admanager_plus_mult_vuln.nasl: GPLv2+
 gsf/2018/zohocorp/gb_manageengine_appli_manager_13740.nasl: GPLv2+

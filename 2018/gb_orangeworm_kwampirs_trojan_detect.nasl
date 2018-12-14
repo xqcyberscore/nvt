@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_orangeworm_kwampirs_trojan_detect.nasl 12784 2018-12-13 10:33:24Z cfischer $
+# $Id: gb_orangeworm_kwampirs_trojan_detect.nasl 12794 2018-12-13 14:36:15Z cfischer $
 #
 # Orangeworm Kwampirs Trojan Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107306");
-  script_version("$Revision: 12784 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-13 11:33:24 +0100 (Thu, 13 Dec 2018) $");
+  script_version("$Revision: 12794 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-13 15:36:15 +0100 (Thu, 13 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-04-26 15:23:05 +0100 (Thu, 26 Apr 2018)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"cvss_base", value:"10.0");
@@ -99,7 +99,7 @@ foreach service( services_list ) {
 }
 
 if( SERVICES_VULN ) {
-  report  = "Trojan.Kwampirs, a backdoor Trojan that provides attackers with remote access to this computer, has been found based on the following IoCs:";
+  report  = "Trojan.Kwampirs, a backdoor Trojan that provides attackers with remote access to this computer, has been found based on the following IOCs:";
   report += '\n\nDescription|DisplayName|Name|PathName\n';
   report += services_report;
   security_message( port:0, data:report );

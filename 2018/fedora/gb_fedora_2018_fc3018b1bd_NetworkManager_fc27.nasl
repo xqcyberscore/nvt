@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_fc3018b1bd_NetworkManager_fc27.nasl 12479 2018-11-22 08:12:17Z santu $
+# $Id: gb_fedora_2018_fc3018b1bd_NetworkManager_fc27.nasl 12799 2018-12-14 07:38:54Z ckuersteiner $
 #
 # Fedora Update for NetworkManager FEDORA-2018-fc3018b1bd
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875282");
-  script_version("$Revision: 12479 $");
+  script_version("$Revision: 12799 $");
   script_cve_id("CVE-2018-15688");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-22 09:12:17 +0100 (Thu, 22 Nov 2018) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-14 08:38:54 +0100 (Fri, 14 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-11-20 06:28:00 +0100 (Tue, 20 Nov 2018)");
   script_name("Fedora Update for NetworkManager FEDORA-2018-fc3018b1bd");
   script_category(ACT_GATHER_INFO);

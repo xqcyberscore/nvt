@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_70fac49405_liblouis_fc28.nasl 11820 2018-10-10 12:13:33Z santu $
+# $Id: gb_fedora_2018_70fac49405_liblouis_fc28.nasl 12799 2018-12-14 07:38:54Z ckuersteiner $
 #
 # Fedora Update for liblouis FEDORA-2018-70fac49405
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875154");
-  script_version("$Revision: 11820 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 14:13:33 +0200 (Wed, 10 Oct 2018) $");
+  script_version("$Revision: 12799 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-14 08:38:54 +0100 (Fri, 14 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-10-08 08:25:24 +0200 (Mon, 08 Oct 2018)");
   script_cve_id("CVE-2018-17294", "CVE-2018-12085");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for liblouis FEDORA-2018-70fac49405");
   script_tag(name:"summary", value:"Check the version of liblouis");

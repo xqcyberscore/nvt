@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3837_1.nasl 12661 2018-12-05 10:53:21Z santu $
+# $Id: gb_ubuntu_USN_3837_1.nasl 12799 2018-12-14 07:38:54Z ckuersteiner $
 #
 # Ubuntu Update for poppler USN-3837-1
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843845");
-  script_version("$Revision: 12661 $");
+  script_version("$Revision: 12799 $");
   script_cve_id("CVE-2018-16646", "CVE-2018-19058", "CVE-2018-19059", "CVE-2018-19060", "CVE-2018-19149");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-05 11:53:21 +0100 (Wed, 05 Dec 2018) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-14 08:38:54 +0100 (Fri, 14 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-12-05 08:01:13 +0100 (Wed, 05 Dec 2018)");
   script_name("Ubuntu Update for poppler USN-3837-1");
   script_category(ACT_GATHER_INFO);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-153.nasl 12768 2018-12-12 09:09:14Z cfischer $
+# $Id: gb_ms16-153.nasl 12796 2018-12-13 16:19:35Z cfischer $
 #
 # MS Windows Common Log File System Driver Information Disclosure Vulnerability (3207328)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810310");
-  script_version("$Revision: 12768 $");
+  script_version("$Revision: 12796 $");
   script_cve_id("CVE-2016-7295");
   script_bugtraq_id(94787);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-12 10:09:14 +0100 (Wed, 12 Dec 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-13 17:19:35 +0100 (Thu, 13 Dec 2018) $");
   script_tag(name:"creation_date", value:"2016-12-14 09:20:01 +0530 (Wed, 14 Dec 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("MS Windows Common Log File System Driver Information Disclosure Vulnerability (3207328)");
@@ -103,7 +103,7 @@ if(!sysPath ){
 }
 
 clfVer = fetch_file_version(sysPath:sysPath, file_name:"drivers\clfs.sys");
-clfVer1 = fetch_file_version(sysPath:sysPath, file_name:"system32\clfs.sys");
+clfVer1 = fetch_file_version(sysPath:sysPath, file_name:"clfs.sys");
 edgeVer = fetch_file_version(sysPath:sysPath, file_name:"edgehtml.dll");
 if(!clfVer && !edgeVer && !clfVer1){
   exit(0);

@@ -1,6 +1,6 @@
 #############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-124.nasl 12768 2018-12-12 09:09:14Z cfischer $
+# $Id: gb_ms16-124.nasl 12796 2018-12-13 16:19:35Z cfischer $
 #
 # Microsoft Windows Registry Multiple Vulnerabilities (3193227)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809440");
-  script_version("$Revision: 12768 $");
+  script_version("$Revision: 12796 $");
   script_cve_id("CVE-2016-0070", "CVE-2016-0073", "CVE-2016-0075", "CVE-2016-0079");
   script_bugtraq_id(93354, 93355, 93356, 93357);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-12 10:09:14 +0100 (Wed, 12 Dec 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-13 17:19:35 +0100 (Thu, 13 Dec 2018) $");
   script_tag(name:"creation_date", value:"2016-10-12 08:40:20 +0530 (Wed, 12 Oct 2016)");
   script_name("Microsoft Windows Registry Multiple Vulnerabilities (3193227)");
 
@@ -185,7 +185,7 @@ if(hotfix_check_sp(win10:1, win10x64:1) > 0)
 
 if(VULN)
 {
-  report = 'File checked:     ' + kerPath + "\ntoskrnl.exe" + '\n' +
+  report = 'File checked:     ' + kerPath + "\\ntoskrnl.exe" + '\n' +
            'File version:     ' + kerVer  + '\n' +
            'Vulnerable range: ' + Vulnerable_range + '\n' ;
   security_message(data:report);

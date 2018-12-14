@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3816_3.nasl 12577 2018-11-29 11:43:34Z santu $
+# $Id: gb_ubuntu_USN_3816_3.nasl 12799 2018-12-14 07:38:54Z ckuersteiner $
 #
 # Ubuntu Update for systemd USN-3816-3
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843834");
-  script_version("$Revision: 12577 $");
+  script_version("$Revision: 12799 $");
   script_cve_id("CVE-2018-6954", "CVE-2018-15686", "CVE-2018-15687");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-29 12:43:34 +0100 (Thu, 29 Nov 2018) $");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-14 08:38:54 +0100 (Fri, 14 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-11-28 07:55:19 +0100 (Wed, 28 Nov 2018)");
   script_name("Ubuntu Update for systemd USN-3816-3");
   script_category(ACT_GATHER_INFO);
