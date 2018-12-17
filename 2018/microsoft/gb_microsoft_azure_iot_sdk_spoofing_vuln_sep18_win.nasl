@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_azure_iot_sdk_spoofing_vuln_sep18_win.nasl 12410 2018-11-19 10:06:05Z cfischer $
+# $Id: gb_microsoft_azure_iot_sdk_spoofing_vuln_sep18_win.nasl 12806 2018-12-17 06:39:00Z ckuersteiner $
 #
 # Azure IoT SDK Spoofing Vulnerability Sep18 (Windows)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814212");
-  script_version("$Revision: 12410 $");
+  script_version("$Revision: 12806 $");
   script_cve_id("CVE-2018-8479");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-19 11:06:05 +0100 (Mon, 19 Nov 2018) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-17 07:39:00 +0100 (Mon, 17 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-09-17 14:45:59 +0530 (Mon, 17 Sep 2018)");
   script_name("Azure IoT SDK Spoofing Vulnerability Sep18 (Windows)");
 

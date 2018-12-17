@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2738_1.nasl 12497 2018-11-23 08:28:21Z cfischer $
+# $Id: gb_suse_2018_2738_1.nasl 12806 2018-12-17 06:39:00Z ckuersteiner $
 #
 # SuSE Update for the openSUSE-SU-2018:2738-1 (the)
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851895");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 12806 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-17 07:39:00 +0100 (Mon, 17 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-09-17 08:04:12 +0200 (Mon, 17 Sep 2018)");
   script_cve_id("CVE-2018-10902", "CVE-2018-10938", "CVE-2018-10940", "CVE-2018-1128",
   "CVE-2018-1129", "CVE-2018-12896", "CVE-2018-13093", "CVE-2018-13094", "CVE-2018-13095",
   "CVE-2018-15572", "CVE-2018-16658", "CVE-2018-6554", "CVE-2018-6555", "CVE-2018-9363");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for the openSUSE-SU-2018:2738-1 (the)");
   script_tag(name:"summary", value:"The remote host is missing an update for the 'the kernel modules'

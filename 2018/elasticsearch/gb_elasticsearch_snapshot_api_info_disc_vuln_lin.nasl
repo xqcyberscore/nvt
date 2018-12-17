@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elasticsearch_snapshot_api_info_disc_vuln_lin.nasl 11941 2018-10-17 12:58:16Z santu $
+# $Id: gb_elasticsearch_snapshot_api_info_disc_vuln_lin.nasl 12806 2018-12-17 06:39:00Z ckuersteiner $
 #
 # Elasticsearch '_snapshot API' Information Disclosure Vulnerability (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:elasticsearch:elasticsearch";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814076");
-  script_version("$Revision: 11941 $");
+  script_version("$Revision: 12806 $");
   script_cve_id("CVE-2018-3826");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-17 14:58:16 +0200 (Wed, 17 Oct 2018) $");
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-17 07:39:00 +0100 (Mon, 17 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-10-09 11:12:08 +0530 (Tue, 09 Oct 2018)");
   script_name("Elasticsearch '_snapshot API' Information Disclosure Vulnerability (Linux)");
 

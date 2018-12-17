@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sugarcrm_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
+# $Id: gb_sugarcrm_detect.nasl 12805 2018-12-17 06:02:11Z ckuersteiner $
 #
 # SugarCRM Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106122");
-  script_version("$Revision: 11885 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 12805 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-17 07:02:11 +0100 (Mon, 17 Dec 2018) $");
   script_tag(name:"creation_date", value:"2016-07-08 14:44:45 +0700 (Fri, 08 Jul 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -47,7 +47,7 @@ extract its version");
 
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_dependencies("gb_suitecrm_detect.nasl");
   script_require_ports("Services/www", 80, 443);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -62,6 +62,10 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default: 443);
+
+# Don't detect SuiteCRM as SugarCRM on the same port
+if (get_kb_item("suitecrm/" + port + "/detected"))
+  exit(0);
 
 foreach dir (make_list_unique("/sugarcrm", "/SugarCRM", "/sugar", cgi_dirs(port: port))) {
   install = dir;
@@ -78,12 +82,13 @@ foreach dir (make_list_unique("/sugarcrm", "/SugarCRM", "/sugar", cgi_dirs(port:
     version = "unknown";
     edition = "";
 
-    req = http_get(port: port, item: dir + "/sugar_version.json");
+    url = dir + '/sugar_version.json';
+    req = http_get(port: port, item: url);
     res = http_keepalive_send_recv(port: port, data: req);
     ver = eregmatch(pattern: '"sugar_version":( )?"([0-9.]+)",', string: res);
     if (!isnull(ver[2])) {
       version = ver[2];
-      set_kb_item(name: "sugarcrm/version", value: version);
+      concUrl = url;
     }
 
     ed = eregmatch(pattern: '"sugar_flavor":( )?"([^"]+)",', string: res);
@@ -95,13 +100,13 @@ foreach dir (make_list_unique("/sugarcrm", "/SugarCRM", "/sugar", cgi_dirs(port:
     set_kb_item(name: "sugarcrm/installed", value: TRUE);
 
     cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/a:sugarcrm:sugarcrm:");
-    if (isnull(cpe))
+    if (!cpe)
       cpe = "cpe:/a:sugarcrm:sugarcrm";
 
     register_product(cpe: cpe, location: install, port: port);
 
     log_message(data: build_detection_report(app: "SugarCRM " + edition, version: version, install: install,
-                                             cpe: cpe, concluded: ver[0]),
+                                             cpe: cpe, concluded: ver[0], concludedUrl: concUrl),
                 port: port);
   }
 }

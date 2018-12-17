@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3951_1.nasl 12638 2018-12-04 08:40:36Z santu $
+# $Id: gb_suse_2018_3951_1.nasl 12806 2018-12-17 06:39:00Z ckuersteiner $
 #
 # SuSE Update for rubygem-loofah openSUSE-SU-2018:3951-1 (rubygem-loofah)
 #
@@ -29,12 +29,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852152");
-  script_version("$Revision: 12638 $");
+  script_version("$Revision: 12806 $");
   script_cve_id("CVE-2018-16468");
   script_bugtraq_id(106054);
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-04 09:40:36 +0100 (Tue, 04 Dec 2018) $");
+  script_tag(name:"cvss_base", value:"3.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-17 07:39:00 +0100 (Mon, 17 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-12-04 12:40:38 +0530 (Tue, 04 Dec 2018)");
   script_name("SuSE Update for rubygem-loofah openSUSE-SU-2018:3951-1 (rubygem-loofah)");
   script_category(ACT_GATHER_INFO);

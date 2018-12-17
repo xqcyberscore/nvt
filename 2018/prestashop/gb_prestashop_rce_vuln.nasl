@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_prestashop_rce_vuln.nasl 12335 2018-11-13 13:38:04Z asteins $
+# $Id: gb_prestashop_rce_vuln.nasl 12806 2018-12-17 06:39:00Z ckuersteiner $
 #
 # PrestaShop 1.7.4.x < 1.7.4.4 & 1.6.1.x < 1.6.1.23 RCE Vulnerability
 #
@@ -28,11 +28,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112427");
-  script_version("$Revision: 12335 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-13 14:38:04 +0100 (Tue, 13 Nov 2018) $");
+  script_version("$Revision: 12806 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-17 07:39:00 +0100 (Mon, 17 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-11-13 14:32:22 +0100 (Tue, 13 Nov 2018)");
-  script_tag(name:"cvss_base", value:"8.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2018-19126");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4308.nasl 11720 2018-10-02 08:07:19Z cfischer $
+# $Id: deb_4308.nasl 12806 2018-12-17 06:39:00Z ckuersteiner $
 #
 # Auto-generated from advisory DSA 4308-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,16 +31,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704308");
-  script_version("$Revision: 11720 $");
+  script_version("$Revision: 12806 $");
   script_cve_id("CVE-2018-10902", "CVE-2018-10938", "CVE-2018-13099", "CVE-2018-14609", "CVE-2018-14617",
                 "CVE-2018-14633", "CVE-2018-14678", "CVE-2018-14734", "CVE-2018-15572", "CVE-2018-15594",
                 "CVE-2018-16276", "CVE-2018-16658", "CVE-2018-17182", "CVE-2018-6554", "CVE-2018-6555",
                 "CVE-2018-7755", "CVE-2018-9363", "CVE-2018-9516");
   script_name("Debian Security Advisory DSA 4308-1 (linux - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-02 10:07:19 +0200 (Tue, 02 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-17 07:39:00 +0100 (Mon, 17 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-10-01 00:00:00 +0200 (Mon, 01 Oct 2018)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"8.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:C");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

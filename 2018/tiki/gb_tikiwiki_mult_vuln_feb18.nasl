@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tikiwiki_mult_vuln_feb18.nasl 12045 2018-10-24 06:51:17Z mmartin $
+# $Id: gb_tikiwiki_mult_vuln_feb18.nasl 12807 2018-12-17 08:21:35Z ckuersteiner $
 #
 # Tiki Wiki Multiple Vulnerabilities Feb18
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:tiki:tikiwiki_cms/groupware";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812811");
-  script_version("$Revision: 12045 $");
+  script_version("$Revision: 12807 $");
   script_cve_id("CVE-2018-7302", "CVE-2018-7303", "CVE-2018-7304");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 08:51:17 +0200 (Wed, 24 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-17 09:21:35 +0100 (Mon, 17 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-02-23 12:13:22 +0530 (Fri, 23 Feb 2018)");
   script_name("Tiki Wiki Multiple Vulnerabilities Feb18");
 
@@ -54,11 +54,12 @@ if (description)
 
   script_tag(name:"impact", value:"Successfully exploitation will allow an
   attacker to perform a CSV Injection attack to perform malicious activity,
-  XSS and HTML injection attack..");
+  XSS and HTML injection attack.");
 
   script_tag(name:"affected", value:"Tiki Wiki version 17.1");
 
-  script_tag(name:"solution", value:"No known solution is available as of 08th June, 2018. Information regarding this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution is available as of 17th December, 2018.
+  Information regarding this issue will be updated once solution details are available.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -74,16 +75,14 @@ if (description)
 include("version_func.inc");
 include("host_details.inc");
 
-if(!port = get_app_port(cpe:CPE)){
+if(!port = get_app_port(cpe:CPE))
   exit(0);
-}
 
 infos = get_app_version_and_location(cpe:CPE, port:port, exit_no_version:TRUE );
 vers = infos['version'];
 path = infos['location'];
 
-if(version_is_equal(version:vers, test_version:"17.1"))
-{
+if(version_is_equal(version:vers, test_version:"17.1")) {
   report = report_fixed_ver(installed_version:vers, fixed_version:"None", install_path:path);
   security_message(data:report, port:port);
   exit(0);

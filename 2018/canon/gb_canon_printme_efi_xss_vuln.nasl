@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_canon_printme_efi_xss_vuln.nasl 12120 2018-10-26 11:13:20Z mmartin $
+# $Id: gb_canon_printme_efi_xss_vuln.nasl 12807 2018-12-17 08:21:35Z ckuersteiner $
 #
 # Canon PrintMe EFI Cross Site Scripting Vulnerability
 #
@@ -28,13 +28,14 @@ CPE = "cpe:/a:efi:fiery";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813608");
-  script_version("$Revision: 12120 $");
+  script_version("$Revision: 12807 $");
   script_cve_id("CVE-2018-12111");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-17 09:21:35 +0100 (Mon, 17 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-06-15 12:23:19 +0530 (Fri, 15 Jun 2018)");
   script_tag(name:"qod_type", value:"remote_vul");
+
   script_name("Canon PrintMe EFI Cross Site Scripting Vulnerability");
 
   script_tag(name:"summary", value:"The host is installed with Canon PrintMe EFI
@@ -52,8 +53,8 @@ if(description)
 
   script_tag(name:"affected", value:"Canon PrintMe EFI");
 
-  script_tag(name:"solution", value:"No known solution is available as of
-  15th June, 2018. Information regarding this issue will be updated once solution
+  script_tag(name:"solution", value:"No known solution is available as of 17th December, 2018.
+  Information regarding this issue will be updated once solution
   details are available. For updates refer to Reference links.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");

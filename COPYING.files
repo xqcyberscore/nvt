@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Fri, 14 Dec 2018 13:50:53 +0100
+# Automatically created on:  Mon, 17 Dec 2018 10:03:20 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -44761,6 +44761,7 @@ gb_live555_detect.nasl: GPLv2+
 gb_livezilla_detect.nasl: GPLv2+
 gb_logicaldoc_detect.nasl: GPLv2+
 gb_logitech_media_server_detect.nasl: GPLv2+
+gb_logitech_options_detect_win.nasl: GPLv2+
 gb_logpoint_detect.nasl: GPLv2+
 gb_logrhythm_netmon_detect.nasl: GPLv2+
 gb_logsign_detect.nasl: GPLv2+
@@ -45409,6 +45410,7 @@ gb_ston3d_prdts_detect_win.nasl: GPLv2+
 gb_strongswan_detect.nasl: GPLv2+
 gb_subversion_remote_detect.nasl: GPLv2+
 gb_sugarcrm_detect.nasl: GPLv2+
+gb_suitecrm_detect.nasl: GPLv2+
 gb_sun_java_system_portal_server_detect.nasl: GPLv2+
 gb_sun_java_sys_web_proxy_server_detect.nasl: GPLv2+
 gb_sun_java_sys_web_serv_detect.nasl: GPLv2+
@@ -61342,12 +61344,14 @@ gsf/2018/f5/gb_f5_big_ip_K26583415.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K27044729.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K27391542.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K28003839.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K29241247.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K30363030.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K30500703.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K30971148.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K31211252.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K31300402.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K31404801.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K31440025.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K32262483.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K32485746.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K32743437.nasl: GPLv2+
@@ -61358,6 +61362,7 @@ gsf/2018/f5/gb_f5_big_ip_K34341852.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K34652116.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K35135935.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K35453761.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K37111863.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K37250780.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K37442533.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K37510383.nasl: GPLv2+
@@ -62228,6 +62233,8 @@ gsf/2018/rockwellautomation/gb_rockwell_micrologix_buf_overflow_vuln.nasl: GPLv2
 gsf/2018/saia_burgess_controls/gb_saia_pcd_controllers_pw_vuln.nasl: GPLv2+
 gsf/2018/sap/gb_sap_mgmt_console_syslog_discl_vuln.nasl: GPLv2+
 gsf/2018/sap/gb_sap_msg_server_acl_vuln.nasl: GPLv2+
+gsf/2018/sap/gb_sap_netweaver_as_java_auth_bypass_vuln.nasl: GPLv2+
+gsf/2018/sap/gb_sap_netweaver_as_java_insufficient_validation_vuln.nasl: GPLv2+
 gsf/2018/sap/gb_sap_netweaver_as_java_xss_vuln_sep18.nasl: GPLv2+
 gsf/2018/sap/gb_sap_netweaver_auth_bypass_vuln.nasl: GPLv2+
 gsf/2018/sap/gb_sap_netweaver_code_inj_vuln.nasl: GPLv2+
@@ -62454,10 +62461,14 @@ gsf/PCIDSS/v2.0/PCIDSS_M8.5.13.a.nasl: GPLv2+
 gsf/PCIDSS/v2.0/PCIDSS_M8.5.14.nasl: GPLv2+
 gsf/PCIDSS/v2.0/PCIDSS_M8.5.5.nasl: GPLv2+
 gsf/PCIDSS/v2.0/PCIDSS_M8.5.9.a.nasl: GPLv2+
+gsf/Policy/emotet_disabled_macros.nasl: GPLv2+
 gsf/Policy/gb_policy_etc_shadow_errors.nasl: GPLv2+
 gsf/Policy/gb_policy_etc_shadow.nasl: GPLv2+
 gsf/Policy/gb_policy_etc_shadow_ok.nasl: GPLv2+
 gsf/Policy/gb_policy_etc_shadow_violation.nasl: GPLv2+
+gsf/Policy/Office2013/excel_block_inet_macros.nasl: GPLv2+
+gsf/Policy/Office2013/excel_require_addin_sig.nasl: GPLv2+
+gsf/Policy/Office2013/excel_vba_warnings.nasl: GPLv2+
 gsf/Policy/Office2013/office2013_activex_control_initialization.nasl: GPLv2+
 gsf/Policy/Office2013/office2013_allow_insecure_apps_catalogs.nasl: GPLv2+
 gsf/Policy/Office2013/office2013_allow_users_read_with_browsers.nasl: GPLv2+
@@ -62508,6 +62519,7 @@ gsf/Policy/Office2013/office_activex_install.nasl: GPLv2+
 gsf/Policy/Office2013/office_addon_management.nasl: GPLv2+
 gsf/Policy/Office2013/office_auto_expand_dls.nasl: GPLv2+
 gsf/Policy/Office2013/office_bind_to_object.nasl: GPLv2+
+gsf/Policy/Office2013/office_check_ole_objects.nasl: GPLv2+
 gsf/Policy/Office2013/office_consistent_mime_handling.nasl: GPLv2+
 gsf/Policy/Office2013/office_disable_user_name_passwd.nasl: GPLv2+
 gsf/Policy/Office2013/office_excel_converters.nasl: GPLv2+
@@ -62531,6 +62543,13 @@ gsf/Policy/Office2013/office_saved_from_url.nasl: GPLv2+
 gsf/Policy/Office2013/office_scripted_window.nasl: GPLv2+
 gsf/Policy/Office2013/office_send_personal_information.nasl: GPLv2+
 gsf/Policy/Office2013/office_zone_elevation.nasl: GPLv2+
+gsf/Policy/Office2013/outlook_security_settings_macros.nasl: GPLv2+
+gsf/Policy/Office2013/ppt_block_inet_macros.nasl: GPLv2+
+gsf/Policy/Office2013/ppt_require_addin_sig.nasl: GPLv2+
+gsf/Policy/Office2013/ppt_vba_warnings.nasl: GPLv2+
+gsf/Policy/Office2013/word_block_inet_macros.nasl: GPLv2+
+gsf/Policy/Office2013/word_require_addin_sig.nasl: GPLv2+
+gsf/Policy/Office2013/word_vba_warnings.nasl: GPLv2+
 gsf/Policy/OpenStack/openstack_keystone_admin_token.nasl: GPLv2+
 gsf/Policy/OpenStack/openstack_keystone_config_ownership.nasl: GPLv2+
 gsf/Policy/OpenStack/openstack_keystone_config_permission.nasl: GPLv2+
@@ -63112,6 +63131,7 @@ gsf/Policy/WindowsGeneral/WindowsComponents/win_watson_events.nasl: GPLv2+
 gsf/Policy/WindowsGeneral/win_use_wu_server.nasl: GPLv2+
 gsf/Policy/WindowsGeneral/win_use_wu_server_path.nasl: GPLv2+
 gsf/Policy/WindowsGeneral/win_use_wu_statistic_server_path.nasl: GPLv2+
+gsf/Policy/WindowsGeneral/win_wsh.nasl: GPLv2+
 gsf/Policy/win_localuser_disabled.nasl: GPLv2+
 gsf/Policy/win_localuser_lockout.nasl: GPLv2+
 gsf/Policy/win_localuser_nologin.nasl: GPLv2+

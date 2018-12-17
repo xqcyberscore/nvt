@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tika_server_junrar_dos_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
+# $Id: gb_apache_tika_server_junrar_dos_vuln.nasl 12807 2018-12-17 08:21:35Z ckuersteiner $
 #
-# Apache Tika Server Junrar Denial of Service Vulnerability
+# Apache Tika Server < 1.19 Junrar Denial of Service Vulnerability
 #
 # Authors:
 # Rajat Mishra <rajatm@secpod.com>
@@ -29,13 +29,14 @@ CPE = "cpe:/a:apache:tika";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813536");
-  script_version("$Revision: 12116 $");
+  script_version("$Revision: 12807 $");
   script_cve_id("CVE-2018-12418");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-17 09:21:35 +0100 (Mon, 17 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-06-20 16:32:04 +0530 (Wed, 20 Jun 2018)");
-  script_name("Apache Tika Server Junrar Denial of Service Vulnerability");
+
+  script_name("Apache Tika Server < 1.19 Junrar Denial of Service Vulnerability");
 
   script_tag(name:"summary", value:"The host is installed with Apache Tika Server
   and is prone to a denial of service vulnerability.");
@@ -50,14 +51,12 @@ if(description)
 
   script_tag(name:"affected", value:"Apache Tika Server versions through latest release 1.18");
 
-  script_tag(name:"solution", value:"No known solution is available as of 20th June, 2018.
-  Information regarding this issue will be updated once solution details are available.
-  For updates refer to Reference links.");
+  script_tag(name:"solution", value:"Update to version 1.19 or later.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
   script_xref(name:"URL", value:"https://github.com/junrar/junrar/commit/ad8d0ba8e155630da8a1215cee3f253e0af45817");
-  script_xref(name:"URL", value:"https://tika.apache.org");
+  script_xref(name:"URL", value:"https://tika.apache.org/1.19/index.html");
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
@@ -81,7 +80,7 @@ tPath = infos['location'];
 
 if(version_is_less_equal(version:tVer, test_version:"1.18"))
 {
-  report = report_fixed_ver(installed_version:tVer, fixed_version:"None Available", install_path:tPath);
+  report = report_fixed_ver(installed_version:tVer, fixed_version:"1.19", install_path:tPath);
   security_message(data:report, port:tPort);
   exit(0);
 }
