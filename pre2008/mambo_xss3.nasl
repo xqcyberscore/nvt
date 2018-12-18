@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: mambo_xss3.nasl 9348 2018-04-06 07:01:19Z cfischer $
+# $Id: mambo_xss3.nasl 12818 2018-12-18 09:55:03Z ckuersteiner $
 # Description: Mambo Site Server index.php mos_change_template XSS
 #
 # Authors:
@@ -23,23 +23,21 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "An attacker may use the installed version of Mambo Site Server to
-  perform a cross site scripting attack on this host.";
-
-tag_solution = "Upgrade at least to version 4.5 1.0.4";
-
-#  Ref: JeiAr   - GulfTech Security Research Team
+CPE = "cpe:/a:mambo-foundation:mambo";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.16316");
-  script_version("$Revision: 9348 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 12818 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-18 10:55:03 +0100 (Tue, 18 Dec 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2004-1825");
   script_bugtraq_id(9890);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
   script_name("Mambo Site Server index.php mos_change_template XSS");
 
   script_category(ACT_ATTACK);
@@ -47,39 +45,38 @@ if(description)
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2005 David Maciejak");
   script_dependencies("mambo_detect.nasl", "cross_site_scripting.nasl");
+  script_mandatory_keys("mambo_cms/detected");
   script_require_ports("Services/www", 80);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+
+  script_tag(name:"solution", value:"Upgrade at least to version 4.5 1.0.4");
+
+  script_tag(name:"summary", value:"An attacker may use the installed version of Mambo Site Server to
+  perform a cross site scripting attack on this host.");
   exit(0);
 }
 
-
+include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-port = get_http_port(default:80);
-if(!get_port_state(port)){
+if (!port = get_app_port(cpe: CPE))
   exit(0);
-}
 
-
-mambVer= get_kb_item(string("www/", port, "/mambo_mos"));
-if(!mambVer){
+if (!dir = get_app_location(cpe: CPE, port: port))
   exit(0);
-}
 
-matches = eregmatch(string:mambVer, pattern:"^(.+) under (/.*)$");
-if(!matches){
-  exit(0);
-}
+if (dir == "/")
+  dir = "";
 
-dir = matches[2];
-url = string(dir, "/index.php?mos_change_template=<script>foo</script>");
+url = dir + "/index.php?mos_change_template=<script>foo</script>";
 req = http_get(item:url, port:port);
 resp = http_keepalive_send_recv(port:port, data:req);
-if(!resp){
+if(!resp)
+  exit(0);
+
+if(resp =~ "HTTP/1\.. 200" && '<form action="/index.php?mos_change_template=<script>foo</script>' >< resp) {
+  security_message(port);
   exit(0);
 }
 
-if(resp =~ "HTTP/1\.. 200" && '<form action="/index.php?mos_change_template=<script>foo</script>' >< resp)
-   security_message(port);
+exit(99);

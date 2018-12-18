@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mantis_detect.nasl 10894 2018-08-10 13:09:25Z cfischer $
+# $Id: mantis_detect.nasl 12818 2018-12-18 09:55:03Z ckuersteiner $
 #
 # Mantis Detection
 #
@@ -27,12 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100061");
-  script_version("$Revision: 10894 $");
+  script_version("$Revision: 12818 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:09:25 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-18 10:55:03 +0100 (Tue, 18 Dec 2018) $");
   script_tag(name:"creation_date", value:"2009-03-19 11:22:36 +0100 (Thu, 19 Mar 2009)");
+
   script_name("Mantis Detection");
+
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
@@ -116,8 +118,7 @@ foreach dir( make_list_unique( "/mantis", "/mantisbt", "/bugs", "/bugtracker", c
       }
     }
 
-    set_kb_item( name:"www/" + port + "/mantis", value: version + " under " + install );
-    set_kb_item( name:"mantisbt/installed", value:TRUE );
+    set_kb_item( name:"mantisbt/detected", value:TRUE );
 
     ## not possible to combine cpe regex due to
     ## way cpe.inc is handling regular expression
@@ -140,7 +141,7 @@ foreach dir( make_list_unique( "/mantis", "/mantisbt", "/bugs", "/bugtracker", c
                                               cpe:cpe,
                                               concludedUrl:conclUrl,
                                               concluded:concluded ),
-                                              port:port );
+                 port:port );
   }
 }
 

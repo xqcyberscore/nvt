@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_view_n_edit_filters_mult_xss_vuln_win.nasl 12116 2018-10-26 10:01:35Z mmartin $
+# $Id: gb_mantisbt_view_n_edit_filters_mult_xss_vuln_win.nasl 12818 2018-12-18 09:55:03Z ckuersteiner $
 #
 # MantisBT 'View Filters' And 'Edit Filter' Pages XSS Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mantisbt:mantisbt";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813813");
-  script_version("$Revision: 12116 $");
+  script_version("$Revision: 12818 $");
   script_cve_id("CVE-2018-14504", "CVE-2018-13055");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-18 10:55:03 +0100 (Tue, 18 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-08-06 18:05:16 +0530 (Mon, 06 Aug 2018)");
   script_name("MantisBT 'View Filters' And 'Edit Filter' Pages XSS Vulnerabilities");
 
@@ -69,7 +69,7 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("mantis_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("mantisbt/installed", "Host/runs_windows");
+  script_mandatory_keys("mantisbt/detected", "Host/runs_windows");
   script_require_ports("Services/www", 80);
   exit(0);
 }

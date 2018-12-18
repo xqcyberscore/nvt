@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_file_read_vuln.nasl 11962 2018-10-18 10:51:32Z mmartin $
+# $Id: gb_mantisbt_file_read_vuln.nasl 12818 2018-12-18 09:55:03Z ckuersteiner $
 #
 # MantisBT Arbitrary File Read Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:mantisbt:mantisbt';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140285");
-  script_version("$Revision: 11962 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:51:32 +0200 (Thu, 18 Oct 2018) $");
+  script_version("$Revision: 12818 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-18 10:55:03 +0100 (Tue, 18 Dec 2018) $");
   script_tag(name:"creation_date", value:"2017-08-08 15:08:03 +0700 (Tue, 08 Aug 2017)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
@@ -49,7 +49,7 @@ if (description)
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("mantis_detect.nasl");
-  script_mandatory_keys("mantisbt/installed");
+  script_mandatory_keys("mantisbt/detected");
 
   script_tag(name:"summary", value:"MantisBT is prone to an arbitrary file read vulnerability.");
 

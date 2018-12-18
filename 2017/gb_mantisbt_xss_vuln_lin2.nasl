@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_xss_vuln_lin2.nasl 12106 2018-10-26 06:33:36Z cfischer $
+# $Id: gb_mantisbt_xss_vuln_lin2.nasl 12818 2018-12-18 09:55:03Z ckuersteiner $
 #
 # MantisBT XSS Vulnerability (Linux)
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:mantisbt:mantisbt';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106645");
-  script_version("$Revision: 12106 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
+  script_version("$Revision: 12818 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-18 10:55:03 +0100 (Tue, 18 Dec 2018) $");
   script_tag(name:"creation_date", value:"2017-03-13 14:33:08 +0700 (Mon, 13 Mar 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -49,7 +49,7 @@ if (description)
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("mantis_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("mantisbt/installed", "Host/runs_unixoide");
+  script_mandatory_keys("mantisbt/detected", "Host/runs_unixoide");
 
   script_tag(name:"summary", value:"MantisBT is prone to a cross-site scripting vulnerability.");
 

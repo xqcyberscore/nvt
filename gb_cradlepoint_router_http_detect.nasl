@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cradlepoint_router_http_detect.nasl 12684 2018-12-06 10:51:02Z asteins $
+# $Id: gb_cradlepoint_router_http_detect.nasl 12813 2018-12-18 07:43:29Z ckuersteiner $
 #
 # Cradlepoint Routers Detection (HTTP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112451");
-  script_version("$Revision: 12684 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-06 11:51:02 +0100 (Thu, 06 Dec 2018) $");
+  script_version("$Revision: 12813 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-18 08:43:29 +0100 (Tue, 18 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-12-06 10:55:11 +0100 (Thu, 06 Dec 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -56,13 +56,13 @@ buf  = http_get_cache( item:"/login/", port:port );
 
 if( buf =~ "^HTTP/1\.[01] 200" &&
     ( 'manufacturer: "Cradlepoint Inc."' >< buf ||
-    ( "cplogin = window.cplogin" >< buf && 'cplogin.modems' >< buf ) )
+    ( "cplogin = window.cplogin" >< buf && 'cplogin.state' >< buf ) )
   ) {
 
   model      = "unknown";
   fw_version = "unknown";
 
-  mod = eregmatch( pattern:'cplogin.model = "([a-z0-9]+)";', string:buf, icase:TRUE );
+  mod = eregmatch( pattern:'cplogin.model = "([A-Za-z0-9-]+)";', string:buf, icase:TRUE );
   if( mod[1] ) {
     model = mod[1];
     set_kb_item( name:"cradlepoint/router/http/" + port + "/concluded", value:mod[0] );

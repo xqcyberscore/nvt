@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantis_49235.nasl 12018 2018-10-22 13:31:29Z mmartin $
+# $Id: gb_mantis_49235.nasl 12818 2018-12-18 09:55:03Z ckuersteiner $
 #
 # MantisBT Cross Site Scripting and SQL Injection Vulnerabilities
 #
@@ -24,12 +24,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:mantisbt:mantisbt";
 
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103214");
-  script_version("$Revision: 12018 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
+  script_version("$Revision: 12818 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-18 10:55:03 +0100 (Tue, 18 Dec 2018) $");
   script_tag(name:"creation_date", value:"2011-08-19 14:58:19 +0200 (Fri, 19 Aug 2011)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -47,8 +48,10 @@ if (description)
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
   script_dependencies("mantis_detect.nasl");
+  script_mandatory_keys("mantisbt/detected");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
+
   script_tag(name:"summary", value:"MantisBT is prone to an SQL-injection vulnerability and a cross-site
 scripting vulnerability.
 
@@ -58,28 +61,27 @@ access or modify data, or exploit latent vulnerabilities in the
 underlying database.
 
 MantisBT 1.2.6 is vulnerable. Other versions may also be affected.");
+
   script_tag(name:"solution", value:"Upgrade to the latest version.");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-include("http_func.inc");
 include("host_details.inc");
-
 include("version_func.inc");
 
-port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
+if (!port = get_app_port(cpe: CPE))
+  exit(0);
 
-if (!can_host_php(port:port)) exit(0);
+if (!version = get_app_version(cpe: CPE, port: port))
+  exit(0);
 
-if(vers = get_version_from_kb(port:port,app:"mantis")) {
-
-  if(version_is_equal(version: vers, test_version: "1.2.6")) {
-      security_message(port:port);
-      exit(0);
-  }
-
+if (version_is_equal(version: version, test_version: "1.2.6")) {
+  report = report_fixed_ver(installed_version: version, fixed_version: "1.2.7");
+  security_message(port: port, data: report);
+  exit(0);
 }
 
-exit(0);
+exit(99);

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantis_mult_xss_vuln.nasl 8228 2017-12-22 07:29:52Z teissa $
+# $Id: gb_mantis_mult_xss_vuln.nasl 12818 2018-12-18 09:55:03Z ckuersteiner $
 #
 # MantisBT Multiple Cross-site scripting Vulnerabilities
 #
@@ -24,73 +24,81 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow attackers to conduct cross-site scripting
-  attacks.
-  Impact Level: Application.";
-tag_affected = "MantisBT version prior to 1.2.3";
-
-tag_insight = "Multiple flaws exist in the application which allow remote authenticated
-  attackers to inject arbitrary web script or HTML via:
-  (1) A plugin name, related to 'manage_plugin_uninstall.php'
-  (2) An 'enumeration' value
-  (3) A 'String' value of a custom field, related to 'core/cfdefs/cfdef_standard.php'
-  (4) project
-  (5) category name to 'print_all_bug_page_word.php' or
-  (6) 'Summary field', related to 'core/summary_api.php'";
-tag_solution = "Upgrade to MantisBT version 1.2.3 or later
-  For updates refer to http://www.mantisbt.org/download.php";
-tag_summary = "This host is running MantisBT and is prone to multiple cross-site
-  scripting vulnerabilities.";
+CPE = "cpe:/a:mantisbt:mantisbt";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801603");
-  script_version("$Revision: 8228 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-22 08:29:52 +0100 (Fri, 22 Dec 2017) $");
+  script_version("$Revision: 12818 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-18 10:55:03 +0100 (Tue, 18 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-10-08 08:29:14 +0200 (Fri, 08 Oct 2010)");
   script_cve_id("CVE-2010-3303", "CVE-2010-3763");
   script_bugtraq_id(43604);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+
   script_name("MantisBT Multiple Cross-site scripting Vulnerabilities");
-  script_xref(name : "URL" , value : "http://www.mantisbt.org/bugs/view.php?id=12231");
-  script_xref(name : "URL" , value : "http://www.mantisbt.org/bugs/view.php?id=12232");
-  script_xref(name : "URL" , value : "http://www.mantisbt.org/bugs/view.php?id=12234");
-  script_xref(name : "URL" , value : "http://www.mantisbt.org/bugs/view.php?id=12238");
-  script_xref(name : "URL" , value : "http://www.mantisbt.org/bugs/view.php?id=12309");
-  script_xref(name : "URL" , value : "http://www.mantisbt.org/bugs/changelog_page.php?version_id=111");
+
+  script_xref(name:"URL", value:"http://www.mantisbt.org/bugs/view.php?id=12231");
+  script_xref(name:"URL", value:"http://www.mantisbt.org/bugs/view.php?id=12232");
+  script_xref(name:"URL", value:"http://www.mantisbt.org/bugs/view.php?id=12234");
+  script_xref(name:"URL", value:"http://www.mantisbt.org/bugs/view.php?id=12238");
+  script_xref(name:"URL", value:"http://www.mantisbt.org/bugs/view.php?id=12309");
+  script_xref(name:"URL", value:"http://www.mantisbt.org/bugs/changelog_page.php?version_id=111");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_dependencies("mantis_detect.nasl");
+  script_mandatory_keys("mantisbt/detected");
   script_family("Web application abuses");
   script_require_ports("Services/www", 80);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
+
+  script_tag(name:"insight", value:"Multiple flaws exist in the application which allow remote authenticated
+  attackers to inject arbitrary web script or HTML via:
+
+  (1) A plugin name, related to 'manage_plugin_uninstall.php'
+
+  (2) An 'enumeration' value
+
+  (3) A 'String' value of a custom field, related to 'core/cfdefs/cfdef_standard.php'
+
+  (4) project
+
+  (5) category name to 'print_all_bug_page_word.php' or
+
+  (6) 'Summary field', related to 'core/summary_api.php'");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
+  script_tag(name:"solution", value:"Upgrade to MantisBT version 1.2.3 or later");
+
+  script_tag(name:"summary", value:"This host is running MantisBT and is prone to multiple cross-site
+  scripting vulnerabilities.");
+
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to conduct cross-site scripting
+  attacks.");
+
+  script_tag(name:"affected", value:"MantisBT version prior to 1.2.3");
+
+  script_xref(name:"URL", value:"http://www.mantisbt.org/download.php");
+
   exit(0);
 }
 
-
-include("http_func.inc");
+include("host_details.inc");
 include("version_func.inc");
 
-## Get HTTP Port
-mantisPort = get_http_port(default:80);
-if(!get_port_state(mantisPort)){
+if (!port = get_app_port(cpe: CPE))
+  exit(0);
+
+if (!version = get_app_version(cpe: CPE, port: port))
+  exit(0);
+
+if (version_is_less(version:version, test_version:"1.2.3")) {
+  report = report_fixed_ver(installed_version: version, fixed_version: "1.2.3");
+  security_message(port: port, data: report);
   exit(0);
 }
 
-## GET the version from KB
-mantisVer = get_version_from_kb(port:mantisPort,app:"mantis");
-
-if(mantisVer != NULL)
-{
-  ## Check for the  MantisBT version
-  if(version_is_less(version:mantisVer, test_version:"1.2.3")){
-    security_message(mantisPort);
-  }
-}
+exit(99);

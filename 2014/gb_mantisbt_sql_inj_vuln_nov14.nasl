@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_sql_inj_vuln_nov14.nasl 11867 2018-10-12 10:48:11Z cfischer $
+# $Id: gb_mantisbt_sql_inj_vuln_nov14.nasl 12818 2018-12-18 09:55:03Z ckuersteiner $
 #
 # MantisBT SQL Injection Vulnerability -01 November14
 #
@@ -29,15 +29,16 @@ CPE = "cpe:/a:mantisbt:mantisbt";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804891");
-  script_version("$Revision: 11867 $");
+  script_version("$Revision: 12818 $");
   script_cve_id("CVE-2014-8554", "CVE-2014-9281", "CVE-2014-9280", "CVE-2014-9117",
                 "CVE-2014-6387", "CVE-2014-9506", "CVE-2014-9089", "CVE-2014-6316",
                 "CVE-2014-9388", "CVE-2014-8553");
   script_bugtraq_id(70856, 71371, 71361, 71321, 69780, 71298, 71478, 71553);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-18 10:55:03 +0100 (Tue, 18 Dec 2018) $");
   script_tag(name:"creation_date", value:"2014-11-25 14:59:21 +0530 (Tue, 25 Nov 2014)");
+
   script_name("MantisBT SQL Injection Vulnerability -01 November14");
 
   script_tag(name:"summary", value:"This host is installed with MantisBT and is
@@ -97,26 +98,25 @@ if(description)
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("mantis_detect.nasl");
-  script_mandatory_keys("mantisbt/installed");
+  script_mandatory_keys("mantisbt/detected");
   script_require_ports("Services/www", 80);
-  script_xref(name:"URL", value:"http://www.mantisbt.org/download.php");
+
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");
 
-if(!manPort = get_app_port(cpe:CPE)){
+if(!manPort = get_app_port(cpe:CPE))
+  exit(0);
+
+if(!manVer = get_app_version(cpe:CPE, port:manPort))
+  exit(0);
+
+if(version_is_less(version:manVer, test_version:"1.2.18")) {
+  report = report_fixed_ver(installed_version: manVer, fixed_version: "1.2.18");
+  security_message(port:manPort, data: report);
   exit(0);
 }
 
-if(!manVer = get_app_version(cpe:CPE, port:manPort)){
-  exit(0);
-}
-
-if(version_is_less(version:manVer, test_version:"1.2.18"))
-{
-  security_message(port:manPort);
-  exit(0);
-}
+exit(99);

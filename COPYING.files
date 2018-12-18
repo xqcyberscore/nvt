@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Mon, 17 Dec 2018 10:03:20 +0100
+# Automatically created on:  Tue, 18 Dec 2018 12:16:51 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -38416,6 +38416,8 @@
 2018/adobe/gb_adobe_acrobat_2017_apsb18-34_win.nasl: GPLv2+
 2018/adobe/gb_adobe_acrobat_2017_apsb18-40_macosx.nasl: GPLv2+
 2018/adobe/gb_adobe_acrobat_2017_apsb18-40_win.nasl: GPLv2+
+2018/adobe/gb_adobe_acrobat_2017_apsb18-41_macosx.nasl: GPLv2+
+2018/adobe/gb_adobe_acrobat_2017_apsb18-41_win.nasl: GPLv2+
 2018/adobe/gb_adobe_acrobat_dc_classic_apsb17-11_macosx.nasl: GPLv2+
 2018/adobe/gb_adobe_acrobat_dc_classic_apsb17-11_win.nasl: GPLv2+
 2018/adobe/gb_adobe_acrobat_dc_classic_apsb17-24_macosx.nasl: GPLv2+
@@ -38436,6 +38438,8 @@
 2018/adobe/gb_adobe_acrobat_dc_classic_apsb18-34_win.nasl: GPLv2+
 2018/adobe/gb_adobe_acrobat_dc_classic_apsb18-40_macosx.nasl: GPLv2+
 2018/adobe/gb_adobe_acrobat_dc_classic_apsb18-40_win.nasl: GPLv2+
+2018/adobe/gb_adobe_acrobat_dc_classic_apsb18-41_macosx.nasl: GPLv2+
+2018/adobe/gb_adobe_acrobat_dc_classic_apsb18-41_win.nasl: GPLv2+
 2018/adobe/gb_adobe_acrobat_dc_cont_apsb17-11_macosx.nasl: GPLv2+
 2018/adobe/gb_adobe_acrobat_dc_cont_apsb17-11_win.nasl: GPLv2+
 2018/adobe/gb_adobe_acrobat_dc_cont_apsb17-24_macosx.nasl: GPLv2+
@@ -38454,6 +38458,8 @@
 2018/adobe/gb_adobe_acrobat_dc_cont_apsb18-34_win.nasl: GPLv2+
 2018/adobe/gb_adobe_acrobat_dc_cont_apsb18-40_macosx.nasl: GPLv2+
 2018/adobe/gb_adobe_acrobat_dc_cont_apsb18-40_win.nasl: GPLv2+
+2018/adobe/gb_adobe_acrobat_dc_cont_apsb18-41_macosx.nasl: GPLv2+
+2018/adobe/gb_adobe_acrobat_dc_cont_apsb18-41_win.nasl: GPLv2+
 2018/adobe/gb_adobe_acrobat_reader_2017_apsb17-24_macosx.nasl: GPLv2+
 2018/adobe/gb_adobe_acrobat_reader_2017_apsb17-24_win.nasl: GPLv2+
 2018/adobe/gb_adobe_acrobat_reader_2017_apsb17-36_macosx.nasl: GPLv2+
@@ -38464,6 +38470,8 @@
 2018/adobe/gb_adobe_acrobat_reader_2017_apsb18-21_win.nasl: GPLv2+
 2018/adobe/gb_adobe_acrobat_reader_2017_apsb18-29_macosx.nasl: GPLv2+
 2018/adobe/gb_adobe_acrobat_reader_2017_apsb18-29_win.nasl: GPLv2+
+2018/adobe/gb_adobe_acrobat_reader_2017_apsb18-41_macosx.nasl: GPLv2+
+2018/adobe/gb_adobe_acrobat_reader_2017_apsb18-41_win.nasl: GPLv2+
 2018/adobe/gb_adobe_acrobat_reader_dc_classic_apsb17-24_macosx.nasl: GPLv2+
 2018/adobe/gb_adobe_acrobat_reader_dc_classic_apsb17-24_win.nasl: GPLv2+
 2018/adobe/gb_adobe_acrobat_reader_dc_classic_apsb17-36_macosx.nasl: GPLv2+
@@ -38476,6 +38484,8 @@
 2018/adobe/gb_adobe_acrobat_reader_dc_classic_apsb18-29_win.nasl: GPLv2+
 2018/adobe/gb_adobe_acrobat_reader_dc_classic_apsb18-34_macosx.nasl: GPLv2+
 2018/adobe/gb_adobe_acrobat_reader_dc_classic_apsb18-34_win.nasl: GPLv2+
+2018/adobe/gb_adobe_acrobat_reader_dc_classic_apsb18-41_macosx.nasl: GPLv2+
+2018/adobe/gb_adobe_acrobat_reader_dc_classic_apsb18-41_win.nasl: GPLv2+
 2018/adobe/gb_adobe_acrobat_reader_dc_cont_apsb17-24_macosx.nasl: GPLv2+
 2018/adobe/gb_adobe_acrobat_reader_dc_cont_apsb17-24_win.nasl: GPLv2+
 2018/adobe/gb_adobe_acrobat_reader_dc_cont_apsb18-02_macosx.nasl: GPLv2+
@@ -38486,6 +38496,8 @@
 2018/adobe/gb_adobe_acrobat_reader_dc_cont_apsb18-29_win.nasl: GPLv2+
 2018/adobe/gb_adobe_acrobat_reader_dc_cont_apsb18-34_macosx.nasl: GPLv2+
 2018/adobe/gb_adobe_acrobat_reader_dc_cont_apsb18-34_win.nasl: GPLv2+
+2018/adobe/gb_adobe_acrobat_reader_dc_cont_apsb18-41_macosx.nasl: GPLv2+
+2018/adobe/gb_adobe_acrobat_reader_dc_cont_apsb18-41_win.nasl: GPLv2+
 2018/adobe/gb_adobe_coldfusion_mult_vuln_apsb18-14.nasl: GPLv2+
 2018/adobe/gb_adobe_coldfusion_mult_vuln_apsb18-33.nasl: GPLv2+
 2018/adobe/gb_adobe_connect_auth_bypass_apsb18-18_vuln.nasl: GPLv2+
@@ -39769,6 +39781,10 @@
 2018/debian/deb_dla_1603.nasl: GPLv2+
 2018/debian/deb_dla_1604.nasl: GPLv2+
 2018/debian/deb_dla_1605.nasl: GPLv2+
+2018/debian/deb_dla_1607.nasl: GPLv2+
+2018/debian/deb_dla_1608.nasl: GPLv2+
+2018/debian/deb_dla_1609.nasl: GPLv2+
+2018/debian/deb_dla_1610.nasl: GPLv2+
 2018/debian/deb_dla_547.nasl: GPLv2+
 2018/debian/deb_dla_613.nasl: GPLv2+
 2018/debian/deb_dla_693.nasl: GPLv2+
@@ -40283,6 +40299,7 @@
 2018/fedora/gb_fedora_2018_2513b888a4_mariadb_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_25525a9346_thunderbird-enigmail_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_25674bb48e_graphviz_fc28.nasl: GPLv2+
+2018/fedora/gb_fedora_2018_2575edf8d3_nss_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_25a7ba3cb6_exim_fc26.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_25c6d1b417_hesiod_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_262eb7c289_kernel_fc27.nasl: GPLv2+
@@ -40458,6 +40475,7 @@
 2018/fedora/gb_fedora_2018_4a21a8ca59_nss-util_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_4a2b875d6b_libofx_fc26.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_4a606489ae_php-zendframework-zend-diactoros_fc28.nasl: GPLv2+
+2018/fedora/gb_fedora_2018_4ac3c68ee4_polkit_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_4ac4229aa8_xmlrpc_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_4ae94c8deb_community-mysql_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_4ca01704a2_kernel_fc26.nasl: GPLv2+
@@ -40805,6 +40823,7 @@
 2018/fedora/gb_fedora_2018_96601292a2_php-simplesamlphp-saml2_1_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_969328b17c_jhead_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_9695e9b0ed_docker_fc28.nasl: GPLv2+
+2018/fedora/gb_fedora_2018_96b48b34ae_mingw-uriparser_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_96d770ddc9_php-symfony4_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_976ce10858_units_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_9780220f7d_dnsmasq_fc26.nasl: GPLv2+
@@ -40858,6 +40877,9 @@
 2018/fedora/gb_fedora_2018_a042f795b2_python3_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_a042f795b2_python-pip_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_a068ade416_firefox_fc27.nasl: GPLv2+
+2018/fedora/gb_fedora_2018_a0914af224_kernel_fc28.nasl: GPLv2+
+2018/fedora/gb_fedora_2018_a0914af224_kernel-headers_fc28.nasl: GPLv2+
+2018/fedora/gb_fedora_2018_a0914af224_kernel-tools_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_a0a356fb68_cryptopp_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_a0cca16ec6_exim_fc26.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_a0d72435aa_ca-certificates_fc27.nasl: GPLv2+
@@ -40879,6 +40901,7 @@
 2018/fedora/gb_fedora_2018_a39b4f76c8_thunderbird_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_a3b7c7eb79_PackageKit_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_a3e631b454_pass_fc27.nasl: GPLv2+
+2018/fedora/gb_fedora_2018_a3ef0a026f_uriparser_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_a407b85547_cgit_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_a42eb4ac61_python-pycryptodomex_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_a4353f97db_slf4j_fc27.nasl: GPLv2+
@@ -40928,6 +40951,7 @@
 2018/fedora/gb_fedora_2018_acfce682f4_uwsgi_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_ad652798b8_mosquitto_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_ad83f27a39_godot_fc28.nasl: GPLv2+
+2018/fedora/gb_fedora_2018_ae8d35651b_singularity_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_ae9027a506_SDL2_image_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_aec846c0ef_xen_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_aed26fc705_ppp_fc28.nasl: GPLv2+
@@ -40974,6 +40998,7 @@
 2018/fedora/gb_fedora_2018_b7d774a7c1_knot-resolver_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_b7e606d011_electrum_fc26.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_b8cbd331a1_pam-kwallet_fc28.nasl: GPLv2+
+2018/fedora/gb_fedora_2018_b9581d9624_python-notebook_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_b967b5592e_audiofile_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_b997780dca_kernel_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_b997780dca_kernel-tools_fc27.nasl: GPLv2+
@@ -41059,6 +41084,7 @@
 2018/fedora/gb_fedora_2018_c8f559e8c2_xdg-utils_fc26.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_c923533479_webkitgtk4_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_c9395f9bec_remctl_fc27.nasl: GPLv2+
+2018/fedora/gb_fedora_2018_ca03363d57_perl_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_ca0e10fc6e_kernel_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_ca0e10fc6e_kernel-headers_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_ca0e10fc6e_kernel-tools_fc28.nasl: GPLv2+
@@ -41260,6 +41286,7 @@
 2018/fedora/gb_fedora_2018_f1b1ed38b3_ghostscript_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_f1b818a5c9_kernel_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_f1ca41a1a6_php-tcpdf_fc28.nasl: GPLv2+
+2018/fedora/gb_fedora_2018_f1f44e4c6d_hadoop_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_f2097d8937_php-simplesamlphp-saml2_3_fc26.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_f20a0cead5_xen_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_f22b937f52_bind_fc28.nasl: GPLv2+
@@ -41392,6 +41419,9 @@
 2018/google/gb_google_chrome_stable-channel-update-for-desktop_12-2018-06_lin.nasl: GPLv2+
 2018/google/gb_google_chrome_stable-channel-update-for-desktop_12-2018-06_macosx.nasl: GPLv2+
 2018/google/gb_google_chrome_stable-channel-update-for-desktop_12-2018-06_win.nasl: GPLv2+
+2018/google/gb_google_chrome_stable-channel-update-for-desktop_12-2018-12_lin.nasl: GPLv2+
+2018/google/gb_google_chrome_stable-channel-update-for-desktop_12-2018-12_macosx.nasl: GPLv2+
+2018/google/gb_google_chrome_stable-channel-update-for-desktop_12-2018-12_win.nasl: GPLv2+
 2018/google/gb_google_chrome_stable-channel-update-for-desktop_19-2018-11_lin.nasl: GPLv2+
 2018/google/gb_google_chrome_stable-channel-update-for-desktop_19-2018-11_macosx.nasl: GPLv2+
 2018/google/gb_google_chrome_stable-channel-update-for-desktop_19-2018-11_win.nasl: GPLv2+
@@ -42088,6 +42118,8 @@
 2018/mozilla/gb_mozilla_firefox_esr_mfsa_2018-25_2018-27_inte_overflow_vuln_win.nasl: GPLv2+
 2018/mozilla/gb_mozilla_firefox_esr_mfsa_2018-25_2018-27_macosx.nasl: GPLv2+
 2018/mozilla/gb_mozilla_firefox_esr_mfsa_2018-25_2018-27_win.nasl: GPLv2+
+2018/mozilla/gb_mozilla_firefox_esr_mfsa_2018-29_2018-30_macosx.nasl: GPLv2+
+2018/mozilla/gb_mozilla_firefox_esr_mfsa_2018-29_2018-30_win.nasl: GPLv2+
 2018/mozilla/gb_mozilla_firefox_mfsa_2018-01_2018-01_macosx.nasl: GPLv2+
 2018/mozilla/gb_mozilla_firefox_mfsa_2018-01_2018-01_win.nasl: GPLv2+
 2018/mozilla/gb_mozilla_firefox_mfsa_2018-02_2018-03_macosx.nasl: GPLv2+
@@ -42116,6 +42148,8 @@
 2018/mozilla/gb_mozilla_firefox_mfsa_2018-25_2018-27_inte_overflow_vuln_win.nasl: GPLv2+
 2018/mozilla/gb_mozilla_firefox_mfsa_2018-25_2018-27_macosx.nasl: GPLv2+
 2018/mozilla/gb_mozilla_firefox_mfsa_2018-25_2018-27_win.nasl: GPLv2+
+2018/mozilla/gb_mozilla_firefox_mfsa_2018-28_2018-30_macosx.nasl: GPLv2+
+2018/mozilla/gb_mozilla_firefox_mfsa_2018-28_2018-30_win.nasl: GPLv2+
 2018/mozilla/gb_mozilla_firefox_password_info_disc_vuln_macosx.nasl: GPLv2+
 2018/mozilla/gb_mozilla_firefox_password_info_disc_vuln_win.nasl: GPLv2+
 2018/mozilla/gb_mozilla_thunderbird_mfsa_2018-04_2018-04_macosx.nasl: GPLv2+
@@ -42138,6 +42172,8 @@
 2018/mybb/gb_mybb_xss_vuln_aug18.nasl: GPLv2+
 2018/mybb/gb_mybb_xss_vuln.nasl: GPLv2+
 2018/nagios/gb_nagios_core_unix_socket_mult_dos_vuln.nasl: GPLv2+
+2018/nagios/gb_nagios_core_xss_vuln.nasl: GPLv2+
+2018/nagios/gb_nagiosxi_mult_vuln_dec18.nasl: GPLv2+
 2018/nagios/gb_nagiosxi_mult_vuln_nov18.nasl: GPLv2+
 2018/nagiosxi/gb_nagios_fusion_mult_xss_vuln.nasl: GPLv2+
 2018/nagiosxi/gb_nagiosxi_mult_vuln_apr18.nasl: GPLv2+
@@ -42738,6 +42774,11 @@
 2018/opensuse/gb_suse_2018_4054_1.nasl: GPLv2+
 2018/opensuse/gb_suse_2018_4055_1.nasl: GPLv2+
 2018/opensuse/gb_suse_2018_4056_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4104_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4105_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4111_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4112_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4117_1.nasl: GPLv2+
 2018/openvpn/gb_openvpn_win_dos_vuln.nasl: GPLv2+
 2018/openwebanalytics/gb_open_web_analytics_php_obj_inj_vuln.nasl: GPLv2+
 2018/openxchange/gb_open_xchange_appsuite_content_spoof_vuln_june18.nasl: GPLv2+
@@ -43582,15 +43623,21 @@
 2018/ubuntu/gb_ubuntu_USN_3836_1.nasl: GPLv2+
 2018/ubuntu/gb_ubuntu_USN_3836_2.nasl: GPLv2+
 2018/ubuntu/gb_ubuntu_USN_3837_1.nasl: GPLv2+
+2018/ubuntu/gb_ubuntu_USN_3837_2.nasl: GPLv2+
 2018/ubuntu/gb_ubuntu_USN_3838_1.nasl: GPLv2+
 2018/ubuntu/gb_ubuntu_USN_3839_1.nasl: GPLv2+
 2018/ubuntu/gb_ubuntu_USN_3840_1.nasl: GPLv2+
+2018/ubuntu/gb_ubuntu_USN_3843_1.nasl: GPLv2+
+2018/ubuntu/gb_ubuntu_USN_3844_1.nasl: GPLv2+
+2018/ubuntu/gb_ubuntu_USN_3845_1.nasl: GPLv2+
 2018/universal_media_server/gb_universal_media_server_xxe_vuln.nasl: GPLv2+
 2018/vbulletin/gb_vbulletin_543_open_redirect_vuln.nasl: GPLv2+
 2018/vbulletin/gb_vbulletin_url_param_open_redirect_vuln.nasl: GPLv2+
 2018/vertiv/gb_emerson_liebert_intellislot_default_credentials.nasl: GPLv2+
 2018/viconindustries/gb_vicon_industries_network_camera_default_credentials.nasl: GPLv2+
 2018/videoiq/gb_videoiq_camera_default_credentials.nasl: GPLv2+
+2018/vlc/gb_vlc_caf_demuxer_int_underflow_vuln_macosx.nasl: GPLv2+
+2018/vlc/gb_vlc_caf_demuxer_int_underflow_vuln_win.nasl: GPLv2+
 2018/vlc/gb_vlc_media_player_dos_vuln_may18_macosx.nasl: GPLv2+
 2018/vlc/gb_vlc_media_player_dos_vuln_may18_win.nasl: GPLv2+
 2018/vlc/gb_vlc_media_player_LIVE555_streaming_media_rce_vuln_macosx.nasl: GPLv2+
@@ -43673,6 +43720,8 @@
 2018/wordpress/gb_wordpress_media-from-ftp_dir_trav_vuln.nasl: GPLv2+
 2018/wordpress/gb_wordpress_mult_vuln_apr18_lin.nasl: GPLv2+
 2018/wordpress/gb_wordpress_mult_vuln_apr18_win.nasl: GPLv2+
+2018/wordpress/gb_wordpress_mult_vuln_dec18_lin.nasl: GPLv2+
+2018/wordpress/gb_wordpress_mult_vuln_dec18_win.nasl: GPLv2+
 2018/wordpress/gb_wordpress_mult_vuln_jan18_lin.nasl: GPLv2+
 2018/wordpress/gb_wordpress_mult_vuln_jan18_win.nasl: GPLv2+
 2018/wordpress/gb_wordpress_nextgen-gallery_local_file_incl_vuln.nasl: GPLv2+
@@ -44019,6 +44068,7 @@ gb_axis_detect.nasl: GPLv2+
 gb_axis_network_cameras_ftp_detect.nasl: GPLv2+
 gb_axon_virtual_pbx_web_detect.nasl: GPLv2+
 gb_b2evolution_detect.nasl: GPLv2+
+gb_b4n_orchestrator_detect.nasl: GPLv2+
 gb_backupexec_detect.nasl: GPLv2+
 gb_backuppc_detect.nasl: GPLv2+
 gb_bacnet_detect.nasl: GPLv2+
@@ -61312,6 +61362,7 @@ gsf/2018/f5/gb_f5_big_ip_K15526101.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K16248201.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K16347.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K16355.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K16365.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K16674.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K16845.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K17113.nasl: GPLv2+
@@ -61418,6 +61469,7 @@ gsf/2018/f5/gb_f5_big_ip_K64552448.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K64721111.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K65355492.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K66171422.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K68852819.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K70321874.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K71877858.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K72403108.nasl: GPLv2+
@@ -61903,6 +61955,7 @@ gsf/2018/microsoft/gb_ms_kb4462929.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4463097.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4467701.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4467706.nasl: GPLv2+
+gsf/2018/microsoft/gb_ms_kb4468741.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4470629.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4470638.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4471325.nasl: GPLv2+
@@ -62295,6 +62348,7 @@ gsf/2018/splunk/gb_splunk_light_mult_vuln_sep18.nasl: GPLv2+
 gsf/2018/symantec/gb_sep_multiple_vuln_SYMSA1454.nasl: GPLv2+
 gsf/2018/symantec/gb_symantec_encryption_server_symsa1458_dos_vuln.nasl: GPLv2+
 gsf/2018/symantec/gb_symantec_messaging_gateway_SYMSA1461.nasl: GPLv2+
+gsf/2018/syncbreeze/gb_sync_breeze_enterprise_buf_ovflw_vuln.nasl: GPLv2+
 gsf/2018/syncbreeze/gb_sync_breeze_enterprise_write_access_vuln.nasl: GPLv2+
 gsf/2018/teledyne/gb_teledyne_dalsa_sherlock_bof_vuln.nasl: GPLv2+
 gsf/2018/teltonika/gb_teltonika_rut9xx_mult_vuln.nasl: GPLv2+

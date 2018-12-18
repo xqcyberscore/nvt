@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_mult_vuln_june16_win.nasl 11916 2018-10-16 08:36:43Z asteins $
+# $Id: gb_mantisbt_mult_vuln_june16_win.nasl 12818 2018-12-18 09:55:03Z ckuersteiner $
 #
 # MantisBT SOAP API Information Disclosure Vulnerability - June16 (Windows)
 #
@@ -29,12 +29,13 @@ CPE = "cpe:/a:mantisbt:mantisbf";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807599");
-  script_version("$Revision: 11916 $");
+  script_version("$Revision: 12818 $");
   script_cve_id("CVE-2014-9759");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-16 10:36:43 +0200 (Tue, 16 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-18 10:55:03 +0100 (Tue, 18 Dec 2018) $");
   script_tag(name:"creation_date", value:"2016-06-03 17:28:35 +0530 (Fri, 03 Jun 2016)");
+
   script_name("MantisBT SOAP API Information Disclosure Vulnerability - June16 (Windows)");
 
   script_tag(name:"summary", value:"This host is installed with MantisBT
@@ -66,7 +67,7 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("mantis_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("mantisbt/installed", "Host/runs_windows");
+  script_mandatory_keys("mantisbt/detected", "Host/runs_windows");
   script_require_ports("Services/www", 80);
 
   exit(0);
@@ -75,13 +76,11 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-if(!manPort = get_app_port(cpe:CPE)){
+if(!manPort = get_app_port(cpe:CPE))
   exit(0);
-}
 
-if(!manVer = get_app_version(cpe:CPE, port:manPort)){
+if(!manVer = get_app_version(cpe:CPE, port:manPort))
   exit(0);
-}
 
 if(version_is_equal(version:manVer, test_version:"1.3.0-beta.1") ||
    version_is_equal(version:manVer, test_version:"1.3.0-beta.2") ||

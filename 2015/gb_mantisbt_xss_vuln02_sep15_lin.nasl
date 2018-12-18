@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_xss_vuln02_sep15_lin.nasl 12391 2018-11-16 16:12:15Z cfischer $
+# $Id: gb_mantisbt_xss_vuln02_sep15_lin.nasl 12818 2018-12-18 09:55:03Z ckuersteiner $
 #
 # MantisBT Cross Site Scripting Vulnerability-02 September15 (Linux)
 #
@@ -29,14 +29,15 @@ CPE = "cpe:/a:mantisbt:mantisbt";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805976");
-  script_version("$Revision: 12391 $");
+  script_version("$Revision: 12818 $");
   script_cve_id("CVE-2014-9272");
   script_bugtraq_id(71375);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 17:12:15 +0100 (Fri, 16 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-18 10:55:03 +0100 (Tue, 18 Dec 2018) $");
   script_tag(name:"creation_date", value:"2015-09-08 18:15:16 +0530 (Tue, 08 Sep 2015)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
+
   script_name("MantisBT Cross Site Scripting Vulnerability-02 September15 (Linux)");
 
   script_tag(name:"summary", value:"This host is running MantisBT and is prone
@@ -67,7 +68,7 @@ if(description)
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("mantis_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("mantisbt/installed", "Host/runs_unixoide");
+  script_mandatory_keys("mantisbt/detected", "Host/runs_unixoide");
   script_require_ports("Services/www", 80);
   script_xref(name:"URL", value:"http://www.mantisbt.org");
 

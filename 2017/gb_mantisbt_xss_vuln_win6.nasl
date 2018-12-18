@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_xss_vuln_win6.nasl 11901 2018-10-15 08:47:18Z mmartin $
+# $Id: gb_mantisbt_xss_vuln_win6.nasl 12818 2018-12-18 09:55:03Z ckuersteiner $
 #
 # MantisBT 2.3.x < 2.3.2 Cross Site Scripting Vulnerability (Windows)
 #
@@ -29,18 +29,20 @@ CPE = "cpe:/a:mantisbt:mantisbt";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108151");
-  script_version("$Revision: 11901 $");
+  script_version("$Revision: 12818 $");
   script_cve_id("CVE-2017-7897");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 10:47:18 +0200 (Mon, 15 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-18 10:55:03 +0100 (Tue, 18 Dec 2018) $");
   script_tag(name:"creation_date", value:"2017-04-21 11:33:23 +0200 (Fri, 21 Apr 2017)");
+
   script_name("MantisBT 2.3.x < 2.3.2 Cross Site Scripting Vulnerability (Windows)");
+
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("mantis_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("mantisbt/installed", "Host/runs_windows");
+  script_mandatory_keys("mantisbt/detected", "Host/runs_windows");
   script_require_ports("Services/www", 80);
 
   script_xref(name:"URL", value:"http://www.mantisbt.org/bugs/view.php?id=22742");

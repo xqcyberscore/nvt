@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: mantis_multiple_vulns4.nasl 12007 2018-10-22 07:43:49Z cfischer $
+# $Id: mantis_multiple_vulns4.nasl 12818 2018-12-18 09:55:03Z ckuersteiner $
 #
 # Mantis Multiple Flaws (4)
 #
@@ -29,19 +29,21 @@ CPE = "cpe:/a:mantisbt:mantisbt";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.19473");
-  script_version("$Revision: 12007 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 09:43:49 +0200 (Mon, 22 Oct 2018) $");
+  script_version("$Revision: 12818 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-18 10:55:03 +0100 (Tue, 18 Dec 2018) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_bugtraq_id(14604);
   script_cve_id("CVE-2005-2556", "CVE-2005-2557", "CVE-2005-3090", "CVE-2005-3091");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+
   script_name("Mantis Multiple Flaws (4)");
+
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2005 David Maciejak");
   script_family("Web application abuses");
   script_dependencies("mantis_detect.nasl");
-  script_mandatory_keys("mantisbt/installed");
+  script_mandatory_keys("mantisbt/detected");
 
   script_xref(name:"URL", value:"https://marc.info/?l=bugtraq&m=112786017426276&w=2");
 

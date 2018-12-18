@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mambo_detect.nasl 11028 2018-08-17 09:26:08Z cfischer $
+# $Id: mambo_detect.nasl 12818 2018-12-18 09:55:03Z ckuersteiner $
 #
 # mambo Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100036");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11028 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 11:26:08 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 12818 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-18 10:55:03 +0100 (Tue, 18 Dec 2018) $");
   script_tag(name:"creation_date", value:"2009-03-13 06:42:27 +0100 (Fri, 13 Mar 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("mambo Detection");
@@ -101,16 +101,16 @@ foreach dir( make_list_unique( "/mambo", "/cms", cgi_dirs( port:port ) ) ) {
   }
 
   if( installed ) {
+    vers = "unknown";
 
-    vers = string("unknown");
-
-    url = string(dir, "/administrator/components/com_admin/version.xml");
+    url = dir + "/administrator/components/com_admin/version.xml";
     req = http_get(item:url, port:port);
     buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
     version = eregmatch(string: buf, pattern: "<version>(.*)</version>");
 
     if ( !isnull(version[1]) ) {
       vers=version[1];
+      concUrl = url;
     } else {
       url = string(dir, "/mambots/content/moscode.xml");
       req = http_get(item:url, port:port);
@@ -119,6 +119,7 @@ foreach dir( make_list_unique( "/mambo", "/cms", cgi_dirs( port:port ) ) ) {
 
       if ( !isnull(version[1]) ) {
         vers=version[1];
+        concUrl = url;
       } else {
         url = string(dir, "/help/mambo.whatsnew.html");
         req = http_get(item:url, port:port);
@@ -127,23 +128,22 @@ foreach dir( make_list_unique( "/mambo", "/cms", cgi_dirs( port:port ) ) ) {
 
         if ( !isnull(version[1]) ) {
           vers=version[1];
+          concUrl = url;
         }
       }
     }
 
-    tmp_version = string(vers," under ",install);
-    set_kb_item(name: string("www/", port, "/mambo_mos"), value: tmp_version);
+    set_kb_item(name: "mambo_cms/detected", value: TRUE);
 
-    cpe = build_cpe(value:tmp_version, exp:"^([0-9.]+([a-z0-9]+)?)", base:"cpe:/a:mambo-foundation:mambo:");
-    if(!isnull(cpe))
-      register_host_detail(name:"App", value:cpe, desc:SCRIPT_DESC);
+    cpe = build_cpe(value:vers, exp:"^([0-9.]+([a-z0-9]+)?)", base:"cpe:/a:mambo-foundation:mambo:");
+    if(!cpe)
+      cpe = 'cpe:/a:mambo-foundation:mambo';
 
-    info = string("mambo Version (");
-    info += string(vers);
-    info += string(") was detected on the remote host in the following directory(s):\n\n");
-    info += string(install, "\n");
+    register_product(cpe: cpe, location: install, port: port, service: "www");
 
-    log_message(port:port,data:info);
+    log_message(data: build_detection_report(app: "Mambo CMS", version: vers, install: install, cpe: cpe,
+                                             concluded: version[0], concludedUrl: concUrl),
+                port: port);
     exit(0);
   }
 }

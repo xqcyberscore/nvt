@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_mult_vuln_feb15.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_mantisbt_mult_vuln_feb15.nasl 12818 2018-12-18 09:55:03Z ckuersteiner $
 #
 # MantisBT Multiple Vulnerabilities - Feb15
 #
@@ -29,12 +29,13 @@ CPE = "cpe:/a:mantisbt:mantisbt";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805267");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 12818 $");
   script_cve_id("CVE-2014-9573", "CVE-2014-9572", "CVE-2014-9571", "CVE-2014-9624");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-18 10:55:03 +0100 (Tue, 18 Dec 2018) $");
   script_tag(name:"creation_date", value:"2015-02-03 17:35:43 +0530 (Tue, 03 Feb 2015)");
+
   script_name("MantisBT Multiple Vulnerabilities - Feb15");
 
   script_tag(name:"summary", value:"This host is installed with MantisBT
@@ -84,41 +85,35 @@ if(description)
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("mantis_detect.nasl");
-  script_mandatory_keys("mantisbt/installed");
+  script_mandatory_keys("mantisbt/detected");
   script_require_ports("Services/www", 80);
-  script_xref(name:"URL", value:"http://www.mantisbt.org/download.php");
+
   exit(0);
 }
 
 include("host_details.inc");
 include("version_func.inc");
 
-if(!manPort = get_app_port(cpe:CPE)){
+if(!manPort = get_app_port(cpe:CPE))
   exit(0);
-}
 
-if(!manVer = get_app_version(cpe:CPE, port:manPort)){
+if(!manVer = get_app_version(cpe:CPE, port:manPort))
   exit(0);
-}
 
 ##Before 1.2.19
-if(version_is_less(version:manVer, test_version:"1.2.19"))
-{
+if(version_is_less(version:manVer, test_version:"1.2.19")) {
   fix = "1.2.19";
   VULN = TRUE;
 }
 
 ##1.3.x before 1.3.0-beta.2
-if(version_is_equal(version:manVer, test_version:"1.3.0-beta.1"))
-{
+if(version_is_equal(version:manVer, test_version:"1.3.0-beta.1")) {
   fix = "1.3.0-beta.2";
   VULN = TRUE;
 }
 
-if(VULN)
-{
-  report = 'Installed version: ' + manVer + '\n' +
-           'Fixed version:     ' + fix + '\n';
+if(VULN) {
+  report = report_fixed_ver(installed_version: manVer, fixed_version: fix);
   security_message(port:manPort, data:report);
   exit(0);
 }

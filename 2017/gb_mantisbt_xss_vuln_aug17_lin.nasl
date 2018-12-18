@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_xss_vuln_aug17_lin.nasl 11977 2018-10-19 07:28:56Z mmartin $
+# $Id: gb_mantisbt_xss_vuln_aug17_lin.nasl 12818 2018-12-18 09:55:03Z ckuersteiner $
 #
 # MantisBT 'adm_config_report.php' Cross-Site Scripting Vulnerability - Aug17 (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mantisbt:mantisbt";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811722");
-  script_version("$Revision: 11977 $");
+  script_version("$Revision: 12818 $");
   script_cve_id("CVE-2015-2046");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-18 10:55:03 +0100 (Tue, 18 Dec 2018) $");
   script_tag(name:"creation_date", value:"2017-08-31 14:11:36 +0530 (Thu, 31 Aug 2017)");
   script_name("MantisBT 'adm_config_report.php' Cross-Site Scripting Vulnerability - Aug17 (Linux)");
 
@@ -64,28 +64,25 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("mantis_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("mantisbt/installed", "Host/runs_unixoide");
+  script_mandatory_keys("mantisbt/detected", "Host/runs_unixoide");
   script_require_ports("Services/www", 80);
-  script_xref(name:"URL", value:"http://www.mantisbt.org/download.php");
+
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");
 
-if(!manPort = get_app_port(cpe:CPE)){
+if(!manPort = get_app_port(cpe:CPE))
   exit(0);
-}
 
-if(!manVer = get_app_version(cpe:CPE, port:manPort)){
+if(!manVer = get_app_version(cpe:CPE, port:manPort))
   exit(0);
-}
 
-if(version_in_range(version:manVer, test_version:"1.2.13", test_version2:"1.2.19"))
-{
+if(version_in_range(version:manVer, test_version:"1.2.13", test_version2:"1.2.19")) {
   report = report_fixed_ver(installed_version: manVer, fixed_version: "1.2.20");
   security_message(port: manPort, data: report);
   exit(0);
 }
+
 exit(0);
