@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_http_os_detection.nasl 12793 2018-12-13 14:23:39Z cfischer $
+# $Id: sw_http_os_detection.nasl 12828 2018-12-18 14:49:09Z cfischer $
 #
 # HTTP OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111067");
-  script_version("$Revision: 12793 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-13 15:23:39 +0100 (Thu, 13 Dec 2018) $");
+  script_version("$Revision: 12828 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-18 15:49:09 +0100 (Tue, 18 Dec 2018) $");
   script_tag(name:"creation_date", value:"2015-12-10 16:00:00 +0100 (Thu, 10 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -76,8 +76,8 @@ function check_http_banner( port, banner ) {
 
     # Logitech Media Server is cross-platform
     if( banner == "Server: Logitech Media Server" ||
-        egrep( pattern:"^Server: Logitech Media Server\([0-9.]+\)$", string:banner ) ||
-        egrep( pattern:"^Server: Logitech Media Server\([0-9.]+\ - [0-9.]+)$", string:banner ) )
+        egrep( pattern:"^Server: Logitech Media Server \([0-9.]+\)$", string:banner ) ||
+        egrep( pattern:"^Server: Logitech Media Server \([0-9.]+ - [0-9.]+)$", string:banner ) )
       return;
 
     # NZBGet is cross-platform

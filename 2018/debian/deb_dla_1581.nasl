@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1581.nasl 12441 2018-11-20 13:42:31Z cfischer $
+# $Id: deb_dla_1581.nasl 12832 2018-12-19 07:49:53Z asteins $
 #
 # Auto-generated from advisory DLA 1581-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891581");
-  script_version("$Revision: 12441 $");
+  script_version("$Revision: 12832 $");
   script_cve_id("CVE-2018-19198", "CVE-2018-19199", "CVE-2018-19200");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1581-1] uriparser security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-20 14:42:31 +0100 (Tue, 20 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-19 08:49:53 +0100 (Wed, 19 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-11-20 00:00:00 +0100 (Tue, 20 Nov 2018)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

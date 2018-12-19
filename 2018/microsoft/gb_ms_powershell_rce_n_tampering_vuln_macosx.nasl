@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_powershell_rce_n_tampering_vuln_macosx.nasl 12362 2018-11-15 09:45:28Z santu $
+# $Id: gb_ms_powershell_rce_n_tampering_vuln_macosx.nasl 12832 2018-12-19 07:49:53Z asteins $
 #
 # Microsoft PowerShell Core RCE and Tampering Vulnerabilities (Mac OS X)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:microsoft:powershell";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814183");
-  script_version("$Revision: 12362 $");
+  script_version("$Revision: 12832 $");
   script_cve_id("CVE-2018-8256", "CVE-2018-8415");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:45:28 +0100 (Thu, 15 Nov 2018) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-19 08:49:53 +0100 (Wed, 19 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-11-15 11:13:29 +0530 (Thu, 15 Nov 2018)");
   script_name("Microsoft PowerShell Core RCE and Tampering Vulnerabilities (Mac OS X)");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_joomla_artforms_mult_vuln.nasl 11101 2018-08-24 09:42:11Z ckuersteiner $
+# $Id: secpod_joomla_artforms_mult_vuln.nasl 12829 2018-12-18 15:38:49Z cfischer $
 #
 # Joomla! ArtForms Component Multiple Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902219");
-  script_version("$Revision: 11101 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 11:42:11 +0200 (Fri, 24 Aug 2018) $");
+  script_version("$Revision: 12829 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-18 16:38:49 +0100 (Tue, 18 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-08-02 12:38:17 +0200 (Mon, 02 Aug 2010)");
   script_bugtraq_id(41457);
   script_cve_id("CVE-2010-2846", "CVE-2010-2848", "CVE-2010-2847");
@@ -85,8 +85,6 @@ include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("version_func.inc");
-
-port = get_http_port(default:80);
 
 if (!port = get_app_port(cpe:CPE))
   exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_ae9027a506_SDL2_image_fc28.nasl 12362 2018-11-15 09:45:28Z santu $
+# $Id: gb_fedora_2018_ae9027a506_SDL2_image_fc28.nasl 12832 2018-12-19 07:49:53Z asteins $
 #
 # Fedora Update for SDL2_image FEDORA-2018-ae9027a506
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875272");
-  script_version("$Revision: 12362 $");
+  script_version("$Revision: 12832 $");
   script_cve_id("CVE-2018-3977");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:45:28 +0100 (Thu, 15 Nov 2018) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-19 08:49:53 +0100 (Wed, 19 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-11-15 06:23:20 +0100 (Thu, 15 Nov 2018)");
   script_name("Fedora Update for SDL2_image FEDORA-2018-ae9027a506");
   script_category(ACT_GATHER_INFO);

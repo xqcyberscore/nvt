@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_mult_vuln_dec18_win.nasl 12809 2018-12-17 13:36:42Z asteins $
+# $Id: gb_wordpress_mult_vuln_dec18_win.nasl 12826 2018-12-18 14:16:35Z asteins $
 #
 # WordPress Multiple Vulnerabilities (Security Release) - December 2018 (Windows)
 #
@@ -27,13 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112465");
-  script_version("$Revision: 12809 $");
+  script_version("$Revision: 12826 $");
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-17 14:36:42 +0100 (Mon, 17 Dec 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-18 15:16:35 +0100 (Tue, 18 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-12-17 14:16:22 +0100 (Mon, 17 Dec 2018)");
 
   script_name("WordPress Multiple Vulnerabilities (Security Release) - December 2018 (Windows)");
+
+  script_cve_id("CVE-2018-20147", "CVE-2018-20148", "CVE-2018-20149", "CVE-2018-20150", "CVE-2018-20151", "CVE-2018-20152", "CVE-2018-20153");
+  script_bugtraq_id(106220);
 
   script_tag(name:"summary", value:"This host is running WordPress and is prone
   to multiple vulnerabilities.");

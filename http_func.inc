@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: http_func.inc 12757 2018-12-11 12:22:00Z cfischer $
+# $Id: http_func.inc 12834 2018-12-19 10:48:22Z cfischer $
 #
 # Methods to handle HTTP
 #
@@ -24,7 +24,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 12757 $
+# $Revision: 12834 $
 #
 ###############################################################################
 
@@ -36,20 +36,31 @@ _http_ua_include_oid = FALSE;
 # @brief Returns a HTTP User Agent string which can be used by VTs within the
 #        User-Agent: header of HTTP requests.
 #
+# @param vt_string This is a string which is initially used to build the default UA
+#        string for the case where the "http/user-agent" KB key is empty initially.
+# @param dont_add_oid If set to TRUE don't add the OID of the calling VT to the
+#        User-Agent string even if the _http_ua_include_oid global variable is set.
+#
 # @return A string containing a HTTP user agent.
 #
-function get_http_user_agent() {
+function get_http_user_agent( vt_string, dont_add_oid ) {
 
-  local_var default, ua;
+  local_var vt_string, dont_add_oid;
+  local_var ua_vt_string, default, ua;
   # nb: __http_func_user_agent is global var
+
+  if( vt_string )
+    ua_vt_string = vt_string;
+  else
+    ua_vt_string = "OpenVAS-VT";
 
   # nb: Only used if the function is called by a VT running via openvas-nasl
   # and if global_settings.nasl wasn't called before that VT.
   # TBD: On master we don't have a "OPENVAS_VERSION" defined...
   if( OPENVAS_VERSION )
-    default = "Mozilla/5.0 [en] (X11, U; OpenVAS-VT " + OPENVAS_VERSION + ")";
+    default = "Mozilla/5.0 [en] (X11, U; " + ua_vt_string + " " + OPENVAS_VERSION + ")";
   else
-    default = "Mozilla/5.0 [en] (X11, U; OpenVAS-VT)";
+    default = "Mozilla/5.0 [en] (X11, U; " + ua_vt_string + ")";
 
   if( ! isnull( __http_func_user_agent ) ) {
     ua = string( __http_func_user_agent );
@@ -64,8 +75,8 @@ function get_http_user_agent() {
   }
 
   # nb: See description of the variable for the purpose
-  if( _http_ua_include_oid )
-    ua = str_replace( string:ua, find:")", replace:") (OID:" + get_script_oid() + ")", count:1 );
+  if( _http_ua_include_oid && ! dont_add_oid )
+    ua = ereg_replace( string:ua, pattern:"(.+)$", replace:"\1 (OID:" + get_script_oid() + ")" );
 
   return ua;
 }
@@ -725,7 +736,8 @@ function http_recv_length( socket, bodylength ) {
 function http_send_recv( port, data ) {
 
   local_var port, data;
-  local_var s, x, cl, conlen, r;
+  local_var s, x, cl, conlen, r, user_agent, oid_str;
+  # nb: _http_ua_include_oid and _http_debug are global vars
 
   if( ! port ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#http_send_recv" );
@@ -737,18 +749,33 @@ function http_send_recv( port, data ) {
     return NULL;
   }
 
-  # nb: We should expect at least a request like: "GET / HTTP/1.1\r\n" (length: 16).
+  # nb: We should expect at least a request like: "GET / HTTP/1.1\r\n\r\n" (length: 18).
   # But for some specific cases we're just checking for some less data.
   if( strlen( data ) < 8 || data !~ "^(DELETE|PROPFIND|PUT|GET|HEAD|POST|OPTIONS|REPORT|MKCOL|MOVE|PROPPATCH|COPY|PATCH|CONNECT|TRACE|LOCK|UNLOCK|TRACK|M-POST|CHECKOUT|CHECKIN|UNCHECKOUT|VERSION-CONTROL|BASELINE-CONTROL).*HTTP/(1\.[01]|2)" )
     set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#http_send_recv(): Invalid HTTP request (length < 8, invalid HTTP method or missing HTTP/ header) passed in 'data' variable." );
 
   # http_get() won't add a Host: header if only HTTP/1.0 support was detected
   # nb: Commented out for now as quite a lot older VTs are probably passing a HTTP request without the Host: header
-  #if( "Host:" >!< data && "HTTP/1.0" >!< data )
-  #  set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#http_send_recv(): No 'Host:' header passed in data variable. This might lead to issues if SNI is enabled on the remote host." );
+  #if( "Host: " >!< data && " HTTP/1.0" >!< data )
+  #  set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#http_send_recv(): No 'Host:' header passed in 'data' variable. This might lead to issues if SNI is enabled on the remote host." );
 
   if( data !~ "^(DELETE|PROPFIND|PUT|GET|HEAD|POST|OPTIONS|REPORT|MKCOL|MOVE|PROPPATCH|COPY|PATCH|CONNECT|TRACE|LOCK|UNLOCK|TRACK|M-POST|CHECKOUT|CHECKIN|UNCHECKOUT|VERSION-CONTROL|BASELINE-CONTROL) (/|\.+/|https?:|\*).* HTTP" )
     set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#http_send_recv(): URL/URI of the HTTP request passed in 'data' variable doesn't start with one of the following: '/, ./, http, *'." );
+
+  # Some (mostly older) VTs are not passing the User-Agent header but we should always have one.
+  if( " HTTP/1.1" >< data && ! egrep( pattern:"^User-Agent:.+", string:data, icase:TRUE ) ) {
+    data = ereg_replace( string:data, pattern:'\r\n\r\n', replace:'\r\nUser-Agent: ' + get_http_user_agent() + '\r\n\r\n' );
+    set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#http_send_recv(): Using a HTTP/1.1 request without a 'User-Agent:' header passed in 'data' variable. Adding it automatically to the request." );
+  }
+
+  if( _http_ua_include_oid && user_agent = egrep( pattern:"^User-Agent:.+", string:data, icase:TRUE ) ) {
+    user_agent = chomp( user_agent );
+    oid_str = "(OID:" + get_script_oid() + ")";
+    if( oid_str >!< user_agent )
+      data = str_replace( string:data, find:user_agent, replace:user_agent + " " + oid_str );
+  }
+
+  if( _http_debug ) display( "DEBUG: http_send_recv( port: ", port, ", data: ", data, " )\n" );
 
   s = http_open_socket( port );
   if( ! s )

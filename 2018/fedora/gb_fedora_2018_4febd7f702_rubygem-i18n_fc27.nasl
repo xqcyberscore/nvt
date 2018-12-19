@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_4febd7f702_rubygem-i18n_fc27.nasl 12661 2018-12-05 10:53:21Z santu $
+# $Id: gb_fedora_2018_4febd7f702_rubygem-i18n_fc27.nasl 12832 2018-12-19 07:49:53Z asteins $
 #
 # Fedora Update for rubygem-i18n FEDORA-2018-4febd7f702
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875324");
-  script_version("$Revision: 12661 $");
+  script_version("$Revision: 12832 $");
   script_cve_id("CVE-2014-10077");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-05 11:53:21 +0100 (Wed, 05 Dec 2018) $");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-19 08:49:53 +0100 (Wed, 19 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-12-04 08:32:24 +0100 (Tue, 04 Dec 2018)");
   script_name("Fedora Update for rubygem-i18n FEDORA-2018-4febd7f702");
   script_category(ACT_GATHER_INFO);

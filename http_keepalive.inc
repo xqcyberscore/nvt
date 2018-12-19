@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: http_keepalive.inc 11951 2018-10-18 07:24:25Z cfischer $
+# $Id: http_keepalive.inc 12834 2018-12-19 10:48:22Z cfischer $
 #
 # Methods to support http keep alive handling
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 11951 $
+# $Revision: 12834 $
 #
 ###############################################################################
 
@@ -295,8 +295,8 @@ if( 0 ) on_exit(); #TBD: What's the purpose of this?
 function http_keepalive_send_recv( port, data, bodyonly, fetch404, content_type_body_only, headersonly ) {
 
   local_var port, data, bodyonly, fetch404, content_type_body_only, headersonly;
-  local_var soc, headers, body, id, n, lendata;
-  # nb: _http_ka_debug, __ka_enabled and __ka_socket are global vars
+  local_var soc, headers, body, id, n, lendata, user_agent, oid_str;
+  # nb: _http_ua_include_oid, _http_ka_debug, __ka_enabled and __ka_socket are global vars
 
   if( ! port ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#http_keepalive_send_recv" );
@@ -308,17 +308,30 @@ function http_keepalive_send_recv( port, data, bodyonly, fetch404, content_type_
     return NULL;
   }
 
-  # nb: We should expect at least a request like: "GET / HTTP/1.1\r\n" (length: 16).
+  # nb: We should expect at least a request like: "GET / HTTP/1.1\r\n\r\n" (length: 18).
   # But for some specific cases we're just checking for some less data.
   if( strlen( data ) < 8 || data !~ "^(DELETE|PROPFIND|PUT|GET|HEAD|POST|OPTIONS|REPORT|MKCOL|MOVE|PROPPATCH|COPY|PATCH|CONNECT|TRACE|LOCK|UNLOCK|TRACK|M-POST|CHECKOUT|CHECKIN|UNCHECKOUT|VERSION-CONTROL|BASELINE-CONTROL).*HTTP/(1\.[01]|2)" )
     set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#http_keepalive_send_recv(): Invalid HTTP request (length < 8, invalid HTTP method or missing HTTP/ header) passed in 'data' variable." );
 
   # http_get() won't add a Host: header if only HTTP/1.0 support was detected
-  if( "Host:" >!< data && "HTTP/1.0" >!< data )
-    set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#http_keepalive_send_recv(): No 'Host:' header passed in data variable. This might lead to issues if SNI is enabled on the remote host." );
+  if( "Host: " >!< data && " HTTP/1.0" >!< data )
+    set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#http_keepalive_send_recv(): No 'Host:' header passed in 'data' variable. This might lead to issues if SNI is enabled on the remote host." );
 
   if( data !~ "^(DELETE|PROPFIND|PUT|GET|HEAD|POST|OPTIONS|REPORT|MKCOL|MOVE|PROPPATCH|COPY|PATCH|CONNECT|TRACE|LOCK|UNLOCK|TRACK|M-POST|CHECKOUT|CHECKIN|UNCHECKOUT|VERSION-CONTROL|BASELINE-CONTROL) (/|\.+/|https?:|\*).* HTTP" )
     set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#http_keepalive_send_recv(): URL/URI of the HTTP request passed in 'data' variable doesn't start with one of the following: '/, ./, http, *'." );
+
+  # Some (mostly older) VTs are not passing the User-Agent header but we should always have one.
+  if( " HTTP/1.1" >< data && ! egrep( pattern:"^User-Agent:.+", string:data, icase:TRUE ) ) {
+    data = ereg_replace( string:data, pattern:'\r\n\r\n', replace:'\r\nUser-Agent: ' + get_http_user_agent() + '\r\n\r\n' );
+    set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#http_keepalive_send_recv(): Using a HTTP/1.1 request without a 'User-Agent:' header passed in 'data' variable. Adding it automatically to the request." );
+  }
+
+  if( _http_ua_include_oid && user_agent = egrep( pattern:"^User-Agent:.+", string:data, icase:TRUE ) ) {
+    user_agent = chomp( user_agent );
+    oid_str = "(OID:" + get_script_oid() + ")";
+    if( oid_str >!< user_agent )
+      data = str_replace( string:data, find:user_agent, replace:user_agent + " " + oid_str );
+  }
 
   if( _http_ka_debug ) display( "DEBUG: http_keepalive_send_recv( port: ", port, ", data: ", data, ", bodyonly: ", bodyonly, " )\n" );
 
@@ -382,9 +395,9 @@ function http_keepalive_send_recv( port, data, bodyonly, fetch404, content_type_
   id = stridx( data, '\r\n\r\n' );
   # Old behavior: data = str_replace( string:data, find:"Connection: Close", replace:"Connection: Keep-Alive", count:1 );
   # https://tools.ietf.org/html/rfc7230#section-6.1 -> Connection options are case-insensitive.
-  # Some NVTs devs might add a "Connection: close" to the header data passed to this function so doing an ereg_replace instead
+  # Some VT devs might add a "Connection: close" to the header data passed to this function so doing an ereg_replace instead
   # nb: Be aware that this ereg_replace is also replacing any occurrence of "Connection: Close" somewhere in the body of the request data.
-  # TODO: Add a Connection: Keep-Alive if no Connection: Close is included in the passed request.
+  # TODO: Add a Connection: Keep-Alive if no Connection: Close is included in the passed request?
   data = ereg_replace( string:data, pattern:"Connection: Close", replace:"Connection: Keep-Alive", icase:TRUE );
   __ka_last_request = data;
   n = send( socket:__ka_socket, data:data );
@@ -827,12 +840,12 @@ function http_vuln_check( port, url, pattern, check_header, debug, extra_check, 
 
     if( COMMAND_LINE ) { # set hostname for vhosts on command line if hostname parameter was given.
       if( hostname ) {
-        req = ereg_replace( string:req, pattern:"Host:.*" + get_host_ip(), replace: "Host: " + hostname );
+        req = ereg_replace( string:req, pattern:"Host:.*" + get_host_ip(), replace:"Host: " + hostname );
       }
     }
 
     if( cookie && ! isnull( cookie ) )
-      req = ereg_replace( string:req, pattern:'\r\n\r\n', replace: '\r\nCookie: ' + cookie + '\r\n\r\n' );
+      req = ereg_replace( string:req, pattern:'\r\n\r\n', replace:'\r\nCookie: ' + cookie + '\r\n\r\n' );
 
     buf = http_keepalive_send_recv( port:port, data:req );
     __ka_last_request = req;

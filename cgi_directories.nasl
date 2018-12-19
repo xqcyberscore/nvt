@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cgi_directories.nasl 11638 2018-09-27 06:42:05Z cfischer $
+# $Id: cgi_directories.nasl 12831 2018-12-18 19:48:29Z cfischer $
 #
 # CGI Scanning Consolidation
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111038");
-  script_version("$Revision: 11638 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 08:42:05 +0200 (Thu, 27 Sep 2018) $");
+  script_version("$Revision: 12831 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-18 20:48:29 +0100 (Tue, 18 Dec 2018) $");
   script_tag(name:"creation_date", value:"2015-09-14 07:00:00 +0200 (Mon, 14 Sep 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -40,6 +40,8 @@ if(description)
   "gb_owncloud_detect.nasl", "gb_adobe_aem_remote_detect.nasl", "gb_libreoffice_online_detect.nasl",
   "gb_apache_activemq_detect.nasl", "gb_orientdb_server_detect.nasl"); # gb_* are additional dependencies setting auth_required
   script_require_ports("Services/www", 80);
+
+  script_xref(name:"URL", value:"https://community.greenbone.net/c/vulnerability-tests");
 
   script_add_preference(name:"Maximum number of items shown for each list", type:"entry", value:"100");
 
@@ -61,7 +63,7 @@ if(description)
     'Add historic /scripts and /cgi-bin to directories for CGI scanning' within the
     'Global variable settings' of the scan config in use
 
-  If you think any of these are wrong please report to https://community.greenbone.net/c/vulnerability-tests.");
+  If you think any of this information is wrong please report it to the referenced community portal.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -150,7 +152,11 @@ if( can_host_asp( port:port ) ) {
   report += 'This service seems to be NOT able to host ASP scripts.\n\n';
 }
 
-report += 'The User-Agent "' + get_http_user_agent() + '" was used to access the remote host.\n\n';
+user_agent = get_http_user_agent( dont_add_oid:TRUE );
+if( _http_ua_include_oid )
+  user_agent = ereg_replace( string:user_agent, pattern:"(.+)$", replace:"\1 (OID:dynamic)" );
+
+report += 'The User-Agent "' + user_agent + '" was used to access the remote host.\n\n';
 
 if( get_kb_item( "global_settings/exclude_historic_cgi_dirs" ) ) {
   report += 'Historic /scripts and /cgi-bin are not added to the directories used for CGI scanning. ';
@@ -503,5 +509,4 @@ if( ! isnull( excludedCgiList ) ) {
 }
 
 log_message( data:report, port:port );
-
 exit( 0 );

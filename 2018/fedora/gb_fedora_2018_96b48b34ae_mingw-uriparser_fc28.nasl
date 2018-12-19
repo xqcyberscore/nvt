@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_96b48b34ae_mingw-uriparser_fc28.nasl 12808 2018-12-17 13:20:13Z santu $
+# $Id: gb_fedora_2018_96b48b34ae_mingw-uriparser_fc28.nasl 12832 2018-12-19 07:49:53Z asteins $
 #
 # Fedora Update for mingw-uriparser FEDORA-2018-96b48b34ae
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875353");
-  script_version("$Revision: 12808 $");
+  script_version("$Revision: 12832 $");
   script_cve_id("CVE-2018-19198", "CVE-2018-19199", "CVE-2018-19200");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-17 14:20:13 +0100 (Mon, 17 Dec 2018) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-19 08:49:53 +0100 (Wed, 19 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-12-13 08:02:56 +0100 (Thu, 13 Dec 2018)");
   script_name("Fedora Update for mingw-uriparser FEDORA-2018-96b48b34ae");
   script_category(ACT_GATHER_INFO);

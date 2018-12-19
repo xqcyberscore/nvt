@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_4055_1.nasl 12755 2018-12-11 10:50:43Z santu $
+# $Id: gb_suse_2018_4055_1.nasl 12832 2018-12-19 07:49:53Z asteins $
 #
 # SuSE Update for ncurses openSUSE-SU-2018:4055-1 (ncurses)
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852174");
-  script_version("$Revision: 12755 $");
+  script_version("$Revision: 12832 $");
   script_cve_id("CVE-2018-19211");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-11 11:50:43 +0100 (Tue, 11 Dec 2018) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-19 08:49:53 +0100 (Wed, 19 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-12-10 07:38:58 +0100 (Mon, 10 Dec 2018)");
   script_name("SuSE Update for ncurses openSUSE-SU-2018:4055-1 (ncurses)");
   script_category(ACT_GATHER_INFO);

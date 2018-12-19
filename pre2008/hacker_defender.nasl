@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: hacker_defender.nasl 9348 2018-04-06 07:01:19Z cfischer $
+# $Id: hacker_defender.nasl 12821 2018-12-18 12:37:20Z cfischer $
 # Description: HACKER defender finder
 #
 # Authors:
@@ -7,7 +7,7 @@
 # based on A. Tarasco <atarasco@sia.es> research.
 # Fixes by Tenable:
 #   - Changed text of description and report.
-#   - Checked response and added another step in the 
+#   - Checked response and added another step in the
 #     initialization process to avoid false positives.
 #   - Fixed bug that caused an empty banner in the report.
 #
@@ -28,41 +28,37 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_solution = "Reinstall Windows.";
-
-tag_summary = "This script checks whether the remote host is running the Hacker
-Defender backdoor. 
-
-Hacker Defender is a rootkit for Windows.  Among other things, it hooks
-itself into all open TCP ports on the system, listening for a
-specially-crafted packet, and opening a backdoor on that port when
-found.  This backdoor can be used by malicious users to control the
-affected host remotely.";
-
-if (description) 
+if(description)
 {
-	script_oid("1.3.6.1.4.1.25623.1.0.15517");
-	script_version("$Revision: 9348 $");
-	script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
-	script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_oid("1.3.6.1.4.1.25623.1.0.15517");
+  script_version("$Revision: 12821 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-18 13:37:20 +0100 (Tue, 18 Dec 2018) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_name("HACKER defender finder");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (c) 2004 SIA");
+  script_family("Malware");
+  script_dependencies("find_service.nasl", "os_detection.nasl");
+  script_mandatory_keys("Host/runs_windows");
+  script_require_ports(7, 21, 25, 80, 443, 1025, 3389);
 
-	name = "HACKER defender finder";
-	script_name(name);
+  script_tag(name:"solution", value:"Reinstall Windows.");
 
-	summary = "HACKER defender finder (All versions)";
-	script_category(ACT_GATHER_INFO);
+  script_tag(name:"summary", value:"This script checks whether the remote host is running the Hacker
+  Defender backdoor.");
+
+  script_tag(name:"insight", value:"Hacker Defender is a rootkit for Windows. Among other things, it hooks
+  itself into all open TCP ports on the system, listening for a specially-crafted packet, and opening a
+  backdoor on that port when found. This backdoor can be used by malicious users to control the
+  affected host remotely.");
+
   script_tag(name:"qod_type", value:"remote_active");
-	script_copyright("This script is Copyright (c) 2004 SIA");
-	script_family("Malware");
-	script_dependencies("os_detection.nasl");
-        script_tag(name : "solution" , value : tag_solution);
-        script_tag(name : "summary" , value : tag_summary);
-        script_mandatory_keys("Host/runs_windows");
-	exit (0);
-}
+  script_tag(name:"solution_type", value:"Mitigation");
 
+  exit(0);
+}
 
 include("host_details.inc");
 
@@ -87,15 +83,14 @@ hx_banner[2] = string("Hacker Defender v0.84-1.0.0");
 
 
 for (i=0; i <= max_ports; i++) {
-  # check list port
 
-  if (get_port_state(list_ports[i])) 
+  if (get_port_state(list_ports[i]))
   {
     soc = open_sock_tcp (list_ports[i]);
-    if (soc) 
+    if (soc)
     {
       for (j=0;j<3;j++) {
-        # nb: to understand this, look at the HandlerRoutine in 
+        # nb: to understand this, look at the HandlerRoutine in
         #     bdcli100.dpr in the Hacker Defender source.
         send (socket:soc, data: hx[j]);
         data = recv (socket:soc, length:128, timeout:1);

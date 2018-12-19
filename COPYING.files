@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Tue, 18 Dec 2018 12:16:51 +0100
+# Automatically created on:  Wed, 19 Dec 2018 12:10:22 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -41505,6 +41505,7 @@
 2018/icecast/gb_icecast_buf_ovflw_vuln.nasl: GPLv2+
 2018/icewarp/gb_icewarp_CVE-2015-1503_dir_trav.nasl: GPLv2+
 2018/icewarp/gb_icewarp_mail_server_xss_vuln.nasl: GPLv2+
+2018/icinga/gb_icinga2_mult_vuln_dec18.nasl: GPLv2+
 2018/icinga/gb_icinga2_mult_vuln.nasl: GPLv2+
 2018/ideamk/gb_epsviewer_buffer_overflow_vuln.nasl: GPLv2+
 2018/igniterealtime/gb_openfire_xss_vuln.nasl: GPLv2+
@@ -41590,6 +41591,7 @@
 2018/limesurvey/gb_limesurvey_mult_vuln_sep18.nasl: GPLv2+
 2018/linksys/gb_linksys_eseries_cmd_exec_vuln.nasl: GPLv2+
 2018/livezilla/gb_livezilla_searchfor_param_xss_vuln.nasl: GPLv2+
+2018/logitech/gb_logitech_options_rce_vuln.nasl: GPLv2+
 2018/lutron/gb_lutron_homeworks_processor_default_password.nasl: GPLv2+
 2018/lutron/gb_lutron_quantum_integ_device_infor_disc_vuln.nasl: GPLv2+
 2018/lynxtechnology/gb_twonky_server_mult_vuln_active.nasl: GPLv2+
@@ -43181,6 +43183,7 @@
 2018/trendnet/gb_trendnet_routers_info_disc.nasl: GPLv2+
 2018/typo3/gb_typo3_pers_xss_vuln_apr18_lin.nasl: GPLv2+
 2018/typo3/gb_typo3_pers_xss_vuln_apr18_win.nasl: GPLv2+
+2018/ubiquiti/gb_ubnt_unifi_video_default_credentials.nasl: GPLv2+
 2018/ubuntu/gb_ubuntu_USN_2942_1.nasl: GPLv2+
 2018/ubuntu/gb_ubuntu_USN_2956_1.nasl: GPLv2+
 2018/ubuntu/gb_ubuntu_USN_3080_1.nasl: GPLv2+
@@ -45575,6 +45578,7 @@ gb_twonky_unprotected_web.nasl: GPLv2+
 gb_typo3_detect.nasl: GPLv2+
 gb_typsoft_ftp_detect.nasl: GPLv2+
 gb_ubnt_discovery_protocol_detect.nasl: GPLv2+
+gb_ubnt_unifi_video_detect.nasl: GPLv2+
 gb_ucs_detect.nasl: GPLv2+
 gb_ultraiso_detect.nasl: GPLv2+
 gb_uniform_server_detect.nasl: GPLv2+

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_register_plus_redux_mult_xss_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
+# $Id: gb_wordpress_register_plus_redux_mult_xss_vuln.nasl 12828 2018-12-18 14:49:09Z cfischer $
 #
 # WordPress Register Plus Redux Plugin Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802324");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("$Revision: 12828 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-18 15:49:09 +0100 (Tue, 18 Dec 2018) $");
   script_tag(name:"creation_date", value:"2011-08-18 14:57:45 +0200 (Thu, 18 Aug 2011)");
   script_bugtraq_id(45179);
   script_tag(name:"cvss_base", value:"4.3");
@@ -83,8 +83,8 @@ include("host_details.inc");
 if(!port = get_app_port(cpe:CPE))exit(0);
 if(!dir = get_app_location(cpe:CPE, port:port))exit(0);
 if(dir == "/") dir = "";
-url = string(dir + "/wp-login.php?action=register");
 
+url = string(dir + "/wp-login.php?action=register");
 authVariables = "user_login=%22%3E%3Cscript%3Ealert%28document.cookie%29%3C" +
                 "%2Fscript%3E&user_email=%22%3E%3Cscript%3Ealert%28document" +
                 ".cookie%29%3C%2Fscript%3E&first_name=%22%3E%3Cscript%3Eale" +
@@ -100,9 +100,9 @@ req = string("POST ", url, " HTTP/1.1\r\n",
              "Content-Type: application/x-www-form-urlencoded\r\n",
              "Content-Length: ", strlen(authVariables), "\r\n\r\n",
              authVariables);
-res = http_keepalive_send_recv(port:port, data:res);
+res = http_keepalive_send_recv(port:port, data:req);
 
-if(egrep(pattern:"^HTTP/1\.[01] 200", string:res) && ("><script>alert(document.cookie)</script>" >< res)){
+if(res =~ "^HTTP/1\.[01] 200" && "><script>alert(document.cookie)</script>" >< res){
   report = report_vuln_url(port:port, url:url);
   security_message(port:port, data:report);
   exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_roundcube_efail_vuln.nasl 12409 2018-11-19 09:55:48Z ckuersteiner $
+# $Id: gb_roundcube_efail_vuln.nasl 12832 2018-12-19 07:49:53Z asteins $
 #
 # Roundcube Webmail < 1.3.7 Enigma Plugin PGP Vulnerability (EFAIL)
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:roundcube:webmail";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108457");
-  script_version("$Revision: 12409 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-19 10:55:48 +0100 (Mon, 19 Nov 2018) $");
+  script_version("$Revision: 12832 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-19 08:49:53 +0100 (Wed, 19 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-08-26 17:24:50 +0200 (Sun, 26 Aug 2018)");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   #nb: CVE is DISPUTED with the following NOTE: third parties report that this is a problem in applications
   #that mishandle the Modification Detection Code (MDC) feature or accept an obsolete packet type, not a problem in the OpenPGP specification.
   #  script_cve_id("CVE-2017-17688");

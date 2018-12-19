@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3828_1.nasl 12479 2018-11-22 08:12:17Z santu $
+# $Id: gb_suse_2018_3828_1.nasl 12832 2018-12-19 07:49:53Z asteins $
 #
 # SuSE Update for SDL2_image openSUSE-SU-2018:3828-1 (SDL2_image)
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852135");
-  script_version("$Revision: 12479 $");
+  script_version("$Revision: 12832 $");
   script_cve_id("CVE-2018-3839", "CVE-2018-3977");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-22 09:12:17 +0100 (Thu, 22 Nov 2018) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-19 08:49:53 +0100 (Wed, 19 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-11-21 06:03:41 +0100 (Wed, 21 Nov 2018)");
   script_name("SuSE Update for SDL2_image openSUSE-SU-2018:3828-1 (SDL2_image)");
   script_category(ACT_GATHER_INFO);
