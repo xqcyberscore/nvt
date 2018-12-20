@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: host_details.inc 12766 2018-12-12 08:34:25Z ckuersteiner $
+# $Id: host_details.inc 12843 2018-12-20 08:43:00Z cfischer $
 #
 # Centralized and organized host information base
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 12766 $
+# $Revision: 12843 $
 #
 ###############################################################################
 
@@ -1830,7 +1830,7 @@ function register_unknown_os_banner( banner, banner_type_name, banner_type_short
       " FTP server (MikroTik " >< banner || # Already covered by gb_mikrotik_router_routeros_consolidation.nasl
       egrep( pattern:"^MikroTik ", string:banner ) || # Already covered by gb_mikrotik_router_routeros_consolidation.nasl
       egrep( pattern:"^OS String: Unix; SMB String: Samba [0-9.]+[abc]?$", string:banner ) || # e.g. OS String: Unix; SMB String: Samba 4.0.9 set by smb_nativelanman.nasl
-      egrep( pattern:"^220 [0-9a-zA-Z._\-]+ ESMTP( Postfix)?$", string:banner ) || # e.g. 220 hostname ESMTP or 220 mail.example.com ESMTP Postfix
+      egrep( pattern:"^220 [^ ]+ ESMTP( Postfix| ready\.)?$", string:banner ) || # e.g. 220 hostname ESMTP, 220 mail.example.com ESMTP Postfix or 220 mail.example.com ESMTP ready.
       egrep( pattern:"ESMTP Exim [0-9._]+ ", string:banner ) || # e.g. 220 host ESMTP Exim 4.84_2 Tue, 01 Aug 2017 13:01:18 +0200
       egrep( pattern:"^SSH-2\.0-RomSShell_[0-9.]+$", string:banner ) || # Vendor: "Works with any OS vendor and will function without an OS if needed"
       egrep( pattern:"^[0-9.]+$", string:banner ) || # Bind9 and MySQL. Both are often only sending e.g. 9.4.2

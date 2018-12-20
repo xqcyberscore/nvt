@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: pop3_unencrypted_cleartext_logins.nasl 12150 2018-10-29 11:46:42Z cfischer $
+# $Id: pop3_unencrypted_cleartext_logins.nasl 12841 2018-12-20 07:20:24Z cfischer $
 #
 # POP3 Unencrypted Cleartext Logins
 #
@@ -27,17 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.15855");
-  script_version("$Revision: 12150 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-29 12:46:42 +0100 (Mon, 29 Oct 2018) $");
+  script_version("$Revision: 12841 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-20 08:20:24 +0100 (Thu, 20 Dec 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
-  script_tag(name:"cvss_base", value:"2.6");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"4.8");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:P/A:N");
   script_xref(name:"OSVDB", value:"3119");
   script_name("POP3 Unencrypted Cleartext Logins");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2004 George A. Theall");
   script_family("General");
-  script_dependencies("find_service2.nasl", "global_settings.nasl", "logins.nasl");
+  script_dependencies("find_service2.nasl", "logins.nasl");
   script_require_ports("Services/pop3", 110);
   script_mandatory_keys("pop3/login", "pop3/password");
 
@@ -47,11 +47,13 @@ if(description)
   script_tag(name:"impact", value:"An attacker can uncover user names and passwords by sniffing traffic to the POP3
   daemon if a less secure authentication mechanism (eg, USER command, AUTH PLAIN, AUTH LOGIN) is used.");
 
-  script_tag(name:"solution", value:"Contact your vendor for a fix or encrypt traffic with SSL /
-  TLS using stunnel.");
+  script_tag(name:"solution", value:"Configure the remote server to always enforce encrypted connections via
+  SSL/TLS with the 'STLS' command.");
 
   script_tag(name:"summary", value:"The remote host is running a POP3 daemon that allows cleartext logins over
-  unencrypted connections.");
+  unencrypted connections.
+
+  NOTE: Valid credentials needs to given to the settings of 'Login configurations' OID: 1.3.6.1.4.1.25623.1.0.10870.");
 
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_analysis");
@@ -62,23 +64,22 @@ if(description)
 include("misc_func.inc");
 include("pop3_func.inc");
 
-# nb: non US ASCII characters in user and password must be
-#     represented in UTF-8.
+# nb: non US ASCII characters in user and password must be represented in UTF-8.
 user = get_kb_item("pop3/login");
 pass = get_kb_item("pop3/password");
-if (!user || !pass) {
+if (!user || !pass)
   exit(0);
-}
 
-port = get_pop3_port( default:110 );
+port = get_pop3_port(default:110);
 
 # nb: skip it if traffic is encrypted.
-encaps = get_port_transport( port );
-if (encaps > ENCAPS_IP) exit(0);
+encaps = get_port_transport(port);
+if (encaps > ENCAPS_IP)
+  exit(0);
 
-# Establish a connection.
 soc = open_sock_tcp(port);
-if (!soc) exit(0);
+if (!soc)
+  exit(0);
 
 # Read banner.
 s = recv_line(socket:soc, length:1024);
@@ -86,9 +87,11 @@ if (!strlen(s)) {
   close(soc);
   exit(0);
 }
+
 s = chomp(s);
 
 c = "CAPA";
+
 send(socket:soc, data:string(c, "\r\n"));
 caps = "";
 s = recv_line(socket:soc, length:1024);
@@ -166,7 +169,8 @@ if (!done) {
   }
 
   # If successful, unencrypted logins are possible.
-  if (resp && resp =~ "OK") security_message(port);
+  if (resp && resp =~ "OK")
+    security_message(port:port);
 }
 
 # Logout.

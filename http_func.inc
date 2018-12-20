@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: http_func.inc 12834 2018-12-19 10:48:22Z cfischer $
+# $Id: http_func.inc 12836 2018-12-19 13:43:03Z cfischer $
 #
 # Methods to handle HTTP
 #
@@ -24,7 +24,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 12834 $
+# $Revision: 12836 $
 #
 ###############################################################################
 
@@ -1903,20 +1903,24 @@ function report_vuln_url( port, url, url_only ) {
 # @param add_headers        Additional headers which should be added to the HTTP POST request. Needs to be an
 #                           array in form of e.g. make_array( "Content-Type", "application/x-www-form-urlencoded" )
 # @param accept_header      The Accept: header to use (e.g. application/json), defaults to "*/*" if not passed.
-# @param user_agent         The User-Agent to use within the User-Agent: header, defaults to the return of the
-#                           get_http_user_agent() function if not passed.
+# @param user_agent         The User-Agent to use within the User-Agent: header, defaults to the result of the
+#                           get_http_user_agent() function if not passed. If this parameter is given the function
+#                           will add a separate X-Scanner: header field by default. This behavior can be disabled
+#                           via the dont_add_xscanner parameter set to TRUE.
 # @param host_header_use_ip If set to TRUE the request will contain the IP instead of the target
 #                           hostname in the Host: header. This can be used for special targets not
 #                           accepting the hostname in the request.
+# @param dont_add_xscanner  Can be used in conjunction with the user_agent parameter. If set to TRUE the function
+#                           is not adding a separate X-Scanner: header field to the request.
 #
 # @return A string containing the raw HTTP POST request or NULL if no port parameter was passed or
 #         the data passed in the add_headers parameter isn't an array.
 #
 # @example req = http_post_req( port:port, url:"/", data:data, accept_header:"application/json", add_headers:make_array( "Content-Type", "application/x-www-form-urlencoded" ) );
 #
-function http_post_req( port, url, data, add_headers, accept_header, user_agent, host_header_use_ip ) {
+function http_post_req( port, url, data, add_headers, accept_header, user_agent, host_header_use_ip, dont_add_xscanner ) {
 
-  local_var port, url, data, add_headers, accept_header, user_agent, host_header_use_ip;
+  local_var port, url, data, add_headers, accept_header, user_agent, host_header_use_ip, dont_add_xscanner;
   local_var x_header, len, x_scanner_string, host, req, header;
 
   if( ! isnull( add_headers ) ) {
@@ -1944,7 +1948,7 @@ function http_post_req( port, url, data, add_headers, accept_header, user_agent,
 
   if ( ! user_agent ) {
     user_agent = get_http_user_agent();
-  } else {
+  } else if( ! dont_add_xscanner ) {
     x_header = TRUE;
     if( OPENVAS_VERSION )
       x_scanner_string = "X-Scanner: " + get_vt_string() + " " + OPENVAS_VERSION;
@@ -1994,19 +1998,23 @@ function http_post_req( port, url, data, add_headers, accept_header, user_agent,
 # @param accept_header      The Accept: header to use (e.g. text/html), defaults to the following if not passed:
 #                           image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, image/png, */*
 # @param user_agent         The User-Agent to use within the User-Agent: header, defaults to the result of the
-#                           get_http_user_agent() function if not passed.
+#                           get_http_user_agent() function if not passed. If this parameter is given the function
+#                           will add a separate X-Scanner: header field by default. This behavior can be disabled
+#                           via the dont_add_xscanner parameter set to TRUE.
 # @param host_header_use_ip If set to TRUE the request will contain the IP instead of the target
 #                           hostname in the Host: header. This can be used for special targets not
 #                           accepting the hostname in the request.
+# @param dont_add_xscanner  Can be used in conjunction with the user_agent parameter. If set to TRUE the function
+#                           is not adding a separate X-Scanner: header field to the request.
 #
 # @return A string containing the raw HTTP GET request or NULL if no port parameter was passed or
 #         the data passed in the add_headers parameter isn't an array.
 #
 # @example req = http_get_req( port:port, url:"/", accept_header:"text/html", add_headers:make_array( "Cookie", "PHPSESSID=" + sessid ) );
 #
-function http_get_req( port, url, add_headers, accept_header, user_agent, host_header_use_ip ) {
+function http_get_req( port, url, add_headers, accept_header, user_agent, host_header_use_ip, dont_add_xscanner ) {
 
-  local_var port, url, add_headers, accept_header, user_agent, host_header_use_ip;
+  local_var port, url, add_headers, accept_header, user_agent, host_header_use_ip, dont_add_xscanner;
   local_var x_header, x_scanner_string, host, req, header;
 
   if( ! isnull( add_headers ) ) {
@@ -2031,7 +2039,7 @@ function http_get_req( port, url, add_headers, accept_header, user_agent, host_h
 
   if ( ! user_agent ) {
     user_agent = get_http_user_agent();
-  } else {
+  } else if( ! dont_add_xscanner ) {
     x_header = TRUE;
     if( OPENVAS_VERSION )
       x_scanner_string = "X-Scanner: " + get_vt_string() + " " + OPENVAS_VERSION;

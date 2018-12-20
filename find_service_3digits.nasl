@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service_3digits.nasl 12708 2018-12-07 15:11:27Z cfischer $
+# $Id: find_service_3digits.nasl 12843 2018-12-20 08:43:00Z cfischer $
 #
 # Service Detection (3 ASCII digit codes like FTP, SMTP, NNTP...)
 #
@@ -8,7 +8,7 @@
 # Michel Arboi <arboi@alussinan.org>
 #
 # Copyright:
-# Copyright (C) 2004 Michel Arboi
+# Copyright (C) 2005 Michel Arboi
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2,
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14773");
-  script_version("$Revision: 12708 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-07 16:11:27 +0100 (Fri, 07 Dec 2018) $");
+  script_version("$Revision: 12843 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-20 09:43:00 +0100 (Thu, 20 Dec 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Service Detection (3 ASCII digit codes like FTP, SMTP, NNTP...)");
   script_category(ACT_GATHER_INFO);
-  script_copyright("This script is Copyright (C) 2004 Michel Arboi");
+  script_copyright("This script is Copyright (C) 2005 Michel Arboi");
   script_family("Service detection");
   script_dependencies("find_service.nasl"); # cifs445.nasl
   script_require_ports("Services/three_digits");
@@ -99,7 +99,7 @@ if( help ) {
 
 if( help !~ '^50[0-9]' ) {
 
-  if( "ARTICLE" >< help || "NEWGROUPS" >< help || "XHDR" >< help || "XOVER" >< help || banner =~ "^[0-9]{3} .*(NNTP|NNRP)" >< banner ) {
+  if( "ARTICLE" >< help || "NEWGROUPS" >< help || "XHDR" >< help || "XOVER" >< help || banner =~ "^[0-9]{3} .*(NNTP|NNRP)" ) {
     report_service( port:port, svc:"nntp", banner:banner );
     close( soc );
     exit( 0 );
@@ -230,11 +230,12 @@ if( egrep( pattern:"^200 .* (PWD Server|poppassd)", string:banner ) ) {
 if( substr( banner, 0, 3 ) == '200 ' ) {
   soc = open_sock_tcp( port );
   if( soc ) {
+    vt_strings = get_vt_strings();
     banner = read_answer( socket:soc );
-    send( socket:soc, data:string( "USER openvas\r\n" ) );
+    send( socket:soc, data:string( "USER ", vt_strings["lowercase"], "\r\n" ) );
     r = read_answer( socket: soc );
     if( strlen( r ) > 3 && substr( r, 0, 3 ) == '200 ' ) {
-      send( socket:soc, data:string( "PASS ", rand(), "openvas\r\n" ) );
+      send( socket:soc, data:string( "PASS ", vt_strings["lowercase_rand"], "\r\n" ) );
       r = read_answer( socket:soc );
       if( strlen( r ) > 3 && substr( r, 0, 3) == '500 ' ) {
         register_service( port:port, proto:'pop3pw' );
@@ -251,10 +252,9 @@ register_service( port:port, proto:'unknown' );
 set_unknown_banner( port:port, banner:banner );
 
 report  = 'Although this service answers with 3 digit ASCII codes like FTP, SMTP or NNTP servers, the Scanner was unable to identify it.\n\n';
-report += 'This is highly suspicious and might be a backdoor; in this case, your system is compromised and a cracker can control it remotely.\n\n';
+report += 'This is highly suspicious and might be a backdoor; in this case, your system is compromised and an attacker can control it remotely.\n\n';
 report += '** If you know what it is, consider this message as a false alert and please report it to the referenced community portal.\n\n';
 report += 'Solution : disinfect or reinstall your operating system.';
 
 log_message( port:port, data:report );
-
 exit( 0 );

@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Wed, 19 Dec 2018 12:10:22 +0100
+# Automatically created on:  Thu, 20 Dec 2018 12:23:05 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -39279,6 +39279,7 @@
 2018/debian/deb_4352.nasl: GPLv2+
 2018/debian/deb_4353.nasl: GPLv2+
 2018/debian/deb_4354.nasl: GPLv2+
+2018/debian/deb_4355.nasl: GPLv2+
 2018/debian/deb_dla_1000.nasl: GPLv2+
 2018/debian/deb_dla_1001.nasl: GPLv2+
 2018/debian/deb_dla_1002.nasl: GPLv2+
@@ -41393,6 +41394,7 @@
 2018/gb_sensitive_file_disclosures_http.nasl: GPLv2+
 2018/gb_sftp_ftp_pw_exposure.nasl: GPLv2+
 2018/gb_swarmpit_exposure_vuln.nasl: GPLv2+
+2018/gb_telnet_unencrypted_cleartext_logins.nasl: GPLv2
 2018/gb_unprotected_web_app_installers.nasl: GPLv2+
 2018/gb_unquoted_path_vulnerabilities_win.nasl: GPLv2+
 2018/gb_win_lsc_authentication_info.nasl: GPLv2+
@@ -41505,8 +41507,8 @@
 2018/icecast/gb_icecast_buf_ovflw_vuln.nasl: GPLv2+
 2018/icewarp/gb_icewarp_CVE-2015-1503_dir_trav.nasl: GPLv2+
 2018/icewarp/gb_icewarp_mail_server_xss_vuln.nasl: GPLv2+
-2018/icinga/gb_icinga2_mult_vuln_dec18.nasl: GPLv2+
 2018/icinga/gb_icinga2_mult_vuln.nasl: GPLv2+
+2018/icinga/gb_icingaweb2_mult_vuln_dec18.nasl: GPLv2+
 2018/ideamk/gb_epsviewer_buffer_overflow_vuln.nasl: GPLv2+
 2018/igniterealtime/gb_openfire_xss_vuln.nasl: GPLv2+
 2018/ikarussecurity/gb_ikarus_anti_virus_multiple_dos_vulnerabilities.nasl: GPLv2+
@@ -43141,6 +43143,7 @@
 2018/symphony/gb_symphony_cms_xss_vuln.nasl: GPLv2+
 2018/synology/gb_synology_dsm_mult_vuln_synology_sa_17_29.nasl: GPLv2+
 2018/synology/gb_synology_sa_18_15.nasl: GPLv2+
+2018/teamspeak/gb_teamspeak3_perm_bypass_dec18.nasl: GPLv2+
 2018/teamtest/gb_testlink_inf_disc_vuln.nasl: GPLv2+
 2018/teamviewer/gb_teamviewer_auth_bypass_vuln_sep18_lin.nasl: GPLv2+
 2018/teamviewer/gb_teamviewer_auth_bypass_vuln_sep18_macosx.nasl: GPLv2+
@@ -43900,6 +43903,7 @@ gb_7zip_detect_win.nasl: GPLv2+
 gb_a2billing_detect.nasl: GPLv2+
 gb_aastra_opencom_detect.nasl: GPLv2+
 gb_abb_ipgateway_detect.nasl: GPLv2+
+gb_abb_m2m_ethernet_detect.nasl: GPLv2+
 gb_abb-microscada_detect_win.nasl: GPLv2+
 gb_ab_ethernet_detect.nasl: GPLv2+
 gb_abyss_detect.nasl: GPLv2+
@@ -60887,8 +60891,10 @@ gsf/2017/vmware/gb_vmware_workstation_vnc_session_mult_code_exec_vuln_lin.nasl: 
 gsf/2017/vmware/gb_vmware_workstation_vnc_session_mult_code_exec_vuln_win.nasl: GPLv2+
 gsf/2018/3cx/gb_3cx_phone_system_mult_vuln.nasl: GPLv2+
 gsf/2018/abb/gb_abb_ipgateway_mult_vuln.nasl: GPLv2+
+gsf/2018/abb/gb_abb_m2m_ethernet_ABBVU-EPBP-R-5672.nasl: GPLv2+
 gsf/2018/abb/gb_microscada_privilege_escalation_vuln.nasl: GPLv2+
 gsf/2018/acrolinx/gb_acrolinx_dir_trav_vuln.nasl: GPLv2+
+gsf/2018/advantech/gb_advantech_webaccess_buf_ovflw_vuln.nasl: GPLv2+
 gsf/2018/advantech/gb_advantech_webaccess_CVE-2017-16720.nasl: GPLv2+
 gsf/2018/advantech/gb_advantech_webaccess_hmi_designer_mult_vuln.nasl: GPLv2+
 gsf/2018/advantech/gb_advantech_webaccess_mult_vuln_jan18.nasl: GPLv2+
@@ -60994,6 +61000,7 @@ gsf/2018/cisco/gb_cisco_asa_cisco-sa-20181003-asa-dma-dos.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_asa_cisco-sa-20181003-asa-ipsec-dos.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_asa_cisco-sa-20181003-asa-syslog-dos.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_asa_cisco-sa-20181031-asaftd-sip-dos.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_asa_cisco-sa-20181219-asa-privesc.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_csma_cisco-sa-20171115-esa.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_csma_cisco-sa-20180117-esasma.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_csma_cisco-sa-20180207-esacsm.nasl: GPLv2+
@@ -61376,6 +61383,7 @@ gsf/2018/f5/gb_f5_big_ip_K18015201.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K18174924.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K19361245.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K19634255.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K19855851.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K20134942.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K20145801.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K20222812.nasl: GPLv2+
