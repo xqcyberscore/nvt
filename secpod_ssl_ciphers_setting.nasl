@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ssl_ciphers_setting.nasl 11665 2018-09-28 07:14:18Z cfischer $
+# $Id: secpod_ssl_ciphers_setting.nasl 12846 2018-12-20 12:16:07Z cfischer $
 #
 # SSL/TLS: Cipher Settings
 #
@@ -28,40 +28,92 @@ local_var sslv3_tls_ciphers;
 
 # nb: Duplicated from secpod_ssl_ciphers.inc as we can't use includes before the
 # description block starting from GOS 4.2.11 onwards
+
+## IMPORTANT: Keep in sync with the duplicated list in secpod_ssl_ciphers.nasl
+
+# http://www.iana.org/go/rfc5246
 sslv3_tls_ciphers['TLS_NULL_WITH_NULL_NULL : Null cipher, no authentication'] = raw_string( 0x00, 0x00 );
 sslv3_tls_ciphers['TLS_RSA_WITH_NULL_MD5 : Null cipher'] = raw_string( 0x00, 0x01 );
 sslv3_tls_ciphers['TLS_RSA_WITH_NULL_SHA : Null cipher'] = raw_string( 0x00, 0x02 );
+
+# http://www.iana.org/go/rfc4346
 sslv3_tls_ciphers['TLS_RSA_EXPORT_WITH_RC4_40_MD5 : Weak cipher'] = raw_string( 0x00, 0x03 );
+
+# http://www.iana.org/go/rfc5246
 sslv3_tls_ciphers['TLS_RSA_WITH_RC4_128_MD5 : Weak cipher'] = raw_string( 0x00, 0x04 );
 sslv3_tls_ciphers['TLS_RSA_WITH_RC4_128_SHA : Weak cipher'] = raw_string( 0x00, 0x05 );
+
+# http://www.iana.org/go/rfc4346
 sslv3_tls_ciphers['TLS_RSA_EXPORT_WITH_RC2_CBC_40_MD5 : Weak cipher'] = raw_string( 0x00, 0x06 );
+
+# http://www.iana.org/go/rfc5469
 sslv3_tls_ciphers['TLS_RSA_WITH_IDEA_CBC_SHA : Medium cipher'] = raw_string( 0x00, 0x07 );
+
+# http://www.iana.org/go/rfc4346
 sslv3_tls_ciphers['TLS_RSA_EXPORT_WITH_DES40_CBC_SHA : Weak cipher'] = raw_string( 0x00, 0x08 );
+
+# http://www.iana.org/go/rfc5469
 sslv3_tls_ciphers['TLS_RSA_WITH_DES_CBC_SHA : Medium cipher'] = raw_string( 0x00, 0x09 );
+
+# http://www.iana.org/go/rfc5246
 sslv3_tls_ciphers['TLS_RSA_WITH_3DES_EDE_CBC_SHA : Medium cipher'] = raw_string( 0x00, 0x0A );
+
+# http://www.iana.org/go/rfc4346
 sslv3_tls_ciphers['TLS_DH_DSS_EXPORT_WITH_DES40_CBC_SHA : Weak cipher'] = raw_string( 0x00, 0x0B );
+
+# http://www.iana.org/go/rfc5469
 sslv3_tls_ciphers['TLS_DH_DSS_WITH_DES_CBC_SHA : Medium cipher'] = raw_string( 0x00, 0x0C );
+
+# http://www.iana.org/go/rfc5246
 sslv3_tls_ciphers['TLS_DH_DSS_WITH_3DES_EDE_CBC_SHA : Medium cipher'] = raw_string( 0x00, 0x0D );
+
+# http://www.iana.org/go/rfc4346
 sslv3_tls_ciphers['TLS_DH_RSA_EXPORT_WITH_DES40_CBC_SHA : Weak cipher'] = raw_string( 0x00, 0x0E );
+
+# http://www.iana.org/go/rfc5469
 sslv3_tls_ciphers['TLS_DH_RSA_WITH_DES_CBC_SHA : Medium cipher'] = raw_string( 0x00, 0x0F );
+
+# http://www.iana.org/go/rfc5469
 sslv3_tls_ciphers['TLS_DH_RSA_WITH_3DES_EDE_CBC_SHA : Medium cipher'] = raw_string( 0x00, 0x10 );
+
+# http://www.iana.org/go/rfc4346
 sslv3_tls_ciphers['TLS_DHE_DSS_EXPORT_WITH_DES40_CBC_SHA : Weak cipher'] = raw_string( 0x00, 0x11 );
+
+# http://www.iana.org/go/rfc5469
 sslv3_tls_ciphers['TLS_DHE_DSS_WITH_DES_CBC_SHA : Medium cipher'] = raw_string( 0x00, 0x12 );
+
+# http://www.iana.org/go/rfc5246
 sslv3_tls_ciphers['TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA : Medium cipher'] = raw_string( 0x00, 0x13 );
+
+# http://www.iana.org/go/rfc4346
 sslv3_tls_ciphers['TLS_DHE_RSA_EXPORT_WITH_DES40_CBC_SHA : Weak cipher'] = raw_string( 0x00, 0x14 );
+
+# http://www.iana.org/go/rfc5469
 sslv3_tls_ciphers['TLS_DHE_RSA_WITH_DES_CBC_SHA : Medium cipher'] = raw_string( 0x00, 0x15 );
+
+# http://www.iana.org/go/rfc5246
 sslv3_tls_ciphers['TLS_DHE_RSA_WITH_3DES_EDE_CBC_SHA : Medium cipher'] = raw_string( 0x00, 0x16 );
+
+# http://www.iana.org/go/rfc4346
 sslv3_tls_ciphers['TLS_DH_anon_EXPORT_WITH_RC4_40_MD5 : Weak cipher'] = raw_string( 0x00, 0x17 );
+
+# http://www.iana.org/go/rfc5246
 sslv3_tls_ciphers['TLS_DH_anon_WITH_RC4_128_MD5 : Weak cipher'] = raw_string( 0x00, 0x18 );
+
+# http://www.iana.org/go/rfc4346
 sslv3_tls_ciphers['TLS_DH_anon_EXPORT_WITH_DES40_CBC_SHA : Weak cipher'] = raw_string( 0x00, 0x19 );
+
+# http://www.iana.org/go/rfc5469
 sslv3_tls_ciphers['TLS_DH_anon_WITH_DES_CBC_SHA : Medium cipher'] = raw_string( 0x00, 0x1A );
+
+# http://www.iana.org/go/rfc5246
 sslv3_tls_ciphers['TLS_DH_anon_WITH_3DES_EDE_CBC_SHA : Medium cipher'] = raw_string( 0x00, 0x1B );
 sslv3_tls_ciphers['TLS_FORTEZZA_KEA_WITH_NULL_SHA : Null cipher'] = raw_string( 0x00, 0x1C );
 sslv3_tls_ciphers['TLS_FORTEZZA_KEA_WITH_FORTEZZA_CBC_SHA : Weak cipher'] = raw_string( 0x00, 0x1D );
 
+# http://www.iana.org/go/rfc2712
 # Cipher suite ID 0x001E is double-attributed.
 sslv3_tls_ciphers['TLS_FORTEZZA_KEA_WITH_RC4_128_SHA or TLS_KRB5_WITH_DES_CBC_SHA : Weak cipher'] = raw_string( 0x00, 0x1E );
-
 sslv3_tls_ciphers['TLS_KRB5_WITH_3DES_EDE_CBC_SHA : Medium cipher'] = raw_string( 0x00, 0x1F );
 sslv3_tls_ciphers['TLS_KRB5_WITH_RC4_128_SHA : Weak cipher'] = raw_string( 0x00, 0x20 );
 sslv3_tls_ciphers['TLS_KRB5_WITH_IDEA_CBC_SHA : Medium cipher'] = raw_string( 0x00, 0x21 );
@@ -75,9 +127,13 @@ sslv3_tls_ciphers['TLS_KRB5_EXPORT_WITH_RC4_40_SHA : Weak cipher'] = raw_string(
 sslv3_tls_ciphers['TLS_KRB5_EXPORT_WITH_DES_CBC_40_MD5 : Weak cipher'] = raw_string( 0x00, 0x29 );
 sslv3_tls_ciphers['TLS_KRB5_EXPORT_WITH_RC2_CBC_40_MD5 : Weak cipher'] = raw_string( 0x00, 0x2A );
 sslv3_tls_ciphers['TLS_KRB5_EXPORT_WITH_RC4_40_MD5 : Weak cipher'] = raw_string( 0x00, 0x2B );
+
+# http://www.iana.org/go/rfc4785
 sslv3_tls_ciphers['TLS_PSK_WITH_NULL_SHA : Null cipher'] = raw_string( 0x00, 0x2C );
 sslv3_tls_ciphers['TLS_DHE_PSK_WITH_NULL_SHA : Null cipher'] = raw_string( 0x00, 0x2D );
 sslv3_tls_ciphers['TLS_RSA_PSK_WITH_NULL_SHA : Null cipher'] = raw_string( 0x00, 0x2E );
+
+# http://www.iana.org/go/rfc5246
 sslv3_tls_ciphers['TLS_RSA_WITH_AES_128_CBC_SHA : Medium cipher'] = raw_string( 0x00, 0x2F );
 sslv3_tls_ciphers['TLS_DH_DSS_WITH_AES_128_CBC_SHA : Medium cipher'] = raw_string( 0x00, 0x30 );
 sslv3_tls_ciphers['TLS_DH_RSA_WITH_AES_128_CBC_SHA : Medium cipher'] = raw_string( 0x00, 0x31 );
@@ -96,6 +152,8 @@ sslv3_tls_ciphers['TLS_RSA_WITH_AES_256_CBC_SHA256 : Medium cipher'] = raw_strin
 sslv3_tls_ciphers['TLS_DH_DSS_WITH_AES_128_CBC_SHA256 : Medium cipher'] = raw_string( 0x00, 0x3E );
 sslv3_tls_ciphers['TLS_DH_RSA_WITH_AES_128_CBC_SHA256 : Medium cipher'] = raw_string( 0x00, 0x3F );
 sslv3_tls_ciphers['TLS_DHE_DSS_WITH_AES_128_CBC_SHA256 : Medium cipher'] = raw_string( 0x00, 0x40 );
+
+# http://www.iana.org/go/rfc5932
 sslv3_tls_ciphers['TLS_RSA_WITH_CAMELLIA_128_CBC_SHA : Medium cipher'] = raw_string( 0x00, 0x41 );
 sslv3_tls_ciphers['TLS_DH_DSS_WITH_CAMELLIA_128_CBC_SHA : Medium cipher'] = raw_string( 0x00, 0x42 );
 sslv3_tls_ciphers['TLS_DH_RSA_WITH_CAMELLIA_128_CBC_SHA : Medium cipher'] = raw_string( 0x00, 0x43 );
@@ -114,6 +172,8 @@ sslv3_tls_ciphers['TLS_ECDH_ECDSA_WITH_3DES_EDE_CBC_SHA (Draft) : Medium cipher'
 sslv3_tls_ciphers['TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA (Draft) or TLS_ECDH_ECDSA_EXPORT_WITH_RC4_40_SHA (Draft) : Weak cipher'] = raw_string( 0x00, 0x4B );
 sslv3_tls_ciphers['TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA (Draft) or TLS_ECDH_ECDSA_EXPORT_WITH_RC4_56_SHA (Draft) : Weak cipher'] = raw_string( 0x00, 0x4C );
 
+## unassigned/reserved cipher codes for draft/temporary implementations & backward compatibility.
+## Some servers might implement those.
 sslv3_tls_ciphers['TLS_ECDH_RSA_WITH_NULL_SHA (Draft) : Null cipher'] = raw_string( 0x00, 0x4D );
 sslv3_tls_ciphers['TLS_ECDH_RSA_WITH_RC4_128_SHA (Draft) : Weak cipher'] = raw_string( 0x00, 0x4E );
 sslv3_tls_ciphers['TLS_ECDH_RSA_WITH_DES_CBC_SHA (Draft) : Medium cipher'] = raw_string( 0x00, 0x4F );
@@ -131,11 +191,10 @@ sslv3_tls_ciphers['TLS_ECDH_anon_WITH_3DES_EDE_CBC_SHA (Draft) or TLS_SRP_SHA_DS
 
 ## unassigned/reserved cipher codes for draft/temporary implementations & backward compatibility.
 ## Some servers might implement those.
-sslv3_tls_ciphers['TLS_ECDH_anon_EXPORT_WITH_DES40_CBC_SHA (Draft) : Weak cipher'] = raw_string( 0x00, 0x59 );
-sslv3_tls_ciphers['TLS_ECDH_anon_EXPORT_WITH_RC4_40_SHA (Draft) : Weak cipher'] = raw_string( 0x00, 0x5A );
-sslv3_tls_ciphers['TLS_ECDH_anon_EXPORT_WITH_DES40_CBC_SHA (Draft) : Weak cipher'] = raw_string( 0x00, 0x5B );
-sslv3_tls_ciphers['TLS_ECDH_anon_EXPORT_WITH_RC4_40_SHA (Draft) : Weak cipher'] = raw_string( 0x00, 0x5C );
-
+sslv3_tls_ciphers['TLS_ECDH_anon_EXPORT_WITH_DES40_CBC_SHA (Draft1) : Weak cipher'] = raw_string( 0x00, 0x59 );
+sslv3_tls_ciphers['TLS_ECDH_anon_EXPORT_WITH_RC4_40_SHA (Draft1) : Weak cipher'] = raw_string( 0x00, 0x5A );
+sslv3_tls_ciphers['TLS_ECDH_anon_EXPORT_WITH_DES40_CBC_SHA (Draft2) : Weak cipher'] = raw_string( 0x00, 0x5B );
+sslv3_tls_ciphers['TLS_ECDH_anon_EXPORT_WITH_RC4_40_SHA (Draft2) : Weak cipher'] = raw_string( 0x00, 0x5C );
 sslv3_tls_ciphers['TLS_RSA_EXPORT1024_WITH_RC4_56_MD5 : Weak cipher, weak authentication'] = raw_string( 0x00, 0x60 );
 sslv3_tls_ciphers['TLS_RSA_EXPORT1024_WITH_RC2_CBC_56_MD5 : Weak cipher, weak authentication'] = raw_string( 0x00, 0x61 );
 sslv3_tls_ciphers['TLS_RSA_EXPORT1024_WITH_DES_CBC_SHA : Weak cipher, weak authentication'] = raw_string( 0x00, 0x62 );
@@ -143,6 +202,8 @@ sslv3_tls_ciphers['TLS_DHE_DSS_EXPORT1024_WITH_DES_CBC_SHA : Weak cipher, weak a
 sslv3_tls_ciphers['TLS_RSA_EXPORT1024_WITH_RC4_56_SHA : Weak cipher, weak authentication'] = raw_string( 0x00, 0x64 );
 sslv3_tls_ciphers['TLS_DHE_DSS_EXPORT1024_WITH_RC4_56_SHA : Weak cipher, weak authentication'] = raw_string( 0x00, 0x65 );
 sslv3_tls_ciphers['TLS_DHE_DSS_WITH_RC4_128_SHA : Weak cipher'] = raw_string( 0x00, 0x66 );
+
+# http://www.iana.org/go/rfc5246
 sslv3_tls_ciphers['TLS_DHE_RSA_WITH_AES_128_CBC_SHA256 : Medium cipher'] = raw_string( 0x00, 0x67 );
 sslv3_tls_ciphers['TLS_DH_DSS_WITH_AES_256_CBC_SHA256 : Medium cipher'] = raw_string( 0x00, 0x68 );
 sslv3_tls_ciphers['TLS_DH_RSA_WITH_AES_256_CBC_SHA256 : Medium cipher'] = raw_string( 0x00, 0x69 );
@@ -168,12 +229,15 @@ sslv3_tls_ciphers['TLS_GOSTR341001_WITH_28147_CNT_IMIT (Draft) : Strong cipher']
 sslv3_tls_ciphers['TLS_GOSTR341094_WITH_NULL_GOSTR3411 (Draft) : Null cipher'] = raw_string( 0x00, 0x82 );
 sslv3_tls_ciphers['TLS_GOSTR341001_WITH_NULL_GOSTR3411 (Draft) : Null cipher'] = raw_string( 0x00, 0x83 );
 
+# http://www.iana.org/go/rfc5932
 sslv3_tls_ciphers['TLS_RSA_WITH_CAMELLIA_256_CBC_SHA : Medium cipher'] = raw_string( 0x00, 0x84 );
 sslv3_tls_ciphers['TLS_DH_DSS_WITH_CAMELLIA_256_CBC_SHA : Medium cipher'] = raw_string( 0x00, 0x85 );
 sslv3_tls_ciphers['TLS_DH_RSA_WITH_CAMELLIA_256_CBC_SHA : Medium cipher'] = raw_string( 0x00, 0x86 );
 sslv3_tls_ciphers['TLS_DHE_DSS_WITH_CAMELLIA_256_CBC_SHA : Medium cipher'] = raw_string( 0x00, 0x87 );
 sslv3_tls_ciphers['TLS_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA : Medium cipher'] = raw_string( 0x00, 0x88 );
 sslv3_tls_ciphers['TLS_DH_anon_WITH_CAMELLIA_256_CBC_SHA : Medium cipher'] = raw_string( 0x00, 0x89 );
+
+# http://www.iana.org/go/rfc4279
 sslv3_tls_ciphers['TLS_PSK_WITH_RC4_128_SHA : Weak cipher'] = raw_string( 0x00, 0x8A );
 sslv3_tls_ciphers['TLS_PSK_WITH_3DES_EDE_CBC_SHA : Medium cipher'] = raw_string( 0x00, 0x8B );
 sslv3_tls_ciphers['TLS_PSK_WITH_AES_128_CBC_SHA : Medium cipher'] = raw_string( 0x00, 0x8C );
@@ -186,12 +250,16 @@ sslv3_tls_ciphers['TLS_RSA_PSK_WITH_RC4_128_SHA : Weak cipher'] = raw_string( 0x
 sslv3_tls_ciphers['TLS_RSA_PSK_WITH_3DES_EDE_CBC_SHA : Medium cipher'] = raw_string( 0x00, 0x93 );
 sslv3_tls_ciphers['TLS_RSA_PSK_WITH_AES_128_CBC_SHA : Medium cipher'] = raw_string( 0x00, 0x94 );
 sslv3_tls_ciphers['TLS_RSA_PSK_WITH_AES_256_CBC_SHA : Medium cipher'] = raw_string( 0x00, 0x95 );
+
+# http://www.iana.org/go/rfc4162
 sslv3_tls_ciphers['TLS_RSA_WITH_SEED_CBC_SHA : Weak cipher'] = raw_string( 0x00, 0x96 );
 sslv3_tls_ciphers['TLS_DH_DSS_WITH_SEED_CBC_SHA : Medium cipher'] = raw_string( 0x00, 0x97 );
 sslv3_tls_ciphers['TLS_DH_RSA_WITH_SEED_CBC_SHA : Medium cipher'] = raw_string( 0x00, 0x98 );
 sslv3_tls_ciphers['TLS_DHE_DSS_WITH_SEED_CBC_SHA : Medium cipher'] = raw_string( 0x00, 0x99 );
 sslv3_tls_ciphers['TLS_DHE_RSA_WITH_SEED_CBC_SHA : Medium cipher'] = raw_string( 0x00, 0x9A );
 sslv3_tls_ciphers['TLS_DH_anon_WITH_SEED_CBC_SHA : Medium cipher'] = raw_string( 0x00, 0x9B );
+
+# http://www.iana.org/go/rfc5288
 sslv3_tls_ciphers['TLS_RSA_WITH_AES_128_GCM_SHA256 : Medium cipher'] = raw_string( 0x00, 0x9C );
 sslv3_tls_ciphers['TLS_RSA_WITH_AES_256_GCM_SHA384 : Medium cipher'] = raw_string( 0x00, 0x9D );
 sslv3_tls_ciphers['TLS_DHE_RSA_WITH_AES_128_GCM_SHA256 : Medium cipher'] = raw_string( 0x00, 0x9E );
@@ -204,6 +272,8 @@ sslv3_tls_ciphers['TLS_DH_DSS_WITH_AES_128_GCM_SHA256 : Medium cipher'] = raw_st
 sslv3_tls_ciphers['TLS_DH_DSS_WITH_AES_256_GCM_SHA384 : Medium cipher'] = raw_string( 0x00, 0xA5 );
 sslv3_tls_ciphers['TLS_DH_anon_WITH_AES_128_GCM_SHA256 : Medium cipher'] = raw_string( 0x00, 0xA6 );
 sslv3_tls_ciphers['TLS_DH_anon_WITH_AES_256_GCM_SHA384 : Medium cipher'] = raw_string( 0x00, 0xA7 );
+
+# http://www.iana.org/go/rfc5487
 sslv3_tls_ciphers['TLS_PSK_WITH_AES_128_GCM_SHA256 : Medium cipher'] = raw_string( 0x00, 0xA8 );
 sslv3_tls_ciphers['TLS_PSK_WITH_AES_256_GCM_SHA384 : Medium cipher'] = raw_string( 0x00, 0xA9 );
 sslv3_tls_ciphers['TLS_DHE_PSK_WITH_AES_128_GCM_SHA256 : Medium cipher'] = raw_string( 0x00, 0xAA );
@@ -222,6 +292,8 @@ sslv3_tls_ciphers['TLS_RSA_PSK_WITH_AES_128_CBC_SHA256 : Medium cipher'] = raw_s
 sslv3_tls_ciphers['TLS_RSA_PSK_WITH_AES_256_CBC_SHA384 : Medium cipher'] = raw_string( 0x00, 0xB7 );
 sslv3_tls_ciphers['TLS_RSA_PSK_WITH_NULL_SHA256 : Null cipher'] = raw_string( 0x00, 0xB8 );
 sslv3_tls_ciphers['TLS_RSA_PSK_WITH_NULL_SHA384 : Null cipher'] = raw_string( 0x00, 0xB9 );
+
+# http://www.iana.org/go/rfc5932
 sslv3_tls_ciphers['TLS_RSA_WITH_CAMELLIA_128_CBC_SHA256 : Medium cipher'] = raw_string( 0x00, 0xBA );
 sslv3_tls_ciphers['TLS_DH_DSS_WITH_CAMELLIA_128_CBC_SHA256 : Medium cipher'] = raw_string( 0x00, 0xBB );
 sslv3_tls_ciphers['TLS_DH_RSA_WITH_CAMELLIA_128_CBC_SHA256 : Medium cipher'] = raw_string( 0x00, 0xBC );
@@ -234,6 +306,15 @@ sslv3_tls_ciphers['TLS_DH_RSA_WITH_CAMELLIA_256_CBC_SHA256 : Medium cipher'] = r
 sslv3_tls_ciphers['TLS_DHE_DSS_WITH_CAMELLIA_256_CBC_SHA256 : Medium cipher'] = raw_string( 0x00, 0xC3 );
 sslv3_tls_ciphers['TLS_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA256 : Medium cipher'] = raw_string( 0x00, 0xC4 );
 sslv3_tls_ciphers['TLS_DH_anon_WITH_CAMELLIA_256_CBC_SHA256 : Medium cipher'] = raw_string( 0x00, 0xC5 );
+
+## TLS 1.3 only ciphers, http://www.iana.org/go/rfc8446
+sslv3_tls_ciphers['TLS_AES_128_GCM_SHA256 : Medium cipher'] = raw_string( 0x13, 0x01 );
+sslv3_tls_ciphers['TLS_AES_256_GCM_SHA384 : Strong cipher'] = raw_string( 0x13, 0x02 );
+sslv3_tls_ciphers['TLS_CHACHA20_POLY1305_SHA256 : Strong cipher'] = raw_string( 0x13, 0x03 );
+sslv3_tls_ciphers['TLS_AES_128_CCM_SHA256 : Medium cipher'] = raw_string( 0x13, 0x04 );
+sslv3_tls_ciphers['TLS_AES_128_CCM_8_SHA256 : Medium cipher'] = raw_string( 0x13, 0x05 );
+
+# http://www.iana.org/go/rfc8422
 sslv3_tls_ciphers['TLS_ECDH_ECDSA_WITH_NULL_SHA : Null cipher'] = raw_string( 0xC0, 0x01 );
 sslv3_tls_ciphers['TLS_ECDH_ECDSA_WITH_RC4_128_SHA : Weak cipher'] = raw_string( 0xC0, 0x02 );
 sslv3_tls_ciphers['TLS_ECDH_ECDSA_WITH_3DES_EDE_CBC_SHA : Medium cipher'] = raw_string( 0xC0, 0x03 );
@@ -259,6 +340,8 @@ sslv3_tls_ciphers['TLS_ECDH_anon_WITH_RC4_128_SHA : Weak cipher'] = raw_string( 
 sslv3_tls_ciphers['TLS_ECDH_anon_WITH_3DES_EDE_CBC_SHA : Medium cipher'] = raw_string( 0xC0, 0x17 );
 sslv3_tls_ciphers['TLS_ECDH_anon_WITH_AES_128_CBC_SHA : Medium cipher'] = raw_string( 0xC0, 0x18 );
 sslv3_tls_ciphers['TLS_ECDH_anon_WITH_AES_256_CBC_SHA : Medium cipher'] = raw_string( 0xC0, 0x19 );
+
+# http://www.iana.org/go/rfc5054
 sslv3_tls_ciphers['TLS_SRP_SHA_WITH_3DES_EDE_CBC_SHA : Medium cipher'] = raw_string( 0xC0, 0x1A );
 sslv3_tls_ciphers['TLS_SRP_SHA_RSA_WITH_3DES_EDE_CBC_SHA : Medium cipher'] = raw_string( 0xC0, 0x1B );
 sslv3_tls_ciphers['TLS_SRP_SHA_DSS_WITH_3DES_EDE_CBC_SHA : Medium cipher'] = raw_string( 0xC0, 0x1C );
@@ -268,6 +351,8 @@ sslv3_tls_ciphers['TLS_SRP_SHA_DSS_WITH_AES_128_CBC_SHA : Medium cipher'] = raw_
 sslv3_tls_ciphers['TLS_SRP_SHA_WITH_AES_256_CBC_SHA : Medium cipher'] = raw_string( 0xC0, 0x20 );
 sslv3_tls_ciphers['TLS_SRP_SHA_RSA_WITH_AES_256_CBC_SHA : Medium cipher'] = raw_string( 0xC0, 0x21 );
 sslv3_tls_ciphers['TLS_SRP_SHA_DSS_WITH_AES_256_CBC_SHA : Medium cipher'] = raw_string( 0xC0, 0x22 );
+
+# http://www.iana.org/go/rfc5289
 sslv3_tls_ciphers['TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256 : Medium cipher'] = raw_string( 0xC0, 0x23 );
 sslv3_tls_ciphers['TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 : Medium cipher'] = raw_string( 0xC0, 0x24 );
 sslv3_tls_ciphers['TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256 : Medium cipher'] = raw_string( 0xC0, 0x25 );
@@ -284,6 +369,8 @@ sslv3_tls_ciphers['TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 : Medium cipher'] = raw
 sslv3_tls_ciphers['TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 : Medium cipher'] = raw_string( 0xC0, 0x30 );
 sslv3_tls_ciphers['TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256 : Medium cipher'] = raw_string( 0xC0, 0x31 );
 sslv3_tls_ciphers['TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384 : Medium cipher'] = raw_string( 0xC0, 0x32 );
+
+# http://www.iana.org/go/rfc5489
 sslv3_tls_ciphers['TLS_ECDHE_PSK_WITH_RC4_128_SHA : Weak cipher'] = raw_string( 0xC0, 0x33 );
 sslv3_tls_ciphers['TLS_ECDHE_PSK_WITH_3DES_EDE_CBC_SHA : Medium cipher'] = raw_string( 0xC0, 0x34 );
 sslv3_tls_ciphers['TLS_ECDHE_PSK_WITH_AES_128_CBC_SHA : Medium cipher'] = raw_string( 0xC0, 0x35 );
@@ -293,6 +380,8 @@ sslv3_tls_ciphers['TLS_ECDHE_PSK_WITH_AES_256_CBC_SHA384 : Medium cipher'] = raw
 sslv3_tls_ciphers['TLS_ECDHE_PSK_WITH_NULL_SHA : Null cipher'] = raw_string( 0xC0, 0x39 );
 sslv3_tls_ciphers['TLS_ECDHE_PSK_WITH_NULL_SHA256 : Null cipher'] = raw_string( 0xC0, 0x3A );
 sslv3_tls_ciphers['TLS_ECDHE_PSK_WITH_NULL_SHA384 : Null cipher'] = raw_string( 0xC0, 0x3B );
+
+# http://www.iana.org/go/rfc6209
 sslv3_tls_ciphers['TLS_RSA_WITH_ARIA_128_CBC_SHA256 : Medium cipher'] = raw_string( 0xC0, 0x3C );
 sslv3_tls_ciphers['TLS_RSA_WITH_ARIA_256_CBC_SHA384 : Medium cipher'] = raw_string( 0xC0, 0x3D );
 sslv3_tls_ciphers['TLS_DH_DSS_WITH_ARIA_128_CBC_SHA256 : Medium cipher'] = raw_string( 0xC0, 0x3E );
@@ -347,6 +436,8 @@ sslv3_tls_ciphers['TLS_RSA_PSK_WITH_ARIA_128_GCM_SHA256 : Medium cipher'] = raw_
 sslv3_tls_ciphers['TLS_RSA_PSK_WITH_ARIA_256_GCM_SHA384 : Medium cipher'] = raw_string( 0xC0, 0x6F );
 sslv3_tls_ciphers['TLS_ECDHE_PSK_WITH_ARIA_128_CBC_SHA256 : Medium cipher'] = raw_string( 0xC0, 0x70 );
 sslv3_tls_ciphers['TLS_ECDHE_PSK_WITH_ARIA_256_CBC_SHA384 : Medium cipher'] = raw_string( 0xC0, 0x71 );
+
+# http://www.iana.org/go/rfc6367
 sslv3_tls_ciphers['TLS_ECDHE_ECDSA_WITH_CAMELLIA_128_CBC_SHA256 : Medium cipher'] = raw_string( 0xC0, 0x72 );
 sslv3_tls_ciphers['TLS_ECDHE_ECDSA_WITH_CAMELLIA_256_CBC_SHA384 : Medium cipher'] = raw_string( 0xC0, 0x73 );
 sslv3_tls_ciphers['TLS_ECDH_ECDSA_WITH_CAMELLIA_128_CBC_SHA256 : Medium cipher'] = raw_string( 0xC0, 0x74 );
@@ -389,6 +480,8 @@ sslv3_tls_ciphers['TLS_RSA_PSK_WITH_CAMELLIA_128_CBC_SHA256 : Medium cipher'] = 
 sslv3_tls_ciphers['TLS_RSA_PSK_WITH_CAMELLIA_256_CBC_SHA384 : Medium cipher'] = raw_string( 0xC0, 0x99 );
 sslv3_tls_ciphers['TLS_ECDHE_PSK_WITH_CAMELLIA_128_CBC_SHA256 : Medium cipher'] = raw_string( 0xC0, 0x9A );
 sslv3_tls_ciphers['TLS_ECDHE_PSK_WITH_CAMELLIA_256_CBC_SHA384 : Medium cipher'] = raw_string( 0xC0, 0x9B );
+
+# http://www.iana.org/go/rfc6655
 sslv3_tls_ciphers['TLS_RSA_WITH_AES_128_CCM : Medium cipher'] = raw_string( 0xC0, 0x9C );
 sslv3_tls_ciphers['TLS_RSA_WITH_AES_256_CCM : Medium cipher'] = raw_string( 0xC0, 0x9D );
 sslv3_tls_ciphers['TLS_DHE_RSA_WITH_AES_128_CCM : Medium cipher'] = raw_string( 0xC0, 0x9E );
@@ -405,10 +498,22 @@ sslv3_tls_ciphers['TLS_PSK_WITH_AES_128_CCM_8 : Medium cipher'] = raw_string( 0x
 sslv3_tls_ciphers['TLS_PSK_WITH_AES_256_CCM_8 : Medium cipher'] = raw_string( 0xC0, 0xA9 );
 sslv3_tls_ciphers['TLS_PSK_DHE_WITH_AES_128_CCM_8 : Medium cipher'] = raw_string( 0xC0, 0xAA );
 sslv3_tls_ciphers['TLS_PSK_DHE_WITH_AES_256_CCM_8 : Medium cipher'] = raw_string( 0xC0, 0xAB );
+
+# http://www.iana.org/go/rfc7251
 sslv3_tls_ciphers['TLS_ECDHE_ECDSA_WITH_AES_128_CCM : Medium cipher'] = raw_string( 0xC0, 0xAC );
 sslv3_tls_ciphers['TLS_ECDHE_ECDSA_WITH_AES_256_CCM : Medium cipher'] = raw_string( 0xC0, 0xAD );
 sslv3_tls_ciphers['TLS_ECDHE_ECDSA_WITH_AES_128_CCM_8 : Medium cipher'] = raw_string( 0xC0, 0xAE );
 sslv3_tls_ciphers['TLS_ECDHE_ECDSA_WITH_AES_256_CCM_8 : Medium cipher'] = raw_string( 0xC0, 0xAF );
+
+# http://www.iana.org/go/draft-harkins-tls-dragonfly-03
+sslv3_tls_ciphers['TLS_ECCPWD_WITH_AES_128_GCM_SHA256 (Draft) : Medium cipher'] = raw_string( 0xC0, 0xB0 );
+sslv3_tls_ciphers['TLS_ECCPWD_WITH_AES_256_GCM_SHA384 (Draft) : Strong cipher'] = raw_string( 0xC0, 0xB1 );
+sslv3_tls_ciphers['TLS_ECCPWD_WITH_AES_128_CCM_SHA256 (Draft) : Medium cipher'] = raw_string( 0xC0, 0xB2 );
+sslv3_tls_ciphers['TLS_ECCPWD_WITH_AES_256_CCM_SHA384 (Draft) : Medium cipher'] = raw_string( 0xC0, 0xB3 );
+
+# http://www.iana.org/go/draft-camwinget-tls-ts13-macciphersuites
+sslv3_tls_ciphers['TLS_SHA256_SHA256 (Draft) : Weak cipher'] = raw_string( 0xC0, 0xB4 );
+sslv3_tls_ciphers['TLS_SHA384_SHA384 (Draft) : Weak cipher'] = raw_string( 0xC0, 0xB5 );
 
 ## unassigned/reserved cipher codes for draft/temporary implementations & backward compatibility.
 ## Some servers might implement those.
@@ -416,6 +521,7 @@ sslv3_tls_ciphers['TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256 (Draft) : Strong 
 sslv3_tls_ciphers['TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256 (Draft) : Strong cipher'] = raw_string( 0xCC, 0x14 );
 sslv3_tls_ciphers['TLS_DHE_RSA_WITH_CHACHA20_POLY1305_SHA256 (Draft) : Strong cipher'] = raw_string( 0xCC, 0x15 );
 
+# http://www.iana.org/go/rfc7905
 sslv3_tls_ciphers['TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256 : Strong cipher'] = raw_string( 0xCC, 0xA8 );
 sslv3_tls_ciphers['TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256 : Strong cipher'] = raw_string( 0xCC, 0xA9 );
 sslv3_tls_ciphers['TLS_DHE_RSA_WITH_CHACHA20_POLY1305_SHA256 : Strong cipher'] = raw_string( 0xCC, 0xAA );
@@ -423,6 +529,12 @@ sslv3_tls_ciphers['TLS_PSK_WITH_CHACHA20_POLY1305_SHA256 : Strong cipher'] = raw
 sslv3_tls_ciphers['TLS_ECDHE_PSK_WITH_CHACHA20_POLY1305_SHA256 : Strong cipher'] = raw_string( 0xCC, 0xAC );
 sslv3_tls_ciphers['TLS_DHE_PSK_WITH_CHACHA20_POLY1305_SHA256 : Strong cipher'] = raw_string( 0xCC, 0xAD );
 sslv3_tls_ciphers['TLS_RSA_PSK_WITH_CHACHA20_POLY1305_SHA256 : Strong cipher'] = raw_string( 0xCC, 0xAE );
+
+## http://www.iana.org/go/rfc8442
+sslv3_tls_ciphers['TLS_ECDHE_PSK_WITH_AES_128_GCM_SHA256 : Medium cipher'] = raw_string( 0xD0, 0x01 );
+sslv3_tls_ciphers['TLS_ECDHE_PSK_WITH_AES_256_GCM_SHA384 : Strong cipher'] = raw_string( 0xD0, 0x01 );
+sslv3_tls_ciphers['TLS_ECDHE_PSK_WITH_AES_128_CCM_8_SHA256 : Medium cipher'] = raw_string( 0xD0, 0x01 );
+sslv3_tls_ciphers['TLS_ECDHE_PSK_WITH_AES_128_CCM_SHA256 : Medium cipher'] = raw_string( 0xD0, 0x01 );
 
 ## unassigned/reserved cipher codes for draft/temporary implementations & backward compatibility.
 ## Some servers might implement those.
@@ -456,8 +568,8 @@ cipher_arrays = make_list( keys( sslv3_tls_ciphers ) );
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900238");
-  script_version("$Revision: 11665 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 09:14:18 +0200 (Fri, 28 Sep 2018) $");
+  script_version("$Revision: 12846 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-20 13:16:07 +0100 (Thu, 20 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-04-16 11:02:50 +0200 (Fri, 16 Apr 2010)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");

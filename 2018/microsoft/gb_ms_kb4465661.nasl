@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4465661.nasl 12410 2018-11-19 10:06:05Z cfischer $
+# $Id: gb_ms_kb4465661.nasl 12851 2018-12-21 01:34:55Z ckuersteiner $
 #
 # MS Windows Security Bypass and Latest Servicing Stack Updates- Defense in Depth (KB4465661)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814272");
-  script_version("$Revision: 12410 $");
+  script_version("$Revision: 12851 $");
   script_cve_id("CVE-2018-8566");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-19 11:06:05 +0100 (Mon, 19 Nov 2018) $");
+  script_tag(name:"cvss_base", value:"2.1");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-21 02:34:55 +0100 (Fri, 21 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-11-14 09:55:34 +0530 (Wed, 14 Nov 2018)");
   script_name("MS Windows Security Bypass and Latest Servicing Stack Updates- Defense in Depth (KB4465661)");
 

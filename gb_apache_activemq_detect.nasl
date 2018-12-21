@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_activemq_detect.nasl 11399 2018-09-15 07:45:12Z cfischer $
+# $Id: gb_apache_activemq_detect.nasl 12875 2018-12-21 15:01:59Z cfischer $
 #
 # Apache ActiveMQ Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105330");
-  script_version("$Revision: 11399 $");
+  script_version("$Revision: 12875 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 09:45:12 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-21 16:01:59 +0100 (Fri, 21 Dec 2018) $");
   script_tag(name:"creation_date", value:"2015-08-24 12:33:07 +0200 (Mon, 24 Aug 2015)");
   script_name("Apache ActiveMQ Detection");
   script_category(ACT_GATHER_INFO);
@@ -126,7 +126,7 @@ foreach jmsPort( jmsPorts ) {
   }
 }
 
-if( get_kb_item( "Settings/disable_cgi_scanning" ) ) exit( 0 );
+if( http_is_cgi_scan_disabled() ) exit( 0 );
 
 port = get_http_port( default:8161 );
 

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: movabletype_cfg.nasl 9348 2018-04-06 07:01:19Z cfischer $
+# $Id: movabletype_cfg.nasl 12861 2018-12-21 09:53:04Z ckuersteiner $
 # Description: Movable Type config file
 #
 # Authors:
@@ -22,39 +22,56 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_solution = "Configure your web server not to serve .cfg files.";
-tag_summary = "/mt/mt.cfg is installed by the Movable Type Publishing  
-Platform and contains information that should not be exposed.";
+CPE = "cpe:/a:sixapart:movable_type";
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.16170");
- script_version("$Revision: 9348 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_tag(name:"qod_type", value:"remote_banner_unreliable");
- script_name("Movable Type config file");
+  script_oid("1.3.6.1.4.1.25623.1.0.16170");
+  script_version("$Revision: 12861 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-21 10:53:04 +0100 (Fri, 21 Dec 2018) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
- 
- script_category(ACT_GATHER_INFO);
- script_copyright("This script is Copyright (C) 2004 Rich Walchuck");
- script_family("Web application abuses");
- script_require_ports("Services/www",80);
- script_dependencies("http_version.nasl");
+  script_tag(name:"solution_type", value:"Mitigation");
 
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  script_name("Movable Type config file");
+
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 2004 Rich Walchuck");
+  script_family("Web application abuses");
+  script_require_ports("Services/www", 80);
+  script_dependencies("mt_detect.nasl");
+  script_mandatory_keys("movabletype/detected");
+
+  script_tag(name:"solution", value:"Configure your web server not to serve .cfg files.");
+
+  script_tag(name:"summary", value:"/mt/mt.cfg is installed by the Movable Type Publishing
+Platform and contains information that should not be exposed.");
+
+  exit(0);
 }
 
+include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 
-port = get_http_port(default:80);
+if (!port = get_app_port(cpe: CPE))
+  exit(0);
 
-if(is_cgi_installed_ka(item:"/mt/mt.cfg",port:port))
-   security_message(port);
+if (!dir = get_app_location(cpe: CPE, port: port))
+  exit(0);
 
+if (dir == "/")
+  dir = "";
+
+url = dir + "/mt/mt.cfg";
+
+if(is_cgi_installed_ka(item:url,port:port)) {
+  report = report_vuln_url(port: port, url: url);
+  security_message(port: port, data: report);
+  exit(0);
+}
+
+exit(99);

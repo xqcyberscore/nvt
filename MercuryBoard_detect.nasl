@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: MercuryBoard_detect.nasl 9580 2018-04-24 08:44:20Z jschulte $
+# $Id: MercuryBoard_detect.nasl 12861 2018-12-21 09:53:04Z ckuersteiner $
 #
 # MercuryBoard Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100423");
-  script_version("$Revision: 9580 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:44:20 +0200 (Tue, 24 Apr 2018) $");
+  script_version("$Revision: 12861 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-21 10:53:04 +0100 (Fri, 21 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-01-05 18:50:28 +0100 (Tue, 05 Jan 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -66,13 +66,10 @@ foreach dir( make_list_unique( "/board", "/mercuryboard", "/forums", "/forum", c
   if( isnull( buf ) ) continue;
 
   if( egrep( pattern:"Powered by.*MercuryBoard.*\[v[0-9.]+\]", string:buf, icase:TRUE ) ) {
-
     version = "unknown";
     vers = eregmatch( string:buf, pattern:"\[v([0-9.]+)\]", icase:TRUE );
     if( ! isnull( vers[1]) ) version = chomp( vers[1] );
 
-    tmp_version = version + " under " + install;
-    set_kb_item( name:"www/" + port + "/MercuryBoard", value:tmp_version );
     set_kb_item( name:"MercuryBoard/detected", value:TRUE );
 
     cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:mercuryboard:mercuryboard:" );
@@ -86,7 +83,7 @@ foreach dir( make_list_unique( "/board", "/mercuryboard", "/forums", "/forum", c
                                               install:install,
                                               cpe:cpe,
                                               concluded:vers[0] ),
-                                              port:port );
+                 port:port );
     exit( 0 );
   }
 }

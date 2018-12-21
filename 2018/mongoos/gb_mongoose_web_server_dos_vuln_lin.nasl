@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mongoose_web_server_dos_vuln_lin.nasl 12116 2018-10-26 10:01:35Z mmartin $
+# $Id: gb_mongoose_web_server_dos_vuln_lin.nasl 12859 2018-12-21 08:39:42Z ckuersteiner $
 #
 # Mongoose Web Server 'mg_handle_cgi' Function Denial of Service Vulnerability (Linux)
 #
@@ -29,13 +29,14 @@ CPE = "cpe:/a:cesanta:mongoose";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813632");
-  script_version("$Revision: 12116 $");
+  script_version("$Revision: 12859 $");
   script_cve_id("CVE-2018-10945");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-21 09:39:42 +0100 (Fri, 21 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-07-09 14:45:19 +0530 (Mon, 09 Jul 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
+
   script_name("Mongoose Web Server 'mg_handle_cgi' Function Denial of Service Vulnerability (Linux)");
 
   script_tag(name:"summary", value:"The host is installed with Mongoose Web Server
@@ -51,12 +52,12 @@ if(description)
 
   script_tag(name:"affected", value:"Mongoose version 6.11");
 
-  script_tag(name:"solution", value:"No known solution is available as of 09th July, 2018.
-  Information regarding this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"Update to version 6.12 or later.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
+
   script_xref(name:"URL", value:"http://blog.hac425.top/2018/05/16/CVE-2018-10945-mongoose.html");
-  script_xref(name:"URL", value:"https://cesanta.com");
+  script_xref(name:"URL", value:"https://github.com/cesanta/mongoose/releases");
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
@@ -69,17 +70,15 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-if(!mongoPort = get_app_port(cpe:CPE)){
+if(!mongoPort = get_app_port(cpe:CPE))
   exit(0);
-}
 
 infos = get_app_version_and_location( cpe:CPE, port:mongoPort, exit_no_version:TRUE);
 mongoVer = infos['version'];
 mongoPath = infos['location'];
 
-if(mongoVer == "6.11")
-{
-  report = report_fixed_ver(installed_version:mongoVer, fixed_version:"NoneAvailable", install_path:mongoPath);
+if(mongoVer == "6.11") {
+  report = report_fixed_ver(installed_version:mongoVer, fixed_version:"6.12", install_path:mongoPath);
   security_message(data:report, port:mongoPort);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zoneminder_detect.nasl 5815 2017-03-31 09:50:39Z cfi $
+# $Id: gb_zoneminder_detect.nasl 12872 2018-12-21 14:36:20Z asteins $
 #
 # ZoneMinder Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106520");
-  script_version("$Revision: 5815 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:50:39 +0200 (Fri, 31 Mar 2017) $");
+  script_version("$Revision: 12872 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-21 15:36:20 +0100 (Fri, 21 Dec 2018) $");
   script_tag(name:"creation_date", value:"2017-01-17 13:28:38 +0700 (Tue, 17 Jan 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -67,7 +67,7 @@ foreach dir (make_list_unique("/zm", "/zoneminder", cgi_dirs(port: port))) {
 
   res = http_get_cache(port: port, item: dir + "/index.php");
 
-  if (("<h1>ZoneMinder Login</h1>" >< res || "<title>ZoneMinder - Console</title>" >< res ) &&
+  if (("<h1>ZoneMinder Login</h1>" >< res || res =~ "<title>Zone[mM]inder - Console</title>" >< res ) &&
       "var skinPath" >< res) {
 
     version = "unknown";

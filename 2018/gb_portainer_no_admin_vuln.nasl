@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_portainer_no_admin_vuln.nasl 12749 2018-12-10 18:42:26Z tpassfeld $
+# $Id: gb_portainer_no_admin_vuln.nasl 12858 2018-12-21 08:05:36Z ckuersteiner $
 #
 # Portainer UI No Administrator Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114016");
-  script_version("$Revision: 12749 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-10 19:42:26 +0100 (Mon, 10 Dec 2018) $");
+  script_version("$Revision: 12858 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-21 09:05:36 +0100 (Fri, 21 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-08-06 11:59:55 +0200 (Mon, 06 Aug 2018)");
-  script_tag(name:"cvss_base", value:"9.7");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:P");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
   script_name("Portainer UI No Administrator Vulnerability");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");

@@ -26,16 +26,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882084");
-  script_version("$Revision: 6769 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
+  script_version("$Revision: 12858 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-21 09:05:36 +0100 (Fri, 21 Dec 2018) $");
   script_tag(name:"creation_date", value:"2014-11-18 06:39:13 +0100 (Tue, 18 Nov 2014)");
   script_cve_id("CVE-2014-2494", "CVE-2014-4207", "CVE-2014-4243", "CVE-2014-4258",
                 "CVE-2014-4260", "CVE-2014-4274", "CVE-2014-4287", "CVE-2014-6463",
                 "CVE-2014-6464", "CVE-2014-6469", "CVE-2014-6484", "CVE-2014-6505",
                 "CVE-2014-6507", "CVE-2014-6520", "CVE-2014-6530", "CVE-2014-6551",
                 "CVE-2014-6555", "CVE-2014-6559");
-  script_tag(name:"cvss_base", value:"8.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
   script_name("CentOS Update for mysql55-mysql CESA-2014:1859 centos5 ");
 
   script_tag(name: "summary", value: "Check the version of mysql55-mysql");

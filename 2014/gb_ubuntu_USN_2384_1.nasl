@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2384_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_ubuntu_USN_2384_1.nasl 12858 2018-12-21 08:05:36Z ckuersteiner $
 #
 # Ubuntu Update for mysql-5.5 USN-2384-1
 #
@@ -27,16 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842009");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12858 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-21 09:05:36 +0100 (Fri, 21 Dec 2018) $");
   script_tag(name:"creation_date", value:"2014-10-16 06:00:46 +0200 (Thu, 16 Oct 2014)");
   script_cve_id("CVE-2012-5615", "CVE-2014-4274", "CVE-2014-4287", "CVE-2014-6463",
                 "CVE-2014-6464", "CVE-2014-6469", "CVE-2014-6478", "CVE-2014-6484",
                 "CVE-2014-6491", "CVE-2014-6494", "CVE-2014-6495", "CVE-2014-6496",
                 "CVE-2014-6500", "CVE-2014-6505", "CVE-2014-6507", "CVE-2014-6520",
                 "CVE-2014-6530", "CVE-2014-6551", "CVE-2014-6555", "CVE-2014-6559");
-  script_tag(name:"cvss_base", value:"8.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Ubuntu Update for mysql-5.5 USN-2384-1");
 
   script_tag(name:"summary", value:"The remote host is missing an update for the 'mysql-5.5'

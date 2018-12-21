@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_CVE_2017_12611.nasl 10736 2018-08-02 11:55:29Z cfischer $
+# $Id: gb_apache_struts_CVE_2017_12611.nasl 12875 2018-12-21 15:01:59Z cfischer $
 #
 # Apache Struts 'CVE-2017-12611' Remote Code Execution Vulnerability
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108243");
-  script_version("$Revision: 10736 $");
+  script_version("$Revision: 12875 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-02 13:55:29 +0200 (Thu, 02 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-21 16:01:59 +0100 (Fri, 21 Dec 2018) $");
   script_tag(name:"creation_date", value:"2017-09-11 12:00:00 +0200 (Mon, 11 Sep 2017)");
   script_cve_id("CVE-2017-12611");
   script_name("Apache Struts 'CVE-2017-12611' Remote Code Execution Vulnerability");
@@ -71,7 +71,7 @@ include("host_details.inc");
 include("url_func.inc");
 
 # nb: We also don't want to run if optimize_test is set to "no"
-if( get_kb_item( "Settings/disable_cgi_scanning" ) ||
+if( http_is_cgi_scan_disabled() ||
     get_kb_item( "global_settings/disable_generic_webapp_scanning" ) )
   exit( 0 );
 
@@ -122,7 +122,8 @@ foreach cgi( cgis ) {
     pingcmd = '"ping","-n","3","' + this_host() + '"';
     win = TRUE;
   } else {
-    check = "_OpenVAS_" + rand_str( length:6 );
+    vtstrings = get_vt_strings();
+    check = vtstrings["ping_string"];
     pattern = hexstr( check );
     cleancmd = "ping -c 3 -p " + pattern + " " + this_host();
     pingcmd = '"ping","-c","3","-p","' + pattern + '","' + this_host() + '"';

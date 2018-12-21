@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sql_injection.nasl 10736 2018-08-02 11:55:29Z cfischer $
+# $Id: sql_injection.nasl 12875 2018-12-21 15:01:59Z cfischer $
 #
 # Test for generic SQL injection in Web Applications
 #
@@ -31,8 +31,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11139");
-  script_version("$Revision: 10736 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-02 13:55:29 +0200 (Thu, 02 Aug 2018) $");
+  script_version("$Revision: 12875 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-21 16:01:59 +0100 (Fri, 21 Dec 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -72,7 +72,7 @@ include("http_keepalive.inc");
 # by this NVT if it reached a timeout or exit(0) was used due to the failed requests.
 
 # nb: We also don't want to run if optimize_test is set to "no"
-if( get_kb_item( "Settings/disable_cgi_scanning" ) ||
+if( http_is_cgi_scan_disabled() ||
     get_kb_item( "global_settings/disable_generic_webapp_scanning" ) )
   exit( 0 );
 

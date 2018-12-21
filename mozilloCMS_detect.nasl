@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mozilloCMS_detect.nasl 10911 2018-08-10 15:16:34Z cfischer $
+# $Id: mozilloCMS_detect.nasl 12861 2018-12-21 09:53:04Z ckuersteiner $
 #
 # moziloCMS Detection
 #
@@ -27,12 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100123");
-  script_version("$Revision: 10911 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:16:34 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 12861 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-21 10:53:04 +0100 (Fri, 21 Dec 2018) $");
   script_tag(name:"creation_date", value:"2009-04-12 20:09:50 +0200 (Sun, 12 Apr 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
+
   script_name("moziloCMS Detection");
+
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
@@ -71,13 +73,12 @@ foreach dir( make_list_unique( "/moziloCMS", "/cms", cgi_dirs( port:port ) ) ) {
     vers = "unknown";
 
     version = eregmatch( string:buf, pattern:"moziloCMS ([0-9.]+)", icase:TRUE );
-    if( ! isnull( version[1] ) ) vers = chomp( version[1] );
+    if( ! isnull( version[1] ) ) vers = version[1];
 
-    tmp_version = vers + " under " + install;
-    set_kb_item( name:"www/" + port + "/moziloCMS", value:tmp_version );
+    set_kb_item( name:"mozillocms/detected", value:TRUE );
 
-    cpe = build_cpe( value:tmp_version, exp:"^([0-9.]+)", base:"cpe:/a:mozilo:mozilocms:" );
-    if( isnull( cpe ) )
+    cpe = build_cpe( value:vers, exp:"^([0-9.]+)", base:"cpe:/a:mozilo:mozilocms:" );
+    if( !cpe )
       cpe = "cpe:/a:mozilo:mozilocms";
 
     register_product( cpe:cpe, location:install, port:port );
@@ -86,7 +87,7 @@ foreach dir( make_list_unique( "/moziloCMS", "/cms", cgi_dirs( port:port ) ) ) {
                                               install:install,
                                               cpe:cpe,
                                               concluded:version[0] ),
-                                              port:port );
+                 port:port );
     exit( 0 );
   }
 }

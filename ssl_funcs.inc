@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: ssl_funcs.inc 11009 2018-08-16 13:55:00Z cfischer $
+# $Id: ssl_funcs.inc 12869 2018-12-21 14:18:27Z cfischer $
 #
 # Implementation of common ssl functions
 #
@@ -25,19 +25,32 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 11009 $
+# $Revision: 12869 $
 #
 ###############################################################################
 
 # Enables debugging output for a few functions below
 global_var _ssl_funcs_debug;
-_ssl_funcs = FALSE;
+_ssl_funcs_debug = FALSE;
 
-SSL_v2 = raw_string( 0x02, 0x00 );
+global_var SSLv3_SERVER_HELLO, SSLv3_SERVER_HELLO_DONE, SSLv3_CLIENT_HELLO, SSLv3_SERVER_KEY_EXCHANGE, SSLv3_CERTIFICATE, SSLv3_CERTIFICATE_REQUEST, SSLv3_CERTIFICATE_STATUS;
+global_var SSLv3_CHANGECIPHERSPEC, SSLv3_ALERT, SSLv3_HANDSHAKE, SSLv3_APPLICATION_DATA;
+global_var SSLv2_SERVER_HELLO;
+global_var SSLv3_ALERT_FATAL, SSLv3_ALERT_UNEXPECTED_MESSAGE, SSLv3_ALERT_BAD_RECORD_MAC, SSLv3_ALERT_DECRYPTION_FAILED, SSLv3_ALERT_HANDSHAKE_FAILURE, SSLv3_ALERT_UNRECOGNIZED_NAME;
+global_var SSLv3_ALERT_INAPPROPRIATE_FALLBACK, SSLv3_ALERT_RECORD_OVERFLOW, SSLv3_CLIENT_KEY_EXCHANGE;
+
+global_var version_string, version_kb_string_mapping, SSL_v2, SSL_v3, TLS_10, TLS_11, TLS_12, TLS_13;
+global_var elliptic_curves, ec_point_formats, sslv2_raw_ciphers, sslv3_tls_raw_ciphers, compression_methods;
+global_var application_layer_protocol_negotiation, npn_alpn_name_mapping, npn_alpn_protocol_list;
+
+global_var alpn_prot; # Passed globally by gb_tls_npn_alpn_detect.nasl
+
+SSL_v2 = raw_string( 0x00, 0x02 );
 SSL_v3 = raw_string( 0x03, 0x00 );
 TLS_10 = raw_string( 0x03, 0x01 );
 TLS_11 = raw_string( 0x03, 0x02 );
 TLS_12 = raw_string( 0x03, 0x03 );
+TLS_13 = raw_string( 0x03, 0x04 );
 
 # https://tools.ietf.org/html/rfc4492 5.1.1
 elliptic_curves['sect163k1'] = raw_string( 0, 1 );
@@ -66,14 +79,12 @@ elliptic_curves['secp256r1'] = raw_string( 0, 23 );
 elliptic_curves['secp384r1'] = raw_string( 0, 24 );
 elliptic_curves['secp521r1'] = raw_string( 0, 25 );
 
-# RFC 7027
-
+# https://tools.ietf.org/html/rfc7027
 elliptic_curves['brainpoolP256r1'] = raw_string( 0, 26 );
 elliptic_curves['brainpoolP384r1'] = raw_string( 0, 27 );
 elliptic_curves['brainpoolP512r1'] = raw_string( 0, 28 );
 
 # https://tlswg.github.io/tls13-spec/
-
 elliptic_curves['ecdh_x25519']   = raw_string( 0, 29 );
 elliptic_curves['ecdh_x448']     = raw_string( 0, 30 );
 elliptic_curves['eddsa_ed25519'] = raw_string( 0, 31 );
@@ -121,12 +132,14 @@ version_kb_string_mapping[SSL_v3] = 'sslv3';
 version_kb_string_mapping[TLS_10] = 'tlsv1';
 version_kb_string_mapping[TLS_11] = 'tlsv1_1';
 version_kb_string_mapping[TLS_12] = 'tlsv1_2';
+version_kb_string_mapping[TLS_13] = 'tlsv1_3';
 
 version_string[SSL_v2] = 'SSLv2';
 version_string[SSL_v3] = 'SSLv3';
 version_string[TLS_10] = 'TLSv1.0';
 version_string[TLS_11] = 'TLSv1.1';
 version_string[TLS_12] = 'TLSv1.2';
+version_string[TLS_13] = 'TLSv1.3';
 
 SSLv3_CLIENT_HELLO        = 1;
 SSLv3_SERVER_HELLO        = 2;
@@ -154,42 +167,114 @@ SSLv3_ALERT_UNRECOGNIZED_NAME      = 112;
 
 SSLv2_SERVER_HELLO = 4;
 
+sslv2_raw_ciphers['SSL2_NULL_WITH_MD5'] = raw_string( 0x00, 0x00, 0x00 );
+sslv2_raw_ciphers['SSL2_RC4_128_MD5'] = raw_string( 0x01, 0x00, 0x80 );
+sslv2_raw_ciphers['SSL2_RC4_128_EXPORT40_WITH_MD5'] = raw_string( 0x02, 0x00, 0x80 );
+sslv2_raw_ciphers['SSL2_RC2_CBC_128_CBC_WITH_MD5'] = raw_string( 0x03, 0x00, 0x80 );
+sslv2_raw_ciphers['SSL2_RC2_CBC_128_CBC_EXPORT40_WITH_MD5'] = raw_string( 0x04, 0x00, 0x80 );
+sslv2_raw_ciphers['SSL2_IDEA_128_CBC_WITH_MD5'] = raw_string( 0x05, 0x00, 0x80 );
+sslv2_raw_ciphers['SSL2_DES_64_CBC_WITH_MD5'] = raw_string( 0x06, 0x00, 0x40 );
+sslv2_raw_ciphers['SSL2_DES_64_CBC_WITH_SHA'] = raw_string( 0x06, 0x01, 0x40 );
+sslv2_raw_ciphers['SSL2_DES_192_EDE3_CBC_WITH_MD5'] = raw_string( 0x07, 0x00, 0xc0 );
+sslv2_raw_ciphers['SSL2_DES_192_EDE3_CBC_WITH_SHA'] = raw_string( 0x07, 0x01, 0xc0 );
+sslv2_raw_ciphers['SSL2_RC4_64_WITH_MD5'] = raw_string( 0x08, 0x00, 0x80 );
+sslv2_raw_ciphers['SSL2_DES_64_CFB64_WITH_MD5_1'] = raw_string( 0xff, 0x08, 0x00 );
+sslv2_raw_ciphers['SSL2_NULL'] = raw_string( 0xff, 0x08, 0x10 );
+sslv2_raw_ciphers['SSL2_UNKNOWN'] = raw_string( 0x06, 0x00, 0x80 );
+
 ## Mapping all other protocols Cipher codes and display names
 ## Testing for all existing ciphers codes for all protocols since some webservers aren't fully spec-compliant.
 ## Naming following the http://www.iana.org/assignments/tls-parameters/tls-parameters.xhtml pattern.
 ##
 ## nb: If adding ciphers here also add them to sslv3_tls_ciphers of secpod_ssl_ciphers.inc
 ##
+## Check for duplicates: egrep -o "^sslv3_tls_raw_ciphers\['([^']+)']" ssl_funcs.inc | sort | uniq -d
+##
+## TODO: We might want to move the "Draft" ciphers out of the sslv3_tls_raw_ciphers into a separate
+## array to not send out those uncommon ones against ever server via _ssl3_tls_hello.
+
+# http://www.iana.org/go/rfc5246
 sslv3_tls_raw_ciphers['TLS_NULL_WITH_NULL_NULL'] = raw_string( 0x00, 0x00 );
 sslv3_tls_raw_ciphers['TLS_RSA_WITH_NULL_MD5'] = raw_string( 0x00, 0x01 );
 sslv3_tls_raw_ciphers['TLS_RSA_WITH_NULL_SHA'] = raw_string( 0x00, 0x02 );
+
+# http://www.iana.org/go/rfc4346
 sslv3_tls_raw_ciphers['TLS_RSA_EXPORT_WITH_RC4_40_MD5'] = raw_string( 0x00, 0x03 );
+
+# http://www.iana.org/go/rfc5246
 sslv3_tls_raw_ciphers['TLS_RSA_WITH_RC4_128_MD5'] = raw_string( 0x00, 0x04 );
 sslv3_tls_raw_ciphers['TLS_RSA_WITH_RC4_128_SHA'] = raw_string( 0x00, 0x05 );
+
+# http://www.iana.org/go/rfc4346
 sslv3_tls_raw_ciphers['TLS_RSA_EXPORT_WITH_RC2_CBC_40_MD5'] = raw_string( 0x00, 0x06 );
+
+# http://www.iana.org/go/rfc5469
 sslv3_tls_raw_ciphers['TLS_RSA_WITH_IDEA_CBC_SHA'] = raw_string( 0x00, 0x07 );
+
+# http://www.iana.org/go/rfc4346
 sslv3_tls_raw_ciphers['TLS_RSA_EXPORT_WITH_DES40_CBC_SHA'] = raw_string( 0x00, 0x08 );
+
+# http://www.iana.org/go/rfc5469
 sslv3_tls_raw_ciphers['TLS_RSA_WITH_DES_CBC_SHA'] = raw_string( 0x00, 0x09 );
+
+# http://www.iana.org/go/rfc5246
 sslv3_tls_raw_ciphers['TLS_RSA_WITH_3DES_EDE_CBC_SHA'] = raw_string( 0x00, 0x0A );
+
+# http://www.iana.org/go/rfc4346
 sslv3_tls_raw_ciphers['TLS_DH_DSS_EXPORT_WITH_DES40_CBC_SHA'] = raw_string( 0x00, 0x0B );
+
+# http://www.iana.org/go/rfc5469
 sslv3_tls_raw_ciphers['TLS_DH_DSS_WITH_DES_CBC_SHA'] = raw_string( 0x00, 0x0C );
+
+# http://www.iana.org/go/rfc5246
 sslv3_tls_raw_ciphers['TLS_DH_DSS_WITH_3DES_EDE_CBC_SHA'] = raw_string( 0x00, 0x0D );
+
+# http://www.iana.org/go/rfc4346
 sslv3_tls_raw_ciphers['TLS_DH_RSA_EXPORT_WITH_DES40_CBC_SHA'] = raw_string( 0x00, 0x0E );
+
+# http://www.iana.org/go/rfc5469
 sslv3_tls_raw_ciphers['TLS_DH_RSA_WITH_DES_CBC_SHA'] = raw_string( 0x00, 0x0F );
+
+# http://www.iana.org/go/rfc5469
 sslv3_tls_raw_ciphers['TLS_DH_RSA_WITH_3DES_EDE_CBC_SHA'] = raw_string( 0x00, 0x10 );
+
+# http://www.iana.org/go/rfc4346
 sslv3_tls_raw_ciphers['TLS_DHE_DSS_EXPORT_WITH_DES40_CBC_SHA'] = raw_string( 0x00, 0x11 );
+
+# http://www.iana.org/go/rfc5469
 sslv3_tls_raw_ciphers['TLS_DHE_DSS_WITH_DES_CBC_SHA'] = raw_string( 0x00, 0x12 );
+
+# http://www.iana.org/go/rfc5246
 sslv3_tls_raw_ciphers['TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA'] = raw_string( 0x00, 0x13 );
+
+# http://www.iana.org/go/rfc4346
 sslv3_tls_raw_ciphers['TLS_DHE_RSA_EXPORT_WITH_DES40_CBC_SHA'] = raw_string( 0x00, 0x14 );
+
+# http://www.iana.org/go/rfc5469
 sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_DES_CBC_SHA'] = raw_string( 0x00, 0x15 );
+
+# http://www.iana.org/go/rfc5246
 sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_3DES_EDE_CBC_SHA'] = raw_string( 0x00, 0x16 );
+
+# http://www.iana.org/go/rfc4346
 sslv3_tls_raw_ciphers['TLS_DH_anon_EXPORT_WITH_RC4_40_MD5'] = raw_string( 0x00, 0x17 );
+
+# http://www.iana.org/go/rfc5246
 sslv3_tls_raw_ciphers['TLS_DH_anon_WITH_RC4_128_MD5'] = raw_string( 0x00, 0x18 );
+
+# http://www.iana.org/go/rfc4346
 sslv3_tls_raw_ciphers['TLS_DH_anon_EXPORT_WITH_DES40_CBC_SHA'] = raw_string( 0x00, 0x19 );
+
+# http://www.iana.org/go/rfc5469
 sslv3_tls_raw_ciphers['TLS_DH_anon_WITH_DES_CBC_SHA'] = raw_string( 0x00, 0x1A );
+
+# http://www.iana.org/go/rfc5246
 sslv3_tls_raw_ciphers['TLS_DH_anon_WITH_3DES_EDE_CBC_SHA'] = raw_string( 0x00, 0x1B );
 sslv3_tls_raw_ciphers['TLS_FORTEZZA_KEA_WITH_NULL_SHA'] = raw_string( 0x00, 0x1C );
 sslv3_tls_raw_ciphers['TLS_FORTEZZA_KEA_WITH_FORTEZZA_CBC_SHA'] = raw_string( 0x00, 0x1D );
+
+# http://www.iana.org/go/rfc2712
+# Cipher suite ID 0x001E is double-attributed.
 sslv3_tls_raw_ciphers['TLS_FORTEZZA_KEA_WITH_RC4_128_SHA or TLS_KRB5_WITH_DES_CBC_SHA'] = raw_string( 0x00, 0x1E );
 sslv3_tls_raw_ciphers['TLS_KRB5_WITH_3DES_EDE_CBC_SHA'] = raw_string( 0x00, 0x1F );
 sslv3_tls_raw_ciphers['TLS_KRB5_WITH_RC4_128_SHA'] = raw_string( 0x00, 0x20 );
@@ -204,9 +289,13 @@ sslv3_tls_raw_ciphers['TLS_KRB5_EXPORT_WITH_RC4_40_SHA'] = raw_string( 0x00, 0x2
 sslv3_tls_raw_ciphers['TLS_KRB5_EXPORT_WITH_DES_CBC_40_MD5'] = raw_string( 0x00, 0x29 );
 sslv3_tls_raw_ciphers['TLS_KRB5_EXPORT_WITH_RC2_CBC_40_MD5'] = raw_string( 0x00, 0x2A );
 sslv3_tls_raw_ciphers['TLS_KRB5_EXPORT_WITH_RC4_40_MD5'] = raw_string( 0x00, 0x2B );
+
+# http://www.iana.org/go/rfc4785
 sslv3_tls_raw_ciphers['TLS_PSK_WITH_NULL_SHA'] = raw_string( 0x00, 0x2C );
 sslv3_tls_raw_ciphers['TLS_DHE_PSK_WITH_NULL_SHA'] = raw_string( 0x00, 0x2D );
 sslv3_tls_raw_ciphers['TLS_RSA_PSK_WITH_NULL_SHA'] = raw_string( 0x00, 0x2E );
+
+# http://www.iana.org/go/rfc5246
 sslv3_tls_raw_ciphers['TLS_RSA_WITH_AES_128_CBC_SHA'] = raw_string( 0x00, 0x2F );
 sslv3_tls_raw_ciphers['TLS_DH_DSS_WITH_AES_128_CBC_SHA'] = raw_string( 0x00, 0x30 );
 sslv3_tls_raw_ciphers['TLS_DH_RSA_WITH_AES_128_CBC_SHA'] = raw_string( 0x00, 0x31 );
@@ -225,21 +314,33 @@ sslv3_tls_raw_ciphers['TLS_RSA_WITH_AES_256_CBC_SHA256'] = raw_string( 0x00, 0x3
 sslv3_tls_raw_ciphers['TLS_DH_DSS_WITH_AES_128_CBC_SHA256'] = raw_string( 0x00, 0x3E );
 sslv3_tls_raw_ciphers['TLS_DH_RSA_WITH_AES_128_CBC_SHA256'] = raw_string( 0x00, 0x3F );
 sslv3_tls_raw_ciphers['TLS_DHE_DSS_WITH_AES_128_CBC_SHA256'] = raw_string( 0x00, 0x40 );
+
+# http://www.iana.org/go/rfc5932
 sslv3_tls_raw_ciphers['TLS_RSA_WITH_CAMELLIA_128_CBC_SHA'] = raw_string( 0x00, 0x41 );
 sslv3_tls_raw_ciphers['TLS_DH_DSS_WITH_CAMELLIA_128_CBC_SHA'] = raw_string( 0x00, 0x42 );
 sslv3_tls_raw_ciphers['TLS_DH_RSA_WITH_CAMELLIA_128_CBC_SHA'] = raw_string( 0x00, 0x43 );
 sslv3_tls_raw_ciphers['TLS_DHE_DSS_WITH_CAMELLIA_128_CBC_SHA'] = raw_string( 0x00, 0x44 );
 sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA'] = raw_string( 0x00, 0x45 );
 sslv3_tls_raw_ciphers['TLS_DH_anon_WITH_CAMELLIA_128_CBC_SHA'] = raw_string( 0x00, 0x46 );
+
+## unassigned/reserved cipher codes for draft/temporary implementations & backward compatibility.
+## Some servers might implement those.
 sslv3_tls_raw_ciphers['TLS_ECDH_ECDSA_WITH_NULL_SHA (Draft)'] = raw_string( 0x00, 0x47 );
 sslv3_tls_raw_ciphers['TLS_ECDH_ECDSA_WITH_RC4_128_SHA (Draft)'] = raw_string( 0x00, 0x48 );
 sslv3_tls_raw_ciphers['TLS_ECDH_ECDSA_WITH_DES_CBC_SHA (Draft)'] = raw_string( 0x00, 0x49 );
 sslv3_tls_raw_ciphers['TLS_ECDH_ECDSA_WITH_3DES_EDE_CBC_SHA (Draft)'] = raw_string( 0x00, 0x4A );
+
+# Cipher suite ID 0x004B and 0x004C are double-attributed.
 sslv3_tls_raw_ciphers['TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA (Draft) or TLS_ECDH_ECDSA_EXPORT_WITH_RC4_40_SHA (Draft)'] = raw_string( 0x00, 0x4B );
 sslv3_tls_raw_ciphers['TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA (Draft) or TLS_ECDH_ECDSA_EXPORT_WITH_RC4_56_SHA (Draft)'] = raw_string( 0x00, 0x4C );
+
+## unassigned/reserved cipher codes for draft/temporary implementations & backward compatibility.
+## Some servers might implement those.
 sslv3_tls_raw_ciphers['TLS_ECDH_RSA_WITH_NULL_SHA (Draft)'] = raw_string( 0x00, 0x4D );
 sslv3_tls_raw_ciphers['TLS_ECDH_RSA_WITH_RC4_128_SHA (Draft)'] = raw_string( 0x00, 0x4E );
 sslv3_tls_raw_ciphers['TLS_ECDH_RSA_WITH_DES_CBC_SHA (Draft)'] = raw_string( 0x00, 0x4F );
+
+# Cipher suite ID 0x0050-> 0x0058 are double-attributed.
 sslv3_tls_raw_ciphers['TLS_ECDH_RSA_WITH_3DES_EDE_CBC_SHA (Draft) or TLS_SRP_SHA_WITH_3DES_EDE_CBC_SHA (Draft)'] = raw_string( 0x00, 0x50 );
 sslv3_tls_raw_ciphers['TLS_ECDH_RSA_WITH_AES_128_CBC_SHA (Draft) or TLS_SRP_SHA_RSA_WITH_3DES_EDE_CBC_SHA (Draft)'] = raw_string( 0x00, 0x51 );
 sslv3_tls_raw_ciphers['TLS_ECDH_RSA_WITH_AES_256_CBC_SHA (Draft) or TLS_SRP_SHA_DSS_WITH_3DES_EDE_CBC_SHA (Draft)'] = raw_string( 0x00, 0x52 );
@@ -249,10 +350,13 @@ sslv3_tls_raw_ciphers['TLS_ECDH_anon_NULL_WITH_SHA (Draft) or TLS_SRP_SHA_DSS_WI
 sslv3_tls_raw_ciphers['TLS_ECDH_anon_WITH_RC4_128_SHA (Draft) or TLS_SRP_SHA_WITH_AES_256_CBC_SHA (Draft)'] = raw_string( 0x00, 0x56 );
 sslv3_tls_raw_ciphers['TLS_ECDH_anon_WITH_DES_CBC_SHA (Draft) or TLS_SRP_SHA_RSA_WITH_AES_256_CBC_SHA (Draft)'] = raw_string( 0x00, 0x57 );
 sslv3_tls_raw_ciphers['TLS_ECDH_anon_WITH_3DES_EDE_CBC_SHA (Draft) or TLS_SRP_SHA_DSS_WITH_AES_256_CBC_SHA (Draft)'] = raw_string( 0x00, 0x58 );
-sslv3_tls_raw_ciphers['TLS_ECDH_anon_EXPORT_WITH_DES40_CBC_SHA (Draft)'] = raw_string( 0x00, 0x59 );
-sslv3_tls_raw_ciphers['TLS_ECDH_anon_EXPORT_WITH_RC4_40_SHA (Draft)'] = raw_string( 0x00, 0x5A );
-sslv3_tls_raw_ciphers['TLS_ECDH_anon_EXPORT_WITH_DES40_CBC_SHA (Draft)'] = raw_string( 0x00, 0x5B );
-sslv3_tls_raw_ciphers['TLS_ECDH_anon_EXPORT_WITH_RC4_40_SHA (Draft)'] = raw_string( 0x00, 0x5C );
+
+## unassigned/reserved cipher codes for draft/temporary implementations & backward compatibility.
+## Some servers might implement those.
+sslv3_tls_raw_ciphers['TLS_ECDH_anon_EXPORT_WITH_DES40_CBC_SHA (Draft1)'] = raw_string( 0x00, 0x59 );
+sslv3_tls_raw_ciphers['TLS_ECDH_anon_EXPORT_WITH_RC4_40_SHA (Draft1)'] = raw_string( 0x00, 0x5A );
+sslv3_tls_raw_ciphers['TLS_ECDH_anon_EXPORT_WITH_DES40_CBC_SHA (Draft2)'] = raw_string( 0x00, 0x5B );
+sslv3_tls_raw_ciphers['TLS_ECDH_anon_EXPORT_WITH_RC4_40_SHA (Draft2)'] = raw_string( 0x00, 0x5C );
 sslv3_tls_raw_ciphers['TLS_RSA_EXPORT1024_WITH_RC4_56_MD5'] = raw_string( 0x00, 0x60 );
 sslv3_tls_raw_ciphers['TLS_RSA_EXPORT1024_WITH_RC2_CBC_56_MD5'] = raw_string( 0x00, 0x61 );
 sslv3_tls_raw_ciphers['TLS_RSA_EXPORT1024_WITH_DES_CBC_SHA'] = raw_string( 0x00, 0x62 );
@@ -260,6 +364,8 @@ sslv3_tls_raw_ciphers['TLS_DHE_DSS_EXPORT1024_WITH_DES_CBC_SHA'] = raw_string( 0
 sslv3_tls_raw_ciphers['TLS_RSA_EXPORT1024_WITH_RC4_56_SHA'] = raw_string( 0x00, 0x64 );
 sslv3_tls_raw_ciphers['TLS_DHE_DSS_EXPORT1024_WITH_RC4_56_SHA'] = raw_string( 0x00, 0x65 );
 sslv3_tls_raw_ciphers['TLS_DHE_DSS_WITH_RC4_128_SHA'] = raw_string( 0x00, 0x66 );
+
+# http://www.iana.org/go/rfc5246
 sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_AES_128_CBC_SHA256'] = raw_string( 0x00, 0x67 );
 sslv3_tls_raw_ciphers['TLS_DH_DSS_WITH_AES_256_CBC_SHA256'] = raw_string( 0x00, 0x68 );
 sslv3_tls_raw_ciphers['TLS_DH_RSA_WITH_AES_256_CBC_SHA256'] = raw_string( 0x00, 0x69 );
@@ -267,6 +373,9 @@ sslv3_tls_raw_ciphers['TLS_DHE_DSS_WITH_AES_256_CBC_SHA256'] = raw_string( 0x00,
 sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_AES_256_CBC_SHA256'] = raw_string( 0x00, 0x6B );
 sslv3_tls_raw_ciphers['TLS_DH_anon_WITH_AES_128_CBC_SHA256'] = raw_string( 0x00, 0x6C );
 sslv3_tls_raw_ciphers['TLS_DH_anon_WITH_AES_256_CBC_SHA256'] = raw_string( 0x00, 0x6D );
+
+## unassigned/reserved cipher codes for draft/temporary implementations & backward compatibility.
+## Some servers might implement those.
 sslv3_tls_raw_ciphers['TLS_KRB5_WITH_3DES_EDE_CBC_SHA (Draft)'] = raw_string( 0x00, 0x70 );
 sslv3_tls_raw_ciphers['TLS_KRB5_WITH_3DES_EDE_CBC_MD5 (Draft)'] = raw_string( 0x00, 0x71 );
 sslv3_tls_raw_ciphers['TLS_KRB5_WITH_RC4_128_SHA (Draft)'] = raw_string( 0x00, 0x72 );
@@ -281,12 +390,16 @@ sslv3_tls_raw_ciphers['TLS_GOSTR341094_WITH_28147_CNT_IMIT (Draft)'] = raw_strin
 sslv3_tls_raw_ciphers['TLS_GOSTR341001_WITH_28147_CNT_IMIT (Draft)'] = raw_string( 0x00, 0x81 );
 sslv3_tls_raw_ciphers['TLS_GOSTR341094_WITH_NULL_GOSTR3411 (Draft)'] = raw_string( 0x00, 0x82 );
 sslv3_tls_raw_ciphers['TLS_GOSTR341001_WITH_NULL_GOSTR3411 (Draft)'] = raw_string( 0x00, 0x83 );
+
+# http://www.iana.org/go/rfc5932
 sslv3_tls_raw_ciphers['TLS_RSA_WITH_CAMELLIA_256_CBC_SHA'] = raw_string( 0x00, 0x84 );
 sslv3_tls_raw_ciphers['TLS_DH_DSS_WITH_CAMELLIA_256_CBC_SHA'] = raw_string( 0x00, 0x85 );
 sslv3_tls_raw_ciphers['TLS_DH_RSA_WITH_CAMELLIA_256_CBC_SHA'] = raw_string( 0x00, 0x86 );
 sslv3_tls_raw_ciphers['TLS_DHE_DSS_WITH_CAMELLIA_256_CBC_SHA'] = raw_string( 0x00, 0x87 );
 sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA'] = raw_string( 0x00, 0x88 );
 sslv3_tls_raw_ciphers['TLS_DH_anon_WITH_CAMELLIA_256_CBC_SHA'] = raw_string( 0x00, 0x89 );
+
+# http://www.iana.org/go/rfc4279
 sslv3_tls_raw_ciphers['TLS_PSK_WITH_RC4_128_SHA'] = raw_string( 0x00, 0x8A );
 sslv3_tls_raw_ciphers['TLS_PSK_WITH_3DES_EDE_CBC_SHA'] = raw_string( 0x00, 0x8B );
 sslv3_tls_raw_ciphers['TLS_PSK_WITH_AES_128_CBC_SHA'] = raw_string( 0x00, 0x8C );
@@ -299,12 +412,16 @@ sslv3_tls_raw_ciphers['TLS_RSA_PSK_WITH_RC4_128_SHA'] = raw_string( 0x00, 0x92 )
 sslv3_tls_raw_ciphers['TLS_RSA_PSK_WITH_3DES_EDE_CBC_SHA'] = raw_string( 0x00, 0x93 );
 sslv3_tls_raw_ciphers['TLS_RSA_PSK_WITH_AES_128_CBC_SHA'] = raw_string( 0x00, 0x94 );
 sslv3_tls_raw_ciphers['TLS_RSA_PSK_WITH_AES_256_CBC_SHA'] = raw_string( 0x00, 0x95 );
+
+# http://www.iana.org/go/rfc4162
 sslv3_tls_raw_ciphers['TLS_RSA_WITH_SEED_CBC_SHA'] = raw_string( 0x00, 0x96 );
 sslv3_tls_raw_ciphers['TLS_DH_DSS_WITH_SEED_CBC_SHA'] = raw_string( 0x00, 0x97 );
 sslv3_tls_raw_ciphers['TLS_DH_RSA_WITH_SEED_CBC_SHA'] = raw_string( 0x00, 0x98 );
 sslv3_tls_raw_ciphers['TLS_DHE_DSS_WITH_SEED_CBC_SHA'] = raw_string( 0x00, 0x99 );
 sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_SEED_CBC_SHA'] = raw_string( 0x00, 0x9A );
 sslv3_tls_raw_ciphers['TLS_DH_anon_WITH_SEED_CBC_SHA'] = raw_string( 0x00, 0x9B );
+
+# http://www.iana.org/go/rfc5288
 sslv3_tls_raw_ciphers['TLS_RSA_WITH_AES_128_GCM_SHA256'] = raw_string( 0x00, 0x9C );
 sslv3_tls_raw_ciphers['TLS_RSA_WITH_AES_256_GCM_SHA384'] = raw_string( 0x00, 0x9D );
 sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_AES_128_GCM_SHA256'] = raw_string( 0x00, 0x9E );
@@ -317,6 +434,8 @@ sslv3_tls_raw_ciphers['TLS_DH_DSS_WITH_AES_128_GCM_SHA256'] = raw_string( 0x00, 
 sslv3_tls_raw_ciphers['TLS_DH_DSS_WITH_AES_256_GCM_SHA384'] = raw_string( 0x00, 0xA5 );
 sslv3_tls_raw_ciphers['TLS_DH_anon_WITH_AES_128_GCM_SHA256'] = raw_string( 0x00, 0xA6 );
 sslv3_tls_raw_ciphers['TLS_DH_anon_WITH_AES_256_GCM_SHA384'] = raw_string( 0x00, 0xA7 );
+
+# http://www.iana.org/go/rfc5487
 sslv3_tls_raw_ciphers['TLS_PSK_WITH_AES_128_GCM_SHA256'] = raw_string( 0x00, 0xA8 );
 sslv3_tls_raw_ciphers['TLS_PSK_WITH_AES_256_GCM_SHA384'] = raw_string( 0x00, 0xA9 );
 sslv3_tls_raw_ciphers['TLS_DHE_PSK_WITH_AES_128_GCM_SHA256'] = raw_string( 0x00, 0xAA );
@@ -335,6 +454,8 @@ sslv3_tls_raw_ciphers['TLS_RSA_PSK_WITH_AES_128_CBC_SHA256'] = raw_string( 0x00,
 sslv3_tls_raw_ciphers['TLS_RSA_PSK_WITH_AES_256_CBC_SHA384'] = raw_string( 0x00, 0xB7 );
 sslv3_tls_raw_ciphers['TLS_RSA_PSK_WITH_NULL_SHA256'] = raw_string( 0x00, 0xB8 );
 sslv3_tls_raw_ciphers['TLS_RSA_PSK_WITH_NULL_SHA384'] = raw_string( 0x00, 0xB9 );
+
+# http://www.iana.org/go/rfc5932
 sslv3_tls_raw_ciphers['TLS_RSA_WITH_CAMELLIA_128_CBC_SHA256'] = raw_string( 0x00, 0xBA );
 sslv3_tls_raw_ciphers['TLS_DH_DSS_WITH_CAMELLIA_128_CBC_SHA256'] = raw_string( 0x00, 0xBB );
 sslv3_tls_raw_ciphers['TLS_DH_RSA_WITH_CAMELLIA_128_CBC_SHA256'] = raw_string( 0x00, 0xBC );
@@ -347,7 +468,15 @@ sslv3_tls_raw_ciphers['TLS_DH_RSA_WITH_CAMELLIA_256_CBC_SHA256'] = raw_string( 0
 sslv3_tls_raw_ciphers['TLS_DHE_DSS_WITH_CAMELLIA_256_CBC_SHA256'] = raw_string( 0x00, 0xC3 );
 sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA256'] = raw_string( 0x00, 0xC4 );
 sslv3_tls_raw_ciphers['TLS_DH_anon_WITH_CAMELLIA_256_CBC_SHA256'] = raw_string( 0x00, 0xC5 );
-sslv3_tls_raw_ciphers['TLS_EMPTY_RENEGOTIATION_INFO_SCSV'] = raw_string( 0x00, 0xFF );
+
+## TLS 1.3 only ciphers, http://www.iana.org/go/rfc8446
+sslv3_tls_raw_ciphers['TLS_AES_128_GCM_SHA256'] = raw_string( 0x13, 0x01 );
+sslv3_tls_raw_ciphers['TLS_AES_256_GCM_SHA384'] = raw_string( 0x13, 0x02 );
+sslv3_tls_raw_ciphers['TLS_CHACHA20_POLY1305_SHA256'] = raw_string( 0x13, 0x03 );
+sslv3_tls_raw_ciphers['TLS_AES_128_CCM_SHA256'] = raw_string( 0x13, 0x04 );
+sslv3_tls_raw_ciphers['TLS_AES_128_CCM_8_SHA256'] = raw_string( 0x13, 0x05 );
+
+# http://www.iana.org/go/rfc8422
 sslv3_tls_raw_ciphers['TLS_ECDH_ECDSA_WITH_NULL_SHA'] = raw_string( 0xC0, 0x01 );
 sslv3_tls_raw_ciphers['TLS_ECDH_ECDSA_WITH_RC4_128_SHA'] = raw_string( 0xC0, 0x02 );
 sslv3_tls_raw_ciphers['TLS_ECDH_ECDSA_WITH_3DES_EDE_CBC_SHA'] = raw_string( 0xC0, 0x03 );
@@ -373,6 +502,8 @@ sslv3_tls_raw_ciphers['TLS_ECDH_anon_WITH_RC4_128_SHA'] = raw_string( 0xC0, 0x16
 sslv3_tls_raw_ciphers['TLS_ECDH_anon_WITH_3DES_EDE_CBC_SHA'] = raw_string( 0xC0, 0x17 );
 sslv3_tls_raw_ciphers['TLS_ECDH_anon_WITH_AES_128_CBC_SHA'] = raw_string( 0xC0, 0x18 );
 sslv3_tls_raw_ciphers['TLS_ECDH_anon_WITH_AES_256_CBC_SHA'] = raw_string( 0xC0, 0x19 );
+
+# http://www.iana.org/go/rfc5054
 sslv3_tls_raw_ciphers['TLS_SRP_SHA_WITH_3DES_EDE_CBC_SHA'] = raw_string( 0xC0, 0x1A );
 sslv3_tls_raw_ciphers['TLS_SRP_SHA_RSA_WITH_3DES_EDE_CBC_SHA'] = raw_string( 0xC0, 0x1B );
 sslv3_tls_raw_ciphers['TLS_SRP_SHA_DSS_WITH_3DES_EDE_CBC_SHA'] = raw_string( 0xC0, 0x1C );
@@ -382,6 +513,8 @@ sslv3_tls_raw_ciphers['TLS_SRP_SHA_DSS_WITH_AES_128_CBC_SHA'] = raw_string( 0xC0
 sslv3_tls_raw_ciphers['TLS_SRP_SHA_WITH_AES_256_CBC_SHA'] = raw_string( 0xC0, 0x20 );
 sslv3_tls_raw_ciphers['TLS_SRP_SHA_RSA_WITH_AES_256_CBC_SHA'] = raw_string( 0xC0, 0x21 );
 sslv3_tls_raw_ciphers['TLS_SRP_SHA_DSS_WITH_AES_256_CBC_SHA'] = raw_string( 0xC0, 0x22 );
+
+# http://www.iana.org/go/rfc5289
 sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256'] = raw_string( 0xC0, 0x23 );
 sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384'] = raw_string( 0xC0, 0x24 );
 sslv3_tls_raw_ciphers['TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256'] = raw_string( 0xC0, 0x25 );
@@ -398,6 +531,8 @@ sslv3_tls_raw_ciphers['TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256'] = raw_string( 0xC
 sslv3_tls_raw_ciphers['TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384'] = raw_string( 0xC0, 0x30 );
 sslv3_tls_raw_ciphers['TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256'] = raw_string( 0xC0, 0x31 );
 sslv3_tls_raw_ciphers['TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384'] = raw_string( 0xC0, 0x32 );
+
+# http://www.iana.org/go/rfc5489
 sslv3_tls_raw_ciphers['TLS_ECDHE_PSK_WITH_RC4_128_SHA'] = raw_string( 0xC0, 0x33 );
 sslv3_tls_raw_ciphers['TLS_ECDHE_PSK_WITH_3DES_EDE_CBC_SHA'] = raw_string( 0xC0, 0x34 );
 sslv3_tls_raw_ciphers['TLS_ECDHE_PSK_WITH_AES_128_CBC_SHA'] = raw_string( 0xC0, 0x35 );
@@ -407,6 +542,8 @@ sslv3_tls_raw_ciphers['TLS_ECDHE_PSK_WITH_AES_256_CBC_SHA384'] = raw_string( 0xC
 sslv3_tls_raw_ciphers['TLS_ECDHE_PSK_WITH_NULL_SHA'] = raw_string( 0xC0, 0x39 );
 sslv3_tls_raw_ciphers['TLS_ECDHE_PSK_WITH_NULL_SHA256'] = raw_string( 0xC0, 0x3A );
 sslv3_tls_raw_ciphers['TLS_ECDHE_PSK_WITH_NULL_SHA384'] = raw_string( 0xC0, 0x3B );
+
+# http://www.iana.org/go/rfc6209
 sslv3_tls_raw_ciphers['TLS_RSA_WITH_ARIA_128_CBC_SHA256'] = raw_string( 0xC0, 0x3C );
 sslv3_tls_raw_ciphers['TLS_RSA_WITH_ARIA_256_CBC_SHA384'] = raw_string( 0xC0, 0x3D );
 sslv3_tls_raw_ciphers['TLS_DH_DSS_WITH_ARIA_128_CBC_SHA256'] = raw_string( 0xC0, 0x3E );
@@ -461,6 +598,8 @@ sslv3_tls_raw_ciphers['TLS_RSA_PSK_WITH_ARIA_128_GCM_SHA256'] = raw_string( 0xC0
 sslv3_tls_raw_ciphers['TLS_RSA_PSK_WITH_ARIA_256_GCM_SHA384'] = raw_string( 0xC0, 0x6F );
 sslv3_tls_raw_ciphers['TLS_ECDHE_PSK_WITH_ARIA_128_CBC_SHA256'] = raw_string( 0xC0, 0x70 );
 sslv3_tls_raw_ciphers['TLS_ECDHE_PSK_WITH_ARIA_256_CBC_SHA384'] = raw_string( 0xC0, 0x71 );
+
+# http://www.iana.org/go/rfc6367
 sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_CAMELLIA_128_CBC_SHA256'] = raw_string( 0xC0, 0x72 );
 sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_CAMELLIA_256_CBC_SHA384'] = raw_string( 0xC0, 0x73 );
 sslv3_tls_raw_ciphers['TLS_ECDH_ECDSA_WITH_CAMELLIA_128_CBC_SHA256'] = raw_string( 0xC0, 0x74 );
@@ -503,6 +642,8 @@ sslv3_tls_raw_ciphers['TLS_RSA_PSK_WITH_CAMELLIA_128_CBC_SHA256'] = raw_string( 
 sslv3_tls_raw_ciphers['TLS_RSA_PSK_WITH_CAMELLIA_256_CBC_SHA384'] = raw_string( 0xC0, 0x99 );
 sslv3_tls_raw_ciphers['TLS_ECDHE_PSK_WITH_CAMELLIA_128_CBC_SHA256'] = raw_string( 0xC0, 0x9A );
 sslv3_tls_raw_ciphers['TLS_ECDHE_PSK_WITH_CAMELLIA_256_CBC_SHA384'] = raw_string( 0xC0, 0x9B );
+
+# http://www.iana.org/go/rfc6655
 sslv3_tls_raw_ciphers['TLS_RSA_WITH_AES_128_CCM'] = raw_string( 0xC0, 0x9C );
 sslv3_tls_raw_ciphers['TLS_RSA_WITH_AES_256_CCM'] = raw_string( 0xC0, 0x9D );
 sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_AES_128_CCM'] = raw_string( 0xC0, 0x9E );
@@ -519,13 +660,30 @@ sslv3_tls_raw_ciphers['TLS_PSK_WITH_AES_128_CCM_8'] = raw_string( 0xC0, 0xA8 );
 sslv3_tls_raw_ciphers['TLS_PSK_WITH_AES_256_CCM_8'] = raw_string( 0xC0, 0xA9 );
 sslv3_tls_raw_ciphers['TLS_PSK_DHE_WITH_AES_128_CCM_8'] = raw_string( 0xC0, 0xAA );
 sslv3_tls_raw_ciphers['TLS_PSK_DHE_WITH_AES_256_CCM_8'] = raw_string( 0xC0, 0xAB );
+
+# http://www.iana.org/go/rfc7251
 sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_AES_128_CCM'] = raw_string( 0xC0, 0xAC );
 sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_AES_256_CCM'] = raw_string( 0xC0, 0xAD );
 sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_AES_128_CCM_8'] = raw_string( 0xC0, 0xAE );
 sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_AES_256_CCM_8'] = raw_string( 0xC0, 0xAF );
+
+# http://www.iana.org/go/draft-harkins-tls-dragonfly-03
+sslv3_tls_raw_ciphers['TLS_ECCPWD_WITH_AES_128_GCM_SHA256 (Draft)'] = raw_string( 0xC0, 0xB0 );
+sslv3_tls_raw_ciphers['TLS_ECCPWD_WITH_AES_256_GCM_SHA384 (Draft)'] = raw_string( 0xC0, 0xB1 );
+sslv3_tls_raw_ciphers['TLS_ECCPWD_WITH_AES_128_CCM_SHA256 (Draft)'] = raw_string( 0xC0, 0xB2 );
+sslv3_tls_raw_ciphers['TLS_ECCPWD_WITH_AES_256_CCM_SHA384 (Draft)'] = raw_string( 0xC0, 0xB3 );
+
+# http://www.iana.org/go/draft-camwinget-tls-ts13-macciphersuites
+sslv3_tls_raw_ciphers['TLS_SHA256_SHA256 (Draft)'] = raw_string( 0xC0, 0xB4 );
+sslv3_tls_raw_ciphers['TLS_SHA384_SHA384 (Draft)'] = raw_string( 0xC0, 0xB5 );
+
+## unassigned/reserved cipher codes for draft/temporary implementations & backward compatibility.
+## Some servers might implement those.
 sslv3_tls_raw_ciphers['TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256 (Draft)'] = raw_string( 0xCC, 0x13 );
 sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256 (Draft)'] = raw_string( 0xCC, 0x14 );
 sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_CHACHA20_POLY1305_SHA256 (Draft)'] = raw_string( 0xCC, 0x15 );
+
+# http://www.iana.org/go/rfc7905
 sslv3_tls_raw_ciphers['TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256'] = raw_string( 0xCC, 0xA8 );
 sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256'] = raw_string( 0xCC, 0xA9 );
 sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_CHACHA20_POLY1305_SHA256'] = raw_string( 0xCC, 0xAA );
@@ -533,6 +691,15 @@ sslv3_tls_raw_ciphers['TLS_PSK_WITH_CHACHA20_POLY1305_SHA256'] = raw_string( 0xC
 sslv3_tls_raw_ciphers['TLS_ECDHE_PSK_WITH_CHACHA20_POLY1305_SHA256'] = raw_string( 0xCC, 0xAC );
 sslv3_tls_raw_ciphers['TLS_DHE_PSK_WITH_CHACHA20_POLY1305_SHA256'] = raw_string( 0xCC, 0xAD );
 sslv3_tls_raw_ciphers['TLS_RSA_PSK_WITH_CHACHA20_POLY1305_SHA256'] = raw_string( 0xCC, 0xAE );
+
+# http://www.iana.org/go/rfc8442
+sslv3_tls_raw_ciphers['TLS_ECDHE_PSK_WITH_AES_128_GCM_SHA256'] = raw_string( 0xD0, 0x01 );
+sslv3_tls_raw_ciphers['TLS_ECDHE_PSK_WITH_AES_256_GCM_SHA384'] = raw_string( 0xD0, 0x01 );
+sslv3_tls_raw_ciphers['TLS_ECDHE_PSK_WITH_AES_128_CCM_8_SHA256'] = raw_string( 0xD0, 0x01 );
+sslv3_tls_raw_ciphers['TLS_ECDHE_PSK_WITH_AES_128_CCM_SHA256'] = raw_string( 0xD0, 0x01 );
+
+## unassigned/reserved cipher codes for draft/temporary implementations & backward compatibility.
+## Some servers might implement those.
 sslv3_tls_raw_ciphers['TLS_RSA_WITH_ESTREAM_SALSA20_SHA1 (Draft)'] = raw_string( 0xE4, 0x10 );
 sslv3_tls_raw_ciphers['TLS_RSA_WITH_SALSA20_SHA1 (Draft)'] = raw_string( 0xE4, 0x11 );
 sslv3_tls_raw_ciphers['TLS_ECDHE_RSA_WITH_ESTREAM_SALSA20_SHA1 (Draft)'] = raw_string( 0xE4, 0x12 );
@@ -557,18 +724,6 @@ sslv3_tls_raw_ciphers['TLS_RSA_WITH_RC2_CBC_MD5 (Draft)'] = raw_string( 0xFF, 0x
 sslv3_tls_raw_ciphers['TLS_RSA_WITH_IDEA_CBC_MD5 (Draft)'] = raw_string( 0xFF, 0x81 );
 sslv3_tls_raw_ciphers['TLS_RSA_WITH_DES_CBC_MD5 (Draft)'] = raw_string( 0xFF, 0x82 );
 sslv3_tls_raw_ciphers['TLS_RSA_WITH_3DES_EDE_CBC_MD5 (Draft)'] = raw_string( 0xFF, 0x83 );
-
-global_var SSLv3_SERVER_HELLO, SSLv3_SERVER_HELLO_DONE, SSLv3_CLIENT_HELLO, SSLv3_SERVER_KEY_EXCHANGE, SSLv3_CERTIFICATE, SSLv3_CERTIFICATE_REQUEST, SSLv3_CERTIFICATE_STATUS;
-global_var SSLv3_CHANGECIPHERSPEC, SSLv3_ALERT, SSLv3_HANDSHAKE, SSLv3_APPLICATION_DATA;
-global_var SSLv2_SERVER_HELLO;
-global_var SSLv3_ALERT_FATAL, SSLv3_ALERT_UNEXPECTED_MESSAGE, SSLv3_ALERT_BAD_RECORD_MAC, SSLv3_ALERT_DECRYPTION_FAILED, SSLv3_ALERT_HANDSHAKE_FAILURE, SSLv3_ALERT_UNRECOGNIZED_NAME;
-global_var SSLv3_ALERT_INAPPROPRIATE_FALLBACK, SSLv3_ALERT_RECORD_OVERFLOW, SSLv3_CLIENT_KEY_EXCHANGE;
-
-global_var version_string, version_kb_string_mapping, SSL_v2, SSL_v3, TLS_10, TLS_11, TLS_12;
-global_var elliptic_curves, ec_point_formats, sslv3_tls_raw_ciphers, compression_methods;
-global_var application_layer_protocol_negotiation, npn_alpn_name_mapping, npn_alpn_protocol_list;
-
-global_var alpn_prot; # Passed globally by gb_tls_npn_alpn_detect.nasl
 
 function get_cert_from_port( port, extensions )
 {
@@ -621,10 +776,8 @@ function get_cert_from_port( port, extensions )
       break;
     }
   }
-
   close( soc );
   return;
-
 }
 
 function get_server_cert(port, format)
@@ -722,7 +875,7 @@ function check_cert_validity( fprlist, port, vhost, check_for, now, timeframe ) 
   fpr = tmp[0];
 
   if( fpr[0] == "[" ) {
-    if( _ssl_funcs ) display( "A SSL/TLS certificate on port ", port, " (" + vhost + ") is erroneous." );
+    if( _ssl_funcs_debug ) display( "A SSL/TLS certificate on port ", port, " (" + vhost + ") is erroneous." );
     return;
   }
 
@@ -784,15 +937,20 @@ function check_cert_validity( fprlist, port, vhost, check_for, now, timeframe ) 
   return;
 }
 
-# Don't use this directly, please use ssl_hello instead
-function _ssl3_tls_hello( ciphers, version, extensions, session_id, add_tls_fallback_scsv, compression_method, alpn_protocol, random, handshake_version )
-{
-  local_var hello, data, hello_len, hde_len, hde, hello_data, time, clen, _ciphers, version, handshake_version;
-  local_var extensions, session_id, add_tls_fallback_scsv, compression_method, alpn_protocol, _random;
+# @brief Internal function to create a SSLv3/TLSx hello request, don't use this directly and call the @ref ssl_hello wrapper instead.
+#
+function _ssl3_tls_hello( ciphers, version, extensions, session_id, add_tls_renegotiation_info, add_tls_fallback_scsv, compression_method, alpn_protocol, random, handshake_version ) {
 
-  if( ! version ) version = TLS_10;
+  local_var ciphers, version, extensions, session_id, add_tls_renegotiation_info, add_tls_fallback_scsv, compression_method, alpn_protocol, random, handshake_version;
+  local_var _ciphers, _cipher, clen, time, _random, hello_data, hde, hde_len, hdlen, data, hello_len, hello;
 
-  if(ciphers){
+  if( ! version )
+    version = TLS_10;
+
+  if( isnull( add_tls_renegotiation_info ) )
+    add_tls_renegotiation_info = TRUE;
+
+  if( ciphers ) {
     _ciphers = ciphers;
   } else {
     _ciphers = sslv3_tls_raw_ciphers['TLS_NULL_WITH_NULL_NULL'] +
@@ -884,10 +1042,10 @@ function _ssl3_tls_hello( ciphers, version, extensions, session_id, add_tls_fall
                sslv3_tls_raw_ciphers['TLS_ECDH_anon_WITH_RC4_128_SHA (Draft) or TLS_SRP_SHA_WITH_AES_256_CBC_SHA (Draft)'] +
                sslv3_tls_raw_ciphers['TLS_ECDH_anon_WITH_DES_CBC_SHA (Draft) or TLS_SRP_SHA_RSA_WITH_AES_256_CBC_SHA (Draft)'] +
                sslv3_tls_raw_ciphers['TLS_ECDH_anon_WITH_3DES_EDE_CBC_SHA (Draft) or TLS_SRP_SHA_DSS_WITH_AES_256_CBC_SHA (Draft)'] +
-               sslv3_tls_raw_ciphers['TLS_ECDH_anon_EXPORT_WITH_DES40_CBC_SHA (Draft)'] +
-               sslv3_tls_raw_ciphers['TLS_ECDH_anon_EXPORT_WITH_RC4_40_SHA (Draft)'] +
-               sslv3_tls_raw_ciphers['TLS_ECDH_anon_EXPORT_WITH_DES40_CBC_SHA (Draft)'] +
-               sslv3_tls_raw_ciphers['TLS_ECDH_anon_EXPORT_WITH_RC4_40_SHA (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_anon_EXPORT_WITH_DES40_CBC_SHA (Draft1)'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_anon_EXPORT_WITH_RC4_40_SHA (Draft1)'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_anon_EXPORT_WITH_DES40_CBC_SHA (Draft2)'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_anon_EXPORT_WITH_RC4_40_SHA (Draft2)'] +
                sslv3_tls_raw_ciphers['TLS_RSA_EXPORT1024_WITH_RC4_56_MD5'] +
                sslv3_tls_raw_ciphers['TLS_RSA_EXPORT1024_WITH_RC2_CBC_56_MD5'] +
                sslv3_tls_raw_ciphers['TLS_RSA_EXPORT1024_WITH_DES_CBC_SHA'] +
@@ -982,6 +1140,11 @@ function _ssl3_tls_hello( ciphers, version, extensions, session_id, add_tls_fall
                sslv3_tls_raw_ciphers['TLS_DHE_DSS_WITH_CAMELLIA_256_CBC_SHA256'] +
                sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA256'] +
                sslv3_tls_raw_ciphers['TLS_DH_anon_WITH_CAMELLIA_256_CBC_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_AES_128_GCM_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_AES_256_GCM_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_CHACHA20_POLY1305_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_AES_128_CCM_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_AES_128_CCM_8_SHA256'] +
                sslv3_tls_raw_ciphers['TLS_ECDH_ECDSA_WITH_NULL_SHA'] +
                sslv3_tls_raw_ciphers['TLS_ECDH_ECDSA_WITH_RC4_128_SHA'] +
                sslv3_tls_raw_ciphers['TLS_ECDH_ECDSA_WITH_3DES_EDE_CBC_SHA'] +
@@ -1157,6 +1320,12 @@ function _ssl3_tls_hello( ciphers, version, extensions, session_id, add_tls_fall
                sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_AES_256_CCM'] +
                sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_AES_128_CCM_8'] +
                sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_AES_256_CCM_8'] +
+               sslv3_tls_raw_ciphers['TLS_ECCPWD_WITH_AES_128_GCM_SHA256 (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_ECCPWD_WITH_AES_256_GCM_SHA384 (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_ECCPWD_WITH_AES_128_CCM_SHA256 (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_ECCPWD_WITH_AES_256_CCM_SHA384 (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_SHA256_SHA256 (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_SHA384_SHA384 (Draft)'] +
                sslv3_tls_raw_ciphers['TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256 (Draft)'] +
                sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256 (Draft)'] +
                sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_CHACHA20_POLY1305_SHA256 (Draft)'] +
@@ -1167,6 +1336,10 @@ function _ssl3_tls_hello( ciphers, version, extensions, session_id, add_tls_fall
                sslv3_tls_raw_ciphers['TLS_ECDHE_PSK_WITH_CHACHA20_POLY1305_SHA256'] +
                sslv3_tls_raw_ciphers['TLS_DHE_PSK_WITH_CHACHA20_POLY1305_SHA256'] +
                sslv3_tls_raw_ciphers['TLS_RSA_PSK_WITH_CHACHA20_POLY1305_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_PSK_WITH_AES_128_GCM_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_PSK_WITH_AES_256_GCM_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_PSK_WITH_AES_128_CCM_8_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_PSK_WITH_AES_128_CCM_SHA256'] +
                sslv3_tls_raw_ciphers['TLS_RSA_WITH_ESTREAM_SALSA20_SHA1 (Draft)'] +
                sslv3_tls_raw_ciphers['TLS_RSA_WITH_SALSA20_SHA1 (Draft)'] +
                sslv3_tls_raw_ciphers['TLS_ECDHE_RSA_WITH_ESTREAM_SALSA20_SHA1 (Draft)'] +
@@ -1190,50 +1363,46 @@ function _ssl3_tls_hello( ciphers, version, extensions, session_id, add_tls_fall
                sslv3_tls_raw_ciphers['TLS_RSA_WITH_RC2_CBC_MD5 (Draft)'] +
                sslv3_tls_raw_ciphers['TLS_RSA_WITH_IDEA_CBC_MD5 (Draft)'] +
                sslv3_tls_raw_ciphers['TLS_RSA_WITH_DES_CBC_MD5 (Draft)'] +
-               sslv3_tls_raw_ciphers['TLS_RSA_WITH_3DES_EDE_CBC_MD5  (Draft)'] +
-               sslv3_tls_raw_ciphers['TLS_EMPTY_RENEGOTIATION_INFO_SCSV']; #Keep at the bottom
+               sslv3_tls_raw_ciphers['TLS_RSA_WITH_3DES_EDE_CBC_MD5 (Draft)'];
+    # nb: This would simplify our handling of this list but it seems some services (namely SMTP)
+    # have issues if a different order of the ciphers is sent/presented. In the case of the
+    # foreach loop the cipher list isn't maintained in the same way we have defined above because
+    # the returned order seems randomly chosen.
+    #foreach _cipher( sslv3_tls_raw_ciphers )
+    #  _ciphers += _cipher;
   }
+
+  if( add_tls_renegotiation_info )
+    _ciphers += raw_string( 0x00, 0xFF ); # TLS_EMPTY_RENEGOTIATION_INFO_SCSV (http://www.iana.org/go/rfc5746)
 
   if( add_tls_fallback_scsv )
     _ciphers += raw_string( 0x56, 0x00 ); # TLS_FALLBACK_SCSV (https://tools.ietf.org/html/rfc7507)
 
-  clen = data_len( data:_ciphers  );
+  clen = data_len( data:_ciphers );
   time = dec2hex( num:unixtime() );
 
-  if( random ) {
+  if( random )
     _random = random;
-  } else {
+  else
     _random = raw_string( time ) + raw_string( rand_str( length:28 ) ) ;
-  }
 
   if( ! handshake_version )
     handshake_version = version;
 
-  hello_data =
-               handshake_version +
-              _random;
+  hello_data = handshake_version + _random;
 
-  if( session_id ) {
-    hello_data +=
-                 raw_string( strlen( session_id ) ) +
-                 session_id;
-  } else {
-    hello_data +=
-                 raw_string( 0x00 );
-  }
+  if( session_id )
+    hello_data += raw_string( strlen( session_id ) ) + session_id;
+  else
+    hello_data += raw_string( 0x00 );
 
-  hello_data +=
-                clen +
-               _ciphers;
+  hello_data += clen + _ciphers;
 
   # Compression Method
-  if( compression_method && compression_method != "NULL" ) {
-    hello_data +=
-               raw_string( 0x02 ) + compression_methods[compression_method] + compression_methods['NULL'];
-  } else {
-    hello_data +=
-               raw_string( 0x01 ) + compression_methods['NULL'];
-  }
+  if( compression_method && compression_method != "NULL" )
+    hello_data += raw_string( 0x02 ) + compression_methods[compression_method] + compression_methods['NULL'];
+  else
+    hello_data += raw_string( 0x01 ) + compression_methods['NULL'];
 
   if( ! extensions )
     extensions = make_list( "ec_point_formats", "elliptic_curves" );
@@ -1248,10 +1417,10 @@ function _ssl3_tls_hello( ciphers, version, extensions, session_id, add_tls_fall
 
   hello_data += hde_len + hde;
 
-  hdlen =  data_len( data:hello_data );
+  hdlen = data_len( data:hello_data );
 
   data = raw_string( 0x01, 0x00 ) + hdlen + hello_data;
-  hello_len =  data_len( data:data );
+  hello_len = data_len( data:data );
 
   hello = raw_string( 0x16 ) + version + hello_len + data;
 
@@ -1378,7 +1547,6 @@ function add_ssl_extension( extensions, alpn_protocol )
   if( ret ) return ret;
 
   return;
-
 }
 
 function data_len( data ) {
@@ -1591,39 +1759,30 @@ function open_ssl_socket( port )
   if( ! soc ) return;
 
   return soc;
-
 }
 
-# Don't use this directly, please use ssl_hello instead
-function ssl2_hello( ciphers, session_id )
-{
-  local_var ciphers, _ciphers, version, type, clen, session_id, sessionid_len, challenge_len, hello_data, hd_len, hello;
+# @brief Internal function to create a SSLv3 hello request, don't use this directly and call the @ref ssl_hello wrapper instead.
+#
+function ssl2_hello( ciphers, session_id ) {
 
-  version = raw_string( 0x00, 0x02 );
+  local_var ciphers, session_id;
+  local_var version, type, _ciphers, _cipher, clen, sessionid_len, challenge, challenge_len, hello_data, hd_len, hello;
+
+  version = SSL_v2;
   type = raw_string( 0x01 );
 
-  if( ciphers )
+  if( ciphers ) {
     _ciphers = ciphers;
-  else
-    _ciphers =
-      raw_string(0x00, 0x00, 0x00) + # SSL2_NULL_WITH_MD5
-      raw_string(0x01, 0x00, 0x80) + # SSL2_RC4_128_MD5
-      raw_string(0x02, 0x00, 0x80) + # SSL2_RC4_128_EXPORT40_WITH_MD5
-      raw_string(0x03, 0x00, 0x80) + # SSL2_RC2_CBC_128_CBC_WITH_MD5
-      raw_string(0x04, 0x00, 0x80) + # SSL2_RC2_CBC_128_CBC_EXPORT40_WITH_MD5
-      raw_string(0x05, 0x00, 0x80) + # SSL2_IDEA_128_CBC_WITH_MD5
-      raw_string(0x06, 0x00, 0x40) + # SSL2_DES_64_CBC_WITH_MD5
-      raw_string(0x06, 0x01, 0x40) + # SSL2_DES_64_CBC_WITH_SHA
-      raw_string(0x07, 0x00, 0xc0) + # SSL2_DES_192_EDE3_CBC_WITH_MD5
-      raw_string(0x07, 0x01, 0xc0) + # SSL2_DES_192_EDE3_CBC_WITH_SHA
-      raw_string(0x08, 0x00, 0x80) + # SSL2_RC4_64_WITH_MD5
-      raw_string(0xff, 0x08, 0x00) + # SSL2_DES_64_CFB64_WITH_MD5_1
-      raw_string(0xff, 0x08, 0x10) + # SSL2_NULL
-      raw_string(0x06, 0x00, 0x80);  # SSL2_UNKNOWN
+  } else {
+    foreach _cipher( sslv2_raw_ciphers )
+      _ciphers += _cipher;
+  }
 
   clen = data_len( data:_ciphers );
 
-  if( ! session_id ) session_id = "";
+  if( ! session_id )
+    session_id = "";
+
   sessionid_len = data_len( data:session_id );
 
   challenge = rand_str( length:16 );
@@ -1639,10 +1798,9 @@ function ssl2_hello( ciphers, session_id )
                challenge;
 
   hd_len = strlen( hello_data );
-  hello = raw_string( 0x80 | ( hd_len / 256 ), hd_len % 256) + hello_data;
+  hello = raw_string( 0x80 | ( hd_len / 256 ), hd_len % 256 ) + hello_data;
 
   return hello;
-
 }
 
 function ssl2_recv( soc )
@@ -1685,7 +1843,6 @@ function ssl2_recv( soc )
 
   if( ord( server_hello[2]) == 4 && ord( server_hello[5]) == 0 && ord( server_hello[6] ) == 2 )
     return server_hello;
-
 }
 
 function ssl_recv( socket )
@@ -1730,24 +1887,42 @@ function ssl_recv( socket )
   if( strlen( ret ) != len ) return;
 
   return hdr + ret;
-
 }
 
+# @brief Creates a SSL/TLS Hello request from the given data.
+#
+# @param ciphers
+# @param version
+# @param extensions
+# @param session_id
+#
 # Example to use the session_id:
 # record = search_ssl_record( data:data, search:make_array( "handshake_typ", SSLv3_SERVER_HELLO ) );
 # if( record ) session_id = record["session_id"];
-function ssl_hello( ciphers, version, extensions, session_id, add_tls_fallback_scsv, compression_method, alpn_protocol, random, handshake_version )
-{
-  local_var ciphers, version, extensions, session_id, add_tls_fallback_scsv, compression_method, alpn_protocol, random, handshake_version;
+#
+# @param add_tls_renegotiation_info
+# @param add_tls_fallback_scsv
+# @param compression_method
+# @param alpn_protocol
+# @param random
+# @param handshake_version
+#
+# @return A raw string containing the SSL/TLS Hello request created from the given data.
+#
+function ssl_hello( ciphers, version, extensions, session_id, add_tls_renegotiation_info, add_tls_fallback_scsv, compression_method, alpn_protocol, random, handshake_version ) {
 
-  if( ! version ) version = TLS_10;
+  local_var ciphers, version, extensions, session_id, add_tls_renegotiation_info, add_tls_fallback_scsv, compression_method, alpn_protocol, random, handshake_version;
+
+  if( ! version )
+    version = TLS_10;
 
   if( version == SSL_v2 )
     return ssl2_hello( ciphers:ciphers, session_id:session_id );
   else
     return _ssl3_tls_hello( ciphers:ciphers, version:version, extensions:extensions, session_id:session_id,
-                            add_tls_fallback_scsv:add_tls_fallback_scsv, compression_method:compression_method,
-                            alpn_protocol:alpn_protocol, random: random, handshake_version:handshake_version );
+                            add_tls_renegotiation_info:add_tls_renegotiation_info, add_tls_fallback_scsv:add_tls_fallback_scsv,
+                            compression_method:compression_method, alpn_protocol:alpn_protocol, random:random,
+                            handshake_version:handshake_version );
 }
 
 function search_ssl_record( data, search ) {
@@ -1785,9 +1960,7 @@ function search_ssl_record( data, search ) {
 
     if( i > 20 ) break;
   }
-
   return;
-
 }
 
 function read_ssl_record( data, part )
@@ -2106,61 +2279,130 @@ function parse_npn_alpn_prot( data, pos, j, alpn ) {
   return parsed_protocols;
 }
 
-function get_3byte_len( data, pos )
-{
-  return ( ord( data[pos] ) << 16 ) | ( ord( data[pos + 1] ) << 8) | ord( data[pos + 2] );
+# @brief TODO
+#
+# @param data
+# @param pos
+#
+# @return TODO
+#
+function get_3byte_len( data, pos ) {
+  local_var data, pos;
+  return( ord( data[pos] ) << 16 ) | ( ord( data[pos + 1] ) << 8) | ord( data[pos + 2] );
 }
 
-# add gb_tls_version_get.nasl as dependency if you use this
-function get_supported_tls_version( port, min ) {
+# @brief Returns the first/lowest supported SSL/TLS version of the remote port as a raw string.
+#
+# @param port The port of the remote service.
+# @param min  The minimum supported SSL/TLS version which should be returned, accepted constants: SSL_v2, SSL_v3, TLS_10, TLS_11, TLS_12
+# @param max  The maximum supported SSL/TLS version which should be returned, accepted constants: SSL_v2, SSL_v3, TLS_10, TLS_11, TLS_12
+#
+# @note add gb_tls_version_get.nasl as dependency if you want to use this function
+#
+# @return A raw string of the supported SSL/TLS version or NULL if none was found or not all required infos where passed.
+#
+function get_supported_tls_version( port, min, max ) {
 
-  local_var port, min, version_list, vl;
+  local_var port, min, max;
+  local_var version_list, vl;
 
   if( ! port ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#get_supported_tls_version" );
     return;
   }
 
-  if( ! version_list = get_kb_list( "tls_version_get/" + port + "/raw_version" ) ) return;
+  if( min && min != SSL_v2 && min != SSL_v3 && min != TLS_10 && min != TLS_11 && min != TLS_12 ) {
+    set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#get_supported_tls_version(): Unsupported 'min' value passed, accepted constants: SSL_v2, SSL_v3, TLS_10, TLS_11, TLS_12." );
+    return;
+  }
+
+  if( max && max != SSL_v2 && max != SSL_v3 && max != TLS_10 && max != TLS_11 && max != TLS_12 ) {
+    set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#get_supported_tls_version(): Unsupported 'max' value passed, accepted constants: SSL_v2, SSL_v3, TLS_10, TLS_11, TLS_12." );
+    return;
+  }
+
+  if( ! version_list = get_kb_list( "tls_version_get/" + port + "/raw_version" ) )
+    return;
 
   foreach vl( version_list ) {
 
     # Workaround as the kb currently can't hold a raw_string( 0x00 ) for SSL_v2 and SSL_v3 in /raw_version
     # Possible since Libraries r26937/r26999. TODO: Remove once this was throughoutly tested and released in a stable version
-    if( strlen( vl ) == 1 ) vl += raw_string( 0x00 );
+    if( strlen( vl ) == 1 ) # nb: SSL_v3
+      vl += raw_string( 0x00 );
+    else if( strlen( vl ) == 0 ) # nb: SSL_v2
+      vl = raw_string( 0x00, 0x02 );
 
-    if( min ) {
-      if( vl >= min ) return vl;
+    if( min && max ) {
+      if( vl >= min && vl <= max )
+        return vl;
+    } else if( min ) {
+      if( vl >= min )
+        return vl;
+    } else if( max ) {
+      if( vl <= max )
+        return vl;
     } else {
       return vl;
     }
   }
-
   return;
 }
 
-# add gb_tls_version_get.nasl as dependency if you use this
-function get_supported_tls_versions( port, min ) {
+# @brief Returns a list of all supported SSL/TLS version of the remote port as raw strings.
+#
+# @param port The port of the remote service.
+# @param min  The minimum supported SSL/TLS version which should be returned, accepted constants: SSL_v2, SSL_v3, TLS_10, TLS_11, TLS_12.
+# @param max  The maximum supported SSL/TLS version which should be returned, accepted constants: SSL_v2, SSL_v3, TLS_10, TLS_11, TLS_12, TLS_13.
+#
+# @note add gb_tls_version_get.nasl as dependency if you want to use this function.
+#
+# @return A list of all supported SSL/TLS version of the remote port as raw strings or NULL if none was found or not all required infos where passed.
+#
+function get_supported_tls_versions( port, min, max ) {
 
-  local_var port, min, version_list, tmp_version_list, vl;
+  local_var port, min, max;
+  local_var tmp_version_list, version_list, vl;
 
   if( ! port ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#get_supported_tls_versions" );
     return;
   }
 
-  if( ! tmp_version_list = get_kb_list( "tls_version_get/" + port + "/raw_version" ) ) return;
+  if( min && min != SSL_v2 && min != SSL_v3 && min != TLS_10 && min != TLS_11 && min != TLS_12 ) {
+    set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#get_supported_tls_versions(): Unsupported 'min' value passed, accepted constants: SSL_v2, SSL_v3, TLS_10, TLS_11, TLS_12." );
+    return;
+  }
+
+  if( max && max != SSL_v2 && max != SSL_v3 && max != TLS_10 && max != TLS_11 && max != TLS_12 && max != TLS_13 ) {
+    set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#get_supported_tls_versions(): Unsupported 'max' value passed, accepted constants: SSL_v2, SSL_v3, TLS_10, TLS_11, TLS_12, TLS_13." );
+    return;
+  }
+
+  if( ! tmp_version_list = get_kb_list( "tls_version_get/" + port + "/raw_version" ) )
+    return;
 
   version_list = make_list();
 
   foreach vl( tmp_version_list ) {
 
     # Workaround as the kb currently can't hold a raw_string( 0x00 ) for SSL_v2 and SSL_v3 in /raw_version
-    # TODO: Remove once we can handle this.
-    if( strlen( vl ) == 1 ) vl += raw_string( 0x00 );
+    # Possible since Libraries r26937/r26999. TODO: Remove once this was throughoutly tested and released in a stable version
+    if( strlen( vl ) == 1 ) # nb: SSL_v3
+      vl += raw_string( 0x00 );
+    else if( strlen( vl ) == 0 ) # nb: SSL_v2
+      vl = raw_string( 0x00, 0x02 );
 
-    if( min ) {
+    if( min && max ) {
+      if( vl >= min && vl <= max ) {
+        version_list = make_list( version_list, vl );
+      }
+    } else if( min ) {
       if( vl >= min ) {
+        version_list = make_list( version_list, vl );
+      }
+    } else if( max ) {
+      if( vl <= max ) {
         version_list = make_list( version_list, vl );
       }
     } else {
@@ -2170,7 +2412,13 @@ function get_supported_tls_versions( port, min ) {
   return version_list;
 }
 
-# add gb_tls_version_get.nasl as dependency if you use this
+# @brief Returns all detected SSL/TLS ports on the remote host saved within the "ssl_tls/port" KB item.
+#
+# @note This function will fork if multiple SSL/TLS ports where found.
+# @note add gb_tls_version_get.nasl as dependency if you want to use this function.
+#
+# @return The detected SSL/TLS ports on the remote host.
+#
 function get_ssl_port() {
   return get_kb_item( "ssl_tls/port" );
 }

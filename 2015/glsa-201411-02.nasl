@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: glsa-201411-02.nasl 12128 2018-10-26 13:35:25Z cfischer $
+# $Id: glsa-201411-02.nasl 12858 2018-12-21 08:05:36Z ckuersteiner $
 #
 # Gentoo Linux security check
 #
@@ -27,17 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.121277");
-  script_version("$Revision: 12128 $");
+  script_version("$Revision: 12858 $");
   script_tag(name:"creation_date", value:"2015-09-29 11:27:57 +0300 (Tue, 29 Sep 2015)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 15:35:25 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-21 09:05:36 +0100 (Fri, 21 Dec 2018) $");
   script_name("Gentoo Security Advisory GLSA 201411-02");
   script_tag(name:"insight", value:"Multiple unspecified vulnerabilities have been discovered in MySQL. Please review the CVE identifiers referenced below for details.");
   script_tag(name:"solution", value:"Update the affected packages to the latest available version.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://security.gentoo.org/glsa/201411-02");
   script_cve_id("CVE-2014-6464", "CVE-2014-6469", "CVE-2014-6491", "CVE-2014-6494", "CVE-2014-6496", "CVE-2014-6500", "CVE-2014-6507", "CVE-2014-6555", "CVE-2014-6559");
-  script_tag(name:"cvss_base", value:"8.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/gentoo", "ssh/login/pkg");

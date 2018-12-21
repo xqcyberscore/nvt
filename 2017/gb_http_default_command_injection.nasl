@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_http_default_command_injection.nasl 10736 2018-08-02 11:55:29Z cfischer $
+# $Id: gb_http_default_command_injection.nasl 12875 2018-12-21 15:01:59Z cfischer $
 #
 # Generic HTTP Command Injection Check
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112054");
-  script_version("$Revision: 10736 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-02 13:55:29 +0200 (Thu, 02 Aug 2018) $");
+  script_version("$Revision: 12875 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-21 16:01:59 +0100 (Fri, 21 Dec 2018) $");
   script_tag(name:"creation_date", value:"2017-09-27 09:42:21 +0200 (Wed, 27 Sep 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -69,7 +69,7 @@ include("misc_func.inc");
 include("host_details.inc");
 
 # nb: We also don't want to run if optimize_test is set to "no"
-if( get_kb_item( "Settings/disable_cgi_scanning" ) ||
+if( http_is_cgi_scan_disabled() ||
     get_kb_item( "global_settings/disable_generic_webapp_scanning" ) )
   exit( 0 );
 

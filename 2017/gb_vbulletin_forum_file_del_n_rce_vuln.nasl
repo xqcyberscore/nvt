@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vbulletin_forum_file_del_n_rce_vuln.nasl 11982 2018-10-19 08:49:21Z mmartin $
+# $Id: gb_vbulletin_forum_file_del_n_rce_vuln.nasl 12859 2018-12-21 08:39:42Z ckuersteiner $
 #
 # vBulletin Forum Arbitrary File Deletion And Remote Code Execution Vulnerabilities
 #
@@ -29,12 +29,13 @@ CPE = "cpe:/a:vbulletin:vbulletin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812354");
-  script_version("$Revision: 11982 $");
+  script_version("$Revision: 12859 $");
   script_cve_id("CVE-2017-17672");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-21 09:39:42 +0100 (Fri, 21 Dec 2018) $");
   script_tag(name:"creation_date", value:"2017-12-18 18:33:37 +0530 (Mon, 18 Dec 2017)");
+
   script_name("vBulletin Forum Arbitrary File Deletion And Remote Code Execution Vulnerabilities");
 
   script_tag(name:"summary", value:"This host is installed with vBulletin
@@ -45,8 +46,8 @@ if(description)
 
   script_tag(name:"insight", value:"Multiple flaws exists due to,
 
-  - Unsafe usage of PHP's unserialize function in vB_Library_Template's cacheTemplates function, which is a publicly
-  exposed API.
+  - Unsafe usage of PHP's unserialize function in vB_Library_Template's cacheTemplates function, which is a
+publicly exposed API.
 
   - A deserialization vulnerability.");
 
@@ -56,10 +57,11 @@ if(description)
 
   script_tag(name:"affected", value:"VBulletin versions through 5.3.4");
 
-  script_tag(name:"solution", value:"No known solution is available as of 12th September, 2018. Information
-  regarding this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the
+disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to
+a newer release, disable respective features, remove the product or replace the product by another one.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_banner");
   script_xref(name:"URL", value:"https://blogs.securiteam.com/index.php/archives/3569");
   script_xref(name:"URL", value:"https://blogs.securiteam.com/index.php/archives/3573");

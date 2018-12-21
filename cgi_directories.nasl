@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cgi_directories.nasl 12831 2018-12-18 19:48:29Z cfischer $
+# $Id: cgi_directories.nasl 12875 2018-12-21 15:01:59Z cfischer $
 #
 # CGI Scanning Consolidation
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111038");
-  script_version("$Revision: 12831 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-18 20:48:29 +0100 (Tue, 18 Dec 2018) $");
+  script_version("$Revision: 12875 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-21 16:01:59 +0100 (Fri, 21 Dec 2018) $");
   script_tag(name:"creation_date", value:"2015-09-14 07:00:00 +0200 (Mon, 14 Sep 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -73,7 +73,7 @@ if(description)
 include("http_func.inc");
 include("host_details.inc");
 
-if( get_kb_item( "Settings/disable_cgi_scanning" ) ) {
+if( http_is_cgi_scan_disabled() ) {
   log_message( port:0, data:"CGI Scanning is disabled for this host via the 'Enable CGI scanning' option within the 'Global variable settings' of the scan config in use." );
   exit( 0 );
 }

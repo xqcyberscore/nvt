@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_unspecified_vuln32_jun16_lin.nasl 11989 2018-10-19 11:25:26Z cfischer $
+# $Id: gb_mysql_unspecified_vuln32_jun16_lin.nasl 12858 2018-12-21 08:05:36Z ckuersteiner $
 #
 # Oracle MySQL Multiple Unspecified Vulnerabilities-32 Jun16 (Linux)
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808144");
-  script_version("$Revision: 11989 $");
+  script_version("$Revision: 12858 $");
   script_cve_id("CVE-2014-6559", "CVE-2014-6555", "CVE-2014-6507", "CVE-2014-6500",
                 "CVE-2014-6496", "CVE-2014-6494", "CVE-2014-6491", "CVE-2014-6469",
                 "CVE-2014-6464");
   script_bugtraq_id(70487, 70530, 70550, 70478, 70469, 70497, 70444, 70446, 70451);
-  script_tag(name:"cvss_base", value:"8.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 13:25:26 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-21 09:05:36 +0100 (Fri, 21 Dec 2018) $");
   script_tag(name:"creation_date", value:"2016-06-03 13:42:47 +0530 (Fri, 03 Jun 2016)");
   script_name("Oracle MySQL Multiple Unspecified Vulnerabilities-32 Jun16 (Linux)");
 

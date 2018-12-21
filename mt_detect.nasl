@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mt_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
+# $Id: mt_detect.nasl 12861 2018-12-21 09:53:04Z ckuersteiner $
 #
 # Movable Type Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100429");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11885 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 12861 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-21 10:53:04 +0100 (Fri, 21 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-01-06 18:07:55 +0100 (Wed, 06 Jan 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Movable Type Detection");
@@ -58,26 +58,21 @@ foreach dir( make_list_unique( "/mt", "/cgi-bin/mt", cgi_dirs( port:port ) ) ) {
 
  install = dir;
  if( dir == "/" ) dir = "";
- url = string(dir, "/mt.cgi");
- req = http_get(item:url, port:port);
- buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
- if( buf == NULL )continue;
+
+ url = dir + "/mt.cgi";
+ buf = http_get_cache(item:url, port:port);
 
  if((egrep(pattern: "<title>Movable Type", string: buf, icase: TRUE) && "Six Apart" >< buf) ||
-    "<title>Sign in | Movable Type" >< buf)
- {
-    vers = string("unknown");
+    "<title>Sign in | Movable Type" >< buf || 'alt="Movable Type"' >< buf) {
+    vers = "unknown";
     version = eregmatch(string: buf, pattern: "Version ([0-9.]+)",icase:TRUE);
-    if(isnull(version[1])) {
+    if(isnull(version[1]))
       version = eregmatch(pattern:"mt.js\?v=([0-9.]+)", string:buf);
-    }
 
-    if (!isnull(version[1]) ) {
+    if (!isnull(version[1]) )
       vers = version[1];
-    }
 
-    set_kb_item(name: string("www/", port, "/movabletype"), value: string(vers," under ",install));
-    set_kb_item(name:"movabletype/installed", value:TRUE);
+    set_kb_item(name:"movabletype/detected", value:TRUE);
 
     cpe = build_cpe(value:vers, exp:"^([0-9.]+)", base:"cpe:/a:sixapart:movable_type:");
     if(!cpe)
@@ -85,10 +80,10 @@ foreach dir( make_list_unique( "/mt", "/cgi-bin/mt", cgi_dirs( port:port ) ) ) {
 
     register_product(cpe:cpe, location:install, port:port);
 
-    log_message(data: build_detection_report(app:"Movable Type", version:vers, install:install, cpe:cpe, concluded: version[0]),
+    log_message(data: build_detection_report(app:"Movable Type", version:vers, install:install, cpe:cpe,
+                                             concluded: version[0]),
                 port:port);
-
- }
+  }
 }
 
 exit(0);

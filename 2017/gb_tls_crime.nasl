@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tls_crime.nasl 11863 2018-10-12 09:42:02Z mmartin $
+# $Id: gb_tls_crime.nasl 12865 2018-12-21 10:51:07Z cfischer $
 #
 # SSL/TLS: TLS/SPDY Protocol Information Disclosure Vulnerability (CRIME)
 #
@@ -28,12 +28,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108094");
-  script_version("$Revision: 11863 $");
+  script_version("$Revision: 12865 $");
   script_cve_id("CVE-2012-4929", "CVE-2012-4930");
   script_bugtraq_id(55704, 55707);
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-21 11:51:07 +0100 (Fri, 21 Dec 2018) $");
   script_tag(name:"creation_date", value:"2017-03-09 16:00:00 +0100 (Thu, 09 Mar 2017)");
   script_name("SSL/TLS: TLS/SPDY Protocol Information Disclosure Vulnerability (CRIME)");
   script_category(ACT_GATHER_INFO);
@@ -84,6 +84,8 @@ if( get_port_transport( port ) < ENCAPS_SSLv23 ) exit( 0 );
 if( ! versions = get_supported_tls_versions( port:port, min:SSL_v3 ) ) exit( 0 );
 
 foreach version( versions ) {
+
+  if( version == TLS_13 ) continue;
 
   # First check the TLS compression
   foreach compression_method( make_list( "DEFLATE", "LZS" ) ) {

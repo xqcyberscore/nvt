@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4332.nasl 12209 2018-11-05 07:23:30Z cfischer $
+# $Id: deb_4332.nasl 12851 2018-12-21 01:34:55Z ckuersteiner $
 #
 # Auto-generated from advisory DSA 4332-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704332");
-  script_version("$Revision: 12209 $");
+  script_version("$Revision: 12851 $");
   script_cve_id("CVE-2018-16395", "CVE-2018-16396");
   script_name("Debian Security Advisory DSA 4332-1 (ruby2.3 - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-05 08:23:30 +0100 (Mon, 05 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-21 02:34:55 +0100 (Fri, 21 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-11-03 00:00:00 +0100 (Sat, 03 Nov 2018)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

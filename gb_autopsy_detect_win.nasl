@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_autopsy_detect_win.nasl 10420 2018-07-05 12:14:53Z jschulte $
+# $Id: gb_autopsy_detect_win.nasl 12866 2018-12-21 12:26:39Z asteins $
 #
 # Autopsy Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112295");
-  script_version("$Revision: 10420 $");
+  script_version("$Revision: 12866 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-05 14:14:53 +0200 (Thu, 05 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-21 13:26:39 +0100 (Fri, 21 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-06-06 12:56:06 +0200 (Wed, 06 Jun 2018)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Autopsy Version Detection (Windows)");
@@ -90,12 +90,12 @@ foreach key (key_list) {
       }
 
       if(version) {
-        set_kb_item(name:"Autopsy/Win/Installed", value:TRUE);
+        set_kb_item(name:"autopsy/win/detected", value:TRUE);
+
+        base = "cpe:/a:sleuthkit:autopsy:";
 
         if("64" >< os_arch && "Wow6432Node" >!< key)
-          base = "cpe:/a:sleuthkit:autopsy:x64:";
-        else
-          base = "cpe:/a:sleuthkit:autopsy:";
+          base += "x64:";
 
         register_and_report_cpe(app:"Autopsy", ver:version, concluded:version, base:base, expr:"^([0-9.]+)", insloc:insloc);
       }

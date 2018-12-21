@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mikrotik_mult_vuln.nasl 12474 2018-11-22 04:39:06Z ckuersteiner $
+# $Id: gb_mikrotik_mult_vuln.nasl 12859 2018-12-21 08:39:42Z ckuersteiner $
 #
 # MikroTik Router Multiple Vulnerabilities
 #
@@ -28,15 +28,15 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113068");
-  script_version("$Revision: 12474 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-22 05:39:06 +0100 (Thu, 22 Nov 2018) $");
+  script_version("$Revision: 12859 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-21 09:39:42 +0100 (Fri, 21 Dec 2018) $");
   script_tag(name:"creation_date", value:"2017-12-14 12:11:10 +0100 (Thu, 14 Dec 2017)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_cve_id("CVE-2017-17538", "CVE-2017-17537");
 
@@ -65,8 +65,9 @@ unavailable.");
 
   script_tag(name:"affected", value:"MikroTik Router OS v6.40.5 and before");
 
-  script_tag(name:"solution", value:"No known solution is available as of 22nd November, 2018. Information
-regarding this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the
+disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to
+a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_xref(name:"URL", value:"https://mikrotik.com/download/changelogs/current-release-tree");
 

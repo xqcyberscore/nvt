@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_0f5e6e9957_php-phpmailer6_fc28.nasl 12661 2018-12-05 10:53:21Z santu $
+# $Id: gb_fedora_2018_0f5e6e9957_php-phpmailer6_fc28.nasl 12851 2018-12-21 01:34:55Z ckuersteiner $
 #
 # Fedora Update for php-phpmailer6 FEDORA-2018-0f5e6e9957
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875315");
-  script_version("$Revision: 12661 $");
+  script_version("$Revision: 12851 $");
   script_cve_id("CVE-2018-19296");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-05 11:53:21 +0100 (Wed, 05 Dec 2018) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-21 02:34:55 +0100 (Fri, 21 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-12-04 08:28:01 +0100 (Tue, 04 Dec 2018)");
   script_name("Fedora Update for php-phpmailer6 FEDORA-2018-0f5e6e9957");
   script_category(ACT_GATHER_INFO);

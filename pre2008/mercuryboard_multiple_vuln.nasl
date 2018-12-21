@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mercuryboard_multiple_vuln.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: mercuryboard_multiple_vuln.nasl 12861 2018-12-21 09:53:04Z ckuersteiner $
 #
 # Multiple Vulnerabilities in MercuryBoard
 #
@@ -24,34 +24,35 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-# Multiple vulnerabilities in MercuryBoard 1.1.1
-# "Alberto Trivero" <trivero@jumpy.it>
-# 2005-01-24 23:37
+CPE = "cpe:/a:mercuryboard:mercuryboard";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.16247");
-  script_version("$Revision: 6040 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+  script_version("$Revision: 12861 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-21 10:53:04 +0100 (Fri, 21 Dec 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-2005-0306", "CVE-2005-0307", "CVE-2005-0414", "CVE-2005-0460",
                 "CVE-2005-0462", "CVE-2005-0662", "CVE-2005-0663", "CVE-2005-0878");
   script_bugtraq_id(12359, 12503, 12578, 12706, 12707, 12872);
+
   script_name("Multiple Vulnerabilities in MercuryBoard");
+
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2005 Noam Rathaus");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl", "httpver.nasl", "http_version.nasl");
-  script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_dependencies("MercuryBoard_detect.nasl");
+  script_mandatory_keys("MercuryBoard/detected");
 
   script_tag(name:"solution", value:"Upgrade to MercuryBoard version 1.1.3.");
-  script_tag(name:"summary", value:"The remote host is running MercuryBoard, a message board system written in PHP.
+
+  script_tag(name:"summary", value:"The remote host is running MercuryBoard, a message board system written inPHP.
 
   Multiple vulnerabilities have been discovered in the product that allow an attacker to cause numerous cross site
-  scripting attacks, inject arbitrary SQL statements and disclose the path under which the product has been installed.");
+  scripting attacks, inject arbitrary SQL statements and disclose the path under which the product has been
+  installed.");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -59,25 +60,19 @@ if(description)
   exit(0);
 }
 
-include("http_func.inc");
-include("http_keepalive.inc");
+include("host_details.inc");
+include("version_func.inc");
 
-port = get_http_port( default:80 );
-if( ! can_host_php( port:port ) ) exit( 0 );
+if (!port = get_app_port(cpe: CPE))
+  exit(0);
 
-foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
+if (!version = get_app_version(cpe: CPE, port: port))
+  exit(0);
 
-  if( dir == "/" ) dir = "";
-  url = dir + "/index.php";
-  res = http_get_cache( item:url, port:port );
-
-  if( "Powered by <a href='http://www.mercuryboard.com' class='small'><b>MercuryBoard</b></a>" >< res ) {
-    if( egrep( pattern:'<b>MercuryBoard</b></a> \\[v(0\\..*|1\\.0\\..*|1\\.1\\.[0-2])\\]', string:res ) ) {
-      report = report_vuln_url( port:port, url:url );
-      security_message( port:port, data:report );
-      exit( 0 );
-    }
-  }
+if (version_is_less(version: version, test_version: "1.1.3")) {
+  report = report_fixed_ver(installed_version: version, fixed_version: "1.1.3");
+  security_message(port: port, data: report);
+  exit(0);
 }
 
 exit( 99 );

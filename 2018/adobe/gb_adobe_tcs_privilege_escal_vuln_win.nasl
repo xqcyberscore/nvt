@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_tcs_privilege_escal_vuln_win.nasl 12064 2018-10-25 05:58:08Z santu $
+# $Id: gb_adobe_tcs_privilege_escal_vuln_win.nasl 12851 2018-12-21 01:34:55Z ckuersteiner $
 #
 # Adobe TCS Privilege Escalation Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:adobe:tcs";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814313");
-  script_version("$Revision: 12064 $");
+  script_version("$Revision: 12851 $");
   script_cve_id("CVE-2018-15976");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:S/C:C/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 07:58:08 +0200 (Thu, 25 Oct 2018) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-21 02:34:55 +0100 (Fri, 21 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-10-12 10:15:17 +0530 (Fri, 12 Oct 2018)");
   script_name(" Adobe TCS Privilege Escalation Vulnerability (Windows)");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ros_detect.nasl 10901 2018-08-10 14:09:57Z cfischer $
+# $Id: gb_ros_detect.nasl 12875 2018-12-21 15:01:59Z cfischer $
 #
 # Rugged Operating System Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103633");
-  script_version("$Revision: 10901 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:09:57 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 12875 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-21 16:01:59 +0100 (Fri, 21 Dec 2018) $");
   script_tag(name:"creation_date", value:"2013-01-04 12:11:14 +0100 (Fri, 04 Jan 2013)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -60,24 +60,20 @@ function check_http() {
   local_var port, version, banner, req;
   global_var concluded;
 
-  if( get_kb_item( "Settings/disable_cgi_scanning" ) ) return;
+  if( http_is_cgi_scan_disabled() ) return;
 
   port = get_http_port(default:80);
   if( ! can_host_asp( port:port ) ) return;
-
-  if(port && get_port_state(port)) {
-
-    banner = get_http_banner(port:port);
-    if(banner && "Server: GoAhead-Webs" >< banner) {
-      url = '/InitialPage.asp';
-      req = http_get(item:url, port:port);
-      buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
-      if("Rugged Operating System" >< buf) {
-        version = eregmatch(pattern:"Rugged Operating System v([0-9.]+)", string:buf);
-        if(!isnull(version[1])) {
-          concluded = version[0];
-          return version[1];
-        }
+  banner = get_http_banner(port:port);
+  if(banner && "Server: GoAhead-Webs" >< banner) {
+    url = '/InitialPage.asp';
+    req = http_get(item:url, port:port);
+    buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
+    if("Rugged Operating System" >< buf) {
+      version = eregmatch(pattern:"Rugged Operating System v([0-9.]+)", string:buf);
+      if(!isnull(version[1])) {
+        concluded = version[0];
+        return version[1];
       }
     }
   }

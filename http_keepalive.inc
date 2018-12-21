@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: http_keepalive.inc 12834 2018-12-19 10:48:22Z cfischer $
+# $Id: http_keepalive.inc 12871 2018-12-21 14:27:35Z cfischer $
 #
 # Methods to support http keep alive handling
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 12834 $
+# $Revision: 12871 $
 #
 ###############################################################################
 
@@ -484,7 +484,7 @@ function is_cgi_installed_ka( port, item, host ) {
 
   local_var port, item, host;
   local_var dirs, slash, no404, dir, req, res;
-  # nb: http_cgi_disabled and optimize_test_enabled are global vars from http_func.inc
+  # nb: optimize_test_enabled is a global var from http_func.inc
 
   if( ! item ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#item#-#is_cgi_installed_ka" );
@@ -496,7 +496,7 @@ function is_cgi_installed_ka( port, item, host ) {
     return NULL;
   }
 
-  if( http_cgi_disabled ) {
+  if( http_is_cgi_scan_disabled() ) {
     if( optimize_test_enabled && "yes" >< optimize_test_enabled ) {
       set_kb_item( name:"nvt_cgi_scanning_disabled/" + get_script_oid(), value:get_script_oid() + "#-#is_cgi_installed_ka()" );
     }
@@ -561,7 +561,7 @@ function get_http_page( port, url, max_redirects ) {
 
   local_var port, url, max_redirects;
   local_var count, seen_loc, i, req, res, redirect, location;
-  # nb: http_cgi_disabled and optimize_test_enabled are global vars from http_func.inc
+  # nb: optimize_test_enabled is a global var from http_func.inc
 
   if( ! port ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#get_http_page" );
@@ -573,7 +573,7 @@ function get_http_page( port, url, max_redirects ) {
     return NULL;
   }
 
-  if( http_cgi_disabled ) {
+  if( http_is_cgi_scan_disabled() ) {
     if( optimize_test_enabled && "yes" >< optimize_test_enabled ) {
       set_kb_item( name:"nvt_cgi_scanning_disabled/" + get_script_oid(), value:get_script_oid() + "#-#get_http_page()" );
     }
@@ -641,6 +641,7 @@ function http_get_cache( port, item, host ) {
   local_var port, item, host;
   local_var res, req;
   # nb: __ka_last_request is a global var
+  # nb: optimize_test_enabled is a global var from http_func.inc
 
   if( ! port ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#http_get_cache" );
@@ -652,7 +653,7 @@ function http_get_cache( port, item, host ) {
     return NULL;
   }
 
-  if( http_cgi_disabled ) {
+  if( http_is_cgi_scan_disabled() ) {
     if( optimize_test_enabled && "yes" >< optimize_test_enabled ) {
       set_kb_item( name:"nvt_cgi_scanning_disabled/" + get_script_oid(), value:get_script_oid() + "#-#http_get_cache()" );
     }
@@ -711,7 +712,7 @@ function http_check_remote_code( default_port, extra_dirs, unique_dir, check_req
 
   local_var default_port, extra_dirs, unique_dir, check_request, extra_check, check_result, command, port;
   local_var list, dir, req, buf, txt_result, extra, txt_desc;
-  # nb: http_cgi_disabled and optimize_test_enabled are global vars from http_func.inc
+  # nb: optimize_test_enabled is a global var from http_func.inc
 
   if( ! check_request ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#check_request#-#http_check_remote_code" );
@@ -726,7 +727,7 @@ function http_check_remote_code( default_port, extra_dirs, unique_dir, check_req
   if( ! command )
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#command#-#http_check_remote_code" );
 
-  if( http_cgi_disabled ) {
+  if( http_is_cgi_scan_disabled() ) {
     if( optimize_test_enabled && "yes" >< optimize_test_enabled ) {
       set_kb_item( name:"nvt_cgi_scanning_disabled/" + get_script_oid(), value:get_script_oid() + "#-#http_check_remote_code()" );
     }

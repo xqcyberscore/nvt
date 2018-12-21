@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_heartbeat_66690.nasl 11198 2018-09-03 13:39:31Z mmartin $
+# $Id: gb_openssl_heartbeat_66690.nasl 12865 2018-12-21 10:51:07Z cfischer $
 #
 # SSL/TLS: OpenSSL TLS 'heartbeat' Extension Information Disclosure Vulnerability
 #
@@ -28,12 +28,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103936");
-  script_version("$Revision: 11198 $");
+  script_version("$Revision: 12865 $");
   script_bugtraq_id(66690);
   script_cve_id("CVE-2014-0160");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:39:31 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-21 11:51:07 +0100 (Fri, 21 Dec 2018) $");
   script_tag(name:"creation_date", value:"2014-04-09 09:54:09 +0200 (Wed, 09 Apr 2014)");
   script_name("SSL/TLS: OpenSSL TLS 'heartbeat' Extension Information Disclosure Vulnerability");
   script_category(ACT_ATTACK);
@@ -42,16 +42,22 @@ if(description)
   script_dependencies("gb_tls_version_get.nasl");
   script_mandatory_keys("ssl_tls/port");
 
+  script_xref(name:"URL", value:"https://www.openssl.org/news/secadv/20140407.txt");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/66690");
   script_xref(name:"URL", value:"http://openssl.org/");
 
   script_tag(name:"impact", value:"An attacker can exploit this issue to gain access to sensitive
   information that may aid in further attacks.");
+
   script_tag(name:"vuldetect", value:"Send a special crafted TLS request and check the response.");
+
   script_tag(name:"insight", value:"The TLS and DTLS implementations do not properly handle
   Heartbeat Extension packets.");
-  script_tag(name:"solution", value:"Updates are available.");
+
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
+
   script_tag(name:"summary", value:"OpenSSL is prone to an information disclosure vulnerability.");
+
   script_tag(name:"affected", value:"OpenSSL 1.0.1f, 1.0.1e, 1.0.1d, 1.0.1c, 1.0.1b, 1.0.1a, and
   1.0.1 are vulnerable.");
 
@@ -69,7 +75,7 @@ include("gb_openssl_heartbeat.inc");
 port = get_ssl_port();
 if( ! port ) exit( 0 );
 
-if( ! versions = get_supported_tls_versions( port:port, min:SSL_v3 ) ) exit( 0 );
+if( ! versions = get_supported_tls_versions( port:port, min:SSL_v3, max:TLS_12 ) ) exit( 0 );
 
 foreach version( versions ) {
   test_hb( port:port, version:version );

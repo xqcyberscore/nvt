@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webdir_search.nasl 11658 2018-09-27 14:21:41Z cfischer $
+# $Id: gb_webdir_search.nasl 12875 2018-12-21 15:01:59Z cfischer $
 #
 # Search for specified webdirs
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103437");
-  script_version("$Revision: 11658 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 16:21:41 +0200 (Thu, 27 Sep 2018) $");
+  script_version("$Revision: 12875 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-21 16:01:59 +0100 (Fri, 21 Dec 2018) $");
   script_tag(name:"creation_date", value:"2012-02-27 16:32:37 +0100 (Mon, 27 Feb 2012)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -39,7 +39,6 @@ if(description)
   script_family("General");
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"summary", value:"This Plugin is searching for the specified webdirs.");
 
@@ -55,13 +54,12 @@ if(description)
 run = script_get_preference("Run this Plugin");
 if("yes" >!< run)exit(0);
 
-if(get_kb_item("Settings/disable_cgi_scanning")) {
+include("http_func.inc");
+
+if(http_is_cgi_scan_disabled()) {
   log_message(port:0, data:"Plugin was enabled but CGI Scanning was disabled via Scan Config, not running this test.");
   exit(0);
 }
-
-include("http_func.inc");
-
 
 function check_response(resp, codes) {
 

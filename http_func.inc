@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: http_func.inc 12836 2018-12-19 13:43:03Z cfischer $
+# $Id: http_func.inc 12871 2018-12-21 14:27:35Z cfischer $
 #
 # Methods to handle HTTP
 #
@@ -24,7 +24,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 12836 $
+# $Revision: 12871 $
 #
 ###############################################################################
 
@@ -84,26 +84,27 @@ function get_http_user_agent( vt_string, dont_add_oid ) {
 global_var OPENVAS_HTTP_USER_AGENT;
 OPENVAS_HTTP_USER_AGENT = get_http_user_agent();
 
-# Global key to avoid that we're repeatedly asking redis for something we already know
-global_var __http_func_user_agent;
+# Global vars to avoid that we're repeatedly asking redis for something we already know.
+global_var __http_func_user_agent, __http_is_cgi_scan_disabled;
 
-# Enables debugging output for a few functions below
+# Enables debugging output for a few functions below.
 global_var _http_debug;
 _http_debug = FALSE;
 
-# global vars passed to e.g. http_keepalive.inc
-global_var http_cgi_disabled, optimize_test_enabled;
-http_cgi_disabled     = get_kb_item( "Settings/disable_cgi_scanning" );
+# Global var passed to e.g. http_keepalive.inc
+global_var optimize_test_enabled;
 optimize_test_enabled = get_preference( "optimize_test" );
 
-# Global keys to avoid that we're repeatedly asking redis for something we already know
+# Global vars to avoid that we're repeatedly asking redis for something we already know.
 global_var _http_is_broken_array, _http_no404_string_array, _http_has_generic_xss_array;
+
 # nb: key is the host+port or NULL (if not previously checked), value TRUE/FALSE if broken or not
 _http_is_broken_array = make_array();
+
 # nb: key is the host+port or NULL (if not previously checked), value a string or FALSE
 _http_no404_string_array = make_array();
-# nb: key is the host+port or NULL (if not previously checked), value TRUE/FALSE if it has a
-# generic XSS or not
+
+# nb: key is the host+port or NULL (if not previously checked), value TRUE/FALSE if it has a generic XSS or not
 _http_has_generic_xss_array = make_array();
 
 # @brief Split the passed HTTP header into an array containing the header names as an array
@@ -284,13 +285,16 @@ function get_http_banner( port, file, ignore_broken ) {
 function get_http_port( default, nodefault, host, ignore_broken, ignore_cgi_disabled, dont_use_vhosts ) {
 
   local_var default, nodefault, host, ignore_broken, ignore_cgi_disabled, dont_use_vhosts;
-  local_var port, p;
-  # nb: http_cgi_disabled and optimize_test_enabled are global vars
+  local_var http_cgi_disabled, port, p;
+  # nb: optimize_test_enabled is a global var
 
   if( ! default && ! nodefault ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#default#-#get_http_port" );
     exit( 0 );
   }
+
+  # nb: Keep before the forking get_kb_item call from below
+  http_cgi_disabled = http_is_cgi_scan_disabled();
 
   port = get_kb_item( "Services/www" ); # nb: This will fork on multiple open ports
   if( port )
@@ -822,12 +826,12 @@ function cgi_dirs( port, host ) {
 
   local_var port, host;
   local_var kb, optimize, usercgis;
-  # nb: http_cgi_disabled and optimize_test_enabled are global vars
+  # nb: optimize_test_enabled is a global var
 
   if( ! port )
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#cgi_dirs" );
 
-  if( http_cgi_disabled ) {
+  if( http_is_cgi_scan_disabled() ) {
     if( optimize_test_enabled && "yes" >< optimize_test_enabled ) {
       set_kb_item( name:"nvt_cgi_scanning_disabled/" + get_script_oid(), value:get_script_oid() + "#-#cgi_dirs()" );
     }
@@ -2173,4 +2177,27 @@ function set_http_has_generic_xss( port, host ) {
 
   set_kb_item( name:"www/" + host + "/" + port + "/generic_xss", value:TRUE );
   return TRUE;
+}
+
+# @brief Returns the info if "CGI Scanning" was disabled (Settings/disable_cgi_scanning of global_settings.nasl) within the
+#        scan config. To avoid querying the KB for the same info again it will be cached within an internal variable.
+#
+# @return TRUE if CGI scanning is disabled, FALSE otherwise.
+#
+function http_is_cgi_scan_disabled() {
+
+  local_var is_cgi_scan_disabled;
+  # nb: __http_is_cgi_scan_disabled is a global var
+
+  if( ! isnull( __http_is_cgi_scan_disabled ) ) {
+    is_cgi_scan_disabled = __http_is_cgi_scan_disabled;
+  } else {
+    is_cgi_scan_disabled = get_kb_item( "Settings/disable_cgi_scanning" );
+    if( is_cgi_scan_disabled )
+      __http_is_cgi_scan_disabled = TRUE;
+    else
+      __http_is_cgi_scan_disabled = FALSE;
+    is_cgi_scan_disabled = __http_is_cgi_scan_disabled;
+  }
+  return is_cgi_scan_disabled;
 }

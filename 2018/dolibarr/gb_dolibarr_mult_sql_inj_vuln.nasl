@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dolibarr_mult_sql_inj_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
+# $Id: gb_dolibarr_mult_sql_inj_vuln.nasl 12859 2018-12-21 08:39:42Z ckuersteiner $
 #
 # Dolibarr <= 7.0.3 Multiple SQL Injection Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112324");
-  script_version("$Revision: 12116 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_version("$Revision: 12859 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-21 09:39:42 +0100 (Fri, 21 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-07-10 13:20:11 +0200 (Tue, 10 Jul 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -68,8 +68,9 @@ if( description )
 
   script_tag(name:"affected", value:"Dolibarr through version 7.0.3.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 10th July, 2018. Information regarding this issue will be updated
-  once solution details are available. As a workaround apply the referenced github code until a fully patched version becomes available.");
+  script_tag(name:"solution", value:"No known solution is available as of 21st December, 2018.
+  Information regarding this issue will be updated once solution details are available. As a workaround apply the
+  referenced github code until a fully patched version becomes available.");
 
   script_xref(name:"URL", value:"https://github.com/Dolibarr/dolibarr/commit/36402c22eef49d60edd73a2f312f8e28fe0bd1cb");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wago_758_870_52940.nasl 11327 2018-09-11 11:35:07Z asteins $
+# $Id: gb_wago_758_870_52940.nasl 12875 2018-12-21 15:01:59Z cfischer $
 #
 # WAGO I/O SYSTEM 758 Series Insecure Credential Vulnerabilities
 #
@@ -31,10 +31,10 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.103465");
   script_bugtraq_id(52940, 52942);
   script_cve_id("CVE-2012-4879", "CVE-2012-3013");
-  script_version("$Revision: 11327 $");
+  script_version("$Revision: 12875 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 13:35:07 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-21 16:01:59 +0100 (Fri, 21 Dec 2018) $");
   script_tag(name:"creation_date", value:"2012-04-12 11:29:33 +0200 (Thu, 12 Apr 2012)");
   script_name("WAGO I/O SYSTEM 758 Series Insecure Credential Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -121,7 +121,7 @@ foreach telnet_port (telnet_ports) {
   }
 }
 
-if(get_kb_item("Settings/disable_cgi_scanning")) exit(0);
+if(http_is_cgi_scan_disabled()) exit(0);
 
 http_port = get_http_port(default:80);
 

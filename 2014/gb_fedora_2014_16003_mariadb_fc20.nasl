@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.868576");
-  script_version("$Revision: 6637 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 12858 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-21 09:05:36 +0100 (Fri, 21 Dec 2018) $");
   script_tag(name:"creation_date", value:"2014-12-12 06:06:51 +0100 (Fri, 12 Dec 2014)");
   script_cve_id("CVE-2014-2440", "CVE-2014-0384", "CVE-2014-2432", "CVE-2014-2431",
                 "CVE-2014-2430", "CVE-2014-2436", "CVE-2014-2438", "CVE-2014-2419",
@@ -37,8 +37,8 @@ if(description)
                 "CVE-2014-6464", "CVE-2014-6469", "CVE-2014-6484", "CVE-2014-6505",
                 "CVE-2014-6507", "CVE-2014-6520", "CVE-2014-6530", "CVE-2014-6551",
                 "CVE-2014-6555", "CVE-2014-6559", "CVE-2014-6564");
-  script_tag(name:"cvss_base", value:"8.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Fedora Update for mariadb FEDORA-2014-16003");
   script_tag(name: "summary", value: "Check the version of mariadb");
   script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");

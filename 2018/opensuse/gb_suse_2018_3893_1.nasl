@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3893_1.nasl 12543 2018-11-27 07:43:51Z santu $
+# $Id: gb_suse_2018_3893_1.nasl 12858 2018-12-21 08:05:36Z ckuersteiner $
 #
 # SuSE Update for postgresql10 openSUSE-SU-2018:3893-1 (postgresql10)
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852147");
-  script_version("$Revision: 12543 $");
+  script_version("$Revision: 12858 $");
   script_cve_id("CVE-2018-16850");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-27 08:43:51 +0100 (Tue, 27 Nov 2018) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-21 09:05:36 +0100 (Fri, 21 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-11-26 15:09:09 +0100 (Mon, 26 Nov 2018)");
   script_name("SuSE Update for postgresql10 openSUSE-SU-2018:3893-1 (postgresql10)");
   script_category(ACT_GATHER_INFO);

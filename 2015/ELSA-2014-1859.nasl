@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ELSA-2014-1859.nasl 11688 2018-09-28 13:36:28Z cfischer $
+# $Id: ELSA-2014-1859.nasl 12858 2018-12-21 08:05:36Z ckuersteiner $
 #
 # Oracle Linux Local Check
 #
@@ -27,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.123248");
-  script_version("$Revision: 11688 $");
+  script_version("$Revision: 12858 $");
   script_tag(name:"creation_date", value:"2015-10-06 14:01:15 +0300 (Tue, 06 Oct 2015)");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 15:36:28 +0200 (Fri, 28 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-21 09:05:36 +0100 (Fri, 21 Dec 2018) $");
   script_name("Oracle Linux Local Check: ELSA-2014-1859");
   script_tag(name:"insight", value:"ELSA-2014-1859 - mysql55-mysql security update. Please see the references for more insight.");
   script_tag(name:"solution", value:"Update the affected packages to the latest available version.");
@@ -37,8 +37,8 @@ if(description)
   script_tag(name:"summary", value:"Oracle Linux Local Security Checks ELSA-2014-1859");
   script_xref(name:"URL", value:"http://linux.oracle.com/errata/ELSA-2014-1859.html");
   script_cve_id("CVE-2014-2494", "CVE-2014-4207", "CVE-2014-4243", "CVE-2014-4258", "CVE-2014-4260", "CVE-2014-4274", "CVE-2014-6463", "CVE-2014-6464", "CVE-2014-6484", "CVE-2014-6505", "CVE-2014-6520", "CVE-2014-6530", "CVE-2014-6559", "CVE-2014-6551", "CVE-2014-4287", "CVE-2014-6469", "CVE-2014-6507", "CVE-2014-6555");
-  script_tag(name:"cvss_base", value:"8.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release", re:"ssh/login/release=OracleLinux5");

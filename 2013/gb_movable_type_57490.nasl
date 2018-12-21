@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_movable_type_57490.nasl 11865 2018-10-12 10:03:43Z cfischer $
+# $Id: gb_movable_type_57490.nasl 12861 2018-12-21 09:53:04Z ckuersteiner $
 #
 # Movable Type Multiple SQL Injection and Command Injection Vulnerabilities
 #
@@ -24,6 +24,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/a:sixapart:movable_type";
 
 if (description)
@@ -34,14 +35,14 @@ if (description)
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
-  script_version("$Revision: 11865 $");
+  script_version("$Revision: 12861 $");
 
   script_name("Movable Type Multiple SQL Injection and Command Injection Vulnerabilities");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/57490");
   script_xref(name:"URL", value:"http://www.sixapart.com/movabletype/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-21 10:53:04 +0100 (Fri, 21 Dec 2018) $");
   script_tag(name:"creation_date", value:"2013-01-31 13:27:06 +0100 (Thu, 31 Jan 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -49,18 +50,21 @@ if (description)
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
   script_dependencies("mt_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
-  script_mandatory_keys("movabletype/installed");
+  script_mandatory_keys("movabletype/detected");
+
   script_tag(name:"solution", value:"Updates are available. Please see the references for more details.");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_tag(name:"summary", value:"Movable Type is prone to multiple SQL-injection and command-injection
-vulnerabilities because the application fails to properly sanitize user-
-supplied input.
+vulnerabilities because the application fails to properly sanitize user-supplied input.
 
 Exploiting these issues could allow an attacker to execute arbitrary
 code, compromise the application, access or modify data, or exploit
 latent vulnerabilities in the underlying database.
 
 Versions prior to Movable Type 4.38 are vulnerable.");
+
   exit(0);
 }
 
@@ -72,6 +76,9 @@ include("url_func.inc");
 
 if(!port = get_app_port(cpe:CPE))exit(0);
 if(!dir = get_app_location(cpe:CPE, port:port))exit(0);
+
+if (dir == "/")
+  dir = "";
 
 host = http_host_name(port:port);
 cmds = exploit_commands();
@@ -100,3 +107,5 @@ foreach cmd (keys(cmds)) {
     exit(0);
   }
 }
+
+exit(99);

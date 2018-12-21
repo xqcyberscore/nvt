@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_c3a5b2029a_python2_fc27.nasl 11734 2018-10-03 11:48:15Z santu $
+# $Id: gb_fedora_2018_c3a5b2029a_python2_fc27.nasl 12858 2018-12-21 08:05:36Z ckuersteiner $
 #
 # Fedora Update for python2 FEDORA-2018-c3a5b2029a
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875122");
-  script_version("$Revision: 11734 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-03 13:48:15 +0200 (Wed, 03 Oct 2018) $");
+  script_version("$Revision: 12858 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-21 09:05:36 +0100 (Fri, 21 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-10-03 17:02:21 +0530 (Wed, 03 Oct 2018)");
   script_cve_id("CVE-2018-1000802");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for python2 FEDORA-2018-c3a5b2029a");
   script_tag(name:"summary", value:"Check the version of python2");

@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: smb_nativelanman.nasl 12703 2018-12-07 11:49:32Z cfischer $
+# $Id: smb_nativelanman.nasl 12868 2018-12-21 13:38:44Z cfischer $
 #
 # SMB NativeLanMan
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102011");
-  script_version("$Revision: 12703 $");
+  script_version("$Revision: 12868 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-07 12:49:32 +0100 (Fri, 07 Dec 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-21 14:38:44 +0100 (Fri, 21 Dec 2018) $");
   script_tag(name:"creation_date", value:"2009-09-18 16:06:42 +0200 (Fri, 18 Sep 2009)");
   script_name("SMB NativeLanMan");
   script_category(ACT_GATHER_INFO);
@@ -190,6 +190,7 @@ for( x = l-3; x > 0 && c < 3; x = x - 2 ) {
             } else {
               os_str = "Debian GNU/Linux";
             }
+            os_str_lo = tolower( os_str ); # nb: The comparison to register the CPE below is using the "os_str_lo" variable
           } else if( "SUSE" >< smb_str ) {
             if( "CODE11" >< smb_str ) {
               os_str = "SUSE Linux Enterprise Server 11";
@@ -267,6 +268,7 @@ for( x = l-3; x > 0 && c < 3; x = x - 2 ) {
               # nb: Starting with Utopic / 14.10 we have a -Ubuntu pattern again
               os_str = "Unknown Ubuntu Release";
             }
+            os_str_lo = tolower( os_str ); # nb: The comparison to register the CPE below is using the "os_str_lo" variable
           # On other reporting the same "Windows 6.1" or similar exit here for now with a generic OS registered
           # TODO: Recheck with other OS
           } else {
