@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_secadv_20181112_lin.nasl 12480 2018-11-22 08:23:06Z cfischer $
+# $Id: gb_openssl_secadv_20181112_lin.nasl 12880 2018-12-24 07:48:46Z asteins $
 #
 # OpenSSL: Microarchitecture timing vulnerability in ECC scalar multiplication (CVE-2018-5407) (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108483");
-  script_version("$Revision: 12480 $");
+  script_version("$Revision: 12880 $");
   script_cve_id("CVE-2018-5407");
   script_bugtraq_id(105897);
-  script_tag(name:"cvss_base", value:"4.0");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-22 09:23:06 +0100 (Thu, 22 Nov 2018) $");
+  script_tag(name:"cvss_base", value:"1.9");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-24 08:48:46 +0100 (Mon, 24 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-11-22 07:48:19 +0100 (Thu, 22 Nov 2018)");
   script_name("OpenSSL: Microarchitecture timing vulnerability in ECC scalar multiplication (CVE-2018-5407) (Linux)");
   script_category(ACT_GATHER_INFO);

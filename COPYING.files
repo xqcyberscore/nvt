@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Fri, 21 Dec 2018 16:58:45 +0100
+# Automatically created on:  Thu, 27 Dec 2018 12:49:44 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -38680,6 +38680,7 @@
 2018/apache/gb_apache_struts2_rce_vuln_S2_057.nasl: GPLv2+
 2018/apache/gb_apache_struts_fileupload_rce_vuln.nasl: GPLv2+
 2018/apache/gb_apache_struts_rest_plugin_dos_vuln.nasl: GPLv2+
+2018/apache/gb_apache_tika_server_dos_vuln.nasl: GPLv2+
 2018/apache/gb_apache_tika_server_iptcanpaparser_dos_vuln.nasl: GPLv2+
 2018/apache/gb_apache_tika_server_java_code_exec_vuln.nasl: GPLv2+
 2018/apache/gb_apache_tika_server_junrar_dos_vuln.nasl: GPLv2+
@@ -38761,6 +38762,8 @@
 2018/apple/gb_apple_safari_HT209344.nasl: GPLv2+
 2018/apple/gb_apple_xcode_code_exec_n_info_disc_vuln_macosx.nasl: GPLv2+
 2018/appnitro/gb_machform_mult_vuln.nasl: GPLv2+
+2018/arecont/gb_arecont_vision_nvr_default_credentials.nasl: GPLv2+
+2018/arecont/gb_arecont_vision_nvr_no_admin.nasl: GPLv2+
 2018/argus_surveillance/gb_argus_surveillance_dvr_mult_vuln.nasl: GPLv2+
 2018/asustor/gb_asustor_adm_auth_bypass_vuln.nasl: GPLv2+
 2018/asustor/gb_asustor_adm_mult_vuln.nasl: GPLv2+
@@ -38967,6 +38970,8 @@
 2018/centos/gb_CESA-2018_3738_ruby_centos7.nasl: GPLv2+
 2018/centos/gb_CESA-2018_3760_ghostscript_centos6.nasl: GPLv2+
 2018/centos/gb_CESA-2018_3761_ghostscript_centos7.nasl: GPLv2+
+2018/centos/gb_CESA-2018_3831_firefox_centos6.nasl: GPLv2+
+2018/centos/gb_CESA-2018_3833_firefox_centos7.nasl: GPLv2+
 2018/centos/gb_CESA-2018_3834_ghostscript_centos7.nasl: GPLv2+
 2018/centos/gb_CESA-2018_3854_ntp_centos6.nasl: GPLv2+
 2018/centos/gb_fedora_2018_46f3f13c68_libgxps_fc27.nasl: GPLv2+
@@ -40516,6 +40521,7 @@
 2018/fedora/gb_fedora_2018_4ac3c68ee4_polkit_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_4ac4229aa8_xmlrpc_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_4ae94c8deb_community-mysql_fc27.nasl: GPLv2+
+2018/fedora/gb_fedora_2018_4b8a18767b_adplug_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_4ca01704a2_kernel_fc26.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_4ce40afcb6_rubygem-loofah_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_4d253dc945_libgit2_fc28.nasl: GPLv2+
@@ -40620,6 +40626,7 @@
 2018/fedora/gb_fedora_2018_6071a600e8_php_fc26.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_6121f427e5_godot_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_6143b1d911_calibre_fc26.nasl: GPLv2+
+2018/fedora/gb_fedora_2018_615705632d_ansible_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_61dbd4a787_qutebrowser_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_61df554bb1_strongswan_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_6227e1ff4c_suricata_fc27.nasl: GPLv2+
@@ -40956,6 +40963,7 @@
 2018/fedora/gb_fedora_2018_a4bb79ea75_thunderbird-enigmail_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_a4e13742b4_gnupg_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_a510417d97_postgresql_fc28.nasl: GPLv2+
+2018/fedora/gb_fedora_2018_a55f292297_mariadb-connector-c_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_a5a7f83e1b_cgit_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_a5d1fa335e_gettext_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_a5e45fc9f7_epiphany_fc28.nasl: GPLv2+
@@ -42841,6 +42849,39 @@
 2018/opensuse/gb_suse_2018_4111_1.nasl: GPLv2+
 2018/opensuse/gb_suse_2018_4112_1.nasl: GPLv2+
 2018/opensuse/gb_suse_2018_4117_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4122_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4124_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4132_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4133_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4135_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4138_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4140_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4141_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4142_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4144_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4147_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4148_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4151_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4152_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4156_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4174_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4181_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4197_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4212_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4240_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4242_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4248_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4252_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4254_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4255_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4256_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4257_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4258_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4259_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4260_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4261_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4262_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4272_1.nasl: GPLv2+
 2018/openvpn/gb_openvpn_win_dos_vuln.nasl: GPLv2+
 2018/openwebanalytics/gb_open_web_analytics_php_obj_inj_vuln.nasl: GPLv2+
 2018/openxchange/gb_open_xchange_appsuite_content_spoof_vuln_june18.nasl: GPLv2+
@@ -44091,6 +44132,7 @@ gb_arachni_detect.nasl: GPLv2+
 gb_arcavir_av_prdts_detect.nasl: GPLv2+
 gb_arcgis_server_detect.nasl: GPLv2+
 gb_arcserve_udp_detect.nasl: GPLv2+
+gb_arecont_vision_nvr_detect.nasl: GPLv2+
 gb_argus_surveillance_dvr_detect.nasl: GPLv2+
 gb_aria2_detect.nasl: GPLv2+
 gb_arista_eos_snmp_detect.nasl: GPLv2+

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_9caa6528d2_strongswan_fc27.nasl 11927 2018-10-16 12:17:30Z santu $
+# $Id: gb_fedora_2018_9caa6528d2_strongswan_fc27.nasl 12880 2018-12-24 07:48:46Z asteins $
 #
 # Fedora Update for strongswan FEDORA-2018-9caa6528d2
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875199");
-  script_version("$Revision: 11927 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-16 14:17:30 +0200 (Tue, 16 Oct 2018) $");
+  script_version("$Revision: 12880 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-24 08:48:46 +0100 (Mon, 24 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-10-16 06:36:43 +0200 (Tue, 16 Oct 2018)");
   script_cve_id("CVE-2018-16151", "CVE-2018-16152", "CVE-2018-5388");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for strongswan FEDORA-2018-9caa6528d2");
   script_tag(name:"summary", value:"Check the version of strongswan");

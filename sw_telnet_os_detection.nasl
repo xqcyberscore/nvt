@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_telnet_os_detection.nasl 12647 2018-12-04 11:14:27Z cfischer $
+# $Id: sw_telnet_os_detection.nasl 12879 2018-12-23 19:01:45Z cfischer $
 #
 # Telnet OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111069");
-  script_version("$Revision: 12647 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-04 12:14:27 +0100 (Tue, 04 Dec 2018) $");
+  script_version("$Revision: 12879 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-23 20:01:45 +0100 (Sun, 23 Dec 2018) $");
   script_tag(name:"creation_date", value:"2015-12-13 13:00:00 +0100 (Sun, 13 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -70,7 +70,7 @@ if( "Welcome to Microsoft Telnet Service" >< banner ||
   exit( 0 );
 }
 
-if( "Welcome to the Windows CE Telnet Service" >< banner ) {
+if( "Welcome to the Windows CE Telnet Service" >< banner || "Windows CE Telnet Service cannot accept anymore concurrent users" >< banner ) {
   register_and_report_os( os:"Microsoft Windows CE", cpe:"cpe:/o:microsoft:windows_ce", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
   exit( 0 );
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rpi_cam_control_multiple_vuln.nasl 11759 2018-10-05 09:53:49Z ckuersteiner $
+# $Id: gb_rpi_cam_control_multiple_vuln.nasl 12883 2018-12-27 08:13:02Z asteins $
 #
 # RPi Cam Control Multiple Vulnerabilities
 #
@@ -29,18 +29,18 @@ CPE = "cpe:/a:rpi:cam_control";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812362");
-  script_version("$Revision: 11759 $");
+  script_version("$Revision: 12883 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 11:53:49 +0200 (Fri, 05 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-27 09:13:02 +0100 (Thu, 27 Dec 2018) $");
   script_tag(name:"creation_date", value:"2017-12-26 14:19:48 +0530 (Tue, 26 Dec 2017)");
   script_name("RPi Cam Control Multiple Vulnerabilities");
 
   script_tag(name:"summary", value:"The host is running RPi Cam Control
   and is prone to multiple vulnerabilities");
 
-  script_tag(name:"vuldetect", value:"Send the crafted http POST request
-  and check whether it is able to read the file or not.");
+  script_tag(name:"vuldetect", value:"Sends the crafted http POST request
+  and checks whether it is able to read the file or not.");
 
   script_tag(name:"insight", value:"Multiple flaws exists due to multiple improper
   sanitization of input passed to 'download1' and 'convertCmd' parameters in
@@ -50,12 +50,11 @@ if(description)
   attacker to read arbitrary files and also execute arbitrary commands on the
   affected system.");
 
-  script_tag(name:"affected", value:"RPi Cam Control versions through 6.4.14");
+  script_tag(name:"affected", value:"RPi Cam Control versions before 6.4.34.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 05th October, 2018. Information
-  regarding this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"Update to version 6.4.34 or later.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"remote_vul");
 

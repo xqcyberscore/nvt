@@ -31,8 +31,8 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.843862");
   script_version("$Revision$");
   script_cve_id("CVE-2018-18710");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"2.1");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"last_modification", value:"$Date$");
   script_tag(name:"creation_date", value:"2018-12-21 07:24:44 +0100 (Fri, 21 Dec 2018)");
   script_name("Ubuntu Update for linux USN-3846-1");

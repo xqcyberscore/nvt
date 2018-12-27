@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_4ec3eecd7f_moodle_fc27.nasl 12661 2018-12-05 10:53:21Z santu $
+# $Id: gb_fedora_2018_4ec3eecd7f_moodle_fc27.nasl 12880 2018-12-24 07:48:46Z asteins $
 #
 # Fedora Update for moodle FEDORA-2018-4ec3eecd7f
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875340");
-  script_version("$Revision: 12661 $");
+  script_version("$Revision: 12880 $");
   script_cve_id("CVE-2018-16854");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-05 11:53:21 +0100 (Wed, 05 Dec 2018) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-24 08:48:46 +0100 (Mon, 24 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-12-04 08:38:27 +0100 (Tue, 04 Dec 2018)");
   script_name("Fedora Update for moodle FEDORA-2018-4ec3eecd7f");
   script_category(ACT_GATHER_INFO);

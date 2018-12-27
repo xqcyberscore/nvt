@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_telnet_unencrypted_cleartext_logins.nasl 12842 2018-12-20 08:39:17Z cfischer $
+# $Id: gb_telnet_unencrypted_cleartext_logins.nasl 12879 2018-12-23 19:01:45Z cfischer $
 #
 # Telnet Unencrypted Cleartext Logins
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108522");
-  script_version("$Revision: 12842 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-20 09:39:17 +0100 (Thu, 20 Dec 2018) $");
+  script_version("$Revision: 12879 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-23 20:01:45 +0100 (Sun, 23 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-12-20 07:47:54 +0100 (Thu, 20 Dec 2018)");
   script_tag(name:"cvss_base", value:"4.8");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:P/A:N");
@@ -75,8 +75,8 @@ if( ! banner )
 # nb: Some additional pattern where used from e.g.
 # sw_apc_default_telnet_credentials.nasl, sw_zebra_telnet_default_password.nasl,
 # gb_zxv10_w300_hardcoded_credentials_2014.nasl, gb_audemat_fmb80_default_telnet_credentials.nasl,
-# gb_lantronix_unprotected_telnet.nasl
-if( banner !~ "(login|password|user ?name|user|press enter.+setup mode|polycom command shell|welcome to viewstation|hi, my name is.+here is what i know about myself|you are logged in|sollae systems.+management console|lsh>) ?:?" )
+# gb_lantronix_unprotected_telnet.nasl, gb_windows_ce_unprotected_telnet.nasl
+if( banner !~ "(Pocket CMD.+\\>|login|password|user ?name|user|press enter.+setup mode|polycom command shell|welcome to viewstation|hi, my name is.+here is what i know about myself|you are logged in|sollae systems.+management console|lsh>) ?:?" )
   exit( 0 );
 
 # nb: Some banners found "in the wild", e.g. Mitel VoIP phone

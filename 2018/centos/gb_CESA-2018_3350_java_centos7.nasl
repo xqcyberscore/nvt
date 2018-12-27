@@ -29,12 +29,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882984");
-  script_version("$Revision: 12873 $");
+  script_version("$Revision: 12880 $");
   script_cve_id("CVE-2018-3136", "CVE-2018-3139", "CVE-2018-3149", "CVE-2018-3169", 
                 "CVE-2018-3180", "CVE-2018-3214"); 
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-21 15:42:20 +0100 (Fri, 21 Dec 2018) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-24 08:48:46 +0100 (Mon, 24 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-12-18 07:38:36 +0100 (Tue, 18 Dec 2018)");
   script_name("CentOS Update for java CESA-2018:3350 centos7 ");
   script_category(ACT_GATHER_INFO);
