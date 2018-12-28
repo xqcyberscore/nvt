@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852192");
-  script_version("$Revision: 12873 $");
+  script_version("$Revision: 12889 $");
   script_cve_id("CVE-2018-10851", "CVE-2018-14626");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-21 15:42:20 +0100 (Fri, 21 Dec 2018) $");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-28 08:52:20 +0100 (Fri, 28 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-12-18 07:41:57 +0100 (Tue, 18 Dec 2018)");
   script_name("SuSE Update for pdns openSUSE-SU-2018:4156-1 (pdns)");
   script_category(ACT_GATHER_INFO);

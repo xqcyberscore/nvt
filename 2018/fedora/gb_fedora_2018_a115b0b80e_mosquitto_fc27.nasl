@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_a115b0b80e_mosquitto_fc27.nasl 12056 2018-10-24 12:04:11Z santu $
+# $Id: gb_fedora_2018_a115b0b80e_mosquitto_fc27.nasl 12889 2018-12-28 07:52:20Z mmartin $
 #
 # Fedora Update for mosquitto FEDORA-2018-a115b0b80e
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875217");
-  script_version("$Revision: 12056 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 14:04:11 +0200 (Wed, 24 Oct 2018) $");
+  script_version("$Revision: 12889 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-28 08:52:20 +0100 (Fri, 28 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-10-23 12:15:51 +0200 (Tue, 23 Oct 2018)");
   script_cve_id("CVE-2018-12543", "CVE-2017-7651", "CVE-2017-7652");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"6.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for mosquitto FEDORA-2018-a115b0b80e");
   script_tag(name:"summary", value:"Check the version of mosquitto");

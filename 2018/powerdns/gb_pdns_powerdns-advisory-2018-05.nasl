@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pdns_powerdns-advisory-2018-05.nasl 12235 2018-11-07 03:08:45Z ckuersteiner $
+# $Id: gb_pdns_powerdns-advisory-2018-05.nasl 12889 2018-12-28 07:52:20Z mmartin $
 #
 # PowerDNS Authoritative Server Packet Cache Pollution DoS Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = 'cpe:/a:powerdns:authoritative_server';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141654");
-  script_version("$Revision: 12235 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-07 04:08:45 +0100 (Wed, 07 Nov 2018) $");
+  script_version("$Revision: 12889 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-28 08:52:20 +0100 (Fri, 28 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-11-07 09:47:15 +0700 (Wed, 07 Nov 2018)");
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 
   script_cve_id("CVE-2018-14626");
 

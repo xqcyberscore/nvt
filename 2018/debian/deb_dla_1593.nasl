@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1593.nasl 12522 2018-11-26 07:41:25Z cfischer $
+# $Id: deb_dla_1593.nasl 12889 2018-12-28 07:52:20Z mmartin $
 #
 # Auto-generated from advisory DLA 1593-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891593");
-  script_version("$Revision: 12522 $");
+  script_version("$Revision: 12889 $");
   script_cve_id("CVE-2018-19274");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1593-1] phpbb3 security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-26 08:41:25 +0100 (Mon, 26 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-28 08:52:20 +0100 (Fri, 28 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-11-26 00:00:00 +0100 (Mon, 26 Nov 2018)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

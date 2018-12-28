@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asterisk_AST-2018-009.nasl 11514 2018-09-21 08:27:11Z ckuersteiner $
+# $Id: gb_asterisk_AST-2018-009.nasl 12889 2018-12-28 07:52:20Z mmartin $
 #
 # Asterisk DoS Vulnerability (AST-2018-009)
 #
@@ -30,11 +30,11 @@ CPE = 'cpe:/a:digium:asterisk';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141496");
-  script_version("$Revision: 11514 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 10:27:11 +0200 (Fri, 21 Sep 2018) $");
+  script_version("$Revision: 12889 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-28 08:52:20 +0100 (Fri, 28 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-09-21 11:47:14 +0700 (Fri, 21 Sep 2018)");
-  script_tag(name:"cvss_base", value:"7.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 
   script_cve_id("CVE-2018-17281");
 

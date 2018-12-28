@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpbb_rce_nov18.nasl 12451 2018-11-21 08:22:13Z cfischer $
+# $Id: gb_phpbb_rce_nov18.nasl 12889 2018-12-28 07:52:20Z mmartin $
 #
 # phpBB < 3.2.4 Remote Code Execution Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:phpbb:phpbb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108482");
-  script_version("$Revision: 12451 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-21 09:22:13 +0100 (Wed, 21 Nov 2018) $");
+  script_version("$Revision: 12889 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-28 08:52:20 +0100 (Fri, 28 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-11-21 09:03:29 +0100 (Wed, 21 Nov 2018)");
-  script_tag(name:"cvss_base", value:"5.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
   script_cve_id("CVE-2018-19274");
   script_name("phpBB < 3.2.4 Remote Code Execution Vulnerability");
   script_category(ACT_GATHER_INFO);

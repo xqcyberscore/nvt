@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_4262_1.nasl 12882 2018-12-27 07:14:01Z santu $
+# $Id: gb_suse_2018_4262_1.nasl 12889 2018-12-28 07:52:20Z mmartin $
 #
 # SuSE Update for pdns openSUSE-SU-2018:4262-1 (pdns)
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852210");
-  script_version("$Revision: 12882 $");
+  script_version("$Revision: 12889 $");
   script_cve_id("CVE-2018-10851");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-27 08:14:01 +0100 (Thu, 27 Dec 2018) $");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-28 08:52:20 +0100 (Fri, 28 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-12-23 04:01:43 +0100 (Sun, 23 Dec 2018)");
   script_name("SuSE Update for pdns openSUSE-SU-2018:4262-1 (pdns)");
   script_category(ACT_GATHER_INFO);

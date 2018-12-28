@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Thu, 27 Dec 2018 12:49:44 +0100
+# Automatically created on:  Fri, 28 Dec 2018 11:38:54 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -43020,6 +43020,8 @@
 2018/oracle/gb_oracle_virtualbox_oct2018-4428296_03_macosx.nasl: GPLv2+
 2018/oracle/gb_oracle_webcenter_content_cpujan2018-3236628_01.nasl: GPLv2+
 2018/oracle/gb_oracle_webcenter_content_cpujan2018-3236628_02.nasl: GPLv2+
+2018/orange/gb_orange_livebox_router_default_credentials.nasl: GPLv2+
+2018/orange/gb_orange_livebox_router_information_exposure.nasl: GPLv2+
 2018/otrs/gb_otrs_default_credentials.nasl: GPLv2+
 2018/otrs/gb_otrs_info_disc_vuln.nasl: GPLv2+
 2018/otrs/gb_otrs_mult_vuln.nasl: GPLv2+
@@ -45212,6 +45214,7 @@ gb_oracle_opera_detect.nasl: GPLv2+
 gb_oracle_web_app_test_suite_detect.nasl: GPLv2+
 gb_oracle_webcenter_content_detect.nasl: GPLv2+
 gb_orangehrm_detect.nasl: GPLv2+
+gb_orange_livebox_router_detect.nasl: GPLv2+
 gb_orbis_cms_detect.nasl: GPLv2+
 gb_orbit_downloader_detect.nasl: GPLv2+
 gb_orca_browser_detect.nasl: GPLv2+
@@ -61908,6 +61911,7 @@ gsf/2018/microsoft/gb_ms_exchange_server_kb4340731.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_exchange_server_kb4340733.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_exchange_server_malwr_prot_eng_rce_vuln_apr18.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_exchange_server_oracle_outside_in_library_update.nasl: GPLv2+
+gsf/2018/microsoft/gb_ms_exchange_server_priv_esc_vuln_dec18.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_exchange_server_ssrf_vuln.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_ie_kb4092946.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_ie_kb4343205.nasl: GPLv2+

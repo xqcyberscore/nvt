@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4461506.nasl 12589 2018-11-30 04:49:12Z santu $
+# $Id: gb_ms_kb4461506.nasl 12889 2018-12-28 07:52:20Z mmartin $
 #
 # Microsoft Outlook 2016 Multiple Vulnerabilities (KB4461506)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814165");
-  script_version("$Revision: 12589 $");
+  script_version("$Revision: 12889 $");
   script_cve_id("CVE-2018-8522", "CVE-2018-8524", "CVE-2018-8576", "CVE-2018-8582");
   script_bugtraq_id(105820, 105823, 105822, 105825);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-30 05:49:12 +0100 (Fri, 30 Nov 2018) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-28 08:52:20 +0100 (Fri, 28 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-11-14 13:16:29 +0530 (Wed, 14 Nov 2018)");
   script_name("Microsoft Outlook 2016 Multiple Vulnerabilities (KB4461506)");
 

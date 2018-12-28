@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_2ff7cdbb7b_pdns_fc28.nasl 12433 2018-11-20 10:28:36Z santu $
+# $Id: gb_fedora_2018_2ff7cdbb7b_pdns_fc28.nasl 12889 2018-12-28 07:52:20Z mmartin $
 #
 # Fedora Update for pdns FEDORA-2018-2ff7cdbb7b
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875281");
-  script_version("$Revision: 12433 $");
+  script_version("$Revision: 12889 $");
   script_cve_id("CVE-2018-10851", "CVE-2018-14626");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-20 11:28:36 +0100 (Tue, 20 Nov 2018) $");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-28 08:52:20 +0100 (Fri, 28 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-11-20 06:27:55 +0100 (Tue, 20 Nov 2018)");
   script_name("Fedora Update for pdns FEDORA-2018-2ff7cdbb7b");
   script_category(ACT_GATHER_INFO);

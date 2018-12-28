@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_project_2010_kb4022147.nasl 12478 2018-11-22 07:59:26Z santu $
+# $Id: gb_ms_project_2010_kb4022147.nasl 12889 2018-12-28 07:52:20Z mmartin $
 #
 # Microsoft Project 2010 Remote Code Execution Vulnerability (KB4022147)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:microsoft:project";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814336");
-  script_version("$Revision: 12478 $");
+  script_version("$Revision: 12889 $");
   script_cve_id("CVE-2018-8575");
-  script_tag(name:"cvss_base", value:"7.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-22 08:59:26 +0100 (Thu, 22 Nov 2018) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-28 08:52:20 +0100 (Fri, 28 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-11-19 13:25:45 +0530 (Mon, 19 Nov 2018)");
   script_name("Microsoft Project 2010 Remote Code Execution Vulnerability (KB4022147)");
 

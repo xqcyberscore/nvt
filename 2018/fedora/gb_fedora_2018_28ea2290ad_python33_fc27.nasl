@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_28ea2290ad_python33_fc27.nasl 12329 2018-11-13 08:26:34Z santu $
+# $Id: gb_fedora_2018_28ea2290ad_python33_fc27.nasl 12889 2018-12-28 07:52:20Z mmartin $
 #
 # Fedora Update for python33 FEDORA-2018-28ea2290ad
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875263");
-  script_version("$Revision: 12329 $");
+  script_version("$Revision: 12889 $");
   script_cve_id("CVE-2018-14647", "CVE-2017-1000158");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-13 09:26:34 +0100 (Tue, 13 Nov 2018) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-28 08:52:20 +0100 (Fri, 28 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-11-13 06:19:34 +0100 (Tue, 13 Nov 2018)");
   script_name("Fedora Update for python33 FEDORA-2018-28ea2290ad");
   script_category(ACT_GATHER_INFO);

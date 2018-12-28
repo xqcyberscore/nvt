@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_ef486b9e50_dnsdist_fc28.nasl 12661 2018-12-05 10:53:21Z santu $
+# $Id: gb_fedora_2018_ef486b9e50_dnsdist_fc28.nasl 12889 2018-12-28 07:52:20Z mmartin $
 #
 # Fedora Update for dnsdist FEDORA-2018-ef486b9e50
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875337");
-  script_version("$Revision: 12661 $");
+  script_version("$Revision: 12889 $");
   script_cve_id("CVE-2018-14663");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-05 11:53:21 +0100 (Wed, 05 Dec 2018) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-28 08:52:20 +0100 (Fri, 28 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-12-04 08:38:21 +0100 (Tue, 04 Dec 2018)");
   script_name("Fedora Update for dnsdist FEDORA-2018-ef486b9e50");
   script_category(ACT_GATHER_INFO);
