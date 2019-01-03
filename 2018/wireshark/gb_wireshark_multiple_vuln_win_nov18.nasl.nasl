@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_multiple_vuln_win_nov18.nasl.nasl 12577 2018-11-29 11:43:34Z santu $
+# $Id: gb_wireshark_multiple_vuln_win_nov18.nasl.nasl 12912 2018-12-31 08:46:47Z asteins $
 #
 # Wireshark Multiple Vulnerabilities-Nov18 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814514");
-  script_version("$Revision: 12577 $");
+  script_version("$Revision: 12912 $");
   script_cve_id("CVE-2018-19627", "CVE-2018-19626", "CVE-2018-19625", "CVE-2018-19624",
                 "CVE-2018-19623", "CVE-2018-19622");
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-29 12:43:34 +0100 (Thu, 29 Nov 2018) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-31 09:46:47 +0100 (Mon, 31 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-11-29 11:28:23 +0530 (Thu, 29 Nov 2018)");
   script_name("Wireshark Multiple Vulnerabilities-Nov18 (Windows)");
 

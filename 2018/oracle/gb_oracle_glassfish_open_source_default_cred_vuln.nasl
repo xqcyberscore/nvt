@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_glassfish_open_source_default_cred_vuln.nasl 12068 2018-10-25 07:21:15Z mmartin $
+# $Id: gb_oracle_glassfish_open_source_default_cred_vuln.nasl 12897 2018-12-28 14:09:23Z asteins $
 #
 # Oracle GlassFish Open Source Default Credentials Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:oracle:glassfish_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813576");
-  script_version("$Revision: 12068 $");
+  script_version("$Revision: 12897 $");
   script_cve_id("CVE-2018-14324");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:21:15 +0200 (Thu, 25 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-28 15:09:23 +0100 (Fri, 28 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-07-17 12:45:41 +0530 (Tue, 17 Jul 2018)");
   script_name("Oracle GlassFish Open Source Default Credentials Vulnerability");
 
@@ -53,13 +53,13 @@ if(description)
 
   script_tag(name:"affected", value:"Oracle GlassFish Server versions 5.0");
 
-  script_tag(name:"solution", value:"No known solution is available as of 17th July, 2018.
+  script_tag(name:"solution", value:"No known solution is available as of 28th December, 2018.
   Information regarding this issue will be updated once solution details are available.
   For updates refer to Reference links.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
   script_tag(name:"qod_type", value:"remote_banner");
-  script_xref(name:"URL", value:"https://github.com/javaee/glassfish/issues/22500");
+  script_xref(name:"URL", value:"https://www.securitytracker.com/id/1041292");
   script_xref(name:"URL", value:"http://www.oracle.com/");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
@@ -86,3 +86,5 @@ if(version_is_equal(version:glVer, test_version:"5.0"))
   security_message(data:report, port:glPort);
   exit(0);
 }
+
+exit(99);

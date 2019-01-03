@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_4111_1.nasl 12882 2018-12-27 07:14:01Z santu $
+# $Id: gb_suse_2018_4111_1.nasl 12913 2018-12-31 10:50:43Z santu $
 #
 # SuSE Update for xen openSUSE-SU-2018:4111-1 (xen)
 #
@@ -29,19 +29,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852177");
-  script_version("$Revision: 12882 $");
+  script_version("$Revision: 12913 $");
   script_cve_id("CVE-2018-18849", "CVE-2018-18883", "CVE-2018-19961",
                 "CVE-2018-19962", "CVE-2018-19965", "CVE-2018-19966");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-27 08:14:01 +0100 (Thu, 27 Dec 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-31 11:50:43 +0100 (Mon, 31 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-12-13 07:30:34 +0100 (Thu, 13 Dec 2018)");
   script_name("SuSE Update for xen openSUSE-SU-2018:4111-1 (xen)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
 
   script_xref(name:"openSUSE-SU", value:"2018:4111_1");
   script_xref(name:"URL", value:"http://lists.opensuse.org/opensuse-security-announce/2018-12/msg00028.html");

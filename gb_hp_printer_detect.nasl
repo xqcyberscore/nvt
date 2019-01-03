@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_printer_detect.nasl 11035 2018-08-17 10:40:39Z ckuersteiner $
+# $Id: gb_hp_printer_detect.nasl 12911 2018-12-30 23:38:37Z cfischer $
 #
 # HP Printer Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103675");
-  script_version("$Revision: 11035 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 12:40:39 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 12911 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-31 00:38:37 +0100 (Mon, 31 Dec 2018) $");
   script_tag(name:"creation_date", value:"2013-03-07 14:31:24 +0100 (Thu, 07 Mar 2013)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -138,7 +138,7 @@ foreach url( keys( urls ) ) {
       cpe = str_replace( string:cpe, find:" ", replace:"_" );
     }
 
-    register_product( cpe:cpe, location:port + "/tcp", port:port );
+    register_product( cpe:cpe, location:port + "/tcp", port:port, service:"www" );
 
     report  = 'The remote Host is a HP ' + model + ' printer device.\n\n';
     report += 'CPE:              ' + cpe + '\n';

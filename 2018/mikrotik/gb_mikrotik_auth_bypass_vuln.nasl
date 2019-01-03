@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mikrotik_auth_bypass_vuln.nasl 12026 2018-10-23 08:22:54Z mmartin $
+# $Id: gb_mikrotik_auth_bypass_vuln.nasl 12897 2018-12-28 14:09:23Z asteins $
 #
 # MikroTik RouterOS 6.41.4 Authentication Bypass Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113156");
-  script_version("$Revision: 12026 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:22:54 +0200 (Tue, 23 Oct 2018) $");
+  script_version("$Revision: 12897 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-28 15:09:23 +0100 (Fri, 28 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-04-17 13:17:37 +0200 (Tue, 17 Apr 2018)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -52,10 +52,10 @@ if( description )
   script_tag(name:"summary", value:"An issue was discovered in MikroTik RouterOS.
   Missing OpenVPN server certificate verification allows a remote unauthenticated attacker capable of intercepting client traffic
   to act as a malicious OpenVPN server.");
-  script_tag(name:"vuldetect", value:"The script checks if the target is a vulnerable device running a vulnerable firmware version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"impact", value:"Successful exploitation may allow an attacker to gain access to the target host's internal network.");
   script_tag(name:"affected", value:"MikroTik RouterOS through version 6.41.4");
-  script_tag(name:"solution", value:"No known solution is available as of 18th July, 2018.
+  script_tag(name:"solution", value:"No known solution is available as of 28th December, 2018.
   Information regarding this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://janis-streib.de/2018/04/11/mikrotik-openvpn-security/");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simatic_s7_cotp_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
+# $Id: gb_simatic_s7_cotp_detect.nasl 12910 2018-12-30 21:51:49Z cfischer $
 #
 # Siemens SIMATIC S7 Device Detection (COTP)
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106099");
-  script_version("$Revision: 11885 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 12910 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-30 22:51:49 +0100 (Sun, 30 Dec 2018) $");
   script_tag(name:"creation_date", value:"2016-06-17 17:08:52 +0700 (Fri, 17 Jun 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -211,8 +211,9 @@ if (strlen(dataPacket) >= 96) {
   set_kb_item(name: "simatic_s7/cotp/module", value: module);
 }
 
+log_message(port: port, data: "A Siemens SIMATIC S7 service answering to COTP requests seems to be running on this port.");
 # nb: Register the service since we can be quite sure that this talks COTP
-register_service(port: port, proto: "cotp", ipproto: "tcp");
+register_service(port: port, proto: "cotp", ipproto: "tcp", message: "A Siemens SIMATIC S7 service answering to COTP requests seems to be running on this port.");
 
 # Read the component identifications to extract the model
 readComponentID = raw_string(0x03, 0x00, 0x00, 0x21, 0x02, 0xf0, 0x80, 0x32,
@@ -222,6 +223,8 @@ readComponentID = raw_string(0x03, 0x00, 0x00, 0x21, 0x02, 0xf0, 0x80, 0x32,
                              0x01);
 
 recv = cotp_send_recv(req: readComponentID, soc: soc);
+close(soc);
+
 model = "unknown";
 
 if (recv) {
@@ -271,7 +274,5 @@ if (version != "unknown") {
 
   set_kb_item(name: "simatic_s7/cotp/port", value: port);
 }
-
-close(soc);
 
 exit(0);

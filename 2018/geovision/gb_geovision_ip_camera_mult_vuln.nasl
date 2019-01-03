@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_geovision_ip_camera_mult_vuln.nasl 11670 2018-09-28 09:04:03Z tpassfeld $
+# $Id: gb_geovision_ip_camera_mult_vuln.nasl 12897 2018-12-28 14:09:23Z asteins $
 #
 # Geovision Inc. IP Camera Multiple Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812759");
-  script_version("$Revision: 11670 $");
+  script_version("$Revision: 12897 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 11:04:03 +0200 (Fri, 28 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-28 15:09:23 +0100 (Fri, 28 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-02-08 13:00:22 +0530 (Thu, 08 Feb 2018)");
   script_name("Geovision Inc. IP Camera Multiple Vulnerabilities");
 
@@ -58,7 +58,7 @@ if(description)
 
   script_tag(name:"affected", value:"Geovision Inc. IP Camera.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 27th July, 2018. Information
+  script_tag(name:"solution", value:"No known solution is available as of 28th December, 2018. Information
   regarding this issue will be updated once solution details are available.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");

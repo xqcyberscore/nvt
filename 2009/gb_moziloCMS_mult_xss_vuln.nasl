@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moziloCMS_mult_xss_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: gb_moziloCMS_mult_xss_vuln.nasl 12906 2018-12-28 22:42:59Z cfischer $
 #
 # moziloCMS Multiple Cross Site Scripting Vulnerabilities
 #
@@ -24,71 +24,66 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow remote attackers to execute
-arbitrary HTML and script code in a user's browser session in the context of
-an affected site.
-
-Impact Level: Application.";
-
-tag_affected = "moziloCMS version 1.11.1 and prior on all running platform.";
-
-tag_insight = "The flaws are due to an error in 'admin/index.php'. The input
-values are not properly verified before being used via 'cat' and file parameters
-in an 'editsite' action.";
-
-tag_solution = "Upgrade to version 1.12 or later,
-For updates refer to http://cms.mozilo.de/index.php?cat=10_moziloCMS&page=50_Download";
-
-tag_summary = "The host is running moziloCMS and is prone to Multiple Cross Site
-Scripting Vulnerabilities";
+CPE = "cpe:/a:mozilo:mozilocms";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801076");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 12906 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-28 23:42:59 +0100 (Fri, 28 Dec 2018) $");
   script_tag(name:"creation_date", value:"2009-12-09 07:52:52 +0100 (Wed, 09 Dec 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_cve_id("CVE-2009-4209");
   script_bugtraq_id(35212);
   script_name("moziloCMS Multiple Cross Site Scripting Vulnerabilities");
-  script_xref(name : "URL" , value : "http://en.securitylab.ru/nvd/388498.php");
-  script_xref(name : "URL" , value : "http://downloads.securityfocus.com/vulnerabilities/exploits/35212.txt");
-
-  script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
-  script_dependencies("mozilloCMS_detect.nasl");
   script_family("Web application abuses");
-  script_require_ports("Services/www", 80);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_dependencies("mozilloCMS_detect.nasl");
+  script_mandatory_keys("mozillocms/detected");
+
+  script_xref(name:"URL", value:"http://en.securitylab.ru/nvd/388498.php");
+  script_xref(name:"URL", value:"http://downloads.securityfocus.com/vulnerabilities/exploits/35212.txt");
+  script_xref(name:"URL", value:"http://cms.mozilo.de/index.php?cat=10_moziloCMS&page=50_Download");
+
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute
+  arbitrary HTML and script code in a user's browser session in the context of an affected site.");
+
+  script_tag(name:"affected", value:"moziloCMS version 1.11.1 and prior on all running platform.");
+
+  script_tag(name:"insight", value:"The flaws are due to an error in 'admin/index.php'. The input
+  values are not properly verified before being used via 'cat' and file parameters in an 'editsite' action.");
+
+  script_tag(name:"solution", value:"Upgrade to version 1.12 or later.");
+
+  script_tag(name:"summary", value:"The host is running moziloCMS and is prone to multiple Cross Site
+  Scripting Vulnerabilities");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_banner");
+
   exit(0);
 }
-
 
 include("http_func.inc");
+include("http_keepalive.inc");
 include("version_func.inc");
+include("host_details.inc");
 
-port = get_http_port(default:80);
-if(!port){
+if (!port = get_app_port(cpe: CPE))
+  exit(0);
+
+if (!infos = get_app_version_and_location(cpe: CPE, port: port, exit_no_version: TRUE))
+  exit(0);
+
+vers = infos['version'];
+path = infos['location'];
+
+if (vers && version_is_less_equal(version: vers, test_version: "1.11.1")) {
+  report = report_fixed_ver(installed_version: vers, fixed_version: "1.12", install_path: dir);
+  security_message(port: port, data: report);
   exit(0);
 }
 
-mzVer = get_kb_item("www/" + port + "/moziloCMS");
-if(!mzVer){
-  exit(0);
-}
-
-mzVer = eregmatch(pattern:"^(.+) under (/.*)$", string:mzVer);
-if(mzVer[1] != NULL)
-{
-  if(version_is_less_equal(version:mzVer[1], test_version:"1.11.1")){
-    security_message(port:port);
-  }
-}
-
+exit(99);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_null_dacl_access_ctrl_vuln_macosx.nasl 11513 2018-09-21 03:48:51Z ckuersteiner $
+# $Id: gb_wireshark_null_dacl_access_ctrl_vuln_macosx.nasl 12924 2019-01-02 09:25:12Z ckuersteiner $
 #
 # Wireshark 'non-NULL DACL' Access Control Vulnerability (Mac OS X)
 #
@@ -29,12 +29,13 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813591");
-  script_version("$Revision: 11513 $");
+  script_version("$Revision: 12924 $");
   script_cve_id("CVE-2018-14438");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 05:48:51 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-02 10:25:12 +0100 (Wed, 02 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-07-30 16:58:30 +0530 (Mon, 30 Jul 2018)");
+
   script_name("Wireshark 'non-NULL DACL' Access Control Vulnerability (Mac OS X)");
 
   script_tag(name:"summary", value:"This host is installed with Wireshark
@@ -51,9 +52,9 @@ if(description)
 
   script_tag(name:"affected", value:"Wireshark version through 2.6.2 on Mac OS X.");
 
-  script_tag(name:"solution", value:"No known solution is available as of
-  30th July, 2018. Information regarding this issue will be updated once solution
-  details are available. For updates refer to Reference links.");
+  script_tag(name:"solution", value:"No known solution is available as of 02nd January, 2019.
+  Information regarding this issue will be updated once solution details are available. For updates refer to
+  Reference links.");
 
   script_xref(name:"URL", value:"https://bugs.wireshark.org/bugzilla/show_bug.cgi?id=14921");
   script_xref(name:"URL", value:"https://www.wireshark.org");
@@ -81,3 +82,5 @@ if(version_is_less_equal(version:wirversion, test_version:"2.6.2"))
   security_message(data:report);
   exit(0);
 }
+
+exit(0);

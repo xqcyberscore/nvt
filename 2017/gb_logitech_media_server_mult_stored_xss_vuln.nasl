@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_logitech_media_server_mult_stored_xss_vuln.nasl 12228 2018-11-06 12:52:41Z cfischer $
+# $Id: gb_logitech_media_server_mult_stored_xss_vuln.nasl 12902 2018-12-28 17:46:06Z cfischer $
 #
 # Logitech Media Server Multiple Persistent XSS Vulnerabilities
 #
@@ -29,13 +29,21 @@ CPE = "cpe:/a:logitech:media_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811895");
-  script_version("$Revision: 12228 $");
+  script_version("$Revision: 12902 $");
   script_cve_id("CVE-2017-16568", "CVE-2017-16567");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-06 13:52:41 +0100 (Tue, 06 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-28 18:46:06 +0100 (Fri, 28 Dec 2018) $");
   script_tag(name:"creation_date", value:"2017-11-07 14:00:28 +0530 (Tue, 07 Nov 2017)");
   script_name("Logitech Media Server Multiple Persistent XSS Vulnerabilities");
+  script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
+  script_category(ACT_GATHER_INFO);
+  script_family("Web application abuses");
+  script_dependencies("gb_logitech_media_server_consolidation.nasl");
+  script_mandatory_keys("logitech/squeezecenter/version");
+
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/43123");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/43122");
 
   script_tag(name:"summary", value:"This host is running Logitech Media Server
   and is prone to multiple stored cross site scripting vulnerabilities.");
@@ -51,40 +59,28 @@ if(description)
   in the context of the affected site. This may allow the attacker to steal
   cookie-based authentication credentials and launch other attacks.");
 
-  script_tag(name:"affected", value:"Logitech Media Server version 7.9.0");
+  script_tag(name:"affected", value:"Logitech Media Server version 7.9.0.");
 
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
   release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
-
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/43123");
-  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/43122");
-  script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
-  script_category(ACT_GATHER_INFO);
-  script_family("Web application abuses");
-  script_dependencies("gb_logitech_media_server_detect.nasl");
-  script_mandatory_keys("Logitech/Media/Server/Installed");
   exit(0);
 }
 
 include("version_func.inc");
 include("host_details.inc");
 
-if(!logPort = get_app_port(cpe:CPE))
+if(!vers = get_app_version(cpe:CPE, nofork:TRUE))
   exit(0);
 
-if(!infos = get_app_version_and_location(cpe:CPE, port:logPort, exit_no_version:TRUE)) exit(0);
-logVer = infos['version'];
-path = infos['location'];
-
-if(logVer == "7.9.0")
-{
-  report = report_fixed_ver(installed_version:logVer, fixed_version:"NoneAvailable", install_path:path);
-  security_message(data:report, port:logPort);
+if(vers == "7.9.0"){
+  report = report_fixed_ver(installed_version:vers, fixed_version:"WillNotFix");
+  security_message(port:0, data:report);
   exit(0);
 }
-exit(0);
+
+exit(99);

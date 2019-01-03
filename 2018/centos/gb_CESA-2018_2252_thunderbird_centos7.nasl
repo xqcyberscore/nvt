@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2018_2252_thunderbird_centos7.nasl 10658 2018-07-27 11:41:40Z santu $
+# $Id: gb_CESA-2018_2252_thunderbird_centos7.nasl 12912 2018-12-31 08:46:47Z asteins $
 #
 # CentOS Update for thunderbird CESA-2018:2252 centos7 
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882925");
-  script_version("$Revision: 10658 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-27 13:41:40 +0200 (Fri, 27 Jul 2018) $");
+  script_version("$Revision: 12912 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-31 09:46:47 +0100 (Mon, 31 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-07-26 06:00:01 +0200 (Thu, 26 Jul 2018)");
   script_cve_id("CVE-2018-5188", "CVE-2018-12359", "CVE-2018-12360", "CVE-2018-12362", 
                 "CVE-2018-12363", "CVE-2018-12364", "CVE-2018-12365", "CVE-2018-12366", 
                 "CVE-2018-12372", "CVE-2018-12373", "CVE-2018-12374");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("CentOS Update for thunderbird CESA-2018:2252 centos7 ");
   script_tag(name:"summary", value:"Check the version of thunderbird");

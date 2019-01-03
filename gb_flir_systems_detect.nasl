@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_flir_systems_detect.nasl 10922 2018-08-10 19:21:48Z cfischer $
+# $Id: gb_flir_systems_detect.nasl 12915 2018-12-31 14:02:47Z asteins $
 #
 # FLIR Systems Camera Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140400");
-  script_version("$Revision: 10922 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 21:21:48 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 12915 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-31 15:02:47 +0100 (Mon, 31 Dec 2018) $");
   script_tag(name:"creation_date", value:"2017-09-26 16:12:38 +0700 (Tue, 26 Sep 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -40,8 +40,8 @@ if(description)
 
   script_tag(name:"summary", value:"Detection of FLIR Systems Cameras.
 
-The script sends a connection request to the server and attempts to detect FLIR Systems Cameras and to extract
-its version.");
+  The script sends a connection request to the server and attempts to detect FLIR Systems Cameras and to extract
+  its version.");
 
   script_category(ACT_GATHER_INFO);
 
@@ -65,13 +65,19 @@ port = get_http_port(default: 8081);
 
 res = http_get_cache(port: port, item: "/");
 
-if ("<title>FLIR Systems, Inc. </title>" >< res && 'id="sensortype"' >< res && "DIALOG_SEC_PASS_CUR" >< res) {
+if ("<title>FLIR Systems, Inc. </title>" >< res && 'id="sensortype"' >< res && ("DIALOG_SEC_PASS_CUR" >< res || "securityPassCurrentLabel" >< res)) {
   version = "unknown";
 
   vers = eregmatch(pattern: "flir\.base\.js\?_v=([0-9.]+)", string: res);
   if (!isnull(vers[1])) {
     version = vers[1];
     set_kb_item(name: "flir_camera/version", value: version);
+  }
+
+  model_match = eregmatch(pattern: '<input type="hidden" id="productName" value="([^\"\n]+)', string: res, icase: TRUE);
+  if (!isnull(model_match[1])) {
+    model = model_match[1];
+    set_kb_item(name: "flir_camera/model", value: model);
   }
 
   set_kb_item(name: "flir_camera/detected", value: TRUE);

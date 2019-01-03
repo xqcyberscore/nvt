@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_4112_1.nasl 12882 2018-12-27 07:14:01Z santu $
+# $Id: gb_suse_2018_4112_1.nasl 12913 2018-12-31 10:50:43Z santu $
 #
 # SuSE Update for Mozilla openSUSE-SU-2018:4112-1 (Mozilla)
 #
@@ -29,19 +29,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852180");
-  script_version("$Revision: 12882 $");
+  script_version("$Revision: 12913 $");
   script_cve_id("CVE-2018-12405", "CVE-2018-17466", "CVE-2018-18492",
                 "CVE-2018-18493", "CVE-2018-18494", "CVE-2018-18498");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-27 08:14:01 +0100 (Thu, 27 Dec 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-31 11:50:43 +0100 (Mon, 31 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-12-13 12:55:16 +0100 (Thu, 13 Dec 2018)");
   script_name("SuSE Update for Mozilla openSUSE-SU-2018:4112-1 (Mozilla)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=(openSUSELeap42\.3|openSUSELeap15\.0)");
 
   script_xref(name:"openSUSE-SU", value:"2018:4112_1");
   script_xref(name:"URL", value:"http://lists.opensuse.org/opensuse-security-announce/2018-12/msg00029.html");

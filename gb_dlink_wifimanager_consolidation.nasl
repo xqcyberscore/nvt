@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_wifimanager_consolidation.nasl 12620 2018-12-03 09:54:13Z ckuersteiner $
+# $Id: gb_dlink_wifimanager_consolidation.nasl 12895 2018-12-28 13:53:10Z asteins $
 #
 # D-Link Central WiFiManager Software Controller Detection Consolidation
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141744");
-  script_version("$Revision: 12620 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-03 10:54:13 +0100 (Mon, 03 Dec 2018) $");
+  script_version("$Revision: 12895 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-28 14:53:10 +0100 (Fri, 28 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-12-03 13:14:07 +0700 (Mon, 03 Dec 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -64,7 +64,7 @@ version = get_kb_item("dlink_central_wifimanager/win/version");
 if (!version)
   version = "unknown";
 
-cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/a:d-link:central_wifimanager:");
+cpe = build_cpe(value: version, exp: "^([0-9a-z.]+)", base: "cpe:/a:d-link:central_wifimanager:");
 if (!cpe)
   cpe = 'cpe:/a:d-link:central_wifimanager';
 

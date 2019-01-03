@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nodejs_http_resp_priv_esc_vuln_macosx.nasl 12577 2018-11-29 11:43:34Z santu $
+# $Id: gb_nodejs_http_resp_priv_esc_vuln_macosx.nasl 12912 2018-12-31 08:46:47Z asteins $
 #
 # Node.js 'HTTP' Splitting Privilege Escalareion Vulnerability-(Mac OS X)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:nodejs:node.js";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814522");
-  script_version("$Revision: 12577 $");
+  script_version("$Revision: 12912 $");
   script_cve_id("CVE-2018-12116");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-29 12:43:34 +0100 (Thu, 29 Nov 2018) $");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-31 09:46:47 +0100 (Mon, 31 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-11-29 13:55:51 +0530 (Thu, 29 Nov 2018)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Node.js 'HTTP' Splitting Privilege Escalareion Vulnerability-(Mac OS X)");

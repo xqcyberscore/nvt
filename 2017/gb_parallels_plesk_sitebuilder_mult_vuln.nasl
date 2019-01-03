@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_parallels_plesk_sitebuilder_mult_vuln.nasl 11919 2018-10-16 09:49:19Z mmartin $
+# $Id: gb_parallels_plesk_sitebuilder_mult_vuln.nasl 12899 2018-12-28 14:46:11Z mmartin $
 #
 # Parallels Plesk Sitebuilder Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:parallels:parallels_plesk_sitebuilder";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812279");
-  script_version("$Revision: 11919 $");
+  script_version("$Revision: 12899 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-16 11:49:19 +0200 (Tue, 16 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-28 15:46:11 +0100 (Fri, 28 Dec 2018) $");
   script_tag(name:"creation_date", value:"2017-12-27 12:18:56 +0530 (Wed, 27 Dec 2017)");
   script_name("Parallels Plesk Sitebuilder Multiple Vulnerabilities");
 
@@ -57,11 +57,9 @@ if(description)
 
   script_tag(name:"affected", value:"Parallels Plesk Sitebuilder 4.5");
 
-  script_tag(name:"solution", value:"No known solution is available as of
-  06th August, 2018. Information regarding this issue will be updated once solution
-  details are available.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_tag(name:"qod_type", value:"remote_vul");
 

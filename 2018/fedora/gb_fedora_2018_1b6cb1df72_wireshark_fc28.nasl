@@ -29,16 +29,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875367");
-  script_version("$Revision: 12873 $");
+  script_version("$Revision: 12912 $");
   script_cve_id("CVE-2018-19622", "CVE-2018-19623", "CVE-2018-19624", 
                   "CVE-2018-19625", "CVE-2018-19626", "CVE-2018-19627", "CVE-2018-19628", 
                   "CVE-2018-16056", "CVE-2018-16057", "CVE-2018-16058", "CVE-2018-14339", 
                   "CVE-2018-14340", "CVE-2018-14341", "CVE-2018-14342", "CVE-2018-14343", 
                   "CVE-2018-14344", "CVE-2018-14367", "CVE-2018-14368", "CVE-2018-14369", 
                 "CVE-2018-14370"); 
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-21 15:42:20 +0100 (Fri, 21 Dec 2018) $");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-31 09:46:47 +0100 (Mon, 31 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-12-19 10:29:12 +0100 (Wed, 19 Dec 2018)");
   script_name("Fedora Update for wireshark FEDORA-2018-1b6cb1df72");
   script_category(ACT_GATHER_INFO);

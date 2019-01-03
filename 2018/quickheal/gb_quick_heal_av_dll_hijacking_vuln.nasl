@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_quick_heal_av_dll_hijacking_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
+# $Id: gb_quick_heal_av_dll_hijacking_vuln.nasl 12924 2019-01-02 09:25:12Z ckuersteiner $
 #
 # Quick Heal Anti-Virus Pro DLL Hijacking Vulnerability
 #
@@ -29,12 +29,13 @@ CPE = "cpe:/a:quickheal:antivirus_pro";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813594");
-  script_version("$Revision: 12116 $");
+  script_version("$Revision: 12924 $");
   script_cve_id("CVE-2018-8090");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-02 10:25:12 +0100 (Wed, 02 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-08-02 16:39:04 +0530 (Thu, 02 Aug 2018)");
+
   script_name("Quick Heal Anti-Virus Pro DLL Hijacking Vulnerability");
 
   script_tag(name:"summary", value:"This host is installed with Quick Heal
@@ -42,19 +43,16 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"The flaw exists due to insufficient
-  validation on library loading.");
+  script_tag(name:"insight", value:"The flaw exists due to insufficient validation on library loading.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to load insecure library, hijack DLL and execute arbitrary code.");
 
   script_tag(name:"affected", value:"Quick Heal Anti-Virus Pro version 10.0.0.37");
 
-  script_tag(name:"solution", value:"No known solution is available as of 02nd
-  August, 2018. Information regarding this issue will be updated once solution
-  details are available. For updates refer to Reference links.");
+  script_tag(name:"solution", value:"Update to version 10.0.1.46 or later.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
 
   script_xref(name:"URL", value:"https://github.com/kernelm0de/CVE-2018-8090");
@@ -77,7 +75,7 @@ quickPath = infos['location'];
 
 if(version_is_equal(version:quickVer, test_version:"10.0.0.37"))
 {
-  report = report_fixed_ver(installed_version:quickVer, fixed_version:"NoneAvailable", install_path:quickPath);
+  report = report_fixed_ver(installed_version:quickVer, fixed_version:"10.0.1.46", install_path:quickPath);
   security_message(data:report);
   exit(0);
 }

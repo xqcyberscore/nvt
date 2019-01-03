@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id$
+# $Id: gb_ubuntu_USN_3847_1.nasl 12904 2018-12-28 21:02:01Z cfischer $
 #
 # Ubuntu Update for linux USN-3847-1
 #
@@ -29,12 +29,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843856");
-  script_version("$Revision: 12880 $");
+  script_version("$Revision: 12904 $");
   script_cve_id("CVE-2018-10902", "CVE-2018-12896", "CVE-2018-14734",
                 "CVE-2018-16276", "CVE-2018-18445", "CVE-2018-18690", "CVE-2018-18710");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date$");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-28 22:02:01 +0100 (Fri, 28 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-12-21 07:23:07 +0100 (Fri, 21 Dec 2018)");
   script_name("Ubuntu Update for linux USN-3847-1");
   script_category(ACT_GATHER_INFO);

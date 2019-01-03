@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_jet_direct_unauthenticated_access.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_hp_jet_direct_unauthenticated_access.nasl 12919 2019-01-01 16:23:44Z cfischer $
 #
 # HP LaserJet Printers Unauthenticated Access
 #
@@ -25,55 +25,59 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103390");
   script_cve_id("CVE-1999-1061");
+  script_version("$Revision: 12919 $");
+  script_name("HP LaserJet Printers Unauthenticated Access");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-01 17:23:44 +0100 (Tue, 01 Jan 2019) $");
+  script_tag(name:"creation_date", value:"2012-01-13 10:43:06 +0100 (Fri, 13 Jan 2012)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11855 $");
-
-  script_name("HP LaserJet Printers Unauthenticated Access");
-
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
-  script_tag(name:"creation_date", value:"2012-01-13 10:43:06 +0100 (Fri, 13 Jan 2012)");
   script_category(ACT_ATTACK);
-  script_tag(name:"qod_type", value:"remote_vul");
-  script_family("General");
+  script_family("Default Accounts");
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
-  script_dependencies("telnetserver_detect_type_nd_version.nasl");
+  script_dependencies("telnet.nasl");
   script_require_ports(23);
+  script_mandatory_keys("telnet/banner/available");
+
   script_tag(name:"solution", value:"Connect to this printer via telnet and set a password by executing
-the 'passwd' command.");
+  the 'passwd' command.");
+
   script_tag(name:"summary", value:"HP Laserjet printers with JetDirect cards, when configured with
-TCP/IP, can be configured without a password, which allows remote
-attackers to connect to the printer and change its IP address or
-disable logging.");
+  TCP/IP, can be configured without a password, which allows remote attackers to connect to the printer
+  and change its IP address or disable logging.");
+
+  script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"Mitigation");
+
   exit(0);
 }
 
-include('telnet_func.inc');
+include("telnet_func.inc");
 
-port = 23;
-if(!get_port_state(port))exit(0);
+port = get_telnet_port( default:23 );
+banner = get_telnet_banner( port:port );
+if( ! banner || "HP JetDirect" >!< banner )
+  exit( 0 );
 
-soc = open_sock_tcp(port);
-if(!soc)exit(0);
+if( "Enter username:" >< banner )
+  exit( 99 );
 
-buf = telnet_negotiate(socket:soc);
-if("HP JetDirect" >!< buf)exit(0);
+soc = open_sock_tcp( port );
+if( ! soc )
+  exit( 0 );
 
-send(socket:soc, data:string("/\r\n"));
-buf = recv(socket:soc, length: 1024);
+telnet_negotiate( socket:soc ); #nb: Just receive the initial banner
+send( socket:soc, data:'/\r\n' );
+buf = recv( socket:soc, length:1024 );
+send( socket:soc, data:'exit\r\n' );
+close( soc );
 
-close(soc);
-
-if("JetDirect Telnet Configuration" >< buf) {
-
-  security_message(port:port);
-  exit(0);
-
+if( "JetDirect Telnet Configuration" >< buf || "Password is not set" >< banner ) {
+  security_message( port:port );
+  exit( 0 );
 }
 
-exit(0);
+exit( 99 );

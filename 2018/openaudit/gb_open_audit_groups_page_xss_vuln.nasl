@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_audit_groups_page_xss_vuln.nasl 11499 2018-09-20 10:38:00Z ckuersteiner $
+# $Id: gb_open_audit_groups_page_xss_vuln.nasl 12897 2018-12-28 14:09:23Z asteins $
 #
 # Open-AudIT Community 'Groups Page' Cross Site Scripting Vulnerability
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:opmantek:open-audit";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813807");
-  script_version("$Revision: 11499 $");
+  script_version("$Revision: 12897 $");
   script_cve_id("CVE-2018-14493");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 12:38:00 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-28 15:09:23 +0100 (Fri, 28 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-07-27 11:05:07 +0530 (Fri, 27 Jul 2018)");
-  ##Not able to distinguish distinguish community editions
+  ##Not able to distinguish community editions
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
   script_name("Open-AudIT Community 'Groups Page' Cross Site Scripting Vulnerability");
@@ -51,10 +51,10 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers
   to inject arbitrary web script or HTML.");
 
-  script_tag(name:"affected", value:"Open-AudIT Community version 2.2.6");
+  script_tag(name:"affected", value:"Open-AudIT Community version 2.2.6.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 27th
-  July, 2018. Information regarding this issue will be updated once
+  script_tag(name:"solution", value:"No known solution is available as of 28th
+  December, 2018. Information regarding this issue will be updated once
   solution details are available. For updates refer to Reference links.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
@@ -72,16 +72,16 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-if (!port = get_app_port(cpe:CPE))
+if(!port = get_app_port(cpe:CPE))
   exit(0);
 
-if (!version = get_app_version(cpe:CPE, port:port))
+if(!version = get_app_version(cpe:CPE, port:port))
   exit(0);
 
-if (version == "2.2.6") {
+if(version_is_less_equal(version:version, test_version:"2.2.6")) {
   report = report_fixed_ver(installed_version:version, fixed_version:"NoneAvailable");
   security_message(data:report, port:port);
   exit(0);
 }
 
-exit(0);
+exit(99);

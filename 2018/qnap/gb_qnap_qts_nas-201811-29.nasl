@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qnap_qts_nas-201811-29.nasl 12744 2018-12-10 13:48:33Z cfischer $
+# $Id: gb_qnap_qts_nas-201811-29.nasl 12912 2018-12-31 08:46:47Z asteins $
 #
 # QNAP QTS < 4.2.6 build 20180829 XSS Vulnerability
 #
@@ -28,11 +28,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108493");
-  script_version("$Revision: 12744 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-10 14:48:33 +0100 (Mon, 10 Dec 2018) $");
+  script_version("$Revision: 12912 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-31 09:46:47 +0100 (Mon, 31 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-12-03 10:27:18 +0100 (Mon, 03 Dec 2018)");
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

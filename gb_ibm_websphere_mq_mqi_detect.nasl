@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_mq_mqi_detect.nasl 12552 2018-11-28 04:39:18Z ckuersteiner $
+# $Id: gb_ibm_websphere_mq_mqi_detect.nasl 12910 2018-12-30 21:51:49Z cfischer $
 #
 # IBM WebSphere MQ Detection (MQI)
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141712");
-  script_version("$Revision: 12552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-28 05:39:18 +0100 (Wed, 28 Nov 2018) $");
+  script_version("$Revision: 12910 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-30 22:51:49 +0100 (Sun, 30 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-11-23 10:29:03 +0700 (Fri, 23 Nov 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -182,7 +182,6 @@ for (i=0; i<3; i++) {
       if (i+2 < strlen(vers))
         version += '.';
     }
-
     break;
   }
 }
@@ -191,15 +190,13 @@ close(sock);
 
 if (found) {
   set_kb_item(name: "ibm_websphere_mq/detected", value: TRUE);
+  set_kb_item(name: "ibm_websphere_mq/mqi/port", value: port);
 
-  register_service(port: port, proto: "websphere_mq");
+  register_service(port: port, proto: "websphere_mq", message: "A WebSphere MQ service answering to MQI requests seems to be running on this port.");
+  log_message(port: port, data: "A WebSphere MQ service answering to MQI requests seems to be running on this port.");
 
   if (version != "unknown")
     set_kb_item(name: "ibm_websphere_mq/mqi/" + port + "/version", value: version);
-
-  set_kb_item(name: "ibm_websphere_mq/mqi/port", value: port);
-
-  exit(0);
 }
 
 exit(0);

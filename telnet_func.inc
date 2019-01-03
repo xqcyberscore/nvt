@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: telnet_func.inc 10707 2018-08-01 10:58:06Z cfischer $
+# $Id: telnet_func.inc 12919 2019-01-01 16:23:44Z cfischer $
 #
 # Methods to handle telnet
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 10707 $
+# $Revision: 12919 $
 #
 ###############################################################################
 
@@ -35,35 +35,58 @@ OPT_DONT 	= 0xfe;
 OPT_SUBOPT 	= 0xfa;
 OPT_ENDSUBOPT 	= 0xf0;
 
+# @brief Make a connection to a remote telnet service and receives the banner from it.
+#        If a banner was received it is saved into the knowledge base.
+#        If a banner was requested which was requested previously the cached
+#        banner will be returned instead of doing a new connection.
+#
+# @param port    The port of the remote telnet service to get the banner from.
+# @param timeout An optional timeout for the connection which is passed to the used
+#                @ref telnet_negotiate function, defaults to 3 seconds if this parameter
+#                is not specified.
+#
+# @return A string containing the received banner, FALSE if no banner was received or
+#         no connection could be made to the remove service and NULL if not all required
+#         parameters where passed.
+#
 function get_telnet_banner( port, timeout ) {
 
-  local_var port, sb, banner, soc, timeout;
+  local_var port, timeout;
+  local_var sb, banner, soc;
 
   if( ! port ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#get_telnet_banner" );
-    return( 0 );
+    return NULL;
   }
 
-  if( ! get_port_state( port ) ) return ( 0 );
+  if( ! get_port_state( port ) )
+    return FALSE;
 
   sb = "telnet/banner/" + port;
   banner = get_kb_item( sb );
-  if( banner ) return( banner );
+  if( banner )
+    return banner;
 
   soc = open_sock_tcp( port );
-  if( ! soc ) return( 0 );
-  banner = telnet_negotiate( socket:soc, timeout:timeout );
-  if( strlen( banner ) ) {
-    replace_kb_item( name:sb, value:str_replace( find:raw_string(0), replace:'', string:banner ) );
+  if( ! soc )
+    return FALSE;
 
-    # nb: Some devices need a separate exit to accept subsequent requests
-    if( "Sollae Systems" >< banner && ( banner =~ "lsh>$" || banner =~ "msh>$" || "password" >< banner ) ) {
-      send( socket:soc, data:'exit\r\n' );
-    }
+  banner = telnet_negotiate( socket:soc, timeout:timeout );
+  if( ! banner ) {
+    close( soc );
+    return FALSE;
+  }
+
+  replace_kb_item( name:sb, value:str_replace( find:raw_string(0), replace:'', string:banner ) );
+
+  # nb: Some devices need a separate exit to accept subsequent requests
+  if( ( "Sollae Systems" >< banner && ( banner =~ "lsh>$" || banner =~ "msh>$" || "password" >< banner ) ) ||
+      ( 'Please type "menu" for the MENU system,' >< banner || 'or "?" for help, or "/" for current settings' >< banner ) ) { # nb: HP JetDirect
+    send( socket:soc, data:'exit\r\n' );
   }
 
   close( soc );
-  return( banner );
+  return banner;
 }
 
 # @brief Negotiate a telnet connection via the passed socket
