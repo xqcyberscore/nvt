@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samsung_syncthru_web_service_xss_n_csrf_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
+# $Id: gb_samsung_syncthru_web_service_xss_n_csrf_vuln.nasl 12928 2019-01-03 08:54:17Z ckuersteiner $
 #
 # Samsung Syncthru Web Service XSS And CSRF Vulnerabilities
 #
@@ -29,12 +29,13 @@ CPE = "cpe:/a:samsung:syncthru_web_service";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813745");
-  script_version("$Revision: 12116 $");
+  script_version("$Revision: 12928 $");
   script_cve_id("CVE-2018-14904", "CVE-2018-14908");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-03 09:54:17 +0100 (Thu, 03 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-08-06 18:50:27 +0530 (Mon, 06 Aug 2018)");
+
   script_name("Samsung Syncthru Web Service XSS And CSRF Vulnerabilities");
 
   script_tag(name:"summary", value:"The host is running Samsung Syncthru Web
@@ -57,9 +58,8 @@ if(description)
 
   script_tag(name:"affected", value:"Samsung Syncthru Web Service");
 
-  script_tag(name:"solution", value:"No known solution is available as of
-  06th August, 2018. Information regarding this issue will be updated once solution
-  details are available. For updates refer to Reference links.");
+  script_tag(name:"solution", value:"No known solution is available as of 03rd January, 2019.
+  Information regarding this issue will be updated once solution details are available.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
 

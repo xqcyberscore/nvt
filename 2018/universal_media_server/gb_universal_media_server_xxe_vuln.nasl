@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_universal_media_server_xxe_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
+# $Id: gb_universal_media_server_xxe_vuln.nasl 12928 2019-01-03 08:54:17Z ckuersteiner $
 #
 # Universal Media Server XXE Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:universal_media_server:universal_media_server";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141352");
-  script_version("$Revision: 12116 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_version("$Revision: 12928 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-03 09:54:17 +0100 (Thu, 03 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-08-07 08:45:28 +0700 (Tue, 07 Aug 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -62,10 +62,11 @@ in Windows domains.");
 
   script_tag(name:"affected", value:"Universal Media Server version 7.1.0 and probably prior.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 07th August, 2018. Information regarding
-this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution is available as of 03rd January, 2019.
+  Information regarding this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/45133/");
+  script_xref(name:"URL", value:"https://github.com/UniversalMediaServer/UniversalMediaServer/issues/1522");
 
   exit(0);
 }
@@ -79,7 +80,7 @@ if (!port = get_app_port(cpe: CPE))
 if (!version = get_app_version(cpe: CPE, port: port))
   exit(0);
 
-if (version_is_less_equal(version: version, test_version: "7.1.0")) {
+if (version_is_less_equal(version: version, test_version: "7.7.1")) {
   report = report_fixed_ver(installed_version: version, fixed_version: "None");
   security_message(port: port, data: report);
   exit(0);

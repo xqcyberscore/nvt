@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vtiger_crm_auth_bypass_vuln.nasl 11222 2018-09-04 12:41:44Z cfischer $
+# $Id: gb_vtiger_crm_auth_bypass_vuln.nasl 12926 2019-01-03 03:38:48Z ckuersteiner $
 #
 # vTiger CRM Authentication Bypass Vulnerability
 #
@@ -33,31 +33,34 @@ if(description)
   script_cve_id("CVE-2013-3215");
   script_tag(name:"cvss_base", value:"9.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:N");
-  script_version("$Revision: 11222 $");
+  script_version("$Revision: 12926 $");
 
   script_name("vTiger CRM Authentication Bypass Vulnerability");
 
   script_xref(name:"URL", value:"https://www.vtiger.com/blogs/?p=1467");
   script_xref(name:"URL", value:"http://karmainsecurity.com/KIS-2013-08");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:41:44 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-03 04:38:48 +0100 (Thu, 03 Jan 2019) $");
   script_tag(name:"creation_date", value:"2014-01-28 15:47:55 +0700 (Tue, 28 Jan 2014)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_dependencies("gb_vtiger_crm_detect.nasl");
-  script_mandatory_keys("vtiger/installed");
+  script_mandatory_keys("vtiger/detected");
   script_require_ports("Services/www", 80);
 
   script_tag(name:"summary", value:"vTiger CRM Authentication Bypass Vulnerability");
-  script_tag(name:"vuldetect", value:"Tries to exploit the vulnerability by calling the respective
-  SOAP call.");
-  script_tag(name:"solution", value:"Apply the patch from the link below or upgrade to version
-  6.0 or later.");
+
+  script_tag(name:"vuldetect", value:"Tries to exploit the vulnerability by calling the respective SOAP call.");
+
+  script_tag(name:"solution", value:"Apply the patch from the link below or upgrade to version 6.0 or later.");
+
   script_tag(name:"insight", value:"The installed vTiger CRM is prone to an authentication bypass
   vulnerability. The vulnerable code is located in the validateSession() function,
   which is defined in multiple SOAP services.");
+
   script_tag(name:"affected", value:"vTiger CRM version 5.1.0 to 5.4.0.");
+
   script_tag(name:"impact", value:"A remote attacker can bypass the authentication mechanism.");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -77,9 +80,8 @@ if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:
 
 vtVer = infos['version'];
 
-if(version_is_greater(version:vtVer, test_version:"5.4.0")) {
+if(version_is_greater(version:vtVer, test_version:"5.4.0"))
   exit(99);
-}
 
 useragent = get_http_user_agent();
 host = http_host_name(port:port);

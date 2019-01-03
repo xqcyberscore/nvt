@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vtiger_49927.nasl 12018 2018-10-22 13:31:29Z mmartin $
+# $Id: gb_vtiger_49927.nasl 12926 2019-01-03 03:38:48Z ckuersteiner $
 #
 # vtiger CRM Multiple Cross Site Scripting Vulnerabilities
 #
@@ -23,13 +23,14 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/a:vtiger:vtiger_crm";
 
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103290");
-  script_version("$Revision: 12018 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
+  script_version("$Revision: 12926 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-03 04:38:48 +0100 (Thu, 03 Jan 2019) $");
   script_tag(name:"creation_date", value:"2011-10-06 13:32:57 +0200 (Thu, 06 Oct 2011)");
   script_cve_id("CVE-2011-4670");
   script_bugtraq_id(49927);
@@ -41,13 +42,14 @@ if (description)
 
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"qod_type", value:"remote_vul");
+  script_tag(name:"qod_type", value:"remote_analysis");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
   script_dependencies("gb_vtiger_crm_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_mandatory_keys("vtiger/installed");
+  script_mandatory_keys("vtiger/detected");
+
   script_tag(name:"summary", value:"vtiger CRM is prone to multiple cross-site scripting vulnerabilities
 because it fails to properly sanitize user-supplied input.
 
@@ -57,26 +59,33 @@ site. This may allow the attacker to steal cookie-based authentication
 credentials and to launch other attacks.
 
 vtiger CRM 5.2.1 is vulnerable. Other versions may also be affected.");
-  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the
+disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to
+a newer release, disable respective features, remove the product or replace the product by another one.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
+
   exit(0);
 }
 
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-include("version_func.inc");
 
 if(!port = get_app_port(cpe:CPE))exit(0);
 if(!dir = get_app_location(cpe:CPE, port:port))exit(0);
 
-url = string(dir,'/phprint.php?module=Home&action=--><script>alert(/openvas-xss-test/)</script>&parenttab=MyHomePage"><script>alert(/openvas-xss-test/)</script>&jt=');
+if (dir == "/")
+  dir = "";
 
-if(http_vuln_check(port:port, url:url,pattern:"<script>alert\(/openvas-xss-test/\)</script>",check_header:TRUE)) {
+url = dir + '/phprint.php?module=Home&action=--><script>alert(/openvas-xss-test/)</script>&parenttab=MyHomePage"><script>alert(/openvas-xss-test/)</script>&jt=';
 
-  security_message(port:port);
+if (http_vuln_check(port:port, url:url, pattern:"<script>alert\(/openvas-xss-test/\)</script>",
+                    check_header:TRUE)) {
+  report = report_vuln_url(port: port, url: url);
+  security_message(port:port, data: report);
   exit(0);
-
 }
 
-exit(0);
+exit(99);

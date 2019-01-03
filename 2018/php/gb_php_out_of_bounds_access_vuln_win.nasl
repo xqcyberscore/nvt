@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_out_of_bounds_access_vuln_win.nasl 12120 2018-10-26 11:13:20Z mmartin $
+# $Id: gb_php_out_of_bounds_access_vuln_win.nasl 12928 2019-01-03 08:54:17Z ckuersteiner $
 #
 # PHP 'php_pcre_replace_impl' Out of Bounds Access Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813599");
-  script_version("$Revision: 12120 $");
+  script_version("$Revision: 12928 $");
   script_cve_id("CVE-2017-9118");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-03 09:54:17 +0100 (Thu, 03 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-08-06 17:10:24 +0530 (Mon, 06 Aug 2018)");
   script_name("PHP 'php_pcre_replace_impl' Out of Bounds Access Vulnerability (Windows)");
 
@@ -51,9 +51,8 @@ if(description)
 
   script_tag(name:"affected", value:"PHP version 7.1.5 on Windows.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 06th
-  August, 2018. Information regarding this issue will be updated once solution
-  details are available. For updates refer to Reference links.");
+  script_tag(name:"solution", value:"No known solution is available as of 03rd January, 2019.
+  Information regarding this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"http://www.php.net");
   script_xref(name:"URL", value:"https://bugs.php.net/bug.php?id=74604");

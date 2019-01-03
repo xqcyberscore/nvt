@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vtiger_crm_mult_sql_inj_vuln_apr14.nasl 12634 2018-12-04 07:26:26Z cfischer $
+# $Id: gb_vtiger_crm_mult_sql_inj_vuln_apr14.nasl 12926 2019-01-03 03:38:48Z ckuersteiner $
 #
 # Vtiger CRM Multiple SQL Injection Vulnerabilities April-14
 #
@@ -29,13 +29,14 @@ CPE = "cpe:/a:vtiger:vtiger_crm";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804542");
-  script_version("$Revision: 12634 $");
+  script_version("$Revision: 12926 $");
   script_cve_id("CVE-2013-3213");
   script_bugtraq_id(61563);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-04 08:26:26 +0100 (Tue, 04 Dec 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-03 04:38:48 +0100 (Thu, 03 Jan 2019) $");
   script_tag(name:"creation_date", value:"2014-04-17 18:28:20 +0530 (Thu, 17 Apr 2014)");
+
   script_name("Vtiger CRM Multiple SQL Injection Vulnerabilities April-14");
 
   script_tag(name:"summary", value:"This host is installed with Vtiger CRM and is prone to multiple
@@ -46,15 +47,14 @@ if(description)
 
   script_tag(name:"insight", value:"Multiple flaws are due to an,
 
-  - Input passed via multiple parameters to various SOAP methods is not properly
-  sanitised before being used in a SQL query.
+  - Input passed via multiple parameters to various SOAP methods is not properly sanitised before being used in a
+    SQL query.
 
-  - Error within the 'validateSession()' function and multiple unspecified
-  errors.");
+  - Error within the 'validateSession()' function and multiple unspecified errors.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
-  script code, bypass certain security restrictions, manipulate certain data,
-  and compromise a vulnerable system.");
+  script code, bypass certain security restrictions, manipulate certain data, and compromise a vulnerable
+  system.");
 
   script_tag(name:"affected", value:"Vtiger CRM version 5.0.0 through 5.4.0");
 
@@ -72,7 +72,7 @@ if(description)
   script_family("Web application abuses");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_dependencies("gb_vtiger_crm_detect.nasl");
-  script_mandatory_keys("vtiger/installed");
+  script_mandatory_keys("vtiger/detected");
   script_require_ports("Services/www", 80, 8888);
 
   exit(0);
@@ -81,16 +81,16 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-if(!http_port = get_app_port(cpe:CPE,  port:http_port)){
+if(!http_port = get_app_port(cpe:CPE))
+  exit(0);
+
+if(!vtVer = get_app_version(cpe:CPE,  port:http_port))
+  exit(0);
+
+if(version_in_range(version:vtVer, test_version:"5.0.0", test_version2:"5.4.0")) {
+  report = report_fixed_ver(installed_version: vtVer, fixed_version: "Apply patch.");
+  security_message(port:http_port, data: report);
   exit(0);
 }
 
-if(!vtVer = get_app_version(cpe:CPE,  port:http_port)){
-  exit(0);
-}
-
-if(version_in_range(version:vtVer, test_version:"5.0.0", test_version2:"5.4.0"))
-{
-  security_message(port:http_port);
-  exit(0);
-}
+exit(99);

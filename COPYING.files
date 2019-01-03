@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Wed, 02 Jan 2019 21:53:22 +0100
+# Automatically created on:  Thu, 03 Jan 2019 13:03:40 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -43914,6 +43914,11 @@
 2018/zoho/gb_manage_engine_desktop_central_sec_bypass_vuln.nasl: GPLv2+
 2018/zoho/gb_manage_engine_desktop_central_usrmgmt_info_disc_vuln.nasl: GPLv2+
 2018/zoneminder/gb_zoneminder_obj_inj_vuln.nasl: GPLv2+
+2019/apache/gb_apache_couchdb_priv_esc_vuln_lin.nasl: GPLv2+
+2019/apache/gb_apache_couchdb_priv_esc_vuln_win.nasl: GPLv2+
+2019/apache/gb_apache_mod_jk_auth_bypass_vuln_active.nasl: GPLv2+
+2019/apache/gb_apache_mod_jk_auth_bypass_vuln_lin.nasl: GPLv2+
+2019/apache/gb_apache_mod_jk_auth_bypass_vuln_win.nasl: GPLv2+
 2019/phpipam/gb_phpipam_mult_vuln.nasl: GPLv2+
 2019/sugarcrm/gb_sugarcrm_mult_vuln01.nasl: GPLv2+
 2019/sugarcrm/gb_sugarcrm_mult_vuln02.nasl: GPLv2+
@@ -62628,6 +62633,7 @@ gsf/2018/zohocorp/gb_manageengine_supportcenter_plus_html_inj_n_xss_vuln.nasl: G
 gsf/2019/f5/gb_f5_big_ip_K17264695.nasl: GPLv2+
 gsf/2019/f5/gb_f5_big_ip_K74114570.nasl: GPLv2+
 gsf/2019/ibm/gb_ibm_domino_bof_vuln.nasl: GPLv2+
+gsf/2019/vtiger/gb_vtiger_rce_vuln.nasl: GPLv2+
 gsf/gb-lsc-agent.nasl: GPLv2+
 gsf/gb_rittal_modbus_detect.nasl: GPLv2+
 gsf/gb_windows_telemetry_compliance.nasl: GPLv2+

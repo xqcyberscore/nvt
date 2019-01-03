@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vtiger_crm_access_control_vuln.nasl 12096 2018-10-25 12:26:02Z asteins $
+# $Id: gb_vtiger_crm_access_control_vuln.nasl 12926 2019-01-03 03:38:48Z ckuersteiner $
 #
 # Vtiger CRM Access Control Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:vtiger:vtiger_crm';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106148");
-  script_version("$Revision: 12096 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
+  script_version("$Revision: 12926 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-03 04:38:48 +0100 (Thu, 03 Jan 2019) $");
   script_tag(name:"creation_date", value:"2016-07-21 09:24:27 +0700 (Thu, 21 Jul 2016)");
   script_tag(name:"cvss_base", value:"5.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:N");
@@ -49,7 +49,7 @@ if (description)
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_vtiger_crm_detect.nasl");
-  script_mandatory_keys("vtiger/installed");
+  script_mandatory_keys("vtiger/detected");
 
   script_tag(name:"summary", value:"Vtiger CRM is prone to an access control vulnerability.");
 

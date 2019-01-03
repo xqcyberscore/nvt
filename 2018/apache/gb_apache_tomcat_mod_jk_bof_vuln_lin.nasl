@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_mod_jk_bof_vuln_lin.nasl 12410 2018-11-19 10:06:05Z cfischer $
+# $Id: gb_apache_tomcat_mod_jk_bof_vuln_lin.nasl 12927 2019-01-03 05:43:34Z ckuersteiner $
 #
 # Apache Tomcat JK Connector Buffer Overflow Vulnerability (Linux)
 #
@@ -29,14 +29,15 @@ CPE = "cpe:/a:apache:mod_jk";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812787");
-  script_version("$Revision: 12410 $");
+  script_version("$Revision: 12927 $");
   script_cve_id("CVE-2016-6808");
   script_bugtraq_id(93429);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-19 11:06:05 +0100 (Mon, 19 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-03 06:43:34 +0100 (Thu, 03 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-02-27 10:49:53 +0530 (Tue, 27 Feb 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
+
   script_name("Apache Tomcat JK Connector Buffer Overflow Vulnerability (Linux)");
 
   script_tag(name:"summary", value:"This host is installed with Apache Tomcat
@@ -55,11 +56,9 @@ if(description)
   application. Failed exploit attempts will likely result in denial-of-service
   conditions.");
 
-  script_tag(name:"affected", value:"Apache Tomcat JK Connector 1.2.0 through
-  1.2.41 on Linux.");
+  script_tag(name:"affected", value:"Apache Tomcat JK Connector 1.2.0 through 1.2.41 on Linux.");
 
-  script_tag(name:"solution", value:"Upgrade to Apache Tomcat JK Connector
-  version 1.2.42 or later.");
+  script_tag(name:"solution", value:"Upgrade to Apache Tomcat JK Connector version 1.2.42 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -70,29 +69,26 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Web Servers");
   script_dependencies("gb_apache_mod_jk_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("apache_modjk/installed", "Host/runs_unixoide");
+  script_mandatory_keys("apache_modjk/detected", "Host/runs_unixoide");
   script_require_ports("Services/www", 8080);
+
   exit(0);
 }
 
 include("host_details.inc");
 include("version_func.inc");
 
-if(!tomPort = get_app_port(cpe:CPE)){
+if(!tomPort = get_app_port(cpe:CPE))
   exit(0);
-}
 
 infos = get_app_version_and_location(cpe:CPE, port:tomPort, exit_no_version:TRUE);
 appVer = infos['version'];
 path = infos['location'];
 
-if(appVer =~ "1\.2")
-{
-  if(version_in_range(version:appVer, test_version: "1.2.0", test_version2: "1.2.41"))
-  {
-    report = report_fixed_ver(installed_version:appVer, fixed_version:"1.2.42", install_path:path);
-    security_message(port:tomPort, data: report);
-    exit(0);
-  }
+if(version_in_range(version:appVer, test_version: "1.2.0", test_version2: "1.2.41")) {
+  report = report_fixed_ver(installed_version:appVer, fixed_version:"1.2.42", install_path:path);
+  security_message(port:tomPort, data: report);
+  exit(0);
 }
+
 exit(0);

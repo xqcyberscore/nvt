@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avtech_avc787_dvr_default_cred_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
+# $Id: gb_avtech_avc787_dvr_default_cred_vuln.nasl 12928 2019-01-03 08:54:17Z ckuersteiner $
 #
 # AVTech AVC 787 DVR Web Interface Default Credentials Vulnerability
 #
@@ -29,12 +29,13 @@ CPE = "cpe:/o:avtech:avc7xx_dvr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813818");
-  script_version("$Revision: 12116 $");
+  script_version("$Revision: 12928 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-03 09:54:17 +0100 (Thu, 03 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-08-07 12:34:02 +0530 (Tue, 07 Aug 2018)");
   script_tag(name:"qod_type", value:"remote_vul");
+
   script_name("AVTech AVC 787 DVR Web Interface Default Credentials Vulnerability");
 
   script_tag(name:"summary", value:"This host is running AVTech AVC 787 DVR
@@ -51,14 +52,14 @@ if(description)
 
   script_tag(name:"affected", value:"AVTech AVC 787 DVR device");
 
-  script_tag(name:"solution", value:"No known solution is available as of 07th August, 2018.
-  Information regarding this issue will be updated once solution details are available.
-  For updates refer to Reference links.");
+  script_tag(name:"solution", value:"Change the password.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"Mitigation");
+
   script_xref(name:"URL", value:"http://www.avtech.hk/english/products5_1_787.htm");
   script_xref(name:"URL", value:"http://www.praetorianprefect.com/2009/12/shodan-cracking-ip-surveillance-dvr");
   script_xref(name:"URL", value:"http://www.smartvisiondirect.com/doc/avtech_avc_series_security_dvr_networking_howto_guide.pdf");
+
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
@@ -71,12 +72,13 @@ include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-avPort = get_app_port(cpe:CPE);
-if(!avPort){
+if (!avPort = get_app_port(cpe:CPE))
   exit(0);
-}
 
 if(!dir = get_app_location(cpe: CPE, port: avPort)) exit(0);
+
+if (dir == "/")
+  dir = "";
 
 url = dir + "home.htm";
 postData = "username=admin&password=admin&Submit=Submit";
@@ -95,4 +97,5 @@ if(buf =~ "HTTP/1.. 200 OK" && 'Server: AVTECH-WEBCAM' >< buf &&
   security_message(port:avPort, data:report);
   exit(0);
 }
-exit(0);
+
+exit(99);
