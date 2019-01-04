@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_flash_player_for_ie_edge_apsb18-44.nasl 12478 2018-11-22 07:59:26Z santu $
+# $Id: gb_flash_player_for_ie_edge_apsb18-44.nasl 12938 2019-01-04 07:18:11Z asteins $
 #
 # Microsoft IE And Microsoft Edge Flash Player Security Update(apsb18-44)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:adobe:flash_player_internet_explorer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814352");
-  script_version("$Revision: 12478 $");
+  script_version("$Revision: 12938 $");
   script_cve_id("CVE-2018-15981");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-22 08:59:26 +0100 (Thu, 22 Nov 2018) $");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-04 08:18:11 +0100 (Fri, 04 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-11-21 12:11:42 +0530 (Wed, 21 Nov 2018)");
   script_name("Adobe Flash Player Security Update(apsb18-44)-Windows");
 

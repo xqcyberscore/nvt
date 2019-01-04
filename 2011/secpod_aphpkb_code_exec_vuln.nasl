@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_aphpkb_code_exec_vuln.nasl 12878 2018-12-21 17:31:30Z cfischer $
+# $Id: secpod_aphpkb_code_exec_vuln.nasl 12932 2019-01-03 16:38:36Z cfischer $
 #
 # Andy's PHP Knowledgebase 'step5.php' Remote PHP Code Execution Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:aphpkb:aphpkb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902519");
-  script_version("$Revision: 12878 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-21 18:31:30 +0100 (Fri, 21 Dec 2018) $");
+  script_version("$Revision: 12932 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-03 17:38:36 +0100 (Thu, 03 Jan 2019) $");
   script_tag(name:"creation_date", value:"2011-06-01 11:16:16 +0200 (Wed, 01 Jun 2011)");
   script_bugtraq_id(47918);
   script_tag(name:"cvss_base", value:"9.7");
@@ -70,6 +70,7 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 include("version_func.inc");
+include("misc_func.inc");
 
 if(!port = get_app_port(cpe:CPE))
   exit(0);
@@ -82,7 +83,7 @@ path = infos['location'];
 ## Not a safe check
 if(!safe_checks()) {
 
-  url = string(dir, "/install/step5.php");
+  url = string(path, "/install/step5.php");
   data = "install_dbuser=');phpinfo();//&submit=Continue";
 
   req = http_post_req(port:port, url:url, data:data, add_headers:make_array("Content-Type", "application/x-www-form-urlencoded"));

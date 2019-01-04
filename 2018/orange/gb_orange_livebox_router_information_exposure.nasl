@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_orange_livebox_router_information_exposure.nasl 12888 2018-12-27 18:16:07Z tpassfeld $
+# $Id: gb_orange_livebox_router_information_exposure.nasl 12938 2019-01-04 07:18:11Z asteins $
 #
 # Orange Livebox Router Information Exposure Vulnerability
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114055");
-  script_version("$Revision: 12888 $");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-27 19:16:07 +0100 (Thu, 27 Dec 2018) $");
+  script_version("$Revision: 12938 $");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-04 08:18:11 +0100 (Fri, 04 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-12-27 18:03:44 +0100 (Thu, 27 Dec 2018)");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2018 Greenbone Networks GmbH");

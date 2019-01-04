@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dolibarr_detect.nasl 10890 2018-08-10 12:30:06Z cfischer $
+# $Id: gb_dolibarr_detect.nasl 12936 2019-01-04 04:46:08Z ckuersteiner $
 #
 # Dolibarr Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103143");
-  script_version("$Revision: 10890 $");
+  script_version("$Revision: 12936 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:30:06 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-04 05:46:08 +0100 (Fri, 04 Jan 2019) $");
   script_tag(name:"creation_date", value:"2011-04-29 15:04:36 +0200 (Fri, 29 Apr 2011)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Dolibarr Detection");
@@ -58,41 +58,37 @@ include("host_details.inc");
 
 dolport = get_http_port(default:80);
 if(!can_host_php(port:dolport)) exit(0);
-foreach dir( make_list_unique("/", "/dolibarr","/dolibarr/htdocs","/htdocs",cgi_dirs(port:dolport)) ) {
 
+foreach dir( make_list_unique("/", "/dolibarr", "/dolibarr/htdocs", "/htdocs", cgi_dirs(port:dolport)) ) {
   install = dir;
   if( dir == "/" ) dir = "";
 
-  url = string(dir, "/index.php");
+  url = dir + "/index.php";
   buf = http_get_cache(item:url, port:dolport);
   if( buf == NULL )continue;
 
   if("Set-Cookie: DOLSESSID" >< buf && ("<title>Login" || "<title>Dolibarr") >< buf
       && ("dolibarr_logo.png" || "dolibarr.org") >< buf)
   {
-    vers = string("unknown");
+    vers = "unknown";
     version = eregmatch(string: buf, pattern: ">Dolibarr.{0,5} ([0-9.]+)<",icase:TRUE);
-    if (!isnull(version[1])){
-       vers=chomp(version[1]);
-    }
+    if (!isnull(version[1]))
+       vers = version[1];
 
-    set_kb_item(name: string("www/", dolport, "/dolibarr"), value: string(vers," under ",install));
-    set_kb_item(name: "Dolibarr/installed", value:TRUE);
+    set_kb_item(name: "dolibarr/detected", value:TRUE);
 
     cpe = build_cpe(value:vers, exp:"^([0-9.]+)", base:"cpe:/a:dolibarr:dolibarr:");
     if(!cpe)
       cpe = "cpe:/a:dolibarr:dolibarr";
 
-    register_product(cpe:cpe, location:install, port:dolport);
+    register_product(cpe:cpe, location:install, port:dolport, service: "www");
 
-    log_message(data:build_detection_report( app:"Dolibarr ERP/CRM",
-                                             version:vers,
-                                             install:install,
-                                             cpe:cpe,
-                                             concluded:vers),
-                                             port:dolport);
+    log_message(data:build_detection_report( app:"Dolibarr ERP/CRM", version:vers, install:install,
+                                             cpe:cpe, concluded:version[0]),
+                port:dolport);
     exit(0);
  }
 }
+
 exit(0);
 

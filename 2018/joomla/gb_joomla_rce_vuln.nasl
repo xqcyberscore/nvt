@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_rce_vuln.nasl 11805 2018-10-10 07:57:36Z ckuersteiner $
+# $Id: gb_joomla_rce_vuln.nasl 12938 2019-01-04 07:18:11Z asteins $
 #
 # Joomla! < 3.8.13 RCE Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141583");
-  script_version("$Revision: 11805 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 09:57:36 +0200 (Wed, 10 Oct 2018) $");
+  script_version("$Revision: 12938 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-04 08:18:11 +0100 (Fri, 04 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-10-10 14:51:37 +0700 (Wed, 10 Oct 2018)");
-  script_tag(name:"cvss_base", value:"5.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:M/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
 
   script_cve_id("CVE-2018-17856");
 

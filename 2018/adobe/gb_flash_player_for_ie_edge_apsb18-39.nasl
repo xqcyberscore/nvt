@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_flash_player_for_ie_edge_apsb18-39.nasl 12352 2018-11-14 15:03:21Z santu $
+# $Id: gb_flash_player_for_ie_edge_apsb18-39.nasl 12938 2019-01-04 07:18:11Z asteins $
 #
 # Microsoft IE And Microsoft Edge Flash Player Information Disclosure Vulnerability (apsb18-19)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:adobe:flash_player_internet_explorer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814292");
-  script_version("$Revision: 12352 $");
+  script_version("$Revision: 12938 $");
   script_cve_id("CVE-2018-15978");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-14 16:03:21 +0100 (Wed, 14 Nov 2018) $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-04 08:18:11 +0100 (Fri, 04 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-11-14 17:24:45 +0530 (Wed, 14 Nov 2018)");
   script_name("Microsoft IE And Microsoft Edge Flash Player Information Disclosure Vulnerability (apsb18-19)");
 

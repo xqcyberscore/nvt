@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_866bd0e3c2_dcraw_fc28.nasl 10371 2018-06-29 13:27:39Z santu $
+# $Id: gb_fedora_2018_866bd0e3c2_dcraw_fc28.nasl 12938 2019-01-04 07:18:11Z asteins $
 #
 # Fedora Update for dcraw FEDORA-2018-866bd0e3c2
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874746");
-  script_version("$Revision: 10371 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-29 15:27:39 +0200 (Fri, 29 Jun 2018) $");
+  script_version("$Revision: 12938 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-04 08:18:11 +0100 (Fri, 04 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-06-29 10:56:15 +0200 (Fri, 29 Jun 2018)");
   script_cve_id("CVE-2018-5801");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for dcraw FEDORA-2018-866bd0e3c2");
   script_tag(name:"summary", value:"Check the version of dcraw");

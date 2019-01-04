@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dolibarr_600_mult_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
+# $Id: gb_dolibarr_600_mult_vuln.nasl 12936 2019-01-04 04:46:08Z ckuersteiner $
 #
 # Dolibarr Version 6.0.0 is vulnerable to different attacks, like XSS or arbitrary code execution
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113000");
-  script_version("$Revision: 11874 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 12936 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-04 05:46:08 +0100 (Fri, 04 Jan 2019) $");
   script_tag(name:"creation_date", value:"2017-09-19 08:36:42 +0200 (Tue, 19 Sep 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -48,7 +48,7 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_dolibarr_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_mandatory_keys("Dolibarr/installed");
+  script_mandatory_keys("dolibarr/detected");
 
   script_tag(name:"summary", value:"This host is running an older version of Dolibarr ERP/CRM and is prone to multiple vulnerabilities");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
@@ -64,8 +64,12 @@ if(description)
 
   - Sensititve information disclosure in document.php via the file parameter");
 
-  script_tag(name:"impact", value:"Successful exploitation will allow an attacker to execute arbitrary HTML and script code in a user's browser session in the context of a vulnerable site and to cause SQL Injection attacks to gain sensitive information.");
+  script_tag(name:"impact", value:"Successful exploitation will allow an attacker to execute arbitrary HTML and
+script code in a user's browser session in the context of a vulnerable site and to cause SQL Injection attacks to
+gain sensitive information.");
+
   script_tag(name:"affected", value:"Dolibarr version 6.0.0");
+
   script_tag(name:"solution", value:"The vendor has implemented a fix for the vulnerabilities. Please upgrade your software to version 6.0.1.");
 
   script_xref(name:"URL", value:"https://github.com/Dolibarr/dolibarr/commit/d26b2a694de30f95e46ea54ea72cc54f0d38e548");
@@ -81,8 +85,8 @@ include( "version_func.inc" );
 
 if( ! port = get_app_port( cpe: CPE ) ) exit( 0 );
 if( !version = get_app_version( cpe: CPE, port: port ) ) exit( 0 );
-if( version_is_equal( version: version, test_version: "6.0.0" ) )
-{
+
+if( version_is_equal( version: version, test_version: "6.0.0" ) ) {
   report = report_fixed_ver( installed_version: version, fixed_version: "6.0.1" );
   security_message( port: port, data: report );
   exit( 0 );

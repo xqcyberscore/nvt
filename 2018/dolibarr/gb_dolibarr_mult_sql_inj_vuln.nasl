@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dolibarr_mult_sql_inj_vuln.nasl 12859 2018-12-21 08:39:42Z ckuersteiner $
+# $Id: gb_dolibarr_mult_sql_inj_vuln.nasl 12936 2019-01-04 04:46:08Z ckuersteiner $
 #
 # Dolibarr <= 7.0.3 Multiple SQL Injection Vulnerabilities
 #
@@ -28,15 +28,15 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112324");
-  script_version("$Revision: 12859 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-21 09:39:42 +0100 (Fri, 21 Dec 2018) $");
+  script_version("$Revision: 12936 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-04 05:46:08 +0100 (Fri, 04 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-07-10 13:20:11 +0200 (Tue, 10 Jul 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_cve_id("CVE-2018-13447", "CVE-2018-13448", "CVE-2018-13449", "CVE-2018-13450");
 
@@ -47,7 +47,7 @@ if( description )
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_dolibarr_detect.nasl");
-  script_mandatory_keys("Dolibarr/installed");
+  script_mandatory_keys("dolibarr/detected");
 
   script_tag(name:"summary", value:"Dolibarr is prone to multiple SQL injection vulnerabilities.");
 
@@ -68,9 +68,7 @@ if( description )
 
   script_tag(name:"affected", value:"Dolibarr through version 7.0.3.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 21st December, 2018.
-  Information regarding this issue will be updated once solution details are available. As a workaround apply the
-  referenced github code until a fully patched version becomes available.");
+  script_tag(name:"solution", value:"Update to version 8.0.0 or later.");
 
   script_xref(name:"URL", value:"https://github.com/Dolibarr/dolibarr/commit/36402c22eef49d60edd73a2f312f8e28fe0bd1cb");
 
@@ -86,7 +84,7 @@ if( ! port = get_app_port( cpe: CPE ) ) exit( 0 );
 if( ! version = get_app_version( cpe: CPE, port: port ) ) exit( 0 );
 
 if( version_is_less_equal( version: version, test_version: "7.0.3" ) ) {
-  report = report_fixed_ver( installed_version: version, fixed_version: "NoneAvailable" );
+  report = report_fixed_ver( installed_version: version, fixed_version: "8.0.0" );
   security_message( data: report, port: port );
   exit( 0 );
 }

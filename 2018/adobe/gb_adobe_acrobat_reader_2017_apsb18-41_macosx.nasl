@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_reader_2017_apsb18-41_macosx.nasl 12808 2018-12-17 13:20:13Z santu $
+# $Id: gb_adobe_acrobat_reader_2017_apsb18-41_macosx.nasl 12935 2019-01-03 20:49:20Z cfischer $
 #
 # Adobe Acrobat Reader 2017 Security Updates(apsb18-41)-MAC OS X
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814388");
-  script_version("$Revision: 12808 $");
+  script_version("$Revision: 12935 $");
   script_cve_id("CVE-2018-15998", "CVE-2018-15987", "CVE-2018-16004", "CVE-2018-19720",
                 "CVE-2018-16045", "CVE-2018-16044", "CVE-2018-16018", "CVE-2018-19715",
                 "CVE-2018-19713", "CVE-2018-19708", "CVE-2018-19707", "CVE-2018-19700",
@@ -54,7 +54,7 @@ if(description)
                 "CVE-2018-15986", "CVE-2018-16042");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-17 14:20:13 +0100 (Mon, 17 Dec 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-03 21:49:20 +0100 (Thu, 03 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-12-13 12:23:21 +0530 (Thu, 13 Dec 2018)");
   script_name("Adobe Reader 2017 Security Updates(apsb18-41)-MAC OS X");
 
@@ -98,20 +98,18 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_macosx.nasl");
-  script_mandatory_keys("");
+  script_mandatory_keys("Adobe/Reader/MacOSX/Version");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");
 
-infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE )) exit(0);
 readerVer = infos['version'];
 InstallPath = infos['location'];
 
-if(version_in_range(version:readerVer, test_version:"17.0", test_version2:"17.011.30109"))
-{
+if(version_in_range(version:readerVer, test_version:"17.0", test_version2:"17.011.30109")){
   report = report_fixed_ver(installed_version:readerVer, fixed_version:"2017.011.30110", install_path:InstallPath);
   security_message(data:report);
   exit(0);

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tp_link_tl_r600vpn_mult_vuln.nasl 12427 2018-11-20 03:39:33Z ckuersteiner $
+# $Id: gb_tp_link_tl_r600vpn_mult_vuln.nasl 12938 2019-01-04 07:18:11Z asteins $
 #
 # TP-Link TL-R600VPN Multiple Vulnerabilities
 #
@@ -28,11 +28,11 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141702");
-  script_version("$Revision: 12427 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-20 04:39:33 +0100 (Tue, 20 Nov 2018) $");
+  script_version("$Revision: 12938 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-04 08:18:11 +0100 (Fri, 04 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-11-20 08:40:10 +0700 (Tue, 20 Nov 2018)");
-  script_tag(name:"cvss_base", value:"7.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
 
   script_cve_id("CVE-2018-3948", "CVE-2018-3949", "CVE-2018-3950", "CVE-2018-3951");
 

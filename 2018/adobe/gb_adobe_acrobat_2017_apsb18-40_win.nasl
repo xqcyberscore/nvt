@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_2017_apsb18-40_win.nasl 12477 2018-11-22 07:50:21Z cfischer $
+# $Id: gb_adobe_acrobat_2017_apsb18-40_win.nasl 12938 2019-01-04 07:18:11Z asteins $
 #
 # Adobe Acrobat 2017 Information Disclosure Vulnerability(apsb18-40)-Windows
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:adobe:acrobat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814184");
-  script_version("$Revision: 12477 $");
+  script_version("$Revision: 12938 $");
   script_cve_id("CVE-2018-15979");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-22 08:50:21 +0100 (Thu, 22 Nov 2018) $");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-04 08:18:11 +0100 (Fri, 04 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-11-15 12:19:56 +0530 (Thu, 15 Nov 2018)");
   script_name("Adobe Acrobat 2017 Information Disclosure Vulnerability(apsb18-40)-Windows");
 

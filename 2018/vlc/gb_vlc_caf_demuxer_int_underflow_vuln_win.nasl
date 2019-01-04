@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_caf_demuxer_int_underflow_vuln_win.nasl 12814 2018-12-18 07:47:12Z cfischer $
+# $Id: gb_vlc_caf_demuxer_int_underflow_vuln_win.nasl 12938 2019-01-04 07:18:11Z asteins $
 #
 # VLC Media Player CAF Demuxer Integer Underflow Vulnerability (Windows)
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814375");
-  script_version("$Revision: 12814 $");
+  script_version("$Revision: 12938 $");
   script_cve_id("CVE-2018-19857");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-18 08:47:12 +0100 (Tue, 18 Dec 2018) $");
+  script_tag(name:"cvss_base", value:"6.4");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-04 08:18:11 +0100 (Fri, 04 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-12-17 10:49:31 +0530 (Mon, 17 Dec 2018)");
   ## Not detecting patch lavel
   script_tag(name:"qod", value:"50");

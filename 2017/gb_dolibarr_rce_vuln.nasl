@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dolibarr_rce_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
+# $Id: gb_dolibarr_rce_vuln.nasl 12936 2019-01-04 04:46:08Z ckuersteiner $
 #
 # Dolibarr ERP/CRM Remote Code Execution Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:dolibarr:dolibarr';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106908");
-  script_version("$Revision: 12106 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
+  script_version("$Revision: 12936 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-04 05:46:08 +0100 (Fri, 04 Jan 2019) $");
   script_tag(name:"creation_date", value:"2017-06-26 15:10:30 +0700 (Mon, 26 Jun 2017)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -49,7 +49,7 @@ if (description)
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_dolibarr_detect.nasl");
-  script_mandatory_keys("Dolibarr/installed");
+  script_mandatory_keys("dolibarr/detected");
 
   script_tag(name:"summary", value:"Dolibarr ERP/CRM allows low-privilege users to upload files of dangerous
 types, which can result in arbitrary code execution within the context of the vulnerable application.");

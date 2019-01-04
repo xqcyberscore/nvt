@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service_nmap.nasl 11943 2018-10-17 14:46:48Z cfischer $
+# $Id: find_service_nmap.nasl 12934 2019-01-03 20:41:17Z cfischer $
 #
-# Service Detection with nmap
+# Service Detection (unknown) with nmap
 #
 # Authors:
 # Thomas Reinke
@@ -37,12 +37,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.66286");
-  script_version("$Revision: 11943 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-17 16:46:48 +0200 (Wed, 17 Oct 2018) $");
+  script_version("$Revision: 12934 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-03 21:41:17 +0100 (Thu, 03 Jan 2019) $");
   script_tag(name:"creation_date", value:"2009-11-18 19:41:26 +0100 (Wed, 18 Nov 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
-  script_name("Service Detection with nmap");
+  script_name("Service Detection (unknown) with nmap");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2009 E-Soft Inc. http://www.securityspace.com");
   script_family("Service detection");
@@ -53,7 +53,8 @@ if(description)
   script_mandatory_keys("Tools/Present/nmap");
 
   script_tag(name:"summary", value:"This plugin performs service detection by launching nmap's
-  service probe (nmap -sV) against ports that are running unidentified services.
+  service probe (nmap -sV) against ports that are running services marked as 'unknown' and where
+  unidentified so far.
 
   The actual reporting takes place in the separate NVT 'Unknown OS and Service Banner Reporting'
   OID: 1.3.6.1.4.1.25623.1.0.108441.");
@@ -80,9 +81,14 @@ if( isnull( extract ) || revcomp( a:extract[1], b:"4.62" ) < 0 ) {
 # This will fork. Potential issue if large # of unknown services.
 # (But then the other find_service*.nasl scripts have the same problem.
 port = get_kb_item( "Services/unknown" );
-if( ! port ) exit( 0 );
-if( ! get_port_state( port ) ) exit( 0 );
-if( ! service_is_unknown( port:port ) ) exit( 0 );
+if( ! port )
+  exit( 0 );
+
+if( ! get_port_state( port ) )
+  exit( 0 );
+
+if( ! service_is_unknown( port:port ) )
+  exit( 0 );
 
 # nb: Check if we can still open that port before throwing nmap on it
 soc = open_sock_tcp( port, transport:ENCAPS_IP );
@@ -145,7 +151,7 @@ if( strlen( servicesig ) > 0 ) {
       register_service( port:port, proto:servicesig );
   }
 
-  report = 'Nmap service detection result for this port: ' + servicesig;
+  report = 'Nmap service detection (unknown) result for this port: ' + servicesig;
 
   if( guess ) {
     command = "nmap -sV -Pn -p " + port + " " + ip;
@@ -154,7 +160,7 @@ if( strlen( servicesig ) > 0 ) {
     report += "' and submit a possible collected fingerprint to the nmap database.";
   }
 
-  set_kb_item( name:"unknown_service_report/nmap/" + port + "/report", value:report );
+  set_kb_item( name:"unknown_service_report/nmap/unknown/" + port + "/report", value:report );
 }
 
 exit( 0 );

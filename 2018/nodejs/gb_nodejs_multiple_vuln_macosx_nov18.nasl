@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nodejs_multiple_vuln_macosx_nov18.nasl 12577 2018-11-29 11:43:34Z santu $
+# $Id: gb_nodejs_multiple_vuln_macosx_nov18.nasl 12938 2019-01-04 07:18:11Z asteins $
 #
 # Node.js Multiple Vulnerabilities-Nov18 (Mac OS X)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:nodejs:node.js";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814517");
-  script_version("$Revision: 12577 $");
+  script_version("$Revision: 12938 $");
   script_cve_id("CVE-2018-12121", "CVE-2018-12122", "CVE-2018-12123");
-  script_tag(name:"cvss_base", value:"7.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-29 12:43:34 +0100 (Thu, 29 Nov 2018) $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-04 08:18:11 +0100 (Fri, 04 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-11-29 13:13:28 +0530 (Thu, 29 Nov 2018)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Node.js Multiple Vulnerabilities-Nov18 (Mac OS X)");

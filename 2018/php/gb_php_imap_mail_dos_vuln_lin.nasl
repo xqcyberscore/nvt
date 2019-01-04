@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_imap_mail_dos_vuln_lin.nasl 12752 2018-12-11 08:33:24Z cfischer $
+# $Id: gb_php_imap_mail_dos_vuln_lin.nasl 12938 2019-01-04 07:18:11Z asteins $
 #
 # PHP 'CVE-2018-19935' - 'imap_mail' Denial of Service Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108505");
-  script_version("$Revision: 12752 $");
+  script_version("$Revision: 12938 $");
   script_cve_id("CVE-2018-19935");
   script_bugtraq_id(106143);
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-11 09:33:24 +0100 (Tue, 11 Dec 2018) $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-04 08:18:11 +0100 (Fri, 04 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-12-10 15:59:23 +0100 (Mon, 10 Dec 2018)");
   script_name("PHP 'CVE-2018-19935' - 'imap_mail' Denial of Service Vulnerability (Linux)");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");

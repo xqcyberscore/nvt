@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xerox_printer_detect.nasl 9972 2018-05-26 12:31:48Z cfischer $
+# $Id: gb_xerox_printer_detect.nasl 12940 2019-01-04 09:23:20Z ckuersteiner $
 #
-# Xerox Printer Detection
+# Xerox Printer Detection (HTTP)
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -28,12 +28,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103648");
-  script_version("$Revision: 9972 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-26 14:31:48 +0200 (Sat, 26 May 2018) $");
+  script_version("$Revision: 12940 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-04 10:23:20 +0100 (Fri, 04 Jan 2019) $");
   script_tag(name:"creation_date", value:"2013-01-30 14:31:24 +0100 (Wed, 30 Jan 2013)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_name("Xerox Printer Detection");
+
+  script_name("Xerox Printer Detection (HTTP)");
+
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
@@ -74,38 +76,40 @@ foreach url (keys(urls)) {
     model = chomp(match[1]);
 
     set_kb_item(name:"target_is_printer", value:TRUE);
-    set_kb_item(name:"xerox_printer/installed", value:TRUE);
-    set_kb_item(name:"xerox_model", value:model);
+    set_kb_item(name: "xerox_printer/detected", value:TRUE);
+    set_kb_item(name: "xerox_printer/http/detected", value:TRUE);
+    set_kb_item(name: "xerox_printer/http/port", value: port);
+    set_kb_item(name: "xerox_printer/http/" + port + "/model", value: model);
 
-    cpe = build_xerox_cpe(model:model);
-
-    register_product(cpe:cpe, location:port + "/tcp", port:port);
-
-    log_message(data:"The remote Host is a Xerox " + model + " printer device.\nCPE: " + cpe + "\nConcluded: " + match[0], port:port);
-    pref = get_kb_item("global_settings/exclude_printers");
-    if(pref == "yes") {
-      log_message(port:port, data:'The remote host is a printer. The scan has been disabled against this host.\nIf you want to scan the remote host, uncheck the "Exclude printers from scan" option and re-scan it.');
-      set_kb_item(name:"Host/dead", value:TRUE);
+    # AltaLink
+    # <tr ><td>Device Software:</td><td>100.002.008.05702</td></tr>
+    vers = eregmatch(pattern: "Device Software:</td><td>([0-9.]+)<", string: buf);
+    if (!isnull(vers[1])) {
+      set_kb_item(name: "xerox_printer/http/" + port + "/fw_version", value: vers[1]);
+      set_kb_item(name: "xerox_printer/http/" + port + "/concluded", value: vers[0]);
+      set_kb_item(name: "xerox_printer/http/" + port + "/concludedUrl", value: url);
     }
+    else {
+      # DocuPrint
+      # Version</td><td class=std_2>201210101131</td></tr>
+      vers = eregmatch(pattern: "Version</td><td class=std_2>([0-9]+)<", string: buf);
+      if (!isnull(vers[1])) {
+        set_kb_item(name: "xerox_printer/http/" + port + "/fw_version", value: vers[1]);
+        set_kb_item(name: "xerox_printer/http/" + port + "/concluded", value: vers[0]);
+        set_kb_item(name: "xerox_printer/http/" + port + "/concludedUrl", value: url);
+      }
+    }
+
     exit(0);
   }
 
   else if("HTTP/1.1 401" >< buf && "CentreWare Internet Services" >< buf)  {
 
     set_kb_item(name:"target_is_printer", value:TRUE);
-    set_kb_item(name:"xerox_printer/installed", value:TRUE);
-    set_kb_item(name:"xerox_model", value:"generic_basic_auth");
+    set_kb_item(name:"xerox_printer/detected", value:TRUE);
+    set_kb_item(name: "xerox_printer/http/detected", value:TRUE);
+    set_kb_item(name: "xerox_printer/http/port", value: port);
 
-    cpe = "cpe:/h:xerox";
-    register_product(cpe:cpe, location:port + "/tcp", port:port);
-
-    log_message(port:port, data:"The remote Host is an unknown xerox printer device.\nCPE: " + cpe + "\n");
-
-    pref = get_kb_item("global_settings/exclude_printers");
-    if(pref == "yes") {
-      log_message(port:port, data:'The remote host is a printer. The scan has been disabled against this host.\nIf you want to scan the remote host, uncheck the "Exclude printers from scan" option and re-scan it.');
-      set_kb_item(name:"Host/dead", value:TRUE);
-    }
     exit(0);
   }
 }

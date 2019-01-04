@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3839_1.nasl 12755 2018-12-11 10:50:43Z santu $
+# $Id: gb_ubuntu_USN_3839_1.nasl 12938 2019-01-04 07:18:11Z asteins $
 #
 # Ubuntu Update for wavpack USN-3839-1
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843847");
-  script_version("$Revision: 12755 $");
+  script_version("$Revision: 12938 $");
   script_cve_id("CVE-2018-19840", "CVE-2018-19841");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-11 11:50:43 +0100 (Tue, 11 Dec 2018) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-04 08:18:11 +0100 (Fri, 04 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-12-07 07:39:36 +0100 (Fri, 07 Dec 2018)");
   script_name("Ubuntu Update for wavpack USN-3839-1");
   script_category(ACT_GATHER_INFO);

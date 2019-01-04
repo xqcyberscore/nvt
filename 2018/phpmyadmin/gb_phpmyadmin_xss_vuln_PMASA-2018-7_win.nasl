@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_xss_vuln_PMASA-2018-7_win.nasl 12764 2018-12-12 07:44:24Z cfischer $
+# $Id: gb_phpmyadmin_xss_vuln_PMASA-2018-7_win.nasl 12938 2019-01-04 07:18:11Z asteins $
 #
 # phpMyAdmin 4.7.0 <= 4.7.6, 4.8.0 <= 4.8.3 XSRF/CSRF Vulnerability - PMASA-2018-7 (Windows)
 #
@@ -30,11 +30,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108516");
-  script_version("$Revision: 12764 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-12 08:44:24 +0100 (Wed, 12 Dec 2018) $");
+  script_version("$Revision: 12938 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-04 08:18:11 +0100 (Fri, 04 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-12-12 07:54:53 +0100 (Wed, 12 Dec 2018)");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-2018-19969");
   script_name("phpMyAdmin 4.7.0 <= 4.7.6, 4.8.0 <= 4.8.3 XSRF/CSRF Vulnerability - PMASA-2018-7 (Windows)");
   script_category(ACT_GATHER_INFO);

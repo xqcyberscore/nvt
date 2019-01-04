@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adiscon_log_analyzer_xss_vuln_dec18.nasl 12773 2018-12-12 12:42:28Z jschulte $
+# $Id: gb_adiscon_log_analyzer_xss_vuln_dec18.nasl 12938 2019-01-04 07:18:11Z asteins $
 #
 # Adiscon LogAnalyzer <= 4.1.6 XSS Vulnerability
 #
@@ -28,11 +28,11 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113316");
-  script_version("$Revision: 12773 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-12 13:42:28 +0100 (Wed, 12 Dec 2018) $");
+  script_version("$Revision: 12938 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-04 08:18:11 +0100 (Fri, 04 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-12-12 13:10:00 +0100 (Wed, 12 Dec 2018)");
-  script_tag(name:"cvss_base", value:"6.4");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_tag(name:"qod_type", value:"remote_vul");
 

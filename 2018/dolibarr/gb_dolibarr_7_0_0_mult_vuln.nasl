@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dolibarr_7_0_0_mult_vuln.nasl 12368 2018-11-16 03:53:29Z ckuersteiner $
+# $Id: gb_dolibarr_7_0_0_mult_vuln.nasl 12936 2019-01-04 04:46:08Z ckuersteiner $
 #
 # Dolibarr 7.0.0 Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113155");
-  script_version("$Revision: 12368 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 04:53:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12936 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-04 05:46:08 +0100 (Fri, 04 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-04-11 13:19:33 +0200 (Wed, 11 Apr 2018)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -47,7 +47,7 @@ if( description )
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_dolibarr_detect.nasl");
-  script_mandatory_keys("Dolibarr/installed");
+  script_mandatory_keys("dolibarr/detected");
 
   script_tag(name:"summary", value:"Dolibarr ERP / CRM is prone to multiple vulnerabilities.");
 

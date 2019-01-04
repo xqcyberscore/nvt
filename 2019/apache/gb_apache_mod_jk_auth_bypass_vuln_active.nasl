@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_mod_jk_auth_bypass_vuln_active.nasl 12929 2019-01-03 10:43:59Z asteins $
+# $Id: gb_apache_mod_jk_auth_bypass_vuln_active.nasl 12936 2019-01-04 04:46:08Z ckuersteiner $
 #
 # Apache Tomcat JK Connector (mod_jk) < 1.2.46 Authentication Bypass Vulnerability (Active Check)
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:apache:mod_jk";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141821");
-  script_version("$Revision: 12929 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-03 11:43:59 +0100 (Thu, 03 Jan 2019) $");
+  script_version("$Revision: 12936 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-04 05:46:08 +0100 (Fri, 04 Jan 2019) $");
   script_tag(name:"creation_date", value:"2019-01-03 11:48:24 +0700 (Thu, 03 Jan 2019)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -59,7 +59,7 @@ was not intended for clients accessing the application via the reverse proxy. It
 configurations for a specially constructed request to bypass the access controls configured in httpd. While there
 is some overlap between this issue and CVE-2018-1323, they are not identical.");
 
-  script_tag(name:"vuldetect", value:"Sends a crafed HTTP GET request and checks the response.");
+  script_tag(name:"vuldetect", value:"Sends a crafted HTTP GET request and checks the response.");
 
   script_tag(name:"affected", value:"Apache Tomcat JK mod_jk Connector 1.2.0 to 1.2.44");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dolibar_xss_vuln1.nasl 12116 2018-10-26 10:01:35Z mmartin $
+# $Id: gb_dolibar_xss_vuln1.nasl 12936 2019-01-04 04:46:08Z ckuersteiner $
 #
 # Dolibarr < 7.0.1 XSS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:dolibarr:dolibarr";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140652");
-  script_version("$Revision: 12116 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_version("$Revision: 12936 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-04 05:46:08 +0100 (Fri, 04 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-01-04 13:51:40 +0700 (Thu, 04 Jan 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -49,7 +49,7 @@ if (description)
   script_copyright("This script is Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_dolibarr_detect.nasl");
-  script_mandatory_keys("Dolibarr/installed");
+  script_mandatory_keys("dolibarr/detected");
 
   script_tag(name:"summary", value:"Dolibarr ERP/CRM is prone to a cross-site scripting vulnerability.");
 

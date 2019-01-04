@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dolibarr_crm_command_injection_vuln.nasl 12338 2018-11-13 14:51:17Z asteins $
+# $Id: gb_dolibarr_crm_command_injection_vuln.nasl 12936 2019-01-04 04:46:08Z ckuersteiner $
 #
 # Dolibarr CRM Command Injection Vulnerability
 #
@@ -23,16 +23,18 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/a:dolibarr:dolibarr";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807851");
-  script_version("$Revision: 12338 $");
+  script_version("$Revision: 12936 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-04 05:46:08 +0100 (Fri, 04 Jan 2019) $");
   script_tag(name:"creation_date", value:"2016-06-30 11:22:02 +0530 (Thu, 30 Jun 2016)");
+
   script_name("Dolibarr CRM Command Injection Vulnerability");
 
   script_tag(name:"summary", value:"This host is installed with Dolibarr CRM
@@ -60,26 +62,26 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("gb_dolibarr_detect.nasl");
-  script_mandatory_keys("Dolibarr/installed");
+  script_mandatory_keys("dolibarr/detected");
   script_require_ports("Services/www", 80);
   script_xref(name:"URL", value:"https://www.dolibarr.org");
+
   exit(0);
 }
 
 include("version_func.inc");
 include("host_details.inc");
 
-if(!dolPort = get_app_port(cpe:CPE)){
+if(!dolPort = get_app_port(cpe:CPE))
   exit(0);
-}
 
-if(!dolVer = get_app_version(cpe:CPE, port:dolPort)){
+if(!dolVer = get_app_version(cpe:CPE, port:dolPort))
   exit(0);
-}
 
-if(version_is_less(version:dolVer, test_version:"3.9.1"))
-{
+if(version_is_less(version:dolVer, test_version:"3.9.1")) {
   report = report_fixed_ver(installed_version:dolVer, fixed_version:"3.9.1");
   security_message(data:report, port:dolPort);
   exit(0);
 }
+
+exit(99);

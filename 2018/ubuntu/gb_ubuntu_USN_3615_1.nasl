@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3615_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_ubuntu_USN_3615_1.nasl 12938 2019-01-04 07:18:11Z asteins $
 #
 # Ubuntu Update for libraw USN-3615-1
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843495");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12938 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-04 08:18:11 +0100 (Fri, 04 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-04-04 08:33:16 +0200 (Wed, 04 Apr 2018)");
   script_cve_id("CVE-2017-16909", "CVE-2017-16910", "CVE-2018-5800", "CVE-2018-5801",
                 "CVE-2018-5802");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for libraw USN-3615-1");
   script_tag(name:"summary", value:"The remote host is missing an update for the 'libraw'

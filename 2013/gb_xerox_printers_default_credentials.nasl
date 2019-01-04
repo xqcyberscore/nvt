@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xerox_printers_default_credentials.nasl 11056 2018-08-20 13:34:00Z mmartin $
+# $Id: gb_xerox_printers_default_credentials.nasl 12940 2019-01-04 09:23:20Z ckuersteiner $
 #
 # Xerox Printer Default Account Authentication Bypass Vulnerability
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103649");
-  script_version("$Revision: 11056 $");
+  script_version("$Revision: 12940 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-04 10:23:20 +0100 (Fri, 04 Jan 2019) $");
   script_tag(name:"creation_date", value:"2013-01-30 15:51:27 +0100 (Wed, 30 Jan 2013)");
   script_name("Xerox Printer Default Account Authentication Bypass Vulnerability");
   script_category(ACT_ATTACK);
@@ -39,7 +39,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
   script_dependencies("gb_xerox_printer_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_mandatory_keys("xerox_printer/installed");
+  script_mandatory_keys("xerox_printer/http/detected");
 
   script_xref(name:"URL", value:"http://www.h-online.com/security/news/item/Report-Thousands-of-embedded-systems-on-the-net-without-protection-1446441.html");
 
@@ -64,9 +64,11 @@ include("http_keepalive.inc");
 include("misc_func.inc"); # For base64() in check_xerox_default_login
 include("xerox_printers.inc");
 
-port = get_http_port( default:80 );
+port = get_kb_item("xerox_printer/http/port");
+if (!port)
+  exit(0);
 
-model = get_kb_item( "xerox_model" );
+model = get_kb_item("xerox_printer/http/" + port + "/model");
 if( ! model ) exit( 0 );
 
 ret = check_xerox_default_login( model:model, port:port );

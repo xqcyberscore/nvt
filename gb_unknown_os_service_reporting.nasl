@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_unknown_os_service_reporting.nasl 11748 2018-10-04 10:12:39Z cfischer $
+# $Id: gb_unknown_os_service_reporting.nasl 12934 2019-01-03 20:41:17Z cfischer $
 #
 # Unknown OS and Service Banner Reporting
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108441");
-  script_version("$Revision: 11748 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-04 12:12:39 +0200 (Thu, 04 Oct 2018) $");
+  script_version("$Revision: 12934 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-03 21:41:17 +0100 (Thu, 03 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-05-02 10:53:41 +0200 (Wed, 02 May 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -37,7 +37,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Service detection");
-  script_dependencies("unknown_services.nasl", "find_service_nmap.nasl", "os_detection.nasl");
+  script_dependencies("unknown_services.nasl", "find_service_nmap.nasl",
+                      "os_detection.nasl", "find_service_nmap_wrapped.nasl");
   script_mandatory_keys("unknown_os_or_service/available");
 
   script_xref(name:"URL", value:"https://community.greenbone.net/c/vulnerability-tests");
@@ -47,7 +48,9 @@ if(description)
 
   - Collect banner of unknown services (OID: 1.3.6.1.4.1.25623.1.0.11154)
 
-  - Service Detection with nmap (OID: 1.3.6.1.4.1.25623.1.0.66286)
+  - Service Detection (unknown) with nmap (OID: 1.3.6.1.4.1.25623.1.0.66286)
+
+  - Service Detection (wrapped) with nmap (OID: 1.3.6.1.4.1.25623.1.0.108525)
 
   - OS Detection Consolidation and Reporting (OID: 1.3.6.1.4.1.25623.1.0.105937)
 
@@ -76,14 +79,14 @@ if( unknown_os_banners ) {
   keys = sort( keys( unknown_os_banners ) );
 
   foreach key( keys ) {
-    tmp = split( key, sep:"/", keep:FALSE );
-    oid = tmp[2];
-    port = tmp[3];
+    tmp   = split( key, sep:"/", keep:FALSE );
+    oid   = tmp[2];
+    port  = tmp[3];
     proto = tmp[4];
     banner_type_short = tmp[5];
 
     banner = get_kb_item( "os_detection_report/unknown_os_banner/" + oid + "/" + port + "/" + proto + "/" + banner_type_short + "/banner" );
-    type = get_kb_item( "os_detection_report/unknown_os_banner/" + oid + "/" + port + "/" + proto + "/" + banner_type_short + "/type_full" );
+    type   = get_kb_item( "os_detection_report/unknown_os_banner/" + oid + "/" + port + "/" + proto + "/" + banner_type_short + "/type_full" );
 
     report += '\n\nBanner: ' + banner + '\n';
     report += "Identified from: " + type;
@@ -106,32 +109,51 @@ if( unknown_service_banners ) {
     tmp  = split( unknown_service_banner, sep:"/", keep:FALSE );
     port = tmp[2];
 
-    banner  = get_kb_item( "unknown_service_report/unknown_banner/" + port + "/report" );
-    report += banner;
+    banner = get_kb_item( "unknown_service_report/unknown_banner/" + port + "/report" );
+    if( banner )
+      report += banner;
 
     # Append a possible existing nmap report to this to have all info collected at one place.
-    nmap_report = get_kb_item( "unknown_service_report/nmap/" + port + "/report" );
-    if( nmap_report ) {
-      report += '\n\n' + nmap_report;
-      nmap_already_reported[port] = TRUE;
+    nmap_reports = get_kb_list( "unknown_service_report/nmap/*/" + port + "/report" );
+
+    if( nmap_reports ) {
+
+      # Sort to not report changes on delta reports if just the order is different
+      keys = sort( keys( nmap_reports ) );
+
+      foreach nmap_report( keys ) {
+
+        tmp  = split( nmap_report, sep:"/", keep:FALSE );
+        type = tmp[2];
+
+        _report = get_kb_item( "unknown_service_report/nmap/" + type + "/" + port + "/report" );
+        if( _report ) {
+          report += '\n\n' + _report;
+          nmap_already_reported[type+port] = TRUE;
+        }
+      }
     }
     log_message( port:port, data:report );
   }
 }
 
-nmap_reports = get_kb_list( "unknown_service_report/nmap/*/report" );
+nmap_reports = get_kb_list( "unknown_service_report/nmap/*/*/report" );
 if( nmap_reports ) {
 
   foreach nmap_report( keys( nmap_reports ) ) {
 
     tmp  = split( nmap_report, sep:"/", keep:FALSE );
-    port = tmp[2];
+    type = tmp[2];
+    port = tmp[3];
 
-    if( nmap_already_reported[port] ) continue; # This report was already appended above...
+    if( nmap_already_reported[type+port] )
+      continue; # This report was already appended above...
 
-    report = get_kb_item( "unknown_service_report/nmap/" + port + "/report" );
-    nmap_already_reported[port] = TRUE;
-    log_message( port:port, data:report );
+    report = get_kb_item( "unknown_service_report/nmap/" + type + "/" + port + "/report" );
+    if( report ) {
+      nmap_already_reported[type+port] = TRUE;
+      log_message( port:port, data:report );
+    }
   }
 }
 

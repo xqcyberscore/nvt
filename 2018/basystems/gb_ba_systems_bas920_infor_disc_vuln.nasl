@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ba_systems_bas920_infor_disc_vuln.nasl 11759 2018-10-05 09:53:49Z ckuersteiner $
+# $Id: gb_ba_systems_bas920_infor_disc_vuln.nasl 12937 2019-01-04 07:15:01Z asteins $
 #
 # Building Automation Systems BAS920 Information Disclosure Vulnerability
 #
@@ -29,20 +29,20 @@ CPE = "cpe:/h:building_automation_systems:bas";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812372");
-  script_version("$Revision: 11759 $");
+  script_version("$Revision: 12937 $");
   script_cve_id("CVE-2017-17974");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 11:53:49 +0200 (Fri, 05 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-04 08:15:01 +0100 (Fri, 04 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-01-03 11:58:58 +0530 (Wed, 03 Jan 2018)");
 
   script_name("Building Automation Systems BAS920 Information Disclosure Vulnerability");
 
   script_tag(name:"summary", value:"The host is running Building Automation Systems
-  BAS920 and is prone to information disclosure vulnerability.");
+  BAS920 and is prone to an information disclosure vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Send the crafted http GET request
-  and check whether it is able to read the sensitive information or not.");
+  script_tag(name:"vuldetect", value:"Sends the crafted http GET request
+  and checks whether it is able to read the sensitive information or not.");
 
   script_tag(name:"insight", value:"The flaw exists due to improper access control
   mechanisms in the device.");
@@ -54,10 +54,12 @@ if(description)
   Firmware 01.01.00*, HTTPserv 00002, and Script 02.*. Other models may be also
   affected.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 05th October, 2018. Information
-regarding this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since
+  the disclosure of this vulnerability. Likely none will be provided anymore. General solution options
+  are to upgrade to a newer release, disable respective features, remove the product or replace the
+  product by another one.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_tag(name:"qod_type", value:"remote_vul");
 

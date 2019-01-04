@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wago_plc_consolidation.nasl 12700 2018-12-07 08:18:55Z ckuersteiner $
+# $Id: gb_wago_plc_consolidation.nasl 12940 2019-01-04 09:23:20Z ckuersteiner $
 #
 # WAGO PLC Detection Consolidation
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141766");
-  script_version("$Revision: 12700 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-07 09:18:55 +0100 (Fri, 07 Dec 2018) $");
+  script_version("$Revision: 12940 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-04 10:23:20 +0100 (Fri, 04 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-12-07 12:20:20 +0700 (Fri, 07 Dec 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -156,9 +156,9 @@ if (snmp_ports = get_kb_list("wago_plc/snmp/port")) {
     if (concluded)
       extra += '  Concluded from SNMP SysDesc: ' + concluded + '\n';
 
-    register_product(cpe: app_cpe, location: port + '/tcp', port: port, service: "snmp", proto: "udp");
-    register_product(cpe: os_cpe, location: port + '/tcp', port: port, service: "snmp", proto: "udp");
-    register_product(cpe: hw_cpe, location: port + '/tcp', port: port, service: "snmp", proto: "udp");
+    register_product(cpe: app_cpe, location: port + '/udp', port: port, service: "snmp", proto: "udp");
+    register_product(cpe: os_cpe, location: port + '/udp', port: port, service: "snmp", proto: "udp");
+    register_product(cpe: hw_cpe, location: port + '/udp', port: port, service: "snmp", proto: "udp");
   }
 }
 

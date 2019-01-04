@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dolibarr_xss_vuln_dec18.nasl 12892 2018-12-28 12:01:20Z asteins $
+# $Id: gb_dolibarr_xss_vuln_dec18.nasl 12936 2019-01-04 04:46:08Z ckuersteiner $
 #
-# Dolibarr <= 8.0.3 XSS Vulnerability
+# Dolibarr < 8.0.4 XSS Vulnerability
 #
 # Authors:
 # Adrian Steins <adrian.steins@greenbone.net>
@@ -30,8 +30,8 @@ CPE = "cpe:/a:dolibarr:dolibarr";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112473");
-  script_version("$Revision: 12892 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-28 13:01:20 +0100 (Fri, 28 Dec 2018) $");
+  script_version("$Revision: 12936 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-04 05:46:08 +0100 (Fri, 04 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-12-28 12:59:11 +0100 (Fri, 28 Dec 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -40,16 +40,16 @@ if (description)
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
 
-  script_name("Dolibarr <= 8.0.3 XSS Vulnerability");
+  script_name("Dolibarr < 8.0.4 XSS Vulnerability");
 
   script_category(ACT_GATHER_INFO);
 
   script_copyright("This script is Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_dolibarr_detect.nasl");
-  script_mandatory_keys("Dolibarr/installed");
+  script_mandatory_keys("dolibarr/detected");
 
   script_tag(name:"summary", value:"Dolibarr ERP/CRM is prone to a cross-site scripting vulnerability.");
 
@@ -60,8 +60,7 @@ if (description)
 
   script_tag(name:"affected", value:"Dolibarr ERP/CRM version through 8.0.3.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 28th December, 2018.
-  Information regarding this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"Update to version 8.0.4 or later.");
 
   script_xref(name:"URL", value:"https://packetstormsecurity.com/files/150623/Dolibarr-ERP-CRM-8.0.3-Cross-Site-Scripting.html");
 
@@ -77,8 +76,8 @@ if (!port = get_app_port(cpe: CPE))
 if (!version = get_app_version(cpe: CPE, port: port))
   exit(0);
 
-if (version_is_less_equal(version: version, test_version: "8.0.3")) {
-  report = report_fixed_ver(installed_version: version, fixed_version: "None Available");
+if (version_is_less(version: version, test_version: "8.0.4")) {
+  report = report_fixed_ver(installed_version: version, fixed_version: "8.0.4");
   security_message(port: port, data: report);
   exit(0);
 }

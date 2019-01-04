@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: xerox_printers.inc 11004 2018-08-16 11:18:32Z cfischer $
+# $Id: xerox_printers.inc 12940 2019-01-04 09:23:20Z ckuersteiner $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -22,7 +22,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 11004 $
+# $Revision: 12940 $
 #
 ###############################################################################
 
@@ -42,6 +42,8 @@ function get_xerox_detect_urls() {
   xerox_detect_urls['/tabsFrame.dhtml'] = '(WorkCentre [^ <]+)';                                      # WorkCentre M20i a.o.
   xerox_detect_urls['/hdjobq.htm']      = '((WorkCentre|ApeosPort-IV) [^ \r\n]+)';                    # WorkCentre M118 a.o
   xerox_detect_urls['/home.html']       = '((WorkCentre|Phaser|ColorQube) [^ \n\r<]+)';               # Phaser 3435 a.o
+  xerox_detect_urls['/properties/configuration.php'] = 'Machine Model:</td><td>Xerox (AltaLink [^<]+)'; # AltaLink
+  xerox_detect_urls['/setting/prtinfo.htm'] = 'Product Name</td><td class=std_2>(DocuPrint [^<]+)'; # DocuPrint
 
   # Detection string from dont_print_on_printers.nasl. TBD: Include here?
   # if( banner && "Server: Xerox_MicroServer/Xerox" >< banner || "Server: EWS-NIC" >< banner || "<title>DocuPrint" >< banner || "<title>Phaser" >< banner || ( "XEROX WORKCENTRE" >< banner && "Xerox Corporation. All Rights Reserved." >< banner ) || ( "DocuCentre" >< banner && "Fuji Xerox Co., Ltd." >< banner ) ) {
@@ -407,6 +409,45 @@ function build_xerox_cpe(model) {
       return cpe + ':xerox:colorqube';
     } else {
       return cpe + ':xerox:colorqube_' + m[1];
+    }
+
+  }
+
+  else if("AltaLink" >< model) {
+
+    model = tolower(model);
+    m = split(model, sep:" ", keep:FALSE);
+
+    if(isnull(m[1])) {
+      return cpe + ':xerox:altalink';
+    } else {
+      return cpe + ':xerox:altalink_' + m[1];
+    }
+
+  }
+
+  else if("ApeosPort" >< model) {
+
+    model = tolower(model);
+    m = split(model, sep:" ", keep:FALSE);
+
+    if(isnull(m[1])) {
+      return cpe + ':xerox:apeosport';
+    } else {
+      return cpe + ':xerox:apeosport_' + m[1];
+    }
+
+  }
+
+  else if("DocuPrint" >< model) {
+
+    model = tolower(model);
+    m = split(model, sep:" ", keep:FALSE);
+
+    if(isnull(m[1])) {
+      return cpe + ':xerox:docuprint';
+    } else {
+      return cpe + ':xerox:docuprint_' + m[1];
     }
 
   }
