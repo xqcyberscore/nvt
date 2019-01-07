@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_mult_vuln_PMASA-2018-6_8_win.nasl 12764 2018-12-12 07:44:24Z cfischer $
+# $Id: gb_phpmyadmin_mult_vuln_PMASA-2018-6_8_win.nasl 12954 2019-01-07 07:56:42Z cfischer $
 #
 # phpMyAdmin 4.x < 4.8.4 Multiple Vulnerabilities - PMASA-2018-6, PMASA-2018-8 (Windows)
 #
@@ -30,11 +30,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108514");
-  script_version("$Revision: 12764 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-12 08:44:24 +0100 (Wed, 12 Dec 2018) $");
+  script_version("$Revision: 12954 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-07 08:56:42 +0100 (Mon, 07 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-12-12 07:54:53 +0100 (Wed, 12 Dec 2018)");
-  script_tag(name:"cvss_base", value:"8.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_cve_id("CVE-2018-19968", "CVE-2018-19970");
   script_name("phpMyAdmin 4.x < 4.8.4 Multiple Vulnerabilities - PMASA-2018-6, PMASA-2018-8 (Windows)");
   script_category(ACT_GATHER_INFO);

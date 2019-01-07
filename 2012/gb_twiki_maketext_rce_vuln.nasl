@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_twiki_maketext_rce_vuln.nasl 11435 2018-09-17 13:44:25Z cfischer $
+# $Id: gb_twiki_maketext_rce_vuln.nasl 12952 2019-01-07 06:54:36Z ckuersteiner $
 #
 # TWiki 'MAKETEXT' variable Remote Command Execution Vulnerability
 #
@@ -29,29 +29,34 @@ CPE = "cpe:/a:twiki:twiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802048");
-  script_version("$Revision: 11435 $");
+  script_version("$Revision: 12952 $");
   script_bugtraq_id(56950);
   script_cve_id("CVE-2012-6329", "CVE-2012-6330");
   script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:44:25 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-07 07:54:36 +0100 (Mon, 07 Jan 2019) $");
   script_tag(name:"creation_date", value:"2012-12-27 12:46:41 +0530 (Thu, 27 Dec 2012)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+
   script_name("TWiki 'MAKETEXT' variable Remote Command Execution Vulnerability");
+
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_dependencies("gb_twiki_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_mandatory_keys("twiki/installed");
+  script_mandatory_keys("twiki/detected");
 
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute shell commands by
   Perl backtick (``) operators.");
+
   script_tag(name:"affected", value:"TWiki version 5.1.0 to 5.1.2, 5.0.x, 4.3.x, 4.2.x, 4.1.x, 4.0.x");
+
   script_tag(name:"insight", value:"flaw is due to improper validation of '%MAKETEXT{}%' Twiki variable
   (UserInterfaceInternationalisation is enabled) which is used to localize
   user interface content to a language of choice.");
-  script_tag(name:"solution", value:"Upgrade to TWiki-5.1.3 or later or apply patch,
-  http://twiki.org/cgi-bin/view/Codev/SecurityAlert-CVE-2012-6329");
+
+  script_tag(name:"solution", value:"Upgrade to TWiki-5.1.3 or later or apply patch.");
+
   script_tag(name:"summary", value:"The host is running TWiki and is prone to remote command execution
   vulnerability.");
 

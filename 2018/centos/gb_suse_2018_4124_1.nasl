@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852184");
-  script_version("$Revision: 12873 $");
+  script_version("$Revision: 12954 $");
   script_cve_id("CVE-2018-19968", "CVE-2018-19969", "CVE-2018-19970");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-21 15:42:20 +0100 (Fri, 21 Dec 2018) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-07 08:56:42 +0100 (Mon, 07 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-12-18 07:40:27 +0100 (Tue, 18 Dec 2018)");
   script_name("SuSE Update for phpMyAdmin openSUSE-SU-2018:4124-1 (phpMyAdmin)");
   script_category(ACT_GATHER_INFO);

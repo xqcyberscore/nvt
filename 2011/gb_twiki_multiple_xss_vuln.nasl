@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_twiki_multiple_xss_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
+# $Id: gb_twiki_multiple_xss_vuln.nasl 12952 2019-01-07 06:54:36Z ckuersteiner $
 #
 # TWiki 'newtopic' Parameter And SlideShowPlugin XSS Vulnerabilities
 #
@@ -29,25 +29,29 @@ CPE = "cpe:/a:twiki:twiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802335");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("$Revision: 12952 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-07 07:54:36 +0100 (Mon, 07 Jan 2019) $");
   script_tag(name:"creation_date", value:"2011-10-12 16:01:32 +0200 (Wed, 12 Oct 2011)");
   script_cve_id("CVE-2011-3010");
   script_bugtraq_id(49746);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+
   script_name("TWiki 'newtopic' Parameter And SlideShowPlugin XSS Vulnerabilities");
+
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_dependencies("gb_twiki_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_mandatory_keys("twiki/installed");
+  script_mandatory_keys("twiki/detected");
 
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to inject arbitrary web script
   or HTML. This may allow the attacker to steal cookie-based authentication
   credentials and to launch other attacks.");
+
   script_tag(name:"affected", value:"TWiki version prior to 5.1.0");
+
   script_tag(name:"insight", value:"Multiple flaws are due to input validation error in,
 
   - 'newtopic' parameter in bin/view/Main/Jump (when 'template' is set to
@@ -55,7 +59,9 @@ if(description)
 
   - 'lib/TWiki/Plugins/SlideShowPlugin/SlideShow.pm' in the 'SlideShowPlugin'
     pages containing a slideshow presentation.");
+
   script_tag(name:"solution", value:"upgrade to TWiki 5.1.0 or later.");
+
   script_tag(name:"summary", value:"The host is running TWiki and is prone to multiple cross site
   scripting vulnerabilities.");
 
@@ -64,7 +70,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.mavitunasecurity.com/xss-vulnerability-in-twiki5/");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_tag(name:"qod_type", value:"remote_app");
+  script_tag(name:"qod_type", value:"remote_analysis");
 
   script_xref(name:"URL", value:"http://twiki.org/cgi-bin/view/Codev/DownloadTWiki");
   exit(0);

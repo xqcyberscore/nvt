@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_twiki_csrf_vuln.nasl 4892 2016-12-30 15:39:07Z teissa $
+# $Id: gb_twiki_csrf_vuln.nasl 12952 2019-01-07 06:54:36Z ckuersteiner $
 #
 # TWiki Cross-Site Request Forgery Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:twiki:twiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800400");
-  script_version("$Revision: 4892 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-30 16:39:07 +0100 (Fri, 30 Dec 2016) $");
+  script_version("$Revision: 12952 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-07 07:54:36 +0100 (Mon, 07 Jan 2019) $");
   script_tag(name:"creation_date", value:"2009-05-11 08:41:11 +0200 (Mon, 11 May 2009)");
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
@@ -41,18 +41,19 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_twiki_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_mandatory_keys("twiki/installed");
+  script_mandatory_keys("twiki/detected");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to gain administrative
-  privileges on the target application and can cause CSRF attack.
+  privileges on the target application and can cause CSRF attack.");
 
-  Impact Level: Application");
   script_tag(name:"affected", value:"TWiki version prior to 4.3.1");
+
   script_tag(name:"insight", value:"Remote authenticated user can create a specially crafted image tag that,
-  when viewed by the target user, will update pages on the target system
-  with the privileges of the target user via HTTP requests.");
-  script_tag(name:"solution", value:"Upgrade to version 4.3.1 or later,
-  http://twiki.org/cgi-bin/view/Codev/DownloadTWiki");
+  when viewed by the target user, will update pages on the target system with the privileges of the target user
+  via HTTP requests.");
+
+  script_tag(name:"solution", value:"Upgrade to version 4.3.1 or later.");
+
   script_tag(name:"summary", value:"The host is running TWiki and is prone to Cross-Site Request
   Forgery Vulnerability.");
 
@@ -65,7 +66,6 @@ if(description)
 
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");
