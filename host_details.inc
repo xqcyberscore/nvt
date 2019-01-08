@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: host_details.inc 12843 2018-12-20 08:43:00Z cfischer $
+# $Id: host_details.inc 12957 2019-01-07 10:29:34Z cfischer $
 #
 # Centralized and organized host information base
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 12843 $
+# $Revision: 12957 $
 #
 ###############################################################################
 
@@ -1809,36 +1809,9 @@ function register_unknown_os_banner( banner, banner_type_name, banner_type_short
   banner = chomp( banner ); # Few banners have newlines at the end so removing these here
 
   # Don't report known banner were we know that it doesn't contain info about an OS here
-  # TODO: Move into the related OS detection NVTs where possible. Only keep the most generic ones in here.
-  if( banner == '* ID ("name" "Dovecot")' ||
-      banner == "+OK Dovecot ready." ||
-      banner == "220 Welcome message" || # Default welcome messages on some FTP servers
-      banner == "220 Service ready for new user." || # Default welcome messages on some FTP servers
-      banner == "SSH-2.0-RomSShell" || # Vendor: "Works with any OS vendor and will function without an OS if needed"
-      banner == "SSH-2.0-OpenSSH" ||
-      banner == "SSH-2.0-OpenSSH_" ||
-      banner == "+OK POP3 ready" ||
-      banner == "+OK POP3" ||
-      banner == "* OK IMAPrev1" ||
-      banner == "220 FTP server ready" ||
-      banner == "220 FTP server ready." ||
-      banner == "SSH-2.0-Mocana SSH" || # Cross-platform
-      banner == "login:" ||
-      banner == "Server:" ||
-      banner == "Server: " ||
-      "500 OOPS: could not bind listening IPv4 socket" >< banner || # Some broken FTP server
-      " FTP server (MikroTik " >< banner || # Already covered by gb_mikrotik_router_routeros_consolidation.nasl
+  if( banner == "login:" ||
       egrep( pattern:"^MikroTik ", string:banner ) || # Already covered by gb_mikrotik_router_routeros_consolidation.nasl
-      egrep( pattern:"^OS String: Unix; SMB String: Samba [0-9.]+[abc]?$", string:banner ) || # e.g. OS String: Unix; SMB String: Samba 4.0.9 set by smb_nativelanman.nasl
-      egrep( pattern:"^220 [^ ]+ ESMTP( Postfix| ready\.)?$", string:banner ) || # e.g. 220 hostname ESMTP, 220 mail.example.com ESMTP Postfix or 220 mail.example.com ESMTP ready.
-      egrep( pattern:"ESMTP Exim [0-9._]+ ", string:banner ) || # e.g. 220 host ESMTP Exim 4.84_2 Tue, 01 Aug 2017 13:01:18 +0200
-      egrep( pattern:"^SSH-2\.0-RomSShell_[0-9.]+$", string:banner ) || # Vendor: "Works with any OS vendor and will function without an OS if needed"
-      egrep( pattern:"^[0-9.]+$", string:banner ) || # Bind9 and MySQL. Both are often only sending e.g. 9.4.2
-      egrep( pattern:"^[0-9.]+(-[0-9.]+)?-(MariaDB|log)$", string:banner ) || # MariaDB, e.g. 5.5.5-10.1.19-MariaDB or 5.5.49-MariaDB, MySQL e.g. 5.5.54-38.6-log or 5.6.25-log
-      egrep( pattern:"^SSH-2\.0-Mocana SSH [0-9.]+$", string:banner ) || # platform independent
-      egrep( pattern:"^SSH-1\.99-OpenSSH_[0-9.p]+$", string:banner ) ||
-      egrep( pattern:"^SSH-2\.0-OpenSSH_[0-9.p]+-FIPS_hpn[0-9v]+$", string:banner ) || # SSH-2.0-OpenSSH_6.1-FIPS_hpn13v11
-      egrep( pattern:"^SSH-2\.0-OpenSSH_[0-9.p]+(\-FIPS\(capable\))?$", string:banner ) ) {
+      egrep( pattern:"^[0-9.]+$", string:banner ) ) { # Bind9 and MySQL. Both are often only sending e.g. 9.4.2
     return;
   }
 

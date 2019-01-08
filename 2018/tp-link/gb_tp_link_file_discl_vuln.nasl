@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tp_link_file_discl_vuln.nasl 11085 2018-08-22 19:33:42Z cfischer $
+# $Id: gb_tp_link_file_discl_vuln.nasl 12956 2019-01-07 10:14:49Z ckuersteiner $
 #
 # TP-Link File Disclosure Vulnerability
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141383");
-  script_version("$Revision: 11085 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 21:33:42 +0200 (Wed, 22 Aug 2018) $");
+  script_version("$Revision: 12956 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-07 11:14:49 +0100 (Mon, 07 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-08-20 15:05:36 +0700 (Mon, 20 Aug 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -56,8 +56,8 @@ admin password) which could lead to complete compromise of the device.");
   script_tag(name:"affected", value:"TP-Link RE305 v1.0, RE450 v1.0, TL-WA830RE v3.0, TL-WA850RE v2.0,
 TL-WA850RE v4.0, TL-WA850RE v5.0, TL-WA855RE v1.0, TL-WA855RE v2.0 and maybe others.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 20th August, 2018. Information regarding
-this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution is available as of 07th January, 2019.
+  Information regarding this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://www.refirmlabs.com/blog/exploiting-command-injection-bugs-tp-link-wl-wa850re-wifi-range-extender");
 

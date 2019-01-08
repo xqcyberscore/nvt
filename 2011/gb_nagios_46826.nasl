@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nagios_46826.nasl 11997 2018-10-20 11:59:41Z mmartin $
+# $Id: gb_nagios_46826.nasl 12962 2019-01-08 07:46:53Z ckuersteiner $
 #
 # Nagios 'layer' Parameter Cross-Site Scripting Vulnerabilities
 #
@@ -23,18 +23,20 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/a:nagios:nagios";
 
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103117");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("$Revision: 12962 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-08 08:46:53 +0100 (Tue, 08 Jan 2019) $");
   script_tag(name:"creation_date", value:"2011-03-11 13:29:22 +0100 (Fri, 11 Mar 2011)");
   script_cve_id("CVE-2011-1523");
   script_bugtraq_id(46826);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+
   script_name("Nagios 'layer' Parameter Cross-Site Scripting Vulnerabilities");
 
   script_xref(name:"URL", value:"https://www.securityfocus.com/bid/46826");
@@ -47,6 +49,7 @@ if (description)
   script_dependencies("nagios_detect.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("nagios/installed");
+
   script_tag(name:"summary", value:"Nagios prone to a cross-site scripting vulnerability because it fails
 to properly sanitize user-supplied input.
 
@@ -54,23 +57,24 @@ An attacker may leverage this issue to execute arbitrary script code
 in the browser of an unsuspecting user in the context of the affected
 site. This may allow the attacker to steal cookie-based authentication
 credentials and to launch other attacks.");
+
   script_tag(name:"solution", value:"Upgrade to the latest version.");
+
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-include("http_func.inc");
 include("version_func.inc");
 include("host_details.inc");
 
 if(!port = get_app_port(cpe:CPE))exit(0);
-if(vers = get_app_version(cpe:CPE, port:port)) {
 
-  if(version_in_range(version: vers, test_version:"3.2",test_version2:"3.2.4")) {
-      security_message(port:port);
-      exit(0);
-  }
+if(!vers = get_app_version(cpe:CPE, port:port))
+  exit(0);
 
+if(version_in_range(version: vers, test_version:"3.2",test_version2:"3.2.4")) {
+  security_message(port:port);
+  exit(0);
 }
 
-exit(0);
+exit(99);

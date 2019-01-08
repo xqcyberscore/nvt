@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sugarcrm_sugarcrm-sa-2018-002.nasl 12923 2019-01-02 08:18:39Z ckuersteiner $
+# $Id: gb_sugarcrm_sugarcrm-sa-2018-002.nasl 12959 2019-01-07 11:13:35Z cfischer $
 #
 # SugarCRM < 7.9.4.0 Privilege Escalation Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:sugarcrm:sugarcrm";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141816");
-  script_version("$Revision: 12923 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-02 09:18:39 +0100 (Wed, 02 Jan 2019) $");
+  script_version("$Revision: 12959 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-07 12:13:35 +0100 (Mon, 07 Jan 2019) $");
   script_tag(name:"creation_date", value:"2019-01-02 14:46:41 +0700 (Wed, 02 Jan 2019)");
   script_tag(name:"cvss_base", value:"5.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:N");
@@ -49,7 +49,7 @@ if (description)
   script_dependencies("gb_sugarcrm_detect.nasl");
   script_mandatory_keys("sugarcrm/installed");
 
-  script_tag(name:"summary", value:"SugarCRM is prone to a privilege escalation vulnerbility.");
+  script_tag(name:"summary", value:"SugarCRM is prone to a privilege escalation vulnerability.");
 
   script_tag(name:"insight", value:"When LDAP authentication is enabled, the username input is not properly
 escaped when constructing the LDAP bind filter. Depending on your LDAP configuration and setup this may result in

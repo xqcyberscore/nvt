@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_060302dc83_glibc_fc28.nasl 12661 2018-12-05 10:53:21Z santu $
+# $Id: gb_fedora_2018_060302dc83_glibc_fc28.nasl 12963 2019-01-08 07:50:52Z ckuersteiner $
 #
 # Fedora Update for glibc FEDORA-2018-060302dc83
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875304");
-  script_version("$Revision: 12661 $");
+  script_version("$Revision: 12963 $");
   script_cve_id("CVE-2018-19591", "CVE-2018-11237", "CVE-2018-11236");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-05 11:53:21 +0100 (Wed, 05 Dec 2018) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-08 08:50:52 +0100 (Tue, 08 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-12-04 08:23:10 +0100 (Tue, 04 Dec 2018)");
   script_name("Fedora Update for glibc FEDORA-2018-060302dc83");
   script_category(ACT_GATHER_INFO);

@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Mon, 07 Jan 2019 09:26:14 +0100
+# Automatically created on:  Tue, 08 Jan 2019 09:49:43 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -43941,6 +43941,7 @@
 2019/debian/deb_dla_1627.nasl: GPLv2+
 2019/debian/deb_dla_1628.nasl: GPLv2+
 2019/debian/deb_dla_1629.nasl: GPLv2+
+2019/debian/deb_dla_1630.nasl: GPLv2+
 2019/dolibarr/gb_dolibarr_mult_vuln01.nasl: GPLv2+
 2019/fedora/gb_fedora_2018_50e3877b63_php-pear_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2018_e69d2aaa60_wordpress_fc28.nasl: GPLv2+
@@ -43953,6 +43954,11 @@
 2019/opensuse/gb_suse_2018_4306_1.nasl: GPLv2+
 2019/opensuse/gb_suse_2018_4307_1.nasl: GPLv2+
 2019/opensuse/gb_suse_2018_4313_1.nasl: GPLv2+
+2019/openxchange/gb_open_xchange_appsuite_58161.nasl: GPLv2+
+2019/openxchange/gb_open_xchange_appsuite_58226.nasl: GPLv2+
+2019/openxchange/gb_open_xchange_appsuite_58282.nasl: GPLv2+
+2019/openxchange/gb_open_xchange_appsuite_58874.nasl: GPLv2+
+2019/openxchange/gb_open_xchange_appsuite_58880.nasl: GPLv2+
 2019/phpipam/gb_phpipam_mult_vuln.nasl: GPLv2+
 2019/sugarcrm/gb_sugarcrm_mult_vuln01.nasl: GPLv2+
 2019/sugarcrm/gb_sugarcrm_mult_vuln02.nasl: GPLv2+
@@ -45814,6 +45820,7 @@ gb_vimbadmin_detect.nasl: GPLv2+
 gb_virit_explorer_lite_detect.nasl: GPLv2+
 gb_visualization_library_detect_lin.nasl: GPLv2+
 gb_visualization_library_detect_win.nasl: GPLv2+
+gb_vivotek_nvr_detect.nasl: GPLv2+
 gb_vlc_media_player_detect_macosx.nasl: GPLv2+
 gb_vlc_media_player_remote_detect.nasl: GPLv2+
 gb_vmturbo_operations_manager_detect.nasl: GPLv2+

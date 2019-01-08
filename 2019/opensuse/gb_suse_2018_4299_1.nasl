@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_4299_1.nasl 12942 2019-01-04 13:53:49Z santu $
+# $Id: gb_suse_2018_4299_1.nasl 12963 2019-01-08 07:50:52Z ckuersteiner $
 #
 # SuSE Update for libraw openSUSE-SU-2018:4299-1 (libraw)
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852220");
-  script_version("$Revision: 12942 $");
+  script_version("$Revision: 12963 $");
   script_cve_id("CVE-2018-5804", "CVE-2018-5805", "CVE-2018-5806", "CVE-2018-5808", "CVE-2018-5816");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-04 14:53:49 +0100 (Fri, 04 Jan 2019) $");
+  script_tag(name:"cvss_base", value:"7.1");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-08 08:50:52 +0100 (Tue, 08 Jan 2019) $");
   script_tag(name:"creation_date", value:"2019-01-01 04:01:13 +0100 (Tue, 01 Jan 2019)");
   script_name("SuSE Update for libraw openSUSE-SU-2018:4299-1 (libraw)");
   script_category(ACT_GATHER_INFO);

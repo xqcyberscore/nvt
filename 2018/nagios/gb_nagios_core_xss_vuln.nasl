@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nagios_core_xss_vuln.nasl 12811 2018-12-18 03:22:30Z ckuersteiner $
+# $Id: gb_nagios_core_xss_vuln.nasl 12963 2019-01-08 07:50:52Z ckuersteiner $
 #
 # Nagios Core <= 4.4.2 XSS Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:nagios:nagios";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141795");
-  script_version("$Revision: 12811 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-18 04:22:30 +0100 (Tue, 18 Dec 2018) $");
+  script_version("$Revision: 12963 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-08 08:50:52 +0100 (Tue, 08 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-12-18 10:01:00 +0700 (Tue, 18 Dec 2018)");
-  script_tag(name:"cvss_base", value:"6.4");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
+  script_tag(name:"cvss_base", value:"3.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
 
   script_cve_id("CVE-2018-18245");
 
@@ -48,8 +48,8 @@ if (description)
 
   script_copyright("This script is Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_nagios_XI_detect.nasl");
-  script_mandatory_keys("nagiosxi/installed");
+  script_dependencies("nagios_detect.nasl");
+  script_mandatory_keys("nagios/installed");
 
   script_tag(name:"summary", value:"Nagios Core 4.4.2 has XSS via the alert summary reports of plugin results, as
 demonstrated by a SCRIPT element delivered by a modified check_load plugin to NRPE.");

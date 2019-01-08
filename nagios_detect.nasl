@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: nagios_detect.nasl 8983 2018-02-28 15:07:18Z cfischer $
+# $Id: nagios_detect.nasl 12962 2019-01-08 07:46:53Z ckuersteiner $
 #
 # Nagios / Nagios Core Detection
 #
@@ -27,12 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100186");
-  script_version("$Revision: 8983 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-28 16:07:18 +0100 (Wed, 28 Feb 2018) $");
+  script_version("$Revision: 12962 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-08 08:46:53 +0100 (Tue, 08 Jan 2019) $");
   script_tag(name:"creation_date", value:"2009-05-06 14:55:27 +0200 (Wed, 06 May 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+
   script_name("Nagios / Nagios Core Detection");
+
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
@@ -42,8 +44,7 @@ if(description)
 
   script_tag(name:"summary", value:"Detection of Nagios / Nagios Core.
 
-  The script sends a connection request to the server and attempts to
-  extract the version number from the reply.");
+  The script sends a connection request to the server and attempts to extract the version number from the reply.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -60,12 +61,10 @@ port = get_http_port( default:80 );
 files = make_list( "/main.php", "/main.html" );
 
 foreach dir( make_list_unique( "/nagios", "/monitoring", cgi_dirs( port:port ) ) ) {
-
   install = dir;
   if( dir == "/" ) dir = "";
 
   foreach file( files ) {
-
     url = dir + file;
     buf = http_get_cache( item:url, port:port );
     if( isnull( buf ) ) continue;
@@ -86,8 +85,6 @@ foreach dir( make_list_unique( "/nagios", "/monitoring", cgi_dirs( port:port ) )
         concluded = 'Basic realm="Nagios';
       }
 
-      tmp_version = vers + " under " + install;
-      set_kb_item( name:"www/" + port + "/nagios", value:tmp_version );
       set_kb_item( name:"nagios/installed", value:TRUE );
 
       cpe = build_cpe( value:vers, exp:"^([0-9.]+)", base:"cpe:/a:nagios:nagios:" );
@@ -95,12 +92,9 @@ foreach dir( make_list_unique( "/nagios", "/monitoring", cgi_dirs( port:port ) )
         cpe = "cpe:/a:nagios:nagios";
 
       register_product( cpe:cpe, location:install, port:port );
-      log_message( data:build_detection_report( app:"Nagios",
-                                                version:vers,
-                                                install:install,
-                                                cpe:cpe,
+      log_message( data:build_detection_report( app:"Nagios", version:vers, install:install, cpe:cpe,
                                                 concluded:concluded ),
-                                                port:port );
+                   port:port );
       exit( 0 );
     }
   }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_mail_os_detection.nasl 10792 2018-08-06 12:08:30Z cfischer $
+# $Id: sw_mail_os_detection.nasl 12958 2019-01-07 10:57:12Z cfischer $
 #
 # SMTP/POP3/IMAP Server OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111068");
-  script_version("$Revision: 10792 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-06 14:08:30 +0200 (Mon, 06 Aug 2018) $");
+  script_version("$Revision: 12958 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-07 11:57:12 +0100 (Mon, 07 Jan 2019) $");
   script_tag(name:"creation_date", value:"2015-12-11 14:00:00 +0100 (Fri, 11 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -55,487 +55,504 @@ include("pop3_func.inc");
 SCRIPT_DESC = "SMTP/POP3/IMAP Server OS Identification";
 
 ports = get_kb_list( "Services/smtp" );
-if( ! ports ) ports = make_list( 25, 587 );
+if( ! ports )
+  ports = make_list( 25, 587 );
 
 banner_type = "SMTP banner";
 
 foreach port( ports ) {
 
-  if( get_port_state( port ) ) {
+  if( ! get_port_state( port ) )
+    continue;
 
-    banner = get_smtp_banner( port:port );
+  banner = get_smtp_banner( port:port );
+  banner = chomp( banner );
 
-    if( ! banner || banner == "" || isnull( banner ) ) continue;
+  if( ! banner || banner == "" || isnull( banner ) )
+    continue;
 
-    if( "ESMTP" >< banner ) {
+  if( "ESMTP" >< banner ) {
 
-      if( "(Gentoo Linux" >< banner || "(GENTOO/GNU)" >< banner || "(Gentoo/GNU)" >< banner ||
-          "(Gentoo powered" >< banner || "(Gentoo)" >< banner || " Gentoo" >< banner || "(Gentoo/Linux" >< banner) {
-        register_and_report_os( os:"Gentoo", cpe:"cpe:/o:gentoo:linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        continue;
+    if( banner == "220 ESMTP" )
+      continue;
+
+    # e.g. 220 hostname ESMTP, 220 mail.example.com ESMTP Postfix or 220 mail.example.com ESMTP ready.
+    if( egrep( pattern:"^220 [^ ]+ ESMTP( Postfix| ready\.)?$", string:banner ) )
+      continue;
+
+    # e.g. 220 host ESMTP Exim 4.84_2 Tue, 01 Aug 2017 13:01:18 +0200
+    if( egrep( pattern:"ESMTP Exim [0-9._]+ ", string:banner ) )
+      continue;
+
+    if( "(Gentoo Linux" >< banner || "(GENTOO/GNU)" >< banner || "(Gentoo/GNU)" >< banner ||
+        "(Gentoo powered" >< banner || "(Gentoo)" >< banner || " Gentoo" >< banner || "(Gentoo/Linux" >< banner) {
+      register_and_report_os( os:"Gentoo", cpe:"cpe:/o:gentoo:linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      continue;
+    }
+
+    # e.g. 220 example.com ESMTP Xpressions Version 8.11.119 (WIN-NT) Release Build 18409 ready
+    if( "Xpressions" >< banner && "(WIN-NT)" >< banner ) {
+      register_and_report_os( os:"Microsoft Windows", cpe:"cpe:/o:microsoft:windows", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
+      continue;
+    }
+
+    if( "(Ubuntu)" >< banner || "ubuntu" >< banner || " Ubuntu " >< banner ) {
+      register_and_report_os( os:"Ubuntu", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      continue;
+    }
+
+    if( "(Debian/GNU)" >< banner || "/Debian-" >< banner ) {
+      if( "sarge" >< banner ) {
+        register_and_report_os( os:"Debian GNU/Linux", version:"3.1", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      } else if( "(Debian Lenny)" >< banner || "lenny" >< banner ) {
+        register_and_report_os( os:"Debian GNU/Linux", version:"5.0", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      # nb: Starting with Wheezy (7.x) we have minor releases within the version so we don't use an exact version like 7.0 as we can't differ between the OS in the banner here
+      } else if( "deb7" >< banner || "wheezy" >< banner ) {
+        register_and_report_os( os:"Debian GNU/Linux", version:"7", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      } else if( "deb8" >< banner ) {
+        register_and_report_os( os:"Debian GNU/Linux", version:"8", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      } else {
+        register_and_report_os( os:"Debian GNU/Linux", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       }
+      continue;
+    }
 
-      # e.g. 220 example.com ESMTP Xpressions Version 8.11.119 (WIN-NT) Release Build 18409 ready
-      if( "Xpressions" >< banner && "(WIN-NT)" >< banner ) {
-        register_and_report_os( os:"Microsoft Windows", cpe:"cpe:/o:microsoft:windows", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-        continue;
-      }
-
-      if( "(Ubuntu)" >< banner || "ubuntu" >< banner || " Ubuntu " >< banner ) {
-        register_and_report_os( os:"Ubuntu", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        continue;
-      }
-
-      if( "(Debian/GNU)" >< banner || "/Debian-" >< banner ) {
-        if( "sarge" >< banner ) {
-          register_and_report_os( os:"Debian GNU/Linux", version:"3.1", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        } else if( "(Debian Lenny)" >< banner || "lenny" >< banner ) {
-          register_and_report_os( os:"Debian GNU/Linux", version:"5.0", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        # nb: Starting with Wheezy (7.x) we have minor releases within the version so we don't use an exact version like 7.0 as we can't differ between the OS in the banner here
-        } else if( "deb7" >< banner || "wheezy" >< banner ) {
-          register_and_report_os( os:"Debian GNU/Linux", version:"7", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        } else if( "deb8" >< banner ) {
-          register_and_report_os( os:"Debian GNU/Linux", version:"8", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        } else {
-          register_and_report_os( os:"Debian GNU/Linux", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        }
-        continue;
-      }
-
-      if( "/SuSE Linux" >< banner || "(Linux Suse" >< banner ||
-          "on SuSE Linux" >< banner || "(SuSE)" >< banner ) {
+    if( "/SuSE Linux" >< banner || "(Linux Suse" >< banner || "on SuSE Linux" >< banner || "(SuSE)" >< banner ) {
         register_and_report_os( os:"SUSE Linux", cpe:"cpe:/o:novell:suse_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
         continue;
       }
 
-      if( "(CentOS)" >< banner || "(Centos Linux)" >< banner || "(CentOS/GNU)" >< banner ) {
-        register_and_report_os( os:"CentOS", cpe:"cpe:/o:centos:centos", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        continue;
-      }
-
-      if( "on Red Hat Enterprise Linux" >< banner ||
-          "(Red Hat Enterprise Linux)" >< banner ||
-          "(RHEL" >< banner || "(RHEL/GNU)" >< banner ) {
-        version = eregmatch( pattern:"\(RHEL ([0-9.]+)", string:banner );
-        if( ! isnull( version[1] ) ) {
-          register_and_report_os( os:"Red Hat Enterprise Linux", version:version[1], cpe:"cpe:/o:redhat:enterprise_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        } else {
-          register_and_report_os( os:"Red Hat Enterprise Linux", cpe:"cpe:/o:redhat:enterprise_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        }
-        continue;
-      }
-
-      if( "Red Hat Linux" >< banner ) {
-        register_and_report_os( os:"Redhat Linux", cpe:"cpe:/o:redhat:linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        continue;
-      }
-
-      if( "(OpenBSD" >< banner || " OpenBSD" >< banner ) {
-        version = eregmatch( pattern:"\(OpenBSD ([0-9.]+)", string:banner );
-        if( ! isnull( version[1] ) ) {
-          register_and_report_os( os:"OpenBSD", version:version[1], cpe:"cpe:/o:openbsd:openbsd", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        } else {
-          register_and_report_os( os:"OpenBSD", cpe:"cpe:/o:openbsd:openbsd", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        }
-        continue;
-      }
-
-      if( "(FreeBSD" >< banner || "Powered By FreeBSD" >< banner ||
-          "FreeBSD/" >< banner || " FreeBSD" >< banner || "-FreeBSD" >< banner ) {
-        version = eregmatch( pattern:"\(FreeBSD( |/)([0-9.]+)", string:banner );
-        if( ! isnull( version[2] ) ) {
-          register_and_report_os( os:"FreeBSD", version:version[2], cpe:"cpe:/o:freebsd:freebsd", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        } else {
-          register_and_report_os( os:"FreeBSD", cpe:"cpe:/o:freebsd:freebsd", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        }
-        continue;
-      }
-
-      if( "(NetBSD" >< banner || "/NetBSD" >< banner ||
-          "[NetBSD]" >< banner || " NetBSD " >< banner ) {
-        register_and_report_os( os:"NetBSD", cpe:"cpe:/o:netbsd:netbsd", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        continue;
-      }
-
-      if( "(Fedora" >< banner ) {
-        if( "(Fedora Core" >< banner ) {
-          version = eregmatch( pattern:"\(Fedora Core ([0-9.]+)", string:banner );
-          if( ! isnull( version[1] ) ) {
-            register_and_report_os( os:"Fedora Core", version:version[1], cpe:"cpe:/o:fedoraproject:fedora_core", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-          } else {
-            register_and_report_os( os:"Fedora Core", cpe:"cpe:/o:fedoraproject:fedora_core", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-          }
-        } else {
-          version = eregmatch( pattern:"\(Fedora ([0-9.]+)", string:banner );
-          if( ! isnull( version[1] ) ) {
-            register_and_report_os( os:"Fedora", version:version[1], cpe:"cpe:/o:fedoraproject:fedora", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-          } else {
-            register_and_report_os( os:"Fedora", cpe:"cpe:/o:fedoraproject:fedora", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-          }
-        }
-        continue;
-      }
-
-      # ESMTP Sendmail 8.11.7p3+Sun/8.11.7; Tue, 16 Jan 2018 10:50:39 +0100 (MET)
-      if( "(SunOS" >< banner || " SunOS " >< banner || "Sun/" >< banner ) {
-        version = eregmatch( pattern:"\(SunOS ([0-9.]+)", string:banner );
-        if( ! isnull( version[1] ) ) {
-          register_and_report_os( os:"SunOS", version:version[1], cpe:"cpe:/o:sun:sunos", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        } else {
-          register_and_report_os( os:"SunOS", cpe:"cpe:/o:sun:sunos", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        }
-        continue;
-      }
-
-      if( "(Mageia" >< banner ) {
-        version = eregmatch( pattern:"\(Mageia ([0-9.]+)", string:banner );
-        if( ! isnull( version[1] ) ) {
-          register_and_report_os( os:"Mageia", version:version[1], cpe:"cpe:/o:mageia:linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        } else {
-          register_and_report_os( os:"Mageia", cpe:"cpe:/o:mageia:linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        }
-        continue;
-      }
-
-      if( "(Mandriva" >< banner ) {
-        version = eregmatch( pattern:"\(Mandriva MES([0-9.]+)", string:banner );
-        if( ! isnull( version[1] ) ) {
-          register_and_report_os( os:"Mandriva Enterprise Server", version:version[1], cpe:"cpe:/o:mandriva:enterprise_server", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        } else {
-          register_and_report_os( os:"Mandriva", cpe:"cpe:/o:mandriva:linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        }
-        continue;
-      }
-
-      if( "(Mandrake" >< banner ) {
-        register_and_report_os( os:"Mandrake", cpe:"cpe:/o:mandrakesoft:mandrake_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        continue;
-      }
-
-      if( "(Slackware" >< banner ) {
-        register_and_report_os( os:"Slackware", cpe:"cpe:/o:slackware:slackware_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        continue;
-      }
-
-      # Runs only on Unix-like OS variants
-      if( " ESMTP Exim " >< banner ) {
-        register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        continue;
-      }
-
-      # 220 example.com ESMTP IceWarp 11.4.6.0 x64; Tue, 22 May 2018 15:53:07 +0200
-      # 220 example.com ESMTP IceWarp 11.1.2.0 RHEL6 x64; Tue, 22 May 2018 20:39:53 +0700
-      # 220 example.com ESMTP IceWarp 11.1.2.0 x64; Tue, 22 May 2018 15:43:25 +0200
-      # 220 example.com ESMTP IceWarp 10.0.7; Tue, 22 May 2018 20:58:03 +0700
-      # 220 example.com ESMTP IceWarp 9.4.2; Tue, 22 May 2018 07:12:52 -0700
-      if( " IceWarp " >< banner ) {
-        # This makes sure that we're catching the RHEL6 (and similar) from above while we don't
-        # report an unknown OS banner for the other variants without OS info.
-        if( os_info = eregmatch( pattern:"IceWarp ([^ ;]+) ([^ ;]+) ([^ ;]+); ", string:banner, icase:FALSE ) ) {
-          if( "RHEL" >< os_info[2] ) {
-            version = eregmatch( pattern:"RHEL([0-9.]+)", string:os_info[2] );
-            if( ! isnull( version[1] ) ) {
-              register_and_report_os( os:"Red Hat Enterprise Linux", version:version[1], cpe:"cpe:/o:redhat:enterprise_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-            } else {
-              register_and_report_os( os:"Red Hat Enterprise Linux", cpe:"cpe:/o:redhat:enterprise_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-            }
-            continue;
-          } else if( "DEB" >< os_info[2] ) {
-            version = eregmatch( pattern:"DEB([0-9.]+)", string:os_info[2] );
-            if( ! isnull( version[1] ) ) {
-              register_and_report_os( os:"Debian GNU/Linux", version:version[1], cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-            } else {
-              register_and_report_os( os:"Debian GNU/Linux", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-            }
-            continue;
-          } else if( "UBUNTU" >< os_info[2] ) {
-            version = eregmatch( pattern:"UBUNTU([0-9.]+)", string:os_info[2] );
-            if( ! isnull( version[1] ) ) {
-              version = ereg_replace( pattern:"^([0-9]{1,2})(04|10)$", string:version[1], replace:"\1.\2" );
-              register_and_report_os( os:"Ubuntu", version:version, cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-            } else {
-              register_and_report_os( os:"Ubuntu", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-            }
-            continue;
-          }
-          # nb: No continue here as we want to report an unknown OS later...
-        } else {
-          continue; # No OS info so just skip this IceWarp banner...
-        }
-      }
-    }
-
-    # Cisco Unity Connection
-    if( " UnityMailer " >< banner ) {
-      register_and_report_os( os:"Cisco", cpe:"cpe:/o:cisco", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    if( "(CentOS)" >< banner || "(Centos Linux)" >< banner || "(CentOS/GNU)" >< banner ) {
+      register_and_report_os( os:"CentOS", cpe:"cpe:/o:centos:centos", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       continue;
     }
 
-    if( "for Windows ready" >< banner || "Microsoft ESMTP MAIL Service" >< banner ||
-        "ESMTP Exchange Server" >< banner || "ESMTP Microsoft Exchange" >< banner ||
-        "ESMTP MS Exchange" >< banner || "on Windows" >< banner ) {
-      if( "Microsoft Windows 2003" >< banner || "Windows 2003 Server" >< banner ) {
-        register_and_report_os( os:'Microsoft Windows Server 2003', cpe:'cpe:/o:microsoft:windows_server_2003', banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-      } else if( "Windows 2000 Server" >< banner ) {
-        register_and_report_os( os:'Microsoft Windows Server 2000', cpe:'cpe:/o:microsoft:windows_server_2000', banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
+    if( "on Red Hat Enterprise Linux" >< banner || "(Red Hat Enterprise Linux)" >< banner || "(RHEL" >< banner || "(RHEL/GNU)" >< banner ) {
+      version = eregmatch( pattern:"\(RHEL ([0-9.]+)", string:banner );
+      if( ! isnull( version[1] ) ) {
+        register_and_report_os( os:"Red Hat Enterprise Linux", version:version[1], cpe:"cpe:/o:redhat:enterprise_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       } else {
-        register_and_report_os( os:"Microsoft Windows", cpe:"cpe:/o:microsoft:windows", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
+        register_and_report_os( os:"Red Hat Enterprise Linux", cpe:"cpe:/o:redhat:enterprise_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       }
       continue;
     }
 
-    # Runs on Windows, Linux and Mac OS X
-    # e.g. 220 example.com Kerio Connect 9.2.1 ESMTP ready or 220 example.com Kerio MailServer 6.5.2 ESMTP ready
-    if( "Kerio Connect" >< banner || "Kerio MailServer" >< banner ) continue;
+    if( "Red Hat Linux" >< banner ) {
+      register_and_report_os( os:"Redhat Linux", cpe:"cpe:/o:redhat:linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      continue;
+    }
 
-    register_unknown_os_banner( banner:banner, banner_type_name:banner_type, banner_type_short:"smtp_banner", port:port );
+    if( "(OpenBSD" >< banner || " OpenBSD" >< banner ) {
+      version = eregmatch( pattern:"\(OpenBSD ([0-9.]+)", string:banner );
+      if( ! isnull( version[1] ) ) {
+        register_and_report_os( os:"OpenBSD", version:version[1], cpe:"cpe:/o:openbsd:openbsd", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      } else {
+        register_and_report_os( os:"OpenBSD", cpe:"cpe:/o:openbsd:openbsd", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      }
+      continue;
+    }
+
+    if( "(FreeBSD" >< banner || "Powered By FreeBSD" >< banner || "FreeBSD/" >< banner || " FreeBSD" >< banner || "-FreeBSD" >< banner ) {
+      version = eregmatch( pattern:"\(FreeBSD( |/)([0-9.]+)", string:banner );
+      if( ! isnull( version[2] ) ) {
+        register_and_report_os( os:"FreeBSD", version:version[2], cpe:"cpe:/o:freebsd:freebsd", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      } else {
+        register_and_report_os( os:"FreeBSD", cpe:"cpe:/o:freebsd:freebsd", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      }
+      continue;
+    }
+
+    if( "(NetBSD" >< banner || "/NetBSD" >< banner || "[NetBSD]" >< banner || " NetBSD " >< banner ) {
+      register_and_report_os( os:"NetBSD", cpe:"cpe:/o:netbsd:netbsd", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      continue;
+    }
+
+    if( "(Fedora" >< banner ) {
+      if( "(Fedora Core" >< banner ) {
+        version = eregmatch( pattern:"\(Fedora Core ([0-9.]+)", string:banner );
+        if( ! isnull( version[1] ) ) {
+          register_and_report_os( os:"Fedora Core", version:version[1], cpe:"cpe:/o:fedoraproject:fedora_core", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        } else {
+          register_and_report_os( os:"Fedora Core", cpe:"cpe:/o:fedoraproject:fedora_core", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        }
+      } else {
+        version = eregmatch( pattern:"\(Fedora ([0-9.]+)", string:banner );
+        if( ! isnull( version[1] ) ) {
+          register_and_report_os( os:"Fedora", version:version[1], cpe:"cpe:/o:fedoraproject:fedora", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        } else {
+          register_and_report_os( os:"Fedora", cpe:"cpe:/o:fedoraproject:fedora", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        }
+      }
+      continue;
+    }
+
+    # ESMTP Sendmail 8.11.7p3+Sun/8.11.7; Tue, 16 Jan 2018 10:50:39 +0100 (MET)
+    if( "(SunOS" >< banner || " SunOS " >< banner || "Sun/" >< banner ) {
+      version = eregmatch( pattern:"\(SunOS ([0-9.]+)", string:banner );
+      if( ! isnull( version[1] ) ) {
+        register_and_report_os( os:"SunOS", version:version[1], cpe:"cpe:/o:sun:sunos", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      } else {
+        register_and_report_os( os:"SunOS", cpe:"cpe:/o:sun:sunos", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      }
+      continue;
+    }
+
+    if( "(Mageia" >< banner ) {
+      version = eregmatch( pattern:"\(Mageia ([0-9.]+)", string:banner );
+      if( ! isnull( version[1] ) ) {
+        register_and_report_os( os:"Mageia", version:version[1], cpe:"cpe:/o:mageia:linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      } else {
+        register_and_report_os( os:"Mageia", cpe:"cpe:/o:mageia:linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      }
+      continue;
+    }
+
+    if( "(Mandriva" >< banner ) {
+      version = eregmatch( pattern:"\(Mandriva MES([0-9.]+)", string:banner );
+      if( ! isnull( version[1] ) ) {
+        register_and_report_os( os:"Mandriva Enterprise Server", version:version[1], cpe:"cpe:/o:mandriva:enterprise_server", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      } else {
+        register_and_report_os( os:"Mandriva", cpe:"cpe:/o:mandriva:linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      }
+      continue;
+    }
+
+    if( "(Mandrake" >< banner ) {
+      register_and_report_os( os:"Mandrake", cpe:"cpe:/o:mandrakesoft:mandrake_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      continue;
+    }
+
+    if( "(Slackware" >< banner ) {
+      register_and_report_os( os:"Slackware", cpe:"cpe:/o:slackware:slackware_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      continue;
+    }
+
+    # Runs only on Unix-like OS variants
+    if( " ESMTP Exim " >< banner ) {
+      register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      continue;
+    }
+
+    # 220 example.com ESMTP IceWarp 11.4.6.0 x64; Tue, 22 May 2018 15:53:07 +0200
+    # 220 example.com ESMTP IceWarp 11.1.2.0 RHEL6 x64; Tue, 22 May 2018 20:39:53 +0700
+    # 220 example.com ESMTP IceWarp 11.1.2.0 x64; Tue, 22 May 2018 15:43:25 +0200
+    # 220 example.com ESMTP IceWarp 10.0.7; Tue, 22 May 2018 20:58:03 +0700
+    # 220 example.com ESMTP IceWarp 9.4.2; Tue, 22 May 2018 07:12:52 -0700
+    if( " IceWarp " >< banner ) {
+      # This makes sure that we're catching the RHEL6 (and similar) from above while we don't
+      # report an unknown OS banner for the other variants without OS info.
+      if( os_info = eregmatch( pattern:"IceWarp ([^ ;]+) ([^ ;]+) ([^ ;]+); ", string:banner, icase:FALSE ) ) {
+        if( "RHEL" >< os_info[2] ) {
+          version = eregmatch( pattern:"RHEL([0-9.]+)", string:os_info[2] );
+          if( ! isnull( version[1] ) ) {
+            register_and_report_os( os:"Red Hat Enterprise Linux", version:version[1], cpe:"cpe:/o:redhat:enterprise_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          } else {
+            register_and_report_os( os:"Red Hat Enterprise Linux", cpe:"cpe:/o:redhat:enterprise_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          }
+          continue;
+        } else if( "DEB" >< os_info[2] ) {
+          version = eregmatch( pattern:"DEB([0-9.]+)", string:os_info[2] );
+          if( ! isnull( version[1] ) ) {
+            register_and_report_os( os:"Debian GNU/Linux", version:version[1], cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          } else {
+            register_and_report_os( os:"Debian GNU/Linux", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          }
+          continue;
+        } else if( "UBUNTU" >< os_info[2] ) {
+          version = eregmatch( pattern:"UBUNTU([0-9.]+)", string:os_info[2] );
+          if( ! isnull( version[1] ) ) {
+            version = ereg_replace( pattern:"^([0-9]{1,2})(04|10)$", string:version[1], replace:"\1.\2" );
+            register_and_report_os( os:"Ubuntu", version:version, cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          } else {
+            register_and_report_os( os:"Ubuntu", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          }
+          continue;
+        }
+        # nb: No continue here as we want to report an unknown OS later...
+      } else {
+        continue; # No OS info so just skip this IceWarp banner...
+      }
+    }
   }
+
+  # Cisco Unity Connection
+  if( " UnityMailer " >< banner ) {
+    register_and_report_os( os:"Cisco", cpe:"cpe:/o:cisco", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    continue;
+  }
+
+  if( "for Windows ready" >< banner || "Microsoft ESMTP MAIL Service" >< banner || "ESMTP Exchange Server" >< banner ||
+      "ESMTP Microsoft Exchange" >< banner || "ESMTP MS Exchange" >< banner || "on Windows" >< banner ) {
+    if( "Microsoft Windows 2003" >< banner || "Windows 2003 Server" >< banner ) {
+      register_and_report_os( os:'Microsoft Windows Server 2003', cpe:'cpe:/o:microsoft:windows_server_2003', banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
+    } else if( "Windows 2000 Server" >< banner ) {
+      register_and_report_os( os:'Microsoft Windows Server 2000', cpe:'cpe:/o:microsoft:windows_server_2000', banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
+    } else {
+      register_and_report_os( os:"Microsoft Windows", cpe:"cpe:/o:microsoft:windows", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
+    }
+    continue;
+  }
+
+  # Runs on Windows, Linux and Mac OS X
+  # e.g. 220 example.com Kerio Connect 9.2.1 ESMTP ready or 220 example.com Kerio MailServer 6.5.2 ESMTP ready
+  if( "Kerio Connect" >< banner || "Kerio MailServer" >< banner )
+    continue;
+
+  register_unknown_os_banner( banner:banner, banner_type_name:banner_type, banner_type_short:"smtp_banner", port:port );
 }
 
 ports = get_kb_list( "Services/imap" );
-if( ! ports ) ports = make_list( 143 );
+if( ! ports )
+  ports = make_list( 143 );
 
 banner_type = "IMAP banner";
 
 foreach port( ports ) {
 
-  if( get_port_state( port ) ) {
+  if( ! get_port_state( port ) )
+    continue;
 
-    banner = get_imap_banner( port:port );
+  banner = get_imap_banner( port:port );
+  banner = chomp( banner );
 
-    if( ! banner || banner == "" || isnull( banner ) ) continue;
+  if( ! banner || banner == "" || isnull( banner ) )
+    continue;
 
-    if( "IMAP4rev1" >< banner || "IMAP server" >< banner ||
-        "ImapServer" >< banner || "IMAP4 Service" >< banner ||
-        " IMAP4 " >< banner ) {
+  if( "IMAP4rev1" >< banner || "IMAP server" >< banner || "ImapServer" >< banner ||
+      "IMAP4 Service" >< banner || " IMAP4 " >< banner ) {
 
-      # e.g. OK Xpressions IMAP4rev1 Version 8.11.119 (WIN-NT) Release Build 18409 ready
-      if( "Xpressions" >< banner && "(WIN-NT)" >< banner ) {
-        register_and_report_os( os:"Microsoft Windows", cpe:"cpe:/o:microsoft:windows", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-        continue;
-      }
+    if( banner == "* OK IMAPrev1" )
+      continue;
 
-      # Cisco Unity Connection
-      if( "UMSS IMAP4rev1 Server" >< banner ) {
-        register_and_report_os( os:"Cisco", cpe:"cpe:/o:cisco", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        continue;
-      }
-
-      if( "(Ubuntu)" >< banner || " ubuntu " >< banner ||
-          ( "-Debian-" >< banner && "ubuntu" >< banner ) ) {
-        register_and_report_os( os:"Ubuntu", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        continue;
-      }
-
-      if( "-Debian-" >< banner || "(Debian" >< banner ) {
-        if( "sarge" >< banner ) {
-          register_and_report_os( os:"Debian GNU/Linux", version:"3.1", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        } else if( "lenny" >< banner ) {
-          register_and_report_os( os:"Debian GNU/Linux", version:"5.0", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        } else if( "squeeze" >< banner ) {
-          register_and_report_os( os:"Debian GNU/Linux", version:"6.0", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        # nb: Starting with Wheezy (7.x) we have minor releases within the version so we don't use an exact version like 7.0 as we can't differ between the OS in the banner here
-        } else if( "deb7" >< banner || "wheezy" >< banner ) {
-          register_and_report_os( os:"Debian GNU/Linux", version:"7", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        } else if( "deb8" >< banner ) {
-          register_and_report_os( os:"Debian GNU/Linux", version:"8", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        } else {
-          register_and_report_os( os:"Debian GNU/Linux", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        }
-        continue;
-      }
-
-      if( "-Gentoo server ready" >< banner ) {
-        register_and_report_os( os:"Gentoo", cpe:"cpe:/o:gentoo:linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        continue;
-      }
-
-      if( "(FreeBSD" >< banner ) {
-        register_and_report_os( os:"FreeBSD", cpe:"cpe:/o:freebsd:freebsd", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        continue;
-      }
-
-      if( "-Mageia-" >< banner ) {
-        version = eregmatch( pattern:"\.mga([0-9]+)", string:banner );
-        if( ! isnull( version[1] ) ) {
-          register_and_report_os( os:"Mageia", version:version[1], cpe:"cpe:/o:mageia:linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        } else {
-          register_and_report_os( os:"Mageia", cpe:"cpe:/o:mageia:linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        }
-        continue;
-      }
-
-      if( "-Mandriva-" >< banner ) {
-        version = eregmatch( pattern:"mdv([0-9.]+)", string:banner );
-        if( ! isnull( version[1] ) ) {
-          register_and_report_os( os:"Mandriva", version:version[1], cpe:"cpe:/o:mandriva:linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        } else {
-          register_and_report_os( os:"Mandriva", cpe:"cpe:/o:mandriva:linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        }
-        continue;
-      }
-
-      if( "Welcome to the MANDRAKE IMAP server" >< banner ||
-          "-Mandrake-" >< banner ) {
-        register_and_report_os( os:"Mandrake", cpe:"cpe:/o:mandrakesoft:mandrake_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        continue;
-      }
-
-      if( "(Slackware" >< banner ) {
-        register_and_report_os( os:"Slackware", cpe:"cpe:/o:slackware:slackware_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        continue;
-      }
-
-      # Those are coming from the ID request of get_imap_banner()
-      if( '"os" "Linux"' >< banner || '"os", "Linux"' >< banner ) {
-
-        version = eregmatch( pattern:'"os-version"(, | )"([0-9.]+)', string:banner );
-
-        if( ! isnull( version[2] ) ) {
-          register_and_report_os( os:'Linux', version:version[2], cpe:'cpe:/o:linux:kernel', banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        } else {
-          register_and_report_os( os:'Linux', cpe:'cpe:/o:linux:kernel', banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        }
-        continue;
-      } else if( "SUSE Linux Enterprise Server" >< banner ) {
-        version = eregmatch( pattern:"SUSE Linux Enterprise Server ([0-9.]+)", string:banner );
-        if( ! isnull( version[1] ) ) {
-          register_and_report_os( os:"SUSE Linux Enterprise Server", version:version[1], cpe:"cpe:/o:suse:linux_enterprise_server", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        } else {
-          register_and_report_os( os:"SUSE Linux Enterprise Server", cpe:"cpe:/o:suse:linux_enterprise_server", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        }
-        continue;
-      } else if( '"centos"' >< banner ) {
-        version = eregmatch( pattern:'"os-version"(, | )"([0-9.]+)', string:banner );
-        if( ! isnull( version[2] ) ) {
-          register_and_report_os( os:"CentOS", version:version[2], cpe:"cpe:/o:centos:centos", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        } else {
-          register_and_report_os( os:"CentOS", cpe:"cpe:/o:centos:centos", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        }
-        continue;
-      } else if( "CentOS release" >< banner ) {
-        version = eregmatch( pattern:"CentOS release ([0-9.]+)", string:banner );
-        if( ! isnull( version[1] ) ) {
-          register_and_report_os( os:"CentOS", version:version[1], cpe:"cpe:/o:centos:centos", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        } else {
-          register_and_report_os( os:"CentOS", cpe:"cpe:/o:centos:centos", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        }
-        continue;
-      } else if( "Red Hat Enterprise Linux" >< banner ) {
-        version = eregmatch( pattern:"Red Hat Enterprise Linux (Server|ES|AS|Client) release ([0-9.]+)", string:banner );
-        if( ! isnull( version[2] ) ) {
-          register_and_report_os( os:"Red Hat Enterprise Linux " + version[1], version:version[2], cpe:"cpe:/o:redhat:enterprise_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        } else {
-          register_and_report_os( os:"Red Hat Enterprise Linux", cpe:"cpe:/o:redhat:enterprise_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        }
-        continue;
-      } else if( '"OpenBSD"' >< banner ) {
-        version = eregmatch( pattern:'"os-version"(, | )"([0-9.]+)', string:banner );
-        if( ! isnull( version[2] ) ) {
-          register_and_report_os( os:"OpenBSD", version:version[2], cpe:"cpe:/o:openbsd:openbsd", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        } else {
-          register_and_report_os( os:"OpenBSD", cpe:"cpe:/o:openbsd:openbsd", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        }
-        continue;
-      } else if( '"FreeBSD"' >< banner ) {
-        version = eregmatch( pattern:'"os-version"(, | )"([0-9.]+)', string:banner );
-        if( ! isnull( version[2] ) ) {
-          register_and_report_os( os:"FreeBSD", version:version[2], cpe:"cpe:/o:freebsd:freebsd", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        } else {
-          register_and_report_os( os:"FreeBSD", cpe:"cpe:/o:freebsd:freebsd", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        }
-        continue;
-      } else if( '"NetBSD"' >< banner ) {
-        version = eregmatch( pattern:'"os-version"(, | )"([0-9.]+)', string:banner );
-        if( ! isnull( version[2] ) ) {
-          register_and_report_os( os:"NetBSD", version:version[2], cpe:"cpe:/o:netbsd:netbsd", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        } else {
-          register_and_report_os( os:"NetBSD", cpe:"cpe:/o:netbsd:netbsd", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        }
-        continue;
-      } else if( '"SunOS"' >< banner ) {
-        version = eregmatch( pattern:'"os-version"(, | )"([0-9.]+)', string:banner );
-        if( ! isnull( version[2] ) ) {
-          register_and_report_os( os:"SunOS", version:version[2], cpe:"cpe:/o:sun:sunos", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        } else {
-          register_and_report_os( os:"SunOS", cpe:"cpe:/o:sun:sunos", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        }
-        continue;
-      # e.g. * ID ("NAME" "Zimbra" "VERSION" "8.6.0_GA_1153" "RELEASE" "20141215151116")
-      } else if( '("NAME" "Zimbra"' >< banner ) {
-        # Zimbra runs only on Unix-like systems
-        register_and_report_os( os:'Linux', cpe:'cpe:/o:linux:kernel', banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        continue;
-      # Runs only on Unix-like OS variants
-      } else if( " Dovecot ready." >< banner ) {
-        register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        continue;
-      }
-
-      # * OK IceWarp 12.0.4.0 RHEL7 x64 IMAP4rev1 Tue, 22 May 2018 14:06:46 +0000
-      # * OK IceWarp 11.1.2.0 RHEL6 x64 IMAP4rev1 Tue, 22 May 2018 20:46:21 +0700
-      # * OK IceWarp 11.1.2.0 x64 IMAP4rev1 Tue, 22 May 2018 15:43:26 +0200
-      # * OK IceWarp 9.4.0 IMAP4rev1 Tue, 22 May 2018 21:14:00 +0700
-      if( " IceWarp " >< banner ) {
-        # This makes sure that we're catching the RHEL6 (and similar) from above while we don't
-        # report an unknown OS banner for the other variants without OS info.
-        if( os_info = eregmatch( pattern:"IceWarp ([^ ]+) ([^ ]+) ([^ ]+) IMAP4rev1 ", string:banner, icase:FALSE ) ) {
-          if( "RHEL" >< os_info[2] ) {
-            version = eregmatch( pattern:"RHEL([0-9.]+)", string:os_info[2] );
-            if( ! isnull( version[1] ) ) {
-              register_and_report_os( os:"Red Hat Enterprise Linux", version:version[1], cpe:"cpe:/o:redhat:enterprise_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-            } else {
-              register_and_report_os( os:"Red Hat Enterprise Linux", cpe:"cpe:/o:redhat:enterprise_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-            }
-            continue;
-          } else if( "DEB" >< os_info[2] ) {
-            version = eregmatch( pattern:"DEB([0-9.]+)", string:os_info[2] );
-            if( ! isnull( version[1] ) ) {
-              register_and_report_os( os:"Debian GNU/Linux", version:version[1], cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-            } else {
-              register_and_report_os( os:"Debian GNU/Linux", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-            }
-            continue;
-          } else if( "UBUNTU" >< os_info[2] ) {
-            version = eregmatch( pattern:"UBUNTU([0-9.]+)", string:os_info[2] );
-            if( ! isnull( version[1] ) ) {
-              version = ereg_replace( pattern:"^([0-9]{1,2})(04|10)$", string:version[1], replace:"\1.\2" );
-              register_and_report_os( os:"Ubuntu", version:version, cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-            } else {
-              register_and_report_os( os:"Ubuntu", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-            }
-          }
-          # nb: No continue here as we want to report an unknown OS later...
-        } else {
-          continue; # No OS info so just skip this IceWarp banner...
-        }
-      }
-    }
-
-    if( "The Microsoft Exchange IMAP4 service is ready" >< banner || "Microsoft Exchange Server" >< banner || "for Windows ready" >< banner ||
-        ( "service is ready" >< banner && ( "(Windows/x64)" >< banner || "(Windows/x86)" >< banner ) ) ||
-        "Winmail Mail Server" >< banner ) {
+    # e.g. OK Xpressions IMAP4rev1 Version 8.11.119 (WIN-NT) Release Build 18409 ready
+    if( "Xpressions" >< banner && "(WIN-NT)" >< banner ) {
       register_and_report_os( os:"Microsoft Windows", cpe:"cpe:/o:microsoft:windows", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
       continue;
     }
 
-    # Runs on Windows, Linux and Mac OS X
-    # e.g. * OK Kerio Connect 8.0.2 IMAP4rev1 server ready or * OK Kerio MailServer 6.6.2 IMAP4rev1 server ready
-    if( "Kerio Connect" >< banner || "Kerio MailServer" >< banner ) continue;
+    # Cisco Unity Connection
+    if( "UMSS IMAP4rev1 Server" >< banner ) {
+      register_and_report_os( os:"Cisco", cpe:"cpe:/o:cisco", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      continue;
+    }
 
-    register_unknown_os_banner( banner:banner, banner_type_name:banner_type, banner_type_short:"imap_banner", port:port );
+    if( "(Ubuntu)" >< banner || " ubuntu " >< banner || ( "-Debian-" >< banner && "ubuntu" >< banner ) ) {
+      register_and_report_os( os:"Ubuntu", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      continue;
+    }
+
+    if( "-Debian-" >< banner || "(Debian" >< banner ) {
+      if( "sarge" >< banner ) {
+        register_and_report_os( os:"Debian GNU/Linux", version:"3.1", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      } else if( "lenny" >< banner ) {
+        register_and_report_os( os:"Debian GNU/Linux", version:"5.0", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      } else if( "squeeze" >< banner ) {
+        register_and_report_os( os:"Debian GNU/Linux", version:"6.0", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      # nb: Starting with Wheezy (7.x) we have minor releases within the version so we don't use an exact version like 7.0 as we can't differ between the OS in the banner here
+      } else if( "deb7" >< banner || "wheezy" >< banner ) {
+        register_and_report_os( os:"Debian GNU/Linux", version:"7", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      } else if( "deb8" >< banner ) {
+        register_and_report_os( os:"Debian GNU/Linux", version:"8", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      } else {
+        register_and_report_os( os:"Debian GNU/Linux", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      }
+      continue;
+    }
+
+    if( "-Gentoo server ready" >< banner ) {
+      register_and_report_os( os:"Gentoo", cpe:"cpe:/o:gentoo:linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      continue;
+    }
+
+    if( "(FreeBSD" >< banner ) {
+      register_and_report_os( os:"FreeBSD", cpe:"cpe:/o:freebsd:freebsd", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      continue;
+    }
+
+    if( "-Mageia-" >< banner ) {
+      version = eregmatch( pattern:"\.mga([0-9]+)", string:banner );
+      if( ! isnull( version[1] ) ) {
+        register_and_report_os( os:"Mageia", version:version[1], cpe:"cpe:/o:mageia:linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      } else {
+        register_and_report_os( os:"Mageia", cpe:"cpe:/o:mageia:linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      }
+      continue;
+    }
+
+    if( "-Mandriva-" >< banner ) {
+      version = eregmatch( pattern:"mdv([0-9.]+)", string:banner );
+      if( ! isnull( version[1] ) ) {
+        register_and_report_os( os:"Mandriva", version:version[1], cpe:"cpe:/o:mandriva:linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      } else {
+        register_and_report_os( os:"Mandriva", cpe:"cpe:/o:mandriva:linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      }
+      continue;
+    }
+
+    if( "Welcome to the MANDRAKE IMAP server" >< banner || "-Mandrake-" >< banner ) {
+      register_and_report_os( os:"Mandrake", cpe:"cpe:/o:mandrakesoft:mandrake_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      continue;
+    }
+
+    if( "(Slackware" >< banner ) {
+      register_and_report_os( os:"Slackware", cpe:"cpe:/o:slackware:slackware_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      continue;
+    }
+
+    # Those are coming from the ID request of get_imap_banner()
+    if( '"os" "Linux"' >< banner || '"os", "Linux"' >< banner ) {
+
+      version = eregmatch( pattern:'"os-version"(, | )"([0-9.]+)', string:banner );
+
+      if( ! isnull( version[2] ) ) {
+        register_and_report_os( os:'Linux', version:version[2], cpe:'cpe:/o:linux:kernel', banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      } else {
+        register_and_report_os( os:'Linux', cpe:'cpe:/o:linux:kernel', banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      }
+      continue;
+    } else if( "SUSE Linux Enterprise Server" >< banner ) {
+      version = eregmatch( pattern:"SUSE Linux Enterprise Server ([0-9.]+)", string:banner );
+      if( ! isnull( version[1] ) ) {
+        register_and_report_os( os:"SUSE Linux Enterprise Server", version:version[1], cpe:"cpe:/o:suse:linux_enterprise_server", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      } else {
+        register_and_report_os( os:"SUSE Linux Enterprise Server", cpe:"cpe:/o:suse:linux_enterprise_server", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      }
+      continue;
+    } else if( '"centos"' >< banner ) {
+      version = eregmatch( pattern:'"os-version"(, | )"([0-9.]+)', string:banner );
+      if( ! isnull( version[2] ) ) {
+        register_and_report_os( os:"CentOS", version:version[2], cpe:"cpe:/o:centos:centos", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      } else {
+        register_and_report_os( os:"CentOS", cpe:"cpe:/o:centos:centos", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      }
+      continue;
+    } else if( "CentOS release" >< banner ) {
+      version = eregmatch( pattern:"CentOS release ([0-9.]+)", string:banner );
+      if( ! isnull( version[1] ) ) {
+        register_and_report_os( os:"CentOS", version:version[1], cpe:"cpe:/o:centos:centos", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      } else {
+        register_and_report_os( os:"CentOS", cpe:"cpe:/o:centos:centos", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      }
+      continue;
+    } else if( "Red Hat Enterprise Linux" >< banner ) {
+      version = eregmatch( pattern:"Red Hat Enterprise Linux (Server|ES|AS|Client) release ([0-9.]+)", string:banner );
+      if( ! isnull( version[2] ) ) {
+        register_and_report_os( os:"Red Hat Enterprise Linux " + version[1], version:version[2], cpe:"cpe:/o:redhat:enterprise_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      } else {
+        register_and_report_os( os:"Red Hat Enterprise Linux", cpe:"cpe:/o:redhat:enterprise_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      }
+      continue;
+    } else if( '"OpenBSD"' >< banner ) {
+      version = eregmatch( pattern:'"os-version"(, | )"([0-9.]+)', string:banner );
+      if( ! isnull( version[2] ) ) {
+        register_and_report_os( os:"OpenBSD", version:version[2], cpe:"cpe:/o:openbsd:openbsd", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      } else {
+        register_and_report_os( os:"OpenBSD", cpe:"cpe:/o:openbsd:openbsd", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      }
+      continue;
+    } else if( '"FreeBSD"' >< banner ) {
+      version = eregmatch( pattern:'"os-version"(, | )"([0-9.]+)', string:banner );
+      if( ! isnull( version[2] ) ) {
+        register_and_report_os( os:"FreeBSD", version:version[2], cpe:"cpe:/o:freebsd:freebsd", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      } else {
+        register_and_report_os( os:"FreeBSD", cpe:"cpe:/o:freebsd:freebsd", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      }
+      continue;
+    } else if( '"NetBSD"' >< banner ) {
+      version = eregmatch( pattern:'"os-version"(, | )"([0-9.]+)', string:banner );
+      if( ! isnull( version[2] ) ) {
+        register_and_report_os( os:"NetBSD", version:version[2], cpe:"cpe:/o:netbsd:netbsd", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      } else {
+        register_and_report_os( os:"NetBSD", cpe:"cpe:/o:netbsd:netbsd", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      }
+      continue;
+    } else if( '"SunOS"' >< banner ) {
+      version = eregmatch( pattern:'"os-version"(, | )"([0-9.]+)', string:banner );
+      if( ! isnull( version[2] ) ) {
+        register_and_report_os( os:"SunOS", version:version[2], cpe:"cpe:/o:sun:sunos", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      } else {
+        register_and_report_os( os:"SunOS", cpe:"cpe:/o:sun:sunos", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      }
+      continue;
+    # e.g. * ID ("NAME" "Zimbra" "VERSION" "8.6.0_GA_1153" "RELEASE" "20141215151116")
+    } else if( '("NAME" "Zimbra"' >< banner ) {
+      # Zimbra runs only on Unix-like systems
+      register_and_report_os( os:'Linux', cpe:'cpe:/o:linux:kernel', banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      continue;
+    # Runs only on Unix-like OS variants
+    } else if( " Dovecot ready." >< banner ) {
+      register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      continue;
+    }
+
+    # * OK IceWarp 12.0.4.0 RHEL7 x64 IMAP4rev1 Tue, 22 May 2018 14:06:46 +0000
+    # * OK IceWarp 11.1.2.0 RHEL6 x64 IMAP4rev1 Tue, 22 May 2018 20:46:21 +0700
+    # * OK IceWarp 11.1.2.0 x64 IMAP4rev1 Tue, 22 May 2018 15:43:26 +0200
+    # * OK IceWarp 9.4.0 IMAP4rev1 Tue, 22 May 2018 21:14:00 +0700
+    if( " IceWarp " >< banner ) {
+      # This makes sure that we're catching the RHEL6 (and similar) from above while we don't
+      # report an unknown OS banner for the other variants without OS info.
+      if( os_info = eregmatch( pattern:"IceWarp ([^ ]+) ([^ ]+) ([^ ]+) IMAP4rev1 ", string:banner, icase:FALSE ) ) {
+        if( "RHEL" >< os_info[2] ) {
+          version = eregmatch( pattern:"RHEL([0-9.]+)", string:os_info[2] );
+          if( ! isnull( version[1] ) ) {
+            register_and_report_os( os:"Red Hat Enterprise Linux", version:version[1], cpe:"cpe:/o:redhat:enterprise_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          } else {
+            register_and_report_os( os:"Red Hat Enterprise Linux", cpe:"cpe:/o:redhat:enterprise_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          }
+          continue;
+        } else if( "DEB" >< os_info[2] ) {
+          version = eregmatch( pattern:"DEB([0-9.]+)", string:os_info[2] );
+          if( ! isnull( version[1] ) ) {
+            register_and_report_os( os:"Debian GNU/Linux", version:version[1], cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          } else {
+            register_and_report_os( os:"Debian GNU/Linux", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          }
+          continue;
+        } else if( "UBUNTU" >< os_info[2] ) {
+          version = eregmatch( pattern:"UBUNTU([0-9.]+)", string:os_info[2] );
+          if( ! isnull( version[1] ) ) {
+            version = ereg_replace( pattern:"^([0-9]{1,2})(04|10)$", string:version[1], replace:"\1.\2" );
+            register_and_report_os( os:"Ubuntu", version:version, cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          } else {
+            register_and_report_os( os:"Ubuntu", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          }
+        }
+        # nb: No continue here as we want to report an unknown OS later...
+      } else {
+        continue; # No OS info so just skip this IceWarp banner...
+      }
+    }
   }
+
+  if( "The Microsoft Exchange IMAP4 service is ready" >< banner || "Microsoft Exchange Server" >< banner || "for Windows ready" >< banner ||
+      ( "service is ready" >< banner && ( "(Windows/x64)" >< banner || "(Windows/x86)" >< banner ) ) || "Winmail Mail Server" >< banner ) {
+    register_and_report_os( os:"Microsoft Windows", cpe:"cpe:/o:microsoft:windows", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
+    continue;
+  }
+
+  # Runs on Windows, Linux and Mac OS X
+  # e.g. * OK Kerio Connect 8.0.2 IMAP4rev1 server ready or * OK Kerio MailServer 6.6.2 IMAP4rev1 server ready
+  if( "Kerio Connect" >< banner || "Kerio MailServer" >< banner )
+    continue;
+
+  register_unknown_os_banner( banner:banner, banner_type_name:banner_type, banner_type_short:"imap_banner", port:port );
 }
 
 port = get_pop3_port( default:110 );
 banner = get_pop3_banner( port:port );
-if( ! banner || banner == "" || isnull( banner ) ) exit( 0 );
+banner = chomp( banner );
+
+if( ! banner || banner == "" || isnull( banner ) )
+  exit( 0 );
+
+if( banner == "+OK POP3 ready" || banner == "+OK POP3" )
+  exit( 0 );
 
 banner_type = "POP3 banner";
 
-if( "Cyrus POP3" >< banner || "Dovecot" >< banner ||
-    "POP3 Server" >< banner || "Mail Server" >< banner ||
-    "POP3 server" >< banner || " POP3 " >< banner ) {
+if( "Cyrus POP3" >< banner || "Dovecot" >< banner || "POP3 Server" >< banner ||
+    "Mail Server" >< banner || "POP3 server" >< banner || " POP3 " >< banner ) {
 
   if( "(Ubuntu)" >< banner || "ubuntu" >< banner ) {
     register_and_report_os( os:"Ubuntu", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
@@ -585,8 +602,7 @@ if( "Cyrus POP3" >< banner || "Dovecot" >< banner ||
     exit( 0 );
   }
 
-  if( "Welcome to the MANDRAKE POP3 server" >< banner ||
-      "-Mandrake-" >< banner ) {
+  if( "Welcome to the MANDRAKE POP3 server" >< banner || "-Mandrake-" >< banner ) {
     register_and_report_os( os:"Mandrake", cpe:"cpe:/o:mandrakesoft:mandrake_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
     exit( 0 );
   }
@@ -602,8 +618,8 @@ if( "Cyrus POP3" >< banner || "Dovecot" >< banner ||
     exit( 0 );
   }
 
-  # Runs only on Unix-like OS variants
-  if( "OK Dovecot ready." >< banner ) {
+  # Runs only on Unix-like OS variants. Keep below the others so we're catching the distro banners first.
+  if( "+OK Dovecot ready." >< banner || '* ID ("name" "Dovecot")' >< banner || "+OK Dovecot DA ready." >< banner ) {
     register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
     exit( 0 );
   }
@@ -649,16 +665,16 @@ if( "Cyrus POP3" >< banner || "Dovecot" >< banner ||
   }
 }
 
-if( "Microsoft Windows POP3 Service Version" >< banner || "for Windows" >< banner ||
-    "The Microsoft Exchange POP3 service is ready." >< banner || "Microsoft Exchange Server" >< banner ||
-    "Microsoft Exchange POP3-Server" >< banner || "Winmail Mail Server" >< banner ) {
+if( "Microsoft Windows POP3 Service Version" >< banner || "for Windows" >< banner || "The Microsoft Exchange POP3 service is ready." >< banner ||
+    "Microsoft Exchange Server" >< banner || "Microsoft Exchange POP3-Server" >< banner || "Winmail Mail Server" >< banner ) {
   register_and_report_os( os:"Microsoft Windows", cpe:"cpe:/o:microsoft:windows", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
   exit( 0 );
 }
 
 # Runs on Windows, Linux and Mac OS X
 # e.g. +OK Kerio MailServer 6.5.2 POP3 server ready <1168.1533545939@example.com>
-if( "Kerio Connect" >< banner || "Kerio MailServer" >< banner ) exit( 0 );
+if( "Kerio Connect" >< banner || "Kerio MailServer" >< banner )
+  exit( 0 );
 
 register_unknown_os_banner( banner:banner, banner_type_name:banner_type, banner_type_short:"pop3_banner", port:port );
 

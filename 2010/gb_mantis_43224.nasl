@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantis_43224.nasl 12818 2018-12-18 09:55:03Z ckuersteiner $
+# $Id: gb_mantis_43224.nasl 12958 2019-01-07 10:57:12Z cfischer $
 #
 # Mantis Multiple HTML Injection Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:mantisbt:mantisbt";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100804");
-  script_version("$Revision: 12818 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-18 10:55:03 +0100 (Tue, 18 Dec 2018) $");
+  script_version("$Revision: 12958 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-07 11:57:12 +0100 (Mon, 07 Jan 2019) $");
   script_tag(name:"creation_date", value:"2010-09-15 16:23:15 +0200 (Wed, 15 Sep 2010)");
   script_bugtraq_id(43224);
 
@@ -51,21 +51,18 @@ if (description)
   script_dependencies("mantis_detect.nasl");
   script_mandatory_keys("mantisbt/detected");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"solution", value:"The vendor released an update. Please see the references for more
-information.");
+  information.");
 
   script_tag(name:"summary", value:"Mantis is prone to multiple HTML-injection vulnerabilities because the
-application fails to properly sanitize user-supplied input before
-using it in dynamically generated content.
+  application fails to properly sanitize user-supplied input before using it in dynamically generated content.");
 
-Attacker-supplied HTML and script code would run in the context of the
-affected browser, potentially allowing the attacker to steal cookie-
-based authentication credentials or to control how the site is
-rendered to the user. Other attacks are also possible.
+  script_tag(name:"impact", value:"Attacker-supplied HTML and script code would run in the context of the
+  affected browser, potentially allowing the attacker to steal cookie-based authentication credentials or
+  to control how the site is rendered to the user. Other attacks are also possible.");
 
-Versions prior to Mantis 1.2.3 vulnerable.");
+  script_tag(name:"affected", value:"Versions prior to Mantis 1.2.3 vulnerable.");
 
   exit(0);
 }
@@ -76,11 +73,14 @@ include("version_func.inc");
 if (!port = get_app_port(cpe: CPE))
   exit(0);
 
-if (!version = get_app_version(cpe: CPE, port: port))
+if (!infos = get_app_version_and_location(cpe: CPE, port: port, exit_no_version: TRUE))
   exit(0);
 
+version = infos['version'];
+path = infos['location'];
+
 if (version_is_less(version:version, test_version:"1.2.3")) {
-  report = report_fixed_ver(installed_version: version, fixed_version: "1.2.3");
+  report = report_fixed_ver(installed_version: version, fixed_version: "1.2.3", install_path: path);
   security_message(port: port, data: report);
   exit(0);
 }

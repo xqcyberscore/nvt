@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantis_49235.nasl 12818 2018-12-18 09:55:03Z ckuersteiner $
+# $Id: gb_mantis_49235.nasl 12958 2019-01-07 10:57:12Z cfischer $
 #
 # MantisBT Cross Site Scripting and SQL Injection Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:mantisbt:mantisbt";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103214");
-  script_version("$Revision: 12818 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-18 10:55:03 +0100 (Tue, 18 Dec 2018) $");
+  script_version("$Revision: 12958 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-07 11:57:12 +0100 (Mon, 07 Jan 2019) $");
   script_tag(name:"creation_date", value:"2011-08-19 14:58:19 +0200 (Fri, 19 Aug 2011)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -48,19 +48,17 @@ if (description)
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
   script_dependencies("mantis_detect.nasl");
-  script_mandatory_keys("mantisbt/detected");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_mandatory_keys("mantisbt/detected");
 
   script_tag(name:"summary", value:"MantisBT is prone to an SQL-injection vulnerability and a cross-site
-scripting vulnerability.
+  scripting vulnerability.");
 
-Exploiting these issues could allow an attacker to steal cookie-
-based authentication credentials, compromise the application,
-access or modify data, or exploit latent vulnerabilities in the
-underlying database.
+  script_tag(name:"impact", value:"Exploiting these issues could allow an attacker to steal cookie-
+  based authentication credentials, compromise the application, access or modify data, or exploit
+  latent vulnerabilities in the underlying database.");
 
-MantisBT 1.2.6 is vulnerable. Other versions may also be affected.");
+  script_tag(name:"affected", value:"MantisBT 1.2.6 is vulnerable, other versions may also be affected.");
 
   script_tag(name:"solution", value:"Upgrade to the latest version.");
 
@@ -75,11 +73,14 @@ include("version_func.inc");
 if (!port = get_app_port(cpe: CPE))
   exit(0);
 
-if (!version = get_app_version(cpe: CPE, port: port))
+if (!infos = get_app_version_and_location(cpe: CPE, port: port, exit_no_version: TRUE))
   exit(0);
 
+version = infos['version'];
+path = infos['location'];
+
 if (version_is_equal(version: version, test_version: "1.2.6")) {
-  report = report_fixed_ver(installed_version: version, fixed_version: "1.2.7");
+  report = report_fixed_ver(installed_version: version, fixed_version: "1.2.7", install_path: path);
   security_message(port: port, data: report);
   exit(0);
 }

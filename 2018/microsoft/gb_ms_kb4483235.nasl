@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4483235.nasl 12873 2018-12-21 14:42:20Z santu $
+# $Id: gb_ms_kb4483235.nasl 12963 2019-01-08 07:50:52Z ckuersteiner $
 #
 # Scripting Engine Memory Corruption Vulnerability (KB4483235)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814628");
-  script_version("$Revision: 12873 $");
+  script_version("$Revision: 12963 $");
   script_cve_id("CVE-2018-8653");
   script_bugtraq_id(106255);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-21 15:42:20 +0100 (Fri, 21 Dec 2018) $");
+  script_tag(name:"cvss_base", value:"7.6");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-08 08:50:52 +0100 (Tue, 08 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-12-20 13:45:38 +0530 (Thu, 20 Dec 2018)");
   script_name("Scripting Engine Memory Corruption Vulnerability (KB4483235)");
 

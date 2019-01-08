@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cobbler_mult_vuln.nasl 11064 2018-08-21 09:26:23Z asteins $
+# $Id: gb_cobbler_mult_vuln.nasl 12956 2019-01-07 10:14:49Z ckuersteiner $
 #
 # Cobbler <= 2.6.11+ Multiple Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112358");
-  script_version("$Revision: 11064 $");
+  script_version("$Revision: 12956 $");
   script_cve_id("CVE-2018-1000225", "CVE-2018-1000226");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 11:26:23 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-07 11:14:49 +0100 (Mon, 07 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-08-21 09:48:12 +0200 (Tue, 21 Aug 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -46,7 +46,8 @@ if(description)
 
   script_tag(name:"affected", value:"Cobbler versions up to and including 2.6.11.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 21st August, 2018. Information regarding this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution is available as of 07th January, 2019.
+  Information regarding this issue will be updated once solution details are available.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
 
@@ -69,13 +70,11 @@ include( "version_func.inc" );
 
 CPE = "cpe:/a:michael_dehaan:cobbler";
 
-if( ! port = get_app_port( cpe: CPE ) ) {
+if( ! port = get_app_port( cpe: CPE ) )
   exit( 0 );
-}
 
-if( ! version = get_app_version( cpe: CPE, port: port ) ) {
+if( ! version = get_app_version( cpe: CPE, port: port ) )
   exit( 0 );
-}
 
 if( version_is_less_equal( version: version, test_version: "2.6.11" ) ) {
   report = report_fixed_ver( installed_version: version, fixed_version: "NoneAvailable" );

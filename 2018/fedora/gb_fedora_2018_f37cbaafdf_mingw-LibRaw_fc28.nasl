@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_f37cbaafdf_mingw-LibRaw_fc28.nasl 11042 2018-08-18 06:42:47Z santu $
+# $Id: gb_fedora_2018_f37cbaafdf_mingw-LibRaw_fc28.nasl 12963 2019-01-08 07:50:52Z ckuersteiner $
 #
 # Fedora Update for mingw-LibRaw FEDORA-2018-f37cbaafdf
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874936");
-  script_version("$Revision: 11042 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-18 08:42:47 +0200 (Sat, 18 Aug 2018) $");
+  script_version("$Revision: 12963 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-08 08:50:52 +0100 (Tue, 08 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-08-15 06:35:51 +0200 (Wed, 15 Aug 2018)");
   script_cve_id("CVE-2018-5815", "CVE-2018-5816");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.1");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for mingw-LibRaw FEDORA-2018-f37cbaafdf");
   script_tag(name:"summary", value:"Check the version of mingw-LibRaw");

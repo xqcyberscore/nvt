@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_dos_vuln_win.nasl 11790 2018-10-09 08:36:59Z ckuersteiner $
+# $Id: gb_nmap_dos_vuln_win.nasl 12956 2019-01-07 10:14:49Z ckuersteiner $
 #
 # Nmap Denial of Service Vulnerability (Windows)
 #
@@ -29,12 +29,13 @@ CPE = "cpe:/a:nmap:nmap";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813825");
-  script_version("$Revision: 11790 $");
+  script_version("$Revision: 12956 $");
   script_cve_id("CVE-2018-15173");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-09 10:36:59 +0200 (Tue, 09 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-07 11:14:49 +0100 (Mon, 07 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-08-14 12:02:26 +0530 (Tue, 14 Aug 2018)");
+
   script_name("Nmap Denial of Service Vulnerability (Windows)");
 
   script_tag(name:"summary", value:"This host is installed with Nmap
@@ -52,9 +53,8 @@ if(description)
 
   script_tag(name:"affected", value:"Nmap versions 7.70 and prior on Windows.");
 
-  script_tag(name:"solution", value:"No known solution is available as of
-  14th August, 2018. Information regarding this issue will be updated once
-  solution details are available. For updates refer to Reference links.");
+  script_tag(name:"solution", value:"No known solution is available as of 07th January, 2019.
+  Information regarding this issue will be updated once solution details are available.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
   script_tag(name:"qod_type", value:"registry");
@@ -78,9 +78,10 @@ infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE);
 nmapVer = infos['version'];
 nmappath = infos['location'];
 
-if(version_is_less_equal(version:nmapVer, test_version:"7.70"))
-{
+if(version_is_less_equal(version:nmapVer, test_version:"7.70")) {
   report = report_fixed_ver(installed_version:nmapVer, fixed_version:"NoneAvailable", install_path:nmappath);
   security_message(data:report);
   exit(0);
 }
+
+exit(0);

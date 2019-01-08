@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ftp_os_detection.nasl 9533 2018-04-19 10:09:02Z cfischer $
+# $Id: gb_ftp_os_detection.nasl 12957 2019-01-07 10:29:34Z cfischer $
 #
 # FTP OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105355");
-  script_version("$Revision: 9533 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-19 12:09:02 +0200 (Thu, 19 Apr 2018) $");
+  script_version("$Revision: 12957 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-07 11:29:34 +0100 (Mon, 07 Jan 2019) $");
   script_tag(name:"creation_date", value:"2015-09-15 15:57:03 +0200 (Tue, 15 Sep 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -56,9 +56,28 @@ BANNER_TYPE = "FTP banner";
 
 port   = get_ftp_port( default:21 );
 banner = get_ftp_banner( port:port );
-if( ! banner  || banner == "" || isnull( banner ) ) exit( 0 );
+banner = chomp( banner );
 
-if( banner =~ "CP ([0-9\-]+) (IT )?FTP-Server V([0-9.]+) ready for new user" ) exit( 0 ); # Covered by gb_simatic_cp_ftp_detect.nasl
+if( ! banner || banner == "" || isnull( banner ) )
+  exit( 0 );
+
+if( banner =~ "CP ([0-9\-]+) (IT )?FTP-Server V([0-9.]+) ready for new user" )
+  exit( 0 ); # Covered by gb_simatic_cp_ftp_detect.nasl
+
+if( banner == "220 FTP server ready" || banner == "220 FTP server ready." )
+  exit( 0 );
+
+if( " FTP server (MikroTik " >< banner )
+  exit( 0 ); # Already covered by gb_mikrotik_router_routeros_consolidation.nasl
+
+# Default welcome messages on some FTP servers
+if( banner == "220 Welcome message" || 
+    banner == "220 Service ready for new user." )
+  exit( 0 );
+
+# Some broken FTP server
+if( "500 OOPS: could not bind listening IPv4 socket" >< banner )
+  exit( 0 );
 
 # 220 VxWorks FTP server (VxWorks 5.3.1 - Secure NetLinx version (1.0)) ready.
 # 220 VxWorks (VxWorks5.4.2) FTP server ready

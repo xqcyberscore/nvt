@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4461565.nasl 12777 2018-12-12 16:20:50Z santu $
+# $Id: gb_ms_kb4461565.nasl 12963 2019-01-08 07:50:52Z ckuersteiner $
 #
 # Microsoft Office Compatibility Pack Service Pack 3 Multiple Vulnerabilities (KB4461565)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814708");
-  script_version("$Revision: 12777 $");
+  script_version("$Revision: 12963 $");
   script_cve_id("CVE-2018-8597", "CVE-2018-8627");
   script_bugtraq_id(106100, 106120);
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-12 17:20:50 +0100 (Wed, 12 Dec 2018) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-08 08:50:52 +0100 (Tue, 08 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-12-12 13:11:15 +0530 (Wed, 12 Dec 2018)");
   script_name("Microsoft Office Compatibility Pack Service Pack 3 Multiple Vulnerabilities (KB4461565)");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ssh_os_detection.nasl 12066 2018-10-25 07:05:23Z cfischer $
+# $Id: gb_ssh_os_detection.nasl 12957 2019-01-07 10:29:34Z cfischer $
 #
 # SSH OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105586");
-  script_version("$Revision: 12066 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:05:23 +0200 (Thu, 25 Oct 2018) $");
+  script_version("$Revision: 12957 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-07 11:29:34 +0100 (Mon, 07 Jan 2019) $");
   script_tag(name:"creation_date", value:"2016-03-23 14:28:40 +0100 (Wed, 23 Mar 2016)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -56,7 +56,8 @@ BANNER_TYPE = "SSH banner";
 port = get_ssh_port( default:22 );
 banner = get_ssh_server_banner( port:port );
 banner = chomp( banner );
-if( ! banner  || banner == "" || isnull( banner ) ) exit( 0 );
+if( ! banner  || banner == "" || isnull( banner ) )
+  exit( 0 );
 
 textbanner = get_kb_item( "SSH/textbanner/" + port );
 textbanner = chomp( textbanner );
@@ -74,7 +75,25 @@ if( banner =~ "^SSH-2.0-libssh[_-][0-9.]+$" ||
 }
 
 # No OS info...
-if( banner == "SSH-2.0-SSH_2.0" ) exit( 0 );
+if( banner == "SSH-2.0-SSH_2.0" )
+  exit( 0 );
+
+# Vendor: "Works with any OS vendor and will function without an OS if needed"
+if( egrep( pattern:"^SSH-2\.0-RomSShell_[0-9.]+$", string:banner ) ||
+    banner == "SSH-2.0-RomSShell" )
+  exit( 0 );
+
+# Cross-platform / platform independent
+if( banner == "SSH-2.0-Mocana SSH" || 
+    egrep( pattern:"^SSH-2\.0-Mocana SSH [0-9.]+$", string:banner ) )
+  exit( 0 );
+
+if( egrep( pattern:"^SSH-1\.99-OpenSSH_[0-9.p]+$", string:banner ) ||
+    egrep( pattern:"^SSH-2\.0-OpenSSH_[0-9.p]+-FIPS_hpn[0-9v]+$", string:banner ) || # SSH-2.0-OpenSSH_6.1-FIPS_hpn13v11
+    egrep( pattern:"^SSH-2\.0-OpenSSH_[0-9.p]+(\-FIPS\(capable\))?$", string:banner ) ||
+    banner == "SSH-2.0-OpenSSH" ||
+    banner == "SSH-2.0-OpenSSH_" )
+  exit( 0 );
 
 #For banners see e.g. https://github.com/BetterCrypto/Applied-Crypto-Hardening/blob/master/unsorted/ssh/ssh_version_strings.txt
 
@@ -315,6 +334,7 @@ else if( "Debian" >< banner || "Raspbian" >< banner )
   exit( 0 );
 }
 
+# nb: "VersionAddendum" in https://www.freebsd.org/cgi/man.cgi?query=sshd_config
 else if( "FreeBSD" >< banner )
 {
   if( "SSH-2.0-OpenSSH_4.5p1 FreeBSD-20061110" >< banner )
@@ -356,6 +376,24 @@ else if( "FreeBSD" >< banner )
   if( "SSH-2.0-OpenSSH_7.2 FreeBSD-20160310" >< banner )
   {
     register_and_report_os( os:"FreeBSD", version:"11.0", cpe:"cpe:/o:freebsd:freebsd", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
+  if( "SSH-2.0-OpenSSH_7.2 FreeBSD-20161230" >< banner )
+  {
+    register_and_report_os( os:"FreeBSD", version:"11.1", cpe:"cpe:/o:freebsd:freebsd", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
+  if( "SSH-2.0-OpenSSH_7.5 FreeBSD-20170903" >< banner )
+  {
+    register_and_report_os( os:"FreeBSD", version:"11.2", cpe:"cpe:/o:freebsd:freebsd", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
+  if( "SSH-2.0-OpenSSH_7.8 FreeBSD-20180909" >< banner )
+  {
+    register_and_report_os( os:"FreeBSD", version:"12.0", cpe:"cpe:/o:freebsd:freebsd", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
     exit( 0 );
   }
 

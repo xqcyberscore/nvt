@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: secpod_smb_func.inc 12770 2018-12-12 10:35:08Z cfischer $
+# $Id: secpod_smb_func.inc 12960 2019-01-07 15:03:41Z cfischer $
 #
 # SMB Functions
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 12770 $
+# $Revision: 12960 $
 #
 ###############################################################################
 
@@ -310,7 +310,7 @@ function registry_enum_values( key, type ) {
       registry_close( soc:soc, uid:uid, tid:tid, pipe:pipe, reply:r );
 
     registry_close( soc:soc, uid:uid, tid:tid, pipe:pipe, reply:handle );
-    
+
     # TBD: If the key doesn't exist this will return here. Save this as an empty list in the KB cache as well?
     close( soc );
     return list;
@@ -669,7 +669,7 @@ function read_file( share, file, offset, count ) {
   local_var share, file, offset, count, soc, r, prot, uid, tid, fid, content;
   local_var name, login, pass, domain, port;
 
-  if( isnull( share ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#share#-#open_file" );
+  if( isnull( share ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#share#-#read_file" );
   if( isnull( file ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#file#-#read_file" );
   if( isnull( offset ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#offset#-#read_file" );
   if( isnull( count ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#count#-#read_file" );
