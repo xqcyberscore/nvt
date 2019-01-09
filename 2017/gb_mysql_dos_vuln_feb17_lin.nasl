@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_dos_vuln_feb17_lin.nasl 11863 2018-10-12 09:42:02Z mmartin $
+# $Id: gb_mysql_dos_vuln_feb17_lin.nasl 12983 2019-01-08 15:30:19Z cfischer $
 #
 # Oracle MySQL Denial Of Service Vulnerability Feb17 (Linux)
 #
@@ -24,16 +24,14 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/a:oracle:mysql";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810604");
-  script_version("$Revision: 11863 $");
+  script_version("$Revision: 12983 $");
   script_cve_id("CVE-2017-3302");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-08 16:30:19 +0100 (Tue, 08 Jan 2019) $");
   script_tag(name:"creation_date", value:"2017-02-16 15:03:30 +0530 (Thu, 16 Feb 2017)");
   script_name("Oracle MySQL Denial Of Service Vulnerability Feb17 (Linux)");
 
@@ -74,28 +72,24 @@ if(description)
   script_dependencies("mysql_version.nasl", "os_detection.nasl");
   script_require_ports("Services/mysql", 3306);
   script_mandatory_keys("MySQL/installed", "Host/runs_unixoide");
-  script_xref(name:"URL", value:"https://www.mysql.com");
+
   exit(0);
 }
 
 include("version_func.inc");
 include("host_details.inc");
 
-if(!sqlPort = get_app_port(cpe:CPE))
-{
-  CPE = "cpe:/a:mysql:mysql";
-  if(!sqlPort = get_app_port(cpe:CPE)){
-    exit(0);
-  }
-}
+cpe_list = make_list( "cpe:/a:mysql:mysql", "cpe:/a:oracle:mysql" );
 
-if( get_kb_item( "MySQL/" + sqlPort + "/blocked" ) ) exit( 0 );
+if(!infos = get_all_app_ports_from_list(cpe_list:cpe_list)) exit( 0 );
+CPE = infos['cpe'];
+sqlPort = infos['port'];
 
-if(!mysqlVer = get_app_version(cpe:CPE, port:sqlPort)){
-  exit(0);
-}
+if(!infos = get_app_version_and_location(cpe:CPE, port:sqlPort, exit_no_version:TRUE)) exit(0);
+mysqlVer = infos['version'];
+mysqlPath = infos['location'];
 
-if(mysqlVer =~ "^(5\.7\.)")
+if(mysqlVer =~ "^5\.7\.")
 {
   if(version_is_less(version:mysqlVer, test_version:"5.7.5"))
   {
@@ -112,7 +106,9 @@ else if(version_is_less(version:mysqlVer, test_version:"5.6.21"))
 
 if(VULN)
 {
-  report = report_fixed_ver(installed_version:mysqlVer, fixed_version: fix);
+  report = report_fixed_ver(installed_version:mysqlVer, fixed_version:fix, install_path:mysqlPath);
   security_message(data:report, port:sqlPort);
   exit(0);
 }
+
+exit(99);

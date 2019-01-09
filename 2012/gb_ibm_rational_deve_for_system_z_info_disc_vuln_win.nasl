@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_rational_deve_for_system_z_info_disc_vuln_win.nasl 11857 2018-10-12 08:25:16Z cfischer $
+# $Id: gb_ibm_rational_deve_for_system_z_info_disc_vuln_win.nasl 12978 2019-01-08 14:15:07Z cfischer $
 #
 # IBM Rational Developer for System z Information Disclosure Vulnerability (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802687");
-  script_version("$Revision: 11857 $");
+  script_version("$Revision: 12978 $");
   script_cve_id("CVE-2012-4862");
   script_bugtraq_id(56725);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-08 15:15:07 +0100 (Tue, 08 Jan 2019) $");
   script_tag(name:"creation_date", value:"2012-12-21 19:17:26 +0530 (Fri, 21 Dec 2012)");
   script_name("IBM Rational Developer for System z Information Disclosure Vulnerability (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51401/");
@@ -84,11 +84,8 @@ if(rdzPath && rdzPath =~ "\\SDP\\rdz")
   {
     foreach swPkgVer (swPkgVers)
     {
-      swFilePath = rdzPath - "RDz.ico" + "properties\\version\\" +
-                   swFile + ext + swPkgVer + ".swtag";
-      share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:swFilePath);
-      filePath = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1",string:swFilePath);
-      rdzFile = read_file(share:share, file:filePath, offset:0, count:250);
+      swFilePath = rdzPath - "RDz.ico" + "properties\\version\\" + swFile + ext + swPkgVer + ".swtag";
+      rdzFile = smb_read_file(fullpath:swFilePath, offset:0, count:250);
 
       if(rdzFile && rdzFile =~ "ProductVersion>[0-9\.]+<" &&
          rdzFile =~ "ProductName>IBM Rational Developer for zEnterprise")

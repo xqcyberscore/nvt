@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lhasa_untrusted_search_path_vuln.nasl 12602 2018-11-30 14:36:58Z cfischer $
+# $Id: gb_lhasa_untrusted_search_path_vuln.nasl 12978 2019-01-08 14:15:07Z cfischer $
 #
 # Lhasa Untrusted search path vulnerability
 #
@@ -27,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801461");
-  script_version("$Revision: 12602 $");
+  script_version("$Revision: 12978 $");
   script_cve_id("CVE-2010-2369");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-08 15:15:07 +0100 (Tue, 08 Jan 2019) $");
   script_tag(name:"creation_date", value:"2010-10-22 15:51:55 +0200 (Fri, 22 Oct 2010)");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
@@ -77,9 +77,7 @@ lhPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion\", item:
 if(isnull(lhPath)) exit(0);
 
 lhPath = lhPath + "\Lhasa\README.txt";
-share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:lhPath);
-file = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:lhPath);
-readmeText = read_file(share:share, file:file, offset:0, count:1000);
+readmeText = smb_read_file(fullpath:lhPath, offset:0, count:1000);
 if(isnull(readmeText) || "LHASA" >!< readmeText) exit(0);
 
 lhPath = lhPath - "\README.txt" + "\Lhasa.exe";

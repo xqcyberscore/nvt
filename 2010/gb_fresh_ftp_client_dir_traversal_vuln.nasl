@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fresh_ftp_client_dir_traversal_vuln.nasl 12602 2018-11-30 14:36:58Z cfischer $
+# $Id: gb_fresh_ftp_client_dir_traversal_vuln.nasl 12978 2019-01-08 14:15:07Z cfischer $
 #
 # FreshWebMaster Fresh FTP Filename Directory Traversal Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801535");
-  script_version("$Revision: 12602 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
+  script_version("$Revision: 12978 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-08 15:15:07 +0100 (Tue, 08 Jan 2019) $");
   script_tag(name:"creation_date", value:"2010-11-04 14:21:53 +0100 (Thu, 04 Nov 2010)");
   script_cve_id("CVE-2010-4149");
   script_bugtraq_id(44072);
@@ -61,18 +61,9 @@ to an arbitrary location on a user's system.");
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
-
-function read_content(path)
-{
-  share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:path);
-  file = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:path);
-  radFile = read_file(share:share, file:file, offset:0, count:500);
-  return radFile;
-}
 
 if(!get_kb_item("SMB/WindowsVersion")){
   exit(0);
@@ -86,17 +77,16 @@ if(!registry_key_exists(key:key)){
 ftpPath = registry_get_sz(key:key, item:"InstallLocation");
 if(ftpPath)
 {
-  ftpPath1  = ftpPath + "\license.txt";
-  radFile =  read_content(path:ftpPath1);
-  if(isnull(radFile))
+  ftpPath1 = ftpPath + "\license.txt";
+  radFile = smb_read_file(fullpath:ftpPath1, offset:0, count:500);
+  if(!radFile)
   {
-     reamePath = ftpPath + "\readme.txt";
-     radFile = read_content(path:ftpPath);
+    readmePath = ftpPath + "\readme.txt";
+    radFile = smb_read_file(fullpath:readmePath, offset:0, count:500);
   }
 
-  if(!isnull(radFile))
+  if(radFile)
   {
-    ## match the version
     ftpVer = eregmatch(pattern:"FRESHFTP ver ([0-9.]+)", string:radFile, icase:1);
     if(ftpVer[1] != NULL)
     {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_icq_toolbar_detect.nasl 11015 2018-08-17 06:31:19Z cfischer $
+# $Id: gb_icq_toolbar_detect.nasl 12974 2019-01-08 13:06:45Z cfischer $
 #
 # ICQ Toolbar Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800693");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11015 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 12974 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-08 14:06:45 +0100 (Tue, 08 Jan 2019) $");
   script_tag(name:"creation_date", value:"2009-09-07 19:45:38 +0200 (Mon, 07 Sep 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("ICQ Toolbar version detection");
@@ -40,11 +40,12 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
+
   script_tag(name:"summary", value:"This script detects the installed version of ICQ Toolbar and
   sets the result in KB.");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_smb_func.inc");
@@ -68,15 +69,11 @@ foreach item (registry_enum_keys(key:Key))
   icqName = registry_get_sz(key:Key + item, item:"DisplayName");
   if("ICQ" >< icqName)
   {
-    path = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion\",
-                                                    item:"ProgramFilesDir");
+    path = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion\", item:"ProgramFilesDir");
 
-    foreach file (make_list("\ICQToolbar\version.txt","\ICQ6Toolbar\version.txt"))
+    foreach file (make_list("\ICQToolbar\version.txt", "\ICQ6Toolbar\version.txt"))
     {
-      share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:path + file);
-      file = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:path + file );
-
-      icqVer = read_file(share:share, file:file, offset:0, count:25);
+      icqVer = smb_read_file(fullpath:path + file, offset:0, count:25);
       icqVer = ereg_replace(pattern:"[-| ]", replace:".", string:icqVer);
       if(icqVer)
       {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_imc_detect.nasl 10898 2018-08-10 13:38:13Z cfischer $
+# $Id: gb_hp_imc_detect.nasl 12974 2019-01-08 13:06:45Z cfischer $
 #
 # HP Intelligent Management Center (iMC) Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809282");
-  script_version("$Revision: 10898 $");
+  script_version("$Revision: 12974 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:38:13 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-08 14:06:45 +0100 (Tue, 08 Jan 2019) $");
   script_tag(name:"creation_date", value:"2016-09-22 16:43:00 +0530 (Thu, 22 Sep 2016)");
   script_name("HP Intelligent Management Center (iMC) Version Detection (Windows)");
 
@@ -85,9 +85,7 @@ foreach key(key_list)
         hpPath = eregmatch(pattern:"(.*iMC)\\deploy\\jdk", string:hpPath);
         logPath = hpPath[1] + "\deploy\log\deploylog.txt";
         install = hpPath[1];
-        share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:logPath);
-        file = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:logPath);
-        txtRead = read_file(share:share, file:file, offset:0, count:1000);
+        txtRead = smb_read_file(fullpath:logPath, offset:0, count:1000);
 
         fileVer = eregmatch(pattern:"Version: iMC PLAT ([0-9.]+ \([A-Za-z0-9]+)\)", string:txtRead);
         hpVer = ereg_replace(pattern:"\(", replace:"", string:fileVer[1]);

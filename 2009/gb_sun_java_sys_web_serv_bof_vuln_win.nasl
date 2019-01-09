@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sun_java_sys_web_serv_bof_vuln_win.nasl 12602 2018-11-30 14:36:58Z cfischer $
+# $Id: gb_sun_java_sys_web_serv_bof_vuln_win.nasl 12978 2019-01-08 14:15:07Z cfischer $
 #
 # Sun Java System Web Server Buffer Overflow Vulnerability (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801146");
-  script_version("$Revision: 12602 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
+  script_version("$Revision: 12978 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-08 15:15:07 +0100 (Tue, 08 Jan 2019) $");
   script_tag(name:"creation_date", value:"2009-11-12 15:21:24 +0100 (Thu, 12 Nov 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -77,10 +77,7 @@ if( ! jswsPath ) exit( 0 );
 
 jswsPath = ereg_replace( pattern:'\"(.*)\"', replace:"\1", string:jswsPath );
 jswsPath = jswsPath - "\bin\uninstall.exe" + "\README.TXT";
-
-share = ereg_replace( pattern:"([A-Z]):.*", replace:"\1$", string:jswsPath );
-file = ereg_replace( pattern:"[A-Z]:(.*)", replace:"\1",string:jswsPath );
-jswsVer = read_file( share:share, file:file, offset:0, count:150 );
+jswsVer = smb_read_file(fullpath:jswsPath, offset:0, count:150 );
 if( ! jswsVer ) exit( 0 );
 
 jswsVer = eregmatch( pattern:"Web Server ([0-9.]+)([ a-zA-z]+)?([0-9]+)?", string:jswsVer );

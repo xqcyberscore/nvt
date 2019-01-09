@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Tue, 08 Jan 2019 09:49:43 +0100
+# Automatically created on:  Wed, 09 Jan 2019 09:50:36 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -43948,6 +43948,7 @@
 2019/fedora/gb_fedora_2018_ea05fcd378_vcftools_fc28.nasl: GPLv2+
 2019/foxit/gb_foxit_phantompdf_mult_vuln_jan19_win.nasl: GPLv2+
 2019/foxit/gb_foxit_reader_mult_vuln_jan19_win.nasl: GPLv2+
+2019/gb_asip_afp_unencrypted_cleartext_logins.nasl: GPLv2
 2019/kubernetes/gb_kubernetes_dashboard_auth_bypass_vuln.nasl: GPLv2+
 2019/opensuse/gb_suse_2018_4299_1.nasl: GPLv2+
 2019/opensuse/gb_suse_2018_4304_1.nasl: GPLv2+
@@ -43964,6 +43965,8 @@
 2019/sugarcrm/gb_sugarcrm_mult_vuln02.nasl: GPLv2+
 2019/sugarcrm/gb_sugarcrm_sugarcrm-sa-2018-002.nasl: GPLv2+
 2019/twiki/gb_twiki_xss_vuln.nasl: GPLv2+
+2019/virustotal/gb_yara_mult_vuln_dec18.nasl: GPLv2+
+2019/virustotal/gb_yara_mult_vuln_jun18.nasl: GPLv2+
 2019/xerox/gb_xerox_altalink_mult_vuln.nasl: GPLv2+
 404.inc: GPLv2+
 aas_detect.nasl: GPLv2+
@@ -44581,6 +44584,7 @@ gb_egroupware_detect.nasl: GPLv2+
 gb_elasticsearch_kibana_detect.nasl: GPLv2+
 gb_elasticsearch_logstash_detect.nasl: GPLv2+
 gb_elastsearch_detect.nasl: GPLv2+
+gb_elba5_netinstall_detect_win.nasl: GPLv2+
 gb_elecard_mpeg_player_detect.nasl: GPLv2+
 gb_electrasoft_32bit_ftp_detect.nasl: GPLv2+
 gb_electro_industries_gaugetech_total_web_solutions_detect.nasl: GPLv2+
@@ -45179,6 +45183,7 @@ gb_netapp_data_ontap_ntp_detect.nasl: GPLv2+
 gb_netapp_data_ontap_snmp_detect.nasl: GPLv2+
 gb_netapp_oncommand_unified_manager_detect.nasl: GPLv2+
 gb_netapp_storagegrid_webscale_detect.nasl: GPLv2+
+gb_netatalk_asip_afp_detect.nasl: GPLv2+
 gb_netcharts_server_detect.nasl: GPLv2+
 gb_netgain_em_detect.nasl: GPLv2+
 gb_netgear_dgn2200_detect.nasl: GPLv2+
@@ -45923,6 +45928,7 @@ gb_yabsoft_aihs_detect.nasl: GPLv2+
 gb_yahoo_msg_detect.nasl: GPLv2+
 gb_yammer_desktop_detect_macosx.nasl: GPLv2+
 gb_yammer_desktop_detect_win.nasl: GPLv2+
+gb_yara_ssh_detect.nasl: GPLv2+
 gb_yawcam_detect.nasl: GPLv2+
 gb_yealink_ip_phone_detect.nasl: GPLv2+
 gb_yealink_ip_phone_http_detect.nasl: GPLv2+
@@ -62685,8 +62691,11 @@ gsf/2019/bmc/gb_bmc_remedy_impersonation_vuln.nasl: GPLv2+
 gsf/2019/bmc/gb_bmc_remedy_mult_vuln01.nasl: GPLv2+
 gsf/2019/emc/gb_rsa_archer_DSA-2018-224.nasl: GPLv2+
 gsf/2019/f5/gb_f5_big_ip_K17264695.nasl: GPLv2+
+gsf/2019/f5/gb_f5_big_ip_K45616155.nasl: GPLv2+
 gsf/2019/f5/gb_f5_big_ip_K74114570.nasl: GPLv2+
 gsf/2019/ibm/gb_ibm_domino_bof_vuln.nasl: GPLv2+
+gsf/2019/mcafee/gb_mcafee_application_control_mult_vuln_dec18.nasl: GPLv2+
+gsf/2019/racon_software/gb_elba5_rce_vuln.nasl: GPLv2+
 gsf/2019/vtiger/gb_vtiger_rce_vuln.nasl: GPLv2+
 gsf/gb-lsc-agent.nasl: GPLv2+
 gsf/gb_rittal_modbus_detect.nasl: GPLv2+

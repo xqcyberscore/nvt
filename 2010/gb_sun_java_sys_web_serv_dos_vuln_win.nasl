@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sun_java_sys_web_serv_dos_vuln_win.nasl 12602 2018-11-30 14:36:58Z cfischer $
+# $Id: gb_sun_java_sys_web_serv_dos_vuln_win.nasl 12978 2019-01-08 14:15:07Z cfischer $
 #
 # Sun Java System Web Server Denial of Service Vulnerability (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800161");
-  script_version("$Revision: 12602 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
+  script_version("$Revision: 12978 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-08 15:15:07 +0100 (Tue, 08 Jan 2019) $");
   script_tag(name:"creation_date", value:"2010-02-02 07:26:26 +0100 (Tue, 02 Feb 2010)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -86,9 +86,7 @@ if( ! sjswsPath ) exit( 0 );
 sjswsPath = ereg_replace( pattern:'\"(.*)\"', replace:"\1", string:sjswsPath );
 sjswsPath = sjswsPath - "\bin\uninstall.exe" + "\setup\WebServer.inf";
 
-share = ereg_replace( pattern:"([A-Z]):.*", replace:"\1$", string:sjswsPath );
-file = ereg_replace( pattern:"[A-Z]:(.*)", replace:"\1",string:sjswsPath );
-fileData = read_file( share:share, file:file, offset:0, count:500 );
+fileData = smb_read_file(fullpath:sjswsPath, offset:0, count:500 );
 if( ! fileData ) exit( 0 );
 
 sjswsVer = eregmatch( pattern:"PRODUCT_VERSION=([0-9.]+)", string:fileData );

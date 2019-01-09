@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_winrar_detect.nasl 12413 2018-11-19 11:11:31Z cfischer $
+# $Id: secpod_winrar_detect.nasl 12974 2019-01-08 13:06:45Z cfischer $
 #
 # WinRAR Version Detection
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901021");
-  script_version("$Revision: 12413 $");
+  script_version("$Revision: 12974 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-19 12:11:31 +0100 (Mon, 19 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-08 14:06:45 +0100 (Tue, 08 Jan 2019) $");
   script_tag(name:"creation_date", value:"2009-09-16 15:34:19 +0200 (Wed, 16 Sep 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("WinRAR Version Detection");
@@ -91,10 +91,7 @@ foreach key(key_list)
     if(isnull(rarVer))
     {
       path = rarPath + "\WhatsNew.txt";
-
-      share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:path);
-      file = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:path);
-      rarVer = read_file(share:share, file:file, offset:0, count:1000);
+      rarVer = smb_read_file(fullpath:path, offset:0, count:1000);
 
       if(rarVer)
       {
@@ -108,7 +105,7 @@ foreach key(key_list)
     if (rarVer + ", " >< checkduplicate &&  rarPath + ", " >< checkduplicate_path){
       continue;
     }
-    ##Assign detectted version value to checkduplicate so as to check in next loop iteration
+    ##Assign detected version value to checkduplicate so as to check in next loop iteration
     checkduplicate  += rarVer + ", ";
     checkduplicate_path += rarPath + ", ";
 

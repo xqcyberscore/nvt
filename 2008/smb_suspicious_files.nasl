@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smb_suspicious_files.nasl 12056 2018-10-24 12:04:11Z santu $
+# $Id: smb_suspicious_files.nasl 12978 2019-01-08 14:15:07Z cfischer $
 #
 # Potentially unwanted software
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80042");
-  script_version("$Revision: 12056 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 14:04:11 +0200 (Wed, 24 Oct 2018) $");
+  script_version("$Revision: 12978 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-08 15:15:07 +0100 (Tue, 08 Jan 2019) $");
   script_tag(name:"creation_date", value:"2008-10-24 20:38:19 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -3683,11 +3683,8 @@ EXP=aclui.dll");
 
 for(i=0;nname[i];i++)
 {
-   my_file = string(rootfile, "\",exp[i]);
-
-   file  = ereg_replace(pattern:"^[A-Za-z]:(.*)", replace:"\1", string:my_file);
-   share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:my_file);
-   myread = read_file(file:file, share:share, offset:0, count:8);
+   my_file = string(rootfile, "\", exp[i]);
+   myread = smb_read_file(fullpath:my_file, offset:0, count:8);
 
    if(myread)
    {

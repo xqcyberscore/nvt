@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_canon_printers_access_bypass_vuln.nasl 12474 2018-11-22 04:39:06Z ckuersteiner $
+# $Id: gb_canon_printers_access_bypass_vuln.nasl 12986 2019-01-09 07:58:52Z cfischer $
 #
 # Canon MF210/MF220 Series Printers Access Bypass Vulnerability
 #
@@ -27,14 +27,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813416");
-  script_version("$Revision: 12474 $");
+  script_version("$Revision: 12986 $");
   script_cve_id("CVE-2018-11711");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-22 05:39:06 +0100 (Thu, 22 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-09 08:58:52 +0100 (Wed, 09 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-06-05 11:37:19 +0530 (Tue, 05 Jun 2018)");
-
   script_name("Canon MF210/MF220 Series Printers Access Bypass Vulnerability");
+  script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
+  script_category(ACT_GATHER_INFO);
+  script_family("Web application abuses");
+  script_dependencies("gb_canon_printers_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("canon_printer/installed", "canon_printer_model");
+
+  script_xref(name:"URL", value:"https://gist.github.com/huykha/9dbcd0e46058f1e18bab241d1b2754bd");
 
   script_tag(name:"summary", value:"This host is running Canon Printer and is
   prone to an access bypass vulnerability.");
@@ -58,16 +65,6 @@ if(description)
   script_tag(name:"solution_type", value:"NoneAvailable");
   script_tag(name:"qod_type", value:"remote_vul");
 
-  script_xref(name:"URL", value:"https://global.canon/en/index.html");
-  script_xref(name:"URL", value:"https://gist.github.com/huykha/9dbcd0e46058f1e18bab241d1b2754bd");
-
-  script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
-  script_category(ACT_GATHER_INFO);
-  script_family("General");
-  script_dependencies("gb_canon_printers_detect.nasl");
-  script_mandatory_keys("canon_printer/installed", "canon_printer_model");
-  script_require_ports("Services/www", 80);
-
   exit(0);
 }
 
@@ -76,39 +73,39 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("misc_func.inc");
 
-if(!canonPort = get_app_port(cpe:"cpe:/h:canon:mf220_series"))
-{
-  if(!canonPort = get_app_port(cpe:"cpe:/h:canon:mf210_series")){
-    exit(0);
-  }
-}
+cpe_list = make_list("cpe:/h:canon:mf220_series", "cpe:/h:canon:mf210_series");
 
-model = get_kb_item("canon_printer_model");
-if(!model || !(model =~ "(MF210|MF220)")){
+if(!infos = get_single_app_ports_from_list(cpe_list:cpe_list))
   exit(0);
-}
 
-req = http_post_req( port:canonPort,
-                     url:"/tryLogin.cgi",
-                     data:'loginM=&0000=0010&0001=&0002=',
-                     add_headers: make_array( "Content-Type", "application/x-www-form-urlencoded"));
+CPE  = infos['cpe'];
+port = infos['port'];
 
-res = http_keepalive_send_recv( port:canonPort, data:req);
+if(!get_app_location(cpe:CPE, port:port))
+  exit(0);
 
-if(res =~ "^(HTTP/1.. 303)" && "Location:" >< res && "Set-Cookie" >< res)
-{
-  cookie = eregmatch( pattern:"Set-Cookie: (fusion-http-session-id=([0-9a-zA-Z]+));", string:res );
+req = http_post_req(port:port,
+                    url:"/tryLogin.cgi",
+                    data:'loginM=&0000=0010&0001=&0002=',
+                    add_headers:make_array("Content-Type", "application/x-www-form-urlencoded"));
+res = http_keepalive_send_recv(port:port, data:req);
+
+if(res =~ "^HTTP/1\.[01] 303" && "Location:" >< res && "Set-Cookie" >< res) {
+  cookie = eregmatch(pattern:"Set-Cookie: (fusion-http-session-id=([0-9a-zA-Z]+));", string:res);
   cookie = cookie[1];
 }
 
-req = http_get_req( port:canonPort, url:"/portal_top.html", add_headers:make_array( "Cookie", cookie ) );
-res = http_keepalive_send_recv( port:canonPort, data:req);
+if(!cookie)
+  exit(0);
 
-if(res =~ "^(HTTP/1.. 200 OK)" && ">Log Out<" >< res && ">Copyright CANON INC" >< res &&
-   ">Address Book<" >< res && ">Cartridge Information<" >< res && ">Device Status<" >< res)
-{
-  report = report_vuln_url(port:canonPort, url:"/portal_top.html");
-  security_message(port:canonPort, data:report);
+req = http_get_req(port:port, url:"/portal_top.html", add_headers:make_array( "Cookie", cookie ) );
+res = http_keepalive_send_recv(port:port, data:req);
+
+if(res =~ "^HTTP/1\.[01] 200" && ">Log Out<" >< res && ">Copyright CANON INC" >< res &&
+   ">Address Book<" >< res && ">Cartridge Information<" >< res && ">Device Status<" >< res) {
+  report = report_vuln_url(port:port, url:"/portal_top.html");
+  security_message(port:port, data:report);
   exit(0);
 }
-exit(0);
+
+exit(99);

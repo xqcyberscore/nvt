@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: panda_av_update_detect.nasl 11543 2018-09-21 20:25:26Z cfischer $
+# $Id: panda_av_update_detect.nasl 12974 2019-01-08 13:06:45Z cfischer $
 #
 # Panda Antivirus Update Detect
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102048");
-  script_version("$Revision: 11543 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 22:25:26 +0200 (Fri, 21 Sep 2018) $");
+  script_version("$Revision: 12974 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-08 14:06:45 +0100 (Tue, 08 Jan 2019) $");
   script_tag(name:"creation_date", value:"2010-07-08 10:59:30 +0200 (Thu, 08 Jul 2010)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -78,9 +78,7 @@ foreach item (registry_enum_keys(key:key))
 for(i = 0; i < 3; i++){
 
   if(paths[i]){
-    share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:paths[i]);
-    file = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:paths[i]) + "\Titanium.ini";
-    last_update = read_file(share:share, file:file, offset:0, count:1000);
+    last_update = smb_read_file(fullpath:paths[i] + "\Titanium.ini", offset:0, count:1000);
     last_update = egrep(pattern:"^PavSigDate=(.*)$", string:last_update);
     last_update = ereg_replace(pattern:"^PavSigDate=(.*)$", replace:"\1", string:last_update);
     last_update = last_update - string("\r\n"); #removing the endline chars

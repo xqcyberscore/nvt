@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1630.nasl 12964 2019-01-08 08:07:01Z cfischer $
+# $Id: deb_dla_1630.nasl 12987 2019-01-09 08:03:46Z mmartin $
 #
 # Auto-generated from advisory DLA 1630-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,15 +31,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891630");
-  script_version("$Revision: 12964 $");
+  script_version("$Revision: 12987 $");
   script_cve_id("CVE-2017-14055", "CVE-2017-14056", "CVE-2017-14057", "CVE-2017-14170", "CVE-2017-14171",
                 "CVE-2017-14767", "CVE-2017-15672", "CVE-2017-17130", "CVE-2017-9993", "CVE-2017-9994",
                 "CVE-2018-14394", "CVE-2018-1999010", "CVE-2018-6621", "CVE-2018-7557");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1630-1] libav security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-08 09:07:01 +0100 (Tue, 08 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-09 09:03:46 +0100 (Wed, 09 Jan 2019) $");
   script_tag(name:"creation_date", value:"2019-01-08 00:00:00 +0100 (Tue, 08 Jan 2019)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

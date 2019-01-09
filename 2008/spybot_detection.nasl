@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: spybot_detection.nasl 11570 2018-09-24 11:54:11Z cfischer $
+# $Id: spybot_detection.nasl 12978 2019-01-08 14:15:07Z cfischer $
 #
 # Spybot Search & Destroy Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80045");
-  script_version("$Revision: 11570 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-24 13:54:11 +0200 (Mon, 24 Sep 2018) $");
+  script_version("$Revision: 12978 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-08 15:15:07 +0100 (Tue, 08 Jan 2019) $");
   script_tag(name:"creation_date", value:"2008-10-24 20:38:19 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -71,12 +71,8 @@ foreach entry(registry_enum_keys(key:key)) {
     path = registry_get_sz(item:"InstallLocation", key:key + entry);
 
     if(path) {
-      path += "Updates";
-      share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:path);
-      path  = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:path);
-      file = path + "\downloaded.ini";
-
-      contents = read_file(file:file, share:share, offset:0, count:85);
+      path += "Updates\downloaded.ini";
+      contents = smb_read_file(fullpath:path, offset:0, count:85);
 
       if(contents && "ReleaseDate" >< contents) {
 

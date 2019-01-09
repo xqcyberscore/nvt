@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_horde_gollem_module_unauthorized_file_download_vuln_win.nasl 11982 2018-10-19 08:49:21Z mmartin $
+# $Id: gb_horde_gollem_module_unauthorized_file_download_vuln_win.nasl 12986 2019-01-09 07:58:52Z cfischer $
 #
 # Horde Gollem Module Unauthorized File Download Vulnerability (Windows)
 #
@@ -29,14 +29,21 @@ CPE = "cpe:/a:horde:horde_groupware";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812234");
-  script_version("$Revision: 11982 $");
+  script_version("$Revision: 12986 $");
   script_cve_id("CVE-2017-15235");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-09 08:58:52 +0100 (Wed, 09 Jan 2019) $");
   script_tag(name:"creation_date", value:"2017-12-06 18:23:41 +0530 (Wed, 06 Dec 2017)");
-  script_tag(name:"qod_type", value:"remote_banner");
   script_name("Horde Gollem Module Unauthorized File Download Vulnerability (Windows)");
+  script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
+  script_category(ACT_GATHER_INFO);
+  script_family("Web application abuses");
+  script_dependencies("horde_detect.nasl", "gb_horde_gollem_detect.nasl", "os_detection.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("horde/installed", "horde/gollem/installed", "Host/runs_windows");
+
+  script_xref(name:"URL", value:"https://blogs.securiteam.com/index.php/archives/3454");
 
   script_tag(name:"summary", value:"This host is running Horde Groupware and is
   prone to an unauthorized file download vulnerability.");
@@ -56,41 +63,36 @@ if(description)
   script_tag(name:"solution", value:"Upgrade to latest version of Horde Groupware
   and File Manager (gollem) module.");
 
+  script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name:"URL", value:"https://blogs.securiteam.com/index.php/archives/3454");
-
-  script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
-  script_category(ACT_GATHER_INFO);
-  script_family("Web application abuses");
-  script_dependencies("horde_detect.nasl", "gb_horde_gollem_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("horde/installed", "horde/gollem/installed", "Host/runs_windows");
-  script_require_ports("Services/www", 80);
-  script_xref(name:"URL", value:"https://www.horde.org");
   exit(0);
 }
 
 include("version_func.inc");
 include("host_details.inc");
 
-hordePort = get_app_port(cpe:CPE);
-gollemPort = get_app_port(cpe: "cpe:/a:horde:gollem");
-if(!hordePort || !gollemPort){
+if(!port = get_app_port(cpe:CPE))
   exit(0);
-}
 
-if(!infos = get_app_version_and_location(cpe:CPE, port:hordePort, exit_no_version:TRUE)) exit(0);
+if(!infos = get_app_version_and_location(cpe:CPE, port:port, exit_no_version:TRUE))
+  exit(0);
+
 hordeVer = infos['version'];
 hordePath = infos['location'];
 
-if(hordeVer == "5.2.21")
-{
-  gollemVer = get_app_version(cpe: "cpe:/a:horde:gollem");
-  if(gollemVer == "3.0.11")
-  {
-    report = report_fixed_ver(installed_version: "Horde Groupware " + hordeVer + " with Gollem version " + gollemVer,
-                              fixed_version: "Upgrade to latest version", install_path:hordePath);
-    security_message(port:hordePort, data: report);
+if(hordeVer == "5.2.21") {
+
+  if(!infos = get_app_version_and_location(cpe:"cpe:/a:horde:gollem", port:port, exit_no_version:TRUE))
+    exit(0);
+
+  gollemVer = infos['version'];
+  gollemPath = infos['location'];
+
+  if(gollemVer == "3.0.11") {
+    report = report_fixed_ver(installed_version:"Horde Groupware " + hordeVer + " with Gollem version " + gollemVer,
+                              fixed_version:"Upgrade to latest version", install_path:"Horde Groupware: " + hordePath + " Gollem: " + gollemPath);
+    security_message(port:port, data:report);
     exit(0);
   }
 }

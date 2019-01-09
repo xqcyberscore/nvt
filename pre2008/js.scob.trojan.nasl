@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: js.scob.trojan.nasl 12602 2018-11-30 14:36:58Z cfischer $
+# $Id: js.scob.trojan.nasl 12978 2019-01-08 14:15:07Z cfischer $
 # Description: JS.Scob.Trojan or Download.Ject Trojan
 #
 # Authors:
@@ -25,8 +25,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12286");
-  script_version("$Revision: 12602 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
+  script_version("$Revision: 12978 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-08 15:15:07 +0100 (Tue, 08 Jan 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -69,20 +69,18 @@ if(!get_kb_item("SMB/WindowsVersion")){
 rootfile = registry_get_sz(key:"SOFTWARE\Microsoft\Windows NT\CurrentVersion", item:"SystemRoot");
 
 if (! rootfile)
-	exit(0);
+  exit(0);
 
 files[0] = string(rootfile, "\\system32\\kk32.dll");
 files[1] = string(rootfile, "\\system32\\Surf.dat");
 
 foreach file (files)
 {
-        share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:file);
-        file  = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:file);
-        myread = read_file(file:file, share:share, offset:0,count:4);
-        if (myread) {
-         security_message(port:0);
-         exit(0);
-	}
+  myread = smb_read_file(fullpath:file, offset:0,count:4);
+  if (myread) {
+    security_message(port:0);
+    exit(0);
+  }
 }
 
 exit(0);

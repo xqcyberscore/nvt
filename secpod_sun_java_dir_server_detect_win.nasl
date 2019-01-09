@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_sun_java_dir_server_detect_win.nasl 10922 2018-08-10 19:21:48Z cfischer $
+# $Id: secpod_sun_java_dir_server_detect_win.nasl 12974 2019-01-08 13:06:45Z cfischer $
 #
 # Sun Java Directory Server Version Detection (Windows)
 #
@@ -33,10 +33,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900492");
-  script_version("$Revision: 10922 $");
+  script_version("$Revision: 12974 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 21:21:48 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-08 14:06:45 +0100 (Tue, 08 Jan 2019) $");
   script_tag(name:"creation_date", value:"2009-04-30 06:40:16 +0200 (Thu, 30 Apr 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Sun Java Directory Server Version Detection (Windows)");
@@ -92,11 +92,7 @@ if(registry_key_exists(key:key1)){
     infPath = registry_get_sz(key:key2, item:"UninstallString");
     infPath = ereg_replace(pattern:'"', string:infPath, replace:"");
     infFile = infPath - "uninstall_dirserver.exe" + "setup\slapd\slapd.inf";
-
-    share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:infFile);
-    file = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:infFile);
-
-    infContent = read_file(share:share, file:file, offset:0, count:256);
+    infContent = smb_read_file(fullpath:infFile, offset:0, count:256);
     if("Directory Server" >< infContent){
 
       appVer = eregmatch(pattern:"System Directory Server ([0-9]\.[0-9.]+)", string:infContent);

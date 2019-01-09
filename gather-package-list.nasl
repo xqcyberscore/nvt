@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gather-package-list.nasl 12731 2018-12-10 08:34:59Z cfischer $
+# $Id: gather-package-list.nasl 12971 2019-01-08 11:56:18Z asteins $
 #
 # Determine OS and list of installed packages via SSH login
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.50282");
-  script_version("$Revision: 12731 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-10 09:34:59 +0100 (Mon, 10 Dec 2018) $");
+  script_version("$Revision: 12971 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-08 12:56:18 +0100 (Tue, 08 Jan 2019) $");
   script_tag(name:"creation_date", value:"2008-01-17 22:05:49 +0100 (Thu, 17 Jan 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -54,8 +54,8 @@ if(description)
   The result is analysed for various patterns and in several cases additional commands are tried
   to find out more details and to confirm a detection.
 
-  The regular Linux distributions are detected this way as well as other linunxoid systems and
-  also many Linux-baseddevices and appliances.
+  The regular Linux distributions are detected this way as well as other unixoid systems and
+  also many Linux-based devices and appliances.
 
   If the system offers a package database, for example RPM- or DEB-based, this full list of
   installed packages is retrieved for further patch-level checks.");

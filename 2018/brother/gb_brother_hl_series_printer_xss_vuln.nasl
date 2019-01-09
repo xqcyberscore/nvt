@@ -1,6 +1,6 @@
 ################################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_brother_hl_series_printer_xss_vuln.nasl 12025 2018-10-23 08:16:52Z mmartin $
+# $Id: gb_brother_hl_series_printer_xss_vuln.nasl 12986 2019-01-09 07:58:52Z cfischer $
 #
 # Brother HL Series Printer Cross-Site Scripting Vulnerability
 #
@@ -24,18 +24,24 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ################################################################################
 
-CPE = "cpe:/h:brother:hl-l2340d";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813391");
-  script_version("$Revision: 12025 $");
+  script_version("$Revision: 12986 $");
   script_cve_id("CVE-2018-11581");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:16:52 +0200 (Tue, 23 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-09 08:58:52 +0100 (Wed, 09 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-06-06 15:18:41 +0530 (Wed, 06 Jun 2018)");
   script_name("Brother HL Series Printer Cross-Site Scripting Vulnerability");
+  script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
+  script_category(ACT_GATHER_INFO);
+  script_family("Web application abuses");
+  script_dependencies("gb_brother_hl_series_printer_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("Brother/HL/Printer/model", "Brother/HL/Printer/version");
+
+  script_xref(name:"URL", value:"https://gist.github.com/huykha/409451e4b086bfbd55e28e7e803ae930");
 
   script_tag(name:"summary", value:"This host is running Brother HL Series Printer
   and is prone to a cross site scripting vulnerability.");
@@ -57,39 +63,32 @@ if(description)
   later and set a new password. For updates refer to Reference links.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-
   script_tag(name:"qod_type", value:"remote_banner");
-  script_xref(name:"URL", value:"https://gist.github.com/huykha/409451e4b086bfbd55e28e7e803ae930");
-  script_xref(name:"URL", value:"http://support.brother.com");
 
-  script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
-  script_category(ACT_GATHER_INFO);
-  script_family("Web application abuses");
-  script_dependencies("gb_brother_hl_series_printer_detect.nasl");
-  script_mandatory_keys("Brother/HL/Printer/model", "Brother/HL/Printer/version");
-  script_require_ports("Services/www", 80);
   exit(0);
 }
 
 include("version_func.inc");
 include("host_details.inc");
 
-if(!brport = get_app_port(cpe:CPE))
-{
-  CPE = "cpe:/h:brother:hl-l2380dw";
-  if(!brport = get_app_port(cpe:CPE)){
-    exit(0);
-  }
-}
+cpe_list = make_list("cpe:/h:brother:hl-l2340d", "cpe:/h:brother:hl-l2380dw");
 
-infos = get_app_version_and_location(cpe:CPE, port:brport, exit_no_version:TRUE );
+if(!infos = get_single_app_ports_from_list(cpe_list:cpe_list))
+  exit(0);
+
+CPE  = infos['cpe'];
+port = infos['port'];
+
+if(!infos = get_app_version_and_location(cpe:CPE, port:port, exit_no_version:TRUE))
+  exit(0);
+
 vers = infos['version'];
 path = infos['location'];
 
-if(version_is_less(version:vers, test_version:"1.16"))
-{
+if(version_is_less(version:vers, test_version:"1.16")){
   report = report_fixed_ver(installed_version:vers, fixed_version:"1.16", install_path:path);
-  security_message(data:report, port:brport);
+  security_message(port:port, data:report);
   exit(0);
 }
-exit(0);
+
+exit(99);

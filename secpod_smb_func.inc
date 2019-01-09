@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: secpod_smb_func.inc 12960 2019-01-07 15:03:41Z cfischer $
+# $Id: secpod_smb_func.inc 12976 2019-01-08 13:27:20Z cfischer $
 #
 # SMB Functions
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 12960 $
+# $Revision: 12976 $
 #
 ###############################################################################
 
@@ -655,35 +655,75 @@ function get_file_size( share, file ) {
   }
 }
 
-##########################################################################
-# Function that reads the content of given file
-# param:
-#       share: Windows IPC Share
-#       file: File path to read the content
-#       offset: Position from which to start the file read
-#       count: Number of bytes to readh from offset
-##########################################################################
+# @brief Reads the content of a given file via SMB.
+#
+# @param share    The Windows IPC Share to connect to (e.g. C$).
+# @param file     The file path to read the content from (e.g. \path\to\file.txt).
+# @param fullpath The full path to a file to read the content from (e.g. C:\path\to\file.txt).
+#                 This parameter can be used as an alternative to the "share" and "file" parameter.
+# @param offset   Position from which to start reading the file. Mandatory.
+# @param count    Number of bytes to read from offset. Mandatory.
+#
+# @note You need to either pass the "share" AND "file" parameter OR only the full path (e.g. C:\path\to\file.tx)
+#       via the "fullpath" parameter.
+#
+# @return The content of the read file as a string, FALSE if no connection to the remote SMB server could be
+#         opened or NULL if not all required parameters where passed.
+#
+function smb_read_file( share, file, fullpath, offset, count ) {
 
-function read_file( share, file, offset, count ) {
-
-  local_var share, file, offset, count, soc, r, prot, uid, tid, fid, content;
+  local_var share, file, fullpath, offset, count;
   local_var name, login, pass, domain, port;
+  local_var soc, r, prot, uid, tid, fid, content;
 
-  if( isnull( share ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#share#-#read_file" );
-  if( isnull( file ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#file#-#read_file" );
-  if( isnull( offset ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#offset#-#read_file" );
-  if( isnull( count ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#count#-#read_file" );
+  if( ! share && ! file && ! fullpath ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#share, file and fullpath#-#smb_read_file" );
+    return NULL;
+  }
 
-  name    =  kb_smb_name();
-  login   =  kb_smb_login();
-  pass    =  kb_smb_password();
-  domain  =  kb_smb_domain();
-  port    =  kb_smb_transport();
+  if( fullpath && ( share || file ) ) {
+    set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#smb_read_file: fullpath and share/file passed but only one of both can be used" );
+    return NULL;
+  }
 
-  if( ! port ) port = 445;
+  if( share && ! file ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#share passed but not file#-#smb_read_file" );
+    return NULL;
+  }
+
+  if( file && ! share ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#file passed but not share#-#smb_read_file" );
+    return;
+  }
+
+  if( isnull( offset ) ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#offset#-#read_file" );
+    return;
+  }
+
+  if( ! count ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#count#-#read_file" );
+    return;
+  }
+
+  if( fullpath ) {
+    share = ereg_replace( pattern:"([a-zA-Z]):.*", replace:"\1$", string:fullpath );
+    share = toupper( share ); # nb: Just to be sure to pass the IPC share as uppercase if a small drive letter was passed.
+    file  = ereg_replace( pattern:"[a-zA-Z]:(.*)", replace:"\1", string:fullpath );
+  }
+
+  name   =  kb_smb_name();
+  login  =  kb_smb_login();
+  pass   =  kb_smb_password();
+  domain =  kb_smb_domain();
+  port   =  kb_smb_transport();
+
+  if( ! port )
+    port = 445;
 
   soc = open_sock_tcp( port );
-  if( ! soc ) return FALSE;
+  if( ! soc )
+    return FALSE;
 
   r = smb_session_request( soc:soc, remote:name );
   if( ! r ) {
@@ -691,7 +731,7 @@ function read_file( share, file, offset, count ) {
     return FALSE;
   }
 
-  prot = smb_neg_prot(soc:soc);
+  prot = smb_neg_prot( soc:soc );
   if( ! prot ) {
     close( soc );
     return FALSE;
@@ -744,19 +784,19 @@ function GetVer( file, share, prodvers ) {
 
   if( isnull( prodvers ) ) prodvers = 0;
 
-  pe_offset = bin_word( data:read_file( share:share, file:file, offset:60, count:2 ) );
+  pe_offset = bin_word( data:smb_read_file( share:share, file:file, offset:60, count:2 ) );
 
-  if( read_file( share:share, file:file, offset:pe_offset, count:2 ) != "PE" ) {
+  if( smb_read_file( share:share, file:file, offset:pe_offset, count:2 ) != "PE" ) {
     return NULL;
   }
 
-  sections_cnt = bin_word( data:read_file( share:share, file:file, offset:pe_offset + 6, count:2 ) );
-  section_offset = pe_offset + bin_word( data:read_file( share:share, file:file, offset:pe_offset + 20, count:2 ) ) + 24;
+  sections_cnt = bin_word( data:smb_read_file( share:share, file:file, offset:pe_offset + 6, count:2 ) );
+  section_offset = pe_offset + bin_word( data:smb_read_file( share:share, file:file, offset:pe_offset + 20, count:2 ) ) + 24;
   rsrc_start = NULL;
   max_recurs = 20;
 
   for( itr = 0; itr < sections_cnt; itr++ ) {
-    sections_data = read_file( share:share, file:file, offset:section_offset + itr * 40, count:40 );
+    sections_data = smb_read_file( share:share, file:file, offset:section_offset + itr * 40, count:40 );
     if( sections_data && substr( sections_data, 0, 4 ) == ".rsrc" ) {
       rsrc_start = bin_dword( data:substr( sections_data, 20 ) );
       rsrc_virtstart = bin_dword( data:substr( sections_data, 12 ) );
@@ -770,7 +810,7 @@ function GetVer( file, share, prodvers ) {
     return NULL;
   }
 
-  dir_data = read_file( share:share, file:file, offset:rsrc_start, count:16 );
+  dir_data = smb_read_file( share:share, file:file, offset:rsrc_start, count:16 );
   dir_entries = bin_word( data:substr( dir_data, 12 ) ) + bin_word( data:substr( dir_data, 14 ) );
   dir_offset = NULL;
   sub_dir = 0;
@@ -778,7 +818,7 @@ function GetVer( file, share, prodvers ) {
   recurs = 0;
 
   for( it = 0; it < dir_entries; it++ ) {
-    dir_data = read_file( share:share, file:file, offset:rsrc_start + 16 + it * 8, count:8 );
+    dir_data = smb_read_file( share:share, file:file, offset:rsrc_start + 16 + it * 8, count:8 );
     if( bin_dword( data:substr( dir_data, 0 ) ) == 0x10 ) {
 
       repeat {
@@ -790,7 +830,7 @@ function GetVer( file, share, prodvers ) {
           dir_offset = dir_tmp;
           sub_dir = 0;
         }
-        dir_data = read_file( share:share, file:file, offset:rsrc_start + dir_offset + 16, count:8 );
+        dir_data = smb_read_file( share:share, file:file, offset:rsrc_start + dir_offset + 16, count:8 );
         if( strlen( dir_data ) != 8 ) {
           return NULL;
         }
@@ -810,16 +850,16 @@ function GetVer( file, share, prodvers ) {
     return NULL;
   }
 
-  dir_data = read_file( share:share, file:file, offset:rsrc_start + dir_offset, count:4 );
+  dir_data = smb_read_file( share:share, file:file, offset:rsrc_start + dir_offset, count:4 );
   dir_offset = bin_dword( data:substr( dir_data, 0 ) );
   rsrc_start = rsrc_start + ( dir_offset - rsrc_virtstart );
-  vs_data = read_file( share:share, file:file, offset:rsrc_start, count:2 );
+  vs_data = smb_read_file( share:share, file:file, offset:rsrc_start, count:2 );
   if( ! vs_data ) {
     return NULL;
   }
 
   vs_length = bin_word( data:substr( vs_data, 0 ) );
-  vs_data = read_file( share:share, file:file, offset:rsrc_start, count:vs_length );
+  vs_data = smb_read_file( share:share, file:file, offset:rsrc_start, count:vs_length );
 
   if( bin_dword( data:substr( vs_data, 40 ) ) != 0xfeef04bd ) {
     return NULL;
@@ -879,24 +919,26 @@ function bin_dword( data ) {
   return 0;
 }
 
-function GetVersionFromFile( file, verstr ) {
+function GetVersionFromFile( file, verstr, offset ) {
 
-  local_var file, share, verstr, mshare, soc, r, prot, uid, tid, ver;
+  local_var file, verstr, offset;
   local_var name, login, pass, domain, port;
+  local_var mshare, soc, r, prot, uid, tid, ver;
 
-  if( isnull( file ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#file#-#GetVersionFromFile" );
+  if( ! file ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#file#-#GetVersionFromFile" );
+    return NULL;
+  }
 
-  name    =  kb_smb_name();
-  login   =  kb_smb_login();
-  pass    =  kb_smb_password();
-  domain  =  kb_smb_domain();
-  port    =  kb_smb_transport();
-
-  mshare = ereg_replace( pattern:"([A-Z]):.*", replace:"\1$", string:file );
-  file = ereg_replace( pattern:"[A-Z]:(.*)", replace:"\1", string:file );
+  name   =  kb_smb_name();
+  login  =  kb_smb_login();
+  pass   =  kb_smb_password();
+  domain =  kb_smb_domain();
+  port   =  kb_smb_transport();
 
   soc = open_sock_tcp( port );
-  if( ! soc ) return NULL;
+  if( ! soc )
+    return NULL;
 
   r = smb_session_request( soc:soc, remote:name );
   if( ! r ) {
@@ -922,6 +964,9 @@ function GetVersionFromFile( file, verstr ) {
     return NULL;
   }
 
+  mshare = ereg_replace( pattern:"([a-zA-Z]):.*", replace:"\1$", string:file );
+  mshare = toupper( mshare ); # nb: Just to be sure to pass the IPC share as uppercase if a small drive letter was passed.
+
   r = smb_tconx( soc:soc, name:name, uid:uid, share:mshare );
   if( ! r ) {
     close( soc );
@@ -934,6 +979,8 @@ function GetVersionFromFile( file, verstr ) {
     return NULL;
   }
 
+  file = ereg_replace( pattern:"[a-zA-Z]:(.*)", replace:"\1", string:file );
+
   fid = OpenAndX( socket:soc, uid:uid, tid:tid, file:file );
   if( ! fid ) {
     close( soc );
@@ -941,9 +988,9 @@ function GetVersionFromFile( file, verstr ) {
   }
 
   if( isnull( verstr ) ) {
-    ver = GetVersion( socket:soc, uid:uid, tid:tid, fid:fid );
+    ver = GetVersion( socket:soc, uid:uid, tid:tid, fid:fid, offset:offset );
   } else {
-    ver = GetVersion( socket:soc, uid:uid, tid:tid, fid:fid, verstr:verstr );
+    ver = GetVersion( socket:soc, uid:uid, tid:tid, fid:fid, verstr:verstr, offset:offset );
   }
 
   close( soc );

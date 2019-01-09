@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_firefox_detect_win.nasl 12413 2018-11-19 11:11:31Z cfischer $
+# $Id: gb_firefox_detect_win.nasl 12974 2019-01-08 13:06:45Z cfischer $
 #
 # Mozilla Firefox Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800014");
-  script_version("$Revision: 12413 $");
+  script_version("$Revision: 12974 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-19 12:11:31 +0100 (Mon, 19 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-08 14:06:45 +0100 (Tue, 08 Jan 2019) $");
   script_tag(name:"creation_date", value:"2008-10-06 13:07:14 +0200 (Mon, 06 Oct 2008)");
   script_name("Mozilla Firefox Version Detection (Windows)");
   script_category(ACT_GATHER_INFO);
@@ -155,10 +155,7 @@ foreach key(key_list){
 
     if(!ESR){
       exePath = appPath + "\application.ini";
-      share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:exePath);
-      file = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:exePath);
-      ## Read the content of .txt file
-      readmeText = read_file(share:share, file:file, offset:0, count:3000);
+      readmeText = smb_read_file(fullpath:exePath, offset:0, count:3000);
       if(readmeText =~ "mozilla-esr"){
         foxVer_check = eregmatch(pattern:"version=([0-9.]+)", string:readmeText);
         if(foxVer_check[1] == foxVer){
@@ -169,11 +166,7 @@ foreach key(key_list){
 
     if(!ESR){
       exePath = appPath + "\platform.ini";
-      share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:exePath);
-      file = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:exePath);
-
-      ## Read the content of .txt file
-      readmeText = read_file(share:share, file:file, offset:0, count:3000);
+      readmeText = smb_read_file(fullpath:exePath, offset:0, count:3000);
       if(readmeText =~ "mozilla-esr"){
         foxVer_check = eregmatch(pattern:"Milestone=([0-9.]+)", string:readmeText);
         if(foxVer_check[1] == foxVer){
@@ -184,11 +177,7 @@ foreach key(key_list){
 
     if(!ESR){
       exePath = appPath + "\update-settings.ini";
-
-      share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:exePath);
-      file = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:exePath);
-      ## Read the content of .ini file
-      readmeText = read_file(share:share, file:file, offset:0, count:3000);
+      readmeText = smb_read_file(fullpath:exePath, offset:0, count:3000);
       if(readmeText =~ "mozilla-esr"){
         ##Not Reliable option, If two Firefox versions are there (one ESR and One Main) and main
         ## firefox is detected, and update-settings.ini of another installed ESR firefox has mozilla-esr

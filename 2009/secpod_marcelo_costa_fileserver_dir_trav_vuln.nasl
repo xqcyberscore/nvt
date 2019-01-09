@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_marcelo_costa_fileserver_dir_trav_vuln.nasl 12602 2018-11-30 14:36:58Z cfischer $
+# $Id: secpod_marcelo_costa_fileserver_dir_trav_vuln.nasl 12978 2019-01-08 14:15:07Z cfischer $
 #
 # Marcelo Costa FileServer Component Directory Traversal Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:microsoft:messenger_plus%21_live";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900810");
-  script_version("$Revision: 12602 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
+  script_version("$Revision: 12978 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-08 15:15:07 +0100 (Tue, 08 Jan 2019) $");
   script_tag(name:"creation_date", value:"2009-08-05 14:14:14 +0200 (Wed, 05 Aug 2009)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:N/A:N");
@@ -83,11 +83,7 @@ if( version =~ "^4\..*" )
 
   if(!isnull(fsPath))
   {
-    share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:fsPath);
-    file = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:fsPath);
-
-    # Read the FileServer fsVersion.txt File
-    fileSrvTxt = read_file(share:share, file:file, offset:0, count:100);
+    fileSrvTxt = smb_read_file(fullpath:fsPath, offset:0, count:100);
 
     if(isnull(fileSrvTxt)){
       exit(0);

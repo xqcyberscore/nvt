@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_streamripper_mult_bof_vuln_nov08_win.nasl 12602 2018-11-30 14:36:58Z cfischer $
+# $Id: gb_streamripper_mult_bof_vuln_nov08_win.nasl 12978 2019-01-08 14:15:07Z cfischer $
 #
 # Streamripper Multiple Buffer Overflow Vulnerabilities (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800146");
-  script_version("$Revision: 12602 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
+  script_version("$Revision: 12978 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-08 15:15:07 +0100 (Tue, 08 Jan 2019) $");
   script_tag(name:"creation_date", value:"2008-12-01 15:31:19 +0100 (Mon, 01 Dec 2008)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -70,7 +70,6 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
@@ -79,17 +78,13 @@ if(!get_kb_item("SMB/WindowsVersion")){
   exit(0);
 }
 
-srPath = registry_get_sz(item:"UninstallString", key:"SOFTWARE\Microsoft" +
-                         "\Windows\CurrentVersion\Uninstall\Streamripper");
+srPath = registry_get_sz(item:"UninstallString", key:"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Streamripper");
 if(!srPath){
   exit(0);
 }
 
 srFile = srPath - "Uninstall.exe" + "CHANGES";
-share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:srFile);
-file =  ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:srFile);
-
-srVer = read_file(share:share, file:file, offset:0, count:256);
+srVer = smb_read_file(fullpath:srFile, offset:0, count:256);
 srVer = eregmatch(pattern:"New for ([0-9.]+)", string:srVer);
 
 if(srVer[1] != NULL )

@@ -23,17 +23,16 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
-CPE = "cpe:/a:oracle:mysql";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805771");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 12983 $");
   script_cve_id("CVE-2015-4816");
   script_bugtraq_id(77134);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-08 16:30:19 +0100 (Tue, 08 Jan 2019) $");
   script_tag(name:"creation_date", value:"2015-10-28 13:07:06 +0530 (Wed, 28 Oct 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Oracle MySQL Multiple Unspecified Vulnerabilities-08 Oct15 (Windows)");
@@ -64,30 +63,28 @@ if(description)
   script_dependencies("mysql_version.nasl", "os_detection.nasl");
   script_require_ports("Services/mysql", 3306);
   script_mandatory_keys("MySQL/installed", "Host/runs_windows");
+
   exit(0);
 }
 
 include("version_func.inc");
 include("host_details.inc");
 
-if(!sqlPort = get_app_port(cpe:CPE))
-{
-  CPE = "cpe:/a:mysql:mysql";
-  if(!sqlPort = get_app_port(cpe:CPE)){
-    exit(0);
-  }
-}
+cpe_list = make_list( "cpe:/a:mysql:mysql", "cpe:/a:oracle:mysql" );
 
-if(!mysqlVer = get_app_version(cpe:CPE, port:sqlPort)){
-  exit(0);
-}
+if(!infos = get_all_app_ports_from_list(cpe_list:cpe_list)) exit( 0 );
+CPE = infos['cpe'];
+sqlPort = infos['port'];
 
-if(mysqlVer =~ "^(5\.5)")
+if(!infos = get_app_version_and_location(cpe:CPE, port:sqlPort, exit_no_version:TRUE)) exit(0);
+mysqlVer = infos['version'];
+mysqlPath = infos['location'];
+
+if(mysqlVer =~ "^5\.5\.")
 {
   if(version_in_range(version:mysqlVer, test_version:"5.5", test_version2:"5.5.44"))
   {
-    report = 'Installed version: ' + mysqlVer + '\n' +
-             'Fixed version:     ' + "Apply the patch"  + '\n';
+    report = report_fixed_ver(installed_version:mysqlVer, fixed_version:"Apply the patch", install_path:mysqlPath);
     security_message(data:report, port:sqlPort);
     exit(0);
   }

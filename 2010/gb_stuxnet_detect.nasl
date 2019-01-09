@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_stuxnet_detect.nasl 10200 2018-06-14 14:39:20Z cfischer $
+# $Id: gb_stuxnet_detect.nasl 12978 2019-01-08 14:15:07Z cfischer $
 #
 # Stuxnet Detection
 #
@@ -8,7 +8,7 @@
 # Michael Meyer
 #
 # Copyright:
-# Copyright (c) 2009 Greenbone Networks GmbH
+# Copyright (c) 2010 Greenbone Networks GmbH
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100815");
-  script_version("$Revision: 10200 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-14 16:39:20 +0200 (Thu, 14 Jun 2018) $");
+  script_version("$Revision: 12978 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-08 15:15:07 +0100 (Tue, 08 Jan 2019) $");
   script_tag(name:"creation_date", value:"2010-09-20 15:31:27 +0200 (Mon, 20 Sep 2010)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -77,13 +77,8 @@ report = string("The following Stuxnet related files are detected on the remote 
 
 foreach file (stux) {
 
-   my_file = string(rootfile, "\",file);
-
-   file  = ereg_replace(pattern:"^[A-Za-z]:(.*)", replace:"\1", string:my_file);
-   share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:my_file);
-
-   myread = read_file(file:file, share:share, offset:0, count:8);
-
+   my_file = string(rootfile, "\", file);
+   myread = smb_read_file(fullpath:my_file, offset:0, count:8);
    if(myread) {
      stux_found = TRUE;
      report += my_file + '\n';

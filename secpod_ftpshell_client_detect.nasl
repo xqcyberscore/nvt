@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ftpshell_client_detect.nasl 11279 2018-09-07 09:08:31Z cfischer $
+# $Id: secpod_ftpshell_client_detect.nasl 12974 2019-01-08 13:06:45Z cfischer $
 #
 # FTPShell Client Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900961");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11279 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:08:31 +0200 (Fri, 07 Sep 2018) $");
+  script_version("$Revision: 12974 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-08 14:06:45 +0100 (Tue, 08 Jan 2019) $");
   script_tag(name:"creation_date", value:"2009-10-01 12:15:29 +0200 (Thu, 01 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("FTPShell Client Version Detection");
@@ -82,13 +82,10 @@ foreach key (key_list)
 
        if(fcPath)
        {
-           share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:fcPath);
-           file = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:fcPath);
-           readmeText = read_file(share:share, file:file, offset:0, count:500);
+           readmeText = smb_read_file(fullpath:fcPath, offset:0, count:500);
            if(readmeText)
            {
-              fcVer = eregmatch(pattern:"Version +: ([0-9.]+).?([a-zA-Z]+.?[0-9]+)?",
-                           string:readmeText);
+              fcVer = eregmatch(pattern:"Version +: ([0-9.]+).?([a-zA-Z]+.?[0-9]+)?", string:readmeText);
               if(!isnull(fcVer[1]))
               {
                  if(!isnull(fcVer[2]))

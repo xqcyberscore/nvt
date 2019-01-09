@@ -29,14 +29,23 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805659");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 12986 $");
   script_cve_id("CVE-2015-3330");
   script_bugtraq_id(74204);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-09 08:58:52 +0100 (Wed, 09 Jan 2019) $");
   script_tag(name:"creation_date", value:"2015-06-17 16:00:15 +0530 (Wed, 17 Jun 2015)");
   script_name("PHP Multiple Vulnerabilities - 04 - Jun15 (Windows)");
+  script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
+  script_category(ACT_GATHER_INFO);
+  script_family("Web application abuses");
+  script_dependencies("gb_php_detect.nasl", "secpod_apache_detect.nasl", "os_detection.nasl");
+  script_mandatory_keys("php/installed", "apache/installed", "Host/runs_windows");
+
+  script_xref(name:"URL", value:"http://php.net/ChangeLog-5.php");
+  script_xref(name:"URL", value:"https://bugs.php.net/bug.php?id=69085");
+  script_xref(name:"URL", value:"http://openwall.com/lists/oss-security/2015/06/01/4");
 
   script_tag(name:"summary", value:"This host is installed with PHP and is prone
   to multiple vulnerabilities.");
@@ -59,69 +68,49 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_xref(name:"URL", value:"http://php.net/ChangeLog-5.php");
-  script_xref(name:"URL", value:"https://bugs.php.net/bug.php?id=69085");
-  script_xref(name:"URL", value:"http://openwall.com/lists/oss-security/2015/06/01/4");
-
-  script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_category(ACT_GATHER_INFO);
-  script_family("Web application abuses");
-  script_dependencies("gb_php_detect.nasl", "secpod_apache_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("php/installed", "apache/installed", "Host/runs_windows");
-  script_xref(name:"URL", value:"http://www.php.net");
   exit(0);
 }
 
 include("version_func.inc");
 include("host_details.inc");
 
-if(!apPort = get_app_port(cpe:CPE)){
+if(!port = get_app_port(cpe:CPE))
   exit(0);
-}
 
-if(!apVer = get_app_version(cpe:CPE, port:apPort)){
+if(!apVer = get_app_version(cpe:CPE, port:port))
   exit(0);
-}
 
-if(apVer =~ "^2\.4\.")
-{
+if(apVer =~ "^2\.4\.") {
+
   CPE = "cpe:/a:php:php";
 
-  if( isnull( phpPort = get_app_port( cpe:CPE ) ) ) exit( 0 );
-  if( ! phpVer = get_app_version( cpe:CPE, port:phpPort ) ) exit( 0 );
+  if(!phpVer = get_app_version(cpe:CPE, port:port))
+    exit(0);
 
-  if(phpVer =~ "^5\.5")
-  {
-    if(version_in_range(version:phpVer, test_version:"5.5.0", test_version2:"5.5.23"))
-    {
+  if(phpVer =~ "^5\.5\.") {
+    if(version_in_range(version:phpVer, test_version:"5.5.0", test_version2:"5.5.23")) {
       fix = "5.5.24";
       VULN = TRUE;
     }
   }
 
-  if(phpVer =~ "^5\.6")
-  {
-    if(version_in_range(version:phpVer, test_version:"5.6.0", test_version2:"5.6.7"))
-    {
+  if(phpVer =~ "^5\.6\.") {
+    if(version_in_range(version:phpVer, test_version:"5.6.0", test_version2:"5.6.7")) {
       fix = "5.6.8";
       VULN = TRUE;
     }
   }
 
-  if(phpVer =~ "^5\.4")
-  {
-    if (version_is_less(version:phpVer, test_version:"5.4.40"))
-    {
+  if(phpVer =~ "^5\.4\.") {
+    if(version_is_less(version:phpVer, test_version:"5.4.40")) {
       fix = "5.4.40";
       VULN = TRUE;
     }
   }
 
-  if(VULN)
-  {
-    report = 'Installed Version: ' + phpVer + '\n' +
-             'Fixed Version:     '+ fix + '\n';
-    security_message(data:report, port:phpPort);
+  if(VULN) {
+    report = report_fixed_ver(installed_version:phpVer, fixed_version:fix);
+    security_message(port:port, data:report);
     exit(0);
   }
 }

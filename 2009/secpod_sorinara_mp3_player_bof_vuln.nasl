@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_sorinara_mp3_player_bof_vuln.nasl 12602 2018-11-30 14:36:58Z cfischer $
+# $Id: secpod_sorinara_mp3_player_bof_vuln.nasl 12978 2019-01-08 14:15:07Z cfischer $
 #
 # Sorinara Soritong MP3 Player Stack Overflow Vulnerability
 #
@@ -27,15 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900650");
-  script_version("$Revision: 12602 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
+  script_version("$Revision: 12978 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-08 15:15:07 +0100 (Tue, 08 Jan 2019) $");
   script_tag(name:"creation_date", value:"2009-05-29 07:35:11 +0200 (Fri, 29 May 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2009-1643");
   script_bugtraq_id(34863);
   script_name("Sorinara Soritong MP3 Player Stack Overflow Vulnerability");
-
 
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
@@ -58,9 +57,9 @@ to Stack Overflow Vulnerability.");
   script_tag(name:"solution_type", value:"WillNotFix");
   script_xref(name:"URL", value:"http://www.milw0rm.com/exploits/8624");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/50398");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("version_func.inc");
@@ -81,12 +80,7 @@ if("SoriTong" >< appName)
 
   readmePath = readmePath - "\uninstall.exe /uninstall";
   readmePath = readmePath + "\Help";
-
-  share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:readmePath);
-  file =  ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1",
-                       string:readmePath + "\whatsnew.html");
-
-  readmeText = read_file(share:share, file:file, offset:0, count:500);
+  readmeText = smb_read_file(fullpath:readmePath + "\whatsnew.html", offset:0, count:500);
   if(!readmeText){
     exit(0);
   }

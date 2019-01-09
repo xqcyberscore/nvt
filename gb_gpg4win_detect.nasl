@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gpg4win_detect.nasl 10896 2018-08-10 13:24:05Z cfischer $
+# $Id: gb_gpg4win_detect.nasl 12974 2019-01-08 13:06:45Z cfischer $
 #
 # Gpg4win And Components Version Detection (Windows)
 #
@@ -30,14 +30,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801128");
-  script_version("$Revision: 10896 $");
+  script_version("$Revision: 12974 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:24:05 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-08 14:06:45 +0100 (Tue, 08 Jan 2019) $");
   script_tag(name:"creation_date", value:"2009-11-02 14:39:30 +0100 (Mon, 02 Nov 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Gpg4win And Components Version Detection (Windows)");
-
 
   script_tag(name:"summary", value:"This script detects the installed product version of Gpg4win and its
 components and sets the results in KB.
@@ -50,9 +49,9 @@ and gets the version from 'DisplayVersion' string in registry.");
   script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_smb_func.inc");
@@ -97,9 +96,7 @@ foreach key (key_list)
       if(gpgPath)
       {
         gpgPathK = gpgPath + "\share\gpg4win\README.en.txt";
-        share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:gpgPathK);
-        file = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:gpgPathK);
-        txtRead = read_file(share:share, file:file, offset:2000, count:10000);
+        txtRead = smb_read_file(fullpath:gpgPathK, offset:2000, count:10000);
 
         kleoVer = eregmatch(pattern:"Kleopatra: +([0-9.]+)", string:txtRead);
         if(kleoVer[1])

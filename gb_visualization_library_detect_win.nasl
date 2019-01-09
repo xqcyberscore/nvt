@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_visualization_library_detect_win.nasl 11015 2018-08-17 06:31:19Z cfischer $
+# $Id: gb_visualization_library_detect_win.nasl 12974 2019-01-08 13:06:45Z cfischer $
 #
 # Visualization Library Version Detection (Windows)
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800999");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11015 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 12974 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-08 14:06:45 +0100 (Tue, 08 Jan 2019) $");
   script_tag(name:"creation_date", value:"2010-03-18 15:44:57 +0100 (Thu, 18 Mar 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Visualization Library Version Detection (Windows)");
@@ -43,9 +43,9 @@ if(description)
 
   script_tag(name:"summary", value:"This script detects the installed version of Visualization
   Library and sets the result in KB.");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_smb_func.inc");
@@ -70,17 +70,10 @@ vlPath2 = exeFile + "\Visualization_Library_SDK-2009.07\include\vl";
 foreach dir(make_list(vlPath1, vlPath2))
 {
   filePath = dir + "\version.hpp";
-  if(isnull(filePath)){
-      exit(0);
-  }
-
-  share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:filePath);
-  file = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:filePath);
-  verText = read_file(share:share, file:file, offset:0, count:500);
+  verText = smb_read_file(fullpath:filePath, offset:0, count:500);
 
   if(verText)
   {
-    ## Extract Versions
     mjVer = eregmatch(pattern:"VL_Major ([0-9]+)", string:verText, icase:1);
     mnVer = eregmatch(pattern:"VL_Minor ([0-9]+)", string:verText, icase:1);
     blVer = eregmatch(pattern:"VL_Build ([0-9]+)", string:verText, icase:1);

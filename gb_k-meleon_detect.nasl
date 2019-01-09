@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_k-meleon_detect.nasl 11015 2018-08-17 06:31:19Z cfischer $
+# $Id: gb_k-meleon_detect.nasl 12974 2019-01-08 13:06:45Z cfischer $
 #
 # K-Meleon Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800891");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11015 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 12974 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-08 14:06:45 +0100 (Tue, 08 Jan 2019) $");
   script_tag(name:"creation_date", value:"2009-09-08 18:25:53 +0200 (Tue, 08 Sep 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("K-Meleon Version Detection");
@@ -40,11 +40,12 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
+
   script_tag(name:"summary", value:"This script detects the installed version of K-Meleon Browser
   and sets the result in KB.");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_smb_func.inc");
@@ -70,9 +71,7 @@ if("K-Meleon" >< kmeleonName)
     kmeleonPath = ereg_replace(pattern:'"', replace:"", string:kmeleonPath);
 
     readme = kmeleonPath - "nsuninst.exe" - "Uninstall.exe" + "readme.txt";
-    share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:readme);
-    rfile = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:readme);
-    readFile = read_file(file:rfile, share:share, offset:0, count:2000);
+    readFile = smb_read_file(fullpath:readme, offset:0, count:2000);
 
     ver = eregmatch(pattern:"v([0-9.]+)", string:readFile);
     if(!isnull(ver[1]))

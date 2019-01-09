@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bullguard_backup_detect.nasl 11279 2018-09-07 09:08:31Z cfischer $
+# $Id: gb_bullguard_backup_detect.nasl 12974 2019-01-08 13:06:45Z cfischer $
 #
 # BullGuard Backup Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805288");
-  script_version("$Revision: 11279 $");
+  script_version("$Revision: 12974 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:08:31 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-08 14:06:45 +0100 (Tue, 08 Jan 2019) $");
   script_tag(name:"creation_date", value:"2015-02-23 13:21:29 +0530 (Mon, 23 Feb 2015)");
   script_name("BullGuard Backup Version Detection (Windows)");
 
@@ -81,12 +81,8 @@ if("BullGuard Backup" >< bgName)
 
   if(bgPath)
   {
-    ##Read version from file
     bgfile = bgPath + "\version.txt";
-
-    share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:bgfile);
-    file = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:bgfile);
-    txtRead = read_file(share:share, file:file, offset:0, count:50);
+    txtRead = smb_read_file(fullpath:bgfile, offset:0, count:50);
 
     bgVer = eregmatch(pattern:"^([0-9.]+)", string:txtRead);
     bgVer = bgVer[1];

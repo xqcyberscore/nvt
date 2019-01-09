@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_sorinara_audio_player_bof_vuln.nasl 12602 2018-11-30 14:36:58Z cfischer $
+# $Id: secpod_sorinara_audio_player_bof_vuln.nasl 12978 2019-01-08 14:15:07Z cfischer $
 #
 # Sorinara Streaming Audio Player Stack Overflow Vulnerability
 #
@@ -31,8 +31,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900649");
-  script_version("$Revision: 12602 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
+  script_version("$Revision: 12978 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-08 15:15:07 +0100 (Tue, 08 Jan 2019) $");
   script_tag(name:"creation_date", value:"2009-05-29 07:35:11 +0200 (Fri, 29 May 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -65,9 +65,9 @@ processing playlist 'pla' and '.m3u' files.");
   script_tag(name:"summary", value:"This host is running Sorinara Streaming Audio Player and is prone
   to Stack Overflow Vulnerability.");
   script_tag(name:"solution_type", value:"WillNotFix");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("version_func.inc");
@@ -88,11 +88,7 @@ if("SAP" >< vendName)
 
   readmePath = readmePath - "\uninstall.exe /uninstall";
   readmePath = readmePath + "\Help";
-
-  share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:readmePath);
-  file =  ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1",
-                       string:readmePath + "\index.htm");
-  readmeText = read_file(share:share, file:file, offset:0, count:4500);
+  readmeText = smb_read_file(fullpath:readmePath + "\index.htm", offset:0, count:4500);
   if(!readmeText){
     exit(0);
   }

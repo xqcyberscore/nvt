@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smb_virii.nasl 10389 2018-07-04 06:37:37Z cfischer $
+# $Id: smb_virii.nasl 12978 2019-01-08 14:15:07Z cfischer $
 #
 # The remote host is infected by a virus
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80043");
-  script_version("$Revision: 10389 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-04 08:37:37 +0200 (Wed, 04 Jul 2018) $");
+  script_version("$Revision: 12978 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-08 15:15:07 +0100 (Tue, 08 Jan 2019) $");
   script_tag(name:"creation_date", value:"2008-10-24 20:38:19 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
@@ -44,7 +44,7 @@ if(description)
   script_tag(name:"solution", value:"See the URLs which will appear in the report.");
 
   script_tag(name:"summary", value:"This script checks for the presence of different virii on the remote
-  host, by using the SMB credentials you provide OpenVAS with.");
+  host, by using the SMB credentials you provide the scanner with.");
 
 
   script_tag(name:"insight", value:"The following virii are checked:
@@ -640,13 +640,13 @@ share = ereg_replace(pattern:"^([A-Za-z]):.*", replace:"\1$", string:rootfile);
 file =  ereg_replace(pattern:"^[A-Za-z]:(.*)", replace:"\1\system.ini", string:rootfile);
 
 off = 0;
-resp = read_file(file:file, share:share, offset:off, count:16384);
+resp = smb_read_file(file:file, share:share, offset:off, count:16384);
 if(resp) {
   data = resp;
   while(strlen(resp) >= 16383)
   {
    off += strlen(resp);
-   resp = read_file(file:file, share:share, offset:off, count:16384);
+   resp = smb_read_file(file:file, share:share, offset:off, count:16384);
    data += resp;
    if(strlen(data) > 1024 * 1024)break;
   }
@@ -663,7 +663,7 @@ if(resp) {
 }
 
 file =  ereg_replace(pattern:"^[A-Za-z]:(.*)", replace:"\1\goner.scr", string:rootfile);
-handle = read_file(file:file, share:share, offset:0, count:8);
+handle = smb_read_file(file:file, share:share, offset:0, count:8);
 
 if(handle)
 {
@@ -675,7 +675,7 @@ if(handle)
 }
 
 file =  ereg_replace(pattern:"^[A-Za-z]:(.*)", replace:"\1\winxp.exe", string:rootfile);
-handle = read_file(file:file, share:share, offset:0, count:8);
+handle = smb_read_file(file:file, share:share, offset:0, count:8);
 
 if(handle)
 {
@@ -687,7 +687,7 @@ if(handle)
 }
 
 file =  ereg_replace(pattern:"^[A-Za-z]:(.*)", replace:"\1\System32\dnkkq.dll", string:rootfile);
-handle = read_file(file:file, share:share, offset:0, count:8);
+handle = smb_read_file(file:file, share:share, offset:0, count:8);
 
 if(handle)
 {
@@ -708,7 +708,7 @@ Solution: http://securityresponse.symantec.com/avcenter/venc/data/backdoor.berbe
 }
 
 file =  ereg_replace(pattern:"^[A-Za-z]:(.*)", replace:"\1\Swen1.dat", string:rootfile);
-handle = read_file(file:file, share:share, offset:0, count:8);
+handle = smb_read_file(file:file, share:share, offset:0, count:8);
 
 if(handle)
 {
@@ -725,61 +725,61 @@ file = ereg_replace(pattern:"^[A-Za-z]:(.*)", replace:"\1", string:rootfile);
 trojanname = raw_string(0xa0, 0x73, 0x76, 0x63, 0x68, 0x6F, 0x73, 0x74, 0x2E, 0x65,0x78, 0x65);
 
 _file = string(file, "\\System32\\",trojanname);
-handle = read_file(file:_file, share:share, offset:0, count:8);
+handle = smb_read_file(file:_file, share:share, offset:0, count:8);
 
 if (!handle) {
   _file = string(file, "\\System32\\_svchost.exe");
-  handle = read_file(file:_file, share:share, offset:0, count:8);
+  handle = smb_read_file(file:_file, share:share, offset:0, count:8);
 }
 
 if (!handle) {
   _file = string(file, "\\System32\\Outlook Express");
-  handle = read_file(file:_file, share:share, offset:0, count:8);
+  handle = smb_read_file(file:_file, share:share, offset:0, count:8);
 }
 
 if (!handle) {
   _file = string(file, "\\System32\\CFXP.DRV");
-  handle = read_file(file:_file, share:share, offset:0, count:8);
+  handle = smb_read_file(file:_file, share:share, offset:0, count:8);
 }
 
 if (!handle) {
   _file = string(file, "\\System32\\CHJO.DRV");
-  handle = read_file(file:_file, share:share, offset:0, count:8);
+  handle = smb_read_file(file:_file, share:share, offset:0, count:8);
 }
 
 if (!handle) {
   _file = string(file, "\\System32\\MMSYSTEM.DLX");
-  handle = read_file(file:_file, share:share, offset:0, count:8);
+  handle = smb_read_file(file:_file, share:share, offset:0, count:8);
 }
 
 if (!handle) {
   _file = string(file, "\\System32\\OLECLI.DLX");
-  handle = read_file(file:_file, share:share, offset:0, count:8);
+  handle = smb_read_file(file:_file, share:share, offset:0, count:8);
 }
 
 if (!handle) {
   _file = string(file, "\\System32\\Windll.dlx");
-  handle = read_file(file:_file, share:share, offset:0, count:8);
+  handle = smb_read_file(file:_file, share:share, offset:0, count:8);
 }
 
 if (!handle) {
   _file = string(file, "\\System32\\Activity.AVI");
-  handle = read_file(file:_file, share:share, offset:0, count:8);
+  handle = smb_read_file(file:_file, share:share, offset:0, count:8);
 }
 
 if (!handle) {
   _file = string(file, "\\System32\\Upgrade.AVI");
-  handle = read_file(file:_file, share:share, offset:0, count:8);
+  handle = smb_read_file(file:_file, share:share, offset:0, count:8);
 }
 
 if (!handle) {
   _file = string(file, "\\System32\\System.lst");
-  handle = read_file(file:_file, share:share, offset:0, count:8);
+  handle = smb_read_file(file:_file, share:share, offset:0, count:8);
 }
 
 if (!handle) {
   _file = string(file, "\\System32\\PF30txt.dlx");
-  handle = read_file(file:_file, share:share, offset:0, count:8);
+  handle = smb_read_file(file:_file, share:share, offset:0, count:8);
 }
 
 if(handle)
@@ -812,7 +812,7 @@ sober = make_list("nonzipsr.noz",
 foreach f (sober)
 {
  file = ereg_replace(pattern:"^[A-Za-z]:(.*)", replace:"\1\" + f, string:rootfile);
- handle = read_file(file:file, share:share, offset:0, count:8);
+ handle = smb_read_file(file:file, share:share, offset:0, count:8);
  if(handle)
  {
   report = string(
@@ -825,7 +825,7 @@ foreach f (sober)
 }
 
 file = ereg_replace(pattern:"^[A-Za-z]:(.*)", replace:"\1\System32\wgareg.exe", string:rootfile);
-handle = read_file(file:file, share:share, offset:0, count:8);
+handle = smb_read_file(file:file, share:share, offset:0, count:8);
 if(handle)
 {
  report = string(
@@ -840,7 +840,7 @@ if(handle)
 foreach f (make_list("zsydll.dll", "zsyhide.dll"))
 {
  file = ereg_replace(pattern:"^[A-Za-z]:(.*)", replace:"\1\System32\" + f, string:rootfile);
- handle = read_file(file:file, share:share, offset:0, count:8);
+ handle = smb_read_file(file:file, share:share, offset:0, count:8);
  if(handle)
  {
    report = string(
