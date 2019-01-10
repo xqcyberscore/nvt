@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_rlogin.nasl 11997 2018-10-20 11:59:41Z mmartin $
+# $Id: secpod_rlogin.nasl 13010 2019-01-10 07:59:14Z cfischer $
 #
-# Check for rlogin Service
+# rlogin Passwordless / Unencrypted Cleartext Login
 #
 # Authors:
 # Veerendra G.G <veerendragg@secpod.com>
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901202");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("$Revision: 13010 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-10 08:59:14 +0100 (Thu, 10 Jan 2019) $");
   script_tag(name:"creation_date", value:"2011-08-25 09:25:35 +0200 (Thu, 25 Aug 2011)");
   #Remark: NIST don't see "configuration issues" as software flaws so this CVSS has a value of 0.0.
   #However we still should report such a configuration issue with a criticality so this has been commented
@@ -36,7 +36,7 @@ if(description)
   #  script_cve_id("CVE-1999-0651");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_name("Check for rlogin Service");
+  script_name("rlogin Passwordless / Unencrypted Cleartext Login");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_dependencies("find_service6.nasl");
@@ -47,16 +47,16 @@ if(description)
   script_xref(name:"URL", value:"http://en.wikipedia.org/wiki/Rlogin");
   script_xref(name:"URL", value:"http://www.ietf.org/rfc/rfc1282.txt");
 
+  script_tag(name:"summary", value:"This remote host is running a rlogin service.");
+
   script_tag(name:"insight", value:"rlogin has several serious security problems,
 
-  - All information, including passwords, is transmitted unencrypted.
+  - all information, including passwords, is transmitted unencrypted.
 
   - .rlogin (or .rhosts) file is easy to misuse (potentially allowing
-    anyone to login without a password)
+  anyone to login without a password)");
 
-  Impact Level: System");
-  script_tag(name:"solution", value:"Disable rlogin service and use ssh instead.");
-  script_tag(name:"summary", value:"This remote host is running a rlogin service.");
+  script_tag(name:"solution", value:"Disable the rlogin service and use alternatives like SSH instead.");
 
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_analysis");
@@ -95,7 +95,7 @@ if( isnull( res2 ) ) exit( 0 );
 
 if( res1 == nullStr && "Password:" >< res2 ) {
   vuln = TRUE;
-} else if( res1 == nullStr && ( ( "root@" >< res2 && ":~#" >< res2 ) || "Last login: " >< res2 || ( "Linux" >< res2 && "#1 SMP" >< res2 ) ) ) {
+} else if( res1 == nullStr && ( ( "root@" >< res2 && ":~#" >< res2 ) || "Last login: " >< res2 || ( "Linux" >< res2 && " SMP" >< res2 ) ) ) {
   # TBD: Better matching patterns above?
   vuln = TRUE;
   report = "The service is misconfigured so it is allowing conntections without a password.";

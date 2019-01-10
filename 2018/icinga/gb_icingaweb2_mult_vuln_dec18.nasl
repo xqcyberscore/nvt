@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_icingaweb2_mult_vuln_dec18.nasl 12835 2018-12-19 13:24:05Z asteins $
+# $Id: gb_icingaweb2_mult_vuln_dec18.nasl 13012 2019-01-10 08:11:33Z asteins $
 #
 # Icinga Web 2 < 2.6.2 Multiple Vulnerabilities
 #
@@ -28,11 +28,11 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112468");
-  script_version("$Revision: 12835 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-19 14:24:05 +0100 (Wed, 19 Dec 2018) $");
+  script_version("$Revision: 13012 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-10 09:11:33 +0100 (Thu, 10 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-12-19 10:33:12 +0100 (Wed, 19 Dec 2018)");
-  script_tag(name:"cvss_base", value:"4.9");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 

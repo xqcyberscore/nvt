@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: imap_unencrypted_cleartext_logins.nasl 12841 2018-12-20 07:20:24Z cfischer $
+# $Id: imap_unencrypted_cleartext_logins.nasl 13011 2019-01-10 08:02:19Z cfischer $
 #
-# IMAP Unencrypted Cleartext Logins
+# IMAP Unencrypted Cleartext Login
 #
 # Authors:
 # George A. Theall, <theall@tifaware.com>.
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.15856");
-  script_version("$Revision: 12841 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-20 08:20:24 +0100 (Thu, 20 Dec 2018) $");
+  script_version("$Revision: 13011 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-10 09:02:19 +0100 (Thu, 10 Jan 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"4.8");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:P/A:N");
   script_xref(name:"OSVDB", value:"3119");
-  script_name("IMAP Unencrypted Cleartext Logins");
+  script_name("IMAP Unencrypted Cleartext Login");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2004 George A. Theall");
   script_family("General");

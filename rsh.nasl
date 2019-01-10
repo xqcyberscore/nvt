@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: rsh.nasl 12037 2018-10-23 12:45:32Z cfischer $
+# $Id: rsh.nasl 13010 2019-01-10 07:59:14Z cfischer $
 #
 # rsh Service Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108478");
-  script_version("$Revision: 12037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-23 14:45:32 +0200 (Tue, 23 Oct 2018) $");
+  script_version("$Revision: 13010 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-10 08:59:14 +0100 (Thu, 10 Jan 2019) $");
   script_tag(name:"creation_date", value:"2009-03-26 19:23:59 +0100 (Thu, 26 Mar 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -41,7 +41,7 @@ if(description)
 
   script_tag(name:"summary", value:"Checks if the remote host is running a rsh service.
 
-  Note: The reporting takes place in a separate VT 'rsh Service Reporting' (OID: 1.3.6.1.4.1.25623.1.0.100080).");
+  Note: The reporting takes place in a separate VT 'rsh Unencrypted Cleartext Login' (OID: 1.3.6.1.4.1.25623.1.0.100080).");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -70,13 +70,18 @@ foreach port( ports ) {
 
   found = FALSE;
 
-  if( ! get_port_state( port ) ) continue;
-  if( ! soc = open_priv_sock_tcp( dport:port ) ) continue;
+  if( ! get_port_state( port ) )
+    continue;
+
+  if( ! soc = open_priv_sock_tcp( dport:port ) )
+    continue;
 
   send( socket:soc, data:data );
   buf = recv( socket:soc, length:8192 );
   close( soc );
-  if( ! buf ) continue;
+
+  if( ! buf )
+    continue;
 
   # TODO/TBD: Add additional detection pattern?
   if( "Permission denied" >< buf ) {
@@ -96,7 +101,7 @@ foreach port( ports ) {
     set_kb_item( name:"rsh/detected", value:TRUE );
     set_kb_item( name:"rsh/" + port + "/detected", value:TRUE );
     set_kb_item( name:"rsh/" + port + "/service_report", value:report );
-    register_service( port:port, proto:"rsh" );
+    register_service( port:port, proto:"rsh", message:"A rsh service seems to be running on this port." );
     log_message( port:port, data:"A rsh service is running at this port." );
   }
 }

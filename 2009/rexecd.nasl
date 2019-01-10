@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: rexecd.nasl 6849 2017-08-04 07:21:15Z cfischer $
+# $Id: rexecd.nasl 13010 2019-01-10 07:59:14Z cfischer $
 #
-# Check for rexecd Service
+# rexec Passwordless / Unencrypted Cleartext Login
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -27,16 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100111");
-  script_version("$Revision: 6849 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-04 09:21:15 +0200 (Fri, 04 Aug 2017) $");
+  script_version("$Revision: 13010 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-10 08:59:14 +0100 (Thu, 10 Jan 2019) $");
   script_tag(name:"creation_date", value:"2009-04-08 12:09:59 +0200 (Wed, 08 Apr 2009)");
   #Remark: NIST don't see "configuration issues" as software flaws so this CVSS has a value of 0.0.
   #However we still should report such a configuration issue with a criticality so this has been commented
   #out to avoid that the automatic CVSS score correction is setting the CVSS back to 0.0
-  #script_cve_id("CVE-1999-0618");
+  #  script_cve_id("CVE-1999-0618");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_name("Check for rexecd Service");
+  script_name("rexec Passwordless / Unencrypted Cleartext Login");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Useless services");
@@ -45,17 +45,15 @@ if(description)
 
   script_xref(name:"URL", value:"https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-1999-0618");
 
-  tag_summary = "Rexecd Service is running at this Host.
-  Rexecd (Remote Process Execution) has the same kind of functionality
-  that rsh has : you can execute shell commands on a remote computer.
+  script_tag(name:"summary", value:"This remote host is running a rexec service.");
 
-  The main difference is that rexecd authenticate by reading the
-  username and password *unencrypted* from the socket.";
+  script_tag(name:"insight", value:"rexec (Remote Process Execution) has the same kind of functionality
+  that rsh has: you can execute shell commands on a remote computer.
 
-  tag_solution = "Disable rexec Service.";
+  The main difference is that rexec authenticate by reading the
+  username and password *unencrypted* from the socket.");
 
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"solution", value:"Disable the rexec service and use alternatives like SSH instead.");
 
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -90,7 +88,7 @@ if( isnull( buf ) ) exit( 0 );
 if( "too long" >< buf || "Where are you?" >< buf ) {
   register_service( port:port, proto:"rexec", message:"A rexec service seems to be running on this port." );
   if( "Where are you?" >< buf ) {
-    report = "The rexecd Service is not allowing connections from this host.";
+    report = "The rexec service is not allowing connections from this host.";
   }
   security_message( port:port, data:report );
   exit( 0 );

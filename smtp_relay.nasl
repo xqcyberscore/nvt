@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smtp_relay.nasl 10417 2018-07-05 11:19:48Z cfischer $
+# $Id: smtp_relay.nasl 13001 2019-01-09 14:59:53Z cfischer $
 #
 # SMTP Open Relay Test
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100073");
-  script_version("$Revision: 10417 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-05 13:19:48 +0200 (Thu, 05 Jul 2018) $");
+  script_version("$Revision: 13001 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-09 15:59:53 +0100 (Wed, 09 Jan 2019) $");
   script_tag(name:"creation_date", value:"2009-03-23 19:32:33 +0100 (Mon, 23 Mar 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -57,66 +57,59 @@ include("smtp_func.inc");
 include("misc_func.inc");
 include("network_func.inc");
 
-if(islocalhost())exit(0);
+if(islocalhost()) exit(0);
 if(is_private_addr()) exit(0);
 
-port = get_kb_item("Services/smtp");
-if(!port) port = 25;
-
-if(get_kb_item('SMTP/'+port+'/broken'))exit(0);
-if(!get_port_state(port))exit(0);
-
-domain = get_kb_item("Settings/third_party_domain");
-if(!domain)domain = 'example.com';
-
-soc = smtp_open(port: port, helo: NULL);
-if(!soc)exit(0);
-
+domain = get_3rdparty_domain();
 src_name = this_host_name();
-FROM = string('openvas@', src_name);
-TO = string('openvas@', domain);
+vtstrings = get_vt_strings();
+FROM = string(vtstrings["lowercase"], '@', src_name);
+TO = string(vtstrings["lowercase"], '@', domain);
+
+port = get_smtp_port(default:25);
+soc = smtp_open(port: port, helo: NULL);
+if(!soc) exit(0);
 
 send(socket: soc, data: strcat('EHLO ', src_name, '\r\n'));
 answer = smtp_recv_line(socket: soc);
 
-if("250" >!< answer)exit(0);
+if("250" >!< answer) exit(0);
 
-  mf = strcat('MAIL FROM: <', FROM , '>\r\n');
-  send(socket: soc, data: mf);
+mf = strcat('MAIL FROM: <', FROM , '>\r\n');
+send(socket: soc, data: mf);
+l = smtp_recv_line(socket: soc);
+
+if(! l || l =~ '^5[0-9][0-9]')
+{
+  exit(0);
+}
+else
+{
+  rt = strcat('RCPT TO: <', TO , '>\r\n');
+  send(socket: soc, data: rt);
   l = smtp_recv_line(socket: soc);
 
-  if(! l || l =~ '^5[0-9][0-9]')
+  if (l =~ '^2[0-9][0-9]')
   {
-    exit(0);
-  }
-  else
-  {
-    rt = strcat('RCPT TO: <', TO , '>\r\n');
-    send(socket: soc, data: rt);
-    l = smtp_recv_line(socket: soc);
+    data=string("data\r\n");
+    send(socket: soc, data: data);
+    data_rcv = smtp_recv_line(socket: soc);
 
-    if (l =~ '^2[0-9][0-9]')
-    {
-      data=string("data\r\n");
-      send(socket: soc, data: data);
-      data_rcv = smtp_recv_line(socket: soc);
+    if(egrep(pattern:"3[0-9][0-9]", string:data_rcv)) {
 
-      if(egrep(pattern:"3[0-9][0-9]", string:data_rcv)) {
+      send(socket: soc, data: string(vtstrings["default"], "-Relay-Test\r\n.\r\n"));
+      mail_send = smtp_recv_line(socket: soc);
 
-        send(socket: soc, data: string("OpenVAS-Relay-Test\r\n.\r\n"));
-	mail_send = smtp_recv_line(socket: soc);
-
-	if("250" >< mail_send) {
-          security_message(port:port);
-          set_kb_item(name:"SMTP/" + port + "/spam", value:TRUE);
-          set_kb_item(name:"SMTP/spam", value:TRUE);
-          smtp_close(socket: soc);
-          exit(0);
-	}
-
+      if("250" >< mail_send) {
+        security_message(port:port);
+        set_kb_item(name:"SMTP/" + port + "/spam", value:TRUE);
+        set_kb_item(name:"SMTP/spam", value:TRUE);
+        smtp_close(socket: soc);
+        exit(0);
       }
     }
-    smtp_close(socket: soc);
-   }
+  }
+  smtp_close(socket: soc);
+}
 
-exit(0);
+exit(99);

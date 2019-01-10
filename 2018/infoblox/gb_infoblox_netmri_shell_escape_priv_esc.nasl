@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_infoblox_netmri_shell_escape_priv_esc.nasl 12120 2018-10-26 11:13:20Z mmartin $
+# $Id: gb_infoblox_netmri_shell_escape_priv_esc.nasl 12998 2019-01-09 13:46:07Z asteins $
 #
 # Infoblox NetMRI Administration Shell Escape and Privilege Escalation Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107340");
-  script_version("$Revision: 12120 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_version("$Revision: 12998 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-09 14:46:07 +0100 (Wed, 09 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-09-10 15:43:15 +0200 (Mon, 10 Sep 2018)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
@@ -51,7 +51,7 @@ if( description )
   script_tag(name:"insight", value:"An authenticated user can escape the management shell and subsequently escalate to root via insecure file ownership and sudo permissions.");
   script_tag(name:"impact", value:"Successful exploitation would allow an attacker to gain complete control over the target system.");
   script_tag(name:"affected", value:"Infoblox NetMRI version 7.1.2 through 7.1.4. Other versions might be affected as well.");
-  script_tag(name:"solution", value:"No known solution is available as of 11th September, 2018. Information regarding this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution is available as of 09th January, 2019. Information regarding this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://www.korelogic.com/Resources/Advisories/KL-001-2017-017.txt");
 

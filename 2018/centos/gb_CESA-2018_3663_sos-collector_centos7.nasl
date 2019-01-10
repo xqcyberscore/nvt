@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882975");
-  script_version("$Revision: 12873 $");
+  script_version("$Revision: 13012 $");
   script_cve_id("CVE-2018-14650");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-21 15:42:20 +0100 (Fri, 21 Dec 2018) $");
+  script_tag(name:"cvss_base", value:"1.9");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-10 09:11:33 +0100 (Thu, 10 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-12-18 07:37:12 +0100 (Tue, 18 Dec 2018)");
   script_name("CentOS Update for sos-collector CESA-2018:3663 centos7 ");
   script_category(ACT_GATHER_INFO);

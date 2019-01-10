@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smtp_relay2.nasl 10417 2018-07-05 11:19:48Z cfischer $
+# $Id: smtp_relay2.nasl 13001 2019-01-09 14:59:53Z cfischer $
 #
 # Mail relaying (thorough test)
 #
@@ -39,8 +39,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11852");
-  script_version("$Revision: 10417 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-05 13:19:48 +0200 (Thu, 05 Jul 2018) $");
+  script_version("$Revision: 13001 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-09 15:59:53 +0100 (Wed, 09 Jan 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -71,68 +71,62 @@ include("misc_func.inc");
 include("network_func.inc");
 
 # can't perform this test on localhost
-if(islocalhost())exit(0);
+if(islocalhost()) exit(0);
+if(is_private_addr()) exit(0);
 
-if (is_private_addr()) exit(0);
-
-port = get_kb_item("Services/smtp");
-if (!port) port = 25;
-if (get_kb_item('SMTP/'+port+'/broken')) exit(0);
-if (! get_port_state(port)) exit(0);
+port = get_smtp_port(default:25);
 
 # No use to try "advanced" tests if it is a wide open relay
 if (get_kb_item("SMTP/" + port + "/spam")) exit(0);
 
-domain = get_kb_item("Settings/third_party_domain");
-if (! domain) domain = 'example.com';
-
 soc = smtp_open(port: port, helo: NULL);
 if (! soc) exit(0);
 
+vtstrings = get_vt_strings();
+domain = get_3rdparty_domain();
 dest_name = get_host_name();
 dest_ip = get_host_ip();
-dest_name = get_host_name();
 src_name = this_host_name();
 
 t1 = strcat('nobody@', domain);
-f1 = strcat('openvas@', dest_name);
-f2 = strcat('openvas@[', dest_ip, ']');
+f1 = strcat(vtstrings["lowercase"], '@', dest_name);
+f2 = strcat(vtstrings["lowercase"], '@[', dest_ip, ']');
 
 i= 0;
 from_l[i] = strcat("nobody@", domain);
 to_l[i] = t1;
 i ++;
-from_l[i] = strcat("openvas@", rand_str(), ".", domain);
+from_l[i] = strcat(vtstrings["lowercase"], "@", rand_str(), ".", domain);
 to_l[i] = t1;
 i ++;
-from_l[i] = "openvas@localhost";
+from_l[i] = vtstrings["lowercase"] + "@localhost";
 to_l[i] = t1;
 i ++;
-from_l[i] = "openvas";
-to_l[i] = t1;
-i ++;
-from_l[i] = "";
+from_l[i] = vtstrings["lowercase"];
 to_l[i] = t1;
 i ++;
 from_l[i] = "";
 to_l[i] = t1;
 i ++;
-from_l[i] = strcat("openvas@", dest_name);
+from_l[i] = "";
 to_l[i] = t1;
 i ++;
-from_l[i] = strcat("openvas@[", dest_ip, "]");
+from_l[i] = strcat(vtstrings["lowercase"], "@", dest_name);
 to_l[i] = t1;
 i ++;
-from_l[i] = strcat("openvas@", dest_name);
+from_l[i] = strcat(vtstrings["lowercase"], "@[", dest_ip, "]");
+to_l[i] = t1;
+i ++;
+from_l[i] = strcat(vtstrings["lowercase"], "@", dest_name);
 to_l[i] = strcat("nobody%", domain, "@", dest_name);
 i ++;
-from_l[i] = strcat("openvas@", dest_name);
+from_l[i] = strcat(vtstrings["lowercase"], "@", dest_name);
 to_l[i] = strcat("nobody%", domain, "@[", dest_ip, "]");
 i ++;
-from_l[i] = strcat("openvas@", dest_name);
+from_l[i] = strcat(vtstrings["lowercase"], "@", dest_name);
 to_l[i] = strcat('nobody@', domain, '@', dest_name);
 i ++;
-from_l[i] = strcat("openvas@", dest_name);
+from_l[i] = strcat(vtstrings["lowercase"], "@", dest_name);
 to_l[i] = strcat('"nobody@', domain, '"@[', dest_ip, ']');
 i ++;
 from_l[i] = f1;
@@ -183,15 +177,12 @@ for (i = 0; soc && (from_l[i] || to_l[i]); i ++)
 
 if (rep)
 {
-  report = strcat("
-The remote SMTP server is insufficiently protected against relaying
+  report = strcat("The remote SMTP server is insufficiently protected against relaying
 This means that spammers might be able to use your mail server
 to send their mails to the world.
 
-OpenVAS was able to relay mails by sending those sequences:
+The scanner was able to relay mails by sending those sequences:
 
-",
-	rep, "Solution: upgrade your software or improve the configuration so that
-	your SMTP server cannot be used as a relay any more.");
+", rep);
   security_message(port: port, data: report);
 }

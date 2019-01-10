@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nec_aterm_wg2600hp2_incorrect_access_ctrl_vuln.nasl 12236 2018-11-07 05:34:17Z ckuersteiner $
+# $Id: gb_nec_aterm_wg2600hp2_incorrect_access_ctrl_vuln.nasl 12998 2019-01-09 13:46:07Z asteins $
 #
 # NEC Aterm WG2600HP2 Incorrect Access Control Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813880");
-  script_version("$Revision: 12236 $");
+  script_version("$Revision: 12998 $");
   script_cve_id("CVE-2017-12575");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-07 06:34:17 +0100 (Wed, 07 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-09 14:46:07 +0100 (Wed, 09 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-09-07 18:21:50 +0530 (Fri, 07 Sep 2018)");
   script_name("NEC Aterm WG2600HP2 Incorrect Access Control Vulnerability");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -46,7 +46,7 @@ if(description)
   script_tag(name:"summary", value:"The host is installed with NEC Aterm WG2600HP2
   wireless LAN router and is prone to an incorrect access control vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Send a crafted HTTP POST request and check
+  script_tag(name:"vuldetect", value:"Sends a crafted HTTP POST request and checks
   whether it is able to access sensitive information or not.");
 
   script_tag(name:"insight", value:"The flaw exist due to an incorrect access
@@ -57,8 +57,8 @@ if(description)
 
   script_tag(name:"affected", value:"NEC Aterm WG2600HP2 wireless LAN router");
 
-  script_tag(name:"solution", value:"No known solution is available as of 07th
-  September, 2018. Information regarding this issue will be updated once solution
+  script_tag(name:"solution", value:"No known solution is available as of 09th
+  January, 2019. Information regarding this issue will be updated once solution
   details are available. For updates refer to Reference links.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");

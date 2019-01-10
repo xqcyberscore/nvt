@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: logins.nasl 10906 2018-08-10 14:50:26Z cfischer $
+# $Id: logins.nasl 12990 2019-01-09 10:42:04Z cfischer $
 #
 # Login configurations
 #
@@ -33,7 +33,7 @@ default_nntp_login = "";
 default_nntp_password = "";
 
 default_ftp_login = "anonymous";
-default_ftp_password = "openvas@example.org";
+default_ftp_password = "anonymous@example.com";
 default_ftp_w_dir = "/incoming";
 
 default_pop2_login = "";
@@ -48,8 +48,8 @@ default_imap_password = "";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10870");
-  script_version("$Revision: 10906 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:50:26 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 12990 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-09 11:42:04 +0100 (Wed, 09 Jan 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");

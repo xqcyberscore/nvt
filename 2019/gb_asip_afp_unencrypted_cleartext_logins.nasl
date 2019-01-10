@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asip_afp_unencrypted_cleartext_logins.nasl 12968 2019-01-08 10:15:49Z cfischer $
+# $Id: gb_asip_afp_unencrypted_cleartext_logins.nasl 13011 2019-01-10 08:02:19Z cfischer $
 #
-# AppleShare IP / Apple Filing Protocol (AFP) Unencrypted Cleartext Logins
+# AppleShare IP / Apple Filing Protocol (AFP) Unencrypted Cleartext Login
 #
 # Authors:
 # Christian Fischer <christian.fischer@greenbone.net>
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108526");
-  script_version("$Revision: 12968 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-08 11:15:49 +0100 (Tue, 08 Jan 2019) $");
+  script_version("$Revision: 13011 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-10 09:02:19 +0100 (Thu, 10 Jan 2019) $");
   script_tag(name:"creation_date", value:"2019-01-08 09:37:20 +0100 (Tue, 08 Jan 2019)");
   script_tag(name:"cvss_base", value:"4.8");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:P/A:N");
-  script_name("AppleShare IP / Apple Filing Protocol (AFP) Unencrypted Cleartext Logins");
+  script_name("AppleShare IP / Apple Filing Protocol (AFP) Unencrypted Cleartext Login");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("General");

@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_telnet_unencrypted_cleartext_logins.nasl 12879 2018-12-23 19:01:45Z cfischer $
+# $Id: gb_telnet_unencrypted_cleartext_logins.nasl 13011 2019-01-10 08:02:19Z cfischer $
 #
-# Telnet Unencrypted Cleartext Logins
+# Telnet Unencrypted Cleartext Login
 #
 # Authors:
 # Christian Fischer <christian.fischer@greenbone.net>
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108522");
-  script_version("$Revision: 12879 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-23 20:01:45 +0100 (Sun, 23 Dec 2018) $");
+  script_version("$Revision: 13011 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-10 09:02:19 +0100 (Thu, 10 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-12-20 07:47:54 +0100 (Thu, 20 Dec 2018)");
   script_tag(name:"cvss_base", value:"4.8");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:P/A:N");
-  script_name("Telnet Unencrypted Cleartext Logins");
+  script_name("Telnet Unencrypted Cleartext Login");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: ftp_func.inc 12369 2018-11-16 07:00:32Z cfischer $
+# $Id: ftp_func.inc 12997 2019-01-09 13:45:00Z cfischer $
 #
 # Methods for handling FTP
 #
@@ -23,19 +23,23 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 12369 $
+# $Revision: 12997 $
 #
 ###############################################################################
 
+# Enables debugging output for a few functions below
 global_var _ftp_func_debug;
 _ftp_func_debug = FALSE;
+
+# Global vars to avoid that we're repeatedly asking redis for something we already know.
+global_var __ftp_kb_login, __ftp_kb_pass;
 
 function ftp_close( socket ) {
 
   local_var socket;
 
   if( ! socket ) {
-    set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#socket#-#ftp_close" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#socket#-#ftp_close" );
     return;
   }
 
@@ -43,25 +47,42 @@ function ftp_close( socket ) {
   close( socket );
 }
 
+# @brief Returns the banner of a remove FTP service. This function will also mark
+#        the remote service as "broken" if no banner was received at all.
+#        If a banner was received it is saved into the knowledge base.
+#        If a banner was requested for a specific port which was requested previously
+#        the cached banner will be returned instead of doing a new request.
+#
+# @param port The port of the remote FTP service to connect to.
+#
+# @return The received banner or NULL if no port parameter was passed or no banner was received.
+#
 function get_ftp_banner( port ) {
 
-  local_var banner, soc, port, cmd, csid_banner, user, pass;
+  local_var port;
+  local_var banner, soc, port, cmd, csid_banner, creds, user, pass;
 
   if( ! port ) {
-    set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#get_ftp_banner" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#get_ftp_banner" );
     return;
   }
 
   banner = get_kb_item( "ftp/banner/" + port );
-  if( banner ) return( banner );
-  if( get_kb_item( "ftp/" + port + "/broken" ) ) exit( 0 );
+  if( banner )
+    return( banner );
 
-  if( ! get_port_state( port ) ) return;
+  if( get_kb_item( "ftp/" + port + "/broken" ) )
+    exit( 0 ); # TBD: Return instead of exit() like below?
+
+  if( ! get_port_state( port ) )
+    return;
+
   soc = open_sock_tcp( port );
   if( ! soc ) {
     set_kb_item( name:"ftp/" + port + "/broken", value:TRUE );
     return;
   }
+
   banner = ftp_recv_line( socket:soc, retry:1 );
   ftp_close( socket:soc );
   if( ! banner ) {
@@ -81,8 +102,9 @@ function get_ftp_banner( port ) {
     banner += csid_banner;
   } else if( egrep( pattern:"^530 .*", string:csid_banner ) ) {
 
-    user = get_kb_item( "ftp/login" );
-    pass = get_kb_item( "ftp/password" );
+    creds = ftp_get_kb_creds();
+    user = creds["login"];
+    pass = creds["pass"];
 
     if( user && pass ) {
       soc = open_sock_tcp( port );
@@ -100,7 +122,6 @@ function get_ftp_banner( port ) {
   }
 
   # TBD: Also include the output of the HELP command within the banner? (See e.g. sw_pure-ftpd_detect.nasl)
-
   replace_kb_item( name:"ftp/banner/" + port, value:banner );
   return banner;
 }
@@ -110,12 +131,12 @@ function get_ftp_cmd_banner( port, cmd ) {
   local_var banner, soc, port, cmd;
 
   if( ! port ) {
-    set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#get_ftp_cmd_banner" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#get_ftp_cmd_banner" );
     return;
   }
 
   if( ! cmd ) {
-    set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cmd#-#get_ftp_cmd_banner" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cmd#-#get_ftp_cmd_banner" );
     return;
   }
 
@@ -144,12 +165,12 @@ function ftp_send_cmd( socket, cmd ) {
   local_var socket, cmd;
 
   if( ! socket ) {
-    set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#socket#-#ftp_send_cmd" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#socket#-#ftp_send_cmd" );
     return;
   }
 
   if( ! cmd ) {
-    set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cmd#-#ftp_send_cmd" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cmd#-#ftp_send_cmd" );
     return;
   }
 
@@ -162,7 +183,7 @@ function ftp_recv_line( socket, retry ) {
   local_var n, r, res, t1, t2, socket, retry;
 
   if( ! socket ) {
-    set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#socket#-#ftp_recv_line" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#socket#-#ftp_recv_line" );
     return;
   }
 
@@ -196,7 +217,7 @@ function ftp_recv_listing( socket ) {
   local_var n, r, buf, socket;
 
   if( ! socket ) {
-    set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#socket#-#ftp_recv_listing" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#socket#-#ftp_recv_listing" );
     return;
   }
 
@@ -218,7 +239,7 @@ function ftp_recv_data( socket, line ) {
   local_var buf, bytes, min, socket, line;
 
   if( ! socket ) {
-    set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#socket#-#ftp_recv_data" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#socket#-#ftp_recv_data" );
     return;
   }
 
@@ -245,12 +266,12 @@ function ftp_authenticate( socket, user, pass ) {
   local_var r, socket, user, pass;
 
   if( ! socket ) {
-    set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#socket#-#ftp_authenticate" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#socket#-#ftp_authenticate" );
     return;
   }
 
-  if( ! user ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#user#-#ftp_authenticate" );
-  if( ! pass ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#pass#-#ftp_authenticate" );
+  if( ! user ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#user#-#ftp_authenticate" );
+  if( ! pass ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#pass#-#ftp_authenticate" );
 
   r = ftp_recv_line( socket:socket ); # Receive the banner
   send( socket:socket, data:'USER ' + user + '\r\n' );
@@ -274,7 +295,7 @@ function ftp_pasv( socket ) {
   local_var r, port, array, socket;
 
   if( ! socket ) {
-    set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#socket#-#ftp_pasv" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#socket#-#ftp_pasv" );
     return;
   }
 
@@ -293,7 +314,7 @@ function get_ftp_port( default ) {
 
   local_var default, port, p;
 
-  if( ! default ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#default#-#get_ftp_port" );
+  if( ! default ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#default#-#get_ftp_port" );
 
   port = get_kb_item( "Services/ftp" );
   if( port ) default = port;
@@ -328,4 +349,47 @@ function ftp_is_fragile_port( port ) {
   }
 
   return;
+}
+
+# @brief Returns an array containing the username/password credentials pair for a FTP login.
+#        To avoid querying the KB for the same info again it will be cached within an internal variable.
+#
+# @return An array containing the following array indices:
+#
+#         ret_array["login"] = The login defined via the "FTP account" preference of logins.nasl,
+#                              "anonymous" in the case the VT wasn't included in the scan config or
+#                              the preference has been cleared.
+#         ret_array["pass"]  = The password defined via the "FTP password (sent in clear)" preference of
+#                              logins.nasl, "anonymous@example.com" in the case the VT wasn't included in
+#                              the scan config or the preference has been cleared.
+#
+# @note Please include secpod_ftp_anonymous.nasl (or any VT pulling this dependency in) into your
+#       script_dependencies so that an detected anonymous account is taken into account.
+#
+function ftp_get_kb_creds() {
+
+  local_var login, pass, ret_array;
+  # nb: __ftp_kb_login and __ftp_kb_pass are global vars
+
+  if( ! isnull( __ftp_kb_login ) ) {
+    login = string( __ftp_kb_login );
+  } else {
+    login = get_kb_item( "ftp/login" );
+    if( isnull( login ) )
+      login = "anonymous";
+    __ftp_kb_login = string( login );
+  }
+
+  if( ! isnull( __ftp_kb_pass ) ) {
+    pass = string( __ftp_kb_pass );
+  } else {
+    pass = get_kb_item( "ftp/password" );
+    if( isnull( pass ) )
+      pass = "anonymous@example.com";
+    __ftp_kb_pass = string( pass );
+  }
+
+  ret_array["login"] = login;
+  ret_array["pass"]  = pass;
+  return ret_array;
 }

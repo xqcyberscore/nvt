@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_infoblox_netmri_rxss_vuln.nasl 12252 2018-11-08 07:19:31Z asteins $
+# $Id: gb_infoblox_netmri_rxss_vuln.nasl 12998 2019-01-09 13:46:07Z asteins $
 #
-# Infoblox NetMRI 7.1.1 Reflected Cross Site Scripting Vulnerability
+# Infoblox NetMRI 7.1.1 Reflected Cross-Site Scripting Vulnerability
 #
 # Authors:
 # Michael Martin <michael.martin@greenbone.net>
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107339");
-  script_version("$Revision: 12252 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 08:19:31 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12998 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-09 14:46:07 +0100 (Wed, 09 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-09-10 14:25:14 +0200 (Mon, 10 Sep 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -40,7 +40,7 @@ if( description )
 
   script_cve_id("CVE-2018-6643");
 
-  script_name("Infoblox NetMRI 7.1.1 Reflected Cross Site Scripting Vulnerability");
+  script_name("Infoblox NetMRI 7.1.1 Reflected Cross-Site Scripting Vulnerability");
 
   script_category(ACT_GATHER_INFO);
 
@@ -55,7 +55,7 @@ if( description )
   script_tag(name:"insight", value:"The vulnerability is due to insufficient validation of user-supplied input via the /api/docs/index.php query parameter. An attacker could exploit this vulnerability by persuading a user of the interface to click a crafted link.");
   script_tag(name:"impact", value:"A successful exploit could allow the attacker to execute arbitrary script code in the context of the interface or allow the attacker to access sensitive browser-based information.");
   script_tag(name:"affected", value:"Infoblox NetMRI version 7.1.1. Other versions might be affected as well.");
-  script_tag(name:"solution", value:"No known solution is available as of 11th September, 2018. Information regarding this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution is available as of 09th January, 2019. Information regarding this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://github.com/undefinedmode/CVE-2018-6643");
 

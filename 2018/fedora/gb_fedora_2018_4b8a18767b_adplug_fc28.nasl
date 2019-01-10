@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_4b8a18767b_adplug_fc28.nasl 12882 2018-12-27 07:14:01Z santu $
+# $Id: gb_fedora_2018_4b8a18767b_adplug_fc28.nasl 13012 2019-01-10 08:11:33Z asteins $
 #
 # Fedora Update for adplug FEDORA-2018-4b8a18767b
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875375");
-  script_version("$Revision: 12882 $");
+  script_version("$Revision: 13012 $");
   script_cve_id("CVE-2018-17825");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-27 08:14:01 +0100 (Thu, 27 Dec 2018) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-10 09:11:33 +0100 (Thu, 10 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-12-25 04:28:39 +0100 (Tue, 25 Dec 2018)");
   script_name("Fedora Update for adplug FEDORA-2018-4b8a18767b");
   script_category(ACT_GATHER_INFO);
