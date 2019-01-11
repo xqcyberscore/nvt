@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vnc_brute_force.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_vnc_brute_force.nasl 13014 2019-01-10 09:55:42Z cfischer $
 #
 # VNC Brute Force Login
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106056");
-  script_version("$Revision: 11452 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_version("$Revision: 13014 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-10 10:55:42 +0100 (Thu, 10 Jan 2019) $");
   script_tag(name:"creation_date", value:"2015-12-10 09:59:19 +0700 (Thu, 10 Dec 2015)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
@@ -39,7 +39,7 @@ if(description)
   script_family("Brute force attacks");
   script_dependencies("vnc_security_types.nasl");
   script_require_ports("Services/vnc", 5900, 5901, 5902);
-  script_mandatory_keys("vnc/detected", "vnc/security_types");
+  script_mandatory_keys("vnc/detected", "vnc/security_types/detected");
 
   script_add_preference(name:"Passwords", type:"entry", value:"admin, vnc, test, password");
 
@@ -66,7 +66,8 @@ include("misc_func.inc");
 
 include("network_func.inc");
 
-if( ! defined_func( "DES" ) ) exit( 0 );
+if( ! defined_func( "DES" ) )
+  exit( 0 );
 
 blockedReport = "Too many unsuccessful connection attempts are made which means the scanner IP got " +
                 "blocked. Therefore the brute force check was aborted.";
@@ -78,7 +79,8 @@ function reverseBits( data ) {
 
   len = strlen( data );
   # VNC passwords can be max. 8 characters
-  if( len > 8 ) len = 8;
+  if( len > 8 )
+    len = 8;
 
   for( j = 0; j < len; j++ ) {
     rev = 0;
@@ -97,21 +99,29 @@ function reverseBits( data ) {
 
 passwords = script_get_preference( "Passwords" );
 
-if( ! passwords || passwords == "" ) {
+if( ! passwords || passwords == "" )
   exit( 0 );
-} else {
+else
   pw_list = split( passwords, sep:", ", keep:FALSE );
-}
 
 port = get_kb_item( "Services/vnc" );
-if( ! port ) port = 5900;
-if( ! get_port_state( port ) ) exit( 0 );
-if( ! security_types = get_kb_list( "vnc/" + port + "/security_types" ) ) exit( 0 );
+if( ! port )
+  port = 5900;
+
+if( ! get_port_state( port ) )
+  exit( 0 );
+
+if( ! security_types = get_kb_list( "vnc/" + port + "/security_types" ) )
+  exit( 0 );
+
+# Makes sure that the "1" security type is detected before the "2" (if both are possible at all) below.
+security_types = sort( security_types );
 
 foreach password( pw_list ) {
 
   soc = open_sock_tcp( port );
-  if( ! soc ) exit( 0 );
+  if( ! soc )
+    exit( 0 );
 
   # Handshake
   res = recv( socket:soc, length:512, min:12 );
@@ -213,16 +223,16 @@ foreach password( pw_list ) {
     pw = reverseBits( data:password );
     padded_pw = pw;
 
-    while( strlen( padded_pw ) < 8 ) {
+    while( strlen( padded_pw ) < 8 )
       padded_pw = padded_pw + raw_string( 0x00 );
-    }
 
     chall_res = DES( challenge, padded_pw );
     send( socket:soc, data:chall_res );
     res = recv( socket:soc, min:4, length:4 );
     close( soc );
 
-    if( strlen( res != 4 ) ) continue;
+    if( strlen( res != 4 ) )
+      continue;
 
     auth_res = ord( res[3] );
 

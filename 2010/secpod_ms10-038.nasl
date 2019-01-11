@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-038.nasl 12653 2018-12-04 15:31:25Z cfischer $
+# $Id: secpod_ms10-038.nasl 13027 2019-01-10 15:20:13Z cfischer $
 #
 # Microsoft Office Excel Remote Code Execution Vulnerabilities (2027452)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902068");
-  script_version("$Revision: 12653 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-04 16:31:25 +0100 (Tue, 04 Dec 2018) $");
+  script_version("$Revision: 13027 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-10 16:20:13 +0100 (Thu, 10 Jan 2019) $");
   script_tag(name:"creation_date", value:"2010-06-09 17:19:57 +0200 (Wed, 09 Jun 2010)");
   script_cve_id("CVE-2010-0821", "CVE-2010-0822", "CVE-2010-0823", "CVE-2010-0824",
                 "CVE-2010-1246", "CVE-2010-1245", "CVE-2010-1247", "CVE-2010-1249",
@@ -46,23 +46,32 @@ if(description)
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_office_products_version_900032.nasl", "secpod_ms_office_detection_900025.nasl");
   script_mandatory_keys("MS/Office/Ver", "MS/Office/Prdts/Installed");
+
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary code by
   tricking a user into opening a specially crafted Excel document.");
+
   script_tag(name:"affected", value:"Microsoft Office Excel 2002 Service Pack 3
+
   Microsoft Office Excel 2003 Service Pack 3
+
   Microsoft Office Excel 2007 Service Pack 1/2
+
   Microsoft Office Excel Viewer Service Pack 1/2");
+
   script_tag(name:"insight", value:"These issues are caused by memory corruption and buffer overflow errors when
   parsing certain objects or records in a specially crafted Excel document.");
+
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory");
+  update mentioned hotfixes in the advisory.");
+
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS10-038.");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
-
 
 include("secpod_reg.inc");
 include("version_func.inc");
@@ -72,23 +81,24 @@ if(hotfix_check_sp(win2k:5, xp:4, win2003:3) <= 0){
 }
 
 excelVer = get_kb_item("SMB/Office/Excel/Version");
-if(excelVer =~ "^(10|11|12)\..*")
+if(excelVer =~ "^1[0-2]\.0")
 {
   if(version_in_range(version:excelVer, test_version:"10.0", test_version2:"10.0.6861") ||
      version_in_range(version:excelVer, test_version:"11.0", test_version2:"11.0.8323") ||
      version_in_range(version:excelVer, test_version:"12.0", test_version2:"12.0.6535.5001"))
   {
-    security_message( port: 0, data: "The target host was found to be vulnerable" );
+    report = report_fixed_ver(installed_version:excelVer, vulnerable_range:"10.0 - 10.0.6861, 11.0 - 11.0.8323, 12.0 - 12.0.6535.5001");
+    security_message(port:0, data:report);
     exit(0);
   }
 }
 
-# Microsoft Office Excel Viewer 2007
-excelVer = get_kb_item(name:"SMB/Office/XLView/Version");
-if(!isnull(excelVer))
+excelVer = get_kb_item("SMB/Office/XLView/Version");
+if(excelVer && excelVer =~ "^12\.0")
 {
   # Xlview.exe 12 < 12.0.6535.5000
   if(version_in_range(version:excelVer, test_version:"12.0", test_version2:"12.0.6535.4999")){
-    security_message( port: 0, data: "The target host was found to be vulnerable" );
+    report = report_fixed_ver(installed_version:excelVer, vulnerable_range:"12.0 - 12.0.6535.4999");
+    security_message(port:0, data:report);
   }
 }

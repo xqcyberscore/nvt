@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_open_redirect_vuln_win.nasl 11755 2018-10-05 04:21:06Z ckuersteiner $
+# $Id: gb_apache_tomcat_open_redirect_vuln_win.nasl 13032 2019-01-11 07:56:51Z mmartin $
 #
 # Apache Tomcat Open Redirect Vulnerability (Windows)
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:apache:tomcat";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141569");
-  script_version("$Revision: 11755 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 06:21:06 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 13032 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-11 08:56:51 +0100 (Fri, 11 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-10-05 11:08:04 +0700 (Fri, 05 Oct 2018)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2018-11784");
 

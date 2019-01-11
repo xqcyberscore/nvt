@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4461537.nasl 13004 2019-01-09 16:32:29Z santu $
+# $Id: gb_ms_kb4461537.nasl 13016 2019-01-10 10:24:44Z santu $
 #
 # Microsoft Office 2013 Service Pack 1 Information Disclosure Vulnerability (KB4461537)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814596");
-  script_version("$Revision: 13004 $");
+  script_version("$Revision: 13016 $");
   script_cve_id("CVE-2019-0560");
   script_bugtraq_id(106398);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-09 17:32:29 +0100 (Wed, 09 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-10 11:24:44 +0100 (Thu, 10 Jan 2019) $");
   script_tag(name:"creation_date", value:"2019-01-09 15:27:11 +0530 (Wed, 09 Jan 2019)");
   script_name("Microsoft Office 2013 Service Pack 1 Information Disclosure Vulnerability (KB4461537)");
 
@@ -71,7 +71,7 @@ include("version_func.inc");
 include("secpod_smb_func.inc");
 
 offVer = get_kb_item("MS/Office/Ver");
-if(!offVer || !(offVer =~ "^15\.")){
+if(!offVer || offVer !~ "^15\."){
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_intel_amt_intel-sa-00141.nasl 11384 2018-09-14 08:48:16Z ckuersteiner $
+# $Id: gb_intel_amt_intel-sa-00141.nasl 13032 2019-01-11 07:56:51Z mmartin $
 #
 # Intel Active Management Technology Multiple Vulnerabilities (INTEL-SA-00141)
 #
@@ -30,11 +30,11 @@ CPE = 'cpe:/h:intel:active_management_technology';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141479");
-  script_version("$Revision: 11384 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-14 10:48:16 +0200 (Fri, 14 Sep 2018) $");
+  script_version("$Revision: 13032 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-11 08:56:51 +0100 (Fri, 11 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-09-14 14:46:25 +0700 (Fri, 14 Sep 2018)");
-  script_tag(name:"cvss_base", value:"7.1");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:N");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
 
   script_cve_id("CVE-2018-3616", "CVE-2018-3657", "CVE-2018-3658");
 

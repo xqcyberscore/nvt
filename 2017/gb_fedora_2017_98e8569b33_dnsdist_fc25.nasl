@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2017_98e8569b33_dnsdist_fc25.nasl 7075 2017-09-07 11:09:13Z santu $
+# $Id: gb_fedora_2017_98e8569b33_dnsdist_fc25.nasl 13032 2019-01-11 07:56:51Z mmartin $
 #
 # Fedora Update for dnsdist FEDORA-2017-98e8569b33
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.873331");
-  script_version("$Revision: 7075 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:09:13 +0200 (Thu, 07 Sep 2017) $");
+  script_version("$Revision: 13032 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-11 08:56:51 +0100 (Fri, 11 Jan 2019) $");
   script_tag(name:"creation_date", value:"2017-09-02 07:30:34 +0200 (Sat, 02 Sep 2017)");
   script_cve_id("CVE-2016-7069", "CVE-2017-7557");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for dnsdist FEDORA-2017-98e8569b33");
   script_tag(name: "summary", value: "Check the version of dnsdist");

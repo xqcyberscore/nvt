@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-045.nasl 11997 2018-10-20 11:59:41Z mmartin $
+# $Id: secpod_ms11-045.nasl 13027 2019-01-10 15:20:13Z cfischer $
 #
 # Microsoft Office Excel Remote Code Execution Vulnerabilities (2537146)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902378");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("$Revision: 13027 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-10 16:20:13 +0100 (Thu, 10 Jan 2019) $");
   script_tag(name:"creation_date", value:"2011-06-15 15:55:00 +0200 (Wed, 15 Jun 2011)");
   script_cve_id("CVE-2011-1272", "CVE-2011-1273", "CVE-2011-1274", "CVE-2011-1275",
                 "CVE-2011-1276", "CVE-2011-1277", "CVE-2011-1278", "CVE-2011-1279");
@@ -52,6 +52,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary code with
   the privileges of the user running the affected application.");
+
   script_tag(name:"affected", value:"Microsoft Office Excel 2010
 
   Microsoft Excel Viewer Service Pack 2
@@ -61,12 +62,16 @@ if(description)
   Microsoft Office Excel 2003 Service Pack 3
 
   Microsoft Office Excel 2007 Service Pack 2");
+
   script_tag(name:"insight", value:"The flaws are caused by memory corruption, heap and integer overflows, buffer
   overwrite, out of bounds array access when handling the crafted Excel files.");
+
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory");
+
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Microsoft Bulletin MS11-045.");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -77,22 +82,24 @@ include("secpod_reg.inc");
 include("version_func.inc");
 
 excelVer = get_kb_item("SMB/Office/Excel/Version");
-if(excelVer =~ "^1[0124]\..*")
+if(excelVer =~ "^1[0124]\.0")
 {
   if(version_in_range(version:excelVer, test_version:"10.0", test_version2:"10.0.6870.0") ||
      version_in_range(version:excelVer, test_version:"11.0", test_version2:"11.0.8334.0") ||
      version_in_range(version:excelVer, test_version:"12.0", test_version2:"12.0.6557.4999") ||
      version_in_range(version:excelVer, test_version:"14.0", test_version2:"14.0.5138.4999"))
   {
-    security_message( port: 0, data: "The target host was found to be vulnerable" );
+    report = report_fixed_ver(installed_version:excelVer, vulnerable_range:"10.0 - 10.0.6870.0, 11.0 - 11.0.8334.0, 12.0 - 12.0.6557.4999, 14.0 - 14.0.5138.4999");
+    security_message(port:0, data:report);
     exit(0);
   }
 }
 
-excelVer = get_kb_item(name:"SMB/Office/XLView/Version");
-if(!isnull(excelVer))
+excelVer = get_kb_item("SMB/Office/XLView/Version");
+if(excelVer && excelVer =~ "^12\.0")
 {
   if(version_in_range(version:excelVer, test_version:"12.0", test_version2:"12.0.6557.4999")){
-    security_message( port: 0, data: "The target host was found to be vulnerable" );
+    report = report_fixed_ver(installed_version:excelVer, vulnerable_range:"12.0 - 12.0.6557.4999");
+    security_message(port:0, data:report);
   }
 }

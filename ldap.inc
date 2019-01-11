@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: ldap.inc 8148 2017-12-15 14:56:57Z cfischer $
+# $Id: ldap.inc 13027 2019-01-10 15:20:13Z cfischer $
 #
 # Functions for LDAP
 #
@@ -25,7 +25,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301
 # USA.
 #
-# $Revision: 8148 $
+# $Revision: 13027 $
 #
 ###############################################################################
 
@@ -118,6 +118,14 @@ function get_ber_size( buf, offset ) {
   return lm_length;
 }
 
+# @brief Checks if a remote LDAP server has LDAPv3 enabled (accepting the LDAPv3 bind). The result is
+#        cached within the KB to avoid re-connection to the server if it is already known if the
+#        server is/isn't supporting LDAPv3.
+#
+# @param port The port of the remote LDAP server to connect to.
+#
+# @return TRUE if the LDAP server has LDAPv3 enabled, FALSE otherwise.
+#
 function is_ldapv3( port ) {
 
   local_var port, is_ldapv3, offset, lm_length, messageId_length, bindResponse_length, resultCode_length, resultCode, i, soc, buf;
@@ -127,7 +135,7 @@ function is_ldapv3( port ) {
     return;
   }
 
-  is_ldapv3 = get_kb_item( name:"ldap/" + port + "/is_ldapv3" );
+  is_ldapv3 = get_kb_item( "ldap/" + port + "/is_ldapv3" );
   if( is_ldapv3 == "yes" )
     return TRUE;
   else if( is_ldapv3 == "no" )

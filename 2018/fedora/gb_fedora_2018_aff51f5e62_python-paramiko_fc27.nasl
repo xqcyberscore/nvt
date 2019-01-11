@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_aff51f5e62_python-paramiko_fc27.nasl 11927 2018-10-16 12:17:30Z santu $
+# $Id: gb_fedora_2018_aff51f5e62_python-paramiko_fc27.nasl 13032 2019-01-11 07:56:51Z mmartin $
 #
 # Fedora Update for python-paramiko FEDORA-2018-aff51f5e62
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875192");
-  script_version("$Revision: 11927 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-16 14:17:30 +0200 (Tue, 16 Oct 2018) $");
+  script_version("$Revision: 13032 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-11 08:56:51 +0100 (Fri, 11 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-10-15 07:14:27 +0200 (Mon, 15 Oct 2018)");
   script_cve_id("CVE-2018-1000805", "CVE-2018-7750");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for python-paramiko FEDORA-2018-aff51f5e62");
   script_tag(name:"summary", value:"Check the version of python-paramiko");

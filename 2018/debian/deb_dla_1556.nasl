@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1556.nasl 12140 2018-10-29 07:40:23Z cfischer $
+# $Id: deb_dla_1556.nasl 13032 2019-01-11 07:56:51Z mmartin $
 #
 # Auto-generated from advisory DLA 1556-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891556");
-  script_version("$Revision: 12140 $");
+  script_version("$Revision: 13032 $");
   script_cve_id("CVE-2018-1000805", "CVE-2018-7750");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1556-1] paramiko security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-29 08:40:23 +0100 (Mon, 29 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-11 08:56:51 +0100 (Fri, 11 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-10-29 00:00:00 +0100 (Mon, 29 Oct 2018)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

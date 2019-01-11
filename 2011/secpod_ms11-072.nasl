@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-072.nasl 12485 2018-11-22 11:39:45Z cfischer $
+# $Id: secpod_ms11-072.nasl 13027 2019-01-10 15:20:13Z cfischer $
 #
 # Microsoft Office Excel Remote Code Execution Vulnerabilities (2587505)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902727");
-  script_version("$Revision: 12485 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-22 12:39:45 +0100 (Thu, 22 Nov 2018) $");
+  script_version("$Revision: 13027 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-10 16:20:13 +0100 (Thu, 10 Jan 2019) $");
   script_tag(name:"creation_date", value:"2011-09-14 16:05:49 +0200 (Wed, 14 Sep 2011)");
   script_cve_id("CVE-2011-1986", "CVE-2011-1987", "CVE-2011-1988",
                 "CVE-2011-1989", "CVE-2011-1990");
@@ -90,84 +90,82 @@ include("version_func.inc");
 include("secpod_smb_func.inc");
 
 excelVer = get_kb_item("SMB/Office/Excel/Version");
-if(excelVer =~ "^(11|12|14)\..*")
+if(excelVer =~ "^1[124]\.0")
 {
   if(version_in_range(version:excelVer, test_version:"11.0", test_version2:"11.0.8340.0") ||
      version_in_range(version:excelVer, test_version:"12.0", test_version2:"12.0.6565.5002") ||
      version_in_range(version:excelVer, test_version:"14.0", test_version2:"14.0.6106.5004"))
   {
-    security_message( port: 0, data: "The target host was found to be vulnerable" );
+    report = report_fixed_ver(installed_version:excelVer, vulnerable_range:"11.0 - 11.0.8340.0, 12.0 - 12.0.6565.5002, 14.0 - 14.0.6106.5004");
+    security_message(port:0, data:report);
     exit(0);
   }
 }
 
-# Microsoft Office Excel Viewer 2007
-excelVer = get_kb_item(name:"SMB/Office/XLView/Version");
-if(excelVer && excelVer =~ "^12\.")
+excelVer = get_kb_item("SMB/Office/XLView/Version");
+if(excelVer && excelVer =~ "^12\.0")
 {
   if(version_in_range(version:excelVer, test_version:"12.0", test_version2:"12.0.6565.4999"))
   {
-    security_message( port: 0, data: "The target host was found to be vulnerable" );
+    report = report_fixed_ver(installed_version:excelVer, vulnerable_range:"12.0 - 12.0.6565.4999");
+    security_message(port:0, data:report);
     exit(0);
   }
 }
 
 comptVer = get_kb_item("SMB/Office/ComptPack/Version");
-
-if(comptVer && comptVer =~ "^12\.")
+if(comptVer && comptVer =~ "^12\.0")
 {
   xlcnvVer = get_kb_item("SMB/Office/XLCnv/Version");
-  if(xlcnvVer && xlcnvVer =~ "^12\.")
+  if(xlcnvVer && xlcnvVer =~ "^12\.0")
   {
     if(version_in_range(version:xlcnvVer, test_version:"12.0", test_version2:"12.0.6565.5002"))
     {
-      security_message( port: 0, data: "The target host was found to be vulnerable" );
+      report = report_fixed_ver(installed_version:xlcnvVer, vulnerable_range:"12.0 - 12.0.6565.5002");
+      security_message(port:0, data:report);
       exit(0);
     }
   }
 }
 
 officeVer = get_kb_item("MS/Office/Ver");
-
-# Microsoft Office 2007 Service Pack 2 and
-# Microsoft Office 2010 Service Pack 1 and prior
-if(officeVer && officeVer =~ "^1[24]\.")
+if(officeVer && officeVer =~ "^1[24]\.0")
 {
   path12 = registry_get_sz(key:"SOFTWARE\Microsoft\Office\12.0\Access\InstallRoot", item:"Path");
   if(path12)
   {
     ort12Ver = fetch_file_version(sysPath:path12, file_name:"Oart.dll");
     ortconv12Ver = fetch_file_version(sysPath:path12, file_name:"Oartconv.dll");
-    if(!isnull(ort12Ver) || !isnull(ortconv12Ver))
+    if(ort12Ver =~ "^12\.0" || ortconv12Ver =~ "^12\.0")
     {
-      if(version_in_range(version:ort12Ver, test_version:"12", test_version2:"12.0.6565.4999") ||
-         version_in_range(version:ortconv12Ver, test_version:"12", test_version2:"12.0.6565.4999"))
+      if(version_in_range(version:ort12Ver, test_version:"12.0", test_version2:"12.0.6565.4999") ||
+         version_in_range(version:ortconv12Ver, test_version:"12.0", test_version2:"12.0.6565.4999"))
       {
-        security_message( port: 0, data: "The target host was found to be vulnerable" );
+        report = report_fixed_ver(installed_version:ort12Ver + " / " + ortconv12Ver, vulnerable_range:"12.0 - 12.0.6565.4999");
+        security_message(port:0, data:report);
         exit(0);
       }
     }
   }
 
-  path14 = registry_get_sz(key:"SOFTWARE\Microsoft\Office\14.0\Access\InstallRoot",
-                            item:"Path");
+  path14 = registry_get_sz(key:"SOFTWARE\Microsoft\Office\14.0\Access\InstallRoot", item:"Path");
   if(path14)
   {
     ort14Ver = fetch_file_version(sysPath:path14, file_name:"Oart.dll");
     ortconv14Ver = fetch_file_version(sysPath:path14, file_name:"Oartconv.dll");
-    if(!isnull(ort14Ver) || !isnull(ortconv14Ver))
+    if(ort14Ver =~ "^14\.0" || ortconv14Ver =~ "^14\.0")
     {
-      if(version_in_range(version:ort14Ver, test_version:"14", test_version2:"14.0.6106.5004") ||
-         version_in_range(version:ortconv14Ver, test_version:"14", test_version2:"14.0.6106.5004"))
+      if(version_in_range(version:ort14Ver, test_version:"14.0", test_version2:"14.0.6106.5004") ||
+         version_in_range(version:ortconv14Ver, test_version:"14.0", test_version2:"14.0.6106.5004"))
       {
-        security_message( port: 0, data: "The target host was found to be vulnerable" );
+        report = report_fixed_ver(installed_version:ort14Ver + " / " + ortconv14Ver, vulnerable_range:"14.0 - 14.0.6106.5004");
+        security_message(port:0, data:report);
         exit(0);
       }
     }
   }
 }
 
-## Microsoft Office Share Point server
 key = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\";
 if(!registry_key_exists(key:key)) {
     exit(0);
@@ -178,16 +176,16 @@ foreach item (registry_enum_keys(key:key))
   appName = registry_get_sz(item:"DisplayName", key:key + item);
   if("Microsoft Office SharePoint Server 2007" >< appName)
   {
-    dllPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
-                           item:"CommonFilesDir");
+    dllPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion", item:"CommonFilesDir");
     if(dllPath)
     {
       dllPath += "\System\Ole DB";
       dllVer = fetch_file_version(sysPath:dllPath, file_name:"Msmdcb80.dll");
-      if(dllVer)
+      if(dllVer && dllVer =~ "^8\.0")
       {
         if(version_in_range(version:dllVer, test_version:"8.0", test_version2:"8.0.2277.0")){
-          security_message( port: 0, data: "The target host was found to be vulnerable" );
+          report = report_fixed_ver(installed_version:dllVer, vulnerable_range:"8.0 - 8.0.2277.0");
+          security_message(port:0, data:report);
         }
       }
     }

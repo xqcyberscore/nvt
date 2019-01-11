@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_1c1a318a0b_git_fc28.nasl 11877 2018-10-12 12:31:50Z santu $
+# $Id: gb_fedora_2018_1c1a318a0b_git_fc28.nasl 13032 2019-01-11 07:56:51Z mmartin $
 #
 # Fedora Update for git FEDORA-2018-1c1a318a0b
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875175");
-  script_version("$Revision: 11877 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:31:50 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 13032 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-11 08:56:51 +0100 (Fri, 11 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-10-11 08:54:28 +0200 (Thu, 11 Oct 2018)");
   script_cve_id("CVE-2018-17456", "CVE-2018-11233", "CVE-2018-11235");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for git FEDORA-2018-1c1a318a0b");
   script_tag(name:"summary", value:"Check the version of git");

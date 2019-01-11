@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qnap_nas_musicstation_rce_vuln.nasl 11446 2018-09-18 09:05:56Z ckuersteiner $
+# $Id: gb_qnap_nas_musicstation_rce_vuln.nasl 13032 2019-01-11 07:56:51Z mmartin $
 #
 # QNAP QTS Music Station < 5.1.3 RCE Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:qnap:music_station";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141489");
-  script_version("$Revision: 11446 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 11:05:56 +0200 (Tue, 18 Sep 2018) $");
+  script_version("$Revision: 13032 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-11 08:56:51 +0100 (Fri, 11 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-09-18 15:13:19 +0700 (Tue, 18 Sep 2018)");
-  script_tag(name:"cvss_base", value:"6.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2018-0718");
 

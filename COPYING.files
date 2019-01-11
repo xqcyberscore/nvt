@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Thu, 10 Jan 2019 10:36:40 +0100
+# Automatically created on:  Fri, 11 Jan 2019 09:21:34 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -43945,6 +43945,7 @@
 2019/debian/deb_dla_1629.nasl: GPLv2+
 2019/debian/deb_dla_1630.nasl: GPLv2+
 2019/debian/deb_dla_1631.nasl: GPLv2+
+2019/debian/deb_dla_1632.nasl: GPLv2+
 2019/dolibarr/gb_dolibarr_mult_vuln01.nasl: GPLv2+
 2019/fedora/gb_fedora_2018_50e3877b63_php-pear_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2018_e69d2aaa60_wordpress_fc28.nasl: GPLv2+
@@ -43952,6 +43953,8 @@
 2019/foxit/gb_foxit_phantompdf_mult_vuln_jan19_win.nasl: GPLv2+
 2019/foxit/gb_foxit_reader_mult_vuln_jan19_win.nasl: GPLv2+
 2019/gb_asip_afp_unencrypted_cleartext_logins.nasl: GPLv2
+2019/gb_ftp_unencrypted_cleartext_login.nasl: GPLv2
+2019/gb_vnc_unencrypted_data_transmission.nasl: GPLv2
 2019/kubernetes/gb_kubernetes_dashboard_auth_bypass_vuln.nasl: GPLv2+
 2019/microsoft/gb_ms_kb2553332.nasl: GPLv2+
 2019/microsoft/gb_ms_kb2596760.nasl: GPLv2+
@@ -45545,12 +45548,14 @@ gb_schneider_clearscada_detect.nasl: GPLv2+
 gb_schneider_electric_pelco_sarix_ip_cam_detect.nasl: GPLv2+
 gb_schneider_electric_proface_gp-pro_ex_detect.nasl: GPLv2+
 gb_schneider_electric_software_update_detect_win.nasl: GPLv2+
+gb_schneider_eurotherm_guicon_detect_win.nasl: GPLv2+
 gb_schneider_homelynk_controller_detect.nasl: GPLv2+
 gb_schneider_indusoft_http_detect.nasl: GPLv2+
 gb_schneider_intouch_http_detect.nasl: GPLv2+
 gb_schneider_modbus_detect.nasl: GPLv2+
 gb_schneider_modicon_m340_detect.nasl: GPLv2+
 gb_schneider_struxureon_detect.nasl: GPLv2+
+gb_schneider_zelio_soft_detect_win.nasl: GPLv2+
 gb_screenos_version.nasl: GPLv2+
 gb_scrumworkspro_detect.nasl: GPLv2+
 gb_scrutinizer_detect.nasl: GPLv2+
@@ -62757,7 +62762,11 @@ gsf/2019/juniper/gb_junos_jsa10905.nasl: GPLv2+
 gsf/2019/juniper/gb_junos_jsa10906.nasl: GPLv2+
 gsf/2019/juniper/gb_junos_jsa10909.nasl: GPLv2+
 gsf/2019/juniper/gb_junos_jsa10910.nasl: GPLv2+
+gsf/2019/juniper/gb_junos_jsa10911.nasl: GPLv2+
+gsf/2019/juniper/gb_junos_jsa10912.nasl: GPLv2+
+gsf/2019/juniper/gb_junos_jsa10913.nasl: GPLv2+
 gsf/2019/mcafee/gb_mcafee_application_control_mult_vuln_dec18.nasl: GPLv2+
+gsf/2019/mcafee/gb_mcafee_web_gateway_input_validation_vulnerability_jan19.nasl: GPLv2+
 gsf/2019/microsoft/gb_ms_kb4461589.nasl: GPLv2+
 gsf/2019/microsoft/gb_ms_kb4461591.nasl: GPLv2+
 gsf/2019/microsoft/gb_ms_kb4461596.nasl: GPLv2+
@@ -62774,6 +62783,9 @@ gsf/2019/microsoft/gb_ms_kb4480968.nasl: GPLv2+
 gsf/2019/microsoft/gb_ms_kb4480975.nasl: GPLv2+
 gsf/2019/racon_software/gb_elba5_rce_vuln.nasl: GPLv2+
 gsf/2019/schneider/gb_schneider_electric_proface_gp-pro_ex_input_validation_vulnerability.nasl: GPLv2+
+gsf/2019/schneider/gb_schneider_eurotherm_guicon_mult_vuln.nasl: GPLv2+
+gsf/2019/schneider/gb_schneider_zelio_soft2_uaf_rce_vuln.nasl: GPLv2+
+gsf/2019/tridium/gb_tridium_niagara_xss_vuln.nasl: GPLv2+
 gsf/2019/vtiger/gb_vtiger_rce_vuln.nasl: GPLv2+
 gsf/gb-lsc-agent.nasl: GPLv2+
 gsf/gb_rittal_modbus_detect.nasl: GPLv2+
