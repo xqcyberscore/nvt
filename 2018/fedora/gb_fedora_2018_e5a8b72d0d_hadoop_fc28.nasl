@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_e5a8b72d0d_hadoop_fc28.nasl 10558 2018-07-20 14:08:23Z santu $
+# $Id: gb_fedora_2018_e5a8b72d0d_hadoop_fc28.nasl 13054 2019-01-14 08:07:05Z asteins $
 #
 # Fedora Update for hadoop FEDORA-2018-e5a8b72d0d
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874800");
-  script_version("$Revision: 10558 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-20 16:08:23 +0200 (Fri, 20 Jul 2018) $");
+  script_version("$Revision: 13054 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-14 09:07:05 +0100 (Mon, 14 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-07-15 06:01:10 +0200 (Sun, 15 Jul 2018)");
   script_cve_id("CVE-2018-8009", "CVE-2016-6811", "CVE-2017-15718", "CVE-2017-15713", 
                 "CVE-2017-3166");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"9.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for hadoop FEDORA-2018-e5a8b72d0d");
   script_tag(name:"summary", value:"Check the version of hadoop");

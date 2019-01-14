@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_get_http_banner.nasl 12779 2018-12-12 19:14:16Z cfischer $
+# $Id: gb_get_http_banner.nasl 13034 2019-01-11 09:35:23Z ckuersteiner $
 #
 # HTTP Banner
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140170");
-  script_version("$Revision: 12779 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-12 20:14:16 +0100 (Wed, 12 Dec 2018) $");
+  script_version("$Revision: 13034 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-11 10:35:23 +0100 (Fri, 11 Jan 2019) $");
   script_tag(name:"creation_date", value:"2017-02-21 11:53:19 +0100 (Tue, 21 Feb 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -382,5 +382,6 @@ set_mandatory_key( key:"ServersCheck_Monitoring_Server", regex: "Server: Servers
 set_mandatory_key( key:"IWB", regex: "Server: IWB Web-Server", banner:banner );
 set_mandatory_key( key:"Mongoose", regex: "Server: Mongoose", banner:banner );
 set_mandatory_key( key:"LogitechMediaServer", regex: "Server: Logitech Media Server", banner:banner );
+set_mandatory_key( key:"HttpServer", regex: "Server: HttpServer", banner:banner );
 
 exit( 0 );

@@ -1,7 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-#
-# $Id: docker_policy_tests.inc 12361 2018-11-15 08:43:40Z cfischer $
+# $Id: docker_policy_tests.inc 13065 2019-01-14 13:39:18Z cfischer $
 #
 # Functions for Docker Policy Tests
 #
@@ -26,7 +25,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301
 # USA.
 #
-# $Revision: 12361 $
+# $Revision: 13065 $
 #
 ###############################################################################
 
@@ -270,13 +269,13 @@ function docker_test_1_1( )
 # 1.2 Use a up to date Docker version
 function docker_test_1_2( )
 {
-  local_var id, value;
+  local_var id, version, min_version, value;
 
   id = '1.2';
 
   if( version = get_kb_item( "docker/version" ) )
   {
-    min_version = minimum_docker_test_version;
+    min_version = get_minimum_docker_test_version();
     if( min_version )
     {
       if( version_is_less( version:version, test_version:min_version ) )
@@ -298,13 +297,13 @@ function docker_test_1_3( )
 
   id = '1.3';
 
-  if( "--exec-driver" >!< docker_help )
+  if( "--exec-driver" >!< get_docker_help_banner() )
   {
     docker_test_set_skipped( id:id, reason:'"--exec-driver" not supported by tested Docker version.' );
     return;
   }
 
-  if( "lxc" >< docker_cmd && "--exec-driver" >< docker_cmd  )
+  if( "lxc" >< get_docker_cmd() && "--exec-driver" >< get_docker_cmd() )
     docker_test_set_failed( id:id, reason:'According to the Docker command line, Docker daemon is running with lxc execution driver.\n' );
   else
     docker_test_set_success( id:id, reason:'According to the Docker command line, Docker daemon is not running with lxc execution driver.\n' );
@@ -317,38 +316,38 @@ function docker_test_1_4( )
 
   id = '1.4';
 
-  if( "--icc" >!< docker_help )
+  if( "--icc" >!< get_docker_help_banner() )
   {
     docker_test_set_skipped( id:id, reason:'"--icc" not supported by tested Docker version.' );
     return;
   }
 
-  if( tolower( docker_cmd ) !~ "--icc=(false|0)" )
-      docker_test_set_failed( id:id, reason:'According to the Docker command line, Docker daemon is not running with --icc set to "false".\n' );
+  if( tolower( get_docker_cmd() ) !~ "--icc=(false|0)" )
+    docker_test_set_failed( id:id, reason:'According to the Docker command line, Docker daemon is not running with --icc set to "false".\n' );
   else
-      docker_test_set_success( id:id, reason:'According to the Docker command line, Docker daemon is running with --icc set to "false".\n' );
+    docker_test_set_success( id:id, reason:'According to the Docker command line, Docker daemon is running with --icc set to "false".\n' );
 }
 
 # 1.5 Set the logging level to "info".
 function docker_test_1_5( )
-{ 
+{
   local_var id, value;
 
   id = '1.5';
 
-  if( "--log-level" >!< docker_help )
+  if( "--log-level" >!< get_docker_help_banner() )
   {
     docker_test_set_skipped( id:id, reason:'"--log-level" not supported by tested Docker version.' );
     return;
   }
 
-  if( "--log-level" >!< docker_cmd )
-      docker_test_set_success( id:id, reason:'According to the Docker command line, Docker daemon is running with default Log level "info".' );
+  if( "--log-level" >!< get_docker_cmd() )
+    docker_test_set_success( id:id, reason:'According to the Docker command line, Docker daemon is running with default Log level "info".' );
   else
   {
-    if( "log-level" >< docker_cmd )
+    if( "log-level" >< get_docker_cmd() )
     {
-      l = eregmatch( pattern:'log-level=[\'"]*(debug|info|warn|error|fatal)', string:docker_cmd );
+      l = eregmatch( pattern:'log-level=[\'"]*(debug|info|warn|error|fatal)', string:get_docker_cmd() );
       if( ! isnull( l[1] ) )
       {
         if( l[1] =~ "(debug|warn|error|fatal)" )
@@ -357,7 +356,7 @@ function docker_test_1_5( )
           docker_test_set_success( id:id, reason:'Log level is set to "info"' );
       }
       else
-        docker_test_set_error( id:id, reason:'Unknown log-level. Value: ' + docker_cmd );
+        docker_test_set_error( id:id, reason:'Unknown log-level. Value: ' + get_docker_cmd() );
     }
   }
 }
@@ -369,17 +368,17 @@ function docker_test_1_6( )
 
   id = '1.6';
 
-  if( "--iptables" >!< docker_help )
+  if( "--iptables" >!< get_docker_help_banner() )
   {
     docker_test_set_skipped( id:id, reason:'"--iptables" not supported by tested Docker version.' );
     return;
   }
 
-  if( "--iptables" >!< docker_cmd )
+  if( "--iptables" >!< get_docker_cmd() )
     docker_test_set_success( id:id, reason:'According to the Docker command line, Docker daemon is not running with --iptables set to false.' );
   else
   {
-    s = eregmatch( pattern:'iptables=(0|false)', string:tolower( docker_cmd ) );
+    s = eregmatch( pattern:'iptables=(0|false)', string:tolower( get_docker_cmd() ) );
     if( isnull( s[1] ) )
       docker_test_set_success( id:id, reason:'According to the Docker command line, Docker daemon is not running with "--iptables" set to false.' );
     else
@@ -394,13 +393,13 @@ function docker_test_1_7( )
 
   id = '1.7';
 
-  if( "--insecure-registry" >!< docker_help )
+  if( "--insecure-registry" >!< get_docker_help_banner() )
   {
     docker_test_set_skipped( id:id, reason:'"--insecure-registry" not supported by tested Docker version.' );
     return;
   }
 
-  if( "--insecure-registry" >!< docker_cmd )
+  if( "--insecure-registry" >!< get_docker_cmd() )
     docker_test_set_success( id:id, reason:'According to the Docker command line, Docker daemon is running without "--insecure-registry".\n' );
   else
     docker_test_set_failed( id:id, reason:'According to the Docker command line, Docker daemon is running with "--insecure-registry".\n' );
@@ -412,7 +411,7 @@ function docker_test_1_8( )
   local_var id, value;
   id = '1.8';
 
-  s = eregmatch( pattern:'Storage Driver: ([^ \r\n]+)', string:docker_info );
+  s = eregmatch( pattern:'Storage Driver: ([^ \r\n]+)', string:get_docker_info() );
 
   if( isnull( s[1] ) )
       docker_test_set_error( id:id, reason:'Could not read "Storage Driver" from "docker info" output.' );
@@ -432,21 +431,21 @@ function docker_test_1_9( )
 
   id = '1.9';
 
-  if( "--host" >!< docker_help )
+  if( "--host" >!< get_docker_help_banner() )
   {
     docker_test_set_skipped( id:id, reason:'"--host" not supported by tested Docker version.' );
     return;
   }
 
-  if( "--tlsverify" >!< docker_help || "--tlskey" >!< docker_help )
+  if( "--tlsverify" >!< get_docker_help_banner() || "--tlskey" >!< get_docker_help_banner() )
   {
     docker_test_set_skipped( id:id, reason:'"--tlsverify/--tlskey" not supported by tested Docker version.' );
     return;
   }
 
-  if( docker_cmd =~ "--host\s*(tcp|unix|udp)://" )
+  if( get_docker_cmd() =~ "--host\s*(tcp|unix|udp)://" )
   {
-    if( "tlsverify" >!< docker_cmd || "tlskey" >!< docker_cmd )
+    if( "tlsverify" >!< get_docker_cmd() || "tlskey" >!< get_docker_cmd() )
       docker_test_set_failed( id:id, reason:'According to the Docker command line, the Docker daemon is missing "--tlsverify" and/or "--tlskey".\n' );
     else
       docker_test_set_success( id:id, reason:'According to the Docker command line, the Docker daemon is using TLS authentication' );
@@ -462,13 +461,13 @@ function docker_test_2_0( )
 
   id = '2.0';
 
-  if( "--default-ulimit" >!< docker_help )
+  if( "--default-ulimit" >!< get_docker_help_banner() )
   {
     docker_test_set_skipped( id:id, reason:'"--default-ulimit" not supported by tested Docker version.' );
     return;
   }
 
-  if( "--default-ulimit" >!< docker_cmd )
+  if( "--default-ulimit" >!< get_docker_cmd() )
     docker_test_set_failed( id:id, reason:'According to the Docker command line, Docker daemon is running without "--default-ulimit".\n' );
   else
     docker_test_set_success( id:id, reason:'According to the Docker command line, Docker daemon is running with "--default-ulimit".\n' );
@@ -477,13 +476,14 @@ function docker_test_2_0( )
 # 2.1 Enable user namespace support
 function docker_test_2_1( )
 {
-  local_var id, value, affected_containers;
+  local_var docker_running_containers, id, value, affected_containers;
 
+  docker_running_containers = get_docker_running_containers();
   id = '2.1';
 
   if( docker_running_containers )
   {
-    if( "--userns-remap" >< docker_cmd )
+    if( "--userns-remap" >< get_docker_cmd() )
       docker_test_set_success( id:id, reason:'According to the Docker command line, Docker daemon is running with "--userns-remap".\n' );
     else
     {
@@ -517,13 +517,13 @@ function docker_test_2_2( )
 
   id = '2.2';
 
-  if( "--cgroup-parent" >!< docker_help )
+  if( "--cgroup-parent" >!< get_docker_help_banner() )
   {
     docker_test_set_skipped( id:id, reason:'"--cgroup-parent" not supported by tested Docker version.' );
     return;
   }
 
-  if( "--cgroup-parent" >< docker_cmd )
+  if( "--cgroup-parent" >< get_docker_cmd() )
      docker_test_set_failed( id:id, reason:'According to the Docker command line, Docker daemon is running with "--cgroup-parent".\n' );
   else
      docker_test_set_success( id:id, reason:'According to the Docker command line, Docker daemon is running without "--cgroup-parent".\n' );
@@ -531,18 +531,18 @@ function docker_test_2_2( )
 
 # 2.3 Do not increase base device size if not needed
 function docker_test_2_3( )
-{ 
+{
   local_var id, value;
 
   id = '2.3';
 
-  if( "--storage-opt" >!< docker_help )
+  if( "--storage-opt" >!< get_docker_help_banner() )
   {
     docker_test_set_skipped( id:id, reason:'"--storage-opt" not supported by tested Docker version.' );
     return;
   }
 
-  if( "--storage-opt dm.basesize" >< docker_cmd )
+  if( "--storage-opt dm.basesize" >< get_docker_cmd() )
     docker_test_set_failed( id:id, reason:'According to the Docker command line, Docker daemon is running with "--storage-opt dm.basesize".\n' );
   else
     docker_test_set_success( id:id, reason:'According to the Docker command line, Docker daemon is running without "--storage-opt dm.basesize".\n' );
@@ -555,13 +555,13 @@ function docker_test_2_4( )
 
   id = '2.4';
 
-  if( "--authorization-plugin" >!< docker_help )
+  if( "--authorization-plugin" >!< get_docker_help_banner() )
   {
     docker_test_set_skipped( id:id, reason:'"--authorization-plugin" not supported by tested Docker version.' );
     return;
   }
 
-  if( "--authorization-plugin" >!< docker_cmd )
+  if( "--authorization-plugin" >!< get_docker_cmd() )
     docker_test_set_failed( id:id, reason:'According to the Docker command line, Docker daemon is running without "--authorization-plugin".\n' );
   else
     docker_test_set_success( id:id, reason:'According to the Docker command line, Docker daemon is running with "--authorization-plugin".\n' );
@@ -574,13 +574,13 @@ function docker_test_2_5( )
 
   id = '2.5';
 
-  if( "--disable-legacy-registry" >!< docker_help )
+  if( "--disable-legacy-registry" >!< get_docker_help_banner() )
   {
     docker_test_set_skipped( id:id, reason:'"--disable-legacy-registry" not supported by tested Docker version.' );
     return;
   }
 
-  if( "--disable-legacy-registry" >!< docker_cmd )
+  if( "--disable-legacy-registry" >!< get_docker_cmd() )
     docker_test_set_failed( id:id, reason:'According to the Docker command line, Docker daemon is running without "--disable-legacy-registry".\n' );
   else
     docker_test_set_success( id:id, reason:'According to the Docker command line, Docker daemon is running with "--disable-legacy-registry".\n' );
@@ -593,13 +593,13 @@ function docker_test_2_6( )
 
   id = '2.6';
 
-  if( "--live-restore" >!< docker_help )
+  if( "--live-restore" >!< get_docker_help_banner() )
   {
     docker_test_set_skipped( id:id, reason:'"--live-restore" not supported by tested Docker version.' );
     return;
   }
 
-  if( "--live-restore" >!< docker_cmd )
+  if( "--live-restore" >!< get_docker_cmd() )
     docker_test_set_failed( id:id, reason:'According to the Docker command line, Docker daemon is running without "--live-restore".\n' );
   else
     docker_test_set_success( id:id, reason:'According to the Docker command line, Docker daemon is running with "--live-restore".\n' );
@@ -612,13 +612,13 @@ function docker_test_2_7( )
 
   id = '2.7';
 
-  if( "--userland-proxy" >!< docker_help )
+  if( "--userland-proxy" >!< get_docker_help_banner() )
   {
     docker_test_set_skipped( id:id, reason:'"--userland-proxy" not supported by tested Docker version.' );
     return;
   }
 
-  if( docker_cmd =~ '--userland-proxy=["\']*(false|0)["\']*' )
+  if( get_docker_cmd() =~ '--userland-proxy=["\']*(false|0)["\']*' )
     docker_test_set_success( id:id, reason:'According to the Docker command line, Docker daemon is running with "--userland-proxy=false".\n' );
   else
     docker_test_set_failed( id:id, reason:'According to the Docker command line, Docker daemon is running without "--userland-proxy=false".\n' );
@@ -627,8 +627,9 @@ function docker_test_2_7( )
 # 2.8 docker.service file ownership must set to root:root
 function docker_test_2_8( )
 {
-  local_var id, value;
+  local_var docker_service_file, id, value;
 
+  docker_service_file = get_docker_service_file();
   id = '2.8';
 
   if( docker_service_file )
@@ -641,14 +642,14 @@ function docker_test_2_8( )
   }
   else
     docker_test_set_skipped( id:id, reason:'Not a systemd system' );
-
 }
 
 # 2.9 docker.service file permissions must set to 644 or more restrictive
 function docker_test_2_9( )
 {
-  local_var id, value;
+  local_var docker_service_file, id, value;
 
+  docker_service_file = get_docker_service_file();
   id = '2.9';
 
   if( docker_service_file )
@@ -667,9 +668,13 @@ function docker_test_2_9( )
 # 3.0 docker.socket file ownership must set to root:root
 function docker_test_3_0( )
 {
-  local_var id, value;
+  local_var id, docker_service_file, docker_socket, value;
 
   id = '3.0';
+  docker_service_file = get_docker_service_file();
+
+  if( docker_service_file )
+    docker_socket = get_docker_socket();
 
   if( docker_socket )
   {
@@ -687,9 +692,13 @@ function docker_test_3_0( )
 # 3.1 docker.socket file permissions must set to 644 or more restrictive
 function docker_test_3_1( )
 {
-  local_var id, value;
+  local_var id, docker_service_file, docker_socket, value;
 
   id = "3.1";
+  docker_service_file = get_docker_service_file();
+
+  if( docker_service_file )
+    docker_socket = get_docker_socket();
 
   if( docker_socket )
   {
@@ -766,11 +775,12 @@ function docker_test_3_5( )
 # 3.6 Do not use user root for container.
 function docker_test_3_6( )
 {
-  local_var id, value, affected_containers;
+  local_var docker_running_containers, id, value, affected_containers;
 
+  docker_running_containers = get_docker_running_containers();
   id = "3.6";
 
-  if( ! docker_running_containers )
+  if( ! get_docker_running_containers )
   {
     docker_test_set_skipped( id:id, reason:'No running containers found\n' );
     return;
@@ -800,21 +810,21 @@ function docker_test_3_6( )
     docker_test_set_failed( id:id, reason:'The following containers running as root:\n\n' + affected_containers + '\n' );
   else
     docker_test_set_success( id:id, reason:'No container is running as root.\n' );
-
 }
 
 # 3.7 Use HEALTHCHECK for the container image.
 function docker_test_3_7( )
 {
-  local_var id, value, affected_containers;
+  local_var docker_running_containers, id, value, affected_containers;
 
+  docker_running_containers = get_docker_running_containers();
   id = "3.7";
 
   if( ! docker_running_containers )
   {
     docker_test_set_skipped( id:id, reason:'No running containers found\n' );
     return;
-  } 
+  }
 
   value = docker_inspect( inspect:'Healthcheck=' +
                                   '{{ range $key, $val := .Config }}{{ if eq $key "Healthcheck" }}{{ $val }}{{ end }}{{ end }}' );
@@ -846,15 +856,16 @@ function docker_test_3_7( )
 # 3.8 Do not use privileged containers
 function docker_test_3_8( )
 {
-  local_var id, value, affected_containers;
+  local_var docker_running_containers, id, value, affected_containers;
 
+  docker_running_containers = get_docker_running_containers();
   id = "3.8";
 
   if( ! docker_running_containers )
   {
     docker_test_set_skipped( id:id, reason:'No running containers found\n' );
     return;
-  } 
+  }
 
   value = docker_inspect( inspect:'Privileged={{.HostConfig.Privileged }}' );
 
@@ -880,21 +891,21 @@ function docker_test_3_8( )
     docker_test_set_failed( id:id, reason:'The following containers running Privileged:\n\n' + affected_containers + '\n' );
   else
     docker_test_set_success( id:id, reason:'No container is running Privileged.\n' );
-
 }
 
 # 3.9 Sensitive host system directories should not be mounted in containers.
 function docker_test_3_9( )
 {
-  local_var id, value, affected_containers, affected_dirs, cid, name, volumes, l;
+  local_var docker_running_containers, id, value, affected_containers, affected_dirs, cid, name, volumes, l;
 
+  docker_running_containers = get_docker_running_containers();
   id = "3.9";
 
   if( ! docker_running_containers )
   {
     docker_test_set_skipped( id:id, reason:'No running containers found\n' );
     return;
-  } 
+  }
 
   sens_dirs = make_list('/etc','/sbin','/bin','/var',
                         '/boot','/dev','/sys','/proc',
@@ -938,8 +949,9 @@ function docker_test_3_9( )
 # 4.0 Do not run sshd within containers
 function docker_test_4_0( )
 {
-  local_var id, value, affected_containers;
+  local_var docker_running_containers, id, value, affected_containers;
 
+  docker_running_containers = get_docker_running_containers();
   id = "4.0";
 
   if( ! docker_running_containers )
@@ -966,8 +978,9 @@ function docker_test_4_0( )
 # 4.1 Container ports mapped to a privileged port
 function docker_test_4_1( )
 {
-  local_var id, value, affected_containers, ports, p, l, port;
+  local_var docker_running_containers, id, value, affected_containers, ports, p, l, port;
 
+  docker_running_containers = get_docker_running_containers();
   id = "4.1";
 
   if( ! docker_running_containers )
@@ -1008,8 +1021,9 @@ function docker_test_4_1( )
 # 4.2 Do not skip placing the container inside a separate network stack
 function docker_test_4_2( )
 {
-  local_var id, value, affected_containers;
+  local_var docker_running_containers, id, value, affected_containers;
 
+  docker_running_containers = get_docker_running_containers();
   id = '4.2';
 
   if( ! docker_running_containers )
@@ -1047,8 +1061,9 @@ function docker_test_4_2( )
 # 4.3 Use memory limit for container
 function docker_test_4_3( )
 {
-  local_var id, value, affected_containers;
+  local_var docker_running_containers, id, value, affected_containers;
 
+  docker_running_containers = get_docker_running_containers();
   id = '4.3';
 
   if( ! docker_running_containers )
@@ -1088,8 +1103,9 @@ function docker_test_4_3( )
 # 4.4 Use CPU priority for container
 function docker_test_4_4( )
 {
-  local_var id, value, affected_containers;
+  local_var docker_running_containers, id, value, affected_containers;
 
+  docker_running_containers = get_docker_running_containers();
   id = '4.4';
 
   if( ! docker_running_containers )
@@ -1127,8 +1143,9 @@ function docker_test_4_4( )
 # 4.5 Containers root filesystem should mounted as read only
 function docker_test_4_5( )
 {
-  local_var id, value, affected_containers;
+  local_var docker_running_containers, id, value, affected_containers;
 
+  docker_running_containers = get_docker_running_containers();
   id = '4.5';
 
   if( ! docker_running_containers )
@@ -1164,8 +1181,9 @@ function docker_test_4_5( )
 # 4.6 Bind incoming container traffic to a specific host interface
 function docker_test_4_6( )
 {
-  local_var id, value, affected_containers;
+  local_var docker_running_containers, id, value, affected_containers;
 
+  docker_running_containers = get_docker_running_containers();
   id = '4.6';
 
   if( ! docker_running_containers )
@@ -1203,8 +1221,9 @@ function docker_test_4_6( )
 # 4.7 Set the "on-failure" container restart policy to 5 or less.
 function docker_test_4_7( )
 {
-  local_var id, value, affected_containers;
+  local_var docker_running_containers, id, value, affected_containers;
 
+  docker_running_containers = get_docker_running_containers();
   id = '4.7';
 
   if( ! docker_running_containers )
@@ -1252,8 +1271,9 @@ function docker_test_4_7( )
 # 4.8 Isolate the containers from the hosts process namespace.
 function docker_test_4_8( )
 {
-  local_var id, value, affected_containers;
+  local_var docker_running_containers, id, value, affected_containers;
 
+  docker_running_containers = get_docker_running_containers();
   id = '4.8';
 
   if( ! docker_running_containers )
@@ -1292,46 +1312,48 @@ function docker_test_4_8( )
 # 4.9 Isolate the containers from the hosts IPC namespace
 function docker_test_4_9( )
 {
-    local_var id, value, affected_containers;
+  local_var docker_running_containers, id, value, affected_containers;
 
-    id = '4.9';
+  docker_running_containers = get_docker_running_containers();
+  id = '4.9';
 
-    if( ! docker_running_containers )
+  if( ! get_docker_running_containers() )
+  {
+    docker_test_set_skipped( id:id, reason:'No running containers found\n' );
+    return;
+  }
+
+  value = docker_inspect( inspect:'IpcMode={{.HostConfig.IpcMode}}' );
+
+  if( int( value[0] ) < 0 )
+  {
+    docker_test_set_error( id:id, reason:value[1] );
+    return;
+  }
+
+  if( int( value[0] ) == 0 )
+  {
+    lines = split( value[1], keep:FALSE );
+
+    foreach line ( lines )
     {
-      docker_test_set_skipped( id:id, reason:'No running containers found\n' );
-      return;
+      if( line =~ 'IpcMode=host$' )
+        affected_containers += line + '\n';
     }
+  }
 
-    value = docker_inspect( inspect:'IpcMode={{.HostConfig.IpcMode}}' );
-
-    if( int( value[0] ) < 0 )
-    {
-      docker_test_set_error( id:id, reason:value[1] );
-      return;
-    }
-
-    if( int( value[0] ) == 0 )
-    {
-      lines = split( value[1], keep:FALSE );
-
-      foreach line ( lines )
-      {
-        if( line =~ 'IpcMode=host$' )
-          affected_containers += line + '\n';
-      }
-    }
-
-    if( strlen( affected_containers ) > 0 )
-      docker_test_set_failed( id:id, reason:'The following containers "IpcMode" is set to "host"\n\n' + affected_containers + '\n' );
-    else
-      docker_test_set_success( id:id, reason:'No containers "IpcMode" is set to "host.\n' );
+  if( strlen( affected_containers ) > 0 )
+    docker_test_set_failed( id:id, reason:'The following containers "IpcMode" is set to "host"\n\n' + affected_containers + '\n' );
+  else
+    docker_test_set_success( id:id, reason:'No containers "IpcMode" is set to "host.\n' );
 }
 
 # 5.0 Do not use propagation mode "shared" for mounts.
 function docker_test_5_0( )
 {
-  local_var id, value, affected_containers;
+  local_var docker_running_containers, id, value, affected_containers;
 
+  docker_running_containers = get_docker_running_containers();
   id = '5.0';
 
   if( ! docker_running_containers )
@@ -1365,14 +1387,14 @@ function docker_test_5_0( )
     docker_test_set_failed( id:id, reason:'The following containers using "shared" Propagation:\n\n' + affected_containers + '\n' );
   else
     docker_test_set_success( id:id, reason:'No containers using "shared" Propagation.\n' );
-
 }
 
 # 5.1 Isolate the containers from the hosts UTS namespace.
 function docker_test_5_1( )
 {
-  local_var id, value, affected_containers;
+  local_var docker_running_containers, id, value, affected_containers;
 
+  docker_running_containers = get_docker_running_containers();
   id = '5.1';
 
   if( ! docker_running_containers )
@@ -1411,8 +1433,9 @@ function docker_test_5_1( )
 # 5.2 Do not disable default seccomp profile
 function docker_test_5_2( )
 {
-  local_var id, value, affected_containers;
+  local_var docker_running_containers, id, value, affected_containers;
 
+  docker_running_containers = get_docker_running_containers();
   id = '5.2';
 
   if( ! docker_running_containers )
@@ -1449,8 +1472,9 @@ function docker_test_5_2( )
 # 5.3 Confirm cgroup usage.
 function docker_test_5_3( )
 {
-  local_var id, value, affected_containers;
+  local_var docker_running_containers, id, value, affected_containers;
 
+  docker_running_containers = get_docker_running_containers();
   id = '5.3';
 
   if( ! docker_running_containers )
@@ -1489,9 +1513,9 @@ function docker_test_5_3( )
 # 5.4 Set no-new-privileges for Container.
 function docker_test_5_4( )
 {
+  local_var docker_running_containers, id, value, affected_containers;
 
-  local_var id, value, affected_containers;
-
+  docker_running_containers = get_docker_running_containers();
   id = '5.4';
 
   if( ! docker_running_containers )
@@ -1530,49 +1554,50 @@ function docker_test_5_4( )
 # 5.5 Do not share the hosts user namespaces
 function docker_test_5_5( )
 {
-  local_var id, value, affected_containers;
+  local_var docker_running_containers, id, value, affected_containers;
 
-   id = '5.5';
+  docker_running_containers = get_docker_running_containers();
+  id = '5.5';
 
-   if( ! docker_running_containers )
-   {
-     docker_test_set_skipped( id:id, reason:'No running containers found\n' );
-     return;
-   }
+  if( ! get_docker_running_containers() )
+  {
+    docker_test_set_skipped( id:id, reason:'No running containers found\n' );
+    return;
+  }
 
-   value = docker_inspect( inspect:'UsernsMode={{.HostConfig.UsernsMode }}' );
+  value = docker_inspect( inspect:'UsernsMode={{.HostConfig.UsernsMode }}' );
 
-   if( int( value[0] ) < 0 )
-   {
-     docker_test_set_error( id:id, reason:value[1] );
-     return;
-   }
+  if( int( value[0] ) < 0 )
+  {
+    docker_test_set_error( id:id, reason:value[1] );
+    return;
+  }
 
-   affected_containers = '';
+  affected_containers = '';
 
-   if( int( value[0] ) == 0 )
-   {
-     lines = split( value[1], keep:FALSE );
+  if( int( value[0] ) == 0 )
+  {
+    lines = split( value[1], keep:FALSE );
 
-     foreach line ( lines )
-     {
-       if( line !~ 'UsernsMode=$' )
-         affected_containers += line + '\n';
-     }
-   }
+    foreach line ( lines )
+    {
+      if( line !~ 'UsernsMode=$' )
+        affected_containers += line + '\n';
+    }
+  }
 
-   if( strlen( affected_containers ) > 0 )
-     docker_test_set_failed( id:id, reason:'The following containers share the hosts user namespaces:\n\n' + affected_containers + '\n' );
-   else
-     docker_test_set_success( id:id, reason:'No container share the hosts user namespaces.\n' );
+  if( strlen( affected_containers ) > 0 )
+    docker_test_set_failed( id:id, reason:'The following containers share the hosts user namespaces:\n\n' + affected_containers + '\n' );
+  else
+    docker_test_set_success( id:id, reason:'No container share the hosts user namespaces.\n' );
 }
 
 # 5.6 Docker socket must not mount inside any containers.
-
 function docker_test_5_6( )
 {
-  local_var id, value, affected_containers;
+  local_var docker_running_containers, id, value, affected_containers;
 
+  docker_running_containers = get_docker_running_containers();
   id = '5.6';
 
   if( ! docker_running_containers )
@@ -1637,8 +1662,9 @@ function docker_test_5_7( )
 # 5.8 Avoid container sprawl
 function docker_test_5_8( )
 {
-  local_var id, value, affected_containers;
+  local_var docker_running_containers, id, value, affected_containers;
 
+  docker_running_containers = get_docker_running_containers();
   id = '5.8';
 
   if( ! docker_running_containers )
@@ -1662,4 +1688,3 @@ function docker_test_5_8( )
   else
     docker_test_set_success( id:id, reason:'There are currently a total of ' + acc + ' containers, with ' + rcc + ' of them currently running.\n' );
 }
-

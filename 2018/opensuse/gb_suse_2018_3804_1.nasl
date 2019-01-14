@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3804_1.nasl 12497 2018-11-23 08:28:21Z cfischer $
+# $Id: gb_suse_2018_3804_1.nasl 13054 2019-01-14 08:07:05Z asteins $
 #
 # SuSE Update for amanda openSUSE-SU-2018:3804-1 (amanda)
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852127");
-  script_version("$Revision: 12497 $");
+  script_version("$Revision: 13054 $");
   script_cve_id("CVE-2016-10729");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-14 09:07:05 +0100 (Mon, 14 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-11-17 06:15:28 +0100 (Sat, 17 Nov 2018)");
   script_name("SuSE Update for amanda openSUSE-SU-2018:3804-1 (amanda)");
   script_category(ACT_GATHER_INFO);

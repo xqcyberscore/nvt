@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1632.nasl 13031 2019-01-11 06:47:23Z cfischer $
+# $Id: deb_dla_1632.nasl 13041 2019-01-11 14:14:40Z asteins $
 #
 # Auto-generated from advisory DLA 1632-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891632");
-  script_version("$Revision: 13031 $");
+  script_version("$Revision: 13041 $");
   script_cve_id("CVE-2018-19758");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1632-1] libsndfile security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-11 07:47:23 +0100 (Fri, 11 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-11 15:14:40 +0100 (Fri, 11 Jan 2019) $");
   script_tag(name:"creation_date", value:"2019-01-11 00:00:00 +0100 (Fri, 11 Jan 2019)");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

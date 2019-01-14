@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: misc_func.inc 12990 2019-01-09 10:42:04Z cfischer $
+# $Id: misc_func.inc 13042 2019-01-11 14:36:21Z cfischer $
 #
 # Miscellaneous support methods
 #
@@ -26,7 +26,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 12990 $
+# $Revision: 13042 $
 #
 ###############################################################################
 
@@ -1088,16 +1088,23 @@ function is_printer_mac( mac ) {
   return;
 }
 
-# Add a dependency to secpod_open_tcp_ports.nasl if you want to use this
-# This replaces the nasl built-in get_host_open_port where you can't
-# control that it doesn't return a "fragile" port.
+# @brief Returns the first found known to be open TCP port on the remote system. This function
+#        replaces the nasl built-in get_host_open_port where you can't control that it doesn't
+#        return a "fragile" port.
+#
+# @note Add a dependency to secpod_open_tcp_ports.nasl if you want to use this
+#
+# @return The first found known to be open TCP Port. If none has been found the function will exit.
+#
 function get_host_open_tcp_port( ) {
 
+  local_var ports;
+
   ports = get_all_tcp_ports_list();
-  if( isnull( ports[0] ) ) exit( 0 );
-
-  return ports[0]; # TBD: Bring some randomness into this?
-
+  if( isnull( ports[0] ) )
+    exit( 0 );
+  else
+    return ports[0]; # TBD: Bring some randomness into this?
 }
 
 function bin2string( ddata, noprint_replacement ) {
@@ -1168,12 +1175,40 @@ function join( list, sep ) {
    return ereg_replace( string:ret, pattern:sep +'$', replace:'' );
 }
 
+# @brief Sends a specific data string (if passed) and receives the answer
+#        of the remote service.
+#
+# @param port   The port of the remote service. Either the port OR the soc parameter
+#               needs to be passed, not both. If the port parameter was passed the
+#               function will close the opened socket on its own.
+# @param soc    An already opened socket to the remote service. Either the soc OR the
+#               soc parameter needs to be passed, not both.
+# @param data   An (optional) data string which should be send to the remote service.
+# @param proto  The protocol used to connect to the service if the port parameter is passed.
+#               Defaults to 'tcp' if not passed.
+# @param length The amount of bytes which should be received from the remote service.
+#               Defaults to '1024' if not passed.
+#
+# @return The received data or NULL if no connection to the remote service could be opened
+#         or not all parameters where passed correctly.
+#
 function socket_send_recv( port, soc, data, proto, length ) {
 
-  local_var port, soc, data, proto, length, nosock;
+  local_var port, soc, data, proto, length;
+  local_var nosock, recv;
 
   if( ! port && ! soc ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port/soc#-#socket_send_recv" );
+    return;
+  }
+
+  if( proto && proto != "udp" && proto != "tcp" ) {
+    set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#socket_send_recv: proto parameter passed but doesn't contain match 'tcp' or 'udp'" );
+    return;
+  }
+
+  if( port && soc ) {
+    set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#socket_send_recv: port and soc parameter passed, please chose only one" );
     return;
   }
 
@@ -1206,7 +1241,6 @@ function socket_send_recv( port, soc, data, proto, length ) {
     close( soc );
 
   return chomp( recv );
-
 }
 
 function text_format_table( array, sep, columnheader ) {
@@ -1250,7 +1284,13 @@ function text_format_table( array, sep, columnheader ) {
   }
 }
 
+# @brief Closes an passed socket and exit afterwards
+#
+# @param _FCT_ANON_ARGS[0] The socket to close as an unnamed argument.
+#
 function close_sock_and_exit() {
+
+  local_var soc;
 
   soc = _FCT_ANON_ARGS[0];
 
@@ -1399,28 +1439,47 @@ function fancy_date( datestr ) {
   return datestr;
 }
 
+# @brief Creates an array of the commands 'ipconfig' and 'id' as the array key and the regex to match
+#        against the response of these commands as the array value. The function will chose the
+#        returned commands if the remote system is running on Windows, Linux or if the OS is unknown.
+#
+# @note Add a dependency to os_detection.nasl if you want to use this function.
+#
+# @return An array as described in the function summary.
+#
 function exploit_commands() {
+
+  local_var res;
 
   if( ! defined_func( "host_runs" ) ) include( "host_details.inc" );
   res = host_runs( "windows" );
 
   if( res == "yes" ) {
-
     return make_array( "Windows.IP..onfiguration", "ipconfig" );
-
   } else if( res == "no" ) {
-
     return make_array( "uid=[0-9]+.*gid=[0-9]+", "id" );
-
   }
 
   # unknown
   return make_array( "uid=[0-9]+.*gid=[0-9]+", "id",
                      "Windows.IP..onfiguration", "ipconfig" );
-
 }
 
+# @brief Creates an array of common files to check during "Path traversal" attacks. The array contains the
+#        the regex to match against the expected content of these files as the array key and the file to check
+#        as the array value. The function will chose the returned files if the remote system is running on
+#        Windows, Linux or if the OS is unknown.
+#
+# @param _FCT_ANON_ARGS[0] Allows (optional) to pass either "windows" or "linux" as an anonymous function parameter
+#                          to define directly which kind of files should be returned.
+#
+# @note Add a dependency to os_detection.nasl if you want to use this function.
+#
+# @return An array as described in the function summary.
+#
 function traversal_files() {
+
+  local_var res;
 
   if( _FCT_ANON_ARGS[0] ) {
 
@@ -1435,15 +1494,11 @@ function traversal_files() {
   }
 
   if( res == "yes" ) {
-
     return make_array( "\[boot loader\]", "boot.ini",
                        "; for 16-bit app supporT", "winnt/win.ini",
                        "; for 16-bit app support", "windows/win.ini" );
-
   } else if( res == "no" ) {
-
     return make_array( "root:.*:0:[01]:", "etc/passwd" ); # TBD: Also check e.g. etc/hosts for basic IDS?
-
   }
 
   # "unknown"

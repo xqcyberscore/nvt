@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sendmail_mail_relay_vuln.nasl 13002 2019-01-09 15:08:14Z cfischer $
+# $Id: gb_sendmail_mail_relay_vuln.nasl 13039 2019-01-11 13:25:28Z cfischer $
 #
-# SendMail Mail Relay Vulnerability
+# Sendmail Mail Relay Vulnerability
 #
 # Authors:
 # Madhuri D <dmadhuri@secpod.com>
@@ -29,14 +29,14 @@ CPE = "cpe:/a:sendmail:sendmail";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802194");
-  script_version("$Revision: 13002 $");
+  script_version("$Revision: 13039 $");
   script_cve_id("CVE-2002-1278", "CVE-2003-0285");
   script_bugtraq_id(6118, 7580);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-09 16:08:14 +0100 (Wed, 09 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-11 14:25:28 +0100 (Fri, 11 Jan 2019) $");
   script_tag(name:"creation_date", value:"2011-11-15 12:51:12 +0530 (Tue, 15 Nov 2011)");
-  script_name("SendMail Mail Relay Vulnerability");
+  script_name("Sendmail Mail Relay Vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("SMTP problems");
@@ -60,7 +60,7 @@ if(description)
   generates the Sendmail configuration file (sendmail.cf) and configures Sendmail to run as an open mail
   relay, which allows remote attackers to send Spam email.");
 
-  script_tag(name:"summary", value:"This host is installed with SendMail and is prone to mail relay
+  script_tag(name:"summary", value:"This host is installed with Sendmail and is prone to mail relay
   vulnerability.");
 
   script_tag(name:"solution", value:"Upgrade to the latest version of Linuxconf version 1.29r1 or later. For IBM AIX, apply the patch from

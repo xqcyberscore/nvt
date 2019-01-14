@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_yara_ssh_detect.nasl 12970 2019-01-08 11:10:57Z asteins $
+# $Id: gb_yara_ssh_detect.nasl 13058 2019-01-14 09:19:05Z cfischer $
 #
 # YARA Detection (SSH)
 #
@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112478");
-  script_version("$Revision: 12970 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-08 12:10:57 +0100 (Tue, 08 Jan 2019) $");
+  script_version("$Revision: 13058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-14 10:19:05 +0100 (Mon, 14 Jan 2019) $");
   script_tag(name:"creation_date", value:"2019-01-08 09:26:12 +0100 (Tue, 08 Jan 2019)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -55,7 +55,7 @@ sock = ssh_login_or_reuse_connection();
 if( ! sock )
   exit( 0 );
 
-full_path_list = find_file( file_name:"yara", sock:sock, useregex:TRUE, regexpar:"yara$" );
+full_path_list = find_file( file_name:"yara", sock:sock, useregex:TRUE, regexpar:"yara$", file_path:"/" );
 if( ! full_path_list ) {
   ssh_close_connection();
   exit( 0 );
@@ -65,8 +65,8 @@ foreach full_path( full_path_list ) {
 
   full_path = chomp( full_path );
 
-  #nb: exclude hidden and also /bin directories since these installed versions of Yara are covered by auto-generated VTs
-  if( ! full_path || full_path =~ "/bin/"|| "/." >< full_path )
+  #exclude hidden directories
+  if( ! full_path || "/." >< full_path )
     continue;
 
   vers = get_bin_version( full_prog_name:full_path, sock:sock, version_argv:"-v", ver_pattern:"([0-9.]+)" );

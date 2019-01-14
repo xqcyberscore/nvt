@@ -1,7 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-#
-# $Id: docker_policy.inc 10986 2018-08-15 13:38:20Z cfischer $
+# $Id: docker_policy.inc 13065 2019-01-14 13:39:18Z cfischer $
 #
 # Functions for Docker Policy Tests
 #
@@ -26,16 +25,161 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301
 # USA.
 #
-# $Revision: 10986 $
+# $Revision: 13065 $
 #
 ###############################################################################
 
-global_var dockerd, docker_cmd, docker_info, docker_running_containers, docker_service_file, docker_socket, docker_port_values,
-           docker_help, docker_activated_tests, minimum_docker_test_version, docker_failed_tests, docker_success_tests, docker_skipped_tests,
-           docker_error_tests;
+global_var dockerd, docker_port_values, docker_activated_tests, docker_failed_tests,
+           docker_success_tests, docker_skipped_tests, docker_error_tests;
+
+# Used in the functions below
+global_var _docker_pid, _docker_socket, _docker_service_file, _docker_running_containers, _docker_help, _docker_cmd, _docker_info;
+
+function get_minimum_docker_test_version() {
+
+  _minimum_docker_test_version = script_get_preference("Minimum docker version for test 1.1:");
+  if( ! _minimum_docker_test_version || _minimum_docker_test_version !~ "^[0-9.]+" )
+    _minimum_docker_test_version = '1.13';
+  return _minimum_docker_test_version;
+}
+
+function get_docker_help_banner() {
+
+  local_var help;
+  # nb: _docker_help is a global var
+
+  if( ! isnull( _docker_help ) ) {
+    help = string( _docker_help );
+  } else {
+    help = docker_run_cmd( cmd:dockerd + '--help' );
+    if( help ) {
+      _docker_help = string( help );
+    } else {
+      help = "";
+      _docker_help = help;
+    }
+  }
+  return help;
+}
+
+function get_docker_cmd() {
+
+  local_var cmd;
+  # nb: _docker_cmd is a global var
+
+  if( ! isnull( _docker_cmd ) ) {
+    cmd = string( _docker_cmd );
+  } else {
+    cmd = docker_read_cmd_line();
+    if( cmd ) {
+      _docker_cmd = string( cmd );
+    } else {
+      cmd = "";
+      _docker_cmd = cmd;
+    }
+  }
+  return cmd;
+}
+
+function get_docker_info() {
+
+  local_var info;
+  # nb: _docker_info is a global var
+
+  if( ! isnull( _docker_info ) ) {
+    info = string( _docker_info );
+  } else {
+    info = get_kb_item( "docker/info" );
+    if( info ) {
+      _docker_info = string( info );
+    } else {
+      info = "";
+      _docker_info = info;
+    }
+  }
+  return info;
+}
+
+function get_docker_running_containers() {
+
+  local_var containers;
+  # nb: _docker_running_containers is a global var
+
+  if( ! isnull( _docker_running_containers ) ) {
+    containers = _docker_running_containers;
+  } else {
+    containers = docker_build_running_containers_array();
+    if( containers ) {
+      _docker_running_containers = containers;
+    } else {
+      containers = "";
+      _docker_running_containers = containers;
+    }
+  }
+  return containers;
+}
+
+function get_docker_service_file() {
+
+  local_var file;
+  # nb: _docker_service_file is a global var
+
+  if( ! isnull( _docker_service_file ) ) {
+    file = string( _docker_service_file );
+  } else {
+    file = docker_systemd_file( file:'docker.service' );
+    if( file ) {
+      _docker_service_file = string( file );
+    } else {
+      file = "";
+      _docker_service_file = file;
+    }
+  }
+  return file;
+}
+
+function get_docker_socket() {
+
+  local_var socket;
+  # nb: _docker_socket is a global var
+
+  if( ! isnull( _docker_socket ) ) {
+    socket = string( _docker_socket );
+  } else {
+    socket = docker_systemd_file( file:'docker.socket' );
+    if( socket ) {
+      _docker_socket = string( socket );
+    } else {
+      socket = "";
+      _docker_socket = socket;
+    }
+  }
+  return socket;
+}
+
+function get_docker_pid() {
+
+  local_var pid;
+  # nb: _docker_pid is a global var
+
+  if( ! isnull( _docker_pid ) ) {
+    pid = string( _docker_pid );
+  } else {
+    pid = docker_run_cmd( cmd:"ps -ef | grep -e '[/]docker[d ]' | awk '{ print $2 }'" );
+    if( pid ) {
+      _docker_pid = string( pid );
+    } else {
+      pid = "";
+      _docker_pid = pid;
+    }
+  }
+  return pid;
+}
 
 function docker_test_init( )
 {
+  local_var docker_info, docker_cmd, docker_running_containers, docker_service_file;
+
   docker_activated_tests = make_list();
 
   perform_check = script_get_preference("Perform check:");
@@ -58,30 +202,25 @@ function docker_test_init( )
   if( report_skipped && report_skipped == "yes" )
     set_kb_item( name:"docker/docker_test/report_skipped", value:TRUE );
 
-  minimum_docker_test_version = script_get_preference("Minimum docker version for test 1.1:");
-  if( ! minimum_docker_test_version )
-    minimum_docker_test_version = '1.13';
-
   foreach dt ( docker_test )
   {
     pref = script_get_preference( dt['title'] );
-   if( pref && pref == "yes" )
-   {
-     id = eregmatch( pattern:'^([0-9.]+)', string:dt['title'] );
-     if( ! isnull( id[1] ) )
-       docker_activated_tests = make_list( docker_activated_tests, id[1] );
-   }
+    if( pref && pref == "yes" )
+    {
+      id = eregmatch( pattern:'^([0-9.]+)', string:dt['title'] );
+      if( ! isnull( id[1] ) )
+        docker_activated_tests = make_list( docker_activated_tests, id[1] );
+    }
   }
 
-  pid = docker_run_cmd( cmd:"ps -ef | grep -e '[/]docker[d ]' | awk '{ print $2 }'" );
-
+  pid = get_docker_pid();
   if( ! pid || pid !~ "^[0-9]+$" )
   {
-      log_message( port:0, data:'Docker Policy test failed. No running docker daemon found.\n' );
-      exit( 0 );
+    log_message( port:0, data:'Docker Policy test failed. No running docker daemon found.\n' );
+    exit( 0 );
   }
 
-  docker_cmd = docker_read_cmd_line( pid:pid );
+  docker_cmd = get_docker_cmd();
 
   if( ! docker_cmd )
   {
@@ -89,15 +228,14 @@ function docker_test_init( )
     exit( 0 );
   }
 
-  if( "dockerd" >< docker_cmd )
+  if( "dockerd" >< get_docker_cmd() )
     dockerd = 'dockerd ';
-  else if( "docker daemon" >< docker_cmd )
+  else if( "docker daemon" >< get_docker_cmd() )
     dockerd = 'docker daemon ';
   else
     dockerd = 'docker ';
 
-  docker_help = docker_run_cmd( cmd:dockerd + '--help' );
-  docker_info = get_kb_item( "docker/info" );
+  docker_info = get_docker_info();
 
   if( ! docker_info || "Cannot connect to the Docker daemon" >< docker_info )
   {
@@ -107,14 +245,12 @@ function docker_test_init( )
 
   set_kb_item( name:"docker/docker_test/docker_cmd", value:docker_cmd );
 
-  docker_running_containers   = docker_build_running_containers_array();
-  docker_service_file         = docker_systemd_file( file:'docker.service' );
-
-  if( docker_service_file )
-     docker_socket = docker_systemd_file( file:'docker.socket' );
+  docker_running_containers = get_docker_running_containers();
 
   if( ! docker_running_containers )
     log_message( port:0, data:'No running containers found. Some checks are skipped.\n' );
+
+  docker_service_file = get_docker_service_file();
 
   if( ! docker_service_file )
     log_message( port:0, data:'Not a systemd system. Systemd checks are skipped.\n' );
@@ -179,7 +315,6 @@ function docker_test_set_error( id, reason )
 
 function docker_run_cmd( cmd )
 {
-
   # TODO: Remove once openvas-nasl-lint can handle such a missing include
   # from within the same include.
   if(!defined_func("ssh_cmd_exec")) include("ssh_func.inc");
@@ -191,7 +326,6 @@ function docker_run_cmd( cmd )
   buf = ssh_cmd_exec( cmd:cmd );
 
   return chomp( buf );
-
 }
 
 function get_docker_test_data( id )
@@ -207,7 +341,7 @@ function docker_test_is_enabled()
 {
   local_var id;
 
-  id= _FCT_ANON_ARGS[0];
+  id = _FCT_ANON_ARGS[0];
 
   if( ! id )
     return FALSE;
@@ -239,9 +373,7 @@ function docker_systemd_file( file )
     if( "regular file" >< systemd )
       return df[1];
   }
-
   return FALSE;
-
 }
 
 function docker_inspect( inspect )
@@ -274,12 +406,15 @@ function docker_inspect( inspect )
 
 function docker_running_containers_short_id_list()
 {
-
   # TODO: Remove once openvas-nasl-lint can handle such a missing include
   # from within the same include.
   if(!defined_func("docker_truncate_id")) include("docker.inc");
 
+  local_var ret, docker_running_containers, container;
+
   ret = make_list();
+  if( ! docker_running_containers = get_docker_running_containers() )
+    return ret;
 
   foreach container ( docker_running_containers )
     ret = make_list( ret, docker_truncate_id( container['id'] ) );
@@ -289,9 +424,12 @@ function docker_running_containers_short_id_list()
 
 function docker_port_values()
 {
+  local_var docker_running_containers, container;
   local_var ret, value, v, c;
 
   ret = make_array();
+  if( ! docker_running_containers = get_docker_running_containers() )
+    return ret;
 
   foreach container( docker_running_containers )
   {
@@ -304,7 +442,7 @@ function docker_port_values()
     v = split( value );
     if( ! v ) continue;
 
-    for( i = 0; i< max_index( v ); i++ )
+    for( i = 0; i < max_index( v ); i++ )
     {
       if( v[i] )
         ports += chomp( v[i] ) + ', ';
@@ -314,10 +452,11 @@ function docker_port_values()
   return ret;
 }
 
-function docker_read_cmd_line( pid )
+function docker_read_cmd_line()
 {
-  local_var data;
+  local_var pid, data;
 
+  pid = get_docker_pid();
   if( ! pid ) return;
 
   short2long = make_array( "-D", "--debug",
@@ -332,6 +471,4 @@ function docker_read_cmd_line( pid )
     data = str_replace( string:data, find:s2l, replace:short2long[ s2l ] );
 
   return data;
-
 }
-

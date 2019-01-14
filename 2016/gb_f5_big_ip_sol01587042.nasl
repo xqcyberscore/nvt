@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol01587042.nasl 12338 2018-11-13 14:51:17Z asteins $
+# $Id: gb_f5_big_ip_sol01587042.nasl 13054 2019-01-14 08:07:05Z asteins $
 #
 # F5 BIG-IP - SOL01587042 - BIG-IP SPDY and HTTP/2 profile vulnerability CVE-2016-7475
 #
@@ -31,9 +31,9 @@ if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140081");
   script_cve_id("CVE-2016-7475");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 12338 $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_version("$Revision: 13054 $");
 
   script_name("F5 BIG-IP - SOL01587042 - BIG-IP SPDY and HTTP/2 profile vulnerability CVE-2016-7475");
 
@@ -48,7 +48,7 @@ if (description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-14 09:07:05 +0100 (Mon, 14 Jan 2019) $");
   script_tag(name:"creation_date", value:"2016-11-29 10:03:30 +0100 (Tue, 29 Nov 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("F5 Local Security Checks");

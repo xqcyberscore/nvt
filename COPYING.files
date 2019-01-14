@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Fri, 11 Jan 2019 09:21:34 +0100
+# Automatically created on:  Mon, 14 Jan 2019 15:08:02 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -43937,6 +43937,9 @@
 2019/debian/deb_4362.nasl: GPLv2+
 2019/debian/deb_4363.nasl: GPLv2+
 2019/debian/deb_4364.nasl: GPLv2+
+2019/debian/deb_4365.nasl: GPLv2+
+2019/debian/deb_4366.nasl: GPLv2+
+2019/debian/deb_4367.nasl: GPLv2+
 2019/debian/deb_dla_1621.nasl: GPLv2+
 2019/debian/deb_dla_1623.nasl: GPLv2+
 2019/debian/deb_dla_1624.nasl: GPLv2+
@@ -43946,6 +43949,7 @@
 2019/debian/deb_dla_1630.nasl: GPLv2+
 2019/debian/deb_dla_1631.nasl: GPLv2+
 2019/debian/deb_dla_1632.nasl: GPLv2+
+2019/debian/deb_dla_1633.nasl: GPLv2+
 2019/dolibarr/gb_dolibarr_mult_vuln01.nasl: GPLv2+
 2019/fedora/gb_fedora_2018_50e3877b63_php-pear_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2018_e69d2aaa60_wordpress_fc28.nasl: GPLv2+
@@ -43955,6 +43959,7 @@
 2019/gb_asip_afp_unencrypted_cleartext_logins.nasl: GPLv2
 2019/gb_ftp_unencrypted_cleartext_login.nasl: GPLv2
 2019/gb_vnc_unencrypted_data_transmission.nasl: GPLv2
+2019/irssi/gb_irssi_use-after-free_vuln.nasl: GPLv2+
 2019/kubernetes/gb_kubernetes_dashboard_auth_bypass_vuln.nasl: GPLv2+
 2019/microsoft/gb_ms_kb2553332.nasl: GPLv2+
 2019/microsoft/gb_ms_kb2596760.nasl: GPLv2+
@@ -43998,14 +44003,22 @@
 2019/openxchange/gb_open_xchange_appsuite_58874.nasl: GPLv2+
 2019/openxchange/gb_open_xchange_appsuite_58880.nasl: GPLv2+
 2019/phpipam/gb_phpipam_mult_vuln.nasl: GPLv2+
+2019/studio42/gb_elfinder_inf_disc_vuln.nasl: GPLv2+
 2019/sugarcrm/gb_sugarcrm_mult_vuln01.nasl: GPLv2+
 2019/sugarcrm/gb_sugarcrm_mult_vuln02.nasl: GPLv2+
 2019/sugarcrm/gb_sugarcrm_sugarcrm-sa-2018-002.nasl: GPLv2+
 2019/tenable/gb_tenable_nessus_mult_vuln_tns-2018-16.nasl: GPLv2+
 2019/tenable/gb_tenable_nessus_mult_vuln_tns-2018-17.nasl: GPLv2+
+2019/traccar/gb_traccar_xxe_vuln.nasl: GPLv2+
 2019/twiki/gb_twiki_xss_vuln.nasl: GPLv2+
 2019/virustotal/gb_yara_mult_vuln_dec18.nasl: GPLv2+
 2019/virustotal/gb_yara_mult_vuln_jun18.nasl: GPLv2+
+2019/wireshark/gb_wireshark_wnpa-sec-2019-01_macosx.nasl: GPLv2+
+2019/wireshark/gb_wireshark_wnpa-sec-2019-01_win.nasl: GPLv2+
+2019/wireshark/gb_wireshark_wnpa-sec-2019-02_wnpa-sec-2019-03_wnpa-sec-2019-04_macosx.nasl: GPLv2+
+2019/wireshark/gb_wireshark_wnpa-sec-2019-02_wnpa-sec-2019-03_wnpa-sec-2019-04_win.nasl: GPLv2+
+2019/wireshark/gb_wireshark_wnpa-sec-2019-05_macosx.nasl: GPLv2+
+2019/wireshark/gb_wireshark_wnpa-sec-2019-05_win.nasl: GPLv2+
 2019/xerox/gb_xerox_altalink_mult_vuln.nasl: GPLv2+
 404.inc: GPLv2+
 aas_detect.nasl: GPLv2+
@@ -44627,6 +44640,7 @@ gb_elba5_netinstall_detect_win.nasl: GPLv2+
 gb_elecard_mpeg_player_detect.nasl: GPLv2+
 gb_electrasoft_32bit_ftp_detect.nasl: GPLv2+
 gb_electro_industries_gaugetech_total_web_solutions_detect.nasl: GPLv2+
+gb_elfinder_detect.nasl: GPLv2+
 gb_emby_media_detect.nasl: GPLv2+
 gb_emc_avamar_detect.nasl: GPLv2+
 gb_emc_data_domain_detect_snmp.nasl: GPLv2+
@@ -45456,6 +45470,7 @@ gb_prestashop_detect.nasl: GPLv2+
 gb_printeron_detect.nasl: GPLv2+
 gb_processmaker_detect.nasl: GPLv2+
 gb_proconos_detect.nasl: GPLv2+
+gb_profi_cash_detect_win.nasl: GPLv2+
 gb_projectsend_remote_detect.nasl: GPLv2+
 gb_prtg_network_monitor_detect.nasl: GPLv2+
 gb_pulse_connect_secure_snmp_detect.nasl: GPLv2+
@@ -45555,6 +45570,7 @@ gb_schneider_intouch_http_detect.nasl: GPLv2+
 gb_schneider_modbus_detect.nasl: GPLv2+
 gb_schneider_modicon_m340_detect.nasl: GPLv2+
 gb_schneider_struxureon_detect.nasl: GPLv2+
+gb_schneider_umotion_builder_software_detect_http.nasl: GPLv2+
 gb_schneider_zelio_soft_detect_win.nasl: GPLv2+
 gb_screenos_version.nasl: GPLv2+
 gb_scrumworkspro_detect.nasl: GPLv2+
@@ -45788,6 +45804,7 @@ gb_thunderbird_detect_portable_win.nasl: GPLv2+
 gb_thunderbird_detect_win.nasl: GPLv2+
 gb_thycotic_secret_server_detect.nasl: GPLv2+
 gb_tibco_ftl_detect_win.nasl: GPLv2+
+gb_tibco_spotfire_statistics_services_detect.nasl: GPLv2+
 gb_tibco_tibbr_detect.nasl: GPLv2+
 gb_tigervnc_detect_win.nasl: GPLv2+
 gb_titan_ftp_detect.nasl: GPLv2+
@@ -45802,6 +45819,7 @@ gb_tortoise_svn_detect.nasl: GPLv2+
 gb_tp_link_wireless_access_point_detect.nasl: GPLv2+
 gb_tp_link_wireless_n_router_detect.nasl: GPLv2+
 gb_tp_link_wireless_range_extender_detect.nasl: GPLv2+
+gb_traccar_detect.nasl: GPLv2+
 gb_trane_tracer_sc_detect.nasl: GPLv2+
 gb_trane_tracer_sc_web_detect.nasl: GPLv2+
 gb_trango_devices_detect.nasl: GPLv2+
@@ -45927,6 +45945,7 @@ gb_wepresent_wipg_detect.nasl: GPLv2+
 gb_westermo_weos_detect.nasl: GPLv2+
 gb_wideimage_detect.nasl: GPLv2+
 gb_winaxe_plus_detection.nasl: GPLv2+
+gb_windata_pro_detect_win.nasl: GPLv2+
 gb_windows_cpe_detect.nasl: GPLv2+
 gb_windows_live_essentials_detect.nasl: GPLv2+
 gb_windows_services_start.nasl: GPLv2+
@@ -62743,10 +62762,12 @@ gsf/2019/cisco/gb_cisco_ip_phone_cisco-sa-20190109-phone-script-injection.nasl: 
 gsf/2019/cisco/gb_cisco_ise_cisco-sa-20190109-ise-multi-xss.nasl: GPLv2+
 gsf/2019/cisco/gb_cisco_ise_cisco-sa-20190109-ise-passwd.nasl: GPLv2+
 gsf/2019/cisco/gb_cisco_pis_cisco-sa-20190109-cpi-xss.nasl: GPLv2+
+gsf/2019/crestron/gb_crestron_arimedia_auth_bypass_vuln.nasl: GPLv2+
 gsf/2019/emc/gb_rsa_archer_DSA-2018-224.nasl: GPLv2+
 gsf/2019/f5/gb_f5_big_ip_K17264695.nasl: GPLv2+
 gsf/2019/f5/gb_f5_big_ip_K45616155.nasl: GPLv2+
 gsf/2019/f5/gb_f5_big_ip_K74114570.nasl: GPLv2+
+gsf/2019/fortinet/gb_fortinet_fortios_FG-IR-18-018.nasl: GPLv2+
 gsf/2019/ibm/gb_ibm_domino_bof_vuln.nasl: GPLv2+
 gsf/2019/ibm/gb_ibm_spectrum_scale_ibm10730967.nasl: GPLv2+
 gsf/2019/ibm/gb_ibm_spectrum_scale_ibm10732713.nasl: GPLv2+
@@ -62765,6 +62786,8 @@ gsf/2019/juniper/gb_junos_jsa10910.nasl: GPLv2+
 gsf/2019/juniper/gb_junos_jsa10911.nasl: GPLv2+
 gsf/2019/juniper/gb_junos_jsa10912.nasl: GPLv2+
 gsf/2019/juniper/gb_junos_jsa10913.nasl: GPLv2+
+gsf/2019/juniper/gb_junos_space_jsa10917-1.nasl: GPLv2+
+gsf/2019/juniper/gb_junos_space_jsa10917.nasl: GPLv2+
 gsf/2019/mcafee/gb_mcafee_application_control_mult_vuln_dec18.nasl: GPLv2+
 gsf/2019/mcafee/gb_mcafee_web_gateway_input_validation_vulnerability_jan19.nasl: GPLv2+
 gsf/2019/microsoft/gb_ms_kb4461589.nasl: GPLv2+
@@ -62781,10 +62804,13 @@ gsf/2019/microsoft/gb_ms_kb4480061.nasl: GPLv2+
 gsf/2019/microsoft/gb_ms_kb4480062.nasl: GPLv2+
 gsf/2019/microsoft/gb_ms_kb4480968.nasl: GPLv2+
 gsf/2019/microsoft/gb_ms_kb4480975.nasl: GPLv2+
+gsf/2019/omron/gb_omron_cx-one_cx-protocol_ce.nasl: GPLv2+
 gsf/2019/racon_software/gb_elba5_rce_vuln.nasl: GPLv2+
 gsf/2019/schneider/gb_schneider_electric_proface_gp-pro_ex_input_validation_vulnerability.nasl: GPLv2+
 gsf/2019/schneider/gb_schneider_eurotherm_guicon_mult_vuln.nasl: GPLv2+
+gsf/2019/schneider/gb_schneider_umotion_builder_mult_vuln.nasl: GPLv2+
 gsf/2019/schneider/gb_schneider_zelio_soft2_uaf_rce_vuln.nasl: GPLv2+
+gsf/2019/tibco/gb_tibco_spotfire_statistics_services_rce_vuln.nasl: GPLv2+
 gsf/2019/tridium/gb_tridium_niagara_xss_vuln.nasl: GPLv2+
 gsf/2019/vtiger/gb_vtiger_rce_vuln.nasl: GPLv2+
 gsf/gb-lsc-agent.nasl: GPLv2+
@@ -62862,6 +62888,23 @@ gsf/Policy/gb_policy_etc_shadow_errors.nasl: GPLv2+
 gsf/Policy/gb_policy_etc_shadow.nasl: GPLv2+
 gsf/Policy/gb_policy_etc_shadow_ok.nasl: GPLv2+
 gsf/Policy/gb_policy_etc_shadow_violation.nasl: GPLv2+
+gsf/Policy/Linux/automounting.nasl: GPLv2+
+gsf/Policy/Linux/dev_shm_options.nasl: GPLv2+
+gsf/Policy/Linux/home_options.nasl: GPLv2+
+gsf/Policy/Linux/mounting_cramfs.nasl: GPLv2+
+gsf/Policy/Linux/mounting_freevxfs.nasl: GPLv2+
+gsf/Policy/Linux/mounting_hfs.nasl: GPLv2+
+gsf/Policy/Linux/mounting_hfsplus.nasl: GPLv2+
+gsf/Policy/Linux/mounting_jffs2.nasl: GPLv2+
+gsf/Policy/Linux/mounting_squashfs.nasl: GPLv2+
+gsf/Policy/Linux/mounting_udf.nasl: GPLv2+
+gsf/Policy/Linux/mounting_vfat.nasl: GPLv2+
+gsf/Policy/Linux/sticky_bit_world_writeable_dirs.nasl: GPLv2+
+gsf/Policy/Linux/tmp_options.nasl: GPLv2+
+gsf/Policy/Linux/var_log_audit_options.nasl: GPLv2+
+gsf/Policy/Linux/var_log_options.nasl: GPLv2+
+gsf/Policy/Linux/var_options.nasl: GPLv2+
+gsf/Policy/Linux/var_tmp_options.nasl: GPLv2+
 gsf/Policy/Office2013/excel_block_inet_macros.nasl: GPLv2+
 gsf/Policy/Office2013/excel_require_addin_sig.nasl: GPLv2+
 gsf/Policy/Office2013/excel_vba_warnings.nasl: GPLv2+

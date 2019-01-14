@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4480970.nasl 13004 2019-01-09 16:32:29Z santu $
+# $Id: gb_ms_kb4480970.nasl 13052 2019-01-14 05:47:49Z santu $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4480970)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814650");
-  script_version("$Revision: 13004 $");
+  script_version("$Revision: 13052 $");
   script_cve_id("CVE-2019-0536", "CVE-2019-0538", "CVE-2019-0541", "CVE-2019-0543",
                 "CVE-2019-0584", "CVE-2019-0554", "CVE-2019-0549", "CVE-2019-0569",
                 "CVE-2019-0583", "CVE-2019-0575", "CVE-2019-0576", "CVE-2019-0577",
@@ -35,7 +35,7 @@ if(description)
                 "CVE-2019-0582", "CVE-2018-3639");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-09 17:32:29 +0100 (Wed, 09 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-14 06:47:49 +0100 (Mon, 14 Jan 2019) $");
   script_tag(name:"creation_date", value:"2019-01-09 18:36:41 +0530 (Wed, 09 Jan 2019)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4480970)");
 
@@ -45,7 +45,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the
   target host.");
 
-  script_tag(name:"insight", value:"Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flawss exists due to,
 
   - Windows Jet Database Engine improperly handles objects in memory.
 

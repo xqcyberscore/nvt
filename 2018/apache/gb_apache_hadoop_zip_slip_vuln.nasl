@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_hadoop_zip_slip_vuln.nasl 12423 2018-11-19 15:20:08Z cfischer $
+# $Id: gb_apache_hadoop_zip_slip_vuln.nasl 13054 2019-01-14 08:07:05Z asteins $
 #
 # Apache Hadoop before 3.1.1, 3.0.3, 2.8.5, 2.7.7 Zip Slip Vulnerability
 #
@@ -28,11 +28,11 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112430");
-  script_version("$Revision: 12423 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-19 16:20:08 +0100 (Mon, 19 Nov 2018) $");
+  script_version("$Revision: 13054 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-14 09:07:05 +0100 (Mon, 14 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-11-14 15:33:11 +0100 (Wed, 14 Nov 2018)");
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

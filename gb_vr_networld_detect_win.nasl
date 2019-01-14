@@ -1,8 +1,8 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vr_networld_detect_win.nasl 12947 2019-01-05 16:42:45Z mmartin $
+# $Id: gb_vr_networld_detect_win.nasl 13048 2019-01-12 15:36:05Z mmartin $
 #
-# Volksbanken Raiffeisenbanken VR-Networld Version Detection (Windows)
+# Fiducia & GAD IT AG VR-Networld Version Detection (Windows)
 #
 # Authors:
 # Michael Martin <michael.martin@greenbone.net>
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107439");
-  script_version("$Revision: 12947 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-05 17:42:45 +0100 (Sat, 05 Jan 2019) $");
+  script_version("$Revision: 13048 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-12 16:36:05 +0100 (Sat, 12 Jan 2019) $");
   script_tag(name:"creation_date", value:"2019-01-05 17:42:49 +0100 (Sat, 05 Jan 2019)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_name("Volksbanken Raiffeisenbanken VR-Networld Version Detection (Windows)");
+  script_name("Fiducia & GAD IT AG VR-Networld Version Detection (Windows)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Product detection");
@@ -41,7 +41,7 @@ if(description)
   script_require_ports(139, 445);
 
   script_tag(name:"summary", value:"Detects the installed version
-  of VR-Networld for Windows.");
+  of Fiducia & GAD IT AG VR-Networld for Windows.");
 
   script_tag(name:"qod_type", value:"registry");
 
@@ -84,11 +84,10 @@ foreach key (key_list) {
     version = registry_get_sz(key:key + item, item:"DisplayVersion");
     concluded += " " + version;
 
-    set_kb_item(name:"vr_networld/win/detected", value:TRUE);
-    set_kb_item(name:"vr_networld/win/ver", value:version);
+    set_kb_item(name:"fiducia_gad_it_ag/vr_networld/win/detected", value:TRUE);
 
     register_and_report_cpe(app:appName , ver:version, concluded:concluded,
-                          base:"cpe:/a:vr_networld:", expr:"^([0-9.]+)", insloc:location, regService:"smb-login", regPort:0);
+                          base:"cpe:/a:fiducia_gad_it_ag:vr_networld:", expr:"^([0-9.]+)", insloc:location, regService:"smb-login", regPort:0);
     exit(0);
   }
 }

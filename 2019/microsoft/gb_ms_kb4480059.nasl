@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4480059.nasl 13004 2019-01-09 16:32:29Z santu $
+# $Id: gb_ms_kb4480059.nasl 13052 2019-01-14 05:47:49Z santu $
 #
 # Microsoft .NET Framework Information Disclosure Vulnerability (KB4480059)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814720");
-  script_version("$Revision: 13004 $");
+  script_version("$Revision: 13052 $");
   script_cve_id("CVE-2019-0545");
   script_bugtraq_id(106405);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-09 17:32:29 +0100 (Wed, 09 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-14 06:47:49 +0100 (Mon, 14 Jan 2019) $");
   script_tag(name:"creation_date", value:"2019-01-09 10:08:38 +0530 (Wed, 09 Jan 2019)");
   script_name("Microsoft .NET Framework Information Disclosure Vulnerability (KB4480059)");
 
@@ -50,11 +50,11 @@ if(description)
 
   script_tag(name:"affected", value:"Microsoft .NET Framework 4.5.2 on,
 
-  Windows 7 for 32-bit/x64 Systems Service Pack 1
+  Microsoft Windows 7 for 32-bit/x64 Systems Service Pack 1
 
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2
 
-  Windows Server 2008 R2 for x64-based Systems Service Pack 1");
+  Microsoft Windows Server 2008 R2 for x64-based Systems Service Pack 1");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
   listed hotfixes or download and update mentioned hotfixes in the advisory

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb2596760.nasl 13004 2019-01-09 16:32:29Z santu $
+# $Id: gb_ms_kb2596760.nasl 13052 2019-01-14 05:47:49Z santu $
 #
 # Microsoft Excel Viewer 2007 Service Pack 3 Remote Code Execution Vulnerability (KB2596760)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814598");
-  script_version("$Revision: 13004 $");
+  script_version("$Revision: 13052 $");
   script_cve_id("CVE-2019-0541");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-09 17:32:29 +0100 (Wed, 09 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-14 06:47:49 +0100 (Mon, 14 Jan 2019) $");
   script_tag(name:"creation_date", value:"2019-01-09 15:37:10 +0530 (Wed, 09 Jan 2019)");
   script_name("Microsoft Excel Viewer 2007 Service Pack 3 Remote Code Execution Vulnerability (KB2596760)");
 
@@ -69,23 +69,43 @@ include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-pptVer = get_kb_item("SMB/Office/XLView/Version");
-path = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
-                          item:"ProgramFilesDir");
-if(!path){
-  exit(0);
-}
-
-offPath = path + "\Microsoft Office\OFFICE12" ;
-exeVer  = fetch_file_version(sysPath:offPath, file_name:"msohev.dll");
+exeVer = get_kb_item("SMB/Office/XLView/Version");
 if(!exeVer){
   exit(0);
 }
 
-if(exeVer =~ "^12\." && version_is_less(version:exeVer, test_version:"12.0.6806.5000"))
+if(!os_arch = get_kb_item("SMB/Windows/Arch")){
+  exit(0);
+}
+
+if("x86" >< os_arch){
+  key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion");
+}
+else if("x64" >< os_arch){
+  key_list =  make_list("SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion",
+                        "SOFTWARE\Microsoft\Windows\CurrentVersion");
+}
+
+foreach key(key_list)
 {
-  report = report_fixed_ver(file_checked:offPath + "\msohev.dll ",
-                            file_version:exeVer, vulnerable_range:"12.0 - 12.0.6806.4999");
-  security_message(data:report);
+  path = registry_get_sz(key:key, item:"ProgramFilesDir");
+
+  if(!path){
+    exit(0);
+  }
+
+  offPath = path + "\Microsoft Office\Office12";
+  offexeVer = fetch_file_version(sysPath:offPath, file_name:"msohev.dll");
+  if(!offexeVer){
+    continue;
+  }
+  if(offexeVer =~ "^12\." && version_is_less(version:offexeVer, test_version:"12.0.6806.5000"))
+  {
+    report = report_fixed_ver( file_checked:offPath + "\msohev.dll",
+                               file_version:offexeVer, vulnerable_range:"12.0 - 12.0.6802.4999");
+    security_message(data:report);
+    exit(0);
+  }
 }
 exit(99);
+

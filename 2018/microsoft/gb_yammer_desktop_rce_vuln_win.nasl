@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_yammer_desktop_rce_vuln_win.nasl 12478 2018-11-22 07:59:26Z santu $
+# $Id: gb_yammer_desktop_rce_vuln_win.nasl 13054 2019-01-14 08:07:05Z asteins $
 #
 # Microsoft Yammer Desktop Remote Code Execution Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:microsoft:yammer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814324");
-  script_version("$Revision: 12478 $");
+  script_version("$Revision: 13054 $");
   script_cve_id("CVE-2018-8569");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-22 08:59:26 +0100 (Thu, 22 Nov 2018) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-14 09:07:05 +0100 (Mon, 14 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-11-22 11:37:14 +0530 (Thu, 22 Nov 2018)");
   script_name("Microsoft Yammer Desktop Remote Code Execution Vulnerability (Windows)");
 
