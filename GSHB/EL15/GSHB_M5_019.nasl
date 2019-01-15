@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M5_019.nasl 10646 2018-07-27 07:00:22Z cfischer $
+# $Id: GSHB_M5_019.nasl 13075 2019-01-15 09:32:16Z cfischer $
 #
 # IT-Grundschutz, 14. EL, Maﬂnahme 5.019
 #
@@ -27,23 +27,24 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.95056");
-  script_version("$Revision: 10646 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-27 09:00:22 +0200 (Fri, 27 Jul 2018) $");
+  script_version("$Revision: 13075 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-15 10:32:16 +0100 (Tue, 15 Jan 2019) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"qod_type", value:"package");
   script_name("IT-Grundschutz M5.019: Einsatz der Sicherheitsmechanismen von sendmail");
   script_xref(name:"URL", value:"http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m05/m05019.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2015 Greenbone Networks GmbH");
   script_family("IT-Grundschutz-15");
-  script_mandatory_keys("Compliance/Launch/GSHB-15");
   script_dependencies("GSHB/GSHB_SMTP_sendmail.nasl", "GSHB/GSHB_SSH_sendmail.nasl");
+  script_mandatory_keys("Compliance/Launch/GSHB-15");
 
   script_tag(name:"summary", value:"IT-Grundschutz M5.019: Einsatz der Sicherheitsmechanismen von sendmail.
 
   Stand: 14. Erg‰nzungslieferung (14. EL).");
+
+  script_tag(name:"qod_type", value:"package");
 
   exit(0);
 }
@@ -81,7 +82,7 @@ lsaliasesdb = get_kb_item("GSHB/SENDMAIL/lsaliasesdb");
 sendmailfunc = get_kb_item("GSHB/SENDMAIL");
 log = get_kb_item("GSHB/SENDMAIL/log");
 
-sendmail = get_kb_item("SMTP/sendmail");
+sendmail = get_kb_item("sendmail/detected");
 
 if (!sendmail){
   result = string("nicht zutreffend");

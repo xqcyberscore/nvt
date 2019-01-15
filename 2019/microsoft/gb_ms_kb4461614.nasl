@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4461614.nasl 13004 2019-01-09 16:32:29Z santu $
+# $Id: gb_ms_kb4461614.nasl 13072 2019-01-15 08:12:06Z asteins $
 #
 # Microsoft Office 2010 Service Pack 2 Information Disclosure Vulnerability (KB4461614)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814590");
-  script_version("$Revision: 13004 $");
+  script_version("$Revision: 13072 $");
   script_cve_id("CVE-2019-0560");
   script_bugtraq_id(106398);
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-09 17:32:29 +0100 (Wed, 09 Jan 2019) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-15 09:12:06 +0100 (Tue, 15 Jan 2019) $");
   script_tag(name:"creation_date", value:"2019-01-09 14:46:55 +0530 (Wed, 09 Jan 2019)");
   script_name("Microsoft Office 2010 Service Pack 2 Information Disclosure Vulnerability (KB4461614)");
 

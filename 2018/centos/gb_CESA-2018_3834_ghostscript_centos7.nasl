@@ -29,13 +29,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882987");
-  script_version("$Revision: 12873 $");
+  script_version("$Revision: 13072 $");
   script_cve_id("CVE-2018-15911", "CVE-2018-16541", "CVE-2018-16802", 
                   "CVE-2018-17183", "CVE-2018-17961", "CVE-2018-18073", "CVE-2018-18284", 
                 "CVE-2018-19134", "CVE-2018-19409"); 
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-21 15:42:20 +0100 (Fri, 21 Dec 2018) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-15 09:12:06 +0100 (Tue, 15 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-12-19 10:08:29 +0100 (Wed, 19 Dec 2018)");
   script_name("CentOS Update for ghostscript CESA-2018:3834 centos7 ");
   script_category(ACT_GATHER_INFO);

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: sendmail_debug.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: sendmail_debug.nasl 13074 2019-01-15 09:12:34Z cfischer $
 # Description: Sendmail DEBUG
 #
 # Authors:
@@ -22,64 +22,69 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-CPE = 'cpe:/a:sendmail:sendmail';
+CPE = "cpe:/a:sendmail:sendmail";
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.10247");
- script_version("$Revision: 6063 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
- script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
- script_bugtraq_id(1);
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_cve_id("CVE-1999-0095");
- script_name("Sendmail DEBUG");
- script_category(ACT_GATHER_INFO);
- script_copyright("This script is Copyright (C) 1999 Renaud Deraison");
- script_family("SMTP problems");
- script_dependencies("gb_sendmail_detect.nasl");
- script_require_keys("SMTP/sendmail");
- script_require_ports("Services/smtp", 25, 465, 587);
- 
- script_tag(name:"summary", value:"Your MTA accepts the DEBUG mode.
+  script_oid("1.3.6.1.4.1.25623.1.0.10247");
+  script_version("$Revision: 13074 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-15 10:12:34 +0100 (Tue, 15 Jan 2019) $");
+  script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
+  script_bugtraq_id(1);
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_cve_id("CVE-1999-0095");
+  script_name("Sendmail DEBUG");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 1999 Renaud Deraison");
+  script_family("SMTP problems");
+  script_dependencies("gb_sendmail_detect.nasl");
+  script_mandatory_keys("sendmail/detected");
+  script_require_ports("Services/smtp", 25, 465, 587);
 
- This mode is dangerous as it allows remote users to execute arbitrary
- commands as root without the need to log in.");
- script_tag(name:"solution", value:"Upgrade your MTA.");
+  script_tag(name:"summary", value:"Your MTA accepts the DEBUG mode.
 
- script_tag(name:"solution_type", value:"VendorFix");
- script_tag(name:"qod_type", value:"remote_vul");
+  This mode is dangerous as it allows remote users to execute arbitrary
+  commands as root without the need to log in.");
 
- exit(0);
+  script_tag(name:"solution", value:"Reconfigure or upgrade your MTA.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_vul");
+
+  exit(0);
 }
-
-#
-# The script code starts here
-#
 
 include("smtp_func.inc");
 include("host_details.inc");
 
-if(!port = get_app_port(cpe:CPE)) exit(0);
+if(!port = get_app_port(cpe:CPE, service:"smtp"))
+  exit(0);
+
+if(!get_app_location(cpe:CPE, port:port))
+  exit(0);
 
 soc = open_sock_tcp(port);
-if(soc)
-{
-  b = smtp_recv_banner(socket:soc);
+if(!soc)
+  exit(0);
 
-  s = string("debug\r\n");
-  send(socket:soc, data:s);
-  r = recv_line(socket:soc, length:1024);
-  r = tolower(r);
+res = smtp_recv_banner(socket:soc);
 
-  
-  if(("200 debug set" >< r)) {
-    security_message(port:port);
-    close(soc);
-    exit(0);
-  }
+if(!res || "endmail" >!< res) {
   close(soc);
+  exit(0);
+}
+
+req = string("debug\r\n");
+send(socket:soc, data:req);
+res = recv_line(socket:soc, length:1024);
+close(soc);
+
+lores = tolower(lores);
+if("200 debug set" >< lores) {
+  report = 'The remote SMTP service accepts the debug command. Answer:\n\n' + res;
+  security_message(port:port, data:report);
+  exit(0);
 }
 
 exit(99);

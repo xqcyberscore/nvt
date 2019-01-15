@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smtp_overflows.nasl 10317 2018-06-25 14:09:46Z cfischer $
+# $Id: smtp_overflows.nasl 13077 2019-01-15 10:37:47Z cfischer $
 #
 # Generic SMTP overflows
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11772");
-  script_version("$Revision: 10317 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-25 16:09:46 +0200 (Mon, 25 Jun 2018) $");
+  script_version("$Revision: 13077 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-15 11:37:47 +0100 (Tue, 15 Jan 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -36,16 +36,16 @@ if(description)
   script_category(ACT_DESTRUCTIVE_ATTACK);
   script_copyright("This script is Copyright (C) 2003 Michel Arboi");
   script_family("SMTP problems");
-  script_dependencies("sendmail_expn.nasl", "smtpserver_detect.nasl");
+  script_dependencies("smtpserver_detect.nasl");
+  script_require_ports("Services/smtp", 25, 465, 587);
   script_exclude_keys("SMTP/wrapped");
-  script_require_ports("Services/smtp", 25);
 
   script_tag(name:"solution", value:"Upgrade your MTA or change it.");
 
   script_tag(name:"summary", value:"The remote SMTP server crashes when it is send a command
-  with a too long argument.
+  with a too long argument.");
 
-  A cracker might use this flaw to kill this service or worse, execute arbitrary code on your server.");
+  script_tag(name:"impact", value:"An attacker might use this flaw to kill this service or worse, execute arbitrary code on your server.");
 
   script_tag(name:"qod_type", value:"remote_active");
   script_tag(name:"solution_type", value:"Mitigation");
@@ -55,10 +55,7 @@ if(description)
 
 include("smtp_func.inc");
 
-port = get_kb_item("Services/smtp");
-if (! port) port = 25;
-if (get_kb_item('SMTP/'+port+'/broken')) exit(0);
-if(! get_port_state(port)) exit(0);
+port = get_smtp_port(default:25);
 
 host = get_host_name();
 

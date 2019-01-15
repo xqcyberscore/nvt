@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: poprelayd_auth.nasl 13001 2019-01-09 14:59:53Z cfischer $
+# $Id: poprelayd_auth.nasl 13077 2019-01-15 10:37:47Z cfischer $
 #
 # poprelayd & sendmail authentication problem
 #
@@ -36,8 +36,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11080");
-  script_version("$Revision: 13001 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-09 15:59:53 +0100 (Wed, 09 Jan 2019) $");
+  script_version("$Revision: 13077 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-15 11:37:47 +0100 (Tue, 15 Jan 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(2986);
   script_tag(name:"cvss_base", value:"5.0");
@@ -47,8 +47,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2002 Michel Arboi");
   script_family("SMTP problems");
-  script_dependencies("smtpserver_detect.nasl", "sendmail_expn.nasl",
-                      "smtp_relay.nasl", "smtp_settings.nasl",
+  script_dependencies("smtpserver_detect.nasl", "smtp_relay.nasl", "smtp_settings.nasl",
                       "sw_postfix_detect.nasl", "global_settings.nasl");
   script_exclude_keys("keys/islocalhost", "SMTP/wrapped", "SMTP/postfix", "SMTP/qmail");
   script_require_ports("Services/smtp", 25, 465, 587);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smtp_relay.nasl 13001 2019-01-09 14:59:53Z cfischer $
+# $Id: smtp_relay.nasl 13077 2019-01-15 10:37:47Z cfischer $
 #
 # SMTP Open Relay Test
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100073");
-  script_version("$Revision: 13001 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-09 15:59:53 +0100 (Wed, 09 Jan 2019) $");
+  script_version("$Revision: 13077 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-15 11:37:47 +0100 (Tue, 15 Jan 2019) $");
   script_tag(name:"creation_date", value:"2009-03-23 19:32:33 +0100 (Mon, 23 Mar 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -36,15 +36,16 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("SMTP problems");
-  script_dependencies("smtpserver_detect.nasl", "sendmail_expn.nasl", "smtp_settings.nasl", "global_settings.nasl");
+  script_dependencies("smtpserver_detect.nasl", "smtp_settings.nasl", "global_settings.nasl");
   script_exclude_keys("keys/is_private_addr", "keys/islocalhost", "SMTP/wrapped", "SMTP/qmail");
-  script_require_ports("Services/smtp", 25);
+  script_require_ports("Services/smtp", 25, 465, 587);
 
   script_tag(name:"solution", value:"Improve the configuration of your SMTP server so that your SMTP server
   cannot be used as a relay any more.");
 
-  script_tag(name:"summary", value:"The remote SMTP server is insufficiently protected against relaying
-  This means that spammers might be able to use your mail server
+  script_tag(name:"summary", value:"The remote SMTP server is insufficiently protected against mail relaying.");
+
+  script_tag(name:"impact", value:"This means that spammers might be able to use your mail server
   to send their mails to the world.");
 
   script_tag(name:"qod_type", value:"remote_banner");

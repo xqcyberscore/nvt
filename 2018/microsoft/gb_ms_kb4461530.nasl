@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4461530.nasl 12477 2018-11-22 07:50:21Z cfischer $
+# $Id: gb_ms_kb4461530.nasl 13072 2019-01-15 08:12:06Z asteins $
 #
 # Microsoft Excel 2010 Service Pack 2 Remote Code Execution Vulnerability (KB4461530)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814157");
-  script_version("$Revision: 12477 $");
+  script_version("$Revision: 13072 $");
   script_cve_id("CVE-2018-8577");
   script_bugtraq_id(105834);
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-22 08:50:21 +0100 (Thu, 22 Nov 2018) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-15 09:12:06 +0100 (Tue, 15 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-11-14 11:14:15 +0530 (Wed, 14 Nov 2018)");
   script_name("Microsoft Excel 2010 Service Pack 2 Remote Code Execution Vulnerability (KB4461530)");
 

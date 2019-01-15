@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tika_server_xee_dos_vuln.nasl 11877 2018-10-12 12:31:50Z santu $
+# $Id: gb_apache_tika_server_xee_dos_vuln.nasl 13072 2019-01-15 08:12:06Z asteins $
 #
 # Apache Tika Server XML Entity Expansion Denial of Service Vulnerability
 #
@@ -28,11 +28,11 @@ CPE = "cpe:/a:apache:tika";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814054");
-  script_version("$Revision: 11877 $");
+  script_version("$Revision: 13072 $");
   script_cve_id("CVE-2018-11761", "CVE-2018-11796");
-  script_tag(name:"cvss_base", value:"7.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:31:50 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-15 09:12:06 +0100 (Tue, 15 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-09-27 15:38:59 +0530 (Thu, 27 Sep 2018)");
   script_name("Apache Tika Server XML Entity Expansion Denial of Service Vulnerability");
 

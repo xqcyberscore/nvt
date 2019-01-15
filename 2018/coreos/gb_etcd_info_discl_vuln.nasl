@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_etcd_info_discl_vuln.nasl 12120 2018-10-26 11:13:20Z mmartin $
+# $Id: gb_etcd_info_discl_vuln.nasl 13070 2019-01-15 04:50:25Z ckuersteiner $
 #
 # etcd Information Disclosure Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:coreos:etcd";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140888");
-  script_version("$Revision: 12120 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_version("$Revision: 13070 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-15 05:50:25 +0100 (Tue, 15 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-03-27 08:55:55 +0700 (Tue, 27 Mar 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -58,8 +58,8 @@ is enabled. An attacker may read all stored key values which might contain sensi
 to further attacks.");
 
   script_tag(name:"solution", value:"Enable authentication as referenced in the advisory.");
-  script_xref(name:"URL", value:"https://coreos.com/etcd/docs/latest/v2/authentication.html)");
 
+  script_xref(name:"URL", value:"https://coreos.com/etcd/docs/latest/v2/authentication.html");
   script_xref(name:"URL", value:"https://elweb.co/the-security-footgun-in-etcd/");
 
   exit(0);

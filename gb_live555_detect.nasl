@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_live555_detect.nasl 10899 2018-08-10 13:49:35Z cfischer $
+# $Id: gb_live555_detect.nasl 13080 2019-01-15 11:08:42Z asteins $
 #
 # LIVE555 Streaming Media Server Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107180");
-  script_version("$Revision: 10899 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:49:35 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 13080 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-15 12:08:42 +0100 (Tue, 15 Jan 2019) $");
   script_tag(name:"creation_date", value:"2017-05-22 12:42:40 +0200 (Mon, 22 May 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -73,7 +73,7 @@ if ("LIVE555 Streaming Media" >< banner ) {
     cpe = build_cpe(value:Ver, exp:"^([0-9.]+)", base:"cpe:/a:live555:streaming_media:");
 
     if(!cpe)
-      cpe = 'cpe:/a:live5555:streaming_media';
+      cpe = 'cpe:/a:live555:streaming_media';
 
     register_product( cpe:cpe, location:port + '/rtsp',port: port );
     log_message( data:build_detection_report( app:"LIVE555 Streaming Media",

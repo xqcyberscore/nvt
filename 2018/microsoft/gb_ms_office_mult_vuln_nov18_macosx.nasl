@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_mult_vuln_nov18_macosx.nasl 12352 2018-11-14 15:03:21Z santu $
+# $Id: gb_ms_office_mult_vuln_nov18_macosx.nasl 13072 2019-01-15 08:12:06Z asteins $
 #
 # Microsoft Office Multiple Vulnerabilities-November18 (Mac OS X)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814282");
-  script_version("$Revision: 12352 $");
+  script_version("$Revision: 13072 $");
   script_cve_id("CVE-2018-8574", "CVE-2018-8577");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-14 16:03:21 +0100 (Wed, 14 Nov 2018) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-15 09:12:06 +0100 (Tue, 15 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-11-14 13:12:24 +0530 (Wed, 14 Nov 2018)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Multiple Vulnerabilities-November18 (Mac OS X)");

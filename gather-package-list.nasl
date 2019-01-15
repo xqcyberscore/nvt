@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gather-package-list.nasl 12971 2019-01-08 11:56:18Z asteins $
+# $Id: gather-package-list.nasl 13067 2019-01-14 14:59:37Z cfischer $
 #
 # Determine OS and list of installed packages via SSH login
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.50282");
-  script_version("$Revision: 12971 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-08 12:56:18 +0100 (Tue, 08 Jan 2019) $");
+  script_version("$Revision: 13067 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-14 15:59:37 +0100 (Mon, 14 Jan 2019) $");
   script_tag(name:"creation_date", value:"2008-01-17 22:05:49 +0100 (Thu, 17 Jan 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -108,6 +108,7 @@ OS_CPE = make_array(
     "SUSE7.3",  "cpe:/o:novell:suse_linux:7.3",
 
     # SLES, https://en.wikipedia.org/wiki/SUSE_Linux_Enterprise_Server#Version_history
+    "SLES15.0SP0", "cpe:/o:suse:linux_enterprise_server:15:SP0",
     "SLES12.0SP3", "cpe:/o:suse:linux_enterprise_server:12:SP3",
     "SLES12.0SP2", "cpe:/o:suse:linux_enterprise_server:12:SP2",
     "SLES12.0SP1", "cpe:/o:suse:linux_enterprise_server:12:SP1",

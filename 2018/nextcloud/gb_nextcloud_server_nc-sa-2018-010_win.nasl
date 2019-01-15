@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nextcloud_server_nc-sa-2018-010_win.nasl 12185 2018-11-01 11:19:37Z asteins $
+# $Id: gb_nextcloud_server_nc-sa-2018-010_win.nasl 13072 2019-01-15 08:12:06Z asteins $
 #
 # Nextcloud Server < 14.0.0, < 13.0.6, < 12.0.11 Improper validation of permissions (NC-SA-2018-010) (Windows)
 #
@@ -27,11 +27,11 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112414");
-  script_version("$Revision: 12185 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-01 12:19:37 +0100 (Thu, 01 Nov 2018) $");
+  script_version("$Revision: 13072 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-15 09:12:06 +0100 (Tue, 15 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-11-01 11:49:50 +0100 (Thu, 01 Nov 2018)");
-  script_tag(name:"cvss_base", value:"6.6");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:C/I:C/A:N");
+  script_tag(name:"cvss_base", value:"5.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

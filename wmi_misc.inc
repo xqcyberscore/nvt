@@ -1,5 +1,5 @@
 ###############################################################################
-# OpenVAS Vulnerability Test Library functions
+# OpenVAS Include File
 # $Id$
 #
 # WMI Misc functions
@@ -23,8 +23,10 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+#
+# $Revision$
+#
 ###############################################################################
-
 
 #
 # An example SDDL (Security Descriptor Description Lanugage) looks like,
@@ -93,7 +95,6 @@ sid_codes = ["AO", "SID_BUILTIN_ACCOUNT_OPERATORS",
              "S-1-5-32-554", "SID_BUILTIN_PREW2K",
              "S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464", "SID_TRUSTED_INSTALLER"];
 
-
 ace_types = [ "AU", "SEC_ACE_TYPE_SYSTEM_AUDIT",
               "AL", "SEC_ACE_TYPE_SYSTEM_ALARM",
               "OA", "SEC_ACE_TYPE_ACCESS_ALLOWED_OBJECT",
@@ -103,7 +104,6 @@ ace_types = [ "AU", "SEC_ACE_TYPE_SYSTEM_AUDIT",
               "A",  "SEC_ACE_TYPE_ACCESS_ALLOWED",
               "D",  "SEC_ACE_TYPE_ACCESS_DENIED"];
 
-
 ace_flags = [ "OI", "SEC_ACE_FLAG_OBJECT_INHERIT",
               "CI", "SEC_ACE_FLAG_CONTAINER_INHERIT",
               "NP", "SEC_ACE_FLAG_NO_PROPAGATE_INHERIT",
@@ -111,7 +111,6 @@ ace_flags = [ "OI", "SEC_ACE_FLAG_OBJECT_INHERIT",
               "ID", "SEC_ACE_FLAG_INHERITED_ACE",
               "SA", "SEC_ACE_FLAG_SUCCESSFUL_ACCESS",
               "FA", "SEC_ACE_FLAG_FAILED_ACCESS"];
-
 
 ace_access_mask = [
               "RP", "SEC_ADS_READ_PROP",
@@ -131,7 +130,6 @@ ace_access_mask = [
               "GR", "SEC_GENERIC_READ",
               "GW", "SEC_GENERIC_WRITE",
               "GX", "SEC_GENERIC_EXECUTE"];
-
 
 access_mask_hex = ["0xF0000000", "SEC_MASK_GENERIC",
                    "0x0F000000", "SEC_MASK_FLAGS",
@@ -197,9 +195,31 @@ access_mask_or = [
  "SEC_RIGHTS_DIR_EXECUTE", "SEC_RIGHTS_FILE_EXECUTE",
  "SEC_RIGHTS_DIR_ALL", "SEC_RIGHTS_FILE_ALL"];
 
+function get_wmi_misc_sid_codes() {
+  return sid_codes;
+}
+
+function get_wmi_misc_ace_types() {
+  return ace_types;
+}
+
+function get_wmi_misc_ace_flags() {
+  return ace_flags;
+}
+
+function get_wmi_misc_ace_access_mask() {
+  return ace_access_mask;
+}
+
+function get_wmi_misc_access_mask_hex() {
+  return access_mask_hex;
+}
+
+function get_wmi_misc_get_access_mask_or() {
+  return access_mask_or;
+}
 
 # Returns WMI Query by splitting its properties.
-
 function wmi_misc_split_res(List)
 {
   if(List == NULL){

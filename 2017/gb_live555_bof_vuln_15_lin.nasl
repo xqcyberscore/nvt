@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_live555_bof_vuln_15_lin.nasl 11923 2018-10-16 10:38:56Z mmartin $
+# $Id: gb_live555_bof_vuln_15_lin.nasl 13080 2019-01-15 11:08:42Z asteins $
 #
 # LIVE555 Streaming Media Buffer Overflow Vulnerability (Linux)
 #
@@ -24,15 +24,15 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/a:live5555:streaming_media";
+CPE = "cpe:/a:live555:streaming_media";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107102");
-  script_version("$Revision: 11923 $");
+  script_version("$Revision: 13080 $");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:38:56 +0200 (Tue, 16 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-15 12:08:42 +0100 (Tue, 15 Jan 2019) $");
   script_tag(name:"creation_date", value:"2017-05-22 12:42:40 +0200 (Mon, 22 May 2017)");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

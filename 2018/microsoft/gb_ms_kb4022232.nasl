@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4022232.nasl 12485 2018-11-22 11:39:45Z cfischer $
+# $Id: gb_ms_kb4022232.nasl 13072 2019-01-15 08:12:06Z asteins $
 #
 # Microsoft Office 2016 Remote Code Execution Vulnerability (KB4022232)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814280");
-  script_version("$Revision: 12485 $");
+  script_version("$Revision: 13072 $");
   script_cve_id("CVE-2018-8577");
   script_bugtraq_id(105834);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-22 12:39:45 +0100 (Thu, 22 Nov 2018) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-15 09:12:06 +0100 (Tue, 15 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-11-14 12:31:26 +0530 (Wed, 14 Nov 2018)");
   script_name("Microsoft Office 2016 Remote Code Execution Vulnerability (KB4022232)");
 

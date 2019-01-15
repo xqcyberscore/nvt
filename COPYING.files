@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Mon, 14 Jan 2019 15:08:02 +0100
+# Automatically created on:  Tue, 15 Jan 2019 14:20:34 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -1624,6 +1624,7 @@
 2009/secpod_xoops_mult_unspecified_vuln_nov09.nasl: GPLv2+
 2009/secpod_xpdf_mult_vuln.nasl: GPLv2+
 2009/secpod_ziproxy_sec_bypass_vuln.nasl: GPLv2+
+2009/sendmail_expn.nasl: GPLv2+
 2009/servit_0_0_3.nasl: GPLv2+
 2009/serv_u_36585.nasl: GPLv2+
 2009/serv_u_37051.nasl: GPLv2+
@@ -43934,6 +43935,7 @@
 2019/apache/gb_apache_mod_jk_auth_bypass_vuln_lin.nasl: GPLv2+
 2019/apache/gb_apache_mod_jk_auth_bypass_vuln_win.nasl: GPLv2+
 2019/brickcom/gb_brickcom_network_camera_default_credentials.nasl: GPLv2+
+2019/coreos/gb_etcd_auth_vuln.nasl: GPLv2+
 2019/debian/deb_4362.nasl: GPLv2+
 2019/debian/deb_4363.nasl: GPLv2+
 2019/debian/deb_4364.nasl: GPLv2+
@@ -43959,6 +43961,7 @@
 2019/gb_asip_afp_unencrypted_cleartext_logins.nasl: GPLv2
 2019/gb_ftp_unencrypted_cleartext_login.nasl: GPLv2
 2019/gb_vnc_unencrypted_data_transmission.nasl: GPLv2
+2019/horde/gb_horde_imp_rce_vuln.nasl: GPLv2+
 2019/irssi/gb_irssi_use-after-free_vuln.nasl: GPLv2+
 2019/kubernetes/gb_kubernetes_dashboard_auth_bypass_vuln.nasl: GPLv2+
 2019/microsoft/gb_ms_kb2553332.nasl: GPLv2+
@@ -44004,9 +44007,11 @@
 2019/openxchange/gb_open_xchange_appsuite_58880.nasl: GPLv2+
 2019/phpipam/gb_phpipam_mult_vuln.nasl: GPLv2+
 2019/studio42/gb_elfinder_inf_disc_vuln.nasl: GPLv2+
+2019/studio42/gb_elfinder_ssrf_vuln.nasl: GPLv2+
 2019/sugarcrm/gb_sugarcrm_mult_vuln01.nasl: GPLv2+
 2019/sugarcrm/gb_sugarcrm_mult_vuln02.nasl: GPLv2+
 2019/sugarcrm/gb_sugarcrm_sugarcrm-sa-2018-002.nasl: GPLv2+
+2019/synetics/gb_idoit_cmdb_file_downld_vuln.nasl: GPLv2+
 2019/tenable/gb_tenable_nessus_mult_vuln_tns-2018-16.nasl: GPLv2+
 2019/tenable/gb_tenable_nessus_mult_vuln_tns-2018-17.nasl: GPLv2+
 2019/traccar/gb_traccar_xxe_vuln.nasl: GPLv2+
@@ -44019,6 +44024,7 @@
 2019/wireshark/gb_wireshark_wnpa-sec-2019-02_wnpa-sec-2019-03_wnpa-sec-2019-04_win.nasl: GPLv2+
 2019/wireshark/gb_wireshark_wnpa-sec-2019-05_macosx.nasl: GPLv2+
 2019/wireshark/gb_wireshark_wnpa-sec-2019-05_win.nasl: GPLv2+
+2019/wordpress/gb_wordpress_spam-byebye_xss_vuln_jan19.nasl: GPLv2+
 2019/xerox/gb_xerox_altalink_mult_vuln.nasl: GPLv2+
 404.inc: GPLv2+
 aas_detect.nasl: GPLv2+
@@ -44057,6 +44063,7 @@ centreon_detect.nasl: GPLv2+
 cfengine_detect.nasl: GPLv2
 cgi_directories.nasl: GPLv2+
 check_dns_tcp.nasl: GPLv2
+check_smtp_helo.nasl: GPLv2
 cheopsNG_detect.nasl: GPLv2
 chora_detect.nasl: GPLv2
 cifs445.nasl: GPLv2
@@ -44954,6 +44961,7 @@ gb_icq_detect.nasl: GPLv2+
 gb_icq_toolbar_detect.nasl: GPLv2+
 gb_idashboards_detect.nasl: GPLv2+
 gb_ideal_administrator_detect.nasl: GPLv2+
+gb_idoit_cmdb_detect.nasl: GPLv2+
 gb_igss_detect.nasl: GPLv2+
 gb_ikarus_anti_virus_detect.nasl: GPLv2+
 gb_ikiwiki_consolidation.nasl: GPLv2+
@@ -62769,6 +62777,7 @@ gsf/2019/f5/gb_f5_big_ip_K45616155.nasl: GPLv2+
 gsf/2019/f5/gb_f5_big_ip_K74114570.nasl: GPLv2+
 gsf/2019/fortinet/gb_fortinet_fortios_FG-IR-18-018.nasl: GPLv2+
 gsf/2019/ibm/gb_ibm_domino_bof_vuln.nasl: GPLv2+
+gsf/2019/ibm/gb_ibm_security_identity_manager_ibm10794615.nasl: GPLv2+
 gsf/2019/ibm/gb_ibm_spectrum_scale_ibm10730967.nasl: GPLv2+
 gsf/2019/ibm/gb_ibm_spectrum_scale_ibm10732713.nasl: GPLv2+
 gsf/2019/ibm/gb_ibm_spectrum_scale_ibm10793719.nasl: GPLv2+
@@ -62786,6 +62795,7 @@ gsf/2019/juniper/gb_junos_jsa10910.nasl: GPLv2+
 gsf/2019/juniper/gb_junos_jsa10911.nasl: GPLv2+
 gsf/2019/juniper/gb_junos_jsa10912.nasl: GPLv2+
 gsf/2019/juniper/gb_junos_jsa10913.nasl: GPLv2+
+gsf/2019/juniper/gb_junos_jsa10916.nasl: GPLv2+
 gsf/2019/juniper/gb_junos_space_jsa10917-1.nasl: GPLv2+
 gsf/2019/juniper/gb_junos_space_jsa10917.nasl: GPLv2+
 gsf/2019/mcafee/gb_mcafee_application_control_mult_vuln_dec18.nasl: GPLv2+
@@ -64817,7 +64827,6 @@ pre2008/chargen_udp.nasl: GPLv2
 pre2008/checkpoint_open_web_admin.nasl: GPLv2
 pre2008/checkpoint_secureplatform.nasl: GPLv2
 pre2008/check_ports.nasl: GPLv2
-pre2008/check_smtp_helo.nasl: GPLv2
 pre2008/cheopsNG_clear_text_password.nasl: GPLv2
 pre2008/cherokee_0_4_6.nasl: GPLv2
 pre2008/cherokee_0_4_7.nasl: GPLv2
@@ -66099,7 +66108,6 @@ secpod_zikula_detect.nasl: GPLv2+
 secpod_ziproxy_server_detect.nasl: GPLv2+
 secspace_traceroute.nasl: GPLv2+
 securenet_provider_detect.nasl: GPLv2
-sendmail_expn.nasl: GPLv2+
 serendipity_detect.nasl: GPLv2+
 sharp_printers.inc: GPLv2+
 SHN_discard.nasl: GPLv2

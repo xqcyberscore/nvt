@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sendmail_expn.nasl 10922 2018-08-10 19:21:48Z cfischer $
+# $Id: sendmail_expn.nasl 13078 2019-01-15 10:45:02Z cfischer $
 #
 # Check if Mailserver answer to VRFY and EXPN requests
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100072");
-  script_version("$Revision: 10922 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 21:21:48 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 13078 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-15 11:45:02 +0100 (Tue, 15 Jan 2019) $");
   script_tag(name:"creation_date", value:"2009-03-23 19:32:33 +0100 (Mon, 23 Mar 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");

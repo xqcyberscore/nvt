@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3825_1.nasl 12543 2018-11-27 07:43:51Z santu $
+# $Id: gb_ubuntu_USN_3825_1.nasl 13072 2019-01-15 08:12:06Z asteins $
 #
 # Ubuntu Update for libapache2-mod-perl2 USN-3825-1
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843828");
-  script_version("$Revision: 12543 $");
+  script_version("$Revision: 13072 $");
   script_cve_id("CVE-2011-2767");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-27 08:43:51 +0100 (Tue, 27 Nov 2018) $");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-15 09:12:06 +0100 (Tue, 15 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-11-26 15:08:02 +0100 (Mon, 26 Nov 2018)");
   script_name("Ubuntu Update for libapache2-mod-perl2 USN-3825-1");
   script_category(ACT_GATHER_INFO);

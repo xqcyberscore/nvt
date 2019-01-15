@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1633.nasl 13053 2019-01-14 07:55:33Z cfischer $
+# $Id: deb_dla_1633.nasl 13072 2019-01-15 08:12:06Z asteins $
 #
 # Auto-generated from advisory DLA 1633-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891633");
-  script_version("$Revision: 13053 $");
+  script_version("$Revision: 13072 $");
   script_cve_id("CVE-2017-10989", "CVE-2017-2518", "CVE-2017-2519", "CVE-2017-2520", "CVE-2018-8740");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1633-1] sqlite3 security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-14 08:55:33 +0100 (Mon, 14 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-15 09:12:06 +0100 (Tue, 15 Jan 2019) $");
   script_tag(name:"creation_date", value:"2019-01-14 00:00:00 +0100 (Mon, 14 Jan 2019)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotnet_core_sdk_tampering_vuln_win.nasl 12376 2018-11-16 10:07:45Z santu $
+# $Id: gb_dotnet_core_sdk_tampering_vuln_win.nasl 13072 2019-01-15 08:12:06Z asteins $
 #
 # ASP.NET Core SDK Tampering Vulnerability-Nov18 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:microsoft:.netcore_sdk";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814296");
-  script_version("$Revision: 12376 $");
+  script_version("$Revision: 13072 $");
   script_cve_id("CVE-2018-8416");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 11:07:45 +0100 (Fri, 16 Nov 2018) $");
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-15 09:12:06 +0100 (Tue, 15 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-11-15 17:19:11 +0530 (Thu, 15 Nov 2018)");
   script_name("ASP.NET Core SDK Tampering Vulnerability-Nov18 (Windows)");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: misc_func.inc 13042 2019-01-11 14:36:21Z cfischer $
+# $Id: misc_func.inc 13067 2019-01-14 14:59:37Z cfischer $
 #
 # Miscellaneous support methods
 #
@@ -26,7 +26,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 13042 $
+# $Revision: 13067 $
 #
 ###############################################################################
 
@@ -300,9 +300,9 @@ function get_service_banner_line( service, port, ipproto ) {
     tcp = FALSE;
 
   if( tcp )
-   gport = get_kb_item( strcat( "Services/", service ) );
+    gport = get_kb_item( strcat( "Services/", service ) );
   else
-   gport = get_kb_item( strcat( "Services/", ipproto, "/", service ) );
+    gport = get_kb_item( strcat( "Services/", ipproto, "/", service ) );
   if( ! gport ) gport = port;
 
   if( tcp )
@@ -331,8 +331,8 @@ function get_service_banner_line( service, port, ipproto ) {
 #
 function get_rpc_port( program, protocol, portmap ) {
 
-  local_var  broken, req, soc, r, port, program, protocol, portmap;
-  local_var  a, b, c, d, p_a, p_b, p_c, p_d, pt_a, pt_b, pt_c, pt_d;
+  local_var broken, req, soc, r, port, program, protocol, portmap, len;
+  local_var a, b, c, d, p_a, p_b, p_c, p_d, pt_a, pt_b, pt_c, pt_d;
 
   if( isnull( program ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#program#-#get_rpc_port" );
   if( isnull( protocol ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#protocol#-#get_rpc_port" );
@@ -376,7 +376,6 @@ function get_rpc_port( program, protocol, portmap ) {
   if( protocol == IPPROTO_TCP )
   {
     req = mkdword( strlen( req ) ) + req;
-
     req = raw_string( 0x80 | ord( req[ 0 ]) ) + substr( req, 1, strlen( req ) );
   }
 
@@ -609,7 +608,7 @@ function base64_decode( str, key_str ) {
   for( i = 0; i < 256; i++ )
     b64[i] = 0;
   for( i = 0; i < strlen( base64 ); i++ )
-   b64[ord( base64[i] )] = i;
+    b64[ord( base64[i] )] = i;
 
   for( j = 0; j < len; j += 4 ) {
     for( i = 0; i < 4; i++ ) {
@@ -852,9 +851,12 @@ function hex2str() {
     return;
   }
 
-  s="";
-  for( i = 0; i < 256; ++i ) xlat[ tolower( substr( hex( i ), 2 ) ) ] = raw_string( i );
-  for( j = 0; j < strlen( hs ) / 2; ++j ) s += xlat[ tolower( substr( hs, 2 * j, 2 * j + 1 ) ) ];
+  s = "";
+  for( i = 0; i < 256; ++i )
+    xlat[ tolower( substr( hex( i ), 2 ) ) ] = raw_string( i );
+
+  for( j = 0; j < strlen( hs ) / 2; ++j )
+    s += xlat[ tolower( substr( hs, 2 * j, 2 * j + 1 ) ) ];
 
   return s;
 }
@@ -874,7 +876,6 @@ function is_fragile_port( port ) {
   foreach fragile_port( fragile_ports ) {
     if( port == fragile_port ) return TRUE;
   }
-
   return;
 }
 
@@ -950,7 +951,6 @@ function get_unknown_port( default, nodefault, ipproto ) {
   } else {
     if( ! get_udp_port_state( _port ) ) exit( 0 );
   }
-
   return _port;
 }
 
@@ -1016,7 +1016,6 @@ function get_unknown_port_list( default, nodefault, ipproto ) {
 
     __port_list = make_list( __port_list, port );
   }
-
   return __port_list;
 }
 
@@ -1056,7 +1055,6 @@ function get_all_tcp_ports_list( ) {
 
     ports = make_list( ports, port );
   }
-
   return ports;
 }
 
@@ -1136,7 +1134,6 @@ function bin2string( ddata, noprint_replacement ) {
    }
    tmp += string( data );
   }
-
   return tmp;
 }
 
@@ -1155,7 +1152,6 @@ function ascii2unicode( data ) {
   for( i = 0; i < len; i++ ) {
     ret += data[i] + raw_string( 0x00 );
   }
-
   return ret;
 }
 
@@ -1172,7 +1168,7 @@ function join( list, sep ) {
   foreach l ( list )
     ret += l + sep;
 
-   return ereg_replace( string:ret, pattern:sep +'$', replace:'' );
+  return ereg_replace( string:ret, pattern:sep + '$', replace:'' );
 }
 
 # @brief Sends a specific data string (if passed) and receives the answer
@@ -1245,7 +1241,7 @@ function socket_send_recv( port, soc, data, proto, length ) {
 
 function text_format_table( array, sep, columnheader ) {
 
-  local_var array, sep, columnheader, len, a, report, maxlen, flen, reportheader;
+  local_var array, sep, columnheader, len, a, report, maxlen, flen, padding_len, reportheader;
 
   if( ! array || ! is_array( array ) ) {
     set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#text_format_table: No array or empty variable passed" );
@@ -1270,7 +1266,6 @@ function text_format_table( array, sep, columnheader ) {
   foreach a( sort( keys( array ) ) ) {
     flen = strlen( a );
     padding_len = ( maxlen - flen ) + 1;
-
     report += a + crap( data:" ", length:padding_len ) + sep + array[a] + '\n';
   }
 
@@ -1324,7 +1319,7 @@ function eol_date_reached( eol_date ) {
 
 function build_eol_message( eol_type, name, cpe, version, location, skip_version, eol_version, eol_date, eol_url ) {
 
-  local_var eol_type, name, cpe, version, location, skip_version, eol_version, eol_date, report;
+  local_var eol_type, name, cpe, version, location, skip_version, eol_version, eol_date, eol_url, report;
 
   if( eol_type != "prod" && eol_type != "os" ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#build_prod_eol_message: Wrong value passed to eol_type. Valid values are: prod, os" );
@@ -1381,7 +1376,6 @@ function build_eol_message( eol_type, name, cpe, version, location, skip_version
     if( eol_url )
       report += '\nEOL info:          ' + eol_url;
   }
-
   return report;
 }
 
@@ -1434,24 +1428,24 @@ function fancy_date( datestr ) {
     return;
   }
 
-  if( int( datestr ) < 10 ) return string( "0", datestr );
-
-  return datestr;
+  if( int( datestr ) < 10 )
+    return string( "0", datestr );
+  else
+    return datestr;
 }
 
 # @brief Creates an array of the commands 'ipconfig' and 'id' as the array key and the regex to match
 #        against the response of these commands as the array value. The function will chose the
 #        returned commands if the remote system is running on Windows, Linux or if the OS is unknown.
 #
-# @note Add a dependency to os_detection.nasl if you want to use this function.
+# @note Add a dependency to os_detection.nasl if you want to use this function. The VT calling this
+#       function needs to also include host_details.inc (for host_runs());
 #
 # @return An array as described in the function summary.
 #
 function exploit_commands() {
 
   local_var res;
-
-  if( ! defined_func( "host_runs" ) ) include( "host_details.inc" );
   res = host_runs( "windows" );
 
   if( res == "yes" ) {
@@ -1516,7 +1510,6 @@ function get_all_udp_ports( ) {
   port = get_kb_item( "UDP/PORTS" );
   if( ! port ) exit( 0 );
   if( ! get_udp_port_state( port ) ) exit( 0 );
-
   return port;
 }
 
@@ -1532,7 +1525,6 @@ function get_all_udp_ports_list( ) {
     if( ! get_udp_port_state( port ) ) continue;
     ports = make_list( ports, port );
   }
-
   return ports;
 }
 

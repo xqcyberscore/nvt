@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_SMTP_sendmail.nasl 10612 2018-07-25 12:26:01Z cfischer $
+# $Id: GSHB_SMTP_sendmail.nasl 13075 2019-01-15 09:32:16Z cfischer $
 #
 # Check Sendmail Configuration
 #
@@ -27,31 +27,31 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96098");
-  script_version("$Revision: 10612 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 14:26:01 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 13075 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-15 10:32:16 +0100 (Tue, 15 Jan 2019) $");
   script_tag(name:"creation_date", value:"2010-06-21 10:39:50 +0200 (Mon, 21 Jun 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"qod_type", value:"remote_vul");
   script_name("Check Sendmail Configuration");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");
+  script_dependencies("compliance_tests.nasl", "gb_sendmail_detect.nasl");
   script_mandatory_keys("Compliance/Launch/GSHB");
-  script_dependencies("compliance_tests.nasl", "smtpserver_detect.nasl", "gb_sendmail_detect.nasl");
 
-  script_tag(name:"summary", value:"Check Sendmail Configuration.
+  script_tag(name:"summary", value:"Checks the Sendmail Configuration.
 
-  The Script test the SMTP Sendmail Server if the commands,
-  debug, vrxf and expn available.");
+  The Script test the SMTP Sendmail Server if the commands
+  debug, vrxf and expn are available.");
+
+  script_tag(name:"qod_type", value:"remote_vul");
 
   exit(0);
 }
 
 include("smtp_func.inc");
 
-sendmail = get_kb_item("SMTP/sendmail");
-
+sendmail = get_kb_item("sendmail/detected");
 if (!sendmail){
   sendmaildebug = "nosendmail";
   sendmailvrfy = "nosendmail";
@@ -71,8 +71,6 @@ else{
     sendmailexpn = "nosmtp";
   }
   else {
-
-
     soc = open_sock_tcp(port);
     if(soc)
      {
@@ -142,5 +140,3 @@ set_kb_item(name: "GSHB/SENDMAIL/DEBUG", value:sendmaildebug);
 set_kb_item(name: "GSHB/SENDMAIL/VRFX", value:sendmailvrfy);
 set_kb_item(name: "GSHB/SENDMAIL/EXPN", value:sendmailexpn);
 exit(0);
-
-

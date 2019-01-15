@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_mail_os_detection.nasl 12958 2019-01-07 10:57:12Z cfischer $
+# $Id: sw_mail_os_detection.nasl 13084 2019-01-15 13:07:22Z cfischer $
 #
 # SMTP/POP3/IMAP Server OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111068");
-  script_version("$Revision: 12958 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-07 11:57:12 +0100 (Mon, 07 Jan 2019) $");
+  script_version("$Revision: 13084 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-15 14:07:22 +0100 (Tue, 15 Jan 2019) $");
   script_tag(name:"creation_date", value:"2015-12-11 14:00:00 +0100 (Fri, 11 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -37,8 +37,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("This script is Copyright (C) 2015 SCHUTZWERK GmbH");
-  script_dependencies("find_service.nasl", "find_service_3digits.nasl", "smtpserver_detect.nasl");
-  script_require_ports("Services/smtp", 25, 587, "Services/pop3", 110, "Services/imap", 143);
+  script_dependencies("smtpserver_detect.nasl");
+  script_require_ports("Services/smtp", 25, 465, 587, "Services/pop3", 110, "Services/imap", 143);
 
   script_tag(name:"summary", value:"This script performs SMTP/POP3/IMAP banner based OS detection.");
 
@@ -56,7 +56,7 @@ SCRIPT_DESC = "SMTP/POP3/IMAP Server OS Identification";
 
 ports = get_kb_list( "Services/smtp" );
 if( ! ports )
-  ports = make_list( 25, 587 );
+  ports = make_list( 25, 465, 587 );
 
 banner_type = "SMTP banner";
 
@@ -71,7 +71,7 @@ foreach port( ports ) {
   if( ! banner || banner == "" || isnull( banner ) )
     continue;
 
-  if( "ESMTP" >< banner ) {
+  if( "ESMTP" >< banner || banner =~ "^[0-9]{3}[ -].+" ) {
 
     if( banner == "220 ESMTP" )
       continue;
@@ -98,6 +98,23 @@ foreach port( ports ) {
 
     if( "(Ubuntu)" >< banner || "ubuntu" >< banner || " Ubuntu " >< banner ) {
       register_and_report_os( os:"Ubuntu", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      continue;
+    }
+
+    # 220 smtp sendmail v8.12.11 (IBM AIX 4.3)
+    # 220 mail.example.com ESMTP sendmail (AIX/PPC)
+    # 220-mail.example.com ESMTP AIX Sendmail 7.5.3
+    # 220 mail.example.com ESMTP Sendmail AIX
+    # 220 mail.example.com ESMTP Sendmail AIX4.2/UCB 8.7; Fri, 11 Jan 2019 11:50:41 +0800 (TAIST)
+    # 220 mail.example.com ESMTP (AIX/IBM)
+    # 220 mail.example.com IBM PROFs ESMTP gateway AIX 4.3.3 Fri, 11 Jan 2019 11:38:14 +0300
+    if( "ESMTP AIX Sendmail" >< banner || "ESMTP sendmail (AIX/" >< banner || " (IBM AIX " >< banner || "ESMTP Sendmail AIX" >< banner || "ESMTP (AIX/IBM)" >< banner || "IBM PROFs ESMTP gateway AIX" >< banner ) {
+      version = eregmatch( pattern:"(\(IBM AIX | AIX ?)([0-9.]+)[)/ ]", string:banner, icase:FALSE );
+      if( ! isnull( version[2] ) ) {
+        register_and_report_os( os:"IBM AIX", version:version[2], cpe:"cpe:/o:ibm:aix", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      } else {
+        register_and_report_os( os:"IBM AIX", cpe:"cpe:/o:ibm:aix", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      }
       continue;
     }
 
