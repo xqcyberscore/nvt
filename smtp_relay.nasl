@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smtp_relay.nasl 13077 2019-01-15 10:37:47Z cfischer $
+# $Id: smtp_relay.nasl 13089 2019-01-15 15:39:12Z cfischer $
 #
 # SMTP Open Relay Test
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100073");
-  script_version("$Revision: 13077 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-15 11:37:47 +0100 (Tue, 15 Jan 2019) $");
+  script_version("$Revision: 13089 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-15 16:39:12 +0100 (Tue, 15 Jan 2019) $");
   script_tag(name:"creation_date", value:"2009-03-23 19:32:33 +0100 (Mon, 23 Mar 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -37,8 +37,8 @@ if(description)
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("SMTP problems");
   script_dependencies("smtpserver_detect.nasl", "smtp_settings.nasl", "global_settings.nasl");
-  script_exclude_keys("keys/is_private_addr", "keys/islocalhost", "SMTP/wrapped", "SMTP/qmail");
   script_require_ports("Services/smtp", 25, 465, 587);
+  script_exclude_keys("keys/is_private_addr", "keys/islocalhost");
 
   script_tag(name:"solution", value:"Improve the configuration of your SMTP server so that your SMTP server
   cannot be used as a relay any more.");
@@ -68,6 +68,12 @@ FROM = string(vtstrings["lowercase"], '@', src_name);
 TO = string(vtstrings["lowercase"], '@', domain);
 
 port = get_smtp_port(default:25);
+if(get_kb_item("smtp/" + port + "/qmail"))
+  exit(0);
+
+if(get_smtp_is_marked_wrapped(port:port))
+  exit(0);
+
 soc = smtp_open(port: port, helo: NULL);
 if(!soc) exit(0);
 

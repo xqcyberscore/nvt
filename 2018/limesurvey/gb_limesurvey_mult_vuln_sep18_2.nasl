@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_limesurvey_mult_vuln_sep18_2.nasl 12343 2018-11-14 02:59:57Z ckuersteiner $
+# $Id: gb_limesurvey_mult_vuln_sep18_2.nasl 13093 2019-01-16 10:15:31Z ckuersteiner $
 #
 # LimeSurvey <= 3.14.7 Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113263");
-  script_version("$Revision: 12343 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-14 03:59:57 +0100 (Wed, 14 Nov 2018) $");
+  script_version("$Revision: 13093 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-16 11:15:31 +0100 (Wed, 16 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-09-05 11:15:05 +0200 (Wed, 05 Sep 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -50,13 +50,17 @@ if( description )
   script_mandatory_keys("limesurvey/installed");
 
   script_tag(name:"summary", value:"LimeSurvey is prone to multiple vulnerabilities.");
+
   script_tag(name:"insight", value:"Following vulnerabilities exist:
 
   - An admin user can leverage a file upload question to read an arbitrary file
 
   - An authenticated stored XSS vulnerability can be exploited via /index.php?r=admin/survey/sa/insert");
+
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+
   script_tag(name:"affected", value:"LimeSurvey through version 3.14.7.");
+
   script_tag(name:"solution", value:"Update to version 3.14.8 or later.");
 
   script_xref(name:"URL", value:"https://github.com/LimeSurvey/LimeSurvey/blob/3be9b41e76826b57f5860d18d93b23f47d59d2e4/docs/release_notes.txt#L51");

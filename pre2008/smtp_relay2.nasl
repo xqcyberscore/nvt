@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smtp_relay2.nasl 13077 2019-01-15 10:37:47Z cfischer $
+# $Id: smtp_relay2.nasl 13089 2019-01-15 15:39:12Z cfischer $
 #
 # Mail relaying (thorough test)
 #
@@ -39,8 +39,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11852");
-  script_version("$Revision: 13077 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-15 11:37:47 +0100 (Tue, 15 Jan 2019) $");
+  script_version("$Revision: 13089 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-15 16:39:12 +0100 (Tue, 15 Jan 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -50,8 +50,8 @@ if(description)
   script_copyright("This script is Copyright (C) 2003 Michel Arboi");
   script_family("SMTP problems");
   script_dependencies("smtpserver_detect.nasl", "smtp_relay.nasl", "smtp_settings.nasl", "global_settings.nasl");
-  script_exclude_keys("keys/is_private_addr", "keys/islocalhost", "SMTP/wrapped", "SMTP/qmail", "SMTP/spam");
-  script_require_ports("Services/smtp", 25);
+  script_require_ports("Services/smtp", 25, 465, 587);
+  script_exclude_keys("keys/is_private_addr", "keys/islocalhost");
 
   script_tag(name:"solution", value:"Upgrade your software or improve the configuration so that
   your SMTP server cannot be used as a relay any more.");
@@ -77,7 +77,14 @@ if(is_private_addr()) exit(0);
 port = get_smtp_port(default:25);
 
 # No use to try "advanced" tests if it is a wide open relay
-if (get_kb_item("SMTP/" + port + "/spam")) exit(0);
+if(get_kb_item("smtp/" + port + "/spam"))
+  exit(0);
+
+if(get_kb_item("smtp/" + port + "/qmail"))
+  exit(0);
+
+if(get_smtp_is_marked_wrapped(port:port))
+  exit(0);
 
 soc = smtp_open(port: port, helo: NULL);
 if (! soc) exit(0);

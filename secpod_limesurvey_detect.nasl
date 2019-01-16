@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_limesurvey_detect.nasl 10896 2018-08-10 13:24:05Z cfischer $
+# $Id: secpod_limesurvey_detect.nasl 13093 2019-01-16 10:15:31Z ckuersteiner $
 #
 # LimeSurvey Version Detection
 #
@@ -27,8 +27,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900352");
-  script_version("$Revision: 10896 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:24:05 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 13093 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-16 11:15:31 +0100 (Wed, 16 Jan 2019) $");
   script_tag(name:"creation_date", value:"2009-05-26 15:05:11 +0200 (Tue, 26 May 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -50,6 +50,8 @@ The script sends a connection request to the server and attempts to detect LimeS
   script_require_ports("Services/www", 80, 8080);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
+  script_xref(name:"URL", value:"https://www.limesurvey.org");
+
   exit(0);
 }
 
@@ -66,63 +68,59 @@ foreach dir( make_list_unique("/limesurvey", "/phpsurveyor", "/survey", "/PHPSur
   rep_dir = dir;
   if (dir == "/") dir = "";
 
-  rcvRes = http_get_cache(item: string(dir, "/index.php"), port: surveyPort);
+  rcvRes = http_get_cache(item: dir + "/index.php", port: surveyPort);
 
   if ('meta name="generator" content="LimeSurvey http://www.limesurvey.org"' >< rcvRes) {
-    version = string("unknown");
+    version = "unknown";
 
-    req = http_get(item: string(dir, "/docs/release_notes.txt"), port: surveyPort);
+    url = dir + "/docs/release_notes.txt";
+    req = http_get(item: url, port: surveyPort);
     res = http_keepalive_send_recv(port:surveyPort, data:req);
 
-    if (res != NULL) {
-      surveyVer = eregmatch(pattern: "Changes from ([]0-9.RCa-z+ ()]+) to ([]0-9.RCa-z+ ()]+)",
-                            string: res);
-      if(surveyVer[2] != NULL) {
-        version = chomp(surveyVer[2]);
-        version = str_replace(string: version, find: " ", replace: "_");
-        version = ereg_replace(string: version, pattern: "(\(|\))", replace: "");
-      }
+    # Changes from 2.6.6LTS (build 171111) to 2.6.7LTS (build 171208) Feb 23, 2018
+    surveyVer = eregmatch(pattern: "Changes from [^)]+) to ([0-9.]+)[^)]+\)", string: res);
+    if (!isnull(surveyVer[1])) {
+      version = surveyVer[1];
+      concUrl = url;
     }
 
-    set_kb_item(name:"www/" + surveyPort + "/LimeSurvey",
-                    value:version);
-    set_kb_item(name: "limesurvey/installed", value: TRUE);
-
-    cpe = build_cpe(value: version, exp: "([]0-9.RCa-z+ ()_]+)",
-                    base: "cpe:/a:limesurvey:limesurvey:");
-    if (isnull(cpe))
-      cpe = "cpe:/a:limesurvey:limesurvey";
-
-    register_product(cpe: cpe, location: rep_dir, port: surveyPort);
-
-    log_message(data: build_detection_report(app: "LimeSurvey", version: version,
-                                             install: rep_dir, cpe: cpe), port: surveyPort);
-  }
-  # PHPSurveyor or Surveyor are the product name of old LimeSurvey
-  else if ("You have not provided a survey identification number" >< rcvRes) {
-    version = string("unknown");
-
-    req = http_get(item: string(dir, "/docs/release_notes_and_upgrade_instructions.txt"),
-                   port: surveyPort);
-    res = http_keepalive_send_recv(port:surveyPort, data:req);
-
-    if (res != NULL) {
-      surveyVer = eregmatch(pattern:"Changes from ([0-9.]+) to ([0-9.]+)", string:res);
-      if(surveyVer[2] != NULL)
-        version = chomp(surveyVer[2]);
-    }
-
-    set_kb_item(name:"www/" + surveyPort + "/LimeSurvey", value:version);
     set_kb_item(name: "limesurvey/installed", value: TRUE);
 
     cpe = build_cpe(value: version, exp: "([0-9.]+)", base: "cpe:/a:limesurvey:limesurvey:");
-    if (isnull(cpe))
+    if (!cpe)
       cpe = "cpe:/a:limesurvey:limesurvey";
 
-    register_product(cpe: cpe, location: rep_dir, port: surveyPort);
+    register_product(cpe: cpe, location: rep_dir, port: surveyPort, service: "www");
 
-    log_message(data: build_detection_report(app: "LimeSurvey", version: version,
-                                             install: rep_dir, cpe: cpe), port: surveyPort);
+    log_message(data: build_detection_report(app: "LimeSurvey", version: version, install: rep_dir, cpe: cpe,
+                                             concluded: surveyVer[0], concludedUrl: concUrl),
+                port: surveyPort);
+  }
+  # PHPSurveyor or Surveyor are the product name of old LimeSurvey
+  else if ("You have not provided a survey identification number" >< rcvRes) {
+    version = "unknown";
+
+    url = dir + "/docs/release_notes_and_upgrade_instructions.txt";
+    req = http_get(item: url, port: surveyPort);
+    res = http_keepalive_send_recv(port:surveyPort, data:req);
+
+    surveyVer = eregmatch(pattern:"Changes from ([0-9.]+) to ([0-9.]+)", string:res);
+    if (!isnull(surveyVer[2])) {
+      version = surveyVer[2];
+      concUrl = url;
+    }
+
+    set_kb_item(name: "limesurvey/installed", value: TRUE);
+
+    cpe = build_cpe(value: version, exp: "([0-9.]+)", base: "cpe:/a:limesurvey:limesurvey:");
+    if (!cpe)
+      cpe = "cpe:/a:limesurvey:limesurvey";
+
+    register_product(cpe: cpe, location: rep_dir, port: surveyPort, service: "www");
+
+    log_message(data: build_detection_report(app: "LimeSurvey", version: version, install: rep_dir, cpe: cpe,
+                                             concluded: surveyVer[0], concludedUrl: concUrl),
+                port: surveyPort);
   }
 }
 

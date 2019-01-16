@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_limesurvey_file_discl_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
+# $Id: gb_limesurvey_file_discl_vuln.nasl 13093 2019-01-16 10:15:31Z ckuersteiner $
 #
 # LimeSurvey File Disclosure Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:limesurvey:limesurvey";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140848");
-  script_version("$Revision: 12116 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_version("$Revision: 13093 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-16 11:15:31 +0100 (Wed, 16 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-03-05 09:07:18 +0700 (Mon, 05 Mar 2018)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
@@ -64,7 +64,6 @@ installation, which allows remote attackers to access the configuration file.");
 }
 
 include("host_details.inc");
-include("revisions-lib.inc");
 include("version_func.inc");
 
 if (!port = get_app_port(cpe: CPE))
@@ -73,35 +72,22 @@ if (!port = get_app_port(cpe: CPE))
 if (!version = get_app_version(cpe: CPE, port: port))
   exit(0);
 
-# Just get the major version without build
-vers = eregmatch(pattern: "^([0-9.]+)", string: version);
-if (isnull(vers[1]))
+if (version_in_range(version: version, test_version: "2.6.0", test_version2: "2.6.6")) {
+  report = report_fixed_ver(installed_version: version, fixed_version: "2.6.7");
+  security_message(port: port, data: report);
   exit(0);
-
-check_vers = vers[1];
-
-if (check_vers =~ "^2\.6") {
-  if (version_is_less(version: check_vers, test_version: "2.6.7")) {
-    report = report_fixed_ver(installed_version: version, fixed_version: "2.6.7");
-    security_message(port: port, data: report);
-    exit(0);
-  }
 }
 
-if (check_vers =~ "^2\.7") {
-  if (version_is_less(version: check_vers, test_version: "2.73.1")) {
-    report = report_fixed_ver(installed_version: version, fixed_version: "2.73.1");
-    security_message(port: port, data: report);
-    exit(0);
-  }
+if (version_in_range(version: version, test_version: "2.7.0", test_version2: "2.73.0")) {
+  report = report_fixed_ver(installed_version: version, fixed_version: "2.73.1");
+  security_message(port: port, data: report);
+  exit(0);
 }
 
-if (check_vers =~ "^3\.") {
-  if (version_is_less(version: check_vers, test_version: "3.4.2")) {
-    report = report_fixed_ver(installed_version: version, fixed_version: "3.4.2");
-    security_message(port: port, data: report);
-    exit(0);
-  }
+if (version_in_range(version: version, test_version: "3.0.0", test_version2: "3.4.1")) {
+  report = report_fixed_ver(installed_version: version, fixed_version: "3.4.2");
+  security_message(port: port, data: report);
+  exit(0);
 }
 
-exit(0);
+exit(99);

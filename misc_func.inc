@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: misc_func.inc 13067 2019-01-14 14:59:37Z cfischer $
+# $Id: misc_func.inc 13095 2019-01-16 10:35:42Z cfischer $
 #
 # Miscellaneous support methods
 #
@@ -26,7 +26,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 13067 $
+# $Revision: 13095 $
 #
 ###############################################################################
 
@@ -1708,30 +1708,4 @@ function get_vt_strings() {
   ret_array["uppercase_rand_hex"] = hexstr( vt_string_up + rand_numbers );
 
   return ret_array;
-}
-
-# @brief Returns the "third party" domain the user has configured within smtp_settings.nasl. To avoid querying
-#        the KB for the same info again it will be cached within an internal variable.
-#
-# @return A string containing the "third party" domain the user has configured within smtp_setting.nasl
-#         or "example.com" in the case where the default was kept in smtp_settings.nasl or the VT wasn't
-#         included in the scan configuration.
-#
-function get_3rdparty_domain() {
-
-  local_var domain;
-  # nb: __3rdparty_domain is a global var
-
-  if( ! isnull( __3rdparty_domain ) ) {
-    domain = string( __3rdparty_domain );
-  } else {
-    domain = get_kb_item( "Settings/third_party_domain" );
-    if( ! isnull( domain ) ) {
-      __3rdparty_domain = string( domain );
-    } else {
-      domain = "example.com";
-      __3rdparty_domain = domain;
-    }
-  }
-  return domain;
 }

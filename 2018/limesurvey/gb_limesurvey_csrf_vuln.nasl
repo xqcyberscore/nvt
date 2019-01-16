@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_limesurvey_csrf_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
+# $Id: gb_limesurvey_csrf_vuln.nasl 13093 2019-01-16 10:15:31Z ckuersteiner $
 #
 # LimeSurvey CSRF Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:limesurvey:limesurvey";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140788");
-  script_version("$Revision: 12116 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_version("$Revision: 13093 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-16 11:15:31 +0100 (Wed, 16 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-02-20 17:01:16 +0700 (Tue, 20 Feb 2018)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -66,7 +66,6 @@ the affected endpoint.");
 }
 
 include("host_details.inc");
-include("revisions-lib.inc");
 include("version_func.inc");
 
 if (!port = get_app_port(cpe: CPE))
@@ -75,10 +74,10 @@ if (!port = get_app_port(cpe: CPE))
 if (!version = get_app_version(cpe: CPE, port: port))
   exit(0);
 
-if (revcomp(a: version, b: "3.3.1_build_180214") < 0) {
-  report = report_fixed_ver(installed_version: version, fixed_version: "3.3.1_build_180214");
+if (version_is_less(version: version, test_version: "3.3.1")) {
+  report = report_fixed_ver(installed_version: version, fixed_version: "3.3.1");
   security_message(port: port, data: report);
   exit(0);
 }
 
-exit(0);
+exit(99);

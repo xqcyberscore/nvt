@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_traccar_detect.nasl 13062 2019-01-14 10:34:15Z asteins $
+# $Id: gb_traccar_detect.nasl 13085 2019-01-15 13:48:38Z jschulte $
 #
 # Traccar Server Detection
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112482");
-  script_version("$Revision: 13062 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-14 11:34:15 +0100 (Mon, 14 Jan 2019) $");
+  script_version("$Revision: 13085 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-15 14:48:38 +0100 (Tue, 15 Jan 2019) $");
   script_tag(name:"creation_date", value:"2019-01-14 10:51:11 +0100 (Mon, 14 Jan 2019)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -78,7 +78,7 @@ foreach location( make_list( "/", cgi_dirs( port: port ) ) ) {
     set_kb_item( name: "traccar/location", value: location );
 
     version = "unknown";
-    vers_url = "/api/server";
+    vers_url = dir + "/api/server";
     vers_buf = http_get_cache( item: vers_url, port: port );
 
     vers = eregmatch( string: vers_buf, pattern: 'version":"([0-9.]+)' );

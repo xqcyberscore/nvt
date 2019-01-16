@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: check_smtp_helo.nasl 13083 2019-01-15 13:04:23Z cfischer $
+# $Id: check_smtp_helo.nasl 13086 2019-01-15 15:05:48Z cfischer $
 # Description: SMTP server accepts us
 #
 # Authors:
@@ -25,8 +25,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.18528");
-  script_version("$Revision: 13083 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-15 14:04:23 +0100 (Tue, 15 Jan 2019) $");
+  script_version("$Revision: 13086 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-15 16:05:48 +0100 (Tue, 15 Jan 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -85,24 +85,18 @@ foreach port( ports ) {
 
   s = open_sock_tcp( port );
   if( ! s ) {
-    set_kb_item( name:"smtp/broken", value:TRUE );
-    set_kb_item( name:"smtp/" + port + "/broken", value:TRUE );
-    if( port == 25 ) {
-      set_kb_item( name:"smtp/wrapped", value:TRUE );
-      set_kb_item( name:"smtp/" + port + "/wrapped", value:TRUE );
-    }
+    set_smtp_is_marked_broken( port:port );
+    if( port == 25 )
+      set_smtp_is_marked_wrapped( port:port );
     continue;
   }
 
   r = smtp_recv( socket:s, retry:3 );
   if( ! r ) {
     close( s );
-    set_kb_item( name:"smtp/broken", value:TRUE );
-    set_kb_item( name:"smtp/" + port + "/broken", value:TRUE );
-    if( port == 25 ) {
-      set_kb_item( name:"smtp/wrapped", value:TRUE );
-      set_kb_item( name:"smtp/" + port + "/wrapped", value:TRUE );
-    }
+    set_smtp_is_marked_broken( port:port );
+    if( port == 25 )
+      set_smtp_is_marked_wrapped( port:port );
     continue;
   }
 
@@ -111,8 +105,7 @@ foreach port( ports ) {
     report  = "The SMTP server on this port doesn't answer with 3 ASCII digit codes as expected. It might be possible that it ";
     report += "was mis-identified previously. Answer (truncated): " + substr( r, 0, 500 );
     log_message( port:port, data:report );
-    set_kb_item( name:"smtp/broken", value:TRUE );
-    set_kb_item( name:"smtp/" + port + "/broken", value:TRUE );
+    set_smtp_is_marked_broken( port:port );
     continue;
   }
 

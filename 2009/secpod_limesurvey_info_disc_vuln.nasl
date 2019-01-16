@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_limesurvey_info_disc_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: secpod_limesurvey_info_disc_vuln.nasl 13093 2019-01-16 10:15:31Z ckuersteiner $
 #
 # LimeSurvey Information Disclosure Vulnerability
 #
@@ -24,65 +24,63 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will let the attacker gain sensitive information by
-  executing arbitrary commands inside the context of the affected web application.
-  Impact Level: Application";
-tag_affected = "LimeSurvey version prior to 1.82";
-tag_insight = "Error in a script in '/admin/remotecontrol/' and can be exploited to view and
-  manipulate files, which may allow the execution of e.g. arbitrary PHP code.";
-tag_solution = "Upgrade to LimeSurvey version 1.82 or later
-  http://www.limesurvey.org/content/view/22/82/lang,en";
-tag_summary = "This host is running LimeSurvey and is prone to Information
-  Disclosure vulnerability.";
+CPE = "cpe:/a:limesurvey:limesurvey";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900353");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 13093 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-16 11:15:31 +0100 (Wed, 16 Jan 2019) $");
   script_tag(name:"creation_date", value:"2009-05-26 15:05:11 +0200 (Tue, 26 May 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-2009-1604");
   script_bugtraq_id(34785);
+
   script_name("LimeSurvey Information Disclosure Vulnerability");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/34946");
-  script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2009/1219");
-  script_xref(name : "URL" , value : "http://www.limesurvey.org/content/view/169/1/lang,en");
+
+  script_xref(name:"URL", value:"http://secunia.com/advisories/34946");
+  script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2009/1219");
+  script_xref(name:"URL", value:"http://www.limesurvey.org/content/view/169/1/lang,en");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Web application abuses");
   script_dependencies("secpod_limesurvey_detect.nasl");
+  script_mandatory_keys("limesurvey/installed");
   script_require_ports("Services/www", 80, 8080);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+
+  script_tag(name:"impact", value:"Successful exploitation will let the attacker gain sensitive information by
+  executing arbitrary commands inside the context of the affected web application.");
+
+  script_tag(name:"affected", value:"LimeSurvey version prior to 1.82");
+
+  script_tag(name:"insight", value:"Error in a script in '/admin/remotecontrol/' and can be exploited to view and
+  manipulate files, which may allow the execution of e.g. arbitrary PHP code.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
+  script_tag(name:"solution", value:"Upgrade to LimeSurvey version 1.82 or later.");
+
+  script_tag(name:"summary", value:"imeSurvey is prone to Information Disclosure vulnerability.");
+
   exit(0);
 }
 
-
-include("http_func.inc");
+include("host_details.inc");
 include("version_func.inc");
 
-surveyPort = get_http_port(default:80);
-if(!surveyPort){
+if (!port = get_app_port(cpe: CPE))
+  exit(0);
+
+if (!version = get_app_version(cpe: CPE, port: port))
+  exit(0);
+
+if (version_is_less(version: version, test_version: "1.82")) {
+  report = report_fixed_ver(installed_version: version, fixed_version: "1.82");
+  security_message(port: port, data: report);
   exit(0);
 }
 
-surveyVer = get_kb_item("www/"+ surveyPort + "/LimeSurvey");
-if(surveyVer == NULL){
-  exit(0);
-}
-
-ver = eregmatch(pattern:"^(.+) under (/.*)$", string:surveyVer);
-if(ver[1] != NULL)
-{
-  # Check for LimeSurvey version prior to 1.82
-  if(version_is_less(version:ver[1], test_version:"1.82")){
-    security_message(surveyPort);
-  }
-}
+exit(99);

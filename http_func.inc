@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: http_func.inc 12871 2018-12-21 14:27:35Z cfischer $
+# $Id: http_func.inc 13088 2019-01-15 15:12:52Z cfischer $
 #
 # Methods to handle HTTP
 #
@@ -24,7 +24,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 12871 $
+# $Revision: 13088 $
 #
 ###############################################################################
 
@@ -285,7 +285,7 @@ function get_http_banner( port, file, ignore_broken ) {
 function get_http_port( default, nodefault, host, ignore_broken, ignore_cgi_disabled, dont_use_vhosts ) {
 
   local_var default, nodefault, host, ignore_broken, ignore_cgi_disabled, dont_use_vhosts;
-  local_var http_cgi_disabled, port, p;
+  local_var http_cgi_disabled, port;
   # nb: optimize_test_enabled is a global var
 
   if( ! default && ! nodefault ) {
@@ -327,14 +327,12 @@ function get_http_port( default, nodefault, host, ignore_broken, ignore_cgi_disa
     if( ! host )
       host = "*";
 
-    p = get_http_is_marked_broken( port:default, host:host );
-    if( p )
+    if( get_http_is_marked_broken( port:default, host:host ) )
       exit( 0 );
   }
 
   # TBD: It seems this is never set...
-  p = get_kb_item( "Services/www/" + default + "/working" );
-  if( p )
+  if( get_kb_item( "Services/www/" + default + "/working" ) )
     return default;
 
   if( ! get_port_state( default ) )
@@ -1451,10 +1449,12 @@ function get_http_is_marked_broken( port, host ) {
     marked_broken = get_kb_item( "www/" + host + "/" + port + "/is_broken" );
   }
 
-  if( marked_broken )
+  if( marked_broken ) {
     _http_is_broken_array[host+port] = TRUE;
-  else
+  } else {
     _http_is_broken_array[host+port] = FALSE;
+    marked_broken = FALSE;
+  }
 
   return marked_broken;
 }
@@ -1485,6 +1485,7 @@ function set_http_is_marked_broken( port, host ) {
   }
 
   set_kb_item( name:"www/" + host + "/" + port + "/is_broken", value:TRUE );
+  _http_is_broken_array[host+port] = TRUE;
   return TRUE;
 }
 

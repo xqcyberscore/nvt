@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_limesurvey_mult_vuln_sep18.nasl 12193 2018-11-02 03:47:13Z ckuersteiner $
+# $Id: gb_limesurvey_mult_vuln_sep18.nasl 13093 2019-01-16 10:15:31Z ckuersteiner $
 #
 # LimeSurvey <= 3.14.3 Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113264");
-  script_version("$Revision: 12193 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-02 04:47:13 +0100 (Fri, 02 Nov 2018) $");
+  script_version("$Revision: 13093 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-16 11:15:31 +0100 (Wed, 16 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-09-07 10:11:44 +0200 (Fri, 07 Sep 2018)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -50,7 +50,9 @@ if( description )
   script_mandatory_keys("limesurvey/installed");
 
   script_tag(name:"summary", value:"LimeSurvey is prone to multiple vulnerabilities.");
+
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+
   script_tag(name:"insight", value:"Following vulnerabilities exist:
 
   - An authenticated user uploading a zip archive containing malicious php files can result
@@ -58,8 +60,12 @@ if( description )
 
   - An authenticated user uploading a specially crafted zip file can result
     in the attacker gaining remote code execution.");
-  script_tag(name:"impact", value:"Successful exploitation would allow an attacker to gain complete control over the target system.");
+
+  script_tag(name:"impact", value:"Successful exploitation would allow an attacker to gain complete control over
+the target system.");
+
   script_tag(name:"affected", value:"LimeSurvey through version 3.14.3.");
+
   script_tag(name:"solution", value:"Update to version 3.14.4.");
 
   script_xref(name:"URL", value:"https://vuldb.com/?id.123646");
