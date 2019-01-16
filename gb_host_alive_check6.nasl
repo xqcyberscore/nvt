@@ -54,12 +54,12 @@ if(description)
 
 include("host_details.inc");
 
-if( ! find_in_path( "ping" ) ) exit( 0 );
+if( ! find_in_path( "nmap" ) ) exit( 0 );
 
 ip   = get_host_ip();
-ping = pread( cmd:"ping", argv:make_list( "ping", "-c 3", ip ), cd:1 );
+ping = pread( cmd:"nmap", argv:make_list( 'nmap','-Pn','--top-ports','50', ip ), cd:1 );
 
-if( "3 packets transmitted, 0 received" >< ping || "3 packets transmitted, 0 packets received" >< ping ) { #nb: inetutils vs. iputils
+if( "Host is up" >!< ping ) { #nb: inetutils vs. iputils
   log_message( port:0, data:"Target host seems to be suspended or disconnected from the Network. It was marked as 'dead' to the scanner and the scan was aborted." );
   register_host_detail( name:"dead", value:1 );
   set_kb_item( name:"Host/dead", value:TRUE );
