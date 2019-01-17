@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1634.nasl 13090 2019-01-16 07:07:15Z cfischer $
+# $Id: deb_dla_1634.nasl 13111 2019-01-17 07:49:10Z mmartin $
 #
 # Auto-generated from advisory DLA 1634-1 using nvtgen 1.0
 # Script version: 1.1
@@ -31,7 +31,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891634");
-  script_version("$Revision: 13090 $");
+  script_version("$Revision: 13111 $");
   script_cve_id("CVE-2017-11406", "CVE-2017-11407", "CVE-2017-11409", "CVE-2017-13765", "CVE-2017-15191",
                 "CVE-2017-17935", "CVE-2017-17997", "CVE-2017-7700", "CVE-2017-7703", "CVE-2017-7746",
                 "CVE-2017-7747", "CVE-2017-9766", "CVE-2018-11356", "CVE-2018-11357", "CVE-2018-11359",
@@ -42,10 +42,10 @@ if(description)
                 "CVE-2018-9263", "CVE-2018-9265", "CVE-2018-9267", "CVE-2018-9268", "CVE-2018-9269",
                 "CVE-2018-9270");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1634-1] wireshark security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-16 08:07:15 +0100 (Wed, 16 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-17 08:49:10 +0100 (Thu, 17 Jan 2019) $");
   script_tag(name:"creation_date", value:"2019-01-16 00:00:00 +0100 (Wed, 16 Jan 2019)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

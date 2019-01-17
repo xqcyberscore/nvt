@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_31c2a0b2ea_tinc_fc28.nasl 12913 2018-12-31 10:50:43Z santu $
+# $Id: gb_fedora_2018_31c2a0b2ea_tinc_fc28.nasl 13111 2019-01-17 07:49:10Z mmartin $
 #
 # Fedora Update for tinc FEDORA-2018-31c2a0b2ea
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875377");
-  script_version("$Revision: 12913 $");
+  script_version("$Revision: 13111 $");
   script_cve_id("CVE-2018-16737", "CVE-2018-16738", "CVE-2018-16758");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-31 11:50:43 +0100 (Mon, 31 Dec 2018) $");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-17 08:49:10 +0100 (Thu, 17 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-12-27 04:28:43 +0100 (Thu, 27 Dec 2018)");
   script_name("Fedora Update for tinc FEDORA-2018-31c2a0b2ea");
   script_category(ACT_GATHER_INFO);

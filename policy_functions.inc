@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test support library
-# $Id: policy_functions.inc 12340 2018-11-13 15:26:08Z emoss $
+# $Id: policy_functions.inc 13104 2019-01-16 15:56:00Z emoss $
 #
 # Supporting methods for Policy NVTs.
 #
@@ -216,18 +216,15 @@ function win32_useraccount(select,name){
 #
 # @return A string with the version or NULL if not installed on host
 #
-function get_package_version(package, maintainer){
-	local_var package, maintainer;
+function get_package_version(package){
+	local_var package;
 	if(!package){
 		set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#package_version#-#package" );
 		return;
 	}
-	if(!maintainer){
-		set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#package_version#-#maintainer" );
-		return;
-	}
-	if(maintainer == 'RPM'){
-		packages_string = get_kb_item("ssh/login/rpms");
+
+	if(get_kb_item('ssh/login/rpms')){
+		packages_string = get_kb_item('ssh/login/rpms');
 		packages_list = split(packages_string, sep:';', keep:FALSE);
 		foreach pak (packages_list){
 			package_split = split(pak, sep:'~', keep:FALSE);
@@ -237,8 +234,8 @@ function get_package_version(package, maintainer){
 				return version;
 			}
 		}
-	}else if(maintainer == 'DEB'){
-		packages_string = get_kb_item("ssh/login/packages");
+	}else if(get_kb_item('ssh/login/packages')){
+		packages_string = get_kb_item('ssh/login/packages');
 		packages_list = split(packages_string, keep:FALSE);
 		foreach line (packages_list){
 			if(line =~ "^ii"){

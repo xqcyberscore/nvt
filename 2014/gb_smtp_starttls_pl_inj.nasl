@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_smtp_starttls_pl_inj.nasl 11196 2018-09-03 13:09:40Z mmartin $
+# $Id: gb_smtp_starttls_pl_inj.nasl 13116 2019-01-17 09:58:55Z cfischer $
 #
 # Multiple Vendors STARTTLS Implementation Plaintext Arbitrary Command Injection Vulnerability
 #
@@ -28,13 +28,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103935");
-  script_version("$Revision: 11196 $");
+  script_version("$Revision: 13116 $");
   script_bugtraq_id(46767);
   script_cve_id("CVE-2011-0411", "CVE-2011-1430", "CVE-2011-1431", "CVE-2011-1432",
                 "CVE-2011-1506", "CVE-2011-1575", "CVE-2011-1926", "CVE-2011-2165");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:09:40 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-17 10:58:55 +0100 (Thu, 17 Jan 2019) $");
   script_tag(name:"creation_date", value:"2014-04-08 13:52:07 +0200 (Tue, 08 Apr 2014)");
   script_name("Multiple Vendors STARTTLS Implementation Plaintext Arbitrary Command Injection Vulnerability");
   script_category(ACT_ATTACK);
@@ -65,10 +65,13 @@ if(description)
   script_tag(name:"impact", value:"An attacker can exploit this issue to execute arbitrary commands in
   the context of the user running the application. Successful exploits
   can allow attackers to obtain email usernames and passwords.");
+
   script_tag(name:"vuldetect", value:"Send a special crafted STARTTLS request and check the response.");
   script_tag(name:"solution", value:"Updates are available.");
+
   script_tag(name:"summary", value:"Multiple vendors' implementations of STARTTLS are prone to a
   vulnerability that lets attackers inject arbitrary commands.");
+
   script_tag(name:"affected", value:"The following vendors are affected:
 
   Ipswitch
@@ -93,36 +96,35 @@ if(description)
   exit(0);
 }
 
-if( ! defined_func( 'socket_negotiate_ssl' ) ) exit( 0 );
+if( ! defined_func( "socket_negotiate_ssl" ) )
+  exit( 0 );
 
 include("smtp_func.inc");
 
 port = get_smtp_port( default:25 );
 
-if( ! get_kb_item( 'smtp/' + port + '/starttls' ) ) exit( 0 );
-if( ! soc = smtp_open( port:port, helo:this_host() ) ) exit( 0 );
+if( ! get_kb_item( "smtp/" + port + "/starttls" ) )
+  exit( 0 );
+
+if( ! soc = smtp_open( port:port, data:get_smtp_helo_from_kb(port:port) ) )
+  exit( 0 );
 
 send( socket:soc, data:'STARTTLS\r\nNOOP\r\n' );
-if( !r = smtp_recv_line( socket:soc ) )
-{
-  smtp_close(socket:soc);
+r = smtp_recv_line( socket:soc, check:"220" );
+if( ! r ) {
+  smtp_close( socket:soc, check_data:r );
   exit( 0 );
 }
 
-if( "220" >< r )
-{
-  soc = socket_negotiate_ssl( socket:soc );
-  if( ! soc ) exit( 0 );
-  s = smtp_recv_line( socket:soc );
+soc = socket_negotiate_ssl( socket:soc );
+if( ! soc )
+  exit( 0 );
 
-  if( "250" >< s )
-  {
-    smtp_close( socket:soc );
-    security_message( port:port );
-    exit( 0 );
-  }
+s = smtp_recv_line( socket:soc, check:"250" );
+smtp_close( socket:soc, check_data:s );
+if( s ) {
+  security_message( port:port );
+  exit( 0 );
 }
 
-smtp_close( socket:soc );
-exit( 0 );
-
+exit( 99 );

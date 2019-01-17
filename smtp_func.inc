@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: smtp_func.inc 13096 2019-01-16 11:03:54Z cfischer $
+# $Id: smtp_func.inc 13119 2019-01-17 11:50:13Z cfischer $
 #
 # Support functions for handling SMTP
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 13096 $
+# $Revision: 13119 $
 #
 ###############################################################################
 
@@ -59,68 +59,39 @@ function smtp_close( socket, check_data ) {
   close( socket );
 }
 
-# @brief Opens a connection to a SMTP server and returns the opened socket.
+# @brief Opens a connection to a SMTP server and returns the opened socket. Allows to optionally sending
+#        additional data within an HELO/EHLO request.
 #
-# @param port The port of the remote SMTP server.
-# @param helo An (optional) string which is sent within an HELO request to the server. If no
-#             string is passed an opened socket will be returned directly. If the string is
-#             passed the function will verify if the server has replied with an SMTP status
-#             code in the range of 2-3xx.
+# @param port      The port of the remote SMTP server.
+# @param data      An (optional) string which is sent within an HELO/EHLO request to the server. If no
+#                  string is passed an opened socket will be returned directly. If the string is
+#                  passed the function will verify if the server has replied with an SMTP status
+#                  code in the range of 2-3xx.
+# @param send_helo If set to TRUE (the default) the passed data string will be sent within an HELO
+#                  request.
+# @param send_ehlo If set to TRUE the passed data string will be sent within an EHLO
+#                  request.
 #
-# @return The opened socket or NULL if no connection could be openend, no data was
-#         received or no port parameter wasn passed.
+# @note If send_helo and send_ehlo is set to FALSE or no data parameter was passed the function will
+#       return the opened socket directly without sending the HELO/EHLO request to the target. Also
+#       make sure that you don't set both send_helo and send_ehlo to TRUE. In this case the function
+#       can't decide for you which request you want to sent and will return with a NULL.
 #
-function smtp_open( port, helo ) {
+# @return The opened socket or NULL if no connection could be opened, no data was
+#         received, no port parameter or a wrong mix of parameters was passed.
+#
+function smtp_open( port, data, send_helo, send_ehlo ) {
 
-  local_var port, helo;
-  local_var soc, data;
+  local_var port, data, send_helo, send_ehlo;
+  local_var soc, res, req;
 
   if( ! port ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#smtp_open" );
     return NULL;
   }
 
-  soc = open_sock_tcp( port );
-  if ( ! soc )
-    return NULL;
-
-  data = smtp_recv_banner( socket:soc );
-  if( ! data ) {
-    smtp_close( socket:soc, check_data:data );
-    return NULL;
-  }
-
-  if( isnull( helo ) )
-    return soc;
-
-  send( socket:soc, data:strcat( 'HELO ', helo, '\r\n' ) );
-  data = smtp_recv_line( socket:soc, code:"[2-3][0-9]{2}" );
-  if( ! data ) {
-    smtp_close( socket:soc, check_data:data );
-    return NULL;
-  }
-
-  return soc;
-}
-
-# @brief Opens a connection to a SMTP server and returns the opened socket.
-#
-# @param port The port of the remote SMTP server.
-# @param helo An (optional) string which is sent within an EHLO request to the server. If no
-#             string is passed an opened socket will be returned directly. If the string is
-#             passed the function will verify if the server has replied with an SMTP status
-#             code in the range of 2-3xx.
-#
-# @return The opened socket or NULL if no connection could be openend, no data was
-#         received or no port parameter wasn passed.
-#
-function smtp_open_ehlo( port, helo ) {
-
-  local_var port, helo;
-  local_var soc, data;
-
-  if( ! port ) {
-    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#smtp_open_ehlo" );
+  if( send_helo == TRUE && send_ehlo == TRUE ) {
+    set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#smtp_open: send_helo and send_ehlo set to TRUE, the function can't decide which one you want to use and will return with NULL" );
     return NULL;
   }
 
@@ -128,19 +99,33 @@ function smtp_open_ehlo( port, helo ) {
   if ( ! soc )
     return NULL;
 
-  data = smtp_recv_banner( socket:soc );
-  if( ! data ) {
-    smtp_close( socket:soc, check_data:data );
+  res = smtp_recv_banner( socket:soc );
+  if( ! res ) {
+    smtp_close( socket:soc, check_data:res );
     return NULL;
   }
 
-  if( isnull( helo ) )
+  # set some sane defaults based on what's passed via the function parameters
+  if( isnull( send_helo ) && ! send_ehlo )
+    send_helo = TRUE;
+
+  if( isnull( send_helo ) && isnull( send_ehlo ) ) {
+    send_helo = TRUE;
+    send_ehlo = FALSE;
+  }
+
+  if( isnull( data ) || ( send_helo == FALSE && send_ehlo == FALSE ) )
     return soc;
 
-  send( socket:soc, data:strcat( 'EHLO ', helo, '\r\n' ) );
-  data = smtp_recv_line( socket:soc, code:"[2-3][0-9]{2}" );
-  if( ! data ) {
-    smtp_close( socket:soc, check_data:data );
+  if( ! send_helo && send_ehlo )
+    req = strcat( 'EHLO ', data, '\r\n' );
+  else
+    req = strcat( 'HELO ', data, '\r\n' );
+
+  send( socket:soc, data:req );
+  res = smtp_recv_line( socket:soc, code:"[2-3][0-9]{2}" );
+  if( ! res ) {
+    smtp_close( socket:soc, check_data:res );
     return NULL;
   }
 
@@ -305,7 +290,7 @@ function get_smtp_banner( port ) {
 # @param code   An (optional) string or regex which is used to verify the received data against.
 #               If this parameter isn't passed the default regex of ^[0-9]{3}[ -] is assumed.
 #               If e.g. a code of 220 is passed the following regex is used: ^220[ -].
-# @param retry  An (optional) amout of retries which should be used for the initial connection
+# @param retry  An (optional) amount of retries which should be used for the initial connection
 #               if no data was received. If this parameter isn't passed no retry will be done.
 # @param last   An (optional) parameter to specify (via a passed TRUE/FALSE) if only the last
 #               data matching the mentioned regex in the 'code' parameter should be returned.
@@ -372,7 +357,7 @@ function smtp_recv_line( socket, code, retry, last ) {
 #        the received data is related to SMTP responses and is matching a 220 return code.
 #
 # @param socket The socket to the SMTP server.
-# @param retry  An (optional) amout of retries which should be used for the initial connection
+# @param retry  An (optional) amount of retries which should be used for the initial connection
 #               if no data was received. If this parameter isn't passed no retry will be done.
 #
 # @return The received data or NULL if the received data is not matching a 220 return code, no
@@ -397,9 +382,14 @@ function smtp_recv_banner( socket, retry ) {
 #        where the "unscanned_closed" scanner setting is set to "no"
 #        it will return the port passed via the default parameter.
 #
+# @note This function will fork on multiple open ports.
+#
 # @param default   The port to return if "unscanned_closed" is set to "no" and no ports have been found open.
 # @param nodefault Don't exit if no "default" parameter is passed, it still will return if no SMTP servers are detected at all.
-
+#
+# @return The open / found SMTP ports or the port passed via the default parameter in the case of no found ports
+#         and "unscanned_closed" is set to "no".
+#
 function get_smtp_port( default, nodefault ) {
 
   local_var default, nodefault, port;
@@ -426,6 +416,69 @@ function get_smtp_port( default, nodefault ) {
     exit( 0 );
 
   return default;
+}
+
+# @brief Returns all SMTP ports of the target system which are saved
+#        in the KB entry "Services/smtp" found by the scanner. If no
+#        ports where found open or no list is passed to the "default_ports"
+#        parameter the function will return an empty list. In the case
+#        where the "unscanned_closed" scanner setting is set to "no" it
+#        will return a default set of SMTP ports (namely 25, 465 and 587)
+#        or (if passed) the ports included in the list of the default_ports
+#        parameter.
+#
+# @note  In contrast to @ref get_smtp_port this function will not fork
+#        and return a list instead. This should be used e.g. for
+#        Detection-VTs where we want to make sure that we're not getting
+#        blocked by the remote service with to many concurrent connections.
+#
+# @param default_list The list of ports to return (overwriting the internal defaults) if "unscanned_closed"
+#                     is set to "no" and no ports have been found open.
+#
+# @return The open / found SMTP ports, if none where found an empty list. In the case of no found ports and
+#         "unscanned_closed" is set to "no" a set of default ports or the list passed to the default_ports
+#         parameter.
+#
+function get_smtp_ports( default_list ) {
+
+  local_var default_list, final_port_list, check_port_list, default_ports, num_ports, ports, port;
+
+  final_port_list = make_list();
+  check_port_list = make_list();
+  default_ports = make_list( 25, 465, 587 );
+  num_ports = 0;
+
+  ports = get_kb_list( "Services/smtp" );
+  if( ports && typeof( ports ) == "array" ) {
+    foreach port( ports ) {
+      num_ports++;
+      check_port_list = make_list( check_port_list, port );
+    }
+  }
+
+  if( num_ports == 0 ) {
+    if( default_list && typeof( default_list ) == "array" )
+      check_port_list = default_list;
+    else
+      check_port_list = default_ports;
+  }
+
+  foreach port( check_port_list ) {
+    # Includes e.g. PJL ports which are printing everything
+    # sent to them so don't include them here.
+    if( smtp_is_fragile_port( port:port ) )
+      continue;
+
+    # TBD: Also check for get_smtp_is_marked_wrapped?
+    if( get_smtp_is_marked_broken( port:port ) )
+      continue;
+
+    if( ! get_port_state( port ) )
+      continue;
+
+    final_port_list = make_list( final_port_list, port );
+  }
+  return final_port_list;
 }
 
 # @brief Returns the info if a remote SMTP server was internally (in the KB)

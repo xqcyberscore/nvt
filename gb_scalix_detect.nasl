@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_scalix_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
+# $Id: gb_scalix_detect.nasl 13127 2019-01-17 14:33:33Z cfischer $
 #
 # Scalix Detection
 #
@@ -25,29 +25,28 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105102");
+  script_version("$Revision: 13127 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-17 15:33:33 +0100 (Thu, 17 Jan 2019) $");
+  script_tag(name:"creation_date", value:"2014-11-03 13:25:47 +0100 (Mon, 03 Nov 2014)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"qod_type", value:"remote_banner");
-  script_version("$Revision: 11885 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
-  script_tag(name:"creation_date", value:"2014-11-03 13:25:47 +0100 (Mon, 03 Nov 2014)");
   script_name("Scalix Detection");
-
-  script_tag(name:"summary", value:"The script sends a connection
-request to the server and attempts to extract the version number
-from the reply.");
-
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
-  script_dependencies("find_service.nasl");
-  script_require_ports("Services/www", 80, "Services/smtp", 25, "Services/imap", 143);
+  script_dependencies("find_service2.nasl", "http_version.nasl", "smtpserver_detect.nasl");
+  script_require_ports("Services/www", 80, "Services/smtp", 25, 465, 587, "Services/imap", 143);
+
+  script_tag(name:"summary", value:"The script sends a connection request to the server and
+  attempts to extract the version number from the reply.");
+
+  script_tag(name:"qod_type", value:"remote_banner");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -56,7 +55,7 @@ include("host_details.inc");
 include("smtp_func.inc");
 include("imap_func.inc");
 
-function _report( port, version, location, concluded )
+function _report( port, version, location, concluded, service )
 {
   if( ! version || version == '' ) return;
 
@@ -66,10 +65,10 @@ function _report( port, version, location, concluded )
   set_kb_item( name:"scalix/installed",value:TRUE );
 
   cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:scalix:scalix:" );
-  if( isnull( cpe) )
-    cpe = 'cpe:/a:scalix:scalix';
+  if( ! cpe )
+    cpe = "cpe:/a:scalix:scalix";
 
-  register_product( cpe:cpe, location:location, port:port );
+  register_product( cpe:cpe, location:location, port:port, service:service );
 
   log_message( data: build_detection_report( app:"Scalix",
                                              version:version,
@@ -84,16 +83,17 @@ function _report( port, version, location, concluded )
 }
 
 ports = get_kb_list( "Services/www" );
+if( ! ports )
+  ports = make_list( 80 );
 
 foreach port ( ports )
 {
   if( get_port_state( port ) )
   {
     url = "/webmail/";
-    req = http_get( item:url, port:port );
-    buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
+    buf = http_get_cache( item:url, port:port );
 
-    if(  "<title>Login to Scalix Web Access" >< buf )
+    if( buf && "<title>Login to Scalix Web Access" >< buf )
     {
       vers = 'unknown';
       buf_sp = split( buf, keep:FALSE );
@@ -104,7 +104,7 @@ foreach port ( ports )
         {
           if( version = eregmatch( pattern:"([0-9.]+)" , string:buf_sp[ i + 1 ] ) )
           {
-            _report( port:port, version:version[1], location:"/webmail/", concluded:version[0] );
+            _report( port:port, version:version[1], location:"/webmail/", concluded:version[0], service:"www" );
             break;
           }
         }
@@ -113,47 +113,36 @@ foreach port ( ports )
   }
 }
 
-ports = get_kb_list( "Services/smtp" );
-
+ports = get_smtp_ports();
 foreach port ( ports )
 {
-  if( get_port_state( port ) )
+  banner = get_smtp_banner( port:port );
+  if( banner && "ESMTP Scalix SMTP" >< banner )
   {
-    banner = get_smtp_banner( port:port );
-    if( banner )
+    if( version = eregmatch( pattern:"ESMTP Scalix SMTP Relay ([0-9.]+);" , string:banner ) )
     {
-      if( "ESMTP Scalix SMTP" >< banner )
-      {
-        if( version = eregmatch( pattern:"ESMTP Scalix SMTP Relay ([0-9.]+);" , string:banner ) )
-        {
-          _report( port:port, version:version[1], concluded:'SMTP banner' );
-          break;
-        }
-      }
+      _report( port:port, version:version[1], concluded:'SMTP banner', service:"smtp" );
     }
   }
 }
 
 ports = get_kb_list( "Services/imap" );
+if( ! ports )
+  ports = make_list( 143 );
 
 foreach port ( ports )
 {
   if( get_port_state( port ) )
   {
     banner = get_imap_banner( port:port );
-    if( banner )
+    if( banner && "Scalix IMAP server" >< banner )
     {
-      if( "Scalix IMAP server" >< banner )
+      if( version = eregmatch( pattern:"Scalix IMAP server ([0-9.]+)" , string:banner ) )
       {
-        if( version = eregmatch( pattern:"Scalix IMAP server ([0-9.]+)" , string:banner ) )
-        {
-          _report( port:port, version:version[1], concluded:'IMAP banner' );
-          break;
-        }
+        _report( port:port, version:version[1], concluded:'IMAP banner', service:"imap" );
       }
     }
   }
 }
 
 exit( 0 );
-

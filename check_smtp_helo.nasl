@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: check_smtp_helo.nasl 13086 2019-01-15 15:05:48Z cfischer $
+# $Id: check_smtp_helo.nasl 13120 2019-01-17 12:49:17Z cfischer $
 # Description: SMTP server accepts us
 #
 # Authors:
@@ -25,8 +25,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.18528");
-  script_version("$Revision: 13086 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-15 16:05:48 +0100 (Tue, 15 Jan 2019) $");
+  script_version("$Revision: 13120 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-17 13:49:17 +0100 (Thu, 17 Jan 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -68,10 +68,7 @@ function smtp_recv( socket, retry ) {
   return r2;
 }
 
-# nb: Don't use get_smtp_port() as we want to catch all possible default ports below.
-ports = get_kb_list( "Services/smtp" );
-if( ! ports )
-  ports = make_list( 25, 465, 587 );
+ports = get_smtp_ports();
 
 heloname = get_3rdparty_domain();
 heloname2 = this_host_name();
@@ -79,9 +76,6 @@ if( ! heloname2 )
   heloname2 = this_host();
 
 foreach port( ports ) {
-
-  if( ! get_port_state( port ) )
-    continue;
 
   s = open_sock_tcp( port );
   if( ! s ) {
@@ -110,7 +104,7 @@ foreach port( ports ) {
   }
 
   if( r =~ '^4[0-9]{2}[ -]' ) {
-    smtp_close( socket:s );
+    smtp_close( socket:s, check_data:r );
     report  = "The SMTP server on this port answered with a " + substr( r, 0, 2 ) + " code. ";
     report += "This means that it is temporarily unavailable because it is overloaded or any other reason.";
     report += '\n\nThe scan will be incomplete. You should fix your MTA and rerun the scan, or disable this server if you don\'t use it.';
@@ -120,7 +114,7 @@ foreach port( ports ) {
   }
 
   if( r =~ '^5[0-9]{2}[ -]' ) {
-    smtp_close( socket:s );
+    smtp_close( socket:s, check_data:r );
     report  = "The SMTP server on this port answered with a " + substr( r, 0, 2 ) + " code. ";
     report += "This means that it is permanently unavailable because the scanner IP is not authorized, blacklisted or any other reason.";
     report += '\n\nThe scan will be incomplete. You may try to scan your MTA from an authorized IP or disable this server if you don\'t use it.';
@@ -147,9 +141,7 @@ foreach port( ports ) {
     }
   }
 
-  # nb: Might have been closed above...
-  if( s )
-    smtp_close( socket:s );
+  smtp_close( socket:s, check_data:r );
 
   if( r !~ '^2[0-9]{2}[ -]' ) {
     if( strlen( r ) >= 3 )

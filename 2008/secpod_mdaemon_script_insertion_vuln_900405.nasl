@@ -1,6 +1,6 @@
 #############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mdaemon_script_insertion_vuln_900405.nasl 4522 2016-11-15 14:52:19Z teissa $
+# $Id: secpod_mdaemon_script_insertion_vuln_900405.nasl 13125 2019-01-17 13:35:01Z cfischer $
 #
 # MDaemon Server WordClient Script Insertion Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900405");
-  script_version("$Revision: 4522 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-15 15:52:19 +0100 (Tue, 15 Nov 2016) $");
+  script_version("$Revision: 13125 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-17 14:35:01 +0100 (Thu, 17 Jan 2019) $");
   script_tag(name:"creation_date", value:"2008-12-02 11:52:55 +0100 (Tue, 02 Dec 2008)");
   script_cve_id("CVE-2008-6967");
   script_bugtraq_id(32355);
@@ -38,19 +38,21 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_name("MDaemon Server WordClient Script Insertion Vulnerability");
-  script_dependencies("find_service.nasl", "smtpserver_detect.nasl");
-  script_require_ports("Services/smtp", 25);
+  script_dependencies("smtpserver_detect.nasl");
+  script_mandatory_keys("smtp/mdaemon");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/32142");
   script_xref(name:"URL", value:"http://files.altn.com/MDaemon/Release/RelNotes_en.txt");
 
-  script_tag(name:"impact", value:"Attacker can execute malicious arbitrary codes in the email body.
-  Impact Level: Application.");
+  script_tag(name:"impact", value:"Attacker can execute malicious arbitrary codes in the email body.");
+
   script_tag(name:"affected", value:"MDaemon Server version prior to 10.0.2.");
+
   script_tag(name:"insight", value:"This vulnerability is due to input validation error in 'HTML tags' in
   emails are not properly filtered before displaying. This can be exploited when the malicious email is viewed.");
-  script_tag(name:"solution", value:"Upgrade to the latest version 10.0.2.
-  http://www.altn.com/Downloads/FreeEvaluation");
+
+  script_tag(name:"solution", value:"Upgrade to the latest version 10.0.2.");
+
   script_tag(name:"summary", value:"This host is installed with MDaemon and is prone to script insertion
   vulnerability.");
 
@@ -61,16 +63,22 @@ if(description)
 }
 
 include("smtp_func.inc");
+include("version_func.inc");
 
-port = get_smtp_port( default:25 );
-banner = get_smtp_banner( port:port );
+port = get_smtp_port(default:25);
 
-if( "MDaemon" >!< banner ) exit( 0 );
+banner = get_smtp_banner(port:port);
+if(!banner || "MDaemon" >!< banner)
+  exit(0);
 
-#Grep for WorldClient version 10.0.1 or prior
-if( egrep( pattern:"MDaemon .* [0-9]\..*|10\.0\.[01]" , string:banner ) ) {
-  security_message( port:port );
-  exit( 0 );
+vers = eregmatch(pattern:"MDaemon[^0-9]+([0-9.]+);", string:banner);
+if(!vers[1])
+  exit(0);
+
+if(version_is_less(version:vers[1], test_version:"10.0.2")) {
+  report = report_fixed_ver(installed_version:vers[1], fixed_version:"10.0.2");
+  security_message(port:port, data:report);
+  exit(0);
 }
 
-exit( 99 );
+exit(99);

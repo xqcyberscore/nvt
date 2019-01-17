@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb2596760.nasl 13052 2019-01-14 05:47:49Z santu $
+# $Id: gb_ms_kb2596760.nasl 13111 2019-01-17 07:49:10Z mmartin $
 #
 # Microsoft Excel Viewer 2007 Service Pack 3 Remote Code Execution Vulnerability (KB2596760)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814598");
-  script_version("$Revision: 13052 $");
+  script_version("$Revision: 13111 $");
   script_cve_id("CVE-2019-0541");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-14 06:47:49 +0100 (Mon, 14 Jan 2019) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-17 08:49:10 +0100 (Thu, 17 Jan 2019) $");
   script_tag(name:"creation_date", value:"2019-01-09 15:37:10 +0530 (Wed, 09 Jan 2019)");
   script_name("Microsoft Excel Viewer 2007 Service Pack 3 Remote Code Execution Vulnerability (KB2596760)");
 

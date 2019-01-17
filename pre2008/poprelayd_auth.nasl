@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: poprelayd_auth.nasl 13089 2019-01-15 15:39:12Z cfischer $
+# $Id: poprelayd_auth.nasl 13107 2019-01-17 06:55:20Z cfischer $
 #
 # poprelayd & sendmail authentication problem
 #
@@ -36,8 +36,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11080");
-  script_version("$Revision: 13089 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-15 16:39:12 +0100 (Tue, 15 Jan 2019) $");
+  script_version("$Revision: 13107 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-17 07:55:20 +0100 (Thu, 17 Jan 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(2986);
   script_tag(name:"cvss_base", value:"5.0");
@@ -58,7 +58,7 @@ if(description)
   your server to send their e-mails to the world, thus wasting your network bandwidth and getting you
   blacklisted.
 
-  *** Some SMTP servers such as Postfix will display a false positive here.");
+  *** Some SMTP servers might display a false positive here.");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"Mitigation");
@@ -77,7 +77,7 @@ port = get_smtp_port(default:25);
 if(get_kb_item("smtp/" + port + "/qmail"))
   exit(0);
 
-if(get_kb_item("smtp/" + port + "/postfix"))
+if(get_kb_item("postfix/smtp/" + port + "/detected"))
   exit(0);
 
 if(get_smtp_is_marked_wrapped(port:port))

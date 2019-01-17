@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_starttls_smtp.nasl 11898 2018-10-15 07:17:45Z cfischer $
+# $Id: gb_starttls_smtp.nasl 13113 2019-01-17 09:10:11Z cfischer $
 #
 # SSL/TLS: SMTP 'STARTTLS' Command Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103118");
-  script_version("$Revision: 11898 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 09:17:45 +0200 (Mon, 15 Oct 2018) $");
+  script_version("$Revision: 13113 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-17 10:10:11 +0100 (Thu, 17 Jan 2019) $");
   script_tag(name:"creation_date", value:"2011-03-11 13:29:22 +0100 (Fri, 11 Mar 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -52,16 +52,19 @@ include("smtp_func.inc");
 
 port = get_smtp_port( default:25 );
 
-if( get_port_transport( port ) > ENCAPS_IP ) exit( 0 );
+if( get_port_transport( port ) > ENCAPS_IP )
+  exit( 0 );
 
-if( ! soc = smtp_open_ehlo( port:port, helo:this_host() ) ) exit( 0 );
+if( ! soc = smtp_open( port:port, data:get_smtp_helo_from_kb( port:port ), send_ehlo:TRUE ) )
+  exit( 0 );
 
 send( socket:soc, data:string( "STARTTLS\r\n" ) );
 r = smtp_recv_line( socket:soc );
-smtp_close( socket:soc );
-if( ! r ) exit( 0 );
+smtp_close( socket:soc, check_data:r );
+if( ! r )
+  exit( 0 );
 
-if( "220" >< r ) {
+if( r =~ "^220[ -]" || "Ready to start TLS" >< r || "TLS go ahead" >< r ) {
   set_kb_item( name:"SMTP/STARTTLS/supported", value:TRUE );
   set_kb_item( name:"smtp/" + port + "/starttls", value:TRUE );
   set_kb_item( name:"starttls_typ/" + port, value:"smtp" );

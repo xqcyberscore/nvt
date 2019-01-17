@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smtp_AV_42zip_DoS.nasl 6056 2017-05-02 09:02:50Z teissa $
+# $Id: smtp_AV_42zip_DoS.nasl 13116 2019-01-17 09:58:55Z cfischer $
 # Description: SMTP antivirus scanner DoS
 #
 # Authors:
@@ -146,13 +146,13 @@
 # 4294967295  03-28-00 18:03   0.dll
 #  --------                   -------
 # 4294967295                   1 file
-# $ 
+# $
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11036");
-  script_version("$Revision: 6056 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
+  script_version("$Revision: 13116 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-17 10:58:55 +0100 (Thu, 17 Jan 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(3027);
   script_tag(name:"cvss_base", value:"7.2");
@@ -161,12 +161,11 @@ if(description)
   script_category(ACT_DENIAL);
   script_copyright("This script is Copyright (C) 2002 Michel Arboi");
   script_family("Denial of Service");
-  # Avoid this test if the server relays e-mails.
-  script_dependencies("find_service.nasl", "smtp_settings.nasl", "smtp_relay.nasl");
-  script_exclude_keys("SMTP/spam");
-  script_require_ports("Services/smtp", 25);
+  script_dependencies("smtpserver_detect.nasl", "smtp_relay.nasl");
+  script_require_ports("Services/smtp", 25, 465, 587);
 
-  script_tag(name:"solution", value:"Reconfigure your antivirus / upgrade it");
+  script_tag(name:"solution", value:"Reconfigure your antivirus / upgrade it.");
+
   script_tag(name:"summary", value:"This script sends the 42.zip recursive archive to the
   mail server. If there is an antivirus filter, it may start eating huge amounts of CPU or memory.");
 
@@ -177,43 +176,33 @@ if(description)
 }
 
 include("smtp_func.inc");
+include("misc_func.inc");
+
+port = get_smtp_port(default:25);
 
 # Disable the test if the server relays e-mails.
-if (get_kb_item("SMTP/spam"))
-{
-  #display("smtp_AV_42zip_DoS.nasl disabled on mail relays\n");
+if(get_kb_item("smtp/" + port + "/spam"))
   exit(0);
-}
 
-#
+s = smtp_open(port:port, data:NULL);
+if(!s)
+  exit(0);
+
+smtp_close(socket:s, check_data:FALSE);
 
 n_sent = 0;
-
+vtstrings = get_vt_strings();
 fromaddr = smtp_from_header();
 toaddr = smtp_to_header();
 
-port = get_kb_item("Services/smtp");
-if (!port) port = 25;
-
-if(!get_port_state(port))exit(0);
-
-
-s = open_sock_tcp(port);
-if (!s) exit(0);
-
-buff = smtp_recv_banner(socket:s);
-
-send(socket: s, data: string("HELO example.com\r\n"));
-buff = recv_line(socket:s, length:2048);
-
 # MIME attachment
+header = string("From: ", fromaddr, "\r\n",
+                "To: ", toaddr, "\r\n",
+                "Organization: ", vtstrings["default"], "\r\n",
+                "MIME-Version: 1.0\r\n");
+doublequote = raw_string(0x22);
 
-header = string("From: ", fromaddr, "\r\nTo: ", toaddr, "\r\n",
-	"Organization: OpenVAS kabale\r\nMIME-Version: 1.0\r\n");
-
-doublequote=raw_string(0x22);
-
-msg="Subject: OpenVAS antivirus DoS 1: base64 attachment
+msg = "Subject: " + vtstrings["default"] + " antivirus DoS 1: base64 attachment
 Content-Type: application/zip
 Content-Disposition: attachment; filename=42.zip
 Content-Transfer-Encoding: base64
@@ -1006,14 +995,14 @@ gaCDAABsaWIgZC56aXBQSwECFAAUAAIACAAbrXwok3XcyPkJAABWiAAACQAAAAAAAAAAACAA
 toHAjQAAbGliIGUuemlwUEsBAhQAFAACAAgAG618KJN13Mj5CQAAVogAAAkAAAAAAAAAAAAg
 ALaB4JcAAGxpYiBmLnppcFBLBQYAAAAAEAAQAHADAAAAogAAAAA=
 ";
-msg = ereg_replace(pattern:string("\n"), string:msg, replace:string("\r\n"));
 
-n=smtp_send_socket(socket:s, from: fromaddr, to: toaddr, body: header+msg);
-n_sent=n_sent+n;
+msg = ereg_replace(pattern:string("\n"), string:msg, replace:string("\r\n"));
+n = smtp_send_socket(socket:s, from:fromaddr, to:toaddr, body:header + msg);
+n_sent += n;
 
 # uuencode
 
-msg = "Subject: OpenVAS antivirus DoS 2: uuencoded attachment
+msg = "Subject: " + vtstrings["default"] + " antivirus DoS 2: uuencoded attachment
 Lines: 946
 
 begin 644 42.zip
@@ -1966,23 +1955,25 @@ end
 msg = ereg_replace(pattern:"~", string:msg, replace:doublequote);
 msg = ereg_replace(pattern:string("\n"), string:msg, replace:string("\r\n"));
 
-n=smtp_send_socket(socket:s, from: fromaddr, to: toaddr, body: header+msg);
-n_sent=n_sent+n;
+n = smtp_send_socket(socket:s, from:fromaddr, to:toaddr, body:header + msg);
+n_sent += n;
 
 # TBD: broken MIME attachment - Cf. Bugtraq archives
 
 # Close & quit
+smtp_close(socket:s, check_data:FALSE);
 
-send(socket: s, data: string("QUIT\r\n"));
-close(s);
-if (n_sent == 0) {
-  log_message(port: port, data: "For some reason, we could not send the 42.zip file to this MTA");
-} 
-if (n_sent > 0) {
-  security_message(port: port, 
-	data:string(	"The file 42.zip was sent ", n_sent, 
-			" times. If there is an antivirus in your MTA, it might\n",
-			"have crashed. Please check its status right now, as it is\n",
-			"not possible to do so remotely\n")); 
+if(n_sent == 0) {
+  log_message(port:port, data:"For some reason, we could not send the 42.zip file to this MTA.");
+  exit(0);
 }
 
+if(n_sent > 0) {
+  report = string("The file 42.zip was sent ", n_sent, " times. If there is an antivirus in your MTA, it might ",
+                  "have crashed. Please check its status right now, as it is ",
+                  "not possible to do so remotely.");
+  security_message(port:port, data:report);
+  exit(0);
+}
+
+exit(99);

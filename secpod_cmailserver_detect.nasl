@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_cmailserver_detect.nasl 11028 2018-08-17 09:26:08Z cfischer $
+# $Id: secpod_cmailserver_detect.nasl 13127 2019-01-17 14:33:33Z cfischer $
 #
 # CMailServer Version Detection
 #
@@ -27,20 +27,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900917");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11028 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 11:26:08 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 13127 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-17 15:33:33 +0100 (Thu, 17 Jan 2019) $");
   script_tag(name:"creation_date", value:"2009-08-20 09:27:17 +0200 (Thu, 20 Aug 2009)");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("CMailServer Version Detection");
   script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Product detection");
-  script_dependencies("find_service.nasl");
-  script_require_ports("Services/smtp", 25, "Services/imap", 143, "Services/pop3", 110);
+  script_dependencies("find_service2.nasl", "smtpserver_detect.nasl");
+  script_require_ports("Services/smtp", 25, 465, 587, "Services/imap", 143, "Services/pop3", 110);
 
-  script_tag(name:"summary", value:"The script detects the installed version of CMailServer and sets the result into the knowledgebase.");
+  script_tag(name:"summary", value:"The script detects the installed version of a CMailServer.");
+
+  script_tag(name:"qod_type", value:"remote_banner");
 
   exit(0);
 }
@@ -51,36 +52,35 @@ include("pop3_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-smtpPorts = get_kb_list("Services/smtp");
-if(!smtpPorts) smtpPorts = make_list(25);
+smtpPorts = get_smtp_ports();
 
 foreach port(smtpPorts){
-  if(get_port_state(port)){
-    banner = get_smtp_banner(port: port);
 
-    if((banner != NULL) && ("CMailServer" >< banner)){
-      set_kb_item(name: "CMailServer/Installed", value: TRUE);
-      ver = eregmatch(pattern: "CMailServer ([0-9.]+)", string: banner);
-      version = "unknown";
+  banner = get_smtp_banner(port: port);
 
-      if(ver[1]){
-        version = ver[1];
-        set_kb_item(name: "CMailServer/Ver", value: version);
-      }
+  if(banner && "CMailServer" >< banner){
 
-      cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/a:youngzsoft:cmailserver:");
-      if (!cpe)
-        cpe = "cpe:/a:youngzsoft:cmailserver";
+    set_kb_item(name: "CMailServer/Installed", value: TRUE);
+    ver = eregmatch(pattern: "CMailServer ([0-9.]+)", string: banner);
+    version = "unknown";
 
-      register_product(cpe: cpe, location: "/", port: port, service: "smtp");
-
-      log_message(data: build_detection_report(app: "Youngzsoft CMailServer",
-                                               version: version,
-                                               install: "/",
-                                               cpe: cpe,
-                                               concluded: ver[0]),
-                                               port: port);
+    if(ver[1]){
+      version = ver[1];
+      set_kb_item(name: "CMailServer/Ver", value: version);
     }
+
+    cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/a:youngzsoft:cmailserver:");
+    if (!cpe)
+      cpe = "cpe:/a:youngzsoft:cmailserver";
+
+    register_product(cpe: cpe, location: "/", port: port, service: "smtp");
+
+    log_message(data: build_detection_report(app: "Youngzsoft CMailServer",
+                                             version: version,
+                                             install: "/",
+                                             cpe: cpe,
+                                             concluded: ver[0]),
+                                             port: port);
   }
 }
 
@@ -91,7 +91,8 @@ foreach port(imapPorts){
   if(get_port_state(port)){
     banner = get_imap_banner(port: port);
 
-    if((banner != NULL) && ("CMailServer" >< banner)){
+    if(banner && "CMailServer" >< banner){
+
       set_kb_item(name: "CMailServer/Installed", value: TRUE);
       ver = eregmatch(pattern: "CMailServer ([0-9.]+)", string: banner);
       version = "unknown";
@@ -124,7 +125,8 @@ foreach port(popPorts){
   if(get_port_state(port)){
     banner = get_pop3_banner(port: port);
 
-    if((banner != NULL) && ("CMailServer" >< banner)){
+    if(banner && "CMailServer" >< banner){
+
       set_kb_item(name: "CMailServer/Installed", value: TRUE);
       ver = eregmatch(pattern: "CMailServer ([0-9.]+)", string: banner);
       version = "unknown";

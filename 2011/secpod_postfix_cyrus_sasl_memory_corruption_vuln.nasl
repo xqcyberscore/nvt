@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_postfix_cyrus_sasl_memory_corruption_vuln.nasl 12018 2018-10-22 13:31:29Z mmartin $
+# $Id: secpod_postfix_cyrus_sasl_memory_corruption_vuln.nasl 13107 2019-01-17 06:55:20Z cfischer $
 #
 # Postfix SMTP Server Cyrus SASL Support Memory Corruption Vulnerability
 #
@@ -24,13 +24,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = 'cpe:/a:postfix:postfix';
+CPE = "cpe:/a:postfix:postfix";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902517");
-  script_version("$Revision: 12018 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
+  script_version("$Revision: 13107 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-17 07:55:20 +0100 (Thu, 17 Jan 2019) $");
   script_tag(name:"creation_date", value:"2011-05-26 10:47:46 +0200 (Thu, 26 May 2011)");
   script_cve_id("CVE-2011-1720");
   script_bugtraq_id(47778);
@@ -48,17 +48,20 @@ if(description)
   script_family("SMTP problems");
   script_dependencies("sw_postfix_detect.nasl");
   script_require_ports("Services/smtp", 25, 465, 587);
-  script_mandatory_keys("SMTP/postfix");
+  script_mandatory_keys("postfix/smtp/detected");
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to cause a denial of
   service or possibly execute arbitrary code.");
+
   script_tag(name:"affected", value:"Postfix versions before 2.5.13, 2.6.x before 2.6.10, 2.7.x before 2.7.4,
-  and 2.8.x before 2.8.3");
+  and 2.8.x before 2.8.3.");
+
   script_tag(name:"insight", value:"The flaw is caused by a memory corruption error in the Cyrus SASL library
-  when used with 'CRAM-MD5' or 'DIGEST-MD5' authentication mechanisms, which
-  could allow remote attackers to crash an affected server or execute arbitrary
-  code.");
-  script_tag(name:"solution", value:"Upgrade to Postfix version 2.5.13, 2.6.10, 2.7.4, or 2.8.3 or later");
+  when used with 'CRAM-MD5' or 'DIGEST-MD5' authentication mechanisms, which could allow remote attackers to
+  crash an affected server or execute arbitrary code.");
+
+  script_tag(name:"solution", value:"Upgrade to Postfix version 2.5.13, 2.6.10, 2.7.4, or 2.8.3 or later.");
+
   script_tag(name:"summary", value:"This host is running Postfix SMTP server and is prone to memory
   corruption vulnerability.");
 
@@ -68,36 +71,25 @@ if(description)
   exit(0);
 }
 
-
-include("smtp_func.inc");
 include("version_func.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! vers = get_app_version( cpe:CPE, port:port ) )
+  exit( 0 );
 
 if(version_is_less(version:vers, test_version:"2.5.13") ||
-   version_in_range(version:vers, test_version:"2.6", test_version2:"2.6.9")||
-   version_in_range(version:vers, test_version:"2.7", test_version2:"2.7.3")||
-   version_in_range(version:vers, test_version:"2.8", test_version2:"2.8.2"))
-{
-  ## Open SMTP Socket
-  if(!soc = smtp_open(port:port)) {
-    exit(0);
-  }
+   version_in_range(version:vers, test_version:"2.6", test_version2:"2.6.9") ||
+   version_in_range(version:vers, test_version:"2.7", test_version2:"2.7.3") ||
+   version_in_range(version:vers, test_version:"2.8", test_version2:"2.8.2")) {
 
-  req = string("EHLO ", get_host_name(), "\r\n");
+  if( ! auth = get_kb_item( "smtp/" + port + "/ehlo" ) )
+    exit( 0 );
 
-  ## Send EHLO Command
-  send(socket:soc, data:req);
-  if(!resp = smtp_recv_line(socket:soc)) {
-    exit(0);
-  }
-
-  smtp_close(socket:soc);
-
-  if("DIGEST-MD5" >< resp || "CRAM-MD5" >< resp) {
-    report = report_fixed_ver(installed_version:vers, fixed_version: "2.5.13, 2.6.10, 2.7.4, or 2.8.3 or later");
+  if("DIGEST-MD5" >< auth || "CRAM-MD5" >< auth) {
+    report = report_fixed_ver(installed_version:vers, fixed_version:"2.5.13, 2.6.10, 2.7.4, or 2.8.3 or later");
     security_message(port:port, data:report);
     exit(0);
   }

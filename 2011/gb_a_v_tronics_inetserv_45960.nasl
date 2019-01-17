@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_a_v_tronics_inetserv_45960.nasl 12239 2018-11-07 08:22:09Z cfischer $
+# $Id: gb_a_v_tronics_inetserv_45960.nasl 13116 2019-01-17 09:58:55Z cfischer $
 #
 # A-V Tronics InetServ SMTP Denial of Service Vulnerability
 #
@@ -24,26 +24,24 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103040");
-  script_version("$Revision: 12239 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-07 09:22:09 +0100 (Wed, 07 Nov 2018) $");
+  script_version("$Revision: 13116 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-17 10:58:55 +0100 (Thu, 17 Jan 2019) $");
   script_tag(name:"creation_date", value:"2011-01-24 13:11:38 +0100 (Mon, 24 Jan 2011)");
   script_bugtraq_id(45960);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("A-V Tronics InetServ SMTP Denial of Service Vulnerability");
-
-  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/45960");
-  script_xref(name:"URL", value:"http://www.avtronics.net/inetserv.php");
-
-  script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_MIXED_ATTACK);
   script_family("SMTP problems");
   script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
   script_dependencies("smtpserver_detect.nasl");
   script_require_ports("Services/smtp", 25);
+
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/45960");
+  script_xref(name:"URL", value:"http://www.avtronics.net/inetserv.php");
 
   script_tag(name:"summary", value:"InetServ is prone to a denial-of-service vulnerability.");
 
@@ -56,54 +54,46 @@ if (description)
   Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the
   product or replace the product by another one.");
 
+  script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"WillNotFix");
 
   exit(0);
 }
 
 include("smtp_func.inc");
+include("version_func.inc");
 
-port = get_kb_item("Services/smtp");
-if(!port) port = 25;
-if(get_kb_item('SMTP/'+port+'/broken'))exit(0);
-if(!get_port_state(port))exit(0);
-
+port = get_smtp_port(port:25);
 banner = get_smtp_banner(port:port);
 if(!banner || "InetServer" >!< banner)exit(0);
 
 if(safe_checks()) {
-
-  include("version_func.inc");
-
   version = eregmatch(pattern:"InetServer \(([0-9.]+)\)", string: banner);
-
   if(!isnull(version[1])) {
-    if(version_is_equal(version:version[1],test_version:"3.2.3")) {
-      security_message(port:port);
+    if(version_is_equal(version:version[1], test_version:"3.2.3")) {
+      report = report_fixed_ver(installed_version:version[1], fixed_version:"WillNotFix");
+      security_message(port:port, data:report);
       exit(0);
     }
+    exit(99);
   }
-
   exit(0);
-
 } else {
 
-  soc = smtp_open(port: port, helo: TRUE);
-  if(!soc)exit(0);
+  soc = smtp_open(port:port, data:get_smtp_helo_from_kb(port:port));
+  if(!soc)
+    exit(0);
 
-  ex = "EXPN " + crap(data:string("%s"),length:80) + string("\r\n");
-  send(socket: soc, data: ex);
-  send(socket:soc,data:string("help\r\n"));
-  smtp_close(socket: soc);
+  ex = "EXPN " + crap(data:string("%s"), length:80) + string("\r\n");
+  send(socket:soc, data:ex);
+  send(socket:soc, data:string("help\r\n"));
 
-  if(!soc1 = smtp_open(port: port, helo: FALSE)) {
-
-     security_message(port:port);
-     exit(0);
+  if(!soc1 = smtp_open(port:port, data:NULL)) {
+    close(soc);
+    security_message(port:port);
+    exit(0);
   }
+  smtp_close(socket:soc, check_data:FALSE);
+  smtp_close(socket:soc1, check_data:FALSE);
+  exit(0);
 }
-
-smtp_close(socket: soc1);
-exit(0);
-
-

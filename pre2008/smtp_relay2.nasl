@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smtp_relay2.nasl 13089 2019-01-15 15:39:12Z cfischer $
+# $Id: smtp_relay2.nasl 13116 2019-01-17 09:58:55Z cfischer $
 #
 # Mail relaying (thorough test)
 #
@@ -39,8 +39,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11852");
-  script_version("$Revision: 13089 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-15 16:39:12 +0100 (Tue, 15 Jan 2019) $");
+  script_version("$Revision: 13116 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-17 10:58:55 +0100 (Thu, 17 Jan 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -86,8 +86,9 @@ if(get_kb_item("smtp/" + port + "/qmail"))
 if(get_smtp_is_marked_wrapped(port:port))
   exit(0);
 
-soc = smtp_open(port: port, helo: NULL);
-if (! soc) exit(0);
+soc = smtp_open(port:port, data:NULL);
+if(!soc)
+  exit(0);
 
 vtstrings = get_vt_strings();
 domain = get_3rdparty_domain();
@@ -153,37 +154,32 @@ to_l[i] = t1;
 i ++;
 
 rep = '';
-send(socket: soc, data: strcat('HELO ', src_name, '\r\n'));
-smtp_recv_line(socket: soc);
-for (i = 0; soc && (from_l[i] || to_l[i]); i ++)
-{
+send(socket:soc, data:strcat('HELO ', src_name, '\r\n'));
+smtp_recv_line(socket:soc);
+for (i = 0; soc && (from_l[i] || to_l[i]); i ++) {
+
   mf = strcat('MAIL FROM: <', from_l[i], '>\r\n');
-  send(socket: soc, data: mf);
-  l = smtp_recv_line(socket: soc);
-  if (! l || l =~ '^5[0-9][0-9]')
-  {
-    smtp_close(socket: soc);
-    soc = smtp_open(port: port, helo: domain);
-  }
-  else
-  {
+  send(socket:soc, data:mf);
+  l = smtp_recv_line(socket:soc);
+  if(! l || l =~ '^5[0-9][0-9]') {
+    smtp_close(socket:soc, check_data:l);
+    soc = smtp_open(port:port, data:domain);
+  } else {
     rt = strcat('RCPT TO: <', to_l[i], '>\r\n');
-    send(socket: soc, data: rt);
-    l = smtp_recv_line(socket: soc);
-    if (l =~ '^2[0-9][0-9]')
-    {
+    send(socket:soc, data:rt);
+    l = smtp_recv_line(socket:soc, check:"2[0-9]{2}");
+    if(l) {
       mf -= '\r\n'; rt -= '\r\n';
       rep = strcat(rep, '\t', mf, '\n\t', rt, '\n\n');
       break;
     }
 
-    smtp_close(socket: soc);
-    soc = smtp_open(port: port, helo: NULL);
-   }
+    smtp_close(socket:soc, check_data:l);
+    soc = smtp_open(port:port, data:NULL);
+  }
 }
 
-if (rep)
-{
+if (rep) {
   report = strcat("The remote SMTP server is insufficiently protected against relaying
 This means that spammers might be able to use your mail server
 to send their mails to the world.
@@ -191,5 +187,8 @@ to send their mails to the world.
 The scanner was able to relay mails by sending those sequences:
 
 ", rep);
-  security_message(port: port, data: report);
+  security_message(port:port, data:report);
+  exit(0);
 }
+
+exit(99);

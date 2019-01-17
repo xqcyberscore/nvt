@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sendmail_mail_relay_vuln.nasl 13075 2019-01-15 09:32:16Z cfischer $
+# $Id: gb_sendmail_mail_relay_vuln.nasl 13116 2019-01-17 09:58:55Z cfischer $
 #
 # Sendmail Mail Relay Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:sendmail:sendmail";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802194");
-  script_version("$Revision: 13075 $");
+  script_version("$Revision: 13116 $");
   script_cve_id("CVE-2002-1278", "CVE-2003-0285");
   script_bugtraq_id(6118, 7580);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-15 10:32:16 +0100 (Tue, 15 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-17 10:58:55 +0100 (Thu, 17 Jan 2019) $");
   script_tag(name:"creation_date", value:"2011-11-15 12:51:12 +0530 (Tue, 15 Nov 2011)");
   script_name("Sendmail Mail Relay Vulnerability");
   script_category(ACT_ATTACK);
@@ -83,10 +83,9 @@ if( ! port = get_app_port( cpe:CPE, service:"smtp" ) )
 if( ! get_app_location( cpe:CPE, port:port ) )
   exit( 0 );
 
-soc = smtp_open( port:port, helo:NULL );
-if( ! soc ) {
+soc = smtp_open( port:port, data:NULL );
+if( ! soc )
   exit( 0 );
-}
 
 domain = get_3rdparty_domain();
 vtstrings = get_vt_strings();
@@ -95,43 +94,44 @@ FROM = string( vtstrings["lowercase"], '@', src_name );
 TO = string( vtstrings["lowercase"], '@', domain );
 
 send( socket:soc, data:strcat( 'EHLO ', src_name, '\r\n' ) );
-res = smtp_recv_line( socket:soc );
-if( "250" >!< res ) {
+res = smtp_recv_line( socket:soc, check:"250" );
+if( ! res ) {
+  smtp_close( socket:soc, check_data:res );
   exit( 0 );
 }
 
 mail_from = strcat( 'MAIL FROM: <', FROM , '>\r\n' );
 
 send( socket:soc, data:mail_from );
-recv = smtp_recv_line( socket:soc );
-
-if( ! recv || recv =~ '^5[0-9][0-9]' ) {
+recv = smtp_recv_line( socket:soc, check:"5[0-9]{2}" );
+if( ! recv ) {
+  smtp_close( socket:soc, check_data:recv );
   exit( 0 );
 }
 
 mail_to = strcat( 'RCPT TO: <', TO , '>\r\n' );
 send( socket:soc, data:mail_to );
 
-recv = smtp_recv_line( socket:soc );
-
-if( recv =~ '^2[0-9][0-9]' ) {
-
-  data = string( "data\r\n" );
-  send( socket:soc, data:data );
-  data_rcv = smtp_recv_line( socket:soc );
-
-  if( egrep( pattern:"3[0-9][0-9]", string:data_rcv ) ) {
-
-    send( socket:soc, data:string( vtstrings["default"], "-Relay-Test\r\n.\r\n" ) );
-    mail_send = smtp_recv_line( socket:soc );
-
-    if( "250" >< mail_send ) {
-      security_message( port:port );
-      smtp_close( socket:soc );
-      exit( 0 );
-    }
-  }
+recv = smtp_recv_line( socket:soc, check:"2[0-9]{2}" );
+if( ! recv ) {
+  smtp_close( socket:soc, check_data:recv );
+  exit( 0 );
 }
 
-smtp_close( socket:soc );
+data = string( "data\r\n" );
+send( socket:soc, data:data );
+data_rcv = smtp_recv_line( socket:soc, check:"3[0-9]{2}" );
+if( ! data_rcv ) {
+  smtp_close( socket:soc, check_data:data_rcv );
+  exit( 0 );
+}
+
+send( socket:soc, data:string( vtstrings["default"], "-Relay-Test\r\n.\r\n" ) );
+mail_send = smtp_recv_line( socket:soc, check:"250" );
+smtp_close( socket:soc, check_data:mail_send );
+if( mail_send ) {
+  security_message( port:port );
+  exit( 0 );
+}
+
 exit( 99 );

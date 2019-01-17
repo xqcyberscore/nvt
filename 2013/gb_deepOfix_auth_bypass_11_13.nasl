@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_deepOfix_auth_bypass_11_13.nasl 13001 2019-01-09 14:59:53Z cfischer $
+# $Id: gb_deepOfix_auth_bypass_11_13.nasl 13116 2019-01-17 09:58:55Z cfischer $
 #
 # DeepOfix SMTP Authentication Bypass
 #
@@ -31,9 +31,9 @@ if(description)
   script_cve_id("CVE-2013-6796");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_version("$Revision: 13001 $");
+  script_version("$Revision: 13116 $");
   script_name("DeepOfix SMTP Authentication Bypass");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-09 15:59:53 +0100 (Wed, 09 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-17 10:58:55 +0100 (Thu, 17 Jan 2019) $");
   script_tag(name:"creation_date", value:"2013-11-19 15:05:15 +0100 (Tue, 19 Nov 2013)");
   script_category(ACT_ATTACK);
   script_family("SMTP problems");
@@ -75,16 +75,16 @@ include("host_details.inc");
 
 port = get_smtp_port(default:25);
 
-soc = smtp_open(port: port, helo: NULL);
-if(!soc)exit(0);
+soc = smtp_open(port:port, data:NULL);
+if(!soc)
+  exit(0);
 
 src_name = this_host_name();
 
-send(socket: soc, data: strcat('EHLO ', src_name, '\r\n'));
-buf = smtp_recv_line(socket: soc);
-
-if("250" >!< buf) {
-  smtp_close(socket: soc);
+send(socket:soc, data:strcat('EHLO ', src_name, '\r\n'));
+buf = smtp_recv_line(socket:soc, check:"250");
+if(!buf) {
+  smtp_close(socket:soc, check_data:buf);
   exit(0);
 }
 
@@ -96,17 +96,16 @@ if("334 VXNlcm5hbWU6" >!< buf) { # username:
   exit(0);
 }
 
-send(socket: soc, data:'YWRtaW4=\r\n'); # admin
-buf = smtp_recv_line(socket: soc);
-
+send(socket:soc, data:'YWRtaW4=\r\n'); # admin
+buf = smtp_recv_line(socket:soc);
 if("334 UGFzc3dvcmQ6" >!< buf) { # password:
-  smtp_close(socket: soc);
+  smtp_close(socket:soc, check_data:buf);
   exit(0);
 }
 
-send(socket: soc, data:'AA==\r\n'); # \0
-buf = smtp_recv_line(socket: soc);
-smtp_close(socket: soc);
+send(socket:soc, data:'AA==\r\n'); # \0
+buf = smtp_recv_line(socket:soc);
+smtp_close(socket:soc, check_data:buf);
 
 if("235 nice to meet you" >< buf) {
   security_message(port:port);

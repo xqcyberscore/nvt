@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kerio_mailserver_detect.nasl 12875 2018-12-21 15:01:59Z cfischer $
+# $Id: gb_kerio_mailserver_detect.nasl 13127 2019-01-17 14:33:33Z cfischer $
 #
 # Kerio MailServer/Connect Version Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800098");
-  script_version("$Revision: 12875 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-21 16:01:59 +0100 (Fri, 21 Dec 2018) $");
+  script_version("$Revision: 13127 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-17 15:33:33 +0100 (Thu, 17 Jan 2019) $");
   script_tag(name:"creation_date", value:"2009-01-08 07:43:30 +0100 (Thu, 08 Jan 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -36,12 +36,12 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("find_service.nasl", "find_service_3digits.nasl", "smtpserver_detect.nasl", "nntpserver_detect.nasl");
+  script_dependencies("find_service2.nasl", "find_service_3digits.nasl", "smtpserver_detect.nasl", "nntpserver_detect.nasl");
   script_require_ports("Services/www", 80, 443, "Services/smtp", 25, 465, 587, "Services/pop3", 110,
                        "Services/imap", 143, 993, "Services/nntp", 119);
 
   script_tag(name:"summary", value:"This script will detect the version of Kerio MailServer or Connect
-  on the remote host and sets the KB.");
+  on the remote host.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -59,8 +59,7 @@ ports = make_array();
 report = ""; # nb: To make openvas-nasl-lint happy...
 cgi_disabled = http_is_cgi_scan_disabled();
 
-smtpPorts = get_kb_list( "Services/smtp" );
-if( ! smtpPorts ) smtpPorts = make_list( 25, 465, 587 );
+smtpPorts = get_smtp_ports();
 foreach smtpPort( smtpPorts )
   ports[smtpPort] = "smtp";
 

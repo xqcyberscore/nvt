@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cubecart_mult_vuln.nasl 12151 2018-10-29 13:19:19Z cfischer $
+# $Id: gb_cubecart_mult_vuln.nasl 13109 2019-01-17 07:42:10Z ckuersteiner $
 #
 # CubeCart Multiple Vulnerabilities
 #
@@ -29,13 +29,15 @@ CPE = "cpe:/a:cubecart:cubecart";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803090");
-  script_version("$Revision: 12151 $");
+  script_version("$Revision: 13109 $");
   script_bugtraq_id(57031);
-  script_tag(name:"last_modification", value:"$Date: 2018-10-29 14:19:19 +0100 (Mon, 29 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-17 08:42:10 +0100 (Thu, 17 Jan 2019) $");
   script_tag(name:"creation_date", value:"2012-12-25 15:26:41 +0530 (Tue, 25 Dec 2012)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+
   script_name("CubeCart Multiple Vulnerabilities");
+
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -63,7 +65,7 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with CubeCart and is prone to multiple
   vulnerabilities.");
 
-  script_tag(name:"qod_type", value:"remote_vul");
+  script_tag(name:"qod_type", value:"remote_analysis");
   script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);
@@ -97,6 +99,7 @@ if( res && res =~ "^HTTP/1\.[01] 200" &&
     "><script>alert(document.cookie)</script>" >< res ) {
   report = report_vuln_url( port:port, url:url );
   security_message( port:port, data:report );
+  exit(0);
 }
 
-exit( 0 );
+exit(99);

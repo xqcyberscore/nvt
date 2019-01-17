@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lotus_domino_detect.nasl 12875 2018-12-21 15:01:59Z cfischer $
+# $Id: gb_lotus_domino_detect.nasl 13127 2019-01-17 14:33:33Z cfischer $
 #
 # Lotus/IBM Domino Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100597");
-  script_version("$Revision: 12875 $");
+  script_version("$Revision: 13127 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-21 16:01:59 +0100 (Fri, 21 Dec 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-17 15:33:33 +0100 (Thu, 17 Jan 2019) $");
   script_tag(name:"creation_date", value:"2010-04-22 20:18:17 +0200 (Thu, 22 Apr 2010)");
   script_name("Lotus/IBM Domino Detection");
   script_category(ACT_GATHER_INFO);
@@ -56,7 +56,6 @@ include("cpe.inc");
 include("smtp_func.inc");
 include("imap_func.inc");
 include("pop3_func.inc");
-
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -65,48 +64,44 @@ include("version_func.inc");
 domino_ver = "unknown";
 debug = 0;
 
-ports = get_kb_list( "Services/smtp" );
-if( ! ports ) ports = make_list( 25, 465, 587 );
-
+ports = get_smtp_ports();
 foreach port( ports ) {
 
-  if( get_port_state( port ) ) {
+  banner = get_smtp_banner( port:port );
 
-    banner = get_smtp_banner( port:port );
+  ehlo = get_kb_item( "smtp/" + port + "/ehlo" );
+  quit = get_kb_item( "smtp/" + port + "/quit" );
+  noop = get_kb_item( "smtp/" + port + "/noop" );
+  help = get_kb_item( "smtp/" + port + "/help" );
+  rset = get_kb_item( "smtp/" + port + "/rset" );
 
-    ehlo = get_kb_item( "smtp/" + port + "/ehlo" );
-    quit = get_kb_item( "smtp/" + port + "/quit" );
-    noop = get_kb_item( "smtp/" + port + "/noop" );
-    help = get_kb_item( "smtp/" + port + "/help" );
-    rset = get_kb_item( "smtp/" + port + "/rset" );
+  if( ( "Lotus Domino" >< banner || "IBM Domino" >< banner ) ||
+      ( "pleased to meet you" >< ehlo && "Enter one of the following commands" >< help &&
+        "Reset state" >< rset && "SMTP Service closing transmission channel" >< quit && "OK" >< noop ) ) {
 
-    if( ( "Lotus Domino" >< banner || "IBM Domino" >< banner ) ||
-        ( "pleased to meet you" >< ehlo && "Enter one of the following commands" >< help &&
-          "Reset state" >< rset && "SMTP Service closing transmission channel" >< quit && "OK" >< noop ) ) {
+    install    = port + "/tcp";
+    domino_ver = "unknown";
+    version    = eregmatch( pattern:"(Lotus|IBM) Domino Release ([0-9][^)]+)", string:banner );
 
-      install    = port + "/tcp";
-      domino_ver = "unknown";
-      version    = eregmatch( pattern:"(Lotus|IBM) Domino Release ([0-9][^)]+)", string:banner );
+    if( ! isnull( version[2] ) )
+      domino_ver = version[2];
 
-      if( ! isnull( version[2] ) ) domino_ver = version[2];
+    set_kb_item( name:"Domino/Version", value:domino_ver );
+    set_kb_item( name:"Domino/Installed", value:TRUE );
+    set_kb_item( name:"ibm/domino/smtp/detected", value:TRUE );
+    set_kb_item( name:"SMTP/" + port + "/Domino", value:domino_ver );
 
-      set_kb_item( name:"Domino/Version", value:domino_ver );
-      set_kb_item( name:"Domino/Installed", value:TRUE );
-      set_kb_item( name:"SMTP/domino", value:TRUE );
-      set_kb_item( name:"SMTP/" + port + "/Domino", value:domino_ver );
+    cpe = build_cpe( value:domino_ver, exp:"([0-9][^ ]+)", base:"cpe:/a:ibm:lotus_domino:" );
+    if( ! cpe )
+      cpe = "cpe:/a:ibm:lotus_domino";
 
-      cpe = build_cpe( value:domino_ver, exp:"([0-9][^ ]+)", base:"cpe:/a:ibm:lotus_domino:" );
-      if( isnull( cpe ) )
-        cpe = "cpe:/a:ibm:lotus_domino";
-
-      register_product( cpe:cpe, location:install, port:port, service:"smtp" );
-      log_message( data:build_detection_report( app:"IBM/Lotus Domino",
-                                                version:domino_ver,
-                                                install:install,
-                                                cpe:cpe,
-                                                concluded:version[0] ),
-                                                port:port );
-    }
+    register_product( cpe:cpe, location:install, port:port, service:"smtp" );
+    log_message( data:build_detection_report( app:"IBM/Lotus Domino",
+                                              version:domino_ver,
+                                              install:install,
+                                              cpe:cpe,
+                                              concluded:version[0] ),
+                                              port:port );
   }
 }
 

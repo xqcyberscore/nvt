@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smtpserver_detect.nasl 13087 2019-01-15 15:08:07Z cfischer $
+# $Id: smtpserver_detect.nasl 13125 2019-01-17 13:35:01Z cfischer $
 #
 # SMTP Server type and version
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10263");
-  script_version("$Revision: 13087 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-15 16:08:07 +0100 (Tue, 15 Jan 2019) $");
+  script_version("$Revision: 13125 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-17 14:35:01 +0100 (Thu, 17 Jan 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -50,15 +50,9 @@ if(description)
 include("smtp_func.inc");
 include("host_details.inc");
 
-# nb: Don't use get_smtp_port as it would exit with a SMTP/broken of check_smtp_helo.nasl
-ports = get_kb_list( "Services/smtp" );
-if( ! ports )
-  ports = make_list( 25, 465, 587 );
+ports = get_smtp_ports();
 
 foreach port( ports ) {
-
-  if( ! get_port_state( port ) )
-    continue;
 
   soc = open_sock_tcp( port );
   if( ! soc )
@@ -66,22 +60,35 @@ foreach port( ports ) {
 
   banner = smtp_recv_banner( socket:soc );
   if( ! banner ) {
-    set_smtp_is_marked_wrapped( port:port );
     close( soc );
+    set_smtp_is_marked_wrapped( port:port );
     continue;
   }
 
   if( banner !~ "^[0-9]{3}[ -].+" ) {
+    close( soc );
     # Doesn't look like SMTP...
     set_smtp_is_marked_broken( port:port );
-    close( soc );
     continue;
   }
 
-  send( socket:soc, data:'EHLO ' + this_host() + '\r\n' );
+  set_kb_item( name:"smtp/banner/available", value:TRUE );
+
+  send( socket:soc, data:'EHLO ' + get_smtp_helo_from_kb( port:port ) + '\r\n' );
   ehlo = smtp_recv_line( socket:soc );
-  if( ehlo )
+  if( ehlo ) {
+
     set_kb_item( name:"smtp/" + port + "/ehlo", value:ehlo );
+
+    if( auth_string = egrep( string:ehlo, pattern:"^250[ -]AUTH .+" ) ) {
+      set_kb_item( name:"smtp/auth_methods/available", value:TRUE );
+      auth_string = chomp( auth_string );
+      auth_string = substr( auth_string, 9 );
+      auths = split( auth_string, sep:" ", keep:FALSE );
+      foreach auth( auths )
+        set_kb_item( name:"smtp/" + port + "/auth_methods", value:auth );
+    }
+  }
 
   send( socket:soc, data:'HELP\r\n' );
   help = smtp_recv_line( socket:soc );
@@ -165,6 +172,18 @@ foreach port( ports ) {
     report  = "Verisign mail rejector appears to be running on this port. You probably mistyped your hostname and the scanner is scanning the wildcard address in the .COM or .NET domain.";
     report += '\n\nSolution: enter a correct hostname';
     log_message( port:port, data:report );
+  }
+
+  else if( egrep( pattern:"Mail(Enable| Enable SMTP) Service", string:banner ) ) {
+    set_kb_item( name:"smtp/mailenable", value:TRUE );
+    set_kb_item( name:"smtp/" + port + "/mailenable", value:TRUE );
+    guess = "MailEnable SMTP";
+  }
+
+  else if( " MDaemon " >< banner ) {
+    set_kb_item( name:"smtp/mdaemon", value:TRUE );
+    set_kb_item( name:"smtp/" + port + "/mdaemon", value:TRUE );
+    guess = "MDaemon SMTP";
   }
 
   data = string( "Remote SMTP server banner:\n", banner );

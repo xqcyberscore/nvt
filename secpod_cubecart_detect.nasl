@@ -1,8 +1,8 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_cubecart_detect.nasl 10898 2018-08-10 13:38:13Z cfischer $
+# $Id: secpod_cubecart_detect.nasl 13109 2019-01-17 07:42:10Z ckuersteiner $
 #
-# Detection of cubecart Version
+# CubeCart Detection
 #
 # Authors:
 # Antu Sanadi <santu@secpod.com>
@@ -27,29 +27,31 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900614");
-  script_version("$Revision: 10898 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:38:13 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 13109 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-17 08:42:10 +0100 (Thu, 17 Jan 2019) $");
   script_tag(name:"creation_date", value:"2009-04-07 09:44:25 +0200 (Tue, 07 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_name("Detecting the cubecart version");
+
+  script_name("CubeCart Detection");
+
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Product detection");
   script_require_ports("Services/www", 80);
-  script_dependencies("http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"summary", value:"Detection of CubeCart.
 
-  The script sends a connection request to the server and attempts to extract the
-  version number from the reply.");
+  The script sends a connection request to the server and attempts to extract the version number from the reply.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
+  script_xref(name:"URL", value:"https://www.cubecart.com/");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -75,12 +77,10 @@ foreach dir( make_list_unique( "/", "/cart", "/store", "/shop", "/cubecart", cgi
     ver = eregmatch( pattern:"> ([0-9.]+)", string:tmpver );
     if( ver[1] != NULL ) version = ver[1];
 
-    tmp_version = version + " under " + install;
-    set_kb_item( name:"www/" + port + "/cubecart", value:tmp_version );
     set_kb_item( name:"cubecart/installed", value:TRUE );
 
     cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:cubecart:cubecart:" );
-    if( isnull( cpe ) )
+    if( !cpe )
       cpe = 'cpe:/a:cubecart:cubecart';
 
     register_product( cpe:cpe, location:install, port:port );
@@ -90,7 +90,7 @@ foreach dir( make_list_unique( "/", "/cart", "/store", "/shop", "/cubecart", cgi
                                               install:install,
                                               cpe:cpe,
                                               concluded:ver[0] ),
-                                              port:port) ;
+                 port:port) ;
   }
 }
 

