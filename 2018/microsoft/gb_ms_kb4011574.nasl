@@ -102,7 +102,6 @@ if(officeVer =~ "^16\.")
     {
       offPath = propath + "\Microsoft Office\root\VFS\ProgramFilesCommonX86\Microsoft Shared\EQUATION";
       msdllVer = fetch_file_version(sysPath:offPath, file_name:"eqnedt32.exe");
-      log_message(data: "msdllVer:: " + msdllVer);
       if(!msdllVer){
         exit(0);
       }
