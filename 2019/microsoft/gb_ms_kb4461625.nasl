@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4461625.nasl 13004 2019-01-09 16:32:29Z santu $
+# $Id: gb_ms_kb4461625.nasl 13147 2019-01-18 11:35:50Z mmartin $
 #
 # Microsoft Word 2010 Service Pack 2 Multiple Vulnerabilities (KB4461625)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814586");
-  script_version("$Revision: 13004 $");
+  script_version("$Revision: 13147 $");
   script_cve_id("CVE-2019-0561", "CVE-2019-0585");
   script_bugtraq_id(106399, 106392);
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-09 17:32:29 +0100 (Wed, 09 Jan 2019) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-18 12:35:50 +0100 (Fri, 18 Jan 2019) $");
   script_tag(name:"creation_date", value:"2019-01-09 12:43:13 +0530 (Wed, 09 Jan 2019)");
   script_name("Microsoft Word 2010 Service Pack 2 Multiple Vulnerabilities (KB4461625)");
 

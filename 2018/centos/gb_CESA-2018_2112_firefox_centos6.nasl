@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2018_2112_firefox_centos6.nasl 10540 2018-07-19 07:26:13Z santu $
+# $Id: gb_CESA-2018_2112_firefox_centos6.nasl 13147 2019-01-18 11:35:50Z mmartin $
 #
 # CentOS Update for firefox CESA-2018:2112 centos6 
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882920");
-  script_version("$Revision: 10540 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-19 09:26:13 +0200 (Thu, 19 Jul 2018) $");
+  script_version("$Revision: 13147 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-18 12:35:50 +0100 (Fri, 18 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-07-14 05:51:22 +0200 (Sat, 14 Jul 2018)");
   script_cve_id("CVE-2017-7762", "CVE-2018-5156", "CVE-2018-5188", "CVE-2018-6126",
                 "CVE-2018-12359", "CVE-2018-12360", "CVE-2018-12362", "CVE-2018-12363",
                 "CVE-2018-12364", "CVE-2018-12365", "CVE-2018-12366");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("CentOS Update for firefox CESA-2018:2112 centos6 ");
   script_tag(name:"summary", value:"Check the version of firefox");

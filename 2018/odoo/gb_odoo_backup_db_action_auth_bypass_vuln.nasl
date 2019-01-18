@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_odoo_backup_db_action_auth_bypass_vuln.nasl 12120 2018-10-26 11:13:20Z mmartin $
+# $Id: gb_odoo_backup_db_action_auth_bypass_vuln.nasl 13133 2019-01-18 04:50:16Z ckuersteiner $
 #
 # Odoo 'Backup Database Action' Authentication Bypass Vulnerability
 #
@@ -29,15 +29,17 @@ CPE = "cpe:/a:odoo:odoo";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812757");
-  script_version("$Revision: 12120 $");
-  script_cve_id("CVE-2018-6620");
+  script_version("$Revision: 13133 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-18 05:50:16 +0100 (Fri, 18 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-02-08 13:00:22 +0530 (Thu, 08 Feb 2018)");
+
   script_name("Odoo 'Backup Database Action' Authentication Bypass Vulnerability");
 
-  script_tag(name:"summary", value:"The host is running Odoo software and is
+  script_tag(name:"summary", value:"This VT has been deprecated since CVE-2018-6620 has been rejected.
+
+  The host is running Odoo software and is
   prone to an authentication bypass vulnerability.");
 
   script_tag(name:"vuldetect", value:"Send the crafted HTTP GET request
@@ -52,10 +54,11 @@ if(description)
 
   script_tag(name:"affected", value:"Odoo Management Software.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 12th September, 2018. Information
-  regarding this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_vul");
 
   script_xref(name:"URL", value:"http://asdedc.bid/odoo.html");
@@ -68,8 +71,12 @@ if(description)
   script_mandatory_keys("Odoo/Detected");
   script_require_ports("Services/www", 80);
 
+  script_tag(name:"deprecated", value:TRUE);
+
   exit(0);
 }
+
+exit(66);
 
 include("http_func.inc");
 include("http_keepalive.inc");

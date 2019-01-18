@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smtpserver_detect.nasl 13125 2019-01-17 13:35:01Z cfischer $
+# $Id: smtpserver_detect.nasl 13144 2019-01-18 10:33:22Z cfischer $
 #
 # SMTP Server type and version
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10263");
-  script_version("$Revision: 13125 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-17 14:35:01 +0100 (Thu, 17 Jan 2019) $");
+  script_version("$Revision: 13144 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-18 11:33:22 +0100 (Fri, 18 Jan 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -50,7 +50,7 @@ if(description)
 include("smtp_func.inc");
 include("host_details.inc");
 
-ports = get_smtp_ports();
+ports = smtp_get_ports();
 
 foreach port( ports ) {
 
@@ -61,20 +61,20 @@ foreach port( ports ) {
   banner = smtp_recv_banner( socket:soc );
   if( ! banner ) {
     close( soc );
-    set_smtp_is_marked_wrapped( port:port );
+    smtp_set_is_marked_wrapped( port:port );
     continue;
   }
 
   if( banner !~ "^[0-9]{3}[ -].+" ) {
     close( soc );
     # Doesn't look like SMTP...
-    set_smtp_is_marked_broken( port:port );
+    smtp_set_is_marked_broken( port:port );
     continue;
   }
 
   set_kb_item( name:"smtp/banner/available", value:TRUE );
 
-  send( socket:soc, data:'EHLO ' + get_smtp_helo_from_kb( port:port ) + '\r\n' );
+  send( socket:soc, data:'EHLO ' + smtp_get_helo_from_kb( port:port ) + '\r\n' );
   ehlo = smtp_recv_line( socket:soc );
   if( ehlo ) {
 
@@ -120,7 +120,7 @@ foreach port( ports ) {
   }
 
   else if( "XMail " >< banner ) {
-    set_kb_item( name:"smtp/xmail", value:TRUE );
+    set_kb_item( name:"smtp/xmail/detected", value:TRUE );
     set_kb_item( name:"smtp/" + port + "/xmail", value:TRUE );
     guess = "XMail";
   }
@@ -167,7 +167,7 @@ foreach port( ports ) {
            ( ehlo && match( pattern:"*snubby*", string:ehlo, icase:TRUE ) ) ) {
     set_kb_item( name:"smtp/snubby", value:TRUE );
     set_kb_item( name:"smtp/" + port + "/snubby", value:TRUE );
-    set_smtp_is_marked_wrapped( port:port );
+    smtp_set_is_marked_wrapped( port:port );
     guess   = "Snubby Mail Rejector (not a real SMTP server)";
     report  = "Verisign mail rejector appears to be running on this port. You probably mistyped your hostname and the scanner is scanning the wildcard address in the .COM or .NET domain.";
     report += '\n\nSolution: enter a correct hostname';
@@ -184,6 +184,18 @@ foreach port( ports ) {
     set_kb_item( name:"smtp/mdaemon", value:TRUE );
     set_kb_item( name:"smtp/" + port + "/mdaemon", value:TRUE );
     guess = "MDaemon SMTP";
+  }
+
+  else if( " InetServer " >< banner ) {
+    set_kb_item( name:"smtp/inetserver/detected", value:TRUE );
+    set_kb_item( name:"smtp/" + port + "/inetserver", value:TRUE );
+    guess = "A-V Tronics InetServ SMTP";
+  }
+
+  else if( "Quick 'n Easy Mail Server" >< banner ) {
+    set_kb_item( name:"smtp/quickneasy/detected", value:TRUE );
+    set_kb_item( name:"smtp/" + port + "/quickneasy", value:TRUE );
+    guess = "Quick 'n Easy Mail Server";
   }
 
   data = string( "Remote SMTP server banner:\n", banner );

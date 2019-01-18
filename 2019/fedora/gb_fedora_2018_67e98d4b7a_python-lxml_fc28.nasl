@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_67e98d4b7a_python-lxml_fc28.nasl 13108 2019-01-17 07:34:03Z santu $
+# $Id: gb_fedora_2018_67e98d4b7a_python-lxml_fc28.nasl 13147 2019-01-18 11:35:50Z mmartin $
 #
 # Fedora Update for python-lxml FEDORA-2018-67e98d4b7a
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875391");
-  script_version("$Revision: 13108 $");
+  script_version("$Revision: 13147 $");
   script_cve_id("CVE-2018-19787");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-17 08:34:03 +0100 (Thu, 17 Jan 2019) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-18 12:35:50 +0100 (Fri, 18 Jan 2019) $");
   script_tag(name:"creation_date", value:"2019-01-07 04:01:51 +0100 (Mon, 07 Jan 2019)");
   script_name("Fedora Update for python-lxml FEDORA-2018-67e98d4b7a");
   script_category(ACT_GATHER_INFO);

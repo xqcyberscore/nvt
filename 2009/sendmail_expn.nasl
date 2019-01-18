@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sendmail_expn.nasl 13113 2019-01-17 09:10:11Z cfischer $
+# $Id: sendmail_expn.nasl 13137 2019-01-18 07:33:34Z cfischer $
 #
 # Check if Mailserver answer to VRFY and EXPN requests
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100072");
-  script_version("$Revision: 13113 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-17 10:10:11 +0100 (Thu, 17 Jan 2019) $");
+  script_version("$Revision: 13137 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-18 08:33:34 +0100 (Fri, 18 Jan 2019) $");
   script_tag(name:"creation_date", value:"2009-03-23 19:32:33 +0100 (Mon, 23 Mar 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -77,7 +77,7 @@ if( ! bannertxt ) {
   exit( 0 );
 }
 
-send( socket:soc, data:string( "EHLO ", get_smtp_helo_from_kb( port:port ), "\r\n" ) );
+send( socket:soc, data:string( "EHLO ", smtp_get_helo_from_kb( port:port ), "\r\n" ) );
 ehlotxt = smtp_recv_line( socket:soc );
 if( ! ehlotxt ) {
   smtp_close( socket:soc, check_data:ehlotxt );

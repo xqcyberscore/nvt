@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ipswitch_imail_server_detect.nasl 13127 2019-01-17 14:33:33Z cfischer $
+# $Id: gb_ipswitch_imail_server_detect.nasl 13138 2019-01-18 07:48:30Z cfischer $
 #
 # Ipswitch IMail Server Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811256");
-  script_version("$Revision: 13127 $");
+  script_version("$Revision: 13138 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-17 15:33:33 +0100 (Thu, 17 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-18 08:48:30 +0100 (Fri, 18 Jan 2019) $");
   script_tag(name:"creation_date", value:"2017-07-26 16:06:50 +0530 (Wed, 26 Jul 2017)");
   script_name("Ipswitch IMail Server Detection");
   script_category(ACT_GATHER_INFO);
@@ -59,74 +59,75 @@ include("imap_func.inc");
 
 function get_version(banner, port, service) {
 
-  set_kb_item(name: "Ipswitch/IMail/detected", value: TRUE);
+  set_kb_item(name:"Ipswitch/IMail/detected", value:TRUE);
   version = "unknown";
   install = port + "/tcp";
 
-  mailVer = eregmatch(pattern:"Server: Ipswitch-IMail/([0-9.]+)", string: banner);
-  if(!mailVer){
-    mailVer = eregmatch(pattern:"IMail ([0-9.]+)", string: banner);
-  }
+  mailVer = eregmatch(pattern:"Server: Ipswitch-IMail/([0-9.]+)", string:banner);
+  if(!mailVer)
+    mailVer = eregmatch(pattern:"IMail ([0-9.]+)", string:banner);
 
-  if(mailVer[1]) version = mailVer[1];
+  if(mailVer[1])
+    version = mailVer[1];
 
-  cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/a:ipswitch:imail_server:");
-  if (!cpe)
+  cpe = build_cpe(value:version, exp:"^([0-9.]+)", base:"cpe:/a:ipswitch:imail_server:");
+  if(!cpe)
     cpe = "cpe:/a:ipswitch:imail_server";
 
   register_product(cpe:cpe, location:install, port:port, service:service);
 
-  log_message(data: build_detection_report(app: "Ipswitch IMail Server",
-                                           version: version,
-                                           install: install,
-                                           cpe: cpe,
-                                           concluded: mailVer[0]),
-                                           port: port);
+  log_message(data:build_detection_report(app:"Ipswitch IMail Server",
+                                          version:version,
+                                          install:install,
+                                          cpe:cpe,
+                                          concluded:mailVer[0]),
+                                          port:port);
 }
 
-mailPorts = get_kb_list("Services/pop3");
-if(!mailPorts) mailPorts = make_list(110) ;
+ports = get_kb_list("Services/pop3");
+if(!ports)
+  ports = make_list(110);
 
-foreach mailPort(mailPorts){
-  if(get_port_state(mailPort)) {
-    if(banner = get_pop3_banner(port:mailPort)) {
+foreach port(ports){
+  if(get_port_state(port)) {
+    if(banner = get_pop3_banner(port:port)) {
       if("POP3 Server" >< banner && "(IMail" >< banner) {
-        get_version(banner:banner, port:mailPort, service:"pop3");
+        get_version(banner:banner, port:port, service:"pop3");
       }
     }
   }
 }
 
-mailPorts = get_smtp_ports();
-
-foreach mailPort(mailPorts){
-  if(banner = get_smtp_banner(port:mailPort)) {
+ports = smtp_get_ports();
+foreach port(ports){
+  if(banner = get_smtp_banner(port:port)) {
     if("ESMTP Server" >< banner && "(IMail" >< banner) {
-      get_version(banner:banner, port:mailPort, service:"smtp");
+      get_version(banner:banner, port:port, service:"smtp");
     }
   }
 }
 
-mailPort = get_kb_list("Services/imap");
-if(!mailPorts) mailPorts = make_list(143);
+ports = get_kb_list("Services/imap");
+if(!ports)
+  ports = make_list(143);
 
-foreach mailPort(mailPorts){
-  if(get_port_state(mailPort)) {
-    if(banner = get_imap_banner(port:mailPort)) {
+foreach port(ports){
+  if(get_port_state(port)) {
+    if(banner = get_imap_banner(port:port)) {
       if("IMAP4 Server" >< banner && "(IMail" >< banner) {
-        get_version(banner:banner, port:mailPort, service:"imap");
+        get_version(banner:banner, port:port, service:"imap");
       }
     }
   }
 }
 
-if(http_is_cgi_scan_disabled()) exit(0);
+if(http_is_cgi_scan_disabled())
+  exit(0);
 
-mailPorts = get_http_port(default:80);
-
-if(banner = get_http_banner(port:mailPort)) {
+port = get_http_port(default:80);
+if(banner = get_http_banner(port:port)) {
   if("Server: Ipswitch-IMail" >< banner) {
-    get_version(banner:banner, port:mailPort, service:"www");
+    get_version(banner:banner, port:port, service:"www");
   }
 }
 

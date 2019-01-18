@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_wnpa-sec-2019-02_wnpa-sec-2019-03_wnpa-sec-2019-04_macosx.nasl 13052 2019-01-14 05:47:49Z santu $
+# $Id: gb_wireshark_wnpa-sec-2019-02_wnpa-sec-2019-03_wnpa-sec-2019-04_macosx.nasl 13147 2019-01-18 11:35:50Z mmartin $
 #
 # Wireshark Security Updates(wnpa-sec-2019-02_wnpa-sec-2019-03_wnpa-sec-2019-04)-Mac OS X
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814393");
-  script_version("$Revision: 13052 $");
+  script_version("$Revision: 13147 $");
   script_cve_id("CVE-2019-5717", "CVE-2019-5718", "CVE-2019-5719");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-14 06:47:49 +0100 (Mon, 14 Jan 2019) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-18 12:35:50 +0100 (Fri, 18 Jan 2019) $");
   script_tag(name:"creation_date", value:"2019-01-10 17:03:27 +0530 (Thu, 10 Jan 2019)");
   script_name("Wireshark Security Updates(wnpa-sec-2019-02_wnpa-sec-2019-03_wnpa-sec-2019-04)-Mac OS X");
 

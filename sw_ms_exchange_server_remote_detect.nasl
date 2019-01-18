@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_ms_exchange_server_remote_detect.nasl 13127 2019-01-17 14:33:33Z cfischer $
+# $Id: sw_ms_exchange_server_remote_detect.nasl 13138 2019-01-18 07:48:30Z cfischer $
 #
 # Microsoft Exchange Server Remote Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111085");
-  script_version("$Revision: 13127 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-17 15:33:33 +0100 (Thu, 17 Jan 2019) $");
+  script_version("$Revision: 13138 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-18 08:48:30 +0100 (Fri, 18 Jan 2019) $");
   script_tag(name:"creation_date", value:"2016-02-04 15:00:00 +0100 (Thu, 04 Feb 2016)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -56,7 +56,7 @@ include("pop3_func.inc");
 # TODO: Try to gather the exchange version and save the service version as the build number within the CPE:
 # https://support.office.com/en-us/article/determine-the-version-of-microsoft-exchange-server-my-account-connects-to-d427465a-ce3b-42bd-9d83-c7d893d5d334
 
-ports = get_smtp_ports();
+ports = smtp_get_ports();
 foreach port( ports ) {
 
   banner = get_smtp_banner( port:port );

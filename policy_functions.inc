@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test support library
-# $Id: policy_functions.inc 13104 2019-01-16 15:56:00Z emoss $
+# $Id: policy_functions.inc 13130 2019-01-17 15:29:22Z emoss $
 #
 # Supporting methods for Policy NVTs.
 #
@@ -215,7 +215,6 @@ function win32_useraccount(select,name){
 #        maintainer The package maintainer (RPM or DEB)
 #
 # @return A string with the version or NULL if not installed on host
-#
 function get_package_version(package){
 	local_var package;
 	if(!package){
@@ -247,6 +246,27 @@ function get_package_version(package){
 					return version;
 				}
 			}
+		}
+	}
+	return;
+}
+
+# @brief Tries to find a GRUB bootloader config file on the host.
+#				 Searches for grub.conf, grub.cfg or menu.lst in directories
+#				 /boot/grub/ or /boot/grub2/.
+#
+# @return Filepath if config file found or NULL if not found
+# 				(maybe because of denied read permisisons)
+function get_grub_config_file(){
+	local_var config_file;
+
+	grub_config_files = make_list('grub.conf', 'grub.cfg', 'menu.lst');
+	grub_config_dirs = make_list('/boot/grub/', '/boot/grub2/');
+
+	foreach dir (grub_config_dirs){
+		foreach file (grub_config_files){
+			config_file = find_file(file_name:file, file_path:dir);
+			if(config_file) return config_file[0];
 		}
 	}
 	return;

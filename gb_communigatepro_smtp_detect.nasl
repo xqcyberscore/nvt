@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_communigatepro_smtp_detect.nasl 10902 2018-08-10 14:20:55Z cfischer $
+# $Id: gb_communigatepro_smtp_detect.nasl 13140 2019-01-18 08:26:06Z asteins $
 #
 # CommuniGatePro Detection (SMTP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140686");
-  script_version("$Revision: 10902 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:20:55 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 13140 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-18 09:26:06 +0100 (Fri, 18 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-01-15 15:48:28 +0700 (Mon, 15 Jan 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -49,7 +49,7 @@ This script performs SMTP based detection of CommuniGate Pro.");
   script_dependencies("find_service.nasl", "smtpserver_detect.nasl");
   script_require_ports("Services/smtp", 25, 587);
 
-  script_xref(name:"URL", value:"https://www.stalker.com/");
+  script_xref(name:"URL", value:"https://www.communigate.com/");
 
   exit(0);
 }

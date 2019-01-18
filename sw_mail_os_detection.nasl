@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_mail_os_detection.nasl 13127 2019-01-17 14:33:33Z cfischer $
+# $Id: sw_mail_os_detection.nasl 13138 2019-01-18 07:48:30Z cfischer $
 #
 # SMTP/POP3/IMAP Server OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111068");
-  script_version("$Revision: 13127 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-17 15:33:33 +0100 (Thu, 17 Jan 2019) $");
+  script_version("$Revision: 13138 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-18 08:48:30 +0100 (Fri, 18 Jan 2019) $");
   script_tag(name:"creation_date", value:"2015-12-11 14:00:00 +0100 (Fri, 11 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -54,7 +54,7 @@ include("pop3_func.inc");
 
 SCRIPT_DESC = "SMTP/POP3/IMAP Server OS Identification";
 
-ports = get_smtp_ports();
+ports = smtp_get_ports();
 banner_type = "SMTP banner";
 
 foreach port( ports ) {

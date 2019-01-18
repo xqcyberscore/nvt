@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_visual_studio_mult_info_disc_vuln_jan19.nasl 13108 2019-01-17 07:34:03Z santu $
+# $Id: gb_ms_visual_studio_mult_info_disc_vuln_jan19.nasl 13147 2019-01-18 11:35:50Z mmartin $
 #
 # Microsoft Visual Studio Multiple Information Disclosure Vulnerabilities (KB4476698, KB4476755)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814651");
-  script_version("$Revision: 13108 $");
+  script_version("$Revision: 13147 $");
   script_cve_id("CVE-2019-0537");
-  script_tag(name:"cvss_base", value:"7.2");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-17 08:34:03 +0100 (Thu, 17 Jan 2019) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-18 12:35:50 +0100 (Fri, 18 Jan 2019) $");
   script_tag(name:"creation_date", value:"2019-01-14 17:52:03 +0530 (Mon, 14 Jan 2019)");
   script_name("Microsoft Visual Studio Multiple Information Disclosure Vulnerabilities (KB4476698, KB4476755)");
 

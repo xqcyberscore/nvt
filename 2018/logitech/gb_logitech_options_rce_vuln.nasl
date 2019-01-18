@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_logitech_options_rce_vuln.nasl 12823 2018-12-18 13:47:35Z asteins $
+# $Id: gb_logitech_options_rce_vuln.nasl 13148 2019-01-18 11:46:45Z mmartin $
 #
 # Logitech Options <= 7.0.564 Remote Command Execution Vulnerability (Windows)
 #
@@ -28,13 +28,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112467");
-  script_version("$Revision: 12823 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-18 14:47:35 +0100 (Tue, 18 Dec 2018) $");
+  script_version("$Revision: 13148 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-18 12:46:45 +0100 (Fri, 18 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-12-18 14:34:12 +0100 (Tue, 18 Dec 2018)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"registry");
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
   script_name("Logitech Options <= 7.0.564 Remote Command Execution Vulnerability (Windows)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -53,8 +53,7 @@ if(description)
   configure the 'crown' to send arbitrary keystrokes to directly affect and manipulate the target system
   and have other unspecified impact on it.");
   script_tag(name:"affected", value:"Logitech Options through version 7.0.564.");
-  script_tag(name:"solution", value:"No known solution is available as of 18th December, 2018.
-  Information regarding this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"Update to Logitech Options version 7.10.3 or later.");
 
   script_xref(name:"URL", value:"https://bugs.chromium.org/p/project-zero/issues/detail?id=1663");
 
@@ -74,7 +73,7 @@ vers = infos['version'];
 path = infos['location'];
 
 if(version_is_less_equal(version:vers, test_version:"7.0.564")) {
-  report = report_fixed_ver(installed_version:vers, fixed_version:"None", install_path:path);
+  report = report_fixed_ver(installed_version:vers, fixed_version:"7.10.3", install_path:path);
   security_message(port:0, data:report);
   exit(0);
 }

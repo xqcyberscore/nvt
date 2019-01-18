@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_teamviewer_pass_storage_info_disc_vuln_win.nasl 11517 2018-09-21 11:19:32Z santu $
+# $Id: gb_teamviewer_pass_storage_info_disc_vuln_win.nasl 13133 2019-01-18 04:50:16Z ckuersteiner $
 #
 # TeamViewer Password Storage 'teamviewer.exe' Information Disclosure Vulnerability (Windows)
 #
@@ -29,12 +29,13 @@ CPE = "cpe:/a:teamviewer:teamviewer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814111");
-  script_version("$Revision: 11517 $");
+  script_version("$Revision: 13133 $");
   script_cve_id("CVE-2018-14333");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:19:32 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-18 05:50:16 +0100 (Fri, 18 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-09-21 10:08:14 +0530 (Fri, 21 Sep 2018)");
+
   script_name("TeamViewer Password Storage 'teamviewer.exe' Information Disclosure Vulnerability (Windows)");
 
   script_tag(name:"summary", value:"The host is installed with TeamViewer
@@ -54,26 +55,26 @@ if(description)
 
   script_tag(name:"affected", value:"TeamViewer versions through 13.1.1548 on Windows.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 21st
-  September, 2018. Information regarding this issue will be updated once solution
-  details are available. For updates refer to Reference links.");
+  script_tag(name:"solution", value:"As a workaround disable the underlying feature by unchecking the checkbox
+Temporarily save connection passwords via the path Extras -> Options -> Advanced -> Advanced settings for
+connections to other computers.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"Workaround");
 
   script_tag(name:"qod_type", value:"registry");
 
   script_xref(name:"URL", value:"https://github.com/vah13/extractTVpasswords");
   script_xref(name:"URL", value:"https://vuldb.com/?id.121532");
-  script_xref(name:"URL", value:"https://www.teamviewer.com/en");
+  script_xref(name:"URL", value:"https://community.teamviewer.com/t5/Announcements/Reaction-to-CVE-2018-143333/td-p/38604");
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_teamviewer_win_detect.nasl");
   script_mandatory_keys("teamviewer/Ver");
+
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");
@@ -82,9 +83,10 @@ infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE);
 teamVer = infos['version'];
 teamPath = infos['location'];
 
-if(version_is_less_equal(version:teamVer, test_version:"13.1.1548"))
-{
-  report = report_fixed_ver(installed_version:teamVer, fixed_version:"NoneAvailable", install_path:teamPath);
+if(version_is_less_equal(version:teamVer, test_version:"13.1.1548")) {
+  report = report_fixed_ver(installed_version:teamVer, fixed_version:"Workaround", install_path:teamPath);
   security_message(data:report);
   exit(0);
 }
+
+exit(0);

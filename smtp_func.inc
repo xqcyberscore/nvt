@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: smtp_func.inc 13119 2019-01-17 11:50:13Z cfischer $
+# $Id: smtp_func.inc 13139 2019-01-18 08:14:28Z cfischer $
 #
 # Support functions for handling SMTP
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 13119 $
+# $Revision: 13139 $
 #
 ###############################################################################
 
@@ -206,7 +206,7 @@ function smtp_send_port( port, from, to, body ) {
     return NULL;
   }
 
-  socket = smtp_open( port:port, helo:get_smtp_helo_from_kb( port:port ) );
+  socket = smtp_open( port:port, helo:smtp_get_helo_from_kb( port:port ) );
   if( ! socket )
     return NULL;
 
@@ -257,8 +257,8 @@ function get_smtp_banner( port ) {
   if( banner )
     return( banner );
 
-  # TBD: Also check for get_smtp_is_marked_wrapped?
-  if( get_smtp_is_marked_broken( port:port ) )
+  # TBD: Also check for smtp_get_is_marked_wrapped?
+  if( smtp_get_is_marked_broken( port:port ) )
     return NULL;
 
   if( ! get_port_state( port ) )
@@ -267,7 +267,7 @@ function get_smtp_banner( port ) {
   # nb: Don't use smtp_open() as we want to grab the banner below.
   soc = open_sock_tcp( port );
   if( ! soc ) {
-    set_smtp_is_marked_broken( port:port );
+    smtp_set_is_marked_broken( port:port );
     return NULL;
   }
 
@@ -275,7 +275,7 @@ function get_smtp_banner( port ) {
   smtp_close( socket:soc, check_data:banner );
 
   if( ! banner ) {
-    set_smtp_is_marked_broken( port:port );
+    smtp_set_is_marked_broken( port:port );
     return NULL;
   }
 
@@ -384,15 +384,18 @@ function smtp_recv_banner( socket, retry ) {
 #
 # @note This function will fork on multiple open ports.
 #
-# @param default   The port to return if "unscanned_closed" is set to "no" and no ports have been found open.
-# @param nodefault Don't exit if no "default" parameter is passed, it still will return if no SMTP servers are detected at all.
+# @param default          The port to return if "unscanned_closed" is set to "no" and no ports have been found open.
+# @param nodefault        Don't exit if no "default" parameter is passed, it still will return if no SMTP servers are detected at all.
+# @param ignore_broken    Returns the ports even if they are known to be "broken".
+# @param ignore_unscanned Returns the ports even if they where "unscanned" previously.
 #
 # @return The open / found SMTP ports or the port passed via the default parameter in the case of no found ports
 #         and "unscanned_closed" is set to "no".
 #
-function get_smtp_port( default, nodefault ) {
+function get_smtp_port( default, nodefault, ignore_broken, ignore_unscanned ) {
 
-  local_var default, nodefault, port;
+  local_var default, nodefault, ignore_broken, ignore_unscanned;
+  local_var port;
 
   if( ! default && ! nodefault ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#default#-#get_smtp_port" );
@@ -408,11 +411,11 @@ function get_smtp_port( default, nodefault ) {
   if( smtp_is_fragile_port( port:default ) )
     exit( 0 );
 
-  # TBD: Also check for get_smtp_is_marked_wrapped?
-  if( get_smtp_is_marked_broken( port:default ) )
+  # TBD: Also check for smtp_get_is_marked_wrapped?
+  if( ! ignore_broken && smtp_get_is_marked_broken( port:default ) )
     exit( 0 );
 
-  if( ! get_port_state( default ) )
+  if( ! ignore_unscanned && ! get_port_state( default ) )
     exit( 0 );
 
   return default;
@@ -432,16 +435,19 @@ function get_smtp_port( default, nodefault ) {
 #        Detection-VTs where we want to make sure that we're not getting
 #        blocked by the remote service with to many concurrent connections.
 #
-# @param default_list The list of ports to return (overwriting the internal defaults) if "unscanned_closed"
-#                     is set to "no" and no ports have been found open.
+# @param default_list     The list of ports to return (overwriting the internal defaults) if "unscanned_closed"
+#                         is set to "no" and no ports have been found open.
+# @param ignore_broken    Returns the ports even if they are known to be "broken".
+# @param ignore_unscanned Returns the ports even if they where "unscanned" previously.
 #
 # @return The open / found SMTP ports, if none where found an empty list. In the case of no found ports and
 #         "unscanned_closed" is set to "no" a set of default ports or the list passed to the default_ports
 #         parameter.
 #
-function get_smtp_ports( default_list ) {
+function smtp_get_ports( default_list, ignore_broken, ignore_unscanned ) {
 
-  local_var default_list, final_port_list, check_port_list, default_ports, num_ports, ports, port;
+  local_var default_list, ignore_broken, ignore_unscanned;
+  local_var final_port_list, check_port_list, default_ports, num_ports, ports, port;
 
   final_port_list = make_list();
   check_port_list = make_list();
@@ -469,11 +475,11 @@ function get_smtp_ports( default_list ) {
     if( smtp_is_fragile_port( port:port ) )
       continue;
 
-    # TBD: Also check for get_smtp_is_marked_wrapped?
-    if( get_smtp_is_marked_broken( port:port ) )
+    # TBD: Also check for smtp_get_is_marked_wrapped?
+    if( ! ignore_broken && smtp_get_is_marked_broken( port:port ) )
       continue;
 
-    if( ! get_port_state( port ) )
+    if( ! ignore_unscanned && ! get_port_state( port ) )
       continue;
 
     final_port_list = make_list( final_port_list, port );
@@ -490,14 +496,14 @@ function get_smtp_ports( default_list ) {
 # @return TRUE if the remote SMTP server was marked as broken, FALSE otherwise and
 #         NULL in the case where the port parameter wasn't passed.
 #
-function get_smtp_is_marked_broken( port ) {
+function smtp_get_is_marked_broken( port ) {
 
   local_var port;
   local_var marked_broken_list, marked_broken;
   # nb: _smtp_is_broken_array is a global_var (see on top)
 
   if( ! port ) {
-    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#get_smtp_is_marked_broken" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#smtp_get_is_marked_broken" );
     return NULL;
   }
 
@@ -529,12 +535,12 @@ function get_smtp_is_marked_broken( port ) {
 # @return TRUE if the status was successfully saved within the KB and
 #         NULL if no port parameter was passed.
 #
-function set_smtp_is_marked_broken( port ) {
+function smtp_set_is_marked_broken( port ) {
 
   local_var port;
 
   if( ! port ) {
-    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#set_smtp_is_marked_broken" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#smtp_set_is_marked_broken" );
     return NULL;
   }
 
@@ -553,14 +559,14 @@ function set_smtp_is_marked_broken( port ) {
 # @return TRUE if the remote SMTP server was marked as wrapped, FALSE otherwise and
 #         NULL in the case where the port parameter wasn't passed.
 #
-function get_smtp_is_marked_wrapped( port ) {
+function smtp_get_is_marked_wrapped( port ) {
 
   local_var port;
   local_var marked_wrapped_list, marked_wrapped;
   # nb: _smtp_is_wrapped_array is a global_var (see on top)
 
   if( ! port ) {
-    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#get_smtp_is_marked_wrapped" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#smtp_get_is_marked_wrapped" );
     return NULL;
   }
 
@@ -592,12 +598,12 @@ function get_smtp_is_marked_wrapped( port ) {
 # @return TRUE if the status was successfully saved within the KB and
 #         NULL if no port parameter was passed.
 #
-function set_smtp_is_marked_wrapped( port ) {
+function smtp_set_is_marked_wrapped( port ) {
 
   local_var port;
 
   if( ! port ) {
-    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#set_smtp_is_marked_wrapped" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#smtp_set_is_marked_wrapped" );
     return NULL;
   }
 
@@ -643,13 +649,13 @@ function get_3rdparty_domain() {
 #
 # @return The SMTP HELO domain or NULL in the case where the port parameter wasn't passed.
 #
-function get_smtp_helo_from_kb( port ) {
+function smtp_get_helo_from_kb( port ) {
 
   local_var port, helo;
   # nb: __smtp_helo is a global var
 
   if( ! port ) {
-    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#get_smtp_helo_from_kb" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#smtp_get_helo_from_kb" );
     return NULL;
   }
 

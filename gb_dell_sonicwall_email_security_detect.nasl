@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_sonicwall_email_security_detect.nasl 13127 2019-01-17 14:33:33Z cfischer $
+# $Id: gb_dell_sonicwall_email_security_detect.nasl 13138 2019-01-18 07:48:30Z cfischer $
 #
 # Dell SonicWall EMail Security Detection
 #
@@ -31,8 +31,8 @@ if(description)
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"remote_banner");
-  script_version("$Revision: 13127 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-17 15:33:33 +0100 (Thu, 17 Jan 2019) $");
+  script_version("$Revision: 13138 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-18 08:48:30 +0100 (Fri, 18 Jan 2019) $");
   script_tag(name:"creation_date", value:"2014-03-28 12:48:51 +0100 (Fri, 28 Mar 2014)");
   script_name("Dell SonicWall EMail Security Detection");
   script_category(ACT_GATHER_INFO);
@@ -78,7 +78,7 @@ function _report( version, port, service )
               port:port);
 }
 
-smtp_ports = get_smtp_ports();
+smtp_ports = smtp_get_ports();
 foreach smtp_port ( smtp_ports )
 {
   smtp_banner = get_smtp_banner( port:smtp_port );

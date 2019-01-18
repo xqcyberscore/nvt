@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3860_1.nasl 13108 2019-01-17 07:34:03Z santu $
+# $Id: gb_ubuntu_USN_3860_1.nasl 13147 2019-01-18 11:35:50Z mmartin $
 #
 # Ubuntu Update for libcaca USN-3860-1
 #
@@ -29,12 +29,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843872");
-  script_version("$Revision: 13108 $");
+  script_version("$Revision: 13147 $");
   script_cve_id("CVE-2018-20544", "CVE-2018-20545", "CVE-2018-20548", "CVE-2018-20459",
                 "CVE-2018-20546", "CVE-2018-20547", "CVE-2018-20549");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-17 08:34:03 +0100 (Thu, 17 Jan 2019) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-18 12:35:50 +0100 (Fri, 18 Jan 2019) $");
   script_tag(name:"creation_date", value:"2019-01-16 04:01:39 +0100 (Wed, 16 Jan 2019)");
   script_name("Ubuntu Update for libcaca USN-3860-1");
   script_category(ACT_GATHER_INFO);
@@ -45,7 +45,6 @@ if(description)
 
   script_xref(name:"USN", value:"3860-1");
   script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3860-1/");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(14\.04 LTS|18\.04 LTS|18\.10|16\.04 LTS)", re:"ssh/login/release=UBUNTU(14\.04 LTS|18\.04 LTS|16\.04 LTS|18\.10)");
 
   script_tag(name:"summary", value:"The remote host is missing an update for the
   'libcaca' package(s) announced via the USN-3860-1 advisory.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: poprelayd_auth.nasl 13107 2019-01-17 06:55:20Z cfischer $
+# $Id: poprelayd_auth.nasl 13137 2019-01-18 07:33:34Z cfischer $
 #
 # poprelayd & sendmail authentication problem
 #
@@ -36,8 +36,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11080");
-  script_version("$Revision: 13107 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-17 07:55:20 +0100 (Thu, 17 Jan 2019) $");
+  script_version("$Revision: 13137 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-18 08:33:34 +0100 (Fri, 18 Jan 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(2986);
   script_tag(name:"cvss_base", value:"5.0");
@@ -80,7 +80,7 @@ if(get_kb_item("smtp/" + port + "/qmail"))
 if(get_kb_item("postfix/smtp/" + port + "/detected"))
   exit(0);
 
-if(get_smtp_is_marked_wrapped(port:port))
+if(smtp_get_is_marked_wrapped(port:port))
   exit(0);
 
 soc = open_sock_tcp(port);

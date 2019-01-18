@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smtp_too_long_line.nasl 13089 2019-01-15 15:39:12Z cfischer $
+# $Id: smtp_too_long_line.nasl 13137 2019-01-18 07:33:34Z cfischer $
 # Description: SMTP too long line
 #
 # Authors:
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11270");
-  script_version("$Revision: 13089 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-15 16:39:12 +0100 (Tue, 15 Jan 2019) $");
+  script_version("$Revision: 13137 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-18 08:33:34 +0100 (Fri, 18 Jan 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -67,7 +67,7 @@ port = get_smtp_port(default:25);
 if(get_kb_item("smtp/" + port + "/spam"))
   exit(0);
 
-if(get_smtp_is_marked_wrapped(port:port))
+if(smtp_get_is_marked_wrapped(port:port))
   exit(0);
 
 b = string("From: ", fromaddr, "\r\n", "To: ", toaddr, "\r\n",

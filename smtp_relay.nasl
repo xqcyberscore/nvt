@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smtp_relay.nasl 13116 2019-01-17 09:58:55Z cfischer $
+# $Id: smtp_relay.nasl 13137 2019-01-18 07:33:34Z cfischer $
 #
 # SMTP Open Relay Test
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100073");
-  script_version("$Revision: 13116 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-17 10:58:55 +0100 (Thu, 17 Jan 2019) $");
+  script_version("$Revision: 13137 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-18 08:33:34 +0100 (Fri, 18 Jan 2019) $");
   script_tag(name:"creation_date", value:"2009-03-23 19:32:33 +0100 (Mon, 23 Mar 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -71,7 +71,7 @@ port = get_smtp_port(default:25);
 if(get_kb_item("smtp/" + port + "/qmail"))
   exit(0);
 
-if(get_smtp_is_marked_wrapped(port:port))
+if(smtp_get_is_marked_wrapped(port:port))
   exit(0);
 
 soc = smtp_open(port:port, data:NULL);

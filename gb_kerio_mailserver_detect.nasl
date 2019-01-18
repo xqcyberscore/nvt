@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kerio_mailserver_detect.nasl 13127 2019-01-17 14:33:33Z cfischer $
+# $Id: gb_kerio_mailserver_detect.nasl 13138 2019-01-18 07:48:30Z cfischer $
 #
 # Kerio MailServer/Connect Version Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800098");
-  script_version("$Revision: 13127 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-17 15:33:33 +0100 (Thu, 17 Jan 2019) $");
+  script_version("$Revision: 13138 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-18 08:48:30 +0100 (Fri, 18 Jan 2019) $");
   script_tag(name:"creation_date", value:"2009-01-08 07:43:30 +0100 (Thu, 08 Jan 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -59,7 +59,7 @@ ports = make_array();
 report = ""; # nb: To make openvas-nasl-lint happy...
 cgi_disabled = http_is_cgi_scan_disabled();
 
-smtpPorts = get_smtp_ports();
+smtpPorts = smtp_get_ports();
 foreach smtpPort( smtpPorts )
   ports[smtpPort] = "smtp";
 

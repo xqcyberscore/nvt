@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_e4732930df_beep_fc28.nasl 13108 2019-01-17 07:34:03Z santu $
+# $Id: gb_fedora_2018_e4732930df_beep_fc28.nasl 13147 2019-01-18 11:35:50Z mmartin $
 #
 # Fedora Update for beep FEDORA-2018-e4732930df
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875393");
-  script_version("$Revision: 13108 $");
+  script_version("$Revision: 13147 $");
   script_cve_id("CVE-2018-1000532", "CVE-2018-0492");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-17 08:34:03 +0100 (Thu, 17 Jan 2019) $");
+  script_tag(name:"cvss_base", value:"4.4");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-18 12:35:50 +0100 (Fri, 18 Jan 2019) $");
   script_tag(name:"creation_date", value:"2019-01-11 04:01:49 +0100 (Fri, 11 Jan 2019)");
   script_name("Fedora Update for beep FEDORA-2018-e4732930df");
   script_category(ACT_GATHER_INFO);

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: check_smtp_helo.nasl 13120 2019-01-17 12:49:17Z cfischer $
+# $Id: check_smtp_helo.nasl 13138 2019-01-18 07:48:30Z cfischer $
 # Description: SMTP server accepts us
 #
 # Authors:
@@ -25,8 +25,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.18528");
-  script_version("$Revision: 13120 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-17 13:49:17 +0100 (Thu, 17 Jan 2019) $");
+  script_version("$Revision: 13138 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-18 08:48:30 +0100 (Fri, 18 Jan 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -68,7 +68,7 @@ function smtp_recv( socket, retry ) {
   return r2;
 }
 
-ports = get_smtp_ports();
+ports = smtp_get_ports();
 
 heloname = get_3rdparty_domain();
 heloname2 = this_host_name();
@@ -79,18 +79,18 @@ foreach port( ports ) {
 
   s = open_sock_tcp( port );
   if( ! s ) {
-    set_smtp_is_marked_broken( port:port );
+    smtp_set_is_marked_broken( port:port );
     if( port == 25 )
-      set_smtp_is_marked_wrapped( port:port );
+      smtp_set_is_marked_wrapped( port:port );
     continue;
   }
 
   r = smtp_recv( socket:s, retry:3 );
   if( ! r ) {
     close( s );
-    set_smtp_is_marked_broken( port:port );
+    smtp_set_is_marked_broken( port:port );
     if( port == 25 )
-      set_smtp_is_marked_wrapped( port:port );
+      smtp_set_is_marked_wrapped( port:port );
     continue;
   }
 
@@ -99,7 +99,7 @@ foreach port( ports ) {
     report  = "The SMTP server on this port doesn't answer with 3 ASCII digit codes as expected. It might be possible that it ";
     report += "was mis-identified previously. Answer (truncated): " + substr( r, 0, 500 );
     log_message( port:port, data:report );
-    set_smtp_is_marked_broken( port:port );
+    smtp_set_is_marked_broken( port:port );
     continue;
   }
 

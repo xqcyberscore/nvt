@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M5_109.nasl 10625 2018-07-25 15:24:35Z cfischer $
+# $Id: GSHB_M5_109.nasl 13141 2019-01-18 09:00:11Z cfischer $
 #
 # IT-Grundschutz, 14. EL, Maßnahme 5.109
 #
@@ -27,12 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.95071");
-  script_version("$Revision: 10625 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:24:35 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 13141 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-18 10:00:11 +0100 (Fri, 18 Jan 2019) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"qod_type", value:"remote_app");
   script_name("IT-Grundschutz M5.109: Einsatz eines E-Mail-Scanners auf dem Mailserver");
   script_xref(name:"URL", value:"http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m05/m05109.html");
   script_category(ACT_GATHER_INFO);
@@ -43,27 +42,30 @@ if(description)
 
   script_tag(name:"summary", value:"IT-Grundschutz M5.109: Einsatz eines E-Mail-Scanners auf dem Mailserver.
 
-Stand: 14. Ergänzungslieferung (14. EL).");
+  Stand: 14. Ergänzungslieferung (14. EL).");
+
+  script_tag(name:"qod_type", value:"remote_app");
 
   exit(0);
 }
 
 include("itg.inc");
+include("smtp_func.inc");
 
 name = 'IT-Grundschutz M5.109: Einsatz eines E-Mail-Scanners auf dem Mailserver\n';
 
 gshbm =  "IT-Grundschutz M5.109: ";
 
-Eicar = get_kb_item("GSHB/Eicar");
-log = get_kb_item("GSHB/Eicar/log");
-portlist = get_kb_list("Services/smtp");
-foreach p (portlist) if (p == "25") port=p;
+port = get_smtp_port(default:25, ignore_broken:TRUE, ignore_unscanned:TRUE);
 
-if(Eicar >< "error" && port == "25"){
+Eicar = get_kb_item("GSHB/Eicar/" + port);
+log = get_kb_item("GSHB/Eicar/" + port + "/log");
+
+if("error" >< Eicar){
   result = string("Fehler");
   if (!log) desc = string("Beim Testen des Systems trat ein Fehler auf.");
   if (log) desc = string("Beim Testen des Systems trat ein Fehler auf:\n" + log);
-}else if(!portlist){
+}else if(!port){
   result = string("nicht zutreffend");
   desc = string("Das System wurde nicht als Mailserver erkannt.");
 }else if(Eicar == "true"){

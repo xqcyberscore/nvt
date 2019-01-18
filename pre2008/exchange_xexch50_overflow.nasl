@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: exchange_xexch50_overflow.nasl 13102 2019-01-16 15:27:32Z cfischer $
+# $Id: exchange_xexch50_overflow.nasl 13137 2019-01-18 07:33:34Z cfischer $
 # Description: Exchange XEXCH50 Remote Buffer Overflow
 #
 # Authors:
@@ -28,8 +28,8 @@ CPE = "cpe:/a:microsoft:exchange_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11889");
-  script_version("$Revision: 13102 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-16 16:27:32 +0100 (Wed, 16 Jan 2019) $");
+  script_version("$Revision: 13137 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-18 08:33:34 +0100 (Fri, 18 Jan 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(8838);
   script_xref(name:"IAVA", value:"2003-A-0031");
@@ -68,7 +68,7 @@ if(!port = get_app_port(cpe:CPE, service:"smtp"))
 if(!get_app_location(cpe:CPE, port:port))
   exit(0);
 
-if(get_smtp_is_marked_wrapped(port:port))
+if(smtp_get_is_marked_wrapped(port:port))
   exit(0);
 
 soc = open_sock_tcp(port);

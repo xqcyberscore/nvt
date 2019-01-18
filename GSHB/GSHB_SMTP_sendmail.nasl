@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_SMTP_sendmail.nasl 13098 2019-01-16 12:55:32Z cfischer $
+# $Id: GSHB_SMTP_sendmail.nasl 13137 2019-01-18 07:33:34Z cfischer $
 #
 # Check Sendmail Configuration
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96098");
-  script_version("$Revision: 13098 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-16 13:55:32 +0100 (Wed, 16 Jan 2019) $");
+  script_version("$Revision: 13137 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-18 08:33:34 +0100 (Fri, 18 Jan 2019) $");
   script_tag(name:"creation_date", value:"2010-06-21 10:39:50 +0200 (Mon, 21 Jun 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -65,7 +65,7 @@ else{
     sendmailvrfy = "noport";
     sendmailexpn = "noport";
   }
-  else if(get_smtp_is_marked_wrapped(port:port)){
+  else if(smtp_get_is_marked_wrapped(port:port)){
     sendmaildebug = "nosmtp";
     sendmailvrfy = "nosmtp";
     sendmailexpn = "nosmtp";

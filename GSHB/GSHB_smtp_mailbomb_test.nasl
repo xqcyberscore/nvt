@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_smtp_mailbomb_test.nasl 11470 2018-09-19 09:45:56Z cfischer $
+# $Id: GSHB_smtp_mailbomb_test.nasl 13141 2019-01-18 09:00:11Z cfischer $
 #
 # Send Recursive Archive (Mailbomb)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96054");
-  script_version("$Revision: 11470 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 11:45:56 +0200 (Wed, 19 Sep 2018) $");
+  script_version("$Revision: 13141 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-18 10:00:11 +0100 (Fri, 18 Jan 2019) $");
   script_tag(name:"creation_date", value:"2010-04-27 10:02:59 +0200 (Tue, 27 Apr 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -38,7 +38,7 @@ if(description)
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");
   script_mandatory_keys("Compliance/Launch/GSHB");
-  script_dependencies("compliance_tests.nasl", "find_service.nasl", "smtp_settings.nasl");
+  script_dependencies("compliance_tests.nasl", "smtpserver_detect.nasl", "smtp_settings.nasl");
 
   script_tag(name:"summary", value:"This script sends the Universum.zip recursive archive to the
   mail server.");
@@ -53,9 +53,7 @@ vtstring = get_vt_string();
 fromaddr = smtp_from_header();
 toaddr = smtp_to_header();
 
-portlist = get_kb_list("Services/smtp");
-foreach p (portlist) if (p == "25") port = p;
-if(!port) port = 25;
+port = get_smtp_port(default:25, ignore_broken:TRUE, ignore_unscanned:TRUE);
 
 if(!get_port_state(port)){
   set_kb_item(name:"GSHB/Mailbomb", value:"error");
@@ -71,18 +69,31 @@ if (!s){
 }
 
 buff = smtp_recv_banner(socket:s);
+if(!buff) {
+  set_kb_item(name:"GSHB/Mailbomb", value:"error");
+  set_kb_item(name:"GSHB/Mailbomb/log", value:"receiving SMTP banner on Port " + port + " failed.");
+  smtp_close(socket:s, check_data:buff);
+  exit(0);
+}
 
-send(socket: s, data: string("HELO ", this_host_name(), "\r\n"));
-buff = recv_line(socket:s, length:2048);
+send(socket:s, data:string("HELO ", smtp_get_helo_from_kb(), "\r\n"));
+buff = smtp_recv_line(socket:s);
+if(!buff) {
+  set_kb_item(name:"GSHB/Mailbomb", value:"error");
+  set_kb_item(name:"GSHB/Mailbomb/log", value:"receiving HELO answer on Port " + port + " failed.");
+  smtp_close(socket:s, check_data:buff);
+  exit(0);
+}
 
 # MIME attachment
-
-header = string("From: ", fromaddr, "\r\nTo: ", toaddr, "\r\n",
-	"Organization: ", vtstring, "\r\nMIME-Version: 1.0\r\n");
+header = string("From: ", fromaddr, "\r\n",
+                "To: ", toaddr, "\r\n",
+                "Organization: ", vtstring, "\r\n",
+                "MIME-Version: 1.0\r\n");
 
 msg = "Subject: " + vtstring + " Mailbomb base64 attachments
 Content-Type: multipart/mixed;
-	boundary=------------030509000404040305080206
+boundary=------------030509000404040305080206
 
 This is a multi-part message in MIME format.
 --------------030509000404040305080206
@@ -158,22 +169,17 @@ AAABAAEAOAAAAOEEAAAAAA==
 --------------030509000404040305080206--";
 msg = ereg_replace(pattern:string("\n"), string:msg, replace:string("\r\n"));
 
-
-n=smtp_send_socket(socket:s, from: fromaddr, to: toaddr, body: header+msg);
-
-send(socket: s, data: string("QUIT\r\n"));
-close(s);
+n = smtp_send_socket(socket:s, from:fromaddr, to:toaddr, body:header + msg);
+smtp_close(socket:s, check_data:n);
 
 if (n > 0) {
-  log_message(port: port,
-	data:string(	"The Mailbomb Testfiles was sent ", n,
-			" times. If there is an antivirus in your MTA, it might\n",
-			"have broken. Please check the default ", vtstring, " Mailfolder and MTA right now, as it is\n",
-			"not possible to do so remotely\n"));
+  log_message(port:port, data:string("The Mailbomb Testfiles was sent ", n, " times. If there is an antivirus in your MTA, it might\n",
+                                     "have broken. Please check the default ", vtstring, " Mailfolder and MTA right now, as it is\n",
+                                     "not possible to do so remotely\n"));
   set_kb_item(name:"GSHB/Mailbomb", value:"true");
 }else if (n == 0) {
-  log_message(port: port,
-	data: "For some reason, we could not send the Mailbomb Testfiles to this MTA");
+  log_message(port:port, data:"For some reason, we could not send the Mailbomb Testfiles to this MTA");
   set_kb_item(name:"GSHB/Mailbomb", value:"fail");
 }
+
 exit(0);
