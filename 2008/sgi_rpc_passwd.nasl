@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sgi_rpc_passwd.nasl 12057 2018-10-24 12:23:19Z cfischer $
+# $Id: sgi_rpc_passwd.nasl 13158 2019-01-18 16:03:13Z cfischer $
 #
 # irix rpc.passwd overflow
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80034");
-  script_version("$Revision: 12057 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 14:23:19 +0200 (Wed, 24 Oct 2018) $");
+  script_version("$Revision: 13158 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-18 17:03:13 +0100 (Fri, 18 Jan 2019) $");
   script_tag(name:"creation_date", value:"2008-10-24 20:15:31 +0200 (Fri, 24 Oct 2008)");
   script_bugtraq_id(4939);
   script_cve_id("CVE-2002-0357");
@@ -62,7 +62,8 @@ include("misc_func.inc");
 include("byte_func.inc");
 
 n = get_kb_item("rpc/yppasswd/sun_overflow");
-if(n)exit(0);
+if(n)
+  exit(0);
 
 function ping(len, soc)
 {
@@ -95,28 +96,26 @@ function ping(len, soc)
 }
 
 port = get_rpc_port(program:100009, protocol:IPPROTO_UDP);
-if(port)
-{
-  if(get_port_state(port))
-  {
-    soc = open_sock_udp(port);
-    if(soc)
-    {
-      # nb: We forge a bogus RPC request, with a way too long argument. The remote process will die immediately, and hopefully painlessly.
-      p1 = ping(len:80, soc:soc);
-      if(p1)
-      {
-        p2 = ping(len:4000, soc:soc);
-        if(!p2)
-        {
-          p3 = ping(len:80, soc:soc);
-          if(!p3)
-            security_message(port:port, protocol:"udp");
-        }
-      }
-    }
-    close(soc);
+if(!port)
+  exit(0);
+
+if(!get_udp_port_state(port))
+  exit(0);
+
+soc = open_sock_udp(port);
+if(!soc)
+  exit(0);
+
+# nb: We forge a bogus RPC request, with a way too long argument. The remote process will die immediately, and hopefully painlessly.
+p1 = ping(len:80, soc:soc);
+if(p1) {
+  p2 = ping(len:4000, soc:soc);
+  if(!p2) {
+    p3 = ping(len:80, soc:soc);
+    if(!p3)
+      security_message(port:port, protocol:"udp");
   }
 }
 
+close(soc);
 exit(0);

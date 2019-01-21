@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4480970.nasl 13052 2019-01-14 05:47:49Z santu $
+# $Id: gb_ms_kb4480970.nasl 13177 2019-01-21 07:53:27Z mmartin $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4480970)
 #
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814650");
-  script_version("$Revision: 13052 $");
+  script_version("$Revision: 13177 $");
   script_cve_id("CVE-2019-0536", "CVE-2019-0538", "CVE-2019-0541", "CVE-2019-0543",
                 "CVE-2019-0584", "CVE-2019-0554", "CVE-2019-0549", "CVE-2019-0569",
                 "CVE-2019-0583", "CVE-2019-0575", "CVE-2019-0576", "CVE-2019-0577",
                 "CVE-2019-0578", "CVE-2019-0579", "CVE-2019-0580", "CVE-2019-0581",
                 "CVE-2019-0582", "CVE-2018-3639");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-14 06:47:49 +0100 (Mon, 14 Jan 2019) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-21 08:53:27 +0100 (Mon, 21 Jan 2019) $");
   script_tag(name:"creation_date", value:"2019-01-09 18:36:41 +0530 (Wed, 09 Jan 2019)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4480970)");
 

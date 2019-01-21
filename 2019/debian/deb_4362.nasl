@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4362.nasl 12931 2019-01-03 16:36:54Z cfischer $
+# $Id: deb_4362.nasl 13178 2019-01-21 08:02:45Z cfischer $
 #
 # Auto-generated from advisory DSA 4362-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704362");
-  script_version("$Revision: 12931 $");
-  # TODO: No CVE assigned yet.
+  script_version("$Revision: 13178 $");
+  script_cve_id("CVE-2018-17466", "CVE-2018-18492", "CVE-2018-18493", "CVE-2018-18494", "CVE-2018-18498",
+                "CVE-2018-12405");
   script_name("Debian Security Advisory DSA 4362-1 (thunderbird - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-03 17:36:54 +0100 (Thu, 03 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-21 09:02:45 +0100 (Mon, 21 Jan 2019) $");
   script_tag(name:"creation_date", value:"2019-01-01 00:00:00 +0100 (Tue, 01 Jan 2019)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");

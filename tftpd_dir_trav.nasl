@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: tftpd_dir_trav.nasl 10894 2018-08-10 13:09:25Z cfischer $
+# $Id: tftpd_dir_trav.nasl 13155 2019-01-18 15:41:35Z cfischer $
 #
 # TFTP directory traversal
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.18262");
-  script_version("$Revision: 10894 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:09:25 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 13155 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-18 16:41:35 +0100 (Fri, 18 Jan 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -42,6 +42,7 @@ if(description)
   script_family("Remote file access");
   script_dependencies("tftpd_detect.nasl", "global_settings.nasl");
   script_require_udp_ports("Services/udp/tftp", 69);
+  script_require_keys("tftp/detected");
   script_exclude_keys("keys/islocalhost", "keys/TARGET_IS_IPV6");
 
   script_tag(name:"solution", value:"Disable the tftp daemon, or if you really need it
@@ -57,10 +58,10 @@ if(description)
   exit(0);
 }
 
-include('global_settings.inc');
-include('dump.inc');
+include("global_settings.inc");
+include("dump.inc");
 
-if( islocalhost() ) exit( 0 ); # ?
+if( islocalhost() ) exit( 0 );
 if( TARGET_IS_IPV6() ) exit( 0 );
 nb = 0;
 
@@ -105,13 +106,9 @@ function tftp_grab( port, file ) {
 
 # function report_backdoor was moved to tftpd_backdoor.nasl
 function report_and_exit( file, content, port ) {
-  set_kb_item( name:'tftp/' + port + '/get_file', value:file );
-  if( report_verbosity < 1 ) {
-    security_message(port: port, proto: "udp");
-  } else {
-    report = 'It was possible to retrieve the file ' + file + ' through tftp. Here is what we could grab : \n' + content;
-    security_message( port:port, proto:"udp", data:report );
-  }
+  set_kb_item( name:"tftp/" + port + "/get_file", value:file );
+  report = 'It was possible to retrieve the file ' + file + ' through tftp. Here is what we could grab : \n' + content;
+  security_message( port:port, proto:"udp", data:report );
   exit( 0 );
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openoffice_writer_odt_info_disclosure_vuln_may18_win.nasl 11760 2018-10-05 10:04:56Z cfischer $
+# $Id: gb_openoffice_writer_odt_info_disclosure_vuln_may18_win.nasl 13172 2019-01-21 04:30:10Z ckuersteiner $
 #
 # Apache OpenOffice Writer ODT file Information Disclosure Vulnerability May18 (Windows)
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:openoffice:openoffice.org";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812873");
-  script_version("$Revision: 11760 $");
+  script_version("$Revision: 13172 $");
   script_cve_id("CVE-2018-10583");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:04:56 +0200 (Fri, 05 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-21 05:30:10 +0100 (Mon, 21 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-05-07 15:19:54 +0530 (Mon, 07 May 2018)");
   script_tag(name:"qod_type", value:"registry");
 
@@ -55,9 +55,8 @@ if(description)
   script_tag(name:"affected", value:"Apache OpenOffice Writer version 4.1.5 on
   Windows.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 05th October, 2018.
-  Information regarding this issue will be updated once solution details are available.
-  For updates refer to Reference links.");
+  script_tag(name:"solution", value:"No known solution is available as of 21st January, 2019.
+  Information regarding this issue will be updated once solution details are available.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
   script_xref(name:"URL", value:"http://secureyourit.co.uk/wp/2018/05/01/creating-malicious-odt-files/");

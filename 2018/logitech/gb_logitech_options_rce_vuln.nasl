@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_logitech_options_rce_vuln.nasl 13148 2019-01-18 11:46:45Z mmartin $
+# $Id: gb_logitech_options_rce_vuln.nasl 13149 2019-01-18 12:20:43Z mmartin $
 #
-# Logitech Options <= 7.0.564 Remote Command Execution Vulnerability (Windows)
+# Logitech Options < 7.10.3 Remote Command Execution Vulnerability (Windows)
 #
 # Authors:
 # Adrian Steins <adrian.steins@greenbone.net>
@@ -28,14 +28,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112467");
-  script_version("$Revision: 13148 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-18 12:46:45 +0100 (Fri, 18 Jan 2019) $");
+  script_version("$Revision: 13149 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-18 13:20:43 +0100 (Fri, 18 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-12-18 14:34:12 +0100 (Tue, 18 Dec 2018)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_name("Logitech Options <= 7.0.564 Remote Command Execution Vulnerability (Windows)");
+  script_name("Logitech Options < 7.10.3 Remote Command Execution Vulnerability (Windows)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");
@@ -72,7 +72,7 @@ if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE)) {
 vers = infos['version'];
 path = infos['location'];
 
-if(version_is_less_equal(version:vers, test_version:"7.0.564")) {
+if(version_is_less(version:vers, test_version:"7.10.3")) {
   report = report_fixed_ver(installed_version:vers, fixed_version:"7.10.3", install_path:path);
   security_message(port:0, data:report);
   exit(0);

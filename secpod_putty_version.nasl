@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_putty_version.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
+# $Id: secpod_putty_version.nasl 13175 2019-01-21 07:34:21Z santu $
 #
 # PuTTY Version Detection
 #
@@ -33,10 +33,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900618");
-  script_version("$Revision: 11356 $");
+  script_version("$Revision: 13175 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-21 08:34:21 +0100 (Mon, 21 Jan 2019) $");
   script_tag(name:"creation_date", value:"2009-06-02 12:54:52 +0200 (Tue, 02 Jun 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("PuTTY Version Detection");
@@ -70,10 +70,10 @@ if("x86" >< os_arch){
                        "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\");
 }
 
-##Presently 64bit application is not available
 else if("x64" >< os_arch){
   key_list = make_list("SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\PuTTY_is1",
-                       "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\");
+                       "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\",
+                       "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\");
 }
 
 foreach key (key_list)
@@ -103,6 +103,15 @@ foreach key (key_list)
         cpe = build_cpe(value:appVer, exp:"^([0-9.]+)", base:"cpe:/a:putty:putty:");
         if(isnull(cpe))
           cpe = "cpe:/a:putty:putty";
+
+        if("x64" >< os_arch && "Wow6432Node" >!< key)
+        {
+          set_kb_item(name:"putty64/version", value:appVer);
+
+          cpe = build_cpe(value:appVer, exp:"^([0-9.]+)", base:"cpe:/a:putty:putty:x64:");
+          if(isnull(cpe))
+            cpe = "cpe:/a:putty:putty:x64";
+        }
 
 	tmp_location = tolower(insloc);
 	tmp_location = ereg_replace(pattern:"\\$", string:tmp_location, replace:'');

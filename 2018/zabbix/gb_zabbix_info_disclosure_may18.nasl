@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zabbix_info_disclosure_may18.nasl 12025 2018-10-23 08:16:52Z mmartin $
+# $Id: gb_zabbix_info_disclosure_may18.nasl 13172 2019-01-21 04:30:10Z ckuersteiner $
 #
 # Zabbix Server Information Disclosure Vulnerability May18
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:zabbix:zabbix";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812869");
-  script_version("$Revision: 12025 $");
+  script_version("$Revision: 13172 $");
   script_cve_id("CVE-2017-2826");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:16:52 +0200 (Tue, 23 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-21 05:30:10 +0100 (Mon, 21 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-05-02 16:58:57 +0530 (Wed, 02 May 2018)");
 
   script_name("Zabbix Server Information Disclosure Vulnerability May18");
@@ -53,14 +53,15 @@ if (description)
 
   script_tag(name:"affected", value:"Zabbix server version 2.4.X");
 
-  script_tag(name:"solution", value:"No known solution is available as of 05th October, 2018. Information regarding
-this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution is available as of 21st January, 2019.
+  Information regarding this issue will be updated once solution details are available.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
   script_xref(name:"URL", value:"https://talosintelligence.com/vulnerability_reports/TALOS-2017-0327");
   script_xref(name:"URL", value:"http://www.zabbix.com");
+
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");

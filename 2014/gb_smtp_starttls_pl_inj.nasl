@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_smtp_starttls_pl_inj.nasl 13145 2019-01-18 11:18:21Z cfischer $
+# $Id: gb_smtp_starttls_pl_inj.nasl 13153 2019-01-18 14:31:32Z cfischer $
 #
 # Multiple Vendors STARTTLS Implementation Plaintext Arbitrary Command Injection Vulnerability
 #
@@ -28,21 +28,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103935");
-  script_version("$Revision: 13145 $");
+  script_version("$Revision: 13153 $");
   script_bugtraq_id(46767);
   script_cve_id("CVE-2011-0411", "CVE-2011-1430", "CVE-2011-1431", "CVE-2011-1432",
                 "CVE-2011-1506", "CVE-2011-1575", "CVE-2011-1926", "CVE-2011-2165");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-18 12:18:21 +0100 (Fri, 18 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-18 15:31:32 +0100 (Fri, 18 Jan 2019) $");
   script_tag(name:"creation_date", value:"2014-04-08 13:52:07 +0200 (Tue, 08 Apr 2014)");
   script_name("Multiple Vendors STARTTLS Implementation Plaintext Arbitrary Command Injection Vulnerability");
   script_category(ACT_ATTACK);
   script_family("SMTP problems");
   script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
-  script_dependencies("find_service.nasl", "gb_starttls_smtp.nasl");
-  script_require_ports("Services/smtp", 25);
-  script_mandatory_keys("SMTP/STARTTLS/supported");
+  script_dependencies("smtpserver_detect.nasl", "gb_starttls_smtp.nasl");
+  script_mandatory_keys("smtp/starttls/supported");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/46767");
   script_xref(name:"URL", value:"http://kolab.org/pipermail/kolab-announce/2011/000101.html");
@@ -66,10 +65,11 @@ if(description)
   the context of the user running the application. Successful exploits
   can allow attackers to obtain email usernames and passwords.");
 
-  script_tag(name:"vuldetect", value:"Send a special crafted STARTTLS request and check the response.");
-  script_tag(name:"solution", value:"Updates are available.");
+  script_tag(name:"vuldetect", value:"Send a special crafted 'STARTTLS' request and check the response.");
 
-  script_tag(name:"summary", value:"Multiple vendors' implementations of STARTTLS are prone to a
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
+
+  script_tag(name:"summary", value:"Multiple vendors' implementations of 'STARTTLS' are prone to a
   vulnerability that lets attackers inject arbitrary commands.");
 
   script_tag(name:"affected", value:"The following vendors are affected:

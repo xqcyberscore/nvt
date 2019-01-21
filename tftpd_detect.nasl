@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: tftpd_detect.nasl 10894 2018-08-10 13:09:25Z cfischer $
+# $Id: tftpd_detect.nasl 13155 2019-01-18 15:41:35Z cfischer $
 #
 # TFTP detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80100");
-  script_version("$Revision: 10894 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:09:25 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 13155 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-18 16:41:35 +0100 (Fri, 18 Jan 2019) $");
   script_tag(name:"creation_date", value:"2009-03-04 10:25:48 +0100 (Wed, 04 Mar 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -157,6 +157,7 @@ if( ! foundtftp ) {
 if( foundtftp ) {
   register_service( port:port, ipproto:"udp", proto:"tftp" );
   log_message( port:port, proto:"udp" );
+  set_kb_item( name:"tftp/detected", value:TRUE );
 }
 
 exit( 0 );

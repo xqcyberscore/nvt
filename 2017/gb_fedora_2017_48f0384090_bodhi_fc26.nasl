@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2017_48f0384090_bodhi_fc26.nasl 7021 2017-08-30 06:29:55Z santu $
+# $Id: gb_fedora_2017_48f0384090_bodhi_fc26.nasl 13177 2019-01-21 07:53:27Z mmartin $
 #
 # Fedora Update for bodhi FEDORA-2017-48f0384090
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.873299");
-  script_version("$Revision: 7021 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-30 08:29:55 +0200 (Wed, 30 Aug 2017) $");
+  script_version("$Revision: 13177 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-21 08:53:27 +0100 (Mon, 21 Jan 2019) $");
   script_tag(name:"creation_date", value:"2017-08-21 07:56:05 +0200 (Mon, 21 Aug 2017)");
   script_cve_id("CVE-2017-1002152");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for bodhi FEDORA-2017-48f0384090");
   script_tag(name: "summary", value: "Check the version of bodhi");

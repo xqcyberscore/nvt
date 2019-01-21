@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smtpserver_detect.nasl 13144 2019-01-18 10:33:22Z cfischer $
+# $Id: smtpserver_detect.nasl 13179 2019-01-21 08:51:36Z cfischer $
 #
 # SMTP Server type and version
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10263");
-  script_version("$Revision: 13144 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-18 11:33:22 +0100 (Fri, 18 Jan 2019) $");
+  script_version("$Revision: 13179 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-21 09:51:36 +0100 (Mon, 21 Jan 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -59,6 +59,7 @@ foreach port( ports ) {
     continue;
 
   banner = smtp_recv_banner( socket:soc );
+  banner = chomp( banner );
   if( ! banner ) {
     close( soc );
     smtp_set_is_marked_wrapped( port:port );
@@ -78,15 +79,36 @@ foreach port( ports ) {
   ehlo = smtp_recv_line( socket:soc );
   if( ehlo ) {
 
+    if( get_port_transport( port ) > ENCAPS_IP )
+      is_tls_ehlo = TRUE;
+    else
+      is_tls_ehlo = FALSE;
+
     set_kb_item( name:"smtp/" + port + "/ehlo", value:ehlo );
 
+    # nb: Don't check for the status code in smtp_recv_line above as we want
+    # to catch every possible response in the KB key above.
+    if( ehlo =~ "^250[ -].+" ) {
+      ehlo_report = "The remote SMTP server is announcing the following available ESMTP commands (EHLO response) via an ";
+      if( is_tls_ehlo )
+        ehlo_report += "encrypted";
+      else
+        ehlo_report += "unencrypted";
+      ehlo_report += ' connection:\n' + chomp( ehlo );
+    }
+
     if( auth_string = egrep( string:ehlo, pattern:"^250[ -]AUTH .+" ) ) {
+
       set_kb_item( name:"smtp/auth_methods/available", value:TRUE );
       auth_string = chomp( auth_string );
       auth_string = substr( auth_string, 9 );
       auths = split( auth_string, sep:" ", keep:FALSE );
-      foreach auth( auths )
-        set_kb_item( name:"smtp/" + port + "/auth_methods", value:auth );
+      foreach auth( auths ) {
+        if( is_tls_ehlo )
+          set_kb_item( name:"smtp/" + port + "/tls_auth_methods", value:auth );
+        else
+          set_kb_item( name:"smtp/" + port + "/auth_methods", value:auth );
+      }
     }
   }
 
@@ -198,9 +220,18 @@ foreach port( ports ) {
     guess = "Quick 'n Easy Mail Server";
   }
 
+  else if( "QK SMTP Server" >< banner ) {
+    set_kb_item( name:"smtp/qk_smtp/detected", value:TRUE );
+    set_kb_item( name:"smtp/" + port + "/qk_smtp", value:TRUE );
+    guess = "QK SMTP Server";
+  }
+
   data = string( "Remote SMTP server banner:\n", banner );
-  if( guess )
-    data = string( data, "\n\n\nThis is probably: ", guess );
+  if( strlen( guess ) > 0 )
+    data = string( data, "\n\nThis is probably: ", guess );
+
+  if( strlen( ehlo_report ) > 0 )
+    data = string( data, "\n\n", ehlo_report );
 
   log_message( port:port, data:data );
 }

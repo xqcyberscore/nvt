@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dsstftpserver_path_trav_vuln.nasl 10844 2018-08-08 14:38:33Z cfischer $
+# $Id: gb_dsstftpserver_path_trav_vuln.nasl 13155 2019-01-18 15:41:35Z cfischer $
 #
 # DSS TFTP Server Path Traversal Vulnerability
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105957");
-  script_version("$Revision: 10844 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-08 16:38:33 +0200 (Wed, 08 Aug 2018) $");
+  script_version("$Revision: 13155 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-18 16:41:35 +0100 (Fri, 18 Jan 2019) $");
   script_tag(name:"creation_date", value:"2015-03-04 09:41:51 +0700 (Wed, 04 Mar 2015)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
@@ -37,8 +37,10 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Remote file access");
-  script_dependencies("tftpd_detect.nasl", "os_detection.nasl");
+  script_dependencies("tftpd_detect.nasl", "global_settings.nasl", "tftpd_backdoor.nasl", "os_detection.nasl");
   script_require_udp_ports("Services/udp/tftp", 69);
+  script_require_keys("tftp/detected", "Host/runs_windows");
+  script_exclude_keys("tftp/backdoor", "keys/TARGET_IS_IPV6");
 
   script_xref(name:"URL", value:"http://www.vulnerability-lab.com/get_content.php?id=1440");
 
@@ -74,18 +76,26 @@ include("tftp.inc");
 include("network_func.inc");
 
 port = get_kb_item("Services/udp/tftp");
-if (!port)
+if(!port)
   port = 69;
 
-if (!check_udp_port_status(dport:port))
+if(!get_udp_port_state(port))
+  exit(0);
+
+if(get_kb_item("tftp/" + port + "/backdoor"))
   exit(0);
 
 files = traversal_files("windows");
 
 foreach file(keys(files)) {
+
   res = tftp_get(port:port, path:".../.../.../.../.../.../.../" + files[file]);
-  if( rep = egrep(pattern:file, string:res, icase:TRUE)) {
-    security_message(port:port, data:'Received file content:\n\n' + rep);
+  if(!res)
+    continue;
+
+  if(egrep(pattern:file, string:res, icase:TRUE)) {
+    report = string("The " + files[file] + " file contains:\n", res);
+    security_message(port:port, data:report, proto:"udp");
     exit(0);
   }
 }

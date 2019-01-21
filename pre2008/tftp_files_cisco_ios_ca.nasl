@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: tftp_files_cisco_ios_ca.nasl 6056 2017-05-02 09:02:50Z teissa $
+# $Id: tftp_files_cisco_ios_ca.nasl 13155 2019-01-18 15:41:35Z cfischer $
 # Description: TFTP file detection (Cisco IOS CA)
 #
 # Authors:
@@ -22,36 +22,39 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-# The script will test whether the remote host has one of a number of sensitive  
+# The script will test whether the remote host has one of a number of sensitive
 # files present on the tftp server
 #
 # DISCLAIMER
-# The information contained within this script is supplied "as-is" with 
-# no warranties or guarantees of fitness of use or otherwise. Corsaire 
-# accepts no responsibility for any damage caused by the use or misuse of 
+# The information contained within this script is supplied "as-is" with
+# no warranties or guarantees of fitness of use or otherwise. Corsaire
+# accepts no responsibility for any damage caused by the use or misuse of
 # this information.
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17341");
-  script_version("$Revision: 6056 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
+  script_version("$Revision: 13155 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-18 16:41:35 +0100 (Fri, 18 Jan 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-
   script_name("TFTP file detection (Cisco IOS CA)");
   script_category(ACT_ATTACK);
   script_copyright("This NASL script is Copyright 2005 Corsaire Limited.");
-  script_family("General");
-  script_dependencies("tftpd_detect.nasl");
+  script_family("Remote file access");
+  script_dependencies("tftpd_detect.nasl", "global_settings.nasl", "os_detection.nasl");
   script_require_udp_ports("Services/udp/tftp", 69);
- 
-  script_tag(name : "summary" , value : "The remote host has a TFTP server installed that is serving one or more 
+  script_require_keys("tftp/detected", "Host/runs_unixoide");
+  script_exclude_keys("keys/TARGET_IS_IPV6");
+
+  script_tag(name:"summary", value:"The remote host has a TFTP server installed that is serving one or more
   sensitive Cisco IOS Certificate Authority (CA) files.");
-  script_tag(name : "insight" , value : "These files potentially include the private key for the CA so should be considered 
+
+  script_tag(name:"insight", value:"These files potentially include the private key for the CA so should be considered
   extremely sensitive and should not be exposed to unnecessary scrutiny.");
-  script_tag(name : "solution" , value : "If it is not required, disable the TFTP server. Otherwise restrict access to
+
+  script_tag(name:"solution", value:"If it is not required, disable the TFTP server. Otherwise restrict access to
   trusted sources only.");
 
   script_tag(name:"solution_type", value:"Workaround");
@@ -63,73 +66,45 @@ if(description)
 
 include("tftp.inc");
 include("network_func.inc");
+include("misc_func.inc");
 
-# initialise variables
-local_var request_data;
-local_var file_name;
-local_var file_postfix;
-local_var postfix_list;
-local_var ca_name;
-local_var detected_files;
-local_var description;
-postfix_list=make_list('.pub','.crl','.prv','.ser','#6101CA.cer','.p12');
-
-## Check for tftp service
 port = get_kb_item("Services/udp/tftp");
-if(!port){
+if(!port)
   port = 69;
-}
 
-## Check Port State
-if(!check_udp_port_status(dport:port)){
+if(!get_udp_port_state(port))
   exit(0);
+
+if(tftp_get(port:port, path:rand_str(length:10)))
+  exit(0);
+
+postfix_list = make_list(".pub", ".crl", ".prv", ".ser", "#6101CA.cer", ".p12");
+
+for( i = 1; i < 10; i++) {
+
+  file_name = raw_string(ord(i), '.cnm');
+
+  if(request_data = tftp_get(port:port,path:file_name)) {
+
+    ca_name = eregmatch(string:request_data, pattern:'subjectname_str = cn=(.+),ou=');
+    if(ca_name[1]) {
+      detected_files = raw_string(detected_files, file_name, "\n");
+      foreach file_postfix (postfix_list) {
+
+        file_name = raw_string(ca_name[1], file_postfix);
+        if( request_data = tftp_get(port:port,path:file_name)) {
+          detected_files = raw_string(detected_files,file_name,"\n");
+        }
+      }
+      break;
+    }
+  }
 }
 
-# step through first nine certificate files
-for(i=1;i<10;i++)
-{
-	# initialise variables
-	file_name=raw_string(ord(i),'.cnm');
-	
-	# request numeric certificate file
-	if(request_data=tftp_get(port:port,path:file_name))
-	{
-		# initialise variables
-		ca_name=eregmatch(string:request_data,pattern:'subjectname_str = cn=(.+),ou=');
-		
-		# check if cn is present in certificate file
-		if(ca_name[1])
-		{
-			# add filename to response
-			detected_files=raw_string(detected_files,file_name,"\n");
-			
-			# step through files
-			foreach file_postfix (postfix_list)
-			{
-				# initialise variables
-				file_name=raw_string(ca_name[1],file_postfix);
-
-				# request certificate file
-				if(request_data=tftp_get(port:port,path:file_name))
-				{
-					# add filename to response
-					detected_files=raw_string(detected_files,file_name,"\n");
-				}
-			}
-			
-			break;
-		}
-	}
-}
-
-# check if any files were detected
-if(detected_files)
-{
-	description= "The filenames detected are:
-
-" +detected_files;
-	security_message(data:description,port:port,proto:"udp");
-	exit(0);
+if(detected_files) {
+  description = 'The filenames detected are:\n\n' + detected_files;
+  security_message(data:description, port:port, proto:"udp");
+  exit(0);
 }
 
 exit(99);

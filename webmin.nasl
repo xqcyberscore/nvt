@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: webmin.nasl 10905 2018-08-10 14:32:11Z cfischer $
+# $Id: webmin.nasl 13183 2019-01-21 10:00:12Z ckuersteiner $
 #
-# Check for Webmin / Usermin
+# Webmin / Usermin Detection
 #
 # Authors:
 # Georges Dagousset <georges.dagousset@alert4web.com>
@@ -27,12 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10757");
-  script_version("$Revision: 10905 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:32:11 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 13183 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-21 11:00:12 +0100 (Mon, 21 Jan 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_name("Check for Webmin / Usermin");
+
+  script_name("Webmin / Usermin Detection");
+
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2001 Alert4Web.com");
   script_family("Product detection");
@@ -55,77 +57,52 @@ include("cpe.inc");
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
-include("misc_func.inc");
 
-ports = get_kb_list( "Services/www" );
-if( ! ports ) ports = make_list( 10000, 20000 );
+port = get_http_port(default: 10000);
 
-foreach port ( ports ) {
+banner = get_http_banner( port:port );
+buf = http_get_cache( item:"/", port:port );
 
+if ((banner && egrep(pattern: "^Server: MiniServ.*", string: banner, icase: TRUE)) || "Login to Webmin" >< buf ) {
   vers = "unknown";
-  usermin = FALSE;
-  webmin = FALSE;
 
-  if( get_port_state( port ) ) {
+  set_kb_item( name:"usermin_or_webmin/installed", value:TRUE );
 
-    banner = get_http_banner( port:port );
-    buf = http_get_cache( item:"/", port:port );
+  if( "Usermin Server" >< banner ) {
+    set_kb_item( name:"usermin/installed", value:TRUE );
+    usermin = TRUE;
+  } else {
+     set_kb_item( name:"webmin/installed", value:TRUE );
+     webmin = TRUE;
+  }
 
-    if( ( banner && egrep( pattern:"^Server: MiniServ.*", string:banner, icase: TRUE ) ) || "Login to Webmin" >< buf ) {
+  vers = eregmatch( pattern:"Server: MiniServ/([0-9]\.[0-9]+)", string:banner );
+  if (!isnull(vers[1]))
+    version = vers[1];
 
-      vers = "unknown";
-      install = "/";
-      set_kb_item( name:"usermin_or_webmin/installed", value:TRUE );
+  if (usermin) {
+    cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/a:webmin:usermin:");
+    if (!cpe)
+      cpe = "cpe:/a:webmin:usermin";
 
-      if( "Usermin Server" >< banner ) {
-        set_kb_item( name:"www/" + port + "/usermin", value:TRUE );
-        set_kb_item( name:"usermin/installed", value:TRUE );
-        usermin = TRUE;
-      } else {
-        set_kb_item( name:"www/" + port + "/webmin", value:TRUE );
-        set_kb_item( name:"webmin/installed", value:TRUE );
-        webmin = TRUE;
-      }
+    register_product(cpe: cpe, location: "/", port: port, service: "www");
 
-      version = eregmatch( pattern:"Server: MiniServ/([0-9]\.[0-9]+)", string:banner );
+    log_message(data: build_detection_report(app: "Usermin", version: version, install: "/", cpe: cpe,
+                                             concluded: vers[0]),
+                port: port);
+    exit(0);
+  } else {
+    cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/a:webmin:webmin:");
+    if (!cpe)
+      cpe = "cpe:/a:webmin:webmin";
 
-      if( version[1] ) {
-        vers = version[1];
+    register_product(cpe: cpe, location: "/", port: port, service: "www");
 
-        if( usermin ) {
-          set_kb_item( name:"usermin/" + port + "/version", value:vers );
-        } else if( webmin ) {
-          set_kb_item( name:"webmin/" + port + "/version", value:vers );
-        }
-      }
-
-      if( usermin ) {
-        cpe = build_cpe( value:vers, exp:"^([0-9.]+)", base:"cpe:/a:webmin:usermin:" );
-        if( ! cpe )
-          cpe = "cpe:/a:webmin:usermin";
-
-        register_product( cpe:cpe, location:install, port:port );
-        log_message( data:build_detection_report( app:"Usermin",
-                                                  version:vers,
-                                                  install:install,
-                                                  cpe:cpe,
-                                                  concluded:version[0] ),
-                                                  port:port );
-      } else if( webmin ) {
-        cpe = build_cpe( value:vers, exp:"^([0-9.]+)", base:"cpe:/a:webmin:webmin:" );
-        if( ! cpe )
-          cpe = "cpe:/a:webmin:webmin";
-
-        register_product( cpe:cpe, location:install, port:port );
-        log_message( data:build_detection_report( app:"Webmin",
-                                                  version:vers,
-                                                  install:install,
-                                                  cpe:cpe,
-                                                  concluded:version[0] ),
-                                                  port:port );
-      }
-    }
+    log_message(data: build_detection_report(app: "Webmin", version: version, install: "/", cpe:cpe,
+                                             concluded: vers[0]),
+                port: port);
+    exit(0);
   }
 }
 
-exit( 0 );
+exit(0);

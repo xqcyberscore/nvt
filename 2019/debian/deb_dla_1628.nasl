@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1628.nasl 12931 2019-01-03 16:36:54Z cfischer $
+# $Id: deb_dla_1628.nasl 13177 2019-01-21 07:53:27Z mmartin $
 #
 # Auto-generated from advisory DLA 1628-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,14 +31,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891628");
-  script_version("$Revision: 12931 $");
+  script_version("$Revision: 13177 $");
   script_cve_id("CVE-2018-18873", "CVE-2018-19139", "CVE-2018-19539", "CVE-2018-19540", "CVE-2018-19541",
                 "CVE-2018-19542", "CVE-2018-20570", "CVE-2018-20584", "CVE-2018-20622");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1628-1] jasper security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-03 17:36:54 +0100 (Thu, 03 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-21 08:53:27 +0100 (Mon, 21 Jan 2019) $");
   script_tag(name:"creation_date", value:"2019-01-03 00:00:00 +0100 (Thu, 03 Jan 2019)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

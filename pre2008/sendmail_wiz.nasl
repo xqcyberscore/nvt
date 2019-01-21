@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: sendmail_wiz.nasl 13074 2019-01-15 09:12:34Z cfischer $
+# $Id: sendmail_wiz.nasl 13181 2019-01-21 09:53:05Z cfischer $
 # Description: Sendmail WIZ
 #
 # Authors:
@@ -27,8 +27,8 @@ CPE = "cpe:/a:sendmail:sendmail";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.16024");
-  script_version("$Revision: 13074 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-15 10:12:34 +0100 (Tue, 15 Jan 2019) $");
+  script_version("$Revision: 13181 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-21 10:53:05 +0100 (Mon, 21 Jan 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(2897);
   script_cve_id("CVE-1999-0145");
@@ -43,13 +43,13 @@ if(description)
   script_mandatory_keys("sendmail/detected");
   script_require_ports("Services/smtp", 25, 465, 587);
 
-  script_tag(name:"solution", value:"Reconfigure or upgrade your MTA.");
-
   script_tag(name:"summary", value:"Your MTA accepts the WIZ command. It must be a very old version
   of Sendmail.");
 
   script_tag(name:"insight", value:"WIZ allows remote users to execute arbitrary commands as root
   without the need to log in.");
+
+  script_tag(name:"solution", value:"Reconfigure or upgrade your MTA.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -71,17 +71,16 @@ if(!soc)
   exit(0);
 
 res = smtp_recv_banner(socket:soc);
-
 if(!res || "endmail" >!< res) {
-  close(soc);
+  smtp_close(socket:soc, check_data:res);
   exit(0);
 }
 
 # nb: We could also test the "KILL" function, which is related to WIZ if I understood correctly
 req = string("WIZ\r\n");
 send(socket:soc, data:req);
-res = recv_line(socket:soc, length:1024);
-close(soc);
+res = smtp_recv_line(socket:soc, check:"2[0-9]{2}");
+smtp_close(socket:soc, check_data:res);
 
 if(ereg(string:res, pattern:"^2[0-9]{2}[- ].+")) {
   report = 'The remote SMTP service accepts the WIZ command. Answer:\n\n' + res;

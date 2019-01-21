@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_YaTFTPSvr_50441.nasl 12098 2018-10-25 13:07:45Z cfischer $
+# $Id: gb_YaTFTPSvr_50441.nasl 13155 2019-01-18 15:41:35Z cfischer $
 #
 # YaTFTPSvr TFTP Server Directory Traversal Vulnerability
 #
@@ -28,17 +28,18 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103321");
   script_bugtraq_id(50441);
-  script_version("$Revision: 12098 $");
+  script_version("$Revision: 13155 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_name("YaTFTPSvr TFTP Server Directory Traversal Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 15:07:45 +0200 (Thu, 25 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-18 16:41:35 +0100 (Fri, 18 Jan 2019) $");
   script_tag(name:"creation_date", value:"2011-11-01 08:00:00 +0100 (Tue, 01 Nov 2011)");
   script_category(ACT_ATTACK);
   script_family("Remote file access");
   script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
   script_dependencies("tftpd_detect.nasl", "global_settings.nasl", "os_detection.nasl");
   script_require_udp_ports("Services/udp/tftp", 69);
+  script_require_keys("tftp/detected");
   script_mandatory_keys("Host/runs_windows");
   script_exclude_keys("keys/TARGET_IS_IPV6");
 

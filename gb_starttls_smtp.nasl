@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_starttls_smtp.nasl 13137 2019-01-18 07:33:34Z cfischer $
+# $Id: gb_starttls_smtp.nasl 13153 2019-01-18 14:31:32Z cfischer $
 #
 # SSL/TLS: SMTP 'STARTTLS' Command Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103118");
-  script_version("$Revision: 13137 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-18 08:33:34 +0100 (Fri, 18 Jan 2019) $");
+  script_version("$Revision: 13153 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-18 15:31:32 +0100 (Fri, 18 Jan 2019) $");
   script_tag(name:"creation_date", value:"2011-03-11 13:29:22 +0100 (Fri, 11 Mar 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -55,23 +55,56 @@ port = get_smtp_port( default:25 );
 if( get_port_transport( port ) > ENCAPS_IP )
   exit( 0 );
 
-if( ! soc = smtp_open( port:port, data:smtp_get_helo_from_kb( port:port ), send_ehlo:TRUE ) )
+helo = smtp_get_helo_from_kb( port:port );
+if( ! soc = smtp_open( port:port, data:helo, send_ehlo:TRUE ) )
   exit( 0 );
 
 send( socket:soc, data:string( "STARTTLS\r\n" ) );
 r = smtp_recv_line( socket:soc );
-smtp_close( socket:soc, check_data:r );
-if( ! r )
+if( ! r ) {
+  smtp_close( socket:soc, check_data:r );
   exit( 0 );
+}
 
-if( r =~ "^220[ -]" || "Ready to start TLS" >< r || "TLS go ahead" >< r ) {
-  set_kb_item( name:"SMTP/STARTTLS/supported", value:TRUE );
+if( r =~ "^220[ -]" || "Ready to start TLS" >< r || "TLS go ahead" >< r || " Start TLS" >< r ) {
+
+  set_kb_item( name:"smtp/starttls/supported", value:TRUE );
   set_kb_item( name:"smtp/" + port + "/starttls", value:TRUE );
   set_kb_item( name:"starttls_typ/" + port, value:"smtp" );
-  log_message( port:port, data:"The remote SMTP server supports SSL/TLS with the 'STARTTLS' command." );
+
+  report = "The remote SMTP server supports SSL/TLS with the 'STARTTLS' command.";
+
+  soc2 = socket_negotiate_ssl( socket:soc );
+  if( soc2 ) {
+    send( socket:soc2, data:'EHLO ' + helo + '\r\n' );
+    ehlo = smtp_recv_line( socket:soc2, check:"250" );
+    smtp_close( socket:soc2, check_data:ehlo );
+
+    if( ehlo ) {
+
+      report = string( report, "\n\nThe remote SMTP server is announcing the following available ESMTP commands (EHLO response) after sending the 'STARTTLS' command:\n", ehlo );
+
+      if( auth_string = egrep( string:ehlo, pattern:"^250[ -]AUTH .+" ) ) {
+
+        set_kb_item( name:"smtp/auth_methods/available", value:TRUE );
+
+        auth_string = chomp( auth_string );
+        auth_string = substr( auth_string, 9 );
+        auth_report = "";
+        auths = split( auth_string, sep:" ", keep:FALSE );
+
+        foreach auth( auths )
+          set_kb_item( name:"smtp/" + port + "/tls_auth_methods", value:auth );
+      }
+    }
+  } else {
+    smtp_close( socket:soc, check_data:r );
+  }
+
+  log_message( port:port, data:report );
 } else {
-  set_kb_item( name:"SMTP/STARTTLS/not_supported", value:TRUE );
-  set_kb_item( name:"SMTP/STARTTLS/not_supported/port", value:port );
+  set_kb_item( name:"smtp/starttls/not_supported", value:TRUE );
+  set_kb_item( name:"smtp/starttls/not_supported/port", value:port );
 }
 
 exit( 0 );

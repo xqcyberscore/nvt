@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sendmail_expn.nasl 13137 2019-01-18 07:33:34Z cfischer $
+# $Id: sendmail_expn.nasl 13179 2019-01-21 08:51:36Z cfischer $
 #
 # Check if Mailserver answer to VRFY and EXPN requests
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100072");
-  script_version("$Revision: 13137 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-18 08:33:34 +0100 (Fri, 18 Jan 2019) $");
+  script_version("$Revision: 13179 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-21 09:51:36 +0100 (Mon, 21 Jan 2019) $");
   script_tag(name:"creation_date", value:"2009-03-23 19:32:33 +0100 (Mon, 23 Mar 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -78,52 +78,49 @@ if( ! bannertxt ) {
 }
 
 send( socket:soc, data:string( "EHLO ", smtp_get_helo_from_kb( port:port ), "\r\n" ) );
-ehlotxt = smtp_recv_line( socket:soc );
+ehlotxt = smtp_recv_line( socket:soc, check:"(250|550)" );
 if( ! ehlotxt ) {
   smtp_close( socket:soc, check_data:ehlotxt );
   exit( 0 );
 }
 
-if( egrep( string:ehlotxt, pattern:"^(250|550)" ) ) {
+send( socket:soc, data:string( "VRFY root\r\n" ) );
+vrfy_txt = smtp_recv_line( socket:soc, check:"(25[0-2]|550)" );
 
-  send( socket:soc, data:string( "VRFY root\r\n" ) );
-  vrfy_txt = smtp_recv_line( socket:soc );
-
-  if( vrfy_txt && egrep( string:vrfy_txt, pattern:"^(25[0-2]|550)" ) ) {
-    if( "Administrative prohibition" >!< vrfy_txt &&
-        "Access Denied" >!< vrfy_txt &&
-        "not available" >!< vrfy_txt &&
-        "String does not match anything" >!< vrfy_txt &&
-        "Cannot VRFY user" >!< vrfy_txt &&
-        "VRFY disabled" >!< vrfy_txt &&
-        "252 send some mail, i'll try my best" >!< vrfy_txt ) {
-      vtstrings = get_vt_strings();
-      send( socket:soc, data:string( "VRFY ", vtstrings["lowercase_rand"], '\r\n' ) );
-      vrfy_txt2 = smtp_recv_line( socket:soc );
-      if( vrfy_txt2 && ! egrep( string:vrfy_txt2, pattern:"^252" ) ) {
-        set_kb_item( name:"smtp/vrfy", value:TRUE );
-        set_kb_item( name:"smtp/" + port + "/vrfy", value:TRUE );
-        VULN = TRUE;
-        report += string("'VRFY root' produces the following answer: ", vrfy_txt, "\n");
-      }
+if( vrfy_txt ) {
+  if( "Administrative prohibition" >!< vrfy_txt &&
+      "Access Denied" >!< vrfy_txt &&
+      "not available" >!< vrfy_txt &&
+      "String does not match anything" >!< vrfy_txt &&
+      "Cannot VRFY user" >!< vrfy_txt &&
+      "VRFY disabled" >!< vrfy_txt &&
+      "252 send some mail, i'll try my best" >!< vrfy_txt ) {
+    vtstrings = get_vt_strings();
+    send( socket:soc, data:string( "VRFY ", vtstrings["lowercase_rand"], '\r\n' ) );
+    vrfy_txt2 = smtp_recv_line( socket:soc );
+    if( vrfy_txt2 && ! egrep( string:vrfy_txt2, pattern:"^252" ) ) {
+      set_kb_item( name:"smtp/vrfy", value:TRUE );
+      set_kb_item( name:"smtp/" + port + "/vrfy", value:TRUE );
+      VULN = TRUE;
+      report += string("'VRFY root' produces the following answer: ", vrfy_txt, "\n");
     }
   }
+}
 
-  send( socket:soc, data:string( "EXPN root\r\n" ) );
-  expn_txt = smtp_recv_line( socket:soc );
+send( socket:soc, data:string( "EXPN root\r\n" ) );
+expn_txt = smtp_recv_line( socket:soc, check:"(250|550)" );
 
-  if( expn_txt && egrep( string:expn_txt, pattern:"^(250|550)" ) ) {
-    if( "Administrative prohibition" >!< expn_txt &&
-        "Access Denied" >!< expn_txt &&
-        "EXPN not available" >!< expn_txt &&
-        "lists are confidential" >!< expn_txt &&
-        "EXPN command has been disabled" >!< expn_txt && # https://msg.wikidoc.info/index.php/DISABLE_EXPAND
-        "not available" >!< expn_txt ) {
-      set_kb_item( name:"smtp/expn", value:TRUE );
-      set_kb_item( name:"smtp/" + port + "/expn", value:TRUE );
-      VULN = TRUE;
-      report += string("'EXPN root' produces the following answer: ", expn_txt, "\n");
-    }
+if( expn_txt && egrep( string:expn_txt, pattern:"^(250|550)" ) ) {
+  if( "Administrative prohibition" >!< expn_txt &&
+      "Access Denied" >!< expn_txt &&
+      "EXPN not available" >!< expn_txt &&
+      "lists are confidential" >!< expn_txt &&
+      "EXPN command has been disabled" >!< expn_txt && # https://msg.wikidoc.info/index.php/DISABLE_EXPAND
+      "not available" >!< expn_txt ) {
+    set_kb_item( name:"smtp/expn", value:TRUE );
+    set_kb_item( name:"smtp/" + port + "/expn", value:TRUE );
+    VULN = TRUE;
+    report += string("'EXPN root' produces the following answer: ", expn_txt, "\n");
   }
 }
 

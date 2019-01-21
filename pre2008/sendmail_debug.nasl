@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: sendmail_debug.nasl 13074 2019-01-15 09:12:34Z cfischer $
+# $Id: sendmail_debug.nasl 13181 2019-01-21 09:53:05Z cfischer $
 # Description: Sendmail DEBUG
 #
 # Authors:
@@ -27,8 +27,8 @@ CPE = "cpe:/a:sendmail:sendmail";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10247");
-  script_version("$Revision: 13074 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-15 10:12:34 +0100 (Tue, 15 Jan 2019) $");
+  script_version("$Revision: 13181 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-21 10:53:05 +0100 (Mon, 21 Jan 2019) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_bugtraq_id(1);
   script_tag(name:"cvss_base", value:"10.0");
@@ -42,10 +42,10 @@ if(description)
   script_mandatory_keys("sendmail/detected");
   script_require_ports("Services/smtp", 25, 465, 587);
 
-  script_tag(name:"summary", value:"Your MTA accepts the DEBUG mode.
+  script_tag(name:"summary", value:"Your MTA accepts the DEBUG mode.");
 
-  This mode is dangerous as it allows remote users to execute arbitrary
-  commands as root without the need to log in.");
+  script_tag(name:"insight", value:"This mode is dangerous as it allows remote users
+  to execute arbitrary commands as root without the need to log in.");
 
   script_tag(name:"solution", value:"Reconfigure or upgrade your MTA.");
 
@@ -69,20 +69,18 @@ if(!soc)
   exit(0);
 
 res = smtp_recv_banner(socket:soc);
-
 if(!res || "endmail" >!< res) {
-  close(soc);
+  smtp_close(socket:soc, check_data:res);
   exit(0);
 }
 
-req = string("debug\r\n");
+req = string("DEBUG\r\n");
 send(socket:soc, data:req);
-res = recv_line(socket:soc, length:1024);
-close(soc);
+res = smtp_recv_line(socket:soc, check:"200");
+smtp_close(socket:soc, check_data:res);
 
-lores = tolower(lores);
-if("200 debug set" >< lores) {
-  report = 'The remote SMTP service accepts the debug command. Answer:\n\n' + res;
+if("200 debug set" >< tolower(res)) {
+  report = 'The remote SMTP service accepts the DEBUG command. Answer:\n\n' + res;
   security_message(port:port, data:report);
   exit(0);
 }
