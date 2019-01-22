@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manage_engine_asset_explorer_detect.nasl 10913 2018-08-10 15:35:20Z cfischer $
+# $Id: gb_manage_engine_asset_explorer_detect.nasl 13213 2019-01-22 10:23:57Z ckuersteiner $
 #
 # ZOHO Manage Engine Asset Explorer Detection
 #
@@ -27,11 +27,12 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805189");
-  script_version("$Revision: 10913 $");
+  script_version("$Revision: 13213 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:35:20 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-22 11:23:57 +0100 (Tue, 22 Jan 2019) $");
   script_tag(name:"creation_date", value:"2015-05-22 15:22:45 +0530 (Fri, 22 May 2015)");
+
   script_name("ZOHO Manage Engine Asset Explorer Detection");
 
   script_tag(name:"summary", value:"Detection of installed version and build
@@ -60,39 +61,38 @@ http_port = get_http_port(default:8080);
 
 rcvRes = http_get_cache(item: "/",  port:http_port);
 
-if(">ManageEngine AssetExplorer<" >< rcvRes)
-{
+if(">ManageEngine AssetExplorer<" >< rcvRes) {
+  version = "unknown";
 
-  Version = eregmatch(pattern:"version&nbsp;([0-9.]+)<", string:rcvRes);
+  vers = eregmatch(pattern:"version&nbsp;([0-9.]+)<", string:rcvRes);
+  if (isnull(vers[1]))
+    vers = eregmatch(pattern:"ManageEngine AssetExplorer &nbsp;([0-9.]+)<", string:rcvRes);
 
-  if(!Version[1])
-    Version = eregmatch(pattern:"ManageEngine AssetExplorer &nbsp;([0-9.]+)<", string:rcvRes);
+  if (!isnull(vers[1]))
+    version = vers[1];
 
-  Build = eregmatch(pattern:"build=([0-9.]+)", string:rcvRes);
+  build = eregmatch(pattern:"build=([0-9.]+)", string:rcvRes);
+  if (isnull(build[1]))
+    # eg. /scripts/ClientLogger.js?6125
+    build = eregmatch(pattern: "\.js\?([0-9]+)", string: rcvRes);
 
-  if(Version[1]) {
-    fullVer = Version[1];
-    set_kb_item(name:"www/" + http_port + "/AssetExplorer", value:Version[1]);
-
-    if(Build[1]){
-      set_kb_item(name:"AssetExplorer/Build",value:Build[1]);
-      fullVer = string(Version[1], " Build: ", Build[1]);
-    }
+  if (!isnull(build[1])) {
+    extra = "Build:   " + build[1];
+    set_kb_item(name:"manageengine/assetexplorer/build", value: build[1]);
   }
 
-  set_kb_item(name:"AssetExplorer/installed",value:TRUE);
+  set_kb_item(name:"manageengine/assetexplorer/detected",value:TRUE);
 
-  cpe = build_cpe(value:Version[1], exp:"^([0-9.]+)", base:"cpe:/a:zohocorp:manageengine_assetexplorer:");
+  cpe = build_cpe(value: version, exp: "^([0-9.]+)", base:"cpe:/a:zohocorp:manageengine_assetexplorer:");
   if(!cpe)
     cpe = 'cpe:/a:zohocorp:manageengine_assetexplorer';
 
-  register_product(cpe:cpe, location:"/", port:http_port);
-  log_message(data: build_detection_report(app: "Manage Engine AssetExplorer",
-                                             version:Version[1],
-                                             install:"/",
-                                             cpe:cpe,
-                                             concluded:Version[0]),
-                                             port:http_port);
+  register_product(cpe:cpe, location:"/", port:http_port, service: "www");
+
+  log_message(data: build_detection_report(app: "Manage Engine AssetExplorer", version: version, install: "/",
+                                           cpe: cpe, concluded: vers[0], extra: extra),
+              port: http_port);
+  exit(0);
 }
 
 exit(0);

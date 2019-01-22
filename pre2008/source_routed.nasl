@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: source_routed.nasl 10411 2018-07-05 10:15:10Z cfischer $
+# $Id: source_routed.nasl 13210 2019-01-22 09:14:04Z cfischer $
 #
 # Source routed packets
 #
@@ -35,8 +35,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11834");
-  script_version("$Revision: 10411 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-05 12:15:10 +0200 (Thu, 05 Jul 2018) $");
+  script_version("$Revision: 13210 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-22 10:14:04 +0100 (Tue, 22 Jan 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"3.3");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:N/I:P/A:P");
@@ -55,7 +55,10 @@ if(description)
   The feature was designed for testing purpose.");
 
   script_tag(name:"impact", value:"An attacker may use it to circumvent poorly designed IP filtering
-  and exploit another flaw. However, it is not dangerous by itself.");
+  and exploit another flaw. However, it is not dangerous by itself.
+
+  Worse, the remote host reverses the route when it answers to loose
+  source routed TCP packets. This makes attacks easier.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"Mitigation");
@@ -64,10 +67,9 @@ if(description)
 }
 
 include("misc_func.inc");
-include('global_settings.inc');
+
 
 if(islocalhost())exit(0); # Don't test the loopback interface
-if(safe_checks())exit(0); # Some IP stacks are criminally fragile
 if(TARGET_IS_IPV6())exit(0);
 
 srcaddr = this_host();
@@ -81,81 +83,66 @@ lsrr = raw_string(	131,	# LSRR
 			4,	# Pointer
 			0);	# Padding
 
-
 dstport = get_host_open_tcp_port();
 
-if (dstport)
+if(dstport)
 {
   srcport = rand() % 64512 + 1024;
 
-  ip = forge_ip_packet(ip_hl: 6, ip_v: 4, ip_tos: 0, ip_id: rand() % 65536,
-	ip_off: 0, ip_ttl : 0x40, ip_p: IPPROTO_TCP, ip_src : srcaddr,
-	data: lsrr);
-  tcp = forge_tcp_packet(ip: ip, th_sport: srcport, th_dport: dstport,
-	th_flags: TH_SYN, th_seq: rand(), th_ack: 0, th_off: 5, th_win: 512);
+  ip = forge_ip_packet(ip_hl:6, ip_v:4, ip_tos:0, ip_id:rand() % 65536,
+                       ip_off:0, ip_ttl:0x40, ip_p:IPPROTO_TCP, ip_src:srcaddr,
+                       data:lsrr);
+  tcp = forge_tcp_packet(ip:ip, th_sport:srcport, th_dport:dstport,
+                         th_flags:TH_SYN, th_seq:rand(), th_ack:0, th_off:5, th_win:512);
 
-  filter = strcat("src host ", dstaddr, " and dst host ", srcaddr,
-	" and tcp and tcp src port ", dstport,
-	" and tcp dst port ", srcport);
+  filter = strcat("src host ", dstaddr, " and dst host ", srcaddr, " and tcp and tcp src port ", dstport, " and tcp dst port ", srcport);
   r = NULL;
   for (i = 0; i < n && ! r; i ++)
     r = send_packet(tcp, pcap_active: TRUE, pcap_filter: filter);
-  if (i < n)
-  {
+
+  if(i < n) {
+
     # No need to associate this flaw with a specific port
-    set_kb_item(name: 'Host/accept_lsrr', value: TRUE);
+    set_kb_item(name:"Host/accept_lsrr", value:TRUE);
     ihl = 4 * get_ip_element(ip: r, element: "ip_hl");
-    if (ihl > 20)
-    {
+    if(ihl > 20) {
+
       opt = substr(ip, 20, ihl-1);
       len = ihl - 21;
-      for (i = 0; i < len; )
-      {
-        if (opt[i] == '\x83')
-        {
-          set_kb_item(name: 'Host/tcp_reverse_lsrr', value: TRUE);
-          security_message(port: 0, protocol: "tcp", data: "
-The remote host accepts loose source routed IP packets.
-The feature was designed for testing purpose.
-An attacker may use it to circumvent poorly designed IP filtering
-and exploit another flaw. However, it is not dangerous by itself.
-
-Worse, the remote host reverses the route when it answers to loose
-source routed TCP packets. This makes attacks easier.
-
-Solution: drop source routed packets on this host or on other ingress
-routers or firewalls.");
+      for (i = 0; i < len; ) {
+        if (opt[i] == '\x83') {
+          set_kb_item(name:"Host/tcp_reverse_lsrr", value:TRUE);
+          security_message(port:0, proto:"tcp");
           exit(0);
         }
-        if (opt[i] == 1) i ++;
-        else i += ord(opt[i+1]);
+        if (opt[i] == 1)
+          i ++;
+        else
+          i += ord(opt[i+1]);
       }
     }
     #set_kb_item(name: 'Host/tcp_reverse_lsrr', value: FALSE);
-    security_message(port: 0, protocol: "tcp");
+    security_message(port:0, proto:"tcp");
   }
-  exit(0);	# Don't try again with ICMP
+  exit(0); # Don't try again with ICMP
 }
 
 # We cannot use icmp_seq to identifies the datagrams because
 # forge_icmp_packet() is buggy. So we use the data instead
-
 filter = strcat("icmp and icmp[0]=0 and src ", dstaddr, " and dst ", srcaddr);
 
 d = rand_str(length: 8);
-for (i = 0; i < 8; i ++)
+for (i = 0; i < 8; i++)
   filter = strcat(filter, " and icmp[", i+8, "]=", ord(d[i]));
 
-ip = forge_ip_packet(ip_hl: 6, ip_v: 4, ip_tos: 0, ip_id: rand() % 65536,
-	ip_off: 0, ip_ttl : 0x40, ip_p: IPPROTO_ICMP, ip_src : srcaddr,
-	data: lsrr, ip_len: 38);
-icmp = forge_icmp_packet(ip: ip, icmp_type:8, icmp_code:0, icmp_seq: 0,
-	icmp_id: rand() % 65536, data: d);
+ip = forge_ip_packet(ip_hl:6, ip_v:4, ip_tos:0, ip_id:rand() % 65536,
+                     ip_off:0, ip_ttl:0x40, ip_p:IPPROTO_ICMP, ip_src:srcaddr,
+                     data:lsrr, ip_len:38);
+icmp = forge_icmp_packet(ip:ip, icmp_type:8, icmp_code:0, icmp_seq:0, icmp_id:rand() % 65536, data:d);
 r = NULL;
 for (i = 0; i < n && ! r; i ++)
-  r = send_packet(icmp, pcap_active: TRUE, pcap_filter: filter);
-if (i < n)
-{
- set_kb_item(name: 'Host/accept_lsrr', value: TRUE);
- security_message(port: 0, protocol: "icmp");
+  r = send_packet(icmp, pcap_active:TRUE, pcap_filter:filter);
+if (i < n) {
+  set_kb_item(name:"Host/accept_lsrr", value:TRUE);
+  security_message(port:0, protocol:"icmp");
 }

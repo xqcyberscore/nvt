@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms08-067_900056.nasl 12602 2018-11-30 14:36:58Z cfischer $
+# $Id: secpod_ms08-067_900056.nasl 13210 2019-01-22 09:14:04Z cfischer $
 # Description: Vulnerability in Server Service Could Allow Remote Code Execution (958644)
 #
 # Authors:
@@ -31,8 +31,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900056");
-  script_version("$Revision: 12602 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
+  script_version("$Revision: 13210 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-22 10:14:04 +0100 (Tue, 22 Jan 2019) $");
   script_tag(name:"creation_date", value:"2008-10-30 14:46:44 +0100 (Thu, 30 Oct 2008)");
   script_bugtraq_id(31874);
   script_cve_id("CVE-2008-4250");
@@ -85,10 +85,6 @@ if(description)
 
 include("smb_nt.inc");
 include("host_details.inc");
-
-if(safe_checks()){
-  exit(0);
-}
 
 if( kb_smb_is_samba() ) exit( 0 );
 
@@ -164,7 +160,6 @@ smb_nt_andx_req = raw_string(0x00, 0x00, 0x00, 0x66, 0xff, 0x53, 0x4d, 0x42,
 send(socket:soc, data:smb_nt_andx_req);
 
 smb_nt_andx_resp = smb_recv(socket:soc);
-
 if(smb_nt_andx_resp && strlen(smb_nt_andx_resp) < 107)
 {
   close(soc);
@@ -200,7 +195,6 @@ dcerpc_bind_srvsvc_req = raw_string(0x00, 0x00, 0x00, 0x88, 0xff, 0x53, 0x4d,
 send(socket:soc, data:dcerpc_bind_srvsvc_req);
 
 dcerpc_bind_srvsvc_resp = smb_recv(socket:soc);
-
 if(!dcerpc_bind_srvsvc_resp)
 {
   close(soc);
@@ -221,7 +215,6 @@ smb_andx_req = raw_string(0x00, 0x00, 0x00, 0x3c, 0xff, 0x53, 0x4d, 0x42,
 send(socket:soc, data:smb_andx_req);
 
 smb_andx_resp = smb_recv(socket:soc);
-
 if(!smb_andx_resp)
 {
   close(soc);
@@ -247,7 +240,6 @@ smb_nt_andx_req1 = raw_string(0x00, 0x00, 0x00, 0x66, 0xff, 0x53, 0x4d, 0x42,
 send(socket:soc, data:smb_nt_andx_req1);
 
 smb_nt_andx_resp1 = smb_recv(socket:soc);
-
 if(smb_nt_andx_resp1 && strlen(smb_nt_andx_resp1) < 107)
 {
   close(soc);
@@ -283,7 +275,6 @@ dcerpc_bind_wkssvc_req = raw_string(0x00, 0x00, 0x00, 0x88, 0xff, 0x53, 0x4d,
 send(socket:soc, data:dcerpc_bind_wkssvc_req);
 
 dcerpc_bind_wkssvc_resp = smb_recv(socket:soc);
-
 if(!dcerpc_bind_wkssvc_resp)
 {
   close(soc);
@@ -304,7 +295,6 @@ smb_andx_req1 = raw_string(0x00, 0x00, 0x00, 0x3c, 0xff, 0x53, 0x4d, 0x42,
 send(socket:soc, data:smb_andx_req1);
 
 smb_andx_resp1 = smb_recv(socket:soc);
-
 if(!smb_andx_resp1)
 {
   close(soc);
@@ -351,7 +341,6 @@ netpath_cmp_req= raw_string(0x00, 0x00, 0x01, 0x10, 0xff, 0x53, 0x4d, 0x42,
 send(socket:soc, data:netpath_cmp_req);
 
 netpath_cmp_resp = smb_recv(socket:soc);
-
 if(!netpath_cmp_resp)
 {
   close(soc);
@@ -369,7 +358,6 @@ smb_tree_dis_req = raw_string(0x00, 0x00, 0x00, 0x23, 0xff, 0x53, 0x4d, 0x42,
 send(socket:soc, data:smb_tree_dis_req);
 
 smb_tree_dis_resp = smb_recv(socket:soc);
-
 if(!smb_tree_dis_resp)
 {
   close(soc);
@@ -387,7 +375,6 @@ smb_logoff_req = raw_string(0x00, 0x00, 0x00, 0x27, 0xff, 0x53, 0x4d, 0x42,
 send(socket:soc, data:smb_logoff_req);
 
 smb_logoff_resp = smb_recv(socket:soc);
-
 if(!smb_logoff_resp)
 {
   close(soc);

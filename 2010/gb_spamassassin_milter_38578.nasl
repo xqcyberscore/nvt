@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_spamassassin_milter_38578.nasl 13116 2019-01-17 09:58:55Z cfischer $
+# $Id: gb_spamassassin_milter_38578.nasl 13204 2019-01-21 17:32:45Z cfischer $
 #
 # SpamAssassin Milter Plugin 'mlfi_envrcpt()' Remote Arbitrary Command Injection Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100528");
-  script_version("$Revision: 13116 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-17 10:58:55 +0100 (Thu, 17 Jan 2019) $");
+  script_version("$Revision: 13204 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-21 18:32:45 +0100 (Mon, 21 Jan 2019) $");
   script_tag(name:"creation_date", value:"2010-03-15 13:03:19 +0100 (Mon, 15 Mar 2010)");
   script_cve_id("CVE-2010-1132");
   script_bugtraq_id(38578);
@@ -92,7 +92,7 @@ FROM = string(vtstrings["lowercase"], '@', src_name);
 TO = string(vtstrings["lowercase"], '@', domain);
 
 send(socket:soc, data:strcat('HELO ', src_name, '\r\n'));
-buf = smtp_recv_line(socket:soc, check:"250");
+buf = smtp_recv_line(socket:soc, code:"250");
 if(!buf) {
   smtp_close(socket:soc, check_data:buf);
   exit(0);
@@ -100,7 +100,7 @@ if(!buf) {
 
 start1 = unixtime();
 send(socket:soc, data:strcat('MAIL FROM: ', FROM, '\r\n'));
-buf = smtp_recv_line(socket:soc, check:"250");
+buf = smtp_recv_line(socket:soc, code:"250");
 if(!buf) {
   smtp_close(socket:soc, check_data:buf);
   exit(0);

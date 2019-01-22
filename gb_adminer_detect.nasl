@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adminer_detect.nasl 13174 2019-01-21 07:23:16Z cfischer $
+# $Id: gb_adminer_detect.nasl 13205 2019-01-21 17:38:02Z cfischer $
 #
 # Adminer Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108531");
-  script_version("$Revision: 13174 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-21 08:23:16 +0100 (Mon, 21 Jan 2019) $");
+  script_version("$Revision: 13205 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-21 18:38:02 +0100 (Mon, 21 Jan 2019) $");
   script_tag(name:"creation_date", value:"2019-01-20 14:05:39 +0100 (Sun, 20 Jan 2019)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -76,7 +76,7 @@ foreach dir( make_list_unique( "/", "/adminer", cgi_dirs( port:port ) ) ) {
   url2 = dir + "/";
   buf2 = http_get_cache( item:url2, port:port );
 
-  if( buf =~ "^HTTP/1\.[01] 200" || buf2 =~ "^HTTP/1\.[01] 200" &&
+  if( ( buf =~ "^HTTP/1\.[01] 200" || buf2 =~ "^HTTP/1\.[01] 200" ) &&
       ( "<title>Login - Adminer</title>" >< buf ||
         "<title>Login - Adminer</title>" >< buf2 ||
         ( "://www.adminer.org/'" >< buf && "id='h1'>Adminer</a>" >< buf ) ||

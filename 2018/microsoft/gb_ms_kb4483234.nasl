@@ -99,10 +99,10 @@ if(!iedllVer){
   exit(0);
 }
 
-if(version_in_range(version:iedllVer, test_version:"11.0.17134.0", test_version2:"11.0.17134.471"))
+if(version_in_range(version:iedllVer, test_version:"11.0.17134.0", test_version2:"11.0.17134.470"))
 {
   report = report_fixed_ver(file_checked:iePath + "\Mshtml.dll",
-                            file_version:iedllVer, vulnerable_range:"11.0.17134.0 - 11.0.17134.471");
+                            file_version:iedllVer, vulnerable_range:"11.0.17134.0 - 11.0.17134.470");
   security_message(data:report);
   exit(0);
 }

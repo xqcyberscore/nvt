@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_info_disc_vuln_sep18_lin.nasl 12475 2018-11-22 07:07:07Z cfischer $
+# $Id: gb_openssl_info_disc_vuln_sep18_lin.nasl 13209 2019-01-22 08:11:01Z mmartin $
 #
 # OpenSSL: Information Disclosure Vulnerability (CVE-2016-7056) (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813794");
-  script_version("$Revision: 12475 $");
+  script_version("$Revision: 13209 $");
   script_cve_id("CVE-2016-7056");
   script_bugtraq_id(95375);
-  script_tag(name:"cvss_base", value:"4.0");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-22 08:07:07 +0100 (Thu, 22 Nov 2018) $");
+  script_tag(name:"cvss_base", value:"2.1");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-22 09:11:01 +0100 (Tue, 22 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-09-11 11:57:47 +0530 (Tue, 11 Sep 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("OpenSSL: Information Disclosure Vulnerability (CVE-2016-7056) (Linux)");

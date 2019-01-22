@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1599.nasl 12615 2018-12-03 07:20:51Z cfischer $
+# $Id: deb_dla_1599.nasl 13209 2019-01-22 08:11:01Z mmartin $
 #
 # Auto-generated from advisory DLA 1599-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,7 +31,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891599");
-  script_version("$Revision: 12615 $");
+  script_version("$Revision: 13209 $");
   script_cve_id("CVE-2016-2391", "CVE-2016-2392", "CVE-2016-2538", "CVE-2016-2841", "CVE-2016-2857",
                 "CVE-2016-2858", "CVE-2016-4001", "CVE-2016-4002", "CVE-2016-4020", "CVE-2016-4037",
                 "CVE-2016-4439", "CVE-2016-4441", "CVE-2016-4453", "CVE-2016-4454", "CVE-2016-4952",
@@ -43,10 +43,10 @@ if(description)
                 "CVE-2016-9104", "CVE-2016-9105", "CVE-2016-9106", "CVE-2017-10664", "CVE-2018-10839",
                 "CVE-2018-17962", "CVE-2018-17963");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1599-1] qemu security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-03 08:20:51 +0100 (Mon, 03 Dec 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-22 09:11:01 +0100 (Tue, 22 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-12-03 00:00:00 +0100 (Mon, 03 Dec 2018)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

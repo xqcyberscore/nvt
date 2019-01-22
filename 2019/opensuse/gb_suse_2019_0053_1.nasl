@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2019_0053_1.nasl 13173 2019-01-21 06:39:39Z santu $
+# $Id: gb_suse_2019_0053_1.nasl 13209 2019-01-22 08:11:01Z mmartin $
 #
 # SuSE Update for LibVNCServer openSUSE-SU-2019:0053-1 (LibVNCServer)
 #
@@ -29,13 +29,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852243");
-  script_version("$Revision: 13173 $");
+  script_version("$Revision: 13209 $");
   script_cve_id("CVE-2018-15126", "CVE-2018-15127", "CVE-2018-20019", "CVE-2018-20020",
                 "CVE-2018-20021", "CVE-2018-20022", "CVE-2018-20023", "CVE-2018-20024",
                 "CVE-2018-6307");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-21 07:39:39 +0100 (Mon, 21 Jan 2019) $");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-22 09:11:01 +0100 (Tue, 22 Jan 2019) $");
   script_tag(name:"creation_date", value:"2019-01-18 04:02:52 +0100 (Fri, 18 Jan 2019)");
   script_name("SuSE Update for LibVNCServer openSUSE-SU-2019:0053-1 (LibVNCServer)");
   script_category(ACT_GATHER_INFO);

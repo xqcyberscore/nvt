@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2019_8deebad756_perl-Email-Address_fc28.nasl 13173 2019-01-21 06:39:39Z santu $
+# $Id: gb_fedora_2019_8deebad756_perl-Email-Address_fc28.nasl 13209 2019-01-22 08:11:01Z mmartin $
 #
 # Fedora Update for perl-Email-Address FEDORA-2019-8deebad756
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875415");
-  script_version("$Revision: 13173 $");
+  script_version("$Revision: 13209 $");
   script_cve_id("CVE-2015-7686", "CVE-2018-12558");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-21 07:39:39 +0100 (Mon, 21 Jan 2019) $");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-22 09:11:01 +0100 (Tue, 22 Jan 2019) $");
   script_tag(name:"creation_date", value:"2019-01-18 04:04:42 +0100 (Fri, 18 Jan 2019)");
   script_name("Fedora Update for perl-Email-Address FEDORA-2019-8deebad756");
   script_category(ACT_GATHER_INFO);

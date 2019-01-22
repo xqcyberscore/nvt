@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: dnsmasq_tftp.nasl 10928 2018-08-11 11:29:48Z cfischer $
+# $Id: dnsmasq_tftp.nasl 13202 2019-01-21 15:19:15Z cfischer $
 #
 # Dnsmasq TFTP Service multiple vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:thekelleys:dnsmasq";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100267");
-  script_version("$Revision: 10928 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-11 13:29:48 +0200 (Sat, 11 Aug 2018) $");
+  script_version("$Revision: 13202 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-21 16:19:15 +0100 (Mon, 21 Jan 2019) $");
   script_tag(name:"creation_date", value:"2009-09-02 11:12:57 +0200 (Wed, 02 Sep 2009)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -42,6 +42,7 @@ if (description)
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
   script_dependencies("dnsmasq_version.nasl");
   script_mandatory_keys("dnsmasq/installed");
+  script_require_keys("tftp/detected");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/36121");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/36120");
@@ -55,11 +56,15 @@ if (description)
   Dnsmasq is also prone to a NULL-pointer dereference vulnerability.
   An attacker can exploit this issue to crash the affected application, denying
   service to legitimate users.");
-  script_tag(name:"affected", value:"dnsmasq 2.40, dnsmasq 2.41, dnsmasq 2.42, dnsmasq 2.43, dnsmasq 2.44, dnsmasq 2.45, dnsmasq 2.46, dnsmasq 2.47, dnsmasq 2.48, dnsmasq 2.49, Older versions are probably affected too, but they were not checked.");
+
+  script_tag(name:"affected", value:"dnsmasq versions 2.40 up to 2.49. Older versions are probably affected too, but they were not checked.");
+
   script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
+
   script_tag(name:"summary", value:"Dnsmasq is prone to a remotely exploitable heap-overflow vulnerability
   because the software fails to properly bounds-check user-supplied
   input before copying it into an insufficiently sized memory buffer.");
+
   script_tag(name:"insight", value:"NOTE: The TFTP service must be enabled for this issue to be exploitable. This
   is not the default.");
 
@@ -73,7 +78,7 @@ include("tftp.inc");
 include("version_func.inc");
 include("host_details.inc");
 
-tftpPort = get_kb_item( 'Services/udp/tftp' );
+tftpPort = get_kb_item( "Services/udp/tftp" );
 if( ! tftpPort ) tftpPort = 69;
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
@@ -83,9 +88,7 @@ version = infos["version"];
 proto = infos["proto"];
 
 if( version_is_less( version:version, test_version:"2.50" ) ) {
-
   report = report_fixed_ver( installed_version:version, fixed_version:"2.50" );
-
   if( tftp_alive( port:tftpPort ) ) {
     report += string("\n\nOn port " + tftpPort + "/udp a running TFTPD was found at this host. If this is the\ndnsmasq-tftpd, you should disable it immediately until you have\nswitched to the latest version of dnsmasq.\n");
   }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: tftpd_detect.nasl 13155 2019-01-18 15:41:35Z cfischer $
+# $Id: tftpd_detect.nasl 13194 2019-01-21 13:18:47Z cfischer $
 #
 # TFTP detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80100");
-  script_version("$Revision: 13155 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-18 16:41:35 +0100 (Fri, 18 Jan 2019) $");
+  script_version("$Revision: 13194 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-21 14:18:47 +0100 (Mon, 21 Jan 2019) $");
   script_tag(name:"creation_date", value:"2009-03-04 10:25:48 +0100 (Wed, 04 Mar 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -51,6 +51,7 @@ if(description)
 include("misc_func.inc");
 include("global_settings.inc");
 include("dump.inc");
+include("tftp.inc");
 
 foundtftp = FALSE;
 
@@ -134,6 +135,12 @@ function tftp_grab( port, file, mode ) {
           break;
         }
       }
+    }
+
+    # safeguard against some random/broken responses
+    if( foundtftp ) {
+      if( tftp_get( port:port, path:rand_str( length:10 ) ) )
+        set_kb_item( name:"tftp/" + port + "/rand_file_response", value:TRUE );
     }
   }
 }

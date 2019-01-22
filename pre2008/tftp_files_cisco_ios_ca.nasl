@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: tftp_files_cisco_ios_ca.nasl 13155 2019-01-18 15:41:35Z cfischer $
+# $Id: tftp_files_cisco_ios_ca.nasl 13194 2019-01-21 13:18:47Z cfischer $
 # Description: TFTP file detection (Cisco IOS CA)
 #
 # Authors:
@@ -34,8 +34,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17341");
-  script_version("$Revision: 13155 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-18 16:41:35 +0100 (Fri, 18 Jan 2019) $");
+  script_version("$Revision: 13194 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-21 14:18:47 +0100 (Mon, 21 Jan 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -58,15 +58,12 @@ if(description)
   trusted sources only.");
 
   script_tag(name:"solution_type", value:"Workaround");
-
   script_tag(name:"qod_type", value:"remote_vul");
 
   exit(0);
 }
 
 include("tftp.inc");
-include("network_func.inc");
-include("misc_func.inc");
 
 port = get_kb_item("Services/udp/tftp");
 if(!port)
@@ -75,7 +72,7 @@ if(!port)
 if(!get_udp_port_state(port))
   exit(0);
 
-if(tftp_get(port:port, path:rand_str(length:10)))
+if(get_kb_item("tftp/" + port + "/rand_file_response"))
   exit(0);
 
 postfix_list = make_list(".pub", ".crl", ".prv", ".ser", "#6101CA.cer", ".p12");
@@ -84,16 +81,15 @@ for( i = 1; i < 10; i++) {
 
   file_name = raw_string(ord(i), '.cnm');
 
-  if(request_data = tftp_get(port:port,path:file_name)) {
+  if(request_data = tftp_get(port:port, path:file_name)) {
 
     ca_name = eregmatch(string:request_data, pattern:'subjectname_str = cn=(.+),ou=');
     if(ca_name[1]) {
       detected_files = raw_string(detected_files, file_name, "\n");
-      foreach file_postfix (postfix_list) {
-
+      foreach file_postfix(postfix_list) {
         file_name = raw_string(ca_name[1], file_postfix);
-        if( request_data = tftp_get(port:port,path:file_name)) {
-          detected_files = raw_string(detected_files,file_name,"\n");
+        if(tftp_get(port:port, path:file_name)) {
+          detected_files += file_name + '\n';
         }
       }
       break;
@@ -102,8 +98,8 @@ for( i = 1; i < 10; i++) {
 }
 
 if(detected_files) {
-  description = 'The filenames detected are:\n\n' + detected_files;
-  security_message(data:description, port:port, proto:"udp");
+  report = 'The filenames detected are:\n\n' + detected_files;
+  security_message(port:port, data:report, proto:"udp");
   exit(0);
 }
 

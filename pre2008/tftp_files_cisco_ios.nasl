@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: tftp_files_cisco_ios.nasl 13155 2019-01-18 15:41:35Z cfischer $
+# $Id: tftp_files_cisco_ios.nasl 13194 2019-01-21 13:18:47Z cfischer $
 # Description: TFTP file detection (Cisco IOS)
 #
 # Authors:
@@ -34,8 +34,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17342");
-  script_version("$Revision: 13155 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-18 16:41:35 +0100 (Fri, 18 Jan 2019) $");
+  script_version("$Revision: 13194 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-21 14:18:47 +0100 (Mon, 21 Jan 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -64,8 +64,6 @@ if(description)
 }
 
 include("tftp.inc");
-include("network_func.inc");
-include("misc_func.inc");
 
 port = get_kb_item("Services/udp/tftp");
 if(!port)
@@ -74,7 +72,7 @@ if(!port)
 if(!get_udp_port_state(port))
   exit(0);
 
-if(tftp_get(port:port, path:rand_str(length:10)))
+if(get_kb_item("tftp/" + port + "/rand_file_response"))
   exit(0);
 
 file_list = make_list(
@@ -83,15 +81,15 @@ file_list = make_list(
 "ciscortr-confg", "ciscortr.config", "ciscortr.cfg", "cisco-confg", "cisco.confg",
 "cisco.cfg");
 
-foreach file_name (file_list) {
-  if(request_data = tftp_get(port:port, path:file_name)) {
-    detected_files = raw_string(detected_files, file_name, "\n");
+foreach file_name(file_list) {
+  if(tftp_get(port:port, path:file_name)) {
+    detected_files += file_name + '\n';
   }
 }
 
 if(detected_files) {
-  description = 'The filenames detected are:\n\n' + detected_files;
-  security_message(data:description, port:port, proto:"udp");
+  report = 'The filenames detected are:\n\n' + detected_files;
+  security_message(port:port, data:report, proto:"udp");
   exit(0);
 }
 

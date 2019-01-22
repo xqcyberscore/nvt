@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smtp_relay2.nasl 13137 2019-01-18 07:33:34Z cfischer $
+# $Id: smtp_relay2.nasl 13204 2019-01-21 17:32:45Z cfischer $
 #
 # Mail relaying (thorough test)
 #
@@ -39,8 +39,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11852");
-  script_version("$Revision: 13137 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-18 08:33:34 +0100 (Fri, 18 Jan 2019) $");
+  script_version("$Revision: 13204 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-21 18:32:45 +0100 (Mon, 21 Jan 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -167,7 +167,7 @@ for (i = 0; soc && (from_l[i] || to_l[i]); i ++) {
   } else {
     rt = strcat('RCPT TO: <', to_l[i], '>\r\n');
     send(socket:soc, data:rt);
-    l = smtp_recv_line(socket:soc, check:"2[0-9]{2}");
+    l = smtp_recv_line(socket:soc, code:"2[0-9]{2}");
     if(l) {
       mf -= '\r\n'; rt -= '\r\n';
       rep = strcat(rep, '\t', mf, '\n\t', rt, '\n\n');

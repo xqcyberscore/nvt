@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: sendmail_debug.nasl 13181 2019-01-21 09:53:05Z cfischer $
+# $Id: sendmail_debug.nasl 13204 2019-01-21 17:32:45Z cfischer $
 # Description: Sendmail DEBUG
 #
 # Authors:
@@ -27,8 +27,8 @@ CPE = "cpe:/a:sendmail:sendmail";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10247");
-  script_version("$Revision: 13181 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-21 10:53:05 +0100 (Mon, 21 Jan 2019) $");
+  script_version("$Revision: 13204 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-21 18:32:45 +0100 (Mon, 21 Jan 2019) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_bugtraq_id(1);
   script_tag(name:"cvss_base", value:"10.0");
@@ -76,7 +76,7 @@ if(!res || "endmail" >!< res) {
 
 req = string("DEBUG\r\n");
 send(socket:soc, data:req);
-res = smtp_recv_line(socket:soc, check:"200");
+res = smtp_recv_line(socket:soc, code:"200");
 smtp_close(socket:soc, check_data:res);
 
 if("200 debug set" >< tolower(res)) {

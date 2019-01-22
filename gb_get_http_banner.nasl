@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_get_http_banner.nasl 13034 2019-01-11 09:35:23Z ckuersteiner $
+# $Id: gb_get_http_banner.nasl 13211 2019-01-22 09:22:34Z cfischer $
 #
 # HTTP Banner
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140170");
-  script_version("$Revision: 13034 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-11 10:35:23 +0100 (Fri, 11 Jan 2019) $");
+  script_version("$Revision: 13211 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-22 10:22:34 +0100 (Tue, 22 Jan 2019) $");
   script_tag(name:"creation_date", value:"2017-02-21 11:53:19 +0100 (Tue, 21 Feb 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -250,7 +250,7 @@ set_mandatory_key( key:"NETGEAR", regex:'Basic realm="NETGEAR');
 set_mandatory_key( key:"JVC_API", regex:"Server: JVC.*API Server", banner:banner );
 set_mandatory_key( key:"ETag", regex:"ETag:", banner:banner );
 set_mandatory_key( key:"BarracudaHTTP", regex:"Server: BarracudaHTTP", banner:banner );
-set_mandatory_key( key:"AntServer", regex:"AntServer", banner:banner );
+set_mandatory_key( key:"AntServer", regex:"Server: AntServer", banner:banner );
 set_mandatory_key( key:"CompaqHTTPServer", regex:"Server: CompaqHTTPServer/", banner:banner );
 set_mandatory_key( key:"FlashCom", regex:"erver: FlashCom", banner:banner );
 set_mandatory_key( key:"Simple-Server", regex:"erver: Simple-Server", banner:banner );

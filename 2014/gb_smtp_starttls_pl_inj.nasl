@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_smtp_starttls_pl_inj.nasl 13153 2019-01-18 14:31:32Z cfischer $
+# $Id: gb_smtp_starttls_pl_inj.nasl 13204 2019-01-21 17:32:45Z cfischer $
 #
 # Multiple Vendors STARTTLS Implementation Plaintext Arbitrary Command Injection Vulnerability
 #
@@ -28,13 +28,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103935");
-  script_version("$Revision: 13153 $");
+  script_version("$Revision: 13204 $");
   script_bugtraq_id(46767);
   script_cve_id("CVE-2011-0411", "CVE-2011-1430", "CVE-2011-1431", "CVE-2011-1432",
                 "CVE-2011-1506", "CVE-2011-1575", "CVE-2011-1926", "CVE-2011-2165");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-18 15:31:32 +0100 (Fri, 18 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-21 18:32:45 +0100 (Mon, 21 Jan 2019) $");
   script_tag(name:"creation_date", value:"2014-04-08 13:52:07 +0200 (Tue, 08 Apr 2014)");
   script_name("Multiple Vendors STARTTLS Implementation Plaintext Arbitrary Command Injection Vulnerability");
   script_category(ACT_ATTACK);
@@ -107,7 +107,7 @@ if( ! soc = smtp_open( port:port, data:smtp_get_helo_from_kb(port:port) ) )
   exit( 0 );
 
 send( socket:soc, data:'STARTTLS\r\nNOOP\r\n' );
-r = smtp_recv_line( socket:soc, check:"220" );
+r = smtp_recv_line( socket:soc, code:"220" );
 if( ! r ) {
   smtp_close( socket:soc, check_data:r );
   exit( 0 );
@@ -117,7 +117,7 @@ soc = socket_negotiate_ssl( socket:soc );
 if( ! soc )
   exit( 0 );
 
-s = smtp_recv_line( socket:soc, check:"250" );
+s = smtp_recv_line( socket:soc, code:"250" );
 smtp_close( socket:soc, check_data:s );
 if( s ) {
   security_message( port:port );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4338.nasl 12310 2018-11-12 07:30:19Z cfischer $
+# $Id: deb_4338.nasl 13209 2019-01-22 08:11:01Z mmartin $
 #
 # Auto-generated from advisory DSA 4338-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704338");
-  script_version("$Revision: 12310 $");
+  script_version("$Revision: 13209 $");
   script_cve_id("CVE-2018-10839", "CVE-2018-17962", "CVE-2018-17963");
   script_name("Debian Security Advisory DSA 4338-1 (qemu - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-12 08:30:19 +0100 (Mon, 12 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-22 09:11:01 +0100 (Tue, 22 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-11-11 00:00:00 +0100 (Sun, 11 Nov 2018)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

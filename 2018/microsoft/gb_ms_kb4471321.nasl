@@ -123,10 +123,10 @@ if(!edgeVer){
   exit(0);
 }
 
-if(version_in_range(version:edgeVer, test_version:"11.0.14393.0", test_version2:"11.0.14393.2664"))
+if(version_in_range(version:edgeVer, test_version:"11.0.14393.0", test_version2:"11.0.14393.2635"))
 {
   report = report_fixed_ver(file_checked:sysPath + "\Edgehtml.dll",
-                            file_version:edgeVer, vulnerable_range:"11.0.14393.0 - 11.0.14393.2664");
+                            file_version:edgeVer, vulnerable_range:"11.0.14393.0 - 11.0.14393.2635");
   security_message(data:report);
   exit(0);
 }

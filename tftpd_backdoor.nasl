@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: tftpd_backdoor.nasl 10783 2018-08-06 08:17:12Z cfischer $
+# $Id: tftpd_backdoor.nasl 13197 2019-01-21 14:05:27Z cfischer $
 #
 # TFTP backdoor
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.18263");
-  script_version("$Revision: 10783 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-06 10:17:12 +0200 (Mon, 06 Aug 2018) $");
+  script_version("$Revision: 13197 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-21 15:05:27 +0100 (Mon, 21 Jan 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -60,7 +60,7 @@ function report_backdoor( port, file, type ) {
   local_var port, file, type, report;
 
   report = 'A TFTP server is running on this port. However, while trying to fetch '+ file + ', we got a '+ type + ' executable file.\n\nThis is probably a backdoor.';
-  security_message( port:port, proto:'udp', data:report );
+  security_message( port:port, proto:"udp", data:report );
 
   if( port == 69 )
     set_kb_item( name:"tftp/backdoor", value:TRUE );

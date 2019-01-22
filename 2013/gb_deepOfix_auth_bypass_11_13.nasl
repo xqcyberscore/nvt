@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_deepOfix_auth_bypass_11_13.nasl 13116 2019-01-17 09:58:55Z cfischer $
+# $Id: gb_deepOfix_auth_bypass_11_13.nasl 13204 2019-01-21 17:32:45Z cfischer $
 #
 # DeepOfix SMTP Authentication Bypass
 #
@@ -31,9 +31,9 @@ if(description)
   script_cve_id("CVE-2013-6796");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_version("$Revision: 13116 $");
+  script_version("$Revision: 13204 $");
   script_name("DeepOfix SMTP Authentication Bypass");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-17 10:58:55 +0100 (Thu, 17 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-21 18:32:45 +0100 (Mon, 21 Jan 2019) $");
   script_tag(name:"creation_date", value:"2013-11-19 15:05:15 +0100 (Tue, 19 Nov 2013)");
   script_category(ACT_ATTACK);
   script_family("SMTP problems");
@@ -82,7 +82,7 @@ if(!soc)
 src_name = this_host_name();
 
 send(socket:soc, data:strcat('EHLO ', src_name, '\r\n'));
-buf = smtp_recv_line(socket:soc, check:"250");
+buf = smtp_recv_line(socket:soc, code:"250");
 if(!buf) {
   smtp_close(socket:soc, check_data:buf);
   exit(0);

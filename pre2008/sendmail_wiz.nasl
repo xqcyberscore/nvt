@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: sendmail_wiz.nasl 13181 2019-01-21 09:53:05Z cfischer $
+# $Id: sendmail_wiz.nasl 13204 2019-01-21 17:32:45Z cfischer $
 # Description: Sendmail WIZ
 #
 # Authors:
@@ -27,8 +27,8 @@ CPE = "cpe:/a:sendmail:sendmail";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.16024");
-  script_version("$Revision: 13181 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-21 10:53:05 +0100 (Mon, 21 Jan 2019) $");
+  script_version("$Revision: 13204 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-21 18:32:45 +0100 (Mon, 21 Jan 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(2897);
   script_cve_id("CVE-1999-0145");
@@ -79,7 +79,7 @@ if(!res || "endmail" >!< res) {
 # nb: We could also test the "KILL" function, which is related to WIZ if I understood correctly
 req = string("WIZ\r\n");
 send(socket:soc, data:req);
-res = smtp_recv_line(socket:soc, check:"2[0-9]{2}");
+res = smtp_recv_line(socket:soc, code:"2[0-9]{2}");
 smtp_close(socket:soc, check_data:res);
 
 if(ereg(string:res, pattern:"^2[0-9]{2}[- ].+")) {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2019_348547a32d_chromium_fc28.nasl 13173 2019-01-21 06:39:39Z santu $
+# $Id: gb_fedora_2019_348547a32d_chromium_fc28.nasl 13209 2019-01-22 08:11:01Z mmartin $
 #
 # Fedora Update for chromium FEDORA-2019-348547a32d
 #
@@ -29,7 +29,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875411");
-  script_version("$Revision: 13173 $");
+  script_version("$Revision: 13209 $");
   script_cve_id("CVE-2018-17480", "CVE-2018-17481", "CVE-2018-18335", "CVE-2018-18336",
                 "CVE-2018-18337", "CVE-2018-18338", "CVE-2018-18339", "CVE-2018-18340",
                 "CVE-2018-18341", "CVE-2018-18342", "CVE-2018-18343", "CVE-2018-18344",
@@ -37,9 +37,9 @@ if(description)
                 "CVE-2018-18349", "CVE-2018-18350", "CVE-2018-18351", "CVE-2018-18352",
                 "CVE-2018-18353", "CVE-2018-18354", "CVE-2018-18355", "CVE-2018-18356",
                 "CVE-2018-18357", "CVE-2018-18358", "CVE-2018-18359");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-21 07:39:39 +0100 (Mon, 21 Jan 2019) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-22 09:11:01 +0100 (Tue, 22 Jan 2019) $");
   script_tag(name:"creation_date", value:"2019-01-16 04:03:50 +0100 (Wed, 16 Jan 2019)");
   script_name("Fedora Update for chromium FEDORA-2019-348547a32d");
   script_category(ACT_GATHER_INFO);

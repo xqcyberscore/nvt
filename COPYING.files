@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Mon, 21 Jan 2019 13:10:01 +0100
+# Automatically created on:  Tue, 22 Jan 2019 12:32:02 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -43966,6 +43966,7 @@
 2019/debian/deb_dla_1633.nasl: GPLv2+
 2019/debian/deb_dla_1634.nasl: GPLv2+
 2019/debian/deb_dla_1635.nasl: GPLv2+
+2019/debian/deb_dla_1636.nasl: GPLv2+
 2019/dolibarr/gb_dolibarr_mult_vuln01.nasl: GPLv2+
 2019/drupal/gb_drupal_sa-core-2019-002_lin.nasl: GPLv2+
 2019/drupal/gb_drupal_sa-core-2019-002_win.nasl: GPLv2+
@@ -44098,6 +44099,8 @@
 2019/oracle/gb_oracle_virtualbox_jan2019-5072801_08_lin.nasl: GPLv2+
 2019/oracle/gb_oracle_virtualbox_jan2019-5072801_09_macosx.nasl: GPLv2+
 2019/phpipam/gb_phpipam_mult_vuln.nasl: GPLv2+
+2019/powerdns/gb_pdns_powerdns-advisory-2019-01.nasl: GPLv2+
+2019/powerdns/gb_pdns_powerdns-advisory-2019-02.nasl: GPLv2+
 2019/prestashop/gb_prestashop_rce_vuln.nasl: GPLv2+
 2019/putty/gb_putty_scp_mult_spoofing_vuln_win.nasl: GPLv2+
 2019/pydio/gb_pydio_php_obj_inj_vuln_nov18.nasl: GPLv2+
@@ -45208,6 +45211,7 @@ gb_logitech_media_server_detect.nasl: GPLv2+
 gb_logitech_media_server_tcp_detect.nasl: GPLv2+
 gb_logitech_media_server_udp_detect.nasl: GPLv2+
 gb_logitech_options_detect_win.nasl: GPLv2+
+gb_logix_designer_compare_tool_detect_win.nasl: GPLv2+
 gb_logpoint_detect.nasl: GPLv2+
 gb_logrhythm_netmon_detect.nasl: GPLv2+
 gb_logsign_detect.nasl: GPLv2+
@@ -45677,6 +45681,7 @@ gb_rsa_auth_agent_detect_win.nasl: GPLv2+
 gb_rsa_netwitness_platform_detect.nasl: GPLv2+
 gb_rsa_web_threat_detection_detect.nasl: GPLv2+
 gb_rslinx_enterprise_detect_win.nasl: GPLv2+
+gb_rslogix5000_data_preserved_download_tool_detect_win.nasl: GPLv2+
 gb_rtsp_os_detection.nasl: GPLv2+
 gb_ruby_rails_detect.nasl: GPLv2+
 gb_safenet_sas_owa_agent_detect.nasl: GPLv2+
@@ -45936,6 +45941,7 @@ gb_telesquare_skt_lte_router_SDT-CS3B1_detect.nasl: GPLv2+
 gb_telpho10_web_interface_detect.nasl: GPLv2+
 gb_teltonika_router_http_detect.nasl: GPLv2+
 gb_tematres_detect.nasl: GPLv2+
+gb_teradata_viewpoint_detect.nasl: GPLv2+
 gb_terramaster_nas_detect.nasl: GPLv2+
 gb_threema_web_detect.nasl: GPLv2+
 gb_thttpd_detect.nasl: GPLv2+
@@ -62952,14 +62958,17 @@ gsf/2019/microsoft/gb_ms_kb4480062.nasl: GPLv2+
 gsf/2019/microsoft/gb_ms_kb4480968.nasl: GPLv2+
 gsf/2019/microsoft/gb_ms_kb4480975.nasl: GPLv2+
 gsf/2019/omron/gb_omron_cx-one_cx-protocol_ce.nasl: GPLv2+
+gsf/2019/omron/gb_omron_cx-supervisor_mult_vuln_jan19.nasl: GPLv2+
 gsf/2019/pilz/gb_pnozmulti_configurator_info_disc_vuln.nasl: GPLv2+
 gsf/2019/racon_software/gb_elba5_rce_vuln.nasl: GPLv2+
 gsf/2019/rhel/gb_RHSA-2019_0049-01_systemd.nasl: GPLv2+
 gsf/2019/rhel/gb_RHSA-2019_0059-01_libvncserver.nasl: GPLv2+
+gsf/2019/rockwellautomation/gb_factorytalk_services_platform_bof_vuln.nasl: GPLv2+
 gsf/2019/schneider/gb_schneider_electric_proface_gp-pro_ex_input_validation_vulnerability.nasl: GPLv2+
 gsf/2019/schneider/gb_schneider_eurotherm_guicon_mult_vuln.nasl: GPLv2+
 gsf/2019/schneider/gb_schneider_umotion_builder_mult_vuln.nasl: GPLv2+
 gsf/2019/schneider/gb_schneider_zelio_soft2_uaf_rce_vuln.nasl: GPLv2+
+gsf/2019/teradata/gb_teradata_viewpoint_db_pw_vuln.nasl: GPLv2+
 gsf/2019/tibco/gb_tibco_spotfire_statistics_services_rce_vuln.nasl: GPLv2+
 gsf/2019/tridium/gb_tridium_niagara_xss_vuln.nasl: GPLv2+
 gsf/2019/vtiger/gb_vtiger_rce_vuln.nasl: GPLv2+
@@ -64836,6 +64845,7 @@ Policy/policy_registry_ok.nasl: GPLv2+
 Policy/policy_registry_violation.nasl: GPLv2+
 pop3_func.inc: GPLv2
 postgresql_detect.nasl: GPLv2+
+postgresql.inc: GPLv2+
 PowerPhlogger_detect.nasl: GPLv2+
 pptp_detect.nasl: GPLv2
 pre2008/12planet_chat_server_xss.nasl: GPLv2

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: counter.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: counter.nasl 13210 2019-01-22 09:14:04Z cfischer $
 #
 # counter.exe vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11725");
-  script_version("$Revision: 6063 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+  script_version("$Revision: 13210 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-22 10:14:04 +0100 (Tue, 22 Jan 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(267);
   script_tag(name:"cvss_base", value:"5.0");
@@ -43,9 +43,7 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name:"solution", value:"remove it from the cgi-bin or scripts directory.
-
-  More info can be found at: http://www.securityfocus.com/bid/267");
+  script_tag(name:"solution", value:"Remove it from the cgi-bin or scripts directory.");
 
   script_tag(name:"summary", value:"The CGI 'counter.exe' exists on this webserver.
   Some versions of this file are vulnerable to remote exploit.");
@@ -71,35 +69,32 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
   if( is_cgi_installed_ka( item:url, port:port ) ) {
 
-    if( safe_checks() == 0 ) {
+    req = string( "GET ", dir, "/counter.exe?%0A", "\r\n\r\n" );
+    soc = open_sock_tcp( port );
+    if( soc ) {
+      send( socket:soc, data:req );
+      r = http_recv( socket:soc );
+      close( soc );
+    } else {
+      exit( 0 );
+    }
 
-      req = string( "GET ", dir, "/counter.exe?%0A", "\r\n\r\n" );
-      soc = open_sock_tcp( port );
-      if( soc ) {
-        send( socket:soc, data:req );
-        r = http_recv( socket:soc );
-        close( soc );
-      } else {
-        exit( 0 );
-      }
+    soc2 = open_sock_tcp( port );
+    if( ! soc2 ) {
+      security_message( port:port );
+      exit( 0 );
+    }
 
-      soc2 = open_sock_tcp( port );
-      if( ! soc2 ) {
-        security_message( port:port );
-        exit( 0 );
-      }
+    send( socket:soc2, data:req );
+    r = http_recv( socket:soc2 );
+    if( ! r ) {
+      security_message( port:port );
+      exit( 0 );
+    }
 
-      send( socket:soc2, data:req );
-      r = http_recv( socket:soc2 );
-      if( ! r ) {
-        security_message( port:port );
-        exit( 0 );
-      }
-
-      if( egrep( pattern:".*Access Violation.*", string:r ) ) {
-        security_message( port:port );
-        exit( 0 );
-      }
+    if( egrep( pattern:".*Access Violation.*", string:r ) ) {
+      security_message( port:port );
+      exit( 0 );
     }
   }
 }

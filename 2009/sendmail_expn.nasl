@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sendmail_expn.nasl 13179 2019-01-21 08:51:36Z cfischer $
+# $Id: sendmail_expn.nasl 13204 2019-01-21 17:32:45Z cfischer $
 #
 # Check if Mailserver answer to VRFY and EXPN requests
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100072");
-  script_version("$Revision: 13179 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-21 09:51:36 +0100 (Mon, 21 Jan 2019) $");
+  script_version("$Revision: 13204 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-21 18:32:45 +0100 (Mon, 21 Jan 2019) $");
   script_tag(name:"creation_date", value:"2009-03-23 19:32:33 +0100 (Mon, 23 Mar 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -78,14 +78,14 @@ if( ! bannertxt ) {
 }
 
 send( socket:soc, data:string( "EHLO ", smtp_get_helo_from_kb( port:port ), "\r\n" ) );
-ehlotxt = smtp_recv_line( socket:soc, check:"(250|550)" );
+ehlotxt = smtp_recv_line( socket:soc, code:"(250|550)" );
 if( ! ehlotxt ) {
   smtp_close( socket:soc, check_data:ehlotxt );
   exit( 0 );
 }
 
 send( socket:soc, data:string( "VRFY root\r\n" ) );
-vrfy_txt = smtp_recv_line( socket:soc, check:"(25[0-2]|550)" );
+vrfy_txt = smtp_recv_line( socket:soc, code:"(25[0-2]|550)" );
 
 if( vrfy_txt ) {
   if( "Administrative prohibition" >!< vrfy_txt &&
@@ -108,7 +108,7 @@ if( vrfy_txt ) {
 }
 
 send( socket:soc, data:string( "EXPN root\r\n" ) );
-expn_txt = smtp_recv_line( socket:soc, check:"(250|550)" );
+expn_txt = smtp_recv_line( socket:soc, code:"(250|550)" );
 
 if( expn_txt && egrep( string:expn_txt, pattern:"^(250|550)" ) ) {
   if( "Administrative prohibition" >!< expn_txt &&

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smtp_relay.nasl 13137 2019-01-18 07:33:34Z cfischer $
+# $Id: smtp_relay.nasl 13204 2019-01-21 17:32:45Z cfischer $
 #
 # SMTP Open Relay Test
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100073");
-  script_version("$Revision: 13137 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-18 08:33:34 +0100 (Fri, 18 Jan 2019) $");
+  script_version("$Revision: 13204 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-21 18:32:45 +0100 (Mon, 21 Jan 2019) $");
   script_tag(name:"creation_date", value:"2009-03-23 19:32:33 +0100 (Mon, 23 Mar 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -79,7 +79,7 @@ if(!soc)
   exit(0);
 
 send(socket:soc, data:strcat('EHLO ', src_name, '\r\n'));
-answer = smtp_recv_line(socket:soc, check:"250");
+answer = smtp_recv_line(socket:soc, code:"250");
 if(!answer) {
   smtp_close(socket:soc, check_data:answer);
   exit(0);
@@ -87,7 +87,7 @@ if(!answer) {
 
 mf = strcat('MAIL FROM: <', FROM , '>\r\n');
 send(socket:soc, data:mf);
-l = smtp_recv_line(socket:soc, check:"5[0-9]{2}");
+l = smtp_recv_line(socket:soc, code:"5[0-9]{2}");
 if(!l) {
   smtp_close(socket:soc, check_data:l);
   exit(0);
@@ -95,7 +95,7 @@ if(!l) {
 
 rt = strcat('RCPT TO: <', TO , '>\r\n');
 send(socket:soc, data:rt);
-l = smtp_recv_line(socket:soc, check:"2[0-9]{2}");
+l = smtp_recv_line(socket:soc, code:"2[0-9]{2}");
 if(!l) {
   smtp_close(socket:soc, check_data:l);
   exit(0);
@@ -103,14 +103,14 @@ if(!l) {
 
 data = string("data\r\n");
 send(socket: soc, data: data);
-data_rcv = smtp_recv_line(socket:soc, check:"3[0-9]{2}");
+data_rcv = smtp_recv_line(socket:soc, code:"3[0-9]{2}");
 if(!data_rcv) {
   smtp_close(socket:soc, check_data:data_rcv);
   exit(0);
 }
 
 send(socket:soc, data:string(vtstrings["default"], "-Relay-Test\r\n.\r\n"));
-mail_send = smtp_recv_line(socket:soc, check:"250");
+mail_send = smtp_recv_line(socket:soc, code:"250");
 smtp_close(socket:soc, check_data:mail_send);
 
 if(mail_send) {

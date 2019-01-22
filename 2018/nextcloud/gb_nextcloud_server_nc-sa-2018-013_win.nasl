@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nextcloud_server_nc-sa-2018-013_win.nasl 12185 2018-11-01 11:19:37Z asteins $
+# $Id: gb_nextcloud_server_nc-sa-2018-013_win.nasl 13209 2019-01-22 08:11:01Z mmartin $
 #
 # Nextcloud Server < 14.0.0, < 13.0.3, < 12.0.8 Session fixation on public share page (NC-SA-2018-013) (Windows)
 #
@@ -27,11 +27,11 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112417");
-  script_version("$Revision: 12185 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-01 12:19:37 +0100 (Thu, 01 Nov 2018) $");
+  script_version("$Revision: 13209 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-22 09:11:01 +0100 (Tue, 22 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-11-01 11:49:50 +0100 (Thu, 01 Nov 2018)");
-  script_tag(name:"cvss_base", value:"3.2");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:M/C:P/I:P/A:N");
+  script_tag(name:"cvss_base", value:"3.6");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:P/I:P/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

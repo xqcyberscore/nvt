@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_starttls_smtp.nasl 13153 2019-01-18 14:31:32Z cfischer $
+# $Id: gb_starttls_smtp.nasl 13204 2019-01-21 17:32:45Z cfischer $
 #
 # SSL/TLS: SMTP 'STARTTLS' Command Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103118");
-  script_version("$Revision: 13153 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-18 15:31:32 +0100 (Fri, 18 Jan 2019) $");
+  script_version("$Revision: 13204 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-21 18:32:45 +0100 (Mon, 21 Jan 2019) $");
   script_tag(name:"creation_date", value:"2011-03-11 13:29:22 +0100 (Fri, 11 Mar 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -77,7 +77,7 @@ if( r =~ "^220[ -]" || "Ready to start TLS" >< r || "TLS go ahead" >< r || " Sta
   soc2 = socket_negotiate_ssl( socket:soc );
   if( soc2 ) {
     send( socket:soc2, data:'EHLO ' + helo + '\r\n' );
-    ehlo = smtp_recv_line( socket:soc2, check:"250" );
+    ehlo = smtp_recv_line( socket:soc2, code:"250" );
     smtp_close( socket:soc2, check_data:ehlo );
 
     if( ehlo ) {
