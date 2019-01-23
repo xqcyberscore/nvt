@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dm_filemanager_detect.nasl 10888 2018-08-10 12:08:02Z cfischer $
+# $Id: gb_dm_filemanager_detect.nasl 13217 2019-01-22 12:22:13Z cfischer $
 #
 # DM FileManager Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800818");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 10888 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 13217 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-22 13:22:13 +0100 (Tue, 22 Jan 2019) $");
   script_tag(name:"creation_date", value:"2009-07-03 15:23:01 +0200 (Fri, 03 Jul 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("DM FileManager Version Detection");
@@ -70,8 +70,7 @@ foreach dir1( make_list_unique( "/dm-filemanager", "/dmf", "/", cgi_dirs( port:p
     ver1 = eregmatch( pattern:"DM FileManager[^?]+v([0-9]\.[0-9.]+)", string:rcvRes1 );
     if( ver1[1] != NULL ) version1 = ver1[1];
 
-    tmp_version1 = version1 + " under " + install1;
-    set_kb_item( name:"www/" + port + "/DM-FileManager", value:tmp_version1 );
+    set_kb_item( name:"dm-filemanager/detected", value:TRUE );
 
     cpe1 = build_cpe( value: version1, exp:"^([0-9.]+)", base:"cpe:/a:dutchmonkey:dm_filemanager:" );
     if( isnull( cpe1 ) )
@@ -93,9 +92,6 @@ foreach dir1( make_list_unique( "/dm-filemanager", "/dmf", "/", cgi_dirs( port:p
 
         ver2 = eregmatch( pattern:"Stable tag: ([0-9.]+)", string:rcvRes2 );
         if( ver2[1] != NULL ) version2 = ver2[1];
-
-        tmp_version2 = version2 + " under " + install2;
-        set_kb_item( name:"www/" + port + "/DM-Albums", value:tmp_version2 );
 
         cpe2 = build_cpe( value: version2, exp:"^([0-9.]+)", base:"cpe:/a:dutchmonkey:dm_album:" );
         if( isnull( cpe2 ) )

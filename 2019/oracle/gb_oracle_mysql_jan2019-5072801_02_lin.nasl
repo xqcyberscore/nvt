@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_mysql_jan2019-5072801_02_lin.nasl 13097 2019-01-16 12:44:30Z asteins $
+# $Id: gb_oracle_mysql_jan2019-5072801_02_lin.nasl 13237 2019-01-23 10:24:40Z asteins $
 #
 # Oracle MySQL 5.7.x < 5.7.24, 8.0.x < 8.0.13 Security Update (2019-5072801) Linux
 #
@@ -28,11 +28,11 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112490");
-  script_version("$Revision: 13097 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-16 13:44:30 +0100 (Wed, 16 Jan 2019) $");
+  script_version("$Revision: 13237 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-23 11:24:40 +0100 (Wed, 23 Jan 2019) $");
   script_tag(name:"creation_date", value:"2019-01-16 13:12:11 +0100 (Wed, 16 Jan 2019)");
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
 
   script_cve_id("CVE-2019-2434", "CVE-2019-2510", "CVE-2019-2420",
   "CVE-2019-2528", "CVE-2019-2486", "CVE-2019-2532");

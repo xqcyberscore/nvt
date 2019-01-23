@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dm_filemanager_sec_bypass_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: gb_dm_filemanager_sec_bypass_vuln.nasl 13217 2019-01-22 12:22:13Z cfischer $
 #
 # DM FileManager 'login.php' Security Bypass Vulnerability
 #
@@ -24,35 +24,23 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will let the remote attacker execute arbitrary
-  SQL commands when magic_quotes_gpc is disabled and bypass authentication
-  and gain administrative access.
-  Impact Level: Application";
-tag_affected = "DutchMonkey, DM FileManager version 3.9.2 and prior";
-tag_insight = "- Error exists when application fails to set the 'USER', 'GROUPID',
-   'GROUP', and 'USERID' cookies to certain values in admin/login.php.
-  - Error in 'login.php' which fails to sanitise user supplied input via
-    the 'Username' and 'Password' fields.";
-tag_solution = "Upgrade to DM FileManager version 3.9.10 or later,
-  For updates refer to http://dutchmonkey.com";
-tag_summary = "The host is running DM FileManager and is prone to Security Bypass
-  vulnerability.";
+CPE = "cpe:/a:dutchmonkey:dm_album";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800819");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 13217 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-22 13:22:13 +0100 (Tue, 22 Jan 2019) $");
   script_tag(name:"creation_date", value:"2009-07-03 15:23:01 +0200 (Fri, 03 Jul 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-2009-2025", "CVE-2009-1741");
   script_bugtraq_id(35035);
   script_name("DM FileManager 'login.php' Security Bypass Vulnerability");
-  script_xref(name : "URL" , value : "http://milw0rm.com/exploits/8903");
-  script_xref(name : "URL" , value : "http://milw0rm.com/exploits/8741");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/35167");
-  script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2009/1532");
+  script_xref(name:"URL", value:"http://milw0rm.com/exploits/8903");
+  script_xref(name:"URL", value:"http://milw0rm.com/exploits/8741");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/35167");
+  script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2009/1532");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
@@ -60,14 +48,28 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_dm_filemanager_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_mandatory_keys("dm-filemanager/detected");
+
+  script_tag(name:"impact", value:"Successful exploitation will let the remote attacker execute arbitrary
+  SQL commands when magic_quotes_gpc is disabled and bypass authentication
+  and gain administrative access.");
+
+  script_tag(name:"affected", value:"DutchMonkey, DM FileManager version 3.9.2 and prior");
+
+  script_tag(name:"insight", value:"- Error exists when application fails to set the 'USER', 'GROUPID',
+  'GROUP', and 'USERID' cookies to certain values in admin/login.php.
+
+  - Error in 'login.php' which fails to sanitise user supplied input via
+  the 'Username' and 'Password' fields.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution", value:"Upgrade to DM FileManager version 3.9.10 or later.");
+
+  script_tag(name:"summary", value:"The host is running DM FileManager and is prone to Security Bypass
+  vulnerability.");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("version_func.inc");

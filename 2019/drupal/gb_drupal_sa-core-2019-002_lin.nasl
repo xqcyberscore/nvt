@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_drupal_sa-core-2019-002_lin.nasl 13132 2019-01-18 03:55:49Z ckuersteiner $
+# $Id: gb_drupal_sa-core-2019-002_lin.nasl 13232 2019-01-23 04:36:25Z ckuersteiner $
 #
 # Drupal Multiple Vulnerabilities (SA-CORE-2019-001/SA-CORE-2019-002) (Linux)
 #
@@ -30,13 +30,13 @@ CPE = 'cpe:/a:drupal:drupal';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141891");
-  script_version("$Revision: 13132 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-18 04:55:49 +0100 (Fri, 18 Jan 2019) $");
+  script_version("$Revision: 13232 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-23 05:36:25 +0100 (Wed, 23 Jan 2019) $");
   script_tag(name:"creation_date", value:"2019-01-18 10:26:41 +0700 (Fri, 18 Jan 2019)");
   script_tag(name:"cvss_base", value:"6.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:C/I:C/A:N");
 
-  script_cve_id("CVE-2018-1000888");
+  script_cve_id("CVE-2018-1000888", "CVE-2019-6339", "CVE-2019-6338");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 

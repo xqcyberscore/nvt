@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: chora_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
+# $Id: chora_detect.nasl 13218 2019-01-22 12:34:39Z cfischer $
 #
 # Chora Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.13849");
-  script_version("$Revision: 11885 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 13218 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-22 13:34:39 +0100 (Tue, 22 Jan 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -80,7 +80,8 @@ foreach dir( make_list_unique( "/horde/chora", "/chora", "/", cgi_dirs( port:por
   foreach file( files ) {
 
     res = http_get_cache( item:dir + file, port:port );
-    if( res == NULL ) continue;
+    if(!res)
+      continue;
 
     if( egrep( string:res, pattern:"^HTTP/1\.[01] 200" ) ) {
 
@@ -110,20 +111,22 @@ foreach dir( make_list_unique( "/horde/chora", "/chora", "/", cgi_dirs( port:por
       foreach match( split( matches ) ) {
 
         # Avoid false positives against other products shipping a README file (e.g. Tiki)
-        if( file == "/README" && "Chora" >!< res ) continue;
+        if( file == "/README" && "Chora" >!< res )
+          continue;
 
         match = chomp( match );
         ver = eregmatch( pattern:pat, string:match );
-        if( ver == NULL ) break;
+        if(isnull(ver))
+          break;
+
         ver = ver[1];
 
-        tmp_version = ver + " under " + install;
-        set_kb_item( name:"www/" + port + "/chora", value:tmp_version );
+        set_kb_item( name:"chora/detected", value:TRUE );
 
         installations[install] = ver;
         ++installs;
 
-        cpe = build_cpe( value:tmp_version, exp:"^([0-9.]+)", base:"cpe:/a:horde:chora:" );
+        cpe = build_cpe( value:ver, exp:"^([0-9.]+)", base:"cpe:/a:horde:chora:" );
         if( isnull( cpe ) )
           cpe = "cpe:/a:horde:chora";
 

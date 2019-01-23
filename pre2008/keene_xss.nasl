@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: keene_xss.nasl 10862 2018-08-09 14:51:58Z cfischer $
+# $Id: keene_xss.nasl 13226 2019-01-22 14:27:13Z cfischer $
 #
 # Keene digital media server XSS
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14681");
-  script_version("$Revision: 10862 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-09 16:51:58 +0200 (Thu, 09 Aug 2018) $");
+  script_version("$Revision: 13226 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-22 15:27:13 +0100 (Tue, 22 Jan 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(11111);
   script_xref(name:"OSVDB", value:9514);
@@ -42,11 +42,12 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2004 David Maciejak");
   script_family("Web application abuses");
-  script_require_ports("Services/www", 80);
   script_dependencies("find_service.nasl", "http_version.nasl", "cross_site_scripting.nasl");
+  script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name:"solution", value:"Upgrade to the latest version of this software");
+  script_tag(name:"solution", value:"Upgrade to the latest version of this software.");
+
   script_tag(name:"summary", value:"The remote host runs Keene digital media server, a webserver
   used to share digital information.
 
@@ -78,11 +79,11 @@ foreach url( urls ) {
 
   buf = http_get( item:url, port:port );
   r = http_keepalive_send_recv( port:port, data:buf, bodyonly:FALSE );
-  if( isnull( r ) ) exit( 0 );
+  if(!r) exit( 0 );
 
   if( r =~ "^HTTP/1\.[01] 200" && "<script>foo</script>" >< r ) {
     report = report_vuln_url( port:port, url:url );
-    security_message( port:port, url:url );
+    security_message( port:port, data:report );
     exit( 0 );
   }
 }

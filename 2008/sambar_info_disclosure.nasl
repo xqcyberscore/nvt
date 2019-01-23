@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sambar_info_disclosure.nasl 5146 2017-01-31 11:37:33Z teissa $
+# $Id: sambar_info_disclosure.nasl 13226 2019-01-22 14:27:13Z cfischer $
 #
 # Sambar default CGI info disclosure
 #
@@ -33,8 +33,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80082");
-  script_version("$Revision: 5146 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-31 12:37:33 +0100 (Tue, 31 Jan 2017) $");
+  script_version("$Revision: 13226 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-22 15:27:13 +0100 (Tue, 22 Jan 2019) $");
   script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
   script_bugtraq_id(7207, 7208);
   script_cve_id("CVE-2003-1284");
@@ -48,15 +48,12 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("www/sambar");
 
-  tag_summary = "The remote web server is running two CGIs (environ.pl and 
+  script_tag(name:"solution", value:"Delete these two CGIs");
+
+  script_tag(name:"summary", value:"The remote web server is running two CGIs (environ.pl and
   testcgi.exe) which, by default, disclose a lot of information
   about the remote host (such as the physical path to the CGIs on
-  the remote filesystem).";
-
-  tag_solution = "Delete these two CGIs";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  the remote filesystem).");
 
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -75,7 +72,7 @@ res = http_keepalive_send_recv( port:port, data:req );
 
 if( "SCRIPT_FILENAME" >< res ) {
   report = report_vuln_url( port:port, url:url );
-  security_message( port:port, report:report );
+  security_message( port:port, data:report );
   exit( 0 );
 }
 
@@ -85,7 +82,7 @@ res = http_keepalive_send_recv( port:port, data:req );
 
 if( "DOCUMENT_ROOT" >< res ) {
   report = report_vuln_url( port:port, url:url );
-  security_message( port:port, report:report );
+  security_message( port:port, data:report );
   exit( 0 );
 }
 

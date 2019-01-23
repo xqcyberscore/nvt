@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: net2ftp_detect.nasl 10765 2018-08-03 14:31:52Z cfischer $
+# $Id: net2ftp_detect.nasl 13235 2019-01-23 10:05:41Z ckuersteiner $
 #
 # net2ftp Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100125");
-  script_version("$Revision: 10765 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-03 16:31:52 +0200 (Fri, 03 Aug 2018) $");
+  script_version("$Revision: 13235 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-23 11:05:41 +0100 (Wed, 23 Jan 2019) $");
   script_tag(name:"creation_date", value:"2009-04-12 20:09:50 +0200 (Sun, 12 Apr 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -67,34 +67,30 @@ foreach dir( make_list_unique( "/ftp", "/webftp", "/net2ftp", cgi_dirs( port:por
   if( egrep( pattern:'Powered by net2ftp', string:buf, icase:TRUE ) ||
       egrep( pattern:'<title>net2ftp - a web based FTP client</title>', string:buf, icase:TRUE ) ||
       "<title>net2ftp help</title>" >< buf2 ) {
-
     vers = "unknown";
 
     version = eregmatch( string:buf, pattern:"<!-- net2ftp version ([0-9.]+) -->", icase:TRUE );
-
-    if( ! isnull( version[1] ) ) {
-      vers = chomp( version[1] );
+    if( !isnull( version[1] ) ) {
+      vers = version[1];
     } else {
        res = http_get_cache( item:dir + "/version.js", port:port );
        version = eregmatch( string:res, pattern:"latest_stable_version = '([0-9.]+)';", icase:TRUE );
-       if( ! isnull( version[1] ) ) vers = version[1];
+       if( !isnull( version[1] ) )
+         vers = version[1];
     }
 
-    tmp_version = vers + " under " + install;
-    set_kb_item( name:"www/" + port + "/net2ftp", value:tmp_version );
+    set_kb_item(name: "net2ftp/detected", value: TRUE);
 
-    cpe = build_cpe( value:tmp_version, exp:"^([0-9.]+)", base:"cpe:/a:net2ftp:net2ftp:" );
-    if( isnull( cpe ) )
+    cpe = build_cpe( value:vers, exp:"^([0-9.]+)", base:"cpe:/a:net2ftp:net2ftp:" );
+    if (!cpe)
       cpe = "cpe:/a:net2ftp:net2ftp";
 
     register_product( cpe:cpe, location:install, port:port );
 
-    log_message( data:build_detection_report( app:"net2ftp",
-                                              version:vers,
-                                              install:install,
-                                              cpe:cpe,
+    log_message( data:build_detection_report( app:"net2ftp", version:vers, install:install, cpe:cpe,
                                               concluded:version[0] ),
-                                              port:port );
+                 port:port );
+    exit(0);
   }
 }
 

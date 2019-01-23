@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_belkin_router_multiple_vuln.nasl 11492 2018-09-20 08:38:50Z mmartin $
+# $Id: gb_belkin_router_multiple_vuln.nasl 13226 2019-01-22 14:27:13Z cfischer $
 #
 # Belkin N150 Wireless Home Router Multiple Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806170");
-  script_version("$Revision: 11492 $");
+  script_version("$Revision: 13226 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 10:38:50 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-22 15:27:13 +0100 (Tue, 22 Jan 2019) $");
   script_tag(name:"creation_date", value:"2015-12-02 14:31:19 +0530 (Wed, 02 Dec 2015)");
   script_name("Belkin N150 Wireless Home Router Multiple Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -117,7 +117,7 @@ if(banner =~ 'Server: mini_httpd'){
 
   if(res =~ "HTTP/1\.. 200" && "><script>alert(document.cookie)</script><script>" >< res){
     report = report_vuln_url(port:asport, url:url);
-    security_message(port:asport, url:url);
+    security_message(port:asport, data:report);
     exit(0);
   }
   exit(99);

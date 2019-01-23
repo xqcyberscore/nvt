@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_jan2019-5072801_04_win.nasl 13108 2019-01-17 07:34:03Z santu $
+# $Id: gb_oracle_virtualbox_jan2019-5072801_04_win.nasl 13237 2019-01-23 10:24:40Z asteins $
 #
 # Oracle VirtualBox Security Updates (jan2019-5072801) 04 - Windows
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:oracle:vm_virtualbox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814655");
-  script_version("$Revision: 13108 $");
+  script_version("$Revision: 13237 $");
   script_cve_id("CVE-2019-2448", "CVE-2019-2508", "CVE-2019-2509", "CVE-2019-2548",
                 "CVE-2019-2505", "CVE-2019-2506", "CVE-2019-2500", "CVE-2019-2555",
                 "CVE-2019-2446", "CVE-2019-2526", "CVE-2019-2527", "CVE-2019-2524",
@@ -37,9 +37,9 @@ if(description)
                 "CVE-2019-2521", "CVE-2019-2504", "CVE-2019-2556", "CVE-2019-2554",
                 "CVE-2019-2553", "CVE-2019-2552", "CVE-2019-2450", "CVE-2019-2451",
                 "CVE-2019-2501", "CVE-2019-2511");
-  script_tag(name:"cvss_base", value:"4.6");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-17 08:34:03 +0100 (Thu, 17 Jan 2019) $");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-23 11:24:40 +0100 (Wed, 23 Jan 2019) $");
   script_tag(name:"creation_date", value:"2019-01-16 15:28:21 +0530 (Wed, 16 Jan 2019)");
   script_name("Oracle VirtualBox Security Updates (jan2019-5072801) 04 - Windows");
 

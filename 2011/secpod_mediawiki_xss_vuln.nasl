@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mediawiki_xss_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
+# $Id: secpod_mediawiki_xss_vuln.nasl 13226 2019-01-22 14:27:13Z cfischer $
 #
 # MediaWiki Cross-Site Scripting Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:mediawiki:mediawiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902380");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("$Revision: 13226 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-22 15:27:13 +0100 (Tue, 22 Jan 2019) $");
   script_tag(name:"creation_date", value:"2011-06-02 11:54:09 +0200 (Thu, 02 Jun 2011)");
   script_cve_id("CVE-2011-1765");
   script_bugtraq_id(47722);
@@ -50,18 +50,21 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
   script code in a user's browser session in the context of an affected site.");
-  script_tag(name:"affected", value:"MediaWiki version before 1.16.5");
+
+  script_tag(name:"affected", value:"MediaWiki version before 1.16.5.");
+
   script_tag(name:"insight", value:"The flaw is due to an error when handling the file extension such as
   '.shtml' at the end of the query string, along with URI containing a
   '%2E' sequence in place of the .(dot) character.");
+
   script_tag(name:"solution", value:"Upgrade to MediaWiki 1.16.5 or later.");
+
   script_tag(name:"summary", value:"This host is running MediaWiki and is prone to cross site scripting
   vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
 
-  script_xref(name:"URL", value:"http://www.mediawiki.org/wiki/MediaWiki");
   exit(0);
 }
 
@@ -83,7 +86,7 @@ if( "Invalid file extension found in PATH_INFO or QUERY_STRING." >!< res &&
     "<body onload=alert('document.cookie')>.shtml" >< res &&
     "Status: 403 Forbidden" >!< res ) {
   report = report_vuln_url( port:port, url:url );
-  security_message( port:port, report:report );
+  security_message( port:port, data:report );
   exit( 0 );
 }
 

