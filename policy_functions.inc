@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test support library
-# $Id: policy_functions.inc 13130 2019-01-17 15:29:22Z emoss $
+# $Id: policy_functions.inc 13250 2019-01-23 15:55:19Z emoss $
 #
 # Supporting methods for Policy NVTs.
 #
@@ -270,4 +270,21 @@ function get_grub_config_file(){
 		}
 	}
 	return;
+}
+
+# @brief sends a ssh_cmd and filters errors in return values.
+#
+# @param socket the socket for the ssh command
+#				 cmd the bash command
+#
+# @return return of the command or NULL if file not found or
+# 				other error occurred
+function ssh_cmd_without_errors(socket, cmd){
+	local_var socket, cmd;
+	ret = ssh_cmd(socket:socket, cmd:cmd, return_errors:FALSE);
+
+	if('No such file or directory' >< ret) return;
+	if('command not found' >< ret) return;
+
+	return(ret);
 }

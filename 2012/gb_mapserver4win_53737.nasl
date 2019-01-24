@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mapserver4win_53737.nasl 11998 2018-10-20 18:17:12Z cfischer $
+# $Id: gb_mapserver4win_53737.nasl 13238 2019-01-23 11:14:26Z cfischer $
 #
 # Mapserver for Windows Local File Include Vulnerability
 #
@@ -30,11 +30,11 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.103602");
   script_bugtraq_id(53737);
   script_cve_id("CVE-2012-2950");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 20:17:12 +0200 (Sat, 20 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-23 12:14:26 +0100 (Wed, 23 Jan 2019) $");
   script_tag(name:"creation_date", value:"2012-11-02 10:11:35 +0100 (Fri, 02 Nov 2012)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
-  script_version("$Revision: 11998 $");
+  script_version("$Revision: 13238 $");
   script_name("Mapserver for Windows Local File Include Vulnerability");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -123,7 +123,7 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
     if("<title>phpinfo()" >< buf) {
       report = report_vuln_url(port:port, url:url);
-      security_message(port:port);
+      security_message(port:port, data:report);
       exit(0);
     }
   }

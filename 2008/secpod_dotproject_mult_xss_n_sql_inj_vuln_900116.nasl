@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_dotproject_mult_xss_n_sql_inj_vuln_900116.nasl 13215 2019-01-22 11:59:45Z cfischer $
+# $Id: secpod_dotproject_mult_xss_n_sql_inj_vuln_900116.nasl 13238 2019-01-23 11:14:26Z cfischer $
 # Description: dotProject Multiple XSS and SQL Injection Vulnerabilities
 #
 # Authors:
@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900116");
-  script_version("$Revision: 13215 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-22 12:59:45 +0100 (Tue, 22 Jan 2019) $");
+  script_version("$Revision: 13238 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-23 12:14:26 +0100 (Wed, 23 Jan 2019) $");
   script_tag(name:"creation_date", value:"2008-09-02 16:25:07 +0200 (Tue, 02 Sep 2008)");
   script_cve_id("CVE-2008-3886");
   script_bugtraq_id(30924);
@@ -72,6 +72,7 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("version_func.inc");
 
 port = get_http_port(default:80);
 if(!can_host_php(port:port))
@@ -88,8 +89,9 @@ foreach path (make_list_unique("/xampp/dotproject_2_1_2/dotproject", cgi_dirs(po
 
   if(rcvRes =~ "^HTTP/1\.[01] 200" && egrep(pattern:"dotProject", string:rcvRes, icase:FALSE)) {
     if(safe_checks()) {
-      if(egrep(pattern:"Version ([01]\..*|2\.(0(\..*)?|1(\.[0-2])?))[^.0-9]", string:rcvRes)){
-        security_message(port:port);
+      if(ver = egrep(pattern:"Version ([01]\..*|2\.(0(\..*)?|1(\.[0-2])?))[^.0-9]", string:rcvRes)){
+        report = report_fixed_ver(installed_version:ver, fixed_version:"2.1.3");
+        security_message(port:port, data:report);
       }
       exit(0);
     }

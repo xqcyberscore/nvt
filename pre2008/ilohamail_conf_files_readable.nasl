@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ilohamail_conf_files_readable.nasl 10802 2018-08-07 08:55:29Z cfischer $
+# $Id: ilohamail_conf_files_readable.nasl 13238 2019-01-23 11:14:26Z cfischer $
 #
 # IlohaMail Readable Configuration Files
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:ilohamail:ilohamail";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.16142");
-  script_version("$Revision: 10802 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-07 10:55:29 +0200 (Tue, 07 Aug 2018) $");
+  script_version("$Revision: 13238 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-23 12:14:26 +0100 (Wed, 23 Jan 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -72,12 +72,12 @@ if( dir =~ "/source$" ) {
     url = dir + "/" + config;
     req = http_get( item:url, port:port );
     res = http_keepalive_send_recv( port:port, data:req );
-    if( isnull( res ) ) continue;
+    if( ! res ) continue;
 
     # Does it look like PHP code with variable definitions?
     if( egrep( string:res, pattern:"<\?php") && egrep( string:res, pattern:"\$[A-Za-z_]+ *= *.+;" ) ) {
       report = report_vuln_url( port:port, url:url );
-      security_message( port:port );
+      security_message( port:port, data:report );
       exit( 0 );
     }
   }

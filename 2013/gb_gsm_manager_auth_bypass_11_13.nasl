@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gsm_manager_auth_bypass_11_13.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: gb_gsm_manager_auth_bypass_11_13.nasl 13239 2019-01-23 11:32:14Z cfischer $
 #
 # GSM Manager Authentication Bypass
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/o:greenbone:greenbone_os";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103832");
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 13239 $");
   script_cve_id("CVE-2013-6765");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-23 12:32:14 +0100 (Wed, 23 Jan 2019) $");
   script_tag(name:"creation_date", value:"2013-11-08 13:02:55 +0200 (Fri, 08 Nov 2013)");
   script_name("GSM Manager Authentication Bypass");
   script_category(ACT_GATHER_INFO);
@@ -45,18 +45,22 @@ if(description)
 
   script_tag(name:"impact", value:"Attackers can exploit these issues to gain unauthorized access to the
   affected application and perform certain actions.");
+
   script_tag(name:"vuldetect", value:"If public OMP is enabled, try to bypass OMP authentication by sending a special crafted request.
   If public OMP is not enabled, check the GOS version.");
+
   script_tag(name:"insight", value:"A software bug in the server module 'OpenVAS Manager' allowed to bypass the OMP
   authentication procedure. The attack vector is remotely available in case public OMP is enabled.
   In case of successful attack, the attacker gains partial rights to execute OMP commands. The bypass
   authentication is, however, incomplete and several OMP commands will fail to execute properly.");
-  script_tag(name:"solution", value:"Upgrade at least to Greenbone OS 2.2.0-20.
-  Temporary workaround: Disable public OMP.");
+
+  script_tag(name:"solution", value:"Upgrade at least to Greenbone OS 2.2.0-20.");
+
   script_tag(name:"summary", value:"The remote GSM Manager is prone to an authentication bypass.");
+
   script_tag(name:"affected", value:"Greenbone OS 2.2.0-1 up to 2.2.0-19 when public OMP is enabled.");
 
-  script_xref(name:"URL", value:"http://greenbone.net/technology/gbsa2013-01.html");
+  script_xref(name:"URL", value:"https://www.greenbone.net/en/security-response-team/#toggle-id-6");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -75,12 +79,14 @@ if( port = get_app_port( cpe:"cpe:/a:openvas:openvas_manager" ) ) {
   soc = open_sock_tcp( port );
   if( ! soc ) exit( 0 );
 
-  send( socket:soc, data:'<get_version/><get_targets/>\r\n' );
+  req = '<get_version/><get_targets/>\r\n';
+  send( socket:soc, data:req );
   ret = recv( socket:soc, length: 1024 );
   close( soc );
 
   if( "get_targets_response" >< ret && "target id" >< ret ) {
-    security_message( port:port );
+    report = 'By sending the request "' + req + '" to the remote OMP service it was possible to bypass the authentication. Response:\n\n' + ret;
+    security_message( port:port, data:report );
     exit( 0 );
   }
 # public omp disabled

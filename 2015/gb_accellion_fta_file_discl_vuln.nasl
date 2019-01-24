@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_accellion_fta_file_discl_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_accellion_fta_file_discl_vuln.nasl 13238 2019-01-23 11:14:26Z cfischer $
 #
 # Accellion FTA File Disclosure Vulnerability
 #
@@ -27,11 +27,11 @@
 
 CPE = 'cpe:/h:accellion:secure_file_transfer_appliance';
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106031");
-  script_version("$Revision: 11872 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 13238 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-23 12:14:26 +0100 (Wed, 23 Jan 2019) $");
   script_tag(name:"creation_date", value:"2015-07-28 09:48:42 +0700 (Tue, 28 Jul 2015)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -117,7 +117,8 @@ else {
 
     buf = http_keepalive_send_recv(port: port, data: req);
     if (egrep(string:buf, pattern:pattern)) {
-      security_message(port: port);
+      report = report_vuln_url(port: port, url: url);
+      security_message(port: port, data: report);
       exit(0);
     }
   }

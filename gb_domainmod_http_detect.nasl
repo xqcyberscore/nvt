@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_domainmod_http_detect.nasl 13227 2019-01-22 14:30:41Z jschulte $
+# $Id: gb_domainmod_http_detect.nasl 13242 2019-01-23 12:36:13Z jschulte $
 #
 # DomainMOD Detection
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113326");
-  script_version("$Revision: 13227 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-22 15:30:41 +0100 (Tue, 22 Jan 2019) $");
+  script_version("$Revision: 13242 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-23 13:36:13 +0100 (Wed, 23 Jan 2019) $");
   script_tag(name:"creation_date", value:"2019-01-22 14:43:33 +0100 (Tue, 22 Jan 2019)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -55,7 +55,7 @@ if( description )
   exit(0);
 }
 
-CPE = "cpe:/a:domainmod:domainmod";
+CPE = "cpe:/a:domainmod:domainmod:";
 
 include( "host_details.inc" );
 include( "http_func.inc" );

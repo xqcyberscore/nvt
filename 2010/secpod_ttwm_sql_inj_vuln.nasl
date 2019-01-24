@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ttwm_sql_inj_vuln.nasl 13222 2019-01-22 13:35:43Z cfischer $
+# $Id: secpod_ttwm_sql_inj_vuln.nasl 13238 2019-01-23 11:14:26Z cfischer $
 #
 # TT Web Site Manager 'tt_name' Remote SQL Injection Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:technotoad:tt_web_site_manager";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902135");
-  script_version("$Revision: 13222 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-22 14:35:43 +0100 (Tue, 22 Jan 2019) $");
+  script_version("$Revision: 13238 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-23 12:14:26 +0100 (Wed, 23 Jan 2019) $");
   script_tag(name:"creation_date", value:"2010-03-23 15:59:14 +0100 (Tue, 23 Mar 2010)");
   script_cve_id("CVE-2009-4732");
   script_tag(name:"cvss_base", value:"6.8");
@@ -98,7 +98,8 @@ if(path) {
                    authVariables);
   rcvRes = http_send_recv(port:port, data:sndReq);
   if("location: ttsite.php" >< rcvRes) {
-    security_message(port:port);
+    report = report_vuln_url(port:port, url:filename);
+    security_message(port:port, data:report);
     exit(0);
   }
 }

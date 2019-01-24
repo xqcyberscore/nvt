@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smb_login.nasl 10905 2018-08-10 14:32:11Z cfischer $
+# $Id: smb_login.nasl 13247 2019-01-23 15:12:20Z cfischer $
 #
 # SMB log in
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10394");
-  script_version("$Revision: 10905 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:32:11 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 13247 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-23 16:12:20 +0100 (Wed, 23 Jan 2019) $");
   script_tag(name:"creation_date", value:"2008-09-10 10:22:48 +0200 (Wed, 10 Sep 2008)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -192,17 +192,15 @@ if( flag == 1 && ! strlen( user_domain ) ) {
 }
 
 if( login_defined == 1 ) {
-  report = "It was possible to log into the remote host using the SMB protocol.";
   register_host_detail( name:"Auth-SMB-Success", value:"Protocol SMB, Port " + port + ", User " + login );
-  log_message( data:report, port:port );
+  log_message( port:port, data:"It was possible to log into the remote host using the SMB protocol." );
   set_kb_item( name:"login/SMB/success", value:TRUE );
   set_kb_item( name:"login/SMB/success/port", value:port );
 }
 
 else if( ( login_defined == 0 ) && login ) {
-  report = "It was not possible to log into the remote host using the SMB protocol.";
   register_host_detail( name:"Auth-SMB-Failure", value:"Protocol SMB, Port " + port + ", User " + login );
-  log_message( data:report, port:port );
+  log_message( port:port, data:"It was NOT possible to log into the remote host using the SMB protocol." );
   set_kb_item( name:"login/SMB/failed", value:TRUE );
   set_kb_item( name:"login/SMB/failed/port", value:port );
 }

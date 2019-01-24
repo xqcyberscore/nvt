@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: bad_ssh_host_keys.inc 9748 2018-05-07 13:37:23Z cfischer $
+# $Id: bad_ssh_host_keys.inc 13261 2019-01-24 10:37:44Z cfischer $
 #
 # Collection of known static SSH host keys
 #
@@ -25,7 +25,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301
 # USA.
 #
-# $Revision: 9748 $
+# $Revision: 13261 $
 #
 ###############################################################################
 
@@ -58,7 +58,7 @@ bad_host_keys = make_list(
 # START unknown source, those where included in the initial version of this include
 # but didn't had an info about the source
 "12:8d:0b:22:95:41:76:13:91:22:a6:a9:56:17:63:30",
-"a8:f5:3d:54:99:f1:b1:49:6b:ac:24:38:02:a4:00:94", 
+"a8:f5:3d:54:99:f1:b1:49:6b:ac:24:38:02:a4:00:94",
 "d9:15:60:15:0d:76:1b:8b:05:73:34:99:d0:7b:8a:90",
 "dd:e7:64:a2:15:66:5c:57:7f:65:4f:b7:d4:40:ed:03",
 "22:4d:5d:da:21:44:d0:3f:f1:b9:89:d5:3c:b7:a4:a8",
@@ -74,7 +74,7 @@ bad_host_keys = make_list(
 # END unknown source
 # START https://gist.github.com/achillean/07f7f1e6b0e6e113a33c
 # Some of those are duplicated with the ones above but we keep
-# them at both places for easier mantenance. gb_bad_ssh_host_keys.nasl
+# them at both places for easier maintenance. gb_bad_ssh_host_keys.nasl
 # will do the job to de-duplicate those.
 "dc:14:de:8e:d7:c1:15:43:23:82:25:81:d2:59:e8:c0",
 "32:f9:38:a2:39:d0:c5:f5:ba:bd:b7:75:2b:00:f6:ab",

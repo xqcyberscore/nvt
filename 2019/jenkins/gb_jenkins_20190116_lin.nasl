@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jenkins_20190116_lin.nasl 13234 2019-01-23 09:11:15Z asteins $
+# $Id: gb_jenkins_20190116_lin.nasl 13260 2019-01-24 09:34:34Z jschulte $
 #
 # Jenkins < 2.160 and < 2.150.2 LTS Multiple Vulnerabilities (Linux)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112496");
-  script_version("$Revision: 13234 $");
+  script_version("$Revision: 13260 $");
   script_cve_id("CVE-2019-1003003", "CVE-2019-1003004");
   script_tag(name:"cvss_base", value:"8.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:M/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-23 10:11:15 +0100 (Wed, 23 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-24 10:34:34 +0100 (Thu, 24 Jan 2019) $");
   script_tag(name:"creation_date", value:"2019-01-23 10:08:11 +0100 (Wed, 23 Jan 2019)");
   script_name("Jenkins < 2.160 and < 2.150.2 LTS Multiple Vulnerabilities (Linux)");
   script_category(ACT_GATHER_INFO);
@@ -53,7 +53,7 @@ if(description)
 
   script_tag(name:"affected", value:"Jenkins LTS through 2.150.1, Jenkins weekly through 2.159.");
 
-  script_tag(name:"solution", value:"Upgrade to Jenkins weekly to 2.160 or later / Jenkins LTS to 2.150.2
+  script_tag(name:"solution", value:"Upgrade Jenkins weekly to 2.160 or later / Jenkins LTS to 2.150.2
   or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smbcl_getversion.nasl 11529 2018-09-21 16:26:30Z cfischer $
+# $Id: smbcl_getversion.nasl 13262 2019-01-24 11:03:38Z cfischer $
 #
 # SMB Test with 'smbclient'
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.90011");
-  script_version("$Revision: 11529 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 18:26:30 +0200 (Fri, 21 Sep 2018) $");
+  script_version("$Revision: 13262 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-24 12:03:38 +0100 (Thu, 24 Jan 2019) $");
   script_tag(name:"creation_date", value:"2008-05-15 23:18:24 +0200 (Thu, 15 May 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -36,11 +36,12 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
   script_family("Windows");
-  script_dependencies("smb_authorization.nasl", "cifs445.nasl");
+  script_dependencies("smb_authorization.nasl", "cifs445.nasl", "toolcheck.nasl");
   script_require_ports(139, 445);
-  script_mandatory_keys("SMB/transport");
+  script_mandatory_keys("SMB/transport", "Tools/Present/smbclient");
 
-  script_tag(name:"summary", value:"This script tests the remote host SMB Functions with the 'smbclient' tool.");
+  script_tag(name:"summary", value:"This script reports information about the SMB server of the remote host
+  collected with the 'smbclient' tool.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -54,7 +55,11 @@ port = kb_smb_transport();
 if( ! port ) port = 139;
 if( ! get_port_state( port ) ) exit( 0 );
 
-if( check_smbcl() == 0 ) exit( 0 );
+if( ! get_kb_item( "Tools/Present/smbclient" ) )
+  exit( 0 );
+
+if( ! smbversion() )
+  exit(0);
 
 smbOS = get_kb_item( "SMB/OS" );
 smbDomain = get_kb_item( "SMB/DOMAIN" );

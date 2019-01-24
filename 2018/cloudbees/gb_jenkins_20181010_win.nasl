@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jenkins_20181010_win.nasl 13035 2019-01-11 09:49:59Z asteins $
+# $Id: gb_jenkins_20181010_win.nasl 13256 2019-01-24 08:09:01Z asteins $
 #
 # Jenkins < 2.146 and < 2.138.2 LTS Multiple Vulnerabilities (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108510");
-  script_version("$Revision: 13035 $");
+  script_version("$Revision: 13256 $");
   script_cve_id("CVE-2018-1999043", "CVE-2018-1000406", "CVE-2018-1000407",
-  "CVE-2018-1000408", "CVE-2018-1000409", "CVE-2018-1000410");
+  "CVE-2018-1000408", "CVE-2018-1000409", "CVE-2018-1000410", "CVE-2018-1000997");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-11 10:49:59 +0100 (Fri, 11 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-24 09:09:01 +0100 (Thu, 24 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-12-11 14:42:36 +0100 (Tue, 11 Dec 2018)");
   script_name("Jenkins < 2.146 and < 2.138.2 LTS Multiple Vulnerabilities (Windows)");
   script_category(ACT_GATHER_INFO);
@@ -50,9 +50,9 @@ if(description)
 
   script_tag(name:"insight", value:"Jenkins is prone to the following vulnerabilities:
 
-  - Path traversal vulnerability in Stapler allowed accessing internal data (CVE-2018-1000406).
+  - Path traversal vulnerability in Stapler allowed accessing internal data (CVE-2018-1000997).
 
-  - Arbitrary file write vulnerability using file parameter definitions.
+  - Arbitrary file write vulnerability using file parameter definitions (CVE-2018-1000406).
 
   - Reflected XSS vulnerability (CVE-2018-1000407).
 

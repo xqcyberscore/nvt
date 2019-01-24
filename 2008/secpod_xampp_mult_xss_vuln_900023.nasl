@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_xampp_mult_xss_vuln_900023.nasl 13219 2019-01-22 12:40:21Z cfischer $
+# $Id: secpod_xampp_mult_xss_vuln_900023.nasl 13238 2019-01-23 11:14:26Z cfischer $
 # Description: XAMPP for Linux text Parameter Multiple XSS Vulnerabilities
 #
 # Authors:
@@ -28,8 +28,8 @@ CPE = "cpe:/a:apachefriends:xampp";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900023");
-  script_version("$Revision: 13219 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-22 13:40:21 +0100 (Tue, 22 Jan 2019) $");
+  script_version("$Revision: 13238 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-23 12:14:26 +0100 (Wed, 23 Jan 2019) $");
   script_tag(name:"creation_date", value:"2008-08-07 17:25:49 +0200 (Thu, 07 Aug 2008)");
   script_cve_id("CVE-2008-3569");
   script_bugtraq_id(30535);
@@ -67,6 +67,7 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
+include("version_func.inc");
 
 if(!port = get_app_port(cpe:CPE))
   exit(0);
@@ -83,8 +84,9 @@ if(!rcvRes)
 
 if(rcvRes =~ "^HTTP/1\.[01] 200" && egrep(pattern:"XAMPP for Linux", string:rcvRes)) {
   if(safe_checks()) {
-    if(egrep(pattern:"XAMPP for Linux 1\.([0-5]\..*|6\.[0-7])($|[^.0-9])", string:rcvRes)){
-      security_message(port:port);
+    if(ver = egrep(pattern:"XAMPP for Linux 1\.([0-5]\..*|6\.[0-7])($|[^.0-9])", string:rcvRes)){
+      report = report_fixed_ver(installed_version:ver, fixed_version:"1.7.3");
+      security_message(port:port, data:report);
     }
     exit(0);
   }
@@ -102,4 +104,4 @@ if(rcvRes =~ "^HTTP/1\.[01] 200" && egrep(pattern:"XAMPP for Linux", string:rcvR
   }
 }
 
-exit(0);
+exit(99);

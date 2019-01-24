@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gather-package-list.nasl 13067 2019-01-14 14:59:37Z cfischer $
+# $Id: gather-package-list.nasl 13263 2019-01-24 11:06:39Z cfischer $
 #
 # Determine OS and list of installed packages via SSH login
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.50282");
-  script_version("$Revision: 13067 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-14 15:59:37 +0100 (Mon, 14 Jan 2019) $");
+  script_version("$Revision: 13263 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-24 12:06:39 +0100 (Thu, 24 Jan 2019) $");
   script_tag(name:"creation_date", value:"2008-01-17 22:05:49 +0100 (Thu, 17 Jan 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -223,6 +223,7 @@ OS_CPE = make_array(
 
     # Debian
     "DEB10.0", "cpe:/o:debian:debian_linux:10.0",
+    "DEB9.7", "cpe:/o:debian:debian_linux:9.7",
     "DEB9.6", "cpe:/o:debian:debian_linux:9.6",
     "DEB9.5", "cpe:/o:debian:debian_linux:9.5",
     "DEB9.4", "cpe:/o:debian:debian_linux:9.4",

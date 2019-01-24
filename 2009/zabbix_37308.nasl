@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: zabbix_37308.nasl 7649 2017-11-03 13:09:14Z cfischer $
+# $Id: zabbix_37308.nasl 13238 2019-01-23 11:14:26Z cfischer $
 #
 # ZABBIX 'process_trap()' NULL Pointer Dereference Denial Of Service Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:zabbix:zabbix";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100404");
-  script_version("$Revision: 7649 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-03 14:09:14 +0100 (Fri, 03 Nov 2017) $");
+  script_version("$Revision: 13238 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-23 12:14:26 +0100 (Wed, 23 Jan 2019) $");
   script_tag(name:"creation_date", value:"2009-12-17 19:46:08 +0100 (Thu, 17 Dec 2009)");
   script_cve_id("CVE-2009-4500");
   script_bugtraq_id(37308);
@@ -48,21 +48,16 @@ if(description)
   script_xref(name:"URL", value:"http://secunia.com/advisories/37740/");
   script_xref(name:"URL", value:"https://support.zabbix.com/browse/ZBX-993");
 
-  tag_summary = "ZABBIX is prone to a denial-of-service vulnerability because
-  of a NULL-pointer dereference.";
+  script_tag(name:"summary", value:"ZABBIX is prone to a denial-of-service vulnerability because
+  of a NULL-pointer dereference.");
 
-  tag_impact = "Successful exploits may allow remote attackers to cause denial-of-
+  script_tag(name:"impact", value:"Successful exploits may allow remote attackers to cause denial-of-
   service conditions. Given the nature of this issue, attackers may also
-  be able to run arbitrary code, but this has not been confirmed.";
+  be able to run arbitrary code, but this has not been confirmed.");
 
-  tag_affected = "Versions prior to ZABBIX 1.6.6 are vulnerable.";
+  script_tag(name:"affected", value:"Versions prior to ZABBIX 1.6.6 are vulnerable.");
 
-  tag_solution = "Updates are available. Please see the references for details.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"solution", value:"Updates are available. Please see the references for details.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -80,14 +75,14 @@ if( safe_checks() ) {
 
   if( zabbix_port = get_kb_item( "Services/zabbix" ) ) {
     port = zabbix_port;
-  }  
+  }
 
   if( version_is_less( version:vers, test_version:"1.6.6" ) ) {
     report = report_fixed_ver( installed_version:vers, fixed_version:"1.6.6" );
     security_message( port:port, data:report );
     exit( 0 );
   }
-} else {  
+} else {
 
   port = get_kb_item( "Services/zabbix" );
   if( ! port ) port = 10051;

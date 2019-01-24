@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ssh_login_failed.nasl 11242 2018-09-05 10:33:23Z cfischer $
+# $Id: ssh_login_failed.nasl 13247 2019-01-23 15:12:20Z cfischer $
 #
 # SSH Login Failed For Authenticated Checks
 #
@@ -8,7 +8,7 @@
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
 #
 # Copyright:
-# Copyright (c) 2014 Greenbone Networks GmbH
+# Copyright (C) 2014 Greenbone Networks GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -28,20 +28,22 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105936");
-  script_version("$Revision: 11242 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 12:33:23 +0200 (Wed, 05 Sep 2018) $");
+  script_version("$Revision: 13247 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-23 16:12:20 +0100 (Wed, 23 Jan 2019) $");
   script_tag(name:"creation_date", value:"2014-12-16 10:58:24 +0700 (Tue, 16 Dec 2014)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("SSH Login Failed For Authenticated Checks");
   script_category(ACT_GATHER_INFO);
-  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
+  script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("ssh_authorization.nasl", "gb_ssh_algos.nasl");
   script_mandatory_keys("login/SSH/failed");
 
+  script_xref(name:"URL", value:"https://docs.greenbone.net/GSM-Manual/gos-4/en/vulnerabilitymanagement.html#requirements-on-target-systems-with-linux-unix");
+
   script_tag(name:"summary", value:"It was NOT possible to login using the provided SSH
-  credentials. Hence authenticated checks are not enabled.");
+  credentials. Hence authenticated checks are NOT enabled.");
 
   script_tag(name:"solution", value:"Recheck the SSH credentials for authenticated checks or
   evaluate the script output for the required algorithms on the remote SSH server or the scanner.");
@@ -52,6 +54,7 @@ if(description)
 }
 
 include("misc_func.inc");
+include("ssh_func.inc");
 
 libssh_supported = make_array();
 host_supported   = make_array();
@@ -112,9 +115,7 @@ libssh_supported['compression_algorithms_server_to_client'] = make_list(
 "none"
 );
 
-port = get_preference( "auth_port_ssh" );
-if( ! port )
-  port = get_kb_item( "Services/ssh" );
+port = kb_ssh_transport();
 
 if( get_kb_item( "ssh/" + port + "/algos_available" ) ) {
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_python_elementtree_dos_vuln_win.nasl 12358 2018-11-15 07:57:20Z cfischer $
+# $Id: gb_python_elementtree_dos_vuln_win.nasl 13259 2019-01-24 09:33:14Z ckuersteiner $
 #
 # Python Elementtree Denial of Service Vulnerability (Windows)
 #
@@ -30,13 +30,15 @@ CPE = 'cpe:/a:python:python';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814304");
-  script_version("$Revision: 12358 $");
+  script_version("$Revision: 13259 $");
   script_cve_id("CVE-2018-14647");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-15 08:57:20 +0100 (Thu, 15 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-24 10:33:14 +0100 (Thu, 24 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-10-03 17:02:15 +0530 (Wed, 03 Oct 2018)");
+
   script_name("Python Elementtree Denial of Service Vulnerability (Windows)");
+
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Denial of Service");
@@ -51,22 +53,19 @@ if(description)
   script_tag(name:"summary", value:"This host is running Python and is prone
   to denial of service vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
-  on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists because Python's elementtree
   C accelerator fails to initialise Expat's hash salt during initialization");
 
   script_tag(name:"impact", value:"Successful exploitation allows denial of
   service attacks against Expat by constructing an XML document that would cause
-  pathological hash collisions in Expat's internal data structures, consuming large
-  amounts CPU and RAM.");
+  pathological hash collisions in Expat's internal data structures, consuming large amounts CPU and RAM.");
 
   script_tag(name:"affected", value:"Python versions 3.8, 3.7, 3.6, 3.5, 3.4 and 2.7 on Windows");
 
-  script_tag(name:"solution", value:"No known solution is available as of
-  01st November, 2018. Information regarding this issue will be updated once
-  solution details are available. For updates refer to Reference links.");
+  script_tag(name:"solution", value:"No known solution is available as of 24th January, 2019.
+  Information regarding this issue will be updated once solution details are available.");
 
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"NoneAvailable");
@@ -82,7 +81,7 @@ pyVer = infos['version'];
 pypath = infos['location'];
 
 if(pyVer =~ "^(2.7|3.4|3.5|3.6|3.7|3.8)"){
-  report = report_fixed_ver(installed_version:pyVer, fixed_version:"None available", install_path:pypath);
+  report = report_fixed_ver(installed_version:pyVer, fixed_version:"None", install_path:pypath);
   security_message(data:report);
 }
 

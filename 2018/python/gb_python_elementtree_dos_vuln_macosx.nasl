@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_python_elementtree_dos_vuln_macosx.nasl 12191 2018-11-01 15:41:33Z mmartin $
+# $Id: gb_python_elementtree_dos_vuln_macosx.nasl 13259 2019-01-24 09:33:14Z ckuersteiner $
 #
 # Python Elementtree Denial of Service Vulnerability (Mac OS X)
 #
@@ -30,36 +30,35 @@ CPE = 'cpe:/a:python:python';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814307");
-  script_version("$Revision: 12191 $");
+  script_version("$Revision: 13259 $");
   script_cve_id("CVE-2018-14647");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-01 16:41:33 +0100 (Thu, 01 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-24 10:33:14 +0100 (Thu, 24 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-10-03 17:01:58 +0530 (Wed, 03 Oct 2018)");
+
   script_name("Python Elementtree Denial of Service Vulnerability (Mac OS X)");
 
   script_tag(name:"summary", value:"This host is running Python and is prone
   to denial of service vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
-  on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists because Python's elementtree
   C accelerator fails to initialise Expat's hash salt during initialization");
 
   script_tag(name:"impact", value:"Successful exploitation allows denial of
   service attacks against Expat by constructing an XML document that would cause
-  pathological hash collisions in Expat's internal data structures, consuming large
-  amounts CPU and RAM.");
+  pathological hash collisions in Expat's internal data structures, consuming large amounts CPU and RAM.");
 
   script_tag(name:"affected", value:"Python versions 3.8, 3.7, 3.6, 3.5, 3.4 and 2.7 Mac OS X");
 
-  script_tag(name:"solution", value:"No known solution is available as of
-  01st November, 2018. Information regarding this issue will be updated once
-  solution details are available. For updates refer to Reference links.");
+  script_tag(name:"solution", value:"No known solution is available as of 24th January, 2019.
+  Information regarding this issue will be updated once solution details are available.");
 
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"NoneAvailable");
+
   script_xref(name:"URL", value:"https://bugs.python.org/issue34623");
   script_xref(name:"URL", value:"https://bugzilla.redhat.com/show_bug.cgi?id=CVE-2018-14647");
   script_xref(name:"URL", value:"https://www.python.org");
@@ -81,10 +80,10 @@ infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
 pyVer = infos['version'];
 pypath = infos['location'];
 
-if(pyVer =~ "^(2.7|3.4|3.5|3.6|3.7|3.8)")
-{
-  report = report_fixed_ver(installed_version:pyVer, fixed_version:"None available", install_path: pypath);
+if(pyVer =~ "^(2.7|3.4|3.5|3.6|3.7|3.8)") {
+  report = report_fixed_ver(installed_version:pyVer, fixed_version:"None", install_path: pypath);
   security_message(data:report);
   exit(0);
 }
+
 exit(0);

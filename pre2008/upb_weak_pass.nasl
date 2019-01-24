@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: upb_weak_pass.nasl 6046 2017-04-28 09:02:54Z teissa $
+# $Id: upb_weak_pass.nasl 13238 2019-01-23 11:14:26Z cfischer $
 #
 # Ultimate PHP Board users.dat Information Disclosure
 #
@@ -31,8 +31,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.19497");
-  script_version("$Revision: 6046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
+  script_version("$Revision: 13238 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-23 12:14:26 +0100 (Wed, 23 Jan 2019) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_cve_id("CVE-2005-2005", "CVE-2005-2030");
   script_bugtraq_id(13975);
@@ -50,24 +50,25 @@ if(description)
   script_xref(name:"URL", value:"http://securityfocus.com/archive/1/402506");
   script_xref(name:"URL", value:"http://securityfocus.com/archive/1/402461");
 
-  tag_summary = "The remote host is running Ultimate PHP Board (UPB).
+  script_tag(name:"summary", value:"The remote host is running Ultimate PHP Board (UPB).
 
   The remote version of this software is prone to a weak password encryption
   vulnerability and may store the users.dat file under the web document root
-  with insufficient access control.";
+  with insufficient access control.");
 
-  tag_solution = "Unknown at this time.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("version_func.inc");
 
 port = get_http_port( default:80 );
 if( ! can_host_php( port:port ) ) exit( 0 );
@@ -88,8 +89,9 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
   # See if the version is known to be vulnerable.
   res = http_get_cache( item:dir + "/index.php", port:port );
 
-  if( egrep( pattern:"Powered by UPB Version : 1\.([0-8]|9\.[0-6])", string:res ) ) {
-    security_message( port:port );
+  if( ver = egrep( pattern:"Powered by UPB Version : 1\.([0-8]|9\.[0-6])", string:res ) ) {
+    report = report_fixed_ver( installed_version:ver, fixed_version:"None" );
+    security_message( port:port, data:report );
     exit( 0 );
   }
 }

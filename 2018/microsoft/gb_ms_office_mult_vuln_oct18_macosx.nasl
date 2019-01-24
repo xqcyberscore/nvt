@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_mult_vuln_oct18_macosx.nasl 12687 2018-12-06 13:46:21Z mmartin $
+# $Id: gb_ms_office_mult_vuln_oct18_macosx.nasl 13245 2019-01-23 14:22:53Z santu $
 #
 # Microsoft Office Multiple Vulnerabilities-October18 (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814268");
-  script_version("$Revision: 12687 $");
+  script_version("$Revision: 13245 $");
   script_cve_id("CVE-2018-8427", "CVE-2018-8432");
   script_bugtraq_id(105453, 105458);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-06 14:46:21 +0100 (Thu, 06 Dec 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-23 15:22:53 +0100 (Wed, 23 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-11-02 10:58:11 +0530 (Fri, 02 Nov 2018)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Multiple Vulnerabilities-October18 (Mac OS X)");
@@ -51,10 +51,13 @@ if(description)
   who successfully exploited the vulnerability to execute arbitrary code and obtain
   information that could be useful for further exploitation.");
 
-  script_tag(name:"affected", value:"Microsoft Office 2016 on Mac OS X");
+  script_tag(name:"affected", value:"Microsoft Office 2016 on Mac OS X,
+
+  Microsoft Office 2019 on Mac OS X");
 
   script_tag(name:"solution", value:"Upgrade to Microsoft Office 2016 version
-  16.18.0 (Build 18101400) or later. For updates refer to Reference links.");
+  16.16.3 (Build 18101500) or Microsoft Office 2019 16.18.0 (Build 18101400)
+  or later. For updates refer to Reference links.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://docs.microsoft.com/en-us/officeupdates/release-notes-office-for-mac");
@@ -73,9 +76,19 @@ if(!offVer = get_kb_item("MS/Office/MacOSX/Ver")){
   exit(0);
 }
 
-if(offVer =~ "^((15|16)\.)" && version_is_less(version:offVer, test_version:"16.18.0"))
+if(offVer =~ "^1[5|6]\.)")
 {
-  report = report_fixed_ver(installed_version:offVer, fixed_version:"16.18.0");
+  if(version_is_less(version:offVer, test_version:"16.16.3")){
+    fix = "16.16.3";
+  }
+  else if(offVer =~ "^(16\.1[7|8]\.)" && version_is_less(version:offVer, test_version:"16.18.0")){
+    fix = "16.18.0";
+  }
+}
+
+if(fix)
+{
+  report = report_fixed_ver(installed_version:offVer, fixed_version:fix);
   security_message(data:report);
   exit(0);
 }

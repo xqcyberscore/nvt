@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_49713.nasl 10833 2018-08-08 10:35:26Z cfischer $
+# $Id: gb_wordpress_49713.nasl 13238 2019-01-23 11:14:26Z cfischer $
 #
 # WordPress Adsense Extreme Plugin 'adsensextreme[lang]' Parameter Remote File Include Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103264");
-  script_version("$Revision: 10833 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-08 12:35:26 +0200 (Wed, 08 Aug 2018) $");
+  script_version("$Revision: 13238 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-23 12:14:26 +0100 (Wed, 23 Jan 2019) $");
   script_tag(name:"creation_date", value:"2011-09-22 13:43:24 +0200 (Thu, 22 Sep 2011)");
   script_bugtraq_id(49713);
   script_tag(name:"cvss_base", value:"7.5");
@@ -94,7 +94,7 @@ foreach file (keys(files)) {
   res = http_send_recv(port:port, data:req, bodyonly:FALSE);
   if(egrep(pattern:file, string:res, icase:TRUE)) {
     report = report_vuln_url(port:port, url:filename);
-    security_message(port:port);
+    security_message(port:port, data:report);
     exit(0);
   }
 }

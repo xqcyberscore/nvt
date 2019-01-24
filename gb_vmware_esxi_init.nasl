@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_esxi_init.nasl 11885 2018-10-12 13:47:20Z cfischer $
+# $Id: gb_vmware_esxi_init.nasl 13247 2019-01-23 15:12:20Z cfischer $
 #
 # VMware ESXi scan initialization.
 #
@@ -25,18 +25,16 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
-
-  script_tag(name:"cvss_base", value:"0.0");
   script_oid("1.3.6.1.4.1.25623.1.0.103447");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11885 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 13247 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-23 16:12:20 +0100 (Wed, 23 Jan 2019) $");
   script_tag(name:"creation_date", value:"2012-03-14 14:54:53 +0100 (Wed, 14 Mar 2012)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("VMware ESXi scan initialization");
   script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_banner");
   script_family("VMware Local Security Checks");
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
   script_dependencies("gb_vmware_esx_web_detect.nasl", "gb_esxi_authorization.nasl");
@@ -47,6 +45,9 @@ if (description)
   script_add_preference(name:"ESXi login password:", type:"password", value:"");
 
   script_tag(name:"summary", value:"This NVT initiate an authenticated scan against ESXi and store some results in KB.");
+
+  script_tag(name:"qod_type", value:"remote_banner");
+
   exit(0);
 }
 
@@ -54,7 +55,6 @@ include("vmware_esx.inc");
 include("host_details.inc");
 
 port = get_kb_item("VMware/ESX/port");
-
 if(!port || !get_port_state(port)) {
   exit(0);
 }
@@ -80,43 +80,42 @@ if(!esxi_version) {
 
 if(esxi_version !~ "^4\." && esxi_version !~ "^5\." && esxi_version !~ "^6\.") {
   log_message(data:string("Unsupported ESXi version. Currently ESXi 4.0, 4.1 and 5.0, 5.1, 5.5, 6.0 and 6.5 are supported. We found ESXi version ", esxi_version, "\n"));
-  register_host_detail( name:"Auth-ESXi-Failure", value:"Protocol ESXi, Port " + port + ", User " + user + " : Unsupported ESXi version." );
+  register_host_detail(name:"Auth-ESXi-Failure", value:"Protocol ESXi, Port " + port + ", User " + user + " : Unsupported ESXi version.");
   exit(0);
 }
 
 if(esxi_version =~ "^4\.") {
-
-  if(get_esxi4_x_vibs(port:port,user:user,pass:pass)) {
-
+  if(get_esxi4_x_vibs(port:port, user:user, pass:pass)) {
     set_kb_item(name:"VMware/ESXi/LSC", value:TRUE);
+    set_kb_item(name:"login/ESXi/success", value:TRUE);
+    set_kb_item(name:"login/ESXi/success/port", value:port);
     log_message(data:string("It was possible to login and to get all relevant information. Local Security Checks for ESXi 4.x enabled.\n\nWe found the following bulletins installed on the remote ESXi:\n", installed_bulletins,"\n"), port:port);
-    register_host_detail( name:"Auth-ESXi-Success", value:"Protocol ESXi, Port " + port + ", User " + user );
+    register_host_detail(name:"Auth-ESXi-Success", value:"Protocol ESXi, Port " + port + ", User " + user);
     exit(0);
-
   } else {
+    set_kb_item(name:"login/ESXi/failed", value:TRUE);
+    set_kb_item(name:"login/ESXi/failed/port", value:port);
     log_message(data:string("It was NOT possible to login and to get all relevant information. Local Security Checks for ESXi 4.x disabled.\n\nError: ", esxi_error,"\n"), port:port);
-    register_host_detail( name:"Auth-ESXi-Failure", value:"Protocol ESXi, Port " + port + ", User " + user + " : Login failure" );
+    register_host_detail(name:"Auth-ESXi-Failure", value:"Protocol ESXi, Port " + port + ", User " + user + " : Login failure");
     exit(0);
   }
-
 }
 
 if(esxi_version =~ "^(5|6)\.") {
-
-  if(get_esxi5_0_vibs(port:port,user:user,pass:pass)) {
-
+  if(get_esxi5_0_vibs(port:port, user:user, pass:pass)) {
     set_kb_item(name:"VMware/ESXi/LSC", value:TRUE);
+    set_kb_item(name:"login/ESXi/success", value:TRUE);
+    set_kb_item(name:"login/ESXi/success/port", value:port);
     log_message(data:string("It was possible to login and to get all relevant information. Local Security Checks for ESXi 5.x/6.x enabled.\n\nWe found the following bulletins installed on the remote ESXi:\n", installed_bulletins,"\n"), port:port);
-    register_host_detail( name:"Auth-ESXi-Success", value:"Protocol ESXi, Port " + port + ", User " + user );
+    register_host_detail(name:"Auth-ESXi-Success", value:"Protocol ESXi, Port " + port + ", User " + user);
     exit(0);
-
   } else {
+    set_kb_item(name:"login/ESXi/failed", value:TRUE);
+    set_kb_item(name:"login/ESXi/failed/port", value:port);
     log_message(data:string("It was NOT possible to login and to get all relevant information. Local Security Checks for ESXi 5.x/6.x disabled.\n\nError: ", esxi_error,"\n"), port:port);
-    register_host_detail( name:"Auth-ESXi-Failure", value:"Protocol ESXi, Port " + port + ", User " + user + " : Login failure" );
+    register_host_detail(name:"Auth-ESXi-Failure", value:"Protocol ESXi, Port " + port + ", User " + user + " : Login failure");
     exit(0);
   }
-
 }
 
 exit(0);
-

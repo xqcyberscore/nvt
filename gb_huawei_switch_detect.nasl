@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_huawei_switch_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
+# $Id: gb_huawei_switch_detect.nasl 13258 2019-01-24 08:31:20Z ckuersteiner $
 #
 # Huawei Switch Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106156");
-  script_version("$Revision: 11885 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 13258 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-24 09:31:20 +0100 (Thu, 24 Jan 2019) $");
   script_tag(name:"creation_date", value:"2016-07-29 09:30:37 +0700 (Fri, 29 Jul 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -68,11 +68,24 @@ if ("Huawei Versatile Routing Platform Software" >< sysdesc) {
   if (!isnull(mo[1]))
     model = mo[1];
   else {
-    mo = eregmatch(pattern: "\(([A-Z0-9-]+) ", string: sysdesc);
-    if (!isnull(mo[1]))
-      model = mo[1];
-    else
-      exit(0);
+    # Some switches have the model at the beginning e.g.
+    # S12712
+    # Huawei Versatile Routing Platform Software
+    # VRP (R) Software, Version 5.170 (S12700 V200R010C00SPC600)
+    if (egrep(pattern: "\(S(12700|2700|5700|6720) V", string: sysdesc)) {
+      mo = eregmatch(pattern: '^([^\r\n]+)', string: sysdesc);
+      if (!isnull(mo[1]))
+        model = chomp(mo[1]);
+      else
+        exit(0);
+    }
+    else {
+      mo = eregmatch(pattern: "\(([A-Z0-9-]+) ", string: sysdesc);
+      if (!isnull(mo[1]))
+        model = mo[1];
+      else
+        exit(0);
+    }
   }
 
   version = "unknown";

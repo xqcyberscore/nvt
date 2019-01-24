@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ssh_authorization.nasl 10873 2018-08-10 07:37:56Z cfischer $
+# $Id: ssh_authorization.nasl 13247 2019-01-23 15:12:20Z cfischer $
 #
 # This script allows to set SSH credentials for target hosts.
 #
@@ -31,8 +31,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.90022");
-  script_version("$Revision: 10873 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 09:37:56 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 13247 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-23 16:12:20 +0100 (Wed, 23 Jan 2019) $");
   script_tag(name:"creation_date", value:"2007-11-01 23:55:52 +0100 (Thu, 01 Nov 2007)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -59,15 +59,14 @@ include("host_details.inc");
 if( get_kb_item( "global_settings/authenticated_scans_disabled" ) ) exit( 0 );
 
 # nb: Check if port for us is known
-port = get_preference( "auth_port_ssh" );
-if( ! port )
-  port = get_kb_item( "Services/ssh" );
+port = kb_ssh_transport();
 
 # nb: Check if an account was defined either by the preferences ("old") or by the server ("new").
 if( kb_ssh_login() && ( kb_ssh_password() || kb_ssh_privatekey() ) ) {
 
   if( ! port ) {
-    log_message( data:"No port for an ssh connect was found open. Hence authenticated checks are not enabled." );
+    log_message( data:"No port for an SSH connect was found open. Hence authenticated checks are not enabled." );
+    set_kb_item( name:"login/SSH/failed", value:TRUE );
     register_host_detail( name:"Auth-SSH-Failure", value:"Protocol SSH, User " + kb_ssh_login() + " : No port open" );
     exit( 0 ); # If port is not open
   }
@@ -77,12 +76,14 @@ if( kb_ssh_login() && ( kb_ssh_password() || kb_ssh_privatekey() ) ) {
   if( ! sock ) {
     log_message( port:port, data:"It was not possible to login using the provided SSH credentials. Hence authenticated checks are not enabled." );
     set_kb_item( name:"login/SSH/failed", value:TRUE );
+    set_kb_item( name:"login/SSH/failed/port", value:port );
     register_host_detail( name:"Auth-SSH-Failure", value:"Protocol SSH, Port " + port + ", User " + kb_ssh_login() + " : Login failure" );
     ssh_close_connection();
     exit( 0 );
   }
 
   set_kb_item( name:"login/SSH/success", value:TRUE );
+  set_kb_item( name:"login/SSH/success/port", value:port );
   register_host_detail( name:"Auth-SSH-Success", value:"Protocol SSH, Port " + port + ", User " + kb_ssh_login() );
 
   log_message( port:port, data:"It was possible to login using the provided SSH credentials. Hence authenticated checks are enabled." );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deluxeBB_1_3.nasl 11449 2018-09-18 10:04:42Z mmartin $
+# $Id: deluxeBB_1_3.nasl 13241 2019-01-23 12:12:00Z cfischer $
 #
 # DeluxeBB 'misc.php' SQL Injection Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:deluxebb:deluxebb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100064");
-  script_version("$Revision: 11449 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 12:04:42 +0200 (Tue, 18 Sep 2018) $");
+  script_version("$Revision: 13241 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-23 13:12:00 +0100 (Wed, 23 Jan 2019) $");
   script_tag(name:"creation_date", value:"2009-03-20 11:01:53 +0100 (Fri, 20 Mar 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -86,12 +86,13 @@ if (version_is_less_equal(version: version, test_version: "1.3")) {
   url = dir + "/misc.php?sub=memberlist&order=1&qorder=UNION+ALL+SELECT+1,2,3,4,5,6,7,8,9,10,11,12,13,14,0x53514c2d496e6a656374696f6e2d54657374,16,17,18,19,20,21,22,23,24,25,26,27,28,29%23&sort=ASC&filter=all&searchuser=.&submit=1";
   req = http_get(item:url, port:port);
   buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
-  if( buf == NULL )exit(0);
+  if(!buf) exit(0);
 
   if (egrep(pattern: "SQL-Injection-Test", string: buf)) {
-    security_message(port:port);
+    report = report_vuln_url(port:port, url:url);
+    security_message(port:port, data:report);
     exit(0);
   }
 }
 
-exit(0);
+exit(99);

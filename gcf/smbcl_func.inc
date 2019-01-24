@@ -1,6 +1,6 @@
 ###############################################################################
-# OpenVAS Vulnerability Test
-# $Id: smbcl_func.inc 10986 2018-08-15 13:38:20Z cfischer $
+# OpenVAS Include File
+# $Id: smbcl_func.inc 13262 2019-01-24 11:03:38Z cfischer $
 # Description: functions for smb client tool
 #
 # Authors:
@@ -22,71 +22,42 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 10986 $
+# $Revision: 13262 $
 #
 ###############################################################################
 
 include("misc_func.inc");
 
-function check_smbcl() {
-
-  if( ! get_kb_item( "SMB/smbclient" ) )
-    smbclientavail();
-
-  if( get_kb_item( "SMB/smbclient" ) ) {
-    if( smbversion() == 0 ) {
-      if( error = get_kb_item( "SMB/ERROR" ) ) {
-        log_message( port:0, proto:"SMBClient", data:"Error getting SMB-Data -> " + error );
-      }
-    } else {
-      return( 1 ); # smbclient is found and seems to work
-    }
-  } else {
-    log_message( port:0, proto:"SMBClient", data:'The tool "smbclient" is not available for OpenVAS.\n' +
-                                                 'Therefore none of the tests using smbclient are executed.' );
-  }
-  return( 0 );
-}
-
-function smbclientavail() {
-
-  if( find_in_path( "smbclient" ) ) {
-    replace_kb_item( name:"SMB/smbclient", value:1 );
-    return( 1 );
-  } else {
-    replace_kb_item( name:"SMB/smbclient", value:0 );
-    return( 0 );
-  }
-}
-
 function smbversion() {
 
   local_var r, arg, domain, os, server;
 
-  if( ! get_kb_item( "SMB/smbclient" ) ) {
-    replace_kb_item( name:"SMB/ERROR", value:"smbclient not available for OpenVAS." );
-    return( NULL );
+  if(!get_kb_item("Tools/Present/smbclient")) {
+    log_message(port:0, proto:"SMBClient", data:"Error getting SMB-Data -> smbclient not available for the scanner.");
+    return NULL;
   }
 
-  replace_kb_item(name: string("SMB/ERROR"), value: "" );
   arg[0] = "smbclient";
   arg[1] = "-d0";
   arg[2] = "-N";
   arg[3] = "-cq";
-  arg[4] = "//"+get_host_ip()+"/IPC$";
+  arg[4] = "//" + get_host_ip() + "/IPC$";
   arg[5] = is_domain();
-  r = toupper(pread(cmd:"smbclient", argv:arg ));
-  if( ! ereg(pattern: "NT_STATUS", string: r) ) {
-    domain = ereg_replace(pattern:"(.*DOMAIN=\[)*(\].*)*", string: r, replace:"");
+  r = toupper(pread(cmd:"smbclient", argv:arg));
+  if(!ereg(pattern:"NT_STATUS", string:r)) {
+    domain = ereg_replace(pattern:"(.*DOMAIN=\[)*(\].*)*", string:r, replace:"");
     os = ereg_replace(pattern:"(.*OS=\[)*(\].*)*", string: r, replace:"");
-    server = ereg_replace(pattern:"(.*SERVER=\[)*(\].*)*", string: r, replace:"");
-    replace_kb_item(name: string("SMB/OS"), value: os);
-    replace_kb_item(name: string("SMB/DOMAIN"), value: domain);
-    replace_kb_item(name: string("SMB/SERVER"), value: server);
-    return(1);
+    server = ereg_replace(pattern:"(.*SERVER=\[)*(\].*)*", string:r, replace:"");
+    replace_kb_item(name:string("SMB/OS"), value:os);
+    replace_kb_item(name:string("SMB/DOMAIN"), value:domain);
+    replace_kb_item(name:string("SMB/SERVER"), value:server);
+    return TRUE;
   } else {
-    replace_kb_item(name: string("SMB/ERROR"), value: chomp(r) );
-    return(0);
+    if(r)
+      log_message(port:0, proto:"SMBClient", data:"Error getting SMB-Data -> " + chomp(r));
+    else
+      log_message(port:0, proto:"SMBClient", data:"Error getting SMB-Data -> No data received from smbclient");
+    return FALSE;
   }
 }
 
@@ -100,8 +71,8 @@ function is_domain() {
 
   domain = kb_smb_domain();
 
-  if( domain ) {
-    return( "-W" + domain );
+  if(domain) {
+    return("-W" + domain);
   } else {
     return NULL;
   }
@@ -111,15 +82,13 @@ function smbgetfile( share, filename, tmp_filename ) {
 
   local_var r, arg, username, password;
 
-  if( ! get_kb_item( "SMB/smbclient") ) {
-    replace_kb_item( name:"SMB/ERROR", value:"smbclient not available for OpenVAS." );
-    return( NULL );
+  if(!get_kb_item("Tools/Present/smbclient")) {
+    log_message(port:0, proto:"SMBClient", data:"Error getting SMB-Data -> smbclient not available for the scanner.");
+    return NULL;
   }
 
   username = kb_smb_login();
   password = kb_smb_password();
-
-  replace_kb_item( name:"SMB/ERROR", value:"" );
 
   arg[0] = "smbclient";
   arg[1] = "-d1";
@@ -127,28 +96,27 @@ function smbgetfile( share, filename, tmp_filename ) {
   arg[3] = "//" + get_host_ip() + "/" + share;
   arg[4] = "-cget \" + raw_string(0x22) + filename + "\" + raw_string(0x22) + " " + raw_string(0x22) + tmp_filename + raw_string(0x22);
   arg[5] = is_domain();
-  r = pread( cmd:"smbclient", argv:arg );
-  if( egrep( pattern:"getting file", string:r ) ) {
-    replace_kb_item( name:"SMB/ERROR", value: "");
-    return( 1 );
+  r = pread(cmd:"smbclient", argv:arg);
+  if(egrep(pattern:"getting file", string:r)) {
+    return TRUE;
   } else {
-    replace_kb_item( name:"SMB/ERROR", value:chomp( r ) );
-    return( 0 );
+    if(r)
+      log_message(port:0, proto:"SMBClient", data:"Error getting SMB-Data -> " + chomp(r));
+    else
+      log_message(port:0, proto:"SMBClient", data:"Error getting SMB-Data -> No data received from smbclient");
+    return FALSE;
   }
 }
 
 # Get Direntries from SMB Source. typ 0 = all entries. typ 1 = only file entries. typ 2 = only directory entries.
-
 function smbgetdir( share, dir, typ ) {
 
   local_var r, arg, i, ret, dir_att, username, password;
 
-  if( ! get_kb_item( "SMB/smbclient" ) ) {
-    replace_kb_item( name:"SMB/ERROR", value:"smbclient not available for OpenVAS." );
-    return( NULL );
+  if(!get_kb_item("Tools/Present/smbclient")) {
+    log_message(port:0, proto:"SMBClient", data:"Error getting SMB-Data -> smbclient not available for the scanner.");
+    return NULL;
   }
-
-  replace_kb_item( name:"SMB/ERROR", value:"" );
 
   username = kb_smb_login();
   password = kb_smb_password();
@@ -166,7 +134,6 @@ function smbgetdir( share, dir, typ ) {
   r = pread(cmd:"smbclient", argv:arg );
   if( !egrep(pattern: "NT_STATUS", string: r) ) {
     r = split(r, keep:0);
-    replace_kb_item(name: string("SMB/ERROR"), value: "" );
     for( i=0; i < (max_index(r)-2); i++ ) {
       if( (substr(r[i],0,4) == "  .. ") || (substr(r[i],0,3) == "  . ") || (!ereg(pattern: " [0-9]{4}$", string: r[i])) ) {
         continue;
@@ -186,7 +153,10 @@ function smbgetdir( share, dir, typ ) {
     }
     return(ret);
   } else {
-    replace_kb_item(name: string("SMB/ERROR"), value: chomp(r) );
+    if(r)
+      log_message(port:0, proto:"SMBClient", data:"Error getting SMB-Data -> " + chomp(r));
+    else
+      log_message(port:0, proto:"SMBClient", data:"Error getting SMB-Data -> No data received from smbclient");
     return(ret);
   }
 }
