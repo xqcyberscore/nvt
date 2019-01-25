@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_opensc_detect_win.nasl 11015 2018-08-17 06:31:19Z cfischer $
+# $Id: secpod_opensc_detect_win.nasl 13273 2019-01-24 15:12:48Z asteins $
 #
 # OpenSC Version Detection (Windows)
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901174");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11015 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 13273 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-24 16:12:48 +0100 (Thu, 24 Jan 2019) $");
   script_tag(name:"creation_date", value:"2011-02-01 16:46:08 +0100 (Tue, 01 Feb 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("OpenSC Version Detection (Windows)");
@@ -40,48 +40,41 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
-  script_tag(name:"summary", value:"This script detects the version of OpenSC and sets the
-  result in the KB.");
+  script_tag(name:"summary", value:"Detects the installed version of OpenSC on Windows.");
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-SCRIPT_DESC = "OpenSC Version Detection (Windows)";
-
-if(!get_kb_item("SMB/WindowsVersion")){
+if(!get_kb_item("SMB/WindowsVersion")) {
   exit(0);
 }
 
-if(!registry_key_exists(key:"SOFTWARE\OpenSC Project\OpenSC")){
+if(!registry_key_exists(key:"SOFTWARE\OpenSC Project\OpenSC")) {
   exit(0);
 }
 
 key = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\";
-if(!registry_key_exists(key:key)){
+if(!registry_key_exists(key:key)) {
   exit(0);
 }
 
-foreach item (registry_enum_keys(key:key))
-{
+foreach item (registry_enum_keys(key:key)) {
   name = registry_get_sz(key:key + item, item:"DisplayName");
-  if("OpenSC" >< name)
-  {
-    ver = registry_get_sz(key:key + item, item:"DisplayVersion");
-    if(ver != NULL)
-    {
-      set_kb_item(name:"OpenSC/Win/Ver", value:ver);
-      log_message(data:name + " version " + ver +
-                         " was detected on the host");
+  if("OpenSC" >< name) {
 
-      cpe = build_cpe(value:ver, exp:"^([0-9.]+)", base:"cpe:/a:opensc-project:opensc:");
-      if(!isnull(cpe))
-         register_host_detail(name:"App", value:cpe, desc:SCRIPT_DESC);
+    concluded = name;
+    if(!ver = registry_get_sz(key:key + item, item:"DisplayVersion"))
+        ver = "unknown";
 
-    }
+	  set_kb_item(name:"opensc/win/detected", value:TRUE);
+
+    register_and_report_cpe(app:"OpenSC", ver:ver, concluded:concluded, base:"cpe:/a:opensc-project:opensc:", expr:"^([0-9.]+)", regService:"smb-login", regPort:0);
+    exit(0);
   }
 }
+
+exit(0);

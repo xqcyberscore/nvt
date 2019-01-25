@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_opensc_mult_bof_vuln_win.nasl 12014 2018-10-22 10:01:47Z mmartin $
+# $Id: secpod_opensc_mult_bof_vuln_win.nasl 13273 2019-01-24 15:12:48Z asteins $
 #
-# OpenSC Smart Card Serial Number Multiple Buffer Overflow Vulnerabilities (Windows)
+# OpenSC < 0.12.0 Smart Card Serial Number Multiple Buffer Overflow Vulnerabilities (Windows)
 #
 # Authors:
 # Sooraj KS <kssooraj@secpod.com>
@@ -27,19 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901175");
-  script_version("$Revision: 12014 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 12:01:47 +0200 (Mon, 22 Oct 2018) $");
+  script_version("$Revision: 13273 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-24 16:12:48 +0100 (Thu, 24 Jan 2019) $");
   script_tag(name:"creation_date", value:"2011-02-01 16:46:08 +0100 (Tue, 01 Feb 2011)");
   script_cve_id("CVE-2010-4523");
   script_bugtraq_id(45435);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_name("OpenSC Smart Card Serial Number Multiple Buffer Overflow Vulnerabilities (Windows)");
+  script_name("OpenSC < 0.12.0 Smart Card Serial Number Multiple Buffer Overflow Vulnerabilities (Windows)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Buffer overflow");
   script_dependencies("secpod_opensc_detect_win.nasl");
-  script_mandatory_keys("OpenSC/Win/Ver");
+  script_mandatory_keys("opensc/win/detected");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/42658");
   script_xref(name:"URL", value:"https://www.opensc-project.org/opensc/changeset/4913");
@@ -59,18 +59,20 @@ if(description)
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name:"URL", value:"http://www.opensc-project.org/opensc");
   exit(0);
 }
 
+CPE = "cpe:/a:opensc-project-opensc";
 
 include("version_func.inc");
+include("host_details.inc");
 
-if(!oscVer = get_kb_item("OpenSC/Win/Ver")) exit(0);
+if(!oscVer = get_app_version(cpe:CPE))
+  exit(0);
 
-if(version_is_less_equal(version:oscVer, test_version:"0.11.13")) {
+if(version_is_less(version:oscVer, test_version:"0.12.0")) {
   report = report_fixed_ver(installed_version:oscVer, fixed_version:"0.12.0");
-  security_message(data:report);
+  security_message(data:report, port:0);
   exit(0);
 }
 

@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asterisk_dos_vuln1.nasl 12106 2018-10-26 06:33:36Z cfischer $
+# $Id: gb_asterisk_dos_vuln1.nasl 13267 2019-01-24 12:56:48Z cfischer $
 #
-# Asterisk DoS Vulnerability
+# Asterisk 'CVE-2017-14098' DoS Vulnerability
 #
 # Authors:
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
@@ -27,11 +27,11 @@
 
 CPE = 'cpe:/a:digium:asterisk';
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140344");
-  script_version("$Revision: 12106 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
+  script_version("$Revision: 13267 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-24 13:56:48 +0100 (Thu, 24 Jan 2019) $");
   script_tag(name:"creation_date", value:"2017-09-01 14:12:47 +0700 (Fri, 01 Sep 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -42,11 +42,11 @@ if (description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_name("Asterisk DoS Vulnerability");
+  script_name("Asterisk 'CVE-2017-14098' DoS Vulnerability");
 
   script_category(ACT_GATHER_INFO);
 
-  script_copyright("Asterisk Multiple Vulnerabilities Vulnerability (August 2017)");
+  script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_asterisk_detect.nasl");
   script_mandatory_keys("Asterisk-PBX/Installed");
@@ -56,7 +56,7 @@ if (description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"A carefully crafted URI in a From, To or Contact header could cause
-Asterisk to crash.");
+  Asterisk to crash.");
 
   script_tag(name:"affected", value:"Asterisk Open Source 13.15.0, 14.4.0.");
 

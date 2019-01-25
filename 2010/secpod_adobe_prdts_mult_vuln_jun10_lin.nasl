@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_prdts_mult_vuln_jun10_lin.nasl 12653 2018-12-04 15:31:25Z cfischer $
+# $Id: secpod_adobe_prdts_mult_vuln_jun10_lin.nasl 13267 2019-01-24 12:56:48Z cfischer $
 #
 # Adobe Flash Player/Air Multiple Vulnerabilities - June10 (Linux)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902194");
-  script_version("$Revision: 12653 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-04 16:31:25 +0100 (Tue, 04 Dec 2018) $");
+  script_version("$Revision: 13267 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-24 13:56:48 +0100 (Thu, 24 Jan 2019) $");
   script_tag(name:"creation_date", value:"2010-06-22 13:34:32 +0200 (Tue, 22 Jun 2010)");
   script_cve_id("CVE-2008-4546", "CVE-2009-3793", "CVE-2010-1297", "CVE-2010-2160",
                 "CVE-2010-2161", "CVE-2010-2162", "CVE-2010-2163", "CVE-2010-2164",
@@ -47,7 +47,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.adobe.com/support/security/bulletins/apsb10-14.html");
 
   script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (C) 2010 SecPOd");
+  script_copyright("Copyright (C) 2010 SecPod");
   script_family("General");
   script_dependencies("gb_adobe_flash_player_detect_lin.nasl");
   script_mandatory_keys("Adobe/Air_or_Flash_or_Reader/Linux/Installed");
@@ -62,7 +62,7 @@ if(description)
   array indexing, use-after-free, integer and buffer overflows, and
   invalid pointers when processing malformed Flash content.");
 
-  script_tag(name:"solution", value:"Update to Adobe  Air2.0.2.12610 or Adobe Flash Player 9.0.277.0 or 10.0.45.2.");
+  script_tag(name:"solution", value:"Update to Adobe Air 2.0.2.12610 or Adobe Flash Player 9.0.277.0 or 10.0.45.2.");
 
   script_tag(name:"summary", value:"This host is installed with Adobe Flash Player/Air and is prone to
   multiple vulnerabilities.");
@@ -73,23 +73,29 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
 include("version_func.inc");
 
-playerVer = get_kb_item("AdobeFlashPlayer/Linux/Ver");
-if(playerVer != NULL)
+CPE = "cpe:/a:adobe:flash_player";
+if(playerVer = get_app_version(cpe:CPE, nofork:TRUE))
 {
   if(version_is_less(version:playerVer, test_version:"9.0.277.0") ||
      version_in_range(version:playerVer, test_version:"10.0", test_version2:"10.0.45.1"))
   {
-    security_message( port: 0, data: "The target host was found to be vulnerable" );
+    report = report_fixed_ver(installed_version:playerVer, fixed_version:"9.0.277.0/10.0.45.2");
+    security_message(port:0, data:report);
     exit(0);
   }
 }
 
-airVer = get_kb_item("Adobe/Air/Linux/Ver");
-if(airVer != NULL)
+CPE = "cpe:/a:adobe:adobe_air";
+if(airVer = get_app_version(cpe:CPE))
 {
   if(version_is_less(version:airVer, test_version:"2.0.2.12610")){
-    security_message( port: 0, data: "The target host was found to be vulnerable" );
+    report = report_fixed_ver(installed_version:airVer, fixed_version:"2.0.2.12610");
+    security_message(port:0, data:report);
+    exit(0);
   }
 }
+
+exit(99);

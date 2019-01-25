@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netapp_data_ontap_snmp_detect.nasl 10901 2018-08-10 14:09:57Z cfischer $
+# $Id: gb_netapp_data_ontap_snmp_detect.nasl 13280 2019-01-25 07:45:24Z ckuersteiner $
 #
 # NetApp Data ONTAP Detection (SNMP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140349");
-  script_version("$Revision: 10901 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:09:57 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 13280 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-25 08:45:24 +0100 (Fri, 25 Jan 2019) $");
   script_tag(name:"creation_date", value:"2017-09-05 09:15:15 +0700 (Tue, 05 Sep 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -50,13 +50,9 @@ This script performs SNMP based detection of NetApp Data ONTAP devices.");
   script_require_udp_ports("Services/udp/snmp", 161);
   script_mandatory_keys("SNMP/sysdesc/available");
 
-  script_xref(name:"URL", value:"http://www.netapp.com/us/products/data-management-software/ontap.aspx");
-
   exit(0);
 }
 
-include("cpe.inc");
-include("host_details.inc");
 include("snmp_func.inc");
 
 port    = get_snmp_port(default:161);
@@ -64,25 +60,16 @@ sysdesc = get_snmp_sysdesc(port:port);
 if(!sysdesc) exit(0);
 
 if (sysdesc =~ "^NetApp Release") {
-  version = "unknown";
+  set_kb_item(name: "netapp_data_ontap/detected", value: TRUE);
+  set_kb_item(name: "netapp_data_ontap/snmp/detected", value: TRUE);
+  set_kb_item(name: "netapp_data_ontap/snmp/port", value: port);
 
   vers = eregmatch(pattern: "NetApp Release ([0-9P.]+)", string: sysdesc);
   if (!isnull(vers[1])) {
     version = vers[1];
-    replace_kb_item(name: "netapp_data_ontap/version", value: version);
+    set_kb_item(name: "netapp_data_ontap/snmp/" + port + "/version", value: version);
   }
 
-  set_kb_item(name: "netapp_data_ontap/detected", value: TRUE);
-
-  cpe = build_cpe(value: version, exp: "^([0-9P.]+)", base: "cpe:/o:netapp:data_ontap:");
-  if (!cpe)
-    cpe = 'cpe:/o:netapp:data_ontap';
-
-  register_product(cpe: cpe, port: port, location: port + "/udp", proto: "udp", service: "snmp");
-
-  log_message(data: build_detection_report(app: "NetApp Data ONTAP", version: version, install: port + "/udp",
-                                           cpe: cpe, concluded: sysdesc),
-              port: port, proto: 'udp');
   exit(0);
 }
 

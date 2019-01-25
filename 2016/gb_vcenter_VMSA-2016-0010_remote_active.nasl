@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vcenter_VMSA-2016-0010_remote_active.nasl 11470 2018-09-19 09:45:56Z cfischer $
+# $Id: gb_vcenter_VMSA-2016-0010_remote_active.nasl 13267 2019-01-24 12:56:48Z cfischer $
 #
 # VMSA-2016-0010 (vCenter) VMware product updates address multiple important security issues (remote active check)
 #
@@ -31,7 +31,7 @@ if(description)
   script_cve_id("CVE-2016-5331");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_version("$Revision: 11470 $");
+  script_version("$Revision: 13267 $");
 
   script_name("VMSA-2016-0010 (vCenter) VMware product updates address multiple important security issues (remote active check)");
 
@@ -39,18 +39,18 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Send a special crafted HTTP GET request and check the response.");
 
-  script_tag(name:"solution", value:"Update to 6.0 U2 or newer");
+  script_tag(name:"solution", value:"Update to 6.0 U2 or newer.");
 
   script_tag(name:"summary", value:"vCenter contain an HTTP header injection vulnerability due to lack of input validation. An attacker can exploit
   this issue to set arbitrary HTTP response headers and cookies, which may allow for cross-site scripting and malicious redirect attacks.");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 11:45:56 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-24 13:56:48 +0100 (Thu, 24 Jan 2019) $");
   script_tag(name:"creation_date", value:"2016-08-08 14:06:24 +0200 (Mon, 08 Aug 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
-  script_copyright("This script is Copyright (C) 2016reenbone Networks GmbH");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("gb_vmware_vcenter_detect.nasl");
   script_mandatory_keys("VMware_vCenter/port");
 
@@ -89,4 +89,3 @@ if( buf =~ "HTTP/1\.. 303" )
 }
 
 exit( 0 );
-

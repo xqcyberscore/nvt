@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netapp_data_ontap_ntp_detect.nasl 10901 2018-08-10 14:09:57Z cfischer $
+# $Id: gb_netapp_data_ontap_ntp_detect.nasl 13280 2019-01-25 07:45:24Z ckuersteiner $
 #
 # NetApp Data ONTAP Detection (NTP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140347");
-  script_version("$Revision: 10901 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:09:57 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 13280 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-25 08:45:24 +0100 (Fri, 25 Jan 2019) $");
   script_tag(name:"creation_date", value:"2017-09-04 15:55:36 +0700 (Mon, 04 Sep 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -50,37 +50,26 @@ This script performs NTP based detection of NetApp Data ONTAP devices.");
   script_require_udp_ports("Services/udp/ntp", 123);
   script_mandatory_keys("Host/OS/ntp");
 
-  script_xref(name:"URL", value:"http://www.netapp.com/us/products/data-management-software/ontap.aspx");
-
   exit(0);
 }
 
-include("cpe.inc");
-include("host_details.inc");
+if (!port = get_kb_item("Services/udp/ntp"))
+  exit(0);
 
 if (!os = get_kb_item("Host/OS/ntp"))
   exit(0);
 
 if ("Data ONTAP" >< os) {
-  version = "unknown";
+  set_kb_item(name: "netapp_data_ontap/detected", value: TRUE);
+  set_kb_item(name: "netapp_data_ontap/ntp/detected", value: TRUE);
+  set_kb_item(name: "netapp_data_ontap/ntp/port", value: port);
 
   vers = eregmatch(pattern: "Data ONTAP/([0-9P.]+)", string: os);
   if (!isnull(vers[1])) {
     version = vers[1];
-    replace_kb_item(name: "netapp_data_ontap/version", value: version);
+    set_kb_item(name: "netapp_data_ontap/ntp/" + port + "/version", value: version);
   }
 
-  set_kb_item(name: "netapp_data_ontap/detected", value: TRUE);
-
-  cpe = build_cpe(value: version, exp: "^([0-9P.]+)", base: "cpe:/o:netapp:data_ontap:");
-  if (!cpe)
-    cpe = 'cpe:/o:netapp:data_ontap';
-
-  register_product(cpe: cpe, location: "123/udp", port: 123, service: "ntp", proto: "udp");
-
-  log_message(data: build_detection_report(app: "NetApp Data ONTAP", version: version, install: "123/udp",
-                                           cpe: cpe, concluded: os),
-              port: 123, proto: 'udp');
   exit(0);
 }
 

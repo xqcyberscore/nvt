@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_bdc5bfaedc_cups_fc28.nasl 10692 2018-07-31 13:51:55Z santu $
+# $Id: gb_fedora_2018_bdc5bfaedc_cups_fc28.nasl 13284 2019-01-25 08:13:29Z mmartin $
 #
 # Fedora Update for cups FEDORA-2018-bdc5bfaedc
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874863");
-  script_version("$Revision: 10692 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-31 15:51:55 +0200 (Tue, 31 Jul 2018) $");
+  script_version("$Revision: 13284 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-25 09:13:29 +0100 (Fri, 25 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-07-29 06:09:26 +0200 (Sun, 29 Jul 2018)");
   script_cve_id("CVE-2018-4180", "CVE-2018-4181", "CVE-2018-4182", "CVE-2018-4183");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for cups FEDORA-2018-bdc5bfaedc");
   script_tag(name:"summary", value:"Check the version of cups");

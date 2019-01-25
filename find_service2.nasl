@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service2.nasl 11386 2018-09-14 11:15:22Z cfischer $
+# $Id: find_service2.nasl 13282 2019-01-25 07:55:55Z cfischer $
 #
 # Service Detection with 'HELP' Request
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11153");
-  script_version("$Revision: 11386 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-14 13:15:22 +0200 (Fri, 14 Sep 2018) $");
+  script_version("$Revision: 13282 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-25 08:55:55 +0100 (Fri, 25 Jan 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -1244,12 +1244,13 @@ if( strlen( r ) > 1 && ord( r[0] ) == 0 && ord( r[1] ) >= 90 && ord( r[1] ) <= 9
 
 if( egrep( pattern:"^\+OK.*POP2.*", string:r, icase:TRUE ) ) {
   register_service( port:port, proto:"pop2" );
-  report_and_exit( port:port, data:"A pop2 server seems to be running on this port" );
+  report_and_exit( port:port, data:"A POP2 server seems to be running on this port" );
 } else if( egrep( pattern:"^\+OK.*POP.*", string:r, icase:TRUE ) ||
            egrep( pattern:"^\+OK.*Dovecot.*ready.", string:r, icase:TRUE ) ) {
+  # nb: Don't set the received banner into the KB as we want to do additional POP3
+  # fingerprinting via the CAPA / IMPLEMENTATION banner in get_pop3_banner().
   register_service( port:port, proto:"pop3" );
-  set_kb_item( name:"pop3/banner/" + port, value:r );
-  report_and_exit( port:port, data:"A pop3 server seems to be running on this port" );
+  report_and_exit( port:port, data:"A POP3 server seems to be running on this port" );
 }
 
 # FTP - note that SMTP & SNPP also return 220 & 214 codes

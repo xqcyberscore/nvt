@@ -1,6 +1,6 @@
 ##########################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_read_file.inc 10986 2018-08-15 13:38:20Z cfischer $
+# $Id: GSHB_read_file.inc 13286 2019-01-25 09:05:51Z cfischer $
 #
 # SMB Functions
 #
@@ -24,96 +24,86 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 10986 $
+# $Revision: 13286 $
 #
 ##########################################################################
 
-##########################################################################
-# Function that reads the content of given file
-# Param
-#         share: Windows IPC Share
-#        file: File path to read the content
-#        offset: Position from which to start the file read
-##########################################################################
+# @brief Function that reads the content of given file
+#
+# @param share  Windows IPC Share
+# @param file   File path to read the content
+# @param offset Position from which to start the file read
+#
+# @return The content of the file or FALSE if no connection to the remote
+#         system could be opened or the file isn't readable.
+#
+function GSHB_read_file(share, file, offset) {
 
-# TODO: Remove once openvas-nasl-lint can handle such a missing include
-# from within the same include.
-if(!defined_func("kb_smb_name")) include("smb_nt.inc");
+  local_var share, file, offset;
+  local_var port, soc, name, r, prot, domain, login, pass, uid, tid, fid, size, content;
 
-name = kb_smb_name();
-domain = kb_smb_domain();
-login = kb_smb_login();
-pass = kb_smb_password();
-port = kb_smb_transport();
-soc = open_sock_tcp(port);
+  port = kb_smb_transport();
+  if(!port)
+    port = 445;
 
-function GSHB_read_file(share, file, offset)
-{
-        if(!port){
-                port = 445;
-        }
+  soc = open_sock_tcp(port);
+  if(!soc)
+    return FALSE;
 
-        soc = open_sock_tcp(port);
-        if(!soc){
-                return FALSE;
-        }
+  name = kb_smb_name();
 
-        r = smb_session_request(soc:soc, remote:name);
-        if(!r)
-        {
-                close(soc);
-                return FALSE;
-        }
+  r = smb_session_request(soc:soc, remote:name);
+  if(!r) {
+    close(soc);
+    return FALSE;
+  }
 
-        prot = smb_neg_prot(soc:soc);
-        if(!prot)
-        {
-                close(soc);
-                return FALSE;
-        }
+  prot = smb_neg_prot(soc:soc);
+  if(!prot) {
+    close(soc);
+    return FALSE;
+  }
 
-        r = smb_session_setup(soc:soc, login:login, password:pass,
-                                 domain:domain, prot:prot);
-        if(!r)
-        {
-                close(soc);
-                return FALSE;
-        }
+  domain = kb_smb_domain();
+  login = kb_smb_login();
+  pass = kb_smb_password();
 
-        uid = session_extract_uid(reply:r);
-        if(!uid)
-        {
-                close(soc);
-                return FALSE;
-        }
+  r = smb_session_setup(soc:soc, login:login, password:pass, domain:domain, prot:prot);
+  if(!r) {
+    close(soc);
+    return FALSE;
+  }
 
-        r = smb_tconx(soc:soc, name:name, uid:uid, share:share);
-        if(!r)
-        {
-                close(soc);
-                return FALSE;
-        }
+  uid = session_extract_uid(reply:r);
+  if(!uid) {
+    close(soc);
+    return FALSE;
+  }
 
-        tid = tconx_extract_tid(reply:r);
-        if(!tid)
-        {
-                close(soc);
-                return FALSE;
-        }
+  r = smb_tconx(soc:soc, name:name, uid:uid, share:share);
+  if(!r) {
+    close(soc);
+    return FALSE;
+  }
 
-        fid = OpenAndX(socket:soc, uid:uid, tid:tid, file:file);
-        if(!fid)
-        {
-                close(soc);
-                return FALSE;
-        }
-        size = smb_get_file_size(socket:soc, uid:uid, tid:tid, fid:fid);
-        if(!size)
-        {
-                close(soc);
-                return FALSE;
-        }
-        content = ReadAndX(socket:soc, uid:uid, tid:tid, fid:fid,
-                           count:size, off:offset);
-        return content;
+  tid = tconx_extract_tid(reply:r);
+  if(!tid) {
+    close(soc);
+    return FALSE;
+  }
+
+  fid = OpenAndX(socket:soc, uid:uid, tid:tid, file:file);
+  if(!fid) {
+    close(soc);
+    return FALSE;
+  }
+
+  size = smb_get_file_size(socket:soc, uid:uid, tid:tid, fid:fid);
+  if(!size) {
+    close(soc);
+    return FALSE;
+  }
+
+  content = ReadAndX(socket:soc, uid:uid, tid:tid, fid:fid, count:size, off:offset);
+  return content;
 }

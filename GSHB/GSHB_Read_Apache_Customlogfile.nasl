@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_Read_Apache_Customlogfile.nasl 10987 2018-08-15 13:55:40Z cfischer $
+# $Id: GSHB_Read_Apache_Customlogfile.nasl 13286 2019-01-25 09:05:51Z cfischer $
 #
 # Reading Apache Logiles (win)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96022");
-  script_version("$Revision: 10987 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 15:55:40 +0200 (Wed, 15 Aug 2018) $");
+  script_version("$Revision: 13286 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-25 10:05:51 +0100 (Fri, 25 Jan 2019) $");
   script_tag(name:"creation_date", value:"2010-04-27 10:02:59 +0200 (Tue, 27 Apr 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -46,6 +46,7 @@ if(description)
 }
 
 include("GSHB_read_file.inc");
+include("smb_nt.inc");
 
 #if( !get_kb_item("GSHB/Apache/CustomLog") ) {
 #    security_message(data:"GSHB/Apache/CustomLog: No Entry");#
@@ -66,45 +67,42 @@ customlogfile = get_kb_item("GSHB/Apache/CustomLog");
 customlogfile = ereg_replace(pattern:'/',replace:'\\', string:customlogfile);
 customlogfile = split(customlogfile, sep:"|", keep:0);
 
-for (c=0; c<max_index(customlogfile); c++)
-    {
-    if (customlogfile[c] >!< '')
-        {
+for (c=0; c<max_index(customlogfile); c++) {
 
-        checkpath = eregmatch(pattern:'.*:.*', string:customlogfile[c]);
-        if(isnull(checkpath)){
-        path = split(kbpath, sep:":", keep:0);
-        file = path[1] + customlogfile[c];
-        share = path[0] + "$";
-        }else{
-        path = split(customlogfile[c], sep:":", keep:0);
-        file = path[1];
-        share = path[0] + "$";
-        }
+  if (customlogfile[c] >!< '') {
 
-
-        customlog = GSHB_read_file(share: share, file: file, offset: 0);
-
-        if (!customlog){
-           #AspEnableParentPaths = "error";
-           log_message(port:port, data:"Cannot access/open the Apache CustomLogfile: " + share + file);
-        } else {
-           Error404 = egrep(pattern:'.*GET .* 404 .*', string:customlog);
-           Error403 = egrep(pattern:'.*GET .* 403 .*', string:customlog);
-
-           if(Error404){
-               httpError404 = httpError404 + string(share + file +": has 404 Errors!" ) + '\n';
-           }else{
-               httpError404 = httpError404 + string(share + file +": has no 404 Errors!" ) + '\n';
-           }
-           if(Error403){
-               httpError403 = httpError403 + string(share + file +": has 403 Errors!" ) + '\n';
-           }else{
-               httpError403 = httpError403 + string(share + file +": has no 403 Errors!" ) + '\n';
-           }
-
-        }
+    checkpath = eregmatch(pattern:'.*:.*', string:customlogfile[c]);
+    if(isnull(checkpath)){
+      path = split(kbpath, sep:":", keep:FALSE);
+      file = path[1] + customlogfile[c];
+      share = path[0] + "$";
+    }else{
+      path = split(customlogfile[c], sep:":", keep:FALSE);
+      file = path[1];
+      share = path[0] + "$";
     }
+
+    customlog = GSHB_read_file(share: share, file: file, offset: 0);
+    if (!customlog){
+      #AspEnableParentPaths = "error";
+      log_message(port:port, data:"Cannot access/open the Apache CustomLogfile: " + share + file);
+    } else {
+      Error404 = egrep(pattern:'.*GET .* 404 .*', string:customlog);
+      Error403 = egrep(pattern:'.*GET .* 403 .*', string:customlog);
+
+      if(Error404){
+        httpError404 += string(share + file +": has 404 Errors!" ) + '\n';
+      }else{
+        httpError404 += string(share + file +": has no 404 Errors!" ) + '\n';
+      }
+
+      if(Error403){
+        httpError403 = httpError403 + string(share + file +": has 403 Errors!" ) + '\n';
+      }else{
+        httpError403 = httpError403 + string(share + file +": has no 403 Errors!" ) + '\n';
+      }
+    }
+  }
 }
 
 if(!httpError404) httpError404 = "None";

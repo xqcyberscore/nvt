@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_abb_panel_builder_400_detect_win.nasl 13246 2019-01-23 14:59:51Z mmartin $
+# $Id: gb_abb_panel_builder_400_detect_win.nasl 13264 2019-01-24 11:30:55Z jschulte $
 #
 # ABB Automation Panel Builder 400 Version Detection (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107375");
-  script_version("$Revision: 13246 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-23 15:59:51 +0100 (Wed, 23 Jan 2019) $");
+  script_version("$Revision: 13264 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-24 12:30:55 +0100 (Thu, 24 Jan 2019) $");
   script_tag(name:"creation_date", value:"2019-01-23 15:56:33 +0100 (Wed, 23 Jan 2019)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -73,18 +73,18 @@ foreach key (key_list) {
     appName = registry_get_sz(key:key + item, item:"DisplayName");
     if(!appName || appName !~ "Panel Builder 400") continue;
 
-    version = "unknown";
     concluded = appName;
     location = "unknown";
 
     loc = registry_get_sz(key:key + item, item:"InstallLocation");
     if(loc) location = loc;
 
-    version = registry_get_sz(key:key + item, item:"DisplayVersion");
+    if(!version = registry_get_sz(key:key + item, item:"DisplayVersion"))
+      version = "unknown";
 
     set_kb_item(name:"abb/panel_builder_400/win/detected", value:TRUE);
 
-    register_and_report_cpe(app:"ABB Automation " +appName , ver:version, concluded:concluded,
+    register_and_report_cpe(app:"ABB Automation " + appName , ver:version, concluded:concluded,
                           base:"cpe:/a:abb:panel_builder_400:", expr:"^([0-9.]+)", insloc:location, regService:"smb-login", regPort:0);
     exit(0);
   }

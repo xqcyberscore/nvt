@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wingate_detect.nasl 11279 2018-09-07 09:08:31Z cfischer $
+# $Id: secpod_wingate_detect.nasl 13267 2019-01-24 12:56:48Z cfischer $
 #
 # Qbik WinGate Version Detection
 #
@@ -27,25 +27,26 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900324");
-  script_version("$Revision: 11279 $");
+  script_version("$Revision: 13267 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:08:31 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-24 13:56:48 +0100 (Thu, 24 Jan 2019) $");
   script_tag(name:"creation_date", value:"2009-03-26 11:19:12 +0100 (Thu, 26 Mar 2009)");
-  script_tag(name:"qod_type", value:"registry");
   script_name("Qbik WinGate Version Detection");
-
-  script_tag(name:"summary", value:"Detects the installed version of Qbik WinGate.
-
-The script logs in via smb, searches for Qbik WinGate in the registry and
-gets the version from registry.");
-
   script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (C) 2009 SecPOd");
+  script_copyright("Copyright (C) 2009 SecPod");
   script_family("Product detection");
   script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
+
+  script_tag(name:"summary", value:"Detects the installed version of Qbik WinGate.
+
+  The script logs in via smb, searches for Qbik WinGate in the registry and
+  gets the version from registry.");
+
+  script_tag(name:"qod_type", value:"registry");
+
   exit(0);
 }
 
@@ -60,7 +61,6 @@ if(!osArch){
   exit(0);
 }
 
-## if os is 32 bit iterate over comman path
 if("x86" >< osArch){
   key_list = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\";
 }

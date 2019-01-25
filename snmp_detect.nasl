@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: snmp_detect.nasl 13257 2019-01-24 08:14:40Z cfischer $
+# $Id: snmp_detect.nasl 13285 2019-01-25 08:53:30Z emoss $
 #
 # A SNMP Agent is running
 #
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10265");
-  script_version("$Revision: 13257 $");
+  script_version("$Revision: 13285 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-24 09:14:40 +0100 (Thu, 24 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-25 09:53:30 +0100 (Fri, 25 Jan 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_name("A SNMP Agent is running");
   script_category(ACT_SETTINGS);
@@ -59,6 +59,7 @@ if(description)
 
 include("misc_func.inc");
 include("snmp_func.inc");
+include("host_details.inc");
 
 # nb: This is used later to report to the user if the login with the provided community failed
 global_var provided_community;

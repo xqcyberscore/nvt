@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_6ffb18592f_mod_http2_fc28.nasl 11927 2018-10-16 12:17:30Z santu $
+# $Id: gb_fedora_2018_6ffb18592f_mod_http2_fc28.nasl 13284 2019-01-25 08:13:29Z mmartin $
 #
 # Fedora Update for mod_http2 FEDORA-2018-6ffb18592f
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875197");
-  script_version("$Revision: 11927 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-16 14:17:30 +0200 (Tue, 16 Oct 2018) $");
+  script_version("$Revision: 13284 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-25 09:13:29 +0100 (Fri, 25 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-10-16 06:36:26 +0200 (Tue, 16 Oct 2018)");
   script_cve_id("CVE-2018-11763");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for mod_http2 FEDORA-2018-6ffb18592f");
   script_tag(name:"summary", value:"Check the version of mod_http2");

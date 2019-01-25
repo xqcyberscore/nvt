@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_mult_vuln_jan19_win.nasl 12942 2019-01-04 13:53:49Z santu $
+# $Id: gb_foxit_reader_mult_vuln_jan19_win.nasl 13269 2019-01-24 14:09:58Z jschulte $
 #
 # Foxit Reader Multiple Vulnerabilities-Jan 2019 (Windows)
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:foxitsoftware:reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814581");
-  script_version("$Revision: 12942 $");
-  script_cve_id("CVE-2018-18688", "CVE-2018-18689", "CVE-2019-5005", "CVE-2019-5006",
-                "CVE-2019-5007");
+  script_version("$Revision: 13269 $");
+  script_cve_id("CVE-2018-18688", "CVE-2018-18689", "CVE-2018-3956",
+  "CVE-2019-5005", "CVE-2019-5006", "CVE-2019-5007");
   script_tag(name:"cvss_base", value:"6.2");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:M/C:C/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-04 14:53:49 +0100 (Fri, 04 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-24 15:09:58 +0100 (Thu, 24 Jan 2019) $");
   script_tag(name:"creation_date", value:"2019-01-04 13:50:04 +0530 (Fri, 04 Jan 2019)");
   script_name("Foxit Reader Multiple Vulnerabilities-Jan 2019 (Windows)");
 
@@ -45,16 +45,19 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on
   the target host.");
 
-  script_tag(name:"insight", value:"Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exists due to:
 
   - Error in handing image data, because two bytes are written to the end
     of the allocated memory without judging whether this will cause
-    corruption.
+    corruption
 
-  - A NULL pointer dereference during PDF parsing and
+  - A NULL pointer dereference during PDF parsing
 
   - An Out-of-Bounds Read Information Disclosure and crash due to a
-    NULL pointer dereference when reading TIFF data during TIFF parsing.");
+    NULL pointer dereference when reading TIFF data during TIFF parsing
+
+  - An out-of-bounds read/write vulnerability and crash
+    when handling XFA element attributes");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to cause a denial of service.");
@@ -84,7 +87,7 @@ infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE);
 pdfVer = infos['version'];
 pdfPath = infos['location'];
 
-if(version_is_less_equal(version:pdfVer, test_version:"9.3.0.10826"))
+if(version_is_less(version:pdfVer, test_version:"9.4"))
 {
   report = report_fixed_ver(installed_version:pdfVer, fixed_version:"9.4", install_path:pdfPath);
   security_message(data:report);

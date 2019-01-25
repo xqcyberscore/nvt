@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_http2_settings_data_proc_dos_vuln_lin.nasl 11698 2018-09-29 03:57:28Z santu $
+# $Id: gb_apache_http2_settings_data_proc_dos_vuln_lin.nasl 13284 2019-01-25 08:13:29Z mmartin $
 #
 # Apache HTTPD HTTP/2 'SETTINGS' Data Processing DoS Vulnerability (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814056");
-  script_version("$Revision: 11698 $");
+  script_version("$Revision: 13284 $");
   script_cve_id("CVE-2018-11763");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-29 05:57:28 +0200 (Sat, 29 Sep 2018) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-25 09:13:29 +0100 (Fri, 25 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-09-28 11:02:47 +0530 (Fri, 28 Sep 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache HTTPD HTTP/2 'SETTINGS' Data Processing DoS Vulnerability (Linux)");

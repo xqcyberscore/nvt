@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lotus_domino_detect.nasl 13138 2019-01-18 07:48:30Z cfischer $
+# $Id: gb_lotus_domino_detect.nasl 13271 2019-01-24 14:41:24Z cfischer $
 #
 # Lotus/IBM Domino Detection
 #
@@ -27,17 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100597");
-  script_version("$Revision: 13138 $");
+  script_version("$Revision: 13271 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-18 08:48:30 +0100 (Fri, 18 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-24 15:41:24 +0100 (Thu, 24 Jan 2019) $");
   script_tag(name:"creation_date", value:"2010-04-22 20:18:17 +0200 (Thu, 22 Apr 2010)");
   script_name("Lotus/IBM Domino Detection");
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
   script_dependencies("find_service.nasl", "smtpserver_detect.nasl", "webmirror.nasl");
-  script_require_ports("Services/smtp", 25, 465, 587, "Services/pop3", 110,
+  script_require_ports("Services/smtp", 25, 465, 587, "Services/pop3", 110, 995,
                        "Services/imap", 143, "Services/www", 80);
 
   script_tag(name:"summary", value:"Detects the installed version of
@@ -140,9 +140,7 @@ foreach port( ports ) {
   }
 }
 
-ports = get_kb_list( "Services/pop3" );
-if( ! ports ) ports = make_list( 110 );
-
+ports = pop3_get_ports();
 foreach port( ports ) {
 
   if( get_port_state( port ) ) {

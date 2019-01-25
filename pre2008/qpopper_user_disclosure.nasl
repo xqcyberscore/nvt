@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: qpopper_user_disclosure.nasl 9348 2018-04-06 07:01:19Z cfischer $
+# $Id: qpopper_user_disclosure.nasl 13272 2019-01-24 15:06:29Z cfischer $
 # Description: QPopper Username Information Disclosure
 #
 # Authors:
@@ -23,63 +23,48 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_solution = "None at this time";
-
-tag_summary = "The remote server appears to be running a version of QPopper 
-that is older than 4.0.6.
-
-Versions older than 4.0.6 are vulnerable to a bug where remote 
-attackers can enumerate valid usernames based on server 
-responses during the authentication process.";
-
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.12279");
- script_version("$Revision: 9348 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_bugtraq_id(7110);
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_oid("1.3.6.1.4.1.25623.1.0.12279");
+  script_version("$Revision: 13272 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-24 16:06:29 +0100 (Thu, 24 Jan 2019) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_bugtraq_id(7110);
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_name("QPopper Username Information Disclosure");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 2004 Scott Shebby");
+  script_family("General");
+  script_dependencies("find_service2.nasl");
+  script_require_ports("Services/pop3", 110);
 
- name = "QPopper Username Information Disclosure";
- script_name(name);
+  script_tag(name:"summary", value:"The remote server appears to be running a version of QPopper
+  that is older than 4.0.6.");
 
+  script_tag(name:"impact", value:"Versions older than 4.0.6 are vulnerable to a bug where remote
+  attackers can enumerate valid usernames based on server responses during the authentication process.");
 
- script_category(ACT_GATHER_INFO);
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+
+  script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_banner");
 
-
- script_copyright("This script is Copyright (C) 2004 Scott Shebby");
-
- family = "General";
-
- script_family(family);
- script_dependencies("find_service.nasl");
- script_require_ports("Services/pop3", 110);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name : "solution" , value : tag_solution);
- exit(0);
+  exit(0);
 }
 
-#
-# The script code starts here
-#
+include("pop3_func.inc");
 
-port = get_kb_item("Services/pop3");
-if(!port)port = 110;
+port = get_pop3_port(default:110);
+banner = get_pop3_banner(port:port);
+if(!banner || "Qpopper" >!< banner)
+  exit(0);
 
-banner = get_kb_item(string("pop3/banner/", port));
-if(!banner){
-    if(get_port_state(port)){
-        soc = open_sock_tcp(port);
-        if(!soc)exit(0);
-        banner = recv_line(socket:soc, length:4096);
-    }
+if(ereg(pattern:".*Qpopper.*version ([0-3]\.*|4\.0\.[0-5][^0-9]).*", string:banner, icase:TRUE)){
+  security_message(port:port);
+  exit(0);
 }
 
-if(banner){
-    if(ereg(pattern:".*Qpopper.*version ([0-3]\.*|4\.0\.[0-5][^0-9]).*", string:banner, icase:TRUE)){
-        security_message(port);
-    }
-}
+exit(99);

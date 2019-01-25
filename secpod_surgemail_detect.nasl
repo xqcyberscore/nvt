@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_surgemail_detect.nasl 13138 2019-01-18 07:48:30Z cfischer $
+# $Id: secpod_surgemail_detect.nasl 13271 2019-01-24 14:41:24Z cfischer $
 #
 # SurgeMail Version Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900839");
-  script_version("$Revision: 13138 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-18 08:48:30 +0100 (Fri, 18 Jan 2019) $");
+  script_version("$Revision: 13271 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-24 15:41:24 +0100 (Thu, 24 Jan 2019) $");
   script_tag(name:"creation_date", value:"2009-09-15 09:32:43 +0200 (Tue, 15 Sep 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -38,7 +38,7 @@ if(description)
   script_family("Product detection");
   script_dependencies("gb_get_http_banner.nasl", "find_service2.nasl", "smtpserver_detect.nasl");
   script_mandatory_keys("surgemail/banner");
-  script_require_ports("Services/www", 7110, 7026, "Services/smtp", 25, 465, 587, "Services/imap", 143, "Services/pop3", 110);
+  script_require_ports("Services/www", 7110, 7026, "Services/smtp", 25, 465, 587, "Services/imap", 143, "Services/pop3", 110, 995);
 
   script_tag(name:"summary", value:"This script detects the installed version of SurgeMail
   and sets the result into the knowledgebase.");
@@ -181,9 +181,7 @@ if(egrep(pattern:"SurgeMail", string:rcvRes, icase:1)){
     }
   }
 
-  popPorts = get_kb_list("Services/pop3");
-  if(!popPorts) popPorts = make_list(110);
-
+  popPorts = pop3_get_ports();
   foreach port(popPorts){
     if(get_port_state(port)){
       banner = get_pop3_banner(port:port);

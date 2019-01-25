@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netapp_data_ontap_http_detect.nasl 10913 2018-08-10 15:35:20Z cfischer $
+# $Id: gb_netapp_data_ontap_http_detect.nasl 13280 2019-01-25 07:45:24Z ckuersteiner $
 #
 # NetApp Data ONTAP Detection (HTTP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140348");
-  script_version("$Revision: 10913 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:35:20 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 13280 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-25 08:45:24 +0100 (Fri, 25 Jan 2019) $");
   script_tag(name:"creation_date", value:"2017-09-05 08:44:27 +0700 (Tue, 05 Sep 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -55,35 +55,23 @@ This script performs HTTP based detection of NetApp Data ONTAP devices.");
   exit(0);
 }
 
-include("cpe.inc");
-include("host_details.inc");
 include("http_func.inc");
-
 
 port = get_http_port(default: 80);
 
 banner = get_http_banner(port: port);
 
 if (egrep(pattern: "NetApp/", string: banner)) {
-  version = "unknown";
+  set_kb_item(name: "netapp_data_ontap/detected", value: TRUE);
+  set_kb_item(name: "netapp_data_ontap/http/detected", value: TRUE);
+  set_kb_item(name: "netapp_data_ontap/http/port", value: port);
 
   vers = eregmatch(pattern: "Server: NetApp/(/)?([0-9P.]+)", string: banner);
   if (!isnull(vers[2])) {
     version = vers[2];
-    replace_kb_item(name: "netapp_data_ontap/version", value: version);
+    set_kb_item(name: "netapp_data_ontap/http/" + port + "/version", value: version);
   }
 
-  set_kb_item(name: "netapp_data_ontap/detected", value: TRUE);
-
-  cpe = build_cpe(value: version, exp: "^([0-9P.]+)", base: "cpe:/o:netapp:data_ontap:");
-  if (!cpe)
-    cpe = 'cpe:/o:netapp:data_ontap';
-
-  register_product(cpe: cpe, location: "/", port: port, service: "www");
-
-  log_message(data: build_detection_report(app: "NetApp Data ONTAP", version: version, install: "/", cpe: cpe,
-                                           concluded: vers[0]),
-              port: port);
   exit(0);
 }
 
