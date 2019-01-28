@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_d4349a7ba3_icecast_fc28.nasl 12329 2018-11-13 08:26:34Z santu $
+# $Id: gb_fedora_2018_d4349a7ba3_icecast_fc28.nasl 13316 2019-01-28 07:41:51Z asteins $
 #
 # Fedora Update for icecast FEDORA-2018-d4349a7ba3
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875266");
-  script_version("$Revision: 12329 $");
+  script_version("$Revision: 13316 $");
   script_cve_id("CVE-2018-18820");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-13 09:26:34 +0100 (Tue, 13 Nov 2018) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-28 08:41:51 +0100 (Mon, 28 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-11-13 06:19:55 +0100 (Tue, 13 Nov 2018)");
   script_name("Fedora Update for icecast FEDORA-2018-d4349a7ba3");
   script_category(ACT_GATHER_INFO);

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_linksys_eseries_cmd_exec_vuln.nasl 12231 2018-11-06 14:39:09Z cfischer $
+# $Id: gb_linksys_eseries_cmd_exec_vuln.nasl 13316 2019-01-28 07:41:51Z asteins $
 #
 # Linksys ESeries Multiple OS Command Injection Vulnerabilities
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:linksys:devices";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141621");
-  script_version("$Revision: 12231 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-06 15:39:09 +0100 (Tue, 06 Nov 2018) $");
+  script_version("$Revision: 13316 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-28 08:41:51 +0100 (Mon, 28 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-10-30 14:57:10 +0700 (Tue, 30 Oct 2018)");
-  script_tag(name:"cvss_base", value:"8.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:M/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"9.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
 
   script_cve_id("CVE-2018-3953", "CVE-2018-3954", "CVE-2018-3955");
 

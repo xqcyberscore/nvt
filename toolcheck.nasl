@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: toolcheck.nasl 13186 2019-01-21 11:02:07Z cfischer $
+# $Id: toolcheck.nasl 13309 2019-01-26 16:09:19Z cfischer $
 # Description: Initializing routine for checking presence of helper tools
 #
 # Authors:
@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810000");
-  script_version("$Revision: 13186 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-21 12:02:07 +0100 (Mon, 21 Jan 2019) $");
+  script_version("$Revision: 13309 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-26 17:09:19 +0100 (Sat, 26 Jan 2019) $");
   script_tag(name:"creation_date", value:"2009-08-17 09:05:44 +0200 (Mon, 17 Aug 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -152,7 +152,7 @@ if(find_in_path("nmap")) {
       nmap_check_nse_support = pread(cmd:"nmap", argv:make_list("nmap", "--help"));
       if(nmap_check_nse_support != 0) {
         if("script-updatedb" >!< nmap_check_nse_support) {
-	  tools_summary += '\n\nTool:   Nmap 5.21\n';
+          tools_summary += '\n\nTool:   Nmap 5.21\n';
           tools_summary += 'Effect: Nmap was build without support for NSE scripts. NVTs of the \'Nmap NSE\' and \'Nmap NSE net\' families will not work.';
         } else {
           set_kb_item(name:"Tools/Present/nmap5.21", value:TRUE);
@@ -190,7 +190,7 @@ if(sufficient_nmap_found == TRUE) {
   set_kb_item(name:"Tools/Present/nmap", value:TRUE);
 } else {
   tools_summary += '\n\nTool:   nmap 4.0 or newer\n';
-  tools_summary += 'Effect: Port scanning and service detection based on nmap is not available.\n';
+  tools_summary += 'Effect: Port scanning and service detection based on nmap is not available.';
   set_kb_item(name:"Tools/Missing/nmap", value:TRUE);
   all_tools_available = FALSE;
 }
@@ -341,7 +341,7 @@ if(find_in_path("w3af_console")) {
 } else {
   set_kb_item(name:"Tools/Missing/w3af", value:TRUE);
   tools_summary += '\n\nTool:   w3af (binary: w3af_console)\n';
-  tools_summary += 'Effect: It is not possible to run the NVT \'w3af (NASL wrapper)\' (OID: 1.3.6.1.4.1.25623.1.0.80109)';
+  tools_summary += 'Effect: It is not possible to run the NVT \'w3af (NASL wrapper)\' (OID: 1.3.6.1.4.1.25623.1.0.80109).';
   all_tools_available = FALSE;
 }
 
@@ -394,7 +394,7 @@ if(find_in_path("ping") || find_in_path("ping6")) {
 } else {
   set_kb_item(name:"Tools/Missing/ping", value:TRUE);
   tools_summary += '\n\nTool:   ping/ping6\n';
-  tools_summary += 'Effect: Various NVTs are currently relying on the availability of the \'ping\' command.\n';
+  tools_summary += 'Effect: Various NVTs are currently relying on the availability of the \'ping\' command.';
   all_tools_available = FALSE;
 }
 
@@ -415,7 +415,7 @@ if(find_in_path("openssl")) {
 } else {
   set_kb_item(name:"Tools/Missing/openssl", value:TRUE);
   tools_summary += '\n\nTool:   openssl\n';
-  tools_summary += 'Effect: Various NVTs of the \'IT-Grundschutz\' family currently rely on the availability of the \'openssl\' command.\n';
+  tools_summary += 'Effect: Various NVTs of the \'IT-Grundschutz\' family currently rely on the availability of the \'openssl\' command.';
   all_tools_available = FALSE;
 }
 
@@ -425,7 +425,7 @@ if(find_in_path("sed")) {
 } else {
   set_kb_item(name:"Tools/Missing/sed", value:TRUE);
   tools_summary += '\n\nTool:   sed\n';
-  tools_summary += 'Effect: The NVT \'Printer Test SSL/TLS\' (OID: 1.3.6.1.4.1.25623.1.0.96056) is currently relying on the availability of the \'sed\' command.\n';
+  tools_summary += 'Effect: The NVT \'Printer Test SSL/TLS\' (OID: 1.3.6.1.4.1.25623.1.0.96056) is currently relying on the availability of the \'sed\' command.';
   all_tools_available = FALSE;
 }
 

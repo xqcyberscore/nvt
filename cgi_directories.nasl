@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cgi_directories.nasl 12875 2018-12-21 15:01:59Z cfischer $
+# $Id: cgi_directories.nasl 13315 2019-01-28 07:19:45Z cfischer $
 #
 # CGI Scanning Consolidation
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111038");
-  script_version("$Revision: 12875 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-21 16:01:59 +0100 (Fri, 21 Dec 2018) $");
+  script_version("$Revision: 13315 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-28 08:19:45 +0100 (Mon, 28 Jan 2019) $");
   script_tag(name:"creation_date", value:"2015-09-14 07:00:00 +0200 (Mon, 14 Sep 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -115,6 +115,10 @@ excludedDirList  = get_kb_list( "www/" + host + "/" + port + "/content/excluded_
 srvmanualDirList = get_kb_list( "www/" + host + "/" + port + "/content/servermanual_directories" );
 recursionUrlList = get_kb_list( "www/" + host + "/" + port + "/content/recursion_urls" );
 maxPagesReached  = get_kb_item( "www/" + host + "/" + port + "/content/max_pages_reached" );
+cgiDirExcPattern = get_kb_item( "global_settings/cgi_dirs_exclude_pattern" );
+maxPagesToMirror = get_kb_item( "webmirror/max_pages_to_mirror" );
+maxDirsInKb      = get_kb_item( "webmirror/max_dirs_in_kb" );
+cgisExcPattern   = get_kb_item( "webmirror/cgi_scripts_exclude_pattern" );
 
 report = 'The Hostname/IP "' + host + '" was used to access the remote host.\n\n';
 
@@ -233,9 +237,9 @@ if( ! isnull( skippedDirList ) ) {
 
   currentItems = 0;
 
-  tmpreport  = "The following directories were skipped for CGI scanning because";
-  tmpreport += " the 'Number of cgi directories to save into KB' setting of the NVT";
-  tmpreport += ' Web mirroring (OID: 1.3.6.1.4.1.25623.1.0.10662) was reached:\n\n';
+  tmpreport  = "The following directories were skipped for CGI scanning because the ";
+  tmpreport += "'Number of cgi directories to save into KB' setting (Current: " + maxDirsInKb;
+  tmpreport += ') of the NVT Web mirroring (OID: 1.3.6.1.4.1.25623.1.0.10662) was reached:\n\n';
 
   # Sort to not report changes on delta reports if just the order is different
   skippedDirList = sort( skippedDirList );
@@ -255,8 +259,9 @@ if( ! isnull( excludedDirList ) ) {
   currentItems = 0;
 
   tmpreport  = "The following directories were excluded from CGI scanning because";
-  tmpreport += ' of the "Regex pattern to exclude directories from CGI scanning" setting of the NVT';
-  tmpreport += ' "Global variable settings" (OID: 1.3.6.1.4.1.25623.1.0.12288):\n\n';
+  tmpreport += ' the "Regex pattern to exclude directories from CGI scanning" setting of the NVT';
+  tmpreport += ' "Global variable settings" (OID: 1.3.6.1.4.1.25623.1.0.12288) for this scan was: ';
+  tmpreport += '"' + cgiDirExcPattern + '"\n\n';
 
   # Sort to not report changes on delta reports if just the order is different
   excludedDirList = sort( excludedDirList );
@@ -461,8 +466,8 @@ if( ! isnull( chOptOutList ) || ! isnull( chOptInList ) ||
 }
 
 if( maxPagesReached ) {
-  report += 'The "Number of pages to mirror" setting of the NVT';
-  report += ' "Web mirroring" (OID: 1.3.6.1.4.1.25623.1.0.10662) was reached.';
+  report += 'The "Number of pages to mirror" setting (Current: ' + maxPagesToMirror;
+  report += ') of the NVT "Web mirroring" (OID: 1.3.6.1.4.1.25623.1.0.10662) was reached.';
   report += ' Raising this limit allows to mirror this host more thoroughly';
   report += ' but might increase the scanning time.\n\n';
 }
@@ -492,7 +497,8 @@ if( ! isnull( excludedCgiList ) ) {
 
   tmpreport  = "The following cgi scripts were excluded from CGI scanning because";
   tmpreport += ' of the "Regex pattern to exclude cgi scripts" setting of the NVT';
-  tmpreport += ' "Web mirroring" (OID: 1.3.6.1.4.1.25623.1.0.10662):\n\n';
+  tmpreport += ' "Web mirroring" (OID: 1.3.6.1.4.1.25623.1.0.10662) for this scan was: ';
+  tmpreport += '"' + cgisExcPattern + '"\n\n';
   tmpreport += 'Syntax : cginame (arguments [default value])\n\n';
 
   # Sort to not report changes on delta reports if just the order is different

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4333.nasl 12222 2018-11-06 07:21:42Z cfischer $
+# $Id: deb_4333.nasl 13316 2019-01-28 07:41:51Z asteins $
 #
 # Auto-generated from advisory DSA 4333-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704333");
-  script_version("$Revision: 12222 $");
+  script_version("$Revision: 13316 $");
   script_cve_id("CVE-2018-18820");
   script_name("Debian Security Advisory DSA 4333-1 (icecast2 - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-06 08:21:42 +0100 (Tue, 06 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-28 08:41:51 +0100 (Mon, 28 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-11-04 00:00:00 +0100 (Sun, 04 Nov 2018)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

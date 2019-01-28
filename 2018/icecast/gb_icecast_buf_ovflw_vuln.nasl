@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_icecast_buf_ovflw_vuln.nasl 12219 2018-11-06 02:43:55Z ckuersteiner $
+# $Id: gb_icecast_buf_ovflw_vuln.nasl 13316 2019-01-28 07:41:51Z asteins $
 #
 # Icecast < 2.4.4 Buffer Overflow Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = 'cpe:/a:icecast:icecast';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141647");
-  script_version("$Revision: 12219 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-06 03:43:55 +0100 (Tue, 06 Nov 2018) $");
+  script_version("$Revision: 13316 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-28 08:41:51 +0100 (Mon, 28 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-11-06 08:48:35 +0700 (Tue, 06 Nov 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2018-18820");
 

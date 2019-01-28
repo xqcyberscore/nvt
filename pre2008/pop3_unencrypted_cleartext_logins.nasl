@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: pop3_unencrypted_cleartext_logins.nasl 13290 2019-01-25 10:58:55Z cfischer $
+# $Id: pop3_unencrypted_cleartext_logins.nasl 13291 2019-01-25 11:07:33Z cfischer $
 #
 # POP3 Unencrypted Cleartext Login
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.15855");
-  script_version("$Revision: 13290 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-25 11:58:55 +0100 (Fri, 25 Jan 2019) $");
+  script_version("$Revision: 13291 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-25 12:07:33 +0100 (Fri, 25 Jan 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"4.8");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:P/A:N");
@@ -53,7 +53,7 @@ if(description)
   script_tag(name:"summary", value:"The remote host is running a POP3 daemon that allows cleartext logins over
   unencrypted connections.
 
-  NOTE: Depending on the POP3 server configuration valid credentials needs to given to the settings of
+  NOTE: Depending on the POP3 server configuration valid credentials needs to be given to the settings of
   'Login configurations' OID: 1.3.6.1.4.1.25623.1.0.10870.");
 
   script_tag(name:"solution_type", value:"Mitigation");

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: qpopper2.nasl 13272 2019-01-24 15:06:29Z cfischer $
+# $Id: qpopper2.nasl 13293 2019-01-25 12:15:55Z cfischer $
 # Description: qpopper options buffer overflow
 #
 # Authors:
@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10948");
-  script_version("$Revision: 13272 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-24 16:06:29 +0100 (Thu, 24 Jan 2019) $");
+  script_version("$Revision: 13293 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-25 13:15:55 +0100 (Fri, 25 Jan 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(2811);
   script_tag(name:"cvss_base", value:"10.0");
@@ -37,8 +37,9 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2002 Thomas Reinke");
   script_family("Buffer overflow");
-  script_dependencies("find_service2.nasl");
-  script_require_ports("Services/pop3", 110);
+  script_dependencies("popserver_detect.nasl");
+  script_require_ports("Services/pop3", 110, 995);
+  script_mandatory_keys("pop3/qpopper/detected");
 
   script_tag(name:"solution", value:"Upgrade to the latest version, or disable
   processing of user option files.");

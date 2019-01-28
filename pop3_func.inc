@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: pop3_func.inc 13289 2019-01-25 10:12:57Z cfischer $
+# $Id: pop3_func.inc 13319 2019-01-28 08:25:51Z cfischer $
 #
 # Methods for handling POP3
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 13289 $
+# $Revision: 13319 $
 #
 ###############################################################################
 
@@ -47,7 +47,7 @@ _pop3_is_broken_array = make_array();
 function get_pop3_banner( port ) {
 
   local_var port;
-  local_var sb, banner, soc, is_tls, capabanner, n, implbanner, quitbanner;
+  local_var banner, soc, is_tls, capabanner, n, implbanner, quitbanner;
 
   if( ! port ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#get_pop3_banner" );
@@ -56,8 +56,7 @@ function get_pop3_banner( port ) {
 
   # nb: nasl_builtin_find_service.c is setting pop3/banner but we want to catch the CAPA response
   # as well so we're using the uppercase POP3 here.
-  sb = "POP3/banner/" + port;
-  banner = get_kb_item( sb );
+  banner = get_kb_item( "POP3/banner/" + port );
   if( banner )
     return banner;
 
@@ -132,7 +131,7 @@ function get_pop3_banner( port ) {
     set_kb_item( name:"pop3/" + port + "/quit", value:quitbanner );
 
   close( soc );
-  replace_kb_item( name:sb, value:banner );
+  replace_kb_item( name:"POP3/banner/" + port, value:banner );
   return banner;
 }
 

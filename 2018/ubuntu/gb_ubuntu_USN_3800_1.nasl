@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3800_1.nasl 12126 2018-10-26 13:00:10Z cfischer $
+# $Id: gb_ubuntu_USN_3800_1.nasl 13316 2019-01-28 07:41:51Z asteins $
 #
 # Ubuntu Update for audiofile USN-3800-1
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843741");
-  script_version("$Revision: 12126 $");
+  script_version("$Revision: 13316 $");
   script_cve_id("CVE-2018-13440", "CVE-2018-17095");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 15:00:10 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-28 08:41:51 +0100 (Mon, 28 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:14:05 +0200 (Fri, 26 Oct 2018)");
   script_name("Ubuntu Update for audiofile USN-3800-1");
   script_category(ACT_GATHER_INFO);

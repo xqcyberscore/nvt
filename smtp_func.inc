@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: smtp_func.inc 13139 2019-01-18 08:14:28Z cfischer $
+# $Id: smtp_func.inc 13319 2019-01-28 08:25:51Z cfischer $
 #
 # Support functions for handling SMTP
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 13139 $
+# $Revision: 13319 $
 #
 ###############################################################################
 
@@ -245,15 +245,14 @@ function smtp_to_header() {
 function get_smtp_banner( port ) {
 
   local_var port;
-  local_var sb, banner, soc;
+  local_var banner, soc;
 
   if( ! port ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#get_smtp_banner" );
     return FALSE;
   }
 
-  sb = string( "smtp/banner/", port );
-  banner = get_kb_item( sb );
+  banner = get_kb_item( "smtp/banner/" + port );
   if( banner )
     return( banner );
 
@@ -279,7 +278,7 @@ function get_smtp_banner( port ) {
     return NULL;
   }
 
-  replace_kb_item( name:sb, value:banner );
+  replace_kb_item( name:"smtp/banner/" + port, value:banner );
   return( banner );
 }
 

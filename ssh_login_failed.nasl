@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ssh_login_failed.nasl 13247 2019-01-23 15:12:20Z cfischer $
+# $Id: ssh_login_failed.nasl 13311 2019-01-26 17:04:21Z cfischer $
 #
 # SSH Login Failed For Authenticated Checks
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105936");
-  script_version("$Revision: 13247 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-23 16:12:20 +0100 (Wed, 23 Jan 2019) $");
+  script_version("$Revision: 13311 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-26 18:04:21 +0100 (Sat, 26 Jan 2019) $");
   script_tag(name:"creation_date", value:"2014-12-16 10:58:24 +0700 (Tue, 16 Dec 2014)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -198,6 +198,7 @@ if( unsupported_report || version_dep_report ) {
     report += "The scanner isn't providing the requirements for one of the following algorithms currently required by the remote SSH server.";
     report += '\n\n' + version_dep_report;
   }
+  set_kb_item( name:"login/SSH/failed/reason", value:report );
 }
 
 log_message( port:port, data:report );

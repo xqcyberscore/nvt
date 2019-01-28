@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_e107_csrf_vuln1.nasl 12198 2018-11-02 09:03:21Z mmartin $
+# $Id: gb_e107_csrf_vuln1.nasl 13318 2019-01-28 08:12:34Z ckuersteiner $
 #
 # e107 <= 2.1.9 CSRF Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:e107:e107";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141544");
-  script_version("$Revision: 12198 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-02 10:03:21 +0100 (Fri, 02 Nov 2018) $");
+  script_version("$Revision: 13318 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-28 09:12:34 +0100 (Mon, 28 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-10-02 14:25:16 +0700 (Tue, 02 Oct 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -57,8 +57,8 @@ if (description)
 
   script_tag(name:"affected", value:"e107 version 2.1.9 and possibly prior.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 02nd November, 2018. Information
-regarding this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution is available as of 28th January, 2019.
+  Information regarding this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://github.com/himanshurahi/e107_2.1.9_CSRF_POC");
 

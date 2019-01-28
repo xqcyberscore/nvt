@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: mdaemon_mail_server_dos.nasl 13077 2019-01-15 10:37:47Z cfischer $
+# $Id: mdaemon_mail_server_dos.nasl 13293 2019-01-25 12:15:55Z cfischer $
 # Description: MDaemon mail server DoS
 #
 # Authors:
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14825");
-  script_version("$Revision: 13077 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-15 11:37:47 +0100 (Tue, 15 Jan 2019) $");
+  script_version("$Revision: 13293 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-25 13:15:55 +0100 (Fri, 25 Jan 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(1250);
   script_tag(name:"cvss_base", value:"5.0");
@@ -40,8 +40,9 @@ if(description)
   script_category(ACT_MIXED_ATTACK);
   script_copyright("This script is Copyright (C) 2004 David Maciejak");
   script_family("Denial of Service");
-  script_dependencies("find_service2.nasl");
-  script_require_ports("Services/pop3", 110);
+  script_dependencies("popserver_detect.nasl");
+  script_require_ports("Services/pop3", 110, 995);
+  script_mandatory_keys("pop3/mdaemon/detected");
 
   script_tag(name:"solution", value:"Upgrade to the newest version of this software.");
 
@@ -68,9 +69,11 @@ if(safe_checks()) {
   if(!banner || "MDaemon" >!< banner)
     exit(0);
 
-  if(ereg(pattern:".* POP MDaemon ([0-2]\.|0\.3\.[0-3][^0-9])", string:banner))
+  if(ereg(pattern:".* POP3? MDaemon ([0-2]\.|0\.3\.[0-3][^0-9])", string:banner)) {
     security_message(port:port);
-  exit(0);
+    exit(0);
+  }
+  exit(99);
 }
 
 soc = open_sock_tcp(port);

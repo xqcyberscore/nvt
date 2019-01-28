@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: popserver_detect.nasl 13290 2019-01-25 10:58:55Z cfischer $
+# $Id: popserver_detect.nasl 13293 2019-01-25 12:15:55Z cfischer $
 # Description: POP3 Server type and version
 #
 # Authors:
@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10185");
-  script_version("$Revision: 13290 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-25 11:58:55 +0100 (Fri, 25 Jan 2019) $");
+  script_version("$Revision: 13293 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-25 13:15:55 +0100 (Fri, 25 Jan 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -74,6 +74,30 @@ foreach port( ports ) {
     set_kb_item( name:"pop3/dovecot/detected", value:TRUE );
     set_kb_item( name:"pop3/" + port + "/dovecot/detected", value:TRUE );
     guess = "Dovecot";
+  }
+
+  if( "POP3 on InetServer" >< banner ) {
+    set_kb_item( name:"pop3/avtronics/inetserv/detected", value:TRUE );
+    set_kb_item( name:"pop3/" + port + "/avtronics/inetserv/detected", value:TRUE );
+    guess = "A-V Tronics InetServ";
+  }
+
+  if( "Qpopper" >< banner ) {
+    set_kb_item( name:"pop3/qpopper/detected", value:TRUE );
+    set_kb_item( name:"pop3/" + port + "/qpopper/detected", value:TRUE );
+    guess = "QPopper";
+  }
+
+  if( "POP3" >< banner && "MDaemon" >< banner ) {
+    set_kb_item( name:"pop3/mdaemon/detected", value:TRUE );
+    set_kb_item( name:"pop3/" + port + "/mdaemon/detected", value:TRUE );
+    guess = "MDaemon";
+  }
+
+  if( "Proxy-POP server (Delegate" >< banner ) {
+    set_kb_item( name:"pop3/delegate/detected", value:TRUE );
+    set_kb_item( name:"pop3/" + port + "/delegate/detected", value:TRUE );
+    guess = "Delegate";
   }
 
   report = 'Remote POP3 server banner:\n\n' + banner;

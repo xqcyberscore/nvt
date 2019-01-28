@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_2017_apsb19-02_win.nasl 12942 2019-01-04 13:53:49Z santu $
+# $Id: gb_adobe_acrobat_2017_apsb19-02_win.nasl 13316 2019-01-28 07:41:51Z asteins $
 #
 # Adobe Acrobat 2017 Security Updates(apsb19-02)-Windows
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:adobe:acrobat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814805");
-  script_version("$Revision: 12942 $");
+  script_version("$Revision: 13316 $");
   script_cve_id("CVE-2018-16011", "CVE-2018-16018");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-04 14:53:49 +0100 (Fri, 04 Jan 2019) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-28 08:41:51 +0100 (Mon, 28 Jan 2019) $");
   script_tag(name:"creation_date", value:"2019-01-04 11:36:03 +0530 (Fri, 04 Jan 2019)");
 
   script_name("Adobe Acrobat 2017 Security Updates(apsb19-02)-Windows");

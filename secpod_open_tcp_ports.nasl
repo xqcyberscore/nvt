@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_open_tcp_ports.nasl 12413 2018-11-19 11:11:31Z cfischer $
+# $Id: secpod_open_tcp_ports.nasl 13298 2019-01-25 15:06:49Z cfischer $
 #
 # Checks for open TCP ports
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900239");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 12413 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-19 12:11:31 +0100 (Mon, 19 Nov 2018) $");
+  script_version("$Revision: 13298 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-25 16:06:49 +0100 (Fri, 25 Jan 2019) $");
   script_tag(name:"creation_date", value:"2010-04-16 11:02:50 +0200 (Fri, 16 Apr 2010)");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Checks for open TCP ports");
   script_category(ACT_GATHER_INFO);
@@ -38,12 +38,11 @@ if(description)
   script_family("General");
   script_dependencies("dont_scan_printers.nasl", "dont_print_on_printers.nasl");
 
-  script_tag(name:"summary", value:"Collects all open TPC ports of the
-  TCP ports identified so far.");
+  script_add_preference(name:"Silent", type:"checkbox", value:"yes");
+
+  script_tag(name:"summary", value:"Collects all open TPC ports identified so far.");
 
   script_tag(name:"qod_type", value:"remote_banner");
-
-  script_add_preference(name:"Silent", type:"checkbox", value:"yes");
 
   exit(0);
 }
@@ -54,34 +53,32 @@ include("misc_func.inc");
 opened_tcp_ports = ""; # nb: To make openvas-nasl-lint happy...
 
 silent = script_get_preference( "Silent" );
-if( silent == 'yes' ) {
+if( silent == 'yes' )
   be_silent = TRUE;
-}
 
 tcp_ports = get_kb_list( "Ports/tcp/*" );
 
-if( ! tcp_ports  ) {
-  if( ! be_silent ) {
+if( ! tcp_ports || ! is_array( tcp_ports ) ) {
+  if( ! be_silent )
     log_message( port:0, data:"Open TCP ports: [None found]" );
-  }
   exit( 0 );
 }
 
-foreach port( keys( tcp_ports ) ) {
+# Sort to not report changes on delta reports if just the order is different
+keys = sort( keys( tcp_ports ) );
 
-  ## Extract port number
-  Port = eregmatch( string:port, pattern:"Ports/tcp/([0-9]+)" );
-  if( ! Port && ! get_port_state( Port[1] ) ) {
+foreach port( keys ) {
+
+  _port = eregmatch( string:port, pattern:"Ports/tcp/([0-9]+)" );
+  if( ! _port && ! get_port_state( _port[1] ) )
     continue;
-  }
 
   # Includes e.g. PJL ports which are printing everything
   # sent to them so don't include this ports here
-  if( ! is_fragile_port( port:Port[1] ) ) {
-    set_kb_item( name:"TCP/PORTS", value:Port[1] );
-  }
+  if( ! is_fragile_port( port:_port[1] ) )
+    set_kb_item( name:"TCP/PORTS", value:_port[1] );
 
-  opened_tcp_ports += Port[1] + ", ";
+  opened_tcp_ports += _port[1] + ", ";
 }
 
 if( strlen( opened_tcp_ports ) ) {
@@ -92,13 +89,13 @@ if( strlen( opened_tcp_ports ) ) {
   register_host_detail( name:"ports", value:opened_tcp_ports_kb, desc:"Check Open TCP Ports" );
   register_host_detail( name:"tcp_ports", value:opened_tcp_ports_kb, desc:"Check Open TCP Ports" );
 
-  if( be_silent ) exit( 0 );
+  if( be_silent )
+    exit( 0 );
 
-  log_message( port:0, data:"Open TCP ports: "+ opened_tcp_ports );
+  log_message( port:0, data:"Open TCP ports: " + opened_tcp_ports );
 } else {
-  if( ! be_silent ) {
+  if( ! be_silent )
     log_message( port:0, data:"Open TCP ports: [None found]" );
-  }
 }
 
 exit( 0 );

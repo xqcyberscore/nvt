@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_b967b5592e_audiofile_fc27.nasl 12056 2018-10-24 12:04:11Z santu $
+# $Id: gb_fedora_2018_b967b5592e_audiofile_fc27.nasl 13316 2019-01-28 07:41:51Z asteins $
 #
 # Fedora Update for audiofile FEDORA-2018-b967b5592e
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875205");
-  script_version("$Revision: 12056 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 14:04:11 +0200 (Wed, 24 Oct 2018) $");
+  script_version("$Revision: 13316 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-28 08:41:51 +0100 (Mon, 28 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-10-18 06:45:39 +0200 (Thu, 18 Oct 2018)");
   script_cve_id("CVE-2018-13440", "CVE-2018-17095");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for audiofile FEDORA-2018-b967b5592e");
   script_tag(name:"summary", value:"Check the version of audiofile");

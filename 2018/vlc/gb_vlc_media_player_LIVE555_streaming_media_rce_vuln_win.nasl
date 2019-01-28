@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_LIVE555_streaming_media_rce_vuln_win.nasl 12203 2018-11-02 14:42:44Z bshakeel $
+# $Id: gb_vlc_media_player_LIVE555_streaming_media_rce_vuln_win.nasl 13318 2019-01-28 08:12:34Z ckuersteiner $
 #
 # VLC Media Player LIVE555 RTSP Server code execution vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814317");
-  script_version("$Revision: 12203 $");
+  script_version("$Revision: 13318 $");
   script_cve_id("CVE-2018-4013");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-02 15:42:44 +0100 (Fri, 02 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-28 09:12:34 +0100 (Mon, 28 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-11-02 13:55:59 +0530 (Fri, 02 Nov 2018)");
   script_name("VLC Media Player LIVE555 RTSP Server code execution vulnerability (Windows)");
 
@@ -55,9 +55,8 @@ if(description)
   script_tag(name:"affected", value:"VLC Media Player versions 3.0.4 and
   before on Windows.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 02nd
-  November, 2018. Information regarding this issue will be updated once solution
-  details are available. For updates refer to Reference links.");
+  script_tag(name:"solution", value:"No known solution is available as of 28th January, 2019.
+  Information regarding this issue will be updated once solution details are available.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
   script_tag(name:"qod_type", value:"registry");
@@ -82,7 +81,7 @@ VLCpath = infos['location'];
 
 if(version_is_less_equal(version:VLCVer, test_version:"3.0.4"))
 {
-  report = report_fixed_ver(installed_version:VLCVer, fixed_version:"NoneAvailable", install_path:VLCpath);
+  report = report_fixed_ver(installed_version:VLCVer, fixed_version:"None", install_path:VLCpath);
   security_message(data: report);
   exit(0);
 }

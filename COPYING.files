@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Fri, 25 Jan 2019 12:16:29 +0100
+# Automatically created on:  Mon, 28 Jan 2019 10:00:17 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -43939,6 +43939,7 @@
 2019/apache/gb_apache_mod_jk_auth_bypass_vuln_lin.nasl: GPLv2+
 2019/apache/gb_apache_mod_jk_auth_bypass_vuln_win.nasl: GPLv2+
 2019/apple/gb_apple_icloud_HT209451.nasl: GPLv2+
+2019/apple/gb_apple_itunes_HT209450.nasl: GPLv2+
 2019/apple/gb_apple_macosx_HT209446_01.nasl: GPLv2+
 2019/apple/gb_apple_macosx_HT209446_02.nasl: GPLv2+
 2019/apple/gb_apple_macosx_HT209446_03.nasl: GPLv2+
@@ -43949,6 +43950,10 @@
 2019/cacti/gb_cacti_xss_vuln1_win.nasl: GPLv2+
 2019/cacti/gb_cacti_xss_vuln2_lin.nasl: GPLv2+
 2019/cacti/gb_cacti_xss_vuln2_win.nasl: GPLv2+
+2019/centos/gb_CESA-2019_0022_keepalived_centos7.nasl: GPLv2+
+2019/centos/gb_CESA-2019_0049_libgudev1-219-62.el7__centos7.nasl: GPLv2+
+2019/centos/gb_CESA-2019_0059_libvncserver_centos7.nasl: GPLv2+
+2019/centos/gb_CESA-2019_0109_perl_centos7.nasl: GPLv2+
 2019/coreos/gb_etcd_auth_vuln.nasl: GPLv2+
 2019/coship/gb_coship_routers_pw_reset_vuln.nasl: GPLv2+
 2019/debian/deb_4362.nasl: GPLv2+
@@ -43961,6 +43966,7 @@
 2019/debian/deb_4369.nasl: GPLv2+
 2019/debian/deb_4370.nasl: GPLv2+
 2019/debian/deb_4371.nasl: GPLv2+
+2019/debian/deb_4372.nasl: GPLv2+
 2019/debian/deb_dla_1621.nasl: GPLv2+
 2019/debian/deb_dla_1623.nasl: GPLv2+
 2019/debian/deb_dla_1624.nasl: GPLv2+
@@ -43978,6 +43984,8 @@
 2019/debian/deb_dla_1638.nasl: GPLv2+
 2019/debian/deb_dla_1639.nasl: GPLv2+
 2019/debian/deb_dla_1640.nasl: GPLv2+
+2019/debian/deb_dla_1641.nasl: GPLv2+
+2019/debian/deb_dla_1643.nasl: GPLv2+
 2019/dolibarr/gb_dolibarr_mult_vuln01.nasl: GPLv2+
 2019/domainmod/gb_domainmod_mult_xss_vuln_jan19.nasl: GPLv2+
 2019/domainmod/gb_domainmod_mult_xss_vuln_may18_1.nasl: GPLv2+
@@ -44013,6 +44021,7 @@
 2019/fedora/gb_fedora_2019_541a12b809_python3_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_8deebad756_perl-Email-Address_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_8f8cadd5ff_thunderbird_fc28.nasl: GPLv2+
+2019/fedora/gb_fedora_2019_920924ed23_irssi_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_944ff52ce6_php-horde-Horde-Image_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_9eb0ae6296_openssh_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_a6511b0eed_php_fc28.nasl: GPLv2+
@@ -44020,6 +44029,7 @@
 2019/fedora/gb_fedora_2019_b1da89df11_polkit_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_b6ce519120_gitolite3_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_c424e3bb72_golang_fc28.nasl: GPLv2+
+2019/fedora/gb_fedora_2019_c6044b3fce_matrix-synapse_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_d1b5cf0055_wget_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_d4d8af2c22_radare2_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_e6ca5847c7_python-django_fc28.nasl: GPLv2+
@@ -44073,6 +44083,8 @@
 2019/microsoft/gb_ms_office_click2run_mult_vuln_jan19.nasl: GPLv2+
 2019/microsoft/gb_ms_visual_studio_mult_info_disc_vuln_jan19.nasl: GPLv2+
 2019/microsoft/gb_ms_visual_studio_rce_vuln_jan19.nasl: GPLv2+
+2019/mozilla/gb_mozilla_thunderbird_mfsa_2018-31_2018-31_macosx.nasl: GPLv2+
+2019/mozilla/gb_mozilla_thunderbird_mfsa_2018-31_2018-31_win.nasl: GPLv2+
 2019/nedi/gb_nedi_mult_vuln.nasl: GPLv2+
 2019/opensc/gb_opensc_mem_leak_vuln_lin.nasl: GPLv2+
 2019/opensc/gb_opensc_mem_leak_vuln_win.nasl: GPLv2+
@@ -44105,6 +44117,8 @@
 2019/opensuse/gb_suse_2019_0064_1.nasl: GPLv2+
 2019/opensuse/gb_suse_2019_0065_1.nasl: GPLv2+
 2019/opensuse/gb_suse_2019_0066_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0081_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0082_1.nasl: GPLv2+
 2019/opensuse/gb_suse_2019_1_1.nasl: GPLv2+
 2019/openxchange/gb_open_xchange_appsuite_58161.nasl: GPLv2+
 2019/openxchange/gb_open_xchange_appsuite_58226.nasl: GPLv2+
@@ -44164,6 +44178,10 @@
 2019/ubuntu/gb_ubuntu_USN_3863_1.nasl: GPLv2+
 2019/ubuntu/gb_ubuntu_USN_3864_1.nasl: GPLv2+
 2019/ubuntu/gb_ubuntu_USN_3865_1.nasl: GPLv2+
+2019/ubuntu/gb_ubuntu_USN_3866_1.nasl: GPLv2+
+2019/ubuntu/gb_ubuntu_USN_3867_1.nasl: GPLv2+
+2019/ubuntu/gb_ubuntu_USN_3868_1.nasl: GPLv2+
+2019/ubuntu/gb_ubuntu_USN_3869_1.nasl: GPLv2+
 2019/virustotal/gb_yara_mult_vuln_dec18.nasl: GPLv2+
 2019/virustotal/gb_yara_mult_vuln_jun18.nasl: GPLv2+
 2019/webmin/gb_webmin_rce_vuln.nasl: GPLv2+
@@ -44179,6 +44197,7 @@
 2019/wordpress/gb_wordpress_woocommerce_priv_esc_vuln_lin.nasl: GPLv2+
 2019/wordpress/gb_wordpress_woocommerce_priv_esc_vuln_win.nasl: GPLv2+
 2019/xerox/gb_xerox_altalink_mult_vuln.nasl: GPLv2+
+2019/zoneminder/gb_zoneminder_xss_vuln.nasl: GPLv2+
 404.inc: GPLv2+
 aas_detect.nasl: GPLv2+
 adaptbb_detect.nasl: GPLv2+
@@ -44309,6 +44328,9 @@ gb_7zip_detect_portable_win.nasl: GPLv2+
 gb_7zip_detect_win.nasl: GPLv2+
 gb_a2billing_detect.nasl: GPLv2+
 gb_aastra_opencom_detect.nasl: GPLv2+
+gb_abb_drivepm_detect_win.nasl: GPLv2+
+gb_abb_drivesize_detect_win.nasl: GPLv2+
+gb_abb_ez_block_builder_detect_win.nasl: GPLv2+
 gb_abb_ipgateway_detect.nasl: GPLv2+
 gb_abb_m2m_ethernet_detect.nasl: GPLv2+
 gb_abb-microscada_detect_win.nasl: GPLv2+
@@ -45758,6 +45780,7 @@ gb_schneider_indusoft_http_detect.nasl: GPLv2+
 gb_schneider_intouch_http_detect.nasl: GPLv2+
 gb_schneider_modbus_detect.nasl: GPLv2+
 gb_schneider_modicon_m340_detect.nasl: GPLv2+
+gb_schneider_opc_factory_server_detect_win.nasl: GPLv2+
 gb_schneider_struxureon_detect.nasl: GPLv2+
 gb_schneider_umotion_builder_software_detect_http.nasl: GPLv2+
 gb_schneider_zelio_soft_detect_win.nasl: GPLv2+
@@ -45801,12 +45824,14 @@ gb_simatic_cp_snmp_detect.nasl: GPLv2+
 gb_simatic_hmi_consolidation.nasl: GPLv2+
 gb_simatic_hmi_http_detect.nasl: GPLv2+
 gb_simatic_hmi_snmp_detect.nasl: GPLv2+
+gb_simatic_prosave_detect_win.nasl: GPLv2+
 gb_simatic_S7_1200_plc_detect.nasl: GPLv2+
 gb_simatic_s7_cotp_detect.nasl: GPLv2+
 gb_simatic_s7_http_detect.nasl: GPLv2+
 gb_simatic_s7_snmp_detect.nasl: GPLv2+
 gb_simatic_s7_version.nasl: GPLv2+
 gb_simatic_scalance_snmp_detect.nasl: GPLv2+
+gb_simatic_wincc_audit_viewer_detect_win.nasl: GPLv2+
 gb_simpleid_detect.nasl: GPLv2+
 gb_simple_machines_forum_detect.nasl: GPLv2+
 gb_simpnews_detect.nasl: GPLv2+
@@ -63030,11 +63055,13 @@ gsf/2019/rhel/gb_RHSA-2019_0022-01_keepalived.nasl: GPLv2+
 gsf/2019/rhel/gb_RHSA-2019_0049-01_systemd.nasl: GPLv2+
 gsf/2019/rhel/gb_RHSA-2019_0059-01_libvncserver.nasl: GPLv2+
 gsf/2019/rhel/gb_RHSA-2019_0109-01_perl.nasl: GPLv2+
+gsf/2019/rhel/gb_RHSA-2019_0159-01_thunderbird.nasl: GPLv2+
 gsf/2019/rockwellautomation/gb_factorytalk_services_platform_bof_vuln.nasl: GPLv2+
 gsf/2019/schneider/gb_schneider_electric_proface_gp-pro_ex_input_validation_vulnerability.nasl: GPLv2+
 gsf/2019/schneider/gb_schneider_eurotherm_guicon_mult_vuln.nasl: GPLv2+
 gsf/2019/schneider/gb_schneider_umotion_builder_mult_vuln.nasl: GPLv2+
 gsf/2019/schneider/gb_schneider_zelio_soft2_uaf_rce_vuln.nasl: GPLv2+
+gsf/2019/splunk/gb_splunk_rce_vuln.nasl: GPLv2+
 gsf/2019/teradata/gb_teradata_viewpoint_db_pw_vuln.nasl: GPLv2+
 gsf/2019/tibco/gb_tibco_spotfire_statistics_services_rce_vuln.nasl: GPLv2+
 gsf/2019/tridium/gb_tridium_niagara_xss_vuln.nasl: GPLv2+
@@ -63118,6 +63145,9 @@ gsf/Policy/Linux/Network/broadcast_icmp_requests.nasl: GPLv2+
 gsf/Policy/Linux/Network/icmp_bogus_error_responses.nasl: GPLv2+
 gsf/Policy/Linux/Network/icmp_redirects.nasl: GPLv2+
 gsf/Policy/Linux/Network/ip_forwarding.nasl: GPLv2+
+gsf/Policy/Linux/Network/ipv6_redirects.nasl: GPLv2+
+gsf/Policy/Linux/Network/ipv6_router_advertisements.nasl: GPLv2+
+gsf/Policy/Linux/Network/ipv6_status.nasl: GPLv2+
 gsf/Policy/Linux/Network/log_martians_packets.nasl: GPLv2+
 gsf/Policy/Linux/Network/packet_redirecting.nasl: GPLv2+
 gsf/Policy/Linux/Network/reverse_path_filtering.nasl: GPLv2+

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: xerox_printers.inc 12940 2019-01-04 09:23:20Z ckuersteiner $
+# $Id: xerox_printers.inc 13296 2019-01-25 13:35:34Z cfischer $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -22,7 +22,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 12940 $
+# $Revision: 13296 $
 #
 ###############################################################################
 
@@ -67,10 +67,6 @@ function xerox_default_logins() {
 
 function check_xerox_default_login( model, port ) {
 
-  # TODO: Remove once openvas-nasl-lint can handle such a missing include
-  # from within the same include.
-  if(!defined_func("get_http_user_agent")) include("http_func.inc");
-
   local_var model, port, userame, password, xerox, host, useragent;
 
   xerox = xerox_login_details( model:model, port:port );
@@ -83,7 +79,7 @@ function check_xerox_default_login( model, port ) {
 
   foreach login (logins) {
 
-    user_pass = split(login,sep:":", keep:FALSE);
+    user_pass = split(login, sep:":", keep:FALSE);
     username = user_pass[0];
     password = user_pass[1];
 
@@ -108,7 +104,6 @@ function check_xerox_default_login( model, port ) {
         if(eregmatch(pattern:xerox['login_success'], string:buf)) {
           return 2; # setup without auth
         }
-
       }
 
       req = string("POST " , xerox['login_url'], " HTTP/1.1\r\n",
@@ -118,10 +113,9 @@ function check_xerox_default_login( model, port ) {
                    "Content-Type: application/x-www-form-urlencoded\r\n",
                    "Content-Length: ", len, "\r\n");
 
-      if(xerox_cookie) req +=  string("Cookie: ", xerox_cookie, "\r\n");
+      if(xerox_cookie) req += string("Cookie: ", xerox_cookie, "\r\n");
 
       req += string("\r\n",login_data,"\r\n");
-
     }
 
     else if(xerox['req_type'] == "GET") {
@@ -144,7 +138,6 @@ function check_xerox_default_login( model, port ) {
         req += string("Authorization: Basic ", userpass64, "\r\n\r\n");
 
       }
-
     } else {
       return FALSE;
     }
@@ -157,7 +150,7 @@ function check_xerox_default_login( model, port ) {
         req = string(xerox['req_type_success'], " ", xerox['login_url_success'], " HTTP/1.1\r\n",
                     "Host: ", host, "\r\n");
 
-        if(xerox_cookie) req +=  string("Cookie: ", xerox_cookie, "\r\n");
+        if(xerox_cookie) req += string("Cookie: ", xerox_cookie, "\r\n");
 
         req += string("User-Agent: ", useragent, "\r\n\r\n");
 
@@ -170,12 +163,9 @@ function check_xerox_default_login( model, port ) {
         xerox_last_pass = password;
         return 1;
       }
-
     }
   }
-
   return FALSE;
-
 }
 
 function xerox_login_details( model, port ) {
@@ -221,7 +211,6 @@ function xerox_login_details( model, port ) {
     xerox['login_success'] = '>Logout</a>';
 
     return xerox;
-
   }
 
   else if(model == "WorkCentre 5225"    ||
@@ -246,7 +235,6 @@ function xerox_login_details( model, port ) {
     xerox['login_success'] = 'HTTP/1.1 200';
 
     return xerox;
-
   }
 
   else if(model == "WorkCentre 6505DN" ||
@@ -260,7 +248,6 @@ function xerox_login_details( model, port ) {
     xerox['login_success'] = '>Email Address Book';
 
     return xerox;
-
   }
 
   else if(model == "WorkCentre M20i"  ||
@@ -277,7 +264,6 @@ function xerox_login_details( model, port ) {
     xerox['login_success'] = 'this.location = "(/maintenance/index.dhtml|/properties/maintenance/fwupgrade.dhtml)"';
 
     return xerox;
-
   }
 
   else if (model == "WorkCentre 7132" ||
@@ -293,7 +279,6 @@ function xerox_login_details( model, port ) {
     xerox['login_success'] = '<TITLE>Internet Services Settings';
 
     return xerox;
-
   }
 
   else if (model == "generic_basic_auth") {
@@ -306,7 +291,6 @@ function xerox_login_details( model, port ) {
     xerox['login_success'] = 'HTTP/1.1 200';
 
     return xerox;
-
   }
 
   else if (model == "WORKCENTRE PRO") {
@@ -319,7 +303,6 @@ function xerox_login_details( model, port ) {
     xerox['login_success'] = 'HTTP/1.1 200';
 
     return xerox;
-
   }
 
   else if (model == "WorkCentre 3210" ||
@@ -335,7 +318,6 @@ function xerox_login_details( model, port ) {
     xerox['login_success'] = '<title> Security Settings';
 
     return xerox;
-
   }
 
   else if (model == "ColorQube 8570") {
@@ -348,7 +330,6 @@ function xerox_login_details( model, port ) {
     xerox['login_success'] = 'Administrative Security Settings';
 
     return xerox;
-
   }
 
   else if(model == "Phaser 7760"   ||
@@ -363,11 +344,8 @@ function xerox_login_details( model, port ) {
     xerox['login_success'] = '<b>Delete All Secure Jobs</b>';
 
     return xerox;
-
   }
-
   exit(0); # we don't know this printer
-
 }
 
 function build_xerox_cpe(model) {
@@ -384,7 +362,6 @@ function build_xerox_cpe(model) {
     } else {
       return cpe + ':xerox:workcentre_' + m[1];
     }
-
   }
 
   else if("Phaser" >< model) {
@@ -397,7 +374,6 @@ function build_xerox_cpe(model) {
     } else {
       return cpe + ':fuji_xerox:phaser_' + m[1];
     }
-
   }
 
   else if("ColorQube" >< model) {
@@ -410,7 +386,6 @@ function build_xerox_cpe(model) {
     } else {
       return cpe + ':xerox:colorqube_' + m[1];
     }
-
   }
 
   else if("AltaLink" >< model) {
@@ -423,7 +398,6 @@ function build_xerox_cpe(model) {
     } else {
       return cpe + ':xerox:altalink_' + m[1];
     }
-
   }
 
   else if("ApeosPort" >< model) {
@@ -436,7 +410,6 @@ function build_xerox_cpe(model) {
     } else {
       return cpe + ':xerox:apeosport_' + m[1];
     }
-
   }
 
   else if("DocuPrint" >< model) {
@@ -449,18 +422,11 @@ function build_xerox_cpe(model) {
     } else {
       return cpe + ':xerox:docuprint_' + m[1];
     }
-
   }
-
   return 'cpe:/h:xerox';
-
 }
 
 function xerox_set_cookie( url, port ) {
-
-  # TODO: Remove once openvas-nasl-lint can handle such a missing include
-  # from within the same include.
-  if(!defined_func("http_send_recv")) include("http_func.inc");
 
   local_var url, port;
 
@@ -474,15 +440,12 @@ function xerox_set_cookie( url, port ) {
     xerox_cookie = co[1];
     return TRUE;
   }
-
   return FALSE;
-
 }
 
 function xerox_error_exit(buf) {
 
-  if(!buf || ereg(pattern:"HTTP/1.(0|1) (404|500)", string: buf))exit(0);
+  if(!buf || ereg(pattern:"HTTP/1.(0|1) (404|500)", string:buf))exit(0);
 
   return TRUE;
-
 }

@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_Read_Apache_Config.nasl 13286 2019-01-25 09:05:51Z cfischer $
+# $Id: GSHB_Read_Apache_Config.nasl 13295 2019-01-25 13:33:05Z cfischer $
 #
-# Reading Apache Config (win)
+# Reading Apache Config (Windows)
 #
 # Authors:
 # Thomas Rotter <T.Rotter@dn-systems.de>
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96020");
-  script_version("$Revision: 13286 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-25 10:05:51 +0100 (Fri, 25 Jan 2019) $");
+  script_version("$Revision: 13295 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-25 14:33:05 +0100 (Fri, 25 Jan 2019) $");
   script_tag(name:"creation_date", value:"2010-04-27 10:02:59 +0200 (Tue, 27 Apr 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_name("Reading Apache Config (win)");
+  script_name("Reading Apache Config (Windows)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");
@@ -61,7 +61,7 @@ path = get_kb_item("WMI/Apache/RootPath");
 
 if("None" >< path){
   set_kb_item(name:"GSHB/ApacheConfig", value:"None");
-  log_message(port:0, proto: "IT-Grundschutz", data:string("No Apache Installed") + string("\n"));
+  log_message(port:0, proto:"IT-Grundschutz", data:string("No Apache Installed") + string("\n"));
   exit(0);
 }
 
@@ -72,7 +72,7 @@ config = GSHB_read_file(share: share, file: file, offset: 0);
 
 if (!config){
 #   AspEnableParentPaths = "error";
-   log_message(port:port, data:"Cannot access/open the Apache config file.");
+   log_message(port:0, proto:"IT-Grundschutz", data:"Cannot access/open the Apache config file.");
    set_kb_item(name:"GSHB/ApacheConfig", value:"error");
 } else {
    DocumentRoot = egrep(pattern:'^ *DocumentRoot \".*', string:config);
@@ -109,8 +109,6 @@ if (!config){
    LMPHP4 = egrep(pattern:'^ *LoadModule *perl_module *modules/libphp4.so', string:config);
 
    LMJK = egrep(pattern:'^ *LoadModule *perl_module *modules/mod_jk.so', string:config);
-
-
 }
 
 IncludesSplit = split (Includes, sep:'|', keep:0);
@@ -159,7 +157,7 @@ for(j=0; j<max_index(IncludesSplit); j++) {
 
   LMCGIInc = egrep(pattern:'^ *LoadModule *cgi_module *modules/mod_cgi.so', string:val01);
   if (LMCGIInc >!< '')
-     LMCGI += LMCGIInc + '|';
+    LMCGI += LMCGIInc + '|';
 
   LMINCInc = egrep(pattern:'^ *LoadModule *include_module *modules/mod_include.so', string:val01);
   if (LMCGIInc >!< '')

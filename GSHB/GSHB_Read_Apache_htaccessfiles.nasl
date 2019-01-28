@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_Read_Apache_htaccessfiles.nasl 13286 2019-01-25 09:05:51Z cfischer $
+# $Id: GSHB_Read_Apache_htaccessfiles.nasl 13295 2019-01-25 13:33:05Z cfischer $
 #
-# Reading Apache htaccess Files (win)
+# Reading Apache htaccess Files (Windows)
 #
 # Authors:
 # Thomas Rotter <T.Rotter@dn-systems.de>
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96021");
-  script_version("$Revision: 13286 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-25 10:05:51 +0100 (Fri, 25 Jan 2019) $");
+  script_version("$Revision: 13295 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-25 14:33:05 +0100 (Fri, 25 Jan 2019) $");
   script_tag(name:"creation_date", value:"2009-10-23 12:32:24 +0200 (Fri, 23 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"registry");
-  script_name("Reading Apache htaccess Files (win)");
+  script_name("Reading Apache htaccess Files (Windows)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2009 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");
@@ -54,7 +54,7 @@ htaccessList = get_kb_item("WMI/Apache/htaccessList");
 
 if ("None" >< htaccessList){
   set_kb_item(name:"GSHB/Apache/AccessPWD", value:"None");
-  log_message(port:0, proto: "IT-Grundschutz", data:string("No Apache Installed") + string("\n"));
+  log_message(port:0, proto:"IT-Grundschutz", data:string("No Apache Installed") + string("\n"));
   exit(0);
 }
 
@@ -78,7 +78,7 @@ if(htaccessList){
       share = path[0] + "$";
       htaccessfile = GSHB_read_file(share: share, file: file, offset: 0);
       if (!htaccessfile){
-        log_message(port:port, data:"Cannot access/open the Apache .htaccess file.");
+        log_message(port:0, proto:"IT-Grundschutz", data:"Cannot access/open the Apache .htaccess file.");
       } else {
         AccessPWD = egrep(pattern:'^ *AuthUserFile *', string:htaccessfile);
         AccessPWD = ereg_replace(pattern:'^ *AuthUserFile *|\"|\n|\r',replace:'', string:AccessPWD);

@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_win_lsc_authentication_info.nasl 12702 2018-12-07 10:33:41Z cfischer $
+# $Id: gb_win_lsc_authentication_info.nasl 13313 2019-01-26 17:25:41Z cfischer $
 #
-# Windows LSC Authenticated Scan Info Consolidation
+# Windows SMB/LSC Authenticated Scan Info Consolidation
 #
 # Authors:
 # Christian Fischer <christian.fischer@greenbone.net>
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108442");
-  script_version("$Revision: 12702 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-07 11:33:41 +0100 (Fri, 07 Dec 2018) $");
+  script_version("$Revision: 13313 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-26 18:25:41 +0100 (Sat, 26 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-05-16 07:49:52 +0200 (Wed, 16 May 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_name("Windows LSC Authenticated Scan Info Consolidation");
+  script_name("Windows SMB/LSC Authenticated Scan Info Consolidation");
   script_category(ACT_END);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Windows");
@@ -44,7 +44,7 @@ if(description)
   script_xref(name:"URL", value:"https://docs.greenbone.net/GSM-Manual/gos-4/en/vulnerabilitymanagement.html#requirements-on-target-systems-with-windows");
 
   script_tag(name:"summary", value:"This script consolidates various technical information about
-  authenticated scans for Windows targets.");
+  authenticated scans via SMB for Windows targets.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -125,21 +125,21 @@ info_array["Path to the OS SystemRoot for 32bit (smb_get_system32root())"] = sys
 success = get_kb_item( "login/SMB/success" );
 success_port = get_kb_item( "login/SMB/success/port" );
 if( success ) {
-  info_array["Login via SMB successful"] = "TRUE";
+  info_array["Login via SMB successful (login/SMB/success)"] = "TRUE";
   if( success_port )
     info_array["Port used for the successful login via SMB"] = success_port + "/tcp";
 } else {
-  info_array["Login via SMB successful"] = "FALSE";
+  info_array["Login via SMB successful (login/SMB/success)"] = "FALSE";
 }
 
 failed = get_kb_item( "login/SMB/failed" );
 failed_port = get_kb_item( "login/SMB/failed/port" );
 if( failed ) {
-  info_array["Login via SMB failed"] = "TRUE";
+  info_array["Login via SMB failed (login/SMB/failed)"] = "TRUE";
   if( failed_port )
     info_array["Port used for the failed login via SMB"] = failed_port + "/tcp";
 } else {
-  info_array["Login via SMB failed"] = "FALSE";
+  info_array["Login via SMB failed (login/SMB/failed)"] = "FALSE";
 }
 
 report = text_format_table( array:info_array, columnheader:make_list( "Description (Knowledge base entry)", "Value/Content" ) );

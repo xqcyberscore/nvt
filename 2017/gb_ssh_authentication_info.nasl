@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ssh_authentication_info.nasl 9954 2018-05-25 06:20:37Z cfischer $
+# $Id: gb_ssh_authentication_info.nasl 13313 2019-01-26 17:25:41Z cfischer $
 #
-# SSH Authenticated Scan Info Consolidation
+# Linux/UNIX SSH/LSC Authenticated Scan Info Consolidation
 #
 # Authors:
 # Christian Fischer <christian.fischer@greenbone.net>
@@ -27,20 +27,22 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108162");
-  script_version("$Revision: 9954 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-25 08:20:37 +0200 (Fri, 25 May 2018) $");
+  script_version("$Revision: 13313 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-26 18:25:41 +0100 (Sat, 26 Jan 2019) $");
   script_tag(name:"creation_date", value:"2017-10-17 10:31:0 +0200 (Tue, 17 Oct 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_name("SSH Authenticated Scan Info Consolidation");
+  script_name("Linux/UNIX SSH/LSC Authenticated Scan Info Consolidation");
   script_category(ACT_END);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gather-package-list.nasl");
+  script_dependencies("gather-package-list.nasl", "ssh_login_failed.nasl");
   script_mandatory_keys("login/SSH/success");
 
+  script_xref(name:"URL", value:"https://docs.greenbone.net/GSM-Manual/gos-4/en/vulnerabilitymanagement.html#requirements-on-target-systems-with-linux-unix");
+
   script_tag(name:"summary", value:"This script consolidates various technical information about
-  authenticated scans via SSH.");
+  authenticated scans via SSH for Linux/UNIX targets.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -63,7 +65,8 @@ kb_array = make_array( "ssh/login/uname", "Response to 'uname -a' command",
                        "ssh/login/osx_version", "Mac OS X version",
                        "ssh/login/solhardwaretype", "Solaris hardware type",
                        "ssh/login/solosversion", "Solaris version",
-                       "login/SSH/success", "Login successful",
+                       "login/SSH/success", "Login via SSH successful",
+                       "login/SSH/failed", "Login via SSH failed",
                        "ssh/no_linux_shell", "Login on a system without common commands like 'cat' or 'find'",
                        "ssh/locate/available", "locate: Command available",
                        "ssh/force/clear_buffer", "Clear received buffer before sending a command",
@@ -120,6 +123,12 @@ if( locate_broken ) {
   report += '\n\nNOTE: The locate command seems to be unavailable for this user/account/system. ';
   report += "This command is highly recommended for authenticated scans. ";
   report += "Please see the output above for a possible hint / reason why this command is not available.";
+}
+
+if( get_kb_item( "login/SSH/failed" ) ) {
+  if( reason = get_kb_item( "login/SSH/failed/reason" ) ) {
+    report += '\n\n' + reason;
+  }
 }
 
 log_message( port:0, data:report );
