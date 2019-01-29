@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_laquis_scada_detect_win.nasl 13114 2019-01-17 09:24:15Z mmartin $
+# $Id: gb_laquis_scada_detect_win.nasl 13322 2019-01-28 10:06:06Z mmartin $
 #
 # LCDS LAquis SCADA Version Detection (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107454");
-  script_version("$Revision: 13114 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-17 10:24:15 +0100 (Thu, 17 Jan 2019) $");
+  script_version("$Revision: 13322 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-28 11:06:06 +0100 (Mon, 28 Jan 2019) $");
   script_tag(name:"creation_date", value:"2019-01-17 10:25:47 +0100 (Thu, 17 Jan 2019)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -71,7 +71,6 @@ foreach key (key_list) {
   foreach item (registry_enum_keys(key:key)) {
 
     appName = registry_get_sz(key:key + item, item:"DisplayName");
-    # MultiCash is the Productbase of 'GENO cash'.
 
     if(!appName || appName !~ "SCADA LAquis") continue;
 

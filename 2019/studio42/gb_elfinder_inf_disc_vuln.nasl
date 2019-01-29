@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elfinder_inf_disc_vuln.nasl 13037 2019-01-11 12:47:43Z jschulte $
+# $Id: gb_elfinder_inf_disc_vuln.nasl 13338 2019-01-29 07:44:39Z mmartin $
 #
 # elFinder <= 2.1.44 Information Disclosure Vulnerability
 #
@@ -28,11 +28,11 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113324");
-  script_version("$Revision: 13037 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-11 13:47:43 +0100 (Fri, 11 Jan 2019) $");
+  script_version("$Revision: 13338 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-29 08:44:39 +0100 (Tue, 29 Jan 2019) $");
   script_tag(name:"creation_date", value:"2019-01-11 13:42:31 +0200 (Fri, 11 Jan 2019)");
-  script_tag(name:"cvss_base", value:"7.1");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:N/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 

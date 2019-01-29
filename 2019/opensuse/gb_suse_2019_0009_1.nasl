@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2019_0009_1.nasl 13173 2019-01-21 06:39:39Z santu $
+# $Id: gb_suse_2019_0009_1.nasl 13338 2019-01-29 07:44:39Z mmartin $
 #
 # SuSE Update for singularity openSUSE-SU-2019:0009-1 (singularity)
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852224");
-  script_version("$Revision: 13173 $");
+  script_version("$Revision: 13338 $");
   script_cve_id("CVE-2018-19295");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-21 07:39:39 +0100 (Mon, 21 Jan 2019) $");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-29 08:44:39 +0100 (Tue, 29 Jan 2019) $");
   script_tag(name:"creation_date", value:"2019-01-11 04:01:04 +0100 (Fri, 11 Jan 2019)");
   script_name("SuSE Update for singularity openSUSE-SU-2019:0009-1 (singularity)");
   script_category(ACT_GATHER_INFO);

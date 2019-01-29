@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_b24201fc50_teeworlds_fc27.nasl 12203 2018-11-02 14:42:44Z bshakeel $
+# $Id: gb_fedora_2018_b24201fc50_teeworlds_fc27.nasl 13338 2019-01-29 07:44:39Z mmartin $
 #
 # Fedora Update for teeworlds FEDORA-2018-b24201fc50
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875232");
-  script_version("$Revision: 12203 $");
+  script_version("$Revision: 13338 $");
   script_cve_id("CVE-2018-18541");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-02 15:42:44 +0100 (Fri, 02 Nov 2018) $");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-29 08:44:39 +0100 (Tue, 29 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-11-01 06:23:12 +0100 (Thu, 01 Nov 2018)");
   script_name("Fedora Update for teeworlds FEDORA-2018-b24201fc50");
   script_category(ACT_GATHER_INFO);

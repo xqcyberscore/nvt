@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: kyocera_printers.inc 11010 2018-08-16 14:11:14Z cfischer $
+# $Id: kyocera_printers.inc 13332 2019-01-28 15:16:13Z cfischer $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -22,7 +22,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 11010 $
+# $Revision: 13332 $
 #
 ###############################################################################
 
@@ -63,27 +63,24 @@ function ky_default_logins() {
                    "none:PASSWORD");
 }
 
-
 function check_ky_default_login( model, port ) {
 
-  # TODO: Remove once openvas-nasl-lint can handle such a missing include
-  # from within the same include.
-  if(!defined_func("get_http_user_agent")) include("http_func.inc");
-
-  local_var model, port, ky, logins, host, useragent, login, user_pass;
-  local_var username, password, login_data, req, c_buf;
+  local_var model, port;
+  local_var ky, logins, host, useragent, login, user_pass;
+  local_var username, password, login_data, len, req, c_buf;
 
   ky = ky_login_details(model:model);
-  if(!ky)return FALSE;
+  if(!ky)
+    return FALSE;
 
   logins = ky_default_logins();
 
-  host = http_host_name( port:port );
+  host = http_host_name(port:port);
   useragent = get_http_user_agent();
 
   foreach login (logins) {
 
-    user_pass = split(login,sep:":", keep:FALSE);
+    user_pass = split(login, sep:":", keep:FALSE);
     username = user_pass[0];
     password = user_pass[1];
 
@@ -125,10 +122,10 @@ function check_ky_default_login( model, port ) {
         c_buf = http_send_recv(port:port, data:req + '\r\n', bodyonly:FALSE);
         ky_error_exit(buf:c_buf);
 
-        if("HTTP/1.1 401" >!< c_buf && "HTTP/1.1 302" >!< c_buf) return 2; # setup without auth
+        if("HTTP/1.1 401" >!< c_buf && "HTTP/1.1 302" >!< c_buf)
+          return 2; # setup without auth
 
         req += string("Authorization: Basic ", userpass64, "\r\n\r\n");
-
       }
     }
 
@@ -148,6 +145,9 @@ function check_ky_default_login( model, port ) {
 
 function ky_login_details(model) {
 
+  local_var model;
+  local_var ky_printer;
+
   ky_printer = make_array();
 
   if(model == "FS-1030D") {
@@ -155,12 +155,10 @@ function ky_login_details(model) {
     ky_printer['req_type']  = "GET";
     ky_printer['login_url'] = '/eng/basic/SecAcct.htm';
     ky_printer['req_auth']  = "BASIC";
-
     ky_printer['http_status'] = 'HTTP/1.. 200';
     ky_printer['login_success'] = 'form0.NEWPASS.value';
 
     return ky_printer;
-
   }
 
   else if(model == "FS-9530DN"        ||
@@ -192,12 +190,10 @@ function ky_login_details(model) {
     ky_printer['req_type']  = "GET";
     ky_printer['login_url'] = '/basic/SecAcct.htm';
     ky_printer['req_auth']  = "BASIC";
-
     ky_printer['http_status'] = 'HTTP/1.. 200';
     ky_printer['login_success'] = 'form0.NEWPASS.value';
 
     return ky_printer;
-
   }
 
   else if(model == "FS-9500DN"              ||
@@ -232,12 +228,10 @@ function ky_login_details(model) {
     ky_printer['req_type']  = "GET";
     ky_printer['login_url'] = '/eng/security/main.htm';
     ky_printer['req_auth']  = "BASIC";
-
     ky_printer['http_status'] = 'HTTP/1.. 200';
     ky_printer['login_success'] = 'The Admin password controls access';
 
     return ky_printer;
-
   }
 
   else if(model == "FS-6025MFP"     ||
@@ -279,12 +273,10 @@ function ky_login_details(model) {
     ky_printer['req_type']  = "POST";
     ky_printer['login_url'] = '/start/login.cgi';
     ky_printer['login_data'] = 'okhtmfile=%2Fopt1%2Findex.htm&failhtmfile=%2Fstart%2FStartAccessDenied.htm&func=authLogin&arg01_UserName=%%%USERNAME%%%&arg02_Password=%%%PASSWORD%%%&arg03_LoginType=&submit001=OK&arg01_UserName=&language=..%2Fopt1%2Findex.htm';
-
     ky_printer['http_status'] = 'HTTP/1.. 200';
     ky_printer['login_success'] = 'Set-Cookie: level=3';
 
     return ky_printer;
-
   }
 
   else if(model == "TASKalfa 4500i"  ||
@@ -299,12 +291,10 @@ function ky_login_details(model) {
     ky_printer['req_type']  = "POST";
     ky_printer['login_url'] = '/startwlm/login.cgi';
     ky_printer['login_data'] = 'failhtmfile=%2Fstartwlm%2FStart_Wlm.htm&okhtmfile=%2Fstartwlm%2FStart_Wlm.htm&func=authLogin&arg03_LoginType=_mode_off&arg04_LoginFrom=_wlm_login&language=..%2Fwlmeng%2Findex.htm&hiddRefreshDevice=..%2Fstartwlm%2FHme_DvcSts.htm&hiddRefreshPanelUsed=..%2Fstartwlm%2FHme_PnlUsg.htm&hiddRefreshPaperid=..%2Fstartwlm%2FHme_Paper.htm&hiddRefreshTonerid=..%2Fstartwlm%2FHme_StplPnch.htm&hiddRefreshStapleid=..%2Fstartwlm%2FHme_Toner.htm&hiddnBackNavIndx=1&hiddRefreshDeviceBack=&hiddRefreshPanelUsedBack=&hiddRefreshPaperidBack=&hiddRefreshToneridBack=&hiddRefreshStapleidBack=&hiddCompatibility=&hiddPasswordToOpenChk=&hiddPasswordToOpen=&hiddRePasswordToOpen=&hiddPasswordToEditChk=&hiddPasswordToEdit=&hiddRePasswordToEdit=&hiddPrinting=&hiddChanges=&hiddCopyingOfText=&hiddEmaiSID=&hiddEmaiName=&hiddECM=&hiddDocID=&privid=&publicid=&attrtype=&attrname=&hiddFaxType=&hiddSMBNumber1=&hiddSMBNumber2=&hiddSMBNumber3=&hiddSMBNumber4=&hiddSMBNumber5=&hiddSMBNumber6=&hiddSMBNumber7=&hiddFTPNumber1=&hiddFTPNumber2=&hiddFTPNumber3=&hiddFTPNumber4=&hiddFTPNumber5=&hiddFTPNumber6=&hiddFTPNumber7=&hiddFAXAddress1=&hiddFAXAddress2=&hiddFAXAddress3=&hiddFAXAddress4=&hiddFAXAddress5=&hiddFAXAddress6=&hiddFAXAddress7=&hiddFAXAddress8=&hiddFAXAddress9=&hiddFAXAddress10=&hiddIFaxAdd=&hiddIFaxConnMode=&hiddIFaxResolution=&hiddIFaxComplession=&hiddIFaxPaperSize=&hiddImage=&hiddTest=&hiddDoc_Num=&hiddCopy=&hiddDocument=&hiddDocRec=&AddressNumberPersonal=&AddressNumberGroup=&hiddPersonAddressID=&hiddGroupAddressID=&hiddPrnBasic=&hiddPageName=&hiddDwnLoadType=&hiddPrintType=&hiddSend1=&hiddSend2=&hiddSend3=&hiddSend4=&hiddSend5=&hiddAddrBokBackUrl=&hiddAddrBokName=&hiddAddrBokFname=&hiddSendFileName=&hiddenAddressbook=&hiddenAddressbook1=&hiddSendDoc_Num=&hiddSendColor=&hiddSendAddInfo=&hiddSendFileFormat=&hiddRefreshDevice=..%2Fstartwlm%2FHme_DvcSts.htm&hiddRefreshPanelUsed=..%2Fstartwlm%2FHme_PnlUsg.htm&hiddRefreshPaperid=..%2Fstartwlm%2FHme_Paper.htm&hiddRefreshTonerid=..%2Fstartwlm%2FHme_StplPnch.htm&hiddRefreshStapleid=..%2Fstartwlm%2FHme_Toner.htm&hiddnBackNavIndx=0&hiddRefreshDeviceBack=&hiddRefreshPanelUsedBack=&hiddRefreshPaperidBack=&hiddRefreshToneridBack=&hiddRefreshStapleidBack=&hiddValue=&arg01_UserName=%%%USERNAME%%%&arg02_Password=%%%PASSWORD%%%&arg03_LoginType=&arg05_AccountId=&Login=Login&arg06_DomainName=&hndHeight=0';
-
     ky_printer['http_status'] = 'HTTP/1.. 200';
     ky_printer['login_success'] = 'Set-Cookie: level=1';
 
     return ky_printer;
-
   }
 
   else if(model == "TASKalfa 250ci") {
@@ -312,20 +302,19 @@ function ky_login_details(model) {
     ky_printer['req_type']  = "POST";
     ky_printer['login_url'] = '/start/login.cgi';
     ky_printer['login_data'] = 'okhtmfile=%2Feng%2Findex.htm&failhtmfile=%2Fstart%2FStartAccessDenied.htm&func=authLogin&arg01_UserName=%%%USERNAME%%%&arg02_Password=%%%PASSWORD%%%&arg03_LoginType=&submit001=OK&arg01_UserName=&language=..%2Feng%2Findex.htm';
-
     ky_printer['http_status'] = 'HTTP/1.. 200';
     ky_printer['login_success'] = 'Set-Cookie: level=3';
 
     return ky_printer;
-
   }
-
 }
 
 function ky_error_exit(buf) {
 
-  if(!buf || ereg(pattern:"HTTP/1.(0|1) (404|500)", string: buf))exit(0);
+  local_var buf;
+
+  if(!buf || ereg(pattern:"HTTP/1\.[01] (404|500)", string: buf))
+    exit(0);
 
   return TRUE;
-
 }

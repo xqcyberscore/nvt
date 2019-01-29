@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2019_0064_1.nasl 13173 2019-01-21 06:39:39Z santu $
+# $Id: gb_suse_2019_0064_1.nasl 13338 2019-01-29 07:44:39Z mmartin $
 #
 # SuSE Update for zeromq openSUSE-SU-2019:0064-1 (zeromq)
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852238");
-  script_version("$Revision: 13173 $");
+  script_version("$Revision: 13338 $");
   script_cve_id("CVE-2019-6250");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-21 07:39:39 +0100 (Mon, 21 Jan 2019) $");
+  script_tag(name:"cvss_base", value:"9.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-29 08:44:39 +0100 (Tue, 29 Jan 2019) $");
   script_tag(name:"creation_date", value:"2019-01-18 04:01:22 +0100 (Fri, 18 Jan 2019)");
   script_name("SuSE Update for zeromq openSUSE-SU-2019:0064-1 (zeromq)");
   script_category(ACT_GATHER_INFO);

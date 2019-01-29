@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_f20a0cead5_xen_fc27.nasl 12314 2018-11-12 09:01:54Z santu $
+# $Id: gb_fedora_2018_f20a0cead5_xen_fc27.nasl 13338 2019-01-29 07:44:39Z mmartin $
 #
 # Fedora Update for xen FEDORA-2018-f20a0cead5
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875247");
-  script_version("$Revision: 12314 $");
+  script_version("$Revision: 13338 $");
   script_cve_id("CVE-2018-3620", "CVE-2018-3646", "CVE-2018-15469", "CVE-2018-15468", "CVE-2018-15470", "CVE-2018-12891", "CVE-2018-12893", "CVE-2018-12892", "CVE-2018-3665", "CVE-2018-3639", "CVE-2018-8897", "CVE-2018-10982", "CVE-2018-10981", "CVE-2018-7540", "CVE-2018-7541", "CVE-2018-7542", "CVE-2017-15595", "CVE-2017-17566", "CVE-2017-17563", "CVE-2017-17564", "CVE-2017-17565", "CVE-2017-17044", "CVE-2017-17045", "CVE-2017-15592", "CVE-2017-15597", "CVE-2017-15590", "CVE-2017-15591", "CVE-2017-15589", "CVE-2017-15588", "CVE-2017-15593", "CVE-2017-15594", "CVE-2018-18883");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-12 10:01:54 +0100 (Mon, 12 Nov 2018) $");
+  script_tag(name:"cvss_base", value:"9.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-29 08:44:39 +0100 (Tue, 29 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-11-12 06:18:52 +0100 (Mon, 12 Nov 2018)");
   script_name("Fedora Update for xen FEDORA-2018-f20a0cead5");
   script_category(ACT_GATHER_INFO);

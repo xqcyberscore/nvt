@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: smtp_func.inc 13319 2019-01-28 08:25:51Z cfischer $
+# $Id: smtp_func.inc 13337 2019-01-29 07:15:09Z cfischer $
 #
 # Support functions for handling SMTP
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 13319 $
+# $Revision: 13337 $
 #
 ###############################################################################
 
@@ -94,6 +94,9 @@ function smtp_open( port, data, send_helo, send_ehlo ) {
     set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#smtp_open: send_helo and send_ehlo set to TRUE, the function can't decide which one you want to use and will return with NULL" );
     return NULL;
   }
+
+  if( smtp_get_is_marked_broken( port:port ) )
+    return NULL;
 
   soc = open_sock_tcp( port );
   if ( ! soc )

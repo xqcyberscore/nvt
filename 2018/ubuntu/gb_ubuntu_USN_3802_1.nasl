@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3802_1.nasl 12162 2018-10-30 07:02:33Z santu $
+# $Id: gb_ubuntu_USN_3802_1.nasl 13338 2019-01-29 07:44:39Z mmartin $
 #
 # Ubuntu Update for xorg-server USN-3802-1
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843800");
-  script_version("$Revision: 12162 $");
+  script_version("$Revision: 13338 $");
   script_cve_id("CVE-2018-14665");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-30 08:02:33 +0100 (Tue, 30 Oct 2018) $");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-29 08:44:39 +0100 (Tue, 29 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-10-27 06:24:24 +0200 (Sat, 27 Oct 2018)");
   script_name("Ubuntu Update for xorg-server USN-3802-1");
   script_category(ACT_GATHER_INFO);

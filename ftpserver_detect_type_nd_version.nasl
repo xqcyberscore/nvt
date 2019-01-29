@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ftpserver_detect_type_nd_version.nasl 11018 2018-08-17 07:13:05Z cfischer $
+# $Id: ftpserver_detect_type_nd_version.nasl 13324 2019-01-28 10:52:49Z cfischer $
 #
 # FTP Banner Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10092");
-  script_version("$Revision: 11018 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:13:05 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 13324 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-28 11:52:49 +0100 (Mon, 28 Jan 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -41,7 +41,7 @@ if(description)
   # in here. This dependency also pulls in the logins.nasl.
   script_dependencies("find_service2.nasl", "find_service_3digits.nasl",
                       "ftpd_no_cmd.nasl", "secpod_ftp_anonymous.nasl");
-  script_require_ports("Services/ftp", 21);
+  script_require_ports("Services/ftp", 21, 990);
 
   script_tag(name:"summary", value:"This Plugin detects and reports a FTP Server Banner.");
 
@@ -52,19 +52,26 @@ if(description)
 
 include("ftp_func.inc");
 include("host_details.inc");
+include("misc_func.inc");
 
-port   = get_ftp_port( default:21 );
-banner = get_ftp_banner( port:port );
+ports = ftp_get_ports();
+foreach port( ports ) {
 
-# Basic sanity check, we should have at least three digits for a FTP service
-if( banner && strlen( banner ) > 2 ) {
+  # nb: get_ftp_banner() is verifying the received data via ftp_verify_banner() and will
+  # return NULL/FALSE if we haven't received a FTP banner.
+  banner = get_ftp_banner( port:port );
+  if( ! banner )
+    continue;
+
+  if( service_is_unknown( port:port ) )
+    register_service( port:port, proto:"ftp", message:"A FTP Server seems to be running on this port." );
 
   set_kb_item( name:"ftp_banner/available", value:TRUE );
-  install = port + '/tcp';
+  install = port + "/tcp";
 
   if( "NcFTPd" >< banner ) {
     set_kb_item( name:"ftp/ncftpd", value:TRUE );
-    register_product( cpe:'cpe:/a:ncftpd:ftp_server', location:install, port:port );
+    register_product( cpe:"cpe:/a:ncftpd:ftp_server", location:install, port:port );
   }
 
   if( "FtpXQ FTP" >< banner ) {
@@ -73,7 +80,7 @@ if( banner && strlen( banner ) > 2 ) {
 
   if( egrep( pattern:".*heck Point Firewall-1 Secure FTP.*", string:banner ) ) {
     set_kb_item( name:"ftp/fw1ftpd", value:TRUE );
-    register_product( cpe:'cpe:/a:checkpoint:firewall-1', location:install, port:port );
+    register_product( cpe:"cpe:/a:checkpoint:firewall-1", location:install, port:port );
   }
 
   # 220 VxWorks FTP server (VxWorks 5.3.1 - Secure NetLinx version (1.0)) ready.
@@ -87,7 +94,7 @@ if( banner && strlen( banner ) > 2 ) {
   # TODO: Move into own Detection-NVT. The OS part via of VxWorks is already done in gb_ftp_os_detection.nasl
   if( banner =~ "[vV]xWorks" && "FTP server" >< banner ) {
     set_kb_item( name:"ftp/vxftpd", value:TRUE );
-    register_product( cpe:'cpe:/o:windriver:vxworks', location:install, port:port );
+    register_product( cpe:"cpe:/o:windriver:vxworks", location:install, port:port );
   }
   log_message( port:port, data:'Remote FTP server banner :\n' + banner );
 }

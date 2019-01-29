@@ -23,18 +23,51 @@
 # USA.
 ###############################################################################
 
-valid_products = make_list( "LTM","AAM","AFM","APM","ASM","GTM","PEM","PSM","WOM","AVR","WAM","LC" );
+# Global vars to avoid that we're repeatedly asking redis for something we already know.
+global_var __f5_valid_products, __f5_kb_hotfix;
 
-if( ! hotfix = get_kb_item( "f5/big_ip/hotfix" ) ) hotfix = int( 0 );
+function f5_hotfix_from_kb() {
 
-global_var valid_products, hotfix;
+  local_var hotfix;
+
+  # Used to not query redis with the get_kb_item below
+  # to save some requests.
+  if( ! isnull( __f5_kb_hotfix ) ) {
+    return __f5_kb_hotfix;
+  } else {
+    if( ! hotfix = get_kb_item( "f5/big_ip/hotfix" ) ) {
+      hotfix = int( 0 );
+    } else {
+      hotfix = int( hotfix );
+      __f5_kb_hotfix = hotfix;
+    }
+  }
+  return hotfix;
+}
+
+function f5_valid_products() {
+
+  local_var valid_products;
+
+  if( ! isnull( __f5_valid_products ) ) {
+    return __f5_valid_products;
+  } else {
+    valid_products = make_list( "LTM", "AAM", "AFM", "APM", "ASM", "GTM", "PEM", "PSM", "WOM", "AVR", "WAM", "LC" );
+    __f5_valid_products = valid_products;
+    return valid_products;
+  }
+}
 
 function is_f5_vulnerable( ca, version )
 {
-  local_var c, ca, affected_modules, unaffected_modules, product, active_modules, av_array, affected, unaffected, af, a, is_vulnerable, version;
+  local_var ca, version;
+  local_var active_modules, is_vulnerable, product, av_array, affected, unaffected, af, a, affected_modules, unaffected_modules;
 
-  if( ! is_array( ca ) ) return;
-  if( ! version ) return;
+  if( ! is_array( ca ) )
+    return;
+
+  if( ! version )
+    return;
 
   if( ! active_modules = get_kb_item( "f5/big_ip/active_modules" ) )
     return;
@@ -43,7 +76,7 @@ function is_f5_vulnerable( ca, version )
 
   foreach product ( keys( ca ) )
   {
-    if( ! in_array( search:product, array:valid_products ) )
+    if( ! in_array( search:product, array:f5_valid_products() ) )
       continue;
 
     if( product >!< active_modules )
@@ -54,7 +87,8 @@ function is_f5_vulnerable( ca, version )
     affected = av_array[ 'affected' ];
     unaffected = av_array[ 'unaffected' ];
 
-    if( ! strlen( affected ) ) return;
+    if( ! strlen( affected ) )
+      return;
 
     if( strlen( unaffected ) )
     {
@@ -63,7 +97,8 @@ function is_f5_vulnerable( ca, version )
     }
 
     af = split( affected, sep:";", keep:FALSE );
-    if( ! is_array( af ) ) continue;
+    if( ! is_array( af ) )
+      continue;
 
     foreach a ( af )
     {
@@ -89,19 +124,18 @@ function is_f5_vulnerable( ca, version )
 # unaffected -> 11.4.1_HF10
 function f5_is_unaffected( version, unaffected )
 {
+  local_var version, unaffected;
+  local_var ua, uav, v_h, c_version, c_hotfix, both, first, last, first_hotfix, last_hotfix;
 
-  # TODO: Remove once openvas-nasl-lint can handle such a missing include
-  # from within the same include.
-  if(!defined_func("is_array")) include("misc_func.inc");
-  if(!defined_func("version_in_range")) include("version_func.inc");
+  if( ! version )
+    return;
 
-  local_var version, unaffected, ua, uav, v_h, c_version, c_hotfix, both, first, last, first_hotfix, last_hotfix;
-
-  if( ! version ) return;
-  if( ! unaffected ) return;
+  if( ! unaffected )
+    return;
 
   ua = split( unaffected, sep:";", keep:FALSE );
-  if( ! is_array( ua ) ) return;
+  if( ! is_array( ua ) )
+    return;
 
   foreach uav ( ua )
   {
@@ -117,7 +151,7 @@ function f5_is_unaffected( version, unaffected )
 
       if( version == c_version )
       {
-        if( int( hotfix ) >= int( c_hotfix ) )
+        if( f5_hotfix_from_kb() >= int( c_hotfix ) )
           return TRUE;
       }
     }
@@ -126,7 +160,8 @@ function f5_is_unaffected( version, unaffected )
       if( "-" >< uav )
       {
         both = split( uav, sep:'-', keep:FALSE );
-        if( isnull( both[0] ) || isnull( both[1] ) ) return;
+        if( isnull( both[0] ) || isnull( both[1] ) )
+          return;
 
         first = both[0];
         last  = both[1];
@@ -137,7 +172,8 @@ function f5_is_unaffected( version, unaffected )
         if( "_HF" >< first )
         {
           v_h = eregmatch( pattern:'([0-9.]+)_HF([0-9]+)', string:first );
-          if( ! is_array( v_h ) ) return;
+          if( ! is_array( v_h ) )
+            return;
 
           first = v_h[1];
           first_hotfix = v_h[2];
@@ -146,7 +182,8 @@ function f5_is_unaffected( version, unaffected )
         if( "_HF" >< last )
         {
           v_h = eregmatch( pattern:'([0-9.]+)_HF([0-9]+)', string:last );
-          if( ! is_array( v_h ) ) return;
+          if( ! is_array( v_h ) )
+            return;
 
           last = v_h[1];
           last_hotfix = v_h[2];
@@ -155,7 +192,7 @@ function f5_is_unaffected( version, unaffected )
         first += '.' + first_hotfix;
         last  += '.' + last_hotfix;
 
-        if( version_in_range( version:version + '.' + hotfix, test_version:first, test_version2:last ) )
+        if( version_in_range( version:version + '.' + f5_hotfix_from_kb(), test_version:first, test_version2:last ) )
           return TRUE;
       }
       else
@@ -163,7 +200,6 @@ function f5_is_unaffected( version, unaffected )
         if( version == uav )
           return TRUE;
       }
-
     }
   }
   return;
@@ -171,29 +207,31 @@ function f5_is_unaffected( version, unaffected )
 
 function check_f5_version( a, version )
 {
-  local_var a, version, v_h, c_version, c_hotfix, both, b, fvh, first_vuln_hotfix, low_hotfix, hi_hotfix, hotfixes, v, hi, low, v_high, v_low, first, last;
+  local_var a, version;
+  local_var v, c_version, hotfixes, low_hotfix, hi_hotfix, both, b, v_high, v_low, hi, low, fvh, first_vuln_hotfix, v_h, c_hotfix, first, last;
 
   # 11.5.1 HF4-HF8
   if( a =~ "[0-9.]+_HF([0-9]+)-HF([0-9]+)" )
   {
     v = eregmatch( pattern:'([0-9.]+)_HF', string:a );
-    if( isnull( v[1] ) ) return;
+    if( isnull( v[1] ) )
+      return;
 
     c_version = v[1];
 
     hotfixes = eregmatch( pattern:'[0-9.]+_HF([0-9]+)-HF([0-9]+)', string:a );
     if( isnull( hotfixes[1] ) || isnull( hotfixes[2] ) )
-        return;
+      return;
 
     low_hotfix = hotfixes[1];
     hi_hotfix  = hotfixes[2];
 
     if( version == c_version )
     {
-      if( int( hotfix ) < int( low_hotfix ) )
+      if( f5_hotfix_from_kb() < int( low_hotfix ) )
         return;
 
-      if( int( hotfix ) <= int( hi_hotfix ) )
+      if( f5_hotfix_from_kb() <= int( hi_hotfix ) )
         return TRUE;
 
     }
@@ -205,7 +243,8 @@ function check_f5_version( a, version )
     if( "-" >< a )
     {
       both = split( a, sep:'-', keep:FALSE );
-      if( isnull( both[1] ) ) return;
+      if( isnull( both[1] ) )
+        return;
 
       a = both[1];
       b = both[0];
@@ -223,31 +262,30 @@ function check_f5_version( a, version )
         {
           if( version == hi )
           {
-            fvh =  eregmatch( pattern:'([0-9.]+)_HF([0-9]+)', string:a );
+            fvh = eregmatch( pattern:'([0-9.]+)_HF([0-9]+)', string:a );
             if( ! isnull( fvh[2] ) )
             {
-              if( int( hotfix ) > int( fvh[2] ) )
+              if( f5_hotfix_from_kb() > int( fvh[2] ) )
                 return;
             }
           }
 
           if( version == low )
           {
-            fvh =  eregmatch( pattern:'([0-9.]+)_HF([0-9]+)', string:b );
+            fvh = eregmatch( pattern:'([0-9.]+)_HF([0-9]+)', string:b );
             if( ! isnull( fvh[2] ) )
             {
-              if( int( hotfix ) < int( fvh[2] ) )
+              if( f5_hotfix_from_kb() < int( fvh[2] ) )
                 return;
             }
           }
-
           return TRUE;
         }
       }
 
       if( "_HF" >< b )
       {
-        fvh =  eregmatch( pattern:'([0-9.]+)_HF([0-9]+)', string:b );
+        fvh = eregmatch( pattern:'([0-9.]+)_HF([0-9]+)', string:b );
         if( ! isnull( fvh[2] ) )
           first_vuln_hotfix = fvh[2];
       }
@@ -258,21 +296,21 @@ function check_f5_version( a, version )
     c_version = v_h[1];
     c_hotfix  = v_h[2];
 
-    if( isnull( c_version ) || isnull( c_hotfix ) ) return;
+    if( isnull( c_version ) || isnull( c_hotfix ) )
+      return;
 
     if( c_version == version )
     {
       # Versions known to be vulnerable: 11.5.1 HF6 - 11.5.1 HF10
       if( first_vuln_hotfix )
       {
-        if( int( hotfix ) < int( first_vuln_hotfix ) )
+        if( f5_hotfix_from_kb() < int( first_vuln_hotfix ) )
           return;
       }
 
-      if( int( hotfix ) <= int( c_hotfix ) )
+      if( f5_hotfix_from_kb() <= int( c_hotfix ) )
         return TRUE;
     }
-
     return;
   }
   else
@@ -280,7 +318,8 @@ function check_f5_version( a, version )
     if( "-" >< a )
     {
       both = split( a, sep:'-', keep:FALSE );
-      if( isnull( both[0] ) || isnull( both[1] ) ) return;
+      if( isnull( both[0] ) || isnull( both[1] ) )
+        return;
 
       first = both[0];
       last  = both[1];
@@ -294,7 +333,6 @@ function check_f5_version( a, version )
         return TRUE;
     }
   }
-
   return;
 }
 
@@ -305,22 +343,22 @@ function clean_version( v )
   ret = str_replace( string:v, find:';', replace:", " );
   ret = str_replace( string:ret, find:'_HF', replace:" HF" );
   ret = str_replace( string:ret, find:'-', replace:" - " );
-
   ret = ereg_replace( string:ret, pattern:', $', replace:"" );
-
   return ret;
 }
 
 function build_f5_report( affected_modules, unaffected_modules, version )
 {
+  local_var affected_modules, unaffected_modules, version;
+  local_var report, hotfix;
+
   report = 'Installed Version: ' + version + '\n';
 
-  if( hotfix ) report += 'Installed Hotfix: ' + hotfix;
+  hotfix = f5_hotfix_from_kb();
+  if( hotfix )
+    report += 'Installed Hotfix: ' + hotfix;
 
-  report +=  '\n\nAffected Modules:\n\n' + affected_modules + '\n';
-
-  report += '\nUnaffected:\n\n' + unaffected_modules + '\n';
-
+  report += '\n\nAffected Modules:\n\n' + affected_modules + '\n';
+  report += '\nUnaffected Modules:\n\n' + unaffected_modules + '\n';
   return report;
 }
-

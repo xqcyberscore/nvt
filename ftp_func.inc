@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: ftp_func.inc 12997 2019-01-09 13:45:00Z cfischer $
+# $Id: ftp_func.inc 13337 2019-01-29 07:15:09Z cfischer $
 #
 # Methods for handling FTP
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 12997 $
+# $Revision: 13337 $
 #
 ###############################################################################
 
@@ -32,8 +32,50 @@ global_var _ftp_func_debug;
 _ftp_func_debug = FALSE;
 
 # Global vars to avoid that we're repeatedly asking redis for something we already know.
-global_var __ftp_kb_login, __ftp_kb_pass;
+global_var _ftp_is_broken_array, __ftp_kb_login, __ftp_kb_pass;
 
+# nb: key is the port or NULL (if not previously checked), value TRUE/FALSE if broken or not
+_ftp_is_broken_array = make_array();
+
+# @brief Tries to open a TCP connection to a FTP server. If the remote server is a FTP server and the expected
+#        response was received the opened socket is returned.
+#
+# @param port The port of the remote FTP server.
+#
+# @return The opened socket or NULL if no connection could be opened, no or unexpected data was
+#         received or no port parameter was passed.
+#
+function ftp_open_socket( port ) {
+
+  local_var port;
+  local_var soc, banner;
+
+  if( ! port ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#ftp_open_socket" );
+    return NULL;
+  }
+
+  if( ftp_get_is_marked_broken( port:port ) )
+    return NULL;
+
+  soc = open_sock_tcp( port );
+  if( ! soc )
+    return NULL;
+
+  banner = ftp_recv_line( socket:soc );
+  if( ! ftp_verify_banner( data:banner ) ) {
+    close( soc );
+    return NULL;
+  }
+  return soc;
+}
+
+# @brief Closes a passed TCP socket of a FTP server by first sending a QUIT message to the service.
+#
+# @param socket The socket to close.
+#
+# @return NULL
+#
 function ftp_close( socket ) {
 
   local_var socket;
@@ -47,7 +89,7 @@ function ftp_close( socket ) {
   close( socket );
 }
 
-# @brief Returns the banner of a remove FTP service. This function will also mark
+# @brief Returns the banner of a remote FTP service. This function will also mark
 #        the remote service as "broken" if no banner was received at all.
 #        If a banner was received it is saved into the knowledge base.
 #        If a banner was requested for a specific port which was requested previously
@@ -55,7 +97,8 @@ function ftp_close( socket ) {
 #
 # @param port The port of the remote FTP service to connect to.
 #
-# @return The received banner or NULL if no port parameter was passed or no banner was received.
+# @return The banner of the remote host, NULL if no response was received or the remote port wasn't scanned
+#         and FALSE if no port parameter was passed.
 #
 function get_ftp_banner( port ) {
 
@@ -64,31 +107,37 @@ function get_ftp_banner( port ) {
 
   if( ! port ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#get_ftp_banner" );
-    return;
+    return FALSE;
   }
 
-  banner = get_kb_item( "ftp/banner/" + port );
+  # nb: nasl_builtin_find_service.c is setting ftp/banner but we want to catch the CSID/HELP response
+  # as well so we're using the uppercase FTP here.
+  banner = get_kb_item( "FTP/banner/" + port );
   if( banner )
     return( banner );
 
-  if( get_kb_item( "ftp/" + port + "/broken" ) )
-    exit( 0 ); # TBD: Return instead of exit() like below?
+  if( ftp_get_is_marked_broken( port:port ) )
+    return NULL;
 
   if( ! get_port_state( port ) )
-    return;
+    return NULL;
 
   soc = open_sock_tcp( port );
   if( ! soc ) {
-    set_kb_item( name:"ftp/" + port + "/broken", value:TRUE );
-    return;
+    ftp_set_is_marked_broken( port:port );
+    return NULL;
   }
 
   banner = ftp_recv_line( socket:soc, retry:1 );
-  ftp_close( socket:soc );
-  if( ! banner ) {
-    set_kb_item( name:"ftp/" + port + "/broken", value:TRUE );
-    return;
+  if( ! ftp_verify_banner( data:banner ) ) {
+    close( soc );
+    ftp_set_is_marked_broken( port:port );
+    return NULL;
   }
+
+  creds = ftp_get_kb_creds();
+  user  = creds["login"];
+  pass  = creds["pass"];
 
   # Client / Server Identification (CSID)
   # https://tools.ietf.org/html/draft-peterson-streamlined-ftp-command-extensions-10#section-6
@@ -97,65 +146,104 @@ function get_ftp_banner( port ) {
   # Example Server Response: 200 Name=Serv-U; Version=7.0.0.5; OS=Windows XP; OSVer=5.1.2600; CaseSensitive=0; DirSep=/;
   # Example Server Response when not logged in: 530 Not logged in.
   cmd = "CSID Name=OpenVAS; Version=" + OPENVAS_VERSION + ";";
-  csid_banner = get_ftp_cmd_banner( port:port, cmd:cmd );
-  if( egrep( pattern:"^200 .*", string:csid_banner ) ) {
+  csid_banner = get_ftp_cmd_banner( port:port, socket:soc, cmd:cmd );
+  if( egrep( pattern:"^200 .+", string:csid_banner ) ) {
     banner += csid_banner;
-  } else if( egrep( pattern:"^530 .*", string:csid_banner ) ) {
-
-    creds = ftp_get_kb_creds();
-    user = creds["login"];
-    pass = creds["pass"];
-
-    if( user && pass ) {
-      soc = open_sock_tcp( port );
-      if( soc ) {
-        if( ftp_authenticate( socket:soc, user:user, pass:pass ) ) {
-          csid_banner = ftp_send_cmd( socket:soc, cmd:cmd );
-          if( egrep( pattern:"^200 .*", string:csid_banner ) ) {
-            banner += csid_banner;
-            replace_kb_item( name:"ftp/" + cmd + "_banner/" + port, value:csid_banner );
-          }
-        }
-        ftp_close( socket:soc );
+  } else if( egrep( pattern:"^530 .+", string:csid_banner ) ) {
+    if( ftp_authenticate( socket:soc, user:user, pass:pass, skip_banner:TRUE ) ) {
+      csid_banner = ftp_send_cmd( socket:soc, cmd:cmd );
+      if( egrep( pattern:"^200 .+", string:csid_banner ) ) {
+        banner += csid_banner;
+        replace_kb_item( name:"ftp/" + cmd + "_banner/" + port, value:csid_banner );
       }
     }
   }
 
-  # TBD: Also include the output of the HELP command within the banner? (See e.g. sw_pure-ftpd_detect.nasl)
-  replace_kb_item( name:"ftp/banner/" + port, value:banner );
+  if( csid_banner )
+    set_kb_item( name:"ftp/" + port + "/csid_banner", value:csid_banner );
+
+  cmd = "HELP";
+  help_banner = get_ftp_cmd_banner( port:port, socket:soc, cmd:cmd );
+  if( egrep( pattern:"^530 .+", string:help_banner ) ) {
+    if( ftp_authenticate( socket:soc, user:user, pass:pass, skip_banner:TRUE ) ) {
+      help_banner = ftp_send_cmd( socket:soc, cmd:cmd );
+      if( egrep( pattern:"^200 .+", string:help_banner ) ) {
+        replace_kb_item( name:"ftp/" + cmd + "_banner/" + port, value:help_banner );
+      }
+    }
+  }
+
+  ftp_close( socket:soc );
+
+  if( help_banner )
+    set_kb_item( name:"ftp/" + port + "/help_banner", value:help_banner );
+
+  replace_kb_item( name:"FTP/banner/" + port, value:banner );
   return banner;
 }
 
-function get_ftp_cmd_banner( port, cmd ) {
+# @brief Returns the answer of a remote FTP service to a specific command. This function will
+#        also mark the remote service as "broken" if no answer was received at all.
+#        If a response to a command was received it is saved into the knowledge base.
+#        If a command was requested for a specific port which was requested previously
+#        the cached response will be returned instead of doing a new request.
+#
+# @param port   The port (mandatory) of the remote FTP service to connect to.
+# @param socket An existing socket (optional) to be used to send the command in the case no
+#               existing response is cached within the KB. Please note that a custom passed
+#               socket won't by closed by this function and needs to be closed within the calling VT.
+# @param cmd    The command to send to the remote FTP service (e.g. HELP).
+#
+# @return The response of the remote host to the specific command, NULL if no response was received
+#         or the remote port wasn't scanned and FALSE if no port or cmd parameter was passed.
+#
+function get_ftp_cmd_banner( port, socket, cmd ) {
 
-  local_var banner, soc, port, cmd;
+  local_var port, socket, cmd;
+  local_var banner, socket_no_close;
 
   if( ! port ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#get_ftp_cmd_banner" );
-    return;
+    return FALSE;
   }
 
   if( ! cmd ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cmd#-#get_ftp_cmd_banner" );
-    return;
+    return FALSE;
   }
 
   banner = get_kb_item( "ftp/" + cmd + "_banner/" + port );
-  if( banner ) return banner;
-  if( get_kb_item( "ftp/" + port + "/broken" ) ) exit( 0 );
+  if( banner )
+    return( banner );
 
-  if( ! get_port_state( port ) ) return;
-  soc = open_sock_tcp( port );
-  if( ! soc ) {
-    set_kb_item( name:"ftp/" + port + "/broken", value:TRUE );
-    return;
+  if( ftp_get_is_marked_broken( port:port ) )
+    return NULL;
+
+  if( ! get_port_state( port ) )
+    return NULL;
+
+  if( ! socket ) {
+    socket = open_sock_tcp( port );
+    if( ! socket ) {
+      ftp_set_is_marked_broken( port:port );
+      return NULL;
+    }
+    banner = ftp_recv_line( socket:socket );
+    if( ! ftp_verify_banner( data:banner ) ) {
+      close( socket );
+      return NULL;
+    }
+  } else {
+    socket_no_close = TRUE;
   }
-  ftp_recv_line( socket:soc );
-  banner = ftp_send_cmd( socket:soc, cmd:cmd );
-  ftp_close( socket:soc );
-  if( ! banner ) {
-    return;
-  }
+
+  banner = ftp_send_cmd( socket:socket, cmd:cmd );
+  if( ! socket_no_close )
+    ftp_close( socket:socket );
+
+  if( ! ftp_verify_banner( data:banner ) )
+    return NULL;
+
   replace_kb_item( name:"ftp/" + cmd + "_banner/" + port, value:banner );
   return banner;
 }
@@ -190,7 +278,7 @@ function ftp_recv_line( socket, retry ) {
   r = recv_line( socket:socket, length:65535 );
   n = 0;
   if( _ftp_func_debug ) t1 = unixtime();
-  while( strlen( r ) == 0 && n ++ < retry )
+  while( strlen( r ) == 0 && n++ < retry )
     r = recv_line( socket:socket, length:65535 );
     if( _ftp_func_debug ) {
       t2 = unixtime();
@@ -258,25 +346,42 @@ function ftp_recv_data( socket, line ) {
   return recv( socket:socket, min:bytes, length:bytes );
 }
 
+# @brief Logs into the remote FTP server
 #
-# Logs into the remote FTP server
+# @param socket      The already opened TCP socket of the remote FTP service to connect to.
+# @param user        The username for the login.
+# @param pass        The password for the login.
+# @param skip_banner Specifies (optional) if the function should "grab" the initial banner
+#                    of the service before sending the login. This can be set to TRUE if
+#                    e.g. the calling VT has already did that step.
 #
-function ftp_authenticate( socket, user, pass ) {
+# @return TRUE if the login was successful, FALSE otherwise and NULL in the case no socket
+#              parameter was passed.
+#
+function ftp_authenticate( socket, user, pass, skip_banner ) {
 
-  local_var r, socket, user, pass;
+  local_var socket, user, pass, skip_banner;
+  local_var r;
 
   if( ! socket ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#socket#-#ftp_authenticate" );
-    return;
+    return NULL;
   }
 
-  if( ! user ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#user#-#ftp_authenticate" );
-  if( ! pass ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#pass#-#ftp_authenticate" );
+  # nb: Don't return NULL for both as some VTs required an empty user and/or pass to be passed.
+  if( ! user )
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#user#-#ftp_authenticate" );
 
-  r = ftp_recv_line( socket:socket ); # Receive the banner
+  if( ! pass )
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#pass#-#ftp_authenticate" );
+
+  if( ! skip_banner )
+    r = ftp_recv_line( socket:socket ); # Receive the banner
+
   send( socket:socket, data:'USER ' + user + '\r\n' );
   r = ftp_recv_line( socket:socket );
-  if( r[0] != '3' && r[0] != '2' ) return FALSE;
+  if( r[0] != '3' && r[0] != '2' )
+    return FALSE;
 
   send( socket:socket, data:'PASS ' + pass + '\r\n' );
   r = ftp_recv_line( socket:socket );
@@ -310,45 +415,114 @@ function ftp_pasv( socket ) {
   return port;
 }
 
-function get_ftp_port( default ) {
+# @brief Returns all FTP ports of the target system which are saved
+#        in the KB entry "Services/ftp" found by the scanner. If no
+#        ports where found open or no "default" parameter is passed
+#        (if "nodefault" isn't set to TRUE) it will exit. In the case
+#        where the "unscanned_closed" scanner setting is set to "no"
+#        it will return the port passed via the default parameter.
+#
+# @note This function will fork on multiple open ports.
+#
+# @param default          The port to return if "unscanned_closed" is set to "no" and no ports have been found open.
+# @param nodefault        Don't exit if no "default" parameter is passed, it still will return if no FTP servers are detected at all.
+# @param ignore_broken    Returns the ports even if they are known to be "broken".
+# @param ignore_unscanned Returns the ports even if they where "unscanned" previously.
+#
+# @return The open / found FTP ports or the port passed via the default parameter in the case of no found ports
+#         and "unscanned_closed" is set to "no".
+#
+function get_ftp_port( default, nodefault, ignore_broken, ignore_unscanned ) {
 
-  local_var default, port, p;
+  local_var default, nodefault, ignore_broken, ignore_unscanned;
+  local_var port;
 
-  if( ! default ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#default#-#get_ftp_port" );
+  if( ! default && ! nodefault ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#default#-#get_ftp_port" );
+    exit( 0 );
+  }
 
   port = get_kb_item( "Services/ftp" );
-  if( port ) default = port;
+  if( port )
+    default = port;
 
   # Includes e.g. PJL ports which are printing everything
   # sent to them so exit for such a port here
-  if( ftp_is_fragile_port( port:default ) ) exit( 0 );
+  if( ftp_is_fragile_port( port:default ) )
+    exit( 0 );
 
-  p = get_kb_item( "ftp/" + default + "/broken" );
-  if( p ) exit( 0 );
+  if( ! ignore_broken && ftp_get_is_marked_broken( port:default ) )
+    exit( 0 );
 
-  if( ! get_port_state( default ) ) exit( 0 );
+  if( ! ignore_unscanned && ! get_port_state( default ) )
+    exit( 0 );
 
   return default;
 }
 
-# Duplicated from misc_func.inc
-function ftp_is_fragile_port( port ) {
+# @brief Returns all FTP ports of the target system which are saved
+#        in the KB entry "Services/ftp" found by the scanner. If no
+#        ports where found open or no list is passed to the "default_ports"
+#        parameter the function will return an empty list. In the case
+#        where the "unscanned_closed" scanner setting is set to "no" it
+#        will return a default set of FTP ports (namely 21 and 990)
+#        or (if passed) the ports included in the list of the default_ports
+#        parameter.
+#
+# @note  In contrast to @ref get_ftp_port this function will not fork
+#        and return a list instead. This should be used e.g. for
+#        Detection-VTs where we want to make sure that we're not getting
+#        blocked by the remote service with to many concurrent connections.
+#
+# @param default_list     The list of ports to return (overwriting the internal defaults) if "unscanned_closed"
+#                         is set to "no" and no ports have been found open.
+# @param ignore_broken    Returns the ports even if they are known to be "broken".
+# @param ignore_unscanned Returns the ports even if they where "unscanned" previously.
+#
+# @return The open / found FTP ports, if none where found an empty list. In the case of no found ports and
+#         "unscanned_closed" is set to "no" a set of default ports or the list passed to the default_ports
+#         parameter.
+#
+function ftp_get_ports( default_list, ignore_broken, ignore_unscanned ) {
 
-  local_var port, fragile_ports, fragile_port;
+  local_var default_list, ignore_broken, ignore_unscanned;
+  local_var final_port_list, check_port_list, default_ports, num_ports, ports, port;
 
-  if( ! port ) {
-    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#ftp_is_fragile_port" );
-    return;
+  final_port_list = make_list();
+  check_port_list = make_list();
+  default_ports = make_list( 21, 990 );
+  num_ports = 0;
+
+  ports = get_kb_list( "Services/ftp" );
+  if( ports && typeof( ports ) == "array" ) {
+    foreach port( ports ) {
+      num_ports++;
+      check_port_list = make_list( check_port_list, port );
+    }
   }
 
-  fragile_ports = get_kb_list( "Services/fragile_port" );
-  if( ! fragile_ports ) return;
-
-  foreach fragile_port( fragile_ports ) {
-    if( port == fragile_port ) return TRUE;
+  if( num_ports == 0 ) {
+    if( default_list && typeof( default_list ) == "array" )
+      check_port_list = default_list;
+    else
+      check_port_list = default_ports;
   }
 
-  return;
+  foreach port( check_port_list ) {
+    # Includes e.g. PJL ports which are printing everything
+    # sent to them so don't include them here.
+    if( ftp_is_fragile_port( port:port ) )
+      continue;
+
+    if( ! ignore_broken && ftp_get_is_marked_broken( port:port ) )
+      continue;
+
+    if( ! ignore_unscanned && ! get_port_state( port ) )
+      continue;
+
+    final_port_list = make_list( final_port_list, port );
+  }
+  return final_port_list;
 }
 
 # @brief Returns an array containing the username/password credentials pair for a FTP login.
@@ -392,4 +566,107 @@ function ftp_get_kb_creds() {
   ret_array["login"] = login;
   ret_array["pass"]  = pass;
   return ret_array;
+}
+
+# @brief Returns the info if a remote FTP server was internally (in the KB)
+#        marked as "broken". It will also save the information in an internal
+#        array to avoid that redis is queried again for the same info.
+#
+# @param port The port of the remote FTP server.
+#
+# @return TRUE if the remote FTP server was marked as broken, FALSE otherwise and
+#         NULL in the case where the port parameter wasn't passed.
+#
+function ftp_get_is_marked_broken( port ) {
+
+  local_var port;
+  local_var marked_broken_list, marked_broken;
+  # nb: _ftp_is_broken_array is a global_var (see on top)
+
+  if( ! port ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#ftp_get_is_marked_broken" );
+    return NULL;
+  }
+
+  # Used to not query redis with the get_kb_item below
+  # to save some requests.
+  if( ! isnull( _ftp_is_broken_array[port] ) ) {
+    if( _ftp_is_broken_array[port] )
+      return TRUE;
+    else
+      return FALSE;
+  }
+
+  marked_broken = get_kb_item( "ftp/" + port + "/broken" );
+  if( marked_broken ) {
+    _ftp_is_broken_array[port] = TRUE;
+  } else {
+    _ftp_is_broken_array[port] = FALSE;
+    marked_broken = FALSE;
+  }
+  return marked_broken;
+}
+
+# @brief Sets if a remote FTP server should be marked as "broken" to other NVTs.
+#        The status is set within the following KB entries:
+#        "ftp/" + port + "/broken" and "ftp/broken".
+#
+# @param port The port of the remote FTP server.
+#
+# @return TRUE if the status was successfully saved within the KB and
+#         NULL if no port parameter was passed.
+#
+function ftp_set_is_marked_broken( port ) {
+
+  local_var port;
+
+  if( ! port ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#ftp_set_is_marked_broken" );
+    return NULL;
+  }
+
+  set_kb_item( name:"ftp/is_broken", value:TRUE );
+  set_kb_item( name:"ftp/" + port + "/broken", value:TRUE );
+  _ftp_is_broken_array[port] = TRUE;
+  return TRUE;
+}
+
+# @brief Verify if the received/passed data is related to a FTP connection / server.
+#
+# @param data The data to be verified.
+#
+# @return TRUE if the passed data is related to a FTP connection / server, FALSE otherwise.
+#
+function ftp_verify_banner( data ) {
+
+  local_var data;
+
+  data = chomp( data );
+  if( ! data )
+    return FALSE;
+
+  if( data =~ "^[0-9]{3}[ -].+" || "FTP server ready" >< data || "FTPd " >< data || "FTPD" >< data )
+    return TRUE;
+
+  return FALSE;
+}
+
+# Duplicated from misc_func.inc
+function ftp_is_fragile_port( port ) {
+
+  local_var port, fragile_ports, fragile_port;
+
+  if( ! port ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#ftp_is_fragile_port" );
+    return;
+  }
+
+  fragile_ports = get_kb_list( "Services/fragile_port" );
+  if( ! fragile_ports ) return;
+
+  foreach fragile_port( fragile_ports ) {
+    if( port == fragile_port ) return TRUE;
+  }
+
+  return;
 }

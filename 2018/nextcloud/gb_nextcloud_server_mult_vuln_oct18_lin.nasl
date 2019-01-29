@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nextcloud_server_mult_vuln_oct18_lin.nasl 12185 2018-11-01 11:19:37Z asteins $
+# $Id: gb_nextcloud_server_mult_vuln_oct18_lin.nasl 13338 2019-01-29 07:44:39Z mmartin $
 #
 # Nextcloud Server < 14.0.0 Multiple Vulnerabilities (NC-SA-2018-011, NC-SA-2018-012, NC-SA-2018-014) (Linux)
 #
@@ -27,11 +27,11 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112412");
-  script_version("$Revision: 12185 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-01 12:19:37 +0100 (Thu, 01 Nov 2018) $");
+  script_version("$Revision: 13338 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-29 08:44:39 +0100 (Tue, 29 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-11-01 11:49:50 +0100 (Thu, 01 Nov 2018)");
-  script_tag(name:"cvss_base", value:"6.2");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:M/C:C/I:C/A:N");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 

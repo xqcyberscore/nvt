@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_4174_1.nasl 12882 2018-12-27 07:14:01Z santu $
+# $Id: gb_suse_2018_4174_1.nasl 13338 2019-01-29 07:44:39Z mmartin $
 #
 # SuSE Update for salt openSUSE-SU-2018:4174-1 (salt)
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814576");
-  script_version("$Revision: 12882 $");
+  script_version("$Revision: 13338 $");
   script_cve_id("CVE-2018-15750", "CVE-2018-15751");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-27 08:14:01 +0100 (Thu, 27 Dec 2018) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-29 08:44:39 +0100 (Tue, 29 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-12-19 10:09:00 +0100 (Wed, 19 Dec 2018)");
   script_name("SuSE Update for salt openSUSE-SU-2018:4174-1 (salt)");
   script_category(ACT_GATHER_INFO);

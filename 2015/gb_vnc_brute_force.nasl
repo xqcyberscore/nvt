@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vnc_brute_force.nasl 13014 2019-01-10 09:55:42Z cfischer $
+# $Id: gb_vnc_brute_force.nasl 13328 2019-01-28 13:17:49Z cfischer $
 #
 # VNC Brute Force Login
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106056");
-  script_version("$Revision: 13014 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-10 10:55:42 +0100 (Thu, 10 Jan 2019) $");
+  script_version("$Revision: 13328 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-28 14:17:49 +0100 (Mon, 28 Jan 2019) $");
   script_tag(name:"creation_date", value:"2015-12-10 09:59:19 +0700 (Thu, 10 Dec 2015)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
@@ -43,18 +43,20 @@ if(description)
 
   script_add_preference(name:"Passwords", type:"entry", value:"admin, vnc, test, password");
 
-  script_tag(name:"summary", value:"Try to log in with given passwords via
-  VNC protocol.");
+  script_tag(name:"summary", value:"Try to log in with given passwords via VNC protocol.");
 
   script_tag(name:"insight", value:"This script tries to authenticate to a VNC server with
-  the passwords set in the password preference.
+  the passwords set in the password preference. It will also test and report if no authentication
+  / password is required at all.
 
   Note: Some VNC servers have a blacklisting scheme that blocks IP addresses after five unsuccessful
   connection attempts for a period of time. The script will abort the brute force attack if it
   encounters that it gets blocked.
+
   Note as well that passwords can be max. 8 characters long.");
 
-  script_tag(name:"solution", value:"Change the password to something hard to guess.");
+  script_tag(name:"solution", value:"Change the password to something hard to guess or enable password
+  protection at all.");
 
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_active");
@@ -98,7 +100,6 @@ function reverseBits( data ) {
 }
 
 passwords = script_get_preference( "Passwords" );
-
 if( ! passwords || passwords == "" )
   exit( 0 );
 else
@@ -116,7 +117,6 @@ if( ! security_types = get_kb_list( "vnc/" + port + "/security_types" ) )
 
 # Makes sure that the "1" security type is detected before the "2" (if both are possible at all) below.
 security_types = sort( security_types );
-
 foreach password( pw_list ) {
 
   soc = open_sock_tcp( port );

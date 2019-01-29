@@ -1,7 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-#
-# $Id: citrix_version_func.inc 10986 2018-08-15 13:38:20Z cfischer $
+# $Id: citrix_version_func.inc 13333 2019-01-28 15:37:29Z cfischer $
 #
 # Functions for Citrix Version Checks
 #
@@ -26,13 +25,14 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301
 # USA.
 #
-# $Revision: 10986 $
+# $Revision: 13333 $
 #
 ###############################################################################
 
 function report_if_citrix_xenserver_is_vulnerable( version, hotfixes, patches )
 {
-  local_var version, hotfixes, patches, a, av, fixes, patch;
+  local_var version, hotfixes, patches;
+  local_var a, av, fixes, patch;
 
   if( ! version || ! patches || ! hotfixes )
   {
@@ -56,7 +56,7 @@ function report_if_citrix_xenserver_is_vulnerable( version, hotfixes, patches )
     return;
 
   if( "No hotfixes installed" >< hotfixes )
-    report_missing_xenserver_patch( version:version, fix:patches[ av ] );
+    report_missing_xenserver_patch( version:version, fix:patches[av] );
 
   fixes = make_list();
 
@@ -73,19 +73,15 @@ function report_if_citrix_xenserver_is_vulnerable( version, hotfixes, patches )
     report_missing_xenserver_patch( version:version, fix:fixes );
 
   return;
-
 }
 
 function report_missing_xenserver_patch( version, fix )
 {
+  local_var version, fix;
+  local_var report;
 
-  # TODO: Remove once openvas-nasl-lint can handle such a missing include
-  # from within the same include.
-  if(!defined_func("join")) include("misc_func.inc");
-
-  local_var version, fix, report;
-
-  report = 'Installed version: ' + version + '\nMissing hotfix:    ' + join( list:fix, sep:" / ");
+  report  = 'Installed version: ' + version + '\n';
+  report += 'Missing hotfix:    ' + join( list:fix, sep:" / " );
   security_message( port:0, data:report );
   exit( 0 );
 }

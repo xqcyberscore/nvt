@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_4304_1.nasl 12942 2019-01-04 13:53:49Z santu $
+# $Id: gb_suse_2018_4304_1.nasl 13338 2019-01-29 07:44:39Z mmartin $
 #
 # SuSE Update for xen openSUSE-SU-2018:4304-1 (xen)
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852221");
-  script_version("$Revision: 12942 $");
+  script_version("$Revision: 13338 $");
   script_cve_id("CVE-2018-15468", "CVE-2018-15469", "CVE-2018-15470", "CVE-2018-18883", "CVE-2018-19961", "CVE-2018-19962", "CVE-2018-19965", "CVE-2018-19966", "CVE-2018-3646");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-04 14:53:49 +0100 (Fri, 04 Jan 2019) $");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-29 08:44:39 +0100 (Tue, 29 Jan 2019) $");
   script_tag(name:"creation_date", value:"2019-01-01 04:01:26 +0100 (Tue, 01 Jan 2019)");
   script_name("SuSE Update for xen openSUSE-SU-2018:4304-1 (xen)");
   script_category(ACT_GATHER_INFO);

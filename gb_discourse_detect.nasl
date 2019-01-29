@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_discourse_detect.nasl 12304 2018-11-10 12:18:34Z cfischer $
+# $Id: gb_discourse_detect.nasl 13336 2019-01-29 07:11:23Z ckuersteiner $
 #
 # Discourse Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108454");
-  script_version("$Revision: 12304 $");
+  script_version("$Revision: 13336 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-10 13:18:34 +0100 (Sat, 10 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-29 08:11:23 +0100 (Tue, 29 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-08-04 23:29:30 +0200 (Sat, 04 Aug 2018)");
   script_name("Discourse Detection");
   script_category(ACT_GATHER_INFO);
@@ -65,6 +65,7 @@ foreach dir( make_list_unique( "/", "/forum", "/forums", "/community", cgi_dirs(
   if( dir == "/" ) dir = "";
 
   buf = http_get_cache( item:dir + "/", port:port );
+  buf2 = http_get_cache( item:dir + "/login", port:port );
 
   if( ( buf =~ "^HTTP/1\.[01] 200" &&
          ( '<meta name="discourse_theme_key"' >< buf ||
@@ -75,7 +76,8 @@ foreach dir( make_list_unique( "/", "/forum", "/forums", "/community", cgi_dirs(
            "<script>Discourse._registerPluginCode" >< buf ||
            "Discourse.start();" >< buf ) ) ||
       ( buf =~ "^HTTP/1\.[01] 500" && "<title>Oops - Error 500</title>" >< buf && "<h1>Oops</h1>" >< buf &&
-        "<p>The software powering this discussion forum encountered an unexpected problem. We apologize for the inconvenience.</p>" >< buf ) ) {
+        "<p>The software powering this discussion forum encountered an unexpected problem. We apologize for the inconvenience.</p>" >< buf ) ||
+      ( buf2 =~ "^HTTP/1\.[01] 200" && '<meta name="generator" content="Discourse' >< buf2)) {
 
     version = "unknown";
     # CPEs not registered yet
@@ -92,6 +94,15 @@ foreach dir( make_list_unique( "/", "/forum", "/forums", "/community", cgi_dirs(
     } else if( vers[1] ) {
       version = vers[1];
       cpe += ":" + version;
+    } else {
+      vers = eregmatch( string:buf2, pattern:'content="Discourse ([0-9.]+)(\\.beta[0-9]+)?' );
+      if( vers[1] && vers[2] ) {
+        version = vers[1] + vers[2];
+        cpe += ":" + version;
+      } else if( vers[1] ) {
+        version = vers[1];
+        cpe += ":" + version;
+      }
     }
 
     if( buf =~ "^HTTP/1\.[01] 500" )
@@ -104,7 +115,7 @@ foreach dir( make_list_unique( "/", "/forum", "/forums", "/community", cgi_dirs(
                                               cpe:cpe,
                                               concluded:vers[0],
                                               extra:extra ),
-                                              port:port );
+                 port:port );
     # nb: The 404 page "Oops! That page doesn't exist or is private." has the same generator meta name like all other pages
     # so exit here for the case where the web server is e.g. throwing a 200 for non existent pages.
     exit( 0 );

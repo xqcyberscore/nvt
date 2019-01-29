@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: sharp_printers.inc 11004 2018-08-16 11:18:32Z cfischer $
+# $Id: sharp_printers.inc 13332 2019-01-28 15:16:13Z cfischer $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -22,7 +22,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 11004 $
+# $Revision: 13332 $
 #
 ###############################################################################
 
@@ -34,7 +34,6 @@ function get_sharp_detect_urls() {
 
   sharp_detect_urls = make_array();
 
-  # URL                                   # Regex
   sharp_detect_urls['/'] = '<title>(MX-M260N|AR-M155|AR-M450U|AR-M550U|MX-M700N|MX-M620N|AR-M351U|AR-M451U|MX-M550N|AR-M700U|AR-M276|MX-M310N|AR-168D|AR-M236|MX-M450U|AR-M237|MX-M350N|MX-M550U|AR-M160|AL-2051|AL-2061|MX-B201D)</title>';
   sharp_detect_urls['/login.html?/main.html'] = '<title>.* - ([^<]+)</title>';
   sharp_detect_urls['/link.html'] = '>(AR-M350|im3511|im4512)<';
@@ -43,24 +42,23 @@ function get_sharp_detect_urls() {
 }
 
 function sharp_default_logins() {
-
-  return make_list("admin:Sharp","admin:1234","Administrator:admin","administrator:admin","admin:admin","admin:00000");
+  return make_list("admin:Sharp", "admin:1234", "Administrator:admin", "administrator:admin", "admin:admin", "admin:00000");
 }
 
 function check_sharp_default_login( model, port ) {
 
-  # TODO: Remove once openvas-nasl-lint can handle such a missing include
-  # from within the same include.
-  if(!defined_func("get_http_user_agent")) include("http_func.inc");
+  local_var model, port;
+  local_var sharp, logins, host, useragent, login, user_pass, username, password, login_data, len;
+  local_var req, buf, userpass, userpass64, c_buf;
+  # nb: sharp_cookie, sharp_last_user and sharp_last_pass are global vars
 
-  local_var model, port, userame, password, sharp, host, useragent;
-
-  sharp = sharp_login_details( model:model, port:port );
-  if(!sharp) return FALSE;
+  sharp = sharp_login_details(model:model, port:port);
+  if(!sharp)
+    return FALSE;
 
   logins = sharp_default_logins();
 
-  host = http_host_name( port:port );
+  host = http_host_name(port:port);
   useragent = get_http_user_agent();
 
   foreach login (logins) {
@@ -90,7 +88,6 @@ function check_sharp_default_login( model, port ) {
         if(eregmatch(pattern:sharp['login_success'], string:buf)) {
           return 2; # setup without auth
         }
-
       }
 
       req = string("POST " , sharp['login_url'], " HTTP/1.1\r\n",
@@ -100,10 +97,10 @@ function check_sharp_default_login( model, port ) {
                    "Content-Type: application/x-www-form-urlencoded\r\n",
                    "Content-Length: ", len, "\r\n");
 
-      if(sharp_cookie) req +=  string("Cookie: ", sharp_cookie, "\r\n");
+      if(sharp_cookie)
+        req +=  string("Cookie: ", sharp_cookie, "\r\n");
 
       req += string("\r\n",login_data,"\r\n");
-
     }
 
     else if(sharp['req_type'] == "GET") {
@@ -119,12 +116,11 @@ function check_sharp_default_login( model, port ) {
         c_buf = http_send_recv(port:port, data:req + '\r\n', bodyonly:FALSE);
         sharp_error_exit(buf:c_buf);
 
-        if(c_buf !~ "HTTP/1.. 401" && "HTTP/1.1 302" >!< c_buf) return 2; # setup without auth
+        if(c_buf !~ "HTTP/1.. 401" && "HTTP/1.1 302" >!< c_buf)
+          return 2; # setup without auth
 
         req += string("Authorization: Basic ", userpass64, "\r\n\r\n");
-
       }
-
     } else {
       return FALSE;
     }
@@ -140,13 +136,13 @@ function check_sharp_default_login( model, port ) {
         req = string(sharp['req_type_success'], " ", sharp['login_url_success'], " HTTP/1.1\r\n",
                     "Host: ", host, "\r\n");
 
-        if(sharp_cookie) req +=  string("Cookie: ", sharp_cookie, "\r\n");
+        if(sharp_cookie)
+          req +=  string("Cookie: ", sharp_cookie, "\r\n");
 
         req += string("User-Agent: ", useragent, "\r\n\r\n");
 
         buf = http_send_recv(port:port, data:req, bodyonly:FALSE);
         sharp_error_exit(buf:buf);
-
       }
 
       if(eregmatch(pattern:sharp['login_success'], string:buf)) {
@@ -162,6 +158,7 @@ function check_sharp_default_login( model, port ) {
 function sharp_login_details( model, port ) {
 
   local_var model, port;
+  local_var sharp;
 
   sharp = make_array();
 
@@ -198,7 +195,8 @@ function sharp_login_details( model, port ) {
      model == "MX-M503N"  ||
      model == "MX-B402SC") {
 
-    if(!sharp_cookie) sharp_set_cookie( url:'/main.html', port:port );
+    if(!sharp_cookie)
+      sharp_set_cookie( url:'/main.html', port:port );
 
     sharp['req_type'] = "POST";
     sharp['login_url'] = '/login.html?/main.html';
@@ -253,25 +251,27 @@ function sharp_login_details( model, port ) {
 
 function build_sharp_cpe(model) {
 
+  local_var model;
+
   model = tolower(model);
 
-  if(model == "") return 'cpe:/h:sharp';
-
-  return 'cpe:/h:sharp:' + model;
+  if(model == "")
+    return 'cpe:/h:sharp';
+  else
+    return 'cpe:/h:sharp:' + model;
 }
 
-function sharp_set_cookie( url, port ) {
-
-  # TODO: Remove once openvas-nasl-lint can handle such a missing include
-  # from within the same include.
-  if(!defined_func("http_send_recv")) include("http_func.inc");
+function sharp_set_cookie(url, port) {
 
   local_var url, port;
+  local_var req, buf, co;
+  # nb: sharp_cookie is a global var
 
   req = http_get(item:url, port:port);
   buf = http_send_recv(port:port, data:req, bodyonly:FALSE);
 
-  if("Set-Cookie:" >!< buf) return FALSE;
+  if("Set-Cookie:" >!< buf)
+    return FALSE;
 
   co = eregmatch(pattern:"Set-Cookie: ([^; ]+)", string:buf);
   if(!isnull(co[1])) {
@@ -284,8 +284,11 @@ function sharp_set_cookie( url, port ) {
 function update_cookie(buf) {
 
   local_var buf;
+  local_var co;
+  # nb: sharp_cookie is a global var
 
-  if("Set-Cookie:" >!< buf) return FALSE;
+  if("Set-Cookie:" >!< buf)
+    return FALSE;
 
   co = eregmatch(pattern:"Set-Cookie: ([^; ]+)", string:buf);
   if(!isnull(co[1])) {
@@ -297,7 +300,10 @@ function update_cookie(buf) {
 
 function sharp_error_exit(buf) {
 
-  if(!buf || ereg(pattern:"HTTP/1.(0|1) (404|500)", string: buf))exit(0);
+  local_var buf;
+
+  if(!buf || ereg(pattern:"HTTP/1\.[01] (404|500)", string: buf))
+    exit(0);
 
   return TRUE;
 }

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_limesurvey_xss_vuln.nasl 13109 2019-01-17 07:42:10Z ckuersteiner $
+# $Id: gb_limesurvey_xss_vuln.nasl 13338 2019-01-29 07:44:39Z mmartin $
 #
 # LimeSurvey < 2.72.4 XSS Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:limesurvey:limesurvey";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141878");
-  script_version("$Revision: 13109 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-17 08:42:10 +0100 (Thu, 17 Jan 2019) $");
+  script_version("$Revision: 13338 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-29 08:44:39 +0100 (Tue, 29 Jan 2019) $");
   script_tag(name:"creation_date", value:"2019-01-16 17:01:07 +0700 (Wed, 16 Jan 2019)");
-  script_tag(name:"cvss_base", value:"4.7");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:M/C:P/I:P/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2017-18358");
 

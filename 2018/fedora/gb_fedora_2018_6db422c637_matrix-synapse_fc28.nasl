@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_6db422c637_matrix-synapse_fc28.nasl 11471 2018-09-19 11:17:08Z santu $
+# $Id: gb_fedora_2018_6db422c637_matrix-synapse_fc28.nasl 13338 2019-01-29 07:44:39Z mmartin $
 #
 # Fedora Update for matrix-synapse FEDORA-2018-6db422c637
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875069");
-  script_version("$Revision: 11471 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:17:08 +0200 (Wed, 19 Sep 2018) $");
+  script_version("$Revision: 13338 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-29 08:44:39 +0100 (Tue, 29 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-09-15 07:42:17 +0200 (Sat, 15 Sep 2018)");
   script_cve_id("CVE-2018-16515", "CVE-2018-12291");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for matrix-synapse FEDORA-2018-6db422c637");
   script_tag(name:"summary", value:"Check the version of matrix-synapse");

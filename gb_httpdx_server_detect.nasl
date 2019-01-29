@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_httpdx_server_detect.nasl 12875 2018-12-21 15:01:59Z cfischer $
+# $Id: gb_httpdx_server_detect.nasl 13327 2019-01-28 13:11:03Z cfischer $
 #
 # httpdx Server Version Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800960");
-  script_version("$Revision: 12875 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-21 16:01:59 +0100 (Fri, 21 Dec 2018) $");
+  script_version("$Revision: 13327 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-28 14:11:03 +0100 (Mon, 28 Jan 2019) $");
   script_tag(name:"creation_date", value:"2009-10-23 16:18:41 +0200 (Fri, 23 Oct 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -37,7 +37,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_dependencies("find_service.nasl", "ftpserver_detect_type_nd_version.nasl");
-  script_require_ports("Services/www", "Services/ftp", 80, 21);
+  script_require_ports("Services/www", 80, "Services/ftp", 21, 990);
 
   script_tag(name:"summary", value:"Detection of httpdx Server.
 
@@ -54,47 +54,47 @@ include("ftp_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 
-ftpPorts = get_kb_list( "Services/ftp" );
-if( ! ftpPorts ) ftpPorts = make_list( 21 );
-
+ftpPorts = ftp_get_ports();
 foreach port( ftpPorts ) {
 
-  if( get_port_state( port ) ) {
+  banner = get_ftp_banner( port:port );
+  if( ! banner || "httpdx" >!< banner )
+    continue;
 
-    banner = get_ftp_banner( port:port );
-    if( banner && "httpdx" >< banner ) {
-      vers = "unknown";
-      httpdxVer = eregmatch( pattern:"httpdx.([0-9.]+[a-z]?)", string:banner );
-      if( ! isnull( httpdxVer[1] ) ) {
-        set_kb_item( name:"httpdx/" + port + "/Ver", value:httpdxVer[1] );
-        vers = httpdxVer[1];
-      }
+  set_kb_item( name:"httpdx/installed", value:TRUE );
+  vers = "unknown";
+  install = port + "/tcp";
 
-      set_kb_item( name:"httpdx/installed", value:TRUE );
-
-      cpe = build_cpe( value:vers, exp:"^([0-9.]+([a-z]+)?)", base:"cpe:/a:jasper:httpdx:" );
-      if( isnull( cpe ) )
-        cpe = 'cpe:/a:jasper:httpdx';
-
-      register_product( cpe:cpe, location:"/", port:port, service:"ftp" );
-
-      log_message( data:build_detection_report( app:"httpdx",
-                                                version:vers,
-                                                install:"/",
-                                                cpe:cpe,
-                                                concluded:httpdxVer[0] ),
-                                                port:port );
-    }
+  httpdxVer = eregmatch( pattern:"httpdx.([0-9.]+[a-z]?)", string:banner );
+  if( ! isnull( httpdxVer[1] ) ) {
+    set_kb_item( name:"httpdx/" + port + "/Ver", value:httpdxVer[1] );
+    vers = httpdxVer[1];
   }
+
+  cpe = build_cpe( value:vers, exp:"^([0-9.]+([a-z]+)?)", base:"cpe:/a:jasper:httpdx:" );
+  if( ! cpe )
+    cpe = "cpe:/a:jasper:httpdx";
+
+  register_product( cpe:cpe, location:install, port:port, service:"ftp" );
+
+  log_message( data:build_detection_report( app:"httpdx",
+                                            version:vers,
+                                            install:install,
+                                            cpe:cpe,
+                                            concluded:httpdxVer[0] ),
+                                            port:port );
 }
 
-if( http_is_cgi_scan_disabled() ) exit( 0 );
+if( http_is_cgi_scan_disabled() )
+  exit( 0 );
 
 port = get_http_port( default:80 );
 banner = get_http_banner( port:port );
 
 if( banner && "httpdx" >< banner ) {
+
   vers = "unknown";
+  install = "/";
   httpdxVer = eregmatch( pattern:"httpdx.([0-9.]+[a-z]?)", string:banner );
   if( ! isnull( httpdxVer[1] ) ) {
     set_kb_item( name:"httpdx/" + port + "/Ver", value:httpdxVer[1] );
@@ -107,11 +107,11 @@ if( banner && "httpdx" >< banner ) {
   if( isnull( cpe ) )
     cpe = 'cpe:/a:jasper:httpdx';
 
-  register_product( cpe:cpe, location:"/", port:port, service:"www" );
+  register_product( cpe:cpe, location:install, port:port, service:"www" );
 
   log_message( data:build_detection_report( app:"httpdx",
                                             version:vers,
-                                            install:"/",
+                                            install:install,
                                             cpe:cpe,
                                             concluded:httpdxVer[0] ),
                                             port:port );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4329.nasl 12161 2018-10-30 06:41:36Z cfischer $
+# $Id: deb_4329.nasl 13338 2019-01-29 07:44:39Z mmartin $
 #
 # Auto-generated from advisory DSA 4329-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704329");
-  script_version("$Revision: 12161 $");
+  script_version("$Revision: 13338 $");
   script_cve_id("CVE-2018-18541");
   script_name("Debian Security Advisory DSA 4329-1 (teeworlds - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-30 07:41:36 +0100 (Tue, 30 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-29 08:44:39 +0100 (Tue, 29 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-10-28 00:00:00 +0200 (Sun, 28 Oct 2018)");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

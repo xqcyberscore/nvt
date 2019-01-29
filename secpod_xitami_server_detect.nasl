@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_xitami_server_detect.nasl 12875 2018-12-21 15:01:59Z cfischer $
+# $Id: secpod_xitami_server_detect.nasl 13327 2019-01-28 13:11:03Z cfischer $
 #
 # Xitami Server Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900547");
-  script_version("$Revision: 12875 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-21 16:01:59 +0100 (Fri, 21 Dec 2018) $");
+  script_version("$Revision: 13327 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-28 14:11:03 +0100 (Mon, 28 Jan 2019) $");
   script_tag(name:"creation_date", value:"2009-05-06 08:04:28 +0200 (Wed, 06 May 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -37,7 +37,7 @@ if(description)
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Product detection");
   script_dependencies("find_service.nasl", "ftpserver_detect_type_nd_version.nasl");
-  script_require_ports("Services/www", 80, "Services/ftp", 21);
+  script_require_ports("Services/www", 80, "Services/ftp", 21, 990);
 
   script_tag(name:"summary", value:"Detection of Xitami Server.
 
@@ -54,17 +54,12 @@ include("ftp_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-# nb: Don't use get_ftp_port() which could fork on multiple FTP ports...
-ports = get_kb_list( "Services/ftp" );
-if( ! ports ) ports = make_list( 21 );
-
+ports = ftp_get_ports();
 foreach port( ports ) {
 
-  if( ! get_port_state( port ) ) continue;
-
   banner = get_ftp_banner( port:port );
-
-  if( ! banner || ( "Welcome to this Xitami FTP server" >!< banner && "220 Xitami FTP " >!< banner ) ) continue;
+  if( ! banner || ( "Welcome to this Xitami FTP server" >!< banner && "220 Xitami FTP " >!< banner ) )
+    continue;
 
   set_kb_item( name:"xitami/detected", value:TRUE );
   set_kb_item( name:"xitami/ftp/detected", value:TRUE );
@@ -93,7 +88,8 @@ foreach port( ports ) {
                                             port:port );
 }
 
-if( http_is_cgi_scan_disabled() ) exit( 0 );
+if( http_is_cgi_scan_disabled() )
+  exit( 0 );
 
 port   = get_http_port( default:80 );
 banner = get_http_banner( port:port );
@@ -101,7 +97,8 @@ res    = http_get_cache( port:port, item:"/" );
 
 # <TITLE>Welcome To Xitami v2.5b6</TITLE></HEAD>
 # <H1>Welcome To Xitami v2.5b6</H1>
-if( ! res || ( "erver: Xitami" >!< banner && ">Welcome To Xitami " >!< res ) ) exit( 0 );
+if( ! res || ( "erver: Xitami" >!< banner && ">Welcome To Xitami " >!< res ) )
+  exit( 0 );
 
 set_kb_item( name:"xitami/detected", value:TRUE );
 set_kb_item( name:"xitami/http/detected", value:TRUE );

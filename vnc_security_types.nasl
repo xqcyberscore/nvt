@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: vnc_security_types.nasl 13014 2019-01-10 09:55:42Z cfischer $
+# $Id: vnc_security_types.nasl 13328 2019-01-28 13:17:49Z cfischer $
 #
 # VNC security types
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.19288");
-  script_version("$Revision: 13014 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-10 10:55:42 +0100 (Thu, 10 Jan 2019) $");
+  script_version("$Revision: 13328 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-28 14:17:49 +0100 (Mon, 28 Jan 2019) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -102,8 +102,8 @@ if( major == 3 && minor >= 3 && minor < 7 ) {
   report = strcat( 'The remote VNC server chose security type #', st );
   if( rfb_sec[ st ] ) report = strcat( report, ' (', rfb_sec[st], ')' );
   log_message( port:port, data:report );
-  replace_kb_item( name:"vnc/" + port + "/security_types", value:st );
-  set_kb_item( name:"vnc/security_types", value:TRUE );
+  set_kb_item( name:"vnc/" + port + "/security_types", value:st );
+  set_kb_item( name:"vnc/security_types/detected", value:TRUE );
 
 } else if( major > 3 || minor >= 7 ) {
 

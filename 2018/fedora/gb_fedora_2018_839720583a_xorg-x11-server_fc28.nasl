@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_839720583a_xorg-x11-server_fc28.nasl 12314 2018-11-12 09:01:54Z santu $
+# $Id: gb_fedora_2018_839720583a_xorg-x11-server_fc28.nasl 13338 2019-01-29 07:44:39Z mmartin $
 #
 # Fedora Update for xorg-x11-server FEDORA-2018-839720583a
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875244");
-  script_version("$Revision: 12314 $");
+  script_version("$Revision: 13338 $");
   script_cve_id("CVE-2018-14665");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-12 10:01:54 +0100 (Mon, 12 Nov 2018) $");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-29 08:44:39 +0100 (Tue, 29 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-11-08 06:37:09 +0100 (Thu, 08 Nov 2018)");
   script_name("Fedora Update for xorg-x11-server FEDORA-2018-839720583a");
   script_category(ACT_GATHER_INFO);

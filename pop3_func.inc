@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: pop3_func.inc 13319 2019-01-28 08:25:51Z cfischer $
+# $Id: pop3_func.inc 13337 2019-01-29 07:15:09Z cfischer $
 #
 # Methods for handling POP3
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 13319 $
+# $Revision: 13337 $
 #
 ###############################################################################
 
@@ -263,6 +263,9 @@ function pop3_open_socket( port ) {
     return NULL;
   }
 
+  if( pop3_get_is_marked_broken( port:port ) )
+    return NULL;
+
   soc = open_sock_tcp( port );
   if( ! soc )
     return NULL;
@@ -362,8 +365,7 @@ function pop3_set_is_marked_broken( port ) {
 #
 # @param data The data to be verified.
 #
-# @return TRUE if the passed data is related to a POP3 connection / server, FALSE otherwise
-#         and NULL if no data parameter was passed.
+# @return TRUE if the passed data is related to a POP3 connection / server, FALSE otherwise.
 #
 function pop3_verify_banner( data ) {
 

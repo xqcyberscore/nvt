@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: smbcl_func.inc 13262 2019-01-24 11:03:38Z cfischer $
+# $Id: smbcl_func.inc 13332 2019-01-28 15:16:13Z cfischer $
 # Description: functions for smb client tool
 #
 # Authors:
@@ -22,15 +22,13 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 13262 $
+# $Revision: 13332 $
 #
 ###############################################################################
 
-include("misc_func.inc");
-
 function smbversion() {
 
-  local_var r, arg, domain, os, server;
+  local_var arg, r, domain, os, server;
 
   if(!get_kb_item("Tools/Present/smbclient")) {
     log_message(port:0, proto:"SMBClient", data:"Error getting SMB-Data -> smbclient not available for the scanner.");
@@ -46,7 +44,7 @@ function smbversion() {
   r = toupper(pread(cmd:"smbclient", argv:arg));
   if(!ereg(pattern:"NT_STATUS", string:r)) {
     domain = ereg_replace(pattern:"(.*DOMAIN=\[)*(\].*)*", string:r, replace:"");
-    os = ereg_replace(pattern:"(.*OS=\[)*(\].*)*", string: r, replace:"");
+    os = ereg_replace(pattern:"(.*OS=\[)*(\].*)*", string:r, replace:"");
     server = ereg_replace(pattern:"(.*SERVER=\[)*(\].*)*", string:r, replace:"");
     replace_kb_item(name:string("SMB/OS"), value:os);
     replace_kb_item(name:string("SMB/DOMAIN"), value:domain);
@@ -63,10 +61,6 @@ function smbversion() {
 
 function is_domain() {
 
-  # TODO: Remove once openvas-nasl-lint can handle such a missing include
-  # from within the same include.
-  if(!defined_func("kb_smb_domain")) include("smb_nt.inc");
-
   local_var domain;
 
   domain = kb_smb_domain();
@@ -78,9 +72,10 @@ function is_domain() {
   }
 }
 
-function smbgetfile( share, filename, tmp_filename ) {
+function smbgetfile(share, filename, tmp_filename) {
 
-  local_var r, arg, username, password;
+  local_var share, filename, tmp_filename;
+  local_var username, password, arg, r;
 
   if(!get_kb_item("Tools/Present/smbclient")) {
     log_message(port:0, proto:"SMBClient", data:"Error getting SMB-Data -> smbclient not available for the scanner.");
@@ -109,9 +104,10 @@ function smbgetfile( share, filename, tmp_filename ) {
 }
 
 # Get Direntries from SMB Source. typ 0 = all entries. typ 1 = only file entries. typ 2 = only directory entries.
-function smbgetdir( share, dir, typ ) {
+function smbgetdir(share, dir, typ) {
 
-  local_var r, arg, i, ret, dir_att, username, password;
+  local_var share, dir, typ;
+  local_var username, password, arg, ret, r, i, dir_att;
 
   if(!get_kb_item("Tools/Present/smbclient")) {
     log_message(port:0, proto:"SMBClient", data:"Error getting SMB-Data -> smbclient not available for the scanner.");
@@ -132,17 +128,17 @@ function smbgetdir( share, dir, typ ) {
   }
   ret = NULL;
   r = pread(cmd:"smbclient", argv:arg );
-  if( !egrep(pattern: "NT_STATUS", string: r) ) {
-    r = split(r, keep:0);
-    for( i=0; i < (max_index(r)-2); i++ ) {
-      if( (substr(r[i],0,4) == "  .. ") || (substr(r[i],0,3) == "  . ") || (!ereg(pattern: " [0-9]{4}$", string: r[i])) ) {
+  if( !egrep(pattern: "NT_STATUS", string:r) ) {
+    r = split(r, keep:FALSE);
+    for( i = 0; i < (max_index(r)-2); i++ ) {
+      if( (substr(r[i], 0, 4) == "  .. ") || (substr(r[i], 0, 3) == "  . ") || (!ereg(pattern:" [0-9]{4}$", string:r[i])) ) {
         continue;
       }
-      r[i] = ereg_replace(pattern: "[ ]*[0-9]*.{26}$", string: r[i], replace: "");
-      dir_att = ereg(pattern: "D[A-Z]*$", string: r[i]);
-      r[i] = ereg_replace(pattern: " [A-Za-z]*$", string: r[i], replace: "");
-      r[i] = ereg_replace(pattern: " *$", string: r[i], replace: "");
-      r[i] = ereg_replace(pattern: "^ *", string: r[i], replace: "");
+      r[i] = ereg_replace(pattern:"[ ]*[0-9]*.{26}$", string:r[i], replace:"");
+      dir_att = ereg(pattern: "D[A-Z]*$", string:r[i]);
+      r[i] = ereg_replace(pattern:" [A-Za-z]*$", string:r[i], replace:"");
+      r[i] = ereg_replace(pattern:" *$", string:r[i], replace:"");
+      r[i] = ereg_replace(pattern:"^ *", string:r[i], replace:"");
       if( ((typ == 0) || (typ == 1)) && (dir_att == 0) ) {
         ret[max_index(ret)] = r[i];
         continue;
@@ -161,43 +157,46 @@ function smbgetdir( share, dir, typ ) {
   }
 }
 
+function GetPEFileVersion(tmp_filename, orig_filename) {
 
-function GetPEFileVersion (tmp_filename, orig_filename) {
-  local_var r;
+  local_var tmp_filename, orig_filename;
+  local_var r, fp;
 
   r = NULL;
-  fp = file_open(mode: "r", name:tmp_filename);
+  fp = file_open(mode:"r", name:tmp_filename);
   if( ! isnull(fp) ) {
-    r = PEVersion (fp:fp);
+    r = PEVersion(fp:fp);
     file_close(fp);
   }
   if( isnull(r) ) {
     return NULL;
   }
-  replace_kb_item(name: "SMB/FILEVERSION/"+orig_filename, value: r );
+  replace_kb_item(name:"SMB/FILEVERSION/"+orig_filename, value:r );
   return r;
 }
 
 # PEVersion fp = file to check, prodvers = 0/NULL give fileversion, prodvers <> 0/NULL give Productversion
-
 function PEVersion(fp, prodvers) {
-  local_var pe_offset, sections_cnt, sections_offset, sections_data, i, rsrc_start, rsrc_virtstart;
-  local_var dir_data, dir_offset, dir_entries, sub_dir, dir_tmp, vs_data, vs_length, r, recurs, max_recurs, vs_offset;
+
+  local_var fp, prodvers;
+  local_var pe_offset, sections_cnt, sections_offset, rsrc_start, max_recurs, i, sections_data, rsrc_virtstart;
+  local_var dir_data, dir_entries, dir_offset, sub_dir, recurs, dir_tmp, vs_data, vs_length, vs_offset, r;
 
   if( isnull(prodvers) ) {
     prodvers = 0;
   }
+
   pe_offset = bin_word(data: fileread(fp:fp, offset:60, length:2));
 
   if( fileread(fp:fp, offset:pe_offset, length:2) != "PE" ) {
     return NULL;
   }
 
-  sections_cnt = bin_word(data: fileread(fp:fp, offset:pe_offset+6, length:2));
-  section_offset = pe_offset + bin_word(data: fileread(fp:fp, offset:pe_offset+20, length:2)) + 24;
+  sections_cnt = bin_word(data: fileread(fp:fp, offset:pe_offset + 6, length:2));
+  section_offset = pe_offset + bin_word(data:fileread(fp:fp, offset:pe_offset + 20, length:2)) + 24;
   rsrc_start = NULL;
   max_recurs = 20;
-  for( i=0; i<sections_cnt; i++ ) {
+  for( i = 0; i < sections_cnt; i++ ) {
     sections_data = fileread(fp:fp, offset:section_offset + i * 40, length:40);
     if( substr(sections_data, 0, 4) == ".rsrc" ) {
       rsrc_start = bin_dword(data:substr(sections_data, 20));
@@ -213,16 +212,16 @@ function PEVersion(fp, prodvers) {
   }
 
   dir_data = fileread(fp:fp, offset:rsrc_start, length:16);
-  dir_entries = bin_word(data:substr(dir_data,12)) + bin_word(data:substr(dir_data,14));
+  dir_entries = bin_word(data:substr(dir_data, 12)) + bin_word(data:substr(dir_data, 14));
   dir_offset = NULL;
   sub_dir = 0;
   max_recurs = 100;
   recurs = 0;
   for( i = 0; i < dir_entries; i++ ) {
-    dir_data = fileread(fp:fp, offset:rsrc_start+16+i*8, length:8);
-    if( bin_dword(data:substr(dir_data,0)) == 0x10 ) {
+    dir_data = fileread(fp:fp, offset:rsrc_start + 16 + i * 8, length:8);
+    if( bin_dword(data:substr(dir_data, 0)) == 0x10 ) {
       repeat {
-        dir_tmp = bin_dword(data:substr(dir_data,4));
+        dir_tmp = bin_dword(data:substr(dir_data, 4));
         if( (dir_tmp & 0x80000000) == 0x80000000 ) {
           dir_offset = dir_tmp - 0x80000000;
           sub_dir = 1;
@@ -230,7 +229,7 @@ function PEVersion(fp, prodvers) {
           dir_offset = dir_tmp;
           sub_dir = 0;
         }
-        dir_data = fileread(fp:fp, offset:rsrc_start+dir_offset+16, length:8);
+        dir_data = fileread(fp:fp, offset:rsrc_start + dir_offset + 16, length:8);
         if( strlen(dir_data) != 8 ) {
           return NULL;
         }
@@ -249,13 +248,13 @@ function PEVersion(fp, prodvers) {
     return NULL;
   }
 
-  dir_data = fileread (fp:fp, offset:rsrc_start+dir_offset, length:4);
-  dir_offset = bin_dword(data:substr(dir_data,0));
+  dir_data = fileread(fp:fp, offset:rsrc_start + dir_offset, length:4);
+  dir_offset = bin_dword(data:substr(dir_data, 0));
   rsrc_start = rsrc_start + (dir_offset - rsrc_virtstart);
-  vs_data = fileread (fp:fp, offset:rsrc_start, length:2);
-  vs_length = bin_word(data:substr(vs_data,0));
-  vs_data = fileread (fp:fp, offset:rsrc_start, length:vs_length);
-  if( bin_dword(data:substr(vs_data,40)) != 0xfeef04bd ) {
+  vs_data = fileread(fp:fp, offset:rsrc_start, length:2);
+  vs_length = bin_word(data:substr(vs_data, 0));
+  vs_data = fileread(fp:fp, offset:rsrc_start, length:vs_length);
+  if( bin_dword(data:substr(vs_data, 40)) != 0xfeef04bd ) {
     return NULL;
   }
   if( prodvers == 0 ) {
@@ -264,16 +263,17 @@ function PEVersion(fp, prodvers) {
     vs_offset = 56;
   }
   r = NULL;
-  r = string((bin_dword(data:substr(vs_data, vs_offset)) >>> 16)+".");
-  r = r + string((bin_dword(data:substr(vs_data, vs_offset)) & 0xffff)+".");
-  r = r + string((bin_dword(data:substr(vs_data, vs_offset+4)) >>> 16)+".");
-  r = r + string((bin_dword(data:substr(vs_data, vs_offset+4)) & 0xffff)+".");
+  r = string((bin_dword(data:substr(vs_data, vs_offset)) >>> 16) + ".");
+  r = r + string((bin_dword(data:substr(vs_data, vs_offset)) & 0xffff) + ".");
+  r = r + string((bin_dword(data:substr(vs_data, vs_offset + 4)) >>> 16) + ".");
+  r = r + string((bin_dword(data:substr(vs_data, vs_offset + 4)) & 0xffff) + ".");
   return r;
 }
 
-
 function fileread(fp, offset, length) {
-  local_var r, data;
+
+  local_var fp, offset, length;
+  local_var data;
 
   file_seek(fp:fp, offset:offset);
   data = file_read(fp:fp, length:length);
@@ -284,13 +284,13 @@ function fileread(fp, offset, length) {
   }
 }
 
-
 function bin_word(data) {
+  local_var data;
   return( ord(data[0]) + (ord(data[1]) << 8) );
 }
 
-
 function bin_dword(data) {
+  local_var data;
   return( ord(data[0]) +
          (ord(data[1]) << 8) +
          (ord(data[2]) << 16) +
@@ -305,7 +305,7 @@ function get_windir() {
   if( (os == "WINDOWS 5.0") || (os == "WINDOWS NT 4.0") ) {
     return("WINNT\");
   } else {
-    if( ereg(pattern: "WINDOWS", string: os) ) {
+    if( ereg(pattern:"WINDOWS", string:os) ) {
       return("WINDOWS\");
     } else {
       return(NULL);

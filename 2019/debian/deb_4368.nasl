@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4368.nasl 13090 2019-01-16 07:07:15Z cfischer $
+# $Id: deb_4368.nasl 13338 2019-01-29 07:44:39Z mmartin $
 #
 # Auto-generated from advisory DSA 4368-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704368");
-  script_version("$Revision: 13090 $");
+  script_version("$Revision: 13338 $");
   script_cve_id("CVE-2019-6250");
   script_name("Debian Security Advisory DSA 4368-1 (zeromq3 - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-16 08:07:15 +0100 (Wed, 16 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-29 08:44:39 +0100 (Tue, 29 Jan 2019) $");
   script_tag(name:"creation_date", value:"2019-01-14 00:00:00 +0100 (Mon, 14 Jan 2019)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"9.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 
