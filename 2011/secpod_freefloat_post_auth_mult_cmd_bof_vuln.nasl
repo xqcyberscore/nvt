@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_freefloat_post_auth_mult_cmd_bof_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
+# $Id: secpod_freefloat_post_auth_mult_cmd_bof_vuln.nasl 13347 2019-01-29 15:54:59Z cfischer $
 #
 # Freefloat FTP Server POST Auth Multiple Commands Buffer Overflow Vulnerabilities
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900292");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("$Revision: 13347 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-29 16:54:59 +0100 (Tue, 29 Jan 2019) $");
   script_tag(name:"creation_date", value:"2011-07-27 09:16:39 +0200 (Wed, 27 Jul 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -48,32 +48,37 @@ if(description)
   script_category(ACT_DENIAL);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Buffer overflow");
-  script_dependencies("find_service.nasl");
+  script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
+  script_mandatory_keys("ftp_banner/available");
+
   script_tag(name:"impact", value:"Successful exploits may allow remote attackers to execute arbitrary
-code on the system or cause the application to crash.");
+  code on the system or cause the application to crash.");
+
   script_tag(name:"affected", value:"FreeFloat Ftp Server Version 1.00, Other versions
-may also be affected.");
+  may also be affected.");
+
   script_tag(name:"insight", value:"The flaw is due to improper bounds checking when processing
-'ACCL', 'AUTH', 'APPE', 'ALLO', 'ACCT' multiple commands with specially-crafted
-an overly long parameter.");
+  'ACCL', 'AUTH', 'APPE', 'ALLO', 'ACCT' multiple commands with specially-crafted
+  an overly long parameter.");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
   release, disable respective features, remove the product or replace the product by another one.");
+
   script_tag(name:"summary", value:"This host is running Freefloat FTP Server and is prone to
-multiple buffer overflow vulnerability.");
+  multiple buffer overflow vulnerability.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
+
   exit(0);
 }
 
 include("ftp_func.inc");
 
-ftpPort = get_kb_item("Services/ftp");
-if(!ftpPort){
-  ftpPort = 21;
-}
-
-if(!get_port_state(ftpPort)){
+ftpPort = get_ftp_port(default:21);
+banner = get_ftp_banner(port:ftpPort);
+if(!banner || "220 FreeFloat" >!< banner){
   exit(0);
 }
 
@@ -82,12 +87,9 @@ if(!soc) {
   exit(0);
 }
 
-## Accept the banner
-banner =  recv(socket:soc, length:512);
-
+banner = ftp_recv_line(socket:soc);
 ftp_close(socket:soc);
-
-if("220 FreeFloat" >!< banner){
+if(!banner || "220 FreeFloat" >!< banner){
   exit(0);
 }
 
@@ -96,7 +98,6 @@ if(!soc1) {
   exit(0);
 }
 
-##  Exist if not able to login
 ftplogin = ftp_log_in(socket:soc1, user:"test", pass:"test");
 if(!ftplogin){
   exit(0);
@@ -108,21 +109,20 @@ vuln_cmds = make_list('ACCL', 'AUTH', 'APPE', 'ALLO', 'ACCT', 'DELE',
 
 foreach cmd (vuln_cmds)
 {
-  ## Send the crafted data
-  send(socket:soc1, data:string(cmd, ' ', crap(length: 1000, data:'A'),
-                                                              '\r\n'));
+  send(socket:soc1, data:string(cmd, ' ', crap(length: 1000, data:'A'), '\r\n'));
   sleep (1);
 
   soc2 = open_sock_tcp(ftpPort);
   if(!soc2){
-    security_message(ftpPort);
+    security_message(port:ftpPort);
     exit(0);
   }
 
-  ## Some time server will be listening, but won't respond
-  banner =  recv(socket:soc2, length:512);
-  if("220 FreeFloat" >!< banner){
-    security_message(ftpPort);
+  # nb: Some times the server is listening but won't respond
+  banner = recv(socket:soc2, length:512);
+  if(!banner || "220 FreeFloat" >!< banner){
+    close(soc2);
+    security_message(port:ftpPort);
     exit(0);
   }
   ftp_close(socket:soc2);

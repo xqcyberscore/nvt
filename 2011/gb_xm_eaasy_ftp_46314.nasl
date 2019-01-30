@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xm_eaasy_ftp_46314.nasl 12014 2018-10-22 10:01:47Z mmartin $
+# $Id: gb_xm_eaasy_ftp_46314.nasl 13347 2019-01-29 15:54:59Z cfischer $
 #
 # XM Easy Personal FTP Server 'TYPE' Command Remote Denial of Service Vulnerability
 #
@@ -24,12 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103072");
-  script_version("$Revision: 12014 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 12:01:47 +0200 (Mon, 22 Oct 2018) $");
+  script_version("$Revision: 13347 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-29 16:54:59 +0100 (Tue, 29 Jan 2019) $");
   script_tag(name:"creation_date", value:"2011-02-11 13:54:50 +0100 (Fri, 11 Feb 2011)");
   script_bugtraq_id(46314);
   script_tag(name:"cvss_base", value:"4.0");
@@ -43,66 +42,70 @@ if (description)
   script_category(ACT_MIXED_ATTACK);
   script_family("FTP");
   script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
-  script_dependencies("find_service.nasl", "secpod_ftp_anonymous.nasl", "ftpserver_detect_type_nd_version.nasl");
+  script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
+  script_mandatory_keys("ftp_banner/available");
+
   script_tag(name:"summary", value:"XM Easy Personal FTP Server is prone to a remote denial-of-service
-vulnerability.
+  vulnerability.");
 
-This issue allows remote attackers to crash affected FTP servers,
-denying service to legitimate users.
+  script_tag(name:"impact", value:"This issue allows remote attackers to crash affected FTP servers,
+  denying service to legitimate users.");
 
-XM Easy Personal FTP Server 5.8.0 is vulnerable. Other versions may
-also be affected.");
-  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"affected", value:"XM Easy Personal FTP Server 5.8.0 is vulnerable. Other versions may
+  also be affected.");
+
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of
+  this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release,
+  disable respective features, remove the product or replace the product by another one.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
+
   exit(0);
 }
 
 include("ftp_func.inc");
 include("version_func.inc");
 
-port = get_kb_item("Services/ftp");
-if(!port){
-  port = 21;
-}
-
-if(get_kb_item('ftp/'+port+'/broken'))exit(0);
-
-if(!get_port_state(port)){
+port = get_ftp_port(default:21);
+banner = get_ftp_banner(port:port);
+if(!banner || "Welcome to DXM's FTP Server" >!< banner)
   exit(0);
-}
 
 if(safe_checks()) {
-
- if( ! banner = get_ftp_banner(port:port)) exit(0);
- if(egrep(pattern: "Welcome to DXM's FTP Server", string:banner)) {
-
-   version = eregmatch(pattern: "Welcome to DXM's FTP Server ([0-9.]+)", string: banner);
-
-   if( ! isnull(version[1])) {
-     if(version_is_equal(version: version[1], test_version: "5.8.0")) {
-       security_message(port:port);
-       exit(0);
-     }
-   }
- }
-
+  if(egrep(pattern: "Welcome to DXM's FTP Server", string:banner)) {
+    version = eregmatch(pattern: "Welcome to DXM's FTP Server ([0-9.]+)", string: banner);
+    if(!isnull(version[1])) {
+      if(version_is_equal(version:version[1], test_version:"5.8.0")) {
+        report = report_fixed_ver(installed_version:version[1], fixed_version:"None");
+        security_message(port:port, data:report);
+        exit(0);
+      }
+    }
+    exit(99);
+  }
+  exit(0);
 } else {
+
+  soc = open_sock_tcp(port);
+  if(!soc){
+    exit(0);
+  }
+
+  banner = ftp_recv_line(socket:soc);
+  ftp_close(socket:soc);
+  if(!banner || "Welcome to DXM's FTP Server" >!< banner){
+    exit(0);
+  }
 
   soc1 = open_sock_tcp(port);
   if(!soc1){
     exit(0);
   }
-  domain = get_kb_item("Settings/third_party_domain");
-  if(isnull(domain)) {
-   domain = this_host_name();;
-  }
 
-  user = get_kb_item("ftp/login");
-  pass = get_kb_item("ftp/password");
-
-  if(!user)user = "anonymous";
-  if(!pass)pass = string("openvas@", domain);;
+  kb_creds = ftp_get_kb_creds();
+  user = kb_creds["login"];
+  pass = kb_creds["pass"];
 
   login_details = ftp_log_in(socket:soc1, user:user, pass:pass);
   if(login_details)
@@ -125,11 +128,13 @@ if(safe_checks()) {
         if( ! ftp_recv_line(socket:soc3) )
         {
           security_message(port:port);
-    	  close(soc3);
+          close(soc3);
           exit(0);
         }
+        close(soc3);
       }
     }
   }
 }
+
 exit(0);

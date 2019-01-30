@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: docker_policy.inc 13065 2019-01-14 13:39:18Z cfischer $
+# $Id: docker_policy.inc 13343 2019-01-29 10:53:52Z cfischer $
 #
 # Functions for Docker Policy Tests
 #
@@ -25,7 +25,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301
 # USA.
 #
-# $Revision: 13065 $
+# $Revision: 13343 $
 #
 ###############################################################################
 
@@ -315,10 +315,6 @@ function docker_test_set_error( id, reason )
 
 function docker_run_cmd( cmd )
 {
-  # TODO: Remove once openvas-nasl-lint can handle such a missing include
-  # from within the same include.
-  if(!defined_func("ssh_cmd_exec")) include("ssh_func.inc");
-
   local_var cmd, buf;
 
   cmd = 'LANG=C; LC_ALL=C; ' + cmd;
@@ -406,10 +402,6 @@ function docker_inspect( inspect )
 
 function docker_running_containers_short_id_list()
 {
-  # TODO: Remove once openvas-nasl-lint can handle such a missing include
-  # from within the same include.
-  if(!defined_func("docker_truncate_id")) include("docker.inc");
-
   local_var ret, docker_running_containers, container;
 
   ret = make_list();

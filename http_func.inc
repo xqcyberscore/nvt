@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: http_func.inc 13088 2019-01-15 15:12:52Z cfischer $
+# $Id: http_func.inc 13341 2019-01-29 09:54:53Z cfischer $
 #
 # Methods to handle HTTP
 #
@@ -24,7 +24,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 13088 $
+# $Revision: 13341 $
 #
 ###############################################################################
 
@@ -727,7 +727,7 @@ function http_recv_length( socket, bodylength ) {
 #        the response.
 #
 # @param port The port of the remote server to send the data to.
-# @param data The data to sent to the remove server.
+# @param data The data to sent to the remote server.
 #
 # @return A string containing the received HTTP data or NULL if none was
 #         received or no port or data parameter was passed.

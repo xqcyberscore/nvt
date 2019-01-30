@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: ftp_func.inc 13337 2019-01-29 07:15:09Z cfischer $
+# $Id: ftp_func.inc 13341 2019-01-29 09:54:53Z cfischer $
 #
 # Methods for handling FTP
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 13337 $
+# $Revision: 13341 $
 #
 ###############################################################################
 
@@ -116,10 +116,10 @@ function get_ftp_banner( port ) {
   if( banner )
     return( banner );
 
-  if( ftp_get_is_marked_broken( port:port ) )
+  if( ! get_port_state( port ) )
     return NULL;
 
-  if( ! get_port_state( port ) )
+  if( ftp_get_is_marked_broken( port:port ) )
     return NULL;
 
   soc = open_sock_tcp( port );
@@ -216,10 +216,10 @@ function get_ftp_cmd_banner( port, socket, cmd ) {
   if( banner )
     return( banner );
 
-  if( ftp_get_is_marked_broken( port:port ) )
+  if( ! get_port_state( port ) )
     return NULL;
 
-  if( ! get_port_state( port ) )
+  if( ftp_get_is_marked_broken( port:port ) )
     return NULL;
 
   if( ! socket ) {
@@ -446,15 +446,15 @@ function get_ftp_port( default, nodefault, ignore_broken, ignore_unscanned ) {
   if( port )
     default = port;
 
+  if( ! ignore_unscanned && ! get_port_state( default ) )
+    exit( 0 );
+
   # Includes e.g. PJL ports which are printing everything
   # sent to them so exit for such a port here
   if( ftp_is_fragile_port( port:default ) )
     exit( 0 );
 
   if( ! ignore_broken && ftp_get_is_marked_broken( port:default ) )
-    exit( 0 );
-
-  if( ! ignore_unscanned && ! get_port_state( default ) )
     exit( 0 );
 
   return default;
@@ -509,15 +509,16 @@ function ftp_get_ports( default_list, ignore_broken, ignore_unscanned ) {
   }
 
   foreach port( check_port_list ) {
+
+    if( ! ignore_unscanned && ! get_port_state( port ) )
+      continue;
+
     # Includes e.g. PJL ports which are printing everything
     # sent to them so don't include them here.
     if( ftp_is_fragile_port( port:port ) )
       continue;
 
     if( ! ignore_broken && ftp_get_is_marked_broken( port:port ) )
-      continue;
-
-    if( ! ignore_unscanned && ! get_port_state( port ) )
       continue;
 
     final_port_list = make_list( final_port_list, port );

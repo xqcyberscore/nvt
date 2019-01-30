@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_smallftpd_mult_requests_dos_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
+# $Id: secpod_smallftpd_mult_requests_dos_vuln.nasl 13347 2019-01-29 15:54:59Z cfischer $
 #
 # Smallftpd FTP Server Multiple Requests Denial of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902453");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("$Revision: 13347 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-29 16:54:59 +0100 (Tue, 29 Jan 2019) $");
   script_tag(name:"creation_date", value:"2011-07-01 16:09:45 +0200 (Fri, 01 Jul 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -36,21 +36,25 @@ if(description)
   script_category(ACT_DENIAL);
   script_copyright("Copyright (c) 2011 SecPod");
   script_family("FTP");
-  script_dependencies("find_service_3digits.nasl");
+  script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
+  script_mandatory_keys("ftp_banner/available");
 
   script_xref(name:"URL", value:"http://www.1337day.com/exploits/16423");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/17455/");
 
   script_tag(name:"impact", value:"Successful exploitation will allow unauthenticated attackers to
   cause a denial of service.");
+
   script_tag(name:"affected", value:"Smallftpd version 1.0.3-fix and prior.");
+
   script_tag(name:"insight", value:"The flaw is due to an error when handling the multiple requests
-  from the client. It is unable to handle multiple connections regardless
-  of its maximum connection settings.");
+  from the client. It is unable to handle multiple connections regardless of its maximum connection settings.");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
   release, disable respective features, remove the product or replace the product by another one.");
+
   script_tag(name:"summary", value:"The host is running Smallftpd FTP Server and is prone to denial of
   service vulnerability.");
 
@@ -62,17 +66,20 @@ if(description)
 
 include("ftp_func.inc");
 
-ftpPort = get_kb_item("Services/ftp");
-if(!ftpPort){
-  ftpPort = 21;
-}
-
-if(!get_port_state(ftpPort)){
+ftpPort = get_ftp_port(default:21);
+banner = get_ftp_banner(port:ftpPort);
+if(!banner || "220- smallftpd" >!< banner){
   exit(0);
 }
 
-banner = get_ftp_banner(port:ftpPort);
-if("220- smallftpd" >!< banner){
+soc = open_sock_tcp(ftpPort);
+if(!soc){
+  exit(0);
+}
+
+banner = ftp_recv_line(socket:soc);
+ftp_close(socket:soc);
+if(!banner || "220- smallftpd" >!< banner){
   exit(0);
 }
 

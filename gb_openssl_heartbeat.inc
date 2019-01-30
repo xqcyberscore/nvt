@@ -25,14 +25,10 @@
 
 function _broken_heartbeat( version )
 {
-
-  # TODO: Remove once openvas-nasl-lint can handle such a missing include
-  # from within the same include.
-  if(!defined_func("data_len")) include("ssl_funcs.inc");
-
   local_var version, hb, payload;
 
-  if( ! version ) version = TLS_10;
+  if( ! version )
+    version = raw_string( 0x03, 0x01 ); # TLSv1.0
 
   payload = raw_string( 0x01 ) + raw_string( 16384 / 256, 16384 % 256 ) + crap( length:16 ) + '------------------------->OpenVAS<-------------------------';
   hb = version + data_len( data:payload ) + payload;
@@ -90,7 +86,7 @@ function test_hb( port, version )
     return FALSE;
   }
 
-  # send heartbeat request in two packets to 
+  # send heartbeat request in two packets to
   # work around stupid IDS which try to detect
   # attack by matching packets only
   hb = _broken_heartbeat( version:version );
@@ -104,10 +100,8 @@ function test_hb( port, version )
   {
     security_message( port:port );
     exit( 0 );
-   }
-
+  }
 
   if( soc ) close( soc );
   return;
-
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test support library
-# $Id: policy_functions.inc 13250 2019-01-23 15:55:19Z emoss $
+# $Id: policy_functions.inc 13346 2019-01-29 15:23:13Z emoss $
 #
 # Supporting methods for Policy NVTs.
 #
@@ -281,10 +281,50 @@ function get_grub_config_file(){
 # 				other error occurred
 function ssh_cmd_without_errors(socket, cmd){
 	local_var socket, cmd;
+
 	ret = ssh_cmd(socket:socket, cmd:cmd, return_errors:FALSE);
 
 	if('No such file or directory' >< ret) return;
 	if('command not found' >< ret) return;
 
 	return(ret);
+}
+
+# @brief checks the file permissions, gid and uid with stat command
+#				 on a linux host
+#
+# @param file the file to check
+#				 sock socket for the ssh command
+#
+# @return an array with keys permissions, gid and uid
+
+function linux_file_permissions(file, socket){
+	local_var socket, file;
+
+	if(!sock){
+		set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#linux_file_permissions#-#socket" );
+		return;
+	}
+
+	if(!file){
+		set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#linux_file_permissions#-#file" );
+		return;
+	}
+
+	stat_cmd = 'stat ' + file;
+	stat = ssh_cmd_without_errors(socket:socket,cmd:stat_cmd);
+	if(stat && ('permission denied' >!< tolower(stat))){
+		return_array = make_list();
+		access = eregmatch(string:stat, pattern:'(Access:.+Uid.+Gid.+\\))');
+		gid = eregmatch(string:access[0], pattern:'Gid: \\((.+)\\)');
+		uid = eregmatch(string:access[0], pattern:'Uid: \\(([^\\)]*)\\)');
+		permissions = eregmatch(string:access[0], pattern:'Access: \\(([0-9]+)');
+
+		return_array['permissions'] = permissions[1];
+		return_array['gid'] = str_replace(string:gid[1], find:' ', replace:'');
+		return_array['uid'] = str_replace(string:uid[1], find:' ', replace:'');
+
+		return (return_array);
+	}
+	return;
 }

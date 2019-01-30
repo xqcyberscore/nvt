@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: gvr_apps_auth_func.inc 11006 2018-08-16 12:21:56Z cfischer $
+# $Id: gvr_apps_auth_func.inc 13343 2019-01-29 10:53:52Z cfischer $
 #
 # Supporting functions for TYPO3 Detection
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 11006 $
+# $Revision: 13343 $
 #
 ###############################################################################
 
@@ -31,11 +31,6 @@
 #TYPO3 install path, port and host need to be sent as parameter
 function get_typo3_login_cookie(cinstall, tport, chost)
 {
-
-  # TODO: Remove once openvas-nasl-lint can handle such a missing include
-  # from within the same include.
-  if(!defined_func("get_http_user_agent")) include("http_func.inc");
-
   local_var cinstall, tport, chost, url, treq, tres, username, password, challenge;
   local_var payload, tcookie, PHPSESSID, cCookie, req, buf, rcookie;
 
@@ -95,11 +90,6 @@ function get_typo3_login_cookie(cinstall, tport, chost)
 #TYPO3 install path, port, cookie and host need to be sent as parameter
 function get_typo3_logout(loc, lport, lhost, lcookie)
 {
-
-  # TODO: Remove once openvas-nasl-lint can handle such a missing include
-  # from within the same include.
-  if(!defined_func("get_http_user_agent")) include("http_func.inc");
-
   local_var loc, lport, lhost, lcookie, lurl, lreq, lres;
 
   lurl = loc + "/typo3/logout.php";

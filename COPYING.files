@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Tue, 29 Jan 2019 09:48:07 +0100
+# Automatically created on:  Wed, 30 Jan 2019 09:38:06 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -44213,6 +44213,7 @@
 2019/wordpress/gb_wordpress_woocommerce_priv_esc_vuln_lin.nasl: GPLv2+
 2019/wordpress/gb_wordpress_woocommerce_priv_esc_vuln_win.nasl: GPLv2+
 2019/xerox/gb_xerox_altalink_mult_vuln.nasl: GPLv2+
+2019/zoneminder/gb_zoneminder_mult_vuln.nasl: GPLv2+
 2019/zoneminder/gb_zoneminder_xss_vuln.nasl: GPLv2+
 404.inc: GPLv2+
 aas_detect.nasl: GPLv2+
@@ -45570,6 +45571,7 @@ gb_opmantek_nmis_detect.nasl: GPLv2+
 gb_oprofile_detect.nasl: GPLv2+
 gb_opsview_monitor_detect.nasl: GPLv2+
 gb_option_cloudgate_remote_detect.nasl: GPLv2+
+gb_oracle_ats_detect_win.nasl: GPLv2+
 gb_oraclebi_discoverer_detect.nasl: GPLv2+
 gb_oracle_bi_publisher_detect.nasl: GPLv2+
 gb_oracle_ebusiness_suite_detect.nasl: GPLv2+
@@ -63013,8 +63015,11 @@ gsf/2019/citrix/gb_citrix_netscaler_CTX240139.nasl: GPLv2+
 gsf/2019/crestron/gb_crestron_arimedia_auth_bypass_vuln.nasl: GPLv2+
 gsf/2019/emc/gb_rsa_archer_DSA-2018-224.nasl: GPLv2+
 gsf/2019/f5/gb_f5_big_ip_K17264695.nasl: GPLv2+
+gsf/2019/f5/gb_f5_big_ip_K23566124.nasl: GPLv2+
 gsf/2019/f5/gb_f5_big_ip_K29146534.nasl: GPLv2+
+gsf/2019/f5/gb_f5_big_ip_K32840424.nasl: GPLv2+
 gsf/2019/f5/gb_f5_big_ip_K45616155.nasl: GPLv2+
+gsf/2019/f5/gb_f5_big_ip_K55101404.nasl: GPLv2+
 gsf/2019/f5/gb_f5_big_ip_K74114570.nasl: GPLv2+
 gsf/2019/fortinet/gb_fortinet_fortios_FG-IR-18-018.nasl: GPLv2+
 gsf/2019/fujitsu/gb_paperstream_ip_twain_win_ce_vuln.nasl: GPLv2+
@@ -63065,6 +63070,7 @@ gsf/2019/microsoft/gb_ms_kb4480975.nasl: GPLv2+
 gsf/2019/netapp/gb_netapp_ontap_NTAP-20190109-0001.nasl: GPLv2+
 gsf/2019/omron/gb_omron_cx-one_cx-protocol_ce.nasl: GPLv2+
 gsf/2019/omron/gb_omron_cx-supervisor_mult_vuln_jan19.nasl: GPLv2+
+gsf/2019/oracle/gb_ats_mult_vuln_win_cpujan2019.nasl: GPLv2+
 gsf/2019/paloaltonetworks/gb_panos_pan_sa-2019-0001.nasl: GPLv2+
 gsf/2019/paloaltonetworks/gb_panos_pan_sa-2019-0002.nasl: GPLv2+
 gsf/2019/pilz/gb_pnozmulti_configurator_info_disc_vuln.nasl: GPLv2+
@@ -63160,6 +63166,10 @@ gsf/Policy/gb_policy_etc_shadow.nasl: GPLv2+
 gsf/Policy/gb_policy_etc_shadow_ok.nasl: GPLv2+
 gsf/Policy/gb_policy_etc_shadow_violation.nasl: GPLv2+
 gsf/Policy/Linux/Network/broadcast_icmp_requests.nasl: GPLv2+
+gsf/Policy/Linux/Network/disabled_network_protocols.nasl: GPLv2+
+gsf/Policy/Linux/Network/firewall_default_deny_policy.nasl: GPLv2+
+gsf/Policy/Linux/Network/firewall_loopback_traffic.nasl: GPLv2+
+gsf/Policy/Linux/Network/host_deny_configuration.nasl: GPLv2+
 gsf/Policy/Linux/Network/icmp_bogus_error_responses.nasl: GPLv2+
 gsf/Policy/Linux/Network/icmp_redirects.nasl: GPLv2+
 gsf/Policy/Linux/Network/ip_forwarding.nasl: GPLv2+
@@ -63172,6 +63182,7 @@ gsf/Policy/Linux/Network/reverse_path_filtering.nasl: GPLv2+
 gsf/Policy/Linux/Network/secure_icmp_redirects_accept.nasl: GPLv2+
 gsf/Policy/Linux/Network/source_routed_packages.nasl: GPLv2+
 gsf/Policy/Linux/Network/tcp_syn_cookies.nasl: GPLv2+
+gsf/Policy/Linux/Network/wlan_interface.nasl: GPLv2+
 gsf/Policy/Linux/Services/initd_services_status.nasl: GPLv2+
 gsf/Policy/Linux/Services/ntp_chrony_configuration.nasl: GPLv2+
 gsf/Policy/Linux/Services/xinetd_status.nasl: GPLv2+

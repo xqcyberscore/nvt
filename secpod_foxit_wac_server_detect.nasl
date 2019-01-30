@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_foxit_wac_server_detect.nasl 10888 2018-08-10 12:08:02Z cfischer $
+# $Id: secpod_foxit_wac_server_detect.nasl 13342 2019-01-29 10:25:42Z cfischer $
 #
 # Foxit WAC Server Version Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900923");
-  script_version("$Revision: 10888 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 13342 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-29 11:25:42 +0100 (Tue, 29 Jan 2019) $");
   script_tag(name:"creation_date", value:"2009-08-27 13:43:20 +0200 (Thu, 27 Aug 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -50,25 +50,15 @@ if(description)
 include("ssh_func.inc");
 include("cpe.inc");
 include("host_details.inc");
+include("telnet_func.inc");
 
-sshdPorts = get_kb_list( "Services/ssh" );
-if( ! sshdPorts ) sshdPorts = make_list( 22 );
+function set_detection( port, banner, service ) {
 
-telnetPorts = get_kb_list( "Services/telnet" );
-if( ! telnetPorts ) telnetPorts = make_list( 23 );
+  local_var port, banner, service;
+  local_var cpe;
 
-foreach port( make_list( sshdPorts, telnetPorts ) ) {
-
-  if( ! get_port_state( port ) ) continue;
-
-  # SSH-1.99-Foxit-WAC-Server-2.0 Build 3503
-  # Welcome to WAC Server 2.0 Build 3503. (C) Foxit Software, 2002-2003
-  banner = get_kb_item( "SSH/banner/" + port );
-  if( "Foxit-WAC-Server" >!< banner ) {
-    banner = get_kb_item( "telnet/banner/" + port );
-    if( "WAC" >!< banner || "Foxit Software" >!< banner ) continue;
-  }
-
+  set_kb_item( name:"Foxit-WAC-Server/installed", value:TRUE );
+  install = port + "/tcp";
   version = "unknown";
 
   vers = eregmatch( pattern:"(Foxit-WAC-Server-|WAC Server )(([0-9.]+).?(([a-zA-Z]+[ 0-9]+))?)", string:banner );
@@ -77,20 +67,37 @@ foreach port( make_list( sshdPorts, telnetPorts ) ) {
     version = ereg_replace( pattern:"\.Build", string:version, replace:"" );
   }
 
-  set_kb_item( name:"Foxit-WAC-Server/installed", value:TRUE );
-
   cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:foxitsoftware:wac_server:" );
-  if( isnull( cpe ) )
+  if( ! cpe )
     cpe = "cpe:/a:foxitsoftware:wac_server";
 
-  register_product( cpe:cpe, location:port + '/tcp', port:port );
+  register_product( cpe:cpe, location:install, port:port, service:service );
 
   log_message( data:build_detection_report( app:"Foxit WAC Server",
-                                                version:version,
-                                                install:port + '/tcp',
-                                                cpe:cpe,
-                                                concluded:vers[0] ),
-                                                port:port );
+                                            version:version,
+                                            install:install,
+                                            cpe:cpe,
+                                            concluded:vers[0] ),
+                                            port:port );
 }
+
+telnetPorts = telnet_get_ports();
+
+foreach port( telnetPorts ) {
+  banner = get_telnet_banner( port:port );
+  # Welcome to WAC Server 2.0 Build 3503. (C) Foxit Software, 2002-2003
+  if( banner && "WAC" >< banner && "Foxit Software" >< banner )
+    set_detection( port:port, banner:banner, service:"telnet" );
+}
+
+
+sshdPort = get_ssh_port( default:22 );
+banner   = get_ssh_server_banner( port:sshdPort );
+
+# SSH-1.99-Foxit-WAC-Server-2.0 Build 3503
+if( ! banner || "Foxit-WAC-Server" >!< banner )
+  exit( 0 );
+
+set_detection( port:sshdPort, banner:banner, service:"ssh" );
 
 exit( 0 );

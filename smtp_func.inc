@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: smtp_func.inc 13337 2019-01-29 07:15:09Z cfischer $
+# $Id: smtp_func.inc 13349 2019-01-30 07:39:06Z cfischer $
 #
 # Support functions for handling SMTP
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 13337 $
+# $Revision: 13349 $
 #
 ###############################################################################
 
@@ -71,6 +71,9 @@ function smtp_close( socket, check_data ) {
 #                  request.
 # @param send_ehlo If set to TRUE the passed data string will be sent within an EHLO
 #                  request.
+# @param code      An (optional) string or regex which is used to verify the received data against.
+#                  If this parameter isn't passed the default regex of ^[2-3][0-9]{2}[ -] is assumed.
+#                  If e.g. a code of 220 is passed the following regex is used: ^220[ -].
 #
 # @note If send_helo and send_ehlo is set to FALSE or no data parameter was passed the function will
 #       return the opened socket directly without sending the HELO/EHLO request to the target. Also
@@ -80,9 +83,9 @@ function smtp_close( socket, check_data ) {
 # @return The opened socket or NULL if no connection could be opened, no data was
 #         received, no port parameter or a wrong mix of parameters was passed.
 #
-function smtp_open( port, data, send_helo, send_ehlo ) {
+function smtp_open( port, data, send_helo, send_ehlo, code ) {
 
-  local_var port, data, send_helo, send_ehlo;
+  local_var port, data, send_helo, send_ehlo, code;
   local_var soc, res, req;
 
   if( ! port ) {
@@ -125,8 +128,11 @@ function smtp_open( port, data, send_helo, send_ehlo ) {
   else
     req = strcat( 'HELO ', data, '\r\n' );
 
+  if( ! code )
+    code = "[2-3][0-9]{2}";
+
   send( socket:soc, data:req );
-  res = smtp_recv_line( socket:soc, code:"[2-3][0-9]{2}" );
+  res = smtp_recv_line( socket:soc, code:code );
   if( ! res ) {
     smtp_close( socket:soc, check_data:res );
     return NULL;
@@ -259,11 +265,11 @@ function get_smtp_banner( port ) {
   if( banner )
     return( banner );
 
-  # TBD: Also check for smtp_get_is_marked_wrapped?
-  if( smtp_get_is_marked_broken( port:port ) )
+  if( ! get_port_state( port ) )
     return NULL;
 
-  if( ! get_port_state( port ) )
+  # TBD: Also check for smtp_get_is_marked_wrapped?
+  if( smtp_get_is_marked_broken( port:port ) )
     return NULL;
 
   # nb: Don't use smtp_open() as we want to grab the banner below.
@@ -408,6 +414,9 @@ function get_smtp_port( default, nodefault, ignore_broken, ignore_unscanned ) {
   if( port )
     default = port;
 
+  if( ! ignore_unscanned && ! get_port_state( default ) )
+    exit( 0 );
+
   # Includes e.g. PJL ports which are printing everything
   # sent to them so exit for such a port here
   if( smtp_is_fragile_port( port:default ) )
@@ -415,9 +424,6 @@ function get_smtp_port( default, nodefault, ignore_broken, ignore_unscanned ) {
 
   # TBD: Also check for smtp_get_is_marked_wrapped?
   if( ! ignore_broken && smtp_get_is_marked_broken( port:default ) )
-    exit( 0 );
-
-  if( ! ignore_unscanned && ! get_port_state( default ) )
     exit( 0 );
 
   return default;
@@ -472,6 +478,10 @@ function smtp_get_ports( default_list, ignore_broken, ignore_unscanned ) {
   }
 
   foreach port( check_port_list ) {
+
+    if( ! ignore_unscanned && ! get_port_state( port ) )
+      continue;
+
     # Includes e.g. PJL ports which are printing everything
     # sent to them so don't include them here.
     if( smtp_is_fragile_port( port:port ) )
@@ -479,9 +489,6 @@ function smtp_get_ports( default_list, ignore_broken, ignore_unscanned ) {
 
     # TBD: Also check for smtp_get_is_marked_wrapped?
     if( ! ignore_broken && smtp_get_is_marked_broken( port:port ) )
-      continue;
-
-    if( ! ignore_unscanned && ! get_port_state( port ) )
       continue;
 
     final_port_list = make_list( final_port_list, port );
