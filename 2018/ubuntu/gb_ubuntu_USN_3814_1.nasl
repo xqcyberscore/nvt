@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3814_1.nasl 12497 2018-11-23 08:28:21Z cfischer $
+# $Id: gb_ubuntu_USN_3814_1.nasl 13374 2019-01-31 07:19:48Z asteins $
 #
 # Ubuntu Update for libmspack USN-3814-1
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843813");
-  script_version("$Revision: 12497 $");
+  script_version("$Revision: 13374 $");
   script_cve_id("CVE-2018-18584", "CVE-2018-18585");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-31 08:19:48 +0100 (Thu, 31 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-11-13 06:00:28 +0100 (Tue, 13 Nov 2018)");
   script_name("Ubuntu Update for libmspack USN-3814-1");
   script_category(ACT_GATHER_INFO);

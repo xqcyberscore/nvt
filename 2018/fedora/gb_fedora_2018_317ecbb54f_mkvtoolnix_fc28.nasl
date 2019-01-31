@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_317ecbb54f_mkvtoolnix_fc28.nasl 12314 2018-11-12 09:01:54Z santu $
+# $Id: gb_fedora_2018_317ecbb54f_mkvtoolnix_fc28.nasl 13374 2019-01-31 07:19:48Z asteins $
 #
 # Fedora Update for mkvtoolnix FEDORA-2018-317ecbb54f
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875241");
-  script_version("$Revision: 12314 $");
+  script_version("$Revision: 13374 $");
   script_cve_id("CVE-2018-4022");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-12 10:01:54 +0100 (Mon, 12 Nov 2018) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-31 08:19:48 +0100 (Thu, 31 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-11-08 06:36:46 +0100 (Thu, 08 Nov 2018)");
   script_name("Fedora Update for mkvtoolnix FEDORA-2018-317ecbb54f");
   script_category(ACT_GATHER_INFO);

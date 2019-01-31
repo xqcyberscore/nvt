@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3819_1.nasl 12479 2018-11-22 08:12:17Z santu $
+# $Id: gb_suse_2018_3819_1.nasl 13374 2019-01-31 07:19:48Z asteins $
 #
 # SuSE Update for libmatroska, openSUSE-SU-2018:3819-1 (libmatroska,)
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852141");
-  script_version("$Revision: 12479 $");
+  script_version("$Revision: 13374 $");
   script_cve_id("CVE-2018-4022");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-22 09:12:17 +0100 (Thu, 22 Nov 2018) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-31 08:19:48 +0100 (Thu, 31 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-11-21 06:04:19 +0100 (Wed, 21 Nov 2018)");
   script_name("SuSE Update for libmatroska, openSUSE-SU-2018:3819-1 (libmatroska, )");
   script_category(ACT_GATHER_INFO);

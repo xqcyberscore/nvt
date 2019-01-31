@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: smtp_func.inc 13349 2019-01-30 07:39:06Z cfischer $
+# $Id: smtp_func.inc 13357 2019-01-30 09:02:06Z cfischer $
 #
 # Support functions for handling SMTP
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 13349 $
+# $Revision: 13357 $
 #
 ###############################################################################
 
@@ -33,6 +33,10 @@ global_var _smtp_is_broken_array, _smtp_is_wrapped_array, __smtp_helo;
 # nb: key is the port or NULL (if not previously checked), value TRUE/FALSE if broken/wrapped or not
 _smtp_is_broken_array = make_array();
 _smtp_is_wrapped_array = make_array();
+
+# Enables debugging output for a few functions below.
+global_var __smtp_debug;
+__smtp_debug = FALSE;
 
 # @brief Closes a passed TCP socket of a SMTP server by first sending a QUIT message to the service.
 #
@@ -98,15 +102,20 @@ function smtp_open( port, data, send_helo, send_ehlo, code ) {
     return NULL;
   }
 
-  if( smtp_get_is_marked_broken( port:port ) )
+  if( smtp_get_is_marked_broken( port:port ) ) {
+    if( __smtp_debug ) display( "SMTP DEBUG (smtp_open): SMTP service is marked as broken.\n" );
     return NULL;
+  }
 
   soc = open_sock_tcp( port );
-  if ( ! soc )
+  if ( ! soc ) {
+    if( __smtp_debug ) display( "SMTP DEBUG (smtp_open): Can't open connection to port ", port, "\n" );
     return NULL;
+  }
 
   res = smtp_recv_banner( socket:soc );
   if( ! res ) {
+    if( __smtp_debug ) display( "SMTP DEBUG (smtp_open): No initial 220 banner received from SMTP service.\n" );
     smtp_close( socket:soc, check_data:res );
     return NULL;
   }
@@ -120,8 +129,10 @@ function smtp_open( port, data, send_helo, send_ehlo, code ) {
     send_ehlo = FALSE;
   }
 
-  if( isnull( data ) || ( send_helo == FALSE && send_ehlo == FALSE ) )
+  if( isnull( data ) || ( send_helo == FALSE && send_ehlo == FALSE ) ) {
+    if( __smtp_debug ) display( "SMTP DEBUG (smtp_open): Successful returning socket without sending a HELO/EHLO first.\n" );
     return soc;
+  }
 
   if( ! send_helo && send_ehlo )
     req = strcat( 'EHLO ', data, '\r\n' );
@@ -134,10 +145,12 @@ function smtp_open( port, data, send_helo, send_ehlo, code ) {
   send( socket:soc, data:req );
   res = smtp_recv_line( socket:soc, code:code );
   if( ! res ) {
+    if( __smtp_debug ) display( "SMTP DEBUG (smtp_open): No data received from smtp_recv_line or response didn't matched the regex pattern: ", code, ".\n" );
     smtp_close( socket:soc, check_data:res );
     return NULL;
   }
 
+  if( __smtp_debug ) display( "SMTP DEBUG (smtp_open): Successful returning socket after sending a HELO/EHLO first.\n" );
   return soc;
 }
 
@@ -311,6 +324,7 @@ function smtp_recv_line( socket, code, retry, last ) {
 
   local_var socket, code, retry, last;
   local_var pat, r, n, ret;
+  # nb: __smtp_debug is a global var to enable some debug output
 
   if( ! socket ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#socket#-#smtp_recv_line" );
@@ -335,6 +349,8 @@ function smtp_recv_line( socket, code, retry, last ) {
     r = recv_line( socket:socket, length:4096 );
   }
 
+  if( __smtp_debug && r ) display( "SMTP DEBUG (smtp_recv_line): Initial response = ", r, "\n" );
+
   n = 0;
   ret = r;
   if( strlen( r ) < 4 || r !~ "^[0-9]{3}[ -]" )
@@ -358,6 +374,7 @@ function smtp_recv_line( socket, code, retry, last ) {
     else
       ret = strcat( ret, r );
   }
+  if( __smtp_debug && r ) display( "SMTP DEBUG (smtp_recv_line): Final return = ", ret, "\n" );
   return ret;
 }
 

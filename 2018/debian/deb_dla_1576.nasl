@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1576.nasl 12321 2018-11-12 15:10:53Z cfischer $
+# $Id: deb_dla_1576.nasl 13374 2019-01-31 07:19:48Z asteins $
 #
 # Auto-generated from advisory DLA 1576-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891576");
-  script_version("$Revision: 12321 $");
+  script_version("$Revision: 13374 $");
   script_cve_id("CVE-2018-16837");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1576-1] ansible security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-12 16:10:53 +0100 (Mon, 12 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-31 08:19:48 +0100 (Thu, 31 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-11-12 00:00:00 +0100 (Mon, 12 Nov 2018)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"2.1");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

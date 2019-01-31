@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_cb337fb199_libmspack_fc28.nasl 12329 2018-11-13 08:26:34Z santu $
+# $Id: gb_fedora_2018_cb337fb199_libmspack_fc28.nasl 13374 2019-01-31 07:19:48Z asteins $
 #
 # Fedora Update for libmspack FEDORA-2018-cb337fb199
 #
@@ -29,12 +29,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875260");
-  script_version("$Revision: 12329 $");
+  script_version("$Revision: 13374 $");
   script_cve_id("CVE-2018-14680", "CVE-2018-14681", "CVE-2018-14682",
                 "CVE-2018-18584", "CVE-2018-18585", "CVE-2018-14679");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-13 09:26:34 +0100 (Tue, 13 Nov 2018) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-31 08:19:48 +0100 (Thu, 31 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-11-13 06:19:12 +0100 (Tue, 13 Nov 2018)");
   script_name("Fedora Update for libmspack FEDORA-2018-cb337fb199");
   script_category(ACT_GATHER_INFO);

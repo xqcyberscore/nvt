@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mikrotik_router_routeros_telnet_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
+# $Id: gb_mikrotik_router_routeros_telnet_detect.nasl 13364 2019-01-30 12:45:03Z cfischer $
 #
 # MikroTik RouterOS Detection (Telnet)
 #
@@ -25,20 +25,21 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if( description )
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113070");
-  script_version("$Revision: 11885 $");
+  script_version("$Revision: 13364 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-30 13:45:03 +0100 (Wed, 30 Jan 2019) $");
   script_tag(name:"creation_date", value:"2017-12-14 13:17:18 +0100 (Thu, 14 Dec 2017)");
   script_name("MikroTik RouterOS Detection (Telnet)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("find_service.nasl", "telnet.nasl");
+  script_dependencies("telnetserver_detect_type_nd_version.nasl");
   script_require_ports("Services/telnet", 23, 2323);
+  script_mandatory_keys("telnet/banner/available");
 
   script_tag(name:"summary", value:"Detection of MikroTik RouterOS via Telnet.
 
@@ -50,12 +51,13 @@ if( description )
   exit(0);
 }
 
-include( "host_details.inc" );
-include( "telnet_func.inc" );
+include("host_details.inc");
+include("telnet_func.inc");
 
 port = get_telnet_port( default:23 );
-banner = get_telnet_banner( port: port );
-if( "MikroTik" >!< banner || "Login:" >!< banner ) exit( 0 );
+banner = get_telnet_banner( port:port );
+if( "MikroTik" >!< banner || "Login:" >!< banner )
+  exit( 0 );
 
 version = "unknown";
 install = port + "/tcp";

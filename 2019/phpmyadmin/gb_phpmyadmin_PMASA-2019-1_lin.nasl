@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_PMASA-2019-1_lin.nasl 13329 2019-01-28 13:58:07Z asteins $
+# $Id: gb_phpmyadmin_PMASA-2019-1_lin.nasl 13374 2019-01-31 07:19:48Z asteins $
 #
 # phpMyAdmin 4.0 <= 4.8.4 Arbitrary File Read Vulnerability - PMASA-2019-1 (Linux)
 #
@@ -30,11 +30,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112500");
-  script_version("$Revision: 13329 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-28 14:58:07 +0100 (Mon, 28 Jan 2019) $");
+  script_version("$Revision: 13374 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-31 08:19:48 +0100 (Thu, 31 Jan 2019) $");
   script_tag(name:"creation_date", value:"2019-01-28 14:49:12 +0100 (Mon, 28 Jan 2019)");
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2019-6799");
 

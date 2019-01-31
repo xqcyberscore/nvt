@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1555.nasl 12140 2018-10-29 07:40:23Z cfischer $
+# $Id: deb_dla_1555.nasl 13374 2019-01-31 07:19:48Z asteins $
 #
 # Auto-generated from advisory DLA 1555-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891555");
-  script_version("$Revision: 12140 $");
+  script_version("$Revision: 13374 $");
   script_cve_id("CVE-2018-18584", "CVE-2018-18585");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1555-1] libmspack security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-29 08:40:23 +0100 (Mon, 29 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-31 08:19:48 +0100 (Thu, 31 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-10-29 00:00:00 +0100 (Mon, 29 Oct 2018)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

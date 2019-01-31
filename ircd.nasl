@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ircd.nasl 11386 2018-09-14 11:15:22Z cfischer $
+# $Id: ircd.nasl 13361 2019-01-30 10:56:24Z cfischer $
 #
 # IRC Server Banner Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11156");
-  script_version("$Revision: 11386 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-14 13:15:22 +0200 (Fri, 14 Sep 2018) $");
+  script_version("$Revision: 13361 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-30 11:56:24 +0100 (Wed, 30 Jan 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -49,20 +49,26 @@ if(description)
 include("misc_func.inc");
 
 ports = get_kb_list( "Services/irc" );
-if( ! ports ) ports = make_list( 6667,  6697, 7697);
+if( ! ports )
+  ports = make_list( 6667,  6697, 7697);
 
 host = get_host_name();
 
 foreach port( ports ) {
 
-  if( ! get_port_state( port ) ) continue;
+  if( ! get_port_state( port ) )
+    continue;
+
   soc = open_sock_tcp( port );
-  if( ! soc ) continue;
+  if( ! soc )
+    continue;
+
   # nb: Don't use service_is_unknown() as we want to fetch the version as well...
 
   final_banner = "";
   host_banner = "";
   nick = NULL;
+  blocked = FALSE;
 
   # nb: Generating a random nickname / login name
   for( i = 0; i < 9; i++ )
@@ -75,6 +81,7 @@ foreach port( ports ) {
   send( socket:soc, data:req );
 
   while( a = recv_line( socket:soc, length:4096 ) ) {
+    n++;
     if( a =~ "^PING." ) {
       a = ereg_replace( pattern:"PING", replace:"PONG", string:a );
       send( socket:soc, data:a );
@@ -85,11 +92,18 @@ foreach port( ports ) {
       set_kb_item( name:"ircd/detected", value:TRUE );
       log_message( port:port, data:'Unable to get the version of this service due to the error:\n\n' + a );
       register_service( port:port, proto:"irc", message:"An IRC server seems to be running on this port." );
-      continue;
+      blocked = TRUE;
+      break;
     } else if( a =~ "^:.* :Your host is .*, running version " ) {
       host_banner = a;
     }
+    if( n > 256 ) # nb: Too much data...
+      break;
   }
+
+  # nb: Socket was already closed above and the log_message about the service was sent.
+  if( blocked )
+    continue;
 
   send( socket:soc, data:string( "VERSION\r\n" ) );
   v = "x";

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_PMASA-2019-2_win.nasl 13329 2019-01-28 13:58:07Z asteins $
+# $Id: gb_phpmyadmin_PMASA-2019-2_win.nasl 13374 2019-01-31 07:19:48Z asteins $
 #
 # phpMyAdmin 4.5.0 <= 4.8.4 SQL Injection Vulnerability - PMASA-2019-2 (Windows)
 #
@@ -30,11 +30,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112503");
-  script_version("$Revision: 13329 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-28 14:58:07 +0100 (Mon, 28 Jan 2019) $");
+  script_version("$Revision: 13374 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-31 08:19:48 +0100 (Thu, 31 Jan 2019) $");
   script_tag(name:"creation_date", value:"2019-01-28 14:49:12 +0100 (Mon, 28 Jan 2019)");
-  script_tag(name:"cvss_base", value:"5.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2019-6798");
 

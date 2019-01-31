@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_telnet_unencrypted_cleartext_logins.nasl 13011 2019-01-10 08:02:19Z cfischer $
+# $Id: gb_telnet_unencrypted_cleartext_logins.nasl 13366 2019-01-30 13:39:57Z cfischer $
 #
 # Telnet Unencrypted Cleartext Login
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108522");
-  script_version("$Revision: 13011 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-10 09:02:19 +0100 (Thu, 10 Jan 2019) $");
+  script_version("$Revision: 13366 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-30 14:39:57 +0100 (Wed, 30 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-12-20 07:47:54 +0100 (Thu, 20 Dec 2018)");
   script_tag(name:"cvss_base", value:"4.8");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:P/A:N");
@@ -36,7 +36,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("telnet.nasl");
+  script_dependencies("telnetserver_detect_type_nd_version.nasl");
   script_require_ports("Services/telnet", 23);
   script_mandatory_keys("telnet/banner/available");
 
@@ -76,7 +76,7 @@ if( ! banner )
 # sw_apc_default_telnet_credentials.nasl, sw_zebra_telnet_default_password.nasl,
 # gb_zxv10_w300_hardcoded_credentials_2014.nasl, gb_audemat_fmb80_default_telnet_credentials.nasl,
 # gb_lantronix_unprotected_telnet.nasl, gb_windows_ce_unprotected_telnet.nasl
-if( banner !~ "(Pocket CMD.+\\>|login|password|user ?name|user|press enter.+setup mode|polycom command shell|welcome to viewstation|hi, my name is.+here is what i know about myself|you are logged in|sollae systems.+management console|lsh>) ?:?" )
+if( banner !~ "(Pocket CMD.+\\>|login|password|user ?name|user|press enter.+setup mode|polycom command shell|welcome to viewstation|hi, my name is.+here is what i know about myself|you are logged in|management console.+sollae systems|lsh>) ?:?" )
   exit( 0 );
 
 # nb: Some banners found "in the wild", e.g. Mitel VoIP phone

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lutron_homeworks_processor_default_password.nasl 12474 2018-11-22 04:39:06Z ckuersteiner $
+# $Id: gb_lutron_homeworks_processor_default_password.nasl 13364 2019-01-30 12:45:03Z cfischer $
 #
 # Lutron Devices Default Credentials
 #
@@ -25,11 +25,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if( description )
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113206");
-  script_version("$Revision: 12474 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-22 05:39:06 +0100 (Thu, 22 Nov 2018) $");
+  script_version("$Revision: 13364 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-30 13:45:03 +0100 (Wed, 30 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-06-05 12:36:33 +0200 (Tue, 05 Jun 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -46,14 +46,14 @@ if( description )
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Default Accounts");
-  script_dependencies("telnet.nasl");
+  script_dependencies("telnetserver_detect_type_nd_version.nasl");
   script_require_ports("Services/telnet", 23);
   script_mandatory_keys("telnet/banner/available");
 
   script_tag(name:"summary", value:"Lutron devices have default admin credentials that cannot be changed.");
 
   script_tag(name:"vuldetect", value:"Tries to login with the default credentials and reports if it was
-successful.");
+  successful.");
 
   script_tag(name:"insight", value:"The devices each use one of the two following (user:password) pairs:
 
@@ -62,7 +62,7 @@ successful.");
   - nwk:nwk2");
 
   script_tag(name:"impact", value:"Successful exploitation would allow an attacker to gain admin access to the
-target system.");
+  target system.");
 
   script_tag(name:"affected", value:"The vulnerability affects multiple Lutron devices.");
 
@@ -74,7 +74,7 @@ target system.");
   exit(0);
 }
 
-include( "telnet_func.inc" );
+include("telnet_func.inc");
 
 port = get_telnet_port( default: 23 );
 

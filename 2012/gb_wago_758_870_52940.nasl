@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wago_758_870_52940.nasl 12875 2018-12-21 15:01:59Z cfischer $
+# $Id: gb_wago_758_870_52940.nasl 13364 2019-01-30 12:45:03Z cfischer $
 #
 # WAGO I/O SYSTEM 758 Series Insecure Credential Vulnerabilities
 #
@@ -31,16 +31,16 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.103465");
   script_bugtraq_id(52940, 52942);
   script_cve_id("CVE-2012-4879", "CVE-2012-3013");
-  script_version("$Revision: 12875 $");
+  script_version("$Revision: 13364 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-21 16:01:59 +0100 (Fri, 21 Dec 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-30 13:45:03 +0100 (Wed, 30 Jan 2019) $");
   script_tag(name:"creation_date", value:"2012-04-12 11:29:33 +0200 (Thu, 12 Apr 2012)");
   script_name("WAGO I/O SYSTEM 758 Series Insecure Credential Vulnerabilities");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
-  script_dependencies("find_service.nasl", "http_version.nasl", "telnet.nasl");
+  script_dependencies("http_version.nasl", "telnetserver_detect_type_nd_version.nasl");
   script_require_ports("Services/www", 80, "Services/telnet", 23);
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/52940");
@@ -53,7 +53,7 @@ if(description)
   caused by a set of hard-coded passwords.");
 
   script_tag(name:"impact", value:"Successful attacks can allow a remote attacker to gain unauthorized
-  access to the vulnerable device, using the HTTP or TELNET service.");
+  access to the vulnerable device, using the HTTP or Telnet service.");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"VendorFix");

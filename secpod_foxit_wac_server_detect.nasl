@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_foxit_wac_server_detect.nasl 13342 2019-01-29 10:25:42Z cfischer $
+# $Id: secpod_foxit_wac_server_detect.nasl 13364 2019-01-30 12:45:03Z cfischer $
 #
 # Foxit WAC Server Version Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900923");
-  script_version("$Revision: 13342 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-29 11:25:42 +0100 (Tue, 29 Jan 2019) $");
+  script_version("$Revision: 13364 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-30 13:45:03 +0100 (Wed, 30 Jan 2019) $");
   script_tag(name:"creation_date", value:"2009-08-27 13:43:20 +0200 (Thu, 27 Aug 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -36,7 +36,7 @@ if(description)
   script_family("Product detection");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
-  script_dependencies("telnet.nasl", "ssh_detect.nasl");
+  script_dependencies("telnetserver_detect_type_nd_version.nasl", "ssh_detect.nasl");
   script_require_ports("Services/ssh", 22, "Services/telnet", 23);
 
   script_tag(name:"summary", value:"This script finds the version of Foxit WAC Server and

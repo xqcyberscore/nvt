@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Wed, 30 Jan 2019 09:38:06 +0100
+# Automatically created on:  Thu, 31 Jan 2019 11:30:55 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -43957,6 +43957,8 @@
 2019/centos/gb_CESA-2019_0109_perl_centos7.nasl: GPLv2+
 2019/coreos/gb_etcd_auth_vuln.nasl: GPLv2+
 2019/coship/gb_coship_routers_pw_reset_vuln.nasl: GPLv2+
+2019/coturn/gb_coturn_auth_bypass_vuln.nasl: GPLv2+
+2019/coturn/gb_coturn_mult_vuln.nasl: GPLv2+
 2019/debian/deb_4362.nasl: GPLv2+
 2019/debian/deb_4363.nasl: GPLv2+
 2019/debian/deb_4364.nasl: GPLv2+
@@ -43970,6 +43972,10 @@
 2019/debian/deb_4372.nasl: GPLv2+
 2019/debian/deb_4373.nasl: GPLv2+
 2019/debian/deb_4374.nasl: GPLv2+
+2019/debian/deb_4375.nasl: GPLv2+
+2019/debian/deb_4376.nasl: GPLv2+
+2019/debian/deb_4377.nasl: GPLv2+
+2019/debian/deb_4378.nasl: GPLv2+
 2019/debian/deb_dla_1621.nasl: GPLv2+
 2019/debian/deb_dla_1623.nasl: GPLv2+
 2019/debian/deb_dla_1624.nasl: GPLv2+
@@ -43991,6 +43997,13 @@
 2019/debian/deb_dla_1643.nasl: GPLv2+
 2019/debian/deb_dla_1644.nasl: GPLv2+
 2019/debian/deb_dla_1645.nasl: GPLv2+
+2019/debian/deb_dla_1646.nasl: GPLv2+
+2019/debian/deb_dla_1647.nasl: GPLv2+
+2019/debian/deb_dla_1648.nasl: GPLv2+
+2019/debian/deb_dla_1649.nasl: GPLv2+
+2019/debian/deb_dla_1650.nasl: GPLv2+
+2019/debian/deb_dla_1651.nasl: GPLv2+
+2019/discourse/gb_discourse_2.2.0beta2.nasl: GPLv2+
 2019/discourse/gb_discourse_2.2.0beta3.nasl: GPLv2+
 2019/discourse/gb_discourse_2.2.0beta4.nasl: GPLv2+
 2019/discourse/gb_discourse_2.2.0beta5.nasl: GPLv2+
@@ -44017,6 +44030,7 @@
 2019/fedora/gb_fedora_2018_e69d2aaa60_wordpress_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2018_ea05fcd378_vcftools_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_01afc2352f_mingw-nettle_fc28.nasl: GPLv2+
+2019/fedora/gb_fedora_2019_0398d1b049_haproxy_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_1a0d4443f8_gnutls_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_20a89ca9af_kernel_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_20a89ca9af_kernel-headers_fc28.nasl: GPLv2+
@@ -44031,15 +44045,18 @@
 2019/fedora/gb_fedora_2019_509c133845_kernel-headers_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_541a12b809_python3-docs_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_541a12b809_python3_fc28.nasl: GPLv2+
+2019/fedora/gb_fedora_2019_596813cc59_electrum_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_8deebad756_perl-Email-Address_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_8f8cadd5ff_thunderbird_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_920924ed23_irssi_fc28.nasl: GPLv2+
+2019/fedora/gb_fedora_2019_93b4b78e58_runc_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_944ff52ce6_php-horde-Horde-Image_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_9eb0ae6296_openssh_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_a6511b0eed_php_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_ac7e19b0c8_krb5_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_b1da89df11_polkit_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_b6ce519120_gitolite3_fc28.nasl: GPLv2+
+2019/fedora/gb_fedora_2019_b8ffb3768d_python37_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_c424e3bb72_golang_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_c6044b3fce_matrix-synapse_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_d1b5cf0055_wget_fc28.nasl: GPLv2+
@@ -44053,6 +44070,9 @@
 2019/gb_ftp_unencrypted_cleartext_login.nasl: GPLv2
 2019/gb_smtp_unencrypted_cleartext_login.nasl: GPLv2
 2019/gb_vnc_unencrypted_data_transmission.nasl: GPLv2
+2019/google/gb_google_chrome_stable-channel-update-for-desktop-2019-01_lin.nasl: GPLv2+
+2019/google/gb_google_chrome_stable-channel-update-for-desktop-2019-01_macosx.nasl: GPLv2+
+2019/google/gb_google_chrome_stable-channel-update-for-desktop-2019-01_win.nasl: GPLv2+
 2019/horde/gb_horde_imp_rce_vuln.nasl: GPLv2+
 2019/irssi/gb_irssi_use-after-free_vuln.nasl: GPLv2+
 2019/jenkins/gb_jenkins_20190116_lin.nasl: GPLv2+
@@ -44062,6 +44082,7 @@
 2019/limesurvey/gb_limesurvey_xss_vuln1.nasl: GPLv2+
 2019/limesurvey/gb_limesurvey_xss_vuln.nasl: GPLv2+
 2019/magentocommerce/gb_magento_mult_vuln.nasl: GPLv2+
+2019/matomo/gb_matomo_mult_xss_jan19.nasl: GPLv2+
 2019/microsoft/gb_ms_kb2553332.nasl: GPLv2+
 2019/microsoft/gb_ms_kb2596760.nasl: GPLv2+
 2019/microsoft/gb_ms_kb3172522.nasl: GPLv2+
@@ -44095,8 +44116,14 @@
 2019/microsoft/gb_ms_office_click2run_mult_vuln_jan19.nasl: GPLv2+
 2019/microsoft/gb_ms_visual_studio_mult_info_disc_vuln_jan19.nasl: GPLv2+
 2019/microsoft/gb_ms_visual_studio_rce_vuln_jan19.nasl: GPLv2+
+2019/mozilla/gb_mozilla_firefox_esr_mfsa_2018-31_2019-03_macosx.nasl: GPLv2+
+2019/mozilla/gb_mozilla_firefox_esr_mfsa_2018-31_2019-03_win.nasl: GPLv2+
+2019/mozilla/gb_mozilla_firefox_mfsa_2018-31_2019-03_macosx.nasl: GPLv2+
+2019/mozilla/gb_mozilla_firefox_mfsa_2018-31_2019-03_win.nasl: GPLv2+
 2019/mozilla/gb_mozilla_thunderbird_mfsa_2018-31_2018-31_macosx.nasl: GPLv2+
 2019/mozilla/gb_mozilla_thunderbird_mfsa_2018-31_2018-31_win.nasl: GPLv2+
+2019/mozilla/gb_mozilla_thunderbird_mfsa_2019-01_2019-03_macosx.nasl: GPLv2+
+2019/mozilla/gb_mozilla_thunderbird_mfsa_2019-01_2019-03_win.nasl: GPLv2+
 2019/nedi/gb_nedi_mult_vuln.nasl: GPLv2+
 2019/opensc/gb_opensc_mem_leak_vuln_lin.nasl: GPLv2+
 2019/opensc/gb_opensc_mem_leak_vuln_win.nasl: GPLv2+
@@ -44131,12 +44158,22 @@
 2019/opensuse/gb_suse_2019_0066_1.nasl: GPLv2+
 2019/opensuse/gb_suse_2019_0081_1.nasl: GPLv2+
 2019/opensuse/gb_suse_2019_0082_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0084_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0085_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0086_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0087_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0088_1.nasl: GPLv2+
 2019/opensuse/gb_suse_2019_1_1.nasl: GPLv2+
+2019/openxchange/gb_open_xchange_appsuite_56406.nasl: GPLv2+
+2019/openxchange/gb_open_xchange_appsuite_56558.nasl: GPLv2+
 2019/openxchange/gb_open_xchange_appsuite_58161.nasl: GPLv2+
 2019/openxchange/gb_open_xchange_appsuite_58226.nasl: GPLv2+
 2019/openxchange/gb_open_xchange_appsuite_58282.nasl: GPLv2+
+2019/openxchange/gb_open_xchange_appsuite_58742.nasl: GPLv2+
 2019/openxchange/gb_open_xchange_appsuite_58874.nasl: GPLv2+
 2019/openxchange/gb_open_xchange_appsuite_58880.nasl: GPLv2+
+2019/openxchange/gb_open_xchange_appsuite_59507.nasl: GPLv2+
+2019/openxchange/gb_open_xchange_appsuite_59653.nasl: GPLv2+
 2019/oracle/gb_oracle_java_jan2019-5072801_01_lin.nasl: GPLv2+
 2019/oracle/gb_oracle_java_jan2019-5072801_01_win.nasl: GPLv2+
 2019/oracle/gb_oracle_java_jan2019-5072801_02_lin.nasl: GPLv2+
@@ -44743,6 +44780,7 @@ gb_core_ftp_le_client_detect.nasl: GPLv2+
 gb_corel_pdf_fusion_detect_win.nasl: GPLv2+
 gb_coremailxt_detect.nasl: GPLv2+
 gb_coship_router_snmp_detect.nasl: GPLv2+
+gb_coturn_http_detect.nasl: GPLv2+
 gb_couchdb_detect.nasl: GPLv2+
 gb_cpcreator_detect.nasl: GPLv2+
 gb_cradlepoint_router_consolidation.nasl: GPLv2+
@@ -45790,6 +45828,7 @@ gb_sap_webgui_detect.nasl: GPLv2+
 gb_sawmill_detect.nasl: GPLv2+
 gb_scalix_detect.nasl: GPLv2+
 gb_schneider_clearscada_detect.nasl: GPLv2+
+gb_schneider_ecostruxure_machine_expert_detect_win.nasl: GPLv2+
 gb_schneider_electric_pelco_sarix_ip_cam_detect.nasl: GPLv2+
 gb_schneider_electric_proface_gp-pro_ex_detect.nasl: GPLv2+
 gb_schneider_electric_software_update_detect_win.nasl: GPLv2+
@@ -62985,6 +63024,8 @@ gsf/2018/zohocorp/gb_manageengine_servicedesk_plus_xss_vuln.nasl: GPLv2+
 gsf/2018/zohocorp/gb_manageengine_supportcenter_plus_html_inj_n_xss_vuln.nasl: GPLv2+
 gsf/2019/abb/gb_cp400_panel_builder_dos_ce_vuln.nasl: GPLv2+
 gsf/2019/advantech/gb_advantech_webaccess_mult_vuln_jan19.nasl: GPLv2+
+gsf/2019/apache/gb_apache_spark_priv_esc_vuln.nasl: GPLv2+
+gsf/2019/atlassian/gb_atlassian_crowd_cwd-5060.nasl: GPLv2+
 gsf/2019/bmc/gb_bmc_remedy_impersonation_vuln.nasl: GPLv2+
 gsf/2019/bmc/gb_bmc_remedy_mult_vuln01.nasl: GPLv2+
 gsf/2019/brocade/gb_brocade_network_advisor_BSA-2018-743.nasl: GPLv2+
@@ -63014,8 +63055,10 @@ gsf/2019/cisco/gb_cisco_rv_series_cisco-sa-20190123-rv-inject.nasl: GPLv2+
 gsf/2019/citrix/gb_citrix_netscaler_CTX240139.nasl: GPLv2+
 gsf/2019/crestron/gb_crestron_arimedia_auth_bypass_vuln.nasl: GPLv2+
 gsf/2019/emc/gb_rsa_archer_DSA-2018-224.nasl: GPLv2+
+gsf/2019/f5/gb_f5_big_ip_K07721343.nasl: GPLv2+
 gsf/2019/f5/gb_f5_big_ip_K17264695.nasl: GPLv2+
 gsf/2019/f5/gb_f5_big_ip_K23566124.nasl: GPLv2+
+gsf/2019/f5/gb_f5_big_ip_K28241423.nasl: GPLv2+
 gsf/2019/f5/gb_f5_big_ip_K29146534.nasl: GPLv2+
 gsf/2019/f5/gb_f5_big_ip_K32840424.nasl: GPLv2+
 gsf/2019/f5/gb_f5_big_ip_K45616155.nasl: GPLv2+

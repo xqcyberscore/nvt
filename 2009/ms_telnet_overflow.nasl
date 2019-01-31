@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: ms_telnet_overflow.nasl 9745 2018-05-07 11:45:41Z cfischer $
+# $Id: ms_telnet_overflow.nasl 13364 2019-01-30 12:45:03Z cfischer $
 #
 # MS Telnet Overflow
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102008");
-  script_version("$Revision: 9745 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-07 13:45:41 +0200 (Mon, 07 May 2018) $");
+  script_version("$Revision: 13364 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-30 13:45:03 +0100 (Wed, 30 Jan 2019) $");
   script_tag(name:"creation_date", value:"2009-10-05 19:43:01 +0200 (Mon, 05 Oct 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -38,16 +38,17 @@ if(description)
   script_category(ACT_DESTRUCTIVE_ATTACK);
   script_copyright("Copyright (C) 2009 LSS");
   script_family("Buffer overflow");
-  script_dependencies("telnet.nasl");
+  script_dependencies("telnetserver_detect_type_nd_version.nasl");
   script_require_ports("Services/telnet", 23);
+  script_mandatory_keys("telnet/banner/available");
 
-  tag_summary = "It is possible to crash remote telnet server via malformed protocol options.
-  This flaw may allow attackers to execute arbitrary code on the system.";
+  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/bulletin/ms02-004.mspx");
 
-  tag_solution = "http://www.microsoft.com/technet/security/bulletin/ms02-004.mspx";
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for
+  more information.");
 
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"It is possible to crash remote telnet server via malformed protocol options.
+  This flaw may allow attackers to execute arbitrary code on the system.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -64,7 +65,7 @@ function telnet_attack( port ) {
   bomb_size = 100000;
   sock = open_sock_tcp( port );
   if( sock ) {
-    bomb = crap( data:iac_ayt, length:2*bomb_size );
+    bomb = crap( data:iac_ayt, length:2 * bomb_size );
     send( socket:sock, data:bomb );
     close( sock );
     return TRUE;

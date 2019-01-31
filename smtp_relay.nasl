@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smtp_relay.nasl 13204 2019-01-21 17:32:45Z cfischer $
+# $Id: smtp_relay.nasl 13356 2019-01-30 08:45:53Z cfischer $
 #
 # SMTP Open Relay Test
 #
@@ -27,18 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100073");
-  script_version("$Revision: 13204 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-21 18:32:45 +0100 (Mon, 21 Jan 2019) $");
+  script_version("$Revision: 13356 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-30 09:45:53 +0100 (Wed, 30 Jan 2019) $");
   script_tag(name:"creation_date", value:"2009-03-23 19:32:33 +0100 (Mon, 23 Mar 2009)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_cve_id("CVE-1999-0512", "CVE-2002-1278", "CVE-2003-0285");
   script_name("Mail relaying");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("SMTP problems");
   script_dependencies("smtpserver_detect.nasl", "smtp_settings.nasl", "global_settings.nasl");
   script_require_ports("Services/smtp", 25, 465, 587);
-  script_exclude_keys("keys/is_private_addr", "keys/islocalhost");
+  script_exclude_keys("keys/is_private_addr", "keys/islocalhost", "keys/islocalnet");
 
   script_tag(name:"solution", value:"Improve the configuration of your SMTP server so that your SMTP server
   cannot be used as a relay any more.");
@@ -58,8 +59,14 @@ include("smtp_func.inc");
 include("misc_func.inc");
 include("network_func.inc");
 
-if(islocalhost()) exit(0);
-if(is_private_addr()) exit(0);
+if(islocalhost())
+  exit(0);
+
+if(islocalnet())
+  exit(0);
+
+if(is_private_addr())
+  exit(0);
 
 domain = get_3rdparty_domain();
 src_name = this_host_name();
@@ -74,24 +81,19 @@ if(get_kb_item("smtp/" + port + "/qmail"))
 if(smtp_get_is_marked_wrapped(port:port))
   exit(0);
 
-soc = smtp_open(port:port, data:NULL);
+helo_name = smtp_get_helo_from_kb(port:port);
+soc = smtp_open(port:port, data:helo_name, send_helo:TRUE, code:"250");
 if(!soc)
   exit(0);
 
-send(socket:soc, data:strcat('EHLO ', src_name, '\r\n'));
-answer = smtp_recv_line(socket:soc, code:"250");
-if(!answer) {
-  smtp_close(socket:soc, check_data:answer);
-  exit(0);
-}
-
 mf = strcat('MAIL FROM: <', FROM , '>\r\n');
 send(socket:soc, data:mf);
-l = smtp_recv_line(socket:soc, code:"5[0-9]{2}");
-if(!l) {
+l = smtp_recv_line(socket:soc);
+if(!l || l =~ '^5[0-9]{2}') {
   smtp_close(socket:soc, check_data:l);
   exit(0);
 }
+mfres = l;
 
 rt = strcat('RCPT TO: <', TO , '>\r\n');
 send(socket:soc, data:rt);
@@ -100,21 +102,33 @@ if(!l) {
   smtp_close(socket:soc, check_data:l);
   exit(0);
 }
+rtres = l;
 
 data = string("data\r\n");
 send(socket: soc, data: data);
-data_rcv = smtp_recv_line(socket:soc, code:"3[0-9]{2}");
-if(!data_rcv) {
-  smtp_close(socket:soc, check_data:data_rcv);
+l = smtp_recv_line(socket:soc, code:"3[0-9]{2}");
+if(!l) {
+  smtp_close(socket:soc, check_data:l);
   exit(0);
 }
+datares = l;
 
-send(socket:soc, data:string(vtstrings["default"], "-Relay-Test\r\n.\r\n"));
-mail_send = smtp_recv_line(socket:soc, code:"250");
-smtp_close(socket:soc, check_data:mail_send);
+dc = string(vtstrings["default"], "-Relay-Test\r\n.\r\n");
+send(socket:soc, data:dc);
+l = smtp_recv_line(socket:soc, code:"250");
+smtp_close(socket:soc, check_data:l);
 
-if(mail_send) {
-  security_message(port:port);
+if(l) {
+  report  = 'The scanner was able to relay mails by sending those sequences:\n\n';
+  report += 'Request: ' + chomp( mf );
+  report += '\nAnswer:  ' + chomp( mfres );
+  report += '\nRequest: ' + chomp( rt );
+  report += '\nAnswer:  ' + chomp( rtres );
+  report += '\nRequest: ' + chomp( data );
+  report += '\nAnswer:  ' + chomp( datares );
+  report += '\nRequest: ' + chomp( dc );
+  report += '\nAnswer:  ' + chomp( l );
+  security_message(port:port, data:report);
   set_kb_item(name:"smtp/" + port + "/spam", value:TRUE);
   set_kb_item(name:"smtp/spam", value:TRUE);
   exit(0);

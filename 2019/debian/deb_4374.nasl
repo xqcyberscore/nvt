@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4374.nasl 13335 2019-01-29 06:51:59Z cfischer $
+# $Id: deb_4374.nasl 13374 2019-01-31 07:19:48Z asteins $
 #
 # Auto-generated from advisory DSA 4374-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704374");
-  script_version("$Revision: 13335 $");
+  script_version("$Revision: 13374 $");
   script_cve_id("CVE-2018-15518", "CVE-2018-19870", "CVE-2018-19873");
   script_name("Debian Security Advisory DSA 4374-1 (qtbase-opensource-src - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-29 07:51:59 +0100 (Tue, 29 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-31 08:19:48 +0100 (Thu, 31 Jan 2019) $");
   script_tag(name:"creation_date", value:"2019-01-28 00:00:00 +0100 (Mon, 28 Jan 2019)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 
