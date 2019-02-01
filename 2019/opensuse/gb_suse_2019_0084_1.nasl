@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2019_0084_1.nasl 13368 2019-01-30 14:30:18Z santu $
+# $Id: gb_suse_2019_0084_1.nasl 13394 2019-02-01 07:36:10Z mmartin $
 #
 # SuSE Update for virtualbox openSUSE-SU-2019:0084-1 (virtualbox)
 #
@@ -29,7 +29,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852253");
-  script_version("$Revision: 13368 $");
+  script_version("$Revision: 13394 $");
   script_cve_id("CVE-2018-0734", "CVE-2018-11763", "CVE-2018-11784", "CVE-2018-3309",
                 "CVE-2019-2446", "CVE-2019-2448", "CVE-2019-2450", "CVE-2019-2451",
                 "CVE-2019-2500", "CVE-2019-2501", "CVE-2019-2504", "CVE-2019-2505",
@@ -38,9 +38,9 @@ if(description)
                 "CVE-2019-2524", "CVE-2019-2525", "CVE-2019-2526", "CVE-2019-2527",
                 "CVE-2019-2548", "CVE-2019-2552", "CVE-2019-2553", "CVE-2019-2554",
                 "CVE-2019-2555", "CVE-2019-2556");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-30 15:30:18 +0100 (Wed, 30 Jan 2019) $");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-01 08:36:10 +0100 (Fri, 01 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-26 04:02:18 +0100 (Sat, 26 Jan 2019)");
   script_name("SuSE Update for virtualbox openSUSE-SU-2019:0084-1 (virtualbox)");
   script_category(ACT_GATHER_INFO);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_secadv_20181030_win.nasl 12475 2018-11-22 07:07:07Z cfischer $
+# $Id: gb_openssl_secadv_20181030_win.nasl 13394 2019-02-01 07:36:10Z mmartin $
 #
 # OpenSSL: Timing vulnerability in DSA signature generation (CVE-2018-0734) (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112410");
-  script_version("$Revision: 12475 $");
+  script_version("$Revision: 13394 $");
   script_cve_id("CVE-2018-0734");
   script_bugtraq_id(105758);
-  script_tag(name:"cvss_base", value:"4.0");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-22 08:07:07 +0100 (Thu, 22 Nov 2018) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-01 08:36:10 +0100 (Fri, 01 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-11-01 10:16:23 +0100 (Thu, 01 Nov 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("OpenSSL: Timing vulnerability in DSA signature generation (CVE-2018-0734) (Windows)");

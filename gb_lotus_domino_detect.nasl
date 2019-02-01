@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lotus_domino_detect.nasl 13271 2019-01-24 14:41:24Z cfischer $
+# $Id: gb_lotus_domino_detect.nasl 13397 2019-02-01 08:06:48Z cfischer $
 #
 # Lotus/IBM Domino Detection
 #
@@ -27,18 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100597");
-  script_version("$Revision: 13271 $");
+  script_version("$Revision: 13397 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-24 15:41:24 +0100 (Thu, 24 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-01 09:06:48 +0100 (Fri, 01 Feb 2019) $");
   script_tag(name:"creation_date", value:"2010-04-22 20:18:17 +0200 (Thu, 22 Apr 2010)");
   script_name("Lotus/IBM Domino Detection");
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
-  script_dependencies("find_service.nasl", "smtpserver_detect.nasl", "webmirror.nasl");
+  script_dependencies("smtpserver_detect.nasl", "popserver_detect.nasl", "imap4_banner.nasl", "webmirror.nasl");
   script_require_ports("Services/smtp", 25, 465, 587, "Services/pop3", 110, 995,
-                       "Services/imap", 143, "Services/www", 80);
+                       "Services/imap", 143, 993, "Services/www", 80);
 
   script_tag(name:"summary", value:"Detects the installed version of
   Lotus/IBM Domino.
@@ -105,38 +105,33 @@ foreach port( ports ) {
   }
 }
 
-ports = get_kb_list( "Services/imap" );
-if( ! ports ) ports = make_list( 143 );
-
+ports = imap_get_ports();
 foreach port( ports ) {
 
-  if( get_port_state( port ) ) {
+  banner = get_imap_banner( port:port );
+  if( banner && "Domino IMAP4 Server" >< banner ) {
 
-    banner = get_imap_banner( port:port );
+    install    = port + "/tcp";
+    domino_ver = "unknown";
+    version    = eregmatch( pattern:"Domino IMAP4 Server Release ([0-9][^ ]+)", string:banner );
 
-    if( banner && "Domino IMAP4 Server" >< banner ) {
+    if( ! isnull( version[1] ) )
+      domino_ver = version[1];
 
-      install    = port + "/tcp";
-      domino_ver = "unknown";
-      version    = eregmatch( pattern:"Domino IMAP4 Server Release ([0-9][^ ]+)", string:banner );
+    set_kb_item( name:"Domino/Version", value:domino_ver );
+    set_kb_item( name:"Domino/Installed", value:TRUE );
 
-      if( ! isnull( version[1] ) ) domino_ver = version[1];
+    cpe = build_cpe( value:domino_ver, exp:"([0-9][^ ]+)", base:"cpe:/a:ibm:lotus_domino:" );
+    if( isnull( cpe ) )
+      cpe = "cpe:/a:ibm:lotus_domino";
 
-      set_kb_item( name:"Domino/Version", value:domino_ver );
-      set_kb_item( name:"Domino/Installed", value:TRUE );
-
-      cpe = build_cpe( value:domino_ver, exp:"([0-9][^ ]+)", base:"cpe:/a:ibm:lotus_domino:" );
-      if( isnull( cpe ) )
-        cpe = "cpe:/a:ibm:lotus_domino";
-
-      register_product( cpe:cpe, location:install, port:port, service:"imap" );
-      log_message( data:build_detection_report( app:"IBM/Lotus Domino",
-                                                version:domino_ver,
-                                                install:install,
-                                                cpe:cpe,
-                                                concluded:version[0] ),
-                                                port:port );
-    }
+    register_product( cpe:cpe, location:install, port:port, service:"imap" );
+    log_message( data:build_detection_report( app:"IBM/Lotus Domino",
+                                              version:domino_ver,
+                                              install:install,
+                                              cpe:cpe,
+                                              concluded:version[0] ),
+                                              port:port );
   }
 }
 

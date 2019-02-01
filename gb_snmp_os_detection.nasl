@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_snmp_os_detection.nasl 12652 2018-12-04 14:15:10Z cfischer $
+# $Id: gb_snmp_os_detection.nasl 13382 2019-01-31 11:07:58Z cfischer $
 #
 # SNMP OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103429");
-  script_version("$Revision: 12652 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-04 15:15:10 +0100 (Tue, 04 Dec 2018) $");
+  script_version("$Revision: 13382 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-31 12:07:58 +0100 (Thu, 31 Jan 2019) $");
   script_tag(name:"creation_date", value:"2012-02-17 10:17:12 +0100 (Fri, 17 Feb 2012)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -509,6 +509,18 @@ if( sysdesc =~ 'HP Comware (Platform )?Software' ) {
 # Assume Linux/Unix for this device
 if( "Triax TDX" >< sysdesc ) {
   register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:BANNER_TYPE, port:port, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  exit( 0 );
+}
+
+# e.g. IBM OS/400 V7R3M0
+# IBM OS/400 V7R1M0
+if( "IBM OS/400" >< sysdesc ) {
+  version = eregmatch( pattern:"^IBM OS/400 ([^ ]+)", string:sysdesc );
+  if( ! isnull( version[1] ) ) {
+    register_and_report_os( os:"IBM OS/400", version:tolower( version[1] ), cpe:"cpe:/o:ibm:os_400", banner_type:BANNER_TYPE, port:port, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  } else {
+    register_and_report_os( os:"IBM OS/400", cpe:"cpe:/o:ibm:os_400", banner_type:BANNER_TYPE, port:port, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  }
   exit( 0 );
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_scalix_detect.nasl 13138 2019-01-18 07:48:30Z cfischer $
+# $Id: gb_scalix_detect.nasl 13397 2019-02-01 08:06:48Z cfischer $
 #
 # Scalix Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105102");
-  script_version("$Revision: 13138 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-18 08:48:30 +0100 (Fri, 18 Jan 2019) $");
+  script_version("$Revision: 13397 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-01 09:06:48 +0100 (Fri, 01 Feb 2019) $");
   script_tag(name:"creation_date", value:"2014-11-03 13:25:47 +0100 (Mon, 03 Nov 2014)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -37,8 +37,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
-  script_dependencies("find_service2.nasl", "http_version.nasl", "smtpserver_detect.nasl");
-  script_require_ports("Services/www", 80, "Services/smtp", 25, 465, 587, "Services/imap", 143);
+  script_dependencies("http_version.nasl", "smtpserver_detect.nasl", "imap4_banner.nasl");
+  script_require_ports("Services/www", 80, "Services/smtp", 25, 465, 587, "Services/imap", 143, 993);
 
   script_tag(name:"summary", value:"The script sends a connection request to the server and
   attempts to extract the version number from the reply.");
@@ -126,21 +126,15 @@ foreach port ( ports )
   }
 }
 
-ports = get_kb_list( "Services/imap" );
-if( ! ports )
-  ports = make_list( 143 );
-
+ports = imap_get_ports();
 foreach port ( ports )
 {
-  if( get_port_state( port ) )
+  banner = get_imap_banner( port:port );
+  if( banner && "Scalix IMAP server" >< banner )
   {
-    banner = get_imap_banner( port:port );
-    if( banner && "Scalix IMAP server" >< banner )
+    if( version = eregmatch( pattern:"Scalix IMAP server ([0-9.]+)" , string:banner ) )
     {
-      if( version = eregmatch( pattern:"Scalix IMAP server ([0-9.]+)" , string:banner ) )
-      {
-        _report( port:port, version:version[1], concluded:'IMAP banner', service:"imap" );
-      }
+      _report( port:port, version:version[1], concluded:'IMAP banner', service:"imap" );
     }
   }
 }

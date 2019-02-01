@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_4104_1.nasl 12913 2018-12-31 10:50:43Z santu $
+# $Id: gb_suse_2018_4104_1.nasl 13394 2019-02-01 07:36:10Z mmartin $
 #
 # SuSE Update for compat-openssl098 openSUSE-SU-2018:4104-1 (compat-openssl098)
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852178");
-  script_version("$Revision: 12913 $");
+  script_version("$Revision: 13394 $");
   script_cve_id("CVE-2016-8610", "CVE-2018-0734", "CVE-2018-5407");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-31 11:50:43 +0100 (Mon, 31 Dec 2018) $");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-01 08:36:10 +0100 (Fri, 01 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-12-13 07:30:48 +0100 (Thu, 13 Dec 2018)");
   script_name("SuSE Update for compat-openssl098 openSUSE-SU-2018:4104-1 (compat-openssl098)");
   script_category(ACT_GATHER_INFO);

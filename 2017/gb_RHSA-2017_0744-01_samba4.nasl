@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871786");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 13394 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-01 08:36:10 +0100 (Fri, 01 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-03-22 05:48:43 +0100 (Wed, 22 Mar 2017)");
   script_cve_id("CVE-2016-2125", "CVE-2016-2126");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for samba4 RHSA-2017:0744-01");
   script_tag(name:"summary", value:"The remote host is missing an update for the 'samba4'

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: delegate_overflow2.nasl 13272 2019-01-24 15:06:29Z cfischer $
+# $Id: delegate_overflow2.nasl 13397 2019-02-01 08:06:48Z cfischer $
 # Description: Delegate Multiple Overflows
 #
 # Authors:
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17599");
-  script_version("$Revision: 13272 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-24 16:06:29 +0100 (Thu, 24 Jan 2019) $");
+  script_version("$Revision: 13397 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-01 09:06:48 +0100 (Fri, 01 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -38,8 +38,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2005 David Maciejak");
   script_family("Gain a shell remotely");
-  script_dependencies("http_version.nasl", "find_service2.nasl");
-  script_require_ports("Services/http_proxy", 8080, "Services/pop3", 110);
+  script_dependencies("http_version.nasl", "popserver_detect.nasl");
+  script_require_ports("Services/http_proxy", 8080, "Services/pop3", 110, 995);
 
   script_tag(name:"solution_type", value:"VendorFix");
 

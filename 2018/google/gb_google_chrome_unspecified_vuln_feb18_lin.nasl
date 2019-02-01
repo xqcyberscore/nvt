@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_unspecified_vuln_feb18_lin.nasl 12410 2018-11-19 10:06:05Z cfischer $
+# $Id: gb_google_chrome_unspecified_vuln_feb18_lin.nasl 13394 2019-02-01 07:36:10Z mmartin $
 #
 # Google Chrome Unspecified Security Vulnerability Feb18 (Linux)
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812803");
-  script_version("$Revision: 12410 $");
+  script_version("$Revision: 13394 $");
   script_cve_id("CVE-2018-6056");
   script_bugtraq_id(103003);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-19 11:06:05 +0100 (Mon, 19 Nov 2018) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-01 08:36:10 +0100 (Fri, 01 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-02-16 17:51:54 +0530 (Fri, 16 Feb 2018)");
   script_name("Google Chrome Unspecified Security Vulnerability Feb18 (Linux)");
 

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_reader_dc_classic_apsb18-34_macosx.nasl 12447 2018-11-21 04:17:12Z ckuersteiner $
+# $Id: gb_adobe_acrobat_reader_dc_classic_apsb18-34_macosx.nasl 13384 2019-01-31 14:06:40Z santu $
 #
 # Adobe Acrobat Reader DC (Classic Track) Security Updates(apsb18-34)-Mac OS X
 #
@@ -29,12 +29,13 @@ CPE = "cpe:/a:adobe:acrobat_reader_dc_classic";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814032");
-  script_version("$Revision: 12447 $");
+  script_version("$Revision: 13384 $");
   script_cve_id("CVE-2018-12848", "CVE-2018-12849", "CVE-2018-12850", "CVE-2018-12801",
-                "CVE-2018-12840", "CVE-2018-12778", "CVE-2018-12775");
+                "CVE-2018-12840", "CVE-2018-12778", "CVE-2018-12775", "CVE-2018-19721",
+                "CVE-2018-19723");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-21 05:17:12 +0100 (Wed, 21 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-31 15:06:40 +0100 (Thu, 31 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-09-20 11:03:52 +0530 (Thu, 20 Sep 2018)");
   script_name("Adobe Acrobat Reader DC (Classic Track) Security Updates(apsb18-34)-Mac OS X");
 

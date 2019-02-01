@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ftp_os_detection.nasl 12957 2019-01-07 10:29:34Z cfischer $
+# $Id: gb_ftp_os_detection.nasl 13383 2019-01-31 11:11:44Z cfischer $
 #
 # FTP OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105355");
-  script_version("$Revision: 12957 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-07 11:29:34 +0100 (Mon, 07 Jan 2019) $");
+  script_version("$Revision: 13383 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-31 12:11:44 +0100 (Thu, 31 Jan 2019) $");
   script_tag(name:"creation_date", value:"2015-09-15 15:57:03 +0200 (Tue, 15 Sep 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -303,6 +303,12 @@ if( banner =~ "FTP server \(Version ([0-9.]+)/ARMLinux/Linux-ftpd-([0-9.]+)\) re
 
 if( "FTP server (Linux-ftpd) ready." >< banner ) {
   register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  exit( 0 );
+}
+
+# "Changing FTP Server Login Banner Message 220" in https://www-01.ibm.com/support/docview.wss?uid=nas8N1016550
+if( eregmatch( pattern:"^220[- ]QTCP at .+", string:banner, icase:FALSE ) ) {
+  register_and_report_os( os:"IBM iSeries / OS/400", cpe:"cpe:/o:ibm:os_400", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
   exit( 0 );
 }
 

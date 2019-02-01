@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kerio_mailserver_detect.nasl 13271 2019-01-24 14:41:24Z cfischer $
+# $Id: gb_kerio_mailserver_detect.nasl 13397 2019-02-01 08:06:48Z cfischer $
 #
 # Kerio MailServer/Connect Version Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800098");
-  script_version("$Revision: 13271 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-24 15:41:24 +0100 (Thu, 24 Jan 2019) $");
+  script_version("$Revision: 13397 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-01 09:06:48 +0100 (Fri, 01 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-01-08 07:43:30 +0100 (Thu, 08 Jan 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -36,7 +36,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("find_service2.nasl", "find_service_3digits.nasl", "smtpserver_detect.nasl", "nntpserver_detect.nasl");
+  script_dependencies("httpver.nasl", "smtpserver_detect.nasl", "popserver_detect.nasl", "imap4_banner.nasl", "nntpserver_detect.nasl");
   script_require_ports("Services/www", 80, 443, "Services/smtp", 25, 465, 587, "Services/pop3", 110, 995,
                        "Services/imap", 143, 993, "Services/nntp", 119);
 
@@ -63,8 +63,7 @@ smtpPorts = smtp_get_ports();
 foreach smtpPort( smtpPorts )
   ports[smtpPort] = "smtp";
 
-imapPorts = get_kb_list( "Services/imap" );
-if( ! imapPorts ) imapPorts = make_list( 143, 993 );
+imapPorts = imap_get_ports();
 foreach imapPort( imapPorts )
   ports[imapPort] = "imap";
 

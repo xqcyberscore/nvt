@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_surgemail_detect.nasl 13271 2019-01-24 14:41:24Z cfischer $
+# $Id: secpod_surgemail_detect.nasl 13387 2019-01-31 14:47:07Z cfischer $
 #
 # SurgeMail Version Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900839");
-  script_version("$Revision: 13271 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-24 15:41:24 +0100 (Thu, 24 Jan 2019) $");
+  script_version("$Revision: 13387 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-31 15:47:07 +0100 (Thu, 31 Jan 2019) $");
   script_tag(name:"creation_date", value:"2009-09-15 09:32:43 +0200 (Tue, 15 Sep 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -110,9 +110,7 @@ if(egrep(pattern:"SurgeMail", string:rcvRes, icase:1)){
   smtpPorts = smtp_get_ports();
 
   foreach port(smtpPorts){
-
     banner = get_smtp_banner(port:port);
-
     if("surgemail" >< banner){
       ver = eregmatch(pattern:"Version ([0-9.]+)([a-z][0-9]?(-[0-9])?)?", string:banner);
       version = "unknown";
@@ -143,77 +141,69 @@ if(egrep(pattern:"SurgeMail", string:rcvRes, icase:1)){
     }
   }
 
-  imapPorts = get_kb_list("Services/imap");
-  if(!imapPorts) imapPorts = make_list(143);
-
+  imapPorts = imap_get_ports();
   foreach port(imapPorts){
-    if(get_port_state(port)){
-      banner = get_imap_banner(port:port);
+    banner = get_imap_banner(port:port);
+    if("surgemail" >< banner){
+      ver = eregmatch(pattern:"Version ([0-9.]+)([a-z][0-9]?(-[0-9])?)?", string:banner);
+      version = "unknown";
 
-      if("surgemail" >< banner){
-        ver = eregmatch(pattern:"Version ([0-9.]+)([a-z][0-9]?(-[0-9])?)?", string:banner);
-        version = "unknown";
+      if(ver[1]){
+        if(!isnull(ver[2]))
+          version = ver[1] + "." + ver[2];
+        else
+          version = ver[1];
 
-        if(ver[1]){
-          if(!isnull(ver[2]))
-            version = ver[1] + "." + ver[2];
-          else
-            version = ver[1];
+        version = ereg_replace(pattern:"-", replace:".", string:version);
 
-          version = ereg_replace(pattern:"-", replace:".", string:version);
-
-          set_kb_item(name:"SurgeMail/Ver", value:version);
-        }
-
-        cpe = build_cpe(value:version, exp:"^([0-9.]+)", base:"cpe:/a:netwin:surgemail:");
-        if (!cpe)
-        cpe = "cpe:/a:netwin:surgemail";
-
-        register_product(cpe:cpe, location:"/", port:port, service:"imap");
-
-        log_message(data:build_detection_report(app:"Netwin Surgemail",
-                                                version:version,
-                                                install:"/",
-                                                cpe:cpe,
-                                                concluded:ver[0]),
-                                                port:port);
+        set_kb_item(name:"SurgeMail/Ver", value:version);
       }
+
+      cpe = build_cpe(value:version, exp:"^([0-9.]+)", base:"cpe:/a:netwin:surgemail:");
+      if (!cpe)
+      cpe = "cpe:/a:netwin:surgemail";
+
+      register_product(cpe:cpe, location:"/", port:port, service:"imap");
+
+      log_message(data:build_detection_report(app:"Netwin Surgemail",
+                                              version:version,
+                                              install:"/",
+                                              cpe:cpe,
+                                              concluded:ver[0]),
+                                              port:port);
     }
   }
 
   popPorts = pop3_get_ports();
   foreach port(popPorts){
-    if(get_port_state(port)){
-      banner = get_pop3_banner(port:port);
+    banner = get_pop3_banner(port:port);
+    if("surgemail" >< banner){
+      ver = eregmatch(pattern:"Version ([0-9.]+)([a-z][0-9]?(-[0-9])?)?", string:banner);
+      version = "unknown";
 
-      if("surgemail" >< banner){
-        ver = eregmatch(pattern:"Version ([0-9.]+)([a-z][0-9]?(-[0-9])?)?", string:banner);
-        version = "unknown";
+      if(ver[1]){
+        if(!isnull(ver[2]))
+          version = ver[1] + "." + ver[2];
+        else
+          version = ver[1];
 
-        if(ver[1]){
-          if(!isnull(ver[2]))
-            version = ver[1] + "." + ver[2];
-          else
-            version = ver[1];
+        version = ereg_replace(pattern:"-", replace:".", string:version);
 
-          version = ereg_replace(pattern:"-", replace:".", string:version);
-
-          set_kb_item(name:"SurgeMail/Ver", value:version);
-        }
-
-        cpe = build_cpe(value:version, exp:"^([0-9.]+)", base:"cpe:/a:netwin:surgemail:");
-        if (!cpe)
-        cpe = "cpe:/a:netwin:surgemail";
-
-        register_product(cpe:cpe, location:"/", port:port, service:"pop3");
-
-        log_message(data:build_detection_report(app:"Netwin Surgemail",
-                                                version:version,
-                                                install:"/",
-                                                cpe:cpe,
-                                                concluded:ver[0]),
-                                                port:port);
+        set_kb_item(name:"SurgeMail/Ver", value:version);
       }
+
+      cpe = build_cpe(value:version, exp:"^([0-9.]+)", base:"cpe:/a:netwin:surgemail:");
+      if (!cpe)
+      cpe = "cpe:/a:netwin:surgemail";
+
+      register_product(cpe:cpe, location:"/", port:port, service:"pop3");
+
+      log_message(data:build_detection_report(app:"Netwin Surgemail",
+                                              version:version,
+                                              install:"/",
+                                              cpe:cpe,
+                                              concluded:ver[0]),
+                                              port:port);
     }
   }
 }

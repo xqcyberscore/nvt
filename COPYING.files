@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Thu, 31 Jan 2019 11:30:55 +0100
+# Automatically created on:  Fri, 01 Feb 2019 10:06:05 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -44003,6 +44003,8 @@
 2019/debian/deb_dla_1649.nasl: GPLv2+
 2019/debian/deb_dla_1650.nasl: GPLv2+
 2019/debian/deb_dla_1651.nasl: GPLv2+
+2019/debian/deb_dla_1652.nasl: GPLv2+
+2019/debian/deb_dla_1653.nasl: GPLv2+
 2019/discourse/gb_discourse_2.2.0beta2.nasl: GPLv2+
 2019/discourse/gb_discourse_2.2.0beta3.nasl: GPLv2+
 2019/discourse/gb_discourse_2.2.0beta4.nasl: GPLv2+
@@ -44031,6 +44033,7 @@
 2019/fedora/gb_fedora_2018_ea05fcd378_vcftools_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_01afc2352f_mingw-nettle_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_0398d1b049_haproxy_fc28.nasl: GPLv2+
+2019/fedora/gb_fedora_2019_077cd6f168_moodle_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_1a0d4443f8_gnutls_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_20a89ca9af_kernel_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_20a89ca9af_kernel-headers_fc28.nasl: GPLv2+
@@ -44046,8 +44049,10 @@
 2019/fedora/gb_fedora_2019_541a12b809_python3-docs_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_541a12b809_python3_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_596813cc59_electrum_fc28.nasl: GPLv2+
+2019/fedora/gb_fedora_2019_723711c645_docker-latest_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_8deebad756_perl-Email-Address_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_8f8cadd5ff_thunderbird_fc28.nasl: GPLv2+
+2019/fedora/gb_fedora_2019_901feba171_docker_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_920924ed23_irssi_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_93b4b78e58_runc_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_944ff52ce6_php-horde-Horde-Image_fc28.nasl: GPLv2+
@@ -44064,6 +44069,7 @@
 2019/fedora/gb_fedora_2019_e6ca5847c7_python-django_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_e70c729d8a_gnupg2_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_fb2ce5f6d9_php-horde-Horde-Form_fc28.nasl: GPLv2+
+2019/fedora/gb_fedora_2019_fbd2bad9f9_wireshark_fc28.nasl: GPLv2+
 2019/foxit/gb_foxit_phantompdf_mult_vuln_jan19_win.nasl: GPLv2+
 2019/foxit/gb_foxit_reader_mult_vuln_jan19_win.nasl: GPLv2+
 2019/gb_asip_afp_unencrypted_cleartext_logins.nasl: GPLv2
@@ -44163,6 +44169,16 @@
 2019/opensuse/gb_suse_2019_0086_1.nasl: GPLv2+
 2019/opensuse/gb_suse_2019_0087_1.nasl: GPLv2+
 2019/opensuse/gb_suse_2019_0088_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0089_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0090_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0091_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0092_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0093_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0094_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0096_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0097_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0098_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0100_1.nasl: GPLv2+
 2019/opensuse/gb_suse_2019_1_1.nasl: GPLv2+
 2019/openxchange/gb_open_xchange_appsuite_56406.nasl: GPLv2+
 2019/openxchange/gb_open_xchange_appsuite_56558.nasl: GPLv2+
@@ -44235,6 +44251,12 @@
 2019/ubuntu/gb_ubuntu_USN_3867_1.nasl: GPLv2+
 2019/ubuntu/gb_ubuntu_USN_3868_1.nasl: GPLv2+
 2019/ubuntu/gb_ubuntu_USN_3869_1.nasl: GPLv2+
+2019/ubuntu/gb_ubuntu_USN_3870_1.nasl: GPLv2+
+2019/ubuntu/gb_ubuntu_USN_3871_1.nasl: GPLv2+
+2019/ubuntu/gb_ubuntu_USN_3872_1.nasl: GPLv2+
+2019/ubuntu/gb_ubuntu_USN_3873_1.nasl: GPLv2+
+2019/ubuntu/gb_ubuntu_USN_3874_1.nasl: GPLv2+
+2019/ubuntu/gb_ubuntu_USN_3875_1.nasl: GPLv2+
 2019/virustotal/gb_yara_mult_vuln_dec18.nasl: GPLv2+
 2019/virustotal/gb_yara_mult_vuln_jun18.nasl: GPLv2+
 2019/webmin/gb_webmin_rce_vuln.nasl: GPLv2+
@@ -61977,6 +61999,7 @@ gsf/2018/f5/gb_f5_big_ip_K37510383.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K38243073.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K39512927.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K40507733.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K40523020.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K40625021.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K41704442.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K42027747.nasl: GPLv2+
@@ -63068,9 +63091,12 @@ gsf/2019/fortinet/gb_fortinet_fortios_FG-IR-18-018.nasl: GPLv2+
 gsf/2019/fujitsu/gb_paperstream_ip_twain_win_ce_vuln.nasl: GPLv2+
 gsf/2019/horner/gb_cscape_rce_vuln.nasl: GPLv2+
 gsf/2019/huawei/gb_huawei_switch_huawei-sa-20180703-01-algorithm-en.nasl: GPLv2+
+gsf/2019/ibm/gb_ibm_datapower_gateway_ibm10794735.nasl: GPLv2+
 gsf/2019/ibm/gb_ibm_domino_bof_vuln.nasl: GPLv2+
+gsf/2019/ibm/gb_ibm_qradar_ibm10794523.nasl: GPLv2+
 gsf/2019/ibm/gb_ibm_security_identity_manager_ibm10794615.nasl: GPLv2+
 gsf/2019/ibm/gb_ibm_security_identity_manager_ibm10796380.nasl: GPLv2+
+gsf/2019/ibm/gb_ibm_security_identity_manager_ibm10869604.nasl: GPLv2+
 gsf/2019/ibm/gb_ibm_spectrum_scale_ibm10730967.nasl: GPLv2+
 gsf/2019/ibm/gb_ibm_spectrum_scale_ibm10732713.nasl: GPLv2+
 gsf/2019/ibm/gb_ibm_spectrum_scale_ibm10793719.nasl: GPLv2+
@@ -63123,6 +63149,11 @@ gsf/2019/rhel/gb_RHSA-2019_0049-01_systemd.nasl: GPLv2+
 gsf/2019/rhel/gb_RHSA-2019_0059-01_libvncserver.nasl: GPLv2+
 gsf/2019/rhel/gb_RHSA-2019_0109-01_perl.nasl: GPLv2+
 gsf/2019/rhel/gb_RHSA-2019_0159-01_thunderbird.nasl: GPLv2+
+gsf/2019/rhel/gb_RHSA-2019_0163-01_kernel.nasl: GPLv2+
+gsf/2019/rhel/gb_RHSA-2019_0194-01_bind.nasl: GPLv2+
+gsf/2019/rhel/gb_RHSA-2019_0201-01_systemd.nasl: GPLv2+
+gsf/2019/rhel/gb_RHSA-2019_0218-01_firefox.nasl: GPLv2+
+gsf/2019/rhel/gb_RHSA-2019_0219-01_firefox.nasl: GPLv2+
 gsf/2019/rockwellautomation/gb_factorytalk_services_platform_bof_vuln.nasl: GPLv2+
 gsf/2019/schneider/gb_schneider_electric_proface_gp-pro_ex_input_validation_vulnerability.nasl: GPLv2+
 gsf/2019/schneider/gb_schneider_eurotherm_guicon_mult_vuln.nasl: GPLv2+
@@ -64524,6 +64555,7 @@ idb_detect.nasl: GPLv2+
 ident_process_owner.nasl: GPLv2
 ilo_detect.nasl: GPLv2
 ilohamail_detect.nasl: GPLv2
+imap4_banner.nasl: GPLv2
 imap_func.inc: GPLv2
 imp_detect.nasl: GPLv2
 imss_detect.nasl: GPLv2
@@ -65433,7 +65465,6 @@ pre2008/ilohamail_external_progs.nasl: GPLv2
 pre2008/ilohamail_password_disclosure.nasl: GPLv2
 pre2008/ilohamail_user_parameter.nasl: GPLv2
 pre2008/i-mall_cgi.nasl: GPLv2
-pre2008/imap4_banner.nasl: GPLv2
 pre2008/imap_arbitrary_file_retrieval.nasl: GPLv2
 pre2008/imapproxy_literal_dos.nasl: GPLv2
 pre2008/imap_unencrypted_cleartext_logins.nasl: GPLv2

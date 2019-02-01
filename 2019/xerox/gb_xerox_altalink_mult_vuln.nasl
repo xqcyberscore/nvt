@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xerox_altalink_mult_vuln.nasl 12940 2019-01-04 09:23:20Z ckuersteiner $
+# $Id: gb_xerox_altalink_mult_vuln.nasl 13394 2019-02-01 07:36:10Z mmartin $
 #
 # Xerox AltaLink Printers Multiple Vulnerabilities
 #
@@ -28,11 +28,11 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141826");
-  script_version("$Revision: 12940 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-04 10:23:20 +0100 (Fri, 04 Jan 2019) $");
+  script_version("$Revision: 13394 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-01 08:36:10 +0100 (Fri, 01 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-04 15:55:04 +0700 (Fri, 04 Jan 2019)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
 
   script_cve_id("CVE-2016-2109", "CVE-2016-2105", "CVE-2016-2106", "CVE-2016-2176", "CVE-2016-2107",
                 "CVE-2018-17172");

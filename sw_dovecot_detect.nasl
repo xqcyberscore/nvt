@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_dovecot_detect.nasl 10450 2018-07-07 09:48:13Z cfischer $
+# $Id: sw_dovecot_detect.nasl 13397 2019-02-01 08:06:48Z cfischer $
 #
 # Dovecot POP3/IMAP Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111031");
-  script_version("$Revision: 10450 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-07 11:48:13 +0200 (Sat, 07 Jul 2018) $");
+  script_version("$Revision: 13397 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-01 09:06:48 +0100 (Fri, 01 Feb 2019) $");
   script_tag(name:"creation_date", value:"2015-08-26 12:00:00 +0200 (Wed, 26 Aug 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -36,8 +36,9 @@ if(description)
   script_copyright("This script is Copyright (C) 2015 SCHUTZWERK GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
-  script_dependencies("find_service2.nasl");
+  script_dependencies("imap4_banner.nasl", "popserver_detect.nasl");
   script_require_ports("Services/imap", 143, 993, "Services/pop3", 110, 995);
+  script_mandatory_keys("pop3_imap_or_smtp/banner/available");
 
   script_tag(name:"summary", value:"The script checks the POP3/IMAP server
   banner for the presence of Dovecot.");
@@ -60,15 +61,10 @@ cpe = "cpe:/a:dovecot:dovecot";
 # +OK Dovecot ready.
 pattern = "Dovecot ([a-zA-Z()]+ )?ready";
 
-ports = get_kb_list( "Services/imap" );
-if( ! ports ) ports = make_list( 143, 993 );
-
+ports = imap_get_ports();
 foreach port( ports ) {
 
-  if( ! get_port_state( port ) ) continue;
-
   banner = get_imap_banner( port:port );
-
   if( egrep( pattern:pattern, string:banner, icase:TRUE ) ||
       'ID ("name" "Dovecot")' >< banner ) {
 

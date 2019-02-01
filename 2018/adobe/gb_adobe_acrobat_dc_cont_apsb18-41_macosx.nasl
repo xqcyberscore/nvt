@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_dc_cont_apsb18-41_macosx.nasl 12808 2018-12-17 13:20:13Z santu $
+# $Id: gb_adobe_acrobat_dc_cont_apsb18-41_macosx.nasl 13384 2019-01-31 14:06:40Z santu $
 #
 # Adobe Acrobat DC (Continuous Track) Security Updates(apsb18-41)-Mac OS X
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:acrobat_dc_continuous";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814383");
-  script_version("$Revision: 12808 $");
+  script_version("$Revision: 13384 $");
   script_cve_id("CVE-2018-15998", "CVE-2018-15987", "CVE-2018-16004", "CVE-2018-19720",
                 "CVE-2018-16045", "CVE-2018-16044", "CVE-2018-16018", "CVE-2018-19715",
                 "CVE-2018-19713", "CVE-2018-19708", "CVE-2018-19707", "CVE-2018-19700",
@@ -51,10 +51,10 @@ if(description)
                 "CVE-2018-16005", "CVE-2018-16002", "CVE-2018-16001", "CVE-2018-15997",
                 "CVE-2018-15996", "CVE-2018-15989", "CVE-2018-15985", "CVE-2018-15984",
                 "CVE-2018-19719", "CVE-2018-16009", "CVE-2018-16007", "CVE-2018-15995",
-                "CVE-2018-15986", "CVE-2018-16042");
+                "CVE-2018-15986", "CVE-2018-16042", "CVE-2018-19728");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-17 14:20:13 +0100 (Mon, 17 Dec 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-01-31 15:06:40 +0100 (Thu, 31 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-12-13 12:27:21 +0530 (Thu, 13 Dec 2018)");
 
   script_name("Adobe Acrobat DC (Continuous Track) Security Updates(apsb18-41)-Mac OS X");

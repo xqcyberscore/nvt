@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samba_priv_delegation_vuln_nov18.nasl 12230 2018-11-06 13:34:19Z jschulte $
+# $Id: gb_samba_priv_delegation_vuln_nov18.nasl 13394 2019-02-01 07:36:10Z mmartin $
 #
 # Samba >= 3.0.25, <= 4.5.2 Privilege Delegation Vulnerability
 #
@@ -28,11 +28,11 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113288");
-  script_version("$Revision: 12230 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-06 14:34:19 +0100 (Tue, 06 Nov 2018) $");
+  script_version("$Revision: 13394 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-01 08:36:10 +0100 (Fri, 01 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-11-06 14:33:00 +0200 (Tue, 06 Nov 2018)");
-  script_tag(name:"cvss_base", value:"6.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"3.3");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:N/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 

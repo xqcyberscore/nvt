@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pdns_powerdns-advisory-2019-02.nasl 13207 2019-01-22 02:27:47Z ckuersteiner $
+# $Id: gb_pdns_powerdns-advisory-2019-02.nasl 13394 2019-02-01 07:36:10Z mmartin $
 #
 # PowerDNS Recursor < 4.1.9 DNSSEC Signature Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = 'cpe:/a:powerdns:recursor';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141899");
-  script_version("$Revision: 13207 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-22 03:27:47 +0100 (Tue, 22 Jan 2019) $");
+  script_version("$Revision: 13394 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-01 08:36:10 +0100 (Fri, 01 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-22 09:19:38 +0700 (Tue, 22 Jan 2019)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"6.4");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
 
   script_cve_id("CVE-2019-3807");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2019_0088_1.nasl 13368 2019-01-30 14:30:18Z santu $
+# $Id: gb_suse_2019_0088_1.nasl 13394 2019-02-01 07:36:10Z mmartin $
 #
 # SuSE Update for nodejs4 openSUSE-SU-2019:0088-1 (nodejs4)
 #
@@ -29,12 +29,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852251");
-  script_version("$Revision: 13368 $");
+  script_version("$Revision: 13394 $");
   script_cve_id("CVE-2018-0734", "CVE-2018-12116", "CVE-2018-12120", "CVE-2018-12121",
                 "CVE-2018-12122", "CVE-2018-12123", "CVE-2018-5407");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-30 15:30:18 +0100 (Wed, 30 Jan 2019) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-01 08:36:10 +0100 (Fri, 01 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-26 04:01:52 +0100 (Sat, 26 Jan 2019)");
   script_name("SuSE Update for nodejs4 openSUSE-SU-2019:0088-1 (nodejs4)");
   script_category(ACT_GATHER_INFO);

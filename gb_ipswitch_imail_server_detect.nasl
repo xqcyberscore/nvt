@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ipswitch_imail_server_detect.nasl 13271 2019-01-24 14:41:24Z cfischer $
+# $Id: gb_ipswitch_imail_server_detect.nasl 13397 2019-02-01 08:06:48Z cfischer $
 #
 # Ipswitch IMail Server Detection
 #
@@ -27,17 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811256");
-  script_version("$Revision: 13271 $");
+  script_version("$Revision: 13397 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-24 15:41:24 +0100 (Thu, 24 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-01 09:06:48 +0100 (Fri, 01 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-07-26 16:06:50 +0530 (Wed, 26 Jul 2017)");
   script_name("Ipswitch IMail Server Detection");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("find_service2.nasl", "smtpserver_detect.nasl");
-  script_require_ports("Services/smtp", 25, 465, 587, "Services/pop3", 110, 995, "Services/imap", 143, "Services/www", 80);
+  script_dependencies("smtpserver_detect.nasl", "popserver_detect.nasl", "imap4_banner.nasl", "httpver.nasl");
+  script_require_ports("Services/smtp", 25, 465, 587, "Services/pop3", 110, 995, "Services/imap", 143, 993, "Services/www", 80);
 
   script_tag(name:"summary", value:"Detection of installed version
   of Ipswitch IMail Server.
@@ -86,11 +86,9 @@ function get_version(banner, port, service) {
 
 ports = pop3_get_ports();
 foreach port(ports){
-  if(get_port_state(port)) {
-    if(banner = get_pop3_banner(port:port)) {
-      if("POP3 Server" >< banner && "(IMail" >< banner) {
-        get_version(banner:banner, port:port, service:"pop3");
-      }
+  if(banner = get_pop3_banner(port:port)) {
+    if("POP3 Server" >< banner && "(IMail" >< banner) {
+      get_version(banner:banner, port:port, service:"pop3");
     }
   }
 }
@@ -104,16 +102,11 @@ foreach port(ports){
   }
 }
 
-ports = get_kb_list("Services/imap");
-if(!ports)
-  ports = make_list(143);
-
+ports = imap_get_ports();
 foreach port(ports){
-  if(get_port_state(port)) {
-    if(banner = get_imap_banner(port:port)) {
-      if("IMAP4 Server" >< banner && "(IMail" >< banner) {
-        get_version(banner:banner, port:port, service:"imap");
-      }
+  if(banner = get_imap_banner(port:port)) {
+    if("IMAP4 Server" >< banner && "(IMail" >< banner) {
+      get_version(banner:banner, port:port, service:"imap");
     }
   }
 }

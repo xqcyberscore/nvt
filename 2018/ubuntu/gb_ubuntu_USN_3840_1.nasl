@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3840_1.nasl 12755 2018-12-11 10:50:43Z santu $
+# $Id: gb_ubuntu_USN_3840_1.nasl 13394 2019-02-01 07:36:10Z mmartin $
 #
 # Ubuntu Update for openssl USN-3840-1
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843848");
-  script_version("$Revision: 12755 $");
+  script_version("$Revision: 13394 $");
   script_cve_id("CVE-2018-0734", "CVE-2018-0735", "CVE-2018-5407");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-11 11:50:43 +0100 (Tue, 11 Dec 2018) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-01 08:36:10 +0100 (Fri, 01 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-12-07 07:39:41 +0100 (Fri, 07 Dec 2018)");
   script_name("Ubuntu Update for openssl USN-3840-1");
   script_category(ACT_GATHER_INFO);
