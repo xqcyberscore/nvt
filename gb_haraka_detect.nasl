@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_haraka_detect.nasl 13138 2019-01-18 07:48:30Z cfischer $
+# $Id: gb_haraka_detect.nasl 13438 2019-02-04 13:36:23Z cfischer $
 #
 # Haraka SMTP Server Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106546");
-  script_version("$Revision: 13138 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-18 08:48:30 +0100 (Fri, 18 Jan 2019) $");
+  script_version("$Revision: 13438 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-04 14:36:23 +0100 (Mon, 04 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-01-27 12:28:21 +0700 (Fri, 27 Jan 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -56,38 +56,33 @@ include("cpe.inc");
 include("host_details.inc");
 include("smtp_func.inc");
 
-ports = smtp_get_ports();
+port = get_smtp_port(default:25);
 
-foreach port (ports) {
+banner = get_smtp_banner(port: port);
+quit = get_kb_item("smtp/" + port + "/quit_banner");
+ehlo = get_kb_item("smtp/" + port + "/ehlo_banner");
 
-  banner = get_smtp_banner(port: port);
-  quit = get_kb_item("smtp/" + port + "/quit");
-  ehlo = get_kb_item("smtp/" + port + "/ehlo");
+if (("ESMTP Haraka" >< banner || "Haraka is at your service" >< ehlo) && "Have a jolly good day" >< quit) {
 
-  if (("ESMTP Haraka" >< banner || "Haraka is at your service" >< ehlo) && "Have a jolly good day" >< quit) {
+  install = port + "/tcp";
+  version = "unknown";
 
-    install = port + "/tcp";
-    version = "unknown";
-
-    vers = eregmatch(pattern: "ESMTP Haraka ([0-9.]+)", string: banner);
-    if (!isnull(vers[1])) {
-      version = vers[1];
-      set_kb_item(name: "haraka/version", value: version);
-    }
-
-    set_kb_item(name: "haraka/installed", value: TRUE);
-
-    cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/a:haraka:haraka:");
-    if (!cpe)
-      cpe = "cpe:/a:haraka:haraka";
-
-    register_product(cpe: cpe, location: install, port: port, service: "smtp");
-
-    log_message(data: build_detection_report(app: "Haraka", version: version, install: install, cpe: cpe,
-                                             concluded: vers[0]),
-                port: port);
-    exit(0);
+  vers = eregmatch(pattern: "ESMTP Haraka ([0-9.]+)", string: banner);
+  if (!isnull(vers[1])) {
+    version = vers[1];
+    set_kb_item(name: "haraka/version", value: version);
   }
+
+  set_kb_item(name: "haraka/installed", value: TRUE);
+
+  cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/a:haraka:haraka:");
+  if (!cpe)
+    cpe = "cpe:/a:haraka:haraka";
+
+  register_product(cpe: cpe, location: install, port: port, service: "smtp");
+  log_message(data: build_detection_report(app: "Haraka", version: version, install: install, cpe: cpe,
+                                           concluded: vers[0]),
+              port: port);
 }
 
 exit(0);

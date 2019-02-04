@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_af9bd28cf1_glusterfs_fc28.nasl 12661 2018-12-05 10:53:21Z santu $
+# $Id: gb_fedora_2018_af9bd28cf1_glusterfs_fc28.nasl 13427 2019-02-04 08:52:52Z mmartin $
 #
 # Fedora Update for glusterfs FEDORA-2018-af9bd28cf1
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875332");
-  script_version("$Revision: 12661 $");
+  script_version("$Revision: 13427 $");
   script_cve_id("CVE-2018-14651", "CVE-2018-14652", "CVE-2018-14653", "CVE-2018-14654", "CVE-2018-14659", "CVE-2018-14660", "CVE-2018-14661");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-05 11:53:21 +0100 (Wed, 05 Dec 2018) $");
+  script_tag(name:"cvss_base", value:"8.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-04 09:52:52 +0100 (Mon, 04 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-12-04 08:34:16 +0100 (Tue, 04 Dec 2018)");
   script_name("Fedora Update for glusterfs FEDORA-2018-af9bd28cf1");
   script_category(ACT_GATHER_INFO);

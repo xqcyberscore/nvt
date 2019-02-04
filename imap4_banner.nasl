@@ -1,12 +1,12 @@
 # OpenVAS Vulnerability Test
-# $Id: imap4_banner.nasl 13395 2019-02-01 07:44:32Z cfischer $
+# $Id: imap4_banner.nasl 13409 2019-02-01 13:13:33Z cfischer $
 # Description: IMAP Server type and version
 #
 # Authors:
 # Vincent Renardias <vincent@strongholdnet.com>
 #
 # Copyright:
-# Copyright (C) 2003 StrongHoldNet
+# Copyright (C) 2005 StrongHoldNet
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2,
@@ -25,13 +25,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11414");
-  script_version("$Revision: 13395 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-01 08:44:32 +0100 (Fri, 01 Feb 2019) $");
+  script_version("$Revision: 13409 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-01 14:13:33 +0100 (Fri, 01 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("IMAP Server type and version");
-  script_copyright("This script is Copyright (C) 2003 StrongHoldNet");
+  script_copyright("This script is Copyright (C) 2005 StrongHoldNet");
   script_category(ACT_GATHER_INFO);
   script_family("Service detection");
   script_dependencies("find_service2.nasl");
@@ -75,6 +75,48 @@ foreach port( ports ) {
     set_kb_item( name:"imap/dovecot/detected", value:TRUE );
     set_kb_item( name:"imap/" + port + "/dovecot/detected", value:TRUE );
     guess = "Dovecot";
+  }
+
+  if( "WorldMail IMAP4 Server" >< banner ) {
+    set_kb_item( name:"imap/eudora/worldmail/detected", value:TRUE );
+    set_kb_item( name:"imap/" + port + "/eudora/worldmail/detected", value:TRUE );
+    guess = "Eudora WorldMail IMAP Server";
+  }
+
+  if( banner =~ "MERCUR.*IMAP4.Server" ) {
+    set_kb_item( name:"imap/mercur/detected", value:TRUE );
+    set_kb_item( name:"imap/" + port + "/mercur/detected", value:TRUE );
+    guess = "Mercur Mailserver/Messaging";
+  }
+
+  if( "Softalk Mail Server" >< banner ) {
+    set_kb_item( name:"imap/softalk/detected", value:TRUE );
+    set_kb_item( name:"imap/" + port + "/softalk/detected", value:TRUE );
+    guess = "Softalk Mail Server";
+  }
+
+  if( "Code-Crafters" >< banner && "Ability Mail Server" >< banner ) {
+    set_kb_item( name:"imap/codecrafters/ability/detected", value:TRUE );
+    set_kb_item( name:"imap/" + port + "/codecrafters/ability/detected", value:TRUE );
+    guess = "Code-Crafters Ability Mail Server";
+  }
+
+  if( "CommuniGate Pro IMAP Server" >< banner ) {
+    set_kb_item( name:"imap/communigate/pro/detected", value:TRUE );
+    set_kb_item( name:"imap/" + port + "/communigate/pro/detected", value:TRUE );
+    guess = "Code-Crafters Ability Mail Server";
+  }
+
+  if( " MDaemon " >< banner ) {
+    set_kb_item( name:"imap/mdaemon/detected", value:TRUE );
+    set_kb_item( name:"imap/" + port + "/mdaemon/detected", value:TRUE );
+    guess = "MDaemon IMAP Server";
+  }
+
+  if( "Cyrus IMAP" >< banner && "server ready" >< banner ) {
+    set_kb_item( name:"imap/cyrus/detected", value:TRUE );
+    set_kb_item( name:"imap/" + port + "/cyrus/detected", value:TRUE );
+    guess = "Cyrus IMAP Server";
   }
 
   report = 'Remote IMAP server banner:\n\n' + banner;

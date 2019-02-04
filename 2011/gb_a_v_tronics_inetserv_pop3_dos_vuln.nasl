@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_a_v_tronics_inetserv_pop3_dos_vuln.nasl 13293 2019-01-25 12:15:55Z cfischer $
+# $Id: gb_a_v_tronics_inetserv_pop3_dos_vuln.nasl 13407 2019-02-01 12:38:22Z cfischer $
 #
 # A-V Tronics InetServ POP3 Denial Of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800195");
-  script_version("$Revision: 13293 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-25 13:15:55 +0100 (Fri, 25 Jan 2019) $");
+  script_version("$Revision: 13407 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-01 13:38:22 +0100 (Fri, 01 Feb 2019) $");
   script_tag(name:"creation_date", value:"2011-01-27 07:47:27 +0100 (Thu, 27 Jan 2011)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -86,8 +86,10 @@ if(safe_checks()) {
 }
 
 ## Intrusive Test, which will crash the vulnerable service
-user = get_kb_item("pop3/login");
-pass = get_kb_item("pop3/password");
+
+kb_creds = pop3_get_kb_creds();
+user = kb_creds["login"];
+pass = kb_creds["pass"];
 
 ## Consider default username and password,
 ## If User and Password not given in the preference

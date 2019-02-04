@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: http_keepalive.inc 12871 2018-12-21 14:27:35Z cfischer $
+# $Id: http_keepalive.inc 13429 2019-02-04 09:09:14Z cfischer $
 #
 # Methods to support http keep alive handling
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 12871 $
+# $Revision: 13429 $
 #
 ###############################################################################
 
@@ -40,6 +40,15 @@ __ka_last_request = "";
 # Enables debugging output for a few functions below
 global_var _http_ka_debug;
 _http_ka_debug = FALSE;
+
+# Enables to include the OID of the VT within the HTTP user agent of http_keepalive_send_recv()
+# for debugging purposes on the target / targets logfiles.
+global_var _http_ua_include_oid;
+_http_ua_include_oid = FALSE;
+
+# Global var passed to a few functions below
+global_var optimize_test_enabled;
+optimize_test_enabled = get_preference( "optimize_test" );
 
 # @brief Determined on the passed header if the keep-alive socket of the
 #        connection needs to be close and re-opened.
@@ -97,10 +106,6 @@ function enable_keepalive( port ) {
 # @return 1 if keep alive is enabled, 0 otherwise and -2 if no port was passed or no socket could be opened to the target host.
 #
 function http_keepalive_enabled( port ) {
-
-  # TODO: Remove once openvas-nasl-lint can handle such a missing include
-  # from within the same include.
-  if(!defined_func("http_host_name")) include("http_func.inc");
 
   local_var port;
   local_var kb, useragent, host, req, soc, r;
@@ -484,7 +489,7 @@ function is_cgi_installed_ka( port, item, host ) {
 
   local_var port, item, host;
   local_var dirs, slash, no404, dir, req, res;
-  # nb: optimize_test_enabled is a global var from http_func.inc
+  # nb: optimize_test_enabled is a global var from above
 
   if( ! item ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#item#-#is_cgi_installed_ka" );
@@ -561,7 +566,7 @@ function get_http_page( port, url, max_redirects ) {
 
   local_var port, url, max_redirects;
   local_var count, seen_loc, i, req, res, redirect, location;
-  # nb: optimize_test_enabled is a global var from http_func.inc
+  # nb: optimize_test_enabled is a global var from above
 
   if( ! port ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#get_http_page" );
@@ -641,7 +646,7 @@ function http_get_cache( port, item, host ) {
   local_var port, item, host;
   local_var res, req;
   # nb: __ka_last_request is a global var
-  # nb: optimize_test_enabled is a global var from http_func.inc
+  # nb: optimize_test_enabled is a global var from above
 
   if( ! port ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#http_get_cache" );
@@ -712,7 +717,7 @@ function http_check_remote_code( default_port, extra_dirs, unique_dir, check_req
 
   local_var default_port, extra_dirs, unique_dir, check_request, extra_check, check_result, command, port;
   local_var list, dir, req, buf, txt_result, extra, txt_desc;
-  # nb: optimize_test_enabled is a global var from http_func.inc
+  # nb: optimize_test_enabled is a global var from above
 
   if( ! check_request ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#check_request#-#http_check_remote_code" );

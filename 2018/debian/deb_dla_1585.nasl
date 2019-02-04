@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1585.nasl 12471 2018-11-21 14:52:40Z cfischer $
+# $Id: deb_dla_1585.nasl 13427 2019-02-04 08:52:52Z mmartin $
 #
 # Auto-generated from advisory DLA 1585-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891585");
-  script_version("$Revision: 12471 $");
+  script_version("$Revision: 13427 $");
   script_cve_id("CVE-2018-16471");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1585-1] ruby-rack security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-21 15:52:40 +0100 (Wed, 21 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-04 09:52:52 +0100 (Mon, 04 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-11-21 00:00:00 +0100 (Wed, 21 Nov 2018)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: http_func.inc 13341 2019-01-29 09:54:53Z cfischer $
+# $Id: http_func.inc 13429 2019-02-04 09:09:14Z cfischer $
 #
 # Methods to handle HTTP
 #
@@ -24,12 +24,12 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 13341 $
+# $Revision: 13429 $
 #
 ###############################################################################
 
 # Enables to include the OID of the VT within the HTTP user agent of get_http_user_agent()
-# for debugging purposes on the target / targets logfiles.
+# and http_send_recv() for debugging purposes on the target / targets logfiles.
 global_var _http_ua_include_oid;
 _http_ua_include_oid = FALSE;
 
@@ -91,7 +91,7 @@ global_var __http_func_user_agent, __http_is_cgi_scan_disabled;
 global_var _http_debug;
 _http_debug = FALSE;
 
-# Global var passed to e.g. http_keepalive.inc
+# Global var passed to a few functions below
 global_var optimize_test_enabled;
 optimize_test_enabled = get_preference( "optimize_test" );
 
@@ -1432,9 +1432,6 @@ function get_http_is_marked_broken( port, host ) {
 
   if( host == "*" ) {
     marked_broken_list = get_kb_list( "www/*/" + port + "/is_broken" );
-    # TODO: Just use is_array() from misc_func.inc once openvas-nasl-lint is able
-    # to not report an undefined function within includes if the calling function
-    # is never used.
     if( ! marked_broken_list || typeof( marked_broken_list ) != "array" ) {
       marked_broken = FALSE;
     } else {
@@ -1530,10 +1527,6 @@ function get_http_kb_file_extensions( port, host, ext ) {
     ext  = "*";
 
   list = get_kb_list( "www/" + host + "/" + port + "/content/extensions/" + ext );
-
-  # TODO: Just use is_array() from misc_func.inc once openvas-nasl-lint is able
-  # to not report an undefined function within includes if the calling function
-  # is never used.
   if( ! list || typeof( list ) != "array" )
     return NULL;
 
@@ -1578,10 +1571,6 @@ function get_http_kb_auth_required( port, host ) {
     host = "*";
 
   list = get_kb_list( "www/" + host + "/" + port + "/content/auth_required" );
-
-  # TODO: Just use is_array() from misc_func.inc once openvas-nasl-lint is able
-  # to not report an undefined function within includes if the calling function
-  # is never used.
   if( ! list || typeof( list ) != "array" )
     return NULL;
 
@@ -1629,10 +1618,6 @@ function get_http_kb_cgis( port, host ) {
     host = "*";
 
   list = get_kb_list( "www/" + host + "/" + port + "/content/cgis/plain_cgis" );
-
-  # TODO: Just use is_array() from misc_func.inc once openvas-nasl-lint is able
-  # to not report an undefined function within includes if the calling function
-  # is never used.
   if( ! list || typeof( list ) != "array" )
     return NULL;
 
@@ -1694,9 +1679,6 @@ function get_http_no404_string( port, host ) {
 
   if( host == "*" ) {
     no404_string_list = get_kb_list( "www/*/" + port + "/no404_string" );
-    # TODO: Just use is_array() from misc_func.inc once openvas-nasl-lint is able
-    # to not report an undefined function within includes if the calling function
-    # is never used.
     if( ! no404_string_list || typeof( no404_string_list ) != "array" ) {
       no404_string = FALSE;
     } else {
@@ -2123,9 +2105,6 @@ function get_http_has_generic_xss( port, host ) {
 
   if( host == "*" ) {
     generic_xss_list = get_kb_list( "www/*/" + port + "/generic_xss" );
-    # TODO: Just use is_array() from misc_func.inc once openvas-nasl-lint is able
-    # to not report an undefined function within includes if the calling function
-    # is never used.
     if( ! generic_xss_list || typeof( generic_xss_list ) != "array" ) {
       generic_xss = FALSE;
     } else {

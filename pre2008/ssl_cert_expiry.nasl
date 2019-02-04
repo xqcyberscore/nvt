@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ssl_cert_expiry.nasl 7242 2017-09-23 14:58:39Z cfischer $
+# $Id: ssl_cert_expiry.nasl 13434 2019-02-04 09:55:38Z cfischer $
 #
 # SSL/TLS: Certificate Expiry
 #
@@ -33,8 +33,8 @@ lookahead = 60;
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.15901");
-  script_version("$Revision: 7242 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-23 16:58:39 +0200 (Sat, 23 Sep 2017) $");
+  script_version("$Revision: 13434 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-04 10:55:38 +0100 (Mon, 04 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -74,6 +74,7 @@ exit(66);
 
 if(int(OPENVAS_VERSION[0]) >= 7)exit(0); # with libraries >= 7 the more recent gb_ssl_cert_expired.nasl take this job.
 
+include("mysql.inc"); # For recv_mysql_server_handshake() in open_ssl_socket()
 include("global_settings.inc");
 include("misc_func.inc");
 include("ssl_funcs.inc");
@@ -182,7 +183,7 @@ else if (!isnull(cert)) {
     valid_end = substr(cert, v, v+11);
 
     if (valid_start =~ "^[0-9]{12}$" && valid_end =~ "^[0-9]{12}$") {
-      # Get dates, expressed in UTC, for checking certs.
+      # nb: Dates expressed in UTC, for checking certs.
       # - right now.
       tm = localtime(unixtime(), utc:TRUE);
       now = substr(string(tm["year"]), 2);

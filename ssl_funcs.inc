@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: ssl_funcs.inc 12869 2018-12-21 14:18:27Z cfischer $
+# $Id: ssl_funcs.inc 13434 2019-02-04 09:55:38Z cfischer $
 #
 # Implementation of common ssl functions
 #
@@ -25,7 +25,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 12869 $
+# $Revision: 13434 $
 #
 ###############################################################################
 
@@ -727,11 +727,6 @@ sslv3_tls_raw_ciphers['TLS_RSA_WITH_3DES_EDE_CBC_MD5 (Draft)'] = raw_string( 0xF
 
 function get_cert_from_port( port, extensions )
 {
-
-  # TODO: Remove once openvas-nasl-lint can handle such a missing include
-  # from within the same include.
-  if(!defined_func("base64")) include("misc_func.inc");
-
   local_var port, soc, hello, data, ret, cl;
 
   if( ! port ) {
@@ -1429,11 +1424,6 @@ function _ssl3_tls_hello( ciphers, version, extensions, session_id, add_tls_rene
 
 function add_ssl_extension( extensions, alpn_protocol )
 {
-
-  # TODO: Remove once openvas-nasl-lint can handle such a missing include
-  # from within the same include.
-  if(!defined_func("mkword")) include("byte_func.inc");
-
   local_var extension, e, ret, alpn, alpn_ret, alpn_protocol;
 
   if( ! extensions ) {
@@ -1562,11 +1552,6 @@ function data_len( data ) {
 # nb: Include mysql.inc for recv_mysql_server_handshake() if you're using this function
 function open_ssl_socket( port )
 {
-
-  # TODO: Remove once openvas-nasl-lint can handle such a missing include
-  # from within the same include.
-  if(!defined_func("recv_mysql_server_handshake")) include("mysql.inc");
-
   local_var soc, port, starttls_typ, starttls, st, search, stls;
 
   if( ! port ) {

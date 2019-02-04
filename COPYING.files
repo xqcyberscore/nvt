@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Fri, 01 Feb 2019 10:06:05 +0100
+# Automatically created on:  Mon, 04 Feb 2019 15:16:21 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -43976,6 +43976,11 @@
 2019/debian/deb_4376.nasl: GPLv2+
 2019/debian/deb_4377.nasl: GPLv2+
 2019/debian/deb_4378.nasl: GPLv2+
+2019/debian/deb_4379.nasl: GPLv2+
+2019/debian/deb_4380.nasl: GPLv2+
+2019/debian/deb_4381.nasl: GPLv2+
+2019/debian/deb_4382.nasl: GPLv2+
+2019/debian/deb_4383.nasl: GPLv2+
 2019/debian/deb_dla_1621.nasl: GPLv2+
 2019/debian/deb_dla_1623.nasl: GPLv2+
 2019/debian/deb_dla_1624.nasl: GPLv2+
@@ -44005,6 +44010,10 @@
 2019/debian/deb_dla_1651.nasl: GPLv2+
 2019/debian/deb_dla_1652.nasl: GPLv2+
 2019/debian/deb_dla_1653.nasl: GPLv2+
+2019/debian/deb_dla_1655.nasl: GPLv2+
+2019/debian/deb_dla_1656.nasl: GPLv2+
+2019/debian/deb_dla_1658.nasl: GPLv2+
+2019/debian/deb_dla_1659.nasl: GPLv2+
 2019/discourse/gb_discourse_2.2.0beta2.nasl: GPLv2+
 2019/discourse/gb_discourse_2.2.0beta3.nasl: GPLv2+
 2019/discourse/gb_discourse_2.2.0beta4.nasl: GPLv2+
@@ -44233,6 +44242,7 @@
 2019/typo3/gb_typo3_mult_vuln_jan19.nasl: GPLv2+
 2019/typo3/gb_typo3_typo3-core-sa-2019-003.nasl: GPLv2+
 2019/typo3/gb_typo3_typo3-core-sa-2019-004.nasl: GPLv2+
+2019/ubiquiti/gb_ubnt_discovery_protocol_dos_vuln.nasl: GPLv2+
 2019/ubuntu/gb_ubuntu_USN_3852_1.nasl: GPLv2+
 2019/ubuntu/gb_ubuntu_USN_3853_1.nasl: GPLv2+
 2019/ubuntu/gb_ubuntu_USN_3854_1.nasl: GPLv2+
@@ -44404,13 +44414,25 @@ gb_7zip_detect_portable_win.nasl: GPLv2+
 gb_7zip_detect_win.nasl: GPLv2+
 gb_a2billing_detect.nasl: GPLv2+
 gb_aastra_opencom_detect.nasl: GPLv2+
+gb_abb_automation_builder_installation_manager_detect_win.nasl: GPLv2+
+gb_abb_automation_builder_platform_detect_win.nasl: GPLv2+
+gb_abb_drive_composer_pro_detect_win.nasl: GPLv2+
 gb_abb_drivepm_detect_win.nasl: GPLv2+
 gb_abb_drivesize_detect_win.nasl: GPLv2+
 gb_abb_ez_block_builder_detect_win.nasl: GPLv2+
+gb_abb_ip_configuration_tool_detect_win.nasl: GPLv2+
 gb_abb_ipgateway_detect.nasl: GPLv2+
 gb_abb_m2m_ethernet_detect.nasl: GPLv2+
+gb_abb_mcsize_detect_win.nasl: GPLv2+
 gb_abb-microscada_detect_win.nasl: GPLv2+
+gb_abb_mint_workbench_detect_win.nasl: GPLv2+
+gb_abb_motsize_detect_win.nasl: GPLv2+
+gb_abb_multionlinechange_detect_win.nasl: GPLv2+
 gb_abb_panel_builder_400_detect_win.nasl: GPLv2+
+gb_abb_sophie_detect_win.nasl: GPLv2+
+gb_abb_virtual_drive_detect_win.nasl: GPLv2+
+gb_abb_vsdsize_detect_win.nasl: GPLv2+
+gb_abb_welcome_detect_win.nasl: GPLv2+
 gb_ab_ethernet_detect.nasl: GPLv2+
 gb_abyss_detect.nasl: GPLv2+
 gb_accellion_fta_detect.nasl: GPLv2+
@@ -44784,6 +44806,8 @@ gb_cnpilot_snmp_detect.nasl: GPLv2+
 gb_cobbler_detect.nasl: GPLv2+
 gb_codemeter_webadmin_detect.nasl: GPLv2+
 gb_codesys_detect.nasl: GPLv2+
+gb_codesys_detect_win.nasl: GPLv2+
+gb_codesys_opc_server_detect_win.nasl: GPLv2+
 gb_codesys_os_detection.nasl: GPLv2+
 gb_codoforum_detect.nasl: GPLv2+
 gb_coldfusion_detect.nasl: GPLv2+
@@ -44804,6 +44828,7 @@ gb_coremailxt_detect.nasl: GPLv2+
 gb_coship_router_snmp_detect.nasl: GPLv2+
 gb_coturn_http_detect.nasl: GPLv2+
 gb_couchdb_detect.nasl: GPLv2+
+gb_cp600_runtime_pc_detect_win.nasl: GPLv2+
 gb_cpcreator_detect.nasl: GPLv2+
 gb_cradlepoint_router_consolidation.nasl: GPLv2+
 gb_cradlepoint_router_http_detect.nasl: GPLv2+
@@ -45815,6 +45840,7 @@ gb_riverbed_steelhead_ssh_detect.nasl: GPLv2+
 gb_rmi_registry_detect.nasl: GPLv2+
 gb_robo_ftp_client_detect.nasl: GPLv2+
 gb_rockwell_application_code_manager_detect_win.nasl: GPLv2+
+gb_rockwell_bootp_dhcp_tool_detect_win.nasl: GPLv2+
 gb_rockwell_micrologix_consolidation.nasl: GPLv2+
 gb_rockwell_micrologix_ethernetip_detect.nasl: GPLv2+
 gb_rockwell_micrologix_http_detect.nasl: GPLv2+
@@ -45849,6 +45875,7 @@ gb_sap_router_detect.nasl: GPLv2+
 gb_sap_webgui_detect.nasl: GPLv2+
 gb_sawmill_detect.nasl: GPLv2+
 gb_scalix_detect.nasl: GPLv2+
+gb_schneider_acti9smarttest_detect_win.nasl: GPLv2+
 gb_schneider_clearscada_detect.nasl: GPLv2+
 gb_schneider_ecostruxure_machine_expert_detect_win.nasl: GPLv2+
 gb_schneider_electric_pelco_sarix_ip_cam_detect.nasl: GPLv2+
@@ -45861,6 +45888,8 @@ gb_schneider_intouch_http_detect.nasl: GPLv2+
 gb_schneider_modbus_detect.nasl: GPLv2+
 gb_schneider_modicon_m340_detect.nasl: GPLv2+
 gb_schneider_opc_factory_server_detect_win.nasl: GPLv2+
+gb_schneider_sohvac_detect_win.nasl: GPLv2+
+gb_schneider_somove_detect_win.nasl: GPLv2+
 gb_schneider_struxureon_detect.nasl: GPLv2+
 gb_schneider_umotion_builder_software_detect_http.nasl: GPLv2+
 gb_schneider_zelio_soft_detect_win.nasl: GPLv2+
@@ -45923,6 +45952,7 @@ gb_sitefinity_detect.nasl: GPLv2+
 gb_skype_detect_win.nasl: GPLv2+
 gb_slysoft_prdts_detect.nasl: GPLv2+
 gb_smarterstats_detect.nasl: GPLv2+
+gb_smartservo_config_detect_win.nasl: GPLv2+
 gb_smb_lsc_fetch_file_ver.nasl: GPLv2+
 gb_smbv1_client_detect.nasl: GPLv2+
 gb_smbv1_server_detect.nasl: GPLv2+

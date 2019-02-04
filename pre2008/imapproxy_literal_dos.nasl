@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: imapproxy_literal_dos.nasl 13294 2019-01-25 13:00:33Z cfischer $
+# $Id: imapproxy_literal_dos.nasl 13409 2019-02-01 13:13:33Z cfischer $
 # Description: up-imapproxy Literal DoS Vulnerability
 #
 # Authors:
@@ -25,8 +25,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.15853");
-  script_version("$Revision: 13294 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-25 14:00:33 +0100 (Fri, 25 Jan 2019) $");
+  script_version("$Revision: 13409 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-01 14:13:33 +0100 (Fri, 01 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
@@ -37,8 +37,9 @@ if(description)
   script_category(ACT_DENIAL);
   script_copyright("This script is Copyright (C) 2004 George A. Theall");
   script_family("Denial of Service");
-  script_dependencies("find_service2.nasl");
+  script_dependencies("imap4_banner.nasl");
   script_require_ports("Services/imap", 143);
+  script_mandatory_keys("imap/banner/available");
 
   script_tag(name:"solution", value:"Upgrade to up-imapproxy 1.2.3rc2 or later.");
 

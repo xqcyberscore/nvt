@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mailenable_imap_dos_vuln_900104.nasl 12602 2018-11-30 14:36:58Z cfischer $
+# $Id: secpod_mailenable_imap_dos_vuln_900104.nasl 13414 2019-02-01 13:56:18Z cfischer $
 #
 # MailEnable IMAP Denial of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900104");
-  script_version("$Revision: 12602 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
+  script_version("$Revision: 13414 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-01 14:56:18 +0100 (Fri, 01 Feb 2019) $");
   script_tag(name:"creation_date", value:"2008-08-22 10:29:01 +0200 (Fri, 22 Aug 2008)");
   script_cve_id("CVE-2008-3449");
   script_bugtraq_id(30498);
@@ -48,11 +48,15 @@ if(description)
 
   script_tag(name:"summary", value:"The host is running MailEnable Mail Server, which prone to Denial
   of Service vulnerability.");
+
   script_tag(name:"insight", value:"The flaw exists due to the load created when handling multiple IMAP connections
   to the same folder.");
+
   script_tag(name:"affected", value:"MailEnable Enterprise Edition 3.52 and Professional Edition 3.52
   and prior on Windows (all)");
+
   script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
+
   script_tag(name:"impact", value:"Successful exploitation will potentially cause a service crash.");
 
   script_tag(name:"qod_type", value:"registry");
@@ -77,7 +81,7 @@ if( ! mailVer ) {
 if( registry_key_exists( key:"SOFTWARE\Mail Enable\Mail Enable\Updates\ME-10042" ) ) exit( 0 );
 
 if( egrep( pattern:"^([0-2]\..*|3\.([0-4]?[0-9]|5[0-2]))$", string:mailVer ) ) {
-  security_message( port:port );
+  security_message( port:0 );
   exit( 0 );
 }
 

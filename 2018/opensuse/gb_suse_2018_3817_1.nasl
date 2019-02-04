@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3817_1.nasl 12479 2018-11-22 08:12:17Z santu $
+# $Id: gb_suse_2018_3817_1.nasl 13427 2019-02-04 08:52:52Z mmartin $
 #
 # SuSE Update for the openSUSE-SU-2018:3817-1 (the)
 #
@@ -29,12 +29,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852140");
-  script_version("$Revision: 12479 $");
+  script_version("$Revision: 13427 $");
   script_cve_id("CVE-2018-18281", "CVE-2018-18386", "CVE-2018-18690", "CVE-2018-18710",
                 "CVE-2018-9516", "CVE-2018-10940", "CVE-2018-16658");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-22 09:12:17 +0100 (Thu, 22 Nov 2018) $");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-04 09:52:52 +0100 (Mon, 04 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-11-21 06:04:01 +0100 (Wed, 21 Nov 2018)");
   script_name("SuSE Update for the openSUSE-SU-2018:3817-1 (the)");
   script_category(ACT_GATHER_INFO);

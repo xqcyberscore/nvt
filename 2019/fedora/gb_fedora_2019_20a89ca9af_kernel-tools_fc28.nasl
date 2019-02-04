@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2019_20a89ca9af_kernel-tools_fc28.nasl 13245 2019-01-23 14:22:53Z santu $
+# $Id: gb_fedora_2019_20a89ca9af_kernel-tools_fc28.nasl 13427 2019-02-04 08:52:52Z mmartin $
 #
 # Fedora Update for kernel-tools FEDORA-2019-20a89ca9af
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875426");
-  script_version("$Revision: 13245 $");
+  script_version("$Revision: 13427 $");
   script_cve_id("CVE-2018-16884");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-23 15:22:53 +0100 (Wed, 23 Jan 2019) $");
+  script_tag(name:"cvss_base", value:"6.7");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:S/C:P/I:P/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-04 09:52:52 +0100 (Mon, 04 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-22 04:06:27 +0100 (Tue, 22 Jan 2019)");
   script_name("Fedora Update for kernel-tools FEDORA-2019-20a89ca9af");
   script_category(ACT_GATHER_INFO);

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_hmailserver_imap_dos_vuln.nasl 13294 2019-01-25 13:00:33Z cfischer $
+# $Id: secpod_hmailserver_imap_dos_vuln.nasl 13409 2019-02-01 13:13:33Z cfischer $
 #
 # hMailServer IMAP Remote Denial of Service Vulnerability
 #
@@ -27,17 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902929");
-  script_version("$Revision: 13294 $");
+  script_version("$Revision: 13409 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-25 14:00:33 +0100 (Fri, 25 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-01 14:13:33 +0100 (Fri, 01 Feb 2019) $");
   script_tag(name:"creation_date", value:"2012-10-29 13:43:35 +0530 (Mon, 29 Oct 2012)");
   script_name("hMailServer IMAP Remote Denial of Service Vulnerability");
   script_category(ACT_DENIAL);
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("Denial of Service");
-  script_dependencies("find_service2.nasl");
+  script_dependencies("imap4_banner.nasl");
   script_require_ports("Services/imap", 143);
+  script_mandatory_keys("imap/banner/available");
 
   script_xref(name:"URL", value:"http://1337day.com/exploit/19642");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/22302/");

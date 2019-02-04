@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: mailenable_imap_rename_dos.nasl 13121 2019-01-17 12:59:22Z cfischer $
+# $Id: mailenable_imap_rename_dos.nasl 13409 2019-02-01 13:13:33Z cfischer $
 # Description: MailEnable IMAP rename DoS Vulnerability
 #
 # Authors:
@@ -25,8 +25,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.20245");
-  script_version("$Revision: 13121 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-17 13:59:22 +0100 (Thu, 17 Jan 2019) $");
+  script_version("$Revision: 13409 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-01 14:13:33 +0100 (Fri, 01 Feb 2019) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
@@ -37,9 +37,9 @@ if(description)
   script_category(ACT_MIXED_ATTACK);
   script_family("Denial of Service");
   script_copyright("This script is Copyright (C) 2005 Josh Zlatin-Amishav");
-  script_dependencies("smtpserver_detect.nasl");
+  script_dependencies("smtpserver_detect.nasl", "imap4_banner.nasl");
   script_require_ports("Services/smtp", 25, "Services/imap", 143);
-  script_mandatory_keys("smtp/mailenable");
+  script_mandatory_keys("imap/banner/available", "smtp/mailenable");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/417589");
   script_xref(name:"URL", value:"http://www.mailenable.com/hotfix/MEIMAPS.ZIP");
@@ -109,8 +109,9 @@ if(safe_checks()) {
 # Otherwise, try to exploit it.
 else {
 
-  user = get_kb_item("imap/login");
-  pass = get_kb_item("imap/password");
+  kb_creds = imap_get_kb_creds();
+  user = kb_creds["login"];
+  pass = kb_creds["pass"];
   if(!user || !pass)
     exit(0);
 

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: mailenable_imap_search_dos.nasl 13294 2019-01-25 13:00:33Z cfischer $
+# $Id: mailenable_imap_search_dos.nasl 13409 2019-02-01 13:13:33Z cfischer $
 # Description: MailEnable IMAP Service Search DoS Vulnerability
 #
 # Authors:
@@ -22,10 +22,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-if (description) {
+if(description)
+{
   script_oid("1.3.6.1.4.1.25623.1.0.15487");
-  script_version("$Revision: 13294 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-25 14:00:33 +0100 (Fri, 25 Jan 2019) $");
+  script_version("$Revision: 13409 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-01 14:13:33 +0100 (Fri, 01 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -40,20 +41,20 @@ if (description) {
   script_copyright("This script is Copyright (C) 2004 George A. Theall");
   script_family("Denial of Service");
 
-  script_dependencies("find_service2.nasl", "logins.nasl");
+  script_dependencies("imap4_banner.nasl", "logins.nasl");
   script_require_ports("Services/imap", 143);
-  script_mandatory_keys("imap/login", "imap/password");
+  script_mandatory_keys("imap/banner/available", "imap/login", "imap/password");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"solution", value:"Upgrade to MailEnable Professional 1.5e or later.");
 
   script_tag(name:"summary", value:"The target is running at least one instance of MailEnable's IMAP
-service.  A flaw exists in MailEnable Professional Edition versions
-1.5a-d that results in this service crashing if it receives a SEARCH
-command.  An authenticated user could send this command either on
-purpose as a denial of service attack or unwittingly since some IMAP
-clients, such as IMP and Vmail, use it as part of the normal login
-process.");
+  service. A flaw exists in MailEnable Professional Edition versions 1.5a-d that results in this
+  service crashing if it receives a SEARCH command.");
+
+  script_tag(name:"imapct", value:"An authenticated user could send this command either on purpose as
+  a denial of service attack or unwittingly since some IMAP clients, such as IMP and Vmail, use it as
+  part of the normal login process.");
 
   exit(0);
 }
@@ -61,8 +62,9 @@ process.");
 include("misc_func.inc");
 include("imap_func.inc");
 
-user = get_kb_item("imap/login");
-pass = get_kb_item("imap/password");
+kb_creds = imap_get_kb_creds();
+user = kb_creds["login"];
+pass = kb_creds["pass"];
 if(!user || !pass)
   exit(0);
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: mysql.inc 12272 2018-11-09 07:14:41Z ckuersteiner $
+# $Id: mysql.inc 13428 2019-02-04 08:54:10Z cfischer $
 #
 # Functions for MySQL
 #
@@ -27,7 +27,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301
 # USA.
 #
-# $Revision: 12272 $
+# $Revision: 13428 $
 #
 ###############################################################################
 
@@ -125,10 +125,6 @@ function recv_mysql_server_handshake( soc ) {
 # @return Length of the data sent
 #
 function mysql_send_packet(socket, data, seq_id) {
-
-  # TODO: Remove once openvas-nasl-lint can handle such a missing include
-  # from within the same include.
-  if(!defined_func("mkbyte")) include("byte_func.inc");
 
   local_var socket, data, len, seq_id, packet;
 
@@ -288,10 +284,6 @@ function mysql_get_salt(data) {
 #       - Support SSL
 #
 function mysql_login(socket, user, password, db) {
-
-  # TODO: Remove once openvas-nasl-lint can handle such a missing include
-  # from within the same include.
-  if(!defined_func("mkbyte")) include("byte_func.inc");
 
   local_var socket, user, password, scramble, db, data, res;
 

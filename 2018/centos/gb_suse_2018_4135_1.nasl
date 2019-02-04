@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852181");
-  script_version("$Revision: 12873 $");
+  script_version("$Revision: 13427 $");
   script_cve_id("CVE-2018-16847");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-21 15:42:20 +0100 (Fri, 21 Dec 2018) $");
+  script_tag(name:"cvss_base", value:"4.6");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-04 09:52:52 +0100 (Mon, 04 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-12-18 07:39:06 +0100 (Tue, 18 Dec 2018)");
   script_name("SuSE Update for qemu openSUSE-SU-2018:4135-1 (qemu)");
   script_category(ACT_GATHER_INFO);

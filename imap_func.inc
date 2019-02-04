@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: imap_func.inc 13395 2019-02-01 07:44:32Z cfischer $
+# $Id: imap_func.inc 13404 2019-02-01 12:10:05Z cfischer $
 #
 # Support methods for IMAP
 #
@@ -23,12 +23,12 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 13395 $
+# $Revision: 13404 $
 #
 ###############################################################################
 
-# Global var to avoid that we're repeatedly asking redis for something we already know.
-global_var _imap_is_broken_array;
+# Global vars to avoid that we're repeatedly asking redis for something we already know.
+global_var _imap_is_broken_array, __imap_kb_login, __imap_kb_pass;
 
 # nb: key is the port or NULL (if not previously checked), value TRUE/FALSE if broken or not
 _imap_is_broken_array = make_array();
@@ -427,6 +427,49 @@ function imap_verify_banner( data ) {
     return TRUE;
 
   return FALSE;
+}
+
+# @brief Returns an array containing the username/password credentials pair for a IMAP login.
+#        To avoid querying the KB for the same info again it will be cached within an internal variable.
+#
+# @return An array containing the following array indices:
+#
+#         ret_array["login"] = The login defined via the "IMAP account" preference of logins.nasl,
+#                              an empty string in the case the VT wasn't included in the scan config or
+#                              the preference was unset.
+#         ret_array["pass"]  = The password defined via the "IMAP password (sent in clear)" preference of
+#                              logins.nasl, an empty string in the case the VT wasn't included in the
+#                              scan config or the preference has been cleared.
+#
+# @note Please include logins.nasl (or any VT pulling this dependency in) into your
+#       script_dependencies so that a user configured user account is taken into account.
+#
+function imap_get_kb_creds() {
+
+  local_var login, pass, ret_array;
+  # nb: __imap_kb_login and __imap_kb_pass are global vars
+
+  if( ! isnull( __imap_kb_login ) ) {
+    login = string( __imap_kb_login );
+  } else {
+    login = get_kb_item( "imap/login" );
+    if( isnull( login ) )
+      login = "";
+    __imap_kb_login = string( login );
+  }
+
+  if( ! isnull( __imap_kb_pass ) ) {
+    pass = string( __imap_kb_pass );
+  } else {
+    pass = get_kb_item( "imap/password" );
+    if( isnull( pass ) )
+      pass = "";
+    __imap_kb_pass = string( pass );
+  }
+
+  ret_array["login"] = login;
+  ret_array["pass"]  = pass;
+  return ret_array;
 }
 
 # Duplicated from misc_func.inc

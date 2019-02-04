@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_traccar_xxe_vuln.nasl 13060 2019-01-14 10:14:51Z asteins $
+# $Id: gb_traccar_xxe_vuln.nasl 13427 2019-02-04 08:52:52Z mmartin $
 #
 # Traccar Server <= 4.2 XXE Vulnerability
 #
@@ -28,11 +28,11 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112483");
-  script_version("$Revision: 13060 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-14 11:14:51 +0100 (Mon, 14 Jan 2019) $");
+  script_version("$Revision: 13427 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-04 09:52:52 +0100 (Mon, 04 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-14 11:06:12 +0100 (Mon, 14 Jan 2019)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2019-5748");
 

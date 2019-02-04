@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_heartbeat_66690.nasl 12865 2018-12-21 10:51:07Z cfischer $
+# $Id: gb_openssl_heartbeat_66690.nasl 13434 2019-02-04 09:55:38Z cfischer $
 #
 # SSL/TLS: OpenSSL TLS 'heartbeat' Extension Information Disclosure Vulnerability
 #
@@ -28,12 +28,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103936");
-  script_version("$Revision: 12865 $");
+  script_version("$Revision: 13434 $");
   script_bugtraq_id(66690);
   script_cve_id("CVE-2014-0160");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-21 11:51:07 +0100 (Fri, 21 Dec 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-04 10:55:38 +0100 (Mon, 04 Feb 2019) $");
   script_tag(name:"creation_date", value:"2014-04-09 09:54:09 +0200 (Wed, 09 Apr 2014)");
   script_name("SSL/TLS: OpenSSL TLS 'heartbeat' Extension Information Disclosure Vulnerability");
   script_category(ACT_ATTACK);
@@ -67,6 +67,7 @@ if(description)
   exit(0);
 }
 
+include("mysql.inc"); # For recv_mysql_server_handshake() in open_ssl_socket()
 include("misc_func.inc");
 include("byte_func.inc");
 include("ssl_funcs.inc");

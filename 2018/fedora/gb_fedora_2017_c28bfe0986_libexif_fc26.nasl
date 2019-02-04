@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2017_c28bfe0986_libexif_fc26.nasl 8396 2018-01-12 11:39:41Z gveerendra $
+# $Id: gb_fedora_2017_c28bfe0986_libexif_fc26.nasl 13427 2019-02-04 08:52:52Z mmartin $
 #
 # Fedora Update for libexif FEDORA-2017-c28bfe0986
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.873986");
-  script_version("$Revision: 8396 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-12 12:39:41 +0100 (Fri, 12 Jan 2018) $");
+  script_version("$Revision: 13427 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-04 09:52:52 +0100 (Mon, 04 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-01-10 07:42:52 +0100 (Wed, 10 Jan 2018)");
   script_cve_id("CVE-2016-6328");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for libexif FEDORA-2017-c28bfe0986");
   script_tag(name: "summary", value: "Check the version of libexif");

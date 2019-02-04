@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_communigatepro_imap_detect.nasl 13140 2019-01-18 08:26:06Z asteins $
+# $Id: gb_communigatepro_imap_detect.nasl 13409 2019-02-01 13:13:33Z cfischer $
 #
 # CommuniGatePro Detection (IMAP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140687");
-  script_version("$Revision: 13140 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-18 09:26:06 +0100 (Fri, 18 Jan 2019) $");
+  script_version("$Revision: 13409 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-01 14:13:33 +0100 (Fri, 01 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-01-15 15:48:28 +0700 (Mon, 15 Jan 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -46,8 +46,9 @@ This script performs IMAP based detection of CommuniGate Pro.");
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("find_service.nasl");
-  script_require_ports("Services/imap", 143, 993);
+  script_dependencies("imap4_banner.nasl");
+  script_require_ports("Services/imap", 143);
+  script_mandatory_keys("imap/communigate/pro/detected");
 
   script_xref(name:"URL", value:"https://www.communigate.com/");
 

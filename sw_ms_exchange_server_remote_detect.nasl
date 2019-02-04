@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_ms_exchange_server_remote_detect.nasl 13397 2019-02-01 08:06:48Z cfischer $
+# $Id: sw_ms_exchange_server_remote_detect.nasl 13438 2019-02-04 13:36:23Z cfischer $
 #
 # Microsoft Exchange Server Remote Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111085");
-  script_version("$Revision: 13397 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-01 09:06:48 +0100 (Fri, 01 Feb 2019) $");
+  script_version("$Revision: 13438 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-04 14:36:23 +0100 (Mon, 04 Feb 2019) $");
   script_tag(name:"creation_date", value:"2016-02-04 15:00:00 +0100 (Thu, 04 Feb 2016)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -61,10 +61,10 @@ ports = smtp_get_ports();
 foreach port( ports ) {
 
   banner = get_smtp_banner( port:port );
-  quit = get_kb_item( "smtp/" + port + "/quit" );
-  noop = get_kb_item( "smtp/" + port + "/noop" );
-  help = get_kb_item( "smtp/" + port + "/help" );
-  rset = get_kb_item( "smtp/" + port + "/rset" );
+  quit = get_kb_item( "smtp/" + port + "/quit_banner" );
+  noop = get_kb_item( "smtp/" + port + "/noop_banner" );
+  help = get_kb_item( "smtp/" + port + "/help_banner" );
+  rset = get_kb_item( "smtp/" + port + "/rset_banner" );
 
   if( "Microsoft Exchange Internet Mail Service" >< banner || "NTLM LOGIN" >< banner ||
       "Microsoft SMTP MAIL" >< banner || "Microsoft ESMTP MAIL Service" >< banner ||

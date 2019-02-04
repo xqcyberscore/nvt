@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smtpserver_detect.nasl 13179 2019-01-21 08:51:36Z cfischer $
+# $Id: smtpserver_detect.nasl 13438 2019-02-04 13:36:23Z cfischer $
 #
 # SMTP Server type and version
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10263");
-  script_version("$Revision: 13179 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-21 09:51:36 +0100 (Mon, 21 Jan 2019) $");
+  script_version("$Revision: 13438 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-04 14:36:23 +0100 (Mon, 04 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -49,91 +49,34 @@ if(description)
 
 include("smtp_func.inc");
 include("host_details.inc");
+include("misc_func.inc");
+include("xml.inc");
 
 ports = smtp_get_ports();
 
 foreach port( ports ) {
 
-  soc = open_sock_tcp( port );
-  if( ! soc )
+  # nb: get_smtp_banner is verifying that we're receiving an expected SMTP response so its
+  # safe to use a register_service below.
+  banner = get_smtp_banner( port:port );
+  if( ! banner )
     continue;
 
-  banner = smtp_recv_banner( socket:soc );
-  banner = chomp( banner );
-  if( ! banner ) {
-    close( soc );
-    smtp_set_is_marked_wrapped( port:port );
-    continue;
-  }
-
-  if( banner !~ "^[0-9]{3}[ -].+" ) {
-    close( soc );
-    # Doesn't look like SMTP...
-    smtp_set_is_marked_broken( port:port );
-    continue;
-  }
+  if( service_is_unknown( port:port ) )
+    register_service( port:port, proto:"smtp", message:"A SMTP Server seems to be running on this port." );
 
   set_kb_item( name:"smtp/banner/available", value:TRUE );
 
-  send( socket:soc, data:'EHLO ' + smtp_get_helo_from_kb( port:port ) + '\r\n' );
-  ehlo = smtp_recv_line( socket:soc );
-  if( ehlo ) {
-
-    if( get_port_transport( port ) > ENCAPS_IP )
-      is_tls_ehlo = TRUE;
-    else
-      is_tls_ehlo = FALSE;
-
-    set_kb_item( name:"smtp/" + port + "/ehlo", value:ehlo );
-
-    # nb: Don't check for the status code in smtp_recv_line above as we want
-    # to catch every possible response in the KB key above.
-    if( ehlo =~ "^250[ -].+" ) {
-      ehlo_report = "The remote SMTP server is announcing the following available ESMTP commands (EHLO response) via an ";
-      if( is_tls_ehlo )
-        ehlo_report += "encrypted";
-      else
-        ehlo_report += "unencrypted";
-      ehlo_report += ' connection:\n' + chomp( ehlo );
-    }
-
-    if( auth_string = egrep( string:ehlo, pattern:"^250[ -]AUTH .+" ) ) {
-
-      set_kb_item( name:"smtp/auth_methods/available", value:TRUE );
-      auth_string = chomp( auth_string );
-      auth_string = substr( auth_string, 9 );
-      auths = split( auth_string, sep:" ", keep:FALSE );
-      foreach auth( auths ) {
-        if( is_tls_ehlo )
-          set_kb_item( name:"smtp/" + port + "/tls_auth_methods", value:auth );
-        else
-          set_kb_item( name:"smtp/" + port + "/auth_methods", value:auth );
-      }
-    }
+  quit = get_kb_item( "smtp/" + port + "/quit_banner" );
+  help = get_kb_item( "smtp/" + port + "/help_banner" );
+  rset = get_kb_item( "smtp/" + port + "/rset_banner" );
+  if( get_port_transport( port ) > ENCAPS_IP ) {
+    ehlo = get_kb_item( "smtp/" + port + "/tls_ehlo_banner" );
+    is_tls = TRUE;
+  } else {
+    ehlo = get_kb_item( "smtp/" + port + "/nontls_ehlo_banner" );
+    is_tls = FALSE;
   }
-
-  send( socket:soc, data:'HELP\r\n' );
-  help = smtp_recv_line( socket:soc );
-  if( help )
-    set_kb_item( name:"smtp/" + port + "/help", value:help );
-
-  send( socket:soc, data:'NOOP\r\n' );
-  noop = smtp_recv_line( socket:soc );
-  if( noop )
-    set_kb_item( name:"smtp/" + port + "/noop", value:noop );
-
-  send( socket:soc, data:'RSET\r\n' );
-  rset = smtp_recv_line( socket:soc );
-  if( rset )
-    set_kb_item( name:"smtp/" + port + "/rset", value:rset );
-
-  send( socket:soc, data:'QUIT\r\n' );
-  quit = smtp_recv_line( socket:soc );
-  if( quit )
-    set_kb_item( name:"smtp/" + port + "/quit", value:quit );
-
-  # nb: Don't use smtp_close() as we want to get the QUIT banner above.
-  close( soc );
 
   if( "qmail" >< banner || "qmail" >< help ) {
     set_kb_item( name:"smtp/qmail", value:TRUE );
@@ -230,8 +173,15 @@ foreach port( ports ) {
   if( strlen( guess ) > 0 )
     data = string( data, "\n\nThis is probably: ", guess );
 
-  if( strlen( ehlo_report ) > 0 )
+  if( ehlo && ehlo =~ "^250[ -].+" ) {
+    ehlo_report = "The remote SMTP server is announcing the following available ESMTP commands (EHLO response) via an ";
+    if( is_tls )
+      ehlo_report += "encrypted";
+    else
+      ehlo_report += "unencrypted";
+    ehlo_report += ' connection:\n' + ehlo;
     data = string( data, "\n\n", ehlo_report );
+  }
 
   log_message( port:port, data:data );
 }

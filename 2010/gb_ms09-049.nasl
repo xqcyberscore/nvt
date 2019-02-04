@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms09-049.nasl 12404 2018-11-19 08:40:38Z cfischer $
+# $Id: gb_ms09-049.nasl 13426 2019-02-04 07:44:48Z cfischer $
 #
 # Microsoft Wireless LAN AutoConfig Service Remote Code Execution Vulnerability (970710)
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801481");
-  script_version("$Revision: 12404 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-19 09:40:38 +0100 (Mon, 19 Nov 2018) $");
+  script_version("$Revision: 13426 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-04 08:44:48 +0100 (Mon, 04 Feb 2019) $");
   script_tag(name:"creation_date", value:"2010-12-06 10:44:13 +0100 (Mon, 06 Dec 2010)");
   script_cve_id("CVE-2009-1132");
   script_bugtraq_id(36223);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_name("Microsoft  Wireless LAN AutoConfig Service Remote Code Execution Vulnerability (970710)");
+  script_name("Microsoft Wireless LAN AutoConfig Service Remote Code Execution Vulnerability (970710)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/36599/");
   script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2009/2565");
   script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/bulletin/ms09-049.mspx");
@@ -49,18 +49,24 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will let the remote attackers attackers to crash an
   affected system or execute arbitrary code via a malicious wireless transmitter.");
+
   script_tag(name:"affected", value:"Microsoft Windows Vista Service Pack 1/2 and prior.
+
   Microsoft Windows Server 2008 Service Pack 1/2 and prior.");
+
   script_tag(name:"insight", value:"The flaw is caused by a heap overflow error in the Windows Wireless LAN
   AutoConfig Service (wlansvc) when processing malformed frames.");
+
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS09-049.");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");

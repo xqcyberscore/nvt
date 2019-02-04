@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pdns_powerdns-advisory-2018-06-7.nasl 12416 2018-11-19 13:04:44Z cfischer $
+# $Id: gb_pdns_powerdns-advisory-2018-06-7.nasl 13427 2019-02-04 08:52:52Z mmartin $
 #
 # PowerDNS Recursor Multiple DoS Vulnerabilities
 #
@@ -30,11 +30,11 @@ CPE = 'cpe:/a:powerdns:recursor';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141656");
-  script_version("$Revision: 12416 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-19 14:04:44 +0100 (Mon, 19 Nov 2018) $");
+  script_version("$Revision: 13427 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-04 09:52:52 +0100 (Mon, 04 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-11-07 09:59:29 +0700 (Wed, 07 Nov 2018)");
-  script_tag(name:"cvss_base", value:"7.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 
   script_cve_id("CVE-2018-14626", "CVE-2018-14644");
 

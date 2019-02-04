@@ -158,11 +158,6 @@ function isrpmvuln(pkg, rpm, rls) {
 
 function kernel_packge_check(a, b, pkg)
 {
-
-    # TODO: Remove once openvas-nasl-lint can handle such a missing include
-    # from within the same include.
-    if(!defined_func("revcomp")) include("revisions-lib.inc");
-
     local_var a, b, pkg;
 
     vuln_pkg = a;

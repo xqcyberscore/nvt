@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: basilix_webmail.nasl 8589 2018-01-30 15:02:51Z cfischer $
+# $Id: basilix_webmail.nasl 13407 2019-02-01 12:38:22Z cfischer $
 #
 # Basilix Webmail Dummy Request Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:basilix:basilix_webmail";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11072");
-  script_version("$Revision: 8589 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-30 16:02:51 +0100 (Tue, 30 Jan 2018) $");
+  script_version("$Revision: 13407 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-01 13:38:22 +0100 (Fri, 01 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(2995);
   script_tag(name:"cvss_base", value:"5.0");
@@ -47,13 +47,10 @@ if(description)
 
   script_tag(name:"solution", value:"Update Basilix or remove DUMMY from lang.inc.");
 
-  script_tag(name:"summary", value:"The remote web server contains a PHP script that is prone to information
-  disclosure. 
+  script_tag(name:"summary", value:"The script 'basilix.php3' is installed on the remote web server
+  which is prone to information disclosure.");
 
-  Description :
-
-  The script 'basilix.php3' is installed on the remote web server.  Some
-  versions of this webmail software allow the users to read any file on
+  script_tag(name:"impact", value:"This flaw allow the users to read any file on
   the system with the permission of the webmail software, and execute any PHP.");
 
   script_tag(name:"solution_type", value:"Workaround");
@@ -66,13 +63,16 @@ include("host_details.inc");
 include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
+include("imap_func.inc");
 
 if (!port = get_app_port(cpe: CPE))
   exit(0);
 
-user = get_kb_item( "imap/login" );
-pass = get_kb_item( "imap/password" );
-if( ! user || ! pass ) exit( 0 );
+kb_creds = imap_get_kb_creds();
+user = kb_creds["login"];
+pass = kb_creds["pass"];
+if( ! user || ! pass )
+  exit( 0 );
 
 files = traversal_files();
 foreach file( keys( files ) ) {

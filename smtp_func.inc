@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: smtp_func.inc 13357 2019-01-30 09:02:06Z cfischer $
+# $Id: smtp_func.inc 13438 2019-02-04 13:36:23Z cfischer $
 #
 # Support functions for handling SMTP
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 13357 $
+# $Revision: 13438 $
 #
 ###############################################################################
 
@@ -257,7 +257,9 @@ function smtp_to_header() {
 
 # @brief Sends a request to a SMTP server and receives the returned banner. If a banner was received it
 #        is saved into the knowledge base. If a banner for a port was requested which was requested
-#        previously the cached banner will be returned instead of doing a new request.
+#        previously the cached banner will be returned instead of doing a new request. This function
+#        will also save the responses of the SMTP server to additional ESMTP commands within
+#        the KB for later use in the fingerprinting of the remote SMTP server by other VTs.
 #
 # @param port The port of the remote SMTP server.
 #
@@ -267,14 +269,16 @@ function smtp_to_header() {
 function get_smtp_banner( port ) {
 
   local_var port;
-  local_var banner, soc;
+  local_var banner, soc, ehlo, is_tls, auth_string, auths, auth, help, noop, rset, quit;
 
   if( ! port ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#get_smtp_banner" );
     return FALSE;
   }
 
-  banner = get_kb_item( "smtp/banner/" + port );
+  # nb: nasl_builtin_find_service.c is setting smtp/banner but we want to catch the various responses
+  # below as well so we're using the uppercase SMTP here.
+  banner = get_kb_item( "SMTP/banner/" + port );
   if( banner )
     return( banner );
 
@@ -292,15 +296,88 @@ function get_smtp_banner( port ) {
     return NULL;
   }
 
-  banner = smtp_recv_banner( socket:soc, retry:1 );
-  smtp_close( socket:soc, check_data:banner );
+  # nb: smtp_recv_line returns NULL if the service hasn't responded at all
+  # and FALSE if we haven't received a 3 ASCII Digits code from the service.
+  # This allows us to differ between "broken" and "wrapped" below.
+  banner = smtp_recv_line( socket:soc, retry:1 );
+  if( isnull( banner ) ) {
+    close( soc );
+    smtp_set_is_marked_wrapped( port:port );
+    return NULL;
+  }
 
-  if( ! banner ) {
+  # nb: See description about the FALSE value above. The second one is an
+  # additional safeguard to make sure that we're getting the expected response.
+  if( banner == FALSE || banner !~ "^[0-9]{3}[ -].+" ) {
+    close( soc );
+    # Doesn't look like SMTP...
     smtp_set_is_marked_broken( port:port );
     return NULL;
   }
 
-  replace_kb_item( name:"smtp/banner/" + port, value:banner );
+  banner = chomp( banner );
+  replace_kb_item( name:"SMTP/banner/" + port, value:banner );
+
+  # nb: Don't use smtp_open as we want to use the banner below as well.
+  send( socket:soc, data:'EHLO ' + smtp_get_helo_from_kb( port:port ) + '\r\n' );
+  ehlo = smtp_recv_line( socket:soc );
+  ehlo = chomp( ehlo );
+  if( ehlo ) {
+
+    set_kb_item( name:"smtp/" + port + "/ehlo_banner", value:ehlo );
+
+    if( get_port_transport( port ) > ENCAPS_IP ) {
+      is_tls = TRUE;
+      set_kb_item( name:"smtp/" + port + "/tls_ehlo_banner", value:ehlo );
+    } else {
+      is_tls = FALSE;
+      set_kb_item( name:"smtp/" + port + "/nontls_ehlo_banner", value:ehlo );
+    }
+
+    auth_string = egrep( string:ehlo, pattern:"^250[ -]AUTH .+" );
+    auth_string = chomp( auth_string );
+    if( auth_string ) {
+
+      set_kb_item( name:"smtp/auth_methods/available", value:TRUE );
+
+      auth_string = substr( auth_string, 9 );
+      auths = split( auth_string, sep:" ", keep:FALSE );
+      foreach auth( auths ) {
+        set_kb_item( name:"smtp/" + port + "/authlist", value:auth );
+        if( is_tls )
+          set_kb_item( name:"smtp/" + port + "/tls_authlist", value:auth );
+        else
+          set_kb_item( name:"smtp/" + port + "/nontls_authlist", value:auth );
+      }
+    }
+  }
+
+  send( socket:soc, data:'HELP\r\n' );
+  help = smtp_recv_line( socket:soc );
+  help = chomp( help );
+  if( help )
+    set_kb_item( name:"smtp/" + port + "/help_banner", value:help );
+
+  send( socket:soc, data:'NOOP\r\n' );
+  noop = smtp_recv_line( socket:soc );
+  noop = chomp( noop );
+  if( noop )
+    set_kb_item( name:"smtp/" + port + "/noop_banner", value:noop );
+
+  send( socket:soc, data:'RSET\r\n' );
+  rset = smtp_recv_line( socket:soc );
+  rset = chomp( rset );
+  if( rset )
+    set_kb_item( name:"smtp/" + port + "/rset_banner", value:rset );
+
+  send( socket:soc, data:'QUIT\r\n' );
+  quit = smtp_recv_line( socket:soc );
+  quit = chomp( quit );
+  if( quit )
+    set_kb_item( name:"smtp/" + port + "/quit_banner", value:quit );
+
+  # nb: Don't use smtp_close() as we want to get the QUIT banner above.
+  close( soc );
   return( banner );
 }
 
@@ -309,8 +386,8 @@ function get_smtp_banner( port ) {
 #
 # @param socket The socket to the SMTP server.
 # @param code   An (optional) string or regex which is used to verify the received data against.
-#               If this parameter isn't passed the default regex of ^[0-9]{3}[ -] is assumed.
-#               If e.g. a code of 220 is passed the following regex is used: ^220[ -].
+#               If this parameter isn't passed the default regex of '^[0-9]{3}[ -].+' is assumed.
+#               If e.g. a code of 220 is passed the following regex is used: '^220[ -].+'.
 # @param retry  An (optional) amount of retries which should be used for the initial connection
 #               if no data was received. If this parameter isn't passed no retry will be done.
 # @param last   An (optional) parameter to specify (via a passed TRUE/FALSE) if only the last
@@ -338,9 +415,9 @@ function smtp_recv_line( socket, code, retry, last ) {
     last = FALSE;
 
   if( isnull( code ) )
-    pat = "^[0-9]{3}[ -]";
+    pat = "^[0-9]{3}[ -].+";
   else
-    pat = strcat("^", code, "[ -]");
+    pat = strcat("^", code, "[ -].+");
 
   r = recv_line( socket:socket, length:4096 );
 
@@ -353,7 +430,7 @@ function smtp_recv_line( socket, code, retry, last ) {
 
   n = 0;
   ret = r;
-  if( strlen( r ) < 4 || r !~ "^[0-9]{3}[ -]" )
+  if( strlen( r ) < 4 || r !~ "^[0-9]{3}[ -].+" )
     return NULL;
 
   # nb: We want to differ between NULL and FALSE in the return values here.
@@ -665,7 +742,7 @@ function get_3rdparty_domain() {
   return domain;
 }
 
-# @brief Gets the SMTP HELO domain saved within the KB in smtp/port/helo.
+# @brief Gets the SMTP HELO domain saved within the KB in smtp/port/accepted_helo_name.
 #        If no SMTP HELO was found in the KB the function will fallback
 #        to the returned value of @ref get_3rdparty_domain.
 #
@@ -688,7 +765,7 @@ function smtp_get_helo_from_kb( port ) {
   if( ! isnull( __smtp_helo ) ) {
     helo = string( __smtp_helo );
   } else {
-    helo = get_kb_item( "smtp/"+ port + "/helo" );
+    helo = get_kb_item( "smtp/"+ port + "/accepted_helo_name" );
     if( ! isnull( helo ) ) {
       __smtp_helo = string( helo );
     } else {

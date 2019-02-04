@@ -34,8 +34,8 @@ if(description)
                 "CVE-2018-10882", "CVE-2018-10880", "CVE-2018-10883", "CVE-2018-14625",
                 "CVE-2018-16882", "CVE-2018-17972", "CVE-2018-18281", "CVE-2018-19407",
                 "CVE-2018-9516");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"last_modification", value:"$Date$");
   script_tag(name:"creation_date", value:"2019-01-30 04:02:08 +0100 (Wed, 30 Jan 2019)");
   script_name("Ubuntu Update for linux USN-3871-1");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3838_1.nasl 12755 2018-12-11 10:50:43Z santu $
+# $Id: gb_ubuntu_USN_3838_1.nasl 13427 2019-02-04 08:52:52Z mmartin $
 #
 # Ubuntu Update for libraw USN-3838-1
 #
@@ -29,12 +29,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843846");
-  script_version("$Revision: 12755 $");
+  script_version("$Revision: 13427 $");
   script_cve_id("CVE-2018-5807", "CVE-2018-5810", "CVE-2018-5811", "CVE-2018-5812",
                 "CVE-2018-5813", "CVE-2018-5815", "CVE-2018-5816");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-11 11:50:43 +0100 (Tue, 11 Dec 2018) $");
+  script_tag(name:"cvss_base", value:"7.1");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-04 09:52:52 +0100 (Mon, 04 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-12-06 07:41:22 +0100 (Thu, 06 Dec 2018)");
   script_name("Ubuntu Update for libraw USN-3838-1");
   script_category(ACT_GATHER_INFO);

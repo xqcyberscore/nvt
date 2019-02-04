@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_postfix_cyrus_sasl_memory_corruption_vuln.nasl 13107 2019-01-17 06:55:20Z cfischer $
+# $Id: secpod_postfix_cyrus_sasl_memory_corruption_vuln.nasl 13438 2019-02-04 13:36:23Z cfischer $
 #
 # Postfix SMTP Server Cyrus SASL Support Memory Corruption Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:postfix:postfix";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902517");
-  script_version("$Revision: 13107 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-17 07:55:20 +0100 (Thu, 17 Jan 2019) $");
+  script_version("$Revision: 13438 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-04 14:36:23 +0100 (Mon, 04 Feb 2019) $");
   script_tag(name:"creation_date", value:"2011-05-26 10:47:46 +0200 (Thu, 26 May 2011)");
   script_cve_id("CVE-2011-1720");
   script_bugtraq_id(47778);
@@ -48,7 +48,7 @@ if(description)
   script_family("SMTP problems");
   script_dependencies("sw_postfix_detect.nasl");
   script_require_ports("Services/smtp", 25, 465, 587);
-  script_mandatory_keys("postfix/smtp/detected");
+  script_mandatory_keys("postfix/smtp/detected", "smtp/auth_methods/available");
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to cause a denial of
   service or possibly execute arbitrary code.");
@@ -73,6 +73,7 @@ if(description)
 
 include("version_func.inc");
 include("host_details.inc");
+include("misc_func.inc");
 
 if( ! port = get_app_port( cpe:CPE ) )
   exit( 0 );
@@ -85,10 +86,12 @@ if(version_is_less(version:vers, test_version:"2.5.13") ||
    version_in_range(version:vers, test_version:"2.7", test_version2:"2.7.3") ||
    version_in_range(version:vers, test_version:"2.8", test_version2:"2.8.2")) {
 
-  if( ! auth = get_kb_item( "smtp/" + port + "/ehlo" ) )
+  auths = get_kb_list( "smtp/" + port + "/authlist" );
+  if( ! auths || ! is_array( auths ) )
     exit( 0 );
 
-  if("DIGEST-MD5" >< auth || "CRAM-MD5" >< auth) {
+  if( in_array( search:"DIGEST-MD5", array:auths, part_match:FALSE ) ||
+      in_array( search:"CRAM-MD5", array:auths, part_match:FALSE ) ) {
     report = report_fixed_ver(installed_version:vers, fixed_version:"2.5.13, 2.6.10, 2.7.4, or 2.8.3 or later");
     security_message(port:port, data:report);
     exit(0);

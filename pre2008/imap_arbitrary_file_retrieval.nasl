@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: imap_arbitrary_file_retrieval.nasl 12150 2018-10-29 11:46:42Z cfischer $
+# $Id: imap_arbitrary_file_retrieval.nasl 13409 2019-02-01 13:13:33Z cfischer $
 #
 # IMAP arbitrary file retrieval
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12254");
-  script_version("$Revision: 12150 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-29 12:46:42 +0100 (Mon, 29 Oct 2018) $");
+  script_version("$Revision: 13409 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-01 14:13:33 +0100 (Fri, 01 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
@@ -38,9 +38,9 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2004 George A. Theall");
   script_family("Remote file access");
-  script_dependencies("find_service.nasl", "global_settings.nasl", "logins.nasl");
+  script_dependencies("imap4_banner.nasl", "logins.nasl");
   script_require_ports("Services/imap", 143);
-  script_mandatory_keys("imap/login", "imap/password");
+  script_mandatory_keys("imap/banner/available", "imap/login", "imap/password");
 
   script_xref(name:"URL", value:"http://www.washington.edu/imap/IMAP-FAQs/index.html#5.1");
 
@@ -59,8 +59,9 @@ if(description)
 include("misc_func.inc");
 include("imap_func.inc");
 
-user = get_kb_item("imap/login");
-pass = get_kb_item("imap/password");
+kb_creds = imap_get_kb_creds();
+user = kb_creds["login"];
+pass = kb_creds["pass"];
 if (!user || !pass) {
   exit(0);
 }

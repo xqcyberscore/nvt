@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: smb_nt.inc 12785 2018-12-13 10:41:09Z cfischer $
+# $Id: smb_nt.inc 13413 2019-02-01 13:54:50Z cfischer $
 #
 # Methods for handling SMB
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 12785 $
+# $Revision: 13413 $
 #
 ###############################################################################
 
@@ -4454,14 +4454,11 @@ function registry1_enum_key( soc, uid, tid, pipe, reply ) {
 
 #----------------------------------------------------------#
 # RegEnumValue() for SMB 2                                 #
+#                                                          #
+# nb: You need to include misc_func.inc for dec2hex        #
 #----------------------------------------------------------#
 # Author: Shakeel
 function registry2_enum_value( soc, uid, tid, pipe, reply ) {
-
-  # TODO: Remove once openvas-nasl-lint can handle such a missing function
-  # within includes as the calling VT only needs to make sure to have all
-  # required .inc files included and not the include on its own.
-  if( ! defined_func( "dec2hex" ) ) include("misc_func.inc");
 
   local_var soc, uid, tid, pipe, reply;
   local_var list, magic, i, j, req, ioctl_req, dcerpc_req1, dcerpc_req2;

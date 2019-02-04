@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: check_smtp_helo.nasl 13138 2019-01-18 07:48:30Z cfischer $
+# $Id: check_smtp_helo.nasl 13438 2019-02-04 13:36:23Z cfischer $
 # Description: SMTP server accepts us
 #
 # Authors:
@@ -25,8 +25,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.18528");
-  script_version("$Revision: 13138 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-18 08:48:30 +0100 (Fri, 18 Jan 2019) $");
+  script_version("$Revision: 13438 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-04 14:36:23 +0100 (Mon, 04 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -154,7 +154,7 @@ foreach port( ports ) {
     log_message( port:port, data:report );
     set_kb_item( name:"smtp/" + port + "/denied", value:TRUE );
   } else {
-    set_kb_item( name:"smtp/" + port + "/helo", value:used_heloname );
+    set_kb_item( name:"smtp/" + port + "/accepted_helo_name", value:used_heloname );
   }
 }
 

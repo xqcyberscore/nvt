@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ssl_cert_details.nasl 11908 2018-10-15 13:35:13Z cfischer $
+# $Id: ssl_cert_details.nasl 13434 2019-02-04 09:55:38Z cfischer $
 #
 # SSL/TLS: Collect and Report Certificate Details
 #
@@ -91,8 +91,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103692");
-  script_version("$Revision: 11908 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 15:35:13 +0200 (Mon, 15 Oct 2018) $");
+  script_version("$Revision: 13434 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-04 10:55:38 +0100 (Mon, 04 Feb 2019) $");
   script_tag(name:"creation_date", value:"2013-04-09 14:14:14 +0200 (Tue, 09 Apr 2013)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -117,6 +117,7 @@ include("misc_func.inc");
 include("ssl_funcs.inc");
 include("byte_func.inc");
 
+include("mysql.inc"); # For recv_mysql_server_handshake() in open_ssl_socket()
 include("xml.inc"); # Both for report_host_detail_single()
 include("host_details.inc");
 

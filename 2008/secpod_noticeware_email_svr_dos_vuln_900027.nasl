@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_noticeware_email_svr_dos_vuln_900027.nasl 11570 2018-09-24 11:54:11Z cfischer $
+# $Id: secpod_noticeware_email_svr_dos_vuln_900027.nasl 13409 2019-02-01 13:13:33Z cfischer $
 #
 # NoticeWare Email Server NG LOGIN Messages DoS Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900027");
-  script_version("$Revision: 11570 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-24 13:54:11 +0200 (Mon, 24 Sep 2018) $");
+  script_version("$Revision: 13409 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-01 14:13:33 +0100 (Fri, 01 Feb 2019) $");
   script_tag(name:"creation_date", value:"2008-08-22 10:29:01 +0200 (Fri, 22 Aug 2008)");
   script_cve_id("CVE-2008-3607");
   script_bugtraq_id(30605);
@@ -38,7 +38,7 @@ if(description)
   script_category(ACT_MIXED_ATTACK);
   script_family("Denial of Service");
   script_name("NoticeWare Email Server NG LOGIN Messages DoS Vulnerability");
-  script_dependencies("find_service.nasl", "smb_reg_service_pack.nasl", "os_detection.nasl");
+  script_dependencies("imap4_banner.nasl", "smb_reg_service_pack.nasl", "os_detection.nasl");
   script_mandatory_keys("Host/runs_windows");
   script_require_ports(139, 445, "Services/imap", 143);
 
@@ -50,8 +50,7 @@ if(description)
   script_tag(name:"summary", value:"The host is running NoticeWare Email Server, which is prone to
   denial of service vulnerability.");
 
-  script_tag(name:"solution", value:"Upgrade to Noticeware Email Server 5.1,
-  http://www.noticeware.com/downloads.htm");
+  script_tag(name:"solution", value:"Upgrade to Noticeware Email Server 5.1 or later.");
 
   script_tag(name:"impact", value:"Remote attackers can crash or deny the service by executing
   long LOGIN string.");

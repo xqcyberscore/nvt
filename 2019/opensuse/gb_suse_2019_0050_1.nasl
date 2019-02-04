@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2019_0050_1.nasl 13173 2019-01-21 06:39:39Z santu $
+# $Id: gb_suse_2019_0050_1.nasl 13427 2019-02-04 08:52:52Z mmartin $
 #
 # SuSE Update for aria2 openSUSE-SU-2019:0050-1 (aria2)
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852235");
-  script_version("$Revision: 13173 $");
+  script_version("$Revision: 13427 $");
   script_cve_id("CVE-2019-3500");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-21 07:39:39 +0100 (Mon, 21 Jan 2019) $");
+  script_tag(name:"cvss_base", value:"2.1");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-04 09:52:52 +0100 (Mon, 04 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-14 04:00:47 +0100 (Mon, 14 Jan 2019)");
   script_name("SuSE Update for aria2 openSUSE-SU-2019:0050-1 (aria2)");
   script_category(ACT_GATHER_INFO);

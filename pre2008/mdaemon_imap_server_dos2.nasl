@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test
-# $Id: mdaemon_imap_server_dos2.nasl 13077 2019-01-15 10:37:47Z cfischer $
-# Description: MDaemon imap server DoS(2)
+# $Id: mdaemon_imap_server_dos2.nasl 13409 2019-02-01 13:13:33Z cfischer $
+# Description: MDaemon IMAP Server DoS(2)
 #
 # Authors:
 # David Maciejak <david dot maciejak at kyxar dot fr>
@@ -28,19 +28,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14827");
-  script_version("$Revision: 13077 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-15 11:37:47 +0100 (Tue, 15 Jan 2019) $");
+  script_version("$Revision: 13409 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-01 14:13:33 +0100 (Fri, 01 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(2508);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:P");
   script_cve_id("CVE-2001-0584");
-  script_name("MDaemon IMAP server DoS(2)");
+  script_name("MDaemon IMAP Server DoS(2)");
   script_category(ACT_MIXED_ATTACK);
   script_copyright("This script is Copyright (C) 2004 David Maciejak");
   script_family("Denial of Service");
-  script_dependencies("find_service2.nasl", "logins.nasl");
+  script_dependencies("imap4_banner.nasl", "logins.nasl");
   script_require_ports("Services/imap", 143);
+  script_mandatory_keys("imap/mdaemon/detected");
 
   script_tag(name:"solution", value:"Upgrade to newest version of this software.");
 
@@ -60,8 +61,9 @@ if(description)
 
 include("imap_func.inc");
 
-acct = get_kb_item("imap/login");
-pass = get_kb_item("imap/password");
+kb_creds = imap_get_kb_creds();
+user = kb_creds["login"];
+acct = kb_creds["pass"];
 safe_checks = FALSE;
 
 if(!acct || !pass)

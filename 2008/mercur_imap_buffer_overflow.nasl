@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: mercur_imap_buffer_overflow.nasl 13294 2019-01-25 13:00:33Z cfischer $
+# $Id: mercur_imap_buffer_overflow.nasl 13409 2019-02-01 13:13:33Z cfischer $
 # Description: Mercur Mailserver/Messaging version <= 5.0 IMAP Overflow Vulnerability
 #
 # Authors:
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.200050");
-  script_version("$Revision: 13294 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-25 14:00:33 +0100 (Fri, 25 Jan 2019) $");
+  script_version("$Revision: 13409 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-01 14:13:33 +0100 (Fri, 01 Feb 2019) $");
   script_tag(name:"creation_date", value:"2008-08-22 16:09:14 +0200 (Fri, 22 Aug 2008)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -40,8 +40,9 @@ if(description)
   script_category(ACT_MIXED_ATTACK);
   script_family("Gain a shell remotely");
   script_copyright("This script is Copyright (C) 2008 Ferdy Riphagen");
-  script_dependencies("find_service2.nasl");
+  script_dependencies("imap4_banner.nasl");
   script_require_ports("Services/imap", 143);
+  script_mandatory_keys("imap/mercur/detected");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/19267/");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/17138");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3832_1.nasl 12638 2018-12-04 08:40:36Z santu $
+# $Id: gb_ubuntu_USN_3832_1.nasl 13427 2019-02-04 08:52:52Z mmartin $
 #
 # Ubuntu Update for linux-aws USN-3832-1
 #
@@ -29,13 +29,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843840");
-  script_version("$Revision: 12638 $");
+  script_version("$Revision: 13427 $");
   script_cve_id("CVE-2018-17972", "CVE-2018-18281", "CVE-2018-18445",
                 "CVE-2018-18653", "CVE-2018-18955", "CVE-2018-6559");
   script_bugtraq_id(106054);
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-04 09:40:36 +0100 (Tue, 04 Dec 2018) $");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-04 09:52:52 +0100 (Mon, 04 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-12-04 12:40:51 +0530 (Tue, 04 Dec 2018)");
   script_name("Ubuntu Update for linux-aws USN-3832-1");
   script_category(ACT_GATHER_INFO);

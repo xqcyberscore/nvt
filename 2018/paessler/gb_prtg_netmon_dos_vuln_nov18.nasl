@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_prtg_netmon_dos_vuln_nov18.nasl 12339 2018-11-13 14:53:23Z jschulte $
+# $Id: gb_prtg_netmon_dos_vuln_nov18.nasl 13427 2019-02-04 08:52:52Z mmartin $
 #
 # PRTG Network Monitor <=18.2.40.1683 Denial of Service Vulnerability
 #
@@ -28,11 +28,11 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113300");
-  script_version("$Revision: 12339 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:53:23 +0100 (Tue, 13 Nov 2018) $");
+  script_version("$Revision: 13427 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-04 09:52:52 +0100 (Mon, 04 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-11-13 15:39:34 +0200 (Tue, 13 Nov 2018)");
-  script_tag(name:"cvss_base", value:"7.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

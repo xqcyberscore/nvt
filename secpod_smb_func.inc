@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: secpod_smb_func.inc 12976 2019-01-08 13:27:20Z cfischer $
+# $Id: secpod_smb_func.inc 13432 2019-02-04 09:41:09Z cfischer $
 #
 # SMB Functions
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 12976 $
+# $Revision: 13432 $
 #
 ###############################################################################
 
@@ -86,10 +86,6 @@ function smb_get_fileversion_from_cache( file_name ) {
 # indicate verstr="prod"
 
 function GetVersion( socket, uid, tid, fid, offset, verstr, debug ) {
-
-  # TODO: Remove once openvas-nasl-lint can handle such a missing include
-  # from within the same include.
-  if(!defined_func("smb_get_file_size")) include("smb_nt.inc");
 
   local_var socket, uid, tid, fid, offset, verstr, debug;
   local_var fsize, data, i, offset, tmp, version, ver, vers, len, ver_len, retVal;

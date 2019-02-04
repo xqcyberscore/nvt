@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_eudora_worldmail_imap_server_bof_vuln.nasl 11818 2018-10-10 11:35:42Z asteins $
+# $Id: gb_eudora_worldmail_imap_server_bof_vuln.nasl 13409 2019-02-01 13:13:33Z cfischer $
 #
 # Eudora WorldMail IMAP Server Buffer Overflow Vulnerability
 #
@@ -27,19 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802294");
-  script_version("$Revision: 11818 $");
+  script_version("$Revision: 13409 $");
   script_bugtraq_id(15980);
   script_cve_id("CVE-2005-4267");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 13:35:42 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-01 14:13:33 +0100 (Fri, 01 Feb 2019) $");
   script_tag(name:"creation_date", value:"2012-01-18 14:14:14 +0530 (Wed, 18 Jan 2012)");
   script_name("Eudora WorldMail IMAP Server Buffer Overflow Vulnerability");
   script_category(ACT_DENIAL);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Buffer overflow");
-  script_dependencies("find_service.nasl");
+  script_dependencies("imap4_banner.nasl");
   script_require_ports("Services/imap", 143);
+  script_mandatory_keys("imap/eudora/worldmail/detected");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/17640");
   script_xref(name:"URL", value:"http://securitytracker.com/id/1015391");

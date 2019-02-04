@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852187");
-  script_version("$Revision: 12873 $");
+  script_version("$Revision: 13427 $");
   script_cve_id("CVE-2018-10851", "CVE-2018-14626", "CVE-2018-14644", "CVE-2018-16855");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-21 15:42:20 +0100 (Fri, 21 Dec 2018) $");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-04 09:52:52 +0100 (Mon, 04 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-12-18 07:41:17 +0100 (Tue, 18 Dec 2018)");
   script_name("SuSE Update for pdns-recursor openSUSE-SU-2018:4152-1 (pdns-recursor)");
   script_category(ACT_GATHER_INFO);

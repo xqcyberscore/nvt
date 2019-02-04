@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_imap_capabilities.nasl 11966 2018-10-18 13:56:21Z cfischer $
+# $Id: gb_nmap_imap_capabilities.nasl 13409 2019-02-01 13:13:33Z cfischer $
 #
 # Wrapper for Nmap IMAP Capabilities NSE script.
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801299");
-  script_version("$Revision: 11966 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 15:56:21 +0200 (Thu, 18 Oct 2018) $");
+  script_version("$Revision: 13409 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-01 14:13:33 +0100 (Fri, 01 Feb 2019) $");
   script_tag(name:"creation_date", value:"2010-10-08 10:33:58 +0200 (Fri, 08 Oct 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -39,7 +39,7 @@ if(description)
   script_tag(name:"qod_type", value:"remote_analysis");
   script_copyright("NSE-Script: The Nmap Security Scanner; NASL-Wrapper: Greenbone Networks GmbH");
   script_family("Nmap NSE");
-  script_dependencies("find_service2.nasl", "nmap_nse.nasl");
+  script_dependencies("imap4_banner.nasl", "nmap_nse.nasl");
   script_require_ports("Services/imap", 143);
   script_mandatory_keys("Tools/Present/nmap", "Tools/Launch/nmap_nse");
 
