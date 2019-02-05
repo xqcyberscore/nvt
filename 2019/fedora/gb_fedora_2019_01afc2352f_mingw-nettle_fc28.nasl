@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2019_01afc2352f_mingw-nettle_fc28.nasl 13108 2019-01-17 07:34:03Z santu $
+# $Id: gb_fedora_2019_01afc2352f_mingw-nettle_fc28.nasl 13455 2019-02-05 07:38:02Z mmartin $
 #
 # Fedora Update for mingw-nettle FEDORA-2019-01afc2352f
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875397");
-  script_version("$Revision: 13108 $");
+  script_version("$Revision: 13455 $");
   script_cve_id("CVE-2018-16869");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-17 08:34:03 +0100 (Thu, 17 Jan 2019) $");
+  script_tag(name:"cvss_base", value:"3.3");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-05 08:38:02 +0100 (Tue, 05 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-12 04:03:53 +0100 (Sat, 12 Jan 2019)");
   script_name("Fedora Update for mingw-nettle FEDORA-2019-01afc2352f");
   script_category(ACT_GATHER_INFO);

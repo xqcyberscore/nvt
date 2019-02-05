@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_MDaemon_39857.nasl 13125 2019-01-17 13:35:01Z cfischer $
+# $Id: gb_MDaemon_39857.nasl 13467 2019-02-05 12:16:48Z cfischer $
 #
 # Alt-N MDaemon SUBSCRIBE Remote Information Disclosure Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100630");
-  script_version("$Revision: 13125 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-17 14:35:01 +0100 (Thu, 17 Jan 2019) $");
+  script_version("$Revision: 13467 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-05 13:16:48 +0100 (Tue, 05 Feb 2019) $");
   script_tag(name:"creation_date", value:"2010-05-06 13:19:12 +0200 (Thu, 06 May 2010)");
   script_bugtraq_id(39857);
   script_tag(name:"cvss_base", value:"5.0");
@@ -38,7 +38,7 @@ if(description)
   script_family("SMTP problems");
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
   script_dependencies("smtpserver_detect.nasl");
-  script_mandatory_keys("smtp/mdaemon");
+  script_mandatory_keys("smtp/mdaemon/detected");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/39857");
   script_xref(name:"URL", value:"http://www.altn.com/");

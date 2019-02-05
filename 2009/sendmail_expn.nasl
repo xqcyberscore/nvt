@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sendmail_expn.nasl 13204 2019-01-21 17:32:45Z cfischer $
+# $Id: sendmail_expn.nasl 13470 2019-02-05 12:39:51Z cfischer $
 #
 # Check if Mailserver answer to VRFY and EXPN requests
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100072");
-  script_version("$Revision: 13204 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-21 18:32:45 +0100 (Mon, 21 Jan 2019) $");
+  script_version("$Revision: 13470 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-05 13:39:51 +0100 (Tue, 05 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-03-23 19:32:33 +0100 (Mon, 23 Mar 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -38,6 +38,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
   script_dependencies("smtpserver_detect.nasl", "smtp_settings.nasl");
   script_require_ports("Services/smtp", 25, 465, 587);
+  script_mandatory_keys("smtp/banner/available");
 
   script_xref(name:"URL", value:"http://cr.yp.to/smtp/vrfy.html");
 

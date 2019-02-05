@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_guest_host_escape_e1000_vuln_win.nasl 12289 2018-11-09 14:18:58Z bshakeel $
+# $Id: gb_oracle_virtualbox_guest_host_escape_e1000_vuln_win.nasl 13450 2019-02-05 03:52:29Z ckuersteiner $
 #
 # Oracle VirtualBox Guest-to-Host Escape E1000 Privilege Escalation Vulnerability (Windows)
 #
@@ -29,11 +29,12 @@ CPE = "cpe:/a:oracle:vm_virtualbox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814327");
-  script_version("$Revision: 12289 $");
+  script_version("$Revision: 13450 $");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 15:18:58 +0100 (Fri, 09 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-05 04:52:29 +0100 (Tue, 05 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-11-09 17:22:32 +0530 (Fri, 09 Nov 2018)");
+
   script_name("Oracle VirtualBox Guest-to-Host Escape E1000 Privilege Escalation Vulnerability (Windows)");
 
   script_tag(name:"summary", value:"The host is installed with Oracle VirtualBox
@@ -54,9 +55,8 @@ if(description)
   script_tag(name:"affected", value:"Oracle VirtualBox versions 5.2.20 and
   before on Windows.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 09th
-  November, 2018. Information regarding this issue will be updated once solution
-  details are available. For updates refer to Reference links.");
+  script_tag(name:"solution", value:"No known solution is available as of 05th February, 2019.
+  Information regarding this issue will be updated once solution details are available.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
   script_tag(name:"qod_type", value:"registry");

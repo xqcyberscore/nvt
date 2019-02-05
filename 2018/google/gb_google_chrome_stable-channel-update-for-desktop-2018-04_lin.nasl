@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_stable-channel-update-for-desktop-2018-04_lin.nasl 12116 2018-10-26 10:01:35Z mmartin $
+# $Id: gb_google_chrome_stable-channel-update-for-desktop-2018-04_lin.nasl 13455 2019-02-05 07:38:02Z mmartin $
 #
 # Google Chrome Security Updates(stable-channel-update-for-desktop-2018-04)-Linux
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813095");
-  script_version("$Revision: 12116 $");
+  script_version("$Revision: 13455 $");
   script_cve_id("CVE-2018-6085", "CVE-2018-6086", "CVE-2018-6087", "CVE-2018-6088",
                 "CVE-2018-6089", "CVE-2018-6090", "CVE-2018-6091", "CVE-2018-6092",
                 "CVE-2018-6093", "CVE-2018-6094", "CVE-2018-6095", "CVE-2018-6096",
@@ -39,9 +39,9 @@ if(description)
                 "CVE-2018-6109", "CVE-2018-6110", "CVE-2018-6111", "CVE-2018-6112",
                 "CVE-2018-6113", "CVE-2018-6114", "CVE-2018-6115", "CVE-2018-6116",
                 "CVE-2018-6117");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-05 08:38:02 +0100 (Tue, 05 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-04-18 14:30:38 +0530 (Wed, 18 Apr 2018)");
   script_name("Google Chrome Security Updates(stable-channel-update-for-desktop-2018-04)-Linux");
 

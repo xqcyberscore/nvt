@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_smtp_unencrypted_cleartext_login.nasl 13438 2019-02-04 13:36:23Z cfischer $
+# $Id: gb_smtp_unencrypted_cleartext_login.nasl 13461 2019-02-05 09:33:31Z cfischer $
 #
 # SMTP Unencrypted Cleartext Login
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108530");
-  script_version("$Revision: 13438 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-04 14:36:23 +0100 (Mon, 04 Feb 2019) $");
+  script_version("$Revision: 13461 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-05 10:33:31 +0100 (Tue, 05 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-18 14:38:04 +0100 (Fri, 18 Jan 2019)");
   script_tag(name:"cvss_base", value:"4.8");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:P/A:N");
@@ -67,7 +67,7 @@ encaps = get_port_transport( port );
 if( encaps > ENCAPS_IP )
   exit( 99 );
 
-auths = get_kb_list( "smtp/" + port + "/nontls_authlist" );
+auths = get_kb_list( "smtp/fingerprints/" + port + "/nontls_authlist" );
 if( ! auths || ! is_array( auths ) )
   exit( 99 );
 

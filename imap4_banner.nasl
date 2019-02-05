@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: imap4_banner.nasl 13409 2019-02-01 13:13:33Z cfischer $
+# $Id: imap4_banner.nasl 13463 2019-02-05 09:40:41Z cfischer $
 # Description: IMAP Server type and version
 #
 # Authors:
@@ -25,8 +25,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11414");
-  script_version("$Revision: 13409 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-01 14:13:33 +0100 (Fri, 01 Feb 2019) $");
+  script_version("$Revision: 13463 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-05 10:40:41 +0100 (Tue, 05 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -124,9 +124,9 @@ foreach port( ports ) {
     report += '\n\nThis is probably: ' + guess;
 
   if( is_tls )
-    capalist = get_kb_list( "imap/" + port + "/tls_capalist" );
+    capalist = get_kb_list( "imap/fingerprints/" + port + "/tls_capalist" );
   else
-    capalist = get_kb_list( "imap/" + port + "/nontls_capalist" );
+    capalist = get_kb_list( "imap/fingerprints/" + port + "/nontls_capalist" );
 
   if( capalist && is_array( capalist ) ) {
     # Sort to not report changes on delta reports if just the order is different

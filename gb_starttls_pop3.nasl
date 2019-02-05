@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_starttls_pop3.nasl 13400 2019-02-01 09:32:47Z cfischer $
+# $Id: gb_starttls_pop3.nasl 13471 2019-02-05 12:42:49Z cfischer $
 #
 # SSL/TLS: POP3 'STLS' Command Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105008");
-  script_version("$Revision: 13400 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-01 10:32:47 +0100 (Fri, 01 Feb 2019) $");
+  script_version("$Revision: 13471 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-05 13:42:49 +0100 (Tue, 05 Feb 2019) $");
   script_tag(name:"creation_date", value:"2014-04-09 16:29:22 +0100 (Wed, 09 Apr 2014)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -38,6 +38,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
   script_dependencies("popserver_detect.nasl");
   script_require_ports("Services/pop3", 110);
+  script_mandatory_keys("pop3/banner/available");
 
   script_tag(name:"summary", value:"Checks if the remote POP3 server supports SSL/TLS with the 'STLS' command.");
 
@@ -86,8 +87,8 @@ while( buf = recv_line( socket:soc, length:2048 ) ) {
             else
               capa_report += ", " + capabanner;
 
-            # nb: Don't set "pop3/" + port + "/nontls_capalist" which is already collected by popserver_detect.nasl
-            set_kb_item( name:"pop3/" + port + "/tls_capalist", value:capabanner );
+            # nb: Don't set "pop3/fingerprints/" + port + "/nontls_capalist" which is already collected by popserver_detect.nasl
+            set_kb_item( name:"pop3/fingerprints/" + port + "/tls_capalist", value:capabanner );
           }
           if( o > 256 ) # nb: Too much data...
             break;

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: imap_unencrypted_cleartext_logins.nasl 13411 2019-02-01 13:24:14Z cfischer $
+# $Id: imap_unencrypted_cleartext_logins.nasl 13463 2019-02-05 09:40:41Z cfischer $
 #
 # IMAP Unencrypted Cleartext Login
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.15856");
-  script_version("$Revision: 13411 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-01 14:24:14 +0100 (Fri, 01 Feb 2019) $");
+  script_version("$Revision: 13463 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-05 10:40:41 +0100 (Tue, 05 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"4.8");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:P/A:N");
@@ -93,7 +93,7 @@ if( capas ) {
 
 # ... so try the previously collected CAPABILITIES from the CAPA command of get_imap_banner()
 if( ! capalist || ! is_array( capalist ) ) {
-  capalist = get_kb_list( "imap/" + port + "/nontls_capalist" );
+  capalist = get_kb_list( "imap/fingerprints/" + port + "/nontls_capalist" );
 }
 
 done = FALSE;

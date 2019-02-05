@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: poprelayd_auth.nasl 13137 2019-01-18 07:33:34Z cfischer $
+# $Id: poprelayd_auth.nasl 13470 2019-02-05 12:39:51Z cfischer $
 #
 # poprelayd & sendmail authentication problem
 #
@@ -36,8 +36,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11080");
-  script_version("$Revision: 13137 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-18 08:33:34 +0100 (Fri, 18 Jan 2019) $");
+  script_version("$Revision: 13470 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-05 13:39:51 +0100 (Tue, 05 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(2986);
   script_tag(name:"cvss_base", value:"5.0");
@@ -49,6 +49,7 @@ if(description)
   script_family("SMTP problems");
   script_dependencies("smtpserver_detect.nasl", "smtp_settings.nasl", "sw_postfix_detect.nasl", "global_settings.nasl");
   script_require_ports("Services/smtp", 25, 465, 587);
+  script_mandatory_keys("smtp/banner/available");
   script_exclude_keys("keys/islocalhost");
 
   script_tag(name:"solution", value:"Disable poprelayd.");
@@ -74,7 +75,7 @@ if(islocalhost())exit(0);
 
 port = get_smtp_port(default:25);
 
-if(get_kb_item("smtp/" + port + "/qmail"))
+if(get_kb_item("smtp/" + port + "/qmail/detected"))
   exit(0);
 
 if(get_kb_item("postfix/smtp/" + port + "/detected"))

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rumble_smtp_srv_mail_from_cmd_dos_vuln.nasl 13116 2019-01-17 09:58:55Z cfischer $
+# $Id: gb_rumble_smtp_srv_mail_from_cmd_dos_vuln.nasl 13470 2019-02-05 12:39:51Z cfischer $
 #
 # Rumble SMTP Server 'MAIL FROM' Command Denial of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802012");
-  script_version("$Revision: 13116 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-17 10:58:55 +0100 (Thu, 17 Jan 2019) $");
+  script_version("$Revision: 13470 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-05 13:39:51 +0100 (Tue, 05 Feb 2019) $");
   script_tag(name:"creation_date", value:"2011-04-11 14:40:00 +0200 (Mon, 11 Apr 2011)");
   script_bugtraq_id(47070);
   script_tag(name:"cvss_base", value:"8.5");
@@ -37,8 +37,9 @@ if(description)
   script_category(ACT_DENIAL);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Denial of Service");
-  script_dependencies("find_service.nasl", "smtpserver_detect.nasl");
+  script_dependencies("smtpserver_detect.nasl");
   script_require_ports("Services/smtp", 25);
+  script_mandatory_keys("smtp/esmtpsa/detected");
 
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/17070/");
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/view/99827/");

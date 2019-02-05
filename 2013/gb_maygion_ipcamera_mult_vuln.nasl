@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_maygion_ipcamera_mult_vuln.nasl 11888 2018-10-12 15:27:49Z cfischer $
+# $Id: gb_maygion_ipcamera_mult_vuln.nasl 13469 2019-02-05 12:31:12Z tpassfeld $
 #
 # MayGion IP Cameras Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803774");
-  script_version("$Revision: 11888 $");
+  script_version("$Revision: 13469 $");
   script_bugtraq_id(60192, 60196);
   script_cve_id("CVE-2013-1604", "CVE-2013-1605");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 17:27:49 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-05 13:31:12 +0100 (Tue, 05 Feb 2019) $");
   script_tag(name:"creation_date", value:"2013-10-28 15:46:55 +0530 (Mon, 28 Oct 2013)");
   script_name("MayGion IP Cameras Multiple Vulnerabilities");
 
@@ -61,32 +61,30 @@ if(description)
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_get_http_banner.nasl");
-  script_require_ports("Services/www", 80);
-  script_mandatory_keys("WebServer_IPCamera_Logo/banner");
+  script_dependencies("gb_maygion_ipcamera_detect.nasl");
+  script_require_ports("Services/www", 81);
+  script_mandatory_keys("maygion/ip_camera/detected");
 
   script_xref(name:"URL", value:"http://www.maygion.com");
   exit(0);
 }
 
 
+include("host_details.inc");
 include("http_func.inc");
 
+CPE = "cpe:/a:maygion:ip_camera";
 
-http_port = get_http_port(default:80);
-
-banner = get_http_banner(port:http_port);
-if("Server: WebServer(IPCamera_Logo)" >!< banner){
-  exit(0);
-}
+if(!port = get_app_port(cpe:CPE)) exit(0);
+if(!get_app_location(cpe:CPE, port:port)) exit(0); # nb: Unused but added to have a reference to the Detection-NVT in the GSA
 
 req = 'GET /../../../../../../../../../etc/resolv.conf HTTP/1.1\r\n\r\n';
-res = http_send_recv(port:http_port, data:req, bodyonly:FALSE);
+res = http_send_recv(port:port, data:req, bodyonly:FALSE);
 
 if(res =~ "HTTP/1.. 200 OK" && "nameserver" >< res &&
    "application/octet-stream" >< res)
 {
-  security_message(port:http_port);
+  security_message(port:port);
   exit(0);
 }
 

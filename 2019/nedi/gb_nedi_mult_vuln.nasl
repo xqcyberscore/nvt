@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nedi_mult_vuln.nasl 13134 2019-01-18 06:22:41Z ckuersteiner $
+# $Id: gb_nedi_mult_vuln.nasl 13455 2019-02-05 07:38:02Z mmartin $
 #
 # NeDi < 1.7.090 Multiple Vulnerabilities
 #
@@ -30,11 +30,11 @@ CPE = 'cpe:/a:nedi:nedi';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141894");
-  script_version("$Revision: 13134 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-18 07:22:41 +0100 (Fri, 18 Jan 2019) $");
+  script_version("$Revision: 13455 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-05 08:38:02 +0100 (Tue, 05 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-18 12:41:41 +0700 (Fri, 18 Jan 2019)");
-  script_tag(name:"cvss_base", value:"6.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2018-20727", "CVE-2018-20728", "CVE-2018-20729", "CVE-2018-20730", "CVE-2018-20731");
 

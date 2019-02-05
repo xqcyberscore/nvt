@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sendmail_detect.nasl 13438 2019-02-04 13:36:23Z cfischer $
+# $Id: gb_sendmail_detect.nasl 13470 2019-02-05 12:39:51Z cfischer $
 #
 # Sendmail / Sendmail Switch / SMI Sendmail Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800608");
-  script_version("$Revision: 13438 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-04 14:36:23 +0100 (Mon, 04 Feb 2019) $");
+  script_version("$Revision: 13470 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-05 13:39:51 +0100 (Tue, 05 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-05-13 10:01:19 +0200 (Wed, 13 May 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -38,6 +38,7 @@ if(description)
   script_family("Product detection");
   script_dependencies("smtpserver_detect.nasl");
   script_require_ports("Services/smtp", 25, 465, 587);
+  script_mandatory_keys("smtp/banner/available");
 
   script_tag(name:"summary", value:"The script tries to detect an installed Sendmail / Sendmail Switch
   / SMI Sendmail SMTP server.");
@@ -54,10 +55,10 @@ include("smtp_func.inc");
 port = get_smtp_port( default:25 );
 banner = get_smtp_banner( port:port );
 
-quit = get_kb_item( "smtp/" + port + "/quit_banner" );
-noop = get_kb_item( "smtp/" + port + "/noop_banner" );
-help = get_kb_item( "smtp/" + port + "/help_banner" );
-rset = get_kb_item( "smtp/" + port + "/rset_banner" );
+quit = get_kb_item( "smtp/fingerprints/" + port + "/quit_banner" );
+noop = get_kb_item( "smtp/fingerprints/" + port + "/noop_banner" );
+help = get_kb_item( "smtp/fingerprints/" + port + "/help_banner" );
+rset = get_kb_item( "smtp/fingerprints/" + port + "/rset_banner" );
 
 # 220 mail.example.com ESMTP Sendmail Switch-3.3.4/Switch-3.3.4; Tue, 15 Jan 2019 15:20:46 +0900
 # 220 mail.example.com ESMTP Sendmail Sentrion-MTA-4.0.2/Switch-3.3.4; Tue, 15 Jan 2019 12:53:21 +0900

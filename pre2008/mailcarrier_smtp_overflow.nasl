@@ -1,8 +1,8 @@
 #############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mailcarrier_smtp_overflow.nasl 13100 2019-01-16 13:26:45Z cfischer $
+# $Id: mailcarrier_smtp_overflow.nasl 13470 2019-02-05 12:39:51Z cfischer $
 #
-# MailCarrier SMTP Buffer Overflow Vulnerability
+# TABS MailCarrier SMTP Buffer Overflow Vulnerability
 #
 # Authors:
 # George A. Theall, <theall@tifaware.com>.
@@ -27,20 +27,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.15902");
-  script_version("$Revision: 13100 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-16 14:26:45 +0100 (Wed, 16 Jan 2019) $");
+  script_version("$Revision: 13470 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-05 13:39:51 +0100 (Tue, 05 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-2004-1638");
   script_bugtraq_id(11535);
   script_xref(name:"OSVDB", value:"11174");
-  script_name("MailCarrier SMTP Buffer Overflow Vulnerability");
+  script_name("TABS MailCarrier SMTP Buffer Overflow Vulnerability");
   script_category(ACT_DESTRUCTIVE_ATTACK);
   script_copyright("This script is Copyright (C) 2004 George A. Theall");
   script_family("SMTP problems");
   script_dependencies("smtpserver_detect.nasl");
   script_require_ports("Services/smtp", 25, 465, 587);
+  script_mandatory_keys("smtp/tabs/mailcarrier/detected");
 
   script_tag(name:"impact", value:"By sending an overly long EHLO command, a remote attacker can crash the SMTP
   service and execute arbitrary code on the target.");

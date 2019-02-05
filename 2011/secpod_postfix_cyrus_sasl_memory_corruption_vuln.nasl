@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_postfix_cyrus_sasl_memory_corruption_vuln.nasl 13438 2019-02-04 13:36:23Z cfischer $
+# $Id: secpod_postfix_cyrus_sasl_memory_corruption_vuln.nasl 13461 2019-02-05 09:33:31Z cfischer $
 #
 # Postfix SMTP Server Cyrus SASL Support Memory Corruption Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:postfix:postfix";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902517");
-  script_version("$Revision: 13438 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-04 14:36:23 +0100 (Mon, 04 Feb 2019) $");
+  script_version("$Revision: 13461 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-05 10:33:31 +0100 (Tue, 05 Feb 2019) $");
   script_tag(name:"creation_date", value:"2011-05-26 10:47:46 +0200 (Thu, 26 May 2011)");
   script_cve_id("CVE-2011-1720");
   script_bugtraq_id(47778);
@@ -86,7 +86,7 @@ if(version_is_less(version:vers, test_version:"2.5.13") ||
    version_in_range(version:vers, test_version:"2.7", test_version2:"2.7.3") ||
    version_in_range(version:vers, test_version:"2.8", test_version2:"2.8.2")) {
 
-  auths = get_kb_list( "smtp/" + port + "/authlist" );
+  auths = get_kb_list( "smtp/fingerprints/" + port + "/authlist" );
   if( ! auths || ! is_array( auths ) )
     exit( 0 );
 

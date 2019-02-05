@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: pop3_func.inc 13404 2019-02-01 12:10:05Z cfischer $
+# $Id: pop3_func.inc 13460 2019-02-05 09:20:05Z cfischer $
 #
 # Methods for handling POP3
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 13404 $
+# $Revision: 13460 $
 #
 ###############################################################################
 
@@ -33,11 +33,11 @@ global_var _pop3_is_broken_array, __pop3_kb_login, __pop3_kb_pass;
 # nb: key is the port or NULL (if not previously checked), value TRUE/FALSE if broken or not
 _pop3_is_broken_array = make_array();
 
-# @brief Sends a request to a POP3 server and receives the returned banner. If a banner was received it
+# @brief Opens a connection to a POP3 server and receives the returned banner. If a banner was received it
 #        is saved into the knowledge base. If a banner for a port was requested which was requested
-#        previously the cached banner will be returned instead of doing a new request. This function
-#        will also save the responses of the POP3 to additional sent "CAPA" and "QUIT" requests within
-#        the KB for later use in the fingerprinting of the remote POP3 server by other VTs.
+#        previously the cached banner will be returned instead of doing a new connection. This function
+#        is also sending additional "CAPA" and "QUIT" commands to the POP3 server and saving the responses
+#        to the KB for later use in the fingerprinting of the remote POP3 server by other VTs.
 #
 # @param port The port of the remote POP3 server.
 #
@@ -94,10 +94,11 @@ function get_pop3_banner( port ) {
   capabanner = recv_line( socket:soc, length:4096 );
   capabanner = chomp( capabanner );
   if( capabanner ) {
+    set_kb_item( name:"pop3/fingerprints/" + port + "/capa_banner", value:capabanner );
     if( is_tls )
-      set_kb_item( name:"pop3/" + port + "/tls_capabanner", value:capabanner );
+      set_kb_item( name:"pop3/fingerprints/" + port + "/tls_capa_banner", value:capabanner );
     else
-      set_kb_item( name:"pop3/" + port + "/capabanner", value:capabanner );
+      set_kb_item( name:"pop3/fingerprints/" + port + "/nontls_capa_banner", value:capabanner );
   }
 
   if( capabanner == "+OK" || "capability list follows" >< tolower( capabanner ) || "List of capabilities follows" >< tolower( capabanner ) ||
@@ -107,18 +108,18 @@ function get_pop3_banner( port ) {
       implbanner = egrep( pattern:"IMPLEMENTATION .*", string:capabanner );
       implbanner = chomp( implbanner );
       if( implbanner ) {
-        set_kb_item( name:"pop3/" + port + "/impl_banner", value:implbanner );
+        set_kb_item( name:"pop3/fingerprints/" + port + "/impl_banner", value:implbanner );
         banner += '\n' + implbanner;
       }
       capabanner = chomp( capabanner );
       if( capabanner ) {
 
-        set_kb_item( name:"imap/" + port + "/capalist", value:capabanner );
+        set_kb_item( name:"pop3/fingerprints/" + port + "/capalist", value:capabanner );
 
         if( is_tls )
-          set_kb_item( name:"pop3/" + port + "/tls_capalist", value:capabanner );
+          set_kb_item( name:"pop3/fingerprints/" + port + "/tls_capalist", value:capabanner );
         else
-          set_kb_item( name:"pop3/" + port + "/nontls_capalist", value:capabanner );
+          set_kb_item( name:"pop3/fingerprints/" + port + "/nontls_capalist", value:capabanner );
       }
 
       if( n > 256 ) # nb: Too much data...
@@ -131,7 +132,7 @@ function get_pop3_banner( port ) {
   quitbanner = recv_line( socket:soc, length:4096 );
   quitbanner = chomp( quitbanner );
   if( quitbanner )
-    set_kb_item( name:"pop3/" + port + "/quit", value:quitbanner );
+    set_kb_item( name:"pop3/fingerprints/" + port + "/quit_banner", value:quitbanner );
 
   close( soc );
   replace_kb_item( name:"POP3/banner/" + port, value:banner );

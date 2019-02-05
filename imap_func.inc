@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: imap_func.inc 13404 2019-02-01 12:10:05Z cfischer $
+# $Id: imap_func.inc 13463 2019-02-05 09:40:41Z cfischer $
 #
 # Support methods for IMAP
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 13404 $
+# $Revision: 13463 $
 #
 ###############################################################################
 
@@ -33,11 +33,11 @@ global_var _imap_is_broken_array, __imap_kb_login, __imap_kb_pass;
 # nb: key is the port or NULL (if not previously checked), value TRUE/FALSE if broken or not
 _imap_is_broken_array = make_array();
 
-# @brief Sends a request to an IMAP server and receives the returned banner. If a banner was received it
+# @brief Opens a connection to an IMAP server and receives the returned banner. If a banner was received it
 #        is saved into the knowledge base. If a banner for a port was requested which was requested
-#        previously the cached banner will be returned instead of doing a new request. This function
-#        will also save the responses of the IMAP server to additional sent "ID", "CAPABILITY", "NOOP",
-#        "UNKNOWNCMD" and "LOGOUT" requests within the KB for later use in the fingerprinting of the
+#        previously the cached banner will be returned instead of doing a new connection. This function
+#        is also sending additional "ID", "CAPABILITY", "NOOP", "UNKNOWNCMD" and "LOGOUT" commands to the
+#        IMAP server and and saving the responses to the KB for later use in the fingerprinting of the
 #        remote IAMP server by other VTs.
 #
 # @param port The port of the remote IMAP server.
@@ -107,7 +107,7 @@ function get_imap_banner( port ) {
   tag++;
 
   if( fpbanner )
-    set_kb_item( name:"imap/" + port + "/idbanner", value:fpbanner );
+    set_kb_item( name:"imap/fingerprints/" + port + "/id_banner", value:fpbanner );
 
   id = egrep( string:fpbanner, pattern:"\* ID .+", icase:TRUE );
   if( id && "ID NIL" >!< id )
@@ -119,15 +119,16 @@ function get_imap_banner( port ) {
   tag++;
   if( fpbanner ) {
 
-    if( get_port_transport( port ) > ENCAPS_IP )
-      is_tls = TRUE;
-    else
-      is_tls = FALSE;
+    set_kb_item( name:"imap/fingerprints/" + port + "/capa_banner", value:fpbanner );
 
-    if( is_tls )
-      set_kb_item( name:"imap/" + port + "/tls_capabanner", value:fpbanner );
-    else
-      set_kb_item( name:"imap/" + port + "/capabanner", value:fpbanner );
+    if( get_port_transport( port ) > ENCAPS_IP ) {
+      set_kb_item( name:"imap/fingerprints/" + port + "/tls_capa_banner", value:fpbanner );
+      is_tls = TRUE;
+    } else {
+      set_kb_item( name:"imap/fingerprints/" + port + "/nontls_capa_banner", value:fpbanner );
+      is_tls = FALSE;
+    }
+
 
     # https://tools.ietf.org/html/rfc3501#page-24
     capas = egrep( string:fpbanner, pattern:"\* CAPABILITY.+IMAP4rev1", icase:TRUE );
@@ -139,12 +140,12 @@ function get_imap_banner( port ) {
         if( capa == "*" || capa == "CAPABILITY" )
           continue;
 
-        set_kb_item( name:"imap/" + port + "/capalist", value:capa );
+        set_kb_item( name:"imap/fingerprints/" + port + "/capalist", value:capa );
 
         if( is_tls )
-          set_kb_item( name:"imap/" + port + "/tls_capalist", value:capa );
+          set_kb_item( name:"imap/fingerprints/" + port + "/tls_capalist", value:capa );
         else
-          set_kb_item( name:"imap/" + port + "/nontls_capalist", value:capa );
+          set_kb_item( name:"imap/fingerprints/" + port + "/nontls_capalist", value:capa );
       }
     }
   }
@@ -154,21 +155,21 @@ function get_imap_banner( port ) {
   fpbanner = chomp( fpbanner );
   tag++;
   if( fpbanner )
-    set_kb_item( name:"imap/" + port + "/noopbanner", value:fpbanner );
+    set_kb_item( name:"imap/fingerprints/" + port + "/noop_banner", value:fpbanner );
 
   send( socket:soc, data:'A0' + tag + ' UNKNOWNCMD\r\n' );
   fpbanner = recv( socket:soc, length:4096 );
   fpbanner = chomp( fpbanner );
   tag++;
   if( fpbanner )
-    set_kb_item( name:"imap/" + port + "/unknowncmdbanner", value:fpbanner );
+    set_kb_item( name:"imap/fingerprints/" + port + "/unknowncmd_banner", value:fpbanner );
 
   # nb: Don't use imap_close_socket() as we want to catch the LOGOUT banner as well.
   send( socket:soc, data:'A0' + tag + ' LOGOUT\r\n' );
   fpbanner = recv( socket:soc, length:4096 );
   fpbanner = chomp( fpbanner);
   if( fpbanner )
-    set_kb_item( name:"imap/" + port + "/logoutbanner", value:fpbanner );
+    set_kb_item( name:"imap/fingerprints/" + port + "/logout_banner", value:fpbanner );
 
   close( soc );
   replace_kb_item( name:"IMAP/banner/" + port, value:banner );

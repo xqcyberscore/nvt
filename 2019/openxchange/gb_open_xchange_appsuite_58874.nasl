@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_xchange_appsuite_58874.nasl 12955 2019-01-07 09:24:52Z ckuersteiner $
+# $Id: gb_open_xchange_appsuite_58874.nasl 13455 2019-02-05 07:38:02Z mmartin $
 #
 # Open-Xchange (OX) AppSuite SSRF Vulnerability (58874)
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:open-xchange:open-xchange_appsuite";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141832");
-  script_version("$Revision: 12955 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-07 10:24:52 +0100 (Mon, 07 Jan 2019) $");
+  script_version("$Revision: 13455 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-05 08:38:02 +0100 (Tue, 05 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-07 15:50:53 +0700 (Mon, 07 Jan 2019)");
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:N/A:N");
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
 
   script_cve_id("CVE-2018-12609");
 

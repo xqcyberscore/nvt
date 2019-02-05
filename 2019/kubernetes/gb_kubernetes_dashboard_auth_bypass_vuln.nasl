@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kubernetes_dashboard_auth_bypass_vuln.nasl 12941 2019-01-04 09:44:05Z asteins $
+# $Id: gb_kubernetes_dashboard_auth_bypass_vuln.nasl 13455 2019-02-05 07:38:02Z mmartin $
 #
 # Kubernetes Dashboard < 1.10.1 Authentication Bypass Vulnerability
 #
@@ -28,11 +28,11 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112477");
-  script_version("$Revision: 12941 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-04 10:44:05 +0100 (Fri, 04 Jan 2019) $");
+  script_version("$Revision: 13455 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-05 08:38:02 +0100 (Tue, 05 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-04 10:22:22 +0100 (Fri, 04 Jan 2019)");
-  script_tag(name:"cvss_base", value:"6.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2018-18264");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: ftp_func.inc 13341 2019-01-29 09:54:53Z cfischer $
+# $Id: ftp_func.inc 13458 2019-02-05 09:02:06Z cfischer $
 #
 # Methods for handling FTP
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 13341 $
+# $Revision: 13458 $
 #
 ###############################################################################
 
@@ -135,6 +135,8 @@ function get_ftp_banner( port ) {
     return NULL;
   }
 
+  banner = chomp( banner );
+
   creds = ftp_get_kb_creds();
   user  = creds["login"];
   pass  = creds["pass"];
@@ -145,40 +147,58 @@ function get_ftp_banner( port ) {
   # Example Client Request: CSID Name=FTP Voyager; Version=15.0.0.2;
   # Example Server Response: 200 Name=Serv-U; Version=7.0.0.5; OS=Windows XP; OSVer=5.1.2600; CaseSensitive=0; DirSep=/;
   # Example Server Response when not logged in: 530 Not logged in.
-  cmd = "CSID Name=OpenVAS; Version=" + OPENVAS_VERSION + ";";
-  csid_banner = get_ftp_cmd_banner( port:port, socket:soc, cmd:cmd );
-  if( egrep( pattern:"^200 .+", string:csid_banner ) ) {
-    banner += csid_banner;
-  } else if( egrep( pattern:"^530 .+", string:csid_banner ) ) {
-    if( ftp_authenticate( socket:soc, user:user, pass:pass, skip_banner:TRUE ) ) {
-      csid_banner = ftp_send_cmd( socket:soc, cmd:cmd );
-      if( egrep( pattern:"^200 .+", string:csid_banner ) ) {
-        banner += csid_banner;
-        replace_kb_item( name:"ftp/" + cmd + "_banner/" + port, value:csid_banner );
-      }
-    }
-  }
+  csid_cmd = "CSID Name=OpenVAS; Version=" + OPENVAS_VERSION + ";";
+  csid_banner = get_ftp_cmd_banner( port:port, socket:soc, cmd:csid_cmd );
 
   if( csid_banner )
-    set_kb_item( name:"ftp/" + port + "/csid_banner", value:csid_banner );
+    set_kb_item( name:"ftp/fingerprints/" + port + "/csid_banner_noauth", value:csid_banner );
 
-  cmd = "HELP";
-  help_banner = get_ftp_cmd_banner( port:port, socket:soc, cmd:cmd );
-  if( egrep( pattern:"^530 .+", string:help_banner ) ) {
+  help_cmd = "HELP";
+  help_banner = get_ftp_cmd_banner( port:port, socket:soc, cmd:help_cmd );
+
+  if( help_banner )
+    set_kb_item( name:"ftp/fingerprints/" + port + "/help_banner_noauth", value:help_banner );
+
+  if( egrep( pattern:"^200 .+", string:csid_banner ) )
+    banner += '\n' + csid_banner;
+
+
+  if( egrep( pattern:"^530 .+", string:csid_banner ) || egrep( pattern:"^530 .+", string:help_banner ) ) {
+
     if( ftp_authenticate( socket:soc, user:user, pass:pass, skip_banner:TRUE ) ) {
-      help_banner = ftp_send_cmd( socket:soc, cmd:cmd );
-      if( egrep( pattern:"^200 .+", string:help_banner ) ) {
-        replace_kb_item( name:"ftp/" + cmd + "_banner/" + port, value:help_banner );
+
+      # nb: Don't use get_ftp_cmd_banner() as it would return the previously collected banner from the KB.
+      csid_banner = ftp_send_cmd( socket:soc, cmd:csid_cmd );
+      csid_banner = chomp( csid_banner );
+
+      if( egrep( pattern:"^200 .+", string:csid_banner ) ) {
+        banner += '\n' + csid_banner;
+        replace_kb_item( name:"ftp/cmd/" + csid_cmd + "_banner/" + port, value:csid_banner );
       }
+
+      if( csid_banner )
+        set_kb_item( name:"ftp/fingerprints/" + port + "/csid_banner_authed", value:csid_banner );
+
+      help_banner = ftp_send_cmd( socket:soc, cmd:help_cmd );
+      help_banner = chomp( help_banner );
+
+      if( egrep( pattern:"^214.+", string:help_banner ) )
+        replace_kb_item( name:"ftp/cmd/" + help_cmd + "_banner/" + port, value:help_banner );
+
+      if( help_banner )
+        set_kb_item( name:"ftp/fingerprints/" + port + "/help_banner_authed", value:help_banner );
     }
   }
 
-  ftp_close( socket:soc );
-
-  if( help_banner )
-    set_kb_item( name:"ftp/" + port + "/help_banner", value:help_banner );
-
   replace_kb_item( name:"FTP/banner/" + port, value:banner );
+
+  # nb: Don't use ftp_close_socket as we want to catch the QUIT banner as well.
+  cmd = "QUIT";
+  quit_banner = get_ftp_cmd_banner( port:port, socket:soc, cmd:cmd );
+  if( quit_banner )
+    set_kb_item( name:"ftp/fingerprints/" + port + "/quit_banner", value:quit_banner );
+
+  close( soc );
   return banner;
 }
 
@@ -212,7 +232,7 @@ function get_ftp_cmd_banner( port, socket, cmd ) {
     return FALSE;
   }
 
-  banner = get_kb_item( "ftp/" + cmd + "_banner/" + port );
+  banner = get_kb_item( "ftp/cmd/" + cmd + "_banner/" + port );
   if( banner )
     return( banner );
 
@@ -244,7 +264,9 @@ function get_ftp_cmd_banner( port, socket, cmd ) {
   if( ! ftp_verify_banner( data:banner ) )
     return NULL;
 
-  replace_kb_item( name:"ftp/" + cmd + "_banner/" + port, value:banner );
+  banner = chomp( banner );
+
+  replace_kb_item( name:"ftp/cmd/" + cmd + "_banner/" + port, value:banner );
   return banner;
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1572.nasl 12271 2018-11-09 07:13:18Z cfischer $
+# $Id: deb_dla_1572.nasl 13455 2019-02-05 07:38:02Z mmartin $
 #
 # Auto-generated from advisory DLA 1572-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891572");
-  script_version("$Revision: 12271 $");
+  script_version("$Revision: 13455 $");
   script_cve_id("CVE-2018-16845");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1572-1] nginx security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 08:13:18 +0100 (Fri, 09 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-05 08:38:02 +0100 (Tue, 05 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-11-09 00:00:00 +0100 (Fri, 09 Nov 2018)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"5.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

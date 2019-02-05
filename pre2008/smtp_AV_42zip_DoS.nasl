@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smtp_AV_42zip_DoS.nasl 13116 2019-01-17 09:58:55Z cfischer $
+# $Id: smtp_AV_42zip_DoS.nasl 13470 2019-02-05 12:39:51Z cfischer $
 # Description: SMTP antivirus scanner DoS
 #
 # Authors:
@@ -151,8 +151,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11036");
-  script_version("$Revision: 13116 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-17 10:58:55 +0100 (Thu, 17 Jan 2019) $");
+  script_version("$Revision: 13470 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-05 13:39:51 +0100 (Tue, 05 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(3027);
   script_tag(name:"cvss_base", value:"7.2");
@@ -163,6 +163,7 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("smtpserver_detect.nasl", "smtp_relay.nasl");
   script_require_ports("Services/smtp", 25, 465, 587);
+  script_mandatory_keys("smtp/banner/available");
 
   script_tag(name:"solution", value:"Reconfigure your antivirus / upgrade it.");
 

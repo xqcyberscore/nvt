@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_abb_drive_composer_pro_detect_win.nasl 13422 2019-02-02 15:32:50Z mmartin $
+# $Id: gb_abb_drive_composer_pro_detect_win.nasl 13468 2019-02-05 12:20:06Z mmartin $
 #
-# ABB Drive composer pro for Automation Builder Version Detection (Windows)
+# ABB Drive composer pro Version Detection (Windows)
 #
 # Authors:
 # Michael Martin <michael.martin@greenbone.net>
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107498");
-  script_version("$Revision: 13422 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-02 16:32:50 +0100 (Sat, 02 Feb 2019) $");
+  script_version("$Revision: 13468 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-05 13:20:06 +0100 (Tue, 05 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-02-02 16:12:19 +0100 (Sat, 02 Feb 2019)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_name("ABB Drive composer pro for Automation Builder Version Detection (Windows)");
+  script_name("ABB Drive composer pro Version Detection (Windows)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Product detection");
@@ -41,7 +41,7 @@ if(description)
   script_require_ports(139, 445);
 
   script_tag(name:"summary", value:"Detects the installed version
-  of ABB Drive composer pro for Automation Builder for Windows.");
+  of ABB Drive composer pro for Windows.");
   script_xref(name:"URL", value:"https://new.abb.com/plc/automationbuilder/platform/software");
   script_tag(name:"qod_type", value:"registry");
 
@@ -71,7 +71,7 @@ foreach key (key_list) {
   foreach item (registry_enum_keys(key:key)) {
 
     appName = registry_get_sz(key:key + item, item:"DisplayName");
-    if(!appName || appName !~ "Drive composer pro for Automation Builder") continue;
+    if(!appName || appName !~ "Drive composer pro" || appName =~ "Installer") continue;
 
     concluded = appName;
     location = "unknown";
@@ -82,11 +82,11 @@ foreach key (key_list) {
     if(!version = registry_get_sz(key:key + item, item:"DisplayVersion"))
       version = "unknown";
 
-    set_kb_item(name:"abb/drive_composer/win/detected", value:TRUE);
+    set_kb_item(name:"abb/drive_composer_pro/win/detected", value:TRUE);
 
     register_and_report_cpe(app:"ABB " + appName, ver:version, concluded:concluded,
-                          base:"cpe:/a:abb:drive_composer:", expr:"^([0-9.]+)", insloc:location, regService:"smb-login", regPort:0);
-    exit(0);
+                          base:"cpe:/a:abb:drive_composer_pro:", expr:"^([0-9.]+)", insloc:location, regService:"smb-login", regPort:0);
+
   }
 }
 

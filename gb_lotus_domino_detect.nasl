@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lotus_domino_detect.nasl 13438 2019-02-04 13:36:23Z cfischer $
+# $Id: gb_lotus_domino_detect.nasl 13461 2019-02-05 09:33:31Z cfischer $
 #
 # Lotus/IBM Domino Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100597");
-  script_version("$Revision: 13438 $");
+  script_version("$Revision: 13461 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-04 14:36:23 +0100 (Mon, 04 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-05 10:33:31 +0100 (Tue, 05 Feb 2019) $");
   script_tag(name:"creation_date", value:"2010-04-22 20:18:17 +0200 (Thu, 22 Apr 2010)");
   script_name("Lotus/IBM Domino Detection");
   script_category(ACT_GATHER_INFO);
@@ -69,11 +69,11 @@ foreach port( ports ) {
 
   banner = get_smtp_banner( port:port );
 
-  ehlo = get_kb_item( "smtp/" + port + "/ehlo_banner" );
-  quit = get_kb_item( "smtp/" + port + "/quit_banner" );
-  noop = get_kb_item( "smtp/" + port + "/noop_banner" );
-  help = get_kb_item( "smtp/" + port + "/help_banner" );
-  rset = get_kb_item( "smtp/" + port + "/rset_banner" );
+  ehlo = get_kb_item( "smtp/fingerprints/" + port + "/ehlo_banner" );
+  quit = get_kb_item( "smtp/fingerprints/" + port + "/quit_banner" );
+  noop = get_kb_item( "smtp/fingerprints/" + port + "/noop_banner" );
+  help = get_kb_item( "smtp/fingerprints/" + port + "/help_banner" );
+  rset = get_kb_item( "smtp/fingerprints/" + port + "/rset_banner" );
 
   if( ( "Lotus Domino" >< banner || "IBM Domino" >< banner ) ||
       ( "pleased to meet you" >< ehlo && "Enter one of the following commands" >< help &&

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_njstar_communicator_minismtp_server_bof_vuln.nasl 13438 2019-02-04 13:36:23Z cfischer $
+# $Id: gb_njstar_communicator_minismtp_server_bof_vuln.nasl 13470 2019-02-05 12:39:51Z cfischer $
 #
 # NJStar Communicator MiniSMTP Server Remote Stack Buffer Overflow Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802266");
-  script_version("$Revision: 13438 $");
+  script_version("$Revision: 13470 $");
   script_cve_id("CVE-2011-4040");
   script_bugtraq_id(50452);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-04 14:36:23 +0100 (Mon, 04 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-05 13:39:51 +0100 (Tue, 05 Feb 2019) $");
   script_tag(name:"creation_date", value:"2011-11-08 19:46:14 +0530 (Tue, 08 Nov 2011)");
   script_name("NJStar Communicator MiniSMTP Server Remote Stack Buffer Overflow Vulnerability");
   script_category(ACT_DENIAL);
@@ -40,6 +40,7 @@ if(description)
   script_family("Buffer overflow");
   script_dependencies("smtpserver_detect.nasl");
   script_require_ports("Services/smtp", 25);
+  script_mandatory_keys("smtp/banner/available");
 
   script_tag(name:"impact", value:"Successful exploitation may allow remote attackers to execute
   arbitrary code within the context of the application or cause a denial of service condition.");
@@ -70,7 +71,7 @@ include("smtp_func.inc");
 
 port = get_smtp_port(default:25);
 
-help = get_kb_item("smtp/" + port + "/help_banner");
+help = get_kb_item("smtp/fingerprints/" + port + "/help_banner");
 if(!help || "E-mail Server From NJStar Software" >!< help)
   exit(0);
 

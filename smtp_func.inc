@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: smtp_func.inc 13438 2019-02-04 13:36:23Z cfischer $
+# $Id: smtp_func.inc 13461 2019-02-05 09:33:31Z cfischer $
 #
 # Support functions for handling SMTP
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 13438 $
+# $Revision: 13461 $
 #
 ###############################################################################
 
@@ -255,11 +255,11 @@ function smtp_to_header() {
   return( toaddr );
 }
 
-# @brief Sends a request to a SMTP server and receives the returned banner. If a banner was received it
+# @brief Opens a connection to a SMTP server and receives the returned banner. If a banner was received it
 #        is saved into the knowledge base. If a banner for a port was requested which was requested
-#        previously the cached banner will be returned instead of doing a new request. This function
-#        will also save the responses of the SMTP server to additional ESMTP commands within
-#        the KB for later use in the fingerprinting of the remote SMTP server by other VTs.
+#        previously the cached banner will be returned instead of doing a new connection. This function
+#        is also sending additional ESMTP commands to the SMTP server and saving the responses 
+#        to the KB for later use in the fingerprinting of the remote SMTP server by other VTs.
 #
 # @param port The port of the remote SMTP server.
 #
@@ -324,14 +324,14 @@ function get_smtp_banner( port ) {
   ehlo = chomp( ehlo );
   if( ehlo ) {
 
-    set_kb_item( name:"smtp/" + port + "/ehlo_banner", value:ehlo );
+    set_kb_item( name:"smtp/fingerprints/" + port + "/ehlo_banner", value:ehlo );
 
     if( get_port_transport( port ) > ENCAPS_IP ) {
       is_tls = TRUE;
-      set_kb_item( name:"smtp/" + port + "/tls_ehlo_banner", value:ehlo );
+      set_kb_item( name:"smtp/fingerprints/" + port + "/tls_ehlo_banner", value:ehlo );
     } else {
       is_tls = FALSE;
-      set_kb_item( name:"smtp/" + port + "/nontls_ehlo_banner", value:ehlo );
+      set_kb_item( name:"smtp/fingerprints/" + port + "/nontls_ehlo_banner", value:ehlo );
     }
 
     auth_string = egrep( string:ehlo, pattern:"^250[ -]AUTH .+" );
@@ -343,11 +343,11 @@ function get_smtp_banner( port ) {
       auth_string = substr( auth_string, 9 );
       auths = split( auth_string, sep:" ", keep:FALSE );
       foreach auth( auths ) {
-        set_kb_item( name:"smtp/" + port + "/authlist", value:auth );
+        set_kb_item( name:"smtp/fingerprints/" + port + "/authlist", value:auth );
         if( is_tls )
-          set_kb_item( name:"smtp/" + port + "/tls_authlist", value:auth );
+          set_kb_item( name:"smtp/fingerprints/" + port + "/tls_authlist", value:auth );
         else
-          set_kb_item( name:"smtp/" + port + "/nontls_authlist", value:auth );
+          set_kb_item( name:"smtp/fingerprints/" + port + "/nontls_authlist", value:auth );
       }
     }
   }
@@ -356,25 +356,25 @@ function get_smtp_banner( port ) {
   help = smtp_recv_line( socket:soc );
   help = chomp( help );
   if( help )
-    set_kb_item( name:"smtp/" + port + "/help_banner", value:help );
+    set_kb_item( name:"smtp/fingerprints/" + port + "/help_banner", value:help );
 
   send( socket:soc, data:'NOOP\r\n' );
   noop = smtp_recv_line( socket:soc );
   noop = chomp( noop );
   if( noop )
-    set_kb_item( name:"smtp/" + port + "/noop_banner", value:noop );
+    set_kb_item( name:"smtp/fingerprints/" + port + "/noop_banner", value:noop );
 
   send( socket:soc, data:'RSET\r\n' );
   rset = smtp_recv_line( socket:soc );
   rset = chomp( rset );
   if( rset )
-    set_kb_item( name:"smtp/" + port + "/rset_banner", value:rset );
+    set_kb_item( name:"smtp/fingerprints/" + port + "/rset_banner", value:rset );
 
   send( socket:soc, data:'QUIT\r\n' );
   quit = smtp_recv_line( socket:soc );
   quit = chomp( quit );
   if( quit )
-    set_kb_item( name:"smtp/" + port + "/quit_banner", value:quit );
+    set_kb_item( name:"smtp/fingerprints/" + port + "/quit_banner", value:quit );
 
   # nb: Don't use smtp_close() as we want to get the QUIT banner above.
   close( soc );

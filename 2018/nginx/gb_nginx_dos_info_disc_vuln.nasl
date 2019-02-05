@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nginx_dos_info_disc_vuln.nasl 12319 2018-11-12 11:10:49Z asteins $
+# $Id: gb_nginx_dos_info_disc_vuln.nasl 13455 2019-02-05 07:38:02Z mmartin $
 #
 # nginx 1.1.3 - 1.15.5 Denial of Service and Memory Disclosure via mp4 module
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112420");
-  script_version("$Revision: 12319 $");
+  script_version("$Revision: 13455 $");
   script_cve_id("CVE-2018-16845");
   script_bugtraq_id(105868);
-  script_tag(name:"cvss_base", value:"4.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-12 12:10:49 +0100 (Mon, 12 Nov 2018) $");
+  script_tag(name:"cvss_base", value:"5.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-05 08:38:02 +0100 (Tue, 05 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-11-12 12:06:11 +0100 (Mon, 12 Nov 2018)");
 
   script_name("nginx 1.1.3 - 1.15.5 Denial of Service and Memory Disclosure via mp4 module");

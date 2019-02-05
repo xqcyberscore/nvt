@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_starttls_imap.nasl 13398 2019-02-01 08:57:59Z cfischer $
+# $Id: gb_starttls_imap.nasl 13471 2019-02-05 12:42:49Z cfischer $
 #
 # SSL/TLS: IMAP 'STARTTLS' Command Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105007");
-  script_version("$Revision: 13398 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-01 09:57:59 +0100 (Fri, 01 Feb 2019) $");
+  script_version("$Revision: 13471 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-05 13:42:49 +0100 (Tue, 05 Feb 2019) $");
   script_tag(name:"creation_date", value:"2014-04-09 15:29:22 +0100 (Wed, 09 Apr 2014)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -38,6 +38,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
   script_dependencies("imap4_banner.nasl");
   script_require_ports("Services/imap", 143);
+  script_mandatory_keys("imap/banner/available");
 
   script_tag(name:"summary", value:"Checks if the remote IMAP server supports SSL/TLS with the 'STARTTLS' command.");
 
@@ -95,8 +96,8 @@ while( buf = recv_line( socket:soc, length:2048 ) ) {
           else
             capa_report += ", " + capa;
 
-          # nb: Don't set "imap/" + port + "/nontls_capalist" which is already collected by imap4_banner.nasl
-          set_kb_item( name:"imap/" + port + "/tls_capalist", value:capa );
+          # nb: Don't set "imap/fingerprints/" + port + "/nontls_capalist" which is already collected by imap4_banner.nasl
+          set_kb_item( name:"imap/fingerprints/" + port + "/tls_capalist", value:capa );
         }
         if( capa_report )
           report = string( report, "\n\nThe remote IMAP server is announcing the following CAPABILITIES after sending the 'STARTTLS' command:\n\n", capa_report );

@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Mon, 04 Feb 2019 15:16:21 +0100
+# Automatically created on:  Tue, 05 Feb 2019 14:15:27 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -43935,6 +43935,12 @@
 2019/adobe/gb_adobe_acrobat_reader_dc_cont_apsb19-02_win.nasl: GPLv2+
 2019/apache/gb_apache_couchdb_priv_esc_vuln_lin.nasl: GPLv2+
 2019/apache/gb_apache_couchdb_priv_esc_vuln_win.nasl: GPLv2+
+2019/apache/gb_apache_httpd_http2_dos_vuln_lin.nasl: GPLv2+
+2019/apache/gb_apache_httpd_http2_dos_vuln_win.nasl: GPLv2+
+2019/apache/gb_apache_httpd_mod_session_cookie_vuln_lin.nasl: GPLv2+
+2019/apache/gb_apache_httpd_mod_session_cookie_vuln_win.nasl: GPLv2+
+2019/apache/gb_apache_httpd_modssl_dos_vuln_lin.nasl: GPLv2+
+2019/apache/gb_apache_httpd_modssl_dos_vuln_win.nasl: GPLv2+
 2019/apache/gb_apache_mod_jk_auth_bypass_vuln_active.nasl: GPLv2+
 2019/apache/gb_apache_mod_jk_auth_bypass_vuln_lin.nasl: GPLv2+
 2019/apache/gb_apache_mod_jk_auth_bypass_vuln_win.nasl: GPLv2+
@@ -43955,6 +43961,7 @@
 2019/centos/gb_CESA-2019_0049_libgudev1-219-62.el7__centos7.nasl: GPLv2+
 2019/centos/gb_CESA-2019_0059_libvncserver_centos7.nasl: GPLv2+
 2019/centos/gb_CESA-2019_0109_perl_centos7.nasl: GPLv2+
+2019/coppermine/gb_coppermine_xss_vuln.nasl: GPLv2+
 2019/coreos/gb_etcd_auth_vuln.nasl: GPLv2+
 2019/coship/gb_coship_routers_pw_reset_vuln.nasl: GPLv2+
 2019/coturn/gb_coturn_auth_bypass_vuln.nasl: GPLv2+
@@ -44085,6 +44092,7 @@
 2019/gb_ftp_unencrypted_cleartext_login.nasl: GPLv2
 2019/gb_smtp_unencrypted_cleartext_login.nasl: GPLv2
 2019/gb_vnc_unencrypted_data_transmission.nasl: GPLv2
+2019/gitea/gb_gitea_access_ctrl_vuln.nasl: GPLv2+
 2019/google/gb_google_chrome_stable-channel-update-for-desktop-2019-01_lin.nasl: GPLv2+
 2019/google/gb_google_chrome_stable-channel-update-for-desktop-2019-01_macosx.nasl: GPLv2+
 2019/google/gb_google_chrome_stable-channel-update-for-desktop-2019-01_win.nasl: GPLv2+
@@ -44098,6 +44106,7 @@
 2019/limesurvey/gb_limesurvey_xss_vuln.nasl: GPLv2+
 2019/magentocommerce/gb_magento_mult_vuln.nasl: GPLv2+
 2019/matomo/gb_matomo_mult_xss_jan19.nasl: GPLv2+
+2019/maygion/gb_maygion_ipcamera_default_credentials.nasl: GPLv2+
 2019/microsoft/gb_ms_kb2553332.nasl: GPLv2+
 2019/microsoft/gb_ms_kb2596760.nasl: GPLv2+
 2019/microsoft/gb_ms_kb3172522.nasl: GPLv2+
@@ -44282,6 +44291,7 @@
 2019/wordpress/gb_wordpress_woocommerce_priv_esc_vuln_lin.nasl: GPLv2+
 2019/wordpress/gb_wordpress_woocommerce_priv_esc_vuln_win.nasl: GPLv2+
 2019/xerox/gb_xerox_altalink_mult_vuln.nasl: GPLv2+
+2019/zoneminder/gb_zoneminder_mult_vuln_jan19.nasl: GPLv2+
 2019/zoneminder/gb_zoneminder_mult_vuln.nasl: GPLv2+
 2019/zoneminder/gb_zoneminder_xss_vuln.nasl: GPLv2+
 404.inc: GPLv2+
@@ -44414,22 +44424,33 @@ gb_7zip_detect_portable_win.nasl: GPLv2+
 gb_7zip_detect_win.nasl: GPLv2+
 gb_a2billing_detect.nasl: GPLv2+
 gb_aastra_opencom_detect.nasl: GPLv2+
+gb_abb_authentication_service_detect_win.nasl: GPLv2+
 gb_abb_automation_builder_installation_manager_detect_win.nasl: GPLv2+
 gb_abb_automation_builder_platform_detect_win.nasl: GPLv2+
 gb_abb_drive_composer_pro_detect_win.nasl: GPLv2+
+gb_abb_drivemanager_for_simatic_detect_win.nasl: GPLv2+
 gb_abb_drivepm_detect_win.nasl: GPLv2+
 gb_abb_drivesize_detect_win.nasl: GPLv2+
 gb_abb_ez_block_builder_detect_win.nasl: GPLv2+
+gb_abb_industrial_robot_communication_runtime_detect_win.nasl: GPLv2+
 gb_abb_ip_configuration_tool_detect_win.nasl: GPLv2+
 gb_abb_ipgateway_detect.nasl: GPLv2+
 gb_abb_m2m_ethernet_detect.nasl: GPLv2+
 gb_abb_mcsize_detect_win.nasl: GPLv2+
+gb_abb_mechanical_unit_manager_detect_win.nasl: GPLv2+
 gb_abb-microscada_detect_win.nasl: GPLv2+
 gb_abb_mint_workbench_detect_win.nasl: GPLv2+
 gb_abb_motsize_detect_win.nasl: GPLv2+
 gb_abb_multionlinechange_detect_win.nasl: GPLv2+
 gb_abb_panel_builder_400_detect_win.nasl: GPLv2+
+gb_abb_panel_builder_600_detect_win.nasl: GPLv2+
+gb_abb_robotstudio_detect_win.nasl: GPLv2+
+gb_abb_robview_detect_win.nasl: GPLv2+
 gb_abb_sophie_detect_win.nasl: GPLv2+
+gb_abb_test_signal_viewer_detect_win.nasl: GPLv2+
+gb_abb_totalflow_welltell_io_local_calibration_detect_win.nasl: GPLv2+
+gb_abb_totalflow_welltell_wireless_utility_detect_win.nasl: GPLv2+
+gb_abb_tunemaster_detect_win.nasl: GPLv2+
 gb_abb_virtual_drive_detect_win.nasl: GPLv2+
 gb_abb_vsdsize_detect_win.nasl: GPLv2+
 gb_abb_welcome_detect_win.nasl: GPLv2+
@@ -44574,6 +44595,7 @@ gb_atlassian_confluence_detect.nasl: GPLv2+
 gb_atlassian_crowd_detect.nasl: GPLv2+
 gb_atlassian_crucible_detect.nasl: GPLv2+
 gb_atlassian_fisheye_crucible_detect.nasl: GPLv2+
+gb_atutor_detect.nasl: GPLv2+
 gb_autodesk_backburner_detect.nasl: GPLv2+
 gb_autonomic_controls_consolidation.nasl: GPLv2+
 gb_autonomic_controls_http_detect.nasl: GPLv2+
@@ -45424,6 +45446,7 @@ gb_matterircd_detect.nasl: GPLv2+
 gb_mattermost_webapp_detect.nasl: GPLv2+
 gb_mautic_detect.nasl: GPLv2+
 gb_maxthon_detect.nasl: GPLv2+
+gb_maygion_ipcamera_detect.nasl: GPLv2+
 gb_mcafee_agent_detect.nasl: GPLv2+
 gb_mcafee_application_control_detect.nasl: GPLv2+
 gb_mcafee_asset_manager_detect.nasl: GPLv2+
@@ -45855,6 +45878,7 @@ gb_rslinx_enterprise_detect_win.nasl: GPLv2+
 gb_rslogix5000_data_preserved_download_tool_detect_win.nasl: GPLv2+
 gb_rtsp_os_detection.nasl: GPLv2+
 gb_ruby_rails_detect.nasl: GPLv2+
+gb_rundeck_detect.nasl: GPLv2+
 gb_safenet_sas_owa_agent_detect.nasl: GPLv2+
 gb_saia_pcd_web_detect.nasl: GPLv2+
 gb_samba_detect.nasl: GPLv2+
@@ -45877,6 +45901,7 @@ gb_sawmill_detect.nasl: GPLv2+
 gb_scalix_detect.nasl: GPLv2+
 gb_schneider_acti9smarttest_detect_win.nasl: GPLv2+
 gb_schneider_clearscada_detect.nasl: GPLv2+
+gb_schneider_ecostruxure_augmented_operator_advisor_detect_win.nasl: GPLv2+
 gb_schneider_ecostruxure_machine_expert_detect_win.nasl: GPLv2+
 gb_schneider_electric_pelco_sarix_ip_cam_detect.nasl: GPLv2+
 gb_schneider_electric_proface_gp-pro_ex_detect.nasl: GPLv2+
@@ -63185,6 +63210,7 @@ gsf/2019/rhel/gb_RHSA-2019_0201-01_systemd.nasl: GPLv2+
 gsf/2019/rhel/gb_RHSA-2019_0218-01_firefox.nasl: GPLv2+
 gsf/2019/rhel/gb_RHSA-2019_0219-01_firefox.nasl: GPLv2+
 gsf/2019/rockwellautomation/gb_factorytalk_services_platform_bof_vuln.nasl: GPLv2+
+gsf/2019/rundeck/gb_rundeck_xss_vuln.nasl: GPLv2+
 gsf/2019/schneider/gb_schneider_electric_proface_gp-pro_ex_input_validation_vulnerability.nasl: GPLv2+
 gsf/2019/schneider/gb_schneider_eurotherm_guicon_mult_vuln.nasl: GPLv2+
 gsf/2019/schneider/gb_schneider_umotion_builder_mult_vuln.nasl: GPLv2+

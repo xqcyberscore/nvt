@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: popserver_detect.nasl 13399 2019-02-01 09:08:36Z cfischer $
+# $Id: popserver_detect.nasl 13459 2019-02-05 09:16:19Z cfischer $
 # Description: POP3 Server type and version
 #
 # Authors:
@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10185");
-  script_version("$Revision: 13399 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-01 10:08:36 +0100 (Fri, 01 Feb 2019) $");
+  script_version("$Revision: 13459 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-05 10:16:19 +0100 (Tue, 05 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -105,9 +105,9 @@ foreach port( ports ) {
     report += '\n\nThis is probably: ' + guess;
 
   if( is_tls )
-    capalist = get_kb_list( "pop3/" + port + "/tls_capalist" );
+    capalist = get_kb_list( "pop3/fingerprints/" + port + "/tls_capalist" );
   else
-    capalist = get_kb_list( "pop3/" + port + "/nontls_capalist" );
+    capalist = get_kb_list( "pop3/fingerprints/" + port + "/nontls_capalist" );
 
   if( capalist && is_array( capalist ) ) {
     # Sort to not report changes on delta reports if just the order is different

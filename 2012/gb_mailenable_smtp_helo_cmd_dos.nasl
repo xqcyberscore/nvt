@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mailenable_smtp_helo_cmd_dos.nasl 13121 2019-01-17 12:59:22Z cfischer $
+# $Id: gb_mailenable_smtp_helo_cmd_dos.nasl 13467 2019-02-05 12:16:48Z cfischer $
 #
 # MailEnable SMTP HELO Command Denial of Service Vulnerability
 #
@@ -27,19 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802914");
-  script_version("$Revision: 13121 $");
+  script_version("$Revision: 13467 $");
   script_cve_id("CVE-2006-3277");
   script_bugtraq_id(18630);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-17 13:59:22 +0100 (Thu, 17 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-05 13:16:48 +0100 (Tue, 05 Feb 2019) $");
   script_tag(name:"creation_date", value:"2012-07-12 17:17:25 +0530 (Thu, 12 Jul 2012)");
   script_name("MailEnable SMTP HELO Command Denial of Service Vulnerability");
   script_category(ACT_DENIAL);
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("SMTP problems");
   script_dependencies("smtpserver_detect.nasl");
-  script_mandatory_keys("smtp/mailenable");
+  script_mandatory_keys("smtp/mailenable/detected");
 
   script_xref(name:"URL", value:"http://www.mailenable.com/");
   script_xref(name:"URL", value:"http://secunia.com/advisories/20790");

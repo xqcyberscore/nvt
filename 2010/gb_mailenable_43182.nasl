@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mailenable_43182.nasl 13123 2019-01-17 13:18:45Z cfischer $
+# $Id: gb_mailenable_43182.nasl 13467 2019-02-05 12:16:48Z cfischer $
 #
 # MailEnable  'MESMTRPC.exe' SMTP Service Multiple Remote Denial of Service Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100798");
-  script_version("$Revision: 13123 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-17 14:18:45 +0100 (Thu, 17 Jan 2019) $");
+  script_version("$Revision: 13467 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-05 13:16:48 +0100 (Tue, 05 Feb 2019) $");
   script_tag(name:"creation_date", value:"2010-09-14 15:16:41 +0200 (Tue, 14 Sep 2010)");
   script_bugtraq_id(43182);
   script_tag(name:"cvss_base", value:"5.0");
@@ -39,7 +39,7 @@ if(description)
   script_family("SMTP problems");
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
   script_dependencies("smtpserver_detect.nasl");
-  script_mandatory_keys("smtp/mailenable");
+  script_mandatory_keys("smtp/mailenable/detected");
 
   script_xref(name:"URL", value:"https://www.securityfocus.com/bid/43182");
   script_xref(name:"URL", value:"http://www.mailenable.com/");

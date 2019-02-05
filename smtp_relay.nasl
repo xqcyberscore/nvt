@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smtp_relay.nasl 13356 2019-01-30 08:45:53Z cfischer $
+# $Id: smtp_relay.nasl 13470 2019-02-05 12:39:51Z cfischer $
 #
 # SMTP Open Relay Test
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100073");
-  script_version("$Revision: 13356 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-30 09:45:53 +0100 (Wed, 30 Jan 2019) $");
+  script_version("$Revision: 13470 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-05 13:39:51 +0100 (Tue, 05 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-03-23 19:32:33 +0100 (Mon, 23 Mar 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -39,6 +39,7 @@ if(description)
   script_family("SMTP problems");
   script_dependencies("smtpserver_detect.nasl", "smtp_settings.nasl", "global_settings.nasl");
   script_require_ports("Services/smtp", 25, 465, 587);
+  script_mandatory_keys("smtp/banner/available");
   script_exclude_keys("keys/is_private_addr", "keys/islocalhost", "keys/islocalnet");
 
   script_tag(name:"solution", value:"Improve the configuration of your SMTP server so that your SMTP server
@@ -75,7 +76,7 @@ FROM = string(vtstrings["lowercase"], '@', src_name);
 TO = string(vtstrings["lowercase"], '@', domain);
 
 port = get_smtp_port(default:25);
-if(get_kb_item("smtp/" + port + "/qmail"))
+if(get_kb_item("smtp/" + port + "/qmail/detected"))
   exit(0);
 
 if(smtp_get_is_marked_wrapped(port:port))

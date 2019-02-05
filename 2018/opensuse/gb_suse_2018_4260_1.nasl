@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_4260_1.nasl 12882 2018-12-27 07:14:01Z santu $
+# $Id: gb_suse_2018_4260_1.nasl 13455 2019-02-05 07:38:02Z mmartin $
 #
 # SuSE Update for libnettle openSUSE-SU-2018:4260-1 (libnettle)
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852204");
-  script_version("$Revision: 12882 $");
+  script_version("$Revision: 13455 $");
   script_cve_id("CVE-2018-16869");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-27 08:14:01 +0100 (Thu, 27 Dec 2018) $");
+  script_tag(name:"cvss_base", value:"3.3");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-05 08:38:02 +0100 (Tue, 05 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-12-23 04:00:54 +0100 (Sun, 23 Dec 2018)");
   script_name("SuSE Update for libnettle openSUSE-SU-2018:4260-1 (libnettle)");
   script_category(ACT_GATHER_INFO);

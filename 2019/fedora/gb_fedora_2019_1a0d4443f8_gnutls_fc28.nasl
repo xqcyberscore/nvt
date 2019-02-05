@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2019_1a0d4443f8_gnutls_fc28.nasl 13173 2019-01-21 06:39:39Z santu $
+# $Id: gb_fedora_2019_1a0d4443f8_gnutls_fc28.nasl 13455 2019-02-05 07:38:02Z mmartin $
 #
 # Fedora Update for gnutls FEDORA-2019-1a0d4443f8
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875405");
-  script_version("$Revision: 13173 $");
+  script_version("$Revision: 13455 $");
   script_cve_id("CVE-2018-16868");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-21 07:39:39 +0100 (Mon, 21 Jan 2019) $");
+  script_tag(name:"cvss_base", value:"3.3");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-05 08:38:02 +0100 (Tue, 05 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-15 04:01:45 +0100 (Tue, 15 Jan 2019)");
   script_name("Fedora Update for gnutls FEDORA-2019-1a0d4443f8");
   script_category(ACT_GATHER_INFO);

@@ -1,6 +1,6 @@
 #############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mdaemon_script_insertion_vuln_900405.nasl 13125 2019-01-17 13:35:01Z cfischer $
+# $Id: secpod_mdaemon_script_insertion_vuln_900405.nasl 13467 2019-02-05 12:16:48Z cfischer $
 #
 # MDaemon Server WordClient Script Insertion Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900405");
-  script_version("$Revision: 13125 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-17 14:35:01 +0100 (Thu, 17 Jan 2019) $");
+  script_version("$Revision: 13467 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-05 13:16:48 +0100 (Tue, 05 Feb 2019) $");
   script_tag(name:"creation_date", value:"2008-12-02 11:52:55 +0100 (Tue, 02 Dec 2008)");
   script_cve_id("CVE-2008-6967");
   script_bugtraq_id(32355);
@@ -39,7 +39,7 @@ if(description)
   script_family("Web application abuses");
   script_name("MDaemon Server WordClient Script Insertion Vulnerability");
   script_dependencies("smtpserver_detect.nasl");
-  script_mandatory_keys("smtp/mdaemon");
+  script_mandatory_keys("smtp/mdaemon/detected");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/32142");
   script_xref(name:"URL", value:"http://files.altn.com/MDaemon/Release/RelNotes_en.txt");

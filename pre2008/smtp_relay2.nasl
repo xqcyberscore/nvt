@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smtp_relay2.nasl 13350 2019-01-30 08:13:36Z cfischer $
+# $Id: smtp_relay2.nasl 13470 2019-02-05 12:39:51Z cfischer $
 #
 # Mail relaying (thorough test)
 #
@@ -39,8 +39,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11852");
-  script_version("$Revision: 13350 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-30 09:13:36 +0100 (Wed, 30 Jan 2019) $");
+  script_version("$Revision: 13470 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-05 13:39:51 +0100 (Tue, 05 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -51,6 +51,7 @@ if(description)
   script_family("SMTP problems");
   script_dependencies("smtpserver_detect.nasl", "smtp_relay.nasl", "smtp_settings.nasl", "global_settings.nasl");
   script_require_ports("Services/smtp", 25, 465, 587);
+  script_mandatory_keys("smtp/banner/available");
   script_exclude_keys("keys/is_private_addr", "keys/islocalhost", "keys/islocalnet");
 
   script_tag(name:"solution", value:"Upgrade your software or improve the configuration so that
@@ -85,7 +86,7 @@ port = get_smtp_port(default:25);
 if(get_kb_item("smtp/" + port + "/spam"))
   exit(0);
 
-if(get_kb_item("smtp/" + port + "/qmail"))
+if(get_kb_item("smtp/" + port + "/qmail/detected"))
   exit(0);
 
 if(smtp_get_is_marked_wrapped(port:port))

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id$
+# $Id: gb_suse_2019_0100_1.nasl 13451 2019-02-05 05:56:56Z santu $
 #
 # SuSE Update for pdns-recursor openSUSE-SU-2019:0100-1 (pdns-recursor)
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852262");
-  script_version("$Revision$");
+  script_version("$Revision: 13451 $");
   script_cve_id("CVE-2019-3807");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date$");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-05 06:56:56 +0100 (Tue, 05 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-30 04:03:55 +0100 (Wed, 30 Jan 2019)");
   script_name("SuSE Update for pdns-recursor openSUSE-SU-2019:0100-1 (pdns-recursor)");
   script_category(ACT_GATHER_INFO);

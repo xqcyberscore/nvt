@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_woocommerce_rce_vuln_win.nasl 13094 2019-01-16 10:33:09Z asteins $
+# $Id: gb_wordpress_woocommerce_rce_vuln_win.nasl 13455 2019-02-05 07:38:02Z mmartin $
 #
 # WordPress WooCommerce Plugin RCE Vulnerability (Windows)
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112422");
-  script_version("$Revision: 13094 $");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-16 11:33:09 +0100 (Wed, 16 Jan 2019) $");
+  script_version("$Revision: 13455 $");
+  script_tag(name:"cvss_base", value:"5.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-05 08:38:02 +0100 (Tue, 05 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-11-13 11:23:11 +0100 (Tue, 13 Nov 2018)");
 
   script_cve_id("CVE-2018-20714");

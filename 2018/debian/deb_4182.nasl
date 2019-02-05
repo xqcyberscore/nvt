@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4182.nasl 9671 2018-04-29 07:33:34Z cfischer $
+# $Id: deb_4182.nasl 13455 2019-02-05 07:38:02Z mmartin $
 #
 # Auto-generated from advisory DSA 4182-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,7 +31,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704182");
-  script_version("$Revision: 9671 $");
+  script_version("$Revision: 13455 $");
   script_cve_id("CVE-2018-6056", "CVE-2018-6057", "CVE-2018-6060", "CVE-2018-6061", "CVE-2018-6062",
                 "CVE-2018-6063", "CVE-2018-6064", "CVE-2018-6065", "CVE-2018-6066", "CVE-2018-6067",
                 "CVE-2018-6068", "CVE-2018-6069", "CVE-2018-6070", "CVE-2018-6071", "CVE-2018-6072",
@@ -45,10 +45,10 @@ if(description)
                 "CVE-2018-6109", "CVE-2018-6110", "CVE-2018-6111", "CVE-2018-6112", "CVE-2018-6113",
                 "CVE-2018-6114", "CVE-2018-6116", "CVE-2018-6117");
   script_name("Debian Security Advisory DSA 4182-1 (chromium-browser - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-29 09:33:34 +0200 (Sun, 29 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-05 08:38:02 +0100 (Tue, 05 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-04-28 00:00:00 +0200 (Sat, 28 Apr 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

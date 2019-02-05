@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_deepOfix_auth_bypass_11_13.nasl 13204 2019-01-21 17:32:45Z cfischer $
+# $Id: gb_deepOfix_auth_bypass_11_13.nasl 13470 2019-02-05 12:39:51Z cfischer $
 #
 # DeepOfix SMTP Authentication Bypass
 #
@@ -31,15 +31,16 @@ if(description)
   script_cve_id("CVE-2013-6796");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_version("$Revision: 13204 $");
+  script_version("$Revision: 13470 $");
   script_name("DeepOfix SMTP Authentication Bypass");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-21 18:32:45 +0100 (Mon, 21 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-05 13:39:51 +0100 (Tue, 05 Feb 2019) $");
   script_tag(name:"creation_date", value:"2013-11-19 15:05:15 +0100 (Tue, 19 Nov 2013)");
   script_category(ACT_ATTACK);
   script_family("SMTP problems");
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
-  script_dependencies("find_service.nasl", "smtpserver_detect.nasl");
+  script_dependencies("smtpserver_detect.nasl");
   script_require_ports("Services/smtp", 25);
+  script_mandatory_keys("smtp/banner/available");
 
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/124054/DeepOfix-3.3-SMTP-Authentication-Bypass.html");
 

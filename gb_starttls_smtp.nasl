@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_starttls_smtp.nasl 13204 2019-01-21 17:32:45Z cfischer $
+# $Id: gb_starttls_smtp.nasl 13470 2019-02-05 12:39:51Z cfischer $
 #
 # SSL/TLS: SMTP 'STARTTLS' Command Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103118");
-  script_version("$Revision: 13204 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-21 18:32:45 +0100 (Mon, 21 Jan 2019) $");
+  script_version("$Revision: 13470 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-05 13:39:51 +0100 (Tue, 05 Feb 2019) $");
   script_tag(name:"creation_date", value:"2011-03-11 13:29:22 +0100 (Fri, 11 Mar 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -36,8 +36,9 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("SSL and TLS");
   script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
-  script_dependencies("find_service_3digits.nasl", "smtpserver_detect.nasl");
+  script_dependencies("smtpserver_detect.nasl");
   script_require_ports("Services/smtp", 25, 587);
+  script_mandatory_keys("smtp/banner/available");
 
   script_tag(name:"summary", value:"Checks if the remote SMTP server supports SSL/TLS with the 'STARTTLS' command.");
 
@@ -94,7 +95,7 @@ if( r =~ "^220[ -]" || "Ready to start TLS" >< r || "TLS go ahead" >< r || " Sta
         auths = split( auth_string, sep:" ", keep:FALSE );
 
         foreach auth( auths )
-          set_kb_item( name:"smtp/" + port + "/tls_auth_methods", value:auth );
+          set_kb_item( name:"smtp/fingerprints/" + port + "/tls_authlist", value:auth );
       }
     }
   } else {
@@ -103,6 +104,7 @@ if( r =~ "^220[ -]" || "Ready to start TLS" >< r || "TLS go ahead" >< r || " Sta
 
   log_message( port:port, data:report );
 } else {
+  smtp_close( socket:soc, check_data:r );
   set_kb_item( name:"smtp/starttls/not_supported", value:TRUE );
   set_kb_item( name:"smtp/starttls/not_supported/port", value:port );
 }

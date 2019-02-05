@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: snmp_default_communities.nasl 12413 2018-11-19 11:11:31Z cfischer $
+# $Id: snmp_default_communities.nasl 13440 2019-02-04 14:16:18Z cfischer $
 #
 # Default community names of the SNMP Agent
 #
@@ -65,8 +65,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103914");
-  script_version("$Revision: 12413 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-19 12:11:31 +0100 (Mon, 19 Nov 2018) $");
+  script_version("$Revision: 13440 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-04 15:16:18 +0100 (Mon, 04 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -75,8 +75,9 @@ if(description)
   script_category(ACT_SETTINGS);
   script_copyright("This script is Copyright (C) 1999 SecuriTeam");
   script_family("SNMP");
-  script_dependencies("gb_open_udp_ports.nasl");
+  script_dependencies("gb_open_udp_ports.nasl", "gb_default_credentials_options.nasl");
   script_require_udp_ports(161);
+  script_exclude_keys("default_credentials/disable_brute_force_checks");
 
   script_tag(name:"summary", value:"The script sends a connection request to the server and attempts to
   login with default communities. Successful logins are storen in the KB.");
@@ -87,6 +88,10 @@ if(description)
 }
 
 include("misc_func.inc");
+
+# If optimize_test = no
+if( get_kb_item( "default_credentials/disable_brute_force_checks" ) )
+  exit( 0 );
 
 #nb: Don't use UDP/PORTS or get_snmp_port() as the check below is quite unreliable against other non-snmp UDP services
 port = 161;

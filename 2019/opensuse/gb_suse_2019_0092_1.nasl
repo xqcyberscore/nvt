@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id$
+# $Id: gb_suse_2019_0092_1.nasl 13451 2019-02-05 05:56:56Z santu $
 #
 # SuSE Update for wireshark openSUSE-SU-2019:0092-1 (wireshark)
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852257");
-  script_version("$Revision$");
+  script_version("$Revision: 13451 $");
   script_cve_id("CVE-2019-5717", "CVE-2019-5718", "CVE-2019-5719", "CVE-2019-5721");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date$");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-05 06:56:56 +0100 (Tue, 05 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-29 04:02:21 +0100 (Tue, 29 Jan 2019)");
   script_name("SuSE Update for wireshark openSUSE-SU-2019:0092-1 (wireshark)");
   script_category(ACT_GATHER_INFO);

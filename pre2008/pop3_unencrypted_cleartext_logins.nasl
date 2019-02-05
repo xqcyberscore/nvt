@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: pop3_unencrypted_cleartext_logins.nasl 13411 2019-02-01 13:24:14Z cfischer $
+# $Id: pop3_unencrypted_cleartext_logins.nasl 13459 2019-02-05 09:16:19Z cfischer $
 #
 # POP3 Unencrypted Cleartext Login
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.15855");
-  script_version("$Revision: 13411 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-01 14:24:14 +0100 (Fri, 01 Feb 2019) $");
+  script_version("$Revision: 13459 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-05 10:16:19 +0100 (Tue, 05 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"4.8");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:P/A:N");
@@ -83,7 +83,7 @@ if( get_kb_item( "pop3/" + port + "/starttls" ) )
 done = FALSE;
 report = ""; # nb: To make openvas-nasl-lint happy...
 
-capalist = get_kb_list( "pop3/" + port + "/nontls_capalist" );
+capalist = get_kb_list( "pop3/fingerprints/" + port + "/nontls_capalist" );
 if( capalist && is_array( capalist ) ) {
   foreach capa( capalist ) {
     if( capa == "." )

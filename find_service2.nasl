@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service2.nasl 13392 2019-02-01 07:00:43Z cfischer $
+# $Id: find_service2.nasl 13443 2019-02-04 15:15:49Z cfischer $
 #
 # Service Detection with 'HELP' Request
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11153");
-  script_version("$Revision: 13392 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-01 08:00:43 +0100 (Fri, 01 Feb 2019) $");
+  script_version("$Revision: 13443 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-04 16:15:49 +0100 (Mon, 04 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -1269,8 +1269,6 @@ if( egrep( pattern:"^220( |-).*(SMTP|mail)", string:r, icase:TRUE ) ||
     egrep( pattern:"^214-? .*(HELO|MAIL|RCPT|DATA|VRFY|EXPN)", string:r ) ||
     egrep( pattern:"^220-? .*OpenVMS.*ready", string:r ) ||
     egrep( pattern:"^421-? .*SMTP", string:r ) ) {
-  banner = egrep( pattern:"^2[01][04]-? ", string:r );
-  if( banner ) set_kb_item( name:"smtp/banner/" + port, value:banner );
   register_service( port:port, proto:"smtp" );
   report_and_exit( port:port, data:"A SMTP server seems to be running on this port" );
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_haraka_detect.nasl 13438 2019-02-04 13:36:23Z cfischer $
+# $Id: gb_haraka_detect.nasl 13461 2019-02-05 09:33:31Z cfischer $
 #
 # Haraka SMTP Server Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106546");
-  script_version("$Revision: 13438 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-04 14:36:23 +0100 (Mon, 04 Feb 2019) $");
+  script_version("$Revision: 13461 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-05 10:33:31 +0100 (Tue, 05 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-01-27 12:28:21 +0700 (Fri, 27 Jan 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -59,8 +59,8 @@ include("smtp_func.inc");
 port = get_smtp_port(default:25);
 
 banner = get_smtp_banner(port: port);
-quit = get_kb_item("smtp/" + port + "/quit_banner");
-ehlo = get_kb_item("smtp/" + port + "/ehlo_banner");
+quit = get_kb_item("smtp/fingerprints/" + port + "/quit_banner");
+ehlo = get_kb_item("smtp/fingerprints/" + port + "/ehlo_banner");
 
 if (("ESMTP Haraka" >< banner || "Haraka is at your service" >< ehlo) && "Have a jolly good day" >< quit) {
 

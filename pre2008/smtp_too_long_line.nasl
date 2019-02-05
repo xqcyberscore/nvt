@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smtp_too_long_line.nasl 13189 2019-01-21 11:50:39Z cfischer $
+# $Id: smtp_too_long_line.nasl 13470 2019-02-05 12:39:51Z cfischer $
 # Description: SMTP too long line
 #
 # Authors:
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11270");
-  script_version("$Revision: 13189 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-21 12:50:39 +0100 (Mon, 21 Jan 2019) $");
+  script_version("$Revision: 13470 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-05 13:39:51 +0100 (Tue, 05 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -39,6 +39,7 @@ if(description)
   script_family("SMTP problems");
   script_dependencies("smtpserver_detect.nasl", "smtp_settings.nasl", "smtp_relay.nasl");
   script_require_ports("Services/smtp", 25, 465, 587);
+  script_mandatory_keys("smtp/banner/available");
 
   script_tag(name:"summary", value:"Some antivirus scanners dies when they process an email with a
   too long string without line breaks.

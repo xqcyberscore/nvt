@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3847_1.nasl 12904 2018-12-28 21:02:01Z cfischer $
+# $Id: gb_ubuntu_USN_3847_1.nasl 13454 2019-02-05 06:47:36Z cfischer $
 #
 # Ubuntu Update for linux USN-3847-1
 #
@@ -29,12 +29,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843856");
-  script_version("$Revision: 12904 $");
+  script_version("$Revision: 13454 $");
   script_cve_id("CVE-2018-10902", "CVE-2018-12896", "CVE-2018-14734",
                 "CVE-2018-16276", "CVE-2018-18445", "CVE-2018-18690", "CVE-2018-18710");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-28 22:02:01 +0100 (Fri, 28 Dec 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-05 07:47:36 +0100 (Tue, 05 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-12-21 07:23:07 +0100 (Fri, 21 Dec 2018)");
   script_name("Ubuntu Update for linux USN-3847-1");
   script_category(ACT_GATHER_INFO);
@@ -85,7 +85,11 @@ sensitive information (kernel memory). (CVE-2018-18710)");
 
   script_tag(name:"affected", value:"linux on Ubuntu 18.04 LTS.");
 
-  script_tag(name:"solution", value:"Please install the updated package(s).");
+  script_tag(name:"solution", value:"Please install the updated package(s).
+
+  Note: According to the USN the package names for this update where changed from e.g.
+  linux-image-4.15.0-42-generic to linux-image-4.15.0-43-generic. Due to this please
+  make sure to install the kernel package containing the -43- part within its name.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
@@ -140,6 +144,9 @@ if(release == "UBUNTU18.04 LTS")
     exit(0);
   }
 
+  # nb: According to USN 3847 the kernel updates have been given a new version number.
+  # The package names where changed from e.g. linux-image-4.15.0-42-generic to
+  # linux-image-4.15.0-43-generic so we need to check for both here:
   if ((res = isdpkgvuln(pkg:"linux-image-4.15.0-43-generic", ver:"4.15.0-43.46", rls:"UBUNTU18.04 LTS", remove_arch:TRUE )) != NULL)
   {
     security_message(data:res);
@@ -159,6 +166,29 @@ if(release == "UBUNTU18.04 LTS")
   }
 
   if ((res = isdpkgvuln(pkg:"linux-image-4.15.0-43-snapdragon", ver:"4.15.0-43.46", rls:"UBUNTU18.04 LTS", remove_arch:TRUE )) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+  if ((res = isdpkgvuln(pkg:"linux-image-4.15.0-42-generic", ver:"4.15.0-43.46", rls:"UBUNTU18.04 LTS", remove_arch:TRUE )) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+
+  if ((res = isdpkgvuln(pkg:"linux-image-4.15.0-42-generic-lpae", ver:"4.15.0-43.46", rls:"UBUNTU18.04 LTS", remove_arch:TRUE )) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+
+  if ((res = isdpkgvuln(pkg:"linux-image-4.15.0-42-lowlatency", ver:"4.15.0-43.46", rls:"UBUNTU18.04 LTS", remove_arch:TRUE )) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+
+  if ((res = isdpkgvuln(pkg:"linux-image-4.15.0-42-snapdragon", ver:"4.15.0-43.46", rls:"UBUNTU18.04 LTS", remove_arch:TRUE )) != NULL)
   {
     security_message(data:res);
     exit(0);
