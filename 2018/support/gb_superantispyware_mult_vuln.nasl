@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_superantispyware_mult_vuln.nasl 13172 2019-01-21 04:30:10Z ckuersteiner $
+# $Id: gb_superantispyware_mult_vuln.nasl 13491 2019-02-06 09:26:37Z asteins $
 #
 # SuperAntiSpyware 6.0.1254 Multiple Vulnerabilities
 #
@@ -28,15 +28,15 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113099");
-  script_version("$Revision: 13172 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-21 05:30:10 +0100 (Mon, 21 Jan 2019) $");
+  script_version("$Revision: 13491 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 10:26:37 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-02-01 13:06:12 +0100 (Thu, 01 Feb 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_cve_id("CVE-2018-6471", "CVE-2018-6472", "CVE-2018-6473", "CVE-2018-6474", "CVE-2018-6475", "CVE-2018-6476");
 
@@ -58,8 +58,9 @@ to possible BSOD or Privilege Escalation.");
 
   script_tag(name:"affected", value:"SuperAntiSpyware 6.0.1254");
 
-  script_tag(name:"solution", value:"No known solution is available as of 21st January, 2019.
-  Information regarding this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since
+  the disclosure of this vulnerability. Likely none will be provided anymore. General solution options
+  are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_xref(name:"URL", value:"https://github.com/ZhiyuanWang-Chengdu-Qihoo360/SUPERAntiSpyware_POC");
 

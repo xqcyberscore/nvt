@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: toolcheck.nasl 13309 2019-01-26 16:09:19Z cfischer $
+# $Id: toolcheck.nasl 13486 2019-02-06 08:39:14Z cfischer $
 # Description: Initializing routine for checking presence of helper tools
 #
 # Authors:
@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810000");
-  script_version("$Revision: 13309 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-26 17:09:19 +0100 (Sat, 26 Jan 2019) $");
+  script_version("$Revision: 13486 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 09:39:14 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-08-17 09:05:44 +0200 (Mon, 17 Aug 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -100,7 +100,7 @@ min_expected_engine_ver = "8.0";
 #  set_kb_item(name:"Tools/Present/ovaldi", value:TRUE);
 #}
 
-# Check for (built-in) WMI support
+# (built-in) WMI support
 if(wmi_versioninfo()) {
   set_kb_item(name:"Tools/Present/wmi", value:TRUE);
 } else {
@@ -112,7 +112,7 @@ if(wmi_versioninfo()) {
   all_tools_available = FALSE;
 }
 
-# Check for (built-in) SMB support
+# (built-in) SMB support
 if(smb_versioninfo()) {
   set_kb_item(name:"Tools/Present/smb", value:TRUE);
 } else {

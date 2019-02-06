@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_solar_ftp_pasv_cmd_dos_vuln.nasl 11421 2018-09-17 06:58:23Z cfischer $
+# $Id: gb_solar_ftp_pasv_cmd_dos_vuln.nasl 13497 2019-02-06 10:45:54Z cfischer $
 #
 # SolarFTP PASV Command Remote Denial of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802002");
-  script_version("$Revision: 11421 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 08:58:23 +0200 (Mon, 17 Sep 2018) $");
+  script_version("$Revision: 13497 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 11:45:54 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2011-03-04 14:32:35 +0100 (Fri, 04 Mar 2011)");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
@@ -36,8 +36,9 @@ if(description)
   script_category(ACT_DENIAL);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("FTP");
-  script_dependencies("find_service_3digits.nasl");
+  script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
+  script_mandatory_keys("ftp/solarftp/detected");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/42834/");
   script_xref(name:"URL", value:"http://www.johnleitch.net/Vulnerabilities/Solar.FTP.Server.2.1.Buffer.Overflow/77");
@@ -69,23 +70,17 @@ include("ftp_func.inc");
 
 ftpPort = get_ftp_port(default:21);
 banner = get_ftp_banner(port:ftpPort);
-if("Solar FTP Server" >!< banner){
+if(!banner || "Solar FTP Server" >!< banner)
   exit(0);
-}
 
 soc1 = open_sock_tcp(ftpPort);
 if(!soc1){
   exit(0);
 }
 
-user = get_kb_item("ftp/login");
-if(!user){
-  user = "anonymous";
-}
-pass = get_kb_item("ftp/password");
-if(!pass){
-  pass = string("anonymous");
-}
+kb_creds = ftp_get_kb_creds();
+user = kb_creds["login"];
+pass = kb_creds["pass"];
 
 ftplogin = ftp_log_in(socket:soc1, user:user, pass:pass);
 if(!ftplogin){

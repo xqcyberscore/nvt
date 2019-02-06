@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wing_ftp_server_command_exec_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_wing_ftp_server_command_exec_vuln.nasl 13494 2019-02-06 10:06:36Z cfischer $
 #
 # Wing FTP Server Authenticated Command Execution Vulnerability
 #
@@ -27,11 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804766");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 13494 $");
   script_tag(name:"cvss_base", value:"8.2");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 11:06:36 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2014-09-12 11:42:19 +0530 (Fri, 12 Sep 2014)");
+  script_cve_id("CVE-2015-4107");
 
   script_tag(name:"qod_type", value:"remote_analysis");
   script_name("Wing FTP Server Authenticated Command Execution Vulnerability");
@@ -53,8 +54,9 @@ if(description)
   versions may also be affected.");
 
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
-Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the
+  product or replace the product by another one.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
 
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/34517");
@@ -74,18 +76,13 @@ General solution options are to upgrade to a newer release, disable respective f
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
+include("ftp_func.inc");
 
 http_port = get_http_port(default:5466);
 
-FTPuser = get_kb_item("ftp/login");
-FTPpass = get_kb_item("ftp/password");
-
-if(!FTPuser){
-  FTPuser = "anonymous";
-}
-if(!FTPpass){
-  FTPpass = "anonymous";
-}
+kb_creds = ftp_get_kb_creds();
+FTPuser = kb_creds["login"];
+FTPpass = kb_creds["pass"];
 
 host = http_host_name(port:http_port);
 

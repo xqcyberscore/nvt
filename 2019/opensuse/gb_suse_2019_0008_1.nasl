@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2019_0008_1.nasl 13209 2019-01-22 08:11:01Z mmartin $
+# $Id: gb_suse_2019_0008_1.nasl 13489 2019-02-06 09:12:08Z cfischer $
 #
 # SuSE Update for libraw openSUSE-SU-2019:0008-1 (libraw)
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852223");
-  script_version("$Revision: 13209 $");
+  script_version("$Revision: 13489 $");
   script_cve_id("CVE-2018-5804", "CVE-2018-5813", "CVE-2018-5815", "CVE-2018-5816");
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-22 09:11:01 +0100 (Tue, 22 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 10:12:08 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-11 04:00:53 +0100 (Fri, 11 Jan 2019)");
   script_name("SuSE Update for libraw openSUSE-SU-2019:0008-1 (libraw)");
   script_category(ACT_GATHER_INFO);
@@ -58,11 +58,13 @@ if(description)
   (dcraw/dcraw.c) that could be exploited to trigger an infinite loop via
   a specially crafted file. This could be exploited to cause a
   DoS.(boo#1103200).
+
   - CVE-2018-5815: Fixed an integer overflow in the
   internal/dcraw_common.cpp:parse_qt() function, that could be exploited
   to cause an infinite loop via a specially crafted Apple QuickTime file.
   (boo#1103206)
-  - CVE-2018-5804,CVE-2018-5816: Fixed a type confusion error in the
+
+  - CVE-2018-5804, CVE-2018-5816: Fixed a type confusion error in the
   identify function (bsc#1097975)
 
   This update was imported from the SUSE:SLE-15:Update update project.

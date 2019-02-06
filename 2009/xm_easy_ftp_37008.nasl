@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: xm_easy_ftp_37008.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: xm_easy_ftp_37008.nasl 13488 2019-02-06 09:04:46Z asteins $
 #
 # XM Easy Personal FTP Server 'NLST' Command Remote Denial of Service Vulnerability
 #
@@ -24,88 +24,71 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "XM Easy Personal FTP Server is prone to a remote denial-of-service
-vulnerability.
-
-This issue allows remote attackers to crash affected FTP servers,
-denying service to legitimate users.
-
-XM Easy Personal FTP Server 5.8.0 is vulnerable; other versions may
-also be affected.";
-
-
-if (description)
+if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.100342");
- script_version("$Revision: 9350 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2009-11-13 12:21:24 +0100 (Fri, 13 Nov 2009)");
- script_bugtraq_id(37008,36969);
- script_tag(name:"cvss_base", value:"7.1");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
- script_name("XM Easy Personal FTP Server 'NLST' Command Remote Denial of Service Vulnerability");
+  script_oid("1.3.6.1.4.1.25623.1.0.100342");
+  script_version("$Revision: 13488 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 10:04:46 +0100 (Wed, 06 Feb 2019) $");
+  script_tag(name:"creation_date", value:"2009-11-13 12:21:24 +0100 (Fri, 13 Nov 2009)");
+  script_bugtraq_id(37008, 36969);
+  script_cve_id("CVE-2009-3643");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_name("XM Easy Personal FTP Server 'NLST' Command Remote Denial of Service Vulnerability");
 
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/37008");
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/36969");
- script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/507785");
- script_xref(name : "URL" , value : "http://www.dxm2008.com/");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/37008");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/36969");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/507785");
+  script_xref(name:"URL", value:"http://www.dxm2008.com/");
 
- script_category(ACT_MIXED_ATTACK);
+  script_category(ACT_MIXED_ATTACK);
   script_tag(name:"qod_type", value:"remote_banner");
- script_family("FTP");
- script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl","secpod_ftp_anonymous.nasl","ftpserver_detect_type_nd_version.nasl");
- script_require_ports("Services/ftp", 21);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  script_family("FTP");
+  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
+  script_dependencies("ftpserver_detect_type_nd_version.nasl");
+  script_require_ports("Services/ftp", 21);
+  script_mandatory_keys("ftp/xm_easy_personal/detected");
+
+  script_tag(name:"summary", value:"XM Easy Personal FTP Server is prone to a remote denial-of-service
+  vulnerability.");
+
+  script_tag(name:"impact", value:"This issue allows remote attackers to crash affected FTP servers,
+  denying service to legitimate users.");
+
+  script_tag(name:"affected", value:"XM Easy Personal FTP Server 5.8.0 is vulnerable. Other versions may
+  also be affected.");
+
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+
+  exit(0);
 }
 
 include("ftp_func.inc");
 include("version_func.inc");
 
-ftpPort = get_kb_item("Services/ftp");
-if(!ftpPort){
-  ftpPort = 21;
-}
-
-if(get_kb_item('ftp/'+ftpPort+'/broken'))exit(0);
-
-if(!get_port_state(ftpPort)){
+ftpPort = get_ftp_port(default:21);
+banner = get_ftp_banner(port:ftpPort);
+if(! banner || ! egrep(pattern: "Welcome to DXM's FTP Server", string:banner))
   exit(0);
-}
 
 if(safe_checks()) {
-
- if( ! banner = get_ftp_banner(port:ftpPort)) exit(0);
- if(egrep(pattern: "Welcome to DXM's FTP Server", string:banner)) {
-
-   version = eregmatch(pattern: "Welcome to DXM's FTP Server ([0-9.]+)", string: banner); 
-
-   if( ! isnull(version[1])) {
-     if(version_is_equal(version: version[1], test_version: "5.8.0")) {
-       security_message(port:ftpPort);
-       exit(0);
-     }  
-   }
- }
-
+  version = eregmatch(pattern: "Welcome to DXM's FTP Server ([0-9.]+)", string: banner);
+  if( version[1] && version_is_equal(version: version[1], test_version: "5.8.0")) {
+    security_message(port:ftpPort);
+    exit(0);
+  }
 } else {
 
   soc1 = open_sock_tcp(ftpPort);
-  if(!soc1){
+  if(!soc1)
     exit(0);
-  }
 
-  domain = get_kb_item("Settings/third_party_domain");
-  if(isnull(domain)) {
-   domain = this_host_name();;
-  }
-
-  user = get_kb_item("ftp/login");
-  pass = get_kb_item("ftp/password");
-
-  if(!user)user = "anonymous";
-  if(!pass)pass = string("openvas@", domain);;
+  kb_creds = ftp_get_kb_creds();
+  user = kb_creds["login"];
+  pass = kb_creds["pass"];
 
   login_details = ftp_log_in(socket:soc1, user:user, pass:pass);
   if(login_details)
@@ -121,7 +104,7 @@ if(safe_checks()) {
         close(soc2);
         close(soc1);
 
-        sleep(2);       
+        sleep(2);
 
         soc3 = open_sock_tcp(ftpPort);
 
@@ -135,5 +118,5 @@ if(safe_checks()) {
     }
   }
 }
+
 exit(0);
- 

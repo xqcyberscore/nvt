@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typsoft_ftp_server_mult_cmd_dos_vuln.nasl 11435 2018-09-17 13:44:25Z cfischer $
+# $Id: gb_typsoft_ftp_server_mult_cmd_dos_vuln.nasl 13497 2019-02-06 10:45:54Z cfischer $
 #
 # TYPSoft FTP Server Multiple Commands Remote Denial of Service Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802605");
-  script_version("$Revision: 11435 $");
+  script_version("$Revision: 13497 $");
   script_bugtraq_id(51891);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:44:25 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 11:45:54 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2012-02-08 12:12:12 +0530 (Wed, 08 Feb 2012)");
   script_name("TYPSoft FTP Server Multiple Commands Remote Denial of Service Vulnerabilities");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/51891");
@@ -42,20 +42,27 @@ if(description)
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("FTP");
-  script_dependencies("secpod_ftp_anonymous.nasl");
+  script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
+  script_mandatory_keys("ftp/typsoft/detected");
+
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to crash
-the affected application, denying service to legitimate users.");
+  the affected application, denying service to legitimate users.");
+
   script_tag(name:"affected", value:"TYPSoft FTP Server Version 1.10");
+
   script_tag(name:"insight", value:"Multiple flaws are caused by an error when processing FTP commands,
-which can be exploited to crash the FTP service by sending specially crafted FTP
-commands.");
+  which can be exploited to crash the FTP service by sending specially crafted FTP commands.");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
   release, disable respective features, remove the product or replace the product by another one.");
+
   script_tag(name:"summary", value:"This host is running TYPSoft FTP Server and is prone to multiple
-denial of service vulnerabilities.");
+  denial of service vulnerabilities.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
+
   exit(0);
 }
 
@@ -73,13 +80,9 @@ if(! soc){
   exit(0);
 }
 
-user = get_kb_item("ftp/login");
-pass = get_kb_item("ftp/password");
-
-if(! user){
-  user = "anonymous";
-  pass = "user@";
-}
+kb_creds = ftp_get_kb_creds();
+user = kb_creds["login"];
+pass = kb_creds["pass"];
 
 login_details = ftp_log_in(socket:soc, user:user, pass:pass);
 if(! login_details){

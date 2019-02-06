@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_knftpd_feat_cmd_dos_vuln.nasl 11436 2018-09-17 13:47:46Z cfischer $
+# $Id: secpod_knftpd_feat_cmd_dos_vuln.nasl 13497 2019-02-06 10:45:54Z cfischer $
 #
 # KnFTP Server 'FEAT' Command Remote Denial of Service Vulnerability
 #
@@ -27,19 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902826");
-  script_version("$Revision: 11436 $");
+  script_version("$Revision: 13497 $");
   script_cve_id("CVE-2012-5905");
   script_bugtraq_id(52805);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:47:46 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 11:45:54 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2012-03-29 16:16:16 +0530 (Thu, 29 Mar 2012)");
   script_name("KnFTP Server 'FEAT' Command Remote Denial of Service Vulnerability");
   script_category(ACT_DENIAL);
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("FTP");
-  script_dependencies("find_service_3digits.nasl");
+  script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
+  script_mandatory_keys("ftp/ftp_ready_banner/detected");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/52805");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/18671");
@@ -47,12 +48,16 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to crash the
   affected application, denying service to legitimate users.");
-  script_tag(name:"affected", value:"KnFTP Server version 1.0.0");
+
+  script_tag(name:"affected", value:"KnFTP Server version 1.0.0.");
+
   script_tag(name:"insight", value:"The flaw is caused by an error when handling 'FEAT' command, which
   can be exploited to crash the FTP service by sending specially crafted FTP commands.");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
   release, disable respective features, remove the product or replace the product by another one.");
+
   script_tag(name:"summary", value:"This host is running KnFTP Server and is prone to denial of service
   vulnerability.");
 
@@ -76,15 +81,9 @@ if(! soc){
   exit(0);
 }
 
-user = get_kb_item("ftp/login");
-pass = get_kb_item("ftp/password");
-
-if(!user) {
-  user = "system";
-}
-if(!pass) {
-  pass = "secret";
-}
+kb_creds = ftp_get_kb_creds(default_login:"system", default_pass:"secret");
+user = kb_creds["login"];
+pass = kb_creds["pass"];
 
 login_details = ftp_log_in(socket:soc, user:user, pass:pass);
 if(! login_details){

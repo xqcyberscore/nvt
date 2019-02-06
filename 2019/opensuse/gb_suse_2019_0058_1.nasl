@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2019_0058_1.nasl 13173 2019-01-21 06:39:39Z santu $
+# $Id: gb_suse_2019_0058_1.nasl 13489 2019-02-06 09:12:08Z cfischer $
 #
 # SuSE Update for live555 openSUSE-SU-2019:0058-1 (live555)
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852244");
-  script_version("$Revision: 13173 $");
+  script_version("$Revision: 13489 $");
   script_cve_id("CVE-2018-4013", "CVE-2019-6256");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-21 07:39:39 +0100 (Mon, 21 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 10:12:08 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-18 04:03:17 +0100 (Fri, 18 Jan 2019)");
   script_name("SuSE Update for live555 openSUSE-SU-2019:0058-1 (live555)");
   script_category(ACT_GATHER_INFO);
@@ -53,6 +53,7 @@ if(description)
   script_tag(name:"insight", value:"This update fixes two security issues in live555:
 
   - CVE-2018-4013: Remote code execution vulnerability (bsc#1114779)
+
   - CVE-2019-6256: Denial of Service issue with RTSP-over-HTTP tunneling via
   x-sessioncookie HTTP headers (boo#1121892)
 

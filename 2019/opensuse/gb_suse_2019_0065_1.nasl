@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2019_0065_1.nasl 13173 2019-01-21 06:39:39Z santu $
+# $Id: gb_suse_2019_0065_1.nasl 13489 2019-02-06 09:12:08Z cfischer $
 #
 # SuSE Update for the openSUSE-SU-2019:0065-1 (the)
 #
@@ -29,13 +29,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852240");
-  script_version("$Revision: 13173 $");
+  script_version("$Revision: 13489 $");
   script_cve_id("CVE-2018-12232", "CVE-2018-14625", "CVE-2018-16862", "CVE-2018-16884",
                 "CVE-2018-18397", "CVE-2018-19407", "CVE-2018-19824", "CVE-2018-19854",
                 "CVE-2018-19985", "CVE-2018-20169", "CVE-2018-9568", "CVE-2013-2547");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-21 07:39:39 +0100 (Mon, 21 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 10:12:08 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-18 04:02:14 +0100 (Fri, 18 Jan 2019)");
   script_name("SuSE Update for the openSUSE-SU-2019:0065-1 (the)");
   script_category(ACT_GATHER_INFO);
@@ -62,42 +62,50 @@ if(description)
   allowed local users to cause a denial of service (NULL pointer
   dereference and BUG) via crafted system calls that reach a situation
   where ioapic is uninitialized (bnc#1116841).
+
   - CVE-2018-14625: An attacker might have bene able to have an uncontrolled
   read to kernel-memory from within a vm guest. A race condition between
   connect() and close() function may allow an attacker using the AF_VSOCK
   protocol to gather a 4 byte information leak or possibly intercept or
   corrupt AF_VSOCK messages destined to other clients (bnc#1106615).
+
   - CVE-2018-19985: The function hso_probe read if_num from the USB device
   (as an u8) and used it without a length check to index an array,
   resulting in an OOB memory read in hso_probe or hso_get_config_data that
   could be used by local attackers (bsc#1120743).
+
   - CVE-2018-16884: NFS41+ shares mounted in different network namespaces at
   the same time can make bc_svc_process() use wrong back-channel IDs and
   cause a use-after-free vulnerability. Thus a malicious container user
   can cause a host kernel memory corruption and a system panic. Due to the
   nature of the flaw, privilege escalation cannot be fully ruled out
   (bnc#1119946).
+
   - CVE-2018-20169: The USB subsystem mishandled size checks during the
   reading of an extra descriptor, related to __usb_get_extra_descriptor in
   drivers/usb/core/usb.c (bnc#1119714).
+
   - CVE-2018-18397: The userfaultfd implementation mishandled access control
   for certain UFFDIO_ ioctl calls, as demonstrated by allowing local users
   to write data into holes in a tmpfs file (if the user has read-only
   access to that file, and that file contains holes), related to
   fs/userfaultfd.c and mm/userfaultfd.c (bnc#1117656).
+
   - CVE-2018-12232: In net/socket.c there was a race condition between
   fchownat and close in cases where they target the same socket file
   descriptor, related to the sock_close and sockfs_setattr functions.
   fchownat did not increment the file descriptor reference count, which
   allowed close to set the socket to NULL during fchownat's execution,
   leading to a NULL pointer dereference and system crash (bnc#1097593).
+
   - CVE-2018-9568: In sk_clone_lock of sock.c, there is a possible memory
   corruption due to type confusion. This could lead to local escalation of
   privilege with no additional execution privileges needed. User
   interaction is not needed for exploitation. (bnc#1118319).
+
   - ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
 
   script_tag(name:"affected", value:"the on openSUSE Leap 15.0.");
 

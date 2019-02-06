@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avtech_device_detect.nasl 10890 2018-08-10 12:30:06Z cfischer $
+# $Id: gb_avtech_device_detect.nasl 13472 2019-02-05 13:34:23Z tpassfeld $
 #
 # AVTECH Device Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809066");
-  script_version("$Revision: 10890 $");
+  script_version("$Revision: 13472 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:30:06 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-05 14:34:23 +0100 (Tue, 05 Feb 2019) $");
   script_tag(name:"creation_date", value:"2016-10-18 11:30:44 +0530 (Tue, 18 Oct 2016)");
   script_name("AVTECH Device Detection");
 
@@ -43,8 +43,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("gb_get_http_banner.nasl");
-  script_require_ports("Services/www", 8080);
+  script_dependencies("find_service.nasl", "gb_get_http_banner.nasl");
+  script_require_ports("Services/www", 80);
   script_mandatory_keys("Avtech/banner");
 
   exit(0);
@@ -56,7 +56,7 @@ include("http_func.inc");
 include("host_details.inc");
 
 
-avPort = get_http_port(default:8080);
+avPort = get_http_port(default: 80);
 
 banner = get_http_banner(port:avPort);
 

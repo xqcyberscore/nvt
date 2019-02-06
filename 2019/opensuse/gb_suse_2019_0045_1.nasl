@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2019_0045_1.nasl 13455 2019-02-05 07:38:02Z mmartin $
+# $Id: gb_suse_2019_0045_1.nasl 13489 2019-02-06 09:12:08Z cfischer $
 #
 # SuSE Update for LibVNCServer openSUSE-SU-2019:0045-1 (LibVNCServer)
 #
@@ -29,13 +29,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852230");
-  script_version("$Revision: 13455 $");
+  script_version("$Revision: 13489 $");
   script_cve_id("CVE-2018-15126", "CVE-2018-15127", "CVE-2018-20019", "CVE-2018-20020",
                 "CVE-2018-20021", "CVE-2018-20022", "CVE-2018-20023", "CVE-2018-20024",
                 "CVE-2018-6307");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-05 08:38:02 +0100 (Tue, 05 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 10:12:08 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-12 04:01:32 +0100 (Sat, 12 Jan 2019)");
   script_name("SuSE Update for LibVNCServer openSUSE-SU-2019:0045-1 (LibVNCServer)");
   script_category(ACT_GATHER_INFO);
@@ -58,20 +58,28 @@ if(description)
 
   - CVE-2018-15126: Fixed use-after-free in file transfer extension
   (bsc#1120114)
+
   - CVE-2018-6307: Fixed use-after-free in file transfer extension server
   code (bsc#1120115)
+
   - CVE-2018-20020: Fixed heap out-of-bound write inside structure in VNC
   client code (bsc#1120116)
+
   - CVE-2018-15127: Fixed heap out-of-bounds write in rfbserver.c
   (bsc#1120117)
+
   - CVE-2018-20019: Fixed multiple heap out-of-bound writes in VNC client
   code (bsc#1120118)
+
   - CVE-2018-20023: Fixed information disclosure through improper
   initialization in VNC Repeater client code (bsc#1120119)
+
   - CVE-2018-20022: Fixed information disclosure through improper
   initialization in VNC client code (bsc#1120120)
+
   - CVE-2018-20024: Fixed NULL pointer dereference in VNC client code
   (bsc#1120121)
+
   - CVE-2018-20021: Fixed infinite loop in VNC client code (bsc#1120122)
 
   This update was imported from the SUSE:SLE-12:Update update project.

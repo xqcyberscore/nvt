@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ricoh_dc_dl10_ftp_user_bof_vuln.nasl 11436 2018-09-17 13:47:46Z cfischer $
+# $Id: secpod_ricoh_dc_dl10_ftp_user_bof_vuln.nasl 13497 2019-02-06 10:45:54Z cfischer $
 #
 # Ricoh DC Software DL-10 FTP Server 'USER' Command Buffer Overflow Vulnerability
 #
@@ -27,19 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902821");
-  script_version("$Revision: 11436 $");
+  script_version("$Revision: 13497 $");
   script_cve_id("CVE-2012-5002");
   script_bugtraq_id(52235);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:47:46 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 11:45:54 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2012-03-26 14:14:14 +0530 (Mon, 26 Mar 2012)");
   script_name("Ricoh DC Software DL-10 FTP Server 'USER' Command Buffer Overflow Vulnerability");
   script_category(ACT_DENIAL);
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("FTP");
-  script_dependencies("find_service_3digits.nasl");
+  script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
+  script_mandatory_keys("ftp/ricoh/dsc_ftpd/detected");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/47912");
   script_xref(name:"URL", value:"http://security.inshell.net/advisory/5");
@@ -51,13 +52,17 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation may allow remote attackers to execute
   arbitrary code within the context of the affected application. Failed exploit
   attempts will result in a denial-of-service condition.");
-  script_tag(name:"affected", value:"Ricoh DC Software DL-10 version 4.5.0.1");
+
+  script_tag(name:"affected", value:"Ricoh DC Software DL-10 version 4.5.0.1.");
+
   script_tag(name:"insight", value:"The flaw is caused by improper bounds checking by the FTP server
   when processing malicious FTP commands. This can be exploited to cause a
   stack-based buffer overflow via an overly long 'USER' FTP command.");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
-Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the
+  product or replace the product by another one.");
+
   script_tag(name:"summary", value:"This host is running Ricoh DC Software DL-10 FTP Server and is
   prone to buffer overflow vulnerability.");
 

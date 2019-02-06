@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_blackmoon_ftp_port_cmd_dos_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
+# $Id: gb_blackmoon_ftp_port_cmd_dos_vuln.nasl 13497 2019-02-06 10:45:54Z cfischer $
 #
 # Blackmoon FTP PORT Command Denial Of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800194");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("$Revision: 13497 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 11:45:54 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2011-01-21 14:38:54 +0100 (Fri, 21 Jan 2011)");
   script_cve_id("CVE-2011-0507");
   script_bugtraq_id(45814);
@@ -38,8 +38,9 @@ if(description)
   script_category(ACT_DENIAL);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("FTP");
-  script_dependencies("find_service_3digits.nasl");
+  script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
+  script_mandatory_keys("ftp/blackmoon/detected");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/42933/");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/15986/");
@@ -69,7 +70,7 @@ include("ftp_func.inc");
 
 ftpPort = get_ftp_port(default:21);
 banner = get_ftp_banner(port:ftpPort);
-if("220 BlackMoon FTP Server" >!< banner){
+if(!banner || "BlackMoon FTP Server" >!< banner){
   exit(0);
 }
 
@@ -86,7 +87,6 @@ for(i=0; i < 100; i++)
   }
 
   res1 = ftp_recv_line(socket:soc);
-
   res2 = ftp_send_cmd(socket:soc, cmd:crafted_port_cmd);
 
   ## Exit ; Patched FTP Server Response

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avm_fritz_box_detect_ftp.nasl 11412 2018-09-16 10:21:40Z cfischer $
+# $Id: gb_avm_fritz_box_detect_ftp.nasl 13497 2019-02-06 10:45:54Z cfischer $
 #
 # AVM FRITZ!Box Detection (FTP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108039");
-  script_version("$Revision: 11412 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-16 12:21:40 +0200 (Sun, 16 Sep 2018) $");
+  script_version("$Revision: 13497 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 11:45:54 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-01-05 13:21:05 +0100 (Thu, 05 Jan 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -39,7 +39,7 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
-  script_mandatory_keys("ftp_banner/available");
+  script_mandatory_keys("ftp/avm/fritzbox_ftp/detected");
 
   script_tag(name:"summary", value:"The script attempts to identify an AVM FRITZ!Box via FTP
   banner and tries to extract the model and version number.");
@@ -54,7 +54,7 @@ include("ftp_func.inc");
 port = get_ftp_port( default:21 );
 banner = get_ftp_banner( port:port );
 
-if( "FRITZ!Box" >< banner && "FTP server ready." >< banner  ) {
+if( banner && "FRITZ!Box" >< banner && "FTP server ready." >< banner ) {
 
   set_kb_item( name:"avm_fritz_box/detected", value:TRUE );
   set_kb_item( name:"avm_fritz_box/ftp/detected", value:TRUE );

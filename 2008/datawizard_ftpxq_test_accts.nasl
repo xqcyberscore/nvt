@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: datawizard_ftpxq_test_accts.nasl 9528 2018-04-19 07:31:17Z cfischer $
+# $Id: datawizard_ftpxq_test_accts.nasl 13476 2019-02-05 15:05:10Z cfischer $
 #
 # Tries to read a file via FTPXQ.
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80053");
-  script_version("$Revision: 9528 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-19 09:31:17 +0200 (Thu, 19 Apr 2018) $");
+  script_version("$Revision: 13476 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-05 16:05:10 +0100 (Tue, 05 Feb 2019) $");
   script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
@@ -41,17 +41,12 @@ if(description)
   script_family("FTP");
   script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
-  script_mandatory_keys("ftp/ftpxq");
+  script_mandatory_keys("ftp/ftpxq/detected");
 
   script_tag(name:"solution", value:"Disable or change the password for any unnecessary user accounts.");
 
-  script_tag(name:"summary", value:"The remote FTP server has one or more default test accounts.
-
-  Description :
-
-  The version of DataWizard FTPXQ that is installed on the remote host
-  has one or more default accounts setup which can allow an attacker to
-  read and/or write arbitrary files on the system.");
+  script_tag(name:"summary", value:"The version of DataWizard FTPXQ that is installed on the remote host
+  has one or more default accounts setup which can allow an attacker to read and/or write arbitrary files on the system.");
 
   script_xref(name:"URL", value:"http://attrition.org/pipermail/vim/2006-November/001107.html");
 
@@ -63,14 +58,14 @@ if(description)
 
 include("ftp_func.inc");
 
-# Verify we can talk to the FTP server, if not exit
 port   = get_ftp_port( default:21 );
 banner = get_ftp_banner( port:port );
-if( ! banner || "FtpXQ FTP" >!< banner ) exit( 0 );
+if( ! banner || "FtpXQ FTP" >!< banner )
+  exit( 0 );
 
-# Now let's attempt to login with the default test account.
 soc = open_sock_tcp(port);
-if(!soc) exit(0);
+if(!soc)
+  exit(0);
 
 n = 0;
 acct[n] = "anonymous";
@@ -90,11 +85,7 @@ for (i=0; i<max_index(acct); i++) {
     info += "  " + login + "/" + password + '\n';
 
     if (strlen(contents) == 0) {
-      #
-      #
       #	We have identified that we have logged in with the account, let's try to read boot.ini.
-      #
-      #
       port2 = ftp_pasv(socket:soc);
       if (!port2) exit(0);
       soc2 = open_sock_tcp(port2, transport:ENCAPS_IP);
@@ -122,11 +113,11 @@ if (info) {
   if ("test/test" >< info)
     info = string(info, "\n",
       "Note that the test account reportedly allows write access to the entire\n",
-      "filesystem, although OpenVAS did not attempt to verify this.\n");
+      "filesystem, although the scanner did not attempt to verify this.\n");
 
   if (contents)
     info = string(info, "\n",
-      "In addition, OpenVAS was able to use one of the accounts to read ", file, " :\n",
+      "In addition, the scanner was able to use one of the accounts to read ", file, " :\n",
       "\n",
       contents);
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ftp_os_detection.nasl 13383 2019-01-31 11:11:44Z cfischer $
+# $Id: gb_ftp_os_detection.nasl 13486 2019-02-06 08:39:14Z cfischer $
 #
 # FTP OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105355");
-  script_version("$Revision: 13383 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-31 12:11:44 +0100 (Thu, 31 Jan 2019) $");
+  script_version("$Revision: 13486 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 09:39:14 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2015-09-15 15:57:03 +0200 (Tue, 15 Sep 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -71,7 +71,7 @@ if( " FTP server (MikroTik " >< banner )
   exit( 0 ); # Already covered by gb_mikrotik_router_routeros_consolidation.nasl
 
 # Default welcome messages on some FTP servers
-if( banner == "220 Welcome message" || 
+if( banner == "220 Welcome message" ||
     banner == "220 Service ready for new user." )
   exit( 0 );
 

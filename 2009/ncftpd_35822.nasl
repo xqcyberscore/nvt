@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ncftpd_35822.nasl 11827 2018-10-10 14:52:03Z cfischer $
+# $Id: ncftpd_35822.nasl 13475 2019-02-05 14:51:19Z cfischer $
 #
 # NcFTPD Symbolic Link Information Disclosure Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100250");
-  script_version("$Revision: 11827 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 16:52:03 +0200 (Wed, 10 Oct 2018) $");
+  script_version("$Revision: 13475 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-05 15:51:19 +0100 (Tue, 05 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-07-28 21:43:08 +0200 (Tue, 28 Jul 2009)");
   script_bugtraq_id(35822);
   script_tag(name:"cvss_base", value:"4.0");
@@ -37,9 +37,9 @@ if(description)
   script_category(ACT_ATTACK);
   script_family("FTP");
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
-  script_dependencies("find_service.nasl", "secpod_ftp_anonymous.nasl", "ftpserver_detect_type_nd_version.nasl", "os_detection.nasl");
+  script_dependencies("ftpserver_detect_type_nd_version.nasl", "os_detection.nasl");
   script_require_ports("Services/ftp", 21);
-  script_mandatory_keys("ftp/ncftpd");
+  script_mandatory_keys("ftp/ncftpd/detected");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/35822");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/52067");
@@ -66,28 +66,25 @@ if(description)
 include("ftp_func.inc");
 include("misc_func.inc");
 
-user = get_kb_item("ftp/login");
-pass = get_kb_item("ftp/password");
-
-if(!user || !pass)exit(0);
-if("anonymous" >< user)exit(0);
+kb_creds = ftp_get_kb_creds();
+user = kb_creds["login"];
+pass = kb_creds["pass"];
+if("anonymous" >< user || "ftp" >< user)
+  exit(0);
 
 ftpPort = get_ftp_port(default:21);
-soc1 = open_sock_tcp(ftpPort);
-if(!soc1){
+banner = get_ftp_banner(port:ftpPort);
+if(! banner || "NcFTPd" >!< banner)
   exit(0);
-}
 
-domain = get_kb_item("Settings/third_party_domain");
-if(isnull(domain)) {
-  domain = this_host_name();;
-}
+soc1 = open_sock_tcp(ftpPort);
+if(!soc1)
+  exit(0);
 
 vtstring_lower = get_vt_string(lowercase:TRUE);
 files = traversal_files();
 
 login_details = ftp_log_in(socket:soc1, user:user, pass:pass);
-
 if(login_details)
 {
   ftpPort2 = ftp_get_pasv_port(socket:soc1);
@@ -114,7 +111,7 @@ if(login_details)
 	      ftp_close(socket:soc1);
   	      close(soc1);
 
-              info = string("Here are the contents of the file '/" + file + "' that\nwas read from the remote host:\n\n");
+              info = string("Here are the contents of the file '/" + file + "' that was read from the remote host:\n\n");
               info += cd;
               info += string("\n\nPlease delete the directory ");
               info += dir;

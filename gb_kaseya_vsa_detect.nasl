@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kaseya_vsa_detect.nasl 10905 2018-08-10 14:32:11Z cfischer $
+# $Id: gb_kaseya_vsa_detect.nasl 13490 2019-02-06 09:15:32Z ckuersteiner $
 #
 # Kaseya VSA Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106738");
-  script_version("$Revision: 10905 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:32:11 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 13490 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 10:15:32 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-04-10 14:46:29 +0200 (Mon, 10 Apr 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -59,22 +59,28 @@ include("cpe.inc");
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 port = get_http_port(default: 443);
 if( ! can_host_asp( port:port ) ) exit( 0 );
 
-req = http_get(port: port, item: "/vsapres/web20/core/login.aspx");
+# Some need a referer to get the version back
+header = make_array("Referer", "https://" + get_host_name() + "/");
+req = http_get_req(port: port, url: "/vsapres/web20/core/login.aspx", add_headers: header);
 res = http_keepalive_send_recv(port: port, data: req);
 
-if ("/themes/default/images/logoforLogin.gif" >< res && "/vsapres/js/kaseya/web/bootstrap.js" >< res &&
-    "PoweredByKaseya.png" >< res) {
-
+if ("logoforLogin.gif" >< res && "/vsapres/js/kaseya/web/bootstrap.js" >< res && "Kaseya" >< res) {
   version = "unknown";
 
   vers = eregmatch(pattern: "System Version.*<span>([0-9.]+)</span>", string: res);
-  if (!isnull(vers[1])) {
+  if (!isnull(vers[1]))
     version = vers[1];
-    set_kb_item(name: "kaseya_vsa/version", value: version);
+
+  # nb: Patchlevel can be higher than the system version
+  patchlevel = eregmatch(pattern: "Patch Level[^<]+<br />[^<]+<span>([0-9.]+)</span>", string: res);
+  if (!isnull(patchlevel[1])) {
+    set_kb_item(name: "kaseya_vas/patchlevel", value: patchlevel[1]);
+    extra = "Patch Level:  " + patchlevel[1];
   }
 
   set_kb_item(name: "kaseya_vas/installed", value: TRUE);
@@ -86,7 +92,7 @@ if ("/themes/default/images/logoforLogin.gif" >< res && "/vsapres/js/kaseya/web/
   register_product(cpe: cpe, location: "/", port: port);
 
   log_message(data: build_detection_report(app: "Kaseya VSA", version: version, install: "/", cpe: cpe,
-                                           concluded: vers[0]),
+                                           concluded: vers[0], extra: extra),
               port: port);
   exit(0);
 }

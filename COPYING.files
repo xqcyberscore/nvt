@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Tue, 05 Feb 2019 14:15:27 +0100
+# Automatically created on:  Wed, 06 Feb 2019 12:22:54 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -43951,6 +43951,7 @@
 2019/apple/gb_apple_macosx_HT209446_03.nasl: GPLv2+
 2019/apple/gb_apple_macosx_HT209446_04.nasl: GPLv2+
 2019/apple/gb_apple_safari_HT209449.nasl: GPLv2+
+2019/avtech/gb_avtech_ip_camera_default_credentials.nasl: GPLv2+
 2019/beward/gb_beward_intercom_win_sec_bypass_vuln.nasl: GPLv2+
 2019/brickcom/gb_brickcom_network_camera_default_credentials.nasl: GPLv2+
 2019/cacti/gb_cacti_xss_vuln1_lin.nasl: GPLv2+
@@ -43988,6 +43989,7 @@
 2019/debian/deb_4381.nasl: GPLv2+
 2019/debian/deb_4382.nasl: GPLv2+
 2019/debian/deb_4383.nasl: GPLv2+
+2019/debian/deb_4384.nasl: GPLv2+
 2019/debian/deb_dla_1621.nasl: GPLv2+
 2019/debian/deb_dla_1623.nasl: GPLv2+
 2019/debian/deb_dla_1624.nasl: GPLv2+
@@ -44286,12 +44288,14 @@
 2019/wireshark/gb_wireshark_wnpa-sec-2019-02_wnpa-sec-2019-03_wnpa-sec-2019-04_win.nasl: GPLv2+
 2019/wireshark/gb_wireshark_wnpa-sec-2019-05_macosx.nasl: GPLv2+
 2019/wireshark/gb_wireshark_wnpa-sec-2019-05_win.nasl: GPLv2+
+2019/wordpress/gb_wordpress_adamrob-parallax-scroll_xss_vuln_feb19.nasl: GPLv2+
 2019/wordpress/gb_wordpress_social_network_tabs_info_discl_vuln.nasl: GPLv2+
 2019/wordpress/gb_wordpress_spam-byebye_xss_vuln_jan19.nasl: GPLv2+
 2019/wordpress/gb_wordpress_woocommerce_priv_esc_vuln_lin.nasl: GPLv2+
 2019/wordpress/gb_wordpress_woocommerce_priv_esc_vuln_win.nasl: GPLv2+
 2019/xerox/gb_xerox_altalink_mult_vuln.nasl: GPLv2+
 2019/zoneminder/gb_zoneminder_mult_vuln_jan19.nasl: GPLv2+
+2019/zoneminder/gb_zoneminder_mult_vuln_mar17.nasl: GPLv2+
 2019/zoneminder/gb_zoneminder_mult_vuln.nasl: GPLv2+
 2019/zoneminder/gb_zoneminder_xss_vuln.nasl: GPLv2+
 404.inc: GPLv2+
@@ -44428,6 +44432,7 @@ gb_abb_authentication_service_detect_win.nasl: GPLv2+
 gb_abb_automation_builder_installation_manager_detect_win.nasl: GPLv2+
 gb_abb_automation_builder_platform_detect_win.nasl: GPLv2+
 gb_abb_drive_composer_pro_detect_win.nasl: GPLv2+
+gb_abb_driveconfig_detect_win.nasl: GPLv2+
 gb_abb_drivemanager_for_simatic_detect_win.nasl: GPLv2+
 gb_abb_drivepm_detect_win.nasl: GPLv2+
 gb_abb_drivesize_detect_win.nasl: GPLv2+
@@ -44435,6 +44440,8 @@ gb_abb_ez_block_builder_detect_win.nasl: GPLv2+
 gb_abb_industrial_robot_communication_runtime_detect_win.nasl: GPLv2+
 gb_abb_ip_configuration_tool_detect_win.nasl: GPLv2+
 gb_abb_ipgateway_detect.nasl: GPLv2+
+gb_abb_ips_opc_server_detect_win.nasl: GPLv2+
+gb_abb_license_manager_detect_win.nasl: GPLv2+
 gb_abb_m2m_ethernet_detect.nasl: GPLv2+
 gb_abb_mcsize_detect_win.nasl: GPLv2+
 gb_abb_mechanical_unit_manager_detect_win.nasl: GPLv2+
@@ -44444,6 +44451,7 @@ gb_abb_motsize_detect_win.nasl: GPLv2+
 gb_abb_multionlinechange_detect_win.nasl: GPLv2+
 gb_abb_panel_builder_400_detect_win.nasl: GPLv2+
 gb_abb_panel_builder_600_detect_win.nasl: GPLv2+
+gb_abb_pluto_manager_detect_win.nasl: GPLv2+
 gb_abb_robotstudio_detect_win.nasl: GPLv2+
 gb_abb_robview_detect_win.nasl: GPLv2+
 gb_abb_sophie_detect_win.nasl: GPLv2+
@@ -44454,6 +44462,8 @@ gb_abb_tunemaster_detect_win.nasl: GPLv2+
 gb_abb_virtual_drive_detect_win.nasl: GPLv2+
 gb_abb_vsdsize_detect_win.nasl: GPLv2+
 gb_abb_welcome_detect_win.nasl: GPLv2+
+gb_abb_zenon_detect_win.nasl: GPLv2+
+gb_abb_zenon_installation_manager_detect_win.nasl: GPLv2+
 gb_ab_ethernet_detect.nasl: GPLv2+
 gb_abyss_detect.nasl: GPLv2+
 gb_accellion_fta_detect.nasl: GPLv2+
@@ -45646,6 +45656,7 @@ gb_omron_cx-supervisor_detect.nasl: GPLv2+
 gb_op5_detect.nasl: GPLv2+
 gb_opac_kpwinsql_detect.nasl: GPLv2+
 gb_opc_ua_detect.nasl: GPLv2+
+gb_opc_ua_local_discovery_server_detect_win.nasl: GPLv2+
 gb_openafs_detect.nasl: GPLv2+
 gb_open_audit_detect.nasl: GPLv2+
 gb_openca_detect.nasl: GPLv2+
@@ -63135,11 +63146,15 @@ gsf/2019/crestron/gb_crestron_arimedia_auth_bypass_vuln.nasl: GPLv2+
 gsf/2019/emc/gb_rsa_archer_DSA-2018-224.nasl: GPLv2+
 gsf/2019/f5/gb_f5_big_ip_K07721343.nasl: GPLv2+
 gsf/2019/f5/gb_f5_big_ip_K17264695.nasl: GPLv2+
+gsf/2019/f5/gb_f5_big_ip_K21350967.nasl: GPLv2+
 gsf/2019/f5/gb_f5_big_ip_K23566124.nasl: GPLv2+
+gsf/2019/f5/gb_f5_big_ip_K27228191.nasl: GPLv2+
 gsf/2019/f5/gb_f5_big_ip_K28241423.nasl: GPLv2+
 gsf/2019/f5/gb_f5_big_ip_K29146534.nasl: GPLv2+
 gsf/2019/f5/gb_f5_big_ip_K32840424.nasl: GPLv2+
+gsf/2019/f5/gb_f5_big_ip_K42531048.nasl: GPLv2+
 gsf/2019/f5/gb_f5_big_ip_K45616155.nasl: GPLv2+
+gsf/2019/f5/gb_f5_big_ip_K54252492.nasl: GPLv2+
 gsf/2019/f5/gb_f5_big_ip_K55101404.nasl: GPLv2+
 gsf/2019/f5/gb_f5_big_ip_K74114570.nasl: GPLv2+
 gsf/2019/fortinet/gb_fortinet_fortios_FG-IR-18-018.nasl: GPLv2+
@@ -63174,6 +63189,8 @@ gsf/2019/juniper/gb_junos_jsa10915.nasl: GPLv2+
 gsf/2019/juniper/gb_junos_jsa10916.nasl: GPLv2+
 gsf/2019/juniper/gb_junos_space_jsa10917-1.nasl: GPLv2+
 gsf/2019/juniper/gb_junos_space_jsa10917.nasl: GPLv2+
+gsf/2019/kaseya/gb_kaseya_vsa_connectwise_vuln.nasl: GPLv2+
+gsf/2019/kaseya/gb_kaseya_vsa_rce_vuln.nasl: GPLv2+
 gsf/2019/lcds/gb_lcds_laquis_scada_mult_vuln.nasl: GPLv2+
 gsf/2019/mcafee/gb_mcafee_application_control_mult_vuln_dec18.nasl: GPLv2+
 gsf/2019/mcafee/gb_mcafee_web_gateway_input_validation_vulnerability_jan19.nasl: GPLv2+
@@ -63215,6 +63232,7 @@ gsf/2019/schneider/gb_schneider_electric_proface_gp-pro_ex_input_validation_vuln
 gsf/2019/schneider/gb_schneider_eurotherm_guicon_mult_vuln.nasl: GPLv2+
 gsf/2019/schneider/gb_schneider_umotion_builder_mult_vuln.nasl: GPLv2+
 gsf/2019/schneider/gb_schneider_zelio_soft2_uaf_rce_vuln.nasl: GPLv2+
+gsf/2019/siemens/gb_simatic_s7_ssa-180635.nasl: GPLv2+
 gsf/2019/splunk/gb_splunk_rce_vuln.nasl: GPLv2+
 gsf/2019/teradata/gb_teradata_viewpoint_db_pw_vuln.nasl: GPLv2+
 gsf/2019/tibco/gb_tibco_spotfire_statistics_services_rce_vuln.nasl: GPLv2+

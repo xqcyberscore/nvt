@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2019_0043_1.nasl 13209 2019-01-22 08:11:01Z mmartin $
+# $Id: gb_suse_2019_0043_1.nasl 13489 2019-02-06 09:12:08Z cfischer $
 #
 # SuSE Update for java-1_8_0-openjdk openSUSE-SU-2019:0043-1 (java-1_8_0-openjdk)
 #
@@ -29,13 +29,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852231");
-  script_version("$Revision: 13209 $");
+  script_version("$Revision: 13489 $");
   script_cve_id("CVE-2018-13785", "CVE-2018-16435", "CVE-2018-3136", "CVE-2018-3139",
                 "CVE-2018-3149", "CVE-2018-3169", "CVE-2018-3180", "CVE-2018-3183",
                 "CVE-2018-3214");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-22 09:11:01 +0100 (Tue, 22 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 10:12:08 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-12 04:01:58 +0100 (Sat, 12 Jan 2019)");
   script_name("SuSE Update for java-1_8_0-openjdk openSUSE-SU-2019:0043-1 (java-1_8_0-openjdk)");
   script_category(ACT_GATHER_INFO);
@@ -58,13 +58,21 @@ if(description)
   Security issues fixed:
 
   - CVE-2018-3136: Manifest better support (bsc#1112142)
+
   - CVE-2018-3139: Better HTTP Redirection (bsc#1112143)
+
   - CVE-2018-3149: Enhance JNDI lookups (bsc#1112144)
+
   - CVE-2018-3169: Improve field accesses (bsc#1112146)
+
   - CVE-2018-3180: Improve TLS connections stability (bsc#1112147)
+
   - CVE-2018-3214: Better RIFF reading support (bsc#1112152)
+
   - CVE-2018-13785: Upgrade JDK 8u to libpng 1.6.35 (bsc#1112153)
+
   - CVE-2018-3183: Improve script engine support (bsc#1112148)
+
   - CVE-2018-16435: heap-based buffer overflow in SetData function in
   cmsIT8LoadFromFile
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pcman_ftp_server_mkd_command_bof_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_pcman_ftp_server_mkd_command_bof_vuln.nasl 13494 2019-02-06 10:06:36Z cfischer $
 #
 # PCMAN FTP Server MKD Command Buffer Overflow vulnerability
 #
@@ -24,14 +24,15 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805050");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 13494 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 11:06:36 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2015-02-25 12:32:52 +0530 (Wed, 25 Feb 2015)");
+  script_cve_id("CVE-2013-4730");
   script_name("PCMAN FTP Server MKD Command Buffer Overflow vulnerability");
 
   script_tag(name:"summary", value:"This host is running PCMAN FTP server and
@@ -51,8 +52,8 @@ if (description)
   also be affected.");
 
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
-Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the
+  product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
@@ -78,15 +79,9 @@ if("220 PCMan's FTP Server" >!< banner){
   exit(0);
 }
 
-user = get_kb_item("ftp/login");
-if(!user){
-  user = "anonymous";
-}
-
-pass = get_kb_item("ftp/password");
-if(!pass){
-  pass = "anonymous";
-}
+kb_creds = ftp_get_kb_creds();
+user = kb_creds["login"];
+pass = kb_creds["pass"];
 
 soc = open_sock_tcp(ftpPort);
 if(!soc) exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms99-33_remote.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: gb_ms99-33_remote.nasl 13494 2019-02-06 10:06:36Z cfischer $
 #
 # Microsoft IIS FTP Server 'Malformed FTP List Request' DOS Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:ftp_service";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802440");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 13494 $");
   script_cve_id("CVE-1999-0349");
   script_bugtraq_id(192);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 11:06:36 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2012-07-04 16:21:03 +0530 (Wed, 04 Jul 2012)");
   script_name("Microsoft IIS FTP Server 'Malformed FTP List Request' DOS Vulnerability");
   script_category(ACT_DENIAL);
@@ -48,9 +48,7 @@ if(description)
   script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/ms99-003");
 
   script_tag(name:"impact", value:"Successful exploitation will allows remote users to crash the application
-  leading to denial of service condition or execute arbitrary code.
-
-  .");
+  leading to denial of service condition or execute arbitrary code.");
 
   script_tag(name:"affected", value:"Microsoft Internet Information Services version 3.0 and 4.0.");
 
@@ -86,15 +84,9 @@ if(!soc) {
   exit(0);
 }
 
-login = get_kb_item("ftp/login");
-if(!login){
-  login = "anonymous";
-}
-
-pass = get_kb_item("ftp/password");
-if(!pass){
-  pass = "anonymous";
-}
+kb_creds = ftp_get_kb_creds();
+login = kb_creds["login"];
+pass = kb_creds["pass"];
 
 ftplogin = ftp_log_in(socket:soc, user:login, pass:pass);
 if(!ftplogin){

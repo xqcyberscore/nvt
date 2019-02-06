@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_coturn_http_detect.nasl 13360 2019-01-30 10:46:01Z ckuersteiner $
+# $Id: gb_coturn_http_detect.nasl 13486 2019-02-06 08:39:14Z cfischer $
 #
 # coturn Detection (HTTP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141941");
-  script_version("$Revision: 13360 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-30 11:46:01 +0100 (Wed, 30 Jan 2019) $");
+  script_version("$Revision: 13486 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 09:39:14 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-30 13:34:20 +0700 (Wed, 30 Jan 2019)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -58,12 +58,10 @@ The script sends a connection request to the server and attempts to detect cotur
 include("cpe.inc");
 include("host_details.inc");
 include("http_func.inc");
-include("http_keepalive.inc");
 
 port = get_http_port(default: 443);
-
 banner = get_http_banner(port: port);
-if ("Server: Coturn" >!< banner)
+if (!banner || "Server: Coturn" >!< banner)
   exit(0);
 
 version = "unknown";

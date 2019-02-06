@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2019_0051_1.nasl 13173 2019-01-21 06:39:39Z santu $
+# $Id: gb_suse_2019_0051_1.nasl 13489 2019-02-06 09:12:08Z cfischer $
 #
 # SuSE Update for sssd openSUSE-SU-2019:0051-1 (sssd)
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852236");
-  script_version("$Revision: 13173 $");
+  script_version("$Revision: 13489 $");
   script_cve_id("CVE-2018-10852");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-21 07:39:39 +0100 (Mon, 21 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 10:12:08 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-14 04:00:51 +0100 (Mon, 14 Jan 2019)");
   script_name("SuSE Update for sssd openSUSE-SU-2019:0051-1 (sssd)");
   script_category(ACT_GATHER_INFO);
@@ -60,15 +60,23 @@ if(description)
   These non-security issues were fixed:
 
   - Fix a segmentation fault in sss_cache command. (bsc#1072728)
+
   - Fix a failure in autofs initialisation sequence upon system boot.
   (bsc#1010700)
+
   - Fix race condition on boot between SSSD and autofs. (bsc#1010700)
+
   - Fix a bug where file descriptors were not closed (bsc#1080156)
+
   - Fix an issue where sssd logs were not rotated properly (bsc#1080156)
+
   - Remove whitespaces from netgroup entries (bsc#1087320)
+
   - Remove misleading log messages (bsc#1101877)
+
   - exit() the forked process if exec()-ing a child process fails
   (bsc#1110299)
+
   - Do not schedule the machine renewal task if adcli is not executable
   (bsc#1110299)
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zoneminder_mult_vuln_jan19.nasl 13464 2019-02-05 10:26:49Z asteins $
+# $Id: gb_zoneminder_mult_vuln_jan19.nasl 13479 2019-02-05 16:04:12Z asteins $
 #
 # ZoneMinder <= 1.33.1 Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112506");
-  script_version("$Revision: 13464 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-05 11:26:49 +0100 (Tue, 05 Feb 2019) $");
+  script_version("$Revision: 13479 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-05 17:04:12 +0100 (Tue, 05 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-02-05 11:16:13 +0100 (Tue, 05 Feb 2019)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -65,7 +65,7 @@ if (description)
   - Log injection.
 
   - A Time-of-check Time-of-use (TOCTOU) race condition.");
-  script_tag(name:"impact", value:"Successful exploitation would allow an attacker to to execute
+  script_tag(name:"impact", value:"Successful exploitation would allow an attacker to execute
   HTML or JavaScript code via multiple parameters, to access and modify records (add/delete Monitors, Users, etc.),
   to inject log messages, to hijack another user's account or to have other unspecified impact on the application and its host system.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");

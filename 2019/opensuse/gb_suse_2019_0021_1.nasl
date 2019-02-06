@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2019_0021_1.nasl 13173 2019-01-21 06:39:39Z santu $
+# $Id: gb_suse_2019_0021_1.nasl 13489 2019-02-06 09:12:08Z cfischer $
 #
 # SuSE Update for libgit2 openSUSE-SU-2019:0021-1 (libgit2)
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852233");
-  script_version("$Revision: 13173 $");
+  script_version("$Revision: 13489 $");
   script_cve_id("CVE-2018-19456");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-21 07:39:39 +0100 (Mon, 21 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 10:12:08 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-12 04:02:29 +0100 (Sat, 12 Jan 2019)");
   script_name("SuSE Update for libgit2 openSUSE-SU-2019:0021-1 (libgit2)");
   script_category(ACT_GATHER_INFO);
@@ -56,6 +56,7 @@ if(description)
 
   - CVE-2018-19456: Fixed a code execution by malicious .gitmodules file
   (bsc#1110949)
+
   - various string-to-integer and buffer handling fixes (bsc#1114729).
 
   This update was imported from the SUSE:SLE-12-SP2:Update update project.

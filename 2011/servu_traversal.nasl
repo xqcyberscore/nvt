@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: servu_traversal.nasl 11263 2018-09-06 09:28:26Z cfischer $
+# $Id: servu_traversal.nasl 13494 2019-02-06 10:06:36Z cfischer $
 #
 # Serv-U FTP Server Jail Break
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:rhinosoft:serv-u";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103354");
-  script_version("$Revision: 11263 $");
+  script_version("$Revision: 13494 $");
   script_bugtraq_id(50875);
   script_cve_id("CVE-2011-4800");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
   script_name("Serv-U FTP Server Jail Break");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 11:28:26 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 11:06:36 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2011-12-02 11:28:44 +0100 (Fri, 02 Dec 2011)");
   script_category(ACT_ATTACK);
   script_family("FTP");
@@ -75,17 +75,16 @@ if( ! get_app_location(cpe:CPE, port:port)) exit(0);
 
 files = traversal_files("windows");
 
+kb_creds = ftp_get_kb_creds();
+user = kb_creds["login"];
+pass = kb_creds["pass"];
+
 foreach file(keys(files)){
 
   soc1 = open_sock_tcp(port);
   if(!soc1){
     exit(0);
   }
-
-  user = get_kb_item("ftp/login");
-  pass = get_kb_item("ftp/password");
-  if(!user)user = "Anonymous";
-  if(!pass)pass = "openvas";
 
   login_details = ftp_log_in(socket:soc1, user:user, pass:pass);
   if(!login_details){

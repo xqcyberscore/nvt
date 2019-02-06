@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_load_parameter_dos_vuln_lin.nasl 12897 2018-12-28 14:09:23Z asteins $
+# $Id: gb_wordpress_load_parameter_dos_vuln_lin.nasl 13491 2019-02-06 09:26:37Z asteins $
 #
 # WordPress 'load-scripts.php' Denial of Service Vulnerability (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812693");
-  script_version("$Revision: 12897 $");
+  script_version("$Revision: 13491 $");
   script_cve_id("CVE-2018-6389");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-28 15:09:23 +0100 (Fri, 28 Dec 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 10:26:37 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-02-05 20:23:28 +0530 (Mon, 05 Feb 2018)");
   script_name("WordPress 'load-scripts.php' Denial of Service Vulnerability (Linux)");
 
@@ -51,11 +51,12 @@ if(description)
 
   script_tag(name:"affected", value:"WordPress versions 4.9.2 and prior on Linux");
 
-  script_tag(name:"solution", value:"No known solution is available as of 28th December, 2018. Information
-  regarding this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since
+  the disclosure of this vulnerability. Likely none will be provided anymore. General solution options
+  are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   # nb: Seems it won't be fixed by WP according to: https://wordpress.org/support/topic/does-wordfence-patch-dos-issue-cve-2018-6389-automatically/
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
   script_xref(name:"URL", value:"https://thehackernews.com/2018/02/wordpress-dos-exploit.html");

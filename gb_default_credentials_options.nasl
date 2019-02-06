@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_default_credentials_options.nasl 13443 2019-02-04 15:15:49Z cfischer $
+# $Id: gb_default_credentials_options.nasl 13481 2019-02-05 18:48:16Z cfischer $
 #
 # Options for Brute Force NVTs
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103697");
-  script_version("$Revision: 13443 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-04 16:15:49 +0100 (Mon, 04 Feb 2019) $");
+  script_version("$Revision: 13481 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-05 19:48:16 +0100 (Tue, 05 Feb 2019) $");
   script_tag(name:"creation_date", value:"2013-04-15 10:23:42 +0200 (Mon, 15 Apr 2013)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -90,18 +90,17 @@ if(description)
   exit(0);
 }
 
-disable_bf = script_get_preference_file_content( "Disable brute force checks" );
-if( "yes" >< disable_bf ) {
+disable_bf = script_get_preference( "Disable brute force checks" );
+if( "yes" >< disable_bf )
   set_kb_item( name:"default_credentials/disable_brute_force_checks", value:TRUE );
-}
 
-disable_da = script_get_preference_file_content( "Disable default account checks" );
-if( "yes" >< disable_da ) {
+disable_da = script_get_preference( "Disable default account checks" );
+if( "yes" >< disable_da )
   set_kb_item( name:"default_credentials/disable_default_account_checks", value:TRUE );
-}
 
 credentials_list = script_get_preference_file_content( "Credentials file:" );
-if( ! credentials_list ) exit( 0 );
+if( ! credentials_list )
+  exit( 0 );
 
 credentials_lines = split( credentials_list, keep:FALSE );
 

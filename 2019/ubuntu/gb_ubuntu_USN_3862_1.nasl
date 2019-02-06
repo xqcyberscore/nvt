@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3862_1.nasl 13209 2019-01-22 08:11:01Z mmartin $
+# $Id: gb_ubuntu_USN_3862_1.nasl 13489 2019-02-06 09:12:08Z cfischer $
 #
 # Ubuntu Update for irssi USN-3862-1
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843875");
-  script_version("$Revision: 13209 $");
+  script_version("$Revision: 13489 $");
   script_cve_id("CVE-2019-5882");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-22 09:11:01 +0100 (Tue, 22 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 10:12:08 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-18 04:01:14 +0100 (Fri, 18 Jan 2019)");
   script_name("Ubuntu Update for irssi USN-3862-1");
   script_category(ACT_GATHER_INFO);
@@ -43,7 +43,7 @@ if(description)
   script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(14\.04 LTS|18\.04 LTS|18\.10|16\.04 LTS)");
 
   script_xref(name:"USN", value:"3862-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3862-1/");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3862-1/");
 
   script_tag(name:"summary", value:"The remote host is missing an update for the 'irssi'
   package(s) announced via the USN-3862-1 advisory.");
@@ -54,9 +54,9 @@ if(description)
 An attacker could possibly use this issue to cause a denial of service
 or to execute arbitrary code.");
 
-  script_tag(name:"affected", value:"irssi on Ubuntu 18.10 ,
-  Ubuntu 18.04 LTS ,
-  Ubuntu 16.04 LTS ,
+  script_tag(name:"affected", value:"irssi on Ubuntu 18.10,
+  Ubuntu 18.04 LTS,
+  Ubuntu 16.04 LTS,
   Ubuntu 14.04 LTS.");
 
   script_tag(name:"solution", value:"Please install the updated package(s).");

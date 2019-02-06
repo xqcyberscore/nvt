@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ssh_os_detection.nasl 12957 2019-01-07 10:29:34Z cfischer $
+# $Id: gb_ssh_os_detection.nasl 13486 2019-02-06 08:39:14Z cfischer $
 #
 # SSH OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105586");
-  script_version("$Revision: 12957 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-07 11:29:34 +0100 (Mon, 07 Jan 2019) $");
+  script_version("$Revision: 13486 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 09:39:14 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2016-03-23 14:28:40 +0100 (Wed, 23 Mar 2016)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -84,7 +84,7 @@ if( egrep( pattern:"^SSH-2\.0-RomSShell_[0-9.]+$", string:banner ) ||
   exit( 0 );
 
 # Cross-platform / platform independent
-if( banner == "SSH-2.0-Mocana SSH" || 
+if( banner == "SSH-2.0-Mocana SSH" ||
     egrep( pattern:"^SSH-2\.0-Mocana SSH [0-9.]+$", string:banner ) )
   exit( 0 );
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_telnet_ftp_server_dir_trav_vun.nasl 12105 2018-10-26 05:54:03Z cfischer $
+# $Id: gb_telnet_ftp_server_dir_trav_vun.nasl 13494 2019-02-06 10:06:36Z cfischer $
 #
 # Telnet-Ftp Server Directory Traversal Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803736");
-  script_version("$Revision: 12105 $");
+  script_version("$Revision: 13494 $");
   script_cve_id("CVE-2006-6240", "CVE-2006-6241");
   script_bugtraq_id(21339, 21340);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 07:54:03 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 11:06:36 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2013-08-19 10:32:03 +0530 (Mon, 19 Aug 2013)");
   script_name("Telnet-Ftp Server Directory Traversal Vulnerability");
   script_category(ACT_ATTACK);
@@ -84,16 +84,9 @@ soc = open_sock_tcp(port);
 if( ! soc )
   exit( 0 );
 
-user = get_kb_item( "ftp/login" );
-pass = get_kb_item( "ftp/password" );
-
-if( ! user )
-  user = "anonymous";
-
-if( ! pass ) {
-  vtstrings = get_vt_strings();
-  pass = string( vtstrings["lowercase"], "@example.com" );
-}
+kb_creds = ftp_get_kb_creds();
+user = kb_creds["login"];
+pass = kb_creds["pass"];
 
 login_details = ftp_log_in( socket:soc, user:user, pass:pass );
 if( ! login_details ) {

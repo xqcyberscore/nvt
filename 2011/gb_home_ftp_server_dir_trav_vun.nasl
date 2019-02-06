@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_home_ftp_server_dir_trav_vun.nasl 12098 2018-10-25 13:07:45Z cfischer $
+# $Id: gb_home_ftp_server_dir_trav_vun.nasl 13494 2019-02-06 10:06:36Z cfischer $
 #
 # Home FTP Server Multiple Directory Traversal Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801599");
-  script_version("$Revision: 12098 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 15:07:45 +0200 (Thu, 25 Oct 2018) $");
+  script_version("$Revision: 13494 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 11:06:36 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2011-03-04 14:32:35 +0100 (Fri, 04 Mar 2011)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
@@ -76,16 +76,9 @@ soc1 = open_sock_tcp( port );
 if( ! soc1 )
   exit( 0 );
 
-user = get_kb_item( "ftp/login" );
-pass = get_kb_item( "ftp/password" );
-
-if( ! user )
-  user = "anonymous";
-
-if( ! pass ) {
-  vtstrings = get_vt_strings();
-  pass = string( vtstrings["lowercase"], "@example.com" );
-}
+kb_creds = ftp_get_kb_creds();
+user = kb_creds["login"];
+pass = kb_creds["pass"];
 
 login_details = ftp_log_in( socket:soc1, user:user, pass:pass );
 if( ! login_details ) {

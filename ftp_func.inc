@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: ftp_func.inc 13458 2019-02-05 09:02:06Z cfischer $
+# $Id: ftp_func.inc 13492 2019-02-06 09:37:34Z cfischer $
 #
 # Methods for handling FTP
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 13458 $
+# $Revision: 13492 $
 #
 ###############################################################################
 
@@ -551,6 +551,11 @@ function ftp_get_ports( default_list, ignore_broken, ignore_unscanned ) {
 # @brief Returns an array containing the username/password credentials pair for a FTP login.
 #        To avoid querying the KB for the same info again it will be cached within an internal variable.
 #
+# @param default_login The (optional) default login which should be used if no valid credentials where
+#                      found in the KB.
+# @param default_pass  The (optional) default password which should be used if no valid credentials where
+#                      found in the KB.
+#
 # @return An array containing the following array indices:
 #
 #         ret_array["login"] = The login defined via the "FTP account" preference of logins.nasl,
@@ -563,27 +568,38 @@ function ftp_get_ports( default_list, ignore_broken, ignore_unscanned ) {
 # @note Please include secpod_ftp_anonymous.nasl (or any VT pulling this dependency in) into your
 #       script_dependencies so that an detected anonymous account is taken into account.
 #
-function ftp_get_kb_creds() {
+function ftp_get_kb_creds( default_login, default_pass ) {
 
+  local_var default_login, default_pass;
   local_var login, pass, ret_array;
   # nb: __ftp_kb_login and __ftp_kb_pass are global vars
 
-  if( ! isnull( __ftp_kb_login ) ) {
+  if( ! isnull( __ftp_kb_login && ! default_login ) ) {
     login = string( __ftp_kb_login );
   } else {
     login = get_kb_item( "ftp/login" );
-    if( isnull( login ) )
-      login = "anonymous";
-    __ftp_kb_login = string( login );
+    if( isnull( login ) ) {
+      if( default_login )
+        login = default_login;
+      else
+        login = "anonymous";
+    }
+    if( ! default_login )
+      __ftp_kb_login = string( login );
   }
 
-  if( ! isnull( __ftp_kb_pass ) ) {
+  if( ! isnull( __ftp_kb_pass ) && ! default_pass ) {
     pass = string( __ftp_kb_pass );
   } else {
     pass = get_kb_item( "ftp/password" );
-    if( isnull( pass ) )
-      pass = "anonymous@example.com";
-    __ftp_kb_pass = string( pass );
+    if( isnull( pass ) ) {
+      if( default_pass )
+        pass = default_pass;
+      else
+        pass = "anonymous@example.com";
+    }
+    if( ! default_pass )
+      __ftp_kb_pass = string( pass );
   }
 
   ret_array["login"] = login;

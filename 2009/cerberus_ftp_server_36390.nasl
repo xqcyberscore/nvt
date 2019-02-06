@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cerberus_ftp_server_36390.nasl 13210 2019-01-22 09:14:04Z cfischer $
+# $Id: cerberus_ftp_server_36390.nasl 13485 2019-02-06 07:53:13Z cfischer $
 #
 # Cerberus FTP Server Long Command Remote Denial of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100284");
-  script_version("$Revision: 13210 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-22 10:14:04 +0100 (Tue, 22 Jan 2019) $");
+  script_version("$Revision: 13485 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 08:53:13 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-10-02 19:48:14 +0200 (Fri, 02 Oct 2009)");
   script_bugtraq_id(36390);
   script_tag(name:"cvss_base", value:"5.0");
@@ -46,7 +46,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
   script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
-  script_mandatory_keys("ftp_banner/available");
+  script_mandatory_keys("ftp/cerberus/detected");
 
   script_tag(name:"summary", value:"Cerberus FTP Server is prone to a denial-of-service vulnerability.");
 
@@ -67,9 +67,9 @@ if(description)
 include("ftp_func.inc");
 
 ftpPort = get_ftp_port(default:21);
-if(!banner = get_ftp_banner(port:ftpPort))exit(0);
-
-if("Cerberus" >!< banner)exit(0);
+banner = get_ftp_banner(port:ftpPort);
+if(!banner || "Cerberus" >!< banner)
+  exit(0);
 
 soc1 = open_sock_tcp(ftpPort);
 soc2 = open_sock_tcp(ftpPort);
@@ -106,4 +106,4 @@ if(!ftp_recv_line(socket: soc)) {
 
 if(soc)close(soc);
 
-exit(0); 
+exit(0);

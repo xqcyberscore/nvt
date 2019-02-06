@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_n_compact_ftpd_server_mult_vun.nasl 12100 2018-10-25 13:58:16Z cfischer $
+# $Id: gb_open_n_compact_ftpd_server_mult_vun.nasl 13494 2019-02-06 10:06:36Z cfischer $
 #
 # Open and Compact FTPD Auth Bypass and Directory Traversal Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803733");
-  script_version("$Revision: 12100 $");
+  script_version("$Revision: 13494 $");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 15:58:16 +0200 (Thu, 25 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 11:06:36 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2013-08-12 11:33:28 +0530 (Mon, 12 Aug 2013)");
   script_name("Open and Compact FTPD Auth Bypass and Directory Traversal Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -87,16 +87,9 @@ soc = open_sock_tcp( port );
 if( ! soc )
   exit( 0 );
 
-user = get_kb_item( "ftp/login" );
-pass = get_kb_item( "ftp/password" );
-
-if( ! user )
-  user = "anonymous";
-
-if( ! pass ) {
-  vtstrings = get_vt_strings();
-  pass = string( vtstrings["lowercase"], "@example.com" );
-}
+kb_creds = ftp_get_kb_creds();
+user = kb_creds["login"];
+pass = kb_creds["pass"];
 
 send( socket:soc, data:string( "USER ", user, "\r\n" ) );
 buf = recv( socket:soc, length:512 );

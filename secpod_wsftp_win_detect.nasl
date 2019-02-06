@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wsftp_win_detect.nasl 11256 2018-09-06 07:32:15Z cfischer $
+# $Id: secpod_wsftp_win_detect.nasl 13497 2019-02-06 10:45:54Z cfischer $
 #
 # WS_FTP Server Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900608");
-  script_version("$Revision: 11256 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 09:32:15 +0200 (Thu, 06 Sep 2018) $");
+  script_version("$Revision: 13497 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 11:45:54 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-03-12 10:50:11 +0100 (Thu, 12 Mar 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -36,8 +36,9 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Product detection");
-  script_dependencies("find_service_3digits.nasl");
+  script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
+  script_mandatory_keys("ftp/ws_ftp/detected");
 
   script_tag(name:"summary", value:"This script determines the WS_FTP server version on the remote host
   and sets the result in the KB.");
@@ -53,7 +54,8 @@ include("ftp_func.inc");
 
 port = get_ftp_port( default:21 );
 banner = get_ftp_banner( port:port );
-if( "WS_FTP Server" >!< banner ) exit( 0 );
+if(! banner || "WS_FTP Server" >!< banner )
+  exit( 0 );
 
 install = port + "/tcp";
 version = "unknown";

