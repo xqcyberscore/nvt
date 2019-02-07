@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ftp_writeable_directories.nasl 9541 2018-04-19 13:42:33Z cfischer $
+# $Id: ftp_writeable_directories.nasl 13509 2019-02-06 15:50:00Z cfischer $
 #
 # FTP Writeable Directories
 #
@@ -8,7 +8,7 @@
 # Tenable Network Security
 #
 # Copyright:
-# Copyright (C) 2005 TNS
+# Copyright (C) 2006 TNS
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2,
@@ -27,17 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.19782");
-  script_version("$Revision: 9541 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-19 15:42:33 +0200 (Thu, 19 Apr 2018) $");
+  script_version("$Revision: 13509 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 16:50:00 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_name("FTP Writeable Directories");
   script_category(ACT_GATHER_INFO);
-  script_copyright("This script is Copyright (C) 2005 TNS");
+  script_copyright("This script is Copyright (C) 2006 TNS");
   script_family("FTP");
   script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
+  script_mandatory_keys("ftp_banner/available", "ftp/anonymous_ftp/detected");
 
   script_tag(name:"summary", value:"The remote FTP server contains world-writeable files.
 
@@ -74,8 +75,9 @@ if( safe_checks() ) {
   Mode = MODE_WRITE;
 }
 
-login = "anonymous";
-pwd   = "openvas@example.org";
+# nb: Don't use ftp/login or ftp_get_kb_creds as both might contain a different user
+login = get_kb_item( "ftp/anonymous/login" );
+pwd   = get_kb_item( "ftp/anonymous/password" );
 
 function crawl_dir( socket, directory, level ) {
 
@@ -97,7 +99,8 @@ function crawl_dir( socket, directory, level ) {
 
   alreadyadded = 0;
   if( Mode == MODE_WRITE ) {
-    str = "OpenVAS" + rand_str(length:8);
+    vt_strings = get_vt_strings();
+    str = vt_strings["default_rand"];
     send( socket:socket, data:'MKD ' + directory + sep + str  + '\r\n' );
     r = ftp_recv_line( socket:socket );
     if( r[0] == '2' ) {

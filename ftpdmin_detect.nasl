@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ftpdmin_detect.nasl 9537 2018-04-19 11:49:54Z cfischer $
+# $Id: ftpdmin_detect.nasl 13506 2019-02-06 14:18:08Z cfischer $
 #
 # Ftpdmin Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100131");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 9537 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-19 13:49:54 +0200 (Thu, 19 Apr 2018) $");
+  script_version("$Revision: 13506 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 15:18:08 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-04-13 18:06:40 +0200 (Mon, 13 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Ftpdmin Detection");
@@ -38,7 +38,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
   script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
-  script_mandatory_keys("ftp_banner/available");
+  script_mandatory_keys("ftp/ftpdmin/detected");
 
   script_xref(name:"URL", value:"http://www.sentex.net/~mwandel/ftpdmin/");
 
@@ -57,22 +57,16 @@ include("host_details.inc");
 include("misc_func.inc");
 
 port = get_ftp_port(default:21);
-if(!banner = get_ftp_banner(port:port))exit(0);
+banner = get_ftp_banner(port:port);
 
-if("Minftpd" >< banner) {
+if(banner && "Minftpd" >< banner) {
 
   vers = "unknown";
 
-  soc = open_sock_tcp(port);
-  if (! soc) exit(0);
-  ftp_recv_line(socket:soc);
-
-  syst = string("syst\r\n");
-  send(socket:soc, data:syst);
-  line = ftp_recv_line(socket:soc);
-  ftp_close(socket:soc);
-  version = eregmatch(pattern:"^215.*ftpdmin v\. ([0-9.]+)", string:line);
-  if(!isnull(version[1])) vers = version[1];
+  syst = get_ftp_cmd_banner(port:port, cmd:"SYST");
+  version = eregmatch(pattern:"^215.*ftpdmin v\. ([0-9.]+)", string:syst);
+  if(!isnull(version[1]))
+    vers = version[1];
 
   set_kb_item(name:"ftpdmin/Ver", value:vers);
   set_kb_item(name:"ftpdmin/installed", value:TRUE);
@@ -81,7 +75,7 @@ if("Minftpd" >< banner) {
   if (!cpe)
     cpe = 'cpe:/a:ftpdmin:ftpdmin';
 
-  register_product(cpe:cpe, location:port + '/tcp', port:port);
+  register_product(cpe:cpe, location:port + '/tcp', port:port, service:"ftp");
 
   log_message(data:build_detection_report(app:"Ftpdmin", version:vers, install:port + '/tcp',
                                           cpe:cpe, concluded:version[0]),

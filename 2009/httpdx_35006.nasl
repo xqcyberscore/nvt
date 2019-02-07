@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: httpdx_35006.nasl 13215 2019-01-22 11:59:45Z cfischer $
+# $Id: httpdx_35006.nasl 13499 2019-02-06 12:55:20Z cfischer $
 #
 # httpdx Multiple Commands Remote Buffer Overflow Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100210");
-  script_version("$Revision: 13215 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-22 12:59:45 +0100 (Tue, 22 Jan 2019) $");
+  script_version("$Revision: 13499 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 13:55:20 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-05-24 11:22:37 +0200 (Sun, 24 May 2009)");
   script_bugtraq_id(35006);
   script_tag(name:"cvss_base", value:"9.3");
@@ -40,7 +40,7 @@ if(description)
   script_family("FTP");
   script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
-  script_mandatory_keys("ftp_banner/available");
+  script_mandatory_keys("ftp/httpdx/detected");
 
   script_tag(name:"summary", value:"The 'httpdx' program is prone to multiple remote buffer-overflow
   vulnerabilities because the application fails to perform adequate
@@ -66,10 +66,8 @@ if(description)
 include("ftp_func.inc");
 
 ftpPort = get_ftp_port(default:21);
-if(!banner = get_ftp_banner(port:ftpPort))
-  exit(0);
-
-if("httpdx" >!< banner)
+banner = get_ftp_banner(port:ftpPort);
+if(!banner || "httpdx" >!< banner)
   exit(0);
 
 if(safe_checks()) {

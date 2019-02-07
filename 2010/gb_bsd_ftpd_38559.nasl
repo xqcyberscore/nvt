@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bsd_ftpd_38559.nasl 13475 2019-02-05 14:51:19Z cfischer $
+# $Id: gb_bsd_ftpd_38559.nasl 13506 2019-02-06 14:18:08Z cfischer $
 #
 # FreeBSD and OpenBSD 'ftpd' NULL Pointer Dereference Denial Of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100532");
-  script_version("$Revision: 13475 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-05 15:51:19 +0100 (Tue, 05 Feb 2019) $");
+  script_version("$Revision: 13506 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 15:18:08 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2010-03-15 19:33:39 +0100 (Mon, 15 Mar 2010)");
   script_bugtraq_id(38559);
   script_tag(name:"cvss_base", value:"7.1");
@@ -67,6 +67,14 @@ if(description)
 include("ftp_func.inc");
 
 ftpPort = get_ftp_port(default:21);
+banner = get_ftp_banner(port:ftpPort);
+if(!banner)
+  exit(0);
+
+result = get_ftp_cmd_banner(port:ftpPort, cmd:"SYST");
+if("BSD" >!< result)
+  exit(0);
+
 soc1 = open_sock_tcp(ftpPort);
 if(!soc1)
   exit(0);
@@ -77,12 +85,6 @@ pass = kb_creds["pass"];
 
 login_details = ftp_log_in(socket:soc1, user:user, pass:pass);
 if(!login_details) {
-  ftp_close(socket:soc1);
-  exit(0);
-}
-
-result = ftp_send_cmd(socket:soc1, cmd: string("syst"));
-if("BSD" >!< result) {
   ftp_close(socket:soc1);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pcman_ftp_server_mkd_command_bof_vuln.nasl 13494 2019-02-06 10:06:36Z cfischer $
+# $Id: gb_pcman_ftp_server_mkd_command_bof_vuln.nasl 13517 2019-02-07 07:51:12Z mmartin $
 #
 # PCMAN FTP Server MKD Command Buffer Overflow vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805050");
-  script_version("$Revision: 13494 $");
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-06 11:06:36 +0100 (Wed, 06 Feb 2019) $");
+  script_version("$Revision: 13517 $");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-07 08:51:12 +0100 (Thu, 07 Feb 2019) $");
   script_tag(name:"creation_date", value:"2015-02-25 12:32:52 +0530 (Wed, 25 Feb 2015)");
   script_cve_id("CVE-2013-4730");
   script_name("PCMAN FTP Server MKD Command Buffer Overflow vulnerability");
@@ -66,7 +66,7 @@ if(description)
   script_family("FTP");
   script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
-  script_mandatory_keys("ftp_banner/available");
+  script_mandatory_keys("ftp/pcmans/ftp/detected");
 
   exit(0);
 }
@@ -75,9 +75,8 @@ include("ftp_func.inc");
 
 ftpPort = get_ftp_port(default:21);
 banner = get_ftp_banner(port:ftpPort);
-if("220 PCMan's FTP Server" >!< banner){
+if(!banner || "220 PCMan's FTP Server" >!< banner)
   exit(0);
-}
 
 kb_creds = ftp_get_kb_creds();
 user = kb_creds["login"];

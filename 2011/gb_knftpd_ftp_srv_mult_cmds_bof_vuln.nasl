@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_knftpd_ftp_srv_mult_cmds_bof_vuln.nasl 13347 2019-01-29 15:54:59Z cfischer $
+# $Id: gb_knftpd_ftp_srv_mult_cmds_bof_vuln.nasl 13499 2019-02-06 12:55:20Z cfischer $
 #
 # KnFTPd FTP Server Multiple Commands Remote Buffer Overflow Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802034");
-  script_version("$Revision: 13347 $");
+  script_version("$Revision: 13499 $");
   script_cve_id("CVE-2011-5166");
   script_bugtraq_id(49427);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-29 16:54:59 +0100 (Tue, 29 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 13:55:20 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2011-09-07 08:36:57 +0200 (Wed, 07 Sep 2011)");
   script_name("KnFTPd FTP Server Multiple Commands Remote Buffer Overflow Vulnerabilities");
   script_category(ACT_DENIAL);
@@ -40,7 +40,7 @@ if(description)
   script_family("FTP");
   script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
-  script_mandatory_keys("ftp_banner/available");
+  script_mandatory_keys("ftp/ftp_ready_banner/detected");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/519498");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/69557");
@@ -72,9 +72,8 @@ include("ftp_func.inc");
 
 port = get_ftp_port(default:21);
 banner = get_ftp_banner(port:port);
-if(!banner || "220 FTP Server ready" >!< banner){
+if(!banner || "220 FTP Server ready" >!< banner)
   exit(0);
-}
 
 soc = open_sock_tcp(port);
 if(!soc) {

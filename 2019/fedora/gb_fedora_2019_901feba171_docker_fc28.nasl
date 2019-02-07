@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2019_901feba171_docker_fc28.nasl 13384 2019-01-31 14:06:40Z santu $
+# $Id: gb_fedora_2019_901feba171_docker_fc28.nasl 13517 2019-02-07 07:51:12Z mmartin $
 #
 # Fedora Update for docker FEDORA-2019-901feba171
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875435");
-  script_version("$Revision: 13384 $");
+  script_version("$Revision: 13517 $");
   script_cve_id("CVE-2018-20699", "CVE-2018-10892");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-31 15:06:40 +0100 (Thu, 31 Jan 2019) $");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-07 08:51:12 +0100 (Thu, 07 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-31 04:06:50 +0100 (Thu, 31 Jan 2019)");
   script_name("Fedora Update for docker FEDORA-2019-901feba171");
   script_category(ACT_GATHER_INFO);

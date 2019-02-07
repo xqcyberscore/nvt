@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_monstra_cms_mult_vuln.nasl 12356 2018-11-15 06:27:24Z ckuersteiner $
+# $Id: gb_monstra_cms_mult_vuln.nasl 13515 2019-02-07 07:01:25Z ckuersteiner $
 #
 # Monstra CMS <= 3.0.4 Multiple Vulnerabilities
 #
@@ -28,15 +28,15 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113204");
-  script_version("$Revision: 12356 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-15 07:27:24 +0100 (Thu, 15 Nov 2018) $");
+  script_version("$Revision: 13515 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-07 08:01:25 +0100 (Thu, 07 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-05-29 16:04:31 +0200 (Tue, 29 May 2018)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_cve_id("CVE-2018-11472", "CVE-2018-11473", "CVE-2018-11474", "CVE-2018-11475",
                 "CVE-2018-18048", "CVE-2018-6383", "CVE-2018-6550", "CVE-2018-9037",
@@ -88,8 +88,8 @@ if( description )
   - plugins/box/users/users.plugin.php allows Login Rate Limiting Bypass via manipulation of the login_attempts cookie.");
   script_tag(name:"affected", value:"Monstra CMS through version 3.0.4.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 15th November, 2018.
-  Information regarding this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"Monstra CMS is not supported anymore. Therefore it is advised to remove the
+product or replace it by another one.");
 
   script_xref(name:"URL", value:"https://github.com/monstra-cms/monstra/issues/443");
   script_xref(name:"URL", value:"https://github.com/monstra-cms/monstra/issues/444");
@@ -108,7 +108,7 @@ if( ! port = get_app_port( cpe: CPE ) ) exit( 0 );
 if( ! version = get_app_version( cpe: CPE, port: port ) ) exit( 0 );
 
 if( version_is_less_equal( version: version, test_version: "3.0.4" ) ) {
-  report = report_fixed_ver( installed_version: version, fixed_version: "NoneAvailable" );
+  report = report_fixed_ver( installed_version: version, fixed_version: "None" );
   security_message( data: report, port: port );
   exit( 0 );
 }

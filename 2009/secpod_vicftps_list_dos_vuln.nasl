@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_vicftps_list_dos_vuln.nasl 13210 2019-01-22 09:14:04Z cfischer $
+# $Id: secpod_vicftps_list_dos_vuln.nasl 13499 2019-02-06 12:55:20Z cfischer $
 #
 # VicFTPS LIST Command Denial of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900580");
-  script_version("$Revision: 13210 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-22 10:14:04 +0100 (Tue, 22 Jan 2019) $");
+  script_version("$Revision: 13499 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 13:55:20 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-06-26 07:55:21 +0200 (Fri, 26 Jun 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -44,7 +44,7 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("ftpserver_detect_type_nd_version.nasl", "os_detection.nasl");
   script_require_ports("Services/ftp", 21);
-  script_mandatory_keys("ftp_banner/available", "Host/runs_windows");
+  script_mandatory_keys("ftp/vicftps/detected", "Host/runs_windows");
 
   script_tag(name:"impact", value:"Successful exploitation allows attackers to execute arbitrary
 code, and can crash the affected application.");
@@ -71,8 +71,8 @@ include("ftp_func.inc");
 include("version_func.inc");
 
 vicPort = get_ftp_port(default:21);
-
-if("VicFTPS" >!< get_ftp_banner(port:vicPort))
+banner = get_ftp_banner(port:vicPort);
+if(!banner || "VicFTPS" >!< banner)
   exit(0);
 
 soc = open_sock_tcp(vicPort);

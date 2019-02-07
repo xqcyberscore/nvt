@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: open_ftpd_30993.nasl 13210 2019-01-22 09:14:04Z cfischer $
+# $Id: open_ftpd_30993.nasl 13499 2019-02-06 12:55:20Z cfischer $
 #
 # Open-FTPD Multiple Buffer Overflow Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100495");
-  script_version("$Revision: 13210 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-22 10:14:04 +0100 (Tue, 22 Jan 2019) $");
+  script_version("$Revision: 13499 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 13:55:20 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2010-02-17 20:53:20 +0100 (Wed, 17 Feb 2010)");
   script_bugtraq_id(30993);
   script_tag(name:"cvss_base", value:"7.5");
@@ -45,7 +45,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
   script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
-  script_mandatory_keys("ftp_banner/available");
+  script_mandatory_keys("ftp/open-ftpd/detected");
 
   script_tag(name:"summary", value:"Open-FTPD is prone to multiple buffer-overflow vulnerabilities because
   it fails to perform adequate boundary checks on user-supplied data.");

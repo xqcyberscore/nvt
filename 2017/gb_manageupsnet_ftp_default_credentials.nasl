@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageupsnet_ftp_default_credentials.nasl 11901 2018-10-15 08:47:18Z mmartin $
+# $Id: gb_manageupsnet_ftp_default_credentials.nasl 13499 2019-02-06 12:55:20Z cfischer $
 #
 # ManageUPSNET FTP Default Credentials
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113052");
-  script_version("$Revision: 11901 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 10:47:18 +0200 (Mon, 15 Oct 2018) $");
+  script_version("$Revision: 13499 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 13:55:20 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-11-16 11:04:05 +0100 (Thu, 16 Nov 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -46,13 +46,17 @@ if( description )
   script_family("Default Accounts");
   script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
-  script_mandatory_keys("ftp_banner/available");
+  script_mandatory_keys("ftp/manageupsnet/detected");
 
-  script_tag(name:"summary", value:"ManageUPSNET Telnet and FTP uses remote credentials 'admin' - 'admin'");
-  script_tag(name:"vuldetect", value:"The script tries to login via FTP using the username 'admin' and the password 'admin'");
+  script_tag(name:"summary", value:"ManageUPSNET Telnet and FTP uses remote credentials 'admin' - 'admin'.");
+
+  script_tag(name:"vuldetect", value:"The script tries to login via FTP using the username 'admin' and the password 'admin'.");
+
   script_tag(name:"impact", value:"Successful exploitation would allow to gain complete administrative access to the host.");
-  script_tag(name:"affected", value:"All ManageUPSNET devices version 2.6 or later");
-  script_tag(name:"solution", value:"Change the default password for the administrative account 'admin' for both Telnet and FTP");
+
+  script_tag(name:"affected", value:"All ManageUPSNET devices version 2.6 or later.");
+
+  script_tag(name:"solution", value:"Change the default password for the administrative account 'admin' for both Telnet and FTP.");
 
   script_xref(name:"URL", value:"http://005c368.netsolhost.com/pdfs/9133161c.pdf");
 
@@ -63,7 +67,8 @@ include( "ftp_func.inc" );
 
 port = get_ftp_port( default:21 );
 banner = get_ftp_banner( port:port );
-if( "ManageUPSnet" >!< banner ) exit( 0 );
+if( !banner || "ManageUPSnet" >!< banner )
+  exit( 0 );
 
 login = "admin";
 pass = "admin";

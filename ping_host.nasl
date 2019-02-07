@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ping_host.nasl 11943 2018-10-17 14:46:48Z cfischer $
+# $Id: ping_host.nasl 13518 2019-02-07 07:59:21Z cfischer $
 #
 # Ping Host
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100315");
-  script_version("$Revision: 11943 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-17 16:46:48 +0200 (Wed, 17 Oct 2018) $");
+  script_version("$Revision: 13518 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-07 08:59:21 +0100 (Thu, 07 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-10-26 10:02:32 +0100 (Mon, 26 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -289,6 +289,8 @@ if( "yes" >< use_nmap ) {
     argv_icmp[x++] = ip;
 
     res = pread( cmd:"nmap", argv:argv_icmp );
+    if( "Warning:  You are not root" >< res )
+      log_message( port:0, data:"WARNING: You requested the Nmap scan type -PE (ICMP echo probe) which requires root privileges but scanner is running under an unprivileged user. Nmap has used TCP ping scan instead, if you want use -PE start the scanner as root.");
 
     if( res && egrep( pattern:pattern, string:res ) && "Host seems down" >!< res ) {
       if( "yes" >< report_up || "yes" >< log_nmap_output ) {

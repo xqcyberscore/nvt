@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_freeftpd_port_cmd_dos_vuln.nasl 13347 2019-01-29 15:54:59Z cfischer $
+# $Id: gb_freeftpd_port_cmd_dos_vuln.nasl 13499 2019-02-06 12:55:20Z cfischer $
 #
 # freeFTPD PORT Command Denial of Service Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802913");
-  script_version("$Revision: 13347 $");
+  script_version("$Revision: 13499 $");
   script_cve_id("CVE-2005-3812");
   script_bugtraq_id(15557);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-29 16:54:59 +0100 (Tue, 29 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 13:55:20 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2012-07-13 14:06:29 +0530 (Fri, 13 Jul 2012)");
   script_name("freeFTPD PORT Command Denial of Service Vulnerability");
   script_category(ACT_DENIAL);
@@ -40,7 +40,7 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
-  script_mandatory_keys("ftp_banner/available");
+  script_mandatory_keys("ftp/free_ftpd/detected");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/17737");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/1339/");

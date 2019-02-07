@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpipam_mult_vuln.nasl 13032 2019-01-11 07:56:51Z mmartin $
+# $Id: gb_phpipam_mult_vuln.nasl 13504 2019-02-06 13:31:35Z jschulte $
 #
 # phpIPAM < 1.4 Multiple Vulnerabilities
 #
@@ -28,9 +28,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112474");
-  script_version("$Revision: 13032 $");
-  script_cve_id("CVE-2018-1000860", "CVE-2018-1000869", "CVE-2018-1000870");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-11 08:56:51 +0100 (Fri, 11 Jan 2019) $");
+  script_version("$Revision: 13504 $");
+  script_cve_id("CVE-2018-1000860", "CVE-2018-1000869", "CVE-2018-1000870", "CVE-2019-1000010");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 14:31:35 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-02 13:50:12 +0100 (Wed, 02 Jan 2019)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -47,7 +47,7 @@ if(description)
 
   script_tag(name:"insight", value:"The following vulnerabilities exist:
 
-  - Multiple cross-site scripting vulnerabilities. (CVE-2018-1000860, CVE-2018-1000870)
+  - Multiple cross-site scripting vulnerabilities. (CVE-2018-1000860, CVE-2018-1000870, CVE-2019-1000010)
 
   - Blind SQL injection vulnerability. (CVE-2018-1000869)");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_quick_n_easy_login_dos_vuln.nasl 12473 2018-11-22 03:34:31Z ckuersteiner $
+# $Id: gb_quick_n_easy_login_dos_vuln.nasl 13499 2019-02-06 12:55:20Z cfischer $
 #
 # Quick 'n Easy FTP Login Denial of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802003");
-  script_version("$Revision: 12473 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-22 04:34:31 +0100 (Thu, 22 Nov 2018) $");
+  script_version("$Revision: 13499 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 13:55:20 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2011-03-09 16:08:21 +0100 (Wed, 09 Mar 2011)");
   script_cve_id("CVE-2005-2479");
   script_bugtraq_id(14451);
@@ -40,7 +40,7 @@ if(description)
   script_family("FTP");
   script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
-  script_mandatory_keys("ftp_banner/available");
+  script_mandatory_keys("ftp/quick_n_easy/detected");
 
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/16260");
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/view/98782");
@@ -73,9 +73,8 @@ include("misc_func.inc");
 
 ftpPort = get_ftp_port(default:21);
 banner = get_ftp_banner(port:ftpPort);
-if(! banner || "Quick 'n Easy FTP Server" >!< banner){
+if(! banner || "Quick 'n Easy FTP Server" >!< banner)
   exit(0);
-}
 
 flag = 0;
 craf_cmd = ""; # nb: To make openvas-nasl-lint happy...

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_clearpath_mcp_ftp_detect.nasl 10891 2018-08-10 12:51:28Z cfischer $
+# $Id: gb_clearpath_mcp_ftp_detect.nasl 13499 2019-02-06 12:55:20Z cfischer $
 #
 # ClearPath MCP Detection (FTP)
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140188");
-  script_version("$Revision: 10891 $");
+  script_version("$Revision: 13499 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:51:28 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 13:55:20 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-03-14 17:59:06 +0100 (Tue, 14 Mar 2017)");
   script_name("ClearPath MCP Detection (FTP)");
   script_category(ACT_GATHER_INFO);
@@ -39,7 +39,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
-  script_mandatory_keys("ftp_banner/available");
+  script_mandatory_keys("ftp/clearpath/mcp/detected");
 
   script_tag(name:"summary", value:"The script sends a connection request to the server
   and attempts to extract the version number from the reply.");

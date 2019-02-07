@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samba_dos_vuln2.nasl 12567 2018-11-29 03:55:25Z ckuersteiner $
+# $Id: gb_samba_dos_vuln2.nasl 13517 2019-02-07 07:51:12Z mmartin $
 #
 # Samba DoS Vulnerability (CVE-2018-16841)
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:samba:samba";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141734");
-  script_version("$Revision: 12567 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-29 04:55:25 +0100 (Thu, 29 Nov 2018) $");
+  script_version("$Revision: 13517 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-07 08:51:12 +0100 (Thu, 07 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-11-29 10:37:40 +0700 (Thu, 29 Nov 2018)");
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
 
   script_cve_id("CVE-2018-16841");
 

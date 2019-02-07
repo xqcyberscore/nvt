@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_gdpr_compliance_priv_esc_vuln.nasl 12331 2018-11-13 10:20:09Z ckuersteiner $
+# $Id: gb_wordpress_gdpr_compliance_priv_esc_vuln.nasl 13517 2019-02-07 07:51:12Z mmartin $
 #
 # WordPress WP GDPR Compliance Plugin < 1.4.3 Privilege Escalation Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141674");
-  script_version("$Revision: 12331 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-13 11:20:09 +0100 (Tue, 13 Nov 2018) $");
+  script_version("$Revision: 13517 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-07 08:51:12 +0100 (Thu, 07 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-11-13 09:52:45 +0700 (Tue, 13 Nov 2018)");
-  script_tag(name:"cvss_base", value:"6.4");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2018-19207");
 

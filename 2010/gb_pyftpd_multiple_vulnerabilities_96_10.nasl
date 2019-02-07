@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pyftpd_multiple_vulnerabilities_96_10.nasl 13475 2019-02-05 14:51:19Z cfischer $
+# $Id: gb_pyftpd_multiple_vulnerabilities_96_10.nasl 13499 2019-02-06 12:55:20Z cfischer $
 #
 # pyftpd Multiple Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100679");
-  script_version("$Revision: 13475 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-05 15:51:19 +0100 (Tue, 05 Feb 2019) $");
+  script_version("$Revision: 13499 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 13:55:20 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2010-06-15 13:44:31 +0200 (Tue, 15 Jun 2010)");
   script_cve_id("CVE-2010-2072", "CVE-2010-2073");
   script_bugtraq_id(40839, 40842);
@@ -49,7 +49,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
   script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 2121);
-  script_mandatory_keys("ftp_banner/available");
+  script_mandatory_keys("ftp/pyftpdlib/detected");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"solution", value:"Vendor updates are available. Please see the references for more
@@ -86,6 +86,9 @@ if(description)
 include("ftp_func.inc");
 
 ftpPort = get_ftp_port(default:2121);
+banner = get_ftp_banner(port:ftpPort);
+if(! banner || "pyftpd" >!< tolower(banner))
+  exit(0);
 
 users = make_list("test", "user", "huddel");
 success = 0;

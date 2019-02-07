@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_coremail_stored_xss_vuln.nasl 12356 2018-11-15 06:27:24Z ckuersteiner $
+# $Id: gb_coremail_stored_xss_vuln.nasl 13515 2019-02-07 07:01:25Z ckuersteiner $
 #
 # Coremail XT <= 3.0 Stored XSS Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113192");
-  script_version("$Revision: 12356 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-15 07:27:24 +0100 (Thu, 15 Nov 2018) $");
+  script_version("$Revision: 13515 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-07 08:01:25 +0100 (Thu, 07 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-05-22 14:52:35 +0200 (Tue, 22 May 2018)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
@@ -50,12 +50,17 @@ if( description )
   script_mandatory_keys("coremail/detected");
 
   script_tag(name:"summary", value:"Coremail XT is vulnerable to a stored Cross-Site-Scripting (XSS) Vulnerability.");
+
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+
   script_tag(name:"insight", value:"The vulnerability exists within the third form field in a URI under register/.");
+
   script_tag(name:"impact", value:"Successful exploitation would allow to permanently modify the site's content,
   including injection of malicious code.");
+
   script_tag(name:"affected", value:"Coremail XT through version 3.0.");
-  script_tag(name:"solution", value:"No known solution is available as of 15th November, 2018.
+
+  script_tag(name:"solution", value:"No known solution is available as of 07th February, 2019.
   Information regarding this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://www.youtube.com/watch?v=LRK3c_DhXn4");

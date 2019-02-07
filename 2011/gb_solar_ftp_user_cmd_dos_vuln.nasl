@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_solar_ftp_user_cmd_dos_vuln.nasl 13347 2019-01-29 15:54:59Z cfischer $
+# $Id: gb_solar_ftp_user_cmd_dos_vuln.nasl 13499 2019-02-06 12:55:20Z cfischer $
 #
 # SolarFTP USER Command Remote Denial of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802001");
-  script_version("$Revision: 13347 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-29 16:54:59 +0100 (Tue, 29 Jan 2019) $");
+  script_version("$Revision: 13499 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 13:55:20 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2011-03-04 14:32:35 +0100 (Fri, 04 Mar 2011)");
   script_bugtraq_id(46504);
   script_tag(name:"cvss_base", value:"8.5");
@@ -39,7 +39,7 @@ if(description)
   script_family("FTP");
   script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
-  script_mandatory_keys("ftp_banner/available");
+  script_mandatory_keys("ftp/solarftp/detected");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/42834");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/65574");

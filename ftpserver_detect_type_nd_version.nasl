@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ftpserver_detect_type_nd_version.nasl 13497 2019-02-06 10:45:54Z cfischer $
+# $Id: ftpserver_detect_type_nd_version.nasl 13507 2019-02-06 15:12:15Z cfischer $
 #
 # FTP Banner Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10092");
-  script_version("$Revision: 13497 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-06 11:45:54 +0100 (Wed, 06 Feb 2019) $");
+  script_version("$Revision: 13507 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 16:12:15 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -63,8 +63,14 @@ foreach port( ports ) {
   if( ! banner )
     continue;
 
+  bannerlo = tolower( banner );
+
   if( service_is_unknown( port:port ) )
     register_service( port:port, proto:"ftp", message:"A FTP Server seems to be running on this port." );
+
+  help = get_ftp_cmd_banner( port:port, cmd:"HELP" );
+  syst = get_ftp_cmd_banner( port:port, cmd:"SYST" );
+  stat = get_ftp_cmd_banner( port:port, cmd:"STAT" );
 
   set_kb_item( name:"ftp_banner/available", value:TRUE );
   install = port + "/tcp";
@@ -110,12 +116,12 @@ foreach port( ports ) {
     guess = "Femitter FTP Server";
   }
 
-  else if( "InterVations FileCOPA FTP Server" >< banner ) {
+  else if( "FileCOPA FTP Server" >< banner ) {
     set_kb_item( name:"ftp/intervations/filecopa/detected", value:TRUE );
     guess = "InterVations FileCOPA FTP Server";
   }
 
-  else if( "smallftpd" >< banner ) {
+  else if( banner =~ "220[- ]+smallftpd" ) {
     set_kb_item( name:"ftp/smallftpd/detected", value:TRUE );
     guess = "Small FTPD Server";
   }
@@ -135,9 +141,14 @@ foreach port( ports ) {
     guess = "Telnet-FTP Server";
   }
 
-  else if( "220 FTP Server ready." >< banner ) {
+  else if( banner =~ "220[- ]FTP Server ready" ) {
     set_kb_item( name:"ftp/ftp_ready_banner/detected", value:TRUE );
-    guess = "Various FTP servers like KnFTP";
+    guess = "Various FTP servers like KnFTP or Schneider Electric Quantum Ethernet Module ";
+  }
+
+  else if( banner =~ "220[- ]Ready" ) {
+    set_kb_item( name:"ftp/ready_banner/detected", value:TRUE );
+    guess = "Various FTP servers like Janitza FTP";
   }
 
   else if( "TurboFTP Server" >< banner ) {
@@ -180,10 +191,190 @@ foreach port( ports ) {
     guess = "AVM FRITZ!Box FTP";
   }
 
+  else if( egrep( string:banner, pattern:"FTP server.*[Vv]ersion (wu|wuftpd)-" ) ) {
+    set_kb_item( name:"ftp/wu_ftpd/detected", value:TRUE );
+    guess = "WU-FTPD";
+  }
+
+  else if( "WarFTPd" >< banner || "WAR-FTPD" >< banner ) {
+    set_kb_item( name:"ftp/war_ftpd/detected", value:TRUE );
+    guess = "WarFTPd";
+  }
+
+  else if( "I'm freeFTPd" >< banner ) {
+    set_kb_item( name:"ftp/free_ftpd/detected", value:TRUE );
+    guess = "freeFTPd";
+  }
+
+  else if( banner =~ "220[- ]Browser Ftp Server\." ) {
+    set_kb_item( name:"ftp/browser_ftp_server_banner/detected", value:TRUE );
+    guess = "Various FTP servers like MySCADA MyPRO";
+  }
+
+  else if( "Welcome to D-Link's FTP Server" >< banner ) {
+    set_kb_item( name:"ftp/dlink/ftp_server/detected", value:TRUE );
+    guess = "Multiple D-Link products like Central WiFiManager";
+  }
+
+  else if( "pyftpd" >< bannerlo ) {
+    set_kb_item( name:"ftp/pyftpdlib/detected", value:TRUE );
+    guess = "pyftpdlib";
+  }
+
+  else if( "FTP Services for ClearPath MCP" >< banner ) {
+    set_kb_item( name:"ftp/clearpath/mcp/detected", value:TRUE );
+    guess = "ClearPath MCP";
+  }
+
+  else if( "welcome to vibnode." >< bannerlo ) {
+    set_kb_item( name:"ftp/prueftechnik/vibnode/detected", value:TRUE );
+    guess = "PRUFTECHNIK VIBNODE";
+  }
+
+  else if( "Welcome to Pure-FTPd" >< banner || "Welcome to PureFTPd" >< banner || "Pure-FTPd - http://pureftpd.org" >< help ) {
+    set_kb_item( name:"ftp/pure_ftpd/detected", value:TRUE );
+    guess = "Pure-FTPd";
+  }
+
+  else if( "FCX STARDOM" >< banner ) {
+    set_kb_item( name:"ftp/yokogawa/stardom/detected", value:TRUE );
+    guess = "Yokogawa STARDOM";
+  }
+
+  else if( banner =~ "CP ([0-9\-]+) (IT )?FTP-Server V([0-9.]+) ready for new user" ) {
+    set_kb_item( name:"ftp/siemens/simatic_cp/detected", value:TRUE );
+    guess = "Siemens SIMATIC CP";
+  }
+
+  else if( banner =~ "220[- ]FreeFloat" ) {
+    set_kb_item( name:"ftp/freefloat/detected", value:TRUE );
+    guess = "FreeFloat";
+  }
+
+  else if( banner =~ "220[- ]quickshare ftpd" ) {
+    set_kb_item( name:"ftp/quickshare/file_share/detected", value:TRUE );
+    guess = "QuickShare File Share";
+  }
+
+  else if( banner =~ "220[- ]SpoonFTP" ) {
+    set_kb_item( name:"ftp/spoonftp/detected", value:TRUE );
+    guess = "SpoonFTP";
+  }
+
+  else if( "Quick 'n Easy FTP Server" >< banner ) {
+    set_kb_item( name:"ftp/quick_n_easy/detected", value:TRUE );
+    guess = "Quick 'n Easy FTP Server";
+  }
+
+  else if( "Powerd by BigFoolCat Ftp Server" >< banner || banner =~ "220[- ]+Welcome to my ftp server" ) {
+    set_kb_item( name:"ftp/easy_ftp/detected", value:TRUE );
+    guess = "Easy~FTP Server";
+  }
+
+  else if( "Golden FTP Server" >< banner ) {
+    set_kb_item( name:"ftp/golden_tfp/detected", value:TRUE );
+    guess = "Golden FTP Server";
+  }
+
+  else if( banner =~ "220[- ]ActiveFax" ) {
+    set_kb_item( name:"ftp/actfax_ftp/detected", value:TRUE );
+    guess = "ActFax FTP Server";
+  }
+
   else if( egrep( pattern:".*heck Point Firewall-1 Secure FTP.*", string:banner ) ) {
     set_kb_item( name:"ftp/fw1ftpd/detected", value:TRUE );
     register_product( cpe:"cpe:/a:checkpoint:firewall-1", location:install, port:port );
     guess = "Check Point Firewall-1";
+  }
+
+  else if( "Menasoft GrayFTP Server" >< banner ) {
+    set_kb_item( name:"ftp/menasoft/sphereftp/detected", value:TRUE );
+    guess = "Menasoft SphereFTP Server";
+  }
+
+  else if( banner =~ "220[- ](AXIS|Axis).*Network Camera" ) {
+    set_kb_item( name:"ftp/axis/network_camera/detected", value:TRUE );
+    guess = "Axis Network Camera";
+  }
+
+  else if( "ProFTPD" >< banner || "NASFTPD Turbo station" >< banner ) {
+    set_kb_item( name:"ftp/proftpd/detected", value:TRUE );
+    guess = "ProFTPD";
+  }
+
+  else if( banner =~ "^220[- ]bftpd " ) {
+    set_kb_item( name:"ftp/bftpd/detected", value:TRUE );
+    guess = "Bftpd FTP";
+  }
+
+  else if( "FileZilla Server" >< banner ) {
+    set_kb_item( name:"ftp/filezilla/detected", value:TRUE );
+    guess = "FileZilla";
+  }
+
+  else if( banner =~ " FTP server \(MikroTik .* ready" ) {
+    set_kb_item( name:"ftp/mikrotik/detected", value:TRUE );
+    guess = "MikroTik RouterOS";
+  }
+
+  else if( "Welcome on" >< banner && "Gabriel's FTP Server" >< banner ) {
+    set_kb_item( name:"ftp/open-ftpd/detected", value:TRUE );
+    guess = "Open-FTPD";
+  }
+
+  else if( "xlweb FTP server" >< banner ) {
+    set_kb_item( name:"ftp/honeywell/falcon_xl/detected", value:TRUE );
+    guess = "Honeywell Falcon XL Web Controller";
+  }
+
+  else if( banner =~ "220[- ]PCMan's FTP Server" ) {
+    set_kb_item( name:"ftp/pcmans/ftp/detected", value:TRUE );
+    guess = "PCMan's FTP Server";
+  }
+
+  else if( "Welcome to Seagate Central" >< banner ) {
+    set_kb_item( name:"ftp/seagate/central/detected", value:TRUE );
+    guess = "Seagate Central";
+  }
+
+  else if( banner =~ "220[- ]Titan FTP Server " ) {
+    set_kb_item( name:"ftp/titan/ftp/detected", value:TRUE );
+    guess = "Titan FTP Server";
+  }
+
+  else if( "Minftpd" >< banner ) {
+    set_kb_item( name:"ftp/ftpdmin/detected", value:TRUE );
+    guess = "Ftpdmin";
+  }
+
+  else if( "220 Features p a" >< banner ) {
+    set_kb_item( name:"ftp/samiftp/detected", value:TRUE );
+    guess = "SamiFTP";
+  }
+
+  else if( banner =~ "Welcome to the (Cisco TelePresence|Codian) MCU" ) {
+    set_kb_item( name:"ftp/cisco/telepresence/detected", value:TRUE );
+    guess = "Cisco TelePresence";
+  }
+
+  else if( egrep( pattern:".*icrosoft FTP.*", string:banner ) ) {
+    set_kb_item( name:"ftp/microsoft/iis_ftp/detected", value:TRUE );
+    guess = "Microsoft IIS FTP Server";
+  }
+
+  else if( "ManageUPSnet" >< banner ) {
+    set_kb_item( name:"ftp/manageupsnet/detected", value:TRUE );
+    guess = "ManageUPSNET FTP";
+  }
+
+  else if( "Isilon OneFS" >< banner ) {
+    set_kb_item( name:"ftp/emc/isilon_onefs/detected", value:TRUE );
+    guess = "EMC Isilon OneFS";
+  }
+
+  else if( "SurgeFTP" >< banner ) {
+    set_kb_item( name:"ftp/surgeftp/detected", value:TRUE );
+    guess = "SurgeFTP";
   }
 
   # 220 VxWorks FTP server (VxWorks 5.3.1 - Secure NetLinx version (1.0)) ready.
@@ -201,9 +392,39 @@ foreach port( ports ) {
     guess = "VxWorks FTP";
   }
 
+  # nb: From 2009/Omni_NFS_36608.nasl, pattern is currently not that detailed so keep at the bottom.
+  else if( "XLINK" >< banner ) {
+    set_kb_item( name:"ftp/omni-nfs/xlink/detected", value:TRUE );
+    guess = "Omni-NFS XLINK";
+  }
+
+  # nb: From 2009/httpdx_35006.nasl, pattern is currently not that detailed so keep at the bottom.
+  else if( "httpdx" >< banner ) {
+    set_kb_item( name:"ftp/httpdx/detected", value:TRUE );
+    guess = "httpdx";
+  }
+
+  # nb: From sw_vsftpd_detect.nasl, pattern is currently not that detailed so keep at the bottom.
+  else if( "vsftpd" >< bannerlo ) {
+    set_kb_item( name:"ftp/vsftpd/detected", value:TRUE );
+    guess = "vsFTPd";
+  }
+
+  # nb: From secpod_tnftpd_detect.nasl, pattern is currently not that detailed so keep at the bottom.
+  else if( "tnftpd" >< banner ) {
+    set_kb_item( name:"ftp/tnftpd/detected", value:TRUE );
+    guess = "tnftpd";
+  }
+
   report = 'Remote FTP server banner:\n\n' + banner;
   if( strlen( guess ) > 0 )
     report += '\n\nThis is probably: ' + guess;
+
+  if( syst && egrep( pattern:"^215 .+", string:syst ) )
+    report += '\n\nServer operating system information collected via "SYST" command:\n\n' + syst;
+
+  if( stat && egrep( pattern:"^211 .+", string:stat ) )
+    report += '\n\nServer status information collected via "STAT" command:\n\n' + stat;
 
   log_message( port:port, data:report );
 }

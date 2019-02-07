@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_quicksharehq_ftp_server_dir_trav_vuln.nasl 13494 2019-02-06 10:06:36Z cfischer $
+# $Id: gb_quicksharehq_ftp_server_dir_trav_vuln.nasl 13499 2019-02-06 12:55:20Z cfischer $
 #
 # QuickShare File Share FTP Server Directory Traversal Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800197");
-  script_version("$Revision: 13494 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-06 11:06:36 +0100 (Wed, 06 Feb 2019) $");
+  script_version("$Revision: 13499 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 13:55:20 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2011-02-07 15:21:16 +0100 (Mon, 07 Feb 2011)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
@@ -38,7 +38,7 @@ if(description)
   script_family("FTP");
   script_dependencies("ftpserver_detect_type_nd_version.nasl", "os_detection.nasl");
   script_require_ports("Services/ftp", 21);
-  script_mandatory_keys("ftp_banner/available", "Host/runs_windows");
+  script_mandatory_keys("ftp/quickshare/file_share/detected", "Host/runs_windows");
 
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/16105/");
   script_xref(name:"URL", value:"http://securityreason.com/exploitalert/9927");
@@ -72,7 +72,7 @@ include("misc_func.inc");
 port = get_ftp_port( default:21 );
 banner = get_ftp_banner( port:port );
 
-if( ! banner || "220 quickshare ftpd" >!< banner )
+if( ! banner || "220 quickshare ftpd" >!< tolower( banner ) )
   exit( 0 );
 
 soc1 = open_sock_tcp( port );

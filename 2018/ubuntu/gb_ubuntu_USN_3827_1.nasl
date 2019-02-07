@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3827_1.nasl 12577 2018-11-29 11:43:34Z santu $
+# $Id: gb_ubuntu_USN_3827_1.nasl 13517 2019-02-07 07:51:12Z mmartin $
 #
 # Ubuntu Update for samba USN-3827-1
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843831");
-  script_version("$Revision: 12577 $");
+  script_version("$Revision: 13517 $");
   script_cve_id("CVE-2018-14629", "CVE-2018-16841", "CVE-2018-16851");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-29 12:43:34 +0100 (Thu, 29 Nov 2018) $");
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-07 08:51:12 +0100 (Thu, 07 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-11-27 15:43:28 +0100 (Tue, 27 Nov 2018)");
   script_name("Ubuntu Update for samba USN-3827-1");
   script_category(ACT_GATHER_INFO);

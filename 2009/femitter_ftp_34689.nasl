@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: femitter_ftp_34689.nasl 13475 2019-02-05 14:51:19Z cfischer $
+# $Id: femitter_ftp_34689.nasl 13499 2019-02-06 12:55:20Z cfischer $
 #
 # Acritum Femitter Server Remote File Disclosure Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100165");
-  script_version("$Revision: 13475 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-05 15:51:19 +0100 (Tue, 05 Feb 2019) $");
+  script_version("$Revision: 13499 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 13:55:20 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-04-26 20:59:36 +0200 (Sun, 26 Apr 2009)");
   script_bugtraq_id(34689);
   script_tag(name:"cvss_base", value:"5.0");
@@ -40,7 +40,7 @@ if(description)
   script_family("FTP");
   script_dependencies("ftpserver_detect_type_nd_version.nasl", "os_detection.nasl");
   script_require_ports("Services/ftp", 21);
-  script_mandatory_keys("Host/runs_windows", "ftp_banner/available");
+  script_mandatory_keys("Host/runs_windows", "ftp/femitter_ftp/detected");
 
   script_tag(name:"summary", value:"Acritum Femitter FTP Server is prone to a remote file-disclosure
   vulnerability because it fails to properly sanitize user-supplied input.");
@@ -63,6 +63,9 @@ if(description)
 include("ftp_func.inc");
 
 ftpPort = get_ftp_port(default:21);
+banner = get_ftp_banner(port:ftpPort);
+if(! banner || "Femitter FTP Server ready." >!< banner)
+  exit(0);
 
 soc1 = open_sock_tcp(ftpPort);
 if(!soc1)

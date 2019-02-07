@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: DDI_ws_ftp-server-cpwd-bo.nasl 12821 2018-12-18 12:37:20Z cfischer $
+# $Id: DDI_ws_ftp-server-cpwd-bo.nasl 13499 2019-02-06 12:55:20Z cfischer $
 # Description: WS_FTP SITE CPWD Buffer Overflow
 #
 # Authors:
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11098");
-  script_version("$Revision: 12821 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-18 13:37:20 +0100 (Tue, 18 Dec 2018) $");
+  script_version("$Revision: 13499 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 13:55:20 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(5427);
   script_tag(name:"cvss_base", value:"7.5");
@@ -43,7 +43,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2002 Digital Defense, Inc.");
   script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
-  script_mandatory_keys("ftp_banner/available");
+  script_mandatory_keys("ftp/ws_ftp/detected");
 
   script_tag(name:"summary", value:"This host is running a version of WS_FTP FTP server prior to 3.1.2.");
 

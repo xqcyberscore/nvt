@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kaseya_vsa_info_disc_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
+# $Id: gb_kaseya_vsa_info_disc_vuln.nasl 13512 2019-02-07 02:04:24Z ckuersteiner $
 #
 # Kaseya VSA Information Disclosure Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:kaseya:virtual_system_administrator';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106739");
-  script_version("$Revision: 11863 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 13512 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-07 03:04:24 +0100 (Thu, 07 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-04-10 14:46:29 +0200 (Mon, 10 Apr 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -47,7 +47,7 @@ if (description)
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_kaseya_vsa_detect.nasl");
-  script_mandatory_keys("kaseya_vas/installed");
+  script_mandatory_keys("kaseya_vsa/installed");
 
   script_tag(name:"summary", value:"Kaseya VSA is prone to an information disclosure vulnerability.");
 

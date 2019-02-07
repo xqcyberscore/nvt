@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kaseya_vsa_privilege_escalation_vuln.nasl 13490 2019-02-06 09:15:32Z ckuersteiner $
+# $Id: gb_kaseya_vsa_privilege_escalation_vuln.nasl 13512 2019-02-07 02:04:24Z ckuersteiner $
 #
 # Kaseya Virtual System Administrator Agent Local Privilege Escalation Vulnerability
 #
@@ -28,17 +28,16 @@ CPE = "cpe:/a:kaseya:virtual_system_administrator";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813382");
-  script_version("$Revision: 13490 $");
+  script_version("$Revision: 13512 $");
   script_cve_id("CVE-2017-12410");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-06 10:15:32 +0100 (Wed, 06 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-07 03:04:24 +0100 (Thu, 07 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-05-30 11:18:44 +0530 (Wed, 30 May 2018)");
   script_name("Kaseya Virtual System Administrator Agent Local Privilege Escalation Vulnerability");
 
-  script_tag(name:"summary", value:"This host is running Kaseya
-  Virtual System Administrator agent and is prone to local privilege escalation
-  vulnerability.");
+  script_tag(name:"summary", value:"This host is running Kaseya Virtual System Administrator agent which
+  is prone to a local privilege escalation vulnerability.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
@@ -53,8 +52,7 @@ if(description)
   agent 9.4.0.36 and earlier.");
 
   script_tag(name:"solution", value:"Upgrade to Kaseya Virtual System
-  Administrator version 9.4.0.37 or 9.5 or later.
-  For updates refer to Reference links.");
+  Administrator version 9.4.0.37 or 9.5 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -66,7 +64,7 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_kaseya_vsa_detect.nasl");
-  script_mandatory_keys("kaseya_vsa/version");
+  script_mandatory_keys("kaseya_vsa/installed");
   exit(0);
 }
 
@@ -76,7 +74,7 @@ include("version_func.inc");
 if(!port = get_app_port(cpe:CPE))
   exit(0);
 
-if (!version = get_kb_item("kaseya_vas/patchlevel"))
+if (!version = get_kb_item("kaseya_vsa/patchlevel"))
   if (!version = get_app_version(cpe: CPE, port: port))
     exit(0);
 

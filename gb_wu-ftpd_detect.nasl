@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wu-ftpd_detect.nasl 9536 2018-04-19 11:20:50Z cfischer $
+# $Id: gb_wu-ftpd_detect.nasl 13499 2019-02-06 12:55:20Z cfischer $
 #
 # WU-FTPD Detection
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108437");
-  script_version("$Revision: 9536 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-19 13:20:50 +0200 (Thu, 19 Apr 2018) $");
+  script_version("$Revision: 13499 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 13:55:20 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-04-11 17:09:43 +0200 (Wed, 11 Apr 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -40,7 +40,7 @@ if(description)
   script_family("Product detection");
   script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
-  script_mandatory_keys("ftp_banner/available");
+  script_mandatory_keys("ftp/wu_ftpd/detected");
 
   script_xref(name:"URL", value:"https://en.wikipedia.org/wiki/WU-FTPD");
 
@@ -57,7 +57,9 @@ include("cpe.inc");
 
 port   = get_ftp_port( default:21 );
 banner = get_ftp_banner( port:port );
-if( ! banner || ! egrep( string:banner, pattern:"FTP server.*[Vv]ersion (wu|wuftpd)-" ) ) exit( 0 );
+
+if( ! banner || ! egrep( string:banner, pattern:"FTP server.*[Vv]ersion (wu|wuftpd)-" ) )
+  exit( 0 );
 
 version = "unknown";
 install = port + "/tcp";

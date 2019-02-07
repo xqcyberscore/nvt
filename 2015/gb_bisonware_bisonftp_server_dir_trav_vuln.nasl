@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bisonware_bisonftp_server_dir_trav_vuln.nasl 13497 2019-02-06 10:45:54Z cfischer $
+# $Id: gb_bisonware_bisonftp_server_dir_trav_vuln.nasl 13517 2019-02-07 07:51:12Z mmartin $
 #
 # BisonWare BisonFTP Server Directory Traversal Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:bisonware:bison_ftp_server";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805753");
-  script_version("$Revision: 13497 $");
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-06 11:45:54 +0100 (Wed, 06 Feb 2019) $");
+  script_version("$Revision: 13517 $");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-07 08:51:12 +0100 (Thu, 07 Feb 2019) $");
   script_tag(name:"creation_date", value:"2015-09-29 12:41:58 +0530 (Tue, 29 Sep 2015)");
   script_cve_id("CVE-2015-7602");
   script_name("BisonWare BisonFTP Server Directory Traversal Vulnerability");

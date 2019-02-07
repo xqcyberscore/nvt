@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opencart_mult_vuln.nasl 12368 2018-11-16 03:53:29Z ckuersteiner $
+# $Id: gb_opencart_mult_vuln.nasl 13515 2019-02-07 07:01:25Z ckuersteiner $
 #
 # Opencart <= 3.0.2.0 Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113202");
-  script_version("$Revision: 12368 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 04:53:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 13515 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-07 08:01:25 +0100 (Thu, 07 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-05-29 11:47:28 +0200 (Tue, 29 May 2018)");
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
@@ -66,7 +66,7 @@ if( description )
 
   script_tag(name:"affected", value:"OpenCart through version 3.0.2.0.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 16th November, 2018.
+  script_tag(name:"solution", value:"No known solution is available as of 07th February, 2019.
   Information regarding this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"http://www.bigdiao.cc/2018/05/24/Opencart-v3-0-2-0/");

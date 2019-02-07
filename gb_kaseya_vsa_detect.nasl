@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kaseya_vsa_detect.nasl 13490 2019-02-06 09:15:32Z ckuersteiner $
+# $Id: gb_kaseya_vsa_detect.nasl 13512 2019-02-07 02:04:24Z ckuersteiner $
 #
 # Kaseya VSA Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106738");
-  script_version("$Revision: 13490 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-06 10:15:32 +0100 (Wed, 06 Feb 2019) $");
+  script_version("$Revision: 13512 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-07 03:04:24 +0100 (Thu, 07 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-04-10 14:46:29 +0200 (Mon, 10 Apr 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -79,11 +79,11 @@ if ("logoforLogin.gif" >< res && "/vsapres/js/kaseya/web/bootstrap.js" >< res &&
   # nb: Patchlevel can be higher than the system version
   patchlevel = eregmatch(pattern: "Patch Level[^<]+<br />[^<]+<span>([0-9.]+)</span>", string: res);
   if (!isnull(patchlevel[1])) {
-    set_kb_item(name: "kaseya_vas/patchlevel", value: patchlevel[1]);
+    set_kb_item(name: "kaseya_vsa/patchlevel", value: patchlevel[1]);
     extra = "Patch Level:  " + patchlevel[1];
   }
 
-  set_kb_item(name: "kaseya_vas/installed", value: TRUE);
+  set_kb_item(name: "kaseya_vsa/installed", value: TRUE);
 
   cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/a:kaseya:virtual_system_administrator:");
   if (!cpe)

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_war_ftp_format_string_vuln.nasl 13347 2019-01-29 15:54:59Z cfischer $
+# $Id: gb_war_ftp_format_string_vuln.nasl 13499 2019-02-06 12:55:20Z cfischer $
 #
 # War FTP Daemon 'USER' and 'PASS' Remote Format String Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802452");
-  script_version("$Revision: 13347 $");
+  script_version("$Revision: 13499 $");
   script_bugtraq_id(55338);
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-29 16:54:59 +0100 (Tue, 29 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 13:55:20 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2012-09-04 10:51:01 +0530 (Tue, 04 Sep 2012)");
   script_name("War FTP Daemon 'USER' and 'PASS' Remote Format String Vulnerability");
   script_category(ACT_DENIAL);
@@ -39,7 +39,7 @@ if(description)
   script_family("FTP");
   script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
-  script_mandatory_keys("ftp_banner/available");
+  script_mandatory_keys("ftp/war_ftpd/detected");
 
   script_xref(name:"URL", value:"http://1337day.com/exploits/19291");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/20957/");

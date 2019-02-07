@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_horde_imp_rce_vuln.nasl 13079 2019-01-15 10:48:52Z cfischer $
+# $Id: gb_horde_imp_rce_vuln.nasl 13517 2019-02-07 07:51:12Z mmartin $
 #
 # Horde IMP <= 6.2.22 RCE Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:horde:imp";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141879");
-  script_version("$Revision: 13079 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-15 11:48:52 +0100 (Tue, 15 Jan 2019) $");
+  script_version("$Revision: 13517 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-07 08:51:12 +0100 (Thu, 07 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-15 16:36:52 +0700 (Tue, 15 Jan 2019)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"8.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
 
   script_cve_id("CVE-2018-19518");
 

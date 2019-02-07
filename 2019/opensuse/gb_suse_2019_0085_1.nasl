@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2019_0085_1.nasl 13368 2019-01-30 14:30:18Z santu $
+# $Id: gb_suse_2019_0085_1.nasl 13517 2019-02-07 07:51:12Z mmartin $
 #
 # SuSE Update for krb5 openSUSE-SU-2019:0085-1 (krb5)
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852250");
-  script_version("$Revision: 13368 $");
+  script_version("$Revision: 13517 $");
   script_cve_id("CVE-2018-20217");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-30 15:30:18 +0100 (Wed, 30 Jan 2019) $");
+  script_tag(name:"cvss_base", value:"3.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-07 08:51:12 +0100 (Thu, 07 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-26 04:01:49 +0100 (Sat, 26 Jan 2019)");
   script_name("SuSE Update for krb5 openSUSE-SU-2019:0085-1 (krb5)");
   script_category(ACT_GATHER_INFO);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_c2a93f8e1b_samba_fc28.nasl 12661 2018-12-05 10:53:21Z santu $
+# $Id: gb_fedora_2018_c2a93f8e1b_samba_fc28.nasl 13517 2019-02-07 07:51:12Z mmartin $
 #
 # Fedora Update for samba FEDORA-2018-c2a93f8e1b
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875317");
-  script_version("$Revision: 12661 $");
+  script_version("$Revision: 13517 $");
   script_cve_id("CVE-2018-14629", "CVE-2018-16841", "CVE-2018-16851", "CVE-2018-16853", "CVE-2018-1139", "CVE-2018-1140", "CVE-2018-10858", "CVE-2018-10918", "CVE-2018-10919", "CVE-2018-1050", "CVE-2018-1057");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-05 11:53:21 +0100 (Wed, 05 Dec 2018) $");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-07 08:51:12 +0100 (Thu, 07 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-12-04 08:28:08 +0100 (Tue, 04 Dec 2018)");
   script_name("Fedora Update for samba FEDORA-2018-c2a93f8e1b");
   script_category(ACT_GATHER_INFO);

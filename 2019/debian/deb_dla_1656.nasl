@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1656.nasl 13412 2019-02-01 13:29:33Z cfischer $
+# $Id: deb_dla_1656.nasl 13517 2019-02-07 07:51:12Z mmartin $
 #
 # Auto-generated from advisory DLA 1656-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891656");
-  script_version("$Revision: 13412 $");
+  script_version("$Revision: 13517 $");
   script_cve_id("CVE-2019-6245");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1656-1] agg security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-01 14:29:33 +0100 (Fri, 01 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-07 08:51:12 +0100 (Thu, 07 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-02-01 00:00:00 +0100 (Fri, 01 Feb 2019)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

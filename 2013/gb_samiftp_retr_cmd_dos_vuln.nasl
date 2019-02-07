@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samiftp_retr_cmd_dos_vuln.nasl 13347 2019-01-29 15:54:59Z cfischer $
+# $Id: gb_samiftp_retr_cmd_dos_vuln.nasl 13499 2019-02-06 12:55:20Z cfischer $
 #
 # SamiFTP Server 'RETR' Command Denial of Service Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803717");
-  script_version("$Revision: 13347 $");
+  script_version("$Revision: 13499 $");
   script_bugtraq_id(60513);
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-29 16:54:59 +0100 (Tue, 29 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 13:55:20 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2013-06-13 15:16:51 +0530 (Thu, 13 Jun 2013)");
   script_name("SamiFTP Server 'RETR' Command Denial of Service Vulnerability");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/26133");
@@ -42,7 +42,7 @@ if(description)
   script_family("FTP");
   script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
-  script_mandatory_keys("ftp_banner/available");
+  script_mandatory_keys("ftp/samiftp/detected");
 
   script_tag(name:"impact", value:"Successful exploitation will allow the remote attackers to cause
   a denial of service.");

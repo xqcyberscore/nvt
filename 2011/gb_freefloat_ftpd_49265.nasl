@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_freefloat_ftpd_49265.nasl 13347 2019-01-29 15:54:59Z cfischer $
+# $Id: gb_freefloat_ftpd_49265.nasl 13499 2019-02-06 12:55:20Z cfischer $
 #
 # Freefloat FTP Server 'ALLO' Command Remote Buffer Overflow Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103219");
-  script_version("$Revision: 13347 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-29 16:54:59 +0100 (Tue, 29 Jan 2019) $");
+  script_version("$Revision: 13499 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 13:55:20 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2011-08-22 16:04:33 +0200 (Mon, 22 Aug 2011)");
   script_bugtraq_id(49265);
   script_tag(name:"cvss_base", value:"5.1");
@@ -44,7 +44,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
   script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
-  script_mandatory_keys("ftp_banner/available");
+  script_mandatory_keys("ftp/freefloat/detected");
 
   script_tag(name:"summary", value:"Freefloat FTP Server is prone to a buffer-overflow vulnerability.");
 

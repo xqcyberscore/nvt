@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_golden_ftp_server_detect.nasl 9536 2018-04-19 11:20:50Z cfischer $
+# $Id: gb_golden_ftp_server_detect.nasl 13499 2019-02-06 12:55:20Z cfischer $
 #
 # Golden FTP Server Version Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801072");
-  script_version("$Revision: 9536 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-19 13:20:50 +0200 (Thu, 19 Apr 2018) $");
+  script_version("$Revision: 13499 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 13:55:20 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-12-05 12:49:16 +0100 (Sat, 05 Dec 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -38,7 +38,7 @@ if(description)
   script_family("Product detection");
   script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
-  script_mandatory_keys("ftp_banner/available");
+  script_mandatory_keys("ftp/golden_tfp/detected");
 
   script_tag(name:"summary", value:"Detection of Golden FTP Server.
 
@@ -56,7 +56,7 @@ include("host_details.inc");
 port = get_ftp_port(default:21);
 banner = get_ftp_banner(port:port);
 
-if(("220 Golden FTP Server" >< banner) && ("Pro"  >!<  banner))
+if(("Golden FTP Server" >< banner) && ("Pro"  >!<  banner))
 {
   version = "unknown";
 
@@ -73,7 +73,7 @@ if(("220 Golden FTP Server" >< banner) && ("Pro"  >!<  banner))
   if (!cpe)
     cpe = 'cpe:/a:kmint21:golden_ftp_server';
 
-  register_product(cpe:cpe, location:port + '/tcp', port:port);
+  register_product(cpe:cpe, location:port + '/tcp', port:port, service:"ftp");
 
   log_message(data:build_detection_report(app:"Golden FTP Free", version:version, install:port + '/tcp',
                                           cpe:cpe, concluded:banner),
@@ -81,7 +81,7 @@ if(("220 Golden FTP Server" >< banner) && ("Pro"  >!<  banner))
   exit(0);
 }
 
-if("220 Golden FTP Server Pro" >< banner)
+if("Golden FTP Server Pro" >< banner)
 {
   version = "unknown";
 
@@ -98,7 +98,7 @@ if("220 Golden FTP Server Pro" >< banner)
   if (!cpe)
     cpe = 'cpe:/a:kmint21:golden_ftp_server';
 
-  register_product(cpe:cpe, location:port + '/tcp', port:port);
+  register_product(cpe:cpe, location:port + '/tcp', port:port, service:"ftp");
 
   log_message(data:build_detection_report(app:"Golden FTP Pro", version:version, install:port + '/tcp',
                                           cpe:cpe, concluded:banner),

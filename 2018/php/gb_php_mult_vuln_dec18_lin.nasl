@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_mult_vuln_dec18_lin.nasl 12752 2018-12-11 08:33:24Z cfischer $
+# $Id: gb_php_mult_vuln_dec18_lin.nasl 13517 2019-02-07 07:51:12Z mmartin $
 #
 # PHP Multiple Vulnerabilities - Dec19 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108507");
-  script_version("$Revision: 12752 $");
+  script_version("$Revision: 13517 $");
   script_cve_id("CVE-2018-19518");
   script_bugtraq_id(106018);
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-11 09:33:24 +0100 (Tue, 11 Dec 2018) $");
+  script_tag(name:"cvss_base", value:"8.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-07 08:51:12 +0100 (Thu, 07 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-12-11 09:08:47 +0100 (Tue, 11 Dec 2018)");
   script_name("PHP Multiple Vulnerabilities - Dec19 (Linux)");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");

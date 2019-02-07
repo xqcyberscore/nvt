@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mikrotik_router_routeros_ftp_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
+# $Id: gb_mikrotik_router_routeros_ftp_detect.nasl 13499 2019-02-06 12:55:20Z cfischer $
 #
 # MikroTik RouterOS Detection (FTP)
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113069");
-  script_version("$Revision: 11885 $");
+  script_version("$Revision: 13499 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 13:55:20 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-12-14 13:04:05 +0100 (Thu, 14 Dec 2017)");
   script_name("MikroTik RouterOS Detection (FTP)");
   script_category(ACT_GATHER_INFO);
@@ -39,7 +39,7 @@ if(description)
   script_family("Product detection");
   script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
-  script_mandatory_keys("ftp_banner/available");
+  script_mandatory_keys("ftp/mikrotik/detected");
 
   script_tag(name:"summary", value:"Detection of MikroTik RouterOS via FTP.
 
@@ -56,7 +56,8 @@ include("ftp_func.inc");
 
 port = get_ftp_port( default: 21 );
 banner = get_ftp_banner( port: port );
-if( " FTP server (MikroTik " >!< banner || " ready" >!<  banner ) exit( 0 );
+if( ! banner || banner !~ " FTP server \(MikroTik .* ready" )
+  exit( 0 );
 
 version = "unknown";
 install = port + "/tcp";

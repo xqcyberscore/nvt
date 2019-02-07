@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_4030_1.nasl 12755 2018-12-11 10:50:43Z santu $
+# $Id: gb_suse_2018_4030_1.nasl 13517 2019-02-07 07:51:12Z mmartin $
 #
 # SuSE Update for Recommended openSUSE-SU-2018:4030-1 (Recommended)
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852175");
-  script_version("$Revision: 12755 $");
+  script_version("$Revision: 13517 $");
   script_cve_id("CVE-2018-19518");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-11 11:50:43 +0100 (Tue, 11 Dec 2018) $");
+  script_tag(name:"cvss_base", value:"8.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-07 08:51:12 +0100 (Thu, 07 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-12-10 07:39:01 +0100 (Mon, 10 Dec 2018)");
   script_name("SuSE Update for Recommended openSUSE-SU-2018:4030-1 (Recommended)");
   script_category(ACT_GATHER_INFO);

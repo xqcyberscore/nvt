@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: ftp_func.inc 13492 2019-02-06 09:37:34Z cfischer $
+# $Id: ftp_func.inc 13506 2019-02-06 14:18:08Z cfischer $
 #
 # Methods for handling FTP
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 13492 $
+# $Revision: 13506 $
 #
 ###############################################################################
 
@@ -103,7 +103,8 @@ function ftp_close( socket ) {
 function get_ftp_banner( port ) {
 
   local_var port;
-  local_var banner, soc, port, cmd, csid_banner, creds, user, pass;
+  local_var banner, soc, csid_cmd, csid_banner, help_cmd, help_banner, syst_cmd, syst_banner;
+  local_var stat_cmd, stat_banner, creds, user, pass, quit_cmd, quit_banner;
 
   if( ! port ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#get_ftp_banner" );
@@ -137,10 +138,6 @@ function get_ftp_banner( port ) {
 
   banner = chomp( banner );
 
-  creds = ftp_get_kb_creds();
-  user  = creds["login"];
-  pass  = creds["pass"];
-
   # Client / Server Identification (CSID)
   # https://tools.ietf.org/html/draft-peterson-streamlined-ftp-command-extensions-10#section-6
   # Some servers like Serv-U implement this and report the Server-Type and Version even if the Banner is changed to something generic
@@ -153,17 +150,34 @@ function get_ftp_banner( port ) {
   if( csid_banner )
     set_kb_item( name:"ftp/fingerprints/" + port + "/csid_banner_noauth", value:csid_banner );
 
+  if( egrep( pattern:"^200 .+", string:csid_banner ) )
+    banner += '\n' + csid_banner;
+
   help_cmd = "HELP";
   help_banner = get_ftp_cmd_banner( port:port, socket:soc, cmd:help_cmd );
 
   if( help_banner )
     set_kb_item( name:"ftp/fingerprints/" + port + "/help_banner_noauth", value:help_banner );
 
-  if( egrep( pattern:"^200 .+", string:csid_banner ) )
-    banner += '\n' + csid_banner;
+  # https://cr.yp.to/ftp/syst.html
+  syst_cmd = "SYST";
+  syst_banner = get_ftp_cmd_banner( port:port, socket:soc, cmd:syst_cmd );
 
+  if( syst_banner )
+    set_kb_item( name:"ftp/fingerprints/" + port + "/syst_banner_noauth", value:syst_banner );
 
-  if( egrep( pattern:"^530 .+", string:csid_banner ) || egrep( pattern:"^530 .+", string:help_banner ) ) {
+  stat_cmd = "STAT";
+  stat_banner = get_ftp_cmd_banner( port:port, socket:soc, cmd:stat_cmd );
+
+  if( stat_banner )
+    set_kb_item( name:"ftp/fingerprints/" + port + "/stat_banner_noauth", value:stat_banner );
+
+  if( egrep( pattern:"^530 .+", string:csid_banner ) || egrep( pattern:"^530 .+", string:help_banner ) ||
+      egrep( pattern:"^530 .+", string:syst_banner ) || egrep( pattern:"^530 .+", string:stat_banner ) ) {
+
+    creds = ftp_get_kb_creds();
+    user  = creds["login"];
+    pass  = creds["pass"];
 
     if( ftp_authenticate( socket:soc, user:user, pass:pass, skip_banner:TRUE ) ) {
 
@@ -179,22 +193,43 @@ function get_ftp_banner( port ) {
       if( csid_banner )
         set_kb_item( name:"ftp/fingerprints/" + port + "/csid_banner_authed", value:csid_banner );
 
+      # Same for get_ftp_cmd_banner()
       help_banner = ftp_send_cmd( socket:soc, cmd:help_cmd );
       help_banner = chomp( help_banner );
 
-      if( egrep( pattern:"^214.+", string:help_banner ) )
+      if( egrep( pattern:"^214 .+", string:help_banner ) )
         replace_kb_item( name:"ftp/cmd/" + help_cmd + "_banner/" + port, value:help_banner );
 
       if( help_banner )
         set_kb_item( name:"ftp/fingerprints/" + port + "/help_banner_authed", value:help_banner );
+
+      # Same for get_ftp_cmd_banner()
+      syst_banner = ftp_send_cmd( socket:soc, cmd:syst_cmd );
+      syst_banner = chomp( syst_banner );
+
+      if( egrep( pattern:"^215 .+", string:syst_banner ) )
+        replace_kb_item( name:"ftp/cmd/" + syst_cmd + "_banner/" + port, value:syst_banner );
+
+      if( syst_banner )
+        set_kb_item( name:"ftp/fingerprints/" + port + "/syst_banner_authed", value:syst_banner );
+
+      # Same for get_ftp_cmd_banner()
+      stat_banner = ftp_send_cmd( socket:soc, cmd:stat_cmd );
+      stat_banner = chomp( stat_banner );
+
+      if( egrep( pattern:"^211 .+", string:stat_banner ) )
+        replace_kb_item( name:"ftp/cmd/" + stat_cmd + "_banner/" + port, value:stat_banner );
+
+      if( stat_banner )
+        set_kb_item( name:"ftp/fingerprints/" + port + "/stat_banner_authed", value:stat_banner );
     }
   }
 
   replace_kb_item( name:"FTP/banner/" + port, value:banner );
 
   # nb: Don't use ftp_close_socket as we want to catch the QUIT banner as well.
-  cmd = "QUIT";
-  quit_banner = get_ftp_cmd_banner( port:port, socket:soc, cmd:cmd );
+  quit_cmd = "QUIT";
+  quit_banner = get_ftp_cmd_banner( port:port, socket:soc, cmd:quit_cmd );
   if( quit_banner )
     set_kb_item( name:"ftp/fingerprints/" + port + "/quit_banner", value:quit_banner );
 
@@ -574,7 +609,7 @@ function ftp_get_kb_creds( default_login, default_pass ) {
   local_var login, pass, ret_array;
   # nb: __ftp_kb_login and __ftp_kb_pass are global vars
 
-  if( ! isnull( __ftp_kb_login && ! default_login ) ) {
+  if( ! isnull( __ftp_kb_login ) && ! default_login ) {
     login = string( __ftp_kb_login );
   } else {
     login = get_kb_item( "ftp/login" );

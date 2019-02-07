@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Wed, 06 Feb 2019 12:22:54 +0100
+# Automatically created on:  Thu, 07 Feb 2019 14:57:40 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -43990,6 +43990,7 @@
 2019/debian/deb_4382.nasl: GPLv2+
 2019/debian/deb_4383.nasl: GPLv2+
 2019/debian/deb_4384.nasl: GPLv2+
+2019/debian/deb_4385.nasl: GPLv2+
 2019/debian/deb_dla_1621.nasl: GPLv2+
 2019/debian/deb_dla_1623.nasl: GPLv2+
 2019/debian/deb_dla_1624.nasl: GPLv2+
@@ -44019,10 +44020,17 @@
 2019/debian/deb_dla_1651.nasl: GPLv2+
 2019/debian/deb_dla_1652.nasl: GPLv2+
 2019/debian/deb_dla_1653.nasl: GPLv2+
+2019/debian/deb_dla_1654.nasl: GPLv2+
 2019/debian/deb_dla_1655.nasl: GPLv2+
 2019/debian/deb_dla_1656.nasl: GPLv2+
 2019/debian/deb_dla_1658.nasl: GPLv2+
 2019/debian/deb_dla_1659.nasl: GPLv2+
+2019/debian/deb_dla_1660.nasl: GPLv2+
+2019/debian/deb_dla_1661.nasl: GPLv2+
+2019/debian/deb_dla_1662.nasl: GPLv2+
+2019/debian/deb_dla_1663.nasl: GPLv2+
+2019/debian/deb_dla_1664.nasl: GPLv2+
+2019/debian/deb_dla_1665.nasl: GPLv2+
 2019/discourse/gb_discourse_2.2.0beta2.nasl: GPLv2+
 2019/discourse/gb_discourse_2.2.0beta3.nasl: GPLv2+
 2019/discourse/gb_discourse_2.2.0beta4.nasl: GPLv2+
@@ -44035,6 +44043,7 @@
 2019/domainmod/gb_domainmod_mult_xss_vuln_jan19.nasl: GPLv2+
 2019/domainmod/gb_domainmod_mult_xss_vuln_may18_1.nasl: GPLv2+
 2019/domainmod/gb_domainmod_mult_xss_vuln_may18_2.nasl: GPLv2+
+2019/dovecot/gb_dovecot_auth_bypass_vuln.nasl: GPLv2+
 2019/drupal/gb_drupal_sa-core-2019-002_lin.nasl: GPLv2+
 2019/drupal/gb_drupal_sa-core-2019-002_win.nasl: GPLv2+
 2019/fedora/gb_fedora_2018_166b220ff1_tcpreplay_fc28.nasl: GPLv2+
@@ -44061,6 +44070,9 @@
 2019/fedora/gb_fedora_2019_337484d88b_kernel-headers_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_337484d88b_kernel-tools_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_348547a32d_chromium_fc28.nasl: GPLv2+
+2019/fedora/gb_fedora_2019_4002b91800_kernel_fc28.nasl: GPLv2+
+2019/fedora/gb_fedora_2019_4002b91800_kernel-headers_fc28.nasl: GPLv2+
+2019/fedora/gb_fedora_2019_4002b91800_kernel-tools_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_4dc2ccb142_electrum_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_509c133845_kernel_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_509c133845_kernel-headers_fc28.nasl: GPLv2+
@@ -44076,6 +44088,7 @@
 2019/fedora/gb_fedora_2019_944ff52ce6_php-horde-Horde-Image_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_9eb0ae6296_openssh_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_a6511b0eed_php_fc28.nasl: GPLv2+
+2019/fedora/gb_fedora_2019_aa99c99f24_firefox_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_ac7e19b0c8_krb5_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_b1da89df11_polkit_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_b6ce519120_gitolite3_fc28.nasl: GPLv2+
@@ -44098,6 +44111,8 @@
 2019/google/gb_google_chrome_stable-channel-update-for-desktop-2019-01_lin.nasl: GPLv2+
 2019/google/gb_google_chrome_stable-channel-update-for-desktop-2019-01_macosx.nasl: GPLv2+
 2019/google/gb_google_chrome_stable-channel-update-for-desktop-2019-01_win.nasl: GPLv2+
+2019/graphicsmagick/gb_graphicsmagick_mult_vuln_dec18_lin.nasl: GPLv2+
+2019/graphicsmagick/gb_graphicsmagick_mult_vuln_dec18_win.nasl: GPLv2+
 2019/horde/gb_horde_imp_rce_vuln.nasl: GPLv2+
 2019/irssi/gb_irssi_use-after-free_vuln.nasl: GPLv2+
 2019/jenkins/gb_jenkins_20190116_lin.nasl: GPLv2+
@@ -44142,6 +44157,7 @@
 2019/microsoft/gb_ms_office_click2run_mult_vuln_jan19.nasl: GPLv2+
 2019/microsoft/gb_ms_visual_studio_mult_info_disc_vuln_jan19.nasl: GPLv2+
 2019/microsoft/gb_ms_visual_studio_rce_vuln_jan19.nasl: GPLv2+
+2019/modx/gb_modx_cms_mult_xss_vuln.nasl: GPLv2+
 2019/mozilla/gb_mozilla_firefox_esr_mfsa_2018-31_2019-03_macosx.nasl: GPLv2+
 2019/mozilla/gb_mozilla_firefox_esr_mfsa_2018-31_2019-03_win.nasl: GPLv2+
 2019/mozilla/gb_mozilla_firefox_mfsa_2018-31_2019-03_macosx.nasl: GPLv2+
@@ -44199,6 +44215,13 @@
 2019/opensuse/gb_suse_2019_0097_1.nasl: GPLv2+
 2019/opensuse/gb_suse_2019_0098_1.nasl: GPLv2+
 2019/opensuse/gb_suse_2019_0100_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0103_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0104_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0108_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0128_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0129_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0132_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0133_1.nasl: GPLv2+
 2019/opensuse/gb_suse_2019_1_1.nasl: GPLv2+
 2019/openxchange/gb_open_xchange_appsuite_56406.nasl: GPLv2+
 2019/openxchange/gb_open_xchange_appsuite_56558.nasl: GPLv2+
@@ -44234,17 +44257,20 @@
 2019/phpmyadmin/gb_phpmyadmin_PMASA-2019-1_win.nasl: GPLv2+
 2019/phpmyadmin/gb_phpmyadmin_PMASA-2019-2_lin.nasl: GPLv2+
 2019/phpmyadmin/gb_phpmyadmin_PMASA-2019-2_win.nasl: GPLv2+
+2019/planet/gb_planet_ip_camera_default_credentials.nasl: GPLv2+
 2019/powerdns/gb_pdns_powerdns-advisory-2019-01.nasl: GPLv2+
 2019/powerdns/gb_pdns_powerdns-advisory-2019-02.nasl: GPLv2+
 2019/prestashop/gb_prestashop_rce_vuln.nasl: GPLv2+
 2019/putty/gb_putty_scp_mult_spoofing_vuln_win.nasl: GPLv2+
 2019/pydio/gb_pydio_php_obj_inj_vuln_nov18.nasl: GPLv2+
+2019/samsung/gb_samsung_ipolis_default_credentials.nasl: GPLv2+
 2019/studio42/gb_elfinder_inf_disc_vuln.nasl: GPLv2+
 2019/studio42/gb_elfinder_ssrf_vuln.nasl: GPLv2+
 2019/sugarcrm/gb_sugarcrm_mult_vuln01.nasl: GPLv2+
 2019/sugarcrm/gb_sugarcrm_mult_vuln02.nasl: GPLv2+
 2019/sugarcrm/gb_sugarcrm_sugarcrm-sa-2018-002.nasl: GPLv2+
 2019/synetics/gb_idoit_cmdb_file_downld_vuln.nasl: GPLv2+
+2019/teampass/gb_teampass_info_disc_vuln.nasl: GPLv2+
 2019/tenable/gb_tenable_nessus_mult_vuln_tns-2018-16.nasl: GPLv2+
 2019/tenable/gb_tenable_nessus_mult_vuln_tns-2018-17.nasl: GPLv2+
 2019/tiki/gb_tikiwiki_sql_inj_vuln.nasl: GPLv2+
@@ -44274,10 +44300,19 @@
 2019/ubuntu/gb_ubuntu_USN_3869_1.nasl: GPLv2+
 2019/ubuntu/gb_ubuntu_USN_3870_1.nasl: GPLv2+
 2019/ubuntu/gb_ubuntu_USN_3871_1.nasl: GPLv2+
+2019/ubuntu/gb_ubuntu_USN_3871_2.nasl: GPLv2+
+2019/ubuntu/gb_ubuntu_USN_3871_3.nasl: GPLv2+
+2019/ubuntu/gb_ubuntu_USN_3871_4.nasl: GPLv2+
 2019/ubuntu/gb_ubuntu_USN_3872_1.nasl: GPLv2+
 2019/ubuntu/gb_ubuntu_USN_3873_1.nasl: GPLv2+
 2019/ubuntu/gb_ubuntu_USN_3874_1.nasl: GPLv2+
 2019/ubuntu/gb_ubuntu_USN_3875_1.nasl: GPLv2+
+2019/ubuntu/gb_ubuntu_USN_3876_1.nasl: GPLv2+
+2019/ubuntu/gb_ubuntu_USN_3877_1.nasl: GPLv2+
+2019/ubuntu/gb_ubuntu_USN_3878_1.nasl: GPLv2+
+2019/ubuntu/gb_ubuntu_USN_3879_1.nasl: GPLv2+
+2019/ubuntu/gb_ubuntu_USN_3879_2.nasl: GPLv2+
+2019/ubuntu/gb_ubuntu_USN_3880_1.nasl: GPLv2+
 2019/virustotal/gb_yara_mult_vuln_dec18.nasl: GPLv2+
 2019/virustotal/gb_yara_mult_vuln_jun18.nasl: GPLv2+
 2019/webmin/gb_webmin_rce_vuln.nasl: GPLv2+
@@ -45794,6 +45829,7 @@ gb_pihole_detect.nasl: GPLv2+
 gb_pivotx_detect.nasl: GPLv2+
 gb_piwigo_detect.nasl: GPLv2+
 gb_pkp_open_journal_systems_detect.nasl: GPLv2+
+gb_planet_ip_camera_detect.nasl: GPLv2+
 gb_planex_csw50hd_camera_remote_detect.nasl: GPLv2+
 gb_plesk_detect.nasl: GPLv2+
 gb_plex_media_server_remote_detect.nasl: GPLv2+
@@ -45893,6 +45929,7 @@ gb_rundeck_detect.nasl: GPLv2+
 gb_safenet_sas_owa_agent_detect.nasl: GPLv2+
 gb_saia_pcd_web_detect.nasl: GPLv2+
 gb_samba_detect.nasl: GPLv2+
+gb_samsung_ipolis_detect.nasl: GPLv2+
 gb_samsung_iPOLis_manager_detect.nasl: GPLv2+
 gb_samsung_syncthru_web_service_detect.nasl: GPLv2+
 gb_samsung_web_viewer_detect.nasl: GPLv2+
@@ -63126,6 +63163,7 @@ gsf/2019/cisco/gb_cisco_esa_cisco-sa-20190109-esa-url-dos.nasl: GPLv2+
 gsf/2019/cisco/gb_cisco_firepower_management_center_cisco-sa-20190109-fpwr-mc-dos.nasl: GPLv2+
 gsf/2019/cisco/gb_cisco_firepower_management_center_cisco-sa-20190123-firepowertds-bypass.nasl: GPLv2+
 gsf/2019/cisco/gb_cisco_firepower_management_center_cisco-sa-20190123-frpwr-mc-xss.nasl: GPLv2+
+gsf/2019/cisco/gb_cisco_firepower_management_center_cisco-sa-20190206-fmc-xss.nasl: GPLv2+
 gsf/2019/cisco/gb_cisco_ios_cisco-sa-20190109-ios-ssh-vrf.nasl: GPLv2+
 gsf/2019/cisco/gb_cisco_ios_cisco-sa-20190109-tcp.nasl: GPLv2+
 gsf/2019/cisco/gb_cisco_ios_xe_cisco-sa-20190109-ios-ssh-vrf.nasl: GPLv2+
@@ -63135,12 +63173,16 @@ gsf/2019/cisco/gb_cisco_ise_cisco-sa-20190109-ise-passwd.nasl: GPLv2+
 gsf/2019/cisco/gb_cisco_ise_cisco-sa-20190123-ise-info-disclosure.nasl: GPLv2+
 gsf/2019/cisco/gb_cisco_ise_cisco-sa-20190123-isel-xss.nasl: GPLv2+
 gsf/2019/cisco/gb_cisco_ise_cisco-sa-20190123-ise-privilege.nasl: GPLv2+
+gsf/2019/cisco/gb_cisco_ise_cisco-sa-20190206-ise-xss.nasl: GPLv2+
+gsf/2019/cisco/gb_cisco_meeting_server_cisco-sa-20190206-cms-dos.nasl: GPLv2+
+gsf/2019/cisco/gb_cisco_meeting_server_cisco-sa-20190206-meeting-sipdos.nasl: GPLv2+
 gsf/2019/cisco/gb_cisco_nfvis_cisco-sa-20190123-nfvis-shell-access.nasl: GPLv2+
 gsf/2019/cisco/gb_cisco_pis_cisco-sa-20190109-cpi-xss.nasl: GPLv2+
 gsf/2019/cisco/gb_cisco_pis_cisco-sa-20190123-cpi-xss.nasl: GPLv2+
 gsf/2019/cisco/gb_cisco_rv_series_cisco-sa-20190123-rv-info_active.nasl: GPLv2+
 gsf/2019/cisco/gb_cisco_rv_series_cisco-sa-20190123-rv-info.nasl: GPLv2+
 gsf/2019/cisco/gb_cisco_rv_series_cisco-sa-20190123-rv-inject.nasl: GPLv2+
+gsf/2019/cisco/gb_cisco_wsa_cisco-sa-20190206-wsa-bypass.nasl: GPLv2+
 gsf/2019/citrix/gb_citrix_netscaler_CTX240139.nasl: GPLv2+
 gsf/2019/crestron/gb_crestron_arimedia_auth_bypass_vuln.nasl: GPLv2+
 gsf/2019/emc/gb_rsa_archer_DSA-2018-224.nasl: GPLv2+
@@ -63161,6 +63203,8 @@ gsf/2019/fortinet/gb_fortinet_fortios_FG-IR-18-018.nasl: GPLv2+
 gsf/2019/fujitsu/gb_paperstream_ip_twain_win_ce_vuln.nasl: GPLv2+
 gsf/2019/horner/gb_cscape_rce_vuln.nasl: GPLv2+
 gsf/2019/huawei/gb_huawei_switch_huawei-sa-20180703-01-algorithm-en.nasl: GPLv2+
+gsf/2019/ibm/gb_ibm_datapower_gateway_ibm10744205.nasl: GPLv2+
+gsf/2019/ibm/gb_ibm_datapower_gateway_ibm10794661.nasl: GPLv2+
 gsf/2019/ibm/gb_ibm_datapower_gateway_ibm10794735.nasl: GPLv2+
 gsf/2019/ibm/gb_ibm_domino_bof_vuln.nasl: GPLv2+
 gsf/2019/ibm/gb_ibm_qradar_ibm10794523.nasl: GPLv2+
@@ -63194,6 +63238,7 @@ gsf/2019/kaseya/gb_kaseya_vsa_rce_vuln.nasl: GPLv2+
 gsf/2019/lcds/gb_lcds_laquis_scada_mult_vuln.nasl: GPLv2+
 gsf/2019/mcafee/gb_mcafee_application_control_mult_vuln_dec18.nasl: GPLv2+
 gsf/2019/mcafee/gb_mcafee_web_gateway_input_validation_vulnerability_jan19.nasl: GPLv2+
+gsf/2019/microsoft/gb_ms_exchange_server_ntlm_auth_priv_esc_vuln.nasl: GPLv2+
 gsf/2019/microsoft/gb_ms_kb4461589.nasl: GPLv2+
 gsf/2019/microsoft/gb_ms_kb4461591.nasl: GPLv2+
 gsf/2019/microsoft/gb_ms_kb4461596.nasl: GPLv2+
@@ -63226,6 +63271,11 @@ gsf/2019/rhel/gb_RHSA-2019_0194-01_bind.nasl: GPLv2+
 gsf/2019/rhel/gb_RHSA-2019_0201-01_systemd.nasl: GPLv2+
 gsf/2019/rhel/gb_RHSA-2019_0218-01_firefox.nasl: GPLv2+
 gsf/2019/rhel/gb_RHSA-2019_0219-01_firefox.nasl: GPLv2+
+gsf/2019/rhel/gb_RHSA-2019_0229-01_ghostscript.nasl: GPLv2+
+gsf/2019/rhel/gb_RHSA-2019_0230-01_polkit.nasl: GPLv2+
+gsf/2019/rhel/gb_RHSA-2019_0231-01_spice.nasl: GPLv2+
+gsf/2019/rhel/gb_RHSA-2019_0232-01_spice-server.nasl: GPLv2+
+gsf/2019/rhel/gb_RHSA-2019_0269-01_thunderbird.nasl: GPLv2+
 gsf/2019/rockwellautomation/gb_factorytalk_services_platform_bof_vuln.nasl: GPLv2+
 gsf/2019/rundeck/gb_rundeck_xss_vuln.nasl: GPLv2+
 gsf/2019/schneider/gb_schneider_electric_proface_gp-pro_ex_input_validation_vulnerability.nasl: GPLv2+

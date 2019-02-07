@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mybb_open_redirect_vuln_may18.nasl 12356 2018-11-15 06:27:24Z ckuersteiner $
+# $Id: gb_mybb_open_redirect_vuln_may18.nasl 13515 2019-02-07 07:01:25Z ckuersteiner $
 #
 # MyBB Open Redirection Vulnerability-May18
 #
@@ -29,14 +29,15 @@ CPE = "cpe:/a:mybb:mybb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813403");
-  script_version("$Revision: 12356 $");
+  script_version("$Revision: 13515 $");
   script_cve_id("CVE-2018-10678");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-15 07:27:24 +0100 (Thu, 15 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-07 08:01:25 +0100 (Thu, 07 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-05-22 15:25:41 +0530 (Tue, 22 May 2018)");
   ## Affected only with with Microsoft Edge
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
+
   script_name("MyBB Open Redirection Vulnerability-May18");
 
   script_tag(name:"summary", value:"The host is installed with MyBB and is
@@ -52,7 +53,7 @@ if(description)
 
   script_tag(name:"affected", value:"MyBB version 1.8.15");
 
-  script_tag(name:"solution", value:"No known solution is available as of 15th November, 2018.
+  script_tag(name:"solution", value:"No known solution is available as of 07th February, 2019.
   Information regarding this issue will be updated once solution details are available.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
@@ -80,7 +81,7 @@ path = infos['location'];
 
 if(version == "1.8.15")
 {
-  report = report_fixed_ver(installed_version:version, fixed_version:"NoneAvailable", install_path:path);
+  report = report_fixed_ver(installed_version:version, fixed_version:"None", install_path:path);
   security_message(port:port, data:report);
   exit(0);
 }

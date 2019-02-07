@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_yokogawa_stardom_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
+# $Id: gb_yokogawa_stardom_detect.nasl 13499 2019-02-06 12:55:20Z cfischer $
 #
 # Yokogawa STARDOM Detection
 #
@@ -25,11 +25,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106270");
-  script_version("$Revision: 11885 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 13499 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 13:55:20 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2016-09-20 09:58:46 +0700 (Tue, 20 Sep 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -40,8 +40,8 @@ if (description)
 
   script_tag(name:"summary", value:"Detection of Yokogawa STRARDOM
 
-The script sends a FTP connection request and attempts to detect the presence of Yokogawa STARDOM and to
-extract its version.");
+  The script sends a FTP connection request and attempts to detect the presence of Yokogawa STARDOM and to
+  extract its version.");
 
   script_category(ACT_GATHER_INFO);
 
@@ -49,7 +49,7 @@ extract its version.");
   script_family("Product detection");
   script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
-  script_mandatory_keys("ftp_banner/available");
+  script_mandatory_keys("ftp/yokogawa/stardom/detected");
 
   script_xref(name:"URL", value:"http://www.yokogawa.com/solutions/products-platforms/control-system/process-control-plc-rtu/");
 
@@ -63,7 +63,7 @@ include("host_details.inc");
 port = get_ftp_port(default: 21);
 banner = get_ftp_banner(port: port);
 
-if ("220 FCX STARDOM" >< banner) {
+if (banner && "FCX STARDOM" >< banner) {
   version = "unknown";
 
   mo = eregmatch(pattern: "STARDOM\(([A-Z0-9-]+)\)", string: banner);
@@ -84,7 +84,7 @@ if ("220 FCX STARDOM" >< banner) {
   if (!cpe)
     cpe = 'cpe:/a:yokogawa:stardom_fcn-fcj';
 
-  register_product(cpe: cpe, location: port + '/tcp', port: port);
+  register_product(cpe: cpe, location: port + '/tcp', port: port, service: "ftp");
 
   log_message(data: build_detection_report(app: "Yokogawa STARDOM " + model, version: version,
                                            install: port + "tcp", cpe: cpe, concluded: banner),

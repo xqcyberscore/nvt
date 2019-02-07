@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_xitami_server_detect.nasl 13327 2019-01-28 13:11:03Z cfischer $
+# $Id: secpod_xitami_server_detect.nasl 13507 2019-02-06 15:12:15Z cfischer $
 #
 # Xitami Server Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900547");
-  script_version("$Revision: 13327 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-28 14:11:03 +0100 (Mon, 28 Jan 2019) $");
+  script_version("$Revision: 13507 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 16:12:15 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-05-06 08:04:28 +0200 (Wed, 06 May 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -36,7 +36,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Product detection");
-  script_dependencies("find_service.nasl", "ftpserver_detect_type_nd_version.nasl");
+  script_dependencies("httpver.nasl", "ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/www", 80, "Services/ftp", 21, 990);
 
   script_tag(name:"summary", value:"Detection of Xitami Server.

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: xm_easy_ftp_35239.nasl 13221 2019-01-22 13:16:29Z cfischer $
+# $Id: xm_easy_ftp_35239.nasl 13499 2019-02-06 12:55:20Z cfischer $
 #
 # XM Easy Personal FTP Server Multiple Command Remote Buffer Overflow
 # Vulnerabilities
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100223");
-  script_version("$Revision: 13221 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-22 14:16:29 +0100 (Tue, 22 Jan 2019) $");
+  script_version("$Revision: 13499 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 13:55:20 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-06-14 17:19:03 +0200 (Sun, 14 Jun 2009)");
   script_bugtraq_id(35239);
   script_tag(name:"cvss_base", value:"6.8");
@@ -41,7 +41,7 @@ if(description)
   script_family("FTP");
   script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
-  script_mandatory_keys("ftp_banner/available");
+  script_mandatory_keys("ftp/xm_easy_personal/detected");
 
   script_tag(name:"summary", value:"XM Easy Personal FTP Server is prone to multiple remote
   buffer-overflow vulnerabilities because the application fails to
@@ -68,15 +68,13 @@ include("ftp_func.inc");
 include("version_func.inc");
 
 ftpPort = get_ftp_port(default:21);
+banner = get_ftp_banner(port:ftpPort);
+if( !banner || "Welcome to DXM's FTP Server" >!< banner )
+  exit(0);
 
 if(safe_checks()) {
-
-  if( ! banner = get_ftp_banner(port:ftpPort))
-    exit(0);
-
   if(egrep(pattern: "Welcome to DXM's FTP Server", string:banner)) {
     version = eregmatch(pattern:"Welcome to DXM's FTP Server ([0-9.]+)", string:banner);
-
     if(version[1] && version_is_equal(version:version[1], test_version:"5.7.0")) {
       report = report_fixed_ver(installed_version:version[1], fixed_version:"WillNotFix");
       security_message(port:ftpPort, data:report);

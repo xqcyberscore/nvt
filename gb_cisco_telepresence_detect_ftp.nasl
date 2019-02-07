@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_telepresence_detect_ftp.nasl 12420 2018-11-19 13:50:15Z cfischer $
+# $Id: gb_cisco_telepresence_detect_ftp.nasl 13499 2019-02-06 12:55:20Z cfischer $
 #
 # Cisco TelePresence Detection (FTP)
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103891");
-  script_version("$Revision: 12420 $");
+  script_version("$Revision: 13499 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-19 14:50:15 +0100 (Mon, 19 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 13:55:20 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2014-01-27 13:32:54 +0100 (Mon, 27 Jan 2014)");
   script_name("Cisco TelePresence Detection (FTP)");
   script_category(ACT_GATHER_INFO);
@@ -39,7 +39,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
   script_dependencies("ftpserver_detect_type_nd_version.nasl", "gb_cisco_telepresence_detect_snmp.nasl");
   script_require_ports("Services/ftp", 21);
-  script_mandatory_keys("ftp_banner/available");
+  script_mandatory_keys("ftp/cisco/telepresence/detected");
   script_exclude_keys("cisco/telepresence/version", "cisco/telepresence/typ"); # already detected by gb_cisco_telepresence_detect_snmp.nasl
 
   script_tag(name:"summary", value:"The script sends a connection request to

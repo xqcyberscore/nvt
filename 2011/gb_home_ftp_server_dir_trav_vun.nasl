@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_home_ftp_server_dir_trav_vun.nasl 13494 2019-02-06 10:06:36Z cfischer $
+# $Id: gb_home_ftp_server_dir_trav_vun.nasl 13499 2019-02-06 12:55:20Z cfischer $
 #
 # Home FTP Server Multiple Directory Traversal Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801599");
-  script_version("$Revision: 13494 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-06 11:06:36 +0100 (Wed, 06 Feb 2019) $");
+  script_version("$Revision: 13499 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 13:55:20 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2011-03-04 14:32:35 +0100 (Fri, 04 Mar 2011)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
@@ -38,7 +38,7 @@ if(description)
   script_family("FTP");
   script_dependencies("ftpserver_detect_type_nd_version.nasl", "os_detection.nasl");
   script_require_ports("Services/ftp", 21);
-  script_mandatory_keys("ftp_banner/available", "Host/runs_windows");
+  script_mandatory_keys("ftp/home_ftp/detected", "Host/runs_windows");
 
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/16259/");
 

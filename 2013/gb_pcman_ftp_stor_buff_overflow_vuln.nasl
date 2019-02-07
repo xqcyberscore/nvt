@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pcman_ftp_stor_buff_overflow_vuln.nasl 13353 2019-01-30 08:25:20Z mmartin $
+# $Id: gb_pcman_ftp_stor_buff_overflow_vuln.nasl 13499 2019-02-06 12:55:20Z cfischer $
 #
 # PCMAN FTP Server STOR Command Buffer Overflow vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803875");
-  script_version("$Revision: 13353 $");
+  script_version("$Revision: 13499 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2013-4730");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-30 09:25:20 +0100 (Wed, 30 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 13:55:20 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2013-08-21 16:49:10 +0530 (Wed, 21 Aug 2013)");
   script_name("PCMAN FTP Server STOR Command Buffer Overflow vulnerability");
 
@@ -66,7 +66,7 @@ if(description)
   script_family("FTP");
   script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
-  script_mandatory_keys("ftp_banner/available");
+  script_mandatory_keys("ftp/pcmans/ftp/detected");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_iis_ftpd_detect.nasl 9528 2018-04-19 07:31:17Z cfischer $
+# $Id: secpod_ms_iis_ftpd_detect.nasl 13501 2019-02-06 13:06:00Z cfischer $
 #
 # Microsoft IIS FTP Server Version Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900875");
-  script_version("$Revision: 9528 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-19 09:31:17 +0200 (Thu, 19 Apr 2018) $");
+  script_version("$Revision: 13501 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 14:06:00 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-10-15 15:35:39 +0200 (Thu, 15 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -38,7 +38,7 @@ if(description)
   script_family("Product detection");
   script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
-  script_mandatory_keys("ftp_banner/available");
+  script_mandatory_keys("ftp/microsoft/iis_ftp/detected");
 
   script_tag(name:"summary", value:"Detection of Microsoft IIS FTP Server.
 
@@ -58,7 +58,7 @@ banner = get_ftp_banner( port:port );
 
 # 220 $hostname Microsoft FTP Service (Version 5.0).
 # 220 $hostname Microsoft FTP Service (Version 3.0).
-if( egrep( pattern:".*icrosoft FTP.*", string:banner ) ) {
+if( banner && egrep( pattern:".*icrosoft FTP.*", string:banner ) ) {
 
   install = port + "/tcp";
   version = "unknown";

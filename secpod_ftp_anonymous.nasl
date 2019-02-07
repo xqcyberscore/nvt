@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ftp_anonymous.nasl 12993 2019-01-09 11:02:50Z cfischer $
+# $Id: secpod_ftp_anonymous.nasl 13509 2019-02-06 15:50:00Z cfischer $
 #
 # Anonymous FTP Login Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108477");
-  script_version("$Revision: 12993 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-09 12:02:50 +0100 (Wed, 09 Jan 2019) $");
+  script_version("$Revision: 13509 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 16:50:00 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-03-12 10:50:11 +0100 (Thu, 12 Mar 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -82,6 +82,10 @@ foreach user( make_list( "anonymous", "ftp" ) ) {
   if( ! get_kb_item( "ftp/login" ) ) {
     set_kb_item( name:"ftp/login", value:user );
     set_kb_item( name:"ftp/password", value:passwd );
+  }
+  if( ! get_kb_item( "ftp/anonymous/login" ) ) {
+    set_kb_item( name:"ftp/anonymous/login", value:user );
+    set_kb_item( name:"ftp/anonymous/password", value:passwd );
   }
 
   # TODO/TBD: Some servers/firewall setups might not allow us to create

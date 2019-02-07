@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_pure-ftpd_detect.nasl 9537 2018-04-19 11:49:54Z cfischer $
+# $Id: sw_pure-ftpd_detect.nasl 13499 2019-02-06 12:55:20Z cfischer $
 #
 # Pure-FTPd FTP Server Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111110");
-  script_version("$Revision: 9537 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-19 13:49:54 +0200 (Thu, 19 Apr 2018) $");
+  script_version("$Revision: 13499 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 13:55:20 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2016-07-12 17:00:00 +0200 (Tue, 12 Jul 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -38,7 +38,7 @@ if(description)
   script_family("Product detection");
   script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
-  script_mandatory_keys("ftp_banner/available");
+  script_mandatory_keys("ftp/pure_ftpd/detected");
 
   script_tag(name:"summary", value:"The script is grabbing the banner of a FTP server
   and sends a 'HELP' command to identify a Pure-FTPd FTP Server from the reply.");
@@ -59,7 +59,7 @@ command = get_ftp_cmd_banner( port:port, cmd:"HELP" );
 if( "Welcome to Pure-FTPd" >< banner || "Welcome to PureFTPd" >< banner ) {
   installed = TRUE;
   concluded = banner;
-} else if ( "Pure-FTPd - http://pureftpd.org" >< command ) {
+} else if( "Pure-FTPd - http://pureftpd.org" >< command ) {
   installed = TRUE;
   concluded = command;
 }
@@ -82,7 +82,7 @@ if( installed ) {
   if( isnull( cpe ) )
     cpe = 'cpe:/a:pureftpd:pure-ftpd';
 
-  register_product( cpe:cpe, location:install, port:port );
+  register_product( cpe:cpe, location:install, port:port, service:"ftp" );
 
   log_message( data:build_detection_report( app:"Pure-FTPd",
                                             version:version,

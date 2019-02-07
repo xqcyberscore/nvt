@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pyftpdlib_detect.nasl 9537 2018-04-19 11:49:54Z cfischer $
+# $Id: gb_pyftpdlib_detect.nasl 13499 2019-02-06 12:55:20Z cfischer $
 #
 # pyftpdlib Version Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801612");
-  script_version("$Revision: 9537 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-19 13:49:54 +0200 (Thu, 19 Apr 2018) $");
+  script_version("$Revision: 13499 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 13:55:20 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2010-10-28 11:50:37 +0200 (Thu, 28 Oct 2010)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -38,7 +38,7 @@ if(description)
   script_family("Product detection");
   script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
-  script_mandatory_keys("ftp_banner/available");
+  script_mandatory_keys("ftp/pyftpdlib/detected");
 
   script_tag(name:"summary", value:"Detection of pyftpdlib
 
@@ -56,11 +56,11 @@ include("host_details.inc");
 port = get_ftp_port(default:21);
 banner = get_ftp_banner(port:port);
 
-if("pyftpd" >< tolower(banner)){
+if(banner && "pyftpd" >< tolower(banner)){
 
   version = "unknown";
 
-  ver = eregmatch(pattern:"(Pyftpd|pyftpdlib) ([0-9.]+)",string:banner);
+  ver = eregmatch(pattern:"(Pyftpd|pyftpdlib) ([0-9.]+)", string:banner, icase:TRUE);
   if(!isnull(ver[2])) {
     version = ver[2];
     set_kb_item(name:"pyftpdlib/Ver", value:version);
@@ -70,7 +70,7 @@ if("pyftpd" >< tolower(banner)){
   if (!cpe)
     cpe = 'cpe:/a:g.rodola:pyftpdlib';
 
-  register_product(cpe:cpe, location:port + '/tcp', port:port);
+  register_product(cpe:cpe, location:port + '/tcp', port:port, service:"ftp");
 
   log_message(data:build_detection_report(app:"pyftpdlib FTP Server", version:version, install:port + '/tcp',
                                           cpe:cpe, concluded:banner),

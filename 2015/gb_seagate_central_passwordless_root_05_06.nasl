@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_seagate_central_passwordless_root_05_06.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_seagate_central_passwordless_root_05_06.nasl 13499 2019-02-06 12:55:20Z cfischer $
 #
 # Seagate Central Remote Root Security Bypass Vulnerability
 #
@@ -28,7 +28,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105288");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 13499 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
@@ -36,7 +36,8 @@ if(description)
 
   script_xref(name:"URL", value:"https://packetstormsecurity.com/files/132163");
 
-  script_tag(name:"vuldetect", value:"Login into the remote FTP as root without password");
+  script_tag(name:"vuldetect", value:"Login into the remote FTP as root without password.");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
   Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the
   product or replace the product by another one.");
@@ -46,14 +47,14 @@ if(description)
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"exploit");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 13:55:20 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2015-06-05 14:40:09 +0200 (Fri, 05 Jun 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("FTP");
   script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
   script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
-  script_mandatory_keys("ftp_banner/available");
+  script_mandatory_keys("ftp/seagate/central/detected");
 
   exit(0);
 }
@@ -62,7 +63,8 @@ include("ftp_func.inc");
 
 port = get_ftp_port(default:21);
 banner = get_ftp_banner( port:port );
-if( "Welcome to Seagate Central" >!< banner ) exit( 0 );
+if( !banner || "Welcome to Seagate Central" >!< banner )
+  exit( 0 );
 
 soc = open_sock_tcp( port );
 if( ! soc ) exit( 0 );

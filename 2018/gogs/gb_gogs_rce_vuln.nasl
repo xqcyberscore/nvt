@@ -1,8 +1,8 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gogs_rce_vuln.nasl 13394 2019-02-01 07:36:10Z mmartin $
+# $Id: gb_gogs_rce_vuln.nasl 13515 2019-02-07 07:01:25Z ckuersteiner $
 #
-# Gogs <= 0.11.66 RCE Vulnerability
+# Gogs < 0.11.79 RCE Vulnerability
 #
 # Authors:
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
@@ -30,8 +30,8 @@ CPE = "cpe:/a:gogs:gogs";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141678");
-  script_version("$Revision: 13394 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-01 08:36:10 +0100 (Fri, 01 Feb 2019) $");
+  script_version("$Revision: 13515 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-07 08:01:25 +0100 (Thu, 07 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-11-13 12:10:41 +0700 (Tue, 13 Nov 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -40,9 +40,9 @@ if (description)
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
 
-  script_name("Gogs <= 0.11.66 RCE Vulnerability");
+  script_name("Gogs < 0.11.79 RCE Vulnerability");
 
   script_category(ACT_GATHER_INFO);
 
@@ -57,10 +57,9 @@ related to session ID handling in the go-macaron/session code for Macaron.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"affected", value:"Gogs version 0.11.66 and prior.");
+  script_tag(name:"affected", value:"Gogs prior to version 0.11.79.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 13th November, 2018. Information
-regarding this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"Update to version 0.11.79 or later.");
 
   script_xref(name:"URL", value:"https://github.com/gogs/gogs/issues/5469");
 
@@ -76,10 +75,10 @@ if (!port = get_app_port(cpe: CPE))
 if (!version = get_app_version(cpe: CPE, port: port))
   exit(0);
 
-if (version_is_less_equal(version: version, test_version: "0.11.66")) {
-  report = report_fixed_ver(installed_version: version, fixed_version: "None");
+if (version_is_less(version: version, test_version: "0.11.79")) {
+  report = report_fixed_ver(installed_version: version, fixed_version: "0.11.79");
   security_message(port: port, data: report);
   exit(0);
 }
 
-exit(0);
+exit(99);

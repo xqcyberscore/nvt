@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_vsftpd_detect.nasl 9537 2018-04-19 11:49:54Z cfischer $
+# $Id: sw_vsftpd_detect.nasl 13499 2019-02-06 12:55:20Z cfischer $
 #
 # vsFTPd FTP Server Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111050");
-  script_version("$Revision: 9537 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-19 13:49:54 +0200 (Thu, 19 Apr 2018) $");
+  script_version("$Revision: 13499 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 13:55:20 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2015-11-11 18:00:00 +0100 (Wed, 11 Nov 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -38,7 +38,7 @@ if(description)
   script_family("Product detection");
   script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
-  script_mandatory_keys("ftp_banner/available");
+  script_mandatory_keys("ftp/vsftpd/detected");
 
   script_tag(name:"summary", value:"The script is grabbing the
   banner of a FTP server and attempts to identify a vsFTPd FTP Server
@@ -54,8 +54,9 @@ include("host_details.inc");
 include("cpe.inc");
 
 port = get_ftp_port( default:21 );
-if( ! banner = get_ftp_banner( port:port ) ) exit( 0 );
-if( "vsftpd" >!< tolower( banner ) ) exit( 0 );
+banner = get_ftp_banner( port:port );
+if( ! banner || "vsftpd" >!< tolower( banner ) )
+  exit( 0 );
 
 vers = "unknown";
 version = eregmatch( pattern:"vsftpd ([0-9.]+)", string: tolower( banner ) );
@@ -70,7 +71,7 @@ cpe = build_cpe( value:vers, exp:"^([0-9.]+)", base:"cpe:/a:beasts:vsftpd:" );
 if( isnull( cpe ) )
   cpe = 'cpe:/a:beasts:vsftpd';
 
-register_product( cpe:cpe, location:port + '/tcp', port:port );
+register_product( cpe:cpe, location:port + '/tcp', port:port, service:"ftp" );
 
 log_message( data:build_detection_report( app:"vsFTPd",
                                           version:vers,

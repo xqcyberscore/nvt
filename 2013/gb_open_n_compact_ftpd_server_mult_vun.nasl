@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_n_compact_ftpd_server_mult_vun.nasl 13494 2019-02-06 10:06:36Z cfischer $
+# $Id: gb_open_n_compact_ftpd_server_mult_vun.nasl 13499 2019-02-06 12:55:20Z cfischer $
 #
 # Open and Compact FTPD Auth Bypass and Directory Traversal Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803733");
-  script_version("$Revision: 13494 $");
+  script_version("$Revision: 13499 $");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-06 11:06:36 +0100 (Wed, 06 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 13:55:20 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2013-08-12 11:33:28 +0530 (Mon, 12 Aug 2013)");
   script_name("Open and Compact FTPD Auth Bypass and Directory Traversal Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -38,7 +38,7 @@ if(description)
   script_family("FTP");
   script_dependencies("ftpserver_detect_type_nd_version.nasl", "os_detection.nasl");
   script_require_ports("Services/ftp", 21);
-  script_mandatory_keys("ftp_banner/available", "Host/runs_windows");
+  script_mandatory_keys("ftp/open-ftpd/detected", "Host/runs_windows");
 
   script_xref(name:"URL", value:"http://1337day.com/exploit/21078");
   script_xref(name:"URL", value:"http://cxsecurity.com/issue/WLB-2013080072");

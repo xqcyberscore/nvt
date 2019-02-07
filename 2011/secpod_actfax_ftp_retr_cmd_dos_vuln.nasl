@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_actfax_ftp_retr_cmd_dos_vuln.nasl 13347 2019-01-29 15:54:59Z cfischer $
+# $Id: secpod_actfax_ftp_retr_cmd_dos_vuln.nasl 13499 2019-02-06 12:55:20Z cfischer $
 #
 # ActFax FTP Server Post Auth 'RETR' Command Denial of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900271");
-  script_version("$Revision: 13347 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-29 16:54:59 +0100 (Tue, 29 Jan 2019) $");
+  script_version("$Revision: 13499 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 13:55:20 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2011-02-23 12:24:37 +0100 (Wed, 23 Feb 2011)");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
@@ -38,7 +38,7 @@ if(description)
   script_family("FTP");
   script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
-  script_mandatory_keys("ftp_banner/available");
+  script_mandatory_keys("ftp/actfax_ftp/detected");
 
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/16177/");
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/view/98540/actfax-overflow.txt");

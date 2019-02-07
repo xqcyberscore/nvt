@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_dangerous_activex_ctrl.nasl 12602 2018-11-30 14:36:58Z cfischer $
+# $Id: secpod_dangerous_activex_ctrl.nasl 13500 2019-02-06 13:03:57Z santu $
 #
 # Detection of Dangerous ActiveX Control
 #
@@ -27,10 +27,10 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900188");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 12602 $");
+  script_version("$Revision: 13500 $");
   script_cve_id("CVE-2008-5002", "CVE-2008-4919", "CVE-2008-4342",
                 "CVE-2008-5232", "CVE-2008-5492");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-06 14:03:57 +0100 (Wed, 06 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-02-04 15:43:54 +0100 (Wed, 04 Feb 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_name("Detection of Dangerous ActiveX Control");
@@ -84,45 +84,51 @@ clsid = make_list("{3352B5B9-82E8-4FFD-9EB1-1A3E60056904}", "{BDF3E9D2-5F7A-4F4A
                   "{6FAA7D12-F331-4B51-8D72-877A3CE20E84}");
 
 refeList = make_list(
-  "http://archives.neohapsis.com/archives/fulldisclosure/2008-07/0509.html",
-  "http://securityresponse.symantec.com/avcenter/venc/data/dialer.instantaccess.html",
-  "http://www.viruslist.com/en/viruses/encyclopedia?virusid=67936",
-  "http://www.viruslist.com/en/viruses/encyclopedia?virusid=74565",
-  "http://www.spywareguide.com/product_show.php?id=431",
-  "http://www.spywareguide.com/product_show.php?id=860",
-  "http://www3.ca.com/securityadvisor/pest/pest.aspx?id=453094115",
-  "http://www.symantec.com/security_response/writeup.jsp?docid=2005-053116-0108-99",
-  "http://www.spywareguide.com/product_show.php?id=458",
-  "http://www.spywareguide.com/product_show.php?id=648",
+  "https://www.symantec.com/security_response/attacksignatures/detail.jsp?asid=50275",
+  "https://www.acunetix.com/vulnerabilities/network/vulnerability/visagesoft-expert-pdf-viewer-activex-control-file-overwrite-vulnerability/",
+  "https://www.symantec.com/security_response/attacksignatures/detail.jsp?asid=23106",
+  "https://www.symantec.com/security_response/attacksignatures/detail.jsp?asid=23069",
+  "https://www.sophos.com/en-us/threat-center/threat-analyses/adware-and-puas/OpenCandy/detailed-analysis.aspx",
+  "https://www.symantec.com/security_response/attacksignatures/detail.jsp?asid=23125",
+  "https://www.symantec.com/security_response/attacksignatures/detail.jsp?asid=50206",
+  "https://www.securitystronghold.com/gates/instant-access.html",
+  "https://www.bleepingcomputer.com/forums/t/22884/hjt-logfile/",
+  "https://zookaware.com/spyware-blog/adultoweb-dialer-profile/",
+  "https://www.symantec.com/security-center/writeup-print/2003-112612-1627-99",
+  "https://www.trendmicro.com/vinfo/us/threat-encyclopedia/malware/adware_whenu",
+  "https://www.bleepingcomputer.com/forums/t/4787/highjack-log-poptart3/",
+  "https://www.symantec.com/security-center/writeup/2005-053116-0108-99",
+  "https://www.enigmasoftware.com/acxinstall-removal/",
+  "https://www.bleepingcomputer.com/forums/t/107687/infected-with-antispy-storm/",
   "http://www.kephyr.com/spywarescanner/library/mirartoolbar.winnb42/index.phtml",
-  "http://www.trendmicro.com/vinfo/grayware/ve_graywareDetails.asp?GNAME=ADW_SUPERBAR.A",
+  "https://www.f-secure.com/sw-desc/adware_w32_gigatech-superbar.shtml",
   "http://www.kephyr.com/spywarescanner/library/relatedlinks.lbbho/index.phtml",
-  "http://de.trendmicro-europe.com/enterprise/vinfo/encyclopedia.php?LYstr=VMAINDATA&vNav=3&VName=TROJ_WINSHOW.AF",
-  "http://www.spywareguide.com/product_show.php?id=813",
-  "http://www.symantec.com/security_response/print_writeup.jsp?docid=2003-080414-3713-99",
-  "http://www3.ca.com/securityadvisor/pest/pest.aspx?id=453079049",
-  "http://www.superantispyware.com/definition/halflemon/",
-  "http://research.sunbelt-software.com/threatdisplay.aspx?name=Trojan-Downloader.Matcash&threatid=89006",
-  "http://vil.nai.com/vil/Content/v_142599.htm",
-  "http://vil.nai.com/vil/content/v_141822.htm",
-  "http://vil.nai.com/vil/content/v_142672.htm",
-  "http://vil.nai.com/vil/content/v_138384.htm",
-  "http://vil.nai.com/vil/content/v_138384.htm",
-  "http://vil.nai.com/vil/content/v_139523.htm",
-  "http://vil.nai.com/vil/content/v_142381.htm",
-  "http://vil.nai.com/vil/content/v_132034.htm",
-  "http://vil.nai.com/vil/content/v_140376.htm",
-  "http://vil.nai.com/vil/content/v_142395.htm",
-  "http://vil.nai.com/vil/content/v_132847.htm",
-  "http://vil.nai.com/vil/content/v_140856.htm",
-  "http://vil.nai.com/vil/content/v_137381.htm",
-  "http://vil.nai.com/vil/content/v_134309.htm",
-  "http://vil.nai.com/vil/content/v_137508.htm",
-  "http://vil.nai.com/vil/content/v_127690.htm",
-  "http://www.ca.com/us/securityadvisor/pest/pest.aspx?id=453072526",
-  "http://www.f-secure.com/v-descs/trojan-spy_w32_banker_cpv.shtml",
-  "http://www.viruslist.com/en/viruses/encyclopedia?virusid=74127",
-  "http://www.viruslist.com/en/viruses/encyclopedia?virusid=75772");
+  "https://www.trendmicro.com/vinfo/us/threat-encyclopedia/archive/malware/TROJ_WINSHOW.Y",
+  "https://www.symantec.com/pt/br/security-center/writeup-print/2004-120714-0643-99",
+  "https://www.symantec.com/security-center/writeup/2003-080414-3713-99",
+  "https://www.trendmicro.com/vinfo/us/threat-encyclopedia/archive/malware/dial_ruboskizo.a",
+  "https://www.securitystronghold.com/gates/halflemon.html",
+  "https://www.techspot.com/community/topics/msn-messenger-picture-thread-virus.60357/",
+  "https://www.trendmicro.com/vinfo/se/threat-encyclopedia/archive/malware/troj_ayfone.a",
+  "https://www.symantec.com/security-center/writeup/2007-020113-0840-99",
+  "https://www.sophos.com/en-us/threat-center/threat-analyses/viruses-and-spyware/Troj~Penta-B/detailed-analysis.aspx",
+  "https://forums.spybot.info/showthread.php?37724-Manual-Removal-Guide-for-SpywareNo",
+  "https://www.adaware.com/myadaware/rogues/spywareno",
+  "https://www.symantec.com/security-center/writeup/2006-050311-5856-99",
+  "https://www.file.net/process/bpvol.dll.html",
+  "http://www.kephyr.com/spywarescanner/library/gsim/index.phtml",
+  "https://threatpoint.checkpoint.com/ThreatPortal/threat?threatType=malwarefamily&threatId=1234",
+  "https://file-intelligence.comodo.com/windows-process-virus-malware/exe/msn",
+  "https://www.symantec.com/security-center/writeup-print/2007-052305-2411-99",
+  "https://www.sophos.com/en-us/threat-center/threat-analyses/viruses-and-spyware/Troj~Nordex-B/detailed-analysis.aspx",
+  "https://www.dell.com/community/Virus-Spyware/Adware-complication/td-p/625844",
+  "https://www.sophos.com/en-us/threat-center/threat-analyses/viruses-and-spyware/Troj~Stydler-B/detailed-analysis.aspx",
+  "https://www.bleepingcomputer.com/forums/t/41855/malwarepsguard-and-morwillsearch/",
+  "https://www.dell.com/community/Virus-Spyware/ameana-blackworm-malware/td-p/1712134",
+  "https://www.symantec.com/security-center/writeup-print/2004-111915-1255-99",
+  "https://www.symantec.com/security-center/writeup-print/2007-052710-0541-99",
+  "https://www.symantec.com/security-center/writeup-print/2005-022515-0005-99",
+  "http://www.geekstogo.com/forum/topic/22475-hijack-this-log-please-help-me-sresolved/page-2");
 
 i = 0;
 flag = 0;
