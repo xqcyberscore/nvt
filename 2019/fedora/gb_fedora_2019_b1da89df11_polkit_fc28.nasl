@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2019_b1da89df11_polkit_fc28.nasl 13245 2019-01-23 14:22:53Z santu $
+# $Id: gb_fedora_2019_b1da89df11_polkit_fc28.nasl 13532 2019-02-08 07:51:34Z mmartin $
 #
 # Fedora Update for polkit FEDORA-2019-b1da89df11
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875422");
-  script_version("$Revision: 13245 $");
+  script_version("$Revision: 13532 $");
   script_cve_id("CVE-2018-19788", "CVE-2018-1116");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-23 15:22:53 +0100 (Wed, 23 Jan 2019) $");
+  script_tag(name:"cvss_base", value:"9.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 08:51:34 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-22 04:04:43 +0100 (Tue, 22 Jan 2019)");
   script_name("Fedora Update for polkit FEDORA-2019-b1da89df11");
   script_category(ACT_GATHER_INFO);

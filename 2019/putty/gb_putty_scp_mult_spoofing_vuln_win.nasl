@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_putty_scp_mult_spoofing_vuln_win.nasl 13175 2019-01-21 07:34:21Z santu $
+# $Id: gb_putty_scp_mult_spoofing_vuln_win.nasl 13532 2019-02-08 07:51:34Z mmartin $
 #
 # PuTTY SCP Multiple Spoofing Vulnerabilities (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:putty:putty";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814661");
-  script_version("$Revision: 13175 $");
+  script_version("$Revision: 13532 $");
   script_cve_id("CVE-2019-6109", "CVE-2019-6110");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-21 08:34:21 +0100 (Mon, 21 Jan 2019) $");
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 08:51:34 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-17 15:17:22 +0530 (Thu, 17 Jan 2019)");
   script_tag(name:"qod_type", value:"registry");
   script_name("PuTTY SCP Multiple Spoofing Vulnerabilities (Windows)");

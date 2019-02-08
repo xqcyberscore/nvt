@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882982");
-  script_version("$Revision: 12873 $");
+  script_version("$Revision: 13532 $");
   script_cve_id("CVE-2018-16863", "CVE-2018-16509");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-21 15:42:20 +0100 (Fri, 21 Dec 2018) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 08:51:34 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-12-18 07:38:10 +0100 (Tue, 18 Dec 2018)");
   script_name("CentOS Update for ghostscript CESA-2018:3761 centos7 ");
   script_category(ACT_GATHER_INFO);

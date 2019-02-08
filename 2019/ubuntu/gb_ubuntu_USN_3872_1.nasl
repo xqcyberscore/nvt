@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3872_1.nasl 13451 2019-02-05 05:56:56Z santu $
+# $Id: gb_ubuntu_USN_3872_1.nasl 13532 2019-02-08 07:51:34Z mmartin $
 #
 # Ubuntu Update for linux-hwe USN-3872-1
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843885");
-  script_version("$Revision: 13451 $");
+  script_version("$Revision: 13532 $");
   script_cve_id("CVE-2018-14625", "CVE-2018-16882", "CVE-2018-19407", "CVE-2018-19854");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-05 06:56:56 +0100 (Tue, 05 Feb 2019) $");
+  script_tag(name:"cvss_base", value:"4.9");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 08:51:34 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-30 04:03:00 +0100 (Wed, 30 Jan 2019)");
   script_name("Ubuntu Update for linux-hwe USN-3872-1");
   script_category(ACT_GATHER_INFO);

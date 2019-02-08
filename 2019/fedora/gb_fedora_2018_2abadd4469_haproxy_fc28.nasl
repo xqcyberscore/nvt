@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_2abadd4469_haproxy_fc28.nasl 13108 2019-01-17 07:34:03Z santu $
+# $Id: gb_fedora_2018_2abadd4469_haproxy_fc28.nasl 13532 2019-02-08 07:51:34Z mmartin $
 #
 # Fedora Update for haproxy FEDORA-2018-2abadd4469
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875403");
-  script_version("$Revision: 13108 $");
+  script_version("$Revision: 13532 $");
   script_cve_id("CVE-2018-20103", "CVE-2018-20102");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-17 08:34:03 +0100 (Thu, 17 Jan 2019) $");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 08:51:34 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-12 04:04:11 +0100 (Sat, 12 Jan 2019)");
   script_name("Fedora Update for haproxy FEDORA-2018-2abadd4469");
   script_category(ACT_GATHER_INFO);

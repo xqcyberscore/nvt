@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3878_1.nasl 13500 2019-02-06 13:03:57Z santu $
+# $Id: gb_ubuntu_USN_3878_1.nasl 13532 2019-02-08 07:51:34Z mmartin $
 #
 # Ubuntu Update for linux USN-3878-1
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843895");
-  script_version("$Revision: 13500 $");
+  script_version("$Revision: 13532 $");
   script_cve_id("CVE-2018-14625", "CVE-2018-16882", "CVE-2018-19407", "CVE-2018-19854");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-06 14:03:57 +0100 (Wed, 06 Feb 2019) $");
+  script_tag(name:"cvss_base", value:"4.9");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 08:51:34 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-02-05 04:04:33 +0100 (Tue, 05 Feb 2019)");
   script_name("Ubuntu Update for linux USN-3878-1");
   script_category(ACT_GATHER_INFO);

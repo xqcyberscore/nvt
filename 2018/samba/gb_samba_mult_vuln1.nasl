@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samba_mult_vuln1.nasl 12567 2018-11-29 03:55:25Z ckuersteiner $
+# $Id: gb_samba_mult_vuln1.nasl 13532 2019-02-08 07:51:34Z mmartin $
 #
 # Samba 4.9.x Multiple Vulnerabilities
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:samba:samba";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141731");
-  script_version("$Revision: 12567 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-29 04:55:25 +0100 (Thu, 29 Nov 2018) $");
+  script_version("$Revision: 13532 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 08:51:34 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-11-29 09:59:44 +0700 (Thu, 29 Nov 2018)");
-  script_tag(name:"cvss_base", value:"5.4");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:C/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2018-16852", "CVE-2018-16857");
 

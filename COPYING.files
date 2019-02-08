@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Thu, 07 Feb 2019 14:57:40 +0100
+# Automatically created on:  Fri, 08 Feb 2019 12:54:44 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -43991,6 +43991,7 @@
 2019/debian/deb_4383.nasl: GPLv2+
 2019/debian/deb_4384.nasl: GPLv2+
 2019/debian/deb_4385.nasl: GPLv2+
+2019/debian/deb_4386.nasl: GPLv2+
 2019/debian/deb_dla_1621.nasl: GPLv2+
 2019/debian/deb_dla_1623.nasl: GPLv2+
 2019/debian/deb_dla_1624.nasl: GPLv2+
@@ -44031,6 +44032,8 @@
 2019/debian/deb_dla_1663.nasl: GPLv2+
 2019/debian/deb_dla_1664.nasl: GPLv2+
 2019/debian/deb_dla_1665.nasl: GPLv2+
+2019/debian/deb_dla_1667.nasl: GPLv2+
+2019/debian/deb_dla_1668.nasl: GPLv2+
 2019/discourse/gb_discourse_2.2.0beta2.nasl: GPLv2+
 2019/discourse/gb_discourse_2.2.0beta3.nasl: GPLv2+
 2019/discourse/gb_discourse_2.2.0beta4.nasl: GPLv2+
@@ -44039,6 +44042,7 @@
 2019/discourse/gb_discourse_2.2.0beta7.nasl: GPLv2+
 2019/discourse/gb_discourse_2.2.0beta8.nasl: GPLv2+
 2019/discourse/gb_discourse_2.2.0beta9.nasl: GPLv2+
+2019/dlink/gb_dlink_dir-850l_auth_bypass_vuln.nasl: GPLv2+
 2019/dolibarr/gb_dolibarr_mult_vuln01.nasl: GPLv2+
 2019/domainmod/gb_domainmod_mult_xss_vuln_jan19.nasl: GPLv2+
 2019/domainmod/gb_domainmod_mult_xss_vuln_may18_1.nasl: GPLv2+
@@ -44105,7 +44109,9 @@
 2019/foxit/gb_foxit_reader_mult_vuln_jan19_win.nasl: GPLv2+
 2019/gb_asip_afp_unencrypted_cleartext_logins.nasl: GPLv2
 2019/gb_ftp_unencrypted_cleartext_login.nasl: GPLv2
+2019/gb_linux_inactive_kernel_vulns.nasl: GPLv2+
 2019/gb_smtp_unencrypted_cleartext_login.nasl: GPLv2
+2019/gb_tenable_nessus_stored_xss_vuln.nasl: GPLv2+
 2019/gb_vnc_unencrypted_data_transmission.nasl: GPLv2
 2019/gitea/gb_gitea_access_ctrl_vuln.nasl: GPLv2+
 2019/google/gb_google_chrome_stable-channel-update-for-desktop-2019-01_lin.nasl: GPLv2+
@@ -44688,6 +44694,7 @@ gb_barracuda_web_filter_detect.nasl: GPLv2+
 gb_basler_ip_camera_detect.nasl: GPLv2+
 gb_ba_systems_web_detect.nasl: GPLv2+
 gb_batavi_detect.nasl: GPLv2+
+gb_beckhoff_twincat_remote_manager_detect_win.nasl: GPLv2+
 gb_becky_internet_mail_detect.nasl: GPLv2+
 gb_belkin_wemo_detect.nasl: GPLv2+
 gb_beward_intercom_detect_win.nasl: GPLv2+
@@ -45393,6 +45400,7 @@ gb_kaspersky_password_manager_detect_win.nasl: GPLv2+
 gb_kaspersky_smg_detect.nasl: GPLv2+
 gb_kaspersky_total_security_detect.nasl: GPLv2+
 gb_kentico_cms_detect.nasl: GPLv2+
+gb_kepware_kepserverex_detect_win.nasl: GPLv2+
 gb_kerberos5_detect.nasl: GPLv2+
 gb_kerberos_detect.nasl: GPLv2+
 gb_kerberos_detect_udp.nasl: GPLv2+
@@ -45961,6 +45969,7 @@ gb_schneider_intouch_http_detect.nasl: GPLv2+
 gb_schneider_modbus_detect.nasl: GPLv2+
 gb_schneider_modicon_m340_detect.nasl: GPLv2+
 gb_schneider_opc_factory_server_detect_win.nasl: GPLv2+
+gb_schneider_opc_server_detect_win.nasl: GPLv2+
 gb_schneider_sohvac_detect_win.nasl: GPLv2+
 gb_schneider_somove_detect_win.nasl: GPLv2+
 gb_schneider_struxureon_detect.nasl: GPLv2+
@@ -46393,6 +46402,11 @@ gb_yawcam_detect.nasl: GPLv2+
 gb_yealink_ip_phone_detect.nasl: GPLv2+
 gb_yealink_ip_phone_http_detect.nasl: GPLv2+
 gb_yealink_ip_phone_sip_detect.nasl: GPLv2+
+gb_yokogawa_cellactivision_detect_win.nasl: GPLv2+
+gb_yokogawa_daqmanager_detect_win.nasl: GPLv2+
+gb_yokogawa_daqworx_detect_win.nasl: GPLv2+
+gb_yokogawa_smartdacplus_ip_configurator_detect_win.nasl: GPLv2+
+gb_yokogawa_smartdacplus_universal_viewer_detect_win.nasl: GPLv2+
 gb_yokogawa_stardom_detect.nasl: GPLv2+
 gb_zarafa_webaccess_detect.nasl: GPLv2+
 gb_zarafa_webapp_detect.nasl: GPLv2+
@@ -63207,6 +63221,8 @@ gsf/2019/ibm/gb_ibm_datapower_gateway_ibm10744205.nasl: GPLv2+
 gsf/2019/ibm/gb_ibm_datapower_gateway_ibm10794661.nasl: GPLv2+
 gsf/2019/ibm/gb_ibm_datapower_gateway_ibm10794735.nasl: GPLv2+
 gsf/2019/ibm/gb_ibm_domino_bof_vuln.nasl: GPLv2+
+gsf/2019/ibm/gb_ibm_qradar_ibm10719107.nasl: GPLv2+
+gsf/2019/ibm/gb_ibm_qradar_ibm10719117.nasl: GPLv2+
 gsf/2019/ibm/gb_ibm_qradar_ibm10794523.nasl: GPLv2+
 gsf/2019/ibm/gb_ibm_security_identity_manager_ibm10794615.nasl: GPLv2+
 gsf/2019/ibm/gb_ibm_security_identity_manager_ibm10796380.nasl: GPLv2+

@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875362");
-  script_version("$Revision: 12873 $");
+  script_version("$Revision: 13532 $");
   script_cve_id("CVE-2018-19608", "CVE-2018-0497");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-21 15:42:20 +0100 (Fri, 21 Dec 2018) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 08:51:34 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-12-18 08:05:56 +0100 (Tue, 18 Dec 2018)");
   script_name("Fedora Update for mbedtls FEDORA-2018-1f6ca69276");
   script_category(ACT_GATHER_INFO);

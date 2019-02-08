@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: pkg-lib-deb.inc 10940 2018-08-13 13:14:30Z cfischer $
+# $Id: pkg-lib-deb.inc 13533 2019-02-08 09:59:37Z cfischer $
 #
 # Check if debian package is up to date
 #
@@ -22,7 +22,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #
-# $Revision: 10940 $
+# $Revision: 13533 $
 #
 ###############################################################################
 
@@ -33,7 +33,96 @@
 __pkg_match = FALSE;
 
 # Global keys to avoid that we're repeatedly asking redis for something we already know
-global_var __dpkg_ssh_release, __dpkg_ssh_pkgs;
+global_var __dpkg_ssh_release, __dpkg_ssh_pkgs, __dpkg_kernel_overwrite, __dpkg_kernel_uname;
+
+# @brief Checks if a user has requested to overwrite the reporting of vulnerabilities for non-running
+#        Linux-Kernels (see lsc_options.nasl) and to collect them into a separate Reporting-VT (with
+#        a lower severity). If this was requested the function will check if a passed package name is
+#        related to a Linux Kernel. If a kernel package is detected the function will compare the version
+#        of the package with the running kernel and chose where the information is logged to.
+#
+# @param vuln_pkg      The vulnerable package name to check.
+# @param installed_ver The installed package version to check.
+# @param fixed_ver     The version of the package including the fix.
+#
+# @return The report string to return to the VT calling @isdpkgvuln in the case the user hasn't requested
+#         the overwrite of the reporting or the package isn't related to a Linux-Kernel, NULL if the user
+#         has requested the overwrite of the reporting and the package is related to a Linux-Kernel and
+#         the version of it doesn't match the running kernel, FALSE if no vuln_pkg, installed_ver or
+#         fixed_ver parameter was passed.
+#
+function dpkg_check_kernel_overwrite( vuln_pkg, installed_ver, fixed_ver ) {
+
+  local_var vuln_pkg, installed_ver, fixed_ver;
+  local_var overwrite_enabled, report, kernel_uname;
+  # nb: __dpkg_kernel_overwrite and __dpkg_kernel_uname are global vars from above
+
+  if( ! vuln_pkg ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#dpkg_check_kernel_overwrite#-#vuln_pkg" );
+    return FALSE;
+  }
+
+  if( ! installed_ver ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#dpkg_check_kernel_overwrite#-#installed_ver" );
+    return FALSE;
+  }
+
+  if( ! fixed_ver ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#dpkg_check_kernel_overwrite#-#fixed_ver" );
+    return FALSE;
+  }
+
+  report  = 'Vulnerable package: ' + vuln_pkg + '\n';
+  report += 'Installed version:  ' + installed_ver + '\n';
+  report += 'Fixed version:      ' + fixed_ver + '\n\n';
+
+  # nb: Those are the package names on Debian and Ubuntu related to Kernel-LSC checks
+  if( vuln_pkg !~ "^(linux-(cloud-tools|compiler-gcc|doc|headers|image|kbuild|manual|perf|source|support|)-|xen-linux-system-|linux-libc-dev|linux-cpupower)" )
+    return report;
+
+  # nb: This evaluates the user setting from lsc_options.nasl
+  if( isnull( __dpkg_kernel_overwrite ) ) {
+    overwrite_enabled = get_kb_item( "ssh/login/kernel_reporting_overwrite/enabled" );
+    if( ! overwrite_enabled )
+      overwrite_enabled = FALSE;
+    else
+      overwrite_enabled = TRUE;
+
+    __dpkg_kernel_overwrite = overwrite_enabled;
+  } else {
+    overwrite_enabled = __dpkg_kernel_overwrite;
+  }
+
+  # nb: If the overwrite is not enabled we don't need to continue and just returning the report.
+  if( ! overwrite_enabled )
+    return report;
+
+  if( isnull( __dpkg_kernel_uname ) ) {
+    kernel_uname = get_kb_item( "ssh/login/uname" );
+    if( ! kernel_uname )
+      kernel_uname = FALSE;
+
+    __dpkg_kernel_uname = kernel_uname;
+  } else {
+    kernel_uname = __dpkg_kernel_uname;
+  }
+
+  # nb: If we didn't got the uname in gather-package-list.nasl (which shouldn't happen) we can't continue and need to return the report.
+  if( ! kernel_uname )
+    return report;
+
+  # nb: If the installed_ver is included in the uname we know the running kernel is vulnerable.
+  # e.g.:
+  # kernel_uname:  Linux debian-stretch 4.9.0-3-amd64 #1 SMP Debian 4.9.30-2+deb9u2 (2017-06-26) x86_64
+  # installed_ver: 4.9.30-2+deb9u2
+  if( installed_ver >< kernel_uname )
+    return report;
+
+  # Otherwise save it into the KB for separate reporting in a Consolidation-VT with a lower severity
+  set_kb_item( name:"ssh/login/inactive_kernel_vulns/available", value:TRUE );
+  set_kb_item( name:"ssh/login/inactive_kernel_vulns/reports/" + get_script_oid() + "/" + vuln_pkg, value:report );
+  return NULL;
+}
 
 # @brief returns the current release string of the target saved within the KB (ssh/login/release).
 #
@@ -116,7 +205,8 @@ function dpkgnorm( str, rls ) {
   str2 = str_replace( find:"+wheezy", string:str2, replace:"wheezy" );
   str2 = str_replace( find:".wheezy", string:str2, replace:"wheezy" );
   m = eregmatch( pattern:"^([0-9]:)?(.*)$", string:str2 );
-  if( isnull( m ) ) return str2;
+  if( isnull( m ) )
+    return str2;
 
   return( m[2] );
 }
@@ -162,9 +252,8 @@ function isdpkgvuln( pkg, ver, rls, rls_regex, remove_arch ) {
 
   # Check that we have the data for this release.
   kbrls = dpkg_get_ssh_release();
-  if( ! rls_regex && kbrls != rls ) {
+  if( ! rls_regex && kbrls != rls )
     return NULL;
-  }
 
   if( rls_regex ) {
     if( ! ereg( pattern:rls_regex, string:kbrls ) )
@@ -172,7 +261,8 @@ function isdpkgvuln( pkg, ver, rls, rls_regex, remove_arch ) {
   }
 
   pkgs = dpkg_get_ssh_pkgs();
-  if( ! pkgs ) return NULL;
+  if( ! pkgs )
+    return NULL;
 
   if( remove_arch ) {
     # TBD: What about other ARCH variants like arm?
@@ -183,9 +273,8 @@ function isdpkgvuln( pkg, ver, rls, rls_regex, remove_arch ) {
 
   pat = string("ii  (", pkg, ") +([0-9]:)?([^ ]+)");
   matches = eregmatch( pattern:pat, string:pkgs );
-  if( isnull( matches ) ) {
+  if( isnull( matches ) )
     return NULL;
-  }
 
   __pkg_match = TRUE; # Package was installed.
 
@@ -194,9 +283,7 @@ function isdpkgvuln( pkg, ver, rls, rls_regex, remove_arch ) {
   pat_b = dpkgnorm( str:ver, rls:rls );
   rc = revcomp( a:pat_a, b:pat_b );
   if( rc < 0 ) {
-    report  = 'Vulnerable package: ' + pkg + '\n';
-    report += 'Installed version:  ' + matches[3] + '\n';
-    report += 'Fixed version:      ' + ver + '\n\n';
+    report = dpkg_check_kernel_overwrite( vuln_pkg:pkg, installed_ver:matches[3], fixed_ver:ver );
     return report;
   }
   return NULL;

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_4282_1.nasl 12913 2018-12-31 10:50:43Z santu $
+# $Id: gb_suse_2018_4282_1.nasl 13532 2019-02-08 07:51:34Z mmartin $
 #
 # SuSE Update for polkit openSUSE-SU-2018:4282-1 (polkit)
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852214");
-  script_version("$Revision: 12913 $");
+  script_version("$Revision: 13532 $");
   script_cve_id("CVE-2018-19788");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-31 11:50:43 +0100 (Mon, 31 Dec 2018) $");
+  script_tag(name:"cvss_base", value:"9.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 08:51:34 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-12-29 04:00:43 +0100 (Sat, 29 Dec 2018)");
   script_name("SuSE Update for polkit openSUSE-SU-2018:4282-1 (polkit)");
   script_category(ACT_GATHER_INFO);

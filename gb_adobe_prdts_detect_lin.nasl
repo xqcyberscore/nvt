@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_detect_lin.nasl 10922 2018-08-10 19:21:48Z cfischer $
+# $Id: gb_adobe_prdts_detect_lin.nasl 13535 2019-02-08 11:14:12Z cfischer $
 #
 # Adobe Reader Version Detection (Linux)
 #
@@ -27,19 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800108");
-  script_version("$Revision: 10922 $");
+  script_version("$Revision: 13535 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 21:21:48 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 12:14:12 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2008-10-04 09:54:24 +0200 (Sat, 04 Oct 2008)");
-  script_tag(name:"qod_type", value:"executable_version");
-  script_name("Adobe products version detection (Linux)");
-
-
-  script_tag(name:"summary", value:"Detects the installed version of Adobe Products.
-
-This script retrieves all Adobe Products version and saves
-those in KB.");
+  script_name("Adobe Reader Version Detection (Linux)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
   script_family("Product detection");
@@ -47,9 +40,12 @@ those in KB.");
   script_mandatory_keys("login/SSH/success");
   script_exclude_keys("ssh/no_linux_shell");
 
+  script_tag(name:"summary", value:"Detects the installed version of Adobe Reader.");
+
+  script_tag(name:"qod_type", value:"executable_version");
+
   exit(0);
 }
-
 
 include("cpe.inc");
 include("host_details.inc");
@@ -57,36 +53,34 @@ include("ssh_func.inc");
 include("version_func.inc");
 
 sock = ssh_login_or_reuse_connection();
-if(!sock){
+if(!sock)
   exit(0);
-}
 
-adobePath = find_file(file_name:"AcroVersion", file_path:"/", useregex:TRUE,
-                      regexpar:"$", sock:sock);
+adobePath = find_file(file_name:"AcroVersion", file_path:"/", useregex:TRUE, regexpar:"$", sock:sock);
+foreach path (adobePath) {
 
-## Traverse over the path and try to get the version
-foreach path (adobePath)
-{
   path = chomp(path);
-  adobeVer = get_bin_version(full_prog_name:"cat", version_argv:path,
-                               ver_pattern:"[0-9.]+(_SU[0-9])?");
+  if(!path)
+    continue;
 
-  if(adobeVer)
-  {
+  adobeVer = get_bin_version(full_prog_name:"cat", version_argv:path, ver_pattern:"[0-9.]{3,}(_SU[0-9])?");
+  if(adobeVer) {
+
     set_kb_item(name:"Adobe/Reader/Linux/Version", value:adobeVer[0]);
     set_kb_item(name:"Adobe/Air_or_Flash_or_Reader/Linux/Installed", value:TRUE);
 
-    cpe = build_cpe(value: adobeVer[0], exp:"^([0-9.]+)", base:"cpe:/a:adobe:acrobat_reader:");
-    if(isnull(cpe))
+    cpe = build_cpe(value:adobeVer[0], exp:"^([0-9.]+)", base:"cpe:/a:adobe:acrobat_reader:");
+    if(!cpe)
       cpe = "cpe:/a:adobe:acrobat_reader";
 
-    register_product(cpe:cpe, location: path);
+    register_product(cpe:cpe, location:path, service:"ssh-login");
 
-    log_message(data: build_detection_report(app: "Adobe Reader",
-                                             version: adobeVer[0],
-                                             install: path,
-                                             cpe: cpe,
-                                             concluded: adobeVer[0]));
+    log_message(data:build_detection_report(app:"Adobe Reader",
+                                            version:adobeVer[0],
+                                            install:path,
+                                            cpe:cpe,
+                                            concluded:adobeVer[0]));
   }
 }
+
 ssh_close_connection();

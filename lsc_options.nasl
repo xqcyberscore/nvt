@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: lsc_options.nasl 10678 2018-07-30 09:29:11Z cfischer $
+# $Id: lsc_options.nasl 13533 2019-02-08 09:59:37Z cfischer $
 #
 # This script allows to set some Options for LSC.
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100509");
-  script_version("$Revision: 10678 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-30 11:29:11 +0200 (Mon, 30 Jul 2018) $");
+  script_version("$Revision: 13533 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 10:59:37 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2010-02-26 12:01:21 +0100 (Fri, 26 Feb 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -46,6 +46,8 @@ if(description)
   script_add_preference(name:"Enable Detection of Portable Apps on Windows", type:"checkbox", value:"no");
 
   script_add_preference(name:"Disable the usage of win_cmd_exec for remote commands on Windows", type:"checkbox", value:"no");
+
+  script_add_preference(name:"Report vulnerabilities of inactive Linux Kernel(s) separately", type:"checkbox", value:"no");
 
   script_tag(name:"summary", value:"This script allows users to set some Options for Local Security Checks which
   are stored in the knowledge base and used by other tests. Description of the options:
@@ -64,13 +66,21 @@ if(description)
   - Enable Detection of Portable Apps on Windows:
 
   Setting this option to 'yes' enables the Detection of Portable Apps on Windows via WMI. Enabling this option might increase scan time
-  as well as load on the target host.
+  as well as the load on the target host.
 
   - Disable the usage of win_cmd_exec for remote commands on Windows:
 
   Some AV solutions might block remote commands called on the remote host via a scanner internal 'win_cmd_exe' function. Setting
   this option to 'yes' disables the usage of this function (as a workaround for issues during the scan) with the risk of lower
-  scan coverage against Windows targets.");
+  scan coverage against Windows targets.
+
+  - Report vulnerabilities of inactive Linux Kernel(s) separately:
+
+  All current package manager based Local Security Checks are reporting the same severity for active and inactive Linux Kernel(s). If this
+  setting is enabled the reporting for inactive Linux Kernel(s) is done separately in the VT 'Report Vulnerabilities in inactive Linux Kernel(s)'
+  (OID: 1.3.6.1.4.1.25623.1.0.108545).
+
+  Please note that this functionality is currently only available for Debian and derivates like Ubuntu and needs to be considered as 'experimental'.");
 
   script_tag(name:"qod_type", value:"general_note");
 
@@ -81,6 +91,7 @@ find_enabled         = script_get_preference("Also use 'find' command to search 
 nfs_search_enabled   = script_get_preference("Descend directories on other filesystem (don't add -xdev to find)");
 search_portable      = script_get_preference("Enable Detection of Portable Apps on Windows");
 disable_win_cmd_exec = script_get_preference("Disable the usage of win_cmd_exec for remote commands on Windows");
+kernel_overwrite     = script_get_preference("Report vulnerabilities of inactive Linux Kernel(s) separately");
 
 if( find_enabled )
   set_kb_item( name:"ssh/lsc/enable_find", value:find_enabled );
@@ -93,5 +104,8 @@ if( search_portable && "yes" >< search_portable )
 
 if( disable_win_cmd_exec && "yes" >< disable_win_cmd_exec )
   set_kb_item( name:"win/lsc/disable_win_cmd_exec", value:TRUE );
+
+if( kernel_overwrite && "yes" >< kernel_overwrite )
+  set_kb_item( name:"ssh/login/kernel_reporting_overwrite/enabled", value:TRUE );
 
 exit( 0 );
