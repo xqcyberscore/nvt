@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: cifs445.nasl 11031 2018-08-17 09:42:45Z cfischer $
+# $Id: cifs445.nasl 13541 2019-02-08 13:21:52Z cfischer $
 #
 # SMB/CIFS Server Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11011");
-  script_version("$Revision: 11031 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 11:42:45 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 13541 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 14:21:52 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2006-03-26 18:10:09 +0200 (Sun, 26 Mar 2006)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -47,10 +47,12 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
 include("smb_nt.inc");
 include("misc_func.inc");
 
 flag = 0;
+vt_strings = get_vt_strings();
 
 # TODO: Check all unknown ports. At least Samba can listen on other ports...
 
@@ -73,7 +75,7 @@ if( get_port_state( 139 ) ) {
 
   soc = open_sock_tcp( 139 );
   if( soc ) {
-    nb_remote = netbios_name( orig:string("OpenVAS", rand() ) );
+    nb_remote = netbios_name( orig:string( vt_strings["default_rand"] ) );
     nb_local  = netbios_redirector_name();
     session_request = raw_string( 0x81, 0x00, 0x00, 0x44 ) +
                       raw_string( 0x20 ) +

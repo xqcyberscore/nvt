@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ciscokits_tftp_server_dir_trav_vuln.nasl 13155 2019-01-18 15:41:35Z cfischer $
+# $Id: gb_ciscokits_tftp_server_dir_trav_vuln.nasl 13543 2019-02-08 14:43:51Z cfischer $
 #
 # CiscoKits TFTP Server Directory Traversal Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801965");
-  script_version("$Revision: 13155 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-18 16:41:35 +0100 (Fri, 18 Jan 2019) $");
+  script_version("$Revision: 13543 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2011-08-10 13:49:51 +0200 (Wed, 10 Aug 2011)");
   script_bugtraq_id(49053);
   script_tag(name:"cvss_base", value:"7.8");
@@ -69,6 +69,7 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
 include("misc_func.inc");
 include("tftp.inc");
 

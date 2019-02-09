@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_rpc_portmap_udp.nasl 12057 2018-10-24 12:23:19Z cfischer $
+# $Id: secpod_rpc_portmap_udp.nasl 13541 2019-02-08 13:21:52Z cfischer $
 #
 # RPC portmapper (UDP)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900602");
-  script_version("$Revision: 12057 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 14:23:19 +0200 (Wed, 24 Oct 2018) $");
+  script_version("$Revision: 13541 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 14:21:52 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-03-12 10:50:11 +0100 (Thu, 12 Mar 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -45,6 +45,7 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
 include("misc_func.inc");
 include("byte_func.inc");
 

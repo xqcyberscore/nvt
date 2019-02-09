@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: remote-sgi-objectserver.nasl 10411 2018-07-05 10:15:10Z cfischer $
+# $Id: remote-sgi-objectserver.nasl 13541 2019-02-08 13:21:52Z cfischer $
 #
 # SGI-objectserver
 # replaces objectserver C plugin
@@ -25,8 +25,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80101");
-  script_version("$Revision: 10411 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-05 12:15:10 +0200 (Thu, 05 Jul 2018) $");
+  script_version("$Revision: 13541 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 14:21:52 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-03-14 09:49:01 +0100 (Sat, 14 Mar 2009)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -51,8 +51,8 @@ if(description)
   exit(0);
 }
 
-include('misc_func.inc');
-include('global_settings.inc');
+include("host_details.inc");
+include("misc_func.inc");
 
 if(TARGET_IS_IPV6())exit(0);
 

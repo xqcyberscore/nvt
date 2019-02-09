@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_emc_cloud_tiering_xxe_04_14.nasl 11831 2018-10-11 07:49:24Z jschulte $
+# $Id: gb_emc_cloud_tiering_xxe_04_14.nasl 13543 2019-02-08 14:43:51Z cfischer $
 #
 # EMC Cloud Tiering Appliance v10.0 Unauthenticated XXE Arbitrary File Read
 #
@@ -28,16 +28,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103931");
-  script_version("$Revision: 11831 $");
+  script_version("$Revision: 13543 $");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:N");
-
   script_name("EMC Cloud Tiering Appliance v10.0 Unauthenticated XXE Arbitrary File Read");
-
-
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/32623/");
-
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 09:49:24 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2014-04-01 11:51:50 +0200 (Tue, 01 Apr 2014)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -66,6 +62,7 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("misc_func.inc");

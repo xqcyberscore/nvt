@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_philips_insight_default_telnet_credentials.nasl 11650 2018-09-27 10:32:13Z jschulte $
+# $Id: sw_philips_insight_default_telnet_credentials.nasl 13544 2019-02-08 14:53:51Z cfischer $
 #
 # Philips In.Sight Default Telnet Credentials
 #
@@ -28,12 +28,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111096");
-  script_version("$Revision: 11650 $");
+  script_version("$Revision: 13544 $");
   script_cve_id("CVE-2015-2882");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("Philips In.Sight Default Telnet Credentials");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 12:32:13 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:53:51 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2016-04-24 12:00:00 +0200 (Sun, 24 Apr 2016)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
@@ -58,15 +58,13 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
 include("telnet_func.inc");
 include("misc_func.inc");
 
 report = 'It was possible to login using the following credentials:\n';
 
-port = get_kb_item("Services/telnet");
-if( ! port ) port = 23;
-if( ! get_port_state( port ) ) exit( 0 );
-
+port = get_telnet_port(default:23);
 banner = get_telnet_banner( port:port );
 
 if( ! "insight login" >< banner ) exit(0);

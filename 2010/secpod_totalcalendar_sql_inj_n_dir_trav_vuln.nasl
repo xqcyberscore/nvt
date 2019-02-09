@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_totalcalendar_sql_inj_n_dir_trav_vuln.nasl 11657 2018-09-27 13:32:51Z cfischer $
+# $Id: secpod_totalcalendar_sql_inj_n_dir_trav_vuln.nasl 13543 2019-02-08 14:43:51Z cfischer $
 #
 # TotalCalendar SQL Injection and Directory Traversal Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902225");
-  script_version("$Revision: 11657 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 15:32:51 +0200 (Thu, 27 Sep 2018) $");
+  script_version("$Revision: 13543 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2010-08-02 12:38:17 +0200 (Mon, 02 Aug 2010)");
   script_cve_id("CVE-2009-4973", "CVE-2009-4974");
   script_tag(name:"cvss_base", value:"7.5");
@@ -53,8 +53,7 @@ if(description)
 
   - An improper validation of user supplied data to 'box' parameter to script
  'box_display.php'.");
-  script_tag(name:"solution", value:"Upgrade to version 2.403 or later,
-  For updates refer to http://www.sweetphp.com/nuke/index.php");
+  script_tag(name:"solution", value:"Upgrade to version 2.403 or later.");
   script_tag(name:"summary", value:"This host is running TotalCalendar and is prone to SQL injection
   and directory traversal vulnerabilities.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute
@@ -64,10 +63,11 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
+  script_xref(name:"URL", value:"http://www.sweetphp.com/nuke/index.php");
   exit(0);
 }
 
-
+include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("misc_func.inc");

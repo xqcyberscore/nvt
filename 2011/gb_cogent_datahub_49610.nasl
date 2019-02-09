@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cogent_datahub_49610.nasl 12018 2018-10-22 13:31:29Z mmartin $
+# $Id: gb_cogent_datahub_49610.nasl 13543 2019-02-08 14:43:51Z cfischer $
 #
 # Cogent DataHub Directory Traversal Vulnerability and Information Disclosure Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103253");
-  script_version("$Revision: 12018 $");
+  script_version("$Revision: 13543 $");
   script_bugtraq_id(49610, 49611);
   script_cve_id("CVE-2011-3500", "CVE-2011-3501");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2011-09-14 13:31:57 +0200 (Wed, 14 Sep 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -64,6 +64,7 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
 include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");

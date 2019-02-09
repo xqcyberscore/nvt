@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avaya_ip_office_mgr_tftp_dir_trav.nasl 13155 2019-01-18 15:41:35Z cfischer $
+# $Id: gb_avaya_ip_office_mgr_tftp_dir_trav.nasl 13543 2019-02-08 14:43:51Z cfischer $
 #
 # Avaya IP Office Manager TFTP Server Directory Traversal Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802027");
-  script_version("$Revision: 13155 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-18 16:41:35 +0100 (Fri, 18 Jan 2019) $");
+  script_version("$Revision: 13543 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2011-07-14 13:16:44 +0200 (Thu, 14 Jul 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_bugtraq_id(48272);
@@ -69,6 +69,7 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
 include("misc_func.inc");
 include("tftp.inc");
 

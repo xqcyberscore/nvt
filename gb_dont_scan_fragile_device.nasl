@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dont_scan_fragile_device.nasl 11585 2018-09-25 07:09:41Z cfischer $
+# $Id: gb_dont_scan_fragile_device.nasl 13541 2019-02-08 13:21:52Z cfischer $
 #
 # Do not scan fragile devices or ports
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108298");
-  script_version("$Revision: 11585 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 09:09:41 +0200 (Tue, 25 Sep 2018) $");
+  script_version("$Revision: 13541 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 14:21:52 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-11-24 14:08:04 +0100 (Fri, 24 Nov 2017)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -68,6 +68,7 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
 include("ftp_func.inc");
 include("telnet_func.inc");
 include("misc_func.inc");

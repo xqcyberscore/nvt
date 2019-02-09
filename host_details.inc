@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: host_details.inc 13382 2019-01-31 11:07:58Z cfischer $
+# $Id: host_details.inc 13539 2019-02-08 12:19:22Z cfischer $
 #
 # Centralized and organized host information base
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 13382 $
+# $Revision: 13539 $
 #
 ###############################################################################
 
@@ -392,11 +392,6 @@ function host_details_list( key ) {
 # @return NULL
 #
 function report_host_detail_single( name, value, nvt, desc ) {
-
-  # TODO: Remove once openvas-nasl-lint can handle such a missing function
-  # within includes as the calling VT only needs to make sure to have all
-  # required .inc files included and not the include on its own.
-  if( ! defined_func( "xml_open_tag" ) ) include("xml.inc");
 
   local_var name, value, nvt, desc, report;
 

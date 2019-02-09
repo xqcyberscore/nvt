@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mqtt_detect.nasl 5330 2017-02-17 16:54:24Z mime $
+# $Id: gb_mqtt_detect.nasl 13541 2019-02-08 13:21:52Z cfischer $
 #
 # MQTT Detection
 #
@@ -29,8 +29,8 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.140166");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
-  script_version("$Revision: 5330 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-17 17:54:24 +0100 (Fri, 17 Feb 2017) $");
+  script_version("$Revision: 13541 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 14:21:52 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-02-17 16:05:55 +0100 (Fri, 17 Feb 2017)");
   script_name("MQTT Detection");
   script_category(ACT_GATHER_INFO);
@@ -45,6 +45,7 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
 include("byte_func.inc");
 include("misc_func.inc");
 
@@ -54,7 +55,8 @@ if( ! soc = open_sock_tcp( port ) ) exit( 0 );
 
 # http://public.dhe.ibm.com/software/dw/webservices/ws-mqtt/mqtt-v3r1.html
 
-client_id     = 'OpenVAS';
+vt_strings = get_vt_strings();
+client_id     = vt_strings["default"];
 protocol_name = 'MQTT';
 
 len           = mkbyte( strlen( client_id ) + strlen( protocol_name ) + 8 );
@@ -102,4 +104,3 @@ if( recv[0] == '\x20' ) # Connect ACK
 }
 
 exit( 0 );
-

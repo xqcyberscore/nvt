@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_uHTTP_38986.nasl 11625 2018-09-26 12:08:49Z jschulte $
+# $Id: gb_uHTTP_38986.nasl 13543 2019-02-08 14:43:51Z cfischer $
 #
 # uHTTP Server GET Request Directory Traversal Vulnerability
 #
@@ -24,12 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100560");
-  script_version("$Revision: 11625 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 14:08:49 +0200 (Wed, 26 Sep 2018) $");
+  script_version("$Revision: 13543 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2010-03-30 12:13:57 +0200 (Tue, 30 Mar 2010)");
   script_bugtraq_id(38986);
   script_tag(name:"cvss_base", value:"5.1");
@@ -54,24 +53,25 @@ if (description)
   since the disclosure of this vulnerability. Likely none will be provided anymore.
   General solution options are to upgrade to a newer release, disable respective features,
   remove the product or replace the product by another one.");
+
   script_tag(name:"summary", value:"uHTTP Server is prone to a directory-traversal vulnerability because
-  it fails to sufficiently sanitize user-supplied input.
+  it fails to sufficiently sanitize user-supplied input.");
 
-  Exploiting this issue will allow an attacker to view arbitrary local
-  files and directories within the context of the webserver. Information
-  harvested may aid in launching further attacks.
+  script_tag(name:"impact", value:"Exploiting this issue will allow an attacker to view arbitrary local
+  files and directories within the context of the webserver. Information harvested may aid in launching
+  further attacks.");
 
-  uHTTP Server 0.1.0-alpha is vulnerable; other versions may also
+  script_tag(name:"affected", value:"uHTTP Server 0.1.0-alpha is vulnerable. Other versions may also
   be affected.");
+
   exit(0);
 }
 
-
+include("host_details.inc");
 include("http_func.inc");
 include("misc_func.inc");
 
 port = get_http_port(default:8080);
-if(!get_port_state(port))exit(0);
 
 banner = get_http_banner(port: port);
 if(!banner)exit(0);

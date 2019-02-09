@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_awcm_mult_dir_trav_vuln.nasl 11796 2018-10-09 13:08:43Z jschulte $
+# $Id: secpod_awcm_mult_dir_trav_vuln.nasl 13543 2019-02-08 14:43:51Z cfischer $
 #
 # AR Web Content Manager Multiple Directory Traversal Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902338");
-  script_version("$Revision: 11796 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:08:43 +0200 (Tue, 09 Oct 2018) $");
+  script_version("$Revision: 13543 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2011-02-23 12:24:37 +0100 (Wed, 23 Feb 2011)");
   script_cve_id("CVE-2011-0903");
   script_bugtraq_id(46017);
@@ -63,6 +63,7 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("misc_func.inc");
@@ -72,6 +73,7 @@ if(!can_host_php(port:awcmPort)){
   exit(0);
 }
 
+useragent = get_http_user_agent();
 host = http_host_name(port:awcmPort);
 
 files = traversal_files();
@@ -93,7 +95,7 @@ foreach dir(make_list_unique("/awcm", "/AWCM", cgi_dirs(port:awcmPort)))
 
       sndReq2 = string("GET ", string(dir + "/index.php"), " HTTP/1.1\r\n",
                      "Host: ", host, "\r\n",
-                     "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+                     "User-Agent: ", useragent, "\r\n",
                      "Cookie: awcm_lang=", exp, "\r\n\r\n");
       rcvRes2 = http_keepalive_send_recv(port:awcmPort, data:sndReq2);
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sap_diag_service_detect.nasl 10890 2018-08-10 12:30:06Z cfischer $
+# $Id: gb_sap_diag_service_detect.nasl 13541 2019-02-08 13:21:52Z cfischer $
 #
 # SAP DIAG Service Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141088");
-  script_version("$Revision: 10890 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:30:06 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 13541 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 14:21:52 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-05-22 14:33:46 +0700 (Tue, 22 May 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -55,6 +55,7 @@ DIAG is a propretiary communication protocol between the SAP GUI and the SAP app
   exit(0);
 }
 
+include("host_details.inc");
 include("dump.inc");
 include("byte_func.inc");
 include("misc_func.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: limewire_remote_unauth_access.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: limewire_remote_unauth_access.nasl 13543 2019-02-08 14:43:51Z cfischer $
 #
 # Lime Wire Multiple Remote Unauthorized Access
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17973");
-  script_version("$Revision: 7577 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+  script_version("$Revision: 13543 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(12802);
   script_cve_id("CVE-2005-0788", "CVE-2005-0789");
@@ -44,16 +44,12 @@ if(description)
   script_require_ports("Services/www", 6346);
   script_mandatory_keys("limewire/banner");
 
-  tag_summary = "The remote host seems to be running Lime Wire, a P2P file sharing program.
+  script_tag(name:"solution", value:"Upgrade at least to version 4.8");
+  script_tag(name:"summary", value:"The remote host seems to be running Lime Wire, a P2P file sharing program.
 
   This version is vulnerable to remote unauthorized access flaws.
-  An attacker can access to potentially sensitive files on the 
-  remote vulnerable host.";
-
-  tag_solution = "Upgrade at least to version 4.8";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  An attacker can access to potentially sensitive files on the
+  remote vulnerable host.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -61,6 +57,7 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
 include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");

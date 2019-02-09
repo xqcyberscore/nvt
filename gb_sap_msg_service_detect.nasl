@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sap_msg_service_detect.nasl 11404 2018-09-15 09:17:49Z cfischer $
+# $Id: gb_sap_msg_service_detect.nasl 13541 2019-02-08 13:21:52Z cfischer $
 #
 # SAP Message Server Service Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141067");
-  script_version("$Revision: 11404 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:17:49 +0200 (Sat, 15 Sep 2018) $");
+  script_version("$Revision: 13541 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 14:21:52 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-05-09 09:04:58 +0700 (Wed, 09 May 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -60,6 +60,7 @@ SAP Message Server is for
   exit(0);
 }
 
+include("host_details.inc");
 include("dump.inc");
 include("misc_func.inc");
 

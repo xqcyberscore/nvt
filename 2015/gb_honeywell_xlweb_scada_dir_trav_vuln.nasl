@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_honeywell_xlweb_scada_dir_trav_vuln.nasl 13499 2019-02-06 12:55:20Z cfischer $
+# $Id: gb_honeywell_xlweb_scada_dir_trav_vuln.nasl 13543 2019-02-08 14:43:51Z cfischer $
 #
 # Honeywell Falcon XL Web Controller Directory Traversal Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805540");
-  script_version("$Revision: 13499 $");
+  script_version("$Revision: 13543 $");
   script_cve_id("CVE-2015-0984");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-06 13:55:20 +0100 (Wed, 06 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2015-04-27 10:42:16 +0530 (Mon, 27 Apr 2015)");
   script_name("Honeywell Falcon XL Web Controller Directory Traversal Vulnerability");
 
@@ -84,6 +84,7 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
 include("ftp_func.inc");
 include("misc_func.inc");
 

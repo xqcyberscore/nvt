@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: dont_print_on_printers.nasl 11509 2018-09-20 13:56:59Z cfischer $
+# $Id: dont_print_on_printers.nasl 13541 2019-02-08 13:21:52Z cfischer $
 #
 # Do not print on AppSocket and socketAPI printers
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12241");
-  script_version("$Revision: 11509 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 15:56:59 +0200 (Thu, 20 Sep 2018) $");
+  script_version("$Revision: 13541 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 14:21:52 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -49,6 +49,7 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
 include("ftp_func.inc");
 include("telnet_func.inc");
 include("http_func.inc");

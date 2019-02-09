@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_netstat_service_detect.nasl 5488 2017-03-05 10:28:39Z cfi $
+# $Id: sw_netstat_service_detect.nasl 13541 2019-02-08 13:21:52Z cfischer $
 #
 # netstat Service Information Disclosure
 #
@@ -27,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111047");
-  script_version("$Revision: 5488 $");
+  script_version("$Revision: 13541 $");
   script_cve_id("CVE-1999-0650");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-05 11:28:39 +0100 (Sun, 05 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 14:21:52 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2015-11-06 18:00:00 +0100 (Fri, 06 Nov 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"cvss_base", value:"5.0");
@@ -52,6 +52,7 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
 include("misc_func.inc");
 
 port = get_kb_item( "Services/netstat" );

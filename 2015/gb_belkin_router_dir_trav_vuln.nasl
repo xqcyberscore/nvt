@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_belkin_router_dir_trav_vuln.nasl 11831 2018-10-11 07:49:24Z jschulte $
+# $Id: gb_belkin_router_dir_trav_vuln.nasl 13543 2019-02-08 14:43:51Z cfischer $
 #
 # Belkin Router Directory Traversal Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806147");
-  script_version("$Revision: 11831 $");
+  script_version("$Revision: 13543 $");
   script_cve_id("CVE-2014-2962");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 09:49:24 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2015-10-29 12:12:25 +0530 (Thu, 29 Oct 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Belkin Router Directory Traversal Vulnerability");
@@ -72,6 +72,7 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("misc_func.inc");

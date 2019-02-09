@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: apcnisd_detect.nasl 10206 2018-06-15 06:25:29Z cfischer $
+# $Id: apcnisd_detect.nasl 13541 2019-02-08 13:21:52Z cfischer $
 #
 # apcupsd and apcnisd Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100292");
-  script_version("$Revision: 10206 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-15 08:25:29 +0200 (Fri, 15 Jun 2018) $");
+  script_version("$Revision: 13541 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 14:21:52 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-10-05 19:43:01 +0200 (Mon, 05 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -50,6 +50,7 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
 include("misc_func.inc");
 
 ports = make_list(7000, 3551);

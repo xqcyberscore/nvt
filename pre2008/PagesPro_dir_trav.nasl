@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: PagesPro_dir_trav.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: PagesPro_dir_trav.nasl 13543 2019-02-08 14:43:51Z cfischer $
 #
 # Pages Pro CD directory traversal
 #
@@ -33,8 +33,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11221");
-  script_version("$Revision: 7577 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+  script_version("$Revision: 13543 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -48,18 +48,12 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.cert.ssi.gouv.fr/site/CERTA-2002-ALE-007/");
 
-  tag_summary = "A security vulnerability in the 'Pages Pro' allows anybody
+  script_tag(name:"solution", value:"Upgrade it (version 2003) or uninstall this product");
+  script_tag(name:"summary", value:"A security vulnerability in the 'Pages Pro' allows anybody
   to read or modify files that would otherwise be inaccessible using a
-  directory traversal attack.";
-
-  tag_impact = "A cracker may use this to read or write sensitive files or even
-  make a phone call.";
-
-  tag_solution = "Upgrade it (version 2003) or uninstall this product";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
+  directory traversal attack.");
+  script_tag(name:"impact", value:"A cracker may use this to read or write sensitive files or even
+  make a phone call.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -67,6 +61,7 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
 include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_httpdASM_45599.nasl 12018 2018-10-22 13:31:29Z mmartin $
+# $Id: gb_httpdASM_45599.nasl 13543 2019-02-08 14:43:51Z cfischer $
 #
 # httpdASM Directory Traversal Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103005");
-  script_version("$Revision: 12018 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
+  script_version("$Revision: 13543 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2011-01-03 14:40:34 +0100 (Mon, 03 Jan 2011)");
   script_bugtraq_id(45599);
   script_tag(name:"cvss_base", value:"5.0");
@@ -48,10 +48,10 @@ if(description)
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"summary", value:"httpdASM is prone to a directory-traversal vulnerability because it
- fails to sufficiently sanitize user-supplied input.");
+  fails to sufficiently sanitize user-supplied input.");
   script_tag(name:"impact", value:"A remote attacker may leverage this issue to retrieve arbitrary files
- in the context of the affected application, potentially revealing sensitive information that may lead
- to other attacks.");
+  in the context of the affected application, potentially revealing sensitive information that may lead
+  to other attacks.");
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"solution_type", value:"WillNotFix");
 
@@ -62,6 +62,7 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
 include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");

@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: risearch_arbitrary_file_access.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: risearch_arbitrary_file_access.nasl 13543 2019-02-08 14:43:51Z cfischer $
 #
 # RiSearch Arbitrary File Access
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14222");
-  script_version("$Revision: 7577 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+  script_version("$Revision: 13543 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2004-2061");
   script_bugtraq_id(10812);
@@ -45,6 +45,7 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"solution", value:"Upgrade to the latest version of this software.");
   script_tag(name:"summary", value:"The remote host seems to be running RiSearch, a local search engine.
 
@@ -59,6 +60,7 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
 include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");

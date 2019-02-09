@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_plesk_40813.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_plesk_40813.nasl 13543 2019-02-08 14:43:51Z cfischer $
 #
 # Plesk Server Administrator (PSA) 'locale' Parameter Local File Include Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100677");
-  script_version("$Revision: 7577 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+  script_version("$Revision: 13543 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2010-06-14 14:19:59 +0200 (Mon, 14 Jun 2010)");
   script_bugtraq_id(40813);
   script_name("Plesk Server Administrator (PSA) 'locale' Parameter Local File Include Vulnerability");
@@ -44,22 +44,24 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/40813");
   script_xref(name:"URL", value:"http://www.parallels.com/");
 
-  tag_summary = "Plesk Server Administrator (PSA) is prone to a local file-include
-  vulnerability because it fails to properly sanitize user-supplied input.";
-
-  tag_impact = "An attacker can exploit this vulnerability to obtain potentially
+  script_tag(name:"summary", value:"Plesk Server Administrator (PSA) is prone to a local file-include
+  vulnerability because it fails to properly sanitize user-supplied input.");
+  script_tag(name:"impact", value:"An attacker can exploit this vulnerability to obtain potentially
   sensitive information and execute arbitrary local scripts in the context of the
   webserver process. This may allow the attacker to compromise the application and
-  the underlying computer; other attacks are also possible.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
+  the underlying computer. Other attacks are also possible.");
 
   script_tag(name:"qod_type", value:"remote_vul");
+
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
   exit(0);
 }
 
+include("host_details.inc");
 include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");

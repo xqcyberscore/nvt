@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: brio_dir_traversal.nasl 10741 2018-08-02 14:44:11Z cfischer $
+# $Id: brio_dir_traversal.nasl 13543 2019-02-08 14:43:51Z cfischer $
 #
 # Brio Unix Directory Traversal
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.15849");
-  script_version("$Revision: 10741 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-02 16:44:11 +0200 (Thu, 02 Aug 2018) $");
+  script_version("$Revision: 13543 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_name("Brio Unix Directory Traversal");
   script_tag(name:"cvss_base", value:"5.0");
@@ -45,19 +45,23 @@ if(description)
   script_tag(name:"summary", value:"The Brio web application interface has a directory traversal
   in the component 'odscgi'.");
 
-  script_tag(name:"solution", value:"Check www.brio.com for updated software.");
-
   script_tag(name:"impact", value:"An attacker may exploit this flaw to read
   arbitrary files on the remote host by submitting a URL like :
 
   http://www.example.com/ods-cgi/odscgi?HTMLFile=../../../../../../etc/passwd");
 
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
+  since the disclosure of this vulnerability. Likely none will be provided anymore.
+  General solution options are to upgrade to a newer release, disable respective features,
+  remove the product or replace the product by another one.");
+
   script_tag(name:"qod_type", value:"remote_vul");
-  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   exit(0);
 }
 
+include("host_details.inc");
 include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");

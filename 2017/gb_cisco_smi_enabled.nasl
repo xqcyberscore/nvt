@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_smi_enabled.nasl 12458 2018-11-21 10:18:26Z cfischer $
+# $Id: gb_cisco_smi_enabled.nasl 13541 2019-02-08 13:21:52Z cfischer $
 #
 # Cisco Smart Install Protocol Misuse
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140162");
-  script_version("$Revision: 12458 $");
+  script_version("$Revision: 13541 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-21 11:18:26 +0100 (Wed, 21 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 14:21:52 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-02-16 11:39:34 +0100 (Thu, 16 Feb 2017)");
   script_name("Cisco Smart Install Protocol Misuse");
   script_category(ACT_ATTACK);
@@ -63,6 +63,7 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
 include("misc_func.inc");
 
 port = 4786;

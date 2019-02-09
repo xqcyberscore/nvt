@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_femitter_39594.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_femitter_39594.nasl 13543 2019-02-08 14:43:51Z cfischer $
 #
 # Acritum Femitter Server URI Directory Traversal Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100590");
-  script_version("$Revision: 7577 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+  script_version("$Revision: 13543 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2010-04-21 13:10:07 +0200 (Wed, 21 Apr 2010)");
   script_bugtraq_id(39594);
   script_tag(name:"cvss_base", value:"5.0");
@@ -45,25 +45,25 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/39594");
   script_xref(name:"URL", value:"http://www.acritum.com/fem/index.htm");
 
-  tag_summary = "Acritum Femitter Server is prone to a directory-traversal
-  vulnerability because it fails to sufficiently sanitize user- supplied input.";
-
-  tag_impact = "Exploiting this issue will allow an attacker to view arbitrary local
+  script_tag(name:"summary", value:"Acritum Femitter Server is prone to a directory-traversal
+  vulnerability because it fails to sufficiently sanitize user- supplied input.");
+  script_tag(name:"impact", value:"Exploiting this issue will allow an attacker to view arbitrary local
   files and directories within the context of the webserver. Information
-  harvested may aid in launching further attacks.";
-
-  tag_affected = "Acritum Femitter Server 1.03 is vulnerable; other versions may also
-  be affected.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
+  harvested may aid in launching further attacks.");
+  script_tag(name:"affected", value:"Acritum Femitter Server 1.03 is vulnerable. Other versions may also
+  be affected.");
 
   script_tag(name:"qod_type", value:"remote_vul");
+
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
   exit(0);
 }
 
+include("host_details.inc");
 include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");

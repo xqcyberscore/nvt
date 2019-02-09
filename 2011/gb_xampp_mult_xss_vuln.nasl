@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xampp_mult_xss_vuln.nasl 12109 2018-10-26 06:57:05Z cfischer $
+# $Id: gb_xampp_mult_xss_vuln.nasl 13548 2019-02-08 16:04:07Z cfischer $
 #
 # XAMPP Web Server Multiple Cross Site Scripting Vulnerabilities
 #
@@ -24,11 +24,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:apachefriends:xampp";
+
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802261");
-  script_version("$Revision: 12109 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:57:05 +0200 (Fri, 26 Oct 2018) $");
+  script_version("$Revision: 13548 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 17:04:07 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2011-10-28 16:17:13 +0200 (Fri, 28 Oct 2011)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -36,9 +38,9 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("secpod_xampp_detect.nasl");
+  script_mandatory_keys("xampp/installed");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/106244/xampp174-xss.txt");
   script_xref(name:"URL", value:"http://mc-crew.info/xampp-1-7-4-for-windows-multiple-site-scripting-vulnerabilities");
@@ -68,33 +70,25 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("host_details.inc");
 
-port = get_http_port(default:80);
-if(!can_host_php(port:port)){
+if(!port = get_app_port(cpe:CPE))
   exit(0);
-}
 
-foreach dir (make_list_unique("/", "/xampp", cgi_dirs(port:port)))
-{
+if(!dir = get_app_location(cpe:CPE, port:port))
+  exit(0);
 
-  if(dir == "/") dir = "";
+if(dir == "/")
+  dir = "";
 
-  res = http_get_cache(item:dir + "/start.php",  port:port);
+url = dir + "/cds.php/'onmouseover=alert(document.cookie)>";
+req = http_get(item:url, port:port);
+res = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
 
-  if("XAMPP" >< res)
-  {
-    url = dir + "/cds.php/'onmouseover=alert(document.cookie)>";
-    req = http_get(item:url, port:port);
-    res = http_keepalive_send_recv(port:port, data:req);
-
-    if(ereg(pattern:"^HTTP/1\.[01] 200 .*", string:res) &&
-       "cds.php/'onmouseover=alert(document.cookie)>" >< res)
-    {
-      report = report_vuln_url(port:port, url:url);
-      security_message(port:port, data:report);
-      exit(0);
-    }
-  }
+if(ereg(pattern:"^HTTP/1\.[01] 200", string:res) && "cds.php/'onmouseover=alert(document.cookie)>" >< res) {
+  report = report_vuln_url(port:port, url:url);
+  security_message(port:port, data:report);
+  exit(0);
 }
 
 exit(99);

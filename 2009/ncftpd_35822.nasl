@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ncftpd_35822.nasl 13475 2019-02-05 14:51:19Z cfischer $
+# $Id: ncftpd_35822.nasl 13543 2019-02-08 14:43:51Z cfischer $
 #
 # NcFTPD Symbolic Link Information Disclosure Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100250");
-  script_version("$Revision: 13475 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-05 15:51:19 +0100 (Tue, 05 Feb 2019) $");
+  script_version("$Revision: 13543 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-07-28 21:43:08 +0200 (Tue, 28 Jul 2009)");
   script_bugtraq_id(35822);
   script_tag(name:"cvss_base", value:"4.0");
@@ -63,6 +63,7 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
 include("ftp_func.inc");
 include("misc_func.inc");
 

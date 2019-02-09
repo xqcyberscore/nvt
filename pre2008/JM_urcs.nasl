@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: JM_urcs.nasl 6792 2017-07-22 13:06:41Z cfischer $
+# $Id: JM_urcs.nasl 13541 2019-02-08 13:21:52Z cfischer $
 #
 # URCS Server Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.15405");
-  script_version("$Revision: 6792 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-22 15:06:41 +0200 (Sat, 22 Jul 2017) $");
+  script_version("$Revision: 13541 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 14:21:52 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -41,13 +41,14 @@ if(description)
 
   script_xref(name:"URL", value:"http://urcs.unmanarc.com");
   script_xref(name:"URL", value:"http://securityresponse.symantec.com/avcenter/venc/data/backdoor.urcs.html");
+  script_xref(name:"URL", value:"http://www.rapter.net/jm5.htm");
 
-  script_tag(name:"solution", value:"See http://www.rapter.net/jm5.htm");
+  script_tag(name:"solution", value:"See the references for more information.");
 
   script_tag(name:"impact", value:"An attacker may use it to steal files, passwords, or redirect ports on the
   remote system to launch other attacks.");
 
-  script_tag(name:"summary", value:"This host appears to be running URCS Server. Unmanarc Remote Control Server 
+  script_tag(name:"summary", value:"This host appears to be running URCS Server. Unmanarc Remote Control Server
   can be used/installed silent as a 'backdoor' which may allow an intruder to gain remote access to files on
   the remote system. If this program was not installed for remote management then it means the remote host has
   been compromised.");
@@ -58,6 +59,7 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
 include("misc_func.inc");
 
 # Default port for URCS Server is 3360

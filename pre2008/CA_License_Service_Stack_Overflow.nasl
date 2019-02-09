@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: CA_License_Service_Stack_Overflow.nasl 4829 2016-12-21 11:05:16Z cfi $
+# $Id: CA_License_Service_Stack_Overflow.nasl 13541 2019-02-08 13:21:52Z cfischer $
 #
 # CA License Service Multiple Vulnerabilities
 #
@@ -9,7 +9,7 @@
 # Modifications by Tenable Network Security:
 #  - Fixed the request
 #  - Shorter description
-#  - Fixed the version number check 
+#  - Fixed the version number check
 #  - Added a check on port 10202, 10203
 #
 # Copyright:
@@ -32,8 +32,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17307");
-  script_version("$Revision: 4829 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-21 12:05:16 +0100 (Wed, 21 Dec 2016) $");
+  script_version("$Revision: 13541 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 14:21:52 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(12705);
   script_cve_id("CVE-2005-0581", "CVE-2005-0582", "CVE-2005-0583");
@@ -42,13 +42,16 @@ if(description)
   script_name("CA License Service Multiple Vulnerabilities");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2005 KK Liu");
-  script_family( "Gain a shell remotely");
+  script_family("Gain a shell remotely");
   script_dependencies("find_service.nasl");
   script_require_ports(10202, 10203, 10204);
 
   script_xref(name:"URL", value:"http://www.eeye.com/html/research/advisories/AD20050302.html");
+  script_xref(name:"URL", value:"http://supportconnectw.ca.com/public/ca_common_docs/security_notice.asp");
 
-  tag_summary = "Arbitrary code can be executed on the remote host.
+  script_tag(name:"solution", value:"See the references for more information.");
+
+  script_tag(name:"summary", value:"Arbitrary code can be executed on the remote host.
 
   Description :
 
@@ -56,19 +59,16 @@ if(description)
 
   The remote version of this software is vulnerable to several flaws which
   may allow a remote attacker to execute arbitrary code on the remote host
-  with the SYSTEM privileges.";
-
-  tag_solution = "http://supportconnectw.ca.com/public/ca_common_docs/security_notice.asp";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  with the SYSTEM privileges.");
 
   script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"solution_type", value:"Mitigation");
 
   exit(0);
 }
 
-include('misc_func.inc');
+include("host_details.inc");
+include("misc_func.inc");
 
 req = 'A0 GETCONFIG SELF 0 <EOM>\r\n';
 
@@ -89,7 +89,7 @@ foreach port ( make_list( 10202, 10203, 10204 ) ) {
             security_message( port:port );
           }
         }
-      } 
+      }
     }
   }
 }

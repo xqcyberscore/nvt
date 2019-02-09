@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rmi_registry_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
+# $Id: gb_rmi_registry_detect.nasl 13541 2019-02-08 13:21:52Z cfischer $
 #
 # RMI-Registry Detection
 #
@@ -25,13 +25,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105839");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11885 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 13541 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 14:21:52 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2016-08-01 09:40:35 +0200 (Mon, 01 Aug 2016)");
   script_name("RMI-Registry Detection");
 
@@ -47,6 +47,7 @@ if (description)
   exit(0);
 }
 
+include("host_details.inc");
 include("byte_func.inc");
 include("misc_func.inc");
 

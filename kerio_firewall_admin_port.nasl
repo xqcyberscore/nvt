@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: kerio_firewall_admin_port.nasl 10894 2018-08-10 13:09:25Z cfischer $
+# $Id: kerio_firewall_admin_port.nasl 13541 2019-02-08 13:21:52Z cfischer $
 #
 # Description: Kerio Personal Firewall Admin Service
 #
@@ -28,12 +28,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.18183");
-  script_version("$Revision: 10894 $");
+  script_version("$Revision: 13541 $");
   script_bugtraq_id(13458);
   script_cve_id("CVE-2005-1062", "CVE-2005-1063");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:09:25 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 14:21:52 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_name("Kerio Personal Firewall Admin Service");
   script_category(ACT_GATHER_INFO);
@@ -61,6 +61,7 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
 include("misc_func.inc");
 
 function kpf_isWeakAdminProtocol( port ) {

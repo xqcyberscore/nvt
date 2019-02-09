@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pcoweb_default_accounts.nasl 11960 2018-10-18 10:48:11Z jschulte $
+# $Id: gb_pcoweb_default_accounts.nasl 13543 2019-02-08 14:43:51Z cfischer $
 #
 # CAREL pCOWeb Default Account Security Bypass Vulnerability
 #
@@ -25,16 +25,16 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103716");
-  script_version("$Revision: 11960 $");
+  script_version("$Revision: 13543 $");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
   script_name("CAREL pCOWeb Default Account Security Bypass Vulnerability");
 
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/121716/CAREL-pCOWeb-1.5.0-Default-Credential-Shell-Access.html");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:48:11 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2013-05-23 11:24:55 +0200 (Thu, 23 May 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -53,13 +53,11 @@ if (description)
   exit(0);
 }
 
+include("host_details.inc");
 include("telnet_func.inc");
 include("misc_func.inc");
 
-port = get_kb_item("Services/telnet");
-if(!port)exit(0);
-
-if(!get_port_state(port))exit(0);
+port = get_telnet_port(default:23);
 
 soc = open_sock_tcp(port);
 if(!soc)exit(0);

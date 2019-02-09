@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: bgp_detect.nasl 4829 2016-12-21 11:05:16Z cfi $
+# $Id: bgp_detect.nasl 13541 2019-02-08 13:21:52Z cfischer $
 #
 # BGP detection
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11907");
-  script_version("$Revision: 4829 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-21 12:05:16 +0100 (Wed, 21 Dec 2016) $");
+  script_version("$Revision: 13541 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 14:21:52 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -41,26 +41,24 @@ if(description)
   script_dependencies("find_service.nasl");
   script_require_ports(179);
 
-  tag_summary = "The remote host is running a BGP (Border Gatway Protocol) service.
+  script_tag(name:"solution", value:"If the remote service is not used, disable it.
+  Make sure that access to this service is either filtered so that only
+  allowed hosts can connect to it, or that TCP MD5 is enabled to protect
+  this service from rogue connections.");
+
+  script_tag(name:"summary", value:"The remote host is running a BGP (Border Gatway Protocol) service.
 
   Description :
 
   The remote host is running BGP, a popular routing protocol. This indicates
-  that the remote host is probably a network router.";
+  that the remote host is probably a network router.");
 
-  tag_solution = "If the remote service is not used, disable it.  
-  Make sure that access to this service is either filtered so that only
-  allowed hosts can connect to it, or that TCP MD5 is enabled to protect
-  this service from rogue connections.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-
-  script_tag(name:"qod_type", value:"remote_banner"); 
+  script_tag(name:"qod_type", value:"remote_banner");
 
   exit(0);
 }
 
+include("host_details.inc");
 ##include("dump.inc");
 include("misc_func.inc");
 
@@ -114,4 +112,3 @@ if (type == 1)	# Hello
 
 register_service(port: port, proto: "bgp");
 log_message(port);
-

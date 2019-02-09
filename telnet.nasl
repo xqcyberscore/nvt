@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: telnet.nasl 13370 2019-01-30 16:34:48Z cfischer $
+# $Id: telnet.nasl 13541 2019-02-08 13:21:52Z cfischer $
 #
 # Telnet Service Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100074");
-  script_version("$Revision: 13370 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-30 17:34:48 +0100 (Wed, 30 Jan 2019) $");
+  script_version("$Revision: 13541 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 14:21:52 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-03-24 15:43:44 +0100 (Tue, 24 Mar 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -52,12 +52,13 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
 include("telnet_func.inc");
 include("misc_func.inc");
 include("http_func.inc"); # For make_list_unique()
 
 # nb: See the note on script_require_ports above...
-default_ports = make_list( 23, 992, 1953, 2323, 5000, 9999, 41795 );
+default_ports = make_list(23, 992, 1953, 2323, 5000, 9999, 41795);
 all_tcp_ports = get_all_tcp_ports_list();
 if( all_tcp_ports )
   ports = make_list( default_ports, all_tcp_ports );

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_syntax_desktop_dir_trvsl_vuln.nasl 11343 2018-09-12 06:36:46Z cfischer $
+# $Id: gb_syntax_desktop_dir_trvsl_vuln.nasl 13543 2019-02-08 14:43:51Z cfischer $
 #
 # Syntax Desktop Directory Traversal Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800234");
-  script_version("$Revision: 11343 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 08:36:46 +0200 (Wed, 12 Sep 2018) $");
+  script_version("$Revision: 13543 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-02-20 17:40:17 +0100 (Fri, 20 Feb 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -54,15 +54,14 @@ if(description)
   script_tag(name:"summary", value:"This host is running Syntax Desktop and is prone to Directory
   Traversal Vulnerability.");
   script_tag(name:"impact", value:"Successful exploitation will let the attacker gain sensitive information
-  about the remote system directories where syntax desktop runs.
-
-  Impact level: Application/System");
+  about the remote system directories where syntax desktop runs.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_app");
   exit(0);
 }
 
+include("host_details.inc");
 include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_linksys_ea2700_59054.nasl 11960 2018-10-18 10:48:11Z jschulte $
+# $Id: gb_linksys_ea2700_59054.nasl 13543 2019-02-08 14:43:51Z cfischer $
 #
 # Cisco Linksys EA2700 Router Multiple Security Vulnerabilities
 #
@@ -29,7 +29,7 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103698");
   script_bugtraq_id(59054);
-  script_version("$Revision: 11960 $");
+  script_version("$Revision: 13543 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
@@ -37,7 +37,7 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/59054");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:48:11 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2013-04-16 14:16:54 +0200 (Tue, 16 Apr 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -54,19 +54,21 @@ if(description)
   vulnerabilities:
 
   1. A security-bypass vulnerability
+
   2. A cross-site request-forgery vulnerability
-  3. A cross-site scripting vulnerability
 
-  An attacker can exploit these issues to bypass certain security restrictions,
-  steal cookie-based authentication credentials, gain access to system and
-  other configuration files, or perform unauthorized actions in the context of a
-  user session.
+  3. A cross-site scripting vulnerability");
 
-  Cisco Linksys EA2700 running firmware 1.0.12.128947 is vulnerable.");
+  script_tag(name:"impact", value:"An attacker can exploit these issues to bypass certain security restrictions,
+  steal cookie-based authentication credentials, gain access to system and other configuration files, or perform
+  unauthorized actions in the context of a user session.");
+
+  script_tag(name:"affected", value:"Cisco Linksys EA2700 running firmware 1.0.12.128947 is vulnerable.");
 
   exit(0);
 }
 
+include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("misc_func.inc");

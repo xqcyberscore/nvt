@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: avotus_mm.nasl 11827 2018-10-10 14:52:03Z cfischer $
+# $Id: avotus_mm.nasl 13543 2019-02-08 14:43:51Z cfischer $
 #
 # Avotus mm File Retrieval attempt
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11948");
-  script_version("$Revision: 11827 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 16:52:03 +0200 (Wed, 10 Oct 2018) $");
+  script_version("$Revision: 13543 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -54,6 +54,7 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
 include("misc_func.inc");
 
 port = get_kb_item("Services/avotus_mm");

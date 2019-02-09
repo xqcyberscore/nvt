@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_amsi_file_param_dir_traversal_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
+# $Id: gb_amsi_file_param_dir_traversal_vuln.nasl 13543 2019-02-08 14:43:51Z cfischer $
 #
 # AMSI 'file' Parameter Directory Traversal Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805237");
-  script_version("$Revision: 11424 $");
+  script_version("$Revision: 13543 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2015-01-12 16:30:44 +0530 (Mon, 12 Jan 2015)");
   script_name("AMSI 'file' Parameter Directory Traversal Vulnerability");
   script_category(ACT_ATTACK);
@@ -69,6 +69,7 @@ General solution options are to upgrade to a newer release, disable respective f
   exit(0);
 }
 
+include("host_details.inc");
 include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");

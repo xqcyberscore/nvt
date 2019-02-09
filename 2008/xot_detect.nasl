@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: xot_detect.nasl 9684 2018-05-02 06:38:56Z cfischer $
+# $Id: xot_detect.nasl 13541 2019-02-08 13:21:52Z cfischer $
 #
 # XOT Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80095");
-  script_version("$Revision: 9684 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-02 08:38:56 +0200 (Wed, 02 May 2018) $");
+  script_version("$Revision: 13541 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 14:21:52 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -42,16 +42,18 @@ if(description)
   script_tag(name:"summary", value:"This plugin detects XOT (X.25 over TCP).
 
   The remote target is an XOT router.
-  For more information, read RFC 1613 or
-  http://www.cisco.com/univercd/cc/td/doc/cisintwk/ito_doc/x25.pdf");
+  For more information, read RFC 1613 or the referenced URL.");
+
+  script_xref(name:"URL", value:"http://www.cisco.com/univercd/cc/td/doc/cisintwk/ito_doc/x25.pdf");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
   exit(0);
 }
 
+include("host_details.inc");
 # include('dump.inc');
-include('misc_func.inc');
+include("misc_func.inc");
 
 port = 1998;
 if (! get_port_state(port)) exit(0);

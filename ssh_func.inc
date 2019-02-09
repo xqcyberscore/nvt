@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: ssh_func.inc 12686 2018-12-06 13:35:22Z cfischer $
+# $Id: ssh_func.inc 13537 2019-02-08 11:49:55Z cfischer $
 #
 # Methods for handling SSH
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 12686 $
+# $Revision: 13537 $
 #
 ###############################################################################
 
@@ -1931,6 +1931,7 @@ function ssh_cmd( socket, cmd, timeout, nosh, return_errors, pty, pattern, retry
         ": No such command" >< ret_ssh_buf ||
         "-----unknown keyword " >< ret_ssh_buf ||
         "Unknown action 0" >< ret_ssh_buf ||
+        "Invalid command" >< ret_ssh_buf || # HP iLO 100
         "Syntax Error: unexpected argument" >< ret_ssh_buf ) { # NX-OS/IOS/JunOS/F5
         set_kb_item( name:"ssh/force/nosh", value:TRUE );
         if( ! return_errors )

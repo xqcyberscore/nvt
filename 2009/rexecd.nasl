@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: rexecd.nasl 13010 2019-01-10 07:59:14Z cfischer $
+# $Id: rexecd.nasl 13541 2019-02-08 13:21:52Z cfischer $
 #
 # rexec Passwordless / Unencrypted Cleartext Login
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100111");
-  script_version("$Revision: 13010 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-10 08:59:14 +0100 (Thu, 10 Jan 2019) $");
+  script_version("$Revision: 13541 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 14:21:52 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-04-08 12:09:59 +0200 (Wed, 08 Apr 2009)");
   #Remark: NIST don't see "configuration issues" as software flaws so this CVSS has a value of 0.0.
   #However we still should report such a configuration issue with a criticality so this has been commented
@@ -61,6 +61,7 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
 include("misc_func.inc");
 
 # sending a too long username. Without that too long username i did

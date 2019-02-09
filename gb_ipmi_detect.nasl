@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ipmi_detect.nasl 11015 2018-08-17 06:31:19Z cfischer $
+# $Id: gb_ipmi_detect.nasl 13541 2019-02-08 13:21:52Z cfischer $
 #
 # Detection of IPMI
 #
@@ -24,16 +24,14 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103835");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11015 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 13541 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 14:21:52 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2013-11-26 11:39:47 +0100 (Tue, 26 Nov 2013)");
   script_tag(name:"cvss_base", value:"0.0");
-
-
   script_name("IPMI Detection");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
@@ -51,6 +49,7 @@ and monitoring of their operation.");
 
 }
 
+include("host_details.inc");
 include("byte_func.inc");
 include("misc_func.inc");
 

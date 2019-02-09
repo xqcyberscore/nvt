@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: faqmanager.nasl 11751 2018-10-04 12:03:41Z jschulte $
+# $Id: faqmanager.nasl 13543 2019-02-08 14:43:51Z cfischer $
 #
 # FAQManager Arbitrary File Reading Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10837");
-  script_version("$Revision: 11751 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-04 14:03:41 +0200 (Thu, 04 Oct 2018) $");
+  script_version("$Revision: 13543 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2002-2033");
   script_bugtraq_id(3810);
@@ -52,11 +52,12 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
 
-  script_xref(name:"URL", value:"www.fourteenminutes.com/code/faqmanager/");
+  script_xref(name:"URL", value:"http://www.fourteenminutes.com/code/faqmanager/");
 
   exit(0);
 }
 
+include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("misc_func.inc");

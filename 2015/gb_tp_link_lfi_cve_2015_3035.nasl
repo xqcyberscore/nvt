@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tp_link_lfi_cve_2015_3035.nasl 12021 2018-10-22 14:54:51Z mmartin $
+# $Id: gb_tp_link_lfi_cve_2015_3035.nasl 13543 2019-02-08 14:43:51Z cfischer $
 #
 # Multiple TP-LINK Products Local File Include Vulnerability
 #
@@ -31,9 +31,9 @@ if(description)
   script_cve_id("CVE-2015-3035");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_version("$Revision: 12021 $");
+  script_version("$Revision: 13543 $");
   script_name("Multiple TP-LINK Products Local File Include Vulnerabilit");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 16:54:51 +0200 (Mon, 22 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2015-04-10 16:25:11 +0200 (Fri, 10 Apr 2015)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -97,6 +97,7 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("misc_func.inc");

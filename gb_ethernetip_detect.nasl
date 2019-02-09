@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ethernetip_detect.nasl 12700 2018-12-07 08:18:55Z ckuersteiner $
+# $Id: gb_ethernetip_detect.nasl 13541 2019-02-08 13:21:52Z cfischer $
 #
 # EtherNet/IP Detection
 #
@@ -25,11 +25,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106850");
-  script_version("$Revision: 12700 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-07 09:18:55 +0100 (Fri, 07 Dec 2018) $");
+  script_version("$Revision: 13541 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 14:21:52 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-06-09 12:24:29 +0700 (Fri, 09 Jun 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -55,6 +55,7 @@ various automation devices such as robots, PLCs, sensors, CNCs and other industr
   exit(0);
 }
 
+include("host_details.inc");
 include("byte_func.inc");
 include("ethernetip.inc");
 include("misc_func.inc");

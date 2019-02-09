@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cheopsNG_detect.nasl 10890 2018-08-10 12:30:06Z cfischer $
+# $Id: cheopsNG_detect.nasl 13541 2019-02-08 13:21:52Z cfischer $
 #
 # Cheops NG Agent Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.20160");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 10890 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:30:06 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 13541 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 14:21:52 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Cheops NG Agent Detection");
@@ -55,8 +55,8 @@ your network, port scan machines and identify running services.");
   exit(0);
 }
 
+include("host_details.inc");
 include("misc_func.inc");
-include("global_settings.inc");
 
 m1 = '\x00\x00\x00\x14\x00\x0c\x00\x04\x00\x00\x00\x00\x01\x00\x00\x00\x02\x00\x00\x00';
 m2 = '\x00\x00\x00\x20\x00\x0c\x00\x02\x00\x00\x00\x00\x01\x00\x00\x7f\x01\x00\x00\x7f\x00\x00\x00\x00\x00\x00\x00\x00\xb8\xdf\x0d\x08';
@@ -68,7 +68,6 @@ if( soc ) {
   send( socket:soc, data:m1 );
   r = recv( socket:soc, length:512 );
   if( strlen( r ) > 0 ) {
-    if( debug_level ) debug_print('Service on port ', port, ' answers to first request - L=', strlen(r), '\n');
     if( substr( r, 0, 7 ) == '\x00\x00\x00\x10\x00\x0c\x00\x6c' ) {
       log_message( port:port );
       register_service( port:port, proto:'cheops-ng' );
@@ -80,7 +79,6 @@ if( soc ) {
   send( socket:soc, data:m2 );
   r = recv( socket:soc, length:512 );
   l = strlen( r );
-  if( debug_level ) debug_print('reply length = ', l, '\n');
   if( l >= 8 && substr( r, 0, 2 ) == '\0\0\0' && '\x01\x00\x00\x7f' >< r ) {
     log_message( port:port );
     register_service( port:port, proto:'cheops-ng' );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: vnc_security_types.nasl 13328 2019-01-28 13:17:49Z cfischer $
+# $Id: vnc_security_types.nasl 13541 2019-02-08 13:21:52Z cfischer $
 #
 # VNC security types
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.19288");
-  script_version("$Revision: 13328 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-28 14:17:49 +0100 (Mon, 28 Jan 2019) $");
+  script_version("$Revision: 13541 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 14:21:52 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -47,9 +47,10 @@ if(description)
   exit(0);
 }
 
-include('misc_func.inc');
-include('global_settings.inc');
-include('network_func.inc');
+include("host_details.inc");
+include("misc_func.inc");
+include("global_settings.inc");
+include("network_func.inc");
 
 port = get_kb_item( "Services/vnc" );
 if( ! port ) port = 5900;

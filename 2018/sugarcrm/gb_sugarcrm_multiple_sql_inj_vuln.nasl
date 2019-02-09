@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sugarcrm_multiple_sql_inj_vuln.nasl 13259 2019-01-24 09:33:14Z ckuersteiner $
+# $Id: gb_sugarcrm_multiple_sql_inj_vuln.nasl 13546 2019-02-08 15:41:06Z mmartin $
 #
 # SugarCRM Multiple SQL Injection Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:sugarcrm:sugarcrm";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812802");
-  script_version("$Revision: 13259 $");
+  script_version("$Revision: 13546 $");
   script_cve_id("CVE-2018-6308");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-24 10:33:14 +0100 (Thu, 24 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 16:41:06 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-02-08 15:40:09 +0530 (Thu, 08 Feb 2018)");
 
   script_name("SugarCRM Multiple SQL Injection Vulnerabilities");
@@ -53,10 +53,11 @@ if(description)
 
   script_tag(name:"affected", value:"SugarCRM Community Edition 6.5.26 and prior.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 24th January, 2019.
-  Information regarding this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

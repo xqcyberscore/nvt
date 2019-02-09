@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: anaconda_doublenull.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: anaconda_doublenull.nasl 13543 2019-02-08 14:43:51Z cfischer $
 #
 # Anaconda Double NULL Encoded Remote File Retrieval
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.15749");
-  script_version("$Revision: 7577 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+  script_version("$Revision: 13543 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2000-0975");
   script_bugtraq_id(2338);
@@ -46,8 +46,10 @@ if(description)
   script_tag(name:"solution", value:"Contact your vendor for updated software.");
 
   script_tag(name:"summary", value:"The remote Anaconda Foundation Directory contains a flaw
-  that allows anyone to read arbitrary files with root (super-user) 
-  privileges, by embedding a double null byte in a URL, as in :
+  that allows anyone to read arbitrary files with root (super-user)
+  privileges.");
+
+  script_tag(name:"insight", value:"The flaw can be misused by embedding a double null byte in a URL, as in :
 
   http://www.example.com/cgi-bin/apexec.pl?etype=odp&template=../../../../../../..../../etc/passwd%%0000.html&passurl=/category/");
 
@@ -57,6 +59,7 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
 include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");

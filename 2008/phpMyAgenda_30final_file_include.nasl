@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: phpMyAgenda_30final_file_include.nasl 11669 2018-09-28 08:44:24Z jschulte $
+# $Id: phpMyAgenda_30final_file_include.nasl 13543 2019-02-08 14:43:51Z cfischer $
 # Description: phpMyAgenda version 3.0 File Inclusion Vulnerability
 #
 # Authors:
@@ -25,11 +25,11 @@
 # Original advisory / discovered by :
 # http://www.securityfocus.com/archive/1/431862/30/0/threaded
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.200002");
-  script_version("$Revision: 11669 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 10:44:24 +0200 (Fri, 28 Sep 2018) $");
+  script_version("$Revision: 13543 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2008-08-22 16:09:14 +0200 (Fri, 22 Aug 2008)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -69,6 +69,7 @@ if (description)
   exit(0);
 }
 
+include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("misc_func.inc");

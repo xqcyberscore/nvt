@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simatic_s7_cotp_detect.nasl 12910 2018-12-30 21:51:49Z cfischer $
+# $Id: gb_simatic_s7_cotp_detect.nasl 13541 2019-02-08 13:21:52Z cfischer $
 #
 # Siemens SIMATIC S7 Device Detection (COTP)
 #
@@ -25,11 +25,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106099");
-  script_version("$Revision: 12910 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-30 22:51:49 +0100 (Sun, 30 Dec 2018) $");
+  script_version("$Revision: 13541 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 14:21:52 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2016-06-17 17:08:52 +0700 (Fri, 17 Jun 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -39,7 +39,7 @@ if (description)
   script_name("Siemens SIMATIC S7 Device Detection (COTP)");
 
   script_tag(name:"summary", value:"This script performs COTP (Connection-Oriented Transport Protocol)
-based detection of Siemens SIMATIC S7 devices.");
+  based detection of Siemens SIMATIC S7 devices.");
 
   script_category(ACT_GATHER_INFO);
 
@@ -48,12 +48,12 @@ based detection of Siemens SIMATIC S7 devices.");
   script_dependencies("find_service.nasl");
   script_require_ports(102);
 
-
   exit(0);
 }
 
+include("host_details.inc");
 include("byte_func.inc");
-include("http_func.inc");     # for hex2dec
+include("http_func.inc"); # for hex2dec
 include("misc_func.inc");
 
 function cotp_send_recv( req, soc )

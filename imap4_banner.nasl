@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: imap4_banner.nasl 13477 2019-02-05 15:15:12Z cfischer $
+# $Id: imap4_banner.nasl 13541 2019-02-08 13:21:52Z cfischer $
 # Description: IMAP Server type and version
 #
 # Authors:
@@ -25,8 +25,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11414");
-  script_version("$Revision: 13477 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-05 16:15:12 +0100 (Tue, 05 Feb 2019) $");
+  script_version("$Revision: 13541 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 14:21:52 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -45,6 +45,7 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
 include("misc_func.inc");
 include("imap_func.inc");
 

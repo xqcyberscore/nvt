@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_nodesforum_mult_rfi_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: secpod_nodesforum_mult_rfi_vuln.nasl 13543 2019-02-08 14:43:51Z cfischer $
 #
 # Nodesforum Multiple Remote File Inclusion Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902040");
-  script_version("$Revision: 7577 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+  script_version("$Revision: 13543 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2010-04-16 16:17:26 +0200 (Fri, 16 Apr 2010)");
   script_cve_id("CVE-2010-1351");
   script_tag(name:"cvss_base", value:"6.8");
@@ -46,9 +46,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/12047");
 
   script_tag(name:"impact", value:"Successful exploitation will let attackers to execute arbitrary
-  code in a user's browser session in the context of an affected site.
-
-  Impact Level: Application");
+  code in a user's browser session in the context of an affected site.");
 
   script_tag(name:"affected", value:"Nodesforum version 1.045 and prior.");
 
@@ -56,10 +54,9 @@ if(description)
   parameter in 'erase_user_data.php' and to the '_nodesforum_code_path' parameter
   in 'pre_output.php' is not being validated before being used to include files.");
 
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"summary", value:"This host is running Nodesforum and is prone to multiple remote file
   inclusion vulnerabilities.");
@@ -70,6 +67,7 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
 include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");

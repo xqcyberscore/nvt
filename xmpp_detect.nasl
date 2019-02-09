@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: xmpp_detect.nasl 10929 2018-08-11 11:39:44Z cfischer $
+# $Id: xmpp_detect.nasl 13541 2019-02-08 13:21:52Z cfischer $
 #
 # XMPP Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100489");
-  script_version("$Revision: 10929 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-11 13:39:44 +0200 (Sat, 11 Aug 2018) $");
+  script_version("$Revision: 13541 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 14:21:52 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2010-02-08 23:29:56 +0100 (Mon, 08 Feb 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -52,8 +52,8 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
 include("misc_func.inc");
-
 
 function delete_user(soc) {
 
@@ -169,14 +169,17 @@ if(isnull(buf) || "instructions" >!< buf) {
   exit(0);
 }
 
-USER = "openvas-" + rand();
+vt_strings = get_vt_strings();
+
+USER = vt_strings["lowercase_rand"];
+MAIL = vt_strings["lowercase"] + "@example.org";
 
 req = "<iq id='A1' type='set'>" +
       "<query xmlns='jabber:iq:register'>" +
       "<username>" + USER + "</username>" +
       "<password>" + USER + "</password>" +
       "<name>" + USER + "</name>" +
-      "<email>openvas@example.org</email>" +
+      "<email>" + MAIL + "</email>" +
       "</query>" +
       "</iq>";
 
@@ -253,7 +256,7 @@ if(!isnull(version[1])) {
 delete_user(soc: soc);
 
 if(server_name && server_version) {
-  info = "XMPP Server '" + server_name + "' version '" + server_version + "' on '" + server_os + "' was detected by OpenVAS.";
+  info = "XMPP Server '" + server_name + "' version '" + server_version + "' on '" + server_os + "' was detected.";
 }
 
 log_message(port:port,data:info);

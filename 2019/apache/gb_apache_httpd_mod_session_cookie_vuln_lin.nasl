@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_httpd_mod_session_cookie_vuln_lin.nasl 13453 2019-02-05 06:44:30Z ckuersteiner $
+# $Id: gb_apache_httpd_mod_session_cookie_vuln_lin.nasl 13547 2019-02-08 15:53:13Z cfischer $
 #
 # Apache HTTP Server < 2.4.38 mod_session_cookie Vulnerability (Linux)
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:apache:http_server";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141964");
-  script_version("$Revision: 13453 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-05 07:44:30 +0100 (Tue, 05 Feb 2019) $");
+  script_version("$Revision: 13547 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 16:53:13 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-02-05 13:36:29 +0700 (Tue, 05 Feb 2019)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
@@ -72,7 +72,7 @@ include("version_func.inc");
 if (!port = get_app_port(cpe: CPE))
   exit(0);
 
-if (!version = get_app_version(cpe: cpe, port: port))
+if (!version = get_app_version(cpe: CPE, port: port))
   exit(0);
 
 affected = make_list('2.4.37',

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: egd_detect.nasl 9348 2018-04-06 07:01:19Z cfischer $
+# $Id: egd_detect.nasl 13541 2019-02-08 13:21:52Z cfischer $
 # Description: EGD detection
 #
 # Authors:
@@ -22,40 +22,41 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "A random number generator is listening on the remote port.
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.18393");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 13541 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 14:21:52 +0100 (Fri, 08 Feb 2019) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_name("EGD detection");
+  script_category(ACT_GATHER_INFO);
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_copyright("This script is Copyright (C) 2005 Michel Arboi");
+  script_family("Service detection");
+  script_require_ports("Services/unknown", 8000);
+  script_dependencies("find_service1.nasl", "find_service2.nasl");
+
+  script_tag(name:"solution", value:"If this service is not needed, disable it or filter incoming traffic
+to this port.");
+
+  script_tag(name:"summary", value:"A random number generator is listening on the remote port.
 
 Description :
 
 The Entropy Gathering Daemon is running on the remote host.
-EGD is a user space random generator for operating systems 
-that lack /dev/random";
+EGD is a user space random generator for operating systems
+that lack /dev/random");
 
-tag_solution = "If this service is not needed, disable it or filter incoming traffic
-to this port.";
+  script_xref(name:"URL", value:"http://egd.sourceforge.net/");
 
-if(description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.18393");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9348 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_tag(name:"cvss_base", value:"0.0");
- script_name("EGD detection");
- script_category(ACT_GATHER_INFO);
- script_tag(name:"qod_type", value:"remote_banner");
- script_copyright("This script is Copyright (C) 2005 Michel Arboi");
- script_family( "Service detection");
- script_require_ports("Services/unknown", 8000);
- script_dependencies("find_service1.nasl", "find_service2.nasl");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_xref(name : "URL" , value : "http://egd.sourceforge.net/");
- exit(0);
+  exit(0);
 }
 
-include('global_settings.inc');
-include('misc_func.inc');
+include("host_details.inc");
+include("global_settings.inc");
+include("misc_func.inc");
 
 port = get_unknown_port( default:8000 );
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ident_backdoor.nasl 9328 2018-04-05 11:14:07Z cfischer $
+# $Id: ident_backdoor.nasl 13541 2019-02-08 13:21:52Z cfischer $
 #
 # IRC bot ident server detection
 #
@@ -40,8 +40,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14841");
-  script_version("$Revision: 9328 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-05 13:14:07 +0200 (Thu, 05 Apr 2018) $");
+  script_version("$Revision: 13541 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 14:21:52 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -52,15 +52,12 @@ if(description)
   script_require_ports("Services/auth", 113);
   script_dependencies("find_service1.nasl");
 
-  tag_summary = "This host seems to be running an ident server, but the ident server responds
+  script_tag(name:"solution", value:"re-install the remote system");
+
+  script_tag(name:"summary", value:"This host seems to be running an ident server, but the ident server responds
   to an empty query with a random userid. This behavior may be indicative of an
   irc bot, worm, and/or virus infection. It is very likely this system has
-  been compromised.";
-
-  tag_solution = "re-install the remote system";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  been compromised.");
 
   script_tag(name:"qod_type", value:"remote_analysis");
   script_tag(name:"solution_type", value:"Workaround");
@@ -68,7 +65,8 @@ if(description)
   exit(0);
 }
 
-include('misc_func.inc');
+include("host_details.inc");
+include("misc_func.inc");
 
 # End user-defined variables; you should not have to touch anything below this
 soc_out =   3; # Socket connect timeout; increase this for slow ident bots
@@ -93,7 +91,6 @@ if( "USERID" >< ids1[1] ) {
   close( soc1 );
   sleep( soc_sleep );
 
-  # Get second response
   soc2 = open_sock_tcp( port );
   if( ! soc2 ) exit( 0 );
 

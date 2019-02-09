@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: bugbear.nasl 11885 2018-10-12 13:47:20Z cfischer $
+# $Id: bugbear.nasl 13541 2019-02-08 13:21:52Z cfischer $
 # Description: Bugbear worm
 #
 # Authors:
@@ -44,8 +44,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11135");
-  script_version("$Revision: 11885 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 13541 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 14:21:52 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_xref(name:"IAVA", value:"2001-a-0004");
   script_bugtraq_id(2524);
@@ -64,18 +64,23 @@ if(description)
   - Close your Windows shares
 
   - Update your IE browser
-  See 'Incorrect MIME Header Can Cause IE to Execute E-mail Attachment'");
-  script_tag(name:"solution_type", value:"Mitigation");
-  script_tag(name:"summary", value:"BugBear backdoor is listening on this port.
-A cracker may connect to it to retrieve secret
-information, e.g. passwords or credit card numbers...
 
-The BugBear worm includes a key logger and can kill
-antivirus or personal firewall software. It propagates
-itself through email and open Windows shares.
-Depending on the antivirus vendor, it is known as: Tanatos,
-I-Worm.Tanatos, NATOSTA.A, W32/Bugbear-A, Tanatos, W32/Bugbear@MM,
-WORM_BUGBEAR.A, Win32.BugBear...");
+  See 'Incorrect MIME Header Can Cause IE to Execute E-mail Attachment'");
+
+  script_tag(name:"solution_type", value:"Mitigation");
+
+  script_tag(name:"summary", value:"BugBear backdoor is listening on this port.");
+
+  script_tag(name:"impact", value:"An attacker may connect to it to retrieve secret
+  information, e.g. passwords or credit card numbers.");
+
+  script_tag(name:"insight", value:"The BugBear worm includes a key logger and can stop
+  antivirus or personal firewall software. It propagates itself through email and open
+  Windows shares.
+
+  Depending on the antivirus vendor, it is known as: Tanatos,
+  I-Worm.Tanatos, NATOSTA.A, W32/Bugbear-A, Tanatos, W32/Bugbear@MM,
+  WORM_BUGBEAR.A, Win32.BugBear.");
 
   script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/bulletin/MS01-020.mspx");
   script_xref(name:"URL", value:"http://www.sophos.com/virusinfo/analyses/w32bugbeara.html");
@@ -88,6 +93,7 @@ WORM_BUGBEAR.A, Win32.BugBear...");
   exit(0);
 }
 
+include("host_details.inc");
 include("misc_func.inc");
 
 port = 36794;
@@ -111,8 +117,7 @@ if ("ID:" >< r) {
 
 msg = "
 This port is usually used by the BugBear backdoor.
-Although OpenVAS was unable to get an answer from the worm,
+Although the scanner was unable to get an answer from the worm,
 you'd better check your machine with an up to date
 antivirus scanner.";
 security_message(port: port, data: msg);
-

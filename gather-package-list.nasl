@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gather-package-list.nasl 13263 2019-01-24 11:06:39Z cfischer $
+# $Id: gather-package-list.nasl 13537 2019-02-08 11:49:55Z cfischer $
 #
 # Determine OS and list of installed packages via SSH login
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.50282");
-  script_version("$Revision: 13263 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-24 12:06:39 +0100 (Thu, 24 Jan 2019) $");
+  script_version("$Revision: 13537 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 12:49:55 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2008-01-17 22:05:49 +0100 (Thu, 17 Jan 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -448,6 +448,61 @@ if( ! sock ) exit( 0 );
 # First command: Grab uname -a of the remote system
 uname = ssh_cmd( socket:sock, cmd:"uname -a", return_errors:TRUE, pty:TRUE, timeout:60, retry:30 );
 if( isnull( uname ) ) exit( 0 );
+
+# HP iLO 100:
+# Lights-Out 100 Management
+# Copyright 2005-2007 ServerEngines Corporation
+# Copyright 2006-2007 Hewlett-Packard Development Company, L.P.
+#
+# /./-> Invalid command
+#
+# https://blog.marquis.co/how-to-access-hps-ilo-remote-console-via-ssh/
+#
+# User:Administrator logged-in to ILO----n.(10.2.0.21)
+# iLO 2 Standard Blade Edition 2.25 at 16:36:26 Apr 14 2014
+# Server Name: vMX-Bay1
+# Server Power: On
+# 
+# hpiLO->
+#
+# https://community.hpe.com/t5/ProLiant-Servers-ML-DL-SL/SOLVED-Cannot-SSH-into-ILO4-v1-40-or-v1-50-after-upgrading-from/td-p/6505622
+#
+# User:Administrator logged-in to MYHOSTNAME(X.X.X.X / IPv6)
+# iLO 4 Advanced 1.50 at  May 07 2014
+# Server Name: MYHOSTNAME
+# Server Power: On
+#
+# hpiLO->
+#
+# User:Administrator logged-in to MYHOSTNAME(X.X.X.X / IPv6)
+# iLO 3 Advanced 1.70 at  May 07 2014
+# Server Name: MYHOSTNAME
+# Server Power: On
+#
+# hpiLO->
+#
+if( ( uname =~ "Lights-Out.*Management" && ( uname =~ "Copyright .+ ServerEngines Corporation" ||
+                                             uname =~ "Copyright .+ Hewlett-Packard Development Company" ||
+                                             "/./-> Invalid command" >< uname ) ) ||
+    ( " logged-in to " >< uname && ( uname =~ "iLO [0-9]" || "hpiLO->" >< uname ) ) ) {
+
+  # https://community.hpe.com/t5/ProLiant-Servers-ML-DL-SL/System-Firmware-Version-ssh-through-iLO/td-p/1151731
+  # ftp://ftp.mrynet.com/operatingsystems/HP-MPE/docs.hp.com/en/AH232-9008A-ed3/apbs07.html
+  # SYSREV should print out something like:
+  # FIRMWARE INFORMATION
+  #
+  #    MP FW: H.03.15
+  #    BMC FW: 04.05
+  #    EFI FW: 05.16
+  #    System FW: 62.14
+  sysrev = ssh_cmd( socket:sock, cmd:"SYSREV", nosh:TRUE, return_errors:FALSE, pty:TRUE, timeout:20, retry:10 );
+  if( sysrev )
+    register_unknown_os_banner( banner:'HP iLO response to the "SYSREV" command:\n\n' + sysrev, banner_type_name:SCRIPT_DESC, banner_type_short:"gather_package_list", port:port );
+
+  set_kb_item( name:"ssh/restricted_shell", value:TRUE );
+  set_kb_item( name:"ssh/no_linux_shell", value:TRUE );
+  exit( 0 );
+}
 
 if( "HyperIP Command Line Interface" >< uname ) {
 

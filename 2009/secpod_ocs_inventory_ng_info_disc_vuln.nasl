@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ocs_inventory_ng_info_disc_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: secpod_ocs_inventory_ng_info_disc_vuln.nasl 13543 2019-02-08 14:43:51Z cfischer $
 #
-# OCS Inventory NG 'cvs.php' Inforamtion Disclosure Vulnerability
+# OCS Inventory NG 'cvs.php' Information Disclosure Vulnerability
 #
 # Authors:
 # Sharath S <sharaths@secpod.com>
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900378");
-  script_version("$Revision: 7577 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+  script_version("$Revision: 13543 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-06-26 07:55:21 +0200 (Fri, 26 Jun 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_cve_id("CVE-2009-2166");
-  script_name("OCS Inventory NG 'cvs.php' Inforamtion Disclosure Vulnerability");
-  script_xref(name : "URL" , value : "http://www.milw0rm.com/exploits/8868");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/50946");
+  script_name("OCS Inventory NG 'cvs.php' Information Disclosure Vulnerability");
+  script_xref(name:"URL", value:"http://www.milw0rm.com/exploits/8868");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/50946");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Web application abuses");
@@ -43,17 +43,15 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow attacker to cause path traversal attack,
-  and gain sensitive information.
-
-  Impact Level: System");
-  script_tag(name : "affected" , value : "OCS Inventory NG version prior to 1.02.1");
-  script_tag(name : "insight" , value : "The flaw is due to improper sanitization of user supplied input through the
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to cause path traversal attack,
+  and gain sensitive information.");
+  script_tag(name:"affected", value:"OCS Inventory NG version prior to 1.02.1");
+  script_tag(name:"insight", value:"The flaw is due to improper sanitization of user supplied input through the
   'cvs.php' file which can exploited by sending a direct request to the
   'log' parameter.");
-  script_tag(name : "solution" , value : "Upgrade to OCS Inventory NG version 1.02.1 or later
-  http://www.ocsinventory-ng.org/index.php?page=downloads");
-  script_tag(name : "summary" , value : "This host is running OCS Inventory NG and is prone to Information
+  script_tag(name:"solution", value:"Upgrade to OCS Inventory NG version 1.02.1 or later.");
+
+  script_tag(name:"summary", value:"This host is running OCS Inventory NG and is prone to Information
   Disclosure vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -61,14 +59,13 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
 include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Get HTTP port
 ocsngPort = get_http_port(default:80);
 
-## Check the php support
 if(!can_host_php(port:ocsngPort)){
   exit(0);
 }

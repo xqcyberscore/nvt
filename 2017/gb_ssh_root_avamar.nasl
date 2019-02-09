@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ssh_root_avamar.nasl 11863 2018-10-12 09:42:02Z mmartin $
+# $Id: gb_ssh_root_avamar.nasl 13543 2019-02-08 14:43:51Z cfischer $
 #
 # Default Password `avam@r` for root Account.
 #
@@ -25,14 +25,14 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140133");
-  script_version("$Revision: 11863 $");
+  script_version("$Revision: 13543 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("Default Password `avam@r` for root Account.");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-01-31 11:12:08 +0100 (Tue, 31 Jan 2017)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
@@ -50,15 +50,15 @@ if (description)
   script_dependencies("ssh_detect.nasl", "os_detection.nasl");
   script_require_keys("Host/runs_unixoide");
   script_tag(name:"qod_type", value:"exploit");
+
   exit(0);
 }
 
+include("host_details.inc");
 include("ssh_func.inc");
 include("misc_func.inc");
 
-if( ! port = get_kb_item( "Services/ssh" ) ) exit( 0 );
-if( ! get_port_state( port ) ) exit( 0 );
-
+port = get_ssh_port( default:22 );
 if( ! soc = open_sock_tcp( port ) ) exit( 0 );
 
 user = 'root';
@@ -88,4 +88,3 @@ if(login == 0)
 
 if( soc ) close( soc );
 exit( 99 );
-

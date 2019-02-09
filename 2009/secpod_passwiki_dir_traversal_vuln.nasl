@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_passwiki_dir_traversal_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: secpod_passwiki_dir_traversal_vuln.nasl 13543 2019-02-08 14:43:51Z cfischer $
 #
 # PassWiki passwiki.php Directory Traversal Vulnerability
 #
@@ -27,16 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900521");
-  script_version("$Revision: 7577 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+  script_version("$Revision: 13543 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-03-20 07:08:52 +0100 (Fri, 20 Mar 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_cve_id("CVE-2008-6423");
   script_bugtraq_id(29455);
   script_name("PassWiki passwiki.php Directory Traversal Vulnerability");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/30496");
-  script_xref(name : "URL" , value : "http://www.milw0rm.com/exploits/5704");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/30496");
+  script_xref(name:"URL", value:"http://www.milw0rm.com/exploits/5704");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Web application abuses");
@@ -44,16 +44,14 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attacker to inject arbitrary
-  web script or HTML on a affected application.
-
-  Impact Level: Application");
-  script_tag(name : "affected" , value : "PassWiki version prior to 0.9.17 on all platforms.");
-  script_tag(name : "insight" , value : "Input validation error in site_id parameter in passwiki.php file allows
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attacker to inject arbitrary
+  web script or HTML on a affected application.");
+  script_tag(name:"affected", value:"PassWiki version prior to 0.9.17 on all platforms.");
+  script_tag(name:"insight", value:"Input validation error in site_id parameter in passwiki.php file allows
   arbitrary code injection.");
-  script_tag(name : "solution" , value : "Upgrade to version 0.9.17
-  http://www.i-apps.net/passwiki");
-  script_tag(name : "summary" , value : "This host is running PassWiki and is prone to directory traversal
+  script_tag(name:"solution", value:"Upgrade to version 0.9.17 or later.");
+
+  script_tag(name:"summary", value:"This host is running PassWiki and is prone to directory traversal
   vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -61,14 +59,13 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
 include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Get HTTP port
 pwikiPort = get_http_port(default:80);
 
-## Check the php support
 if(!can_host_php(port:pwikiPort)){
   exit(0);
 }

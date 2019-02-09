@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsys_promotic_mult_vuln_win.nasl 11865 2018-10-12 10:03:43Z cfischer $
+# $Id: gb_microsys_promotic_mult_vuln_win.nasl 13543 2019-02-08 14:43:51Z cfischer $
 #
 # Microsys Promotic Multiple Vulnerabilities (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803660");
-  script_version("$Revision: 11865 $");
+  script_version("$Revision: 13543 $");
   script_cve_id("CVE-2011-4520", "CVE-2011-4519", "CVE-2011-4518");
   script_bugtraq_id(50133);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2013-06-17 17:30:15 +0530 (Mon, 17 Jun 2013)");
   script_name("Microsys Promotic Multiple Vulnerabilities (Windows)");
   script_category(ACT_ATTACK);
@@ -66,9 +66,11 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name:"URL", value:"http://www.promotic.eu/en/index.htm");
+
   exit(0);
 }
 
+include("host_details.inc");
 include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");

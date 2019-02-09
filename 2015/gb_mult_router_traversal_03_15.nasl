@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mult_router_traversal_03_15.nasl 11831 2018-10-11 07:49:24Z jschulte $
+# $Id: gb_mult_router_traversal_03_15.nasl 13543 2019-02-08 14:43:51Z cfischer $
 #
 # Multiple ADSL Routers Directory Traversal Vulnerability
 #
@@ -25,10 +25,10 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105242");
-  script_version("$Revision: 11831 $");
+  script_version("$Revision: 13543 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2015-7252", "CVE-2015-7251", "CVE-2015-7250", "CVE-2015-7249",
@@ -48,23 +48,25 @@ if (description)
   script_tag(name:"summary", value:"Multiple ADSL routers are prone to a directory-traversal vulnerability
   because they fail to properly sanitize user-supplied input.");
 
-  script_tag(name:"affected", value:"At least the following routeri models are vulnerable:
-  ZTE H108N
-  ZTE H108NV2.1
-  D-Link 2750E
-  D-Link 2730U
-  D-Link 2730E
-  Sitecom WLM-3600
-  Sitecom WLR-6100
-  Sitecom WLR-4100
+  script_tag(name:"affected", value:"At least the following router models are vulnerable:
+
+  ZTE H108N, H108NV2.1
+
+  D-Link 2750E, 2730U, 2730E
+
+  Sitecom WLM-3600, WLR-6100, WLR-4100
+
   FiberHome HG110
+
   Planet ADN-4101
+
   Digisol DG-BG4011N
+
   Observa Telecom BHS_RTA_R1A");
 
   script_tag(name:"qod_type", value:"remote_active");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 09:49:24 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2015-03-23 10:41:22 +0100 (Mon, 23 Mar 2015)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -77,6 +79,7 @@ if (description)
   exit(0);
 }
 
+include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("misc_func.inc");
@@ -110,4 +113,3 @@ if( "200 OK" >< buf && "set-cookie" >< tolower( buf ) && "sessionid" >< buf )
 }
 
 exit( 99 );
-

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phprocketaddin_traversal.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: phprocketaddin_traversal.nasl 13543 2019-02-08 14:43:51Z cfischer $
 #
 # PHP Rocket Add-in File Traversal
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10831");
-  script_version("$Revision: 7577 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+  script_version("$Revision: 13543 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(3751);
   script_cve_id("CVE-2001-1204");
@@ -43,23 +43,25 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  tag_summary = "There is a vulnerability in the PHP Rocket Add-in for FrontPage 
-  that allows a remote attacker to view the contents of any arbitrary 
-  file to which the web user has access.";
-
-  tag_insight = "This vulnerability exists because the PHP Rocket Add-in does not
-  filter out ../ and is therefore susceptible to this directory traversal attack.";
-
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/3751");
 
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"insight", value:tag_insight);
+  script_tag(name:"summary", value:"There is a vulnerability in the PHP Rocket Add-in for FrontPage
+  that allows a remote attacker to view the contents of any arbitrary
+  file to which the web user has access.");
+  script_tag(name:"insight", value:"This vulnerability exists because the PHP Rocket Add-in does not
+  filter out ../ and is therefore susceptible to this directory traversal attack.");
 
   script_tag(name:"qod_type", value:"remote_vul");
+
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
   exit(0);
 }
 
+include("host_details.inc");
 include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");

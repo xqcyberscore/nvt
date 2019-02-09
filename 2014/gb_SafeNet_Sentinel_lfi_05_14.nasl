@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_SafeNet_Sentinel_lfi_05_14.nasl 11867 2018-10-12 10:48:11Z cfischer $
+# $Id: gb_SafeNet_Sentinel_lfi_05_14.nasl 13543 2019-02-08 14:43:51Z cfischer $
 #
 # SafeNet Sentinel Protection Server and Sentinel Keys Server Directory Traversal
 #
@@ -25,20 +25,16 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105028");
   script_cve_id("CVE-2007-6483");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_version("$Revision: 11867 $");
-
+  script_version("$Revision: 13543 $");
   script_name("SafeNet Sentinel Protection Server and Sentinel Keys Server Directory Traversal");
-
-
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/33428/");
-
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2014-05-20 12:17:04 +0200 (Tue, 20 May 2014)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -63,6 +59,7 @@ Server 1.0.3 and 1.0.4");
   exit(0);
 }
 
+include("host_details.inc");
 include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");

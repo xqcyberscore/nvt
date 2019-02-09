@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netman_204_default_ssh_credentials.nasl 12313 2018-11-12 08:53:51Z asteins $
+# $Id: gb_netman_204_default_ssh_credentials.nasl 13543 2019-02-08 14:43:51Z cfischer $
 #
 # NetMan 204 Default SSH Login
 #
@@ -25,14 +25,14 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140001");
-  script_version("$Revision: 12313 $");
+  script_version("$Revision: 13543 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("NetMan 204 Default SSH Login");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2016-09-28 15:56:01 +0200 (Wed, 28 Sep 2016)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
@@ -49,18 +49,16 @@ if (description)
   script_require_keys("Host/runs_unixoide");
   script_tag(name:"solution_type", value:"Workaround");
   script_tag(name:"qod_type", value:"exploit");
+
   exit(0);
 }
 
+include("host_details.inc");
 include("ssh_func.inc");
 include("misc_func.inc");
 
-port = get_kb_item( "Services/ssh" );
-if( ! port ) port = 22;
-
-if( ! get_port_state( port ) ) exit( 0 );
-
-credentials = make_list("eurek","fwupgrade");
+port = get_ssh_port( default:22 );
+credentials = make_list("eurek", "fwupgrade");
 
 foreach credential ( credentials )
 {

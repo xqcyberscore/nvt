@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: DDI_MRTG_File_Read.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: DDI_MRTG_File_Read.nasl 13543 2019-02-08 14:43:51Z cfischer $
 #
 # MRTG mrtg.cgi File Disclosure
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11001");
-  script_version("$Revision: 7577 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+  script_version("$Revision: 13543 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(4017);
   script_tag(name:"cvss_base", value:"5.0");
@@ -45,16 +45,19 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name:"solution", value:"Block access to this CGI");
+  script_tag(name:"solution", value:"Block access to this CGI.");
+
   script_tag(name:"summary", value:"The mrtg.cgi script is part of the MRTG traffic
   visualization application. A vulnerability exists in this script which allows an
   attacker to view the first line of any file on the system.");
 
+  script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_vul");
 
   exit(0);
 }
 
+include("host_details.inc");
 include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");

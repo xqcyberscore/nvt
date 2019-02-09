@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ShowCode.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: ShowCode.nasl 13543 2019-02-08 14:43:51Z cfischer $
 #
 # ShowCode possible
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10007");
-  script_version("$Revision: 7577 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+  script_version("$Revision: 13543 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(167);
   script_tag(name:"cvss_base", value:"5.0");
@@ -44,34 +44,38 @@ if(description)
   script_mandatory_keys("Host/runs_windows");
   script_exclude_keys("Settings/disable_cgi_scanning");
 
+  script_xref(name:"URL", value:"http://www.l0pht.com/advisories.html");
+
   script_tag(name:"solution", value:"For production servers, sample files should never be installed, so
   delete the entire /msadc/samples directory. If you must have the
-  'showcode.asp' capability on a development server, the 'showcode.asp' file 
+  'showcode.asp' capability on a development server, the 'showcode.asp' file
   should be modified to test for URLs with '..' in them and deny those requests.");
 
   script_tag(name:"summary", value:"Internet Information Server (IIS) 4.0 ships with a set of sample files to
-  help web developers learn about Active Server Pages (ASP). One of these
-  sample files, 'showcode.asp' (installed in /msadc/Samples/SELECTOR/), is
+  help web developers learn about Active Server Pages (ASP).");
+
+  script_tag(name:"insight", value:"One of these sample files, 'showcode.asp'
+  (installed in /msadc/Samples/SELECTOR/), is
   designed to view the source code of the sample applications via a web browser.
   The 'showcode.asp' file does inadequate security checking and allows anyone
   with a web browser to view the contents of any text file on the web server.
   This includes files that are outside of the document root of the web server.
 
   The 'showcode.asp' file is installed by default at the URL:
-  http://www.YOURSERVER.com/msadc/Samples/SELECTOR/showcode.asp
+  http://www.example.com/msadc/Samples/SELECTOR/showcode.asp
   It takes 1 argument in the URL, which is the file to view.
   The format of this argument is: source=/path/filename
 
-  This is a fairly dangerous sample file since it can view the contents of any 
-  other files on the system. The author of the ASP file added a security check to 
-  only allow viewing of the sample files which were in the '/msadc' directory on 
+  This is a fairly dangerous sample file since it can view the contents of any
+  other files on the system. The author of the ASP file added a security check to
+  only allow viewing of the sample files which were in the '/msadc' directory on
   the system. The problem is the security check does not test for the '..'
   characters within the URL. The only checking done is if the URL contains the
   string '/msadc/'. This allows URLs to be created that view, not only files
   outside of the samples directory, but files anywhere on the entire file
   system that the web server's document root is on.
 
-  The full description can be found at: http://www.l0pht.com/advisories.html");
+  The full description can be found at the referenced link.");
 
   # - Description taken from  http://www.l0pht.com/advisories.html
 
@@ -81,6 +85,7 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
 include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");

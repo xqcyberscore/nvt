@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zoneminder_xss_vuln.nasl 13318 2019-01-28 08:12:34Z ckuersteiner $
+# $Id: gb_zoneminder_xss_vuln.nasl 13538 2019-02-08 11:56:06Z cfischer $
 #
 # ZoneMinder 1.32.3 XSS Vulnerability
 #
@@ -30,15 +30,15 @@ CPE = "cpe:/a:zoneminder:zoneminder";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141929");
-  script_version("$Revision: 13318 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-28 09:12:34 +0100 (Mon, 28 Jan 2019) $");
+  script_version("$Revision: 13538 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 12:56:06 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-28 12:57:55 +0700 (Mon, 28 Jan 2019)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2019-6777");
 
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -52,7 +52,7 @@ if (description)
   script_mandatory_keys("zoneminder/installed");
 
   script_tag(name:"summary", value:"An issue was discovered in ZoneMinder v1.32.3. Reflected XSS exists in
-web/skins/classic/views/plugin.php via the zm/index.php?view=plugin pl parameter.");
+  web/skins/classic/views/plugin.php via the zm/index.php?view=plugin pl parameter.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 

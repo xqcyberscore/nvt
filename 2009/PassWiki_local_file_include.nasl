@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: PassWiki_local_file_include.nasl 11821 2018-10-10 12:44:18Z jschulte $
+# $Id: PassWiki_local_file_include.nasl 13543 2019-02-08 14:43:51Z cfischer $
 #
 # PassWiki 'site_id' Parameter Local File Include Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100047");
-  script_version("$Revision: 11821 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 14:44:18 +0200 (Wed, 10 Oct 2018) $");
+  script_version("$Revision: 13543 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-03-16 12:53:50 +0100 (Mon, 16 Mar 2009)");
   script_bugtraq_id(29455);
   script_cve_id("CVE-2008-6423");
@@ -60,6 +60,7 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("misc_func.inc");

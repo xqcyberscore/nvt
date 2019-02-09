@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: xtel_detect.nasl 10888 2018-08-10 12:08:02Z cfischer $
+# $Id: xtel_detect.nasl 13541 2019-02-08 13:21:52Z cfischer $
 # Description: xtel detection
 #
 # Authors:
@@ -26,8 +26,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11121");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 10888 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 13541 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 14:21:52 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("xtel detection");
@@ -45,6 +45,7 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
 include ("misc_func.inc");
 
 function read_xteld(s)
@@ -68,7 +69,8 @@ function read_xteld(s)
   }
 }
 
-req1 = raw_string(6) + "OpenVAS" + raw_string(0x82);
+vt_strings = get_vt_strings();
+req1 = raw_string(6) + vt_strings["default"] + raw_string(0x82);
 
 port = get_unknown_port( default:1313 );
 
@@ -90,5 +92,3 @@ if (m1)
   log_message(port: port, data: m2);
   register_service(port: port, proto: "xtel");
 }
-
-

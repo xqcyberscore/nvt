@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_netpet_cms_dir_trav_vuln.nasl 11657 2018-09-27 13:32:51Z cfischer $
+# $Id: secpod_netpet_cms_dir_trav_vuln.nasl 13543 2019-02-08 14:43:51Z cfischer $
 #
 # Netpet CMS Directory Traversal Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902024");
-  script_version("$Revision: 11657 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 15:32:51 +0200 (Thu, 27 Sep 2018) $");
+  script_version("$Revision: 13543 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2010-03-23 15:59:14 +0100 (Tue, 23 Mar 2010)");
   script_cve_id("CVE-2009-4723");
   script_tag(name:"cvss_base", value:"7.5");
@@ -57,6 +57,7 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
 include("http_func.inc");
 include("version_func.inc");
 include("misc_func.inc");

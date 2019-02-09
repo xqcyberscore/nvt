@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: plumecms_prepend_file_inclusion.nasl 11796 2018-10-09 13:08:43Z jschulte $
+# $Id: plumecms_prepend_file_inclusion.nasl 13543 2019-02-08 14:43:51Z cfischer $
 # Description: Plume CMS <= 1.0.2 Remote File Inclusion Vulnerability
 #
 # Authors:
@@ -25,8 +25,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.20972");
-  script_version("$Revision: 11796 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:08:43 +0200 (Tue, 09 Oct 2018) $");
+  script_version("$Revision: 13543 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -64,6 +64,7 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 

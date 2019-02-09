@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fins_tcp_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
+# $Id: gb_fins_tcp_detect.nasl 13541 2019-02-08 13:21:52Z cfischer $
 #
 # Factory Interface Network Service (FINS) Detection (TCP)
 #
@@ -25,11 +25,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140512");
-  script_version("$Revision: 11885 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 13541 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 14:21:52 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-11-20 16:46:39 +0700 (Mon, 20 Nov 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -55,6 +55,7 @@ developed by Omron to provide a consistent way for PLCs and computers on various
   exit(0);
 }
 
+include("host_details.inc");
 include("dump.inc");
 include("misc_func.inc");
 

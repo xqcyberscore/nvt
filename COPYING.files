@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Fri, 08 Feb 2019 12:54:44 +0100
+# Automatically created on:  Fri, 08 Feb 2019 19:22:28 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -43944,12 +43944,15 @@
 2019/apache/gb_apache_mod_jk_auth_bypass_vuln_active.nasl: GPLv2+
 2019/apache/gb_apache_mod_jk_auth_bypass_vuln_lin.nasl: GPLv2+
 2019/apache/gb_apache_mod_jk_auth_bypass_vuln_win.nasl: GPLv2+
+2019/apache/gb_apache_openoffice_rce_vuln_feb19_macosx.nasl: GPLv2+
+2019/apache/gb_apache_openoffice_rce_vuln_feb19_win.nasl: GPLv2+
 2019/apple/gb_apple_icloud_HT209451.nasl: GPLv2+
 2019/apple/gb_apple_itunes_HT209450.nasl: GPLv2+
 2019/apple/gb_apple_macosx_HT209446_01.nasl: GPLv2+
 2019/apple/gb_apple_macosx_HT209446_02.nasl: GPLv2+
 2019/apple/gb_apple_macosx_HT209446_03.nasl: GPLv2+
 2019/apple/gb_apple_macosx_HT209446_04.nasl: GPLv2+
+2019/apple/gb_apple_macosx_HT209521.nasl: GPLv2+
 2019/apple/gb_apple_safari_HT209449.nasl: GPLv2+
 2019/avtech/gb_avtech_ip_camera_default_credentials.nasl: GPLv2+
 2019/beward/gb_beward_intercom_win_sec_bypass_vuln.nasl: GPLv2+
@@ -44065,6 +44068,7 @@
 2019/fedora/gb_fedora_2019_01afc2352f_mingw-nettle_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_0398d1b049_haproxy_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_077cd6f168_moodle_fc28.nasl: GPLv2+
+2019/fedora/gb_fedora_2019_0c1be924df_gvfs_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_1a0d4443f8_gnutls_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_20a89ca9af_kernel_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_20a89ca9af_kernel-headers_fc28.nasl: GPLv2+
@@ -44077,13 +44081,17 @@
 2019/fedora/gb_fedora_2019_4002b91800_kernel_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_4002b91800_kernel-headers_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_4002b91800_kernel-tools_fc28.nasl: GPLv2+
+2019/fedora/gb_fedora_2019_40f4af0687_poppler_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_4dc2ccb142_electrum_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_509c133845_kernel_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_509c133845_kernel-headers_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_541a12b809_python3-docs_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_541a12b809_python3_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_596813cc59_electrum_fc28.nasl: GPLv2+
+2019/fedora/gb_fedora_2019_6fafd84f5d_python3_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_723711c645_docker-latest_fc28.nasl: GPLv2+
+2019/fedora/gb_fedora_2019_7d3500d712_kernel_fc28.nasl: GPLv2+
+2019/fedora/gb_fedora_2019_7d3500d712_kernel-headers_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_8deebad756_perl-Email-Address_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_8f8cadd5ff_thunderbird_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_901feba171_docker_fc28.nasl: GPLv2+
@@ -44099,6 +44107,7 @@
 2019/fedora/gb_fedora_2019_b8ffb3768d_python37_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_c424e3bb72_golang_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_c6044b3fce_matrix-synapse_fc28.nasl: GPLv2+
+2019/fedora/gb_fedora_2019_cf9ddf9fff_libreoffice_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_d1b5cf0055_wget_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_d4d8af2c22_radare2_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_e6ca5847c7_python-django_fc28.nasl: GPLv2+
@@ -44117,6 +44126,10 @@
 2019/google/gb_google_chrome_stable-channel-update-for-desktop-2019-01_lin.nasl: GPLv2+
 2019/google/gb_google_chrome_stable-channel-update-for-desktop-2019-01_macosx.nasl: GPLv2+
 2019/google/gb_google_chrome_stable-channel-update-for-desktop-2019-01_win.nasl: GPLv2+
+2019/google/gb_google_chrome_stable-channel-update-for-desktop-2019-02_lin.nasl: GPLv2+
+2019/google/gb_google_chrome_stable-channel-update-for-desktop-2019-02_macosx.nasl: GPLv2+
+2019/google/gb_google_chrome_stable-channel-update-for-desktop-2019-02_win.nasl: GPLv2+
+2019/google/gb_libreoffice_rce_vuln_feb19_macosx.nasl: GPLv2+
 2019/graphicsmagick/gb_graphicsmagick_mult_vuln_dec18_lin.nasl: GPLv2+
 2019/graphicsmagick/gb_graphicsmagick_mult_vuln_dec18_win.nasl: GPLv2+
 2019/horde/gb_horde_imp_rce_vuln.nasl: GPLv2+
@@ -44125,6 +44138,8 @@
 2019/jenkins/gb_jenkins_20190116_win.nasl: GPLv2+
 2019/joomla/gb_joomla_mult_vuln_jan19.nasl: GPLv2+
 2019/kubernetes/gb_kubernetes_dashboard_auth_bypass_vuln.nasl: GPLv2+
+2019/libreoffice/gb_libreoffice_rce_vuln_feb19_macosx.nasl: GPLv2+
+2019/libreoffice/gb_libreoffice_rce_vuln_feb19_win.nasl: GPLv2+
 2019/limesurvey/gb_limesurvey_xss_vuln1.nasl: GPLv2+
 2019/limesurvey/gb_limesurvey_xss_vuln.nasl: GPLv2+
 2019/magentocommerce/gb_magento_mult_vuln.nasl: GPLv2+
@@ -44309,6 +44324,7 @@
 2019/ubuntu/gb_ubuntu_USN_3871_2.nasl: GPLv2+
 2019/ubuntu/gb_ubuntu_USN_3871_3.nasl: GPLv2+
 2019/ubuntu/gb_ubuntu_USN_3871_4.nasl: GPLv2+
+2019/ubuntu/gb_ubuntu_USN_3871_5.nasl: GPLv2+
 2019/ubuntu/gb_ubuntu_USN_3872_1.nasl: GPLv2+
 2019/ubuntu/gb_ubuntu_USN_3873_1.nasl: GPLv2+
 2019/ubuntu/gb_ubuntu_USN_3874_1.nasl: GPLv2+
@@ -44316,9 +44332,15 @@
 2019/ubuntu/gb_ubuntu_USN_3876_1.nasl: GPLv2+
 2019/ubuntu/gb_ubuntu_USN_3877_1.nasl: GPLv2+
 2019/ubuntu/gb_ubuntu_USN_3878_1.nasl: GPLv2+
+2019/ubuntu/gb_ubuntu_USN_3878_2.nasl: GPLv2+
 2019/ubuntu/gb_ubuntu_USN_3879_1.nasl: GPLv2+
 2019/ubuntu/gb_ubuntu_USN_3879_2.nasl: GPLv2+
 2019/ubuntu/gb_ubuntu_USN_3880_1.nasl: GPLv2+
+2019/ubuntu/gb_ubuntu_USN_3881_1.nasl: GPLv2+
+2019/ubuntu/gb_ubuntu_USN_3882_1.nasl: GPLv2+
+2019/ubuntu/gb_ubuntu_USN_3883_1.nasl: GPLv2+
+2019/ubuntu/gb_ubuntu_USN_3884_1.nasl: GPLv2+
+2019/ubuntu/gb_ubuntu_USN_3885_1.nasl: GPLv2+
 2019/virustotal/gb_yara_mult_vuln_dec18.nasl: GPLv2+
 2019/virustotal/gb_yara_mult_vuln_jun18.nasl: GPLv2+
 2019/webmin/gb_webmin_rce_vuln.nasl: GPLv2+

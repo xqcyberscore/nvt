@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: alcatel_backdoor_switch.nasl 11636 2018-09-27 06:20:03Z cfischer $
+# $Id: alcatel_backdoor_switch.nasl 13541 2019-02-08 13:21:52Z cfischer $
 #
 # Alcatel OmniSwitch 7700/7800 switches backdoor
 #
@@ -36,8 +36,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11170");
-  script_version("$Revision: 11636 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 08:20:03 +0200 (Thu, 27 Sep 2018) $");
+  script_version("$Revision: 13541 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 14:21:52 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(6220);
   script_tag(name:"cvss_base", value:"10.0");
@@ -69,6 +69,7 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
 include("telnet_func.inc");
 include("misc_func.inc");
 

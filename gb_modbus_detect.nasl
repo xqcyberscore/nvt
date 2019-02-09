@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_modbus_detect.nasl 12438 2018-11-20 12:47:19Z cfischer $
+# $Id: gb_modbus_detect.nasl 13541 2019-02-08 13:21:52Z cfischer $
 #
 # Modbus Detection
 #
@@ -26,11 +26,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106522");
-  script_version("$Revision: 12438 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-20 13:47:19 +0100 (Tue, 20 Nov 2018) $");
+  script_version("$Revision: 13541 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 14:21:52 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-01-26 10:19:28 +0700 (Thu, 26 Jan 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -41,14 +41,13 @@ if (description)
 
   script_tag(name:"summary", value:"A Modbus Service is running at this host.
 
-Modbus is a serial communications protocol for use with programmable logic controllers (PLCs).");
+  Modbus is a serial communications protocol for use with programmable logic controllers (PLCs).");
 
   script_category(ACT_GATHER_INFO);
 
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Service detection");
-  script_dependencies("find_service.nasl", "nessus_detect.nasl"); # nessus_detect.nasl to avoid double check for
-                                                                 # echo tests.
+  script_dependencies("find_service.nasl", "nessus_detect.nasl"); # nessus_detect.nasl to avoid double check for echo tests.
   script_require_ports("Services/unknown", 502, 503);
 
   script_xref(name:"URL", value:"http://www.modbus.org/");
@@ -56,6 +55,7 @@ Modbus is a serial communications protocol for use with programmable logic contr
   exit(0);
 }
 
+include("host_details.inc");
 include("misc_func.inc");
 
 port = get_unknown_port(default: 502);

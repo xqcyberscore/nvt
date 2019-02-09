@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cs_whois_34700.nasl 11821 2018-10-10 12:44:18Z jschulte $
+# $Id: cs_whois_34700.nasl 13543 2019-02-08 14:43:51Z cfischer $
 #
 # CS Whois Lookup 'ip' Parameter Remote Command Execution
 # Vulnerability
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100166");
-  script_version("$Revision: 11821 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 14:44:18 +0200 (Wed, 10 Oct 2018) $");
+  script_version("$Revision: 13543 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-04-26 20:59:36 +0200 (Sun, 26 Apr 2009)");
   script_bugtraq_id(34700);
   script_tag(name:"cvss_base", value:"7.5");
@@ -58,6 +58,7 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("misc_func.inc");

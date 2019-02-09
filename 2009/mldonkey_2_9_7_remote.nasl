@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mldonkey_2_9_7_remote.nasl 11802 2018-10-10 03:31:34Z ckuersteiner $
+# $Id: mldonkey_2_9_7_remote.nasl 13543 2019-02-08 14:43:51Z cfischer $
 #
 # MLdonkey HTTP Request Arbitrary File Download Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100057");
-  script_version("$Revision: 11802 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 05:31:34 +0200 (Wed, 10 Oct 2018) $");
+  script_version("$Revision: 13543 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-03-17 18:51:21 +0100 (Tue, 17 Mar 2009)");
   script_bugtraq_id(33865);
   script_cve_id("CVE-2009-0753");
@@ -63,6 +63,7 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
 include("http_func.inc");
 include("misc_func.inc");
 include("http_keepalive.inc");

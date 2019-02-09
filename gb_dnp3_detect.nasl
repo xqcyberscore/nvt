@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dnp3_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
+# $Id: gb_dnp3_detect.nasl 13541 2019-02-08 13:21:52Z cfischer $
 #
 # Distributed Network Protocol (DNP3) Detection
 #
@@ -25,11 +25,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140597");
-  script_version("$Revision: 11885 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 13541 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 14:21:52 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-12-13 16:47:57 +0700 (Wed, 13 Dec 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -40,11 +40,11 @@ if (description)
 
   script_tag(name:"summary", value:"A Distributed Network Protocol (DNP3) Service is running at this host.
 
-DNP3 (Distributed Network Protocol) is a set of communications protocols used between components in process
-automation systems. DNP3 has become widely utilized in adjacent industries such as water/waste water,
-transportation and the oil and gas industry.
+  DNP3 (Distributed Network Protocol) is a set of communications protocols used between components in process
+  automation systems. DNP3 has become widely utilized in adjacent industries such as water/waste water,
+  transportation and the oil and gas industry.
 
-The protocol is used by several devices of different SCADA vendors.");
+  The protocol is used by several devices of different SCADA vendors.");
 
   script_category(ACT_GATHER_INFO);
 
@@ -58,6 +58,7 @@ The protocol is used by several devices of different SCADA vendors.");
   exit(0);
 }
 
+include("host_details.inc");
 include("byte_func.inc");
 include("misc_func.inc");
 

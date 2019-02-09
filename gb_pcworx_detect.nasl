@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pcworx_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
+# $Id: gb_pcworx_detect.nasl 13541 2019-02-08 13:21:52Z cfischer $
 #
 # PCWorx Detection
 #
@@ -25,11 +25,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140418");
-  script_version("$Revision: 11885 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 13541 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 14:21:52 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-09-28 15:33:55 +0700 (Thu, 28 Sep 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -40,7 +40,7 @@ if (description)
 
   script_tag(name:"summary", value:"A PCWorx Service is running at this host.
 
-PCWorx is a protocol and program by Phoenix Contact used by a wide range of industries.");
+  PCWorx is a protocol and program by Phoenix Contact used by a wide range of industries.");
 
   script_category(ACT_GATHER_INFO);
 
@@ -55,6 +55,7 @@ PCWorx is a protocol and program by Phoenix Contact used by a wide range of indu
   exit(0);
 }
 
+include("host_details.inc");
 include("dump.inc");
 include("misc_func.inc");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: golabi_remote_file_include.nasl 11796 2018-10-09 13:08:43Z jschulte $
+# $Id: golabi_remote_file_include.nasl 13543 2019-02-08 14:43:51Z cfischer $
 #
 # Golabi CMS 'index_logged.php' Remote File Include Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100018");
-  script_version("$Revision: 11796 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:08:43 +0200 (Tue, 09 Oct 2018) $");
+  script_version("$Revision: 13543 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-03-10 08:40:52 +0100 (Tue, 10 Mar 2009)");
   script_bugtraq_id(33916);
   script_tag(name:"cvss_base", value:"7.5");
@@ -43,17 +43,18 @@ if(description)
   script_exclude_keys("Settings/disable_cgi_scanning");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"solution", value:"Upgrade to a newer version.");
-  script_tag(name:"summary", value:"Golabi CMS is prone to a remote file-include vulnerability because
-  it fails to sufficiently sanitize user-supplied data.
 
-  Exploiting this issue can allow an attacker to compromise the
-  application and the underlying computer; other attacks are also
-  possible.");
+  script_tag(name:"summary", value:"Golabi CMS is prone to a remote file-include vulnerability because
+  it fails to sufficiently sanitize user-supplied data.");
+
+  script_tag(name:"impact", value:"Exploiting this issue can allow an attacker to compromise the
+  application and the underlying system. Other attacks are also possible.");
 
   script_xref(name:"URL", value:"http://golabicms.sourceforge.net/");
   exit(0);
 }
 
+include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("misc_func.inc");

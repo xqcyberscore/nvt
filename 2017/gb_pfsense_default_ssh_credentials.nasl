@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pfsense_default_ssh_credentials.nasl 11747 2018-10-04 09:58:33Z jschulte $
+# $Id: gb_pfsense_default_ssh_credentials.nasl 13543 2019-02-08 14:43:51Z cfischer $
 #
 # pfSense Default SSH Credentials
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112123");
-  script_version("$Revision: 11747 $");
+  script_version("$Revision: 13543 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-04 11:58:33 +0200 (Thu, 04 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-11-15 13:32:16 +0100 (Wed, 15 Nov 2017)");
   script_name("pfSense Default SSH Credentials");
   script_category(ACT_ATTACK);
@@ -57,6 +57,7 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
 include("ssh_func.inc");
 include("misc_func.inc");
 

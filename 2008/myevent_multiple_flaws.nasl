@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: myevent_multiple_flaws.nasl 11669 2018-09-28 08:44:24Z jschulte $
+# $Id: myevent_multiple_flaws.nasl 13543 2019-02-08 14:43:51Z cfischer $
 #
 # Multiple Remote Vulnerabilities in myEvent
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80074");
-  script_version("$Revision: 11669 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 10:44:24 +0200 (Fri, 28 Sep 2018) $");
+  script_version("$Revision: 13543 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -68,7 +68,7 @@ if(description)
   In addition, user input to the 'event_id' parameter in 'addevent.php'
   and 'del.php', and to the 'event_desc' parameter in 'addevent.php' is
   not properly sanitised before being used in a SQL query, which may
-  allow an attacker to insert arbritrary SQL statements in the remote
+  allow an attacker to insert arbitrary SQL statements in the remote
   database.  A similar lack of sanitation involving the 'event_desc'
   parameter of 'addevent.php' allows for cross-site scripting attacks
   against the affected application.
@@ -84,6 +84,7 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("misc_func.inc");

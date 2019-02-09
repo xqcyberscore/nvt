@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: radmin_detect.nasl 10898 2018-08-10 13:38:13Z cfischer $
+# $Id: radmin_detect.nasl 13541 2019-02-08 13:21:52Z cfischer $
 # Description: radmin detection
 #
 # Authors:
@@ -25,8 +25,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11123");
-  script_version("$Revision: 10898 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:38:13 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 13541 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 14:21:52 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -38,17 +38,22 @@ if(description)
   script_dependencies("find_service2.nasl");
   script_require_ports("Services/unknown", 4899);
 
-  script_tag(name:"solution", value:"disable it if you do not use it");
-  script_tag(name:"summary", value:"radmin is running on this port.
-Make sure that you use a strong password, otherwise a cracker
-may brute-force it and control your machine.
+  script_tag(name:"solution", value:"Disable it if you do not use it.");
 
-If you did not install this on the computer, you may have
-been hacked into.
-See: http://www.secnap.com/security/radmin001.html");
+  script_tag(name:"summary", value:"radmin is running on this port.
+
+  Make sure that you use a strong password, otherwise an attacker
+  may brute-force it and control your machine.
+
+  If you did not install this on the computer, you may have
+  been hacked into. See the references for more information.");
+
+  script_xref(name:"URL", value:"http://www.secnap.com/security/radmin001.html");
+
   exit(0);
 }
 
+include("host_details.inc");
 include ("misc_func.inc");
 
 port = get_unknown_port( default:4899 );
@@ -88,7 +93,7 @@ xp2 = "010000002501";
 
 if (( xp1 >< hexstr(r) ) || ( xp2 >< hexstr(r) ))
 {
-        log_message(port);
-        register_service(port: port, proto: "radmin");
-	exit(0);
+  log_message(port:port);
+  register_service(port:port, proto:"radmin");
+  exit(0);
 }

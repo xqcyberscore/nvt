@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: misc_func.inc 13095 2019-01-16 10:35:42Z cfischer $
+# $Id: misc_func.inc 13544 2019-02-08 14:53:51Z cfischer $
 #
 # Miscellaneous support methods
 #
@@ -26,7 +26,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 13095 $
+# $Revision: 13544 $
 #
 ###############################################################################
 
@@ -91,11 +91,6 @@ function register_service( port, proto, ipproto, message ) {
 # @brief Internal function to be called by @register_service only
 #
 function register_service_as_host_detail( port, proto, service, message ) {
-
-  # TODO: Remove once openvas-nasl-lint can handle such a missing function
-  # within includes as the calling VT only needs to make sure to have all
-  # required .inc files included.
-  if( ! defined_func( "register_host_detail" ) ) include("host_details.inc");
 
   local_var port, proto, service, message, hd;
 
@@ -1483,7 +1478,6 @@ function traversal_files() {
       res = "no";
     }
   } else {
-    if( ! defined_func( "host_runs" ) ) include( "host_details.inc" );
     res = host_runs( "windows" );
   }
 

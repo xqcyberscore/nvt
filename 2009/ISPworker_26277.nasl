@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ISPworker_26277.nasl 11796 2018-10-09 13:08:43Z jschulte $
+# $Id: ISPworker_26277.nasl 13543 2019-02-08 14:43:51Z cfischer $
 #
 # ISPworker Download.PHP Multiple Directory Traversal Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100370");
-  script_version("$Revision: 11796 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:08:43 +0200 (Tue, 09 Oct 2018) $");
+  script_version("$Revision: 13543 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-12-02 17:30:58 +0100 (Wed, 02 Dec 2009)");
   script_bugtraq_id(26277);
   script_cve_id("CVE-2007-5813");
@@ -43,13 +43,14 @@ if(description)
   script_require_ports("Services/www", 80);
   script_require_keys("Host/runs_unixoide");
   script_exclude_keys("Settings/disable_cgi_scanning");
+
   script_tag(name:"summary", value:"ISPworker is prone to multiple directory-traversal vulnerabilities
-  because it fails to sufficiently sanitize user-supplied input.
+  because it fails to sufficiently sanitize user-supplied input.");
 
-  Exploiting these issues may allow an attacker to obtain sensitive
-  information that could aid in further attacks.
+  script_tag(name:"impact", value:"Exploiting these issues may allow an attacker to obtain sensitive
+  information that could aid in further attacks.");
 
-  These issues affect ISPworker 1.21 and 1.23; other versions may also
+  script_tag(name:"affected", value:"These issues affect ISPworker 1.21 and 1.23. Other versions may also
   be affected.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
@@ -63,6 +64,7 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("misc_func.inc");

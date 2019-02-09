@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zoneminder_obj_inj_vuln.nasl 13199 2019-01-21 14:31:53Z mmartin $
+# $Id: gb_zoneminder_obj_inj_vuln.nasl 13538 2019-02-08 11:56:06Z cfischer $
 #
 # ZoneMinder < 1.32.3 Object Injection Vulnerability
 #
@@ -28,15 +28,15 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112470");
-  script_version("$Revision: 13199 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-21 15:31:53 +0100 (Mon, 21 Jan 2019) $");
+  script_version("$Revision: 13538 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 12:56:06 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-12-21 15:31:10 +0100 (Fri, 21 Dec 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2018-1000832", "CVE-2018-1000833");
 
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

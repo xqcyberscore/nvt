@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_flussonic_media_server_lfi_06_14.nasl 11960 2018-10-18 10:48:11Z jschulte $
+# $Id: gb_flussonic_media_server_lfi_06_14.nasl 13543 2019-02-08 14:43:51Z cfischer $
 #
 # Flussonic Media Server Multiple Security Vulnerabilities
 #
@@ -30,9 +30,9 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.105053");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11960 $");
+  script_version("$Revision: 13543 $");
   script_name("Flussonic Media Server Multiple Security Vulnerabilities");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:48:11 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2014-06-30 17:20:40 +0200 (Mon, 30 Jun 2014)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -67,6 +67,7 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("misc_func.inc");

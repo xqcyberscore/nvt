@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: novell_groupwise_webacc_information_disclosure.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: novell_groupwise_webacc_information_disclosure.nasl 13543 2019-02-08 14:43:51Z cfischer $
 #
 # Novell Groupwise WebAcc Information Disclosure
 #
@@ -31,8 +31,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10789");
-  script_version("$Revision: 7577 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+  script_version("$Revision: 13543 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2001-1458");
   script_bugtraq_id(3436);
@@ -46,12 +46,13 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
+  script_xref(name:"URL", value:"http://www.securiteam.com/securitynews/6S00N0K2UM.html");
+
   script_tag(name:"solution", value:"Disable access to the servlet until the author releases a patch.
 
-  Additional information:
-  http://www.securiteam.com/securitynews/6S00N0K2UM.html");
+  See the linked reference for additional information.");
 
-  script_tag(name:"summary", value:"Novell Groupwise WebAcc Servlet is installed. This servlet exposes 
+  script_tag(name:"summary", value:"Novell Groupwise WebAcc Servlet is installed. This servlet exposes
   critical system information, and allows remote attackers to read any file.");
 
   script_tag(name:"solution_type", value:"Workaround");
@@ -60,6 +61,7 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
 include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
