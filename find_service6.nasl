@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service6.nasl 10896 2018-08-10 13:24:05Z cfischer $
+# $Id: find_service6.nasl 13570 2019-02-11 10:39:55Z cfischer $
 #
 # Service Detection with 'BINARY' Request
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108204");
-  script_version("$Revision: 10896 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:24:05 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 13570 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-11 11:39:55 +0100 (Mon, 11 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-08-04 09:08:04 +0200 (Fri, 04 Aug 2017)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -107,7 +107,6 @@ if( r =~ '^SSH-2.0-libssh[_-][0-9.]+[^\\r\\n]+$' ||
   # nb3: Neither ssh_detect.nasl nor get_ssh_banner() is sometimes able to get the text
   # banner above so set the SSH banner manually here...
   replace_kb_item( name:"SSH/server_banner/" + port, value:r );
-  replace_kb_item( name:"SSH/banner/" + port, value:r );
   exit( 0 );
 }
 

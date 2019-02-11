@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rhinosoft_serv-u_detect.nasl 13327 2019-01-28 13:11:03Z cfischer $
+# $Id: gb_rhinosoft_serv-u_detect.nasl 13564 2019-02-11 07:54:43Z cfischer $
 #
 # Rhino Software Serv-U SSH and FTP Server Version Detection (Remote)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801117");
-  script_version("$Revision: 13327 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-28 14:11:03 +0100 (Mon, 28 Jan 2019) $");
+  script_version("$Revision: 13564 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-11 08:54:43 +0100 (Mon, 11 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-10-20 14:26:56 +0200 (Tue, 20 Oct 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -99,12 +99,13 @@ foreach port( ftpPorts ) {
 }
 
 sshPort = get_ssh_port( default:22 );
-banner = get_kb_item( "SSH/banner/" + sshPort );
+banner = get_ssh_server_banner( port:sshPort );
 
+# SSH-2.0-Serv-U_10.3.0.1
 if( banner && "serv-u" >< tolower( banner ) ) {
 
   vers = "unknown";
-  set_kb_item( name:"Serv-U/SSH/installed", value:TRUE );
+  set_kb_item( name:"Serv-U/SSH/detected", value:TRUE );
   set_kb_item( name:"Serv-U/detected", value:TRUE );
   install = sshPort + '/tcp';
 

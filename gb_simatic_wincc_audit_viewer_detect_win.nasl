@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simatic_wincc_audit_viewer_detect_win.nasl 13306 2019-01-26 08:47:38Z mmartin $
+# $Id: gb_simatic_wincc_audit_viewer_detect_win.nasl 13554 2019-02-09 12:14:19Z mmartin $
 #
 # Siemens SIMATIC WinCC/Audit Viewer Version Detection (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107481");
-  script_version("$Revision: 13306 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-26 09:47:38 +0100 (Sat, 26 Jan 2019) $");
+  script_version("$Revision: 13554 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-09 13:14:19 +0100 (Sat, 09 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-26 09:49:54 +0100 (Sat, 26 Jan 2019)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -85,7 +85,7 @@ foreach key (key_list) {
     set_kb_item(name:"siemens/simatic_wincc_audit_viewer/win/detected", value:TRUE);
 
     register_and_report_cpe(app:"Siemens " + appName , ver:version, concluded:concluded,
-                          base:"cpe:/a:siemens:simatic_wincc:audit_viewer:", expr:"^([0-9.]+)", insloc:location, regService:"smb-login", regPort:0);
+                          base:"cpe:/a:siemens:simatic_wincc_audit_viewer:", expr:"^([0-9.]+)", insloc:location, regService:"smb-login", regPort:0);
     exit(0);
   }
 }

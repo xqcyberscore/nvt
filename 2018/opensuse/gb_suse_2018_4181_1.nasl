@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_4181_1.nasl 12882 2018-12-27 07:14:01Z santu $
+# $Id: gb_suse_2018_4181_1.nasl 13561 2019-02-11 07:33:41Z mmartin $
 #
 # SuSE Update for go1.11 openSUSE-SU-2018:4181-1 (go1.11)
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814577");
-  script_version("$Revision: 12882 $");
+  script_version("$Revision: 13561 $");
   script_cve_id("CVE-2018-16873", "CVE-2018-16874", "CVE-2018-16875");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-27 08:14:01 +0100 (Thu, 27 Dec 2018) $");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-11 08:33:41 +0100 (Mon, 11 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-12-20 07:33:43 +0100 (Thu, 20 Dec 2018)");
   script_name("SuSE Update for go1.11 openSUSE-SU-2018:4181-1 (go1.11)");
   script_category(ACT_GATHER_INFO);

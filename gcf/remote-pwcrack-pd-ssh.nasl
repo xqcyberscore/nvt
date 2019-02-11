@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: remote-pwcrack-pd-ssh.nasl 12086 2018-10-25 10:11:49Z cfischer $
+# $Id: remote-pwcrack-pd-ssh.nasl 13568 2019-02-11 10:22:27Z cfischer $
 #
 # SSH Remote password cracking using phrasen|drescher
 # http://www.leidecker.info/projects/phrasendrescher/
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80106");
-  script_version("$Revision: 12086 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 12:11:49 +0200 (Thu, 25 Oct 2018) $");
+  script_version("$Revision: 13568 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-11 11:22:27 +0100 (Mon, 11 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-08-10 08:41:48 +0200 (Mon, 10 Aug 2009)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -36,9 +36,9 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2009 Vlatko Kosturjak");
   script_family("Brute force attacks");
+  script_dependencies("toolcheck.nasl", "gcf/remote-pwcrack-options.nasl", "ssh_detect.nasl");
   script_require_ports("Services/ssh", 22);
-  script_dependencies("toolcheck.nasl", "gcf/remote-pwcrack-options.nasl", "find_service.nasl");
-  script_mandatory_keys("Tools/Present/pd", "Secret/pwcrack/logins_file", "Secret/pwcrack/passwords_file");
+  script_mandatory_keys("Tools/Present/pd", "Secret/pwcrack/logins_file", "Secret/pwcrack/passwords_file", "ssh/server_banner/available");
 
   script_tag(name:"summary", value:"This plugin runs phrasen/drescher to find SSH accounts & passwords by brute force.");
 
@@ -50,20 +50,13 @@ if(description)
   exit(0);
 }
 
-# Exit if nasl version is too old (<2200)
-if (! defined_func("script_get_preference_file_location"))
-{
-  log_message(port: 0, data: "NVT not executed because of an too old openvas-libraries version.");
-  exit(0);
-}
+include("ssh_func.inc");
 
 logins = get_kb_item("Secret/pwcrack/logins_file");
 passwd = get_kb_item("Secret/pwcrack/passwords_file");
 if (logins == NULL || passwd == NULL) exit(0);
 
-port = get_kb_item("Services/ssh");
-if (! port) port = 22;
-if (! get_port_state(port)) exit(0);
+port = get_ssh_port(default:22);
 
 timeout = get_kb_item("/tmp/pwcrack/timeout"); timeout = int(timeout);
 tasks = get_kb_item("/tmp/pwcrack/tasks"); task = int(tasks);

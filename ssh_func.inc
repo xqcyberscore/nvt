@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: ssh_func.inc 13537 2019-02-08 11:49:55Z cfischer $
+# $Id: ssh_func.inc 13570 2019-02-11 10:39:55Z cfischer $
 #
 # Methods for handling SSH
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 13537 $
+# $Revision: 13570 $
 #
 ###############################################################################
 
@@ -2562,10 +2562,8 @@ function get_ssh_server_banner( port ) {
   banner = ssh_hack_get_server_version( socket:soc );
   close( soc );
 
-  if( banner ) {
+  if( banner )
     replace_kb_item( name:"SSH/server_banner/" + port, value:banner );
-    replace_kb_item( name:"SSH/banner/" + port, value:banner );
-  }
 
   return banner;
 }

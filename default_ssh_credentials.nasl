@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: default_ssh_credentials.nasl 9611 2018-04-25 14:25:08Z cfischer $
+# $Id: default_ssh_credentials.nasl 13571 2019-02-11 11:00:12Z cfischer $
 #
 # SSH Brute Force Logins With Default Credentials
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108013");
-  script_version("$Revision: 9611 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-25 16:25:08 +0200 (Wed, 25 Apr 2018) $");
+  script_version("$Revision: 13571 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-11 12:00:12 +0100 (Mon, 11 Feb 2019) $");
   script_tag(name:"creation_date", value:"2011-09-06 14:38:09 +0200 (Tue, 06 Sep 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -38,6 +38,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
   script_dependencies("ssh_detect.nasl", "gb_default_credentials_options.nasl");
   script_require_ports("Services/ssh", 22);
+  script_mandatory_keys("ssh/server_banner/available");
   script_exclude_keys("default_credentials/disable_brute_force_checks");
 
   script_add_preference(name:"Seconds to wait between probes", value:"", type:"entry");

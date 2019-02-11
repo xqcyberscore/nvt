@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_storageworks_51399.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_hp_storageworks_51399.nasl 13568 2019-02-11 10:22:27Z cfischer $
 #
 # HP StorageWorks Default Accounts and Directory Traversal Vulnerabilities
 #
@@ -32,9 +32,9 @@ if(description)
   script_cve_id("CVE-2011-4788", "CVE-2012-0697");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 13568 $");
   script_name("HP StorageWorks Default Accounts and Directory Traversal Vulnerabilities");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-11 11:22:27 +0100 (Mon, 11 Feb 2019) $");
   script_tag(name:"creation_date", value:"2012-02-21 13:19:06 +0100 (Tue, 21 Feb 2012)");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/51399");
@@ -71,9 +71,9 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-
 banner = get_http_banner(port:port);
-if("WindRiver-WebServer" >!< banner)exit(0);
+if(!banner || "WindRiver-WebServer" >!< banner)
+  exit(0);
 
 buf = http_get_cache(item:"/", port:port);
 
@@ -81,64 +81,52 @@ if("<title>HP StorageWorks" >< buf) {
 
   credentials = make_array('monitor', '!monitor','manage', '!manage','ftp', '!ftp');
 
-  # ssh
-  port = get_kb_item("Services/ssh");
-  if(!port ) port = 22;
-  if(get_port_state(port)) {
+  port = get_ssh_port(default:22);
+  foreach credential (keys(credentials)) {
 
-    foreach credential (keys(credentials)) {
+    if(!soc = open_sock_tcp(port))
+      break;
 
-      if(!soc = open_sock_tcp(port))break;
+    user = credential;
+    pass = credentials[credential];
 
-      user = credential;
-      pass = credentials[credential];
+    login = ssh_login (socket:soc, login:user, password:pass, pub:NULL, priv:NULL, passphrase:NULL);
 
-      login = ssh_login (socket:soc, login:user, password:pass, pub:NULL, priv:NULL, passphrase:NULL);
-
-      if(login == 0) {
-
-        report = 'It was possible to login via ssh using "' + user + '" as username and "' + pass + '" as password.\n';
-        security_message(port:port, data:report);
-        close(soc);
-        exit(0);
-      }
+    if(login == 0) {
+      report = 'It was possible to login via ssh using "' + user + '" as username and "' + pass + '" as password.\n';
+      security_message(port:port, data:report);
       close(soc);
+      exit(0);
     }
+    close(soc);
   }
 
-  # telnet
-  port = get_kb_item("Services/telnet");
-  if(!port) port = 23;
+  port = get_telnet_port(default:23);
+  foreach credential (keys(credentials)) {
 
-  if(get_port_state(port)) {
+    if(!soc = open_sock_tcp(port))
+      break;
 
-    foreach credential (keys(credentials)) {
+    user = credential;
+    pass = credentials[credential];
 
-      if(!soc = open_sock_tcp(port))break;
+    b = telnet_negotiate(socket:soc);
 
-      user = credential;
-      pass = credentials[credential];
+    if("Login" >!< b)break;
 
-      b = telnet_negotiate(socket:soc);
+    send(socket:soc,data:string(user,"\r\n"));
+    answer = recv(socket:soc, length:4096);
 
-      if("Login" >!< b)break;
+    send(socket:soc, data:string(pass,"\r\n"));
+    answer = recv(socket:soc, length:4096);
 
-      send(socket:soc,data:string(user,"\r\n"));
-      answer = recv(socket:soc, length:4096);
-
-      send(socket:soc, data:string(pass,"\r\n"));
-      answer = recv(socket:soc, length:4096);
-
-      if("StorageWorks" >< answer && "System Name" >< answer) {
-
-        report = 'It was possible to login via telnet using "' + user + '" as username and "' + pass + '" as password.\n';
-        security_message(port:port, data:report);
-        close(soc);
-        exit(0);
-
-      }
+    if("StorageWorks" >< answer && "System Name" >< answer) {
+      report = 'It was possible to login via telnet using "' + user + '" as username and "' + pass + '" as password.\n';
+      security_message(port:port, data:report);
       close(soc);
+      exit(0);
     }
+    close(soc);
   }
   exit(99);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_quantum_dxi_ssh_root_auth_bypass_vuln.nasl 11867 2018-10-12 10:48:11Z cfischer $
+# $Id: gb_quantum_dxi_ssh_root_auth_bypass_vuln.nasl 13568 2019-02-11 10:22:27Z cfischer $
 #
 # Quantum DXi Remote 'root' Authentication Bypass Vulnerability
 #
@@ -28,26 +28,28 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804414");
-  script_version("$Revision: 11867 $");
+  script_version("$Revision: 13568 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-11 11:22:27 +0100 (Mon, 11 Feb 2019) $");
   script_tag(name:"creation_date", value:"2014-03-19 11:54:59 +0530 (Wed, 19 Mar 2014)");
   script_name("Quantum DXi Remote 'root' Authentication Bypass Vulnerability");
 
-
   script_tag(name:"summary", value:"This host is running Quantum DXi and is prone to
-authentication bypass vulnerability.");
+  authentication bypass vulnerability.");
+
   script_tag(name:"vuldetect", value:"Send a SSH Private Key and check whether it is possible to login to
-the target machine");
+  the target machine");
+
   script_tag(name:"insight", value:"- The root user has a hardcoded password that is unknown and not changeable.
   Normally access is only through the restricted shells.
 
   - The /root/.ssh/authorized_keys on the appliance contains the static private
-  ssh key. Using this key on a remote system to login through SSH will give
-  a root shell.");
+  ssh key. Using this key on a remote system to login through SSH will give a root shell.");
+
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to  gain unauthorized root
-access to affected devices and completely compromise the devices.");
+  access to affected devices and completely compromise the devices.");
+
   script_tag(name:"affected", value:"Quantum DXi V1000 2.2.1 and below");
   script_tag(name:"solution", value:"Upgrade to Quantum DXi V1000 2.3.0.1 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -59,27 +61,19 @@ access to affected devices and completely compromise the devices.");
   script_family("Gain a shell remotely");
   script_dependencies("ssh_detect.nasl");
   script_require_ports("Services/ssh", 22);
+  script_mandatory_keys("ssh/server_banner/available");
+
   script_xref(name:"URL", value:"http://quantum.com");
+
   exit(0);
 }
-
 
 include("ssh_func.inc");
 
-## default port
-qdPort = get_kb_item("Services/ssh");
-if(!qdPort){
-  qdPort = 22;
-}
+qdPort = get_ssh_port(default:22);
 
-if(!get_port_state(qdPort)){
+if(!qdSoc = open_sock_tcp(qdPort))
   exit(0);
-}
-
-## create the socket
-if(!qdSoc = open_sock_tcp(qdPort)){
-  exit(0);
-}
 
 priv ='-----BEGIN DSA PRIVATE KEY-----
 MIIBugIBAAKBgQCEgBNwgF+IbMU8NHUXNIMfJ0ONa91ZI/TphuixnilkZqcuwur2

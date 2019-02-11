@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: nmap.nasl 11943 2018-10-17 14:46:48Z cfischer $
+# $Id: nmap.nasl 13565 2019-02-11 08:16:39Z cfischer $
 #
 # Nmap (NASL wrapper)
 #
@@ -52,8 +52,8 @@ if( defined_func( "get_local_gos_version" ) &&
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14259");
-  script_version("$Revision: 11943 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-17 16:46:48 +0200 (Wed, 17 Oct 2018) $");
+  script_version("$Revision: 13565 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-11 09:16:39 +0100 (Mon, 11 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -82,6 +82,7 @@ if(description)
   script_add_preference(name:"Host Timeout (ms) :", type:"entry", value:"");
   script_add_preference(name:"Min RTT Timeout (ms) :", type:"entry", value:"");
   script_add_preference(name:"Max RTT Timeout (ms) :", type:"entry", value:"");
+  # nb: Note the comment on this preference in the script_get_preference() below
   script_add_preference(name:"Initial RTT timeout (ms) :", type:"entry", value:"");
   script_add_preference(name:"Ports scanned in parallel (max)", type:"entry", value:"");
   script_add_preference(name:"Ports scanned in parallel (min)", type:"entry", value:"");
@@ -286,7 +287,8 @@ if( ! res ) {
     custom_policy = TRUE;
   }
 
-  p = script_get_preference( "Initial RTT Timeout (ms) :" );
+  # nb: The lowercase t in timeout is expected here as it was used in the initial script_add_preference and can't be changed there.
+  p = script_get_preference( "Initial RTT timeout (ms) :" );
   if( p =~ '^[0-9]+$' ) {
     argv[i++] = "--initial-rtt-timeout";
     argv[i++] = p + 'ms';

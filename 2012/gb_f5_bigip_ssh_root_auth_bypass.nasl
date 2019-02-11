@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_bigip_ssh_root_auth_bypass.nasl 11057 2018-08-20 13:59:30Z asteins $
+# $Id: gb_f5_bigip_ssh_root_auth_bypass.nasl 13568 2019-02-11 10:22:27Z cfischer $
 #
 # F5 BIG-IP remote root authentication bypass Vulnerability
 #
@@ -25,10 +25,10 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103494");
-  script_version("$Revision: 11057 $");
+  script_version("$Revision: 13568 $");
   script_bugtraq_id(53897);
 
   script_name("F5 BIG-IP remote root authentication bypass Vulnerability");
@@ -38,7 +38,7 @@ if (description)
   script_xref(name:"URL", value:"https://www.trustmatta.com/advisories/MATTA-2012-002.txt");
   script_xref(name:"URL", value:"http://support.f5.com/kb/en-us/solutions/public/13000/600/sol13600.html");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:59:30 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-11 11:22:27 +0100 (Mon, 11 Feb 2019) $");
   script_tag(name:"creation_date", value:"2012-06-14 13:35:33 +0200 (Thu, 14 Jun 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -47,32 +47,32 @@ if (description)
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
   script_dependencies("ssh_detect.nasl");
   script_require_ports("Services/ssh", 22);
+  script_mandatory_keys("ssh/server_banner/available");
+
   script_tag(name:"solution", value:"Updates are available. See the References for more information.");
+
   script_tag(name:"summary", value:"A platform-specific remote root access vulnerability has been discovered that may
-allow a remote user to gain privileged access to affected systems using SSH.");
+  allow a remote user to gain privileged access to affected systems using SSH.");
 
   script_tag(name:"insight", value:"The vulnerability is caused by a publicly known SSH private key for the root user
-which is present on all vulnerable appliances.");
+  which is present on all vulnerable appliances.");
 
   script_tag(name:"affected", value:"The following platforms are affected by this issue:
 
-    VIPRION B2100, B4100, and B4200
+  VIPRION B2100, B4100, and B4200
 
+  BIG-IP 520, 540, 1000, 2000, 2400, 5000, 5100, 1600, 3600, 3900, 6900, 8900, 8950, 11000, and 11050
 
-    BIG-IP 520, 540, 1000, 2000, 2400, 5000, 5100, 1600, 3600, 3900, 6900, 8900, 8950, 11000, and 11050
+  BIG-IP Virtual Edition
 
-    BIG-IP Virtual Edition
+  Enterprise Manager 3000 and 4000");
 
-    Enterprise Manager 3000 and 4000");
   exit(0);
 }
 
 include("ssh_func.inc");
 
-port = get_kb_item("Services/ssh");
-if(!port) port = 22;
-
-if(!get_port_state(port))exit(0);
+port = get_ssh_port(default:22);
 
 if(!soc = open_sock_tcp(port))exit(0);
 
@@ -106,7 +106,6 @@ if(login == 0) {
     close(soc);
     exit(0);
   }
-
 }
 
 close(soc);

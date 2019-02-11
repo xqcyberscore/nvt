@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atutor_achecker_mult_sql_inj_n_xss_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
+# $Id: gb_atutor_achecker_mult_sql_inj_n_xss_vuln.nasl 13551 2019-02-09 10:59:55Z cfischer $
 #
 # Atutor AChecker Multiple SQL Injection and XSS Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801982");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("$Revision: 13551 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-09 11:59:55 +0100 (Sat, 09 Feb 2019) $");
   script_tag(name:"creation_date", value:"2011-09-14 16:05:49 +0200 (Wed, 14 Sep 2011)");
   script_bugtraq_id(49061, 49093);
   script_tag(name:"cvss_base", value:"7.5");
@@ -49,15 +49,15 @@ if(description)
   script code or to compromise the application, access or modify data, or exploit
   latent vulnerabilities in the underlying database.");
 
-  script_tag(name:"affected", value:"Atutor AChecker 1.2 (build r530)");
+  script_tag(name:"affected", value:"Atutor AChecker 1.2 (build r530).");
 
-  script_tag(name:"insight", value:"Multiple flaws are due to an,
+  script_tag(name:"insight", value:"Multiple flaws are due to:
 
-  - Input passed via the parameter 'myown_patch_id' in '/updater/patch_edit.php'
+  - input passed via the parameter 'myown_patch_id' in '/updater/patch_edit.php'
   and the parameter 'id' in '/user/user_create_edit.php' script is not
   properly sanitised before being used in SQL queries.
 
-  - Input through the GET parameters 'id', 'p' and 'myown_patch_id' in
+  - input through the GET parameters 'id', 'p' and 'myown_patch_id' in
   multiple scripts is not sanitized allowing the attacker to execute HTML
   code or disclose the full path of application's residence.");
 
@@ -79,18 +79,17 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-
 if(!can_host_php(port:port)) {
   exit(0);
 }
 
-foreach dir (make_list("/AChecker", "/Atutor/AChecker", "/")) {
+foreach dir (make_list("/AChecker", "/")) {
 
   if( dir == "/" ) dir = "";
   url = dir + "/checker/index.php";
   res = http_get_cache(item:url, port:port);
 
-  if("Web Accessibility Checker<" >< res && '>Check Accessibility' >< res) {
+  if(res && "Web Accessibility Checker<" >< res && '>Check Accessibility' >< res) {
 
     url = dir + '/documentation/frame_header.php?p="><script>alert(document.cookie)</script>';
     req = http_get(item:url, port:port);

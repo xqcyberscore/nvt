@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M5_064.nasl 10616 2018-07-25 13:37:26Z cfischer $
+# $Id: GSHB_M5_064.nasl 13570 2019-02-11 10:39:55Z cfischer $
 #
 # IT-Grundschutz, 14. EL, Maﬂnahme 5.064
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.95065");
-  script_version("$Revision: 10616 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 15:37:26 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 13570 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-11 11:39:55 +0100 (Mon, 11 Feb 2019) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -48,17 +48,13 @@ if(description)
 }
 
 include("itg.inc");
-
-name = 'IT-Grundschutz M5.064: Secure Shell\n';
-
 include("ssh_func.inc");
 include("version_func.inc");
 
+name = 'IT-Grundschutz M5.064: Secure Shell\n';
 gshbm =  "IT-Grundschutz M5.064: ";
 
-port = get_preference("auth_port_ssh");
-if(!port) port = get_kb_item("Services/ssh");
-if(!port) port = 22;
+port = kb_ssh_transport();
 
 sock = ssh_login_or_reuse_connection();
 if(!sock) {
@@ -70,7 +66,7 @@ if(!sock) {
 
 telnet = get_kb_item("Services/telnet");
 
-sshbanner = get_kb_item("SSH/banner/" + port);
+sshbanner = get_ssh_server_banner(port:port);
 if (sshbanner){
   sshbanner = tolower(sshbanner);
   version = eregmatch(pattern:"ssh-.*openssh[_-]{1}([0-9.]+[p0-9]*)", string: sshbanner);

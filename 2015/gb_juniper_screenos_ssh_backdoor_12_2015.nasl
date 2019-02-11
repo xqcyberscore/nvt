@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_juniper_screenos_ssh_backdoor_12_2015.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_juniper_screenos_ssh_backdoor_12_2015.nasl 13568 2019-02-11 10:22:27Z cfischer $
 #
 # Backdoor in ScreenOS (SSH)
 #
@@ -25,13 +25,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105495");
   script_cve_id("CVE-2015-7755", "CVE-2015-7754");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 13568 $");
 
   script_name("Backdoor in ScreenOS (SSH)");
 
@@ -53,28 +53,28 @@ if (description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"exploit");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-11 11:22:27 +0100 (Mon, 11 Feb 2019) $");
   script_tag(name:"creation_date", value:"2015-12-21 10:33:33 +0100 (Mon, 21 Dec 2015)");
   script_category(ACT_ATTACK);
   script_family("General");
   script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
-  script_dependencies("find_service.nasl");
+  script_dependencies("ssh_detect.nasl");
   script_require_ports("Services/ssh", 22);
+  script_mandatory_keys("ssh/server_banner/available");
 
   exit(0);
 }
 
 include("ssh_func.inc");
 
-port = get_kb_item("Services/ssh");
-if( ! port ) exit( 0 );
+port = get_ssh_port(default:22);
+
+soc = open_sock_tcp( port );
+if( ! soc ) exit( 0 );
 
 # it seems that ANY username is accepted using the BD password
 user = 'netscreen';
 pass = "<<< %s(un='%s') = %u";
-
-soc = open_sock_tcp( port );
-if( ! soc ) exit( 0 );
 
 login = ssh_login( socket:soc, login:user, password:pass, pub:FALSE, priv:FALSE, passphrase:FALSE );
 

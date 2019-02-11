@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_comware_platform_detect_ssh.nasl 4630 2016-11-25 10:07:23Z ckuerste $
+# $Id: gb_hp_comware_platform_detect_ssh.nasl 13568 2019-02-11 10:22:27Z cfischer $
 #
 # HP Comware Devices Detect (SSH)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106411");
-  script_version("$Revision: 4630 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-25 11:07:23 +0100 (Fri, 25 Nov 2016) $");
+  script_version("$Revision: 13568 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-11 11:22:27 +0100 (Mon, 11 Feb 2019) $");
   script_tag(name:"creation_date", value:"2016-11-25 11:50:20 +0700 (Fri, 25 Nov 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -45,18 +45,17 @@ if(description)
   script_family("Product detection");
   script_dependencies("ssh_detect.nasl");
   script_require_ports("Services/ssh", 22);
+  script_mandatory_keys("ssh/server_banner/available");
 
   exit(0);
 }
 
 include("cpe.inc");
 include("host_details.inc");
+include("ssh_func.inc");
 
-port = get_kb_item("Services/ssh");
-if (!port)
-  exit(0);
-
-banner = get_kb_item("SSH/banner/" + port);
+port = get_ssh_port(default:22);
+banner = get_ssh_server_banner(port:port);
 if (!banner || banner !~ "SSH-[0-9.]+-Comware")
   exit(0);
 

@@ -24,14 +24,16 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:apachefriends:xampp";
+
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804078");
-  script_version("$Revision: 13548 $");
+  script_version("$Revision: 13549 $");
   script_bugtraq_id(64974);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-08 17:04:07 +0100 (Fri, 08 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-08 21:55:13 +0100 (Fri, 08 Feb 2019) $");
   script_tag(name:"creation_date", value:"2014-01-22 17:43:28 +0530 (Wed, 22 Jan 2014)");
   script_name("XAMPP Control Panel 'interpret' Parameter Cross Site Scripting Vulnerability");
 

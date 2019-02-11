@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_riverbed_steelhead_ssh_detect.nasl 10896 2018-08-10 13:24:05Z cfischer $
+# $Id: gb_riverbed_steelhead_ssh_detect.nasl 13570 2019-02-11 10:39:55Z cfischer $
 #
 # Riverbed SteelHead Detection (SSH)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106845");
-  script_version("$Revision: 10896 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:24:05 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 13570 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-11 11:39:55 +0100 (Mon, 11 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-06-02 13:17:40 +0700 (Fri, 02 Jun 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -39,8 +39,8 @@ if(description)
 
   script_tag(name:"summary", value:"Detection of Riverbed SteelHead.
 
-The script tries to log in to Riverbed SteelHead and execute 'show version' command to extract its version and
-model.");
+  The script tries to log in to Riverbed SteelHead and execute 'show version' command to extract its version and
+  model.");
 
   script_category(ACT_GATHER_INFO);
 
@@ -57,12 +57,9 @@ include("cpe.inc");
 include("host_details.inc");
 include("ssh_func.inc");
 
-port = get_kb_item("Services/ssh");
-if (!port || !get_port_state(port))
-  exit(0);
-
+port = get_ssh_port(default:22);
 banner = get_kb_item("SSH/textbanner/" + port);
-if ("Riverbed SteelHead" >!< banner)
+if (!banner || "Riverbed SteelHead" >!< banner)
   exit(0);
 
 set_kb_item(name: "riverbed/steelhead/detected", value: TRUE);

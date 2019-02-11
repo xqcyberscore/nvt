@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lutron_homeworks_processor_default_password.nasl 13364 2019-01-30 12:45:03Z cfischer $
+# $Id: gb_lutron_homeworks_processor_default_password.nasl 13559 2019-02-11 04:37:23Z ckuersteiner $
 #
 # Lutron Devices Default Credentials
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113206");
-  script_version("$Revision: 13364 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-30 13:45:03 +0100 (Wed, 30 Jan 2019) $");
+  script_version("$Revision: 13559 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-11 05:37:23 +0100 (Mon, 11 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-06-05 12:36:33 +0200 (Tue, 05 Jun 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -66,7 +66,7 @@ if(description)
 
   script_tag(name:"affected", value:"The vulnerability affects multiple Lutron devices.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 22nd November, 2018.
+  script_tag(name:"solution", value:"No known solution is available as of 11th February, 2019.
   Information regarding this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"http://sadfud.me/explotos/CVE-2018-11629");

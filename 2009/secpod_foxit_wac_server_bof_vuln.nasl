@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_foxit_wac_server_bof_vuln.nasl 5478 2017-03-03 13:48:45Z cfi $
+# $Id: secpod_foxit_wac_server_bof_vuln.nasl 13562 2019-02-11 07:35:15Z cfischer $
 #
 # Foxit WAC Server Buffer Overflow Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:foxitsoftware:wac_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900924");
-  script_version("$Revision: 5478 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-03 14:48:45 +0100 (Fri, 03 Mar 2017) $");
+  script_version("$Revision: 13562 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-11 08:35:15 +0100 (Mon, 11 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-08-27 13:43:20 +0200 (Thu, 27 Aug 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -48,27 +48,20 @@ if(description)
   script_xref(name:"URL", value:"http://aluigi.org/adv/wachof-adv.txt");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/40608");
 
-  tag_impact = "Successful exploitation will let the attackers execute arbitrary
-  code and crash the application to cause denial of service.";
+  script_tag(name:"impact", value:"Successful exploitation will let the attackers execute arbitrary
+  code and crash the application to cause denial of service.");
 
-  tag_affected = "Foxit WAC Server 2.0 Build 3503 and prior on Windows.";
+  script_tag(name:"affected", value:"Foxit WAC Server 2.0 Build 3503 and prior on Windows.");
 
-  tag_insight = "A heap-based buffer-overflow occurs in the 'wacsvr.exe' while
-  processing overly long packets sent to SSH/Telnet ports.";
+  script_tag(name:"insight", value:"A heap-based buffer-overflow occurs in the 'wacsvr.exe' while
+  processing overly long packets sent to SSH/Telnet ports.");
 
-  tag_solution = "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.";
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
-  tag_summary = "This host is running Foxit WAC Server and is prone to Buffer
-  Overflow vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"This host is running Foxit WAC Server and is prone to Buffer
+  Overflow vulnerability.");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"WillNotFix");
@@ -82,7 +75,6 @@ include("host_details.inc");
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
-# Grep for version 2.0.3503 and prior.
 if( version_is_less_equal( version:vers, test_version:"2.0.3503" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"None available" );
   security_message( port:port, data:report );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_riverbed_steelcentral_ssh_detect.nasl 12413 2018-11-19 11:11:31Z cfischer $
+# $Id: gb_riverbed_steelcentral_ssh_detect.nasl 13570 2019-02-11 10:39:55Z cfischer $
 #
 # Riverbed SteelCentral Detection (SSH Banner)
 #
@@ -30,8 +30,8 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.105788");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 12413 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-19 12:11:31 +0100 (Mon, 19 Nov 2018) $");
+  script_version("$Revision: 13570 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-11 11:39:55 +0100 (Mon, 11 Feb 2019) $");
   script_tag(name:"creation_date", value:"2016-06-30 13:36:05 +0200 (Thu, 30 Jun 2016)");
   script_name("Riverbed SteelCentral Detection (SSH)");
 
@@ -54,12 +54,10 @@ include("host_details.inc");
 
 source = "ssh";
 
-port = get_kb_item("Services/ssh");
-if( ! port || ! get_port_state( port ) ) exit( 0 );
-
-banner = get_kb_item("SSH/textbanner/" + port );
-
-if( "Riverbed Cascade" >!< banner ) exit( 0 );
+port = get_ssh_port( default:22 );
+banner = get_kb_item( "SSH/textbanner/" + port );
+if( !banner || "Riverbed Cascade" >!< banner )
+  exit( 0 );
 
 set_kb_item( name:"riverbed/SteelCentral/detected", value:TRUE );
 
@@ -110,4 +108,3 @@ report = build_detection_report( app:report_app, version:report_version, install
 log_message( port:port, data:report );
 
 exit( 0 );
-

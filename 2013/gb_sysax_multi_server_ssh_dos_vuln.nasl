@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sysax_multi_server_ssh_dos_vuln.nasl 11865 2018-10-12 10:03:43Z cfischer $
+# $Id: gb_sysax_multi_server_ssh_dos_vuln.nasl 13571 2019-02-11 11:00:12Z cfischer $
 #
 # Sysax Multi Server SSH Component NULL Pointer Dereference DOS Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803191");
-  script_version("$Revision: 11865 $");
+  script_version("$Revision: 13571 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-11 12:00:12 +0100 (Mon, 11 Feb 2019) $");
   script_tag(name:"creation_date", value:"2013-04-16 11:21:21 +0530 (Tue, 16 Apr 2013)");
   script_name("Sysax Multi Server SSH Component NULL Pointer Dereference DOS Vulnerability");
   script_xref(name:"URL", value:"http://secunia.com/advisories/52934");
@@ -44,38 +44,38 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("ssh_detect.nasl");
   script_require_ports("Services/ssh", 22);
+  script_mandatory_keys("ssh/server_banner/available");
+
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause the application
   to crash, creating a denial-of-service condition.");
-  script_tag(name:"affected", value:"Sysax Multi Server version 6.10");
+
+  script_tag(name:"affected", value:"Sysax Multi Server version 6.10.");
+
   script_tag(name:"insight", value:"The flaw is due to a NULL pointer dereference error within the SSH component
-  when negotiating cipher keys and can be exploited to cause a crash via a
-  specially crafted cipher.");
+  when negotiating cipher keys and can be exploited to cause a crash via a specially crafted cipher.");
+
   script_tag(name:"solution", value:"Upgrade to Sysax Multi Server 6.11 or later.");
+
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"The host is running Sysax Multi Server and is prone to denial of
   service vulnerability.");
+
   script_xref(name:"URL", value:"http://www.sysax.com/server");
+
   exit(0);
 }
 
-port = get_kb_item("Services/ssh");
-if(!port){
-  port = 22;
-}
+include("ssh_func.inc");
 
-if(!get_port_state(port)){
-  exit(0);
-}
-
-banner = get_kb_item("SSH/banner/" + port);
+port = get_ssh_port(default:22);
+banner = get_ssh_server_banner(port:port);
 if (!banner || "SysaxSSH" >!< banner){
   exit(0);
 }
 
 soc = open_sock_tcp(port);
-if(!soc){
+if(!soc)
   exit(0);
-}
 
 ini_req = raw_string(0x53, 0x53, 0x48, 0x2d, 0x32, 0x2e, 0x30, 0x2d,
                      0x4f, 0x70, 0x65, 0x6e, 0x53, 0x53, 0x48, 0x5f,

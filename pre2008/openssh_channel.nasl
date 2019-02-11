@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: openssh_channel.nasl 7904 2017-11-24 12:29:45Z cfischer $
+# $Id: openssh_channel.nasl 13562 2019-02-11 07:35:15Z cfischer $
 #
 # OpenSSH Channel Code Off by 1
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:openbsd:openssh";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10883");
-  script_version("$Revision: 7904 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-24 13:29:45 +0100 (Fri, 24 Nov 2017) $");
+  script_version("$Revision: 13562 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-11 08:35:15 +0100 (Mon, 11 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(4241);
   script_tag(name:"cvss_base", value:"10.0");
@@ -44,23 +44,17 @@ if(description)
   script_require_ports("Services/ssh", 22);
   script_mandatory_keys("openssh/detected");
 
-  tag_summary = "You are running a version of OpenSSH which is older than 3.1.
+  script_tag(name:"solution", value:"Upgrade to OpenSSH 3.1 or apply the patch for
+  prior versions.");
 
-  Versions prior than 3.1 are vulnerable to an off by one error
-  that allows local users to gain root access, and it may be
-  possible for remote users to similarly compromise the daemon
-  for remote access.
+  script_tag(name:"summary", value:"You are running a version of OpenSSH which is older than 3.1.");
 
-  In addition, a vulnerable SSH client may be compromised by
-  connecting to a malicious SSH daemon that exploits this
-  vulnerability in the client code, thus compromising the
-  client system.";
+  script_tag(name:"insight", value:"Versions prior than 3.1 are vulnerable to an off by one error
+  that allows local users to gain root access, and it may be possible for remote users to similarly
+  compromise the daemon for remote access.
 
-  tag_solution = "Upgrade to OpenSSH 3.1 or apply the patch for
-  prior versions. (See: http://www.openssh.org)";
- 
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  In addition, a vulnerable SSH client may be compromised by connecting to a malicious SSH daemon that
+  exploits this vulnerability in the client code, thus compromising the client system.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");

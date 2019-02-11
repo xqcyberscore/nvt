@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ssh_proto_version.nasl 10929 2018-08-11 11:39:44Z cfischer $
+# $Id: ssh_proto_version.nasl 13569 2019-02-11 10:27:56Z cfischer $
 #
 # SSH Protocol Versions Supported
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100259");
-  script_version("$Revision: 10929 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-11 13:39:44 +0200 (Sat, 11 Aug 2018) $");
+  script_version("$Revision: 13569 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-11 11:27:56 +0100 (Mon, 11 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-08-25 21:06:41 +0200 (Tue, 25 Aug 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -36,8 +36,9 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Service detection");
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
-  script_dependencies("gb_ssh_algos.nasl");
+  script_dependencies("gb_ssh_algos.nasl", "ssh_detect.nasl");
   script_require_ports("Services/ssh", 22);
+  script_mandatory_keys("ssh/server_banner/available");
 
   script_tag(name:"summary", value:"Identification of SSH protocol versions supported by the remote
   SSH Server. Also reads the corresponding fingerprints from the service.
@@ -49,14 +50,13 @@ if(description)
   exit(0);
 }
 
-
 include("ssh_func.inc");
 include("misc_func.inc");
 include("host_details.inc");
 
-port = get_kb_item("Services/ssh");
-if( ! port ) port = 22;
-if( ! get_port_state( port ) ) exit( 0 );
+vt_strings = get_vt_strings();
+
+port = get_ssh_port(default:22);
 
 soc = open_sock_tcp(port);
 if( ! soc ) exit( 0 );
@@ -149,7 +149,7 @@ function get_fingerprint( version ) {
     if( ! soc ) return FALSE;
 
     buf = recv_line( socket:soc, length:8192 );
-    send( socket:soc, data:'SSH-1.5-OpenVAS_1.0\n' );
+    send( socket:soc, data:'SSH-1.5-' + vt_strings["default"] + '_1.0\n' );
 
     header = recv( socket:soc, length:4 );
     if( strlen( header ) < 4 ) return FALSE;
@@ -192,30 +192,30 @@ foreach version( versions ) {
     return( 0 );
   }
 
-  request = string( "SSH-", version, "-OpenVASSSH_1.0\n" );
+  request = string( "SSH-", version, "-", vt_strings["default"], "SSH_1.0\n" );
   send( socket:soc, data:request );
 
   ret = recv_line( socket:soc, length:500 );
   close( soc );
 
   if( ! egrep( pattern:"Protocol.*differ", string:ret ) ) {
-   supported_versions[version] = version;
+    supported_versions[version] = version;
   }
 }
 
 if( supported_versions ) {
 
   foreach supported( supported_versions ) {
-   if( supported == "2.0" || supported == "1.5" ) {
-     if( fingerprint = get_fingerprint( version:supported ) ) {
-       if( supported == "2.0" ) {
-         fingerprint_info += string("SSHv2 Fingerprint:\n", fingerprint, "\n");
-       } else if( supported == "1.5" ) {
-         fingerprint_info += string("SSHv1 Fingerprint: ", fingerprint, "\n");
-       }
-     }
-   }
-   info += string( chomp( supported ), "\n" );
+    if( supported == "2.0" || supported == "1.5" ) {
+      if( fingerprint = get_fingerprint( version:supported ) ) {
+        if( supported == "2.0" ) {
+          fingerprint_info += string("SSHv2 Fingerprint:\n", fingerprint, "\n");
+        } else if( supported == "1.5" ) {
+          fingerprint_info += string("SSHv1 Fingerprint: ", fingerprint, "\n");
+        }
+      }
+    }
+    info += string( chomp( supported ), "\n" );
   }
 
   if( fingerprint_info ) {

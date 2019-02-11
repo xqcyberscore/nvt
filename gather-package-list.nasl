@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gather-package-list.nasl 13537 2019-02-08 11:49:55Z cfischer $
+# $Id: gather-package-list.nasl 13568 2019-02-11 10:22:27Z cfischer $
 #
 # Determine OS and list of installed packages via SSH login
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.50282");
-  script_version("$Revision: 13537 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-08 12:49:55 +0100 (Fri, 08 Feb 2019) $");
+  script_version("$Revision: 13568 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-11 11:22:27 +0100 (Mon, 11 Feb 2019) $");
   script_tag(name:"creation_date", value:"2008-01-17 22:05:49 +0100 (Thu, 17 Jan 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -438,10 +438,7 @@ function register_uname( uname ) {
   replace_kb_item( name:"Host/uname", value:uname );
 }
 
-port = get_preference( "auth_port_ssh" );
-if( ! port ) port = get_kb_item( "Services/ssh" );
-if( ! port ) port = 22;
-
+port = kb_ssh_transport();
 sock = ssh_login_or_reuse_connection();
 if( ! sock ) exit( 0 );
 
@@ -462,7 +459,7 @@ if( isnull( uname ) ) exit( 0 );
 # iLO 2 Standard Blade Edition 2.25 at 16:36:26 Apr 14 2014
 # Server Name: vMX-Bay1
 # Server Power: On
-# 
+#
 # hpiLO->
 #
 # https://community.hpe.com/t5/ProLiant-Servers-ML-DL-SL/SOLVED-Cannot-SSH-into-ILO4-v1-40-or-v1-50-after-upgrading-from/td-p/6505622

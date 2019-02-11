@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: unknown_services.nasl 13369 2019-01-30 15:47:45Z cfischer $
+# $Id: unknown_services.nasl 13556 2019-02-09 16:37:50Z cfischer $
 #
 # Collect banner of unknown services
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11154");
-  script_version("$Revision: 13369 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-30 16:47:45 +0100 (Wed, 30 Jan 2019) $");
+  script_version("$Revision: 13556 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-09 17:37:50 +0100 (Sat, 09 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -65,6 +65,7 @@ if(description)
                       "gb_netware_core_protocol_detect.nasl", "gb_niagara_fox_detect.nasl",
                       "gb_opc_ua_detect.nasl", "gb_openvas_administrator_detect.nasl",
                       "gb_openvas_manager_detect.nasl", "gb_openvpn_detect.nasl",
+                      "gb_ossec-authd_detect.nasl",
                       "gb_pcworx_detect.nasl", "gb_proconos_detect.nasl",
                       "gb_redis_detect.nasl", "gb_riak_detect.nasl",
                       "gb_rmi_registry_detect.nasl", "gb_sap_maxdb_detect.nasl",

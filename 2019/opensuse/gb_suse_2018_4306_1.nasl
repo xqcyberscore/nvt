@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_4306_1.nasl 12942 2019-01-04 13:53:49Z santu $
+# $Id: gb_suse_2018_4306_1.nasl 13561 2019-02-11 07:33:41Z mmartin $
 #
 # SuSE Update for containerd, openSUSE-SU-2018:4306-1 (containerd,)
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852218");
-  script_version("$Revision: 12942 $");
+  script_version("$Revision: 13561 $");
   script_cve_id("CVE-2018-16873", "CVE-2018-16874", "CVE-2018-16875", "CVE-2018-7187");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-04 14:53:49 +0100 (Fri, 04 Jan 2019) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-11 08:33:41 +0100 (Mon, 11 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-01 04:00:47 +0100 (Tue, 01 Jan 2019)");
   script_name("SuSE Update for containerd, openSUSE-SU-2018:4306-1 (containerd, )");
   script_category(ACT_GATHER_INFO);

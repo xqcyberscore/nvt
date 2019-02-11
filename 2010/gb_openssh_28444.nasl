@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssh_28444.nasl 7904 2017-11-24 12:29:45Z cfischer $
+# $Id: gb_openssh_28444.nasl 13562 2019-02-11 07:35:15Z cfischer $
 #
 # OpenSSH X Connections Session Hijacking Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:openbsd:openssh";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100584");
-  script_version("$Revision: 7904 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-24 13:29:45 +0100 (Fri, 24 Nov 2017) $");
+  script_version("$Revision: 13562 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-11 08:35:15 +0100 (Mon, 11 Feb 2019) $");
   script_tag(name:"creation_date", value:"2010-04-19 20:46:01 +0200 (Mon, 19 Apr 2010)");
   script_bugtraq_id(28444);
   script_cve_id("CVE-2008-1483");
@@ -60,22 +60,18 @@ if(description)
   script_xref(name:"URL", value:"http://support.attachmate.com/techdocs/2374.html#Security_Updates_in_7.0_SP1");
   script_xref(name:"URL", value:"http://sunsolve.sun.com/search/document.do?assetkey=1-66-237444-1");
 
-  tag_summary = "OpenSSH is prone to a vulnerability that allows attackers to hijack
-  forwarded X connections.";
+  script_tag(name:"impact", value:"Successfully exploiting this issue may allow an attacker run arbitrary
+  shell commands with the privileges of the user running the affected application.");
 
-  tag_impact = "Successfully exploiting this issue may allow an attacker run arbitrary
-  shell commands with the privileges of the user running the affected application.";
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
 
-  tag_affected = "This issue affects OpenSSH 4.3p2; other versions may also be affected.
+  script_tag(name:"summary", value:"OpenSSH is prone to a vulnerability that allows attackers to hijack
+  forwarded X connections.");
+
+  script_tag(name:"affected", value:"This issue affects OpenSSH 4.3p2. Other versions may also be affected.
 
   NOTE: This issue affects the portable version of OpenSSH and may not
-      affect OpenSSH running on OpenBSD.";
-
-  tag_solution = "Updates are available. Please see the references for more information.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"affected", value:tag_affected);
+  affect OpenSSH running on OpenBSD.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");

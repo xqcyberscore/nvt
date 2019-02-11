@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atutor_acontent_lfi_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_atutor_acontent_lfi_vuln.nasl 13551 2019-02-09 10:59:55Z cfischer $
 #
 # Atutor AContent Local File Inclusion Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803346");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 13551 $");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-09 11:59:55 +0100 (Sat, 09 Feb 2019) $");
   script_tag(name:"creation_date", value:"2013-03-26 15:10:47 +0530 (Tue, 26 Mar 2013)");
   script_name("Atutor AContent Local File Inclusion Vulnerability");
   script_category(ACT_ATTACK);
@@ -45,10 +45,9 @@ if(description)
   script_xref(name:"URL", value:"http://exploitsdownload.com/exploit/na/acontent-13-local-file-inclusion");
 
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to perform
-  directory traversal attacks and read arbitrary files on the affected
-  application.");
+  directory traversal attacks and read arbitrary files on the affected application.");
 
-  script_tag(name:"affected", value:"Atutor AContent version 1.3");
+  script_tag(name:"affected", value:"Atutor AContent version 1.3.");
 
   script_tag(name:"insight", value:"The flaw is due to an input validation error in 'url' parameter
   to '/oauth/lti/common/tool_provider_outcome.php' script.");
@@ -71,18 +70,16 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-
-if(!can_host_php(port:port)) {
+if(!can_host_php(port:port))
   exit(0);
-}
 
-foreach dir (make_list_unique("/", "/AContent", "/Atutor/AContent", cgi_dirs(port:port))) {
+foreach dir (make_list_unique("/", "/AContent", cgi_dirs(port:port))) {
 
   if(dir == "/") dir = "";
   url = dir + "/home/index.php";
   res = http_get_cache(item:url, port:port);
 
-  if('>AContent</' >< res) {
+  if(res && '>AContent</' >< res) {
 
     url = dir +'/oauth/lti/common/tool_provider_outcome.php?grade=1&key=1&'+
                'secret=secret&sourcedid=1&submit=Send%20Grade&url=../../../'+

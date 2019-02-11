@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_vsphere_data_protection_admin1_known_ssh_key.nasl 11607 2018-09-25 13:53:15Z asteins $
+# $Id: gb_vmware_vsphere_data_protection_admin1_known_ssh_key.nasl 13568 2019-02-11 10:22:27Z cfischer $
 #
 # VMSA-2016-0024: vSphere Data Protection (VDP) updates address SSH Key-Based authentication issue (dpnid)
 #
@@ -25,13 +25,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140104");
   script_cve_id("CVE-2016-7456");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11607 $");
+  script_version("$Revision: 13568 $");
   script_name("VMSA-2016-0024: vSphere Data Protection (VDP) updates address SSH Key-Based authentication issue (dpnid)");
 
   script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2016-0024.html");
@@ -40,12 +40,14 @@ if (description)
 
   script_tag(name:"solution", value:"Apply the Patch");
 
-  script_tag(name:"summary", value:"vSphere Data Protection (VDP) updates address SSH key-based authentication issue");
-  script_tag(name:"insight", value:"VDP contains a private SSH key with a known password that is configured to allow key-based authentication. Exploitation of this issue may allow an unauthorized remote attacker to log into the appliance with root privileges.");
+  script_tag(name:"summary", value:"vSphere Data Protection (VDP) updates address SSH key-based authentication issue.");
+
+  script_tag(name:"insight", value:"VDP contains a private SSH key with a known password that is configured to allow key-based
+  authentication. Exploitation of this issue may allow an unauthorized remote attacker to log into the appliance with root privileges.");
 
   script_tag(name:"affected", value:"VDP 6.1.x, 6.0.x, 5.8.x, 5.5.x");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 15:53:15 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-11 11:22:27 +0100 (Mon, 11 Feb 2019) $");
   script_tag(name:"creation_date", value:"2016-12-28 11:04:22 +0100 (Wed, 28 Dec 2016)");
   script_tag(name:"qod_type", value:"exploit");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -54,17 +56,14 @@ if (description)
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("ssh_detect.nasl");
   script_require_ports("Services/ssh", 22);
+  script_mandatory_keys("ssh/server_banner/available");
 
- exit(0);
-
+  exit(0);
 }
 
 include("ssh_func.inc");
 
-port = get_kb_item( "Services/ssh" );
-if( ! port ) port = 22;
-
-if( ! get_port_state( port ) ) exit( 0 );
+port = get_ssh_port(default:22);
 
 keys = make_list(
 '-----BEGIN RSA PRIVATE KEY-----
@@ -143,4 +142,3 @@ foreach key ( keys )
 }
 
 exit( 99 );
-

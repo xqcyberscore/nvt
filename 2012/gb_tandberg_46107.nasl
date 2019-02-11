@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tandberg_46107.nasl 11003 2018-08-16 11:08:00Z asteins $
+# $Id: gb_tandberg_46107.nasl 13568 2019-02-11 10:22:27Z cfischer $
 #
 # Cisco TANDBERG C Series and E/EX Series Default Credentials Authentication Bypass Vulnerability
 #
@@ -25,14 +25,14 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103606");
   script_bugtraq_id(46107);
   script_cve_id("CVE-2011-0354");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11003 $");
+  script_version("$Revision: 13568 $");
 
   script_name("Cisco TANDBERG C Series and E/EX Series Default Credentials Authentication Bypass Vulnerability");
 
@@ -42,32 +42,32 @@ if (description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/516126");
   script_xref(name:"URL", value:"http://www.kb.cert.org/vuls/id/436854");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-11 11:22:27 +0100 (Mon, 11 Feb 2019) $");
   script_tag(name:"creation_date", value:"2012-11-14 11:19:49 +0100 (Wed, 14 Nov 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_family("Default Accounts");
   script_tag(name:"solution_type", value:"VendorFix");
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
-  script_dependencies("find_service.nasl", "ssh_detect.nasl");
+  script_dependencies("ssh_detect.nasl");
   script_require_ports("Services/ssh", 22);
+  script_mandatory_keys("ssh/server_banner/available");
+
   script_tag(name:"solution", value:"The vendor has released an advisory along with fixes. Please see the
-referenced advisory for more information.");
+  referenced advisory for more information.");
+
   script_tag(name:"summary", value:"Cisco TANDBERG C Series Endpoints and E/EX Series Personal Video
-devices are prone to a remote authentication-bypass vulnerability.");
+  devices are prone to a remote authentication-bypass vulnerability.");
 
   script_tag(name:"impact", value:"An attacker can exploit this issue to gain unauthorized root access to
-the affected devices. Successful exploits will result in the complete
-compromise of the affected device.");
+  the affected devices. Successful exploits will result in the complete compromise of the affected device.");
+
   exit(0);
 }
 
 include("ssh_func.inc");
 
-port = get_kb_item("Services/ssh");
-if(!port)port = 22;
-
-if(!get_port_state(port))exit(0);
+port = get_ssh_port(default:22);
 
 sock = open_sock_tcp(port);
 if(!sock)exit(0);

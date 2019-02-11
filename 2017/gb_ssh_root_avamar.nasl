@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ssh_root_avamar.nasl 13543 2019-02-08 14:43:51Z cfischer $
+# $Id: gb_ssh_root_avamar.nasl 13571 2019-02-11 11:00:12Z cfischer $
 #
 # Default Password `avam@r` for root Account.
 #
@@ -28,27 +28,31 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140133");
-  script_version("$Revision: 13543 $");
+  script_version("$Revision: 13571 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("Default Password `avam@r` for root Account.");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-11 12:00:12 +0100 (Mon, 11 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-01-31 11:12:08 +0100 (Tue, 31 Jan 2017)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
-  script_require_ports("Services/ssh", 22);
-
-  script_tag(name:"summary", value:'The remote host has the password `avam@r` for the root account.');
-
-  script_tag(name:"impact", value:'This issue may be exploited by a remote attacker to gain access to sensitive information or modify system configuration.');
-
-  script_tag(name:"vuldetect", value:'Try to login with default credentials.');
-  script_tag(name:"insight", value:'It was possible to login with default credentials: root/avam@r');
-  script_tag(name:"solution", value:'Change the password.');
-  script_tag(name:"solution_type", value:"Workaround");
   script_dependencies("ssh_detect.nasl", "os_detection.nasl");
+  script_require_ports("Services/ssh", 22);
   script_require_keys("Host/runs_unixoide");
+  script_mandatory_keys("ssh/server_banner/available");
+
+  script_tag(name:"summary", value:"The remote host has the password 'avam@r' for the root account.");
+
+  script_tag(name:"impact", value:"This issue may be exploited by a remote attacker to gain access to sensitive information or modify system configuration.");
+
+  script_tag(name:"vuldetect", value:"Try to login with default credentials.");
+
+  script_tag(name:"insight", value:"It was possible to login with default credentials: root/avam@r");
+
+  script_tag(name:"solution", value:"Change the password.");
+
+  script_tag(name:"solution_type", value:"Workaround");
   script_tag(name:"qod_type", value:"exploit");
 
   exit(0);

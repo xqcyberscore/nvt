@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: openssh_uselogin_environment.nasl 7904 2017-11-24 12:29:45Z cfischer $
+# $Id: openssh_uselogin_environment.nasl 13562 2019-02-11 07:35:15Z cfischer $
 #
 # OpenSSH UseLogin Environment Variables
 #
@@ -33,8 +33,8 @@ CPE = "cpe:/a:openbsd:openssh";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10823");
-  script_version("$Revision: 7904 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-24 13:29:45 +0100 (Fri, 24 Nov 2017) $");
+  script_version("$Revision: 13562 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-11 08:35:15 +0100 (Mon, 11 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(3614);
   script_xref(name:"IAVA", value:"2001-t-0017");
@@ -48,19 +48,16 @@ if(description)
   script_dependencies("ssh_detect.nasl");
   script_require_ports("Services/ssh", 22);
 
-  tag_summary = "You are running a version of OpenSSH which is older than 3.0.2.
+  script_tag(name:"solution", value:"Upgrade to OpenSSH 3.0.2 or apply the patch for prior
+  versions.");
 
-  Versions prior than 3.0.2 are vulnerable to an environment variables export
-  that can allow a local user to execute command with root privileges.
+  script_tag(name:"summary", value:"You are running a version of OpenSSH which is older than 3.0.2.");
+
+  script_tag(name:"insight", value:"Versions prior than 3.0.2 are vulnerable to an environment variables
+  export that can allow a local user to execute command with root privileges.
 
   This problem affect only versions prior than 3.0.2, and when
-  the UseLogin feature is enabled (usually disabled by default)";
-
-  tag_solution = "Upgrade to OpenSSH 3.0.2 or apply the patch for prior
-  versions. (Available at: ftp://ftp.openbsd.org/pub/OpenBSD/OpenSSH)";
- 
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  the UseLogin feature is enabled (usually disabled by default)");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");

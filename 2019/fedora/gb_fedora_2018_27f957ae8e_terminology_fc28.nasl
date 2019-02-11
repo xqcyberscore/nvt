@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_27f957ae8e_terminology_fc28.nasl 13108 2019-01-17 07:34:03Z santu $
+# $Id: gb_fedora_2018_27f957ae8e_terminology_fc28.nasl 13561 2019-02-11 07:33:41Z mmartin $
 #
 # Fedora Update for terminology FEDORA-2018-27f957ae8e
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875389");
-  script_version("$Revision: 13108 $");
+  script_version("$Revision: 13561 $");
   script_cve_id("CVE-2018-20167");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-17 08:34:03 +0100 (Thu, 17 Jan 2019) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-11 08:33:41 +0100 (Mon, 11 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-07 04:01:30 +0100 (Mon, 07 Jan 2019)");
   script_name("Fedora Update for terminology FEDORA-2018-27f957ae8e");
   script_category(ACT_GATHER_INFO);

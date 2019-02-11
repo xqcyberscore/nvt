@@ -1,5 +1,5 @@
 ###############################################################################
-# $Id: gb_openelec_ssh_auth_bypass_vuln.nasl 12455 2018-11-21 09:17:27Z cfischer $
+# $Id: gb_openelec_ssh_auth_bypass_vuln.nasl 13568 2019-02-11 10:22:27Z cfischer $
 #
 # OpenELEC Authentication Bypass Vulnerability
 #
@@ -26,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807608");
-  script_version("$Revision: 12455 $");
+  script_version("$Revision: 13568 $");
   script_cve_id("CVE-2016-2230");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-11 11:22:27 +0100 (Mon, 11 Feb 2019) $");
   script_tag(name:"creation_date", value:"2016-03-11 15:05:52 +0530 (Fri, 11 Mar 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("OpenELEC Authentication Bypass Vulnerability");
@@ -41,14 +41,12 @@ if(description)
   script_tag(name:"vuldetect", value:"Check if it is possible to login into
   the remote OpenELEC device.");
 
-  script_tag(name:"insight", value:"The flaw is due to
-
-  - The 'root' account has a password of 'openelec', which is
-    publicly known and documented.");
+  script_tag(name:"insight", value:"The flaw is due to the 'root' account has a password of
+  'openelec', which is publicly known and documented.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to gain unauthorized root access to affected devices and completely
-  compromise the devices..");
+  compromise the devices.");
 
   script_tag(name:"affected", value:"OpenELEC Devices.");
 
@@ -64,27 +62,21 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Default Accounts");
-  script_dependencies("find_service.nasl");
+  script_dependencies("ssh_detect.nasl");
   script_require_ports("Services/ssh", 22);
+  script_mandatory_keys("ssh/server_banner/available");
+
   script_xref(name:"URL", value:"http://openelec.tv");
+
   exit(0);
 }
-
 
 include("ssh_func.inc");
 
-open_port = get_kb_item("Services/ssh");
-if(!open_port){
-  exit(0);
-}
+open_port = get_ssh_port(default:22);
 
-if(!get_port_state(open_port)){
+if(!soc = open_sock_tcp(open_port))
   exit(0);
-}
-
-if(!soc = open_sock_tcp(open_port)){
-  exit(0);
-}
 
 login = ssh_login (socket:soc, login:'root', password:'openelec', pub:NULL, priv:NULL, passphrase:NULL);
 if(login == 0)

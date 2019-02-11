@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ssh_weak_encryption_algos.nasl 4490 2016-11-14 08:26:41Z cfi $
+# $Id: gb_ssh_weak_encryption_algos.nasl 13568 2019-02-11 10:22:27Z cfischer $
 #
 # SSH Weak Encryption Algorithms Supported
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105611");
-  script_version("$Revision: 4490 $");
+  script_version("$Revision: 13568 $");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
   script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-14 09:26:41 +0100 (Mon, 14 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-11 11:22:27 +0100 (Mon, 11 Feb 2019) $");
   script_tag(name:"creation_date", value:"2016-04-19 12:49:32 +0200 (Tue, 19 Apr 2016)");
   script_name("SSH Weak Encryption Algorithms Supported");
   script_category(ACT_GATHER_INFO);
@@ -43,7 +43,7 @@ if(description)
   script_xref(name:"URL", value:"https://www.kb.cert.org/vuls/id/958563");
 
   script_tag(name:"insight", value:"The `arcfour` cipher is the Arcfour stream cipher with 128-bit keys.
-  The Arcfour cipher is believed to be compatible with the RC4 cipher [SCHNEIER].  Arcfour (and RC4) has problems
+  The Arcfour cipher is believed to be compatible with the RC4 cipher [SCHNEIER]. Arcfour (and RC4) has problems
   with weak keys, and should not be used anymore.
 
   The `none` algorithm specifies that no encryption is to be done.
@@ -65,10 +65,6 @@ if(description)
 }
 
 include("ssh_func.inc");
-
-port = get_kb_item( "Services/ssh" );
-if( ! port ) port = 22;
-if( ! get_port_state( port ) ) exit( 0 );
 
 function check_algo( port, type )
 {
@@ -92,6 +88,8 @@ function check_algo( port, type )
 
 }
 
+port = get_ssh_port(default:22);
+
 if( rep = check_algo( port:port, type:"client_to_server" ) )
   report = 'The following weak client-to-server encryption algorithms are supported by the remote service:\n\n' + rep + '\n\n';
 
@@ -105,4 +103,3 @@ if( report )
 }
 
 exit( 99 );
-

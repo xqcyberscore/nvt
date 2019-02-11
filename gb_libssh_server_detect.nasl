@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_libssh_server_detect.nasl 11943 2018-10-17 14:46:48Z cfischer $
+# $Id: gb_libssh_server_detect.nasl 13571 2019-02-11 11:00:12Z cfischer $
 #
 # libssh SSH Server Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108472");
-  script_version("$Revision: 11943 $");
+  script_version("$Revision: 13571 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-17 16:46:48 +0200 (Wed, 17 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-11 12:00:12 +0100 (Mon, 11 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-10-17 08:43:06 +0200 (Wed, 17 Oct 2018)");
   script_name("libssh SSH Server Detection");
   script_category(ACT_GATHER_INFO);
@@ -39,6 +39,7 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_dependencies("ssh_detect.nasl");
   script_require_ports("Services/ssh", 22);
+  script_mandatory_keys("ssh/server_banner/available");
 
   script_xref(name:"URL", value:"https://www.libssh.org");
 

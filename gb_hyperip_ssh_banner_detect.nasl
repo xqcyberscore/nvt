@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hyperip_ssh_banner_detect.nasl 8951 2018-02-26 11:47:22Z cfischer $
+# $Id: gb_hyperip_ssh_banner_detect.nasl 13571 2019-02-11 11:00:12Z cfischer $
 #
 # NetEx HyperIP Detection (SSH-Banner)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108350");
-  script_version("$Revision: 8951 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-26 12:47:22 +0100 (Mon, 26 Feb 2018) $");
+  script_version("$Revision: 13571 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-11 12:00:12 +0100 (Mon, 11 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-02-26 12:49:56 +0100 (Mon, 26 Feb 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -39,6 +39,7 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH");
   script_dependencies("ssh_detect.nasl");
   script_require_ports("Services/ssh", 22);
+  script_mandatory_keys("ssh/server_banner/available");
 
   script_tag(name:"summary", value:"This script performs SSH banner based detection of a NetEx HyperIP
   virtual appliance.");

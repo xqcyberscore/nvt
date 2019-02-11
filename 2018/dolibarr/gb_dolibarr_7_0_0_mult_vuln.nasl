@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dolibarr_7_0_0_mult_vuln.nasl 12936 2019-01-04 04:46:08Z ckuersteiner $
+# $Id: gb_dolibarr_7_0_0_mult_vuln.nasl 13559 2019-02-11 04:37:23Z ckuersteiner $
 #
 # Dolibarr 7.0.0 Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113155");
-  script_version("$Revision: 12936 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-04 05:46:08 +0100 (Fri, 04 Jan 2019) $");
+  script_version("$Revision: 13559 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-11 05:37:23 +0100 (Mon, 11 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-04-11 13:19:33 +0200 (Wed, 11 Apr 2018)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -61,7 +61,7 @@ parameter) or comm/propal/list.php (propal_statut parameter, aka search_statut p
 
   script_tag(name:"affected", value:"Dolibarr through version 7.0.0");
 
-  script_tag(name:"solution", value:"No known solution is available as of 16th November, 2018.
+  script_tag(name:"solution", value:"No known solution is available as of 11th February, 2019.
   Information regarding this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://www.wizlynxgroup.com/security-research-advisories/vuln/WLX-2017-010");

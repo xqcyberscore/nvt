@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875360");
-  script_version("$Revision: 12873 $");
+  script_version("$Revision: 13561 $");
   script_cve_id("CVE-2018-19790", "CVE-2018-19789", "CVE-2018-14773", "CVE-2018-14774");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-21 15:42:20 +0100 (Fri, 21 Dec 2018) $");
+  script_tag(name:"cvss_base", value:"5.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-11 08:33:41 +0100 (Mon, 11 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-12-18 08:05:36 +0100 (Tue, 18 Dec 2018)");
   script_name("Fedora Update for php-symfony3 FEDORA-2018-66547a8c14");
   script_category(ACT_GATHER_INFO);

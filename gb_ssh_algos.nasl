@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ssh_algos.nasl 9609 2018-04-25 14:08:10Z cfischer $
+# $Id: gb_ssh_algos.nasl 13568 2019-02-11 10:22:27Z cfischer $
 #
 # SSH Protocol Algorithms Supported
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105565");
-  script_version("$Revision: 9609 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-25 16:08:10 +0200 (Wed, 25 Apr 2018) $");
+  script_version("$Revision: 13568 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-11 11:22:27 +0100 (Mon, 11 Feb 2019) $");
   script_tag(name:"creation_date", value:"2016-03-09 08:39:30 +0100 (Wed, 09 Mar 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -38,6 +38,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("ssh_detect.nasl");
   script_require_ports("Services/ssh", 22);
+  script_mandatory_keys("ssh/server_banner/available");
 
   script_tag(name:"summary", value:"This script detects which algorithms and languages are supported by the remote SSH Service");
 
@@ -49,10 +50,7 @@ if(description)
 include("ssh_func.inc");
 include("byte_func.inc");
 
-port = get_kb_item( "Services/ssh" );
-if( ! port ) port = 22;
-
-if( ! get_port_state( port ) ) exit( 0 );
+port = get_ssh_port(default:22);
 
 types = make_list(
   "kex_algorithms",

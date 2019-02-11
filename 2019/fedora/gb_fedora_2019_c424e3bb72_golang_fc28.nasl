@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2019_c424e3bb72_golang_fc28.nasl 13108 2019-01-17 07:34:03Z santu $
+# $Id: gb_fedora_2019_c424e3bb72_golang_fc28.nasl 13561 2019-02-11 07:33:41Z mmartin $
 #
 # Fedora Update for golang FEDORA-2019-c424e3bb72
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875401");
-  script_version("$Revision: 13108 $");
+  script_version("$Revision: 13561 $");
   script_cve_id("CVE-2018-16875", "CVE-2018-16874", "CVE-2018-16873");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-17 08:34:03 +0100 (Thu, 17 Jan 2019) $");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-11 08:33:41 +0100 (Mon, 11 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-12 04:04:02 +0100 (Sat, 12 Jan 2019)");
   script_name("Fedora Update for golang FEDORA-2019-c424e3bb72");
   script_category(ACT_GATHER_INFO);

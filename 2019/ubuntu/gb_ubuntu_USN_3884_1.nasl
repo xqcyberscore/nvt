@@ -23,8 +23,8 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.843901");
   script_version("$Revision$");
   script_cve_id("CVE-2019-1000019", "CVE-2019-1000020");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
   script_tag(name:"last_modification", value:"$Date$");
   script_tag(name:"creation_date", value:"2019-02-08 04:04:54 +0100 (Fri, 08 Feb 2019)");
   script_name("Ubuntu Update for libarchive USN-3884-1");

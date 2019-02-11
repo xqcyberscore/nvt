@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atutor_acontent_mult_sql_inj_n_xss_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
+# $Id: gb_atutor_acontent_mult_sql_inj_n_xss_vuln.nasl 13551 2019-02-09 10:59:55Z cfischer $
 #
 # Atutor AContent Multiple SQL Injection and XSS Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801985");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("$Revision: 13551 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-09 11:59:55 +0100 (Sat, 09 Feb 2019) $");
   script_tag(name:"creation_date", value:"2011-09-14 16:05:49 +0200 (Wed, 14 Sep 2011)");
   script_bugtraq_id(49066);
   script_tag(name:"cvss_base", value:"7.5");
@@ -50,7 +50,7 @@ if(description)
   script code or to compromise the application, access or modify data, or exploit
   latent vulnerabilities in the underlying database.");
 
-  script_tag(name:"affected", value:"Atutor AContent version 1.1 (build r296)");
+  script_tag(name:"affected", value:"Atutor AContent version 1.1 (build r296).");
 
   script_tag(name:"insight", value:"Multiple flaws are due to an,
 
@@ -76,19 +76,16 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-
-if(!can_host_php(port:port)) {
+if(!can_host_php(port:port))
   exit(0);
-}
 
-foreach dir (make_list("/AContent", "/Atutor/AContent", "/")) {
+foreach dir (make_list_unique("/", "/AContent", cgi_dirs(port:port))) {
 
   if(dir == "/") dir = "";
-
   url = dir + "/home/index.php";
   res = http_get_cache(item:url, port:port);
 
-  if(">AContent Handbook<" >< res && '>AContent</' >< res) {
+  if(res && ">AContent Handbook<" >< res && '>AContent</' >< res) {
 
     url = dir + '/documentation/frame_header.php?p="><script>alert(document.cookie)</script>';
     req = http_get(item:url, port:port);

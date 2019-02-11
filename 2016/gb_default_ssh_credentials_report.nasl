@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_default_ssh_credentials_report.nasl 11607 2018-09-25 13:53:15Z asteins $
+# $Id: gb_default_ssh_credentials_report.nasl 13568 2019-02-11 10:22:27Z cfischer $
 #
 # SSH Brute Force Logins With Default Credentials Reporting
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103239");
-  script_version("$Revision: 11607 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 15:53:15 +0200 (Tue, 25 Sep 2018) $");
+  script_version("$Revision: 13568 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-11 11:22:27 +0100 (Mon, 11 Feb 2019) $");
   script_tag(name:"creation_date", value:"2016-11-02 11:47:00 +0100 (Wed, 02 Nov 2016)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -39,6 +39,7 @@ if(description)
   script_dependencies("default_ssh_credentials.nasl");
   script_require_ports("Services/ssh", 22);
   script_mandatory_keys("default_ssh_credentials/started");
+
   script_add_preference(name:"Report timeout", type:"checkbox", value:"no");
 
   script_tag(name:"summary", value:"It was possible to login into the remote SSH server using default credentials.
@@ -58,9 +59,9 @@ if(description)
 }
 
 include("host_details.inc");
+include("ssh_func.inc");
 
-port = get_kb_item("Services/ssh");
-if( ! port ) port = 22;
+port = get_ssh_port(default:22);
 
 credentials = get_kb_list( "default_ssh_credentials/" + port + "/credentials" );
 

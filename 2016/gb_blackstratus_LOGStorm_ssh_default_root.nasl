@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_blackstratus_LOGStorm_ssh_default_root.nasl 12313 2018-11-12 08:53:51Z asteins $
+# $Id: gb_blackstratus_LOGStorm_ssh_default_root.nasl 13568 2019-02-11 10:22:27Z cfischer $
 #
 # Default password `3!acK5tratu5` for root account
 #
@@ -25,40 +25,42 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140088");
-  script_version("$Revision: 12313 $");
+  script_version("$Revision: 13568 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("Default password `3!acK5tratu5` for root account");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-11 11:22:27 +0100 (Mon, 11 Feb 2019) $");
   script_tag(name:"creation_date", value:"2016-12-05 14:07:22 +0100 (Mon, 05 Dec 2016)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
-  script_require_ports("Services/ssh", 22);
-
-  script_tag(name:"summary", value:'The remote device is prone to a default account authentication bypass vulnerability.');
-
-  script_tag(name:"impact", value:'This issue may be exploited by a remote attacker to gain access to sensitive information or modify system configuration.');
-
-  script_tag(name:"vuldetect", value:'Try to login as root with password `3!acK5tratu5`.');
-  script_tag(name:"solution", value:'Change the password');
-  script_tag(name:"solution_type", value:"Workaround");
   script_dependencies("ssh_detect.nasl");
+  script_require_ports("Services/ssh", 22);
+  script_mandatory_keys("ssh/server_banner/available");
+
+  script_tag(name:"summary", value:"The remote device is prone to a default account authentication bypass vulnerability.");
+
+  script_tag(name:"impact", value:"This issue may be exploited by a remote attacker to gain access to sensitive information or modify system configuration.");
+
+  script_tag(name:"vuldetect", value:"Try to login as root with password '3!acK5tratu5'.");
+
+  script_tag(name:"solution", value:"Change the password.");
+
+  script_tag(name:"solution_type", value:"Workaround");
   script_tag(name:"qod_type", value:"exploit");
+
   exit(0);
 }
 
 include("ssh_func.inc");
 
-port = get_kb_item( "Services/ssh" );
-if( ! port ) port = 22;
+port = get_ssh_port(default:22);
 
-if( ! get_port_state( port ) ) exit( 0 );
-
-if( ! soc = open_sock_tcp( port ) ) exit( 0 );
+if( ! soc = open_sock_tcp( port ) )
+  exit( 0 );
 
 user = 'root';
 pass = '3!acK5tratu5';
@@ -81,4 +83,3 @@ if(login == 0)
 
 if( soc ) close( soc );
 exit( 0 );
-
