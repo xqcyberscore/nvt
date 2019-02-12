@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2019_0049_libgudev1-219-62.el7__centos7.nasl 13297 2019-01-25 14:07:05Z santu $
+# $Id: gb_CESA-2019_0049_libgudev1-219-62.el7__centos7.nasl 13595 2019-02-12 08:06:21Z mmartin $
 #
 # CentOS Update for libgudev1-219-62.el7_ CESA-2019:0049 centos7
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882992");
-  script_version("$Revision: 13297 $");
+  script_version("$Revision: 13595 $");
   script_cve_id("CVE-2018-15688", "CVE-2018-16864", "CVE-2018-16865");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-25 15:07:05 +0100 (Fri, 25 Jan 2019) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-12 09:06:21 +0100 (Tue, 12 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-16 04:01:18 +0100 (Wed, 16 Jan 2019)");
   script_name("CentOS Update for libgudev1-219-62.el7_ CESA-2019:0049 centos7 ");
   script_category(ACT_GATHER_INFO);

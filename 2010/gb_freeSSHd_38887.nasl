@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_freeSSHd_38887.nasl 13571 2019-02-11 11:00:12Z cfischer $
+# $Id: gb_freeSSHd_38887.nasl 13576 2019-02-11 12:44:20Z cfischer $
 #
 # freeSSHd SSH2 Connection Data Remote Buffer Overflow Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100547");
-  script_version("$Revision: 13571 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-11 12:00:12 +0100 (Mon, 11 Feb 2019) $");
+  script_version("$Revision: 13576 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-11 13:44:20 +0100 (Mon, 11 Feb 2019) $");
   script_tag(name:"creation_date", value:"2010-03-23 13:24:50 +0100 (Tue, 23 Mar 2010)");
   script_bugtraq_id(38887);
   script_tag(name:"cvss_base", value:"9.3");
@@ -45,7 +45,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
   script_dependencies("ssh_detect.nasl");
   script_require_ports("Services/ssh", 22);
-  script_mandatory_keys("ssh/server_banner/available");
+  script_mandatory_keys("ssh/freesshd/detected");
 
   script_tag(name:"summary", value:"freeSSHd is prone to a remote buffer-overflow vulnerability because it
   fails to perform adequate boundary checks on user-supplied data.");

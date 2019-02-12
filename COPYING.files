@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Mon, 11 Feb 2019 12:48:40 +0100
+# Automatically created on:  Tue, 12 Feb 2019 12:13:44 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -43935,6 +43935,7 @@
 2019/adobe/gb_adobe_acrobat_reader_dc_cont_apsb19-02_win.nasl: GPLv2+
 2019/apache/gb_apache_couchdb_priv_esc_vuln_lin.nasl: GPLv2+
 2019/apache/gb_apache_couchdb_priv_esc_vuln_win.nasl: GPLv2+
+2019/apache/gb_apache_hadoop_listxattr_vuln.nasl: GPLv2+
 2019/apache/gb_apache_httpd_http2_dos_vuln_lin.nasl: GPLv2+
 2019/apache/gb_apache_httpd_http2_dos_vuln_win.nasl: GPLv2+
 2019/apache/gb_apache_httpd_mod_session_cookie_vuln_lin.nasl: GPLv2+
@@ -43997,6 +43998,7 @@
 2019/debian/deb_4386.nasl: GPLv2+
 2019/debian/deb_4387.nasl: GPLv2+
 2019/debian/deb_4388.nasl: GPLv2+
+2019/debian/deb_4389.nasl: GPLv2+
 2019/debian/deb_dla_1621.nasl: GPLv2+
 2019/debian/deb_dla_1623.nasl: GPLv2+
 2019/debian/deb_dla_1624.nasl: GPLv2+
@@ -44042,6 +44044,10 @@
 2019/debian/deb_dla_1668.nasl: GPLv2+
 2019/debian/deb_dla_1669.nasl: GPLv2+
 2019/debian/deb_dla_1670.nasl: GPLv2+
+2019/debian/deb_dla_1671.nasl: GPLv2+
+2019/debian/deb_dla_1672.nasl: GPLv2+
+2019/debian/deb_dla_1673.nasl: GPLv2+
+2019/debian/deb_dla_1674.nasl: GPLv2+
 2019/discourse/gb_discourse_2.2.0beta2.nasl: GPLv2+
 2019/discourse/gb_discourse_2.2.0beta3.nasl: GPLv2+
 2019/discourse/gb_discourse_2.2.0beta4.nasl: GPLv2+
@@ -45369,6 +45375,7 @@ gb_ikiwiki_webui_detect.nasl: GPLv2+
 gb_ilias_detect.nasl: GPLv2+
 gb_image_hosting_script_dpi_detect.nasl: GPLv2+
 gb_imagemagick_detect_macosx.nasl: GPLv2+
+gb_inductive_automation_ignition_detect_win.nasl: GPLv2+
 gb_indusoft_web_studio_detect_win.nasl: GPLv2+
 gb_inedo_proget_detect.nasl: GPLv2+
 gb_informix_detect.nasl: GPLv2+
@@ -45565,6 +45572,7 @@ gb_microsoft_lync_detect_macosx.nasl: GPLv2+
 gb_microsoft_office_detect_macosx.nasl: GPLv2+
 gb_mikrotik_router_routeros_consolidation.nasl: GPLv2+
 gb_mikrotik_router_routeros_ftp_detect.nasl: GPLv2+
+gb_mikrotik_router_routeros_ssh_detect.nasl: GPLv2+
 gb_mikrotik_router_routeros_telnet_detect.nasl: GPLv2+
 gb_mikrotik_router_routeros_webui_detect.nasl: GPLv2+
 gb_milesight_camera_detect.nasl: GPLv2+
@@ -45933,6 +45941,7 @@ gb_redis_detect.nasl: GPLv2+
 gb_refbase_detect.nasl: GPLv2+
 gb_reflection_secureit_unix_detect_lin.nasl: GPLv2+
 gb_rekonq_detect.nasl: GPLv2+
+gb_rensen_opc_office_link_detect_win.nasl: GPLv2+
 gb_report_running_kernel.nasl: GPLv2+
 gb_reservo_detect.nasl: GPLv2+
 gb_revive_adserver_detect.nasl: GPLv2+
@@ -45997,10 +46006,12 @@ gb_schneider_eurotherm_guicon_detect_win.nasl: GPLv2+
 gb_schneider_homelynk_controller_detect.nasl: GPLv2+
 gb_schneider_indusoft_http_detect.nasl: GPLv2+
 gb_schneider_intouch_http_detect.nasl: GPLv2+
+gb_schneider_matrix_detect_win.nasl: GPLv2+
 gb_schneider_modbus_detect.nasl: GPLv2+
 gb_schneider_modicon_m340_detect.nasl: GPLv2+
 gb_schneider_opc_factory_server_detect_win.nasl: GPLv2+
 gb_schneider_opc_server_detect_win.nasl: GPLv2+
+gb_schneider_pacdrive3_diagnostics_detect_win.nasl: GPLv2+
 gb_schneider_sohvac_detect_win.nasl: GPLv2+
 gb_schneider_somove_detect_win.nasl: GPLv2+
 gb_schneider_struxureon_detect.nasl: GPLv2+
@@ -46181,6 +46192,7 @@ gb_sunny_webbox_remote_detect.nasl: GPLv2+
 gb_sun_one_java_sys_web_serv_detect_lin.nasl: GPLv2+
 gb_sun_oracle_ilo_detect.nasl: GPLv2+
 gb_superantispyware_detect.nasl: GPLv2+
+gb_suremdm_server_detect.nasl: GPLv2+
 gb_swarmpit_detect.nasl: GPLv2+
 gb_swftools_detect_lin.nasl: GPLv2+
 gb_swiftmailer_detect.nasl: GPLv2+
@@ -63200,6 +63212,7 @@ gsf/2018/zohocorp/gb_manageengine_servicedesk_plus_info_discl_vuln.nasl: GPLv2+
 gsf/2018/zohocorp/gb_manageengine_servicedesk_plus_msp_file_upload_vuln.nasl: GPLv2+
 gsf/2018/zohocorp/gb_manageengine_servicedesk_plus_xss_vuln.nasl: GPLv2+
 gsf/2018/zohocorp/gb_manageengine_supportcenter_plus_html_inj_n_xss_vuln.nasl: GPLv2+
+gsf/2019/42gears/gb_suremdm_mult_vuln.nasl: GPLv2+
 gsf/2019/abb/gb_cp400_panel_builder_dos_ce_vuln.nasl: GPLv2+
 gsf/2019/advantech/gb_advantech_webaccess_mult_vuln_jan19.nasl: GPLv2+
 gsf/2019/apache/gb_apache_spark_priv_esc_vuln.nasl: GPLv2+
@@ -63271,6 +63284,7 @@ gsf/2019/ibm/gb_ibm_spectrum_scale_ibm10732713.nasl: GPLv2+
 gsf/2019/ibm/gb_ibm_spectrum_scale_ibm10793719.nasl: GPLv2+
 gsf/2019/ibm/gb_ibm_spectrum_scale_ssg1S1010869.nasl: GPLv2+
 gsf/2019/ibm/gb_ibm_spectrum_scale_ssg1S1012049.nasl: GPLv2+
+gsf/2019/inductiveautomation/gb_ignition_mult_vuln_mar15.nasl: GPLv2+
 gsf/2019/juniper/gb_junos_jsa10900.nasl: GPLv2+
 gsf/2019/juniper/gb_junos_jsa10901.nasl: GPLv2+
 gsf/2019/juniper/gb_junos_jsa10902.nasl: GPLv2+
@@ -63333,6 +63347,7 @@ gsf/2019/rhel/gb_RHSA-2019_0232-01_spice-server.nasl: GPLv2+
 gsf/2019/rhel/gb_RHSA-2019_0269-01_thunderbird.nasl: GPLv2+
 gsf/2019/rockwellautomation/gb_factorytalk_services_platform_bof_vuln.nasl: GPLv2+
 gsf/2019/rundeck/gb_rundeck_xss_vuln.nasl: GPLv2+
+gsf/2019/schneider/gb_schneider_electric_pelco_sarix_ip_cam_default_credentials.nasl: GPLv2+
 gsf/2019/schneider/gb_schneider_electric_proface_gp-pro_ex_input_validation_vulnerability.nasl: GPLv2+
 gsf/2019/schneider/gb_schneider_eurotherm_guicon_mult_vuln.nasl: GPLv2+
 gsf/2019/schneider/gb_schneider_umotion_builder_mult_vuln.nasl: GPLv2+
@@ -63418,6 +63433,22 @@ gsf/Policy/gb_policy_etc_shadow_errors.nasl: GPLv2+
 gsf/Policy/gb_policy_etc_shadow.nasl: GPLv2+
 gsf/Policy/gb_policy_etc_shadow_ok.nasl: GPLv2+
 gsf/Policy/gb_policy_etc_shadow_violation.nasl: GPLv2+
+gsf/Policy/Linux/Audit/audit_config_immutable.nasl: GPLv2+
+gsf/Policy/Linux/Audit/auditd_configuration.nasl: GPLv2+
+gsf/Policy/Linux/Audit/auditd_early_processes.nasl: GPLv2+
+gsf/Policy/Linux/Audit/audit_file_attribute_changes.nasl: GPLv2+
+gsf/Policy/Linux/Audit/audit_file_deletion.nasl: GPLv2+
+gsf/Policy/Linux/Audit/audit_file_system_mounts.nasl: GPLv2+
+gsf/Policy/Linux/Audit/audit_kernel_module_loading.nasl: GPLv2+
+gsf/Policy/Linux/Audit/audit_login_logout.nasl: GPLv2+
+gsf/Policy/Linux/Audit/audit_mac_policy.nasl: GPLv2+
+gsf/Policy/Linux/Audit/audit_network_environment_changes.nasl: GPLv2+
+gsf/Policy/Linux/Audit/audit_session_initiation.nasl: GPLv2+
+gsf/Policy/Linux/Audit/audit_sudoers_modification.nasl: GPLv2+
+gsf/Policy/Linux/Audit/audit_sudolog_changes.nasl: GPLv2+
+gsf/Policy/Linux/Audit/audit_time_changes.nasl: GPLv2+
+gsf/Policy/Linux/Audit/audit_unsuccessful_unauthorized_file_access.nasl: GPLv2+
+gsf/Policy/Linux/Audit/audit_user_group_changes.nasl: GPLv2+
 gsf/Policy/Linux/Network/broadcast_icmp_requests.nasl: GPLv2+
 gsf/Policy/Linux/Network/disabled_network_protocols.nasl: GPLv2+
 gsf/Policy/Linux/Network/firewall_default_deny_policy.nasl: GPLv2+

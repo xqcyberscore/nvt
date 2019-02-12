@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_pods_info_disc_vuln.nasl 12528 2018-11-26 12:28:24Z asteins $
+# $Id: gb_wordpress_pods_info_disc_vuln.nasl 13590 2019-02-12 02:34:37Z ckuersteiner $
 #
 # WordPress Pods Plugin <= 2.7.9 Database Disclosure Vulnerability
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112441");
-  script_version("$Revision: 12528 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-26 13:28:24 +0100 (Mon, 26 Nov 2018) $");
+  script_version("$Revision: 13590 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-12 03:34:37 +0100 (Tue, 12 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-11-26 13:28:00 +0100 (Mon, 26 Nov 2018)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
@@ -48,9 +48,12 @@ if (description)
   script_mandatory_keys("wordpress/installed");
 
   script_tag(name:"summary", value:"WordPress Pods plugin is prone to a database disclosure vulnerability.");
+
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+
   script_tag(name:"affected", value:"WordPress Pods plugin through version 2.7.9.");
-  script_tag(name:"solution", value:"No known solution is available as of 26th November, 2018.
+
+  script_tag(name:"solution", value:"No known solution is available as of 12th February, 2019.
   Information regarding this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://cxsecurity.com/issue/WLB-2018110194");
@@ -78,10 +81,10 @@ if ("=== Pods - Custom Content Types and Fields ===" >< res && "Changelog" >< re
   vers = eregmatch(pattern: "Stable tag: ([0-9.]+)", string: res);
 
   if (!isnull(vers[1]) && version_is_less_equal(version: vers[1], test_version: "2.7.9")) {
-    report = report_fixed_ver(installed_version: vers[1], fixed_version: "NoneAvailable");
+    report = report_fixed_ver(installed_version: vers[1], fixed_version: "None");
     security_message(port: port, data: report);
     exit(0);
   }
 }
 
-exit(99);
+exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ocs_inventory_ng_rem_sh_upl_vuln.nasl 13455 2019-02-05 07:38:02Z mmartin $
+# $Id: gb_ocs_inventory_ng_rem_sh_upl_vuln.nasl 13590 2019-02-12 02:34:37Z ckuersteiner $
 #
 # OCS Inventory NG <= 2.5.0 Remote Shell Upload Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:ocsinventory-ng:ocs_inventory_ng";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107374");
-  script_version("$Revision: 13455 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-05 08:38:02 +0100 (Tue, 05 Feb 2019) $");
+  script_version("$Revision: 13590 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-12 03:34:37 +0100 (Tue, 12 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-11-23 11:45:49 +0100 (Fri, 23 Nov 2018)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -61,9 +61,8 @@ if (description)
 
   script_tag(name:"affected", value:"OCS Inventory NG version <= 2.5.0");
 
-  script_tag(name:"solution", value:"No known solution is available as of 23rd November, 2018.
-
-Information regarding this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution is available as of 12th February, 2019.
+  Information regarding this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://seclists.org/fulldisclosure/2018/Nov/40");
   script_xref(name:"URL", value:"https://exchange.xforce.ibmcloud.com/vulnerabilities/152967");
@@ -82,7 +81,7 @@ if (!version = get_app_version(cpe: CPE, port: port))
   exit(0);
 
 if (version_is_less_equal(version: version, test_version: "2.5.0")) {
-  report = report_fixed_ver(installed_version: version, fixed_version: "2.5.0");
+  report = report_fixed_ver(installed_version: version, fixed_version: "None");
   security_message(port: port, data: report);
   exit(0);
 }

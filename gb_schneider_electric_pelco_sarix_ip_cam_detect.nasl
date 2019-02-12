@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_schneider_electric_pelco_sarix_ip_cam_detect.nasl 11408 2018-09-15 11:35:21Z cfischer $
+# $Id: gb_schneider_electric_pelco_sarix_ip_cam_detect.nasl 13584 2019-02-11 14:47:27Z tpassfeld $
 #
 # Schneider Electric Pelco Sarix IP Camera Remote Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813064");
-  script_version("$Revision: 11408 $");
+  script_version("$Revision: 13584 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 13:35:21 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-11 15:47:27 +0100 (Mon, 11 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-04-03 14:44:14 +0530 (Tue, 03 Apr 2018)");
   script_name("Schneider Electric Pelco Sarix IP Camera Remote Detection");
 
@@ -60,8 +60,8 @@ ipPort = get_http_port(default:80);
 
 res = http_get_cache(port:ipPort, item:"/liveview");
 
-if("<title>Sarix&trade;</title>" >< res && "Pelco.com" >< res &&
-   res =~ "Copyrigh.*PELCO" && "camera" >< res && "Login" >< res)
+if(res =~ "<span>[Ss]arix&[Tt]rade;</span>" && res =~ "<span>Copyright\s*&copy;\s*[0-9]+-[0-9]+,\s*[Pp][Ee][Ll][Cc][Oo]\s*&middot;"
+  || "Sarix&trade;" >< res && 'tooltip.js"></script>' >< res && 'cookie.js"></script>' >< res)
 {
   version = "unknown";
   install = "/";

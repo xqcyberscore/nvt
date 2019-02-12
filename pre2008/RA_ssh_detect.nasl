@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: RA_ssh_detect.nasl 13568 2019-02-11 10:22:27Z cfischer $
+# $Id: RA_ssh_detect.nasl 13576 2019-02-11 12:44:20Z cfischer $
 # Description: RemotelyAnywhere SSH detection
 #
 # Authors:
@@ -28,19 +28,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10921");
-  script_version("$Revision: 13568 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-11 11:22:27 +0100 (Mon, 11 Feb 2019) $");
+  script_version("$Revision: 13576 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-11 13:44:20 +0100 (Mon, 11 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("RemotelyAnywhere SSH detection");
   script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("This script is Copyright (C) 2002 Michel Arboi");
   script_family("Malware");
   script_dependencies("ssh_detect.nasl");
   script_require_ports("Services/ssh", 22);
-  script_mandatory_keys("ssh/server_banner/available");
+  script_mandatory_keys("ssh/remotelyanywhere/detected");
 
   script_tag(name:"summary", value:"The RemotelyAnywhere SSH server is running on this system.");
 
@@ -48,6 +47,8 @@ if(description)
 
   If you installed it, ignore this warning. If not, your machine is
   compromised by an attacker.");
+
+  script_tag(name:"qod_type", value:"remote_banner");
 
   exit(0);
 }

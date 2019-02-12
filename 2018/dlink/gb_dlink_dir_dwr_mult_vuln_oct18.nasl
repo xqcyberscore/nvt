@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dir_dwr_mult_vuln_oct18.nasl 13316 2019-01-28 07:41:51Z asteins $
+# $Id: gb_dlink_dir_dwr_mult_vuln_oct18.nasl 13590 2019-02-12 02:34:37Z ckuersteiner $
 #
 # D-Link DIR/DWR Devices Multiple Vulnerabilities - Oct18
 #
@@ -29,13 +29,15 @@ CPE_PREFIX = "cpe:/o:dlink";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108487");
-  script_version("$Revision: 13316 $");
+  script_version("$Revision: 13590 $");
   script_cve_id("CVE-2018-10822", "CVE-2018-10823", "CVE-2018-10824");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-28 08:41:51 +0100 (Mon, 28 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-12 03:34:37 +0100 (Tue, 12 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-11-26 13:53:11 +0100 (Mon, 26 Nov 2018)");
+
   script_name("D-Link DIR/DWR Devices Multiple Vulnerabilities - Oct18");
+
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -76,7 +78,7 @@ if(description)
 
   Other devices, models or versions might be also affected.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 26th November, 2018. Information
+  script_tag(name:"solution", value:"No known solution is available as of 12th February, 2019. Information
   regarding this issue will be updated once solution details are available.");
 
   script_tag(name:"qod_type", value:"remote_vul");

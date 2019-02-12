@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ssh_detect.nasl 13567 2019-02-11 08:52:40Z cfischer $
+# $Id: ssh_detect.nasl 13593 2019-02-12 07:36:53Z cfischer $
 #
 # SSH Server type and version
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10267");
-  script_version("$Revision: 13567 $");
+  script_version("$Revision: 13593 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-11 09:52:40 +0100 (Mon, 11 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-12 08:36:53 +0100 (Tue, 12 Feb 2019) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_name("SSH Server type and version");
   script_category(ACT_GATHER_INFO);
@@ -78,6 +78,8 @@ close( soc );
 
 if( server_banner ) {
 
+  server_banner_lo = tolower( server_banner );
+
   set_kb_item( name:"ssh/server_banner/available", value:TRUE );
   set_kb_item( name:"ssh/server_banner/" + port + "/available", value:TRUE );
 
@@ -106,6 +108,76 @@ if( server_banner ) {
     if( ! cpe )
       cpe = "cpe:/a:openbsd:openssh";
     register_product( cpe:cpe, location:port + "/tcp", port:port, service:"ssh" );
+  }
+
+  if( "Foxit-WAC-Server" >< server_banner ) {
+    set_kb_item( name:"ssh/foxit/wac-server/detected", value:TRUE );
+    set_kb_item( name:"ssh/foxit/wac-server/" + port + "/detected", value:TRUE );
+  }
+
+  if( "dropbear" >< server_banner_lo ) {
+    set_kb_item( name:"ssh/dropbear/detected", value:TRUE );
+    set_kb_item( name:"ssh/dropbear/" + port + "/detected", value:TRUE );
+  }
+
+  if( egrep( string:server_banner, pattern:"^SSH-[0-9.]+-SSF" ) ) {
+    set_kb_item( name:"ssh/ssf/detected", value:TRUE );
+    set_kb_item( name:"ssh/ssf/" + port + "/detected", value:TRUE );
+  }
+
+  if( server_banner =~ "^SSH-.*libssh" ) {
+    set_kb_item( name:"ssh/libssh/detected", value:TRUE );
+    set_kb_item( name:"ssh/libssh/" + port + "/detected", value:TRUE );
+  }
+
+  if( server_banner =~ "SSH\-.*ReflectionForSecureIT" ) {
+    set_kb_item( name:"ssh/reflection/secureit/detected", value:TRUE );
+    set_kb_item( name:"ssh/reflection/secureit/" + port + "/detected", value:TRUE );
+  }
+
+  if( server_banner =~ "SSH-[0-9.]+-Comware" ) {
+    set_kb_item( name:"ssh/hp/comware/detected", value:TRUE );
+    set_kb_item( name:"ssh/hp/comware/" + port + "/detected", value:TRUE );
+  }
+
+  if( "SSH-2.0-Go" >< server_banner ) {
+    set_kb_item( name:"ssh/golang/ssh/detected", value:TRUE );
+    set_kb_item( name:"ssh/golang/ssh/" + port + "/detected", value:TRUE );
+  }
+
+  if( ereg( pattern:'SSH-[0-9.-]+[ \t]+RemotelyAnywhere', string:server_banner ) ) {
+    set_kb_item( name:"ssh/remotelyanywhere/detected", value:TRUE );
+    set_kb_item( name:"ssh/remotelyanywhere/" + port + "/detected", value:TRUE );
+  }
+
+  if( server_banner =~ "SSH.*xlightftpd" ) {
+    set_kb_item( name:"ssh/xlightftpd/detected", value:TRUE );
+    set_kb_item( name:"ssh/xlightftpd/" + port + "/detected", value:TRUE );
+  }
+
+  if( egrep( pattern:"SSH.+WeOnlyDo", string:server_banner ) ) {
+    set_kb_item( name:"ssh/freesshd/detected", value:TRUE );
+    set_kb_item( name:"ssh/freesshd/" + port + "/detected", value:TRUE );
+  }
+
+  if( server_banner =~ "SSH.*Bitvise SSH Server \(WinSSHD\)" ) {
+    set_kb_item( name:"ssh/bitvise/ssh_server/detected", value:TRUE );
+    set_kb_item( name:"ssh/bitvise/ssh_server/" + port + "/detected", value:TRUE );
+  }
+
+  if( egrep( pattern:"SSH.+SysaxSSH", string:server_banner ) ) {
+    set_kb_item( name:"ssh/sysaxssh/detected", value:TRUE );
+    set_kb_item( name:"ssh/sysaxssh/" + port + "/detected", value:TRUE );
+  }
+
+  if( egrep( pattern:"SSH.+Serv-U", string:server_banner ) ) {
+    set_kb_item( name:"ssh/serv-u/detected", value:TRUE );
+    set_kb_item( name:"ssh/serv-u/" + port + "/detected", value:TRUE );
+  }
+
+  if( "SSH-2.0-ROSSSH" >< server_banner ) {
+    set_kb_item( name:"ssh/mikrotik/routeros/detected", value:TRUE );
+    set_kb_item( name:"ssh/mikrotik/routeros/" + port + "/detected", value:TRUE );
   }
 
   if( cpe )

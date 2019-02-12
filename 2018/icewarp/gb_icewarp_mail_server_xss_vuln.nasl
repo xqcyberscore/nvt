@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_icewarp_mail_server_xss_vuln.nasl 12474 2018-11-22 04:39:06Z ckuersteiner $
+# $Id: gb_icewarp_mail_server_xss_vuln.nasl 13590 2019-02-12 02:34:37Z ckuersteiner $
 #
 # IceWarp Mail Server Cross Site Scripting Vulnerability
 #
@@ -28,12 +28,13 @@ CPE = "cpe:/a:icewarp:mail_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813464");
-  script_version("$Revision: 12474 $");
+  script_version("$Revision: 13590 $");
   script_cve_id("CVE-2018-7475");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-22 05:39:06 +0100 (Thu, 22 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-12 03:34:37 +0100 (Tue, 12 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-07-04 15:17:55 +0530 (Wed, 04 Jul 2018)");
+
   script_name("IceWarp Mail Server Cross Site Scripting Vulnerability");
 
   script_tag(name:"summary", value:"This host is running IceWarp Mail Server
@@ -49,9 +50,8 @@ if(description)
 
   script_tag(name:"affected", value:"IceWarp Mail Server version 12.0.3");
 
-  script_tag(name:"solution", value:"No known solution is available as
-  of 22nd November, 2018. Information regarding this issue will be updated once
-  solution details are available. For updates refer to Reference links.");
+  script_tag(name:"solution", value:"No known solution is available as of 12th February, 2019.
+  Information regarding this issue will be updated once solution details are available.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
 
@@ -65,24 +65,23 @@ if(description)
   script_dependencies("gb_icewarp_web_detect.nasl");
   script_mandatory_keys("icewarp/installed");
   script_require_ports("Services/www", 80);
+
   exit(0);
 }
 
 include("host_details.inc");
 include("version_func.inc");
 
-if(!appPort = get_app_port(cpe:CPE)){
+if(!appPort = get_app_port(cpe:CPE))
   exit(0);
-}
 
-infos = get_app_version_and_location( cpe:CPE, port:appPort, exit_no_version:TRUE );
-appVer = infos['version'];
-appPath = infos['location'];
+if (!appVer = get_app_version(cpe: CPE, port: appPort))
+  exit(0);
 
-if(appVer == "12.0.3")
-{
-  report = report_fixed_ver(installed_version:appVer, fixed_version:"None Available", install_path:appPath);
+if(appVer == "12.0.3") {
+  report = report_fixed_ver(installed_version:appVer, fixed_version:"None");
   security_message(port:appPort, data: report);
   exit(0);
 }
+
 exit(0);

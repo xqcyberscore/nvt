@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ssh_weak_hmac.nasl 13568 2019-02-11 10:22:27Z cfischer $
+# $Id: gb_ssh_weak_hmac.nasl 13581 2019-02-11 14:32:32Z cfischer $
 #
 # SSH Weak MAC Algorithms Supported
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105610");
-  script_version("$Revision: 13568 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-11 11:22:27 +0100 (Mon, 11 Feb 2019) $");
+  script_version("$Revision: 13581 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-11 15:32:32 +0100 (Mon, 11 Feb 2019) $");
   script_tag(name:"creation_date", value:"2016-04-19 11:49:32 +0200 (Tue, 19 Apr 2016)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:N/A:N");
   script_tag(name:"cvss_base", value:"2.6");
@@ -38,6 +38,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("gb_ssh_algos.nasl");
   script_require_ports("Services/ssh", 22);
+  script_mandatory_keys("ssh/algos_available");
 
   script_tag(name:"summary", value:"The remote SSH server is configured to allow weak MD5 and/or 96-bit MAC algorithms.");
 
@@ -51,29 +52,31 @@ if(description)
 
 include("ssh_func.inc");
 
-function check_algo( port, type )
-{
+function check_algo( port, type ) {
+
   local_var macs, port, type;
 
-  if( ! type || ! port ) return;
+  if( ! type || ! port )
+    return;
 
-  algos = get_kb_list("ssh/" + port + "/mac_algorithms_" + type );
-  if( ! algos ) return;
+  algos = get_kb_list( "ssh/" + port + "/mac_algorithms_" + type );
+  if( ! algos )
+    return;
 
   macs = '';
 
   # Sort to not report changes on delta reports if just the order is different
   algos = sort( algos );
 
-  foreach found_algo ( algos )
+  foreach found_algo( algos )
     if( "none" >< found_algo || "md5" >< found_algo || "-96" >< found_algo )
       macs += found_algo + '\n';
 
-  if( strlen( macs ) > 0 ) return macs;
-
+  if( strlen( macs ) > 0 )
+    return macs;
 }
 
-port = get_ssh_port(default:22);
+port = get_ssh_port( default:22 );
 
 if( rep = check_algo( port:port, type:"client_to_server" ) )
   report = 'The following weak client-to-server MAC algorithms are supported by the remote service:\n\n' + rep + '\n\n';
@@ -81,8 +84,7 @@ if( rep = check_algo( port:port, type:"client_to_server" ) )
 if( rep = check_algo( port:port, type:"server_to_client" ) )
   report += 'The following weak server-to-client MAC algorithms are supported by the remote service:\n\n' + rep + '\n\n';
 
-if( report )
-{
+if( report ) {
   security_message( port:port, data:report );
   exit( 0 );
 }

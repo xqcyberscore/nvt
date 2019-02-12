@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ssh_algos.nasl 13568 2019-02-11 10:22:27Z cfischer $
+# $Id: gb_ssh_algos.nasl 13581 2019-02-11 14:32:32Z cfischer $
 #
 # SSH Protocol Algorithms Supported
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105565");
-  script_version("$Revision: 13568 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-11 11:22:27 +0100 (Mon, 11 Feb 2019) $");
+  script_version("$Revision: 13581 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-11 15:32:32 +0100 (Mon, 11 Feb 2019) $");
   script_tag(name:"creation_date", value:"2016-03-09 08:39:30 +0100 (Wed, 09 Mar 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -50,7 +50,7 @@ if(description)
 include("ssh_func.inc");
 include("byte_func.inc");
 
-port = get_ssh_port(default:22);
+port = get_ssh_port( default:22 );
 
 types = make_list(
   "kex_algorithms",
@@ -63,10 +63,10 @@ types = make_list(
   "compression_algorithms_server_to_client");
 
 sock = open_sock_tcp( port );
-if( ! sock ) exit( 0 );
+if( ! sock )
+  exit( 0 );
 
 server_version = ssh_exchange_identification( socket:sock );
-
 if( ! server_version ) {
   close( sock );
   exit( 0 );
@@ -75,28 +75,34 @@ if( ! server_version ) {
 buf = ssh_recv( socket:sock, length:2000 );
 close( sock );
 
-if( isnull( buf ) ) exit( 0 );
+if( isnull( buf ) )
+  exit( 0 );
 
 blen = strlen( buf );
-if( blen < 40 ) exit( 0 );
+if( blen < 40 )
+  exit( 0 );
 
-if( ord( buf[5] ) != 20 ) exit( 0 );
+if( ord( buf[5] ) != 20 )
+  exit( 0 );
 
 pos = 22;
 
 foreach typ( types ) {
 
-  if( pos + 4 > blen ) break;
+  if( pos + 4 > blen )
+    break;
 
   len = getdword( blob:buf, pos:pos );
   pos += 4;
 
-  if( pos + len > blen ) exit( 0 );
+  if( pos + len > blen )
+    exit( 0 );
 
   options = substr( buf, pos, pos + len - 1 );
   pos += len;
 
-  if( ! options ) continue;
+  if( ! options )
+    continue;
 
   str = split( options, sep:",", keep:FALSE );
 
@@ -108,6 +114,8 @@ foreach typ( types ) {
 
 # Used in ssh_login_failed to evaluate if the SSH server is using unsupported algorithms
 set_kb_item( name:"ssh/" + port + "/algos_available", value:TRUE );
+
+set_kb_item( name:"ssh/algos_available", value:TRUE );
 
 report = 'The following options are supported by the remote ssh service:\n\n' + report;
 

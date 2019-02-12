@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_isc_bind_dns64_n_rps_dos_vuln.nasl 11836 2018-10-11 08:56:08Z mmartin $
+# $Id: gb_isc_bind_dns64_n_rps_dos_vuln.nasl 13595 2019-02-12 08:06:21Z mmartin $
 #
 # ISC BIND DNS64 and RPZ Denial of Service Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:isc:bind";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810547");
-  script_version("$Revision: 11836 $");
+  script_version("$Revision: 13595 $");
   script_cve_id("CVE-2017-3135");
   script_bugtraq_id(96150);
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:56:08 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-12 09:06:21 +0100 (Tue, 12 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-02-27 13:12:12 +0530 (Mon, 27 Feb 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("ISC BIND DNS64 and RPZ Denial of Service Vulnerability");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test support library
-# $Id: policy_functions.inc 13346 2019-01-29 15:23:13Z emoss $
+# $Id: policy_functions.inc 13583 2019-02-11 14:35:09Z emoss $
 #
 # Supporting methods for Policy NVTs.
 #
@@ -281,9 +281,8 @@ function get_grub_config_file(){
 # 				other error occurred
 function ssh_cmd_without_errors(socket, cmd){
 	local_var socket, cmd;
-
 	ret = ssh_cmd(socket:socket, cmd:cmd, return_errors:FALSE);
-
+	
 	if('No such file or directory' >< ret) return;
 	if('command not found' >< ret) return;
 
@@ -301,7 +300,7 @@ function ssh_cmd_without_errors(socket, cmd){
 function linux_file_permissions(file, socket){
 	local_var socket, file;
 
-	if(!sock){
+	if(!socket){
 		set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#linux_file_permissions#-#socket" );
 		return;
 	}
@@ -326,5 +325,48 @@ function linux_file_permissions(file, socket){
 
 		return (return_array);
 	}
+	return;
+}
+
+# @brief check if a service is enabled on a Linux host.
+#				 Uses systemctl is-enabled, chkconfig --list and
+#				 at last search for service in /etc/rc*.d files
+#
+# @param service the service to search for
+#				 socket socket for the ssh command
+#
+# @return TRUE if service is enabled, nothing if not
+function linux_service_is_enabled(service, socket){
+	local_var service, socket;
+
+	if(!socket){
+		set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#linux_file_permissions#-#socket" );
+		return;
+	}
+
+	if(!service){
+		set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#linux_file_permissions#-#service" );
+		return;
+	}
+
+	systemctl_cmd = 'systemctl is-enabled ' + service;
+	systemctl = ssh_cmd_without_errors(socket:socket, cmd:systemctl_cmd);
+	if('enabled' >< systemctl){
+		return TRUE;
+	}
+
+	chkconfig_cmd = 'chkconfig --list ' + service;
+	chkconfig = ssh_cmd_without_errors(socket:socket, cmd:chkconfig_cmd);
+	if('2:on' >< chkconfig && '3:on' >< chkconfig && '4:on' >< chkconfig && '5:on' >< chkconfig){
+		return TRUE;
+	}
+
+	ls_grep_cmd = 'ls /etc/rc*.d | grep ' + service;
+	ls_grep = ssh_cmd_without_errors(socket:socket, cmd:ls_grep_cmd);
+	enabled = eregmatch(string:ls_grep, pattern:'[\\^S][^\n\r]*');
+	if(enabled){
+		return TRUE;
+	}
+
 	return;
 }

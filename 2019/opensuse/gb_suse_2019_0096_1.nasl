@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2019_0096_1.nasl 13451 2019-02-05 05:56:56Z santu $
+# $Id: gb_suse_2019_0096_1.nasl 13595 2019-02-12 08:06:21Z mmartin $
 #
 # SuSE Update for freerdp openSUSE-SU-2019:0096-1 (freerdp)
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852263");
-  script_version("$Revision: 13451 $");
+  script_version("$Revision: 13595 $");
   script_cve_id("CVE-2018-0886", "CVE-2018-1000852", "CVE-2018-8784", "CVE-2018-8785", "CVE-2018-8786", "CVE-2018-8787", "CVE-2018-8788", "CVE-2018-8789");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-05 06:56:56 +0100 (Tue, 05 Feb 2019) $");
+  script_tag(name:"cvss_base", value:"7.6");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-12 09:06:21 +0100 (Tue, 12 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-30 04:03:58 +0100 (Wed, 30 Jan 2019)");
   script_name("SuSE Update for freerdp openSUSE-SU-2019:0096-1 (freerdp)");
   script_category(ACT_GATHER_INFO);

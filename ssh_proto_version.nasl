@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ssh_proto_version.nasl 13569 2019-02-11 10:27:56Z cfischer $
+# $Id: ssh_proto_version.nasl 13594 2019-02-12 07:55:17Z cfischer $
 #
 # SSH Protocol Versions Supported
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100259");
-  script_version("$Revision: 13569 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-11 11:27:56 +0100 (Mon, 11 Feb 2019) $");
+  script_version("$Revision: 13594 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-12 08:55:17 +0100 (Tue, 12 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-08-25 21:06:41 +0200 (Tue, 25 Aug 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -56,12 +56,6 @@ include("host_details.inc");
 
 vt_strings = get_vt_strings();
 
-port = get_ssh_port(default:22);
-
-soc = open_sock_tcp(port);
-if( ! soc ) exit( 0 );
-close( soc );
-
 function read_key( key, setKB ) {
 
   local_var key, setKB, key_hex, len, fingerprint, x;
@@ -77,21 +71,21 @@ function read_key( key, setKB ) {
   }
 
   if( setKB ) {
+    set_kb_item( name:"SSH/fingerprints/available", value:TRUE );
     if( "ssh-rsa" >< key ) {
-       set_kb_item( name:string( "SSH/", port, "/fingerprint/ssh-rsa" ), value:fingerprint );
-    }
-    if( "ssh-dss" >< key ) {
-       set_kb_item( name:string( "SSH/", port, "/fingerprint/ssh-dss" ), value:fingerprint );
+      set_kb_item( name:"SSH/" + port + "/fingerprint/ssh-rsa", value:fingerprint );
+    } else if( "ssh-dss" >< key ) {
+      set_kb_item( name:"SSH/" + port + "/fingerprint/ssh-dss", value:fingerprint );
     }
   }
 
   return fingerprint;
-
 }
 
-function get_fingerprint( version ) {
+function get_fingerprint( version, port ) {
 
-  local_var buf, header, fingerprint, key, len, version, soc, algo, rep, key64, sess_id, algos, tmpAlgoList, kb_algos, ka;
+  local_var version, port;
+  local_var buf, header, fingerprint, key, len, soc, algo, rep, key64, sess_id, algos, tmpAlgoList, kb_algos, ka;
 
   if( version == "2.0" ) {
 
@@ -99,15 +93,19 @@ function get_fingerprint( version ) {
     tmpAlgoList = make_list();
 
     kb_algos = get_kb_list( "ssh/" + port + "/server_host_key_algorithms" );
-    if( kb_algos )
-      foreach ka ( kb_algos ) algos = make_list( algos, ka );
+    if( kb_algos ) {
+      foreach ka( kb_algos )
+        algos = make_list( algos, ka );
+    }
 
-    if( ! algos ) algos = ssh_host_key_algos;
+    if( ! algos )
+      algos = ssh_host_key_algos;
 
     foreach algo( algos ) {
 
       soc = open_sock_tcp( port );
-      if( ! soc ) return FALSE;
+      if( ! soc )
+        return FALSE;
 
       ssh_login( socket:soc, keytype:algo );
 
@@ -121,11 +119,13 @@ function get_fingerprint( version ) {
 
       close( soc );
 
-      if( algo >!< key ) continue;
+      if( algo >!< key )
+        continue;
 
       fingerprint = read_key( key:key );
       key64 = base64( str:key );
 
+      set_kb_item( name:"SSH/fingerprints/available", value:TRUE );
       set_kb_item( name:"SSH/" + port + "/fingerprint/" + algo, value:fingerprint );
       set_kb_item( name:"SSH/" + port + "/publickey/" + algo , value:key64 );
 
@@ -137,31 +137,36 @@ function get_fingerprint( version ) {
     # Sort to not report changes on delta reports if just the order is different
     tmpAlgoList = sort( tmpAlgoList );
 
-    foreach tmpAlgo( tmpAlgoList ) {
-      rep += tmpAlgo + '\n';
-    }
+    foreach tmpAlgo( tmpAlgoList )
+      rep += '\n' + tmpAlgo;
 
     return rep;
 
   } else if( version == "1.5" ) {
 
     soc = open_sock_tcp( port );
-    if( ! soc ) return FALSE;
+    if( ! soc )
+      return FALSE;
 
     buf = recv_line( socket:soc, length:8192 );
     send( socket:soc, data:'SSH-1.5-' + vt_strings["default"] + '_1.0\n' );
 
     header = recv( socket:soc, length:4 );
-    if( strlen( header ) < 4 ) return FALSE;
+    if( strlen( header ) < 4 )
+      return FALSE;
 
     len = ord( header[2] ) * 256 + ord( header[3] );
     buf = recv( socket:soc, length:len );
-    if( ! buf ) return FALSE;
+    if( ! buf )
+      return FALSE;
+
     buf = header + buf;
 
     close( soc );
 
-    if( ! key = substr( buf, 132, 259 ) + raw_string( 0x23 ) ) return FALSE;
+    if( ! key = substr( buf, 132, 259 ) + raw_string( 0x23 ) )
+      return FALSE;
+
     if( fingerprint = read_key( key:key, setKB:TRUE ) ) {
       return fingerprint;
     } else {
@@ -174,12 +179,16 @@ function get_fingerprint( version ) {
   return fingerprint;
 }
 
-versions = make_list( "1.33", "1.5", "1.99", "2.0" );
+# nb: See comment on the purpose of 0.12 below.
+versions = make_list( "0.12", "1.33", "1.5", "1.99", "2.0" );
+
+port = get_ssh_port( default:22 );
 
 foreach version( versions ) {
 
   soc = open_sock_tcp( port );
-  if( ! soc ) exit( 0 );
+  if( ! soc )
+    exit( 0 );
 
   ret = recv_line( socket:soc, length:512 );
   if( ! ret ) {
@@ -187,7 +196,7 @@ foreach version( versions ) {
     exit( 0 );
   }
 
-  if( ! egrep( pattern:"^SSH-.*", string:ret ) ){
+  if( ! egrep( pattern:"^SSH-.+", string:ret ) ){
     close( soc );
     return( 0 );
   }
@@ -198,34 +207,54 @@ foreach version( versions ) {
   ret = recv_line( socket:soc, length:500 );
   close( soc );
 
+  # e.g. SSH-1.5-Cisco-1.25 services (and a few more) doesn't answer at all to e.g. version 0.12
+  if( ! ret )
+    continue;
+
   if( ! egrep( pattern:"Protocol.*differ", string:ret ) ) {
+
+    # nb: e.g. Dropbear answers to non-existent SSH versions, we assume 2.0 only.
+    if( version == "0.12" ) {
+      random_ver_response = TRUE;
+      version = "2.0";
+    }
+
     supported_versions[version] = version;
+    set_kb_item( name:"SSH/supportedversions/" + port, value:version );
+
+    if( random_ver_response )
+      break;
   }
 }
 
 if( supported_versions ) {
 
+  supported_versions = sort( supported_versions );
+
   foreach supported( supported_versions ) {
     if( supported == "2.0" || supported == "1.5" ) {
-      if( fingerprint = get_fingerprint( version:supported ) ) {
+      if( fingerprint = get_fingerprint( version:supported, port:port ) ) {
         if( supported == "2.0" ) {
-          fingerprint_info += string("SSHv2 Fingerprint:\n", fingerprint, "\n");
+          fingerprint_info += '\nSSHv2 Fingerprint(s):' + fingerprint;
         } else if( supported == "1.5" ) {
-          fingerprint_info += string("SSHv1 Fingerprint: ", fingerprint, "\n");
+          fingerprint_info += '\nSSHv1 Fingerprint: ' + fingerprint;
         }
       }
     }
-    info += string( chomp( supported ), "\n" );
+    info += string( "\n", chomp( supported ) );
   }
 
-  if( fingerprint_info ) {
+  if( fingerprint_info )
     info += string( "\n", fingerprint_info );
+
+  set_kb_item( name:"SSH/supportedversions/available", value:TRUE );
+
+  if( random_ver_response ) {
+    info += '\n\nNote: The remote SSH service is accepting the non-existent SSH Protocol Version 0.12. Because of this behavior it is not possible to fingerprint';
+    info += " the exact supported SSH Protocol Version. Based on this support for SSH Protocol Version 2.0 only is assumed.";
   }
 
-  set_kb_item( name:"SSH/supportedversions/" + port, value:supported_versions );
-
-  log_message( port:port, data:'The remote SSH Server supports the following SSH Protocol Versions:\n' + info );
-  exit( 0 );
+  log_message( port:port, data:'The remote SSH Server supports the following SSH Protocol Versions:' + info );
 }
 
 exit( 0 );

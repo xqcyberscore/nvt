@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2018_0158_dhclient_centos7.nasl 8606 2018-01-31 13:07:06Z santu $
+# $Id: gb_CESA-2018_0158_dhclient_centos7.nasl 13595 2019-02-12 08:06:21Z mmartin $
 #
 # CentOS Update for dhclient CESA-2018:0158 centos7 
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882835");
-  script_version("$Revision: 8606 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-31 14:07:06 +0100 (Wed, 31 Jan 2018) $");
+  script_version("$Revision: 13595 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-12 09:06:21 +0100 (Tue, 12 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-01-26 07:45:51 +0100 (Fri, 26 Jan 2018)");
   script_cve_id("CVE-2017-3144");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("CentOS Update for dhclient CESA-2018:0158 centos7 ");
   script_tag(name: "summary", value: "Check the version of dhclient");

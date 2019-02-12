@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ssh_ssf.nasl 13568 2019-02-11 10:22:27Z cfischer $
+# $Id: ssh_ssf.nasl 13576 2019-02-11 12:44:20Z cfischer $
 #
 # SSF Detection
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80087");
-  script_version("$Revision: 13568 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-11 11:22:27 +0100 (Mon, 11 Feb 2019) $");
+  script_version("$Revision: 13576 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-11 13:44:20 +0100 (Mon, 11 Feb 2019) $");
   script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:N/A:P");
@@ -39,10 +39,9 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2008 Michel Arboi");
   script_family("Service detection");
-  script_dependencies("ssh_detect.nasl", "gb_dropbear_ssh_detect.nasl");
+  script_dependencies("ssh_detect.nasl");
   script_require_ports("Services/ssh", 22);
-  script_mandatory_keys("ssh/server_banner/available");
-  script_exclude_keys("openssh/detected", "dropbear/installed");
+  script_mandatory_keys("ssh/ssf/detected");
 
   script_xref(name:"URL", value:"http://ccweb.in2p3.fr/secur/ssf/");
   script_xref(name:"URL", value:"http://perso.univ-rennes1.fr/bernard.perrot/SSF/");
@@ -77,7 +76,8 @@ include("ssh_func.inc");
 
 port = get_ssh_port( default:22 );
 banner = get_ssh_server_banner( port:port );
-if( ! banner ) exit( 0 );
+if( ! banner )
+  exit( 0 );
 
 if( egrep( string:banner, pattern:"^SSH-[0-9.]+-SSF" ) ) {
   security_message( port:port, data:"Banner: " + banner );

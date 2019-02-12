@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843899");
-  script_version("$Revision$");
+  script_version("$Revision: 13575 $");
   script_cve_id("CVE-2018-16890", "CVE-2019-3822", "CVE-2019-3823");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date$");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-11 13:03:16 +0100 (Mon, 11 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-02-07 04:03:37 +0100 (Thu, 07 Feb 2019)");
   script_name("Ubuntu Update for curl USN-3882-1");
   script_category(ACT_GATHER_INFO);

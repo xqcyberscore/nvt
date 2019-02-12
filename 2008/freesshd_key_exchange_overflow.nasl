@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: freesshd_key_exchange_overflow.nasl 13568 2019-02-11 10:22:27Z cfischer $
+# $Id: freesshd_key_exchange_overflow.nasl 13576 2019-02-11 12:44:20Z cfischer $
 # Description: FreeSSHD Key Exchange Buffer Overflow
 #
 # Authors:
@@ -25,8 +25,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.200012");
-  script_version("$Revision: 13568 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-11 11:22:27 +0100 (Mon, 11 Feb 2019) $");
+  script_version("$Revision: 13576 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-11 13:44:20 +0100 (Mon, 11 Feb 2019) $");
   script_tag(name:"creation_date", value:"2008-08-22 16:09:14 +0200 (Fri, 22 Aug 2008)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -39,7 +39,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2008 Ferdy Riphagen");
   script_dependencies("ssh_detect.nasl");
   script_require_ports("Services/ssh", 22);
-  script_mandatory_keys("ssh/server_banner/available");
+  script_mandatory_keys("ssh/freesshd/detected");
 
   script_tag(name:"summary", value:"A vulnerable version of FreeSSHd is installed on
   the remote host.");

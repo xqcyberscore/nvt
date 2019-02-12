@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_comware_platform_detect_ssh.nasl 13568 2019-02-11 10:22:27Z cfischer $
+# $Id: gb_hp_comware_platform_detect_ssh.nasl 13576 2019-02-11 12:44:20Z cfischer $
 #
 # HP Comware Devices Detect (SSH)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106411");
-  script_version("$Revision: 13568 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-11 11:22:27 +0100 (Mon, 11 Feb 2019) $");
+  script_version("$Revision: 13576 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-11 13:44:20 +0100 (Mon, 11 Feb 2019) $");
   script_tag(name:"creation_date", value:"2016-11-25 11:50:20 +0700 (Fri, 25 Nov 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -45,7 +45,7 @@ if(description)
   script_family("Product detection");
   script_dependencies("ssh_detect.nasl");
   script_require_ports("Services/ssh", 22);
-  script_mandatory_keys("ssh/server_banner/available");
+  script_mandatory_keys("ssh/hp/comware/detected");
 
   exit(0);
 }
@@ -73,7 +73,7 @@ cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/a:hp:comware:");
 if (!cpe)
   cpe = 'cpe:/a:hp:comware';
 
-register_product(cpe: cpe, port: port);
+register_product(cpe: cpe, port: port, service: "ssh");
 
 log_message(data: build_detection_report(app: "HP Comware Device", version: version, cpe: cpe, concluded: vers[0]),
             port: port);

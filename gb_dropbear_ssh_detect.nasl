@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dropbear_ssh_detect.nasl 13571 2019-02-11 11:00:12Z cfischer $
+# $Id: gb_dropbear_ssh_detect.nasl 13576 2019-02-11 12:44:20Z cfischer $
 #
 # Dropbear SSH Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105112");
-  script_version("$Revision: 13571 $");
+  script_version("$Revision: 13576 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-11 12:00:12 +0100 (Mon, 11 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-11 13:44:20 +0100 (Mon, 11 Feb 2019) $");
   script_tag(name:"creation_date", value:"2014-11-11 10:04:39 +0100 (Tue, 11 Nov 2014)");
   script_name("Dropbear SSH Detection");
   script_category(ACT_GATHER_INFO);
@@ -39,7 +39,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
   script_dependencies("ssh_detect.nasl");
   script_require_ports("Services/ssh", 22);
-  script_mandatory_keys("ssh/server_banner/available");
+  script_mandatory_keys("ssh/dropbear/detected");
 
   script_tag(name:"summary", value:"The script sends a connection request to the server
   and attempts to extract the version number from the reply.");
@@ -66,7 +66,7 @@ if( banner && "dropbear" >< tolower( banner ) ) {
   install = port + "/tcp";
 
   cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:matt_johnston:dropbear_ssh_server:" );
-  if( isnull( cpe ) )
+  if( ! cpe )
     cpe = "cpe:/a:matt_johnston:dropbear_ssh_server";
 
   register_product( cpe:cpe, location:install, port:port, service:"ssh" );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smtpserver_detect.nasl 13470 2019-02-05 12:39:51Z cfischer $
+# $Id: smtpserver_detect.nasl 13596 2019-02-12 08:39:25Z cfischer $
 #
 # SMTP Server type and version
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10263");
-  script_version("$Revision: 13470 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-05 13:39:51 +0100 (Tue, 05 Feb 2019) $");
+  script_version("$Revision: 13596 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-12 09:39:25 +0100 (Tue, 12 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -50,7 +50,6 @@ if(description)
 include("smtp_func.inc");
 include("host_details.inc");
 include("misc_func.inc");
-include("xml.inc");
 
 ports = smtp_get_ports();
 foreach port( ports ) {

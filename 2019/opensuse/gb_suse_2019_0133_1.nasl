@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2019_0133_1.nasl 13500 2019-02-06 13:03:57Z santu $
+# $Id: gb_suse_2019_0133_1.nasl 13595 2019-02-12 08:06:21Z mmartin $
 #
 # SuSE Update for MozillaFirefox openSUSE-SU-2019:0133-1 (MozillaFirefox)
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852270");
-  script_version("$Revision: 13500 $");
+  script_version("$Revision: 13595 $");
   script_cve_id("CVE-2018-18500", "CVE-2018-18501", "CVE-2018-18505");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-06 14:03:57 +0100 (Wed, 06 Feb 2019) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-12 09:06:21 +0100 (Tue, 12 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-02-05 04:05:37 +0100 (Tue, 05 Feb 2019)");
   script_name("SuSE Update for MozillaFirefox openSUSE-SU-2019:0133-1 (MozillaFirefox)");
   script_category(ACT_GATHER_INFO);

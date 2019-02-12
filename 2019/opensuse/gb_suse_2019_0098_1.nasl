@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2019_0098_1.nasl 13451 2019-02-05 05:56:56Z santu $
+# $Id: gb_suse_2019_0098_1.nasl 13595 2019-02-12 08:06:21Z mmartin $
 #
 # SuSE Update for systemd openSUSE-SU-2019:0098-1 (systemd)
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852260");
-  script_version("$Revision: 13451 $");
+  script_version("$Revision: 13595 $");
   script_cve_id("CVE-2018-16864", "CVE-2018-16865", "CVE-2018-16866", "CVE-2018-6954");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-05 06:56:56 +0100 (Tue, 05 Feb 2019) $");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-12 09:06:21 +0100 (Tue, 12 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-30 04:03:21 +0100 (Wed, 30 Jan 2019)");
   script_name("SuSE Update for systemd openSUSE-SU-2019:0098-1 (systemd)");
   script_category(ACT_GATHER_INFO);

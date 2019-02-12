@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4376.nasl 13375 2019-01-31 07:53:47Z cfischer $
+# $Id: deb_4376.nasl 13595 2019-02-12 08:06:21Z mmartin $
 #
 # Auto-generated from advisory DSA 4376-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704376");
-  script_version("$Revision: 13375 $");
+  script_version("$Revision: 13595 $");
   script_cve_id("CVE-2018-18500", "CVE-2018-18501", "CVE-2018-18505");
   script_name("Debian Security Advisory DSA 4376-1 (firefox-esr - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-31 08:53:47 +0100 (Thu, 31 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-12 09:06:21 +0100 (Tue, 12 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-30 00:00:00 +0100 (Wed, 30 Jan 2019)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

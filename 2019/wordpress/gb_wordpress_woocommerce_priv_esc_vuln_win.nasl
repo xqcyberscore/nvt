@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_woocommerce_priv_esc_vuln_win.nasl 13094 2019-01-16 10:33:09Z asteins $
+# $Id: gb_wordpress_woocommerce_priv_esc_vuln_win.nasl 13595 2019-02-12 08:06:21Z mmartin $
 #
 # WordPress WooCommerce Plugin Privilege Escalation Vulnerability (Windows)
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112487");
-  script_version("$Revision: 13094 $");
-  script_tag(name:"cvss_base", value:"8.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-16 11:33:09 +0100 (Wed, 16 Jan 2019) $");
+  script_version("$Revision: 13595 $");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-12 09:06:21 +0100 (Tue, 12 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-16 11:33:11 +0100 (Wed, 16 Jan 2019)");
 
   script_cve_id("CVE-2017-18356");

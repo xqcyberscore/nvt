@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sysax_multi_server_ssh_dos_vuln.nasl 13571 2019-02-11 11:00:12Z cfischer $
+# $Id: gb_sysax_multi_server_ssh_dos_vuln.nasl 13576 2019-02-11 12:44:20Z cfischer $
 #
 # Sysax Multi Server SSH Component NULL Pointer Dereference DOS Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803191");
-  script_version("$Revision: 13571 $");
+  script_version("$Revision: 13576 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-11 12:00:12 +0100 (Mon, 11 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-11 13:44:20 +0100 (Mon, 11 Feb 2019) $");
   script_tag(name:"creation_date", value:"2013-04-16 11:21:21 +0530 (Tue, 16 Apr 2013)");
   script_name("Sysax Multi Server SSH Component NULL Pointer Dereference DOS Vulnerability");
   script_xref(name:"URL", value:"http://secunia.com/advisories/52934");
@@ -44,7 +44,7 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("ssh_detect.nasl");
   script_require_ports("Services/ssh", 22);
-  script_mandatory_keys("ssh/server_banner/available");
+  script_mandatory_keys("ssh/sysaxssh/detected");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause the application
   to crash, creating a denial-of-service condition.");
