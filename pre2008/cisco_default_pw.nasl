@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cisco_default_pw.nasl 13568 2019-02-11 10:22:27Z cfischer $
+# $Id: cisco_default_pw.nasl 13624 2019-02-13 10:02:56Z cfischer $
 #
 # Cisco default password
 #
@@ -38,8 +38,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.23938");
-  script_version("$Revision: 13568 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-11 11:22:27 +0100 (Mon, 11 Feb 2019) $");
+  script_version("$Revision: 13624 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-13 11:02:56 +0100 (Wed, 13 Feb 2019) $");
   script_tag(name:"creation_date", value:"2007-11-04 00:32:20 +0100 (Sun, 04 Nov 2007)");
   script_cve_id("CVE-1999-0508");
   script_tag(name:"cvss_base", value:"4.6");
@@ -50,6 +50,7 @@ if(description)
   script_family("CISCO");
   script_dependencies("telnetserver_detect_type_nd_version.nasl", "ssh_detect.nasl");
   script_require_ports("Services/telnet", 23, "Services/ssh", 22);
+  script_mandatory_keys("ssh_or_telnet/banner/available");
   script_exclude_keys("default_credentials/disable_default_account_checks");
 
   script_add_preference(name:"Use complete password list (not only vendor specific passwords)", type:"checkbox", value:"no");

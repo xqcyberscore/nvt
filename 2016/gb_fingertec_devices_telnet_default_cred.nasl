@@ -1,5 +1,5 @@
 ###############################################################################
-# $Id: gb_fingertec_devices_telnet_default_cred.nasl 12455 2018-11-21 09:17:27Z cfischer $
+# $Id: gb_fingertec_devices_telnet_default_cred.nasl 13624 2019-02-13 10:02:56Z cfischer $
 #
 # FingerTec Devices Telnet Default Credentials Vulnerability
 #
@@ -26,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807525");
-  script_version("$Revision: 12455 $");
+  script_version("$Revision: 13624 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-13 11:02:56 +0100 (Wed, 13 Feb 2019) $");
   script_tag(name:"creation_date", value:"2016-03-16 15:57:40 +0530 (Wed, 16 Mar 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("FingerTec Devices Telnet Default Credentials Vulnerability");
@@ -63,25 +63,20 @@ if(description)
   script_family("Default Accounts");
   script_dependencies("telnetserver_detect_type_nd_version.nasl");
   script_require_ports("Services/telnet", 23);
+  script_mandatory_keys("telnet/fingertex/device/detected");
+
   exit(0);
 }
 
-
 include("telnet_func.inc");
 
-fingport = get_kb_item("Services/telnet");
-if(!fingport) fingport = 23;
-
-if(!get_port_state(fingport)) exit(0);
-
+fingport = get_telnet_port(default:23);
 if(!banner = get_telnet_banner(port:fingport)) exit(0);
-
 if("ZEM" >!< banner) exit(0);
 
 soc = open_sock_tcp(fingport);
 if(!soc) exit(0);
 
-##Making credentials set
 creds = make_array("root", "founder88",
                    "root", "colorkey",
                    "root", "solokey",

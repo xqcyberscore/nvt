@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: open_ftpd_30993.nasl 13499 2019-02-06 12:55:20Z cfischer $
+# $Id: open_ftpd_30993.nasl 13610 2019-02-12 15:17:00Z cfischer $
 #
 # Open-FTPD Multiple Buffer Overflow Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100495");
-  script_version("$Revision: 13499 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-06 13:55:20 +0100 (Wed, 06 Feb 2019) $");
+  script_version("$Revision: 13610 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-12 16:17:00 +0100 (Tue, 12 Feb 2019) $");
   script_tag(name:"creation_date", value:"2010-02-17 20:53:20 +0100 (Wed, 17 Feb 2010)");
   script_bugtraq_id(30993);
   script_tag(name:"cvss_base", value:"7.5");
@@ -67,15 +67,15 @@ include("ftp_func.inc");
 
 port = get_ftp_port(default:21);
 banner = get_ftp_banner(port:port);
-if(! banner || "Gabriel's FTP Server" >!< banner)exit(0);
+if(! banner || "Gabriel's FTP Server" >!< banner)
+  exit(0);
 
 soc = open_sock_tcp(port);
-if(!soc){
+if(!soc)
   exit(0);
-}
 
-user = get_kb_item("ftp/login");
-if(!user) user = "anonymous";
+kb_creds = ftp_get_kb_creds();
+user = kb_creds["login"];
 
 req = string("USER ", user, "\r\n");
 send(socket:soc, data:req);

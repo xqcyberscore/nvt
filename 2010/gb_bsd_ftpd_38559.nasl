@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bsd_ftpd_38559.nasl 13506 2019-02-06 14:18:08Z cfischer $
+# $Id: gb_bsd_ftpd_38559.nasl 13611 2019-02-12 15:23:02Z cfischer $
 #
 # FreeBSD and OpenBSD 'ftpd' NULL Pointer Dereference Denial Of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100532");
-  script_version("$Revision: 13506 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-06 15:18:08 +0100 (Wed, 06 Feb 2019) $");
+  script_version("$Revision: 13611 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-12 16:23:02 +0100 (Tue, 12 Feb 2019) $");
   script_tag(name:"creation_date", value:"2010-03-15 19:33:39 +0100 (Mon, 15 Mar 2010)");
   script_bugtraq_id(38559);
   script_tag(name:"cvss_base", value:"7.1");
@@ -47,7 +47,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
   script_dependencies("ftpserver_detect_type_nd_version.nasl", "os_detection.nasl");
   script_require_ports("Services/ftp", 21);
-  script_mandatory_keys("Host/runs_unixoide", "ftp_banner/available");
+  script_mandatory_keys("Host/runs_unixoide", "ftp/banner/available");
 
   script_tag(name:"summary", value:"The FreeBSD and OpenBSD 'ftpd' service is prone to a denial-of-service
   vulnerability because of a NULL-pointer dereference.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_tnftpd_csrf_vuln.nasl 4220 2016-10-05 15:43:56Z cfi $
+# $Id: secpod_tnftpd_csrf_vuln.nasl 13602 2019-02-12 12:47:59Z cfischer $
 #
 # tnftpd 'ftp://' Cross-Site Request Forgery Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:luke_mewburn:tnftpd";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901006");
-  script_version("$Revision: 4220 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-05 17:43:56 +0200 (Wed, 05 Oct 2016) $");
+  script_version("$Revision: 13602 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-12 13:47:59 +0100 (Tue, 12 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-08-27 13:43:20 +0200 (Thu, 27 Aug 2009)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -47,28 +47,17 @@ if(description)
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/45534");
   script_xref(name:"URL", value:"http://freshmeat.net/projects/tnftpd/?branch_id=14355&release_id=285654");
 
-  tag_impact = "Successful exploitation will let the attacker execute arbitrary code to
-  perform CSRF attacks, Web cache poisoning, and other malicious activities.
-  Impact Level: Application/Network";
-
-  tag_affected = "NetBSD, tnftpd Version prior to 20080929";
-
-  tag_insight = "The flaw is due to the application truncating an overly long FTP
+  script_tag(name:"impact", value:"Successful exploitation will let the attacker execute arbitrary code to
+  perform CSRF attacks, Web cache poisoning, and other malicious activities.");
+  script_tag(name:"affected", value:"NetBSD, tnftpd Version prior to 20080929");
+  script_tag(name:"insight", value:"The flaw is due to the application truncating an overly long FTP
   command and improperly interpreting the remainder string as a new FTP
   command. This can be exploited via unknown vectors, probably involving a
-  crafted 'ftp://' link to a tnftpd server.";
-
-  tag_solution = "Upgrade to tnftpd version 20080929 or later,
-  ftp://ftp.netbsd.org/pub/NetBSD/misc/tnftp/";
-
-  tag_summary = "The host is running tnftpd server and is prone to Cross-Site Request
-  Forgery vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  crafted 'ftp://' link to a tnftpd server.");
+  script_tag(name:"solution", value:"Upgrade to tnftpd version 20080929 or later,
+  ftp://ftp.netbsd.org/pub/NetBSD/misc/tnftp/");
+  script_tag(name:"summary", value:"The host is running tnftpd server and is prone to Cross-Site Request
+  Forgery vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

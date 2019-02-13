@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_proftpd_mult_vuln.nasl 4774 2016-12-15 12:52:36Z cfi $
+# $Id: gb_proftpd_mult_vuln.nasl 13602 2019-02-12 12:47:59Z cfischer $
 #
 # ProFTPD Multiple Remote Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:proftpd:proftpd";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801639");
-  script_version("$Revision: 4774 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-15 13:52:36 +0100 (Thu, 15 Dec 2016) $");
+  script_version("$Revision: 13602 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-12 13:47:59 +0100 (Tue, 12 Feb 2019) $");
   script_tag(name:"creation_date", value:"2010-11-30 12:42:12 +0100 (Tue, 30 Nov 2010)");
   script_cve_id("CVE-2010-3867", "CVE-2010-4221");
   script_bugtraq_id(44562);
@@ -49,35 +49,24 @@ if(description)
   script_xref(name:"URL", value:"http://bugs.proftpd.org/show_bug.cgi?id=3521");
   script_xref(name:"URL", value:"http://www.zerodayinitiative.com/advisories/ZDI-10-229/");
 
-  tag_impact = "Successful exploitation may allow execution of arbitrary code or cause a
-  denial-of-service.
-
-  Impact Level: Application";
-
-  tag_affected = "ProFTPD versions prior to 1.3.3c";
-
-  tag_insight = "- An input validation error within the 'mod_site_misc' module can be exploited
+  script_tag(name:"summary", value:"The host is running ProFTPD and is prone to multiple vulnerabilities.");
+  script_tag(name:"insight", value:"- An input validation error within the 'mod_site_misc' module can be exploited
     to create and delete directories, create symlinks, and change the time of
     files located outside a writable directory.
+
   - A logic error within the 'pr_netio_telnet_gets()' function in 'src/netio.c'
     when processing user input containing the Telnet IAC escape sequence can be
     exploited to cause a stack-based buffer overflow by sending specially
-    crafted input to the FTP or FTPS service.";
-
-  tag_solution = "Upgrade to ProFTPD version 1.3.3c or later,
-  For updates refer to http://www.proftpd.org/";
-
-  tag_summary = "The host is running ProFTPD and is prone to multiple vulnerabilities.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"impact", value:tag_impact);
+    crafted input to the FTP or FTPS service.");
+  script_tag(name:"affected", value:"ProFTPD versions prior to 1.3.3c");
+  script_tag(name:"solution", value:"Upgrade to ProFTPD version 1.3.3c or later.");
+  script_tag(name:"impact", value:"Successful exploitation may allow execution of arbitrary code or cause a
+  denial-of-service.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
+  script_xref(name:"URL", value:"http://www.proftpd.org/");
   exit(0);
 }
 
@@ -87,7 +76,6 @@ include("host_details.inc");
 if( isnull( port = get_app_port( cpe:CPE ) ) ) exit( 0 );
 if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
-## Check for ProFTPD versions prior to 1.3.3c
 if( version_is_less( version:vers, test_version:"1.3.3c" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"1.3.3c" );
   security_message( port:port, data:report );

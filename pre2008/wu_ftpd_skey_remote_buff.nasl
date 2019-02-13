@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: wu_ftpd_skey_remote_buff.nasl 9526 2018-04-19 06:22:02Z cfischer $
+# $Id: wu_ftpd_skey_remote_buff.nasl 13602 2019-02-12 12:47:59Z cfischer $
 #
 # wu-ftpd S/KEY authentication overflow
 #
@@ -32,8 +32,8 @@ CPE = "cpe:/a:washington_university:wu-ftpd";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14372");
-  script_version("$Revision: 9526 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-19 08:22:02 +0200 (Thu, 19 Apr 2018) $");
+  script_version("$Revision: 13602 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-12 13:47:59 +0100 (Tue, 12 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(8893);
   script_cve_id("CVE-2004-0185");
@@ -50,6 +50,8 @@ if(description)
   script_require_ports("Services/ftp", 21);
   script_mandatory_keys("wu-ftpd/installed");
 
+  script_xref(name:"URL", value:"http://www.wu-ftpd.org");
+
   script_tag(name:"summary", value:"The remote Wu-FTPd server seems to be vulnerable to a remote overflow.");
 
   script_tag(name:"insight", value:"This version contains a remote overflow if s/key support is enabled.
@@ -65,7 +67,7 @@ if(description)
   operating system distributions which ship Wu-Ftpd may have it enabled.");
 
   script_tag(name:"solution", value:"Upgrade to Wu-FTPd 2.6.3 when available or disable SKEY or apply the
-  patches available at http://www.wu-ftpd.org");
+  patches available at the referenced vendor homepage.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
@@ -83,6 +85,6 @@ if( egrep( pattern:"^(2\.(5\.|6\.[012]))", string:vers ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"See references" );
   security_message( port:port, data:report );
   exit( 0 );
-}  
+}
 
 exit( 99 );

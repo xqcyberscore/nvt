@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_freefloat_ftp_server_dir_trav_vun.nasl 4692 2016-12-06 15:44:12Z cfi $
+# $Id: gb_freefloat_ftp_server_dir_trav_vun.nasl 13613 2019-02-12 16:12:57Z cfischer $
 #
 # Freefloat FTP Server Directory Traversal Vulnerability
 #
@@ -27,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800188");
-  script_version("$Revision: 4692 $");
+  script_version("$Revision: 13613 $");
   script_bugtraq_id(45218);
-  script_tag(name:"last_modification", value:"$Date: 2016-12-06 16:44:12 +0100 (Tue, 06 Dec 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-12 17:12:57 +0100 (Tue, 12 Feb 2019) $");
   script_tag(name:"creation_date", value:"2010-12-13 15:28:53 +0100 (Mon, 13 Dec 2010)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
@@ -37,36 +37,27 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2010 SecPod");
   script_family("FTP");
-  script_dependencies("find_service_3digits.nasl");
+  script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
+  script_mandatory_keys("ftp/freefloat/detected");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/45218/info");
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/view/96423/freefloat-traversal.txt");
 
-  tag_impact = "Successful exploitation will allow attackers to read arbitrary
-  files on the affected application.
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to read arbitrary
+  files on the affected application.");
 
-  Impact Level: Application";
+  script_tag(name:"affected", value:"Freefloat FTPserver version 1.00.");
 
-  tag_affected = "Freefloat FTPserver version 1.00";
+  script_tag(name:"insight", value:"The flaw is due to an error while handling certain requests,
+  which can be exploited to download arbitrary files from the host system via directory traversal attack.");
 
-  tag_insight = "The flaw is due to an error while handling certain requests,
-  which can be exploited to download arbitrary files from the host system via
-  directory traversal attack.";
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
-  tag_solution = "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.";
-
-  tag_summary = "The host is running Freefloat FTP Server and is prone to directory
-  traversal vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"The host is running Freefloat FTP Server and is prone to directory
+  traversal vulnerability.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -76,43 +67,19 @@ if(description)
 
 include("ftp_func.inc");
 
-## Get the default FTP port
-ftpPort = get_kb_item("Services/ftp");
-if(!ftpPort){
-  ftpPort = 21;
-}
-
-## Check FTP Port Status
-if(!get_port_state(ftpPort)){
-  exit(0);
-}
-
-## Confirm the application with FTP banner
+ftpPort = get_ftp_port(default:21);
 banner = get_ftp_banner(port:ftpPort);
-if("FreeFloat Ftp Server" >!< banner){
+if(!banner || "FreeFloat Ftp Server" >!< banner)
   exit(0);
-}
 
-## Open a Socket to FTP port
 soc1 = open_sock_tcp(ftpPort);
-if(!soc1){
+if(!soc1)
   exit(0);
-}
 
-## Get User and Pass from KB
-user = get_kb_item("ftp/login");
-pass = get_kb_item("ftp/password");
+kb_creds = ftp_get_kb_creds();
+user = kb_creds["login"];
+pass = kb_creds["pass"];
 
-## Use default Passwords,
-## If user and pass are not given
-if(!user){
-  user = "anonymous";
-}
-if(!pass){
-  pass = "anonymous";
-}
-
-## Login with given credentials
 login_details = ftp_log_in(socket:soc1, user:user, pass:pass);
 if(login_details)
 {
@@ -134,12 +101,10 @@ if(login_details)
   send(socket:soc1, data:'PWD\r\n');
   atkres2 = ftp_recv_line(socket:soc1);
 
-  ## Confirm the Exploit by checking the resopnse from server
   if("250 CWD command successful" >< atkres1 && "257 ">< atkres2 &&
                                               chk_res >< atkres2){
     security_message(port:ftpPort);
   }
 }
 
-## Close FTP socket
 ftp_close(socket:soc1);

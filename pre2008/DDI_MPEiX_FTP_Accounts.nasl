@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: DDI_MPEiX_FTP_Accounts.nasl 9348 2018-04-06 07:01:19Z cfischer $
+# $Id: DDI_MPEiX_FTP_Accounts.nasl 13613 2019-02-12 16:12:57Z cfischer $
 # Description: MPEi/X Default Accounts
 #
 # Authors:
@@ -22,46 +22,37 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "This host has one or more accounts with a blank 
-password.  Please see the data section for a list 
-of these accounts.";
-
-tag_solution = "Apply complex passwords to all accounts.";
-
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.11000"); 
- script_version("$Revision: 9348 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_cve_id("CVE-1999-0502");
- name = "MPEi/X Default Accounts";
-
- script_name(name);
- 
- 
- script_category(ACT_GATHER_INFO);
+  script_oid("1.3.6.1.4.1.25623.1.0.11000");
+  script_version("$Revision: 13613 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-12 17:12:57 +0100 (Tue, 12 Feb 2019) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_cve_id("CVE-1999-0502");
+  script_name("MPEi/X Default Accounts");
+  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_analysis");
- 
- 
- script_copyright("This script is Copyright (C) 2001 H D Moore");
- family = "Default Accounts";
+  script_copyright("This script is Copyright (C) 2001 H D Moore");
+  script_family("Default Accounts");
+  script_dependencies("ftpserver_detect_type_nd_version.nasl");
+  script_require_ports("Services/ftp", 21);
+  script_mandatory_keys("ftp/hp/arpa_ftp/detected");
 
- script_family(family);
- script_dependencies("find_service.nasl", "ftpserver_detect_type_nd_version.nasl");
- script_require_ports("Services/ftp", 21);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  script_tag(name:"solution", value:"Apply complex passwords to all accounts.");
+
+  script_tag(name:"summary", value:"This host has one or more accounts with a blank
+  password.");
+
+  script_tag(name:"solution_type", value:"Mitigation");
+
+  exit(0);
 }
 
 include("ftp_func.inc");
 
-#
 # default account listing
-#
 accounts[0] = "OPERATOR.SYS";
 accounts[1] = "MANAGER.SYS";
 accounts[2] = "SPECTRUM.CU1";
@@ -153,25 +144,10 @@ accounts[87] = "ROBELLE.MGR";
 accounts[88] = "SNADS.MANAGER";
 accounts[89] = "SNADS.MGR";
 
-#
-# The script code starts here
-#
-
-
-# open the connection
-port = get_kb_item("Services/ftp");
-if(!port)port = 21;
-if(!get_port_state(port))exit(0);
-
+port = get_ftp_port(default:21);
 banner = get_ftp_banner(port:port);
-
-# check for HP ftp service
-if("HP ARPA FTP" >< banner)
-{
-    # do nothing
-} else {
-    exit(0);
-}
+if(! banner || "HP ARPA FTP" >!< banner)
+  exit(0);
 
 soc = open_sock_tcp(port);
 if(!soc)exit(0);
@@ -182,23 +158,19 @@ cracked = string("");
 
 for(i=0; accounts[i]; i = i +1)
 {
-    username = accounts[i];
-    user = string("USER ", username, CRLF); 
-    
-    send(socket:soc, data:user);
-    resp = ftp_recv_line(socket:soc);
-    
-    if ("230 User logged on" >< resp)
-    {
-        cracked = string(cracked, username, "\n");
-    }
+  username = accounts[i];
+  user = string("USER ", username, CRLF);
+
+  send(socket:soc, data:user);
+  resp = ftp_recv_line(socket:soc);
+
+  if ("230 User logged on" >< resp) {
+    cracked = string(cracked, username, "\n");
+  }
 }
 ftp_close(soc);
 
-if (strlen(cracked))
-{
-    report = string("These accounts have no passwords:\n\n", cracked);
-    security_message(port:port, data:report);
+if(strlen(cracked)) {
+  report = string("These accounts have no passwords:\n\n", cracked);
+  security_message(port:port, data:report);
 }
-
-

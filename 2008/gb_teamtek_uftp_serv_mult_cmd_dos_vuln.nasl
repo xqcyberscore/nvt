@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_teamtek_uftp_serv_mult_cmd_dos_vuln.nasl 4227 2016-10-07 05:45:35Z teissa $
+# $Id: gb_teamtek_uftp_serv_mult_cmd_dos_vuln.nasl 13613 2019-02-12 16:12:57Z cfischer $
 #
 # Teamtek Universal FTP Server Multiple Commands Denial Of Service Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800322");
-  script_version("$Revision: 4227 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-07 07:45:35 +0200 (Fri, 07 Oct 2016) $");
+  script_version("$Revision: 13613 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-12 17:12:57 +0100 (Tue, 12 Feb 2019) $");
   script_tag(name:"creation_date", value:"2008-12-16 16:12:00 +0100 (Tue, 16 Dec 2008)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -40,27 +40,26 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
+  script_mandatory_keys("ftp/teamtek/universal_ftp/detected");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/22553");
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/archive/1/488142/100/200/threaded");
 
   script_tag(name:"impact", value:"Successful exploitation could allows remote attackers to crash the affected
-  application, denying the service to legitimate users.
-
-  Impact Level: Application");
+  application, denying the service to legitimate users.");
   script_tag(name:"affected", value:"Teamtek, Universal FTP Server version 1.0.50 and prior on Windows.");
   script_tag(name:"insight", value:"The flaws are exists due to run-time error while executing CWD, LIST, PORT,
   STOR, PUT and MKD commands. These commands are not properly sanitised.");
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year since disclosure
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
-  release, disable respective features, remove the product or replace the product by another one.
-  For updates refer to http://www.5e5.net/universalftp.html");
+  release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"summary", value:"The host is running Universal FTP server and is prone to Denial of
   Service Vulnerabilities.");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"WillNotFix");
 
+  script_xref(name:"URL", value:"http://www.5e5.net/universalftp.html");
   exit(0);
 }
 
@@ -68,8 +67,8 @@ include("ftp_func.inc");
 
 port = get_ftp_port( default:21 );
 banner = get_ftp_banner( port:port );
-
-if( "UNIVERSAL FTP SERVER" >!< banner ) exit( 0 );
+if( ! banner || "UNIVERSAL FTP SERVER" >!< banner )
+  exit( 0 );
 
 soc = open_sock_tcp(port);
 if( ! soc ) {
@@ -85,7 +84,6 @@ ftp_send_cmd( socket:soc, cmd:string("PORT AAAAAAAAAAAAAAAAA \r\n") );
 sleep( 5 );
 close( soc );
 
-# Check for UFTP Service Status
 soc = open_sock_tcp( port );
 if( ! soc ) {
   security_message( port:port );

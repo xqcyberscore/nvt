@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_titan_ftp_server_dir_trav_vuln.nasl 11575 2018-09-24 14:25:50Z cfischer $
+# $Id: secpod_titan_ftp_server_dir_trav_vuln.nasl 13607 2019-02-12 14:29:36Z cfischer $
 #
 # Titan FTP Server 'XCRC' and 'COMB' Directory Traversal Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902087");
-  script_version("$Revision: 11575 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-24 16:25:50 +0200 (Mon, 24 Sep 2018) $");
+  script_version("$Revision: 13607 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-12 15:29:36 +0100 (Tue, 12 Feb 2019) $");
   script_tag(name:"creation_date", value:"2010-07-02 08:02:13 +0200 (Fri, 02 Jul 2010)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -52,8 +52,7 @@ if(description)
   - Input validation error when processing 'COMB' commands, which can be
   exploited to read and delete an arbitrary file.");
 
-  script_tag(name:"solution", value:"Upgrade to Titan FTP Server 8.30.1231 or later
-  For updates refer to http://www.titanftp.com/index.html");
+  script_tag(name:"solution", value:"Upgrade to Titan FTP Server 8.30.1231 or later.");
 
   script_tag(name:"summary", value:"This host is running Titan FTP Server and is prone to directory
   traversal vulnerabilities.");
@@ -77,10 +76,9 @@ if(!titanVer){
   exit(0);
 }
 
-ftpPort = get_ftp_port(default:21);
 if(version_is_less_equal(version:titanVer, test_version:"8.10.1125")){
   report = report_fixed_ver(installed_version:titanVer, fixed_version:"8.30.1231");
-  security_message(port:ftpPort, data:report);
+  security_message(port:0, data:report);
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: microsoft-iis-nlst-stack-overflow.nasl 10957 2018-08-14 13:26:50Z mmartin $
+# $Id: microsoft-iis-nlst-stack-overflow.nasl 13613 2019-02-12 16:12:57Z cfischer $
 #
 # Microsoft IIS FTPd NLST stack overflow
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100952");
-  script_version("$Revision: 10957 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 15:26:50 +0200 (Tue, 14 Aug 2018) $");
+  script_version("$Revision: 13613 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-12 17:12:57 +0100 (Tue, 12 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-09-02 01:41:39 +0200 (Wed, 02 Sep 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -39,9 +39,9 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("FTP");
   script_copyright("(c) Tim Brown, 2009");
-  script_dependencies("find_service.nasl", "ftp_writeable_directories.nasl", "ftpserver_detect_type_nd_version.nasl");
-  script_require_keys("ftp/writeable_dir");
+  script_dependencies("ftp_writeable_directories.nasl", "ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
+  script_mandatory_keys("ftp/microsoft/iis_ftp/detected", "ftp/writeable_dir");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/36189");
 
@@ -54,12 +54,15 @@ if(description)
   script_tag(name:"solution", value:"We are not aware of a vendor approved solution at the current time.
 
   On the following platforms, we recommend you mitigate in the described manner:
+
   Microsoft IIS 5.x
+
   Microsoft IIS 6.x
 
   We recommend you mitigate in the following manner:
   Filter inbound traffic to 21/tcp to only known management hosts
   Consider removing directories writable by 'anonymous'");
+
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_banner");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: remote-pwcrack-ncrack-ftp.nasl 13494 2019-02-06 10:06:36Z cfischer $
+# $Id: remote-pwcrack-ncrack-ftp.nasl 13607 2019-02-12 14:29:36Z cfischer $
 #
 # ftp Remote password cracking using ncrack
 # svn co svn://svn.insecure.org/nmap-exp/ithilgore/ncrack
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80108");
-  script_version("$Revision: 13494 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-06 11:06:36 +0100 (Wed, 06 Feb 2019) $");
+  script_version("$Revision: 13607 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-12 15:29:36 +0100 (Tue, 12 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-08-10 08:41:48 +0200 (Mon, 10 Aug 2009)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -38,7 +38,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2009 Vlatko Kosturjak");
   script_family("Brute force attacks");
   script_require_ports("Services/ftp", 21);
-  script_dependencies("toolcheck.nasl", "gcf/remote-pwcrack-options.nasl", "find_service.nasl");
+  script_dependencies("toolcheck.nasl", "gcf/remote-pwcrack-options.nasl", "ftpserver_detect_type_nd_version.nasl");
   script_mandatory_keys("Tools/Present/ncrack", "Secret/pwcrack/logins_file", "Secret/pwcrack/passwords_file");
 
   script_tag(name:"summary", value:"This plugin runs ncrack to find ftp accounts & passwords by brute force.");

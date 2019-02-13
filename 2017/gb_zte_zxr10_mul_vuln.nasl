@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zte_zxr10_mul_vuln.nasl 11982 2018-10-19 08:49:21Z mmartin $
+# $Id: gb_zte_zxr10_mul_vuln.nasl 13624 2019-02-13 10:02:56Z cfischer $
 #
 # ZTE ZXR10 Router Multiple Vulnerabilities
 #
@@ -28,7 +28,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107254");
-  script_version("$Revision: 11982 $");
+  script_version("$Revision: 13624 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
@@ -36,13 +36,14 @@ if(description)
 
   script_name("ZTE ZXR10 Router Multiple Vulnerabilities");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-13 11:02:56 +0100 (Wed, 13 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-11-09 10:23:00 +0200 (Thu, 09 Nov 2017)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_dependencies("telnetserver_detect_type_nd_version.nasl");
   script_require_ports("Services/telnet", 23);
+  script_mandatory_keys("telnet/zte/zxr10/detected");
 
   script_xref(name:"URL", value:"http://www.palada.net/index.php/2017/10/23/news-3819/");
 
@@ -63,13 +64,10 @@ if(description)
 include("telnet_func.inc");
 
 port = get_telnet_port( default:23 );
-
 banner = get_telnet_banner( port:port );
 
-if( banner !~ "Welcome to (ZXUN|ZXR10).+ of ZTE Corporation"  )
-{
- exit( 0 );
-}
+if( !banner || banner !~ "Welcome to (ZXUN|ZXR10).+ of ZTE Corporation"  )
+  exit( 0 );
 
 creds = make_list("who;who", "zte;zte", "ncsh;ncsh");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ftp_unencrypted_cleartext_login.nasl 13026 2019-01-10 14:44:38Z cfischer $
+# $Id: gb_ftp_unencrypted_cleartext_login.nasl 13611 2019-02-12 15:23:02Z cfischer $
 #
 # FTP Unencrypted Cleartext Login
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108528");
-  script_version("$Revision: 13026 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-10 15:44:38 +0100 (Thu, 10 Jan 2019) $");
+  script_version("$Revision: 13611 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-12 16:23:02 +0100 (Tue, 12 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-09 11:31:09 +0100 (Wed, 09 Jan 2019)");
   script_tag(name:"cvss_base", value:"4.8");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:P/A:N");
@@ -38,7 +38,7 @@ if(description)
   script_family("General");
   script_dependencies("ftpserver_detect_type_nd_version.nasl", "gb_starttls_ftp.nasl");
   script_require_ports("Services/ftp", 21);
-  script_mandatory_keys("ftp_banner/available");
+  script_mandatory_keys("ftp/banner/available");
 
   script_tag(name:"summary", value:"The remote host is running a FTP service that allows cleartext logins over
   unencrypted connections.");

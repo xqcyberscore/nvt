@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: shiva_default_pass.nasl 4831 2016-12-21 12:32:45Z cfi $
+# $Id: shiva_default_pass.nasl 13634 2019-02-13 12:06:16Z cfischer $
 #
 # Shiva Integrator Default Password
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10500");
-  script_version("$Revision: 4831 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-21 13:32:45 +0100 (Wed, 21 Dec 2016) $");
+  script_version("$Revision: 13634 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-13 13:06:16 +0100 (Wed, 13 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-1999-0508");
   script_tag(name:"cvss_base", value:"4.6");
@@ -39,16 +39,14 @@ if(description)
   script_family("Default Accounts");
   script_dependencies("telnetserver_detect_type_nd_version.nasl");
   script_require_ports("Services/telnet", 23);
- 
-  tag_summary = "The remote Shiva router uses the default password. 
-  This means that anyone who has (downloaded) a user manual can 
-  telnet to it and reconfigure it to lock you out of it, and to 
-  prevent you to use your internet connection.";
+  script_mandatory_keys("telnet/banner/available");
 
-  tag_solution = "Telnet to this router and set a different password immediately.";
+  script_tag(name:"solution", value:"Telnet to this router and set a different password immediately.");
 
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"The remote Shiva router uses the default password.
+  This means that anyone who has (downloaded) a user manual can
+  telnet to it and reconfigure it to lock you out of it, and to
+  prevent you to use your internet connection.");
 
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -56,7 +54,7 @@ if(description)
   exit(0);
 }
 
-include('telnet_func.inc');
+include("telnet_func.inc");
 
 port = get_telnet_port( default:23 );
 

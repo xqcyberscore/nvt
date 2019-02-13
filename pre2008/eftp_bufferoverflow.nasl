@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: eftp_bufferoverflow.nasl 9348 2018-04-06 07:01:19Z cfischer $
+# $Id: eftp_bufferoverflow.nasl 13613 2019-02-12 16:12:57Z cfischer $
 # Description: EFTP buffer overflow
 #
 # Authors:
@@ -22,94 +22,71 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "It was possible to crash the EFTP service by
-uploading a *.lnk file containing too much data.
-
-A cracker may use this attack to make this
-service crash continuously, or run arbitrary code
-on your system.";
-
-tag_solution = "upgrade EFTP to 2.0.8.x";
-
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.10928");
- script_version("$Revision: 9348 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_bugtraq_id(3330);
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_cve_id("CVE-2001-1112");
- name = "EFTP buffer overflow";
- script_name(name);
- 
- 
- script_category(ACT_MIXED_ATTACK);
+  script_oid("1.3.6.1.4.1.25623.1.0.10928");
+  script_version("$Revision: 13613 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-12 17:12:57 +0100 (Tue, 12 Feb 2019) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_bugtraq_id(3330);
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_cve_id("CVE-2001-1112");
+  script_name("EFTP buffer overflow");
+  script_category(ACT_MIXED_ATTACK);
   script_tag(name:"qod_type", value:"remote_banner");
- 
- script_copyright("This script is Copyright (C) 2001 Michel Arboi");
- family = "Gain a shell remotely";
+  script_copyright("This script is Copyright (C) 2001 Michel Arboi");
+  script_family("Gain a shell remotely");
+  script_dependencies("ftpserver_detect_type_nd_version.nasl");
+  script_require_ports("Services/ftp", 21);
+  script_mandatory_keys("ftp/eftp/detected");
 
- script_family(family);
- script_require_ports("Services/ftp", 21);
- script_dependencies("find_service.nasl", "secpod_ftp_anonymous.nasl");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  script_tag(name:"solution", value:"Upgrade EFTP to 2.0.8.x");
+
+  script_tag(name:"summary", value:"It was possible to crash the EFTP service by
+  uploading a *.lnk file containing too much data.");
+
+  script_tag(name:"impact", value:"A cracker may use this attack to make this
+  service crash continuously, or run arbitrary code on your system.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
+  exit(0);
 }
 
-#
-
 include("ftp_func.inc");
+include("misc_func.inc");
 
-port = get_kb_item("Services/ftp");
-if (!port) port = 21; 
+port = get_ftp_port(default:21);
+banner = get_ftp_banner(port: port);
+if(! banner || "EFTP " >!< banner)
+  exit(0);
 
-state = get_port_state(port);
-if (!state) exit(0);
-
-user_login = get_kb_item("ftp/login");
-user_passwd = get_kb_item("ftp/password");
 writeable_dir = get_kb_item("ftp/writeable_dir");
 use_banner = 1;
 
+kb_creds = ftp_get_kb_creds();
+user_login = kb_creds["login"];
+user_passwd = kb_creds["pass"];
 if (user_login && user_passwd && writeable_dir)
 {
- use_banner = safe_checks();
+  use_banner = safe_checks();
 }
 
 if (use_banner)
 {
- banner = get_ftp_banner(port: port);
- if(egrep(pattern:".*EFTP Version 2\.0\.[0-7]\.*", string:banner))
- {
-  desc = "
-It may be possible to crash the EFTP service by
-uploading a *.lnk file containing too much data.
-
-A cracker may use this attack to make this
-service crash continuously, or run arbitrary code
-on your system.
-
-*** OpenVAS reports this vulnerability using only
-*** information that was gathered. Use caution
-*** when testing without safe checks enabled.
-
-Solution: upgrade EFTP to 2.0.8.x";
-  security_message(port:port, data:desc);
- } 
- exit(0);
+  if(egrep(pattern:".*EFTP Version 2\.0\.[0-7]\.*", string:banner))
+  {
+    security_message(port:port);
+  }
+  exit(0);
 }
 
 soc = open_sock_tcp(port);
 if (!soc) exit(0);
 
-
-
-
 r = ftp_authenticate(socket:soc, user:user_login, pass:user_passwd);
-if (!r) 
+if (!r)
 {
  ftp_close(socket: soc);
  exit(0);
@@ -120,7 +97,9 @@ cmd = string("CWD ", writeable_dir, "\r\n");
 send(socket:soc, data:cmd);
 a = recv_line(socket:soc, length:1024);
 
-f_name =  string("OpenVAS", rand()%10, rand()%10, rand()%10, rand()%10, ".lnk");
+vt_strings = get_vt_strings();
+
+f_name =  string(vt_strings["default"], rand()%10, rand()%10, rand()%10, rand()%10, ".lnk");
 
 # Upload a buggy .LNK
 port2 = ftp_pasv(socket:soc);
@@ -154,7 +133,7 @@ if (! soc)
 # Or clean mess :)
 
 if (soc)
-{ 
+{
  ftp_authenticate(socket:soc, user:user_login, pass:user_passwd);
  cmd = string("CWD ", writeable_dir, "\r\n");
  send(socket:soc, data:cmd);

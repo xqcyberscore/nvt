@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wing_ftp_39727.nasl 5388 2017-02-21 15:13:30Z teissa $
+# $Id: gb_wing_ftp_39727.nasl 13613 2019-02-12 16:12:57Z cfischer $
 #
 # Wing FTP Server Versions Prior to 3.4.1 Multiple Information Disclosure Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100611");
-  script_version("$Revision: 5388 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 16:13:30 +0100 (Tue, 21 Feb 2017) $");
+  script_version("$Revision: 13613 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-12 17:12:57 +0100 (Tue, 12 Feb 2019) $");
   script_tag(name:"creation_date", value:"2010-04-28 14:05:27 +0200 (Wed, 28 Apr 2010)");
   script_bugtraq_id(39727);
   script_tag(name:"cvss_base", value:"5.8");
@@ -37,8 +37,9 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("FTP");
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
-  script_dependencies("find_service.nasl", "ftpserver_detect_type_nd_version.nasl");
+  script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
+  script_mandatory_keys("ftp/wing/ftp/detected");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/39727");
   script_xref(name:"URL", value:"http://www.wftpserver.com/");
@@ -46,9 +47,12 @@ if(description)
 
   script_tag(name:"summary", value:"Wing FTP Server is prone to multiple information-disclosure
   vulnerabilities.");
+
   script_tag(name:"impact", value:"Remote attackers can exploit this issue to gain access to sensitive
   information that may lead to further attacks.");
+
   script_tag(name:"affected", value:"Versions prior to Wing FTP Server 3.4.1 are vulnerable.");
+
   script_tag(name:"solution", value:"The vendor released an update. Please see the references for more
   information.");
 
@@ -63,7 +67,6 @@ include("version_func.inc");
 
 port = get_ftp_port( default:21 );
 if( ! banner = get_ftp_banner( port:port ) ) exit( 0 );
-
 if( "220 Wing FTP Server" >!< banner ) exit( 0 );
 
 version = eregmatch( pattern:"Wing FTP Server ([^ ]+) ready", string:banner );

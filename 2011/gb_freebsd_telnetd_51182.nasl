@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_freebsd_telnetd_51182.nasl 11997 2018-10-20 11:59:41Z mmartin $
+# $Id: gb_freebsd_telnetd_51182.nasl 13624 2019-02-13 10:02:56Z cfischer $
 #
 # FreeBSD 'telnetd' Daemon Remote Buffer Overflow Vulnerability
 #
@@ -32,7 +32,7 @@ if (description)
   script_cve_id("CVE-2011-4862");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11997 $");
+  script_version("$Revision: 13624 $");
 
   script_name("FreeBSD 'telnetd' Daemon Remote Buffer Overflow Vulnerability");
 
@@ -40,34 +40,37 @@ if (description)
   script_xref(name:"URL", value:"http://www.freebsd.org/");
   script_xref(name:"URL", value:"http://security.freebsd.org/advisories/FreeBSD-SA-11:08.telnetd.asc");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-13 11:02:56 +0100 (Wed, 13 Feb 2019) $");
   script_tag(name:"creation_date", value:"2011-12-28 12:32:36 +0100 (Wed, 28 Dec 2011)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_category(ACT_ATTACK);
   script_family("Buffer overflow");
   script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
-  script_dependencies("find_service.nasl");
+  script_dependencies("telnetserver_detect_type_nd_version.nasl");
   script_require_ports("Services/telnet", 23);
-  script_tag(name:"solution", value:"Updates are available to address this issue. Please see the references
-for more information.");
-  script_tag(name:"solution_type", value:"VendorFix");
-  script_tag(name:"summary", value:"FreeBSD is prone to a remote buffer-overflow vulnerability.
+  #nb: Detection below seems to be too unspecific so using only the generic key here.
+  script_mandatory_keys("telnet/banner/available");
 
-Exploiting this issue allows remote attackers to execute arbitrary
-code with superuser privileges. Successfully exploiting this issue
-will completely compromise affected computers.");
+  script_tag(name:"solution", value:"Updates are available to address this issue. Please see the references
+  for more information.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
+  script_tag(name:"summary", value:"FreeBSD is prone to a remote buffer-overflow vulnerability.");
+
+  script_tag(name:"impact", value:"Exploiting this issue allows remote attackers to execute arbitrary
+  code with superuser privileges. Successfully exploiting this issue
+  will completely compromise affected computers.");
+
   exit(0);
 }
 
 include("telnet_func.inc");
 
-port = get_kb_item("Services/telnet");
-if(!port)port = 23;
-
-if(!get_port_state(port))exit(0);
-
+port = get_telnet_port(default:23);
 banner = get_telnet_banner(port:port);
-if(!banner || "FreeBSD" >!< banner)exit(0);
+if(!banner || "FreeBSD" >!< banner)
+  exit(0);
 
 fbsd[0] = raw_string(0xed,0xee); # FreeBSD 8.0 & 8.1
 fbsd[1] = raw_string(0xa6,0xee); # FreeBSD 8.2

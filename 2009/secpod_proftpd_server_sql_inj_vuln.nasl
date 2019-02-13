@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_proftpd_server_sql_inj_vuln.nasl 4774 2016-12-15 12:52:36Z cfi $
+# $Id: secpod_proftpd_server_sql_inj_vuln.nasl 13602 2019-02-12 12:47:59Z cfischer $
 #
 # ProFTPD Server SQL Injection Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:proftpd:proftpd";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900507");
-  script_version("$Revision: 4774 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-15 13:52:36 +0100 (Thu, 15 Dec 2016) $");
+  script_version("$Revision: 13602 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-12 13:47:59 +0100 (Tue, 12 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-02-20 17:40:17 +0100 (Fri, 20 Feb 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -48,31 +48,25 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/archive/1/500833/100/0/threaded");
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/archive/1/500851/100/0/threaded");
 
-  tag_impact = "Successful exploitation will allow remote attackers to execute arbitrary
-  SQL commands, thus gaining access to random user accounts.";
+  script_tag(name:"summary", value:"This host is running ProFTPD Server and is prone to remote
+  SQL Injection vulnerability.");
 
-  tag_affected = "ProFTPD Server version 1.3.1 through 1.3.2rc2";
+  script_tag(name:"insight", value:"This flaw occurs because the server performs improper input sanitising,
 
-  tag_insight = "This flaw occurs because the server performs improper input sanitising,
   - when a %(percent) character is passed in the username, a single quote
-    (') gets introduced during variable substitution by mod_sql and this
-    eventually allows for an SQL injection during login.
+  (') gets introduced during variable substitution by mod_sql and this
+  eventually allows for an SQL injection during login.
+
   - when NLS support is enabled, a flaw in variable substition feature in
-    mod_sql_mysql and mod_sql_postgres may allow an attacker to bypass
-    SQL injection protection mechanisms via invalid, encoded multibyte
-    characters.";
+  mod_sql_mysql and mod_sql_postgres may allow an attacker to bypass
+  SQL injection protection mechanisms via invalid, encoded multibyte characters.");
 
-  tag_solution = "Upgrade to the latest version 1.3.2rc3,
-  http://www.proftpd.org/";
+  script_tag(name:"affected", value:"ProFTPD Server version 1.3.1 through 1.3.2rc2.");
 
-  tag_summary = "This host is running ProFTPD Server and is prone to remote
-  SQL Injection vulnerability.";
+  script_tag(name:"solution", value:"Upgrade to the latest version 1.3.2rc3.");
 
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"impact", value:tag_impact);
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary
+  SQL commands, thus gaining access to random user accounts.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

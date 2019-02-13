@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kerisystems_access_control_detect.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_kerisystems_access_control_detect.nasl 13624 2019-02-13 10:02:56Z cfischer $
 #
 # Keri Systems Access Control Systems Detection
 #
@@ -30,8 +30,8 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.105418");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11872 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 13624 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-13 11:02:56 +0100 (Wed, 13 Feb 2019) $");
   script_tag(name:"creation_date", value:"2015-10-21 16:57:28 +0200 (Wed, 21 Oct 2015)");
   script_name("Keri Systems Access Control Systems Detection");
 
@@ -44,17 +44,16 @@ if (description)
   script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
   script_dependencies("telnetserver_detect_type_nd_version.nasl");
   script_require_ports("Services/telnet", 23);
+  script_mandatory_keys("telnet/keri_systems/access_control_system/detected");
+
   exit(0);
 }
 
 include("misc_func.inc");
 include("telnet_func.inc");
 
-port = get_kb_item("Services/telnet");
-if( ! get_port_state( port ) ) exit( 0 );
-
+port = get_telnet_port( default:23 );
 if( ! banner = get_telnet_banner( port:port ) ) exit( 0 );
-
 if( "KERI-ENET" >!< banner ) exit( 0 );
 
 version = eregmatch( pattern:'Software version V([^ ]+)( \\(([0-9]+)\\))?', string:banner );

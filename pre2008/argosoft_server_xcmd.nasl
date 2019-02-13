@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: argosoft_server_xcmd.nasl 9348 2018-04-06 07:01:19Z cfischer $
+# $Id: argosoft_server_xcmd.nasl 13613 2019-02-12 16:12:57Z cfischer $
 # Description: ArGoSoft FTP Server XCWD Overflow
 #
 # Authors:
@@ -23,93 +23,77 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "The remote host is running the ArGoSoft FTP server.
-
-It was possible to shut down the remote FTP server by issuing
-a XCWD command followed by a too long argument.
-
-This problem allows an attacker to prevent the remote site i
-from sharing some resources with the rest of the world.";
-
-tag_solution = "Upgrade to 1.4.1.2 or newer";
-
 #  Ref: Moran Zavdi <moran@moozatech.com>
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.15439");
- script_version("$Revision: 9348 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_bugtraq_id(8704);
- script_xref(name:"OSVDB", value:2618);
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-
- name = "ArGoSoft FTP Server XCWD Overflow";
-
- script_name(name);
- 
-
- 
- script_category(ACT_MIXED_ATTACK);
+  script_oid("1.3.6.1.4.1.25623.1.0.15439");
+  script_version("$Revision: 13613 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-12 17:12:57 +0100 (Tue, 12 Feb 2019) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_bugtraq_id(8704);
+  script_xref(name:"OSVDB", value:2618);
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_name("ArGoSoft FTP Server XCWD Overflow");
+  script_category(ACT_MIXED_ATTACK);
   script_tag(name:"qod_type", value:"remote_banner");
-  
- script_copyright("This script is Copyright (C) 2004 David Maciejak");
- family = "Denial of Service";
- script_family(family);
- script_dependencies("find_service.nasl", "secpod_ftp_anonymous.nasl",
- 		    "ftpserver_detect_type_nd_version.nasl");
- script_require_keys("ftp/login");
- script_require_ports("Services/ftp", 21);
- 
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  script_copyright("This script is Copyright (C) 2004 David Maciejak");
+  script_family("Denial of Service");
+  script_dependencies("ftpserver_detect_type_nd_version.nasl");
+  script_require_ports("Services/ftp", 21);
+  script_mandatory_keys("ftp/argosoft/ftp/detected");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
+  script_tag(name:"solution", value:"Upgrade to 1.4.1.2 or newer.");
+
+  script_tag(name:"summary", value:"The remote host is running the ArGoSoft FTP server.
+
+  It was possible to shut down the remote FTP server by issuing
+  a XCWD command followed by a too long argument.");
+
+  script_tag(name:"impact", value:"This problem allows an attacker to prevent the remote site i
+  from sharing some resources with the rest of the world.");
+
+  exit(0);
 }
 
-#
-# The script code starts here
-#
-
 include("ftp_func.inc");
-port = get_kb_item("Services/ftp");
-if(!port)port = 21;
 
-login = get_kb_item("ftp/login");
-password = get_kb_item("ftp/password");
+kb_creds = ftp_get_kb_creds();
+login = kb_creds["login"];
+password = kb_creds["pass"];
 
+port = get_ftp_port(default:21);
+banner = get_ftp_banner(port: port);
+if(! banner || "ArGoSoft FTP Server" >!< banner)
+  exit(0);
 
-if(get_port_state(port))
+if (safe_checks() || ! login)
 {
- soc = open_sock_tcp(port);
- if(soc)
- {
-    if (safe_checks() || ! login)
+  #220 ArGoSoft FTP Server for Windows NT/2000/XP, Version 1.4 (1.4.1.1)
+  if (egrep(pattern:".*ArGoSoft FTP Server .* Version .* \((0\.|1\.([0-3]\.|4(\.0|\.1\.[01])))\).*", string:banner) )
+    security_message(port);
+  exit(0);
+}
+
+soc = open_sock_tcp(port);
+if(soc)
+{
+  if(ftp_authenticate(socket:soc, user:login, pass:password))
+  {
+    s = string("XCWD ", crap(5000), "\r\n");
+    send(socket:soc, data:s);
+    r = recv_line(socket:soc, length:1024);
+    close(soc);
+
+    soc = open_sock_tcp(port);
+    if(!soc)
     {
-    	banner = get_ftp_banner(port: port);
-	if ( ! banner ) exit(0);
-	#220 ArGoSoft FTP Server for Windows NT/2000/XP, Version 1.4 (1.4.1.1)
-	if (egrep(pattern:".*ArGoSoft FTP Server .* Version .* \((0\.|1\.([0-3]\.|4(\.0|\.1\.[01])))\).*", string:banner) ) security_message(port);
-	exit(0);
-    }
-    else
-    {
-      if(ftp_authenticate(socket:soc, user:login, pass:password))
-      {
-   	s = string("XCWD ", crap(5000), "\r\n");
-   	send(socket:soc, data:s);
-   	r = recv_line(socket:soc, length:1024);
-   	close(soc);
-       
-        soc = open_sock_tcp(port);
-        if(!soc)
-        {
-          security_message(port);
-     	  exit(0);
-        }
-      }
-      close(soc);
+      security_message(port);
+      exit(0);
     }
   }
+  close(soc);
 }

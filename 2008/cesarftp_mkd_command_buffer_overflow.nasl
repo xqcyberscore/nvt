@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cesarftp_mkd_command_buffer_overflow.nasl 10288 2018-06-21 13:26:05Z cfischer $
+# $Id: cesarftp_mkd_command_buffer_overflow.nasl 13610 2019-02-12 15:17:00Z cfischer $
 #
 # CesarFTP MKD Command Buffer Overflow
 #
@@ -8,7 +8,7 @@
 # Ferdy Riphagen
 #
 # Copyright:
-# Copyright (C) 2006 Ferdy Riphagen
+# Copyright (C) 2008 Ferdy Riphagen
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2,
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.200058");
-  script_version("$Revision: 10288 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-21 15:26:05 +0200 (Thu, 21 Jun 2018) $");
+  script_version("$Revision: 13610 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-12 16:17:00 +0100 (Tue, 12 Feb 2019) $");
   script_tag(name:"creation_date", value:"2008-08-22 16:09:14 +0200 (Fri, 22 Aug 2008)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -41,8 +41,8 @@ if(description)
   script_name("CesarFTP MKD Command Buffer Overflow");
   script_category(ACT_DENIAL);
   script_family("Denial of Service");
-  script_copyright("This script is Copyright (C) 2006 Ferdy Riphagen");
-  script_dependencies("find_service.nasl", "secpod_ftp_anonymous.nasl");
+  script_copyright("This script is Copyright (C) 2008 Ferdy Riphagen");
+  script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/20574/");
@@ -87,17 +87,9 @@ if( soc ) {
 
   if( ! banner || ( "CesarFTP server" >!< banner ) ) exit( 0 );
 
-  user = get_kb_item( "ftp/login" );
-  pass = get_kb_item( "ftp/password" );
-
-  if( ! user ) {
-    if( get_kb_item( "ftp/" + port + "/anonymous" ) ) {
-      user = "anonymous";
-      pass = "anonymous@anonymous.xx";
-    } else {
-      exit( 0 );
-    }
-  }
+  kb_creds = ftp_get_kb_creds();
+  user = kb_creds["login"];
+  pass = kb_creds["pass"];
 
   if( ! ftp_authenticate( socket:soc, user:user, pass:pass ) ) exit( 0 );
 

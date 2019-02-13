@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hirschmann_telnet_detect.nasl 8449 2018-01-17 17:04:52Z cfischer $
+# $Id: gb_hirschmann_telnet_detect.nasl 13624 2019-02-13 10:02:56Z cfischer $
 #
 # Hirschmann Devices Detection (Telnet)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108312");
-  script_version("$Revision: 8449 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-17 18:04:52 +0100 (Wed, 17 Jan 2018) $");
+  script_version("$Revision: 13624 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-13 11:02:56 +0100 (Wed, 13 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-12-11 09:03:31 +0100 (Mon, 11 Dec 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -39,6 +39,7 @@ if(description)
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
   script_dependencies("telnetserver_detect_type_nd_version.nasl");
   script_require_ports("Services/telnet", 23);
+  script_mandatory_keys("telnet/hirschmann/device/detected");
 
   script_tag(name:"summary", value:"This script performs Telnet based detection of Hirschmann Devices.");
 
@@ -54,6 +55,8 @@ include("host_details.inc");
 
 port   = get_telnet_port( default:23 );
 banner = get_telnet_banner( port:port );
+if( ! banner )
+  exit( 0 );
 
 # Copyright (c) 2011-2017 Hirschmann Automation and Control GmbH
 if( "Hirschmann Automation and Control GmbH" >< banner ) {

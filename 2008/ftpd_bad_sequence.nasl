@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: ftpd_bad_sequence.nasl 10033 2018-05-31 07:51:19Z ckuersteiner $
+# $Id: ftpd_bad_sequence.nasl 13605 2019-02-12 13:43:31Z cfischer $
 # Description: Fake FTP server accepts a bad sequence of commands
 #
 # Authors:
@@ -24,35 +24,35 @@
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.80063");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_tag(name:"qod_type", value:"remote_banner_unreliable");
- script_version("$Revision: 10033 $");
- script_tag(name:"last_modification", value:"$Date: 2018-05-31 09:51:19 +0200 (Thu, 31 May 2018) $");
- script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
- script_tag(name:"cvss_base", value:"0.0");
+  script_oid("1.3.6.1.4.1.25623.1.0.80063");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
+  script_version("$Revision: 13605 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-12 14:43:31 +0100 (Tue, 12 Feb 2019) $");
+  script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
+  script_tag(name:"cvss_base", value:"0.0");
 
- script_name("Fake FTP server accepts a bad sequence of commands");
+  script_name("Fake FTP server accepts a bad sequence of commands");
 
- script_category(ACT_GATHER_INFO);
- script_family("FTP");
- script_copyright("This script is Copyright (C) 2008 Michel Arboi");
- script_dependencies("find_service_3digits.nasl", "logins.nasl", "ftpd_no_cmd.nasl");
- script_require_ports("Services/ftp", 21);
+  script_category(ACT_GATHER_INFO);
+  script_family("FTP");
+  script_copyright("This script is Copyright (C) 2008 Michel Arboi");
+  script_dependencies("find_service_3digits.nasl", "logins.nasl", "ftpd_no_cmd.nasl");
+  script_require_ports("Services/ftp", 21);
 
- script_tag(name: "insight", value: "The remote server advertises itself as being a a FTP server, but it accepts
-commands sent in bad order, which indicates that it may be a backdoor or a proxy.
+  script_tag(name:"insight", value:"The remote server advertises itself as being a a FTP server, but it accepts
+  commands sent in bad order, which indicates that it may be a backdoor or a proxy.
 
-Further FTP tests on this port will be disabled to avoid false alerts.");
+  Further FTP tests on this port will be disabled to avoid false alerts.");
 
- script_tag(name: "summary" , value: "The remote FTP service accepts commands in any order.");
+  script_tag(name:"summary", value:"The remote FTP service accepts commands in any order.");
 
- exit(0);
+  exit(0);
 }
 
-include('global_settings.inc');
-include('misc_func.inc');
-include('ftp_func.inc');
+include("global_settings.inc");
+include("misc_func.inc");
+include("ftp_func.inc");
 
 function test(soc)
 {
@@ -102,11 +102,7 @@ function test(soc)
  return score;
 }
 
-port = get_kb_item("Services/ftp");
-if (! port) port = 21;
-
-if (! get_port_state(port)) exit(0);
-
+port = get_ftp_port(default:21);
 
 soc = open_sock_tcp(port);
 if (! soc) exit(0);

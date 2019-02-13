@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wing_ftp_42736.nasl 7552 2017-10-24 13:00:36Z cfischer $
+# $Id: gb_wing_ftp_42736.nasl 13613 2019-02-12 16:12:57Z cfischer $
 #
 # Wing FTP Server HTTP Request Denial Of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100777");
-  script_version("$Revision: 7552 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 15:00:36 +0200 (Tue, 24 Oct 2017) $");
+  script_version("$Revision: 13613 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-12 17:12:57 +0100 (Tue, 12 Feb 2019) $");
   script_tag(name:"creation_date", value:"2010-09-02 16:10:00 +0200 (Thu, 02 Sep 2010)");
   script_bugtraq_id(42736);
   script_tag(name:"cvss_base", value:"5.0");
@@ -37,9 +37,9 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
-  script_dependencies("find_service.nasl", "os_detection.nasl", "ftpserver_detect_type_nd_version.nasl");
+  script_dependencies("os_detection.nasl", "ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
-  script_mandatory_keys("Host/runs_windows");
+  script_mandatory_keys("Host/runs_windows", "ftp/wing/ftp/detected");
 
   script_xref(name:"URL", value:"https://www.securityfocus.com/bid/42736");
   script_xref(name:"URL", value:"http://www.wftpserver.com/");
@@ -48,9 +48,11 @@ if(description)
   script_tag(name:"summary", value:"Wing FTP Server is prone to a denial-of-service vulnerability.");
   script_tag(name:"impact", value:"An attacker can exploit this issue to cause the server to crash,
   resulting in a denial-of-service condition. Other attacks may also be possible.");
+
   script_tag(name:"affected", value:"Versions prior to Wing FTP Server 3.6.6 may be affected.
 
   This issue is reported to be exploitable in the Windows environment only.");
+
   script_tag(name:"solution", value:"Updates are available. Please see the references for more details.");
 
   script_tag(name:"qod_type", value:"remote_banner");
@@ -65,7 +67,6 @@ include("host_details.inc");
 
 port = get_ftp_port( default:21 );
 if( ! banner = get_ftp_banner( port:port ) ) exit( 0 );
-
 if( "220 Wing FTP Server" >!< banner ) exit( 0 );
 
 version = eregmatch( pattern:"Wing FTP Server ([^ ]+) ready", string:banner );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_get_http_banner.nasl 13360 2019-01-30 10:46:01Z ckuersteiner $
+# $Id: gb_get_http_banner.nasl 13630 2019-02-13 11:03:59Z cfischer $
 #
 # HTTP Banner
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140170");
-  script_version("$Revision: 13360 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-30 11:46:01 +0100 (Wed, 30 Jan 2019) $");
+  script_version("$Revision: 13630 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-13 12:03:59 +0100 (Wed, 13 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-02-21 11:53:19 +0100 (Tue, 21 Feb 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -50,16 +50,19 @@ if(description)
 
 include("http_func.inc");
 
-function set_mandatory_key( key, regex, banner ) {
+function set_mandatory_key( key, regex, banner, extra_key ) {
 
-  local_var key, regex, banner;
+  local_var key, regex, banner, extra_key;
 
   if( ! key )   return;
   if( ! regex ) return;
   if( ! banner ) return;
 
-  if( egrep( pattern:regex, string:banner, icase:TRUE ) )
+  if( egrep( pattern:regex, string:banner, icase:TRUE ) ) {
     set_kb_item( name:key + "/banner", value:TRUE );
+    if( extra_key )
+      set_kb_item( name:extra_key, value:TRUE );
+  }
   return;
 }
 
@@ -100,7 +103,7 @@ set_mandatory_key( key:"Boa", regex:"Server: Boa/", banner:banner );
 set_mandatory_key( key:"minaliC", regex:"Server: minaliC", banner:banner );
 set_mandatory_key( key:"tracd", regex:"Server: tracd/", banner:banner );
 set_mandatory_key( key:"Wing_FTP_Server", regex:"Server: Wing FTP Server", banner:banner );
-set_mandatory_key( key:"httpdx", regex:"httpdx/", banner:banner );
+set_mandatory_key( key:"httpdx", regex:"httpdx/", banner:banner, extra_key:"www_or_ftp/httpdx/detected" );
 set_mandatory_key( key:"bozohttpd", regex:"Server: bozohttpd/", banner:banner );
 set_mandatory_key( key:"AOLserver", regex:"AOLserver/", banner:banner );
 set_mandatory_key( key:"SunWWW", regex:"Server: Sun-", banner:banner );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rhinosoft_serv-u_detect.nasl 13564 2019-02-11 07:54:43Z cfischer $
+# $Id: gb_rhinosoft_serv-u_detect.nasl 13615 2019-02-12 17:41:28Z cfischer $
 #
 # Rhino Software Serv-U SSH and FTP Server Version Detection (Remote)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801117");
-  script_version("$Revision: 13564 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-11 08:54:43 +0100 (Mon, 11 Feb 2019) $");
+  script_version("$Revision: 13615 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-12 18:41:28 +0100 (Tue, 12 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-10-20 14:26:56 +0200 (Tue, 20 Oct 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -43,6 +43,7 @@ if(description)
   script_family("Product detection");
   script_dependencies("ftpserver_detect_type_nd_version.nasl", "ssh_detect.nasl");
   script_require_ports("Services/ftp", 21, 990, "Services/ssh", 22);
+  script_mandatory_keys("ssh_or_ftp/serv-u/detected");
 
   script_tag(name:"summary", value:"This script detects the installed version of Rhino Software
   Serv-U and sets the result in KB.");

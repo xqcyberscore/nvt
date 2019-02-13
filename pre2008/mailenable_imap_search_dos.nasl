@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: mailenable_imap_search_dos.nasl 13409 2019-02-01 13:13:33Z cfischer $
+# $Id: mailenable_imap_search_dos.nasl 13622 2019-02-13 09:13:18Z mmartin $
 # Description: MailEnable IMAP Service Search DoS Vulnerability
 #
 # Authors:
@@ -25,8 +25,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.15487");
-  script_version("$Revision: 13409 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-01 14:13:33 +0100 (Fri, 01 Feb 2019) $");
+  script_version("$Revision: 13622 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-13 10:13:18 +0100 (Wed, 13 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -52,7 +52,7 @@ if(description)
   service. A flaw exists in MailEnable Professional Edition versions 1.5a-d that results in this
   service crashing if it receives a SEARCH command.");
 
-  script_tag(name:"imapct", value:"An authenticated user could send this command either on purpose as
+  script_tag(name:"impact", value:"An authenticated user could send this command either on purpose as
   a denial of service attack or unwittingly since some IMAP clients, such as IMP and Vmail, use it as
   part of the normal login process.");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nullftp_server_site_cmd_exec_vuln.nasl 11554 2018-09-22 15:11:42Z cfischer $
+# $Id: gb_nullftp_server_site_cmd_exec_vuln.nasl 13605 2019-02-12 13:43:31Z cfischer $
 #
 # Null FTP Server SITE Command Execution Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800546");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 13605 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-12 14:43:31 +0100 (Tue, 12 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-04-02 08:15:32 +0200 (Thu, 02 Apr 2009)");
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:C/I:C/A:C");
@@ -45,13 +45,16 @@ if(description)
   script_family("FTP");
   script_dependencies("gb_nullftp_server_detect.nasl");
   script_mandatory_keys("NullFTP/Server/Ver");
+
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary codes
   in the context of the application.");
+
   script_tag(name:"affected", value:"NULL FTP Server Free and Pro version prior to 1.1.0.8 on Windows");
   script_tag(name:"insight", value:"An error is generated while handling custom SITE command containing shell
   metacharacters such as & (ampersand) as a part of an argument.");
-  script_tag(name:"solution", value:"Upgrade to the latest version 1.1.0.8 or later
-  http://www.vwsolutions.com/NullFTPServer/");
+
+  script_tag(name:"solution", value:"Upgrade to the latest version 1.1.0.8 or later.");
+
   script_tag(name:"summary", value:"This host has Null FTP Server installed and is prone to arbitrary
   code execution vulnerability.");
 
@@ -60,28 +63,12 @@ if(description)
   exit(0);
 }
 
-
-include("ftp_func.inc");
 include("version_func.inc");
 
-nullPort = get_kb_item("Services/ftp");
-if(!nullPort){
-  nullPort = 21;
-}
+ver = get_kb_item("NullFTP/Server/Ver");
+if(!ver)
+  exit(0);
 
-if(get_port_state(nullPort))
-{
-  banner = get_ftp_banner(port:nullPort);
-  if("Null FTP Server" >!< banner){
-    exit(0);
-  }
-
-  ver = get_kb_item("NullFTP/Server/Ver");
-  if(!ver){
-    exit(0);
-  }
-
-  if(version_is_less(version:ver, test_version:"1.1.0.8")){
-    security_message(nullPort);
-  }
+if(version_is_less(version:ver, test_version:"1.1.0.8")){
+  security_message(port:0);
 }

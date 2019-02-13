@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_juniper_screenos_telnet_backdoor_12_2015.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_juniper_screenos_telnet_backdoor_12_2015.nasl 13636 2019-02-13 12:23:58Z cfischer $
 #
 # Backdoor in ScreenOS (Telnet)
 #
@@ -25,13 +25,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105496");
   script_cve_id("CVE-2015-7755", "CVE-2015-7754");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 13636 $");
 
   script_name("Backdoor in ScreenOS (Telnet)");
 
@@ -42,8 +42,8 @@ if (description)
 
   script_tag(name:"insight", value:"It was possible to login using any username and the password: <<< %s(un='%s') = %u
 
- In February 2018 it was discovered that this vulnerability is being exploited by the 'DoubleDoor' Internet of Things
- (IoT) Botnet.");
+  In February 2018 it was discovered that this vulnerability is being exploited by the 'DoubleDoor' Internet of Things
+  (IoT) Botnet.");
 
   script_tag(name:"solution", value:"This issue was fixed in ScreenOS 6.2.0r19, 6.3.0r21, and all subsequent releases.");
 
@@ -53,23 +53,23 @@ if (description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"exploit");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-13 13:23:58 +0100 (Wed, 13 Feb 2019) $");
   script_tag(name:"creation_date", value:"2015-12-21 10:35:33 +0100 (Mon, 21 Dec 2015)");
   script_category(ACT_ATTACK);
-  script_family("General");
+  script_family("Default Accounts");
   script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
   script_dependencies("find_service.nasl");
   script_require_ports("Services/telnet", 23);
+  script_mandatory_keys("telnet/banner/available");
 
   exit(0);
 }
 
 include("telnet_func.inc");
 
-port = get_kb_item("Services/telnet");
-if( ! port ) port = 23;
-
-if( ! get_port_state( port ) ) exit( 0 );
+port = get_telnet_port(default:23);
+if(get_kb_item("telnet/" + port + "/no_login_banner"))
+  exit(0);
 
 # it seems that ANY username is accepted using the BD password
 user = 'netscreen';
@@ -119,4 +119,3 @@ if("Product Name:" >< buf && "FPGA checksum" >< buf && "Compiled by build_master
 }
 
 exit( 99 );
-

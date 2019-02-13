@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ecessa_shieldlink_telnet_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
+# $Id: gb_ecessa_shieldlink_telnet_detect.nasl 13624 2019-02-13 10:02:56Z cfischer $
 #
-# Ecessa ShieldLink Detection (Telnet)
+# Ecessa ShieldLink/PowerLink Detection (Telnet)
 #
 # Authors:
 # Jan Philipp Schulte <jan.schulte@greenbone.net>
@@ -25,18 +25,18 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if( description )
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113224");
-  script_version("$Revision: 11885 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 13624 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-13 11:02:56 +0100 (Wed, 13 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-07-06 10:41:45 +0200 (Fri, 06 Jul 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_name("Ecessa ShieldLink Detection (Telnet)");
+  script_name("Ecessa ShieldLink/PowerLink Detection (Telnet)");
 
   script_category(ACT_GATHER_INFO);
 
@@ -44,6 +44,7 @@ if( description )
   script_family("Product detection");
   script_dependencies("telnetserver_detect_type_nd_version.nasl");
   script_require_ports("Services/telnet", 23);
+  script_mandatory_keys("telnet/ecessa/shield_power_link/detected");
 
   script_tag(name:"summary", value:"Checks if the target is an Ecessa ShieldLink
   or PowerLink device, and, if so, retrieves the version using Telnet.");

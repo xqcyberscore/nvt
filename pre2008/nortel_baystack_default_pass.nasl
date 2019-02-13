@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: nortel_baystack_default_pass.nasl 4903 2017-01-02 12:13:57Z cfi $
+# $Id: nortel_baystack_default_pass.nasl 13624 2019-02-13 10:02:56Z cfischer $
 #
 # Nortel Baystack switch password test
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11327");
-  script_version("$Revision: 4903 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-02 13:13:57 +0100 (Mon, 02 Jan 2017) $");
+  script_version("$Revision: 13624 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-13 11:02:56 +0100 (Wed, 13 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -39,19 +39,16 @@ if(description)
   script_family("Default Accounts");
   script_dependencies("telnetserver_detect_type_nd_version.nasl");
   script_require_ports("Services/telnet", 23);
+  script_mandatory_keys("telnet/nortel_networks/baystack/detected");
 
-  tag_summary = "The remote switch has a weak password.";
-
-  tag_impact = "This means that anyone who has (downloaded) a user manual can telnet to it and gain 
-  administrative access.";
-
-  tag_solution = "Telnet to this switch and set passwords under 'Console/Comm Port Configuration' for both
+  script_tag(name:"solution", value:"Telnet to this switch and set passwords under 'Console/Comm Port Configuration' for both
   read only and read write. Then, set the parameter 'Console Switch Password' or 'Console Stack Password'
-  to 'Required for TELNET' or 'Required for Both'.";
+  to 'Required for TELNET' or 'Required for Both'.");
 
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
+  script_tag(name:"summary", value:"The remote switch has a weak password.");
+
+  script_tag(name:"impact", value:"This means that anyone who has (downloaded) a user manual can telnet to it and gain
+  administrative access.");
 
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -71,9 +68,9 @@ function myrecv( socket, pattern ) {
 }
 
 port = get_telnet_port( default:23 );
-
 banner = get_telnet_banner( port:port );
-if( ! banner || "Ctrl-Y" >!< banner ) exit( 0 );
+if( ! banner || ( "Ctrl-Y" >!< banner && "P Configuration" >!< banner ) )
+  exit( 0 );
 
 soc = open_sock_tcp( port );
 if( ! soc ) exit( 0 );
@@ -138,5 +135,4 @@ if( "Ctrl-Y" >< buf ) {
 }
 
 close( soc );
-
 exit( 99 );

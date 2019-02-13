@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: CiscoVG248.nasl 4817 2016-12-20 15:32:25Z cfi $
+# $Id: CiscoVG248.nasl 13634 2019-02-13 12:06:16Z cfischer $
 #
 # Cisco VG248 login password is blank
 #
@@ -33,8 +33,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.19377");
-  script_version("$Revision: 4817 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-20 16:32:25 +0100 (Tue, 20 Dec 2016) $");
+  script_version("$Revision: 13634 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-13 13:06:16 +0100 (Wed, 13 Feb 2019) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -42,23 +42,19 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2005 Rick McCloskey");
   script_family("CISCO");
-  script_dependencies("find_service.nasl", "telnetserver_detect_type_nd_version.nasl");
+  script_dependencies("telnetserver_detect_type_nd_version.nasl");
   script_require_ports("Services/telnet", 23);
+  script_mandatory_keys("telnet/banner/available");
 
-  tag_summary = "The remote host is a Cisco VG248 with a blank password.";
-
-  tag_impact = "The Cisco VG248 does not have a password set and allows direct
-  access to the configuration interface. An attacker could telnet
-  to the Cisco unit and reconfigure it to lock the owner out as
-  well as completely disable the phone system.";
-
-  tag_solution = "Telnet to this unit and at the configuration interface:
+  script_tag(name:"solution", value:"Telnet to this unit and at the configuration interface:
   Choose Configure-> and set the login and enable passwords. If
-  possible, in the future do not use telnet since it is an insecure protocol.";
+  possible, in the future do not use telnet since it is an insecure protocol.");
 
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"impact", value:"The Cisco VG248 does not have a password set and allows direct
+  access to the configuration interface. An attacker could telnet to the Cisco unit and reconfigure
+  it to lock the owner out as well as completely disable the phone system.");
+
+  script_tag(name:"summary", value:"The remote host is a Cisco VG248 with a blank password.");
 
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_vul");

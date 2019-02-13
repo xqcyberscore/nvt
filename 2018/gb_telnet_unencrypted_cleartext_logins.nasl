@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_telnet_unencrypted_cleartext_logins.nasl 13366 2019-01-30 13:39:57Z cfischer $
+# $Id: gb_telnet_unencrypted_cleartext_logins.nasl 13620 2019-02-13 07:44:45Z cfischer $
 #
 # Telnet Unencrypted Cleartext Login
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108522");
-  script_version("$Revision: 13366 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-30 14:39:57 +0100 (Wed, 30 Jan 2019) $");
+  script_version("$Revision: 13620 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-13 08:44:45 +0100 (Wed, 13 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-12-20 07:47:54 +0100 (Thu, 20 Dec 2018)");
   script_tag(name:"cvss_base", value:"4.8");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:P/A:N");
@@ -55,6 +55,8 @@ if(description)
 }
 
 include("telnet_func.inc");
+include("misc_func.inc");
+include("dump.inc");
 
 port = get_telnet_port( default:23 );
 
@@ -72,11 +74,7 @@ if( ! banner )
 # There are plenty of services available which are responding / reporting
 # a telnet banner even if those are no telnet services. Only continue with
 # the reporting if we actually got a login/password prompt.
-# nb: Some additional pattern where used from e.g.
-# sw_apc_default_telnet_credentials.nasl, sw_zebra_telnet_default_password.nasl,
-# gb_zxv10_w300_hardcoded_credentials_2014.nasl, gb_audemat_fmb80_default_telnet_credentials.nasl,
-# gb_lantronix_unprotected_telnet.nasl, gb_windows_ce_unprotected_telnet.nasl
-if( banner !~ "(Pocket CMD.+\\>|login|password|user ?name|user|press enter.+setup mode|polycom command shell|welcome to viewstation|hi, my name is.+here is what i know about myself|you are logged in|management console.+sollae systems|lsh>) ?:?" )
+if( ! telnet_has_login_prompt( data:banner ) )
   exit( 0 );
 
 # nb: Some banners found "in the wild", e.g. Mitel VoIP phone

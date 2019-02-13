@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netgear_prosafe_telnet_detect.nasl 9702 2018-05-03 06:35:02Z cfischer $
+# $Id: gb_netgear_prosafe_telnet_detect.nasl 13624 2019-02-13 10:02:56Z cfischer $
 #
 # NETGEAR ProSAFE Devices Detection (Telnet)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108310");
-  script_version("$Revision: 9702 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-03 08:35:02 +0200 (Thu, 03 May 2018) $");
+  script_version("$Revision: 13624 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-13 11:02:56 +0100 (Wed, 13 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-12-07 08:03:31 +0100 (Thu, 07 Dec 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -39,6 +39,7 @@ if(description)
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
   script_dependencies("telnetserver_detect_type_nd_version.nasl");
   script_require_ports("Services/telnet", 23);
+  script_mandatory_keys("telnet/netgear/prosafe/detected");
 
   script_tag(name:"summary", value:"This script performs Telnet based detection of NETGEAR ProSAFE devices.");
 
@@ -51,6 +52,8 @@ include("telnet_func.inc");
 
 port   = get_telnet_port( default:23 );
 banner = get_telnet_banner( port:port );
+if( ! banner )
+  exit( 0 );
 
 # nb: It seems to be possible to change the banner.
 # The banner also contains only the model name by default so each model needs to be added here.

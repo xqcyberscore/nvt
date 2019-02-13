@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_starttls_ftp.nasl 12990 2019-01-09 10:42:04Z cfischer $
+# $Id: gb_starttls_ftp.nasl 13611 2019-02-12 15:23:02Z cfischer $
 #
 # SSL/TLS: FTP 'AUTH TLS' Command Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105009");
-  script_version("$Revision: 12990 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-09 11:42:04 +0100 (Wed, 09 Jan 2019) $");
+  script_version("$Revision: 13611 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-12 16:23:02 +0100 (Tue, 12 Feb 2019) $");
   script_tag(name:"creation_date", value:"2014-04-09 16:39:22 +0100 (Wed, 09 Apr 2014)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -38,7 +38,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
   script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
-  script_mandatory_keys("ftp_banner/available");
+  script_mandatory_keys("ftp/banner/available");
 
   script_tag(name:"summary", value:"Checks if the remote FTP server supports SSL/TLS (FTPS) with the 'AUTH TLS' command.");
 

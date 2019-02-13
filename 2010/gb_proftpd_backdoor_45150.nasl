@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_proftpd_backdoor_45150.nasl 4774 2016-12-15 12:52:36Z cfi $
+# $Id: gb_proftpd_backdoor_45150.nasl 13602 2019-02-12 12:47:59Z cfischer $
 #
 # ProFTPD Backdoor Unauthorized Access Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:proftpd:proftpd";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100933");
-  script_version("$Revision: 4774 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-15 13:52:36 +0100 (Thu, 15 Dec 2016) $");
+  script_version("$Revision: 13602 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-12 13:47:59 +0100 (Tue, 12 Feb 2019) $");
   script_tag(name:"creation_date", value:"2010-12-02 19:42:22 +0100 (Thu, 02 Dec 2010)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -47,13 +47,9 @@ if(description)
   script_xref(name:"URL", value:"http://sourceforge.net/mailarchive/message.php?msg_name=alpine.DEB.2.00.1012011542220.12930%40familiar.castaglia.org");
   script_xref(name:"URL", value:"http://www.proftpd.org");
 
-  tag_summary = "ProFTPD is prone to an unauthorized-access vulnerability due to a
-  backdoor in certain versions of the application.";
-
-  tag_impact = "Exploiting this issue allows remote attackers to execute arbitrary
-  system commands with superuser privileges.";
-
-  tag_affected = "The issue affects the ProFTPD 1.3.3c package downloaded between
+  script_tag(name:"summary", value:"ProFTPD is prone to an unauthorized-access vulnerability due to a
+  backdoor in certain versions of the application.");
+  script_tag(name:"affected", value:"The issue affects the ProFTPD 1.3.3c package downloaded between
   November 28 and December 2, 2010.
 
   The MD5 sums of the unaffected ProFTPD 1.3.3c source packages are
@@ -63,15 +59,11 @@ if(description)
   4f2c554d6273b8145095837913ba9e5d proftpd-1.3.3c.tar.gz
 
   Files with MD5 sums other than those listed above should be
-  considered affected.";
-
-  tag_solution = "The vendor released an advisory to address the issue. Please see the
-  references for more information.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"impact", value:tag_impact);
+  considered affected.");
+  script_tag(name:"solution", value:"The vendor released an advisory to address the issue. Please see the
+  references for more information.");
+  script_tag(name:"impact", value:"Exploiting this issue allows remote attackers to execute arbitrary
+  system commands with superuser privileges.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");

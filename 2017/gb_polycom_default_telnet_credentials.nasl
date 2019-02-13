@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_polycom_default_telnet_credentials.nasl 8081 2017-12-12 06:18:40Z cfischer $
+# $Id: gb_polycom_default_telnet_credentials.nasl 13624 2019-02-13 10:02:56Z cfischer $
 #
 # Polycom HDX Default Telnet Credentials
 #
@@ -28,13 +28,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112151");
-  script_version("$Revision: 8081 $");
+  script_version("$Revision: 13624 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
   script_name("Polycom HDX Default Telnet Credentials");
 
-  script_tag(name:"last_modification", value:"$Date: 2017-12-12 07:18:40 +0100 (Tue, 12 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-13 11:02:56 +0100 (Wed, 13 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-12-08 09:24:56 +0100 (Fri, 08 Dec 2017)");
 
   script_category(ACT_ATTACK);
@@ -42,17 +42,22 @@ if(description)
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_dependencies("telnetserver_detect_type_nd_version.nasl");
   script_require_ports("Services/telnet", 23);
+  script_mandatory_keys("telnet/polycom/device/detected");
 
   script_xref(name:"URL", value:"https://staaldraad.github.io/2017/11/12/polycom-hdx-rce/");
 
   script_tag(name:"summary", value:"The Polycom device has default telnet credentials or passwordless login.");
+
   script_tag(name:"impact", value:"This issue may be exploited by a remote attacker to gain
-access to sensitive information or modify system configuration.");
+  access to sensitive information or modify system configuration.");
+
   script_tag(name:"vuldetect", value:"Connect to the telnet service and try to either gain direct access since no password is set or login with default credentials.");
+
   script_tag(name:"insight", value:"The Polycom series exposes an administrative console on port 23. This
-administrative interface is built on PSH (Polycom Shell) and allows management of
-the underlying device. By default there is no password, or the password is either
-set to 456, admin, or POLYCOM, there is no username.");
+  administrative interface is built on PSH (Polycom Shell) and allows management of
+  the underlying device. By default there is no password, or the password is either
+  set to 456, admin, or POLYCOM, there is no username.");
+
   script_tag(name:"solution", value:"It is recommended to disable the telnet access.");
 
   script_tag(name:"qod_type", value:"exploit");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: nortel_annex_default_pass.nasl 7273 2017-09-26 11:17:25Z cfischer $
+# $Id: nortel_annex_default_pass.nasl 13624 2019-02-13 10:02:56Z cfischer $
 #
 # Nortel/Bay Networks/Xylogics Annex default password
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11201");
-  script_version("$Revision: 7273 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-26 13:17:25 +0200 (Tue, 26 Sep 2017) $");
+  script_version("$Revision: 13624 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-13 11:02:56 +0100 (Wed, 13 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -39,24 +39,21 @@ if(description)
   script_family("Default Accounts");
   script_dependencies("telnetserver_detect_type_nd_version.nasl");
   script_require_ports("Services/telnet", 23);
+  script_mandatory_keys("telnet/nortel_bay_networks/annex/detected");
 
-  tag_summary = "The remote terminal server has the default password set.
-  This means that anyone who has (downloaded) a user manual can
-  telnet to it and gain administrative access.";
-
-  tag_impact = "If modems are attached to this terminal server, it may allow
-  unauthenticated remote access to the network.";
-
-  tag_solution = "Telnet to this terminal server change to the root user with 'su' and
+  script_tag(name:"solution", value:"Telnet to this terminal server change to the root user with 'su' and
   set the password with the 'passwd' command. Then, go to the admin mode using the
   'admin' command. Cli security can then be enabled by setting the vcli_security to
   'Y' with the command 'set annex vcli_security Y'. This will require ERPCD or RADIUS
   authentication for access to the terminal server. Changes can then be applied through
-  the 'reset annex all' command.";
+  the 'reset annex all' command.");
 
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
+  script_tag(name:"summary", value:"The remote terminal server has the default password set.
+  This means that anyone who has (downloaded) a user manual can
+  telnet to it and gain administrative access.");
+
+  script_tag(name:"impact", value:"If modems are attached to this terminal server, it may allow
+  unauthenticated remote access to the network.");
 
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -105,7 +102,7 @@ if( "Annex" >< resp ) {
   # Here we send it the cli command, requesting a command prompt
   test = string( "cli\r\n" );
   send( socket:soc, data:test );
-  
+
   resp = myrecv( socket:soc, pattern:".*annex:.*" );
   if( "annex:" >< resp ) {
 
@@ -124,7 +121,7 @@ if( "Annex" >< resp ) {
       test = string( ip,"\r\n" );
       send( socket:soc, data:test );
       resp = myrecv( socket:soc, pattern:".*annex#.*" );
-  
+
       if( "annex#" >< resp ) {
         # The prompt changes to 'annex#' when we're supeuser
         report = string( "The SuperUser password is at it's default setting." );

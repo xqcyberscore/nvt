@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: 3com_switches.nasl 9567 2018-04-23 13:22:46Z cfischer $
+# $Id: 3com_switches.nasl 13624 2019-02-13 10:02:56Z cfischer $
 #
 # 3Com Superstack 3 switch with default password
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10747");
-  script_version("$Revision: 9567 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-23 15:22:46 +0200 (Mon, 23 Apr 2018) $");
+  script_version("$Revision: 13624 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-13 11:02:56 +0100 (Wed, 13 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
@@ -40,6 +40,7 @@ if(description)
   script_family("Default Accounts");
   script_dependencies("telnetserver_detect_type_nd_version.nasl");
   script_require_ports(23); # the port can't be changed on the device
+  script_mandatory_keys("telnet/banner/available");
   script_exclude_keys("default_credentials/disable_default_account_checks");
 
   script_add_preference(name:"Use complete password list (not only vendor specific passwords)", type:"checkbox", value:"no");
@@ -68,7 +69,7 @@ if( get_kb_item( "default_credentials/disable_default_account_checks" ) ) exit( 
 port = 23; # the port can't be changed on the device
 if( ! get_port_state( port ) ) exit( 0 );
 banner = get_telnet_banner( port:port );
-if( "Login : " >!< banner ) exit( 0 );
+if( !banner || "Login : " >!< banner ) exit( 0 );
 
 p = script_get_preference( "Use complete password list (not only vendor specific passwords)" );
 if( "yes" >< p ) {

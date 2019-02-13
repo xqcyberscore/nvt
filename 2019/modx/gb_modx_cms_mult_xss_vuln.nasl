@@ -19,8 +19,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112511");
-  script_version("$Revision: 13522 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-07 11:52:34 +0100 (Thu, 07 Feb 2019) $");
+  script_version("$Revision: 13601 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-12 13:26:11 +0100 (Tue, 12 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-02-07 10:42:11 +0100 (Thu, 07 Feb 2019)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -31,7 +31,7 @@ if (description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_name("MODX Revolution CMS <= 2.7.0 Multiple XSS Vulnerabilities");
+  script_name("MODX Revolution CMS < 2.7.1 Multiple XSS Vulnerabilities");
 
   script_category(ACT_GATHER_INFO);
 
@@ -44,7 +44,7 @@ if (description)
   script_tag(name:"summary", value:"MODX Revolution CMS is prone to multiple cross-site scripting vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"affected", value:"MODX Revolution versions through 2.7.0.");
-  script_tag(name:"solution", value:"Apply the changes from the referenced github issues.");
+  script_tag(name:"solution", value:"Upgrade to version 2.7.1 or apply the changes from the referenced github issues.");
 
   script_xref(name:"URL", value:"https://github.com/modxcms/revolution/issues/14102");
   script_xref(name:"URL", value:"https://github.com/modxcms/revolution/issues/14103");
@@ -65,8 +65,8 @@ if(!port = get_app_port(cpe: CPE))
 if(!version = get_app_version(cpe: CPE, port: port))
   exit(0);
 
-if(version_is_less_equal(version: version, test_version: "2.7.0")) {
-  report = report_fixed_ver(installed_version: version, fixed_version: "Apply the changes from the referenced links");
+if(version_is_less(version: version, test_version: "2.7.1")) {
+  report = report_fixed_ver(installed_version: version, fixed_version: "2.7.1");
   security_message(port: port, data: report);
   exit(0);
 }

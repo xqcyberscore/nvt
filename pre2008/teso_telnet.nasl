@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: teso_telnet.nasl 9348 2018-04-06 07:01:19Z cfischer $
+# $Id: teso_telnet.nasl 13634 2019-02-13 12:06:16Z cfischer $
 # Description: TESO in.telnetd buffer overflow
 #
 # Authors:
@@ -22,62 +22,50 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "The Telnet server does not return an expected number of replies
-when it receives a long sequence of 'Are You There' commands.
-This probably means it overflows one of its internal buffers and
-crashes. It is likely an attacker could abuse this bug to gain
-control over the remote host's superuser.
-
-For more information, see:
-http://www.team-teso.net/advisories/teso-advisory-011.tar.gz";
-
-tag_solution = "Comment out the 'telnet' line in /etc/inetd.conf.";
-
 # The kudos for an idea of counting of AYT replies should go
 # to Sebastian <scut@nb.in-berlin.de> and Noam Rathaus
 # <noamr@beyondsecurity.com>.
 #
 # rd: tested against Solaris 2.8, RH Lx 6.2, FreeBSD 4.3 (patched & unpatched)
 
-if (description) {
-   script_oid("1.3.6.1.4.1.25623.1.0.10709");
-   script_version("$Revision: 9348 $");
-   script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
-   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
-   script_xref(name:"IAVA", value:"2001-t-0008");
-   script_bugtraq_id(3064);
-   script_tag(name:"cvss_base", value:"10.0");
-   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-   script_cve_id("CVE-2001-0554");
- 
-  name = "TESO in.telnetd buffer overflow";
-  script_name(name);
- 
-
-  summary = "Attempts to overflow the Telnet server buffer";
-
- 
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.10709");
+  script_version("$Revision: 13634 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-13 13:06:16 +0100 (Wed, 13 Feb 2019) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_xref(name:"IAVA", value:"2001-t-0008");
+  script_bugtraq_id(3064);
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_cve_id("CVE-2001-0554");
+  script_name("TESO in.telnetd buffer overflow");
   script_category(ACT_DESTRUCTIVE_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
- 
   script_copyright("This script is Copyright (C) 2001 Pavel Kankovsky");
-
-  family = "Gain a shell remotely";
-  script_family(family);
-
+  script_family("Gain a shell remotely");
   # Must run AFTER ms_telnet_overflow-004.nasl
-  script_dependencies("find_service.nasl");
-
+  script_dependencies("telnetserver_detect_type_nd_version.nasl");
   script_require_ports("Services/telnet", 23);
-   script_tag(name : "solution" , value : tag_solution);
-   script_tag(name : "summary" , value : tag_summary);
+  script_mandatory_keys("telnet/banner/available");
+
+  script_xref(name:"URL", value:"http://www.team-teso.net/advisories/teso-advisory-011.tar.gz");
+
+  script_tag(name:"solution", value:"Comment out the 'telnet' line in /etc/inetd.conf.");
+
+  script_tag(name:"summary", value:"The Telnet server does not return an expected number of replies
+  when it receives a long sequence of 'Are You There' commands. This probably means it overflows one
+  of its internal buffers and crashes.");
+
+  script_tag(name:"impact", value:"It is likely an attacker could abuse this bug to gain
+  control over the remote host's superuser.");
+
+  script_tag(name:"solution_type", value:"Mitigation");
+
   exit(0);
 }
 
-#
-# The script code starts here.
-#
-include('telnet_func.inc');
+include("telnet_func.inc");
 
 iac_ayt = raw_string(0xff, 0xf6);
 iac_ao  = raw_string(0xff, 0xf5);
@@ -162,7 +150,7 @@ function attack(port, negotiate) {
     send(socket:soc, data:iac_ayt);
     r = count_ayt(sock:soc, max:1);
     # DEBUG display("probe ", r, "\n");
-    if (r >= 1) { 
+    if (r >= 1) {
       # test whether too many AYT's make the server die
       total = 2048; size = total * strlen(iac_ayt);
       bomb = iac_ao + crap(length:size, data:iac_ayt);
@@ -177,16 +165,10 @@ function attack(port, negotiate) {
   return (succ);
 }
 
-#
-# The main program.
-#
+port = get_telnet_port(default:23);
+success = attack(port:port, negotiate:0);
+if (!success)
+  success = attack(port:port, negotiate:1);
 
-port = get_kb_item("Services/telnet");
-if (!port) port = 23;
-
-if (get_port_state(port)) {
-  success = attack(port:port, negotiate:0);
-  if (!success) success = attack(port:port, negotiate:1);
-  if (success) security_message(port);
-}
-
+if (success)
+  security_message(port:port);

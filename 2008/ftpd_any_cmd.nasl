@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: ftpd_any_cmd.nasl 10033 2018-05-31 07:51:19Z ckuersteiner $
+# $Id: ftpd_any_cmd.nasl 13610 2019-02-12 15:17:00Z cfischer $
 # Description: Fake FTP server accepts any command
 #
 # Authors:
@@ -24,45 +24,41 @@
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.80062");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 10033 $");
- script_tag(name:"last_modification", value:"$Date: 2018-05-31 09:51:19 +0200 (Thu, 31 May 2018) $");
- script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
- script_tag(name:"cvss_base", value:"0.0");
+  script_oid("1.3.6.1.4.1.25623.1.0.80062");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 13610 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-12 16:17:00 +0100 (Tue, 12 Feb 2019) $");
+  script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
+  script_tag(name:"cvss_base", value:"0.0");
 
- script_name("Fake FTP server accepts any command");
+  script_name("Fake FTP server accepts any command");
 
- script_category(ACT_GATHER_INFO);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("FTP");
- script_copyright("This script is Copyright (C) 2008 Michel Arboi");
- script_dependencies("find_service_3digits.nasl", "logins.nasl");
- script_require_ports("Services/ftp", 21);
+  script_category(ACT_GATHER_INFO);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("FTP");
+  script_copyright("This script is Copyright (C) 2008 Michel Arboi");
+  script_dependencies("find_service_3digits.nasl", "logins.nasl");
+  script_require_ports("Services/ftp", 21);
 
- script_tag(name: "insight", value: "The remote server advertises itself as being a a FTP server, but it accepts
-any command, which indicates that it may be a backdoor or a proxy.
+  script_tag(name:"insight", value:"The remote server advertises itself as being a a FTP server, but it accepts
+  any command, which indicates that it may be a backdoor or a proxy.
 
-Further FTP tests on this port will be disabled to avoid false alerts.");
+  Further FTP tests on this port will be disabled to avoid false alerts.");
 
- script_tag(name: "summary", value: "The remote FTP service is not working properly");
+  script_tag(name:"summary", value:"The remote FTP service is not working properly");
 
- exit(0);
+  exit(0);
 }
 
-include('global_settings.inc');
-include('misc_func.inc');
-include('ftp_func.inc');
+include("global_settings.inc");
+include("misc_func.inc");
+include("ftp_func.inc");
 
-login = get_kb_item("ftp/login");
-pass = get_kb_item("ftp/password");
-if (! login) login = "anonymous";
-if (! pass) pass = "bounce@example.org";
+kb_creds = ftp_get_kb_creds();
+login = kb_creds["login"];
+pass = kb_creds["pass"];
 
-port = get_kb_item("Services/ftp");
-if (! port) port = 21;
-
-if (! get_port_state(port)) exit(0);
+port = get_ftp_port(default:21);
 
 ftpcmd["CWD"]=1;  ftpcmd["XCWD"]=1; ftpcmd["CDUP"]=1; ftpcmd["XCUP"]=1;
 ftpcmd["SMNT"]=1; ftpcmd["QUIT"]=1; ftpcmd["PORT"]=1; ftpcmd["PASV"]=1;

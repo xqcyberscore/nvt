@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dir850l_revB_telnet_backdoor.nasl 9758 2018-05-08 12:29:26Z asteins $
+# $Id: gb_dlink_dir850l_revB_telnet_backdoor.nasl 13627 2019-02-13 10:38:43Z cfischer $
 #
 # D-Link DIR-850L Telnet Account Backdoor (LAN)
 #
@@ -28,11 +28,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107301");
-  script_version("$Revision: 9758 $");
+  script_version("$Revision: 13627 $");
   script_cve_id("CVE-2017-14421");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-08 14:29:26 +0200 (Tue, 08 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-13 11:38:43 +0100 (Wed, 13 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-03-19 13:22:17 +0100 (Mon, 19 Mar 2018)");
   script_name("D-Link DIR-850L Telnet Account Backdoor (LAN)");
   script_category(ACT_ATTACK);
@@ -40,15 +40,20 @@ if(description)
   script_copyright("This script is Copyright (C) 2018 Greenbone Networks GmbH");
   script_dependencies("telnetserver_detect_type_nd_version.nasl");
   script_require_ports("Services/telnet", 23);
+  script_mandatory_keys("telnet/banner/available");
 
   script_xref(name:"URL", value:"https://pierrekim.github.io/blog/2017-09-08-dlink-850l-mydlink-cloud-0days-vulnerabilities.html#backdoor");
 
   script_tag(name:"summary", value:"The D-Link DIR-850L router has a backdoor account with hard-coded credentials.");
+
   script_tag(name:"impact", value:"This issue may only be exploited by a attacker on the LAN to get a root
   shell on the device.");
-  script_tag(name:"vuldetect", value:"Connect to the telnet service and try to login with default credentials.");
+
+  script_tag(name:"vuldetect", value:"Connect to the Telnet service and try to login with default credentials.");
+
   script_tag(name:"insight", value:"It was possible to login with the telnet credentials 'Alphanetworks:wrgac25_dlink.2013gui_dir850l'.");
-  script_tag(name:"solution", value:"It is recommended to disable the telnet access.");
+
+  script_tag(name:"solution", value:"It is recommended to disable the Telnet access.");
 
   script_tag(name:"qod_type", value:"exploit");
   script_tag(name:"solution_type", value:"Mitigation");
@@ -59,6 +64,8 @@ if(description)
 include("telnet_func.inc");
 
 port = get_telnet_port( default:23 );
+if( get_kb_item( "telnet/" + port + "/no_login_banner" ) )
+  exit( 0 );
 
 login = "Alphanetworks";
 pass = "wrgac25_dlink.2013gui_dir850l";

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: ftpglob.nasl 12821 2018-12-18 12:37:20Z cfischer $
+# $Id: ftpglob.nasl 13611 2019-02-12 15:23:02Z cfischer $
 # Description: FTPD glob Heap Corruption
 #
 # Authors:
@@ -28,8 +28,8 @@ bracket = raw_string(0x7B);
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10821");
-  script_version("$Revision: 12821 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-18 13:37:20 +0100 (Tue, 18 Dec 2018) $");
+  script_version("$Revision: 13611 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-12 16:23:02 +0100 (Tue, 12 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_xref(name:"IAVA", value:"2001-b-0004");
   script_bugtraq_id(2550, 3581);
@@ -42,7 +42,7 @@ if(description)
   script_copyright("Copyright (C) 2001 E*Maze");
   script_dependencies("ftpserver_detect_type_nd_version.nasl", "os_detection.nasl");
   script_require_ports("Services/ftp", 21);
-  script_mandatory_keys("ftp_banner/available");
+  script_mandatory_keys("ftp/banner/available");
 
   script_tag(name:"solution", value:"Contact your vendor for a fix.");
 
@@ -65,8 +65,9 @@ if(description)
 include("ftp_func.inc");
 include("host_details.inc");
 
-login = get_kb_item("ftp/login");
-password = get_kb_item("ftp/password");
+kb_creds = ftp_get_kb_creds();
+login = kb_creds["login"];
+password = kb_creds["pass"];
 
 port = get_ftp_port(default:21);
 
@@ -141,7 +142,6 @@ if (host_runs(".*FreeBSD (4\.[5-9]|5\..*).*") == "yes") exit(0);
 
 # We weren't able to login into the ftp server. Check the banner instead
 banner = get_ftp_banner(port:port);
-
 if(!banner)
   exit(0);
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ftp_os_detection.nasl 13486 2019-02-06 08:39:14Z cfischer $
+# $Id: gb_ftp_os_detection.nasl 13619 2019-02-13 07:21:27Z cfischer $
 #
 # FTP OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105355");
-  script_version("$Revision: 13486 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-06 09:39:14 +0100 (Wed, 06 Feb 2019) $");
+  script_version("$Revision: 13619 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-13 08:21:27 +0100 (Wed, 13 Feb 2019) $");
   script_tag(name:"creation_date", value:"2015-09-15 15:57:03 +0200 (Tue, 15 Sep 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -39,7 +39,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
   script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
-  script_mandatory_keys("ftp_banner/available");
+  script_mandatory_keys("ftp/banner/available");
 
   script_tag(name:"summary", value:"This script performs FTP banner based OS detection.");
 
@@ -309,6 +309,12 @@ if( "FTP server (Linux-ftpd) ready." >< banner ) {
 # "Changing FTP Server Login Banner Message 220" in https://www-01.ibm.com/support/docview.wss?uid=nas8N1016550
 if( eregmatch( pattern:"^220[- ]QTCP at .+", string:banner, icase:FALSE ) ) {
   register_and_report_os( os:"IBM iSeries / OS/400", cpe:"cpe:/o:ibm:os_400", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  exit( 0 );
+}
+
+# e.g. 220 devicename IOS-FTP server (version 1.00) ready.
+if( "IOS-FTP server" >< banner && "ready." >< banner ) {
+  register_and_report_os( os:"Cisco IOS", cpe:"cpe:/o:cisco:ios", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
   exit( 0 );
 }
 

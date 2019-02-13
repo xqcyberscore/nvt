@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_iis_ftpd_dos_vuln.nasl 10288 2018-06-21 13:26:05Z cfischer $
+# $Id: gb_ms_iis_ftpd_dos_vuln.nasl 13613 2019-02-12 16:12:57Z cfischer $
 #
 # Microsoft Windows IIS FTP Server DOS Vulnerability
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801669");
-  script_version("$Revision: 10288 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-21 15:26:05 +0200 (Thu, 21 Jun 2018) $");
+  script_version("$Revision: 13613 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-12 17:12:57 +0100 (Tue, 12 Feb 2019) $");
   script_tag(name:"creation_date", value:"2010-12-27 09:55:05 +0100 (Mon, 27 Dec 2010)");
   script_cve_id("CVE-2010-3972");
   script_bugtraq_id(45542);
@@ -41,8 +41,9 @@ if(description)
   script_category(ACT_DENIAL);
   script_copyright("Copyright (C) 2010 Greenbone Networks GmbH");
   script_family("Denial of Service");
-  script_dependencies("find_service.nasl");
+  script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
+  script_mandatory_keys("ftp/microsoft/iis_ftp/detected");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/42713");
   script_xref(name:"URL", value:"http://www.kb.cert.org/vuls/id/842372");
@@ -51,9 +52,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2010/3305");
 
   script_tag(name:"impact", value:"Successful exploitation may allow remote attackers to execute arbitrary code
-  on the system or cause the application to crash.
-
-  Impact Level: Application");
+  on the system or cause the application to crash.");
 
   script_tag(name:"affected", value:"Windows 7 IIS 7.5 FTP Server");
 
@@ -63,9 +62,7 @@ if(description)
   long, specially crafted FTP request.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-
-  http://www.microsoft.com/technet/security/bulletin/ms11-004.mspx");
+  update mentioned hotfixes in the advisory");
 
   script_tag(name:"summary", value:"This host is running Microsoft IIS with FTP server and is prone to
   Denial of service vulnerability.");
@@ -73,6 +70,7 @@ if(description)
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/bulletin/ms11-004.mspx");
   exit(0);
 }
 
@@ -81,9 +79,8 @@ include("ftp_func.inc");
 ftpPort = get_ftp_port( default:21 );
 
 banner = get_ftp_banner(port:ftpPort);
-if("Microsoft FTP Service" >!< banner){
+if(!banner || "Microsoft FTP Service" >!< banner)
   exit(0);
-}
 
 soc = open_sock_tcp(ftpPort);
 if(!soc){

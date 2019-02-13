@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vibnode_telnet_detect.nasl 8847 2018-02-16 13:34:20Z cfischer $
+# $Id: gb_vibnode_telnet_detect.nasl 13624 2019-02-13 10:02:56Z cfischer $
 #
 # PRUFTECHNIK VIBNODE Detection (Telnet)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108339");
-  script_version("$Revision: 8847 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-16 14:34:20 +0100 (Fri, 16 Feb 2018) $");
+  script_version("$Revision: 13624 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-13 11:02:56 +0100 (Wed, 13 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-02-15 16:10:41 +0100 (Thu, 15 Feb 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -39,6 +39,7 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH");
   script_dependencies("telnetserver_detect_type_nd_version.nasl");
   script_require_ports("Services/telnet", 23);
+  script_mandatory_keys("telnet/pruftechnik/vibnode/detected");
 
   script_tag(name:"summary", value:"The script sends a Telnet connection request to the remote
   host and attempts to detect the presence of a PRUFTECHNIK VIBNODE device and to extract its version.");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_mult_vuln_jan19.nasl 13134 2019-01-18 06:22:41Z ckuersteiner $
+# $Id: gb_joomla_mult_vuln_jan19.nasl 13617 2019-02-13 02:42:12Z ckuersteiner $
 #
 # Joomla! < 3.9.2 Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141895");
-  script_version("$Revision: 13134 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-18 07:22:41 +0100 (Fri, 18 Jan 2019) $");
+  script_version("$Revision: 13617 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-13 03:42:12 +0100 (Wed, 13 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-18 13:17:13 +0700 (Fri, 18 Jan 2019)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -87,7 +87,7 @@ version = infos['version'];
 path = infos['location'];
 
 if (version_in_range(version: version, test_version: "2.5.0", test_version2: "3.9.1")) {
-  report = report_fixed_ver(installed_version: version, fixed_version: "3.9.3", install_path: path);
+  report = report_fixed_ver(installed_version: version, fixed_version: "3.9.2", install_path: path);
   security_message(port: port, data: report);
   exit(0);
 }

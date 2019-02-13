@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ssh_detect.nasl 13593 2019-02-12 07:36:53Z cfischer $
+# $Id: ssh_detect.nasl 13624 2019-02-13 10:02:56Z cfischer $
 #
 # SSH Server type and version
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10267");
-  script_version("$Revision: 13593 $");
+  script_version("$Revision: 13624 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-12 08:36:53 +0100 (Tue, 12 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-13 11:02:56 +0100 (Wed, 13 Feb 2019) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_name("SSH Server type and version");
   script_category(ACT_GATHER_INFO);
@@ -81,6 +81,7 @@ if( server_banner ) {
   server_banner_lo = tolower( server_banner );
 
   set_kb_item( name:"ssh/server_banner/available", value:TRUE );
+  set_kb_item( name:"ssh_or_telnet/banner/available", value:TRUE );
   set_kb_item( name:"ssh/server_banner/" + port + "/available", value:TRUE );
 
   text = 'Remote SSH server version: ' + server_banner + '\n';
@@ -112,6 +113,7 @@ if( server_banner ) {
 
   if( "Foxit-WAC-Server" >< server_banner ) {
     set_kb_item( name:"ssh/foxit/wac-server/detected", value:TRUE );
+    set_kb_item( name:"ssh_or_telnet/foxit/wac-server/detected", value:TRUE );
     set_kb_item( name:"ssh/foxit/wac-server/" + port + "/detected", value:TRUE );
   }
 
@@ -171,6 +173,7 @@ if( server_banner ) {
   }
 
   if( egrep( pattern:"SSH.+Serv-U", string:server_banner ) ) {
+    set_kb_item( name:"ssh_or_ftp/serv-u/detected", value:TRUE );
     set_kb_item( name:"ssh/serv-u/detected", value:TRUE );
     set_kb_item( name:"ssh/serv-u/" + port + "/detected", value:TRUE );
   }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: telnet_func.inc 13340 2019-01-29 09:47:05Z cfischer $
+# $Id: telnet_func.inc 13627 2019-02-13 10:38:43Z cfischer $
 #
 # Methods to handle Telnet
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 13340 $
+# $Revision: 13627 $
 #
 ###############################################################################
 
@@ -445,6 +445,30 @@ function telnet_verify_banner( data ) {
     if( egrep( pattern:nt, string:data ) )
       return FALSE;
   }
+  return TRUE;
+}
+
+# @brief Verify if the received/passed data contains a login/shell prompt of a Telnet connection / server.
+#
+# @param data The data to be verified.
+#
+# @note You need to include misc_func.inc and dump.inc (for @ref telnet_verify_banner) into your VT if you want to use this function.
+# @note Pattern where extracted from e.g. w_apc_default_telnet_credentials.nasl, sw_zebra_telnet_default_password.nasl,
+#       gb_zxv10_w300_hardcoded_credentials_2014.nasl, gb_audemat_fmb80_default_telnet_credentials.nasl,
+#       gb_lantronix_unprotected_telnet.nasl, gb_windows_ce_unprotected_telnet.nasl
+#
+# @return TRUE if the passed data contains a login/shell prompt of a Telnet connection / server, FALSE otherwise.
+#
+function telnet_has_login_prompt( data ) {
+
+  local_var data;
+
+  if( ! telnet_verify_banner( data:data ) )
+    return FALSE;
+
+  if( data !~ "(Pocket CMD.+\\>|Kernel|login|password|user ?name|user|press enter.+setup mode|polycom command shell|welcome to viewstation|hi, my name is.+here is what i know about myself|you are logged in|management console.+sollae systems|lsh>|Welcome\. Type <return>, enter password at # prompt|BusyBox|list of built-in commands) ?:?" )
+    return FALSE;
+
   return TRUE;
 }
 

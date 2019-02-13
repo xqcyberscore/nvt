@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: wu_ftpd_site_exec.nasl 9526 2018-04-19 06:22:02Z cfischer $
+# $Id: wu_ftpd_site_exec.nasl 13602 2019-02-12 12:47:59Z cfischer $
 #
 # wu-ftpd SITE EXEC vulnerability
 #
@@ -32,8 +32,8 @@ CPE = "cpe:/a:washington_university:wu-ftpd";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10452");
-  script_version("$Revision: 9526 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-19 08:22:02 +0200 (Thu, 19 Apr 2018) $");
+  script_version("$Revision: 13602 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-12 13:47:59 +0100 (Tue, 12 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(1387, 2240, 726);
   script_xref(name:"IAVA", value:"2000-a-0004");
@@ -72,6 +72,6 @@ if( egrep( pattern:"^((1\..*)|(2\.[0-5]\..*)|(2\.6\.0))", string: vers ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"2.6.1" );
   security_message( port:port, data:report );
   exit( 0 );
-}  
+}
 
 exit( 99 );

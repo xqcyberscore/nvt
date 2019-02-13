@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zyxel_modems_default_telnet_credentials.nasl 8841 2018-02-16 09:26:13Z cfischer $
+# $Id: gb_zyxel_modems_default_telnet_credentials.nasl 13624 2019-02-13 10:02:56Z cfischer $
 #
 # ZyXEL Modems Backup Telnet Account and Default Root Credentials
 #
@@ -28,18 +28,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112100");
-  script_version("$Revision: 8841 $");
+  script_version("$Revision: 13624 $");
   script_cve_id("CVE-2016-10401");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
   script_name("ZyXEL Modems Backup Telnet Account and Default Root Credentials");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-16 10:26:13 +0100 (Fri, 16 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-13 11:02:56 +0100 (Wed, 13 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-11-02 09:19:00 +0200 (Thu, 02 Nov 2017)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_dependencies("telnetserver_detect_type_nd_version.nasl");
   script_require_ports("Services/telnet", 23);
+  script_mandatory_keys("telnet/zyxel/modem/detected");
 
   script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/43105/");
   script_xref(name:"URL", value:"https://forum.openwrt.org/viewtopic.php?id=62266");
@@ -47,10 +48,14 @@ if(description)
   script_xref(name:"URL", value:"https://www.reddit.com/r/centurylink/comments/5lt07r/zyxel_c1100z_default_lanside_telnet_login/");
 
   script_tag(name:"summary", value:"ZyXEL PK5001Z and C1100Z modems have default root credentials set and a backdoor account with hard-coded credentials.");
+
   script_tag(name:"impact", value:"This issue may be exploited by a remote attacker to gain full
   access to sensitive information or modify system configuration.");
+
   script_tag(name:"vuldetect", value:"Connect to the telnet service and try to login with default credentials.");
+
   script_tag(name:"solution", value:"It is recommended to disable the telnet access and change the backup and default credentials.");
+
   script_tag(name:"insight", value:"In February 2018 it was discovered that this vulnerability is being exploited by the
   'DoubleDoor' Internet of Things (IoT) Botnet.");
 
@@ -62,15 +67,15 @@ if(description)
 
 include("telnet_func.inc");
 
-port = get_kb_item( "Services/telnet" );
-if( ! port ) port = 23;
-if( ! get_port_state( port ) ) exit( 0 );
-
+port = get_telnet_port( default:23 );
 banner = get_telnet_banner( port:port );
+if( ! banner )
+  exit( 0 );
 
 if( "PK5001Z login:" >< banner || "BCM963268 Broadband Router" >< banner ) found = TRUE;
 
 if ( found ) {
+
   login = "admin";
   passwords = make_list( "CenturyL1nk", "CentryL1nk", "QwestM0dem" );
   root_pass = "zyad5001";

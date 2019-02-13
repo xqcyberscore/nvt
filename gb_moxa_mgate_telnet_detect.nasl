@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moxa_mgate_telnet_detect.nasl 10891 2018-08-10 12:51:28Z cfischer $
+# $Id: gb_moxa_mgate_telnet_detect.nasl 13624 2019-02-13 10:02:56Z cfischer $
 #
-# Moxa MGate Detection (telnet)
+# Moxa MGate Detection (Telnet)
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -30,15 +30,16 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.105822");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 10891 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:51:28 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 13624 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-13 11:02:56 +0100 (Wed, 13 Feb 2019) $");
   script_tag(name:"creation_date", value:"2016-07-25 13:26:43 +0200 (Mon, 25 Jul 2016)");
-  script_name("Moxa MGate Detection (telnet)");
+  script_name("Moxa MGate Detection (Telnet)");
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("telnetserver_detect_type_nd_version.nasl");
   script_require_ports("Services/telnet", 23);
+  script_mandatory_keys("telnet/moxa/mgate/detected");
 
   script_tag(name:"summary", value:"This script performs Telnet based detection of Moxa MGate");
 
@@ -50,14 +51,10 @@ if(description)
 include("telnet_func.inc");
 include("host_details.inc");
 
-port = get_kb_item("Services/telnet");
-if( ! port ) port = 23;
-if( ! get_port_state( port ) ) exit( 0 );
-
+port = get_telnet_port( default:23 );
 banner = get_telnet_banner( port:port );
-if( ! isnull( banner ) ) banner = str_replace( find:raw_string(0), replace:'', string:banner );
-
-if( ! banner || banner !~ "Model name\s*:\s*MGate " ) exit( 0 );
+if( ! banner || banner !~ "Model name\s*:\s*MGate " )
+  exit( 0 );
 
 cpe = 'cpe:/a:moxa:mgate';
 version = "unknown";

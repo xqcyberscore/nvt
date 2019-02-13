@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: remote-pwcrack-ncrack-telnet.nasl 12086 2018-10-25 10:11:49Z cfischer $
+# $Id: remote-pwcrack-ncrack-telnet.nasl 13636 2019-02-13 12:23:58Z cfischer $
 #
 # telnet Remote password cracking using ncrack
 # svn co svn://svn.insecure.org/nmap-exp/ithilgore/ncrack
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80107");
-  script_version("$Revision: 12086 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 12:11:49 +0200 (Thu, 25 Oct 2018) $");
+  script_version("$Revision: 13636 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-13 13:23:58 +0100 (Wed, 13 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-08-10 08:41:48 +0200 (Mon, 10 Aug 2009)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -38,8 +38,8 @@ if(description)
   script_copyright("This script is Copyright (C) 2009 Vlatko Kosturjak");
   script_family("Brute force attacks");
   script_require_ports("Services/telnet", 23);
-  script_dependencies("toolcheck.nasl", "gcf/remote-pwcrack-options.nasl", "find_service.nasl");
-  script_mandatory_keys("Tools/Present/ncrack", "Secret/pwcrack/logins_file", "Secret/pwcrack/passwords_file");
+  script_dependencies("toolcheck.nasl", "gcf/remote-pwcrack-options.nasl", "telnetserver_detect_type_nd_version.nasl");
+  script_mandatory_keys("Tools/Present/ncrack", "Secret/pwcrack/logins_file", "Secret/pwcrack/passwords_file", "telnet/banner/available");
 
   script_tag(name:"summary", value:"This plugin runs ncrack to find telnet accounts & passwords by brute force.");
 
@@ -51,20 +51,14 @@ if(description)
   exit(0);
 }
 
-# Exit if nasl version is too old (<2200)
-if (! defined_func("script_get_preference_file_location"))
-{
-  log_message(port: 0, data: "NVT not executed because of an too old openvas-libraries version.");
-  exit(0);
-}
+include("telnet_func.inc");
 
 logins = get_kb_item("Secret/pwcrack/logins_file");
 passwd = get_kb_item("Secret/pwcrack/passwords_file");
-if (logins == NULL || passwd == NULL) exit(0);
+if (logins == NULL || passwd == NULL)
+  exit(0);
 
-port = get_kb_item("Services/telnet");
-if (! port) port = 23;
-if (! get_port_state(port)) exit(0);
+port = get_telnet_port(default:23);
 
 timeout = get_kb_item("/tmp/pwcrack/timeout"); timeout = int(timeout);
 tasks = get_kb_item("/tmp/pwcrack/tasks"); task = int(tasks);
@@ -84,12 +78,12 @@ hostpart = "telnet://"+dstaddr+":"+port;
 
 if (timeout > 0)
 {
-	hostpart=hostpart+",to="+timeout;
+  hostpart=hostpart+",to="+timeout;
 }
 
 if (tasks > 0)
 {
-	hostpart=hostpart+",CL="+tasks;
+  hostpart=hostpart+",CL="+tasks;
 }
 
 # some telnet servers are really annoying, so at=1 at the moment

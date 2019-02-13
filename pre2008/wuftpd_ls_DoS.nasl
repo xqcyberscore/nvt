@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: wuftpd_ls_DoS.nasl 9526 2018-04-19 06:22:02Z cfischer $
+# $Id: wuftpd_ls_DoS.nasl 13610 2019-02-12 15:17:00Z cfischer $
 #
 # wu-ftpd ls -W memory exhaustion
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:washington_university:wu-ftpd";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11912");
-  script_version("$Revision: 9526 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-19 08:22:02 +0200 (Thu, 19 Apr 2018) $");
+  script_version("$Revision: 13610 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-12 16:17:00 +0100 (Tue, 12 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(8875);
   script_cve_id("CVE-2003-0853", "CVE-2003-0854");
@@ -70,10 +70,9 @@ include("host_details.inc");
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! loc  = get_app_location( cpe:CPE, port:port ) ) exit( 0 ); # To have a reference to the Detection-NVT
 
-user = get_kb_item( "ftp/login" );
-pass = get_kb_item( "ftp/password" );
-if( ! user ) user = "anonymous";
-if( ! pass ) pass = "openvas@example.com";
+kb_creds = ftp_get_kb_creds();
+user = kb_creds["login"];
+pass = kb_creds["pass"];
 
 soc = open_sock_tcp( port );
 if( ! soc ) exit( 0 );

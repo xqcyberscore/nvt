@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ftpserver_detect_type_nd_version.nasl 13507 2019-02-06 15:12:15Z cfischer $
+# $Id: ftpserver_detect_type_nd_version.nasl 13630 2019-02-13 11:03:59Z cfischer $
 #
 # FTP Banner Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10092");
-  script_version("$Revision: 13507 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-06 16:12:15 +0100 (Wed, 06 Feb 2019) $");
+  script_version("$Revision: 13630 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-13 12:03:59 +0100 (Wed, 13 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -72,7 +72,7 @@ foreach port( ports ) {
   syst = get_ftp_cmd_banner( port:port, cmd:"SYST" );
   stat = get_ftp_cmd_banner( port:port, cmd:"STAT" );
 
-  set_kb_item( name:"ftp_banner/available", value:TRUE );
+  set_kb_item( name:"ftp/banner/available", value:TRUE );
   install = port + "/tcp";
 
   if( "NcFTPd" >< banner ) {
@@ -246,7 +246,7 @@ foreach port( ports ) {
     guess = "Siemens SIMATIC CP";
   }
 
-  else if( banner =~ "220[- ]FreeFloat" ) {
+  else if( banner =~ "220[- ]FreeFloat" || "FreeFloat Ftp Server" >< banner ) {
     set_kb_item( name:"ftp/freefloat/detected", value:TRUE );
     guess = "FreeFloat";
   }
@@ -347,9 +347,9 @@ foreach port( ports ) {
     guess = "Ftpdmin";
   }
 
-  else if( "220 Features p a" >< banner ) {
+  else if( "220 Features p a" >< banner || "Sami FTP Server" >< banner ) {
     set_kb_item( name:"ftp/samiftp/detected", value:TRUE );
-    guess = "SamiFTP";
+    guess = "KarjaSoft Sami FTP";
   }
 
   else if( banner =~ "Welcome to the (Cisco TelePresence|Codian) MCU" ) {
@@ -377,6 +377,87 @@ foreach port( ports ) {
     guess = "SurgeFTP";
   }
 
+  else if( "GuildFTPd" >< banner || "GuildFTPD FTP" >< banner ) {
+    set_kb_item( name:"ftp/guildftpd/detected", value:TRUE );
+    guess = "GuildFTPd";
+  }
+
+  else if( "IOS-FTP server" >< banner ) {
+    set_kb_item( name:"ftp/cisco/ios_ftp/detected", value:TRUE );
+    guess = "Cisco IOS FTP";
+  }
+
+  else if( "UNIVERSAL FTP SERVER" >< banner ) {
+    set_kb_item( name:"ftp/teamtek/universal_ftp/detected", value:TRUE );
+    guess = "Teamtek Universal FTP";
+  }
+
+  else if( "BlackJumboDog" >< banner ) {
+    set_kb_item( name:"ftp/blackjumbodog/detected", value:TRUE );
+    guess = "BlackJumboDog";
+  }
+
+  else if( "SunFTP " >< banner ) {
+    set_kb_item( name:"ftp/sunftp/detected", value:TRUE );
+    guess = "SunFTP";
+  }
+
+  else if( "EFTP " >< banner ) {
+    set_kb_item( name:"ftp/eftp/detected", value:TRUE );
+    guess = "EFTP";
+  }
+
+  else if( "ArGoSoft FTP Server" >< banner ) {
+    set_kb_item( name:"ftp/argosoft/ftp/detected", value:TRUE );
+    guess = "ArGoSoft FTP";
+  }
+
+  else if( "GlobalSCAPE Secure FTP Server" >< banner ) {
+    set_kb_item( name:"ftp/globalscape/secure_ftp/detected", value:TRUE );
+    guess = "GlobalSCAPE Secure FTP Server";
+  }
+
+  else if( "HP ARPA FTP" >< banner ) {
+    set_kb_item( name:"ftp/hp/arpa_ftp/detected", value:TRUE );
+    guess = "HP ARPA FTP / MPEi/X";
+  }
+
+  else if( egrep( pattern:".*RaidenFTPD.*", string:banner ) ) {
+    set_kb_item( name:"ftp/raidenftpd/detected", value:TRUE );
+    guess = "RaidenFTPD";
+  }
+
+  else if( "Serv-U FTP Server" >< banner ) {
+    set_kb_item( name:"ssh_or_ftp/serv-u/detected", value:TRUE );
+    set_kb_item( name:"ftp/serv-u/ftp/detected", value:TRUE );
+    guess = "Serv-U FTP";
+  }
+
+  else if( "Flash FTP Server" >< banner ) {
+    set_kb_item( name:"ftp/flash/ftp/detected", value:TRUE );
+    guess = "Flash FTP Server";
+  }
+
+  else if( "PlatinumFTPserver" >< banner ) {
+    set_kb_item( name:"ftp/platinum/ftp/detected", value:TRUE );
+    guess = "Platinum FTP";
+  }
+
+  else if( egrep( pattern:"^220.*RobotFTP" ) ) {
+    set_kb_item( name:"ftp/robot/ftp/detected", value:TRUE );
+    guess = "RobotFTP";
+  }
+
+  else if( "220 Wing FTP Server" >< banner ) {
+    set_kb_item( name:"ftp/wing/ftp/detected", value:TRUE );
+    guess = "Wing FTP";
+  }
+
+  else if( "220-Complete FTP server" >< banner ) {
+    set_kb_item( name:"ftp/complete/ftp/detected", value:TRUE );
+    guess = "Complete FTP";
+  }
+
   # 220 VxWorks FTP server (VxWorks 5.3.1 - Secure NetLinx version (1.0)) ready.
   # 220 VxWorks (VxWorks5.4.2) FTP server ready
   # 220 VxWorks (5.4) FTP server ready
@@ -401,6 +482,7 @@ foreach port( ports ) {
   # nb: From 2009/httpdx_35006.nasl, pattern is currently not that detailed so keep at the bottom.
   else if( "httpdx" >< banner ) {
     set_kb_item( name:"ftp/httpdx/detected", value:TRUE );
+    set_kb_item( name:"www_or_ftp/httpdx/detected", value:TRUE );
     guess = "httpdx";
   }
 
@@ -414,6 +496,12 @@ foreach port( ports ) {
   else if( "tnftpd" >< banner ) {
     set_kb_item( name:"ftp/tnftpd/detected", value:TRUE );
     guess = "tnftpd";
+  }
+
+  # nb: From secpod_tnftpd_detect.nasl, pattern is currently not that detailed so keep at the bottom.
+  else if( "Buffy" >< banner ) {
+    set_kb_item( name:"ftp/buffy/detected", value:TRUE );
+    guess = "Buffy";
   }
 
   report = 'Remote FTP server banner:\n\n' + banner;

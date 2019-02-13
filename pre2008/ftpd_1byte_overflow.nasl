@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: ftpd_1byte_overflow.nasl 13210 2019-01-22 09:14:04Z cfischer $
+# $Id: ftpd_1byte_overflow.nasl 13610 2019-02-12 15:17:00Z cfischer $
 # Description: BSD ftpd Single Byte Buffer Overflow
 #
 # Authors:
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11371");
-  script_version("$Revision: 13210 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-22 10:14:04 +0100 (Tue, 22 Jan 2019) $");
+  script_version("$Revision: 13610 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-12 16:17:00 +0100 (Tue, 12 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(2124);
   script_tag(name:"cvss_base", value:"10.0");
@@ -83,13 +83,15 @@ function on_exit()
   }
 }
 
-login = get_kb_item("ftp/login");
-pass  = get_kb_item("ftp/password");
+kb_creds = ftp_get_kb_creds();
+login = kb_creds["login"];
+pass = kb_creds["pass"];
 if(!login)
   exit(0);
 
 wri = get_kb_item("ftp/writeable_dir");
-if(!wri)exit(0);
+if(!wri)
+  exit(0);
 
 soc = open_sock_tcp(port);
 if(!soc)

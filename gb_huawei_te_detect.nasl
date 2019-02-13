@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_huawei_te_detect.nasl 10453 2018-07-07 15:35:36Z cfischer $
+# $Id: gb_huawei_te_detect.nasl 13624 2019-02-13 10:02:56Z cfischer $
 #
 # Huawei TE Device Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141255");
-  script_version("$Revision: 10453 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-07 17:35:36 +0200 (Sat, 07 Jul 2018) $");
+  script_version("$Revision: 13624 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-13 11:02:56 +0100 (Wed, 13 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-07-02 10:43:45 +0200 (Mon, 02 Jul 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -49,7 +49,7 @@ Video Conferencing Endpoints) and to extract its version.");
   script_family("Product detection");
   script_dependencies("telnetserver_detect_type_nd_version.nasl");
   script_require_ports("Services/telnet", 5000);
-  script_mandatory_keys("telnet/banner/available");
+  script_mandatory_keys("telnet/huawei/te/detected");
 
   script_xref(name:"URL", value:"https://e.huawei.com/uk/products/cloud-communications/telepresence-video-conferencing");
 
@@ -97,7 +97,7 @@ if (banner =~ "Huawei TE[0-9]0") {
   if (!cpe)
     cpe = 'cpe:/h:huawei:' + tolower(model);
 
-  register_product(cpe: cpe, location: port + '/tcp', port: port);
+  register_product(cpe: cpe, location: port + '/tcp', port: port, service: "telnet");
 
   log_message(data: build_detection_report(app: "Huawei " + model, version: version, install: port + '/tcp',
                                            cpe: cpe, concluded: vers[0], extra: extra),

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: wu_ftpd_glob2.nasl 9732 2018-05-04 14:04:40Z cfischer $
+# $Id: wu_ftpd_glob2.nasl 13610 2019-02-12 15:17:00Z cfischer $
 #
 # FTPD glob (too many *) Denial of Service
 #
@@ -32,8 +32,8 @@ CPE = "cpe:/a:washington_university:wu-ftpd";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17602");
-  script_version("$Revision: 9732 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-04 16:04:40 +0200 (Fri, 04 May 2018) $");
+  script_version("$Revision: 13610 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-12 16:17:00 +0100 (Tue, 12 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2005-0256");
   script_tag(name:"cvss_base", value:"5.0");
@@ -79,10 +79,9 @@ if( safe_checks() ) {
   exit( 99 );
 }
 
-user = get_kb_item( "ftp/login" );
-pass = get_kb_item( "ftp/password" );
-if( ! user ) user = "anonymous";
-if( ! pass ) pass = "openvas@example.com";
+kb_creds = ftp_get_kb_creds();
+user = kb_creds["login"];
+pass = kb_creds["pass"];
 
 for( i = 0; i < 2; i ++ ) {
 

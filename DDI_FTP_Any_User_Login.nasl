@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: DDI_FTP_Any_User_Login.nasl 9537 2018-04-19 11:49:54Z cfischer $
+# $Id: DDI_FTP_Any_User_Login.nasl 13611 2019-02-12 15:23:02Z cfischer $
 #
 # FTP Service Allows Any Username
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10990");
-  script_version("$Revision: 9537 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-19 13:49:54 +0200 (Thu, 19 Apr 2018) $");
+  script_version("$Revision: 13611 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-12 16:23:02 +0100 (Tue, 12 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -38,16 +38,12 @@ if(description)
   script_family("FTP");
   script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
-  script_mandatory_keys("ftp_banner/available");
+  script_mandatory_keys("ftp/banner/available");
 
   script_tag(name:"solution", value:"None");
 
   script_tag(name:"summary", value:"The FTP service can be accessed using any username and password.
-  Many other plugins may trigger falsely because of this, so
-  OpenVAS enable some countermeasures.
-
-  ** If you find a useless warning on this port, please inform
-  ** the OpenVAS team so that we fix the plugins.");
+  Many other plugins may trigger falsely because of this, so the scanner enable some countermeasures.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

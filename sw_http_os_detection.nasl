@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_http_os_detection.nasl 13382 2019-01-31 11:07:58Z cfischer $
+# $Id: sw_http_os_detection.nasl 13619 2019-02-13 07:21:27Z cfischer $
 #
 # HTTP OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111067");
-  script_version("$Revision: 13382 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-31 12:07:58 +0100 (Thu, 31 Jan 2019) $");
+  script_version("$Revision: 13619 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-13 08:21:27 +0100 (Wed, 13 Feb 2019) $");
   script_tag(name:"creation_date", value:"2015-12-10 16:00:00 +0100 (Thu, 10 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -324,6 +324,12 @@ function check_http_banner( port, banner ) {
     # Server: SUSE LINUX/11.3 UPnP/1.0 miniupnpd/1.0
     # Server: Fedora/8 UPnP/1.0 miniupnpd/1.0
     # SERVER: Fedora/10 UPnP/1.0 MiniUPnPd/1.4
+
+    # Server: cisco-IOS
+    if( "Server: cisco-IOS" >< banner ) {
+      register_and_report_os( os:"Cisco IOS", cpe:"cpe:/o:cisco:ios", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      return;
+    }
 
     # Runs only on Unix/Linux/BSD
     # e.g. Server: GoTTY/0.0.12

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moxa_nport_telnet_detect.nasl 10599 2018-07-25 07:48:49Z jschulte $
+# $Id: gb_moxa_nport_telnet_detect.nasl 13624 2019-02-13 10:02:56Z cfischer $
 #
 # Moxa NPort Devices Detection (telnet)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106588");
-  script_version("$Revision: 10599 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 09:48:49 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 13624 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-13 11:02:56 +0100 (Wed, 13 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-02-16 09:18:30 +0700 (Thu, 16 Feb 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -48,6 +48,7 @@ if(description)
   script_family("Product detection");
   script_dependencies("telnetserver_detect_type_nd_version.nasl");
   script_require_ports("Services/telnet", 23);
+  script_mandatory_keys("telnet/moxa/nport/detected");
 
   exit(0);
 }
@@ -57,12 +58,8 @@ include("host_details.inc");
 include("telnet_func.inc");
 
 port = get_telnet_port(default: 23);
-
 banner = get_telnet_banner(port: port);
-if (!isnull(banner))
-  banner = str_replace(find: raw_string(0), replace: '', string: banner);
-
-if (!banner || "Please keyin your password" >!< banner || banner =~ "MiiNePort")
+if (!banner || "Please keyin your password" >!< banner || banner =~ "MiiNePort" || banner =~ "MGate" )
   exit(0);
 
 mod = eregmatch(pattern: 'Model name\\s*:\\s(NPort )?([^ \r\n]+)', string: banner);

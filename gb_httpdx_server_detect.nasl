@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_httpdx_server_detect.nasl 13507 2019-02-06 15:12:15Z cfischer $
+# $Id: gb_httpdx_server_detect.nasl 13630 2019-02-13 11:03:59Z cfischer $
 #
 # httpdx Server Version Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800960");
-  script_version("$Revision: 13507 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-06 16:12:15 +0100 (Wed, 06 Feb 2019) $");
+  script_version("$Revision: 13630 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-13 12:03:59 +0100 (Wed, 13 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-10-23 16:18:41 +0200 (Fri, 23 Oct 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -36,8 +36,9 @@ if(description)
   script_family("Product detection");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
-  script_dependencies("httpver.nasl", "ftpserver_detect_type_nd_version.nasl");
+  script_dependencies("gb_get_http_banner.nasl", "ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/www", 80, "Services/ftp", 21, 990);
+  script_mandatory_keys("www_or_ftp/httpdx/detected");
 
   script_tag(name:"summary", value:"Detection of httpdx Server.
 
@@ -90,8 +91,7 @@ if( http_is_cgi_scan_disabled() )
 
 port = get_http_port( default:80 );
 banner = get_http_banner( port:port );
-
-if( banner && "httpdx" >< banner ) {
+if( banner && "httpdx/" >< banner ) {
 
   vers = "unknown";
   install = "/";

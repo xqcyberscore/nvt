@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-002_remote.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_ms15-002_remote.nasl 13624 2019-02-13 10:02:56Z cfischer $
 #
 # Microsoft Windows Telnet Service RCE Vulnerability-Remote (3020393)
 #
@@ -27,15 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805039");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 13624 $");
   script_cve_id("CVE-2015-0014");
   script_bugtraq_id(71968);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-13 11:02:56 +0100 (Wed, 13 Feb 2019) $");
   script_tag(name:"creation_date", value:"2015-01-21 13:55:47 +0530 (Wed, 21 Jan 2015)");
   script_name("Microsoft Windows Telnet Service RCE Vulnerability-Remote (3020393)");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_tag(name:"summary", value:"This host is missing a critical security
   update according to Microsoft Bulletin MS15-002.");
 
@@ -50,16 +52,24 @@ if(description)
   attackers to compromise the affected system.");
 
   script_tag(name:"affected", value:"Microsoft Windows 8 x32/x64
+
   Microsoft Windows Server 2012/R2
+
   Microsoft Windows 8.1 x32/x64 Edition
+
   Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior
+
   Microsoft Windows 2003 x32/x64 Edition Service Pack 2 and prior
+
   Microsoft Windows Vista x32/x64 Edition Service Pack 2 and prior
+
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2 and prior
+
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
   listed hotfixes or download and install the hotfixes from the referenced advisory.");
+
   script_tag(name:"qod_type", value:"remote_active");
 
   script_xref(name:"URL", value:"http://blog.beyondtrust.com/20897");
@@ -72,24 +82,17 @@ if(description)
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("telnetserver_detect_type_nd_version.nasl");
   script_require_ports("Services/telnet", 23);
+  script_mandatory_keys("telnet/microsoft/telnet_service/detected");
+
   exit(0);
 }
 
 include("telnet_func.inc");
 
-tport = get_kb_item("Services/telnet");
-if(!tport){
-  tport = 23;
-}
-
-if(!get_port_state(tport)){
-  exit(0);
-}
-
+tport = get_telnet_port(default:23);
 tbanner = get_telnet_banner(port:tport);
-if("Welcome to Microsoft Telnet Service" >!< tbanner){
+if(!tbanner || "Welcome to Microsoft Telnet Service" >!< tbanner)
   exit(0);
-}
 
 payload = raw_string(0xff, 0xf6, 0xff, 0xf6, 0xff, 0xf6, 0xff, 0xf6,
                      0xff, 0xf6, 0xff, 0xf6, 0xff, 0xf6, 0xff, 0xf6,

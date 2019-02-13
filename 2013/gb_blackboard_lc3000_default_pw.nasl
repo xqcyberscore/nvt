@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_blackboard_lc3000_default_pw.nasl 11584 2018-09-25 07:02:39Z cfischer $
+# $Id: gb_blackboard_lc3000_default_pw.nasl 13624 2019-02-13 10:02:56Z cfischer $
 #
 # Blackboard LC3000 Laundry Reader Default Telnet Password
 #
@@ -28,14 +28,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103843");
-  script_version("$Revision: 11584 $");
+  script_version("$Revision: 13624 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("Blackboard LC3000 Laundry Reader Default Telnet Password");
 
   script_xref(name:"URL", value:"http://dariusfreamon.wordpress.com/2013/10/28/290/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 09:02:39 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-13 11:02:56 +0100 (Wed, 13 Feb 2019) $");
   script_tag(name:"creation_date", value:"2013-12-02 11:02:55 +0200 (Mon, 02 Dec 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -43,6 +43,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
   script_dependencies("telnetserver_detect_type_nd_version.nasl");
   script_require_ports("Services/telnet", 23);
+  script_mandatory_keys("telnet/blackboard/lc3000/detected");
 
   script_tag(name:"impact", value:"Attackers can exploit these issues to gain unauthorized access to the
   affected device and perform certain administrative actions.");
@@ -63,13 +64,10 @@ if(description)
 
 include("telnet_func.inc");
 
-port = get_kb_item("Services/telnet");
-if(!port)port = 23;
-
-if(!get_port_state(port))exit(0);
-
+port = get_telnet_port(default:23);
 banner = get_telnet_banner(port:port);
-if('Blackboard LC3000' >!< banner)exit(0);
+if(!banner || 'Blackboard LC3000' >!< banner)
+  exit(0);
 
 soc = open_sock_tcp(port);
 if(!soc)exit(0);
@@ -88,4 +86,3 @@ if("showconfig" >< recv && "ipreboot" >< recv) {
 }
 
 exit(99);
-

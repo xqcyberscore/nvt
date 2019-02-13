@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: wsftp_overflows.nasl 6056 2017-05-02 09:02:50Z teissa $
+# $Id: wsftp_overflows.nasl 13613 2019-02-12 16:12:57Z cfischer $
 #
 # WS FTP overflows
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11094");
-  script_version("$Revision: 6056 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
+  script_version("$Revision: 13613 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-12 17:12:57 +0100 (Tue, 12 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -37,13 +37,18 @@ if(description)
   script_category(ACT_MIXED_ATTACK);
   script_copyright("This script is Copyright (C) 2002 Michel Arboi");
   script_family("FTP");
-  script_dependencies("find_service.nasl", "secpod_ftp_anonymous.nasl", "ftpserver_detect_type_nd_version.nasl");
+  script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
+  script_mandatory_keys("ftp/ws_ftp/detected");
 
   script_tag(name:"summary", value:"It was possible to shut down the remote
   FTP server by issuing a command followed by a too long argument.");
+
   script_tag(name:"impact", value:"An attacker may use this flow to prevent your site from
   sharing some resources with the rest of the world, or even execute arbitrary code on your system.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
   script_tag(name:"solution", value:"Upgrade to the latest version your FTP server.");
 
   script_tag(name:"qod_type", value:"remote_probe");
@@ -54,35 +59,25 @@ if(description)
 include ("ftp_func.inc");
 
 port = get_ftp_port( default:21 );
+banner = get_ftp_banner( port:port );
+if( ! banner || "WS_FTP Server" >!< banner )
+  exit( 0 );
 
-if ( safe_checks() || ! get_kb_item( "ftp/login" ) ) {
-  m = "According to its version number, your remote WS_FTP server
-is vulnerable to a buffer overflow against any command.
+kb_creds = ftp_get_kb_creds();
+login = kb_creds["login"];
+password = kb_creds["pass"];
 
-An attacker may use this flow to prevent your site from
-sharing some resources with the rest of the world, or even
-execute arbitrary code on your system.
-
-** OpenVAS only check the version number in the server banner
-** To really check the vulnerability, disable safe_checks";
-
-  banner = get_ftp_banner( port:port );
-
+if( safe_checks() || ! login ) {
   if( egrep( pattern:"WS_FTP Server 2\.0\.[0-2]", string:banner ) ) {
-    security_message( port:port, data:m );
+    security_message( port:port );
     exit( 0 );
   }
   exit( 99 );
 }
 
-login = get_kb_item( "ftp/login" );
-password = get_kb_item( "ftp/password" );
-
-if( ! login ) login = "ftp";
-if( ! password ) password = "test@example.org";
-
 soc = open_sock_tcp( port );
 if( ! soc ) exit( 0 );
+
 if( ! ftp_authenticate( socket:soc, user:login, pass:password ) ) {
   ftp_close( socket:soc );
   exit( 0 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vicon_industries_network_camera_detect_telnet.nasl 10891 2018-08-10 12:51:28Z cfischer $
+# $Id: gb_vicon_industries_network_camera_detect_telnet.nasl 13624 2019-02-13 10:02:56Z cfischer $
 #
 # Vicon Industries Network Camera Detection (Telnet)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107334");
-  script_version("$Revision: 10891 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:51:28 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 13624 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-13 11:02:56 +0100 (Wed, 13 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-07-23 11:32:40 +0200 (Mon, 23 Jul 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -39,7 +39,7 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH");
   script_dependencies("telnetserver_detect_type_nd_version.nasl");
   script_require_ports("Services/telnet", 23);
-  script_mandatory_keys("telnet/banner/available");
+  script_mandatory_keys("telnet/vicon_industries/network_camera/detected");
 
   script_tag(name:"summary", value:"This script performs Telnet based detection of Vicon Industries Network Cameras.");
 
@@ -57,7 +57,7 @@ port   = get_telnet_port( default:23 );
 banner = get_telnet_banner( port:port );
 
 if( egrep( string:banner, pattern:"^IQinVision .* Version ", icase:FALSE ) ||
-      ( banner =~ "IQinVision " && banner =~ "Type HELP at the .* prompt for assistance" ) ) {
+    ( banner =~ "IQinVision " && banner =~ "Type HELP at the .* prompt for assistance" ) ) {
 
   set_kb_item( name:"vicon_industries/network_camera/detected", value:TRUE );
   set_kb_item( name:"vicon_industries/network_camera/telnet/detected", value:TRUE );

@@ -1,14 +1,6 @@
-###############################################################################
-# OpenVAS Vulnerability Test
-# $Id: gb_linksys_devices_detect.nasl 10894 2018-08-10 13:09:25Z cfischer $
-#
-# Linksys Devices Remote Detection
-#
-# Authors:
-# Shakeel <bshakeel@secpod.com>
-#
-# Copyright:
 # Copyright (C) 2017 Greenbone Networks GmbH, http://www.greenbone.net
+#
+# SPDX-License-Identifier: GPL-2.0-or-later
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -23,15 +15,14 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-###############################################################################
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812041");
-  script_version("$Revision: 10894 $");
+  script_version("$Revision: 13629 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:09:25 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-13 11:59:34 +0100 (Wed, 13 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-10-19 12:33:14 +0530 (Thu, 19 Oct 2017)");
   script_name("Linksys Devices Remote Detection");
   script_category(ACT_GATHER_INFO);
@@ -84,7 +75,7 @@ if( "linksys" >< tolower( vendor ) ) {
 
   model = get_kb_item( "HNAP/" + netPort + "/model" );
   if( ! model ) {
-    model = eregmatch( pattern:'Basic realm="Linksys (.*)', string:banner );
+    model = eregmatch( pattern:'Basic realm="Linksys ([^"]+)', string:banner );
     if( model[1] ) model = model[1];
   }
 

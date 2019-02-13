@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: nortel_passport_default_pass.nasl 6309 2017-06-12 07:55:57Z cfischer $
+# $Id: nortel_passport_default_pass.nasl 13624 2019-02-13 10:02:56Z cfischer $
 #
 # Nortel/Bay Networks default password
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10989");
-  script_version("$Revision: 6309 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-12 09:55:57 +0200 (Mon, 12 Jun 2017) $");
+  script_version("$Revision: 13624 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-13 11:02:56 +0100 (Wed, 13 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -38,16 +38,14 @@ if(description)
   script_family("Default Accounts");
   script_dependencies("telnetserver_detect_type_nd_version.nasl");
   script_require_ports("Services/telnet", 23);
+  script_mandatory_keys("telnet/nortel_bay_networks/device/detected");
 
-  tag_summary = "The remote switch/routers uses the default password.
+  script_tag(name:"solution", value:"Telnet this switch/router and change all passwords
+  (check the manual for default users)");
+
+  script_tag(name:"summary", value:"The remote switch/routers uses the default password.
   This means that anyone who has (downloaded) a user manual can
-  telnet to it and gain administrative access.";
-
-  tag_solution = "Telnet this switch/router and change all passwords
-  (check the manual for default users)";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  telnet to it and gain administrative access.");
 
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -60,7 +58,8 @@ include("telnet_func.inc");
 port = get_telnet_port( default:23 );
 
 banner = get_telnet_banner( port:port );
-if( ! banner || "Passport" >!< banner ) exit( 0 );
+if( ! banner || "Passport" >!< banner || "NetLogin:" >!< banner )
+  exit( 0 );
 
 # Although there are at least 11 (!?) default passwords to check, the passport will only allow
 # 3 attempts before closing down the telnet port for 60 seconds. Fortunatelly, nothing prevents

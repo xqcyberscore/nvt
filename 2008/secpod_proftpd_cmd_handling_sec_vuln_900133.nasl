@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_proftpd_cmd_handling_sec_vuln_900133.nasl 4774 2016-12-15 12:52:36Z cfi $
+# $Id: secpod_proftpd_cmd_handling_sec_vuln_900133.nasl 13602 2019-02-12 12:47:59Z cfischer $
 #
 # ProFTPD Long Command Handling Security Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:proftpd:proftpd";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900133");
-  script_version("$Revision: 4774 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-15 13:52:36 +0100 (Thu, 15 Dec 2016) $");
+  script_version("$Revision: 13602 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-12 13:47:59 +0100 (Tue, 12 Feb 2019) $");
   script_tag(name:"creation_date", value:"2008-09-26 07:36:49 +0200 (Fri, 26 Sep 2008)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -47,27 +47,18 @@ if(description)
   script_xref(name:"URL", value:"http://secunia.com/advisories/31930/");
   script_xref(name:"URL", value:"http://bugs.proftpd.org/show_bug.cgi?id=3115");
 
-  tag_impact = "This can be exploited to execute arbitrary FTP commands on another
-  user's session privileges.
+  script_tag(name:"summary", value:"The host is running ProFTPD Server, which is prone to cross-site
+  request forgery vulnerability.");
 
-  Impact Level : Application";
+  script_tag(name:"insight", value:"The flaw exists due to the application truncating an overly long FTP command,
+  and improperly interpreting the remainder string as a new FTP command.");
 
-  tag_solution = "Upgrade to the latest version 1.3.2rc3,
-  http://www.proftpd.org/";
+  script_tag(name:"affected", value:"ProFTPD Server version prior 1.3.2rc3.");
 
-  tag_affected = "ProFTPD Server version prior 1.3.2rc3";
+  script_tag(name:"solution", value:"Upgrade to the latest version 1.3.2rc3.");
 
-  tag_insight = "The flaw exists due to the application truncating an overly long FTP command,
-  and improperly interpreting the remainder string as a new FTP command.";
-
-  tag_summary = "The host is running ProFTPD Server, which is prone to cross-site
-  request forgery vulnerability.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"impact", value:tag_impact);
+  script_tag(name:"impact", value:"This can be exploited to execute arbitrary FTP commands on another
+  user's session privileges.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
@@ -80,7 +71,7 @@ include("host_details.inc");
 
 if( isnull( port = get_app_port( cpe:CPE ) ) ) exit( 0 );
 if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
- 
+
 if( version_is_less( version:vers, test_version:"1.3.2.rc3" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"1.3.2rc3" );
   security_message( port:port, data:report );

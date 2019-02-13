@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: DDI_LanRover_Blank_Password.nasl 9348 2018-04-06 07:01:19Z cfischer $
+# $Id: DDI_LanRover_Blank_Password.nasl 13624 2019-02-13 10:02:56Z cfischer $
 # Description: Shiva LanRover Blank Password
 #
 # Authors:
@@ -22,49 +22,39 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "The Shiva LanRover has no password set for the
-root user account. An attacker is able to telnet
-to this system and gain access to any phone lines
-attached to this device. Additionally, the LanRover
-can be used as a relay point for further attacks
-via the telnet and rlogin functionality available
-from the administration shell.";
-
-tag_solution = "Telnet to this device and change the
-password for the root account via the passwd
-command. Please ensure any other accounts have
-strong passwords set.";
-
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.10998");
- script_version("$Revision: 9348 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_tag(name:"cvss_base", value:"4.6");
- script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
- script_cve_id("CVE-1999-0508");
- 
- 
- name = "Shiva LanRover Blank Password";
- 
- script_name(name);
- 
- 
- script_category(ACT_GATHER_INFO);
+  script_oid("1.3.6.1.4.1.25623.1.0.10998");
+  script_version("$Revision: 13624 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-13 11:02:56 +0100 (Wed, 13 Feb 2019) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_tag(name:"cvss_base", value:"4.6");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
+  script_cve_id("CVE-1999-0508");
+  script_name("Shiva LanRover Blank Password");
+  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_vul");
- 
- 
- script_copyright("This script is Copyright (C) 2002 Digital Defense Incorporated");
+  script_copyright("This script is Copyright (C) 2002 Digital Defense Incorporated");
+  script_family("Privilege escalation");
+  script_dependencies("telnetserver_detect_type_nd_version.nasl");
+  script_require_ports("Services/telnet", 23);
+  script_mandatory_keys("telnet/shiva/lanrover/detected");
 
- family = "Privilege escalation";
+  script_tag(name:"solution", value:"Telnet to this device and change the
+  password for the root account via the passwd command. Please ensure any other
+  accounts have strong passwords set.");
 
- script_family(family);
- script_dependencies("find_service.nasl");
- script_require_ports("Services/telnet", 23);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  script_tag(name:"summary", value:"The Shiva LanRover has no password set for the
+  root user account.");
+
+  script_tag(name:"impact", value:"An attacker is able to telnet to this system and
+  gain access to any phone lines attached to this device. Additionally, the LanRover
+  can be used as a relay point for further attacks via the telnet and rlogin functionality
+  available from the administration shell.");
+
+  script_tag(name:"solution_type", value:"Mitigation");
+
+  exit(0);
 }
 
 include('telnet_func.inc');
@@ -75,26 +65,25 @@ banner = get_telnet_banner(port:port);
 if ( ! banner || "@ Userid:" >!< banner ) exit(0);
 
 soc = open_sock_tcp(port);
-
 if(soc)
 {
-    r = telnet_negotiate(socket:soc);
+  r = telnet_negotiate(socket:soc);
 
-    if("@ Userid:" >< r)
-    { 
-        send(socket:soc, data:string("root\r\n"));
-        r = recv(socket:soc, length:4096);
-        
-        if("Password?" >< r)
-        {
-            send(socket:soc, data:string("\r\n"));
-            r = recv(socket:soc, length:4096);
+  if("@ Userid:" >< r)
+  {
+    send(socket:soc, data:string("root\r\n"));
+    r = recv(socket:soc, length:4096);
 
-            if ("Shiva LanRover" >< r)
-            {
-                security_message(port:port);
-            }
-       }
+    if("Password?" >< r)
+    {
+      send(socket:soc, data:string("\r\n"));
+      r = recv(socket:soc, length:4096);
+
+      if ("Shiva LanRover" >< r)
+      {
+        security_message(port:port);
+      }
     }
-    close(soc);
+  }
+  close(soc);
 }

@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageupsnet_telnet_default_credentials.nasl 11874 2018-10-12 11:28:04Z mmartin $
+# $Id: gb_manageupsnet_telnet_default_credentials.nasl 13624 2019-02-13 10:02:56Z cfischer $
 #
-# ManageUPSNET Telnet Default Credentials
+# ManageUPSNET UPS / USV Telnet Default Credentials
 #
 # Authors:
 # Jan Philipp Schulte <jan.schulte@greenbone.net>
@@ -25,11 +25,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if( description )
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113049");
-  script_version("$Revision: 11874 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 13624 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-13 11:02:56 +0100 (Wed, 13 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-11-09 15:05:05 +0100 (Thu, 09 Nov 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -38,7 +38,7 @@ if( description )
 
   script_tag(name:"solution_type", value:"Workaround");
 
-  script_name("ManageUPSNET Telnet Default Credentials");
+  script_name("ManageUPSNET UPS / USV Telnet Default Credentials");
 
   script_category(ACT_ATTACK);
 
@@ -46,12 +46,17 @@ if( description )
   script_family("Default Accounts");
   script_dependencies("telnetserver_detect_type_nd_version.nasl");
   script_require_ports("Services/telnet", 23);
+  script_mandatory_keys("telnet/manageupsnet/detected");
 
-  script_tag(name:"summary", value:"ManageUPSNET Telnet and FTP uses remote credentials 'admin' - 'admin'");
-  script_tag(name:"vuldetect", value:"The script tries to login via Telnet using the username 'admin' and the password 'admin'");
+  script_tag(name:"summary", value:"ManageUPSNET Telnet and FTP uses remote credentials 'admin' - 'admin'.");
+
+  script_tag(name:"vuldetect", value:"The script tries to login via Telnet using the username 'admin' and the password 'admin'.");
+
   script_tag(name:"impact", value:"Successful exploitation would allow to gain complete administrative access to the host.");
-  script_tag(name:"affected", value:"All ManageUPSNET devices version 2.6 or later");
-  script_tag(name:"solution", value:"Change the default password for the administrative account 'admin' for both Telnet and FTP");
+
+  script_tag(name:"affected", value:"All ManageUPSNET devices version 2.6 or later.");
+
+  script_tag(name:"solution", value:"Change the default password for the administrative account 'admin' for both Telnet and FTP.");
 
   script_xref(name:"URL", value:"http://005c368.netsolhost.com/pdfs/9133161c.pdf");
 
@@ -62,7 +67,8 @@ include( "telnet_func.inc" );
 
 port = get_telnet_port( default:23 );
 banner = get_telnet_banner( port:port );
-if( "ManageUPSnet" >!< banner ) exit( 0 );
+if( !banner || "ManageUPSnet" >!< banner )
+  exit( 0 );
 
 login = "admin";
 pass = "admin";

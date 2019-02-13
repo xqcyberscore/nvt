@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: DDI_motorola_vanguard_no_pass.nasl 7275 2017-09-26 11:46:31Z cfischer $
+# $Id: DDI_motorola_vanguard_no_pass.nasl 13624 2019-02-13 10:02:56Z cfischer $
 #
 # Motorola Vanguard with No Password
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11203");
-  script_version("$Revision: 7275 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-26 13:46:31 +0200 (Tue, 26 Sep 2017) $");
+  script_version("$Revision: 13624 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-13 11:02:56 +0100 (Wed, 13 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
@@ -39,15 +39,13 @@ if(description)
   script_family("Default Accounts");
   script_dependencies("telnetserver_detect_type_nd_version.nasl");
   script_require_ports("Services/telnet", 23);
+  script_mandatory_keys("telnet/banner/available");
 
-  tag_summary = "This device is a Motorola Vanguard router and has 
-  no password set. An attacker can reconfigure 
-  this device without providing any authentication.";
+  script_tag(name:"solution", value:"Please set a strong password for this device.");
 
-  tag_solution = "Please set a strong password for this device.";
- 
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"This device is a Motorola Vanguard router and has
+  no password set. An attacker can reconfigure
+  this device without providing any authentication.");
 
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_analysis");

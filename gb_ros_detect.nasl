@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ros_detect.nasl 12875 2018-12-21 15:01:59Z cfischer $
+# $Id: gb_ros_detect.nasl 13627 2019-02-13 10:38:43Z cfischer $
 #
 # Rugged Operating System Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103633");
-  script_version("$Revision: 12875 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-21 16:01:59 +0100 (Fri, 21 Dec 2018) $");
+  script_version("$Revision: 13627 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-13 11:38:43 +0100 (Wed, 13 Feb 2019) $");
   script_tag(name:"creation_date", value:"2013-01-04 12:11:14 +0100 (Fri, 04 Jan 2013)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -84,24 +84,15 @@ function check_telnet() {
   local_var port, banner;
   global_var concluded;
 
-  port = get_kb_item('Services/telnet');
-  if(!port)port = 23;
+  port = get_telnet_port(default:23);
+  r = get_telnet_banner(port:port);
+  if(!r || "Rugged Operating System" >!< r)
+    return FALSE;
 
-  if(get_port_state(port)) {
-
-    soc = open_sock_tcp(port);
-    if(!soc)return FALSE;
-
-    r = telnet_negotiate(socket:soc);
-    close(soc);
-
-    if("Rugged Operating System" >!< r)return FALSE;
-
-    version = eregmatch(pattern:"Rugged Operating System v([0-9.]+)", string:r);
-    if(!isnull(version[1])) {
-      concluded = version[0];
-      return version[1];
-    }
+  version = eregmatch(pattern:"Rugged Operating System v([0-9.]+)", string:r);
+  if(!isnull(version[1])) {
+    concluded = version[0];
+    return version[1];
   }
 }
 

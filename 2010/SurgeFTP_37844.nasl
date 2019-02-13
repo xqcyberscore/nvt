@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: SurgeFTP_37844.nasl 5401 2017-02-23 09:46:07Z teissa $
+# $Id: SurgeFTP_37844.nasl 13613 2019-02-12 16:12:57Z cfischer $
 #
 # SurgeFTP 'surgeftpmgr.cgi' Multiple Cross Site Scripting Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100453");
-  script_version("$Revision: 5401 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-23 10:46:07 +0100 (Thu, 23 Feb 2017) $");
+  script_version("$Revision: 13613 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-12 17:12:57 +0100 (Tue, 12 Feb 2019) $");
   script_tag(name:"creation_date", value:"2010-01-20 10:52:14 +0100 (Wed, 20 Jan 2010)");
   script_cve_id("CVE-2010-1068");
   script_bugtraq_id(37844);
@@ -38,20 +38,28 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("FTP");
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
-  script_dependencies("find_service.nasl", "ftpserver_detect_type_nd_version.nasl");
+  script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
+  script_mandatory_keys("ftp/surgeftp/detected");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/37844");
   script_xref(name:"URL", value:"http://netwinsite.com/surgeftp/");
 
   script_tag(name:"summary", value:"SurgeFTP is prone to multiple cross-site scripting vulnerabilities
   because the application fails to sufficiently sanitize user-supplied data.");
+
   script_tag(name:"impact", value:"Attacker-supplied HTML or JavaScript code could run in an administrator's
   browser session in the context of the affected site. This could potentially allow the attacker to
-  steal cookie-based authentication credentials; other attacks are also possible.");
-  script_tag(name:"affected", value:"SurgeFTP 2.3a6 is vulnerable; other versions may also be affected.");
+  steal cookie-based authentication credentials. Other attacks are also possible.");
+
+  script_tag(name:"affected", value:"SurgeFTP 2.3a6 is vulnerable. Other versions may also be affected.");
 
   script_tag(name:"qod_type", value:"remote_banner");
+
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
   exit(0);
 }
@@ -61,7 +69,6 @@ include("version_func.inc");
 
 port = get_ftp_port( default:21 );
 if( ! banner = get_ftp_banner( port:port ) ) exit( 0 );
-
 if( "SurgeFTP" >!< banner ) exit( 0 );
 
 version = eregmatch( pattern:"SurgeFTP.*\(Version ([^)]+)\)", string:banner );

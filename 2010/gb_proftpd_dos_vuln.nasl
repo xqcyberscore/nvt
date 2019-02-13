@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_proftpd_dos_vuln.nasl 4774 2016-12-15 12:52:36Z cfi $
+# $Id: gb_proftpd_dos_vuln.nasl 13602 2019-02-12 12:47:59Z cfischer $
 #
 # ProFTPD Denial of Service Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:proftpd:proftpd";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801640");
-  script_version("$Revision: 4774 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-15 13:52:36 +0100 (Thu, 15 Dec 2016) $");
+  script_version("$Revision: 13602 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-12 13:47:59 +0100 (Tue, 12 Feb 2019) $");
   script_tag(name:"creation_date", value:"2010-11-30 12:42:12 +0100 (Tue, 30 Nov 2010)");
   script_cve_id("CVE-2008-7265");
   script_tag(name:"cvss_base", value:"4.0");
@@ -45,30 +45,19 @@ if(description)
 
   script_xref(name:"URL", value:"http://bugs.proftpd.org/show_bug.cgi?id=3131");
 
-  tag_impact = "Successful exploitation will allow attackers to cause a denial of service.
-  Impact Level: Application";
-
-  tag_affected = "ProFTPD versions prior to 1.3.2rc3";
-
-  tag_insight = "The flaw is due to an error in 'pr_data_xfer()' function which allows
+  script_tag(name:"summary", value:"The host is running ProFTPD and is prone to denial of service
+  vulnerability.");
+  script_tag(name:"insight", value:"The flaw is due to an error in 'pr_data_xfer()' function which allows
   remote authenticated users to cause a denial of service (CPU consumption)
-  via an ABOR command during a data transfer.";
-
-  tag_solution = "Upgrade to ProFTPD version 1.3.2rc3 or later,
-  For updates refer to http://www.proftpd.org/";
-
-  tag_summary = "The host is running ProFTPD and is prone to denial of service
-  vulnerability.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"impact", value:tag_impact);
+  via an ABOR command during a data transfer.");
+  script_tag(name:"affected", value:"ProFTPD versions prior to 1.3.2rc3");
+  script_tag(name:"solution", value:"Upgrade to ProFTPD version 1.3.2rc3 or later.");
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause a denial of service.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
+  script_xref(name:"URL", value:"http://www.proftpd.org/");
   exit(0);
 }
 
@@ -78,7 +67,6 @@ include("host_details.inc");
 if( isnull( port = get_app_port( cpe:CPE ) ) ) exit( 0 );
 if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
-## Check for ProFTPD versions prior to 1.3.2rc3
 if( version_is_less( version:vers, test_version:"1.3.2.rc3" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"1.3.2rc3" );
   security_message( port:port, data:report );

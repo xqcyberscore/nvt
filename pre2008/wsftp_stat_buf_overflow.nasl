@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: wsftp_stat_buf_overflow.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: wsftp_stat_buf_overflow.nasl 13613 2019-02-12 16:12:57Z cfischer $
 #
 # WS FTP STAT buffer overflow0
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14585");
-  script_version("$Revision: 6040 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+  script_version("$Revision: 13613 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-12 17:12:57 +0100 (Tue, 12 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(3507);
   script_tag(name:"cvss_base", value:"10.0");
@@ -39,14 +39,19 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2004 David Maciejak");
   script_family("FTP");
-  script_dependencies("find_service.nasl", "ftpserver_detect_type_nd_version.nasl");
+  script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
+  script_mandatory_keys("ftp/ws_ftp/detected");
 
   script_tag(name:"summary", value:"According to its version number, your remote WS_FTP server is vulnerable
   to a buffer overflow.");
+
   script_tag(name:"impact", value:"A logged attacker submitting a 'STAT' command along with
   arbitrary characters can potentially execute arbitrary code.");
-  script_tag(name:"solution", value:"Upgrade to the latest version");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
+  script_tag(name:"solution", value:"Upgrade to the latest version.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -57,10 +62,8 @@ include ("ftp_func.inc");
 
 port = get_ftp_port( default:21 );
 if( ! banner = get_ftp_banner( port:port ) ) exit( 0 );
-
 if( "WS_FTP Server" >!< banner ) exit( 0 );
 
-# Check for the WS_ FTP Server 2.0.3 and prior.
 if( egrep( pattern:"WS_FTP Server (1\.|2\.(0[^0-9]|0\.[0-3][^0-9]))", string:banner ) ) {
   security_message( port:port );
   exit( 0 );
