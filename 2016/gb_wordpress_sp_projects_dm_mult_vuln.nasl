@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_sp_projects_dm_mult_vuln.nasl 11969 2018-10-18 14:53:42Z asteins $
+# $Id: gb_wordpress_sp_projects_dm_mult_vuln.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # Wordpress SP Projects And Document Manager Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807612");
-  script_version("$Revision: 11969 $");
+  script_version("$Revision: 13659 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2016-03-16 10:39:38 +0530 (Wed, 16 Mar 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Wordpress SP Projects And Document Manager Multiple Vulnerabilities");
@@ -87,7 +87,7 @@ if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
 
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 host = http_host_name(port:http_port);
 
 url = dir + '/wp-content/plugins/sp-client-document-manager/admin/ajax.php?function=email-vendor';

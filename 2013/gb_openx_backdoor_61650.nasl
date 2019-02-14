@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openx_backdoor_61650.nasl 11865 2018-10-12 10:03:43Z cfischer $
+# $Id: gb_openx_backdoor_61650.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # OpenX 'flowplayer-3.1.1.min.js' Backdoor Vulnerability
 #
@@ -34,7 +34,7 @@ if(description)
   script_cve_id("CVE-2013-4211");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11865 $");
+  script_version("$Revision: 13659 $");
 
   script_name("OpenX 'flowplayer-3.1.1.min.js' Backdoor Vulnerability");
 
@@ -42,7 +42,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/61650");
   script_xref(name:"URL", value:"http://blog.openx.org/08/important-update-for-openx-source-2-8-10-users/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2013-08-09 14:28:44 +0200 (Fri, 09 Aug 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -76,7 +76,7 @@ if(!dir = get_app_location(cpe:CPE, port:port))exit(0);
 ex = 'vastPlayer=%3B%29%28bsavcuc'; # phpinfo(); | reverse | rot13 | urlencode
 len = strlen(ex);
 
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 host = http_host_name(port:port);
 
 req = 'POST ' + dir + '/www/delivery/fc.php?file_to_serve=flowplayer/3.1.1/flowplayer-3.1.1.min.js&script=deliveryLog:vastServeVideoPlayer:player HTTP/1.1\r\n' +

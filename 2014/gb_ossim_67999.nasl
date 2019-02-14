@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ossim_67999.nasl 11222 2018-09-04 12:41:44Z cfischer $
+# $Id: gb_ossim_67999.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # AlienVault OSSIM  Multiple Unspecified Remote Code Execution Vulnerabilities
 #
@@ -34,14 +34,14 @@ if(description)
   script_cve_id("CVE-2014-3804", "CVE-2014-3805");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11222 $");
+  script_version("$Revision: 13659 $");
 
   script_name("AlienVault OSSIM  Multiple Remote Code Execution Vulnerabilities");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/67999");
   script_xref(name:"URL", value:"http://www.alienvault.com/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:41:44 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2014-06-20 12:08:51 +0200 (Fri, 20 Jun 2014)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -76,7 +76,7 @@ if( ! dir = get_app_location( cpe:CPE, port:wport ) ) exit( 0 );
 port = 40007;
 if( ! get_port_state( port ) ) exit( 0 );
 
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 cmd = 'id';
 host = http_host_name(port:port);
 

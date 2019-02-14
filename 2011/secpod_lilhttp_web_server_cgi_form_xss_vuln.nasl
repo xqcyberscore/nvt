@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_lilhttp_web_server_cgi_form_xss_vuln.nasl 11987 2018-10-19 11:05:52Z mmartin $
+# $Id: secpod_lilhttp_web_server_cgi_form_xss_vuln.nasl 13660 2019-02-14 09:48:45Z cfischer $
 #
 # LilHTTP Server 'CGI Form Demo' Cross Site Scripting Vulnerability
 #
@@ -27,8 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902437");
-  script_version("$Revision: 11987 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 13:05:52 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 13660 $");
+  script_cve_id("CVE-2002-1009");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 10:48:45 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2011-06-02 11:54:09 +0200 (Thu, 02 Jun 2011)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -46,13 +47,17 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to plant XSS
   backdoors and inject arbitrary SQL statements via crafted XSS payloads.");
+
   script_tag(name:"affected", value:"LilHTTP Server version 2.2 and prior.");
+
   script_tag(name:"insight", value:"The flaw is caused by improper validation of user-supplied input,
   passed in the 'name' and 'email' parameter in 'cgitest.html', when handling the
   'CGI Form Demo' application.");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
   release, disable respective features, remove the product or replace the product by another one.");
+
   script_tag(name:"summary", value:"The host is running LilHTTP Web Server and is prone to cross site
   scripting vulnerability");
 
@@ -66,28 +71,25 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 lilPort = get_http_port(default:80);
-
 banner = get_http_banner(port:lilPort);
-if("Server: LilHTTP" >!< banner){
+if(!banner || "Server: LilHTTP" >!< banner)
   exit(0);
-}
 
-postdata = "name=%3Cscript%3Ealert%28%27OpenVAS-XSS-TEST%27%29%3C%2F" +
-           "script%3E&email=";
+postdata = "name=%3Cscript%3Ealert%28%27VT-XSS-TEST%27%29%3C%2Fscript%3E&email=";
 
 url = "/pbcgi.cgi";
 
+useragent = http_get_user_agent();
 host = http_host_name(port:lilPort);
 
 req = string("POST ", url, " HTTP/1.1\r\n",
              "Host: ", host, "\r\n",
-             "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+             "User-Agent: ", useragent, "\r\n",
              "Content-Length: ", strlen(postdata), "\r\n",
              "\r\n", postdata);
-
 res = http_keepalive_send_recv(port:lilPort, data:req);
 
-if(res =~ "HTTP/1\.. 200" && "name=<script>alert('OpenVAS-XSS-TEST')</script>" >< res){
+if(res =~ "^HTTP/1\.[01] 200" && "name=<script>alert('VT-XSS-TEST')</script>" >< res){
   report = report_vuln_url(port:lilPort, url:url);
   security_message(port:lilPort, data:report);
   exit(0);

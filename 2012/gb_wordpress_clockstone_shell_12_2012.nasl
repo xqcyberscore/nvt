@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_clockstone_shell_12_2012.nasl 11435 2018-09-17 13:44:25Z cfischer $
+# $Id: gb_wordpress_clockstone_shell_12_2012.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # WordPress Clockstone Theme Arbitrary File Upload Vulnerability
 #
@@ -32,12 +32,12 @@ if(description)
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/118930/WordPress-Clockstone-Theme-File-Upload.html");
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/download/118930/clockstone-shell.pdf");
   script_oid("1.3.6.1.4.1.25623.1.0.103626");
-  script_version("$Revision: 11435 $");
+  script_version("$Revision: 13659 $");
   script_tag(name:"cvss_base", value:"9.7");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:P");
 
   script_name("WordPress Clockstone Theme Arbitrary File Upload Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:44:25 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2012-12-19 12:55:53 +0100 (Wed, 19 Dec 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -68,7 +68,7 @@ if(!port = get_app_port(cpe:CPE))exit(0);
 if(!dir = get_app_location(cpe:CPE, port:port))exit(0);
 
 url = dir + '/wp-content/themes/clockstone/theme/functions/upload.php';
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 vtstring = get_vt_string( lowercase:TRUE );
 host = http_host_name(port:port);
 

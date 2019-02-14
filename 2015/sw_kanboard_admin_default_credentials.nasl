@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_kanboard_admin_default_credentials.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: sw_kanboard_admin_default_credentials.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # Kanboard admin default credentials
 #
@@ -30,11 +30,11 @@ CPE = 'cpe:/a:kanboard:kanboard';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111064");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 13659 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Kanboard admin default credentials");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2015-12-04 13:00:00 +0100 (Fri, 04 Dec 2015)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
@@ -89,7 +89,7 @@ foreach controller ( controllers ) {
   csrftoken = eregmatch( pattern:'name="csrf_token" value="([0-9a-z]+)"', string:res );
 
   host = http_host_name( port:port );
-  useragent = get_http_user_agent();
+  useragent = http_get_user_agent();
 
   if( isnull( csrftoken[1] ) ) {
     data = string( "username=admin&password=admin&remember_me=0" );

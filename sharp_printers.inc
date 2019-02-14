@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: sharp_printers.inc 13332 2019-01-28 15:16:13Z cfischer $
+# $Id: sharp_printers.inc 13658 2019-02-14 08:16:14Z cfischer $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -22,7 +22,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 13332 $
+# $Revision: 13658 $
 #
 ###############################################################################
 
@@ -59,7 +59,7 @@ function check_sharp_default_login( model, port ) {
   logins = sharp_default_logins();
 
   host = http_host_name(port:port);
-  useragent = get_http_user_agent();
+  useragent = http_get_user_agent();
 
   foreach login (logins) {
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_jrockit_detect_win.nasl 10913 2018-08-10 15:35:20Z cfischer $
+# $Id: gb_oracle_jrockit_detect_win.nasl 13650 2019-02-14 06:48:40Z cfischer $
 #
 # Oracle JRockit JVM Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813726");
-  script_version("$Revision: 10913 $");
+  script_version("$Revision: 13650 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:35:20 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 07:48:40 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-07-24 15:06:45 +0530 (Tue, 24 Jul 2018)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Oracle JRockit JVM Version Detection (Windows)");
@@ -48,9 +48,9 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("cpe.inc");
@@ -103,7 +103,7 @@ foreach rockitKey(key_list)
         set_kb_item(name:"JRockit/MC/Win/Ver", value:jrockitmcVer);
 
         register_and_report_cpe(app:"JRockit JVM", ver:jrockitVer, base:"cpe:/a:oracle:jrockit:",
-                          expr:"^(R[0-9.]+)", insloc:jrockitPath);
+                                expr:"^(R[0-9.]+)", insloc:jrockitPath);
 
         if("64" >< os_arch && "Wow6432Node" >!< rockitKey)
         {
@@ -113,11 +113,12 @@ foreach rockitKey(key_list)
           set_kb_item(name:"JRockit64/MC/Win/Ver", value:jrockitmcVer);
 
           register_and_report_cpe(app:"JRockit JVM", ver:jrockitVer, base:"cpe:/a:oracle:jrockit:x64:",
-                           expr:"^(R[0-9.]+)", insloc:jrockitPath);
+                                  expr:"^(R[0-9.]+)", insloc:jrockitPath);
         }
         exit(0);
       }
     }
   }
 }
-exit(99);
+
+exit(0);

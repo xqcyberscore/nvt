@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wordpress_photo_album_plus_xss_vuln.nasl 11973 2018-10-19 05:51:32Z cfischer $
+# $Id: secpod_wordpress_photo_album_plus_xss_vuln.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # WordPress WP Photo Album Plus Plugin 'Search Photos' XSS Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902698");
-  script_version("$Revision: 11973 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 07:51:32 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 13659 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2012-12-31 14:00:10 +0530 (Mon, 31 Dec 2012)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -68,7 +68,7 @@ include("http_keepalive.inc");
 if(!port = get_app_port(cpe:CPE))exit(0);
 if(!dir = get_app_location(cpe:CPE, port:port))exit(0);
 
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 host = http_host_name(port:port);
 
 ## page_id for WP Photo Album Plus Plugin is 8

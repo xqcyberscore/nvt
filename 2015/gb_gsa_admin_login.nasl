@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gsa_admin_login.nasl 11492 2018-09-20 08:38:50Z mmartin $
+# $Id: gb_gsa_admin_login.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # GSA Default Admin Credentials
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:greenbone:greenbone_security_assistant";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105354");
-  script_version("$Revision: 11492 $");
+  script_version("$Revision: 13659 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("GSA Default Admin Credentials");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 10:38:50 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2015-09-14 14:47:11 +0200 (Mon, 14 Sep 2015)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
@@ -76,7 +76,7 @@ creds = make_array( "admin",  "admin", # OpenVAS Virtual Appliance
 host   = http_host_name( port:port );
 vuln   = FALSE;
 report = "It was possible to login using the following credentials:";
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 foreach cred( keys( creds ) ) {
 
   bound = rand();

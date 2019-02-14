@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_scrutinizer_54726.nasl 11435 2018-09-17 13:44:25Z cfischer $
+# $Id: gb_scrutinizer_54726.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # Scrutinizer Arbitrary File Upload Vulnerability
 #
@@ -34,8 +34,8 @@ if(description)
   script_cve_id("CVE-2012-2627", "CVE-2012-2626");
   script_tag(name:"cvss_base", value:"9.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:C/A:C");
-  script_version("$Revision: 11435 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:44:25 +0200 (Mon, 17 Sep 2018) $");
+  script_version("$Revision: 13659 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2012-08-02 10:24:13 +0200 (Thu, 02 Aug 2012)");
   script_name("Scrutinizer Arbitrary File Upload Vulnerability");
   script_category(ACT_ATTACK);
@@ -77,7 +77,7 @@ include("misc_func.inc");
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 vtstring = get_vt_string( lowercase:TRUE );
 vtstring_up = get_vt_string();
 host = http_host_name( port:port );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: gvr_apps_auth_func.inc 13343 2019-01-29 10:53:52Z cfischer $
+# $Id: gvr_apps_auth_func.inc 13658 2019-02-14 08:16:14Z cfischer $
 #
 # Supporting functions for TYPO3 Detection
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 13343 $
+# $Revision: 13658 $
 #
 ###############################################################################
 
@@ -63,7 +63,7 @@ function get_typo3_login_cookie(cinstall, tport, chost)
 
       req = string("POST ", url, " HTTP/1.1\r\n",
                    "Host: ", chost, "\r\n",
-                   "User-Agent: ", get_http_user_agent(), "\r\n",
+                   "User-Agent: ", http_get_user_agent(), "\r\n",
                    "Referer: http://", chost, "/typo3/alt_menu.php\r\n",
                    "Connection: keep-alive\r\n",
                    "Cookie: ", cCookie, "\r\n",
@@ -95,7 +95,7 @@ function get_typo3_logout(loc, lport, lhost, lcookie)
   lurl = loc + "/typo3/logout.php";
   lreq = string("GET ", lurl, " HTTP/1.1\r\n",
                 "Host: ", lhost, "\r\n",
-                "User-Agent: ", get_http_user_agent(), "\r\n",
+                "User-Agent: ", http_get_user_agent(), "\r\n",
                 "Referer: http://", lhost, "/typo3/alt_menu.php\r\n",
                 "Connection: keep-alive\r\n",
                 "Cookie: ", lcookie, "\r\n",

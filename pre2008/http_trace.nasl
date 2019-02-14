@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: http_trace.nasl 10317 2018-06-25 14:09:46Z cfischer $
+# $Id: http_trace.nasl 13660 2019-02-14 09:48:45Z cfischer $
 #
 # HTTP TRACE
 #
@@ -31,8 +31,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11040");
-  script_version("$Revision: 10317 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-25 16:09:46 +0200 (Mon, 25 Jun 2018) $");
+  script_version("$Revision: 13660 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 10:48:45 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -104,6 +104,7 @@ if( ( ver == "10" ) || ( ver == "09" ) ) exit( 0 ); # No TRACE in HTTP/1.0
 
 n = 0;
 
+useragent = http_get_user_agent();
 host = http_host_name( port:port );
 
 for( i = 0; i < 99; i++ ) {
@@ -113,7 +114,7 @@ for( i = 0; i < 99; i++ ) {
 
     req = string( "TRACE / HTTP/1.1\r\n",
                   "Host: ", host, "\r\n",
-                  "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+                  "User-Agent: ", useragent, "\r\n",
                   "Max-Forwards: ", i,
                   "\r\n\r\n" );
     send( socket:soc, data:req );

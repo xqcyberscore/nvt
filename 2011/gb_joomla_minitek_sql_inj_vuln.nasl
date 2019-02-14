@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_minitek_sql_inj_vuln.nasl 10285 2018-06-21 12:22:45Z cfischer $
+# $Id: gb_joomla_minitek_sql_inj_vuln.nasl 13660 2019-02-14 09:48:45Z cfischer $
 #
 # Joomla Minitek FAQ Book 'id' Parameter SQL Injection Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802106");
-  script_version("$Revision: 10285 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-21 14:22:45 +0200 (Thu, 21 Jun 2018) $");
+  script_version("$Revision: 13660 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 10:48:45 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2011-06-20 15:22:27 +0200 (Mon, 20 Jun 2011)");
   script_bugtraq_id(48223);
   script_tag(name:"cvss_base", value:"7.5");
@@ -90,6 +90,7 @@ if (isnull(cookie[1]))
 else
   cookie = cookie[1];
 
+useragent = http_get_user_agent();
 host = http_host_name(port:port);
 
 sndReq = string("GET ", dir, "/index.php?option=com_faqbook&view=category" +
@@ -97,7 +98,7 @@ sndReq = string("GET ", dir, "/index.php?option=com_faqbook&view=category" +
                 "id,password,0x4f70656e564153,name),10,11,12,13,14,15,16,17,18,19," +
                 "20,21,22,23,24,25,26+from+jos_users--", " HTTP/1.1\r\n",
                 "Host: ", host, "\r\n",
-                "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+                "User-Agent: ", useragent, "\r\n",
                 "Cookie: ", cookie , "; path=/", "\r\n\r\n");
 rcvRes = http_keepalive_send_recv(port: port, data:sndReq);
 

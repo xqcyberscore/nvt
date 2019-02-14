@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_awcm_mult_dir_trav_vuln.nasl 13543 2019-02-08 14:43:51Z cfischer $
+# $Id: secpod_awcm_mult_dir_trav_vuln.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # AR Web Content Manager Multiple Directory Traversal Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902338");
-  script_version("$Revision: 13543 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
+  script_version("$Revision: 13659 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2011-02-23 12:24:37 +0100 (Wed, 23 Feb 2011)");
   script_cve_id("CVE-2011-0903");
   script_bugtraq_id(46017);
@@ -73,7 +73,7 @@ if(!can_host_php(port:awcmPort)){
   exit(0);
 }
 
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 host = http_host_name(port:awcmPort);
 
 files = traversal_files();

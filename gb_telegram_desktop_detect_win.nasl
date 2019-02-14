@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_telegram_desktop_detect_win.nasl 12301 2018-11-09 16:43:54Z cfischer $
+# $Id: gb_telegram_desktop_detect_win.nasl 13664 2019-02-14 11:13:52Z cfischer $
 #
 # Telegram Desktop Version Detection (Windows)
 #
@@ -28,16 +28,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814305");
-  script_version("$Revision: 12301 $");
+  script_version("$Revision: 13664 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 17:43:54 +0100 (Fri, 09 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 12:13:52 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-11-05 16:30:44 +0530 (Mon, 05 Nov 2018)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Telegram Desktop Version Detection (Windows)");
 
   script_tag(name:"summary", value:"Detects the installed version of Telegram
   Desktop on Windows.
+
   The script logs in via smb, searches for Telegram Desktop and gets the
   version from registry.");
 
@@ -45,8 +46,8 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Product detection");
   script_dependencies("smb_reg_service_pack.nasl");
-
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
+
   exit(0);
 }
 
@@ -81,20 +82,10 @@ foreach filePath( keys( fileList ) )
       if(version[1])
       {
         set_kb_item(name:"Telegram/Win/Ver", value:version[1]);
-
-        #created cpe for this product
-        cpe = build_cpe(value:version[0], exp:"^([0-9.]+)", base:"cpe:/a:telegram:tdesktop:");
-        if(isnull(cpe))
-          cpe = "cpe:/a:telegram:tdesktop:";
-
-        register_and_report_cpe( app:"Telegram Desktop", ver:version[1], concluded:vers, base:cpe, expr:"([0-9.]+)", insloc:location );
-        log_message(data: build_detection_report(app: "Telegram Desktop",
-                                                 version: version[1],
-                                                 install: location,
-                                                 cpe: cpe,
-                                                 concluded: version[0]));
+        register_and_report_cpe( app:"Telegram Desktop", ver:version[1], concluded:version[0], base:"cpe:/a:telegram:tdesktop:", expr:"([0-9.]+)", insloc:location );
       }
     }
   }
 }
+
 exit(0);

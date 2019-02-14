@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_brainkeeper_enterprise_wiki_search_xss_vuln.nasl 11431 2018-09-17 11:54:52Z cfischer $
+# $Id: gb_brainkeeper_enterprise_wiki_search_xss_vuln.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # Brainkeeper Enterprise Wiki 'search.php' Cross-Site Scripting Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802394");
-  script_version("$Revision: 11431 $");
+  script_version("$Revision: 13659 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 13:54:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2012-02-08 12:53:59 +0530 (Wed, 08 Feb 2012)");
   script_name("Brainkeeper Enterprise Wiki 'search.php' Cross-Site Scripting Vulnerability");
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/109469/brainkeeper-xss.txt");
@@ -72,7 +72,7 @@ if(!can_host_php(port:brainkPort)) {
   exit(0);
 }
 
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 host = http_host_name(port:brainkPort);
 
 foreach dir (make_list_unique("/brainkeeper", "/brainkeeper_enterprise_wiki", cgi_dirs(port:brainkPort)))

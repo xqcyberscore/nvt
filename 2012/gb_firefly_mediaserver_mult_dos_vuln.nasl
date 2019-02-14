@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_firefly_mediaserver_mult_dos_vuln.nasl 11432 2018-09-17 11:59:28Z cfischer $
+# $Id: gb_firefly_mediaserver_mult_dos_vuln.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # Firefly MediaServer HTTP Header Multiple DoS Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803080");
-  script_version("$Revision: 11432 $");
+  script_version("$Revision: 13659 $");
   script_cve_id("CVE-2012-5875");
   script_bugtraq_id(56999);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 13:59:28 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2012-12-20 15:49:00 +0530 (Thu, 20 Dec 2012)");
   script_name("Firefly MediaServer HTTP Header Multiple DoS Vulnerabilities");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/80743");
@@ -77,7 +77,7 @@ if("Server: mt-daapd" >!< banner){
   exit(0);
 }
 
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 host = http_host_name(port:fmPort);
 
 fmExp = string("GET / HTTP/1.1\r\n",

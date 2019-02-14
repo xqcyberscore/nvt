@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trendmicro_antivirus_detect_macosx.nasl 12688 2018-12-06 13:59:18Z santu $
+# $Id: gb_trendmicro_antivirus_detect_macosx.nasl 13650 2019-02-14 06:48:40Z cfischer $
 #
 # Trend Micro Antivirus Version Detection (Mac OS X)
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814360");
-  script_version("$Revision: 12688 $");
+  script_version("$Revision: 13650 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-06 14:59:18 +0100 (Thu, 06 Dec 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 07:48:40 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-12-05 18:17:59 +0530 (Wed, 05 Dec 2018)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Trend Micro Antivirus Version Detection (Mac OS X)");
@@ -94,4 +94,4 @@ if(report){
   log_message( port:0, data:report );
 }
 
-exit(99);
+exit(0);

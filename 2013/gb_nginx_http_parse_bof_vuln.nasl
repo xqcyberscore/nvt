@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nginx_http_parse_bof_vuln.nasl 11883 2018-10-12 13:31:09Z cfischer $
+# $Id: gb_nginx_http_parse_bof_vuln.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # Nginx Chunked Transfer Encoding Stack Based Buffer Overflow Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:nginx:nginx";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802052");
-  script_version("$Revision: 11883 $");
+  script_version("$Revision: 13659 $");
   script_cve_id("CVE-2013-2028");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:31:09 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2013-05-21 11:44:36 +0530 (Tue, 21 May 2013)");
   script_name("Nginx Chunked Transfer Encoding Stack Based Buffer Overflow Vulnerability");
 
@@ -74,7 +74,7 @@ if(!banner || "Server: nginx" >!< banner){
   exit(0);
 }
 
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 host = http_host_name(port:port);
 
 if(http_is_dead(port:port)) exit(0);

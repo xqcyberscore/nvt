@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_optionsbleed.nasl 11008 2018-08-16 13:26:16Z cfischer $
+# $Id: gb_apache_optionsbleed.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # Apache HTTP Server OPTIONS Memory Leak Vulnerability (Optionsbleed)
 #
@@ -32,8 +32,8 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112048");
-  script_version("$Revision: 11008 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 15:26:16 +0200 (Thu, 16 Aug 2018) $");
+  script_version("$Revision: 13659 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-09-20 12:53:35 +0200 (Wed, 20 Sep 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -97,7 +97,7 @@ include("host_details.inc");
 if(!port = get_app_port(cpe:CPE)) exit(0);
 get_app_location(cpe:CPE, port:port, nofork:TRUE); # To have a reference to the Detection-NVT
 
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 host = http_host_name(port:port);
 
 #TODO: Once this vulnerability got older we might want to consider to limit the amounts of directories to check here

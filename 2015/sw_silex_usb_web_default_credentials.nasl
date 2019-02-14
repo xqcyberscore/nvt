@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_silex_usb_web_default_credentials.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: sw_silex_usb_web_default_credentials.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # Silex USB-device Webinterface Default Credentials
 #
@@ -28,11 +28,11 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111053");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 13659 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Silex USB-device Webinterface Default Credentials");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2015-11-13 15:00:00 +0100 (Fri, 13 Nov 2015)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
@@ -67,7 +67,7 @@ port = get_http_port(default:80);
 
 req = http_get( item: "/en/status/devstat.htm", port:port );
 res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 if( "<title>Device Status" >< res) {
 
   req = http_get( item: "/en/setup", port:port );

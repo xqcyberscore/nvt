@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: telnetserver_detect_type_nd_version.nasl 13636 2019-02-13 12:23:58Z cfischer $
+# $Id: telnetserver_detect_type_nd_version.nasl 13638 2019-02-13 12:52:39Z cfischer $
 #
 # Telnet Banner Reporting
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10281");
-  script_version("$Revision: 13636 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-13 13:23:58 +0100 (Wed, 13 Feb 2019) $");
+  script_version("$Revision: 13638 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-13 13:52:39 +0100 (Wed, 13 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -81,259 +81,259 @@ if( strlen( banner ) ) {
 
   if( "User Access Verification" >< banner && ( "Username:" >< banner || "cisco" >< banner ) ) {
     set_kb_item( name:"telnet/cisco/ios/detected", value:TRUE );
-    guess = "Cisco IOS";
+    guess += '\n- Cisco IOS';
   }
 
-  else if( "Welcome to ZXDSL 831CII" >< banner ) {
+  if( "Welcome to ZXDSL 831CII" >< banner ) {
     set_kb_item( name:"telnet/zte/zxdsl_831cii/detected", value:TRUE );
-    guess = "ZTE ZXDSL 831CII";
+    guess += '\n- ZTE ZXDSL 831CII';
   }
 
   if( "MikroTik" >< banner && "Login:" >< banner ) {
     set_kb_item( name:"telnet/mikrotik/routeros/detected", value:TRUE );
-    guess = "MikroTik RouterOS";
+    guess += '\n- MikroTik RouterOS';
   }
 
   if( "Huawei TE" >< banner ) {
     set_kb_item( name:"telnet/huawei/te/detected", value:TRUE );
-    guess = "Huawei TE Device";
+    guess += '\n- Huawei TE Device';
   }
 
   if( "HP JetDirect" >< banner ) {
     set_kb_item( name:"telnet/hp/jetdirect/detected", value:TRUE );
-    guess = "HP JetDirect Device";
+    guess += '\n- HP JetDirect Device';
   }
 
   if( "IQinVision " >< banner ) {
     set_kb_item( name:"telnet/vicon_industries/network_camera/detected", value:TRUE );
-    guess = "Vicon Industries Network Camera";
+    guess += '\n- Vicon Industries Network Camera';
   }
 
   if( "Broadband Satellite" >< banner && "Hughes Network Systems" >< banner ) {
     set_kb_item( name:"telnet/hughes_network_systems/broadband_satellite_modem/detected", value:TRUE );
-    guess = "Hughes Broadband Satellite Modem";
+    guess += '\n- Hughes Broadband Satellite Modem';
   }
 
   if( "VxWorks login:" >< banner ) {
     set_kb_item( name:"telnet/vxworks/detected", value:TRUE );
-    guess = "VxWorks Embedded Device";
+    guess += '\n- VxWorks Embedded Device';
   }
 
   if( banner =~ "Model name\s*:\s*MiiNePort " ) {
     set_kb_item( name:"telnet/moxa/miineport/detected", value:TRUE );
-    guess = "Moxa MiiNePort";
+    guess += '\n- Moxa MiiNePort';
   }
 
   if( banner =~ "Model name\s*:\s*MGate " ) {
     set_kb_item( name:"telnet/moxa/mgate/detected", value:TRUE );
-    guess = "Moxa MGate";
+    guess += '\n- Moxa MGate';
   }
 
   if( "Please keyin your password" >< banner && banner !~ "MiiNePort" && banner !~ "MGate" && eregmatch( pattern:'Model name\\s*:\\s(NPort )?([^ \r\n]+)', string:banner ) ) {
     set_kb_item( name:"telnet/moxa/nport/detected", value:TRUE );
-    guess = "Moxa NPort";
+    guess += '\n- Moxa NPort';
   }
 
   if( "Welcome to V" >< banner && ( "VibNode" >< banner || "VIBNODE" >< banner ) ) {
     set_kb_item( name:"telnet/pruftechnik/vibnode/detected", value:TRUE );
-    guess = "PRUFTECHNIK VIBNODE";
+    guess += '\n- PRUFTECHNIK VIBNODE';
   }
 
   if( "WAC" >< banner && "Foxit Software" >< banner ) {
     set_kb_item( name:"telnet/foxit/wac-server/detected", value:TRUE );
     set_kb_item( name:"ssh_or_telnet/foxit/wac-server/detected", value:TRUE );
-    guess = "Foxit Software WAC Server";
+    guess += '\n- Foxit Software WAC Server';
   }
 
   if( "Model: ZNID-GPON" >< banner ) {
     set_kb_item( name:"telnet/zhone/znid_gpon/detected", value:TRUE );
-    guess = "ZHONE ZNID GPON Device";
+    guess += '\n- ZHONE ZNID GPON Device';
   }
 
   # nb: See the comment about the device name in gb_netgear_prosafe_telnet_detect.nasl
   if( "User:" >< banner && ( "(GSM7224V2)" >< banner || "(GSM7224)" >< banner ) ) {
     set_kb_item( name:"telnet/netgear/prosafe/detected", value:TRUE );
-    guess = "NETGEAR ProSAFE Device";
+    guess += '\n- NETGEAR ProSAFE Device';
   }
 
   if( "Hirschmann Automation and Control GmbH" >< banner ) {
     set_kb_item( name:"telnet/hirschmann/device/detected", value:TRUE );
-    guess = "Hirschmann Device";
+    guess += '\n- Hirschmann Device';
   }
 
   if( "Rugged Operating System" >< banner || "Command Line Interface RUGGEDCOM" >< banner ) {
     set_kb_item( name:"telnet/siemens/ruggedcom/detected", value:TRUE );
-    guess = "Siemens Rugged Operating System/RUGGEDCOM";
+    guess += '\n- Siemens Rugged Operating System/RUGGEDCOM';
   }
 
   if( banner =~ "U1900 OS.*on eSpace" ) {
     set_kb_item( name:"telnet/huawei/espace/detected", value:TRUE );
-    guess = "Huawei eSpace Unified Gateway";
+    guess += '\n- Huawei eSpace Unified Gateway';
   }
 
   if( "Fabric OS" >< banner ) {
     set_kb_item( name:"telnet/brocade/fabric_os/detected", value:TRUE );
-    guess = "Brocade Fabric OS";
+    guess += '\n- Brocade Fabric OS';
   }
 
   if( banner =~ 'Autonomic Controls' ) {
     set_kb_item( name:"telnet/autonomic_controls/device/detected", value:TRUE );
-    guess = "Autonomic Controls Device";
+    guess += '\n- Autonomic Controls Device';
   }
 
   if( banner =~ '(Shield|Power)Link' ) {
     set_kb_item( name:"telnet/ecessa/shield_power_link/detected", value:TRUE );
-    guess = "Ecessa ShieldLink/PowerLink";
+    guess += '\n- Ecessa ShieldLink/PowerLink';
   }
 
   if( "Telemetry Gateway A840" >< banner ) {
     set_kb_item( name:"telnet/adcon/telemetry_gateway_a840/detected", value:TRUE );
-    guess = "Adcon A840 Telemetry Gateway";
+    guess += '\n- Adcon A840 Telemetry Gateway';
   }
 
   if( "Huawei DP300" >< banner ) {
     set_kb_item( name:"telnet/huawei/dp300/detected", value:TRUE );
-    guess = "Huawei DP300";
+    guess += '\n- Huawei DP300';
   }
 
   if( "Bay Networks" >< banner || ( "Passport" >< banner || "NetLogin:" >< banner ) ) {
     set_kb_item( name:"telnet/nortel_bay_networks/device/detected", value:TRUE );
-    guess = "Nortel Networks (former Bay Networks) Device";
+    guess += '\n- Nortel Networks (former Bay Networks) Device';
   }
 
   if( "Annex" >< banner ) {
     set_kb_item( name:"telnet/nortel_bay_networks/annex/detected", value:TRUE );
-    guess = "Nortel Networks (former Bay Networks) Annex";
+    guess += '\n- Nortel Networks (former Bay Networks) Annex';
   }
 
   if( "@ Userid:" >< banner ) {
     set_kb_item( name:"telnet/shiva/lanrover/detected", value:TRUE );
-    guess = "Shiva LanRover";
+    guess += '\n- Shiva LanRover';
   }
 
   if( "Accelar 1200" >< banner ) {
     set_kb_item( name:"telnet/bay_networks/accelar_1200/detected", value:TRUE );
-    guess = "Bay Networks Accelar 1200 Switch";
+    guess += '\n- Bay Networks Accelar 1200 Switch';
   }
 
   if( "Ctrl-Y" >< banner || "P Configuration" >< banner ) {
     set_kb_item( name:"telnet/nortel_networks/baystack/detected", value:TRUE );
-    guess = "Nortel Baystack Switch";
+    guess += '\n- Nortel Baystack Switch';
   }
 
   if( "Welcome to P330" >< banner ) {
     set_kb_item( name:"telnet/avaya_p330/detected", value:TRUE );
-    guess = "Avaya P330 Stackable Switch";
+    guess += '\n- Avaya P330 Stackable Switch';
   }
 
   if( "TELNET session" >< banner ) {
     set_kb_item( name:"telnet/allied/telesyn/detected", value:TRUE );
-    guess = "Allied Telesyn Router/Switch";
+    guess += '\n- Allied Telesyn Router/Switch';
   }
 
   if( banner =~ "GE.*SNMP/Web Interface" && "UPS" >< banner ) {
     set_kb_item( name:"telnet/ge/snmp_web_iface_adapter/detected", value:TRUE );
-    guess = "GE SNMP/Web Interface Adapter";
+    guess += '\n- GE SNMP/Web Interface Adapter';
   }
 
   if( banner =~ "SoftCo OS" ) {
     set_kb_item( name:"telnet/huawei/softco/detected", value:TRUE );
-    guess = "Huawei SoftCo";
+    guess += '\n- Huawei SoftCo';
   }
 
   if( "Welcome to Microsoft Telnet Service" >< banner ) {
     set_kb_item( name:"telnet/microsoft/telnet_service/detected", value:TRUE );
-    guess = "Microsoft Windows Telnet Service";
+    guess += '\n- Microsoft Windows Telnet Service';
   }
 
   if( "KERI-ENET" >< banner ) {
     set_kb_item( name:"telnet/keri_systems/access_control_system/detected", value:TRUE );
-    guess = "Keri Systems Access Control System";
+    guess += '\n- Keri Systems Access Control System';
   }
 
   if( "izon login" >< banner ) {
     set_kb_item( name:"telnet/izon/ip_camera/detected", value:TRUE );
-    guess = "IZON IP Camera";
+    guess += '\n- IZON IP Camera';
   }
 
   if( "SCALANCE X200" >< banner ) {
     set_kb_item( name:"telnet/siemens/scalance_x200/detected", value:TRUE );
-    guess = "Siemens Scalance X200";
+    guess += '\n- Siemens Scalance X200';
   }
 
   if( "Blackboard LC3000" >< banner ) {
     set_kb_item( name:"telnet/blackboard/lc3000/detected", value:TRUE );
-    guess = "Blackboard LC3000 Laundry Reader";
+    guess += '\n- Blackboard LC3000 Laundry Reader';
   }
 
   if( "insight login" >< banner ) {
     set_kb_item( name:"telnet/philips/in_sight/detected", value:TRUE );
-    guess = "Philips In.Sight";
+    guess += '\n- Philips In.Sight';
   }
 
   if( "Welcome. Type <return>, enter password at # prompt" >< banner ) {
     set_kb_item( name:"telnet/brother/device/detected", value:TRUE );
-    guess = "Multiple Brother Devices";
+    guess += '\n- Multiple Brother Devices';
   }
 
   if( "ZEM" >< banner ) {
     set_kb_item( name:"telnet/fingertex/device/detected", value:TRUE );
-    guess = "FingerTec Device";
+    guess += '\n- FingerTec Device';
   }
 
   if( "Polycom Command Shell" >< banner || "Welcome to ViewStation" >< banner || ( "Hi, my name is" >< banner && "Here is what I know about myself" >< banner ) ) {
     set_kb_item( name:"telnet/polycom/device/detected", value:TRUE );
-    guess = "Polycom Device";
+    guess += '\n- Polycom Device';
   }
 
   if( "PK5001Z login:" >< banner || "BCM963268 Broadband Router" >< banner ) {
     set_kb_item( name:"telnet/zyxel/modem/detected", value:TRUE );
-    guess = "ZyXEL PK5001Z or C1100Z Modem";
+    guess += '\n- ZyXEL PK5001Z or C1100Z Modem';
   }
 
   if( "===Actiontec xDSL Router===" >< banner ) {
     set_kb_item( name:"telnet/actiontec/modem/detected", value:TRUE );
-    guess = "Actiontec Modem";
+    guess += '\n- Actiontec Modem';
   }
 
   if( banner =~ "Welcome to (ZXUN|ZXR10).+ of ZTE Corporation" ) {
     set_kb_item( name:"telnet/zte/zxr10/detected", value:TRUE );
-    guess = "ZTE ZXR10 Router";
+    guess += '\n- ZTE ZXR10 Router';
   }
 
   if( "ManageUPSnet" >< banner ) {
     set_kb_item( name:"telnet/manageupsnet/detected", value:TRUE );
-    guess = "ManageUPSNET UPS / USV";
+    guess += '\n- ManageUPSNET UPS / USV';
   }
 
   if( "TANDBERG Codec Release" >< banner ) {
     set_kb_item( name:"telnet/tandberg/device/detected", value:TRUE );
-    guess = "Tandberg Device";
+    guess += '\n- Tandberg Device';
   }
 
   if( "Netsynt " >< banner ) {
     set_kb_item( name:"telnet/netsynt/crd_voice_router/detected", value:TRUE );
-    guess = "Netsynt CRD Voice Router";
+    guess += '\n- Netsynt CRD Voice Router';
   }
 
   if( "pCOWeb login" >< banner ) {
     set_kb_item( name:"telnet/carel/pcoweb/detected", value:TRUE );
-    guess = "CAREL pCOWeb";
+    guess += '\n- CAREL pCOWeb';
   }
 
   if( "BusyBox" >< banner || "list of built-in commands" >< banner ) {
     set_kb_item( name:"telnet/busybox/console/detected", value:TRUE );
-    guess = "BusyBox Telnet Console";
+    guess += '\n- BusyBox Telnet Console';
   }
 
   if( "IPmux-2L" >< banner ) {
     set_kb_item( name:"telnet/ipmux-2l/tdm/detected", value:TRUE );
-    guess = "IPmux-2L TDM Pseudowire Access Gateway";
+    guess += '\n- IPmux-2L TDM Pseudowire Access Gateway';
   }
 
   report = 'Remote Telnet banner:\n\n' + banner;
   if( strlen( guess ) > 0 )
-    report += '\n\nThis is probably: ' + guess;
+    report += '\n\nThis is probably:\n' + guess;
 
   log_message( port:port, data:report );
 }

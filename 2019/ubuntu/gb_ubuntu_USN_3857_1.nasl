@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3857_1.nasl 13108 2019-01-17 07:34:03Z santu $
+# $Id: gb_ubuntu_USN_3857_1.nasl 13654 2019-02-14 07:51:59Z mmartin $
 #
 # Ubuntu Update for php-pear USN-3857-1
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843870");
-  script_version("$Revision: 13108 $");
+  script_version("$Revision: 13654 $");
   script_cve_id("CVE-2018-1000888");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-17 08:34:03 +0100 (Thu, 17 Jan 2019) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 08:51:59 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-15 04:00:46 +0100 (Tue, 15 Jan 2019)");
   script_name("Ubuntu Update for php-pear USN-3857-1");
   script_category(ACT_GATHER_INFO);

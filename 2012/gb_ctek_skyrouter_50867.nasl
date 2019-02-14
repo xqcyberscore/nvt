@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ctek_skyrouter_50867.nasl 11431 2018-09-17 11:54:52Z cfischer $
+# $Id: gb_ctek_skyrouter_50867.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # Ctek SkyRouter 4200 and 4300 Series Routers Remote Arbitrary Command Execution Vulnerability
 #
@@ -31,7 +31,7 @@ if(description)
   script_bugtraq_id(50867);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11431 $");
+  script_version("$Revision: 13659 $");
   script_cve_id("CVE-2011-5010");
 
   script_name("Ctek SkyRouter 4200 and 4300 Series Routers Remote Arbitrary Command Execution Vulnerability");
@@ -39,7 +39,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/50867");
   script_xref(name:"URL", value:"http://www.ctekproducts.com/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 13:54:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2012-04-25 15:07:13 +0200 (Wed, 25 Apr 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -72,7 +72,7 @@ res = http_send_recv(port:port, data:req);
 
 if("Ctek" >!< res && "SkyRouter" >!< res)exit(0);
 
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 host = http_host_name(port:port);
 
 req = string("POST /apps/a3/cfg_ethping.cgi HTTP/1.1\r\n",

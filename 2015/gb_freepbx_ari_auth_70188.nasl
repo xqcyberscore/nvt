@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_freepbx_ari_auth_70188.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_freepbx_ari_auth_70188.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # FreePBX 'index.php' Remote Command Execution Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2014-7235");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 13659 $");
 
   script_name("FreePBX 'index.php' Remote Command Execution Vulnerability");
 
@@ -59,7 +59,7 @@ the application fails to sufficiently sanitize input data.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_active");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2015-02-06 16:04:47 +0100 (Fri, 06 Feb 2015)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -94,7 +94,7 @@ cookie = 'ari_auth=a%3A2%3A%7Bi%3A0%3Bs%3A88%3A%22rT9bcNlEJv%2F1G9j9ZcqPUej1ntSH
          'ac4af2fbb3a694%22%3B%7D';
 
 host = http_host_name(port:port);
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 
 req = 'GET ' + dir + '/recordings/index.php HTTP/1.1\r\n' +
       'Host: ' + host + '\r\n' +

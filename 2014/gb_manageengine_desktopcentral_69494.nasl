@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_desktopcentral_69494.nasl 11222 2018-09-04 12:41:44Z cfischer $
+# $Id: gb_manageengine_desktopcentral_69494.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # Multiple ManageEngine Products Arbitrary File Upload Vulnerability
 #
@@ -34,9 +34,9 @@ if(description)
   script_cve_id("CVE-2014-5005", "CVE-2014-5006");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11222 $");
+  script_version("$Revision: 13659 $");
   script_name("Multiple ManageEngine Products  Arbitrary File Upload Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:41:44 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2014-09-09 13:20:38 +0200 (Tue, 09 Sep 2014)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -79,7 +79,7 @@ len = strlen( ex );
 file = vt_string_lo + '_' + rand() + '.jsp';
 url = dir + '/statusUpdate?actionToCall=LFU&customerId=1337&fileName=../../../../../../' + file + '&configDataID=1';
 
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 host = http_host_name( port:port );
 
 req = 'POST ' + url + ' HTTP/1.1\r\n' +

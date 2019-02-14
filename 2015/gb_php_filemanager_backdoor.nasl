@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_filemanager_backdoor.nasl 11492 2018-09-20 08:38:50Z mmartin $
+# $Id: gb_php_filemanager_backdoor.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # PHP File Manager Backdoor Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:revived_wire_media:php_file_manager';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106034");
-  script_version("$Revision: 11492 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 10:38:50 +0200 (Thu, 20 Sep 2018) $");
+  script_version("$Revision: 13659 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2015-07-29 10:33:31 +0700 (Wed, 29 Jul 2015)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
@@ -85,7 +85,7 @@ if (dir == "/")
 url = dir + "/index.php";
 req = http_get(item: url, port: port);
 res = http_keepalive_send_recv(port: port, data: req, bodyonly: FALSE);
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 cookie = eregmatch(string: res, pattern: "Set-Cookie: (PHPSESSID=[0-9a-z]+);", icase: TRUE);
 if (!cookie)
   exit(0);

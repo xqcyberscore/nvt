@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: playsms_sql_inject.nasl 6056 2017-05-02 09:02:50Z teissa $
+# $Id: playsms_sql_inject.nasl 13660 2019-02-14 09:48:45Z cfischer $
 #
 # PlaySMS Cookie SQL Injection
 #
@@ -31,8 +31,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14362");
-  script_version("$Revision: 6056 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
+  script_version("$Revision: 13660 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 10:48:45 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2004-2263");
   script_bugtraq_id(10751, 10752, 10970);
@@ -67,9 +67,10 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port( default:80 );
+if( ! can_host_php( port:port ) )
+  exit( 0 );
 
-if( ! can_host_php( port:port ) ) exit( 0 );
-
+useragent = http_get_user_agent();
 host = http_host_name( port:port );
 
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
@@ -80,7 +81,7 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
   req = string( "GET ", url, " HTTP/1.1\r\n",
                 "Host: ", host, "\r\n",
-                "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+                "User-Agent: ", useragent, "\r\n",
                 "Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5\r\n",
                 "Accept-Language: en-us,en;q=0.5\r\n",
                 "Cookie: vc1=ticket; vc2='%20union%20select%20'ticket;\r\n",

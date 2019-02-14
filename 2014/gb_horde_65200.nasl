@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_horde_65200.nasl 11222 2018-09-04 12:41:44Z cfischer $
+# $Id: gb_horde_65200.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # Horde '_formvars' Form Input Remote Code Execution Vulnerability
 #
@@ -34,7 +34,7 @@ if(description)
   script_cve_id("CVE-2014-1691");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11222 $");
+  script_version("$Revision: 13659 $");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -43,7 +43,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/65200");
   script_xref(name:"URL", value:"http://www.horde.org");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:41:44 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2014-03-21 11:45:12 +0100 (Fri, 21 Mar 2014)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -81,7 +81,7 @@ if (!port = get_app_port(cpe: CPE))
 if (!dir = get_app_location( cpe:CPE, port:port))
   exit( 0 );
 
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 host = http_host_name(port:port);
 
 formwars = '_formvars=O%3a34%3a%22Horde_Kolab_Server_Decorator_Clean%22%3a2%3a%7bs%3a43%3a%22%00Horde_Kolab_Server_Decorator_Clean%00'       +

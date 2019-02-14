@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netmri_os_cmd_injec_07_14.nasl 11497 2018-09-20 10:31:54Z mmartin $
+# $Id: gb_netmri_os_cmd_injec_07_14.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # Infoblox NetMRI OS Command Injection Vulnerability
 #
@@ -33,7 +33,7 @@ if(description)
   script_cve_id("CVE-2014-3418", "CVE-2014-3419");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11497 $");
+  script_version("$Revision: 13659 $");
 
   script_name("Infoblox NetMRI OS Command Injection Vulnerability");
 
@@ -41,7 +41,7 @@ if(description)
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/127409/Infoblox-6.8.4.x-OS-Command-Injection.html");
   script_xref(name:"URL", value:"http://www.infoblox.com/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 12:31:54 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2014-07-15 14:33:34 +0200 (Tue, 15 Jul 2014)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -67,7 +67,7 @@ include("misc_func.inc");
 
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 host = http_host_name(port:port);
 
 vtstring = get_vt_string( lowercase:TRUE );

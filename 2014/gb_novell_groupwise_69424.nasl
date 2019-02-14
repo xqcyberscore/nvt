@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_groupwise_69424.nasl 11497 2018-09-20 10:31:54Z mmartin $
+# $Id: gb_novell_groupwise_69424.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # Novell Groupwise 'FileUploadServlet' Arbitrary File Access Vulnerability
 #
@@ -34,7 +34,7 @@ if(description)
   script_cve_id("CVE-2014-0600");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_version("$Revision: 11497 $");
+  script_version("$Revision: 13659 $");
 
   script_tag(name:"qod_type", value:"remote_app");
 
@@ -58,7 +58,7 @@ for more information.");
   script_tag(name:"summary", value:"Novell Groupwise is prone to an arbitrary file-access vulnerability.");
   script_tag(name:"affected", value:"Novell GroupWise 2014 before SP1");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 12:31:54 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2014-09-03 15:23:42 +0200 (Wed, 03 Sep 2014)");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
@@ -86,7 +86,7 @@ vtstring + '_' + rand() + '_' + vtstring + '\r\n' +
 
 len = strlen( test ) + 2;
 
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 host = http_host_name(port:port);
 
 req = 'POST /gwadmin-console/gwAdminConsole/fileUpload HTTP/1.1\r\n' +

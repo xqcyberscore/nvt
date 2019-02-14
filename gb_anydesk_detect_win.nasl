@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_anydesk_detect_win.nasl 11015 2018-08-17 06:31:19Z cfischer $
+# $Id: gb_anydesk_detect_win.nasl 13650 2019-02-14 06:48:40Z cfischer $
 #
 # AnyDesk Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813553");
-  script_version("$Revision: 11015 $");
+  script_version("$Revision: 13650 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 07:48:40 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-07-06 15:50:15 +0530 (Fri, 06 Jul 2018)");
   script_tag(name:"qod_type", value:"registry");
   script_name("AnyDesk Version Detection (Windows)");
@@ -91,9 +91,7 @@ if(version)
 {
   set_kb_item(name:"AnyDesk/Win/Installed", value:TRUE);
   set_kb_item(name:"AnyDesk/Win/Ver", value:adVer);
-
-  register_and_report_cpe(app:"AnyDesk", ver:version, base:"cpe:/a:anydesk:anydesk:",
-                          expr:"^([0-9.]+)", insloc:adPath );
-  exit(0);
+  register_and_report_cpe(app:"AnyDesk", ver:version, base:"cpe:/a:anydesk:anydesk:", expr:"^([0-9.]+)", insloc:adPath );
 }
-exit(99);
+
+exit(0);

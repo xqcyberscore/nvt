@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vtiger_crm_auth_bypass_vuln.nasl 12926 2019-01-03 03:38:48Z ckuersteiner $
+# $Id: gb_vtiger_crm_auth_bypass_vuln.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # vTiger CRM Authentication Bypass Vulnerability
 #
@@ -33,14 +33,14 @@ if(description)
   script_cve_id("CVE-2013-3215");
   script_tag(name:"cvss_base", value:"9.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:N");
-  script_version("$Revision: 12926 $");
+  script_version("$Revision: 13659 $");
 
   script_name("vTiger CRM Authentication Bypass Vulnerability");
 
   script_xref(name:"URL", value:"https://www.vtiger.com/blogs/?p=1467");
   script_xref(name:"URL", value:"http://karmainsecurity.com/KIS-2013-08");
 
-  script_tag(name:"last_modification", value:"$Date: 2019-01-03 04:38:48 +0100 (Thu, 03 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2014-01-28 15:47:55 +0700 (Tue, 28 Jan 2014)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -83,7 +83,7 @@ vtVer = infos['version'];
 if(version_is_greater(version:vtVer, test_version:"5.4.0"))
   exit(99);
 
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 host = http_host_name(port:port);
 
 # Create a SOAP request for checking email permission

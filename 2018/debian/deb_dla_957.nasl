@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_957.nasl 10219 2018-06-15 12:00:55Z cfischer $
+# $Id: deb_dla_957.nasl 13654 2019-02-14 07:51:59Z mmartin $
 #
 # Auto-generated from advisory DLA 957-1 using nvtgen 1.0
 # Script version:1.1
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.890957");
-  script_version("$Revision: 10219 $");
+  script_version("$Revision: 13654 $");
   script_cve_id("CVE-2017-3136", "CVE-2017-3137", "CVE-2017-3138");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 957-1] bind9 security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-15 14:00:55 +0200 (Fri, 15 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 08:51:59 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-01-26 00:00:00 +0100 (Fri, 26 Jan 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

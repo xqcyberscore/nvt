@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: anti_nessus.nasl 12837 2018-12-19 15:05:20Z cfischer $
+# $Id: anti_nessus.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # Anti-Scanner Defenses (HTTP)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11238");
-  script_version("$Revision: 12837 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-19 16:05:20 +0100 (Wed, 19 Dec 2018) $");
+  script_version("$Revision: 13659 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -116,7 +116,7 @@ if( ua_test_res2 == ua_test_header2 )
 if( ua_test_header1 != ua_test_header2 ) {
   report = 'By sending a different User-Agent header the remote web server is answering with different HTTP responses:\n\n';
   info['1. Status Code'] = ua_test_header1;
-  info['1. User-Agent']  = get_http_user_agent( dont_add_oid:TRUE );
+  info['1. User-Agent']  = http_get_user_agent( dont_add_oid:TRUE );
   info['2. Status Code'] = ua_test_header2;
   info['2. User-Agent']  = clean_ua;
   report += text_format_table( array:info );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ourwebftp_mult_xss_vuln.nasl 11431 2018-09-17 11:54:52Z cfischer $
+# $Id: gb_ourwebftp_mult_xss_vuln.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # OurWebFTP Multiple Cross Site Scripting Vulnerabilities
 #
@@ -28,10 +28,10 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803117");
   script_bugtraq_id(56763);
-  script_version("$Revision: 11431 $");
+  script_version("$Revision: 13659 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 13:54:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2012-12-03 14:58:31 +0530 (Mon, 03 Dec 2012)");
   script_name("OurWebFTP Multiple Cross Site Scripting Vulnerabilities");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51449/");
@@ -78,7 +78,7 @@ if(!can_host_php(port:port)){
   exit(0);
 }
 
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 host = http_host_name(port:port);
 
 foreach dir (make_list_unique("/ourwebftp", "/", cgi_dirs(port:port)))

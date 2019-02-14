@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_teamviewer_win_detect.nasl 10898 2018-08-10 13:38:13Z cfischer $
+# $Id: gb_teamviewer_win_detect.nasl 13650 2019-02-14 06:48:40Z cfischer $
 #
 # TeamViewer Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107272");
-  script_version("$Revision: 10898 $");
+  script_version("$Revision: 13650 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:38:13 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 07:48:40 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-12-11 09:50:38 +0700 (Mon, 11 Dec 2017)");
   script_tag(name:"qod_type", value:"registry");
   script_name("TeamViewer Detection (Windows)");
@@ -82,20 +82,21 @@ foreach item (registry_enum_keys(key: key))
 
   if("TeamViewer" >< prdtName)
   {
-      Ver = registry_get_sz(key: key + item, item: "DisplayVersion");
-      loc = registry_get_sz(key: key + item, item: "InstallLocation");
-      if(!loc){
-        loc = "Could not determine install path";
-      }
+    Ver = registry_get_sz(key: key + item, item: "DisplayVersion");
+    loc = registry_get_sz(key: key + item, item: "InstallLocation");
+    if(!loc){
+      loc = "Could not determine install path";
+    }
 
-      if(Ver != NULL)
-      {
-        set_kb_item(name: "teamviewer/Ver", value: Ver);
+    if(Ver != NULL)
+    {
+      set_kb_item(name: "teamviewer/Ver", value: Ver);
 
-        register_and_report_cpe(app: "TeamViewer", ver: Ver, base: "cpe:/a:teamviewer:teamviewer:",
+      register_and_report_cpe(app: "TeamViewer", ver: Ver, base: "cpe:/a:teamviewer:teamviewer:",
                                   expr: "^([0-9.]+)", insloc: loc);
-        exit(0);
-      }
+      exit(0);
+    }
   }
 }
-exit(99);
+
+exit(0);

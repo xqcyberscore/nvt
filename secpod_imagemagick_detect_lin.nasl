@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_imagemagick_detect_lin.nasl 11279 2018-09-07 09:08:31Z cfischer $
+# $Id: secpod_imagemagick_detect_lin.nasl 13664 2019-02-14 11:13:52Z cfischer $
 #
 # ImageMagick Version Detection (Linux)
 #
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900563");
-  script_version("$Revision: 11279 $");
+  script_version("$Revision: 13664 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:08:31 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 12:13:52 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-06-02 08:16:42 +0200 (Tue, 02 Jun 2009)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("ImageMagick version Detection (Linux)");
@@ -61,14 +61,16 @@ include("cpe.inc");
 include("host_details.inc");
 
 sock = ssh_login_or_reuse_connection();
-if(!sock){
+if(!sock)
   exit(0);
-}
 
 getPath = find_bin(prog_name:"identify", sock:sock);
 foreach executableFile (getPath)
 {
   executableFile = chomp(executableFile);
+  if(!executableFile)
+    continue;
+
   imageVer = get_bin_version(full_prog_name:chomp(executableFile), version_argv:"-version",
                           ver_pattern:"ImageMagick ([0-9.]+\-?[0-9]{0,3})", sock:sock);
 
@@ -78,14 +80,15 @@ foreach executableFile (getPath)
     set_kb_item(name:"ImageMagick/Lin/Ver", value:imageVer[1]);
     ssh_close_connection();
 
-    log_message( data: register_and_report_cpe( app: "ImageMagick",
-                                                ver: imageVer[1],
-                                                concluded: imageVer[0],
-                                                base: "cpe:/a:imagemagick:imagemagick:",
-                                                expr: "^([0-9.]+)",
-                                                insloc: executableFile ) );
+    register_and_report_cpe( app: "ImageMagick",
+                             ver: imageVer[1],
+                             concluded: imageVer[0],
+                             base: "cpe:/a:imagemagick:imagemagick:",
+                             expr: "^([0-9.]+)",
+                             insloc: executableFile );
 
     exit(0);
   }
 }
+
 ssh_close_connection();

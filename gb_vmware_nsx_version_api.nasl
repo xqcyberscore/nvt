@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_nsx_version_api.nasl 11885 2018-10-12 13:47:20Z cfischer $
+# $Id: gb_vmware_nsx_version_api.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # Vmware NSX Version Detection (HTTP-API)
 #
@@ -30,8 +30,8 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.105420");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11885 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 13659 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2015-10-27 13:50:19 +0100 (Tue, 27 Oct 2015)");
   script_name("Vmware NSX Version Detection (HTTP-API)");
 
@@ -70,7 +70,7 @@ url = '/api/1.0/appliance-management/global/info';
 userpass = user + ":" + pass;
 userpass64 = base64( str:userpass );
 
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 host = http_host_name( port:port );
 
 req = 'GET ' +  url + ' HTTP/1.1\r\n' +

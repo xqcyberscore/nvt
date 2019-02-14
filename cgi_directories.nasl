@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cgi_directories.nasl 13315 2019-01-28 07:19:45Z cfischer $
+# $Id: cgi_directories.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # CGI Scanning Consolidation
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111038");
-  script_version("$Revision: 13315 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-28 08:19:45 +0100 (Mon, 28 Jan 2019) $");
+  script_version("$Revision: 13659 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2015-09-14 07:00:00 +0200 (Mon, 14 Sep 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -156,7 +156,7 @@ if( can_host_asp( port:port ) ) {
   report += 'This service seems to be NOT able to host ASP scripts.\n\n';
 }
 
-user_agent = get_http_user_agent( dont_add_oid:TRUE );
+user_agent = http_get_user_agent( dont_add_oid:TRUE );
 if( _http_ua_include_oid )
   user_agent = ereg_replace( string:user_agent, pattern:"(.+)$", replace:"\1 (OID:dynamic)" );
 

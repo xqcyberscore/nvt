@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_couchdb_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
+# $Id: gb_couchdb_detect.nasl 13650 2019-02-14 06:48:40Z cfischer $
 #
 # CouchDB Detection
 #
@@ -27,8 +27,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100571");
-  script_version("$Revision: 11885 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 13650 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 07:48:40 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2010-04-12 18:40:45 +0200 (Mon, 12 Apr 2010)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -40,11 +40,14 @@ if (description)
   script_dependencies("gb_get_http_banner.nasl");
   script_mandatory_keys("CouchDB/banner");
   script_require_ports("Services/www", 5984);
+
   script_tag(name:"summary", value:"This host is running CouchDB. Apache CouchDB is a document-oriented
-database that can be queried and indexed in a MapReduce fashion using
-JavaScript. CouchDB also offers incremental replication with
-bi-directional conflict detection and resolution.");
+  database that can be queried and indexed in a MapReduce fashion using
+  JavaScript. CouchDB also offers incremental replication with
+  bi-directional conflict detection and resolution.");
+
   script_xref(name:"URL", value:"http://couchdb.apache.org/");
+
   exit(0);
 }
 
@@ -53,10 +56,9 @@ include("http_func.inc");
 include("host_details.inc");
 
 port = get_http_port(default:5984);
-
 banner = get_http_banner(port: port);
-if(!banner)exit(0);
-if("Server: CouchDB/" >!< banner)exit(0);
+if(!banner || "Server: CouchDB/" >!< banner)
+  exit(0);
 
 set_kb_item(name: "couchdb/installed", value:TRUE);
 
@@ -65,6 +67,7 @@ vers = "unknown";
 version = eregmatch(pattern:"Server: CouchDB/([^ ]+)", string: banner);
 
 if(!isnull(version[1])) {
+
   vers = version[1];
   set_kb_item(name: "couchdb/version", value: vers);
   cpe = build_cpe(value: vers, exp: "^([0-9.]+)", base: "cpe:/a:apache:couchdb:");
@@ -77,11 +80,9 @@ if(!isnull(version[1])) {
   log_message(data: build_detection_report(app: "Apache CouchDB",
                                            version: vers,
                                            install: "/",
-                                           cpe: cpe, concluded: version[0]),
+                                           cpe: cpe,
+                                           concluded: version[0]),
                                            port: port);
-
-  exit(0);
-
 }
 
-exit(99);
+exit(0);

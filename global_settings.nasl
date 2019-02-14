@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: global_settings.nasl 13315 2019-01-28 07:19:45Z cfischer $
+# $Id: global_settings.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # Global variable settings
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12288");
-  script_version("$Revision: 13315 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-28 08:19:45 +0100 (Mon, 28 Jan 2019) $");
+  script_version("$Revision: 13659 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -122,7 +122,7 @@ set_kb_item( name:"global_settings/network_type", value:opt );
 opt = script_get_preference( "HTTP User-Agent" );
 if( ! opt ) {
   vt_strings = get_vt_strings();
-  opt = get_http_user_agent( vt_string:vt_strings["default"], dont_add_oid:TRUE );
+  opt = http_get_user_agent( vt_string:vt_strings["default"], dont_add_oid:TRUE );
 }
 set_kb_item( name:"global_settings/http_user_agent", value:opt );
 set_kb_item( name:"http/user-agent", value:opt );

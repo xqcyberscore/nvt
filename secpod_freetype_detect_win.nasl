@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_freetype_detect_win.nasl 11279 2018-09-07 09:08:31Z cfischer $
+# $Id: secpod_freetype_detect_win.nasl 13664 2019-02-14 11:13:52Z cfischer $
 #
 # FreeType Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901144");
-  script_version("$Revision: 11279 $");
+  script_version("$Revision: 13664 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:08:31 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 12:13:52 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2010-09-01 09:34:36 +0200 (Wed, 01 Sep 2010)");
   script_tag(name:"qod_type", value:"registry");
   script_name("FreeType Version Detection (Windows)");
@@ -65,7 +65,7 @@ if(!registry_key_exists(key:"SOFTWARE\GnuWin32\FreeType") &&
   exit(0);
 }
 
-## if os is 32 bit iterate over comman path
+## if os is 32 bit iterate over common path
 if("x86" >< osArch){
   key_list = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\";
 }
@@ -103,13 +103,12 @@ foreach key (key_list)
 
           base = "cpe:/a:freetype:freetype:x64:";
         }
-        log_message( data: register_and_report_cpe( app: appName,
-                                                    ver: ftVer,
-                                                    concluded: ftVer,
-                                                    base: base,
-                                                    expr: "^([0-9.]+)",
-                                                    insloc: appLoc ) );
-
+        register_and_report_cpe( app: appName,
+                                 ver: ftVer,
+                                 concluded: ftVer,
+                                 base: base,
+                                 expr: "^([0-9.]+)",
+                                 insloc: appLoc );
       }
     }
   }

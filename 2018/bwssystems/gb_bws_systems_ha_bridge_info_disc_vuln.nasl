@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bws_systems_ha_bridge_info_disc_vuln.nasl 12807 2018-12-17 08:21:35Z ckuersteiner $
+# $Id: gb_bws_systems_ha_bridge_info_disc_vuln.nasl 13655 2019-02-14 07:53:42Z ckuersteiner $
 #
 # BWS Systems HA-Bridge '#!/system' URI Information Disclosure Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/h:bws_systems:ha_bridge";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813627");
-  script_version("$Revision: 12807 $");
+  script_version("$Revision: 13655 $");
   script_cve_id("CVE-2018-12923");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-17 09:21:35 +0100 (Mon, 17 Dec 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 08:53:42 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-07-03 12:50:41 +0530 (Tue, 03 Jul 2018)");
 
   script_name("BWS Systems HA-Bridge '#!/system' URI Information Disclosure Vulnerability");
@@ -53,9 +53,8 @@ if(description)
 
   script_tag(name:"affected", value:"BWS Systems HA-Bridge.");
 
-  script_tag(name:"solution", value:"No known solution is available as of
-  17th December, 2018. Information regarding this issue will be updated once
-  solution details are available. For updates refer to Reference links");
+  script_tag(name:"solution", value:"No known solution is available as of 14th February, 2019.
+  Information regarding this issue will be updated once solution details are available.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
   script_tag(name:"qod_type", value:"remote_app");

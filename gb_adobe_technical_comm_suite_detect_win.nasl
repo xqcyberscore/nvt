@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_technical_comm_suite_detect_win.nasl 12064 2018-10-25 05:58:08Z santu $
+# $Id: gb_adobe_technical_comm_suite_detect_win.nasl 13650 2019-02-14 06:48:40Z cfischer $
 #
 # Adobe Technical Communication Suite Version Detection (Windows)
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814312");
-  script_version("$Revision: 12064 $");
+  script_version("$Revision: 13650 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 07:58:08 +0200 (Thu, 25 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 07:48:40 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-10-12 09:49:05 +0530 (Fri, 12 Oct 2018)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Technical Communication Suite Version Detection (Windows)");
@@ -98,8 +98,9 @@ foreach item (registry_enum_keys(key:key))
     log_message(data: build_detection_report(app: "Adobe Technical Communication Suite",
                                              version: tcsVer,
                                              install: tcsPath,
-                                                 cpe: cpe,
-                                           concluded: tcsVer));
+                                             cpe: cpe,
+                                             concluded: tcsVer));
   }
 }
-exit(99);
+
+exit(0);

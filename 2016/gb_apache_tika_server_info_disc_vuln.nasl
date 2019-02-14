@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tika_server_info_disc_vuln.nasl 11888 2018-10-12 15:27:49Z cfischer $
+# $Id: gb_apache_tika_server_info_disc_vuln.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # Apache Tika Server 'fileUrl' Header Information Disclosure Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tika";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810252");
-  script_version("$Revision: 11888 $");
+  script_version("$Revision: 13659 $");
   script_cve_id("CVE-2015-3271");
   script_bugtraq_id(9502);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 17:27:49 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2016-12-20 17:03:54 +0530 (Tue, 20 Dec 2016)");
   script_name("Apache Tika Server 'fileUrl' Header Information Disclosure Vulnerability");
   script_tag(name:"summary", value:"The host is installed with Apache Tika Server
@@ -92,7 +92,7 @@ url = dir + '/tika';
 
 files = traversal_files();
 
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 host = http_host_name(port: tikaPort);
 
 foreach file (keys(files))

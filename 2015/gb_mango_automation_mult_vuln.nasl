@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mango_automation_mult_vuln.nasl 11492 2018-09-20 08:38:50Z mmartin $
+# $Id: gb_mango_automation_mult_vuln.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # Mango Automation Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:infinite_automation_systems:mango_automation";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806065");
-  script_version("$Revision: 11492 $");
+  script_version("$Revision: 13659 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 10:38:50 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2015-10-01 12:11:26 +0530 (Thu, 01 Oct 2015)");
   script_name("Mango Automation Multiple Vulnerabilities");
 
@@ -105,7 +105,7 @@ if(!dir = get_app_location(cpe:CPE, port:mangoPort)){
 url = string(dir, "/login.htm");
 req = http_get (item: url, port:mangoPort);
 res = http_keepalive_send_recv(port:mangoPort,data:req);
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 
 
 if('content="Mango Automation' >< res && 'id="loginForm' >< res)

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sierrawireless_acemanager_default_pw.nasl 12465 2018-11-21 13:24:34Z cfischer $
+# $Id: gb_sierrawireless_acemanager_default_pw.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # Sierra Wireless AceManager Default Password
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/h:sierra_wireless:acemanager';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106077");
-  script_version("$Revision: 12465 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-21 14:24:34 +0100 (Wed, 21 Nov 2018) $");
+  script_version("$Revision: 13659 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2016-05-17 11:21:09 +0700 (Tue, 17 May 2016)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:C");
@@ -63,7 +63,7 @@ include("http_keepalive.inc");
 if (!port = get_app_port(cpe: CPE))
   exit(0);
 
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 host = http_host_name(port: port);
 
 users = make_list("user", "viewer");

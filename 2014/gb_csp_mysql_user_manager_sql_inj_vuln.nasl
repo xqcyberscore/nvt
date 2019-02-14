@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_csp_mysql_user_manager_sql_inj_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_csp_mysql_user_manager_sql_inj_vuln.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # CSP MySQL User Manager SQL Injection Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804229");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 13659 $");
   script_cve_id("CVE-2014-1466");
   script_bugtraq_id(64731);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2014-01-28 11:34:43 +0530 (Tue, 28 Jan 2014)");
   script_name("CSP MySQL User Manager SQL Injection Vulnerability");
 
@@ -73,7 +73,7 @@ if(!can_host_php(port:cspPort)){
   exit(0);
 }
 
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 host = http_host_name(port:cspPort);
 
 foreach dir (make_list_unique("/cmum", "/cspmum", "/", cgi_dirs(port:cspPort)))

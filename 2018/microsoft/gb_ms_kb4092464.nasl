@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4092464.nasl 11822 2018-10-10 13:34:32Z santu $
+# $Id: gb_ms_kb4092464.nasl 13642 2019-02-13 15:21:09Z santu $
 #
 # Microsoft Office Word Viewer Graphics Components Multiple Vulnerabilities (KB4092464)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814125");
-  script_version("$Revision: 11822 $");
+  script_version("$Revision: 13642 $");
   script_cve_id("CVE-2018-8432", "CVE-2018-8427");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 15:34:32 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-13 16:21:09 +0100 (Wed, 13 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-10-10 12:13:03 +0530 (Wed, 10 Oct 2018)");
   script_name("Microsoft Office Word Viewer Graphics Components Multiple Vulnerabilities (KB4092464)");
 
@@ -82,7 +82,7 @@ if(!wordviewPath){
 
 if(wordviewVer =~ "^(11\.)" && version_is_less(version:wordviewVer, test_version:"11.0.8451.0"))
 {
-  report = report_fixed_ver(file_checked:wordviewPath + 'GDIPLUS.DLL',
+  report = report_fixed_ver(file_checked:wordviewPath + 'wordview.exe',
                             file_version:wordviewVer, vulnerable_range:"11.0 - 11.0.8450");
   security_message(data:report);
   exit(0);

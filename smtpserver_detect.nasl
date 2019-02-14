@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smtpserver_detect.nasl 13596 2019-02-12 08:39:25Z cfischer $
+# $Id: smtpserver_detect.nasl 13637 2019-02-13 12:46:42Z cfischer $
 #
 # SMTP Server type and version
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10263");
-  script_version("$Revision: 13596 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-12 09:39:25 +0100 (Tue, 12 Feb 2019) $");
+  script_version("$Revision: 13637 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-13 13:46:42 +0100 (Wed, 13 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -60,6 +60,8 @@ foreach port( ports ) {
   if( ! banner )
     continue;
 
+  guess = NULL;
+
   if( service_is_unknown( port:port ) )
     register_service( port:port, proto:"smtp", message:"A SMTP Server seems to be running on this port." );
 
@@ -80,115 +82,117 @@ foreach port( ports ) {
   if( "qmail" >< banner || "qmail" >< help ) {
     set_kb_item( name:"smtp/qmail/detected", value:TRUE );
     set_kb_item( name:"smtp/" + port + "/qmail/detected", value:TRUE );
-    guess = "Qmail";
+    guess += '\n- Qmail';
   }
 
-  else if( "XMail " >< banner ) {
+  if( "XMail " >< banner ) {
     set_kb_item( name:"smtp/xmail/detected", value:TRUE );
     set_kb_item( name:"smtp/" + port + "/xmail/detected", value:TRUE );
-    guess = "XMail";
+    guess += '\n- XMail';
   }
 
-  else if( egrep( pattern:".*nbx.*Service ready.*", string:banner ) ) {
+  if( egrep( pattern:".*nbx.*Service ready.*", string:banner ) ) {
     set_kb_item( name:"smtp/3comnbx/detected", value:TRUE );
     set_kb_item( name:"smtp/" + port + "/3comnbx/detected", value:TRUE );
-    guess = "3comnbx";
+    guess += '\n- 3comnbx';
   }
 
-  else if( "ZMailer Server" >< banner ||
-           ( "This mail-server is at Yoyodyne Propulsion Inc." >< help && # Default help text.
-             "Out" >< quit && "zmhacks@nic.funet.fi" >< help ) ) {
+  if( "ZMailer Server" >< banner ||
+      ( "This mail-server is at Yoyodyne Propulsion Inc." >< help && # Default help text.
+        "Out" >< quit && "zmhacks@nic.funet.fi" >< help ) ) {
     set_kb_item( name:"smtp/zmailer/detected", value:TRUE );
     set_kb_item( name:"smtp/" + port + "/zmailer/detected", value:TRUE );
-    guess = "ZMailer";
     str = egrep( pattern:" ZMailer ", string:banner );
     if( str ) {
       str = ereg_replace( pattern:"^.*ZMailer Server ([0-9a-z\.\-]+) .*$", string:str, replace:"\1" );
-      guess = string( "ZMailer version ", str );
+      guess += '\n- ZMailer version ' + str;
+    } else {
+      guess += '\n- ZMailer';
     }
   }
 
-  else if( "CheckPoint FireWall-1" >< banner ) {
+  if( "CheckPoint FireWall-1" >< banner ) {
     set_kb_item( name:"smtp/firewall-1/detected", value:TRUE );
     set_kb_item( name:"smtp/" + port + "/firewall-1/detected", value:TRUE );
-    guess = "CheckPoint FireWall-1";
+    guess += '\n- CheckPoint FireWall-1';
   }
 
-  else if( "InterMail" >< banner ||
-           ( "This SMTP server is a part of the InterMail E-mail system" >< help &&
-             "Ok resetting state." >< rset && "ESMTP server closing connection." >< quit ) ) {
+  if( "InterMail" >< banner ||
+      ( "This SMTP server is a part of the InterMail E-mail system" >< help &&
+        "Ok resetting state." >< rset && "ESMTP server closing connection." >< quit ) ) {
     set_kb_item( name:"smtp/intermail/detected", value:TRUE );
     set_kb_item( name:"smtp/" + port + "/intermail/detected", value:TRUE );
-    guess = "InterMail";
     str = egrep( pattern:"InterMail ", string:banner );
     if( str ) {
       str = ereg_replace( pattern:"^.*InterMail ([A-Za-z0-9\.\-]+).*$", string:str, replace:"\1" );
-      guess = string( "InterMail version ", str );
+      guess += '\n- InterMail version ' + str;
+    } else {
+      guess += '\n- InterMail';
     }
   }
 
-  else if( "mail rejector" >< banner ||
-           ( ehlo && match( pattern:"*snubby*", string:ehlo, icase:TRUE ) ) ) {
+  if( "mail rejector" >< banner ||
+      ( ehlo && match( pattern:"*snubby*", string:ehlo, icase:TRUE ) ) ) {
     set_kb_item( name:"smtp/snubby/detected", value:TRUE );
     set_kb_item( name:"smtp/" + port + "/snubby/detected", value:TRUE );
     smtp_set_is_marked_wrapped( port:port );
-    guess   = "Snubby Mail Rejector (not a real SMTP server)";
+    guess  += '\n- Snubby Mail Rejector (not a real SMTP server)';
     report  = "Verisign mail rejector appears to be running on this port. You probably mistyped your hostname and the scanner is scanning the wildcard address in the .COM or .NET domain.";
     report += '\n\nSolution: enter a correct hostname';
     log_message( port:port, data:report );
   }
 
-  else if( egrep( pattern:"Mail(Enable| Enable SMTP) Service", string:banner ) ) {
+  if( egrep( pattern:"Mail(Enable| Enable SMTP) Service", string:banner ) ) {
     set_kb_item( name:"smtp/mailenable/detected", value:TRUE );
     set_kb_item( name:"smtp/" + port + "/mailenable/detected", value:TRUE );
-    guess = "MailEnable SMTP";
+    guess += '\n- MailEnable SMTP';
   }
 
-  else if( " MDaemon " >< banner ) {
+  if( " MDaemon " >< banner ) {
     set_kb_item( name:"smtp/mdaemon/detected", value:TRUE );
     set_kb_item( name:"smtp/" + port + "/mdaemon/detected", value:TRUE );
-    guess = "MDaemon SMTP";
+    guess += '\n- MDaemon SMTP';
   }
 
-  else if( " InetServer " >< banner ) {
+  if( " InetServer " >< banner ) {
     set_kb_item( name:"smtp/inetserver/detected", value:TRUE );
     set_kb_item( name:"smtp/" + port + "/inetserver/detected", value:TRUE );
-    guess = "A-V Tronics InetServ SMTP";
+    guess += '\n- A-V Tronics InetServ SMTP';
   }
 
-  else if( "Quick 'n Easy Mail Server" >< banner ) {
+  if( "Quick 'n Easy Mail Server" >< banner ) {
     set_kb_item( name:"smtp/quickneasy/detected", value:TRUE );
     set_kb_item( name:"smtp/" + port + "/quickneasy/detected", value:TRUE );
-    guess = "Quick 'n Easy Mail Server";
+    guess += '\n' + "- Quick 'n Easy Mail Server";
   }
 
-  else if( "QK SMTP Server" >< banner ) {
+  if( "QK SMTP Server" >< banner ) {
     set_kb_item( name:"smtp/qk_smtp/detected", value:TRUE );
     set_kb_item( name:"smtp/" + port + "/qk_smtp/detected", value:TRUE );
-    guess = "QK SMTP Server";
+    guess += '\n- QK SMTP Server';
   }
 
-  else if( "ESMTP CommuniGate Pro" >< banner ) {
+  if( "ESMTP CommuniGate Pro" >< banner ) {
     set_kb_item( name:"smtp/communigate/pro/detected", value:TRUE );
     set_kb_item( name:"smtp/" + port + "/communigate/pro/detected", value:TRUE );
-    guess = "CommuniGate Pro";
+    guess += '\n- CommuniGate Pro';
   }
 
-  else if( "TABS Mail Server" >< banner ) {
+  if( "TABS Mail Server" >< banner ) {
     set_kb_item( name:"smtp/tabs/mailcarrier/detected", value:TRUE );
     set_kb_item( name:"smtp/" + port + "/tabs/mailcarrier/detected", value:TRUE );
-    guess = "TABS MailCarrier";
+    guess += '\n- TABS MailCarrier';
   }
 
-  else if( "ESMTPSA" >< banner ) {
+  if( "ESMTPSA" >< banner ) {
     set_kb_item( name:"smtp/esmtpsa/detected", value:TRUE );
     set_kb_item( name:"smtp/" + port + "/esmtpsa/detected", value:TRUE );
-    guess = "Various Mail Server like Rumble SMTP";
+    guess += '\n- Various Mail Server like Rumble SMTP';
   }
 
   data = string( "Remote SMTP server banner:\n", banner );
   if( strlen( guess ) > 0 )
-    data = string( data, "\n\nThis is probably: ", guess );
+    data = string( data, "\n\nThis is probably:\n", guess );
 
   if( ehlo && ehlo =~ "^250[ -].+" ) {
     ehlo_report = "The remote SMTP server is announcing the following available ESMTP commands (EHLO response) via an ";

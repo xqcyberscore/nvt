@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_phpmyadmin_setup_interface_xss_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
+# $Id: secpod_phpmyadmin_setup_interface_xss_vuln.nasl 13660 2019-02-14 09:48:45Z cfischer $
 #
 # phpMyAdmin Setup Interface Cross Site Scripting Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902585");
-  script_version("$Revision: 11997 $");
+  script_version("$Revision: 13660 $");
   script_cve_id("CVE-2011-4064");
   script_bugtraq_id(50175);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 10:48:45 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2011-11-22 17:17:17 +0530 (Tue, 22 Nov 2011)");
   script_name("phpMyAdmin Setup Interface Cross Site Scripting Vulnerability");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -44,24 +44,30 @@ if(description)
   script_dependencies("secpod_phpmyadmin_detect_900129.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("phpMyAdmin/installed");
+
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to insert arbitrary HTML
-  and script code, which will be executed in a user's browser session in the
-  context of an affected site.");
-  script_tag(name:"affected", value:"phpMyAdmin versions 3.4.x before 3.4.6");
+  and script code, which will be executed in a user's browser session in the context of an affected site.");
+
+  script_tag(name:"affected", value:"phpMyAdmin versions 3.4.x before 3.4.6.");
   script_tag(name:"insight", value:"The flaw is due to improper validation of user-supplied input
   via the 'Servers-0-verbose' parameter to setup/index.php, which allows
   attackers to execute arbitrary HTML and script code in a user's browser
   session in the context of an affected site.");
+
   script_tag(name:"solution", value:"Upgrade to phpMyAdmin version 3.4.6 or later.");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_tag(name:"summary", value:"The host is running phpMyAdmin and is prone to cross-site scripting
   vulnerability.");
+
   script_xref(name:"URL", value:"http://secunia.com/advisories/46431");
   script_xref(name:"URL", value:"http://securitytracker.com/id/1026199");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/70681");
   script_xref(name:"URL", value:"http://www.phpmyadmin.net/home_page/security/PMASA-2011-16.php");
   script_xref(name:"URL", value:"http://hauntit.blogspot.com/2011/09/stored-xss-in-phpmyadmin-345-all.html");
   script_xref(name:"URL", value:"http://www.phpmyadmin.net/home_page/downloads.php");
+
   exit(0);
 }
 
@@ -120,21 +126,19 @@ url = string(dir, '/setup/index.php?tab_hash=&check_page_refresh=1',
 
 req = string("POST ", url, " HTTP/1.1\r\n",
              "Host: ", host, "\r\n",
-             "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+             "User-Agent: ", http_get_user_agent(), "\r\n",
              "Cookie: ", cookie, "\r\n",
              "Content-Type: application/x-www-form-urlencoded\r\n",
              "Content-Length: ", strlen(data), "\r\n\r\n", data);
-
-## Send crafted POST request and receive the response
 res = http_keepalive_send_recv(port:port, data:req);
 
-if(res =~ "HTTP/1.. 30")
+if(res =~ "^HTTP/1.[01] 30")
 {
   req = http_get(item:string(dir,"/setup/index.php"), port:port);
   req = string(chomp(req), '\r\nCookie: ', cookie, '\r\n\r\n');
   res = http_keepalive_send_recv(port:port, data:req);
 
-  if(res =~ "HTTP/1\.. 200" && "Use SSL (<script>alert(document.cookie)</script>)" >< res){
+  if(res =~ "^HTTP/1\.[01] 200" && "Use SSL (<script>alert(document.cookie)</script>)" >< res){
     security_message(port);
   }
 }

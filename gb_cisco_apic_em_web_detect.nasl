@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_apic_em_web_detect.nasl 11006 2018-08-16 12:21:56Z cfischer $
+# $Id: gb_cisco_apic_em_web_detect.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
-# Cisco Application Policy Infrastructure Controller Enterprise Modul Detection
+# Cisco Application Policy Infrastructure Controller Enterprise Module Detection
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -30,12 +30,12 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.105536");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11006 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 14:21:56 +0200 (Thu, 16 Aug 2018) $");
+  script_version("$Revision: 13659 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2016-02-11 12:25:49 +0100 (Thu, 11 Feb 2016)");
-  script_name("Cisco Application Policy Infrastructure Controller Enterprise Modul Detection");
+  script_name("Cisco Application Policy Infrastructure Controller Enterprise Module Detection");
 
-  script_tag(name:"summary", value:"This Script performs HTTP(s) based detection of Cisco Application Policy Infrastructure Controller Enterprise Modul.
+  script_tag(name:"summary", value:"This Script performs HTTP(s) based detection of Cisco Application Policy Infrastructure Controller Enterprise Module.
   When HTTP(s) credentials are given, the script is able to extract version and patch information from the application.");
 
   script_tag(name:"qod_type", value:"remote_banner");
@@ -74,7 +74,7 @@ if( user && pass )
 {
   login_credentials = TRUE;
   host = http_host_name( port:port );
-  useragent = get_http_user_agent();
+  useragent = http_get_user_agent();
   data = '{"username":"' + user + '","password":"' + pass + '"}';
 
   len = strlen( data );
@@ -183,4 +183,3 @@ register_product( cpe:cpe, location:"/", port:port );
 log_message( port:port, data:report );
 
 exit( 0 );
-

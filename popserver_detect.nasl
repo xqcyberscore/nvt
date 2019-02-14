@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: popserver_detect.nasl 13541 2019-02-08 13:21:52Z cfischer $
+# $Id: popserver_detect.nasl 13637 2019-02-13 12:46:42Z cfischer $
 # Description: POP3 Server type and version
 #
 # Authors:
@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10185");
-  script_version("$Revision: 13541 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-08 14:21:52 +0100 (Fri, 08 Feb 2019) $");
+  script_version("$Revision: 13637 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-13 13:46:42 +0100 (Wed, 13 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -74,36 +74,36 @@ foreach port( ports ) {
   if( "Dovecot ready" >< banner ) {
     set_kb_item( name:"pop3/dovecot/detected", value:TRUE );
     set_kb_item( name:"pop3/" + port + "/dovecot/detected", value:TRUE );
-    guess = "Dovecot";
+    guess += '\n- Dovecot';
   }
 
-  else if( "POP3 on InetServer" >< banner ) {
+  if( "POP3 on InetServer" >< banner ) {
     set_kb_item( name:"pop3/avtronics/inetserv/detected", value:TRUE );
     set_kb_item( name:"pop3/" + port + "/avtronics/inetserv/detected", value:TRUE );
-    guess = "A-V Tronics InetServ";
+    guess += '\n- A-V Tronics InetServ';
   }
 
-  else if( "Qpopper" >< banner ) {
+  if( "Qpopper" >< banner ) {
     set_kb_item( name:"pop3/qpopper/detected", value:TRUE );
     set_kb_item( name:"pop3/" + port + "/qpopper/detected", value:TRUE );
-    guess = "QPopper";
+    guess += '\n- QPopper';
   }
 
-  else if( "POP3" >< banner && "MDaemon" >< banner ) {
+  if( "POP3" >< banner && "MDaemon" >< banner ) {
     set_kb_item( name:"pop3/mdaemon/detected", value:TRUE );
     set_kb_item( name:"pop3/" + port + "/mdaemon/detected", value:TRUE );
-    guess = "MDaemon";
+    guess += '\n- MDaemon';
   }
 
-  else if( "Proxy-POP server (Delegate" >< banner ) {
+  if( "Proxy-POP server (Delegate" >< banner ) {
     set_kb_item( name:"pop3/delegate/detected", value:TRUE );
     set_kb_item( name:"pop3/" + port + "/delegate/detected", value:TRUE );
-    guess = "Delegate";
+    guess += '\n- Delegate';
   }
 
   report = 'Remote POP3 server banner:\n\n' + banner;
   if( strlen( guess ) > 0 )
-    report += '\n\nThis is probably: ' + guess;
+    report += '\n\nThis is probably:\n' + guess;
 
   if( is_tls )
     capalist = get_kb_list( "pop3/fingerprints/" + port + "/tls_capalist" );

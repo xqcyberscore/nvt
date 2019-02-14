@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843898");
-  script_version("$Revision: 13575 $");
+  script_version("$Revision: 13648 $");
   script_cve_id("CVE-2019-3814");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-11 13:03:16 +0100 (Mon, 11 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 06:25:08 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-02-06 04:04:48 +0100 (Wed, 06 Feb 2019)");
   script_name("Ubuntu Update for dovecot USN-3881-1");
   script_category(ACT_GATHER_INFO);

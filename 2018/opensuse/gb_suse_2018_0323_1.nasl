@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_0323_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_suse_2018_0323_1.nasl 13654 2019-02-14 07:51:59Z mmartin $
 #
 # SuSE Update for bind openSUSE-SU-2018:0323-1 (bind)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851694");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 13654 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 08:51:59 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-02-01 07:53:51 +0100 (Thu, 01 Feb 2018)");
   script_cve_id("CVE-2017-3145");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for bind openSUSE-SU-2018:0323-1 (bind)");
   script_tag(name:"summary", value:"The remote host is missing an update for the 'bind'

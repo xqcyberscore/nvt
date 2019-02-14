@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_detect_macosx.nasl 11279 2018-09-07 09:08:31Z cfischer $
+# $Id: gb_imagemagick_detect_macosx.nasl 13664 2019-02-14 11:13:52Z cfischer $
 #
 # ImageMagick Version Detection (Mac OS X)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810259");
-  script_version("$Revision: 11279 $");
+  script_version("$Revision: 13664 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:08:31 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 12:13:52 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2016-12-21 19:01:05 +0530 (Wed, 21 Dec 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("ImageMagick Version Detection (Mac OS X)");
@@ -75,15 +75,16 @@ foreach path (magickFile)
 
     set_kb_item(name: "ImageMagick/MacOSX/Version", value:magickVer[0]);
 
-    log_message(data: register_and_report_cpe( app: "ImageMagick",
-                                               ver: magickVer[0],
-                                               concluded: magickVer[0],
-                                               base: "cpe:/a:imagemagick:imagemagick:",
-                                               expr: "^([0-9.]+)",
-                                               insloc: magickFile[0] ) );
-
+    register_and_report_cpe( app: "ImageMagick",
+                             ver: magickVer[0],
+                             concluded: magickVer[0],
+                             base: "cpe:/a:imagemagick:imagemagick:",
+                             expr: "^([0-9.]+)",
+                             insloc: magickFile[0] );
+    close(sock);
     exit(0);
   }
 }
+
 close(sock);
 exit(0);

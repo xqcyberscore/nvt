@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_seagate_nas_default_admin.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_seagate_nas_default_admin.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # Seagate NAS Default Login
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/h:seagate:blackarmor_nas";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103754");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 13659 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Seagate NAS Default Login");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2013-08-08 14:02:06 +0200 (Thu, 08 Aug 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -73,7 +73,7 @@ if(isnull(co[1]))exit(0);
 
 cookie = co[1];
 
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 host = http_host_name(port:port);
 
 data = 'p_user=admin&p_pass=admin&lang=en&xx=1&loginnow=Login';

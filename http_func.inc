@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: http_func.inc 13429 2019-02-04 09:09:14Z cfischer $
+# $Id: http_func.inc 13658 2019-02-14 08:16:14Z cfischer $
 #
 # Methods to handle HTTP
 #
@@ -24,11 +24,11 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 13429 $
+# $Revision: 13658 $
 #
 ###############################################################################
 
-# Enables to include the OID of the VT within the HTTP user agent of get_http_user_agent()
+# Enables to include the OID of the VT within the HTTP user agent of http_get_user_agent()
 # and http_send_recv() for debugging purposes on the target / targets logfiles.
 global_var _http_ua_include_oid;
 _http_ua_include_oid = FALSE;
@@ -43,7 +43,7 @@ _http_ua_include_oid = FALSE;
 #
 # @return A string containing a HTTP user agent.
 #
-function get_http_user_agent( vt_string, dont_add_oid ) {
+function http_get_user_agent( vt_string, dont_add_oid ) {
 
   local_var vt_string, dont_add_oid;
   local_var ua_vt_string, default, ua;
@@ -82,7 +82,7 @@ function get_http_user_agent( vt_string, dont_add_oid ) {
 }
 
 global_var OPENVAS_HTTP_USER_AGENT;
-OPENVAS_HTTP_USER_AGENT = get_http_user_agent();
+OPENVAS_HTTP_USER_AGENT = http_get_user_agent();
 
 # Global vars to avoid that we're repeatedly asking redis for something we already know.
 global_var __http_func_user_agent, __http_is_cgi_scan_disabled;
@@ -766,7 +766,7 @@ function http_send_recv( port, data ) {
 
   # Some (mostly older) VTs are not passing the User-Agent header but we should always have one.
   if( " HTTP/1.1" >< data && ! egrep( pattern:"^User-Agent:.+", string:data, icase:TRUE ) ) {
-    data = ereg_replace( string:data, pattern:'\r\n\r\n', replace:'\r\nUser-Agent: ' + get_http_user_agent() + '\r\n\r\n' );
+    data = ereg_replace( string:data, pattern:'\r\n\r\n', replace:'\r\nUser-Agent: ' + http_get_user_agent() + '\r\n\r\n' );
     set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#http_send_recv(): Using a HTTP/1.1 request without a 'User-Agent:' header passed in 'data' variable. Adding it automatically to the request." );
   }
 
@@ -1891,7 +1891,7 @@ function report_vuln_url( port, url, url_only ) {
 #                           array in form of e.g. make_array( "Content-Type", "application/x-www-form-urlencoded" )
 # @param accept_header      The Accept: header to use (e.g. application/json), defaults to "*/*" if not passed.
 # @param user_agent         The User-Agent to use within the User-Agent: header, defaults to the result of the
-#                           get_http_user_agent() function if not passed. If this parameter is given the function
+#                           http_get_user_agent() function if not passed. If this parameter is given the function
 #                           will add a separate X-Scanner: header field by default. This behavior can be disabled
 #                           via the dont_add_xscanner parameter set to TRUE.
 # @param host_header_use_ip If set to TRUE the request will contain the IP instead of the target
@@ -1934,7 +1934,7 @@ function http_post_req( port, url, data, add_headers, accept_header, user_agent,
     accept_header = '*/*';
 
   if ( ! user_agent ) {
-    user_agent = get_http_user_agent();
+    user_agent = http_get_user_agent();
   } else if( ! dont_add_xscanner ) {
     x_header = TRUE;
     if( OPENVAS_VERSION )
@@ -1985,7 +1985,7 @@ function http_post_req( port, url, data, add_headers, accept_header, user_agent,
 # @param accept_header      The Accept: header to use (e.g. text/html), defaults to the following if not passed:
 #                           image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, image/png, */*
 # @param user_agent         The User-Agent to use within the User-Agent: header, defaults to the result of the
-#                           get_http_user_agent() function if not passed. If this parameter is given the function
+#                           http_get_user_agent() function if not passed. If this parameter is given the function
 #                           will add a separate X-Scanner: header field by default. This behavior can be disabled
 #                           via the dont_add_xscanner parameter set to TRUE.
 # @param host_header_use_ip If set to TRUE the request will contain the IP instead of the target
@@ -2025,7 +2025,7 @@ function http_get_req( port, url, add_headers, accept_header, user_agent, host_h
     accept_header = 'image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, image/png, */*';
 
   if ( ! user_agent ) {
-    user_agent = get_http_user_agent();
+    user_agent = http_get_user_agent();
   } else if( ! dont_add_xscanner ) {
     x_header = TRUE;
     if( OPENVAS_VERSION )

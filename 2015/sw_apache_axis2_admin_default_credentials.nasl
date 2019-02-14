@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_apache_axis2_admin_default_credentials.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: sw_apache_axis2_admin_default_credentials.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # Apache Axis2 axis2-admin default credentials
 #
@@ -30,13 +30,13 @@ CPE = 'cpe:/a:apache:axis2';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111006");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 13659 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_bugtraq_id(44055);
   script_cve_id("CVE-2010-0219");
   script_name("Apache Axis2 axis2-admin default credentials");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2015-03-18 08:00:00 +0100 (Wed, 18 Mar 2015)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
@@ -73,7 +73,7 @@ if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
 host = http_host_name(port:port);
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 
 data = string( "userName=admin&password=axis2&submit=+Login+" );
 len = strlen( data );

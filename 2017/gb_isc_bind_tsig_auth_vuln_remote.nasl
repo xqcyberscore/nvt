@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_isc_bind_tsig_auth_vuln_remote.nasl 11982 2018-10-19 08:49:21Z mmartin $
+# $Id: gb_isc_bind_tsig_auth_vuln_remote.nasl 13654 2019-02-14 07:51:59Z mmartin $
 #
 # ISC BIND Security Bypass Vulnerability (Remote)
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:isc:bind";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106953");
-  script_version("$Revision: 11982 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 13654 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 08:51:59 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-07-17 09:23:57 +0700 (Mon, 17 Jul 2017)");
-  script_tag(name:"cvss_base", value:"7.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:C/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2017-3143");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_parsequery_vuln.nasl 11222 2018-09-04 12:41:44Z cfischer $
+# $Id: gb_oracle_parsequery_vuln.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # Oracle Forms and Reports Database Vulnerability
 #
@@ -31,7 +31,7 @@ if(description)
   script_cve_id("CVE-2012-3153");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_version("$Revision: 11222 $");
+  script_version("$Revision: 13659 $");
 
   script_name("Oracle Forms and Reports Database Vulnerability");
 
@@ -39,7 +39,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpuoct2012-1515893.html");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/55955");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:41:44 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2014-02-03 23:08:02 +0700 (Mon, 03 Feb 2014)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -69,7 +69,7 @@ include("http_keepalive.inc");
 
 port = get_http_port(default:80);
 
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 host = http_host_name(port:port);
 
 req = 'GET /reports/rwservlet/showmap HTTP/1.1\r\n' +

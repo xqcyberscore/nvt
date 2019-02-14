@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trendnet_tv_ip_rce_11_14.nasl 11222 2018-09-04 12:41:44Z cfischer $
+# $Id: gb_trendnet_tv_ip_rce_11_14.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # Multiple Trendnet TV-IP Cams Command Injection Vulnerability
 #
@@ -30,7 +30,7 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.105108");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11222 $");
+  script_version("$Revision: 13659 $");
 
   script_name("Multiple Trendnet TV-IP Cams Command Injection Vulnerability");
 
@@ -45,7 +45,7 @@ commands in the context of the affected device.");
   script_tag(name:"summary", value:"Multiple Trendnet TV-IP Cams are prone to a command-injection
 vulnerability.");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:41:44 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2014-11-05 12:38:34 +0100 (Wed, 05 Nov 2014)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -66,7 +66,7 @@ port = get_http_port( default:80 );
 banner = get_http_banner( port:port );
 if( ! banner || 'Basic realm="netcam"' >!< banner ) exit( 0 );
 
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 host = http_host_name( port:port );
 
 req = 'GET /cgi/maker/ptcmd.cgi?cmd=;id;ifconfig; HTTP/1.1\r\n' +

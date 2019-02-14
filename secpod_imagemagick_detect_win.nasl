@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_imagemagick_detect_win.nasl 11279 2018-09-07 09:08:31Z cfischer $
+# $Id: secpod_imagemagick_detect_win.nasl 13664 2019-02-14 11:13:52Z cfischer $
 #
 # ImageMagick Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900562");
-  script_version("$Revision: 11279 $");
+  script_version("$Revision: 13664 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:08:31 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 12:13:52 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-06-02 08:16:42 +0200 (Tue, 02 Jun 2009)");
   script_name("ImageMagick Version Detection (Windows)");
 
@@ -105,13 +105,12 @@ foreach key (key_list)
         base = "cpe:/a:imagemagick:imagemagick:";
       }
 
-      log_message(data: register_and_report_cpe( app: "ImageMagick",
-                                                 ver: imVer[1],
-                                                 concluded: imVer[0],
-                                                 base: base,
-                                                 expr: "^([0-9.]+)",
-                                                 insloc: imPath ) );
-
+      register_and_report_cpe( app: "ImageMagick",
+                               ver: imVer[1],
+                               concluded: imVer[0],
+                               base: base,
+                               expr: "^([0-9.]+)",
+                               insloc: imPath );
       exit( 0 );
     }
   }

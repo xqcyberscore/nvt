@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_vsm_default_root_credentials.nasl 11867 2018-10-12 10:48:11Z cfischer $
+# $Id: gb_cisco_vsm_default_root_credentials.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # Cisco Video Surveillance Manager Default Root Credentials
 #
@@ -30,11 +30,11 @@ CPE = 'cpe:/a:cisco:video_surveillance_manager';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103896");
-  script_version("$Revision: 11867 $");
+  script_version("$Revision: 13659 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Cisco Video Surveillance Manager Default Root Credentials");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2014-01-28 15:02:06 +0200 (Tue, 28 Jan 2014)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -62,7 +62,7 @@ include("host_details.inc");
 
 if( ! port = get_app_port (cpe:CPE) ) exit (0);
 
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 host = http_host_name( port:port );
 
 req = 'GET /config/password.php HTTP/1.1\r\n' +

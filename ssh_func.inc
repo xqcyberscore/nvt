@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: ssh_func.inc 13570 2019-02-11 10:39:55Z cfischer $
+# $Id: ssh_func.inc 13663 2019-02-14 10:42:02Z cfischer $
 #
 # Methods for handling SSH
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 13570 $
+# $Revision: 13663 $
 #
 ###############################################################################
 
@@ -1933,12 +1933,16 @@ function ssh_cmd( socket, cmd, timeout, nosh, return_errors, pty, pattern, retry
         "Unknown action 0" >< ret_ssh_buf ||
         "Invalid command" >< ret_ssh_buf || # HP iLO 100
         "Syntax Error: unexpected argument" >< ret_ssh_buf ) { # NX-OS/IOS/JunOS/F5
-        set_kb_item( name:"ssh/force/nosh", value:TRUE );
-        if( ! return_errors )
-         return '';
+
+      set_kb_item( name:"ssh/force/nosh", value:TRUE );
+      if( ! return_errors )
+        return '';
     }
 
-    if( ": not found" >< ret_ssh_buf ) {
+    # e.g.:
+    # /bin/sh: 1: /usr/share/bash-completion/completions/xfreerdp: Permission denied
+    # grep: /usr/include/freetype2/freetype/freetype.h: No such file or directory
+    if( ": not found" >< ret_ssh_buf || ": Permission denied" >< ret_ssh_buf || "No such file or directory" >< ret_ssh_buf ) {
       if( ! return_errors )
         return '';
     }
@@ -2306,29 +2310,27 @@ function find_bin( prog_name, sock ) {
   whe = "";
   whi = "";
 
-  if( get_kb_item( "ssh/no_linux_shell" ) ) return;
+  if( get_kb_item( "ssh/no_linux_shell" ) )
+    return;
 
   if( ! prog_name ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#prog_name#-#find_bin" );
     return;
   }
 
-  if( ! sock ) {
+  if( ! sock )
     sock = ssh_login_or_reuse_connection();
-  }
 
   if( sock ) {
 
     cl = ssh_check_locate( sock:sock );
 
-    if( cl ) {
+    if( cl )
       r = split( ssh_cmd( socket:sock, cmd:"locate -ei *bin/" + prog_name, timeout:60 ) );
-    } else {
+    else
       r = NULL;
-    }
-
   } else {
-     r = NULL;
+    r = NULL;
   }
 
   if( "bin/" + prog_name >!< r ) {
@@ -2345,7 +2347,7 @@ function find_bin( prog_name, sock ) {
   if( isnull( r ) ) {
     if( sock ) {
       whi = ssh_cmd( socket:sock, cmd:"which -a " + prog_name, timeout:60 );
-      if( ( "which: no "+prog_name ) >!< whi ) {
+      if( ( "which: no " + prog_name ) >!< whi ) {
         r = split( whi );
       } else {
         r = NULL;
@@ -2361,7 +2363,8 @@ function find_file( file_name, file_path, useregex, regexpar, sock ) {
   local_var r, f, fname, lparam, cl, file_name, file_path, useregex, regexpar, sock;
   local_var use_find, descend_directories, cmd, start, end, current_timeout;
 
-  if( get_kb_item( "ssh/no_linux_shell" ) ) return;
+  if( get_kb_item( "ssh/no_linux_shell" ) )
+    return;
 
   if( ! file_name ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#file_name#-#find_file" );
@@ -2375,42 +2378,41 @@ function find_file( file_name, file_path, useregex, regexpar, sock ) {
 
   r = NULL;
 
-  if( useregex ) {
+  if( useregex )
     lparam = "-eir";
-  } else {
+  else
     lparam = "-ei";
-  }
 
   use_find = get_kb_item( "ssh/lsc/enable_find" );
   descend_directories = get_kb_item( "ssh/lsc/descend_ofs" );
 
-  if( isnull( use_find ) ) use_find = "yes";
-  if( isnull( descend_directories ) ) descend_directories = "yes";
+  if( isnull( use_find ) )
+    use_find = "yes";
+
+  if( isnull( descend_directories ) )
+    descend_directories = "yes";
 
   fname = ereg_replace( pattern:"\*.+", string:file_name, replace:"" );
 
-  if( ! sock ) {
+  if( ! sock )
     sock = ssh_login_or_reuse_connection();
-  }
 
   if( sock ) {
 
     cl = ssh_check_locate( sock:sock );
 
-    if ( cl ) {
+    if ( cl )
       r = split( ssh_cmd( socket:sock, cmd:"locate " + lparam + " " + raw_string(0x22) + file_path + file_name + regexpar + raw_string(0x22), timeout:60));
-    } else {
+    else
       r = NULL;
-    }
 
     if( fname >!< r && ( "yes" >< use_find ) ) {
       if( ! isnull( file_path ) ) {
 
         cmd = "find " + raw_string( 0x22 ) + file_path + raw_string( 0x22 );
 
-        if( "no" >< descend_directories ) {
+        if( "no" >< descend_directories )
           cmd += " -xdev";
-        }
 
         # nb: /run is excluded because it is a new storage of transient state files on Debian
         # See https://wiki.debian.org/ReleaseGoals/RunDirectory for more info
@@ -2441,8 +2443,11 @@ function find_file( file_name, file_path, useregex, regexpar, sock ) {
     }
   }
 
+  if( ! r && ! f )
+    return NULL;
+
   if( fname >!< r ) {
-    if( fname >< f && "No such file or directory" >!< f ) {
+    if( fname >< f ) {
       r = f;
     } else {
       r = NULL;
@@ -2468,19 +2473,19 @@ function get_bin_version( full_prog_name, version_argv, ver_pattern, sock ) {
   full_prog_name = chomp( full_prog_name );
   version_argv = chomp( version_argv );
 
-  if( ! sock) {
+  if( ! sock)
     sock = ssh_login_or_reuse_connection();
-  }
 
-  if( sock ) {
+  if( sock )
     r = ssh_cmd( socket:sock, cmd:full_prog_name + " " + version_argv, timeout:60 );
-  }
 
-  # e.g. /bin/sh: 1: /usr/share/bash-completion/completions/xfreerdp: Permission denied
-  if( ": Permission denied" >< r ) return;
+  if( ! r )
+    return;
 
   loc_version = eregmatch( pattern:ver_pattern, string:r );
-  if( loc_version != NULL ) loc_version[max_index( loc_version )] = r;
+  if( loc_version != NULL )
+    loc_version[max_index( loc_version )] = r;
+
   return( loc_version );
 }
 

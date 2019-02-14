@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_jomsocial_02_14.nasl 11222 2018-09-04 12:41:44Z cfischer $
+# $Id: gb_joomla_jomsocial_02_14.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # Joomla JomSocial 2.6 Code Execution
 #
@@ -30,7 +30,7 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103906");
-  script_version("$Revision: 11222 $");
+  script_version("$Revision: 13659 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
@@ -40,7 +40,7 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.jomsocial.com/blog/hot-fix-3-1-0-4");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:41:44 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2014-02-11 17:03:11 +0100 (Tue, 11 Feb 2014)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -90,7 +90,7 @@ if( isnull( cookie[1] ) ) exit( 0 );
 
 cookie = cookie[1];
 
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 host = http_host_name(port:port);
 
 ex = 'option=community&no_html=1&task=azrul_ajax&func=photos,ajaxUploadAvatar&' +

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apache_http_srv_range_header_dos_vuln.nasl 12465 2018-11-21 13:24:34Z cfischer $
+# $Id: secpod_apache_http_srv_range_header_dos_vuln.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # Apache httpd Web Server Range Header Denial of Service Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901203");
-  script_version("$Revision: 12465 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-21 14:24:34 +0100 (Wed, 21 Nov 2018) $");
+  script_version("$Revision: 13659 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2011-08-26 14:59:42 +0200 (Fri, 26 Aug 2011)");
   script_bugtraq_id(49303);
   script_cve_id("CVE-2011-3192");
@@ -74,7 +74,7 @@ include("host_details.inc");
 
 if(!port = get_app_port(cpe:CPE)) exit(0);
 
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 host = http_host_name(port:port);
 
 ## Expected response will be 206 Partial Content on both

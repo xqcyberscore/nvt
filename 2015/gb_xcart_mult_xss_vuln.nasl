@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xcart_mult_xss_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_xcart_mult_xss_vuln.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # X_CART Multiple Cross Site Scripting Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:qualiteam:x-cart";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805600");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 13659 $");
   script_cve_id("CVE-2015-1178");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2015-04-27 10:06:16 +0530 (Mon, 27 Apr 2015)");
   script_name("X_CART Multiple Cross Site Scripting Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -81,7 +81,7 @@ url = dir + "/cart.php?target=product&product_id=&category_id=1%E2%80%93--"
           + "%3E%3Cimg%20src=a%20onerror=alert%28document.cookie%29%3E";
 
 host = http_host_name( port:port );
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 sndReq = string("GET ", url, " HTTP/1.1\r\n",
                 "Host: ", host, "\r\n",
                 "User-Agent: ", useragent, "\r\n",

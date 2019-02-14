@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_designfolio_arbit_file_upload_vuln.nasl 11492 2018-09-20 08:38:50Z mmartin $
+# $Id: gb_wordpress_designfolio_arbit_file_upload_vuln.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # Wordpress DesignFolio Plus Theme Arbitrary File Upload Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805156");
-  script_version("$Revision: 11492 $");
+  script_version("$Revision: 13659 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 10:38:50 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2015-03-18 14:31:11 +0530 (Wed, 18 Mar 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Wordpress DesignFolio Plus Theme Arbitrary File Upload Vulnerability");
@@ -85,7 +85,7 @@ url = dir + '/wp-content/themes/designfolio-plus/admin/upload-file.php';
 wpReq = http_get(item: url,  port:http_port);
 wpRes = http_keepalive_send_recv(port:http_port, data:wpReq, bodyonly:FALSE);
 vtstring = get_vt_string( lowercase:TRUE );
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 
 if(wpRes && wpRes =~ "HTTP/1.. 200 OK")
 {

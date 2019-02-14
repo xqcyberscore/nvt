@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_aastra_opencom_1000_default_login.nasl 11865 2018-10-12 10:03:43Z cfischer $
+# $Id: gb_aastra_opencom_1000_default_login.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # Aastra OpenCom 1000 Default Login
 #
@@ -31,8 +31,8 @@ if(description)
 {
 
   script_oid("1.3.6.1.4.1.25623.1.0.103684");
-  script_version("$Revision: 11865 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 13659 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2013-03-20 17:03:03 +0100 (Wed, 20 Mar 2013)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -79,7 +79,7 @@ login = hexstr(MD5(str));
 
 post = 'login=' + login + '&user=Admin&password=&ButtonOK=OK';
 len = strlen(post);
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 host = http_host_name(port:port);
 
 req = string("POST /summary.html HTTP/1.1\r\n",

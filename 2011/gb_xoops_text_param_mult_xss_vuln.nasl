@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xoops_text_param_mult_xss_vuln.nasl 12018 2018-10-22 13:31:29Z mmartin $
+# $Id: gb_xoops_text_param_mult_xss_vuln.nasl 13660 2019-02-14 09:48:45Z cfischer $
 #
 # XOOPS 'text' and 'message' Parameter Cross-Site Scripting Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:xoops:xoops";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802351");
-  script_version("$Revision: 12018 $");
+  script_version("$Revision: 13660 $");
   script_cve_id("CVE-2011-4565");
   script_bugtraq_id(49995);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 10:48:45 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2011-12-05 15:17:25 +0530 (Mon, 05 Dec 2011)");
   script_name("XOOPS 'text' and 'message' Parameter Cross-Site Scripting Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -52,18 +52,21 @@ if(description)
 
   script_tag(name:"summary", value:"The host is running XOOPS and is prone to cross site scripting
   vulnerabilities.");
+
   script_tag(name:"insight", value:"The flaws are due to improper validation of user-supplied input to
 
   - The 'text' parameter to include/formdhtmltextarea_preview.php (when 'html'
-    is set to '1'),
+  is set to '1'),
 
   - The '[img]' BBCode tag in the 'message' parameter to pmlite.php script,
-    which allows attacker to execute arbitrary HTML and script code on the
-    user's browser session in the security context of an affected site.");
+  which allows attacker to execute arbitrary HTML and script code on the
+  user's browser session in the security context of an affected site.");
+
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to insert arbitrary HTML
-  and script code, which will be executed in a user's browser session in the
-  context of an affected site.");
-  script_tag(name:"affected", value:"XOOPS version 2.5.1a and prior");
+  and script code, which will be executed in a user's browser session in the context of an affected site.");
+
+  script_tag(name:"affected", value:"XOOPS version 2.5.1a and prior.");
+
   script_tag(name:"solution", value:"Upgrade to XOOPS version 2.5.3 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -82,6 +85,7 @@ if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
 if( dir == "/" ) dir = "";
 
+useragent = http_get_user_agent();
 host = http_host_name( port:port );
 
 url = dir + "/include/formdhtmltextarea_preview.php";
@@ -90,7 +94,7 @@ postdata = "html=1&text=<script>alert(document.cookie)</script>";
 
 req = string("POST ", url, " HTTP/1.1\r\n",
              "Host: ", host, "\r\n",
-             "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+             "User-Agent: ", useragent, "\r\n",
              "Content-Type: application/x-www-form-urlencoded\r\n",
              "Content-Length: ", strlen(postdata), "\r\n",
              "\r\n", postdata);

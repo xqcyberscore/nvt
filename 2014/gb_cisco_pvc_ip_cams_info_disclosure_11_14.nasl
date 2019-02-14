@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_pvc_ip_cams_info_disclosure_11_14.nasl 11867 2018-10-12 10:48:11Z cfischer $
+# $Id: gb_cisco_pvc_ip_cams_info_disclosure_11_14.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # Cisco PVC IP Cam Information Disclosure
 #
@@ -30,7 +30,7 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.105106");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11867 $");
+  script_version("$Revision: 13659 $");
 
   script_name("Cisco PVC IP Cam Information Disclosure");
 
@@ -44,7 +44,7 @@ usernames and passwords.");
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"summary", value:"Cisco PVC IP Camis prone to an information disclosure vulnerability.");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2014-11-05 10:38:34 +0100 (Wed, 05 Nov 2014)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -80,7 +80,7 @@ sess = session[1];
 
 url = '/oamp/System.xml?action=downloadConfigurationFile';
 
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 host = http_host_name( port:port );
 
 req = 'GET ' + url + ' HTTP/1.1\r\n' +

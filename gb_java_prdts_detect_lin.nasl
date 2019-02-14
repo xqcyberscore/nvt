@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_prdts_detect_lin.nasl 11968 2018-10-18 14:31:48Z cfischer $
+# $Id: gb_java_prdts_detect_lin.nasl 13664 2019-02-14 11:13:52Z cfischer $
 #
 # Multiple Java Products Version Detection (Linux)
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800385");
-  script_version("$Revision: 11968 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:31:48 +0200 (Thu, 18 Oct 2018) $");
+  script_version("$Revision: 13664 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 12:13:52 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-04-23 08:16:04 +0200 (Thu, 23 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -90,7 +90,7 @@ if( javapaths ) {
       gcjVer = eregmatch( pattern:"([0-9]\.[0-9_.]+)", string:javaVer[2] ); # TODO: This doesn't match the regex in get_bin_version above...
       if( ! isnull( gcjVer[1] ) ) {
         set_kb_item( name:"Java/JRE/Linux/LibGCJ/Ver", value:gcjVer[1] );
-        log_message( data:'Detected Java JRE version: ' + gcjVer[1] + '\nLocation: ' + executableFile + '\n\nConcluded from version identification result:\n' + javaVer[max_index(javaVer)-1] );
+        log_message( data:'Detected Java LibGCJ version: ' + gcjVer[1] + '\nLocation: ' + executableFile + '\n\nConcluded from version identification result:\n' + javaVer[max_index(javaVer)-1] );
       }
     }
     # IBM Java
@@ -107,12 +107,11 @@ if( javapaths ) {
       if(ibmsdkVer[1])
       {
         set_kb_item( name:"IBM/Java/SDK/Linux/Ver", value:ibmsdkVer[1] );
-        log_message( data:'Detected IBM Java SDK version: ' + ibmsdkVer[1] + '\nLocation: ' + executableFile + '\n\nConcluded from version identification result:\n' + javaVer[max_index(javaVer)-1]);
         cpe = build_cpe( value:ibmsdkVer[1], exp:"^([0-9.]+)", base:"cpe:/a:ibm:java_sdk:" );
         if( isnull( cpe ) )
           cpe = "cpe:/a:ibm:java_sdk";
 
-        register_and_report_cpe( app:"IBM Java", ver:ibmsdkVer[1], concluded:ibmsdkVer[0], cpename:cpe, insloc:executableFile );
+        register_and_report_cpe( app:"IBM Java SDK", ver:ibmsdkVer[1], concluded:ibmsdkVer[0], cpename:cpe, insloc:executableFile );
       }
     }
     # Sun/Oracle Java

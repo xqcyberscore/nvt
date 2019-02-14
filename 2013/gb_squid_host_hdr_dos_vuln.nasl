@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_squid_host_hdr_dos_vuln.nasl 11866 2018-10-12 10:12:29Z cfischer $
+# $Id: gb_squid_host_hdr_dos_vuln.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # Squid Proxy Host Header Denial Of Service Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:squid-cache:squid";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802057");
-  script_version("$Revision: 11866 $");
+  script_version("$Revision: 13659 $");
   script_cve_id("CVE-2013-4123");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:12:29 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2013-08-12 12:42:47 +0530 (Mon, 12 Aug 2013)");
   script_name("Squid Proxy Host Header Denial Of Service Vulnerability");
 
@@ -73,7 +73,7 @@ if(!squid_port){
   exit(0);
 }
 
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 
 ## crafted port value
 crafted_port_value = crap(length:2000, data:"AZ");

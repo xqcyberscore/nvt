@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hybridauth_remote_code_exec_vuln.nasl 13210 2019-01-22 09:14:04Z cfischer $
+# $Id: gb_hybridauth_remote_code_exec_vuln.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # HybridAuth 'install.php' Remote Code Execution Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804753");
-  script_version("$Revision: 13210 $");
+  script_version("$Revision: 13659 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-22 10:14:04 +0100 (Tue, 22 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2014-08-26 10:58:06 +0530 (Tue, 26 Aug 2014)");
   script_name("HybridAuth 'install.php' Remote Code Execution Vulnerability");
   script_category(ACT_DESTRUCTIVE_ATTACK); # nb: The original version of the script was in ACT_ATTACK and exited if safe_checks was enabled.
@@ -74,7 +74,7 @@ include("http_keepalive.inc");
 port = get_http_port( default:80 );
 if( ! can_host_php( port:port ) ) exit( 0 );
 
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 host = http_host_name( port:port );
 
 foreach dir( make_list_unique( "/", "/auth", "/hybridauth", "/social", cgi_dirs( port:port ) ) ) {

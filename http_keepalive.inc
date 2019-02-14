@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: http_keepalive.inc 13429 2019-02-04 09:09:14Z cfischer $
+# $Id: http_keepalive.inc 13658 2019-02-14 08:16:14Z cfischer $
 #
 # Methods to support http keep alive handling
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 13429 $
+# $Revision: 13658 $
 #
 ###############################################################################
 
@@ -124,7 +124,7 @@ function http_keepalive_enabled( port ) {
     return( 0 );
   }
 
-  useragent = get_http_user_agent();
+  useragent = http_get_user_agent();
 
   # nb: Always keep http_host_name() before http_open_socket() as the first
   # could fork with multiple vhosts and the child's would share the same
@@ -327,7 +327,7 @@ function http_keepalive_send_recv( port, data, bodyonly, fetch404, content_type_
 
   # Some (mostly older) VTs are not passing the User-Agent header but we should always have one.
   if( " HTTP/1.1" >< data && ! egrep( pattern:"^User-Agent:.+", string:data, icase:TRUE ) ) {
-    data = ereg_replace( string:data, pattern:'\r\n\r\n', replace:'\r\nUser-Agent: ' + get_http_user_agent() + '\r\n\r\n' );
+    data = ereg_replace( string:data, pattern:'\r\n\r\n', replace:'\r\nUser-Agent: ' + http_get_user_agent() + '\r\n\r\n' );
     set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#http_keepalive_send_recv(): Using a HTTP/1.1 request without a 'User-Agent:' header passed in 'data' variable. Adding it automatically to the request." );
   }
 

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_flatpress_xss_vuln.nasl 12006 2018-10-22 07:42:16Z mmartin $
+# $Id: gb_flatpress_xss_vuln.nasl 13660 2019-02-14 09:48:45Z cfischer $
 #
 # FlatPress Cross-Site Scripting Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:flatpress:flatpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801947");
-  script_version("$Revision: 12006 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 09:42:16 +0200 (Mon, 22 Oct 2018) $");
+  script_version("$Revision: 13660 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 10:48:45 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2011-07-13 17:31:13 +0200 (Wed, 13 Jul 2011)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -46,22 +46,23 @@ if(description)
   script_mandatory_keys("flatpress/installed");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
-script code in a user's browser session in the context of an affected website.");
+  script code in a user's browser session in the context of an affected website.");
 
   script_tag(name:"affected", value:"FlatPress version 0.1010.1 and prior");
 
   script_tag(name:"insight", value:"The flaw is due to input passed to 'name', 'email' and 'url' POST parameters
-in index.php are not properly sanitised before returning to the user.");
+  in index.php are not properly sanitised before returning to the user.");
 
   script_tag(name:"solution", value:"Upgrade FlatPress 0.1010.2 or later.");
 
   script_tag(name:"summary", value:"This host is running FlatPress and is prone to cross site scripting
-vulnerability.");
+  vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_analysis");
 
   script_xref(name:"URL", value:"http://flatpress.org/home/");
+
   exit(0);
 }
 
@@ -78,22 +79,24 @@ if (!dir = get_app_location(cpe: CPE, port: port))
 if (dir == "/")
   dir = "";
 
+useragent = http_get_user_agent();
 host = http_host_name(port: port);
 
 filename = dir + "/index.php?x=entry:entry110603-123922;comments:1";
-authVariables = "name=%22%3E%3Cscript%3Ealert%28%22OpenVAS-XSS-TEST%22%" +
+authVariables = "name=%22%3E%3Cscript%3Ealert%28%22VT-XSS-TEST%22%" +
                 "29%3B%3C%2Fscript%3E";
 
 sndReq = string("POST ", filename, " HTTP/1.1\r\n",
                 "Host: ", host ,"\r\n\r\n",
-                "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+                "User-Agent: ", useragent, "\r\n",
                 "Content-Type: application/x-www-form-urlencoded\r\n\r\n",
                 "Content-Length: ", strlen(authVariables), "\r\n",
                 authVariables);
 rcvRes = http_keepalive_send_recv(port: port, data: sndReq);
 
-if (rcvRes =~ "HTTP/1\.. 200" && '><script>alert("OpenVAS-XSS-TEST");</script>' >< rcvRes) {
-  security_message(port: port);
+if (rcvRes =~ "^HTTP/1\.[01] 200" && '><script>alert("VT-XSS-TEST");</script>' >< rcvRes) {
+  report = report_vuln_url(port: port, url: filename);
+  security_message(port: port, data: report);
   exit(0);
 }
 

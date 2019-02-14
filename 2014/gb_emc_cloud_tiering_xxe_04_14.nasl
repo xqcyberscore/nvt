@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_emc_cloud_tiering_xxe_04_14.nasl 13543 2019-02-08 14:43:51Z cfischer $
+# $Id: gb_emc_cloud_tiering_xxe_04_14.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # EMC Cloud Tiering Appliance v10.0 Unauthenticated XXE Arbitrary File Read
 #
@@ -28,12 +28,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103931");
-  script_version("$Revision: 13543 $");
+  script_version("$Revision: 13659 $");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:N");
   script_name("EMC Cloud Tiering Appliance v10.0 Unauthenticated XXE Arbitrary File Read");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/32623/");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2014-04-01 11:51:50 +0200 (Tue, 01 Apr 2014)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -73,7 +73,7 @@ buf = http_get_cache( item:"/", port:port );
 
 if( "EMC Cloud Tiering" >!< buf ) exit( 0 );
 
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 host = http_host_name(port:port);
 
 files = traversal_files("linux");

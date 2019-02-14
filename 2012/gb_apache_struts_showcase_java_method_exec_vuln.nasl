@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_showcase_java_method_exec_vuln.nasl 11857 2018-10-12 08:25:16Z cfischer $
+# $Id: gb_apache_struts_showcase_java_method_exec_vuln.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # Apache Struts2 Showcase Arbitrary Java Method Execution vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802425");
-  script_version("$Revision: 11857 $");
+  script_version("$Revision: 13659 $");
   script_cve_id("CVE-2012-0838");
   script_bugtraq_id(49728);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2012-03-13 14:59:53 +0530 (Tue, 13 Mar 2012)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Apache Struts2 Showcase Arbitrary Java Method Execution vulnerability");
@@ -84,7 +84,7 @@ if(!dir = get_app_location(cpe:CPE, port:asport)){
   exit(0);
 }
 
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 host = http_host_name(port:asport);
 
 asreq = http_get(item:string(dir,"/showcase.action"), port:asport);

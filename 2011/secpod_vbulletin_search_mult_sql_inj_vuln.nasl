@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_vbulletin_search_mult_sql_inj_vuln.nasl 12047 2018-10-24 07:38:41Z cfischer $
+# $Id: secpod_vbulletin_search_mult_sql_inj_vuln.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # vBulletin Search UI Multiple SQL Injection Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902540");
-  script_version("$Revision: 12047 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 09:38:41 +0200 (Wed, 24 Oct 2018) $");
+  script_version("$Revision: 13659 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2011-07-22 12:16:19 +0200 (Fri, 22 Jul 2011)");
   script_bugtraq_id(48815);
   script_tag(name:"cvss_base", value:"7.5");
@@ -84,6 +84,7 @@ if(dir == "/")
   dir = "";
 
 vt_string = get_vt_string();
+useragent = http_get_user_agent();
 host = http_host_name( port:port );
 
 attack = string("query=" + vt_string + "+SQL+Injection&titleonly=0&searchuser=&starter",
@@ -92,16 +93,17 @@ attack = string("query=" + vt_string + "+SQL+Injection&titleonly=0&searchuser=&s
                 "securitytoken=&searchfromtype=vBForum%3ASocialGroupMessage&",
                 "do=process&contenttypeid=5&messagegroupid[0]='");
 
-req = string("POST ", dir, "/search.php?search_type=1 HTTP/1.1\r\n",
+url = dir + "/search.php?search_type=1";
+req = string("POST ", url, " HTTP/1.1\r\n",
              "Host: ", host, "\r\n",
-             "User-Agent: ", get_http_user_agent(), "\r\n",
+             "User-Agent: ", useragent, "\r\n",
              "Content-Type: application/x-www-form-urlencoded\r\n",
              "Content-Length: ", strlen(attack), "\r\n\r\n", attack);
-
 res = http_keepalive_send_recv(port:port, data:req);
 
-if('Database error' >< res && 'MySQL Error' >< res){
-  security_message(port:port, data:"The target host was found to be vulnerable");
+if('Database error' >< res && 'MySQL Error' >< res) {
+  report = report_vuln_url(port:port, url:url);
+  security_message(port:port, data:report);
   exit(0);
 }
 

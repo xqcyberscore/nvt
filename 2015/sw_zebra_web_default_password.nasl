@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_zebra_web_default_password.nasl 11536 2018-09-21 19:44:30Z cfischer $
+# $Id: sw_zebra_web_default_password.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # Zebra PrintServer Webinterface Default Password
 #
@@ -28,11 +28,11 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111060");
-  script_version("$Revision: 11536 $");
+  script_version("$Revision: 13659 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Zebra PrintServer Webinterface Default Password");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 21:44:30 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2015-11-25 11:00:00 +0100 (Wed, 25 Nov 2015)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
@@ -72,7 +72,7 @@ if( "Zebra Technologies" >< res || "Internal Wired PrintServer" >< res || "ENTER
   vuln = 0;
   host = http_host_name( port:port );
   report = '';
-  useragent = get_http_user_agent();
+  useragent = http_get_user_agent();
   data = string( "0=1234" );
   len = strlen( data );
 

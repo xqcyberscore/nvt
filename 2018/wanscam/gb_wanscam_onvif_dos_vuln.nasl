@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wanscam_onvif_dos_vuln.nasl 12807 2018-12-17 08:21:35Z ckuersteiner $
+# $Id: gb_wanscam_onvif_dos_vuln.nasl 13655 2019-02-14 07:53:42Z ckuersteiner $
 #
 # Wanscam HW0021 ONVIF Denial of Service Vulnerability
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113222");
-  script_version("$Revision: 12807 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-17 09:21:35 +0100 (Mon, 17 Dec 2018) $");
+  script_version("$Revision: 13655 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 08:53:42 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-07-03 11:23:57 +0200 (Tue, 03 Jul 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -56,15 +56,18 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"An invalid SOAP-request to the ONVIF-SOAP interface will cause the ONVIF service to crash.");
+  script_tag(name:"insight", value:"An invalid SOAP-request to the ONVIF-SOAP interface will cause the ONVIF
+service to crash.");
 
-  script_tag(name:"impact", value:"Successful exploitation would allow an attacker to deny users access to the ONVIF interface,
-  until the service is manually restarted.");
+  script_tag(name:"impact", value:"Successful exploitation would allow an attacker to deny users access to the
+ONVIF interface, until the service is manually restarted.");
 
   script_tag(name:"affected", value:"Wanscam HW0021. Other devices using ONVIF may be affected, too.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 17th December, 2018.
+  script_tag(name:"solution", value:"No known solution is available as of 14th February, 2019.
   Information regarding this issue will be updated once solution details are available.");
+
+  script_xref(name:"URL", value:"https://hackinganarchy.wordpress.com/2018/09/20/cve-2018-13111/");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_accellion_fta_file_discl_vuln.nasl 13238 2019-01-23 11:14:26Z cfischer $
+# $Id: gb_accellion_fta_file_discl_vuln.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # Accellion FTA File Disclosure Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/h:accellion:secure_file_transfer_appliance';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106031");
-  script_version("$Revision: 13238 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-23 12:14:26 +0100 (Wed, 23 Jan 2019) $");
+  script_version("$Revision: 13659 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2015-07-28 09:48:42 +0700 (Tue, 28 Jul 2015)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -108,7 +108,7 @@ else {
     host = http_host_name(port: port);
     url = dir + '/intermediate_login.html';
     cookie = 'statecode=../../../../../' + file + '%00';
-    useragent = get_http_user_agent();
+    useragent = http_get_user_agent();
 
     req = 'GET ' + url + ' HTTP/1.1\r\n' +
           'Host: ' + host + '\r\n' +

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_illustrator_detect_macosx.nasl 11279 2018-09-07 09:08:31Z cfischer $
+# $Id: gb_adobe_illustrator_detect_macosx.nasl 13650 2019-02-14 06:48:40Z cfischer $
 #
 # Adobe Illustrator Version Detection (Mac OS X)
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802787");
-  script_version("$Revision: 11279 $");
+  script_version("$Revision: 13650 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:08:31 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 07:48:40 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2012-05-16 19:13:07 +0530 (Wed, 16 May 2012)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Adobe Illustrator Version Detection (Mac OS X)");
@@ -95,13 +95,15 @@ if(!install)
   }
 }
 
+close(sock);
+
 if(install)
 {
   set_kb_item(name: "Adobe/Illustrator/MacOSX/Version", value:version);
 
   cpe = build_cpe(value:version, exp:"^([0-9.]+)", base:"cpe:/a:adobe:illustrator:");
   if(isnull(cpe)){
-    cpe='cpe:/a:adobe:illustrator';
+    cpe = 'cpe:/a:adobe:illustrator';
   }
 
   path = '/Applications/' + application + '/Adobe Illustrator.app';
@@ -113,8 +115,6 @@ if(install)
                                            install:path,
                                            cpe:cpe,
                                            concluded: version));
-  close(sock);
-  exit(0);
 }
-close(sock);
-exit(99);
+
+exit(0);

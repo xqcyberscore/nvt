@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_iis6_97127.nasl 12083 2018-10-25 09:48:10Z cfischer $
+# $Id: gb_iis6_97127.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # Microsoft Internet Information Services Buffer Overflow Vulnerability
 #
@@ -32,10 +32,10 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.140228");
   script_bugtraq_id(97127);
   script_cve_id("CVE-2017-7269");
-  script_version("$Revision: 12083 $");
+  script_version("$Revision: 13659 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 11:48:10 +0200 (Thu, 25 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-03-30 17:46:17 +0200 (Thu, 30 Mar 2017)");
   script_name("Microsoft Internet Information Services Buffer Overflow Vulnerability");
   script_category(ACT_DENIAL);
@@ -80,7 +80,7 @@ if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
 if( vers != "6.0" ) exit( 99 );
 
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 host = http_host_name(  port:port );
 
 req  = 'OPTIONS / HTTP/1.1\r\n';

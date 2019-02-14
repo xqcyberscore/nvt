@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samsung_syncthru_web_service_detect.nasl 11021 2018-08-17 07:48:11Z cfischer $
+# $Id: gb_samsung_syncthru_web_service_detect.nasl 13650 2019-02-14 06:48:40Z cfischer $
 #
 # Samsung Syncthru Web Service Remote Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813744");
-  script_version("$Revision: 11021 $");
+  script_version("$Revision: 13650 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:48:11 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 07:48:40 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-08-06 17:37:28 +0530 (Mon, 06 Aug 2018)");
   script_name("Samsung Syncthru Web Service Remote Detection");
 
@@ -59,7 +59,6 @@ include("http_keepalive.inc");
 include("misc_func.inc");
 
 samPort = get_http_port(default:80);
-
 res = http_get_cache(port:samPort, item:"/sws/index.sws");
 
 if("<title>SyncThru Web Service</title>" >< res && res =~ "Copyright.*Samsung Electronics"
@@ -97,6 +96,6 @@ if("<title>SyncThru Web Service</title>" >< res && res =~ "Copyright.*Samsung El
                                           cpe:cpe,
                                           concluded:"Main Firmware Version " + version + " with Network Firmware Version " + netVer),
                                           port:samPort);
-  exit(0);
 }
-exit(99);
+
+exit(0);

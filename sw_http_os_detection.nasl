@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_http_os_detection.nasl 13619 2019-02-13 07:21:27Z cfischer $
+# $Id: sw_http_os_detection.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # HTTP OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111067");
-  script_version("$Revision: 13619 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-13 08:21:27 +0100 (Wed, 13 Feb 2019) $");
+  script_version("$Revision: 13659 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2015-12-10 16:00:00 +0100 (Thu, 10 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -1384,8 +1384,8 @@ function check_user_agent_banner( port, banner ) {
 
     if( banner == "User-Agent:" || banner == "User-Agent: " ) return;
 
-    # If our user agent is echoed back to us just ignore it...
-    if( get_http_user_agent() >< banner ) return;
+    # nb: If our user agent is echoed back to us just ignore it...
+    if( http_get_user_agent() >< banner ) return;
 
     banner_type = "HTTP User Agent banner";
 

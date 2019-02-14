@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_loxone_default_login.nasl 11008 2018-08-16 13:26:16Z cfischer $
+# $Id: gb_loxone_default_login.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # Loxone Default Login Credentials Vulenrability
 #
@@ -30,7 +30,7 @@ CPE = 'cpe:/a:loxone:loxone';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107045");
-  script_version("$Revision: 11008 $");
+  script_version("$Revision: 13659 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
@@ -44,7 +44,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_active");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 15:26:16 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2016-09-07 13:18:59 +0200 (Wed, 07 Sep 2016)");
   script_xref(name:"URL", value:"https://osvdb.info/OSVDB-98155");
 
@@ -74,7 +74,7 @@ password = "admin";
 
 if (!http_port = get_app_port(cpe:CPE, service:'www')) exit (0);
 
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 host = http_host_name(port:http_port);
 rand = rand_str(length:17, charset: "0123456789");
 req = string("GET /jdev/sys/getkey?0.", rand, " HTTP/1.1\r\n",

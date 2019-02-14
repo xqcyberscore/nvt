@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sitescope_getSiteScopeConfiguration.nasl 11435 2018-09-17 13:44:25Z cfischer $
+# $Id: gb_sitescope_getSiteScopeConfiguration.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # HP SiteScope SOAP Call getSiteScopeConfiguration Remote Code Execution Vulnerability
 #
@@ -30,7 +30,7 @@ CPE = "cpe:/a:hp:sitescope";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103603");
-  script_version("$Revision: 11435 $");
+  script_version("$Revision: 13659 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
@@ -39,7 +39,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.zerodayinitiative.com/advisories/ZDI-12-173/");
   script_xref(name:"URL", value:"http://www.hp.com/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:44:25 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2012-11-05 18:35:36 +0100 (Mon, 05 Nov 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -82,7 +82,7 @@ if (!dir = get_app_location(cpe: CPE, port: port))
 if (dir == "/")
   dir = "";
 
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 vtstring = get_vt_string( lowercase:TRUE );
 host = http_host_name(port:port);
 

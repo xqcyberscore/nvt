@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ruby_rails_xml_yaml_rce.nasl 11865 2018-10-12 10:03:43Z cfischer $
+# $Id: gb_ruby_rails_xml_yaml_rce.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # Ruby on Rails XML Processor YAML Deserialization RCE Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = 'cpe:/a:rubyonrails:ruby_on_rails';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802050");
-  script_version("$Revision: 11865 $");
+  script_version("$Revision: 13659 $");
   script_bugtraq_id(57187);
   script_cve_id("CVE-2013-0156");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2013-01-18 11:03:52 +0530 (Fri, 18 Jan 2013)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -79,7 +79,7 @@ if(!dir = get_app_location(port:railsPort, cpe:CPE)){
 
 if( dir == "/" ) dir = "";
 
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 host = http_host_name( port:railsPort );
 
 req_common = string("POST ", dir , "/posts/search", " HTTP/1.1\r\n",

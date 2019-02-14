@@ -1,14 +1,6 @@
-###############################################################################
-# OpenVAS Vulnerability Test
-# $Id: gb_mybb_xss_vuln.nasl 13213 2019-01-22 10:23:57Z ckuersteiner $
-#
-# MyBB 1.8.14 XSS Vulnerability
-#
-# Authors:
-# Jan Philipp Schulte <jan.schulte@greenbone.net>
-#
-# Copyright:
 # Copyright (C) 2018 Greenbone Networks GmbH, https://www.greenbone.net
+#
+# SPDX-License-Identifier: GPL-2.0-or-later
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -23,20 +15,19 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-###############################################################################
 
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113109");
-  script_version("$Revision: 13213 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-22 11:23:57 +0100 (Tue, 22 Jan 2019) $");
+  script_version("$Revision: 13657 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:08:11 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-02-13 10:50:30 +0100 (Tue, 13 Feb 2018)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_cve_id("CVE-2018-6844");
 
@@ -57,8 +48,9 @@ if( description )
 
   script_tag(name:"affected", value:"MyBB through version 1.8.14.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 22nd January, 2019.
-  Information regarding this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since
+  the disclosure of this vulnerability. Likely none will be provided anymore. General solution options
+  are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_xref(name:"URL", value:"https://websecnerd.blogspot.de/2018/02/mybb-forum-1.html");
   script_xref(name:"URL", value:"https://blog.mybb.com/category/updates/");

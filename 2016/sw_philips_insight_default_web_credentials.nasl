@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_philips_insight_default_web_credentials.nasl 11008 2018-08-16 13:26:16Z cfischer $
+# $Id: sw_philips_insight_default_web_credentials.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # Philips In.Sight Default Webinterface Credentials
 #
@@ -28,12 +28,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111097");
-  script_version("$Revision: 11008 $");
+  script_version("$Revision: 13659 $");
   script_cve_id("CVE-2015-2882");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("Philips In.Sight Default Webinterface Credentials");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 15:26:16 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2016-04-24 12:00:00 +0200 (Sun, 24 Apr 2016)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
@@ -89,7 +89,7 @@ if( "Philips InSight Wireless Home Monitor" >< res ) {
                     "/cgi-bin/v1/stream0",
                     "/cgi-bin/v1/users/admin" );
 
-  useragent = get_http_user_agent();
+  useragent = http_get_user_agent();
   host = http_host_name( port:port );
 
   foreach url( urls ) {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_multiple_devices_58938.nasl 12439 2018-11-20 13:01:33Z cfischer $
+# $Id: gb_dlink_multiple_devices_58938.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # Multiple D-Link Products Command Injection and Multiple Information Disclosue Vulnerabilities
 #
@@ -29,10 +29,10 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103691");
   script_bugtraq_id(58938);
-  script_version("$Revision: 12439 $");
+  script_version("$Revision: 13659 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-20 14:01:33 +0100 (Tue, 20 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2013-04-09 12:07:13 +0200 (Tue, 09 Apr 2013)");
   script_name("Multiple D-Link Products Command Injection and Multiple Information Disclosue Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -78,7 +78,7 @@ CPE = infos["cpe"];
 if(!dir = get_app_location(cpe:CPE, port:port)) exit(0);
 if(dir == "/") dir = "";
 
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 host = http_host_name(port:port);
 
 count = 0;

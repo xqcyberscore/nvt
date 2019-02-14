@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_netiq_privileged_user_manager_rce_vuln.nasl 11431 2018-09-17 11:54:52Z cfischer $
+# $Id: gb_novell_netiq_privileged_user_manager_rce_vuln.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # Novell NetIQ Privileged User Manager Remote Code Execution Vulnerability
 #
@@ -27,15 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802043");
-  script_version("$Revision: 11431 $");
+  script_version("$Revision: 13659 $");
   script_bugtraq_id(56535, 56539);
   script_cve_id("CVE-2012-5930", "CVE-2012-5931", "CVE-2012-5932");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 13:54:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2012-11-21 18:46:53 +0530 (Wed, 21 Nov 2012)");
   script_name("Novell NetIQ Privileged User Manager Remote Code Execution Vulnerability");
 
+  script_xref(name:"URL", value:"http://download.novell.com/protected/Summary.jsp?buildid=K6-PmbPjduA~");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51291");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/22737");
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/118117");
@@ -53,14 +54,17 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute perl code and
   change administrative credentials.");
-  script_tag(name:"affected", value:"Novell NetIQ Privileged User Manager 2.3.0 and 2.3.1");
+
+  script_tag(name:"affected", value:"Novell NetIQ Privileged User Manager 2.3.0 and 2.3.1.");
+
   script_tag(name:"insight", value:"The flaws are due to an error in the 'ldapagnt' and 'auth' module due to not
   restricting access to certain methods, which can be exploited to execute
   perl code by passing arbitrary arguments to the Perl 'eval()' function
   via HTTP POST requests and attacker can change administrative credentials
   using the 'modifyAccounts()' function via HTTP POST requests.");
-  script_tag(name:"solution", value:"Apply NetIQ Privileged User Manager 2.3.1 HF2 (2.3.1-2) or later,
-  http://download.novell.com/protected/Summary.jsp?buildid=K6-PmbPjduA~");
+
+  script_tag(name:"solution", value:"Apply NetIQ Privileged User Manager 2.3.1 HF2 (2.3.1-2) or later.");
+
   script_tag(name:"summary", value:"The host is running Novell NetIQ Privileged User Manager and
   is prone to remote code execution vulnerability.");
 
@@ -75,7 +79,7 @@ include("http_keepalive.inc");
 
 port = get_http_port(default:443);
 
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 host = http_host_name(port:port);
 
 res1 = http_get_cache(item:"/", port:port);

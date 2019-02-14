@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openfire_xss_vuln.nasl 12807 2018-12-17 08:21:35Z ckuersteiner $
+# $Id: gb_openfire_xss_vuln.nasl 13655 2019-02-14 07:53:42Z ckuersteiner $
 #
 # Openfire Reflected XSS Vulnerability
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112307");
-  script_version("$Revision: 12807 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-17 09:21:35 +0100 (Mon, 17 Dec 2018) $");
+  script_version("$Revision: 13655 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 08:53:42 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-06-15 10:04:21 +0200 (Fri, 15 Jun 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -61,10 +61,10 @@ if(description)
 
   script_tag(name:"affected", value:"Ignite Realtime Openfire");
 
-  script_tag(name:"solution", value:"No known solution is available as of 17th December, 2018.
+  script_tag(name:"solution", value:"No known solution is available as of 14th February, 2019.
   Information regarding this issue will be updated once solution details are available.");
 
-  script_xref(name:"URL", value:"https://vulmon.com/vulnerabilitydetails?qid=CVE-2018-11688");
+  script_xref(name:"URL", value:"https://seclists.org/fulldisclosure/2018/Jun/13");
 
   exit(0);
 }

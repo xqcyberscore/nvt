@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_s40_cms_xss_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
+# $Id: gb_s40_cms_xss_vuln.nasl 13660 2019-02-14 09:48:45Z cfischer $
 #
 # S40 Content Management System (CMS) Cross-Site Scripting Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801961");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("$Revision: 13660 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 10:48:45 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2011-08-04 10:01:53 +0200 (Thu, 04 Aug 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -47,13 +47,17 @@ if(description)
   HTML and script code in a user's browser session in the context of a vulnerable
   site. This may allow an attacker to steal cookie-based authentications and launch
   further attacks.");
+
   script_tag(name:"affected", value:"S40 Content Management System (CMS) v0.4.2 beta and prior.");
+
   script_tag(name:"insight", value:"The flaw is caused by improper validation of user-supplied input
   passed via the 'gsearchfield' parameter in 'index.php' is not properly verified
   before it is returned to the user.");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
   release, disable respective features, remove the product or replace the product by another one.");
+
   script_tag(name:"summary", value:"This host is running S40 Content Management System (CMS) and is
   prone to cross site scripting vulnerability.");
 
@@ -67,10 +71,8 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-
-if(!can_host_php(port:port)) {
+if(!can_host_php(port:port))
   exit(0);
-}
 
 host = http_host_name(port:port);
 
@@ -78,26 +80,27 @@ foreach dir(make_list_unique("/cms", "/", "/s40", "/s40cms", cgi_dirs(port:port)
 {
 
   if(dir == "/") dir = "";
-
   res = http_get_cache(item: dir + "/index.php", port:port);
 
   if("Powered by S40 CMS" >< res)
   {
-    postData = "gsearchfield=<script>alert('OpenVAS-XSS-TEST')</script>" +
+    postData = "gsearchfield=<script>alert('VT-XSS-TEST')</script>" +
                "&gs=true&gsearchsubmit=Search";
 
-    req = string("POST ", dir, "/index.php HTTP/1.1\r\n",
+    url = dir + "/index.php";
+    req = string("POST ", url, " HTTP/1.1\r\n",
                  "Host: ", host, "\r\n",
-                 "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+                 "User-Agent: ", http_get_user_agent(), "\r\n",
                  "Content-Type: application/x-www-form-urlencoded\r\n",
                  "Content-Length: ", strlen(postData), "\r\n\r\n", postData);
 
     res = http_keepalive_send_recv(port:port, data:req);
 
-    if(ereg(pattern:"^HTTP/[0-9]\.[0-9] 200 .*", string:res) &&
-     ("'<script>alert('OpenVAS-XSS-TEST')</script>" >< res))
+    if(ereg(pattern:"^HTTP/1\.[01] 200", string:res) &&
+     ("'<script>alert('VT-XSS-TEST')</script>" >< res))
     {
-      security_message(port:port);
+      report = report_vuln_url(port:port, url:url);
+      security_message(port:port, data:report);
       exit(0);
     }
   }

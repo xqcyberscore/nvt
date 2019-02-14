@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_isc_bind_dos_vuln_jan18_win.nasl 12116 2018-10-26 10:01:35Z mmartin $
+# $Id: gb_isc_bind_dos_vuln_jan18_win.nasl 13654 2019-02-14 07:51:59Z mmartin $
 #
 # ISC BIND DoS Vulnerability - Jan17 (Windows)
 #
@@ -30,11 +30,11 @@ CPE = 'cpe:/a:isc:bind';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140696");
-  script_version("$Revision: 12116 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_version("$Revision: 13654 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 08:51:59 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-01-17 15:42:36 +0700 (Wed, 17 Jan 2018)");
-  script_tag(name:"cvss_base", value:"7.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 
   script_cve_id("CVE-2017-3145");
 

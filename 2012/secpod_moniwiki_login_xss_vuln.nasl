@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_moniwiki_login_xss_vuln.nasl 11888 2018-10-12 15:27:49Z cfischer $
+# $Id: secpod_moniwiki_login_xss_vuln.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # MoniWiki 'login_id' Cross-Site Scripting Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902794");
-  script_version("$Revision: 11888 $");
+  script_version("$Revision: 13659 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 17:27:49 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2012-02-21 17:36:32 +0530 (Tue, 21 Feb 2012)");
   script_name("MoniWiki 'login_id' Cross-Site Scripting Vulnerability");
 
@@ -72,7 +72,7 @@ if(!can_host_php(port:port)){
   exit(0);
 }
 
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 host = http_host_name(port:port);
 
 foreach dir (make_list_unique("/moniwiki", "/MoniWiki", cgi_dirs(port:port)))

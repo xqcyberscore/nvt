@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: os_eol.inc 12704 2018-12-07 12:53:01Z cfischer $
+# $Id: os_eol.inc 13640 2019-02-13 14:32:04Z cfischer $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 12704 $
+# $Revision: 13640 $
 #
 ###############################################################################
 
@@ -288,6 +288,7 @@ eol_cpes['cpe:/o:centos:centos:2'] = '2009-05-31';
 # Fedora (https://fedoraproject.org/wiki/End_of_life?rd=LifeCycle/EOL)
 eol_urls['cpe:/o:fedoraproject:fedora'] = 'https://fedoraproject.org/wiki/End_of_life?rd=LifeCycle/EOL';
 eol_names['cpe:/o:fedoraproject:fedora'] = 'Fedora';
+eol_cpes['cpe:/o:fedoraproject:fedora:27'] = '2018-11-30';
 eol_cpes['cpe:/o:fedoraproject:fedora:26'] = '2018-05-29';
 eol_cpes['cpe:/o:fedoraproject:fedora:25'] = '2017-12-12';
 eol_cpes['cpe:/o:fedoraproject:fedora:24'] = '2017-08-08';
@@ -490,6 +491,8 @@ eol_cpes['cpe:/o:fortinet:fortios:3.3'] = '2009-10-02';
 # Xenserver (https://www.citrix.de/support/product-lifecycle/product-matrix.html)
 eol_urls['cpe:/a:citrix:xenserver'] = 'https://www.citrix.de/support/product-lifecycle/product-matrix.html';
 eol_names['cpe:/a:citrix:xenserver'] = 'Xenserver';
+eol_cpes['cpe:/a:citrix:xenserver:7.6'] = '2019-07-06';
+eol_cpes['cpe:/a:citrix:xenserver:7.5'] = '2019-04-20';
 eol_cpes['cpe:/a:citrix:xenserver:7.4'] = '2018-08-27';
 eol_cpes['cpe:/a:citrix:xenserver:7.3'] = '2018-06-12';
 eol_cpes['cpe:/a:citrix:xenserver:7.2'] = '2018-03-16';
@@ -528,6 +531,11 @@ eol_cpes['cpe:/o:paloaltonetworks:pan-os:1.3'] = '2008-11-20';
 eol_urls['cpe:/o:cisco:ios_xr'] = 'http://www.cisco.com/c/en/us/products/ios-nx-os-software/ios-xr-software/eos-eol-notice-listing.html';
 eol_names['cpe:/o:cisco:ios_xr'] = 'Cisco IOS XR';
 eol_regex['cpe:/o:cisco:ios_xr'] = '^([0-9]+\\.[0-9]+)';
+eol_cpes['cpe:/o:cisco:ios_xr:6.5'] = '2022-08-10';
+eol_cpes['cpe:/o:cisco:ios_xr:6.4'] = '2022-03-29';
+eol_cpes['cpe:/o:cisco:ios_xr:6.3'] = '2021-09-18';
+eol_cpes['cpe:/o:cisco:ios_xr:6.2'] = '2021-03-21';
+eol_cpes['cpe:/o:cisco:ios_xr:6.1'] = '2020-09-20';
 eol_cpes['cpe:/o:cisco:ios_xr:5.3'] = '2019-08-11';
 eol_cpes['cpe:/o:cisco:ios_xr:5.2'] = '2019-01-29';
 eol_cpes['cpe:/o:cisco:ios_xr:5.1'] = '2018-04-01';
@@ -625,6 +633,7 @@ eol_cpes['cpe:/o:freebsd:freebsd:9.3'] = '2016-12-31';
 eol_cpes['cpe:/o:freebsd:freebsd:10.1'] = '2016-12-31';
 eol_cpes['cpe:/o:freebsd:freebsd:10.2'] = '2016-12-31';
 eol_cpes['cpe:/o:freebsd:freebsd:10.3'] = '2018-04-30';
+eol_cpes['cpe:/o:freebsd:freebsd:10.4'] = '2018-10-31';
 # eol_cpes['cpe:/o:freebsd:freebsd:11.0'] = '2017-12-30'; # nb: Same as above
 eol_cpes['cpe:/o:freebsd:freebsd:11.1'] = '2018-09-30';
 
@@ -644,6 +653,8 @@ eol_cpes['cpe:/o:netbsd:netbsd:2.0'] = 'unknown';
 eol_cpes['cpe:/o:netbsd:netbsd:3.0'] = '2009-05-30';
 eol_cpes['cpe:/o:netbsd:netbsd:4.0'] = '2012-11-17';
 eol_cpes['cpe:/o:netbsd:netbsd:5.0'] = '2015-11-09';
+eol_cpes['cpe:/o:netbsd:netbsd:6.0'] = 'unknown';
+eol_cpes['cpe:/o:netbsd:netbsd:6.1'] = 'unknown';
 
 # OpenBSD (https://en.wikipedia.org/wiki/OpenBSD_version_history)
 eol_urls['cpe:/o:openbsd:openbsd'] = 'https://en.wikipedia.org/wiki/OpenBSD_version_history';
@@ -697,6 +708,7 @@ eol_cpes['cpe:/o:openbsd:openbsd:5.8'] = '2016-09-01';
 eol_cpes['cpe:/o:openbsd:openbsd:5.9'] = '2017-04-11';
 eol_cpes['cpe:/o:openbsd:openbsd:6.0'] = '2017-10-09';
 eol_cpes['cpe:/o:openbsd:openbsd:6.1'] = '2018-04-15';
+eol_cpes['cpe:/o:openbsd:openbsd:6.2'] = '2018-10-18';
 
 # https://en.wikipedia.org/wiki/Solaris_(operating_system)#Version_history
 eol_urls['cpe:/o:sun:sunos'] = 'https://en.wikipedia.org/wiki/Solaris_(operating_system)#Version_history';
@@ -720,8 +732,10 @@ eol_cpes['cpe:/o:sun:sunos:5.9'] = '2014-10-01';
 eol_urls['cpe:/o:greenbone:greenbone_os'] = 'https://www.greenbone.net/roadmap-lifecycle/#tab-id-6';
 eol_names['cpe:/o:greenbone:greenbone_os'] = 'Greenbone OS';
 eol_regex['cpe:/o:greenbone:greenbone_os'] = '^([0-9]+\\.[0-9]+)';
+eol_cpes['cpe:/o:greenbone:greenbone_os:4.2'] = '2019-07-31';
 eol_cpes['cpe:/o:greenbone:greenbone_os:4.1'] = '2017-12-15';
 eol_cpes['cpe:/o:greenbone:greenbone_os:4.0'] = '2017-07-30';
+eol_cpes['cpe:/o:greenbone:greenbone_os:3.1'] = '2019-07-31';
 eol_cpes['cpe:/o:greenbone:greenbone_os:3.0'] = '2015-10-03';
 eol_cpes['cpe:/o:greenbone:greenbone_os:2.2'] = '2016-01-03';
 eol_cpes['cpe:/o:greenbone:greenbone_os:2.1'] = '2014-05-31';

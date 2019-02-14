@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_twiki_maketext_rce_vuln.nasl 12952 2019-01-07 06:54:36Z ckuersteiner $
+# $Id: gb_twiki_maketext_rce_vuln.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # TWiki 'MAKETEXT' variable Remote Command Execution Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:twiki:twiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802048");
-  script_version("$Revision: 12952 $");
+  script_version("$Revision: 13659 $");
   script_bugtraq_id(56950);
   script_cve_id("CVE-2012-6329", "CVE-2012-6330");
   script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-07 07:54:36 +0100 (Mon, 07 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2012-12-27 12:46:41 +0530 (Thu, 27 Dec 2012)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
@@ -80,7 +80,7 @@ if( ! dir = get_app_location( cpe:CPE, port:twikiPort ) ) exit( 0 );
 
 if( dir == "/" ) dir = "";
 
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 host = http_host_name(port:twikiPort);
 
 sandbox_page = "/Sandbox/OVTestPage123";

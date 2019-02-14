@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ipswitch_whatsup_detect.nasl 11006 2018-08-16 12:21:56Z cfischer $
+# $Id: gb_ipswitch_whatsup_detect.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # Ipswitch WhatsUp Gold Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106162");
-  script_version("$Revision: 11006 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 14:21:56 +0200 (Thu, 16 Aug 2018) $");
+  script_version("$Revision: 13659 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2016-08-02 08:27:33 +0700 (Tue, 02 Aug 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -87,7 +87,7 @@ else {
 
   req = 'POST ' + url + ' HTTP/1.1\r\n' +
         'Host: ' + host + '\r\n' +
-        # Seems to need a proper User Agent, get_http_user_agent(); doesn't work
+        # Seems to need a proper User Agent, http_get_user_agent(); doesn't work
         'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:47.0) Gecko/20100101 Firefox/47.0\r\n' +
         'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n' +
         'Accept-Language: en-US,en;q=0.5\r\n' +

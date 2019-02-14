@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_linksys_ea2700_59054.nasl 13543 2019-02-08 14:43:51Z cfischer $
+# $Id: gb_linksys_ea2700_59054.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # Cisco Linksys EA2700 Router Multiple Security Vulnerabilities
 #
@@ -29,7 +29,7 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103698");
   script_bugtraq_id(59054);
-  script_version("$Revision: 13543 $");
+  script_version("$Revision: 13659 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
@@ -37,7 +37,7 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/59054");
 
-  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2013-04-16 14:16:54 +0200 (Tue, 16 Apr 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -78,7 +78,7 @@ port = get_http_port(default:80);
 banner = get_http_banner(port:port);
 if(!banner || "EA2700" >!< banner)exit(0);
 
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 host = http_host_name(port:port);
 
 files = traversal_files("linux");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: aspjar_sql_injection.nasl 6053 2017-05-01 09:02:51Z teissa $
+# $Id: aspjar_sql_injection.nasl 13660 2019-02-14 09:48:45Z cfischer $
 #
 # ASPjar Guestbook SQL Injection
 #
@@ -31,8 +31,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.16389");
-  script_version("$Revision: 6053 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
+  script_version("$Revision: 13660 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 10:48:45 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2005-0423");
   script_bugtraq_id(12521, 12823);
@@ -47,6 +47,7 @@ if(description)
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"solution", value:"Delete this application.");
+
   script_tag(name:"summary", value:"The remote host is running ASPJar's GuestBook, a guestbook
   application written in ASP.
 
@@ -57,6 +58,7 @@ if(description)
   a cross site scripting attack using the remote host.");
 
   script_tag(name:"qod_type", value:"remote_app");
+  script_tag(name:"solution_type", value:"Mitigation");
 
   exit(0);
 }
@@ -65,9 +67,10 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port( default:80 );
+if( ! can_host_asp( port:port ) )
+  exit( 0 );
 
-if( ! can_host_asp( port:port ) ) exit( 0 );
-
+useragent = http_get_user_agent();
 host = http_host_name( port:port );
 
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
@@ -77,7 +80,7 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
   url = dir + "/admin/login.asp?Mode=login";
   req = string( "POST ", url, " HTTP/1.1\r\n",
                 "Host: ", host, "\r\n",
-                "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+                "User-Agent: ", useragent, "\r\n",
                 "Accept: text/html\r\n",
                 "Accept-Encoding: none\r\n",
                 "Content-Type: application/x-www-form-urlencoded\r\n",

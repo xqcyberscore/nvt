@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_simple_ads_manager_plugin_mult_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_wordpress_simple_ads_manager_plugin_mult_vuln.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # Wordpress Simple Ads Manager Plugin Multiple Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805520");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 13659 $");
   script_cve_id("CVE-2015-2824", "CVE-2015-2826");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2015-04-14 11:59:52 +0530 (Tue, 14 Apr 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Wordpress Simple Ads Manager Plugin Multiple Vulnerabilities");
@@ -97,7 +97,7 @@ url = dir + "/wp-content/plugins/simple-ads-manager/sam-ajax-admin.php";
 
 postData = "action=load_users";
 
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 host = http_host_name(port:http_port);
 
 wpReq = string("POST ", url, " HTTP/1.1\r\n",

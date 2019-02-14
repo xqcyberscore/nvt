@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3904.nasl 9356 2018-04-06 07:17:02Z cfischer $
+# $Id: deb_3904.nasl 13654 2019-02-14 07:51:59Z mmartin $
 # Auto-generated from advisory DSA 3904-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,13 +30,13 @@
 if(description)
 {
     script_oid("1.3.6.1.4.1.25623.1.0.703904");
-    script_version("$Revision: 9356 $");
+    script_version("$Revision: 13654 $");
     script_cve_id("CVE-2017-3142", "CVE-2017-3143");
     script_name("Debian Security Advisory DSA 3904-1 (bind9 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2018-04-06 09:17:02 +0200 (Fri, 06 Apr 2018) $");
+    script_tag(name: "last_modification", value: "$Date: 2019-02-14 08:51:59 +0100 (Thu, 14 Feb 2019) $");
     script_tag(name: "creation_date", value: "2017-07-08 00:00:00 +0200 (Sat, 08 Jul 2017)");
-    script_tag(name: "cvss_base", value: "10.0");
-    script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+    script_tag(name:"cvss_base", value:"4.3");
+    script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
     script_tag(name: "solution_type", value: "VendorFix");
     script_tag(name: "qod_type", value: "package");
 

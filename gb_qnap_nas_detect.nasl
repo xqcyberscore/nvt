@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qnap_nas_detect.nasl 12260 2018-11-08 12:46:52Z cfischer $
+# $Id: gb_qnap_nas_detect.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # QNAP NAS Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103875");
-  script_version("$Revision: 12260 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:46:52 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 13659 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2014-01-09 18:50:23 +0100 (Thu, 09 Jan 2014)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -55,7 +55,7 @@ include("host_details.inc");
 port = get_http_port( default:8080 );
 
 host = http_host_name( port:port );
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 
 foreach url ( make_list( '/cgi-bin/login.html', '/cgi-bin/html/login.html' , '/cgi-bin/authLogin.cgi' ) ) {
 

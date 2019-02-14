@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_live555_detect.nasl 13080 2019-01-15 11:08:42Z asteins $
+# $Id: gb_live555_detect.nasl 13650 2019-02-14 06:48:40Z cfischer $
 #
 # LIVE555 Streaming Media Server Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107180");
-  script_version("$Revision: 13080 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-15 12:08:42 +0100 (Tue, 15 Jan 2019) $");
+  script_version("$Revision: 13650 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 07:48:40 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-05-22 12:42:40 +0200 (Mon, 22 May 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -55,35 +55,32 @@ include("cpe.inc");
 include("host_details.inc");
 
 if (!port = get_kb_item("Services/rtsp"))
-    port = 8554;
-if (!banner = get_kb_item(string("RTSP/",port,"/Server")))
-{
+  port = 8554;
+
+if (!banner = get_kb_item("RTSP/" + port + "/Server"))
   exit( 0 );
-}
 
 if ("LIVE555 Streaming Media" >< banner ) {
-    version = "unknown";
-    Ver = eregmatch(pattern: "LIVE555 Streaming Media v([0-9.]+)", string: banner);
-    if (!isnull(Ver[1])) {
-        version = Ver[1];
-        set_kb_item(name: "live555_streaming_media/ver", value: version);
-    }
-    set_kb_item( name:"live555_streaming_media/installed", value:TRUE );
 
-    cpe = build_cpe(value:Ver, exp:"^([0-9.]+)", base:"cpe:/a:live555:streaming_media:");
+  version = "unknown";
+  Ver = eregmatch(pattern: "LIVE555 Streaming Media v([0-9.]+)", string: banner);
+  if (!isnull(Ver[1])) {
+    version = Ver[1];
+    set_kb_item(name: "live555_streaming_media/ver", value: version);
+  }
+  set_kb_item( name:"live555_streaming_media/installed", value:TRUE );
 
-    if(!cpe)
-      cpe = 'cpe:/a:live555:streaming_media';
+  cpe = build_cpe(value:Ver, exp:"^([0-9.]+)", base:"cpe:/a:live555:streaming_media:");
 
-    register_product( cpe:cpe, location:port + '/rtsp',port: port );
-    log_message( data:build_detection_report( app:"LIVE555 Streaming Media",
-                                          version:Ver[1],
-                                          install:port + '/rtsp',
-                                          cpe:cpe, concluded: Ver ),
-                                          port:port);
+  if(!cpe)
+    cpe = 'cpe:/a:live555:streaming_media';
 
-    exit( 0 );
-
+  register_product( cpe:cpe, location:port + '/rtsp',port: port );
+  log_message( data:build_detection_report( app:"LIVE555 Streaming Media",
+                                            version:Ver[1],
+                                            install:port + '/rtsp',
+                                            cpe:cpe, concluded: Ver ),
+                                            port:port);
 }
 
-exit( 99 );
+exit( 0 );

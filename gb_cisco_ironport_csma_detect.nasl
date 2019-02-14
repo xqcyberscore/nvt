@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ironport_csma_detect.nasl 11006 2018-08-16 12:21:56Z cfischer $
+# $Id: gb_cisco_ironport_csma_detect.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # Cisco IronPort Content Security Management Appliance Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803753");
-  script_version("$Revision: 11006 $");
+  script_version("$Revision: 13659 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 14:21:56 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2013-09-03 18:58:59 +0530 (Tue, 03 Sep 2013)");
   script_name("Cisco IronPort Content Security Management Appliance Web Interface Detection");
 
@@ -53,7 +53,7 @@ include("http_keepalive.inc");
 include("host_details.inc");
 
 csmaPort = get_http_port(default:443);
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 csmahost = http_host_name(port:csmaPort);
 
 csmaReq = string("GET /login HTTP/1.1\r\n",

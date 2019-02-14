@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xwiki_enterprise_mult_xss_vuln.nasl 11622 2018-09-26 10:34:07Z asteins $
+# $Id: gb_xwiki_enterprise_mult_xss_vuln.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # XWiki Enterprise Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802397");
-  script_version("$Revision: 11622 $");
+  script_version("$Revision: 13659 $");
   script_bugtraq_id(51867);
   script_cve_id("CVE-2012-1019");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 12:34:07 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2012-03-09 11:12:00 +0530 (Fri, 09 Mar 2012)");
   script_name("XWiki Enterprise Multiple Cross-Site Scripting Vulnerabilities");
   script_xref(name:"URL", value:"http://secunia.com/advisories/47885");
@@ -90,7 +90,7 @@ if (!dir = get_app_location(cpe: CPE, port: xwikiPort))
 if (dir == "/")
   dir = "";
 
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 host = http_host_name( port:xwikiPort );
 
 url = dir + "/bin/register/XWiki/Register";

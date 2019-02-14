@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpldapadmin_51793.nasl 11648 2018-09-27 09:32:28Z asteins $
+# $Id: gb_phpldapadmin_51793.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # phpLDAPadmin 'base' Parameter Cross Site Scripting Vulnerability
 #
@@ -29,7 +29,7 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103409");
   script_bugtraq_id(51793);
-  script_version("$Revision: 11648 $");
+  script_version("$Revision: 13659 $");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
 
@@ -40,7 +40,7 @@ if(description)
   script_xref(name:"URL", value:"http://phpldapadmin.sourceforge.net/");
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/521450");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 11:32:28 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2012-02-02 12:25:56 +0100 (Thu, 02 Feb 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -80,7 +80,7 @@ if(!dir = get_app_location(cpe:CPE, port:port))
 if(dir == "/")
   dir = "";
 
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 host = http_host_name(port:port);
 
 req = string(

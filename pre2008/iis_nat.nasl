@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: iis_nat.nasl 10418 2018-07-05 11:22:00Z cfischer $
+# $Id: iis_nat.nasl 13660 2019-02-14 09:48:45Z cfischer $
 #
 # Private IP address leaked in HTTP headers
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10759");
-  script_version("$Revision: 10418 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-05 13:22:00 +0200 (Thu, 05 Jul 2018) $");
+  script_version("$Revision: 13660 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 10:48:45 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(1499);
   script_cve_id("CVE-2000-0649");
@@ -65,12 +65,12 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 include("network_func.inc");
 
 if( is_private_addr() ) exit( 0 );
 
 port = get_http_port( default:80 );
+useragent = http_get_user_agent();
 
 foreach dir( make_list( "/", "/images", "/Autodiscover", "/Autodiscover/Autodiscover.xml", "/Microsoft-Server-ActiveSync",
                         "/Microsoft-Server-ActiveSync/default.css", "/ECP", "/EWS", "/EWS/Exchange.asmx", "/Exchange", "/OWA",
@@ -79,7 +79,7 @@ foreach dir( make_list( "/", "/images", "/Autodiscover", "/Autodiscover/Autodisc
   # Craft our own HTTP/1.0 request for the server banner.
   # Note: HTTP/1.1 is rarely useful for detecting this flaw.
   req = 'GET ' + dir + ' HTTP/1.0\r\n' +
-        'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
+        'User-Agent: ' + useragent + '\r\n' +
         '\r\n';
   buf = http_keepalive_send_recv( port:port, data:req );
 

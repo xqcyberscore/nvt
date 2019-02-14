@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netgear_wnr1000v3_information_disclosure.nasl 11867 2018-10-12 10:48:11Z cfischer $
+# $Id: gb_netgear_wnr1000v3_information_disclosure.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # NETGEAR WNR1000v3 Password Disclosure Vulnerability
 #
@@ -28,7 +28,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103880");
-  script_version("$Revision: 11867 $");
+  script_version("$Revision: 13659 $");
   script_tag(name:"cvss_base", value:"9.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:C");
 
@@ -36,7 +36,7 @@ if(description)
 
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/124759/NETGEAR-WNR1000v3-Password-Disclosure.html");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2014-01-14 10:28:55 +0100 (Tue, 14 Jan 2014)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -85,7 +85,7 @@ id = eregmatch( pattern:"unauth.cgi\?id=([0-9]+)", string: buf);
 if ( isnull ( id[1] ) ) exit ( 0 );
 
 id = id[1];
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 
 host = http_host_name( port:port );
 

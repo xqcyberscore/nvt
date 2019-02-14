@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_emc_avamar_detect.nasl 11006 2018-08-16 12:21:56Z cfischer $
+# $Id: gb_emc_avamar_detect.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # EMC Avamar Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106288");
-  script_version("$Revision: 11006 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 14:21:56 +0200 (Thu, 16 Aug 2018) $");
+  script_version("$Revision: 13659 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2016-09-27 11:26:32 +0700 (Tue, 27 Sep 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -72,7 +72,7 @@ if ( ( "<title>EMC Avamar" >< res && "dtlt-banner-product-name-avamar" >< res ) 
 
   permut = rand_str( length:32, charset:"ABCDEF1234567890" );
   host = http_host_name( port:port );
-  useragent = get_http_user_agent();
+  useragent = http_get_user_agent();
 
   data = '5|0|6|https://' + get_host_ip() + '/avi/avigui/|' + rand_str( length:32, charset:"ABCDEF1234567890" ) + '|com.avamar.avinstaller.gwt.shared.AvinstallerService|getAviVersion|java.lang.String/|' + get_host_ip() + '|1|2|3|4|1|5|6|';
   len = strlen( data );

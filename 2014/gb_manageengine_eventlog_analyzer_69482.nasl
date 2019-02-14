@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_eventlog_analyzer_69482.nasl 11222 2018-09-04 12:41:44Z cfischer $
+# $Id: gb_manageengine_eventlog_analyzer_69482.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # ManageEngine EventLog Analyzer Multiple Security Vulnerabilities
 #
@@ -34,7 +34,7 @@ if(description)
   script_cve_id("CVE-2014-6037");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11222 $");
+  script_version("$Revision: 13659 $");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -91,7 +91,7 @@ vulnerability and an unauthorized-access vulnerability.");
 
   script_tag(name:"affected", value:"EventLog Analyzer 9.9 Build 9002 and prior are vulnerable.");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:41:44 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2014-09-09 12:16:43 +0200 (Tue, 09 Sep 2014)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -116,7 +116,7 @@ if (!port = get_app_port(cpe: CPE))
 if (!get_app_location(cpe: CPE, port: port, nofork: TRUE))
   exit(0);
 
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 host = http_host_name(port: port);
 
 function _send( data )

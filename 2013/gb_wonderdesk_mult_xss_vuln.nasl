@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wonderdesk_mult_xss_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_wonderdesk_mult_xss_vuln.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # Wonderdesk SQL Multiple Cross-Site Scripting (XSS) Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803625");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 13659 $");
   script_cve_id("CVE-2012-1788");
   script_bugtraq_id(52193);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2013-06-03 15:30:38 +0530 (Mon, 03 Jun 2013)");
   script_name("Wonderdesk SQL Multiple Cross-Site Scripting (XSS) Vulnerabilities");
 
@@ -79,7 +79,7 @@ if(!can_host_php(port:port)){
   exit(0);
 }
 
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 host = http_host_name(port:port);
 
 foreach dir (make_list_unique("/", "/wonderdesk", "/helpdesk", cgi_dirs(port:port))){

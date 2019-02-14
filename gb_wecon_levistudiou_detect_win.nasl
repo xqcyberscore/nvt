@@ -19,8 +19,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107555");
-  script_version("$Revision: 13628 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-13 11:46:23 +0100 (Wed, 13 Feb 2019) $");
+  script_version("$Revision: 13641 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-13 15:56:21 +0100 (Wed, 13 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-02-12 12:25:43 +0100 (Tue, 12 Feb 2019)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -81,7 +81,7 @@ foreach key (key_list) {
     set_kb_item(name:"wecon/levistudiou/win/detected", value:TRUE);
 
     register_and_report_cpe(app:"WECON LeviStudioU", ver:version, concluded:concluded,
-                          base:"cpe:/a:wecon:levistudiou:", expr:"^([0-9.]+)", insloc:location, regService:"smb-login", regPort:0);
+                          base:"cpe:/a:we-con:levistudiou:", expr:"^([0-9.]+)", insloc:location, regService:"smb-login", regPort:0);
     exit(0);
   }
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xoda_55127.nasl 11435 2018-09-17 13:44:25Z cfischer $
+# $Id: gb_xoda_55127.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # XODA Arbitrary File Upload and HTML Injection Vulnerabilities
 #
@@ -31,10 +31,10 @@ if(description)
   script_bugtraq_id(55127);
   script_tag(name:"cvss_base", value:"9.7");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:P");
-  script_version("$Revision: 11435 $");
+  script_version("$Revision: 13659 $");
   script_name("XODA Arbitrary File Upload and HTML Injection Vulnerabilities");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/55127");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:44:25 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2012-08-22 11:33:41 +0200 (Wed, 22 Aug 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -68,7 +68,7 @@ port = get_http_port( default:80 );
 if( ! can_host_php( port:port ) ) exit( 0 );
 
 vtstring = get_vt_string( lowercase:TRUE );
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 host = http_host_name( port:port );
 
 foreach dir( make_list_unique( "/xoda", cgi_dirs( port:port ) ) ) {

@@ -29,23 +29,30 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804223");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 13659 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2014-01-10 13:11:49 +0530 (Fri, 10 Jan 2014)");
   script_name("TYPO3 Default Admin Credentials");
 
+  script_xref(name:"URL", value:"http://wiki.typo3.org/TYPO3_Installation_Basics");
+
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to access the program
-or system and gain privileged access.");
+  or system and gain privileged access.");
+
   script_tag(name:"vuldetect", value:"Login to backend login with default credentials.");
-  script_tag(name:"insight", value:"TYPO3 installs with default admin credentials (admin/password) .");
+
+  script_tag(name:"insight", value:"TYPO3 installs with default admin credentials (admin/password).");
+
   script_tag(name:"solution", value:"After installation change all default installed accounts to use a unique
-and secure password. For more information refer below link.
-http://wiki.typo3.org/TYPO3_Installation_Basics");
+  and secure password. Please see the references for more information.");
+
   script_tag(name:"solution_type", value:"Workaround");
+
   script_tag(name:"summary", value:"This host is installed with TYPO3 and it has default admin credentials.");
-  script_tag(name:"affected", value:"All TYPO3 version's which gets installed with default credentials ");
+
+  script_tag(name:"affected", value:"All TYPO3 version's which gets installed with default credentials.");
 
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -91,7 +98,7 @@ function get_typo3_login(cinstall, tport, chost)
     {
       cCookie = tcookie[1] + ' showRefMsg=false; ' + PHPSESSID[1] + " typo3-login-cookiecheck=true";
 
-      useragent = get_http_user_agent();
+      useragent = http_get_user_agent();
       req = string("POST ", url, " HTTP/1.1\r\n",
                    "Host: ", chost, "\r\n",
                    "User-Agent: ", useragent, "\r\n",

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_plesk_xxe_06_13.nasl 12827 2018-12-18 14:33:16Z cfischer $
+# $Id: gb_plesk_xxe_06_13.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # Plesk XXE Injection Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:parallels:parallels_plesk_panel";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105046");
-  script_version("$Revision: 12827 $");
+  script_version("$Revision: 13659 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
   script_name("Plesk XXE Injection Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-18 15:33:16 +0100 (Tue, 18 Dec 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2014-06-13 14:56:42 +0200 (Fri, 13 Jun 2014)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -75,7 +75,7 @@ url = dir + "/relay";
 
 files = traversal_files();
 vtstring = get_vt_string();
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 host = http_host_name(port:port);
 
 foreach pattern( keys( files ) ) {

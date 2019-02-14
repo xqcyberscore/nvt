@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: weblibs_file_inclusion.nasl 6046 2017-04-28 09:02:54Z teissa $
+# $Id: weblibs_file_inclusion.nasl 13660 2019-02-14 09:48:45Z cfischer $
 #
 # WebLibs File Disclosure
 #
@@ -31,8 +31,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.16168");
-  script_version("$Revision: 6046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
+  script_version("$Revision: 13660 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 10:48:45 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -46,7 +46,10 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name:"solution", value:"Delete weblibs.pl");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+
   script_tag(name:"summary", value:"The remote host is running 'WebLibs', a CGI written in Perl.
 
   Due to incorrect parsing of incoming data, an attacker can
@@ -63,6 +66,7 @@ include("http_keepalive.inc");
 
 port = get_http_port( default:80 );
 
+useragent = http_get_user_agent();
 host = http_host_name( port:port );
 
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
@@ -72,7 +76,7 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
   req = string( "POST ", url, " HTTP/1.1\r\n",
                 "Host: ", host, "\r\n",
-                "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+                "User-Agent: ", useragent, "\r\n",
                 "Content-Type: application/x-www-form-urlencoded\r\n",
                 "Content-Length: 372\r\n",
                 "\r\n",

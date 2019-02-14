@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openmediavault_default_login.nasl 11536 2018-09-21 19:44:30Z cfischer $
+# $Id: gb_openmediavault_default_login.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # OpenMediaVault Default Admin Credentials
 #
@@ -28,11 +28,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105089");
-  script_version("$Revision: 11536 $");
+  script_version("$Revision: 13659 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("OpenMediaVault Default Admin Credentials");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 21:44:30 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2014-09-15 12:02:06 +0200 (Mon, 15 Sep 2014)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -67,7 +67,7 @@ if( "<title>OpenMediaVault web administration interface" >!< buf ) exit( 0 );
 
 valid_services = make_list( 'Authentication','Session' );
 
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 host = http_host_name( port:port );
 
 foreach vs ( valid_services )

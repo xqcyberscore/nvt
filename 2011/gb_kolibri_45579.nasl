@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kolibri_45579.nasl 12018 2018-10-22 13:31:29Z mmartin $
+# $Id: gb_kolibri_45579.nasl 13660 2019-02-14 09:48:45Z cfischer $
 #
 # Kolibri Remote Buffer Overflow Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103009");
-  script_version("$Revision: 12018 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
+  script_version("$Revision: 13660 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 10:48:45 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2011-01-04 15:14:45 +0100 (Tue, 04 Jan 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -65,11 +65,9 @@ if(description)
 }
 
 include("http_func.inc");
-
 include("version_func.inc");
 
 port = get_http_port( default:8080 );
-
 banner = get_http_banner( port:port );
 if( ! banner || "server: kolibri" >!< tolower( banner ) ) exit( 0 );
 
@@ -86,6 +84,7 @@ if( safe_checks() ) {
   }
 } else {
 
+  useragent = http_get_user_agent();
   host = http_host_name(port:port);
 
   count = make_list(1,2,3,4);
@@ -125,7 +124,7 @@ if( safe_checks() ) {
 
     req = string("HEAD /",buf,ret,nops,jmp_back2,nseh,seh," HTTP/1.1\r\n",
                  "Host: ",host,"\r\n",
-                 "User-Agent: ",OPENVAS_HTTP_USER_AGENT,"\r\n",
+                 "User-Agent: ",useragent,"\r\n",
                  "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n",
                  "Accept-Language: he,en-us;q=0.7,en;q=0.3\r\n",
                  "Accept-Encoding: gzip,deflate\r\n",

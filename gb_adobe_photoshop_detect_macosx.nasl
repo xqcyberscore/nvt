@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_photoshop_detect_macosx.nasl 11279 2018-09-07 09:08:31Z cfischer $
+# $Id: gb_adobe_photoshop_detect_macosx.nasl 13650 2019-02-14 06:48:40Z cfischer $
 #
 # Adobe Photoshop Version Detection (Mac OS X)
 #
@@ -30,14 +30,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802783");
-  script_version("$Revision: 11279 $");
+  script_version("$Revision: 13650 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:08:31 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 07:48:40 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2012-05-16 10:35:58 +0530 (Wed, 16 May 2012)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Adobe Photoshop Version Detection (Mac OS X)");
-
 
   script_tag(name:"summary", value:"Detects the installed version of Adobe Photoshop.
 
@@ -89,7 +88,7 @@ foreach ver (make_list("1", "2", "3", "4", "5", "6"))
                                            install:path,
                                            cpe:cpe,
                                            concluded: photoVer));
-  }
+}
 
 if(isnull(photoVer) || "does not exist" >< photoVer)
 {
@@ -117,12 +116,13 @@ if(isnull(photoVer) || "does not exist" >< photoVer)
 
     register_product(cpe:cpe, location:path);
 
-    log_message(data: build_detection_report(app:"Adobe Photoshop CC",
-                                               version:ver + " " + photoVer,
-                                               install:path,
-                                               cpe:cpe,
-                                               concluded: ver + " " + photoVer));
+    log_message(data:build_detection_report(app:"Adobe Photoshop CC",
+                                            version:ver + " " + photoVer,
+                                            install:path,
+                                            cpe:cpe,
+                                            concluded: ver + " " + photoVer));
    }
 }
+
 close(sock);
-exit(99);
+exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tomcat_default_credentials.nasl 12465 2018-11-21 13:24:34Z cfischer $
+# $Id: gb_tomcat_default_credentials.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # Apache Tomcat Manager Remote Unauthorized Access Vulnerability
 #
@@ -30,9 +30,9 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103550");
-  script_version("$Revision: 12465 $");
+  script_version("$Revision: 13659 $");
   script_name("Apache Tomcat Manager Remote Unauthorized Access Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-21 14:24:34 +0100 (Wed, 21 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2012-08-22 17:19:15 +0200 (Wed, 22 Aug 2012)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -98,7 +98,7 @@ if( isnull ( authRequireUrls ) ) exit( 0 );
 # Sort to not report changes on delta reports if just the order is different
 authRequireUrls = sort( authRequireUrls );
 
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 host = http_host_name( port:port );
 
 foreach url( authRequireUrls ) {

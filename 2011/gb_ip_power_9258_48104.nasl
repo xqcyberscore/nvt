@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ip_power_9258_48104.nasl 11997 2018-10-20 11:59:41Z mmartin $
+# $Id: gb_ip_power_9258_48104.nasl 13660 2019-02-14 09:48:45Z cfischer $
 #
 # IP Power 9258 TGI Scripts Unauthorized Access Vulnerability
 #
@@ -24,11 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103172");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("$Revision: 13660 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 10:48:45 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2011-06-06 13:42:32 +0200 (Mon, 06 Jun 2011)");
   script_bugtraq_id(48104);
   script_tag(name:"cvss_base", value:"6.4");
@@ -45,11 +45,17 @@ if (description)
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
+
   script_tag(name:"summary", value:"IP Power 9258 is prone to an unauthorized-access vulnerability.");
+
   script_tag(name:"impact", value:"Attackers can exploit this issue to directly access arbitrary scripts,
- bypassing authentication. A successful exploit will allow the attacker
- to run arbitrary scripts on the affected device.");
-  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  bypassing authentication. A successful exploit will allow the attacker
+  to run arbitrary scripts on the affected device.");
+
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release,
+  disable respective features, remove the product or replace the product by another one.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_app");
 
@@ -70,13 +76,15 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
   if( "<title>IP9258" >< buf ) {
 
+    useragent = http_get_user_agent();
     host = http_host_name( port:port );
 
     variables = string("XXX=On&XXX_TS=0&XXX_TC=Off&XXX=Off&XXX_TS=0&XXX_TC=Off&XXX=Off&XXX_TS=0&XXX_TC=Off&XXX=Off&XXX_TS=0&XXX_TC=Off&ButtonName=Apply");
 
-    req = string( "POST ", dir ,"/tgi/iocontrol.tgi HTTP/1.1\r\n",
+    url = dir + "/tgi/iocontrol.tgi";
+    req = string( "POST ", url, " HTTP/1.1\r\n",
 		  "Host: ", host, "\r\n",
-		  "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+		  "User-Agent: ", useragent, "\r\n",
 		  "Accept: */*\r\n",
 		  "Content-Length: 127\r\n",
 		  "Content-Type:

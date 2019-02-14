@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lexmark_markvision_enterprise_71623.nasl 11466 2018-09-19 09:23:32Z cfischer $
+# $Id: gb_lexmark_markvision_enterprise_71623.nasl 13659 2019-02-14 08:34:21Z cfischer $
 #
 # Lexmark MarkVision Enterprise Remote Code Execution Vulnerability
 #
@@ -34,7 +34,7 @@ if(description)
   script_cve_id("CVE-2014-8741");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_version("$Revision: 11466 $");
+  script_version("$Revision: 13659 $");
 
   script_name("Lexmark MarkVision Enterprise Remote Code Execution Vulnerability");
 
@@ -56,7 +56,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_app");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 11:23:32 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2015-01-16 13:54:49 +0100 (Fri, 16 Jan 2015)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -76,7 +76,7 @@ include("misc_func.inc");
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
-useragent = get_http_user_agent();
+useragent = http_get_user_agent();
 vtstring = get_vt_string();
 success = vtstring + '_' + rand();
 rand = rand() + '_' + rand();

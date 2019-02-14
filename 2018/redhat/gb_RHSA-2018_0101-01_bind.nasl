@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_RHSA-2018_0101-01_bind.nasl 12497 2018-11-23 08:28:21Z cfischer $
+# $Id: gb_RHSA-2018_0101-01_bind.nasl 13654 2019-02-14 07:51:59Z mmartin $
 #
 # RedHat Update for bind RHSA-2018:0101-01
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.910004");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 13654 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 08:51:59 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-01-23 07:37:16 +0100 (Tue, 23 Jan 2018)");
   script_cve_id("CVE-2017-3145");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for bind RHSA-2018:0101-01");
   script_tag(name:"summary", value:"The remote host is missing an update for the 'bind'
