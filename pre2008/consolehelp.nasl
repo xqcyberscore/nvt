@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: consolehelp.nasl 10711 2018-08-01 13:58:38Z cfischer $
+# $Id: consolehelp.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # WebLogic source code disclosure
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11724");
-  script_version("$Revision: 10711 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-01 15:58:38 +0200 (Wed, 01 Aug 2018) $");
+  script_version("$Revision: 13679 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(1518);
   script_tag(name:"cvss_base", value:"5.0");
@@ -46,7 +46,9 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name:"solution", value:"http://dev2dev.bea.com/resourcelibrary/advisoriesnotifications/BEA02-03.jsp");
+  script_xref(name:"URL", value:"http://dev2dev.bea.com/resourcelibrary/advisoriesnotifications/BEA02-03.jsp");
+
+  script_tag(name:"solution", value:"The vendor has released updates. See the linked advisory for more information.");
 
   script_tag(name:"summary", value:"There is a bug in the Weblogic web application. Namely,
   by inserting a /ConsoleHelp/ into a URL, critical source code files may be viewed.");
@@ -63,7 +65,7 @@ include("http_keepalive.inc");
 port = get_http_port( default:80 );
 host = http_host_name( dont_add_port:TRUE );
 
-jspfiles = get_http_kb_file_extensions( port:port, host:host, ext:"jsp" );
+jspfiles = http_get_kb_file_extensions( port:port, host:host, ext:"jsp" );
 
 if( isnull( jspfiles ) )
   jspfiles = make_list( "default.jsp" );

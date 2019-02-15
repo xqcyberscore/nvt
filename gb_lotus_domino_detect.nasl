@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lotus_domino_detect.nasl 13461 2019-02-05 09:33:31Z cfischer $
+# $Id: gb_lotus_domino_detect.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # Lotus/IBM Domino Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100597");
-  script_version("$Revision: 13461 $");
+  script_version("$Revision: 13679 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-05 10:33:31 +0100 (Tue, 05 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2010-04-22 20:18:17 +0200 (Thu, 22 Apr 2010)");
   script_name("Lotus/IBM Domino Detection");
   script_category(ACT_GATHER_INFO);
@@ -188,7 +188,7 @@ final_ver = "unknown";
 port = get_http_port( default:80 );
 host = http_host_name( dont_add_port:TRUE );
 
-nsfList = get_http_kb_file_extensions( port:port, host:host, ext:"nsf" );
+nsfList = http_get_kb_file_extensions( port:port, host:host, ext:"nsf" );
 
 tmpCgis = make_list_unique( "/", cgi_dirs( port:port ) );
 foreach tmpCgi( tmpCgis ) {

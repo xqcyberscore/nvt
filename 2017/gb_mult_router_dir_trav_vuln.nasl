@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mult_router_dir_trav_vuln.nasl 13543 2019-02-08 14:43:51Z cfischer $
+# $Id: gb_mult_router_dir_trav_vuln.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # Multiple Router Directory Traversal Vulnerability
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140448");
-  script_version("$Revision: 13543 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
+  script_version("$Revision: 13679 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-10-24 09:17:33 +0700 (Tue, 24 Oct 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -78,7 +78,7 @@ res = http_keepalive_send_recv(port: port, data: req);
 
 files = traversal_files("linux");
 
-cookie = get_cookie_from_header(buf: res, pattern: '(sessionid=[^;]+)');
+cookie = http_get_cookie_from_header(buf: res, pattern: '(sessionid=[^;]+)');
 if (cookie) {
   cookie += "; language=en_us";
 

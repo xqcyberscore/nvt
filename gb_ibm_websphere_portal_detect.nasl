@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_portal_detect.nasl 11896 2018-10-13 14:47:25Z cfischer $
+# $Id: gb_ibm_websphere_portal_detect.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # IBM WebSphere Portal Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106198");
-  script_version("$Revision: 11896 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-13 16:47:25 +0200 (Sat, 13 Oct 2018) $");
+  script_version("$Revision: 13679 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2016-08-24 14:38:56 +0700 (Wed, 24 Aug 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -70,7 +70,7 @@ res = http_keepalive_send_recv(port: port, data: req);
 
 # Handle 30x returns: we want to follow them
 if (res =~ "^HTTP/1.. 30.") {
-  loc = extract_location_from_redirect(port: port, data: res);
+  loc = http_extract_location_from_redirect(port: port, data: res);
   if (loc) {
     cookie = eregmatch(pattern: "Set-Cookie: (DigestTracker=[A-Za-z;]+)", string: res);
     if (!isnull(cookie[1]))

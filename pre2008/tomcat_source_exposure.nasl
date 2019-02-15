@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: tomcat_source_exposure.nasl 10711 2018-08-01 13:58:38Z cfischer $
+# $Id: tomcat_source_exposure.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # Tomcat 4.x JSP Source Exposure
 #
@@ -32,8 +32,8 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11176");
-  script_version("$Revision: 10711 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-01 15:58:38 +0200 (Wed, 01 Aug 2018) $");
+  script_version("$Revision: 13679 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -47,14 +47,14 @@ if(description)
   script_require_ports("Services/www", 8080);
   script_mandatory_keys("ApacheTomcat/installed");
 
+  script_xref(name:"URL", value:"http://jakarta.apache.org/builds/jakarta-tomcat-4.0/release/");
+
   script_tag(name:"solution", value:"Upgrade to the last releases 4.0.5 and 4.1.12.
-  See http://jakarta.apache.org/builds/jakarta-tomcat-4.0/release/
-  for the last releases.");
+  See the linked reference for the last releases.");
 
   script_tag(name:"summary", value:"Tomcat 4.0.4 and 4.1.10 (probably all other
-  earlier versions also) are vulnerable to source
-  code exposure by using the default servlet
-  org.apache.catalina.servlets.DefaultServlet.");
+  earlier versions also) are vulnerable to source code exposure by using the default
+  servlet org.apache.catalina.servlets.DefaultServlet.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -70,7 +70,7 @@ if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 host = http_host_name( dont_add_port:TRUE );
 
-files = get_http_kb_file_extensions( port:port, host:host, ext:"jsp" );
+files = http_get_kb_file_extensions( port:port, host:host, ext:"jsp" );
 
 if( ! isnull( files ) ) {
   files = make_list( files );

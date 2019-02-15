@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: tmcm_detect.nasl 10908 2018-08-10 15:00:08Z cfischer $
+# $Id: tmcm_detect.nasl 13685 2019-02-15 10:06:52Z cfischer $
 #
 # Trend Micro TMCM console management detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.18178");
-  script_version("$Revision: 10908 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:00:08 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 13685 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 11:06:52 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -41,11 +41,12 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name:"solution", value:"Filter incoming traffic to this port");
-  script_tag(name:"summary", value:"The remote host appears to run Trend Micro Control Manager, connections
-  are allowed to the web console management.
+  script_tag(name:"solution", value:"Filter incoming traffic to this port.");
 
-  Letting attackers know that you are using this software will help them to
+  script_tag(name:"summary", value:"The remote host appears to run Trend Micro Control Manager, connections
+  are allowed to the web console management.");
+
+  script_tag(name:"impact", value:"Letting attackers know that you are using this software will help them to
   focus their attack or will make them change their strategy.");
 
   script_tag(name:"qod_type", value:"remote_banner");
@@ -59,9 +60,9 @@ include("http_keepalive.inc");
 port = get_http_port( default:80 );
 
 url = "/ControlManager/default.htm";
-req = http_get( item:url, port:port );
-rep = http_keepalive_send_recv( port:port, data:req );
-if( rep == NULL ) exit( 0 );
+rep = http_get_cache( item:url, port:port );
+if(!rep)
+  exit( 0 );
 
 #<title>
 #Trend Micro Control Manager 3.0
@@ -69,7 +70,7 @@ if( rep == NULL ) exit( 0 );
 
 if( egrep( pattern:"Trend Micro Control Manager.+</title>", string:rep, icase:TRUE ) ) {
   log_message( port:port );
-  set_kb_item( name:"Services/www/" + port + "/embedded", value:TRUE );
+  http_set_is_marked_embedded( port:port );
 }
 
 exit( 0 );

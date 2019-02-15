@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sgdynamo_xss.nasl 11996 2018-10-19 19:08:41Z cfischer $
+# $Id: sgdynamo_xss.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # Sgdynamo 'sgdynamo.exe' Cross-site Scripting Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11955");
-  script_version("$Revision: 11996 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 21:08:41 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 13679 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(4720);
   script_cve_id("CVE-2002-0375");
@@ -63,7 +63,7 @@ include("http_keepalive.inc");
 port = get_http_port( default:80 );
 
 host = http_host_name( dont_add_port:TRUE );
-if( get_http_has_generic_xss( port:port, host:host ) ) exit( 0 );
+if( http_get_has_generic_xss( port:port, host:host ) ) exit( 0 );
 
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 

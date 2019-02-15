@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: theserver_cleartext.nasl 10831 2018-08-08 09:49:56Z cfischer $
+# $Id: theserver_cleartext.nasl 13685 2019-02-15 10:06:52Z cfischer $
 #
 # TheServer clear text password
 #
@@ -34,8 +34,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11914");
-  script_version("$Revision: 10831 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-08 11:49:56 +0200 (Wed, 08 Aug 2018) $");
+  script_version("$Revision: 13685 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 11:06:52 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -85,10 +85,11 @@ function testfile(port, no404, f)
 }
 
 port = get_http_port(default:80);
-if ( get_kb_item("Services/www/" + port + "/embedded") ) exit(0);
+if( http_get_is_marked_embedded( port:port ) )
+  exit( 0 );
 
 host = http_host_name(dont_add_port:TRUE);
-no404 = get_http_no404_string(port:port, host:host);
+no404 = http_get_no404_string(port:port, host:host);
 
 if (testfile(port: port, no404: no404, f: "/" + rand_str() + ".ini"))
   exit(99);

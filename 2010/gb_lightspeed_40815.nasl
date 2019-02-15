@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lightspeed_40815.nasl 10711 2018-08-01 13:58:38Z cfischer $
+# $Id: gb_lightspeed_40815.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # LiteSpeed Web Server Source Code Information Disclosure Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100744");
-  script_version("$Revision: 10711 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-01 15:58:38 +0200 (Wed, 01 Aug 2018) $");
+  script_version("$Revision: 13679 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2010-08-05 13:46:20 +0200 (Thu, 05 Aug 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -38,7 +38,7 @@ if(description)
   script_category(ACT_ATTACK);
   script_family("Web Servers");
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
-  script_dependencies("gb_get_http_banner.nasl","webmirror.nasl");
+  script_dependencies("gb_get_http_banner.nasl", "webmirror.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("LiteSpeed/banner");
 
@@ -71,7 +71,7 @@ banner = get_http_banner( port:port );
 if( ! banner || "LiteSpeed" >!< banner ) exit( 0 );
 host = http_host_name( dont_add_port:TRUE );
 
-phps = get_http_kb_file_extensions( port:port, host:host, ext:"php" );
+phps = http_get_kb_file_extensions( port:port, host:host, ext:"php" );
 if( ! isnull( phps ) ) {
   phps = make_list( phps );
 } else {

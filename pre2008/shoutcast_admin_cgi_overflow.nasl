@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: shoutcast_admin_cgi_overflow.nasl 10831 2018-08-08 09:49:56Z cfischer $
+# $Id: shoutcast_admin_cgi_overflow.nasl 13685 2019-02-15 10:06:52Z cfischer $
 #
 # admin.cgi overflow
 #
@@ -40,8 +40,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11719");
-  script_version("$Revision: 10831 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-08 11:49:56 +0200 (Wed, 08 Aug 2018) $");
+  script_version("$Revision: 13685 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 11:06:52 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(3934);
   script_cve_id("CVE-2002-0199");
@@ -52,15 +52,15 @@ if(description)
   script_copyright("This script is Copyright (C) 2003 Michel Arboi");
   script_family("Web application abuses");
   script_dependencies("gb_get_http_banner.nasl");
-  script_mandatory_keys("shoutcast/banner");
   script_require_ports("Services/www", 8888); # Shoutcast is often on a high port
+  script_mandatory_keys("shoutcast/banner");
 
   script_tag(name:"solution", value:"Upgrade Shoutcast to the latest version.");
 
   script_tag(name:"summary", value:"The Shoutcast server crashes when a too long argument is
   given to admin.cgi");
 
-  script_tag(name:"impact", value:"A cracker may use this flaw to prevent your server from
+  script_tag(name:"impact", value:"An attacker may use this flaw to prevent your server from
   working, or worse, execute arbitrary code on your system.");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -72,9 +72,11 @@ if(description)
 include("http_func.inc");
 
 port = get_http_port( default:8888 );
+if( http_get_is_marked_embedded( port:port ) )
+  exit( 0 );
 
-if( get_kb_item("Services/www/" + port + "/embedded" ) ) exit( 0 );
-if( http_is_dead( port:port, retry:0 ) ) exit( 0 );
+if( http_is_dead( port:port, retry:0 ) )
+  exit( 0 );
 
 banner = get_http_banner( port:port );
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_http_default_dir_trav.nasl 12875 2018-12-21 15:01:59Z cfischer $
+# $Id: gb_http_default_dir_trav.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # Generic HTTP Directory Traversal Check
 #
@@ -29,7 +29,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113002");
-  script_version("$Revision: 12875 $");
+  script_version("$Revision: 13679 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"last_modification", value:"$Date: 2017-12-13 21:42:54 +0700 (Wed, 13 Dec 2017)$");
@@ -92,7 +92,7 @@ files = traversal_files();
 
 port = get_http_port( default:80 );
 host = http_host_name( dont_add_port:TRUE );
-cgis = get_http_kb_cgis( port:port, host:host );
+cgis = http_get_kb_cgis( port:port, host:host );
 if( ! cgis ) exit( 0 );
 
 foreach cgi( cgis ) {
@@ -100,7 +100,7 @@ foreach cgi( cgis ) {
   foreach trav( traversal ) {
     foreach file( keys( files ) ) {
       url = trav + files[file];
-      urls = create_exploit_req( cgiArray:cgiArray, ex:url );
+      urls = http_create_exploit_req( cgiArray:cgiArray, ex:url );
       foreach url( urls ) {
         if( http_vuln_check( port:port, url:url, pattern:file ) ) {
           report = report_vuln_url( port:port, url:url );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cvs_in_www.nasl 10818 2018-08-07 14:03:55Z cfischer $
+# $Id: cvs_in_www.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # CVS/Entries
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10922");
-  script_version("$Revision: 10818 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-07 16:03:55 +0200 (Tue, 07 Aug 2018) $");
+  script_version("$Revision: 13679 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -58,7 +58,7 @@ include("http_keepalive.inc");
 
 port = get_http_port(default:80);
 host = http_host_name(dont_add_port:TRUE);
-if(get_http_no404_string(port:port, host:host))exit(0);
+if(http_get_no404_string(port:port, host:host))exit(0);
 
 res = is_cgi_installed_ka(item:"/CVS/Entries", port:port);
 # is_cgi_installed_ka takes care of servers that always return 200

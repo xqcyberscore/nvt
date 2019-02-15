@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: php_split_mime.nasl 10711 2018-08-01 13:58:38Z cfischer $
+# $Id: php_split_mime.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # php POST file uploads
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10867");
-  script_version("$Revision: 10711 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-01 15:58:38 +0200 (Wed, 01 Aug 2018) $");
+  script_version("$Revision: 13679 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(4183);
   script_cve_id("CVE-2002-0081");
@@ -65,7 +65,7 @@ if(http_is_dead(port:port))exit(0);
 if ( ! can_host_php(port:port) ) exit(0);
 
 host = http_host_name( dont_add_port:TRUE );
-files = get_http_kb_file_extensions( port:port, host:host, ext:"php*" );
+files = http_get_kb_file_extensions( port:port, host:host, ext:"php*" );
 
 if(isnull(files))
   file = "/default.php";
@@ -76,8 +76,8 @@ else {
 
 if(is_cgi_installed_ka(item:file, port:port)){
 
-  boundary1 = string("-OPENVAS!");
-  boundary2 = string("--OPENVAS!");
+  boundary1 = string("-VTTEST!");
+  boundary2 = string("--VTTEST!");
   clen = "567";
   dblq = raw_string(0x22);
   badb = raw_string(0x12);

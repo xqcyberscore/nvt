@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_snom_mult_vuln_01_15.nasl 5889 2017-04-07 09:14:58Z cfi $
+# $Id: gb_snom_mult_vuln_01_15.nasl 13674 2019-02-15 03:34:06Z ckuersteiner $
 #
 # Snom Multiple Vulnerabilities
 #
@@ -27,17 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105169");
-  script_version("$Revision: 5889 $");
+  script_version("$Revision: 13674 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:14:58 +0200 (Fri, 07 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 04:34:06 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2015-01-14 11:37:01 +0100 (Wed, 14 Jan 2015)");
+
   script_name("Snom Multiple Vulnerabilities");
+
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
-  script_dependencies("gb_snom_detect.nasl");
-  script_mandatory_keys("snom/installed");
+  script_dependencies("gb_snom_consolidation.nasl");
+  script_mandatory_keys("snom/detected");
 
   script_xref(name:"URL", value:"http://wiki.snom.com/8.7.5.15_OpenVPN_Security_Update");
 
@@ -52,7 +54,7 @@ if(description)
   script_tag(name:"impact", value:"A remote attacker may be able to gain administration rights, spoof a VPN tunnel,
   place malware and execute arbitrary code");
 
-  script_tag(name:"affected", value:"Snom devices with firmware < 8.7.5.15 ");
+  script_tag(name:"affected", value:"Snom devices with firmware < 8.7.5.15.");
 
   script_tag(name:"solution", value:"Update to a firmware version >= 8.7.5.15");
 
@@ -65,13 +67,19 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-cpe_list = make_list( "cpe:/h:snom:snom_760", "cpe:/h:snom:snom_720", "cpe:/h:snom:snom_715", "cpe:/h:snom:snom_710",
-                      "cpe:/h:snom:snom_870", "cpe:/h:snom:snom_821", "cpe:/h:snom:snom_820", "cpe:/h:snom:snom_370" );
+cpe_list = make_list( "cpe:/h:snom:snom_760",
+                      "cpe:/h:snom:snom_720",
+                      "cpe:/h:snom:snom_715",
+                      "cpe:/h:snom:snom_710",
+                      "cpe:/h:snom:snom_870",
+                      "cpe:/h:snom:snom_821",
+                      "cpe:/h:snom:snom_820",
+                      "cpe:/h:snom:snom_370" );
 
 if( ! version = get_app_version( cpe:cpe_list ) ) exit( 0 );
 
 if( version_is_less( version:version, test_version:"8.7.5.15" ) ) {
-  report = 'Installed Firmware: ' + version + '\nFixed Version:      8.7.5.15';
+  report = report_fixed_ver(installed_version: version, fixed_version: "8.7.5.15");
   security_message( port:0, data:report );
   exit( 0 );
 }

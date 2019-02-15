@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ilias_detect.nasl 10905 2018-08-10 14:32:11Z cfischer $
+# $Id: gb_ilias_detect.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # ILIAS Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140443");
-  script_version("$Revision: 10905 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:32:11 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 13679 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-10-20 10:51:43 +0700 (Fri, 20 Oct 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -80,11 +80,11 @@ foreach dir (make_list_unique("/", "/ilias", "/ILIAS", cgi_dirs(port: port))) {
   res = http_keepalive_send_recv(port: port, data: req);
 
   # We should get a redirect with a session id
-  loc = extract_location_from_redirect(port: port, data: res);
+  loc = http_extract_location_from_redirect(port: port, data: res);
   if (isnull(loc))
     continue;
 
-  cookie = get_cookie_from_header( buf: res, pattern: "Set-Cookie: (SESSID=[0-9A-Za-z]+);");
+  cookie = http_get_cookie_from_header( buf: res, pattern: "Set-Cookie: (SESSID=[0-9A-Za-z]+);");
   # nb: If there is no such cookie (which might be possible) create a random one to avoid an error in make_array below
   if (!cookie)
     cookie = "SESSID=" + rand_str(length: 32, charset: "abcdefghijklmnopqrstuvwxyz0123456789");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: xedus_detect.nasl 11015 2018-08-17 06:31:19Z cfischer $
+# $Id: xedus_detect.nasl 13685 2019-02-15 10:06:52Z cfischer $
 #
 # Xedus detection
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14644");
-  script_version("$Revision: 11015 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 13685 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 11:06:52 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   #  script_bugtraq_id(11071);
   script_tag(name:"cvss_base", value:"0.0");
@@ -45,9 +45,8 @@ if(description)
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"summary", value:"The remote host runs Xedus Peer to Peer webserver, it provides
-  the ability to share files, music, and any other media, as well
-  as create robust and dynamic web sites, which can feature
-  database access, file system access, with full .net support.");
+  the ability to share files, music, and any other media, as well as create robust and dynamic web sites,
+  which can feature database access, file system access, with full .net support.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -61,14 +60,14 @@ exit(0); # FP-prone # TODO: Fix the detection if possible...
 
 port = get_http_port( default:4274 );
 
-url = "/testgetrequest.x?param='free%20openvas'";
+url = "/testgetrequest.x?param='free%20nvttest'";
 req = http_get( item:url, port:port );
 rep = http_keepalive_send_recv( port:port, data:req );
 
-if( egrep( pattern:"free openvas", string:rep ) ) {
+if( egrep( pattern:"free nvttest", string:rep ) ) {
   set_kb_item( name:"xedus/running", value:TRUE );
   set_kb_item( name:"xedus/" + port + "/running", value:TRUE );
-  set_kb_item( name:"Services/www/" + port + "/embedded", value:TRUE );
+  http_set_is_marked_embedded( port:port );
   log_message( port:port );
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ciscoworks_detect.nasl 10891 2018-08-10 12:51:28Z cfischer $
+# $Id: ciscoworks_detect.nasl 13685 2019-02-15 10:06:52Z cfischer $
 #
 # CiscoWorks Management Console Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.19559");
-  script_version("$Revision: 10891 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:51:28 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 13685 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 11:06:52 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -58,7 +58,7 @@ res = http_get_cache( item:"/login.html", port:port );
 
 if( "<title>CiscoWorks</title>" >< res ) {
   log_message( port:port );
-  set_kb_item( name:"Services/www/" + port + "/embedded", value:TRUE );
+  http_set_is_marked_embedded( port:port );
 }
 
 exit( 0 );

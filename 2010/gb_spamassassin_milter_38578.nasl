@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_spamassassin_milter_38578.nasl 13467 2019-02-05 12:16:48Z cfischer $
+# $Id: gb_spamassassin_milter_38578.nasl 13667 2019-02-14 13:57:04Z cfischer $
 #
 # SpamAssassin Milter Plugin 'mlfi_envrcpt()' Remote Arbitrary Command Injection Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100528");
-  script_version("$Revision: 13467 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-05 13:16:48 +0100 (Tue, 05 Feb 2019) $");
+  script_version("$Revision: 13667 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-14 14:57:04 +0100 (Thu, 14 Feb 2019) $");
   script_tag(name:"creation_date", value:"2010-03-15 13:03:19 +0100 (Mon, 15 Mar 2010)");
   script_cve_id("CVE-2010-1132");
   script_bugtraq_id(38578);
@@ -68,59 +68,62 @@ if(description)
 include("smtp_func.inc");
 include("misc_func.inc");
 
-port = get_smtp_port(default:25);
-if(get_kb_item("smtp/" + port + "/qmail/detected"))
-  exit(0);
+ports = smtp_get_ports();
+foreach port( ports ) {
 
-banner = get_smtp_banner(port:port);
-if(!banner)
-  exit(0);
+  if(get_kb_item("smtp/" + port + "/qmail/detected"))
+    continue;
 
-dom = eregmatch(pattern:"220 ([^ ]+)", string:banner);
-if(isnull(dom[1])) {
-  domain = get_host_name();
-} else {
-  domain = dom[1];
-}
+  banner = get_smtp_banner(port:port);
+  if(!banner)
+    continue;
 
-soc = smtp_open(port:port, data:NULL);
-if(!soc)
-  exit(0);
+  dom = eregmatch(pattern:"220 ([^ ]+)", string:banner);
+  if(isnull(dom[1])) {
+    domain = get_host_name();
+  } else {
+    domain = dom[1];
+  }
 
-vtstrings = get_vt_strings();
-src_name = this_host_name();
-FROM = string(vtstrings["lowercase"], '@', src_name);
-TO = string(vtstrings["lowercase"], '@', domain);
+  soc = smtp_open(port:port, data:NULL);
+  if(!soc)
+    continue;
 
-send(socket:soc, data:strcat('HELO ', src_name, '\r\n'));
-buf = smtp_recv_line(socket:soc, code:"250");
-if(!buf) {
+  vtstrings = get_vt_strings();
+  src_name = this_host_name();
+  FROM = string(vtstrings["lowercase"], '@', src_name);
+  TO = string(vtstrings["lowercase"], '@', domain);
+
+  send(socket:soc, data:strcat('HELO ', src_name, '\r\n'));
+  buf = smtp_recv_line(socket:soc, code:"250");
+  if(!buf) {
+    smtp_close(socket:soc, check_data:buf);
+    continue;
+  }
+
+  start1 = unixtime();
+  send(socket:soc, data:strcat('MAIL FROM: ', FROM, '\r\n'));
+  buf = smtp_recv_line(socket:soc, code:"250");
+  if(!buf) {
+    smtp_close(socket:soc, check_data:buf);
+    continue;
+  }
+
+  stop1 = unixtime();
+  dur1 = stop1 - start1;
+
+  start2 = unixtime();
+  send(socket:soc, data:string('RCPT TO: root+:"; sleep 16 ;"\r\n'));
+  buf = smtp_recv_line(socket:soc);
+  stop2 = unixtime();
+  dur2 = stop2 - start2;
+
   smtp_close(socket:soc, check_data:buf);
-  exit(0);
-}
 
-start1 = unixtime();
-send(socket:soc, data:strcat('MAIL FROM: ', FROM, '\r\n'));
-buf = smtp_recv_line(socket:soc, code:"250");
-if(!buf) {
-  smtp_close(socket:soc, check_data:buf);
-  exit(0);
-}
-
-stop1 = unixtime();
-dur1 = stop1 - start1;
-
-start2 = unixtime();
-send(socket:soc, data:string('RCPT TO: root+:"; sleep 8 ;"\r\n'));
-buf = smtp_recv_line(socket:soc);
-stop2 = unixtime();
-dur2 = stop2-start2;
-
-smtp_close(socket:soc, check_data:buf);
-
-if(buf && buf =~ "^250[ -]" && (dur2 > dur1 && dur2 > 7 && dur2 < 12)) {
-  security_message(port:port);
-  exit(0);
+  if(buf && buf =~ "^250[ -]" && (dur2 > dur1 && dur2 > 15 && dur2 < 20)) {
+    security_message(port:port);
+    exit(0);
+  }
 }
 
 exit(99);

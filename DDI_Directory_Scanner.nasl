@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: DDI_Directory_Scanner.nasl 12030 2018-10-23 09:41:40Z cfischer $
+# $Id: DDI_Directory_Scanner.nasl 13685 2019-02-15 10:06:52Z cfischer $
 #
 # Directory Scanner
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11032");
-  script_version("$Revision: 12030 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-23 11:41:40 +0200 (Tue, 23 Oct 2018) $");
+  script_version("$Revision: 13685 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 11:06:52 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -991,8 +991,8 @@ Check403 = TRUE;
 CheckRedirect = TRUE;
 
 port = get_http_port( default:80 );
-
-if( get_kb_item( "Services/www/" + port + "/embedded" ) ) exit( 0 );
+if( http_get_is_marked_broken( port:port ) )
+  exit( 0 );
 
 #counter for current failed requests
 failedReqs = 0;
@@ -1164,9 +1164,9 @@ foreach cdir( testDirList ) {
 
     if( debug ) {
       display( ":: Got a '", http_code, "' redirect for ", ScanRootDir, cdir, ", trying to extract the location...\n" );
-      redirect = extract_location_from_redirect( port:port, data:res, debug:TRUE );
+      redirect = http_extract_location_from_redirect( port:port, data:res, debug:TRUE );
     } else {
-      redirect = extract_location_from_redirect( port:port, data:res, debug:FALSE );
+      redirect = http_extract_location_from_redirect( port:port, data:res, debug:FALSE );
     }
 
     if( redirect ) {
@@ -1199,7 +1199,7 @@ foreach cdir( testDirList ) {
 
     if( header = egrep( pattern:"^WWW-Authenticate:", string:res, icase:TRUE ) ) {
       if( debug ) display( ":: Got a 401 for ", ScanRootDir + cdir, " containing a WWW-Authenticate header, adding to the dirs requiring auth...\n" );
-      basic_auth = extract_basic_auth( data:res );
+      basic_auth = http_extract_basic_auth( data:res );
       add_auth_dir_list( dir:ScanRootDir + cdir, port:port, host:host, basic:basic_auth["basic_auth"], realm:basic_auth["realm"] );
     } else {
       if( debug ) display( ":: Got a 401 for ", ScanRootDir + cdir, " WITHOUT a WWW-Authenticate header, NOT adding to the dirs requiring auth...\n" );

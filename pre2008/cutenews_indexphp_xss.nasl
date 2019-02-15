@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cutenews_indexphp_xss.nasl 12007 2018-10-22 07:43:49Z cfischer $
+# $Id: cutenews_indexphp_xss.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # CuteNews index.php XSS
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:cutephp:cutenews";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14665");
-  script_version("$Revision: 12007 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 09:43:49 +0200 (Mon, 22 Oct 2018) $");
+  script_version("$Revision: 13679 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2004-1659");
   script_bugtraq_id(11097);
@@ -76,7 +76,7 @@ if (dir == "/")
   dir = "";
 
 host = http_host_name( dont_add_port:TRUE );
-if( get_http_has_generic_xss( port:port, host:host ) ) exit( 0 );
+if( http_get_has_generic_xss( port:port, host:host ) ) exit( 0 );
 
 url = dir + "/index.php?mod=<script>foo</script>";
 req = http_get(item: url, port: port);

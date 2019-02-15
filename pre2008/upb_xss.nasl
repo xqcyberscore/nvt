@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: upb_xss.nasl 12150 2018-10-29 11:46:42Z cfischer $
+# $Id: upb_xss.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # Ultimate PHP Board multiple XSS flaws
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.19498");
-  script_version("$Revision: 12150 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-29 12:46:42 +0100 (Mon, 29 Oct 2018) $");
+  script_version("$Revision: 13679 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_cve_id("CVE-2005-2004");
   script_bugtraq_id(13971);
@@ -84,7 +84,7 @@ port = get_http_port( default:80 );
 if( ! can_host_php( port:port ) ) exit( 0 );
 
 host = http_host_name( dont_add_port:TRUE );
-if( get_http_has_generic_xss( port:port, host:host ) ) exit( 0 );
+if( http_get_has_generic_xss( port:port, host:host ) ) exit( 0 );
 
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apprain_multiple_xss_vuln.nasl 13660 2019-02-14 09:48:45Z cfischer $
+# $Id: gb_apprain_multiple_xss_vuln.nasl 13681 2019-02-15 08:41:57Z mmartin $
 #
 # appRain CMF Multiple Cross-Site scripting Vulnerabilities.
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801954");
-  script_version("$Revision: 13660 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-14 10:48:45 +0100 (Thu, 14 Feb 2019) $");
+  script_version("$Revision: 13681 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:41:57 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2011-07-14 13:16:44 +0200 (Thu, 14 Jul 2011)");
   script_bugtraq_id(48623);
   script_cve_id("CVE-2011-5228", "CVE-2011-5229");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("appRain CMF Multiple Cross-Site scripting Vulnerabilities");
   script_xref(name:"URL", value:"http://secpod.org/blog/?p=215");
   script_xref(name:"URL", value:"http://secpod.org/advisories/SECPOD_AppRain_Multiple_XSS.txt");

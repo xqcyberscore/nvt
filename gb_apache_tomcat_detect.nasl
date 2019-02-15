@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_detect.nasl 12413 2018-11-19 11:11:31Z cfischer $
+# $Id: gb_apache_tomcat_detect.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # Apache Tomcat Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800371");
-  script_version("$Revision: 12413 $");
+  script_version("$Revision: 13679 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-19 12:11:31 +0100 (Mon, 19 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-03-18 14:25:01 +0100 (Wed, 18 Mar 2009)");
   script_name("Apache Tomcat Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -103,7 +103,7 @@ if( ! verFound ) {
   }
 }
 
-authDirs = get_http_kb_auth_required( port:port, host:host );
+authDirs = http_get_kb_auth_required( port:port, host:host );
 if( authDirs ) {
 
   # Sort to not report changes on delta reports if just the order is different

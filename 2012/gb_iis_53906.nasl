@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_iis_53906.nasl 11266 2018-09-06 10:59:26Z cfischer $
+# $Id: gb_iis_53906.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # Microsoft IIS Authentication Bypass and Source Code Disclosure Vulnerabilities
 #
@@ -31,11 +31,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103507");
   script_bugtraq_id(53906);
-  script_version("$Revision: 11266 $");
+  script_version("$Revision: 13679 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_name("Microsoft IIS Authentication Bypass and Source Code Disclosure Vulnerabilities");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 12:59:26 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2012-07-03 10:23:40 +0200 (Tue, 03 Jul 2012)");
   script_category(ACT_ATTACK);
   script_family("Web Servers");
@@ -75,7 +75,7 @@ include("http_keepalive.inc");
 if(!port = get_app_port(cpe:CPE))exit(0);
 host = http_host_name(dont_add_port:TRUE );
 
-auth_req = get_http_kb_auth_required(port:port, host:host);
+auth_req = http_get_kb_auth_required(port:port, host:host);
 if(!auth_req) exit(0);
 
 protected = make_list(auth_req);

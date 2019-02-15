@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trend_micro_interscan_web_security_virtual_appliance_www_default_admin_password.nasl 11025 2018-08-17 08:27:37Z cfischer $
+# $Id: gb_trend_micro_interscan_web_security_virtual_appliance_www_default_admin_password.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # Default password `adminIWSS85` for admin account (http)
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:trendmicro:interscan_web_security_virtual_appliance';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140243");
-  script_version("$Revision: 11025 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:27:37 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 13679 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-04-10 16:37:30 +0200 (Mon, 10 Apr 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -82,7 +82,7 @@ buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 if( "summary_scan" >!< buf )
   exit( 99 );
 
-if( ! cookie = get_cookie_from_header( buf:buf ) )
+if( ! cookie = http_get_cookie_from_header( buf:buf ) )
   exit( 99 );
 
 url = '/top.jsp?summary_scan';

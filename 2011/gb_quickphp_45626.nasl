@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_quickphp_45626.nasl 10711 2018-08-01 13:58:38Z cfischer $
+# $Id: gb_quickphp_45626.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # QuickPHP 'index.php' Remote Source Code Disclosure Vulnerability
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103002");
-  script_version("$Revision: 10711 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-01 15:58:38 +0200 (Wed, 01 Aug 2018) $");
+  script_version("$Revision: 13679 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2011-01-03 14:40:34 +0100 (Mon, 03 Jan 2011)");
   script_bugtraq_id(45626);
   script_tag(name:"cvss_base", value:"5.0");
@@ -72,7 +72,7 @@ host = http_host_name(dont_add_port:TRUE);
 
 if(!can_host_php(port:port))exit(0);
 
-phps = get_http_kb_file_extensions( port:port, host:host, ext:"php" );
+phps = http_get_kb_file_extensions( port:port, host:host, ext:"php" );
 if(!isnull(phps)) {
   phps = make_list(phps);
 } else {

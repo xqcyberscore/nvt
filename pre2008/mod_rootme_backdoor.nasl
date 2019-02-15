@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mod_rootme_backdoor.nasl 10317 2018-06-25 14:09:46Z cfischer $
+# $Id: mod_rootme_backdoor.nasl 13685 2019-02-15 10:06:52Z cfischer $
 #
 # Apache mod_rootme Backdoor
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.13644");
-  script_version("$Revision: 10317 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-25 16:09:46 +0200 (Mon, 25 Jun 2018) $");
+  script_version("$Revision: 13685 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 11:06:52 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -37,8 +37,8 @@ if(description)
   script_copyright("This script is Copyright (C) 2004 Noam Rathaus");
   script_family("Malware");
   script_dependencies("gb_get_http_banner.nasl");
-  script_mandatory_keys("apache/banner");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("apache/banner");
 
   script_tag(name:"solution", value:"- Remove the mod_rootme module from httpd.conf/modules.conf
 
@@ -54,37 +54,43 @@ if(description)
 }
 
 include("http_func.inc");
-include("http_keepalive.inc");
 
 port = get_http_port(default:80);
 banner = get_http_banner(port:port);
-if ( ! banner || "Apache" >!< banner ) exit(0);
-if ( get_kb_item("Services/www/" + port + "/embedded" ) ) exit(0);
+if ( ! banner || "Apache" >!< banner )
+  exit(0);
+
+if( http_get_is_marked_embedded( port:port ) )
+  exit( 0 );
 
 host = http_host_name(port:port);
 
 soc = open_sock_tcp(port);
 if (soc)
 {
- # Syntax for this Trojan is essential... normal requests won't work...
- # We need to emulate a netcat, slow sending, single line each time, unlike HTTP that can
- # receive everything as a block
- send(socket:soc, data:string("GET root HTTP/1.0\n",
-                              "Host: ", host,"\r\n"));
- sleep(1);
- send(socket:soc, data:string("\n"));
- sleep(1);
- res_vx = recv(socket:soc, length:1024);
- if ( ! res_vx ) exit(0);
- send(socket:soc, data:string("id\r\n",
-                              "Host: ", host, "\r\n"));
- res = recv(socket:soc, length:1024);
- if (res == NULL) exit(0);
- if (ereg(pattern:"^uid=[0-9]+\(root\)", string:res) && ereg(pattern:"^rootme-[0-9].[0-9] ready", string:res_vx))
- {
-  send(socket:soc, data:string("exit\r\n",
-                               "Host: ", host, "\r\n")); # If we don't exit we can cause Apache to crash
-  security_message(port:port);
- }
- close(soc);
+  # Syntax for this Trojan is essential... normal requests won't work...
+  # We need to emulate a netcat, slow sending, single line each time, unlike HTTP that can
+  # receive everything as a block
+  send(socket:soc, data:string("GET root HTTP/1.0\n",
+                               "Host: ", host,"\r\n"));
+  sleep(1);
+  send(socket:soc, data:string("\n"));
+  sleep(1);
+  res_vx = recv(socket:soc, length:1024);
+  if ( ! res_vx )
+    exit(0);
+
+  send(socket:soc, data:string("id\r\n",
+                               "Host: ", host, "\r\n"));
+  res = recv(socket:soc, length:1024);
+  if(!res)
+    exit(0);
+
+  if (ereg(pattern:"^uid=[0-9]+\(root\)", string:res) && ereg(pattern:"^rootme-[0-9].[0-9] ready", string:res_vx))
+  {
+    send(socket:soc, data:string("exit\r\n",
+                                 "Host: ", host, "\r\n")); # If we don't exit we can cause Apache to crash
+    security_message(port:port);
+  }
+  close(soc);
 }

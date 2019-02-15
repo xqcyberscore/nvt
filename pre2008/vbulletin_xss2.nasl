@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: vbulletin_xss2.nasl 10862 2018-08-09 14:51:58Z cfischer $
+# $Id: vbulletin_xss2.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # vBulletin XSS(2)
 #
@@ -29,25 +29,25 @@
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.14833");
- script_version("$Revision: 10862 $");
- script_tag(name:"last_modification", value:"$Date: 2018-08-09 16:51:58 +0200 (Thu, 09 Aug 2018) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_tag(name:"cvss_base", value:"4.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
- script_cve_id("CVE-2004-1824");
- script_bugtraq_id(6226);
- script_xref(name:"OSVDB", value:"3280");
- script_name("vBulletin XSS(2)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_copyright("This script is Copyright (C) 2004 David Maciejak");
- script_family("Web application abuses");
- script_dependencies("cross_site_scripting.nasl", "vbulletin_detect.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("vBulletin/installed");
- script_tag(name:"solution", value:"Upgrade to latest version");
- script_tag(name:"summary", value:"The remote host is running vBulletin, a web based bulletin board system
+  script_oid("1.3.6.1.4.1.25623.1.0.14833");
+  script_version("$Revision: 13679 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_cve_id("CVE-2004-1824");
+  script_bugtraq_id(6226);
+  script_xref(name:"OSVDB", value:"3280");
+  script_name("vBulletin XSS(2)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_copyright("This script is Copyright (C) 2004 David Maciejak");
+  script_family("Web application abuses");
+  script_dependencies("cross_site_scripting.nasl", "vbulletin_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("vBulletin/installed");
+  script_tag(name:"solution", value:"Upgrade to latest version");
+  script_tag(name:"summary", value:"The remote host is running vBulletin, a web based bulletin board system
 written in PHP.
 
 The remote version of this software seems to be prior or equal to version 2.2.9.
@@ -62,9 +62,9 @@ in the browser of an unsuspecting user when followed.
 This may facilitate the theft of cookie-based authentication credentials
 as well as other attacks.");
 
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");
@@ -72,7 +72,7 @@ include("http_keepalive.inc");
 
 port = get_http_port(default:80);
 host = http_host_name( dont_add_port:TRUE );
-if( get_http_has_generic_xss( port:port, host:host ) ) exit( 0 );
+if( http_get_has_generic_xss( port:port, host:host ) ) exit( 0 );
 
 install = get_kb_item(string("www/", port, "/vBulletin"));
 if (isnull(install)) exit(0);

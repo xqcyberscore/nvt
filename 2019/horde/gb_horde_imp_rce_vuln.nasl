@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_horde_imp_rce_vuln.nasl 13517 2019-02-07 07:51:12Z mmartin $
+# $Id: gb_horde_imp_rce_vuln.nasl 13683 2019-02-15 08:52:16Z mmartin $
 #
 # Horde IMP <= 6.2.22 RCE Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:horde:imp";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141879");
-  script_version("$Revision: 13517 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-07 08:51:12 +0100 (Thu, 07 Feb 2019) $");
+  script_version("$Revision: 13683 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:52:16 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-15 16:36:52 +0700 (Tue, 15 Jan 2019)");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
@@ -60,7 +60,7 @@ if (description)
 
   script_tag(name:"affected", value:"Horde IMP 6.2.22 and prior.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 15th January, 2019.
+  script_tag(name:"solution", value:"No known solution is available as of 15th February, 2019.
   Information regarding this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/46136");

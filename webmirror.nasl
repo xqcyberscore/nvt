@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: webmirror.nasl 13315 2019-01-28 07:19:45Z cfischer $
+# $Id: webmirror.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # WEBMIRROR 2.0
 #
@@ -35,8 +35,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10662");
-  script_version("$Revision: 13315 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-28 08:19:45 +0100 (Mon, 28 Jan 2019) $");
+  script_version("$Revision: 13679 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-10-02 19:48:14 +0200 (Fri, 02 Oct 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -609,7 +609,7 @@ function retr( port, page, host ) {
   if( res !~ "^HTTP/1\.[01] 200" ) {
     if( res =~ "^HTTP/1\.[01] 40[13]" ) {
       if( egrep( pattern:"^WWW-Authenticate:", string:res, icase:TRUE ) ) {
-        basic_auth = extract_basic_auth( data:res );
+        basic_auth = http_extract_basic_auth( data:res );
         add_auth( url:page, basic:basic_auth["basic_auth"], realm:basic_auth["realm"], port:port, host:host );
       }
       return NULL;

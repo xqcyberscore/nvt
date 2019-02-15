@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_http_default_command_injection.nasl 12875 2018-12-21 15:01:59Z cfischer $
+# $Id: gb_http_default_command_injection.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # Generic HTTP Command Injection Check
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112054");
-  script_version("$Revision: 12875 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-21 16:01:59 +0100 (Fri, 21 Dec 2018) $");
+  script_version("$Revision: 13679 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-09-27 09:42:21 +0200 (Wed, 27 Sep 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -76,7 +76,7 @@ if( http_is_cgi_scan_disabled() ||
 port = get_http_port(default:80);
 host = http_host_name(dont_add_port:TRUE);
 
-cgis = get_http_kb_cgis(port:port, host:host);
+cgis = http_get_kb_cgis(port:port, host:host);
 if(!cgis) exit(0);
 
 cmds = exploit_commands();
@@ -88,7 +88,7 @@ foreach cmd (keys(cmds)) {
   foreach cgi (cgis) {
     cgiArray = split(cgi, sep:" ", keep:FALSE);
     foreach ex (expressions) {
-      urls = create_exploit_req(cgiArray:cgiArray, ex:ex);
+      urls = http_create_exploit_req(cgiArray:cgiArray, ex:ex);
       foreach url (urls) {
         if(http_vuln_check(port:port, url:url, pattern:cmd)) {
           report = report_vuln_url(port:port, url:url);

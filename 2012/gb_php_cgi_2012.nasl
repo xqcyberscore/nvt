@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_cgi_2012.nasl 11457 2018-09-18 12:24:49Z cfischer $
+# $Id: gb_php_cgi_2012.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # PHP-CGI-based setups vulnerability when parsing query string parameters from php files.
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103482");
-  script_version("$Revision: 11457 $");
+  script_version("$Revision: 13679 $");
   script_bugtraq_id(53388);
   script_cve_id("CVE-2012-1823", "CVE-2012-2311", "CVE-2012-2336", "CVE-2012-2335");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 14:24:49 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2012-05-04 10:40:34 +0100 (Fri, 04 May 2012)");
   script_name("PHP-CGI-based setups vulnerability when parsing query string parameters from php files.");
   script_category(ACT_ATTACK);
@@ -60,7 +60,7 @@ if(description)
   An example of the -s command, allowing an attacker to view the source code
   of index.php is below:
 
-  http://localhost/index.php?-s");
+  http://example.com/index.php?-s");
 
   script_tag(name:"impact", value:"Exploiting this issue allows remote attackers to view the source code of files in the
   context of the server process. This may allow the attacker to obtain sensitive information and to run arbitrary PHP code
@@ -82,7 +82,7 @@ port = get_http_port(default:80);
 if(!can_host_php(port:port))exit(0);
 
 host = http_host_name(dont_add_port:TRUE);
-_phps = get_http_kb_file_extensions( port:port, host:host, ext:"php" );
+_phps = http_get_kb_file_extensions( port:port, host:host, ext:"php" );
 
 if(!isnull(_phps)) {
   _phps = make_list("/",_phps);

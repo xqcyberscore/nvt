@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cutenews_show_news_xss.nasl 10862 2018-08-09 14:51:58Z cfischer $
+# $Id: cutenews_show_news_xss.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # CuteNews show_news.php XSS
 #
@@ -28,34 +28,34 @@ CPE = "cpe:/a:cutephp:cutenews";
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.12291");
- script_version("$Revision: 10862 $");
- script_tag(name:"last_modification", value:"$Date: 2018-08-09 16:51:58 +0200 (Thu, 09 Aug 2018) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_tag(name:"cvss_base", value:"6.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_oid("1.3.6.1.4.1.25623.1.0.12291");
+  script_version("$Revision: 13679 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_cve_id("CVE-2004-0660");
- script_bugtraq_id(10620, 10750);
- script_xref(name:"OSVDB", value:"7283");
- script_xref(name:"OSVDB", value:"7284");
- script_xref(name:"OSVDB", value:"7285");
- script_xref(name:"OSVDB", value:"7286");
+  script_cve_id("CVE-2004-0660");
+  script_bugtraq_id(10620, 10750);
+  script_xref(name:"OSVDB", value:"7283");
+  script_xref(name:"OSVDB", value:"7284");
+  script_xref(name:"OSVDB", value:"7285");
+  script_xref(name:"OSVDB", value:"7286");
 
- script_name("CuteNews show_news.php XSS");
+  script_name("CuteNews show_news.php XSS");
 
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_analysis");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_analysis");
 
- script_copyright("This script is Copyright (C) 2004 Noam Rathaus");
- script_family("Web application abuses");
- script_dependencies("cutenews_detect.nasl", "cross_site_scripting.nasl");
- script_mandatory_keys("cutenews/installed");
- script_require_ports("Services/www", 80);
- script_tag(name:"solution", value:"Upgrade to the latest version of this software.");
- script_tag(name:"summary", value:"The remote web server contains several PHP scripts that are prone to
+  script_copyright("This script is Copyright (C) 2004 Noam Rathaus");
+  script_family("Web application abuses");
+  script_dependencies("cutenews_detect.nasl", "cross_site_scripting.nasl");
+  script_mandatory_keys("cutenews/installed");
+  script_require_ports("Services/www", 80);
+  script_tag(name:"solution", value:"Upgrade to the latest version of this software.");
+  script_tag(name:"summary", value:"The remote web server contains several PHP scripts that are prone to
 cross-site scripting attacks.
 
 Description :
@@ -63,9 +63,9 @@ Description :
 The installed version of CuteNews is vulnerable to cross-site scripting attacks.  An attacker may use this bug to
 steal the credentials of legitimate users of this site.");
 
- script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/367289");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/367289");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");
@@ -82,7 +82,7 @@ if (dir == "/")
   dir = "";
 
 host = http_host_name( dont_add_port:TRUE );
-if( get_http_has_generic_xss( port:port, host:host ) ) exit( 0 );
+if( http_get_has_generic_xss( port:port, host:host ) ) exit( 0 );
 
 req = http_get(item:string(dir, "/show_news.php?subaction=showcomments&id=%3Cscript%3Efoo%3C/script%3E&archive=&start_from=&ucat="),
  	       port:port);

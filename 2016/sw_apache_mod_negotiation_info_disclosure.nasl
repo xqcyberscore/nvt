@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_apache_mod_negotiation_info_disclosure.nasl 11026 2018-08-17 08:52:26Z cfischer $
+# $Id: sw_apache_mod_negotiation_info_disclosure.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # Apache mod_negotiation MultiViews Information Disclosure
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111109");
-  script_version("$Revision: 11026 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:52:26 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 13679 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2016-07-06 16:00:00 +0200 (Wed, 06 Jul 2016)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -47,7 +47,7 @@ if(description)
   script_tag(name:"summary", value:"The script attempts to identify if the Apache webserver is prone to an
   information disclosure vulnerability.");
 
-  script_tag(name:"insight", value:"By requesting an invalid 'application/openvas; q=1.0' Accept: header the webserver is
+  script_tag(name:"insight", value:"By requesting an invalid 'application/vttest; q=1.0' Accept: header the webserver is
   replying with a list of alternative files which exists in the webservers directory. See the reference for more
   background information.");
 
@@ -84,7 +84,7 @@ foreach ext( make_list( "php", "html", "txt" ) ) {
 
   if( curLimit <= maxLimit ) break;
 
-  urls = get_http_kb_file_extensions( port:port, host:host, ext:ext );
+  urls = http_get_kb_file_extensions( port:port, host:host, ext:ext );
   if( isnull( urls ) ) continue;
 
   foreach url( urls ) {
@@ -94,7 +94,7 @@ foreach ext( make_list( "php", "html", "txt" ) ) {
     # Remove extension from URL
     url = url - "." - ext;
 
-    req = http_get_req( port:port, url:url, accept_header:"application/openvas; q=1.0" );
+    req = http_get_req( port:port, url:url, accept_header:"application/vttest; q=1.0" );
     res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
     if( res =~ "HTTP/1.. 406" && "Alternates:" >< res ) {

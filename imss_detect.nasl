@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: imss_detect.nasl 10147 2018-06-11 03:00:29Z ckuersteiner $
+# $Id: imss_detect.nasl 13685 2019-02-15 10:06:52Z cfischer $
 #
 # Trend Micro IMSS console management detection
 #
@@ -27,14 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17244");
-  script_version("$Revision: 10147 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-11 05:00:29 +0200 (Mon, 11 Jun 2018) $");
+  script_version("$Revision: 13685 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 11:06:52 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-
   script_name("Trend Micro IMSS console management detection");
-
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2005 David Maciejak");
   script_family("Service detection");
@@ -44,10 +42,10 @@ if(description)
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"summary", value:"The remote host appears to run Trend Micro Interscan Messaging Security Suite,
-connections are allowed to the web console management.
+  connections are allowed to the web console management.");
 
-Make sure that only authorized hosts can connect to this service, as the information of its existence may help an
-attacker to make more sophisticated attacks against the remote network.");
+  script_tag(name:"solution", value:"Make sure that only authorized hosts can connect to this service, as the information
+  of its existence may help an attacker to make more sophisticated attacks against the remote network.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -62,11 +60,12 @@ port = get_http_port( default:80 );
 url = "/commoncgi/servlet/CCGIServlet?ApHost=PDT_InterScan_NT&CGIAlias=PDT_InterScan_NT&File=logout.htm";
 req = http_get( item:url, port:port );
 rep = http_keepalive_send_recv( port:port, data:req );
-if( rep == NULL ) exit( 0 );
+if(!rep)
+  exit( 0 );
 
 if( "<title>InterScan Messaging Security Suite for SMTP</title>" >< rep ) {
   log_message( port:port );
-  set_kb_item( name:"Services/www/" + port + "/embedded", value:TRUE );
+  http_set_is_marked_embedded( port:port );
 }
 
 exit( 0 );

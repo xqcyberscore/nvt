@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: http_func.inc 13658 2019-02-14 08:16:14Z cfischer $
+# $Id: http_func.inc 13686 2019-02-15 10:08:13Z cfischer $
 #
 # Methods to handle HTTP
 #
@@ -24,7 +24,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 13658 $
+# $Revision: 13686 $
 #
 ###############################################################################
 
@@ -32,6 +32,32 @@
 # and http_send_recv() for debugging purposes on the target / targets logfiles.
 global_var _http_ua_include_oid;
 _http_ua_include_oid = FALSE;
+
+# Global vars to avoid that we're repeatedly asking redis for something we already know.
+global_var __http_func_user_agent, __http_is_cgi_scan_disabled;
+
+# Enables debugging output for a few functions below.
+global_var _http_debug;
+_http_debug = FALSE;
+
+# Global var passed to a few functions below
+global_var optimize_test_enabled;
+optimize_test_enabled = get_preference( "optimize_test" );
+
+# Global vars to avoid that we're repeatedly asking redis for something we already know.
+global_var _http_is_broken_array, _http_no404_string_array, _http_has_generic_xss_array, _http_is_embedded_array;
+
+# nb: key is the host+port or NULL (if not previously checked), value TRUE/FALSE if broken or not
+_http_is_broken_array = make_array();
+
+# nb: key is the host+port or NULL (if not previously checked), value a string or FALSE
+_http_no404_string_array = make_array();
+
+# nb: key is the host+port or NULL (if not previously checked), value TRUE/FALSE if it has a generic XSS or not
+_http_has_generic_xss_array = make_array();
+
+# nb: key is the port or NULL (if not previously checked), value TRUE/FALSE if embedded or not
+_http_is_embedded_array = make_array();
 
 # @brief Returns a HTTP User Agent string which can be used by VTs within the
 #        User-Agent: header of HTTP requests.
@@ -80,32 +106,6 @@ function http_get_user_agent( vt_string, dont_add_oid ) {
 
   return ua;
 }
-
-global_var OPENVAS_HTTP_USER_AGENT;
-OPENVAS_HTTP_USER_AGENT = http_get_user_agent();
-
-# Global vars to avoid that we're repeatedly asking redis for something we already know.
-global_var __http_func_user_agent, __http_is_cgi_scan_disabled;
-
-# Enables debugging output for a few functions below.
-global_var _http_debug;
-_http_debug = FALSE;
-
-# Global var passed to a few functions below
-global_var optimize_test_enabled;
-optimize_test_enabled = get_preference( "optimize_test" );
-
-# Global vars to avoid that we're repeatedly asking redis for something we already know.
-global_var _http_is_broken_array, _http_no404_string_array, _http_has_generic_xss_array;
-
-# nb: key is the host+port or NULL (if not previously checked), value TRUE/FALSE if broken or not
-_http_is_broken_array = make_array();
-
-# nb: key is the host+port or NULL (if not previously checked), value a string or FALSE
-_http_no404_string_array = make_array();
-
-# nb: key is the host+port or NULL (if not previously checked), value TRUE/FALSE if it has a generic XSS or not
-_http_has_generic_xss_array = make_array();
 
 # @brief Split the passed HTTP header into an array containing the header names as an array
 #        key and the header values as the array value.
@@ -240,7 +240,7 @@ function get_http_banner( port, file, ignore_broken ) {
   if( banner )
     return banner;
 
-  if( ! ignore_broken && get_http_is_marked_broken( port:port, host:"*" ) )
+  if( ! ignore_broken && http_get_is_marked_broken( port:port, host:"*" ) )
     return NULL; # TBD: Really return NULL if marked as broken? We still could use the banner version in NVTs...
 
   # nb: Always keep http_get() before http_open_socket() as the first could
@@ -276,16 +276,17 @@ function get_http_banner( port, file, ignore_broken ) {
 #                            is passed http_host_name will be called automatically and a debug
 #                            message is logged into the KB (currently commented out).
 # @param ignore_broken       Returns the ports even if they are known to be "broken".
+# @param ignore_unscanned    Returns the ports even if they where "unscanned" previously.
 # @param ignore_cgi_disabled Returns the ports even if CGI scanning is disabled.
 # @param dont_use_vhosts     Allows to specify if http_host_name is called internally (which would fork on multiple vhosts).
 #
 # @return The open / found HTTP ports or the port passed via the default parameter in the case of no found ports
 #         and "unscanned_closed" is set to "no".
 #
-function get_http_port( default, nodefault, host, ignore_broken, ignore_cgi_disabled, dont_use_vhosts ) {
+function get_http_port( default, nodefault, host, ignore_broken, ignore_unscanned, ignore_cgi_disabled, dont_use_vhosts ) {
 
-  local_var default, nodefault, host, ignore_broken, ignore_cgi_disabled, dont_use_vhosts;
-  local_var http_cgi_disabled, port;
+  local_var default, nodefault, host, ignore_broken, ignore_unscanned, ignore_cgi_disabled, dont_use_vhosts;
+  local_var port;
   # nb: optimize_test_enabled is a global var
 
   if( ! default && ! nodefault ) {
@@ -294,22 +295,8 @@ function get_http_port( default, nodefault, host, ignore_broken, ignore_cgi_disa
   }
 
   # nb: Keep before the forking get_kb_item call from below
-  http_cgi_disabled = http_is_cgi_scan_disabled();
-
-  port = get_kb_item( "Services/www" ); # nb: This will fork on multiple open ports
-  if( port )
-    default = port;
-
-  if( ! default )
-    exit( 0 ); # TBD: Try/return 80?
-
-  # Includes e.g. PJL ports which are printing everything
-  # sent to them so exit for such a port here
-  if( http_is_fragile_port( port:default ) )
-    exit( 0 );
-
   if( ! ignore_cgi_disabled ) {
-    if( http_cgi_disabled ) {
+    if( http_is_cgi_scan_disabled() ) {
       if( optimize_test_enabled && "yes" >< optimize_test_enabled ) {
         set_kb_item( name:"nvt_cgi_scanning_disabled/" + get_script_oid(), value:get_script_oid() + "#-#get_http_port" );
       }
@@ -317,28 +304,124 @@ function get_http_port( default, nodefault, host, ignore_broken, ignore_cgi_disa
     }
   }
 
+  port = get_kb_item( "Services/www" ); # nb: This will fork on multiple open ports
+  if( port )
+    default = port;
+
+  # nb: If this is the case we haven't found an open port, default wasn't passed
+  # and nodefault was set to TRUE. We can't continue in this case.
+  if( ! default )
+    exit( 0 );
+
+  if( ! ignore_unscanned && ! get_port_state( default ) )
+    exit( 0 );
+
+  # Includes e.g. PJL ports which are printing everything
+  # sent to them so exit for such a port here
+  if( http_is_fragile_port( port:default ) )
+    exit( 0 );
+
   if( ! dont_use_vhosts && ! host ) {
     host = http_host_name( dont_add_port:TRUE );
     #set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#host#-#get_http_port" );
+  } else if( ! host ) {
+    host = "*";
   }
 
-  if( ! ignore_broken ) {
-
-    if( ! host )
-      host = "*";
-
-    if( get_http_is_marked_broken( port:default, host:host ) )
-      exit( 0 );
-  }
-
-  # TBD: It seems this is never set...
-  if( get_kb_item( "Services/www/" + default + "/working" ) )
-    return default;
-
-  if( ! get_port_state( default ) )
+  if( ! ignore_broken && http_get_is_marked_broken( port:default, host:host ) )
     exit( 0 );
 
   return default;
+}
+
+# @brief Returns all HTTP ports of the target system which are saved
+#        in the KB entry "Services/www" found by the scanner. If no
+#        ports where found open or no list is passed to the "default_ports"
+#        parameter the function will return an empty list. In the case
+#        where the "unscanned_closed" scanner setting is set to "no" it
+#        will return a default set of HTTP ports (namely 80 and 443)
+#        or (if passed) the ports included in the list of the default_ports
+#        parameter.
+#
+# @note  In contrast to @ref get_http_port this function will not fork
+#        and return a list instead. This should be used e.g. for
+#        Detection-VTs where we want to make sure that we're not getting
+#        blocked by the remote service with to many concurrent connections.
+#
+# @param default_list        The list of ports to return (overwriting the internal defaults) if "unscanned_closed"
+#                            is set to "no" and no ports have been found open.
+# @param host                The hostname (e.g. from http_host_name with the dont_add_port:TRUE
+#                            parameter or get_host_name) of the remote server. If no host parameter
+#                            is passed http_host_name will be called automatically and a debug
+#                            message is logged into the KB (currently commented out).
+# @param ignore_broken       Returns the ports even if they are known to be "broken".
+# @param ignore_unscanned    Returns the ports even if they where "unscanned" previously.
+# @param ignore_cgi_disabled Returns the ports even if CGI scanning is disabled.
+# @param dont_use_vhosts     Allows to specify if http_host_name is called internally (which would fork on multiple vhosts).
+#
+# @return The open / found HTTP ports, if none where found an empty list. In the case of no found ports and
+#         "unscanned_closed" is set to "no" a set of default ports or the list passed to the default_ports
+#         parameter.
+#
+function http_get_ports( default_list, host, ignore_broken, ignore_unscanned, ignore_cgi_disabled, dont_use_vhosts ) {
+
+  local_var default_list, host, ignore_broken, ignore_unscanned, ignore_cgi_disabled, dont_use_vhosts;
+  local_var final_port_list, check_port_list, default_ports, num_ports, ports, port;
+
+  final_port_list = make_list();
+  check_port_list = make_list();
+  default_ports = make_list( 80, 443 );
+  num_ports = 0;
+
+  if( ! ignore_cgi_disabled ) {
+    if( http_is_cgi_scan_disabled() ) {
+      if( optimize_test_enabled && "yes" >< optimize_test_enabled ) {
+        set_kb_item( name:"nvt_cgi_scanning_disabled/" + get_script_oid(), value:get_script_oid() + "#-#http_get_ports" );
+      }
+      return final_port_list;
+    }
+  }
+
+  ports = get_kb_list( "Services/www" );
+  if( ports && typeof( ports ) == "array" ) {
+    foreach port( ports ) {
+      num_ports++;
+      check_port_list = make_list( check_port_list, port );
+    }
+  }
+
+  if( num_ports == 0 ) {
+    if( default_list && typeof( default_list ) == "array" )
+      check_port_list = default_list;
+    else
+      check_port_list = default_ports;
+  }
+
+  if( ! dont_use_vhosts && ! host ) {
+    host = http_host_name( dont_add_port:TRUE );
+    #set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#host#-#http_get_ports" );
+  } else if( ! host ) {
+    host = "*";
+  }
+
+  foreach port( check_port_list ) {
+
+    if( ! ignore_unscanned && ! get_port_state( port ) )
+      continue;
+
+    # Includes e.g. PJL ports which are printing everything
+    # sent to them so don't include them here.
+    if( http_is_fragile_port( port:port ) )
+      continue;
+
+    if( ! ignore_broken ) {
+      if( http_get_is_marked_broken( port:port, host:host ) )
+        continue;
+    }
+
+    final_port_list = make_list( final_port_list, port );
+  }
+  return final_port_list;
 }
 
 # @brief Deprecated / unused. Document this if the will be used again.
@@ -884,7 +967,7 @@ function can_host_php( port ) {
 
   # nb: * in host is expected as webserver hosting .php* files on one vhost
   # is most likely supporting PHP on another vhost as well.
-  files = get_http_kb_file_extensions( port:port, host:"*", ext:"php*" );
+  files = http_get_kb_file_extensions( port:port, host:"*", ext:"php*" );
   if( ! isnull( files ) )
     return TRUE; # Hosting .php* files
 
@@ -944,7 +1027,7 @@ function can_host_asp( port ) {
 
   # nb: * in host is expected as webserver hosting .asp* files on one vhost
   # is most likely supporting .asp/.aspx on another vhost as well.
-  files = get_http_kb_file_extensions( port:port, host:"*", ext:"asp*" );
+  files = http_get_kb_file_extensions( port:port, host:"*", ext:"asp*" );
   if( ! isnull( files ) )
     return TRUE; # Hosting .asp / .aspx files
 
@@ -1219,18 +1302,18 @@ function http_is_fragile_port( port ) {
 #
 # @todo TBD: What to do if a redirect is pointing from e.g. 80 to 443?
 #
-function extract_location_from_redirect( port, data, debug ) {
+function http_extract_location_from_redirect( port, data, debug ) {
 
   local_var port, data, debug;
   local_var host, ip, location, location_host, loc;
 
   if( ! port ) {
-    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#extract_location_from_redirect" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#http_extract_location_from_redirect" );
     return;
   }
 
   if( ! data ) {
-    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#data#-#extract_location_from_redirect" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#data#-#http_extract_location_from_redirect" );
     return;
   }
 
@@ -1282,13 +1365,13 @@ function extract_location_from_redirect( port, data, debug ) {
 # @return A string containing the extracted cookie or NULL if no cookie was found with the specified pattern
 #         or if no buf parameter was passed.
 #
-function get_cookie_from_header( buf, pattern ) {
+function http_get_cookie_from_header( buf, pattern ) {
 
   local_var buf, pattern;
   local_var match;
 
   if( ! buf ) {
-    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#buf#-#get_cookie_from_header" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#buf#-#http_get_cookie_from_header" );
     return;
   }
 
@@ -1301,16 +1384,16 @@ function get_cookie_from_header( buf, pattern ) {
     return;
 }
 
-# @brief Creates a list of URLs from an array created by @ref get_http_kb_cgis and appends
+# @brief Creates a list of URLs from an array created by @ref http_get_kb_cgis and appends
 #        the exploit request (passed via the ex parameter) to each of the URL parameter.
 #
-# @param cgiArray The list of URLs created by @ref get_http_kb_cgis.
+# @param cgiArray The list of URLs created by @ref http_get_kb_cgis.
 # @param ex       The exploit request to append to each URL parameter.
 #
 # @return A list of URLs with the exploit request (passed via the ex parameter) appended to each of the
 #         URL parameter or an empty list if no URL parameter was passed.
 #
-function create_exploit_req( cgiArray, ex ) {
+function http_create_exploit_req( cgiArray, ex ) {
 
   local_var cgiArray, ex;
   local_var urls, pseudocount, rrayval, tmpf, data, param, z, url, i;
@@ -1364,7 +1447,7 @@ function create_exploit_req( cgiArray, ex ) {
 #         basic_auth = TRUE/FALSE if Basic Auth is available/found
 #         realm      = A string containing the Basic Auth realm or "Undefined/Unknown" if none found
 #
-function extract_basic_auth( data ) {
+function http_extract_basic_auth( data ) {
 
   local_var data;
   local_var infos, header, realm;
@@ -1373,7 +1456,7 @@ function extract_basic_auth( data ) {
                       "realm", "Undefined/Unknown" );
 
   if( ! data ) {
-    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#data#-#extract_basic_auth" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#data#-#http_extract_basic_auth" );
     return infos;
   }
 
@@ -1405,19 +1488,19 @@ function extract_basic_auth( data ) {
 # @return TRUE if the remote web server was marked as broken, FALSE otherwise and
 #         NULL in the case where the port parameter wasn't passed.
 #
-function get_http_is_marked_broken( port, host ) {
+function http_get_is_marked_broken( port, host ) {
 
   local_var port, host;
   local_var marked_broken_list, marked_broken, mb;
   # nb: _http_is_broken_array is a global_var (see on top)
 
   if( ! port ) {
-    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#get_http_is_marked_broken" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#http_get_is_marked_broken" );
     return NULL;
   }
 
   if( ! host ) {
-    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#host#-#get_http_is_marked_broken" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#host#-#http_get_is_marked_broken" );
     host = http_host_name( dont_add_port:TRUE );
   }
 
@@ -1467,17 +1550,17 @@ function get_http_is_marked_broken( port, host ) {
 # @return TRUE if the status was successfully saved within the KB and
 #         NULL if no port or host parameter was passed.
 #
-function set_http_is_marked_broken( port, host ) {
+function http_set_is_marked_broken( port, host ) {
 
   local_var port, host;
 
   if( ! port ) {
-    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#set_http_is_marked_broken" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#http_set_is_marked_broken" );
     return NULL;
   }
 
   if( ! host ) {
-    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#host#-#set_http_is_marked_broken" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#host#-#http_set_is_marked_broken" );
     return NULL;
   }
 
@@ -1512,7 +1595,7 @@ function set_http_is_marked_broken( port, host ) {
 # @note Add a dependency to at least DDI_Directory_Scanner.nasl and webmirror.nasl
 #       when using this function within an NVT.
 #
-function get_http_kb_file_extensions( port, host, ext ) {
+function http_get_kb_file_extensions( port, host, ext ) {
 
   local_var port, host, ext;
   local_var list, item;
@@ -1559,7 +1642,7 @@ function get_http_kb_file_extensions( port, host, ext ) {
 # @note Add a dependency to at least DDI_Directory_Scanner.nasl and webmirror.nasl
 #       when using this function within an NVT.
 #
-function get_http_kb_auth_required( port, host ) {
+function http_get_kb_auth_required( port, host ) {
 
   local_var port, host;
   local_var list, item;
@@ -1606,7 +1689,7 @@ function get_http_kb_auth_required( port, host ) {
 # @note Add a dependency to at least DDI_Directory_Scanner.nasl and webmirror.nasl
 #       when using this function within an NVT.
 #
-function get_http_kb_cgis( port, host ) {
+function http_get_kb_cgis( port, host ) {
 
   local_var port, host;
   local_var list, item;
@@ -1652,19 +1735,19 @@ function get_http_kb_cgis( port, host ) {
 # @todo Maybe implement an additional "subdir" check as some pages might return different
 #       strings based on different subdirs. This would require an update to no404.nasl as well.
 #
-function get_http_no404_string( port, host ) {
+function http_get_no404_string( port, host ) {
 
   local_var port, host;
   local_var no404_string, no404_string_list, _no404_string;
   # nb: _http_no404_string_array is a global_var (see on top)
 
   if( ! port ) {
-    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#get_http_no404_string" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#http_get_no404_string" );
     return NULL;
   }
 
   if( ! host ) {
-    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#host#-#get_http_no404_string" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#host#-#http_get_no404_string" );
     host = http_host_name( dont_add_port:TRUE );
   }
 
@@ -1714,24 +1797,24 @@ function get_http_no404_string( port, host ) {
 # @return TRUE if the string was successfully saved within the KB and
 #         NULL if no port, host or string parameter was passed.
 #
-# @todo See the todo for @ref get_http_no404_string above.
+# @todo See the todo for @ref http_get_no404_string above.
 #
-function set_http_no404_string( port, host, string ) {
+function http_set_no404_string( port, host, string ) {
 
   local_var port, host, string;
 
   if( ! port ) {
-    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#set_http_no404_string" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#http_set_no404_string" );
     return NULL;
   }
 
   if( ! host ) {
-    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#host#-#set_http_no404_string" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#host#-#http_set_no404_string" );
     return NULL;
   }
 
   if( ! string ) {
-    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#string#-#set_http_no404_string" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#string#-#http_set_no404_string" );
     return NULL;
   }
 
@@ -1741,7 +1824,7 @@ function set_http_no404_string( port, host, string ) {
 
 # @brief Checks if a specific passed data contains a 40x HTTP status code.
 #        If no such status code was identified the KB is checked additionally
-#        (by using @ref get_http_no404_string) if the remote web server is
+#        (by using @ref http_get_no404_string) if the remote web server is
 #        responding with a 200 HTTP status code to a non-existent file/url.
 #
 # @param port The port of the remote server.
@@ -1750,11 +1833,11 @@ function set_http_no404_string( port, host, string ) {
 # @param data The data which is checked in form of a HTTP response.
 #
 # @return TRUE if the passed data contains a 40x HTTP status code or a string
-#         as described in @ref get_http_no404_string was identified by no404.nasl,
+#         as described in @ref http_get_no404_string was identified by no404.nasl,
 #         FALSE otherwise and NULL if no port, host or data parameter was passed
 #         or the data parameter doesn't contain a valid HTTP response.
 #
-# @todo See the todo for @ref get_http_no404_string above.
+# @todo See the todo for @ref http_get_no404_string above.
 #
 function http_data_has_40x( port, host, data ) {
 
@@ -1784,7 +1867,7 @@ function http_data_has_40x( port, host, data ) {
   if( ereg( string:data, pattern:"^HTTP/1\.[01] +40[0-9]" ) )
     return TRUE;
 
-  no404 = get_http_no404_string( port:port, host:host );
+  no404 = http_get_no404_string( port:port, host:host );
   if( no404 && no404 >< data )
     return TRUE;
   else
@@ -1793,7 +1876,7 @@ function http_data_has_40x( port, host, data ) {
 
 # @brief Checks if a specific passed data contains a 200 HTTP status code.
 #        If no such status code was identified the KB is checked additionally
-#        (by using @ref get_http_no404_string) if the remote web server is
+#        (by using @ref http_get_no404_string) if the remote web server is
 #        responding with a 200 HTTP status code to a non-existent file/url.
 #
 # @param port The port of the remote server.
@@ -1802,11 +1885,11 @@ function http_data_has_40x( port, host, data ) {
 # @param data The data which is checked in form of a HTTP response.
 #
 # @return TRUE if the passed data contains a 200 HTTP status code or a string
-#         as described in @ref get_http_no404_string was identified by no404.nasl,
+#         as described in @ref http_get_no404_string was identified by no404.nasl,
 #         FALSE otherwise and NULL if no port, host or data parameter was passed
 #         or the data parameter doesn't contain a valid HTTP response.
 #
-# @todo See the todo for @ref get_http_no404_string above.
+# @todo See the todo for @ref http_get_no404_string above.
 #
 function http_data_has_200( port, host, data ) {
 
@@ -1834,7 +1917,7 @@ function http_data_has_200( port, host, data ) {
   }
 
   if( ereg( string:data, pattern:"^HTTP/1\.[01] +200" ) ) {
-    no404 = get_http_no404_string( port:port, host:host );
+    no404 = http_get_no404_string( port:port, host:host );
     if( ! no404 || no404 >!< data )
       return TRUE;
   }
@@ -2078,19 +2161,19 @@ function http_get_req( port, url, add_headers, accept_header, user_agent, host_h
 # @return TRUE if the remote web server has a "generic" XSS, FALSE otherwise and
 #         NULL in the case where the port parameter wasn't passed.
 #
-function get_http_has_generic_xss( port, host ) {
+function http_get_has_generic_xss( port, host ) {
 
   local_var port, host;
   local_var generic_xss_list, generic_xss, gxss;
   # nb: _http_has_generic_xss_array is a global_var (see on top)
 
   if( ! port ) {
-    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#get_http_has_generic_xss" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#http_get_has_generic_xss" );
     return NULL;
   }
 
   if( ! host ) {
-    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#host#-#get_http_has_generic_xss" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#host#-#http_get_has_generic_xss" );
     host = http_host_name( dont_add_port:TRUE );
   }
 
@@ -2141,17 +2224,17 @@ function get_http_has_generic_xss( port, host ) {
 #
 # @todo Maybe also save the "location" of the generic XSS?
 #
-function set_http_has_generic_xss( port, host ) {
+function http_set_has_generic_xss( port, host ) {
 
   local_var port, host;
 
   if( ! port ) {
-    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#set_http_has_generic_xss" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#http_set_has_generic_xss" );
     return NULL;
   }
 
   if( ! host ) {
-    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#host#-#set_http_has_generic_xss" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#host#-#http_set_has_generic_xss" );
     return NULL;
   }
 
@@ -2180,4 +2263,68 @@ function http_is_cgi_scan_disabled() {
     is_cgi_scan_disabled = __http_is_cgi_scan_disabled;
   }
   return is_cgi_scan_disabled;
+}
+
+# @brief Returns the info if a remote web server was internally (in the KB)
+#        marked as being an embedded web server. It will also save the information
+#        in an internal array to avoid that redis is queried again for the
+#        same info.
+#
+# @param port The port of the remote server.
+#
+# @return TRUE if the remote web server was marked as embedded, FALSE otherwise and
+#         NULL in the case where the port parameter wasn't passed.
+#
+function http_get_is_marked_embedded( port ) {
+
+  local_var port;
+  local_var marked_embedded_list, marked_embedded;
+  # nb: _http_is_embedded_array is a global_var (see on top)
+
+  if( ! port ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#http_get_is_marked_embedded" );
+    return NULL;
+  }
+
+  # Used to not query redis with the get_kb_item below
+  # to save some requests.
+  if( ! isnull( _http_is_embedded_array[port] ) ) {
+    if( _http_is_embedded_array[port] )
+      return TRUE;
+    else
+      return FALSE;
+  }
+
+  marked_embedded = get_kb_item( "www/" + port + "/is_embedded" );
+  if( marked_embedded ) {
+    _http_is_embedded_array[port] = TRUE;
+  } else {
+    _http_is_embedded_array[port] = FALSE;
+    marked_embedded = FALSE;
+  }
+
+  return marked_embedded;
+}
+
+# @brief Sets if a remote web server should be marked as "embedded" to other NVTs.
+#        The status is set within the following KB entry:
+#        "www/" + host + "/" + port + "/is_embedded"
+#
+# @param port The port of the remote server.
+#
+# @return TRUE if the status was successfully saved within the KB and
+#         NULL if no port or host parameter was passed.
+#
+function http_set_is_marked_embedded( port ) {
+
+  local_var port;
+
+  if( ! port ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#http_set_is_marked_embedded" );
+    return NULL;
+  }
+
+  set_kb_item( name:"www/" + port + "/is_embedded", value:TRUE );
+  _http_is_embedded_array[port] = TRUE;
+  return TRUE;
 }

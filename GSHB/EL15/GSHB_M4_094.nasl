@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_094.nasl 10814 2018-08-07 12:02:33Z cfischer $
+# $Id: GSHB_M4_094.nasl 13690 2019-02-15 10:51:55Z cfischer $
 #
 # IT-Grundschutz, 14. EL, Maßnahme 4.094
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.94210");
-  script_version("$Revision: 10814 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-07 14:02:33 +0200 (Tue, 07 Aug 2018) $");
+  script_version("$Revision: 13690 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 11:51:55 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -56,17 +56,13 @@ include("http_func.inc");
 name = 'IT-Grundschutz M4.094: Schutz der Webserver-Dateien\n';
 gshbm =  "IT-Grundschutz M4.094: ";
 
-# nb: Don't use get_http_port() as we want to report a missing
-# web server in any case and the function would exit without one...
-port = get_kb_item("Services/www");
-if (!port) port = 80;
-
+port = get_http_port(default:80, ignore_broken:TRUE, ignore_unscanned:TRUE);
 host = http_host_name(dont_add_port:TRUE);
-brokenwww = get_http_is_marked_broken(port:port, host:host);
+brokenwww = http_get_is_marked_broken(port:port, host:host);
 
 nikto = get_kb_item("GSHB/NIKTO");
 
-if(brokenwww == "1"){
+if(brokenwww){
   result = string("nicht zutreffend");
   desc = string("Es wurde kein Webserver gefunden.");
 }else if(nikto == "error"){
@@ -76,11 +72,11 @@ if(brokenwww == "1"){
   result = string("Fehler");
   desc = string("Beim Testen des Systems trat ein Fehler auf, es konnte\nvon Nikto kein Ergebniss ermittelt werden.");
 }else if(nikto == "none" && !brokenwww){
-    result = string("erfüllt");
-    desc = string('Nikto konnte keinen in der -Open Source Vulnerability\nDatabase- aufgeführten Fehler finden.');
+  result = string("erfüllt");
+  desc = string('Nikto konnte keinen in der -Open Source Vulnerability\nDatabase- aufgeführten Fehler finden.');
 }else if(nikto != "none" && !brokenwww){
-    result = string("nicht erfüllt");
-    desc = string('Nikto hat folgende in der -Open Source Vulnerability\nDatabase- aufgeführten Fehler gefunden:\n' + nikto);
+  result = string("nicht erfüllt");
+  desc = string('Nikto hat folgende in der -Open Source Vulnerability\nDatabase- aufgeführten Fehler gefunden:\n' + nikto);
 }
 
 set_kb_item(name:"GSHB/M4_094/result", value:result);

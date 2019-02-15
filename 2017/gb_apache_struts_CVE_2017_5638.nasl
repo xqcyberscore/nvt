@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_CVE_2017_5638.nasl 11901 2018-10-15 08:47:18Z mmartin $
+# $Id: gb_apache_struts_CVE_2017_5638.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # Apache Struts Remote Code Execution Vulnerability (Active Check)
 #
@@ -32,8 +32,8 @@ if(description)
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("Apache Struts Remote Code Execution Vulnerability (Active Check)");
-  script_version("$Revision: 11901 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 10:47:18 +0200 (Mon, 15 Oct 2018) $");
+  script_version("$Revision: 13679 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-03-08 12:19:09 +0100 (Wed, 08 Mar 2017)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -73,7 +73,7 @@ host = http_host_name( dont_add_port:TRUE );
 urls = make_list( );
 
 foreach ext( make_list( "action", "do", "jsp" ) ) {
-  exts = get_http_kb_file_extensions( port:port, host:host, ext:ext );
+  exts = http_get_kb_file_extensions( port:port, host:host, ext:ext );
   if( exts && is_array( exts ) ) {
     urls = make_list( urls, exts );
   }

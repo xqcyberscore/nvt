@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: osticket_attachment_code_execution.nasl 10829 2018-08-08 09:06:21Z cfischer $
+# $Id: osticket_attachment_code_execution.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # osTicket Attachment Code Execution Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:osticket:osticket";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.13645");
-  script_version("$Revision: 10829 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-08 11:06:21 +0200 (Wed, 08 Aug 2018) $");
+  script_version("$Revision: 13679 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(10586);
   script_tag(name:"cvss_base", value:"7.5");
@@ -83,7 +83,7 @@ if( safe_checks() ) {
 
   host = http_host_name( port:port );
   mailHost = get_host_name();
-  if( get_http_no404_string( port:port, host:mailHost ) ) exit( 0 );
+  if( http_get_no404_string( port:port, host:mailHost ) ) exit( 0 );
 
   # If the form supports attachments...
   if( egrep( pattern:'type="file" name="attachment"', string:res, icase:TRUE ) ) {
@@ -109,7 +109,7 @@ if( safe_checks() ) {
       postdata = string(boundary, "\r\n",
                        'Content-Disposition: form-data; name="name"', "\r\n",
                        "\r\n",
-                       "openvas\r\n",
+                       "vttest\r\n",
                        boundary, "\r\n",
                        'Content-Disposition: form-data; name="email"', "\r\n",
                        "\r\n",

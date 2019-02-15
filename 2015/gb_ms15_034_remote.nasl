@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15_034_remote.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_ms15_034_remote.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # MS15-034 HTTP.sys Remote Code Execution Vulnerability (remote check)
 #
@@ -33,9 +33,9 @@ if(description)
   script_cve_id("CVE-2015-1635");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 13679 $");
   script_name("MS15-034 HTTP.sys Remote Code Execution Vulnerability (remote check)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2015-04-15 18:02:08 +0200 (Wed, 15 Apr 2015)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -88,7 +88,7 @@ if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 # nb: This is expected to be here, we're using the same call later to add the port to the host header...
 host = http_host_name( dont_add_port:TRUE );
 
-known_urls = get_http_kb_file_extensions( port:port, host:host, ext:"*" );
+known_urls = http_get_kb_file_extensions( port:port, host:host, ext:"*" );
 default_urls = make_list( "/", "/welcome.png", "/iis-85.png", "/Iisstart.htm", "/resources/logo.png", "/favicon.ico" );
 
 if( known_urls )

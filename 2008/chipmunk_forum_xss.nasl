@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: chipmunk_forum_xss.nasl 10862 2018-08-09 14:51:58Z cfischer $
+# $Id: chipmunk_forum_xss.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # Chipmunk Forum <= 1.3 Cross-Site Scripting Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.200004");
-  script_version("$Revision: 10862 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-09 16:51:58 +0200 (Thu, 09 Aug 2018) $");
+  script_version("$Revision: 13679 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2008-08-22 16:09:14 +0200 (Fri, 22 Aug 2008)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -67,32 +67,34 @@ port = get_http_port(default:80);
 if (!can_host_php(port:port)) exit(0);
 
 host = http_host_name( dont_add_port:TRUE );
-if( get_http_has_generic_xss( port:port, host:host ) ) exit( 0 );
+if( http_get_has_generic_xss( port:port, host:host ) ) exit( 0 );
 
-xss = "'</a><IFRAME SRC=javascript:alert(%27XSS%20DETECTED%20BY%20OpenVAS%27)></IFRAME>";
+xss = "'</a><IFRAME SRC=javascript:alert(%27XSS%20DETECTED%20BY%20VTTEST%27)></IFRAME>";
 exss = urlencode(str:xss);
 
 foreach dir (make_list_unique("/chipmunk", "/board", "/forum", "/", cgi_dirs(port:port)))
 {
+  if(dir == "/") dir = "";
 
- if(dir == "/") dir = "";
+  res = http_get_cache(item: dir + "/index.php", port:port);
+  if(!res)
+    continue;
 
- res = http_get_cache(item: dir + "/index.php", port:port);
- if( isnull( res ) ) exit( 0 );
-
- if (egrep(pattern:">Powered by © <A href=[^>]+>Chipmunk Board<", string:res))
- {
-  req = http_get(item:string(dir, "/index.php?forumID=", exss), port:port);
-
-  recv = http_keepalive_send_recv(port:port, data:req, bodyonly:1);
-  if( isnull( recv ) ) exit( 0 );
-
-  if(xss >< recv)
+  if (egrep(pattern:">Powered by © <A href=[^>]+>Chipmunk Board<", string:res))
   {
-   security_message(port:port);
-   exit(0);
+    url = string(dir, "/index.php?forumID=", exss);
+    req = http_get(item:url, port:port);
+    recv = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
+    if(!recv)
+      continue;
+
+    if(xss >< recv)
+    {
+      report = report_vuln_url(port:port, url:url);
+      security_message(port:port, data:report);
+      exit(0);
+    }
   }
- }
 }
 
 exit(99);

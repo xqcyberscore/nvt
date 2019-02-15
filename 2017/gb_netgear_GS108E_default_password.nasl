@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netgear_GS108E_default_password.nasl 11025 2018-08-17 08:27:37Z cfischer $
+# $Id: gb_netgear_GS108E_default_password.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # NETGEAR ProSAFE GS108E Default Password
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108309");
-  script_version("$Revision: 11025 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:27:37 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 13679 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-12-05 09:03:31 +0100 (Tue, 05 Dec 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -64,7 +64,7 @@ req = http_post_req( port:port, url:"/login.cgi", data:"password=password", add_
 res = http_keepalive_send_recv( port:port, data:req );
 if( ! res ) exit( 0 );
 
-cookie = get_cookie_from_header( buf:res, pattern:"GS108SID=([^; ]+)" );
+cookie = http_get_cookie_from_header( buf:res, pattern:"GS108SID=([^; ]+)" );
 if( isnull( cookie ) ) exit( 0 );
 
 req = http_get_req( port:port, url:"/switch_info.htm", add_headers:make_array( "Cookie", "GS108SID=" + cookie ) );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: asp_source_space.nasl 10711 2018-08-01 13:58:38Z cfischer $
+# $Id: asp_source_space.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # ASP source using %20 trick
 #
@@ -37,8 +37,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11071");
-  script_version("$Revision: 10711 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-01 15:58:38 +0200 (Wed, 01 Aug 2018) $");
+  script_version("$Revision: 13679 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(2975);
   script_tag(name:"cvss_base", value:"5.0");
@@ -95,7 +95,7 @@ host = http_host_name( dont_add_port:TRUE );
 if ( ! can_host_asp( port:port ) ) exit(0);
 if( check( file:"/default.asp", port:port ) ) exit( 0 );
 
-files = get_http_kb_file_extensions( port:port, host:host, ext:"asp" );
+files = http_get_kb_file_extensions( port:port, host:host, ext:"asp" );
 if( isnull( files ) ) exit( 0 );
 files = make_list( files );
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: telnet_func.inc 13627 2019-02-13 10:38:43Z cfischer $
+# $Id: telnet_func.inc 13673 2019-02-14 14:56:45Z cfischer $
 #
 # Methods to handle Telnet
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 13627 $
+# $Revision: 13673 $
 #
 ###############################################################################
 
@@ -246,6 +246,11 @@ function get_telnet_port( default, nodefault, ignore_broken, ignore_unscanned ) 
   port = get_kb_item( "Services/telnet" );
   if( port )
     default = port;
+
+  # nb: If this is the case we haven't found an open port, default wasn't passed
+  # and nodefault was set to TRUE. We can't continue in this case.
+  if( ! default )
+    exit( 0 );
 
   if( ! ignore_unscanned && ! get_port_state( default ) )
     exit( 0 );

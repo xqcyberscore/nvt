@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sambar_xss.nasl 10862 2018-08-09 14:51:58Z cfischer $
+# $Id: sambar_xss.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # Sambar XSS
 #
@@ -33,11 +33,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80083");
-  script_version("$Revision: 10862 $");
+  script_version("$Revision: 13679 $");
   script_cve_id("CVE-2003-1284", "CVE-2003-1285");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-09 16:51:58 +0200 (Thu, 09 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
   script_bugtraq_id(7209);
   script_name("Sambar XSS");
@@ -66,7 +66,7 @@ include("http_keepalive.inc");
 
 port = get_http_port( default:80 );
 host = http_host_name( dont_add_port:TRUE );
-if( get_http_has_generic_xss( port:port, host:host ) ) exit( 0 );
+if( http_get_has_generic_xss( port:port, host:host ) ) exit( 0 );
 
 cgis = make_list(
   "/netutils/ipdata.stm?ipaddr=",

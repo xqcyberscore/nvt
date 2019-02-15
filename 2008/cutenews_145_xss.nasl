@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cutenews_145_xss.nasl 10862 2018-08-09 14:51:58Z cfischer $
+# $Id: cutenews_145_xss.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # Web application abuses
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:cutephp:cutenews";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80052");
-  script_version("$Revision: 10862 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-09 16:51:58 +0200 (Thu, 09 Aug 2018) $");
+  script_version("$Revision: 13679 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -77,7 +77,7 @@ if (dir == "/")
   dir = "";
 
 host = http_host_name( dont_add_port:TRUE );
-if( get_http_has_generic_xss( port:port, host:host ) ) exit( 0 );
+if( http_get_has_generic_xss( port:port, host:host ) ) exit( 0 );
 
 attackstring = '"><script>alert(document.cookie)</script>';
 attacksploit = urlencode(str:attackstring, unreserved : "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_!~*'()-]/");

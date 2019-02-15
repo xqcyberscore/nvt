@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_wifimanger_detect.nasl 12620 2018-12-03 09:54:13Z ckuersteiner $
+# $Id: gb_dlink_wifimanger_detect.nasl 13674 2019-02-15 03:34:06Z ckuersteiner $
 #
 # D-Link Central WiFiManager Software Controller Detection (HTTP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141570");
-  script_version("$Revision: 12620 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-03 10:54:13 +0100 (Mon, 03 Dec 2018) $");
+  script_version("$Revision: 13674 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 04:34:06 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-10-05 11:56:43 +0700 (Fri, 05 Oct 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -66,8 +66,6 @@ if (!can_host_php(port: port))
 res = http_get_cache(port: port, item: "/Lang/en-US/common.js");
 
 if ("Central WiFiManager" >< res) {
-  version = "unknown";
-
   set_kb_item(name: "dlink_central_wifimanager/detected", value: TRUE);
   set_kb_item(name: "dlink_central_wifimanager/http/port", value: port);
 

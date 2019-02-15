@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: zeroboard_flaws.nasl 12007 2018-10-22 07:43:49Z cfischer $
+# $Id: zeroboard_flaws.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # Zeroboard flaws
 #
@@ -24,13 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-# Ref: Jeremy Bae
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.16059");
-  script_version("$Revision: 12007 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 09:43:49 +0200 (Mon, 22 Oct 2018) $");
+  script_version("$Revision: 13679 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2004-1419");
   script_bugtraq_id(12103);
@@ -70,7 +68,7 @@ port = get_http_port(default:80);
 if ( ! can_host_php(port:port) ) exit(0);
 
 host = http_host_name( dont_add_port:TRUE );
-if( get_http_has_generic_xss( port:port, host:host ) ) exit( 0 );
+if( http_get_has_generic_xss( port:port, host:host ) ) exit( 0 );
 
 foreach dir( make_list_unique( "/bbs", cgi_dirs( port:port ) ) ) {
 
@@ -88,4 +86,4 @@ foreach dir( make_list_unique( "/bbs", cgi_dirs( port:port ) ) ) {
   }
 }
 
-exit( 0 );
+exit( 99 );

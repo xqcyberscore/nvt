@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_sonicwall_email_security_detect.nasl 13138 2019-01-18 07:48:30Z cfischer $
+# $Id: gb_dell_sonicwall_email_security_detect.nasl 13688 2019-02-15 10:21:10Z cfischer $
 #
 # Dell SonicWall EMail Security Detection
 #
@@ -31,8 +31,8 @@ if(description)
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"remote_banner");
-  script_version("$Revision: 13138 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-18 08:48:30 +0100 (Fri, 18 Jan 2019) $");
+  script_version("$Revision: 13688 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 11:21:10 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2014-03-28 12:48:51 +0100 (Fri, 28 Mar 2014)");
   script_name("Dell SonicWall EMail Security Detection");
   script_category(ACT_GATHER_INFO);
@@ -92,34 +92,23 @@ foreach smtp_port ( smtp_ports )
   }
 }
 
-if( http_is_cgi_scan_disabled() )
-  exit( 0 );
+http_port = get_http_port(default:80);
+buf = http_get_cache(item:"/login.html", port:http_port);
 
-http_ports = get_kb_list( "Services/www" );
-if(! http_ports ) http_ports = make_list(80);
-
-foreach http_port ( http_ports )
+if( "<title>Login</title>" >< buf && ">Email Security" >< buf && "Dell" >< buf )
 {
-  if(get_port_state(http_port)){
+  set_kb_item(name: "sonicwall_email_security/www/port", value: http_port);
+  version = eregmatch( pattern:'id="firmwareVersion" value="([^"]+)"', string: buf);
+  if( ! isnull( version[1] ) )
+  {
+    _report( version:version[1], port:http_port, service:"www" );
+  } else {
+    version = eregmatch( pattern:'<div class="lefthand">([^<]+)</div>', string: buf);
+    if( ! isnull( version[1] ) )
+      _report( version:version[1], port:http_port, service:"www" );
+    else
+      _report( version:'unknown', port:http_port, service:"www" );
 
-    url = '/login.html';
-    buf = http_get_cache(item:url, port:http_port);
-
-    if( "<title>Login</title>" >< buf && ">Email Security" >< buf && "Dell" >< buf )
-    {
-      set_kb_item(name: "sonicwall_email_security/www/port", value: http_port);
-      version = eregmatch( pattern:'id="firmwareVersion" value="([^"]+)"', string: buf);
-      if( ! isnull( version[1] ) )
-      {
-        _report( version:version[1], port:http_port, service:"www" );
-      } else {
-        version = eregmatch( pattern:'<div class="lefthand">([^<]+)</div>', string: buf);
-        if( ! isnull( version[1] ) )
-          _report( version:version[1], port:http_port, service:"www" );
-        else
-          _report( version:'unknown', port:http_port, service:"www" );
-      }
-    }
   }
 }
 

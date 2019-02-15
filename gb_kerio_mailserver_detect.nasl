@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kerio_mailserver_detect.nasl 13397 2019-02-01 08:06:48Z cfischer $
+# $Id: gb_kerio_mailserver_detect.nasl 13688 2019-02-15 10:21:10Z cfischer $
 #
 # Kerio MailServer/Connect Version Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800098");
-  script_version("$Revision: 13397 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-01 09:06:48 +0100 (Fri, 01 Feb 2019) $");
+  script_version("$Revision: 13688 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 11:21:10 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-01-08 07:43:30 +0100 (Thu, 08 Jan 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -71,8 +71,7 @@ popPorts = pop3_get_ports();
 foreach popPort( popPorts )
   ports[popPort] = "pop3";
 
-httpPorts = get_kb_list( "Services/www" );
-if( ! httpPorts ) httpPorts = make_list( 80, 443 );
+httpPorts = http_get_ports();
 foreach httpPort( httpPorts )
   ports[httpPort] = "www";
 

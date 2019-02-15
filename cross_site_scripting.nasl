@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cross_site_scripting.nasl 10862 2018-08-09 14:51:58Z cfischer $
+# $Id: cross_site_scripting.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # Description: Web Server Cross Site Scripting
 #
@@ -34,8 +34,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10815");
-  script_version("$Revision: 10862 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-09 16:51:58 +0200 (Thu, 09 Aug 2018) $");
+  script_version("$Revision: 13679 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -47,42 +47,20 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
+  script_xref(name:"URL", value:"http://www.securiteam.com/exploits/Security_concerns_when_developing_a_dynamically_generated_web_site.html");
+  script_xref(name:"URL", value:"http://www.cert.org/advisories/CA-2000-02.html");
+
   script_tag(name:"summary", value:"The remote web server seems to be vulnerable to a Cross Site Scripting
-  vulnerability (XSS). The vulnerability is caused by the result being
-  returned to the user when a non-existing file is requested (e.g. the
-  result contains script code provided in the request).");
+  vulnerability (XSS). The vulnerability is caused by the result being returned to the user when a non-existing
+  file is requested (e.g. the result contains script code provided in the request).");
+
   script_tag(name:"impact", value:"This vulnerability would allow an attacker to make the server present the
   user with the attacker's JavaScript/HTML code.
-  Since the content is presented by the server, the user will give it the trust
-  level of the server (for example, the websites banks, shopping centers,
-  etc. would usually be trusted by a user).");
-  script_tag(name:"solution", value:"Allaire/Macromedia Jrun:
 
-  - http://www.macromedia.com/software/jrun/download/update/
+  Since the content is presented by the server, the user will give it the trust level of the server (for example,
+  the websites banks, shopping centers, etc. would usually be trusted by a user).");
 
-  - http://www.securiteam.com/windowsntfocus/Allaire_fixes_Cross-Site_Scripting_security_vulnerability.html
-
-  Microsoft IIS:
-
-  - http://www.securiteam.com/windowsntfocus/IIS_Cross-Site_scripting_vulnerability__Patch_available_.html
-
-  Apache:
-
-  - http://httpd.apache.org/info/css-security/
-
-  Bluecoat CacheOS:
-
-  - http://download.cacheflow.com/release/CA/4.1.00-docs/CACacheOS41fixes.htm
-
-  ColdFusion:
-
-  - http://www.macromedia.com/v1/handlers/index.cfm?ID=23047
-
-  General:
-
-  - http://www.securiteam.com/exploits/Security_concerns_when_developing_a_dynamically_generated_web_site.html
-
-  - http://www.cert.org/advisories/CA-2000-02.html");
+  script_tag(name:"solution", value:"See the references for various background information.");
 
   script_tag(name:"qod", value:"50"); # Vuln check below is quite unreliable these days...
   script_tag(name:"solution_type", value:"Mitigation");
@@ -133,7 +111,7 @@ for( i = 0; dir[i]; i++ ) {
   if( res =~ "^HTTP/1\.[01] 200" && confirmtext >< res ) {
     report = report_vuln_url( port:port, url:url );
     security_message( port:port, data:report );
-    set_http_has_generic_xss( port:port, host:host );
+    http_set_has_generic_xss( port:port, host:host );
     exit( 0 );
   }
 }

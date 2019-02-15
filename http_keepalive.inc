@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: http_keepalive.inc 13658 2019-02-14 08:16:14Z cfischer $
+# $Id: http_keepalive.inc 13679 2019-02-15 08:20:11Z cfischer $
 #
 # Methods to support http keep alive handling
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 13658 $
+# $Revision: 13679 $
 #
 ###############################################################################
 
@@ -521,7 +521,7 @@ function is_cgi_installed_ka( port, item, host ) {
     #set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#host#-#is_cgi_installed_ka" );
   }
 
-  no404 = get_http_no404_string( port:port, host:host );
+  no404 = http_get_no404_string( port:port, host:host );
   if( strlen( no404 ) >= 1 )
     return NULL;
 

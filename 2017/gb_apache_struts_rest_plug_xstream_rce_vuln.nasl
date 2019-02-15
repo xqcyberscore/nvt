@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_rest_plug_xstream_rce_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
+# $Id: gb_apache_struts_rest_plug_xstream_rce_vuln.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # Apache Struts 'REST Plugin With XStream Handler' RCE Vulnerability
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811730");
-  script_version("$Revision: 11874 $");
+  script_version("$Revision: 13679 $");
   script_cve_id("CVE-2017-9805");
   script_bugtraq_id(100609);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-09-07 16:39:09 +0530 (Thu, 07 Sep 2017)");
   script_name("Apache Struts 'REST Plugin With XStream Handler' RCE Vulnerability");
   script_category(ACT_ATTACK);
@@ -85,7 +85,7 @@ host = http_host_name(dont_add_port:TRUE);
 vtstring = get_vt_string();
 
 foreach ext(make_list("action", "do", "jsp")){
-  exts = get_http_kb_file_extensions(port:port, host:host, ext:ext);
+  exts = http_get_kb_file_extensions(port:port, host:host, ext:ext);
   if(exts && is_array(exts)){
     found = TRUE;
     break;

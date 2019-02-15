@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: femitter_httpd_36656.nasl 10711 2018-08-01 13:58:38Z cfischer $
+# $Id: femitter_httpd_36656.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # Acritum Femitter Server HTTP Request Remote File Disclosure Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100304");
-  script_version("$Revision: 10711 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-01 15:58:38 +0200 (Wed, 01 Aug 2018) $");
+  script_version("$Revision: 13679 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-10-15 20:14:59 +0200 (Thu, 15 Oct 2009)");
   script_bugtraq_id(36656);
   script_tag(name:"cvss_base", value:"5.0");
@@ -71,7 +71,7 @@ include("http_keepalive.inc");
 port = get_http_port(default:80);
 host = http_host_name( dont_add_port:TRUE );
 
-files = get_http_kb_file_extensions( port:port, host:host, ext:"htm*" );
+files = http_get_kb_file_extensions( port:port, host:host, ext:"htm*" );
 if(!files) {
   file = "/index.htm";
 } else {

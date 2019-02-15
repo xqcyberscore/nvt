@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: 3com_nbx_voip_netset_detection.nasl 13215 2019-01-22 11:59:45Z cfischer $
+# $Id: 3com_nbx_voip_netset_detection.nasl 13685 2019-02-15 10:06:52Z cfischer $
 # Description: 3Com NBX VoIP NetSet Detection
 #
 # Authors:
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12221");
-  script_version("$Revision: 13215 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-22 12:59:45 +0100 (Tue, 22 Jan 2019) $");
+  script_version("$Revision: 13685 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 11:06:52 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2004-1977");
   script_bugtraq_id(10240);
@@ -54,7 +54,8 @@ if(description)
   would allow a remote attacker to cause a denial of service against the product by simply
   running a port scanning/vulnerability scanning engine against it.");
 
-  script_tag(name:"affected", value:"Problems have been observed in Netset 4.2.7, but previous 4.1 versions seem to be ok.");
+  script_tag(name:"affected", value:"Problems have been observed in Netset 4.2.7, but previous
+  4.1 versions seem to be ok.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
@@ -75,7 +76,7 @@ if(!r)
 
 if("sysObjectID" >< r && "1.3.6.1.4.1.43.1.17" >< r) {
   security_message(port:port);
-  set_kb_item(name:"Services/www/" + port + "/embedded", value:TRUE);
+  http_set_is_marked_embedded(port:port);
 }
 
 exit(0);

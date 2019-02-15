@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_zendserver_detect.nasl 10902 2018-08-10 14:20:55Z cfischer $
+# $Id: sw_zendserver_detect.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # ZendServer Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111028");
-  script_version("$Revision: 10902 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:20:55 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 13679 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2015-08-21 18:00:00 +0200 (Fri, 21 Aug 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -56,7 +56,7 @@ port = get_http_port( default:80 );
 host = http_host_name( dont_add_port:TRUE );
 if( !can_host_php( port:port ) ) exit( 0 );
 
-phpList = get_http_kb_file_extensions( port:port, host:host, ext:"php" );
+phpList = http_get_kb_file_extensions( port:port, host:host, ext:"php" );
 if(phpList) phpFiles = make_list(phpList);
 
 if(phpFiles[0]) {

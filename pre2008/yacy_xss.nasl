@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: yacy_xss.nasl 10862 2018-08-09 14:51:58Z cfischer $
+# $Id: yacy_xss.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # YaCy Peer-To-Peer Search Engine XSS
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.16058");
-  script_version("$Revision: 10862 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-09 16:51:58 +0200 (Thu, 09 Aug 2018) $");
+  script_version("$Revision: 13679 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
 
   script_cve_id("CVE-2004-2651");
@@ -77,7 +77,7 @@ include("http_keepalive.inc");
 port = get_http_port(default:8080);
 
 host = http_host_name( dont_add_port:TRUE );
-if( get_http_has_generic_xss( port:port, host:host ) ) exit( 0 );
+if( http_get_has_generic_xss( port:port, host:host ) ) exit( 0 );
 
 buf = http_get(item:"/index.html?urlmaskfilter=<script>foo</script>", port:port);
 r = http_keepalive_send_recv(port:port, data:buf);

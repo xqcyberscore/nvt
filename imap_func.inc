@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: imap_func.inc 13463 2019-02-05 09:40:41Z cfischer $
+# $Id: imap_func.inc 13673 2019-02-14 14:56:45Z cfischer $
 #
 # Support methods for IMAP
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 13463 $
+# $Revision: 13673 $
 #
 ###############################################################################
 
@@ -206,6 +206,11 @@ function get_imap_port( default, nodefault, ignore_broken, ignore_unscanned ) {
   port = get_kb_item( "Services/imap" );
   if( port )
     default = port;
+
+  # nb: If this is the case we haven't found an open port, default wasn't passed
+  # and nodefault was set to TRUE. We can't continue in this case.
+  if( ! default )
+    exit( 0 );
 
   if( ! ignore_unscanned && ! get_port_state( default ) )
     exit( 0 );

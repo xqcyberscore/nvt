@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: defaultnavcheck.nasl 11039 2018-08-17 12:26:47Z cfischer $
+# $Id: defaultnavcheck.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # DefaultNav checker
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12247");
-  script_version("$Revision: 11039 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 14:26:47 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 13679 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -65,7 +65,7 @@ include("http_keepalive.inc");
 
 port = get_http_port(default:80);
 host = http_host_name(dont_add_port:TRUE);
-if(get_http_no404_string(port:port, host:host))exit(0);
+if(http_get_no404_string(port:port, host:host))exit(0);
 
 dirs[0] = "/%24DefaultNav";
 dirs[1] = "/%24defaultNav";

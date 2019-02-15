@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: iis_dot_cnf.nasl 10818 2018-08-07 14:03:55Z cfischer $
+# $Id: iis_dot_cnf.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # Check for IIS .cnf file leakage
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10575");
-  script_version("$Revision: 10818 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-07 16:03:55 +0200 (Tue, 07 Aug 2018) $");
+  script_version("$Revision: 13679 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2002-1717");
   script_bugtraq_id(4078);
@@ -52,13 +52,13 @@ if(description)
   script_tag(name:"summary", value:"The IIS web server may allow remote users to read sensitive information
   from .cnf files. This is not the default configuration.
 
-  Example, http://target/_vti_pvt%5csvcacl.cnf, access.cnf, 
-  svcacl.cnf, writeto.cnf, service.cnf, botinfs.cnf, 
+  Example, http://example.com/_vti_pvt%5csvcacl.cnf, access.cnf,
+  svcacl.cnf, writeto.cnf, service.cnf, botinfs.cnf,
   bots.cnf, linkinfo.cnf and services.cnf");
 
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  
+
   exit(0);
 }
 
@@ -70,7 +70,7 @@ sig = get_http_banner(port:port);
 if ( sig && "IIS" >!< sig ) exit(0);
 
 host = http_host_name(dont_add_port:TRUE);
-if(get_http_no404_string(port:port, host:host))exit(0);
+if(http_get_no404_string(port:port, host:host))exit(0);
 
 fl[0] = "/_vti_pvt%5caccess.cnf";
 fl[1] = "/_vti_pvt%5csvcacl.cnf";

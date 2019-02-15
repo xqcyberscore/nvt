@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: Jserv_css.nasl 10862 2018-08-09 14:51:58Z cfischer $
+# $Id: Jserv_css.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # JServ Cross Site Scripting
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10957");
-  script_version("$Revision: 10862 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-09 16:51:58 +0200 (Thu, 09 Aug 2018) $");
+  script_version("$Revision: 13679 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -40,12 +40,13 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("apache/banner");
 
-  script_tag(name:"solution", value:"Upgrade to the latest version of JServ available at http://java.apache.org.
-  Also consider switching from JServ to TomCat, since JServ is no longer
-  maintained.");
-  script_tag(name:"summary", value:"The remote web server is vulnerable to a cross-site scripting issue.
+  script_xref(name:"URL", value:"http://java.apache.org");
 
-  Description :
+  script_tag(name:"solution", value:"Upgrade to the latest version of JServ available at the linked reference.
+
+  Also consider switching from JServ to TomCat, since JServ is no longer   maintained.");
+
+  script_tag(name:"summary", value:"The remote web server is vulnerable to a cross-site scripting issue.
 
   Older versions of JServ (including the version shipped with Oracle9i App
   Server v1.0.2) are vulnerable to a cross site scripting attack using a
@@ -62,7 +63,7 @@ include("http_keepalive.inc");
 
 port = get_http_port( default:80 );
 host = http_host_name( dont_add_port:TRUE );
-if( get_http_has_generic_xss( port:port, host:host ) ) exit( 0 );
+if( http_get_has_generic_xss( port:port, host:host ) ) exit( 0 );
 
 banner = get_http_banner( port:port );
 if( "Apache" >!< banner ) exit( 0 );

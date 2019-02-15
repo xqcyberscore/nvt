@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wd_mycloud_default_creds.nasl 12598 2018-11-30 10:59:00Z cfischer $
+# $Id: gb_wd_mycloud_default_creds.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # Western Digital MyCloud NAS Default Credentials (HTTP)
 #
@@ -30,10 +30,10 @@ CPE_PREFIX = "cpe:/o:wdc";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108485");
-  script_version("$Revision: 12598 $");
+  script_version("$Revision: 13679 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-30 11:59:00 +0100 (Fri, 30 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-11-23 17:50:04 +0100 (Fri, 23 Nov 2018)");
   script_name("Western Digital MyCloud NAS Default Credentials (HTTP)");
   script_category(ACT_ATTACK);
@@ -89,7 +89,7 @@ if( dir == "/" )
 
 req = http_get( port:port, item:dir + "/" );
 res = http_keepalive_send_recv( port:port, data:req );
-cookie = get_cookie_from_header( buf:res, pattern:"PHPSESSID=([^; ]+)" );
+cookie = http_get_cookie_from_header( buf:res, pattern:"PHPSESSID=([^; ]+)" );
 if( isnull( cookie ) )
   exit( 0 );
 

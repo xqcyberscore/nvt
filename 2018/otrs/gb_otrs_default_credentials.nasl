@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_default_credentials.nasl 11464 2018-09-19 08:52:50Z cfischer $
+# $Id: gb_otrs_default_credentials.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # OTRS Default Credentials (HTTP)
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:otrs:otrs";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108465");
-  script_version("$Revision: 11464 $");
+  script_version("$Revision: 13679 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 10:52:50 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-09-18 10:26:26 +0200 (Tue, 18 Sep 2018)");
   script_name("OTRS Default Credentials (HTTP)");
   script_category(ACT_ATTACK);
@@ -86,7 +86,7 @@ foreach cred( keys( creds ) ) {
 
   req = http_post_req( port:port, url:url, data:data, add_headers:add_headers );
   res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
-  auth_token = get_cookie_from_header( buf:res, pattern:"OTRSAgentInterface=([^; ]+)" );
+  auth_token = http_get_cookie_from_header( buf:res, pattern:"OTRSAgentInterface=([^; ]+)" );
   if( isnull( auth_token ) ) continue;
 
   req = http_get_req( port:port, url:url, add_headers:make_array( "Cookie", "OTRSAgentInterface=" + auth_token ) );

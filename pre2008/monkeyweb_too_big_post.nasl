@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: monkeyweb_too_big_post.nasl 10736 2018-08-02 11:55:29Z cfischer $
+# $Id: monkeyweb_too_big_post.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # MonkeyWeb POST with too much data
 #
@@ -33,8 +33,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11544");
-  script_version("$Revision: 10736 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-02 13:55:29 +0200 (Thu, 02 Aug 2018) $");
+  script_version("$Revision: 13679 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2003-0218");
   script_bugtraq_id(7202);
@@ -47,7 +47,7 @@ if(description)
   script_dependencies("gb_get_http_banner.nasl");
   # The listening port in the example configuration file is 2001
   # I suspect that some people might leave it unchanged.
-  script_require_ports("Services/www",80, 2001);
+  script_require_ports("Services/www", 80, 2001);
   script_mandatory_keys("Monkey/banner");
 
   script_tag(name:"solution", value:"Upgrade to Monkey web server 0.6.2.");
@@ -86,7 +86,7 @@ if( safe_checks() ) {
 }
 
 if( http_is_dead( port:port ) ) exit( 0 );
-l = get_http_kb_cgis( port:port, host:"*" );
+l = http_get_kb_cgis( port:port, host:"*" );
 if( isnull( l ) )
   script = "/";
 else {

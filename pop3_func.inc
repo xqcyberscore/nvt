@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: pop3_func.inc 13460 2019-02-05 09:20:05Z cfischer $
+# $Id: pop3_func.inc 13673 2019-02-14 14:56:45Z cfischer $
 #
 # Methods for handling POP3
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 13460 $
+# $Revision: 13673 $
 #
 ###############################################################################
 
@@ -169,6 +169,11 @@ function get_pop3_port( default, nodefault, ignore_broken, ignore_unscanned ) {
   port = get_kb_item( "Services/pop3" );
   if( port )
     default = port;
+
+  # nb: If this is the case we haven't found an open port, default wasn't passed
+  # and nodefault was set to TRUE. We can't continue in this case.
+  if( ! default )
+    exit( 0 );
 
   if( ! ignore_unscanned && ! get_port_state( default ) )
     exit( 0 );

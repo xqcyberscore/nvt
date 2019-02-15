@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: landesk_detect.nasl 11723 2018-10-02 09:59:19Z ckuersteiner $
+# $Id: landesk_detect.nasl 13690 2019-02-15 10:51:55Z cfischer $
 #
 # LANDesk Management Agent Detection
 #
@@ -27,14 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100328");
-  script_version("$Revision: 11723 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-02 11:59:19 +0200 (Tue, 02 Oct 2018) $");
+  script_version("$Revision: 13690 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 11:51:55 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-10-30 14:42:19 +0100 (Fri, 30 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-
   script_name("LANDesk Management Agent Detection");
-
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
@@ -60,7 +58,7 @@ host = http_host_name( dont_add_port:TRUE );
 foreach port( make_list( 9595, 9593 ) ) {
 
   if( ! get_port_state( port ) ) continue;
-  if( get_http_is_marked_broken( port:port, host:host ) ) continue;
+  if( http_get_is_marked_broken( port:port, host:host ) ) continue;
 
   buf = http_get_cache( item:"/", port:port );
   if( isnull( buf ) ) continue;
@@ -72,7 +70,7 @@ foreach port( make_list( 9595, 9593 ) ) {
 
     cpe = "cpe:/a:landesk:landesk_management_suite";
     register_product( cpe:cpe, location:install, port:port );
-    register_service( port:port,  ipproto:"tcp", proto:"landesk" );
+    register_service( port:port, ipproto:"tcp", proto:"landesk" );
 
     log_message( data:build_detection_report( app:"LANDesk Management Agent",
                                               version:version,

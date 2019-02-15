@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_detect.nasl 11992 2018-10-19 13:42:04Z cfischer $
+# $Id: gb_php_detect.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # PHP Version Detection (Remote)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800109");
-  script_version("$Revision: 11992 $");
+  script_version("$Revision: 13679 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 15:42:04 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2008-10-07 16:11:33 +0200 (Tue, 07 Oct 2008)");
   script_name("PHP Version Detection (Remote)");
   script_category(ACT_GATHER_INFO);
@@ -65,7 +65,7 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
   checkFiles = make_list( checkFiles, dir + "/", dir + "/index.php" );
 }
 
-phpFilesList = get_http_kb_file_extensions( port:port, host:host, ext:"php" );
+phpFilesList = http_get_kb_file_extensions( port:port, host:host, ext:"php" );
 if( phpFilesList && is_array( phpFilesList ) ) {
   count = 0;
   foreach phpFile( phpFilesList ) {

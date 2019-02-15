@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: faqmanager.nasl 13543 2019-02-08 14:43:51Z cfischer $
+# $Id: faqmanager.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # FAQManager Arbitrary File Reading Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10837");
-  script_version("$Revision: 13543 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
+  script_version("$Revision: 13679 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2002-2033");
   script_bugtraq_id(3810);
@@ -64,7 +64,7 @@ include("misc_func.inc");
 
 port = get_http_port(default:80);
 host = http_host_name(dont_add_port:TRUE);
-if(get_http_no404_string(port:port, host:host))exit(0);
+if(http_get_no404_string(port:port, host:host))exit(0);
 
 files = traversal_files();
 

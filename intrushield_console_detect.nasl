@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: intrushield_console_detect.nasl 10147 2018-06-11 03:00:29Z ckuersteiner $
+# $Id: intrushield_console_detect.nasl 13685 2019-02-15 10:06:52Z cfischer $
 #
 # McAfee IntruShield management console
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.15615");
-  script_version("$Revision: 10147 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-11 05:00:29 +0200 (Mon, 11 Jun 2018) $");
+  script_version("$Revision: 13685 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 11:06:52 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -43,12 +43,12 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name:"solution", value:"The remote host is running the McAfee IntruShield Management Console.
+  script_tag(name:"summary", value:"The remote host is running the McAfee IntruShield Management Console.");
 
-If an attacker can log into it, he will have the ability to modify sensors configuration.");
+  script_tag(name:"impact", value:"If an attacker can log into it, he will have the ability to modify sensors configuration.");
 
-  script_tag(name:"summary", value:"Configure your firewall to prevent unauthorized hosts from connecting to this
-port");
+  script_tag(name:"solution", value:"Configure your firewall to prevent unauthorized hosts from connecting to this
+  port");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -66,7 +66,7 @@ res = http_get_cache( item:url, port:port );
 if (egrep(pattern:"Copyright (c) 2001 by Intruvert Network Inc\.All rights Reserved\..*<TITLE>IntruShield Login</TITLE>",
           string:res)) {
   log_message( port:port );
-  set_kb_item( name:"Services/www/" + port + "/embedded", value:TRUE );
+  http_set_is_marked_embedded( port:port );
 }
 
 exit( 0 );

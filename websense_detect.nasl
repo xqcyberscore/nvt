@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: websense_detect.nasl 11998 2018-10-20 18:17:12Z cfischer $
+# $Id: websense_detect.nasl 13685 2019-02-15 10:06:52Z cfischer $
 #
 # Websense reporting console detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.18177");
-  script_version("$Revision: 11998 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 20:17:12 +0200 (Sat, 20 Oct 2018) $");
+  script_version("$Revision: 13685 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 11:06:52 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -66,11 +66,12 @@ port = get_http_port( default:8010 );
 url = "/Websense/cgi-bin/WsCgiLogin.exe";
 req = http_get( item:url, port:port );
 rep = http_keepalive_send_recv( port:port, data:req );
-if( ! rep  ) exit( 0 );
+if( ! rep )
+  exit( 0 );
 
 if( "<title>Websense Enterprise - Log On</title>" >< rep ) {
   security_message( port:port );
-  set_kb_item( name:"Services/www/" + port + "/embedded", value:TRUE );
+  http_set_is_marked_embedded( port:port );
 }
 
 exit( 0 );

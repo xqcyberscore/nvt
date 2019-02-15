@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_citrix_xenmobile_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
+# $Id: gb_citrix_xenmobile_detect.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # Citrix XenMobile Server Detection
 #
@@ -30,8 +30,8 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.105569");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11885 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 13679 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2016-03-15 18:31:10 +0100 (Tue, 15 Mar 2016)");
   script_name("Citrix XenMobile Server Detection");
 
@@ -71,7 +71,7 @@ if( "<title>XenMobile" >!< buf || "Citrix Systems" >!< buf ) exit( 0 );
 cpe = 'cpe:/a:citrix:xenmobile_server';
 set_kb_item( name:"citrix_xenmobile_server/installed", value:TRUE );
 
-cookie = get_cookie_from_header(buf: buf, pattern: "(JSESSIONID=[^;]+)");
+cookie = http_get_cookie_from_header(buf: buf, pattern: "(JSESSIONID=[^;]+)");
 
 if (cookie) {
   req = http_get_req(port: port, url: "/controlpoint/rest/xdmServices/general/version",
@@ -118,7 +118,7 @@ if( user && pass )
   buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
   if( '"status":"OK"' >< buf ) {
-    cookie = get_cookie_from_header(buf: buf, pattern: "(JSESSIONID=[^;]+)");
+    cookie = http_get_cookie_from_header(buf: buf, pattern: "(JSESSIONID=[^;]+)");
     if (cookie) {
       url = '/controlpoint/rest/releasemgmt/allupdates';
       ref = '/index_uc.html';

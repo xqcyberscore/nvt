@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: atutor_xss.nasl 13462 2019-02-05 09:37:54Z ckuersteiner $
+# $Id: atutor_xss.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # ATutor Cross Site Scripting Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:atutor:atutor";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.19587");
-  script_version("$Revision: 13462 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-05 10:37:54 +0100 (Tue, 05 Feb 2019) $");
+  script_version("$Revision: 13679 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_cve_id("CVE-2005-2649");
   script_bugtraq_id(14598);
@@ -87,7 +87,7 @@ exss = urlencode( str:xss );
 
 host = http_host_name( port:port );
 
-if( get_http_has_generic_xss( port:port, host:host ) ) exit( 0 );
+if( http_get_has_generic_xss( port:port, host:host ) ) exit( 0 );
 
 url = dir + '/login.php?course=">' + exss;
 

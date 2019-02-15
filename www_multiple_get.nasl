@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: www_multiple_get.nasl 10898 2018-08-10 13:38:13Z cfischer $
+# $Id: www_multiple_get.nasl 13685 2019-02-15 10:06:52Z cfischer $
 #
 # Several GET locks web server
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.18366");
-  script_version("$Revision: 10898 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:38:13 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 13685 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 11:06:52 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -45,19 +45,20 @@ if(description)
   us when it receives several GET HTTP/1.0 requests in a row.
 
   This might trigger false positive in generic destructive or DoS plugins.
-  ** OpenVAS enabled some countermeasures, however they might be
-  ** insufficient.");
+
+  The scanner enabled some countermeasures, however they might be
+  insufficient.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
   exit(0);
 }
 
-include('global_settings.inc');
-include('http_func.inc');
+include("http_func.inc");
 
 port = get_http_port( default:80 );
-if( get_kb_item( "Services/www/" + port + "/embedded" ) ) exit( 0 );
+if( http_get_is_marked_embedded( port:port ) )
+  exit( 0 );
 
 # CISCO IP Phone 7940 behaves correctly on a HTTP/1.1 request,
 # so we forge a crude HTTP/1.0 request.
@@ -70,18 +71,16 @@ req = string( "GET / HTTP/1.0\r\n",
               "Host: ", host, "\r\n" );
 max = 12;
 
-for( i = 0; i < max; i ++ ) {
+for( i = 0; i < max; i++ ) {
   recv = http_send_recv( port:port, data:req );
-  if( ! recv ) break;
+  if( ! recv )
+    break;
 }
 
-debug_print( 'i=', i, '\n' );
 if( i == 0 ) {
-  debug_print('Server is dead?');
+  # nb: Server is dead?
 } else if( i < max ) {
-  debug_print( 'Web server rejected connections after ', i, ' connections\n' );
   set_kb_item( name:'www/multiple_get/' + port, value:i );
-  if( report_verbosity > 1 ) # Verbose report
   log_message( port:port );
   exit( 0 );
 }

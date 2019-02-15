@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: smtp_func.inc 13461 2019-02-05 09:33:31Z cfischer $
+# $Id: smtp_func.inc 13673 2019-02-14 14:56:45Z cfischer $
 #
 # Support functions for handling SMTP
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 13461 $
+# $Revision: 13673 $
 #
 ###############################################################################
 
@@ -285,8 +285,10 @@ function get_smtp_banner( port ) {
   if( ! get_port_state( port ) )
     return NULL;
 
-  # TBD: Also check for smtp_get_is_marked_wrapped?
   if( smtp_get_is_marked_broken( port:port ) )
+    return NULL;
+
+  if( smtp_get_is_marked_wrapped( port:port ) )
     return NULL;
 
   # nb: Don't use smtp_open() as we want to grab the banner below.
@@ -508,6 +510,11 @@ function get_smtp_port( default, nodefault, ignore_broken, ignore_unscanned ) {
   if( port )
     default = port;
 
+  # nb: If this is the case we haven't found an open port, default wasn't passed
+  # and nodefault was set to TRUE. We can't continue in this case.
+  if( ! default )
+    exit( 0 );
+
   if( ! ignore_unscanned && ! get_port_state( default ) )
     exit( 0 );
 
@@ -516,7 +523,6 @@ function get_smtp_port( default, nodefault, ignore_broken, ignore_unscanned ) {
   if( smtp_is_fragile_port( port:default ) )
     exit( 0 );
 
-  # TBD: Also check for smtp_get_is_marked_wrapped?
   if( ! ignore_broken && smtp_get_is_marked_broken( port:default ) )
     exit( 0 );
 
@@ -581,7 +587,6 @@ function smtp_get_ports( default_list, ignore_broken, ignore_unscanned ) {
     if( smtp_is_fragile_port( port:port ) )
       continue;
 
-    # TBD: Also check for smtp_get_is_marked_wrapped?
     if( ! ignore_broken && smtp_get_is_marked_broken( port:port ) )
       continue;
 

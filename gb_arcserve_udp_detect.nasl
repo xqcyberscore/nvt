@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_arcserve_udp_detect.nasl 13659 2019-02-14 08:34:21Z cfischer $
+# $Id: gb_arcserve_udp_detect.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # Arcserve UDP Detection
 #
@@ -30,8 +30,8 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.105294");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 13659 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
+  script_version("$Revision: 13679 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2015-06-10 17:49:06 +0200 (Wed, 10 Jun 2015)");
   script_name("Arcserve UDP Detection");
 
@@ -284,7 +284,7 @@ if (res =~ "^HTTP/1\.[01] 302" && "/samlsso?SAMLRequest=" >< res) {
   res = http_keepalive_send_recv(port: port, data: req);
 
   # Now this is the cookie we need
-  if (!cookie = get_cookie_from_header(buf: res, pattern: "(JSESSIONID=[^;]+)"))
+  if (!cookie = http_get_cookie_from_header(buf: res, pattern: "(JSESSIONID=[^;]+)"))
     exit(0);
 
   # 2nd redirect to /commonauth\?sessionDataKey=...

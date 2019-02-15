@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_idoit_cmdb_file_downld_vuln.nasl 13076 2019-01-15 09:52:41Z ckuersteiner $
+# $Id: gb_idoit_cmdb_file_downld_vuln.nasl 13683 2019-02-15 08:52:16Z mmartin $
 #
 # i-doit CMDB <= 1.12 Arbitrary File Download Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:synetics:i-doit";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141877");
-  script_version("$Revision: 13076 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-15 10:52:41 +0100 (Tue, 15 Jan 2019) $");
+  script_version("$Revision: 13683 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:52:16 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-15 14:16:19 +0700 (Tue, 15 Jan 2019)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:N/A:N");
@@ -58,7 +58,7 @@ vulnerability.");
 
   script_tag(name:"affected", value:"i-doit CMDB 1.12 and prior.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 15th January, 2019.
+  script_tag(name:"solution", value:"No known solution is available as of 15th February, 2019.
   Information regarding this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/46133");

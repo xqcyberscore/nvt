@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts2_rce_vuln_S2_057_active.nasl 11129 2018-08-27 06:49:18Z ckuersteiner $
+# $Id: gb_apache_struts2_rce_vuln_S2_057_active.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # Apache Struts2 Remote Code Execution Vulnerability (S2-057) (Active Check)
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141398");
-  script_version("$Revision: 11129 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-27 08:49:18 +0200 (Mon, 27 Aug 2018) $");
+  script_version("$Revision: 13679 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-08-27 13:07:39 +0700 (Mon, 27 Aug 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -81,7 +81,7 @@ host = http_host_name(dont_add_port: TRUE);
 
 urls = make_list();
 
-exts = get_http_kb_file_extensions(port: port, host: host, ext: "action");
+exts = http_get_kb_file_extensions(port: port, host: host, ext: "action");
 if (exts && is_array(exts))
   urls = make_list(urls, exts);
 

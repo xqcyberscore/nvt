@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: ndcgi.nasl 12007 2018-10-22 07:43:49Z cfischer $
+# $Id: ndcgi.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # ndcgi.exe vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11730");
-  script_version("$Revision: 12007 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 09:43:49 +0200 (Mon, 22 Oct 2018) $");
+  script_version("$Revision: 13679 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -61,7 +61,7 @@ include("http_keepalive.inc");
 
 port = get_http_port( default:80 );
 host = http_host_name( dont_add_port:TRUE );
-no404 = get_http_no404_string( port:port, host:host );
+no404 = http_get_no404_string( port:port, host:host );
 
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 

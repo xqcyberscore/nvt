@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: default_http_auth_credentials.nasl 13659 2019-02-14 08:34:21Z cfischer $
+# $Id: default_http_auth_credentials.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # HTTP Brute Force Logins With Default Credentials
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108041");
-  script_version("$Revision: 13659 $");
+  script_version("$Revision: 13679 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2011-09-06 14:38:09 +0200 (Tue, 06 Sep 2011)");
   script_name("HTTP Brute Force Logins With Default Credentials");
   script_category(ACT_ATTACK);
@@ -80,7 +80,7 @@ function _check_response( res ) {
 port = get_http_port( default:80 );
 host = http_host_name( dont_add_port:TRUE );
 
-if( ! urls = get_http_kb_auth_required( port:port, host:host ) ) exit( 0 );
+if( ! urls = http_get_kb_auth_required( port:port, host:host ) ) exit( 0 );
 
 set_kb_item( name:"default_http_auth_credentials/started", value:TRUE );
 
@@ -152,7 +152,7 @@ foreach url( urls ) {
 
     if( res =~ "^HTTP/1\.[01] 30[0-8]" ) {
 
-      url = extract_location_from_redirect( port:port, data:res );
+      url = http_extract_location_from_redirect( port:port, data:res );
 
       if( url ) {
 

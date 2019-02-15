@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: calendar_express_flaws.nasl 10862 2018-08-09 14:51:58Z cfischer $
+# $Id: calendar_express_flaws.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # Calendar Express Multiple Flaws
 #
@@ -28,24 +28,24 @@
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.19749");
- script_version("$Revision: 10862 $");
- script_tag(name:"last_modification", value:"$Date: 2018-08-09 16:51:58 +0200 (Thu, 09 Aug 2018) $");
- script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
- script_cve_id("CVE-2007-3627");
- script_bugtraq_id(14504, 14505);
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_name("Calendar Express Multiple Flaws");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_copyright("This script is Copyright (C) 2005 David Maciejak");
- script_family("Web application abuses");
- script_dependencies("find_service.nasl", "http_version.nasl", "cross_site_scripting.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name:"solution", value:"Upgrade to the latest version of this software.");
- script_tag(name:"summary", value:"The remote web server contains a PHP script which is vulnerable to a cross
+  script_oid("1.3.6.1.4.1.25623.1.0.19749");
+  script_version("$Revision: 13679 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
+  script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
+  script_cve_id("CVE-2007-3627");
+  script_bugtraq_id(14504, 14505);
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_name("Calendar Express Multiple Flaws");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_copyright("This script is Copyright (C) 2005 David Maciejak");
+  script_family("Web application abuses");
+  script_dependencies("find_service.nasl", "http_version.nasl", "cross_site_scripting.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"solution", value:"Upgrade to the latest version of this software.");
+  script_tag(name:"summary", value:"The remote web server contains a PHP script which is vulnerable to a cross
 site scripting and SQL injection vulnerability.
 
 Description :
@@ -60,9 +60,9 @@ An attacker may exploit these flaws to use the remote host to perform attacks
 against third-party users, or to execute arbitrary SQL statements on the remote
 SQL database.");
 
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");
@@ -72,7 +72,7 @@ port = get_http_port(default:80);
 if ( ! can_host_php(port:port) ) exit(0);
 
 host = http_host_name( dont_add_port:TRUE );
-if( get_http_has_generic_xss( port:port, host:host ) ) exit( 0 );
+if( http_get_has_generic_xss( port:port, host:host ) ) exit( 0 );
 
 foreach dir( make_list_unique( "/calendarexpress", cgi_dirs( port:port ) ) ) {
 

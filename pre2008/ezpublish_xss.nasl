@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ezpublish_xss.nasl 10862 2018-08-09 14:51:58Z cfischer $
+# $Id: ezpublish_xss.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # eZ Publish Cross Site Scripting Bugs
 #
@@ -33,37 +33,37 @@ CPE = 'cpe:/a:ez:ez_publish';
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.11449");
- script_version("$Revision: 10862 $");
- script_tag(name:"last_modification", value:"$Date: 2018-08-09 16:51:58 +0200 (Thu, 09 Aug 2018) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_bugtraq_id(7137, 7138);
- script_cve_id("CVE-2003-0310");
- script_tag(name:"cvss_base", value:"6.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_oid("1.3.6.1.4.1.25623.1.0.11449");
+  script_version("$Revision: 13679 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_bugtraq_id(7137, 7138);
+  script_cve_id("CVE-2003-0310");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
- script_name("eZ Publish Cross Site Scripting Bugs");
+  script_name("eZ Publish Cross Site Scripting Bugs");
 
- script_category(ACT_ATTACK);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2003 k-otik.com");
- script_dependencies("sw_ez_publish_detect.nasl", "cross_site_scripting.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("ez_publish/installed");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2003 k-otik.com");
+  script_dependencies("sw_ez_publish_detect.nasl", "cross_site_scripting.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("ez_publish/installed");
 
- script_tag(name:"solution", value:"Upgrade to a newer version.");
- script_tag(name:"summary", value:"eZ Publish 2.2.7  has a cross site scripting bug. An attacker may use it to
+  script_tag(name:"solution", value:"Upgrade to a newer version.");
+  script_tag(name:"summary", value:"eZ Publish 2.2.7  has a cross site scripting bug. An attacker may use it to
  perform a cross site scripting attack on this host.
 
  In addition to this, another flaw may allow an attacker store hostile
  HTML code on the server side, which will be executed by the browser of the
  administrative user when he looks at the server logs.");
 
- script_tag(name:"qod_type", value:"remote_app");
+  script_tag(name:"qod_type", value:"remote_app");
 
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");
@@ -76,7 +76,7 @@ if (!dir = get_app_location(cpe: CPE, port: port)) exit(0);
 if (dir == "/") dir = "";
 
 host = http_host_name( dont_add_port:TRUE );
-if( get_http_has_generic_xss( port:port, host:host ) ) exit( 0 );
+if( http_get_has_generic_xss( port:port, host:host ) ) exit( 0 );
 
 url = string(dir, "/search/?SectionIDOverride=1&SearchText=<script>window.alert(document.cookie);</script>");
 req = http_get(item:url, port:port);

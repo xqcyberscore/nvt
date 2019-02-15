@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: citrix_xss.nasl 10862 2018-08-09 14:51:58Z cfischer $
+# $Id: citrix_xss.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # Citrix NFuse_Application parameter XSS
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14626");
-  script_version("$Revision: 10862 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-09 16:51:58 +0200 (Thu, 09 Aug 2018) $");
+  script_version("$Revision: 13679 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(4372);
   script_cve_id("CVE-2002-0504");
@@ -68,7 +68,7 @@ port = get_http_port( default:80 );
 if ( ! can_host_asp( port:port ) ) exit( 0 );
 
 host = http_host_name( dont_add_port:TRUE );
-if( get_http_has_generic_xss( port:port, host:host ) ) exit( 0 );
+if( http_get_has_generic_xss( port:port, host:host ) ) exit( 0 );
 
 foreach script( make_list( "/launch.jsp", "/launch.asp" ) ) {
 

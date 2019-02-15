@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cgi_directories.nasl 13659 2019-02-14 08:34:21Z cfischer $
+# $Id: cgi_directories.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # CGI Scanning Consolidation
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111038");
-  script_version("$Revision: 13659 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
+  script_version("$Revision: 13679 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2015-09-14 07:00:00 +0200 (Mon, 14 Sep 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -97,7 +97,7 @@ host = http_host_name( dont_add_port:TRUE );
 
 cgiDirs          = cgi_dirs( port:port, host:host );
 httpVersion      = get_kb_item( "http/" + port );
-authRequireDirs  = get_http_kb_auth_required( port:port, host:host );
+authRequireDirs  = http_get_kb_auth_required( port:port, host:host );
 cgiList          = get_kb_list( "www/" + host + "/" + port + "/content/cgis/cgis_reporting/*" );
 excludedCgiList  = get_kb_list( "www/" + host + "/" + port + "/content/excluded_cgis/*" );
 dirIndexList     = get_kb_list( "www/" + host + "/" + port + "/content/dir_index" );
@@ -126,11 +126,11 @@ if( get_kb_item( "global_settings/disable_generic_webapp_scanning" ) ) {
   report += 'Generic web application scanning is disabled for this host via the "Enable generic web application scanning" option within the "Global variable settings" of the scan config in use.\n\n';
 }
 
-if( get_http_is_marked_broken( port:port, host:host ) ) {
+if( http_get_is_marked_broken( port:port, host:host ) ) {
   report += 'This service is marked as broken and no CGI scanning is launched against it.\n\n';
 }
 
-if( no404_string = get_http_no404_string( port:port, host:host ) ) {
+if( no404_string = http_get_no404_string( port:port, host:host ) ) {
   if( no404_string != "HTTP" ) { #nb: Set by no404.nasl if "generally" marked broken.
     report += 'The service is responding with a 200 HTTP status code to non-existent files/urls. ';
     report += 'The following pattern is used to work around possible false detections:\n\n';

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_scalix_detect.nasl 13397 2019-02-01 08:06:48Z cfischer $
+# $Id: gb_scalix_detect.nasl 13688 2019-02-15 10:21:10Z cfischer $
 #
 # Scalix Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105102");
-  script_version("$Revision: 13397 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-01 09:06:48 +0100 (Fri, 01 Feb 2019) $");
+  script_version("$Revision: 13688 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 11:21:10 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2014-11-03 13:25:47 +0100 (Mon, 03 Nov 2014)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -82,31 +82,25 @@ function _report( port, version, location, concluded, service )
 
 }
 
-ports = get_kb_list( "Services/www" );
-if( ! ports )
-  ports = make_list( 80 );
-
+ports = http_get_ports();
 foreach port ( ports )
 {
-  if( get_port_state( port ) )
+  url = "/webmail/";
+  buf = http_get_cache( item:url, port:port );
+
+  if( buf && "<title>Login to Scalix Web Access" >< buf )
   {
-    url = "/webmail/";
-    buf = http_get_cache( item:url, port:port );
+    vers = 'unknown';
+    buf_sp = split( buf, keep:FALSE );
 
-    if( buf && "<title>Login to Scalix Web Access" >< buf )
+    for( i=0; i< max_index( buf_sp ); i++ )
     {
-      vers = 'unknown';
-      buf_sp = split( buf, keep:FALSE );
-
-      for( i=0; i< max_index( buf_sp ); i++ )
+      if( "color:#666666;font-size:9px" >< buf_sp[ i ] )
       {
-        if( "color:#666666;font-size:9px" >< buf_sp[ i ] )
+        if( version = eregmatch( pattern:"([0-9.]+)" , string:buf_sp[ i + 1 ] ) )
         {
-          if( version = eregmatch( pattern:"([0-9.]+)" , string:buf_sp[ i + 1 ] ) )
-          {
-            _report( port:port, version:version[1], location:"/webmail/", concluded:version[0], service:"www" );
-            break;
-          }
+          _report( port:port, version:version[1], location:"/webmail/", concluded:version[0], service:"www" );
+          break;
         }
       }
     }

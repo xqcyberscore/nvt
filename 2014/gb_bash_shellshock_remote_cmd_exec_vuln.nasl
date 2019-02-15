@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bash_shellshock_remote_cmd_exec_vuln.nasl 13659 2019-02-14 08:34:21Z cfischer $
+# $Id: gb_bash_shellshock_remote_cmd_exec_vuln.nasl 13679 2019-02-15 08:20:11Z cfischer $
 #
 # GNU Bash Environment Variable Handling Shell Remote Command Execution Vulnerability
 #
@@ -28,12 +28,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804489");
-  script_version("$Revision: 13659 $");
+  script_version("$Revision: 13679 $");
   script_cve_id("CVE-2014-6271", "CVE-2014-6278");
   script_bugtraq_id(70103);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2014-09-25 18:47:16 +0530 (Thu, 25 Sep 2014)");
   script_name("GNU Bash Environment Variable Handling Shell Remote Command Execution Vulnerability");
   script_category(ACT_ATTACK);
@@ -219,10 +219,10 @@ if( check_kb_cgis == "yes" )
 {
   # nb: This is expected to be here, we're using the same call later to add the port to the host header...
   host = http_host_name( dont_add_port:TRUE );
-  extensions = get_http_kb_file_extensions( port:port, host:host, ext:"*" );
+  extensions = http_get_kb_file_extensions( port:port, host:host, ext:"*" );
   if( extensions ) add_files( extensions:extensions );
 
-  kb_cgis = get_http_kb_cgis( port:port, host:host );
+  kb_cgis = http_get_kb_cgis( port:port, host:host );
   if( kb_cgis ) add_files( extensions:kb_cgis );
 }
 

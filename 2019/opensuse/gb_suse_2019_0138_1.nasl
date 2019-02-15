@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852272");
-  script_version("$Revision: 13652 $");
+  script_version("$Revision: 13681 $");
   script_cve_id("CVE-2018-0734", "CVE-2019-2455", "CVE-2019-2481", "CVE-2019-2482", "CVE-2019-2503", "CVE-2019-2507", "CVE-2019-2529", "CVE-2019-2531", "CVE-2019-2534", "CVE-2019-2537");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-14 08:33:50 +0100 (Thu, 14 Feb 2019) $");
+  script_tag(name:"cvss_base", value:"5.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:41:57 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-02-06 04:05:05 +0100 (Wed, 06 Feb 2019)");
   script_name("SuSE Update for mysql-community-server openSUSE-SU-2019:0138-1 (mysql-community-server)");
   script_category(ACT_GATHER_INFO);
