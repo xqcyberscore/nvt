@@ -21,13 +21,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891676");
-  script_version("$Revision: 13675 $");
+  script_version("$Revision: 13701 $");
   script_cve_id("CVE-2017-15105");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1676-1] unbound security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-15 07:44:05 +0100 (Fri, 15 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 16:13:17 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-02-15 00:00:00 +0100 (Fri, 15 Feb 2019)");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

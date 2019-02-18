@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2019_0020_1.nasl 13173 2019-01-21 06:39:39Z santu $
+# $Id: gb_suse_2019_0020_1.nasl 13721 2019-02-18 07:47:09Z asteins $
 #
 # SuSE Update for gpg2 openSUSE-SU-2019:0020-1 (gpg2)
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852232");
-  script_version("$Revision: 13173 $");
+  script_version("$Revision: 13721 $");
   script_cve_id("CVE-2018-1000858");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-21 07:39:39 +0100 (Mon, 21 Jan 2019) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-18 08:47:09 +0100 (Mon, 18 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-12 04:02:26 +0100 (Sat, 12 Jan 2019)");
   script_name("SuSE Update for gpg2 openSUSE-SU-2019:0020-1 (gpg2)");
   script_category(ACT_GATHER_INFO);

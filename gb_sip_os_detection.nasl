@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sip_os_detection.nasl 10901 2018-08-10 14:09:57Z cfischer $
+# $Id: gb_sip_os_detection.nasl 13720 2019-02-18 07:43:24Z cfischer $
 #
 # SIP Server OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108201");
-  script_version("$Revision: 10901 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:09:57 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 13720 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-18 08:43:24 +0100 (Mon, 18 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-08-01 11:13:48 +0200 (Tue, 01 Aug 2017)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -58,7 +58,7 @@ port = infos['port'];
 proto = infos['proto'];
 if( ! banner = get_kb_item( "sip/full_banner/" + proto + "/" + port ) ) exit( 0 );
 
-if( "FRITZ!OS" >< banner ) {
+if( "FRITZ!OS" >< banner || "snom" >< banner ) {
   register_and_report_os( os:"Linux", cpe:"cpe:/o:linux:kernel", banner_type:BANNER_TYPE, port:port, proto:proto, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
   exit( 0 );
 }

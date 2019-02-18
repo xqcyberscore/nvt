@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_social_network_tabs_info_discl_vuln.nasl 13143 2019-01-18 10:10:37Z ckuersteiner $
+# $Id: gb_wordpress_social_network_tabs_info_discl_vuln.nasl 13722 2019-02-18 08:18:20Z mmartin $
 #
 # WordPress Social Network Tabs Plugin Information Disclosure Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141896");
-  script_version("$Revision: 13143 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-18 11:10:37 +0100 (Fri, 18 Jan 2019) $");
+  script_version("$Revision: 13722 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-18 09:18:20 +0100 (Mon, 18 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-18 16:44:12 +0700 (Fri, 18 Jan 2019)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -57,7 +57,7 @@ which is leading to a takeover of their Twitter account.");
 
   script_tag(name:"vuldetect", value:"Tries to read the Twitter secrets.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 18th January, 2019.
+  script_tag(name:"solution", value:"No known solution is available as of 18th February, 2019.
   Information regarding this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://github.com/fs0c131y/CVE-2018-20555");

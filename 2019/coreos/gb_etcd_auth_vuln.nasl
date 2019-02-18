@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_etcd_auth_vuln.nasl 13070 2019-01-15 04:50:25Z ckuersteiner $
+# $Id: gb_etcd_auth_vuln.nasl 13721 2019-02-18 07:47:09Z asteins $
 #
 # etcd Authentication Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:coreos:etcd";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141874");
-  script_version("$Revision: 13070 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-15 05:50:25 +0100 (Tue, 15 Jan 2019) $");
+  script_version("$Revision: 13721 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-18 08:47:09 +0100 (Mon, 18 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-15 10:13:42 +0700 (Tue, 15 Jan 2019)");
-  script_tag(name:"cvss_base", value:"4.4");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2018-16886");
 

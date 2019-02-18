@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_glassfish_open_source_default_cred_vuln.nasl 12897 2018-12-28 14:09:23Z asteins $
+# $Id: gb_oracle_glassfish_open_source_default_cred_vuln.nasl 13716 2019-02-18 04:31:31Z ckuersteiner $
 #
 # Oracle GlassFish Open Source Default Credentials Vulnerability
 #
@@ -30,12 +30,13 @@ CPE = "cpe:/a:oracle:glassfish_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813576");
-  script_version("$Revision: 12897 $");
+  script_version("$Revision: 13716 $");
   script_cve_id("CVE-2018-14324");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-28 15:09:23 +0100 (Fri, 28 Dec 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-18 05:31:31 +0100 (Mon, 18 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-07-17 12:45:41 +0530 (Tue, 17 Jul 2018)");
+
   script_name("Oracle GlassFish Open Source Default Credentials Vulnerability");
 
   script_tag(name:"summary", value:"This host is running Oracle GlassFish Server
@@ -53,36 +54,35 @@ if(description)
 
   script_tag(name:"affected", value:"Oracle GlassFish Server versions 5.0");
 
-  script_tag(name:"solution", value:"No known solution is available as of 28th December, 2018.
-  Information regarding this issue will be updated once solution details are available.
-  For updates refer to Reference links.");
+  script_tag(name:"solution", value:"No known solution is available as of 18th February, 2019.
+  Information regarding this issue will be updated once solution details are available.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
   script_tag(name:"qod_type", value:"remote_banner");
+
   script_xref(name:"URL", value:"https://www.securitytracker.com/id/1041292");
   script_xref(name:"URL", value:"http://www.oracle.com/");
+
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("GlassFish_detect.nasl");
   script_mandatory_keys("GlassFish/installed");
+
   exit(0);
 }
 
 include("version_func.inc");
 include("host_details.inc");
 
-if(!glPort = get_app_port(cpe:CPE)){
+if(!glPort = get_app_port(cpe:CPE))
   exit(0);
-}
 
-infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE, port:glPort);
-glVer = infos['version'];
-glPath = infos['location'];
+if (!version = get_app_version_and_location( cpe:CPE, port:glPort))
+  exit(0);
 
-if(version_is_equal(version:glVer, test_version:"5.0"))
-{
-  report = report_fixed_ver(installed_version:glVer, fixed_version:"NoneAvailable", install_path:glPath);
+if(version_is_equal(version:version, test_version:"5.0")) {
+  report = report_fixed_ver(installed_version:version, fixed_version:"None");
   security_message(data:report, port:glPort);
   exit(0);
 }

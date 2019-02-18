@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Fri, 15 Feb 2019 12:20:17 +0100
+# Automatically created on:  Mon, 18 Feb 2019 09:32:08 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -44021,6 +44021,8 @@
 2019/debian/deb_4388.nasl: GPLv2+
 2019/debian/deb_4389.nasl: GPLv2+
 2019/debian/deb_4390.nasl: GPLv2+
+2019/debian/deb_4391.nasl: GPLv2+
+2019/debian/deb_4392.nasl: GPLv2+
 2019/debian/deb_dla_1621.nasl: GPLv2+
 2019/debian/deb_dla_1623.nasl: GPLv2+
 2019/debian/deb_dla_1624.nasl: GPLv2+
@@ -44072,6 +44074,9 @@
 2019/debian/deb_dla_1674.nasl: GPLv2+
 2019/debian/deb_dla_1675.nasl: GPLv2+
 2019/debian/deb_dla_1676.nasl: GPLv2+
+2019/debian/deb_dla_1677.nasl: GPLv2+
+2019/debian/deb_dla_1678.nasl: GPLv2+
+2019/debian/deb_dla_1679.nasl: GPLv2+
 2019/discourse/gb_discourse_2.2.0beta2.nasl: GPLv2+
 2019/discourse/gb_discourse_2.2.0beta3.nasl: GPLv2+
 2019/discourse/gb_discourse_2.2.0beta4.nasl: GPLv2+
@@ -44801,7 +44806,10 @@ gb_barracuda_web_filter_detect.nasl: GPLv2+
 gb_basler_ip_camera_detect.nasl: GPLv2+
 gb_ba_systems_web_detect.nasl: GPLv2+
 gb_batavi_detect.nasl: GPLv2+
+gb_beckhoff_tf5210_cnc_export_detect_win.nasl: GPLv2+
+gb_beckhoff_twincat_blockdiagram_detect_win.nasl: GPLv2+
 gb_beckhoff_twincat_remote_manager_detect_win.nasl: GPLv2+
+gb_beckhoff_twincat_scope_detect_win.nasl: GPLv2+
 gb_becky_internet_mail_detect.nasl: GPLv2+
 gb_belkin_wemo_detect.nasl: GPLv2+
 gb_beward_intercom_detect_win.nasl: GPLv2+
@@ -44830,6 +44838,7 @@ gb_bozotic_http_server_detect.nasl: GPLv2+
 gb_bpftp_detect.nasl: GPLv2+
 gb_bpsoft_hex_workshop_detect.nasl: GPLv2+
 gb_brickcom_network_camera_detect.nasl: GPLv2+
+gb_bridgeway_configuration_tool_detect_win.nasl: GPLv2+
 gb_broadwin_webaccess_detect.nasl: GPLv2+
 gb_brocade_fabricos_consolidation.nasl: GPLv2+
 gb_brocade_fabricos_http_detect.nasl: GPLv2+
@@ -44995,6 +45004,7 @@ gb_codesys_detect_win.nasl: GPLv2+
 gb_codesys_opc_server_detect_win.nasl: GPLv2+
 gb_codesys_os_detection.nasl: GPLv2+
 gb_codoforum_detect.nasl: GPLv2+
+gb_cogent_datahub_detect_win.nasl: GPLv2+
 gb_coldfusion_detect.nasl: GPLv2+
 gb_collabtive_detect.nasl: GPLv2+
 gb_colorado_ftp_server_detect.nasl: GPLv2+
@@ -45459,6 +45469,7 @@ gb_inedo_proget_detect.nasl: GPLv2+
 gb_informix_detect.nasl: GPLv2+
 gb_ingate_firewall_detect.nasl: GPLv2+
 gb_ingate_siparator_detect.nasl: GPLv2+
+gb_integrationobjects_opc_ua_server_for_databases_detect_win.nasl: GPLv2+
 gb_integrationobjects_opc_ua_wrapper_detect_win.nasl: GPLv2+
 gb_intel_amt_webui_detect.nasl: GPLv2+
 gb_intelbras_ncloud_devices_http_detect.nasl: GPLv2+
@@ -45494,6 +45505,7 @@ gb_java_prdts_detect_win.nasl: GPLv2+
 gb_jboss_on_detect.nasl: GPLv2+
 gb_jetbrains_ide_detection.nasl: GPLv2+
 gb_jetty_detect.nasl: GPLv2+
+gb_jki_vipm_detect_win.nasl: GPLv2+
 gb_jpgraph_detect.nasl: GPLv2+
 gb_jquery_detect.nasl: GPLv2+
 gb_jre_detect_macosx.nasl: GPLv2+
@@ -45772,6 +45784,7 @@ gb_nextcloud_detect.nasl: GPLv2+
 gb_nghttp2_detect.nasl: GPLv2+
 gb_niagara_fox_detect.nasl: GPLv2+
 gb_nidesoft_mp3_conv_detect_win.nasl: GPLv2+
+gb_ni_package_manager_detect_win.nasl: GPLv2+
 gb_nist_win_oval_sys_char_generator.nasl: GPLv2+
 gb_nitro_pro_detect_win.nasl: GPLv2+
 gb_nmap_detect_win.nasl: GPLv2+
@@ -46076,6 +46089,7 @@ gb_sap_webgui_detect.nasl: GPLv2+
 gb_sawmill_detect.nasl: GPLv2+
 gb_scalix_detect.nasl: GPLv2+
 gb_schneider_acti9smarttest_detect_win.nasl: GPLv2+
+gb_schneider_canopen_communication_dtm_library_detect_win.nasl: GPLv2+
 gb_schneider_clearscada_detect.nasl: GPLv2+
 gb_schneider_ecostruxure_augmented_operator_advisor_detect_win.nasl: GPLv2+
 gb_schneider_ecostruxure_machine_expert_detect_win.nasl: GPLv2+
@@ -46087,8 +46101,10 @@ gb_schneider_homelynk_controller_detect.nasl: GPLv2+
 gb_schneider_indusoft_http_detect.nasl: GPLv2+
 gb_schneider_intouch_http_detect.nasl: GPLv2+
 gb_schneider_matrix_detect_win.nasl: GPLv2+
+gb_schneider_modbus_communication_dtm_library_detect_win.nasl: GPLv2+
 gb_schneider_modbus_detect.nasl: GPLv2+
 gb_schneider_modicon_m340_detect.nasl: GPLv2+
+gb_schneider_motion_sizer_detect_win.nasl: GPLv2+
 gb_schneider_opc_factory_server_detect_win.nasl: GPLv2+
 gb_schneider_opc_server_detect_win.nasl: GPLv2+
 gb_schneider_pacdrive3_diagnostics_detect_win.nasl: GPLv2+
@@ -46096,6 +46112,7 @@ gb_schneider_sohvac_detect_win.nasl: GPLv2+
 gb_schneider_somove_detect_win.nasl: GPLv2+
 gb_schneider_struxureon_detect.nasl: GPLv2+
 gb_schneider_umotion_builder_software_detect_http.nasl: GPLv2+
+gb_schneider_vijeo_designer_detect_win.nasl: GPLv2+
 gb_schneider_zelio_soft_detect_win.nasl: GPLv2+
 gb_screenos_version.nasl: GPLv2+
 gb_scrumworkspro_detect.nasl: GPLv2+
@@ -46119,11 +46136,13 @@ gb_sharepoint_designer_detect.nasl: GPLv2+
 gb_sharp_printer_detect.nasl: GPLv2+
 gb_shibboleth_sp_detect_win.nasl: GPLv2+
 gb_shoreware_director_detect.nasl: GPLv2+
+gb_siemens_automation_license_manager_detect_win.nasl: GPLv2+
 gb_siemens_desigo_bacnet_detect.nasl: GPLv2+
 gb_siemens_ruggedcom_consolidation.nasl: GPLv2+
 gb_siemens_ruggedcom_snmp_detect.nasl: GPLv2+
 gb_siemens_ruggedcom_telnet_detect.nasl: GPLv2+
 gb_siemens_scalance_web_detect.nasl: GPLv2+
+gb_siemens_simatic_wincc_audit_viewer_detect_win.nasl: GPLv2+
 gb_siemens_sinema_server_detect.nasl: GPLv2+
 gb_sierrawireless_acemanager_detect.nasl: GPLv2+
 gb_siestta_detect.nasl: GPLv2+
@@ -46338,6 +46357,7 @@ gb_thunderbird_detect_lin.nasl: GPLv2+
 gb_thunderbird_detect_portable_win.nasl: GPLv2+
 gb_thunderbird_detect_win.nasl: GPLv2+
 gb_thycotic_secret_server_detect.nasl: GPLv2+
+gb_tia_portal_cloud_connector_detect_win.nasl: GPLv2+
 gb_tibco_ftl_detect_win.nasl: GPLv2+
 gb_tibco_spotfire_statistics_services_detect.nasl: GPLv2+
 gb_tibco_tibbr_detect.nasl: GPLv2+

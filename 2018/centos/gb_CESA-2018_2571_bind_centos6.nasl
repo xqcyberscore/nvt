@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2018_2571_bind_centos6.nasl 11173 2018-08-31 08:10:11Z santu $
+# $Id: gb_CESA-2018_2571_bind_centos6.nasl 13721 2019-02-18 07:47:09Z asteins $
 #
 # CentOS Update for bind CESA-2018:2571 centos6
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882942");
-  script_version("$Revision: 11173 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-31 10:10:11 +0200 (Fri, 31 Aug 2018) $");
+  script_version("$Revision: 13721 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-18 08:47:09 +0100 (Mon, 18 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-08-29 07:13:16 +0200 (Wed, 29 Aug 2018)");
   script_cve_id("CVE-2018-5740");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("CentOS Update for bind CESA-2018:2571 centos6 ");
   script_tag(name:"summary", value:"Check the version of bind");

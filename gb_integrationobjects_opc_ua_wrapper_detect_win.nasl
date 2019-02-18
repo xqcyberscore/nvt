@@ -19,9 +19,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107572");
-  script_version("$Revision: 13691 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-15 11:59:06 +0100 (Fri, 15 Feb 2019) $");
-  script_tag(name:"creation_date", value:"");
+  script_version("$Revision: 13694 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 13:18:09 +0100 (Fri, 15 Feb 2019) $");
+  script_tag(name:"creation_date", value:"2019-02-15 13:07:29 +0100 (Fri, 15 Feb 2019)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("Integration Objects' OPC UA Wrapper Version Detection (Windows)");

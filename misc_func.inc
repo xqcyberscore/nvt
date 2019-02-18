@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: misc_func.inc 13544 2019-02-08 14:53:51Z cfischer $
+# $Id: misc_func.inc 13697 2019-02-15 14:19:50Z cfischer $
 #
 # Miscellaneous support methods
 #
@@ -26,7 +26,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 13544 $
+# $Revision: 13697 $
 #
 ###############################################################################
 
@@ -37,7 +37,8 @@ _misc_func_debug = 0;
 # Global var to avoid that we're repeatedly asking redis for something we already know.
 global_var __3rdparty_domain;
 
-# This function is deprecated.
+# @brief This function is deprecated.
+#
 function get_unknown_svc() {
 
   local_var port;
@@ -48,15 +49,15 @@ function get_unknown_svc() {
     port = get_kb_item( "Services/unknown" );
   }
 
-   if( ! port ) return 0;
-   if( port == 139 ) return 0;
+  if( ! port ) return 0;
+  if( port == 139 ) return 0;
 
-   if( service_is_unknown( port:port ) ) {
-     return port;
-   } else {
-     return 0;
-   }
- }
+  if( service_is_unknown( port:port ) ) {
+    return port;
+  } else {
+    return 0;
+  }
+}
 
 function register_service( port, proto, ipproto, message ) {
 
@@ -170,26 +171,146 @@ function verify_service( port, ipproto, proto ) {
   return FALSE;
 }
 
-# This function may fork
-function get_port_for_service( default, ipproto, proto ) {
+# @brief Returns all ports matching the specified IP and service protocol passed via the "ipproto" and "proto" parameters. The function will evaluate
+#        the following KB keys for this information:
+#
+#        "Services/proto" or "Services/ipproto/proto" and "Known/ipproto/default"
+#
+#        If no ports where found for the specified IP and service protocol or no "default" parameter is passed (if "nodefault" isn't set to TRUE)
+#        it will exit. In the case where the "unscanned_closed/unscanned_closed_udp" scanner setting is set to "no" it will return the port passed
+#        via the "default" parameter.
+#
+# @param default   The port to return if "unscanned_closed" is set to "no" and no ports have been found for the specified IP and service protocol.
+# @param nodefault Don't exit if no "default" parameter is passed, it is still exiting if no ports matching the passed info were detected.
+# @param ipproto   An (optional) IP protocol (e.g. "tcp" or "udp") to evaulate. If this parameter isn't passed it will default to "tcp".
+# @param proto     A (mandatory) service protocol (e.g. "www" for HTTP were Services/www is evaluated).
+#
+# @note This function may fork if multiple ports are found open for the same service.
+#
+# @return The open / found ports matching the specific IP and service protocol or the port passed via the default parameter
+#         in the case of no found ports and "unscanned_closed/unscanned_closed_udp" is set to "no".
+#
+function get_port_for_service( default, nodefault, ipproto, proto ) {
 
-  local_var k, p, default, ipproto, proto;
+  local_var default, nodefault, ipproto, proto;
+  local_var key, port;
 
-  if( ! default ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#default#-#get_port_for_service" );
-  if( ! proto ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#proto#-#get_port_for_service" );
-
-  if( ! ipproto ) ipproto = "tcp";
-  if( ipproto == "tcp" ) {
-    k = strcat( "Services/", proto );
-  } else {
-    k = strcat( "Services/", ipproto, "/", proto );
+  if( ! proto ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#proto#-#get_port_for_service" );
+    exit( 0 );
   }
-  p = get_kb_item( k );
-  if( p ) return p;
-  k = strcat( "Known/", ipproto, "/", default );
-  p = get_kb_item( k );
-  if( p == proto ) return default;
+
+  if( ! default && ! nodefault ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#default#-#get_port_for_service" );
+    exit( 0 );
+  }
+
+  if( ! ipproto )
+    ipproto = "tcp";
+
+  if( ipproto == "tcp" )
+    key = strcat( "Services/", proto );
+  else
+    key = strcat( "Services/", ipproto, "/", proto );
+
+  port = get_kb_item( k );
+  if( port )
+    return port;
+
+  # nb: If this is the case we haven't found an open port, default wasn't passed
+  # and nodefault was set to TRUE. We can't continue in this case.
+  if( ! default )
+    exit( 0 );
+
+  port = get_kb_item( "Known/" + ipproto + "/" + default );
+  if( port == proto )
+    return default;
+
+  if( ipproto == "tcp" && get_tcp_port_state( default ) )
+    return default;
+
+  if( ipproto == "udp" && get_udp_port_state( default ) )
+    return default;
+
   exit( 0 );
+}
+
+# @brief Returns all ports matching the specific IP and service protocol. The function will evaluate the following KB keys for this information:
+#        "Services/proto", "Services/ipproto/proto" and "Known/ipproto/default".
+#
+# @param default_list The port list to return if "unscanned_closed" is set to "no" and no ports have been found for the specified IP and service protocol.
+# @param ipproto      An (optional) IP protocol (e.g. "tcp" or "udp") to evaulate. If this parameter isn't passed it will default to "tcp".
+# @param proto        A (mandatory) service protocol (e.g. "www" for HTTP were Services/www is evaluated).
+#
+# @note  In contrast to @ref get_port_for_service this function will not fork and return a list instead. This should be used e.g. for
+#        Detection-VTs where we want to make sure that we're not getting blocked by the remote service with to many concurrent connections.
+#
+# @return A list containing the open / found ports matching the specific IP and service protocol, if none where found an empty list. In the case of
+#         no found ports and "unscanned_closed/unscanned_closed_udp" is set to "no" the list passed to the default_ports parameter is returned.
+#
+function get_ports_for_service( default_list, ipproto, proto ) {
+
+  local_var default_list, ipproto, proto;
+  local_var port_list, num_ports, key, ports, port, default;
+
+  port_list = make_list();
+
+  if( ! proto ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#proto#-#get_port_for_service" );
+    return port_list;
+  }
+
+  num_ports = 0;
+
+  if( ! ipproto )
+    ipproto = "tcp";
+
+  if( ipproto == "tcp" )
+    key = strcat( "Services/", proto );
+  else
+    key = strcat( "Services/", ipproto, "/", proto );
+
+  ports = get_kb_list( key );
+  if( ports && typeof( ports ) == "array" ) {
+    foreach port( ports ) {
+      num_ports++;
+      port_list = make_list( port_list, port );
+    }
+  }
+
+  if( num_ports > 0 )
+    return port_list;
+
+  # nb: If this is the case we haven't found an open port and the default_list
+  # parameter wasn't passed. We can't continue in this case.
+  if( ! default_list || typeof( default_list ) != "array" )
+    return port_list;
+
+  foreach default( default_list ) {
+    ports = get_kb_list( "Known/" + ipproto + "/" + default );
+    if( ports && typeof( ports ) == "array" ) {
+      foreach port( keys( ports ) ) {
+        if( ports[port] == proto ) {
+          num_ports++;
+          port_list = make_list( port_list, default );
+        }
+      }
+    }
+  }
+
+  if( num_ports > 0 )
+    return port_list;
+
+  foreach default( default_list ) {
+
+    if( ipproto == "tcp" && get_tcp_port_state( default ) )
+      port_list = make_list( port_list, default );
+
+    if( ipproto == "udp" && get_udp_port_state( default ) )
+      port_list = make_list( port_list, default );
+  }
+
+  return port_list;
 }
 
 function get_unknown_banner( port, ipproto, dontfetch ) {

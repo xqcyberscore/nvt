@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: host_details.inc 13539 2019-02-08 12:19:22Z cfischer $
+# $Id: host_details.inc 13693 2019-02-15 11:45:14Z cfischer $
 #
 # Centralized and organized host information base
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 13539 $
+# $Revision: 13693 $
 #
 ###############################################################################
 
@@ -870,7 +870,7 @@ function get_app_location( cpe, port, nofork, skip_port, default ) {
 function get_single_app_ports_from_list( cpe_list, service, default ) {
 
   local_var cpe_list, service, default;
-  local_var cpe, base_cpe, port, services;
+  local_var cpe, base_cpe, port, services, ret_arr;
 
   if( ! cpe_list ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe_list#-#get_single_app_ports_from_list" );
@@ -1218,7 +1218,7 @@ function get_app_full( cpe, port ) {
 #
 function get_app_port_from_cpe_prefix( cpe, default, service, first_cpe_only ) {
 
-  local_var cpe, default, service, first_only;
+  local_var cpe, default, service, first_cpe_only;
   local_var data, _cpelist, entry, parts, _cpe;
 
   if( ! cpe ) {
@@ -1253,7 +1253,7 @@ function get_app_port_from_cpe_prefix( cpe, default, service, first_cpe_only ) {
     _cpelist = make_list( _cpelist, _cpe );
   }
 
-  if( first_only )
+  if( first_cpe_only )
     return get_single_app_ports_from_list( cpe_list:_cpelist, service:service, default:default );
   else
     return get_all_app_ports_from_list( cpe_list:_cpelist, service:service, default:default );

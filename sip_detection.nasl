@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sip_detection.nasl 13541 2019-02-08 13:21:52Z cfischer $
+# $Id: sip_detection.nasl 13720 2019-02-18 07:43:24Z cfischer $
 #
 # Detect SIP Compatible Hosts (UDP)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11963");
-  script_version("$Revision: 13541 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-08 14:21:52 +0100 (Fri, 08 Feb 2019) $");
+  script_version("$Revision: 13720 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-18 08:43:24 +0100 (Mon, 18 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -61,7 +61,6 @@ port = get_unknown_port( default:5060, ipproto:proto );
 
 req = construct_sip_options_req( port:port, proto:proto );
 res = sip_send_recv( port:port, data:req, proto:proto );
-
 if( res =~ "^SIP/2\.0 [0-9]+" || egrep( string:res, pattern:"^Via: SIP/2\.0/UDP" ) ) {
   found = TRUE;
 } else {
@@ -77,23 +76,29 @@ if( res =~ "^SIP/2\.0 [0-9]+" || egrep( string:res, pattern:"^Via: SIP/2\.0/UDP"
   }
 }
 
-if( ! found ) exit( 0 );
+if( ! found )
+  exit( 0 );
 
 replace_kb_item( name:"sip/full_banner/" + proto + "/" + port, value:res );
 
 if( "Server:" >< res ) {
   banner = egrep( pattern:'^Server:', string:res );
   banner = substr( banner, 8 );
-} else if( "User-Agent" >< res ) {
-  banner = egrep( pattern:'^User-Agent', string:res );
-  banner = substr( banner, 12 );
 }
 
+if( "User-Agent" >< res ) {
+  _banner = egrep( pattern:'^User-Agent', string:res );
+  _banner = substr( _banner, 12 );
+  if( banner )
+    banner += '\n';
+  banner += _banner;
+}
+
+banner = chomp( banner );
 if( banner ) {
   replace_kb_item( name:"sip/banner/" + proto + "/" + port, value:banner );
+  desc = 'Server/User-Agent: ' + banner;
 }
-
-desc = 'Server/User-Agent: ' + banner;
 
 if( egrep( pattern:"Allow:.*OPTIONS.*", string:res ) ) {
   OPTIONS = egrep( pattern:"Allow:.*OPTIONS.*", string:res );
@@ -101,9 +106,8 @@ if( egrep( pattern:"Allow:.*OPTIONS.*", string:res ) ) {
   OPTIONS = chomp( OPTIONS );
 }
 
-if( ! isnull( OPTIONS ) ) {
+if( ! isnull( OPTIONS ) )
   desc += '\nSupported Options:\n' + OPTIONS + '\n';
-}
 
 desc += '\nFull banner output:\n\n' + res;
 

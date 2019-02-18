@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: sip.inc 7922 2017-11-28 10:06:28Z cfischer $
+# $Id: sip.inc 13723 2019-02-18 08:22:05Z cfischer $
 #
 # functions to support sip
 #
@@ -23,93 +23,126 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7922 $
+# $Revision: 13723 $
 #
 ###############################################################################
 
-#--------------------------------------------------------#
-# function get_sip_banner:                               #
-#     Some function code taken from 'sip_detection.nasl' #
-#     (C) 2006 Josh Zlatin-Amishav and Ferdy Riphagen    #
-#--------------------------------------------------------#
-
+# @brief Creates a SIP OPTIONS request, sends the request to the target, receives the
+#        response and extracts the SIP header (banner) from the response. If a header
+#        was received it is saved into the knowledge base. If a header was requested
+#        which was requested previously the cached header will be returned instead of
+#        doing a new request.
+#
+# @param port  The SIP port of the target.
+# @param proto The (optional) IP Protocol ("tcp" or "udp") to be used. Defaults to "udp"
+#              if not passed.
+#
+# @return The SIP header of the remote host, FALSE if no response or header/banner was received and NULL if no port parameter was passed.
+#
 function get_sip_banner( port, proto ) {
 
-  local_var port, proto, soc, opt, r, banner;
+  local_var port, proto;
+  local_var banner, opt, res, _banner;
 
   if( ! port ) {
     set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#get_sip_banner" );
-    return;
+    return NULL;
   }
 
-  if( ! proto ) proto = "udp";
+  if( ! proto )
+    proto = "udp";
 
   banner = get_kb_item( "sip/banner/" + proto + "/" + port );
-  if( banner ) return banner;
-
-  soc = open_sip_socket( port:port, proto:proto );
-  if( ! soc ) return NULL;
+  if( banner )
+    return banner;
 
   opt = construct_sip_options_req( port:port, proto:proto );
+  res = sip_send_recv( port:port, data:opt, proto:proto );
 
-  send( socket:soc, data:opt );
-  r = recv( socket:soc, length:1024 );
+  if( ! res || "SIP/2.0" >!< res )
+    return FALSE;
 
-  if( "SIP/2.0" >!< r ) return NULL;
-
-  if( "Server:" >< r ) {
-    banner = egrep( pattern:'^Server:', string:r );
+  if( "Server:" >< res ) {
+    banner = egrep( pattern:'^Server:', string:res );
     banner = substr( banner, 8 );
-  } else if( "User-Agent" >< r ) {
-    banner = egrep( pattern:'^User-Agent', string:r );
-    banner = substr( banner, 12 );
   }
 
-  if( ! isnull( banner ) ) {
+  if( "User-Agent:" >< res ) {
+    _banner = egrep( pattern:'^User-Agent:', string:res );
+    _banner = substr( _banner, 12 );
+    if( banner )
+      banner += '\n';
+    banner += _banner;
+  }
+
+  banner = chomp( banner );
+
+  if( banner ) {
     replace_kb_item( name:"sip/banner/" + proto + "/" + port, value:banner );
     return banner;
   } else {
-    return NULL;
+    return FALSE;
   }
 }
 
-#--------------------------------------------------------#
-# function sip_send_recv:                                #
-#     Send self modified SIP packets                     #
-#     returns received packets                           #
-#--------------------------------------------------------#
-
+# @brief Sends a SIP packet to the remote service and returns the received response.
+#
+# @param port  The SIP port of the target.
+# @param data  The request to sent (e.g. created via @ref construct_sip_options_req).
+# @param proto The (optional) IP Protocol ("tcp" or "udp") to be used. Defaults to "udp"
+#              if not passed.
+#
+# @return The received response, FALSE if no response was received and NULL if no port parameter was passed.
+#
 function sip_send_recv( port, data, proto ) {
 
-  local_var ret, soc, port, data, proto;
+  local_var port, data, proto;
+  local_var soc, res;
 
   if( ! port ) {
     set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#sip_send_recv" );
-    return;
+    return NULL;
   }
 
-  if( ! data ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#data#-#sip_send_recv" );
+  if( ! data )
+    set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#data#-#sip_send_recv" );
 
-  if( ! proto ) proto = "udp";
+  if( ! proto )
+    proto = "udp";
 
   soc = open_sip_socket( port:port, proto:proto );
-  if( ! soc ) return NULL;
+  if( ! soc )
+    return FALSE;
 
-  if( soc ) {
-    send( socket:soc, data:data );
-    ret = recv( socket:soc, length:1024 );
-    if( ! isnull( ret ) ) return ret;
-  }
-  return NULL;
+  send( socket:soc, data:data );
+  res = recv( socket:soc, length:1024 );
+  close( soc );
+
+  res = chomp( res );
+
+  if( res )
+    return res;
+  else
+    return FALSE;
 }
 
+# @brief Sends a SIP packet to the remote service and tries to check if the service is still alive.
+#
+# @param port  The SIP port of the target.
+# @param proto The (optional) IP Protocol ("tcp" or "udp") to be used. Defaults to "udp"
+#              if not passed.
+# @param retry The mount of retries to use. Defaults to 2 if not passed.
+#
+# @return TRUE if the service is still alive, FALSE otherwise and NULL if no port parameter was passed.
+#
 function sip_alive( port, proto, retry ) {
 
-  local_var soc, r, opt, port, proto, retry, i;
+  local_var port, proto, retry;
+  local_var i, soc, res, opt;
 
   if( ! port ) {
     set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#sip_alive" );
-    return;
+    return NULL;
   }
 
   if( ! proto ) {
@@ -117,7 +150,9 @@ function sip_alive( port, proto, retry ) {
     proto = "udp";
   }
 
-  if( ! retry ) retry = 2;
+  if( ! retry )
+    retry = 2;
+
   i = 0;
 
   soc = open_sip_socket( port:port, proto:proto );
@@ -127,18 +162,22 @@ function sip_alive( port, proto, retry ) {
     soc = open_sip_socket( port:port, proto:proto );
   }
 
-  if( ! soc ) return FALSE;
+  if( ! soc )
+    return FALSE;
 
   opt = construct_sip_options_req( port:port, proto:proto );
 
   send( socket:soc, data:opt );
-  r = recv( socket:soc, length:1024 );
+  res = recv( socket:soc, length:1024 );
+  close( soc );
 
-  if( ! r ) return FALSE;
+  if( ! res )
+    return FALSE;
 
-  if( "SIP/2.0" >< r ) return TRUE;
-
-  return FALSE;
+  if( "SIP/2.0" >< res )
+    return TRUE;
+  else
+    return FALSE;
 }
 
 function construct_sip_options_req( port, proto ) {

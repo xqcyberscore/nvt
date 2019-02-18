@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_2359c2ae0e_drupal7_fc26.nasl 9863 2018-05-16 12:29:42Z santu $
+# $Id: gb_fedora_2018_2359c2ae0e_drupal7_fc26.nasl 13721 2019-02-18 07:47:09Z asteins $
 #
 # Fedora Update for drupal7 FEDORA-2018-2359c2ae0e
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874428");
-  script_version("$Revision: 9863 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-16 14:29:42 +0200 (Wed, 16 May 2018) $");
+  script_version("$Revision: 13721 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-18 08:47:09 +0100 (Mon, 18 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-05-12 06:06:46 +0200 (Sat, 12 May 2018)");
   script_cve_id("CVE-2018-7602", "CVE-2018-7600", "CVE-2017-6927", "CVE-2017-6928", 
                 "CVE-2017-6929", "CVE-2017-6932", "CVE-2017-6922");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for drupal7 FEDORA-2018-2359c2ae0e");
   script_tag(name:"summary", value:"Check the version of drupal7");

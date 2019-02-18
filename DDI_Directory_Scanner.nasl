@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: DDI_Directory_Scanner.nasl 13685 2019-02-15 10:06:52Z cfischer $
+# $Id: DDI_Directory_Scanner.nasl 13713 2019-02-16 19:41:25Z cfischer $
 #
 # Directory Scanner
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11032");
-  script_version("$Revision: 13685 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-15 11:06:52 +0100 (Fri, 15 Feb 2019) $");
+  script_version("$Revision: 13713 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-16 20:41:25 +0100 (Sat, 16 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -247,6 +247,7 @@ testDirList = make_list(
 "analytics",
 "anthill",
 "apache",
+"api",
 "app",
 "applets",
 "application",
@@ -573,6 +574,7 @@ testDirList = make_list(
 "logon",
 "logs",
 "lost+found",
+"m",
 "mail",
 "mail_log_files",
 "mailman",
@@ -767,6 +769,9 @@ testDirList = make_list(
 "ssp",
 "sslkeys",
 "staff",
+"stag",
+"stage",
+"staging",
 "stat",
 "statistic",
 "statistics",
@@ -887,6 +892,7 @@ testDirList = make_list(
 "word",
 "wordpress",
 "work",
+"wp",
 "wsdocs",
 "wstats",
 "wusage",
@@ -971,6 +977,10 @@ testDirList = make_list(
 # e.g. Metasploitable2 VM
 "dvwa",
 "mutillidae",
+# ownCloud
+"updater",
+"ocs-provider",
+"ocm-provider", #nb: OpenCloudMesh Endpoint
 # Tomcat
 "tomcat-docs", #nb: Will be ignored by default
 "manager/html",
@@ -991,7 +1001,11 @@ Check403 = TRUE;
 CheckRedirect = TRUE;
 
 port = get_http_port( default:80 );
-if( http_get_is_marked_broken( port:port ) )
+
+host = http_host_name( dont_add_port:TRUE );
+if( debug ) display( ":: Checking directories on Hostname/IP:port " + host + ":" + port + "...\n" );
+
+if( http_get_is_marked_broken( port:port, host:host ) )
   exit( 0 );
 
 #counter for current failed requests
@@ -1000,9 +1014,6 @@ failedReqs = 0;
 #The NVT will exit if this is reached
 #TBD: Make this configurable?
 maxFailedReqs = 3;
-
-host = http_host_name( dont_add_port:TRUE );
-if( debug ) display( ":: Checking directories on Hostname/IP:port " + host + ":" + port + "...\n" );
 
 # pull the robots.txt file
 if( debug ) display( ":: Checking for robots.txt...\n" );

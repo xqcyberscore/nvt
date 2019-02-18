@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3769_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_ubuntu_USN_3769_1.nasl 13721 2019-02-18 07:47:09Z asteins $
 #
 # Ubuntu Update for bind9 USN-3769-1
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843639");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 13721 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-18 08:47:09 +0100 (Mon, 18 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-09-21 08:10:18 +0200 (Fri, 21 Sep 2018)");
   script_cve_id("CVE-2018-5740");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for bind9 USN-3769-1");
   script_tag(name:"summary", value:"The remote host is missing an update for the 'bind9'

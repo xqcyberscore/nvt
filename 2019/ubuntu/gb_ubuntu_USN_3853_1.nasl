@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3853_1.nasl 13108 2019-01-17 07:34:03Z santu $
+# $Id: gb_ubuntu_USN_3853_1.nasl 13721 2019-02-18 07:47:09Z asteins $
 #
 # Ubuntu Update for gnupg2 USN-3853-1
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843866");
-  script_version("$Revision: 13108 $");
+  script_version("$Revision: 13721 $");
   script_cve_id("CVE-2018-1000858");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-17 08:34:03 +0100 (Thu, 17 Jan 2019) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-18 08:47:09 +0100 (Mon, 18 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-11 04:00:23 +0100 (Fri, 11 Jan 2019)");
   script_name("Ubuntu Update for gnupg2 USN-3853-1");
   script_category(ACT_GATHER_INFO);

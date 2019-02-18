@@ -21,8 +21,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.142000");
-  script_version("$Revision: 13674 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-15 04:34:06 +0100 (Fri, 15 Feb 2019) $");
+  script_version("$Revision: 13720 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-18 08:43:24 +0100 (Mon, 18 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-02-15 09:14:08 +0700 (Fri, 15 Feb 2019)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -81,7 +81,6 @@ if (detected_model != "") {
 if (http_ports = get_kb_list("snom/http/port")) {
   foreach port (http_ports) {
     extra += 'HTTP(s) on port ' + port + '/tcp\n';
-
     register_product(cpe: cpe, location: '/', port: port, service: "www");
   }
 }
@@ -89,8 +88,8 @@ if (http_ports = get_kb_list("snom/http/port")) {
 if (sip_ports = get_kb_list("snom/sip/port")) {
   foreach port (sip_ports) {
     proto = get_kb_item("snom/sip/" + port + "/proto");
-    extra += 'SIP on port ' + port + '/' + proto + '\n';
-
+    concl = get_kb_item("snom/sip/" + port + "/" + proto + "/concluded");
+    extra += 'SIP on port ' + port + '/' + proto + '\nBanner: ' + concl + '\n';
     register_product(cpe: cpe, location: port + '/' + proto, port: port, service: "sip");
   }
 }
