@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zoiper_empty_callinfo_dos_vuln.nasl 10974 2018-08-15 09:55:34Z cfischer $
+# $Id: gb_zoiper_empty_callinfo_dos_vuln.nasl 13734 2019-02-18 11:03:47Z cfischer $
 #
 # ZoIPer Empty Call-Info Denial of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800963");
-  script_version("$Revision: 10974 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 11:55:34 +0200 (Wed, 15 Aug 2018) $");
+  script_version("$Revision: 13734 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-18 12:03:47 +0100 (Mon, 18 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-10-23 16:18:41 +0200 (Fri, 23 Oct 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -37,24 +37,21 @@ if(description)
   script_category(ACT_DENIAL);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Denial of Service");
-  script_dependencies("sip_detection.nasl", "find_service.nasl");
-  script_mandatory_keys("sip/detected");
+  script_dependencies("sip_detection.nasl");
+  script_mandatory_keys("sip/banner/available");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/37015");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/53792");
   script_xref(name:"URL", value:"http://packetstormsecurity.org/0910-exploits/zoiper_dos.py.txt");
 
-  script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause the service to crash.
-
-  Impact Level: Application");
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause the service to crash.");
 
   script_tag(name:"affected", value:"ZoIPer version prior to 2.24 (Windows) and 2.13 (Linux)");
 
   script_tag(name:"insight", value:"The flaw is due to an error while handling specially crafted SIP INVITE
   messages which contain an empty Call-Info header.");
 
-  script_tag(name:"solution", value:"Upgrade to ZoIPer version 2.24 (Windows) and 2.13 (Linux) or later,
-  http://www.zoiper.com/zoiper.php");
+  script_tag(name:"solution", value:"Upgrade to ZoIPer version 2.24 (Windows) and 2.13 (Linux) or later.");
 
   script_tag(name:"summary", value:"This host is running ZoIPer and is prone to Denial of Service
   vulnerability.");
@@ -68,17 +65,18 @@ if(description)
 include("sip.inc");
 include("misc_func.inc");
 
-infos = get_sip_port_proto( default_port:"5060", default_proto:"udp" );
+infos = sip_get_port_proto( default_port:"5060", default_proto:"udp" );
 port = infos['port'];
 proto = infos['proto'];
 
-banner = get_sip_banner( port:port, proto:proto );
-if( "Zoiper" >!< banner ) exit( 0 );
+banner = sip_get_banner( port:port, proto:proto );
+if( !banner || "Zoiper" >!< banner ) exit( 0 );
 
 if( ! sip_alive( port:port, proto:proto ) ) exit( 0 );
 
-from_default = get_vt_string();
-from_lower   = get_vt_string( lowercase:TRUE );
+vt_strings = get_vt_strings();
+from_default = vt_strings["default"];
+from_lower   = vt_strings["lowercase"];
 
 req = string(
   "INVITE sip:", from_lower, "@", get_host_name(), " SIP/2.0","\r\n",

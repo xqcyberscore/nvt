@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2019_d1b5cf0055_wget_fc28.nasl 13108 2019-01-17 07:34:03Z santu $
+# $Id: gb_fedora_2019_d1b5cf0055_wget_fc28.nasl 13750 2019-02-19 07:33:36Z mmartin $
 #
 # Fedora Update for wget FEDORA-2019-d1b5cf0055
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875400");
-  script_version("$Revision: 13108 $");
+  script_version("$Revision: 13750 $");
   script_cve_id("CVE-2018-20483", "CVE-2018-0494");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-17 08:34:03 +0100 (Thu, 17 Jan 2019) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-19 08:33:36 +0100 (Tue, 19 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-12 04:03:56 +0100 (Sat, 12 Jan 2019)");
   script_name("Fedora Update for wget FEDORA-2019-d1b5cf0055");
   script_category(ACT_GATHER_INFO);

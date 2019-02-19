@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_freeswitch_detect.nasl 10896 2018-08-10 13:24:05Z cfischer $
+# $Id: gb_freeswitch_detect.nasl 13734 2019-02-18 11:03:47Z cfischer $
 #
 # FreeSWITCH Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804024");
-  script_version("$Revision: 10896 $");
+  script_version("$Revision: 13734 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:24:05 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-18 12:03:47 +0100 (Mon, 18 Feb 2019) $");
   script_tag(name:"creation_date", value:"2013-10-07 18:21:20 +0530 (Mon, 07 Oct 2013)");
   script_name("FreeSWITCH Version Detection");
 
@@ -43,8 +43,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("sip_detection.nasl", "find_service.nasl");
-  script_mandatory_keys("sip/detected");
+  script_dependencies("sip_detection.nasl");
+  script_mandatory_keys("sip/banner/available");
 
   exit(0);
 }
@@ -53,14 +53,14 @@ include("sip.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-infos = get_sip_port_proto( default_port:"5060", default_proto:"udp" );
+infos = sip_get_port_proto( default_port:"5060", default_proto:"udp" );
 port = infos['port'];
 proto = infos['proto'];
 
-banner = get_sip_banner(port: port, proto: proto);
-if ("FreeSWITCH" >!< banner) exit(0);
+banner = sip_get_banner(port: port, proto: proto);
+if (! banner || "FreeSWITCH" >!< banner) exit(0);
 
-version = string("unknown");
+version = "unknown";
 
 switchVer = eregmatch(pattern: "FreeSWITCH-.*/([0-9.]+)", string: banner);
 
@@ -80,7 +80,7 @@ location = port + "/" + proto;
 register_product( cpe:cpe, port:port, location:location, service:"sip", proto:proto );
 
 log_message(data: build_detection_report(app:"FreeSWITCH", version: version,
-                                           install: location, cpe: cpe,
-                                           concluded: switchVer[0]), port: port, proto: proto);
+                                         install: location, cpe: cpe,
+                                         concluded: switchVer[0]), port: port, proto: proto);
 
 exit(0);

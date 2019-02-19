@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: adaptcms_33698.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: adaptcms_33698.nasl 13747 2019-02-18 18:20:21Z cfischer $
 #
 # AdaptCMS Lite Cross Site Scripting and Remote File Include Vulnerabilities
 #
@@ -24,62 +24,70 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "AdaptCMS Lite is prone to multiple cross-site scripting
-vulnerabilities and a remote file-include vulnerability because it
-fails to sufficiently sanitize user-supplied data.
-
-An attacker can exploit these issues to execute malicious PHP code
-in the context of the webserver process. This may allow the attacker
-to compromise the application and the underlying system. The
-attacker may also execute script code in an unsuspecting user's
-browser or steal cookie-based authentication credentials; other
-attacks are also possible.
-
-AdaptCMS Lite 1.4 and 1.5 are vulnerable; other versions may also
-be affected.";
-
-if (description)
+if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.100373");
- script_version("$Revision: 9350 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2009-12-02 19:43:26 +0100 (Wed, 02 Dec 2009)");
- script_bugtraq_id(33698);
- script_tag(name:"cvss_base", value:"4.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
- script_cve_id("CVE-2009-0526");
- script_name("AdaptCMS Lite Cross Site Scripting and Remote File Include Vulnerabilities");
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/33698");
- script_xref(name : "URL" , value : "http://www.adaptcms.com");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  script_oid("1.3.6.1.4.1.25623.1.0.100373");
+  script_version("$Revision: 13747 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-18 19:20:21 +0100 (Mon, 18 Feb 2019) $");
+  script_tag(name:"creation_date", value:"2009-12-02 19:43:26 +0100 (Wed, 02 Dec 2009)");
+  script_bugtraq_id(33698);
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_cve_id("CVE-2009-0526");
+  script_name("AdaptCMS Lite Cross Site Scripting and Remote File Include Vulnerabilities");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/33698");
+  script_xref(name:"URL", value:"http://www.adaptcms.com");
+
+  script_tag(name:"summary", value:"AdaptCMS Lite is prone to multiple cross-site scripting
+  vulnerabilities and a remote file-include vulnerability because it
+  fails to sufficiently sanitize user-supplied data.");
+
+  script_tag(name:"impact", value:"An attacker can exploit these issues to execute malicious PHP code
+  in the context of the webserver process. This may allow the attacker to compromise the application
+  and the underlying system. The attacker may also execute script code in an unsuspecting user's
+  browser or steal cookie-based authentication credentials. Other attacks are also possible.");
+
+  script_tag(name:"affected", value:"AdaptCMS Lite 1.4 and 1.5 are vulnerable. Other versions may also
+  be affected.");
+
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+
+  script_tag(name:"qod_type", value:"remote_app");
+  script_tag(name:"solution_type", value:"WillNotFix");
+
+  exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
-   
-port = get_http_port(default:80);
-if(!can_host_php(port:port))exit(0);
+
+port = get_http_port( default:80 );
+if( ! can_host_php( port:port ) )
+  exit( 0 );
 
 foreach dir( make_list_unique( "/adaptcms", "/cms", cgi_dirs( port:port ) ) ) {
 
-  if( dir == "/" ) dir = "";
-  url = string(dir, "/sitemap.xml"); 
-  buf = http_get_cache(item:url, port:port);
-  if( buf == NULL )continue;
+  if( dir == "/" )
+    dir = "";
 
-  if(egrep(pattern: "Generated by AdaptCMS", string: buf, icase: TRUE)) {
-     
-    url = string(dir, "/index.php?view=redirect&url=javascript:alert(%22openvas-xss-test%22)");
+  buf = http_get_cache( item:dir + "/sitemap.xml", port:port );
+  if( ! buf )
+    continue;
 
-    if(http_vuln_check(port:port, url:url, pattern:'"openvas-xss-test"', check_header:TRUE)) {
+  if( buf =~ "^HTTP/1\.[01] 200" && egrep( pattern:"Generated by AdaptCMS", string:buf, icase:TRUE ) ) {
+
+    url = string( dir, "/index.php?view=redirect&url=javascript:alert(%22vt-xss-test%22)" );
+
+    if( http_vuln_check( port:port, url:url, pattern:'"vt-xss-test"', check_header:TRUE ) ) {
       report = report_vuln_url( port:port, url:url );
       security_message( port:port, data:report );
       exit( 0 );

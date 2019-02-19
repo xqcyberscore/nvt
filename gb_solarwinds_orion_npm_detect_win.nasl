@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_solarwinds_orion_npm_detect_win.nasl 12756 2018-12-11 11:23:23Z mmartin $
+# $Id: gb_solarwinds_orion_npm_detect_win.nasl 13748 2019-02-19 04:10:22Z ckuersteiner $
 #
 # SolarWinds Orion Network Performance Monitor Version Detection (Windows)
 #
@@ -27,12 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107408");
-  script_version("$Revision: 12756 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-11 12:23:23 +0100 (Tue, 11 Dec 2018) $");
+  script_version("$Revision: 13748 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-19 05:10:22 +0100 (Tue, 19 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-12-08 12:31:03 +0100 (Sat, 08 Dec 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+
   script_name("SolarWinds Orion Network Performance Monitor Version Detection (Windows)");
+
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Product detection");
@@ -49,7 +51,6 @@ if(description)
 }
 
 include("smb_nt.inc");
-include("cpe.inc");
 include("host_details.inc");
 include("secpod_smb_func.inc");
 include("version_func.inc");
@@ -74,20 +75,16 @@ foreach key (key_list) {
 
     appName = registry_get_sz(key:key + item, item:"DisplayName");
     if(!appName || appName !~ "SolarWinds Orion Network Performance Monitor") continue;
-    version = "unknown";
-    concluded += "SolarWinds Orion NPM";
 
     # wrong Version in "DisplayVersion"
     ver = eregmatch(string:appName, pattern:"([0-9.]+)");
 
-    if(ver[1]) version = ver[1];
-    concluded += " " + version;
+    if(ver[1])
+      set_kb_item(name: "solarwinds/orion/npm/win/x86/version", value: ver[1]);
 
+    set_kb_item(name:"solarwinds/orion/npm/detected", value:TRUE);
     set_kb_item(name:"solarwinds/orion/npm/win/detected", value:TRUE);
-    set_kb_item(name:"solarwinds/orion/npm/win/ver", value:version);
-
-    register_and_report_cpe(app:appName, ver:version, concluded:concluded,
-    base:"cpe:/a:solarwinds:network_performance_monitor:", expr:"^([0-9.]+)", insloc:location, regService:"smb-login", regPort:0);
+    set_kb_item(name:"solarwinds/orion/npm/win/path", value:location);
 
     exit(0);
   }

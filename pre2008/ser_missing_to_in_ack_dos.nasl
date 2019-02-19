@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ser_missing_to_in_ack_dos.nasl 4881 2016-12-29 20:40:48Z cfi $
+# $Id: ser_missing_to_in_ack_dos.nasl 13734 2019-02-18 11:03:47Z cfischer $
 #
 # SIP Express Router Missing To in ACK DoS
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11964");
-  script_version("$Revision: 4881 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-29 21:40:48 +0100 (Thu, 29 Dec 2016) $");
+  script_version("$Revision: 13734 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-18 12:03:47 +0100 (Mon, 18 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(6904);
   script_cve_id("CVE-2003-1108");
@@ -38,11 +38,12 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2003 Noam Rathaus");
   script_family("Denial of Service");
-  script_dependencies("sip_detection.nasl", "find_service.nasl");
-  script_mandatory_keys("sip/detected");
+  script_dependencies("sip_detection.nasl");
+  script_mandatory_keys("sip/banner/available");
 
-  script_tag(name:"solution", value:"Upgrade to version 0.8.10.
-  For additional details see: http://www.cert.org/advisories/CA-2003-06.html");
+  script_xref(name:"URL", value:"http://www.cert.org/advisories/CA-2003-06.html");
+
+  script_tag(name:"solution", value:"Upgrade to version 0.8.10.");
 
   script_tag(name:"summary", value:"The remote host is a SIP Express Router (SER).
 
@@ -58,12 +59,11 @@ if(description)
 
 include("sip.inc");
 
-infos = get_sip_port_proto( default_port:"5060", default_proto:"udp" );
+infos = sip_get_port_proto( default_port:"5060", default_proto:"udp" );
 port = infos['port'];
 proto = infos['proto'];
 
-banner = get_sip_banner( port:port, proto:proto );
-
+banner = sip_get_banner( port:port, proto:proto );
 if ( ! banner ) exit( 0 );
 # Sample: Sip EXpress router (0.8.12 (i386/linux))
 

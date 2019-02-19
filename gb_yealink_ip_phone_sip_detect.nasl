@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_yealink_ip_phone_sip_detect.nasl 12413 2018-11-19 11:11:31Z cfischer $
+# $Id: gb_yealink_ip_phone_sip_detect.nasl 13734 2019-02-18 11:03:47Z cfischer $
 #
 # Yealink IP Phone Detection (SIP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106325");
-  script_version("$Revision: 12413 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-19 12:11:31 +0100 (Mon, 19 Nov 2018) $");
+  script_version("$Revision: 13734 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-18 12:03:47 +0100 (Mon, 18 Feb 2019) $");
   script_tag(name:"creation_date", value:"2016-10-04 13:39:10 +0700 (Tue, 04 Oct 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -47,8 +47,8 @@ if(description)
 
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("sip_detection.nasl", "find_service.nasl");
-  script_mandatory_keys("sip/detected");
+  script_dependencies("sip_detection.nasl");
+  script_mandatory_keys("sip/banner/available");
 
   exit(0);
 }
@@ -56,14 +56,14 @@ if(description)
 include("host_details.inc");
 include("sip.inc");
 
-infos = get_sip_port_proto( default_port:"5060", default_proto:"udp" );
+infos = sip_get_port_proto( default_port:"5060", default_proto:"udp" );
 port = infos['port'];
 proto = infos['proto'];
 
-banner = get_sip_banner(port: port, proto: proto);
+banner = sip_get_banner(port: port, proto: proto);
 concluded = ""; # nb: To make openvas-nasl-lint happy...
 
-if (banner =~ "Yealink SIP") {
+if (banner && banner =~ "Yealink SIP") {
 
   mo = eregmatch(pattern: "SIP-([A-Z0-9_]+)", string: banner);
   if( ! isnull(mo[1])) {
@@ -74,7 +74,7 @@ if (banner =~ "Yealink SIP") {
     vers = eregmatch(pattern: model + " ([0-9.]+)", string: banner);
     if (!isnull(vers[1])) {
       version =  vers[1];
-      concluded = vers[0];
+      concluded += '\n' + vers[0];
       set_kb_item(name: "yealink_ipphone/sip/version", value: version);
     }
   }

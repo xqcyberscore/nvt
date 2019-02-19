@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nch_office_intercom_45049.nasl 10974 2018-08-15 09:55:34Z cfischer $
+# $Id: gb_nch_office_intercom_45049.nasl 13734 2019-02-18 11:03:47Z cfischer $
 #
 # NCH Software Office Intercom SIP Invite Remote Denial of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100918");
-  script_version("$Revision: 10974 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 11:55:34 +0200 (Wed, 15 Aug 2018) $");
+  script_version("$Revision: 13734 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-18 12:03:47 +0100 (Mon, 18 Feb 2019) $");
   script_tag(name:"creation_date", value:"2010-11-26 13:31:06 +0100 (Fri, 26 Nov 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -37,10 +37,10 @@ if(description)
   script_category(ACT_MIXED_ATTACK);
   script_family("Denial of Service");
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
-  script_dependencies("sip_detection.nasl", "find_service.nasl");
-  script_mandatory_keys("sip/detected");
+  script_dependencies("sip_detection.nasl");
+  script_mandatory_keys("sip/banner/available");
 
-  script_xref(name:"URL", value:"https://www.securityfocus.com/bid/45049");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/45049");
   script_xref(name:"URL", value:"http://www.nch.com.au/oi/");
 
   script_tag(name:"summary", value:"NCH Software Office Intercom is prone to a remote denial-of-service
@@ -52,7 +52,12 @@ if(description)
 
   script_tag(name:"affected", value:"Office Intercom 5.20 is vulnerable. Other versions may also be affected.");
 
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+
   script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   exit(0);
 }
@@ -61,11 +66,11 @@ include("version_func.inc");
 include("sip.inc");
 include("misc_func.inc");
 
-infos = get_sip_port_proto( default_port:"5060", default_proto:"udp" );
+infos = sip_get_port_proto( default_port:"5060", default_proto:"udp" );
 port = infos['port'];
 proto = infos['proto'];
 
-banner = get_sip_banner( port:port, proto:proto );
+banner = sip_get_banner( port:port, proto:proto );
 if( ! banner || "NCH Software Office Intercom" >!< banner ) exit( 0 );
 
 if( safe_checks() ) {
@@ -84,8 +89,9 @@ if( safe_checks() ) {
 
   if( ! sip_alive( port:port, proto:proto ) ) exit( 0 );
 
-  from_default = get_vt_string();
-  from_lower   = get_vt_string( lowercase:TRUE );
+  vt_strings = get_vt_strings();
+  from_default = vt_strings["default"];
+  from_lower   = vt_strings["lowercase"];
 
   req = string(
     "INVITE sip:", from_lower, "@", get_host_name(), " SIP/2.0","\r\n",

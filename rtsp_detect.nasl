@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: rtsp_detect.nasl 13541 2019-02-08 13:21:52Z cfischer $
+# $Id: rtsp_detect.nasl 13725 2019-02-18 09:06:02Z cfischer $
 #
 # RTSP Server type and version
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10762");
-  script_version("$Revision: 13541 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-08 14:21:52 +0100 (Fri, 08 Feb 2019) $");
+  script_version("$Revision: 13725 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-18 10:06:02 +0100 (Mon, 18 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -74,7 +74,7 @@ if( header =~ "^RTSP/1\.[0-9]+ " && ( "CSeq: " >< header || "Public: " >< header
   # but answering to the SIP OPTIONS request (see find_service5.nasl as well).
   soc = open_sock_tcp( port );
   if( soc ) {
-    data = construct_sip_options_req( port:port, proto:"tcp" );
+    data = sip_construct_options_req( port:port, proto:"tcp" );
     send( socket:soc, data:data );
     header = recv( socket:soc, length:1024 );
     close( soc );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ser_register_overflow.nasl 4881 2016-12-29 20:40:48Z cfi $
+# $Id: ser_register_overflow.nasl 13734 2019-02-18 11:03:47Z cfischer $
 #
 # SIP Express Router Register Buffer Overflow
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11965");
-  script_version("$Revision: 4881 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-29 21:40:48 +0100 (Thu, 29 Dec 2016) $");
+  script_version("$Revision: 13734 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-18 12:03:47 +0100 (Mon, 18 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
@@ -36,13 +36,14 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2003 Noam Rathaus");
   script_family("Buffer overflow");
-  script_dependencies("sip_detection.nasl", "find_service.nasl");
-  script_mandatory_keys("sip/detected");
+  script_dependencies("sip_detection.nasl");
+  script_mandatory_keys("sip/banner/available");
 
-  script_tag(name:"solution", value:"Upgrade to version 0.8.11 or use the patch provided at:
-  http://www.iptel.org/ser/security/secalert-002-0_8_10.patch
+  script_xref(name:"URL", value:"http://www.iptel.org/ser/security/secalert-002-0_8_10.patch");
+  script_xref(name:"URL", value:"http://www.iptel.org/ser/security/");
 
-  For additional details see: http://www.iptel.org/ser/security/");
+  script_tag(name:"solution", value:"Upgrade to version 0.8.11 or use the patch provided at
+  the linked references");
 
   script_tag(name:"summary", value:"The remote host is running a SIP Express Router.
 
@@ -57,12 +58,11 @@ if(description)
 
 include("sip.inc");
 
-infos = get_sip_port_proto( default_port:"5060", default_proto:"udp" );
+infos = sip_get_port_proto( default_port:"5060", default_proto:"udp" );
 port = infos['port'];
 proto = infos['proto'];
 
-banner = get_sip_banner( port:port, proto:proto );
-
+banner = sip_get_banner( port:port, proto:proto );
 if ( ! banner ) exit( 0 );
 # Sample: Sip EXpress router (0.8.12 (i386/linux))
 

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gitea_access_ctrl_vuln.nasl 13449 2019-02-05 03:09:41Z ckuersteiner $
+# $Id: gb_gitea_access_ctrl_vuln.nasl 13750 2019-02-19 07:33:36Z mmartin $
 #
 # Gitea < 1.6.3 Improper Access Control Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:gitea:gitea";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141957");
-  script_version("$Revision: 13449 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-05 04:09:41 +0100 (Tue, 05 Feb 2019) $");
+  script_version("$Revision: 13750 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-19 08:33:36 +0100 (Tue, 19 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-02-05 09:55:39 +0700 (Tue, 05 Feb 2019)");
-  script_tag(name:"cvss_base", value:"4.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
+  script_tag(name:"cvss_base", value:"5.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:P");
 
   script_cve_id("CVE-2019-1000002");
 

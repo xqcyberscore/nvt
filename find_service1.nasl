@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service1.nasl 13541 2019-02-08 13:21:52Z cfischer $
+# $Id: find_service1.nasl 13737 2019-02-18 12:47:32Z cfischer $
 #
 # Service Detection with 'GET' Request
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17975");
-  script_version("$Revision: 13541 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-08 14:21:52 +0100 (Fri, 08 Feb 2019) $");
+  script_version("$Revision: 13737 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-18 13:47:32 +0100 (Mon, 18 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -53,6 +53,7 @@ include("host_details.inc");
 include("misc_func.inc");
 include("global_settings.inc");
 include("dump.inc");
+include("sip.inc");
 
 port = get_kb_item( "Services/unknown" );
 if( ! port ) exit( 0 );
@@ -819,8 +820,7 @@ if( port == 23 && rhexstr == "436f6e6e656374696f6e20726566757365640d0a" ) {
 # 0x0060:  65 6E 74 3A 20 46 52 49 54 5A 21 4F 53 0D 0A 43    ent: FRITZ!OS..C
 # 0x0070:  6F 6E 74 65 6E 74 2D 4C 65 6E 67 74 68 3A 20 30    ontent-Length: 0
 # 0x0080:  0D 0A 0D 0A 53 49 50 2F 32 2E 30 20 34 30 30 20    ....
-if( r =~ "^SIP/2\.0 [0-9]+" && egrep( string:r, pattern:"^Via: " ) ||
-    r =~ "^SIP/2\.0 400 Illegal request line..From: <sip:missing>..To: <sip:missing>;tag=badrequest..User-Agent: " ) {
+if( sip_verify_banner( data:r ) ) {
   register_service( port:port, proto:"sip", message:"A service supporting the SIP protocol seems to be running on this port." );
   log_message( port:port, data:"A service supporting the SIP protocol seems to be running on this port." );
   exit( 0 );

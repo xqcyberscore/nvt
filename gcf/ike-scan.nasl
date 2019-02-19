@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ike-scan.nasl 11529 2018-09-21 16:26:30Z cfischer $
+# $Id: ike-scan.nasl 13743 2019-02-18 15:22:10Z cfischer $
 
 # Description: ike-scan (NASL wrapper)
 #
@@ -11,8 +11,6 @@
 # Copyright:
 # Copyright (c) 2008 Vlatko Kosturjak
 # Copyright (c) 2008 Tim Brown
-# Text descriptions are largerly excerpted from the referenced
-# advisory, and are Copyright (c) the respective author(s)
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -47,16 +45,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80000");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11529 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 18:26:30 +0200 (Fri, 21 Sep 2018) $");
+  script_version("$Revision: 13743 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-18 16:22:10 +0100 (Mon, 18 Feb 2019) $");
   script_tag(name:"creation_date", value:"2008-08-31 23:34:05 +0200 (Sun, 31 Aug 2008)");
-  script_name("ike-scan (NASL wrapper)");
   script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_name("ike-scan (NASL wrapper)");
   script_category(ACT_SCANNER);
-  script_tag(name:"qod_type", value:"remote_banner");
   script_family("Port scanners");
-  script_copyright("(c) Tim Brown and Vlatko Kosturjak, 2008");
+  script_copyright("Copyright (C) 2008 Tim Brown and Vlatko Kosturjak");
+  script_dependencies("ping_host.nasl", "toolcheck.nasl");
+  script_mandatory_keys("Tools/Present/ike-scan");
+
   # Not sure how much value there is in supporting IKE v2
   #  script_add_preference(name:"Use IKE v2", type:"checkbox", value:"no");
   script_add_preference(name:"Source port number", type:"entry", value:"500");
@@ -77,19 +77,23 @@ if(description)
   script_add_preference(name:"Diffie-Hellman groups", type:"entry", value:"1,2,3,4,5");
   script_add_preference(name:"Maximum retry", type:"entry", value:"3");
   script_add_preference(name:"Maximum timeout", type:"entry", value:"");
-  script_dependencies("ping_host.nasl");
+
   script_tag(name:"summary", value:"ike-scan (NASL wrapper)
 
-This plugin runs ike-scan to identify IPSEC VPN endpoints.  It will attempt to enumerate supported cipher suites,
-bruteforce valid groupnames and fingerprint any endpoint identified.");
+  This plugin runs ike-scan to identify IPSEC VPN endpoints. It will attempt to enumerate supported cipher suites,
+  bruteforce valid groupnames and fingerprint any endpoint identified.
+
+  Note: The plugin needs the 'ike-scan' binary found within the PATH of the user running the scanner and
+  needs to be executable for this user. The existence of this binary is checked and reported separately
+  within 'Availability of scanner helper tools' (OID: 1.3.6.1.4.1.25623.1.0.810000).");
+
+  script_tag(name:"qod_type", value:"remote_banner");
+
   exit(0);
 }
 
-if (!find_in_path("ike-scan"))
-{
-  set_kb_item(name:"/tmp/UnableToRun/80000", value:TRUE);
+if(!get_kb_item("Tools/Present/ike-scan"))
   exit(0);
-}
 
 encryptionalgorithmname["1"] = "DES";
 encryptionalgorithmname["2"] = "IDEA";

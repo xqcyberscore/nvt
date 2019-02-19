@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service5.nasl 11018 2018-08-17 07:13:05Z cfischer $
+# $Id: find_service5.nasl 13737 2019-02-18 12:47:32Z cfischer $
 #
 # Service Detection with 'SIP' Request
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108203");
-  script_version("$Revision: 11018 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:13:05 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 13737 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-18 13:47:32 +0100 (Mon, 18 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-08-04 09:08:04 +0200 (Fri, 04 Aug 2017)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -63,12 +63,13 @@ if( ! service_is_unknown( port:port ) ) exit( 0 );
 # nb: The sip functions are defaulting to "udp" if no proto: parameter is passed so setting "tcp" here
 proto = "tcp";
 
-soc = open_sip_socket( port:port, proto:proto );
-if( ! soc ) exit( 0 );
+soc = sip_open_socket( port:port, proto:proto );
+if( ! soc )
+  exit( 0 );
 
 # This is a request where a Zabbix Server is answering to. There might be other services out there answering to
 # such a SIP request so trying this as well for other unknown services.
-req = construct_sip_options_req( port:port, proto:proto );
+req = sip_construct_options_req( port:port, proto:proto );
 send( socket:soc, data:req );
 r = recv( socket:soc, length:4096 );
 close( soc );
@@ -86,7 +87,7 @@ if( '\0' >< r )
 rhexstr = hexstr( r );
 
 # Fallback for the find_service1.nasl check if the service is only answering to SIP OPTIONS requests.
-if( r =~ "^SIP/2\.0 [0-9]+" || egrep( string:r, pattern:"^Via: SIP/2\.0/TCP" ) ) {
+if( sip_verify_banner( data:r ) ) {
   register_service( port:port, proto:"sip", message:"A service supporting the SIP protocol was idendified." );
   log_message( port:port, data:"A service supporting the SIP protocol was idendified." );
   exit( 0 );

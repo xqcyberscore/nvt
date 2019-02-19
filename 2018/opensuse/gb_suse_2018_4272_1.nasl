@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_4272_1.nasl 12882 2018-12-27 07:14:01Z santu $
+# $Id: gb_suse_2018_4272_1.nasl 13750 2019-02-19 07:33:36Z mmartin $
 #
 # SuSE Update for yast2-rmt openSUSE-SU-2018:4272-1 (yast2-rmt)
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852202");
-  script_version("$Revision: 12882 $");
+  script_version("$Revision: 13750 $");
   script_cve_id("CVE-2018-17957");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-27 08:14:01 +0100 (Thu, 27 Dec 2018) $");
+  script_tag(name:"cvss_base", value:"2.1");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-19 08:33:36 +0100 (Tue, 19 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-12-23 04:00:49 +0100 (Sun, 23 Dec 2018)");
   script_name("SuSE Update for yast2-rmt openSUSE-SU-2018:4272-1 (yast2-rmt)");
   script_category(ACT_GATHER_INFO);

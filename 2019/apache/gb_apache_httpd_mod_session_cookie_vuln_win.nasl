@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_httpd_mod_session_cookie_vuln_win.nasl 13547 2019-02-08 15:53:13Z cfischer $
+# $Id: gb_apache_httpd_mod_session_cookie_vuln_win.nasl 13750 2019-02-19 07:33:36Z mmartin $
 #
 # Apache HTTP Server < 2.4.38 mod_session_cookie Vulnerability (Windows)
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:apache:http_server";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141963");
-  script_version("$Revision: 13547 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-08 16:53:13 +0100 (Fri, 08 Feb 2019) $");
+  script_version("$Revision: 13750 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-19 08:33:36 +0100 (Tue, 19 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-02-05 13:25:53 +0700 (Tue, 05 Feb 2019)");
-  script_tag(name:"cvss_base", value:"4.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2018-17199");
 

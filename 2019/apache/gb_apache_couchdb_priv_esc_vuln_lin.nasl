@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_couchdb_priv_esc_vuln_lin.nasl 12929 2019-01-03 10:43:59Z asteins $
+# $Id: gb_apache_couchdb_priv_esc_vuln_lin.nasl 13750 2019-02-19 07:33:36Z mmartin $
 #
 # Apache CouchDB < 2.3.0 Remote Privilege Escalation Vulnerability (Linux)
 #
@@ -28,11 +28,11 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112475");
-  script_version("$Revision: 12929 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-03 11:43:59 +0100 (Thu, 03 Jan 2019) $");
+  script_version("$Revision: 13750 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-19 08:33:36 +0100 (Tue, 19 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-03 11:36:11 +0100 (Thu, 03 Jan 2019)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
 
   script_cve_id("CVE-2018-17188");
 

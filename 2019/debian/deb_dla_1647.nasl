@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1647.nasl 13358 2019-01-30 09:58:05Z cfischer $
+# $Id: deb_dla_1647.nasl 13750 2019-02-19 07:33:36Z mmartin $
 #
 # Auto-generated from advisory DLA 1647-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891647");
-  script_version("$Revision: 13358 $");
+  script_version("$Revision: 13750 $");
   script_cve_id("CVE-2018-17199");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1647-1] apache2 security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-30 10:58:05 +0100 (Wed, 30 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-19 08:33:36 +0100 (Tue, 19 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-30 00:00:00 +0100 (Wed, 30 Jan 2019)");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

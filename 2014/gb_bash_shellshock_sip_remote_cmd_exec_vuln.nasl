@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bash_shellshock_sip_remote_cmd_exec_vuln.nasl 11868 2018-10-12 10:53:07Z cfischer $
+# $Id: gb_bash_shellshock_sip_remote_cmd_exec_vuln.nasl 13744 2019-02-18 15:31:13Z cfischer $
 #
 # GNU Bash Environment Variable Handling Shell Remote Command Execution Vulnerability (SIP Check)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105093");
-  script_version("$Revision: 11868 $");
+  script_version("$Revision: 13744 $");
   script_cve_id("CVE-2014-6271", "CVE-2014-6278");
   script_bugtraq_id(70103);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:53:07 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-18 16:31:13 +0100 (Mon, 18 Feb 2019) $");
   script_tag(name:"creation_date", value:"2014-09-29 11:47:16 +0530 (Mon, 29 Sep 2014)");
   script_name("GNU Bash Environment Variable Handling Shell Remote Command Execution Vulnerability(SIP Check)");
   script_category(ACT_ATTACK);
@@ -79,13 +79,13 @@ if(description)
 include("misc_func.inc");
 include("sip.inc");
 
-infos = get_sip_port_proto( default_port:"5060", default_proto:"udp" );
+infos = sip_get_port_proto( default_port:"5060", default_proto:"udp" );
 port = infos['port'];
 proto = infos['proto'];
 
 host = get_host_name();
 
-soc = open_sip_socket( port:port, proto:proto );
+soc = sip_open_socket( port:port, proto:proto );
 if( ! soc ) exit( 0 );
 
 from_default = get_vt_string();

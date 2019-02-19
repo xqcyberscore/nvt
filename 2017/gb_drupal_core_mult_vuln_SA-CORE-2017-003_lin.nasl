@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_drupal_core_mult_vuln_SA-CORE-2017-003_lin.nasl 11863 2018-10-12 09:42:02Z mmartin $
+# $Id: gb_drupal_core_mult_vuln_SA-CORE-2017-003_lin.nasl 13750 2019-02-19 07:33:36Z mmartin $
 #
 # Drupal Core Multiple Vulnerabilities (SA-CORE-2017-003) (Linux)
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:drupal:drupal';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810959");
-  script_version("$Revision: 11863 $");
+  script_version("$Revision: 13750 $");
   script_cve_id("CVE-2017-6920", "CVE-2017-6921", "CVE-2017-6922");
   script_bugtraq_id(99211, 99222, 99219);
-  script_tag(name:"cvss_base", value:"6.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-19 08:33:36 +0100 (Tue, 19 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-06-22 14:36:14 +0530 (Thu, 22 Jun 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Drupal Core Multiple Vulnerabilities (SA-CORE-2017-003) (Linux)");

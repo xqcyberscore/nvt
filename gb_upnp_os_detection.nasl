@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_upnp_os_detection.nasl 12065 2018-10-25 06:59:36Z cfischer $
+# $Id: gb_upnp_os_detection.nasl 13746 2019-02-18 16:08:21Z cfischer $
 #
 # UPnP Protocol OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108200");
-  script_version("$Revision: 12065 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 08:59:36 +0200 (Thu, 25 Oct 2018) $");
+  script_version("$Revision: 13746 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-18 17:08:21 +0100 (Mon, 18 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-08-01 11:13:48 +0200 (Tue, 01 Aug 2017)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -60,7 +60,7 @@ if( ! get_udp_port_state( port ) ) exit( 0 );
 if( ! banner = get_kb_item( "upnp/" + port + "/banner" ) ) exit( 0 );
 
 if( "FRITZ!Box" >< banner ) {
-  register_and_report_os( os:"Linux", cpe:"cpe:/o:linux:kernel", banner_type:BANNER_TYPE, port:port, proto:"udp", banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  register_and_report_os( os:"AVM FRITZ!OS", cpe:"cpe:/o:avm:fritz%21_os", banner_type:BANNER_TYPE, port:port, proto:"udp", banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
   exit( 0 );
 }
 

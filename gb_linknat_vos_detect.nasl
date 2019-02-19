@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_linknat_vos_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
+# $Id: gb_linknat_vos_detect.nasl 13734 2019-02-18 11:03:47Z cfischer $
 #
 # Linknat VOS SoftSwitch Detection (SIP)
 #
@@ -25,11 +25,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106084");
-  script_version("$Revision: 11885 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 13734 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-18 12:03:47 +0100 (Mon, 18 Feb 2019) $");
   script_tag(name:"creation_date", value:"2016-05-25 12:53:28 +0700 (Wed, 25 May 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -40,15 +40,15 @@ if (description)
 
   script_tag(name:"summary", value:"Detection of Linknat VOS SoftSwitch
 
-The script attempts to identify Linknat VOS SoftSwitch via SIP banner to extract the model and version
-number.");
+  The script attempts to identify Linknat VOS SoftSwitch via SIP banner to extract the model and version
+  number.");
 
   script_category(ACT_GATHER_INFO);
 
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("sip_detection.nasl", "find_service.nasl");
-  script_mandatory_keys("sip/detected");
+  script_dependencies("sip_detection.nasl");
+  script_mandatory_keys("sip/banner/available");
 
   script_xref(name:"URL", value:"http://www.linknat.com");
 
@@ -58,13 +58,14 @@ number.");
 include("host_details.inc");
 include("sip.inc");
 
-infos = get_sip_port_proto( default_port:"5060", default_proto:"udp" );
+infos = sip_get_port_proto( default_port:"5060", default_proto:"udp" );
 port = infos['port'];
 proto = infos['proto'];
 
-banner = get_sip_banner( port:port, proto:proto );
+banner = sip_get_banner( port:port, proto:proto );
 
 if (banner && egrep(pattern: 'VOS[0-9]{4}', string: banner)) {
+
   mo = eregmatch(pattern: '(VOS[0-9]{4})', string: banner);
   model = mo[1];
 

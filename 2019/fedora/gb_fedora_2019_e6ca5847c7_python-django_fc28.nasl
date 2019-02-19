@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2019_e6ca5847c7_python-django_fc28.nasl 13173 2019-01-21 06:39:39Z santu $
+# $Id: gb_fedora_2019_e6ca5847c7_python-django_fc28.nasl 13750 2019-02-19 07:33:36Z mmartin $
 #
 # Fedora Update for python-django FEDORA-2019-e6ca5847c7
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875409");
-  script_version("$Revision: 13173 $");
+  script_version("$Revision: 13750 $");
   script_cve_id("CVE-2019-3498");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-21 07:39:39 +0100 (Mon, 21 Jan 2019) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-19 08:33:36 +0100 (Tue, 19 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-16 04:03:46 +0100 (Wed, 16 Jan 2019)");
   script_name("Fedora Update for python-django FEDORA-2019-e6ca5847c7");
   script_category(ACT_GATHER_INFO);

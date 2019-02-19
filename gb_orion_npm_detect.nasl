@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_orion_npm_detect.nasl 10929 2018-08-11 11:39:44Z cfischer $
+# $Id: gb_orion_npm_detect.nasl 13748 2019-02-19 04:10:22Z ckuersteiner $
 #
 # SolarWinds Orion Network Performance Monitor Detection
 #
@@ -30,8 +30,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100940");
-  script_version("$Revision: 10929 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-11 13:39:44 +0200 (Sat, 11 Aug 2018) $");
+  script_version("$Revision: 13748 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-19 05:10:22 +0100 (Tue, 19 Feb 2019) $");
   script_tag(name:"creation_date", value:"2010-12-09 13:44:03 +0100 (Thu, 09 Dec 2010)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -49,14 +49,14 @@ if (description)
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"summary", value:"Checks for the presence of SolarWinds Orion Network Performance Monitor.");
+
   script_xref(name:"URL", value:"http://www.solarwinds.com/products/orion/");
+
   exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
-
-include("cpe.inc");
 include("host_details.inc");
 
 port = get_http_port(default:8787);
@@ -72,30 +72,19 @@ if (buf == NULL)
   exit(0);
 
 if ("SolarWinds Platform" >< buf || "SolarWinds Orion" >< buf || "Orion Platform" >< buf) {
-  npm = eregmatch(string: buf, pattern: "(NPM|Network Performance Monitor) (([0-9.]+).?([A-Z0-9]+))",
-                  icase:TRUE);
+  version = "unknown";
 
-  if (!isnull(npm)) {
-    vers = string("unknown");
-    if (!isnull(npm[2])) {
-      vers=chomp(npm[2]);
-    }
+  vers = eregmatch(string: buf, pattern: "(NPM|Network Performance Monitor) (v)?(([0-9.]+).?([A-Z0-9]+))",
+                   icase:TRUE);
 
-    set_kb_item(name: string("www/", port, "/orion_npm"), value: vers);
-    set_kb_item(name: "orion_npm/installed", value: TRUE);
-
-    cpe = build_cpe(value: vers, exp:"^([0-9.]+).?([A-Z0-9]+)?",
-                    base: "cpe:/a:solarwinds:orion_network_performance_monitor:");
-    if (isnull(cpe))
-      cpe = 'cpe:/a:solarwinds:orion_network_performance_monitor';
-
-    register_product(cpe:cpe, location:dir, port:port);
-
-    log_message(data: build_detection_report(app:"SolarWinds Network Performance Monitor", version: vers,
-                                             install: dir, cpe: cpe,
-                                             concluded: npm[0]), port:port);
+  if (!isnull(vers[3])) {
+    set_kb_item(name: "solarwinds/orion/npm/http/" + port + "/version", value: vers[3]);
+    set_kb_item(name: "solarwinds/orion/npm/http/" + port + "/concluded", value: vers[0]);
   }
+
+  set_kb_item(name: "solarwinds/orion/npm/detected", value: TRUE);
+  set_kb_item(name: "solarwinds/orion/npm/http/port", value: port);
+  set_kb_item(name: "solarwinds/orion/npm/http/" + port + "/location", value: dir);
 }
 
 exit(0);
-

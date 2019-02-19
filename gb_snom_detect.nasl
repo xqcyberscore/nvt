@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_snom_detect.nasl 13720 2019-02-18 07:43:24Z cfischer $
+# $Id: gb_snom_detect.nasl 13734 2019-02-18 11:03:47Z cfischer $
 #
 # Snom Detection (SIP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105168");
-  script_version("$Revision: 13720 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-18 08:43:24 +0100 (Mon, 18 Feb 2019) $");
+  script_version("$Revision: 13734 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-18 12:03:47 +0100 (Mon, 18 Feb 2019) $");
   script_tag(name:"creation_date", value:"2015-01-14 11:10:30 +0100 (Wed, 14 Jan 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -37,8 +37,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
-  script_dependencies("sip_detection.nasl", "find_service.nasl");
-  script_mandatory_keys("sip/detected");
+  script_dependencies("sip_detection.nasl");
+  script_mandatory_keys("sip/banner/available");
 
   script_tag(name:"summary", value:"The script attempts to identify an Snom devices via SIP banner");
 
@@ -50,11 +50,11 @@ if(description)
 include("host_details.inc");
 include("sip.inc");
 
-infos = get_sip_port_proto( default_port:"5060", default_proto:"udp" );
+infos = sip_get_port_proto( default_port:"5060", default_proto:"udp" );
 port = infos['port'];
 proto = infos['proto'];
 
-banner = get_sip_banner( port:port, proto:proto );
+banner = sip_get_banner( port:port, proto:proto );
 if( ! banner || "snom" >!< banner )
   exit( 0 );
 

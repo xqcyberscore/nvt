@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ingate_firewall_detect.nasl 4893 2016-12-30 15:49:57Z cfi $
+# $Id: gb_ingate_firewall_detect.nasl 13734 2019-02-18 11:03:47Z cfischer $
 #
 # inGate Firewall Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103207");
-  script_version("$Revision: 4893 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-30 16:49:57 +0100 (Fri, 30 Dec 2016) $");
+  script_version("$Revision: 13734 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-18 12:03:47 +0100 (Mon, 18 Feb 2019) $");
   script_tag(name:"creation_date", value:"2011-08-17 15:40:19 +0200 (Wed, 17 Aug 2011)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -36,8 +36,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
-  script_dependencies("sip_detection.nasl", "find_service.nasl");
-  script_mandatory_keys("sip/detected");
+  script_dependencies("sip_detection.nasl");
+  script_mandatory_keys("sip/banner/available");
 
   script_xref(name:"URL", value:"http://www.ingate.com/Products_firewalls.php");
 
@@ -51,11 +51,11 @@ if(description)
 include("host_details.inc");
 include("sip.inc");
 
-infos = get_sip_port_proto( default_port:"5060", default_proto:"udp" );
+infos = sip_get_port_proto( default_port:"5060", default_proto:"udp" );
 port = infos['port'];
 proto = infos['proto'];
 
-banner = get_sip_banner( port:port, proto:proto );
+banner = sip_get_banner( port:port, proto:proto );
 if( ! banner || "Ingate-Firewall/" >!< banner ) exit( 0 );
 
 vers = "unknown";

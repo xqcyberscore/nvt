@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avm_fritz_box_detect_sip.nasl 11414 2018-09-16 12:02:34Z cfischer $
+# $Id: gb_avm_fritz_box_detect_sip.nasl 13734 2019-02-18 11:03:47Z cfischer $
 #
 # AVM FRITZ!Box Detection (SIP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108037");
-  script_version("$Revision: 11414 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-16 14:02:34 +0200 (Sun, 16 Sep 2018) $");
+  script_version("$Revision: 13734 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-18 12:03:47 +0100 (Mon, 18 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-01-05 13:21:05 +0100 (Thu, 05 Jan 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -37,8 +37,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
-  script_dependencies("sip_detection.nasl", "find_service.nasl");
-  script_mandatory_keys("sip/detected");
+  script_dependencies("sip_detection.nasl");
+  script_mandatory_keys("sip/banner/available");
 
   script_tag(name:"summary", value:"The script attempts to identify an AVM FRITZ!Box via SIP
   banner and tries to extract the model and version number.");
@@ -50,11 +50,11 @@ if(description)
 
 include("sip.inc");
 
-infos = get_sip_port_proto( default_port:"5060", default_proto:"udp" );
+infos = sip_get_port_proto( default_port:"5060", default_proto:"udp" );
 port = infos['port'];
 proto = infos['proto'];
 
-banner = get_sip_banner( port:port, proto:proto );
+banner = sip_get_banner( port:port, proto:proto );
 
 if( banner && ( "AVM FRITZ" >< banner || "FRITZ!OS" >< banner ) ) {
 

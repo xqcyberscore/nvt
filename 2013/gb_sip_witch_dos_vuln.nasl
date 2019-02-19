@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sip_witch_dos_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_sip_witch_dos_vuln.nasl 13734 2019-02-18 11:03:47Z cfischer $
 #
 # SIP Witch Denial Of Service Vulnerability
 #
@@ -27,17 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803457");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 13734 $");
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-18 12:03:47 +0100 (Mon, 18 Feb 2019) $");
   script_tag(name:"creation_date", value:"2013-03-29 15:06:28 +0530 (Fri, 29 Mar 2013)");
   script_name("SIP Witch Denial Of Service Vulnerability");
   script_category(ACT_DENIAL);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Denial of Service");
-  script_dependencies("sip_detection.nasl", "find_service.nasl");
-  script_mandatory_keys("sip/detected");
+  script_dependencies("sip_detection.nasl");
+  script_mandatory_keys("sip/banner/available");
 
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2013/Mar/60");
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/525904/30/90/threaded");
@@ -50,7 +50,9 @@ if(description)
   script_tag(name:"insight", value:"Flaw is due to NULL pointer dereference in osip_lost.c of
   libosip2 library.");
 
-  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of
+  this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release,
+  disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"summary", value:"This host is installed with SIP Witch and is prone to denial of
   service vulnerability.");
@@ -63,11 +65,11 @@ if(description)
 
 include("sip.inc");
 
-infos = get_sip_port_proto( default_port:"5060", default_proto:"udp" );
+infos = sip_get_port_proto( default_port:"5060", default_proto:"udp" );
 port = infos['port'];
 proto = infos['proto'];
 
-banner = get_sip_banner( port:port, proto:proto );
+banner = sip_get_banner( port:port, proto:proto );
 if( ! banner || "sipwitch" >!< banner ) exit( 0 );
 
 if( ! sip_alive( port:port, proto:proto ) ) exit( 0 );

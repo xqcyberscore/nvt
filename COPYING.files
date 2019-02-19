@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Mon, 18 Feb 2019 09:32:08 +0100
+# Automatically created on:  Tue, 19 Feb 2019 10:23:08 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -44023,6 +44023,7 @@
 2019/debian/deb_4390.nasl: GPLv2+
 2019/debian/deb_4391.nasl: GPLv2+
 2019/debian/deb_4392.nasl: GPLv2+
+2019/debian/deb_4393.nasl: GPLv2+
 2019/debian/deb_dla_1621.nasl: GPLv2+
 2019/debian/deb_dla_1623.nasl: GPLv2+
 2019/debian/deb_dla_1624.nasl: GPLv2+
@@ -44077,6 +44078,9 @@
 2019/debian/deb_dla_1677.nasl: GPLv2+
 2019/debian/deb_dla_1678.nasl: GPLv2+
 2019/debian/deb_dla_1679.nasl: GPLv2+
+2019/debian/deb_dla_1680.nasl: GPLv2+
+2019/debian/deb_dla_1681.nasl: GPLv2+
+2019/debian/deb_dla_1682.nasl: GPLv2+
 2019/discourse/gb_discourse_2.2.0beta2.nasl: GPLv2+
 2019/discourse/gb_discourse_2.2.0beta3.nasl: GPLv2+
 2019/discourse/gb_discourse_2.2.0beta4.nasl: GPLv2+
@@ -44116,6 +44120,7 @@
 2019/fedora/gb_fedora_2019_20a89ca9af_kernel-headers_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_20a89ca9af_kernel-tools_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_24dc022a51_gnutls_fc28.nasl: GPLv2+
+2019/fedora/gb_fedora_2019_333a7aa511_radvd_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_337484d88b_kernel_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_337484d88b_kernel-headers_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_337484d88b_kernel-tools_fc28.nasl: GPLv2+
@@ -44130,18 +44135,22 @@
 2019/fedora/gb_fedora_2019_541a12b809_python3-docs_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_541a12b809_python3_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_596813cc59_electrum_fc28.nasl: GPLv2+
+2019/fedora/gb_fedora_2019_6cfd17b03d_phpMyAdmin_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_6fafd84f5d_python3_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_723711c645_docker-latest_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_7d3500d712_kernel_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_7d3500d712_kernel-headers_fc28.nasl: GPLv2+
+2019/fedora/gb_fedora_2019_7eb8c71fe8_buildbot_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_8deebad756_perl-Email-Address_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_8f8cadd5ff_thunderbird_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_901feba171_docker_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_920924ed23_irssi_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_93b4b78e58_runc_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_944ff52ce6_php-horde-Horde-Image_fc28.nasl: GPLv2+
+2019/fedora/gb_fedora_2019_96ac060af3_java-11-openjdk_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_9eb0ae6296_openssh_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_a6511b0eed_php_fc28.nasl: GPLv2+
+2019/fedora/gb_fedora_2019_a8f918005c_mingw-libconfuse_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_aa99c99f24_firefox_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_ac7e19b0c8_krb5_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_b1da89df11_polkit_fc28.nasl: GPLv2+
@@ -44154,6 +44163,8 @@
 2019/fedora/gb_fedora_2019_d4d8af2c22_radare2_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_e6ca5847c7_python-django_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_e70c729d8a_gnupg2_fc28.nasl: GPLv2+
+2019/fedora/gb_fedora_2019_e9bc354ee8_libwmf_fc28.nasl: GPLv2+
+2019/fedora/gb_fedora_2019_f1626b52e9_slurm_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_fb2ce5f6d9_php-horde-Horde-Form_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_fbd2bad9f9_wireshark_fc28.nasl: GPLv2+
 2019/foxit/gb_foxit_phantompdf_mult_vuln_jan19_win.nasl: GPLv2+
@@ -44267,6 +44278,8 @@
 2019/mozilla/gb_mozilla_thunderbird_mfsa_2018-31_2018-31_win.nasl: GPLv2+
 2019/mozilla/gb_mozilla_thunderbird_mfsa_2019-01_2019-03_macosx.nasl: GPLv2+
 2019/mozilla/gb_mozilla_thunderbird_mfsa_2019-01_2019-03_win.nasl: GPLv2+
+2019/mozilla/gb_mozilla_thunderbird_mfsa_2019-06_2019-06_macosx.nasl: GPLv2+
+2019/mozilla/gb_mozilla_thunderbird_mfsa_2019-06_2019-06_win.nasl: GPLv2+
 2019/mywebsql/gb_mywebsql_mult_vuln_feb19.nasl: GPLv2+
 2019/mywebsql/gb_mywebsql_xss_vuln_jul17.nasl: GPLv2+
 2019/nedi/gb_nedi_mult_vuln.nasl: GPLv2+
@@ -44428,6 +44441,10 @@
 2019/ubuntu/gb_ubuntu_USN_3883_1.nasl: GPLv2+
 2019/ubuntu/gb_ubuntu_USN_3884_1.nasl: GPLv2+
 2019/ubuntu/gb_ubuntu_USN_3885_1.nasl: GPLv2+
+2019/ubuntu/gb_ubuntu_USN_3887_1.nasl: GPLv2+
+2019/ubuntu/gb_ubuntu_USN_3888_1.nasl: GPLv2+
+2019/ubuntu/gb_ubuntu_USN_3889_1.nasl: GPLv2+
+2019/ubuntu/gb_ubuntu_USN_3890_1.nasl: GPLv2+
 2019/virustotal/gb_yara_mult_vuln_dec18.nasl: GPLv2+
 2019/virustotal/gb_yara_mult_vuln_jun18.nasl: GPLv2+
 2019/webmin/gb_webmin_rce_vuln.nasl: GPLv2+
@@ -44439,11 +44456,17 @@
 2019/wireshark/gb_wireshark_wnpa-sec-2019-05_macosx.nasl: GPLv2+
 2019/wireshark/gb_wireshark_wnpa-sec-2019-05_win.nasl: GPLv2+
 2019/wordpress/gb_wordpress_adamrob-parallax-scroll_xss_vuln_feb19.nasl: GPLv2+
+2019/wordpress/gb_wordpress_import-users-from-csv-with-meta_xss_vuln_dec18.nasl: GPLv2+
+2019/wordpress/gb_wordpress_multi-step-form_xss_vuln_dec18.nasl: GPLv2+
+2019/wordpress/gb_wordpress_ninja-forms_xss_vuln_nov18.nasl: GPLv2+
 2019/wordpress/gb_wordpress_simple-social-buttons_priv_esc_vuln.nasl: GPLv2+
 2019/wordpress/gb_wordpress_social_network_tabs_info_discl_vuln.nasl: GPLv2+
 2019/wordpress/gb_wordpress_spam-byebye_xss_vuln_jan19.nasl: GPLv2+
+2019/wordpress/gb_wordpress_two-factor-authentication_csrf_vuln_dec18.nasl: GPLv2+
 2019/wordpress/gb_wordpress_woocommerce_priv_esc_vuln_lin.nasl: GPLv2+
 2019/wordpress/gb_wordpress_woocommerce_priv_esc_vuln_win.nasl: GPLv2+
+2019/wordpress/gb_wordpress_wordpress-seo_race_cond_vuln_nov18.nasl: GPLv2+
+2019/wordpress/gb_wordpress_wp-maintenance-mode_mult_vuln_dec18.nasl: GPLv2+
 2019/xerox/gb_xerox_altalink_mult_vuln.nasl: GPLv2+
 2019/xerox/gb_xerox_workcentre_mult_vuln.nasl: GPLv2+
 2019/zoneminder/gb_zoneminder_mult_vuln_jan19.nasl: GPLv2+
@@ -44806,8 +44829,12 @@ gb_barracuda_web_filter_detect.nasl: GPLv2+
 gb_basler_ip_camera_detect.nasl: GPLv2+
 gb_ba_systems_web_detect.nasl: GPLv2+
 gb_batavi_detect.nasl: GPLv2+
+gb_beckhoff_target_browser_detect_win.nasl: GPLv2+
+gb_beckhoff_te5910_motion_designer_detect_win.nasl: GPLv2+
+gb_beckhoff_te5950_drive_manager_detect_win.nasl: GPLv2+
 gb_beckhoff_tf5210_cnc_export_detect_win.nasl: GPLv2+
 gb_beckhoff_twincat_blockdiagram_detect_win.nasl: GPLv2+
+gb_beckhoff_twincat_detect_win.nasl: GPLv2+
 gb_beckhoff_twincat_remote_manager_detect_win.nasl: GPLv2+
 gb_beckhoff_twincat_scope_detect_win.nasl: GPLv2+
 gb_becky_internet_mail_detect.nasl: GPLv2+
@@ -45183,6 +45210,7 @@ gb_f5_linerate_lros_version.nasl: GPLv2+
 gb_f5_linerate_web_detect.nasl: GPLv2+
 gb_factorytalk_activation_manager_detect_win.nasl: GPLv2+
 gb_factorytalk_alarms_events_detect_win.nasl: GPLv2+
+gb_factorytalk_batch_view_hmi_controls_detect_win.nasl: GPLv2+
 gb_factorytalk_diagnostics_detect_win.nasl: GPLv2+
 gb_factorytalk_services_platform_detect_win.nasl: GPLv2+
 gb_feng_office_detect.nasl: GPLv2+
@@ -45257,6 +45285,7 @@ gb_fsecure_prdts_detect_lin.nasl: GPLv2+
 gb_fsecure_prdts_detect_win.nasl: GPLv2+
 gb_ftp_os_detection.nasl: GPLv2+
 gb_ftpshell_server_detect.nasl: GPLv2+
+gb_fujitsu_compiler_detect_win.nasl: GPLv2+
 gb_fujitsu_paperstream_ip_twain_software_detect_win.nasl: GPLv2+
 gb_gale_detect.nasl: GPLv2+
 gb_ganglia_detect.nasl: GPLv2+
@@ -45451,6 +45480,7 @@ gb_icewarp_web_detect.nasl: GPLv2+
 gb_icinga2_detect.nasl: GPLv2+
 gb_icq_detect.nasl: GPLv2+
 gb_icq_toolbar_detect.nasl: GPLv2+
+gb_ics_generic_hart_dtm_detect_win.nasl: GPLv2+
 gb_idashboards_detect.nasl: GPLv2+
 gb_ideal_administrator_detect.nasl: GPLv2+
 gb_idoit_cmdb_detect.nasl: GPLv2+
@@ -45469,6 +45499,8 @@ gb_inedo_proget_detect.nasl: GPLv2+
 gb_informix_detect.nasl: GPLv2+
 gb_ingate_firewall_detect.nasl: GPLv2+
 gb_ingate_siparator_detect.nasl: GPLv2+
+gb_integrationobjects_industrial_iot_gateway_detect_win.nasl: GPLv2+
+gb_integrationobjects_opc_driver_for_databases_detect_win.nasl: GPLv2+
 gb_integrationobjects_opc_ua_server_for_databases_detect_win.nasl: GPLv2+
 gb_integrationobjects_opc_ua_wrapper_detect_win.nasl: GPLv2+
 gb_intel_amt_webui_detect.nasl: GPLv2+
@@ -45903,6 +45935,7 @@ gb_ox_app_suite_detect.nasl: GPLv2+
 gb_ox_server_detect.nasl: GPLv2+
 gb_pacific_timesheet_detect.nasl: GPLv2+
 gb_pacsone_detect.nasl: GPLv2+
+gb_pactware_detect_win.nasl: GPLv2+
 gb_palo_alto_expedition_detect.nasl: GPLv2+
 gb_palo_alto_panOS_version.nasl: GPLv2+
 gb_palo_alto_version_api.nasl: GPLv2+
@@ -46091,15 +46124,19 @@ gb_scalix_detect.nasl: GPLv2+
 gb_schneider_acti9smarttest_detect_win.nasl: GPLv2+
 gb_schneider_canopen_communication_dtm_library_detect_win.nasl: GPLv2+
 gb_schneider_clearscada_detect.nasl: GPLv2+
+gb_schneider_download_manager_detect_win.nasl: GPLv2+
 gb_schneider_ecostruxure_augmented_operator_advisor_detect_win.nasl: GPLv2+
 gb_schneider_ecostruxure_machine_expert_detect_win.nasl: GPLv2+
 gb_schneider_electric_pelco_sarix_ip_cam_detect.nasl: GPLv2+
 gb_schneider_electric_proface_gp-pro_ex_detect.nasl: GPLv2+
 gb_schneider_electric_software_update_detect_win.nasl: GPLv2+
 gb_schneider_eurotherm_guicon_detect_win.nasl: GPLv2+
+gb_schneider_exlhoist_configuration_software_detect_win.nasl: GPLv2+
+gb_schneider_exlhoist_dtm_library_detect_win.nasl: GPLv2+
 gb_schneider_homelynk_controller_detect.nasl: GPLv2+
 gb_schneider_indusoft_http_detect.nasl: GPLv2+
 gb_schneider_intouch_http_detect.nasl: GPLv2+
+gb_schneider_license_manager_detect_win.nasl: GPLv2+
 gb_schneider_matrix_detect_win.nasl: GPLv2+
 gb_schneider_modbus_communication_dtm_library_detect_win.nasl: GPLv2+
 gb_schneider_modbus_detect.nasl: GPLv2+
@@ -46109,11 +46146,14 @@ gb_schneider_opc_factory_server_detect_win.nasl: GPLv2+
 gb_schneider_opc_server_detect_win.nasl: GPLv2+
 gb_schneider_pacdrive3_diagnostics_detect_win.nasl: GPLv2+
 gb_schneider_sohvac_detect_win.nasl: GPLv2+
+gb_schneider_somachine_configuration_manager_detect_win.nasl: GPLv2+
+gb_schneider_somachinesoftware_sql_gateway_detect_win.nasl: GPLv2+
 gb_schneider_somove_detect_win.nasl: GPLv2+
 gb_schneider_struxureon_detect.nasl: GPLv2+
 gb_schneider_umotion_builder_software_detect_http.nasl: GPLv2+
 gb_schneider_vijeo_designer_detect_win.nasl: GPLv2+
 gb_schneider_zelio_soft_detect_win.nasl: GPLv2+
+gb_schoopc_server_detect_win.nasl: GPLv2+
 gb_screenos_version.nasl: GPLv2+
 gb_scrumworkspro_detect.nasl: GPLv2+
 gb_scrutinizer_detect.nasl: GPLv2+
@@ -46220,6 +46260,7 @@ gb_solarwinds_olm_detect_win.nasl: GPLv2+
 gb_solarwinds_orion_core_service_detect_win.nasl: GPLv2+
 gb_solarwinds_orion_ncm_detect_win.nasl: GPLv2+
 gb_solarwinds_orion_netpath_detect_win.nasl: GPLv2+
+gb_solarwinds_orion_npm_consolidation.nasl: GPLv2+
 gb_solarwinds_orion_npm_detect_win.nasl: GPLv2+
 gb_solarwinds_orion_nta_detect_win.nasl: GPLv2+
 gb_solarwinds_orion_qoe_detect_win.nasl: GPLv2+
