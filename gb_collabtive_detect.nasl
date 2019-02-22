@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_collabtive_detect.nasl 11028 2018-08-17 09:26:08Z cfischer $
+# $Id: gb_collabtive_detect.nasl 13812 2019-02-21 12:04:05Z jschulte $
 #
 # Collabtive Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100854");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11028 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 11:26:08 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 13812 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-21 13:04:05 +0100 (Thu, 21 Feb 2019) $");
   script_tag(name:"creation_date", value:"2010-10-13 18:51:23 +0200 (Wed, 13 Oct 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Collabtive Detection");
@@ -49,63 +49,50 @@ if(description)
   exit(0);
 }
 
-include("http_func.inc");
-include("http_keepalive.inc");
-include("host_details.inc");
+CPE = "cpe:/a:collabtive:collabtive:";
 
-SCRIPT_DESC = "Collabtive Detection";
+include( "host_details.inc" );
+include( "http_func.inc" );
+include( "http_keepalive.inc" );
+include( "cpe.inc" );
 
-port = get_http_port(default:80);
-if(!can_host_php(port:port))exit(0);
+port = get_http_port( default: 80 );
+if( ! can_host_php( port: port ) ) exit( 0 );
 
-foreach dir( make_list_unique( "/collabtive", cgi_dirs( port:port ) ) ) {
+foreach dir( make_list_unique( "/", "/collabtive", cgi_dirs( port: port ) ) ) {
 
  install = dir;
  if( dir == "/" ) dir = "";
- url = dir + "/index.ph";
- buf = http_get_cache( item:url, port:port );
+ url = dir + "/index.php";
+ buf = http_get_cache( item: url, port: port );
  if( buf == NULL ) continue;
 
- if("Open Source project management" >< buf && "collabtive" >< buf && "<title>Login" >< buf)
+ if( buf =~"Open Source project management" && buf =~ "collabtive" && buf =~ "<title>Login" )
  {
-    vers = string("unknown");
+    set_kb_item( name: "collabtive/detected", value: TRUE);
 
-    url = string(dir, "/changelog.txt");
-    req = http_get(item:url, port:port);
-    buf = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
+    url = string( dir, "/changelog.txt" );
+    req = http_get( item: url, port: port);
+    buf = http_keepalive_send_recv( port: port, data: req, bodyonly: TRUE );
 
-    version = eregmatch(string: buf, pattern: "Collabtive ([0-9.]+)",icase:TRUE);
+    version = "unknown";
+    vers = eregmatch( string: buf, pattern: "Collabtive ([0-9.]+)", icase: TRUE );
 
-    if ( !isnull(version[1]) ) {
-       vers=chomp(version[1]);
-
-    } else {
-
-      url = string(dir, "/admin.php"); # not accurate. I saw 0.6.4 on admin.php while real version is 0.6.5
-      req = http_get(item:url, port:port);
-      buf = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
-
-      version = eregmatch(string: buf, pattern: "Collabtive ([0-9.]+)",icase:TRUE);
-
-      if ( !isnull(version[1]) ) {
-        vers=chomp(version[1]);
-      }
+    if ( ! isnull( vers[1] ) ) {
+       version=chomp( vers[1] );
     }
 
-    set_kb_item(name: string("www/", port, "/collabtive"), value: string(vers," under ",install));
+    set_kb_item(name: string("www/", port, "/collabtive"), value: string(version," under ",install));
 
-    if(vers == "unknown") {
-      register_host_detail(name:"App", value:string("cpe:/a:collabtive:collabtive"), desc:SCRIPT_DESC);
-    } else {
-      register_host_detail(name:"App", value:string("cpe:/a:collabtive:collabtive:",vers), desc:SCRIPT_DESC);
-    }
+    register_and_report_cpe( app: "Collabtive",
+                             ver: version,
+                             concluded: vers[0],
+                             base: CPE,
+                             expr: '([0-9.]+)',
+                             insloc: install,
+                             regPort: port,
+                             conclUrl: dir );
 
-    info = string("Collabtive Version '");
-    info += string(vers);
-    info += string("' was detected on the remote host in the following directory(s):\n\n");
-    info += string(install, "\n");
-
-    log_message(port:port,data:info);
     exit(0);
   }
 }

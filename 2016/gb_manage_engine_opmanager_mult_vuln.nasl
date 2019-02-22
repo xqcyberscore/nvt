@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manage_engine_opmanager_mult_vuln.nasl 12096 2018-10-25 12:26:02Z asteins $
+# $Id: gb_manage_engine_opmanager_mult_vuln.nasl 13755 2019-02-19 10:42:02Z jschulte $
 #
 # ManageEngine OpManager Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:zohocorp:manageengine_opmanager';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106093");
-  script_version("$Revision: 12096 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
+  script_version("$Revision: 13755 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-19 11:42:02 +0100 (Tue, 19 Feb 2019) $");
   script_tag(name:"creation_date", value:"2016-06-06 16:31:30 +0700 (Mon, 06 Jun 2016)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -46,8 +46,8 @@ if (description)
 
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_manage_engine_opmanager_detect.nasl");
-  script_mandatory_keys("OpManager/installed");
+  script_dependencies("gb_manage_engine_opmanager_consolidation.nasl");
+  script_mandatory_keys("manageengine/opmanager/detected");
 
   script_tag(name:"summary", value:"ManageEngine OpManager is prone to multiple vulnerabilities.");
 

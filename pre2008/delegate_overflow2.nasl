@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: delegate_overflow2.nasl 13397 2019-02-01 08:06:48Z cfischer $
+# $Id: delegate_overflow2.nasl 13794 2019-02-20 14:59:32Z cfischer $
 # Description: Delegate Multiple Overflows
 #
 # Authors:
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17599");
-  script_version("$Revision: 13397 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-01 09:06:48 +0100 (Fri, 01 Feb 2019) $");
+  script_version("$Revision: 13794 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-20 15:59:32 +0100 (Wed, 20 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -62,8 +62,10 @@ include("version_func.inc");
 ports = pop3_get_ports();
 foreach port(ports) {
   banner = get_pop3_banner(port:port);
-  if( banner && egrep(pattern:"^\+OK Proxy-POP server \(Delegate/([0-7]\..*|8\.([0-9]\..*|10\.[0-2][^0-9])) by", string:banner))
-    security_message(port:port);
+  if( banner && egrep(pattern:"^\+OK Proxy-POP server \(Delegate/([0-7]\..*|8\.([0-9]\..*|10\.[0-2][^0-9])) by", string:banner)) {
+    report = report_fixed_ver(installed_version:banner, fixed_version:"8.10.3");
+    security_message(port:port, data:report);
+  }
 }
 
 port = get_kb_item("Services/http_proxy");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_filr_web_administration_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
+# $Id: gb_filr_web_administration_detect.nasl 13809 2019-02-21 10:14:52Z ckuersteiner $
 #
 # Filr Web Administration Interface Detection
 #
@@ -30,9 +30,10 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.105825");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11885 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 13809 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-21 11:14:52 +0100 (Thu, 21 Feb 2019) $");
   script_tag(name:"creation_date", value:"2016-07-25 16:16:12 +0200 (Mon, 25 Jul 2016)");
+
   script_name("Filr Web Administration Interface Detection");
 
   script_tag(name:"summary", value:"This script performs HTTP based detection of Filr Web Administration Interface");
@@ -45,9 +46,9 @@ if (description)
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 9443);
   script_exclude_keys("Settings/disable_cgi_scanning");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -56,12 +57,10 @@ include("host_details.inc");
 port = get_http_port( default:9443 );
 
 url = '/login';
-req = http_get( item:url, port:port );
-buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
+buf = http_get_cache(port: port, item: url);
 
-if( "<title>Novell Filr Appliance</title>" >< buf && ">Administration<" >< buf )
-{
-  cpe = 'cpe:/a:novell:filr';
+if( buf =~ "<title>(Novell )?Filr Appliance</title>" && ">Administration<" >< buf ) {
+  cpe = 'cpe:/a:microfocus:filr';
   set_kb_item( name:'filr/webadmin/detected', value:port );
 
   register_product( cpe:cpe, location:"/", port:port, service:'filr-admin' );

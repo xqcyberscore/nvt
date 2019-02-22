@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_opmanager_mult_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_manageengine_opmanager_mult_vuln.nasl 13755 2019-02-19 10:42:02Z jschulte $
 #
 # ManageEngine OpManager Multiple Vulnerabilities Nov14
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:zohocorp:manageengine_opmanager";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805103");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 13755 $");
   script_cve_id("CVE-2014-7866", "CVE-2014-7868", "CVE-2014-6035");
   script_bugtraq_id(71001, 71002);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-19 11:42:02 +0100 (Tue, 19 Feb 2019) $");
   script_tag(name:"creation_date", value:"2014-11-24 16:16:10 +0530 (Mon, 24 Nov 2014)");
   script_name("ManageEngine OpManager Multiple Vulnerabilities Nov14");
 
@@ -63,11 +63,7 @@ if(description)
 
   script_tag(name:"affected", value:"ManageEngine OpManager version 11.3/11.4");
 
-  script_tag(name:"solution", value:"Apply the patch from the given link,
-
-  https://support.zoho.com/portal/manageengine/helpcenter/articles/sql-injection-vulnerability-fix,
-
-  https://support.zoho.com/portal/manageengine/helpcenter/articles/fix-for-remote-code-execution-via-file-upload-vulnerability");
+  script_tag(name:"solution", value:"Apply the patches from the referenced links");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
@@ -79,8 +75,8 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_manage_engine_opmanager_detect.nasl");
-  script_mandatory_keys("OpManager/installed");
+  script_dependencies("gb_manage_engine_opmanager_consolidation.nasl");
+  script_mandatory_keys("manageengine/opmanager/http/detected");
 
   exit(0);
 }

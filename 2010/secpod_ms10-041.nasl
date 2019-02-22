@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-041.nasl 12056 2018-10-24 12:04:11Z santu $
+# $Id: secpod_ms10-041.nasl 13760 2019-02-19 11:38:16Z santu $
 #
 # Microsoft .NET Framework XML HMAC Truncation Vulnerability (981343)
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902193");
-  script_version("$Revision: 12056 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 14:04:11 +0200 (Wed, 24 Oct 2018) $");
+  script_version("$Revision: 13760 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-19 12:38:16 +0100 (Tue, 19 Feb 2019) $");
   script_tag(name:"creation_date", value:"2010-06-09 17:19:57 +0200 (Wed, 09 Jun 2010)");
   script_cve_id("CVE-2009-0217");
   script_tag(name:"cvss_base", value:"5.0");
@@ -71,7 +71,7 @@ include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
-include("misc_func.inc");
+include("http_func.inc");
 
 if(hotfix_check_sp(xp:4, win2k:5, win2003:3,  winVista:3, win2008:3, win7:1) <= 0){
   exit(0);

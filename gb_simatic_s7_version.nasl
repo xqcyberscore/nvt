@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simatic_s7_version.nasl 11885 2018-10-12 13:47:20Z cfischer $
+# $Id: gb_simatic_s7_version.nasl 13763 2019-02-19 12:59:31Z cfischer $
 #
 # Siemens SIMATIC S7 Device Detection Consolidation
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106096");
-  script_version("$Revision: 11885 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 13763 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-19 13:59:31 +0100 (Tue, 19 Feb 2019) $");
   script_tag(name:"creation_date", value:"2016-06-15 15:30:33 +0700 (Wed, 15 Jun 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -176,8 +176,14 @@ if (http_ports = get_kb_list("simatic_s7/http/port")) {
   }
 }
 
-register_and_report_os(os: "Siemens SIMATIC S7 CPU Firmware", version: detected_version, cpe: os_cpe,
-                       desc: "Siemens SIMATIC S7 Device Version", runs_key:"unixoide");
+# We don't want to register a S7 Firmware as the operting systems as it would
+# overwrite our previously more detailed Windows Detections. Examples are e.g.
+# module: S7 SoftPLC UA
+# modtype: IE_CP   OPC Server
+if ("SoftPLC" >!< extra ) {
+  register_and_report_os(os: "Siemens SIMATIC S7 CPU Firmware", cpe: os_cpe,
+                         desc: "Siemens SIMATIC S7 Device Version", runs_key:"unixoide");
+}
 
 report = build_detection_report(app: app_name, version: detected_version,
                                 install: "/", cpe: app_cpe);

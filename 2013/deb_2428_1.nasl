@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2428_1.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: deb_2428_1.nasl 13784 2019-02-20 11:51:39Z cfischer $
 # Auto-generated from advisory DSA 2428-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -26,55 +26,48 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-include("revisions-lib.inc");
-
-tag_affected  = "freetype on Debian Linux";
-tag_insight   = "The FreeType 2 library is a software font engine.";
-tag_solution  = "For the stable distribution (squeeze), this problem has been fixed in
-version 2.4.2-2.1+squeeze4. The updated packages are already available
-since yesterday, but the advisory text couldn't be send earlier.
-
-For the unstable distribution (sid), this problem will be fixed soon.
-
-We recommend that you upgrade your freetype packages.";
-tag_summary   = "Mateusz Jurczyk from the Google Security Team discovered several
-vulnerabilties in Freetype's parsing of BDF, Type1 and TrueType fonts,
-which could result in the execution of arbitrary code if a malformed
-font file is processed.";
-tag_vuldetect = "This check tests the installed software version using the apt package manager.";
-
 if(description)
 {
-    script_oid("1.3.6.1.4.1.25623.1.0.892428");
-    script_version("$Revision: 9353 $");
-    script_cve_id("CVE-2012-1136", "CVE-2012-1142", "CVE-2012-1133", "CVE-2012-1144", "CVE-2012-1134");
-    script_name("Debian Security Advisory DSA 2428-1 (freetype - several vulnerabilities)");
-    script_tag(name: "last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
-    script_tag(name:"creation_date", value:"2013-09-18 11:53:02 +0200 (Wed, 18 Sep 2013)");
-    script_tag(name: "cvss_base", value:"9.3");
-    script_tag(name: "cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_oid("1.3.6.1.4.1.25623.1.0.892428");
+  script_version("$Revision: 13784 $");
+  script_cve_id("CVE-2012-1136", "CVE-2012-1142", "CVE-2012-1133", "CVE-2012-1144", "CVE-2012-1134");
+  script_name("Debian Security Advisory DSA 2428-1 (freetype - several vulnerabilities)");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-20 12:51:39 +0100 (Wed, 20 Feb 2019) $");
+  script_tag(name:"creation_date", value:"2013-09-18 11:53:02 +0200 (Wed, 18 Sep 2013)");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_xref(name:"URL", value:"http://www.debian.org/security/2012/dsa-2428.html");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2013 Greenbone Networks GmbH http://greenbone.net");
+  script_family("Debian Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
 
-    script_xref(name: "URL", value: "http://www.debian.org/security/2012/dsa-2428.html");
+  script_tag(name:"affected", value:"freetype on Debian Linux");
 
+  script_tag(name:"insight", value:"The FreeType 2 library is a software font engine.");
 
-    script_category(ACT_GATHER_INFO);
+  script_tag(name:"solution", value:"For the stable distribution (squeeze), this problem has been fixed in
+  version 2.4.2-2.1+squeeze4. The updated packages are already available
+  since yesterday, but the advisory text couldn't be send earlier.
 
-    script_copyright("Copyright (c) 2013 Greenbone Networks GmbH http://greenbone.net");
-    script_family("Debian Local Security Checks");
-    script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
-    script_tag(name: "affected",  value: tag_affected);
-    script_tag(name: "insight",   value: tag_insight);
-#    script_tag(name: "impact",    value: tag_impact);
-    script_tag(name: "solution",  value: tag_solution);
-    script_tag(name: "summary",   value: tag_summary);
-    script_tag(name: "vuldetect", value: tag_vuldetect);
-    script_tag(name:"qod_type", value:"package");
-    script_tag(name:"solution_type", value:"VendorFix");
+  For the unstable distribution (sid), this problem will be fixed soon.
 
-    exit(0);
+  We recommend that you upgrade your freetype packages.");
+
+  script_tag(name:"summary", value:"Mateusz Jurczyk from the Google Security Team discovered several
+  vulnerabilities in Freetype's parsing of BDF, Type1 and TrueType fonts, which could result in the
+  execution of arbitrary code if a malformed font file is processed.");
+
+  script_tag(name:"vuldetect", value:"This check tests the installed software version using the apt package manager.");
+
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
+
+  exit(0);
 }
 
+include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
 res = "";
@@ -95,5 +88,5 @@ if ((res = isdpkgvuln(pkg:"libfreetype6-udeb", ver:"2.4.2-2.1+squeeze4", rls:"DE
 if (report != "") {
     security_message(data:report);
 } else if (__pkg_match) {
-    exit(99); # Not vulnerable.
+    exit(99);
 }

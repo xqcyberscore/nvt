@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_windows_cpe_detect.nasl 12703 2018-12-07 11:49:32Z cfischer $
+# $Id: gb_windows_cpe_detect.nasl 13813 2019-02-21 13:07:21Z cfischer $
 #
 # Windows Application CPE Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96207");
-  script_version("$Revision: 12703 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-07 12:49:32 +0100 (Fri, 07 Dec 2018) $");
+  script_version("$Revision: 13813 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-21 14:07:21 +0100 (Thu, 21 Feb 2019) $");
   script_tag(name:"creation_date", value:"2011-04-26 12:54:47 +0200 (Tue, 26 Apr 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -1110,29 +1110,29 @@ else if (OSVER == "4.0"){
 if (OSVER == "5.0"){
   cpe = "cpe:/o:microsoft:windows_2000";
 
-  if (OSSP == "0" ) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold", desc:SCRIPT_DESC);
-  else if (OSSP != "0") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp" + OSSP, desc:SCRIPT_DESC);
-  else if (OSSP == "0" && ("ServerNT" >< type || "LanmanNT">< type))register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold:server", desc:SCRIPT_DESC);
-  else if (OSSP == "0" && "WinNT" >< type)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold:professional", desc:SCRIPT_DESC);
-  else if (OSSP != "0" && "WinNT" >< type)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp" + OSSP + ":professional", desc:SCRIPT_DESC);
-  else if (OSSP != "0" && ("ServerNT" >< type || "LanmanNT">< type))register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp" + OSSP + ":server", desc:SCRIPT_DESC);
+  if (OSSP == "0" ) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:gold", desc:SCRIPT_DESC);
+  else if (OSSP != "0") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp" + OSSP, desc:SCRIPT_DESC);
+  else if (OSSP == "0" && ("ServerNT" >< type || "LanmanNT">< type))register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:gold:server", desc:SCRIPT_DESC);
+  else if (OSSP == "0" && "WinNT" >< type)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:gold:professional", desc:SCRIPT_DESC);
+  else if (OSSP != "0" && "WinNT" >< type)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp" + OSSP + ":professional", desc:SCRIPT_DESC);
+  else if (OSSP != "0" && ("ServerNT" >< type || "LanmanNT">< type))register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp" + OSSP + ":server", desc:SCRIPT_DESC);
   else register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:"cpe:/o:microsoft:windows_2000", desc:SCRIPT_DESC);
 }
 if (OSVER == "5.1"){
   cpe = "cpe:/o:microsoft:windows_xp";
   if (OSSP == "0"){
-    if (Embedded_NT)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold:embedded", desc:SCRIPT_DESC);
-    else if ("professional" >< lowOSNAME) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold:professional", desc:SCRIPT_DESC);
-    else if ("home" >< lowOSNAME) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold:home", desc:SCRIPT_DESC);
-    else if ("media" >< lowOSNAME) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold:media_center", desc:SCRIPT_DESC);
-    else if ("tablet" >< lowOSNAME) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold:tablet_pc", desc:SCRIPT_DESC);
-    else register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold", desc:SCRIPT_DESC);
+    if (Embedded_NT)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:gold:embedded", desc:SCRIPT_DESC);
+    else if ("professional" >< lowOSNAME) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:gold:professional", desc:SCRIPT_DESC);
+    else if ("home" >< lowOSNAME) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:gold:home", desc:SCRIPT_DESC);
+    else if ("media" >< lowOSNAME) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:gold:media_center", desc:SCRIPT_DESC);
+    else if ("tablet" >< lowOSNAME) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:gold:tablet_pc", desc:SCRIPT_DESC);
+    else register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:gold", desc:SCRIPT_DESC);
   }
   else if (OSSP == "1" || OSSP == "2"){
-    if (Embedded_NT)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp" + OSSP + ":embedded", desc:SCRIPT_DESC);
-    else if ("professional" >< lowOSNAME) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp" + OSSP + ":professional", desc:SCRIPT_DESC);
-    else if ("media" >< lowOSNAME) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp" + OSSP + ":media_center", desc:SCRIPT_DESC);
-    else if ("tablet" >< lowOSNAME) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp" + OSSP + ":tablet_pc", desc:SCRIPT_DESC);
+    if (Embedded_NT)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp" + OSSP + ":embedded", desc:SCRIPT_DESC);
+    else if ("professional" >< lowOSNAME) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp" + OSSP + ":professional", desc:SCRIPT_DESC);
+    else if ("media" >< lowOSNAME) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp" + OSSP + ":media_center", desc:SCRIPT_DESC);
+    else if ("tablet" >< lowOSNAME) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp" + OSSP + ":tablet_pc", desc:SCRIPT_DESC);
   }
   else if (OSSP == "3"){
     if (Embedded_NT)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp3:embedded", desc:SCRIPT_DESC);
@@ -1141,141 +1141,133 @@ if (OSVER == "5.1"){
     else if ("tablet" >< lowOSNAME) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp3:tablet_pc", desc:SCRIPT_DESC);
   }
   if (OSSP != "0" && ("home" >< lowOSNAME )) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp" + OSSP + ":home", desc:SCRIPT_DESC);
-  else if (OSSP != "0") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp" + OSSP, desc:SCRIPT_DESC);
+  else if (OSSP != "0") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp" + OSSP, desc:SCRIPT_DESC);
   else if (!OSSP) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:"cpe:/o:microsoft:windows_xp", desc:SCRIPT_DESC);
 }
 if (OSVER == "5.2"){
   if ("WinNT" >< type){
   cpe = "cpe:/o:microsoft:windows_xp";
     if (OSSP != "0" && x64 == "1") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp" + OSSP + ":x64", desc:SCRIPT_DESC);
-    if (x64 != 1) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":::x86", desc:SCRIPT_DESC);
-    if (OSSP == "2" && x64 != 1) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp2:x86", desc:SCRIPT_DESC);
+    if (x64 != 1) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:-:x86", desc:SCRIPT_DESC);
+    if (OSSP == "2" && x64 != 1) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp2:x86", desc:SCRIPT_DESC);
     if (OSSP == "0" && x64 == "1") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:gold:x64", desc:SCRIPT_DESC);
   }
   else if ("WinNT" >!< type){
-    cpe = "cpe:/o:microsoft:windows_2003_server";
-    cpe1 = "cpe:/o:microsoft:windows_server_2003";
+    cpe = "cpe:/o:microsoft:windows_server_2003";
     if (OSCPU && OSOTD != "R2"){
       if (x64 != "1"){
-        if (OSSP == "0" && !DataCenter && !Enterprise && !Web_2003 && !SBS_R) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold:standard", desc:SCRIPT_DESC);
-        else if (OSSP != "0" && !DataCenter && !Enterprise && !Web_2003 && !SBS_R) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp" + OSSP + ":standard", desc:SCRIPT_DESC);
-        else if (OSSP == "0" && DataCenter) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold:datacenter", desc:SCRIPT_DESC);
-        else if (OSSP == "0" && Enterprise) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold:enterprise", desc:SCRIPT_DESC);
-        else if (OSSP != "0" && DataCenter) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp" + OSSP + ":datacenter", desc:SCRIPT_DESC);
-        else if (OSSP != "0" && Enterprise) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp" + OSSP + ":enterprise", desc:SCRIPT_DESC);
-        else if (OSSP != "0") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp" + OSSP, desc:SCRIPT_DESC);
-        else if (OSSP == "2") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe1 + "::sp2", desc:SCRIPT_DESC);
-        else if (OSSP == "0") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold", desc:SCRIPT_DESC);
+        if (OSSP == "0" && !DataCenter && !Enterprise && !Web_2003 && !SBS_R) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:gold:standard", desc:SCRIPT_DESC);
+        else if (OSSP != "0" && !DataCenter && !Enterprise && !Web_2003 && !SBS_R) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp" + OSSP + ":standard", desc:SCRIPT_DESC);
+        else if (OSSP == "0" && DataCenter) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:gold:datacenter", desc:SCRIPT_DESC);
+        else if (OSSP == "0" && Enterprise) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:gold:enterprise", desc:SCRIPT_DESC);
+        else if (OSSP != "0" && DataCenter) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp" + OSSP + ":datacenter", desc:SCRIPT_DESC);
+        else if (OSSP != "0" && Enterprise) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp" + OSSP + ":enterprise", desc:SCRIPT_DESC);
+        else if (OSSP != "0") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp" + OSSP, desc:SCRIPT_DESC);
+        else if (OSSP == "2") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp2", desc:SCRIPT_DESC);
+        else if (OSSP == "0") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:gold", desc:SCRIPT_DESC);
       }
       else if (x64 == "1"){
-        if (OSSP == "0" && OSCPU == "9" && !DataCenter && !Enterprise && !Web_2003 && !SBS_R) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold:x64-standard", desc:SCRIPT_DESC);
-        else if (OSSP != "0" && OSCPU == "9" && !DataCenter && !Enterprise && !Web_2003 && !SBS_R) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp" + OSSP + ":x64-standard", desc:SCRIPT_DESC);
-        else if (OSSP == "0" && OSCPU == "9" && DataCenter) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold:x64-datacenter", desc:SCRIPT_DESC);
-        else if (OSSP == "0" && OSCPU == "9" && Enterprise) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold:x64-enterprise", desc:SCRIPT_DESC);
-        else if (OSSP != "0" && OSCPU == "9") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp" + OSSP + ":x64", desc:SCRIPT_DESC);
-        else if (OSSP == "0" && OSCPU == "9") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold:x64", desc:SCRIPT_DESC);
-        else if (OSSP == "0" && OSCPU == "9") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold:x64", desc:SCRIPT_DESC);
+        if (OSSP == "0" && OSCPU == "9" && !DataCenter && !Enterprise && !Web_2003 && !SBS_R) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:gold:x64-standard", desc:SCRIPT_DESC);
+        else if (OSSP != "0" && OSCPU == "9" && !DataCenter && !Enterprise && !Web_2003 && !SBS_R) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp" + OSSP + ":x64-standard", desc:SCRIPT_DESC);
+        else if (OSSP == "0" && OSCPU == "9" && DataCenter) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:gold:x64-datacenter", desc:SCRIPT_DESC);
+        else if (OSSP == "0" && OSCPU == "9" && Enterprise) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:gold:x64-enterprise", desc:SCRIPT_DESC);
+        else if (OSSP != "0" && OSCPU == "9") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp" + OSSP + ":x64", desc:SCRIPT_DESC);
+        else if (OSSP == "0" && OSCPU == "9") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:gold:x64", desc:SCRIPT_DESC);
 
-        if (OSSP == "2" && OSCPU == "9") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe1 + "::sp2:x64", desc:SCRIPT_DESC);
-        else if (OSSP == "0" && OSCPU == "9") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe1 + ":::x64", desc:SCRIPT_DESC);
+        if (OSSP == "2" && OSCPU == "9") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp2:x64", desc:SCRIPT_DESC);
+        else if (OSSP == "0" && OSCPU == "9") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:-:x64", desc:SCRIPT_DESC);
       }
 
-      if (OSSP == "0" && OSCPU == "6") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold:itanium", desc:SCRIPT_DESC);
-      if (OSSP == "1" && OSCPU == "6") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:"cpe:/o:microsoft:windows-nt:2003:sp1:itanium", desc:SCRIPT_DESC);
-      if (OSSP == "2" && OSCPU == "6") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp2:itanium", desc:SCRIPT_DESC);
-      if (OSSP == "2" && OSCPU == "6") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe1 + "::sp2:itanium", desc:SCRIPT_DESC);
+      if (OSSP == "0" && OSCPU == "6") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:gold:itanium", desc:SCRIPT_DESC);
+      if (OSSP == "1" && OSCPU == "6") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp1:itanium", desc:SCRIPT_DESC);
+      if (OSSP == "2" && OSCPU == "6") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp2:itanium", desc:SCRIPT_DESC);
 
     }
     else if (OSCPU && OSOTD == "R2"){
       if (x64 != "1"){
-        if (16384 >= OSPRODS) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::r2:compute_cluster", desc:SCRIPT_DESC);
-        else if (Stor_Serv_2003R2) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::r2:storage", desc:SCRIPT_DESC);
-        else if (!DataCenter && !Enterprise && !Web_2003 && !SBS_R && !Stor_Serv_2003R2) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::r2:standard", desc:SCRIPT_DESC);
-        else if (Enterprise) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::r2:enterprise", desc:SCRIPT_DESC);
-        else if (DataCenter) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::r2:datacenter", desc:SCRIPT_DESC);
-        else register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::r2", desc:SCRIPT_DESC);
+        if (16384 >= OSPRODS) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":r2:-:compute_cluster", desc:SCRIPT_DESC);
+        else if (Stor_Serv_2003R2) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":r2:-:storage", desc:SCRIPT_DESC);
+        else if (!DataCenter && !Enterprise && !Web_2003 && !SBS_R && !Stor_Serv_2003R2) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":r2:-:standard", desc:SCRIPT_DESC);
+        else if (Enterprise) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":r2:-:enterprise", desc:SCRIPT_DESC);
+        else if (DataCenter) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":r2:-:datacenter", desc:SCRIPT_DESC);
+        else register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":r2", desc:SCRIPT_DESC);
       }
       else if (x64 == "1"){
-        if (OSCPU == "9" && !DataCenter && !Enterprise && !Web_2003 && !SBS_R && !Stor_Serv_2003R2) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::r2:x64-standard", desc:SCRIPT_DESC);
-        else if (Enterprise && OSCPU == "9") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::r2:x64-enterprise", desc:SCRIPT_DESC);
-        else if (DataCenter && OSCPU == "9") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::r2:x64-datacenter", desc:SCRIPT_DESC);
-        else if (OSCPU == "9") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::r2:x64", desc:SCRIPT_DESC);
+        if (OSCPU == "9" && !DataCenter && !Enterprise && !Web_2003 && !SBS_R && !Stor_Serv_2003R2) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":r2:-:x64-standard", desc:SCRIPT_DESC);
+        else if (Enterprise && OSCPU == "9") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":r2:-:x64-enterprise", desc:SCRIPT_DESC);
+        else if (DataCenter && OSCPU == "9") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":r2:-:x64-datacenter", desc:SCRIPT_DESC);
+        else if (OSCPU == "9") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":r2:-:x64", desc:SCRIPT_DESC);
       }
     }
     #SMB fallback. Is not so exactly as wmi.
     else if(!OSCPU){
       if (x64 != "1"){
-#        if (OSSP == "0" && !DataCenter && !Enterprise && !Web_2003 && !SBS_R) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold:standard", desc:SCRIPT_DESC);
-#        else if (OSSP != "0" && !DataCenter && !Enterprise && !Web_2003 && !SBS_R) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp" + OSSP + ":standard", desc:SCRIPT_DESC);
-#        else if (OSSP == "0" && DataCenter) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold:datacenter", desc:SCRIPT_DESC);
-#        else if (OSSP == "0" && Enterprise) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold:enterprise", desc:SCRIPT_DESC);
-#        else if (OSSP != "0" && DataCenter) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp" + OSSP + ":datacenter", desc:SCRIPT_DESC);
-#        else if (OSSP != "0" && Enterprise) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp" + OSSP + ":enterprise", desc:SCRIPT_DESC);
-        if (OSSP != "0") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp" + OSSP, desc:SCRIPT_DESC);
-        else if (OSSP == "2") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe1 + "::sp2", desc:SCRIPT_DESC);
-        else if (OSSP == "0") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold", desc:SCRIPT_DESC);
+#        if (OSSP == "0" && !DataCenter && !Enterprise && !Web_2003 && !SBS_R) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:gold:standard", desc:SCRIPT_DESC);
+#        else if (OSSP != "0" && !DataCenter && !Enterprise && !Web_2003 && !SBS_R) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp" + OSSP + ":standard", desc:SCRIPT_DESC);
+#        else if (OSSP == "0" && DataCenter) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:gold:datacenter", desc:SCRIPT_DESC);
+#        else if (OSSP == "0" && Enterprise) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:gold:enterprise", desc:SCRIPT_DESC);
+#        else if (OSSP != "0" && DataCenter) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp" + OSSP + ":datacenter", desc:SCRIPT_DESC);
+#        else if (OSSP != "0" && Enterprise) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp" + OSSP + ":enterprise", desc:SCRIPT_DESC);
+        if (OSSP != "0") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp" + OSSP, desc:SCRIPT_DESC);
+        else if (OSSP == "2") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp2", desc:SCRIPT_DESC);
+        else if (OSSP == "0") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:gold", desc:SCRIPT_DESC);
       }
       else if (x64 == "1"){
-#        if (OSSP == "0" && cputype == "AMD64" && !DataCenter && !Enterprise && !Web_2003 && !SBS_R) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold:x64-standard", desc:SCRIPT_DESC);
-#        else if (OSSP != "0" && cputype == "AMD64" && !DataCenter && !Enterprise && !Web_2003 && !SBS_R) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp" + OSSP + ":x64-standard", desc:SCRIPT_DESC);
-#        else if (OSSP == "0" && cputype == "AMD64" && DataCenter) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold:x64-datacenter", desc:SCRIPT_DESC);
-#        else if (OSSP == "0" && cputype == "AMD64" && Enterprise) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold:x64-enterprise", desc:SCRIPT_DESC);
-        if (OSSP != "0" && cputype == "AMD64") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp" + OSSP + ":x64", desc:SCRIPT_DESC);
-        else if (OSSP == "0" && cputype == "AMD64") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold:x64", desc:SCRIPT_DESC);
-        else if (OSSP == "0" && cputype == "AMD64") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold:x64", desc:SCRIPT_DESC);
-        if (OSSP == "2" && cputype == "AMD64") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe1 + "::sp2:x64", desc:SCRIPT_DESC);
-        else if (OSSP == "0" && cputype == "AMD64") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe1 + ":::x64", desc:SCRIPT_DESC);
+#        if (OSSP == "0" && cputype == "AMD64" && !DataCenter && !Enterprise && !Web_2003 && !SBS_R) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:gold:x64-standard", desc:SCRIPT_DESC);
+#        else if (OSSP != "0" && cputype == "AMD64" && !DataCenter && !Enterprise && !Web_2003 && !SBS_R) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp" + OSSP + ":x64-standard", desc:SCRIPT_DESC);
+#        else if (OSSP == "0" && cputype == "AMD64" && DataCenter) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:gold:x64-datacenter", desc:SCRIPT_DESC);
+#        else if (OSSP == "0" && cputype == "AMD64" && Enterprise) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:gold:x64-enterprise", desc:SCRIPT_DESC);
+        if (OSSP != "0" && cputype == "AMD64") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp" + OSSP + ":x64", desc:SCRIPT_DESC);
+        else if (OSSP == "0" && cputype == "AMD64") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:gold:x64", desc:SCRIPT_DESC);
+        else if (OSSP == "0" && cputype == "AMD64") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:gold:x64", desc:SCRIPT_DESC);
+        if (OSSP == "2" && cputype == "AMD64") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp2:x64", desc:SCRIPT_DESC);
+        else if (OSSP == "0" && cputype == "AMD64") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:-:x64", desc:SCRIPT_DESC);
       }
-      if (OSSP == "0" && cputype =="IA64") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold:itanium", desc:SCRIPT_DESC);
-      if (OSSP == "1" && cputype =="IA64") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:"cpe:/o:microsoft:windows-nt:2003:sp1:itanium", desc:SCRIPT_DESC);
-      if (OSSP == "2" && cputype =="IA64") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp2:itanium", desc:SCRIPT_DESC);
-      if (OSSP == "2" && cputype =="IA64") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe1 + "::sp2:itanium", desc:SCRIPT_DESC);
+      if (OSSP == "0" && cputype =="IA64") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:gold:itanium", desc:SCRIPT_DESC);
+      if (OSSP == "1" && cputype =="IA64") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp1:itanium", desc:SCRIPT_DESC);
+      if (OSSP == "2" && cputype =="IA64") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp2:itanium", desc:SCRIPT_DESC);
     }
-    else register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:"cpe:/o:microsoft:windows_2003_server", desc:SCRIPT_DESC);
+    else register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe, desc:SCRIPT_DESC);
   }
 }
 if (OSVER == "6.0"){
   if(OSTYPE == "1"){#Vista
     cpe = "cpe:/o:microsoft:windows_vista";
-    if (OSSP == "0") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold", desc:SCRIPT_DESC);
+    if (OSSP == "0") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:gold", desc:SCRIPT_DESC);
     if (x64 != "1"){
       if (OSSP == "0"){
-        if(OSSKU == "4")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":::x86-enterprise", desc:SCRIPT_DESC);
-        else if(OSSKU == "1")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":::x86-ultimate", desc:SCRIPT_DESC);
-        else register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":::x86", desc:SCRIPT_DESC);
+        if(OSSKU == "4")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:-:x86-enterprise", desc:SCRIPT_DESC);
+        else if(OSSKU == "1")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:-:x86-ultimate", desc:SCRIPT_DESC);
+        else register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:-:x86", desc:SCRIPT_DESC);
       }
       if (OSSP == "1"){
-        if(OSSKU == "4")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp1:x86-enterprise", desc:SCRIPT_DESC);
-        else if(OSSKU == "1")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp1:x86-ultimate", desc:SCRIPT_DESC);
+        if(OSSKU == "4")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp1:x86-enterprise", desc:SCRIPT_DESC);
+        else if(OSSKU == "1")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp1:x86-ultimate", desc:SCRIPT_DESC);
         else{
-          register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp1", desc:SCRIPT_DESC);
           register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp1", desc:SCRIPT_DESC);
         }
       }
       if (OSSP == "2"){
-        register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp2", desc:SCRIPT_DESC);
         register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp2", desc:SCRIPT_DESC);
       }
     }
     else if (x64 == "1"){
       if (OSSP == "0"){
-        if(OSSKU == "4")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":::x64-enterprise", desc:SCRIPT_DESC);
-        else if(OSSKU == "1")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":::x64-ultimate", desc:SCRIPT_DESC);
+        if(OSSKU == "4")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:-:x64-enterprise", desc:SCRIPT_DESC);
+        else if(OSSKU == "1")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:-:x64-ultimate", desc:SCRIPT_DESC);
         else {
-          register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":::x64", desc:SCRIPT_DESC);
+          register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:-:x64", desc:SCRIPT_DESC);
         }
       }
       if (OSSP == "1"){
-        if(OSSKU == "4")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp1:x64-enterprise", desc:SCRIPT_DESC);
-        else if(OSSKU == "1")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp1:x64-ultimate", desc:SCRIPT_DESC);
-        else if(OSSKU == "3")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp1:x64-home_premium", desc:SCRIPT_DESC);
+        if(OSSKU == "4")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp1:x64-enterprise", desc:SCRIPT_DESC);
+        else if(OSSKU == "1")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp1:x64-ultimate", desc:SCRIPT_DESC);
+        else if(OSSKU == "3")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp1:x64-home_premium", desc:SCRIPT_DESC);
         else {
-          register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp1:x64", desc:SCRIPT_DESC);
           register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp1:x64", desc:SCRIPT_DESC);
         }
       }
       if (OSSP == "2"){
-        register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp2:x64", desc:SCRIPT_DESC);
         register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp2:x64", desc:SCRIPT_DESC);
       }
     }
@@ -1305,10 +1297,10 @@ if (OSVER == "6.0"){
         else if(OSSKU == "17")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp2:web", desc:SCRIPT_DESC);
         else {
           register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp2", desc:SCRIPT_DESC);
-          register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp2:x32", desc:SCRIPT_DESC);
+          register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp2:x32", desc:SCRIPT_DESC);
         }
       }
-      else register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":::x32", desc:SCRIPT_DESC);
+      else register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:-:x32", desc:SCRIPT_DESC);
     }
     else if (x64 == "1" && OSCPU != "6"){
       if (OSSP == "0"){
@@ -1317,63 +1309,58 @@ if (OSVER == "6.0"){
         if(OSSKU == "4" || OSSKU == "14"|| OSSKU == "10")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp1:enterprise_x64", desc:SCRIPT_DESC);
       }
       else if (OSSP == "2"){
-        register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp2:x64", desc:SCRIPT_DESC);
+        register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp2:x64", desc:SCRIPT_DESC);
         if(OSSKU == "4" || OSSKU == "14"|| OSSKU == "10")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp2:enterprise_x64", desc:SCRIPT_DESC);
       }
       else{
-        register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":::x64", desc:SCRIPT_DESC);
-        register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-::x64", desc:SCRIPT_DESC);
+        register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:-:x64", desc:SCRIPT_DESC);
       }
     }
-    else if (OSSP == "0" && OSSKU == "15") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":::itanium", desc:SCRIPT_DESC);
-    else if (OSSP == "0" && OSSKU == "15") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-::itanium", desc:SCRIPT_DESC);
+    else if (OSSP == "0" && OSSKU == "15") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:-:itanium", desc:SCRIPT_DESC);
     else if (OSSP == "0" && OSSKU == "15") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:gold:itanium", desc:SCRIPT_DESC);
     else if (OSSP == "2" && OSSKU == "15") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp2:itanium", desc:SCRIPT_DESC);
-    else register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-", desc:SCRIPT_DESC);
+    else register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe, desc:SCRIPT_DESC);
   }
   #SMB fallback. Is not so exactly as wmi.
   else if(!OSTYPE){
     if("Vista" >< OSNAME){#Vista
       cpe = "cpe:/o:microsoft:windows_vista";
-      if (OSSP == "0") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold", desc:SCRIPT_DESC);
+      if (OSSP == "0") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:gold", desc:SCRIPT_DESC);
       if (x64 != "1"){
         if (OSSP == "0"){
-          if("enterprise" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":::x86-enterprise", desc:SCRIPT_DESC);
-          else if("ultimate" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":::x86-ultimate", desc:SCRIPT_DESC);
-          else register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":::x86", desc:SCRIPT_DESC);
+          if("enterprise" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:-:x86-enterprise", desc:SCRIPT_DESC);
+          else if("ultimate" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:-:x86-ultimate", desc:SCRIPT_DESC);
+          else register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:-:x86", desc:SCRIPT_DESC);
         }
         if (OSSP == "1"){
-          if("enterprise" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp1:x86-enterprise", desc:SCRIPT_DESC);
-          else if("ultimate" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp1:x86-ultimate", desc:SCRIPT_DESC);
+          if("enterprise" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp1:x86-enterprise", desc:SCRIPT_DESC);
+          else if("ultimate" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp1:x86-ultimate", desc:SCRIPT_DESC);
           else{
-            register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp1", desc:SCRIPT_DESC);
             register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp1", desc:SCRIPT_DESC);
           }
         }
         if (OSSP == "2"){
-          register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp2", desc:SCRIPT_DESC);
           register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp2", desc:SCRIPT_DESC);
         }
       }
       else if (x64 == "1"){
         if (OSSP == "0"){
-          if("enterprise" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":::x64-enterprise", desc:SCRIPT_DESC);
-          else if("ultimate" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":::x64-ultimate", desc:SCRIPT_DESC);
+          if("enterprise" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:-:x64-enterprise", desc:SCRIPT_DESC);
+          else if("ultimate" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:-:x64-ultimate", desc:SCRIPT_DESC);
+          else if("premium" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:-:x64-home_premium", desc:SCRIPT_DESC);
           else {
-            register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":::x64", desc:SCRIPT_DESC);
+            register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:-:x64", desc:SCRIPT_DESC);
           }
         }
         if (OSSP == "1"){
-          if("enterprise" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp1:x64-enterprise", desc:SCRIPT_DESC);
-          else if("ultimate" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp1:x64-ultimate", desc:SCRIPT_DESC);
-          else if("premium" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp1:x64-home_premium", desc:SCRIPT_DESC);
+          if("enterprise" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp1:x64-enterprise", desc:SCRIPT_DESC);
+          else if("ultimate" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp1:x64-ultimate", desc:SCRIPT_DESC);
+          else if("premium" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp1:x64-home_premium", desc:SCRIPT_DESC);
           else {
-            register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp1:x64", desc:SCRIPT_DESC);
             register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp1:x64", desc:SCRIPT_DESC);
           }
         }
         if (OSSP == "2"){
-          register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp2:x64", desc:SCRIPT_DESC);
           register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp2:x64", desc:SCRIPT_DESC);
         }
       }
@@ -1403,10 +1390,10 @@ if (OSVER == "6.0"){
           else if("web" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp2:web", desc:SCRIPT_DESC);
           else {
             register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp2", desc:SCRIPT_DESC);
-            register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp2:x32", desc:SCRIPT_DESC);
+            register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp2:x32", desc:SCRIPT_DESC);
           }
         }
-        else register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":::x32", desc:SCRIPT_DESC);
+        else register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:-:x32", desc:SCRIPT_DESC);
       }
       else if (x64 == "1" && OSCPU != "6"){
         if (OSSP == "0"){
@@ -1415,19 +1402,17 @@ if (OSVER == "6.0"){
           if("enterprise" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp1:enterprise_x64", desc:SCRIPT_DESC);
         }
         else if (OSSP == "2"){
-          register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp2:x64", desc:SCRIPT_DESC);
+          register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp2:x64", desc:SCRIPT_DESC);
           if("enterprise" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp2:enterprise_x64", desc:SCRIPT_DESC);
         }
         else{
-          register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":::x64", desc:SCRIPT_DESC);
-          register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-::x64", desc:SCRIPT_DESC);
+          register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:-:x64", desc:SCRIPT_DESC);
         }
       }
-      else if (OSSP == "0" && cputype =="IA64") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":::itanium", desc:SCRIPT_DESC);
-      else if (OSSP == "0" && cputype =="IA64") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-::itanium", desc:SCRIPT_DESC);
+      else if (OSSP == "0" && cputype =="IA64") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:-:itanium", desc:SCRIPT_DESC);
       else if (OSSP == "0" && cputype =="IA64") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:gold:itanium", desc:SCRIPT_DESC);
       else if (OSSP == "2" && cputype =="IA64") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp2:itanium", desc:SCRIPT_DESC);
-      else register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-", desc:SCRIPT_DESC);
+      else register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe, desc:SCRIPT_DESC);
     }
   }
 }
@@ -1455,9 +1440,9 @@ if (OSVER == "6.1"){
   else if(OSTYPE == "2" || OSTYPE == "3"){#Windows 2008 R2
     cpe = "cpe:/o:microsoft:windows_server_2008:r2";
     if (OSSP == "0"){
-      if (OSSKU != "15")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:"cpe:/o:microsoft:windows_server_2008:r2", desc:SCRIPT_DESC);
-      if (OSSKU != "15")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::x64", desc:SCRIPT_DESC);
-      if (OSSKU == "15")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::itanium", desc:SCRIPT_DESC);
+      if (OSSKU != "15")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe, desc:SCRIPT_DESC);
+      if (OSSKU != "15")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:x64", desc:SCRIPT_DESC);
+      if (OSSKU == "15")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:itanium", desc:SCRIPT_DESC);
     }
     if (OSSP == "1"){
       if (OSSKU != "15")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":sp1:x64", desc:SCRIPT_DESC);
@@ -1469,9 +1454,9 @@ if (OSVER == "6.1"){
     if ("Windows Server 2008" >< OSNAME){
       cpe = "cpe:/o:microsoft:windows_server_2008:r2";
       if (OSSP == "0"){
-        if (cputype !="IA64")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:"cpe:/o:microsoft:windows_server_2008:r2", desc:SCRIPT_DESC);
-        else if (cputype =="AMD64" && x64 == "1")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::x64", desc:SCRIPT_DESC);
-        else if (cputype =="IA64")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::itanium", desc:SCRIPT_DESC);
+        if (cputype !="IA64")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe, desc:SCRIPT_DESC);
+        else if (cputype =="AMD64" && x64 == "1")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:x64", desc:SCRIPT_DESC);
+        else if (cputype =="IA64")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:itanium", desc:SCRIPT_DESC);
       }
       if (OSSP == "1"){
         if (cputype =="AMD64" && x64 == "1")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":sp1:x64", desc:SCRIPT_DESC);
@@ -1507,35 +1492,29 @@ if (OSVER == "6.2"){
       if (OSSP == "0"){
         register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:-:x86", desc:SCRIPT_DESC);
       }
-      if (OSSP == "1"){
-      # TBD: Why is this commented out? register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp1:x86", desc:SCRIPT_DESC);
-      }
     }
     if (x64 == "1"){
       if (OSSP == "0"){
         register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:-:x64", desc:SCRIPT_DESC);
       }
-      if (OSSP == "1"){
-      # TBD: Why is this commented out? register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp1:x64", desc:SCRIPT_DESC);
-      }
     }
   }
   else if(OSTYPE == "2" || OSTYPE == "3"){#Windows 2012
     if (OSSP == "0"){
-      register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:"cpe:/o:microsoft:windows_server_2012:-", desc:SCRIPT_DESC);
+      register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:"cpe:/o:microsoft:windows_server_2012", desc:SCRIPT_DESC);
     }
     if (OSSP == "1"){
-      # TBD: Really empty?
+      register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:"cpe:/o:microsoft:windows_server_2012:-:sp1", desc:SCRIPT_DESC);
     }
   }
   #SMB fallback. Is not so exactly as wmi.
   else if(!OSTYPE){
     if ("Windows Server 2012" >< OSNAME){
       if (OSSP == "0"){
-        register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:"cpe:/o:microsoft:windows_server_2012:-", desc:SCRIPT_DESC);
+        register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:"cpe:/o:microsoft:windows_server_2012", desc:SCRIPT_DESC);
       }
       if (OSSP == "1"){
-        # TBD: Really empty?
+        register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:"cpe:/o:microsoft:windows_server_2012:-:sp1", desc:SCRIPT_DESC);
       }
     }
     else if ("Windows 8" >< OSNAME){
@@ -1544,16 +1523,10 @@ if (OSVER == "6.2"){
         if (OSSP == "0"){
           register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:-:x86", desc:SCRIPT_DESC);
         }
-        if (OSSP == "1"){
-          # TBD: Why is this commented out? register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp1:x86", desc:SCRIPT_DESC);
-        }
       }
       if (x64 == "1"){
         if (OSSP == "0"){
           register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:-:x64", desc:SCRIPT_DESC);
-        }
-        if (OSSP == "1"){
-          # TBD: Why is this commented out? register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp1:x64", desc:SCRIPT_DESC);
         }
       }
     }
@@ -1570,6 +1543,7 @@ if (OSVER == "6.3"){
       register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:"cpe:/o:microsoft:windows_server_2012:r2", desc:SCRIPT_DESC);
     }
     if (OSSP == "1"){
+      register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:"cpe:/o:microsoft:windows_server_2012:r2:sp1", desc:SCRIPT_DESC);
     }
   }
   #SMB fallback. Is not so exactly as wmi.
@@ -1579,6 +1553,7 @@ if (OSVER == "6.3"){
         register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:"cpe:/o:microsoft:windows_server_2012:r2", desc:SCRIPT_DESC);
       }
       if (OSSP == "1"){
+        register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:"cpe:/o:microsoft:windows_server_2012:r2:sp1", desc:SCRIPT_DESC);
       }
     }
     else if ("Windows 8.1" >< OSNAME){

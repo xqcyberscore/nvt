@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_filr_version.nasl 11885 2018-10-12 13:47:20Z cfischer $
+# $Id: gb_filr_version.nasl 13825 2019-02-22 06:38:47Z ckuersteiner $
 #
 # Filr Detection
 #
@@ -30,8 +30,8 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.105824");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11885 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 13825 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-22 07:38:47 +0100 (Fri, 22 Feb 2019) $");
   script_tag(name:"creation_date", value:"2016-07-25 16:02:26 +0200 (Mon, 25 Jul 2016)");
   script_name("Filr Detection");
 
@@ -56,7 +56,7 @@ if( "Filr" >!< rls ) exit( 0 );
 set_kb_item( name:"filr/installed", value:TRUE );
 
 vers = 'unknown';
-cpe = 'cpe:/a:novell:filr';
+cpe = 'cpe:/a:microfocus:filr';
 
 # product=Novell Filr Appliance
 # singleWordProductName=Filr
@@ -77,5 +77,5 @@ register_product( cpe:cpe, location:'ssh',service:'ssh' );
 report = build_detection_report( app:"Filr", version:vers, install:"ssh", cpe:cpe, concluded:rls );
 
 log_message( port:0, data:report );
-exit( 0 );
 
+exit( 0 );

@@ -21,13 +21,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704387");
-  script_version("$Revision: 13560 $");
+  script_version("$Revision: 13828 $");
   script_cve_id("CVE-2018-20685", "CVE-2019-6109", "CVE-2019-6111");
   script_name("Debian Security Advisory DSA 4387-1 (openssh - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-11 07:52:25 +0100 (Mon, 11 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-22 10:35:28 +0100 (Fri, 22 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-02-09 00:00:00 +0100 (Sat, 09 Feb 2019)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"5.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

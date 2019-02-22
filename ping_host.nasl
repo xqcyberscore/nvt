@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ping_host.nasl 13518 2019-02-07 07:59:21Z cfischer $
+# $Id: ping_host.nasl 13808 2019-02-21 09:54:00Z cfischer $
 #
 # Ping Host
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100315");
-  script_version("$Revision: 13518 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-07 08:59:21 +0100 (Thu, 07 Feb 2019) $");
+  script_version("$Revision: 13808 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-21 10:54:00 +0100 (Thu, 21 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-10-26 10:02:32 +0100 (Mon, 26 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -218,8 +218,10 @@ if( "no" >< mark_dead && "no" >< report_dead ) {
   exit( 0 );
 }
 
-if( "yes" >< use_nmap && ! find_in_path( 'nmap' ) ) {
-  log_message( data:'Nmap was selected for host discovery but is not present on this system.\nFalling back to built-in discovery method.' );
+# nb: Don't use / add the info from toolcheck.nasl as this would require to have toolcheck.nasl
+# (and thus all find_in_path) of toolcheck.nasl to be running for minimal scan configs like "Host Discovery".
+if( "yes" >< use_nmap && ! find_in_path( "nmap" ) ) {
+  log_message( data:"Nmap was selected for host discovery but is not present on this system. Falling back to built-in discovery method." );
   use_nmap = "no";
 }
 

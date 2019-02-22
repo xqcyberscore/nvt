@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_greenbone_os_detect_http.nasl 8610 2018-01-31 15:08:13Z cfischer $
+# $Id: gb_greenbone_os_detect_http.nasl 13811 2019-02-21 11:07:30Z cfischer $
 #
 # Greenbone Security Manager (GSM) / Greenbone OS (GOS) Detection (HTTP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112137");
-  script_version("$Revision: 8610 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-31 16:08:13 +0100 (Wed, 31 Jan 2018) $");
+  script_version("$Revision: 13811 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-21 12:07:30 +0100 (Thu, 21 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-11-23 10:50:05 +0100 (Thu, 23 Nov 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -67,6 +67,10 @@ if( buf =~ "HTTP/1\.. 200" && ( ( "<title>Greenbone Security Assistant" >< buf &
   set_kb_item( name:"greenbone/gos/http/detected", value:TRUE );
   set_kb_item( name:"greenbone/gos/http/port", value:port );
   set_kb_item( name:"greenbone/gos/http/" + port + "/detected", value:TRUE );
+
+  # nb: To tell can_host_asp and can_host_php from http_func that the service doesn't support these
+  replace_kb_item( name:"www/" + port + "/can_host_php", value:"no" );
+  replace_kb_item( name:"www/" + port + "/can_host_asp", value:"no" );
 
   vers = "unknown";
   version = eregmatch( string:buf, pattern:'<div class="gos_version">Greenbone OS ([^<]+)</div>', icase:FALSE );

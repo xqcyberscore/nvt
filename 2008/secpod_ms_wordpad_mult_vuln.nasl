@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_wordpad_mult_vuln.nasl 12485 2018-11-22 11:39:45Z cfischer $
+# $Id: secpod_ms_wordpad_mult_vuln.nasl 13760 2019-02-19 11:38:16Z santu $
 #
 # WordPad and Office Text Converter Memory Corruption Vulnerability (960477)
 #
@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900065");
-  script_version("$Revision: 12485 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-22 12:39:45 +0100 (Thu, 22 Nov 2018) $");
+  script_version("$Revision: 13760 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-19 12:38:16 +0100 (Tue, 19 Feb 2019) $");
   script_tag(name:"creation_date", value:"2008-12-12 16:11:26 +0100 (Fri, 12 Dec 2008)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -75,7 +75,7 @@ include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
-include("misc_func.inc");
+include("http_func.inc");
 
 if(hotfix_check_sp(win2k:5, xp:4, win2003:3) <= 0){
   exit(0);

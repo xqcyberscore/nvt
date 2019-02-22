@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_magento_mult_vuln.nasl 13288 2019-01-25 09:51:37Z ckuersteiner $
+# $Id: gb_magento_mult_vuln.nasl 13783 2019-02-20 11:12:24Z cfischer $
 #
 # Magento Multiple Vulnerabilities (Nov18)
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:magentocommerce:magento';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141927");
-  script_version("$Revision: 13288 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-25 10:51:37 +0100 (Fri, 25 Jan 2019) $");
+  script_version("$Revision: 13783 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-20 12:12:24 +0100 (Wed, 20 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-25 16:26:16 +0700 (Fri, 25 Jan 2019)");
   script_tag(name:"cvss_base", value:"8.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:M/C:C/I:C/A:C");
@@ -117,7 +117,7 @@ if (description)
 
   - Vulnerability in Attribute Group Name
 
-  - CSRF Vulnerabilty related to Customer Group Deletion
+  - CSRF Vulnerability related to Customer Group Deletion
 
   - Outdated jQuery Causes PCI Scanning Failure
 

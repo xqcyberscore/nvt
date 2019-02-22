@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Tue, 19 Feb 2019 10:23:08 +0100
+# Automatically created on:  Fri, 22 Feb 2019 10:55:37 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -43987,6 +43987,7 @@
 2019/centos/gb_CESA-2019_0049_libgudev1-219-62.el7__centos7.nasl: GPLv2+
 2019/centos/gb_CESA-2019_0059_libvncserver_centos7.nasl: GPLv2+
 2019/centos/gb_CESA-2019_0109_perl_centos7.nasl: GPLv2+
+2019/collabtive/gb_collabtive_xss_vuln_feb19.nasl: GPLv2+
 2019/coppermine/gb_coppermine_xss_vuln.nasl: GPLv2+
 2019/coreos/gb_etcd_auth_vuln.nasl: GPLv2+
 2019/coship/gb_coship_routers_pw_reset_vuln.nasl: GPLv2+
@@ -44024,6 +44025,9 @@
 2019/debian/deb_4391.nasl: GPLv2+
 2019/debian/deb_4392.nasl: GPLv2+
 2019/debian/deb_4393.nasl: GPLv2+
+2019/debian/deb_4394.nasl: GPLv2+
+2019/debian/deb_4395.nasl: GPLv2+
+2019/debian/deb_4396.nasl: GPLv2+
 2019/debian/deb_dla_1621.nasl: GPLv2+
 2019/debian/deb_dla_1623.nasl: GPLv2+
 2019/debian/deb_dla_1624.nasl: GPLv2+
@@ -44081,6 +44085,9 @@
 2019/debian/deb_dla_1680.nasl: GPLv2+
 2019/debian/deb_dla_1681.nasl: GPLv2+
 2019/debian/deb_dla_1682.nasl: GPLv2+
+2019/debian/deb_dla_1683.nasl: GPLv2+
+2019/debian/deb_dla_1684.nasl: GPLv2+
+2019/debian/deb_dla_1685.nasl: GPLv2+
 2019/discourse/gb_discourse_2.2.0beta2.nasl: GPLv2+
 2019/discourse/gb_discourse_2.2.0beta3.nasl: GPLv2+
 2019/discourse/gb_discourse_2.2.0beta4.nasl: GPLv2+
@@ -44099,6 +44106,8 @@
 2019/dovecot/gb_dovecot_auth_bypass_vuln.nasl: GPLv2+
 2019/drupal/gb_drupal_sa-core-2019-002_lin.nasl: GPLv2+
 2019/drupal/gb_drupal_sa-core-2019-002_win.nasl: GPLv2+
+2019/drupal/gb_drupal_sa-core-2019-003_lin.nasl: GPLv2+
+2019/drupal/gb_drupal_sa-core-2019-003_win.nasl: GPLv2+
 2019/fedora/gb_fedora_2018_166b220ff1_tcpreplay_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2018_27f957ae8e_terminology_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2018_2abadd4469_haproxy_fc28.nasl: GPLv2+
@@ -44195,6 +44204,8 @@
 2019/lexmark/gb_lexmark_printers_CVE-2019-6489.nasl: GPLv2+
 2019/libreoffice/gb_libreoffice_rce_vuln_feb19_macosx.nasl: GPLv2+
 2019/libreoffice/gb_libreoffice_rce_vuln_feb19_win.nasl: GPLv2+
+2019/lighttpd/gb_lighttpd_mult_vuln_aug18.nasl: GPLv2+
+2019/lighttpd/gb_lighttpd_mult_vuln_oct18.nasl: GPLv2+
 2019/limesurvey/gb_limesurvey_xss_vuln1.nasl: GPLv2+
 2019/limesurvey/gb_limesurvey_xss_vuln.nasl: GPLv2+
 2019/magentocommerce/gb_magento_mult_vuln.nasl: GPLv2+
@@ -44265,6 +44276,7 @@
 2019/microsoft/gb_ms_office_mult_vuln_jan19_macosx.nasl: GPLv2+
 2019/microsoft/gb_ms_visual_studio_mult_info_disc_vuln_jan19.nasl: GPLv2+
 2019/microsoft/gb_ms_visual_studio_rce_vuln_jan19.nasl: GPLv2+
+2019/mikrotik/gb_mikrotik_routeros_intermediary_vuln.nasl: GPLv2+
 2019/modx/gb_modx_cms_mult_xss_vuln.nasl: GPLv2+
 2019/mozilla/gb_mozilla_firefox_esr_mfsa_2018-31_2019-03_macosx.nasl: GPLv2+
 2019/mozilla/gb_mozilla_firefox_esr_mfsa_2018-31_2019-03_win.nasl: GPLv2+
@@ -44459,6 +44471,10 @@
 2019/wordpress/gb_wordpress_import-users-from-csv-with-meta_xss_vuln_dec18.nasl: GPLv2+
 2019/wordpress/gb_wordpress_multi-step-form_xss_vuln_dec18.nasl: GPLv2+
 2019/wordpress/gb_wordpress_ninja-forms_xss_vuln_nov18.nasl: GPLv2+
+2019/wordpress/gb_wordpress_path_trav_vuln_lin.nasl: GPLv2+
+2019/wordpress/gb_wordpress_path_trav_vuln_win.nasl: GPLv2+
+2019/wordpress/gb_wordpress_rce_vuln_lin.nasl: GPLv2+
+2019/wordpress/gb_wordpress_rce_vuln_win.nasl: GPLv2+
 2019/wordpress/gb_wordpress_simple-social-buttons_priv_esc_vuln.nasl: GPLv2+
 2019/wordpress/gb_wordpress_social_network_tabs_info_discl_vuln.nasl: GPLv2+
 2019/wordpress/gb_wordpress_spam-byebye_xss_vuln_jan19.nasl: GPLv2+
@@ -45642,7 +45658,9 @@ gb_manageengine_exchange_report_detect.nasl: GPLv2+
 gb_manage_engine_firewall_analyzer_detect.nasl: GPLv2+
 gb_manageengine_ncm_detect.nasl: GPLv2+
 gb_manageengine_netflow_analyzer_detect.nasl: GPLv2+
-gb_manage_engine_opmanager_detect.nasl: GPLv2+
+gb_manage_engine_opmanager_consolidation.nasl: GPLv2+
+gb_manage_engine_opmanager_http_detect.nasl: GPLv2+
+gb_manage_engine_opmanager_smb_detect.nasl: GPLv2+
 gb_manageengine_oputils_detect.nasl: GPLv2+
 gb_manage_engine_pass_mang_pro_detect.nasl: GPLv2+
 gb_manageengine_servicedesk_plus_detect.nasl: GPLv2+
@@ -45879,7 +45897,6 @@ gb_open_site_detect.nasl: GPLv2+
 gb_openssl_detect_lin.nasl: GPLv2+
 gb_openssl_detect.nasl: GPLv2+
 gb_openssl_detect_win.nasl: GPLv2+
-gb_openssl_heartbeat.inc: GPLv2+
 gb_open_udp_ports.nasl: GPLv2+
 gb_open_urgence_vaccin_detect.nasl: GPLv2+
 gb_openvas_administrator_detect.nasl: GPLv2+
@@ -46088,6 +46105,7 @@ gb_rockwell_bootp_dhcp_tool_detect_win.nasl: GPLv2+
 gb_rockwell_micrologix_consolidation.nasl: GPLv2+
 gb_rockwell_micrologix_ethernetip_detect.nasl: GPLv2+
 gb_rockwell_micrologix_http_detect.nasl: GPLv2+
+gb_rockwell_powermonitor_http_detect.nasl: GPLv2+
 gb_rockwell_win_fw_conf_utility_detect_win.nasl: GPLv2+
 gb_ros_detect.nasl: GPLv2+
 gb_rpi_cam_control_detect.nasl: GPLv2+

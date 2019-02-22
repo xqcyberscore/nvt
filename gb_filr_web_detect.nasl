@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_filr_web_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
+# $Id: gb_filr_web_detect.nasl 13825 2019-02-22 06:38:47Z ckuersteiner $
 #
 # Filr Web Interface Detection
 #
@@ -30,9 +30,10 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.105826");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11885 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 13825 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-22 07:38:47 +0100 (Fri, 22 Feb 2019) $");
   script_tag(name:"creation_date", value:"2016-07-25 16:16:12 +0200 (Mon, 25 Jul 2016)");
+
   script_name("Filr Web Interface Detection");
 
   script_tag(name:"summary", value:"This script performs HTTP based detection of Filr Web Interface");
@@ -45,9 +46,9 @@ if (description)
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 8443);
   script_exclude_keys("Settings/disable_cgi_scanning");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -59,9 +60,9 @@ url = '/ssf/a/do?p_name=ss_forum&p_action=1&action=__login';
 req = http_get( item:url, port:port );
 buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
-if( "<title>Novell Filr</title>" >< buf )
+if( buf =~ "<title>(Novell|Micro Focus) Filr</title>" )
 {
-  cpe = 'cpe:/a:novell:filr';
+  cpe = 'cpe:/a:microfocus:filr';
   set_kb_item( name:'filr/webinterface/detected', value:port );
 
   register_product( cpe:cpe, location:"/", port:port, service:'www' );
@@ -70,5 +71,3 @@ if( "<title>Novell Filr</title>" >< buf )
 }
 
 exit( 0 );
-
-

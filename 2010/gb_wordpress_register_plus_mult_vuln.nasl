@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_register_plus_mult_vuln.nasl 13660 2019-02-14 09:48:45Z cfischer $
+# $Id: gb_wordpress_register_plus_mult_vuln.nasl 13794 2019-02-20 14:59:32Z cfischer $
 #
 # WordPress Register Plus Plugin Multiple Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801492");
-  script_version("$Revision: 13660 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-14 10:48:45 +0100 (Thu, 14 Feb 2019) $");
+  script_version("$Revision: 13794 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-20 15:59:32 +0100 (Wed, 20 Feb 2019) $");
   script_tag(name:"creation_date", value:"2010-12-27 09:55:05 +0100 (Mon, 27 Dec 2010)");
   script_bugtraq_id(45057);
   script_cve_id("CVE-2010-4402", "CVE-2010-4403");
@@ -116,7 +116,7 @@ rcvRes2 = http_keepalive_send_recv(port:port, data:sndReq2);
 if(egrep(pattern:"^HTTP/.* 200 OK", string:rcvRes2) &&
         ("><script>alert(document.cookie)</script>" >< rcvRes2)) {
   report = report_vuln_url(port:port, url:filename);
-  security_message(port:port);
+  security_message(port:port, data:report);
   exit(0);
 }
 

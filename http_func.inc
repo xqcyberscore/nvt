@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: http_func.inc 13686 2019-02-15 10:08:13Z cfischer $
+# $Id: http_func.inc 13811 2019-02-21 11:07:30Z cfischer $
 #
 # Methods to handle HTTP
 #
@@ -24,7 +24,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 13686 $
+# $Revision: 13811 $
 #
 ###############################################################################
 
@@ -234,7 +234,10 @@ function get_http_banner( port, file, ignore_broken ) {
   if( banner )
     return banner;
 
-  # nb: This is set in nasl/nasl_builtin_find_service.c of openvas-scanner as well...
+  # nb: This is set in nasl/nasl_builtin_find_service.c of openvas-scanner as well but without a trailing "/"
+  # like e.g. www/banner/80. In the case of this function we want to use the trailing "/" because the scanner
+  # is saving the whole response including the body in that KB entry. This is not something we want to return
+  # with this function.
   sb = strcat( "www/banner/", port, file );
   banner = get_kb_item( sb );
   if( banner )
@@ -906,7 +909,7 @@ function http_send_recv( port, data ) {
 function cgi_dirs( port, host ) {
 
   local_var port, host;
-  local_var kb, optimize, usercgis;
+  local_var kb, usercgis;
   # nb: optimize_test_enabled is a global var
 
   if( ! port )
@@ -955,56 +958,67 @@ function cgi_dirs( port, host ) {
 function can_host_php( port ) {
 
   local_var port;
-  local_var files, banner, srv_pattern;
+  local_var key, can_host, files, banner, srv_pattern;
 
   if( ! port ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#can_host_php" );
     return NULL;
   }
 
-  if( get_kb_item( "www/" + port + "/PHP" ) )
+  # nb: We're using "yes/no" for the keys as a FALSE won't be saved into the KB.
+  key = "www/" + port + "/can_host_php";
+  if( can_host = get_kb_item( key ) ) {
+    if( can_host == "yes" )
+      return TRUE;
+    else
+      return FALSE;
+  }
+
+  if( get_kb_item( "www/" + port + "/PHP" ) ) {
+    set_kb_item( name:key, value:"yes" );
     return TRUE;
+  }
 
   # nb: * in host is expected as webserver hosting .php* files on one vhost
   # is most likely supporting PHP on another vhost as well.
   files = http_get_kb_file_extensions( port:port, host:"*", ext:"php*" );
-  if( ! isnull( files ) )
-    return TRUE; # Hosting .php* files
-
-  if( get_kb_item( "greenbone/gos/http/" + port + "/detected" ) )
-    return FALSE;
-
-  if( get_kb_item( "gsa_or_gsa_ng/" + port + "/detected" ) )
-    return FALSE;
+  if( ! isnull( files ) ) {
+    set_kb_item( name:key, value:"yes" );
+    return TRUE;
+  }
 
   banner = get_http_banner( port:port );
   if( ! banner ) {
+    set_kb_item( name:key, value:"no" );
     return FALSE; # Broken Web Server
   } else {
 
-    banner = tolower( banner );
-
-    if( banner =~ 'powered.*php' ||
-        banner =~ "server.*php.*" ||
-        banner =~ "^set-cookie:.*phpsessid" ||
-        "content-type: application/x-appweb-php" >< banner )
+    if( egrep( pattern:"((powered|server).*php|set-cookie:.*phpsessid|content-type: application/x-appweb-php)", string:banner, icase:TRUE ) ) {
+      set_kb_item( name:key, value:"yes" );
       return TRUE;
+    }
 
     # TODO: Find more possible web server to add
     srv_pattern  = "(apache|nginx|thttpd|aolserver|pi3web|zeus|iis|icewarp|lighttpd|";
     srv_pattern += "hiawatha|litespeed|caddy|panweb|embedthis-http|embedthis-appweb|mbedthis-appweb)";
 
-    if( egrep( pattern:"^Server:.*" + srv_pattern, string:banner, icase:TRUE ) )
+    if( egrep( pattern:"^Server:.*" + srv_pattern, string:banner, icase:TRUE ) ) {
+      set_kb_item( name:key, value:"yes" );
       return TRUE;
+    }
   }
 
   if( egrep( pattern:"^Server:.*", string:banner, icase:TRUE ) ) {
+    set_kb_item( name:key, value:"no" );
     return FALSE; # Unknown web server, should be added above if we know that it can host a PHP website
   } else {
-    if( "user-agent: loolwsd wopi" >< banner || "x-powered-by: express" >< banner )
+    if( egrep( pattern:"(user-agent: loolwsd wopi|x-powered-by: express)", string:banner, icase:TRUE ) ) {
+      set_kb_item( name:key, value:"no" );
       return FALSE; # We know that this can't host a PHP website
-    else
+    } else {
+      set_kb_item( name:key, value:"yes" );
       return TRUE; # Server: banner hidden - might be able to host a PHP website
+    }
   }
 }
 
@@ -1018,52 +1032,60 @@ function can_host_php( port ) {
 function can_host_asp( port ) {
 
   local_var port;
-  local_var files, banner, srv_pattern;
+  local_var key, can_host, files, banner, srv_pattern;
 
   if( ! port ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#can_host_asp" );
     return NULL;
   }
 
+  # nb: We're using "yes/no" for the keys as a FALSE won't be saved into the KB.
+  key = "www/" + port + "/can_host_asp";
+  if( can_host = get_kb_item( key ) ) {
+    if( can_host == "yes" )
+      return TRUE;
+    else
+      return FALSE;
+  }
+
   # nb: * in host is expected as webserver hosting .asp* files on one vhost
   # is most likely supporting .asp/.aspx on another vhost as well.
   files = http_get_kb_file_extensions( port:port, host:"*", ext:"asp*" );
-  if( ! isnull( files ) )
-    return TRUE; # Hosting .asp / .aspx files
-
-  if( get_kb_item( "greenbone/gos/http/" + port + "/detected" ) )
-    return FALSE;
-
-  if( get_kb_item( "gsa_or_gsa_ng/" + port + "/detected" ) )
-    return FALSE;
+  if( ! isnull( files ) ) {
+    set_kb_item( name:key, value:"yes" );
+    return TRUE;
+  }
 
   banner = get_http_banner( port:port );
   if( ! banner ) {
+    set_kb_item( name:key, value:"no" );
     return FALSE; # Broken Web Server
   } else {
 
-    banner = tolower( banner );
-
-    if( banner =~ 'powered.*asp' ||
-        banner =~ "server.*asp.*" ||
-        banner =~ "^set-cookie:.*asp\.net_sessionid" ||
-        banner =~ "^set-cookie:.*aspsessionid" ||
-        "x-aspnet-version" >< banner )
+    if( egrep( pattern:"((powered|server).*asp|set-cookie:.*(asp\.net_sessionid|aspsessionid)|x-aspnet-version)", string:banner, icase:TRUE ) ) {
+      set_kb_item( name:key, value:"yes" );
       return TRUE;
+    }
 
     srv_pattern = "(iis|goahead-webs)"; # TODO: Find more possible web server to add
 
-    if( egrep( pattern:"^Server:.*" + srv_pattern, string:banner, icase:TRUE ) )
+    if( egrep( pattern:"^Server:.*" + srv_pattern, string:banner, icase:TRUE ) ) {
+      set_kb_item( name:key, value:"yes" );
       return TRUE;
+    }
   }
 
   if( egrep( pattern:"^Server:.*", string:banner, icase:TRUE ) ) {
+    set_kb_item( name:key, value:"no" );
     return FALSE; # Unknown web server, should be added above if we know that it can host a ASP/ASP.NET website
   } else {
-    if( "user-agent: loolwsd wopi" >< banner || "x-powered-by: express" >< banner )
+    if( egrep( pattern:"(user-agent: loolwsd wopi|x-powered-by: express)", string:banner, icase:TRUE ) ) {
+      set_kb_item( name:key, value:"no" );
       return FALSE; # We know that this can't host a ASP/ASP.NET website
-    else
+    } else {
+      set_kb_item( name:key, value:"yes" );
       return TRUE; # Server: banner hidden - might be able to host a ASP/ASP.NET website
+    }
   }
 }
 
@@ -1079,7 +1101,7 @@ function can_host_asp( port ) {
 function http_gunzip( buf, onlybody ) {
 
   local_var buf, onlybody;
-  local_var lines, line, sep, header, body, h, tmpdir, tmpfile, tmpfile_gz, i, argv, res;
+  local_var lines, line, sep, header, body, h;
 
   if( ! buf ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#buf#-#http_gunzip" );
@@ -1116,57 +1138,14 @@ function http_gunzip( buf, onlybody ) {
   if( ! body )
     return buf;
 
-  if( defined_func( "gunzip" ) ) {
+  if( body = gunzip( data:body ) ) {
 
-    if( body = gunzip( data:body ) ) {
+    if( onlybody )
+      return body + '\n\n\n##**##UNZIPPED##**##';
 
-      if( onlybody )
-        return body + '\n\n\n##**##UNZIPPED##**##';
-
-      h = ereg_replace( string:header, pattern:'(content-encoding:[^\r\n]+[\r\n]+)', replace:"", icase:TRUE );
-      return( h + '\r\n\r\n' + body + '\n\n\n##**##UNZIPPED##**##' );
-    }
-    return buf;
-  } else {
-
-    if( ! find_in_path( "gunzip" ) )
-      return buf;
-
-    tmpdir = get_tmp_dir();
-    if( ! tmpdir )
-      return buf;
-
-    file = "openvas_" + rand();
-    tmpfile = tmpdir + file;
-    tmpfile_gz = tmpfile + '.gz';
-
-    if( ! fwrite( data:body + '\r\n', file:tmpfile_gz ) )
-      return buf;
-
-    argv[i++] = "gunzip";
-    argv[i++] = tmpfile_gz;
-
-    res = pread( cmd:"gunzip", argv:argv, cd:FALSE );
-
-    if( file_stat( tmpfile_gz ) )
-      unlink( tmpfile_gz );
-
-    if( file_stat( tmpfile ) ) {
-
-      res = fread( tmpfile );
-      unlink( tmpfile );
-
-      if( ! res )
-        return buf;
-
-      if( onlybody )
-        return res + '\n\n\n##**##UNZIPPED##**##';
-
-      h = ereg_replace( string:header, pattern:'(content-encoding:[^\r\n]+[\r\n]+)', replace:"", icase:TRUE );
-      return h + '\r\n\r\n' + res  + '\n\n\n##**##UNZIPPED##**##';
-    }
+    h = ereg_replace( string:header, pattern:'(content-encoding:[^\r\n]+[\r\n]+)', replace:"", icase:TRUE );
+    return( h + '\r\n\r\n' + body + '\n\n\n##**##UNZIPPED##**##' );
   }
-
   return buf;
 }
 

@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: smb_nativelanman.nasl 12868 2018-12-21 13:38:44Z cfischer $
+# $Id: smb_nativelanman.nasl 13813 2019-02-21 13:07:21Z cfischer $
 #
 # SMB NativeLanMan
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102011");
-  script_version("$Revision: 12868 $");
+  script_version("$Revision: 13813 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-21 14:38:44 +0100 (Fri, 21 Dec 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-21 14:07:21 +0100 (Thu, 21 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-09-18 16:06:42 +0200 (Fri, 18 Sep 2009)");
   script_name("SMB NativeLanMan");
   script_category(ACT_GATHER_INFO);
@@ -362,9 +362,9 @@ for( x = l-3; x > 0 && c < 3; x = x - 2 ) {
           } else if( "windows server 2008 " >< os_str_lo && "r2" >< os_str_lo ) {
             register_and_report_os( os:os_str, cpe:"cpe:/o:microsoft:windows_server_2008:r2", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
           } else if( "windows server (r) 2008 " >< os_str_lo && "service pack 2" >< os_str_lo ) {
-            register_and_report_os( os:os_str, cpe:"cpe:/o:microsoft:windows_server_2008::sp2", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
+            register_and_report_os( os:os_str, cpe:"cpe:/o:microsoft:windows_server_2008:-:sp2", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
           } else if( "windows server (r) 2008 " >< os_str_lo && "service pack 1" >< os_str_lo ) {
-            register_and_report_os( os:os_str, cpe:"cpe:/o:microsoft:windows_server_2008::sp1", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
+            register_and_report_os( os:os_str, cpe:"cpe:/o:microsoft:windows_server_2008:-:sp1", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
           } else if( "windows server (r) 2008 " >< os_str_lo || "windows server 2008 " >< os_str_lo ) {
             register_and_report_os( os:os_str, cpe:"cpe:/o:microsoft:windows_server_2008", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
           # OS String: Windows Server 2012 Datacenter 9200; SMB String: Windows Server 2012 Datacenter 6.2

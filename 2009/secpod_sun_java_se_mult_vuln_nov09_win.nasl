@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_sun_java_se_mult_vuln_nov09_win.nasl 12635 2018-12-04 08:00:20Z cfischer $
+# $Id: secpod_sun_java_se_mult_vuln_nov09_win.nasl 13783 2019-02-20 11:12:24Z cfischer $
 #
 # Sun Java SE Multiple Vulnerabilities - Nov09 (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900978");
-  script_version("$Revision: 12635 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-04 09:00:20 +0100 (Tue, 04 Dec 2018) $");
+  script_version("$Revision: 13783 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-20 12:12:24 +0100 (Wed, 20 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-11-23 07:01:19 +0100 (Mon, 23 Nov 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -56,7 +56,7 @@ if(description)
 
   script_tag(name:"insight", value:"Multiple flaws occur due to:
 
-  - Directory traversal vulnerabilty in 'ICC_Profile.getInstance' method.
+  - Directory traversal vulnerability in 'ICC_Profile.getInstance' method.
 
   - Unspecified error in TrueType font parsing functionality.
 

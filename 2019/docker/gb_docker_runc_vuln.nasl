@@ -23,11 +23,11 @@ CPE = 'cpe:/a:docker:docker';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141997");
-  script_version("$Revision: 13647 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-14 06:07:12 +0100 (Thu, 14 Feb 2019) $");
+  script_version("$Revision: 13828 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-22 10:35:28 +0100 (Fri, 22 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-02-14 11:54:46 +0700 (Thu, 14 Feb 2019)");
-  script_tag(name:"cvss_base", value:"6.2");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
 
   script_cve_id("CVE-2019-5736");
   script_bugtraq_id(106976);

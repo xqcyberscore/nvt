@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: os_eol.inc 13640 2019-02-13 14:32:04Z cfischer $
+# $Id: os_eol.inc 13813 2019-02-21 13:07:21Z cfischer $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 13640 $
+# $Revision: 13813 $
 #
 ###############################################################################
 
@@ -767,20 +767,20 @@ eol_cpes['cpe:/o:microsoft:windows:3.11'] = '2001-12-31';
 eol_urls['cpe:/o:microsoft:windows_95'] = 'https://support.microsoft.com/en-us/lifecycle/search/default.aspx?sort=PN&alpha=Windows+95&Filter=FilterNO';
 eol_names['cpe:/o:microsoft:windows_95'] = 'Windows 95';
 eol_cpes['cpe:/o:microsoft:windows_95'] = '2001-12-31';
-eol_cpes['cpe:/o:microsoft:windows_95::gold'] = '2001-12-31';
-eol_cpes['cpe:/o:microsoft:windows_95::osr2'] = '2001-12-31';
-eol_cpes['cpe:/o:microsoft:windows_95::osr2.1'] = '2001-12-31';
-eol_cpes['cpe:/o:microsoft:windows_95::osr2.5'] = '2001-12-31';
-eol_cpes['cpe:/o:microsoft:windows_95::sp1'] = '2001-12-31';
-eol_cpes['cpe:/o:microsoft:windows_95::sr2'] = '2001-12-31';
+eol_cpes['cpe:/o:microsoft:windows_95:-:gold'] = '2001-12-31';
+eol_cpes['cpe:/o:microsoft:windows_95:-:osr2'] = '2001-12-31';
+eol_cpes['cpe:/o:microsoft:windows_95:-:osr2.1'] = '2001-12-31';
+eol_cpes['cpe:/o:microsoft:windows_95:-:osr2.5'] = '2001-12-31';
+eol_cpes['cpe:/o:microsoft:windows_95:-:sp1'] = '2001-12-31';
+eol_cpes['cpe:/o:microsoft:windows_95:-:sr2'] = '2001-12-31';
 
 #Windows 98 (https://support.microsoft.com/en-us/lifecycle/search/default.aspx?sort=PN&alpha=Windows+98&Filter=FilterNO)
 eol_urls['cpe:/o:microsoft:windows_98'] = 'https://support.microsoft.com/en-us/lifecycle/search/default.aspx?sort=PN&alpha=Windows+98&Filter=FilterNO';
 eol_names['cpe:/o:microsoft:windows_98'] = 'Windows 98';
 eol_cpes['cpe:/o:microsoft:windows_98'] = '2006-07-11';
-eol_cpes['cpe:/o:microsoft:windows_98::beta'] = '2006-07-11';
-eol_cpes['cpe:/o:microsoft:windows_98::gold'] = '2006-07-11';
-eol_cpes['cpe:/o:microsoft:windows_98::scd'] = '2006-07-11';
+eol_cpes['cpe:/o:microsoft:windows_98:-:beta'] = '2006-07-11';
+eol_cpes['cpe:/o:microsoft:windows_98:-:gold'] = '2006-07-11';
+eol_cpes['cpe:/o:microsoft:windows_98:-:scd'] = '2006-07-11';
 eol_cpes['cpe:/o:microsoft:windows_98:beta'] = '2006-07-11';
 eol_cpes['cpe:/a:microsoft:windows_98_plus_pack'] = '2006-07-11';
 eol_cpes['cpe:/o:microsoft:windows_98se'] = '2006-07-11';
@@ -864,68 +864,68 @@ eol_cpes['cpe:/o:microsoft:windows_nt:4.0:sru:workstation'] = '2002-06-30';
 eol_urls['cpe:/o:microsoft:windows_2000'] = 'https://support.microsoft.com/en-us/lifecycle/search/default.aspx?sort=PN&alpha=Windows+2000&Filter=FilterNO';
 eol_names['cpe:/o:microsoft:windows_2000'] = 'Windows 2000';
 eol_cpes['cpe:/o:microsoft:windows_2000'] = '2010-07-13';
-eol_cpes['cpe:/o:microsoft:windows_2000::beta3'] = '2010-07-13';
-eol_cpes['cpe:/o:microsoft:windows_2000::gold'] = '2010-07-13';
-eol_cpes['cpe:/o:microsoft:windows_2000::gold:advanced_server'] = '2010-07-13';
-eol_cpes['cpe:/o:microsoft:windows_2000::gold:datacenter_server'] = '2010-07-13';
-eol_cpes['cpe:/o:microsoft:windows_2000::gold:professional'] = '2010-07-13';
-eol_cpes['cpe:/o:microsoft:windows_2000::gold:server'] = '2010-07-13';
-eol_cpes['cpe:/o:microsoft:windows_2000::rc1'] = '2010-07-13';
-eol_cpes['cpe:/o:microsoft:windows_2000::rc2'] = '2010-07-13';
-eol_cpes['cpe:/o:microsoft:windows_2000::sp1'] = '2010-07-13';
-eol_cpes['cpe:/o:microsoft:windows_2000::sp1:advanced_server'] = '2010-07-13';
-eol_cpes['cpe:/o:microsoft:windows_2000::sp1:datacenter_server'] = '2010-07-13';
-eol_cpes['cpe:/o:microsoft:windows_2000::sp1:professional'] = '2010-07-13';
-eol_cpes['cpe:/o:microsoft:windows_2000::sp1:server'] = '2010-07-13';
-eol_cpes['cpe:/o:microsoft:windows_2000::sp2'] = '2010-07-13';
-eol_cpes['cpe:/o:microsoft:windows_2000::sp2:advanced_server'] = '2010-07-13';
-eol_cpes['cpe:/o:microsoft:windows_2000::sp2:datacenter_server'] = '2010-07-13';
-eol_cpes['cpe:/o:microsoft:windows_2000::sp2:professional'] = '2010-07-13';
-eol_cpes['cpe:/o:microsoft:windows_2000::sp2:server'] = '2010-07-13';
-eol_cpes['cpe:/o:microsoft:windows_2000::sp3'] = '2010-07-13';
-eol_cpes['cpe:/o:microsoft:windows_2000::sp3:advanced_server'] = '2010-07-13';
-eol_cpes['cpe:/o:microsoft:windows_2000::sp3:datacenter_server'] = '2010-07-13';
-eol_cpes['cpe:/o:microsoft:windows_2000::sp3:professional'] = '2010-07-13';
-eol_cpes['cpe:/o:microsoft:windows_2000::sp3:server'] = '2010-07-13';
-eol_cpes['cpe:/o:microsoft:windows_2000::sp4'] = '2010-07-13';
-eol_cpes['cpe:/o:microsoft:windows_2000::sp4:advanced_server'] = '2010-07-13';
-eol_cpes['cpe:/o:microsoft:windows_2000::sp4:datacenter_server'] = '2010-07-13';
-eol_cpes['cpe:/o:microsoft:windows_2000::sp4:professional'] = '2010-07-13';
-eol_cpes['cpe:/o:microsoft:windows_2000::sp4:server'] = '2010-07-13';
+eol_cpes['cpe:/o:microsoft:windows_2000:-:beta3'] = '2010-07-13';
+eol_cpes['cpe:/o:microsoft:windows_2000:-:gold'] = '2010-07-13';
+eol_cpes['cpe:/o:microsoft:windows_2000:-:gold:advanced_server'] = '2010-07-13';
+eol_cpes['cpe:/o:microsoft:windows_2000:-:gold:datacenter_server'] = '2010-07-13';
+eol_cpes['cpe:/o:microsoft:windows_2000:-:gold:professional'] = '2010-07-13';
+eol_cpes['cpe:/o:microsoft:windows_2000:-:gold:server'] = '2010-07-13';
+eol_cpes['cpe:/o:microsoft:windows_2000:-:rc1'] = '2010-07-13';
+eol_cpes['cpe:/o:microsoft:windows_2000:-:rc2'] = '2010-07-13';
+eol_cpes['cpe:/o:microsoft:windows_2000:-:sp1'] = '2010-07-13';
+eol_cpes['cpe:/o:microsoft:windows_2000:-:sp1:advanced_server'] = '2010-07-13';
+eol_cpes['cpe:/o:microsoft:windows_2000:-:sp1:datacenter_server'] = '2010-07-13';
+eol_cpes['cpe:/o:microsoft:windows_2000:-:sp1:professional'] = '2010-07-13';
+eol_cpes['cpe:/o:microsoft:windows_2000:-:sp1:server'] = '2010-07-13';
+eol_cpes['cpe:/o:microsoft:windows_2000:-:sp2'] = '2010-07-13';
+eol_cpes['cpe:/o:microsoft:windows_2000:-:sp2:advanced_server'] = '2010-07-13';
+eol_cpes['cpe:/o:microsoft:windows_2000:-:sp2:datacenter_server'] = '2010-07-13';
+eol_cpes['cpe:/o:microsoft:windows_2000:-:sp2:professional'] = '2010-07-13';
+eol_cpes['cpe:/o:microsoft:windows_2000:-:sp2:server'] = '2010-07-13';
+eol_cpes['cpe:/o:microsoft:windows_2000:-:sp3'] = '2010-07-13';
+eol_cpes['cpe:/o:microsoft:windows_2000:-:sp3:advanced_server'] = '2010-07-13';
+eol_cpes['cpe:/o:microsoft:windows_2000:-:sp3:datacenter_server'] = '2010-07-13';
+eol_cpes['cpe:/o:microsoft:windows_2000:-:sp3:professional'] = '2010-07-13';
+eol_cpes['cpe:/o:microsoft:windows_2000:-:sp3:server'] = '2010-07-13';
+eol_cpes['cpe:/o:microsoft:windows_2000:-:sp4'] = '2010-07-13';
+eol_cpes['cpe:/o:microsoft:windows_2000:-:sp4:advanced_server'] = '2010-07-13';
+eol_cpes['cpe:/o:microsoft:windows_2000:-:sp4:datacenter_server'] = '2010-07-13';
+eol_cpes['cpe:/o:microsoft:windows_2000:-:sp4:professional'] = '2010-07-13';
+eol_cpes['cpe:/o:microsoft:windows_2000:-:sp4:server'] = '2010-07-13';
 eol_cpes['cpe:/o:microsoft:windows_2000:beta3'] = '2010-07-13';
 
 #Windows XP (https://support.microsoft.com/en-us/lifecycle/search?sort=PN&alpha=Microsoft%20Windows%20XP&Filter=FilterNO)
 eol_urls['cpe:/o:microsoft:windows_xp'] = 'https://support.microsoft.com/en-us/lifecycle/search?sort=PN&alpha=Microsoft%20Windows%20XP&Filter=FilterNO';
 eol_names['cpe:/o:microsoft:windows_xp'] = 'Windows XP';
 eol_cpes['cpe:/o:microsoft:windows_xp'] = '2014-04-08';
-eol_cpes['cpe:/o:microsoft:windows_xp:::x64'] = '2014-04-08';
-eol_cpes['cpe:/o:microsoft:windows_xp:::x86'] = '2014-04-08';
-eol_cpes['cpe:/o:microsoft:windows_xp::gold'] = '2014-04-08';
-eol_cpes['cpe:/o:microsoft:windows_xp::gold:embedded'] = '2014-04-08';
-eol_cpes['cpe:/o:microsoft:windows_xp::gold:media_center'] = '2014-04-08';
-eol_cpes['cpe:/o:microsoft:windows_xp::gold:professional'] = '2014-04-08';
-eol_cpes['cpe:/o:microsoft:windows_xp::gold:tablet_pc'] = '2014-04-08';
-eol_cpes['cpe:/o:microsoft:windows_xp::sp1'] = '2014-04-08';
-eol_cpes['cpe:/o:microsoft:windows_xp::sp1:embedded'] = '2014-04-08';
-eol_cpes['cpe:/o:microsoft:windows_xp::sp1:media_center'] = '2014-04-08';
-eol_cpes['cpe:/o:microsoft:windows_xp::sp1:professional'] = '2014-04-08';
-eol_cpes['cpe:/o:microsoft:windows_xp::sp1:tablet_pc'] = '2014-04-08';
-eol_cpes['cpe:/o:microsoft:windows_xp::sp2'] = '2014-04-08';
-eol_cpes['cpe:/o:microsoft:windows_xp::sp2:embedded'] = '2014-04-08';
-eol_cpes['cpe:/o:microsoft:windows_xp::sp2:media_center'] = '2014-04-08';
-eol_cpes['cpe:/o:microsoft:windows_xp::sp2:professional'] = '2014-04-08';
-eol_cpes['cpe:/o:microsoft:windows_xp::sp2:tablet_pc'] = '2014-04-08';
-eol_cpes['cpe:/o:microsoft:windows_xp::sp2:x86'] = '2014-04-08';
-eol_cpes['cpe:/o:microsoft:windows_xp::sp3'] = '2014-04-08';
-eol_cpes['cpe:/o:microsoft:windows_xp::sp3:x86'] = '2014-04-08';
-eol_cpes['cpe:/o:microsoft:windows_xp:-:gold:64-bit-2002'] = '2014-04-08';
-eol_cpes['cpe:/o:microsoft:windows_xp:-:gold:64-bit-2003'] = '2014-04-08';
+eol_cpes['cpe:/o:microsoft:windows_xp:-:-:x64'] = '2014-04-08';
+eol_cpes['cpe:/o:microsoft:windows_xp:-:-:x86'] = '2014-04-08';
+eol_cpes['cpe:/o:microsoft:windows_xp:-:gold'] = '2014-04-08';
+eol_cpes['cpe:/o:microsoft:windows_xp:-:gold:embedded'] = '2014-04-08';
 eol_cpes['cpe:/o:microsoft:windows_xp:-:gold:home'] = '2014-04-08';
 eol_cpes['cpe:/o:microsoft:windows_xp:-:gold:x64'] = '2014-04-08';
+eol_cpes['cpe:/o:microsoft:windows_xp:-:gold:media_center'] = '2014-04-08';
+eol_cpes['cpe:/o:microsoft:windows_xp:-:gold:professional'] = '2014-04-08';
+eol_cpes['cpe:/o:microsoft:windows_xp:-:gold:tablet_pc'] = '2014-04-08';
+eol_cpes['cpe:/o:microsoft:windows_xp:-:gold:64-bit-2002'] = '2014-04-08';
+eol_cpes['cpe:/o:microsoft:windows_xp:-:gold:64-bit-2003'] = '2014-04-08';
+eol_cpes['cpe:/o:microsoft:windows_xp:-:sp1'] = '2014-04-08';
+eol_cpes['cpe:/o:microsoft:windows_xp:-:sp1:embedded'] = '2014-04-08';
+eol_cpes['cpe:/o:microsoft:windows_xp:-:sp1:media_center'] = '2014-04-08';
+eol_cpes['cpe:/o:microsoft:windows_xp:-:sp1:professional'] = '2014-04-08';
+eol_cpes['cpe:/o:microsoft:windows_xp:-:sp1:tablet_pc'] = '2014-04-08';
 eol_cpes['cpe:/o:microsoft:windows_xp:-:sp1:home'] = '2014-04-08';
 eol_cpes['cpe:/o:microsoft:windows_xp:-:sp1:x64'] = '2014-04-08';
+eol_cpes['cpe:/o:microsoft:windows_xp:-:sp2'] = '2014-04-08';
 eol_cpes['cpe:/o:microsoft:windows_xp:-:sp2:home'] = '2014-04-08';
 eol_cpes['cpe:/o:microsoft:windows_xp:-:sp2:x64'] = '2014-04-08';
+eol_cpes['cpe:/o:microsoft:windows_xp:-:sp2:embedded'] = '2014-04-08';
+eol_cpes['cpe:/o:microsoft:windows_xp:-:sp2:media_center'] = '2014-04-08';
+eol_cpes['cpe:/o:microsoft:windows_xp:-:sp2:professional'] = '2014-04-08';
+eol_cpes['cpe:/o:microsoft:windows_xp:-:sp2:tablet_pc'] = '2014-04-08';
+eol_cpes['cpe:/o:microsoft:windows_xp:-:sp2:x86'] = '2014-04-08';
+eol_cpes['cpe:/o:microsoft:windows_xp:-:sp3'] = '2014-04-08';
+eol_cpes['cpe:/o:microsoft:windows_xp:-:sp3:x86'] = '2014-04-08';
 eol_cpes['cpe:/o:microsoft:windows_xp:-:sp3:embedded'] = '2016-01-12';
 eol_cpes['cpe:/o:microsoft:windows_xp:-:sp3:home'] = '2014-04-08';
 eol_cpes['cpe:/o:microsoft:windows_xp:-:sp3:media_center'] = '2014-04-08';
@@ -933,106 +933,93 @@ eol_cpes['cpe:/o:microsoft:windows_xp:-:sp3:professional'] = '2014-04-08';
 eol_cpes['cpe:/o:microsoft:windows_xp:-:sp3:tablet_pc'] = '2014-04-08';
 eol_cpes['cpe:/o:microsoft:windows_xp:sp3:unknown:english'] = '2014-04-08';
 
-#Windows 2003 (https://support.microsoft.com/en-us/lifecycle/search?sort=PN&alpha=Microsoft%20Windows%20Server%202003&Filter=FilterNO)
-eol_urls['cpe:/o:microsoft:windows_2003_server'] = 'https://support.microsoft.com/en-us/lifecycle/search?sort=PN&alpha=Microsoft%20Windows%20Server%202003&Filter=FilterNO';
-eol_names['cpe:/o:microsoft:windows_2003_server'] = 'Windows Server 2003';
-eol_cpes['cpe:/o:microsoft:windows_2003_server'] = '2015-07-14';
-eol_cpes['cpe:/o:microsoft:windows_2003_server::gold'] = '2015-07-14';
-eol_cpes['cpe:/o:microsoft:windows_2003_server::gold:compute_cluster'] = '2015-07-14';
-eol_cpes['cpe:/o:microsoft:windows_2003_server::gold:datacenter'] = '2015-07-14';
-eol_cpes['cpe:/o:microsoft:windows_2003_server::gold:enterprise'] = '2015-07-14';
-eol_cpes['cpe:/o:microsoft:windows_2003_server::gold:itanium'] = '2015-07-14';
-eol_cpes['cpe:/o:microsoft:windows_2003_server::gold:standard'] = '2015-07-14';
-eol_cpes['cpe:/o:microsoft:windows_2003_server::gold:storage'] = '2015-07-14';
-eol_cpes['cpe:/o:microsoft:windows_2003_server::gold:x64'] = '2015-07-14';
-eol_cpes['cpe:/o:microsoft:windows_2003_server::gold:x64-datacenter'] = '2015-07-14';
-eol_cpes['cpe:/o:microsoft:windows_2003_server::gold:x64-enterprise'] = '2015-07-14';
-eol_cpes['cpe:/o:microsoft:windows_2003_server::gold:x64-standard'] = '2015-07-14';
-eol_cpes['cpe:/o:microsoft:windows_2003_server::r2'] = '2015-07-14';
-eol_cpes['cpe:/o:microsoft:windows_2003_server::r2:compute_cluster'] = '2015-07-14';
-eol_cpes['cpe:/o:microsoft:windows_2003_server::r2:datacenter'] = '2015-07-14';
-eol_cpes['cpe:/o:microsoft:windows_2003_server::r2:enterprise'] = '2015-07-14';
-eol_cpes['cpe:/o:microsoft:windows_2003_server::r2:standard'] = '2015-07-14';
-eol_cpes['cpe:/o:microsoft:windows_2003_server::r2:storage'] = '2015-07-14';
-eol_cpes['cpe:/o:microsoft:windows_2003_server::r2:x64'] = '2015-07-14';
-eol_cpes['cpe:/o:microsoft:windows_2003_server::r2:x64-datacenter'] = '2015-07-14';
-eol_cpes['cpe:/o:microsoft:windows_2003_server::r2:x64-enterprise'] = '2015-07-14';
-eol_cpes['cpe:/o:microsoft:windows_2003_server::r2:x64-standard'] = '2015-07-14';
-eol_cpes['cpe:/o:microsoft:windows_2003_server::sp1'] = '2015-07-14';
-eol_cpes['cpe:/o:microsoft:windows_2003_server::sp1:compute_cluster'] = '2015-07-14';
-eol_cpes['cpe:/o:microsoft:windows_2003_server::sp1:datacenter'] = '2015-07-14';
-eol_cpes['cpe:/o:microsoft:windows_2003_server::sp1:enterprise'] = '2015-07-14';
-eol_cpes['cpe:/o:microsoft:windows_2003_server::sp1:itanium'] = '2015-07-14';
-eol_cpes['cpe:/o:microsoft:windows_2003_server::sp1:standard'] = '2015-07-14';
-eol_cpes['cpe:/o:microsoft:windows_2003_server::sp1:storage'] = '2015-07-14';
-eol_cpes['cpe:/o:microsoft:windows_2003_server::sp1:x64'] = '2015-07-14';
-eol_cpes['cpe:/o:microsoft:windows_2003_server::sp2'] = '2015-07-14';
-eol_cpes['cpe:/o:microsoft:windows_2003_server::sp2:compute_cluster'] = '2015-07-14';
-eol_cpes['cpe:/o:microsoft:windows_2003_server::sp2:datacenter'] = '2015-07-14';
-eol_cpes['cpe:/o:microsoft:windows_2003_server::sp2:enterprise'] = '2015-07-14';
-eol_cpes['cpe:/o:microsoft:windows_2003_server::sp2:itanium'] = '2015-07-14';
-eol_cpes['cpe:/o:microsoft:windows_2003_server::sp2:standard'] = '2015-07-14';
-eol_cpes['cpe:/o:microsoft:windows_2003_server::sp2:storage'] = '2015-07-14';
-eol_cpes['cpe:/o:microsoft:windows_2003_server::sp2:x64'] = '2015-07-14';
-eol_cpes['cpe:/o:microsoft:windows_2003_server:-:r2_sp2'] = '2015-07-14';
-
-#Windows 2003 (https://support.microsoft.com/en-us/lifecycle/search?sort=PN&alpha=Microsoft%20Windows%20Server%202003&Filter=FilterNO)
+#Windows Server 2003 (https://support.microsoft.com/en-us/lifecycle/search?sort=PN&alpha=Microsoft%20Windows%20Server%202003&Filter=FilterNO)
 eol_urls['cpe:/o:microsoft:windows_server_2003'] = 'https://support.microsoft.com/en-us/lifecycle/search?sort=PN&alpha=Microsoft%20Windows%20Server%202003&Filter=FilterNO';
 eol_names['cpe:/o:microsoft:windows_server_2003'] = 'Windows Server 2003';
-eol_cpes['cpe:/o:microsoft:windows_server_2003:::x64'] = '2015-07-14';
-eol_cpes['cpe:/o:microsoft:windows_server_2003::sp2'] = '2015-07-14';
-eol_cpes['cpe:/o:microsoft:windows_server_2003::sp2:itanium'] = '2015-07-14';
-eol_cpes['cpe:/o:microsoft:windows_server_2003::sp2:x64'] = '2015-07-14';
+eol_cpes['cpe:/o:microsoft:windows_server_2003'] = '2015-07-14';
+eol_cpes['cpe:/o:microsoft:windows_server_2003:-:gold'] = '2015-07-14';
+eol_cpes['cpe:/o:microsoft:windows_server_2003:-:gold:compute_cluster'] = '2015-07-14';
+eol_cpes['cpe:/o:microsoft:windows_server_2003:-:gold:datacenter'] = '2015-07-14';
+eol_cpes['cpe:/o:microsoft:windows_server_2003:-:gold:enterprise'] = '2015-07-14';
+eol_cpes['cpe:/o:microsoft:windows_server_2003:-:gold:itanium'] = '2015-07-14';
+eol_cpes['cpe:/o:microsoft:windows_server_2003:-:gold:standard'] = '2015-07-14';
+eol_cpes['cpe:/o:microsoft:windows_server_2003:-:gold:storage'] = '2015-07-14';
+eol_cpes['cpe:/o:microsoft:windows_server_2003:-:gold:x64'] = '2015-07-14';
+eol_cpes['cpe:/o:microsoft:windows_server_2003:-:gold:x64-datacenter'] = '2015-07-14';
+eol_cpes['cpe:/o:microsoft:windows_server_2003:-:gold:x64-enterprise'] = '2015-07-14';
+eol_cpes['cpe:/o:microsoft:windows_server_2003:-:gold:x64-standard'] = '2015-07-14';
+eol_cpes['cpe:/o:microsoft:windows_server_2003:r2'] = '2015-07-14';
+eol_cpes['cpe:/o:microsoft:windows_server_2003:r2:-:compute_cluster'] = '2015-07-14';
+eol_cpes['cpe:/o:microsoft:windows_server_2003:r2:-:datacenter'] = '2015-07-14';
+eol_cpes['cpe:/o:microsoft:windows_server_2003:r2:-:enterprise'] = '2015-07-14';
+eol_cpes['cpe:/o:microsoft:windows_server_2003:r2:-:standard'] = '2015-07-14';
+eol_cpes['cpe:/o:microsoft:windows_server_2003:r2:-:storage'] = '2015-07-14';
+eol_cpes['cpe:/o:microsoft:windows_server_2003:r2:-:x64'] = '2015-07-14';
+eol_cpes['cpe:/o:microsoft:windows_server_2003:r2:-:x64-datacenter'] = '2015-07-14';
+eol_cpes['cpe:/o:microsoft:windows_server_2003:r2:-:x64-enterprise'] = '2015-07-14';
+eol_cpes['cpe:/o:microsoft:windows_server_2003:r2:-:x64-standard'] = '2015-07-14';
+eol_cpes['cpe:/o:microsoft:windows_server_2003:-:sp1'] = '2015-07-14';
+eol_cpes['cpe:/o:microsoft:windows_server_2003:-:sp1:compute_cluster'] = '2015-07-14';
+eol_cpes['cpe:/o:microsoft:windows_server_2003:-:sp1:datacenter'] = '2015-07-14';
+eol_cpes['cpe:/o:microsoft:windows_server_2003:-:sp1:enterprise'] = '2015-07-14';
+eol_cpes['cpe:/o:microsoft:windows_server_2003:-:sp1:itanium'] = '2015-07-14';
+eol_cpes['cpe:/o:microsoft:windows_server_2003:-:sp1:standard'] = '2015-07-14';
+eol_cpes['cpe:/o:microsoft:windows_server_2003:-:sp1:storage'] = '2015-07-14';
+eol_cpes['cpe:/o:microsoft:windows_server_2003:-:sp1:x64'] = '2015-07-14';
+eol_cpes['cpe:/o:microsoft:windows_server_2003:-:sp2'] = '2015-07-14';
+eol_cpes['cpe:/o:microsoft:windows_server_2003:-:sp2:compute_cluster'] = '2015-07-14';
+eol_cpes['cpe:/o:microsoft:windows_server_2003:-:sp2:datacenter'] = '2015-07-14';
+eol_cpes['cpe:/o:microsoft:windows_server_2003:-:sp2:enterprise'] = '2015-07-14';
+eol_cpes['cpe:/o:microsoft:windows_server_2003:-:sp2:itanium'] = '2015-07-14';
+eol_cpes['cpe:/o:microsoft:windows_server_2003:-:sp2:standard'] = '2015-07-14';
+eol_cpes['cpe:/o:microsoft:windows_server_2003:-:sp2:storage'] = '2015-07-14';
+eol_cpes['cpe:/o:microsoft:windows_server_2003:-:sp2:x64'] = '2015-07-14';
+eol_cpes['cpe:/o:microsoft:windows_server_2003:-:r2_sp2'] = '2015-07-14';
 
 #Windows 7 (https://support.microsoft.com/en-us/lifecycle/search?sort=PN&alpha=Windows%207&Filter=FilterNO)
 eol_urls['cpe:/o:microsoft:windows_7'] = 'https://support.microsoft.com/en-us/lifecycle/search?sort=PN&alpha=Windows%207&Filter=FilterNO';
 eol_names['cpe:/o:microsoft:windows_7'] = 'Windows 7';
 eol_cpes['cpe:/o:microsoft:windows_7:-:-:x32'] = '2013-04-09';
-eol_cpes['cpe:/o:microsoft:windows_7:::x32'] = '2013-04-09';
 eol_cpes['cpe:/o:microsoft:windows_7:-:-:x64'] = '2013-04-09';
-eol_cpes['cpe:/o:microsoft:windows_7:::x64'] = '2013-04-09';
 eol_cpes['cpe:/o:microsoft:windows_7:-:-:'] = '2013-04-09';
-eol_cpes['cpe:/o:microsoft:windows_7:::'] = '2013-04-09';
 
 #Windows 8 (https://support.microsoft.com/en-us/lifecycle/search?sort=PN&alpha=Windows%208&Filter=FilterNO)
 eol_urls['cpe:/o:microsoft:windows_8'] = 'https://support.microsoft.com/en-us/lifecycle/search?sort=PN&alpha=Windows%208&Filter=FilterNO';
 eol_names['cpe:/o:microsoft:windows_8'] = 'Windows 8';
 eol_cpes['cpe:/o:microsoft:windows_8'] = '2016-01-12';
 eol_cpes['cpe:/o:microsoft:windows_8:-:-:x86'] = '2016-01-12';
-eol_cpes['cpe:/o:microsoft:windows_8:-:sp1:x86'] = '2016-01-12';
 eol_cpes['cpe:/o:microsoft:windows_8:-:-:x64'] = '2016-01-12';
+eol_cpes['cpe:/o:microsoft:windows_8:-:sp1:x86'] = '2016-01-12';
 eol_cpes['cpe:/o:microsoft:windows_8:-:sp1:x64'] = '2016-01-12';
 
 #Windows Vista (https://support.microsoft.com/en-us/lifecycle/search?sort=PN&alpha=Windows%20Vista&Filter=FilterNO)
 eol_urls['cpe:/o:microsoft:windows_vista'] = 'https://support.microsoft.com/en-us/lifecycle/search?sort=PN&alpha=Windows%20Vista&Filter=FilterNO';
 eol_names['cpe:/o:microsoft:windows_vista'] = 'Windows Vista';
 eol_cpes['cpe:/o:microsoft:windows_vista'] = '2017-04-11';
-eol_cpes['cpe:/o:microsoft:windows_vista:-:sp1'] = '2017-04-11';
-eol_cpes['cpe:/o:microsoft:windows_vista:-:sp2'] = '2017-04-11';
 eol_cpes['cpe:/o:microsoft:windows_vista:-:-:x86'] = '2017-04-11';
 eol_cpes['cpe:/o:microsoft:windows_vista:-:-:x64'] = '2017-04-11';
+eol_cpes['cpe:/o:microsoft:windows_vista:-:gold'] = '2017-04-11';
+eol_cpes['cpe:/o:microsoft:windows_vista:-:-:x86-enterprise'] = '2017-04-11';
+eol_cpes['cpe:/o:microsoft:windows_vista:-:-:x86-ultimate'] = '2017-04-11';
+eol_cpes['cpe:/o:microsoft:windows_vista:-:-:x64-enterprise'] = '2017-04-11';
+eol_cpes['cpe:/o:microsoft:windows_vista:-:-:x64-ultimate'] = '2017-04-11';
+eol_cpes['cpe:/o:microsoft:windows_vista:-:-:x64-home_premium'] = '2017-04-11';
+eol_cpes['cpe:/o:microsoft:windows_vista:-:sp1'] = '2017-04-11';
 eol_cpes['cpe:/o:microsoft:windows_vista:-:sp1:x86'] = '2017-04-11';
-eol_cpes['cpe:/o:microsoft:windows_vista:-:sp2:x86'] = '2017-04-11';
 eol_cpes['cpe:/o:microsoft:windows_vista:-:sp1:x64'] = '2017-04-11';
+eol_cpes['cpe:/o:microsoft:windows_vista:-:sp1:x86-enterprise'] = '2017-04-11';
+eol_cpes['cpe:/o:microsoft:windows_vista:-:sp1:x86-ultimate'] = '2017-04-11';
+eol_cpes['cpe:/o:microsoft:windows_vista:-:sp1:x64-enterprise'] = '2017-04-11';
+eol_cpes['cpe:/o:microsoft:windows_vista:-:sp1:x64-ultimate'] = '2017-04-11';
+eol_cpes['cpe:/o:microsoft:windows_vista:-:sp1:x64-home_premium'] = '2017-04-11';
+eol_cpes['cpe:/o:microsoft:windows_vista:-:sp2'] = '2017-04-11';
+eol_cpes['cpe:/o:microsoft:windows_vista:-:sp2:x86'] = '2017-04-11';
 eol_cpes['cpe:/o:microsoft:windows_vista:-:sp2:x64'] = '2017-04-11';
-eol_cpes['cpe:/o:microsoft:windows_vista::gold'] = '2017-04-11';
-eol_cpes['cpe:/o:microsoft:windows_vista:::x86'] = '2017-04-11';
-eol_cpes['cpe:/o:microsoft:windows_vista:::x64'] = '2017-04-11';
-eol_cpes['cpe:/o:microsoft:windows_vista:::x86-enterprise'] = '2017-04-11';
-eol_cpes['cpe:/o:microsoft:windows_vista:::x86-ultimate'] = '2017-04-11';
-eol_cpes['cpe:/o:microsoft:windows_vista:::x64-enterprise'] = '2017-04-11';
-eol_cpes['cpe:/o:microsoft:windows_vista:::x64-ultimate'] = '2017-04-11';
-eol_cpes['cpe:/o:microsoft:windows_vista::sp1'] = '2017-04-11';
-eol_cpes['cpe:/o:microsoft:windows_vista::sp1:x86'] = '2017-04-11';
-eol_cpes['cpe:/o:microsoft:windows_vista::sp1:x64'] = '2017-04-11';
-eol_cpes['cpe:/o:microsoft:windows_vista::sp1:x86-enterprise'] = '2017-04-11';
-eol_cpes['cpe:/o:microsoft:windows_vista::sp1:x86-ultimate'] = '2017-04-11';
-eol_cpes['cpe:/o:microsoft:windows_vista::sp1:x64-enterprise'] = '2017-04-11';
-eol_cpes['cpe:/o:microsoft:windows_vista::sp1:x64-ultimate'] = '2017-04-11';
-eol_cpes['cpe:/o:microsoft:windows_vista::sp1:x64-home_premium'] = '2017-04-11';
-eol_cpes['cpe:/o:microsoft:windows_vista::sp2'] = '2017-04-11';
-eol_cpes['cpe:/o:microsoft:windows_vista::sp2:x86'] = '2017-04-11';
-eol_cpes['cpe:/o:microsoft:windows_vista::sp2:x64'] = '2017-04-11';
+eol_cpes['cpe:/o:microsoft:windows_vista:-:sp2:x86-enterprise'] = '2017-04-11';
+eol_cpes['cpe:/o:microsoft:windows_vista:-:sp2:x86-ultimate'] = '2017-04-11';
+eol_cpes['cpe:/o:microsoft:windows_vista:-:sp2:x64-enterprise'] = '2017-04-11';
+eol_cpes['cpe:/o:microsoft:windows_vista:-:sp2:x64-ultimate'] = '2017-04-11';
+eol_cpes['cpe:/o:microsoft:windows_vista:-:sp2:x64-home_premium'] = '2017-04-11';
 
 #Windows 10 (https://support.microsoft.com/en-US/help/13853/windows-lifecycle-fact-sheet)
 eol_urls['cpe:/o:microsoft:windows_10'] = 'https://support.microsoft.com/en-US/help/13853/windows-lifecycle-fact-sheet';

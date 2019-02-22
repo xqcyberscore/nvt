@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_mult_vuln10_jan16.nasl 11888 2018-10-12 15:27:49Z cfischer $
+# $Id: gb_ibm_websphere_mult_vuln10_jan16.nasl 13803 2019-02-21 08:24:24Z cfischer $
 #
 # IBM Websphere Application Server Multiple Vulnerabilities -10 Jan16
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:websphere_application_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806838");
-  script_version("$Revision: 11888 $");
+  script_version("$Revision: 13803 $");
   script_cve_id("CVE-2013-2976", "CVE-2013-2967");
   script_bugtraq_id(61941, 61940);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 17:27:49 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-21 09:24:24 +0100 (Thu, 21 Feb 2019) $");
   script_tag(name:"creation_date", value:"2016-01-20 12:31:42 +0530 (Wed, 20 Jan 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("IBM Websphere Application Server Multiple Vulnerabilities -10 Jan16");
@@ -67,24 +67,20 @@ if(description)
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_family("Web application abuses");
+  script_family("Web Servers");
   script_dependencies("gb_ibm_websphere_detect.nasl");
   script_mandatory_keys("ibm_websphere_application_server/installed");
-  script_require_ports("Services/www", 80);
+
   script_xref(name:"URL", value:"http://www-03.ibm.com/software/products/en/appserv-was");
+
   exit(0);
 }
 
 include("host_details.inc");
 include("version_func.inc");
 
-if(!wasPort = get_app_port(cpe:CPE)){
+if(!wasVer = get_app_version(cpe:CPE, nofork:TRUE))
   exit(0);
-}
-
-if(!wasVer = get_app_version(cpe:CPE, port:wasPort)){
-  exit(0);
-}
 
 if(version_in_range(version:wasVer, test_version:"6.1", test_version2:"6.1.0.46"))
 {
@@ -115,8 +111,9 @@ else if(wasVer =~ "8\.5")
 
 if(VULN)
 {
-  report = 'Installed version: ' + wasVer + '\n' +
-           'Fixed version:     ' + fix  + '\n';
-  security_message(data:report, port:wasPort);
+  report = report_fixed_ver(installed_version:wasVer, fixed_version:fix);
+  security_message(port:0, data:report);
   exit(0);
 }
+
+exit(99);

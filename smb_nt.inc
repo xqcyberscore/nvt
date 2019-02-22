@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: smb_nt.inc 13413 2019-02-01 13:54:50Z cfischer $
+# $Id: smb_nt.inc 13760 2019-02-19 11:38:16Z santu $
 #
 # Methods for handling SMB
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 13413 $
+# $Revision: 13760 $
 #
 ###############################################################################
 
@@ -4452,12 +4452,69 @@ function registry1_enum_key( soc, uid, tid, pipe, reply ) {
   return list;
 }
 
+#--------------------------------------------
+# Author: Shakeel (bshakeel@secpod.com)
+# Required for registry2_enum_value()
+#-------------------------------------------
+function decimal_to_hexadecimal(num) {
+  local_var num;
+  if( isnull( num ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#num#-#decimal_to_hexadecimal" );
+
+  if(num ==0){
+    number = raw_string( 0x00 );
+  } else {
+    while (num != 0)
+    {
+      rem=num%256;
+      number = raw_string(rem, number);
+      num=num/256;
+    }
+  }
+  return number ;
+}
+
+#--------------------------------------------
+# Author: Shakeel (bshakeel@secpod.com)
+# Required for registry2_enum_value()
+#-------------------------------------------
+function endianness_change_hexadecimal(hexanumber) {
+
+  local_var dec_index, res_index, enumindex, hexanumber;
+  if( isnull( hexanumber ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#hexanumber#-#endianness_change_hexadecimal" );
+
+  ## http_func.inc is dependency to be included in NVT for hex2dec()
+  dec_index = hex2dec(xvalue:hexstr(hexanumber));
+  if(dec_index) {
+    x1 = (dec_index & 0xff) << 24;
+    x2 = (dec_index & 0xff00) << 8 ;
+    x3 = (dec_index & 0xff0000) >> 8 ;
+    x4 = (dec_index >> 24) & 0xff;
+    res_index = x1 | x2 | x3 | x4 ;
+    enumindex = decimal_to_hexadecimal(num:res_index);
+
+    if(enumindex) {
+      ## Make it again 4-byte
+      if(strlen(enumindex) == 3){
+        enumindex = raw_string( 0x00, enumindex);
+      }
+      else if (strlen(enumindex) == 2){
+        enumindex = raw_string( 0x00,0x00, enumindex);
+      }
+      else if (strlen(enumindex) == 1){
+        enumindex = raw_string( 0x00,0x00,0x00, enumindex);
+      }
+      return enumindex ;
+    }
+  }
+  return (raw_string(0x00));
+}
+
+
+
 #----------------------------------------------------------#
 # RegEnumValue() for SMB 2                                 #
-#                                                          #
-# nb: You need to include misc_func.inc for dec2hex        #
+# Author: Shakeel (bshakeel@secpod.com)
 #----------------------------------------------------------#
-# Author: Shakeel
 function registry2_enum_value( soc, uid, tid, pipe, reply ) {
 
   local_var soc, uid, tid, pipe, reply;
@@ -4484,9 +4541,30 @@ function registry2_enum_value( soc, uid, tid, pipe, reply ) {
 
   ##Enumerate for index
   for( j = 0; j >= 0; j++ ) {
-    ##Covert to hex
-    ##misc_func.inc is dependency to be included in NVT
-    enumindex = dec2hex(num:j);
+    enumindex = decimal_to_hexadecimal(num:j);
+    if(strlen(enumindex) == 1){
+      enumindex = raw_string( enumindex, 0x00, 0x00, 0x00);
+    } else if(strlen(enumindex) == 2){
+
+      ##Construct 4-byte index
+      enumindex = raw_string( 0x00, 0x00, enumindex);
+
+      ## Change Endianness of 4-byte index, http_func.inc is dependency to be included in NVT for hex2dec()
+      enumindex = endianness_change_hexadecimal(hexanumber:enumindex) ;
+
+    } else if(strlen(enumindex) == 3){
+      ##Construct 4-byte index
+      enumindex = raw_string( 0x00, enumindex);
+
+      ## Change Endianness of 4-byte index, http_func.inc is dependency to be included in NVT for hex2dec()
+      enumindex = endianness_change_hexadecimal(hexanumber:enumindex) ;
+
+    } else if(strlen(enumindex) == 4){
+      enumindex = raw_string( enumindex);
+
+      ## Change Endianness of 4-byte index, http_func.inc is dependency to be included in NVT for hex2dec()
+      enumindex = endianness_change_hexadecimal(hexanumber:enumindex) ;
+    }
 
     g_mhi = multiplex_id / 256;
     g_mlo = multiplex_id % 256;
@@ -4518,7 +4596,7 @@ function registry2_enum_value( soc, uid, tid, pipe, reply ) {
 
 
     # Remote Registry Service Req
-    rrs_req = magic + raw_string( enumindex, 0x00, 0x00, 0x00);            # Enum Index
+    rrs_req = magic + enumindex;            # Enum Index
 
     rrs_req = rrs_req + raw_string( 0x00, 0x00, 0x14, 0x04, 0x01, 0x00, 0x00,
                                     0x00, 0x0a, 0x02, 0x00, 0x00, 0x00, 0x00,

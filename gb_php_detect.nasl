@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_detect.nasl 13679 2019-02-15 08:20:11Z cfischer $
+# $Id: gb_php_detect.nasl 13811 2019-02-21 11:07:30Z cfischer $
 #
 # PHP Version Detection (Remote)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800109");
-  script_version("$Revision: 13679 $");
+  script_version("$Revision: 13811 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-21 12:07:30 +0100 (Thu, 21 Feb 2019) $");
   script_tag(name:"creation_date", value:"2008-10-07 16:11:33 +0200 (Tue, 07 Oct 2008)");
   script_name("PHP Version Detection (Remote)");
   script_category(ACT_GATHER_INFO);
@@ -123,11 +123,14 @@ if( phpVer || phpSessId ) {
   set_kb_item( name:"www/" + port + "/PHP", value:phpVer );
   set_kb_item( name:"php/installed", value:TRUE );
 
+  # nb: To tell can_host_asp and can_host_php from http_func that the service support this
+  replace_kb_item( name:"www/" + port + "/can_host_php", value:"yes" );
+
   cpe = build_cpe( value:phpVer, exp:"^([0-9.A-Za-z]+)", base:"cpe:/a:php:php:" );
   if( isnull( cpe ) || phpVer == "unknown" )
     cpe = "cpe:/a:php:php";
 
-  register_product( cpe:cpe, location:location, port:port );
+  register_product( cpe:cpe, location:location, port:port, service:"www" );
 
   log_message( data:build_detection_report( app:"PHP",
                                             version:phpVer,

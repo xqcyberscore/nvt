@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: toolcheck.nasl 13486 2019-02-06 08:39:14Z cfischer $
+# $Id: toolcheck.nasl 13794 2019-02-20 14:59:32Z cfischer $
 # Description: Initializing routine for checking presence of helper tools
 #
 # Authors:
@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810000");
-  script_version("$Revision: 13486 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-06 09:39:14 +0100 (Wed, 06 Feb 2019) $");
+  script_version("$Revision: 13794 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-20 15:59:32 +0100 (Wed, 20 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-08-17 09:05:44 +0200 (Mon, 17 Aug 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -65,9 +65,10 @@ if(perform_check == "no")
 
 silent_check = script_get_preference("Silent tool check");
 silent_gos   = script_get_preference("Silent tool check on Greenbone OS (GOS)");
+is_gos       = executed_on_gos();
 
 # nb: See Note in the description.
-if(executed_on_gos() && silent_gos == "yes")
+if(is_gos && silent_gos == "yes")
   silent_check = "yes";
 
 all_tools_available = TRUE;
@@ -197,7 +198,7 @@ if(sufficient_nmap_found == TRUE) {
 
 # gcf/remote-pwcrack-options.nasl
 # TODO: Migh find a pd executable from "pure data", disambiguate
-if(find_in_path("pd")) {
+if(!is_gos && find_in_path("pd")) {
   set_kb_item(name:"Tools/Present/pd", value:TRUE);
   set_kb_item(name:"Tools/Present/pd_or_ncrack", value:TRUE);
 } else {
@@ -211,7 +212,7 @@ if(find_in_path("pd")) {
 }
 
 # gcf/remote-pwcrack-options.nasl
-if(find_in_path("ncrack")) {
+if(!is_gos && find_in_path("ncrack")) {
   set_kb_item(name:"Tools/Present/ncrack", value:TRUE);
   set_kb_item(name:"Tools/Present/pd_or_ncrack", value:TRUE);
 } else {
@@ -225,7 +226,7 @@ if(find_in_path("ncrack")) {
 }
 
 # gcf/portbunny.nasl
-if(find_in_path("portbunny")) {
+if(!is_gos && find_in_path("portbunny")) {
   set_kb_item(name:"Tools/Present/portbunny", value:TRUE);
 } else {
   set_kb_item(name:"Tools/Missing/portbunny", value:TRUE);
@@ -247,7 +248,7 @@ if(find_in_path("pnscan")) {
 }
 
 # gcf/portscan-strobe.nasl
-if(find_in_path("strobe")) {
+if(!is_gos && find_in_path("strobe")) {
   set_kb_item(name:"Tools/Present/strobe", value:TRUE);
 } else {
   set_kb_item(name:"Tools/Missing/strobe", value:TRUE);
@@ -259,9 +260,14 @@ if(find_in_path("strobe")) {
 }
 
 # gcf/amap.nasl
-if(find_in_path("amap6") || find_in_path("amap")) {
+if(!is_gos) {
+  amap6 = find_in_path("amap6");
+  amap = find_in_path("amap");
+}
+
+if(amap6 || amap) {
   set_kb_item(name:"Tools/Present/amap", value:TRUE);
-  if(find_in_path("amap6")) {
+  if(amap6) {
     set_kb_item(name:"Tools/Present/amap/bin", value:"amap6");
   } else {
     set_kb_item(name:"Tools/Present/amap/bin", value:"amap");
@@ -296,7 +302,7 @@ if(find_in_path("ldapsearch")) {
 }
 
 # gcf/gb_masscan.nasl
-if(find_in_path("masscan")) {
+if(!is_gos && find_in_path("masscan")) {
   set_kb_item(name:"Tools/Present/masscan", value:TRUE);
 } else {
   set_kb_item(name:"Tools/Missing/masscan", value:TRUE);
@@ -308,7 +314,7 @@ if(find_in_path("masscan")) {
 }
 
 # gcf/smbcl_getversion.nasl
-if(find_in_path("smbclient")) {
+if(!is_gos && find_in_path("smbclient")) {
   set_kb_item(name:"Tools/Present/smbclient", value:TRUE);
 } else {
   set_kb_item(name:"Tools/Missing/smbclient", value:TRUE);
@@ -320,9 +326,11 @@ if(find_in_path("smbclient")) {
 }
 
 # nikto.nasl
-if(find_in_path("nikto.pl") || find_in_path("nikto")) {
+niktopl = find_in_path("nikto.pl");
+nikto = find_in_path("nikto");
+if(niktopl || nikto) {
   set_kb_item(name:"Tools/Present/nikto", value:TRUE);
-  if(find_in_path("nikto.pl")) {
+  if(niktopl) {
     set_kb_item(name:"Tools/Present/nikto/bin", value:"nikto.pl");
   } else {
     set_kb_item(name:"Tools/Present/nikto/bin", value:"nikto");
@@ -346,7 +354,7 @@ if(find_in_path("w3af_console")) {
 }
 
 # gcf/dirb.nasl
-if(find_in_path("dirb")) {
+if(!is_gos && find_in_path("dirb")) {
   set_kb_item(name:"Tools/Present/dirb", value:TRUE);
 } else {
   set_kb_item(name:"Tools/Missing/dirb", value:TRUE);
@@ -357,9 +365,14 @@ if(find_in_path("dirb")) {
 }
 
 # gcf/remote-web-arachni.nasl
-if(find_in_path("arachni.rb") || find_in_path("arachni")) {
+if(!is_gos) {
+  arachnirb = find_in_path("arachni.rb");
+  arachni = find_in_path("arachni");
+}
+
+if(arachnirb || arachni) {
   set_kb_item(name:"Tools/Present/arachni", value:TRUE);
-  if(find_in_path("arachni.rb")) {
+  if(arachnirb) {
     set_kb_item(name:"Tools/Present/arachni/bin", value:"arachni.rb");
   } else {
     set_kb_item(name:"Tools/Present/arachni/bin", value:"arachni");
@@ -373,7 +386,7 @@ if(find_in_path("arachni.rb") || find_in_path("arachni")) {
 }
 
 # gcf/remote-web-wapiti.nasl
-if(find_in_path("wapiti")) {
+if(!is_gos && find_in_path("wapiti")) {
   set_kb_item(name:"Tools/Present/wapiti", value:TRUE);
 } else {
   set_kb_item(name:"Tools/Missing/wapiti", value:TRUE);
@@ -384,12 +397,39 @@ if(find_in_path("wapiti")) {
 }
 
 # gb_host_alive_check* and sw_ssl_cert_get_hostname.nasl
-if(find_in_path("ping") || find_in_path("ping6")) {
+ping = find_in_path("ping");
+ping6 = find_in_path("ping6");
+if(ping || ping6) {
+
   set_kb_item(name:"Tools/Present/ping", value:TRUE);
-  if(find_in_path("ping")) {
-    set_kb_item(name:"Tools/Present/ping/bin", value:"ping");
+
+  # nb: There are differences between inetutils and iputils packages and versions.
+  # Some packages have e.g. a ping6 binary, others just a symlink from ping6 to ping.
+  #
+  # First check if the ping command supports the -6/-4 parameter
+  check = pread(cmd:"ping", argv:make_list("ping", "--usage"), cd:TRUE);
+  if("Usage: ping" >< check && "64]" >< check)
+    param64 = TRUE;
+
+  if(TARGET_IS_IPV6()) {
+    # If the -6 parameter is available explicitly specify it for the ping command and use only "ping"
+    if(param64){
+      ping_cmd = "ping";
+      set_kb_item(name:"Tools/Present/ping/extra_cmd", value:"-6");
+    } else {
+      if(ping6)
+        ping_cmd = "ping6";
+      else
+        ping_cmd = "ping";
+    }
+    set_kb_item(name:"Tools/Present/ping/bin", value:ping_cmd);
   } else {
-    set_kb_item(name:"Tools/Present/ping/bin", value:"ping6");
+    # If the -4 parameter is available explicitly specify it for the ping command
+    if(param64)
+      set_kb_item(name:"Tools/Present/ping/extra_cmd", value:"-4");
+    else
+      ping_cmd = "ping";
+    set_kb_item(name:"Tools/Present/ping/bin", value:"ping");
   }
 } else {
   set_kb_item(name:"Tools/Missing/ping", value:TRUE);
@@ -399,7 +439,7 @@ if(find_in_path("ping") || find_in_path("ping6")) {
 }
 
 # gcf/ike-scan.nasl
-if(find_in_path("ike-scan")) {
+if(!is_gos && find_in_path("ike-scan")) {
   set_kb_item(name:"Tools/Present/ike-scan", value:TRUE);
 } else {
   set_kb_item(name:"Tools/Missing/ike-scan", value:TRUE);
@@ -436,6 +476,16 @@ if(find_in_path("netstat")) {
   set_kb_item(name:"Tools/Missing/netstat", value:TRUE);
   tools_summary += '\n\nTool:   netstat\n';
   tools_summary += 'Effect: Optional port scanning based on netstat when scanning the localhost is not available.';
+  all_tools_available = FALSE;
+}
+
+# 2012/gb_rugged_operating_system_53215.nasl and GSHB/EL15/GSHB_M4_017.nasl
+if(find_in_path("perl")) {
+  set_kb_item(name:"Tools/Present/perl", value:TRUE);
+} else {
+  set_kb_item(name:"Tools/Missing/perl", value:TRUE);
+  tools_summary += '\n\nTool:   perl\n';
+  tools_summary += 'Effect: Various NVTs are currently relying on the availability of the \'perl\' command.';
   all_tools_available = FALSE;
 }
 

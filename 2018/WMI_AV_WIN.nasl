@@ -81,7 +81,7 @@ if(!handle){
 }
 
 ns = 'root\\SecurityCenter2';
-query = 'select displayName, productState from AntiVirusProduct';
+query = 'select displayName, productState from AntiSpywareProduct';
 
 handle = wmi_connect(host:host, username:usrname, password:passwd, ns:ns);
 

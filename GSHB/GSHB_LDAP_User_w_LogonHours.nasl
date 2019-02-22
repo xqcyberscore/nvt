@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_LDAP_User_w_LogonHours.nasl 10949 2018-08-14 09:36:21Z emoss $
+# $Id: GSHB_LDAP_User_w_LogonHours.nasl 13769 2019-02-19 15:52:41Z cfischer $
 #
 # Search in LDAP, Users with conf. LogonHours
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96055");
-  script_version("$Revision: 10949 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 11:36:21 +0200 (Tue, 14 Aug 2018) $");
+  script_version("$Revision: 13769 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-19 16:52:41 +0100 (Tue, 19 Feb 2019) $");
   script_tag(name:"creation_date", value:"2010-02-08 10:22:28 +0100 (Mon, 08 Feb 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -37,8 +37,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");
+  script_dependencies("smb_reg_service_pack.nasl", "GSHB/GSHB_WMI_OSInfo.nasl", "toolcheck.nasl");
   script_mandatory_keys("Compliance/Launch/GSHB");
-  script_dependencies("smb_reg_service_pack.nasl", "GSHB/GSHB_WMI_OSInfo.nasl");
 
   script_add_preference(name:"Testuser Common Name", type:"entry", value:"CN");
   script_add_preference(name:"Testuser Organization Unit", type:"entry", value:"OU");
@@ -78,19 +78,16 @@ if(WindowsDomainrole < 4){
 port = get_kb_item("Services/ldap");
 if (! port) port = 389;
 if (! get_port_state(port)){
-
   log_message(port:0, proto: "IT-Grundschutz", data: 'No Access to port 389!');
   set_kb_item(name:"GSHB/LDAP_LogonHours", value:"error");
   exit(0);
 }
 
-if (! find_in_path("ldapsearch"))
-{
+if (! get_kb_item("Tools/Present/ldapsearch")){
   set_kb_item(name:"GSHB/LDAP_LogonHours", value:"error");
   set_kb_item(name:"GSHB/LDAP_LogonHours/log", value:"Command -ldapsearch- not available to scan server (not in\nsearch path).\nTherefore this test was not executed.");
   exit(0);
 }
-
 
 if (OU == "OU" || CN == "CN" || OU == "" || CN == ""){
   set_kb_item(name:"GSHB/LDAP_LogonHours", value:"error");

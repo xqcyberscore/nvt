@@ -1,8 +1,8 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asustor_adm_mult_vuln.nasl 12657 2018-12-05 04:34:00Z ckuersteiner $
+# $Id: gb_asustor_adm_mult_vuln.nasl 13783 2019-02-20 11:12:24Z cfischer $
 #
-# ASUSTOR ADM < 3.1.3.RHU2 Multiple Vulnerabilties
+# ASUSTOR ADM < 3.1.3.RHU2 Multiple Vulnerabilities
 #
 # Authors:
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
@@ -30,8 +30,8 @@ CPE = "cpe:/h:asustor:adm_firmware";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141755");
-  script_version("$Revision: 12657 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-05 05:34:00 +0100 (Wed, 05 Dec 2018) $");
+  script_version("$Revision: 13783 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-20 12:12:24 +0100 (Wed, 20 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-12-05 10:58:25 +0700 (Wed, 05 Dec 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -44,7 +44,7 @@ if (description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_name("ASUSTOR ADM < 3.1.3.RHU2 Multiple Vulnerabilties");
+  script_name("ASUSTOR ADM < 3.1.3.RHU2 Multiple Vulnerabilities");
 
   script_category(ACT_ATTACK);
 

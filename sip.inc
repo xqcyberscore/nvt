@@ -272,14 +272,14 @@ function sip_construct_options_req( port, proto, add_branch_rport ) {
   if( add_branch_rport )
     ext = ";branch=openvas;rport";
 
-  opt = "OPTIONS sip:openvas@" + get_host_name() + ":" + port + " SIP/2.0" + '\r\n' +
+  opt = "OPTIONS sip:cyberscore@" + get_host_name() + ":" + port + " SIP/2.0" + '\r\n' +
         "Via: SIP/2.0/" + toupper( proto ) + " " + this_host() + ":" + port + ext + '\r\n' +
         "Max-Forwards: 70" + '\r\n' +
-        "To: <sip:openvas@" + get_host_name() + ":" + port + ">" + '\r\n' +
-        "From: OpenVAS <sip:openvas@" + this_host() + ":" + port + ">;tag=" + rand() + '\r\n' +
+        "To: <sip:cyberscore@" + get_host_name() + ":" + port + ">" + '\r\n' +
+        "From: CyberScore <sip:cyberscore@" + this_host() + ":" + port + ">;tag=" + rand() + '\r\n' +
         "Call-ID: " + rand() + '\r\n' +
         "CSeq: 63104 OPTIONS" + '\r\n' +
-        "Contact: <sip:openvas@" + this_host() + ":" + port + ">" + '\r\n' +
+        "Contact: <sip:cyberscore@" + this_host() + ":" + port + ">" + '\r\n' +
         "Accept: application/sdp" + '\r\n' +
         "Content-Length: 0" + '\r\n\r\n';
 

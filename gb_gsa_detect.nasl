@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gsa_detect.nasl 9128 2018-03-19 07:45:38Z cfischer $
+# $Id: gb_gsa_detect.nasl 13811 2019-02-21 11:07:30Z cfischer $
 #
 # Greenbone Security Assistant Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103841");
-  script_version("$Revision: 9128 $");
+  script_version("$Revision: 13811 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-19 08:45:38 +0100 (Mon, 19 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-21 12:07:30 +0100 (Thu, 21 Feb 2019) $");
   script_tag(name:"creation_date", value:"2013-11-29 14:30:41 +0100 (Fri, 29 Nov 2013)");
   script_name("Greenbone Security Assistant Detection");
   script_category(ACT_GATHER_INFO);
@@ -71,11 +71,15 @@ if( buf =~ "^HTTP/1\.[01] 200" && "Greenbone Security Assistant" >< buf ) {
   set_kb_item( name:"gsa_or_gsa_ng/" + port + "/detected", value:TRUE );
   set_kb_item( name:"openvas_framework_component/installed", value:TRUE );
 
+  # nb: To tell can_host_asp and can_host_php from http_func that the service doesn't support these
+  replace_kb_item( name:"www/" + port + "/can_host_php", value:"no" );
+  replace_kb_item( name:"www/" + port + "/can_host_asp", value:"no" );
+
   cpe = build_cpe( value:vers, exp:"^([0-9.-]+)", base:"cpe:/a:greenbone:greenbone_security_assistant:" );
-  if( isnull( cpe ) )
+  if( ! cpe )
     cpe = "cpe:/a:greenbone:greenbone_security_assistant";
 
-  register_product( cpe:cpe, location:install, port:port );
+  register_product( cpe:cpe, location:install, port:port, service:"www" );
   log_message( data:build_detection_report( app:"Greenbone Security Assistant",
                                             version:vers,
                                             concluded:version[0],
@@ -98,11 +102,15 @@ if( buf =~ "^HTTP/1\.[01] 200" && "<title>Greenbone Security Assistant NG</title
   set_kb_item( name:"gsa_or_gsa_ng/" + port + "/detected", value:TRUE );
   set_kb_item( name:"openvas_components/installed", value:TRUE );
 
+  # nb: To tell can_host_asp and can_host_php from http_func that the service doesn't support these
+  replace_kb_item( name:"www/" + port + "/can_host_php", value:FALSE );
+  replace_kb_item( name:"www/" + port + "/can_host_asp", value:FALSE );
+
   cpe = build_cpe( value:vers, exp:"^([0-9.-]+)", base:"cpe:/a:greenbone:greenbone_security_assistant_ng:" );
-  if( isnull( cpe ) )
+  if( ! cpe )
     cpe = "cpe:/a:greenbone:greenbone_security_assistant_ng";
 
-  register_product( cpe:cpe, location:install, port:port );
+  register_product( cpe:cpe, location:install, port:port, service:"www" );
   log_message( data:build_detection_report( app:"Greenbone Security Assistant NG",
                                             version:vers,
                                             install:install,

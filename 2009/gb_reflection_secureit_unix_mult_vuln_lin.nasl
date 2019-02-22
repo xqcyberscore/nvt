@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_reflection_secureit_unix_mult_vuln_lin.nasl 13577 2019-02-11 13:30:15Z cfischer $
+# $Id: gb_reflection_secureit_unix_mult_vuln_lin.nasl 13794 2019-02-20 14:59:32Z cfischer $
 #
 # Reflection for Secure IT Multiple Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:attachmate:reflection_for_secure_it";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800228");
-  script_version("$Revision: 13577 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-11 14:30:15 +0100 (Mon, 11 Feb 2019) $");
+  script_version("$Revision: 13794 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-20 15:59:32 +0100 (Wed, 20 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-02-06 13:48:17 +0100 (Fri, 06 Feb 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -75,7 +75,7 @@ if( ! vers = get_app_version( cpe:CPE, port:port ) )
 
 if( version_is_less( version:vers, test_version:"7.0.1.575" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"7.0.1.575" );
-  security_message( port:port );
+  security_message( port:port, data:report );
   exit( 0 );
 }
 

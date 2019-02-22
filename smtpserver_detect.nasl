@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smtpserver_detect.nasl 13637 2019-02-13 12:46:42Z cfischer $
+# $Id: smtpserver_detect.nasl 13827 2019-02-22 07:50:44Z mmartin $
 #
 # SMTP Server type and version
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10263");
-  script_version("$Revision: 13637 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-13 13:46:42 +0100 (Wed, 13 Feb 2019) $");
+  script_version("$Revision: 13827 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-22 08:50:44 +0100 (Fri, 22 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -60,7 +60,8 @@ foreach port( ports ) {
   if( ! banner )
     continue;
 
-  guess = NULL;
+  guess    = NULL;
+  commands = NULL;
 
   if( service_is_unknown( port:port ) )
     register_service( port:port, proto:"smtp", message:"A SMTP Server seems to be running on this port." );
@@ -190,21 +191,36 @@ foreach port( ports ) {
     guess += '\n- Various Mail Server like Rumble SMTP';
   }
 
-  data = string( "Remote SMTP server banner:\n", banner );
+  report = 'Remote SMTP server banner:\n\n' + banner;
   if( strlen( guess ) > 0 )
-    data = string( data, "\n\nThis is probably:\n", guess );
+    report += '\n\nThis is probably:\n' + guess;
 
-  if( ehlo && ehlo =~ "^250[ -].+" ) {
+  if( is_tls )
+    commandlist = get_kb_list( "smtp/fingerprints/" + port + "/tls_commandlist" );
+  else
+    commandlist = get_kb_list( "smtp/fingerprints/" + port + "/nontls_commandlist" );
+
+  if( commandlist && is_array( commandlist ) ) {
+    # Sort to not report changes on delta reports if just the order is different
+    commandlist = sort( commandlist );
+    foreach command( commandlist ) {
+      if( ! commands )
+        commands = command;
+      else
+        commands += ", " + command;
+    }
+  }
+
+  if( strlen( commands ) > 0 ) {
     ehlo_report = "The remote SMTP server is announcing the following available ESMTP commands (EHLO response) via an ";
     if( is_tls )
       ehlo_report += "encrypted";
     else
       ehlo_report += "unencrypted";
-    ehlo_report += ' connection:\n' + ehlo;
-    data = string( data, "\n\n", ehlo_report );
+    report += ehlo_report += ' connection:\n\n' + commands;
   }
 
-  log_message( port:port, data:data );
+  log_message( port:port, data:report );
 }
 
 exit( 0 );

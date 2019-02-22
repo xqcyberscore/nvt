@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_starttls_imap.nasl 13471 2019-02-05 12:42:49Z cfischer $
+# $Id: gb_starttls_imap.nasl 13822 2019-02-21 21:05:10Z cfischer $
 #
 # SSL/TLS: IMAP 'STARTTLS' Command Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105007");
-  script_version("$Revision: 13471 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-05 13:42:49 +0100 (Tue, 05 Feb 2019) $");
+  script_version("$Revision: 13822 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-21 22:05:10 +0100 (Thu, 21 Feb 2019) $");
   script_tag(name:"creation_date", value:"2014-04-09 15:29:22 +0100 (Wed, 09 Apr 2014)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -65,57 +65,73 @@ send( socket:soc, data:'A0' + tag + ' STARTTLS\r\n' );
 
 while( buf = recv_line( socket:soc, length:2048 ) ) {
   n++;
-  if( eregmatch( pattern:'^A0' + tag + ' OK', string:buf ) ) {
-
-    report = "The remote IMAP server supports SSL/TLS with the 'STARTTLS' command.";
-
-    soc2 = socket_negotiate_ssl( socket:soc );
-    tag++;
-    if( soc2 ) {
-      send( socket:soc2, data:'A0' + tag + ' CAPABILITY\r\n' );
-      banner = recv( socket:soc2, length:4096 );
-
-      tag++; # nb: To pass a valid ID to imap_close_socket()
-      imap_close_socket( socket:soc2, id:tag );
-
-      capas = egrep( string:banner, pattern:"\* CAPABILITY.+IMAP4rev1", icase:TRUE );
-      capas = chomp( capas );
-      if( capas ) {
-        capa_report = "";
-        capas = split( capas, sep:" ", keep:FALSE );
-        # Sort to not report changes on delta reports if just the order is different
-        capas = sort( capas );
-
-        foreach capa( capas ) {
-
-          if( capa == "*" || capa == "CAPABILITY" )
-            continue;
-
-          if( ! capa_report )
-            capa_report = capa;
-          else
-            capa_report += ", " + capa;
-
-          # nb: Don't set "imap/fingerprints/" + port + "/nontls_capalist" which is already collected by imap4_banner.nasl
-          set_kb_item( name:"imap/fingerprints/" + port + "/tls_capalist", value:capa );
-        }
-        if( capa_report )
-          report = string( report, "\n\nThe remote IMAP server is announcing the following CAPABILITIES after sending the 'STARTTLS' command:\n\n", capa_report );
-      }
-    } else {
-      imap_close_socket( socket:soc, id:tag );
-    }
-
+  if( eregmatch( pattern:'^A0' + tag + ' OK', string:buf ) )
     STARTTLS = TRUE;
-    break;
-  }
-  if( n > 256 ) # nb: Too much data...
+
+  if( n > 10 ) # nb: Too much data, we shouldn't expect more then a few lines from a IMAP server
     break;
 }
 
 if( STARTTLS ) {
+
+  set_kb_item( name:"imap/starttls/supported", value:TRUE );
   set_kb_item( name:"imap/" + port + "/starttls", value:TRUE );
   set_kb_item( name:"starttls_typ/" + port, value:"imap" );
+
+  report = "The remote IMAP server supports SSL/TLS with the 'STARTTLS' command.";
+
+  capalist = get_kb_list( "imap/fingerprints/" + port + "/nontls_capalist" );
+  if( capalist && typeof( capalist ) == "array" ) {
+    capalist = sort( capalist );
+    capa_report = "";
+    foreach capa( capalist ) {
+      if( ! capa_report )
+        capa_report = capa;
+      else
+        capa_report += ", " + capa;
+    }
+    if( capa_report )
+      report = string( report, "\n\nThe remote IMAP server is announcing the following CAPABILITIES before sending the 'STARTTLS' command:\n\n", capa_report );
+  }
+
+  # nb: socket_negotiate_ssl() would fork on multiple hostnames causing issues with failed connections
+  # / socket communitcation so we're directly disable the use of SNI (and the forking) on this port.
+  set_kb_item( name:"Host/SNI/" + port + "/force_disable", value:1 );
+  soc = socket_negotiate_ssl( socket:soc );
+  tag++;
+  if( soc ) {
+    send( socket:soc, data:'A0' + tag + ' CAPABILITY\r\n' );
+    banner = recv( socket:soc, length:4096 );
+
+    tag++; # nb: To pass a valid ID to imap_close_socket()
+    imap_close_socket( socket:soc, id:tag );
+
+    capas = egrep( string:banner, pattern:"\* CAPABILITY.+IMAP4rev1", icase:TRUE );
+    capas = chomp( capas );
+    if( capas ) {
+      capa_report = "";
+      capas = split( capas, sep:" ", keep:FALSE );
+      # Sort to not report changes on delta reports if just the order is different
+      capas = sort( capas );
+
+      foreach capa( capas ) {
+
+        if( capa == "*" || capa == "CAPABILITY" || capa == "IMAP4rev1" )
+          continue;
+
+        if( ! capa_report )
+          capa_report = capa;
+        else
+          capa_report += ", " + capa;
+
+        # nb: Don't set "imap/fingerprints/" + port + "/nontls_capalist" which is already collected by get_imap_banner() via imap4_banner.nasl.
+        set_kb_item( name:"imap/fingerprints/" + port + "/tls_capalist", value:capa );
+      }
+      if( capa_report )
+        report = string( report, "\n\nThe remote IMAP server is announcing the following CAPABILITIES after sending the 'STARTTLS' command:\n\n", capa_report );
+    }
+  }
+
   log_message( port:port, data:report );
 } else {
   tag++;
@@ -123,4 +139,5 @@ if( STARTTLS ) {
   set_kb_item( name:"imap/starttls/not_supported", value:TRUE );
   set_kb_item( name:"imap/starttls/not_supported/port", value:port );
 }
+
 exit( 0 );

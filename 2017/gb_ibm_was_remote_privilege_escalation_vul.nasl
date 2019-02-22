@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_was_remote_privilege_escalation_vul.nasl 11901 2018-10-15 08:47:18Z mmartin $
+# $Id: gb_ibm_was_remote_privilege_escalation_vul.nasl 13803 2019-02-21 08:24:24Z cfischer $
 #
 # IBM Websphere Application Server Remote Privilege Escalation Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:ibm:websphere_application_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811442");
-  script_version("$Revision: 11901 $");
+  script_version("$Revision: 13803 $");
   script_cve_id("CVE-2017-1151");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 10:47:18 +0200 (Mon, 15 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-21 09:24:24 +0100 (Thu, 21 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-08-04 11:32:43 +0530 (Fri, 04 Aug 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   ## Qod Reduced, IBM WAS should be configured with OpenID Connect (OIDC) Trust Association Interceptor (TAI)
@@ -64,23 +64,17 @@ if(description)
   script_family("Web Servers");
   script_dependencies("gb_ibm_websphere_detect.nasl");
   script_mandatory_keys("ibm_websphere_application_server/installed");
-  script_require_ports("Services/www", 80);
+
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");
 
-if(!wasPort = get_app_port(cpe:CPE)){
+if(!wasVer = get_app_version(cpe:CPE, nofork:TRUE))
   exit(0);
-}
 
-if(!wasVer = get_app_version(cpe:CPE, port:wasPort)){
-  exit(0);
-}
-
-if(wasVer =~ "^(8|9)")
+if(wasVer =~ "^[89]")
 {
   if(wasVer =~ "^8\.0\.0\.1")
   {
@@ -104,8 +98,9 @@ if(wasVer =~ "^(8|9)")
   if(fix)
   {
     report = report_fixed_ver(installed_version:wasVer, fixed_version:fix);
-    security_message(data:report, port:wasPort);
+    security_message(port:0, data:report);
     exit(0);
   }
 }
-exit(0);
+
+exit(99);

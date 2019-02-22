@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_multiple_products_50372.nasl 11656 2018-09-27 13:22:19Z cfischer $
+# $Id: gb_cisco_multiple_products_50372.nasl 13792 2019-02-20 13:15:35Z cfischer $
 #
 # Multiple Cisco Products 'file' Parameter () Directory Traversal Vulnerability
 #
@@ -32,9 +32,9 @@ if(description)
   script_cve_id("CVE-2011-3315");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_version("$Revision: 11656 $");
+  script_version("$Revision: 13792 $");
   script_name("Multiple Cisco Products 'file' Parameter () Directory Traversal Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 15:22:19 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-20 14:15:35 +0100 (Wed, 20 Feb 2019) $");
   script_tag(name:"creation_date", value:"2012-01-26 15:59:27 +0100 (Thu, 26 Jan 2012)");
   script_category(ACT_ATTACK);
   script_family("CISCO");
@@ -82,9 +82,10 @@ if(http_vuln_check(port:port, url:"/", pattern:"cisco", usecache:TRUE)) {
 
   foreach pattern(keys(files)) {
 
+    file = files[pattern];
     url = "/ccmivr/IVRGetAudioFile.do?file=../../../../../../../../../../../../../../../" + file;
 
-    if(http_vuln_check(port:port, url:url,pattern:pattern)) {
+    if(http_vuln_check(port:port, url:url, pattern:pattern)) {
       report = report_vuln_url(port:port, url:url);
       security_message(data:report, port:port);
       exit(0);

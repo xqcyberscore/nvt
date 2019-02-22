@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_solarwinds_orion_npm_detect_win.nasl 13748 2019-02-19 04:10:22Z ckuersteiner $
+# $Id: gb_solarwinds_orion_npm_detect_win.nasl 13765 2019-02-19 13:16:59Z mmartin $
 #
 # SolarWinds Orion Network Performance Monitor Version Detection (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107408");
-  script_version("$Revision: 13748 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-19 05:10:22 +0100 (Tue, 19 Feb 2019) $");
+  script_version("$Revision: 13765 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-19 14:16:59 +0100 (Tue, 19 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-12-08 12:31:03 +0100 (Sat, 08 Dec 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -58,15 +58,12 @@ include("version_func.inc");
 os_arch = get_kb_item("SMB/Windows/Arch");
 if (!os_arch)
   exit(0);
-
 if ("x86" >< os_arch) {
   key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\");
-  location = "C:\Program Files\SolarWinds\Orion";
 } else if ("x64" >< os_arch) {
   key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\",
                        "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\");
-  location = "C:\Program Files (x86)\SolarWinds\Orion";
-}
+  }
 
 if (isnull(key_list)) exit(0);
 
@@ -76,12 +73,15 @@ foreach key (key_list) {
     appName = registry_get_sz(key:key + item, item:"DisplayName");
     if(!appName || appName !~ "SolarWinds Orion Network Performance Monitor") continue;
 
-    # wrong Version in "DisplayVersion"
-    ver = eregmatch(string:appName, pattern:"([0-9.]+)");
+    location = "unknown";
 
-    if(ver[1])
-      set_kb_item(name: "solarwinds/orion/npm/win/x86/version", value: ver[1]);
+    loc = registry_get_sz(key:key + item, item:"InstallLocation");
+    if(loc) location = loc;
 
+    if(!version = registry_get_sz(key:key + item, item:"DisplayVersion"))
+      version = "unknown";
+
+    set_kb_item(name: "solarwinds/orion/npm/win/x86/version", value: version);
     set_kb_item(name:"solarwinds/orion/npm/detected", value:TRUE);
     set_kb_item(name:"solarwinds/orion/npm/win/detected", value:TRUE);
     set_kb_item(name:"solarwinds/orion/npm/win/path", value:location);

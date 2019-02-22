@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: pop3_func.inc 13673 2019-02-14 14:56:45Z cfischer $
+# $Id: pop3_func.inc 13818 2019-02-21 16:26:49Z cfischer $
 #
 # Methods for handling POP3
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 13673 $
+# $Revision: 13818 $
 #
 ###############################################################################
 
@@ -101,8 +101,9 @@ function get_pop3_banner( port ) {
       set_kb_item( name:"pop3/fingerprints/" + port + "/nontls_capa_banner", value:capabanner );
   }
 
+  # nb: Keep in sync with gb_starttls_pop3.nasl
   if( capabanner == "+OK" || "capability list follows" >< tolower( capabanner ) || "List of capabilities follows" >< tolower( capabanner ) ||
-      "capa list follows" >< tolower( capabanner ) || "list follows" >< capabanner ) {
+      "capa list follows" >< tolower( capabanner ) || "list follows" >< capabanner || "Here's what I can do" >< capabanner ) {
     while( capabanner = recv_line( socket:soc, length:4096 ) ) {
       n++;
       implbanner = egrep( pattern:"IMPLEMENTATION .*", string:capabanner );
@@ -112,7 +113,7 @@ function get_pop3_banner( port ) {
         banner += '\n' + implbanner;
       }
       capabanner = chomp( capabanner );
-      if( capabanner ) {
+      if( capabanner && capabanner != "." ) {
 
         set_kb_item( name:"pop3/fingerprints/" + port + "/capalist", value:capabanner );
 

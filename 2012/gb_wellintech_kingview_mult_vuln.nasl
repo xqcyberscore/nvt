@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wellintech_kingview_mult_vuln.nasl 11857 2018-10-12 08:25:16Z cfischer $
+# $Id: gb_wellintech_kingview_mult_vuln.nasl 13783 2019-02-20 11:12:24Z cfischer $
 #
 # WellinTech KingView Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802911");
-  script_version("$Revision: 11857 $");
+  script_version("$Revision: 13783 $");
   script_cve_id("CVE-2012-1830", "CVE-2012-1831", "CVE-2012-1832", "CVE-2012-2560");
   script_bugtraq_id(54280);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-20 12:12:24 +0100 (Wed, 20 Feb 2019) $");
   script_tag(name:"creation_date", value:"2012-07-10 17:26:36 +0530 (Tue, 10 Jul 2012)");
   script_name("WellinTech KingView Multiple Vulnerabilities");
   script_category(ACT_DENIAL);
@@ -48,8 +48,7 @@ if(description)
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/114166/kingviewtouchview-overwrite.txt");
 
   script_tag(name:"impact", value:"Successful exploitation allows remote attackers to gain sensitive information
-  via directory traversal attacks or cause the application to crash, creating a
-  denial of service condition.");
+  via directory traversal attacks or cause the application to crash, creating a denial of service condition.");
 
   script_tag(name:"affected", value:"WellinTech KingView version 6.53");
 
@@ -65,7 +64,7 @@ if(description)
   script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
 
   script_tag(name:"summary", value:"This host is running WellinTech KingView and is prone to multiple
-  vulnerabilties.");
+  vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");

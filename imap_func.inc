@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: imap_func.inc 13673 2019-02-14 14:56:45Z cfischer $
+# $Id: imap_func.inc 13819 2019-02-21 17:16:13Z cfischer $
 #
 # Support methods for IMAP
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 13673 $
+# $Revision: 13819 $
 #
 ###############################################################################
 
@@ -137,7 +137,7 @@ function get_imap_banner( port ) {
       capas = split( capas, sep:" ", keep:FALSE );
       foreach capa( capas ) {
 
-        if( capa == "*" || capa == "CAPABILITY" )
+        if( capa == "*" || capa == "CAPABILITY" || capa == "IMAP4rev1" )
           continue;
 
         set_kb_item( name:"imap/fingerprints/" + port + "/capalist", value:capa );

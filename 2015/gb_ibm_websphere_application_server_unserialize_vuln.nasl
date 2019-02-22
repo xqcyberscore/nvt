@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_application_server_unserialize_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_ibm_websphere_application_server_unserialize_vuln.nasl 13803 2019-02-21 08:24:24Z cfischer $
 #
 # IBM WebSphere Application Server Unserialize Vulnerability
 #
@@ -30,19 +30,18 @@ CPE = "cpe:/a:ibm:websphere_application_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806624");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 13803 $");
   script_cve_id("CVE-2015-7450");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-21 09:24:24 +0100 (Thu, 21 Feb 2019) $");
   script_tag(name:"creation_date", value:"2015-11-17 17:28:17 +0530 (Tue, 17 Nov 2015)");
   script_name("IBM WebSphere Application Server Unserialize Vulnerability");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_family("Web application abuses");
+  script_family("Web Servers");
   script_dependencies("gb_ibm_websphere_detect.nasl");
   script_mandatory_keys("ibm_websphere_application_server/installed");
-  script_require_ports("Services/www", 80);
 
   script_xref(name:"URL", value:"https://foxglovesecurity.com/2015/11/06/what-do-weblogic-websphere-jboss-jenkins-opennms-and-your-application-have-in-common-this-vulnerability/#websphere");
 

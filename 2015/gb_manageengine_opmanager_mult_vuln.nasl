@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_opmanager_mult_vuln.nasl 13659 2019-02-14 08:34:21Z cfischer $
+# $Id: gb_manageengine_opmanager_mult_vuln.nasl 13755 2019-02-19 10:42:02Z jschulte $
 #
 # ManageEngine OpManager Multiple Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:zohocorp:manageengine_opmanager";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806053");
-  script_version("$Revision: 13659 $");
+  script_version("$Revision: 13755 $");
   script_cve_id("CVE-2015-7765", "CVE-2015-7766");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-19 11:42:02 +0100 (Tue, 19 Feb 2019) $");
   script_tag(name:"creation_date", value:"2015-09-16 11:10:46 +0530 (Wed, 16 Sep 2015)");
 
   script_tag(name:"qod_type", value:"remote_vul");
@@ -65,8 +65,8 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Default Accounts");
-  script_dependencies("gb_manage_engine_opmanager_detect.nasl");
-  script_mandatory_keys("OpManager/installed");
+  script_dependencies("gb_manage_engine_opmanager_consolidation.nasl");
+  script_mandatory_keys("manageengine/opmanager/http/detected");
   script_require_ports("Services/www", 80);
 
   script_xref(name:"URL", value:"https://support.zoho.com/portal/manageengine/helpcenter/articles/pgsql-submitquery-do-vulnerability");

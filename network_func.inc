@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: network_func.inc 7162 2017-09-18 08:27:48Z cfischer $
+# $Id: network_func.inc 13781 2019-02-20 10:25:43Z cfischer $
 #
 # Methods for handling some network operations
 #
@@ -29,7 +29,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7162 $
+# $Revision: 13781 $
 #
 ###############################################################################
 
@@ -260,6 +260,63 @@ function is_radius_alive( port ) {
     if( buf && ord( buf[0] ) == 3 ) {
       return TRUE;
     }
+  }
+  return FALSE;
+}
+
+# @brief Tries to extract a MAC Address of a passed string. If a MAC Address was found saves it into the KB (Host/mac_address)
+#        and registers it as a MAC Host Detail. The function will also verify the syntax of the MAC Address and converts it into
+#        the common unioxide syntax "01:23:45:67:89:ab" before saving / registering it.
+#
+# @param data The string containing the MAC Address.
+# @param desc The name of the VT which has extracted the MAC Address. This is used when registering the Host Detail.
+#
+# @note Please note that you should strip the passed string to a minimum before passing it to this function.
+# @note You need to include "host_details.inc" for @ref register_host_details into your VT.
+#
+# @return The extracted MAC Address as a string if it was successfully saved / registered, FALSE otherwise and NULL in the
+#         case where no data and/or desc parameter was passed.
+#
+function verify_register_mac_address( data, desc ) {
+
+  local_var data, des;
+  local_var mac, final_mac;
+
+  if( ! data ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#data#-#verify_register_mac_address" );
+    return NULL;
+  }
+
+  if( ! desc ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#desc#-#verify_register_mac_address" );
+    return NULL;
+  }
+
+  if( strlen( data ) < 14 )
+    return FALSE;
+
+  # unixoide (e.g. ifconfig) output is:
+  # 01:23:45:67:89:ab
+  #
+  # Examples from https://en.wikipedia.org/wiki/MAC_address#Notational_conventions:
+  # 01-23-45-67-89-AB
+  # 01:23:45:67:89:AB
+  # 0123.4567.89AB (e.g. Cisco)
+  #
+  # nb: The regex is done in a more complex way as we want to extract the digits only to be able to
+  # easier convert it into the unixoide syntax later.
+  if( mac = eregmatch( string:data, pattern:"(([0-9a-f]{2})[-:]([0-9a-f]{2})[-:]([0-9a-f]{2})[-:]([0-9a-f]{2})[-:]([0-9a-f]{2})[-:]([0-9a-f]{2})|([0-9a-f]{2})([0-9a-f]{2})\.([0-9a-f]{2})([0-9a-f]{2})\.([0-9a-f]{2})([0-9a-f]{2}))", icase:TRUE ) ) {
+
+    # nb: The second regex for the Cisco syntax starts at index 8
+    if( ! isnull( mac[8] ) )
+      final_mac = mac[8] + ":" + mac[9] + ":" + mac[10] + ":" + mac[11] + ":" + mac[12] + ":" + mac[13];
+    else
+      final_mac = mac[2] + ":" + mac[3] + ":" + mac[4] + ":" + mac[5] + ":" + mac[6] + ":" + mac[7];
+
+    final_mac = tolower( final_mac );
+    register_host_detail( name:"MAC", value:final_mac, desc:desc );
+    replace_kb_item( name:"Host/mac_address", value:final_mac );
+    return final_mac;
   }
   return FALSE;
 }

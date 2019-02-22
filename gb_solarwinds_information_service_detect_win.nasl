@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_solarwinds_information_service_detect_win.nasl 12756 2018-12-11 11:23:23Z mmartin $
+# $Id: gb_solarwinds_information_service_detect_win.nasl 13765 2019-02-19 13:16:59Z mmartin $
 #
 # SolarWinds Information Service Version Detection (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107417");
-  script_version("$Revision: 12756 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-11 12:23:23 +0100 (Tue, 11 Dec 2018) $");
+  script_version("$Revision: 13765 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-19 14:16:59 +0100 (Tue, 19 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-12-10 12:08:02 +0100 (Mon, 10 Dec 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -60,12 +60,10 @@ if (!os_arch)
 
 if ("x86" >< os_arch) {
   key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\");
-  location = "C:\Program Files\SolarWinds\Orion";
 } else if ("x64" >< os_arch) {
   key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\",
                        "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\");
-  location = "C:\Program Files (x86)\SolarWinds\Orion";
-}
+  }
 
 if (isnull(key_list)) exit(0);
 
@@ -77,6 +75,11 @@ foreach key (key_list) {
     version = "unknown";
     concluded += "SolarWinds Information Service";
 
+    location = "unknown";
+
+    loc = registry_get_sz(key:key + item, item:"InstallLocation");
+    if(loc) location = loc;
+
     # wrong Version in "DisplayVersion"
     ver = eregmatch(string:appName, pattern:"([0-9.]+)");
 
@@ -84,7 +87,6 @@ foreach key (key_list) {
     concluded += " " + version;
 
     set_kb_item(name:"solarwinds/information_service/win/detected", value:TRUE);
-    set_kb_item(name:"solarwinds/information_service/win/ver", value:version);
 
     register_and_report_cpe(app:appName, ver:version, concluded:concluded,
     base:"cpe:/a:solarwinds:information_service:", expr:"^([0-9.]+)", insloc:location, regService:"smb-login", regPort:0);

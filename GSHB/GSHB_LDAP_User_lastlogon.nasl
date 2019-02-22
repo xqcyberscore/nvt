@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_LDAP_User_lastlogon.nasl 10949 2018-08-14 09:36:21Z emoss $
+# $Id: GSHB_LDAP_User_lastlogon.nasl 13769 2019-02-19 15:52:41Z cfischer $
 #
 # Search in LDAP the lastLogonTimestamp of Users.
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96170");
-  script_version("$Revision: 10949 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 11:36:21 +0200 (Tue, 14 Aug 2018) $");
+  script_version("$Revision: 13769 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-19 16:52:41 +0100 (Tue, 19 Feb 2019) $");
   script_tag(name:"creation_date", value:"2012-08-10 09:43:28 +0200 (Fri, 10 Aug 2012)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -36,8 +36,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");
+  script_dependencies("GSHB/GSHB_WMI_OSInfo.nasl", "toolcheck.nasl");
   script_mandatory_keys("Compliance/Launch/GSHB");
-  script_dependencies("GSHB/GSHB_WMI_OSInfo.nasl");
 
   script_add_preference(name:"Testuser Common Name", type:"entry", value:"CN");
   script_add_preference(name:"Testuser Organization Unit", type:"entry", value:"OU");
@@ -79,19 +79,16 @@ if(WindowsDomainrole < 4){
 port = get_kb_item("Services/ldap");
 if (! port) port = 389;
 if (! get_port_state(port)){
-
   log_message(port:0, proto: "IT-Grundschutz", data: 'No Access to port 389!');
   set_kb_item(name:"GSHB/lastLogonTimestamp", value:"error");
   exit(0);
 }
 
-if (! find_in_path("ldapsearch"))
-{
+if (! get_kb_item("Tools/Present/ldapsearch")){
   set_kb_item(name:"GSHB/lastLogonTimestamp", value:"error");
   set_kb_item(name:"GSHB/lastLogonTimestamp/log", value:"Command -ldapsearch- not available to scan server (not in\nsearch path). Therefore this test was not executed.");
   exit(0);
 }
-
 
 if (OU == "OU" || CN == "CN" || OU == "" || CN == ""){
   set_kb_item(name:"GSHB/lastLogonTimestamp", value:"error");

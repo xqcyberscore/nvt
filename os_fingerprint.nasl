@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: os_fingerprint.nasl 12766 2018-12-12 08:34:25Z ckuersteiner $
+# $Id: os_fingerprint.nasl 13782 2019-02-20 10:28:14Z ckuersteiner $
 #
 # ICMP based OS Fingerprinting
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102002");
-  script_version("$Revision: 12766 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-12 09:34:25 +0100 (Wed, 12 Dec 2018) $");
+  script_version("$Revision: 13782 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-20 11:28:14 +0100 (Wed, 20 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-05-19 12:05:50 +0200 (Tue, 19 May 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -70,7 +70,8 @@ if(description)
                       "gb_intelbras_ncloud_devices_http_detect.nasl",
                       "gb_ricoh_iwb_detect.nasl", "gb_codesys_os_detection.nasl",
                       "gb_simatic_hmi_consolidation.nasl", "gb_wago_plc_consolidation.nasl",
-                      "gb_rockwell_micrologix_consolidation.nasl", "gb_windows_cpe_detect.nasl",
+                      "gb_rockwell_micrologix_consolidation.nasl", "gb_rockwell_powermonitor_http_detect.nasl",
+                      "gb_windows_cpe_detect.nasl",
                       "gather-package-list.nasl", "gb_cisco_pis_version.nasl",
                       "gb_checkpoint_fw_version.nasl", "gb_smb_windows_detect.nasl",
                       "gb_nec_communication_platforms_detect.nasl", "gb_ssh_os_detection.nasl",

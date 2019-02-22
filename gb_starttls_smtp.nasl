@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_starttls_smtp.nasl 13470 2019-02-05 12:39:51Z cfischer $
+# $Id: gb_starttls_smtp.nasl 13822 2019-02-21 21:05:10Z cfischer $
 #
 # SSL/TLS: SMTP 'STARTTLS' Command Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103118");
-  script_version("$Revision: 13470 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-05 13:39:51 +0100 (Tue, 05 Feb 2019) $");
+  script_version("$Revision: 13822 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-21 22:05:10 +0100 (Thu, 21 Feb 2019) $");
   script_tag(name:"creation_date", value:"2011-03-11 13:29:22 +0100 (Fri, 11 Mar 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -75,15 +75,47 @@ if( r =~ "^220[ -]" || "Ready to start TLS" >< r || "TLS go ahead" >< r || " Sta
 
   report = "The remote SMTP server supports SSL/TLS with the 'STARTTLS' command.";
 
-  soc2 = socket_negotiate_ssl( socket:soc );
-  if( soc2 ) {
-    send( socket:soc2, data:'EHLO ' + helo + '\r\n' );
-    ehlo = smtp_recv_line( socket:soc2, code:"250" );
-    smtp_close( socket:soc2, check_data:ehlo );
+  commandlist = get_kb_list( "smtp/fingerprints/" + port + "/nontls_commandlist" );
+  if( commandlist && typeof( commandlist ) == "array" ) {
+    commandlist = sort( commandlist );
+    command_report = "";
+    foreach command( commandlist ) {
+      if( ! command_report )
+        command_report = command;
+      else
+        command_report += ", " + command;
+    }
+    if( command_report )
+      report = string( report, "\n\nThe remote SMTP server is announcing the following available ESMTP commands (EHLO response) before sending the 'STARTTLS' command:\n\n", command_report );
+  }
+
+  # nb: socket_negotiate_ssl() would fork on multiple hostnames causing issues with failed connections
+  # / socket communitcation so we're directly disable the use of SNI (and the forking) on this port.
+  set_kb_item( name:"Host/SNI/" + port + "/force_disable", value:1 );
+  soc = socket_negotiate_ssl( socket:soc );
+  if( soc ) {
+
+    send( socket:soc, data:'EHLO ' + helo + '\r\n' );
+    ehlo = smtp_recv_line( socket:soc, code:"250" );
+    smtp_close( socket:soc, check_data:ehlo );
 
     if( ehlo ) {
 
-      report = string( report, "\n\nThe remote SMTP server is announcing the following available ESMTP commands (EHLO response) after sending the 'STARTTLS' command:\n", ehlo );
+      commands = split( ehlo, keep:FALSE );
+      first = 0;
+      foreach command( commands ) {
+
+        # nb: The first command includes the remote hostname so we're ignoring it here.
+        first++;
+        if( first == 1 )
+          continue;
+
+        _command = eregmatch( string:command, pattern:"^250[ -](.+)" );
+        if( _command[1] ) {
+          # nb: Don't set "smtp/fingerprints/" + port + "/nontls_commandlist" which is already collected by get_smtp_banner() via smtpserver_detect.nasl.
+          set_kb_item( name:"smtp/fingerprints/" + port + "/tls_commandlist", value:_command[1] );
+        }
+      }
 
       if( auth_string = egrep( string:ehlo, pattern:"^250[ -]AUTH .+" ) ) {
 
@@ -98,9 +130,22 @@ if( r =~ "^220[ -]" || "Ready to start TLS" >< r || "TLS go ahead" >< r || " Sta
           set_kb_item( name:"smtp/fingerprints/" + port + "/tls_authlist", value:auth );
       }
     }
-  } else {
-    smtp_close( socket:soc, check_data:r );
   }
+
+  # nb: We're getting the list here again to be able to sort it afterwards for easier comparison with the previous list.
+  commandlist = get_kb_list( "smtp/fingerprints/" + port + "/tls_commandlist" );
+  if( commandlist && typeof( commandlist ) == "array" ) {
+    commandlist = sort( commandlist );
+    command_report = "";
+    foreach command( commandlist ) {
+      if( ! command_report )
+        command_report = command;
+      else
+        command_report += ", " + command;
+    }
+  }
+  if( command_report )
+    report = string( report, "\n\nThe remote SMTP server is announcing the following available ESMTP commands (EHLO response) after sending the 'STARTTLS' command:\n\n", command_report );
 
   log_message( port:port, data:report );
 } else {

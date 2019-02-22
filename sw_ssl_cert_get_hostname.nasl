@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_ssl_cert_get_hostname.nasl 11488 2018-09-20 07:47:27Z cfischer $
+# $Id: sw_ssl_cert_get_hostname.nasl 13774 2019-02-20 07:36:02Z cfischer $
 #
 # SSL/TLS: Hostname discovery from server certificate
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111010");
-  script_version("$Revision: 11488 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 09:47:27 +0200 (Thu, 20 Sep 2018) $");
+  script_version("$Revision: 13774 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-20 08:36:02 +0100 (Wed, 20 Feb 2019) $");
   script_tag(name:"creation_date", value:"2015-03-27 12:00:00 +0100 (Fri, 27 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -36,7 +36,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2015 SCHUTZWERK GmbH");
   script_family("SSL and TLS");
-  script_dependencies("ssl_cert_details.nasl");
+  script_dependencies("ssl_cert_details.nasl", "toolcheck.nasl");
   script_mandatory_keys("ssl/cert/avail");
 
   script_tag(name:"summary", value:"It was possible to discover an additional hostname
@@ -49,8 +49,6 @@ if(description)
 
 include("misc_func.inc");
 include("host_details.inc");
-
-if( ! find_in_path( "ping" ) ) exit( 0 );
 
 hostname             = get_host_name();
 hostip               = get_host_ip();
@@ -70,42 +68,20 @@ ipv6pattern = "(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7
 # TODO: Remove the whole ping code once GVM-9 was retired.
 if( ! defined_func( "resolve_host_name" ) ) {
 
+  if( ! ping_cmd = get_kb_item( "Tools/Present/ping/bin" ) )
+    exit( 0 );
+
   use_ping_cmd = TRUE;
   ping_args    = make_list();
   i            = 0;
 
-  # nb: There are differences between inetutils and iputils packages and versions.
-  # Some packages have e.g. a ping6 binary, others just a symlink from ping6 to ping.
-  #
-  # First check if the ping command supports the -6/-4 parameter
-  check = pread( cmd:"ping", argv:make_list( "ping", "--usage" ), cd:TRUE );
-  if( "Usage: ping" >< check && "64]" >< check ) {
-    param64 = TRUE;
-  }
-
-  if( TARGET_IS_IPV6() ) {
-    # If the -6 parameter is available explicitly specify it for the ping command and use only "ping"
-    if( param64 ) {
-      ping_cmd       = "ping";
-      ping_args[i++] = "-6";
-    } else {
-      if( find_in_path( "ping6" ) ) {
-        ping_cmd = "ping6";
-      } else {
-        ping_cmd = "ping";
-      }
-    }
+  if( TARGET_IS_IPV6() )
     pattern = ipv6pattern;
-  } else {
-    # If the -4 parameter is available explicitly specify it for the ping command
-    if( param64 ) {
-      ping_cmd       = "ping";
-      ping_args[i++] = "-4";
-    } else {
-      ping_cmd = "ping";
-    }
+  else
     pattern = ipv4pattern;
-  }
+
+  if( extra_cmd = get_kb_item( "Tools/Present/ping/extra_cmd" ) )
+    ping_args[i++] = extra_cmd;
 
   # nb: Only use one ping and a low timeout of one second (default is 10) so we don't
   # waste too much time here as we only want the hostname resolved by the ping command
@@ -117,7 +93,7 @@ if( ! defined_func( "resolve_host_name" ) ) {
 
 tmpHostnames = get_kb_list( "HostDetails/Cert/*/hostnames" );
 
-if ( ! isnull( tmpHostnames ) ) {
+if( ! isnull( tmpHostnames ) ) {
 
   foreach certHostnames( keys( tmpHostnames ) ) {
 
@@ -126,13 +102,16 @@ if ( ! isnull( tmpHostnames ) ) {
     foreach tmpHostname( split( hostnames, sep:",", keep:FALSE ) ) {
 
       # Basic sanity check
-      if( ! strlen( tmpHostname ) > 0 || " " >< tmpHostname ) continue;
+      if( ! strlen( tmpHostname ) > 0 || " " >< tmpHostname )
+        continue;
 
       # Don't ping known host, wildcard cert or localhost/localdomain hostnames
-      if( hostname == tmpHostname || "*." >< tmpHostname || tmpHostname == "localhost" || tmpHostname == "localdomain" ) continue;
+      if( hostname == tmpHostname || "*." >< tmpHostname || tmpHostname == "localhost" || tmpHostname == "localdomain" )
+        continue;
 
       # Same goes for IP addresses within the CN/SAN
-      if( eregmatch( pattern:ipv4pattern, string:tmpHostname ) || eregmatch( pattern:ipv6pattern, string:tmpHostname ) ) continue;
+      if( eregmatch( pattern:ipv4pattern, string:tmpHostname ) || eregmatch( pattern:ipv6pattern, string:tmpHostname ) )
+        continue;
 
       if( use_ping_cmd ) {
         cnIp     = pread( cmd:ping_cmd, argv:make_list( ping_cmd, ping_args, tmpHostname ), cd:TRUE );

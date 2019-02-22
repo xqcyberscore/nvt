@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_was_info_disclosure_vuln_aug18.nasl 11863 2018-10-12 09:42:02Z mmartin $
+# $Id: gb_ibm_was_info_disclosure_vuln_aug18.nasl 13803 2019-02-21 08:24:24Z cfischer $
 #
 # IBM Websphere Application Server Information Disclosure Vulnerability Aug17
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:websphere_application_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811499");
-  script_version("$Revision: 11863 $");
+  script_version("$Revision: 13803 $");
   script_cve_id("CVE-2017-1504");
   script_bugtraq_id(100137);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-21 09:24:24 +0100 (Thu, 21 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-08-07 09:51:45 +0530 (Mon, 07 Aug 2017)");
   ## Interim Fix Available. Also if certain feature is used then only vulnerable.
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
@@ -67,26 +67,21 @@ if(description)
   script_family("Web Servers");
   script_dependencies("gb_ibm_websphere_detect.nasl");
   script_mandatory_keys("ibm_websphere_application_server/installed");
-  script_require_ports("Services/www", 80);
+
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");
 
-if(!wasPort = get_app_port(cpe:CPE)){
+if(!wasVer = get_app_version(cpe:CPE, nofork:TRUE))
   exit(0);
-}
-
-if(!wasVer = get_app_version(cpe:CPE, port:wasPort)){
-  exit(0);
-}
 
 if(wasVer == "9.0.0.4")
 {
   report = report_fixed_ver(installed_version:wasVer, fixed_version:"9.0.0.5");
-  security_message(data:report, port:wasPort);
+  security_message(port:0, data:report);
   exit(0);
 }
-exit(0);
+
+exit(99);

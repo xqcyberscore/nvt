@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_autonomic_controls_http_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
+# $Id: gb_autonomic_controls_http_detect.nasl 13795 2019-02-20 15:20:14Z cfischer $
 #
 # Autonomic Controls Detection (HTTP)
 #
@@ -25,11 +25,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if( description )
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113242");
-  script_version("$Revision: 11885 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 13795 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-20 16:20:14 +0100 (Wed, 20 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-08-07 10:33:33 +0200 (Tue, 07 Aug 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -53,15 +53,15 @@ if( description )
   exit(0);
 }
 
-include( "host_details.inc" );
-include( "http_func.inc" );
-
+include("host_details.inc");
+include("http_func.inc");
 
 port = get_http_port( default: 80 );
+banner = get_http_banner( port: port );
 
-banner = get_http_banner( port: port, file: "/", ignore_broken: FALSE );
-if( banner =~ 'Autonomic Controls' ) {
-  replace_kb_item( name: "autonomic_controls/detected", value: TRUE );
+if( banner && banner =~ 'Autonomic Controls' ) {
+
+  set_kb_item( name: "autonomic_controls/detected", value: TRUE );
   set_kb_item( name: "autonomic_controls/http/port", value: port );
 
   ver = eregmatch( string: banner, pattern: 'Autonomic Controls/([0-9.]+)', icase: TRUE );

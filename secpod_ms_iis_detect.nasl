@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_iis_detect.nasl 10826 2018-08-08 07:30:42Z cfischer $
+# $Id: secpod_ms_iis_detect.nasl 13811 2019-02-21 11:07:30Z cfischer $
 #
 # Microsoft IIS Webserver Version Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900710");
-  script_version("$Revision: 10826 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-08 09:30:42 +0200 (Wed, 08 Aug 2018) $");
+  script_version("$Revision: 13811 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-21 12:07:30 +0100 (Thu, 21 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-05-20 10:26:22 +0200 (Wed, 20 May 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -54,15 +54,20 @@ include("host_details.inc");
 
 port = get_http_port( default:80 );
 banner = get_http_banner( port:port );
-if( ! banner || banner !~ "Server: (Microsoft-)?IIS" ) exit( 0 );
+if( ! banner || banner !~ "Server: (Microsoft-)?IIS" )
+  exit( 0 );
 
 version = "unknown";
 install = port + "/tcp";
 set_kb_item( name:"IIS/installed", value:TRUE );
 
-vers = eregmatch( pattern:"IIS\/([0-9.]+)", string:banner );
-if( ! isnull( vers[1] ) ) {
-  version = vers[1];
+# nb: To tell can_host_asp and can_host_php from http_func that the service support these
+replace_kb_item( name:"www/" + port + "/can_host_php", value:"yes" );
+replace_kb_item( name:"www/" + port + "/can_host_asp", value:"yes" );
+
+vers = eregmatch( pattern:"Server: (Microsoft-)?IIS\/([0-9.]+)", string:banner );
+if( ! isnull( vers[2] ) ) {
+  version = vers[2];
   set_kb_item( name:"IIS/" + port + "/Ver", value:version );
 }
 
@@ -75,7 +80,7 @@ log_message( data:build_detection_report( app:"Microsoft IIS Webserver",
                                           version:version,
                                           install:install,
                                           cpe:cpe,
-                                          concluded:banner ),
+                                          concluded:vers[0] ),
                                           port:port );
 
 exit( 0 );

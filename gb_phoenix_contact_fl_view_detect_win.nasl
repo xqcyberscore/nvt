@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phoenix_contact_fl_view_detect_win.nasl 13414 2019-02-01 13:56:18Z cfischer $
+# $Id: gb_phoenix_contact_fl_view_detect_win.nasl 13760 2019-02-19 11:38:16Z santu $
 #
 # PHOENIX CONTACT FL VIEW Version Detection (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107388");
-  script_version("$Revision: 13414 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-01 14:56:18 +0100 (Fri, 01 Feb 2019) $");
+  script_version("$Revision: 13760 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-19 12:38:16 +0100 (Tue, 19 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-12-04 10:12:59 +0100 (Tue, 04 Dec 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -53,7 +53,7 @@ include("cpe.inc");
 include("host_details.inc");
 include("secpod_smb_func.inc");
 include("version_func.inc");
-include("misc_func.inc"); # nb: For registry_enum_values
+include("http_func.inc"); # nb: For registry_enum_values
 
 os_arch = get_kb_item("SMB/Windows/Arch");
 if (!os_arch)

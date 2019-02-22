@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_info_disclose_vuln04_mar16.nasl 12456 2018-11-21 09:45:52Z cfischer $
+# $Id: gb_ibm_websphere_info_disclose_vuln04_mar16.nasl 13803 2019-02-21 08:24:24Z cfischer $
 #
 # IBM Websphere Application Server Information Disclosure Vulnerability-04 Mar16
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:websphere_application_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806888");
-  script_version("$Revision: 12456 $");
+  script_version("$Revision: 13803 $");
   script_cve_id("CVE-2014-6166");
   script_bugtraq_id(71836);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:45:52 +0100 (Wed, 21 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-21 09:24:24 +0100 (Thu, 21 Feb 2019) $");
   script_tag(name:"creation_date", value:"2016-03-03 18:23:44 +0530 (Thu, 03 Mar 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("IBM Websphere Application Server Information Disclosure Vulnerability-04 Mar16");
@@ -62,24 +62,20 @@ if(description)
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_family("Web application abuses");
+  script_family("Web Servers");
   script_dependencies("gb_ibm_websphere_detect.nasl");
   script_mandatory_keys("ibm_websphere_application_server/installed");
-  script_require_ports("Services/www", 80);
+
   script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg21671835");
+
   exit(0);
 }
 
 include("host_details.inc");
 include("version_func.inc");
 
-if(!wasPort = get_app_port(cpe:CPE)){
+if(!wasVer = get_app_version(cpe:CPE, nofork:TRUE))
   exit(0);
-}
-
-if(!wasVer = get_app_version(cpe:CPE, port:wasPort)){
-  exit(0);
-}
 
 if(version_in_range(version:wasVer, test_version:"8.0", test_version2:"8.0.0.9"))
 {
@@ -96,6 +92,8 @@ else if(version_in_range(version:wasVer, test_version:"8.5", test_version2:"8.5.
 if(VULN)
 {
   report = report_fixed_ver(installed_version:wasVer, fixed_version:fix);
-  security_message(data:report, port:wasPort);
+  security_message(port:0, data:report);
   exit(0);
 }
+
+exit(99);

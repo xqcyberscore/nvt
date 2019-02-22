@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_http_os_detection.nasl 13679 2019-02-15 08:20:11Z cfischer $
+# $Id: sw_http_os_detection.nasl 13813 2019-02-21 13:07:21Z cfischer $
 #
 # HTTP OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111067");
-  script_version("$Revision: 13679 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
+  script_version("$Revision: 13813 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-21 14:07:21 +0100 (Thu, 21 Feb 2019) $");
   script_tag(name:"creation_date", value:"2015-12-10 16:00:00 +0100 (Thu, 10 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -65,7 +65,15 @@ function check_http_banner( port, banner ) {
 
     banner = chomp( banner );
 
-    # Lotus Domino is is cross-platform
+    # WIBU Systems CodeMeter Web Admin is cross-platform
+    if( "WIBU-SYSTEMS HTTP Server" >< banner )
+      return;
+
+    # Apache Spark is cross-platform
+    if( banner == "Server: Spark" )
+      return;
+
+    # Lotus Domino is cross-platform
     if( banner == "Server: Lotus-Domino" ||
         banner == "Server: Lotus Domino" ) return;
 
@@ -325,6 +333,12 @@ function check_http_banner( port, banner ) {
     # Server: Fedora/8 UPnP/1.0 miniupnpd/1.0
     # SERVER: Fedora/10 UPnP/1.0 MiniUPnPd/1.4
 
+    # Server: MS .NET Remoting, MS .NET CLR 4.0.30319.42000
+    if( "MS .NET Remoting" >< banner || "MS .NET CLR" >< banner ) {
+      register_and_report_os( os:"Microsoft Windows", cpe:"cpe:/o:microsoft:windows", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
+      return;
+    }
+
     # Server: cisco-IOS
     if( "Server: cisco-IOS" >< banner ) {
       register_and_report_os( os:"Cisco IOS", cpe:"cpe:/o:cisco:ios", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
@@ -545,7 +559,7 @@ function check_http_banner( port, banner ) {
         }
         if( version[1] == "6.0" ) {
           register_and_report_os( os:"Microsoft Windows Server 2003", cpe:"cpe:/o:microsoft:windows_server_2003", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-          register_and_report_os( os:"Microsoft Windows XP Professional x64", cpe:"cpe:/o:microsoft:windows_xp:::x64", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
+          register_and_report_os( os:"Microsoft Windows XP Professional x64", cpe:"cpe:/o:microsoft:windows_xp:-:-:x64", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
           return;
         }
         if( version[1] == "5.1" ) {

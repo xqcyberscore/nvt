@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_brickcom_network_camera_detect.nasl 10906 2018-08-10 14:50:26Z cfischer $
+# $Id: gb_brickcom_network_camera_detect.nasl 13795 2019-02-20 15:20:14Z cfischer $
 #
 # Brickcom Network Camera Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112339");
-  script_version("$Revision: 10906 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:50:26 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 13795 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-20 16:20:14 +0100 (Wed, 20 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-07-26 16:22:11 +0200 (Thu, 26 Jul 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -57,20 +57,20 @@ include("cpe.inc");
 include("host_details.inc");
 include("http_func.inc");
 
-
 CPE = "cpe:/h:brickcom:network_camera:";
 app = "Brickcom Network Camera";
 
 port = get_http_port(default: 80);
-res = get_http_banner( port: port, file: "/");
+banner = get_http_banner(port: port);
 
-if(res =~ 'www-authenticate:[ ]?basic[ ]?realm="brickcom') {
+if(banner && banner =~ 'www-authenticate:[ ]?basic[ ]?realm="brickcom') {
+
   set_kb_item(name: "brickcom/network_camera/detected", value: TRUE);
   set_kb_item(name: "brickcom/network_camera/http_port", value: port);
 
   version = "unknown";
 
-  model_match = eregmatch(pattern: '[Ww]{3}-[Aa]uthenticate:[ ]?[Bb]asic[ ]?[Rr]ealm="[Bb]rickcom ([A-Za-z0-9-]+)"', string: res);
+  model_match = eregmatch(pattern: '[Ww]{3}-[Aa]uthenticate:[ ]?[Bb]asic[ ]?[Rr]ealm="[Bb]rickcom ([A-Za-z0-9-]+)"', string: banner);
 
   if(model_match[1]) {
     model = model_match[1];

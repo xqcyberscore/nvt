@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_detect.nasl 13679 2019-02-15 08:20:11Z cfischer $
+# $Id: gb_apache_tomcat_detect.nasl 13761 2019-02-19 12:03:24Z cfischer $
 #
 # Apache Tomcat Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800371");
-  script_version("$Revision: 13679 $");
+  script_version("$Revision: 13761 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-19 13:03:24 +0100 (Tue, 19 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-03-18 14:25:01 +0100 (Wed, 18 Mar 2009)");
   script_name("Apache Tomcat Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -70,12 +70,12 @@ foreach file( make_list( "/tomcat-docs/changelog.html", "/index.jsp", "/RELEASE-
 
   res = http_get_cache( item:file, port:port );
 
-  if( res =~ "^HTTP/1\.[0-1] 200" && "Apache Tomcat" >< res ) {
+  if( res =~ "^HTTP/1\.[0-1] 200" && "Apache Tomcat" >< res )
     identified = TRUE;
-  }
 
   # The 404 error page is checked later. Continue here to avoid that we're matching against a wrong pattern
-  if( res =~ "^HTTP/1\.[0-1] 404" ) continue;
+  if( res =~ "^HTTP/1\.[0-1] 404" )
+    continue;
 
   if( egrep( pattern:verPattern, string:res ) || egrep( pattern:verPattern2, string:res ) ) {
     conclUrl += report_vuln_url( port:port, url:file, url_only:TRUE ) + '\n';
@@ -93,6 +93,8 @@ if( ! verFound ) {
 
     if( res =~ "^HTTP/1\.[0-1] 404" && "Apache Tomcat" >< res ) {
       identified = TRUE;
+      # nb: Used if the version is hidden on the error page (e.g. <h3>Apache Tomcat/@VERSION@</h3>)
+      _conclUrl = report_vuln_url( port:port, url:file, url_only:TRUE ) + '\n';
     }
 
     if( egrep( pattern:verPattern2, string:res ) ) {
@@ -101,6 +103,8 @@ if( ! verFound ) {
       break;
     }
   }
+  if( identified && ! conclUrl )
+    conclUrl += _conclUrl;
 }
 
 authDirs = http_get_kb_auth_required( port:port, host:host );
@@ -111,7 +115,8 @@ if( authDirs ) {
 
   foreach url( authDirs ) {
 
-    if( "manager/" >!< url ) continue;
+    if( "manager/" >!< url )
+      continue;
 
     authReq = http_get( item:url, port:port );
     authRes = http_keepalive_send_recv( port:port, data:authReq, bodyonly:FALSE );
@@ -158,14 +163,13 @@ if( identified ) {
   set_kb_item( name:"ApacheTomcat/installed", value:TRUE );
 
   cpe = build_cpe( value:vers, exp:"^([0-9.RCM]+)", base:"cpe:/a:apache:tomcat:" );
-  if( isnull( cpe ) )
-    cpe = 'cpe:/a:apache:tomcat';
+  if( ! cpe )
+    cpe = "cpe:/a:apache:tomcat";
 
-  if( extraUrls ) {
+  if( extraUrls )
     extra = 'Administrative Backends are available at the following location(s):\n' + extraUrls;
-  }
 
-  register_product( cpe:cpe, location:install, port:port );
+  register_product( cpe:cpe, location:install, port:port, service:"www" );
   log_message( data:build_detection_report( app:"Apache Tomcat",
                                             version:vers,
                                             install:install,

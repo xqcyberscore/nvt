@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ldapsearch.nasl 11956 2018-10-18 10:10:19Z cfischer $
+# $Id: ldapsearch.nasl 13769 2019-02-19 15:52:41Z cfischer $
 #
 # LDAP information extraction with ldapsearch
 #
@@ -24,8 +24,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.91984");
-  script_version("$Revision: 11956 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:10:19 +0200 (Thu, 18 Oct 2018) $");
+  script_version("$Revision: 13769 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-19 16:52:41 +0100 (Tue, 19 Feb 2019) $");
   script_tag(name:"creation_date", value:"2006-04-23 14:49:44 +0200 (Sun, 23 Apr 2006)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -48,11 +48,6 @@ if(description)
 }
 
 include("ldap.inc");
-
-if( ! find_in_path( "ldapsearch" ) ) {
-  log_message(port:0, data:'Command "ldapsearch" not available to scan server (not in search path).\nTherefore this test was not executed.');
-  exit( 0 );
-}
 
 function scanopts( port, type, value, host, timelimit, sizelimit ) {
 

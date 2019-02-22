@@ -18,8 +18,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80070");
-  script_version("$Revision: 13629 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-13 11:59:34 +0100 (Wed, 13 Feb 2019) $");
+  script_version("$Revision: 13794 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-20 15:59:32 +0100 (Wed, 20 Feb 2019) $");
   script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
   script_xref(name:"OSVDB", value:"821");
   script_tag(name:"cvss_base", value:"7.5");
@@ -29,9 +29,8 @@ if(description)
   script_copyright("This script is Copyright (C) 2003 Renaud Deraison");
   script_family("Default Accounts");
   script_dependencies("gb_linksys_devices_detect.nasl");
-  script_mandatory_keys("Linksys/detected");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_mandatory_keys("Linksys/detected");
 
   script_tag(name:"solution", value:"Connect to this port with a web browser, and click on the 'Password'
   section to set a strong password");
@@ -43,7 +42,7 @@ if(description)
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_vul");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");
@@ -61,9 +60,10 @@ req -= string("\r\n\r\n");
 req += string("\r\nAuthorization: Basic OmFkbWlu\r\n\r\n");
 res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
-if( isnull (res ) ) exit( 0 );
+if( !res )
+  exit( 0 );
 
-if( res =~ "^HTTP/1\.[0-1] 200" ) {
+if( res =~ "^HTTP/1\.[01] 200" ) {
   security_message( port:port );
   exit( 0 );
 }

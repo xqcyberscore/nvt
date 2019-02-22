@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panda_global_protection_mult_vuln.nasl 13716 2019-02-18 04:31:31Z ckuersteiner $
+# $Id: gb_panda_global_protection_mult_vuln.nasl 13783 2019-02-20 11:12:24Z cfischer $
 #
 # Panda Global Protection 17.0.1 Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113138");
-  script_version("$Revision: 13716 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-18 05:31:31 +0100 (Mon, 18 Feb 2019) $");
+  script_version("$Revision: 13783 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-20 12:12:24 +0100 (Wed, 20 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-03-20 10:20:20 +0100 (Tue, 20 Mar 2018)");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
@@ -49,11 +49,11 @@ if( description )
   script_dependencies("gb_panda_prdts_detect.nasl");
   script_mandatory_keys("Panda/GlobalProtection/Ver");
 
-  script_tag(name:"summary", value:"Panda Global Protection is prone to multiple vulnerabilties.");
+  script_tag(name:"summary", value:"Panda Global Protection is prone to multiple vulnerabilities.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"Following vulnerabilties exist:
+  script_tag(name:"insight", value:"Following vulnerabilities exist:
 
   Unquoted Windows search path vulnerability in the panda_url_filtering service in Panda Global Protection allows
 local users to gain privileges via a malicious artifact.

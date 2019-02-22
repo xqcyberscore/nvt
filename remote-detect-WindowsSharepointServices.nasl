@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: remote-detect-WindowsSharepointServices.nasl 12413 2018-11-19 11:11:31Z cfischer $
+# $Id: remote-detect-WindowsSharepointServices.nasl 13762 2019-02-19 12:12:06Z cfischer $
 #
 # This script ensure that Windows SharePointServices is installed and running
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.101018");
-  script_version("$Revision: 12413 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-19 12:11:31 +0100 (Mon, 19 Nov 2018) $");
+  script_version("$Revision: 13762 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-19 13:12:06 +0100 (Tue, 19 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-04-01 22:29:14 +0200 (Wed, 01 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -51,21 +51,23 @@ if(description)
   exit(0);
 }
 
+include("http_func.inc");
+include("http_keepalive.inc");
 include("cpe.inc");
 include("misc_func.inc");
-include("http_func.inc");
 include("host_details.inc");
-include("http_keepalive.inc");
 
 port = get_http_port( default:80 );
-if( ! can_host_asp( port:port ) ) exit( 0 );
+if( ! can_host_asp( port:port ) )
+  exit( 0 );
 
 # req a non existent random page
 page = "vt-test" + rand() + ".aspx";
 
 req = http_get( item:"/" + page, port:port );
 res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
-if( ! res || "microsoft" >!< tolower( res ) ) exit( 0 );
+if( ! res || "microsoft" >!< tolower( res ) )
+  exit( 0 );
 
 dotNetServer = eregmatch( pattern:"Server: Microsoft-IIS/([0-9.]+)",string:res, icase:TRUE );
 mstsVersion = eregmatch( pattern:"MicrosoftSharePointTeamServices: ([0-9.]+)",string:res, icase:TRUE );
@@ -106,59 +108,42 @@ if( dotNetServer ) {
   # OS fingerprint using IIS signature
   # https://en.wikipedia.org/wiki/Internet_Information_Services#History
   osVersion = '';
-  if( dotNetServer[1] == "10.0" ) {
+  if( dotNetServer[1] == "10.0" )
     osVersion = "Windows Server 2016 / Windows 10";
-    set_kb_item(name:"wssOS/version", value:osVersion );
-  }
-  if( dotNetServer[1] == "8.5" ) {
+
+  if( dotNetServer[1] == "8.5" )
     osVersion = "Windows Server 2012 R2 / Windows 8.1";
-    set_kb_item(name:"wssOS/version", value:osVersion );
-  }
-  if( dotNetServer[1] == "8.0" ) {
+
+  if( dotNetServer[1] == "8.0" )
     osVersion = "Windows Server 2012 / Windows 8";
-    set_kb_item(name:"wssOS/version", value:osVersion );
-  }
-  if( dotNetServer[1] == "7.5" ) {
+
+  if( dotNetServer[1] == "7.5" )
     osVersion = "Windows Server 2008 R2 / Windows 7";
-    set_kb_item(name:"wssOS/version", value:osVersion );
-  }
-  if( dotNetServer[1] == "7.0" ) {
+
+  if( dotNetServer[1] == "7.0" )
     osVersion = "Windows Server 2008 / Windows Vista";
-    set_kb_item(name:"wssOS/version", value:osVersion );
-  }
-  if( dotNetServer[1] == "6.0" ) {
+
+  if( dotNetServer[1] == "6.0" )
     osVersion = "Windows Server 2003 / Windows XP Professional x64";
-    set_kb_item( name:"wssOS/version", value:osVersion );
-  }
-  if( dotNetServer[1] == "5.1" ) {
+
+  if( dotNetServer[1] == "5.1" )
     osVersion = "Windows XP Professional";
-    set_kb_item( name:"wssOS/version", value:osVersion );
-  }
-  if( dotNetServer[1] == "5.0" ) {
+
+  if( dotNetServer[1] == "5.0" )
     osVersion = "Windows 2000";
-    set_kb_item( name:"wssOS/version", value:osVersion );
-  }
-  if( dotNetServer[1] == "4.0" ) {
+
+  if( dotNetServer[1] == "4.0" )
     osVersion = "Windows NT 4.0 Option Pack";
-    set_kb_item( name:"wssOS/version", value:osVersion );
-  }
-  if( dotNetServer[1] == "3.0" ) {
+
+  if( dotNetServer[1] == "3.0" )
     osVersion = "Windows NT 4.0 SP2";
-    set_kb_item( name:"wssOS/version", value:osVersion );
-  }
-  if( dotNetServer[1] == "2.0" ) {
+
+  if( dotNetServer[1] == "2.0" )
     osVersion = "Windows NT 4.0";
-    set_kb_item( name:"wssOS/version", value:osVersion );
-  }
-  if( dotNetServer[1] == "1.0" ) {
+
+  if( dotNetServer[1] == "1.0" )
     osVersion = "Windows NT 3.51";
-    set_kb_item( name:"wssOS/version", value:osVersion );
-  }
 
-  set_kb_item( name:"IIS/installed", value:TRUE );
-  set_kb_item( name:"IIS/" + port + "/Ver", value:dotNetServer[1] );
-
-  register_and_report_cpe( app:"Microsoft-IIS", ver:dotNetServer[1], base:"cpe:/a:microsoft:iis:", expr:"^([0-9.]+)", regPort:port, insloc:"/" );
   report += '\n' + dotNetServer[0];
   if( osVersion ) {
     report += '\n' + "Operating System Type: " + osVersion;

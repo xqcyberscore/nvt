@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ftp_os_detection.nasl 13619 2019-02-13 07:21:27Z cfischer $
+# $Id: gb_ftp_os_detection.nasl 13813 2019-02-21 13:07:21Z cfischer $
 #
 # FTP OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105355");
-  script_version("$Revision: 13619 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-13 08:21:27 +0100 (Wed, 13 Feb 2019) $");
+  script_version("$Revision: 13813 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-21 14:07:21 +0100 (Thu, 21 Feb 2019) $");
   script_tag(name:"creation_date", value:"2015-09-15 15:57:03 +0200 (Tue, 15 Sep 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -108,12 +108,12 @@ if( "Network Management Card AOS" >< banner ) {
 }
 
 if( ( "Microsoft FTP Service" >< banner && "WINDOWS SERVER 2003" >< banner ) || "OS=Windows Server 2003;" >< banner ) {
-  register_and_report_os( os:"Microsoft Windows Server 2003", cpe:"cpe:/o:microsoft:windows_2003_server", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
+  register_and_report_os( os:"Microsoft Windows Server 2003", cpe:"cpe:/o:microsoft:windows_server_2003", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
   exit( 0 );
 }
 
 if( "MinWin FTP server" >< banner ) {
-  register_and_report_os( os:"Microsoft Windows 10 IoT", cpe:"cpe:/o:microsoft:windows_10:::iot", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
+  register_and_report_os( os:"Microsoft Windows 10 IoT", cpe:"cpe:/o:microsoft:windows_10:-:-:iot", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
   exit( 0 );
 }
 
@@ -167,7 +167,7 @@ if( "running on Windows Server 2008 R2 Enterprise" >< banner || "OS=Windows Serv
 }
 
 if( "running on Windows 2008" >< banner ) {
-  register_and_report_os( os:"Microsoft Windows 2008", cpe:"cpe:/o:microsoft:windows:2008", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
+  register_and_report_os( os:"Microsoft Windows Server 2008", cpe:"cpe:/o:microsoft:windows_server_2008", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
   exit( 0 );
 }
 

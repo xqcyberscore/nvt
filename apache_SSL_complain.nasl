@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: apache_SSL_complain.nasl 13541 2019-02-08 13:21:52Z cfischer $
+# $Id: apache_SSL_complain.nasl 13797 2019-02-20 16:12:22Z cfischer $
 #
 # Detect HTTP Traffic sent to SSL/TLS enabled Web Server
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.15588");
-  script_version("$Revision: 13541 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-08 14:21:52 +0100 (Fri, 08 Feb 2019) $");
+  script_version("$Revision: 13797 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-20 17:12:22 +0100 (Wed, 20 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -159,7 +159,7 @@ foreach p( keys( banners ) ) {
       if( b ) {
         replace_kb_item( name:"FindService/tcp/" + port + "/get_http", value:b );
         if( b =~ "^HTTP/1\.[01] [0-9]+" )
-          replace_kb_item( name:"www/banner/" + port, value:b );
+          replace_kb_item( name:"www/banner/" + port + "/", value:b ); # nb: See note in get_http_banner() about the trailing newline.
       }
       break;
     }

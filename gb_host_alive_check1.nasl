@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_host_alive_check1.nasl 8142 2017-12-15 13:00:23Z cfischer $
+# $Id: gb_host_alive_check1.nasl 13775 2019-02-20 07:45:12Z cfischer $
 #
 # Mark host as dead if going offline (failed ICMP ping) during scan - Phase 1
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108215");
-  script_version("$Revision: 8142 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:00:23 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 13775 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-20 08:45:12 +0100 (Wed, 20 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-08-17 11:18:02 +0200 (Thu, 17 Aug 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");

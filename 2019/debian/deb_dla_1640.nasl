@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1640.nasl 13279 2019-01-25 06:49:55Z cfischer $
+# $Id: deb_dla_1640.nasl 13828 2019-02-22 09:35:28Z mmartin $
 #
 # Auto-generated from advisory DLA 1640-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891640");
-  script_version("$Revision: 13279 $");
+  script_version("$Revision: 13828 $");
   script_cve_id("CVE-2019-3461");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1640-1] tmpreaper security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-25 07:49:55 +0100 (Fri, 25 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-22 10:35:28 +0100 (Fri, 22 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-25 00:00:00 +0100 (Fri, 25 Jan 2019)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"4.4");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

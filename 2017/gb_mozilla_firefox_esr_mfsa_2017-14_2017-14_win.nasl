@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_mfsa_2017-14_2017-14_win.nasl 11888 2018-10-12 15:27:49Z cfischer $
+# $Id: gb_mozilla_firefox_esr_mfsa_2017-14_2017-14_win.nasl 13783 2019-02-20 11:12:24Z cfischer $
 #
 # Mozilla Firefox ESR Security Updates(mfsa_2017-14_2017-14)-Windows
 #
@@ -29,16 +29,16 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810789");
-  script_version("$Revision: 11888 $");
+  script_version("$Revision: 13783 $");
   script_cve_id("CVE-2017-5031");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 17:27:49 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-20 12:12:24 +0100 (Wed, 20 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-05-08 14:50:51 +0530 (Mon, 08 May 2017)");
   script_name("Mozilla Firefox ESR Security Updates(mfsa_2017-14_2017-14)-Windows");
 
   script_tag(name:"summary", value:"This host is installed with  Mozilla Firefox
-  and is prone to denial of service vulnerabilty.");
+  and is prone to denial of service vulnerability.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 

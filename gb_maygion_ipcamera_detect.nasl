@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_maygion_ipcamera_detect.nasl 13469 2019-02-05 12:31:12Z tpassfeld $
+# $Id: gb_maygion_ipcamera_detect.nasl 13794 2019-02-20 14:59:32Z cfischer $
 #
 # MayGion IPCamera Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114062");
-  script_version("$Revision: 13469 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-05 13:31:12 +0100 (Tue, 05 Feb 2019) $");
+  script_version("$Revision: 13794 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-20 15:59:32 +0100 (Wed, 20 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-02-04 15:56:53 +0100 (Mon, 04 Feb 2019)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -46,10 +46,9 @@ if(description)
 
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("find_service.nasl", "http_version.nasl", "gb_get_http_banner.nasl");
-  script_mandatory_keys("WebServer_IPCamera_Logo/banner");
+  script_dependencies("gb_get_http_banner.nasl");
   script_require_ports("Services/www", 81);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_mandatory_keys("WebServer_IPCamera_Logo/banner");
 
   script_xref(name:"URL", value:"https://elinux.org/MayGion_MIPS_IPCam");
 
@@ -60,12 +59,10 @@ include("cpe.inc");
 include("host_details.inc");
 include("http_func.inc");
 
-
 port = get_http_port(default: 81);
-
 banner = get_http_banner(port: port);
 
-if("Server: WebServer(IPCamera_Logo)" >< banner){
+if(banner && "Server: WebServer(IPCamera_Logo)" >< banner){
   version = "unknown";
   install = "/";
 
@@ -81,6 +78,7 @@ if("Server: WebServer(IPCamera_Logo)" >< banner){
                           expr: "^([0-9.]+)",
                           insloc: install,
                           regPort: port,
+                          regService: "www",
                           conclUrl: conclUrl,
                           extra: "Version detection requires login.");
 }

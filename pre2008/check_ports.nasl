@@ -1,11 +1,11 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: check_ports.nasl 5348 2017-02-19 09:39:53Z cfi $
+# $Id: check_ports.nasl 13783 2019-02-20 11:12:24Z cfischer $
 #
 # Check open ports
 #
 # Authors:
-# Michel Arboi <arboi@alussinan.org> 
+# Michel Arboi <arboi@alussinan.org>
 #
 # Copyright:
 # Copyright (C) 2002 Michel Arboi
@@ -32,20 +32,20 @@
 # References
 #
 # From: marek.rouchal@infineon.com
-# To: bugtraq@securityfocus.com, vulnwatch@vulnwatch.org, 
+# To: bugtraq@securityfocus.com, vulnwatch@vulnwatch.org,
 #   submissions@packetstormsecurity.org
-# CC: rheinold@rational.com, buggy@segmentationfault.de, 
+# CC: rheinold@rational.com, buggy@segmentationfault.de,
 #    Thorsten.Delbrouck@guardeonic.com, manfred.korger@infineon.com
 # Date: Fri, 22 Nov 2002 10:30:11 +0100
-# Subject: ClearCase DoS vulnerabilty
+# Subject: ClearCase DoS vulnerability
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10919");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 5348 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-19 10:39:53 +0100 (Sun, 19 Feb 2017) $");
+  script_version("$Revision: 13783 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-20 12:12:24 +0100 (Wed, 20 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Check open ports");
   script_category(ACT_END);
@@ -99,7 +99,7 @@ if( at_least_one > 0 || number_of_ports == 1 ) {
 else
 {
  text = "
-OpenVAS cannot reach any of the previously open ports of the remote
+The scanner cannot reach any of the previously open ports of the remote
 host at the end of its scan.
 ";
  if (timeouts > 0)
@@ -121,19 +121,18 @@ due to the following reasons :
 - The remote host is now down, either because a user turned it
 off during the scan";
 
- if(safe_checks() == 0) text += 
-" or a selected denial of service was effective against 
+ if(safe_checks() == 0) text +=
+" or a selected denial of service was effective against
 this host";
 
 text += '
 
-- A network outage has been experienced during the scan, and the remote 
-network cannot be reached from the OpenVAS server any more
+- A network outage has been experienced during the scan, and the remote
+network cannot be reached from the scanner server any more
 
-- This OpenVAS server has been blacklisted by the system administrator
-or by automatic intrusion detection/prevention systems which have detected the 
+- The scanner has been blacklisted by the system administrator
+or by automatic intrusion detection/prevention systems which have detected the
 vulnerability assessment.
-
 
 In any case, the audit of the remote host might be incomplete and may need to
 be done again

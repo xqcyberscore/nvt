@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: smtp_func.inc 13673 2019-02-14 14:56:45Z cfischer $
+# $Id: smtp_func.inc 13821 2019-02-21 19:42:54Z cfischer $
 #
 # Support functions for handling SMTP
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 13673 $
+# $Revision: 13821 $
 #
 ###############################################################################
 
@@ -270,6 +270,7 @@ function get_smtp_banner( port ) {
 
   local_var port;
   local_var banner, soc, ehlo, is_tls, auth_string, auths, auth, help, noop, rset, quit;
+  local_var commands, command, _command, first;
 
   if( ! port ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#get_smtp_banner" );
@@ -334,6 +335,27 @@ function get_smtp_banner( port ) {
     } else {
       is_tls = FALSE;
       set_kb_item( name:"smtp/fingerprints/" + port + "/nontls_ehlo_banner", value:ehlo );
+    }
+
+    commands = split( ehlo, keep:FALSE );
+    first = 0;
+    foreach command( commands ) {
+
+      # nb: The first command includes the remote hostname so we're ignoring it here.
+      first++;
+      if( first == 1 )
+        continue;
+
+      _command = eregmatch( string:command, pattern:"^250[ -](.+)" );
+      if( _command[1] ) {
+
+        set_kb_item( name:"smtp/fingerprints/" + port + "/commandlist", value:_command[1] );
+
+        if( is_tls )
+          set_kb_item( name:"smtp/fingerprints/" + port + "/tls_commandlist", value:_command[1] );
+        else
+          set_kb_item( name:"smtp/fingerprints/" + port + "/nontls_commandlist", value:_command[1] );
+      }
     }
 
     auth_string = egrep( string:ehlo, pattern:"^250[ -]AUTH .+" );

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_opmanager_weak_enc_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
+# $Id: gb_manageengine_opmanager_weak_enc_vuln.nasl 13755 2019-02-19 10:42:02Z jschulte $
 #
 # ManageEngine OpManager Weak Encryption Algorithm Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:zohocorp:manageengine_opmanager';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140279");
-  script_version("$Revision: 12106 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
+  script_version("$Revision: 13755 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-19 11:42:02 +0100 (Tue, 19 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-08-07 16:08:23 +0700 (Mon, 07 Aug 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -46,8 +46,8 @@ if (description)
 
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_manage_engine_opmanager_detect.nasl");
-  script_mandatory_keys("OpManager/installed");
+  script_dependencies("gb_manage_engine_opmanager_consolidation.nasl");
+  script_mandatory_keys("manageengine/opmanager/detected");
 
   script_tag(name:"summary", value:"ManageEngine OpManager is prone to a weak encryption algorithm
 vulnerability.");

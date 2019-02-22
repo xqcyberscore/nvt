@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smb_suspicious_files.nasl 12978 2019-01-08 14:15:07Z cfischer $
+# $Id: smb_suspicious_files.nasl 13760 2019-02-19 11:38:16Z santu $
 #
 # Potentially unwanted software
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80042");
-  script_version("$Revision: 12978 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-08 15:15:07 +0100 (Tue, 08 Jan 2019) $");
+  script_version("$Revision: 13760 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-19 12:38:16 +0100 (Tue, 19 Feb 2019) $");
   script_tag(name:"creation_date", value:"2008-10-24 20:38:19 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -57,7 +57,7 @@ if(description)
 
 include("smb_nt.inc");
 include("secpod_smb_func.inc");
-include("misc_func.inc");
+include("http_func.inc");
 
 
 local_var nname, url, key, item, exp;

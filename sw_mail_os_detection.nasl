@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_mail_os_detection.nasl 13397 2019-02-01 08:06:48Z cfischer $
+# $Id: sw_mail_os_detection.nasl 13813 2019-02-21 13:07:21Z cfischer $
 #
 # SMTP/POP3/IMAP Server OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111068");
-  script_version("$Revision: 13397 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-01 09:06:48 +0100 (Fri, 01 Feb 2019) $");
+  script_version("$Revision: 13813 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-21 14:07:21 +0100 (Thu, 21 Feb 2019) $");
   script_tag(name:"creation_date", value:"2015-12-11 14:00:00 +0100 (Fri, 11 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -295,8 +295,8 @@ foreach port( ports ) {
       "ESMTP Microsoft Exchange" >< banner || "ESMTP MS Exchange" >< banner || "on Windows" >< banner ) {
     if( "Microsoft Windows 2003" >< banner || "Windows 2003 Server" >< banner ) {
       register_and_report_os( os:'Microsoft Windows Server 2003', cpe:'cpe:/o:microsoft:windows_server_2003', banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-    } else if( "Windows 2000 Server" >< banner ) {
-      register_and_report_os( os:'Microsoft Windows Server 2000', cpe:'cpe:/o:microsoft:windows_server_2000', banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
+    } else if( "Windows 2000" >< banner ) {
+      register_and_report_os( os:'Microsoft Windows 2000', cpe:'cpe:/o:microsoft:windows_2000', banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
     } else {
       register_and_report_os( os:"Microsoft Windows", cpe:"cpe:/o:microsoft:windows", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
     }

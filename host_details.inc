@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: host_details.inc 13693 2019-02-15 11:45:14Z cfischer $
+# $Id: host_details.inc 13813 2019-02-21 13:07:21Z cfischer $
 #
 # Centralized and organized host information base
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 13693 $
+# $Revision: 13813 $
 #
 ###############################################################################
 
@@ -135,6 +135,7 @@ OS_CPE_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.141684", # gb_simatic_hmi_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.141766", # gb_wago_plc_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.141772", # gb_rockwell_micrologix_consolidation.nasl
+    "1.3.6.1.4.1.25623.1.0.142010", # gb_rockwell_powermonitor_http_detect.nasl
     "1.3.6.1.4.1.25623.1.0.96207",  # gb_windows_cpe_detect.nasl
     "1.3.6.1.4.1.25623.1.0.50282",  # gather-package-list.nasl
     "1.3.6.1.4.1.25623.1.0.105614", # gb_cisco_pis_version.nasl
@@ -237,6 +238,7 @@ OS_TXT_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.141684", # gb_simatic_hmi_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.141766", # gb_wago_plc_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.141772", # gb_rockwell_micrologix_consolidation.nasl
+    "1.3.6.1.4.1.25623.1.0.142010", # gb_rockwell_powermonitor_http_detect.nasl
     "1.3.6.1.4.1.25623.1.0.96207",  # gb_windows_cpe_detect.nasl
     "1.3.6.1.4.1.25623.1.0.50282",  # gather-package-list.nasl
     "1.3.6.1.4.1.25623.1.0.105614", # gb_cisco_pis_version.nasl
@@ -1561,9 +1563,9 @@ function get_version_from_cpe( cpe ) {
   # Possible CPEs are e.g.
   # cpe:/a:extplorer:extplorer:2.1.0:RC5
   # cpe:/o:canonical:ubuntu_linux:12.04:-:lts
-  # cpe:/o:microsoft:windows_7:::x64
+  # cpe:/o:microsoft:windows_7:-:-:x64
   # nb: Some are also setting a CPE with a wrong syntax like cpe:/a:vendor:product:x64:1.1
-  # which should be cpe:/a:vendor:product:1.1::x64
+  # which should be cpe:/a:vendor:product:1.1:-:x64
 
   # Test-cases:
   # CPE: cpe:/a:foo0:bar0:x64:1.2.3 , expected version: 1.2.3, returned version: 1.2.3

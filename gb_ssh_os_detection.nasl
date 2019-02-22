@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ssh_os_detection.nasl 13643 2019-02-13 15:33:08Z cfischer $
+# $Id: gb_ssh_os_detection.nasl 13813 2019-02-21 13:07:21Z cfischer $
 #
 # SSH OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105586");
-  script_version("$Revision: 13643 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-13 16:33:08 +0100 (Wed, 13 Feb 2019) $");
+  script_version("$Revision: 13813 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-21 14:07:21 +0100 (Thu, 21 Feb 2019) $");
   script_tag(name:"creation_date", value:"2016-03-23 14:28:40 +0100 (Wed, 23 Mar 2016)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -468,13 +468,13 @@ else if( "OpenVMS" >< banner )
 
 else if( "SSH-2.0-MS_" >< banner )
 {
-  register_and_report_os( os:"Microsoft Windows", cpe:"cpe:/o:microsoft:windows_10:::iot", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
+  register_and_report_os( os:"Microsoft Windows", cpe:"cpe:/o:microsoft:windows_10:-:-:iot", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
   exit( 0 );
 }
 
 # SSH-2.0-WeOnlyDo 2.4.3
 # SSH-2.0-WeOnlyDo-wodFTPD 3.3.0.424
-# Both from http://www.freesshd.com running on windows only
+# Both from http://www.freesshd.com running on Windows only
 else if( "SSH-2.0-WeOnlyDo" >< banner )
 {
   register_and_report_os( os:"Microsoft Windows", cpe:"cpe:/o:microsoft:windows", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
@@ -497,6 +497,13 @@ else if( "SSH-2.0-Data ONTAP SSH" >< banner )
 else if( "SSH-2.0-moxa_" >< banner )
 {
   register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  exit( 0 );
+}
+
+# SolarWinds Network Configuration Manager (NCM) running on Windows only.
+else if( "Network ConfigManager SCP Server" >< banner )
+{
+  register_and_report_os( os:"Microsoft Windows", cpe:"cpe:/o:microsoft:windows", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
   exit( 0 );
 }
 

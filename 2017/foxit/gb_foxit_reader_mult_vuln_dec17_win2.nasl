@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_mult_vuln_dec17_win2.nasl 11982 2018-10-19 08:49:21Z mmartin $
+# $Id: gb_foxit_reader_mult_vuln_dec17_win2.nasl 13783 2019-02-20 11:12:24Z cfischer $
 #
 # Multiple vulnerabilities in Foxit Reader 8.3.2 (Windows)
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113073");
-  script_version("$Revision: 11982 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 13783 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-20 12:12:24 +0100 (Wed, 20 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-12-21 11:48:49 +0100 (Thu, 21 Dec 2017)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -51,7 +51,7 @@ if( description )
   script_dependencies("gb_foxit_reader_detect_portable_win.nasl");
   script_mandatory_keys("foxit/reader/ver");
 
-  script_tag(name:"summary", value:"Foxit Reader 8.3.2 is vulnerable to multiple code execution and information disclosure vulnerabilties.");
+  script_tag(name:"summary", value:"Foxit Reader 8.3.2 is vulnerable to multiple code execution and information disclosure vulnerabilities.");
   script_tag(name:"vuldetect", value:"The script checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Foxit Reader 8.3.2 allows information disclosure through improper validation of user input. It also allows code execution via both improper object validation and improper user input validation that leads to a type confusion condition.");
   script_tag(name:"impact", value:"Successful exploitation would allow an attacker to access sensitive information or execute code on the target host.");

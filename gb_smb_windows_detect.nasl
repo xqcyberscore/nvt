@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_smb_windows_detect.nasl 12703 2018-12-07 11:49:32Z cfischer $
+# $Id: gb_smb_windows_detect.nasl 13813 2019-02-21 13:07:21Z cfischer $
 #
 # SMB Windows Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103621");
-  script_version("$Revision: 12703 $");
+  script_version("$Revision: 13813 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-07 12:49:32 +0100 (Fri, 07 Dec 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-21 14:07:21 +0100 (Thu, 21 Feb 2019) $");
   script_tag(name:"creation_date", value:"2012-12-11 10:59:09 +0200 (Tue, 11 Dec 2012)");
   script_name("SMB Windows Detection");
   script_category(ACT_GATHER_INFO);
@@ -77,7 +77,8 @@ function register_win_version( cpe_base, win_vers, servpack, os_name, os_edition
 
   if( ! isnull( servpack ) && strlen( servpack ) > 0 ) {
 
-    if( isnull( win_vers ) ) win_vers = "";
+    if( ! win_vers )
+      win_vers = "-";
 
     cpe = cpe_base + ":" + win_vers + ":" + servpack;
     if( is64bit && os_edition )
@@ -92,7 +93,7 @@ function register_win_version( cpe_base, win_vers, servpack, os_name, os_edition
       if( is64bit )
         cpe += "_x64";
     } else if( os_edition ) {
-      cpe += "::" + os_edition;
+      cpe += ":-:" + os_edition;
       if( is64bit )
         cpe += "_x64";
     } else if( os_branch ) {
@@ -100,24 +101,24 @@ function register_win_version( cpe_base, win_vers, servpack, os_name, os_edition
       if( is64bit )
         cpe += ":x64";
     } else if( is64bit ) {
-      cpe += "::x64";
+      cpe += ":-:x64";
     }
   } else {
     cpe = cpe_base;
     if( os_edition && os_branch ) {
-      cpe += "::" + os_branch + ":" + os_edition;
+      cpe += ":-:" + os_branch + ":" + os_edition;
       if( is64bit )
         cpe += "_x64";
     } else if( os_edition ) {
-      cpe += ":::" + os_edition;
+      cpe += ":-:-:" + os_edition;
       if( is64bit )
         cpe += "_x64";
     } else if( os_branch ) {
-      cpe += "::" + os_branch;
+      cpe += ":-:" + os_branch;
       if( is64bit )
         cpe += ":x64";
     } else if( is64bit ) {
-      cpe += ":::x64";
+      cpe += ":-:-:x64";
     }
   }
 

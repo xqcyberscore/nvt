@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_collabtive_47105.nasl 12018 2018-10-22 13:31:29Z mmartin $
+# $Id: gb_collabtive_47105.nasl 13812 2019-02-21 12:04:05Z jschulte $
 #
 # Collabtive Multiple Remote Input Validation Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103138");
-  script_version("$Revision: 12018 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
+  script_version("$Revision: 13812 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-21 13:04:05 +0100 (Thu, 21 Feb 2019) $");
   script_tag(name:"creation_date", value:"2011-04-01 13:32:12 +0200 (Fri, 01 Apr 2011)");
   script_bugtraq_id(47105);
   script_tag(name:"cvss_base", value:"4.3");
@@ -48,6 +48,7 @@ if (description)
   script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
   script_dependencies("gb_collabtive_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("collabtive/detected");
   script_exclude_keys("Settings/disable_cgi_scanning");
   script_tag(name:"summary", value:"Collabtive is prone to multiple remote input-validation
 vulnerabilities including cross-site scripting, HTML-injection, and

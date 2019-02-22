@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manage_engine_opmanager_mult_vuln_feb15.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_manage_engine_opmanager_mult_vuln_feb15.nasl 13755 2019-02-19 10:42:02Z jschulte $
 #
 # ZOHO ManageEngine OpManager Multiple Vulnerabilities - Feb15
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:zohocorp:manageengine_opmanager";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805473");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 13755 $");
   script_cve_id("CVE-2014-7864");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-19 11:42:02 +0100 (Tue, 19 Feb 2019) $");
   script_tag(name:"creation_date", value:"2015-03-20 11:53:55 +0530 (Fri, 20 Mar 2015)");
   script_name("ZOHO ManageEngine OpManager Multiple Vulnerabilities - Feb15");
 
@@ -66,8 +66,8 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_manage_engine_opmanager_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("OpManager/installed");
+  script_dependencies("gb_manage_engine_opmanager_consolidation.nasl", "os_detection.nasl");
+  script_mandatory_keys("manageengine/opmanager/http/detected");
   script_require_ports("Services/www", 8080);
   script_xref(name:"URL", value:"https://support.zoho.com/portal/manageengine/helpcenter/articles/vulnera");
   script_xref(name:"URL", value:"http://www.manageengine.com");
