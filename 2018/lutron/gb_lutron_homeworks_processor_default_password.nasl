@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lutron_homeworks_processor_default_password.nasl 13559 2019-02-11 04:37:23Z ckuersteiner $
+# $Id: gb_lutron_homeworks_processor_default_password.nasl 13842 2019-02-25 09:37:19Z cfischer $
 #
 # Lutron Devices Default Credentials
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113206");
-  script_version("$Revision: 13559 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-11 05:37:23 +0100 (Mon, 11 Feb 2019) $");
+  script_version("$Revision: 13842 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-25 10:37:19 +0100 (Mon, 25 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-06-05 12:36:33 +0200 (Tue, 05 Jun 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -77,32 +77,38 @@ if(description)
 include("telnet_func.inc");
 
 port = get_telnet_port( default: 23 );
+if( get_kb_item( "telnet/" + port + "/no_login_banner" ) )
+  exit( 0 );
 
 creds = make_array( "lutron", "integration",
                     "nwk", "nwk2" );
 
-foreach login ( keys( creds ) ) {
-  if( ! soc = open_sock_tcp( port ) ) exit( 0 );
+foreach login( keys( creds ) ) {
+
+  if( ! soc = open_sock_tcp( port ) )
+    exit( 0 );
 
   recv = recv( socket: soc, length: 2048 );
+  if( ! recv )
+    continue;
 
-  if( "login:" >< recv ) {
+  if( "login:" >< tolower( recv ) ) {
     send( socket: soc, data: login + '\r\n' );
     recv = recv( socket: soc, length: 256 );
 
-    if( "password:" >< recv ) {
+    if( recv && "password:" >< tolower( recv ) ) {
       send( socket: soc, data: creds[login] + '\r\n' );
       recv = recv( socket: soc, length: 2048 );
 
       VULN = FALSE;
-      if( "QNET>" >< recv) VULN = TRUE;
+      if( "QNET>" >< recv)
+        VULN = TRUE;
 
       send( socket: soc, data: '?HELP,#ETHERNET\r\n' );
       recv = recv( socket: soc, length: 2048 );
 
       if( "Configures the IP" >< recv || VULN ) {
-        report = 'It was possible to gain administrative access using the credentials: "' + login + '":"' +
-                 creds[login] + '".';
+        report = 'It was possible to gain administrative access using the credentials: "' + login + '":"' + creds[login] + '".';
         security_message( data: report, port: port );
         exit( 0 );
       }

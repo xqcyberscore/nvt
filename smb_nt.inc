@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: smb_nt.inc 13760 2019-02-19 11:38:16Z santu $
+# $Id: smb_nt.inc 13844 2019-02-25 10:19:52Z cfischer $
 #
 # Methods for handling SMB
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 13760 $
+# $Revision: 13844 $
 #
 ###############################################################################
 
@@ -2073,7 +2073,7 @@ function smb2_session_setup_NTLMSSP_AUTH( soc, login, password, domain, version,
 function smb_session_setup_NTLMvN( soc, login, password, domain, cs, version ) {
 
   local_var soc, login, password, domain, cs, version;
-  local_var NT_H, LM_H, lm, nt, ntlmv2_hash;
+  local_var oid, NT_H, LM_H, lm, nt, ntlmv2_hash;
   local_var native_os, native_lanmanager, extra, len, bcc;
   local_var len_hi, len_low, bcc_hi, bcc_lo;
   local_var plen_lm, plen_nt, plen, st, r;
@@ -2082,7 +2082,14 @@ function smb_session_setup_NTLMvN( soc, login, password, domain, cs, version ) {
   if( isnull( login ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#login#-#smb_session_setup_NTLMvN" );
   if( isnull( password ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#password#-#smb_session_setup_NTLMvN" );
   if( isnull( domain ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#domain#-#smb_session_setup_NTLMvN" );
-  if( isnull( cs ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cs#-#smb_session_setup_NTLMvN" );
+
+  if( isnull( cs ) ) {
+    oid = get_script_oid();
+    if( oid != "1.3.6.1.4.1.25623.1.0.102011" ) # smb_neg_prot_cs in smb_nativelanman.nasl doesn't return a value against Samba servers
+      set_kb_item( name:"nvt_debug_empty/" + oid, value:oid + "#-#cs#-#smb_session_setup_NTLMvN" );
+  }
+
+
   if( isnull( version ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#version#-#smb_session_setup_NTLMvN" );
 
   if( version == 1 ) {

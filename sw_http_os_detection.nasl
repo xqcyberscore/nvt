@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_http_os_detection.nasl 13813 2019-02-21 13:07:21Z cfischer $
+# $Id: sw_http_os_detection.nasl 13850 2019-02-25 13:11:14Z cfischer $
 #
 # HTTP OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111067");
-  script_version("$Revision: 13813 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-21 14:07:21 +0100 (Thu, 21 Feb 2019) $");
+  script_version("$Revision: 13850 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-25 14:11:14 +0100 (Mon, 25 Feb 2019) $");
   script_tag(name:"creation_date", value:"2015-12-10 16:00:00 +0100 (Thu, 10 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -919,6 +919,16 @@ function check_http_banner( port, banner ) {
       }
       return;
     }
+
+    # e.g.:
+    # Server: Apache/2.0.63FTF (NETWARE) mod_jk/1.2.23 PHP/5.0.5
+    # Server: Apache/2.0.59 (NETWARE) mod_jk/1.2.21
+    # Server: NetWare HTTP Stack
+    if( banner =~ "Server: (NetWare HTTP Stack|Apache.+\(NETWARE\))" ) {
+      register_and_report_os( os:"Novell NetWare / Open Enterprise Server (OES)", cpe:"cpe:/a:novell:open_enterprise_server", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      return;
+    }
+
     register_unknown_os_banner( banner:banner, banner_type_name:banner_type, banner_type_short:"http_banner", port:port );
   }
   return;

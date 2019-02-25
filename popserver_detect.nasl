@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: popserver_detect.nasl 13637 2019-02-13 12:46:42Z cfischer $
+# $Id: popserver_detect.nasl 13836 2019-02-25 07:35:49Z cfischer $
 # Description: POP3 Server type and version
 #
 # Authors:
@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10185");
-  script_version("$Revision: 13637 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-13 13:46:42 +0100 (Wed, 13 Feb 2019) $");
+  script_version("$Revision: 13836 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-25 08:35:49 +0100 (Mon, 25 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -114,8 +114,6 @@ foreach port( ports ) {
     # Sort to not report changes on delta reports if just the order is different
     capalist = sort( capalist );
     foreach capa( capalist ) {
-      if( capa == "." )
-        continue;
       if( ! capas )
         capas = capa;
       else

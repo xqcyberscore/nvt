@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kentico_cms_xss_vuln.nasl 13259 2019-01-24 09:33:14Z ckuersteiner $
+# $Id: gb_kentico_cms_xss_vuln.nasl 13829 2019-02-22 15:13:32Z mmartin $
 #
 # Kentico CMS 9-11 XSS Vulnerability
 #
@@ -28,15 +28,15 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113118");
-  script_version("$Revision: 13259 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-24 10:33:14 +0100 (Thu, 24 Jan 2019) $");
+  script_version("$Revision: 13829 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-22 16:13:32 +0100 (Fri, 22 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-02-20 14:34:43 +0100 (Tue, 20 Feb 2018)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_cve_id("CVE-2018-7205");
 
@@ -55,8 +55,7 @@ if( description )
 
   script_tag(name:"affected", value:"Kentico CMS versions 9 through 11.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 24th January, 2019.
-  Information regarding this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_xref(name:"URL", value:"https://www.securityfocus.com/archive/1/541792");
   script_xref(name:"URL", value:"https://devnet.kentico.com/download/hotfixes");

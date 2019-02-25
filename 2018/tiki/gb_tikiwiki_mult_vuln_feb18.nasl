@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tikiwiki_mult_vuln_feb18.nasl 13716 2019-02-18 04:31:31Z ckuersteiner $
+# $Id: gb_tikiwiki_mult_vuln_feb18.nasl 13838 2019-02-25 07:56:59Z mmartin $
 #
 # Tiki Wiki Multiple Vulnerabilities Feb18
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:tiki:tikiwiki_cms/groupware";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812811");
-  script_version("$Revision: 13716 $");
+  script_version("$Revision: 13838 $");
   script_cve_id("CVE-2018-7302", "CVE-2018-7303", "CVE-2018-7304");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-18 05:31:31 +0100 (Mon, 18 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-25 08:56:59 +0100 (Mon, 25 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-02-23 12:13:22 +0530 (Fri, 23 Feb 2018)");
   script_name("Tiki Wiki Multiple Vulnerabilities Feb18");
 
@@ -58,10 +58,11 @@ if (description)
 
   script_tag(name:"affected", value:"Tiki Wiki version 17.1");
 
-  script_tag(name:"solution", value:"No known solution is available as of 18th February, 2019.
-  Information regarding this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the
+  disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to
+  upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_banner");
 
   script_xref(name:"URL", value:"https://websecnerd.blogspot.in/2018/01/tiki-wiki-cms-groupware-17.html");

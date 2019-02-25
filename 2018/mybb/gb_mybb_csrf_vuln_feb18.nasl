@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mybb_csrf_vuln_feb18.nasl 13318 2019-01-28 08:12:34Z ckuersteiner $
+# $Id: gb_mybb_csrf_vuln_feb18.nasl 13829 2019-02-22 15:13:32Z mmartin $
 #
 # MyBB Cross Site Request Forgery Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:mybb:mybb";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812807");
-  script_version("$Revision: 13318 $");
+  script_version("$Revision: 13829 $");
   script_cve_id("CVE-2018-7305");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-28 09:12:34 +0100 (Mon, 28 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-22 16:13:32 +0100 (Fri, 22 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-02-22 15:03:22 +0530 (Thu, 22 Feb 2018)");
 
   script_name("MyBB Cross Site Request Forgery Vulnerability");
@@ -52,10 +52,9 @@ if (description)
 
   script_tag(name:"affected", value:"MyBB version 1.8.14");
 
-  script_tag(name:"solution", value:"No known solution is available as of 28th January, 2019.
-  Information regarding this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_banner");
 
   script_xref(name:"URL", value:"https://websecnerd.blogspot.in/2018/02/mybb-forum-1_21.html");

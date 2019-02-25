@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_homematic_mult_vuln.nasl 13259 2019-01-24 09:33:14Z ckuersteiner $
+# $Id: gb_homematic_mult_vuln.nasl 13838 2019-02-25 07:56:59Z mmartin $
 #
 # HomeMatic CCU2 Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:eq-3:homematic_ccu2";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140807");
-  script_version("$Revision: 13259 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-24 10:33:14 +0100 (Thu, 24 Jan 2019) $");
+  script_version("$Revision: 13838 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-25 08:56:59 +0100 (Mon, 25 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-02-23 16:19:23 +0700 (Fri, 23 Feb 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -41,7 +41,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"exploit");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_name("HomeMatic CCU2 Multiple Vulnerabilities");
 
@@ -76,8 +76,9 @@ attackers to write arbitrary files to the device's filesystem. (CVE-2018-7300)
   - Open XML-RPC port without authentication. This can be exploited by sending arbitrary XML-RPC requests to
 control the attached BidCos devices. (CVE-2018-7301)");
 
-  script_tag(name:"solution", value:"No known solution is available as of 24th January, 2019.
-  Information regarding this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the
+  disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to
+  upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_xref(name:"URL", value:"https://atomic111.github.io/article/homematic-ccu2-fileread");
   script_xref(name:"URL", value:"https://atomic111.github.io/article/homematic-ccu2-remote-code-execution");

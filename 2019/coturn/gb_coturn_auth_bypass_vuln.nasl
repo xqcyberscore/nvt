@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_coturn_auth_bypass_vuln.nasl 13381 2019-01-31 10:15:33Z ckuersteiner $
+# $Id: gb_coturn_auth_bypass_vuln.nasl 13837 2019-02-25 07:45:05Z mmartin $
 #
 # coturn <= 4.5.0.8 Authentication Bypass Vulnerability (Active Check)
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:coturn:coturn";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141944");
-  script_version("$Revision: 13381 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-31 11:15:33 +0100 (Thu, 31 Jan 2019) $");
+  script_version("$Revision: 13837 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-25 08:45:05 +0100 (Mon, 25 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-31 13:03:06 +0700 (Thu, 31 Jan 2019)");
-  script_tag(name:"cvss_base", value:"9.4");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2018-4056");
 

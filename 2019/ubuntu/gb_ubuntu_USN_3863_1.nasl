@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3863_1.nasl 13245 2019-01-23 14:22:53Z santu $
+# $Id: gb_ubuntu_USN_3863_1.nasl 13837 2019-02-25 07:45:05Z mmartin $
 #
 # Ubuntu Update for apt USN-3863-1
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843878");
-  script_version("$Revision: 13245 $");
+  script_version("$Revision: 13837 $");
   script_cve_id("CVE-2019-3462");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-23 15:22:53 +0100 (Wed, 23 Jan 2019) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-25 08:45:05 +0100 (Mon, 25 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-23 04:02:04 +0100 (Wed, 23 Jan 2019)");
   script_name("Ubuntu Update for apt USN-3863-1");
   script_category(ACT_GATHER_INFO);

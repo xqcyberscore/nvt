@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: ssh_func.inc 13663 2019-02-14 10:42:02Z cfischer $
+# $Id: ssh_func.inc 13845 2019-02-25 10:29:21Z cfischer $
 #
 # Methods for handling SSH
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 13663 $
+# $Revision: 13845 $
 #
 ###############################################################################
 
@@ -1687,13 +1687,23 @@ function ssh_close_channel(socket,end)
 #-----------------------------------------------------------------#
 function ssh_login( socket, login, password, pub, priv, passphrase, keytype ) {
 
-  local_var sess;
+  local_var socket, login, password, pub, priv, passphrase, keytype;
+  local_var oid, sess;
 
-  if( ! socket ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#socket#-#ssh_login" );
-  if( isnull( login ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#login#-#ssh_login" );
+  if( ! socket ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#socket#-#ssh_login" );
+    return -1;
+  }
+
+  if( isnull( login ) ) {
+    oid = get_script_oid();
+    if( oid != "1.3.6.1.4.1.25623.1.0.100259" ) # ssh_proto_version.nasl is not passing a login to ssh_login. TODO: Check this
+      set_kb_item( name:"nvt_debug_empty/" + oid, value:oid + "#-#login#-#ssh_login" );
+  }
 
   sess = ssh_connect( socket:socket, keytype:keytype );
-  if( ! sess ) return -1;
+  if( ! sess )
+    return -1;
 
   _last_libssh_sess = sess;
 

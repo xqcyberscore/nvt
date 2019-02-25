@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: ftp_func.inc 13673 2019-02-14 14:56:45Z cfischer $
+# $Id: ftp_func.inc 13843 2019-02-25 10:11:55Z cfischer $
 #
 # Methods for handling FTP
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 13673 $
+# $Revision: 13843 $
 #
 ###############################################################################
 
@@ -418,7 +418,7 @@ function ftp_recv_data( socket, line ) {
 function ftp_authenticate( socket, user, pass, skip_banner ) {
 
   local_var socket, user, pass, skip_banner;
-  local_var r;
+  local_var oid, r;
 
   if( ! socket ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#socket#-#ftp_authenticate" );
@@ -426,11 +426,17 @@ function ftp_authenticate( socket, user, pass, skip_banner ) {
   }
 
   # nb: Don't return NULL for both as some VTs required an empty user and/or pass to be passed.
-  if( ! user )
-    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#user#-#ftp_authenticate" );
+  if( ! user ) {
+    oid = get_script_oid();
+    if( oid != "1.3.6.1.4.1.25623.1.0.14707" ) # typsoftftp_empty_username_dos.nasl needs an empty username
+      set_kb_item( name:"nvt_debug_empty/" + oid, value:oid + "#-#user#-#ftp_authenticate" );
+  }
 
-  if( ! pass )
-    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#pass#-#ftp_authenticate" );
+  if( ! pass ) {
+    oid = get_script_oid();
+    if( oid != "1.3.6.1.4.1.25623.1.0.11160" ) # ftp_administrator.nasl needs an empty password
+      set_kb_item( name:"nvt_debug_empty/" + oid, value:oid + "#-#pass#-#ftp_authenticate" );
+  }
 
   if( ! skip_banner )
     r = ftp_recv_line( socket:socket ); # Receive the banner

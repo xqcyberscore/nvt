@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Fri, 22 Feb 2019 10:55:37 +0100
+# Automatically created on:  Mon, 25 Feb 2019 15:16:12 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -43925,26 +43925,34 @@
 2019/adobe/gb_adobe_acrobat_2017_apsb19-02_win.nasl: GPLv2+
 2019/adobe/gb_adobe_acrobat_2017_apsb19-07_macosx.nasl: GPLv2+
 2019/adobe/gb_adobe_acrobat_2017_apsb19-07_win.nasl: GPLv2+
+2019/adobe/gb_adobe_acrobat_2017_apsb19-13_win.nasl: GPLv2+
 2019/adobe/gb_adobe_acrobat_dc_classic_apsb19-02_macosx.nasl: GPLv2+
 2019/adobe/gb_adobe_acrobat_dc_classic_apsb19-02_win.nasl: GPLv2+
 2019/adobe/gb_adobe_acrobat_dc_classic_apsb19-07_macosx.nasl: GPLv2+
 2019/adobe/gb_adobe_acrobat_dc_classic_apsb19-07_win.nasl: GPLv2+
+2019/adobe/gb_adobe_acrobat_dc_classic_apsb19-13_win.nasl: GPLv2+
 2019/adobe/gb_adobe_acrobat_dc_cont_apsb19-02_macosx.nasl: GPLv2+
 2019/adobe/gb_adobe_acrobat_dc_cont_apsb19-02_win.nasl: GPLv2+
 2019/adobe/gb_adobe_acrobat_dc_cont_apsb19-07_macosx.nasl: GPLv2+
 2019/adobe/gb_adobe_acrobat_dc_cont_apsb19-07_win.nasl: GPLv2+
+2019/adobe/gb_adobe_acrobat_dc_cont_apsb19-13_macosx.nasl: GPLv2+
+2019/adobe/gb_adobe_acrobat_dc_cont_apsb19-13_win.nasl: GPLv2+
 2019/adobe/gb_adobe_acrobat_reader_2017_apsb19-02_macosx.nasl: GPLv2+
 2019/adobe/gb_adobe_acrobat_reader_2017_apsb19-02_win.nasl: GPLv2+
 2019/adobe/gb_adobe_acrobat_reader_2017_apsb19-07_macosx.nasl: GPLv2+
 2019/adobe/gb_adobe_acrobat_reader_2017_apsb19-07_win.nasl: GPLv2+
+2019/adobe/gb_adobe_acrobat_reader_2017_apsb19-13_win.nasl: GPLv2+
 2019/adobe/gb_adobe_acrobat_reader_dc_classic_apsb19-02_macosx.nasl: GPLv2+
 2019/adobe/gb_adobe_acrobat_reader_dc_classic_apsb19-02_win.nasl: GPLv2+
 2019/adobe/gb_adobe_acrobat_reader_dc_classic_apsb19-07_macosx.nasl: GPLv2+
 2019/adobe/gb_adobe_acrobat_reader_dc_classic_apsb19-07_win.nasl: GPLv2+
+2019/adobe/gb_adobe_acrobat_reader_dc_classic_apsb19-13_win.nasl: GPLv2+
 2019/adobe/gb_adobe_acrobat_reader_dc_cont_apsb19-02_macosx.nasl: GPLv2+
 2019/adobe/gb_adobe_acrobat_reader_dc_cont_apsb19-02_win.nasl: GPLv2+
 2019/adobe/gb_adobe_acrobat_reader_dc_cont_apsb19-07_macosx.nasl: GPLv2+
 2019/adobe/gb_adobe_acrobat_reader_dc_cont_apsb19-07_win.nasl: GPLv2+
+2019/adobe/gb_adobe_acrobat_reader_dc_cont_apsb19-13_macosx.nasl: GPLv2+
+2019/adobe/gb_adobe_acrobat_reader_dc_cont_apsb19-13_win.nasl: GPLv2+
 2019/adobe/gb_adobe_coldfusion_code_exec_n_info_disc_vuln_apsb19-10.nasl: GPLv2+
 2019/adobe/gb_adobe_flash_player_apsb19-06_lin.nasl: GPLv2+
 2019/adobe/gb_adobe_flash_player_apsb19-06_macosx.nasl: GPLv2+
@@ -44088,6 +44096,8 @@
 2019/debian/deb_dla_1683.nasl: GPLv2+
 2019/debian/deb_dla_1684.nasl: GPLv2+
 2019/debian/deb_dla_1685.nasl: GPLv2+
+2019/debian/deb_dla_1686.nasl: GPLv2+
+2019/debian/deb_dla_1687.nasl: GPLv2+
 2019/discourse/gb_discourse_2.2.0beta2.nasl: GPLv2+
 2019/discourse/gb_discourse_2.2.0beta3.nasl: GPLv2+
 2019/discourse/gb_discourse_2.2.0beta4.nasl: GPLv2+
@@ -44106,6 +44116,7 @@
 2019/dovecot/gb_dovecot_auth_bypass_vuln.nasl: GPLv2+
 2019/drupal/gb_drupal_sa-core-2019-002_lin.nasl: GPLv2+
 2019/drupal/gb_drupal_sa-core-2019-002_win.nasl: GPLv2+
+2019/drupal/gb_drupal_sa-core-2019-003_active.nasl: GPLv2+
 2019/drupal/gb_drupal_sa-core-2019-003_lin.nasl: GPLv2+
 2019/drupal/gb_drupal_sa-core-2019-003_win.nasl: GPLv2+
 2019/fedora/gb_fedora_2018_166b220ff1_tcpreplay_fc28.nasl: GPLv2+
@@ -44196,6 +44207,8 @@
 2019/graphicsmagick/gb_graphicsmagick_mult_vuln_dec18_win.nasl: GPLv2+
 2019/horde/gb_horde_imp_rce_vuln.nasl: GPLv2+
 2019/irssi/gb_irssi_use-after-free_vuln.nasl: GPLv2+
+2019/isc/gb_isc_bind_mult_vuln_feb19_lin.nasl: GPLv2+
+2019/isc/gb_isc_bind_mult_vuln_feb19_win.nasl: GPLv2+
 2019/jenkins/gb_jenkins_20190116_lin.nasl: GPLv2+
 2019/jenkins/gb_jenkins_20190116_win.nasl: GPLv2+
 2019/joomla/gb_joomla_mult_vuln_feb19.nasl: GPLv2+
@@ -44354,6 +44367,36 @@
 2019/opensuse/gb_suse_2019_0139_1.nasl: GPLv2+
 2019/opensuse/gb_suse_2019_0140_1.nasl: GPLv2+
 2019/opensuse/gb_suse_2019_0143_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0152_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0153_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0154_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0155_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0159_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0161_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0163_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0165_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0166_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0167_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0173_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0174_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0175_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0176_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0182_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0183_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0184_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0185_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0189_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0195_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0196_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0197_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0198_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0199_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0200_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0201_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0202_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0203_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0204_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0205_1.nasl: GPLv2+
 2019/opensuse/gb_suse_2019_1_1.nasl: GPLv2+
 2019/openxchange/gb_open_xchange_appsuite_56406.nasl: GPLv2+
 2019/openxchange/gb_open_xchange_appsuite_56558.nasl: GPLv2+

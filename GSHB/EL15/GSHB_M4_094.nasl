@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_094.nasl 13690 2019-02-15 10:51:55Z cfischer $
+# $Id: GSHB_M4_094.nasl 13840 2019-02-25 08:29:29Z cfischer $
 #
 # IT-Grundschutz, 14. EL, Maßnahme 4.094
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.94210");
-  script_version("$Revision: 13690 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-15 11:51:55 +0100 (Fri, 15 Feb 2019) $");
+  script_version("$Revision: 13840 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-25 09:29:29 +0100 (Mon, 25 Feb 2019) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("IT-Grundschutz M4.094: Schutz der Webserver-Dateien");
-  script_category(ACT_GATHER_INFO);
+  script_category(ACT_ATTACK); #nb: GSHB_nikto.nasl is in ACT_ATTACK
   script_copyright("Copyright (c) 2015 Greenbone Networks GmbH");
   script_family("IT-Grundschutz-15");
   script_mandatory_keys("Compliance/Launch/GSHB-15");
@@ -54,7 +54,7 @@ include("itg.inc");
 include("http_func.inc");
 
 name = 'IT-Grundschutz M4.094: Schutz der Webserver-Dateien\n';
-gshbm =  "IT-Grundschutz M4.094: ";
+gshbm = "IT-Grundschutz M4.094: ";
 
 port = get_http_port(default:80, ignore_broken:TRUE, ignore_unscanned:TRUE);
 host = http_host_name(dont_add_port:TRUE);
@@ -73,10 +73,10 @@ if(brokenwww){
   desc = string("Beim Testen des Systems trat ein Fehler auf, es konnte\nvon Nikto kein Ergebniss ermittelt werden.");
 }else if(nikto == "none" && !brokenwww){
   result = string("erfüllt");
-  desc = string('Nikto konnte keinen in der -Open Source Vulnerability\nDatabase- aufgeführten Fehler finden.');
+  desc = string('Nikto konnte keinen in der -Open Source Vulnerability Database- aufgeführten oder durch eine CVE Nummber addressierten Fehler finden.');
 }else if(nikto != "none" && !brokenwww){
   result = string("nicht erfüllt");
-  desc = string('Nikto hat folgende in der -Open Source Vulnerability\nDatabase- aufgeführten Fehler gefunden:\n' + nikto);
+  desc = string('Nikto hat folgende in der -Open Source Vulnerability Database- aufgeführten oder durch eine CVE Nummber addressierten Fehler gefunden:\n' + nikto);
 }
 
 set_kb_item(name:"GSHB/M4_094/result", value:result);
@@ -84,6 +84,7 @@ set_kb_item(name:"GSHB/M4_094/desc", value:desc);
 set_kb_item(name:"GSHB/M4_094/name", value:name);
 
 silence = get_kb_item("GSHB/silence");
-if (!silence) itg_send_details (itg_id: 'GSHB/M4_094');
+if(!silence)
+  itg_send_details(itg_id:'GSHB/M4_094');
 
 exit(0);

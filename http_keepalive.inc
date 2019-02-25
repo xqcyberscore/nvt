@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: http_keepalive.inc 13679 2019-02-15 08:20:11Z cfischer $
+# $Id: http_keepalive.inc 13843 2019-02-25 10:11:55Z cfischer $
 #
 # Methods to support http keep alive handling
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 13679 $
+# $Revision: 13843 $
 #
 ###############################################################################
 
@@ -300,7 +300,7 @@ if( 0 ) on_exit(); #TBD: What's the purpose of this?
 function http_keepalive_send_recv( port, data, bodyonly, fetch404, content_type_body_only, headersonly ) {
 
   local_var port, data, bodyonly, fetch404, content_type_body_only, headersonly;
-  local_var soc, headers, body, id, n, lendata, user_agent, oid_str;
+  local_var oid, soc, headers, body, id, n, lendata, user_agent, oid_str;
   # nb: _http_ua_include_oid, _http_ka_debug, __ka_enabled and __ka_socket are global vars
 
   if( ! port ) {
@@ -315,15 +315,28 @@ function http_keepalive_send_recv( port, data, bodyonly, fetch404, content_type_
 
   # nb: We should expect at least a request like: "GET / HTTP/1.1\r\n\r\n" (length: 18).
   # But for some specific cases we're just checking for some less data.
-  if( strlen( data ) < 8 || data !~ "^(DELETE|PROPFIND|PUT|GET|HEAD|POST|OPTIONS|REPORT|MKCOL|MOVE|PROPPATCH|COPY|PATCH|CONNECT|TRACE|LOCK|UNLOCK|TRACK|M-POST|CHECKOUT|CHECKIN|UNCHECKOUT|VERSION-CONTROL|BASELINE-CONTROL).*HTTP/(1\.[01]|2)" )
-    set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#http_keepalive_send_recv(): Invalid HTTP request (length < 8, invalid HTTP method or missing HTTP/ header) passed in 'data' variable." );
+  if( strlen( data ) < 8 || data !~ "^(DELETE|PROPFIND|PUT|GET|HEAD|POST|OPTIONS|REPORT|MKCOL|MOVE|PROPPATCH|COPY|PATCH|CONNECT|TRACE|LOCK|UNLOCK|TRACK|M-POST|CHECKOUT|CHECKIN|UNCHECKOUT|VERSION-CONTROL|BASELINE-CONTROL).*HTTP/(1\.[01]|2)" ) {
+    oid = get_script_oid();
+    if( oid != "1.3.6.1.4.1.25623.1.0.900522" && # secpod_ziproxy_server_detect.nasl might require the wrong request to trigger the detection
+        oid != "1.3.6.1.4.1.25623.1.0.10730" )   # pre2008/raptor_detect.nasl as well
+    set_kb_item( name:"nvt_debug_misc/" + oid, value:oid + "#-#http_keepalive_send_recv(): Invalid HTTP request (length < 8, invalid HTTP method or missing HTTP/ header) passed in 'data' variable." );
+  }
 
   # http_get() won't add a Host: header if only HTTP/1.0 support was detected
-  if( "Host: " >!< data && " HTTP/1.0" >!< data )
-    set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#http_keepalive_send_recv(): No 'Host:' header passed in 'data' variable. This might lead to issues if SNI is enabled on the remote host." );
+  if( "Host: " >!< data && " HTTP/1.0" >!< data ) {
+    oid = get_script_oid();
+    if( oid != "1.3.6.1.4.1.25623.1.0.802045" ) # nb: gb_linux_rootkit_nginx_iframe_injection.nasl requires a wrong host header
+      set_kb_item( name:"nvt_debug_misc/" + oid, value:oid + "#-#http_keepalive_send_recv(): No 'Host:' header passed in 'data' variable. This might lead to issues if SNI is enabled on the remote host." );
+  }
 
-  if( data !~ "^(DELETE|PROPFIND|PUT|GET|HEAD|POST|OPTIONS|REPORT|MKCOL|MOVE|PROPPATCH|COPY|PATCH|CONNECT|TRACE|LOCK|UNLOCK|TRACK|M-POST|CHECKOUT|CHECKIN|UNCHECKOUT|VERSION-CONTROL|BASELINE-CONTROL) (/|\.+/|https?:|\*).* HTTP" )
+  if( data !~ "^(DELETE|PROPFIND|PUT|GET|HEAD|POST|OPTIONS|REPORT|MKCOL|MOVE|PROPPATCH|COPY|PATCH|CONNECT|TRACE|LOCK|UNLOCK|TRACK|M-POST|CHECKOUT|CHECKIN|UNCHECKOUT|VERSION-CONTROL|BASELINE-CONTROL) (/|\.+/|https?:|\*).* HTTP" ) {
+    oid = get_script_oid();
+    if( oid != "1.3.6.1.4.1.25623.1.0.103293" && # gb_apache_49957.nasl requires sending a @localhost URI
+        oid != "1.3.6.1.4.1.25623.1.0.17230"  && # cern_httpd_access_ctrl.nasl requires sending a \ at the start of the URI
+        oid != "1.3.6.1.4.1.25623.1.0.900522" && # secpod_ziproxy_server_detect.nasl might require the wrong request to trigger the detection
+        oid != "1.3.6.1.4.1.25623.1.0.10730" )   # pre2008/raptor_detect.nasl as well
     set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#http_keepalive_send_recv(): URL/URI of the HTTP request passed in 'data' variable doesn't start with one of the following: '/, ./, http, *'." );
+  }
 
   # Some (mostly older) VTs are not passing the User-Agent header but we should always have one.
   if( " HTTP/1.1" >< data && ! egrep( pattern:"^User-Agent:.+", string:data, icase:TRUE ) ) {
