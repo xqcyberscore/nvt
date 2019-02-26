@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852285");
-  script_version("$Revision: 13849 $");
+  script_version("$Revision: 13867 $");
   script_cve_id("CVE-2018-19198", "CVE-2018-19199", "CVE-2018-19200", "CVE-2018-20721");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-25 13:56:39 +0100 (Mon, 25 Feb 2019) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-26 10:05:01 +0100 (Tue, 26 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-02-14 04:05:05 +0100 (Thu, 14 Feb 2019)");
   script_name("SuSE Update for uriparser openSUSE-SU-2019:0165-1 (uriparser)");
   script_category(ACT_GATHER_INFO);

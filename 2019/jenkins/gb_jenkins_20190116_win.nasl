@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jenkins_20190116_win.nasl 13260 2019-01-24 09:34:34Z jschulte $
+# $Id: gb_jenkins_20190116_win.nasl 13867 2019-02-26 09:05:01Z asteins $
 #
 # Jenkins < 2.160 and < 2.150.2 LTS Multiple Vulnerabilities (Windows)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112495");
-  script_version("$Revision: 13260 $");
+  script_version("$Revision: 13867 $");
   script_cve_id("CVE-2019-1003003", "CVE-2019-1003004");
-  script_tag(name:"cvss_base", value:"8.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:M/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-24 10:34:34 +0100 (Thu, 24 Jan 2019) $");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-26 10:05:01 +0100 (Tue, 26 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-23 10:08:11 +0100 (Wed, 23 Jan 2019)");
   script_name("Jenkins < 2.160 and < 2.150.2 LTS Multiple Vulnerabilities (Windows)");
   script_category(ACT_GATHER_INFO);

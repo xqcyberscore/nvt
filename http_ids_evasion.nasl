@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: http_ids_evasion.nasl 11663 2018-09-28 06:18:46Z cfischer $
+# $Id: http_ids_evasion.nasl 13870 2019-02-26 09:30:12Z cfischer $
 #
 # HTTP NIDS evasion
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80010");
-  script_version("$Revision: 11663 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 08:18:46 +0200 (Fri, 28 Sep 2018) $");
+  script_version("$Revision: 13870 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-26 10:30:12 +0100 (Tue, 26 Feb 2019) $");
   script_tag(name:"creation_date", value:"2008-10-24 19:16:58 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -39,6 +39,8 @@ if(description)
   script_category(ACT_SETTINGS);
   script_copyright("This script is Copyright (C) 2002 Michel Arboi / Renaud Deraison");
   script_family("Settings");
+
+  script_xref(name:"URL", value:"http://www.wiretrip.net/rfp/pages/whitepapers/whiskerids.html");
 
   script_add_preference(name:"Enable HTTP evasion techniques", type:"checkbox", value:"no");
 
@@ -65,10 +67,9 @@ if(description)
   script_add_preference(name:"Random case sensitivity (Nikto only)", type:"checkbox", value:"no");
 
   script_tag(name:"summary", value:"This plugin configures OpenVAS for NIDS evasion (see the 'Prefs' panel).
-NIDS evasion options are useful if you want to determine
-the quality of the expensive NIDS you just bought.
+  NIDS evasion options are useful if you want to determine the quality of the expensive NIDS you just bought.
 
-HTTP evasion techniques :
+  HTTP evasion techniques :
 
   - Use HTTP HEAD instead of GET
 
@@ -97,7 +98,7 @@ HTTP evasion techniques :
   - Premature request ending: just like 'reverse traversal', but the directory
   name contains %0d%0a (could be translated to CR LF)
 
-  - CGI.pm semicolon separator: uses ';' instead of '&' in the query string.
+  - CGI.pm semicolon separator: uses a semicolon instead of '&' in the query string.
 
   - Parameter hiding: another form of reverse traversal. The directory contains
   %3F (could be translated to ?)
@@ -111,14 +112,13 @@ HTTP evasion techniques :
 
   - HTTP/0.9 requests: uses HTTP/0.9 requests (method & URI only, no HTTP version field)
 
-'Premature request ending' and 'Parameter hiding' target 'smart' IDS.
+  'Premature request ending' and 'Parameter hiding' target 'smart' IDS.
 
-Read http://www.wiretrip.net/rfp/pages/whitepapers/whiskerids.html
-for more information.
+  See the references for more information.
 
-Warning: those features are experimental and some options may result in false negatives!
+  Warning: those features are experimental and some options may result in false negatives!
 
-This plugin does not do any security check.");
+  This plugin does not do any security check.");
 
   script_tag(name:"qod_type", value:"general_note");
 

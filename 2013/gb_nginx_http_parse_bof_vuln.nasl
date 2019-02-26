@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nginx_http_parse_bof_vuln.nasl 13659 2019-02-14 08:34:21Z cfischer $
+# $Id: gb_nginx_http_parse_bof_vuln.nasl 13859 2019-02-26 05:27:33Z ckuersteiner $
 #
 # Nginx Chunked Transfer Encoding Stack Based Buffer Overflow Vulnerability
 #
@@ -29,12 +29,13 @@ CPE = "cpe:/a:nginx:nginx";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802052");
-  script_version("$Revision: 13659 $");
+  script_version("$Revision: 13859 $");
   script_cve_id("CVE-2013-2028");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-26 06:27:33 +0100 (Tue, 26 Feb 2019) $");
   script_tag(name:"creation_date", value:"2013-05-21 11:44:36 +0530 (Tue, 21 May 2013)");
+
   script_name("Nginx Chunked Transfer Encoding Stack Based Buffer Overflow Vulnerability");
 
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/25499");
@@ -51,15 +52,19 @@ if(description)
   script_mandatory_keys("nginx/installed");
 
   script_tag(name:"impact", value:"Successful exploitation will let the remote unauthenticated attackers
-  to cause a buffer overflow, resulting in a denial of service or potentially
-  allowing the execution of arbitrary code.");
+  to cause a buffer overflow, resulting in a denial of service or potentially allowing the execution of arbitrary
+  code.");
+
   script_tag(name:"affected", value:"Nginx version 1.3.9 through 1.4.0");
+
   script_tag(name:"insight", value:"A stack-based buffer overflow will occur in a worker process while handling
   certain chunked transfer encoding requests.");
+
   script_tag(name:"solution", value:"Upgrade to Nginx version 1.5.0, 1.4.1 or later.");
+
   script_tag(name:"solution_type", value:"VendorFix");
-  script_tag(name:"summary", value:"The host is running Nginx and is prone stack buffer overflow
-  vulnerability.");
+
+  script_tag(name:"summary", value:"The host is running Nginx and is prone stack buffer overflow vulnerability.");
 
   exit(0);
 }
@@ -68,11 +73,6 @@ include("http_func.inc");
 include("host_details.inc");
 
 if(!port = get_app_port(cpe:CPE)) exit(0);
-
-banner = get_http_banner(port: port);
-if(!banner || "Server: nginx" >!< banner){
-  exit(0);
-}
 
 useragent = http_get_user_agent();
 host = http_host_name(port:port);

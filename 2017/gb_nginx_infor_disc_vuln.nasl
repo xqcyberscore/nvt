@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nginx_infor_disc_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
+# $Id: gb_nginx_infor_disc_vuln.nasl 13859 2019-02-26 05:27:33Z ckuersteiner $
 #
 # Nginx Server Information Disclosure Vulnerability
 #
@@ -29,13 +29,14 @@ CPE = "cpe:/a:nginx:nginx";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811235");
-  script_version("$Revision: 11863 $");
+  script_version("$Revision: 13859 $");
   script_cve_id("CVE-2017-7529");
   script_bugtraq_id(99534);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-26 06:27:33 +0100 (Tue, 26 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-07-17 13:05:26 +0530 (Mon, 17 Jul 2017)");
+
   script_name("Nginx Server Information Disclosure Vulnerability");
 
   script_tag(name:"summary", value:"This host is installed with nginx server
@@ -49,11 +50,9 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow
   remote attackers to gain access to potentially sensitive information.");
 
-  script_tag(name:"affected", value:"nginx versions 0.5.6 through 1.12.0 and
-  1.13.x before 1.13.3");
+  script_tag(name:"affected", value:"nginx versions 0.5.6 through 1.12.0 and 1.13.x before 1.13.3");
 
-  script_tag(name:"solution", value:"Upgrade to nginx version 1.12.1 or 1.13.3
-  or later.");
+  script_tag(name:"solution", value:"Upgrade to nginx version 1.12.1 or 1.13.3 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -68,36 +67,31 @@ if(description)
   script_mandatory_keys("nginx/installed");
   script_require_ports("Services/www", 80);
   script_xref(name:"URL", value:"https://www.nginx.com");
+
   exit(0);
 }
-
 
 include("version_func.inc");
 include("host_details.inc");
 
-if(!ngxPort = get_app_port(cpe:CPE)){
+if(!ngxPort = get_app_port(cpe:CPE))
   exit(0);
-}
 
-if(!ngxVer = get_app_version(cpe:CPE, port:ngxPort)){
+if(!ngxVer = get_app_version(cpe:CPE, port:ngxPort))
   exit(0);
-}
 
-if(ngxVer =~ "(^1\.13)" && version_is_less(version:ngxVer, test_version:"1.13.3")){
+if(ngxVer =~ "(^1\.13)" && version_is_less(version:ngxVer, test_version:"1.13.3"))
   fix = "1.13.3";
-}
 
-else if(ngxVer =~ "^((0|1)\.)")
-{
-  if(version_in_range(version:ngxVer, test_version:"0.5.6", test_version2:"1.12.0")){
+else if(ngxVer =~ "^((0|1)\.)") {
+  if(version_in_range(version:ngxVer, test_version:"0.5.6", test_version2:"1.12.0"))
     fix = "1.12.1";
-  }
 }
 
-if(fix)
-{
+if(fix) {
   report = report_fixed_ver(installed_version:ngxVer, fixed_version:fix);
   security_message(port:ngxPort, data:report);
   exit(0);
 }
-exit(0);
+
+exit(99);

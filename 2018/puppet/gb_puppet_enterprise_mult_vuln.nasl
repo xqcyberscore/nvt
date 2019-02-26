@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_puppet_enterprise_mult_vuln.nasl 12025 2018-10-23 08:16:52Z mmartin $
+# $Id: gb_puppet_enterprise_mult_vuln.nasl 13864 2019-02-26 07:19:57Z cfischer $
 #
 # Puppet Enterprise < 2016.4.4 / 2017 < 2017.2.1 Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113100");
-  script_version("$Revision: 12025 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:16:52 +0200 (Tue, 23 Oct 2018) $");
+  script_version("$Revision: 13864 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-26 08:19:57 +0100 (Tue, 26 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-02-02 11:11:11 +0100 (Fri, 02 Feb 2018)");
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");

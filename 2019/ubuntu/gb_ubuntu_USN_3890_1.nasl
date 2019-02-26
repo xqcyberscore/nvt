@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843908");
-  script_version("$Revision: 13749 $");
+  script_version("$Revision: 13867 $");
   script_cve_id("CVE-2019-6975");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-19 06:33:45 +0100 (Tue, 19 Feb 2019) $");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-26 10:05:01 +0100 (Tue, 26 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-02-14 04:04:46 +0100 (Thu, 14 Feb 2019)");
   script_name("Ubuntu Update for python-django USN-3890-1");
   script_category(ACT_GATHER_INFO);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_universal_media_server_xxe_vuln.nasl 12928 2019-01-03 08:54:17Z ckuersteiner $
+# $Id: gb_universal_media_server_xxe_vuln.nasl 13858 2019-02-26 04:17:07Z ckuersteiner $
 #
 # Universal Media Server XXE Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:universal_media_server:universal_media_server";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141352");
-  script_version("$Revision: 12928 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-03 09:54:17 +0100 (Thu, 03 Jan 2019) $");
+  script_version("$Revision: 13858 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-26 05:17:07 +0100 (Tue, 26 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-08-07 08:45:28 +0700 (Tue, 07 Aug 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -62,7 +62,7 @@ in Windows domains.");
 
   script_tag(name:"affected", value:"Universal Media Server version 7.1.0 and probably prior.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 03rd January, 2019.
+  script_tag(name:"solution", value:"No known solution is available as of 26th February, 2019.
   Information regarding this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/45133/");

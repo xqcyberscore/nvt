@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852292");
-  script_version("$Revision: 13849 $");
+  script_version("$Revision: 13867 $");
   script_cve_id("CVE-2018-14404", "CVE-2018-16468", "CVE-2018-16470");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-25 13:56:39 +0100 (Mon, 25 Feb 2019) $");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-26 10:05:01 +0100 (Tue, 26 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-02-15 04:05:22 +0100 (Fri, 15 Feb 2019)");
   script_name("SuSE Update for rmt-server openSUSE-SU-2019:0185-1 (rmt-server)");
   script_category(ACT_GATHER_INFO);

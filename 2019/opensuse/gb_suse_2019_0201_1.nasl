@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852299");
-  script_version("$Revision: 13849 $");
+  script_version("$Revision: 13867 $");
   script_cve_id("CVE-2019-5736");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-25 13:56:39 +0100 (Mon, 25 Feb 2019) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-26 10:05:01 +0100 (Tue, 26 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-02-19 04:06:06 +0100 (Tue, 19 Feb 2019)");
   script_name("SuSE Update for docker-runc openSUSE-SU-2019:0201-1 (docker-runc)");
   script_category(ACT_GATHER_INFO);

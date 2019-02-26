@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: nginx_detect.nasl 13679 2019-02-15 08:20:11Z cfischer $
+# $Id: nginx_detect.nasl 13859 2019-02-26 05:27:33Z ckuersteiner $
 #
 # nginx Detection
 #
@@ -27,12 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100274");
-  script_version("$Revision: 13679 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
+  script_version("$Revision: 13859 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-26 06:27:33 +0100 (Tue, 26 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-10-01 18:57:31 +0200 (Thu, 01 Oct 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
+
   script_name("nginx Detection");
+
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
@@ -59,14 +61,13 @@ port = get_http_port( default:80 );
 banner = get_http_banner( port:port );
 
 if( banner && egrep( pattern:"Server: nginx", string:banner, icase:TRUE ) ) {
-
   vers = "unknown";
   installed = TRUE;
 
   version = eregmatch( string:banner, pattern:"Server: nginx/([0-9.]+)", icase:TRUE );
 
   if( ! isnull( version[1] ) ) {
-    vers = chomp( version[1] );
+    vers = version[1];
   } else {
     # Some configs are reporting the version in the banner if a index.php is called
     host = http_host_name( dont_add_port:TRUE );
@@ -80,13 +81,11 @@ if( banner && egrep( pattern:"Server: nginx", string:banner, icase:TRUE ) ) {
     }
 
     version = eregmatch( string:banner, pattern:"Server: nginx/([0-9.]+)", icase:TRUE );
-
     if( ! isnull( version[1] ) ) {
-      vers = chomp( version[1] );
+      vers = version[1];
     }
   }
 } else {
-
   # If the banner is hidden we still can try to see
   # if nginx is installed from the default 404 page
   url = "/non-existent.html";
@@ -103,9 +102,7 @@ if( banner && egrep( pattern:"Server: nginx", string:banner, icase:TRUE ) ) {
 }
 
 if( installed ) {
-
   install = port + "/tcp";
-  set_kb_item( name:"nginx/" + port + "/version", value:vers );
   set_kb_item( name:"nginx/installed", value:TRUE );
 
   # Status page of the HttpStubStatusModule (https://nginx.org/en/docs/http/ngx_http_stub_status_module.html) module
@@ -121,7 +118,7 @@ if( installed ) {
   }
 
   cpe = build_cpe( value:vers, exp:"^([0-9.]+)", base:"cpe:/a:nginx:nginx:" );
-  if( isnull( cpe ) )
+  if( !cpe )
     cpe = 'cpe:/a:nginx:nginx';
 
   register_product( cpe:cpe, location:install, port:port );
@@ -133,7 +130,7 @@ if( installed ) {
                                             concludedUrl:conclUrl,
                                             concluded:version[0],
                                             extra:extra ),
-                                            port:port );
+               port:port );
 }
 
 exit( 0 );

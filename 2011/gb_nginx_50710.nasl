@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nginx_50710.nasl 11997 2018-10-20 11:59:41Z mmartin $
+# $Id: gb_nginx_50710.nasl 13859 2019-02-26 05:27:33Z ckuersteiner $
 #
 # nginx DNS Resolver Remote Heap Buffer Overflow Vulnerability
 #
@@ -31,11 +31,13 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.103344");
   script_bugtraq_id(50710);
   script_cve_id("CVE-2011-4315");
-  script_version("$Revision: 11997 $");
+  script_version("$Revision: 13859 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+
   script_name("nginx DNS Resolver Remote Heap Buffer Overflow Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+
+  script_tag(name:"last_modification", value:"$Date: 2019-02-26 06:27:33 +0100 (Tue, 26 Feb 2019) $");
   script_tag(name:"creation_date", value:"2011-11-21 11:12:32 +0100 (Mon, 21 Nov 2011)");
   script_category(ACT_GATHER_INFO);
   script_family("Web Servers");
@@ -64,7 +66,6 @@ if(description)
 }
 
 include("version_func.inc");
-
 include("host_details.inc");
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );

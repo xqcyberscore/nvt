@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852280");
-  script_version("$Revision: 13849 $");
+  script_version("$Revision: 13867 $");
   script_cve_id("CVE-2016-9015");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-25 13:56:39 +0100 (Mon, 25 Feb 2019) $");
+  script_tag(name:"cvss_base", value:"2.6");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-26 10:05:01 +0100 (Tue, 26 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-02-13 04:04:35 +0100 (Wed, 13 Feb 2019)");
   script_name("SuSE Update for python-urllib3 openSUSE-SU-2019:0159-1 (python-urllib3)");
   script_category(ACT_GATHER_INFO);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nginx_52578.nasl 11429 2018-09-17 10:08:59Z cfischer $
+# $Id: gb_nginx_52578.nasl 13859 2019-02-26 05:27:33Z ckuersteiner $
 #
 # nginx 'ngx_cpystrn()' Information Disclosure Vulnerability
 #
@@ -25,6 +25,8 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:nginx:nginx";
+
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103469");
@@ -33,7 +35,7 @@ if (description)
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_version("$Revision: 11429 $");
+  script_version("$Revision: 13859 $");
 
   script_name("nginx 'ngx_cpystrn()' Information Disclosure Vulnerability");
 
@@ -43,7 +45,7 @@ if (description)
   script_xref(name:"URL", value:"http://nginx.org/");
   script_xref(name:"URL", value:"http://trac.nginx.org/nginx/changeset/4530/nginx");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 12:08:59 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-26 06:27:33 +0100 (Tue, 26 Feb 2019) $");
   script_tag(name:"creation_date", value:"2012-04-17 10:03:32 +0200 (Tue, 17 Apr 2012)");
   script_category(ACT_GATHER_INFO);
   script_family("Web Servers");
@@ -52,7 +54,9 @@ if (description)
   script_dependencies("nginx_detect.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("nginx/installed");
+
   script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
+
   script_tag(name:"summary", value:"nginx is prone to an information-disclosure vulnerability.");
 
   script_tag(name:"impact", value:"Attackers can exploit this issue to harvest sensitive information that
@@ -61,26 +65,28 @@ may lead to further attacks.");
   exit(0);
 }
 
-include("http_func.inc");
+include("host_details.inc");
 include("version_func.inc");
 
-port = get_http_port(default:80);
+if (!port = get_app_port(cpe: CPE))
+  exit(0);
 
-if(!vers = get_kb_item(string("nginx/", port, "/version")))exit(0);
-if(!isnull(vers) && vers >!< "unknown") {
+if (!version = get_app_version(cpe: CPE, port: port))
+  exit(0);
 
-  if(vers =~ "^1\.1") {
-    if(version_is_less(version:vers, test_version:"1.1.17")) {
-      security_message(port:port);
-      exit(0);
-    }
+if (version =~ "^1\.1") {
+  if(version_is_less(version:version, test_version:"1.1.17")) {
+    report = report_fixed_ver(installed_version: version, fixed_version: "1.1.17");
+    security_message(port: port, data: report);
+    exit(0);
   }
+}
 
-  if(vers =~ "^1\.0") {
-    if(version_is_less(version:vers, test_version:"1.0.14")) {
-      security_message(port:port);
-      exit(0);
-    }
+if (version =~ "^1\.0") {
+  if (version_is_less(version:version, test_version:"1.0.14")) {
+    report = report_fixed_ver(installed_version: version, fixed_version: "1.0.14");
+    security_message(port: port, data: report);
+    exit(0);
   }
 }
 

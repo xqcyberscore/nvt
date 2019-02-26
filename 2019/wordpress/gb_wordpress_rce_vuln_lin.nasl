@@ -23,11 +23,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.142029");
-  script_version("$Revision: 13826 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-22 08:18:35 +0100 (Fri, 22 Feb 2019) $");
+  script_version("$Revision: 13867 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-26 10:05:01 +0100 (Tue, 26 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-02-22 13:59:06 +0700 (Fri, 22 Feb 2019)");
-  script_tag(name:"cvss_base", value:"9.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
 
   script_cve_id("CVE-2019-8942");
   script_bugtraq_id(107088);

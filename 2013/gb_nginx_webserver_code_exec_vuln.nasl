@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nginx_webserver_code_exec_vuln.nasl 11865 2018-10-12 10:03:43Z cfischer $
+# $Id: gb_nginx_webserver_code_exec_vuln.nasl 13859 2019-02-26 05:27:33Z ckuersteiner $
 #
 # nginx Arbitrary Code Execution Vulnerability
 #
@@ -28,25 +28,32 @@ CPE = "cpe:/a:nginx:nginx";
 
 if(description)
 {
-  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execution arbitrary
-  code.");
-  script_tag(name:"affected", value:"nginx versions 0.5.x, 0.6.x, 0.7.x to 0.7.65 and 0.8.x to 0.8.37");
-  script_tag(name:"insight", value:"The null bytes are allowed in URIs by default (their presence is indicated
-  via a variable named zero_in_uri defined in ngx_http_request.h). Individual
-  modules have the ability to opt-out of handling URIs with null bytes.");
-  script_tag(name:"solution", value:"Upgrade to nginx 0.7.66 or 0.7.38 or later.");
-  script_tag(name:"summary", value:"This host is running nginx and is prone to arbitrary code execution
-  vulnerability.");
   script_oid("1.3.6.1.4.1.25623.1.0.803194");
-  script_version("$Revision: 11865 $");
+  script_version("$Revision: 13859 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-26 06:27:33 +0100 (Tue, 26 Feb 2019) $");
   script_tag(name:"creation_date", value:"2013-04-22 15:03:39 +0530 (Mon, 22 Apr 2013)");
+
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execution arbitrary
+  code.");
+
+  script_tag(name:"affected", value:"nginx versions 0.5.x, 0.6.x, 0.7.x to 0.7.65 and 0.8.x to 0.8.37");
+
+  script_tag(name:"insight", value:"The null bytes are allowed in URIs by default (their presence is indicated
+  via a variable named zero_in_uri defined in ngx_http_request.h). Individual modules have the ability to opt-out
+  of handling URIs with null bytes.");
+
+  script_tag(name:"solution", value:"Upgrade to nginx 0.7.66 or 0.7.38 or later.");
+
+  script_tag(name:"summary", value:"This host is running nginx and is prone to arbitrary code execution
+  vulnerability.");
+
   script_name("nginx Arbitrary Code Execution Vulnerability");
 
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/24967/");
   script_xref(name:"URL", value:"http://exploitsdownload.com/exploit/multiple/nginx-06x-arbitrary-code-execution-nullbyte-injection");
+
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
@@ -57,22 +64,23 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name:"URL", value:"http://nginx.org");
   exit(0);
 }
 
-include("http_func.inc");
 include("host_details.inc");
 include("version_func.inc");
 
-if(!port = get_app_port(cpe:CPE)) exit(0);
-if(!vers = get_app_version(cpe:CPE, port:port)){
+if(!port = get_app_port(cpe:CPE))
+  exit(0);
+
+if(!vers = get_app_version(cpe:CPE, port:port))
+  exit(0);
+
+if(version_is_less_equal(version:vers, test_version:"0.7.65") ||
+   version_in_range(version:vers, test_version:"0.8", test_version2:"0.8.37")) {
+  report = report_fixed_ver(installed_version: vers, fixed_version: "See advisory");
+  security_message(port: port, data: report);
   exit(0);
 }
 
-if(version_is_less_equal(version:vers, test_version:"0.7.65") ||
-   version_in_range(version:vers, test_version:"0.8", test_version2:"0.8.37"))
-{
-  security_message(port);
-  exit(0);
-}
+exit(99);

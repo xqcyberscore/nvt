@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_starttls_ftp.nasl 13611 2019-02-12 15:23:02Z cfischer $
+# $Id: gb_starttls_ftp.nasl 13863 2019-02-26 07:07:42Z cfischer $
 #
 # SSL/TLS: FTP 'AUTH TLS' Command Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105009");
-  script_version("$Revision: 13611 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-12 16:23:02 +0100 (Tue, 12 Feb 2019) $");
+  script_version("$Revision: 13863 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-26 08:07:42 +0100 (Tue, 26 Feb 2019) $");
   script_tag(name:"creation_date", value:"2014-04-09 16:39:22 +0100 (Wed, 09 Apr 2014)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -53,10 +53,12 @@ include("ftp_func.inc");
 
 port = get_ftp_port( default:21 );
 
-if( get_port_transport( port ) > ENCAPS_IP ) exit( 0 );
+if( get_port_transport( port ) > ENCAPS_IP )
+  exit( 0 );
 
 soc = open_sock_tcp( port );
-if( ! soc ) exit( 0 );
+if( ! soc )
+  exit( 0 );
 
 buf = ftp_recv_line( socket:soc );
 if( ! buf ) {
@@ -66,12 +68,17 @@ if( ! buf ) {
 
 buf = ftp_send_cmd( socket:soc, cmd:'AUTH TLS\r\n' );
 ftp_close( socket:soc );
-if( ! buf ) exit( 0 );
+if( ! buf )
+  exit( 0 );
 
 if( "234" >< buf ) {
+  set_kb_item( name:"ftp/starttls/supported", value:TRUE );
   set_kb_item( name:"ftp/" + port + "/starttls", value:TRUE );
   set_kb_item( name:"starttls_typ/" + port, value:"ftp" );
   log_message( port:port, data:"The remote FTP server supports TLS (FTPS) with the 'AUTH TLS' command." );
+} else {
+  set_kb_item( name:"ftp/starttls/not_supported", value:TRUE );
+  set_kb_item( name:"ftp/starttls/not_supported/port", value:port );
 }
 
 exit( 0 );

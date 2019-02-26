@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ids_evasion.nasl 11663 2018-09-28 06:18:46Z cfischer $
+# $Id: ids_evasion.nasl 13870 2019-02-26 09:30:12Z cfischer $
 #
 # NIDS evasion
 #
@@ -34,8 +34,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80011");
-  script_version("$Revision: 11663 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 08:18:46 +0200 (Fri, 28 Sep 2018) $");
+  script_version("$Revision: 13870 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-26 10:30:12 +0100 (Tue, 26 Feb 2019) $");
   script_tag(name:"creation_date", value:"2008-10-24 19:16:58 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -49,13 +49,12 @@ if(description)
 
   script_tag(name:"summary", value:"This plugin configures the scanner for NIDS evasion (see the 'Prefs' panel).
 
-NIDS evasion options are useful if you want to determine
-the quality of the expensive NIDS you just bought.
+  NIDS evasion options are useful if you want to determine the quality of the expensive NIDS you just bought.
 
-TCP Evasion techniques :
+  TCP Evasion techniques :
 
   - Split : send data one byte at a time. This confuses
-  NIDSes which do not perform stream reassembly
+  NIDSes which do not perform stream reassembly.
 
   - Injection : same as split, but malformed TCP packets
   containing bogus data are sent between normal packets.
@@ -64,18 +63,17 @@ TCP Evasion techniques :
   This confuses NIDSes which perform stream reassembly but do
   not accurately verify the checksum of the packets or
   which do not determine if the remote host actually
-  receives the packets seen;
+  receives the packets seen.
 
   - Short TTL : same as split, but a valid TCP packets
   containing bogus data are sent between normal packets.
   These packets have a short (N-1), meaning that if
   the NIDS is on a gateway, it will see these packets
-  go through, but they will not reach the target
-  host.
+  go through, but they will not reach the target host.
   This confuses NIDSes which perform stream reassembly
   but do not accurately check if the packet can actually
   reach the remote host or which do not determine if the
-  remote host actually receives the packets seen ;
+  remote host actually receives the packets seen.
 
   - Fake RST : each time a connection is established, the
   scanner will send a RST packet with a bogus tcp checksum or

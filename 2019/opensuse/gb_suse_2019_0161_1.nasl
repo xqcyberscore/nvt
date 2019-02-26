@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852281");
-  script_version("$Revision: 13849 $");
+  script_version("$Revision: 13867 $");
   script_cve_id("CVE-2018-11212", "CVE-2019-2422", "CVE-2019-2426");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-25 13:56:39 +0100 (Mon, 25 Feb 2019) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-26 10:05:01 +0100 (Tue, 26 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-02-13 04:04:39 +0100 (Wed, 13 Feb 2019)");
   script_name("SuSE Update for java-11-openjdk openSUSE-SU-2019:0161-1 (java-11-openjdk)");
   script_category(ACT_GATHER_INFO);

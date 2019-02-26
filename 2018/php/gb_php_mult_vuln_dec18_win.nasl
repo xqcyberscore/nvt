@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_mult_vuln_dec18_win.nasl 13517 2019-02-07 07:51:12Z mmartin $
+# $Id: gb_php_mult_vuln_dec18_win.nasl 13857 2019-02-26 03:40:29Z ckuersteiner $
 #
 # PHP Multiple Vulnerabilities - Dec19 (Windows)
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108508");
-  script_version("$Revision: 13517 $");
-  script_cve_id("CVE-2018-19518");
+  script_version("$Revision: 13857 $");
+  script_cve_id("CVE-2018-19518", "CVE-2018-20783");
   script_bugtraq_id(106018);
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-07 08:51:12 +0100 (Thu, 07 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-26 04:40:29 +0100 (Tue, 26 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-12-11 09:08:47 +0100 (Tue, 11 Dec 2018)");
-  script_name("PHP Multiple Vulnerabilities - Dec19 (Windows)");
+  script_name("PHP Multiple Vulnerabilities - Dec18 (Windows)");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
@@ -46,6 +46,7 @@ if(description)
   script_xref(name:"URL", value:"https://bugs.php.net/bug.php?id=76428");
   script_xref(name:"URL", value:"https://bugs.php.net/bug.php?id=77153");
   script_xref(name:"URL", value:"https://bugs.php.net/bug.php?id=77160");
+  script_xref(name:"URL", value:"https://bugs.php.net/bug.php?id=77143");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/106018");
   script_xref(name:"URL", value:"https://github.com/Bo0oM/PHP_imap_open_exploit/blob/master/exploit.php");
   script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/45914/");

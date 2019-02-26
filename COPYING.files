@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Mon, 25 Feb 2019 15:16:12 +0100
+# Automatically created on:  Tue, 26 Feb 2019 12:25:47 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -196,9 +196,7 @@
 2008/gentoo_unmaintained_packages.nasl: GPLv2
 2008/gnutls_CB-A08-0079.nasl: GPLv2
 2008/goaheadwebserver_source_disclosure.nasl: GPLv2
-2008/http_ids_evasion.nasl: GPLv2
 2008/icmp_domain_name.nasl: GPLv2
-2008/ids_evasion.nasl: GPLv2
 2008/ipswitch_whatsup_auth_bypass.nasl: GPLv2
 2008/ipswitch_whatsup_info_disclosure.nasl: GPLv2
 2008/kerberos_CB-A08-0044.nasl: GPLv2
@@ -41460,22 +41458,14 @@
 2018/gb_compromised_webapp_detect.nasl: GPLv2+
 2018/gb_echo_service_reporting.nasl: GPLv2+
 2018/gb_ftp_anonymous_detect.nasl: GPLv2+
-2018/gb_gpon_router_mult_vuln.nasl: GPLv2+
 2018/gb_http_cleartext_creds_submit.nasl: GPLv2+
-2018/gb_kubernetes_dashboard_exposure_vuln.nasl: GPLv2+
-2018/gb_mesosphere_marathon_exposure_vuln.nasl: GPLv2+
 2018/gb_mult_dvr_auth_bypass.nasl: GPLv2+
 2018/gb_mult_dvr_info_discl_vuln.nasl: GPLv2+
 2018/gb_orangeworm_kwampirs_trojan_detect.nasl: GPLv2+
-2018/gb_portainer_no_admin_vuln.nasl: GPLv2+
-2018/gb_portainer_no_auth_vuln.nasl: GPLv2+
 2018/gb_portscanner_missing.nasl: GPLv2+
-2018/gb_puppet_enterprise_dos_vuln.nasl: GPLv2+
-2018/gb_puppet_enterprise_mult_vuln.nasl: GPLv2+
 2018/gb_rsh_service_reporting.nasl: GPLv2+
 2018/gb_sensitive_file_disclosures_http.nasl: GPLv2+
 2018/gb_sftp_ftp_pw_exposure.nasl: GPLv2+
-2018/gb_swarmpit_exposure_vuln.nasl: GPLv2+
 2018/gb_telnet_unencrypted_cleartext_logins.nasl: GPLv2
 2018/gb_unprotected_web_app_installers.nasl: GPLv2+
 2018/gb_unquoted_path_vulnerabilities_win.nasl: GPLv2+
@@ -41551,6 +41541,7 @@
 2018/google/gb_google_chrome_unspecified_vuln_feb18_lin.nasl: GPLv2+
 2018/google/gb_google_chrome_unspecified_vuln_feb18_macosx.nasl: GPLv2+
 2018/google/gb_google_chrome_unspecified_vuln_feb18_win.nasl: GPLv2+
+2018/gpon/gb_gpon_router_mult_vuln.nasl: GPLv2+
 2018/grafana/gb_grafana_auth_bypass_vuln.nasl: GPLv2+
 2018/grammarly/gb_grammarly_ext_google_chrome_info_disc_vuln_lin.nasl: GPLv2+
 2018/grammarly/gb_grammarly_ext_google_chrome_info_disc_vuln_macosx.nasl: GPLv2+
@@ -41655,6 +41646,7 @@
 2018/kentico/gb_kentico_cms_access_control_bypass_vuln.nasl: GPLv2+
 2018/kentico/gb_kentico_cms_xss_vuln.nasl: GPLv2+
 2018/knot-dns/gb_knot_dns_dos_vuln.nasl: GPLv2+
+2018/kubernetes/gb_kubernetes_dashboard_exposure_vuln.nasl: GPLv2+
 2018/lantronix/gb_lantronix_device_auth_bypass.nasl: GPLv2+
 2018/lantronix/gb_lantronix_device_default_credentials.nasl: GPLv2+
 2018/ldap/gb_ldap_account_manager_xss_n_csrf_vuln_mar18.nasl: GPLv2+
@@ -41716,6 +41708,7 @@
 2018/mediawiki/gb_mediawiki_mult_vuln_win.nasl: GPLv2+
 2018/memcached/gb_memcached_amplification_attack.nasl: GPLv2+
 2018/mercurial/gb_mercurial_mult_vuln_win.nasl: GPLv2+
+2018/mesosphere/gb_mesosphere_marathon_exposure_vuln.nasl: GPLv2+
 2018/microsoft/gb_asp_dotnet_core_ancm_dos_vuln_win.nasl: GPLv2+
 2018/microsoft/gb_asp_dotnet_core_dos_vuln_may18_win.nasl: GPLv2+
 2018/microsoft/gb_asp_dotnet_core_dos_vuln_sep18_win.nasl: GPLv2+
@@ -43137,6 +43130,8 @@
 2018/piwigo/gb_piwigo_mult_xss_vuln.nasl: GPLv2+
 2018/pkp/gb_pkp_open_journal_systems_xss_vuln.nasl: GPLv2+
 2018/planex/gb_planex_csw50hd_hardcode_cred_vuln.nasl: GPLv2+
+2018/portainer/gb_portainer_no_admin_vuln.nasl: GPLv2+
+2018/portainer/gb_portainer_no_auth_vuln.nasl: GPLv2+
 2018/postgresql/gb_postgresql_dos_vuln_oct18_lin.nasl: GPLv2+
 2018/postgresql/gb_postgresql_dos_vuln_oct18_win.nasl: GPLv2+
 2018/postgresql/gb_postgresql_info_disc_missing_auth_vuln_aug18_lin.nasl: GPLv2+
@@ -43172,6 +43167,8 @@
 2018/powerdns/gb_pdns_powerdns-advisory-2018-09.nasl: GPLv2+
 2018/prestashop/gb_prestashop_mult_vuln.nasl: GPLv2+
 2018/prestashop/gb_prestashop_rce_vuln.nasl: GPLv2+
+2018/puppet/gb_puppet_enterprise_dos_vuln.nasl: GPLv2+
+2018/puppet/gb_puppet_enterprise_mult_vuln.nasl: GPLv2+
 2018/python/gb_python_elementtree_dos_vuln_macosx.nasl: GPLv2+
 2018/python/gb_python_elementtree_dos_vuln_win.nasl: GPLv2+
 2018/python/gb_python_heap_buffer_overflow_vuln_aug18_macosx.nasl: GPLv2+
@@ -43272,6 +43269,7 @@
 2018/sugarcrm/gb_sugarcrm_multiple_sql_inj_vuln.nasl: GPLv2+
 2018/sugarcrm/gb_sugarcrm_xxe_vuln.nasl: GPLv2+
 2018/support/gb_superantispyware_mult_vuln.nasl: GPLv2+
+2018/swarmpit/gb_swarmpit_exposure_vuln.nasl: GPLv2+
 2018/symphony/gb_symphony_cms_xss_vuln.nasl: GPLv2+
 2018/synology/gb_synology_dsm_mult_vuln_synology_sa_17_29.nasl: GPLv2+
 2018/synology/gb_synology_sa_18_15.nasl: GPLv2+
@@ -44098,6 +44096,7 @@
 2019/debian/deb_dla_1685.nasl: GPLv2+
 2019/debian/deb_dla_1686.nasl: GPLv2+
 2019/debian/deb_dla_1687.nasl: GPLv2+
+2019/debian/deb_dla_1689.nasl: GPLv2+
 2019/discourse/gb_discourse_2.2.0beta2.nasl: GPLv2+
 2019/discourse/gb_discourse_2.2.0beta3.nasl: GPLv2+
 2019/discourse/gb_discourse_2.2.0beta4.nasl: GPLv2+
@@ -44193,7 +44192,9 @@
 2019/gb_ftp_unencrypted_cleartext_login.nasl: GPLv2
 2019/gb_linux_inactive_kernel_vulns.nasl: GPLv2+
 2019/gb_smtp_unencrypted_cleartext_login.nasl: GPLv2
-2019/gb_tenable_nessus_stored_xss_vuln.nasl: GPLv2+
+2019/gb_starttls_ftp_not_supported.nasl: GPLv2+
+2019/gb_starttls_imap_not_supported.nasl: GPLv2+
+2019/gb_starttls_pop3_not_supported.nasl: GPLv2+
 2019/gb_vnc_unencrypted_data_transmission.nasl: GPLv2
 2019/gitea/gb_gitea_access_ctrl_vuln.nasl: GPLv2+
 2019/google/gb_google_chrome_stable-channel-update-for-desktop-2019-01_lin.nasl: GPLv2+
@@ -44428,6 +44429,12 @@
 2019/oracle/gb_oracle_virtualbox_jan2019-5072801_08_lin.nasl: GPLv2+
 2019/oracle/gb_oracle_virtualbox_jan2019-5072801_09_macosx.nasl: GPLv2+
 2019/ossec/gb_ossec-authd_unprotected.nasl: GPLv2+
+2019/php/gb_php_CVE-2019-9022_lin.nasl: GPLv2+
+2019/php/gb_php_CVE-2019-9022_win.nasl: GPLv2+
+2019/php/gb_php_CVE-2019-9025_lin.nasl: GPLv2+
+2019/php/gb_php_CVE-2019-9025_win.nasl: GPLv2+
+2019/php/gb_php_mult_vuln_feb19_lin.nasl: GPLv2+
+2019/php/gb_php_mult_vuln_feb19_win.nasl: GPLv2+
 2019/phpipam/gb_phpipam_mult_vuln.nasl: GPLv2+
 2019/phpmyadmin/gb_phpmyadmin_PMASA-2019-1_lin.nasl: GPLv2+
 2019/phpmyadmin/gb_phpmyadmin_PMASA-2019-1_win.nasl: GPLv2+
@@ -44449,6 +44456,7 @@
 2019/teampass/gb_teampass_info_disc_vuln.nasl: GPLv2+
 2019/tenable/gb_tenable_nessus_mult_vuln_tns-2018-16.nasl: GPLv2+
 2019/tenable/gb_tenable_nessus_mult_vuln_tns-2018-17.nasl: GPLv2+
+2019/tenable/gb_tenable_nessus_stored_xss_vuln.nasl: GPLv2+
 2019/tiki/gb_tikiwiki_sql_inj_vuln.nasl: GPLv2+
 2019/traccar/gb_traccar_xxe_vuln.nasl: GPLv2+
 2019/twiki/gb_twiki_xss_vuln.nasl: GPLv2+
@@ -44792,6 +44800,7 @@ gb_apache_hadoop_detect.nasl: GPLv2+
 gb_apache_jackrabbit_detect.nasl: GPLv2+
 gb_apache_jetspeed_detect.nasl: GPLv2+
 gb_apache_jserv_detect.nasl: GPLv2+
+gb_apache_mesos_detect.nasl: GPLv2+
 gb_apache_mod_jk_detect.nasl: GPLv2+
 gb_apache_openmeetings_detect.nasl: GPLv2+
 gb_apache_openmeetings_services_detect.nasl: GPLv2+
@@ -47313,6 +47322,7 @@ hp_data_protector_installed.nasl: GPLv2
 hp_power_manager_detect.nasl: GPLv2+
 hp_printers.inc: GPLv2+
 http_func.inc: GPLv2
+http_ids_evasion.nasl: GPLv2
 http_keepalive.inc: GPLv2
 http_login.nasl: GPLv2
 httpver.nasl: GPLv2+
@@ -47320,6 +47330,7 @@ http_version.nasl: GPLv2
 iax2_detection.nasl: GPLv2
 idb_detect.nasl: GPLv2+
 ident_process_owner.nasl: GPLv2
+ids_evasion.nasl: GPLv2
 ilo_detect.nasl: GPLv2
 ilohamail_detect.nasl: GPLv2
 imap4_banner.nasl: GPLv2

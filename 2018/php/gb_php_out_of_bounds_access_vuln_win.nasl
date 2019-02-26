@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_out_of_bounds_access_vuln_win.nasl 12928 2019-01-03 08:54:17Z ckuersteiner $
+# $Id: gb_php_out_of_bounds_access_vuln_win.nasl 13858 2019-02-26 04:17:07Z ckuersteiner $
 #
 # PHP 'php_pcre_replace_impl' Out of Bounds Access Vulnerability (Windows)
 #
@@ -29,12 +29,13 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813599");
-  script_version("$Revision: 12928 $");
+  script_version("$Revision: 13858 $");
   script_cve_id("CVE-2017-9118");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-03 09:54:17 +0100 (Thu, 03 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-26 05:17:07 +0100 (Tue, 26 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-08-06 17:10:24 +0530 (Mon, 06 Aug 2018)");
+
   script_name("PHP 'php_pcre_replace_impl' Out of Bounds Access Vulnerability (Windows)");
 
   script_tag(name:"summary", value:"This host is installed with PHP and is prone
@@ -43,15 +44,14 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to an  error in
-  'php_pcre_replace_impl()' in '/sapi/cli/php' which improperly handles
-  'preg_replace' call.");
+  'php_pcre_replace_impl()' in '/sapi/cli/php' which improperly handles 'preg_replace' call.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to gain out of bounds access.");
 
   script_tag(name:"affected", value:"PHP version 7.1.5 on Windows.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 03rd January, 2019.
+  script_tag(name:"solution", value:"No known solution is available as of 26th February, 2019.
   Information regarding this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"http://www.php.net");
@@ -64,7 +64,7 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_php_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("php/installed", "Host/runs_windows");
-  script_require_ports("Services/www", 80);
+
   exit(0);
 }
 
@@ -79,7 +79,9 @@ path = infos['location'];
 
 if(phpVers == "7.1.5")
 {
-  report = report_fixed_ver(installed_version:phpVers, fixed_version:"NoneAvailable", install_path:path);
+  report = report_fixed_ver(installed_version:phpVers, fixed_version:"None", install_path:path);
   security_message(port:phpPort, data:report);
   exit(0);
 }
+
+exit(0);

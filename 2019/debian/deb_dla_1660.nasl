@@ -21,13 +21,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891660");
-  script_version("$Revision: 13516 $");
+  script_version("$Revision: 13867 $");
   script_cve_id("CVE-2019-3463", "CVE-2019-3464");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1660-1] rssh security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-07 08:19:50 +0100 (Thu, 07 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-26 10:05:01 +0100 (Tue, 26 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-02-07 00:00:00 +0100 (Thu, 07 Feb 2019)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

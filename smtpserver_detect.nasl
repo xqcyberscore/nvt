@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smtpserver_detect.nasl 13827 2019-02-22 07:50:44Z mmartin $
+# $Id: smtpserver_detect.nasl 13855 2019-02-25 16:40:27Z cfischer $
 #
 # SMTP Server type and version
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10263");
-  script_version("$Revision: 13827 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-22 08:50:44 +0100 (Fri, 22 Feb 2019) $");
+  script_version("$Revision: 13855 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-25 17:40:27 +0100 (Mon, 25 Feb 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -212,7 +212,7 @@ foreach port( ports ) {
   }
 
   if( strlen( commands ) > 0 ) {
-    ehlo_report = "The remote SMTP server is announcing the following available ESMTP commands (EHLO response) via an ";
+    ehlo_report = '\n\nThe remote SMTP server is announcing the following available ESMTP commands (EHLO response) via an ';
     if( is_tls )
       ehlo_report += "encrypted";
     else

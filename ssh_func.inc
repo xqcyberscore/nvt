@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: ssh_func.inc 13845 2019-02-25 10:29:21Z cfischer $
+# $Id: ssh_func.inc 13851 2019-02-25 14:33:33Z cfischer $
 #
 # Methods for handling SSH
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 13845 $
+# $Revision: 13851 $
 #
 ###############################################################################
 
@@ -2278,39 +2278,74 @@ function ssh_is_fragile_port( port ) {
   return;
 }
 
-# Checks and returns TRUE if any random user/pass pair is accepted by the SSH service
+# @brief Checks if any random user/pass pair is accepted by the SSH service. The function
+#        will save the status (broken/not broken) and if the status was already checked
+#        within the KB to avoid that the same check is conducted multiple times.
+#
+# @param port The TCP port of the remote SSH service to check.
+#
+# @return TRUE if any random username/password pair is accepted by the SSH service, FALSE
+#         otherwise and NULL if it was not possible to get a connection to the service or if
+#         no port parameter was passed.
+#
 function ssh_broken_random_login( port ) {
 
-  local_var port, soc, banner, user, pass, login;
+  local_var port;
+  local_var textbanner, banner, count, logins, i, user, pass, soc, login;
 
   if( ! port ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#ssh_broken_random_login" );
-    return;
+    return NULL;
   }
 
-  if( get_kb_item( "SSH/" + port + "/broken/random_login" ) ) return TRUE;
-  if( get_kb_item( "SSH/" + port + "/broken/random_login/checked" ) ) return;
+  if( get_kb_item( "SSH/" + port + "/broken/random_login" ) )
+    return TRUE;
 
+  if( get_kb_item( "SSH/" + port + "/broken/random_login/checked" ) )
+    return FALSE;
+
+  textbanner = get_kb_item( "SSH/textbanner/" + port );
   banner = get_ssh_server_banner( port:port );
+  count  = 0;
+  logins = 0;
 
-  if( "cisco" >< tolower( banner ) ) {
-    user = "Anonymous";
-    pass = "";
-  } else {
-    user = ssh_rand_str( length:8, charset:"abcdefghiklmnopqrstuvwxyz" );
-    pass = ssh_rand_str( length:8, charset:"ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz" );
+  for( i = 1; i < 3; i++ ) {
+
+    # nb: See gb_ssh_os_detection.nasl
+    if( i == 1 && ( banner =~ "(cisco|FIPS User Access Verification)" || "Cisco Systems, Inc. All rights Reserved" >< textbanner ) ) {
+      user = "Anonymous";
+      pass = "";
+    } else {
+      user = ssh_rand_str( length:7 + i, charset:"abcdefghiklmnopqrstuvwxyz" );
+      pass = ssh_rand_str( length:7 + i, charset:"ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz" );
+    }
+
+    if( ! soc = open_sock_tcp( port ) ) {
+      sleep( 1 );
+      continue;
+    }
+
+    count++;
+    login = ssh_login( socket:soc, login:user, password:pass, pub:NULL, priv:NULL, passphrase:NULL );
+    close( soc );
+    if( login == 0 )
+      logins++;
+
+    sleep( 1 );
   }
 
-  if( ! soc = open_sock_tcp( port ) ) return;
-  login = ssh_login( socket:soc, login:user, password:pass, pub:NULL, priv:NULL, passphrase:NULL );
-  close( soc );
-  set_kb_item( name:"SSH/" + port + "/broken/random_login/checked", value:TRUE );
+  if( count > 0 )
+    set_kb_item( name:"SSH/" + port + "/broken/random_login/checked", value:TRUE );
 
-  if( login == 0 ) {
+  if( logins > 0 ) {
     set_kb_item( name:"SSH/" + port + "/broken/random_login", value:TRUE );
     return TRUE;
   }
-  return;
+
+  if( count == 0 )
+    return NULL;
+  else
+    return FALSE;
 }
 
 function find_bin( prog_name, sock ) {
