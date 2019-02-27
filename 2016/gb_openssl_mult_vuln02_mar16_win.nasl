@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_mult_vuln02_mar16_win.nasl 12051 2018-10-24 09:14:54Z asteins $
+# $Id: gb_openssl_mult_vuln02_mar16_win.nasl 13898 2019-02-27 08:37:43Z cfischer $
 #
 # OpenSSL Multiple Vulnerabilities -02 Mar16 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807099");
-  script_version("$Revision: 12051 $");
+  script_version("$Revision: 13898 $");
   script_cve_id("CVE-2016-0703", "CVE-2016-0704");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-27 09:37:43 +0100 (Wed, 27 Feb 2019) $");
   script_tag(name:"creation_date", value:"2016-03-03 12:23:09 +0530 (Thu, 03 Mar 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("OpenSSL Multiple Vulnerabilities -02 Mar16 (Windows)");
@@ -66,57 +66,62 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_openssl_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("OpenSSL/installed", "Host/runs_windows");
-  script_require_ports("Services/www", 80);
+  script_dependencies("gb_openssl_detect.nasl", "gb_openssl_detect_win.nasl", "os_detection.nasl");
+  script_mandatory_keys("openssl/detected", "Host/runs_windows");
+
   exit(0);
 }
 
 include("host_details.inc");
 include("version_func.inc");
 
-if(!sslVer = get_app_version(cpe:CPE)){
+if(isnull(port = get_app_port(cpe:CPE)))
   exit(0);
-}
 
-if(sslVer =~ "^(1\.0\.0)")
+if(!infos = get_app_version_and_location(cpe:CPE, port:port, exit_no_version:TRUE))
+  exit(0);
+
+vers = infos['version'];
+path = infos['location'];
+
+if(vers =~ "^1\.0\.0")
 {
-  if(version_is_less(version:sslVer, test_version:"1.0.0r"))
+  if(version_is_less(version:vers, test_version:"1.0.0r"))
   {
     fix = "1.0.0r";
     VULN = TRUE;
   }
 }
 
-else if(sslVer =~ "^(1\.0\.1)")
+else if(vers =~ "^1\.0\.1")
 {
-  if(version_is_less(version:sslVer, test_version:"1.0.1m"))
+  if(version_is_less(version:vers, test_version:"1.0.1m"))
   {
     fix = "1.0.1m";
     VULN = TRUE;
   }
 }
 
-else if(sslVer =~ "^(1\.0\.2)")
+else if(vers =~ "^1\.0\.2")
 {
-  if(version_is_less(version:sslVer, test_version:"1.0.2a"))
+  if(version_is_less(version:vers, test_version:"1.0.2a"))
   {
     fix = "1.0.2a";
     VULN = TRUE;
   }
 }
 
-else if(sslVer =~ "^(0\.*)")
+else if(vers =~ "^(0\.*)")
 {
-  version = eregmatch(pattern:"([0-9.]+)([a-z])?([a-z])?", string:sslVer);
+  version = eregmatch(pattern:"([0-9.]+)([a-z])?([a-z])?", string:vers);
   if( version[1] && version[2]  && version[3]){
-    sslVer = version[1] + "." + version[2] + "." + version[3];
+    vers = version[1] + "." + version[2] + "." + version[3];
   }
   else if(version[0]){
-    sslVer = version[0];
+    vers = version[0];
   }
 
-  if(version_is_less(version:sslVer, test_version:"0.9.8.z.f"))
+  if(version_is_less(version:vers, test_version:"0.9.8.z.f"))
   {
     fix = "0.9.8zf";
     VULN = TRUE;
@@ -125,7 +130,9 @@ else if(sslVer =~ "^(0\.*)")
 
 if(VULN)
 {
-  report = report_fixed_ver(installed_version:sslVer, fixed_version:fix);
-  security_message(data:report);
+  report = report_fixed_ver(installed_version:vers, fixed_version:fix, install_path:path);
+  security_message(port:port, data:report);
   exit(0);
 }
+
+exit(99);

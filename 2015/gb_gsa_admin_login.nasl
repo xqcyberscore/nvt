@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gsa_admin_login.nasl 13659 2019-02-14 08:34:21Z cfischer $
+# $Id: gb_gsa_admin_login.nasl 13891 2019-02-26 16:22:52Z cfischer $
 #
-# GSA Default Admin Credentials
+# Greenbone Security Assistant (GSA) Default Credentials
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -30,28 +30,31 @@ CPE = "cpe:/a:greenbone:greenbone_security_assistant";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105354");
-  script_version("$Revision: 13659 $");
+  script_version("$Revision: 13891 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_name("GSA Default Admin Credentials");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
+  script_name("Greenbone Security Assistant (GSA) Default Credentials");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-26 17:22:52 +0100 (Tue, 26 Feb 2019) $");
   script_tag(name:"creation_date", value:"2015-09-14 14:47:11 +0200 (Mon, 14 Sep 2015)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
   script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
   script_require_ports("Services/www", 80, 443, 9392);
   script_dependencies("gb_gsa_detect.nasl");
-  script_mandatory_keys("gsa/installed");
+  script_mandatory_keys("greenbone_security_assistant/detected");
 
-  script_tag(name:"summary", value:"The remote GSA is prone to a default account authentication bypass vulnerability.");
+  script_tag(name:"summary", value:"The remote Greenbone Security Assistant is installed/configured
+  in a way that it has account(s) with default passwords enabled.");
 
-  script_tag(name:"impact", value:"This issue may be exploited by a remote attacker to gain access to sensitive information or modify system configuration.");
+  script_tag(name:"impact", value:"This issue may be exploited by a remote attacker to gain access
+  to sensitive information or modify system configuration.");
 
   script_tag(name:"vuldetect", value:"Try to login with default credentials.");
 
-  script_tag(name:"insight", value:"It was possible to login with default credentials: admin/admin, sadmin/changeme or admin/openvas");
+  script_tag(name:"insight", value:"It was possible to login with default credentials: admin/admin,
+  sadmin/changeme, observer/observer or admin/openvas");
 
-  script_tag(name:"solution", value:"Change the password.");
+  script_tag(name:"solution", value:"Change the password of the mentioned account(s).");
 
   script_tag(name:"qod_type", value:"exploit");
   script_tag(name:"solution_type", value:"Workaround");
@@ -63,22 +66,30 @@ include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! dir  = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE, service:"www" ) )
+  exit( 0 );
 
-if( dir == "/" ) dir = "";
+if( ! dir  = get_app_location( cpe:CPE, port:port ) )
+  exit( 0 );
+
+if( dir == "/" )
+  dir = "";
+
 url = dir + "/omp";
 
 creds = make_array( "admin",  "admin", # OpenVAS Virtual Appliance
+                    "observer", "observer", # Often used for observer accounts
+                    "webadmin", "webadmin",
                     "sadmin", "changeme", # Docker image from https://github.com/falegk/openvas_pg#usage
                     "admin",  "openvas" ); # Docker image from https://github.com/mikesplain/openvas-docker#usage
 
-host   = http_host_name( port:port );
-vuln   = FALSE;
-report = "It was possible to login using the following credentials:";
+report    = 'It was possible to login using the following credentials (username:password):\n';
 useragent = http_get_user_agent();
-foreach cred( keys( creds ) ) {
+host      = http_host_name( port:port );
 
+foreach username( keys( creds ) ) {
+
+  password = creds[username];
   bound = rand();
 
   post_data = '-----------------------------' + bound + '\r\n' +
@@ -92,11 +103,11 @@ foreach cred( keys( creds ) ) {
               '-----------------------------' + bound + '\r\n' +
               'Content-Disposition: form-data; name="login"\r\n' +
               '\r\n' +
-              cred + '\r\n' +
+              username + '\r\n' +
               '-----------------------------' + bound + '\r\n' +
               'Content-Disposition: form-data; name="password"\r\n' +
               '\r\n' +
-              creds[cred] + '\r\n' +
+              password + '\r\n' +
               '-----------------------------' + bound + '--\r\n';
 
   len = strlen( post_data );
@@ -114,20 +125,22 @@ foreach cred( keys( creds ) ) {
         '\r\n' +
         post_data;
   buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
-
-  if( "HTTP/1.1 303" >!< buf ) continue;
+  if( ! buf || "HTTP/1.1 303" >!< buf )
+    continue;
 
   token = eregmatch( pattern:'token=([^\r\n "]+)', string:buf );
-  if( isnull( token[1] ) ) continue;
+  if( isnull( token[1] ) )
+    continue;
 
   cookie = eregmatch( pattern:'Set-Cookie: ([^\r\n]+)', string:buf );
-  if( isnull( cookie[1] ) ) continue;
+  if( isnull( cookie[1] ) )
+    continue;
 
   url += '?r=1&token=' + token[1];
 
   if( http_vuln_check( port:port, url:url, pattern:">Logged in as<", extra_check:make_list( ">Tasks<", ">Targets<", ">Logout<" ), cookie:cookie[1] ) ) {
-    vuln = TRUE;
-    report += '\n\n' + cred + ":" + creds[cred] + '\n';
+    vuln    = TRUE;
+    report += '\n' + username + ":" + password;
   }
 }
 

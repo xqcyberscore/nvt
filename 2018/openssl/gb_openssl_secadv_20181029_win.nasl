@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_secadv_20181029_win.nasl 13394 2019-02-01 07:36:10Z mmartin $
+# $Id: gb_openssl_secadv_20181029_win.nasl 13898 2019-02-27 08:37:43Z cfischer $
 #
 # OpenSSL: Timing vulnerability in ECDSA signature generation (CVE-2018-0735) (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112409");
-  script_version("$Revision: 13394 $");
+  script_version("$Revision: 13898 $");
   script_cve_id("CVE-2018-0735");
   script_bugtraq_id(105750);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-01 08:36:10 +0100 (Fri, 01 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-27 09:37:43 +0100 (Wed, 27 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-11-01 10:02:33 +0100 (Thu, 01 Nov 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("OpenSSL: Timing vulnerability in ECDSA signature generation (CVE-2018-0735) (Windows)");
@@ -65,9 +65,9 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_openssl_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("OpenSSL/installed", "Host/runs_windows");
-  script_require_ports("Services/www", 80);
+  script_dependencies("gb_openssl_detect.nasl", "gb_openssl_detect_win.nasl", "os_detection.nasl");
+  script_mandatory_keys("openssl/detected", "Host/runs_windows");
+
   exit(0);
 }
 

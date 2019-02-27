@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_secadv_20181112_win.nasl 12880 2018-12-24 07:48:46Z asteins $
+# $Id: gb_openssl_secadv_20181112_win.nasl 13898 2019-02-27 08:37:43Z cfischer $
 #
 # OpenSSL: Microarchitecture timing vulnerability in ECC scalar multiplication (CVE-2018-5407) (Windows)
 #
@@ -29,20 +29,19 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108484");
-  script_version("$Revision: 12880 $");
+  script_version("$Revision: 13898 $");
   script_cve_id("CVE-2018-5407");
   script_bugtraq_id(105897);
   script_tag(name:"cvss_base", value:"1.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-24 08:48:46 +0100 (Mon, 24 Dec 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-27 09:37:43 +0100 (Wed, 27 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-11-22 07:48:19 +0100 (Thu, 22 Nov 2018)");
   script_name("OpenSSL: Microarchitecture timing vulnerability in ECC scalar multiplication (CVE-2018-5407) (Windows)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_openssl_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("OpenSSL/installed", "Host/runs_windows");
-  script_require_ports("Services/www", 80);
+  script_dependencies("gb_openssl_detect.nasl", "gb_openssl_detect_win.nasl", "os_detection.nasl");
+  script_mandatory_keys("openssl/detected", "Host/runs_windows");
 
   script_xref(name:"URL", value:"https://www.openssl.org/news/secadv/20181112.txt");
   script_xref(name:"URL", value:"https://www.openssl.org/news/vulnerabilities.html");

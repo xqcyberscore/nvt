@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_detect_lin.nasl 11279 2018-09-07 09:08:31Z cfischer $
+# $Id: gb_openssl_detect_lin.nasl 13901 2019-02-27 09:33:17Z cfischer $
 #
 # OpenSSL Version Detection (Linux)
 #
@@ -30,12 +30,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800335");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11279 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:08:31 +0200 (Fri, 07 Sep 2018) $");
+  script_version("$Revision: 13901 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-27 10:33:17 +0100 (Wed, 27 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-01-09 13:48:55 +0100 (Fri, 09 Jan 2009)");
   script_tag(name:"cvss_base", value:"0.0");
-  script_tag(name:"qod_type", value:"executable_version");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("OpenSSL Version Detection (Linux)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
@@ -46,8 +45,11 @@ if(description)
 
   script_tag(name:"summary", value:"Detects the installed version of OpenSSL.
 
-The script logs in via ssh, searches for executable 'openssl' and
-queries the found executables via command line option 'version'.");
+  The script logs in via ssh, searches for executable 'openssl' and
+  queries the found executables via command line option 'version'.");
+
+  script_tag(name:"qod_type", value:"executable_version");
+
   exit(0);
 }
 
@@ -57,31 +59,33 @@ include("cpe.inc");
 include("host_details.inc");
 
 sock = ssh_login_or_reuse_connection();
-if(!sock){
+if(!sock)
   exit(0);
-}
 
-paths = find_bin(prog_name:"openssl",sock:sock);
-foreach executableFile (paths)
-{
+paths = find_bin(prog_name:"openssl", sock:sock);
+foreach executableFile(paths) {
+
   executableFile = chomp(executableFile);
-  sslVer = get_bin_version(full_prog_name:executableFile, sock:sock,
-                           version_argv:"version",
-                           ver_pattern:"OpenSSL ([0-9.a-z\-]+)");
-  if(sslVer[1] != NULL)
-  {
-    set_kb_item(name:"OpenSSL/Linux/Ver", value:sslVer[1]);
+  if(!executableFile)
+    continue;
 
-    cpe = build_cpe(value:sslVer[1], exp:"^([0-9.]+[a-z0-9]*)", base:"cpe:/a:openssl:openssl:");
-    if(!isnull(cpe))
-      register_product(cpe:cpe, location:executableFile);
+  vers = get_bin_version(full_prog_name:executableFile, sock:sock, version_argv:"version", ver_pattern:"OpenSSL ([0-9.a-z\-]+)");
+  if(vers[1]) {
 
-    log_message(data: build_detection_report(app:"OpenSSL",
-                                             version: sslVer[1],
-                                             install: executableFile,
-                                             cpe: cpe,
-                                             concluded:sslVer[max_index(sslVer)-1]),
-                port:0);
+    set_kb_item(name:"openssl/detected", value:TRUE);
+    set_kb_item(name:"openssl_or_gnutls/detected", value:TRUE);
+
+    cpe = build_cpe(value:vers[1], exp:"^([0-9.]+[a-z0-9]*)", base:"cpe:/a:openssl:openssl:");
+    if(!cpe)
+      cpe = "cpe:/a:openssl:openssl";
+
+    register_product(cpe:cpe, port:0, location:executableFile, service:"ssh-login");
+
+    log_message(port:0, data:build_detection_report(app:"OpenSSL",
+                                                    version:vers[1],
+                                                    install: executableFile,
+                                                    cpe: cpe,
+                                                    concluded:vers[0]));
 
   }
 }

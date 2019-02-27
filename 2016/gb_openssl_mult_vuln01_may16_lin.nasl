@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_mult_vuln01_may16_lin.nasl 12455 2018-11-21 09:17:27Z cfischer $
+# $Id: gb_openssl_mult_vuln01_may16_lin.nasl 13898 2019-02-27 08:37:43Z cfischer $
 #
 # OpenSSL Multiple Vulnerabilities -01 May16 (Linux)
 #
@@ -29,12 +29,11 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807570");
-  script_version("$Revision: 12455 $");
-  script_cve_id("CVE-2016-2176", "CVE-2016-2109", "CVE-2016-2106", "CVE-2016-2107",
-                "CVE-2016-2105");
+  script_version("$Revision: 13898 $");
+  script_cve_id("CVE-2016-2176", "CVE-2016-2109", "CVE-2016-2106", "CVE-2016-2107", "CVE-2016-2105");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-27 09:37:43 +0100 (Wed, 27 Feb 2019) $");
   script_tag(name:"creation_date", value:"2016-05-02 12:46:24 +0530 (Mon, 02 May 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("OpenSSL Multiple Vulnerabilities -01 May16 (Linux)");
@@ -77,31 +76,36 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_openssl_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("OpenSSL/installed", "Host/runs_unixoide");
-  script_require_ports("Services/www", 80);
+  script_dependencies("gb_openssl_detect.nasl", "gb_openssl_detect_lin.nasl", "os_detection.nasl");
+  script_mandatory_keys("openssl/detected", "Host/runs_unixoide");
+
   exit(0);
 }
 
 include("host_details.inc");
 include("version_func.inc");
 
-if(!sslVer = get_app_version(cpe:CPE)){
+if(isnull(port = get_app_port(cpe:CPE)))
   exit(0);
-}
 
-if(sslVer =~ "^(1\.0\.1)")
+if(!infos = get_app_version_and_location(cpe:CPE, port:port, exit_no_version:TRUE))
+  exit(0);
+
+vers = infos['version'];
+path = infos['location'];
+
+if(vers =~ "^1\.0\.1")
 {
-  if(version_is_less(version:sslVer, test_version:"1.0.1t"))
+  if(version_is_less(version:vers, test_version:"1.0.1t"))
   {
     fix = "1.0.1t";
     VULN = TRUE;
   }
 }
 
-else if(sslVer =~ "^(1\.0\.2)")
+else if(vers =~ "^1\.0\.2")
 {
-  if(version_is_less(version:sslVer, test_version:"1.0.2h"))
+  if(version_is_less(version:vers, test_version:"1.0.2h"))
   {
     fix = "1.0.2h";
     VULN = TRUE;
@@ -110,7 +114,9 @@ else if(sslVer =~ "^(1\.0\.2)")
 
 if(VULN)
 {
-  report = report_fixed_ver(installed_version:sslVer, fixed_version:fix);
-  security_message(data:report);
+  report = report_fixed_ver(installed_version:vers, fixed_version:fix, install_path:path);
+  security_message(port:port, data:report);
   exit(0);
 }
+
+exit(99);

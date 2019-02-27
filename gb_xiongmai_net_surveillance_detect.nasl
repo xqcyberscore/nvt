@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xiongmai_net_surveillance_detect.nasl 11799 2018-10-09 18:44:23Z tpassfeld $
+# $Id: gb_xiongmai_net_surveillance_detect.nasl 13888 2019-02-26 14:37:24Z cfischer $
 #
 # Xiongmai Net Surveillance Remote Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114038");
-  script_version("$Revision: 11799 $");
+  script_version("$Revision: 13888 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-09 20:44:23 +0200 (Tue, 09 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-26 15:37:24 +0100 (Tue, 26 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-10-09 19:01:40 +0200 (Tue, 09 Oct 2018)");
   script_name("Xiongmai Net Surveillance Remote Detection");
   script_category(ACT_GATHER_INFO);
@@ -58,14 +58,15 @@ include("http_keepalive.inc");
 
 port = get_http_port(default: 80);
 
-
 url1 = "/Login.htm";
 res1 = http_get_cache(port: port, item: url1);
 url2 = "/English.js";
 res2 = http_get_cache(port: port, item: url2);
+url3 = "/";
+res3 = http_get_cache(port: port, item: url3);
 
-if("Hash.Cookie('NetSuveillanceWebCookie'" >< res1 && "$('passWordInput').setText(Translate.pswd);" >< res1
-  && 'title:"Digital Video Recorder"' >< res2 && 'MFt:"MainStream"' >< res2) {
+if(("Hash.Cookie('NetSuveillanceWebCookie'" >< res1 && "$('passWordInput').setText(Translate.pswd);" >< res1
+  && 'title:"Digital Video Recorder"' >< res2 && 'MFt:"MainStream"' >< res2) || "<title>NETSurveillance WEB</title>" >< res3) {
 
   #Login required for version detection.
   version = "unknown";
@@ -83,6 +84,7 @@ if("Hash.Cookie('NetSuveillanceWebCookie'" >< res1 && "$('passWordInput').setTex
                           expr: "^([0-9.a-z]+)",
                           insloc: "/",
                           regPort: port,
+                          regService: "www",
                           conclUrl: conclUrl,
                           extra: "Login required for version detection.");
 }

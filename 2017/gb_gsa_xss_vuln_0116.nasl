@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gsa_xss_vuln_0116.nasl 11835 2018-10-11 08:38:49Z mmartin $
+# $Id: gb_gsa_xss_vuln_0116.nasl 13882 2019-02-26 13:07:41Z cfischer $
 #
 # Greenbone Security Assistant 6.0 < 6.0.8 Cross-Site Scripting Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:greenbone:greenbone_security_assistant";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108196");
-  script_version("$Revision: 11835 $");
+  script_version("$Revision: 13882 $");
   script_cve_id("CVE-2016-1926");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:38:49 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-26 14:07:41 +0100 (Tue, 26 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-07-26 13:00:00 +0200 (Wed, 26 Jul 2017)");
   script_name("Greenbone Security Assistant 6.0 < 6.0.8 Cross-Site Scripting Vulnerability");
   script_category(ACT_GATHER_INFO);
@@ -42,7 +42,7 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_gsa_detect.nasl");
   script_require_ports("Services/www", 80, 443, 9392);
-  script_mandatory_keys("gsa/installed");
+  script_mandatory_keys("greenbone_security_assistant/detected");
 
   script_xref(name:"URL", value:"http://openvas.org/OVSA20160113.html");
 
@@ -69,8 +69,11 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! vers = get_app_version( cpe:CPE, port:port ) )
+  exit( 0 );
 
 if( version_in_range( version:vers, test_version:"6.0.0", test_version2:"6.0.7" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"6.0.8" );

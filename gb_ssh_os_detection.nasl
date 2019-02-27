@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ssh_os_detection.nasl 13813 2019-02-21 13:07:21Z cfischer $
+# $Id: gb_ssh_os_detection.nasl 13892 2019-02-26 16:58:03Z cfischer $
 #
 # SSH OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105586");
-  script_version("$Revision: 13813 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-21 14:07:21 +0100 (Thu, 21 Feb 2019) $");
+  script_version("$Revision: 13892 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-26 17:58:03 +0100 (Tue, 26 Feb 2019) $");
   script_tag(name:"creation_date", value:"2016-03-23 14:28:40 +0100 (Wed, 23 Mar 2016)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -442,7 +442,7 @@ else if( eregmatch( string:banner, pattern:"(cisco|FIPS User Access Verification
   exit( 0 );
 }
 
-else if( "SSH-2.0-Sun" >< banner )
+else if( banner =~ "SSH-[0-9.]+-Sun_SSH" )
 {
   register_and_report_os( os:"SunOS", cpe:"cpe:/o:sun:sunos", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
   exit( 0 );

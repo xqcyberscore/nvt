@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service3.nasl 11018 2018-08-17 07:13:05Z cfischer $
+# $Id: find_service3.nasl 13874 2019-02-26 11:51:40Z cfischer $
 #
 # Service Detection with '<xml/>' Request
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108198");
-  script_version("$Revision: 11018 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:13:05 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 13874 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-26 12:51:40 +0100 (Tue, 26 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-07-20 14:08:04 +0200 (Thu, 20 Jul 2017)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -60,14 +60,18 @@ if( ! get_port_state( port ) ) exit( 0 );
 if( ! service_is_unknown( port:port ) ) exit( 0 );
 
 soc = open_sock_tcp( port );
-if( ! soc ) exit( 0 );
+if( ! soc )
+  exit( 0 );
 
-send( socket:soc, data:'<openvas/>\r\n' );
+vt_strings = get_vt_strings();
+
+req = "<" + vt_strings["lowercase"] + "/>";
+send( socket:soc, data:req + '\r\n' );
 r = recv( socket:soc, length:4096 );
 close( soc );
 
 if( ! r ) {
-  debug_print( 'service on port ', port, ' does not answer to "<openvas/>\\r\\n"\n' );
+  debug_print( 'service on port ', port, ' does not answer to "' + req + '\\r\\n"' );
   exit( 0 );
 }
 
@@ -79,14 +83,17 @@ if( '\0' >< r )
 # nb: Zabbix Server is answering with an "OK" here but find_service4.nasl will take the job
 
 if( "oap_response" >< r && "GET_VERSION" >< r ) {
-  register_service( port:port, proto:"openvas-administrator", message:"An OpenVAS Administrator service seems to be running on this port." );
-  log_message( port:port, data:"An OpenVAS Administrator service seems to be running on this port." );
+  register_service( port:port, proto:"oap", message:"A OpenVAS Administrator service supporting the OAP protocol seems to be running on this port." );
+  log_message( port:port, data:"A OpenVAS Administrator service supporting the OAP protocol seems to be running on this port." );
   exit( 0 );
 }
 
+# nb: GMP and OMP services are both still answering with an omp_response only
+# so we only can differ between the protocol based on its version detected by
+# gb_openvas_manager_detect.nasl.
 if( "omp_response" >< r && "GET_VERSION" >< r ) {
-  register_service( port:port, proto:"openvas-manager", message:"An OpenVAS Manager service seems to be running on this port." );
-  log_message( port:port, data:"An OpenVAS Manager service seems to be running on this port." );
+  register_service( port:port, proto:"omp_gmp", message:"A OpenVAS / Greenbone Vulnerability Manager supporting the OMP/GMP protocol seems to be running on this port." );
+  log_message( port:port, data:"A OpenVAS / Greenbone Vulnerability Manager supporting the OMP/GMP protocol seems to be running on this port." );
   exit( 0 );
 }
 

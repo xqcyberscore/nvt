@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: OpenVAS_detect.nasl 10878 2018-08-10 08:52:28Z cfischer $
+# $Id: OpenVAS_detect.nasl 13874 2019-02-26 11:51:40Z cfischer $
 #
 # OpenVAS Scanner Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100076");
-  script_version("$Revision: 10878 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 10:52:28 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 13874 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-26 12:51:40 +0100 (Tue, 26 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-03-24 18:59:36 +0100 (Tue, 24 Mar 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -56,16 +56,20 @@ port = get_unknown_port( default:9391 );
 
 # nb: Set by nessus_detect.nasl if we have hit a service described in the notes below
 # No need to continue here as well...
-if( get_kb_item( "generic_echo_test/" + port + "/failed" ) ) exit( 0 );
+if( get_kb_item( "generic_echo_test/" + port + "/failed" ) )
+  exit( 0 );
 
 # nb: Set by nessus_detect.nasl as well. We don't need to do the same test
 # multiple times...
 if( ! get_kb_item( "generic_echo_test/" + port + "/tested" ) ) {
   soc = open_sock_tcp( port );
-  if( ! soc ) exit( 0 );
+  if( ! soc )
+    exit( 0 );
+
   send( socket:soc, data:string( "TestThis\r\n" ) );
   r = recv_line( socket:soc, length:10 );
   close( soc );
+
   # We don't want to be fooled by echo & the likes
   if( "TestThis" >< r ) {
     set_kb_item( name:"generic_echo_test/" + port + "/failed", value:TRUE );
@@ -78,7 +82,8 @@ set_kb_item( name:"generic_echo_test/" + port + "/tested", value:TRUE );
 foreach protocol( make_list( "1.0", "1.1", "1.2", "2.0" ) ) {
 
   soc = open_sock_tcp( port );
-  if( ! soc ) exit( 0 );
+  if( ! soc )
+    exit( 0 );
 
   req = string( "< OTP/", protocol, " >\n" );
   send( socket:soc, data:req );
@@ -87,15 +92,15 @@ foreach protocol( make_list( "1.0", "1.1", "1.2", "2.0" ) ) {
 
   if( ereg( pattern:"^< OTP/" + protocol + " >$", string:res ) ) {
 
-    set_kb_item( name:"openvas_scanner/installed", value:TRUE );
-    set_kb_item( name:"openvas_framework_component/installed", value:TRUE );
+    set_kb_item( name:"openvas_scanner/detected", value:TRUE );
+    set_kb_item( name:"openvas_gvm/framework_component/detected", value:TRUE );
 
     cpe = "cpe:/a:openvas:openvas_scanner";
     vers = "unknown";
     install = port + "/tcp";
 
-    register_service( port:port, proto:"openvas-scanner" );
-    register_product( cpe:cpe, location:install, port:port );
+    register_service( port:port, proto:"otp" );
+    register_product( cpe:cpe, location:install, port:port, service:"otp" );
 
     log_message( data:build_detection_report( app:"OpenVAS Scanner",
                                               version:vers,

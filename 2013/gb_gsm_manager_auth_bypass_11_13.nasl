@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gsm_manager_auth_bypass_11_13.nasl 13239 2019-01-23 11:32:14Z cfischer $
+# $Id: gb_gsm_manager_auth_bypass_11_13.nasl 13875 2019-02-26 12:00:46Z cfischer $
 #
 # GSM Manager Authentication Bypass
 #
@@ -25,16 +25,17 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/o:greenbone:greenbone_os";
+CPE  = "cpe:/o:greenbone:greenbone_os";
+CPE2 = "cpe:/a:openvas:openvas_manager";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103832");
-  script_version("$Revision: 13239 $");
+  script_version("$Revision: 13875 $");
   script_cve_id("CVE-2013-6765");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-23 12:32:14 +0100 (Wed, 23 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-26 13:00:46 +0100 (Tue, 26 Feb 2019) $");
   script_tag(name:"creation_date", value:"2013-11-08 13:02:55 +0200 (Fri, 08 Nov 2013)");
   script_name("GSM Manager Authentication Bypass");
   script_category(ACT_GATHER_INFO);
@@ -69,30 +70,37 @@ if(description)
 }
 
 include("host_details.inc");
-include( "version_func.inc" );
+include("version_func.inc");
 
-if( ! get_kb_item( "greenbone/gos/detected" ) ) exit( 0 );
+if( ! get_kb_item( "greenbone/gos/detected" ) )
+  exit( 0 );
 
 # public omp enabled
-if( port = get_app_port( cpe:"cpe:/a:openvas:openvas_manager" ) ) {
+if( port = get_app_port( cpe:CPE2, service:"omp_gmp" ) ) {
+
+  if( ! get_app_location( port:port, cpe:CPE2 ) )
+    exit( 0 );
 
   soc = open_sock_tcp( port );
-  if( ! soc ) exit( 0 );
+  if( ! soc )
+    exit( 0 );
 
-  req = '<get_version/><get_targets/>\r\n';
-  send( socket:soc, data:req );
-  ret = recv( socket:soc, length: 1024 );
+  req = "<get_version/><get_targets/>";
+  send( socket:soc, data:req + '\r\n' );
+  res = recv( socket:soc, length:1024 );
   close( soc );
 
-  if( "get_targets_response" >< ret && "target id" >< ret ) {
-    report = 'By sending the request "' + req + '" to the remote OMP service it was possible to bypass the authentication. Response:\n\n' + ret;
+  if( "get_targets_response" >< res && "target id" >< res ) {
+    report = 'By sending the request "' + req + '" to the remote OMP service it was possible to bypass the authentication. Response:\n\n' + res;
     security_message( port:port, data:report );
     exit( 0 );
   }
 # public omp disabled
 } else {
 
-  if( ! vers = get_kb_item( "greenbone/gos/version" ) ) exit( 0 );
+  if( ! vers = get_kb_item( "greenbone/gos/version" ) )
+    exit( 0 );
+
   vers = str_replace( string:vers, find:"-", replace:"." );
 
   if( version_is_less( version:vers, test_version:"2.2.0.20" ) ) {

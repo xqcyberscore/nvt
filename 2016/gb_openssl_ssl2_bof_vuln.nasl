@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_ssl2_bof_vuln.nasl 12313 2018-11-12 08:53:51Z asteins $
+# $Id: gb_openssl_ssl2_bof_vuln.nasl 13898 2019-02-27 08:37:43Z cfischer $
 #
 # OpenSSL SSL2 'KEY_ARG' Buffer Overflow Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810215");
-  script_version("$Revision: 12313 $");
+  script_version("$Revision: 13898 $");
   script_cve_id("CVE-2002-0656");
   script_bugtraq_id(5363);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-27 09:37:43 +0100 (Wed, 27 Feb 2019) $");
   script_tag(name:"creation_date", value:"2016-11-26 18:50:26 +0530 (Sat, 26 Nov 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("OpenSSL SSL2 'KEY_ARG' Buffer Overflow Vulnerability");
@@ -66,30 +66,31 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_openssl_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("OpenSSL/installed", "Host/runs_unixoide");
-  script_require_ports("Services/www", 80);
-  script_xref(name:"URL", value:"https://www.openssl.org");
+  script_dependencies("gb_openssl_detect.nasl", "gb_openssl_detect_lin.nasl", "os_detection.nasl");
+  script_mandatory_keys("openssl/detected", "Host/runs_unixoide");
+
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");
 
-if(!sslPort = get_app_port(cpe:CPE)){
+if(isnull(port = get_app_port(cpe:CPE)))
   exit(0);
-}
 
-if(!sslVer = get_app_version(cpe:CPE, port:sslPort)){
+if(!infos = get_app_version_and_location(cpe:CPE, port:port, exit_no_version:TRUE))
   exit(0);
-}
 
-if(version_is_less(version:sslVer, test_version:"0.9.6e") ||
-   version_is_equal(version:sslVer, test_version:"0.9.7-beta1") ||
-   version_is_equal(version:sslVer, test_version:"0.9.7-beta2"))
+vers = infos['version'];
+path = infos['location'];
+
+if(version_is_less(version:vers, test_version:"0.9.6e") ||
+   version_is_equal(version:vers, test_version:"0.9.7-beta1") ||
+   version_is_equal(version:vers, test_version:"0.9.7-beta2"))
 {
-  report = report_fixed_ver(installed_version:sslVer, fixed_version:"0.9.6e or Appl the Patch");
-  security_message(data:report, port:sslPort);
+  report = report_fixed_ver(installed_version:vers, fixed_version:"0.9.6e", install_path:path);
+  security_message(data:report, port:port);
   exit(0);
 }
+
+exit(99);

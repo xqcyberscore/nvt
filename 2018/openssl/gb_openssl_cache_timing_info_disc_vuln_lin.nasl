@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_cache_timing_info_disc_vuln_lin.nasl 12496 2018-11-23 03:21:34Z ckuersteiner $
+# $Id: gb_openssl_cache_timing_info_disc_vuln_lin.nasl 13898 2019-02-27 08:37:43Z cfischer $
 #
 # OpenSSL: 1.0.2 < 1.0.2p / 1.1.0 < 1.1.0i Multiple Vulnerabilities (Linux)
 #
@@ -29,20 +29,19 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813154");
-  script_version("$Revision: 12496 $");
+  script_version("$Revision: 13898 $");
   script_cve_id("CVE-2018-0732", "CVE-2018-0737");
   script_bugtraq_id(103766, 104442);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 04:21:34 +0100 (Fri, 23 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-27 09:37:43 +0100 (Wed, 27 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-04-23 18:50:10 +0530 (Mon, 23 Apr 2018)");
   script_name("OpenSSL: 1.0.2 < 1.0.2p / 1.1.0 < 1.1.0i Multiple Vulnerabilities (Linux)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_openssl_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("OpenSSL/installed", "Host/runs_unixoide");
-  script_require_ports("Services/www", 80);
+  script_dependencies("gb_openssl_detect.nasl", "gb_openssl_detect_lin.nasl", "os_detection.nasl");
+  script_mandatory_keys("openssl/detected", "Host/runs_unixoide");
 
   script_xref(name:"URL", value:"https://www.openssl.org/news/secadv/20180416.txt");
   script_xref(name:"URL", value:"https://www.openssl.org/news/secadv/20180612.txt");

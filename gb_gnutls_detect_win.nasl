@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gnutls_detect_win.nasl 11279 2018-09-07 09:08:31Z cfischer $
+# $Id: gb_gnutls_detect_win.nasl 13901 2019-02-27 09:33:17Z cfischer $
 #
 # GnuTLS Version Detection (Windows)
 #
@@ -27,24 +27,26 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800916");
-  script_version("$Revision: 11279 $");
+  script_version("$Revision: 13901 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:08:31 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-27 10:33:17 +0100 (Wed, 27 Feb 2019) $");
   script_tag(name:"creation_date", value:"2014-02-03 13:43:16 +0530 (Mon, 03 Feb 2014)");
-  script_tag(name:"qod_type", value:"registry");
   script_name("GnuTLS Version Detection (Windows)");
-
-  script_tag(name:"summary", value:"Detects the installed version of GnuTLS on Windows.
-
-The script logs in via smb, searches for GnuTLS in the registry
-and gets the version from registry.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Product detection");
   script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
+
+  script_tag(name:"summary", value:"Detects the installed version of GnuTLS on Windows.
+
+  The script logs in via smb, searches for GnuTLS in the registry
+  and gets the version from registry.");
+
+  script_tag(name:"qod_type", value:"registry");
+
   exit(0);
 }
 
@@ -58,14 +60,14 @@ if(!osArch){
   exit(0);
 }
 
-## if os is 32 bit iterate over comman path
+## if os is 32 bit iterate over common path
 if("x86" >< osArch){
   key_list = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\";
 }
 
 else if("x64" >< osArch){
- key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\",
-                      "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\");
+  key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\",
+                       "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\");
 }
 
 foreach key (key_list)
@@ -85,14 +87,12 @@ foreach key (key_list)
 
       if(gnuTLSVers)
       {
-        set_kb_item(name:"GnuTLS_or_OpenSSL/Win/Installed", value:TRUE);
-        set_kb_item(name:"GnuTLS/Win/Installed", value:TRUE);
+        set_kb_item(name:"openssl_or_gnutls/detected", value:TRUE);
+        set_kb_item(name:"gnutls/detected", value:TRUE);
         if("x64" >< osArch && "Wow6432Node" >!< key) {
-          set_kb_item(name:"GnuTLS64/Win/Ver", value:gnuTLSVers);
-          register_and_report_cpe( app:"GnuTLS", ver:gnuTLSVers, base:"cpe:/a:gnu:gnutls:x64:", expr:"^([0-9.]+)", insloc:gnuTLSPath );
+          register_and_report_cpe( app:"GnuTLS", ver:gnuTLSVers, base:"cpe:/a:gnu:gnutls:x64:", expr:"^([0-9.]+)", insloc:gnuTLSPath, regPort:0, regService:"smb-login" );
         } else {
-          set_kb_item(name:"GnuTLS/Win/Ver", value:gnuTLSVers);
-          register_and_report_cpe( app:"GnuTLS", ver:gnuTLSVers, base:"cpe:/a:gnu:gnutls:", expr:"^([0-9.]+)", insloc:gnuTLSPath );
+          register_and_report_cpe( app:"GnuTLS", ver:gnuTLSVers, base:"cpe:/a:gnu:gnutls:", expr:"^([0-9.]+)", insloc:gnuTLSPath, regPort:0, regService:"smb-login" );
         }
 
         ## To improve performance by avoiding extra iteration over uninstall path

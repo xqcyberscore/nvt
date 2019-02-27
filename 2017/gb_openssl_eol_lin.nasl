@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_eol_lin.nasl 11874 2018-10-12 11:28:04Z mmartin $
+# $Id: gb_openssl_eol_lin.nasl 13898 2019-02-27 08:37:43Z cfischer $
 #
 # OpenSSL End of Life Detection (Linux)
 #
@@ -25,11 +25,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if( description )
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113018");
-  script_version("$Revision: 11874 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 13898 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-27 09:37:43 +0100 (Wed, 27 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-10-16 13:33:34 +0200 (Mon, 16 Oct 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -44,14 +44,17 @@ if( description )
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_openssl_detect.nasl", "os_detection.nasl");
-  script_require_ports("Services/www", 443);
-  script_mandatory_keys("OpenSSL/installed", "Host/runs_unixoide");
+  script_dependencies("gb_openssl_detect.nasl", "gb_openssl_detect_lin.nasl", "os_detection.nasl");
+  script_mandatory_keys("openssl/detected", "Host/runs_unixoide");
 
-  script_tag(name:"summary", value:"The OpenSSL version on the remote host has reached the end of life and should not be used anymore.");
+  script_tag(name:"summary", value:"The OpenSSL version on the remote host has reached the end of
+  life and should not be used anymore.");
+
   script_tag(name:"impact", value:"An end of life version of OpenSSL is not receiving any security updates from the vendor. Unfixed security vulnerabilities
-    might be leveraged by an attacker to compromise the security of this host.");
+  might be leveraged by an attacker to compromise the security of this host.");
+
   script_tag(name:"solution", value:"Update the OpenSSL version on the remote host to a still supported version.");
+
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_xref(name:"URL", value:"https://www.openssl.org/policies/releasestrat.html");
@@ -61,22 +64,29 @@ if( description )
 
 CPE = "cpe:/a:openssl:openssl";
 
-include( "misc_func.inc" );
-include( "products_eol.inc" );
-include( "version_func.inc" );
-include( "host_details.inc" );
+include("misc_func.inc");
+include("products_eol.inc");
+include("version_func.inc");
+include("host_details.inc");
 
-if( ! port = get_app_port( cpe: CPE ) ) exit( 0 );
-if( ! version = get_app_version( cpe: CPE, port: port ) ) exit( 0 );
+if( isnull( port = get_app_port( cpe:CPE ) ) )
+  exit( 0 );
 
-if( ret = product_reached_eol( cpe: CPE, version: version ) ) {
-  report = build_eol_message( name: "OpenSSL",
-                              cpe: CPE,
-                              version: version,
-                              eol_version: ret["eol_version"],
-                              eol_date: ret["eol_date"],
-                              eol_type: "prod" );
-  security_message( port: port, data: report );
+if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:TRUE ) )
+  exit( 0 );
+
+vers = infos['version'];
+path = infos['location'];
+
+if( ret = product_reached_eol( cpe:CPE, version:vers ) ) {
+  report = build_eol_message( name:"OpenSSL",
+                              cpe:CPE,
+                              version:vers,
+                              location:path,
+                              eol_version:ret["eol_version"],
+                              eol_date:ret["eol_date"],
+                              eol_type:"prod" );
+  security_message( port:port, data:report );
   exit( 0 );
 }
 

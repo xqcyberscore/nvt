@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: cpe.inc 11952 2018-10-18 07:48:36Z cfischer $
+# $Id: cpe.inc 13888 2019-02-26 14:37:24Z cfischer $
 #
 # CPE Support Functions
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 11952 $
+# $Revision: 13888 $
 #
 ###############################################################################
 
@@ -105,7 +105,7 @@ function register_and_report_cpe( app, ver, concluded, cpename, base, expr, insl
   if( ! concluded && ver )
     concluded = ver;
 
-  if( ! ver || ver == "" )
+  if( ! ver || ver == "" || ver == "Unknown" )
     ver = "unknown";
 
   if( ! regProto )
@@ -118,7 +118,7 @@ function register_and_report_cpe( app, ver, concluded, cpename, base, expr, insl
 
   if( ! cpename && base ) {
     cpename = build_cpe( value:ver, exp:expr, base:base );
-    if( ! cpename ) {
+    if( ! cpename || ver == "unknown" ) {
       cpename = ereg_replace( pattern:":$", string:base, replace:"" );
     }
   }

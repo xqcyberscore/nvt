@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_51281.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_openssl_51281.nasl 13898 2019-02-27 08:37:43Z cfischer $
 #
 # OpenSSL Multiple Vulnerabilities
 #
@@ -36,7 +36,7 @@ if (description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 13898 $");
 
   script_name("OpenSSL Multiple Vulnerabilities");
 
@@ -44,44 +44,46 @@ if (description)
   script_xref(name:"URL", value:"http://www.openssl.org");
   script_xref(name:"URL", value:"http://www.openssl.org/news/secadv_20120104.txt");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-27 09:37:43 +0100 (Wed, 27 Feb 2019) $");
   script_tag(name:"creation_date", value:"2012-01-20 11:28:16 +0100 (Fri, 20 Jan 2012)");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
-  script_dependencies("gb_openssl_detect.nasl");
-  script_mandatory_keys("OpenSSL/installed");
-  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
-  script_tag(name:"summary", value:"OpenSSL prone to multiple security vulnerabilities.
+  script_dependencies("gb_openssl_detect.nasl", "gb_openssl_detect_lin.nasl", "gb_openssl_detect_win.nasl");
+  script_mandatory_keys("openssl/detected");
 
-An attacker may leverage these issues to obtain sensitive information,
-cause a denial-of-service condition and perform unauthorized actions.");
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
+
+  script_tag(name:"summary", value:"OpenSSL prone to multiple security vulnerabilities.");
+
+  script_tag(name:"impact", value:"An attacker may leverage these issues to obtain sensitive information,
+  cause a denial-of-service condition and perform unauthorized actions.");
+
   exit(0);
 }
 
 include("host_details.inc");
 include("version_func.inc");
 
-if( ! vers = get_app_version( cpe:CPE ) ) exit(0);
-vers = ereg_replace(string:vers, pattern:"([a-z]$)", replace:".\1");
+if(isnull(port = get_app_port(cpe:CPE)))
+  exit(0);
 
-if(vers =~ "1\.0\.") {
-  if(version_is_less(version:vers, test_version:"1.0.0.f")) {
-    report = 'Installed version: ' + vers + '\n' +
-             'Fixed version:     1.0.0.f';
+if(!infos = get_app_version_and_location(cpe:CPE, port:port, exit_no_version:TRUE))
+  exit(0);
 
-    security_message(port:0, data:report);
-    exit(0);
-  }
+vers = infos['version'];
+path = infos['location'];
+
+if(vers =~ "1\.0\." && version_is_less(version:vers, test_version:"1.0.0f")) {
+  report = report_fixed_ver(installed_version:vers, fixed_version:"1.0.0f", install_path:path);
+  security_message(port:port, data:report);
+  exit(0);
 }
 
-if(vers =~ "0\.9\.") {
-  if(version_is_less(version:vers, test_version:"0.9.8.s")) {
-    report = 'Installed version: ' + vers + '\n' +
-             'Fixed version:     0.9.8.s';
-    security_message(port:0, data:report);
-    exit(0);
-  }
+if(vers =~ "0\.9\." && version_is_less(version:vers, test_version:"0.9.8s")) {
+  report = report_fixed_ver(installed_version:vers, fixed_version:"0.9.8s", install_path:path);
+  security_message(port:port, data:report);
+  exit(0);
 }
 
-exit(0);
+exit(99);

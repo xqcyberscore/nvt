@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_mult_mitm_attack_vuln_feb16_lin.nasl 12149 2018-10-29 10:48:30Z asteins $
+# $Id: gb_openssl_mult_mitm_attack_vuln_feb16_lin.nasl 13898 2019-02-27 08:37:43Z cfischer $
 #
 # OpenSSL Multiple MitM Attack Vulnerabilities (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806676");
-  script_version("$Revision: 12149 $");
+  script_version("$Revision: 13898 $");
   script_cve_id("CVE-2015-3197", "CVE-2015-4000");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-27 09:37:43 +0100 (Wed, 27 Feb 2019) $");
   script_tag(name:"creation_date", value:"2016-02-01 16:38:12 +0530 (Mon, 01 Feb 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("OpenSSL Multiple MitM Attack Vulnerabilities (Linux)");
@@ -46,7 +46,7 @@ if(description)
   script_tag(name:"insight", value:"Multiple flaws found,
 
   - The way malicious SSL/TLS clients could negotiate SSLv2 ciphers that have
-    been disabled on the server.
+  been disabled on the server.
 
   - When a DHE_EXPORT ciphersuite is enabled on a server but not on a client,
   does not properly convey a DHE_EXPORT choice");
@@ -65,31 +65,36 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_openssl_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("OpenSSL/installed", "Host/runs_unixoide");
-  script_require_ports("Services/www", 80);
+  script_dependencies("gb_openssl_detect.nasl", "gb_openssl_detect_lin.nasl", "os_detection.nasl");
+  script_mandatory_keys("openssl/detected", "Host/runs_unixoide");
+
   exit(0);
 }
 
 include("host_details.inc");
 include("version_func.inc");
 
-if(!sslVer = get_app_version(cpe:CPE)){
+if(isnull(port = get_app_port(cpe:CPE)))
   exit(0);
-}
 
-if(sslVer =~ "^(1\.0\.1)")
+if(!infos = get_app_version_and_location(cpe:CPE, port:port, exit_no_version:TRUE))
+  exit(0);
+
+vers = infos['version'];
+path = infos['location'];
+
+if(vers =~ "^1\.0\.1")
 {
-  if(version_is_less(version:sslVer, test_version:"1.0.1r"))
+  if(version_is_less(version:vers, test_version:"1.0.1r"))
   {
     VULN = TRUE;
     fix = "1.0.1r";
   }
 }
 
-else if(sslVer =~ "^(1\.0\.2)")
+else if(vers =~ "^1\.0\.2")
 {
-  if(version_is_less(version:sslVer, test_version:"1.0.2f"))
+  if(version_is_less(version:vers, test_version:"1.0.2f"))
   {
     VULN = TRUE;
     fix = "1.0.2f";
@@ -98,7 +103,9 @@ else if(sslVer =~ "^(1\.0\.2)")
 
 if(VULN)
 {
-  report = report_fixed_ver(installed_version:sslVer, fixed_version:fix);
-  security_message(data:report);
+  report = report_fixed_ver(installed_version:vers, fixed_version:fix, install_path:path);
+  security_message(port:port, data:report);
   exit(0);
 }
+
+exit(99);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_joomla_artforms_mult_vuln.nasl 13230 2019-01-22 15:37:54Z cfischer $
+# $Id: secpod_joomla_artforms_mult_vuln.nasl 13884 2019-02-26 13:35:59Z cfischer $
 #
 # Joomla! ArtForms Component Multiple Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902219");
-  script_version("$Revision: 13230 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-22 16:37:54 +0100 (Tue, 22 Jan 2019) $");
+  script_version("$Revision: 13884 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-26 14:35:59 +0100 (Tue, 26 Feb 2019) $");
   script_tag(name:"creation_date", value:"2010-08-02 12:38:17 +0200 (Mon, 02 Aug 2010)");
   script_bugtraq_id(41457);
   script_cve_id("CVE-2010-2846", "CVE-2010-2848", "CVE-2010-2847");
@@ -45,7 +45,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/14263/");
   script_xref(name:"URL", value:"http://packetstormsecurity.org/1007-exploits/joomlaartforms-sqltraversalxss.txt");
 
-  script_category(ACT_ATTACK);
+  script_category(ACT_MIXED_ATTACK);
   script_copyright("Copyright (C) 2010 SecPod");
   script_family("Web application abuses");
   script_dependencies("joomla_detect.nasl", "os_detection.nasl");

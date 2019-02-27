@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_sec_bypass_vuln.nasl 12629 2018-12-03 15:19:43Z cfischer $
+# $Id: gb_openssl_sec_bypass_vuln.nasl 13899 2019-02-27 09:14:23Z cfischer $
 #
 # libcrypt-openssl-dsa-perl Security Bypass Vulnerability in OpenSSL
 #
@@ -24,28 +24,27 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:openssl:openssl";
+
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800336");
-  script_version("$Revision: 12629 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-03 16:19:43 +0100 (Mon, 03 Dec 2018) $");
+  script_version("$Revision: 13899 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-27 10:14:23 +0100 (Wed, 27 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-01-09 13:48:55 +0100 (Fri, 09 Jan 2009)");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
   script_cve_id("CVE-2009-0129", "CVE-2008-5077");
   script_bugtraq_id(33150);
   script_name("libcrypt-openssl-dsa-perl Security Bypass Vulnerability in OpenSSL");
-  script_xref(name:"URL", value:"http://openwall.com/lists/oss-security/2009/01/12/4");
-  script_xref(name:"URL", value:"http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=511519");
-
-  script_tag(name:"solution_type", value:"VendorFix");
-  script_tag(name:"qod_type", value:"executable_version_unreliable");
-
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_openssl_detect_lin.nasl");
-  script_mandatory_keys("OpenSSL/Linux/Ver");
+  script_dependencies("gb_openssl_detect.nasl", "gb_openssl_detect_lin.nasl", "os_detection.nasl");
+  script_mandatory_keys("openssl/detected", "Host/runs_unixoide");
+
+  script_xref(name:"URL", value:"http://openwall.com/lists/oss-security/2009/01/12/4");
+  script_xref(name:"URL", value:"http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=511519");
 
   script_tag(name:"impact", value:"Successful exploitation will let the attacker spoof the user data with
   malicious DSA signature to gain access to user's sensitive information.");
@@ -60,19 +59,28 @@ if(description)
   script_tag(name:"summary", value:"This host has OpenSSL installed and is prone to security bypass
   vulnerability.");
 
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
+  script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("host_details.inc");
 include("version_func.inc");
 
-sslVer = get_kb_item("OpenSSL/Linux/Ver");
-if(!sslVer){
-  exit(0);
+if( isnull( port = get_app_port( cpe:CPE ) ) )
+  exit( 0 );
+
+if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:TRUE ) )
+  exit( 0 );
+
+vers = infos['version'];
+path = infos['location'];
+
+if( version_is_less( version:vers, test_version:"0.9.8j" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"0.9.8j", install_path:path );
+  security_message( port:port, data:report );
+  exit( 0 );
 }
 
-if(version_is_less(version:sslVer, test_version:"0.9.8j")){
-  report = 'Installed version: ' + sslVer + '\n' +
-           'Fixed version:     0.9.8j';
-  security_message(0, data:report);
-}
+exit( 99 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_OOB_read_security_bypass_vuln_win.nasl 11977 2018-10-19 07:28:56Z mmartin $
+# $Id: gb_openssl_OOB_read_security_bypass_vuln_win.nasl 13898 2019-02-27 08:37:43Z cfischer $
 #
 # OpenSSL 'OOB read' Security Bypass Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811719");
-  script_version("$Revision: 11977 $");
+  script_version("$Revision: 13898 $");
   script_cve_id("CVE-2017-3735");
   script_bugtraq_id(100515);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-27 09:37:43 +0100 (Wed, 27 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-08-31 10:30:25 +0530 (Thu, 31 Aug 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("OpenSSL 'OOB read' Security Bypass Vulnerability (Windows)");
@@ -66,40 +66,42 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_openssl_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("OpenSSL/installed", "Host/runs_windows");
-  script_require_ports("Services/www", 80);
+  script_dependencies("gb_openssl_detect.nasl", "gb_openssl_detect_win.nasl", "os_detection.nasl");
+  script_mandatory_keys("openssl/detected", "Host/runs_windows");
+
   exit(0);
 }
 
 include("host_details.inc");
 include("version_func.inc");
 
-if(!sslPort = get_app_port(cpe:CPE)){
+if(isnull(port = get_app_port(cpe:CPE)))
   exit(0);
-}
 
-if(!sslVer = get_app_version(cpe:CPE, port:sslPort)){
+if(!infos = get_app_version_and_location(cpe:CPE, port:port, exit_no_version:TRUE))
   exit(0);
-}
+
+vers = infos['version'];
+path = infos['location'];
 
 ##https://www.openssl.org/news/vulnerabilities.html#y2017
-if(sslVer =~ "^(1\.1\.0)" && version_is_less_equal(version:sslVer, test_version:"1.1.0f")){
+if(vers =~ "^1\.1\.0" && version_is_less_equal(version:vers, test_version:"1.1.0f")){
   fix = "1.1.0g-dev";
 }
 
-else if(sslVer =~ "^(1\.0\.2)" && version_is_less_equal(version:sslVer, test_version:"1.0.2l")){
+else if(vers =~ "^1\.0\.2" && version_is_less_equal(version:vers, test_version:"1.0.2l")){
   fix = "1.0.2m-dev";
 }
 
-else if(sslVer =~ "^(1\.0\.1)" || sslVer =~ "^(1\.0\.0)" || sslVer =~ "^(0\.9\.8)") {
+else if(vers =~ "^1\.0\.1" || vers =~ "^1\.0\.0" || vers =~ "^0\.9\.8") {
   fix = "1.1.0g-dev or 1.0.2m-dev";
 }
 
 if(fix)
 {
-  report = report_fixed_ver(installed_version:sslVer, fixed_version:fix);
-  security_message(port:sslPort, data:report);
+  report = report_fixed_ver(installed_version:vers, fixed_version:fix, install_path:path);
+  security_message(port:port, data:report);
   exit(0);
 }
-exit(0);
+
+exit(99);

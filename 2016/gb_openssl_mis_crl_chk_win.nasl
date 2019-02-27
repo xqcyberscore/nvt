@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_mis_crl_chk_win.nasl 11614 2018-09-26 07:39:28Z asteins $
+# $Id: gb_openssl_mis_crl_chk_win.nasl 13898 2019-02-27 08:37:43Z cfischer $
 # OpenSSL Missing CRL sanity check Vulnerability (Windows)
 #
 # Authors:
@@ -28,10 +28,10 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107057");
-  script_version("$Revision: 11614 $");
+  script_version("$Revision: 13898 $");
   script_cve_id("CVE-2016-7052");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-27 09:37:43 +0100 (Wed, 27 Feb 2019) $");
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"creation_date", value:"2016-09-26 06:40:16 +0200 (Mon, 26 Sep 2016)");
   script_tag(name:"cvss_base", value:"5.0");
@@ -43,15 +43,20 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Denial of Service");
-  script_dependencies("gb_openssl_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("OpenSSL/installed", "Host/runs_windows");
-  script_require_ports("Services/www", 80);
+  script_dependencies("gb_openssl_detect.nasl", "gb_openssl_detect_win.nasl", "os_detection.nasl");
+  script_mandatory_keys("openssl/detected", "Host/runs_windows");
 
   script_tag(name:"summary", value:"This host is running OpenSSL and is prone to a denial of service vulnerability.");
-  script_tag(name:"insight", value:"OpenSSL suffers from the possibility of DoS attack after a bug fix added to OpenSSL 1.1.0 but was omitted from OpenSSL 1.0.2i causing a null pointer exception when using CRLs in OpenSSL 1.0.2i.");
+
+  script_tag(name:"insight", value:"OpenSSL suffers from the possibility of DoS attack after a bug fix added to OpenSSL
+  1.1.0 but was omitted from OpenSSL 1.0.2i causing a null pointer exception when using CRLs in OpenSSL 1.0.2i.");
+
   script_tag(name:"impact", value:"Successful exploitation could result in a service crash.");
+
   script_tag(name:"affected", value:"OpenSSL 1.0.2i.");
+
   script_tag(name:"solution", value:"OpenSSL 1.0.2i users should upgrade to 1.0.2j.");
+
   script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);
@@ -60,15 +65,19 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-if(!sslVer = get_app_version(cpe:CPE))
-{
+if(isnull(port = get_app_port(cpe:CPE)))
   exit(0);
-}
 
-if(version_is_equal(version:sslVer, test_version:"1.0.2i"))
+if(!infos = get_app_version_and_location(cpe:CPE, port:port, exit_no_version:TRUE))
+  exit(0);
+
+vers = infos['version'];
+path = infos['location'];
+
+if(version_is_equal(version:vers, test_version:"1.0.2i"))
 {
-  report = report_fixed_ver(installed_version:sslVer, fixed_version:"1.0.2j");
-  security_message(data:report);
+  report = report_fixed_ver(installed_version:vers, fixed_version:"1.0.2j", install_path:path);
+  security_message(port:port, data:report);
   exit(0);
 }
 

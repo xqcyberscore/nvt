@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_mult_dos_vuln01_nov15_lin.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_openssl_mult_dos_vuln01_nov15_lin.nasl 13898 2019-02-27 08:37:43Z cfischer $
 #
 # OpenSSL Multiple Denial of Service Vulnerabilities -01 Nov15 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806734");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 13898 $");
   script_cve_id("CVE-2015-0292", "CVE-2014-8176");
   script_bugtraq_id(73228, 75159);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-27 09:37:43 +0100 (Wed, 27 Feb 2019) $");
   script_tag(name:"creation_date", value:"2015-11-24 18:49:30 +0530 (Tue, 24 Nov 2015)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("OpenSSL Multiple Denial of Service Vulnerabilities -01 Nov15 (Linux)");
@@ -68,49 +68,54 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_openssl_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("OpenSSL/installed", "Host/runs_unixoide");
-  script_require_ports("Services/www", 80);
+  script_dependencies("gb_openssl_detect.nasl", "gb_openssl_detect_lin.nasl", "os_detection.nasl");
+  script_mandatory_keys("openssl/detected", "Host/runs_unixoide");
+
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");
 
-if(!sslVer = get_app_version(cpe:CPE)){
+if(isnull(port = get_app_port(cpe:CPE)))
   exit(0);
-}
 
-if(sslVer =~ "^(0\.9\.8)")
+if(!infos = get_app_version_and_location(cpe:CPE, port:port, exit_no_version:TRUE))
+  exit(0);
+
+vers = infos['version'];
+path = infos['location'];
+
+if(vers =~ "^0\.9\.8")
 {
-  if(version_is_less(version:sslVer, test_version:"0.9.8za"))
+  if(version_is_less(version:vers, test_version:"0.9.8za"))
   {
     fix = "0.9.8za";
     VULN = TRUE;
   }
 }
-else if(sslVer =~ "^(1\.0\.0)")
+else if(vers =~ "^1\.0\.0")
 {
-  if(version_is_less(version:sslVer, test_version:"1.0.0m"))
+  if(version_is_less(version:vers, test_version:"1.0.0m"))
   {
     fix = "1.0.0m";
     VULN = TRUE;
   }
 }
-else if(sslVer =~ "^(1\.0\.1)")
+else if(vers =~ "^1\.0\.1")
 {
-  if(version_is_less(version:sslVer, test_version:"1.0.1h"))
+  if(version_is_less(version:vers, test_version:"1.0.1h"))
   {
     fix = "1.0.1h";
     VULN = TRUE;
   }
 }
+
 if(VULN)
 {
-  report = 'Installed version: ' + sslVer + '\n' +
-           'Fixed version:    ' + fix + '\n';
-
-  security_message(data:report);
+  report = report_fixed_ver(installed_version:vers, fixed_version:fix, install_path:path);
+  security_message(port:port, data:report);
   exit(0);
 }
+
+exit(99);

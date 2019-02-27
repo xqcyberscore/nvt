@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gsa_detect.nasl 13811 2019-02-21 11:07:30Z cfischer $
+# $Id: gb_gsa_detect.nasl 13882 2019-02-26 13:07:41Z cfischer $
 #
-# Greenbone Security Assistant Detection
+# Greenbone Security Assistant (GSA) Detection
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -28,12 +28,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103841");
-  script_version("$Revision: 13811 $");
+  script_version("$Revision: 13882 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-21 12:07:30 +0100 (Thu, 21 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-26 14:07:41 +0100 (Tue, 26 Feb 2019) $");
   script_tag(name:"creation_date", value:"2013-11-29 14:30:41 +0100 (Fri, 29 Nov 2013)");
-  script_name("Greenbone Security Assistant Detection");
+  script_name("Greenbone Security Assistant (GSA) Detection");
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
@@ -64,12 +64,12 @@ if( buf =~ "^HTTP/1\.[01] 200" && "Greenbone Security Assistant" >< buf ) {
   install = "/";
   vers    = "unknown";
   version = eregmatch( string:buf, pattern:'<span class="version">Version ([^<]+)</span>', icase:FALSE );
-  if( ! isnull( version[1] ) ) vers = version[1];
+  if( ! isnull( version[1] ) )
+    vers = version[1];
 
-  set_kb_item( name:"gsa/installed", value:TRUE );
-  set_kb_item( name:"gsa/" + port + "/version", value:vers );
-  set_kb_item( name:"gsa_or_gsa_ng/" + port + "/detected", value:TRUE );
-  set_kb_item( name:"openvas_framework_component/installed", value:TRUE );
+  set_kb_item( name:"greenbone_security_assistant/detected", value:TRUE );
+  set_kb_item( name:"greenbone_security_assistant/" + port + "/version", value:vers );
+  set_kb_item( name:"openvas_gvm/framework_component/detected", value:TRUE );
 
   # nb: To tell can_host_asp and can_host_php from http_func that the service doesn't support these
   replace_kb_item( name:"www/" + port + "/can_host_php", value:"no" );
@@ -92,26 +92,25 @@ if( buf =~ "^HTTP/1\.[01] 200" && "Greenbone Security Assistant" >< buf ) {
 url = "/login";
 buf = http_get_cache( item:url, port:port );
 
-if( buf =~ "^HTTP/1\.[01] 200" && "<title>Greenbone Security Assistant NG</title>" >< buf ) {
+if( buf =~ "^HTTP/1\.[01] 200" && "<title>Greenbone Security Assistant</title>" >< buf ) {
 
   install = "/";
   vers    = "unknown";
 
-  set_kb_item( name:"gsa_ng/installed", value:TRUE );
-  set_kb_item( name:"gsa_ng/" + port + "/version", value:vers );
-  set_kb_item( name:"gsa_or_gsa_ng/" + port + "/detected", value:TRUE );
-  set_kb_item( name:"openvas_components/installed", value:TRUE );
+  set_kb_item( name:"greenbone_security_assistant/detected", value:TRUE );
+  set_kb_item( name:"greenbone_security_assistant/" + port + "/version", value:vers );
+  set_kb_item( name:"openvas_gvm/framework_component/detected", value:TRUE );
 
   # nb: To tell can_host_asp and can_host_php from http_func that the service doesn't support these
   replace_kb_item( name:"www/" + port + "/can_host_php", value:FALSE );
   replace_kb_item( name:"www/" + port + "/can_host_asp", value:FALSE );
 
-  cpe = build_cpe( value:vers, exp:"^([0-9.-]+)", base:"cpe:/a:greenbone:greenbone_security_assistant_ng:" );
+  cpe = build_cpe( value:vers, exp:"^([0-9.-]+)", base:"cpe:/a:greenbone:greenbone_security_assistant:" );
   if( ! cpe )
-    cpe = "cpe:/a:greenbone:greenbone_security_assistant_ng";
+    cpe = "cpe:/a:greenbone:greenbone_security_assistant";
 
   register_product( cpe:cpe, location:install, port:port, service:"www" );
-  log_message( data:build_detection_report( app:"Greenbone Security Assistant NG",
+  log_message( data:build_detection_report( app:"Greenbone Security Assistant",
                                             version:vers,
                                             install:install,
                                             cpe:cpe ),

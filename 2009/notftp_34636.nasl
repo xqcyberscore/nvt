@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: notftp_34636.nasl 13865 2019-02-26 07:43:10Z ckuersteiner $
+# $Id: notftp_34636.nasl 13886 2019-02-26 13:43:01Z cfischer $
 #
 # NotFTP 'config.php' Local File Include Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:wonko:notftp";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100161");
-  script_version("$Revision: 13865 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-26 08:43:10 +0100 (Tue, 26 Feb 2019) $");
+  script_version("$Revision: 13886 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-26 14:43:01 +0100 (Tue, 26 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-04-24 20:04:08 +0200 (Fri, 24 Apr 2009)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -43,16 +43,16 @@ if (description)
   script_tag(name:"qod_type", value:"remote_banner");
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
-  script_dependencies("notftp_detect.nasl");
+  script_dependencies("notftp_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("notftp/detected");
 
   script_tag(name:"summary", value:"NotFTP is prone to a local file-include vulnerability because it
-  fails to properly sanitize user-supplied input.
+  fails to properly sanitize user-supplied input.");
 
-  An attacker can exploit this vulnerability to view and execute arbitrary local files in the context of the
-  webserver process. This may aid in further attacks.
+  script_tag(name:"impact", value:"An attacker can exploit this vulnerability to view and execute arbitrary
+  local files in the context of the webserver process. This may aid in further attacks.");
 
-  NotFTP 1.3.1 is vulnerable, other versions may also be affected.");
+  script_tag(name:"affected", value:"NotFTP 1.3.1 is vulnerable, other versions may also be affected.");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/34636");
 
@@ -89,7 +89,7 @@ if (version = get_app_version(cpe: CPE, port: port)) {
 
   foreach file (keys(files)) {
     url = dir + "/config.php?newlang=kacper&languages[kacper][file]=../../../../../../../../" + files[file];
-    if (http_vuln_check(port: port, url: url, pattern: file, check_header: TRUE, debug: TRUE)) {
+    if (http_vuln_check(port: port, url: url, pattern: file, check_header: TRUE )) {
       report = report_vuln_url(port: port, url: url);
       security_message(port: port, data: report);
       exit(0);

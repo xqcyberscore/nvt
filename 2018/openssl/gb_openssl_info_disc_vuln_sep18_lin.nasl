@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_info_disc_vuln_sep18_lin.nasl 13209 2019-01-22 08:11:01Z mmartin $
+# $Id: gb_openssl_info_disc_vuln_sep18_lin.nasl 13898 2019-02-27 08:37:43Z cfischer $
 #
 # OpenSSL: Information Disclosure Vulnerability (CVE-2016-7056) (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813794");
-  script_version("$Revision: 13209 $");
+  script_version("$Revision: 13898 $");
   script_cve_id("CVE-2016-7056");
   script_bugtraq_id(95375);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-22 09:11:01 +0100 (Tue, 22 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-27 09:37:43 +0100 (Wed, 27 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-09-11 11:57:47 +0530 (Tue, 11 Sep 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("OpenSSL: Information Disclosure Vulnerability (CVE-2016-7056) (Linux)");
@@ -68,9 +68,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_openssl_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("OpenSSL/installed", "Host/runs_unixoide");
-  script_require_ports("Services/www", 80);
+  script_dependencies("gb_openssl_detect.nasl", "gb_openssl_detect_lin.nasl", "os_detection.nasl");
+  script_mandatory_keys("openssl/detected", "Host/runs_unixoide");
 
   exit(0);
 }
@@ -90,6 +89,7 @@ sslPath = infos['location'];
 if(version_is_less_equal(version:sslVer, test_version:"1.0.1u")){
   report = report_fixed_ver(installed_version:sslVer, fixed_version:"1.1.0 or 1.0.2", install_path:sslPath);
   security_message(data:report, port:sslPort);
+  exit(0);
 }
 
-exit(0);
+exit(99);

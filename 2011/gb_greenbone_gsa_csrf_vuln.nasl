@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_greenbone_gsa_csrf_vuln.nasl 11987 2018-10-19 11:05:52Z mmartin $
+# $Id: gb_greenbone_gsa_csrf_vuln.nasl 13882 2019-02-26 13:07:41Z cfischer $
 #
 # Greenbone Security Assistant Cross-Site Request Forgery Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:greenbone:greenbone_security_assistant";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801919");
-  script_version("$Revision: 11987 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 13:05:52 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 13882 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-26 14:07:41 +0100 (Tue, 26 Feb 2019) $");
   script_tag(name:"creation_date", value:"2011-04-13 15:50:09 +0200 (Wed, 13 Apr 2011)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -42,16 +42,20 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_gsa_detect.nasl");
   script_require_ports("Services/www", 80, 443, 9392);
-  script_mandatory_keys("gsa/installed");
+  script_mandatory_keys("greenbone_security_assistant/detected");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to conduct cross-site
   request forgery attacks.");
+
   script_tag(name:"affected", value:"Greenbone Security Assistant version prior to 2.0.0.");
+
   script_tag(name:"insight", value:"The application allows users to perform certain actions via HTTP
   requests without performing any validity checks to verify the requests. This
   can be exploited to execute arbitrary commands in OpenVAS Manager by tricking
   a logged in administrative user into visiting a malicious web site.");
+
   script_tag(name:"solution", value:"Update Greenbone Security Assistant to version 2.0.0 or later.");
+
   script_tag(name:"summary", value:"This host is installed with Greenbone Security Assistant and is
   prone to cross-site request forgery vulnerability.");
 
@@ -69,8 +73,11 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! vers = get_app_version( cpe:CPE, port:port ) )
+  exit( 0 );
 
 if( version_is_less( version:vers, test_version:"2.0.0" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"2.0.0" );

@@ -1,11 +1,11 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_use_after_fix_win.nasl 11523 2018-09-21 13:37:35Z asteins $
+# $Id: gb_openssl_use_after_fix_win.nasl 13898 2019-02-27 08:37:43Z cfischer $
 #
 # OpenSSL Use-After-Free Fix Vulnerability (Windows)
 #
 # Authors:
-# Tameem Eissa <tameem.eissa..at..greenbone.net>
+# Tameem Eissa <tameem.eissa@greenbone.net>
 #
 # Copyright:
 # Copyright (c) 2016 Greenbone Networks GmbH
@@ -29,10 +29,9 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107055");
-  script_version("$Revision: 11523 $");
+  script_version("$Revision: 13898 $");
   script_cve_id("CVE-2016-6309");
-
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-27 09:37:43 +0100 (Wed, 27 Feb 2019) $");
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"creation_date", value:"2016-09-26 06:40:16 +0200 (Mon, 26 Sep 2016)");
   script_tag(name:"cvss_base", value:"10.0");
@@ -44,15 +43,20 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_openssl_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("OpenSSL/installed", "Host/runs_windows");
-  script_require_ports("Services/www", 80);
+  script_dependencies("gb_openssl_detect.nasl", "gb_openssl_detect_win.nasl", "os_detection.nasl");
+  script_mandatory_keys("openssl/detected", "Host/runs_windows");
 
   script_tag(name:"summary", value:"This host is running OpenSSL and prone to denial of service or remote code execution vulnerability.");
-  script_tag(name:"insight", value:"OpenSSL suffers from the possibility of Remote Code Execution or DoS attack after a patch applied to fix the 'Use-After-Free' issue which enable attacker to write to the previously freed location.");
+
+  script_tag(name:"insight", value:"OpenSSL suffers from the possibility of Remote Code Execution or DoS attack after a patch applied to fix
+  the 'Use-After-Free' issue which enable attacker to write to the previously freed location.");
+
   script_tag(name:"impact", value:"Successful exploitation could result in service crash or execution of arbitrary code.");
+
   script_tag(name:"affected", value:"OpenSSL 1.1.0a.");
+
   script_tag(name:"solution", value:"OpenSSL 1.1.0 users should upgrade to 1.1.0b.");
+
   script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);
@@ -61,15 +65,19 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-if(!sslVer = get_app_version(cpe:CPE))
-{
+if(isnull(port = get_app_port(cpe:CPE)))
   exit(0);
-}
 
-if(version_is_equal(version:sslVer, test_version:"1.1.0a"))
+if(!infos = get_app_version_and_location(cpe:CPE, port:port, exit_no_version:TRUE))
+  exit(0);
+
+vers = infos['version'];
+path = infos['location'];
+
+if(version_is_equal(version:vers, test_version:"1.1.0a"))
 {
-  report = report_fixed_ver(installed_version:sslVer, fixed_version:"1.1.0b");
-  security_message(data:report);
+  report = report_fixed_ver(installed_version:vers, fixed_version:"1.1.0b", install_path:path);
+  security_message(port:port, data:report);
   exit(0);
 }
 

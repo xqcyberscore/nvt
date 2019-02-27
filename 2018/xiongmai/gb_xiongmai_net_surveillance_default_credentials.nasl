@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xiongmai_net_surveillance_default_credentials.nasl 11882 2018-10-12 13:16:23Z tpassfeld $
+# $Id: gb_xiongmai_net_surveillance_default_credentials.nasl 13888 2019-02-26 14:37:24Z cfischer $
 #
 # Xiongmai Net Surveillance Default Credentials
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114039");
-  script_version("$Revision: 11882 $");
+  script_version("$Revision: 13888 $");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:16:23 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-26 15:37:24 +0100 (Tue, 26 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-10-09 19:58:10 +0200 (Tue, 09 Oct 2018)");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2018 Greenbone Networks GmbH");
@@ -70,18 +70,22 @@ include("misc_func.inc");
 
 CPE = "cpe:/a:xiongmai:net_surveillance";
 
-if(!port = get_app_port(cpe: CPE)) exit(0);
-if(!get_app_location(cpe: CPE, port: port)) exit(0); # nb: Unused but added to have a reference to the Detection-NVT in the GSA
+if(!port = get_app_port(cpe: CPE, service: "www"))
+  exit(0);
+
+if(!get_app_location(cpe: CPE, port: port)) # nb: Unused but added to have a reference to the Detection-NVT in the GSA
+  exit(0);
 
 creds = make_array("admin", "",
                    "default", "tluafed");
 
 url = "/Login.htm";
 
-foreach cred(keys(creds)) {
+foreach username(keys(creds)) {
 
-  auth_cookie = "NetSuveillanceWebCookie=%7B%22username%22%3A%22" + cred + "%22%7D";
-  data = "command=login&username=" + cred + "&password=" + creds[cred];
+  password = creds[username];
+  auth_cookie = "NetSuveillanceWebCookie=%7B%22username%22%3A%22" + username + "%22%7D";
+  data = "command=login&username=" + username + "&password=" + password;
 
   req = http_post_req(port: port,
                       url: url,
@@ -93,17 +97,21 @@ foreach cred(keys(creds)) {
 
   if("var g_SoftWareVersion=" >< res && 'failedinfo="Log in failed!"' >!< res) {
     VULN = TRUE;
-    report += '\nusername: "' + cred + '", password: "' + creds[cred] + '"';
+    if(!password)
+      password = "<no/empty password>";
+    report += '\n' + username + ':' + password;
 
     #var g_SoftWareVersion="V4.02.R11.34500140.12001.131600.00000"
     ver = eregmatch(pattern: 'g_SoftWareVersion="V([0-9.a-zA-Z]+)"', string: res);
-    if(!isnull(ver[1])) set_kb_item(name: "xiongmai/net_surveillance/version", value: ver[1]);
+    if(!isnull(ver[1]))
+      set_kb_item(name: "xiongmai/net_surveillance/version", value: ver[1]);
   }
 }
 
 if(VULN) {
-  report = "It was possible to login with the following default credentials: " + report;
+  report = 'It was possible to login with the following default credentials (username:password):\n' + report;
   security_message(port: port, data: report);
   exit(0);
 }
+
 exit(99);

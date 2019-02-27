@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dir_detect.nasl 12591 2018-11-30 08:08:40Z cfischer $
+# $Id: gb_dlink_dir_detect.nasl 13878 2019-02-26 12:22:09Z jschulte $
 #
 # D-Link DIR Devices Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103689");
-  script_version("$Revision: 12591 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-30 09:08:40 +0100 (Fri, 30 Nov 2018) $");
+  script_version("$Revision: 13878 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-26 13:22:09 +0100 (Tue, 26 Feb 2019) $");
   script_tag(name:"creation_date", value:"2013-04-08 13:52:56 +0200 (Mon, 08 Apr 2013)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -75,13 +75,13 @@ install    = "/";
 # Server: Linux, WEBACCESS/1.0, DIR-850L Ver 1.10
 # Server: Linux, HTTP/1.1, DIR-629 Ver 1.01CN
 # Server: Linux, HTTP/1.1, DIR-600 Ver 2.17
-if( _banner = egrep( string:banner, pattern:"Server: Linux, (HTTP/1\.1|WEBACCESS/1\.0), DIR-[0-9]+[^ ]++ Ver", icase:TRUE ) ) {
+if( _banner = egrep( string:banner, pattern:"(Server: Linux, (HTTP/1\.1|WEBACCESS/1\.0), DIR-[0-9]+[^ ]++ Ver|DIR-[0-9]+ web server)", icase:TRUE ) ) {
 
   detected = TRUE;
   _banner = chomp( _banner );
   fw_concluded = _banner;
 
-  mo = eregmatch( pattern:", DIR-([^ ]+)", string:_banner );
+  mo = eregmatch( pattern:" DIR-([0-9]+[^ ]*)", string:_banner );
   if( mo[1] ) {
     model = mo[1];
     os_app += "-" + model + " Firmware";

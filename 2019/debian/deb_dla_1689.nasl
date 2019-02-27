@@ -21,12 +21,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891689");
-  script_version("$Revision: 13860 $");
+  script_version("$Revision: 13883 $");
   script_cve_id("CVE-2017-7608", "CVE-2017-7610", "CVE-2017-7611", "CVE-2017-7612", "CVE-2017-7613",
                 "CVE-2018-16062", "CVE-2018-18310", "CVE-2018-18520", "CVE-2018-18521", "CVE-2019-7149",
                 "CVE-2019-7150", "CVE-2019-7665");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1689-1] elfutils security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-26 07:51:41 +0100 (Tue, 26 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-26 14:15:50 +0100 (Tue, 26 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-02-26 00:00:00 +0100 (Tue, 26 Feb 2019)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -40,7 +40,7 @@ if(description)
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8\.[0-9]+");
   script_tag(name:"affected", value:"elfutils on Debian Linux");
   script_tag(name:"insight", value:"Elfutils is a collection of utilities, including eu-ld (a linker),
 eu-nm (for listing symbols from object files), eu-size (for listing the

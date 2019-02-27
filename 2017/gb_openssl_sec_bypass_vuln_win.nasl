@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_sec_bypass_vuln_win.nasl 11900 2018-10-15 07:44:31Z mmartin $
+# $Id: gb_openssl_sec_bypass_vuln_win.nasl 13898 2019-02-27 08:37:43Z cfischer $
 #
 # OpenSSL Security Bypass Vulnerability - DEC 2017 (Windows)
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107268");
-  script_version("$Revision: 11900 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 09:44:31 +0200 (Mon, 15 Oct 2018) $");
+  script_version("$Revision: 13898 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-27 09:37:43 +0100 (Wed, 27 Feb 2019) $");
   script_tag(name:"creation_date", value:"2017-12-08 12:22:37 +0100 (Fri, 08 Dec 2017)");
   script_cve_id("CVE-2017-3737");
   script_bugtraq_id(102103);
@@ -59,12 +59,9 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
-
   script_family("General");
-
-  script_dependencies("gb_openssl_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("OpenSSL/installed", "Host/runs_windows");
-  script_require_ports("Services/www", 80);
+  script_dependencies("gb_openssl_detect.nasl", "gb_openssl_detect_win.nasl", "os_detection.nasl");
+  script_mandatory_keys("openssl/detected", "Host/runs_windows");
 
   exit(0);
 }
@@ -72,23 +69,23 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-if(!Port = get_app_port(cpe: CPE)){
+if(isnull(port = get_app_port(cpe:CPE)))
   exit(0);
-}
 
-if(!Ver = get_app_version(cpe: CPE, port: Port)){
+if(!infos = get_app_version_and_location(cpe:CPE, port:port, exit_no_version:TRUE))
   exit(0);
-}
 
-if (Ver =~ "^(1\.0\.2)")
+vers = infos['version'];
+path = infos['location'];
+
+if (vers =~ "^(1\.0\.2)")
 {
-  if(version_in_range(version: Ver, test_version: "1.0.2b", test_version2: "1.0.2m"))
+  if(version_in_range(version:vers, test_version:"1.0.2b", test_version2:"1.0.2m"))
   {
-    report =  report_fixed_ver(installed_version: Ver, fixed_version: "1.0.2n");
-    security_message(data: report, port: Port);
+    report = report_fixed_ver(installed_version:vers, fixed_version:"1.0.2n", install_path:path);
+    security_message(port:port, data:report);
     exit(0);
   }
 }
 
-exit (99);
-
+exit(99);

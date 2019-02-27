@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_42306.nasl 12653 2018-12-04 15:31:25Z cfischer $
+# $Id: gb_openssl_42306.nasl 13898 2019-02-27 08:37:43Z cfischer $
 #
 # OpenSSL 'ssl3_get_key_exchange()' Use-After-Free Memory Corruption Vulnerability
 #
@@ -26,11 +26,11 @@
 
 CPE = "cpe:/a:openssl:openssl";
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100751");
-  script_version("$Revision: 12653 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-04 16:31:25 +0100 (Tue, 04 Dec 2018) $");
+  script_version("$Revision: 13898 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-27 09:37:43 +0100 (Wed, 27 Feb 2019) $");
   script_tag(name:"creation_date", value:"2010-08-10 14:55:08 +0200 (Tue, 10 Aug 2010)");
   script_bugtraq_id(42306);
   script_cve_id("CVE-2010-2939");
@@ -49,8 +49,8 @@ if (description)
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
-  script_dependencies("gb_openssl_detect.nasl");
-  script_mandatory_keys("OpenSSL/installed");
+  script_dependencies("gb_openssl_detect.nasl", "gb_openssl_detect_lin.nasl", "gb_openssl_detect_win.nasl");
+  script_mandatory_keys("openssl/detected");
 
   script_tag(name:"summary", value:"OpenSSL is prone to a remote memory-corruption vulnerability.");
 
@@ -63,19 +63,22 @@ if (description)
   exit(0);
 }
 
-include("version_func.inc");
 include("host_details.inc");
+include("version_func.inc");
 
-if( ! vers = get_app_version( cpe:CPE ) ) exit(0);
+if(isnull(port = get_app_port(cpe:CPE)))
+  exit(0);
 
-vers = ereg_replace(string:vers, pattern:"([a-z]$)", replace:".\1");
+if(!infos = get_app_version_and_location(cpe:CPE, port:port, exit_no_version:TRUE))
+  exit(0);
 
-if(!isnull(vers)) {
+vers = infos['version'];
+path = infos['location'];
 
-  if(version_is_equal(version: vers, test_version: "1.0.0.a")) {
-    security_message(port:0);
-    exit(0);
-  }
+if(version_is_equal(version:vers, test_version:"1.0.0a")) {
+  report = report_fixed_ver(installed_version:vers, fixed_version:"None", install_path:path);
+  security_message(port:port, data:report);
+  exit(0);
 }
 
-exit(0);
+exit(99);

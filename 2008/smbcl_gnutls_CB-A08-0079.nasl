@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: smbcl_gnutls_CB-A08-0079.nasl 12694 2018-12-06 15:28:57Z cfischer $
+# $Id: smbcl_gnutls_CB-A08-0079.nasl 13901 2019-02-27 09:33:17Z cfischer $
 # Description: GnuTLS < 2.2.4 vulnerability (Windows)
 #
 # Authors:
@@ -29,8 +29,8 @@ CPE = "cpe:/a:gnu:gnutls";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.90027");
-  script_version("$Revision: 12694 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-06 16:28:57 +0100 (Thu, 06 Dec 2018) $");
+  script_version("$Revision: 13901 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-27 10:33:17 +0100 (Wed, 27 Feb 2019) $");
   script_tag(name:"creation_date", value:"2008-09-06 20:50:27 +0200 (Sat, 06 Sep 2008)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -38,13 +38,11 @@ if(description)
   script_name("GnuTLS < 2.2.4 vulnerability (Windows)");
 
   script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"registry");
+
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_gnutls_detect_win.nasl");
-  script_mandatory_keys("GnuTLS/Win/Installed");
-
-  script_tag(name:"solution_type", value:"VendorFix");
+  script_mandatory_keys("gnutls/detected");
 
   script_tag(name:"solution", value:"All GnuTLS users should upgrade to the latest version.");
 
@@ -81,19 +79,27 @@ if(description)
   Record Length, which leads to an invalid cipher padding length,
   aka GNUTLS-SA-2008-1-3.");
 
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"registry");
+
   exit(0);
 }
 
 include("host_details.inc");
 include("version_func.inc");
 
-infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+if( isnull( port = get_app_port( cpe:CPE ) ) )
+  exit( 0 );
+
+if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:TRUE ) )
+  exit( 0 );
+
 vers = infos['version'];
 path = infos['location'];
 
 if( version_is_less( version:vers, test_version:"2.2.4" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"2.2.4", install_path:path );
-  security_message( port:0, data:report );
+  security_message( port:port, data:report );
   exit( 0 );
 }
 
