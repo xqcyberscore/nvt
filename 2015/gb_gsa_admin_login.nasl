@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gsa_admin_login.nasl 13891 2019-02-26 16:22:52Z cfischer $
+# $Id: gb_gsa_admin_login.nasl 13912 2019-02-27 15:10:04Z cfischer $
 #
 # Greenbone Security Assistant (GSA) Default Credentials
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:greenbone:greenbone_security_assistant";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105354");
-  script_version("$Revision: 13891 $");
+  script_version("$Revision: 13912 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("Greenbone Security Assistant (GSA) Default Credentials");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-26 17:22:52 +0100 (Tue, 26 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-27 16:10:04 +0100 (Wed, 27 Feb 2019) $");
   script_tag(name:"creation_date", value:"2015-09-14 14:47:11 +0200 (Mon, 14 Sep 2015)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
@@ -78,10 +78,12 @@ if( dir == "/" )
 url = dir + "/omp";
 
 creds = make_array( "admin",  "admin", # OpenVAS Virtual Appliance
-                    "observer", "observer", # Often used for observer accounts
-                    "webadmin", "webadmin",
                     "sadmin", "changeme", # Docker image from https://github.com/falegk/openvas_pg#usage
-                    "admin",  "openvas" ); # Docker image from https://github.com/mikesplain/openvas-docker#usage
+                    "admin",  "openvas", # Docker image from https://github.com/mikesplain/openvas-docker#usage
+                    "observer", "observer", # The ones below might be used from time to time out there.
+                    "webadmin", "webadmin",
+                    "gmp", "gmp",
+                    "omp", "omp" );
 
 report    = 'It was possible to login using the following credentials (username:password):\n';
 useragent = http_get_user_agent();

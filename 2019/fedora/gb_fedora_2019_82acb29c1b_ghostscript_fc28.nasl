@@ -21,13 +21,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875461");
-  script_version("$Revision: 13881 $");
+  script_version("$Revision: 13913 $");
   script_cve_id("CVE-2018-19478", "CVE-2018-19134", "CVE-2018-19477", "CVE-2018-19476",
                 "CVE-2018-19475", "CVE-2018-19409", "CVE-2018-18284", "CVE-2018-18073",
                 "CVE-2018-17961", "CVE-2018-16802", "CVE-2018-10194", "CVE-2018-17183");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-26 14:01:46 +0100 (Tue, 26 Feb 2019) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-27 17:43:39 +0100 (Wed, 27 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-02-18 04:06:48 +0100 (Mon, 18 Feb 2019)");
   script_name("Fedora Update for ghostscript FEDORA-2019-82acb29c1b");
   script_category(ACT_GATHER_INFO);

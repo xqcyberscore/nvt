@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.883007");
-  script_version("$Revision: 13881 $");
+  script_version("$Revision: 13913 $");
   script_cve_id("CVE-2019-3813");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-26 14:01:46 +0100 (Tue, 26 Feb 2019) $");
+  script_tag(name:"cvss_base", value:"5.4");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-27 17:43:39 +0100 (Wed, 27 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-02-10 04:04:18 +0100 (Sun, 10 Feb 2019)");
   script_name("CentOS Update for spice-server CESA-2019:0231 centos7 ");
   script_category(ACT_GATHER_INFO);

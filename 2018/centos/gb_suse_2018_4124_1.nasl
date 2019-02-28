@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id$
+# $Id: gb_suse_2018_4124_1.nasl 13931 2019-02-28 10:58:20Z santu $
 #
 # SuSE Update for phpMyAdmin openSUSE-SU-2018:4124-1 (phpMyAdmin)
 #
@@ -29,11 +29,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852184");
-  script_version("$Revision: 12954 $");
+  script_version("$Revision: 13931 $");
+  script_tag(name:"deprecated", value:TRUE);
   script_cve_id("CVE-2018-19968", "CVE-2018-19969", "CVE-2018-19970");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-07 08:56:42 +0100 (Mon, 07 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-28 11:58:20 +0100 (Thu, 28 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-12-18 07:40:27 +0100 (Tue, 18 Dec 2018)");
   script_name("SuSE Update for phpMyAdmin openSUSE-SU-2018:4124-1 (phpMyAdmin)");
   script_category(ACT_GATHER_INFO);
@@ -46,7 +47,8 @@ if(description)
   script_xref(name:"URL", value:"http://lists.opensuse.org/opensuse-security-announce/2018-12/msg00032.html");
 
   script_tag(name:"summary", value:"The remote host is missing an update for the 'phpMyAdmin'
-  package(s) announced via the openSUSE-SU-2018:4124_1 advisory.");
+  package(s) announced via the openSUSE-SU-2018:4124_1 advisory.
+  This NVT has been replaced by OID: 1.3.6.1.4.1.25623.1.0.814560");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
 
@@ -105,6 +107,7 @@ if(description)
 
   exit(0);
 }
+exit(66); ## This NVT is deprecated as addressed in OID:1.3.6.1.4.1.25623.1.0.814560
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");

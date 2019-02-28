@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postgresql_dos_vuln_oct18_win.nasl 13889 2019-02-26 14:48:53Z cfischer $
+# $Id: gb_postgresql_dos_vuln_oct18_win.nasl 13913 2019-02-27 16:43:39Z cfischer $
 #
 # PostgreSQL 7.4 < 7.4.19, 8.0 < 8.0.15, 8.1 < 8.1.11, 8.2 < 8.2.6 Multiple Vulnerabilities (Windows)
 #
@@ -28,11 +28,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113283");
-  script_version("$Revision: 13889 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-26 15:48:53 +0100 (Tue, 26 Feb 2019) $");
+  script_version("$Revision: 13913 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-27 17:43:39 +0100 (Wed, 27 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-10-30 15:32:24 +0200 (Tue, 30 Oct 2018)");
-  script_tag(name:"cvss_base", value:"4.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

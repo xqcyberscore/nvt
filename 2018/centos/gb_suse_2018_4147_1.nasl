@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id$
+# $Id: gb_suse_2018_4147_1.nasl 13931 2019-02-28 10:58:20Z santu $
 #
 # SuSE Update for qemu openSUSE-SU-2018:4147-1 (qemu)
 #
@@ -29,12 +29,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852186");
-  script_version("$Revision: 12873 $");
+  script_version("$Revision: 13931 $");
+  script_tag(name:"deprecated", value:TRUE);
   script_cve_id("CVE-2018-10839", "CVE-2018-15746", "CVE-2018-17958",
                 "CVE-2018-17962", "CVE-2018-17963", "CVE-2018-18849");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-21 15:42:20 +0100 (Fri, 21 Dec 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-28 11:58:20 +0100 (Thu, 28 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-12-18 07:41:02 +0100 (Tue, 18 Dec 2018)");
   script_name("SuSE Update for qemu openSUSE-SU-2018:4147-1 (qemu)");
   script_category(ACT_GATHER_INFO);
@@ -47,7 +48,8 @@ if(description)
   script_xref(name:"URL", value:"http://lists.opensuse.org/opensuse-security-announce/2018-12/msg00043.html");
 
   script_tag(name:"summary", value:"The remote host is missing an update for the 'qemu'
-  package(s) announced via the openSUSE-SU-2018:4147_1 advisory.");
+  package(s) announced via the openSUSE-SU-2018:4147_1 advisory.
+  This NVT has been replaced by OID: 1.3.6.1.4.1.25623.1.0.814570");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
 
@@ -112,7 +114,7 @@ if(description)
 
   exit(0);
 }
-
+exit(66); ## This NVT is deprecated as addressed in OID: 1.3.6.1.4.1.25623.1.0.814570
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 

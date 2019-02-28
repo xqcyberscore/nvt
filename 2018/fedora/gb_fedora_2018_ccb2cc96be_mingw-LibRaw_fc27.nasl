@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_98684f429b_xen_fc27.nasl 10307 2018-06-25 05:05:34Z asteins $
+# $Id: gb_fedora_2018_ccb2cc96be_mingw-LibRaw_fc27.nasl 13925 2019-02-28 10:02:22Z santu $
 #
-# Fedora Update for xen FEDORA-2018-98684f429b
+# Fedora Update for mingw-LibRaw FEDORA-2018-ccb2cc96be
 #
 # Authors:
 # System Generated Check
@@ -26,26 +26,24 @@
 
 if(description)
 {
-  script_oid("1.3.6.1.4.1.25623.1.0.874580");
-  script_version("$Revision: 10307 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-25 07:05:34 +0200 (Mon, 25 Jun 2018) $");
-  script_tag(name:"creation_date", value:"2018-05-17 05:46:54 +0200 (Thu, 17 May 2018)");
-  script_cve_id("CVE-2018-8897", "CVE-2018-7540", "CVE-2018-7541", "CVE-2018-7542", "CVE-2017-15595", "CVE-2017-17566", "CVE-2017-17563", "CVE-2017-17564", "CVE-2017-17565", "CVE-2017-17044", "CVE-2017-17045", "CVE-2017-15592", "CVE-2017-15597", "CVE-2017-15590", "CVE-2017-15591", "CVE-2017-15589", "CVE-2017-15588", "CVE-2017-15593", "CVE-2017-15594", "CVE-2018-10982", "CVE-2018-10981");
-  script_tag(name:"cvss_base", value:"9.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
+  script_oid("1.3.6.1.4.1.25623.1.0.874581");
+  script_version("$Revision: 13925 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-28 11:02:22 +0100 (Thu, 28 Feb 2019) $");
+  script_tag(name:"creation_date", value:"2018-05-17 05:48:07 +0200 (Thu, 17 May 2018)");
+  script_cve_id("CVE-2018-10529", "CVE-2018-10528");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
-  script_name("Fedora Update for xen FEDORA-2018-98684f429b");
-  script_tag(name:"summary", value:"Check the version of xen");
+  script_name("Fedora Update for mingw-LibRaw FEDORA-2018-ccb2cc96be");
+  script_tag(name:"summary", value:"Check the version of mingw-LibRaw");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"This package contains the XenD daemon and xm command line
-tools, needed to manage virtual machines running under the
-Xen hypervisor
+  script_tag(name:"insight", value:"MinGW Windows LibRaw library.
 ");
-  script_tag(name:"affected", value:"xen on Fedora 27");
+  script_tag(name:"affected", value:"mingw-LibRaw on Fedora 27");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name:"FEDORA", value:"2018-98684f429b");
-  script_xref(name:"URL" , value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/X6OEW7BFEIZGLUN6VOIHINTWV4FXDAXG");
+  script_xref(name:"FEDORA", value:"2018-ccb2cc96be");
+  script_xref(name:"URL" , value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/X5UEBRDFRSPATZCI2WFQKHK62NZA66NF");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -68,7 +66,7 @@ if(release == NULL){
 if(release == "FC27")
 {
 
-  if ((res = isrpmvuln(pkg:"xen", rpm:"xen~4.9.2~3.fc27", rls:"FC27")) != NULL)
+  if ((res = isrpmvuln(pkg:"mingw-LibRaw", rpm:"mingw-LibRaw~0.18.10~1.fc27", rls:"FC27")) != NULL)
   {
     security_message(data:res);
     exit(0);

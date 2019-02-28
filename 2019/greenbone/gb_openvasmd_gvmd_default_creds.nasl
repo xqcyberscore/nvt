@@ -19,10 +19,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108554");
-  script_version("$Revision: 13891 $");
+  script_version("$Revision: 13912 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-26 17:22:52 +0100 (Tue, 26 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-27 16:10:04 +0100 (Wed, 27 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-02-26 13:55:27 +0100 (Tue, 26 Feb 2019)");
   script_name("OpenVAS / Greenbone Vulnerability Manager Default Credentials");
   script_category(ACT_ATTACK);
@@ -57,10 +57,12 @@ cpe_list = make_list( "cpe:/a:openvas:openvas_manager", "cpe:/a:greenbone:greenb
 
 # nb: See gb_gsa_admin_login.nasl
 creds = make_array( "admin",  "admin", # OpenVAS Virtual Appliance
-                    "observer", "observer", # Often used for observer accounts
-                    "webadmin", "webadmin",
                     "sadmin", "changeme", # Docker image from https://github.com/falegk/openvas_pg#usage
-                    "admin",  "openvas" ); # Docker image from https://github.com/mikesplain/openvas-docker#usage
+                    "admin",  "openvas", # Docker image from https://github.com/mikesplain/openvas-docker#usage
+                    "observer", "observer", # The ones below might be used from time to time out there.
+                    "webadmin", "webadmin",
+                    "gmp", "gmp",
+                    "omp", "omp" );
 
 report = 'It was possible to login using the following credentials (username:password:role):\n';
 

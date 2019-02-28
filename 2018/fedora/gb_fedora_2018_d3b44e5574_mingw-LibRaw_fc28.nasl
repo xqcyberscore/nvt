@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_d3b44e5574_mingw-LibRaw_fc28.nasl 10127 2018-06-08 02:54:24Z ckuersteiner $
+# $Id: gb_fedora_2018_d3b44e5574_mingw-LibRaw_fc28.nasl 13925 2019-02-28 10:02:22Z santu $
 #
 # Fedora Update for mingw-LibRaw FEDORA-2018-d3b44e5574
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874579");
-  script_version("$Revision: 10127 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 04:54:24 +0200 (Fri, 08 Jun 2018) $");
+  script_version("$Revision: 13925 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-28 11:02:22 +0100 (Thu, 28 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-05-17 05:46:49 +0200 (Thu, 17 May 2018)");
   script_cve_id("CVE-2018-10529", "CVE-2018-10528");
   script_tag(name:"cvss_base", value:"6.8");

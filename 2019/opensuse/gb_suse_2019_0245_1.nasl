@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852315");
-  script_version("$Revision: 13881 $");
+  script_version("$Revision: 13913 $");
   script_cve_id("CVE-2019-6446");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-26 14:01:46 +0100 (Tue, 26 Feb 2019) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-27 17:43:39 +0100 (Wed, 27 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-02-26 04:11:55 +0100 (Tue, 26 Feb 2019)");
   script_name("SuSE Update for python-numpy openSUSE-SU-2019:0245-1 (python-numpy)");
   script_category(ACT_GATHER_INFO);

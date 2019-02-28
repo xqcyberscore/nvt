@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id$
+# $Id: gb_suse_2018_4174_1.nasl 13931 2019-02-28 10:58:20Z santu $
 #
 # SuSE Update for salt openSUSE-SU-2018:4174-1 (salt)
 #
@@ -29,11 +29,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852196");
-  script_version("$Revision: 13338 $");
+  script_version("$Revision: 13931 $");
+  script_tag(name:"deprecated", value:TRUE);
   script_cve_id("CVE-2018-15750", "CVE-2018-15751");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-29 08:44:39 +0100 (Tue, 29 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-28 11:58:20 +0100 (Thu, 28 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-12-19 10:09:00 +0100 (Wed, 19 Dec 2018)");
   script_name("SuSE Update for salt openSUSE-SU-2018:4174-1 (salt)");
   script_category(ACT_GATHER_INFO);
@@ -46,7 +47,8 @@ if(description)
   script_xref(name:"URL", value:"http://lists.opensuse.org/opensuse-security-announce/2018-12/msg00048.html");
 
   script_tag(name:"summary", value:"The remote host is missing an update for the 'salt'
-  package(s) announced via the openSUSE-SU-2018:4174_1 advisory.");
+  package(s) announced via the openSUSE-SU-2018:4174_1 advisory.
+  This NVT has been replaced by OID:1.3.6.1.4.1.25623.1.0.814576");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
 
@@ -97,7 +99,7 @@ if(description)
 
   exit(0);
 }
-
+exit(66); ## This NVT is deprecated as addressed in OID:1.3.6.1.4.1.25623.1.0.814576
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 

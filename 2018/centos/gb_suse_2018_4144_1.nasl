@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id$
+# $Id: gb_suse_2018_4144_1.nasl 13931 2019-02-28 10:58:20Z santu $
 #
 # SuSE Update for tcpdump openSUSE-SU-2018:4144-1 (tcpdump)
 #
@@ -29,11 +29,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852189");
-  script_version("$Revision: 12889 $");
+  script_version("$Revision: 13931 $");
+  script_tag(name:"deprecated", value:TRUE);
   script_cve_id("CVE-2018-19519");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-28 08:52:20 +0100 (Fri, 28 Dec 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-28 11:58:20 +0100 (Thu, 28 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-12-18 07:41:32 +0100 (Tue, 18 Dec 2018)");
   script_name("SuSE Update for tcpdump openSUSE-SU-2018:4144-1 (tcpdump)");
   script_category(ACT_GATHER_INFO);
@@ -46,7 +47,8 @@ if(description)
   script_xref(name:"URL", value:"http://lists.opensuse.org/opensuse-security-announce/2018-12/msg00042.html");
 
   script_tag(name:"summary", value:"The remote host is missing an update for the 'tcpdump'
-  package(s) announced via the openSUSE-SU-2018:4144_1 advisory.");
+  package(s) announced via the openSUSE-SU-2018:4144_1 advisory.
+  This NVT has been replaced by OID: 1.3.6.1.4.1.25623.1.0.814580");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
 
@@ -81,7 +83,7 @@ if(description)
 
   exit(0);
 }
-
+exit(66); ## This NVT is deprecated as addressed in OID: 1.3.6.1.4.1.25623.1.0.814580
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 

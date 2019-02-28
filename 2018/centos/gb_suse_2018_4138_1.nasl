@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id$
+# $Id: gb_suse_2018_4138_1.nasl 13931 2019-02-28 10:58:20Z santu $
 #
 # SuSE Update for ghostscript openSUSE-SU-2018:4138-1 (ghostscript)
 #
@@ -29,13 +29,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852185");
-  script_version("$Revision: 12880 $");
+  script_version("$Revision: 13931 $");
+  script_tag(name:"deprecated", value:TRUE);
   script_cve_id("CVE-2018-17183", "CVE-2018-17961", "CVE-2018-18073",
                   "CVE-2018-18284", "CVE-2018-19409", "CVE-2018-19475", "CVE-2018-19476",
                 "CVE-2018-19477");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-24 08:48:46 +0100 (Mon, 24 Dec 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-28 11:58:20 +0100 (Thu, 28 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-12-18 07:40:34 +0100 (Tue, 18 Dec 2018)");
   script_name("SuSE Update for ghostscript openSUSE-SU-2018:4138-1 (ghostscript)");
   script_category(ACT_GATHER_INFO);
@@ -48,7 +49,8 @@ if(description)
   script_xref(name:"URL", value:"http://lists.opensuse.org/opensuse-security-announce/2018-12/msg00037.html");
 
   script_tag(name:"summary", value:"The remote host is missing an update for the 'ghostscript'
-  package(s) announced via the openSUSE-SU-2018:4138_1 advisory.");
+  package(s) announced via the openSUSE-SU-2018:4138_1 advisory.
+  This NVT has been replaced by OID:1.3.6.1.4.1.25623.1.0.814565");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
 
@@ -104,7 +106,7 @@ if(description)
 
   exit(0);
 }
-
+exit(66); ## This NVT is deprecated as addressed in OID:1.3.6.1.4.1.25623.1.0.814565
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 

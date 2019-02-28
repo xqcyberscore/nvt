@@ -19,10 +19,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114076");
-  script_version("$Revision: 13887 $");
+  script_version("$Revision: 13906 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-26 15:32:13 +0100 (Tue, 26 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-27 13:16:09 +0100 (Wed, 27 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-02-26 14:56:16 +0100 (Tue, 26 Feb 2019)");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2019 Greenbone Networks GmbH");
@@ -47,7 +47,7 @@ if(description)
 
   script_tag(name:"affected", value:"At least versions M2.1.6.04C014 and before.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 26th February, 2019.
+  script_tag(name:"solution", value:"No known solution is available as of 27th February, 2019.
   Information regarding this issue will be updated once solution details are available.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
@@ -63,24 +63,24 @@ include("http_keepalive.inc");
 
 CPE = "cpe:/h:beward";
 
-if(!info = get_app_port_from_cpe_prefix(cpe: CPE, service: "www")) exit(0);
+if(!info = get_app_port_from_cpe_prefix(cpe: CPE, service: "www"))
+  exit(0);
 
 CPE = info["cpe"];
 port = info["port"];
 
-if(!get_app_location(cpe: CPE, port: port)) exit(0); # nb: Unused but added to have a reference to the Detection-NVT
+if(!get_app_location(cpe: CPE, port: port)) # nb: Unused but added to have a reference to the Detection-NVT
+  exit(0);
 
 url = "/cgi-bin/view/image";
 
 req = http_get_req(port: port, url: url);
-
 res = http_keepalive_send_recv(port: port, data: req);
 
 if("Content-type: image/jpeg" >< res && "Your client does not have permission" >!< res) {
-  report = "It was possible to successfully view an image of the RTSP video stream.";
+  report = report_vuln_url(port: port, url: url);
   security_message(port: port, data: report);
   exit(0);
 }
-
 
 exit(99);

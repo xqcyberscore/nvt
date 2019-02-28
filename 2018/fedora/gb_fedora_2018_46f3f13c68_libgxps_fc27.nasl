@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_9b965c4eed_kubernetes_fc28.nasl 9903 2018-05-18 09:08:09Z asteins $
+# $Id: gb_fedora_2018_46f3f13c68_libgxps_fc27.nasl 13925 2019-02-28 10:02:22Z santu $
 #
-# Fedora Update for kubernetes FEDORA-2018-9b965c4eed
+# Fedora Update for libgxps FEDORA-2018-46f3f13c68
 #
 # Authors:
 # System Generated Check
@@ -26,24 +26,25 @@
 
 if(description)
 {
-  script_oid("1.3.6.1.4.1.25623.1.0.874578");
-  script_version("$Revision: 9903 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 11:08:09 +0200 (Fri, 18 May 2018) $");
-  script_tag(name:"creation_date", value:"2018-05-17 05:46:46 +0200 (Thu, 17 May 2018)");
-  script_cve_id("CVE-2017-1002101");
-  script_tag(name:"cvss_base", value:"5.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:N");
+  script_oid("1.3.6.1.4.1.25623.1.0.874582");
+  script_version("$Revision: 13925 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-28 11:02:22 +0100 (Thu, 28 Feb 2019) $");
+  script_tag(name:"creation_date", value:"2018-05-17 05:48:12 +0200 (Thu, 17 May 2018)");
+  script_cve_id("CVE-2018-10767", "CVE-2018-10733");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
-  script_name("Fedora Update for kubernetes FEDORA-2018-9b965c4eed");
-  script_tag(name:"summary", value:"Check the version of kubernetes");
+  script_name("Fedora Update for libgxps FEDORA-2018-46f3f13c68");
+  script_tag(name:"summary", value:"Check the version of libgxps");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"Container cluster management
+  script_tag(name:"insight", value:"libgxps is a GObject based library for handling and rendering XPS
+documents.
 ");
-  script_tag(name:"affected", value:"kubernetes on Fedora 28");
+  script_tag(name:"affected", value:"libgxps on Fedora 27");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name:"FEDORA", value:"2018-9b965c4eed");
-  script_xref(name:"URL" , value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/E4LDTGBPVVLXXUNX6DEPXT2UMPNPYVBK");
+  script_xref(name:"FEDORA", value:"2018-46f3f13c68");
+  script_xref(name:"URL" , value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/M7KKU5XPBMSRXUESIIAEKYYCP7TFVCWA");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -63,10 +64,10 @@ if(release == NULL){
   exit(0);
 }
 
-if(release == "FC28")
+if(release == "FC27")
 {
 
-  if ((res = isrpmvuln(pkg:"kubernetes", rpm:"kubernetes~1.10.1~0.fc28", rls:"FC28")) != NULL)
+  if ((res = isrpmvuln(pkg:"libgxps", rpm:"libgxps~0.3.0~4.fc27", rls:"FC27")) != NULL)
   {
     security_message(data:res);
     exit(0);

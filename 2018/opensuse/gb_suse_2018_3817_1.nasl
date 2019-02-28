@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3817_1.nasl 13427 2019-02-04 08:52:52Z mmartin $
+# $Id: gb_suse_2018_3817_1.nasl 13919 2019-02-28 08:13:57Z cfischer $
 #
-# SuSE Update for the openSUSE-SU-2018:3817-1 (the)
+# SuSE Update for the openSUSE-SU-2018:3817-1 (Linux Kernel)
 #
 # Authors:
 # System Generated Check
@@ -29,14 +29,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852140");
-  script_version("$Revision: 13427 $");
+  script_version("$Revision: 13919 $");
   script_cve_id("CVE-2018-18281", "CVE-2018-18386", "CVE-2018-18690", "CVE-2018-18710",
                 "CVE-2018-9516", "CVE-2018-10940", "CVE-2018-16658");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-04 09:52:52 +0100 (Mon, 04 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-28 09:13:57 +0100 (Thu, 28 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-11-21 06:04:01 +0100 (Wed, 21 Nov 2018)");
-  script_name("SuSE Update for the openSUSE-SU-2018:3817-1 (the)");
+  script_name("SuSE Update for the openSUSE-SU-2018:3817-1 (Linux Kernel)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
@@ -46,7 +46,7 @@ if(description)
   script_xref(name:"openSUSE-SU", value:"2018:3817_1");
   script_xref(name:"URL", value:"http://lists.opensuse.org/opensuse-security-announce/2018-11/msg00028.html");
 
-  script_tag(name:"summary", value:"The remote host is missing an update for the 'the'
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'Linux Kernel'
   package(s) announced via the openSUSE-SU-2018:3817_1 advisory.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");

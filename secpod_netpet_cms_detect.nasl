@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_netpet_cms_detect.nasl 10913 2018-08-10 15:35:20Z cfischer $
+# $Id: secpod_netpet_cms_detect.nasl 13904 2019-02-27 10:56:59Z cfischer $
 #
 # Netpet CMS Version Detection
 #
@@ -27,16 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902023");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 10913 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:35:20 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 13904 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-27 11:56:59 +0100 (Wed, 27 Feb 2019) $");
   script_tag(name:"creation_date", value:"2010-03-23 15:59:14 +0100 (Tue, 23 Mar 2010)");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("Netpet CMS Version Detection");
   script_tag(name:"cvss_base", value:"0.0");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 SecPod");
   script_family("Product detection");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -48,38 +48,38 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
 port = get_http_port( default:80 );
+if( ! can_host_php( port:port ) )
+  exit( 0 );
 
-if( ! can_host_php( port:port ) ) exit( 0 );
-
-foreach dir( make_list_unique( "/", "/netpet", "/netpet/netpet", cgi_dirs( port:port ) ) ) {
+foreach dir( make_list_unique( "/", "/netpet", cgi_dirs( port:port ) ) ) {
 
   install = dir;
-  if( dir == "/" ) dir = "";
+  if( dir == "/" )
+    dir = "";
 
-  rcvRes = http_get_cache( item: dir + "/index.php", port:port );
+  res = http_get_cache( item:dir + "/index.php", port:port );
 
-  if( rcvRes =~ "HTTP/1.. 200" && "Netpet Content Management System" >< rcvRes ) {
+  if( res =~ "^HTTP/1\.[01] 200" && "Netpet Content Management System" >< res ) {
 
     version = "unknown";
 
-    ver = eregmatch( pattern:" V ([0-9.]+)", string:rcvRes );
-    if( ver[1] != NULL ) version = ver[1];
+    ver = eregmatch( pattern:" V ([0-9.]+)", string:res );
+    if( ver[1] )
+      version = ver[1];
 
-    tmp_version = version + " under " + install;
-    set_kb_item( name:"www/" + port + "/NetpetCMS", value:tmp_version );
+    set_kb_item( name:"netpetcms/detected", value:TRUE );
 
-    cpe = build_cpe( value: version, exp:"^([0-9.]+)", base:"cpe:/a:netpet:netpet_cms:" );
-    if( isnull( cpe ) )
-      cpe = 'cpe:/a:netpet:netpet_cms';
+    cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:netpet:netpet_cms:" );
+    if( ! cpe )
+      cpe = "cpe:/a:netpet:netpet_cms";
 
-    register_product( cpe:cpe, location:install, port:port );
+    register_product( cpe:cpe, location:install, port:port, service:"www" );
 
     log_message( data: build_detection_report( app:"Netpet CMS",
                                                version:version,

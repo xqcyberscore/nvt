@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_openjdk_detect.nasl 12706 2018-12-07 14:02:55Z cfischer $
+# $Id: secpod_openjdk_detect.nasl 13934 2019-02-28 12:02:37Z cfischer $
 #
-# OpenJDK Version Detection
+# Sun/Oracle OpenJDK Version Detection
 #
 # Authors:
 # Sharath S <sharaths@secpod.com>
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900334");
-  script_version("$Revision: 12706 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-07 15:02:55 +0100 (Fri, 07 Dec 2018) $");
+  script_version("$Revision: 13934 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-28 13:02:37 +0100 (Thu, 28 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-05-13 10:01:19 +0200 (Wed, 13 May 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_name("OpenJDK Version Detection");
+  script_name("Sun/Oracle OpenJDK Version Detection");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Product detection");
@@ -53,44 +53,65 @@ include("version_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-SCRIPT_DESC = "OpenJDK Version Detection";
-
 sock = ssh_login_or_reuse_connection();
-if(!sock){
+if(!sock)
   exit(0);
-}
 
 paths = find_bin(prog_name:"java", sock:sock);
-foreach binName (paths)
-{
-  if( chomp(binName) == "" ) continue;
-  ver = get_bin_version(full_prog_name:chomp(binName), version_argv:"-version",
-                        ver_pattern:"OpenJDK.*([0-9]\.[0-9]\.[0-9._]+)-?([b0-9]+)?",
-                        sock:sock);
+foreach binName (paths) {
 
-  dump = ver;
+  binName = chomp(binName);
 
-  if("OpenJDK" >< ver){
-    if((ver[1] && !isnull(ver[2]))){
-      ver = ver[1] + "." + ver[2];
-    }else{
-      ver = ver[1];
+  if(!binName)
+    continue;
+
+  # There are differences in the output of the version between OpenJDK versions, we need to differ between both here:
+  #
+  # java version "1.7.0_171"
+  # OpenJDK Runtime Environment (IcedTea 2.6.13) (7u171-2.6.13-1~deb7u1)
+  # OpenJDK 64-Bit Server VM (build 24.171-b02, mixed mode)
+  #
+  # vs.
+  #
+  # openjdk version "11.0.2" 2019-01-15
+  # OpenJDK Runtime Environment (build 11.0.2+9-Debian-3)
+  # OpenJDK 64-Bit Server VM (build 11.0.2+9-Debian-3, mixed mode, sharing)
+  #
+  # vs.
+  #
+  # openjdk version "1.8.0_131"
+  # OpenJDK Runtime Environment (IcedTea 3.4.0) (suse-10.10.3-x86_64) 
+  # OpenJDK 64-Bit Server VM (build 25.131-b11, mixed mode)
+
+  ver = get_bin_version(full_prog_name:binName, version_argv:"-version", ver_pattern:'(openjdk|java) version "([0-9]\\.[0-9]\\.[0-9._]+)-?([b0-9]+)?.+', sock:sock);
+  if("OpenJDK" >< ver) {
+
+    jvVer    = ereg_replace( pattern:"_|-", string:ver, replace:"." );
+    javaVer1 = eregmatch( pattern:"([0-9]+\.[0-9]+\.[0-9]+)(\.([0-9]+))?", string:jvVer );
+    if( javaVer1[1] && javaVer1[3] ) {
+      jvVer = javaVer1[1] + ":update_" + javaVer1[3];
+    } else if( javaVer1[1] ) {
+      jvVer = javaVer1[1];
+    } else {
+      jvVer = eregmatch( pattern:"([0-9.]+)", string:javaVer[1] );
+      jvVer = jvVer[1];
     }
 
-    if(ver){
-      set_kb_item(name:"OpenJDK/Ver", value:ver);
-      ssh_close_connection();
+    if(jvVer) {
+      if(version_is_less(version:jvVer, test_version:"1.4.2.38" )||
+         version_in_range(version:jvVer, test_version:"1.5", test_version2:"1.5.0.33" )||
+         version_in_range(version:jvVer, test_version:"1.6", test_version2:"1.6.0.18" ) )
+      {
+        app_name = "Sun OpenJDK";
+        base_cpe = "cpe:/a:sun:openjdk:";
+      } else {
+        app_name = "Oracle OpenJDK";
+        base_cpe = "cpe:/a:oracle:openjdk:";
+      }
 
-      cpe = build_cpe(value:ver, exp:"^([0-9.]+)", base:"cpe:/a:sun:openjdk:");
-      if(!isnull(cpe))
-         register_host_detail(name:"App", value:cpe, desc:SCRIPT_DESC);
+      set_kb_item(name:"openjdk/detected", value:TRUE);
 
-      log_message(data:'Detected OpenJDK version: ' + ver +
-        '\nLocation: ' + binName +
-        '\nCPE: '+ cpe +
-        '\n\nConcluded from version identification result:\n' + dump[max_index(dump)-1]);
-
-      exit(0);
+      register_and_report_cpe( app:app_name, ver:jvVer, concluded:ver[0], base:base_cpe, expr:"^([:a-z0-9._]+)", insloc:binName, regPort:0, regService:"ssh-login" );
     }
   }
 }

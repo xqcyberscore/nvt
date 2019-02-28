@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id$
+# $Id: gb_suse_2018_4132_1.nasl 13931 2019-02-28 10:58:20Z santu $
 #
-# SuSE Update for the openSUSE-SU-2018:4132-1 (the)
+# SuSE Update for the openSUSE-SU-2018:4132-1 (Linux Kernel)
 #
 # Authors:
 # System Generated Check
@@ -29,12 +29,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852188");
-  script_version("$Revision: 12873 $");
+  script_version("$Revision: 13931 $");
+  script_tag(name:"deprecated", value:TRUE);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-21 15:42:20 +0100 (Fri, 21 Dec 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-28 11:58:20 +0100 (Thu, 28 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-12-18 07:41:31 +0100 (Tue, 18 Dec 2018)");
-  script_name("SuSE Update for the openSUSE-SU-2018:4132-1 (the)");
+  script_name("SuSE Update for the openSUSE-SU-2018:4132-1 (Linux Kernel)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
@@ -44,8 +45,9 @@ if(description)
   script_xref(name:"openSUSE-SU", value:"2018:4132_1");
   script_xref(name:"URL", value:"http://lists.opensuse.org/opensuse-security-announce/2018-12/msg00034.html");
 
-  script_tag(name:"summary", value:"The remote host is missing an update for the 'the'
-  package(s) announced via the openSUSE-SU-2018:4132_1 advisory.");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'Linux Kernel'
+  package(s) announced via the openSUSE-SU-2018:4132_1 advisory.
+  This NVT has been replaced by OID: 1.3.6.1.4.1.25623.1.0.814561");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
 
@@ -145,7 +147,7 @@ if(description)
 
   exit(0);
 }
-
+exit(66); ## This NVT is deprecated as addressed in OID: 1.3.6.1.4.1.25623.1.0.814561
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 

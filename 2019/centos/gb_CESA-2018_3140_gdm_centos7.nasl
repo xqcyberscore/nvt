@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2018_3140_gdm_centos7.nasl 13881 2019-02-26 13:01:46Z santu $
+# $Id: gb_CESA-2018_3140_gdm_centos7.nasl 13913 2019-02-27 16:43:39Z cfischer $
 #
 # CentOS Update for gdm CESA-2018:3140 centos7
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.883002");
-  script_version("$Revision: 13881 $");
+  script_version("$Revision: 13913 $");
   script_cve_id("CVE-2017-18267", "CVE-2018-10733", "CVE-2018-10767", "CVE-2018-10768", "CVE-2018-12910", "CVE-2018-13988");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-26 14:01:46 +0100 (Tue, 26 Feb 2019) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-27 17:43:39 +0100 (Wed, 27 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-02-02 04:04:31 +0100 (Sat, 02 Feb 2019)");
   script_name("CentOS Update for gdm CESA-2018:3140 centos7 ");
   script_category(ACT_GATHER_INFO);
