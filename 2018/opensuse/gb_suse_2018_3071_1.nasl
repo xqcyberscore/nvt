@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3071_1.nasl 13919 2019-02-28 08:13:57Z cfischer $
+# $Id: gb_suse_2018_3071_1.nasl 13943 2019-02-28 15:28:52Z cfischer $
 #
-# SuSE Update for the openSUSE-SU-2018:3071-1 (Linux Kernel)
+# SuSE Update for the Linux Kernel openSUSE-SU-2018:3071-1 (kernel)
 #
 # Authors:
 # System Generated Check
@@ -29,13 +29,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852091");
-  script_version("$Revision: 13919 $");
+  script_version("$Revision: 13943 $");
   script_cve_id("CVE-2018-10902", "CVE-2018-10938", "CVE-2018-10940", "CVE-2018-1128", "CVE-2018-1129", "CVE-2018-12896", "CVE-2018-13093", "CVE-2018-13094", "CVE-2018-13095", "CVE-2018-14613", "CVE-2018-14617", "CVE-2018-14633", "CVE-2018-15572", "CVE-2018-16658", "CVE-2018-17182", "CVE-2018-6554", "CVE-2018-6555", "CVE-2018-9363");
   script_tag(name:"cvss_base", value:"8.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-28 09:13:57 +0100 (Thu, 28 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-28 16:28:52 +0100 (Thu, 28 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:46:29 +0200 (Fri, 26 Oct 2018)");
-  script_name("SuSE Update for the openSUSE-SU-2018:3071-1 (Linux Kernel)");
+  script_name("SuSE Update for the Linux Kernel openSUSE-SU-2018:3071-1 (kernel)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
@@ -45,7 +45,7 @@ if(description)
   script_xref(name:"openSUSE-SU", value:"2018:3071_1");
   script_xref(name:"URL", value:"http://lists.opensuse.org/opensuse-security-announce/2018-10/msg00020.html");
 
-  script_tag(name:"summary", value:"The remote host is missing an update for the 'Linux Kernel'
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'kernel'
   package(s) announced via the openSUSE-SU-2018:3071_1 advisory.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");

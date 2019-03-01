@@ -21,13 +21,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891693");
-  script_version("$Revision: 13915 $");
+  script_version("$Revision: 13949 $");
   script_cve_id("CVE-2018-20760", "CVE-2018-20761", "CVE-2018-20762", "CVE-2018-20763", "CVE-2018-7752");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1693-1] gpac security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-28 08:03:40 +0100 (Thu, 28 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 08:26:12 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-02-28 00:00:00 +0100 (Thu, 28 Feb 2019)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

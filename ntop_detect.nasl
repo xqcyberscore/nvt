@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ntop_detect.nasl 10929 2018-08-11 11:39:44Z cfischer $
+# $Id: ntop_detect.nasl 13957 2019-03-01 09:46:54Z ckuersteiner $
 #
 # Ntop Detection
 #
@@ -28,11 +28,13 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100256");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 10929 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-11 13:39:44 +0200 (Sat, 11 Aug 2018) $");
+  script_version("$Revision: 13957 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 10:46:54 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-08-23 12:14:46 +0200 (Sun, 23 Aug 2009)");
   script_tag(name:"cvss_base", value:"0.0");
+
   script_name("Ntop Detection");
+
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
@@ -50,9 +52,7 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
-
 include("cpe.inc");
 include("host_details.inc");
 
@@ -66,15 +66,13 @@ if( egrep( pattern:"Server: ntop" , string:buf, icase:TRUE ) ) {
 
   ver = eregmatch(string: buf, pattern: "Server: ntop/([0-9.]+)",icase:TRUE);
 
-  if( ! isnull( ver[1] ) ) {
-    version = chomp( ver[1] );
-  }
+  if( ! isnull( ver[1] ) )
+    version = ver[1];
 
-  set_kb_item( name:"www/" + port + "/ntop", value:version );
   set_kb_item( name:"ntop/installed", value:TRUE );
 
   cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:ntop:ntop:" );
-  if( isnull( cpe ) )
+  if( !cpe )
     cpe = 'cpe:/a:ntop:ntop';
 
   register_product( cpe:cpe, location:install, port:port );
@@ -84,7 +82,7 @@ if( egrep( pattern:"Server: ntop" , string:buf, icase:TRUE ) ) {
                                             install:install,
                                             cpe:cpe,
                                             concluded:ver[0] ),
-                                            port:port );
+               port:port );
 }
 
 exit( 0 );

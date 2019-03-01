@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_1071_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_suse_2015_1071_1.nasl 13941 2019-02-28 14:35:50Z cfischer $
 #
-# SuSE Update for the SUSE-SU-2015:1071-1 (kernel)
+# SuSE Update for the Linux Kernel SUSE-SU-2015:1071-1 (kernel)
 #
 # Authors:
 # System Generated Check
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850926");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 13941 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-28 15:35:50 +0100 (Thu, 28 Feb 2019) $");
   script_tag(name:"creation_date", value:"2015-10-16 14:32:44 +0200 (Fri, 16 Oct 2015)");
   script_cve_id("CVE-2014-3647", "CVE-2014-8086", "CVE-2014-8159", "CVE-2015-1465",
                 "CVE-2015-2041", "CVE-2015-2042", "CVE-2015-2666", "CVE-2015-2830",
@@ -37,8 +37,8 @@ if(description)
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
-  script_name("SuSE Update for the SUSE-SU-2015:1071-1 (kernel)");
-  script_tag(name:"summary", value:"The remote host is missing an update for the 'the kernel'
+  script_name("SuSE Update for the Linux Kernel SUSE-SU-2015:1071-1 (kernel)");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'kernel'
   package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The SUSE Linux Enterprise 12 kernel was updated to version 3.12.43 to

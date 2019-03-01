@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opencart_43325.nasl 13660 2019-02-14 09:48:45Z cfischer $
+# $Id: gb_opencart_43325.nasl 13957 2019-03-01 09:46:54Z ckuersteiner $
 #
 # OpenCart 'fckeditor' Arbitrary File Upload Vulnerability
 #
@@ -24,15 +24,18 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:opencart:opencart";
+
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100816");
-  script_version("$Revision: 13660 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-14 10:48:45 +0100 (Thu, 14 Feb 2019) $");
+  script_version("$Revision: 13957 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 10:46:54 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-09-21 16:24:40 +0200 (Tue, 21 Sep 2010)");
   script_bugtraq_id(43325);
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:P/I:P/A:P");
+
   script_name("OpenCart 'fckeditor' Arbitrary File Upload Vulnerability");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/43325");
@@ -51,7 +54,8 @@ if(description)
   script_tag(name:"impact", value:"An attacker may leverage this issue to upload arbitrary files to the
   affected host. This can result in arbitrary code execution within the context of the vulnerable application.");
 
-  script_tag(name:"affected", value:"OpenCart versions up to 1.3.2 are vulnerable. Other versions may also be affected.");
+  script_tag(name:"affected", value:"OpenCart versions up to 1.3.2 are vulnerable. Other versions may also be
+affected.");
 
   script_tag(name:"solution", value:"Update OpenCart to version 1.3.3 or above. Make sure the directory
   /admin/view/javascript/fckeditor/ is deleted during the update.");
@@ -62,15 +66,21 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
-include("version_func.inc");
 
-port = get_http_port(default:80);
-if(!dir = get_dir_from_kb(port:port, app:"opencart"))exit(0);
+if (!port = get_app_port(cpe: CPE))
+  exit(0);
+
+if (!dir = get_app_location(cpe: CPE, port: port))
+  exit(0);
+
+if (dir == "/")
+  dir = "";
 
 file = string("vt-upload-test-delete-me-",rand(),".php");
-url = string(dir,"/admin/view/javascript/fckeditor/editor/filemanager/connectors/php/connector.php?Command=FileUpload&Type=File&CurrentFolder=%2F");
+url = dir + "/admin/view/javascript/fckeditor/editor/filemanager/connectors/php/connector.php?Command=FileUpload&Type=File&CurrentFolder=%2F";
 
 useragent = http_get_user_agent();
 host = http_host_name( port:port );
@@ -100,7 +110,7 @@ recv = http_keepalive_send_recv(data:req, port:port, bodyonly:TRUE);
 
 if("OnUploadCompleted" >< recv && file >< recv) {
 
-  url = string(dir,"/admin/view/javascript/fckeditor/editor/filemanager/connectors/php/",file);
+  url = dir + "/admin/view/javascript/fckeditor/editor/filemanager/connectors/php/" + file;
   req2 = http_get(item:url, port:port);
   recv = http_keepalive_send_recv(data:req2, port:port, bodyonly:TRUE);
 

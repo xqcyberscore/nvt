@@ -1,14 +1,11 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_isc_dhcp_client_detect.nasl 11279 2018-09-07 09:08:31Z cfischer $
+# $Id: secpod_isc_dhcp_client_detect.nasl 13935 2019-02-28 12:36:38Z cfischer $
 #
 # ISC DHCP Client Version Detection
 #
 # Authors:
 # Antu Sanadi <santu@secpod.com>
-#
-# Updated by: <jan-oliver.wagner@greenbone.net> on 2011-11-22
-# Revised to comply with Change Request #57.
 #
 # Copyright:
 # Copyright (c) 2009 SecPod, http://www.secpod.com
@@ -30,12 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900696");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11279 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:08:31 +0200 (Fri, 07 Sep 2018) $");
+  script_version("$Revision: 13935 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-28 13:36:38 +0100 (Thu, 28 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-07-23 21:05:26 +0200 (Thu, 23 Jul 2009)");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
-  script_tag(name:"qod_type", value:"executable_version");
   script_name("ISC DHCP Client Version Detection");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
@@ -46,8 +42,11 @@ if(description)
 
   script_tag(name:"summary", value:"Detects the installed version of ISC DHCP Client.
 
-The script logs in via ssh, searches for executable 'dhclient' and
-queries the found executables via command line option '--version'.");
+  The script logs in via ssh, searches for executable 'dhclient' and
+  queries the found executables via command line option '--version'.");
+
+  script_tag(name:"qod_type", value:"executable_version");
+
   exit(0);
 }
 
@@ -57,37 +56,32 @@ include("cpe.inc");
 include("host_details.inc");
 
 dhcp_sock = ssh_login_or_reuse_connection();
-if(!dhcp_sock){
+if(!dhcp_sock)
   exit(0);
-}
 
 paths = find_bin(prog_name:"dhclient", sock:dhcp_sock);
-foreach executableFile (paths)
-{
+foreach executableFile (paths) {
+
   executableFile = chomp(executableFile);
-  dhcpVer = get_bin_version(full_prog_name:executableFile,
-              sock:dhcp_sock, version_argv:"--version",
-              ver_pattern:"([0-9.]+)(-| )?((alpha|beta|rc|[a-z][0-9])?([0-9]+)?)");
+  if(!executableFile)
+    continue;
 
-  if(("isc-dhclient" >< dhcpVer) && (dhcpVer[1] != NULL))
-  {
-    if(dhcpVer[3] != NULL){
-      Ver = dhcpVer[1] + "." + dhcpVer[3];
+  dhcpVer = get_bin_version(full_prog_name:executableFile, sock:dhcp_sock, version_argv:"--version", ver_pattern:"isc-dhclient-([0-9.]+)(-| )?((alpha|beta|rc|[a-z][0-9])?([0-9]+)?)");
+  if(dhcpVer[1]) {
+
+    _ver = eregmatch(string:dhcpVer[0], pattern:"([0-9.]+)(-| )?((alpha|beta|rc|[a-z][0-9])?([0-9]+)?)");
+    if(_ver[3]){
+      ver = _ver[1] + "." + _ver[3];
+    } else {
+      ver = _ver[1];
     }
-    else
-      Ver = dhcpVer[1];
 
-    set_kb_item(name:"ISC/DHCP-Client/Ver", value:Ver);
+    set_kb_item(name:"ISC/DHCP-Client/Ver", value:ver);
+    set_kb_item(name:"isc/dhcp-client/detected", value:TRUE);
 
-    cpe = build_cpe(value:Ver, exp:"^([0-9.]+([a-z0-9]+)?)", base:"cpe:/a:isc:dhcp:");
-    if(!isnull(cpe))
-      register_product(cpe:cpe, location:executableFile);
-
-    log_message(data:'Detected ISC DHCP Client version: ' + Ver +
-        '\nLocation: ' + executableFile +
-        '\nCPE: '+ cpe +
-        '\n\nConcluded from version identification result:\n' + dhcpVer[max_index(dhcpVer)-1]);
+    register_and_report_cpe(app:"ISC DHCP Client", ver:ver, base:"cpe:/a:isc:dhcp:", expr:"^([0-9.]+([a-z0-9]+)?)", regPort:0, insloc:executableFile, concluded:dhcpVer[0], regService:"ssh-login" );
   }
 }
 
 ssh_close_connection();
+exit(0);

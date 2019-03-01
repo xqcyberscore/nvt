@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_0023_1.nasl 12497 2018-11-23 08:28:21Z cfischer $
+# $Id: gb_suse_2018_0023_1.nasl 13943 2019-02-28 15:28:52Z cfischer $
 #
-# SuSE Update for Linux Kernel openSUSE-SU-2018:0023-1 (Linux Kernel)
+# SuSE Update for the Linux Kernel openSUSE-SU-2018:0023-1 (kernel)
 #
 # Authors:
 # System Generated Check
@@ -27,16 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851677");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 13943 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-28 16:28:52 +0100 (Thu, 28 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-01-05 23:57:00 +0100 (Fri, 05 Jan 2018)");
   script_cve_id("CVE-2017-17805", "CVE-2017-17806", "CVE-2017-5715", "CVE-2017-5753",
                 "CVE-2017-5754");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
-  script_name("SuSE Update for Linux Kernel openSUSE-SU-2018:0023-1 (Linux Kernel)");
-  script_tag(name:"summary", value:"The remote host is missing an update for the 'Linux Kernel'
+  script_name("SuSE Update for the Linux Kernel openSUSE-SU-2018:0023-1 (kernel)");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'kernel'
   package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The openSUSE Leap 42.2 kernel was updated to 4.4.104 to receive various

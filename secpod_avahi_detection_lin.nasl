@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_avahi_detection_lin.nasl 11279 2018-09-07 09:08:31Z cfischer $
+# $Id: secpod_avahi_detection_lin.nasl 13936 2019-02-28 12:54:19Z cfischer $
 #
 # Avahi Version Detection (Linux)
 #
@@ -29,12 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900416");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11279 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:08:31 +0200 (Fri, 07 Sep 2018) $");
+  script_version("$Revision: 13936 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-28 13:54:19 +0100 (Thu, 28 Feb 2019) $");
   script_tag(name:"creation_date", value:"2008-12-31 15:14:17 +0100 (Wed, 31 Dec 2008)");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
-  script_tag(name:"qod_type", value:"executable_version");
   script_name("Avahi Version Detection (Linux)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2008 SecPod");
@@ -45,8 +44,11 @@ if(description)
 
   script_tag(name:"summary", value:"Detects the installed version of Avahi Daemon.
 
-The script logs in via ssh, searches for executable 'avahi-daemon' and
-queries the found executables via command line option '--version'.");
+  The script logs in via ssh, searches for executable 'avahi-daemon' and
+  queries the found executables via command line option '--version'.");
+
+  script_tag(name:"qod_type", value:"executable_version");
+
   exit(0);
 }
 
@@ -56,30 +58,30 @@ include("cpe.inc");
 include("host_details.inc");
 
 sock = ssh_login_or_reuse_connection();
-if(!sock){
+if(!sock)
   exit(0);
-}
 
-avahiName = find_file(file_name:"avahi-daemon", file_path:"/", useregex:TRUE,
-                      regexpar:"$", sock:sock);
-foreach executableFile (avahiName)
-{
+avahiName = find_file(file_name:"avahi-daemon", file_path:"/", useregex:TRUE, regexpar:"$", sock:sock);
+foreach executableFile (avahiName) {
+
   executableFile = chomp(executableFile);
-  avahiVer = get_bin_version(full_prog_name:executableFile, version_argv:"--version",
-                              ver_pattern:"[0-9]\.[0-9.]+", sock:sock);
-  if(avahiVer[0] != NULL)
-  {
-    set_kb_item(name:"Avahi/Linux/Ver", value:avahiVer[0]);
+  if(!executableFile)
+    continue;
 
-    cpe = build_cpe(value:avahiVer[0], exp:"^([0-9.]+)", base:"cpe:/a:avahi:avahi:");
-    if(!isnull(cpe))
-      register_product(cpe:cpe, location:executableFile);
+  avahiVer = get_bin_version(full_prog_name:executableFile, version_argv:"--version", ver_pattern:"avahi-daemon [0-9.]+", sock:sock);
+  if(avahiVer[0]) {
 
-    log_message(data:'Detected Avahi version: ' + avahiVer[0] +
-        '\nLocation: ' + executableFile +
-        '\nCPE: '+ cpe +
-        '\n\nConcluded from version identification result:\n' + avahiVer[max_index(avahiVer)-1]);
+    version = "unknown";
+    vers = eregmatch(string:avahiVer[0], pattern:"avahi-daemon ([0-9.]+)");
+    if(vers[1])
+      version = vers[1];
+
+    set_kb_item(name:"Avahi/Linux/Ver", value:version);
+    set_kb_item(name:"avahi-daemon/detected", value:TRUE);
+
+    register_and_report_cpe(app:"Avahi", ver:version, base:"cpe:/a:avahi:avahi:", expr:"^([0-9.]+)", regPort:0, insloc:executableFile, concluded:avahiVer[0], regService:"ssh-login" );
   }
 }
 
 ssh_close_connection();
+exit(0);

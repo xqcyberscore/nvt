@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mutt_detect.nasl 11279 2018-09-07 09:08:31Z cfischer $
+# $Id: secpod_mutt_detect.nasl 13938 2019-02-28 13:36:39Z cfischer $
 #
 # Mutt Version Detection
 #
@@ -30,12 +30,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900675");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11279 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:08:31 +0200 (Fri, 07 Sep 2018) $");
+  script_version("$Revision: 13938 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-28 14:36:39 +0100 (Thu, 28 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-06-24 07:17:25 +0200 (Wed, 24 Jun 2009)");
   script_tag(name:"cvss_base", value:"0.0");
-  script_tag(name:"qod_type", value:"executable_version");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("Mutt Version Detection");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
@@ -46,8 +45,11 @@ if(description)
 
   script_tag(name:"summary", value:"Detects the installed version of Mutt.
 
-The script logs in via ssh, searches for executable 'mutt' and
-queries the found executables via command line option '-v'.");
+  The script logs in via ssh, searches for executable 'mutt' and
+  queries the found executables via command line option '-v'.");
+
+  script_tag(name:"qod_type", value:"executable_version");
+
   exit(0);
 }
 
@@ -57,29 +59,26 @@ include("cpe.inc");
 include("host_details.inc");
 
 sock = ssh_login_or_reuse_connection();
-if(!sock){
+if(!sock)
   exit(0);
-}
 
 paths = find_bin(prog_name:"mutt", sock:sock);
-foreach executableFile (paths)
-{
+foreach executableFile (paths) {
+
   executableFile = chomp(executableFile);
-  muttVer = get_bin_version(full_prog_name:executableFile, sock:sock,
-            version_argv:"-v", ver_pattern:"Mutt (([0-9.]+)([a-z])?)");
-  if(muttVer[1] != NULL)
-  {
+  if(!executableFile)
+    continue;
+
+  muttVer = get_bin_version(full_prog_name:executableFile, sock:sock, version_argv:"-v", ver_pattern:"Mutt (([0-9.]+)([a-z])?)");
+  if(!isnull(muttVer[1])) {
+
     set_kb_item(name:"Mutt/Ver", value:muttVer[1]);
+    set_kb_item(name:"mutt/detected", value:TRUE);
 
-    cpe = build_cpe(value:muttVer[1], exp:"^([0-9.]+)", base:"cpe:/a:mutt:mutt:");
-    if(!isnull(cpe))
-      register_product(cpe:cpe, location:executableFile);
-
-    log_message(data:'Detected Mutt version: ' + muttVer[1] +
-        '\nLocation: ' + executableFile +
-        '\nCPE: '+ cpe +
-        '\n\nConcluded from version identification result:\n' + muttVer[max_index(muttVer)-1]);
+    # nb: Don't use muttVer[max_index(muttVer)-1]) for the concluded string because the output is quite huge (around 60 lines)...
+    register_and_report_cpe( app:"Mutt", ver:muttVer[1], concluded:muttVer[0], base:"cpe:/a:mutt:mutt:", expr:"^([0-9.]+)", insloc:executableFile, regPort:0, regService:"ssh-login" );
   }
 }
 
 ssh_close_connection();
+exit(0);

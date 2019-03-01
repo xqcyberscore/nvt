@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_azure_iot_sdk_spoofing_vuln_sep18_win.nasl 12806 2018-12-17 06:39:00Z ckuersteiner $
+# $Id: gb_microsoft_azure_iot_sdk_spoofing_vuln_sep18_win.nasl 13953 2019-03-01 08:57:48Z cfischer $
 #
 # Azure IoT SDK Spoofing Vulnerability Sep18 (Windows)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814212");
-  script_version("$Revision: 12806 $");
+  script_version("$Revision: 13953 $");
   script_cve_id("CVE-2018-8479");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-17 07:39:00 +0100 (Mon, 17 Dec 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 09:57:48 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-09-17 14:45:59 +0530 (Mon, 17 Sep 2018)");
   script_name("Azure IoT SDK Spoofing Vulnerability Sep18 (Windows)");
 
@@ -64,6 +64,7 @@ if(description)
   script_family("Windows");
   script_dependencies("smb_reg_service_pack.nasl", "gb_wmi_access.nasl");
   script_mandatory_keys("WMI/access_successful", "SMB/WindowsVersion");
+  script_exclude_keys("win/lsc/disable_wmi_search");
 
   exit(0);
 }
@@ -73,18 +74,22 @@ include("version_func.inc");
 include("misc_func.inc");
 include("wmi_file.inc");
 
+if( get_kb_item( "win/lsc/disable_wmi_search" ) )
+  exit( 0 );
+
 infos = kb_smb_wmi_connectinfo();
-if( ! infos ) exit( 0 );
+if( ! infos )
+  exit( 0 );
 
 handle = wmi_connect( host:infos["host"], username:infos["username_wmi_smb"], password:infos["password"] );
-if( ! handle ) exit( 0 );
+if( ! handle )
+  exit( 0 );
 
 # TODO: Limit to a possible known common path
 fileList = wmi_file_file_search( handle:handle, fileName:"Microsoft.Azure.IoTHub.IoTHubClient", includeHeader:FALSE );
 wmi_close( wmi_handle:handle );
-if( ! fileList || ! is_array( fileList ) ) {
+if( ! fileList || ! is_array( fileList ) )
   exit( 0 );
-}
 
 report = ""; # nb: To make openvas-nasl-lint happy...
 

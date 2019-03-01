@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_norton_remove_n_reinstall_detect.nasl 10911 2018-08-10 15:16:34Z cfischer $
+# $Id: gb_norton_remove_n_reinstall_detect.nasl 13953 2019-03-01 08:57:48Z cfischer $
 #
 # Norton Remove and Reinstall Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812213");
-  script_version("$Revision: 10911 $");
+  script_version("$Revision: 13953 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:16:34 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 09:57:48 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-11-07 18:05:25 +0530 (Tue, 07 Nov 2017)");
   script_name("Norton Remove  and Reinstall Detection");
   script_category(ACT_GATHER_INFO);
@@ -38,8 +38,8 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Product detection");
   script_dependencies("gb_wmi_access.nasl");
-
   script_mandatory_keys("WMI/access_successful");
+  script_exclude_keys("win/lsc/disable_wmi_search");
 
   script_tag(name:"summary", value:"Detects the installed version of
   Norton Remove & Reinstall.
@@ -54,18 +54,18 @@ if(description)
 
 include("cpe.inc");
 include("host_details.inc");
+include("smb_nt.inc");
 
-host    = get_host_ip();
-usrname = get_kb_item( "SMB/login" );
-passwd  = get_kb_item( "SMB/password" );
+if( get_kb_item( "win/lsc/disable_wmi_search" ) )
+  exit( 0 );
 
-if( ! host || ! usrname || ! passwd ) exit( 0 );
+infos = kb_smb_wmi_connectinfo();
+if( ! infos )
+  exit( 0 );
 
-domain  = get_kb_item( "SMB/domain" );
-if( domain ) usrname = domain + '\\' + usrname;
-
-handle = wmi_connect( host:host, username:usrname, password:passwd );
-if( ! handle ) exit( 0 );
+handle = wmi_connect( host:infos["host"], username:infos["username_wmi_smb"], password:infos["password"] );
+if( ! handle )
+  exit( 0 );
 
 query = 'Select Manufacturer, Version from CIM_DataFile Where FileName ='
         + raw_string(0x22) + 'NRnR' + raw_string(0x22) + ' AND Extension ='

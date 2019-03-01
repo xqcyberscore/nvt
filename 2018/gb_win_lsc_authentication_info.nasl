@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_win_lsc_authentication_info.nasl 13313 2019-01-26 17:25:41Z cfischer $
+# $Id: gb_win_lsc_authentication_info.nasl 13954 2019-03-01 09:04:39Z cfischer $
 #
 # Windows SMB/LSC Authenticated Scan Info Consolidation
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108442");
-  script_version("$Revision: 13313 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-26 18:25:41 +0100 (Sat, 26 Jan 2019) $");
+  script_version("$Revision: 13954 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 10:04:39 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-05-16 07:49:52 +0200 (Wed, 16 May 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -57,9 +57,11 @@ include("misc_func.inc");
 _kb_login = kb_smb_login();
 # The user hasn't filled out a login name so no need to
 # report the infos below if no LSC scan was requested.
-if( ! strlen( _kb_login ) > 0 ) exit( 0 );
+if( ! strlen( _kb_login ) > 0 )
+  exit( 0 );
 
-if( kb_smb_is_samba() ) exit( 0 );
+if( kb_smb_is_samba() )
+  exit( 0 );
 
 empty_text = "Empty/None";
 
@@ -71,6 +73,7 @@ kb_array = make_array( "WMI/access_successful", "Access via WMI possible",
                        "Tools/Present/smb", "Extended SMB support available via openvas-smb module",
                        "win/lsc/search_portable_apps", "Enable Detection of Portable Apps on Windows",
                        "win/lsc/disable_win_cmd_exec", "Disable the usage of win_cmd_exec for remote commands on Windows",
+                       "win/lsc/disable_wmi_search", "Disable file search via WMI on Windows",
                        "SMB/registry_access", "Access to the registry possible",
                        "SMB/WindowsVersion", "Version number of the OS",
                        "SMB/WindowsBuild", "Build number of the OS",

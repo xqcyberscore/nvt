@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ntp_detect_lin.nasl 10905 2018-08-10 14:32:11Z cfischer $
+# $Id: gb_ntp_detect_lin.nasl 13936 2019-02-28 12:54:19Z cfischer $
 #
 # NTP Version Detection (Linux)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800407");
-  script_version("$Revision: 10905 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:32:11 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 13936 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-28 13:54:19 +0100 (Thu, 28 Feb 2019) $");
   script_tag(name:"creation_date", value:"2009-01-15 16:11:17 +0100 (Thu, 15 Jan 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -40,7 +40,7 @@ if(description)
   script_mandatory_keys("login/SSH/success");
   script_exclude_keys("ssh/no_linux_shell");
 
-  script_tag(name:"summary", value:"The script detects the installed version of NTP and saves
+  script_tag(name:"summary", value:"The script detects the installed version of NTPd and saves
   the result in KB.");
 
   script_tag(name:"qod_type", value:"executable_version");
@@ -63,29 +63,28 @@ if(!ntpVersion)
   if( ! sock ) exit( 0 );
 
   binFiles = find_file(file_name:"ntpd",file_path:"/", useregex:TRUE, regexpar:"$", sock:sock);
-  foreach binName (binFiles)
-  {
-    ntpVer = get_bin_version(full_prog_name:chomp(binName), sock:sock,
-             version_argv:"--version",
-             ver_pattern:"ntpd.* ([0-9]\.[0-9.]+)([a-z][0-9]+)?-?(RC[0-9])?");
-    if(ntpVer[1] != NULL)
-    {
-      if(ntpVer[2] =~ "[a-z][0-9]+" && ntpVer[3] =~ "RC"){
-        ntpVer = ntpVer[1] + ntpVer[2] + "." + ntpVer[3];
-      }
-      else if(ntpVer[2] =~ "[a-z][0-9]+"){
-        ntpVer = ntpVer[1] + ntpVer[2];
-      }
-      else ntpVer = ntpVer[1];
+  foreach binName (binFiles) {
 
-      set_kb_item(name:"NTP/Linux/Ver", value:ntpVer);
-      log_message(data:" NTP version " + ntpVer + " running at location " + binName + " was detected on the host");
-      ssh_close_connection();
+    binName = chomp(binName);
+    if(!binName)
+      continue;
 
-      cpe = build_cpe(value:ntpVer, exp:"^([0-9.]+([a-z0-9]+)?)", base:"cpe:/a:ntp:ntp:");
-      if(!isnull(cpe))
-         register_host_detail(name:"App", value:cpe, desc:SCRIPT_DESC);
-      exit(0);
+    ntpVer = get_bin_version(full_prog_name:binName, sock:sock, version_argv:"--version", ver_pattern:"ntpd.* ([0-9]\.[0-9.]+)([a-z][0-9]+)?-?(RC[0-9])?");
+    if(ntpVer[1]) {
+
+      vers = eregmatch(string:ntpVer[0], pattern:"ntpd.* ([0-9]\.[0-9.]+)([a-z][0-9]+)?-?(RC[0-9])?");
+      if(vers[2] =~ "[a-z][0-9]+" && vers[3] =~ "RC") {
+        version = vers[1] + vers[2] + "." + vers[3];
+      } else if(vers[2] =~ "[a-z][0-9]+") {
+        version = vers[1] + vers[2];
+      } else {
+        version = vers[1];
+      }
+
+      set_kb_item(name:"NTP/Linux/Ver", value:version);
+      set_kb_item(name:"ntpd/detected", value:TRUE);
+
+      register_and_report_cpe(app:"NTP", ver:version, base:"cpe:/a:ntp:ntp:", expr:"^([0-9.]+[a-z0-9]*)", regPort:0, insloc:binName, concluded:ntpVer[0], regService:"ssh-login" );
     }
   }
   ssh_close_connection();

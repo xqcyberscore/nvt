@@ -21,12 +21,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814760");
-  script_version("$Revision: 13924 $");
+  script_version("$Revision: 13953 $");
   script_cve_id("CVE-2019-0657");
   script_bugtraq_id(106890);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-28 10:54:35 +0100 (Thu, 28 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 09:57:48 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-02-26 15:47:32 +0530 (Tue, 26 Feb 2019)");
   script_name(".NET Core Domain Spoofing Vulnerability (February 2019)");
 
@@ -61,6 +61,8 @@ if(description)
   script_family("Windows");
   script_dependencies("smb_reg_service_pack.nasl", "gb_wmi_access.nasl");
   script_mandatory_keys("WMI/access_successful", "SMB/WindowsVersion");
+  script_exclude_keys("win/lsc/disable_wmi_search");
+
   exit(0);
 }
 
@@ -69,17 +71,21 @@ include("version_func.inc");
 include("misc_func.inc");
 include("wmi_file.inc");
 
+if( get_kb_item( "win/lsc/disable_wmi_search" ) )
+  exit( 0 );
+
 infos = kb_smb_wmi_connectinfo();
-if( ! infos ) exit( 0 );
+if( ! infos )
+  exit( 0 );
 
 handle = wmi_connect( host:infos["host"], username:infos["username_wmi_smb"], password:infos["password"] );
-if( ! handle ) exit( 0 );
+if( ! handle )
+  exit( 0 );
 
 fileList = wmi_file_file_search( handle:handle, fileName:"System.Private.Uri", includeHeader:TRUE );
 wmi_close( wmi_handle:handle );
-if( ! fileList || ! is_array( fileList ) ) {
+if( ! fileList || ! is_array( fileList ) )
   exit( 0 );
-}
 
 report = "";  # nb: To make openvas-nasl-lint happy...
 
@@ -97,4 +103,5 @@ if( VULN )
   security_message( port:0, data:report );
   exit( 0 );
 }
+
 exit( 99 );

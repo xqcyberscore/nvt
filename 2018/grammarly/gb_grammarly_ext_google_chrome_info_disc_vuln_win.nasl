@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_grammarly_ext_google_chrome_info_disc_vuln_win.nasl 12410 2018-11-19 10:06:05Z cfischer $
+# $Id: gb_grammarly_ext_google_chrome_info_disc_vuln_win.nasl 13953 2019-03-01 08:57:48Z cfischer $
 #
 # Grammarly Extension For Google Chrome Information Disclosure Vulnerability - Windows
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812696");
-  script_version("$Revision: 12410 $");
+  script_version("$Revision: 13953 $");
   script_cve_id("CVE-2018-6654");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-19 11:06:05 +0100 (Mon, 19 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 09:57:48 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-02-08 14:22:37 +0530 (Thu, 08 Feb 2018)");
   script_name("Grammarly Extension For Google Chrome Information Disclosure Vulnerability - Windows");
 
@@ -66,6 +66,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_google_chrome_detect_portable_win.nasl", "smb_reg_service_pack.nasl", "gb_wmi_access.nasl");
   script_mandatory_keys("GoogleChrome/Win/Ver", "WMI/access_successful", "SMB/WindowsVersion");
+  script_exclude_keys("win/lsc/disable_wmi_search");
 
   exit(0);
 }
@@ -75,17 +76,21 @@ include("version_func.inc");
 include("misc_func.inc");
 include("wmi_file.inc");
 
+if( get_kb_item( "win/lsc/disable_wmi_search" ) )
+  exit( 0 );
+
 infos = kb_smb_wmi_connectinfo();
-if( ! infos ) exit( 0 );
+if( ! infos )
+  exit( 0 );
 
 handle = wmi_connect( host:infos["host"], username:infos["username_wmi_smb"], password:infos["password"] );
-if( ! handle ) exit( 0 );
+if( ! handle )
+  exit( 0 );
 
 fileList = wmi_file_file_search( handle:handle, dirPathLike:"%google%chrome%extensions%", fileName:"Grammarly", fileExtn:"html", includeHeader:FALSE );
 wmi_close( wmi_handle:handle );
-if( ! fileList || ! is_array( fileList ) ) {
+if( ! fileList || ! is_array( fileList ) )
   exit( 0 );
-}
 
 report = "";  # nb: To make openvas-nasl-lint happy...
 

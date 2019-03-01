@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_firefox_detect_portable_win.nasl 11793 2018-10-09 11:25:57Z cfischer $
+# $Id: gb_firefox_detect_portable_win.nasl 13953 2019-03-01 08:57:48Z cfischer $
 #
 # Mozilla Firefox Portable Version Detection (Windows)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108443");
-  script_version("$Revision: 11793 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-09 13:25:57 +0200 (Tue, 09 Oct 2018) $");
+  script_version("$Revision: 13953 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 09:57:48 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-04-20 11:47:59 +0200 (Fri, 20 Apr 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -40,6 +40,7 @@ if(description)
   # Firefox dependency was added so we don't detect a registry-based installation twice
   script_dependencies("gb_firefox_detect_win.nasl", "gb_wmi_access.nasl");
   script_mandatory_keys("win/lsc/search_portable_apps", "WMI/access_successful");
+  script_exclude_keys("win/lsc/disable_wmi_search");
 
   script_tag(name:"summary", value:"Detection of Mozilla Firefox Portable on Windows.
 
@@ -60,17 +61,21 @@ include("cpe.inc");
 include("host_details.inc");
 include("smb_nt.inc");
 
+if( get_kb_item( "win/lsc/disable_wmi_search" ) )
+  exit( 0 );
+
 infos = kb_smb_wmi_connectinfo();
-if( ! infos ) exit( 0 );
+if( ! infos )
+  exit( 0 );
 
 handle = wmi_connect( host:infos["host"], username:infos["username_wmi_smb"], password:infos["password"] );
-if( ! handle ) exit( 0 );
+if( ! handle )
+  exit( 0 );
 
 fileList = wmi_file_fileversion( handle:handle, fileName:"firefox", fileExtn:"exe", includeHeader:FALSE );
 wmi_close( wmi_handle:handle );
-if( ! fileList || ! is_array( fileList ) ) {
+if( ! fileList || ! is_array( fileList ) )
   exit( 0 );
-}
 
 # From gb_firefox_detect_win.nasl to avoid a doubled detection of a registry-based installation.
 detectedList = get_kb_list( "Firefox/Win/InstallLocations" );

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mega_extension_trojan_win.nasl 12784 2018-12-13 10:33:24Z cfischer $
+# $Id: gb_google_chrome_mega_extension_trojan_win.nasl 13953 2019-03-01 08:57:48Z cfischer $
 #
 # Google Chrome MEGA Extension Trojan-Windows
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813789");
-  script_version("$Revision: 12784 $");
+  script_version("$Revision: 13953 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-13 11:33:24 +0100 (Thu, 13 Dec 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 09:57:48 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-09-10 12:21:10 +0530 (Mon, 10 Sep 2018)");
   script_name("Google Chrome MEGA Extension Trojan-Windows");
 
@@ -68,6 +68,7 @@ if(description)
   script_family("Malware");
   script_dependencies("gb_google_chrome_detect_portable_win.nasl", "smb_reg_service_pack.nasl", "gb_wmi_access.nasl");
   script_mandatory_keys("GoogleChrome/Win/Ver", "WMI/access_successful", "SMB/WindowsVersion");
+  script_exclude_keys("win/lsc/disable_wmi_search");
 
   exit(0);
 }
@@ -77,17 +78,21 @@ include("version_func.inc");
 include("misc_func.inc");
 include("wmi_file.inc");
 
+if( get_kb_item( "win/lsc/disable_wmi_search" ) )
+  exit( 0 );
+
 infos = kb_smb_wmi_connectinfo();
-if( ! infos ) exit( 0 );
+if( ! infos )
+  exit( 0 );
 
 handle = wmi_connect( host:infos["host"], username:infos["username_wmi_smb"], password:infos["password"] );
-if( ! handle ) exit( 0 );
+if( ! handle )
+  exit( 0 );
 
 fileList = wmi_file_file_search( handle:handle, dirPathLike:"%google%chrome%extensions%", fileName:"Mega", fileExtn:"html", includeHeader:FALSE );
 wmi_close( wmi_handle:handle );
-if( ! fileList || ! is_array( fileList ) ) {
+if( ! fileList || ! is_array( fileList ) )
   exit( 0 );
-}
 
 report = "";  # nb: To make openvas-nasl-lint happy...
 

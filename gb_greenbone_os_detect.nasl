@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_greenbone_os_detect.nasl 8610 2018-01-31 15:08:13Z cfischer $
+# $Id: gb_greenbone_os_detect.nasl 13942 2019-02-28 15:08:45Z cfischer $
 #
 # Greenbone Security Manager (GSM) / Greenbone OS (GOS) Detection (Version)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103220");
-  script_version("$Revision: 8610 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-31 16:08:13 +0100 (Wed, 31 Jan 2018) $");
+  script_version("$Revision: 13942 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-28 16:08:45 +0100 (Thu, 28 Feb 2019) $");
   script_tag(name:"creation_date", value:"2011-08-23 15:25:10 +0200 (Tue, 23 Aug 2011)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -76,10 +76,14 @@ foreach source( make_list( "ssh", "http", "snmp" ) ) {
 }
 
 if( detected_type != "unknown" ) {
-  hw_cpe   = "cpe:/h:greenbone:gsm_" + tolower( detected_type );
-  app_type = detected_type;
+  # nb: Those are "virtual" appliances so don't register a hardware CPE for these.
+  if( egrep( string:detected_type, pattern:"(ONE|MAVEN|150V|EXPO|25V)", icase:TRUE ) )
+    hw_app_cpe = "cpe:/a:greenbone:gsm_" + tolower( detected_type );
+  else
+    hw_app_cpe = "cpe:/h:greenbone:gsm_" + tolower( detected_type );
+  app_type   = detected_type;
 } else {
-  hw_cpe   = "cpe:/h:greenbone:gsm_unknown_type";
+  hw_app_cpe   = "cpe:/h:greenbone:gsm_unknown_type";
   app_type = "Unknown Type";
 }
 
@@ -102,7 +106,7 @@ if( http_port = get_kb_list( "greenbone/gos/http/port" ) ) {
     if( concluded && concludedUrl ) {
       extra += 'Concluded: ' + concluded + ' from URL: ' + concludedUrl + '\n';
     }
-    register_product( cpe:hw_cpe, location:location, port:port, service:"www" );
+    register_product( cpe:hw_app_cpe, location:location, port:port, service:"www" );
     register_product( cpe:os_cpe, location:location, port:port, service:"www" );
   }
 }
@@ -114,7 +118,7 @@ if( ssh_port = get_kb_list( "greenbone/gos/ssh/port" ) ) {
     if( concluded ) {
       extra += 'Concluded: ' + concluded + '\n';
     }
-    register_product( cpe:hw_cpe, location:location, port:port, service:"ssh" );
+    register_product( cpe:hw_app_cpe, location:location, port:port, service:"ssh" );
     register_product( cpe:os_cpe, location:location, port:port, service:"ssh" );
   }
 }
@@ -129,7 +133,7 @@ if( snmp_port = get_kb_list( "greenbone/gos/snmp/port" ) ) {
     } else if( concluded ) {
       extra += 'Concluded from SNMP SysDesc: ' + concluded + '\n';
     }
-    register_product( cpe:hw_cpe, location:location, port:port, service:"snmp", proto:"udp" );
+    register_product( cpe:hw_app_cpe, location:location, port:port, service:"snmp", proto:"udp" );
     register_product( cpe:os_cpe, location:location, port:port, service:"snmp", proto:"udp" );
   }
 }
@@ -140,7 +144,7 @@ report = build_detection_report( app:"Greenbone OS (GOS)",
                                  cpe:os_cpe );
 report += '\n\n' + build_detection_report( app:"Greenbone Security Manager (GSM) " + app_type,
                                            install:location,
-                                           cpe:hw_cpe,
+                                           cpe:hw_app_cpe,
                                            skip_version:TRUE );
 if( extra ) {
   report += '\n\nDetection methods:\n';

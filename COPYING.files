@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Thu, 28 Feb 2019 13:28:45 +0100
+# Automatically created on:  Fri, 01 Mar 2019 12:10:05 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -38973,24 +38973,6 @@
 2018/centos/gb_CESA-2018_3833_firefox_centos7.nasl: GPLv2+
 2018/centos/gb_CESA-2018_3834_ghostscript_centos7.nasl: GPLv2+
 2018/centos/gb_CESA-2018_3854_ntp_centos6.nasl: GPLv2+
-2018/centos/gb_suse_2018_4122_1.nasl: GPLv2+
-2018/centos/gb_suse_2018_4124_1.nasl: GPLv2+
-2018/centos/gb_suse_2018_4132_1.nasl: GPLv2+
-2018/centos/gb_suse_2018_4133_1.nasl: GPLv2+
-2018/centos/gb_suse_2018_4135_1.nasl: GPLv2+
-2018/centos/gb_suse_2018_4138_1.nasl: GPLv2+
-2018/centos/gb_suse_2018_4140_1.nasl: GPLv2+
-2018/centos/gb_suse_2018_4141_1.nasl: GPLv2+
-2018/centos/gb_suse_2018_4142_1.nasl: GPLv2+
-2018/centos/gb_suse_2018_4144_1.nasl: GPLv2+
-2018/centos/gb_suse_2018_4147_1.nasl: GPLv2+
-2018/centos/gb_suse_2018_4148_1.nasl: GPLv2+
-2018/centos/gb_suse_2018_4151_1.nasl: GPLv2+
-2018/centos/gb_suse_2018_4152_1.nasl: GPLv2+
-2018/centos/gb_suse_2018_4156_1.nasl: GPLv2+
-2018/centos/gb_suse_2018_4174_1.nasl: GPLv2+
-2018/centos/gb_suse_2018_4181_1.nasl: GPLv2+
-2018/centos/gb_suse_2018_4197_1.nasl: GPLv2+
 2018/centreon/gb_centreon_mult_vuln_jun18.nasl: GPLv2+
 2018/clamav/gb_clamav_antivirus_unmew11_dos_vuln_lin.nasl: GPLv2+
 2018/clamav/gb_clamav_antivirus_unmew11_dos_vuln_win.nasl: GPLv2+
@@ -42870,23 +42852,41 @@
 2018/opensuse/gb_suse_2018_4111_1.nasl: GPLv2+
 2018/opensuse/gb_suse_2018_4112_1.nasl: GPLv2+
 2018/opensuse/gb_suse_2018_4117_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4122_1_deprecated.nasl: GPLv2+
 2018/opensuse/gb_suse_2018_4122_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4124_1_deprecated.nasl: GPLv2+
 2018/opensuse/gb_suse_2018_4124_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4132_1_deprecated.nasl: GPLv2+
 2018/opensuse/gb_suse_2018_4132_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4133_1_deprecated.nasl: GPLv2+
 2018/opensuse/gb_suse_2018_4133_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4135_1_deprecated.nasl: GPLv2+
 2018/opensuse/gb_suse_2018_4135_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4138_1_deprecated.nasl: GPLv2+
 2018/opensuse/gb_suse_2018_4138_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4140_1_deprecated.nasl: GPLv2+
 2018/opensuse/gb_suse_2018_4140_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4141_1_deprecated.nasl: GPLv2+
 2018/opensuse/gb_suse_2018_4141_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4142_1_deprecated.nasl: GPLv2+
 2018/opensuse/gb_suse_2018_4142_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4144_1_deprecated.nasl: GPLv2+
 2018/opensuse/gb_suse_2018_4144_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4147_1_deprecated.nasl: GPLv2+
 2018/opensuse/gb_suse_2018_4147_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4148_1_deprecated.nasl: GPLv2+
 2018/opensuse/gb_suse_2018_4148_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4151_1_deprecated.nasl: GPLv2+
 2018/opensuse/gb_suse_2018_4151_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4152_1_deprecated.nasl: GPLv2+
 2018/opensuse/gb_suse_2018_4152_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4156_1_deprecated.nasl: GPLv2+
 2018/opensuse/gb_suse_2018_4156_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4174_1_deprecated.nasl: GPLv2+
 2018/opensuse/gb_suse_2018_4174_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4181_1_deprecated.nasl: GPLv2+
 2018/opensuse/gb_suse_2018_4181_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_4197_1_deprecated.nasl: GPLv2+
 2018/opensuse/gb_suse_2018_4197_1.nasl: GPLv2+
 2018/opensuse/gb_suse_2018_4212_1.nasl: GPLv2+
 2018/opensuse/gb_suse_2018_4240_1.nasl: GPLv2+
@@ -44122,6 +44122,11 @@
 2019/debian/deb_dla_1692.nasl: GPLv2+
 2019/debian/deb_dla_1693.nasl: GPLv2+
 2019/debian/deb_dla_1694.nasl: GPLv2+
+2019/debian/deb_dla_1695.nasl: GPLv2+
+2019/debian/deb_dla_1697.nasl: GPLv2+
+2019/debian/deb_dla_1698.nasl: GPLv2+
+2019/debian/deb_dla_1699.nasl: GPLv2+
+2019/digium/gb_asterisk_AST-2019-001.nasl: GPLv2+
 2019/discourse/gb_discourse_2.2.0beta2.nasl: GPLv2+
 2019/discourse/gb_discourse_2.2.0beta3.nasl: GPLv2+
 2019/discourse/gb_discourse_2.2.0beta4.nasl: GPLv2+

@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2019_0065_1.nasl 13919 2019-02-28 08:13:57Z cfischer $
+# $Id: gb_suse_2019_0065_1.nasl 13943 2019-02-28 15:28:52Z cfischer $
 #
-# SuSE Update for the openSUSE-SU-2019:0065-1 (Linux Kernel)
+# SuSE Update for the Linux Kernel openSUSE-SU-2019:0065-1 (kernel)
 #
 # Authors:
 # System Generated Check
@@ -29,15 +29,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852240");
-  script_version("$Revision: 13919 $");
+  script_version("$Revision: 13943 $");
   script_cve_id("CVE-2018-12232", "CVE-2018-14625", "CVE-2018-16862", "CVE-2018-16884",
                 "CVE-2018-18397", "CVE-2018-19407", "CVE-2018-19824", "CVE-2018-19854",
                 "CVE-2018-19985", "CVE-2018-20169", "CVE-2018-9568", "CVE-2013-2547");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-28 09:13:57 +0100 (Thu, 28 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-28 16:28:52 +0100 (Thu, 28 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-18 04:02:14 +0100 (Fri, 18 Jan 2019)");
-  script_name("SuSE Update for the openSUSE-SU-2019:0065-1 (Linux Kernel)");
+  script_name("SuSE Update for the Linux Kernel openSUSE-SU-2019:0065-1 (kernel)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
@@ -47,7 +47,7 @@ if(description)
   script_xref(name:"openSUSE-SU", value:"2019:0065_1");
   script_xref(name:"URL", value:"http://lists.opensuse.org/opensuse-security-announce/2019-01/msg00023.html");
 
-  script_tag(name:"summary", value:"The remote host is missing an update for the 'Linux Kernel'
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'kernel'
   package(s) announced via the openSUSE-SU-2019:0065_1 advisory.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");

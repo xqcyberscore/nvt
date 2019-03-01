@@ -39,8 +39,8 @@ if(description)
   script_family("Product detection");
   # Google Chrome dependency was added so we don't detect a registry-based installation twice
   script_dependencies("gb_google_chrome_detect_win.nasl", "gb_wmi_access.nasl");
-
   script_mandatory_keys("win/lsc/search_portable_apps", "WMI/access_successful");
+  script_exclude_keys("win/lsc/disable_wmi_search");
 
   script_tag(name:"summary", value:"Detection of Google Chrome Portable on Windows.
 
@@ -61,17 +61,21 @@ include("cpe.inc");
 include("host_details.inc");
 include("smb_nt.inc");
 
+if( get_kb_item( "win/lsc/disable_wmi_search" ) )
+  exit( 0 );
+
 infos = kb_smb_wmi_connectinfo();
-if( ! infos ) exit( 0 );
+if( ! infos )
+  exit( 0 );
 
 handle = wmi_connect( host:infos["host"], username:infos["username_wmi_smb"], password:infos["password"] );
-if( ! handle ) exit( 0 );
+if( ! handle )
+  exit( 0 );
 
 fileList = wmi_file_fileversion( handle:handle, fileName:"chrome", fileExtn:"exe", includeHeader:FALSE );
-if( ! fileList ) {
-  wmi_close( wmi_handle:handle );
+wmi_close( wmi_handle:handle );
+if( ! fileList || ! is_array( fileList ) )
   exit( 0 );
-}
 
 # From gb_google_chrome_detect_win.nasl to avoid a doubled detection of a registry-based installation.
 detectedList = get_kb_list( "GoogleChrome/Win/InstallLocations" );

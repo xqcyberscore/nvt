@@ -21,13 +21,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852274");
-  script_version("$Revision: 13919 $");
+  script_version("$Revision: 13941 $");
   script_cve_id("CVE-2018-1120", "CVE-2018-16862", "CVE-2018-16884", "CVE-2018-19407", "CVE-2018-19824", "CVE-2018-19985", "CVE-2018-20169", "CVE-2018-9568", "CVE-2019-3459", "CVE-2019-3460");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-28 09:13:57 +0100 (Thu, 28 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-28 15:35:50 +0100 (Thu, 28 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-02-07 04:03:59 +0100 (Thu, 07 Feb 2019)");
-  script_name("SuSE Update for the openSUSE-SU-2019:0140-1 (Linux Kernel)");
+  script_name("SuSE Update for the Linux Kernel openSUSE-SU-2019:0140-1 (kernel)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
@@ -37,7 +37,7 @@ if(description)
   script_xref(name:"openSUSE-SU", value:"2019:0140_1");
   script_xref(name:"URL", value:"http://lists.opensuse.org/opensuse-security-announce/2019-02/msg00007.html");
 
-  script_tag(name:"summary", value:"The remote host is missing an update for the 'Linux Kernel'
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'kernel'
   package(s) announced via the openSUSE-SU-2019:0140_1 advisory.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
