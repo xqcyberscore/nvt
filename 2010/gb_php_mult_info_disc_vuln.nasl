@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_mult_info_disc_vuln.nasl 10459 2018-07-09 07:41:24Z cfischer $
+# $Id: gb_php_mult_info_disc_vuln.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # PHP Multiple Information Disclosure Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801359");
-  script_version("$Revision: 10459 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 09:41:24 +0200 (Mon, 09 Jul 2018) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-06-15 06:05:27 +0200 (Tue, 15 Jun 2010)");
   script_cve_id("CVE-2010-2190", "CVE-2010-2191");
   script_tag(name:"cvss_base", value:"6.4");
@@ -46,15 +46,13 @@ if(description)
   script_xref(name:"URL", value:"http://www.php-security.org/2010/05/30/mops-2010-047-php-trimltrimrtrim-interruption-information-leak-vulnerability/index.html");
 
   script_tag(name:"impact", value:"Successful exploitation could allow local attackers to bypass
-  certain security restrictions and to obtain sensitive information.
-
-  Impact Level: Network");
+  certain security restrictions and to obtain sensitive information.");
 
   script_tag(name:"affected", value:"PHP version 5.2 through 5.2.13 and 5.3 through 5.3.2");
 
   script_tag(name:"insight", value:"Multiple flaws are due to:
 
-  - Error in 'trim()', 'ltrim()','rtrim()' and 'substr_replace()' functions,
+  - Error in 'trim()', 'ltrim()', 'rtrim()' and 'substr_replace()' functions,
   which causes a userspace interruption of an internal function within the
   call time pass by reference feature.
 
@@ -63,8 +61,7 @@ if(description)
   the 'ArrayObject::uasort' method, trigger memory corruption by causing a
   userspace interruption of an internal function or handler.");
 
-  script_tag(name:"solution", value:"Upgrade to PHP version 5.2.14/5.3.3 or later
-  For updates refer to http://www.php.net/downloads.php");
+  script_tag(name:"solution", value:"Upgrade to PHP version 5.2.14/5.3.3 or later");
 
   script_tag(name:"summary", value:"This host is running PHP and is prone to multiple information
   disclosure  vulnerabilities.");
@@ -72,6 +69,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
+  script_xref(name:"URL", value:"http://www.php.net/downloads.php");
   exit(0);
 }
 

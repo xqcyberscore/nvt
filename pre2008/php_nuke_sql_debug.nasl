@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: php_nuke_sql_debug.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: php_nuke_sql_debug.nasl 13975 2019-03-04 09:32:08Z cfischer $
 # Description: PHP-Nuke sql_debug Information Disclosure
 #
 # Authors:
@@ -32,8 +32,8 @@ CPE = "cpe:/a:phpnuke:php-nuke";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10856");
-  script_version("$Revision: 6040 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+  script_version("$Revision: 13975 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-04 10:32:08 +0100 (Mon, 04 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2002-2032");
   script_bugtraq_id(3906);
@@ -47,7 +47,8 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("php-nuke/installed");
 
-  script_tag(name:"solution", value:"Add '$sql_debug = 0;' in config.php.");
+  script_tag(name:"solution", value:"Add '$sql_debug = 0<semicolon>' in config.php.");
+
   script_tag(name:"summary", value:"In PHP-Nuke, the sql_layer.php script contains a debugging
   feature that may be used by attackers to disclose sensitive information about all SQL queries.
   Access to the debugging feature is not restricted to administrators.");
@@ -57,10 +58,6 @@ if(description)
 
   exit(0);
 }
-
-#
-# The script code starts here
-#
 
 include("http_func.inc");
 include("http_keepalive.inc");

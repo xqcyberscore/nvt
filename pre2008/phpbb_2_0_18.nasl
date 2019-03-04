@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phpbb_2_0_18.nasl 9332 2018-04-05 12:51:29Z cfischer $
+# $Id: phpbb_2_0_18.nasl 13975 2019-03-04 09:32:08Z cfischer $
 #
 # phpBB <= 2.0.18 Multiple Cross-Site Scripting Flaws
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:phpbb:phpbb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.20379");
-  script_version("$Revision: 9332 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-05 14:51:29 +0200 (Thu, 05 Apr 2018) $");
+  script_version("$Revision: 13975 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-04 10:32:08 +0100 (Mon, 04 Mar 2019) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -77,6 +77,6 @@ if( ereg( pattern:"^([01]\..*|2\.0\.([0-9]|1[0-8])[^0-9])", string:vers ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"2.0.19" );
   security_message( port:port, data:report );
   exit( 0 );
-}  
+}
 
 exit( 99 );

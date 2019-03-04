@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_tagged_albums_plugin_sql_inj_vuln.nasl 11435 2018-09-17 13:44:25Z cfischer $
+# $Id: gb_wordpress_tagged_albums_plugin_sql_inj_vuln.nasl 13962 2019-03-01 14:14:42Z cfischer $
 #
 # WordPress Tagged Albums Plugin 'id' Parameter SQL Injection Vulnerability
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803051");
-  script_version("$Revision: 11435 $");
+  script_version("$Revision: 13962 $");
   script_bugtraq_id(56569);
   script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mo, 24 Apr 2017)$");
   script_tag(name:"creation_date", value:"2012-11-19 11:18:38 +0530 (Mon, 19 Nov 2012)");
@@ -37,7 +37,7 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("WordPress Tagged Albums Plugin 'id' Parameter SQL Injection Vulnerability");
   script_category(ACT_ATTACK);
-  script_copyright("Copyright(c) 2012 Greenbone Networks GmbH");
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_require_ports("Services/www", 80);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: tomcat_devname_DoS.nasl 10831 2018-08-08 09:49:56Z cfischer $
+# $Id: tomcat_devname_DoS.nasl 13975 2019-03-04 09:32:08Z cfischer $
 #
 # Tomcat servlet engine MS/DOS device names denial of service
 #
@@ -37,8 +37,8 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11150");
-  script_version("$Revision: 10831 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-08 11:49:56 +0200 (Wed, 08 Aug 2018) $");
+  script_version("$Revision: 13975 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-04 10:32:08 +0100 (Mon, 04 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -108,7 +108,6 @@ for( i = 0; i <= 1000; i++ ) {
 }
 
 if( soc ) http_close_socket( soc );
-# sleep(1);
 alive = end_denial();
 
 if( ! alive || http_is_dead( port:port ) ) {

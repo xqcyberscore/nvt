@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_perl_safe_40305.nasl 12740 2018-12-10 11:49:57Z cfischer $
+# $Id: gb_perl_safe_40305.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # Perl Safe Module 'reval()' and 'rdo()' CVE-2010-1447 Restriction-Bypass Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:rafael_garcia-suarez:safe";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100673");
-  script_version("$Revision: 12740 $");
+  script_version("$Revision: 13960 $");
   script_bugtraq_id(40305);
   script_cve_id("CVE-2010-1447");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-10 12:49:57 +0100 (Mon, 10 Dec 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-06-14 14:19:59 +0200 (Mon, 14 Jun 2010)");
   script_name("Perl Safe Module 'reval()' and 'rdo()' Restriction-Bypass Vulnerabilities");
   script_category(ACT_GATHER_INFO);
@@ -67,10 +67,10 @@ if(description)
 
 include("host_details.inc");
 include("version_func.inc");
- 
+
 if( ! infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE ) )
   exit( 0 );
- 
+
 vers = infos['version'];
 path = infos['location'];
 
@@ -79,5 +79,5 @@ if( version_is_less( version:vers, test_version:"2.27" ) ) {
   security_message( port:0, data:report );
   exit( 0 );
 }
- 
+
 exit( 99 );

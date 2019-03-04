@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_openjdk_detect.nasl 13934 2019-02-28 12:02:37Z cfischer $
+# $Id: secpod_openjdk_detect.nasl 13959 2019-03-01 11:27:26Z cfischer $
 #
 # Sun/Oracle OpenJDK Version Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900334");
-  script_version("$Revision: 13934 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-28 13:02:37 +0100 (Thu, 28 Feb 2019) $");
+  script_version("$Revision: 13959 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 12:27:26 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-05-13 10:01:19 +0200 (Wed, 13 May 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -80,7 +80,7 @@ foreach binName (paths) {
   # vs.
   #
   # openjdk version "1.8.0_131"
-  # OpenJDK Runtime Environment (IcedTea 3.4.0) (suse-10.10.3-x86_64) 
+  # OpenJDK Runtime Environment (IcedTea 3.4.0) (suse-10.10.3-x86_64)
   # OpenJDK 64-Bit Server VM (build 25.131-b11, mixed mode)
 
   ver = get_bin_version(full_prog_name:binName, version_argv:"-version", ver_pattern:'(openjdk|java) version "([0-9]\\.[0-9]\\.[0-9._]+)-?([b0-9]+)?.+', sock:sock);

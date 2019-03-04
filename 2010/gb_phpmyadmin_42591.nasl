@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_42591.nasl 9323 2018-04-05 08:44:52Z cfischer $
+# $Id: gb_phpmyadmin_42591.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # phpMyAdmin 'CVE-2010-3055' Configuration File PHP Code Injection Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100760");
-  script_version("$Revision: 9323 $");
+  script_version("$Revision: 13960 $");
   script_bugtraq_id(42591);
   script_cve_id("CVE-2010-3055");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-05 10:44:52 +0200 (Thu, 05 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-08-30 14:30:07 +0200 (Mon, 30 Aug 2010)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -48,22 +48,16 @@ if(description)
   script_xref(name:"URL", value:"http://www.phpmyadmin.net/");
   script_xref(name:"URL", value:"http://www.phpmyadmin.net/home_page/security/PMASA-2010-4.php");
 
-  tag_summary = "phpMyAdmin is prone to a remote PHP code-injection vulnerability.";
+  script_tag(name:"summary", value:"phpMyAdmin is prone to a remote PHP code-injection vulnerability.");
 
-  tag_impact = "An attacker can exploit this issue to inject and execute arbitrary PHP
-  code in the context of the webserver process. This may facilitate a
-  compromise of the application and the underlying computer; other
-  attacks are also possible.";
+  script_tag(name:"impact", value:"An attacker can exploit this issue to inject and execute arbitrary PHP
+  code in the context of the webserver process. This may facilitate a compromise of the application and
+  the underlying computer. Other attacks are also possible.");
 
-  tag_affected = "Versions prior to phpMyAdmin 2.11.10.1 are affected.";
+  script_tag(name:"affected", value:"Versions prior to phpMyAdmin 2.11.10.1 are affected.");
 
-  tag_solution = "Vendor updates are available. Please see the references for more
-  information.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"solution", value:"Vendor updates are available. Please see the references for more
+  information.");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -85,14 +79,14 @@ dir = infos['location'];
 if( vers ) {
   if(!version_in_range(version: vers, test_version:"2.11",test_version2:"2.11.10")) {
     exit(0);
-  }  
-}  
+  }
+}
 
 if( ! dir ) exit( 0 );
 
 url = string(dir,"/scripts/setup.php");
 req = http_get(item:url, port:port);
-buf = http_keepalive_send_recv(port:port, data:req,bodyonly:FALSE);  
+buf = http_keepalive_send_recv(port:port, data:req,bodyonly:FALSE);
 
 if("<title>phpMyAdmin" >!< buf)exit(0);
 

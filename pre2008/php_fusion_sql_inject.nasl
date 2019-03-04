@@ -1,13 +1,13 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: php_fusion_sql_inject.nasl 5668 2017-03-21 14:16:34Z cfi $
+# $Id: php_fusion_sql_inject.nasl 13975 2019-03-04 09:32:08Z cfischer $
 #
 # PHP-Fusion members.php SQL injection
 #
 # Authors:
 # David Maciejak <david dot maciejak at kyxar dot fr>
 # based on work from (C) Tenable Network Security
-# Updated: 04/07/2009 Antu Sanadi <satnu@secpod.com> 
+# Updated: 04/07/2009 Antu Sanadi <satnu@secpod.com>
 # Fixes by Tenable:
 #   - added CVE and additional OSVDB xrefs.
 #
@@ -35,8 +35,8 @@ CPE = "cpe:/a:php-fusion:php-fusion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.15433");
-  script_version("$Revision: 5668 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 15:16:34 +0100 (Tue, 21 Mar 2017) $");
+  script_version("$Revision: 13975 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-04 10:32:08 +0100 (Mon, 04 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2004-2437", "CVE-2004-2438");
   script_bugtraq_id(11296, 12425);
@@ -50,15 +50,11 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("php-fusion/installed");
 
-  tag_summary = "A vulnerability exists in the remote version of PHP-Fusion that may
+  script_tag(name:"solution", value:"Upgrade to new version.");
+  script_tag(name:"summary", value:"A vulnerability exists in the remote version of PHP-Fusion that may
   allow an attacker to inject arbitrary SQL code and possibly execute
   arbitrary code, due to improper validation of user supplied input in the
-  'rowstart' parameter of script 'members.php'.";
-
-  tag_solution = "Upgrade to new version.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  'rowstart' parameter of script 'members.php'.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

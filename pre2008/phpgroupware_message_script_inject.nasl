@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phpgroupware_message_script_inject.nasl 5613 2017-03-20 10:08:39Z cfi $
+# $Id: phpgroupware_message_script_inject.nasl 13975 2019-03-04 09:32:08Z cfischer $
 #
 # PhpGroupWare Main Screen Message Script Injection Flaw
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:phpgroupware:phpgroupware";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.19754");
-  script_version("$Revision: 5613 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:08:39 +0100 (Mon, 20 Mar 2017) $");
+  script_version("$Revision: 13975 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-04 10:32:08 +0100 (Mon, 04 Mar 2019) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_bugtraq_id(14724);
   script_tag(name:"cvss_base", value:"4.3");
@@ -45,17 +45,11 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.phpgroupware.org/");
 
-  tag_summary = "The remote host seems to be running PhpGroupWare, is a multi-user groupware 
-  suite written in PHP.";
-
-  tag_insight = "This version is vulnerable to script injection, a malicious admin can inject
-  script code into the main screen message.";
-
-  tag_solution = "Update to version 0.9.16.007 or newer.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"insight", value:tag_insight);
+  script_tag(name:"solution", value:"Update to version 0.9.16.007 or newer.");
+  script_tag(name:"summary", value:"The remote host seems to be running PhpGroupWare, is a multi-user groupware
+  suite written in PHP.");
+  script_tag(name:"insight", value:"This version is vulnerable to script injection, a malicious admin can inject
+  script code into the main screen message.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

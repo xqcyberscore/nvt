@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_squid_42645.nasl 6891 2017-08-10 12:44:59Z cfischer $
+# $Id: gb_squid_42645.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # Squid 'DNS' Reply Remote Buffer Overflow Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:squid-cache:squid";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100774");
-  script_version("$Revision: 6891 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-10 14:44:59 +0200 (Thu, 10 Aug 2017) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-09-02 16:10:00 +0200 (Thu, 02 Sep 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -49,9 +49,9 @@ if(description)
   script_xref(name:"URL", value:"http://marc.info/?l=squid-users&m=128263555724981&w=2");
   script_xref(name:"URL", value:"http://www.squid-cache.org/");
 
-  script_tag(name:"affected", value:"Squid 3.1.6 is vulnerable; other versions may also be affected.");
+  script_tag(name:"affected", value:"Squid 3.1.6 is vulnerable. Other versions may also be affected.");
 
-  script_tag(name:"impact" , value:"An attacker can exploit this issue to execute arbitrary code within
+  script_tag(name:"impact", value:"An attacker can exploit this issue to execute arbitrary code within
   the context of the affected application. Failed exploit attempts will result in a denial-of-service condition.");
 
   script_tag(name:"solution", value:"Updates are available. Please see the references for details.");

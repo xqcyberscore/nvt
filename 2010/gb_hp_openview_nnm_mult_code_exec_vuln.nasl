@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_openview_nnm_mult_code_exec_vuln.nasl 5428 2017-02-27 07:50:09Z cfi $
+# $Id: gb_hp_openview_nnm_mult_code_exec_vuln.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # HP OpenView Network Node Manager Multiple Code Execution Vulnerabilities
 #
@@ -32,8 +32,8 @@ CPE = "cpe:/a:hp:openview_network_node_manager";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801388");
-  script_version("$Revision: 5428 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-27 08:50:09 +0100 (Mon, 27 Feb 2017) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-07-26 16:14:51 +0200 (Mon, 26 Jul 2010)");
   script_cve_id("CVE-2010-2704", "CVE-2010-2709");
   script_bugtraq_id(41839, 42154);
@@ -50,33 +50,25 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/512508");
   script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2010/1866");
   script_xref(name:"URL", value:"http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?objectID=c02290344");
+  script_xref(name:"URL", value:"http://support.openview.hp.com/selfsolve/patches");
 
-  tag_solution = "Upgrade to NNM v7.53 and apply the patch
-  http://support.openview.hp.com/selfsolve/patches";
+  script_tag(name:"summary", value:"This host is running HP OpenView Network Node Manager and
+  is prone to multiple code execution vulnerabilities.");
+  script_tag(name:"insight", value:"The multiple flaws are due to,
 
-  tag_impact = "Successful exploitation will allow attacker to execute arbitrary code in
-  the context of an application.
-
-  Impact Level: System/Application";
-
-  tag_affected = "HP OpenView Network Node Manager 7.51 and 7.53";
-
-  tag_insight = "The multiple flaws are due to,
-   - A buffer overflow error in 'CGI' executable when processing an overly long
+  - A buffer overflow error in 'CGI' executable when processing an overly long
      parameter value.
-   - A buffer overflow error in the 'ov.dll' library when processing certain
+
+  - A buffer overflow error in the 'ov.dll' library when processing certain
      arguments supplied via CGI executables.
-   - An error in 'webappmon.exe' CGI application, which fails to adequately
-     validate user-supplied input.";
 
-  tag_summary = "This host is running HP OpenView Network Node Manager and
-  is prone to multiple code execution vulnerabilities.";
+  - An error in 'webappmon.exe' CGI application, which fails to adequately
+     validate user-supplied input.");
+  script_tag(name:"affected", value:"HP OpenView Network Node Manager 7.51 and 7.53");
+  script_tag(name:"solution", value:"Upgrade to NNM v7.53 and apply the patch from the linked references.");
 
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"impact", value:tag_impact);
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary code in
+  the context of an application.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
@@ -91,7 +83,6 @@ if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 get_app_version( cpe:CPE, port:port );
 if( ! vers = get_kb_item( "www/"+ port + "/HP/OVNNM/Ver" ) ) exit( 0 );
 
-## Check for HP OpenView Network Node Manager equal to 7.51 and 07.53
 if( version_is_equal( version:vers, test_version:"B.07.51" ) ||
     version_is_equal( version:vers, test_version:"B.07.53" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"See references" );

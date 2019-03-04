@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_cartpress_plugin_xss_vuln.nasl 11861 2018-10-12 09:29:59Z cfischer $
+# $Id: gb_wordpress_cartpress_plugin_xss_vuln.nasl 13962 2019-03-01 14:14:42Z cfischer $
 #
 # WordPress CartPress Plugin 'tcp_post_ids' Parameter Cross Site Scripting Vulnerability
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802554");
-  script_version("$Revision: 11861 $");
+  script_version("$Revision: 13962 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mo, 17 Apr 2017)$");
   script_tag(name:"creation_date", value:"2012-01-04 13:54:24 +0530 (Wed, 04 Jan 2012)");
   script_name("WordPress CartPress Plugin 'tcp_post_ids' Parameter Cross Site Scripting Vulnerability");
   script_category(ACT_ATTACK);
-  script_copyright("Copyright(c) 2012 Greenbone Networks GmbH");
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_require_ports("Services/www", 80);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ipswitch_IMail_38109.nasl 7506 2017-10-19 11:45:46Z cfischer $
+# $Id: ipswitch_IMail_38109.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # Ipswitch IMail Server Multiple Local Privilege Escalation Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:ipswitch:imail_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100490");
-  script_version("$Revision: 7506 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-19 13:45:46 +0200 (Thu, 19 Oct 2017) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-02-08 23:29:56 +0100 (Mon, 08 Feb 2010)");
   script_bugtraq_id(38109);
   script_tag(name:"cvss_base", value:"7.5");
@@ -46,22 +46,17 @@ if(description)
   script_xref(name:"URL", value:"http://archives.neohapsis.com/archives/fulldisclosure/2010-02/0076.html");
   script_xref(name:"URL", value:"http://www.ipswitch.com/Products/IMail_Server/index.html");
 
-  tag_summary = "Ipswitch IMail Server is prone to multiple local privilege-escalation
-  vulnerabilities.";
+  script_tag(name:"impact", value:"Local attackers may exploit these issues to gain elevated privileges,
+  which may lead to a complete compromise of an affected computer.");
 
-  tag_impact = "Local attackers may exploit these issues to gain elevated privileges,
-  which may lead to a complete compromise of an affected computer.";
+  script_tag(name:"affected", value:"IMail Server 11.01 is affected. Other versions may also be
+  vulnerable.");
 
-  tag_affected = "IMail Server 11.01 is affected; other versions may also be
-  vulnerable.";
+  script_tag(name:"solution", value:"Vendor updates are available. Please contact the vendor for more
+  information.");
 
-  tag_solution = "Vendor updates are available. Please contact the vendor for more
-  information.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"Ipswitch IMail Server is prone to multiple local privilege-escalation
+  vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

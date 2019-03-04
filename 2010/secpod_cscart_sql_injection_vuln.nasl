@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_cscart_sql_injection_vuln.nasl 4561 2016-11-18 06:13:39Z ckuerste $
+# $Id: secpod_cscart_sql_injection_vuln.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # CS-Cart 'product_id' Parameter SQL Injection Vulnerability
 #
@@ -29,16 +29,16 @@ CPE = "cpe:/a:cs-cart:cs-cart";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901123");
-  script_version("$Revision: 4561 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-18 07:13:39 +0100 (Fri, 18 Nov 2016) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-06-16 08:26:33 +0200 (Wed, 16 Jun 2010)");
   script_cve_id("CVE-2009-4891");
   script_bugtraq_id(34048);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("CS-Cart 'product_id' Parameter SQL Injection Vulnerability");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/49154");
-  script_xref(name : "URL" , value : "http://www.milw0rm.com/exploits/8184");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/49154");
+  script_xref(name:"URL", value:"http://www.milw0rm.com/exploits/8184");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2010 SecPod");
@@ -46,21 +46,19 @@ if(description)
   script_dependencies("gb_cscart_detect.nasl");
   script_mandatory_keys("cs_cart/installed");
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow attacker to perform SQL Injection attack
-  and gain sensitive information.
-
-  Impact Level: Application");
-  script_tag(name : "affected" , value : "CS-Cart version 2.0.0 Beta 3");
-  script_tag(name : "insight" , value : "The flaw is caused by improper validation of user-supplied input via the
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to perform SQL Injection attack
+  and gain sensitive information.");
+  script_tag(name:"affected", value:"CS-Cart version 2.0.0 Beta 3");
+  script_tag(name:"insight", value:"The flaw is caused by improper validation of user-supplied input via the
   'product_id' parameter to index.php that allows attacker to manipulate
   SQL queries by injecting arbitrary SQL code.");
-  script_tag(name : "solution" , value : "Upgrade to CS-Cart version 2.0.15 or later,
-  For updates refer to http://www.cs-cart.com/");
-  script_tag(name : "summary" , value : "The host is running CS-Cart and is prone to SQL injection
+  script_tag(name:"solution", value:"Upgrade to CS-Cart version 2.0.15 or later.");
+  script_tag(name:"summary", value:"The host is running CS-Cart and is prone to SQL injection
   vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
+  script_xref(name:"URL", value:"http://www.cs-cart.com/");
   exit(0);
 }
 
@@ -74,7 +72,6 @@ if (!port = get_app_port(cpe: CPE))
 if (!csVer = get_app_version(cpe: CPE, port: port))
   exit(0);
 
-## Check for CS-Cart  version 2.0.0 Beta 3
 if(version_is_equal(version:csVer, test_version:"2.0.0.beta3")) {
   report = report_fixed_ver(installed_version: csVer, fixed_version: "2.0.15");
   security_message(port: port, data: report);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_spider_calendar_plugin_mult_sql_inj_vuln.nasl 11888 2018-10-12 15:27:49Z cfischer $
+# $Id: gb_wordpress_spider_calendar_plugin_mult_sql_inj_vuln.nasl 13962 2019-03-01 14:14:42Z cfischer $
 #
 # WordPress Spider Calendar Plugin Multiple SQL Injection Vulnerabilities
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803101");
-  script_version("$Revision: 11888 $");
+  script_version("$Revision: 13962 $");
   script_bugtraq_id(55779);
   script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Di, 25 Apr 2017)$");
   script_tag(name:"creation_date", value:"2012-10-18 19:07:20 +0530 (Thu, 18 Oct 2012)");
@@ -37,7 +37,7 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("WordPress Spider Calendar Plugin Multiple SQL Injection Vulnerabilities");
   script_category(ACT_ATTACK);
-  script_copyright("Copyright(c) 2012 Greenbone Networks GmbH");
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_require_ports("Services/www", 80);

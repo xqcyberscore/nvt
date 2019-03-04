@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webmedia_explorer_44598.nasl 9042 2018-03-07 12:12:57Z cfischer $
+# $Id: gb_webmedia_explorer_44598.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # Webmedia Explorer HTML Injection Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:webmediaexplorer:webmedia_explorer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100891");
-  script_version("$Revision: 9042 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-07 13:12:57 +0100 (Wed, 07 Mar 2018) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-11-03 12:47:25 +0100 (Wed, 03 Nov 2010)");
   script_bugtraq_id(44598);
   script_tag(name:"cvss_base", value:"2.6");
@@ -46,24 +46,23 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/44598");
   script_xref(name:"URL", value:"http://www.webmediaexplorer.com/");
 
-  tag_summary = "Webmedia Explorer is prone to an HTML-injection vulnerability because
-  it fails to properly sanitize user-supplied input before using it in
-  dynamically generated content.";
+  script_tag(name:"summary", value:"Webmedia Explorer is prone to an HTML-injection vulnerability because
+  it fails to properly sanitize user-supplied input before using it in dynamically generated content.");
 
-  tag_impact = "Successful exploits will allow attacker-supplied HTML and script
-  code to run in the context of the affected browser, potentially
-  allowing the attacker to steal cookie-based authentication
-  credentials or to control how the site is rendered to the user.
-  Other attacks are also possible.";
+  script_tag(name:"impact", value:"Successful exploits will allow attacker-supplied HTML and script
+  code to run in the context of the affected browser, potentially allowing the attacker to steal
+  cookie-based authentication credentials or to control how the site is rendered to the user.
+  Other attacks are also possible.");
 
-  tag_affected = "Webmedia Explorer 6.13.1 is vulnerable; other versions may also
-  be affected.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
+  script_tag(name:"affected", value:"Webmedia Explorer 6.13.1 is vulnerable. Other versions may also
+  be affected.");
 
   script_tag(name:"qod_type", value:"remote_banner");
+
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
   exit(0);
 }
@@ -78,6 +77,6 @@ if( version_is_equal( version:vers, test_version:"6.13.1" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"Unknown" );
   security_message( port:port, data:report );
   exit( 0 );
-}  
+}
 
 exit( 99 );

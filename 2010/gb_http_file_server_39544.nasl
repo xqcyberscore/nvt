@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_http_file_server_39544.nasl 11039 2018-08-17 12:26:47Z cfischer $
+# $Id: gb_http_file_server_39544.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # HTTP File Server Security Bypass and Denial of Service Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:httpfilesever:hfs";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100585");
-  script_version("$Revision: 11039 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 14:26:47 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-04-19 20:46:01 +0200 (Mon, 19 Apr 2010)");
   script_bugtraq_id(39544);
   script_tag(name:"cvss_base", value:"5.0");
@@ -51,8 +51,7 @@ if(description)
 
   script_tag(name:"affected", value:"HttpFileServer version 2.2e and prior.");
 
-  script_tag(name:"solution", value:"Update to version 2.2f or later,
-  For updates refer to http://www.rejetto.com/hfs");
+  script_tag(name:"solution", value:"Update to version 2.2f or later.");
 
   script_tag(name:"summary", value:"HTTP File Server is prone to multiple vulnerabilities including a security-
   bypass issue and a denial-of-service issue.");

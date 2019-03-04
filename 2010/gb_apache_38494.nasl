@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_38494.nasl 9220 2018-03-27 12:19:39Z cfischer $
+# $Id: gb_apache_38494.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # Apache Multiple Security Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100514");
-  script_version("$Revision: 9220 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-27 14:19:39 +0200 (Tue, 27 Mar 2018) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-03-04 12:28:05 +0100 (Thu, 04 Mar 2010)");
-  script_bugtraq_id(38494,38491);
-  script_cve_id("CVE-2010-0425","CVE-2010-0434","CVE-2010-0408","CVE-2007-6750");
+  script_bugtraq_id(38494, 38491);
+  script_cve_id("CVE-2010-0425", "CVE-2010-0434", "CVE-2010-0408", "CVE-2007-6750");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("Apache Multiple Security Vulnerabilities");
@@ -50,18 +50,10 @@ if(description)
   script_xref(name:"URL", value:"https://issues.apache.org/bugzilla/show_bug.cgi?id=48359");
   script_xref(name:"URL", value:"http://svn.apache.org/viewvc?view=revision&revision=917870");
 
-  tag_summary = "Apache is prone to multiple vulnerabilities.";
-
-  tag_impact = "These issues may lead to information disclosure or other attacks.";
-
-  tag_affected = "Apache versions prior to 2.2.15 are affected.";
-
-  tag_solution = "Upgrade to  Apache 2.2.15 or Later.";
-
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
+  script_tag(name:"affected", value:"Apache versions prior to 2.2.15 are affected.");
+  script_tag(name:"solution", value:"Upgrade to  Apache 2.2.15 or Later.");
+  script_tag(name:"summary", value:"Apache is prone to multiple vulnerabilities.");
+  script_tag(name:"impact", value:"These issues may lead to information disclosure or other attacks.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

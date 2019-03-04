@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cups_empty_udp_dos.nasl 7165 2017-09-18 08:57:44Z cfischer $
+# $Id: cups_empty_udp_dos.nasl 13975 2019-03-04 09:32:08Z cfischer $
 #
 # CUPS Empty UDP Datagram DoS Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:apple:cups";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.15900");
-  script_version("$Revision: 7165 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 10:57:44 +0200 (Mon, 18 Sep 2017) $");
+  script_version("$Revision: 13975 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-04 10:32:08 +0100 (Mon, 04 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -46,15 +46,11 @@ if(description)
   script_mandatory_keys("CUPS/installed");
   script_require_udp_ports(631);
 
-  tag_summary = "The target is running a CUPS server that supports browsing of network
-  printers and that is vulnerable to a limited type of denial of service
-  attack. Specifically, the browsing feature can be disabled by sending
-  an empty UDP datagram to the CUPS server.";
+  script_tag(name:"solution", value:"Upgrade to CUPS 1.1.21rc2 or later.");
 
-  tag_solution = "Upgrade to CUPS 1.1.21rc2 or later.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"The target is running a CUPS server that supports browsing of network
+  printers and that is vulnerable to a limited type of denial of service attack. Specifically, the browsing
+  feature can be disabled by sending an empty UDP datagram to the CUPS server.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_analysis");
@@ -65,6 +61,7 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
+include("misc_func.inc");
 
 # This function tries to add a printer using the browsing feature.
 #
@@ -88,50 +85,57 @@ function add_printer( port, name, desc ) {
       '"', desc, '" ',                  # Information
       '"n/a"'                           # Make and model
   );
-  #display( "debug: sending '", packet, "'.\n" );
   soc = open_sock_udp( port );
   # nb: open_sock_udp is unlikely to fail - after all, this is udp.
-  if( ! soc ) return FALSE;
+  if( ! soc )
+    return FALSE;
+
   send( socket:soc, data:string( packet, "\n" ) );
   close( soc );
 
-  # Check whether cupsd knows about the printer now.
   url = string( "/printers/", name );
-  #display( "debug: checking '", url, "'.\n" );
+
   req = http_get( item:url, port:port );
   res = http_keepalive_send_recv( port:port, data:req );
-  if( res == NULL ) return FALSE;           # can't connect
-  #display( "debug: received '", res, "'.\n" );
-  if( egrep( string:res, pattern:string( "Description: ", desc ) ) ) return TRUE;
-  return FALSE;
+  if(!res)
+    return FALSE; # can't connect
+
+  if( egrep( string:res, pattern:string( "Description: ", desc ) ) )
+    return TRUE;
+  else
+    return FALSE;
 }
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
 
+if( ! get_app_location( cpe:CPE, port:port ) )
+  exit( 0 );
+
+vtstrings = get_vt_strings();
 host = http_host_name( port:port );
 
 # NB: since ICMP unreachable are easily dropped by firewalls, we can't
 #     simply probe the UDP port: doing so would risk false positives.
 #     So, we'll try adding a printer using the browsing protocol and
 #     check whether it was indeed added.
-rc = add_printer( port:port, name:"openvas_test1", desc:"OpenVAS Plugin Test #1" );
+rc = add_printer( port:port, name:vtstrings["lowercase"] + "_test1", desc:vtstrings["default"] + " Test #1" );
 
 if( rc ) {
-  #display( "debug: browsing works; sending empty datagram.\n" );
+
   soc = open_sock_udp( port );
   # nb: open_sock_udp is unlikely to fail - after all, this is udp.
-  if( ! soc ) exit( 0 );
+  if( ! soc )
+    exit( 0 );
+
   send( socket:soc, data:"" );
   close( soc );
   # NB: if browsing is disabled, cups error log will have lines like:
   #   Oct  6 16:28:18 salt cupsd[26671]: Browse recv failed - No such file or directory.
   #   Oct  6 16:28:18 salt cupsd[26671]: Browsing turned off.
 
-  # Check whether browsing is still enabled.
-  #display( "debug: testing if port is still open.\n" );
-  rc = add_printer( port:port, name:"openvas_test2", desc:"OpenVAS Plugin Test #2" );
+  rc = add_printer( port:port, name:vtstrings["lowercase"] + "_test2", desc:vtstrings["default"] + " Test #2" );
   if( ! rc ) {
-    #display( "debug: looks like the browser was disabled.\n" );
     security_message( port:port, proto:"udp" );
     exit ( 0 );
   }

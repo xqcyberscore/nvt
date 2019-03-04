@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_30649.nasl 10459 2018-07-09 07:41:24Z cfischer $
+# $Id: gb_php_30649.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # PHP Multiple Buffer Overflow Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100583");
-  script_version("$Revision: 10459 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 09:41:24 +0200 (Mon, 09 Jul 2018) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-04-19 20:46:01 +0200 (Mon, 19 Apr 2010)");
   script_bugtraq_id(30649);
-  script_cve_id("CVE-2008-3659","CVE-2008-3658");
+  script_cve_id("CVE-2008-3659", "CVE-2008-3658");
   script_name("PHP Multiple Buffer Overflow Vulnerabilities");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

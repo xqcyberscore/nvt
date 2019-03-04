@@ -19,8 +19,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108546");
-  script_version("$Revision: 13556 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-09 17:37:50 +0100 (Sat, 09 Feb 2019) $");
+  script_version("$Revision: 13959 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 12:27:26 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-02-09 16:58:00 +0100 (Sat, 09 Feb 2019)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -61,7 +61,7 @@ close( soc );
 # -> https://github.com/wazuh/wazuh/blob/5e71e413f6dc549e68dbc2bc16793c62d314cada/src/os_auth/main-server.c#L1107
 # OSSEC K:'agentkey'
 # -> https://github.com/ossec/ossec-hids/blob/3951139adbdb33126de684f9172cc5b017f2f4f0/src/os_auth/main-server.c#L522
-# 
+#
 # nb: If password auth is enabled or the client needs to provide a valid cert we're not getting a response from the service.
 
 if( ! buf || ( buf !~ "^OSSEC K:'.+'" && "ERROR: Unable to add agent." >!< buf ) )

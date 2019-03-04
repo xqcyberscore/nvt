@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_social_discussions_plugin_mult_vuln.nasl 11857 2018-10-12 08:25:16Z cfischer $
+# $Id: gb_wordpress_social_discussions_plugin_mult_vuln.nasl 13962 2019-03-01 14:14:42Z cfischer $
 #
 # WordPress Social Discussions Plugin Multiple Vulnerabilities
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803100");
-  script_version("$Revision: 11857 $");
+  script_version("$Revision: 13962 $");
   script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fr, 14 Apr 2017)$");
   script_tag(name:"creation_date", value:"2012-10-18 13:12:20 +0530 (Thu, 18 Oct 2012)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_name("WordPress Social Discussions Plugin Multiple Vulnerabilities");
   script_category(ACT_ATTACK);
-  script_copyright("Copyright(c) 2012 Greenbone Networks GmbH");
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_require_ports("Services/www", 80);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: openca_sign_verif.nasl 6056 2017-05-02 09:02:50Z teissa $
+# $Id: openca_sign_verif.nasl 13975 2019-03-04 09:32:08Z cfischer $
 #
 # OpenCA signature verification flaw
 #
@@ -32,8 +32,8 @@ CPE = "cpe:/a:openca:openca";
 if(description) {
 
   script_oid("1.3.6.1.4.1.25623.1.0.14715");
-  script_version("$Revision: 6056 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
+  script_version("$Revision: 13975 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-04 10:32:08 +0100 (Mon, 04 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(9435);
   script_cve_id("CVE-2004-0004");
@@ -48,16 +48,13 @@ if(description) {
   script_require_ports("Services/www", 80);
   script_mandatory_keys("openca/installed");
 
-  tag_summary = "The remote host seems to be running an older version of OpenCA. 
+  script_tag(name:"solution", value:"Upgrade to the newest version of this software.");
 
-  It is reported that OpenCA versions up to and incluing 0.9.1.6 contains 
-  a flaw that may lead an attacker to bypass signature verification of a 
-  certificate.";
+  script_tag(name:"summary", value:"The remote host seems to be running an older version of OpenCA.
 
-  tag_solution = "Upgrade to the newest version of this software.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  It is reported that OpenCA versions up to and including 0.9.1.6 contains
+  a flaw that may lead an attacker to bypass signature verification of a
+  certificate.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

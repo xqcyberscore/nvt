@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_xwork_cmd_exec_vuln.nasl 11581 2018-09-25 06:12:55Z cfischer $
+# $Id: gb_apache_struts_xwork_cmd_exec_vuln.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # Apache Struts2/XWork Remote Command Execution Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801663");
-  script_version("$Revision: 11581 $");
+  script_version("$Revision: 13960 $");
   script_cve_id("CVE-2010-1870");
   script_bugtraq_id(41592);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:12:55 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-12-21 15:42:46 +0100 (Tue, 21 Dec 2010)");
   script_name("Apache Struts2/XWork Remote Command Execution Vulnerability");
   script_category(ACT_ATTACK);
@@ -64,13 +64,12 @@ if(description)
 
   script_tag(name:"affected", value:"Struts version 2.0.0 through 2.1.8.1");
 
-  script_tag(name:"solution", value:"Upgrade to Struts version 2.2 or later.
-
-  For updates refer to http://struts.apache.org/download.cgi");
+  script_tag(name:"solution", value:"Upgrade to Struts version 2.2 or later.");
 
   script_tag(name:"qod_type", value:"exploit");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://struts.apache.org/download.cgi");
   exit(0);
 }
 

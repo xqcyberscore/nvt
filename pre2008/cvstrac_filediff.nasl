@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cvstrac_filediff.nasl 9330 2018-04-05 12:11:08Z cfischer $
+# $Id: cvstrac_filediff.nasl 13975 2019-03-04 09:32:08Z cfischer $
 #
 # CVSTrac filediff vulnerability
 #
@@ -32,8 +32,8 @@ CPE = "cpe:/a:cvstrac:cvstrac";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14220");
-  script_version("$Revision: 9330 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-05 14:11:08 +0200 (Thu, 05 Apr 2018) $");
+  script_version("$Revision: 13975 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-04 10:32:08 +0100 (Mon, 04 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2004-1456");
   script_bugtraq_id(10878);
@@ -55,13 +55,9 @@ if(description)
 
   This version of filediff has a flaw in the input sanitation
   which, when exploited, can lead to a remote attacker
-  executing arbitrary commands on the system.
+  executing arbitrary commands on the system.");
 
-  ***** OpenVAS has determined the vulnerability exists on the target
-  ***** simply by looking at the version number(s) of CVSTrac
-  ***** installed there.");
-
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);
@@ -77,6 +73,6 @@ if( ereg( pattern:"^(0\.|1\.(0|1\.[0-3]([^0-9]|$)))", string:vers ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"1.1.4" );
   security_message( port:port, data:report );
   exit( 0 );
-}  
+}
 
 exit( 99 );

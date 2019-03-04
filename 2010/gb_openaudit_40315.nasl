@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openaudit_40315.nasl 11499 2018-09-20 10:38:00Z ckuersteiner $
+# $Id: gb_openaudit_40315.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # Open-Audit Multiple Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:opmantek:open-audit';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100654");
-  script_version("$Revision: 11499 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 12:38:00 +0200 (Thu, 20 Sep 2018) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-05-25 18:01:00 +0200 (Tue, 25 May 2010)");
   script_bugtraq_id(40315);
   script_tag(name:"cvss_base", value:"7.5");
@@ -60,7 +60,7 @@ scripts in the context of the webserver process, other attacks are also possible
 
 Open-Audit 20081013 and 20091223-RC are vulnerable, other versions may also be affected.");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

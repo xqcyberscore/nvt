@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ipswitch_IMail_version.nasl 7506 2017-10-19 11:45:46Z cfischer $
+# $Id: ipswitch_IMail_version.nasl 13975 2019-03-04 09:32:08Z cfischer $
 #
 # IMail account hijack
 #
@@ -44,8 +44,8 @@ CPE = "cpe:/a:ipswitch:imail_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11271");
-  script_version("$Revision: 7506 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-19 13:45:46 +0200 (Thu, 19 Oct 2017) $");
+  script_version("$Revision: 13975 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-04 10:32:08 +0100 (Mon, 04 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -56,15 +56,11 @@ if(description)
   script_dependencies("gb_ipswitch_imail_server_detect.nasl");
   script_mandatory_keys("Ipswitch/IMail/detected");
 
-  tag_summary = "The remote host is running IMail web interface. In this version,
+  script_tag(name:"solution", value:"Upgrade to IMail 7.06 or turn off the 'ignore source address in
+  security check' option.");
+  script_tag(name:"summary", value:"The remote host is running IMail web interface. In this version,
   the session is maintained via the URL. It will be disclosed in the Referer field
-  if you receive an email with external links (e.g. images)";
-
-  tag_solution = "Upgrade to IMail 7.06 or turn off the 'ignore source address in
-  security check' option.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  if you receive an email with external links (e.g. images)");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

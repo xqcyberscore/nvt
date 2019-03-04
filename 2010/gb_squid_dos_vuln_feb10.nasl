@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_squid_dos_vuln_feb10.nasl 6891 2017-08-10 12:44:59Z cfischer $
+# $Id: gb_squid_dos_vuln_feb10.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # Squid 'lib/rfc1035.c' Denial Of Service Vulnerability
 #
@@ -33,8 +33,8 @@ CPE = "cpe:/a:squid-cache:squid";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800460");
-  script_version("$Revision: 6891 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-10 14:44:59 +0200 (Thu, 10 Aug 2017) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-02-08 10:53:20 +0100 (Mon, 08 Feb 2010)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
@@ -52,33 +52,18 @@ if(description)
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/56001");
   script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2010/0260");
   script_xref(name:"URL", value:"http://www.squid-cache.org/Advisories/SQUID-2010_1.txt");
+  script_xref(name:"URL", value:"http://www.squid-cache.org/Versions/v2/HEAD/changesets/12597.patch");
+  script_xref(name:"URL", value:"http://www.squid-cache.org/Versions/v3/3.0/changesets/squid-3.0-9163.patch");
+  script_xref(name:"URL", value:"http://www.squid-cache.org/Versions/v3/3.1/changesets/squid-3.1-9853.patch");
 
-  tag_solution = "Apply patches or upgrade to the squid version 3.0.STABLE23 or 3.1.0.16
-  http://www.squid-cache.org/Download/
-  http://www.squid-cache.org/Versions/v2/HEAD/changesets/12597.patch
-  http://www.squid-cache.org/Versions/v3/3.0/changesets/squid-3.0-9163.patch
-  http://www.squid-cache.org/Versions/v3/3.1/changesets/squid-3.1-9853.patch
-
-  *****
-  NOTE : Ignore this warning, if above mentioned patch is already applied.
-  *****";
-
-  tag_impact = "Successful exploitation could allow remote attackers to cause a denial of service
-  via a crafted auth header.";
-
-  tag_affected = "Squid Version 2.x, 3.0 to 3.0.STABLE22, and  3.1 to 3.1.0.15";
-
-  tag_insight = "The flaw is due to error in 'lib/rfc1035.c' when, processing crafted DNS
-  packet that only contains a header.";
-
-  tag_summary = "This host is running Squid and is prone to Denial of Service
-  vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to cause a denial of service
+  via a crafted auth header.");
+  script_tag(name:"affected", value:"Squid Version 2.x, 3.0 to 3.0.STABLE22, and  3.1 to 3.1.0.15");
+  script_tag(name:"insight", value:"The flaw is due to error in 'lib/rfc1035.c' when, processing crafted DNS
+  packet that only contains a header.");
+  script_tag(name:"summary", value:"This host is running Squid and is prone to Denial of Service
+  vulnerability.");
+  script_tag(name:"solution", value:"Apply patches from the references or upgrade to the squid version 3.0.STABLE23 or 3.1.0.16.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

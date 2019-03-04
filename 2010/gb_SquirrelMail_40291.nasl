@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_SquirrelMail_40291.nasl 6071 2017-05-04 16:19:49Z cfi $
+# $Id: gb_SquirrelMail_40291.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # SquirrelMail 'mail_fetch' Remote Information Disclosure Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:squirrelmail:squirrelmail';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100688");
-  script_version("$Revision: 6071 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-04 18:19:49 +0200 (Thu, 04 May 2017) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-06-22 12:10:21 +0200 (Tue, 22 Jun 2010)");
   script_bugtraq_id(40291);
   script_tag(name:"cvss_base", value:"4.0");
@@ -44,27 +44,19 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("squirrelmail/installed");
 
-  script_xref(name:"URL", value: "https://www.securityfocus.com/bid/40291");
-  script_xref(name:"URL", value: "http://permalink.gmane.org/gmane.comp.security.oss.general/2935");
-  script_xref(name:"URL", value: "http://permalink.gmane.org/gmane.comp.security.oss.general/3064");
-  script_xref(name:"URL", value: "http://permalink.gmane.org/gmane.comp.security.oss.general/2936");
-  script_xref(name:"URL", value: "http://conference.hitb.org/hitbsecconf2010dxb/materials/D1%20-%20Laurent%20Oudot%20-%20Improving%20the%20Stealthiness%20of%20Web%20Hacking.pdf#page=69");
-  script_xref(name:"URL", value: "http://www.squirrelmail.org");
+  script_xref(name:"URL", value:"https://www.securityfocus.com/bid/40291");
+  script_xref(name:"URL", value:"http://permalink.gmane.org/gmane.comp.security.oss.general/2935");
+  script_xref(name:"URL", value:"http://permalink.gmane.org/gmane.comp.security.oss.general/3064");
+  script_xref(name:"URL", value:"http://permalink.gmane.org/gmane.comp.security.oss.general/2936");
+  script_xref(name:"URL", value:"http://conference.hitb.org/hitbsecconf2010dxb/materials/D1%20-%20Laurent%20Oudot%20-%20Improving%20the%20Stealthiness%20of%20Web%20Hacking.pdf#page=69");
+  script_xref(name:"URL", value:"http://www.squirrelmail.org");
 
-  tag_summary = "SquirrelMail is prone to a remote information-disclosure
-  vulnerability.";
-
-  tag_impact = "Attackers can exploit this issue to obtain potentially sensitive
-  information that may lead to further attacks.";
-
-  tag_affected = "This issue affects SquirrelMail 1.4.x versions.";
-
-  tag_solution = "Updates are available. Please see the references for more information.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"impact", value:"Attackers can exploit this issue to obtain potentially sensitive
+  information that may lead to further attacks.");
+  script_tag(name:"affected", value:"This issue affects SquirrelMail 1.4.x versions.");
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
+  script_tag(name:"summary", value:"SquirrelMail is prone to a remote information-disclosure
+  vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

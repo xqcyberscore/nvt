@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: DDI_IPSwitch-IMail-SMTP-Buffer-Overflow.nasl 7506 2017-10-19 11:45:46Z cfischer $
+# $Id: DDI_IPSwitch-IMail-SMTP-Buffer-Overflow.nasl 13975 2019-03-04 09:32:08Z cfischer $
 #
 # IPSwitch IMail SMTP Buffer Overflow
 #
@@ -32,8 +32,8 @@ CPE = "cpe:/a:ipswitch:imail_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10994");
-  script_version("$Revision: 7506 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-19 13:45:46 +0200 (Thu, 19 Oct 2017) $");
+  script_version("$Revision: 13975 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-04 10:32:08 +0100 (Mon, 04 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(2083, 2651);
   script_tag(name:"cvss_base", value:"7.5");
@@ -46,22 +46,18 @@ if(description)
   script_dependencies("gb_ipswitch_imail_server_detect.nasl");
   script_mandatory_keys("Ipswitch/IMail/detected");
 
-  tag_summary = "A vulnerability exists within IMail that allows remote attackers to gain SYSTEM level
-  access to servers running IMail's SMTP daemon (versions 6.06 and below).";
+  script_xref(name:"URL", value:"http://ipswitch.com/support/IMail/patch-upgrades.html");
 
-  tag_insight = "The vulnerability stems from the IMail SMTP daemon not doing proper bounds checking on
-  various input data that gets passed to the IMail Mailing List handler code.";
+  script_tag(name:"impact", value:"If an attacker crafts a special buffer and sends it to a remote IMail SMTP server
+  it is possible that an attacker can remotely execute code (commands) on the IMail system.");
 
-  tag_impact = "If an attacker crafts a special buffer and sends it to a remote IMail SMTP server
-  it is possible that an attacker can remotely execute code (commands) on the IMail system.";
+  script_tag(name:"insight", value:"The vulnerability stems from the IMail SMTP daemon not doing proper bounds checking on
+  various input data that gets passed to the IMail Mailing List handler code.");
 
-  tag_solution = "Download the latest patch from
-  http://ipswitch.com/support/IMail/patch-upgrades.html";
+  script_tag(name:"solution", value:"Download the latest patch from the linked references.");
 
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"A vulnerability exists within IMail that allows remote attackers to gain SYSTEM level
+  access to servers running IMail's SMTP daemon (versions 6.06 and below).");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

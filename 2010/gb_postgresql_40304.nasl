@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postgresql_40304.nasl 7406 2017-10-12 06:15:28Z cfischer $
+# $Id: gb_postgresql_40304.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # PostgreSQL 'RESET ALL' Unauthorized Access Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:postgresql:postgresql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100648");
-  script_version("$Revision: 7406 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-12 08:15:28 +0200 (Thu, 12 Oct 2017) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-05-21 13:16:55 +0200 (Fri, 21 May 2010)");
   script_bugtraq_id(40304);
   script_cve_id("CVE-2010-1975");
@@ -53,13 +53,11 @@ if(description)
   script_xref(name:"URL", value:"http://www.postgresql.org/docs/current/static/release-8-0-25.html");
   script_xref(name:"URL", value:"http://www.postgresql.org/docs/current/static/release-7-4-29.html");
 
-  tag_summary = "PostgreSQL is prone to an unauthorized-access vulnerability.";
-
-  tag_impact = "Attackers can exploit this issue to reset special parameter
+  script_tag(name:"summary", value:"PostgreSQL is prone to an unauthorized-access vulnerability.");
+  script_tag(name:"impact", value:"Attackers can exploit this issue to reset special parameter
   settings only a root user should be able to modify. This may aid in
-  further attacks.";
-
-  tag_affected = "This issue affects versions prior to the following PostgreSQL
+  further attacks.");
+  script_tag(name:"affected", value:"This issue affects versions prior to the following PostgreSQL
   versions:
 
   7.4.29
@@ -72,14 +70,8 @@ if(description)
 
   8.3.11
 
-  8.4.4";
-
-  tag_solution = "Updates are available. Please see the references for more information.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
+  8.4.4");
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

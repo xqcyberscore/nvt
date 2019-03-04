@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opc_ua_detect.nasl 13945 2019-03-01 02:50:02Z ckuersteiner $
+# $Id: gb_opc_ua_detect.nasl 13974 2019-03-04 08:18:06Z ckuersteiner $
 #
 # OPC-UA Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140050");
-  script_version("$Revision: 13945 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-01 03:50:02 +0100 (Fri, 01 Mar 2019) $");
+  script_version("$Revision: 13974 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-04 09:18:06 +0100 (Mon, 04 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-11-03 14:59:49 +0100 (Thu, 03 Nov 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -347,6 +347,7 @@ if (strlen(recv) != 4 || (recv !~ '^ACKF' && recv !~ '^ERRF')) {
   exit(0);
 }
 
+set_kb_item(name: "opcua/detected", value: TRUE);
 register_service(port: port, proto: 'opc-ua');
 
 # OpenSecureChannelRequest

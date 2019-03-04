@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpcoin_mod_lfi_vuln.nasl 4709 2016-12-08 09:44:07Z cfi $
+# $Id: gb_phpcoin_mod_lfi_vuln.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # phpCOIN 'mod' Parameter Local File Include Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:phpcoin:phpcoin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800736");
-  script_version("$Revision: 4709 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-08 10:44:07 +0100 (Thu, 08 Dec 2016) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-03-18 15:44:57 +0100 (Thu, 18 Mar 2010)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -47,26 +47,14 @@ if(description)
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/56721");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/11641");
 
-  tag_impact = "Successful exploitation will allow attacker to obtain sensitive information
-  and attacker can include arbitrary files.
-
-  Impact Level: Application.";
-
-  tag_affected = "phpCOIN version 1.2.1 and prior";
-
-  tag_insight = "The flaw exists in 'mod.php' as it fails to properly sanitize user-supplied
-  data, which allows remote attacker to include arbitrary files.";
-
-  tag_solution = "Upgrade to phpCOIN version 1.6.5 or higher";
-
-  tag_summary = "This host is running phpCOIN and is prone to local file include
-  vulnerability.";
-
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
+  script_tag(name:"insight", value:"The flaw exists in 'mod.php' as it fails to properly sanitize user-supplied
+  data, which allows remote attacker to include arbitrary files.");
+  script_tag(name:"solution", value:"Upgrade to phpCOIN version 1.6.5 or higher");
+  script_tag(name:"summary", value:"This host is running phpCOIN and is prone to local file include
+  vulnerability.");
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to obtain sensitive information
+  and attacker can include arbitrary files.");
+  script_tag(name:"affected", value:"phpCOIN version 1.2.1 and prior");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -80,7 +68,6 @@ include("host_details.inc");
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
-## Check Version less then 1.2.2
 if( version_is_less( version:vers, test_version:"1.2.2" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"1.6.5" );
   security_message( port:port, data:report );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_myeasybackup_plugin_dir_trav_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_wordpress_myeasybackup_plugin_dir_trav_vuln.nasl 13962 2019-03-01 14:14:42Z cfischer $
 #
 # WordPress myEASYbackup Plugin 'dwn_file' Parameter Directory Traversal Vulnerability
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802380");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 13962 $");
   script_cve_id("CVE-2012-0898");
   script_bugtraq_id(51433);
   script_tag(name:"cvss_base", value:"5.0");
@@ -38,7 +38,7 @@ if(description)
   script_tag(name:"creation_date", value:"2012-01-17 12:16:44 +0530 (Tue, 17 Jan 2012)");
   script_name("WordPress myEASYbackup Plugin 'dwn_file' Parameter Directory Traversal Vulnerability");
   script_category(ACT_ATTACK);
-  script_copyright("Copyright(c) 2012 Greenbone Networks GmbH");
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("secpod_wordpress_detect_900182.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);

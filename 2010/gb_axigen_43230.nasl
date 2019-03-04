@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_axigen_43230.nasl 8052 2017-12-08 10:13:55Z ckuersteiner $
+# $Id: gb_axigen_43230.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # Axigen Webmail Directory Traversal Vulnerability
 #
@@ -28,39 +28,42 @@ CPE = "cpe:/a:gecad_technologies:axigen_mail_server";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.100805");
- script_version("$Revision: 8052 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-08 11:13:55 +0100 (Fri, 08 Dec 2017) $");
- script_tag(name:"creation_date", value:"2010-09-15 18:43:03 +0200 (Wed, 15 Sep 2010)");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_cve_id("CVE-2010-3459", "CVE-2010-3460");
- script_bugtraq_id(43230);
+  script_oid("1.3.6.1.4.1.25623.1.0.100805");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2010-09-15 18:43:03 +0200 (Wed, 15 Sep 2010)");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_cve_id("CVE-2010-3459", "CVE-2010-3460");
+  script_bugtraq_id(43230);
 
- script_name("Axigen Webmail Directory Traversal Vulnerability");
+  script_name("Axigen Webmail Directory Traversal Vulnerability");
 
- script_xref(name: "URL", value: "https://www.securityfocus.com/bid/43230");
- script_xref(name: "URL", value: "http://www.axigen.com/");
- script_xref(name: "URL", value: "http://www.axigen.com/press/product-releases/axigen-releases-version-742_74.html");
+  script_xref(name:"URL", value:"https://www.securityfocus.com/bid/43230");
+  script_xref(name:"URL", value:"http://www.axigen.com/");
+  script_xref(name:"URL", value:"http://www.axigen.com/press/product-releases/axigen-releases-version-742_74.html");
 
- script_tag(name:"qod_type", value:"remote_vul");
- script_category(ACT_ATTACK);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("axigen_web_detect.nasl");
- script_mandatory_keys("axigen/installed");
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
+  script_dependencies("axigen_web_detect.nasl");
+  script_mandatory_keys("axigen/installed");
 
- script_tag(name: "solution", value: "Vendor updates are available. Please see the references for more
-information.");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name: "summary", value: "Axigen Webmail is prone to a directory-traversal vulnerability because it
-fails to sufficiently sanitize user-supplied input.
+  script_tag(name:"solution", value:"Vendor updates are available. Please see the references for more
+  information.");
 
-Exploiting this issue may allow an attacker to obtain sensitive information that could aid in further attacks.
+  script_tag(name:"summary", value:"Axigen Webmail is prone to a directory-traversal vulnerability because it
+  fails to sufficiently sanitize user-supplied input.");
 
-Axigen Webmail 7.4.1 is vulnerable; other versions may be affected.");
+  script_tag(name:"impact", value:"Exploiting this issue may allow an attacker to obtain sensitive information that
+  could aid in further attacks.");
 
- exit(0);
+  script_tag(name:"affected", value:"Axigen Webmail 7.4.1 is vulnerable. Other versions may be affected.");
+
+  exit(0);
 }
 
 include("host_details.inc");
@@ -75,8 +78,8 @@ if (!dir = get_app_location(cpe: CPE, port: port))
 
 if (dir == "/")
   dir = "";
-   
-url = string(dir, "/..%5c..%5crun/axigen.cfg"); 
+
+url = string(dir, "/..%5c..%5crun/axigen.cfg");
 
 if(http_vuln_check(port:port, url:url, pattern:"Server {", check_header: TRUE,
                    extra_check: make_list("Server: Axigen-Webmail","sslRandomFile","listeners"))) {

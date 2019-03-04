@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_iis_bof_vuln.nasl 10833 2018-08-08 10:35:26Z cfischer $
+# $Id: gb_ms_iis_bof_vuln.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # Microsoft IIS ASP Stack Based Buffer Overflow Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:microsoft:iis";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801520");
-  script_version("$Revision: 10833 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-08 12:35:26 +0200 (Wed, 08 Aug 2018) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-10-08 08:29:14 +0200 (Fri, 08 Oct 2010)");
   script_bugtraq_id(43138);
   script_cve_id("CVE-2010-2730");
@@ -50,9 +50,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/bulletin/ms10-065.mspx");
 
   script_tag(name:"impact", value:"Successful exploitation will let the remote unauthenticated attackers to force
-  the IIS server to become unresponsive until the IIS service is restarted manually by the administrator.
-
-  Impact Level: Application");
+  the IIS server to become unresponsive until the IIS service is restarted manually by the administrator.");
 
   script_tag(name:"affected", value:"Microsoft Internet Information Services version 6.0");
 
@@ -60,9 +58,7 @@ if(description)
   process which can be exploited using a crafted POST request to hosted 'ASP' pages.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-
-  http://www.microsoft.com/technet/security/bulletin/ms10-065.mspx");
+  update mentioned hotfixes in the advisory");
 
   script_tag(name:"summary", value:"The host is running Microsoft IIS Webserver and is prone to
   stack based buffer overflow vulnerability.");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_edirectory_session_hijack_vuln.nasl 5772 2017-03-29 16:44:30Z mime $
+# $Id: gb_novell_edirectory_session_hijack_vuln.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # Novell eDirectory 'DHOST' Cookie Hijack Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800731");
-  script_version("$Revision: 5772 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-29 18:44:30 +0200 (Wed, 29 Mar 2017) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-03-10 15:48:25 +0100 (Wed, 10 Mar 2010)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -43,36 +43,20 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.metasploit.com/modules/auxiliary/admin/edirectory/edirectory_dhost_cookie");
 
-  tag_impact = "Successful exploitation will allow remote attackers to hijack arbitrary
-  sessions.
-
-  Impact Level: Application.";
-
-  tag_affected = "Novell eDirectory version 8.8.5 and prior.";
-
-  tag_insight = "The flaw is due to error in an 'DHOST' module when handling DHOST web
+  script_tag(name:"insight", value:"The flaw is due to error in an 'DHOST' module when handling DHOST web
   services. An attacker would wait until the real administrator logs in, then
-  specify the predicted cookie value to hijack their session.";
-
-  tag_solution = "Apply the vendor provided patch. For more information
-  refer to http://www.novell.com/support/kb/doc.php?id=3426981
-
-  *****
-  NOTE: Ignore this warning if above mentioned versions of modules are already installed.
-  *****";
-
-  tag_summary = "This host is running Novell eDirectory is prone to Session Cookie
-  hijack vulnerability.";
-
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
+  specify the predicted cookie value to hijack their session.");
+  script_tag(name:"solution", value:"Apply the vendor provided patch.");
+  script_tag(name:"summary", value:"This host is running Novell eDirectory is prone to Session Cookie
+  hijack vulnerability.");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to hijack arbitrary
+  sessions.");
+  script_tag(name:"affected", value:"Novell eDirectory version 8.8.5 and prior.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
 
+  script_xref(name:"URL", value:"http://www.novell.com/support/kb/doc.php?id=3426981");
   exit(0);
 }
 
@@ -87,15 +71,15 @@ if( ! major = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 if( ! sp = get_kb_item( "ldap/eDirectory/" + port + "/sp" ) )
   sp = "0";
 
-invers = major;
+reportver = major;
 
 if( sp > 0 )
-  invers += ' SP' + sp;
+  reportver += ' SP' + sp;
 
 edirVer = major + '.' + sp;
 
 if(version_in_range(version:edirVer, test_version:"8.8", test_version2:"8.8.5")){
-  report =  report_fixed_ver( installed_version:invers, fixed_version:"See advisory" );
+  report = report_fixed_ver( installed_version:reportver, fixed_version:"See advisory" );
   security_message( port:port, data:report );
   exit( 0 );
 }

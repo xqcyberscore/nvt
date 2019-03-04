@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_perl_io_socket_ssl_45189.nasl 12740 2018-12-10 11:49:57Z cfischer $
+# $Id: gb_perl_io_socket_ssl_45189.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # Perl IO::Socket::SSL 'verify_mode' Security Bypass Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:io-socket-ssl:io-socket-ssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100934");
-  script_version("$Revision: 12740 $");
+  script_version("$Revision: 13960 $");
   script_cve_id("CVE-2010-4334");
   script_bugtraq_id(45189);
-  script_tag(name:"last_modification", value:"$Date: 2018-12-10 12:49:57 +0100 (Mon, 10 Dec 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-12-06 15:55:47 +0100 (Mon, 06 Dec 2010)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:N");
@@ -66,10 +66,10 @@ if(description)
 
 include("host_details.inc");
 include("version_func.inc");
- 
+
 if( ! infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE ) )
   exit( 0 );
- 
+
 vers = infos['version'];
 path = infos['location'];
 
@@ -78,5 +78,5 @@ if( version_is_less( version:vers, test_version:"1.35" ) ) {
   security_message( port:0, data:report );
   exit( 0 );
 }
- 
+
 exit( 99 );

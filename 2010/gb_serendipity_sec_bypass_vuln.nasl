@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_serendipity_sec_bypass_vuln.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: gb_serendipity_sec_bypass_vuln.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # Serendipity 'Xinha WYSIWYG' Editor Security Bypass Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:s9y:serendipity";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801337");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-05-19 14:50:39 +0200 (Wed, 19 May 2010)");
   script_cve_id("CVE-2010-1916");
   script_tag(name:"cvss_base", value:"7.5");
@@ -59,13 +59,13 @@ if(description)
 
   - crafted 'backend_data' and 'backend_data[key_location]' variables, which
      are not properly handled by the 'xinha_read_passed_data()' function.");
-  script_tag(name:"solution", value:"Upgrade to Serendipity version 1.5.3 or later.
-  For updates refer to http://www.s9y.org/12.html");
+  script_tag(name:"solution", value:"Upgrade to Serendipity version 1.5.3 or later.");
   script_tag(name:"summary", value:"This host is running Serendipity and is prone to security bypass
   vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.s9y.org/12.html");
   exit(0);
 }
 

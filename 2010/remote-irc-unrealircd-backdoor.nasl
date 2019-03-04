@@ -1,12 +1,12 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: remote-irc-unrealircd-backdoor.nasl 5433 2017-02-27 12:16:32Z cfi $
+# $Id: remote-irc-unrealircd-backdoor.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
-# Check for Backdoor in UnrealIRCd 
+# Check for Backdoor in UnrealIRCd
 #
 # Authors:
 # Vlatko Kosturjak <kost@linux.hr>
-# 
+#
 # Updated by:
 # Michael Meyer <michael.meyer@greenbone.net>
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:unrealircd:unrealircd";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80111");
-  script_version("$Revision: 5433 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-27 13:16:32 +0100 (Mon, 27 Feb 2017) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-06-13 17:55:39 +0200 (Sun, 13 Jun 2010)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

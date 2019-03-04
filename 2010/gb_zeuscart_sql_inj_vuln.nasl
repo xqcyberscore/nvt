@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zeuscart_sql_inj_vuln.nasl 9043 2018-03-07 12:38:58Z cfischer $
+# $Id: gb_zeuscart_sql_inj_vuln.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # ZeusCart 'maincatid' Parameter SQL Injection Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:zeuscart:zeuscart";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801240");
-  script_version("$Revision: 9043 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-07 13:38:58 +0100 (Wed, 07 Mar 2018) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-08-02 12:38:17 +0200 (Mon, 02 Aug 2010)");
   script_cve_id("CVE-2009-4940");
   script_bugtraq_id(35151);
@@ -47,10 +47,8 @@ if(description)
   script_xref(name:"URL", value:"http://inj3ct0r.com/exploits/5275");
   script_xref(name:"URL", value:"http://www.milw0rm.com/exploits/8829");
 
-  script_tag(name:"impact" , value:"Successful exploitation will allow attacker to cause SQL Injection
-  attack and gain sensitive information.
-
-  Impact Level: Application");
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to cause SQL Injection
+  attack and gain sensitive information.");
 
   script_tag(name:"affected", value:"ZeusCart Version 2.3");
 
@@ -58,10 +56,9 @@ if(description)
   via the 'maincatid' parameter in a 'showmaincatlanding' action which allows
   attacker to manipulate SQL queries by injecting arbitrary SQL code.");
 
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"summary", value:"The host is running ZeusCart and is prone to SQL injection
   vulnerability.");

@@ -1,13 +1,13 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: tomcat_srcjsp_malformed_request.nasl 4355 2016-10-26 13:50:18Z cfi $
+# $Id: tomcat_srcjsp_malformed_request.nasl 13975 2019-03-04 09:32:08Z cfischer $
 #
 # Apache Tomcat source.jsp malformed request information disclosure
 #
 # Authors:
 # David Kyger <david_kyger@symantec.com>
 # Updated By: Antu Sanadi <santu@secpod> on 2010-07-06
-# Updated CVE, CVSS Base and Risk Factor 
+# Updated CVE, CVSS Base and Risk Factor
 #
 # Copyright:
 # Copyright (C) 2004 David Kyger
@@ -31,8 +31,8 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12123");
-  script_version("$Revision: 4355 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-26 15:50:18 +0200 (Wed, 26 Oct 2016) $");
+  script_version("$Revision: 13975 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-04 10:32:08 +0100 (Mon, 04 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -48,18 +48,19 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/4876");
 
-  tag_summary = "The source.jsp file, distributed with Apache Tomcat server, will
-  disclose information when passed a malformed request. As a result,
-  information such as the web root path and directory listings could
-  be obtained.
+  script_tag(name:"solution", value:"Remove default files from the web server.");
 
-  Example: http://target/examples/jsp/source.jsp?? - reveals the web root
-           http://target/examples/jsp/source.jsp?/jsp/ - reveals the contents of the jsp directory";
+  script_tag(name:"summary", value:"The source.jsp file, distributed with Apache Tomcat server, will
+  disclose information when passed a malformed request.");
 
-  tag_solution = "Remove default files from the web server";
+  script_tag(name:"impact", value:"As a result, information such as the web root path and directory
+  listings could be obtained.
 
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  Examples:
+
+  http://example.com/examples/jsp/source.jsp?? - reveals the web root
+
+  http://example.com/examples/jsp/source.jsp?/jsp/ - reveals the contents of the jsp directory");
 
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_vul");

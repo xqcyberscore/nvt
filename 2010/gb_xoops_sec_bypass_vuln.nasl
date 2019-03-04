@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xoops_sec_bypass_vuln.nasl 5952 2017-04-13 12:34:17Z cfi $
+# $Id: gb_xoops_sec_bypass_vuln.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # XOOPS Profiles Module Activation Security Bypass Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:xoops:xoops";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800777");
-  script_version("$Revision: 5952 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-13 14:34:17 +0200 (Thu, 13 Apr 2017) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-05-19 14:50:39 +0200 (Wed, 19 May 2010)");
   script_cve_id("CVE-2009-4851");
   script_tag(name:"cvss_base", value:"5.0");
@@ -47,27 +47,14 @@ if(description)
   script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2009/3256");
   script_xref(name:"URL", value:"http://www.xoops.org/modules/newbb/viewtopic.php?post_id=319132");
 
-  tag_impact = "Successful exploitation will allow remote attackers to activate their accounts
-  without requiring approval from the administrator.
-
-  Impact Level: Application.";
-
-  tag_affected = "XOOPS version prior to 2.4.1";
-
-  tag_insight = "The flaw exists due to the error in the 'activate.php' script which does not
-  verify the activation type when resending the activation email.";
-
-  tag_solution = "Upgrade to the XOOPS version 2.4.1
-  http://www.xoops.org/modules/core/";
-
-  tag_summary = "This host is running XOOPS and is prone to security bypass
-  vulnerability.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected" , value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"summary", value:"This host is running XOOPS and is prone to security bypass
+  vulnerability.");
+  script_tag(name:"insight", value:"The flaw exists due to the error in the 'activate.php' script which does not
+  verify the activation type when resending the activation email.");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to activate their accounts
+  without requiring approval from the administrator.");
+  script_tag(name:"affected", value:"XOOPS version prior to 2.4.1");
+  script_tag(name:"solution", value:"Upgrade to the XOOPS version 2.4.1.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -82,7 +69,6 @@ include("host_details.inc");
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
-## Check for the XOOPS version less than 2.4.1 (2.4.1 Final)
 if( version_is_less( version:vers, test_version:"2.4.1" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"2.4.1" );
   security_message( port:port, data:report );

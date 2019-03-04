@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_znc_42314.nasl 8882 2018-02-20 10:35:37Z cfischer $
+# $Id: gb_znc_42314.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # ZNC Multiple Denial Of Service Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = 'cpe:/a:znc:znc';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100758");
-  script_version("$Revision: 8882 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-20 11:35:37 +0100 (Tue, 20 Feb 2018) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-08-13 12:44:16 +0200 (Fri, 13 Aug 2010)");
   script_bugtraq_id(42314);
-  script_cve_id("CVE-2010-2812","CVE-2010-2934");
+  script_cve_id("CVE-2010-2812", "CVE-2010-2934");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_name("ZNC Multiple Denial Of Service Vulnerabilities");
@@ -50,12 +50,12 @@ if(description)
 
   script_tag(name:"summary", value:"ZNC is prone to a multiple remote denial-of-service vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"impact", value:"An attacker may exploit these issues to crash the application,
   resulting in denial-of-service conditions.");
 
-  script_tag(name:"affected", value:"ZNC 0.092 is vulnerable; other versions may also be affected.");
+  script_tag(name:"affected", value:"ZNC 0.092 is vulnerable. Other versions may also be affected.");
 
   script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
 
@@ -75,6 +75,6 @@ if( version_is_equal( version:vers, test_version:"0.092" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"0.094" );
   security_message( port:port, data:report );
   exit( 0 );
-}  
+}
 
 exit( 99 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_portable_phpmyadmin_sec_bypass_vuln.nasl 11857 2018-10-12 08:25:16Z cfischer $
+# $Id: gb_wordpress_portable_phpmyadmin_sec_bypass_vuln.nasl 13962 2019-03-01 14:14:42Z cfischer $
 #
 # WordPress Portable phpMyAdmin Plugin 'wp-pma-mod' Security Bypass Vulnerability
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803077");
-  script_version("$Revision: 11857 $");
+  script_version("$Revision: 13962 $");
   script_cve_id("CVE-2012-5469");
   script_bugtraq_id(56920);
   script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fr, 14 Apr 2017)$");
@@ -38,7 +38,7 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("WordPress Portable phpMyAdmin Plugin 'wp-pma-mod' Security Bypass Vulnerability");
   script_category(ACT_ATTACK);
-  script_copyright("Copyright(c) 2012 Greenbone Networks GmbH");
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_require_ports("Services/www", 80);

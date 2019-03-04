@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postgresql_43747.nasl 7406 2017-10-12 06:15:28Z cfischer $
+# $Id: gb_postgresql_43747.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # PostgreSQL PL/Perl and PL/Tcl Local Privilege Escalation Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:postgresql:postgresql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100843");
-  script_version("$Revision: 7406 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-12 08:15:28 +0200 (Thu, 12 Oct 2017) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-10-06 12:55:58 +0200 (Wed, 06 Oct 2010)");
   script_bugtraq_id(43747);
   script_tag(name:"cvss_base", value:"6.0");
@@ -49,19 +49,11 @@ if(description)
   script_xref(name:"URL", value:"http://www.postgresql.org");
   script_xref(name:"URL", value:"http://www.postgresql.org/support/security");
 
-  tag_summary = "PostgreSQL is prone to a local privilege-escalation vulnerability.";
-
-  tag_impact = "Exploiting this issue allows local attackers to gain elevated
-  privileges and execute arbitrary commands with the privileges of the victim.";
-
-  tag_affected = "Versions prior to PostgreSQL 9.0.1 are vulnerable.";
-
-  tag_solution = "Updates are available. Please see the references for more information.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"summary", value:"PostgreSQL is prone to a local privilege-escalation vulnerability.");
+  script_tag(name:"impact", value:"Exploiting this issue allows local attackers to gain elevated
+  privileges and execute arbitrary commands with the privileges of the victim.");
+  script_tag(name:"affected", value:"Versions prior to PostgreSQL 9.0.1 are vulnerable.");
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

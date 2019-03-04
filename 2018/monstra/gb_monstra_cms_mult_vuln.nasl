@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_monstra_cms_mult_vuln.nasl 13515 2019-02-07 07:01:25Z ckuersteiner $
+# $Id: gb_monstra_cms_mult_vuln.nasl 13959 2019-03-01 11:27:26Z cfischer $
 #
 # Monstra CMS <= 3.0.4 Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113204");
-  script_version("$Revision: 13515 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-07 08:01:25 +0100 (Thu, 07 Feb 2019) $");
+  script_version("$Revision: 13959 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 12:27:26 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-05-29 16:04:31 +0200 (Tue, 29 May 2018)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
@@ -88,8 +88,11 @@ if( description )
   - plugins/box/users/users.plugin.php allows Login Rate Limiting Bypass via manipulation of the login_attempts cookie.");
   script_tag(name:"affected", value:"Monstra CMS through version 3.0.4.");
 
-  script_tag(name:"solution", value:"Monstra CMS is not supported anymore. Therefore it is advised to remove the
-product or replace it by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.
+
+  Note: Monstra CMS is deprecated / not supported anymore by the vendor.");
 
   script_xref(name:"URL", value:"https://github.com/monstra-cms/monstra/issues/443");
   script_xref(name:"URL", value:"https://github.com/monstra-cms/monstra/issues/444");

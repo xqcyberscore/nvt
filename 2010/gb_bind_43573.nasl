@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bind_43573.nasl 4433 2016-11-07 15:21:16Z cfi $
+# $Id: gb_bind_43573.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # ISC BIND Denial Of Service and Security Bypass Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:isc:bind";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100831");
-  script_version("$Revision: 4433 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-07 16:21:16 +0100 (Mon, 07 Nov 2016) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-09-30 13:18:50 +0200 (Thu, 30 Sep 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -47,23 +47,15 @@ if(description)
   script_xref(name:"URL", value:"http://ftp.isc.org/isc/bind9/9.7.2-P2/RELEASE-NOTES-BIND-9.7.2-P2.html");
   script_xref(name:"URL", value:"https://lists.isc.org/pipermail/bind-announce/2010-September/000655.html");
 
-  tag_summary = "ISC BIND is prone to a security-bypass vulnerability and a denial-of-
-  service vulnerability.";
-
-  tag_impact = "Successfully exploiting these issues allows remote attackers to crash
+  script_tag(name:"solution", value:"Vendor updates are available. Please see the references for more
+  information.");
+  script_tag(name:"summary", value:"ISC BIND is prone to a security-bypass vulnerability and a denial-of-
+  service vulnerability.");
+  script_tag(name:"impact", value:"Successfully exploiting these issues allows remote attackers to crash
   affected DNS servers, denying further service to legitimate users,
   bypass certain security restrictions and perform unauthorized actions.
-  Other attacks are also possible.";
-
-  tag_affected = "ISC BIND versions 9.7.2 through 9.7.2-P1 are vulnerable.";
-
-  tag_solution = "Vendor updates are available. Please see the references for more
-  information.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
+  Other attacks are also possible.");
+  script_tag(name:"affected", value:"ISC BIND versions 9.7.2 through 9.7.2-P1 are vulnerable.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");

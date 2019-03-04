@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_hadoop_detect.nasl 13757 2019-02-19 10:45:04Z ckuersteiner $
+# $Id: gb_apache_hadoop_detect.nasl 13959 2019-03-01 11:27:26Z cfischer $
 #
 # Apache Hadoop Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810317");
-  script_version("$Revision: 13757 $");
+  script_version("$Revision: 13959 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-19 11:45:04 +0100 (Tue, 19 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 12:27:26 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-12-23 11:51:30 +0530 (Fri, 23 Dec 2016)");
 
   script_name("Apache Hadoop Version Detection");
@@ -42,7 +42,7 @@ if(description)
   script_require_ports("Services/www", 8088, 50070);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name:"summary", value:"Detection of installed version of Apache Hadoop.
+  script_tag(name:"summary", value:"Detects the installed version of Apache Hadoop.
 
   This script sends HTTP GET request and try to get the version from the response.");
 

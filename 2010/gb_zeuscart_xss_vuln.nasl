@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zeuscart_xss_vuln.nasl 9045 2018-03-07 13:52:25Z cfischer $
+# $Id: gb_zeuscart_xss_vuln.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # ZeusCart 'search' Parameter Cross Site Scripting Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:zeuscart:zeuscart";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801249");
-  script_version("$Revision: 9045 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-07 14:52:25 +0100 (Wed, 07 Mar 2018) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-08-10 14:39:31 +0200 (Tue, 10 Aug 2010)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -47,32 +47,19 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/512885");
   script_xref(name:"URL", value:"http://secpod.org/advisories/SECPOD_ZeusCart_XSS.txt");
 
-  tag_impact = "Successful exploitation will allow attacker to execute arbitrary
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary
   HTML and script code in a user's browser session in the context of a vulnerable
   site. This may allow the attacker to steal cookie-based authentication credentials
-  and to launch other attacks.
-
-  Impact Level: Application";
-
-  tag_affected = "ZeusCart Versions 3.0 and 2.3";
-
-  tag_insight = "The flaw is caused by improper validation of user-supplied input
+  and to launch other attacks.");
+  script_tag(name:"affected", value:"ZeusCart Versions 3.0 and 2.3");
+  script_tag(name:"insight", value:"The flaw is caused by improper validation of user-supplied input
   via the 'search' parameter in a 'search' action which allows attacker to execute
-  arbitrary HTML and script code in a user's browser session.";
-
-  tag_solution = "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.";
-
-  tag_summary = "The host is running ZeusCart and is prone to cross site scripting
-  vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  arbitrary HTML and script code in a user's browser session.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"The host is running ZeusCart and is prone to cross site scripting
+  vulnerability.");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"WillNotFix");

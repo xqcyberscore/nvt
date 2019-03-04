@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_splunk_mult_vuln.nasl 10149 2018-06-11 08:16:28Z ckuersteiner $
+# $Id: secpod_splunk_mult_vuln.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # Splunk Multiple vulnerabilities
 #
@@ -29,18 +29,18 @@ CPE = 'cpe:/a:splunk:splunk';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901152");
-  script_version("$Revision: 10149 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-11 10:16:28 +0200 (Mon, 11 Jun 2018) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-09-21 16:43:08 +0200 (Tue, 21 Sep 2010)");
   script_cve_id("CVE-2010-3322", "CVE-2010-3323");
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Splunk Multiple vulnerabilities");
 
-  script_xref(name: "URL", value: "http://www.splunk.com/view/SP-CAAAFQ6");
+  script_xref(name:"URL", value:"http://www.splunk.com/view/SP-CAAAFQ6");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
@@ -50,21 +50,21 @@ if(description)
   script_mandatory_keys("Splunk/installed");
   script_require_ports("Services/www", 8000);
 
-  script_tag(name: "impact", value: "Successful exploitation will allow attackers to obtain sensitive information
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to obtain sensitive information
 and gain privileges.");
 
-  script_tag(name: "affected", value: "Splunk version 4.0.0 through 4.1.4");
+  script_tag(name:"affected", value:"Splunk version 4.0.0 through 4.1.4");
 
-  script_tag(name: "insight", value: "- XML parser is vulnerable to XXE (XML eXternal Entity) attacks, which
+  script_tag(name:"insight", value:"- XML parser is vulnerable to XXE (XML eXternal Entity) attacks, which
 allows remote authenticated users to obtain sensitive information and gain privileges.
 
-- SPLUNKD_SESSION_KEY parameter is vulnerable to session hijacking.");
+  - SPLUNKD_SESSION_KEY parameter is vulnerable to session hijacking.");
 
-  script_tag(name: "solution", value: "Upgrade to Splunk version 4.1.5 or later, For updates refer to
-http://www.splunk.com/download");
+  script_tag(name:"solution", value:"Upgrade to Splunk version 4.1.5 or later.");
 
-  script_tag(name: "summary", value:  "This host is running Splunk and is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"This host is running Splunk and is prone to multiple vulnerabilities.");
 
+  script_xref(name:"URL", value:"http://www.splunk.com/download");
   exit(0);
 }
 

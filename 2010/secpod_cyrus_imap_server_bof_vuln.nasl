@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_cyrus_imap_server_bof_vuln.nasl 5916 2017-04-10 11:38:08Z cfi $
+# $Id: secpod_cyrus_imap_server_bof_vuln.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # Cyrus IMAP Server SIEVE Script Handling Buffer Overflow Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:cmu:cyrus_imap_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902223");
-  script_version("$Revision: 5916 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-10 13:38:08 +0200 (Mon, 10 Apr 2017) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-08-02 12:38:17 +0200 (Mon, 02 Aug 2010)");
   script_cve_id("CVE-2009-2632");
   script_bugtraq_id(36296, 36377);
@@ -47,29 +47,17 @@ if(description)
   script_xref(name:"URL", value:"http://www.debian.org/security/2009/dsa-1881");
   script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2009/2559");
   script_xref(name:"URL", value:"https://www.redhat.com/archives/fedora-package-announce/2009-September/msg00491.html");
+  script_xref(name:"URL", value:"http://bugzilla.andrew.cmu.edu/cgi-bin/cvsweb.cgi/src/sieve/script.c.diff?r1=1.67&r2=1.68");
+  script_xref(name:"URL", value:"http://bugzilla.andrew.cmu.edu/cgi-bin/cvsweb.cgi/src/sieve/script.c.diff?r1=1.62&r2=1.62.2.1&only_with_tag=cyrus-imapd-2_2-tail");
 
-  tag_solution = "Apply patches or upgrade to the latest version,
-  http://bugzilla.andrew.cmu.edu/cgi-bin/cvsweb.cgi/src/sieve/script.c.diff?r1=1.67&r2=1.68
-  http://bugzilla.andrew.cmu.edu/cgi-bin/cvsweb.cgi/src/sieve/script.c.diff?r1=1.62&r2=1.62.2.1&only_with_tag=cyrus-imapd-2_2-tail";
-
-  tag_impact = "Successful exploitation will allow attackers to crash an affected server
-  or execute arbitrary code via a malicious SIEVE Script.
-
-  Impact Level: Application";
-
-  tag_affected = "Cyrus IMAP Server versions 2.3.14 and prior.";
-
-  tag_insight = "The flaw is caused is due to error in the handling of 'SIEVE' Script, that
-  fails to perform adequate boundary checks on user-supplied data.";
-
-  tag_summary = "This host is running Cyrus IMAP Server and is prone to
-  buffer overflow vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to crash an affected server
+  or execute arbitrary code via a malicious SIEVE Script.");
+  script_tag(name:"affected", value:"Cyrus IMAP Server versions 2.3.14 and prior.");
+  script_tag(name:"insight", value:"The flaw is caused is due to error in the handling of 'SIEVE' Script, that
+  fails to perform adequate boundary checks on user-supplied data.");
+  script_tag(name:"summary", value:"This host is running Cyrus IMAP Server and is prone to
+  buffer overflow vulnerability.");
+  script_tag(name:"solution", value:"Apply the patches from the references or upgrade to the latest version.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
@@ -83,7 +71,6 @@ include("host_details.inc");
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
-## Check for Cyrus IMAP Server <= 2.3.14
 if( version_is_less_equal( version:vers, test_version:"2.3.14" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"See references" );
   security_message( port:port, data:report );

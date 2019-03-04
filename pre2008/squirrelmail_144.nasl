@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: squirrelmail_144.nasl 6071 2017-05-04 16:19:49Z cfi $
+# $Id: squirrelmail_144.nasl 13975 2019-03-04 09:32:08Z cfischer $
 #
 # SquirrelMail < 1.4.4 XSS Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:squirrelmail:squirrelmail';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.16228");
-  script_version("$Revision: 6071 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-04 18:19:49 +0200 (Thu, 04 May 2017) $");
+  script_version("$Revision: 13975 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-04 10:32:08 +0100 (Mon, 04 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(12337);
   script_tag(name:"cvss_base", value:"7.5");
@@ -44,34 +44,27 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("squirrelmail/installed");
 
-  tag_summary = "The target is running at least one instance of SquirrelMail whose
+  script_tag(name:"solution", value:"Upgrade to SquirrelMail 1.4.4 or later.");
+
+  script_tag(name:"summary", value:"The target is running at least one instance of SquirrelMail whose
   version number suggests it is vulnerable to one or more cross-site
   scripting vulnerabilities :
 
   - Insufficient escaping of integer variables in webmail.php allows a
   remote attacker to include HTML / script into a SquirrelMail webpage
-  (affects 1.4.0-RC1 - 1.4.4-RC1). 
+  (affects 1.4.0-RC1 - 1.4.4-RC1).
 
   - Insufficient checking of incoming URL vars in webmail.php allows an
   attacker to include arbitrary remote web pages in the SquirrelMail
-  frameset (affects 1.4.0-RC1 - 1.4.4-RC1). 
+  frameset (affects 1.4.0-RC1 - 1.4.4-RC1).
 
   - A recent change in prefs.php allows an attacker to provide a
   specially crafted URL that could include local code into the
   SquirrelMail code if and only if PHP's register_globals setting is
-  enabled (affects 1.4.3-RC1 - 1.4.4-RC1). 
- 
-  ***** OpenVAS has determined the vulnerability exists on the target
-  ***** simply by looking at the version number of Squirrelmail 
-  ***** installed there.";
-
-  tag_solution = "Upgrade to SquirrelMail 1.4.4 or later.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  enabled (affects 1.4.3-RC1 - 1.4.4-RC1).");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_deluxebb_44259.nasl 9596 2018-04-25 07:21:51Z cfischer $
+# $Id: gb_deluxebb_44259.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # DeluxeBB 'xthedateformat' Parameter SQL Injection Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:deluxebb:deluxebb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100862");
-  script_version("$Revision: 9596 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-25 09:21:51 +0200 (Wed, 25 Apr 2018) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-10-21 13:52:26 +0200 (Thu, 21 Oct 2010)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -55,10 +55,9 @@ if(description)
 
   script_tag(name:"affected", value:"DeluxeBB 1.3 and prior are vulnerable.");
 
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_banner");

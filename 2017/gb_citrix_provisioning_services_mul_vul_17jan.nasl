@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_citrix_provisioning_services_mul_vul_17jan.nasl 11550 2018-09-22 12:21:31Z cfischer $
+# $Id: gb_citrix_provisioning_services_mul_vul_17jan.nasl 13977 2019-03-04 10:00:10Z cfischer $
 #
 # Citrix Provisioning Services Remote Code Execution and Information Disclosure Vulnerabilities
 #
@@ -24,45 +24,37 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successfully exploiting these issues may allow remote attackers to execute arbitrary code in the context of the
- application or obtain potentially sensitive information. Failed exploits may result in denial-of-service conditions.";
-
-tag_affected = "Citrix Provisioning Services versions 7.6, 7.11, 7.7, 7.8, 7.9, 7.1 and 7.0.";
-
-tag_solution = "Update to Citrix Provisioning Services 7.12. ";
-
-tag_summary = "Citrix Provisioning Services is prone to multiple remote code-execution and information-disclosure vulnerabilities.";
-
 CPE = "cpe:/a:citrix:citrix_provisioning_server";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107132");
-  script_version("$Revision: 11550 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:21:31 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 13977 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-04 11:00:10 +0100 (Mon, 04 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-01-20 16:11:25 +0700 (Fri, 20 Jan 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-
   script_name("Citrix Provisioning Services Remote Code Execution and Information Disclosure Vulnerabilities");
-  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/95620/");
-
   script_cve_id("CVE-2016-9676", "CVE-2016-9680", "CVE-2016-9677", "CVE-2016-9679", "CVE-2016-9678");
-
-  script_tag(name:"qod_type", value:"registry");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_citrix_provisioning_services_detect.nasl");
   script_mandatory_keys("Citrix/Provisioning/Services/Ver");
 
-  script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/95620/");
 
   script_tag(name:"impact", value:"Successfully exploiting these issues may allow remote attackers to execute arbitrary code in the context of the
   application or obtain potentially sensitive information. Failed exploits may result in denial-of-service conditions.");
+
   script_tag(name:"affected", value:"Citrix Provisioning Services versions 7.6, 7.11, 7.7, 7.8, 7.9, 7.1 and 7.0.");
+
   script_tag(name:"solution", value:"Update to Citrix Provisioning Services 7.12.");
+
   script_tag(name:"summary", value:"Citrix Provisioning Services is prone to multiple remote code-execution and information-disclosure vulnerabilities.");
+
+  script_tag(name:"qod_type", value:"registry");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);
 }

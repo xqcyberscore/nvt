@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: apache_Tomcat_TroubleShooter.nasl 4355 2016-10-26 13:50:18Z cfi $
+# $Id: apache_Tomcat_TroubleShooter.nasl 13975 2019-03-04 09:32:08Z cfischer $
 #
 # Apache Tomcat TroubleShooter Servlet Installed
 #
@@ -32,8 +32,8 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11046");
-  script_version("$Revision: 4355 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-26 15:50:18 +0200 (Wed, 26 Oct 2016) $");
+  script_version("$Revision: 13975 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-04 10:32:08 +0100 (Mon, 04 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -47,21 +47,17 @@ if(description)
   script_require_ports("Services/www", 8080);
   script_mandatory_keys("ApacheTomcat/installed");
 
-  tag_summary = "The remote Apache Tomcat Server is vulnerable to cross script scripting and 
+  script_tag(name:"solution", value:"Example files should not be left on production servers.");
+  script_tag(name:"summary", value:"The remote Apache Tomcat Server is vulnerable to cross script scripting and
   path disclosure issues.
 
   Description :
 
-  The default installation of Tomcat includes various sample jsp pages and 
+  The default installation of Tomcat includes various sample jsp pages and
   servlets.
-  One of these, the 'TroubleShooter' servlet, discloses various information about 
-  the system on which Tomcat is installed. This servlet can also be used to 
-  perform cross-site scripting attacks against third party users.";
-
-  tag_solution = "Example files should not be left on production servers.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  One of these, the 'TroubleShooter' servlet, discloses various information about
+  the system on which Tomcat is installed. This servlet can also be used to
+  perform cross-site scripting attacks against third party users.");
 
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_vul");

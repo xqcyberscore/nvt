@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: postnuke_news_xss.nasl 9126 2018-03-17 16:19:49Z cfischer $
+# $Id: postnuke_news_xss.nasl 13975 2019-03-04 09:32:08Z cfischer $
 #
 # Post-Nuke News module XSS
 #
@@ -32,8 +32,8 @@ CPE = "cpe:/a:postnuke:postnuke";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14727");
-  script_version("$Revision: 9126 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-17 17:19:49 +0100 (Sat, 17 Mar 2018) $");
+  script_version("$Revision: 13975 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-04 10:32:08 +0100 (Mon, 04 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(5809);
   script_tag(name:"cvss_base", value:"4.3");
@@ -48,17 +48,11 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/5809");
 
-  tag_summary = "The remote host is running a version of Post-Nuke which contains
-  the 'News' module which itself is vulnerable to a cross site scripting issue.";
-
-  tag_impact = "An attacker may use these flaws to steal the cookies of the
-  legitimate users of this web site.";
-
-  tag_solution = "Upgrade to the latest version of postnuke.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"summary", value:"The remote host is running a version of Post-Nuke which contains
+  the 'News' module which itself is vulnerable to a cross site scripting issue.");
+  script_tag(name:"impact", value:"An attacker may use these flaws to steal the cookies of the
+  legitimate users of this web site.");
+  script_tag(name:"solution", value:"Upgrade to the latest version of postnuke.");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");

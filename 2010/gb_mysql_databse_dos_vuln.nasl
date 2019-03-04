@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_databse_dos_vuln.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: gb_mysql_databse_dos_vuln.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # MySQL 'ALTER DATABASE' Remote Denial Of Service Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801380");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-07-19 10:09:06 +0200 (Mon, 19 Jul 2010)");
   script_cve_id("CVE-2010-2008");
   script_bugtraq_id(41198);
@@ -51,8 +51,7 @@ if(description)
   script_mandatory_keys("MySQL/installed");
   script_tag(name:"impact", value:"Successful exploitation could allow an attacker to cause a Denial of Service.");
   script_tag(name:"affected", value:"MySQL version priot to 5.1.48 on all running platform.");
-  script_tag(name:"solution", value:"Upgrade to MySQL version 5.1.48
-  For updates refer to http://dev.mysql.com/downloads");
+  script_tag(name:"solution", value:"Upgrade to MySQL version 5.1.48");
   script_tag(name:"summary", value:"The host is running MySQL and is prone to Denial Of Service
   vulnerability.");
   script_tag(name:"insight", value:"The flaw is due to an error when processing the 'ALTER DATABASE' statement and
@@ -63,6 +62,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://dev.mysql.com/downloads");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moinmoin_wiki_user_prof_unspecified_vuln.nasl 8755 2018-02-12 06:56:14Z cfischer $
+# $Id: gb_moinmoin_wiki_user_prof_unspecified_vuln.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # MoinMoin Wiki User Profile Unspecified Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:moinmo:moinmoin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800172");
-  script_version("$Revision: 8755 $");
+  script_version("$Revision: 13960 $");
   script_bugtraq_id(38023);
   script_cve_id("CVE-2010-0669");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-12 07:56:14 +0100 (Mon, 12 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-03-05 10:09:57 +0100 (Fri, 05 Mar 2010)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -49,31 +49,18 @@ if(description)
   script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2010/02/21/2");
   script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2010/02/15/2");
 
-  tag_impact = "Impact is currently unknown.
-
-  Impact Level: Application";
-
-  tag_affected = "MoinMoin Wiki version before 1.8.7 and 1.9 before 1.9.2 on all platforms.";
-
-  tag_insight = "An unspecified error exists in MoinMoin Wiki related to sanitization of
-  user profiles.";
-
-  tag_solution = "Upgrade to MoinMoin Wiki 1.8.7 or 1.9.2,
-
-  For updates refer to http://moinmo.in/MoinMoinDownload";
-
-  tag_summary = "This host is running MoinMoin Wiki and is prone to unspecified
-  vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"impact", value:"Impact is currently unknown.");
+  script_tag(name:"affected", value:"MoinMoin Wiki version before 1.8.7 and 1.9 before 1.9.2 on all platforms.");
+  script_tag(name:"insight", value:"An unspecified error exists in MoinMoin Wiki related to sanitization of
+  user profiles.");
+  script_tag(name:"solution", value:"Upgrade to MoinMoin Wiki 1.8.7 or 1.9.2.");
+  script_tag(name:"summary", value:"This host is running MoinMoin Wiki and is prone to unspecified
+  vulnerability.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://moinmo.in/MoinMoinDownload");
   exit(0);
 }
 
@@ -83,7 +70,6 @@ include("host_details.inc");
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
-## Check for version before 1.8.7 or 1.9 before 1.9.2
 if( version_is_less( version:vers, test_version:"1.8.7" ) ||
     version_in_range( version:vers, test_version:"1.9", test_version2:"1.9.1" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"1.8.7/1.9.2" );

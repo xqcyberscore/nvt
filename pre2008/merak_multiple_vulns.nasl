@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: merak_multiple_vulns.nasl 7016 2017-08-29 03:14:59Z ckuersteiner $
+# $Id: merak_multiple_vulns.nasl 13975 2019-03-04 09:32:08Z cfischer $
 # Description: Multiple Vulnerabilities in Merak Webmail / IceWarp Web Mail
 #
 # Authors:
@@ -26,8 +26,8 @@ CPE = 'cpe:/a:icewarp:mail_server';
 
 if (description) {
   script_oid("1.3.6.1.4.1.25623.1.0.14379");
-  script_version("$Revision: 7016 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-29 05:14:59 +0200 (Tue, 29 Aug 2017) $");
+  script_version("$Revision: 13975 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-04 10:32:08 +0100 (Mon, 04 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -46,7 +46,7 @@ if (description) {
   script_xref(name:"OSVDB", value:"9045");
 
   script_name("IceWarp Web Mail Multiple Vulnerabilities");
- 
+
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("This script is Copyright (C) 2004 George A. Theall");
@@ -56,9 +56,10 @@ if (description) {
   script_dependencies("gb_icewarp_web_detect.nasl");
   script_mandatory_keys("icewarp/installed");
 
-  script_tag(name: "solution", value: "Upgrade to Merak Webmail / IceWarp Web Mail 7.5.2 or later.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution", value:"Upgrade to Merak Webmail / IceWarp Web Mail 7.5.2 or later.");
 
-  script_tag(name: "summary", value:  "IceWarp Web Mail is prone to multiple XSS, HTML and SQL injection, and PHP
+  script_tag(name:"summary", value:"IceWarp Web Mail is prone to multiple XSS, HTML and SQL injection, and PHP
 source code disclosure vulnerabilities.");
 
   exit(0);

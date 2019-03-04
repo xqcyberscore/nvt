@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cups_40943.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_cups_40943.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # CUPS 'texttops' Filter NULL-pointer Dereference Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:apple:cups";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100685");
-  script_version("$Revision: 5306 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-06-21 20:36:15 +0200 (Mon, 21 Jun 2010)");
   script_bugtraq_id(40943);
   script_cve_id("CVE-2010-0542", "CVE-2010-2431", "CVE-2010-2432");
@@ -49,20 +49,12 @@ if(description)
   script_xref(name:"URL", value:"http://www.cups.org");
   script_xref(name:"URL", value:"http://cups.org/str.php?L3516");
 
-  tag_summary = "CUPS is prone to a NULL-pointer dereference vulnerability.";
-
-  tag_impact = "Successful exploits may allow attackers to execute arbitrary code with
+  script_tag(name:"impact", value:"Successful exploits may allow attackers to execute arbitrary code with
   the privileges of a user running the application. Failed exploit
-  attempts likely cause denial-of-service conditions.";
-
-  tag_affected = "CUPS versions prior to 1.4.4 are affected.";
-
-  tag_solution = "Updates are available. Please see the references for more information.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  attempts likely cause denial-of-service conditions.");
+  script_tag(name:"affected", value:"CUPS versions prior to 1.4.4 are affected.");
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
+  script_tag(name:"summary", value:"CUPS is prone to a NULL-pointer dereference vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
@@ -78,7 +70,6 @@ if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
 if( vers !~ "[0-9]+\.[0-9]+\.[0-9]+") exit( 0 ); # Version is not exact enough
 
-# Check for CUPS version < 1.4.4
 if( version_is_less( version:vers, test_version:"1.4.4" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"1.4.4" );
   security_message( port:port, data:report );

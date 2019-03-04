@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: bind_37865.nasl 4433 2016-11-07 15:21:16Z cfi $
+# $Id: bind_37865.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # ISC BIND 9 DNSSEC Bogus NXDOMAIN Response Remote Cache Poisoning Vulnerability
 #
@@ -32,13 +32,13 @@ CPE = "cpe:/a:isc:bind";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100458");
-  script_version("$Revision: 4433 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-07 16:21:16 +0100 (Mon, 07 Nov 2016) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-01-20 19:30:24 +0100 (Wed, 20 Jan 2010)");
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
   script_bugtraq_id(37865);
-  script_cve_id("CVE-2010-0097", "CVE-2010-0290","CVE-2010-0382");
+  script_cve_id("CVE-2010-0097", "CVE-2010-0290", "CVE-2010-0382");
   script_name("ISC BIND 9 DNSSEC Bogus NXDOMAIN Response Remote Cache Poisoning Vulnerability");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -51,22 +51,14 @@ if(description)
   script_xref(name:"URL", value:"http://www.kb.cert.org/vuls/id/360341");
   script_xref(name:"URL", value:"https://www.isc.org/advisories/CVE-2010-0097");
 
-  tag_summary = "ISC BIND 9 is prone to a remote cache-poisoning vulnerability.";
-
-  tag_impact = "An attacker may leverage this issue to manipulate cache data,
+  script_tag(name:"solution", value:"Updates are available. Please see the references for details.");
+  script_tag(name:"summary", value:"ISC BIND 9 is prone to a remote cache-poisoning vulnerability.");
+  script_tag(name:"impact", value:"An attacker may leverage this issue to manipulate cache data,
   potentially facilitating man-in-the-middle, site-impersonation, or denial-of-
-  service attacks.";
+  service attacks.");
+  script_tag(name:"affected", value:"Versions prior to the following are vulnerable:
 
-  tag_affected = "Versions prior to the following are vulnerable:
-
-  BIND 9.4.3-P5 BIND 9.5.2-P2 BIND 9.6.1-P3";
-
-  tag_solution = "Updates are available. Please see the references for details.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
+  BIND 9.4.3-P5 BIND 9.5.2-P2 BIND 9.6.1-P3");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");

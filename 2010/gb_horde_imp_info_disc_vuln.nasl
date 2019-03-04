@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_horde_imp_info_disc_vuln.nasl 9981 2018-05-28 11:16:52Z ckuersteiner $
+# $Id: gb_horde_imp_info_disc_vuln.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # Horde IMP Information Disclosure Vulnerability
 #
@@ -29,20 +29,20 @@ CPE = 'cpe:/a:horde:horde_groupware';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800288");
-  script_version("$Revision: 9981 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-28 13:16:52 +0200 (Mon, 28 May 2018) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-02-04 12:53:38 +0100 (Thu, 04 Feb 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_cve_id("CVE-2010-0463");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Horde IMP Information Disclosure Vulnerability");
 
-  script_xref(name: "URL", value: "http://bugs.horde.org/ticket/8836");
-  script_xref(name: "URL", value: "http://www.security-database.com/detail.php?alert=CVE-2010-0463");
-  script_xref(name: "URL", value: "https://secure.grepular.com/DNS_Prefetch_Exposure_on_Thunderbird_and_Webmail");
+  script_xref(name:"URL", value:"http://bugs.horde.org/ticket/8836");
+  script_xref(name:"URL", value:"http://www.security-database.com/detail.php?alert=CVE-2010-0463");
+  script_xref(name:"URL", value:"https://secure.grepular.com/DNS_Prefetch_Exposure_on_Thunderbird_and_Webmail");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
@@ -52,17 +52,17 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("horde/installed");
 
-  script_tag(name: "impact", value: "Successful exploitation allows remote attackers to determine the network
+  script_tag(name:"impact", value:"Successful exploitation allows remote attackers to determine the network
 location of the webmail user by logging DNS requests.");
 
-  script_tag(name: "affected", value: "Horde IMP version 4.3.6 and prior.");
+  script_tag(name:"affected", value:"Horde IMP version 4.3.6 and prior.");
 
-  script_tag(name: "insight", value: "The flaw exists when DNS prefetching of domain names contained in links
+  script_tag(name:"insight", value:"The flaw exists when DNS prefetching of domain names contained in links
 within e-mail messages.");
 
-  script_tag(name: "solution", value: "Apply the appropriate patch from vendor.");
+  script_tag(name:"solution", value:"Apply the appropriate patch from vendor.");
 
-  script_tag(name: "summary", value: "This host is running Horde IMP and is prone to an information disclosure
+  script_tag(name:"summary", value:"This host is running Horde IMP and is prone to an information disclosure
 vulnerability.");
 
   exit(0);

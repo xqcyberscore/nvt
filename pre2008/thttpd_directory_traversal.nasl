@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: thttpd_directory_traversal.nasl 8929 2018-02-23 05:05:21Z ckuersteiner $
+# $Id: thttpd_directory_traversal.nasl 13975 2019-03-04 09:32:08Z cfischer $
 #
 # thttpd Directory Traversal (Windows)
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:acme:thttpd";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14229");
-  script_version("$Revision: 8929 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-23 06:05:21 +0100 (Fri, 23 Feb 2018) $");
+  script_version("$Revision: 13975 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-04 10:32:08 +0100 (Mon, 04 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2004-2628");
   script_bugtraq_id(10862);
@@ -47,16 +47,16 @@ if(description)
   script_dependencies("gb_thttpd_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("thttpd/installed", "Host/runs_windows");
 
-  script_tag(name: "summary", value: "The remote web server is vulnerable to a path traversal vulnerability.");
+  script_tag(name:"summary", value:"The remote web server is vulnerable to a path traversal vulnerability.");
 
-  script_tag(name: "impact", value: "An attacker may exploit this flaw to read arbitrary files on the remote
+  script_tag(name:"impact", value:"An attacker may exploit this flaw to read arbitrary files on the remote
 system with the privileges of the http process.");
 
-  script_tag(name: "solution", value: "Upgrade your web server or change it.");
+  script_tag(name:"solution", value:"Upgrade your web server or change it.");
 
-  script_tag(name: "qod_type", value: "remote_vul");
+  script_tag(name:"qod_type", value:"remote_vul");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);
 }

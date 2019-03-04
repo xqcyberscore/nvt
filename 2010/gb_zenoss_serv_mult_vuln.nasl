@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zenoss_serv_mult_vuln.nasl 9889 2018-05-17 14:03:49Z cfischer $
+# $Id: gb_zenoss_serv_mult_vuln.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # Zenoss Server Multiple Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:zenoss:zenoss";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800990");
-  script_version("$Revision: 9889 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-17 16:03:49 +0200 (Thu, 17 May 2018) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-03-05 10:09:57 +0100 (Fri, 05 Mar 2010)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -53,9 +53,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to view, add, modify or
   delete information in the back-end database or conduct cross site request
-  forgery attacks.
-
-  Impact Level: Application");
+  forgery attacks.");
 
   script_tag(name:"affected", value:"Zenoss Server versions prior to 2.5.");
 

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ecava_integraxor_dir_trav_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_ecava_integraxor_dir_trav_vuln.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # Ecava IntegraXor Directory Traversal Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:ecava:integraxor";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801496");
-  script_version("$Revision: 7577 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-12-27 09:55:05 +0100 (Mon, 27 Dec 2010)");
   script_cve_id("CVE-2010-4598");
   script_bugtraq_id(45535);
@@ -46,14 +46,11 @@ if(description)
 
   script_tag(name:"insight", value:"The flaw is due to 'open' request, which can be used by an
   attacker to download files from the disk where the server is installed.");
-  script_tag(name:"solution", value:"Upgrade to Ecava IntegraXor 3.6.4000.1 or later, 
-  For updates refer to http://www.ecava.com/index.htm");
+  script_tag(name:"solution", value:"Upgrade to Ecava IntegraXor 3.6.4000.1 or later.");
   script_tag(name:"summary", value:"This host is running Ecava IntegraXor and is prone Directory
   Traversal vulnerability.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to download
-  files from the disk where the server is installed through directory traversal attacks.
-
-  Impact Level: Application.");
+  files from the disk where the server is installed through directory traversal attacks.");
   script_tag(name:"affected", value:"Ecava IntegraXor version 3.6.4000.0 and prior");
 
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/15802/");
@@ -61,6 +58,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
 
+  script_xref(name:"URL", value:"http://www.ecava.com/index.htm");
   exit(0);
 }
 
@@ -78,7 +76,6 @@ files = traversal_files( "windows" );
 
 foreach file( keys( files ) ) {
 
-  ## Construct exploit string
   url = dir + "/open?file_name=..\..\..\..\..\..\..\..\..\..\..\" + files[file];
   if( http_vuln_check( port:port, url:url, pattern:file  ) ) {
     report = report_vuln_url( url:url, port:port );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_hp_smh_mult_vuln.nasl 4542 2016-11-16 15:31:02Z cfi $
+# $Id: secpod_hp_smh_mult_vuln.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # HP System Management Homepage Multiple Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:hp:system_management_homepage";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902257");
-  script_version("$Revision: 4542 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-16 16:31:02 +0100 (Wed, 16 Nov 2016) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-09-29 09:26:02 +0200 (Wed, 29 Sep 2010)");
   script_cve_id("CVE-2010-3284", "CVE-2010-3283");
   script_tag(name:"cvss_base", value:"4.3");
@@ -45,30 +45,22 @@ if(description)
 
   script_xref(name:"URL", value:"http://marc.info/?l=bugtraq&m=128525531721328&w=2");
   script_xref(name:"URL", value:"http://marc.info/?l=bugtraq&m=128525419119241&w=2");
+  script_xref(name:"URL", value:"http://h18000.www1.hp.com/products/servers/management/agents/index.html");
 
-  tag_impact = "Successful exploitation will allow attackers to obtain sensitive information
-  or to redirect users to arbitrary web sites and conduct phishing attacks.";
+  script_tag(name:"insight", value:"The flaws are due to:
 
-  tag_affected = "HP System Management Homepage versions prior to 6.2 on all platforms.";
+  - An unspecified error in the application, allows remote attackers to
+  obtain sensitive information via unknown vectors.
 
-  tag_insight = "The flaws are due to:
-   - An unspecified error in the application, allows remote attackers to
-     obtain sensitive information via unknown vectors.
-   - An open redirect vulnerability in the application, allows remote
-     attackers to redirect users to arbitrary web sites and conduct phishing
-     attacks via unspecified vectors.";
-
-  tag_solution = "Upgrade to HP System Management Homepage 6.2 or later,
-  http://h18000.www1.hp.com/products/servers/management/agents/index.html";
-
-  tag_summary = "This host is running HP System Management Homepage (SMH) and is
-  prone to multiple vulnerabilities.";
-
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
+  - An open redirect vulnerability in the application, allows remote
+  attackers to redirect users to arbitrary web sites and conduct phishing
+  attacks via unspecified vectors.");
+  script_tag(name:"solution", value:"Upgrade to HP System Management Homepage 6.2 or later.");
+  script_tag(name:"summary", value:"This host is running HP System Management Homepage (SMH) and is
+  prone to multiple vulnerabilities.");
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to obtain sensitive information
+  or to redirect users to arbitrary web sites and conduct phishing attacks.");
+  script_tag(name:"affected", value:"HP System Management Homepage versions prior to 6.2 on all platforms.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

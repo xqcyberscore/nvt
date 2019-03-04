@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apache_tomcat_sec_bypass_vuln.nasl 4346 2016-10-25 12:54:45Z cfi $
+# $Id: secpod_apache_tomcat_sec_bypass_vuln.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # Apache Tomcat Security bypass vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901114");
-  script_version("$Revision: 4346 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-25 14:54:45 +0200 (Tue, 25 Oct 2016) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-04-29 10:04:32 +0200 (Thu, 29 Apr 2010)");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:N/A:N");
@@ -48,29 +48,16 @@ if(description)
   script_xref(name:"URL", value:"http://tomcat.apache.org/security-6.html");
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/510879");
 
-  tag_impact = "Remote attackers can exploit this issue to obtain the host name or IP address
-  of the Tomcat server. Information harvested may aid in further attacks.
-
-  Impact Level: Application";
-
-  tag_affected = "Apache Tomcat version 5.5.0 to 5.5.29
-  Apache Tomcat version 6.0.0 to 6.0.26";
-
-  tag_insight = "The flaw is caused by 'realm name' in the 'WWW-Authenticate' HTTP header for
+  script_tag(name:"impact", value:"Remote attackers can exploit this issue to obtain the host name or IP address
+  of the Tomcat server. Information harvested may aid in further attacks.");
+  script_tag(name:"affected", value:"Apache Tomcat version 5.5.0 to 5.5.29
+  Apache Tomcat version 6.0.0 to 6.0.26");
+  script_tag(name:"insight", value:"The flaw is caused by 'realm name' in the 'WWW-Authenticate' HTTP header for
   'BASIC' and 'DIGEST' authentication that might allow remote attackers to
-  discover the server's hostname or IP address by sending a request for a resource.";
-
-  tag_solution = "Upgrade to the latest version of Apache Tomcat 5.5.30 or 6.0.27 or later,
-  For updates refer to http://tomcat.apache.org";
-
-  tag_summary = "This host is running Apache Tomcat server and is prone to security
-  bypass vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  discover the server's hostname or IP address by sending a request for a resource.");
+  script_tag(name:"solution", value:"Upgrade to the latest version of Apache Tomcat 5.5.30 or 6.0.27 or later.");
+  script_tag(name:"summary", value:"This host is running Apache Tomcat server and is prone to security
+  bypass vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
@@ -84,7 +71,6 @@ include("version_func.inc");
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
-## Grep for affected Tomcat Versions
 if( version_in_range( version:vers, test_version:"5.5.0", test_version2:"5.5.29" ) ||
     version_in_range( version:vers, test_version:"6.0.0", test_version2:"6.0.26" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"5.5.30/6.0.27" );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpbb_45005.nasl 9332 2018-04-05 12:51:29Z cfischer $
+# $Id: gb_phpbb_45005.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # phpBB 'includes/message_parser.php' HTML Injection Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:phpbb:phpbb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100922");
-  script_version("$Revision: 9332 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-05 14:51:29 +0200 (Thu, 05 Apr 2018) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-11-30 12:57:59 +0100 (Tue, 30 Nov 2010)");
   script_bugtraq_id(45005);
   script_tag(name:"cvss_base", value:"2.6");
@@ -77,6 +77,6 @@ if( version_is_less( version:vers, test_version:"3.0.8" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"3.0.8" );
   security_message( port:port, data:report );
   exit( 0 );
-}  
+}
 
 exit( 99 );

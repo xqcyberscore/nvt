@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postgresql_40215.nasl 7406 2017-10-12 06:15:28Z cfischer $
+# $Id: gb_postgresql_40215.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # PostgreSQL Multiple Security Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:postgresql:postgresql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100645");
-  script_version("$Revision: 7406 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-12 08:15:28 +0200 (Thu, 12 Oct 2017) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-05-19 12:58:40 +0200 (Wed, 19 May 2010)");
   script_bugtraq_id(40215);
-  script_cve_id("CVE-2010-1169","CVE-2010-1170","CVE-2010-1447");
+  script_cve_id("CVE-2010-1169", "CVE-2010-1170", "CVE-2010-1447");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
   script_name("PostgreSQL Multiple Security Vulnerabilities");
@@ -49,12 +49,10 @@ if(description)
   script_xref(name:"URL", value:"http://www.postgresql.org/");
   script_xref(name:"URL", value:"http://www.postgresql.org/support/security");
 
-  tag_summary = "PostgreSQL is prone to multiple security vulnerabilities.";
-
-  tag_impact = "Attackers can exploit these issues to bypass certain security
-  restrictions and execute arbitrary Perl or Tcl code.";
-
-  tag_affected = "These issues affect versions prior to the following PostgreSQL
+  script_tag(name:"summary", value:"PostgreSQL is prone to multiple security vulnerabilities.");
+  script_tag(name:"impact", value:"Attackers can exploit these issues to bypass certain security
+  restrictions and execute arbitrary Perl or Tcl code.");
+  script_tag(name:"affected", value:"These issues affect versions prior to the following PostgreSQL
   versions:
 
   8.4.4
@@ -67,14 +65,8 @@ if(description)
 
   8.0.25
 
-  7.4.29";
-
-  tag_solution = "Updates are available. Please see the references for more information.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
+  7.4.29");
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

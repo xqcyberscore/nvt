@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: squid_37522.nasl 6891 2017-08-10 12:44:59Z cfischer $
+# $Id: squid_37522.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # Squid Header-Only Packets Remote Denial of Service Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:squid-cache:squid";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100412");
-  script_version("$Revision: 6891 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-10 14:44:59 +0200 (Thu, 10 Aug 2017) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-01-04 18:09:12 +0100 (Mon, 04 Jan 2010)");
   script_cve_id("CVE-2010-0308");
   script_bugtraq_id(37522);
@@ -48,16 +48,10 @@ if(description)
   script_xref(name:"URL", value:"http://events.ccc.de/congress/2009/Fahrplan//attachments/1483_26c3_ipv4_fuckups.pdf");
   script_xref(name:"URL", value:"http://www.squid-cache.org/");
 
-  tag_summary = "Squid is prone to a remote denial-of-service vulnerability.";
-
-  tag_impact = "An attacker can exploit this to issue to crash the affected
-  application, denying service to legitimate users.";
-
-  tag_solution = "Update to version 3.1.5 or later.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"summary", value:"Squid is prone to a remote denial-of-service vulnerability.");
+  script_tag(name:"impact", value:"An attacker can exploit this to issue to crash the affected
+  application, denying service to legitimate users.");
+  script_tag(name:"solution", value:"Update to version 3.1.5 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

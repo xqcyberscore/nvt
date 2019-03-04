@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: DDI_tomcat_default_accounts.nasl 4355 2016-10-26 13:50:18Z cfi $
+# $Id: DDI_tomcat_default_accounts.nasl 13975 2019-03-04 09:32:08Z cfischer $
 #
 # Apache Tomcat Default Accounts
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11204");
-  script_version("$Revision: 4355 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-26 15:50:18 +0200 (Wed, 26 Oct 2016) $");
+  script_version("$Revision: 13975 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-04 10:32:08 +0100 (Mon, 04 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
@@ -43,17 +43,13 @@ if(description)
   script_require_ports("Services/www", 8080);
   script_mandatory_keys("ApacheTomcat/installed");
 
-  tag_summary = "This host appears to be the running the Apache Tomcat
+  script_tag(name:"solution", value:"Change the default passwords by editing the
+  admin-users.xml file located in the /conf/users
+  subdirectory of the Tomcat installation.");
+  script_tag(name:"summary", value:"This host appears to be the running the Apache Tomcat
   Servlet engine with the default accounts still configured.
   A potential intruder could reconfigure this service in a way
-  that grants system access.";
-
-  tag_solution = "Change the default passwords by editing the
-  admin-users.xml file located in the /conf/users
-  subdirectory of the Tomcat installation.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  that grants system access.");
 
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -92,7 +88,6 @@ i = 0;
 found = 0;
 report = string("");
 
-# Check that we need any authorization at all
 req = http_get( item:url, port:port );
 buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 

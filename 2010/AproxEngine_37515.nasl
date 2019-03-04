@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: AproxEngine_37515.nasl 8362 2018-01-10 15:35:33Z cfischer $
+# $Id: AproxEngine_37515.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # AproxEngine Multiple Remote Input Validation Vulnerabilities
 #
@@ -28,41 +28,46 @@ CPE = 'cpe:/a:aprox:aproxengine';
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.100426");
- script_version("$Revision: 8362 $");
- script_tag(name:"last_modification", value:"$Date: 2018-01-10 16:35:33 +0100 (Wed, 10 Jan 2018) $");
- script_tag(name:"creation_date", value:"2010-01-05 18:50:28 +0100 (Tue, 05 Jan 2010)");
- script_bugtraq_id(37515);
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_name("AproxEngine Multiple Remote Input Validation Vulnerabilities");
+  script_oid("1.3.6.1.4.1.25623.1.0.100426");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2010-01-05 18:50:28 +0100 (Tue, 05 Jan 2010)");
+  script_bugtraq_id(37515);
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_name("AproxEngine Multiple Remote Input Validation Vulnerabilities");
 
- script_tag(name:"qod_type", value:"remote_banner");
- script_category(ACT_GATHER_INFO);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("AproxEngine_detect.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("aproxengine/installed");
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_category(ACT_GATHER_INFO);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
+  script_dependencies("AproxEngine_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("aproxengine/installed");
 
- script_tag(name: "summary", value: "AproxEngine is prone to multiple input-validation vulnerabilities,
-including SQL-injection, HTML-injection, directory-traversal, and email-spoofing issues.
+  script_tag(name:"summary", value:"AproxEngine is prone to multiple input-validation vulnerabilities,
+  including SQL-injection, HTML-injection, directory-traversal, and email-spoofing issues.");
 
-Attackers can exploit these issues to execute arbitrary script code in the context of the webserver, compromise
-the application, obtain sensitive information, steal cookie-based authentication credentials from legitimate
-users of the site, modify the way the site is rendered, perform certain unauthorized actions in the context of
-a user, access or modify data, or exploit latent vulnerabilities in the underlying database.
+  script_tag(name:"impact", value:"Attackers can exploit these issues to execute arbitrary script code in the context of the webserver, compromise
+  the application, obtain sensitive information, steal cookie-based authentication credentials from legitimate
+  users of the site, modify the way the site is rendered, perform certain unauthorized actions in the context of
+  a user, access or modify data, or exploit latent vulnerabilities in the underlying database.
 
-Attackers may require administrative privileges to exploit some of these issues.
+  Attackers may require administrative privileges to exploit some of these issues.");
 
-AproxEngine 5.3.04 and 6.0 are vulnerable; other versions may also be affected.");
+  script_tag(name:"affected", value:"AproxEngine 5.3.04 and 6.0 are vulnerable. Other versions may also be affected.");
 
- script_xref(name: "URL", value: "http://www.securityfocus.com/bid/37515");
- script_xref(name: "URL", value: "http://secunia.com/secunia_research/2009-2/");
- script_xref(name: "URL", value: "http://www.aprox.de/index.php?id=1");
- script_xref(name: "URL", value: "http://www.securityfocus.com/archive/1/508641");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/37515");
+  script_xref(name:"URL", value:"http://secunia.com/secunia_research/2009-2/");
+  script_xref(name:"URL", value:"http://www.aprox.de/index.php?id=1");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/508641");
 
- exit(0);
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+
+  exit(0);
 }
 
 include("host_details.inc");
@@ -82,7 +87,7 @@ dir = infos['location'];
 if (version_is_equal(version: vers, test_version: "5.3.04")) {
   security_message(port:port);
   exit(0);
-} 
+}
 else if (version_is_equal(version: vers, test_version: "6")) {
   if (dir == "/")
     dir = "";
@@ -96,7 +101,7 @@ else if (version_is_equal(version: vers, test_version: "6")) {
   if(egrep(pattern: "AproxEngine Version V6 build 03.12.2009", string: buf)) {
     security_message(port:port);
     exit(0);
-  }  
+  }
 }
 
 exit(0);

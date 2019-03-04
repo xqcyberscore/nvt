@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phpbb_37882.nasl 9332 2018-04-05 12:51:29Z cfischer $
+# $Id: phpbb_37882.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # phpBB Forum ID Security Bypass Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:phpbb:phpbb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100463");
-  script_version("$Revision: 9332 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-05 14:51:29 +0200 (Thu, 05 Apr 2018) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-01-25 18:49:48 +0100 (Mon, 25 Jan 2010)");
   script_cve_id("CVE-2010-1630");
   script_bugtraq_id(37882);
@@ -73,6 +73,6 @@ if( version_is_less( version:vers, test_version:"3.0.5" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"3.0.5" );
   security_message( port:port, data:report );
   exit( 0 );
-}  
+}
 
 exit( 99 );

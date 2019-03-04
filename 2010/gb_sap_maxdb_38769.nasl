@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sap_maxdb_38769.nasl 5373 2017-02-20 16:27:48Z teissa $
+# $Id: gb_sap_maxdb_38769.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # SAP MaxDB 'serv.exe' Unspecified Remote Code Execution Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:sap:maxdb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100541");
-  script_version("$Revision: 5373 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:27:48 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-03-17 21:52:47 +0100 (Wed, 17 Mar 2010)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -50,18 +50,13 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/510125");
   script_xref(name:"URL", value:"https://websmp202.sap-ag.de/sap/support/notes/1409425");
 
-  tag_summary = "SAP MaxDB is prone to an unspecified remote code-execution
-  vulnerability because it fails to sufficiently validate user-supplied input.";
+  script_tag(name:"solution", value:"Vendor updates are available through SAP note 1409425. Please contact the vendor for more information.");
 
-  tag_impact = "An attacker can leverage this issue to execute arbitrary code with
-  SYSTEM-level privileges. Failed exploit attempts will result in a denial-of-
-  service condition.";
+  script_tag(name:"summary", value:"SAP MaxDB is prone to an unspecified remote code-execution
+  vulnerability because it fails to sufficiently validate user-supplied input.");
 
-  tag_solution = "Vendor updates are available through SAP note 1409425; please contact the vendor for more information.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
+  script_tag(name:"impact", value:"An attacker can leverage this issue to execute arbitrary code with
+  SYSTEM-level privileges. Failed exploit attempts will result in a denial-of-service condition.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

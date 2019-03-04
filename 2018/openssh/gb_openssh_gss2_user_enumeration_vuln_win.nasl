@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssh_gss2_user_enumeration_vuln_win.nasl 12966 2019-01-08 09:04:10Z ckuersteiner $
+# $Id: gb_openssh_gss2_user_enumeration_vuln_win.nasl 13972 2019-03-04 07:20:45Z cfischer $
 #
 # OpenSSH 'auth2-gss.c' User Enumeration Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:openbsd:openssh";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813887");
-  script_version("$Revision: 12966 $");
+  script_version("$Revision: 13972 $");
   script_cve_id("CVE-2018-15919");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-08 10:04:10 +0100 (Tue, 08 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-04 08:20:45 +0100 (Mon, 04 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-09-05 13:12:09 +0530 (Wed, 05 Sep 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -55,7 +55,7 @@ if(description)
 
   script_tag(name:"affected", value:"OpenSSH version 5.9 to 7.8 on Windows.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 08th January, 2019.
+  script_tag(name:"solution", value:"No known solution is available as of 04th March, 2019.
   Information regarding this issue will be updated once solution details are available.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");

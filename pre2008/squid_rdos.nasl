@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: squid_rdos.nasl 6891 2017-08-10 12:44:59Z cfischer $
+# $Id: squid_rdos.nasl 13975 2019-03-04 09:32:08Z cfischer $
 #
 # Squid remote denial of service
 #
@@ -33,8 +33,8 @@ CPE = "cpe:/a:squid-cache:squid";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.15463");
-  script_version("$Revision: 6891 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-10 14:44:59 +0200 (Thu, 10 Aug 2017) $");
+  script_version("$Revision: 13975 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-04 10:32:08 +0100 (Mon, 04 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(11385);
   script_cve_id("CVE-2004-0918");
@@ -48,20 +48,12 @@ if(description)
   script_require_ports("Services/http_proxy", 3128, "Services/www", 8080);
   script_mandatory_keys("squid_proxy_server/installed");
 
-  tag_summary = "The remote squid caching proxy, according to its version number, may be
-  vulnerable to a remote denial of service.";
-
-  tag_insight = "This flaw is due to an input validation error in the SNMP module.";
-
-  tag_impact = "An attacker can exploit this flaw to crash the server with a specially
-  crafted UDP packet.";
-
-  tag_solution = "Upgrade to squid 2.5.STABLE7 or newer";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"summary", value:"The remote squid caching proxy, according to its version number, may be
+  vulnerable to a remote denial of service.");
+  script_tag(name:"insight", value:"This flaw is due to an input validation error in the SNMP module.");
+  script_tag(name:"impact", value:"An attacker can exploit this flaw to crash the server with a specially
+  crafted UDP packet.");
+  script_tag(name:"solution", value:"Upgrade to squid 2.5.STABLE7 or newer");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

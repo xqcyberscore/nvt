@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: openwebmail_content_type_xss.nasl 9045 2018-03-07 13:52:25Z cfischer $
+# $Id: openwebmail_content_type_xss.nasl 13975 2019-03-04 09:32:08Z cfischer $
 #
 # Open WebMail Content-Type XSS
 #
@@ -29,9 +29,9 @@ CPE = "cpe:/a:openwebmail.acatysmoof:openwebmail";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12262");
-  script_version("$Revision: 9045 $");
+  script_version("$Revision: 13975 $");
   script_bugtraq_id(10667);
-  script_tag(name:"last_modification", value:"$Date: 2018-03-07 14:52:25 +0100 (Wed, 07 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-04 10:32:08 +0100 (Mon, 04 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -47,16 +47,12 @@ if(description)
   script_xref(name:"URL", value:"http://www.rs-labs.com/adv/RS-Labs-Advisory-2004-1.txt");
   script_xref(name:"URL", value:"http://www.rs-labs.com/adv/RS-Labs-Advisory-2004-2.txt");
 
-  tag_summary = "The target is running at least one instance of Open WebMail whose
+  script_tag(name:"solution", value:"Upgrade to Open WebMail version 2.32 20040603 or later.");
+  script_tag(name:"summary", value:"The target is running at least one instance of Open WebMail whose
   version is 2.32 or earlier. Such versions are vulnerable to a cross
   site scripting attack whereby an attacker can cause a victim to
   unknowingly run arbitrary Javascript code by reading a MIME message
-  with a specially crafted Content-Type or Content-Description header.";
-
-  tag_solution = "Upgrade to Open WebMail version 2.32 20040603 or later.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  with a specially crafted Content-Type or Content-Description header.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

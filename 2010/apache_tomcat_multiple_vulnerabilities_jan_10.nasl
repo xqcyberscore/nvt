@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: apache_tomcat_multiple_vulnerabilities_jan_10.nasl 4346 2016-10-25 12:54:45Z cfi $
+# $Id: apache_tomcat_multiple_vulnerabilities_jan_10.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # Apache Tomcat Multiple Vulnerabilities - Jan10
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100474");
-  script_version("$Revision: 4346 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-25 14:54:45 +0200 (Tue, 25 Oct 2016) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-01-28 18:48:47 +0100 (Thu, 28 Jan 2010)");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
-  script_bugtraq_id(37945,37942,37944);
-  script_cve_id("CVE-2009-2901","CVE-2009-2902","CVE-2009-2693");
+  script_bugtraq_id(37945, 37942, 37944);
+  script_cve_id("CVE-2009-2901", "CVE-2009-2902", "CVE-2009-2693");
   script_name("Apache Tomcat Multiple Vulnerabilities - Jan10");
   script_category(ACT_GATHER_INFO);
   script_family("Web Servers");
@@ -60,7 +60,7 @@ if(description)
   script_tag(name:"impact", value:"Exploiting this issue allows attackers to delete arbitrary files
   within the context of the current working directory or gain unauthorized access to files and directories.");
 
-  script_tag(name:"affected", value:"Tomcat 5.5.0 through 5.5.28 
+  script_tag(name:"affected", value:"Tomcat 5.5.0 through 5.5.28
   Tomcat 6.0.0 through 6.0.20");
 
   script_tag(name:"solution_type", value:"VendorFix");

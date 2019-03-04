@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: dokuwiki_multiple_vuln.nasl 5145 2017-01-31 11:07:58Z cfi $
+# $Id: dokuwiki_multiple_vuln.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # DokuWiki Multiple Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:dokuwiki:dokuwiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100451");
-  script_version("$Revision: 5145 $");
+  script_version("$Revision: 13960 $");
   script_cve_id("CVE-2010-0287");
   script_bugtraq_id(37821, 37820);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-31 12:07:58 +0100 (Tue, 31 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-01-18 11:34:48 +0100 (Mon, 18 Jan 2010)");
   script_name("DokuWiki Multiple Vulnerabilities");
   script_category(ACT_GATHER_INFO);
@@ -48,25 +48,18 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/37820");
   script_xref(name:"URL", value:"http://www.dokuwiki.org/");
 
-  tag_summary = "DokuWiki is prone to an information-disclosure vulnerability and to
-  multiple security-bypass vulnerabilities.";
+  script_tag(name:"impact", value:"Exploiting this issues may allow attackers to determine whether certain
+  files reside on the affected computer. Information obtained may lead to further attacks. Unauthenticated
+  attackers can leverage these issues to change or delete wiki permissions.");
 
-  tag_impact = "Exploiting this issues may allow attackers to determine whether certain
-  files reside on the affected computer. Information obtained may lead
-  to further attacks. Unauthenticated attackers can leverage these
-  issues to change or delete wiki permissions.";
+  script_tag(name:"affected", value:"This issue affects DokuWiki 2009-12-25. Other versions may be
+  vulnerable as well.");
 
-  tag_affected = "This issue affects DokuWiki 2009-12-25; other versions may be
-  vulnerable as well.";
+  script_tag(name:"solution", value:"Reports indicate that updates are available, but Symantec has not
+  confirmed this information. Please see the references and contact the vendor for details.");
 
-  tag_solution = "Reports indicate that updates are available, but Symantec has not
-  confirmed this information. Please see the references and contact the
-  vendor for details.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"DokuWiki is prone to an information-disclosure vulnerability and to
+  multiple security-bypass vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -76,7 +69,7 @@ if(description)
 
 include("version_func.inc");
 include("host_details.inc");
- 
+
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 

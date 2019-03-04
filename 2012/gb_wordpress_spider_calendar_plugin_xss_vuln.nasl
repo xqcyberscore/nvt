@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_spider_calendar_plugin_xss_vuln.nasl 11857 2018-10-12 08:25:16Z cfischer $
+# $Id: gb_wordpress_spider_calendar_plugin_xss_vuln.nasl 13962 2019-03-01 14:14:42Z cfischer $
 #
 # WordPress Spider Calendar Plugin Cross Site Scripting Vulnerability
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802998");
-  script_version("$Revision: 11857 $");
+  script_version("$Revision: 13962 $");
   script_bugtraq_id(55779);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -37,7 +37,7 @@ if(description)
   script_tag(name:"creation_date", value:"2012-10-18 11:07:20 +0530 (Thu, 18 Oct 2012)");
   script_name("WordPress Spider Calendar Plugin Cross Site Scripting Vulnerability");
   script_category(ACT_ATTACK);
-  script_copyright("Copyright(c) 2012 Greenbone Networks GmbH");
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_require_ports("Services/www", 80);

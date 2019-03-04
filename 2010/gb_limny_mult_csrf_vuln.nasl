@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_limny_mult_csrf_vuln.nasl 4709 2016-12-08 09:44:07Z cfi $
+# $Id: gb_limny_mult_csrf_vuln.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # Limny Multiple Cross-site Request Forgery (CSRF) Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:limny:limny";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800296");
-  script_version("$Revision: 4709 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-08 10:44:07 +0100 (Thu, 08 Dec 2016) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-03-02 12:02:59 +0100 (Tue, 02 Mar 2010)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -47,33 +47,21 @@ if(description)
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/56318");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/11478");
 
-  tag_impact = "Successful exploitation will allow remote attackers to change the administrative
-  password or email address and add a new user by tricking an administrative user
-  into visiting a malicious web site.
-
-  Impact Level: Application.";
-
-  tag_affected = "Limny version 2.0";
-
-  tag_insight = "The multiple flaws are caused by improper validation of user-supplied input,
+  script_tag(name:"insight", value:"The multiple flaws are caused by improper validation of user-supplied input,
   which allows users to perform certain actions via HTTP requests without
-  performing any validity checks to verify the requests.";
-
-  tag_solution = "Upgrade to Limny version 2.01
-  For updates refer to http://www.limny.org/";
-
-  tag_summary = "This host is running Limny is prone to multiple cross-site request
-  forgery vulnerabilities";
-
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
+  performing any validity checks to verify the requests.");
+  script_tag(name:"solution", value:"Upgrade to Limny version 2.01");
+  script_tag(name:"summary", value:"This host is running Limny is prone to multiple cross-site request
+  forgery vulnerabilities");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to change the administrative
+  password or email address and add a new user by tricking an administrative user
+  into visiting a malicious web site.");
+  script_tag(name:"affected", value:"Limny version 2.0");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
 
+  script_xref(name:"URL", value:"http://www.limny.org/");
   exit(0);
 }
 

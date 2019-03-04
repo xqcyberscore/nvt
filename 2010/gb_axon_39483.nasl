@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_axon_39483.nasl 4900 2017-01-02 09:13:30Z cfi $
+# $Id: gb_axon_39483.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # Axon Virtual PBX 2.13 Multiple Remote Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:nch:axon_virtual_pbx";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100576");
-  script_version("$Revision: 4900 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-02 10:13:30 +0100 (Mon, 02 Jan 2017) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-04-15 19:15:10 +0200 (Thu, 15 Apr 2010)");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
@@ -47,28 +47,31 @@ if(description)
   script_xref(name:"URL", value:"http://www.nch.com.au/pbx/index.html");
   script_xref(name:"URL", value:"http://nchsoftware.com/");
 
-  tag_summary = "NCH Software Axon virtual PBX is prone to multiple remote
+  script_tag(name:"impact", value:"An attacker may leverage these issues to cause a denial-of-service
+  condition, run arbitrary script code in the browser of an unsuspecting user in the context of the
+  affected application, steal cookie-based authentication credentials, perform certain administrative actions,
+  gain unauthorized access to the affected application, delete certain data, and overwrite arbitrary files.
+  Other attacks are also possible.");
+
+  script_tag(name:"affected", value:"Axon 2.13 is vulnerable. Other versions may also be affected.");
+
+  script_tag(name:"summary", value:"NCH Software Axon virtual PBX is prone to multiple remote
   vulnerabilities, including:
 
   - A cross-site scripting vulnerability.
+
   - A cross-site request forgery vulnerability.
+
   - An arbitrary file deletion vulnerability.
-  - A directory traversal vulnerability.";
 
-  tag_impact = "An attacker may leverage these issues to cause a denial-of-service
-  condition, run arbitrary script code in the browser of an unsuspecting
-  user in the context of the affected application, steal cookie-based
-  authentication credentials, perform certain administrative actions,
-  gain unauthorized access to the affected application, delete certain
-  data, and overwrite arbitrary files. Other attacks are also possible.";
-
-  tag_affected = "Axon 2.13 is vulnerable; other versions may also be affected.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"summary", value:tag_summary);
+  - A directory traversal vulnerability.");
 
   script_tag(name:"qod_type", value:"remote_banner");
+
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
   exit(0);
 }
@@ -83,6 +86,6 @@ if( version_is_equal( version:vers, test_version:"2.13" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"Unknown" );
   security_message( port:port, data:report );
   exit( 0 );
-}  
+}
 
 exit( 99 );

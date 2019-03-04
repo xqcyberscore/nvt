@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_cms_made_simple_lfi_vuln.nasl 8680 2018-02-06 09:46:38Z ckuersteiner $
+# $Id: secpod_cms_made_simple_lfi_vuln.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # CMS Made Simple 'modules/Printing/output.php' Local File Include Vulnerability
 #
@@ -29,18 +29,18 @@ CPE = "cpe:/a:cmsmadesimple:cms_made_simple";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901141");
-  script_version("$Revision: 8680 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-06 10:46:38 +0100 (Tue, 06 Feb 2018) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-08-26 15:28:03 +0200 (Thu, 26 Aug 2010)");
   script_bugtraq_id(36005);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("CMS Made Simple 'modules/Printing/output.php' Local File Include Vulnerability");
 
-  script_xref(name: "URL", value: "http://www.cmsmadesimple.org/2009/08/05/announcing-cmsms-163-touho/");
+  script_xref(name:"URL", value:"http://www.cmsmadesimple.org/2009/08/05/announcing-cmsms-163-touho/");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_category(ACT_ATTACK);
@@ -50,21 +50,21 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("cmsmadesimple/installed");
 
-  script_tag(name: "impact", value: "Successful exploitation will allow attacker to obtain potentially sensitive
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to obtain potentially sensitive
 information and to execute arbitrary local scripts in the context of the webserver process.");
 
-  script_tag(name: "affected", value: "CMS Made Simple version 1.6.2");
+  script_tag(name:"affected", value:"CMS Made Simple version 1.6.2");
 
-  script_tag(name: "insight", value: "The flaw is caused by improper validation of user-supplied input via the
+  script_tag(name:"insight", value:"The flaw is caused by improper validation of user-supplied input via the
 'url' parameter to 'modules/Printing/output.php' that allows remote attackers to view files and execute local
 scripts in the context of the webserver.");
 
-  script_tag(name: "solution", value: "Upgrade CMS Made Simple Version 1.6.3 or later,
-  For updates refer to http://www.cmsmadesimple.org/downloads/");
+  script_tag(name:"solution", value:"Upgrade CMS Made Simple Version 1.6.3 or later.");
 
-  script_tag(name: "summary", value: "This host is running CMS Made Simple and is prone to local file inclusion
+  script_tag(name:"summary", value:"This host is running CMS Made Simple and is prone to local file inclusion
 vulnerability.");
 
+  script_xref(name:"URL", value:"http://www.cmsmadesimple.org/downloads/");
   exit(0);
 }
 

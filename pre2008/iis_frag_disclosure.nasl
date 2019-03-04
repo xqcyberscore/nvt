@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: iis_frag_disclosure.nasl 4703 2016-12-07 13:45:38Z cfi $
+# $Id: iis_frag_disclosure.nasl 13975 2019-03-04 09:32:08Z cfischer $
 #
 # Test Microsoft IIS Source Fragment Disclosure
 #
@@ -31,8 +31,8 @@ CPE = "cpe:/a:microsoft:iis";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10680");
-  script_version("$Revision: 4703 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-07 14:45:38 +0100 (Wed, 07 Dec 2016) $");
+  script_version("$Revision: 13975 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-04 10:32:08 +0100 (Mon, 04 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -48,23 +48,22 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/bulletin/MS01-004.mspx");
 
-  tag_summary = "Microsoft IIS 4.0 and 5.0 can be made to disclose
-  fragments of source code which should otherwise be
-  inaccessible. This is done by appending +.htr to a
-  request for a known .asp (or .asa, .ini, etc) file.";
-
-  tag_solution = ".htr script mappings should be removed if not required.
+  script_tag(name:"solution", value:".htr script mappings should be removed if not required.
 
   - open Internet Services Manager
+
   - right click on the web server and select properties
+
   - select WWW service > Edit > Home Directory > Configuration
+
   - remove the application mappings reference to .htr
 
   If .htr functionality is required, install the relevant patches
-  from Microsoft (MS01-004)";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  from Microsoft (MS01-004)");
+  script_tag(name:"summary", value:"Microsoft IIS 4.0 and 5.0 can be made to disclose
+  fragments of source code which should otherwise be
+  inaccessible. This is done by appending +.htr to a
+  request for a known .asp (or .asa, .ini, etc) file.");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_37861.nasl 8930 2018-02-23 07:28:32Z cfischer $
+# $Id: gb_phpmyadmin_37861.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # phpMyAdmin 'unserialize()' Remote Code Execution Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100589");
-  script_version("$Revision: 8930 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-23 08:28:32 +0100 (Fri, 23 Feb 2018) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-04-20 13:41:39 +0200 (Tue, 20 Apr 2010)");
   script_bugtraq_id(37861);
   script_cve_id("CVE-2009-4605");
@@ -48,20 +48,15 @@ if(description)
   script_xref(name:"URL", value:"http://www.phpmyadmin.net/");
   script_xref(name:"URL", value:"http://www.phpmyadmin.net/home_page/security/PMASA-2010-3.php");
 
-  tag_summary = "phpMyAdmin is prone to a vulnerability that lets attackers execute
-  arbitrary code in the context of the webserver process.";
+  script_tag(name:"summary", value:"phpMyAdmin is prone to a vulnerability that lets attackers execute
+  arbitrary code in the context of the webserver process.");
 
-  tag_impact = "This may facilitate unauthorized access or privilege escalation;
-  other attacks are also possible.";
+  script_tag(name:"impact", value:"This may facilitate unauthorized access or privilege escalation.
+  Other attacks are also possible.");
 
-  tag_affected = "Versions prior to phpMyAdmin 3.0.0 or 2.11.10 are vulnerable.";
+  script_tag(name:"affected", value:"Versions prior to phpMyAdmin 3.0.0 or 2.11.10 are vulnerable.");
 
-  tag_solution = "Updates are available. Please see the references for more information.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");

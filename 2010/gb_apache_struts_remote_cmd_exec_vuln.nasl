@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_remote_cmd_exec_vuln.nasl 11581 2018-09-25 06:12:55Z cfischer $
+# $Id: gb_apache_struts_remote_cmd_exec_vuln.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # Struts Remote Command Execution Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801441");
-  script_version("$Revision: 11581 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:12:55 +0200 (Tue, 25 Sep 2018) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-09-10 16:37:50 +0200 (Fri, 10 Sep 2010)");
   script_cve_id("CVE-2010-1870");
   script_bugtraq_id(41592);
@@ -53,8 +53,7 @@ if(description)
   remote attackers to modify server-side context objects and bypass the '#'
   protection mechanism in ParameterInterceptors via various variables.");
 
-  script_tag(name:"solution", value:"Upgrade to Struts version 2.2 or later
-  For updates refer to http://struts.apache.org/download.cgi");
+  script_tag(name:"solution", value:"Upgrade to Struts version 2.2 or later");
 
   script_tag(name:"summary", value:"This host is running Struts and is prone to remote command
   execution vulnerability.");
@@ -66,6 +65,7 @@ if(description)
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://struts.apache.org/download.cgi");
   exit(0);
 }
 

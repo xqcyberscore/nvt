@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: squid_dos.nasl 6898 2017-08-11 07:49:05Z cfischer $
+# $Id: squid_dos.nasl 13975 2019-03-04 09:32:08Z cfischer $
 #
 # Squid Denial-of-Service Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:squid-cache:squid";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10768");
-  script_version("$Revision: 6898 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-11 09:49:05 +0200 (Fri, 11 Aug 2017) $");
+  script_version("$Revision: 13975 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-04 10:32:08 +0100 (Mon, 04 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(3354);
   script_cve_id("CVE-2001-0843");
@@ -45,20 +45,16 @@ if(description)
   script_require_ports("Services/http_proxy", 3128, "Services/www", 8080);
   script_mandatory_keys("squid_proxy_server/installed");
 
-  tag_summary = "A problem exists in the way the remote Squid proxy server handles a
-  special 'mkdir-only' PUT request, and causes denial of service to the proxy
-  server.";
+  script_xref(name:"URL", value:"http://www.squid-cache.org");
 
-  tag_impact = "An attacker may use this flaw to prevent your LAN users from accessing
-  the web.";
+  script_tag(name:"summary", value:"A problem exists in the way the remote Squid proxy server handles a
+  special 'mkdir-only' PUT request, and causes denial of service to the proxy server.");
 
-  tag_solution = "Apply the vendor released patch, for squid it is located here:
-  www.squid-cache.org. You can also protect yourself by enabling access lists
-  on your proxy.";
+  script_tag(name:"impact", value:"An attacker may use this flaw to prevent your LAN users from accessing
+  the web.");
 
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"solution", value:"Apply the vendor released patch, for squid it is available at the
+  linked references. You can also protect yourself by enabling access lists on your proxy.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
@@ -72,7 +68,6 @@ include("version_func.inc");
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
-# checking for the Version < =2.4
 if( "2.3" >< vers && ( "STABLE1" >< vers || "STABLE3" >< vers ||
     "STABLE4" >< vers || "STABLE5" >< vers ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"See references" );

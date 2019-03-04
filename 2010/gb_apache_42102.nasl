@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_42102.nasl 9222 2018-03-27 12:27:39Z cfischer $
+# $Id: gb_apache_42102.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # Apache 'mod_proxy_http' 2.2.9 for Unix Timeout Handling Information Disclosure Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100858");
-  script_version("$Revision: 9222 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-27 14:27:39 +0200 (Tue, 27 Mar 2018) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-10-19 12:49:22 +0200 (Tue, 19 Oct 2010)");
   script_bugtraq_id(42102);
   script_tag(name:"cvss_base", value:"5.0");
@@ -49,22 +49,14 @@ if(description)
   script_xref(name:"URL", value:"http://httpd.apache.org/");
   script_xref(name:"URL", value:"http://permalink.gmane.org/gmane.comp.security.oss.general/3243");
   script_xref(name:"URL", value:"http://svn.apache.org/viewvc?view=revision&revision=699841");
-  script_xref(name:"URL", value:"http://support.avaya.com/css/P8/documents/100109771");
+  script_xref(name:"URL", value:"http://support.avaya.com/css/P8/documents/100109771"); # nb: According to the vendor advisory: "An information disclosure flaw was found in mod_proxy_http in version 2.2.9 only,"
 
-  tag_summary = "Apache is prone to an information-disclosure vulnerability that
-  affects the 'mod_proxy_http' module.";
-
-  tag_impact = "Attackers can leverage this issue to gain access to sensitive
-  information that may aid in further attacks.";
-
-  tag_affected = "Apache 2.2.9 on Unix is vulnerable."; # nb: According to the vendor advisory: "An information disclosure flaw was found in mod_proxy_http in version 2.2.9 only,"
-
-  tag_solution = "Updates are available. Please see the references for more information.";
-
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
+  script_tag(name:"affected", value:"Apache 2.2.9 on Unix is vulnerable.");
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
+  script_tag(name:"summary", value:"Apache is prone to an information-disclosure vulnerability that
+  affects the 'mod_proxy_http' module.");
+  script_tag(name:"impact", value:"Attackers can leverage this issue to gain access to sensitive
+  information that may aid in further attacks.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ipswitch_imail_server_11_02.nasl 7506 2017-10-19 11:45:46Z cfischer $
+# $Id: gb_ipswitch_imail_server_11_02.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # Ipswitch IMail Server < 11.02 multiple Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:ipswitch:imail_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100718");
-  script_version("$Revision: 7506 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-19 13:45:46 +0200 (Thu, 19 Oct 2017) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-07-16 12:38:11 +0200 (Fri, 16 Jul 2010)");
   script_bugtraq_id(41719, 41718, 41717);
   script_tag(name:"cvss_base", value:"9.7");
@@ -48,28 +48,18 @@ if(description)
   script_xref(name:"URL", value:"http://www.ipswitch.com/Products/IMail_Server/index.html");
   script_xref(name:"URL", value:"http://www.zerodayinitiative.com/advisories/ZDI-10-127/");
 
-  tag_summary = "Ipswitch IMail Server < 11.02  is prone to multiple Vulnerabilities.";
-
-  tag_insight = "1. Multiple buffer-overflow Vulnerabilities because it fails to perform adequate
-  boundary checks on user- supplied data.
-
-  2. Multiple remote code-execution vulnerabilities.";
-
-  tag_impact = "An attacker can exploit these issues to execute arbitrary code with
+  script_tag(name:"impact", value:"An attacker can exploit these issues to execute arbitrary code with
   SYSTEM-level privileges. Successfully exploiting these issues will
   result in the complete compromise of affected computers. Failed
-  exploit attempts will result in a denial-of-service condition.";
+  exploit attempts will result in a denial-of-service condition.");
+  script_tag(name:"affected", value:"Ipswitch IMail Server versions prior to 11.02 are vulnerable.");
+  script_tag(name:"insight", value:"1. Multiple buffer-overflow Vulnerabilities because it fails to perform adequate
+  boundary checks on user- supplied data.
 
-  tag_affected = "Ipswitch IMail Server versions prior to 11.02 are vulnerable.";
-
-  tag_solution = "Vendor updates are available. Please contact the vendor for more
-  information.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  2. Multiple remote code-execution vulnerabilities.");
+  script_tag(name:"solution", value:"Vendor updates are available. Please contact the vendor for more
+  information.");
+  script_tag(name:"summary", value:"Ipswitch IMail Server < 11.02  is prone to multiple Vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

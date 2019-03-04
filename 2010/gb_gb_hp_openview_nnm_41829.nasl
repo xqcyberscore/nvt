@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gb_hp_openview_nnm_41829.nasl 7765 2017-11-15 06:34:32Z cfischer $
+# $Id: gb_gb_hp_openview_nnm_41829.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # HP OpenView Network Node Manager 'execvp_nc()' Code Execution Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:hp:openview_network_node_manager";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100786");
-  script_version("$Revision: 7765 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-15 07:34:32 +0100 (Wed, 15 Nov 2017) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-09-07 15:26:31 +0200 (Tue, 07 Sep 2010)");
   script_bugtraq_id(41829);
   script_tag(name:"cvss_base", value:"10.0");
@@ -50,22 +50,14 @@ if(description)
   script_xref(name:"URL", value:"http://itrc.hp.com/service/cki/docDisplay.do?docId=emr_na-c02286088");
   script_xref(name:"URL", value:"http://www.zerodayinitiative.com/advisories/ZDI-10-137/");
 
-  tag_summary = "HP OpenView Network Node Manager (OV NNM) is prone to a remote
-  code-execution vulnerability.";
-
-  tag_impact = "An attacker can exploit this issue to execute arbitrary code with SYSTEM-
+  script_tag(name:"summary", value:"HP OpenView Network Node Manager (OV NNM) is prone to a remote
+  code-execution vulnerability.");
+  script_tag(name:"affected", value:"The issue affects HP OpenView Network Node Manager versions 7.51 and
+  7.53 running on the Windows platform.");
+  script_tag(name:"solution", value:"Updates are available. Please see the references for details.");
+  script_tag(name:"impact", value:"An attacker can exploit this issue to execute arbitrary code with SYSTEM-
   level privileges. Successful exploits will completely compromise
-  affected computers.";
-
-  tag_affected = "The issue affects HP OpenView Network Node Manager versions 7.51 and
-  7.53 running on the Windows platform.";
-
-  tag_solution = "Updates are available. Please see the references for details.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"impact", value:tag_impact);
+  affected computers.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

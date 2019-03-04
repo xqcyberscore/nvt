@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: xoops_viewtopic_xss.nasl 5952 2017-04-13 12:34:17Z cfi $
+# $Id: xoops_viewtopic_xss.nasl 13975 2019-03-04 09:32:08Z cfischer $
 #
 # XOOPS viewtopic.php Cross Site Scripting Vulnerability
 #
@@ -33,8 +33,8 @@ CPE = "cpe:/a:xoops:xoops";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.15480");
-  script_version("$Revision: 5952 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-13 14:34:17 +0200 (Thu, 13 Apr 2017) $");
+  script_version("$Revision: 13975 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-04 10:32:08 +0100 (Mon, 04 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2004-2756");
   script_bugtraq_id(9497);
@@ -50,24 +50,21 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.securitytracker.com/alerts/2004/Jan/1008849.html");
 
-  tag_summary = "The remote web server contains a PHP script that is prone to cross-
-  site scripting attacks.";
+  script_tag(name:"summary", value:"The remote web server contains a PHP script that is prone to cross-
+  site scripting attacks.");
 
-  tag_insight = "The weblinks module of XOOPS contains a file named 'viewtopic.php' in
-  the '/modules/newbb' directory. The code of the module insufficently filters out user
-  provided data.";
+  script_tag(name:"insight", value:"The weblinks module of XOOPS contains a file named 'viewtopic.php' in
+  the '/modules/newbb' directory. The code of the module insufficently filters out user provided data.");
 
-  tag_impact = "The URL parameter used by 'viewtopic.php' can be used to insert malicious
-  HTML and/or JavaScript in to the web page.";
+  script_tag(name:"impact", value:"The URL parameter used by 'viewtopic.php' can be used to insert malicious
+  HTML and/or JavaScript in to the web page.");
 
-  tag_solution = "Unknown at this time.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release,
+  disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"qod_type", value:"remote_app");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   exit(0);
 }

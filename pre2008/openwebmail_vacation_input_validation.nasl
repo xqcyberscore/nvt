@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: openwebmail_vacation_input_validation.nasl 9045 2018-03-07 13:52:25Z cfischer $
+# $Id: openwebmail_vacation_input_validation.nasl 13975 2019-03-04 09:32:08Z cfischer $
 #
 # Open WebMail vacation.pl Arbitrary Command Execution
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:openwebmail.acatysmoof:openwebmail";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12637");
-  script_version("$Revision: 9045 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-07 14:52:25 +0100 (Wed, 07 Mar 2018) $");
+  script_version("$Revision: 13975 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-04 10:32:08 +0100 (Mon, 04 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -47,21 +47,16 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.openwebmail.org/openwebmail/download/cert/advisories/SA-04:04.txt");
 
-  tag_summary = "The target is running at least one instance of Open WebMail in which
-  the vacation.pl component fails to sufficiently validate user input.";
+  script_tag(name:"impact", value:"This failure enables remote attackers to execute arbitrary programs on
+  a target using the privileges under which the web server operates.");
 
-  tag_impact = "This failure enables remote attackers to execute arbitrary programs on
-  a target using the privileges under which the web server operates.";
+  script_tag(name:"insight", value:"If safe_checks are disabled, the scanner attempts to create the file
+  /tmp/<prefix>_openwebmail_vacation_input_validation on the target.");
 
-  tag_insight = "If safe_checks are disabled, OpenVAS attempts to create the file
-  /tmp/openvas_openwebmail_vacation_input_validation on the target.";
+  script_tag(name:"solution", value:"Upgrade to Open WebMail version 2.32 20040629 or later.");
 
-  tag_solution = "Upgrade to Open WebMail version 2.32 20040629 or later.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"The target is running at least one instance of Open WebMail in which
+  the vacation.pl component fails to sufficiently validate user input.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -73,6 +68,7 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("version_func.inc");
 include("host_details.inc");
+include("misc_func.inc");
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:TRUE ) ) exit( 0 );
@@ -91,12 +87,14 @@ if( ereg( pattern:pat, string:vers ) ) {
   url = dir + "/vacation.pl";
 
   # If safe_checks is disabled, I'll try to create
-  # /tmp/openvas_openwebmail_vacation_input_validation as a PoC
+  # /tmp/xxx_openwebmail_vacation_input_validation as a PoC
   # although AFAIK there's no programmatic way to verify this worked
   # since the script doesn't display results of any commands that might be run.
 
-  if( ! safe_checks() )
-    url += "?-i+-p/tmp+-ftouch%20/tmp/openvas_openwebmail_vacation_input_validation|";
+  if( ! safe_checks() ) {
+    vtstrings = get_vt_strings();
+    url += "?-i+-p/tmp+-ftouch%20/tmp/" + vtstrings["lowercase"] + "_openwebmail_vacation_input_validation|";
+  }
 
   req = http_get( item:url, port:port );
   res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );

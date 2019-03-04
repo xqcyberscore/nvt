@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_mult_vuln.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: gb_mysql_mult_vuln.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # MySQL Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801355");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-06-11 14:27:58 +0200 (Fri, 11 Jun 2010)");
   script_cve_id("CVE-2010-1848", "CVE-2010-1849", "CVE-2010-1850");
   script_tag(name:"cvss_base", value:"6.5");
@@ -63,12 +63,12 @@ if(description)
   - directory traversal vulnerability when handling a '..' (dot dot) in a
     table name, which allows remote authenticated users to bypass intended
     table grants to read field definitions of arbitrary tables.");
-  script_tag(name:"solution", value:"Upgrade to MySQL version 5.0.91 or 5.1.47,
-  For updates refer to http://dev.mysql.com/downloads");
+  script_tag(name:"solution", value:"Upgrade to MySQL version 5.0.91 or 5.1.47.");
   script_tag(name:"summary", value:"The host is running MySQL and is prone to multiple vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://dev.mysql.com/downloads");
   exit(0);
 }
 

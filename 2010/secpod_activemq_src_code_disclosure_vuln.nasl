@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_activemq_src_code_disclosure_vuln.nasl 7430 2017-10-13 12:51:38Z cfischer $
+# $Id: secpod_activemq_src_code_disclosure_vuln.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # Apache ActiveMQ Source Code Information Disclosure Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:apache:activemq";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901110");
-  script_version("$Revision: 7430 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-13 14:51:38 +0200 (Fri, 13 Oct 2017) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-04-23 17:57:39 +0200 (Fri, 23 Apr 2010)");
   script_cve_id("CVE-2010-1587");
   script_bugtraq_id(39636);
@@ -47,31 +47,14 @@ if(description)
   script_xref(name:"URL", value:"https://issues.apache.org/activemq/browse/AMQ-2700");
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/510896");
 
-  tag_solution = "Upgrade to the latest version of ActiveMQ 5.4.0 SNAPSHOT or later,
-  For updates refer to http://activemq.apache.org/download.html
-
-  Workaround:
-  Apply workaround as in the link,
-  https://issues.apache.org/activemq/browse/AMQ-2700";
-
-  tag_impact = "Successful exploitation allows an attacker to view the source code of
-  a visited page which can be used for further attacks.
-
-  Impact Level: Application";
-
-  tag_affected = "Apache ActiveMQ 5.3.1 and prior.";
-
-  tag_insight = "The flaw is caused by improper validation of URL. Adding '//' after the
-  port in an URL causes it to disclose the JSP page source.";
-
-  tag_summary = "This host is running Apache ActiveMQ and is prone to source code
-  information disclosure vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"impact", value:"Successful exploitation allows an attacker to view the source code of
+  a visited page which can be used for further attacks.");
+  script_tag(name:"affected", value:"Apache ActiveMQ 5.3.1 and prior.");
+  script_tag(name:"insight", value:"The flaw is caused by improper validation of URL. Adding '//' after the
+  port in an URL causes it to disclose the JSP page source.");
+  script_tag(name:"summary", value:"This host is running Apache ActiveMQ and is prone to source code
+  information disclosure vulnerability.");
+  script_tag(name:"solution", value:"Upgrade to the latest version of ActiveMQ 5.4.0 SNAPSHOT or later.");
   script_tag(name:"vuldetect", value:"Send a special crafted HTTP GET request and check the response.");
 
   script_tag(name:"qod_type", value:"remote_app");

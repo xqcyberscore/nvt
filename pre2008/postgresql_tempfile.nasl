@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: postgresql_tempfile.nasl 8023 2017-12-07 08:36:26Z teissa $
+# $Id: postgresql_tempfile.nasl 13975 2019-03-04 09:32:08Z cfischer $
 # Description: PostgreSQL insecure temporary file creation
 #
 # Authors:
@@ -23,62 +23,54 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "The remote PostgreSQL server, according to its version number, is vulnerable 
-to an unspecified insecure temporary file creation flaw, which may allow 
-a local attacker to overwrite arbitrary files with the privileges of 
-the application.";
-
-tag_solution = "Upgrade to newer version of this software.";
-
 #  Ref: Trustix security engineers
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.15417";
 CPE = "cpe:/a:postgresql:postgresql";
 
 if(description)
 {
- 
- script_oid(SCRIPT_OID);  
- script_version("$Revision: 8023 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_cve_id("CVE-2004-0977");
- script_bugtraq_id(11295);
- script_tag(name:"cvss_base", value:"2.1");
- script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:P/A:N");
 
- name = "PostgreSQL insecure temporary file creation";
- script_name(name);
- 
+  script_oid("1.3.6.1.4.1.25623.1.0.15417");
+  script_version("$Revision: 13975 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-04 10:32:08 +0100 (Mon, 04 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_cve_id("CVE-2004-0977");
+  script_bugtraq_id(11295);
+  script_tag(name:"cvss_base", value:"2.1");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:P/A:N");
+  script_name("PostgreSQL insecure temporary file creation");
 
 
- 
- script_category(ACT_GATHER_INFO);
+
+
+  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
- 
- 
- script_copyright("This script is Copyright (C) 2004 David Maciejak");
- family = "Gain a shell remotely";
- script_family(family);
- script_dependencies("postgresql_detect.nasl");
- script_require_ports("Services/postgresql", 5432);
- script_require_keys("PostgreSQL/installed");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+
+
+  script_copyright("This script is Copyright (C) 2004 David Maciejak");
+  script_family("Gain a shell remotely");
+  script_dependencies("postgresql_detect.nasl");
+  script_require_ports("Services/postgresql", 5432);
+  script_require_keys("PostgreSQL/installed");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution", value:"Upgrade to newer version of this software.");
+  script_tag(name:"summary", value:"The remote PostgreSQL server, according to its version number, is vulnerable
+to an unspecified insecure temporary file creation flaw, which may allow
+a local attacker to overwrite arbitrary files with the privileges of
+the application.");
+  exit(0);
 }
 
 
 include("host_details.inc");
 
-port = get_app_port(cpe:CPE, nvt:SCRIPT_OID);
+port = get_app_port(cpe:CPE);
 if(!port)port = 5432;
 
 if(!get_port_state(port))exit(0);
 
 #
 # Request the database 'template1' as the user 'postgres' or 'pgsql'
-# 
+#
 zero = raw_string(0x00);
 
 user[0] = "postgres";
@@ -103,10 +95,10 @@ for(i=0;i<2;i=i+1)
  if((r[0]=="R") && (strlen(r2) == 10))
   {
     dbs = "";
-    req = raw_string(0x51) + "select version();" + 
+    req = raw_string(0x51) + "select version();" +
     	  raw_string(0x00);
     send(socket:soc, data:req);
-    
+
     r = recv(socket:soc, length:65535);
     r = strstr(r, "PostgreSQL");
     if(r != NULL)

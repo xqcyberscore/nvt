@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: tomcat_status.nasl 4355 2016-10-26 13:50:18Z cfi $
+# $Id: tomcat_status.nasl 13975 2019-03-04 09:32:08Z cfischer $
 #
 # Tomcat /status information disclosure
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11218");
-  script_version("$Revision: 4355 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-26 15:50:18 +0200 (Wed, 26 Oct 2016) $");
+  script_version("$Revision: 13975 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-04 10:32:08 +0100 (Mon, 04 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
@@ -42,18 +42,14 @@ if(description)
   script_require_ports("Services/www", 8080);
   script_mandatory_keys("ApacheTomcat/installed");
 
-  tag_summary = "Requesting the URI /status gives information about
+  script_tag(name:"solution", value:"If you don't use this feature, comment the appropriate section in
+  your httpd.conf file. If you really need it, limit its access to
+  the administrator's machine.");
+  script_tag(name:"summary", value:"Requesting the URI /status gives information about
   the currently running Tomcat.
 
   It also allows anybody to reset (ie: permanently delete) the current
-  statistics.";
-
-  tag_solution = "If you don't use this feature, comment the appropriate section in
-  your httpd.conf file. If you really need it, limit its access to
-  the administrator's machine.";
- 
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  statistics.");
 
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_vul");

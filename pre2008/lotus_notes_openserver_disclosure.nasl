@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: lotus_notes_openserver_disclosure.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: lotus_notes_openserver_disclosure.nasl 13975 2019-03-04 09:32:08Z cfischer $
 # Description: Lotus Notes ?OpenServer Information Disclosure
 #
 # Authors:
@@ -31,36 +31,36 @@ CPE = 'cpe:/a:ibm:lotus_domino';
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.10795");
- script_version("$Revision: 6040 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_name("Lotus Notes ?OpenServer Information Disclosure");
- script_category(ACT_GATHER_INFO);
+  script_oid("1.3.6.1.4.1.25623.1.0.10795");
+  script_version("$Revision: 13975 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-04 10:32:08 +0100 (Mon, 04 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_name("Lotus Notes ?OpenServer Information Disclosure");
+  script_category(ACT_GATHER_INFO);
 
- script_copyright("This script is Copyright (C) 2001 SecuriTeam");
- script_family("Web Servers");
- script_dependencies("gb_lotus_domino_detect.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("dominowww/installed");
+  script_copyright("This script is Copyright (C) 2001 SecuriTeam");
+  script_family("Web Servers");
+  script_dependencies("gb_lotus_domino_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("dominowww/installed");
 
- script_tag(name : "solution" , value : "To disable this behavior open names.nsf and edit the
- Servers document in the Server view. From the Internet Protocols tab set 'Allow HTTP Clients
- to browse databases' to No. This command doesn't affect a single database - it is a server-wide issue.
+  script_xref(name:"URL", value:"http://www.securiteam.com/securitynews/6W0030U35W.html");
+  script_xref(name:"URL", value:"http://online.securityfocus.com/archive/1/223810");
 
- Additional information:
- http://www.securiteam.com/securitynews/6W0030U35W.html
- http://online.securityfocus.com/archive/1/223810");
- script_tag(name : "summary" , value : "A default behavior of Lotus Notes allows remote users to enumerate existing
- databases on a remote Domino (Lotus Notes) server. This information is considered sensitive, since it might reveal
- versions, logs, statistics, etc.");
+  script_tag(name:"solution", value:"To disable this behavior open names.nsf and edit the
+  Servers document in the Server view. From the Internet Protocols tab set 'Allow HTTP Clients
+  to browse databases' to No. This command doesn't affect a single database - it is a server-wide issue.");
 
- script_tag(name:"solution_type", value:"Workaround");
- script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"summary", value:"A default behavior of Lotus Notes allows remote users to enumerate existing
+  databases on a remote Domino (Lotus Notes) server. This information is considered sensitive, since it might reveal
+  versions, logs, statistics, etc.");
 
- exit(0);
+  script_tag(name:"solution_type", value:"Workaround");
+  script_tag(name:"qod_type", value:"remote_banner");
+
+  exit(0);
 }
 
 
@@ -68,11 +68,14 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE, service:"www" ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE, service:"www" ) )
+  exit( 0 );
+
+if( ! get_app_location( cpe:CPE, port:port ) )
+  exit( 0 );
 
 url = "/?OpenServer";
 
-## Try attack and check the response to confirm vulnerability
 if( http_vuln_check( port:port, url:url, check_header:TRUE,
     pattern:"!-- Lotus-Domino",
     extra_check: "/icons/abook.gif" ) ) {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deluxeBB_sql_injection.nasl 9596 2018-04-25 07:21:51Z cfischer $
+# $Id: deluxeBB_sql_injection.nasl 13975 2019-03-04 09:32:08Z cfischer $
 #
 # DeluxeBB Multiple SQL injection flaws
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:deluxebb:deluxebb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.19750");
-  script_version("$Revision: 9596 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-25 09:21:51 +0200 (Wed, 25 Apr 2018) $");
+  script_version("$Revision: 13975 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-04 10:32:08 +0100 (Mon, 04 Mar 2019) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_cve_id("CVE-2005-2989");
   script_bugtraq_id(14851);
@@ -43,10 +43,9 @@ if(description)
   script_dependencies("deluxeBB_detect.nasl");
   script_mandatory_keys("deluxebb/installed");
 
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"summary", value:"The remote host is using DeluxeBB, a web application forum written in PHP.
 

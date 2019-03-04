@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_edirectory_40541.nasl 5772 2017-03-29 16:44:30Z mime $
+# $Id: gb_novell_edirectory_40541.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # Novell eDirectory Multiple Remote Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100667");
-  script_version("$Revision: 5772 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-29 18:44:30 +0200 (Wed, 29 Mar 2017) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-06-04 13:05:19 +0200 (Fri, 04 Jun 2010)");
   script_bugtraq_id(40541);
   script_cve_id("CVE-2009-4653");
@@ -48,19 +48,11 @@ if(description)
   script_xref(name:"URL", value:"http://support.novell.com/docs/Readmes/InfoDocument/patchbuilder/readme_5076151.html");
   script_xref(name:"URL", value:"http://www.novell.com/products/edirectory/");
 
-  tag_summary = "Novell eDirectory is prone to multiple remote vulnerabilities.";
-
-  tag_impact = "Successful exploits may allow attackers to execute arbitrary code
-  within the context of the affected application or cause denial-of-service conditions.";
-
-  tag_affected = "These issues affect eDirectory versions prior to 8.8 SP5 Patch 4.";
-
-  tag_solution = "The vendor has released fixes. Please see the references for details.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
+  script_tag(name:"solution", value:"The vendor has released fixes. Please see the references for details.");
+  script_tag(name:"summary", value:"Novell eDirectory is prone to multiple remote vulnerabilities.");
+  script_tag(name:"impact", value:"Successful exploits may allow attackers to execute arbitrary code
+  within the context of the affected application or cause denial-of-service conditions.");
+  script_tag(name:"affected", value:"These issues affect eDirectory versions prior to 8.8 SP5 Patch 4.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -79,10 +71,10 @@ if( ! major = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 if( ! sp = get_kb_item( "ldap/eDirectory/" + port + "/sp" ) )
   sp = "0";
 
-invers = major;
+reportver = major;
 
 if( sp > 0 )
-  invers += ' SP' + sp;
+  reportver += ' SP' + sp;
 
 revision = get_kb_item( "ldap/eDirectory/" + port + "/build" );
 revision = str_replace( string:revision, find:".", replace:"" );
@@ -110,10 +102,9 @@ if(  major == "8.8" )
   }
 }
 
-
 if( vuln )
 {
-  report =  report_fixed_ver( installed_version:invers, fixed_version:"See advisory" );
+  report = report_fixed_ver( installed_version:reportver, fixed_version:"See advisory" );
   security_message( port:port, data:report );
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_phpbb_sec_bypass_vuln.nasl 9332 2018-04-05 12:51:29Z cfischer $
+# $Id: secpod_phpbb_sec_bypass_vuln.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # phpBB 'feed.php' Security Bypass Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:phpbb:phpbb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902180");
-  script_version("$Revision: 9332 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-05 14:51:29 +0200 (Thu, 05 Apr 2018) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-05-25 13:56:16 +0200 (Tue, 25 May 2010)");
   script_cve_id("CVE-2010-1627");
   script_tag(name:"cvss_base", value:"4.3");
@@ -47,18 +47,14 @@ if(description)
   script_mandatory_keys("phpBB/installed");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to bypass intended access
-  restrictions via unspecified attack vectors.
-
-  Impact Level: Application");
+  restrictions via unspecified attack vectors.");
 
   script_tag(name:"affected", value:"phpBB version 3.0.7 before 3.0.7-PL1");
 
   script_tag(name:"insight", value:"The flaw is due to error in 'feed.php', which does not properly check
   permissions for feeds.");
 
-  script_tag(name:"solution", value:"Upgrade phpBB to 3.0.7-PL1 or later,
-
-  For updates refer to http://www.phpbb.com/downloads/");
+  script_tag(name:"solution", value:"Upgrade phpBB to 3.0.7-PL1 or later.");
 
   script_tag(name:"summary", value:"This host is running phpBB and is prone to security bypass
   vulnerability.");
@@ -66,6 +62,7 @@ if(description)
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.phpbb.com/downloads/");
   exit(0);
 }
 
@@ -79,6 +76,6 @@ if( vers =~ "^3\.0\.7\.*" && version_is_less( version:vers, test_version:"3.0.7.
   report = report_fixed_ver( installed_version:vers, fixed_version:"3.0.7 PL1" );
   security_message( port:port, data:report );
   exit( 0 );
-}  
+}
 
 exit( 99 );

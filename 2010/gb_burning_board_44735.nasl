@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_burning_board_44735.nasl 10795 2018-08-06 14:09:55Z cfischer $
+# $Id: gb_burning_board_44735.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # Woltlab Burning Board 'locator.php' SQL Injection Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:woltlab:burning_board";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100896");
-  script_version("$Revision: 10795 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-06 16:09:55 +0200 (Mon, 06 Aug 2018) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-11-09 13:58:26 +0100 (Tue, 09 Nov 2010)");
   script_bugtraq_id(44735);
   script_tag(name:"cvss_base", value:"7.5");
@@ -62,7 +62,7 @@ if(description)
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_banner");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

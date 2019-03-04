@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mysql_bof_vuln_lin.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: secpod_mysql_bof_vuln_lin.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # MySQL Server Buffer Overflow Vulnerability (Linux)
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901093");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-01-04 15:26:56 +0100 (Mon, 04 Jan 2010)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -55,12 +55,12 @@ arbitrary code.");
 5.1.43, MySQL 5.5.x through 5.5.0-m2 On Linux");
   script_tag(name:"insight", value:"The flaw is due to an error in application that allows remote
 attackers to execute arbitrary code via unspecified vectors");
-  script_tag(name:"solution", value:"Upgrade to MySQL Version 5.0.90 or 5.1.43 or 5.5.1 or later,
-  For updates refer to http://dev.mysql.com/downloads");
+  script_tag(name:"solution", value:"Upgrade to MySQL Version 5.0.90 or 5.1.43 or 5.5.1 or later.");
   script_tag(name:"summary", value:"The host is running MySQL and is prone to Buffer overflow
   Vulnerability");
 
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://dev.mysql.com/downloads");
   exit(0);
 }
 

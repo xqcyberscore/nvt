@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bugzilla_42275.nasl 8527 2018-01-25 07:33:25Z ckuersteiner $
+# $Id: gb_bugzilla_42275.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # Bugzilla Multiple Vulnerabilities
 #
@@ -28,30 +28,31 @@ CPE = "cpe:/a:mozilla:bugzilla";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.100749");
- script_version("$Revision: 8527 $");
- script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:33:25 +0100 (Thu, 25 Jan 2018) $");
- script_tag(name:"creation_date", value:"2010-08-09 13:36:05 +0200 (Mon, 09 Aug 2010)");
- script_bugtraq_id(42275);
- script_cve_id("CVE-2010-2756","CVE-2010-2757","CVE-2010-2758","CVE-2010-2759");
- script_tag(name:"cvss_base", value:"6.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
+  script_oid("1.3.6.1.4.1.25623.1.0.100749");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2010-08-09 13:36:05 +0200 (Mon, 09 Aug 2010)");
+  script_bugtraq_id(42275);
+  script_cve_id("CVE-2010-2756", "CVE-2010-2757", "CVE-2010-2758", "CVE-2010-2759");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
 
- script_name("Bugzilla Multiple Vulnerabilities");
+  script_name("Bugzilla Multiple Vulnerabilities");
 
- script_xref(name: "URL", value: "https://www.securityfocus.com/bid/42275");
- script_xref(name: "URL", value: "http://www.bugzilla.org/security/3.2.7/");
+  script_xref(name:"URL", value:"https://www.securityfocus.com/bid/42275");
+  script_xref(name:"URL", value:"http://www.bugzilla.org/security/3.2.7/");
 
- script_tag(name:"qod_type", value:"remote_banner");
- script_category(ACT_GATHER_INFO);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("bugzilla_detect.nasl");
- script_mandatory_keys("bugzilla/installed");
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_category(ACT_GATHER_INFO);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
+  script_dependencies("bugzilla_detect.nasl");
+  script_mandatory_keys("bugzilla/installed");
 
- script_tag(name: "solution", value: "Updates are available. Please see the references for more information.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
 
- script_tag(name: "summary", value: "Bugzilla is prone to the following vulnerabilities:
+  script_tag(name:"summary", value:"Bugzilla is prone to the following vulnerabilities:
 
 1. A security bypass issue.
 
@@ -67,7 +68,7 @@ The following versions are vulnerable:
 4.x and 3.2.x versions prior to 3.2.8, 4.1.x and 3.4.x versions prior to 3.4.8, 4.2.x and 3.6.x versions prior to
 3.6.2, 4.3.x versions prior to 3.7.3.");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

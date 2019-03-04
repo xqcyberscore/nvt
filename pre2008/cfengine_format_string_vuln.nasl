@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cfengine_format_string_vuln.nasl 7529 2017-10-20 10:53:04Z cfischer $
+# $Id: cfengine_format_string_vuln.nasl 13975 2019-03-04 09:32:08Z cfischer $
 #
 # cfengine format string vulnerability
 #
@@ -31,8 +31,8 @@ CPE = "cpe:/a:gnu:cfengine";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14316");
-  script_version("$Revision: 7529 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-20 12:53:04 +0200 (Fri, 20 Oct 2017) $");
+  script_version("$Revision: 13975 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-04 10:32:08 +0100 (Mon, 04 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(1757);
   script_tag(name:"cvss_base", value:"10.0");
@@ -45,7 +45,8 @@ if(description)
   script_dependencies("cfengine_detect.nasl");
   script_mandatory_keys("cfengine/running");
 
-  tag_summary = "Cfengine is running on this remote host.
+  script_tag(name:"solution", value:"Upgrade to 1.6.0a11 or newer");
+  script_tag(name:"summary", value:"Cfengine is running on this remote host.
 
   Cfengine contains a component, cfd, which serves as a remote-configuration
   client to cfengine. This version of cfd contains several flaws in the
@@ -53,12 +54,7 @@ if(description)
   (if access controls are not in place) can cause the vulnerable host to
   log malicious data which, when logged, can either crash the server or
   execute arbitrary code on the stack. In the latter case, the code would
-  be executed as the 'root' user.";
-
-  tag_solution = "Upgrade to 1.6.0a11 or newer";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  be executed as the 'root' user.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

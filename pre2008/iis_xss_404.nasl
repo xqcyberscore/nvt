@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: iis_xss_404.nasl 4703 2016-12-07 13:45:38Z cfi $
+# $Id: iis_xss_404.nasl 13976 2019-03-04 09:45:19Z cfischer $
 #
 # IIS XSS via 404 error
 #
@@ -32,8 +32,8 @@ CPE = "cpe:/a:microsoft:iis";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10936");
-  script_version("$Revision: 4703 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-07 14:45:38 +0100 (Wed, 07 Dec 2016) $");
+  script_version("$Revision: 13976 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-04 10:45:19 +0100 (Mon, 04 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -51,21 +51,27 @@ if(description)
   script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/bulletin/MS02-018.mspx");
   script_xref(name:"URL", value:"http://jscript.dk/adv/TL001/");
 
-  tag_summary = "This IIS Server appears to vulnerable to one of the cross site scripting
-  attacks described in MS02-018. The default '404' file returned by IIS uses scripting to output a link to
-  top level domain part of the url requested. By crafting a particular URL it is possible to insert arbitrary script into the
-  page for execution.
+  script_tag(name:"summary", value:"This IIS Server appears to vulnerable to one of the cross site scripting
+  attacks described in MS02-018.");
 
-  The presence of this vulnerability also indicates that you are vulnerable to the other issues identified in MS02-018 (various remote buffer overflow and cross site scripting attacks...)";
+  script_tag(name:"insight", value:"The default '404' file returned by IIS uses scripting to output a link to
+  top level domain part of the url requested. By crafting a particular URL it is possible to insert arbitrary
+  script into the page for execution.
 
-  script_tag(name:"summary", value:tag_summary);
+  The presence of this vulnerability also indicates that the host is vulnerable to the other issues identified
+  in MS02-018 (various remote buffer overflow and cross site scripting attacks...)");
+
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"qod_type", value:"remote_analysis");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   exit(0);
 }
 
-# Check makes a request for non-existent HTML file. The server should return a 404 for this request.
+# nb: Check makes a request for non-existent HTML file. The server should return a 404 for this request.
 # The unpatched server returns a page containing the buggy JavaScript, on a patched server this has been
 # updated to further check the input...
 
@@ -73,8 +79,11 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 ); # To have a reference to the detection NVT
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! get_app_location( cpe:CPE, port:port ) ) # To have a reference to the detection NVT
+  exit( 0 );
 
 banner = get_http_banner( port:port );
 if( "Microsoft-IIS" >!< banner ) exit( 0 );

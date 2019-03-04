@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_deluxbb_mult_vuln_jan10.nasl 9596 2018-04-25 07:21:51Z cfischer $
+# $Id: gb_deluxbb_mult_vuln_jan10.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # DeluxeBB Multiple Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:deluxebb:deluxebb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800436");
-  script_version("$Revision: 9596 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-25 09:21:51 +0200 (Wed, 25 Apr 2018) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-01-22 09:23:45 +0100 (Fri, 22 Jan 2010)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -49,31 +49,27 @@ if(description)
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/10598");
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to execute arbitrary
-  HTML and script code in a user's browser session in the context of an affected site.
-
-  Impact Level: Application.");
+  HTML and script code in a user's browser session in the context of an affected site.");
 
   script_tag(name:"affected", value:"DeluxeBB version 1.3 and prior.");
 
   script_tag(name:"insight", value:"The flaws are due to:
 
   - Improper sanitization of user supplied input in the 'page' parameter in
-    'misc.php'.
+  'misc.php'.
 
   - Improperly controlled computation in 'tools.php' that leads to a denial
-    of service (CPU or memory consumption).
+  of service (CPU or memory consumption).
 
   - Web root with insufficient access control, which allows to obtain user and
-    configuration information, log data, and gain administrative access via a
-    direct request to scripts in 'templates/including', 'logs/cp.php', 'images/',
-    'templates/deluxe/admincp/', 'templates/corporate/admincp/', 'logs/including'
-    'templates/blue/admincp/','wysiwyg/', 'docs/', 'classes/', 'lang/;' and
-    'settings/'.");
+  configuration information, log data, and gain administrative access via a
+  direct request to scripts in 'templates/including', 'logs/cp.php', 'images/',
+  'templates/deluxe/admincp/', 'templates/corporate/admincp/', 'logs/including'
+  'templates/blue/admincp/', 'wysiwyg/', 'docs/', 'classes/', 'lang/' and 'settings/'.");
 
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"summary", value:"The host is running DeluxeBB and is prone to multiple
   vulnerabilities.");

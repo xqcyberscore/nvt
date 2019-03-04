@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ipswitch_IMail_bo.nasl 7506 2017-10-19 11:45:46Z cfischer $
+# $Id: ipswitch_IMail_bo.nasl 13975 2019-03-04 09:32:08Z cfischer $
 #
 # ipswitch IMail DoS
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:ipswitch:imail_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14684");
-  script_version("$Revision: 7506 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-19 13:45:46 +0200 (Thu, 19 Oct 2017) $");
+  script_version("$Revision: 13975 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-04 10:32:08 +0100 (Mon, 04 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2004-2422", "CVE-2004-2423");
   script_bugtraq_id(11106);
@@ -43,17 +43,11 @@ if(description)
   script_dependencies("gb_ipswitch_imail_server_detect.nasl");
   script_mandatory_keys("Ipswitch/IMail/detected");
 
-  tag_summary = "The remote host is running IMail web interface. This version contains
-  multiple buffer overflows.";
-
-  tag_impact = "An attacker could use these flaws to remotly crash the service
-  accepting requests from users, or possibly execute arbitrary code.";
-
-  tag_solution = "Upgrade to IMail 8.13 or newer.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
+  script_tag(name:"solution", value:"Upgrade to IMail 8.13 or newer.");
+  script_tag(name:"summary", value:"The remote host is running IMail web interface. This version contains
+  multiple buffer overflows.");
+  script_tag(name:"impact", value:"An attacker could use these flaws to remotly crash the service
+  accepting requests from users, or possibly execute arbitrary code.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

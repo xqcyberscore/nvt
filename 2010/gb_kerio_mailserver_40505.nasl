@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kerio_mailserver_40505.nasl 10785 2018-08-06 09:58:05Z cfischer $
+# $Id: gb_kerio_mailserver_40505.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # Multiple Kerio Products Administration Console File Disclosure and Corruption Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:kerio:kerio_mailserver";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100666");
-  script_version("$Revision: 10785 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-06 11:58:05 +0200 (Mon, 06 Aug 2018) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-06-03 13:39:07 +0200 (Thu, 03 Jun 2010)");
   script_bugtraq_id(40505);
   script_name("Multiple Kerio Products Administration Console File Disclosure and Corruption Vulnerability");
@@ -60,7 +60,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

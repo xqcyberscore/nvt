@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postnuke_sql_inj_vuln.nasl 9126 2018-03-17 16:19:49Z cfischer $
+# $Id: gb_postnuke_sql_inj_vuln.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # PostNuke modload Module 'sid' Parameter SQL Injection Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:postnuke:postnuke";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800771");
-  script_version("$Revision: 9126 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-17 17:19:49 +0100 (Sat, 17 Mar 2018) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-05-19 14:50:39 +0200 (Wed, 19 May 2010)");
   script_cve_id("CVE-2010-1713");
   script_bugtraq_id(39713);
@@ -48,29 +48,16 @@ if(description)
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/12410");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/39713");
 
-  tag_impact = "Successful exploitation will allow remote attackers to access,
-  modify or delete information in the underlying database.
-
-  Impact Level: Application.";
-
-  tag_affected = "PostNuke version 0.764";
-
-  tag_insight = "The flaw exists due to failure to sufficiently sanitize user
+  script_tag(name:"insight", value:"The flaw exists due to failure to sufficiently sanitize user
   supplied data to 'modules.php' via 'sid' parameter before using it in an SQL
-  query.";
-
-  tag_solution = "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.";
-
-  tag_summary = "This host is running PostNuke and is prone SQL injection vulnerability.";
-
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
+  query.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"This host is running PostNuke and is prone SQL injection vulnerability.");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to access,
+  modify or delete information in the underlying database.");
+  script_tag(name:"affected", value:"PostNuke version 0.764");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -84,7 +71,6 @@ include("host_details.inc");
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
-## Check for the PostNuke version 0.764 => 0.76
 if( version_is_equal( version:vers, test_version:"0.76" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"WillNotFix" );
   security_message( port:port, data:report );

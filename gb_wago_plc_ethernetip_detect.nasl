@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wago_plc_ethernetip_detect.nasl 12700 2018-12-07 08:18:55Z ckuersteiner $
+# $Id: gb_wago_plc_ethernetip_detect.nasl 13974 2019-03-04 08:18:06Z ckuersteiner $
 #
 # WAGO PLC Detection (EtherNet/IP)
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141768");
-  script_version("$Revision: 12700 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-07 09:18:55 +0100 (Fri, 07 Dec 2018) $");
+  script_version("$Revision: 13974 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-04 09:18:06 +0100 (Mon, 04 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-12-07 13:39:37 +0700 (Fri, 07 Dec 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -56,7 +56,7 @@ prod_name = get_kb_item("ethernetip/product_name");
 if (!prod_name || prod_name !~ "^WAGO 750-")
   exit(0);
 
-port = get_port_for_service(default: 44818, ipproto: "ethernetip");
+port = get_port_for_service(default: 44818, proto: "ethernetip");
 
 set_kb_item(name: 'wago_plc/detected', value: TRUE);
 set_kb_item(name: "wago_plc/ethernetip/detected", value: TRUE);

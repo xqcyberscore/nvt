@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ofbiz_mult_xss_vuln.nasl 10116 2018-06-07 10:39:19Z cfischer $
+# $Id: secpod_ofbiz_mult_xss_vuln.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # Apache OFBiz Multiple Cross Site Scripting Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:apache:open_for_business_project";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901105");
-  script_version("$Revision: 10116 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-07 12:39:19 +0200 (Thu, 07 Jun 2018) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-04-29 10:04:32 +0200 (Thu, 29 Apr 2010)");
   script_cve_id("CVE-2010-0432");
   script_bugtraq_id(39489);
@@ -48,9 +48,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.bonsai-sec.com/en/research/vulnerabilities/apacheofbiz-multiple-xss-0103.php");
 
   script_tag(name:"impact", value:"Successful attack could lead to execution of arbitrary HTML and script code
-  in the context of an affected site and attackers can steal cookie-based authentication credentials.
-
-  Impact Level: Application");
+  in the context of an affected site and attackers can steal cookie-based authentication credentials.");
 
   script_tag(name:"affected", value:"Apache OFBiz 9.04 SVN Revision 920371 and prior");
 
@@ -71,9 +69,7 @@ if(description)
   (7) subject or (8) content parameter to an unspecified component under
   ecommerce/control/contactus.");
 
-  script_tag(name:"solution", value:"Upgrade to the latest version of Apache OFBiz,
-
-  For updates refer to http://ofbiz.apache.org/download.html");
+  script_tag(name:"solution", value:"Upgrade to the latest version of Apache OFBiz.");
 
   script_tag(name:"summary", value:"This host is running Apache OFBiz and is prone to multiple
   Cross-Site Scripting vulnerabilities.");
@@ -81,6 +77,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
 
+  script_xref(name:"URL", value:"http://ofbiz.apache.org/download.html");
   exit(0);
 }
 

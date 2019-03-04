@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_22833.nasl 10459 2018-07-09 07:41:24Z cfischer $
+# $Id: gb_php_22833.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # PHP Ovrimos Extension Code Execution Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100604");
-  script_version("$Revision: 10459 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 09:41:24 +0200 (Mon, 09 Jul 2018) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-04-23 13:12:25 +0200 (Fri, 23 Apr 2010)");
   script_bugtraq_id(22833);
-  script_cve_id("CVE-2007-1379","CVE-2007-1378");
+  script_cve_id("CVE-2007-1379", "CVE-2007-1378");
   script_name("PHP Ovrimos Extension Code Execution Vulnerability");
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");

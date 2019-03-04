@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phpgroupware_server_side_exec_vuln.nasl 5613 2017-03-20 10:08:39Z cfi $
+# $Id: phpgroupware_server_side_exec_vuln.nasl 13975 2019-03-04 09:32:08Z cfischer $
 #
 # PhpGroupWare calendar server side script execution
 #
@@ -32,8 +32,8 @@ CPE = "cpe:/a:phpgroupware:phpgroupware";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14295");
-  script_version("$Revision: 5613 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:08:39 +0100 (Mon, 20 Mar 2017) $");
+  script_version("$Revision: 13975 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-04 10:32:08 +0100 (Mon, 04 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(9387);
   script_tag(name:"cvss_base", value:"7.5");
@@ -50,21 +50,15 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.phpgroupware.org/");
 
-  tag_summary = "The remote host is running a version of PhpGroupware which is vulnerable
+  script_tag(name:"solution", value:"Update to version 0.9.14.007 or newer");
+  script_tag(name:"summary", value:"The remote host is running a version of PhpGroupware which is vulnerable
   to a remote attack.
 
-  PhpGroupWare is a multi-user groupware suite written in PHP.";
-
-  tag_insight = "It has been reported that this version may be prone to a vulnerability that 
-  may allow remote attackers to execute malicious scripts on a vulnerable system. 
-  The flaw allows remote attackers to upload server side scripts which can then 
-  be executed on the server.";
-
-  tag_solution = "Update to version 0.9.14.007 or newer";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"insight", value:tag_insight);
+  PhpGroupWare is a multi-user groupware suite written in PHP.");
+  script_tag(name:"insight", value:"It has been reported that this version may be prone to a vulnerability that
+  may allow remote attackers to execute malicious scripts on a vulnerable system.
+  The flaw allows remote attackers to upload server side scripts which can then
+  be executed on the server.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: dotnetnuke_xss.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: dotnetnuke_xss.nasl 13975 2019-03-04 09:32:08Z cfischer $
 # Description: Multiple DotNetNuke HTML Injection Vulnerabilities
 #
 # Authors:
@@ -27,8 +27,8 @@ CPE = "cpe:/a:dotnetnuke:dotnetnuke";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.18505");
-  script_version("$Revision: 6040 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+  script_version("$Revision: 13975 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-04 10:32:08 +0100 (Mon, 04 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2005-0040");
   script_bugtraq_id(13644, 13646, 13647);
@@ -45,7 +45,7 @@ if(description)
   script_tag(name:"solution", value:"Upgrade to version 3.0.12 or greater");
   script_tag(name:"summary", value:"The remote host is running DotNetNuke, a portal written in ASP.
 
-  The remote software, according to its version number, contains several input 
+  The remote software, according to its version number, contains several input
   validation flaws leading to the execution of attacker supplied HTML and script code.");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -66,6 +66,6 @@ if( version_is_less( version:vers, test_version:"3.0.12" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"3.0.12" );
   security_message( port:port, data:report );
   exit( 0 );
-}  
+}
 
 exit( 99 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: pdns_jan_10.nasl 4459 2016-11-09 15:09:15Z cfi $
+# $Id: pdns_jan_10.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # PowerDNS Recursor multiple vulnerabilities - Jan10
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:powerdns:recursor";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100433");
-  script_version("$Revision: 4459 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-09 16:09:15 +0100 (Wed, 09 Nov 2016) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-01-07 12:29:25 +0100 (Thu, 07 Jan 2010)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_bugtraq_id(37653,37650);
-  script_cve_id("CVE-2009-4010","CVE-2009-4009");
+  script_bugtraq_id(37653, 37650);
+  script_cve_id("CVE-2009-4010", "CVE-2009-4009");
   script_name("PowerDNS Recursor multiple vulnerabilities - Jan10");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -49,10 +49,7 @@ if(description)
   script_xref(name:"URL", value:"http://doc.powerdns.com/powerdns-advisory-2010-02.html");
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/508743");
 
-  tag_summary = "PowerDNS Recursor is prone to a remote cache-poisoning vulnerability and to a
-  Buffer Overflow Vulnerability.";
-
-  tag_impact = "An attacker can exploit the remote cache-poisoning vulnerability to
+  script_tag(name:"impact", value:"An attacker can exploit the remote cache-poisoning vulnerability to
   divert data from a legitimate site to an attacker-specified site.
   Successful exploits will allow the attacker to manipulate cache data,
   potentially facilitating man-in-the-middle, site-impersonation, or denial-of-
@@ -61,16 +58,11 @@ if(description)
   Successfully exploiting of the Buffer Overflow vulnerability allows a
   remote attacker to execute arbitrary code with superuser privileges,
   resulting in a complete compromise of the affected computer. Failed
-  exploits will cause a denial of service.";
-
-  tag_affected = "PowerDNS Recursor 3.1.7.1 and earlier are vulnerable.";
-
-  tag_solution = "Updates are available. Please see the references for details.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  exploits will cause a denial of service.");
+  script_tag(name:"affected", value:"PowerDNS Recursor 3.1.7.1 and earlier are vulnerable.");
+  script_tag(name:"solution", value:"Updates are available. Please see the references for details.");
+  script_tag(name:"summary", value:"PowerDNS Recursor is prone to a remote cache-poisoning vulnerability and to a
+  Buffer Overflow Vulnerability.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");

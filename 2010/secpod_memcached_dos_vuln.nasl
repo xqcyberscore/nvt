@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_memcached_dos_vuln.nasl 8974 2018-02-28 09:53:03Z cfischer $
+# $Id: secpod_memcached_dos_vuln.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # Memcached < 1.4.3 Denial of Service Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:memcached:memcached";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901103");
-  script_version("$Revision: 8974 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-28 10:53:03 +0100 (Wed, 28 Feb 2018) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-04-23 17:57:39 +0200 (Fri, 23 Apr 2010)");
   script_cve_id("CVE-2010-1152");
   script_tag(name:"cvss_base", value:"5.0");
@@ -45,32 +45,19 @@ if(description)
   script_xref(name:"URL", value:"http://secunia.com/advisories/39306");
   script_xref(name:"URL", value:"http://code.google.com/p/memcached/issues/detail?id=102");
 
-  tag_impact = "Successful exploitation will allow attacker to cause a denial of service.
-
-  Impact Level: Application";
-
-  tag_affected = "Memcached 1.4.2 and prior";
-
-  tag_insight = "The flaw is due to error in try_read_command() function that allows attacker
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to cause a denial of service.");
+  script_tag(name:"affected", value:"Memcached 1.4.2 and prior");
+  script_tag(name:"insight", value:"The flaw is due to error in try_read_command() function that allows attacker
   to temporarily hang or potentially crash the server by sending an overly
-  large number of bytes.";
-
-  tag_solution = "Upgrade to the latest version of Memcached 1.4.3 or later,
-
-  For updates refer to http://memcached.org";
-
-  tag_summary = "The host is running Memcached and is prone to Denial of Service
-  vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  large number of bytes.");
+  script_tag(name:"solution", value:"Upgrade to the latest version of Memcached 1.4.3 or later.");
+  script_tag(name:"summary", value:"The host is running Memcached and is prone to Denial of Service
+  vulnerability.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://memcached.org");
   exit(0);
 }
 

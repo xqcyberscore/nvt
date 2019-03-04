@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_smartermail_dir_traversal_vuln.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: secpod_smartermail_dir_traversal_vuln.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # SmarterMail Directory Traversal Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:smartertools:smartermail';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902259");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-10-01 08:36:34 +0200 (Fri, 01 Oct 2010)");
   script_cve_id("CVE-2010-3486");
   script_bugtraq_id(43324);
@@ -58,12 +58,12 @@ if(description)
   name parameter.");
   script_tag(name:"summary", value:"This host is running SmarterMail and is prone to directory
   traversal vulnerability.");
-  script_tag(name:"solution", value:"Upgrade to version 7.2.3925 or later. For updates refer to
-  http://www.smartertools.com/smartermail/mail-server-software.aspx");
+  script_tag(name:"solution", value:"Upgrade to version 7.2.3925 or later.");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.smartertools.com/smartermail/mail-server-software.aspx");
   exit(0);
 }
 

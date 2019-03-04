@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_serendipity_xss_vuln.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: gb_serendipity_xss_vuln.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # Serendipity 'serendipity_admin.php' Cross Site Scripting Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:s9y:serendipity";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801517");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-09-23 08:13:58 +0200 (Thu, 23 Sep 2010)");
   script_cve_id("CVE-2010-2957");
   script_tag(name:"cvss_base", value:"2.6");
@@ -53,13 +53,13 @@ if(description)
   script_tag(name:"insight", value:"The flaw exists due to failure in the 'include/functions_entries.inc.php'
   script to properly sanitize user-supplied input in 'serendipity[body]'
   variable.");
-  script_tag(name:"solution", value:"Upgrade to Serendipity version 1.5.4 or later.
-  For updates refer to http://www.s9y.org/12.html");
+  script_tag(name:"solution", value:"Upgrade to Serendipity version 1.5.4 or later.");
   script_tag(name:"summary", value:"This host is running Serendipity and is prone to cross site scripting
   vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.s9y.org/12.html");
   exit(0);
 }
 

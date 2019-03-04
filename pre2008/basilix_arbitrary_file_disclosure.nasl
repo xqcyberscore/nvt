@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: basilix_arbitrary_file_disclosure.nasl 8487 2018-01-22 10:21:31Z ckuersteiner $
+# $Id: basilix_arbitrary_file_disclosure.nasl 13975 2019-03-04 09:32:08Z cfischer $
 # Description: BasiliX Arbitrary File Disclosure Vulnerability
 #
 # Authors:
@@ -26,8 +26,8 @@ CPE = "cpe:/a:basilix:basilix_webmail";
 
 if (description) {
   script_oid("1.3.6.1.4.1.25623.1.0.14305");
-  script_version("$Revision: 8487 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-22 11:21:31 +0100 (Mon, 22 Jan 2018) $");
+  script_version("$Revision: 13975 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-04 10:32:08 +0100 (Mon, 04 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"3.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:N");
@@ -36,7 +36,7 @@ if (description) {
   script_bugtraq_id(5062);
 
   script_name("BasiliX Arbitrary File Disclosure Vulnerability");
- 
+
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_family("Web application abuses");
@@ -46,21 +46,22 @@ if (description) {
   script_dependencies("basilix_detect.nasl");
   script_mandatory_keys("basilix/installed");
 
-  script_tag(name: "solution", value: "Upgrade to BasiliX version 1.1.1 or later.");
-  script_tag(name: "summary", value: "The remote web server contains a PHP script that is prone to information
-disclosure. 
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution", value:"Upgrade to BasiliX version 1.1.1 or later.");
+  script_tag(name:"summary", value:"The remote web server contains a PHP script that is prone to information
+disclosure.
 
 Description :
 
 The remote host appears to be running a BasiliX version 1.1.0 or lower. Such versions allow retrieval of arbitrary
 files that are accessible to the web server user when sending a message since they accept a list of attachment
-names from the client yet do not verify that the attachments were in fact uploaded. 
+names from the client yet do not verify that the attachments were in fact uploaded.
 
 Further, since these versions do not sanitize input to the 'login.php3' script, it's possible for an attacker to
 establish a session on the target without otherwise having access there by authenticating against an IMAP server
 of his or her choosing.");
 
-  script_xref(name: "URL", value: "http://archives.neohapsis.com/archives/vulnwatch/2002-q2/0113.html");
+  script_xref(name:"URL", value:"http://archives.neohapsis.com/archives/vulnwatch/2002-q2/0113.html");
 
   exit(0);
 }

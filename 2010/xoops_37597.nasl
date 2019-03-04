@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: xoops_37597.nasl 5952 2017-04-13 12:34:17Z cfi $
+# $Id: xoops_37597.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # XOOPS 'include/notification_update.php' SQL Injection Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:xoops:xoops";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100422");
-  script_version("$Revision: 5952 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-13 14:34:17 +0200 (Thu, 13 Apr 2017) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-01-05 18:50:28 +0100 (Tue, 05 Jan 2010)");
   script_bugtraq_id(37597);
   script_tag(name:"cvss_base", value:"7.5");
@@ -47,22 +47,14 @@ if(description)
   script_xref(name:"URL", value:"http://www.xoops.org/modules/news/article.php?storyid=5178");
   script_xref(name:"URL", value:"http://www.xoops.org");
 
-  tag_summary = "XOOPS is prone to an SQL-injection vulnerability because it fails
+  script_tag(name:"summary", value:"XOOPS is prone to an SQL-injection vulnerability because it fails
   to sufficiently sanitize user-supplied data before using it in an
-  SQL query.";
-
-  tag_impact = "Exploiting this issue could allow an attacker to compromise the
+  SQL query.");
+  script_tag(name:"impact", value:"Exploiting this issue could allow an attacker to compromise the
   application, access or modify data, or exploit latent vulnerabilities
-  in the underlying database.";
-
-  tag_affected = "Versions prior to XOOPS 2.4.3 are affected.";
-
-  tag_solution = "Updates are available. Please see the references for details.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected" , value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
+  in the underlying database.");
+  script_tag(name:"affected", value:"Versions prior to XOOPS 2.4.3 are affected.");
+  script_tag(name:"solution", value:"Updates are available. Please see the references for details.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

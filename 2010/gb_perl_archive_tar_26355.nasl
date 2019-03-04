@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_perl_archive_tar_26355.nasl 12740 2018-12-10 11:49:57Z cfischer $
+# $Id: gb_perl_archive_tar_26355.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # Perl Archive::Tar Module Remote Directory Traversal Vulnerability
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:perl:archive_tar";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100698");
-  script_version("$Revision: 12740 $");
+  script_version("$Revision: 13960 $");
   script_bugtraq_id(26355);
   script_cve_id("CVE-2007-4829");
   script_name("Perl Archive::Tar Module Remote Directory Traversal Vulnerability");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-10 12:49:57 +0100 (Mon, 10 Dec 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-07-06 13:44:35 +0200 (Tue, 06 Jul 2010)");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -68,10 +68,10 @@ if(description)
 
 include("host_details.inc");
 include("version_func.inc");
- 
+
 if( ! infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE ) )
   exit( 0 );
- 
+
 vers = infos['version'];
 path = infos['location'];
 
@@ -80,5 +80,5 @@ if( version_is_less( version:vers, test_version:"1.36" ) ) {
   security_message( port:0, data:report );
   exit( 0 );
 }
- 
+
 exit( 99 );

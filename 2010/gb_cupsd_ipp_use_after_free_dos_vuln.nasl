@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cupsd_ipp_use_after_free_dos_vuln.nasl 10317 2018-06-25 14:09:46Z cfischer $
+# $Id: gb_cupsd_ipp_use_after_free_dos_vuln.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # CUPS IPP Use-After-Free Denial of Service Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:apple:cups";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800182");
-  script_version("$Revision: 10317 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-25 16:09:46 +0200 (Mon, 25 Jun 2018) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-11-18 06:30:08 +0100 (Thu, 18 Nov 2010)");
   script_bugtraq_id(44530);
   script_cve_id("CVE-2010-2941");
@@ -49,23 +49,21 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will let the remote unauthenticated attackers to
   cause a denial of service (use-after-free and application crash) or possibly
-  execute arbitrary code via a crafted IPP request.
-
-  Impact Level: Application");
+  execute arbitrary code via a crafted IPP request.");
 
   script_tag(name:"affected", value:"CUPS 1.4.4 and prior");
 
   script_tag(name:"insight", value:"The flaw is caused by improper allocation of memory for attribute values
   with invalid string data type.");
 
-  script_tag(name:"solution", value:"Upgrade to 1.4.5 or above,
-  For updates refer to http://www.cups.org/software.php");
+  script_tag(name:"solution", value:"Upgrade to 1.4.5 or above.");
 
   script_tag(name:"summary", value:"This host is running CUPS and is prone to Denial of Service vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
 
+  script_xref(name:"URL", value:"http://www.cups.org/software.php");
   exit(0);
 }
 

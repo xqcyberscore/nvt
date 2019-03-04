@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Fri, 01 Mar 2019 12:10:05 +0100
+# Automatically created on:  Mon, 04 Mar 2019 12:03:37 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -44054,6 +44054,11 @@
 2019/debian/deb_4394.nasl: GPLv2+
 2019/debian/deb_4395.nasl: GPLv2+
 2019/debian/deb_4396.nasl: GPLv2+
+2019/debian/deb_4397.nasl: GPLv2+
+2019/debian/deb_4398.nasl: GPLv2+
+2019/debian/deb_4399.nasl: GPLv2+
+2019/debian/deb_4400.nasl: GPLv2+
+2019/debian/deb_4401.nasl: GPLv2+
 2019/debian/deb_dla_1621.nasl: GPLv2+
 2019/debian/deb_dla_1623.nasl: GPLv2+
 2019/debian/deb_dla_1624.nasl: GPLv2+
@@ -44123,9 +44128,13 @@
 2019/debian/deb_dla_1693.nasl: GPLv2+
 2019/debian/deb_dla_1694.nasl: GPLv2+
 2019/debian/deb_dla_1695.nasl: GPLv2+
+2019/debian/deb_dla_1696.nasl: GPLv2+
 2019/debian/deb_dla_1697.nasl: GPLv2+
 2019/debian/deb_dla_1698.nasl: GPLv2+
 2019/debian/deb_dla_1699.nasl: GPLv2+
+2019/debian/deb_dla_1700.nasl: GPLv2+
+2019/debian/deb_dla_1701.nasl: GPLv2+
+2019/debian/deb_dla_1702.nasl: GPLv2+
 2019/digium/gb_asterisk_AST-2019-001.nasl: GPLv2+
 2019/discourse/gb_discourse_2.2.0beta2.nasl: GPLv2+
 2019/discourse/gb_discourse_2.2.0beta3.nasl: GPLv2+
@@ -46691,6 +46700,7 @@ gb_vx_search_enterprise_detect.nasl: GPLv2+
 gb_wago_plc_consolidation.nasl: GPLv2+
 gb_wago_plc_ethernetip_detect.nasl: GPLv2+
 gb_wago_plc_http_detect.nasl: GPLv2+
+gb_wago_plc_opcua_detect.nasl: GPLv2+
 gb_wago_plc_snmp_detect.nasl: GPLv2+
 gb_wampserver_detect.nasl: GPLv2+
 gb_watchguard_fireware_detect.nasl: GPLv2+

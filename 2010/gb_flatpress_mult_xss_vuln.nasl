@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_flatpress_mult_xss_vuln.nasl 9721 2018-05-04 06:43:25Z ckuersteiner $
+# $Id: gb_flatpress_mult_xss_vuln.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # FlatPress Multiple Cross site Scripting Vulnerabilities
 #
@@ -29,20 +29,20 @@ CPE = "cpe:/a:flatpress:flatpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800284");
-  script_version("$Revision: 9721 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-04 08:43:25 +0200 (Fri, 04 May 2018) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-01-22 09:23:45 +0100 (Fri, 22 Jan 2010)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_cve_id("CVE-2009-4461");
   script_bugtraq_id(37471);
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("FlatPress Multiple Cross site Scripting Vulnerabilities");
 
-  script_xref(name: "URL", value: "http://secunia.com/advisories/37938");
-  script_xref(name: "URL", value: "http://www.exploit-db.com/exploits/10688");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/37938");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/10688");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
@@ -51,20 +51,20 @@ if(description)
   script_dependencies("flatpress_detect.nasl");
   script_mandatory_keys("flatpress/installed");
 
-  script_tag(name: "impact", value: "Successful exploitation will let the remote attacker to execute arbitrary web
+  script_tag(name:"impact", value:"Successful exploitation will let the remote attacker to execute arbitrary web
 script or HTML code in a user's browser session in the context of an affected site.");
 
-  script_tag(name: "affected", value: "FlatPress version 0.909 and prior.");
+  script_tag(name:"affected", value:"FlatPress version 0.909 and prior.");
 
-  script_tag(name: "insight", value: "The flaws are due to error in 'contact.php','login.php' and 'search.php'
+  script_tag(name:"insight", value:"The flaws are due to error in 'contact.php', 'login.php' and 'search.php'
 that fail to sufficiently sanitize user-supplied data via the PATH_INFO.");
 
-  script_tag(name: "solution", value: "Upgrade to FlatPress version 0.909.1, For updates refer to
-http://sourceforge.net/projects/flatpress/files/");
+  script_tag(name:"solution", value:"Upgrade to FlatPress version 0.909.1.");
 
-  script_tag(name: "summary", value: "This host is running FlatPress and is prone to multiple Cross Site Scripting
+  script_tag(name:"summary", value:"This host is running FlatPress and is prone to multiple Cross Site Scripting
 vulnerabilities.");
 
+  script_xref(name:"URL", value:"http://sourceforge.net/projects/flatpress/files/");
   exit(0);
 }
 

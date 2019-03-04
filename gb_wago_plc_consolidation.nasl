@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wago_plc_consolidation.nasl 12940 2019-01-04 09:23:20Z ckuersteiner $
+# $Id: gb_wago_plc_consolidation.nasl 13974 2019-03-04 08:18:06Z ckuersteiner $
 #
 # WAGO PLC Detection Consolidation
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141766");
-  script_version("$Revision: 12940 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-04 10:23:20 +0100 (Fri, 04 Jan 2019) $");
+  script_version("$Revision: 13974 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-04 09:18:06 +0100 (Mon, 04 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-12-07 12:20:20 +0700 (Fri, 07 Dec 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -53,6 +53,7 @@ if (description)
   exit(0);
 }
 
+include("cpe.inc");
 include("host_details.inc");
 include("version_func.inc");
 
@@ -62,7 +63,7 @@ if (!get_kb_item("wago_plc/detected"))
 detected_model = "unknown";
 detected_fw_version = "unknown";
 
-foreach source (make_list("http", "ethernetip", "snmp")) {
+foreach source (make_list("http", "ethernetip", "opcua", "snmp")) {
   fw_version_list = get_kb_list("wago_plc/" + source + "/*/fw_version");
   foreach fw_version (fw_version_list) {
     if (fw_version && fw_version != "unknown") {
@@ -145,6 +146,26 @@ if (ether_ports = get_kb_list("wago_plc/ethernetip/port")) {
     register_product( cpe:hw_cpe, location:location, port:port, service:"ethernetip" );
     register_product( cpe:os_cpe, location:location, port:port, service:"ethernetip" );
     register_product( cpe:app_cpe, location:location, port:port, service:"ethernetip" );
+  }
+}
+
+if (opc_ports = get_kb_list("wago_plc/opcua/port")) {
+  foreach port (opc_ports) {
+    extra += 'OPC-UA on port ' + port + '/tcp\n';
+    if (opc_version = get_kb_item("wago_plc/opcua/" + port + "/opc_version")) {
+      extra += '  OPC-UA Version:  ' + opc_version + '\n';
+      opc_cpe = "cpe:/a:wago/opcua_server:" + opc_version;
+    }
+    else
+      opc_cpe = "cpe:/a:wago/opcua_server";
+
+    if (build = get_kb_item("wago_plc/opcua/" + port + "/build"))
+      extra += '  OPC-UA Build:    ' + build + '\n';
+
+    register_product( cpe:hw_cpe, location:location, port:port, service:"opc-ua" );
+    register_product( cpe:os_cpe, location:location, port:port, service:"opc-ua" );
+    # Register the app with the version of the opc server
+    register_product( cpe:opc_cpe, location:location, port:port, service:"opc-ua" );    
   }
 }
 

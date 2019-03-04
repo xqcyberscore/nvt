@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_serendipity_file_upload_vuln.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: secpod_serendipity_file_upload_vuln.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # Serendipity File Extension Processing Arbitrary File Upload Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:s9y:serendipity";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901091");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-01-04 15:26:56 +0100 (Mon, 04 Jan 2010)");
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
@@ -53,13 +53,13 @@ if(description)
   script_tag(name:"affected", value:"Serendipity version prior to 1.5 on all platforms.");
   script_tag(name:"insight", value:"The flaw is due to an input validation error in the file upload functionality
   when processing a file with a filename containing multiple file extensions.");
-  script_tag(name:"solution", value:"Upgrade to Serendipity version 1.5 or later.
-  For updates refer to http://www.s9y.org/12.html");
+  script_tag(name:"solution", value:"Upgrade to Serendipity version 1.5 or later.");
   script_tag(name:"summary", value:"This host is running Serendipity and is prone to arbitrary file upload
   vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.s9y.org/12.html");
   exit(0);
 }
 

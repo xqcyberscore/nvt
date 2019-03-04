@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_php_calendar_lastaction_xss_vuln.nasl 7585 2017-10-26 15:03:01Z cfischer $
+# $Id: secpod_php_calendar_lastaction_xss_vuln.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # PHP-Calendar 'description' and 'lastaction' Cross Site Scripting Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:php-calendar:php-calendar";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902190");
-  script_version("$Revision: 7585 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-05-28 16:52:49 +0200 (Fri, 28 May 2010)");
   script_cve_id("CVE-2010-2041");
   script_bugtraq_id(40334);
@@ -49,24 +49,14 @@ if(description)
   script_xref(name:"URL", value:"http://php-calendar.blogspot.com/2010/05/php-calendar-20-beta7.html");
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/archive/1/511395/100/0/threaded");
 
-  tag_impact = "Successful exploitation will allow attacker to execute arbitrary script
-  code.
-
-  Impact level: Application";
-
-  tag_affected = "PHP-Calendar version 2.0 Beta6 and prior on all platforms.";
-  tag_insight = "The flaws are due to input validation errors when processing the
-  'description' and 'lastaction' parameters.";
-  tag_solution = "Upgrade PHP-Calendar to 2.0 Beta7 or later,
-  http://code.google.com/p/php-calendar/downloads/list";
-  tag_summary = "This host is running PHP-Calendar and is prone to Cross Site
-  Scripting vulnerabilities.";
-
-  script_tag(name:"affected" , value:tag_affected);
-  script_tag(name:"insight" , value:tag_insight);
-  script_tag(name:"solution" , value:tag_solution);
-  script_tag(name:"summary" , value:tag_summary);
-  script_tag(name:"impact" , value:tag_impact);
+  script_tag(name:"affected", value:"PHP-Calendar version 2.0 Beta6 and prior on all platforms.");
+  script_tag(name:"insight", value:"The flaws are due to input validation errors when processing the
+  'description' and 'lastaction' parameters.");
+  script_tag(name:"solution", value:"Upgrade PHP-Calendar to 2.0 Beta7 or later.");
+  script_tag(name:"summary", value:"This host is running PHP-Calendar and is prone to Cross Site
+  Scripting vulnerabilities.");
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary script
+  code.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

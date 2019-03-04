@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phpMyAdmin_xss.nasl 8931 2018-02-23 07:42:47Z cfischer $
+# $Id: phpMyAdmin_xss.nasl 13975 2019-03-04 09:32:08Z cfischer $
 #
 # phpMyAdmin XSS
 #
@@ -31,10 +31,10 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.15770");
-  script_version("$Revision: 8931 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-23 08:42:47 +0100 (Fri, 23 Feb 2018) $");
+  script_version("$Revision: 13975 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-04 10:32:08 +0100 (Mon, 04 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
-  script_bugtraq_id(11707); 
+  script_bugtraq_id(11707);
   script_cve_id("CVE-2004-1055");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -46,20 +46,14 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("phpMyAdmin/installed");
 
-  tag_summary = "The remote host is running phpMyAdmin, an open-source software
+  script_tag(name:"summary", value:"The remote host is running phpMyAdmin, an open-source software
   written in PHP to handle the administration of MySQL over the Web.
 
   This version is vulnerable to cross-site scripting attacks through
-  read_dump.php script.";
-
-  tag_impact = "With a specially crafted URL, an attacker can cause arbitrary
-  code execution resulting in a loss of integrity.";
-
-  tag_solution = "Upgrade to version 2.6.0-pl3 or newer";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"impact", value:tag_impact);
+  read_dump.php script.");
+  script_tag(name:"solution", value:"Upgrade to version 2.6.0-pl3 or newer");
+  script_tag(name:"impact", value:"With a specially crafted URL, an attacker can cause arbitrary
+  code execution resulting in a loss of integrity.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

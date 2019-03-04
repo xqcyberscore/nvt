@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_42874.nasl 8926 2018-02-22 14:56:01Z cfischer $
+# $Id: gb_phpmyadmin_42874.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # phpMyAdmin Debug Backtrace Cross Site Scripting Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100775");
-  script_version("$Revision: 8926 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-22 15:56:01 +0100 (Thu, 22 Feb 2018) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-09-02 16:10:00 +0200 (Thu, 02 Sep 2010)");
   script_bugtraq_id(42874);
   script_cve_id("CVE-2010-2958");
@@ -49,24 +49,18 @@ if(description)
   script_xref(name:"URL", value:"http://www.phpmyadmin.net/home_page/security/PMASA-2010-6.php");
   script_xref(name:"URL", value:"http://www.phpmyadmin.git.sourceforge.net/git/gitweb.cgi?p=phpmyadmin/phpmyadmin;a=commitdiff;h=133a77fac7d31a38703db2099a90c1b49de62e37");
 
-  tag_summary = "phpMyAdmin is prone to a cross-site scripting vulnerability because it
-  fails to sufficiently sanitize user-supplied data.";
+  script_tag(name:"impact", value:"An attacker may leverage this issue to execute arbitrary script code
+  in the browser of an unsuspecting user in the context of the affected site. This may allow the attacker
+  to steal cookie-based authentication credentials and to launch other attacks.");
 
-  tag_impact = "An attacker may leverage this issue to execute arbitrary script code
-  in the browser of an unsuspecting user in the context of the affected
-  site. This may allow the attacker to steal cookie-based authentication
-  credentials and to launch other attacks.";
+  script_tag(name:"affected", value:"Versions prior to phpMyAdmin 3.3.6 are vulnerable. Other versions may
+  also be affected.");
 
-  tag_affected = "Versions prior to phpMyAdmin 3.3.6 are vulnerable; other versions may
-  also be affected.";
+  script_tag(name:"solution", value:"Vendor updates are available. Please see the references for more
+  information.");
 
-  tag_solution = "Vendor updates are available. Please see the references for more
-  information.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"phpMyAdmin is prone to a cross-site scripting vulnerability because it
+  fails to sufficiently sanitize user-supplied data.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");

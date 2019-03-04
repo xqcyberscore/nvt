@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lussumo_vanilla_mult_remote_file_incl_vuln.nasl 11249 2018-09-05 13:55:42Z cfischer $
+# $Id: gb_lussumo_vanilla_mult_remote_file_incl_vuln.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # Lussumo Vanilla 'definitions.php' Remote File Include Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:lussumo:vanilla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800757");
-  script_version("$Revision: 11249 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 15:55:42 +0200 (Wed, 05 Sep 2018) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-04-16 16:17:26 +0200 (Fri, 16 Apr 2010)");
   script_cve_id("CVE-2010-1337");
   script_bugtraq_id(38889);
@@ -48,9 +48,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.packetstormsecurity.com/1003-exploits/vanilla-rfi.txt");
 
   script_tag(name:"impact", value:"Successful exploitation will let attackers to execute arbitrary
-  code in a user's browser session in the context of an affected site.
-
-  Impact Level: Application");
+  code in a user's browser session in the context of an affected site.");
 
   script_tag(name:"affected", value:"Lussumo Vanilla version 1.1.10 and prior.");
 

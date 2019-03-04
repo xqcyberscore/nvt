@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_getsimple_cms_info_disc_vuln.nasl 5611 2017-03-20 08:56:36Z cfi $
+# $Id: gb_getsimple_cms_info_disc_vuln.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # GetSimple CMS Administrative Credentials Disclosure Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:getsimple:getsimple";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801551");
-  script_version("$Revision: 5611 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 09:56:36 +0100 (Mon, 20 Mar 2017) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-11-30 12:42:12 +0100 (Tue, 30 Nov 2010)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -44,32 +44,20 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/15605/");
 
-  tag_impact = "Successful exploitation will allow remote attackers to obtain sensitive
-  information.
-
-  Impact Level: Application.";
-
-  tag_affected = "GetSimple CMS 2.01 and 2.02";
-
-  tag_insight = "GetSimple does not use a SQL Database. Instead it uses a '.xml' files located
+  script_tag(name:"insight", value:"GetSimple does not use a SQL Database. Instead it uses a '.xml' files located
   at  '/GetSimple/data'. The administrators username and password hash can be
-  obtained by navigating to the '/data/other/user.xml' xml file.";
-
-  tag_solution = "Apply the patch or upagrade to GetSimple CMS 2.03 or later,
-  For updates refer to http://get-simple.info/download/";
-
-  tag_summary = "This host is running GetSimple CMS and is prone to administrative
-  credentials disclosure vulnerability.";
-
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
+  obtained by navigating to the '/data/other/user.xml' xml file.");
+  script_tag(name:"solution", value:"Apply the patch or upagrade to GetSimple CMS 2.03 or later.");
+  script_tag(name:"summary", value:"This host is running GetSimple CMS and is prone to administrative
+  credentials disclosure vulnerability.");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to obtain sensitive
+  information.");
+  script_tag(name:"affected", value:"GetSimple CMS 2.01 and 2.02");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
 
+  script_xref(name:"URL", value:"http://get-simple.info/download/");
   exit(0);
 }
 
@@ -84,7 +72,6 @@ if( dir == "/" ) dir = "";
 
 url = dir + "/data/other/user.xml";
 
-## Try attack and check the response to confirm vulnerability.
 if( http_vuln_check( port:port, url:url, pattern:"(<PWD>.*</PWD>)" ) ) {
   report = report_vuln_url( port:port, url:url );
   security_message( port:port, data:report );

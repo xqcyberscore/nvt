@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: httpd_boa.nasl 13543 2019-02-08 14:43:51Z cfischer $
+# $Id: httpd_boa.nasl 13964 2019-03-01 14:30:34Z cfischer $
 #
 # Boa file retrieval
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10527");
-  script_version("$Revision: 13543 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
+  script_version("$Revision: 13964 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 15:30:34 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(1770);
   script_tag(name:"cvss_base", value:"5.0");
@@ -38,9 +38,8 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2000 Thomas Reinke");
   script_family("Remote file access");
-  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
-  script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_dependencies("gb_get_http_banner.nasl", "os_detection.nasl");
+  script_mandatory_keys("Boa/banner");
 
   script_tag(name:"solution", value:"Upgrade to a latest version of the server.");
 
@@ -66,10 +65,6 @@ include("http_func.inc");
 include("misc_func.inc");
 
 port = get_http_port(default:80);
-
-soc = http_open_socket(port);
-if(!soc) exit(0);
-
 files = traversal_files();
 
 foreach pattern(keys(files)) {
@@ -77,12 +72,10 @@ foreach pattern(keys(files)) {
   file = files[pattern];
 
   url = string("/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/" + file);
-  buf = http_get(item:url, port:port);
-  send(socket:soc, data:buf);
-  rep = http_recv(socket:soc);
-  http_close_socket(soc);
+  req = http_get(item:url, port:port);
+  res = http_send_recv(port:port, data:req);
 
-  if(egrep(string:rep, pattern:pattern) && ("Boa/" >< rep) ) {
+  if(egrep(string:res, pattern:pattern)) {
     report = report_vuln_url(port:port, url:url);
     security_message(port:port, data:report);
     exit(0);

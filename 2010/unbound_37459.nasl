@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: unbound_37459.nasl 4448 2016-11-09 07:29:53Z cfi $
+# $Id: unbound_37459.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # Unbound DNS Server NSEC3 Signature Verification DNS Spoofing Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:unbound:unbound";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100416");
-  script_version("$Revision: 4448 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-09 08:29:53 +0100 (Wed, 09 Nov 2016) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-01-04 18:09:12 +0100 (Mon, 04 Jan 2010)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -47,20 +47,12 @@ if(description)
   script_xref(name:"URL", value:"http://unbound.net/pipermail/unbound-users/2009-October/000852.html");
   script_xref(name:"URL", value:"http://unbound.net/index.html");
 
-  tag_summary = "Unbound DNS Server is prone to a DNS-spoofing vulnerability.";
-
-  tag_impact = "Successful exploits allow remote attackers to spoof delegation
+  script_tag(name:"impact", value:"Successful exploits allow remote attackers to spoof delegation
   responses so as to downgrade secure delegations to insecure status,
-  which may aid in further attacks.";
-
-  tag_affected = "Versions prior to Unbound 1.3.4 are vulnerable.";
-
-  tag_solution = "Updates are available. Please see the references for details.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  which may aid in further attacks.");
+  script_tag(name:"affected", value:"Versions prior to Unbound 1.3.4 are vulnerable.");
+  script_tag(name:"solution", value:"Updates are available. Please see the references for details.");
+  script_tag(name:"summary", value:"Unbound DNS Server is prone to a DNS-spoofing vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

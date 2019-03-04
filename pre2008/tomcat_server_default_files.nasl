@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: tomcat_server_default_files.nasl 4355 2016-10-26 13:50:18Z cfi $
+# $Id: tomcat_server_default_files.nasl 13975 2019-03-04 09:32:08Z cfischer $
 #
 # Apache Tomcat servlet/JSP container default files
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12085");
-  script_version("$Revision: 4355 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-26 15:50:18 +0200 (Wed, 26 Oct 2016) $");
+  script_version("$Revision: 13975 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-04 10:32:08 +0100 (Mon, 04 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -44,11 +44,11 @@ if(description)
 
   script_tag(name:"summary", value:"The Apache Tomcat servlet/JSP container has default files installed.");
 
-  script_tag(name:"insight", value:"Default files, such as documentation, default Servlets and JSPs were found on 
+  script_tag(name:"insight", value:"Default files, such as documentation, default Servlets and JSPs were found on
   the Apache Tomcat servlet/JSP container.");
 
   script_tag(name:"impact", value:"These files should be removed as they may help an attacker to guess the
-  exact version of the Apache Tomcat which is running on this host and may 
+  exact version of the Apache Tomcat which is running on this host and may
   provide other useful information.");
 
   script_tag(name:"solution", value:"Remove default files, example JSPs and Servlets from the Tomcat
@@ -80,7 +80,7 @@ pat10 = "session scoped beans";
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
-  
+
 foreach url( make_list( "/tomcat-docs/index.html",
                         "/examples/servlets/index.html",
                         "/examples/servlet/SnoopServlet",

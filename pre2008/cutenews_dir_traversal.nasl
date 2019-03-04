@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: cutenews_dir_traversal.nasl 9732 2018-05-04 14:04:40Z cfischer $
+# $Id: cutenews_dir_traversal.nasl 13975 2019-03-04 09:32:08Z cfischer $
 # Description: CuteNews directory traversal flaw
 #
 # Authors:
@@ -30,8 +30,8 @@ CPE = "cpe:/a:cutephp:cutenews";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.20137");
-  script_version("$Revision: 9732 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-04 16:04:40 +0200 (Fri, 04 May 2018) $");
+  script_version("$Revision: 13975 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-04 10:32:08 +0100 (Mon, 04 Mar 2019) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_cve_id("CVE-2005-3507");
   script_bugtraq_id(15295);
@@ -50,14 +50,14 @@ if(description)
   script_dependencies("cutenews_detect.nasl", "cross_site_scripting.nasl");
   script_mandatory_keys("cutenews/installed");
 
-  script_xref(name: "URL", value: "http://retrogod.altervista.org/cute141.html");
+  script_xref(name:"URL", value:"http://retrogod.altervista.org/cute141.html");
 
-  script_tag(name: "solution", value: "Update to the latest version.");
+  script_tag(name:"solution", value:"Update to the latest version.");
 
-  script_tag(name: "summary", value: "The version of CuteNews installed on the remote host fails to sanitize
+  script_tag(name:"summary", value:"The version of CuteNews installed on the remote host fails to sanitize
   user-supplied input to the 'template' parameter of the 'show_archives.php' and 'show_news.php' scripts.");
 
-  script_tag(name: "impact", value: "An attacker can exploit this issue to read arbitrary files and possibly
+  script_tag(name:"impact", value:"An attacker can exploit this issue to read arbitrary files and possibly
   even execute arbitrary PHP code on the remote host, subject to the privileges of the web server user id.");
 
   script_tag(name:"solution_type", value:"VendorFix");

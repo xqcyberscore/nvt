@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms10_024.nasl 13135 2019-01-18 06:38:46Z cfischer $
+# $Id: gb_ms10_024.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # Microsoft Windows SMTP Server MX Record Denial of Service Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:microsoft:exchange_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100596");
-  script_version("$Revision: 13135 $");
+  script_version("$Revision: 13960 $");
   script_bugtraq_id(39308, 39381);
   script_cve_id("CVE-2010-0024", "CVE-2010-0025");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-18 07:38:46 +0100 (Fri, 18 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-04-22 20:18:17 +0200 (Thu, 22 Apr 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -111,7 +111,7 @@ if(check_version(vers:vers, fixed:"6.0.2600.5949", range:"6.0.2600.5000")   || #
    check_version(vers:vers, fixed:"6.0.3790.4675", range:"6.0.3790.0")      || # xp professional x64, win 2003
    check_version(vers:vers, fixed:"6.0.2600.3680", range:"6.0.2600.0")      || # xp sp2
    check_version(vers:vers, fixed:"7.5.7600.16544", range:"7.5.7600.16000") || # Server 2008 R2 x86/x64/ia64
-   check_version(vers:vers, fixed:"7.5.7600.20660", range:"7.5.7600.20000")) { # Server 2008 R2 x86/x64/ia64 
+   check_version(vers:vers, fixed:"7.5.7600.20660", range:"7.5.7600.20000")) { # Server 2008 R2 x86/x64/ia64
   report = report_fixed_ver(installed_version:vers, fixed_version:"See references");
   security_message(port:port, data:report);
   exit(0);

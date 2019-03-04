@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cfengine_authdiag.nasl 7529 2017-10-20 10:53:04Z cfischer $
+# $Id: cfengine_authdiag.nasl 13975 2019-03-04 09:32:08Z cfischer $
 #
 # cfengine AuthenticationDialogue vulnerability
 #
@@ -31,8 +31,8 @@ CPE = "cpe:/a:gnu:cfengine";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14314");
-  script_version("$Revision: 7529 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-20 12:53:04 +0200 (Fri, 20 Oct 2017) $");
+  script_version("$Revision: 13975 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-04 10:32:08 +0100 (Mon, 04 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2004-1701", "CVE-2004-1702");
   script_bugtraq_id(10899, 10900);
@@ -45,27 +45,23 @@ if(description)
   script_dependencies("cfengine_detect.nasl");
   script_mandatory_keys("cfengine/running");
 
-  tag_summary = "Cfengine is running on this remote host.
+  script_tag(name:"solution", value:"Upgrade to 2.1.8 or newer.");
+  script_tag(name:"summary", value:"Cfengine is running on this remote host.
 
-  cfengine cfservd is reported prone to a remote heap-based buffer 
+  cfengine cfservd is reported prone to a remote heap-based buffer
   overrun vulnerability.
 
-  The vulnerability presents itself in the cfengine cfservd 
-  AuthenticationDialogue() function. The issue exists due to a 
-  lack of sufficient boundary checks performed on challenge data 
-  that is received from a client. 
+  The vulnerability presents itself in the cfengine cfservd
+  AuthenticationDialogue() function. The issue exists due to a
+  lack of sufficient boundary checks performed on challenge data
+  that is received from a client.
 
-  In addition, cfengine cfservd is reported prone to a remote denial 
-  of service vulnerability. The vulnerability presents itself in the cfengine 
-  cfservd AuthenticationDialogue() function which is responsible for processing 
-  SAUTH commands and also performing RSA based authentication.  The vulnerability 
-  presents itself because return values for several statements within the 
-  AuthenticationDialogue() function are not checked.";
-
-  tag_solution = "Upgrade to 2.1.8 or newer.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  In addition, cfengine cfservd is reported prone to a remote denial
+  of service vulnerability. The vulnerability presents itself in the cfengine
+  cfservd AuthenticationDialogue() function which is responsible for processing
+  SAUTH commands and also performing RSA based authentication.  The vulnerability
+  presents itself because return values for several statements within the
+  AuthenticationDialogue() function are not checked.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

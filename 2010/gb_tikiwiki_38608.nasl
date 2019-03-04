@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tikiwiki_38608.nasl 5144 2017-01-31 09:55:46Z cfi $
+# $Id: gb_tikiwiki_38608.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # Tiki Wiki CMS Groupware < 4.2 Multiple Unspecified Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:tiki:tikiwiki_cms/groupware";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100537");
-  script_version("$Revision: 5144 $");
+  script_version("$Revision: 13960 $");
   script_bugtraq_id(38608);
   script_cve_id("CVE-2010-1135", "CVE-2010-1134", "CVE-2010-1133", "CVE-2010-1136");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-31 10:55:46 +0100 (Tue, 31 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-03-15 19:33:39 +0100 (Mon, 15 Mar 2010)");
   script_name("Tiki Wiki CMS Groupware < 4.2 Multiple Unspecified Vulnerabilities");
   script_category(ACT_GATHER_INFO);
@@ -52,26 +52,20 @@ if(description)
   script_xref(name:"URL", value:"http://info.tikiwiki.org/article86-Tiki-Announces-3-5-and-4-2-Releases");
   script_xref(name:"URL", value:"http://info.tikiwiki.org/tiki-index.php?page=homepage");
 
-  tag_summary = "Tiki Wiki CMS Groupware is prone to multiple unspecified vulnerabilities, including:
-
-  - An unspecified SQL-injection vulnerability
-  - An unspecified authentication-bypass vulnerability
-  - An unspecified vulnerability";
-
-  tag_impact = "Exploiting these issues could allow an attacker to compromise the
+  script_tag(name:"impact", value:"Exploiting these issues could allow an attacker to compromise the
   application, access or modify data, exploit latent vulnerabilities in
   the underlying database, and gain unauthorized access to the affected
-  application. Other attacks are also possible.";
+  application. Other attacks are also possible.");
+  script_tag(name:"affected", value:"Versions prior to Tiki Wiki CMS Groupware 4.2 are vulnerable.");
+  script_tag(name:"solution", value:"The vendor has released an advisory and fixes. Please see the
+  references for details.");
+  script_tag(name:"summary", value:"Tiki Wiki CMS Groupware is prone to multiple unspecified vulnerabilities, including:
 
-  tag_affected = "Versions prior to Tiki Wiki CMS Groupware 4.2 are vulnerable.";
+  - An unspecified SQL-injection vulnerability
 
-  tag_solution = "The vendor has released an advisory and fixes. Please see the
-  references for details.";
+  - An unspecified authentication-bypass vulnerability
 
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  - An unspecified vulnerability");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

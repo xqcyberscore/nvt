@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_41963.nasl 9220 2018-03-27 12:19:39Z cfischer $
+# $Id: gb_apache_41963.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # Apache HTTP Server Multiple Remote Denial of Service Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100725");
-  script_version("$Revision: 9220 $");
+  script_version("$Revision: 13960 $");
   script_cve_id("CVE-2010-1452");
   script_bugtraq_id(41963);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-27 14:19:39 +0200 (Tue, 27 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-07-27 20:48:46 +0200 (Tue, 27 Jul 2010)");
   script_name("Apache HTTP Server Multiple Remote Denial of Service Vulnerabilities");
   script_category(ACT_GATHER_INFO);
@@ -50,21 +50,13 @@ if(description)
   script_xref(name:"URL", value:"http://www.apache.org/dist/httpd/Announcement2.2.html");
   script_xref(name:"URL", value:"http://www.apache.org/dist/httpd/CHANGES_2.2.16");
 
-  tag_summary = "Apache HTTP Server is prone to multiple remote denial-of-service
-  vulnerabilities.";
-
-  tag_impact = "An attacker can exploit these issues to deny service to
-  legitimate users.";
-
-  tag_affected = "Versions prior to Apache 2.2.16 are vulnerable.";
-
-  tag_solution = "These issues have been fixed in Apache 2.2.16. Please see the
-  references for more information.";
-
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
+  script_tag(name:"affected", value:"Versions prior to Apache 2.2.16 are vulnerable.");
+  script_tag(name:"solution", value:"These issues have been fixed in Apache 2.2.16. Please see the
+  references for more information.");
+  script_tag(name:"summary", value:"Apache HTTP Server is prone to multiple remote denial-of-service
+  vulnerabilities.");
+  script_tag(name:"impact", value:"An attacker can exploit these issues to deny service to
+  legitimate users.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_teamspeak_40918.nasl 5373 2017-02-20 16:27:48Z teissa $
+# $Id: gb_teamspeak_40918.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # TeamSpeak 3 Server < 3.0.0-beta25 Multiple Remote Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:teamspeak:teamspeak3';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100682");
-  script_version("$Revision: 5373 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:27:48 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-06-18 12:11:06 +0200 (Fri, 18 Jun 2010)");
   script_bugtraq_id(40918);
   script_name("TeamSpeak 3 Server < 3.0.0-beta25 Multiple Remote Vulnerabilities");
@@ -77,7 +77,7 @@ if( "build" >< ver ) {
   vers = vers[1];
 } else {
   vers = ver;
-}  
+}
 
 if( isnull( vers ) ) exit( 0 );
 if( "-beta" >< vers ) {
@@ -88,6 +88,6 @@ if( version_is_less( version:vers, test_version:"3.0.0.25" ) ) {
   report = report_fixed_ver( installed_version:ver, fixed_version:"3.0.0-beta25" );
   security_message( port:port, data:report );
   exit( 0 );
-}   
+}
 
 exit( 99 );

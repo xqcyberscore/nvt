@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phpbb_search_author_xss.nasl 9332 2018-04-05 12:51:29Z cfischer $
+# $Id: phpbb_search_author_xss.nasl 13975 2019-03-04 09:32:08Z cfischer $
 #
 # phpBB < 2.0.10 Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:phpbb:phpbb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.13840");
-  script_version("$Revision: 9332 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-05 14:51:29 +0200 (Thu, 05 Apr 2018) $");
+  script_version("$Revision: 13975 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-04 10:32:08 +0100 (Mon, 04 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2004-2054", "CVE-2004-2055");
   script_bugtraq_id(10738, 10753, 10754, 10883);
@@ -73,6 +73,6 @@ if( ereg( pattern:"^([01]\.|2\.0\.[0-9]([^0-9]|$))", string:vers ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"2.0.10" );
   security_message( port:port, data:report );
   exit( 0 );
-}  
+}
 
 exit( 99 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_centreon_39118.nasl 8680 2018-02-06 09:46:38Z ckuersteiner $
+# $Id: gb_centreon_39118.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # Centreon 'main.php' SQL Injection Vulnerability
 #
@@ -28,38 +28,38 @@ CPE = "cpe:/a:centreon:centreon";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.100570");
- script_version("$Revision: 8680 $");
- script_tag(name:"last_modification", value:"$Date: 2018-02-06 10:46:38 +0100 (Tue, 06 Feb 2018) $");
- script_tag(name:"creation_date", value:"2010-04-12 18:40:45 +0200 (Mon, 12 Apr 2010)");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_cve_id("CVE-2010-1301");
- script_bugtraq_id(39118);
+  script_oid("1.3.6.1.4.1.25623.1.0.100570");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2010-04-12 18:40:45 +0200 (Mon, 12 Apr 2010)");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_cve_id("CVE-2010-1301");
+  script_bugtraq_id(39118);
 
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_name("Centreon 'main.php' SQL Injection Vulnerability");
+  script_name("Centreon 'main.php' SQL Injection Vulnerability");
 
- script_xref(name: "URL", value: "http://www.securityfocus.com/bid/39118");
- script_xref(name: "URL", value: "http://www.centreon.com/");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/39118");
+  script_xref(name:"URL", value:"http://www.centreon.com/");
 
- script_tag(name:"qod_type", value:"remote_banner");
- script_category(ACT_GATHER_INFO);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("centreon_detect.nasl");
- script_mandatory_keys("centreon/installed");
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_category(ACT_GATHER_INFO);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
+  script_dependencies("centreon_detect.nasl");
+  script_mandatory_keys("centreon/installed");
 
- script_tag(name: "summary", value: "Centreon is prone to an SQL-injection vulnerability because it fails to
-sufficiently sanitize user-supplied data before using it in an SQL query.
+  script_tag(name:"summary", value:"Centreon is prone to an SQL-injection vulnerability because it fails to
+  sufficiently sanitize user-supplied data before using it in an SQL query.");
 
-Exploiting this issue could allow an attacker to compromise the application, access or modify data, or exploit
-latent vulnerabilities in the underlying database.
+  script_tag(name:"impact", value:"Exploiting this issue could allow an attacker to compromise the application,
+  access or modify data, or exploit latent vulnerabilities in the underlying database.");
 
-Centreon 2.1.5 is vulnerable; other versions may also be affected.");
+  script_tag(name:"affected", value:"Centreon 2.1.5 is vulnerable. Other versions may also be affected.");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

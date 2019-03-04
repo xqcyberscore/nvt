@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: oscommerce_file_manager_disclosure.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: oscommerce_file_manager_disclosure.nasl 13975 2019-03-04 09:32:08Z cfischer $
 # Description: File Disclosure in osCommerce's File Manager
 #
 # Authors:
@@ -22,11 +22,6 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "There is a vulnerability in the osCommerce's File Manager
-that allows an attacker to retrieve arbitrary files
-from the webserver that reside outside the bounding HTML root
-directory.";
-
 # From: Rene <l0om@excluded.org>
 # Subject: oscommerce 2.2 file_manager.php file browsing
 # Date: 17.5.2004 22:37
@@ -34,8 +29,8 @@ directory.";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12242");
-  script_version("$Revision: 7577 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+  script_version("$Revision: 13975 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-04 10:32:08 +0100 (Mon, 04 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -51,7 +46,15 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("Software/osCommerce");
 
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"summary", value:"There is a vulnerability in the osCommerce's File Manager
+that allows an attacker to retrieve arbitrary files
+from the webserver that reside outside the bounding HTML root
+directory.");
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+
   exit(0);
 }
 

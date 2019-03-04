@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_exponet_cms_44095.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_exponet_cms_44095.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # Exponent CMS Multiple Input Validation Vulnerabilities
 #
@@ -29,9 +29,9 @@ CPE = "cpe:/a:exponentcms:exponent_cms";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100938");
-  script_version("$Revision: 7577 $");
+  script_version("$Revision: 13960 $");
   script_bugtraq_id(44095);
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-12-09 13:44:03 +0100 (Thu, 09 Dec 2010)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -50,26 +50,24 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/515075");
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/515076");
 
-  tag_summary = "Exponent CMS is prone to multiple input-validation vulnerabilities
-  because it fails to adequately sanitize user-supplied input. These
-  vulnerabilities include local file-include, information-disclosure,
-  arbitrary-file-upload, arbitrary-file-modify, and cross-site-scripting
-  vulnerabilities.";
+  script_tag(name:"summary", value:"Exponent CMS is prone to multiple input-validation vulnerabilities
+  because it fails to adequately sanitize user-supplied input. These vulnerabilities include local
+  file-include, information-disclosure, arbitrary-file-upload, arbitrary-file-modify, and cross-site-scripting
+  vulnerabilities.");
 
-  tag_impact = "Exploiting these issues can allow an attacker to steal cookie-based
-  authentication credentials, view and execute local files within the
-  context of the webserver, upload arbitrary code and run it in the
-  context of the webserver process, compromise the application, access
-  or modify data, or exploit latent vulnerabilities in the underlying
-  database. Other attacks may also be possible.";
+  script_tag(name:"impact", value:"Exploiting these issues can allow an attacker to steal cookie-based
+  authentication credentials, view and execute local files within the context of the webserver, upload
+  arbitrary code and run it in the context of the webserver process, compromise the application, access
+  or modify data, or exploit latent vulnerabilities in the underlying database. Other attacks may also be possible.");
 
-  tag_affected = "Exponent CMS 0.97 is vulnerable; other versions may also be affected.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
+  script_tag(name:"affected", value:"Exponent CMS 0.97 is vulnerable. Other versions may also be affected.");
 
   script_tag(name:"qod_type", value:"remote_vul");
+
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_39635.nasl 4340 2016-10-25 06:08:37Z cfi $
+# $Id: gb_apache_tomcat_39635.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # Apache Tomcat Authentication Header Realm Name Information Disclosure Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100598");
-  script_version("$Revision: 4340 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-25 08:08:37 +0200 (Tue, 25 Oct 2016) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-04-23 13:12:25 +0200 (Fri, 23 Apr 2010)");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:N/A:N");
@@ -70,7 +70,7 @@ if(description)
   exit(0);
 }
 
-    
+
 include("host_details.inc");
 include("version_func.inc");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_oracle_xml_db_unspecified_vuln.nasl 4921 2017-01-02 16:16:25Z cfi $
+# $Id: secpod_oracle_xml_db_unspecified_vuln.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # Oracle Database 'XML DB component' Unspecified vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:oracle:database_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902043");
-  script_version("$Revision: 4921 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-02 17:16:25 +0100 (Mon, 02 Jan 2017) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-04-23 17:57:39 +0200 (Fri, 23 Apr 2010)");
   script_cve_id("CVE-2010-0851");
   script_bugtraq_id(39434);
@@ -48,31 +48,19 @@ if(description)
   script_xref(name:"URL", value:"http://www.us-cert.gov/cas/techalerts/TA10-103B.html");
   script_xref(name:"URL", value:"http://www.juniper.net/security/auto/vulnerabilities/vuln39434.html");
 
-  tag_solution = "Apply patches from below link,
-  http://www.oracle.com/technology/deploy/security/critical-patch-updates/cpuapr2010.html";
-
-  tag_impact = "Successful exploitation will let remote authenticated users to affect
-  confidentiality via unknown vectors.
-
-  Impact Level: Application";
-
-  tag_affected = "Oracle Database versions 9.2.0.8, 9.2.0.8DV, 10.1.0.5 and 10.2.0.3";
-
-  tag_insight = "The flaw is due to unspecified errors in the 'XML DB component',
-  and unknown impact and attack vectors.";
-
-  tag_summary = "This host is running Oracle database and is prone to unspecified
-  vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"impact", value:"Successful exploitation will let remote authenticated users to affect
+  confidentiality via unknown vectors.");
+  script_tag(name:"affected", value:"Oracle Database versions 9.2.0.8, 9.2.0.8DV, 10.1.0.5 and 10.2.0.3");
+  script_tag(name:"insight", value:"The flaw is due to unspecified errors in the 'XML DB component',
+  and unknown impact and attack vectors.");
+  script_tag(name:"summary", value:"This host is running Oracle database and is prone to unspecified
+  vulnerability.");
+  script_tag(name:"solution", value:"Apply patches");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
+  script_xref(name:"URL", value:"http://www.oracle.com/technology/deploy/security/critical-patch-updates/cpuapr2010.html");
   exit(0);
 }
 

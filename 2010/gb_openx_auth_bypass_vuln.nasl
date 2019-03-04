@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openx_auth_bypass_vuln.nasl 4709 2016-12-08 09:44:07Z cfi $
+# $Id: gb_openx_auth_bypass_vuln.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # OpenX Administrative Interface Authentication Bypass Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:openx:openx";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800760");
-  script_version("$Revision: 4709 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-08 10:44:07 +0100 (Thu, 08 Dec 2016) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-05-04 09:40:09 +0200 (Tue, 04 May 2010)");
   script_bugtraq_id(37457);
   script_cve_id("CVE-2009-4830");
@@ -47,27 +47,14 @@ if(description)
   script_xref(name:"URL", value:"http://secunia.com/advisories/37914");
   script_xref(name:"URL", value:"http://forum.openx.org/index.php?showtopic=503454011");
 
-  tag_impact = "Successful exploitation will allow remote attackers to gain administrative
-  access to the affected application.
-
-  Impact Level: Application.";
-
-  tag_affected = "OpenX version 2.8.1 and 2.8.2";
-
-  tag_insight = "The flaw is due to unspecified error related to the 'www/admin/'
-  directory, which can be exploited to bypass authentication.";
-
-  tag_solution = "Upgrade to OpenX version 2.8.3 or later.
-  http://www.openx.org/ad-server";
-
-  tag_summary = "This host is running OpenX and is prone authentication bypass
-  vulnerability.";
-
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
+  script_tag(name:"insight", value:"The flaw is due to unspecified error related to the 'www/admin/'
+  directory, which can be exploited to bypass authentication.");
+  script_tag(name:"solution", value:"Upgrade to OpenX version 2.8.3 or later.");
+  script_tag(name:"summary", value:"This host is running OpenX and is prone authentication bypass
+  vulnerability.");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to gain administrative
+  access to the affected application.");
+  script_tag(name:"affected", value:"OpenX version 2.8.1 and 2.8.2");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -81,7 +68,6 @@ include("host_details.inc");
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
-## Check OpenX version 2.8.1, 2.8.2
 if( version_in_range( version:vers, test_version:"2.8.1", test_version2:"2.8.2" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"2.8.3" );
   security_message( port:port, data:report );

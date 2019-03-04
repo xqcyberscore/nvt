@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_openview_nnm_code_exec_vuln.nasl 10017 2018-05-30 07:17:29Z cfischer $
+# $Id: gb_hp_openview_nnm_code_exec_vuln.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # HP OpenView Network Node Manager Code Execution Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:hp:openview_network_node_manager";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801389");
-  script_version("$Revision: 10017 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-30 09:17:29 +0200 (Wed, 30 May 2018) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-07-26 16:14:51 +0200 (Mon, 26 Jul 2010)");
   script_bugtraq_id(34812);
   script_cve_id("CVE-2009-0720");
@@ -53,17 +53,14 @@ if(description)
   data, which could allow remote attackers to crash an affected process or
   execute arbitrary code via a malicious request.");
   script_tag(name:"affected", value:"HP OpenView Network Node Manager versions 7.01, 7.51 and 7.53");
-  script_tag(name:"solution", value:"Apply the patch from below link,
-
-  http://support.openview.hp.com/selfsolve/patches");
+  script_tag(name:"solution", value:"Apply the patch");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary code in
-  the context of an application.
-
-  Impact Level: System/Application");
+  the context of an application.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
+  script_xref(name:"URL", value:"http://support.openview.hp.com/selfsolve/patches");
   exit(0);
 }
 

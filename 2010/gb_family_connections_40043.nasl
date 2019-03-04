@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_family_connections_40043.nasl 11498 2018-09-20 10:34:34Z jschulte $
+# $Id: gb_family_connections_40043.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # Family Connections 2.2.3 Multiple SQL Injection Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:haudenschilt:family_connections_cms';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100634");
-  script_version("$Revision: 11498 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 12:34:34 +0200 (Thu, 20 Sep 2018) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-05-11 20:07:01 +0200 (Tue, 11 May 2010)");
   script_bugtraq_id(40043);
   script_tag(name:"cvss_base", value:"7.5");
@@ -58,7 +58,7 @@ latent vulnerabilities in the underlying database.
 
 Family Connections 2.2.3 is vulnerable, other versions may also be affected.");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

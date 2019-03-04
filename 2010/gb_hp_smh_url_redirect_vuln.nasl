@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_smh_url_redirect_vuln.nasl 4542 2016-11-16 15:31:02Z cfi $
+# $Id: gb_hp_smh_url_redirect_vuln.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # HP System Management Homepage (SMH) 'RedirectUrl' URI Redirection Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:hp:system_management_homepage";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800759");
-  script_version("$Revision: 4542 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-16 16:31:02 +0100 (Wed, 16 Nov 2016) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-05-05 15:59:12 +0200 (Wed, 05 May 2010)");
   script_cve_id("CVE-2010-1586");
   script_bugtraq_id(39676);
@@ -48,32 +48,20 @@ if(description)
   script_xref(name:"URL", value:"https://h20392.www2.hp.com/portal/swdepot/displayProductInfo.do?productNumber=SysMgmtWeb");
   script_xref(name:"URL", value:"http://yehg.net/lab/pr0js/advisories/hp_system_management_homepage_url_redirection_abuse");
 
-  tag_impact = "Successful exploitation will allow remote attackers to redirect
+  script_tag(name:"insight", value:"Input data passed to the 'RedirectUrl' parameter in 'red2301.html'
+  is not  being properly validated.");
+  script_tag(name:"solution", value:"Upgrade HP System Management Homepage version to 6.2 or later");
+  script_tag(name:"summary", value:"This host is running HP System Management Homepage (SMH) and is prone
+  to  URL redirection vulnerability.");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to redirect
   to his choice of malicious site via the trusted vulnerable SMH url or aid in
-  phishing attacks.
-
-  Impact Level: Application";
-
-  tag_affected = "HP System Management Homepage (SMH) version 2.x.";
-
-  tag_solution = "Upgrade HP System Management Homepage version to 6.2 or later
-  For updates refer to http://www.hp.com/servers/manage/smh";
-
-  tag_insight = "Input data passed to the 'RedirectUrl' parameter in 'red2301.html'
-  is not  being properly validated.";
-
-  tag_summary = "This host is running HP System Management Homepage (SMH) and is prone
-  to  URL redirection vulnerability.";
-
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
+  phishing attacks.");
+  script_tag(name:"affected", value:"HP System Management Homepage (SMH) version 2.x.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
 
+  script_xref(name:"URL", value:"http://www.hp.com/servers/manage/smh");
   exit(0);
 }
 
@@ -83,7 +71,6 @@ include("version_func.inc");
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! version = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
-## Check HP SMH version <= 2.2.9.1
 if( version_in_range( version:version, test_version:"2.0", test_version2:"2.2.9.3.1" ) ) {
   report = report_fixed_ver( installed_version:version, fixed_version:"6.2");
   security_message( port:port, data:report );

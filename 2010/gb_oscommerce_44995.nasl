@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oscommerce_44995.nasl 6705 2017-07-12 14:25:59Z cfischer $
+# $Id: gb_oscommerce_44995.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # osCommerce 'categories.php' Arbitrary File Upload Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:oscommerce:oscommerce';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100913");
-  script_version("$Revision: 6705 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:25:59 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-11-22 15:38:55 +0100 (Mon, 22 Nov 2010)");
   script_bugtraq_id(44995);
   script_tag(name:"cvss_base", value:"4.6");
@@ -46,22 +46,22 @@ if(description)
   script_xref(name:"URL", value:"https://www.securityfocus.com/bid/44995");
   script_xref(name:"URL", value:"http://www.oscommerce.com/solutions/downloads");
 
-  tag_summary = "osCommerce is prone to a vulnerability that lets attackers upload
-  arbitrary files.";
+  script_tag(name:"summary", value:"osCommerce is prone to a vulnerability that lets attackers upload
+  arbitrary files.");
 
-  tag_insight = "The issue occurs because the application fails to
-  adequately sanitize user-supplied input.";
+  script_tag(name:"insight", value:"The issue occurs because the application fails to
+  adequately sanitize user-supplied input.");
 
-  tag_impact = "An attacker can exploit this vulnerability to upload arbitrary code
-  and run it in the context of the webserver process. This may
-  facilitate unauthorized access or privilege escalation; other attacks
-  are also possible.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"impact", value:tag_impact);
+  script_tag(name:"impact", value:"An attacker can exploit this vulnerability to upload arbitrary code
+  and run it in the context of the webserver process. This may facilitate unauthorized access or privilege
+  escalation. Other attacks are also possible.");
 
   script_tag(name:"qod_type", value:"remote_vul");
+
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
   exit(0);
 }
@@ -77,7 +77,7 @@ if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 host = http_host_name( port:port );
 
 rand = rand();
-file = string( "OpenVAS_TEST_DELETE_ME_", rand, ".php" ); 
+file = string( "OpenVAS_TEST_DELETE_ME_", rand, ".php" );
 
 len = 348 + strlen( file );
 url =  dir + "/admin/categories.php/login.php?cPath=&action=new_product_preview";
@@ -109,12 +109,12 @@ recv = http_keepalive_send_recv( data:req, port:port, bodyonly:TRUE );
 
 url = dir + "/images/" + file;
 if( http_vuln_check( port:port, url:url, pattern:"OpenVAS-Upload-Test" ) ) {
-  report = string( 
+  report = string(
         "Note :\n\n",
         "It was possible to upload and execute a file on the remote webserver.\n",
         "The file is placed in directory: ", '"', dir, '/images/"', "\n",
         "and is named: ", '"', file, '"', "\n",
-        "You should delete this file as soon as possible!\n");    
+        "You should delete this file as soon as possible!\n");
   security_message( port:port,data:report );
   exit( 0 );
 }

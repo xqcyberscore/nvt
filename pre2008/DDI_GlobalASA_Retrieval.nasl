@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: DDI_GlobalASA_Retrieval.nasl 10826 2018-08-08 07:30:42Z cfischer $
+# $Id: DDI_GlobalASA_Retrieval.nasl 13975 2019-03-04 09:32:08Z cfischer $
 #
 # IIS Global.asa Retrieval
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:microsoft:iis";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10991");
-  script_version("$Revision: 10826 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-08 09:30:42 +0200 (Wed, 08 Aug 2018) $");
+  script_version("$Revision: 13975 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-04 10:32:08 +0100 (Mon, 04 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
@@ -47,13 +47,13 @@ if(description)
   Open Internet Services Manager. Right-click on the affected web server and choose Properties
   from the context menu. Select Master Properties, then Select WWW Service --> Edit --> Home
   Directory --> Configuration. Click the Add button, specify C:\winnt\system32\inetsrv\asp.dll
-  as the executable (may be different depending on your installation), enter .asa as the extension, 
+  as the executable (may be different depending on your installation), enter .asa as the extension,
   limit the verbs to GET, HEAD, POST, TRACE, ensure the Script Engine box is checked and click OK.");
 
   script_tag(name:"summary", value:"This host is running the Microsoft IIS web server. This web server contains
   a configuration flaw that allows the retrieval of the global.asa file.");
 
-  script_tag(name:"impact", value:"This file may contain sensitive information such as database passwords, 
+  script_tag(name:"impact", value:"This file may contain sensitive information such as database passwords,
   internal addresses, and web application configuration options.");
 
   script_tag(name:"insight", value:"This vulnerability may be caused by a missing ISAPI map of the .asa extension

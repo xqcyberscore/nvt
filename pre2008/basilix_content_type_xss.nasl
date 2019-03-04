@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: basilix_content_type_xss.nasl 8487 2018-01-22 10:21:31Z ckuersteiner $
+# $Id: basilix_content_type_xss.nasl 13975 2019-03-04 09:32:08Z cfischer $
 # Description: BasiliX Content-Type XSS Vulnerability
 #
 # Authors:
@@ -26,8 +26,8 @@ CPE = "cpe:/a:basilix:basilix_webmail";
 
 if (description) {
   script_oid("1.3.6.1.4.1.25623.1.0.14307");
-  script_version("$Revision: 8487 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-22 11:21:31 +0100 (Mon, 22 Jan 2018) $");
+  script_version("$Revision: 13975 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-04 10:32:08 +0100 (Mon, 04 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -35,7 +35,7 @@ if (description) {
   script_bugtraq_id(10666);
 
   script_name("BasiliX Content-Type XSS Vulnerability");
- 
+
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_family("Web application abuses");
@@ -45,9 +45,10 @@ if (description) {
   script_dependencies("basilix_detect.nasl");
   script_mandatory_keys("basilix/installed");
 
-  script_tag(name: "solution", value: "Upgrade to BasiliX version 1.1.1 fix1 or later.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution", value:"Upgrade to BasiliX version 1.1.1 fix1 or later.");
 
-  script_tag(name: "summary", value: "The remote web server contains a PHP script which is vulnerable to a cross
+  script_tag(name:"summary", value:"The remote web server contains a PHP script which is vulnerable to a cross
 site scripting issue.
 
 Description :
@@ -56,8 +57,8 @@ The remote host appears to be running BasiliX version 1.1.1 or lower. Such versi
 cross-scripting attack whereby an attacker may be able to cause a victim to unknowingly run arbitrary Javascript
 code simply by reading a MIME message with a specially crafted Content-Type header.");
 
-  script_xref(name: "URL", value: "http://www.rs-labs.com/adv/RS-Labs-Advisory-2004-2.txt");
-  script_xref(name: "URL", value: "http://www.rs-labs.com/adv/RS-Labs-Advisory-2004-1.txt");
+  script_xref(name:"URL", value:"http://www.rs-labs.com/adv/RS-Labs-Advisory-2004-2.txt");
+  script_xref(name:"URL", value:"http://www.rs-labs.com/adv/RS-Labs-Advisory-2004-1.txt");
 
   exit(0);
 }

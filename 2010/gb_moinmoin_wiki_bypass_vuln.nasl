@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moinmoin_wiki_bypass_vuln.nasl 8957 2018-02-26 14:41:13Z asteins $
+# $Id: gb_moinmoin_wiki_bypass_vuln.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # MoinMoin Wiki Security Bypass Vulnerability
 #
@@ -29,9 +29,9 @@ CPE = "cpe:/a:moinmo:moinmoin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801306");
-  script_version("$Revision: 8957 $");
+  script_version("$Revision: 13960 $");
   script_cve_id("CVE-2010-1238");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-26 15:41:13 +0100 (Mon, 26 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-04-13 16:55:19 +0200 (Tue, 13 Apr 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
@@ -47,33 +47,20 @@ if(description)
   script_xref(name:"URL", value:"http://www.debian.org/security/2010/dsa-2024");
   script_xref(name:"URL", value:"http://comments.gmane.org/gmane.comp.security.oss.general/2773");
 
-  tag_impact = "Successful exploitation will allow attackers to bypass intended access
-  restrictions by requesting an item.
-
-  Impact Level: Application";
-
-  tag_affected = "MoinMoin Wiki version 1.7.1 and prior";
-
-  tag_insight = "The flaw exists due to an error in handling of 'textcha' protection mechanism,
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to bypass intended access
+  restrictions by requesting an item.");
+  script_tag(name:"affected", value:"MoinMoin Wiki version 1.7.1 and prior");
+  script_tag(name:"insight", value:"The flaw exists due to an error in handling of 'textcha' protection mechanism,
   which can be bypassed by modifying the 'textcha-question' and 'textcha-answer fields'
-  to have empty values.";
-
-  tag_solution = "Upgrade MoinMoin Wiki to 1.7.1-3 or later,
-
-  For updates refer to http://moinmo.in/MoinMoinDownload";
-
-  tag_summary = "This host is running MoinMoin Wiki and is prone to a security bypass
-  vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  to have empty values.");
+  script_tag(name:"solution", value:"Upgrade MoinMoin Wiki to 1.7.1-3 or later.");
+  script_tag(name:"summary", value:"This host is running MoinMoin Wiki and is prone to a security bypass
+  vulnerability.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://moinmo.in/MoinMoinDownload");
   exit(0);
 }
 
@@ -83,7 +70,6 @@ include("host_details.inc");
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
-## Check for version 1.7.1
 if( version_is_less_equal( version:vers, test_version:"1.7.1" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"1.7.1-3" );
   security_message( port:port, data:report );

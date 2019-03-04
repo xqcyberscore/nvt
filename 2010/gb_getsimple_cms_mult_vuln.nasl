@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_getsimple_cms_mult_vuln.nasl 5611 2017-03-20 08:56:36Z cfi $
+# $Id: gb_getsimple_cms_mult_vuln.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # GetSimple CMS Multiple Vulnerabilities.
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:getsimple:getsimple";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801410");
-  script_version("$Revision: 5611 $");
+  script_version("$Revision: 13960 $");
   script_cve_id("CVE-2010-5052", "CVE-2010-4863");
   script_bugtraq_id(41697);
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 09:56:36 +0100 (Mon, 20 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-07-26 16:14:51 +0200 (Mon, 26 Jul 2010)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -50,21 +50,19 @@ if(description)
   script_tag(name:"insight", value:"The flaws are due to, input passed to various scripts via various
   parameters are not properly sanitized before being returned to the user.");
 
-  script_tag(name:"solution", value:"Upgrade to version 2.03 or later,
-  For updates refer to http://get-simple.info/download");
+  script_tag(name:"solution", value:"Upgrade to version 2.03 or later.");
 
   script_tag(name:"summary", value:"This host is running GetSimple CMS and is prone to multiple
   vulnerabilities.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary
-  HTML and script code in a user's browser session in context of an affected site.
-
-  Impact Level: Application");
+  HTML and script code in a user's browser session in context of an affected site.");
   script_tag(name:"affected", value:"GetSimple CMS version 2.01");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
 
+  script_xref(name:"URL", value:"http://get-simple.info/download");
   exit(0);
 }
 
@@ -74,7 +72,6 @@ include("host_details.inc");
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
-## Check for the GetSimple CMS version equal 2.01
 if( version_is_equal( version:vers, test_version:"2.01" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"2.03" );
   security_message( port:port, data:report );

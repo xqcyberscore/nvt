@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_teamviewer_insecure_lib_load_vuln.nasl 10022 2018-05-30 09:20:48Z cfischer $
+# $Id: gb_teamviewer_insecure_lib_load_vuln.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # TeamViewer File Opening Insecure Library Loading Vulnerability
 #
@@ -29,16 +29,16 @@ CPE = "cpe:/a:teamviewer:teamviewer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801436");
-  script_version("$Revision: 10022 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-30 11:20:48 +0200 (Wed, 30 May 2018) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-09-08 14:19:28 +0200 (Wed, 08 Sep 2010)");
   script_cve_id("CVE-2010-3128");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_name("TeamViewer File Opening Insecure Library Loading Vulnerability");
-  script_xref(name : "URL", value : "http://secunia.com/advisories/41112");
-  script_xref(name : "URL", value : "http://www.exploit-db.com/exploits/14734/");
-  script_xref(name : "URL", value : "http://www.vupen.com/english/advisories/2010/2174");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/41112");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/14734/");
+  script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2010/2174");
 
   script_tag(name:"qod_type", value:"registry");
   script_category(ACT_GATHER_INFO);
@@ -47,22 +47,19 @@ if(description)
   script_dependencies("gb_teamviewer_win_detect.nasl");
   script_mandatory_keys("teamviewer/Ver");
 
-  script_tag(name : "insight", value : "The flaw is due to the application insecurely loading certain
+  script_tag(name:"insight", value:"The flaw is due to the application insecurely loading certain
   libraries from the current working directory.");
-  script_tag(name : "solution", value : "Update to version 5.0.9104 or later,
-
-  For updates refer to http://www.teamviewer.com/index.aspx");
-  script_tag(name : "summary", value : "This host is installed with TeamViewer and is prone to insecure
+  script_tag(name:"solution", value:"Update to version 5.0.9104 or later.");
+  script_tag(name:"summary", value:"This host is installed with TeamViewer and is prone to insecure
   library loading vulnerability.");
-  script_tag(name : "impact", value : "Successful exploitation will allow attackers to execute arbitrary
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary
   code and conduct DLL hijacking attacks via a Trojan horse dwmapi.dll that is
-  located in the same folder as a .tvs or .tvc file.
-
-  Impact Level: Application.");
-  script_tag(name : "affected", value : "TeamViewer version 5.0.8703 and prior");
+  located in the same folder as a .tvs or .tvc file.");
+  script_tag(name:"affected", value:"TeamViewer version 5.0.8703 and prior");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.teamviewer.com/index.aspx");
   exit(0);
 }
 

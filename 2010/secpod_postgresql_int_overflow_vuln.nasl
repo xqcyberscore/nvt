@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_postgresql_int_overflow_vuln.nasl 7406 2017-10-12 06:15:28Z cfischer $
+# $Id: secpod_postgresql_int_overflow_vuln.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # PostgreSQL Hash Table Integer Overflow Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:postgresql:postgresql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902139");
-  script_version("$Revision: 7406 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-12 08:15:28 +0200 (Thu, 12 Oct 2017) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-03-30 16:15:33 +0200 (Tue, 30 Mar 2010)");
   script_cve_id("CVE-2010-0733");
   script_tag(name:"cvss_base", value:"3.5");
@@ -49,32 +49,16 @@ if(description)
   script_xref(name:"URL", value:"http://archives.postgresql.org/pgsql-bugs/2009-10/msg00289.php");
   script_xref(name:"URL", value:"http://archives.postgresql.org/pgsql-bugs/2009-10/msg00287.php");
   script_xref(name:"URL", value:"http://archives.postgresql.org/pgsql-bugs/2009-10/msg00277.php");
+  script_xref(name:"URL", value:"http://git.postgresql.org/gitweb?p=postgresql.git;a=commitdiff;h=64b057e6823655fb6c5d1f24a28f236b94dd6c54");
 
-  tag_solution = "Apply the patch,
-  http://git.postgresql.org/gitweb?p=postgresql.git;a=commitdiff;h=64b057e6823655fb6c5d1f24a28f236b94dd6c54
-
-  ******
-  NOTE: Please ignore this warning if the patch is applied.
-  ******";
-
-  tag_impact = "Successful exploitation could allow execution of specially-crafted sql query
-  which once processed would lead to denial of service (postgresql daemon crash).
-
-  Impact Level: Application";
-
-  tag_affected = "PostgreSQL version 8.4.1 and prior and 8.5 through 8.5alpha2";
-
-  tag_insight = "The flaw is due to an integer overflow error in 'src/backend/executor/nodeHash.c',
-  when used to calculate size for the hashtable for joined relations.";
-
-  tag_summary = "The host is running PostgreSQL and is prone to integer overflow
-  vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"impact", value:"Successful exploitation could allow execution of specially-crafted sql query
+  which once processed would lead to denial of service (postgresql daemon crash).");
+  script_tag(name:"affected", value:"PostgreSQL version 8.4.1 and prior and 8.5 through 8.5alpha2");
+  script_tag(name:"insight", value:"The flaw is due to an integer overflow error in 'src/backend/executor/nodeHash.c',
+  when used to calculate size for the hashtable for joined relations.");
+  script_tag(name:"summary", value:"The host is running PostgreSQL and is prone to integer overflow
+  vulnerability.");
+  script_tag(name:"solution", value:"Apply the patch linked in the references.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wampserver_xss_vuln.nasl 4709 2016-12-08 09:44:07Z cfi $
+# $Id: gb_wampserver_xss_vuln.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # WampServer 'lang' Parameter Cross-site Scripting (XSS) Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:wampserver:wampserver";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800298");
-  script_version("$Revision: 4709 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-08 10:44:07 +0100 (Thu, 08 Dec 2016) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-03-05 10:09:57 +0100 (Fri, 05 Mar 2010)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -48,29 +48,16 @@ if(description)
   script_xref(name:"URL", value:"http://zeroscience.mk/codes/wamp_xss.txt");
   script_xref(name:"URL", value:"http://zeroscience.mk/en/vulnerabilities/ZSL-2010-4926.php");
 
-  tag_impact = "Successful exploitation will allow remote attackers to execute arbitrary HTML
-  and script code in a user's browser session in the context of an affected application.
-
-  Impact Level: Application.";
-
-  tag_affected = "WampServer version 2.0i";
-
-  tag_insight = "Input passed to the 'lang' parameter in index.php is not properly sanitised
-  before being returned to the user.";
-
-  tag_solution = "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.";
-
-  tag_summary = "This host is running WampServer is prone to Cross-Site Scripting
-  vulnerability.";
-
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
+  script_tag(name:"insight", value:"Input passed to the 'lang' parameter in index.php is not properly sanitised
+  before being returned to the user.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"This host is running WampServer is prone to Cross-Site Scripting
+  vulnerability.");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary HTML
+  and script code in a user's browser session in the context of an affected application.");
+  script_tag(name:"affected", value:"WampServer version 2.0i");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -87,14 +74,12 @@ if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
 if( dir == "/" ) dir = "";
 
-## Construct Crafted(XSS) Requested
-url = dir + "/index.php?lang=<script>alert('OpenVAS_XSS_Testing')</script>";
+url = dir + "/index.php?lang=<script>alert('VT_XSS_Testing')</script>";
 
 sndReq = http_get( item:url, port:port );
 rcvRes = http_keepalive_send_recv( port:port, data:sndReq );
 
-## Check OpenVAS XSS Testing is present in the response
-if( "<script>alert('OpenVAS_XSS_Testing')</script>" >< rcvRes && rcvRes =~ "HTTP/1\.. 200" ) {
+if( "<script>alert('VT_XSS_Testing')</script>" >< rcvRes && rcvRes =~ "HTTP/1\.. 200" ) {
   report = report_vuln_url( port:port, url:url );
   security_message( port:port, data:report );
   exit( 0 );

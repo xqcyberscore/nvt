@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_zingiri_tickets_file_disc_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_wordpress_zingiri_tickets_file_disc_vuln.nasl 13962 2019-03-01 14:14:42Z cfischer $
 #
 # WordPress Zingiri Tickets Plugin File Disclosure Vulnerability
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802750");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 13962 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"last_modification", value:"$Date: 2017-04-19 11:02:22 +0200 (Mi, 19 Apr 2017)$");
   script_tag(name:"creation_date", value:"2012-04-18 11:03:03 +0530 (Wed, 18 Apr 2012)");
   script_name("WordPress Zingiri Tickets Plugin File Disclosure Vulnerability");
   script_category(ACT_ATTACK);
-  script_copyright("Copyright(c) 2012 Greenbone Networks GmbH");
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_require_ports("Services/www", 80);

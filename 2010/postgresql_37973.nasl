@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: postgresql_37973.nasl 7406 2017-10-12 06:15:28Z cfischer $
+# $Id: postgresql_37973.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # PostgreSQL 'bitsubstr' Buffer Overflow Vulnerability
 #
@@ -32,8 +32,8 @@ CPE = "cpe:/a:postgresql:postgresql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100470");
-  script_version("$Revision: 7406 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-12 08:15:28 +0200 (Thu, 12 Oct 2017) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-01-28 18:48:47 +0100 (Thu, 28 Jan 2010)");
   script_cve_id("CVE-2010-0442");
   script_bugtraq_id(37973);
@@ -52,21 +52,15 @@ if(description)
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/55902");
   script_xref(name:"URL", value:"http://intevydis.blogspot.com/2010/01/postgresql-8023-bitsubstr-overflow.html");
 
-  tag_summary = "PostgreSQL is prone to a buffer-overflow vulnerability because the
-  application fails to perform adequate boundary checks on user-
-  supplied data.";
+  script_tag(name:"summary", value:"PostgreSQL is prone to a buffer-overflow vulnerability because the
+  application fails to perform adequate boundary checks on user-supplied data.");
 
-  tag_impact = "Attackers can exploit this issue to execute arbitrary code with
-  elevated privileges or crash the affected application.";
+  script_tag(name:"impact", value:"Attackers can exploit this issue to execute arbitrary code with
+  elevated privileges or crash the affected application.");
 
-  tag_affected = "PostgreSQL version 8.0.x, 8.1.x, 8.3.x is vulnerable; other versions may also be affected.";
+  script_tag(name:"affected", value:"PostgreSQL version 8.0.x, 8.1.x, 8.3.x is vulnerable. Other versions may also be affected.");
 
-  tag_solution = "Updates are available. Please see the references for more information.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

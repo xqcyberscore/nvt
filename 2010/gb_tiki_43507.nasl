@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tiki_43507.nasl 5144 2017-01-31 09:55:46Z cfi $
+# $Id: gb_tiki_43507.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # Tiki Wiki CMS Groupware Local File Include and Cross Site Scripting Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:tiki:tikiwiki_cms/groupware";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100825");
-  script_version("$Revision: 5144 $");
+  script_version("$Revision: 13960 $");
   script_bugtraq_id(43507);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-31 10:55:46 +0100 (Tue, 31 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-09-28 17:11:37 +0200 (Tue, 28 Sep 2010)");
   script_name("Tiki Wiki CMS Groupware Local File Include and Cross Site Scripting Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -48,11 +48,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.johnleitch.net/Vulnerabilities/Tiki.Wiki.CMS.Groupware.5.2.Reflected.Cross-site.Scripting/44");
   script_xref(name:"URL", value:"http://www.tiki.org");
 
-  tag_summary = "Tiki Wiki CMS Groupware is prone to a local file-include vulnerability
-  and a cross-site scripting vulnerability because it fails to properly
-  sanitize user-supplied input.";
-
-  tag_impact = "An attacker can exploit the local file-include vulnerability using
+  script_tag(name:"impact", value:"An attacker can exploit the local file-include vulnerability using
   directory-traversal strings to view and execute local files within
   the context of the webserver process. Information harvested may aid
   in further attacks.
@@ -60,17 +56,16 @@ if(description)
   The attacker may leverage the cross-site scripting issue to execute
   arbitrary script code in the browser of an unsuspecting user in the
   context of the affected site. This may let the attacker steal cookie-
-  based authentication credentials and launch other attacks.";
+  based authentication credentials and launch other attacks.");
 
-  tag_affected = "Tiki Wiki CMS Groupware 5.2 is vulnerable; other versions may also
-  be affected.";
+  script_tag(name:"affected", value:"Tiki Wiki CMS Groupware 5.2 is vulnerable. Other versions may also
+  be affected.");
 
-  tag_solution = "Upgrade to latest version";
+  script_tag(name:"solution", value:"Upgrade to latest version");
 
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"Tiki Wiki CMS Groupware is prone to a local file-include vulnerability
+  and a cross-site scripting vulnerability because it fails to properly
+  sanitize user-supplied input.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -86,12 +81,12 @@ if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 if( dir == "/" ) dir = "";
 
-url = dir + "/tiki-edit_wiki_section.php?type=%22%3E%3Cscript%3Ealert(%27openvas-xss-test%27)%3C/script%3E";
+url = dir + "/tiki-edit_wiki_section.php?type=%22%3E%3Cscript%3Ealert(%27vt-xss-test%27)%3C/script%3E";
 
-if( http_vuln_check( port:port, url:url, pattern:"<script>alert\('openvas-xss-test'\)</script>", check_header:TRUE ) ) {
+if( http_vuln_check( port:port, url:url, pattern:"<script>alert\('vt-xss-test'\)</script>", check_header:TRUE ) ) {
   report = report_vuln_url( port:port, url:url );
   security_message( port:port, data:report );
   exit( 0 );
-}  
+}
 
 exit( 99 );

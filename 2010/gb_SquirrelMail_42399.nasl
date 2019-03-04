@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_SquirrelMail_42399.nasl 6071 2017-05-04 16:19:49Z cfi $
+# $Id: gb_SquirrelMail_42399.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # SquirrelMail Remote Denial of Service Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:squirrelmail:squirrelmail';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100759");
-  script_version("$Revision: 6071 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-04 18:19:49 +0200 (Thu, 04 May 2017) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-08-13 12:44:16 +0200 (Fri, 13 Aug 2010)");
   script_bugtraq_id(42399);
   script_tag(name:"cvss_base", value:"5.0");
@@ -49,21 +49,16 @@ if(description)
   script_xref(name:"URL", value:"http://www.squirrelmail.org/security/issue/2010-07-23");
   script_xref(name:"URL", value:"https://bugzilla.redhat.com/show_bug.cgi?id=618096");
 
-  tag_summary = "SquirrelMail is prone to a remote denial-of-service vulnerability
-  because it fails to properly handle certain user requests.";
+  script_tag(name:"impact", value:"An attacker can exploit this issue to cause the application to consume
+  excessive disk space, resulting in denial-of-service conditions.");
 
-  tag_impact = "An attacker can exploit this issue to cause the application to consume
-  excessive disk space, resulting in denial-of-service conditions.";
+  script_tag(name:"affected", value:"SquirrelMail versions prior and up to 1.4.20 are vulnerable. Others
+  may also be affected.");
 
-  tag_affected = "SquirrelMail versions prior and up to 1.4.20 are vulnerable; others
-  may also be affected.";
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
 
-  tag_solution = "Updates are available. Please see the references for more information.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"SquirrelMail is prone to a remote denial-of-service vulnerability
+  because it fails to properly handle certain user requests.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_predictive_search_plugins_xss_vuln.nasl 11861 2018-10-12 09:29:59Z cfischer $
+# $Id: gb_wordpress_predictive_search_plugins_xss_vuln.nasl 13962 2019-03-01 14:14:42Z cfischer $
 #
 # WordPress WP e-Commerce And WooCommerce Predictive Search Plugin 'rs' XSS Vulnerability
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803072");
-  script_version("$Revision: 11861 $");
+  script_version("$Revision: 13962 $");
   script_bugtraq_id(56702, 56703);
   script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fr, 14 Apr 2017)$");
   script_tag(name:"creation_date", value:"2012-12-10 13:35:37 +0530 (Mon, 10 Dec 2012)");
@@ -37,7 +37,7 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_name("WordPress WP e-Commerce And WooCommerce Predictive Search Plugin 'rs' XSS Vulnerability");
   script_category(ACT_ATTACK);
-  script_copyright("Copyright(c) 2012 Greenbone Networks GmbH");
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_require_ports("Services/www", 80);

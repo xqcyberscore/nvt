@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_perl_CGI_45145.nasl 12740 2018-12-10 11:49:57Z cfischer $
+# $Id: gb_perl_CGI_45145.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # Perl CGI.pm Header Values Newline Handling Unspecified Security Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:andy_armstrong:cgi.pm";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100929");
-  script_version("$Revision: 12740 $");
+  script_version("$Revision: 13960 $");
   script_bugtraq_id(45145);
   script_cve_id("CVE-2010-4410", "CVE-2010-4411");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-10 12:49:57 +0100 (Mon, 10 Dec 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-12-02 12:48:19 +0100 (Thu, 02 Dec 2010)");
   script_name("Perl CGI.pm Header Values Newline Handling Unspecified Security Vulnerability");
   script_category(ACT_GATHER_INFO);
@@ -61,10 +61,10 @@ if(description)
 
 include("host_details.inc");
 include("version_func.inc");
- 
+
 if( ! infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE ) )
   exit( 0 );
- 
+
 vers = infos['version'];
 path = infos['location'];
 
@@ -73,5 +73,5 @@ if( version_is_less( version:vers, test_version:"3.50" ) ) {
   security_message( port:0, data:report );
   exit( 0 );
 }
- 
+
 exit( 99 );

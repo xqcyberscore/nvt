@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phpmyadmin_37826.nasl 8930 2018-02-23 07:28:32Z cfischer $
+# $Id: phpmyadmin_37826.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # phpMyAdmin Insecure Temporary File and Directory Creation Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100450");
-  script_version("$Revision: 8930 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-23 08:28:32 +0100 (Fri, 23 Feb 2018) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-01-18 11:34:48 +0100 (Mon, 18 Jan 2010)");
   script_bugtraq_id(37826);
   script_cve_id("CVE-2008-7251", "CVE-2008-7252");
@@ -49,23 +49,15 @@ if(description)
   script_xref(name:"URL", value:"http://www.phpmyadmin.net/home_page/security/PMASA-2010-1.php");
   script_xref(name:"URL", value:"http://www.phpmyadmin.net/home_page/security/PMASA-2010-2.php");
 
-  tag_summary = "phpMyAdmin creates temporary directories and files in an insecure way.
+  script_tag(name:"summary", value:"phpMyAdmin creates temporary directories and files in an insecure way.
 
   An attacker with local access could potentially exploit this issue to
   perform symbolic-link attacks, overwriting arbitrary files in the
-  context of the affected application.";
-
-  tag_impact = "Successful attacks may corrupt data or cause denial-of-service
-  conditions. Other unspecified attacks are also possible.";
-
-  tag_affected = "This issue affects phpMyAdmin 2.11.x (prior to 2.11.10.)";
-
-  tag_solution = "Updates are available. Please see the references for details.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
+  context of the affected application.");
+  script_tag(name:"impact", value:"Successful attacks may corrupt data or cause denial-of-service
+  conditions. Other unspecified attacks are also possible.");
+  script_tag(name:"affected", value:"This issue affects phpMyAdmin 2.11.x (prior to 2.11.10.)");
+  script_tag(name:"solution", value:"Updates are available. Please see the references for details.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");

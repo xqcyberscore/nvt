@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_22496.nasl 10459 2018-07-09 07:41:24Z cfischer $
+# $Id: gb_php_22496.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # PHP 5.2.0 and Prior Versions Multiple Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100606");
-  script_version("$Revision: 10459 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 09:41:24 +0200 (Mon, 09 Jul 2018) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-04-23 13:12:25 +0200 (Fri, 23 Apr 2010)");
   script_bugtraq_id(22496);
-  script_cve_id("CVE-2007-0905","CVE-2007-0906","CVE-2007-0907","CVE-2007-0908","CVE-2007-0909","CVE-2007-0910");
+  script_cve_id("CVE-2007-0905", "CVE-2007-0906", "CVE-2007-0907", "CVE-2007-0908", "CVE-2007-0909", "CVE-2007-0910");
   script_name("PHP 5.2.0 and Prior Versions Multiple Vulnerabilities");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");

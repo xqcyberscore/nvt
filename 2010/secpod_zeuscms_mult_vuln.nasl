@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_zeuscms_mult_vuln.nasl 9323 2018-04-05 08:44:52Z cfischer $
+# $Id: secpod_zeuscms_mult_vuln.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # ZeusCMS Multiple Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:zeuscms:zeuscms";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902020");
-  script_version("$Revision: 9323 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-05 10:44:52 +0200 (Thu, 05 Apr 2018) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-02-26 10:13:54 +0100 (Fri, 26 Feb 2010)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -55,19 +55,16 @@ if(description)
     attackers to issue a direct request to 'admin/backup.sql' and fetch
     sensitive information.");
 
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"summary", value:"This host is running ZeusCMS and is prone to multiple
   vulnerabilities.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to obtain potentially sensitive
   information and execute arbitrary local scripts in the context of the
-  webserver process.
-
-  Impact Level: Application.");
+  webserver process.");
 
   script_tag(name:"affected", value:"ZeusCMS version 0.2");
 

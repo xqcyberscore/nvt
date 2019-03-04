@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mediawiki_login_csrf_vuln.nasl 6284 2017-06-06 11:43:39Z cfischer $
+# $Id: secpod_mediawiki_login_csrf_vuln.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # MediaWiki Login CSRF Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:mediawiki:mediawiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901109");
-  script_version("$Revision: 6284 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-06 13:43:39 +0200 (Tue, 06 Jun 2017) $");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-04-29 10:04:32 +0200 (Thu, 29 Apr 2010)");
   script_cve_id("CVE-2010-1150");
   script_tag(name:"cvss_base", value:"6.0");
@@ -46,32 +46,20 @@ if(description)
   script_xref(name:"URL", value:"https://bugzilla.redhat.com/show_bug.cgi?id=580418");
   script_xref(name:"URL", value:"https://bugzilla.wikimedia.org/show_bug.cgi?id=23076");
 
-  tag_impact = "Successful exploitation will let the attacker cause CSRF attack and gain
-  sensitive information.
+  script_tag(name:"impact", value:"Successful exploitation will let the attacker cause CSRF attack and gain
+  sensitive information.");
+  script_tag(name:"affected", value:"MediaWiki version prior to 1.15.3
 
-  Impact Level: Application";
-
-  tag_affected = "MediaWiki version prior to 1.15.3
-
-  MediaWiki version prior to 1.16.0beta2";
-
-  tag_insight = "The flaw is caused by improper validation of authenticated but unintended
-  login attempt that allows attacker to conduct phishing attacks.";
-
-  tag_solution = "Upgrade to the latest version of MediaWiki 1.15.3 or later,
-  For updates refer tohttp://www.mediawiki.org";
-
-  tag_summary = "This host is running MediaWiki and is prone to Login CSRF vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  MediaWiki version prior to 1.16.0beta2");
+  script_tag(name:"insight", value:"The flaw is caused by improper validation of authenticated but unintended
+  login attempt that allows attacker to conduct phishing attacks.");
+  script_tag(name:"solution", value:"Upgrade to the latest version of MediaWiki 1.15.3 or later.");
+  script_tag(name:"summary", value:"This host is running MediaWiki and is prone to Login CSRF vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
 
+  script_xref(name:"URL", value:"http://www.mediawiki.org");
   exit(0);
 }
 

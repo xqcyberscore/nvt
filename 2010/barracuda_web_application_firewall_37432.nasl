@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: barracuda_web_application_firewall_37432.nasl 8487 2018-01-22 10:21:31Z ckuersteiner $
+# $Id: barracuda_web_application_firewall_37432.nasl 13960 2019-03-01 13:18:27Z cfischer $
 #
 # Barracuda Web Application Firewall 660 'cgi-mod/index.cgi' Multiple HTML Injection Vulnerabilities
 #
@@ -28,37 +28,42 @@ CPE = "cpe:/a:barracuda:web_application_firewall";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.100420");
- script_version("$Revision: 8487 $");
- script_tag(name:"last_modification", value:"$Date: 2018-01-22 11:21:31 +0100 (Mon, 22 Jan 2018) $");
- script_tag(name:"creation_date", value:"2010-01-04 18:09:12 +0100 (Mon, 04 Jan 2010)");
- script_bugtraq_id(37432);
- script_tag(name:"cvss_base", value:"4.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_oid("1.3.6.1.4.1.25623.1.0.100420");
+  script_version("$Revision: 13960 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2010-01-04 18:09:12 +0100 (Mon, 04 Jan 2010)");
+  script_bugtraq_id(37432);
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
- script_name("Barracuda Web Application Firewall 660 'cgi-mod/index.cgi' Multiple HTML Injection Vulnerabilities");
+  script_name("Barracuda Web Application Firewall 660 'cgi-mod/index.cgi' Multiple HTML Injection Vulnerabilities");
 
- script_xref(name: "URL", value: "http://www.securityfocus.com/bid/37432");
- script_xref(name: "URL", value: "http://www.barracudanetworks.com/ns/products/web-site-firewall-overview.php");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/37432");
+  script_xref(name:"URL", value:"http://www.barracudanetworks.com/ns/products/web-site-firewall-overview.php");
 
- script_tag(name:"qod_type", value:"remote_banner");
- script_category(ACT_GATHER_INFO);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("barracuda_web_application_firewall_detect.nasl");
- script_mandatory_keys("barracuda_waf/installed");
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_category(ACT_GATHER_INFO);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
+  script_dependencies("barracuda_web_application_firewall_detect.nasl");
+  script_mandatory_keys("barracuda_waf/installed");
 
- script_tag(name: "summary", value: "The Barracuda Web Application Firewall 660 is prone to multiple HTML-
-injection vulnerabilities.
+  script_tag(name:"summary", value:"The Barracuda Web Application Firewall 660 is prone to multiple HTML-
+  injection vulnerabilities.");
 
-Attacker-supplied HTML and script code would execute in the context of the affected site, potentially allowing the
-attacker to steal cookie-based authentication credentials or to control how the site is rendered to the user;
-other attacks are also possible.
+  script_tag(name:"impact", value:"Attacker-supplied HTML and script code would execute in the context of the affected
+  site, potentially allowing the attacker to steal cookie-based authentication credentials or to control how the site
+  is rendered to the user. Other attacks are also possible.");
 
-The Barracuda Web Application Firewall 660 firmware 7.3.1.007 is vulnerable; other versions may also be
-affected.");
+  script_tag(name:"affected", value:"The Barracuda Web Application Firewall 660 firmware 7.3.1.007 is vulnerable.
+  Other versions may also be affected.");
 
- exit(0);
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+
+  exit(0);
 }
 
 include("host_details.inc");
