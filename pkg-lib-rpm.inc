@@ -21,7 +21,111 @@
 __pkg_match = FALSE;
 
 # Global keys to avoid that we're repeatedly asking redis for something we already know
-global_var __rpm_ssh_release, __rpm_ssh_rpms;
+global_var __rpm_ssh_release, __rpm_ssh_rpms, __rpm_kernel_overwrite, __rpm_kernel_uname;
+
+# @brief Checks if a user has requested to overwrite the reporting of vulnerabilities for non-running
+#        Linux-Kernels (see lsc_options.nasl) and to collect them into a separate Reporting-VT (with
+#        a lower severity). If this was requested the function will check if a passed package name is
+#        related to a Linux Kernel. If a kernel package is detected the function will compare the version
+#        of the package with the running kernel and chose where the information is logged to.
+#
+# @param vuln_pkg     The vulnerable package name to check, e.g. "kernel-package".
+# @param inst_pkg     The installed package name to check, e.g. "kernel-default-4.4.27-2.1"
+# @param inst_pkg_ver The installed package version to check, e.g. "4.4.27-2.1".
+# @param fixed_ver    The version of the package including the fix, e.g. "kernel-default-4.4.36-5.1".
+#
+# @return The report string to return to the VT calling @isrpmvuln in the case the user hasn't requested
+#         the overwrite of the reporting or the package isn't related to a Linux-Kernel, NULL if the user
+#         has requested the overwrite of the reporting and the package is related to a Linux-Kernel and
+#         the version of it doesn't match the running kernel, FALSE if no vuln_pkg, inst_pkg, inst_pkg_ver
+#         or fixed_pkg parameter was passed.
+#
+function rpm_check_kernel_overwrite( vuln_pkg, inst_pkg, inst_pkg_ver, fixed_pkg ) {
+
+  local_var vuln_pkg, inst_pkg, inst_pkg_ver, fixed_pkg;
+  local_var overwrite_enabled, report, kernel_uname;
+  # nb: __rpm_kernel_overwrite and __rpm_kernel_uname are global vars from above
+
+  if( ! vuln_pkg ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#rpm_check_kernel_overwrite#-#vuln_pkg" );
+    return FALSE;
+  }
+
+  if( ! inst_pkg ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#rpm_check_kernel_overwrite#-#inst_pkg" );
+    return FALSE;
+  }
+
+  if( ! inst_pkg_ver ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#rpm_check_kernel_overwrite#-#inst_pkg_ver" );
+    return FALSE;
+  }
+
+  if( ! fixed_pkg ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#rpm_check_kernel_overwrite#-#fixed_pkg" );
+    return FALSE;
+  }
+
+  report  = 'Vulnerable package: ' + vuln_pkg + '\n';
+  report += 'Installed version:  ' + inst_pkg + '\n';
+  report += 'Fixed version:      ' + fixed_pkg + '\n\n';
+
+  if( vuln_pkg !~ "^kernel(-[0-9a-zA-Z_-]+)?$" )
+    return report;
+
+  # nb: This evaluates the user setting from lsc_options.nasl
+  if( isnull( __rpm_kernel_overwrite ) ) {
+    overwrite_enabled = get_kb_item( "ssh/login/kernel_reporting_overwrite/enabled" );
+    if( ! overwrite_enabled )
+      overwrite_enabled = FALSE;
+    else
+      overwrite_enabled = TRUE;
+
+    __rpm_kernel_overwrite = overwrite_enabled;
+  } else {
+    overwrite_enabled = __rpm_kernel_overwrite;
+  }
+
+  # nb: If the overwrite is not enabled we don't need to continue and just returning the report.
+  if( ! overwrite_enabled )
+    return report;
+
+  if( isnull( __rpm_kernel_uname ) ) {
+    kernel_uname = get_kb_item( "ssh/login/uname" );
+    if( ! kernel_uname )
+      kernel_uname = FALSE;
+
+    __rpm_kernel_uname = kernel_uname;
+  } else {
+    kernel_uname = __rpm_kernel_uname;
+  }
+
+  # nb: If we didn't got the uname in gather-package-list.nasl (which shouldn't happen) we can't continue and need to return the report.
+  if( ! kernel_uname )
+    return report;
+
+  # nb: If the installed_ver is included in the uname we know the running kernel is vulnerable.
+  # e.g.:
+  # kernel_uname: Linux opensuse-leap-422 4.4.74-18.20-default #1 SMP Fri Jun 30 19:01:19 UTC 2017 (b5079b8) x86_64 x86_64 x86_64 GNU/Linux
+  # inst_pkg: kernel-default-4.4.74-18.20
+  # inst_pkg_ver: 4.4.74-18.20
+  # or:
+  # kernel_uname: Linux opensuse-leap-422 4.4.27-2-default #1 SMP Thu Nov 3 14:59:54 UTC 2016 (5c21e7c) x86_64 x86_64 x86_64 GNU/Linux
+  # inst_pkg: kernel-default-4.4.27-2.1
+  # inst_pkg_ver: 4.4.27-2.1
+  #
+  # nb: As shown on the last digit(s) is/are not included in the uname line so we're doing a hacky workaround to remove this
+  # for the match below so that we can match between uname version and installed version.
+  inst_pkg_ver = ereg_replace( string:inst_pkg_ver, pattern:"\.[0-9]+$", replace:"" );
+  if( inst_pkg_ver >< kernel_uname )
+    return report;
+
+  # Otherwise save it into the KB for separate reporting in a Consolidation-VT with a lower severity
+  # nb: Don't use the vuln_pkg variable for the second set_kb_item call below as this string isn't unique.
+  set_kb_item( name:"ssh/login/inactive_kernel_vulns/available", value:TRUE );
+  set_kb_item( name:"ssh/login/inactive_kernel_vulns/reports/" + get_script_oid() + "/" + inst_pkg, value:report );
+  return NULL;
+}
 
 # @brief returns the current release string of the target saved within the KB (ssh/login/release).
 #
@@ -113,16 +217,16 @@ function isrpmvuln( pkg, rpm, rls ) {
 
   ## If kernel package Found this loop will check for every installed versions of kernel package
   ## and reports as soon as it finds the first vulnerable Version.
-  if( matches[1] =~ "^kernel~+" ) {
+  if( matches[1] =~ "^kernel(-[0-9a-zA-Z_-]+)?~" ) {
 
     pkg_name = split( rpms, sep:";" );
 
     foreach pkgs( pkg_name ) {
-      if( eregmatch(pattern:"^kernel~+", string:pkgs ) ) {
-        a = eregmatch( pattern:"^kernel~[^;]+", string:pkgs );
+      if( pkgs =~ "^kernel(-[0-9a-zA-Z_-]+)?~" ) {
+        a = eregmatch( pattern:"^kernel(-[0-9a-zA-Z_-]+)?~[^;]+", string:pkgs );
         report = kernel_packge_check( a:a[0], b:rpm, pkg:pkg );
         if( report )
-          report1 += report + '\n' ;
+          report1 += report + '\n';
       }
     }
     return report1;

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_an_guestbook_lfi_vuln.nasl 12022 2018-10-23 05:31:56Z cfischer $
+# $Id: gb_an_guestbook_lfi_vuln.nasl 13985 2019-03-05 07:23:54Z cfischer $
 #
 # AN Guestbook Local File Inclusion Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:an_guestbook:an_guestbook";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800526");
-  script_version("$Revision: 12022 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-23 07:31:56 +0200 (Tue, 23 Oct 2018) $");
+  script_version("$Revision: 13985 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-05 08:23:54 +0100 (Tue, 05 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-07-07 11:58:41 +0200 (Tue, 07 Jul 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
@@ -63,7 +63,7 @@ if(description)
   script_xref(name:"URL", value:"http://aguestbook.sourceforge.net/");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_app");
 
   exit(0);
 }

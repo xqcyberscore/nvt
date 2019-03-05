@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: remote-web-wapiti.nasl 13807 2019-02-21 09:39:35Z cfischer $
+# $Id: remote-web-wapiti.nasl 13985 2019-03-05 07:23:54Z cfischer $
 #
 # Assess web security with wapiti
 #
@@ -24,8 +24,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80110");
-  script_version("$Revision: 13807 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-21 10:39:35 +0100 (Thu, 21 Feb 2019) $");
+  script_version("$Revision: 13985 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-05 08:23:54 +0100 (Tue, 05 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-03-24 21:54:49 +0100 (Wed, 24 Mar 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -54,7 +54,7 @@ if(description)
   needs to be executable for this user. The existence of this binary is checked and reported separately
   within 'Availability of scanner helper tools' (OID: 1.3.6.1.4.1.25623.1.0.810000).");
 
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_app");
 
   exit(0);
 }

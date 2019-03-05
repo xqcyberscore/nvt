@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: tftpd_dir_trav.nasl 13155 2019-01-18 15:41:35Z cfischer $
+# $Id: tftpd_dir_trav.nasl 13985 2019-03-05 07:23:54Z cfischer $
 #
 # TFTP directory traversal
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.18262");
-  script_version("$Revision: 13155 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-18 16:41:35 +0100 (Fri, 18 Jan 2019) $");
+  script_version("$Revision: 13985 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-05 08:23:54 +0100 (Tue, 05 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -53,7 +53,7 @@ if(description)
   especially if tftpd (the TFTP server) is not well configured by the admin of the remote host.");
 
   script_tag(name:"solution_type", value:"Workaround");
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_active");
 
   exit(0);
 }

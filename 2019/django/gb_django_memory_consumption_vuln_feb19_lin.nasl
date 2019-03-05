@@ -19,8 +19,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113344");
-  script_version("$Revision: 13900 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-27 10:25:40 +0100 (Wed, 27 Feb 2019) $");
+  script_version("$Revision: 13986 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-05 08:32:41 +0100 (Tue, 05 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-02-26 14:37:01 +0200 (Tue, 26 Feb 2019)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -48,7 +48,7 @@ if(description)
   due to a call to .format().");
   script_tag(name:"impact", value:"Successful exploitation would allow an attacker to exhaust the target system's
   resources and crash the affected and other applications.");
-  script_tag(name:"affected", value:"Django through verion 1.11.18, version 2.0.0 through 2.0.10 and 2.1.0 through 2.1.5.");
+  script_tag(name:"affected", value:"Django through version 1.11.18, version 2.0.0 through 2.0.10 and 2.1.0 through 2.1.5.");
   script_tag(name:"solution", value:"Update to version 1.11.19, 2.0.11 or 2.1.6 respectively.");
 
   script_xref(name:"URL", value:"https://www.djangoproject.com/weblog/2019/feb/11/security-releases/");

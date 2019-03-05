@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Mon, 04 Mar 2019 12:03:37 +0100
+# Automatically created on:  Tue, 05 Mar 2019 12:11:21 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -44013,6 +44013,9 @@
 2019/centos/gb_CESA-2019_0373_firefox_centos6.nasl: GPLv2+
 2019/centos/gb_CESA-2019_0374_firefox_centos7.nasl: GPLv2+
 2019/centos/gb_CESA-2019_0375_flatpak_centos7.nasl: GPLv2+
+2019/centos/gb_CESA-2019_0415_kernel_centos6.nasl: GPLv2+
+2019/centos/gb_CESA-2019_0416_java_centos6.nasl: GPLv2+
+2019/centos/gb_CESA-2019_0420_polkit_centos6.nasl: GPLv2+
 2019/collabtive/gb_collabtive_xss_vuln_feb19.nasl: GPLv2+
 2019/coppermine/gb_coppermine_xss_vuln.nasl: GPLv2+
 2019/coreos/gb_etcd_auth_vuln.nasl: GPLv2+
@@ -44135,6 +44138,8 @@
 2019/debian/deb_dla_1700.nasl: GPLv2+
 2019/debian/deb_dla_1701.nasl: GPLv2+
 2019/debian/deb_dla_1702.nasl: GPLv2+
+2019/debian/deb_dla_1703.nasl: GPLv2+
+2019/debian/deb_dla_1704.nasl: GPLv2+
 2019/digium/gb_asterisk_AST-2019-001.nasl: GPLv2+
 2019/discourse/gb_discourse_2.2.0beta2.nasl: GPLv2+
 2019/discourse/gb_discourse_2.2.0beta3.nasl: GPLv2+
@@ -44174,6 +44179,7 @@
 2019/fedora/gb_fedora_2018_e69d2aaa60_wordpress_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2018_ea05fcd378_vcftools_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_01afc2352f_mingw-nettle_fc28.nasl: GPLv2+
+2019/fedora/gb_fedora_2019_02e13cb1a8_libexif_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_0398d1b049_haproxy_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_077cd6f168_moodle_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_0c1be924df_gvfs_fc28.nasl: GPLv2+
@@ -44185,13 +44191,18 @@
 2019/fedora/gb_fedora_2019_20a89ca9af_kernel_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_20a89ca9af_kernel-headers_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_20a89ca9af_kernel-tools_fc28.nasl: GPLv2+
+2019/fedora/gb_fedora_2019_21b76d179e_community-mysql_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_24dc022a51_gnutls_fc28.nasl: GPLv2+
+2019/fedora/gb_fedora_2019_2c2dfc65d1_distcc_fc28.nasl: GPLv2+
+2019/fedora/gb_fedora_2019_2f47af13f6_tor_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_31e6f6e545_rubygem-activejob_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_333a7aa511_radvd_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_337484d88b_kernel_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_337484d88b_kernel-headers_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_337484d88b_kernel-tools_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_348547a32d_chromium_fc28.nasl: GPLv2+
+2019/fedora/gb_fedora_2019_362387a66d_java-1.8.0-openjdk-aarch32_fc28.nasl: GPLv2+
+2019/fedora/gb_fedora_2019_3d38ab031e_mgetty_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_3da64f3e61_kernel_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_3da64f3e61_kernel-headers_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_3da64f3e61_kernel-tools_fc28.nasl: GPLv2+
@@ -44208,6 +44219,7 @@
 2019/fedora/gb_fedora_2019_541a12b809_python3_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_596813cc59_electrum_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_5c54d58073_webkit2gtk3_fc28.nasl: GPLv2+
+2019/fedora/gb_fedora_2019_6092f8c0dc_SDL_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_6cf96757fe_golang_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_6cfd17b03d_phpMyAdmin_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_6fafd84f5d_python3_fc28.nasl: GPLv2+
@@ -44230,8 +44242,10 @@
 2019/fedora/gb_fedora_2019_944ff52ce6_php-horde-Horde-Image_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_963ea958f9_runc_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_96ac060af3_java-11-openjdk_fc28.nasl: GPLv2+
+2019/fedora/gb_fedora_2019_9760933547_python-django_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_9eb0ae6296_openssh_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_a16e1127d3_python-markdown2_fc28.nasl: GPLv2+
+2019/fedora/gb_fedora_2019_a5f616808e_flatpak_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_a6511b0eed_php_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_a8f918005c_mingw-libconfuse_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_aa99c99f24_firefox_fc28.nasl: GPLv2+
@@ -44241,6 +44255,8 @@
 2019/fedora/gb_fedora_2019_b6ce519120_gitolite3_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_b8ffb3768d_python37_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_c424e3bb72_golang_fc28.nasl: GPLv2+
+2019/fedora/gb_fedora_2019_c54511eaab_ansible_fc28.nasl: GPLv2+
+2019/fedora/gb_fedora_2019_c602845b91_nss_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_c6044b3fce_matrix-synapse_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_cf9ddf9fff_libreoffice_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_d1b5cf0055_wget_fc28.nasl: GPLv2+
@@ -44250,6 +44266,7 @@
 2019/fedora/gb_fedora_2019_e70c729d8a_gnupg2_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_e9bc354ee8_libwmf_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_ef5551fcff_perl-Email-Address-List_fc28.nasl: GPLv2+
+2019/fedora/gb_fedora_2019_f0add5eed0_openocd_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_f1626b52e9_slurm_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_f455ef79b8_docker_fc28.nasl: GPLv2+
 2019/fedora/gb_fedora_2019_fb2ce5f6d9_php-horde-Horde-Form_fc28.nasl: GPLv2+
@@ -44487,6 +44504,19 @@
 2019/opensuse/gb_suse_2019_0242_1.nasl: GPLv2+
 2019/opensuse/gb_suse_2019_0243_1.nasl: GPLv2+
 2019/opensuse/gb_suse_2019_0245_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0248_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0250_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0251_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0252_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0254_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0255_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0261_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0265_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0268_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0274_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0275_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0276_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0291_1.nasl: GPLv2+
 2019/opensuse/gb_suse_2019_1_1.nasl: GPLv2+
 2019/openxchange/gb_open_xchange_appsuite_56406.nasl: GPLv2+
 2019/openxchange/gb_open_xchange_appsuite_56558.nasl: GPLv2+
@@ -44571,6 +44601,7 @@
 2019/ubuntu/gb_ubuntu_USN_3865_1.nasl: GPLv2+
 2019/ubuntu/gb_ubuntu_USN_3866_1.nasl: GPLv2+
 2019/ubuntu/gb_ubuntu_USN_3866_2.nasl: GPLv2+
+2019/ubuntu/gb_ubuntu_USN_3866_3.nasl: GPLv2+
 2019/ubuntu/gb_ubuntu_USN_3867_1.nasl: GPLv2+
 2019/ubuntu/gb_ubuntu_USN_3868_1.nasl: GPLv2+
 2019/ubuntu/gb_ubuntu_USN_3869_1.nasl: GPLv2+
@@ -44596,6 +44627,7 @@
 2019/ubuntu/gb_ubuntu_USN_3883_1.nasl: GPLv2+
 2019/ubuntu/gb_ubuntu_USN_3884_1.nasl: GPLv2+
 2019/ubuntu/gb_ubuntu_USN_3885_1.nasl: GPLv2+
+2019/ubuntu/gb_ubuntu_USN_3885_2.nasl: GPLv2+
 2019/ubuntu/gb_ubuntu_USN_3886_1.nasl: GPLv2+
 2019/ubuntu/gb_ubuntu_USN_3887_1.nasl: GPLv2+
 2019/ubuntu/gb_ubuntu_USN_3888_1.nasl: GPLv2+
@@ -44604,6 +44636,13 @@
 2019/ubuntu/gb_ubuntu_USN_3891_1.nasl: GPLv2+
 2019/ubuntu/gb_ubuntu_USN_3892_1.nasl: GPLv2+
 2019/ubuntu/gb_ubuntu_USN_3893_1.nasl: GPLv2+
+2019/ubuntu/gb_ubuntu_USN_3894_1.nasl: GPLv2+
+2019/ubuntu/gb_ubuntu_USN_3895_1.nasl: GPLv2+
+2019/ubuntu/gb_ubuntu_USN_3896_1.nasl: GPLv2+
+2019/ubuntu/gb_ubuntu_USN_3897_1.nasl: GPLv2+
+2019/ubuntu/gb_ubuntu_USN_3898_1.nasl: GPLv2+
+2019/ubuntu/gb_ubuntu_USN_3899_1.nasl: GPLv2+
+2019/ubuntu/gb_ubuntu_USN_3900_1.nasl: GPLv2+
 2019/virustotal/gb_yara_mult_vuln_dec18.nasl: GPLv2+
 2019/virustotal/gb_yara_mult_vuln_jun18.nasl: GPLv2+
 2019/webmin/gb_webmin_rce_vuln.nasl: GPLv2+
@@ -44617,6 +44656,7 @@
 2019/wireshark/gb_wireshark_wnpa-sec-2019-06_wnpa-sec-2019-07_wnpa-sec-2019-08_macosx.nasl: GPLv2+
 2019/wireshark/gb_wireshark_wnpa-sec-2019-06_wnpa-sec-2019-07_wnpa-sec-2019-08_win.nasl: GPLv2+
 2019/wordpress/gb_wordpress_adamrob-parallax-scroll_xss_vuln_feb19.nasl: GPLv2+
+2019/wordpress/gb_wordpress_forminator_mult_vuln_mar19.nasl: GPLv2+
 2019/wordpress/gb_wordpress_import-users-from-csv-with-meta_xss_vuln_dec18.nasl: GPLv2+
 2019/wordpress/gb_wordpress_multi-step-form_xss_vuln_dec18.nasl: GPLv2+
 2019/wordpress/gb_wordpress_ninja-forms_xss_vuln_nov18.nasl: GPLv2+
@@ -45634,6 +45674,7 @@ gb_ibm_security_network_protection_web_interface_detection.nasl: GPLv2+
 gb_ibm_soliddb_detect.nasl: GPLv2+
 gb_ibm_spectrum_scale_detect.nasl: GPLv2+
 gb_ibm_spss_sample_power_detect_win.nasl: GPLv2+
+gb_ibm_storediq_detect.nasl: GPLv2+
 gb_ibm_storwize_detect.nasl: GPLv2+
 gb_ibm_tivoli_dir_server_detect.nasl: GPLv2+
 gb_ibm_tiv_tsm_detect_lin.nasl: GPLv2+

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: remote-web-w3af.nasl 13817 2019-02-21 15:41:14Z cfischer $
+# $Id: remote-web-w3af.nasl 13985 2019-03-05 07:23:54Z cfischer $
 #
 # Assess web security with w3af
 #
@@ -24,8 +24,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80109");
-  script_version("$Revision: 13817 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-21 16:41:14 +0100 (Thu, 21 Feb 2019) $");
+  script_version("$Revision: 13985 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-05 08:23:54 +0100 (Tue, 05 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-10-18 22:12:25 +0200 (Sun, 18 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -54,7 +54,7 @@ if(description)
   needs to be executable for this user. The existence of this binary is checked and reported separately
   within 'Availability of scanner helper tools' (OID: 1.3.6.1.4.1.25623.1.0.810000).");
 
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_app");
 
   exit(0);
 }

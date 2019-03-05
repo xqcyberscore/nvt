@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ping_host.nasl 13808 2019-02-21 09:54:00Z cfischer $
+# $Id: ping_host.nasl 13981 2019-03-04 14:49:43Z cfischer $
 #
 # Ping Host
 #
@@ -8,7 +8,7 @@
 # Michael Meyer
 #
 # Copyright:
-# Copyright (c) 2009, 2014 Greenbone Networks GmbH
+# Copyright (c) 2009 Greenbone Networks GmbH
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -27,28 +27,31 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100315");
-  script_version("$Revision: 13808 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-21 10:54:00 +0100 (Thu, 21 Feb 2019) $");
+  script_version("$Revision: 13981 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-04 15:49:43 +0100 (Mon, 04 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-10-26 10:02:32 +0100 (Mon, 26 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("Ping Host");
   script_category(ACT_SCANNER);
   script_family("Port scanners");
-  script_copyright("This script is Copyright (C) 2009, 2014, 2016 Greenbone Networks GmbH");
+  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
 
   script_add_preference(name:"Use nmap", type:"checkbox", value:"yes");
+
+  # Don't change the preference names, those names are hardcoded within some manager functions...
+  # nb: Same goes for id: parameter, those numbers are hardcoded in the manager as well.
 
   ### In the following two lines, unreachable is spelled incorectly.
   ### Unfortunately, this must stay in order to keep compatibility with existing scan configs.
   script_add_preference(name:"Report about unrechable Hosts", type:"checkbox", value:"no");
-  script_add_preference(name:"Mark unrechable Hosts as dead (not scanning)", type:"checkbox", value:"no");
+  script_add_preference(name:"Mark unrechable Hosts as dead (not scanning)", type:"checkbox", value:"no", id:5);
   script_add_preference(name:"Report about reachable Hosts", type:"checkbox", value:"no");
-  script_add_preference(name:"Use ARP", type:"checkbox", value:"no");
-  script_add_preference(name:"Do a TCP ping", type:"checkbox", value:"no");
-  script_add_preference(name:"TCP ping tries also TCP-SYN ping", type:"checkbox", value:"no");
+  script_add_preference(name:"Use ARP", type:"checkbox", value:"no", id:4);
+  script_add_preference(name:"Do a TCP ping", type:"checkbox", value:"no", id:1);
+  script_add_preference(name:"TCP ping tries also TCP-SYN ping", type:"checkbox", value:"no", id:2);
   script_add_preference(name:"TCP ping tries only TCP-SYN ping", type:"checkbox", value:"no");
-  script_add_preference(name:"Do an ICMP ping", type:"checkbox", value:"yes");
+  script_add_preference(name:"Do an ICMP ping", type:"checkbox", value:"yes", id:3);
   script_add_preference(name:"nmap additional ports for -PA", type:"entry", value:"137,587,3128,8081");
   script_add_preference(name:"nmap: try also with only -sP", type:"checkbox", value:"no");
   script_add_preference(name:"Log nmap output", type:"checkbox", value:"no");
@@ -170,15 +173,15 @@ if( isnull( report_dead ) )
 if( isnull( mark_dead ) )
   mark_dead = "no";
 
-icmp_ping = script_get_preference("Do an ICMP ping");
+icmp_ping = script_get_preference("Do an ICMP ping", id:3);
 if( isnull( icmp_ping ) )
   icmp_ping = "yes";
 
-tcp_ping = script_get_preference("Do a TCP ping");
+tcp_ping = script_get_preference("Do a TCP ping", id:1);
 if( isnull( tcp_ping ) )
   tcp_ping = "no";
 
-tcp_syn_ping = script_get_preference("TCP ping tries also TCP-SYN ping");
+tcp_syn_ping = script_get_preference("TCP ping tries also TCP-SYN ping", id:2);
 if( isnull( tcp_syn_ping ) )
   tcp_syn_ping = "no";
 
@@ -186,7 +189,7 @@ tcp_syn_ping_only = script_get_preference("TCP ping tries only TCP-SYN ping");
 if( isnull( tcp_syn_ping_only ) )
   tcp_syn_ping_only = "no";
 
-arp_ping = script_get_preference("Use ARP");
+arp_ping = script_get_preference("Use ARP", id:4);
 if( isnull( arp_ping ) )
   arp_ping = "no";
 
