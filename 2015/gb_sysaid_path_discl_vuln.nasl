@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sysaid_path_discl_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_sysaid_path_discl_vuln.nasl 13997 2019-03-05 12:43:01Z cfischer $
 #
 # SysAid Path Disclosure Vulnerability
 #
@@ -25,13 +25,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = 'cpe:/a:sysaid:sysaid';
+CPE = "cpe:/a:sysaid:sysaid";
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106008");
-  script_version("$Revision: 11872 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 13997 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-05 13:43:01 +0100 (Tue, 05 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-06-11 10:02:43 +0700 (Thu, 11 Jun 2015)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -52,14 +52,12 @@ if (description)
   script_mandatory_keys("sysaid/installed");
 
   script_tag(name:"summary", value:"SysAid Help Desktop Software is prone to a path disclosure
-vulnerability");
+  vulnerability");
 
   script_tag(name:"vuldetect", value:"Send a crafted POST request and check the response.");
 
-  script_tag(name:"insight", value:"");
-
   script_tag(name:"impact", value:"An attacker can find the install path the application is installed
-under which may help in further attacks.");
+  under which may help in further attacks.");
 
   script_tag(name:"affected", value:"SysAid Help Desktop version 15.1.x and before.");
 
@@ -75,14 +73,16 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("misc_func.inc");
 
-if (!port = get_app_port(cpe: CPE))
+if (!port = get_app_port(cpe:CPE))
   exit(0);
 
-if (!dir = get_app_location(cpe: CPE, port: port))
+if (!dir = get_app_location(cpe:CPE, port:port))
   exit(0);
 
 if (dir == "/")
   dir = "";
+
+host = http_host_name(port:port);
 
 traversal = crap(data: "../", length:3*20);
 url = dir + '/getAgentLogFile?accountId=' + traversal + rand_str(length:12) + '&computerId=' + rand_str(length:14);
@@ -91,15 +91,16 @@ data = raw_string(0x78, 0x9c, 0x4b, 0x2b, 0x30, 0x0d, 0x33, 0x89, 0xc8, 0x0b, 0x
                   0x0f, 0x64, 0x03, 0x26);
 
 req = string('POST ', url, ' HTTP/1.1\r\n',
-             'Host: ', http_host_name(), '\r\n',
+             'Host: ', host, '\r\n',
              'Content-Type: application/octet-stream\r\n',
              'Content-Length: ' + strlen(data), '\r\n\r\n',
              data);
-buf = http_keepalive_send_recv(port: port, data: req);
+buf = http_keepalive_send_recv(port:port, data:req);
 
-if (buf =~ "Internal Error No#") {
-  if (egrep(pattern: traversal, string: buf)) {
-    security_message(port:port);
+if (buf && buf =~ "Internal Error No#") {
+  if (egrep(pattern:traversal, string:buf)) {
+    report = report_vuln_url(port:port, url:url);
+    security_message(port:port, data:report);
     exit(0);
   }
 }

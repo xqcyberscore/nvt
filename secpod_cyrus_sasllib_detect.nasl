@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_cyrus_sasllib_detect.nasl 13937 2019-02-28 13:02:28Z cfischer $
+# $Id: secpod_cyrus_sasllib_detect.nasl 14002 2019-03-05 15:54:26Z cfischer $
 #
 # Cyrus SASL Library Version Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900659");
-  script_version("$Revision: 13937 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-28 14:02:28 +0100 (Thu, 28 Feb 2019) $");
+  script_version("$Revision: 14002 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-05 16:54:26 +0100 (Tue, 05 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-05-28 07:14:08 +0200 (Thu, 28 May 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -65,7 +65,6 @@ foreach saslbin (paths) {
     continue;
 
   saslVer = get_bin_version(full_prog_name:saslbin, sock:sock, version_argv:"-v", ver_pattern:"version ([0-9.]+)");
-  display(saslVer);
   if(saslVer[1])  {
 
     set_kb_item(name:"Cyrus/SASL/Ver", value:saslVer[1]);

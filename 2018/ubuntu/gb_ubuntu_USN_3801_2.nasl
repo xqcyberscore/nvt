@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3801_2.nasl 12543 2018-11-27 07:43:51Z santu $
+# $Id: gb_ubuntu_USN_3801_2.nasl 14008 2019-03-06 07:38:19Z mmartin $
 #
 # Ubuntu Update for firefox USN-3801-2
 #
@@ -29,13 +29,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843829");
-  script_version("$Revision: 12543 $");
+  script_version("$Revision: 14008 $");
   script_cve_id("CVE-2018-12388", "CVE-2018-12390", "CVE-2018-12392", "CVE-2018-12393",
                 "CVE-2018-12398", "CVE-2018-12399", "CVE-2018-12401", "CVE-2018-12402",
                 "CVE-2018-12403", "CVE-2018-12395", "CVE-2018-12396", "CVE-2018-12397");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-27 08:43:51 +0100 (Tue, 27 Nov 2018) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-06 08:38:19 +0100 (Wed, 06 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-11-26 15:08:06 +0100 (Mon, 26 Nov 2018)");
   script_name("Ubuntu Update for firefox USN-3801-2");
   script_category(ACT_GATHER_INFO);

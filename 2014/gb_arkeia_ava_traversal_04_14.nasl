@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_arkeia_ava_traversal_04_14.nasl 11854 2018-10-12 07:11:44Z cfischer $
+# $Id: gb_arkeia_ava_traversal_04_14.nasl 13994 2019-03-05 12:23:37Z cfischer $
 #
 # Arkeia Appliance Multiple Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:knox_software:arkeia_appliance";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105011");
-  script_version("$Revision: 11854 $");
+  script_version("$Revision: 13994 $");
   script_cve_id("CVE-2014-2846");
   script_bugtraq_id(67039);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:11:44 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-05 13:23:37 +0100 (Tue, 05 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-04-23 13:16:06 +0200 (Wed, 23 Apr 2014)");
   script_name("Arkeia Appliance Path Traversal Vulnerability");
 
@@ -73,13 +73,17 @@ include("http_func.inc");
 include("host_details.inc");
 include("misc_func.inc");
 
-port = get_app_port( cpe:CPE, service:'www');
-if( ! port ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE, service:"www") )
+  exit( 0 );
 
-host = get_host_name();
+if( ! get_app_location( port:port, cpe:CPE ) )
+  exit( 0 );
 
 files = traversal_files( "linux" );
-vtstring_lower = get_vt_string( lowercase: TRUE );
+vtstrings = get_vt_strings();
+vtstring_lower = vtstrings["lowercase"];
+
+host = http_host_name(port:port);
 
 foreach pattern( keys( files ) ) {
 
@@ -92,7 +96,6 @@ foreach pattern( keys( files ) ) {
         'Content-Type: application/x-www-form-urlencoded\r\n' +
         '\r\n' +
         'password=' + vtstring_lower + '&username=' + vtstring_lower;
-
   res = http_send_recv( port:port, data:req, bodyonly:FALSE );
 
   if( res && egrep( string:res, pattern:pattern ) ) {

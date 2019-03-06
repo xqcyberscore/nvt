@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_centreon_rce_11_14.nasl 13659 2019-02-14 08:34:21Z cfischer $
+# $Id: gb_centreon_rce_11_14.nasl 13994 2019-03-05 12:23:37Z cfischer $
 #
 # Centreon Remote Code Execution
 #
@@ -32,9 +32,9 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.105125");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 13659 $");
+  script_version("$Revision: 13994 $");
   script_name("Centreon Remote Code Execution ");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-05 13:23:37 +0100 (Tue, 05 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-11-29 11:50:21 +0100 (Sat, 29 Nov 2014)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -52,9 +52,9 @@ if(description)
 
   script_tag(name:"solution", value:"Updates are available.");
 
-  script_tag(name:"summary", value:"Centreon is affected by two vulnerabilities:
+  script_tag(name:"summary", value:"Centreon is affected by two vulnerabilities.");
 
-  1. Unauthenticated remote command execution
+  script_tag(name:"insight", value:"1. Unauthenticated remote command execution
 
   This vulnerability allows an unauthenticated user to execute arbitrary commands on the remote system.
 
@@ -98,17 +98,17 @@ function _exploit( ex, host, useragent )
   result = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 }
 
-port = get_app_port( cpe:CPE );
-if( ! port ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
 
-dir = get_app_location( cpe:CPE, port:port );
-if( ! dir ) exit( 0 );
+if( ! dir = get_app_location( cpe:CPE, port:port ) )
+  exit( 0 );
 
-vtstring = get_vt_string( lowercase:TRUE );
 useragent = http_get_user_agent();
 host = http_host_name(port:port);
 
-file = vtstring + '_' + rand() + '.txt';
+vtstrings = get_vt_strings();
+file = vtstrings["lowercase_rand"] + '.txt';
 ex = 'id > ./' + file;
 
 _exploit( ex:ex, host:host, useragent:useragent );

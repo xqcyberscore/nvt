@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vcenter_VMSA-2016-0010_remote_active.nasl 13267 2019-01-24 12:56:48Z cfischer $
+# $Id: gb_vcenter_VMSA-2016-0010_remote_active.nasl 13994 2019-03-05 12:23:37Z cfischer $
 #
 # VMSA-2016-0010 (vCenter) VMware product updates address multiple important security issues (remote active check)
 #
@@ -31,7 +31,7 @@ if(description)
   script_cve_id("CVE-2016-5331");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_version("$Revision: 13267 $");
+  script_version("$Revision: 13994 $");
 
   script_name("VMSA-2016-0010 (vCenter) VMware product updates address multiple important security issues (remote active check)");
 
@@ -44,7 +44,7 @@ if(description)
   script_tag(name:"summary", value:"vCenter contain an HTTP header injection vulnerability due to lack of input validation. An attacker can exploit
   this issue to set arbitrary HTTP response headers and cookies, which may allow for cross-site scripting and malicious redirect attacks.");
 
-  script_tag(name:"last_modification", value:"$Date: 2019-01-24 13:56:48 +0100 (Thu, 24 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-05 13:23:37 +0100 (Tue, 05 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-08-08 14:06:24 +0200 (Mon, 08 Aug 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -61,10 +61,12 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("misc_func.inc");
 
-if( ! port = get_kb_item( "VMware_vCenter/port" ) ) exit( 0 );
+if( ! port = get_kb_item( "VMware_vCenter/port" ) )
+  exit( 0 );
 
-vtstring = get_vt_string();
-vtstring_lo = get_vt_string(lowercase:TRUE);
+vtstrings = get_vt_strings();
+vtstring = vtstrings["default"];
+vtstring_lo = vtstrings["lowercase"];
 
 co = 'Set-Cookie:%20' + vtstring + '=' + rand();
 co_s = str_replace( string:co, find:'%20', replace:' ');
@@ -77,7 +79,7 @@ url = '/?syss%0d%0a' + co + '%0d%0a' + h1;
 req = http_get( item:url, port:port );
 buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
-if( buf =~ "HTTP/1\.. 303" )
+if( buf =~ "^HTTP/1\.[01] 303" )
 {
   if( egrep( pattern:'^' + co_s, string:buf ) && egrep( pattern:'^' + h1_s, string:buf ) )
   {

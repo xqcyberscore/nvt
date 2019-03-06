@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875481");
-  script_version("$Revision: 13991 $");
+  script_version("$Revision: 14008 $");
   script_cve_id("CVE-2018-16741", "CVE-2018-16744", "CVE-2018-16745");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-05 11:29:52 +0100 (Tue, 05 Mar 2019) $");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-06 08:38:19 +0100 (Wed, 06 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-02-27 04:17:56 +0100 (Wed, 27 Feb 2019)");
   script_name("Fedora Update for mgetty FEDORA-2019-3d38ab031e");
   script_category(ACT_GATHER_INFO);

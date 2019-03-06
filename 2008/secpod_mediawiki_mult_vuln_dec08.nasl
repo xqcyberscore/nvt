@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mediawiki_mult_vuln_dec08.nasl 6284 2017-06-06 11:43:39Z cfischer $
+# $Id: secpod_mediawiki_mult_vuln_dec08.nasl 14010 2019-03-06 08:24:33Z cfischer $
 #
 # MediaWiki Multiple Vulnerabilities Dec08
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:mediawiki:mediawiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900421");
-  script_version("$Revision: 6284 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-06 13:43:39 +0200 (Tue, 06 Jun 2017) $");
+  script_version("$Revision: 14010 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-06 09:24:33 +0100 (Wed, 06 Mar 2019) $");
   script_tag(name:"creation_date", value:"2008-12-29 13:55:43 +0100 (Mon, 29 Dec 2008)");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
@@ -46,16 +46,16 @@ if(description)
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/33133");
 
-  tag_impact = "Successful exploitation will allow attacker to execute arbitrary codes in
-  the context of the web application and execute cross site scripting attacks.";
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary codes in
+  the context of the web application and execute cross site scripting attacks.");
 
-  tag_affected = "MediaWiki version 1.13.0 to 1.13.2
+  script_tag(name:"affected", value:"MediaWiki version 1.13.0 to 1.13.2
 
   MediaWiki version 1.12.x to 1.12.1
 
-  MediaWiki versions prior to 1.6.11";
+  MediaWiki versions prior to 1.6.11.");
 
-  tag_insight = "The flaws are due to,
+  script_tag(name:"insight", value:"The flaws are due to,
 
   - input is not properly sanitised before being returned to the user
 
@@ -64,22 +64,15 @@ if(description)
   - SVG scripts are not properly sanitised before being used
 
   - the application allows users to perform certain actions via HTTP requests
-    without performing any validity checks to verify the requests.";
+  without performing any validity checks to verify the requests.");
 
-  tag_solution = "Upgrade to the latest versions 1.13.3, 1.12.2 or 1.6.11.
-  http://www.mediawiki.org/wiki/Download";
+  script_tag(name:"solution", value:"Upgrade to the latest versions 1.13.3, 1.12.2 or 1.6.11.");
 
-  tag_summary = "This host is running MediaWiki and is prone to Multiple
-  Vulnerabilities.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"This host is running MediaWiki and is prone to Multiple
+  Vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
   exit(0);
 }
@@ -87,8 +80,11 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! vers = get_app_version( cpe:CPE, port:port ) )
+  exit( 0 );
 
 if( version_in_range( version:vers, test_version:"1.13.0", test_version2:"1.13.2" ) ||
     version_in_range( version:vers, test_version:"1.12.0", test_version2:"1.12.1" ) ||

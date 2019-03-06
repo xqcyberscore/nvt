@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: os_fingerprint.nasl 13909 2019-02-27 13:31:29Z cfischer $
+# $Id: os_fingerprint.nasl 14009 2019-03-06 08:10:00Z ckuersteiner $
 #
 # ICMP based OS Fingerprinting
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102002");
-  script_version("$Revision: 13909 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-27 14:31:29 +0100 (Wed, 27 Feb 2019) $");
+  script_version("$Revision: 14009 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-06 09:10:00 +0100 (Wed, 06 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-05-19 12:05:50 +0200 (Tue, 19 May 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -59,7 +59,8 @@ if(description)
                       "gb_brocade_fabricos_consolidation.nasl",
                       "gb_arubaos_detect.nasl", "gb_cyberoam_umt_ngfw_detect.nasl",
                       "gb_aerohive_hiveos_detect.nasl", "gb_qnap_nas_detect.nasl",
-                      "gb_synology_dsm_detect.nasl", "gb_simatic_s7_version.nasl",
+                      "gb_synology_dsm_detect.nasl", "gb_drobo_nas_consolidation.nasl",
+                      "gb_simatic_s7_version.nasl",
                       "gb_simatic_cp_consolidation.nasl", "gb_simatic_scalance_snmp_detect.nasl",
                       "gb_siemens_ruggedcom_consolidation.nasl", "ilo_detect.nasl",
                       "gb_watchguard_fireware_detect.nasl", "gb_vibnode_consolidation.nasl",

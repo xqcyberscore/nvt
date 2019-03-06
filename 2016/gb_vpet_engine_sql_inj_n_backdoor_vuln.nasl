@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vpet_engine_sql_inj_n_backdoor_vuln.nasl 11969 2018-10-18 14:53:42Z asteins $
+# $Id: gb_vpet_engine_sql_inj_n_backdoor_vuln.nasl 13994 2019-03-05 12:23:37Z cfischer $
 #
 # VPet Engine SQL Injection and Backdoor Account Vulnerabilities
 #
@@ -27,13 +27,13 @@
 
 CPE = "cpe:/a:vpet:vpet_engine";
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808174");
-  script_version("$Revision: 11969 $");
+  script_version("$Revision: 13994 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-05 13:23:37 +0100 (Tue, 05 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-06-27 12:52:04 +0530 (Mon, 27 Jun 2016)");
   script_name("VPet Engine SQL Injection and Backdoor Account Vulnerabilities");
 
@@ -72,6 +72,7 @@ if (description)
   script_dependencies("gb_vpet_engine_detect.nasl");
   script_mandatory_keys("vPet/Engine/Installed");
   script_require_ports("Services/www", 80);
+
   exit(0);
 }
 
@@ -80,25 +81,23 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-if(!vpet_Port = get_app_port(cpe:CPE)){
+if(!vpet_Port = get_app_port(cpe:CPE))
   exit(0);
-}
 
-if(!dir = get_app_location(cpe:CPE, port:vpet_Port)){
+if(!dir = get_app_location(cpe:CPE, port:vpet_Port))
   exit(0);
-}
 
-if(dir == "/") dir = "";
+if(dir == "/")
+  dir = "";
 
-vt_string = get_vt_string();
-
-url = dir + "/index.php?game=" + vt_string + "-SQL-INJECTION-TEST'";
-
+url = dir + "/index.php?game=VT-SQL-INJECTION-TEST'";
 if(http_vuln_check(port:vpet_Port, url:url, check_header:TRUE,
                    pattern:"supplied argument is not a valid MySQL",
-                   extra_check: make_list(vt_string + "-SQL-INJECTION-TEST", "vPet Engine")))
+                   extra_check: make_list("VT-SQL-INJECTION-TEST", "vPet Engine")))
 {
   report = report_vuln_url( port:vpet_Port, url:url );
   security_message(port:vpet_Port, data:report);
   exit(0);
 }
+
+exit(99);

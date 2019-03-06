@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_hp_openview_nnm_xss_vuln_900403.nasl 7551 2017-10-24 12:24:05Z cfischer $
+# $Id: secpod_hp_openview_nnm_xss_vuln_900403.nasl 14010 2019-03-06 08:24:33Z cfischer $
 #
 # HP OpenView Network Node Manager XSS Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:hp:openview_network_node_manager";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900403");
-  script_version("$Revision: 7551 $");
-  script_bugtraq_id(26838,27237);
+  script_version("$Revision: 14010 $");
+  script_bugtraq_id(26838, 27237);
   script_cve_id("CVE-2007-5000", "CVE-2007-6388");
   script_copyright("Copyright (C) 2008 SecPod");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:24:05 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-06 09:24:33 +0100 (Wed, 06 Mar 2019) $");
   script_tag(name:"creation_date", value:"2008-12-02 11:52:55 +0100 (Tue, 02 Dec 2008)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -46,31 +46,18 @@ if(description)
 
   script_xref(name:"URL", value:"http://secunia.com/Advisories/32800");
 
-  tag_impact = "Successful exploitation will allow attacker to execute arbitrary codes.
+  script_tag(name:"summary", value:"This host is running HP OpenView Network Node Manager, which is prone to
+  Cross Site Scripting vulnerability.");
 
-  Impact Level: Application";
+  script_tag(name:"insight", value:"The flaws are due to errors in HP OpenView NNM 'Network Node Manager'
+  program.");
 
-  tag_solution = "Apply patches or upgrade to the latest version.
-  http://welcome.hp.com/country/us/en/support.html
+  script_tag(name:"affected", value:"HP OpenView Network Node Manager versions 7.01, 7.51 and 7.53 on HP-UX, Linux,
+  and Solaris.");
 
-  ******
-  NOTE: Windows platform is not affected.
-  ******";
+  script_tag(name:"solution", value:"Apply available patches or updates released by the vendor.");
 
-  tag_affected = "HP OpenView Network Node Manager versions 7.01, 7.51 and 7.53 on HP-UX, Linux,
-  and Solaris.";
-
-  tag_insight = "The flaws are due to errors in HP OpenView NNM 'Network Node Manager'
-  program.";
-
-  tag_summary = "This host is running HP OpenView Network Node Manager, which is prone to 
-  Cross Site Scripting vulnerability.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"impact", value:tag_impact);
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary codes.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
@@ -81,9 +68,14 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-get_app_version( cpe:CPE, port:port, nofork:TRUE );
-if( ! vers = get_kb_item( "www/"+ port + "/HP/OVNNM/Ver" ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! get_app_version( cpe:CPE, port:port ) )
+  exit( 0 );
+
+if( ! vers = get_kb_item( "www/"+ port + "/HP/OVNNM/Ver" ) )
+  exit( 0 );
 
 if( version_is_equal( version:vers, test_version:"B.07.01" ) ||
     version_is_equal( version:vers, test_version:"B.07.51" ) ||

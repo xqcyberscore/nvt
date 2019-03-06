@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_cucmim_CSCuw31632.nasl 12363 2018-11-15 09:51:15Z asteins $
+# $Id: gb_cisco_cucmim_CSCuw31632.nasl 13999 2019-03-05 13:15:01Z cfischer $
 #
 # Cisco Unified Communications Manager IM and Presence Service REST API Denial of Service Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2015-6310");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_version("$Revision: 12363 $");
+  script_version("$Revision: 13999 $");
 
   script_name("Cisco Unified Communications Manager IM and Presence Service EST API Denial of Service Vulnerability");
 
@@ -42,16 +42,20 @@ if (description)
   script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/Cisco-SA-20151002-CVE-2015-6310");
 
   script_tag(name:"impact", value:"Attackers can exploit this issue to restart the affected service and cause a denial of service condition.");
+
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"");
+
   script_tag(name:"solution", value:"Ask the Vendor for an update.");
+
   script_tag(name:"summary", value:"Cisco Unified Communications Manager IM and Presence Service is prone to a denial-of-service vulnerability.");
-  script_tag(name:"affected", value:"");
+
+  script_tag(name:"affected", value:"Versions 10.5 before 10.5(2.23000.1), 11.0 before 11.0(1.11000.1) and 9.1 before 9.1(1.81900.5).");
+
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-05 14:15:01 +0100 (Tue, 05 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-02-15 12:13:16 +0100 (Mon, 15 Feb 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -87,4 +91,3 @@ if( fix )
 }
 
 exit( 99 );
-

@@ -21,14 +21,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704401");
-  script_version("$Revision: 13971 $");
+  script_version("$Revision: 14008 $");
   script_cve_id("CVE-2018-20147", "CVE-2018-20148", "CVE-2018-20149", "CVE-2018-20150", "CVE-2018-20151",
                 "CVE-2018-20152", "CVE-2018-20153", "CVE-2019-8942");
   script_name("Debian Security Advisory DSA 4401-1 (wordpress - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-04 07:29:46 +0100 (Mon, 04 Mar 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-06 08:38:19 +0100 (Wed, 06 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-03-01 00:00:00 +0100 (Fri, 01 Mar 2019)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

@@ -1,15 +1,15 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sybase_asa_default_password.nasl 5124 2017-01-27 14:43:44Z teissa $
+# $Id: sybase_asa_default_password.nasl 14010 2019-03-06 08:24:33Z cfischer $
 #
 # Sybase ASA default database password
 #
 # Authors:
-# David Lodge 13/08/2007
+# David Lodge
 # This script is based on sybase_blank_password.nasl which is (C) Tenable Security
 #
 # Copyright:
-# Copyright (C) 2007 David Lodge
+# Copyright (C) 2008 David Lodge
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2,
@@ -30,33 +30,28 @@ CPE = 'cpe:/a:sybase:adaptive_server_enterprise';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80088");
-  script_version("$Revision: 5124 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-27 15:43:44 +0100 (Fri, 27 Jan 2017) $");
+  script_version("$Revision: 14010 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-06 09:24:33 +0100 (Wed, 06 Mar 2019) $");
   script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Sybase ASA default database password");
   script_category(ACT_ATTACK);
-  script_copyright("This script is Copyright (C) 2007 David Lodge");
+  script_copyright("This script is Copyright (C) 2008 David Lodge");
   script_family("Databases");
   script_require_ports("Services/sybase", 5000);
   script_dependencies("gb_sybase_tcp_listen_detect.nasl");
   script_mandatory_keys("sybase/tcp_listener/detected");
 
-  tag_summary = "It is possible to connect to the remote database service using default
-  credentials. 
+  script_tag(name:"solution", value:"Change the default password.");
 
-  Description :
+  script_tag(name:"summary", value:"The remote Sybase SQL Anywhere / Adaptive Server Anywhere server uses
+  default credentials ('DBA' / 'SQL').
 
-  The remote Sybase SQL Anywhere / Adaptive Server Anywhere server uses
-  default credentials ('DBA' / 'SQL').  An attacker may use this flaw to
-  execute commands against the remote host, as well as read your
-  database content.";
+  It was possible to connect to the remote database service using default credentials.");
 
-  tag_solution = "Change the default password.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"impact", value:"An attacker may use this flaw to execute commands against the remote host,
+  as well as read the database content.");
 
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -121,7 +116,7 @@ pkt_magic10 = raw_string(
    0x00, 0x06, 0x6d, 0x7f, 0xff, 0xff, 0xff, 0xfe, 0x02, 0x09,
    0x00, 0x00, 0x00, 0x00, 0x0a, 0x68, 0x00, 0x00, 0x00
 );
-   
+
 function make_sql_login_pkt(database, username, password)
 {
     local_var dblen, dbuf, dlen, dpad, pblen, pbuf, plen, ppad, sql_packet, ublen, ubuf, ulen, upad;
@@ -129,43 +124,43 @@ function make_sql_login_pkt(database, username, password)
     dlen = strlen(database);
     ulen = strlen(username);
     plen = strlen(password);
-    
+
     dpad = 30 - dlen;
     upad = 30 - ulen;
     ppad = 30 - plen;
-    
+
     dbuf = "";
     ubuf = "";
     pbuf = "";
-    
+
     nul = raw_string(0x00);
-    
+
     if(ulen)
     {
         ublen = raw_string(ulen % 255);
     } else {
         ublen = raw_string(0x00);
     }
-    
+
     if(plen)
     {
         pblen = raw_string(plen % 255);
     } else {
         pblen = raw_string(0x00);
-    }  
+    }
 
     if(dlen)
     {
         dblen = raw_string(dlen % 255);
     } else {
         dblen = raw_string(0x00);
-    }  
+    }
 
     dbuf = string(database, crap(data:nul, length:dpad));
     ubuf = string(username, crap(data:nul, length:upad));
     pbuf = string(password, crap(data:nul, length:ppad));
 
-    sql_packet = string( 
+    sql_packet = string(
        login_pkt_hdr, pkt_src_hostname, ubuf, ublen, pbuf, pblen,
        pkt_src_process, pkt_magic1, pkt_bulk_copy, pkt_magic2,
        pkt_client, dbuf, dblen, pkt_magic3, pblen, pbuf, pkt_magic4,

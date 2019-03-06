@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_sec_bypass_vuln.nasl 4340 2016-10-25 06:08:37Z cfi $
+# $Id: gb_apache_tomcat_sec_bypass_vuln.nasl 14010 2019-03-06 08:24:33Z cfischer $
 #
 # Apache Tomcat RemoteFilterValve Security Bypass Vulnerability
 #
@@ -28,8 +28,8 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800024");
-  script_version("$Revision: 4340 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-25 08:08:37 +0200 (Tue, 25 Oct 2016) $");
+  script_version("$Revision: 14010 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-06 09:24:33 +0100 (Wed, 06 Mar 2019) $");
   script_tag(name:"creation_date", value:"2008-10-16 18:25:33 +0200 (Thu, 16 Oct 2008)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
@@ -47,30 +47,20 @@ if(description)
   script_xref(name:"URL", value:"http://tomcat.apache.org/security-5.html");
   script_xref(name:"URL", value:"https://issues.apache.org/bugzilla/show_bug.cgi?id=25835");
 
-  tag_impact = "Successful attempt could lead to remote code execution and attacker
-  can gain access to context of the filtered value.
+  script_tag(name:"impact", value:"Successful attempt could lead to remote code execution and attacker
+  can gain access to context of the filtered value.");
 
-  Impact Level: Application";
+  script_tag(name:"affected", value:"Apache Tomcat version 4.1.x - 4.1.31, and 5.5.0.");
 
-  tag_affected = "Apache Tomcat version 4.1.x - 4.1.31, and 5.5.0";
+  script_tag(name:"insight", value:"Flaw in the application is due to the synchronisation problem when checking
+  IP addresses. This could allow user from a non permitted IP address to gain access to a context that is protected
+  with a valve that extends RemoteFilterValve including the standard RemoteAddrValve and RemoteHostValve
+  implementations.");
 
-  tag_insight = "Flaw in the application is due to the synchronisation problem when checking
-  IP addresses. This could allow user from a non permitted IP address to gain
-  access to a context that is protected with a valve that extends
-  RemoteFilterValve including the standard RemoteAddrValve and RemoteHostValve
-  implementations.";
+  script_tag(name:"solution", value:"Upgrade to Apache Tomcat version 4.1.32, or 5.5.1, or later.");
 
-  tag_solution = "Upgrade to Apache Tomcat version 4.1.32, or 5.5.1, or later,
-  http://archive.apache.org/dist/tomcat/";
-
-  tag_summary = "Apache Tomcat Server is running on this host and that is prone to
-  security bypass vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"Apache Tomcat Server is running on this host and that is prone to
+  security bypass vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
@@ -81,10 +71,12 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
 
-# Apache Tomcat 4.1.0 - 4.1.31, and 5.5.0
+if( ! vers = get_app_version( cpe:CPE, port:port ) )
+  exit( 0 );
+
 if( version_in_range( version:vers, test_version:"4.1.0", test_version2:"4.1.31" ) ||
     version_is_equal( version:vers, test_version:"5.5.0" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"4.1.32/5.5.1" );

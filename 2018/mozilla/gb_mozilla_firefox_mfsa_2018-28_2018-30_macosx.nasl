@@ -29,13 +29,13 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814621");
-  script_version("$Revision: 12817 $");
+  script_version("$Revision: 14008 $");
   script_cve_id("CVE-2018-12407", "CVE-2018-17466", "CVE-2018-18492", "CVE-2018-18493",
                 "CVE-2018-18494", "CVE-2018-18495", "CVE-2018-12405", "CVE-2018-18497",
                 "CVE-2018-18498", "CVE-2018-12406");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-18 10:38:06 +0100 (Tue, 18 Dec 2018) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-06 08:38:19 +0100 (Wed, 06 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-12-13 11:21:59 +0530 (Thu, 13 Dec 2018)");
   script_name("Mozilla Firefox Security Updates( mfsa_2018-28_2018-30 )-MAC OS X");
 

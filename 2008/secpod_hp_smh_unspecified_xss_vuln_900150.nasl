@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_hp_smh_unspecified_xss_vuln_900150.nasl 4522 2016-11-15 14:52:19Z teissa $
+# $Id: secpod_hp_smh_unspecified_xss_vuln_900150.nasl 14010 2019-03-06 08:24:33Z cfischer $
 # Description: HP System Management Homepage Unspecified XSS Vulnerability
 #
 # Authors:
@@ -28,8 +28,8 @@ CPE = "cpe:/a:hp:system_management_homepage";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900150");
-  script_version("$Revision: 4522 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-15 15:52:19 +0100 (Tue, 15 Nov 2016) $");
+  script_version("$Revision: 14010 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-06 09:24:33 +0100 (Wed, 06 Mar 2019) $");
   script_tag(name:"creation_date", value:"2008-10-14 16:57:31 +0200 (Tue, 14 Oct 2008)");
   script_bugtraq_id(31663);
   script_cve_id("CVE-2008-4411");
@@ -43,27 +43,22 @@ if(description)
   script_mandatory_keys("HP/SMH/installed");
   script_require_ports("Services/www", 2301, 2381);
 
-  script_tag(name : "affected" , value : "HP System Management Homepage versions prior to 2.1.15.210");
-  script_tag(name : "summary" , value : "The host is running HP System Management Homepage, which is prone
-  to unspecified XSS Vulnerability. 
+  script_tag(name:"affected", value:"HP System Management Homepage versions prior to 2.1.15.210.");
 
-  Certain input parameters are not properly sanitized before returned to the
-  user.");
-  script_tag(name : "solution" , value : "Update to version 2.1.15.210 or later.
-  HP System Management Homepage for Linux (x86) v2.1.15.210:
-  http://h20000.www2.hp.com/bizsupport/TechSupport/SoftwareDescription.jsp?swItem=MTX-e85a4029b2dd42959f1f82dda7
+  script_tag(name:"summary", value:"The host is running HP System Management Homepage, which is prone
+  to unspecified XSS Vulnerability.
 
-  HP System Management Homepage for Linux (AMD64/EM64T) v2.1.15.210:
-  http://h20000.www2.hp.com/bizsupport/TechSupport/SoftwareDescription.jsp?swItem=MTX-5c90113499bb41faacdcad9485  
+  Certain input parameters are not properly sanitized before returned to the user.");
 
-  HP System Management Homepage for Windows v2.1.15.210:
-  http://h20000.www2.hp.com/bizsupport/TechSupport/SoftwareDescription.jsp?swItem=MTX-84b4161b7cd3455fb34ac57586");
-  script_tag(name : "impact" , value : "An attacker can execute arbitrary script code in the user's browser session.
+  script_tag(name:"solution", value:"Update to version 2.1.15.210 or later.");
 
-  Impact Level : Application");
+  script_tag(name:"impact", value:"An attacker can execute arbitrary script code in the user's browser session.");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/32199/");
-  script_xref(name : "URL" , value : "http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?objectID=c01570589");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/32199/");
+  script_xref(name:"URL", value:"http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?objectID=c01570589");
+  script_xref(name:"URL", value:"http://h20000.www2.hp.com/bizsupport/TechSupport/SoftwareDescription.jsp?swItem=MTX-e85a4029b2dd42959f1f82dda7");
+  script_xref(name:"URL", value:"http://h20000.www2.hp.com/bizsupport/TechSupport/SoftwareDescription.jsp?swItem=MTX-5c90113499bb41faacdcad9485");
+  script_xref(name:"URL", value:"http://h20000.www2.hp.com/bizsupport/TechSupport/SoftwareDescription.jsp?swItem=MTX-84b4161b7cd3455fb34ac57586");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -74,19 +69,16 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Get HTTP Port
-if(!port = get_app_port(cpe:CPE)){
+if(!port = get_app_port(cpe:CPE))
   exit(0);
-}
 
-## Get Version
-if(!version = get_app_version(cpe:CPE, port:port)){
+if(!version = get_app_version(cpe:CPE, port:port))
   exit(0);
-}
 
 if(version_is_less(version: version, test_version: "2.1.15.210")) {
-    security_message(port:port);
-    exit(0);
+  report = report_fixed_ver(installed_version:version, fixed_version:"2.1.15.210");
+  security_message(port:port, data:report);
+  exit(0);
 }
 
 exit(99);

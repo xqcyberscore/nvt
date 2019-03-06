@@ -21,13 +21,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704400");
-  script_version("$Revision: 13961 $");
+  script_version("$Revision: 14008 $");
   script_cve_id("CVE-2019-1559");
   script_name("Debian Security Advisory DSA 4400-1 (openssl1.0 - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:25:20 +0100 (Fri, 01 Mar 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-06 08:38:19 +0100 (Wed, 06 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-02-28 00:00:00 +0100 (Thu, 28 Feb 2019)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

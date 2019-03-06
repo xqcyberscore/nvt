@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_desktopcentral_cve_2015_8249.nasl 11523 2018-09-21 13:37:35Z asteins $
+# $Id: gb_manageengine_desktopcentral_cve_2015_8249.nasl 13994 2019-03-05 12:23:37Z cfischer $
 #
 # ManageEngine Desktop Central 9 FileUploadServlet connectionId Vulnerability
 #
@@ -30,10 +30,10 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140041");
   script_cve_id("CVE-2015-8249");
-  script_version("$Revision: 11523 $");
+  script_version("$Revision: 13994 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-05 13:23:37 +0100 (Tue, 05 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-11-01 16:26:16 +0100 (Tue, 01 Nov 2016)");
   script_name("ManageEngine Desktop Central 9 FileUploadServlet connectionId Vulnerability");
   script_category(ACT_ATTACK);
@@ -46,10 +46,13 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker to gain arbitrary code
   execution on the server.");
 
-  script_tag(name:"affected", value:"ManageEngine Desktop Central 9 < build 90142");
+  script_tag(name:"affected", value:"ManageEngine Desktop Central 9 < build 90142.");
+
   script_tag(name:"solution", value:"Update to ManageEngine Desktop Central 9, build 90142 or newer.");
-  script_tag(name:"vuldetect", value:"Try to upload a jsp file");
-  script_tag(name:"summary", value:"ManageEngine Desktop Central 9 suffers from a vulnerability that allows a remote attacker to upload a malicious file, and execute it under the context of SYSTEM.");
+  script_tag(name:"vuldetect", value:"Try to upload a jsp file.");
+
+  script_tag(name:"summary", value:"ManageEngine Desktop Central 9 suffers from a vulnerability that
+  allows a remote attacker to upload a malicious file, and execute it under the context of SYSTEM.");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -62,14 +65,18 @@ include("http_keepalive.inc");
 include("host_details.inc");
 include("misc_func.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! dir = get_app_location( cpe:CPE, port:port ) )
+  exit( 0 );
 
 if( dir == "/" ) dir = "";
 
 host = http_host_name( port:port );
 
-vt_string = get_vt_string();
+vtstrings = get_vt_strings();
+vt_string = vtstrings["default"];
 str = vt_string + '_CVE-2015-8249_' + rand();
 
 postdata = '<%= new String("' + str  + '") %>';
@@ -83,10 +90,9 @@ req = http_post_req( port:port,
                      data:postdata,
                      add_headers:make_array( "Content-Type", "application/octet-stream")
                    );
-
 buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
-
-if( buf !~ "HTTP/1\.. 200" ) exit( 99 );
+if( !buf || buf !~ "^HTTP/1\.[01] 200" )
+  exit( 99 );
 
 url = dir + '/jspf/' + file;
 req = http_get( item:url, port:port );
@@ -100,4 +106,3 @@ if( str >< buf )
 }
 
 exit( 99 );
-

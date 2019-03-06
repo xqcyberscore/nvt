@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cups_mult_vuln_oct08.nasl 4218 2016-10-05 14:20:48Z teissa $
+# $Id: gb_cups_mult_vuln_oct08.nasl 14010 2019-03-06 08:24:33Z cfischer $
 #
 # CUPS Multiple Vulnerabilities - Oct08
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:apple:cups";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800111");
-  script_version("$Revision: 4218 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-05 16:20:48 +0200 (Wed, 05 Oct 2016) $");
+  script_version("$Revision: 14010 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-06 09:24:33 +0100 (Wed, 06 Mar 2019) $");
   script_tag(name:"creation_date", value:"2008-10-14 16:26:50 +0200 (Tue, 14 Oct 2008)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -48,36 +48,30 @@ if(description)
   script_xref(name:"URL", value:"http://secunia.com/advisories/32226/");
   script_xref(name:"URL", value:"http://www.frsirt.com/english/advisories/2008/2782/");
 
-  tag_impact = "Successful exploitation allows remote attackers to execute arbitrary code or
-  compromise a vulnerable system.
+  script_tag(name:"impact", value:"Successful exploitation allows remote attackers to execute arbitrary code or
+  compromise a vulnerable system.");
 
-  Impact Level: System";
+  script_tag(name:"affected", value:"CUPS versions prior to 1.3.9.");
 
-  tag_affected = "CUPS versions prior to 1.3.9";
+  script_tag(name:"insight", value:"The flaws are due to
 
-  tag_insight = "The flaws are due to
   - an error in the implementation of the HP-GL/2 filter and can be
-    exploited to cause buffer overflows with HP-GL/2 files containing overly
-    large pen numbers.
+  exploited to cause buffer overflows with HP-GL/2 files containing overly
+  large pen numbers.
+
   - an error within the read_rle8() and read_rle16() functions when
-    parsing malformed Run Length Encoded(RLE) data within Silicon Graphics
-    Image(SGI) files and can exploited to cause heap-based buffer overflow
-    with a specially crafted SGI file.
+  parsing malformed Run Length Encoded(RLE) data within Silicon Graphics
+  Image(SGI) files and can exploited to cause heap-based buffer overflow
+  with a specially crafted SGI file.
+
   - an error within the WriteProlog() function included in the texttops
-    utility and can be exploited to cause a heap-based buffer overflow with
-    specially crafted file.";
+  utility and can be exploited to cause a heap-based buffer overflow with
+  specially crafted file.");
 
-  tag_solution = "Upgrade to CUPS version 1.3.9
-  http://www.cups.org/software.php";
+  script_tag(name:"solution", value:"Upgrade to CUPS version 1.3.9 or later.");
 
-  tag_summary = "This host is running CUPS (Common UNIX Printing System) Service,
-  which is prone to Buffer Overflow and Integer Overflow Vulnerabilities.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"This host is running CUPS (Common UNIX Printing System) Service,
+  which is prone to Buffer Overflow and Integer Overflow Vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
@@ -88,12 +82,15 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
 
-if( vers !~ "[0-9]+\.[0-9]+\.[0-9]+") exit( 0 ); # Version is not exact enough
+if( ! vers = get_app_version( cpe:CPE, port:port ) )
+  exit( 0 );
 
-# Check for CUPS version < 1.3.9
+if( vers !~ "[0-9]+\.[0-9]+\.[0-9]+")
+  exit( 0 ); # Version is not exact enough
+
 if( version_is_less( version:vers, test_version:"1.3.9" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"1.3.9" );
   security_message( port:port, data:report );

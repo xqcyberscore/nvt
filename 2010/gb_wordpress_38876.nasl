@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_38876.nasl 13960 2019-03-01 13:18:27Z cfischer $
+# $Id: gb_wordpress_38876.nasl 14012 2019-03-06 09:13:44Z cfischer $
 #
 # WordPress Password Protection Security Bypass Vulnerability
 #
@@ -26,11 +26,11 @@
 
 CPE = "cpe:/a:wordpress:wordpress";
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100549");
-  script_version("$Revision: 13960 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
+  script_version("$Revision: 14012 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-06 10:13:44 +0100 (Wed, 06 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-03-24 17:54:30 +0100 (Wed, 24 Mar 2010)");
   script_bugtraq_id(38876);
   script_tag(name:"cvss_base", value:"5.0");
@@ -41,7 +41,7 @@ if (description)
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2010/Mar/361");
   script_xref(name:"URL", value:"http://wordpress.org/");
 
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
@@ -68,13 +68,16 @@ if (description)
 include("version_func.inc");
 include("host_details.inc");
 
-if(!port = get_app_port(cpe:CPE))exit(0);
-if(vers = get_app_version(cpe:CPE, port:port)) {
+if(!port = get_app_port(cpe:CPE))
+  exit(0);
 
-  if(version_is_less_equal(version: vers, test_version: "2.9.2")) {
-    security_message(port:port);
-    exit(0);
-  }
+if(!vers = get_app_version(cpe:CPE, port:port))
+  exit(0);
+
+if(version_is_less_equal(version: vers, test_version: "2.9.2")) {
+  report = report_fixed_ver(installed_version:vers, fixed_version:"None");
+  security_message(port:port, data:report);
+  exit(0);
 }
 
-exit(0);
+exit(99);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2018_3006_firefox_centos6.nasl 12124 2018-10-26 12:50:40Z santu $
+# $Id: gb_CESA-2018_3006_firefox_centos6.nasl 14008 2019-03-06 07:38:19Z mmartin $
 #
 # CentOS Update for firefox CESA-2018:3006 centos6
 #
@@ -29,12 +29,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882968");
-  script_version("$Revision: 12124 $");
+  script_version("$Revision: 14008 $");
   script_cve_id("CVE-2018-12389", "CVE-2018-12390", "CVE-2018-12392", "CVE-2018-12393",
                 "CVE-2018-12395", "CVE-2018-12396", "CVE-2018-12397");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 14:50:40 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-06 08:38:19 +0100 (Wed, 06 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:04:40 +0200 (Fri, 26 Oct 2018)");
   script_name("CentOS Update for firefox CESA-2018:3006 centos6 ");
   script_category(ACT_GATHER_INFO);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: http_func.inc 13843 2019-02-25 10:11:55Z cfischer $
+# $Id: http_func.inc 13994 2019-03-05 12:23:37Z cfischer $
 #
 # Methods to handle HTTP
 #
@@ -24,7 +24,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 13843 $
+# $Revision: 13994 $
 #
 ###############################################################################
 
@@ -1983,7 +1983,7 @@ function report_vuln_url( port, url, url_only ) {
 function http_post_req( port, url, data, add_headers, accept_header, user_agent, host_header_use_ip, dont_add_xscanner ) {
 
   local_var port, url, data, add_headers, accept_header, user_agent, host_header_use_ip, dont_add_xscanner;
-  local_var x_header, len, x_scanner_string, host, req, header;
+  local_var x_header, len, vtstrings, x_scanner_string, host, req, header;
 
   if( ! isnull( add_headers ) ) {
     if( typeof( add_headers ) != "array" ) {
@@ -2012,10 +2012,11 @@ function http_post_req( port, url, data, add_headers, accept_header, user_agent,
     user_agent = http_get_user_agent();
   } else if( ! dont_add_xscanner ) {
     x_header = TRUE;
+    vtstrings = get_vt_strings();
     if( OPENVAS_VERSION )
-      x_scanner_string = "X-Scanner: " + get_vt_string() + " " + OPENVAS_VERSION;
+      x_scanner_string = "X-Scanner: " + vtstrings["default"] + " " + OPENVAS_VERSION;
     else
-      x_scanner_string = "X-Scanner: " + get_vt_string();
+      x_scanner_string = "X-Scanner: " + vtstrings["default"];
   }
 
   if( host_header_use_ip )
@@ -2077,7 +2078,7 @@ function http_post_req( port, url, data, add_headers, accept_header, user_agent,
 function http_get_req( port, url, add_headers, accept_header, user_agent, host_header_use_ip, dont_add_xscanner ) {
 
   local_var port, url, add_headers, accept_header, user_agent, host_header_use_ip, dont_add_xscanner;
-  local_var x_header, x_scanner_string, host, req, header;
+  local_var x_header, vtstrings, x_scanner_string, host, req, header;
 
   if( ! isnull( add_headers ) ) {
     if( typeof( add_headers ) != "array" ) {
@@ -2103,10 +2104,11 @@ function http_get_req( port, url, add_headers, accept_header, user_agent, host_h
     user_agent = http_get_user_agent();
   } else if( ! dont_add_xscanner ) {
     x_header = TRUE;
+    vtstrings = get_vt_strings();
     if( OPENVAS_VERSION )
-      x_scanner_string = "X-Scanner: " + get_vt_string() + " " + OPENVAS_VERSION;
+      x_scanner_string = "X-Scanner: " + vtstrings["default"] + " " + OPENVAS_VERSION;
     else
-      x_scanner_string = "X-Scanner: " + get_vt_string();
+      x_scanner_string = "X-Scanner: " + vtstrings["default"];
   }
 
   if( host_header_use_ip )

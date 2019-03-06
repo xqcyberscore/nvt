@@ -21,11 +21,11 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108556");
-  script_version("$Revision: 13898 $");
+  script_version("$Revision: 14008 $");
   script_cve_id("CVE-2019-1559");
-  script_tag(name:"cvss_base", value:"4.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-27 09:37:43 +0100 (Wed, 27 Feb 2019) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-06 08:38:19 +0100 (Wed, 06 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-02-27 07:48:22 +0100 (Wed, 27 Feb 2019)");
   script_name("OpenSSL: 0-byte record padding oracle (CVE-2019-1559) (Linux)");
   script_category(ACT_GATHER_INFO);

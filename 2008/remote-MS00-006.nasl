@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: remote-MS00-006.nasl 4702 2016-12-07 13:02:11Z cfi $
+# $Id: remote-MS00-006.nasl 14010 2019-03-06 08:24:33Z cfischer $
 #
 # This program test for the following vulnerabilities:
 # Microsoft Index Server File Information and Path Disclosure Vulnerability (MS00-006)
@@ -33,8 +33,8 @@ CPE = "cpe:/a:microsoft:iis";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80007");
-  script_version("$Revision: 4702 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-07 14:02:11 +0100 (Wed, 07 Dec 2016) $");
+  script_version("$Revision: 14010 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-06 09:24:33 +0100 (Wed, 06 Mar 2019) $");
   script_tag(name:"creation_date", value:"2008-09-09 16:54:39 +0200 (Tue, 09 Sep 2008)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -48,14 +48,12 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("IIS/installed");
 
-  tag_summary = "The WebHits ISAPI filter in Microsoft Index Server allows remote attackers to read arbitrary files, 
-  aka the 'Malformed Hit-Highlighting Argument' vulnerability MS00-06.";
+  script_xref(name:"URL", value:"http://www.microsoft.com/TechNet/security/bulletin/ms00-006.asp");
 
-  tag_solution = "To Fix that, you must download the patches from microsoft security website: 
-  http://www.microsoft.com/TechNet/security/bulletin/ms00-006.asp.";
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"The WebHits ISAPI filter in Microsoft Index Server allows remote attackers to read arbitrary files,
+  aka the 'Malformed Hit-Highlighting Argument' vulnerability MS00-06.");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -70,10 +68,12 @@ include("host_details.inc");
 # Asp files the plugin will test
 pages = make_list( 'default.asp', 'iisstart.asp', 'localstart.asp', 'index.asp' );
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 ); # To have a reference to the detection NVT
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
 
-# Build the malicious request
+if( ! get_app_location( cpe:CPE, port:port ) )
+  exit( 0 ); # To have a reference to the detection NVT
+
 foreach asp_file( pages ) {
 
   url = string( "/null.htw?CiWebHitsFile=/" + asp_file + "%20&CiRestriction=none&CiHiliteType=Full" );
@@ -83,7 +83,7 @@ foreach asp_file( pages ) {
 
   if( res ) {
     r = tolower( res );
-    if( ( "Microsoft-IIS" >< r ) && ( egrep( pattern:"HTTP/1.[01] 200", string:r ) ) && ( "<html>" >< r ) ) {
+    if( "Microsoft-IIS" >< r && egrep( pattern:"^HTTP/1.[01] 200", string:r ) && "<html>" >< r ) {
        report = report_vuln_url( port:port, url:url );
        security_message( port:port, data:report );
        exit( 0 );

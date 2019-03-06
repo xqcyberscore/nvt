@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_multiple_devices_platform_cgi_lfi_01_16.nasl 13659 2019-02-14 08:34:21Z cfischer $
+# $Id: gb_multiple_devices_platform_cgi_lfi_01_16.nasl 13994 2019-03-05 12:23:37Z cfischer $
 #
 # Multiple Devices '/scgi-bin/platform.cgi' Unauthenticated File Disclosure
 #
@@ -28,7 +28,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105500");
-  script_version("$Revision: 13659 $");
+  script_version("$Revision: 13994 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
@@ -37,17 +37,22 @@ if(description)
   script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/39184/");
 
   script_tag(name:"impact", value:"An attacker could exploit this vulnerability to read arbitrary files on the device. This may aid in further attacks.");
+
   script_tag(name:"vuldetect", value:"Send a special crafted HTTP POST request and check the response.");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year
   since the disclosure of this vulnerability. Likely none will be provided anymore. General
   solution options are to upgrade to a newer release, disable respective features, remove the
   product or replace the product by another one.");
+
   script_tag(name:"summary", value:"The remote device is prone to an arbitrary file-disclosure vulnerability because it fails to adequately validate user-supplied input.");
+
   script_tag(name:"affected", value:"Devices from Cisco, D-Link and Netgear.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_active");
 
-  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-05 13:23:37 +0100 (Tue, 05 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-01-07 15:24:11 +0100 (Thu, 07 Jan 2016)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -68,13 +73,17 @@ include("misc_func.inc");
 port = get_http_port( default:443 );
 
 banner = get_http_banner( port:port );
-if( ! banner || "Server: Embedded HTTP Server" >!< banner ) exit( 0 );
+if( ! banner || "Server: Embedded HTTP Server" >!< banner )
+  exit( 0 );
+
+useragent = http_get_user_agent();
+host = http_host_name( port:port );
 
 url = '/scgi-bin/platform.cgi';
 req = http_get( item:url, port:port );
 buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
-
-if( ( buf !~ "HTTP/1\.[01] 200" ) ) exit( 0 );
+if( !buf || buf !~ "^HTTP/1\.[01] 200" )
+  exit( 0 );
 
 if( "netgear" >< tolower( buf ) )
   typ = 'netgear';
@@ -83,8 +92,9 @@ else if( "d-link" >< tolower( buf ) || "dlink" >< tolower( buf ) )
 else
   typ = 'cisco';
 
-vtstring = get_vt_string();
-vtstring_lower = get_vt_string( lowercase: TRUE );
+vtstrings = get_vt_strings();
+vtstring = vtstrings["default"];
+vtstring_lower = vtstrings["lowercase"];
 
 files = traversal_files("linux");
 
@@ -101,9 +111,6 @@ foreach pattern( keys( files ) ) {
 
   len = strlen( data );
 
-  useragent = http_get_user_agent();
-  host = http_host_name( port:port );
-
   req = 'POST /scgi-bin/platform.cgi HTTP/1.1\r\n' +
         'Host: ' + host + '\r\n' +
         'User-Agent: ' + useragent + '\r\n' +
@@ -112,11 +119,9 @@ foreach pattern( keys( files ) ) {
         'Content-Type: application/x-www-form-urlencoded\r\n' +
         '\r\n' +
         data;
-
   buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
-  if( ( buf =~ "HTTP/1\.[01] 200" ) && egrep( string:buf, pattern:pattern ) )
-  {
+  if( buf =~ "^HTTP/1\.[01] 200" && egrep( string:buf, pattern:pattern ) ) {
     report = 'By sending a special crafted POST request to "/scgi-bin/platform.cgi" it was possible to read the file "/' + file + '".\nThe following response was received:\n\n' + buf;
     security_message( port:port, data:report );
     exit( 0 );

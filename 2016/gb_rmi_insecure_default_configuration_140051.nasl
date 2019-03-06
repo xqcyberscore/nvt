@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rmi_insecure_default_configuration_140051.nasl 11922 2018-10-16 10:24:25Z asteins $
+# $Id: gb_rmi_insecure_default_configuration_140051.nasl 13999 2019-03-05 13:15:01Z cfischer $
 #
 # Java RMI Server Insecure Default Configuration Remote Code Execution Vulnerability
 #
@@ -25,10 +25,10 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140051");
-  script_version("$Revision: 11922 $");
+  script_version("$Revision: 13999 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
@@ -36,14 +36,23 @@ if (description)
 
   script_xref(name:"URL", value:"https://tools.cisco.com/security/center/viewAlert.x?alertId=23665");
 
-  script_tag(name:"impact", value:"");
+  script_tag(name:"impact", value:"An unauthenticated, remote attacker could exploit the vulnerability
+  by transmitting crafted packets to the affected software. When the packets are processed,
+  the attacker could execute arbitrary code on the system with elevated privileges.");
+
   script_tag(name:"vuldetect", value:"Check if the target tries to load a Java class via a remote HTTP URL.");
-  script_tag(name:"insight", value:"The vulnerability exists because of an incorrect default configuration of the Remote Method Invocation (RMI) Server in the affected software. An unauthenticated, remote attacker could exploit the vulnerability by transmitting crafted packets to the affected software.  When the packets are processed, the attacker could execute arbitrary code on the system with elevated privileges.");
+
+  script_tag(name:"insight", value:"The vulnerability exists because of an incorrect default configuration of the
+  Remote Method Invocation (RMI) Server in the affected software.");
+
   script_tag(name:"solution", value:"Disable class-loading.");
-  script_tag(name:"summary", value:"Multiple Java products that implement the RMI Server contain a vulnerability that could allow an unauthenticated, remote attacker to execute arbitrary code on a targeted system with elevated privileges.");
+
+  script_tag(name:"summary", value:"Multiple Java products that implement the RMI Server contain a vulnerability that
+  could allow an unauthenticated, remote attacker to execute arbitrary code on a targeted system with elevated privileges.");
+
   script_tag(name:"solution_type", value:"Workaround");
   script_tag(name:"qod_type", value:"remote_active");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:24:25 +0200 (Tue, 16 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-05 14:15:01 +0100 (Tue, 05 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-11-04 14:34:52 +0100 (Fri, 04 Nov 2016)");
   script_category(ACT_ATTACK);
   script_family("General");
@@ -56,10 +65,12 @@ if (description)
 
 include("byte_func.inc");
 
-if( ! port = get_kb_item("Services/rmi_registry") ) exit( 0 );
+if( ! port = get_kb_item("Services/rmi_registry") )
+  exit( 0 );
 
 soc = open_sock_tcp( port );
-if( ! soc ) exit( 0 );
+if( ! soc )
+  exit( 0 );
 
 req = 'JRMI' + raw_string( 0x00,0x02,0x4b,0x00,0x00,0x00,0x00,0x00,0x00 );
 
@@ -110,4 +121,3 @@ if( res )
 close(soc);
 
 exit( 99 );
-

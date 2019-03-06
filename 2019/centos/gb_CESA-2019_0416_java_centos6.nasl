@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.883012");
-  script_version("$Revision: 13991 $");
+  script_version("$Revision: 14008 $");
   script_cve_id("CVE-2019-2422");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-05 11:29:52 +0100 (Tue, 05 Mar 2019) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-06 08:38:19 +0100 (Wed, 06 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-02-27 04:14:31 +0100 (Wed, 27 Feb 2019)");
   script_name("CentOS Update for java CESA-2019:0416 centos6 ");
   script_category(ACT_GATHER_INFO);

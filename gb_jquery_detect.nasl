@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jquery_detect.nasl 13969 2019-03-02 16:24:01Z cfischer $
+# $Id: gb_jquery_detect.nasl 14001 2019-03-05 15:06:57Z cfischer $
 #
 # jQuery Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141622");
-  script_version("$Revision: 13969 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-02 17:24:01 +0100 (Sat, 02 Mar 2019) $");
+  script_version("$Revision: 14001 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-05 16:06:57 +0100 (Tue, 05 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-11-01 09:53:59 +0700 (Thu, 01 Nov 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -99,7 +99,7 @@ function extract_jquery_location( jquerydir, jqueryfile, basedir ) {
   return ret_array;
 }
 
-pattern = 'src=["\']([^ ]*)(jquery([0-9.-]+)?(\\.(min|slim|slim\\.min)?)\\.js)';
+pattern = 'src=["\']([^ ]*)(jquery[-.]?([0-9.]+)?(\\.(min|slim|slim\\.min)?)\\.js)';
 detected_urls = make_list();
 
 port = get_http_port(default: 80);
@@ -124,6 +124,14 @@ foreach dir (make_list_unique("/", cgi_dirs(port: port))) {
   # src="/jquery-1.8.2.min.js"
   # src="/pub/jquery-1.11.2.min.js"
   # src="./js/jquery-1.11.2.min.js"
+  # src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+  #
+  # Uncommon, but seems to be sometimes used: https://community.greenbone.net/t/false-positive-jquery-1-9-0-xss-vulnerability/1683
+  # src="/js/jquery.2.2.1.min.js"
+  # src="/scripts/lib/jquery1.11.2.js"
+  #
+  # TODO: Gather version from e.g.:
+  # src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
   if (!isnull(detect[3])) {
     vers = eregmatch(pattern: "([0-9.]+)", string: detect[3]);
     if (!isnull(vers[1]))

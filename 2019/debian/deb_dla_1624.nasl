@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1624.nasl 13178 2019-01-21 08:02:45Z cfischer $
+# $Id: deb_dla_1624.nasl 14008 2019-03-06 07:38:19Z mmartin $
 #
 # Auto-generated from advisory DLA 1624-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,14 +31,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891624");
-  script_version("$Revision: 13178 $");
+  script_version("$Revision: 14008 $");
   script_cve_id("CVE-2018-17466", "CVE-2018-18492", "CVE-2018-18493", "CVE-2018-18494", "CVE-2018-18498",
                 "CVE-2018-12405");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1624-1] thunderbird security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-21 09:02:45 +0100 (Mon, 21 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-06 08:38:19 +0100 (Wed, 06 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-01-03 00:00:00 +0100 (Thu, 03 Jan 2019)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

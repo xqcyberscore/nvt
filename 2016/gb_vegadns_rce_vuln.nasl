@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vegadns_rce_vuln.nasl 11922 2018-10-16 10:24:25Z asteins $
+# $Id: gb_vegadns_rce_vuln.nasl 13994 2019-03-05 12:23:37Z cfischer $
 #
 # VegaDNS Remote Command Execution Vulnerability
 #
@@ -27,11 +27,11 @@
 
 CPE = "cpe:/a:vegadns:vegadns";
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106275");
-  script_version("$Revision: 11922 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:24:25 +0200 (Tue, 16 Oct 2018) $");
+  script_version("$Revision: 13994 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-05 13:23:37 +0100 (Tue, 05 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-09-22 09:06:56 +0700 (Thu, 22 Sep 2016)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
@@ -63,8 +63,8 @@ if (description)
 
   script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/40402/");
   script_xref(name:"URL", value:"https://github.com/shupp/VegaDNS/blob/master/CHANGELOG");
-
   script_xref(name:"URL", value:"http://www.vegadns.org/");
+
   exit(0);
 }
 
@@ -72,8 +72,6 @@ include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("misc_func.inc");
-
-vt_string = get_vt_string(lowercase: TRUE);
 
 if (!port = get_app_port(cpe: CPE))
   exit(0);
@@ -84,13 +82,14 @@ if (!dir = get_app_location(cpe: CPE, port: port))
 if (dir == "/")
   dir = "";
 
+vtstrings = get_vt_strings();
 files = traversal_files();
 
 foreach pattern(keys(files)) {
 
   file = files[pattern];
 
-  url = dir + "/axfr_get?hostname=" + vt_string + "&domain=%3bcat+/" + file + "%3b";
+  url = dir + "/axfr_get?hostname=" + vtstrings["lowercase"] + "&domain=%3bcat+/" + file + "%3b";
 
   if (http_vuln_check(port: port, url: url, pattern: pattern, check_header: TRUE)) {
     report = report_vuln_url(port: port, url: url);

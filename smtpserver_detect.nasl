@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smtpserver_detect.nasl 13855 2019-02-25 16:40:27Z cfischer $
+# $Id: smtpserver_detect.nasl 14004 2019-03-05 17:53:23Z cfischer $
 #
 # SMTP Server type and version
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10263");
-  script_version("$Revision: 13855 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-25 17:40:27 +0100 (Mon, 25 Feb 2019) $");
+  script_version("$Revision: 14004 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-05 18:53:23 +0100 (Tue, 05 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -189,6 +189,12 @@ foreach port( ports ) {
     set_kb_item( name:"smtp/esmtpsa/detected", value:TRUE );
     set_kb_item( name:"smtp/" + port + "/esmtpsa/detected", value:TRUE );
     guess += '\n- Various Mail Server like Rumble SMTP';
+  }
+
+  if( banner =~ "^220 [^ ]+ ESMTP$" || "Powered by the new deepOfix Mail Server" >< banner || "Welcome to deepOfix" >< banner || "qmail" >< help ) {
+    set_kb_item( name:"smtp/deepofix/detected", value:TRUE );
+    set_kb_item( name:"smtp/" + port + "/deepofix/detected", value:TRUE );
+    guess += '\n- deepOfix';
   }
 
   report = 'Remote SMTP server banner:\n\n' + banner;

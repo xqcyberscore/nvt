@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_untangle_rce_07_15.nasl 12051 2018-10-24 09:14:54Z asteins $
+# $Id: gb_untangle_rce_07_15.nasl 13994 2019-03-05 12:23:37Z cfischer $
 #
 # Untangle NG Firewall Remote Command Execution Vulnerability
 #
@@ -30,23 +30,30 @@ CPE = "cpe:/a:untangle:ng-firewall";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105812");
-  script_version("$Revision: 12051 $");
+  script_version("$Revision: 13994 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
   script_name("Untangle NG Firewall Remote Command Execution Vulnerability");
 
-  script_tag(name:"vuldetect", value:"Upload a python file within a zip file and try to execute it");
-  script_tag(name:"insight", value:"The Untangle NG Firewall appliance includes a free module called 'Captive Portal'. This module is installed by default with several other recommended modules. The component does not check if the user is authenticated before processing the upload. It results in an arbitrary file upload vulnerability, which allows remote unauthenticated users to write custom python/HTML files to a known folder.");
-  script_tag(name:"summary", value:"The remote Untangle NG Firewall is prone to a remote command execution vulnerability");
+  script_tag(name:"vuldetect", value:"Upload a python file within a zip file and try to execute it.");
+
+  script_tag(name:"insight", value:"The Untangle NG Firewall appliance includes a free module called 'Captive Portal'.
+  This module is installed by default with several other recommended modules. The component does not check if the user
+  is authenticated before processing the upload. It results in an arbitrary file upload vulnerability, which allows
+  remote unauthenticated users to write custom python/HTML files to a known folder.");
+
+  script_tag(name:"summary", value:"The remote Untangle NG Firewall is prone to a remote command execution vulnerability.");
+
   script_tag(name:"solution_type", value:"Workaround");
-  script_tag(name:"solution", value:"Disable/Remove the Captive Portal module");
+
+  script_tag(name:"solution", value:"Disable/Remove the Captive Portal module.");
 
   script_xref(name:"URL", value:"https://blogs.securiteam.com/index.php/archives/2724");
 
   script_tag(name:"qod_type", value:"exploit");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-05 13:23:37 +0100 (Tue, 05 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-07-18 15:16:18 +0200 (Mon, 18 Jul 2016)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -63,11 +70,14 @@ include("http_keepalive.inc");
 include("misc_func.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
 
-function check( i, zip )
+if( ! get_app_location( port:port, cpe:CPE ) )
+  exit( 0 );
+
+function check( i, zip, vt_string )
 {
-  vt_string = get_vt_string();
 
   bound = '---------------------------' + vt_string + '_' + rand();
 
@@ -120,8 +130,9 @@ zip = 'UEsDBBQAAAAIAPZw8kggohT+hAAAALkAAAAJABwAY3VzdG9tLnB5VVQJAAOQxoxXPsaMV3V4C
       'AAEAAQBPAAAAxwAAAAAA';
 
 zip = base64_decode( str:zip );
+vtstrings = get_vt_strings();
 
 for( i = 1; i < 35; i++ )
-  check( i:i, zip:zip );
+  check( i:i, zip:zip, vt_string:vtstrings["default"] );
 
 exit( 99 );

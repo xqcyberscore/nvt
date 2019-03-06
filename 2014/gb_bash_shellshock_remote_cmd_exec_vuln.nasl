@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bash_shellshock_remote_cmd_exec_vuln.nasl 13847 2019-02-25 10:50:50Z cfischer $
+# $Id: gb_bash_shellshock_remote_cmd_exec_vuln.nasl 13994 2019-03-05 12:23:37Z cfischer $
 #
 # GNU Bash Environment Variable Handling Shell Remote Command Execution Vulnerability
 #
@@ -28,12 +28,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804489");
-  script_version("$Revision: 13847 $");
+  script_version("$Revision: 13994 $");
   script_cve_id("CVE-2014-6271", "CVE-2014-6278");
   script_bugtraq_id(70103);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-25 11:50:50 +0100 (Mon, 25 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-05 13:23:37 +0100 (Tue, 05 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-09-25 18:47:16 +0530 (Thu, 25 Sep 2014)");
   script_name("GNU Bash Environment Variable Handling Shell Remote Command Execution Vulnerability");
   script_category(ACT_ATTACK);
@@ -231,7 +231,8 @@ if( check_kb_cgis == "yes" ) {
 }
 
 useragent = http_get_user_agent();
-vt_string = get_vt_string();
+vtstrings = get_vt_strings();
+vt_string = vtstrings["default"];
 host = http_host_name( port:port );
 
 foreach dir( cgis ) {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openfire_xss_vuln.nasl 13655 2019-02-14 07:53:42Z ckuersteiner $
+# $Id: gb_openfire_xss_vuln.nasl 13994 2019-03-05 12:23:37Z cfischer $
 #
 # Openfire Reflected XSS Vulnerability
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112307");
-  script_version("$Revision: 13655 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-14 08:53:42 +0100 (Thu, 14 Feb 2019) $");
+  script_version("$Revision: 13994 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-05 13:23:37 +0100 (Tue, 05 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-06-15 10:04:21 +0200 (Fri, 15 Jun 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -76,14 +76,18 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("misc_func.inc");
 
-if( ! port = get_app_port( cpe: CPE ) ) exit( 0 );
-if( ! dir = get_app_location( cpe: CPE, port: port ) ) exit( 0 );
+if( ! port = get_app_port( cpe: CPE ) )
+  exit( 0 );
 
-vtstring = get_vt_string(lowercase:TRUE);
-data = vtstring + "_" + unixtime();
+if( ! dir = get_app_location( cpe: CPE, port: port ) )
+  exit( 0 );
+
+vtstrings = get_vt_strings();
+data = vtstrings["lowercase"] + "_" + unixtime();
 urls = make_list( 'login.jsp?url=a%22onclick=%22alert(' + data + ')', 'login.jsp?url=a"onclick="alert(' + data + ')' );
 
 foreach url ( urls ) {
+
   req = http_get_req( port: port, url: dir + url );
   res = http_keepalive_send_recv( port: port, data: req );
 

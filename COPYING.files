@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Tue, 05 Mar 2019 12:11:21 +0100
+# Automatically created on:  Wed, 06 Mar 2019 12:04:44 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -44016,6 +44016,8 @@
 2019/centos/gb_CESA-2019_0415_kernel_centos6.nasl: GPLv2+
 2019/centos/gb_CESA-2019_0416_java_centos6.nasl: GPLv2+
 2019/centos/gb_CESA-2019_0420_polkit_centos6.nasl: GPLv2+
+2019/centos/gb_CESA-2019_0436_java-11-openjdk_centos7.nasl: GPLv2+
+2019/centos/gb_CESA-2019_0464_java_centos7.nasl: GPLv2+
 2019/collabtive/gb_collabtive_xss_vuln_feb19.nasl: GPLv2+
 2019/coppermine/gb_coppermine_xss_vuln.nasl: GPLv2+
 2019/coreos/gb_etcd_auth_vuln.nasl: GPLv2+
@@ -44062,6 +44064,7 @@
 2019/debian/deb_4399.nasl: GPLv2+
 2019/debian/deb_4400.nasl: GPLv2+
 2019/debian/deb_4401.nasl: GPLv2+
+2019/debian/deb_4402.nasl: GPLv2+
 2019/debian/deb_dla_1621.nasl: GPLv2+
 2019/debian/deb_dla_1623.nasl: GPLv2+
 2019/debian/deb_dla_1624.nasl: GPLv2+
@@ -44140,6 +44143,7 @@
 2019/debian/deb_dla_1702.nasl: GPLv2+
 2019/debian/deb_dla_1703.nasl: GPLv2+
 2019/debian/deb_dla_1704.nasl: GPLv2+
+2019/debian/deb_dla_1705.nasl: GPLv2+
 2019/digium/gb_asterisk_AST-2019-001.nasl: GPLv2+
 2019/discourse/gb_discourse_2.2.0beta2.nasl: GPLv2+
 2019/discourse/gb_discourse_2.2.0beta3.nasl: GPLv2+
@@ -44288,6 +44292,9 @@
 2019/google/gb_google_chrome_stable-channel-update-for-desktop-2019-02_lin.nasl: GPLv2+
 2019/google/gb_google_chrome_stable-channel-update-for-desktop-2019-02_macosx.nasl: GPLv2+
 2019/google/gb_google_chrome_stable-channel-update-for-desktop-2019-02_win.nasl: GPLv2+
+2019/google/gb_google_chrome_stable-channel-update-for-desktop-2019-03_lin.nasl: GPLv2+
+2019/google/gb_google_chrome_stable-channel-update-for-desktop-2019-03_macosx.nasl: GPLv2+
+2019/google/gb_google_chrome_stable-channel-update-for-desktop-2019-03_win.nasl: GPLv2+
 2019/google/gb_libreoffice_rce_vuln_feb19_macosx.nasl: GPLv2+
 2019/graphicsmagick/gb_graphicsmagick_mult_vuln_dec18_lin.nasl: GPLv2+
 2019/graphicsmagick/gb_graphicsmagick_mult_vuln_dec18_win.nasl: GPLv2+
@@ -44517,6 +44524,9 @@
 2019/opensuse/gb_suse_2019_0275_1.nasl: GPLv2+
 2019/opensuse/gb_suse_2019_0276_1.nasl: GPLv2+
 2019/opensuse/gb_suse_2019_0291_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0292_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0293_1.nasl: GPLv2+
+2019/opensuse/gb_suse_2019_0294_1.nasl: GPLv2+
 2019/opensuse/gb_suse_2019_1_1.nasl: GPLv2+
 2019/openxchange/gb_open_xchange_appsuite_56406.nasl: GPLv2+
 2019/openxchange/gb_open_xchange_appsuite_56558.nasl: GPLv2+
@@ -44643,6 +44653,8 @@
 2019/ubuntu/gb_ubuntu_USN_3898_1.nasl: GPLv2+
 2019/ubuntu/gb_ubuntu_USN_3899_1.nasl: GPLv2+
 2019/ubuntu/gb_ubuntu_USN_3900_1.nasl: GPLv2+
+2019/ubuntu/gb_ubuntu_USN_3901_1.nasl: GPLv2+
+2019/ubuntu/gb_ubuntu_USN_3901_2.nasl: GPLv2+
 2019/virustotal/gb_yara_mult_vuln_dec18.nasl: GPLv2+
 2019/virustotal/gb_yara_mult_vuln_jun18.nasl: GPLv2+
 2019/webmin/gb_webmin_rce_vuln.nasl: GPLv2+
@@ -45352,6 +45364,10 @@ gb_dotnetnuke_detect.nasl: GPLv2+
 gb_dotproject_detect.nasl: GPLv2+
 gb_dovecot_consolidation.nasl: GPLv2+
 gb_draytek_vigoracs_detect.nasl: GPLv2+
+gb_droboaccess_detect.nasl: GPLv2+
+gb_drobomysql_detect.nasl: GPLv2+
+gb_drobo_nas_consolidation.nasl: GPLv2+
+gb_drobo_nasd_detect.nasl: GPLv2+
 gb_dropbear_ssh_detect.nasl: GPLv2+
 gb_dup_scount_enterprise_detect.nasl: GPLv2+
 gb_easy_file_sharing_web_server_detect.nasl: GPLv2+

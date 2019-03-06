@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_QuiXplorer_50673.nasl 13659 2019-02-14 08:34:21Z cfischer $
+# $Id: gb_QuiXplorer_50673.nasl 13994 2019-03-05 12:23:37Z cfischer $
 #
 # QuiXplorer 'index.php' Arbitrary File Upload Vulnerability
 #
@@ -32,14 +32,14 @@ if(description)
   script_cve_id("CVE-2011-5005");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 13659 $");
+  script_version("$Revision: 13994 $");
 
   script_name("QuiXplorer 'index.php' Arbitrary File Upload Vulnerability");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/50673");
   script_xref(name:"URL", value:"http://quixplorer.sourceforge.net/");
 
-  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-05 13:23:37 +0100 (Tue, 05 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-01-05 11:51:25 +0100 (Thu, 05 Jan 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -48,16 +48,19 @@ if(description)
   script_dependencies("gb_quixplorer_detect.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("QuiXplorer/installed");
+
   script_tag(name:"summary", value:"QuiXplorer is prone to an arbitrary-file-upload vulnerability because
-the application fails to adequately sanitize user-supplied input.");
+  the application fails to adequately sanitize user-supplied input.");
 
   script_tag(name:"impact", value:"An attacker can exploit this issue to upload arbitrary code and run it
-in the context of the webserver process.");
+  in the context of the webserver process.");
 
   script_tag(name:"affected", value:"QuiXplorer 2.3 is vulnerable, other versions may also be affected.");
 
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
-Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the
+  product or replace the product by another one.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
 
   exit(0);
@@ -80,12 +83,12 @@ if(!dir = get_app_location(cpe:CPE, port:port))
 if(dir == "/")
   dir = "";
 
-
 url = string(dir,"/index.php?action=upload&order=type&srt=yes");
 useragent = http_get_user_agent();
-vtstring = get_vt_string( lowercase:TRUE );
 host = http_host_name(port:port);
-filename = vtstring + "-" + rand() + ".php";
+
+vtstrings = get_vt_strings();
+filename = vtstrings["lowercase_rand"] + ".php";
 len = 1982 + strlen(filename);
 
 req = string("POST ", url, " HTTP/1.1\r\n",

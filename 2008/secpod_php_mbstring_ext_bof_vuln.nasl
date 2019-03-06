@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_php_mbstring_ext_bof_vuln.nasl 10459 2018-07-09 07:41:24Z cfischer $
+# $Id: secpod_php_mbstring_ext_bof_vuln.nasl 14010 2019-03-06 08:24:33Z cfischer $
 #
 # PHP Heap-based buffer overflow in 'mbstring' extension
 #
@@ -28,8 +28,8 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900185");
-  script_version("$Revision: 10459 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 09:41:24 +0200 (Mon, 09 Jul 2018) $");
+  script_version("$Revision: 14010 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-06 09:24:33 +0100 (Wed, 06 Mar 2019) $");
   script_tag(name:"creation_date", value:"2008-12-31 15:14:17 +0100 (Wed, 31 Dec 2008)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -46,9 +46,7 @@ if(description)
   script_xref(name:"URL", value:"http://archives.neohapsis.com/archives/fulldisclosure/2008-12/0477.html");
 
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary code via
-  a crafted string containing an HTML entity.
-
-  Impact Level: Application");
+  a crafted string containing an HTML entity.");
 
   script_tag(name:"affected", value:"PHP version 4.3.0 to 5.2.6 on all running platform.");
 
@@ -56,8 +54,7 @@ if(description)
   extension. These can be exploited via mb_convert_encoding, mb_check_encoding,
   mb_convert_variables, and mb_parse_str functions.");
 
-  script_tag(name:"solution", value:"Upgrade to version 5.2.7 or later,
-  http://www.php.net/downloads.php");
+  script_tag(name:"solution", value:"Upgrade to version 5.2.7 or later.");
 
   script_tag(name:"summary", value:"The host is running PHP and is prone to Buffer Overflow
   vulnerability.");
@@ -71,8 +68,11 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-if( isnull( phpPort = get_app_port( cpe:CPE ) ) ) exit( 0 );
-if( ! phpVer = get_app_version( cpe:CPE, port:phpPort ) ) exit( 0 );
+if( isnull( phpPort = get_app_port( cpe:CPE ) ) )
+  exit( 0 );
+
+if( ! phpVer = get_app_version( cpe:CPE, port:phpPort ) )
+  exit( 0 );
 
 if( version_in_range( version:phpVer, test_version:"4.3.0", test_version2:"5.2.6" ) ) {
   report = report_fixed_ver( installed_version:phpVer, fixed_version:"5.2.7" );

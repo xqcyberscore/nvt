@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mediawiki_login_csrf_vuln.nasl 13960 2019-03-01 13:18:27Z cfischer $
+# $Id: secpod_mediawiki_login_csrf_vuln.nasl 14012 2019-03-06 09:13:44Z cfischer $
 #
 # MediaWiki Login CSRF Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:mediawiki:mediawiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901109");
-  script_version("$Revision: 13960 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
+  script_version("$Revision: 14012 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-06 10:13:44 +0100 (Wed, 06 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-04-29 10:04:32 +0200 (Thu, 29 Apr 2010)");
   script_cve_id("CVE-2010-1150");
   script_tag(name:"cvss_base", value:"6.0");
@@ -48,26 +48,32 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will let the attacker cause CSRF attack and gain
   sensitive information.");
+
   script_tag(name:"affected", value:"MediaWiki version prior to 1.15.3
 
-  MediaWiki version prior to 1.16.0beta2");
+  MediaWiki version prior to 1.16.0beta2.");
+
   script_tag(name:"insight", value:"The flaw is caused by improper validation of authenticated but unintended
   login attempt that allows attacker to conduct phishing attacks.");
+
   script_tag(name:"solution", value:"Upgrade to the latest version of MediaWiki 1.15.3 or later.");
+
   script_tag(name:"summary", value:"This host is running MediaWiki and is prone to Login CSRF vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_xref(name:"URL", value:"http://www.mediawiki.org");
   exit(0);
 }
 
 include("version_func.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! vers = get_app_version( cpe:CPE, port:port ) )
+  exit( 0 );
 
 if( version_is_less( version:vers, test_version:"1.15.3" ) ||
     version_in_range( version:vers, test_version:"1.6", test_version2:"1.16.0.beta1" ) ) {

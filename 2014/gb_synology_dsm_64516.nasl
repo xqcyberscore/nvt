@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_synology_dsm_64516.nasl 13659 2019-02-14 08:34:21Z cfischer $
+# $Id: gb_synology_dsm_64516.nasl 13994 2019-03-05 12:23:37Z cfischer $
 #
 # Synology DiskStation Manager 'imageSelector.cgi' Remote Command Execution Vulnerability
 #
@@ -34,13 +34,13 @@ if(description)
   script_cve_id("CVE-2013-6955");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 13659 $");
+  script_version("$Revision: 13994 $");
 
   script_name("Synology DiskStation Manager 'imageSelector.cgi' Remote Command Execution Vulnerability");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/64516");
 
-  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-05 13:23:37 +0100 (Tue, 05 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-01-07 14:57:33 +0100 (Tue, 07 Jan 2014)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -50,18 +50,23 @@ if(description)
   script_mandatory_keys("synology_dsm/installed");
 
   script_tag(name:"impact", value:"An attacker can exploit this issue to execute arbitrary commands with
- root privileges.");
+  root privileges.");
+
   script_tag(name:"vuldetect", value:"This script tries to execute the 'id' command on the remote host using specially crafted requests.");
+
   script_tag(name:"insight", value:"Synology DiskStation Manager (DSM) contains a flaw in the
- SliceUpload functionality provided by /webman/imageSelector.cgi. With a
- specially crafted request, a remote attacker can append data to files, allowing
- for the execution of arbitrary commands.");
+  SliceUpload functionality provided by /webman/imageSelector.cgi. With a specially crafted request, a
+  remote attacker can append data to files, allowing for the execution of arbitrary commands.");
+
   script_tag(name:"solution", value:"Updates are available.");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_tag(name:"summary", value:"Synology DiskStation Manager is prone to a remote command-execution
- vulnerability.");
+  vulnerability.");
+
   script_tag(name:"affected", value:"Synology DiskStation Manager 4.x are vulnerable. Other versions may
- also be affected.");
+  also be affected.");
 
   script_tag(name:"qod_type", value:"remote_app");
 
@@ -72,12 +77,18 @@ include("host_details.inc");
 include("http_func.inc");
 include("misc_func.inc");
 
-if ( ! port = get_app_port( cpe:CPE ) )exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! get_app_location( cpe:CPE, port:port ) )
+  exit( 0 );
 
 useragent = http_get_user_agent();
+vtstrings = get_vt_strings();
+vtstring = vtstrings["default"];
+vtstring_lower = vtstrings["lowercase"];
+
 host = http_host_name(port:port);
-vtstring = get_vt_string();
-vtstring_lower = get_vt_string(lowercase:TRUE);
 
 function send_post_request ( cmd )
 {

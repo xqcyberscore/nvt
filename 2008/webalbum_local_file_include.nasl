@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: webalbum_local_file_include.nasl 13543 2019-02-08 14:43:51Z cfischer $
+# $Id: webalbum_local_file_include.nasl 13994 2019-03-05 12:23:37Z cfischer $
 #
 # WEBalbum Local File Include Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80094");
-  script_version("$Revision: 13543 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
+  script_version("$Revision: 13994 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-05 13:23:37 +0100 (Tue, 05 Mar 2019) $");
   script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
@@ -45,23 +45,20 @@ if(description)
 
   script_xref(name:"URL", value:"http://milw0rm.com/exploits/1608");
 
-  script_tag(name:"summary", value:"The remote web server contains a PHP application that is affected by a
-  local file include vulnerability.
+  script_tag(name:"summary", value:"The remote web server is running WEBalbum which is affected by a
+  local file include vulnerability.");
 
-  Description :
-
-  The remote host is running WEBalbum, a photo album application written
-  in PHP.
-
-  The installed version of WEBalbum fails to sanitize user input to the
-  'skin2' cookie in 'inc/inc_main.php' before using it to include
-  arbitrary files.  An unauthenticated attacker may be able to read
-  arbitrary local files or include a local file that contains commands
-  which will be executed on the remote host subject to the privileges of
-  the web server process.
+  script_tag(name:"insight", value:"The installed version of WEBalbum fails to sanitize user input to the
+  'skin2' cookie in 'inc/inc_main.php' before using it to include arbitrary files.
 
   This flaw is only exploitable if PHP's 'magic_quotes_gpc' is disabled.");
+
+  script_tag(name:"impact", value:"An unauthenticated attacker may be able to read arbitrary local files
+  or include a local file that contains commands which will be executed on the remote host subject to the
+  privileges of the web server process.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year
   since the disclosure of this vulnerability. Likely none will be provided anymore.
   General solution options are to upgrade to a newer release, disable respective features,
@@ -78,17 +75,20 @@ include("http_keepalive.inc");
 include("misc_func.inc");
 
 port = get_http_port( default:80 );
-if( ! can_host_php( port:port ) ) exit( 0 );
+if( ! can_host_php( port:port ) )
+  exit( 0 );
 
 host = http_host_name( port:port );
-
-files = traversal_files();
-vtstring = get_vt_string();
 
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
   if( dir == "/" ) dir = "";
   url = dir + "/index.php";
+  buf = http_get_cache( item:url, port:port );
+  if(!buf || "WEBalbum " >!< buf)
+    continue;
+
+  files = traversal_files();
 
   foreach pattern( keys( files ) ) {
 
@@ -107,7 +107,7 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
       report = report_vuln_url( port:port, url:url ) + '\n\n';
       report += string( "Here are the contents of the file '/" + file + "' that\n",
-                        vtstring, " was able to read from the remote host :\n",
+                        " the scanner was able to read from the remote host :\n",
                         "\n", content );
 
       security_message( port:port, data:report );

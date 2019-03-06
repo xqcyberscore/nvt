@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_cucmim_cisco-sa-20170310-struts2.nasl 12106 2018-10-26 06:33:36Z cfischer $
+# $Id: gb_cisco_cucmim_cisco-sa-20170310-struts2.nasl 13999 2019-03-05 13:15:01Z cfischer $
 #
 # Cisco Unified Communications Manager IM and Presence Service Apache Struts2 Jakarta Multipart Parser File Upload Code Execution Vulnerability
 #
@@ -27,13 +27,13 @@
 
 CPE = "cpe:/a:cisco:unified_communications_manager_im_and_presence_service";
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106646");
   script_cve_id("CVE-2017-5638");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 12106 $");
+  script_version("$Revision: 13999 $");
 
   script_name("Cisco Unified Communications Manager IM and Presence Service Apache Struts2 Jakarta Multipart Parser File Upload Code Execution Vulnerability");
 
@@ -44,14 +44,12 @@ if (description)
   script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
   script_tag(name:"summary", value:"Cisco Unified Communications Manager IM and Presence Service is prone to a
-vulnerability in Apache Struts2.");
-
-  script_tag(name:"insight", value:"");
+  vulnerability in Apache Struts2.");
 
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-05 14:15:01 +0100 (Tue, 05 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-03-14 09:51:18 +0700 (Tue, 14 Mar 2017)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -77,4 +75,3 @@ if (version =~ "^11\.0" || version =~ "^11\.5") {
 }
 
 exit(99);
-

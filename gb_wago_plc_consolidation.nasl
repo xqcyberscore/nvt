@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wago_plc_consolidation.nasl 13974 2019-03-04 08:18:06Z ckuersteiner $
+# $Id: gb_wago_plc_consolidation.nasl 13996 2019-03-05 12:30:17Z cfischer $
 #
 # WAGO PLC Detection Consolidation
 #
@@ -25,11 +25,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141766");
-  script_version("$Revision: 13974 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-04 09:18:06 +0100 (Mon, 04 Mar 2019) $");
+  script_version("$Revision: 13996 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-05 13:30:17 +0100 (Tue, 05 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-12-07 12:20:20 +0700 (Fri, 07 Dec 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -53,7 +53,6 @@ if (description)
   exit(0);
 }
 
-include("cpe.inc");
 include("host_details.inc");
 include("version_func.inc");
 

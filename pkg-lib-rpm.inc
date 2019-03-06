@@ -15,7 +15,7 @@
 #
 
 # This variable is defined at inclusion time. It's declared global and is set
-# to True if isrpmvuln() is called for an OS version and a package name that
+# to TRUE if isrpmvuln() is called for an OS version and a package name that
 # match the target's configuration. It allows the callers to distinguish
 # between non-installed packages and packages installed but not vulnerable.
 __pkg_match = FALSE;
@@ -208,22 +208,22 @@ function isrpmvuln( pkg, rpm, rls ) {
   if( ! rpms )
     return NULL;
 
-  # Must include in the package search leading \n or ; to prevent
+  # Must include a leading \n or ; in the package search to prevent an
   # overly permissive search (e.g. search for 'ash' must not match 'bash')
   pat = string( "[\n;](", pkg, "~[^;]+);" );
   matches = eregmatch( pattern:pat, string:rpms );
   if( isnull( matches ) )
     return NULL;
 
-  ## If kernel package Found this loop will check for every installed versions of kernel package
-  ## and reports as soon as it finds the first vulnerable Version.
+  # If a kernel package is found this loop will check for every installed version of
+  # it and reports all vulnerable versions and not only the first one.
   if( matches[1] =~ "^kernel(-[0-9a-zA-Z_-]+)?~" ) {
 
-    pkg_name = split( rpms, sep:";" );
+    pkg_name = split( rpms, sep:";", keep:TRUE );
 
     foreach pkgs( pkg_name ) {
-      if( pkgs =~ "^kernel(-[0-9a-zA-Z_-]+)?~" ) {
-        a = eregmatch( pattern:"^kernel(-[0-9a-zA-Z_-]+)?~[^;]+", string:pkgs );
+      if( egrep( string:pkgs, pattern:string( "^", pkg, "~" ) ) ) {
+        a = eregmatch( pattern:"^" + pkg + "~[^;]+", string:pkgs );
         report = kernel_packge_check( a:a[0], b:rpm, pkg:pkg );
         if( report )
           report1 += report + '\n';

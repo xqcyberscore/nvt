@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_vbulletin_search_mult_sql_inj_vuln.nasl 13659 2019-02-14 08:34:21Z cfischer $
+# $Id: secpod_vbulletin_search_mult_sql_inj_vuln.nasl 13994 2019-03-05 12:23:37Z cfischer $
 #
 # vBulletin Search UI Multiple SQL Injection Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902540");
-  script_version("$Revision: 13659 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
+  script_version("$Revision: 13994 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-05 13:23:37 +0100 (Tue, 05 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-07-22 12:16:19 +0200 (Fri, 22 Jul 2011)");
   script_bugtraq_id(48815);
   script_tag(name:"cvss_base", value:"7.5");
@@ -72,7 +72,7 @@ include("http_keepalive.inc");
 include("host_details.inc");
 include("version_func.inc");
 
-CPE = 'cpe:/a:vbulletin:vbulletin';
+CPE = "cpe:/a:vbulletin:vbulletin";
 
 if(!port = get_app_port(cpe:CPE))
   exit(0);
@@ -83,11 +83,10 @@ if(!dir = get_app_location(cpe:CPE, port:port))
 if(dir == "/")
   dir = "";
 
-vt_string = get_vt_string();
 useragent = http_get_user_agent();
 host = http_host_name( port:port );
 
-attack = string("query=" + vt_string + "+SQL+Injection&titleonly=0&searchuser=&starter",
+attack = string("query=VT+SQL+Injection&titleonly=0&searchuser=&starter",
                 "only=0&searchdate=0&beforeafter=after&sortby=dateline&order=",
                 "descending&showposts=1&saveprefs=1&dosearch=Search+Now&s=&",
                 "securitytoken=&searchfromtype=vBForum%3ASocialGroupMessage&",

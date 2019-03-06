@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1571.nasl 12255 2018-11-08 08:52:29Z cfischer $
+# $Id: deb_dla_1571.nasl 14008 2019-03-06 07:38:19Z mmartin $
 #
 # Auto-generated from advisory DLA 1571-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,14 +31,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891571");
-  script_version("$Revision: 12255 $");
+  script_version("$Revision: 14008 $");
   script_cve_id("CVE-2018-12389", "CVE-2018-12390", "CVE-2018-12392", "CVE-2018-12393", "CVE-2018-12395",
                 "CVE-2018-12396", "CVE-2018-12397");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1571-1] firefox-esr security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 09:52:29 +0100 (Thu, 08 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-06 08:38:19 +0100 (Wed, 06 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-11-08 00:00:00 +0100 (Thu, 08 Nov 2018)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

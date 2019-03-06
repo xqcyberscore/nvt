@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apache_mod_proxy_ftp_xss_vuln_900107.nasl 4334 2016-10-24 15:20:26Z cfi $
+# $Id: secpod_apache_mod_proxy_ftp_xss_vuln_900107.nasl 14010 2019-03-06 08:24:33Z cfischer $
 #
 # Apache mod_proxy_ftp Wildcard Characters XSS Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900107");
-  script_version("$Revision: 4334 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-24 17:20:26 +0200 (Mon, 24 Oct 2016) $");
+  script_version("$Revision: 14010 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-06 09:24:33 +0100 (Wed, 06 Mar 2019) $");
   script_tag(name:"creation_date", value:"2008-08-22 10:29:01 +0200 (Fri, 22 Aug 2008)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -47,34 +47,21 @@ if(description)
   script_xref(name:"URL", value:"http://httpd.apache.org/");
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/495180");
   script_xref(name:"URL", value:"http://httpd.apache.org/docs/2.0/mod/mod_proxy_ftp.html");
+  script_xref(name:"URL", value:"http://svn.apache.org/viewvc?view=rev&revision=682871");
+  script_xref(name:"URL", value:"http://svn.apache.org/viewvc?view=rev&revision=682868");
 
-  tag_impact = "Remote attackers can execute arbitrary script code.
+  script_tag(name:"summary", value:"The host is running Apache, which is prone to cross-site scripting
+  vulnerability.");
 
-  Impact Level : Application";
+  script_tag(name:"insight", value:"Input passed to the module mod_proxy_ftp with wildcard character
+  is not properly sanitized before returning to the user.");
 
-  tag_solution = "Fixed is available in the SVN repository,
-  http://svn.apache.org/viewvc?view=rev&revision=682871
-  http://svn.apache.org/viewvc?view=rev&revision=682868";
+  script_tag(name:"affected", value:"Apache 2.0.0 to 2.0.63 and Apache 2.2.0 to 2.2.9.");
 
-  tag_affected = "Apache 2.0.0 to 2.0.63 and Apache 2.2.0 to 2.2.9 on All Platform
+  script_tag(name:"solution", value:"Fixed is available in the SVN repository, please see the references
+  for more information.");
 
-  ***
-  Note: The script might report a False Positive as it is only checking for 
-  the vulnerable version of Apache. Vulnerability is only when mod_proxy 
-  and mod_proxy_ftp is configured with the installed Apache version. 
-  ***";
-
-  tag_insight = "Input passed to the module mod_proxy_ftp with wildcard character
-  is not properly sanitized before returning to the user.";
-
-  tag_summary = "The host is running Apache, which is prone to cross-site scripting
-  vulnerability.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"impact", value:tag_impact);
+  script_tag(name:"impact", value:"Remote attackers can execute arbitrary script code.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
@@ -85,12 +72,15 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! vers = get_app_version( cpe:CPE, port:port ) )
+  exit( 0 );
 
 if( version_in_range( version:vers, test_version:"2.0.0", test_version2:"2.0.63" ) ||
     version_in_range( version:vers, test_version:"2.2.0", test_version2:"2.2.9" ) ) {
-  report = report_fixed_ver( installed_version:vers, fixed_version:"See reference");
+  report = report_fixed_ver( installed_version:vers, fixed_version:"See references");
   security_message( port:port, data:report );
   exit( 0 );
 }

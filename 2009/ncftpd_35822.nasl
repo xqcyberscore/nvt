@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ncftpd_35822.nasl 13543 2019-02-08 14:43:51Z cfischer $
+# $Id: ncftpd_35822.nasl 13994 2019-03-05 12:23:37Z cfischer $
 #
 # NcFTPD Symbolic Link Information Disclosure Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100250");
-  script_version("$Revision: 13543 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
+  script_version("$Revision: 13994 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-05 13:23:37 +0100 (Tue, 05 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-07-28 21:43:08 +0200 (Tue, 28 Jul 2009)");
   script_bugtraq_id(35822);
   script_tag(name:"cvss_base", value:"4.0");
@@ -82,7 +82,6 @@ soc1 = open_sock_tcp(ftpPort);
 if(!soc1)
   exit(0);
 
-vtstring_lower = get_vt_string(lowercase:TRUE);
 files = traversal_files();
 
 login_details = ftp_log_in(socket:soc1, user:user, pass:pass);
@@ -94,7 +93,8 @@ if(login_details)
     soc2 = open_sock_tcp(ftpPort2, transport:get_port_transport(ftpPort));
     if(soc2) {
 
-      dir = string(vtstring_lower, "_", rand());
+      vtstrings = get_vt_strings();
+      dir = vtstrings["lowercase_rand"];
 
       mkdir =  ftp_send_cmd(socket: soc1, cmd:string("MKD ", dir));
       if(mkdir =~ "257.*directory created") {

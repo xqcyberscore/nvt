@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tikiwiki_input_sanitation_weak_vuln.nasl 5144 2017-01-31 09:55:46Z cfi $
+# $Id: gb_tikiwiki_input_sanitation_weak_vuln.nasl 14010 2019-03-06 08:24:33Z cfischer $
 #
 # Tiki Wiki CMS Groupware Input Sanitation Weakness Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:tiki:tikiwiki_cms/groupware";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800315");
-  script_version("$Revision: 5144 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-31 10:55:46 +0100 (Tue, 31 Jan 2017) $");
+  script_version("$Revision: 14010 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-06 09:24:33 +0100 (Wed, 06 Mar 2019) $");
   script_tag(name:"creation_date", value:"2008-12-15 15:44:51 +0100 (Mon, 15 Dec 2008)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
@@ -44,17 +44,14 @@ if(description)
   script_mandatory_keys("TikiWiki/installed");
 
   script_tag(name:"impact", value:"Successful exploitation could allow arbitrary code execution in the context
-  of an affected site.
-
-  Impact Level: Application");
+  of an affected site.");
 
   script_tag(name:"affected", value:"Tiki Wiki CMS Groupware version prior to 2.2 on all running platform");
 
   script_tag(name:"insight", value:"The vulnerability is due to input validation error in tiki-error.php
   which fails to sanitise before being returned to the user.");
 
-  script_tag(name:"solution", value:"Upgrade to version 2.2 or latest
-  http://info.tikiwiki.org/tiki-index.php?page=Get+Tiki&bl");
+  script_tag(name:"solution", value:"Upgrade to version 2.2 or later.");
 
   script_tag(name:"summary", value:"The host is installed with Tiki Wiki CMS Groupware and is prone to input sanitation
   weakness vulnerability.");
@@ -71,8 +68,11 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! vers = get_app_version( cpe:CPE, port:port ) )
+  exit( 0 );
 
 if( version_is_less( version:vers, test_version:"2.2" ) ) {
    report = report_fixed_ver( installed_version:vers, fixed_version:"2.2" );

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_terramaster_file_upload_vuln.nasl 11916 2018-10-16 08:36:43Z asteins $
+# $Id: gb_terramaster_file_upload_vuln.nasl 13994 2019-03-05 12:23:37Z cfischer $
 #
 # Terramaster NAS File Upload Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:noontec:terramaster";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106839");
-  script_version("$Revision: 11916 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-16 10:36:43 +0200 (Tue, 16 Oct 2018) $");
+  script_version("$Revision: 13994 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-05 13:23:37 +0100 (Tue, 05 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-05-31 10:41:50 +0700 (Wed, 31 May 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -77,13 +77,13 @@ include("misc_func.inc");
 if (!port = get_app_port(cpe: CPE))
   exit(0);
 
-get_app_location(cpe: CPE, port: port, nofork: TRUE); # To have a reference to the Detection-NVT
+if( ! get_app_location(cpe: CPE, port: port))
+  exit(0);
 
-vtstring = get_vt_string();
+vtstrings = get_vt_strings();
+file = vtstrings["lowercase_rand"] + ".php";
 
-file = vtstring + '_' + rand() + '.php';
-
-bound = '---------------------------' + vtstring + '_' + rand();
+bound = '---------------------------' + vtstrings["lowercase_rand"];
 
 data = '--' + bound + '\r\n' +
        'Content-Disposition: form-data; name="file"; filename="' + file + '"\r\n\r\n' +

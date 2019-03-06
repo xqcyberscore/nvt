@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3435_1.nasl 12497 2018-11-23 08:28:21Z cfischer $
+# $Id: gb_suse_2018_3435_1.nasl 14008 2019-03-06 07:38:19Z mmartin $
 #
 # SuSE Update for Mozilla openSUSE-SU-2018:3435-1 (Mozilla)
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851993");
-  script_version("$Revision: 12497 $");
+  script_version("$Revision: 14008 $");
   script_cve_id("CVE-2018-12389", "CVE-2018-12390", "CVE-2018-12392", "CVE-2018-12393", "CVE-2018-12395", "CVE-2018-12396", "CVE-2018-12397");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-06 08:38:19 +0100 (Wed, 06 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:30:14 +0200 (Fri, 26 Oct 2018)");
   script_name("SuSE Update for Mozilla openSUSE-SU-2018:3435-1 (Mozilla)");
   script_category(ACT_GATHER_INFO);

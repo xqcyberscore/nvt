@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: misc_func.inc 13697 2019-02-15 14:19:50Z cfischer $
+# $Id: misc_func.inc 13995 2019-03-05 12:29:00Z cfischer $
 #
 # Miscellaneous support methods
 #
@@ -26,7 +26,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 13697 $
+# $Revision: 13995 $
 #
 ###############################################################################
 
@@ -1742,24 +1742,6 @@ function get_local_gos_version() {
     result = eregmatch( pattern:"([0-9.]+)$", string:vendor_version() );
     return result[1];
   }
-}
-
-# @deprecated Use @ref get_vt_strings instead
-#
-function get_vt_string( lowercase ) {
-
-  local_var lowercase, vt_string;
-
-  if( executed_on_gos() ) {
-    vt_string = "GBN-VT";
-  } else {
-    vt_string = "OpenVAS-VT";
-  }
-
-  if( lowercase ) {
-    vt_string = tolower( vt_string );
-  }
-  return vt_string;
 }
 
 # @brief Returns an array containing various representations of a Vulnerability Test (VT) string which can

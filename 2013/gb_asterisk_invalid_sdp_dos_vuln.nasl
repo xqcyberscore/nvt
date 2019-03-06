@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asterisk_invalid_sdp_dos_vuln.nasl 11865 2018-10-12 10:03:43Z cfischer $
+# $Id: gb_asterisk_invalid_sdp_dos_vuln.nasl 13994 2019-03-05 12:23:37Z cfischer $
 #
 # Asterisk Products Invalid SDP SIP Channel Driver DoS Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:digium:asterisk";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802063");
-  script_version("$Revision: 11865 $");
+  script_version("$Revision: 13994 $");
   script_cve_id("CVE-2013-5642");
   script_bugtraq_id(62022);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-05 13:23:37 +0100 (Tue, 05 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-10-28 15:06:58 +0530 (Mon, 28 Oct 2013)");
   script_name("Asterisk Products Invalid SDP SIP Channel Driver DoS Vulnerability");
   script_category(ACT_DENIAL);
@@ -77,19 +77,21 @@ include("sip.inc");
 include("host_details.inc");
 include("misc_func.inc");
 
-host_name = get_host_name();
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
 
-this_host = this_host();
-if( ! this_host ) exit( 0 );
-
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! infos = get_app_location_and_proto( cpe:CPE, port:port ) ) exit( 0 );
+if( ! infos = get_app_location_and_proto( cpe:CPE, port:port ) )
+  exit( 0 );
 
 proto = infos["proto"];
+if( ! sip_alive( port:port, proto:proto ) )
+  exit( 0 );
 
-if( ! sip_alive( port:port, proto:proto ) ) exit( 0 );
+host_name = get_host_name();
+this_host = this_host();
 
-useragent = get_vt_string();
+vtstrings = get_vt_strings();
+useragent = vtstrings["default"];
 
 con_data = string("v=0", "\r\n",
                   "o=user1 53655765 2353687637 IN IP4", this_host,"\r\n",

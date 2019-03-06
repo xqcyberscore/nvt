@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_interleave_46771.nasl 11826 2018-10-10 14:38:27Z cfischer $
+# $Id: gb_interleave_46771.nasl 13994 2019-03-05 12:23:37Z cfischer $
 #
 # Interleave 'basicstats.php' Multiple Cross Site Scripting Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103112");
-  script_version("$Revision: 11826 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 16:38:27 +0200 (Wed, 10 Oct 2018) $");
+  script_version("$Revision: 13994 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-05 13:23:37 +0100 (Tue, 05 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-03-08 14:02:18 +0100 (Tue, 08 Mar 2011)");
   script_bugtraq_id(46771);
   script_tag(name:"cvss_base", value:"4.3");
@@ -70,15 +70,17 @@ include("host_details.inc");
 
 CPE = "cpe:/a:atomos:interleave";
 
-if(!port = get_app_port(cpe:CPE)) exit(0);
-if(!dir = get_app_location(cpe:CPE, port:port)) exit(0);
+if(!port = get_app_port(cpe:CPE))
+  exit(0);
+
+if(!dir = get_app_location(cpe:CPE, port:port))
+  exit(0);
+
 if(dir == "/") dir = "";
 
-vt_string = get_vt_string(lowercase:TRUE);
+url = string(dir,"/basicstats.php?AjaxHandler=0&e=1&eid=2&id=3&recordid=4&templateid=5&fileid=6&tid=7&username=8&password=9&repository=10<script>alert(/vt-xss-test/)<%2fscript>&GetCSS=11&GetjQueryUiPlacementJS=12&ShowEntityList=13&ShowTable=14&nonavbar=15&tab=16&CT=17 ");
 
-url = string(dir,"/basicstats.php?AjaxHandler=0&e=1&eid=2&id=3&recordid=4&templateid=5&fileid=6&tid=7&username=8&password=9&repository=10<script>alert(/",vt_string,"-xss-test/)<%2fscript>&GetCSS=11&GetjQueryUiPlacementJS=12&ShowEntityList=13&ShowTable=14&nonavbar=15&tab=16&CT=17 ");
-
-if(http_vuln_check(port:port, url:url, pattern:"<script>alert\(/" + vt_string + "-xss-test/\)</script>", check_header:TRUE)) {
+if(http_vuln_check(port:port, url:url, pattern:"<script>alert\(/vt-xss-test/\)</script>", check_header:TRUE)) {
   report = report_vuln_url(port:port, url:url);
   security_message(port:port, data:report);
   exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cups_guest_acc_dos_vuln.nasl 4218 2016-10-05 14:20:48Z teissa $
+# $Id: gb_cups_guest_acc_dos_vuln.nasl 14010 2019-03-06 08:24:33Z cfischer $
 #
 # CUPS Subscription Incorrectly uses Guest Account DoS Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:apple:cups";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800142");
-  script_version("$Revision: 4218 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-05 16:20:48 +0200 (Wed, 05 Oct 2016) $");
+  script_version("$Revision: 14010 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-06 09:24:33 +0100 (Wed, 06 Mar 2019) $");
   script_tag(name:"creation_date", value:"2008-11-26 16:25:46 +0100 (Wed, 26 Nov 2008)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -48,27 +48,18 @@ if(description)
   script_xref(name:"URL", value:"http://www.gnucitizen.org/blog/pwning-ubuntu-via-cups/");
   script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2008/11/19/3");
 
-  tag_impact = "Successful exploitation causes Denial of Service condition.
+  script_tag(name:"impact", value:"Successful exploitation causes Denial of Service condition.");
 
-  Impact Level: Application";
+  script_tag(name:"affected", value:"CUPS Versions prior to 1.3.8 on Linux.");
 
-  tag_affected = "CUPS Versions prior to 1.3.8 on Linux.";
-
-  tag_insight = "The flaw is due to error in web interface (cgi-bin/admin.c), which
+  script_tag(name:"insight", value:"The flaw is due to error in web interface (cgi-bin/admin.c), which
   uses the guest username when a user is not logged on to the web server.
-  This leads to CSRF attacks with the add/cancel RSS subscription functions.";
+  This leads to CSRF attacks with the add/cancel RSS subscription functions.");
 
-  tag_solution = "Upgrade to CUPS Version 1.3.8 or later.
-  http://www.cups.org/software.php";
+  script_tag(name:"solution", value:"Upgrade to CUPS Version 1.3.8 or later.");
 
-  tag_summary = "This host is running CUPS (Common UNIX Printing System) Service,
-  which is prone to Denial of Service Vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"This host is running CUPS (Common UNIX Printing System) Service,
+  which is prone to Denial of Service Vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
@@ -79,12 +70,15 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
 
-if( vers !~ "[0-9]+\.[0-9]+\.[0-9]+") exit( 0 ); # Version is not exact enough
+if( ! vers = get_app_version( cpe:CPE, port:port ) )
+  exit( 0 );
 
-# Check for CUPS Version < 1.3.8
+if( vers !~ "[0-9]+\.[0-9]+\.[0-9]+")
+  exit( 0 ); # Version is not exact enough
+
 if( version_is_less( version:vers, test_version:"1.3.8" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"1.3.8" );
   security_message( port:port, data:report );

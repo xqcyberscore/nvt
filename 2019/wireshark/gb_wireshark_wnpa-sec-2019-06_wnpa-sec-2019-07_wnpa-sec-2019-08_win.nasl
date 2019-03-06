@@ -23,11 +23,11 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814866");
-  script_version("$Revision: 13924 $");
+  script_version("$Revision: 14008 $");
   script_cve_id("CVE-2019-9208", "CVE-2019-9209", "CVE-2019-9214");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-28 10:54:35 +0100 (Thu, 28 Feb 2019) $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-06 08:38:19 +0100 (Wed, 06 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-02-28 11:32:38 +0530 (Thu, 28 Feb 2019)");
   script_name("Wireshark Security Updates(wnpa-sec-2019-06_wnpa-sec-2019-07_wnpa-sec-2019-08)-Windows");
 

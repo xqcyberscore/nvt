@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mediawiki_46108.nasl 11997 2018-10-20 11:59:41Z mmartin $
+# $Id: gb_mediawiki_46108.nasl 14012 2019-03-06 09:13:44Z cfischer $
 #
 # MediaWiki CSS Comments Cross Site Scripting Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:mediawiki:mediawiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103058");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("$Revision: 14012 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-06 10:13:44 +0100 (Wed, 06 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-02-03 13:07:13 +0100 (Thu, 03 Feb 2011)");
   script_bugtraq_id(46108);
   script_tag(name:"cvss_base", value:"4.3");
@@ -50,16 +50,18 @@ if(description)
   script_xref(name:"URL", value:"https://bugzilla.wikimedia.org/show_bug.cgi?id=27093");
 
   script_tag(name:"impact", value:"An attacker may leverage this issue to execute arbitrary script code
-  in the browser of an unsuspecting user in the context of the affected
-  site. This may let the attacker steal cookie-based authentication
-  credentials and launch other attacks.");
+  in the browser of an unsuspecting user in the context of the affected site. This may let the attacker
+  steal cookie-based authentication credentials and launch other attacks.");
+
   script_tag(name:"affected", value:"Versions prior to MediaWiki 1.16.2 are vulnerable.");
+
   script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
+
   script_tag(name:"summary", value:"MediaWiki is prone to a cross-site scripting vulnerability because it
   fails to properly sanitize user-supplied input.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
   exit(0);
 }
@@ -67,8 +69,11 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! vers = get_app_version( cpe:CPE, port:port ) )
+  exit( 0 );
 
 if( version_is_less( version:vers, test_version:"1.16.2" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"1.16.2" );

@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852320");
-  script_version("$Revision: 13991 $");
+  script_version("$Revision: 14008 $");
   script_cve_id("CVE-2018-15518", "CVE-2018-19873");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-05 11:29:52 +0100 (Tue, 05 Mar 2019) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-06 08:38:19 +0100 (Wed, 06 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-02-28 04:07:28 +0100 (Thu, 28 Feb 2019)");
   script_name("SuSE Update for libqt5-qtbase openSUSE-SU-2019:0265-1 (libqt5-qtbase)");
   script_category(ACT_GATHER_INFO);

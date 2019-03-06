@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_abb_authentication_service_detect_win.nasl 13442 2019-02-04 14:35:40Z mmartin $
+# $Id: gb_abb_authentication_service_detect_win.nasl 13999 2019-03-05 13:15:01Z cfischer $
 #
 # ABB Authentication Service Version Detection (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107508");
-  script_version("$Revision: 13442 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-04 15:35:40 +0100 (Mon, 04 Feb 2019) $");
+  script_version("$Revision: 13999 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-05 14:15:01 +0100 (Tue, 05 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-02-04 13:31:00 +0100 (Mon, 04 Feb 2019)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -40,9 +40,8 @@ if(description)
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
 
-  script_tag(name:"summary", value:"Detects the installed version
-  of ABB Authentication Service for Windows.");
-  script_xref(name:"URL", value:"");
+  script_tag(name:"summary", value:"Detects the installed version of ABB Authentication Service for Windows.");
+
   script_tag(name:"qod_type", value:"registry");
 
   exit(0);

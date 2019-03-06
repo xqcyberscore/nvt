@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: host_details.inc 13909 2019-02-27 13:31:29Z cfischer $
+# $Id: host_details.inc 14009 2019-03-06 08:10:00Z ckuersteiner $
 #
 # Centralized and organized host information base
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 13909 $
+# $Revision: 14009 $
 #
 ###############################################################################
 
@@ -114,6 +114,7 @@ OS_CPE_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.106875", # gb_aerohive_hiveos_detect.nasl
     "1.3.6.1.4.1.25623.1.0.103875", # gb_qnap_nas_detect.nasl
     "1.3.6.1.4.1.25623.1.0.103786", # gb_synology_dsm_detect.nasl
+    "1.3.6.1.4.1.25623.1.0.142078", # gb_drobo_nas_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.106096", # gb_simatic_s7_version.nasl
     "1.3.6.1.4.1.25623.1.0.140738", # gb_simatic_cp_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.140748", # gb_simatic_scalance_snmp_detect.nasl
@@ -208,6 +209,7 @@ OS_TXT_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.106875", # gb_aerohive_hiveos_detect.nasl
     "1.3.6.1.4.1.25623.1.0.103875", # gb_qnap_nas_detect.nasl
     "1.3.6.1.4.1.25623.1.0.103786", # gb_synology_dsm_detect.nasl
+    "1.3.6.1.4.1.25623.1.0.142078", # gb_drobo_nas_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.106096", # gb_simatic_s7_version.nasl
     "1.3.6.1.4.1.25623.1.0.140738", # gb_simatic_cp_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.140748", # gb_simatic_scalance_snmp_detect.nasl

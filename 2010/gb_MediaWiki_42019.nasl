@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_MediaWiki_42019.nasl 13960 2019-03-01 13:18:27Z cfischer $
+# $Id: gb_MediaWiki_42019.nasl 14012 2019-03-06 09:13:44Z cfischer $
 #
 # MediaWiki 'api.php' Information Disclosure Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:mediawiki:mediawiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100733");
-  script_version("$Revision: 13960 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
+  script_version("$Revision: 14012 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-06 10:13:44 +0100 (Wed, 06 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-08-02 14:28:14 +0200 (Mon, 02 Aug 2010)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
@@ -50,12 +50,15 @@ if(description)
 
   script_tag(name:"impact", value:"An attacker can exploit this vulnerability to gain access to sensitive
   information, that may aid in further attacks.");
+
   script_tag(name:"affected", value:"MediaWiki 1.8 through 1.15.4 are vulnerable.");
+
   script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
+
   script_tag(name:"summary", value:"MediaWiki is prone to an information-disclosure vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
   exit(0);
 }
@@ -63,8 +66,11 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! vers = get_app_version( cpe:CPE, port:port ) )
+  exit( 0 );
 
 if( version_in_range( version:vers, test_version:"1.8", test_version2:"1.15.4" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"1.15.5" );

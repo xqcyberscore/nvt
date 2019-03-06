@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tiki_54298.nasl 11435 2018-09-17 13:44:25Z cfischer $
+# $Id: gb_tiki_54298.nasl 13994 2019-03-05 12:23:37Z cfischer $
 #
 # Tiki Wiki CMS Groupware 'unserialize()' Multiple PHP Code Execution Vulnerabilities
 #
@@ -32,8 +32,8 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.103508");
   script_bugtraq_id(54298);
   script_cve_id("CVE-2012-0911");
-  script_version("$Revision: 11435 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:44:25 +0200 (Mon, 17 Sep 2018) $");
+  script_version("$Revision: 13994 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-05 13:23:37 +0100 (Tue, 05 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-09 14:32:27 +0200 (Mon, 09 Jul 2012)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -48,12 +48,14 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/54298");
 
   script_tag(name:"impact", value:"An attacker can exploit these issues to inject and execute arbitrary
-  malicious PHP code in the context of the affected application. This
-  may facilitate a compromise of the application and the underlying
-  system, other attacks are also possible.");
+  malicious PHP code in the context of the affected application. This may facilitate a compromise of the
+  application and the underlying system, other attacks are also possible.");
+
   script_tag(name:"affected", value:"Tiki Wiki CMS Groupware 8.3 is vulnerable, other versions may also
   be affected.");
+
   script_tag(name:"solution", value:"Updates are available. Please see the references for details.");
+
   script_tag(name:"summary", value:"Tiki Wiki CMS Groupware is prone to multiple remote PHP code-
   execution vulnerabilities.");
 
@@ -69,24 +71,31 @@ include("host_details.inc");
 include("url_func.inc");
 include("misc_func.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
-if( dir == "/" ) dir = "";
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
 
-vtstring = get_vt_string( lowercase:TRUE );
+if( ! dir = get_app_location( cpe:CPE, port:port ) )
+  exit( 0 );
+
+if( dir == "/" )
+  dir = "";
+
 url = dir + "/tiki-rss_error.php";
 req = http_get( item:url, port:port);
 buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
-if( buf !~ "HTTP/1\.. 200" && "tiki-rss_error.php" >!< buf ) exit( 0 );
+if( buf !~ "^HTTP/1\.[01] 200" && "tiki-rss_error.php" >!< buf )
+  exit( 0 );
 
 p = eregmatch( pattern:"(/[^ ]+)tiki-rss_error.php", string:buf );
-if( isnull( p[1] ) ) exit( 0 );
+if( isnull( p[1] ) )
+  exit( 0 );
 
 path = p[1];
 plen = strlen( path );
 
-file = vtstring + '_' + rand() + '.php';
+vtstrings = get_vt_strings();
+file = vtstrings["lowercase_rand"] + ".php";
 
 upload = path + file;
 ulen = strlen( upload ) + 1;

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_scrutinizer_54726.nasl 13659 2019-02-14 08:34:21Z cfischer $
+# $Id: gb_scrutinizer_54726.nasl 13994 2019-03-05 12:23:37Z cfischer $
 #
 # Scrutinizer Arbitrary File Upload Vulnerability
 #
@@ -34,8 +34,8 @@ if(description)
   script_cve_id("CVE-2012-2627", "CVE-2012-2626");
   script_tag(name:"cvss_base", value:"9.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:C/A:C");
-  script_version("$Revision: 13659 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
+  script_version("$Revision: 13994 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-05 13:23:37 +0100 (Tue, 05 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-08-02 10:24:13 +0200 (Thu, 02 Aug 2012)");
   script_name("Scrutinizer Arbitrary File Upload Vulnerability");
   script_category(ACT_ATTACK);
@@ -49,9 +49,10 @@ if(description)
   script_xref(name:"URL", value:"http://www.plixer.com");
 
   script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
-  script_tag(name:"summary", value:"Scrutinizer is prone to multiple vulnerabilities.
 
-  1. A vulnerability that lets attackers upload arbitrary files. The issue occurs
+  script_tag(name:"summary", value:"Scrutinizer is prone to multiple vulnerabilities.");
+
+  script_tag(name:"insight", value:"1. A vulnerability that lets attackers upload arbitrary files. The issue occurs
   because the application fails to adequately sanitize user-supplied input.
 
   An attacker may leverage this issue to upload arbitrary files to the
@@ -59,8 +60,10 @@ if(description)
   the context of the vulnerable application.
 
   2. A security-bypass vulnerability.
+
   Successful attacks can allow an attacker to gain access to the affected application using
   the default authentication credentials.");
+
   script_tag(name:"affected", value:"Scrutinizer 9.5.0 is vulnerable, other versions may also be affected.");
 
   script_tag(name:"qod_type", value:"remote_app");
@@ -74,17 +77,22 @@ include("host_details.inc");
 include("http_keepalive.inc");
 include("misc_func.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! dir = get_app_location( cpe:CPE, port:port ) )
+  exit( 0 );
+
+if( dir == "/" )
+  dir = "";
 
 useragent = http_get_user_agent();
-vtstring = get_vt_string( lowercase:TRUE );
-vtstring_up = get_vt_string();
 host = http_host_name( port:port );
-file = vtstring + "_" + rand() + ".txt";
+vtstrings = get_vt_strings();
+
+file = vtstrings["lowercase_rand"] + ".txt";
 len = 195 + strlen( file );
 
-if( dir == "/" ) dir = "";
 url = dir + "/d4d/uploader.php";
 
 req = string("POST ", url, " HTTP/1.0\r\n",
@@ -98,7 +106,7 @@ req = string("POST ", url, " HTTP/1.0\r\n",
              'name="uploadedfile"; filename="', file,'"',"\r\n",
              "Content-Type: application/octet-stream\r\n",
              "\r\n",
-             vtstring_up, "\r\n",
+             vtstrings["default"], "\r\n",
              "\r\n",
              "--_Part_949_3365333252_3066945593--\r\n\r\n");
 result = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );

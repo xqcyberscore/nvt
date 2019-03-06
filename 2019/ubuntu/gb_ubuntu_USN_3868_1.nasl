@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3868_1.nasl 13297 2019-01-25 14:07:05Z santu $
+# $Id: gb_ubuntu_USN_3868_1.nasl 14008 2019-03-06 07:38:19Z mmartin $
 #
 # Ubuntu Update for thunderbird USN-3868-1
 #
@@ -29,13 +29,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843881");
-  script_version("$Revision: 13297 $");
+  script_version("$Revision: 14008 $");
   script_cve_id("CVE-2018-12389", "CVE-2018-12390", "CVE-2018-12392", "CVE-2018-12393",
                 "CVE-2018-12405", "CVE-2018-17466", "CVE-2018-18492", "CVE-2018-18493",
                 "CVE-2018-18494", "CVE-2018-18498");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-25 15:07:05 +0100 (Fri, 25 Jan 2019) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-06 08:38:19 +0100 (Wed, 06 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-01-25 04:01:53 +0100 (Fri, 25 Jan 2019)");
   script_name("Ubuntu Update for thunderbird USN-3868-1");
   script_category(ACT_GATHER_INFO);
