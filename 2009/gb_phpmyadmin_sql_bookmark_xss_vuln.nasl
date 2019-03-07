@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_sql_bookmark_xss_vuln.nasl 8926 2018-02-22 14:56:01Z cfischer $
+# $Id: gb_phpmyadmin_sql_bookmark_xss_vuln.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # phpMyAdmin SQL bookmark XSS Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800595");
-  script_version("$Revision: 8926 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-22 15:56:01 +0100 (Thu, 22 Feb 2018) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-07-03 15:23:01 +0200 (Fri, 03 Jul 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -47,38 +47,34 @@ if(description)
   script_xref(name:"URL", value:"http://secunia.com/advisories/35649");
   script_xref(name:"URL", value:"http://www.phpmyadmin.net/home_page/security/PMASA-2009-5.php");
 
-  tag_solution = "Upgrade to phpMyAdmin version 3.2.0.1 or later,
+  script_tag(name:"impact", value:"Successful exploitation will let the attacker cause XSS attacks and
+  inject malicious web script or HTML code via a crafted SQL bookmarks.");
 
-  For updates refer to http://www.phpmyadmin.net/home_page/downloads.php";
+  script_tag(name:"affected", value:"phpMyAdmin version 3.0.x to 3.2.0.rc1.");
 
-  tag_impact = "Successful exploitation will let the attacker cause XSS attacks and
-  inject malicious web script or HTML code via a crafted SQL bookmarks.";
+  script_tag(name:"insight", value:"This flaw arises because the input passed into SQL bookmarks is not
+  adequately sanitised before using it in dynamically generated content.");
 
-  tag_affected = "phpMyAdmin version 3.0.x to 3.2.0.rc1";
+  script_tag(name:"solution", value:"Upgrade to phpMyAdmin version 3.2.0.1 or later.");
 
-  tag_insight = "This flaw arises because the input passed into SQL bookmarks is not
-  adequately sanitised before using it in dynamically generated content.";
-
-  tag_summary = "This host is running phpMyAdmin and is prone to Cross Site
-  Scripting vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"This host is running phpMyAdmin and is prone to Cross Site
+  Scripting vulnerability.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.phpmyadmin.net/home_page/downloads.php");
   exit(0);
 }
 
 include("version_func.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! vers = get_app_version( cpe:CPE, port:port ) )
+  exit( 0 );
 
 vers = ereg_replace( pattern:"-", string:vers, replace:"." );
 

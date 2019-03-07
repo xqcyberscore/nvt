@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_oxid_eshop_unauth_access_vuln.nasl 11088 2018-08-23 07:30:11Z ckuersteiner $
+# $Id: secpod_oxid_eshop_unauth_access_vuln.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # OXID eShop Community Edition Unauthorized Access Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:oxid:eshop";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900934");
-  script_version("$Revision: 11088 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 09:30:11 +0200 (Thu, 23 Aug 2018) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-09-11 18:01:06 +0200 (Fri, 11 Sep 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -52,16 +52,14 @@ if(description)
   script_mandatory_keys("oxid_eshop/installed");
 
   script_tag(name:"impact", value:"Attackers can exploit this issue via specially crafted cookies to gain
-  unauthorized access to session information of unregistered users.
-  Impact Level: Application");
+  unauthorized access to session information of unregistered users.");
 
   script_tag(name:"affected", value:"OXID eShop Community Edition version 4.x through 4.1.3");
 
   script_tag(name:"insight", value:"User supplied data passed to an unspecified variable is not sanitised
   before processing.");
 
-  script_tag(name:"solution", value:"Upgrade to version 4.1.4
-  http://www.oxidforge.org/wiki/Category:Downloads");
+  script_tag(name:"solution", value:"Upgrade to version 4.1.4 or later.");
 
   script_tag(name:"summary", value:"This host is installed with OXID eShop and is prone to
   unauthorized access vulnerability.");

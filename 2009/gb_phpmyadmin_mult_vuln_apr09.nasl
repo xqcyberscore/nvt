@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_mult_vuln_apr09.nasl 8916 2018-02-22 07:55:37Z cfischer $
+# $Id: gb_phpmyadmin_mult_vuln_apr09.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # phpMyAdmin 2.11.x < 2.11.9.5 / 3.0.x < 3.1.3.1 Multiple Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800381");
-  script_version("$Revision: 8916 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-22 08:55:37 +0100 (Thu, 22 Feb 2018) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-04-20 14:33:23 +0200 (Mon, 20 Apr 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -49,39 +49,30 @@ if(description)
   script_xref(name:"URL", value:"http://www.phpmyadmin.net/home_page/security/PMASA-2009-2.php");
   script_xref(name:"URL", value:"http://www.phpmyadmin.net/home_page/security/PMASA-2009-3.php");
 
-  tag_solution = "Upgrade to version 2.11.9.5 or 3.1.3.1
+  script_tag(name:"impact", value:"Successful exploitation will let the attacker cause XSS, Directory Traversal
+  attacks or can injection malicious PHP Codes to gain sensitive information about the remote host.");
 
-  http://www.phpmyadmin.net/home_page/downloads.php";
+  script_tag(name:"affected", value:"phpMyAdmin version 2.11.x to 2.11.9.4 and 3.0.x to 3.1.3.");
 
-  tag_impact = "Successful exploitation will let the attacker cause XSS, Directory Traversal
-  attacks or can injection malicious PHP Codes to gain sensitive information
-  about the remote host.";
-
-  tag_affected = "phpMyAdmin version 2.11.x to 2.11.9.4 and 3.0.x to 3.1.3";
-
-  tag_insight = "Multiple flaws are due to,
+  script_tag(name:"insight", value:"Multiple flaws are due to,
 
   - BLOB streaming feature in 'bs_disp_as_mime_type.php' causes CRLF Injection
-    which lets the attacker inject arbitrary data in the HTTP headers through
-    the 'c_type' and 'file_type' parameters.
+  which lets the attacker inject arbitrary data in the HTTP headers through
+  the 'c_type' and 'file_type' parameters.
 
   - XSS Vulnerability in 'display_export.lib.php' as its not sanitizing the
-    'pma_db_filename_template' parameter.
+  'pma_db_filename_template' parameter.
 
   - Static code injection vulnerability in 'setup.php' which can be used to
-    inject PHP Codes.
+  inject PHP Codes.
 
   - Filename 'bs_disp_as_mime_type.php' which is not sanitizing user supplied
-    inputs in the filename variable which causes directory traversal attacks.";
+  inputs in the filename variable which causes directory traversal attacks.");
 
-  tag_summary = "This host is running phpMyAdmin and is prone to multiple
-  vulnerabilities.";
+  script_tag(name:"summary", value:"This host is running phpMyAdmin and is prone to multiple
+  vulnerabilities.");
 
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"solution", value:"Upgrade to version 2.11.9.5 or 3.1.3.1 or later.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -92,8 +83,11 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0);
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! vers = get_app_version( cpe:CPE, port:port ) )
+  exit( 0);
 
 if( version_in_range( version:vers, test_version:"2.11", test_version2:"2.11.9.4" ) ||
     version_in_range( version:vers, test_version:"3.0", test_version2:"3.1.3" ) ) {

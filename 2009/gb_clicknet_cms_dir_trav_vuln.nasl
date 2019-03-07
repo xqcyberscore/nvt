@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_clicknet_cms_dir_trav_vuln.nasl 9334 2018-04-05 13:34:45Z cfischer $
+# $Id: gb_clicknet_cms_dir_trav_vuln.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # Clicknet CMS 'index.php' Directory Traversal Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:clicknet:clicknet_cms";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800903");
-  script_version("$Revision: 9334 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-05 15:34:45 +0200 (Thu, 05 Apr 2018) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-07-09 10:58:23 +0200 (Thu, 09 Jul 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -52,18 +52,15 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to error in 'side' parameter in index.php which
   is not adequately sanitised that may lead to directory traversal attacks.");
 
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"summary", value:"This host has Clicknet CMS installed and is prone to Directory
   Traversal vulnerability.");
 
   script_tag(name:"impact", value:"Successful attacks will allow attackers to read arbitrary files
-  via a '..' (dot dot) sequences.
-
-  Impact level: Application");
+  via a '..' (dot dot) sequences.");
 
   script_tag(name:"qod_type", value:"remote_app");
   script_tag(name:"solution_type", value:"WillNotFix");
@@ -76,8 +73,11 @@ include("http_keepalive.inc");
 include("version_func.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:FALSE ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:FALSE ) )
+  exit( 0 );
 
 vers = infos['version'];
 dir = infos['location'];

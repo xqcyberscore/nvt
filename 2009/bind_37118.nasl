@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: bind_37118.nasl 4435 2016-11-07 17:16:00Z cfi $
+# $Id: bind_37118.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # ISC BIND 9 DNSSEC Query Response Additional Section Remote Cache Poisoning Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:isc:bind";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100362");
-  script_version("$Revision: 4435 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-07 18:16:00 +0100 (Mon, 07 Nov 2016) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-11-25 11:49:08 +0100 (Wed, 25 Nov 2009)");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
@@ -47,22 +47,16 @@ if(description)
   script_xref(name:"URL", value:"https://www.isc.org/node/504");
   script_xref(name:"URL", value:"http://www.isc.org/products/BIND/");
 
-  tag_summary = "ISC BIND 9 is prone to a remote cache-poisoning vulnerability.";
+  script_tag(name:"impact", value:"An attacker may leverage this issue to manipulate cache data,
+  potentially facilitating man-in-the-middle, site-impersonation, or denial-of-service attacks.");
 
-  tag_impact = "An attacker may leverage this issue to manipulate cache data,
-  potentially facilitating man-in-the-middle, site-impersonation, or denial-of-
-  service attacks.";
+  script_tag(name:"affected", value:"Versions prior to the following are vulnerable:
 
-  tag_affected = "Versions prior to the following are vulnerable:
+  BIND 9.4.3-P4 BIND 9.5.2-P1 BIND 9.6.1-P2");
 
-  BIND 9.4.3-P4 BIND 9.5.2-P1 BIND 9.6.1-P2";
+  script_tag(name:"solution", value:"Updates are available. Please see the references for details.");
 
-  tag_solution = "Updates are available. Please see the references for details.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"ISC BIND 9 is prone to a remote cache-poisoning vulnerability.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");

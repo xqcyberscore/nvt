@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_hp_smh_unspecified_xss_vuln.nasl 4542 2016-11-16 15:31:02Z cfi $
+# $Id: secpod_hp_smh_unspecified_xss_vuln.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # HP System Management Homepage Unspecified XSS Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:hp:system_management_homepage";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900658");
-  script_version("$Revision: 4542 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-16 16:31:02 +0100 (Wed, 16 Nov 2016) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-06-01 09:35:57 +0200 (Mon, 01 Jun 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -46,27 +46,21 @@ if(description)
 
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/50633");
   script_xref(name:"URL", value:"http://jvndb.jvn.jp/en/contents/2009/JVNDB-2009-000029.html");
+  script_xref(name:"URL", value:"http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?objectID=c01745065");
 
-  tag_impact = "Successful exploitation will allow attackers to steal cookie-based
+  script_tag(name:"insight", value:"HP System Management Homepage application fails to validate user supplied
+  input.");
+
+  script_tag(name:"solution", value:"Upgrade to version 3.0.1.73 or later.");
+
+  script_tag(name:"summary", value:"This host is running HP System Management Homepage (SMH) and is
+  prone to cross-site scripting vulnerability.");
+
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to steal cookie-based
   authentication credentials and execute arbitrary script on the user's
-  web browser by injecting web script or HTML vi remote vectors.";
+  web browser by injecting web script or HTML vi remote vectors.");
 
-  tag_affected = "HP System Management Homepage versions prior to 3.0.1.73 on all platforms.";
-
-  tag_insight = "HP System Management Homepage application fails to validate user supplied
-  input.";
-
-  tag_solution = "Upgrade to version 3.0.1.73 or later,
-  http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?objectID=c01745065";
-
-  tag_summary = "This host is running HP System Management Homepage (SMH) and is
-  prone to cross-site scripting vulnerability.";
-
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
+  script_tag(name:"affected", value:"HP System Management Homepage versions prior to 3.0.1.73 on all platforms.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -77,8 +71,11 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! version = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! version = get_app_version( cpe:CPE, port:port ) )
+  exit( 0 );
 
 if( version_is_less( version:version, test_version:"3.0.1.73" ) ) {
   report = report_fixed_ver( installed_version:version, fixed_version:"3.0.1.73");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phpbb_cve_2008_6506.nasl 9332 2018-04-05 12:51:29Z cfischer $
+# $Id: phpbb_cve_2008_6506.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # phpBB Account Re-Activation Authentication Bypass Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:phpbb:phpbb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100086");
-  script_version("$Revision: 9332 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-05 14:51:29 +0200 (Thu, 05 Apr 2018) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-03-29 17:14:47 +0200 (Sun, 29 Mar 2009)");
   script_bugtraq_id(32842);
   script_cve_id("CVE-2008-6506");
@@ -52,7 +52,7 @@ if(description)
 
   script_tag(name:"affected", value:"Versions prior to phpBB 3.0.4 are vulnerable.");
 
-  script_tag(name:"solution", value:"Updates are available, please see http://www.phpbb.com/.");
+  script_tag(name:"solution", value:"Update to version 3.0.4 or later.");
 
   script_tag(name:"summary", value:"According to its version number, the remote version of phpbb
   is prone to an authentication-bypass vulnerability because it fails
@@ -67,13 +67,16 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! vers = get_app_version( cpe:CPE, port:port ) )
+  exit( 0 );
 
 if( version_is_less( version:vers, test_version:"3.0.4" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"3.0.4" );
   security_message( port:port, data:report );
   exit( 0 );
-}  
+}
 
 exit( 99 );

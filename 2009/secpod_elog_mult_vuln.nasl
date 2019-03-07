@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_elog_mult_vuln.nasl 9889 2018-05-17 14:03:49Z cfischer $
+# $Id: secpod_elog_mult_vuln.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # ELOG Remote Buffer Overflow and Cross Site Scripting Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:stefan_ritt:elog_web_logbook";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901009");
-  script_version("$Revision: 9889 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-17 16:03:49 +0200 (Thu, 17 May 2018) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-08-26 14:01:08 +0200 (Wed, 26 Aug 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -49,9 +49,7 @@ if(description)
   script_xref(name:"URL", value:"https://midas.psi.ch/elog/download/");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary scripting
-  code, cause a denial of service or compromise a vulnerable system.
-
-  Impact Level: System/Application");
+  code, cause a denial of service or compromise a vulnerable system.");
 
   script_tag(name:"affected", value:"ELOG versions prior to 2.7.1.");
 
@@ -77,10 +75,13 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
 
-# 2.7.1 => 2.7.1.2002
+if( ! vers = get_app_version( cpe:CPE, port:port ) )
+  exit( 0 );
+
+# nb: 2.7.1 => 2.7.1.2002
 if( version_is_less( version:vers, test_version:"2.7.1.2002" ) ){
   report = report_fixed_ver( installed_version:vers, fixed_version:"2.7.1" );
   security_message( port:port, data:report );

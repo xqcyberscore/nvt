@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_pango_bof_vuln.nasl 5122 2017-01-27 12:16:00Z teissa $
+# $Id: secpod_pango_bof_vuln.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # Pango Integer Buffer Overflow Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:pango:pango';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900644");
-  script_version("$Revision: 5122 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-27 13:16:00 +0100 (Fri, 27 Jan 2017) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-05-22 08:49:17 +0200 (Fri, 22 May 2009)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -48,15 +48,16 @@ if(description)
   script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2009/05/07/1");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary code via
-  a long glyph string, and can cause denial of service.
+  a long glyph string, and can cause denial of service.");
 
-  Impact Level: Application");
-  script_tag(name:"affected", value:"Pango version prior to 1.24.0");
+  script_tag(name:"affected", value:"Pango version prior to 1.24.0.");
+
   script_tag(name:"insight", value:"Error in pango_glyph_string_set_size function in pango/glyphstring.c file,
   which fails to perform adequate boundary checks on user-supplied data before
   using the data to allocate memory buffers.");
-  script_tag(name:"solution", value:"Upgrade to pango version 1.24.0 or later
-  http://ftp.acc.umu.se/pub/GNOME/sources/pango/");
+
+  script_tag(name:"solution", value:"Upgrade to pango version 1.24.0 or later.");
+
   script_tag(name:"summary", value:"This host has installed with Pango and is prone to Integer Buffer
   Overflow vulnerability");
 
@@ -69,11 +70,12 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-if(!ver = get_app_version(cpe:CPE)) exit(0);
+if(!ver = get_app_version(cpe:CPE))
+  exit(0);
 
 if(version_is_less(version:ver, test_version:"1.24.0")){
   report = report_fixed_ver(installed_version:ver, fixed_version:"1.24.0");
-  security_message(data:report);
+  security_message(port:0, data:report);
   exit(0);
 }
 

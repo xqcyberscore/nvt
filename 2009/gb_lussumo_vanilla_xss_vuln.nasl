@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lussumo_vanilla_xss_vuln.nasl 11249 2018-09-05 13:55:42Z cfischer $
+# $Id: gb_lussumo_vanilla_xss_vuln.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # Vanilla 'RequestName' Cross-Site Scripting Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:lussumo:vanilla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800623");
-  script_version("$Revision: 11249 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 15:55:42 +0200 (Wed, 05 Sep 2018) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-06-04 10:49:28 +0200 (Thu, 04 Jun 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -49,9 +49,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to execute
   arbitrary HTML and script code in a user's browser session in context of an
-  affect site and it result XSS attack.
-
-  Impact Level: Application.");
+  affect site and it result XSS attack.");
 
   script_tag(name:"affected", value:"Lussumo Vanilla 1.1.7 and prior on all running platform.");
 
@@ -75,8 +73,12 @@ include("http_func.inc");
 include("version_func.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:FALSE ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:FALSE ) )
+  exit( 0 );
+
 ver = infos['version'];
 dir = infos['location'];
 install = dir;
@@ -94,7 +96,7 @@ if( ! safe_checks() ) {
 }
 
 if( ver && version_is_less_equal( version:ver, test_version:"1.1.8" ) ) {
-  report = report_fixed_ver( installed_version:ver, fixed_version:"WillNotFix", install_path:install );
+  report = report_fixed_ver( installed_version:ver, fixed_version:"None", install_path:install );
   security_message( port:port, data:report );
   exit( 0 );
 }

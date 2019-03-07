@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_dir_traversal_vuln.nasl 4865 2016-12-28 16:16:43Z teissa $
+# $Id: gb_apache_struts_dir_traversal_vuln.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # Apache Struts Directory Traversal Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800271");
-  script_version("$Revision: 4865 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-28 17:16:43 +0100 (Wed, 28 Dec 2016) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-04-23 08:16:04 +0200 (Thu, 23 Apr 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -49,16 +49,17 @@ if(description)
   script_xref(name:"URL", value:"http://issues.apache.org/struts/browse/WW-2779");
 
   script_tag(name:"impact", value:"Successful exploitation will let the attacker launch directory traversal
-  attack and gain sensitive information about the remote system directory contents.
+  attack and gain sensitive information about the remote system directory contents.");
 
-  Impact Level: System/Application");
   script_tag(name:"affected", value:"Apache Struts version 2.0.x and prior to 2.0.12
-  Apache Struts version 2.1.x and prior to 2.1.3");
+  Apache Struts version 2.1.x and prior to 2.1.3.");
+
   script_tag(name:"insight", value:"Input validation error within the user supplied request URI while read
   arbitrary files via '../' with a '/struts/' path which is related to
   FilterDispatcher and DefaultStaticContentLoader.");
-  script_tag(name:"solution", value:"Upgrade to Apache Struts version 2.0.12, 2.1.3 or later.
-  http://struts.apache.org/download.cgi");
+
+  script_tag(name:"solution", value:"Upgrade to Apache Struts version 2.0.12, 2.1.3 or later.");
+
   script_tag(name:"summary", value:"This host is running Apache Struts and is prone to Directory Traversal
   Vulnerability.");
 
@@ -72,10 +73,14 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
 
-if( dir == "/" ) dir = "";
+if( ! dir = get_app_location( cpe:CPE, port:port ) )
+  exit( 0 );
+
+if( dir == "/" )
+  dir = "";
 
 url = dir + "/struts/..%252f..%252f..%252fWEB-INF";
 

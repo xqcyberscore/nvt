@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_e107_referer_xss_vuln.nasl 9334 2018-04-05 13:34:45Z cfischer $
+# $Id: gb_e107_referer_xss_vuln.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # e107 'Referer' Header Cross-Site Scripting Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:e107:e107";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800946");
-  script_version("$Revision: 9334 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-05 15:34:45 +0200 (Thu, 05 Apr 2018) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-10-08 08:22:29 +0200 (Thu, 08 Oct 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -48,20 +48,22 @@ if(description)
   script_xref(name:"URL", value:"http://secunia.com/advisories/36832/");
 
   script_tag(name:"impact", value:"Attackers can exploit this issue to execute arbitrary HTML and script code
-  in a user's browser session in the context of an affected site.
+  in a user's browser session in the context of an affected site.");
 
-  Impact Level: Application");
   script_tag(name:"affected", value:"e107 version 0.7.16 and prior.");
+
   script_tag(name:"insight", value:"The flaw exists due to error in 'email.php' in 'news.1' action. It does not
   properly filter HTML code from user-supplied input in the HTTP 'Referer' header before displaying the input.");
-  script_tag(name:"solution", value:"Upgrade to e107 version 0.7.22 or later,
-  For updates refer to http://e107.org/edownload.php");
+
+  script_tag(name:"solution", value:"Upgrade to e107 version 0.7.22 or later.");
+
   script_tag(name:"summary", value:"This host is running e107 and is prone to remote Cross-Site
   Scripting vulnerability.");
 
   script_tag(name:"qod_type", value:"remote_app");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://e107.org/edownload.php");
   exit(0);
 }
 
@@ -69,9 +71,14 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
-if( dir == "/" ) dir = "";
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! dir = get_app_location( cpe:CPE, port:port ) )
+  exit( 0 );
+
+if( dir == "/" )
+  dir = "";
 
 url = dir + "/email.php?news.1";
 

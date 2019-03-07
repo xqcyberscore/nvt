@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phpmyadmin_34253.nasl 8915 2018-02-22 07:21:54Z cfischer $
+# $Id: phpmyadmin_34253.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # phpMyAdmin BLOB Streaming Multiple Input Validation Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100078");
-  script_version("$Revision: 8915 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-22 08:21:54 +0100 (Thu, 22 Feb 2018) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-03-26 13:41:22 +0100 (Thu, 26 Mar 2009)");
   script_bugtraq_id(34253);
   script_cve_id("CVE-2009-1148", "CVE-2009-1149");
@@ -46,25 +46,17 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/34253");
 
-  tag_summary = "phpMyAdmin is prone to multiple input-validation vulnerabilities,
-  including an HTTP response-splitting vulnerability and a
-  local file-include vulnerability.";
+  script_tag(name:"summary", value:"phpMyAdmin is prone to multiple input-validation vulnerabilities,
+  including an HTTP response-splitting vulnerability and a local file-include vulnerability.");
 
-  tag_impact = "These issues can be leveraged to view or execute arbitrary local
-  scripts, or misrepresent how web content is served, cached, or
-  interpreted. This could aid in various attacks that try to entice
-  client users into a false sense of trust. Other attacks are also
-  possible.";
+  script_tag(name:"impact", value:"These issues can be leveraged to view or execute arbitrary local
+  scripts, or misrepresent how web content is served, cached, or interpreted. This could aid in
+  various attacks that try to entice client users into a false sense of trust. Other attacks are also
+  possible.");
 
-  tag_affected = "Versions prior to phpMyAdmin 3.1.3.1 are vulnerable.";
+  script_tag(name:"affected", value:"Versions prior to phpMyAdmin 3.1.3.1 are vulnerable.");
 
-  tag_solution = "Vendor updates are available. Please see http://www.phpmyadmin.net for more
-  Information.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"solution", value:"Update to version 3.1.3.1 or later.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -75,11 +67,14 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! vers = get_app_version( cpe:CPE, port:port ) )
+  exit( 0 );
 
 if( version_is_less( version:vers, test_version:"3.1.3.1" ) ) {
-  report = report_fixed_ver( installed_version:vers, fixed_version:"See references" );
+  report = report_fixed_ver( installed_version:vers, fixed_version:"3.1.3.1" );
   security_message( port:port, data:report );
   exit( 0 );
 }

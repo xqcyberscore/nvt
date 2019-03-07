@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_dovecot_sieve_mult_bof_vuln.nasl 10350 2018-06-27 16:07:51Z cfischer $
+# $Id: secpod_dovecot_sieve_mult_bof_vuln.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # Dovecot Sieve Plugin Multiple Buffer Overflow Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901026");
-  script_version("$Revision: 10350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-27 18:07:51 +0200 (Wed, 27 Jun 2018) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-09-23 08:37:26 +0200 (Wed, 23 Sep 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -50,9 +50,7 @@ if(description)
   script_mandatory_keys("dovecot/detected");
 
   script_tag(name:"impact", value:"Successful attack could allow malicious people to crash an affected
-  application or execute arbitrary code.
-
-  Impact Level: Application");
+  application or execute arbitrary code.");
 
   script_tag(name:"affected", value:"Dovecot versions 1.0 before 1.0.4 and 1.1 before 1.1.7");
 
@@ -73,15 +71,16 @@ if(description)
 
 CPE = "cpe:/a:dovecot:dovecot";
 
-include( "host_details.inc" );
-include( "version_func.inc" );
+include("host_details.inc");
+include("version_func.inc");
 
-if( ! dovecotVer = get_app_version( cpe: CPE, nofork: TRUE ) ) exit( 0 );
+if( ! dovecotVer = get_app_version( cpe: CPE, nofork: TRUE ) )
+  exit( 0 );
 
 if( version_in_range( version: dovecotVer, test_version: "1.0", test_version2: "1.0.3" ) ||
-  version_in_range( version: dovecotVer, test_version: "1.1", test_version2: "1.1.6" ) )
-{
-  security_message( port: 0, data: "The target host was found to be vulnerable" );
+    version_in_range( version: dovecotVer, test_version: "1.1", test_version2: "1.1.6" ) ) {
+  report = report_fixed_ver(installed_version:dovecotVer, fixed_version:"1.1.4/1.1.7");
+  security_message( port:0, data:report );
   exit( 0 );
 }
 

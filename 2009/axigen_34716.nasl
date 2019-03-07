@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: axigen_34716.nasl 8052 2017-12-08 10:13:55Z ckuersteiner $
+# $Id: axigen_34716.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # Axigen Mail Server HTML Injection Vulnerability
 #
@@ -26,41 +26,43 @@
 
 CPE = "cpe:/a:gecad_technologies:axigen_mail_server";
 
-if (description)
+if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.100177");
- script_version("$Revision: 8052 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-08 11:13:55 +0100 (Fri, 08 Dec 2017) $");
- script_tag(name:"creation_date", value:"2009-05-02 19:46:33 +0200 (Sat, 02 May 2009)");
- script_bugtraq_id(34716);
- script_cve_id("CVE-2009-1484");
- script_tag(name:"cvss_base", value:"4.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_oid("1.3.6.1.4.1.25623.1.0.100177");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2009-05-02 19:46:33 +0200 (Sat, 02 May 2009)");
+  script_bugtraq_id(34716);
+  script_cve_id("CVE-2009-1484");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
- script_name("Axigen Mail Server HTML Injection Vulnerability");
+  script_name("Axigen Mail Server HTML Injection Vulnerability");
 
- script_tag(name:"qod_type", value:"remote_banner");
- script_category(ACT_GATHER_INFO);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
- script_dependencies("axigen_web_detect.nasl");
- script_mandatory_keys("axigen/installed");
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_category(ACT_GATHER_INFO);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
+  script_dependencies("axigen_web_detect.nasl");
+  script_mandatory_keys("axigen/installed");
 
- script_tag(name: "solution", value: "Reports indicate that fixes are available. Please contact the vendor for
-more information.");
+  script_tag(name:"solution", value:"Reports indicate that fixes are available. Please contact the vendor for
+  more information.");
 
- script_tag(name: "summary", value: "Axigen Mail Server is prone to an HTML-injection vulnerability because the
-application fails to properly sanitize user-supplied input.
+  script_tag(name:"summary", value:"Axigen Mail Server is prone to an HTML-injection vulnerability because the
+  application fails to properly sanitize user-supplied input.");
 
-Attacker-supplied HTML and script code would run in the context of the affected site, potentially allowing the
-attacker to steal cookie-based authentication credentials or to control how the site is rendered to the user;
-other attacks are also possible.
+  script_tag(name:"impact", value:"Attacker-supplied HTML and script code would run in the context of the affected
+  site, potentially allowing the attacker to steal cookie-based authentication credentials or to control how the
+  site is rendered to the user. Oother attacks are also possible.");
 
-Axigen Mail Server 6.2.2 is vulnerable; other versions may also be affected.");
+  script_tag(name:"affected", value:"Axigen Mail Server 6.2.2 is vulnerable. Other versions may also be affected.");
 
- script_xref(name: "URL", value: "http://www.securityfocus.com/bid/34716");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/34716");
 
- exit(0);
+  script_tag(name:"solution_type", value:"VendorFix");
+
+  exit(0);
 }
 
 include("host_details.inc");
@@ -76,6 +78,6 @@ if (version_is_equal(version: version, test_version: "6.2.2")) {
   report = report_fixed_ver(installed_version: version, fixed_version: "Contact vendor.");
   security_message(port: port, data: report);
   exit(0);
-}  
+}
 
 exit(99);

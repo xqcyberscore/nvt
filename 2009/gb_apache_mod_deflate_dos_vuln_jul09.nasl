@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_mod_deflate_dos_vuln_jul09.nasl 9220 2018-03-27 12:19:39Z cfischer $
+# $Id: gb_apache_mod_deflate_dos_vuln_jul09.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # Apache 'mod_deflate' Denial Of Service Vulnerability - July09
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800837");
-  script_version("$Revision: 9220 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-27 14:19:39 +0200 (Tue, 27 Mar 2018) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-07-15 13:05:34 +0200 (Wed, 15 Jul 2009)");
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
@@ -49,31 +49,18 @@ if(description)
   script_xref(name:"URL", value:"https://rhn.redhat.com/errata/RHSA-2009-1148.html");
   script_xref(name:"URL", value:"https://bugzilla.redhat.com/show_bug.cgi?id=509125");
 
-  tag_solution = "Fixed in the SVN repository.
-  http://svn.apache.org/viewvc?view=rev&revision=791454
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause Denial of Service
+  to the legitimate user by CPU consumption.");
 
-  ******
-  NOTE: Ignore this warning if above mentioned patch is already applied.
-  ******";
+  script_tag(name:"affected", value:"Apache HTTP Server version 2.2.11 and prior.");
 
-  tag_impact = "Successful exploitation will allow remote attackers to cause Denial of Service
-  to the legitimate user by CPU consumption.
+  script_tag(name:"insight", value:"The flaw is due to error in 'mod_deflate' module which can cause a high CPU
+  load by requesting large files which are compressed and then disconnecting.");
 
-  Impact Level: Application";
+  script_tag(name:"summary", value:"This host is running Apache HTTP Server and is prone to Denial of Service
+  vulnerability.");
 
-  tag_affected = "Apache HTTP Server version 2.2.11 and prior";
-
-  tag_insight = "The flaw is due to error in 'mod_deflate' module which can cause a high CPU
-  load by requesting large files which are compressed and then disconnecting.";
-
-  tag_summary = "This host is running Apache HTTP Server and is prone to Denial of Service
-  vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"solution", value:"Update to version 2.2.12 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
@@ -84,11 +71,14 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! vers = get_app_version( cpe:CPE, port:port ) )
+  exit( 0 );
 
 if( version_is_less_equal( version:vers, test_version:"2.2.11" ) ) {
-  report = report_fixed_ver( installed_version:vers, fixed_version:"See references" );
+  report = report_fixed_ver( installed_version:vers, fixed_version:"2.2.12" );
   security_message( port:port, data:report );
   exit( 0 );
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: postgresql_cve_2009_0922.nasl 7406 2017-10-12 06:15:28Z cfischer $
+# $Id: postgresql_cve_2009_0922.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # PostgreSQL Conversion Encoding Remote Denial of Service
 # Vulnerability
@@ -30,8 +30,8 @@ CPE = "cpe:/a:postgresql:postgresql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100157");
-  script_version("$Revision: 7406 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-12 08:15:28 +0200 (Thu, 12 Oct 2017) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-04-24 20:04:08 +0200 (Fri, 24 Apr 2009)");
   script_bugtraq_id(34090);
   script_cve_id("CVE-2009-0922");
@@ -48,16 +48,12 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/34090");
   script_xref(name:"URL", value:"http://www.postgresql.org/");
 
-  tag_summary = "PostgreSQL is prone to a remote denial-of-service vulnerability.";
+  script_tag(name:"summary", value:"PostgreSQL is prone to a remote denial-of-service vulnerability.");
 
-  tag_impact = "Exploiting this issue may allow attackers to terminate connections
-  to the PostgreSQL server, denying service to legitimate users.";
+  script_tag(name:"impact", value:"Exploiting this issue may allow attackers to terminate connections
+  to the PostgreSQL server, denying service to legitimate users.");
 
-  tag_solution = "Updates are available. Update to newer Version.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"solution", value:"Updates are available. Update to newer Version.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
@@ -68,8 +64,11 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! vers = get_app_version( cpe:CPE, port:port ) )
+  exit( 0 );
 
 if( version_in_range( version:vers, test_version:"8.3", test_version2:"8.3.6" )  ||
     version_in_range( version:vers, test_version:"8.2", test_version2:"8.2.6" )  ||

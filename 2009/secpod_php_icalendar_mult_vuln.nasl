@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_php_icalendar_mult_vuln.nasl 9329 2018-04-05 11:36:57Z cfischer $
+# $Id: secpod_php_icalendar_mult_vuln.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # Multiple Vulnerabilities in PHP iCalendar
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:phpicalendar:phpicalendar";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900199");
-  script_version("$Revision: 9329 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-05 13:36:57 +0200 (Thu, 05 Apr 2018) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-01-29 15:16:47 +0100 (Thu, 29 Jan 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -47,20 +47,17 @@ if(description)
   script_xref(name:"URL", value:"http://secunia.com/advisories/31944");
 
   script_tag(name:"impact", value:"Successful exploitation could result in Security Bypass or Directory
-  Traversal attack on the affected web application.
-
-  Impact Level: Application");
+  Traversal attack on the affected web application.");
 
   script_tag(name:"insight", value:"- Error in admin/index.php file allows remote attackers to upload
-    .ics file with arbitrary contents to the calendars/directory.
+  .ics file with arbitrary contents to the calendars/directory.
 
   - print.php file allows to include and execute arbitrary local files via
-    a '../' in the cookie_language parameter in phpicalendar_* cookie.");
+  a '../' in the cookie_language parameter in phpicalendar_* cookie.");
 
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year since disclosure
-  of this vulnerability. Likely none will be provided anymore. General solution
-  options are to upgrade to a newer release, disable respective features,
-  remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"summary", value:"This host is running PHP iCalendar and is prone to multiple
   vulnerabilities.");
@@ -79,13 +76,16 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! vers = get_app_version( cpe:CPE, port:port ) )
+  exit( 0 );
 
 if( version_is_less_equal( version:vers, test_version:"2.34" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"WillNotFix" );
   security_message( port:port, data:report );
   exit( 0 );
-}  
+}
 
 exit( 99 );

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_openfire_mult_vuln_mar09.nasl 9306 2018-04-04 16:31:21Z cfischer $
+# $Id: secpod_openfire_mult_vuln_mar09.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # Openfire Multiple Vulnerabilities (Mar09)
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:igniterealtime:openfire";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900484");
-  script_version("$Revision: 9306 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-04 18:31:21 +0200 (Wed, 04 Apr 2018) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-03-26 11:19:12 +0100 (Thu, 26 Mar 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -49,40 +49,30 @@ if(description)
   script_xref(name:"URL", value:"http://www.andreas-kurtz.de/advisories/AKADV2008-001-v1.0.txt");
   script_xref(name:"URL", value:"http://www.igniterealtime.org/builds/openfire/docs/latest/changelog.html");
 
-  tag_impact = "Successful exploitation will let the attacker cause multiple attacks in
-  the context of the application i.e. Cross site scripting, disclosure of
-  sensitive information, phishing attacks through the affected parameters.
+  script_tag(name:"affected", value:"Openfire version prior to 3.6.1");
 
-  Impact level: Application/Network";
-
-  tag_affected = "Openfire version prior to 3.6.1";
-
-  tag_insight = "Multiple flaws are due to,
+  script_tag(name:"insight", value:"Multiple flaws are due to,
 
   - error in the AuthCheckFilter which causes access to administrative
-    resources without admin authentication.
+  resources without admin authentication.
 
   - error in the type parameter inside the file 'sipark-log-summary.jsp'
-    which causes SQL Injection attack.
+  which causes SQL Injection attack.
 
   - error in the 'login.jsp' URL parameter which accept malicious chars
-    as input which causes XSS attack.
+  as input which causes XSS attack.
 
   - error in the SIP-Plugin which is deactivated by default which lets the
-    attack install the plugin by using admin authentication bypass methods.";
+  attack install the plugin by using admin authentication bypass methods.");
 
-  tag_solution = "Upgrade to the version 3.6.1 or later,
+  script_tag(name:"solution", value:"Upgrade to the version 3.6.1 or later.");
 
-  http://www.igniterealtime.org/downloads/index.jsp";
+  script_tag(name:"summary", value:"This host is running Openfire and is prone to multiple
+  vulnerabilities.");
 
-  tag_summary = "This host is running Openfire and is prone to multiple
-  vulnerabilities.";
-
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
+  script_tag(name:"impact", value:"Successful exploitation will let the attacker cause multiple attacks in
+  the context of the application i.e. Cross site scripting, disclosure of
+  sensitive information, phishing attacks through the affected parameters.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -93,8 +83,11 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! vers = get_app_version( cpe:CPE, port:port ) )
+  exit( 0 );
 
 if( version_is_less( version:vers, test_version:"3.6.1" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"3.6.1" );

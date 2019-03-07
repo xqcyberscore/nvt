@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_SquirrelMail_42399.nasl 13960 2019-03-01 13:18:27Z cfischer $
+# $Id: gb_SquirrelMail_42399.nasl 14033 2019-03-07 11:09:35Z cfischer $
 #
 # SquirrelMail Remote Denial of Service Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:squirrelmail:squirrelmail';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100759");
-  script_version("$Revision: 13960 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
+  script_version("$Revision: 14033 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 12:09:35 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-08-13 12:44:16 +0200 (Fri, 13 Aug 2010)");
   script_bugtraq_id(42399);
   script_tag(name:"cvss_base", value:"5.0");
@@ -61,7 +61,7 @@ if(description)
   because it fails to properly handle certain user requests.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
   exit(0);
 }
@@ -69,8 +69,11 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! vers = get_app_version( cpe:CPE, port:port ) )
+  exit( 0 );
 
 if( version_is_less( version:vers, test_version:"1.4.21" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"1.4.21" );

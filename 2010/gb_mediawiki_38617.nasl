@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mediawiki_38617.nasl 14012 2019-03-06 09:13:44Z cfischer $
+# $Id: gb_mediawiki_38617.nasl 14024 2019-03-07 07:16:22Z mmartin $
 #
 # MediaWiki 'thumb.php' Security Bypass Vulnerability
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:mediawiki:mediawiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100535");
-  script_version("$Revision: 14012 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-06 10:13:44 +0100 (Wed, 06 Mar 2019) $");
+  script_version("$Revision: 14024 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 08:16:22 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-03-15 19:33:39 +0100 (Mon, 15 Mar 2010)");
   script_bugtraq_id(38617);
   script_cve_id("CVE-2010-1190");
-  script_tag(name:"cvss_base", value:"6.4");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
   script_name("MediaWiki 'thumb.php' Security Bypass Vulnerability");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");

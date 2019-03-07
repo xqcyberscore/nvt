@@ -21,13 +21,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891705");
-  script_version("$Revision: 14006 $");
+  script_version("$Revision: 14024 $");
   script_cve_id("CVE-2017-11332", "CVE-2017-11358", "CVE-2017-11359", "CVE-2017-15371");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1705-1] sox security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-06 07:39:59 +0100 (Wed, 06 Mar 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 08:16:22 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-03-06 00:00:00 +0100 (Wed, 06 Mar 2019)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

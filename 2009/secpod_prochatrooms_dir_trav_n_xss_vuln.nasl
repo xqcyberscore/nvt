@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_prochatrooms_dir_trav_n_xss_vuln.nasl 4858 2016-12-27 15:23:54Z cfi $
+# $Id: secpod_prochatrooms_dir_trav_n_xss_vuln.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # Directory Traversal And XSS Vulnerability In Pro Chat Rooms
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:pro_chat_rooms:pro_chat_rooms";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900331");
-  script_version("$Revision: 4858 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-27 16:23:54 +0100 (Tue, 27 Dec 2016) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-03-31 07:06:59 +0200 (Tue, 31 Mar 2009)");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:P/I:P/A:P");
@@ -48,35 +48,26 @@ if(description)
   script_xref(name:"URL", value:"http://www.milw0rm.com/exploits/6612");
   script_xref(name:"URL", value:"http://www.milw0rm.com/exploits/7409");
 
-  tag_impact = "Successful exploitation could result in Directory Traversal, Cross-Site
-  Scripting or Cross-Site Request Forgery attack by execute arbitrary HTML
-  and script code on the affected application.
+  script_tag(name:"impact", value:"Successful exploitation could result in Directory Traversal, Cross-Site
+  Scripting or Cross-Site Request Forgery attack by execute arbitrary HTML and script code on the affected application.");
 
-  Impact Level: Application";
+  script_tag(name:"affected", value:"Pro Chat Rooms version 3.0.3 and prior on all running platform.");
 
-  tag_affected = "Pro Chat Rooms version 3.0.3 and prior on all running platform.";
+  script_tag(name:"insight", value:"- Error in profiles/index.php and profiles/admin.php file allows remote
+  attackers to inject arbitrary web script or HTML via the 'gud' parameter.
 
-  tag_insight = "- Error in profiles/index.php and profiles/admin.php file allows remote
-    attackers to inject arbitrary web script or HTML via the 'gud' parameter.
   - Error in sendData.php file allows remote authenticated users to select
-    an arbitrary local PHP script as an avatar via a ..(dot dot) in the
-    'avatar' parameter.";
+  an arbitrary local PHP script as an avatar via a ..(dot dot) in the 'avatar' parameter.");
 
-  tag_solution = "Upgrade to Pro Chat Rooms version 6.0 or later,
-  For updates refer to http://www.prochatrooms.com";
+  script_tag(name:"solution", value:"Upgrade to Pro Chat Rooms version 6.0 or later.");
 
-  tag_summary = "This host is running Pro Chat Rooms and is prone to Directory
-  Traversal and XSS vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"This host is running Pro Chat Rooms and is prone to Directory
+  Traversal and XSS vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
 
+  script_xref(name:"URL", value:"http://www.prochatrooms.com");
   exit(0);
 }
 
@@ -84,15 +75,17 @@ include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! dir = get_app_location( cpe:CPE, port:port ) )
+  exit( 0 );
 
 if( dir == "/" ) dir = "";
 
 url = dir + "/profiles/index.php?gud=<script>alert(document.cookie)</script>";
 
-if( http_vuln_check( port:port, url:url, check_header:TRUE,
-                     pattern:"<script>alert\(document.cookie\)</script>" ) ) {
+if( http_vuln_check( port:port, url:url, check_header:TRUE, pattern:"<script>alert\(document.cookie\)</script>" ) ) {
   report = report_vuln_url( port:port, url:url );
   security_message( port:port, data:report );
   exit( 0 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_SquirrelMail_40291.nasl 13960 2019-03-01 13:18:27Z cfischer $
+# $Id: gb_SquirrelMail_40291.nasl 14033 2019-03-07 11:09:35Z cfischer $
 #
 # SquirrelMail 'mail_fetch' Remote Information Disclosure Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:squirrelmail:squirrelmail';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100688");
-  script_version("$Revision: 13960 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
+  script_version("$Revision: 14033 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 12:09:35 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-06-22 12:10:21 +0200 (Tue, 22 Jun 2010)");
   script_bugtraq_id(40291);
   script_tag(name:"cvss_base", value:"4.0");
@@ -53,13 +53,16 @@ if(description)
 
   script_tag(name:"impact", value:"Attackers can exploit this issue to obtain potentially sensitive
   information that may lead to further attacks.");
+
   script_tag(name:"affected", value:"This issue affects SquirrelMail 1.4.x versions.");
+
   script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
+
   script_tag(name:"summary", value:"SquirrelMail is prone to a remote information-disclosure
   vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
   exit(0);
 }
@@ -67,8 +70,11 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! vers = get_app_version( cpe:CPE, port:port ) )
+  exit( 0 );
 
 if( version_in_range( version:vers, test_version:"1.4", test_version2:"1.4.20" ) ||
     version_in_range( version:vers, test_version:"1.5", test_version2:"1.5.1" ) ) {

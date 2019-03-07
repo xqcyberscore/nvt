@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_squid_dos_vuln.nasl 6891 2017-08-10 12:44:59Z cfischer $
+# $Id: secpod_squid_dos_vuln.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # Squid External Auth Header Parser DOS Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:squid-cache:squid";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.101105");
-  script_version("$Revision: 6891 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-10 14:44:59 +0200 (Thu, 10 Aug 2017) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-08-24 07:49:31 +0200 (Mon, 24 Aug 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -47,26 +47,19 @@ if(description)
   script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2009/08/03/3");
   script_xref(name:"URL", value:"http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=534982");
 
-  tag_impact = "Successful exploitation could allow remote attackers to cause a denial of service
+  script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to cause a denial of service
   via a crafted auth header with certain comma delimiters that trigger an infinite
-  loop of calls to the strcspn function.";
+  loop of calls to the strcspn function.");
 
-  tag_affected = "Squid Version 2.7.X";
+  script_tag(name:"affected", value:"Squid Version 2.7.X");
 
-  tag_insight = "The flaw is due to error in 'strListGetItem()' function within
-  'src/HttpHeaderTools.c'.";
+  script_tag(name:"insight", value:"The flaw is due to error in 'strListGetItem()' function within
+  'src/HttpHeaderTools.c'.");
 
-  tag_solution = "Upgrade to Squid Version 3.1.4 or later,
-  For further updates refer, http://www.squid-cache.org/Download/";
+  script_tag(name:"solution", value:"Upgrade to Squid Version 3.1.4 or later.");
 
-  tag_summary = "This host is running Squid and is  prone to Denial Of
-  Service vulnerabilities.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"This host is running Squid and is  prone to Denial Of
+  Service vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
@@ -77,8 +70,11 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! vers = get_app_version( cpe:CPE, port:port ) )
+  exit( 0 );
 
 if( vers =~ "^2\.7" ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"3.1.4" );

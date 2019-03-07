@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_flashchat_sec_bypass_vuln.nasl 4709 2016-12-08 09:44:07Z cfi $
+# $Id: gb_flashchat_sec_bypass_vuln.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # FlashChat Role Filter Security Bypass Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:tufat:flashchat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800616");
-  script_version("$Revision: 4709 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-08 10:44:07 +0100 (Thu, 08 Dec 2016) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-05-13 10:01:19 +0200 (Wed, 13 May 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -47,29 +47,21 @@ if(description)
   script_xref(name:"URL", value:"http://secunia.com/advisories/32350");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/45974");
 
-  tag_impact = "Successful exploitation will let the attacker bypass certain
-  security restrictions and gain unauthorized administrative access to the
-  affected application.";
+  script_tag(name:"impact", value:"Successful exploitation will let the attacker bypass certain
+  security restrictions and gain unauthorized administrative access to the affected application.");
 
-  tag_affected = "FlashChat Version 5.0.8 and prior";
+  script_tag(name:"affected", value:"FlashChat Version 5.0.8 and prior.");
 
-  tag_insight = "This flaw is due to an error in the connection.php script.
+  script_tag(name:"insight", value:"This flaw is due to an error in the connection.php script.
   By setting the 's' parameter to a value of '7' a remote attacker could bypass
-  the role filtering mechanism.";
+  the role filtering mechanism.");
 
-  tag_solution = "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.";
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
-  tag_summary = "This host is installed with FlashChat and is prone to Security
-  Bypass Vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"This host is installed with FlashChat and is prone to Security
+  Bypass Vulnerability.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -80,11 +72,14 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! vers = get_app_version( cpe:CPE, port:port ) )
+  exit( 0 );
 
 if( version_is_less_equal( version:vers, test_version:"5.0.8" ) ) {
-  report = report_fixed_ver( installed_version:vers, fixed_version:"None available" );
+  report = report_fixed_ver( installed_version:vers, fixed_version:"None" );
   security_message( port:port, data:report );
   exit( 0 );
 }

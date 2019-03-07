@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_dos_n_spoofing_vuln.nasl 6788 2017-07-21 19:16:52Z cfischer $
+# $Id: gb_mysql_dos_n_spoofing_vuln.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # MySQL Denial Of Service and Spoofing Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801064");
-  script_version("$Revision: 6788 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-21 21:16:52 +0200 (Fri, 21 Jul 2017) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-12-04 14:17:59 +0100 (Fri, 04 Dec 2009)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -48,44 +48,40 @@ if(description)
   script_xref(name:"URL", value:"http://marc.info/?l=oss-security&m=125881733826437&w=2");
   script_xref(name:"URL", value:"http://dev.mysql.com/doc/refman/5.0/en/news-5-0-88.html");
 
-  tag_impact = "Successful exploitation could allow users to cause a Denial of Service and
-  man-in-the-middle attackers to spoof arbitrary SSL-based MySQL servers via
-  a crafted certificate.
+  script_tag(name:"impact", value:"Successful exploitation could allow users to cause a Denial of Service and
+  man-in-the-middle attackers to spoof arbitrary SSL-based MySQL servers via a crafted certificate.");
 
-  Impact Level: Application";
+  script_tag(name:"affected", value:"MySQL 5.0.x before 5.0.88 and 5.1.x before 5.1.41 on all running platform.");
 
-  tag_affected = "MySQL 5.0.x before 5.0.88 and 5.1.x before 5.1.41 on all running platform.";
+  script_tag(name:"insight", value:"The flaws are due to:
 
-  tag_insight = "The flaws are due to:
   - mysqld does not properly handle errors during execution of certain SELECT
-    statements with subqueries, and does not preserve certain null_value flags
-    during execution of statements that use the 'GeomFromWKB()' function.
+  statements with subqueries, and does not preserve certain null_value flags
+  during execution of statements that use the 'GeomFromWKB()' function.
+
   - An error in 'vio_verify_callback()' function in 'viosslfactories.c', when
-    OpenSSL is used, accepts a value of zero for the depth of X.509 certificates.";
+  OpenSSL is used, accepts a value of zero for the depth of X.509 certificates.");
 
-  tag_solution = "Upgrade to MySQL version 5.0.88 or 5.1.41
-  For updates refer to http://dev.mysql.com/downloads";
+  script_tag(name:"solution", value:"Upgrade to MySQL version 5.0.88 or 5.1.41.");
 
-  tag_summary = "The host is running MySQL and is prone to Denial Of Service
-  and Spoofing Vulnerabilities";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"The host is running MySQL and is prone to Denial Of Service
+  and Spoofing Vulnerabilities");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
+  script_xref(name:"URL", value:"http://dev.mysql.com/downloads");
   exit(0);
 }
 
 include("version_func.inc");
 include("host_details.inc");
 
-if( ! sqlPort = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! mysqlVer = get_app_version( cpe:CPE, port:sqlPort ) ) exit( 0 );
+if( ! sqlPort = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! mysqlVer = get_app_version( cpe:CPE, port:sqlPort ) )
+  exit( 0 );
 
 if( version_in_range( version:mysqlVer, test_version:"5.0",test_version2:"5.0.87" ) ||
     version_in_range( version:mysqlVer, test_version:"5.1",test_version2:"5.1.40" ) ) {

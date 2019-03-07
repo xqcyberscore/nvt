@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_mult_vuln_dec09.nasl 10459 2018-07-09 07:41:24Z cfischer $
+# $Id: gb_php_mult_vuln_dec09.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # PHP Multiple Vulnerabilities - Dec09
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801060");
-  script_version("$Revision: 10459 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 09:41:24 +0200 (Mon, 09 Jul 2018) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-12-04 14:17:59 +0100 (Fri, 04 Dec 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_cve_id("CVE-2009-4018","CVE-2009-2626");
+  script_cve_id("CVE-2009-4018", "CVE-2009-2626");
   script_bugtraq_id(37138, 36009);
   script_name("PHP Multiple Vulnerabilities - Dec09");
   script_category(ACT_GATHER_INFO);
@@ -50,27 +50,24 @@ if(description)
 
   script_tag(name:"summary", value:"This host is running PHP and is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version of PHP with the help of detect NVT and check
-  the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to:
 
-   - Error in 'proc_open()' function in 'ext/standard/proc_open.c' that does not
-     enforce the 'safe_mode_allowed_env_vars' and 'safe_mode_protected_env_vars'
-     directives, which allows attackers to execute programs with an arbitrary
-     environment via the env parameter.
+  - Error in 'proc_open()' function in 'ext/standard/proc_open.c' that does not
+  enforce the 'safe_mode_allowed_env_vars' and 'safe_mode_protected_env_vars'
+  directives, which allows attackers to execute programs with an arbitrary
+  environment via the env parameter.
 
-   - Error in 'zend_restore_ini_entry_cb()' function in 'zend_ini.c', which
-     allows attackers to obtain sensitive information.");
+  - Error in 'zend_restore_ini_entry_cb()' function in 'zend_ini.c', which
+  allows attackers to obtain sensitive information.");
 
   script_tag(name:"impact", value:"Successful exploitation could allow local attackers to bypass certain
-  security restrictions and cause denial of service.
-
-  Impact Level: Network");
+  security restrictions and cause denial of service.");
 
   script_tag(name:"affected", value:"PHP version 5.2.10 and prior. PHP version 5.3.x before 5.3.1");
 
-  script_tag(name:"solution", value:"Upgrade to PHP version 5.3.1, http://www.php.net/downloads.php");
+  script_tag(name:"solution", value:"Upgrade to version 5.3.1 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
@@ -81,8 +78,11 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-if( isnull( port = get_app_port( cpe:CPE ) ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( isnull( port = get_app_port( cpe:CPE ) ) )
+  exit( 0 );
+
+if( ! vers = get_app_version( cpe:CPE, port:port ) )
+  exit( 0 );
 
 if( version_is_less( version:vers, test_version:"5.2.11" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"5.2.11" );

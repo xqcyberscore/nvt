@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_torrent_trader_classic_mult_vuln.nasl 9334 2018-04-05 13:34:45Z cfischer $
+# $Id: gb_torrent_trader_classic_mult_vuln.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # TorrentTrader Classic Multiple Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:torrenttrader:torrenttrader_classic";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800522");
-  script_version("$Revision: 9334 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-05 15:34:45 +0200 (Thu, 05 Apr 2018) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-07-07 11:58:41 +0200 (Tue, 07 Jul 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -50,25 +50,22 @@ if(description)
 
   script_tag(name:"affected", value:"TorrentTrader Classic version 1.09 and prior.");
 
-  script_tag(name:"insight", value:"Multiple flaws due to,improper validation of user-supplied input data to
-  different parameters and Access to the '.php' scripts are not properly
-  restricted.");
+  script_tag(name:"insight", value:"Multiple flaws due to, improper validation of user-supplied input data to
+  different parameters and Access to the '.php' scripts are not properly restricted.");
 
-  script_tag(name:"solution", value:"Upgrade to TorrentTrader Classic version 2.0.6 or later
-  For updates refer to http://sourceforge.net/projects/torrenttrader");
+  script_tag(name:"solution", value:"Upgrade to TorrentTrader Classic version 2.0.6 or later.");
 
   script_tag(name:"summary", value:"This host is running TorrentTrader Classic and is prone to
   multiple vulnerabilities.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to inject and execute
   arbitrary SQL queries via malicious SQL code, and can gain sensitive
-  information about remote system user credentials and database.
-
-  Impact level: Application/System");
+  information about remote system user credentials and database.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
 
+  script_xref(name:"URL", value:"http://sourceforge.net/projects/torrenttrader");
   exit(0);
 }
 
@@ -77,8 +74,11 @@ include("http_keepalive.inc");
 include("version_func.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:FALSE ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:FALSE ) )
+  exit( 0 );
 
 vers = infos['version'];
 dir = infos['location'];

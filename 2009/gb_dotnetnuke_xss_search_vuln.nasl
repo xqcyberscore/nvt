@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotnetnuke_xss_search_vuln.nasl 4865 2016-12-28 16:16:43Z teissa $
+# $Id: gb_dotnetnuke_xss_search_vuln.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # DotNetNuke Cross Site Scripting Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:dotnetnuke:dotnetnuke";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800152");
-  script_version("$Revision: 4865 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-28 17:16:43 +0100 (Wed, 28 Dec 2016) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-12-02 13:54:57 +0100 (Wed, 02 Dec 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -45,14 +45,15 @@ if(description)
   script_mandatory_keys("dotnetnuke/installed");
 
   script_tag(name:"impact", value:"Successful attack could lead to execution of arbitrary HTML and script code
-  in the context of an affected site.
+  in the context of an affected site.");
 
-  Impact Level: Application");
   script_tag(name:"affected", value:"DotNetNuke versions 4.8 through 5.1.4 on all running platforms.");
+
   script_tag(name:"insight", value:"The flaw is due to input passed to the search parameters are not properly
   sanitized before being returned to the user.");
-  script_tag(name:"solution", value:"Update to version 5.2.0 or later,
-  For updates refer to http://www.dotnetnuke.com/");
+
+  script_tag(name:"solution", value:"Update to version 5.2.0 or later.");
+
   script_tag(name:"summary", value:"The host is installed with DotNetNuke and is prone to Cross Site
   Scripting Vulnerability.");
 
@@ -65,18 +66,19 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! vers = get_app_version( cpe:CPE, port:port ) )
+  exit( 0 );
 
 if( version_in_range( version:vers, test_version:"4.8", test_version2:"5.1.4" ) ) {
-
   report = report_fixed_ver( installed_version:vers, fixed_version:"5.2.0" );
   security_message( port:port, data:report );
   exit( 0 );
-}  
+}
 
 exit( 99 );

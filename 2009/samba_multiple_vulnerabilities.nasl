@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: samba_multiple_vulnerabilities.nasl 10398 2018-07-04 12:11:48Z cfischer $
+# $Id: samba_multiple_vulnerabilities.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # Samba multiple vulnerabilities
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:samba:samba";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100306");
-  script_version("$Revision: 10398 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-04 14:11:48 +0200 (Wed, 04 Jul 2018) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-10-15 20:14:59 +0200 (Thu, 15 Oct 2009)");
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
-  script_bugtraq_id(36363,36572,36573);
-  script_cve_id("CVE-2009-2813","CVE-2009-2948","CVE-2009-2906");
+  script_bugtraq_id(36363, 36572, 36573);
+  script_cve_id("CVE-2009-2813", "CVE-2009-2948", "CVE-2009-2906");
   script_name("Samba multiple vulnerabilities");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -75,8 +75,12 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-if( isnull( port = get_app_port( cpe:CPE ) ) ) exit( 0 );
-if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:TRUE ) ) exit( 0 );
+if( isnull( port = get_app_port( cpe:CPE ) ) )
+  exit( 0 );
+
+if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:TRUE ) )
+  exit( 0 );
+
 vers = infos['version'];
 loc = infos['location'];
 

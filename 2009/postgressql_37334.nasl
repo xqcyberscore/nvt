@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: postgressql_37334.nasl 7406 2017-10-12 06:15:28Z cfischer $
+# $Id: postgressql_37334.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # PostgreSQL NULL Character CA SSL Certificate Validation Security Bypass Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:postgresql:postgresql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100400");
-  script_version("$Revision: 7406 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-12 08:15:28 +0200 (Thu, 12 Oct 2017) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-12-16 12:39:06 +0100 (Wed, 16 Dec 2009)");
-  script_bugtraq_id(37334,37333);
-  script_cve_id("CVE-2009-4034","CVE-2009-4136");
+  script_bugtraq_id(37334, 37333);
+  script_cve_id("CVE-2009-4034", "CVE-2009-4136");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
   script_name("PostgreSQL NULL Character CA SSL Certificate Validation Security Bypass Vulnerability");
@@ -50,28 +50,22 @@ if(description)
   script_xref(name:"URL", value:"http://www.postgresql.org/support/security");
   script_xref(name:"URL", value:"http://www.postgresql.org/about/news.1170");
 
-  tag_summary = "PostgreSQL is prone to a security-bypass vulnerability because the
-  application fails to properly validate the domain name in a signed CA
-  certificate, allowing attackers to substitute malicious SSL
-  certificates for trusted ones.
+  script_tag(name:"summary", value:"PostgreSQL is prone to a security-bypass vulnerability because the
+  application fails to properly validate the domain name in a signed CA certificate, allowing attackers
+  to substitute malicious SSL certificates for trusted ones.
 
-  PostgreSQL is also prone to a local privilege-escalation vulnerability.";
+  PostgreSQL is also prone to a local privilege-escalation vulnerability.");
 
-  tag_impact = "Successfully exploiting this issue allows attackers to perform man-in-the-
+  script_tag(name:"impact", value:"Successfully exploiting this issue allows attackers to perform man-in-the-
   middle attacks or impersonate trusted servers, which will aid in further attacks.
 
   Exploiting the privilege-escalation vulnerability allows local attackers to gain elevated
-  privileges.";
+  privileges.");
 
-  tag_affected = "PostgreSQL versions prior to 8.4.2, 8.3.9, 8.2.15, 8.1.19, 8.0.23, and
-  7.4.27 are vulnerable to this issue.";
+  script_tag(name:"affected", value:"PostgreSQL versions prior to 8.4.2, 8.3.9, 8.2.15, 8.1.19, 8.0.23, and
+  7.4.27 are vulnerable to this issue.");
 
-  tag_solution = "Updates are available. Please see the references for more information.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
@@ -82,8 +76,11 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! vers = get_app_version( cpe:CPE, port:port ) )
+  exit( 0 );
 
 if( version_in_range( version:vers, test_version:"8.4", test_version2:"8.4.1" )  ||
     version_in_range( version:vers, test_version:"8.3", test_version2:"8.3.8" )  ||

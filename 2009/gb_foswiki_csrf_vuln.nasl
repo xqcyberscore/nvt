@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foswiki_csrf_vuln.nasl 5126 2017-01-27 14:56:16Z cfi $
+# $Id: gb_foswiki_csrf_vuln.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # Foswiki Cross-Site Request Forgery Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:foswiki:foswiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800613");
-  script_version("$Revision: 5126 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-27 15:56:16 +0100 (Fri, 27 Jan 2017) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-05-11 08:41:11 +0200 (Mon, 11 May 2009)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -46,27 +46,18 @@ if(description)
   script_xref(name:"URL", value:"http://secunia.com/advisories/34863");
   script_xref(name:"URL", value:"http://foswiki.org/Support/SecurityAlert-CVE-2009-1434");
 
-  tag_impact = "Successful exploitation will allow attacker to gain administrative
-  privileges on the target application and can cause CSRF attack.
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to gain administrative
+  privileges on the target application and can cause CSRF attack.");
 
-  Impact Level: Application";
+  script_tag(name:"affected", value:"Foswiki version prior to 1.0.5.");
 
-  tag_affected = "Foswiki version prior to 1.0.5";
+  script_tag(name:"insight", value:"An application allowing users to perform certain actions via HTTP requests
+  without performing any validity checks to verify the requests.");
 
-  tag_insight = "An application allowing users to perform certain actions via HTTP requests
-  without performing any validity checks to verify the requests.";
+  script_tag(name:"solution", value:"Upgrade to version 1.0.5 or later.");
 
-  tag_solution = "Upgrade to version 1.0.5 or later,
-  http://foswiki.org/Download";
-
-  tag_summary = "The host is running Foswiki and is prone to Cross-Site Request Forgery
-  Vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"The host is running Foswiki and is prone to Cross-Site Request Forgery
+  Vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -77,8 +68,11 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! vers = get_app_version( cpe:CPE, port:port ) )
+  exit( 0 );
 
 if( version_is_less( version:vers, test_version:"1.0.5" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"1.0.5" );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moziloCMS_mult_xss_vuln.nasl 12930 2019-01-03 16:22:18Z cfischer $
+# $Id: gb_moziloCMS_mult_xss_vuln.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # moziloCMS Multiple Cross Site Scripting Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:mozilo:mozilocms";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801076");
-  script_version("$Revision: 12930 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-03 17:22:18 +0100 (Thu, 03 Jan 2019) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-12-09 07:52:52 +0100 (Wed, 09 Dec 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -66,8 +66,6 @@ if(description)
   exit(0);
 }
 
-include("http_func.inc");
-include("http_keepalive.inc");
 include("version_func.inc");
 include("host_details.inc");
 

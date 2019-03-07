@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_drupal_session_hijacking_vuln.nasl 12083 2018-10-25 09:48:10Z cfischer $
+# $Id: gb_drupal_session_hijacking_vuln.nasl 14033 2019-03-07 11:09:35Z cfischer $
 #
 # Drupal Session Hijacking Vulnerability
 #
@@ -27,11 +27,11 @@
 
 CPE = 'cpe:/a:drupal:drupal';
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105935");
-  script_version("$Revision: 12083 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 11:48:10 +0200 (Thu, 25 Oct 2018) $");
+  script_version("$Revision: 14033 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 12:09:35 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-12-09 16:55:49 +0700 (Tue, 09 Dec 2014)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -42,7 +42,7 @@ if (description)
   script_name("Drupal Session Hijacking Vulnerability");
 
   script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
   script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -56,7 +56,7 @@ if (description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"A special crafted request can give a user access to another
-user's session, allowing an attacker to hijack a random session.");
+  user's session, allowing an attacker to hijack a random session.");
 
   script_tag(name:"impact", value:"An attacker may gain unauthorized access to the application.");
 
@@ -79,13 +79,15 @@ if (!version = get_app_version(cpe:CPE, port:port, version_regex:"^[0-9]\.[0-9]+
   exit(0);
 
 if (version_is_less(version:version, test_version:"6.34")) {
-  security_message(port:port);
+  report = report_fixed_ver(installed_version:version, fixed_version:"6.34");
+  security_message(port:port, data:report);
   exit(0);
 }
 
 if (version =~ "^7") {
   if (version_is_less(version:version, test_version:"7.34")) {
-    security_message(port:port);
+    report = report_fixed_ver(installed_version:version, fixed_version:"7.34");
+    security_message(port:port, data:report);
     exit(0);
   }
 }

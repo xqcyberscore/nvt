@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_php_unserialize_dos_vuln.nasl 10459 2018-07-09 07:41:24Z cfischer $
+# $Id: secpod_php_unserialize_dos_vuln.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # PHP 'unserialize()' Function Denial of Service Vulnerability
 #
@@ -28,8 +28,8 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900993");
-  script_version("$Revision: 10459 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 09:41:24 +0200 (Mon, 09 Jul 2018) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-12-31 08:44:14 +0100 (Thu, 31 Dec 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -45,9 +45,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.suspekt.org/downloads/POC2009-ShockingNewsInPHPExploitation.pdf");
 
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary PHP
-  code and cause denial of service.
-
-  Impact Level: Application");
+  code and cause denial of service.");
 
   script_tag(name:"affected", value:"PHP 5.3.0 and prior on all running platform.");
 
@@ -72,11 +70,14 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-if( isnull( phpPort = get_app_port( cpe:CPE ) ) ) exit( 0 );
-if( ! phpVer = get_app_version( cpe:CPE, port:phpPort ) ) exit( 0 );
+if( isnull( phpPort = get_app_port( cpe:CPE ) ) )
+  exit( 0 );
+
+if( ! phpVer = get_app_version( cpe:CPE, port:phpPort ) )
+  exit( 0 );
 
 if( version_is_less_equal( version:phpVer, test_version:"5.3.0" ) ) {
-  report = report_fixed_ver( installed_version:phpVer, fixed_version:"N/A" );
+  report = report_fixed_ver( installed_version:phpVer, fixed_version:"None" );
   security_message( data:report, port:phpPort );
   exit( 0 );
 }

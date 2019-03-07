@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_php_mult_vuln_sep09.nasl 10459 2018-07-09 07:41:24Z cfischer $
+# $Id: secpod_php_mult_vuln_sep09.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # PHP Multiple Vulnerabilities - Sep09
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900871");
-  script_version("$Revision: 10459 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 09:41:24 +0200 (Mon, 09 Jul 2018) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-09-29 09:16:03 +0200 (Tue, 29 Sep 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -49,22 +49,19 @@ if(description)
   script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2009/09/20/1");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to spoof certificates and can
-  cause unknown impacts in the context of the web application.
-
-  Impact Level: Application");
+  cause unknown impacts in the context of the web application.");
 
   script_tag(name:"affected", value:"PHP version prior to 5.2.11");
 
   script_tag(name:"insight", value:"- An error in 'php_openssl_apply_verification_policy' function that does not
-    properly perform certificate validation.
+  properly perform certificate validation.
 
   - An input validation error exists in the processing of 'exif' data.
 
   - An unspecified error exists related to the sanity check for the color index
-    in the 'imagecolortransparent' function.");
+  in the 'imagecolortransparent' function.");
 
-  script_tag(name:"solution", value:"Upgrade to version 5.2.11 or later
-  http://www.php.net/downloads.php");
+  script_tag(name:"solution", value:"Upgrade to version 5.2.11 or later.");
 
   script_tag(name:"summary", value:"This host is running PHP and is prone to multiple vulnerabilities.");
 
@@ -77,8 +74,11 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-if( isnull( phpPort = get_app_port( cpe:CPE ) ) ) exit( 0 );
-if( ! phpVer = get_app_version( cpe:CPE, port:phpPort ) ) exit( 0 );
+if( isnull( phpPort = get_app_port( cpe:CPE ) ) )
+  exit( 0 );
+
+if( ! phpVer = get_app_version( cpe:CPE, port:phpPort ) )
+  exit( 0 );
 
 if( version_is_less( version:phpVer, test_version:"5.2.11" ) ) {
   report = report_fixed_ver( installed_version:phpVer, fixed_version:"5.2.11" );

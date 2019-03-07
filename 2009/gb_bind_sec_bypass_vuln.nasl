@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bind_sec_bypass_vuln.nasl 4435 2016-11-07 17:16:00Z cfi $
+# $Id: gb_bind_sec_bypass_vuln.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # OpenSSL DSA_verify() Security Bypass Vulnerability in BIND
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:isc:bind";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800338");
-  script_version("$Revision: 4435 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-07 18:16:00 +0100 (Mon, 07 Nov 2016) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-01-15 16:11:17 +0100 (Thu, 15 Jan 2009)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -47,28 +47,19 @@ if(description)
   script_xref(name:"URL", value:"http://secunia.com/advisories/33404/");
   script_xref(name:"URL", value:"http://www.ocert.org/advisories/ocert-2008-016.html");
 
-  tag_impact = "Successful exploitation could allow remote attackers to bypass the certificate
+  script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to bypass the certificate
   validation checks and can cause man-in-the-middle attack via signature checks
-  on DSA and ECDSA keys used with SSL/TLS.
+  on DSA and ECDSA keys used with SSL/TLS.");
 
-  Impact Level: Application";
+  script_tag(name:"affected", value:"ISC BIND version prior to 9.2 or 9.6.0 P1 or 9.5.1 P1 or 9.4.3 P1 or 9.3.6 P1/Linux.");
 
-  tag_affected = "ISC BIND version prior to 9.2 or 9.6.0 P1 or 9.5.1 P1 or 9.4.3 P1 or 9.3.6 P1/Linux";
+  script_tag(name:"insight", value:"The flaw is due to improper validation of return value from OpenSSL's
+  DSA_do_verify and VP_VerifyFinal functions.");
 
-  tag_insight = "The flaw is due to improper validation of return value from OpenSSL's
-  DSA_do_verify and VP_VerifyFinal functions.";
+  script_tag(name:"solution", value:"Upgrade to version 9.6.0 P1, 9.5.1 P1, 9.4.3 P1, 9.3.6 P1.");
 
-  tag_solution = "Upgrade to version 9.6.0 P1, 9.5.1 P1, 9.4.3 P1, 9.3.6 P1
-  https://www.isc.org/downloadables/11";
-
-  tag_summary = "The host is running BIND and is prone to Security Bypass
-  Vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"The host is running BIND and is prone to Security Bypass
+  Vulnerability.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -79,8 +70,11 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! infos = get_app_version_and_proto( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! infos = get_app_version_and_proto( cpe:CPE, port:port ) )
+  exit( 0 );
 
 version = infos["version"];
 proto = infos["proto"];
@@ -94,7 +88,6 @@ if( version[1] != NULL ) {
     version = version[1];
   }
 
-  # Check for version < 9.2 or 9.6.0 P1 or 9.5.1 P1 or 9.4.3 P1 or 9.3.6 P1
   if( version_in_range( version:version, test_version:"9.6", test_version2:"9.6.0" ) ||
      version_in_range( version:version, test_version:"9.5", test_version2:"9.5.1" ) ||
      version_in_range( version:version, test_version:"9.4", test_version2:"9.4.3" ) ||

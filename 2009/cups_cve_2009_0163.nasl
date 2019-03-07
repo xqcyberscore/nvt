@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cups_cve_2009_0163.nasl 4574 2016-11-18 13:36:58Z teissa $
+# $Id: cups_cve_2009_0163.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # CUPS '_cupsImageReadTIFF()' Integer Overflow Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:apple:cups";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100150");
-  script_version("$Revision: 4574 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-18 14:36:58 +0100 (Fri, 18 Nov 2016) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-04-17 18:35:24 +0200 (Fri, 17 Apr 2009)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -47,33 +47,32 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/34571");
   script_xref(name:"URL", value:"http://www.cups.org/str.php?L3031");
 
-  tag_summary = "This host is running CUPS (Common UNIX Printing System) Service,
-  which is prone to an Integer Overflow Vulnerabilities.";
+  script_tag(name:"impact", value:"Successful exploits may allow attackers to execute arbitrary code
+  with the privileges of a user running the utilities. Failed exploit attempts likely cause
+  denial-of-service conditions.");
 
-  tag_impact ="Successful exploits may allow attackers to execute arbitrary code
-  with the privileges of a user running the utilities. Failed exploit
-  attempts likely cause denial-of-service conditions.";
+  script_tag(name:"affected", value:"CUPS versions prior to 1.3.10.");
 
-  tag_affected = "CUPS versions prior to 1.3.10";
+  script_tag(name:"solution", value:"Update to version 1.3.10 or later.");
 
-  tag_solution = "Updates are available. Please see http://www.cups.org/software.php
-  for more information.";
-
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"This host is running CUPS (Common UNIX Printing System) Service,
+  which is prone to an Integer Overflow Vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
+  script_xref(name:"URL", value:"http://www.cups.org/software.php");
   exit(0);
 }
 
 include("version_func.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! vers = get_app_version( cpe:CPE, port:port ) )
+  exit( 0 );
 
 if( vers !~ "[0-9]+\.[0-9]+\.[0-9]+") exit( 0 ); # Version is not exact enough
 

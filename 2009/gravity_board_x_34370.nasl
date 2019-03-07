@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gravity_board_x_34370.nasl 11449 2018-09-18 10:04:42Z mmartin $
+# $Id: gravity_board_x_34370.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # Gravity Board X Multiple SQL Injection Vulnerabilities and Remote
 # Command Execution Vulnerability
@@ -27,11 +27,11 @@
 
 CPE = 'cpe:/a:gravityboardx:gravity_board_x';
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100101");
-  script_version("$Revision: 11449 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 12:04:42 +0200 (Tue, 18 Sep 2018) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-04-05 13:52:05 +0200 (Sun, 05 Apr 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -51,20 +51,19 @@ if (description)
   script_require_ports("Services/www", 80);
 
   script_tag(name:"summary", value:"Gravity Board X is prone to multiple SQL-injection vulnerabilities and a
-remote command-execution because it fails to sufficiently sanitize user-supplied data before using it in an SQL
-query.
+  remote command-execution because it fails to sufficiently sanitize user-supplied data before using it in an SQL query.");
 
-Exploiting these issues could allow an attacker to execute arbitrary code, compromise the application. access or
-modify data, or exploit latent vulnerabilities in the underlying database.
+  script_tag(name:"impact", value:"Exploiting these issues could allow an attacker to execute arbitrary code, compromise
+  the application. access or modify data, or exploit latent vulnerabilities in the underlying database.");
 
-Gravity Board X 2.0 is vulnerable, other versions may also be affected.");
+  script_tag(name:"affected", value:"Gravity Board X 2.0 is vulnerable, other versions may also be affected.");
 
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the
-disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to
-a newer release, disable respective features, remove the product or replace the product by another one.");
+  disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to
+  a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/34370");
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

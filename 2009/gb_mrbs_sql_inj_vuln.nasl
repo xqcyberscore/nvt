@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mrbs_sql_inj_vuln.nasl 7862 2017-11-22 10:11:26Z cfischer $
+# $Id: gb_mrbs_sql_inj_vuln.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # Meeting Room Booking System SQL Injection Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:john_beranek:meeting_room_booking_system";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800950");
-  script_version("$Revision: 7862 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-22 11:11:26 +0100 (Wed, 22 Nov 2017) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-10-12 07:28:01 +0200 (Mon, 12 Oct 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -47,40 +47,34 @@ if(description)
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/51772");
   script_xref(name:"URL", value:"http://mrbs.sourceforge.net/view_text.php?section=NEWS&file=NEWS");
 
-  tag_impact = "Attackers can exploit this issue to inject arbitrary SQL code and modify
-  information in the back-end database.
+  script_tag(name:"impact", value:"Attackers can exploit this issue to inject arbitrary SQL code and modify
+  information in the back-end database.");
 
-  Impact Level: Application.";
+  script_tag(name:"affected", value:"Meeting Room Booking System prior to 1.4.2 on all platforms.");
 
-  tag_affected = "Meeting Room Booking System prior to 1.4.2 on all platforms.";
+  script_tag(name:"insight", value:"The user supplied data passed into 'typematch' parameter in report.php is
+  not properly sanitised before being used in an SQL query.");
 
-  tag_insight = "The user supplied data passed into 'typematch' parameter in report.php is
-  not properly sanitised before being used in an SQL query.";
+  script_tag(name:"solution", value:"Upgrade to Meeting Room Booking System 1.4.2 or later.");
 
-  tag_solution = "Upgrade to Meeting Room Booking System 1.4.2 or later.
-
-  For updates refer to http://mrbs.sourceforge.net/download.php";
-
-  tag_summary = "This host is installed with Meeting Room Booking System and is
-  prone to a SQL Injection vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"This host is installed with Meeting Room Booking System and is
+  prone to a SQL Injection vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
+  script_xref(name:"URL", value:"http://mrbs.sourceforge.net/download.php");
   exit(0);
 }
 
 include("host_details.inc");
 include("version_func.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! vers = get_app_version( cpe:CPE, port:port ) )
+  exit( 0 );
 
 if( version_is_less( version:vers, test_version:"1.4.2" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"1.4.2" );

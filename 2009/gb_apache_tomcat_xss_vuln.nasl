@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_xss_vuln.nasl 4355 2016-10-26 13:50:18Z cfi $
+# $Id: gb_apache_tomcat_xss_vuln.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # Apache Tomcat cal2.jsp Cross Site Scripting Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800372");
-  script_version("$Revision: 4355 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-26 15:50:18 +0200 (Wed, 26 Oct 2016) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-03-18 14:25:01 +0100 (Wed, 18 Mar 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -49,9 +49,8 @@ if(description)
   script_xref(name:"URL", value:"http://tomcat.apache.org/security-5.html");
   script_xref(name:"URL", value:"http://tomcat.apache.org/security-4.html");
 
-  script_tag(name:"impact" , value : "Successful exploitation will allow remote attackers to inject arbitrary HTML
-  codes in the context of the affected web application.
-  Impact Level: Application");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to inject arbitrary HTML
+  codes in the context of the affected web application.");
 
   script_tag(name:"affected", value:"Apache Tomcat version 4.1.0 to 4.1.39, 5.0.0 to 5.0.28, 5.5.0 to 5.5.27 and 6.0.0 to 6.0.18");
 
@@ -73,8 +72,11 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! dir = get_app_location( cpe:CPE, port:port ) )
+  exit( 0 );
 
 # XSS attack string test in 'time' parameter inside cal2.jsp page
 url = string( "/jsp-examples/cal/cal2.jsp?time=%74%65%73%74%3C%73%63%72%69"+
@@ -84,7 +86,8 @@ url = string( "/jsp-examples/cal/cal2.jsp?time=%74%65%73%74%3C%73%63%72%69"+
 req = http_get( item:url, port:port );
 res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
-if( res  !~ "HTTP/1\.. 200" ) exit( 0 );
+if( ! res || res  !~ "^HTTP/1\.[01] 200" )
+  exit( 0 );
 
 if( "test" >< res && "attack" >< res ) {
   report = report_vuln_url( port:port, url:url );

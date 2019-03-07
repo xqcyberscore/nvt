@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: eggdrop_34985.nasl 9637 2018-04-27 02:39:45Z ckuersteiner $
+# $Id: eggdrop_34985.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # Cacti 'data_input.php' Cross Site Scripting Vulnerability
 #
@@ -26,45 +26,46 @@
 
 CPE = 'cpe:/a:eggheads:eggdrop';
 
-if (description)
+if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.100207");
- script_version("$Revision: 9637 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-27 04:39:45 +0200 (Fri, 27 Apr 2018) $");
- script_tag(name:"creation_date", value:"2009-05-16 14:32:16 +0200 (Sat, 16 May 2009)");
- script_cve_id("CVE-2009-1789");
- script_bugtraq_id(34985);
- script_tag(name:"cvss_base", value:"4.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
+  script_oid("1.3.6.1.4.1.25623.1.0.100207");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2009-05-16 14:32:16 +0200 (Sat, 16 May 2009)");
+  script_cve_id("CVE-2009-1789");
+  script_bugtraq_id(34985);
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
 
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_name("Eggdrop 'ctcpbuf' Remote Denial Of Service Vulnerability");
+  script_name("Eggdrop 'ctcpbuf' Remote Denial Of Service Vulnerability");
 
- script_tag(name:"qod_type", value:"remote_banner");
- script_category(ACT_GATHER_INFO);
- script_family("Denial of Service");
- script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
- script_dependencies("eggdrop_detect.nasl");
- script_mandatory_keys("eggdrop/installed");
- script_require_ports("Services/eggdrop",3333);
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_category(ACT_GATHER_INFO);
+  script_family("Denial of Service");
+  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
+  script_dependencies("eggdrop_detect.nasl");
+  script_mandatory_keys("eggdrop/installed");
+  script_require_ports("Services/eggdrop", 3333);
 
- script_tag(name: "solution", value: "The vendor has released an update. Please see http://www.eggheads.org/ for
-more information.");
+  script_tag(name:"solution", value:"The vendor has released an update. Please");
 
- script_tag(name: "summary", value: "Eggdrop is prone to a remote denial-of-service vulnerability because it fails
-to adequately validate user-supplied input.
+  script_tag(name:"summary", value:"Eggdrop is prone to a remote denial-of-service vulnerability because it fails
+  to adequately validate user-supplied input.");
 
-An attacker may exploit this issue to crash the application, resulting in a denial-of-service condition.
+  script_tag(name:"impact", value:"An attacker may exploit this issue to crash the application, resulting in a
+  denial-of-service condition.");
 
-This issue is related to the vulnerability described in BID 24070 (Eggdrop Server Module Message Handling Remote
-Buffer Overflow Vulnerability).
+  script_tag(name:"insight", value:"This issue is related to the vulnerability described in BID 2407
+  (Eggdrop Server Module Message Handling Remote Buffer Overflow Vulnerability).");
 
-Versions prior to Eggdrop 1.6.19+ctcpfix are vulnerable.");
+  script_tag(name:"affected", value:"Versions prior to Eggdrop 1.6.19+ctcpfix are vulnerable.");
 
- script_xref(name: "URL", value: "http://www.securityfocus.com/bid/34985");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/34985");
 
- exit(0);
+  script_xref(name:"URL", value:"http://www.eggheads.org/");
+  exit(0);
 }
 
 include("host_details.inc");

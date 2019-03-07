@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_drupal_core_rce_vuln_SA-CORE-2018-002_active.nasl 12012 2018-10-22 09:20:29Z asteins $
+# $Id: gb_drupal_core_rce_vuln_SA-CORE-2018-002_active.nasl 14034 2019-03-07 11:12:35Z cfischer $
 #
 # Drupal Core Critical Remote Code Execution Vulnerability (SA-CORE-2018-002) (Active Check)
 #
@@ -29,17 +29,17 @@ CPE = 'cpe:/a:drupal:drupal';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108438");
-  script_version("$Revision: 12012 $");
+  script_version("$Revision: 14034 $");
   script_cve_id("CVE-2018-7600");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 11:20:29 +0200 (Mon, 22 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 12:12:35 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-04-14 13:29:22 +0200 (Sat, 14 Apr 2018)");
   script_name("Drupal Core Critical Remote Code Execution Vulnerability (SA-CORE-2018-002) (Active Check)");
-  script_category(ACT_GATHER_INFO);
+  script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("drupal_detect.nasl", "os_detection.nasl");
+  script_dependencies("drupal_detect.nasl");
   script_mandatory_keys("drupal/installed");
   script_require_ports("Services/www", 80);
 
@@ -90,9 +90,14 @@ include("http_keepalive.inc");
 include("host_details.inc");
 include("misc_func.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
-if( dir == "/" ) dir = "";
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! dir = get_app_location( cpe:CPE, port:port ) )
+  exit( 0 );
+
+if( dir == "/" )
+  dir = "";
 
 check = rand_str( length:16 );
 # nb: URL rewriting on/off
@@ -159,4 +164,4 @@ if (!isnull(build_id[1])) {
   }
 }
 
-exit( 0 );
+exit( 99 );

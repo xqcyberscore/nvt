@@ -1,0 +1,23 @@
+License information for Greenbone Community Feed
+------------------------------------------------
+
+The effective license for the Network Vulnerability Tests 
+(NVTs) of the Greenbone Community Feed is the 
+GNU General Public License Version 2 (GNU GPLv2).
+
+The separate signatures files (files ending with ".asc")
+and the checksum files are proprietary datafiles of Greenbone
+Networks GmbH.
+The signature files prove that the corresponding NVTs have not
+been compromised by a third party.
+
+The majority of NVT's is licensed under "GNU GPLv2 or any
+later version" (GNU GPLv2+). There are, however, several
+NVT's licensed under "GNU GPLv2" and "GPLv2 or GPLv3".
+You will find the actual license of each file in the
+header part.
+
+GPLv2: See file LICENSE.GPLv2
+
+For more information please contact Greenbone Networks GmbH:
+https://www.greenbone.net or info@greenbone.net

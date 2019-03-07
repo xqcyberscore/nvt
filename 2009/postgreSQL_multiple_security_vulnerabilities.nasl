@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: postgreSQL_multiple_security_vulnerabilities.nasl 7406 2017-10-12 06:15:28Z cfischer $
+# $Id: postgreSQL_multiple_security_vulnerabilities.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # PostgreSQL Multiple Security Vulnerabilities
 #
@@ -26,14 +26,14 @@
 
 CPE = "cpe:/a:postgresql:postgresql";
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100273");
-  script_version("$Revision: 7406 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-12 08:15:28 +0200 (Thu, 12 Oct 2017) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-10-01 18:57:31 +0200 (Thu, 01 Oct 2009)");
   script_bugtraq_id(36314);
-  script_cve_id("CVE-2009-3229","CVE-2009-3230","CVE-2009-3231");
+  script_cve_id("CVE-2009-3229", "CVE-2009-3230", "CVE-2009-3231");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_name("PostgreSQL Multiple Security Vulnerabilities");
@@ -50,20 +50,14 @@ if (description)
   script_xref(name:"URL", value:"http://www.postgresql.org/support/security");
   script_xref(name:"URL", value:"http://permalink.gmane.org/gmane.comp.security.oss.general/2088");
 
-  tag_summary = "PostgreSQL is prone to multiple security vulnerabilities, including a
-  denial-of-service issue, a privilege-escalation issue, and an authentication-
-  bypass issue.";
+  script_tag(name:"summary", value:"PostgreSQL is prone to multiple security vulnerabilities, including a
+  denial-of-service issue, a privilege-escalation issue, and an authentication-bypass issue.");
 
-  tag_impact = "Attackers can exploit these issues to shut down affected servers,
-  perform certain actions with elevated privileges, and bypass
-  authentication mechanisms to perform unauthorized actions. Other
-  attacks may also be possible.";
+  script_tag(name:"impact", value:"Attackers can exploit these issues to shut down affected servers,
+  perform certain actions with elevated privileges, and bypass authentication mechanisms to perform
+  unauthorized actions. Other attacks may also be possible.");
 
-  tag_solution = "Updates are available. Please see the references for more information.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
@@ -74,8 +68,11 @@ if (description)
 include("version_func.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! vers = get_app_version( cpe:CPE, port:port ) )
+  exit( 0 );
 
 if( version_in_range( version:vers, test_version:"8.4", test_version2:"8.4.0" )  ||
     version_in_range( version:vers, test_version:"8.3", test_version2:"8.3.7" )  ||

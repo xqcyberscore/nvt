@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apache_mod_proxy_ajp_info_disc_vuln.nasl 9218 2018-03-27 11:35:33Z cfischer $
+# $Id: secpod_apache_mod_proxy_ajp_info_disc_vuln.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # Apache mod_proxy_ajp Information Disclosure Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900499");
-  script_version("$Revision: 9218 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-27 13:35:33 +0200 (Tue, 27 Mar 2018) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-04-30 06:40:16 +0200 (Thu, 30 Apr 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -49,45 +49,39 @@ if(description)
   script_xref(name:"URL", value:"http://svn.apache.org/viewvc/httpd/httpd/trunk/CHANGES?r1=766938&r2=767089");
   script_xref(name:"URL", value:"https://archive.apache.org/dist/httpd/patches/apply_to_2.2.11/PR46949.diff");
 
-  tag_affected = "Apache HTTP Versions prior to 2.2.15 running mod_proxy_ajp.";
+  script_tag(name:"insight", value:"This flaw is due to an error in 'mod_proxy_ajp' when handling
+  improperly malformed POST requests.");
 
-  tag_impact = "Successful exploitation will let the attacker craft a special HTTP POST
-  request and gain sensitive information about the web server.
+  script_tag(name:"solution", value:"Upgrade to Apache HTTP Version 2.2.15 or later
 
-  Impact level: Application";
-
-  tag_insight = "This flaw is due to an error in 'mod_proxy_ajp' when handling
-  improperly malformed POST requests.";
-
-  tag_solution = "Upgrade to Apache HTTP Version 2.2.15 or later
-
-  For further updates refer to http://httpd.apache.org/download.cgi
-
-  Workaround:
+  For further updates  Workaround:
 
   Update mod_proxy_ajp.c through SVN Repository (Revision 767089), see the references
-  for a patch file containing an update.";
+  for a patch file containing an update.");
 
-  tag_summary = "This host is running Apache Web Server and is prone to
-  Information Disclosure Vulnerability.";
+  script_tag(name:"summary", value:"This host is running Apache Web Server and is prone to
+  Information Disclosure Vulnerability.");
 
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
+  script_tag(name:"impact", value:"Successful exploitation will let the attacker craft a special HTTP POST
+  request and gain sensitive information about the web server.");
+
+  script_tag(name:"affected", value:"Apache HTTP Versions prior to 2.2.15 running mod_proxy_ajp.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
+  script_xref(name:"URL", value:"http://httpd.apache.org/download.cgi");
   exit(0);
 }
 
 include("host_details.inc");
 include("version_func.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! vers = get_app_version( cpe:CPE, port:port ) )
+  exit( 0 );
 
 if( version_is_less_equal( version:vers, test_version:"2.2.11" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"2.2.15" );

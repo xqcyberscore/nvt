@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_xoops_mult_unspecified_vuln_nov09.nasl 7113 2017-09-13 06:03:30Z cfischer $
+# $Id: secpod_xoops_mult_unspecified_vuln_nov09.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # XOOPS Multiple Unspecified Vulnerabilities - Nov09
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:xoops:xoops";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900893");
-  script_version("$Revision: 7113 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-13 08:03:30 +0200 (Wed, 13 Sep 2017) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-11-20 06:52:52 +0100 (Fri, 20 Nov 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -48,26 +48,17 @@ if(description)
   script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2009/3174");
   script_xref(name:"URL", value:"http://www.xoops.org/modules/news/article.php?storyid=5064");
 
-  tag_impact = "Unknown impact
+  script_tag(name:"impact", value:"Unknown impact.");
 
-  Impact Level: Application";
+  script_tag(name:"affected", value:"XOOPS version prior to 2.4.0 Final on all running platform.");
 
-  tag_affected = "XOOPS version prior to 2.4.0 Final on all running platform.";
+  script_tag(name:"insight", value:"The flaws are caused by unspecified errors with unknown impacts and unknown
+  attack vectors.");
 
-  tag_insight = "The flaws are caused by unspecified errors with unknown impacts and unknown
-  attack vectors.";
+  script_tag(name:"solution", value:"Upgrade to XOOPS version 2.4.0 Final or later.");
 
-  tag_solution = "Upgrade to XOOPS version 2.4.0 Final or later.
-  http://www.xoops.org/modules/core/";
-
-  tag_summary = "This host is running XOOPS and is prone to multiple unspecified
-  vulnerabilities.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"This host is running XOOPS and is prone to multiple unspecified
+  vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -78,10 +69,12 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
 
-# Check for XOOPS version prior to 2.4.0 (2.4.0 Final)
+if( ! vers = get_app_version( cpe:CPE, port:port ) )
+  exit( 0 );
+
 if( version_is_less( version:vers, test_version:"2.4.0" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"2.4.0" );
   security_message( port:port, data:report );

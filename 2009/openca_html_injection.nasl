@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: openca_html_injection.nasl 9745 2018-05-07 11:45:41Z cfischer $
+# $Id: openca_html_injection.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # OpenCA HTML injection
 #
@@ -26,11 +26,11 @@
 
 CPE = "cpe:/a:openca:openca";
 
-if(description) {
-
+if(description)
+{
   script_oid("1.3.6.1.4.1.25623.1.0.102007");
-  script_version("$Revision: 9745 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-07 13:45:41 +0200 (Mon, 07 May 2018) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-07-28 17:03:43 +0200 (Tue, 28 Jul 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -46,16 +46,12 @@ if(description) {
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/11113");
 
-  tag_summary = "OpenCA is vulnerable to a HTML injection attack due to inadequate 
-  validation / filtering of user input into a web form frontend.";
+  script_tag(name:"solution", value:"Upgrade OpenCA to the newer version.");
 
-  tag_affected = "Versions up to 0.9.2 RC6 are vulnerable.";
+  script_tag(name:"summary", value:"OpenCA is vulnerable to a HTML injection attack due to inadequate
+  validation / filtering of user input into a web form frontend.");
 
-  tag_solution = "Upgrade OpenCA to the newer version.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"affected", value:tag_affected);
+  script_tag(name:"affected", value:"Versions up to 0.9.2 RC6 are vulnerable.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -66,8 +62,11 @@ if(description) {
 include("version_func.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! vers = get_app_version( cpe:CPE, port:port ) )
+  exit( 0 );
 
 if( version_is_less_equal( version:vers, test_version:"0.9.2-rc6" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"0.9.2" );

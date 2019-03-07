@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_iis_webdav_auth_bypass_vuln.nasl 4702 2016-12-07 13:02:11Z cfi $
+# $Id: secpod_ms_iis_webdav_auth_bypass_vuln.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # Microsoft IIS WebDAV Remote Authentication Bypass Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:microsoft:iis";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900711");
-  script_version("$Revision: 4702 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-07 14:02:11 +0100 (Wed, 07 Dec 2016) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-05-20 10:26:22 +0200 (Wed, 20 May 2009)");
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
@@ -50,42 +50,34 @@ if(description)
   script_xref(name:"URL", value:"http://downloads.securityfocus.com/vulnerabilities/exploits/34993.rb");
   script_xref(name:"URL", value:"http://downloads.securityfocus.com/vulnerabilities/exploits/34993.txt");
 
-  tag_affected = "Microsoft Internet Information Services version 5.0 to 6.0
-
-  Workaround:
-  Disable WebDAV or Upgrade to Microsoft IIS 7.0
-  http://www.microsoft.com/technet/security/advisory/971492.mspx";
-
-  tag_impact = "Successful exploitation will let the attacker craft malicious UNICODE characters
+  script_tag(name:"impact", value:"Successful exploitation will let the attacker craft malicious UNICODE characters
   and send it over the context of IIS Webserver where WebDAV is enabled. As a
   result due to lack of security implementation check it will let the user fetch
-  password protected directories without any valid authentications.
+  password protected directories without any valid authentications.");
 
-  Impact Level: Application";
-
-  tag_insight = "Due to the wrong implementation of UNICODE characters support (WebDAV extension)
+  script_tag(name:"insight", value:"Due to the wrong implementation of UNICODE characters support (WebDAV extension)
   for Microsoft IIS Server which fails to decode the requested URL properly.
   Unicode character checks are being done after IIS Server internal security
   check, which lets the attacker execute any crafted UNICODE character in the
   HTTP requests to get information on any password protected directories without
-  any authentication schema.";
+  any authentication schema.");
 
-  tag_solution = "Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://www.microsoft.com/technet/security/Bulletin/MS09-020.mspx";
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
+  update mentioned hotfixes in the advisory");
 
-  tag_summary = "The host is running Microsoft IIS Webserver with WebDAV Module and
-  is prone to remote authentication bypass vulnerability.";
+  script_tag(name:"summary", value:"The host is running Microsoft IIS Webserver with WebDAV Module and
+  is prone to remote authentication bypass vulnerability.");
 
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"affected", value:tag_affected);
+  script_tag(name:"affected", value:"Microsoft Internet Information Services version 5.0 to 6.0
+
+  Workaround:
+
+  Disable WebDAV or upgrade to Microsoft IIS 7.0.");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/Bulletin/MS09-020.mspx");
   exit(0);
 }
 
@@ -94,8 +86,11 @@ include("http_keepalive.inc");
 include("version_func.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! vers = get_app_version( cpe:CPE, port:port ) )
+  exit( 0 );
 
 host = http_host_name( port:port );
 
@@ -115,7 +110,6 @@ if( "200 OK" >!< response && "Server: Microsoft-IIS" >!< response ) {
   }
 }
 
-# Check whether WebDAV Module is enabled.
 if( "MS-Author-Via: DAV" >!< response ) exit( 0 );
 
 if( version_in_range( version:vers, test_version:"5.0", test_version2:"6.0" ) ) {

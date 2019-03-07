@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: hp_power_manager_default_credentials.nasl 10035 2018-05-31 09:24:47Z ckuersteiner $
+# $Id: hp_power_manager_default_credentials.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # HP Power Manager Management Web Server Login Remote Code Execution Vulnerability
 #
@@ -26,35 +26,35 @@
 
 CPE = "cpe:/a:hp:power_manager";
 
-if (description)
+if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.100350");
- script_version("$Revision: 10035 $");
- script_tag(name:"last_modification", value:"$Date: 2018-05-31 11:24:47 +0200 (Thu, 31 May 2018) $");
- script_tag(name:"creation_date", value:"2009-11-18 12:44:57 +0100 (Wed, 18 Nov 2009)");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_oid("1.3.6.1.4.1.25623.1.0.100350");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2009-11-18 12:44:57 +0100 (Wed, 18 Nov 2009)");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 
- script_tag(name: "solution_type", value: "Mitigation");
+  script_tag(name:"solution_type", value:"Mitigation");
 
- script_name("HP Power Manager Management default credentials");
+  script_name("HP Power Manager Management default credentials");
 
- script_category(ACT_GATHER_INFO);
- script_family("Default Accounts");
- script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
- script_dependencies("hp_power_manager_detect.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("hp_power_manager/detected");
- script_exclude_keys("default_credentials/disable_default_account_checks");
+  script_category(ACT_GATHER_INFO);
+  script_family("Default Accounts");
+  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
+  script_dependencies("hp_power_manager_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("hp_power_manager/detected");
+  script_exclude_keys("default_credentials/disable_default_account_checks");
 
- script_tag(name: "solution", value: "Change the password for the user 'admin'.");
+  script_tag(name:"solution", value:"Change the password for the user 'admin'.");
 
- script_tag(name: "summary", value: "The installed remote HP Power Manager has the default credentials 'admin' for
-username and password set.");
+  script_tag(name:"summary", value:"The installed remote HP Power Manager has the default credentials 'admin' for
+  username and password set.");
 
- script_tag(name:"qod_type", value:"remote_vul");
+  script_tag(name:"qod_type", value:"remote_vul");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");
@@ -82,11 +82,11 @@ req = string( "POST ", filename, " HTTP/1.0\r\n",
               "\r\n\r\n",
               variables
             );
-
 result = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
 
 if ("top.location.href = '/Contents/index.asp';" >< result) {
-  security_message(port:port);
+  report = report_vuln_url(port:port, url:filename);
+  security_message(port:port, data:report);
   exit(0);
 }
 

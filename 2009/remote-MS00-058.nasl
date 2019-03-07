@@ -1,9 +1,9 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: remote-MS00-058.nasl 4702 2016-12-07 13:02:11Z cfi $
+# $Id: remote-MS00-058.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # Microsoft Security Bulletin MS04-017
-# Vulnerability in Crystal Reports Web Viewer Could Allow Information Disclosure and Denial of Service 
+# Vulnerability in Crystal Reports Web Viewer Could Allow Information Disclosure and Denial of Service
 #
 # remote-MS00-058.nasl
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:microsoft:iis";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.101003");
-  script_version("$Revision: 4702 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-07 14:02:11 +0100 (Wed, 07 Dec 2016) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-03-15 20:49:44 +0100 (Sun, 15 Mar 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -44,10 +44,13 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("IIS/installed");
 
-  script_tag(name:"solution", value:"Microsoft has released a patch to fix this issue, download it from the following website: 
-  http://www.microsoft.com/technet/security/bulletin/ms00-058.mspx");
+  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/bulletin/ms00-058.mspx");
 
-  script_tag(name:"summary", value:"This vulnerability could cause a IIS 5.0 web server to send the source code of certain types of web files to a visiting user.");
+  script_tag(name:"solution", value:"Microsoft has released a patch to fix this issue. Please see the
+  reference for more information.");
+
+  script_tag(name:"summary", value:"This vulnerability could cause a IIS 5.0 web server to send the
+  source code of certain types of web files to a visiting user.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -63,8 +66,11 @@ include("host_details.inc");
 pages = make_list( 'default.asp', 'iisstart.asp', 'localstart.asp' );
 matches = make_array( 0, "application/octet-stream", 1, "<% @Language = 'VBScript' %>" );
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 ); # To have a reference to the detection NVT
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! dir = get_app_location( cpe:CPE, port:port ) ) # To have a reference to the detection NVT
+  exit( 0 );
 
 host = http_host_name( port:port );
 
@@ -77,7 +83,7 @@ foreach asp_file( pages ) {
 
   if( reply ) {
     r = tolower( reply );
-    content_type = egrep( patern:"Content-Type", string:r, icase:TRUE );
+    content_type = egrep( pattern:"Content-Type", string:r, icase:TRUE );
     if( ( "Microsoft-IIS" >< r ) && ( egrep( pattern:"HTTP/1.[01] 200", string:r, icase:TRUE ) ) && ( matches[0] == content_type ) ) {
       if( egrep( pattern:matches[1], string:r, icase:TRUE ) ) {
         # Report 'Microsoft IIS 'Specialiazed Header' (MS00-058)' Vulnerability

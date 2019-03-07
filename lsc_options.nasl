@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: lsc_options.nasl 13953 2019-03-01 08:57:48Z cfischer $
+# $Id: lsc_options.nasl 14040 2019-03-07 14:01:35Z cfischer $
 #
 # This script allows to set some Options for LSC.
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100509");
-  script_version("$Revision: 13953 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-01 09:57:48 +0100 (Fri, 01 Mar 2019) $");
+  script_version("$Revision: 14040 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 15:01:35 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-02-26 12:01:21 +0100 (Fri, 26 Feb 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -88,7 +88,8 @@ if(description)
   setting is enabled the reporting for inactive Linux Kernel(s) is done separately in the VT 'Report Vulnerabilities in inactive Linux Kernel(s)'
   (OID: 1.3.6.1.4.1.25623.1.0.108545).
 
-  Please note that this functionality is currently only available for Debian and derivates like Ubuntu and needs to be considered as 'experimental'.");
+  Please note that this functionality is currently only available for Debian (and Derivates using apt-get) and RPM based Distributions and needs
+  to be considered as 'experimental'.");
 
   script_tag(name:"qod_type", value:"general_note");
 
@@ -108,6 +109,9 @@ if( find_enabled )
 if( nfs_search_enabled )
   set_kb_item( name:"ssh/lsc/descend_ofs", value:nfs_search_enabled );
 
+if( kernel_overwrite && "yes" >< kernel_overwrite )
+  set_kb_item( name:"ssh/login/kernel_reporting_overwrite/enabled", value:TRUE );
+
 if( search_portable && "yes" >< search_portable )
   set_kb_item( name:"win/lsc/search_portable_apps", value:TRUE );
 
@@ -116,8 +120,5 @@ if( disable_win_cmd_exec && "yes" >< disable_win_cmd_exec )
 
 if( disable_wmi_search && "yes" >< disable_wmi_search )
   set_kb_item( name:"win/lsc/disable_wmi_search", value:TRUE );
-
-if( kernel_overwrite && "yes" >< kernel_overwrite )
-  set_kb_item( name:"ssh/login/kernel_reporting_overwrite/enabled", value:TRUE );
 
 exit( 0 );

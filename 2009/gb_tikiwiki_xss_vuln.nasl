@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tikiwiki_xss_vuln.nasl 5144 2017-01-31 09:55:46Z cfi $
+# $Id: gb_tikiwiki_xss_vuln.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # Tiki Wiki CMS Groupware Multiple Cross Site Scripting Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:tiki:tikiwiki_cms/groupware";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800266");
-  script_version("$Revision: 5144 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-31 10:55:46 +0100 (Tue, 31 Jan 2017) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-04-16 16:39:16 +0200 (Thu, 16 Apr 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -45,9 +45,7 @@ if(description)
   script_mandatory_keys("TikiWiki/installed");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to inject arbitrary HTML
-  codes in the context of the affected web application.
-
-  Impact Level: Application");
+  codes in the context of the affected web application.");
 
   script_tag(name:"affected", value:"Tiki Wiki CMS Groupware version 2.2, 2.3 and prior.");
 
@@ -56,8 +54,7 @@ if(description)
   'tiki-list_file_gallery.php' and 'tiki-galleries.php' which lets the attacker
   conduct XSS attacks inside the context of the web application.");
 
-  script_tag(name:"solution", value:"Upgrade to Tiki Wiki CMS Groupware version 2.4 or later, 
-  For updates refer to http://info.tikiwiki.org");
+  script_tag(name:"solution", value:"Upgrade to Tiki Wiki CMS Groupware version 2.4 or later.");
 
   script_tag(name:"summary", value:"This host is running Tiki Wiki CMS Groupware and is prone to Multiple Cross Site Scripting
   vulnerabilities.");
@@ -75,8 +72,12 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! dir = get_app_location( cpe:CPE, port:port ) )
+  exit( 0 );
+
 if( dir == "/" ) dir = "";
 
 # Multiple XSS attempts
@@ -86,7 +87,6 @@ urls = make_list( dir + '/tiki-listpages.php/<script>alert("XSS_Check");</script
                   dir + '/tiki-list_file_gallery.php/<script>alert("XSS_Check");</script>' );
 
 foreach url( urls ) {
-
   if( http_vuln_check( port:port, url:url, check_header:TRUE, pattern:'<script>alert\\("XSS_Check"\\);</script>' ) ) {
     report = report_vuln_url( port:port, url:url );
     security_message( port:port, data:report );

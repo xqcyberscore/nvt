@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cvstrac_output_formatter_dos.nasl 14010 2019-03-06 08:24:33Z cfischer $
+# $Id: cvstrac_output_formatter_dos.nasl 14021 2019-03-06 18:22:29Z cfischer $
 #
 # CVSTrac text output formatter DoS
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:cvstrac:cvstrac";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80015");
-  script_version("$Revision: 14010 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-06 09:24:33 +0100 (Wed, 06 Mar 2019) $");
+  script_version("$Revision: 14021 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-06 19:22:29 +0100 (Wed, 06 Mar 2019) $");
   script_tag(name:"creation_date", value:"2008-10-24 19:51:47 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -49,7 +49,7 @@ if(description)
 
   script_tag(name:"solution", value:"Upgrade to CVSTrac 2.0.1 or later.");
 
-  script_tag(name:"summary", value:"The remote web server is running CVSTrac which is prone to a 
+  script_tag(name:"summary", value:"The remote web server is running CVSTrac which is prone to a
   denial of service attack.");
 
   script_tag(name:"insight", value:"According to its version number, the version of installed on

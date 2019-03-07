@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: znc_35757.nasl 8882 2018-02-20 10:35:37Z cfischer $
+# $Id: znc_35757.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # ZNC File Upload Directory Traversal Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:znc:znc';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100244");
-  script_version("$Revision: 8882 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-20 11:35:37 +0100 (Tue, 20 Feb 2018) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-07-26 19:54:54 +0200 (Sun, 26 Jul 2009)");
   script_cve_id("CVE-2009-2658");
   script_bugtraq_id(35757);
@@ -50,7 +50,7 @@ if(description)
   script_tag(name:"summary", value:"ZNC is prone to a directory-traversal vulnerability because it fails
   to sufficiently sanitize user-supplied input.");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"impact", value:"Exploiting this issue can allow an authenticated attacker to upload
   and overwrite files on the affected computer. Successful exploits will lead to other attacks.");
@@ -68,13 +68,16 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! vers = get_app_version( cpe:CPE, port:port ) )
+  exit( 0 );
 
 if( version_is_less( version:vers, test_version:"0.072" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"0.072" );
   security_message( port:port, data:report );
   exit( 0 );
-}  
+}
 
 exit( 99 );

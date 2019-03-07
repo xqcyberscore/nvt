@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wago_plc_consolidation.nasl 13996 2019-03-05 12:30:17Z cfischer $
+# $Id: gb_wago_plc_consolidation.nasl 14032 2019-03-07 10:54:39Z cfischer $
 #
 # WAGO PLC Detection Consolidation
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141766");
-  script_version("$Revision: 13996 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-05 13:30:17 +0100 (Tue, 05 Mar 2019) $");
+  script_version("$Revision: 14032 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:54:39 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-12-07 12:20:20 +0700 (Fri, 07 Dec 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -163,8 +163,8 @@ if (opc_ports = get_kb_list("wago_plc/opcua/port")) {
 
     register_product( cpe:hw_cpe, location:location, port:port, service:"opc-ua" );
     register_product( cpe:os_cpe, location:location, port:port, service:"opc-ua" );
-    # Register the app with the version of the opc server
-    register_product( cpe:opc_cpe, location:location, port:port, service:"opc-ua" );    
+    # nb: Register the app with the version of the opc server
+    register_product( cpe:opc_cpe, location:location, port:port, service:"opc-ua" );
   }
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: squid_35812.nasl 6891 2017-08-10 12:44:59Z cfischer $
+# $Id: squid_35812.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # Squid Multiple Remote Denial of Service Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:squid-cache:squid";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100249");
-  script_version("$Revision: 6891 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-10 14:44:59 +0200 (Thu, 10 Aug 2017) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-07-27 22:49:07 +0200 (Mon, 27 Jul 2009)");
   script_cve_id("CVE-2009-2621");
   script_bugtraq_id(35812);
@@ -48,19 +48,14 @@ if(description)
   script_xref(name:"URL", value:"http://www.squid-cache.org/Advisories/SQUID-2009_2.txt");
   script_xref(name:"URL", value:"http://www.squid-cache.org/");
 
-  tag_summary = "Squid is prone to multiple remote denial-of-service vulnerabilities.";
+  script_tag(name:"summary", value:"Squid is prone to multiple remote denial-of-service vulnerabilities.");
 
-  tag_impact = "Successfully exploiting these issues allow remote attackers to crash
-  the affected application, denying further service to legitimate users.";
+  script_tag(name:"impact", value:"Successfully exploiting these issues allow remote attackers to crash
+  the affected application, denying further service to legitimate users.");
 
-  tag_affected = "This issue affects Squid 3.0.STABLE16, 3.1.0.11 and prior versions.";
+  script_tag(name:"affected", value:"This issue affects Squid 3.0.STABLE16, 3.1.0.11 and prior versions.");
 
-  tag_solution = "Updates are available. Please see the references for more information.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
@@ -71,8 +66,11 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! vers = get_app_version( cpe:CPE, port:port ) )
+  exit( 0 );
 
 if( version_in_range( version:vers, test_version:"3.1.0", test_version2:"3.1.0.11" ) ||
     version_in_range( version:vers, test_version:"3.1", test_version2:"3.1.5" ) ||

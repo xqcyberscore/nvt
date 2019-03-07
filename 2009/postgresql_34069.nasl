@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: postgresql_34069.nasl 7406 2017-10-12 06:15:28Z cfischer $
+# $Id: postgresql_34069.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # PostgreSQL Low Cost Function Information Disclosure Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:postgresql:postgresql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100158");
-  script_version("$Revision: 7406 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-12 08:15:28 +0200 (Thu, 12 Oct 2017) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-04-24 20:04:08 +0200 (Fri, 24 Apr 2009)");
   script_bugtraq_id(34069);
   script_tag(name:"cvss_base", value:"2.1");
@@ -46,19 +46,14 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/34069");
   script_xref(name:"URL", value:"http://www.postgresql.org/");
 
-  tag_summary = "PostgreSQL is prone to an information-disclosure vulnerability.";
+  script_tag(name:"summary", value:"PostgreSQL is prone to an information-disclosure vulnerability.");
 
-  tag_impact = "Local attackers can exploit this issue to obtain sensitive
-  information that may lead to further attacks.";
+  script_tag(name:"impact", value:"Local attackers can exploit this issue to obtain sensitive
+  information that may lead to further attacks.");
 
-  tag_affected = "PostgreSQL 8.3.6 is vulnerable; other versions may also be affected.";
+  script_tag(name:"affected", value:"PostgreSQL 8.3.6 is vulnerable. Other versions may also be affected.");
 
-  tag_solution = "Updates are available. Please see the references for more information.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
@@ -69,8 +64,11 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! vers = get_app_version( cpe:CPE, port:port ) )
+  exit( 0 );
 
 if( version_in_range( version:vers, test_version:"8.3", test_version2:"8.3.6" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"See references" );

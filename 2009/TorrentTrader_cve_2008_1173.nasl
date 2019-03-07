@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: TorrentTrader_cve_2008_1173.nasl 4713 2016-12-08 11:01:19Z cfi $
+# $Id: TorrentTrader_cve_2008_1173.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # TorrentTrader Classic 'msg' Parameter HTML Injection Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:torrenttrader:torrenttrader_classic";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100181");
-  script_version("$Revision: 4713 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-08 12:01:19 +0100 (Thu, 08 Dec 2016) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-05-02 19:46:33 +0200 (Sat, 02 May 2009)");
   script_bugtraq_id(28082);
   script_cve_id("CVE-2008-1173");
@@ -48,23 +48,17 @@ if(description)
   script_xref(name:"URL", value:"http://sourceforge.net/project/shownotes.php?group_id=98584&release_id=545219");
   script_xref(name:"URL", value:"http://www.torrenttrader.org/index.php");
 
-  tag_summary = "TorrentTrader is prone to an HTML-injection vulnerability because it
-  fails to adequately sanitize user-supplied input.";
+  script_tag(name:"solution", value:"This issue has been addressed in the revision 25/03/08 of Torrent Classic 1.08.
+  Update to Torrent Classic 1.09.");
 
-  tag_impact = "Attacker-supplied HTML or JavaScript code could run in the context
-  of the affected site, potentially allowing the attacker to steal
-  cookie-based authentication credentials and to control how the site
-  is rendered to the user; other attacks are also possible.";
+  script_tag(name:"impact", value:"Attacker-supplied HTML or JavaScript code could run in the context of the affected site,
+  potentially allowing the attacker to steal cookie-based authentication credentials and to control how the site
+  is rendered to the user. Other attacks are also possible.");
 
-  tag_affected = "TorrentTrader Classic 1.08 is affected; other versions may also be vulnerable.";
+  script_tag(name:"summary", value:"TorrentTrader is prone to an HTML-injection vulnerability because it
+  fails to adequately sanitize user-supplied input.");
 
-  tag_solution = "This issue has been addressed in the revision 25/03/08 of Torrent Classic 1.08.
-  Update to Torrent Classic 1.09.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"affected", value:tag_affected);
+  script_tag(name:"affected", value:"TorrentTrader Classic 1.08 is affected. Other versions may also be vulnerable.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -75,8 +69,11 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! vers = get_app_version( cpe:CPE, port:port ) )
+  exit( 0 );
 
 if( version_is_equal( version:vers, test_version:"1.08" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"1.09" );

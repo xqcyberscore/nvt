@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: freznoshop_34496.nasl 11449 2018-09-18 10:04:42Z mmartin $
+# $Id: freznoshop_34496.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # FreznoShop 'product_details.php' SQL Injection Vulnerability
 #
@@ -26,11 +26,11 @@
 
 CPE = 'cpe:/a:freznoshop:freznoshop';
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100143");
-  script_version("$Revision: 11449 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 12:04:42 +0200 (Tue, 18 Sep 2018) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-04-16 19:20:22 +0200 (Thu, 16 Apr 2009)");
   script_bugtraq_id(34496);
   script_tag(name:"cvss_base", value:"7.5");
@@ -48,20 +48,20 @@ if (description)
   script_mandatory_keys("freznoshop/installed");
 
   script_tag(name:"summary", value:"FreznoShop is prone to an SQL-injection vulnerability because it fails to
-sufficiently sanitize user-supplied data before using it in an SQL query.
+  sufficiently sanitize user-supplied data before using it in an SQL query.");
 
-Exploiting this issue could allow an attacker to compromise the application, access or modify data, or exploit
-latent vulnerabilities in the underlying database.
+  script_tag(name:"impact", value:"Exploiting this issue could allow an attacker to compromise the application,
+  access or modify data, or exploit latent vulnerabilities in the underlying database.");
 
-FreznoShop 1.3.0 is vulnerable, other versions may also be affected.");
+  script_tag(name:"affected", value:"FreznoShop 1.3.0 is vulnerable, other versions may also be affected.");
 
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the
-disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to
-a newer release, disable respective features, remove the product or replace the product by another one.");
+  disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to
+  a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/34496");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

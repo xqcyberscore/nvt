@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_dos_vuln_apr09.nasl 10459 2018-07-09 07:41:24Z cfischer $
+# $Id: gb_php_dos_vuln_apr09.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # PHP Denial Of Service Vulnerability - April09
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800393");
-  script_version("$Revision: 10459 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 09:41:24 +0200 (Mon, 09 Jul 2018) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-04-23 08:49:13 +0200 (Thu, 23 Apr 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -45,21 +45,14 @@ if(description)
   script_xref(name:"URL", value:"http://www.php.net/releases/5_2_9.php");
   script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2009/04/01/9");
 
-  script_tag(name:"impact", value:"Successful exploitation could result in denial of service condition.
-
-  Impact Level: Application");
+  script_tag(name:"impact", value:"Successful exploitation could result in denial of service condition.");
 
   script_tag(name:"affected", value:"PHP version prior to 5.2.9");
 
   script_tag(name:"insight", value:"Improper handling of .zip file while doing extraction via
   php_zip_make_relative_path function in php_zip.c file.");
 
-  script_tag(name:"solution", value:"Upgrade to PHP version 5.2.9 or above,
-  http://www.php.net/downloads.php
-
-  Workaround:
-  For workaround refer below link,
-  http://cvs.php.net/viewvc.cgi/php-src/ext/json/JSON_parser.c?r1=1.1.2.14&r2=1.1.2.15");
+  script_tag(name:"solution", value:"Upgrade to version 5.2.9 or later.");
 
   script_tag(name:"summary", value:"The host is installed with PHP and is prone to Denial of
   Service vulnerability.");
@@ -76,9 +69,8 @@ include("host_details.inc");
 if( isnull( phpPort = get_app_port( cpe:CPE ) ) ) exit( 0 );
 if( ! phpVer = get_app_version( cpe:CPE, port:phpPort ) ) exit( 0 );
 
-# Match PHP version < 5.2.9
 if( version_is_less( version:phpVer, test_version:"5.2.9" ) ) {
-  report = report_fixed_ver( installed_version:phpVer, fixed_version:"5.2.10" );
+  report = report_fixed_ver( installed_version:phpVer, fixed_version:"5.2.9" );
   security_message( data:report, port:phpPort );
   exit( 0 );
 }

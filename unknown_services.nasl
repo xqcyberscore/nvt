@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: unknown_services.nasl 13556 2019-02-09 16:37:50Z cfischer $
+# $Id: unknown_services.nasl 14020 2019-03-06 16:31:41Z cfischer $
 #
 # Collect banner of unknown services
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11154");
-  script_version("$Revision: 13556 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-09 17:37:50 +0100 (Sat, 09 Feb 2019) $");
+  script_version("$Revision: 14020 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-06 17:31:41 +0100 (Wed, 06 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -119,7 +119,8 @@ function unknown_banner_report( port ) {
 
   local_var banner, method, port;
 
-  if( ! port ) return;
+  if( ! port )
+    return;
 
   foreach method( make_list( "spontaneous", "get_httpHex", "get_http", "helpHex", "help", "xmlHex", "xml", "jsonHex", "json", "sipHex", "sip", "binHex", "bin" ) ) {
     banner = get_kb_item( "FindService/tcp/" + port + "/" + method );
@@ -130,22 +131,32 @@ function unknown_banner_report( port ) {
     }
   }
 
+  # nb: Those are coming from / are set by nasl_builtin_find_service.c
   banner = get_kb_item( "unknown/banner/" + port );
-  if( banner ) return( make_list( "unknown", banner ) );
+  if( banner )
+    return( make_list( "'unknown/banner/' KB entry", banner ) );
 
-  # TBD: Where is this kb item coming from?
   banner = get_kb_item( "Banner/" + port );
-  if( banner ) return( make_list( "unknown", banner ) );
+  if( banner )
+    return( make_list( "'Banner/' KB entry", banner ) );
 }
 
 port = get_kb_item( "Services/unknown" );
-if( ! port ) exit( 0 );
-if( ! get_port_state( port ) ) exit( 0 );
-if( port == 139 ) exit( 0 ); # Avoid silly messages
-if( ! service_is_unknown( port:port ) ) exit( 0 );
+if( ! port )
+  exit( 0 );
+
+if( ! get_port_state( port ) )
+  exit( 0 );
+
+if( port == 139 )
+  exit( 0 ); # Avoid silly messages
+
+if( ! service_is_unknown( port:port ) )
+  exit( 0 );
 
 banner = unknown_banner_report( port:port );
-if( ! banner ) exit( 0 );
+if( ! banner )
+  exit( 0 );
 
 if( strlen( banner[1] ) >= 3 ) {
 

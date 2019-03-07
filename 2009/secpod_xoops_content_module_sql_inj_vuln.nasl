@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_xoops_content_module_sql_inj_vuln.nasl 5952 2017-04-13 12:34:17Z cfi $
+# $Id: secpod_xoops_content_module_sql_inj_vuln.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # XOOPS Content Module SQL Injection Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:xoops:xoops";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900732");
-  script_version("$Revision: 5952 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-13 14:34:17 +0200 (Thu, 13 Apr 2017) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-12-24 14:01:59 +0100 (Thu, 24 Dec 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -48,30 +48,20 @@ if(description)
   script_xref(name:"URL", value:"http://securityreason.com/exploitalert/7494");
   script_xref(name:"URL", value:"http://www.packetstormsecurity.org/0911-exploits/xoopscontent-sql.txt");
 
-  tag_impact = "Successful exploitation will let the remote attacker to execute arbitrary SQL
-  queires to compromise the remote machine running the vulnerable application.
+  script_tag(name:"summary", value:"This host is running XOOPS and is prone to SQL Injection
+  vulnerability.");
 
-  Impact Level: Application";
+  script_tag(name:"insight", value:"This flaw is due to improper sanitization of data inside 'Content'
+  module within the 'id' parameter which lets the remote unauthenticated user to run arbitrary SQL Commands.");
 
-  tag_affected = "XOOPS 'Content' Module 0.5";
+  script_tag(name:"impact", value:"Successful exploitation will let the remote attacker to execute arbitrary SQL
+  queires to compromise the remote machine running the vulnerable application.");
 
-  tag_insight = "This flaw is due to improper sanitization of data inside 'Content'
-  module within the 'id' parameter which lets the remote unauthenticated
-  user to run arbitrary SQL Commands.";
+  script_tag(name:"affected", value:"XOOPS 'Content' Module 0.5");
 
-  tag_solution = "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.";
-
-  tag_summary = "This host is running XOOPS and is prone to SQL Injection
-  vulnerability.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected" , value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_app");
@@ -83,10 +73,15 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
 
-if( dir == "/" ) dir = "";
+if( ! dir = get_app_location( cpe:CPE, port:port ) )
+  exit( 0 );
+
+if( dir == "/" )
+  dir = "";
+
 url = dir + "/modules/content/index.php?id=1";
 req = http_get( item:url, port:port );
 res = http_keepalive_send_recv( port:port, data:req );

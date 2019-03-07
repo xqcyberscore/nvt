@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openfire_mult_vuln.nasl 9306 2018-04-04 16:31:21Z cfischer $
+# $Id: gb_openfire_mult_vuln.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # Ignite Realtime OpenFire Multiple Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:igniterealtime:openfire";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800354");
-  script_version("$Revision: 9306 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-04 18:31:21 +0200 (Wed, 04 Apr 2018) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-02-11 16:51:00 +0100 (Wed, 11 Feb 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -48,15 +48,13 @@ if(description)
   script_xref(name:"URL", value:"http://svn.igniterealtime.org/svn/repos/openfire/trunk/src/web/log.jsp");
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/archive/1/499880/100/0/threaded");
 
-  tag_impact = "Attacker may leverage this issue by executing arbitrary script code or
+  script_tag(name:"impact", value:"Attacker may leverage this issue by executing arbitrary script code or
   injecting HTML or JavaScript code in the context of the affected system
-  and can cause directory traversal or XSS attack.
+  and can cause directory traversal or XSS attack.");
 
-  Impact Level: System";
+  script_tag(name:"affected", value:"Ignite Realtime Openfire version prior to 3.6.3 on all platforms.");
 
-  tag_affected = "Ignite Realtime Openfire version prior to 3.6.3 on all platforms";
-
-  tag_insight = "Application fails to sanitise the user inputs in,
+  script_tag(name:"insight", value:"Application fails to sanitise the user inputs in,
 
   - log parameter to logviewer.jsp and log.jsp files,
 
@@ -70,20 +68,12 @@ if(description)
   - propName parameter to server-properties.jsp file,
 
   - roomconfig_roomname and roomconfig_roomdesc parameters to
-    muc-room-edit-form.jsp file.";
+  muc-room-edit-form.jsp file.");
 
-  tag_solution = "Upgrade to OpenFire version 3.6.3,
+  script_tag(name:"solution", value:"Upgrade to OpenFire version 3.6.3 or later.");
 
-  http://www.igniterealtime.org/downloads/index.jsp";
-
-  tag_summary = "This host is running OpenFire and is prone to multiple
-  vulnerabilities.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"This host is running OpenFire and is prone to multiple
+  vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -94,8 +84,11 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! vers = get_app_version( cpe:CPE, port:port ) )
+  exit( 0 );
 
 if( version_is_less( version:vers, test_version:"3.6.3" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"3.6.3" );

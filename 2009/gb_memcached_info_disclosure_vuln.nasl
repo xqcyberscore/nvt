@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_memcached_info_disclosure_vuln.nasl 8974 2018-02-28 09:53:03Z cfischer $
+# $Id: gb_memcached_info_disclosure_vuln.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # Memcached < 1.2.8 Information Disclosure Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:memcached:memcached";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800715");
-  script_version("$Revision: 8974 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-28 10:53:03 +0100 (Wed, 28 Feb 2018) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-05-18 09:37:31 +0200 (Mon, 18 May 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -47,31 +47,22 @@ if(description)
   script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2009/1196");
   script_xref(name:"URL", value:"http://www.positronsecurity.com/advisories/2009-001.html");
 
-  tag_impact = "Successful exploitation will let the attacker craft malicious commands and
-  pass it to the vulnerable functions to gain sensitive information about the
-  application i.e. disclosure of locations of memory regions and defeat ASLR
-  protections, by sending a command to the daemon's TCP port.";
+  script_tag(name:"impact", value:"Successful exploitation will let the attacker craft malicious commands and
+  pass it to the vulnerable functions to gain sensitive information about the application i.e. disclosure of
+  locations of memory regions and defeat ASLR protections, by sending a command to the daemon's TCP port.");
 
-  tag_affected = "Memcached version prior to 1.2.8";
+  script_tag(name:"affected", value:"Memcached version prior to 1.2.8.");
 
-  tag_insight = "- Error in process_stat function discloses the contents of /proc/self/maps in
-    response to a stats maps command.
+  script_tag(name:"insight", value:"- Error in process_stat function discloses the contents of /proc/self/maps in
+  response to a stats maps command.
 
   - Error in process_stat function which discloses memory allocation statistics
-    in response to a stats malloc command.";
+  in response to a stats malloc command.");
 
-  tag_solution = "Upgrade to the latest version 1.2.8
+  script_tag(name:"solution", value:"Upgrade to the latest version 1.2.8.");
 
-  http://www.danga.com/memcached";
-
-  tag_summary = "The host is running Memcached and is prone to Information Disclosure
-  Vulnerabilities.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"The host is running Memcached and is prone to Information Disclosure
+  Vulnerabilities.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -82,8 +73,11 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! infos = get_app_version_and_proto( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! infos = get_app_version_and_proto( cpe:CPE, port:port ) )
+  exit( 0 );
 
 vers  = infos["version"];
 proto = infos["proto"];

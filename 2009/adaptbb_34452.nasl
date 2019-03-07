@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: adaptbb_34452.nasl 7928 2017-11-29 09:42:17Z ckuersteiner $
+# $Id: adaptbb_34452.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # AdaptBB Multiple Input Validation Vulnerabilities
 #
@@ -26,39 +26,45 @@
 
 CPE = "cpe:/a:adaptbb:adaptbb";
 
-if (description)
+if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.100128");
- script_version("$Revision: 7928 $");
- script_tag(name:"last_modification", value:"$Date: 2017-11-29 10:42:17 +0100 (Wed, 29 Nov 2017) $");
- script_tag(name:"creation_date", value:"2009-04-12 20:09:50 +0200 (Sun, 12 Apr 2009)");
- script_bugtraq_id(34452);
- script_tag(name:"cvss_base", value:"9.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_oid("1.3.6.1.4.1.25623.1.0.100128");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2009-04-12 20:09:50 +0200 (Sun, 12 Apr 2009)");
+  script_bugtraq_id(34452);
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
 
- script_name("AdaptBB Multiple Input Validation Vulnerabilities");
+  script_name("AdaptBB Multiple Input Validation Vulnerabilities");
 
- script_category(ACT_GATHER_INFO);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
+  script_category(ACT_GATHER_INFO);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
 
- script_dependencies("adaptbb_detect.nasl");
- script_mandatory_keys("adaptbb/installed");
- script_require_ports("Services/www", 80);
+  script_dependencies("adaptbb_detect.nasl");
+  script_mandatory_keys("adaptbb/installed");
+  script_require_ports("Services/www", 80);
 
- script_tag(name: "summary", value: "AdaptBB is prone to multiple security vulnerabilities because it fails to
-adequately sanitize user-supplied input. These vulnerabilities include multiple SQL-injection issues, an
-arbitrary-file-upload issue, and an arbitrary-command-execution issue.
+  script_tag(name:"summary", value:"AdaptBB is prone to multiple security vulnerabilities because it fails to
+  adequately sanitize user-supplied input. These vulnerabilities include multiple SQL-injection issues, an
+  arbitrary-file-upload issue, and an arbitrary-command-execution issue.");
 
-Exploiting these issues can allow an attacker to upload and execute arbitrary files, compromise the
-application, access or modify data, or exploit latent vulnerabilities in the underlying database. Other attacks
-may also be possible.
+  script_tag(name:"impact", value:"Exploiting these issues can allow an attacker to upload and execute arbitrary
+  files, compromise the application, access or modify data, or exploit latent vulnerabilities in the underlying
+  database. Other attacks may also be possible.");
 
-AdaptBB 1.0 Beta is vulnerable; other versions may also be affected.");
+  script_tag(name:"affected", value:"AdaptBB 1.0 Beta is vulnerable. Other versions may also be affected.");
 
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/34452");
- exit(0);
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/34452");
+
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+
+  exit(0);
 }
 
 include("host_details.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_sql_param_sql_inj_vuln_feb18_lin.nasl 12818 2018-12-18 09:55:03Z ckuersteiner $
+# $Id: gb_mantisbt_sql_param_sql_inj_vuln_feb18_lin.nasl 14024 2019-03-07 07:16:22Z mmartin $
 #
 # MantisBT 'sql' Parameter SQL Injection Vulnerability - Feb18 (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mantisbt:mantisbt";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812754");
-  script_version("$Revision: 12818 $");
+  script_version("$Revision: 14024 $");
   script_cve_id("CVE-2018-6382");
-  script_tag(name:"cvss_base", value:"4.6");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-18 10:55:03 +0100 (Tue, 18 Dec 2018) $");
+  script_tag(name:"cvss_base", value:"2.1");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 08:16:22 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-02-05 11:55:27 +0530 (Mon, 05 Feb 2018)");
 
   script_name("MantisBT 'sql' Parameter SQL Injection Vulnerability - Feb18 (Linux)");

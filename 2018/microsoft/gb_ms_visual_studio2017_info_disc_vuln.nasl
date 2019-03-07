@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_visual_studio2017_info_disc_vuln.nasl 12120 2018-10-26 11:13:20Z mmartin $
+# $Id: gb_ms_visual_studio2017_info_disc_vuln.nasl 14023 2019-03-07 07:04:38Z cfischer $
 #
 # Microsoft Visual Studio 2017 Information Disclosure Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813151");
-  script_version("$Revision: 12120 $");
+  script_version("$Revision: 14023 $");
   script_cve_id("CVE-2018-1037");
   script_bugtraq_id(103715);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 08:04:38 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-04-19 15:58:52 +0530 (Thu, 19 Apr 2018)");
   script_name("Microsoft Visual Studio 2017 Information Disclosure Vulnerability");
 
@@ -100,7 +100,7 @@ foreach key (key_list)
 
   dllPath = installPath + "Common7\IDE\PrivateAssemblies";
   dllVer = fetch_file_version(sysPath:dllPath, file_name:"Microsoft.VisualStudio.Setup.dll");
-  if(dllVer && (version_is_less(version:dllVer, test_version:"1.15.3227.4915")))
+  if(dllVer && dllVer =~ "^1\.15\." && version_is_less(version:dllVer, test_version:"1.15.3227.4915"))
   {
     report = report_fixed_ver(file_checked: dllPath + "\Microsoft.VisualStudio.Setup.dll",
                               file_version:dllVer, vulnerable_range:"1.15.0 - 1.15.3227.4914");

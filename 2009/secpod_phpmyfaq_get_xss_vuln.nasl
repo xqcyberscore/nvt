@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_phpmyfaq_get_xss_vuln.nasl 7218 2017-09-21 10:07:18Z ckuersteiner $
+# $Id: secpod_phpmyfaq_get_xss_vuln.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # phpMyFAQ GET Variable Cross-Site-Scripting Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:phpmyfaq:phpmyfaq';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900982");
-  script_version("$Revision: 7218 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-21 12:07:18 +0200 (Thu, 21 Sep 2017) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-11-26 06:39:46 +0100 (Thu, 26 Nov 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -48,22 +48,23 @@ if(description)
   script_mandatory_keys("phpmyfaq/installed");
   script_require_ports("Services/www", 80);
 
-  script_tag(name: "impact", value: "Successful exploitation will allow remote attackers to execute arbitrary
-HTML and script code and cause cross-site scripting attacks.");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary
+  HTML and script code and cause cross-site scripting attacks.");
 
-  script_tag(name: "affected", value: "phpMyFAQ prior to 2.0.17 and 2.5.0 prior to 2.5.2.");
+  script_tag(name:"affected", value:"phpMyFAQ prior to 2.0.17 and 2.5.0 prior to 2.5.2.");
 
-  script_tag(name: "insight", value: "This vulnerability is caused because the application does not properly
-sanitize the input passed into 'GET' parameter in 'search.php'.");
+  script_tag(name:"insight", value:"This vulnerability is caused because the application does not properly
+  sanitize the input passed into 'GET' parameter in 'search.php'.");
 
-  script_tag(name: "solution", value: "Upgrade to phpMyFAQ 2.0.17 or 2.5.2");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution", value:"Upgrade to phpMyFAQ 2.0.17 or 2.5.2");
 
-  script_tag(name: "summary", value: "This host is installed with phpMyFAQ and is prone to Cross Site Scripting
-vulnerability.");
+  script_tag(name:"summary", value:"This host is installed with phpMyFAQ and is prone to Cross Site Scripting
+  vulnerability.");
 
-  script_xref(name: "URL", value: "http://secunia.com/advisories/37354");
-  script_xref(name: "URL", value: "http://www.phpmyfaq.de/advisory_2009-09-01.php");
-  script_xref(name: "URL", value: "http://www.vupen.com/english/advisories/2009/3241");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/37354");
+  script_xref(name:"URL", value:"http://www.phpmyfaq.de/advisory_2009-09-01.php");
+  script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2009/3241");
 
   exit(0);
 }

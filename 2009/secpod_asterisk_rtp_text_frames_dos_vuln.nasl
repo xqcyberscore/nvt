@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_asterisk_rtp_text_frames_dos_vuln.nasl 4887 2016-12-30 12:54:28Z cfi $
+# $Id: secpod_asterisk_rtp_text_frames_dos_vuln.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # Asterisk RTP Text Frames Denial Of Service Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:digium:asterisk';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900812");
-  script_version("$Revision: 4887 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-30 13:54:28 +0100 (Fri, 30 Dec 2016) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-08-05 14:14:14 +0200 (Wed, 05 Aug 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -46,30 +46,20 @@ if(description)
   script_xref(name:"URL", value:"http://secunia.com/advisories/36039/");
   script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2009/2067");
   script_xref(name:"URL", value:"http://downloads.asterisk.org/pub/security/AST-2009-004.html");
+  script_xref(name:"URL", value:"http://downloads.asterisk.org/pub/security/AST-2009-004-1.6.1.diff.txt");
 
-  tag_solution = "Upgrade to Asterisk version 1.6.1.2 or latest or apply the patch,
-  http://www.asterisk.org/downloads
-  http://downloads.asterisk.org/pub/security/AST-2009-004-1.6.1.diff.txt";
+  script_tag(name:"impact", value:"Successful exploitation will let the attacker cause Denial of Service
+  in the victim's system.");
 
-  tag_impact = "Successful exploitation will let the attacker cause Denial of Service
-  in the victim's system.
+  script_tag(name:"affected", value:"Asterisk version 1.6.1 and before 1.6.1.2 on Linux.");
 
-  Impact Level: Application";
+  script_tag(name:"insight", value:"Error in main/rtp.c file which can be exploited via an RTP text frame without
+  a certain delimiter that triggers a NULL pointer dereference and the subsequent calculation to an invalid pointer.");
 
-  tag_affected = "Asterisk version 1.6.1 and before 1.6.1.2 on Linux.";
+  script_tag(name:"summary", value:"This host has Asterisk installed and is prone to Denial of Service
+  vulnerability.");
 
-  tag_insight = "Error in main/rtp.c file which can be exploited via an RTP text frame without
-  a certain delimiter that triggers a NULL pointer dereference and the
-  subsequent calculation to an invalid pointer.";
-
-  tag_summary = "This host has Asterisk installed and is prone to Denial of Service
-  vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"solution", value:"Upgrade to Asterisk version 1.6.1.2 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
@@ -80,13 +70,15 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! infos = get_app_version_and_proto( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! infos = get_app_version_and_proto( cpe:CPE, port:port ) )
+  exit( 0 );
 
 version = infos["version"];
 proto = infos["proto"];
 
-# Check for Asterisk version 1.6.1 < 1.6.1.2
 if( version_in_range( version:version, test_version:"1.6.1",  test_version2:"1.6.1.1" ) ) {
   report = report_fixed_ver( installed_version:version, fixed_version:"1.6.1.2" );
   security_message( port:port, data:report, protocol:proto );

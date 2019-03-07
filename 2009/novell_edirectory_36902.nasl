@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: novell_edirectory_36902.nasl 5772 2017-03-29 16:44:30Z mime $
+# $Id: novell_edirectory_36902.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # Novell eDirectory NULL Base DN Denial Of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100340");
-  script_version("$Revision: 5772 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-29 18:44:30 +0200 (Wed, 29 Mar 2017) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-11-09 11:17:02 +0100 (Mon, 09 Nov 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -47,20 +47,15 @@ if(description)
   script_xref(name:"URL", value:"http://www.novell.com/support/viewContent.do?externalId=7004721");
   script_xref(name:"URL", value:"http://www.zerodayinitiative.com/advisories/ZDI-09-075/");
 
-  tag_summary = "Novell eDirectory is prone to a denial-of-service vulnerability.";
+  script_tag(name:"solution", value:"Updates are available. Please see the references for details.");
 
-  tag_impact = "Remote attackers can exploit this issue to cause the server to become
-  unresponsive, denying service to legitimate users.";
+  script_tag(name:"summary", value:"Novell eDirectory is prone to a denial-of-service vulnerability.");
 
-  tag_affected = "Versions prior to Novell eDirectory 8.8.5 ftf1 and eDirectory 8.7.3.10
-  ftf2 are vulnerable.";
+  script_tag(name:"impact", value:"Remote attackers can exploit this issue to cause the server to become
+  unresponsive, denying service to legitimate users.");
 
-  tag_solution = "Updates are available. Please see the references for details.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
+  script_tag(name:"affected", value:"Versions prior to Novell eDirectory 8.8.5 ftf1 and eDirectory 8.7.3.10
+  ftf2 are vulnerable.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -82,16 +77,16 @@ if( ! sp = get_kb_item( "ldap/eDirectory/" + port + "/sp" ) )
 revision = get_kb_item( "ldap/eDirectory/" + port + "/build" );
 revision = str_replace( string:revision, find:".", replace:"" );
 
-invers = major;
+instver = major;
 
 if( sp > 0 )
-  invers += ' SP' + sp;
+  instver += ' SP' + sp;
 
 if( major == "8.8" )
 {
   if( sp && sp > 0 )
   {
-    if( sp == 5 ) 
+    if( sp == 5 )
     {
       if( revision && revision < 2050100 )
       {
@@ -158,7 +153,7 @@ else if( major =~ "^[0-7]\." )
 
 if( vuln )
 {
-  report =  report_fixed_ver( installed_version:invers, fixed_version:"See advisory" );
+  report =  report_fixed_ver( installed_version:instver, fixed_version:"See advisory" );
   security_message( port:port, data:report );
   exit(0);
 }

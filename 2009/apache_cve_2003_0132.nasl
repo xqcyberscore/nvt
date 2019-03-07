@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: apache_cve_2003_0132.nasl 9219 2018-03-27 11:58:13Z cfischer $
+# $Id: apache_cve_2003_0132.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # Apache Web Server Linefeed Memory Allocation Denial Of Service
 # Vulnerability
@@ -30,8 +30,8 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100171");
-  script_version("$Revision: 9219 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-27 13:58:13 +0200 (Tue, 27 Mar 2018) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-05-02 19:46:33 +0200 (Sat, 02 May 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -48,21 +48,16 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/7254");
   script_xref(name:"URL", value:"http://httpd.apache.org/");
 
-  tag_solution = "This vulnerability does not affect Apache 2.0.45. Users are advised to upgrade.";
+  script_tag(name:"insight", value:"This issue occurs because of the way that Apache handles
+  excessive amounts of consecutive linefeed characters.");
 
-  tag_summary = "Apache 2.0 series webservers are prone to a denial-of-service
-  condition.";
+  script_tag(name:"solution", value:"This vulnerability does not affect Apache 2.0.45. Users are advised to upgrade.");
 
-  tag_insight = "This issue occurs because of the way that Apache handles
-  excessive amounts of consecutive linefeed characters.";
+  script_tag(name:"summary", value:"Apache 2.0 series webservers are prone to a denial-of-service
+  condition.");
 
-  tag_impact = "The server may allocate large amounts of memory, resulting in a denial of
-  service.";
-
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
+  script_tag(name:"impact", value:"The server may allocate large amounts of memory, resulting in a denial of
+  service.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
@@ -73,8 +68,11 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! vers = get_app_version( cpe:CPE, port:port ) )
+  exit( 0 );
 
 if( version_is_less( version:vers, test_version:"2.0.45" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"2.0.45" );

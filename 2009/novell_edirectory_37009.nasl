@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: novell_edirectory_37009.nasl 5772 2017-03-29 16:44:30Z mime $
+# $Id: novell_edirectory_37009.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # Novell eDirectory '/dhost/modules?I:' Buffer Overflow Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100343");
-  script_version("$Revision: 5772 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-29 18:44:30 +0200 (Wed, 29 Mar 2017) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-11-13 12:21:24 +0100 (Fri, 13 Nov 2009)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
@@ -46,21 +46,20 @@ if(description)
   script_xref(name:"URL", value:"http://www.novell.com/products/edirectory/");
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/507812");
 
-  tag_summary = "Novell eDirectory is prone to a buffer-overflow vulnerability
-  because it fails to perform adequate boundary checks on user-supplied data.";
+  script_tag(name:"summary", value:"Novell eDirectory is prone to a buffer-overflow vulnerability
+  because it fails to perform adequate boundary checks on user-supplied data.");
 
-  tag_impact = "Attackers can exploit this issue to execute arbitrary code in the
-  context of the affected application. Failed exploit attempts will
-  likely cause denial-of-service conditions.";
+  script_tag(name:"impact", value:"Attackers can exploit this issue to execute arbitrary code in the
+  context of the affected application. Failed exploit attempts will likely cause denial-of-service conditions.");
 
-  tag_affected = "Novell eDirectory 8.8 SP5 is vulnerable; other versions may also
-  be affected.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
+  script_tag(name:"affected", value:"Novell eDirectory 8.8 SP5 is vulnerable. Other versions may also
+  be affected.");
 
   script_tag(name:"qod_type", value:"remote_banner");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the references for more information.");
 
   exit(0);
 }
@@ -70,18 +69,21 @@ include("version_func.inc");
 
 CPE = make_list( "cpe:/a:novell:edirectory","cpe:/a:netiq:edirectory" );
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! major = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! major = get_app_version( cpe:CPE, port:port ) )
+  exit( 0 );
 
 if( ! sp = get_kb_item( "ldap/eDirectory/" + port + "/sp" ) )
   sp = "0";
 
 revision = get_kb_item( "ldap/eDirectory/" + port + "/build" );
 
-invers = major;
+instver = major;
 
 if( sp > 0 )
-  invers += ' SP' + sp;
+  instver += ' SP' + sp;
 
 if( major == "8.8" )
 {
@@ -115,10 +117,9 @@ else if( major == "8.8.2" )
 }
 
 if(VULN) {
-  report = report_fixed_ver( installed_version:invers, fixed_version:"See advisory" );
+  report = report_fixed_ver( installed_version:instver, fixed_version:"See advisory" );
   security_message( port:port, data:report );
   exit(0);
 }
 
 exit(99);
-

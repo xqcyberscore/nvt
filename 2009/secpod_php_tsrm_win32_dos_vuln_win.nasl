@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_php_tsrm_win32_dos_vuln_win.nasl 10459 2018-07-09 07:41:24Z cfischer $
+# $Id: secpod_php_tsrm_win32_dos_vuln_win.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # PHP 'tsrm_win32.c' Denial Of Service Vulnerability (Windows)
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900872");
-  script_version("$Revision: 10459 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 09:41:24 +0200 (Mon, 09 Jul 2018) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-09-29 09:16:03 +0200 (Tue, 29 Sep 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -47,9 +47,7 @@ if(description)
   script_xref(name:"URL", value:"http://downloads.securityfocus.com/vulnerabilities/exploits/31064.php");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause Denial of Service in
-  the victim's system.
-
-  Impact Level: Application");
+  the victim's system.");
 
   script_tag(name:"affected", value:"PHP version prior to 5.2.11 on Windows.");
 
@@ -58,8 +56,7 @@ if(description)
   string in the second argument (aka mode), possibly related to the '_fdopen'
   function in the Microsoft C runtime library.");
 
-  script_tag(name:"solution", value:"Upgrade to version 5.2.11 or later
-  http://www.php.net/downloads.php");
+  script_tag(name:"solution", value:"Upgrade to version 5.2.11 or later.");
 
   script_tag(name:"summary", value:"This host is running PHP and is prone to Denial of Service
   vulnerability.");
@@ -73,8 +70,11 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-if( isnull( phpPort = get_app_port( cpe:CPE ) ) ) exit( 0 );
-if( ! phpVer = get_app_version( cpe:CPE, port:phpPort ) ) exit( 0 );
+if( isnull( phpPort = get_app_port( cpe:CPE ) ) )
+  exit( 0 );
+
+if( ! phpVer = get_app_version( cpe:CPE, port:phpPort ) )
+  exit( 0 );
 
 if( version_is_less( version:phpVer, test_version:"5.2.11" ) ) {
   report = report_fixed_ver( installed_version:phpVer, fixed_version:"5.2.11" );

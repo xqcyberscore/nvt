@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_visual_studio_kb4087371.nasl 12120 2018-10-26 11:13:20Z mmartin $
+# $Id: gb_ms_visual_studio_kb4087371.nasl 14023 2019-03-07 07:04:38Z cfischer $
 #
 # Microsoft Visual Studio 2015 Update 3 Information Disclosure Vulnerability (KB4087371)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813140");
-  script_version("$Revision: 12120 $");
+  script_version("$Revision: 14023 $");
   script_cve_id("CVE-2018-1037");
   script_bugtraq_id(103715);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 08:04:38 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-04-17 16:46:08 +0530 (Tue, 17 Apr 2018)");
   script_name("Microsoft Visual Studio 2015 Update 3 Information Disclosure Vulnerability (KB4087371)");
 
@@ -99,7 +99,7 @@ foreach key (key_list)
   }
 
   dllVer = fetch_file_version(sysPath:installPath, file_name:"mspdbsrv.exe");
-  if(dllVer && (version_is_less(version:dllVer, test_version:"14.0.24235.0")))
+  if(dllVer && dllVer =~ "^14\.0" && version_is_less(version:dllVer, test_version:"14.0.24235.0"))
   {
     report = report_fixed_ver(file_checked: installPath + "mspdbsrv.exe",
                               file_version:dllVer, vulnerable_range:"14.0 - 14.0.24234");

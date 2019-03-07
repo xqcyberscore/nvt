@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_visual_studio_2017_mult_vuln_july18.nasl 12120 2018-10-26 11:13:20Z mmartin $
+# $Id: gb_ms_visual_studio_2017_mult_vuln_july18.nasl 14023 2019-03-07 07:04:38Z cfischer $
 #
 # Microsoft Visual Studio 2017 Multiple Vulnerabilities-July18
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813573");
-  script_version("$Revision: 12120 $");
+  script_version("$Revision: 14023 $");
   script_cve_id("CVE-2018-8172", "CVE-2018-8232");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 08:04:38 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-07-12 13:08:27 +0530 (Thu, 12 Jul 2018)");
   script_name("Microsoft Visual Studio 2017 Multiple Vulnerabilities-July18");
 
@@ -103,7 +103,7 @@ foreach key (key_list)
 
   binPath = installPath + "Common7\IDE\PrivateAssemblies\";
   dllVer = fetch_file_version(sysPath:binPath, file_name:"Microsoft.VisualStudio.Setup.dll");
-  if(dllVer && (version_is_less(version:dllVer, test_version:"1.16.1193.54969")))
+  if(dllVer && dllVer =~ "^1\.1[56]\." && version_is_less(version:dllVer, test_version:"1.16.1193.54969"))
   {
     report = report_fixed_ver(file_checked: binPath + "Microsoft.VisualStudio.Setup.dll",
                               file_version:dllVer, vulnerable_range:"1.15.0 - 1.16.1193.54969");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: joomla_mambo_gigcalendar_component_sql_injection.nasl 11554 2018-09-22 15:11:42Z cfischer $
+# $Id: joomla_mambo_gigcalendar_component_sql_injection.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # Joomla! and Mambo gigCalendar Component SQL Injection Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100004");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-02-26 04:52:45 +0100 (Thu, 26 Feb 2009)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -50,8 +50,7 @@ if(description)
   Exploiting this issue could allow an attacker to compromise the application, access or modify data, or exploit
   latent vulnerabilities in the underlying database.");
 
-  script_tag(name:"solution", value:"Update to newer version if available at
-  http://joomlacode.org/gf/project/gigcalendar/, remove the gigCalendar component.");
+  script_tag(name:"solution", value:"Update to a newer version if available. remove the gigCalendar component.");
 
   script_tag(name:"summary", value:"The gigCalendar component for Joomla! and Mambo is prone to an SQL-injection
   vulnerability because it fails to sufficiently sanitize user-supplied data before using it in an SQL query.");
@@ -61,6 +60,7 @@ if(description)
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://joomlacode.org/gf/project/gigcalendar/,");
   exit(0);
 }
 

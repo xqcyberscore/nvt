@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_memcached_mult_bof_vuln.nasl 8974 2018-02-28 09:53:03Z cfischer $
+# $Id: secpod_memcached_mult_bof_vuln.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # Memcached 'CVE-2009-2415' Multiple Buffer Overflow Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:memcached:memcached";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900914");
-  script_version("$Revision: 8974 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-28 10:53:03 +0100 (Wed, 28 Feb 2018) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-08-20 09:27:17 +0200 (Thu, 20 Aug 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -45,29 +45,18 @@ if(description)
 
   script_xref(name:"URL", value:"http://seclists.org/bugtraq/2009/Aug/0055.html");
 
-  tag_solution = "Apply the patch for Debian
-  http://www.debian.org/security/2009/dsa-1853
+  script_tag(name:"impact", value:"Successful exploitation will let the attacker execute arbitrary code on the
+  affected system via readily available network utilities.");
 
-  *****
-  NOTE: Please ignore this warning if the patch is applied.
-  *****";
+  script_tag(name:"affected", value:"Memcached version 1.1.12 and 1.2.2.");
 
-  tag_impact = "Successful exploitation will let the attacker execute arbitrary code on the
-  affected system via readily available network utilities.";
+  script_tag(name:"insight", value:"Heap overflow errors occur due to integer conversions when parsing certain
+  length attributes.");
 
-  tag_affected = "Memcached version 1.1.12 and 1.2.2";
+  script_tag(name:"summary", value:"The host is running Memcached and is prone to multiple Buffer
+  Overflow vulnerabilities.");
 
-  tag_insight = "Heap overflow errors occur due to integer conversions when parsing certain
-  length attributes.";
-
-  tag_summary = "The host is running Memcached and is prone to multiple Buffer
-  Overflow vulnerabilities.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"solution", value:"Update to a later version.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -78,8 +67,11 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! infos = get_app_version_and_proto( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! infos = get_app_version_and_proto( cpe:CPE, port:port ) )
+  exit( 0 );
 
 vers  = infos["version"];
 proto = infos["proto"];

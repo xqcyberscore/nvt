@@ -29,10 +29,9 @@ global_var __rpm_ssh_release, __rpm_ssh_rpms, __rpm_kernel_overwrite, __rpm_kern
 #        related to a Linux Kernel. If a kernel package is detected the function will compare the version
 #        of the package with the running kernel and chose where the information is logged to.
 #
-# @param vuln_pkg     The vulnerable package name to check, e.g. "kernel-package".
-# @param inst_pkg     The installed package name to check, e.g. "kernel-default-4.4.27-2.1"
-# @param inst_pkg_ver The installed package version to check, e.g. "4.4.27-2.1".
-# @param fixed_ver    The version of the package including the fix, e.g. "kernel-default-4.4.36-5.1".
+# @param vuln_pkg  The vulnerable package name to check, e.g. "kernel-package".
+# @param inst_pkg  The installed package name to check, e.g. "kernel-default-4.4.27-2.1".
+# @param fixed_pkg The package including the fix, e.g. "kernel-default-4.4.36-5.1".
 #
 # @return The report string to return to the VT calling @isrpmvuln in the case the user hasn't requested
 #         the overwrite of the reporting or the package isn't related to a Linux-Kernel, NULL if the user
@@ -40,10 +39,10 @@ global_var __rpm_ssh_release, __rpm_ssh_rpms, __rpm_kernel_overwrite, __rpm_kern
 #         the version of it doesn't match the running kernel, FALSE if no vuln_pkg, inst_pkg, inst_pkg_ver
 #         or fixed_pkg parameter was passed.
 #
-function rpm_check_kernel_overwrite( vuln_pkg, inst_pkg, inst_pkg_ver, fixed_pkg ) {
+function rpm_check_kernel_overwrite( vuln_pkg, inst_pkg, fixed_pkg ) {
 
-  local_var vuln_pkg, inst_pkg, inst_pkg_ver, fixed_pkg;
-  local_var overwrite_enabled, report, kernel_uname;
+  local_var vuln_pkg, inst_pkg, fixed_pkg;
+  local_var overwrite_enabled, report, kernel_uname, inst_pkg_ver;
   # nb: __rpm_kernel_overwrite and __rpm_kernel_uname are global vars from above
 
   if( ! vuln_pkg ) {
@@ -53,11 +52,6 @@ function rpm_check_kernel_overwrite( vuln_pkg, inst_pkg, inst_pkg_ver, fixed_pkg
 
   if( ! inst_pkg ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#rpm_check_kernel_overwrite#-#inst_pkg" );
-    return FALSE;
-  }
-
-  if( ! inst_pkg_ver ) {
-    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#rpm_check_kernel_overwrite#-#inst_pkg_ver" );
     return FALSE;
   }
 
@@ -105,20 +99,33 @@ function rpm_check_kernel_overwrite( vuln_pkg, inst_pkg, inst_pkg_ver, fixed_pkg
     return report;
 
   # nb: If the installed_ver is included in the uname we know the running kernel is vulnerable.
-  # e.g.:
+  # On OpenSUSE Leap 42.2 e.g.:
   # kernel_uname: Linux opensuse-leap-422 4.4.74-18.20-default #1 SMP Fri Jun 30 19:01:19 UTC 2017 (b5079b8) x86_64 x86_64 x86_64 GNU/Linux
   # inst_pkg: kernel-default-4.4.74-18.20
-  # inst_pkg_ver: 4.4.74-18.20
   # or:
   # kernel_uname: Linux opensuse-leap-422 4.4.27-2-default #1 SMP Thu Nov 3 14:59:54 UTC 2016 (5c21e7c) x86_64 x86_64 x86_64 GNU/Linux
   # inst_pkg: kernel-default-4.4.27-2.1
-  # inst_pkg_ver: 4.4.27-2.1
   #
-  # nb: As shown on the last digit(s) is/are not included in the uname line so we're doing a hacky workaround to remove this
-  # for the match below so that we can match between uname version and installed version.
-  inst_pkg_ver = ereg_replace( string:inst_pkg_ver, pattern:"\.[0-9]+$", replace:"" );
-  if( inst_pkg_ver >< kernel_uname )
+  # On CentOS 7.4 e.g.:
+  # kernel_uname: Linux centos-74 3.10.0-693.el7.x86_64 #1 SMP Tue Aug 22 21:09:27 UTC 2017 x86_64 x86_64 x86_64 GNU/Linux
+  # inst_pkg: kernel-3.10.0-693.el7
+  #
+  # nb: As shown above the last digit(s) is/are not always included in the uname line so we're doing a hacky
+  # workaround to remove this for the match below so that we can match between uname version and installed version.
+  inst_pkg_ver = ereg_replace( string:inst_pkg, pattern:"\.[0-9]+$", replace:"" );
+
+  # and finally we need to extract the version from the inst_pkg string so that we can match
+  # against the uname line.
+  inst_pkg_ver = eregmatch( string:inst_pkg_ver, pattern:"^" + vuln_pkg + "-(.+)" );
+
+  if( ! inst_pkg_ver[1] )
+    return report; # nb: Fallback if something went wrong during the extraction above.
+
+  if( inst_pkg_ver[1] >< kernel_uname )
     return report;
+
+  report = chomp( report );
+  report += '\nKernel uname:       ' + kernel_uname + '\n\n';
 
   # Otherwise save it into the KB for separate reporting in a Consolidation-VT with a lower severity
   # nb: Don't use the vuln_pkg variable for the second set_kb_item call below as this string isn't unique.
@@ -166,6 +173,100 @@ function rpm_get_ssh_rpms() {
   return rpms;
 }
 
+# @brief Modifies/Transforms a passed package string (either collected by collected by gather-package-list.nasl or passed by the the VT calling
+#        @isrpmvuln) into various representations of the string to be used in e.g. @revcomp or in the reporting. The purpose of this function
+#        is to solve a few issues when comparing package versions outlined in the comments of this function.
+#
+# @param inst_pkg  The "plain" package name without the appended version (e.g. kernel for an installed kernel~2.6.9~89 package) passed by
+#                  the VT calling @isrpmvuln.
+#
+# @param fixed_pkg The "full" package string including the appended version (e.g. kernel~2.6.9~89) passed by the VT calling @isrpmvuln.
+#
+# @param vuln_pkg  The "full" package string including the appended version (e.g. kernel~2.6.9~89.0.20) collected by gather-package-list.nasl.
+#
+# @return An array containing the following array indices:
+#
+#         ret_array["inst_pkg"]       = The modified/transformed package string (e.g. kernel~2.6.9~89 if kernel~2.6.9~89.EL was passed)
+#                                       of the installed package version collected by gather-package-list.nasl to be used in @revcomp.
+#         ret_array["fixed_pkg"]      = The modified/transformed package string (e.g. kernel~2.6.9~89.0.20 if kernel~2.6.9~89.0.20.EL was passed)
+#                                       of the fixed package version passed by the VT calling @isrpmvuln to be used in @revcomp.
+#         ret_array["norm_inst_pkg"]  = The modified/transformed package string (e.g. kernel-2.6.9-89.EL if kernel~2.6.9~89.EL was passed)
+#                                       of the installed package version collected by gather-package-list.nasl to be used in the reporting.
+#         ret_array["norm_fixed_pkg"] = The modified/transformed package string (e.g. kernel-2.6.9-89.0.20.EL if kernel~2.6.9~89.0.20.EL was passed)
+#                                       of the fixed package version passed by the VT calling @isrpmvuln to be used in the reporting.
+#
+function rpmnorm( inst_pkg, fixed_pkg, vuln_pkg ) {
+
+  local_var inst_pkg, fixed_pkg, vuln_pkg;
+  local_var ret_array, _inst_pkg, _fixed_pkg, inst_pkg_substr, fixed_pkg_substr;
+  local_var _inst_pkg_check, _fixed_pkg_check, norm_inst_pkg, norm_fixed_pkg, chomp;
+
+  ret_array  = make_array();
+  _inst_pkg  = inst_pkg;
+  _fixed_pkg = fixed_pkg;
+
+  # Splitting Package name and version because the below replace condition
+  # would also replace _ with .(Dot) in the package name.
+  inst_pkg_substr  = substr( _inst_pkg, strlen( vuln_pkg ) + 1, strlen( _inst_pkg ) );
+  fixed_pkg_substr = substr( _fixed_pkg, strlen( vuln_pkg ) + 1, strlen( _fixed_pkg ) );
+
+  # To replace _ with .(Dot) because a version match fails in some case where version is having _(underscore)
+  if( fixed_pkg_substr =~ 'el[0-9]{1}_[0-9]{1}' && inst_pkg_substr !~ 'el[0-9]{1}_[0-9]{1}' )
+    fixed_pkg_substr = str_replace( string:fixed_pkg_substr, find:'_', replace:'.' );
+
+  else if( inst_pkg_substr =~ 'el[0-9]{1}_[0-9]{1}' && fixed_pkg_substr !~ 'el[0-9]{1}_[0-9]{1}' )
+    inst_pkg_substr = str_replace( string:inst_pkg_substr, find:'_', replace:'.' );
+
+  # Combining package name and version again.
+  _inst_pkg  = vuln_pkg + '~' + inst_pkg_substr;
+  _fixed_pkg = vuln_pkg + '~' + fixed_pkg_substr;
+
+  # revcomp handles almost all situations intellligently. But, it can get caught on the following two string examples:
+  #
+  # a="kernel~2.6.9~89.EL", b="kernel~2.6.9~89.0.20.EL"
+  #
+  # a="kernel~3.10.0~693.el7", b="kernel~3.10.0~693.2.2.el7"
+  #
+  # One would expect 'a' to be < (older than) 'b'. However, in this case revcomp differentiates the 'E' from the '0',
+  # and thinks that that b is as a result older (lexicographically less than) a. This is the only situation we've seen
+  # where this type of suffix causes problems. So, as a patch, we solve the problem locally BEFORE we call revcomp, by
+  # stripping from both strings the trailing '.EL[0-9]*' suffix, but only if both strings have the identical suffix.
+  # If we find other systems where this type of problem occurred, it may make sense to consider if we should be stripping
+  # equal trailing strings from the a/b parameters within revcomp. For now, though we'll do it here.
+
+  _inst_pkg_check  = eregmatch( pattern:"^(.*)[.]([Ee][Ll][0-9]*)$", string:_inst_pkg );
+  _fixed_pkg_check = eregmatch( pattern:"^(.*)[.]([Ee][Ll][0-9]*)$", string:_fixed_pkg );
+  if( ! isnull( _inst_pkg_check ) && ! isnull( _fixed_pkg_check ) ) {
+    if( _inst_pkg_check[2] == _fixed_pkg_check[2] ) {
+      _inst_pkg  = _inst_pkg_check[1];
+      _fixed_pkg = _fixed_pkg_check[1];
+    }
+  }
+
+  if( eregmatch( pattern:"\.[0-9]{1}\.el[0-9]{1}", string:_inst_pkg ) && ! eregmatch( pattern:"\.[0-9]{1}\.el[0-9]{1}", string:_fixed_pkg ) )
+    _fixed_pkg = ereg_replace( pattern:"(\.el[0-9]{1})", replace:".0\1", string:_fixed_pkg );
+
+  norm_inst_pkg = "";
+  foreach comp( split( inst_pkg, sep: "~", keep:FALSE ) )
+    norm_inst_pkg = string( norm_inst_pkg, "-", comp );
+
+  norm_inst_pkg = substr( norm_inst_pkg, 1 );
+
+  norm_fixed_pkg = "";
+  foreach comp( split( fixed_pkg, sep: "~", keep:FALSE ) )
+    norm_fixed_pkg = string( norm_fixed_pkg, "-", comp );
+
+  norm_fixed_pkg = substr( norm_fixed_pkg, 1 );
+
+  ret_array["inst_pkg"]       = _inst_pkg;
+  ret_array["fixed_pkg"]      = _fixed_pkg;
+  ret_array["norm_inst_pkg"]  = norm_inst_pkg;
+  ret_array["norm_fixed_pkg"] = norm_fixed_pkg;
+
+  return ret_array;
+}
+
+
 # @brief provides a quick way to verify that a given rpm, if it is installed, is up to date.
 #
 # @param pkg the rpm name (e.g. gnutls-utils) to check.
@@ -182,8 +283,7 @@ function rpm_get_ssh_rpms() {
 function isrpmvuln( pkg, rpm, rls ) {
 
   local_var pkg, rpm, rls;
-  local_var kbrls, rpms, pat, matches, pkg_name, pkgs, a, report, report1, b;
-  local_var asubstr, bsubstr, checkshorta, checkshortb, rc, norm_pkg;
+  local_var kbrls, rpms, pat, matches, pkg_name, pkgs, report, report1, rpminfo;
 
   if( ! pkg ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#isrpmvuln#-#pkg" );
@@ -205,14 +305,14 @@ function isrpmvuln( pkg, rpm, rls ) {
     return NULL;
 
   rpms = rpm_get_ssh_rpms();
-  if( ! rpms )
+  if( ! rpms || rpms == ";" )
     return NULL;
 
   # Must include a leading \n or ; in the package search to prevent an
   # overly permissive search (e.g. search for 'ash' must not match 'bash')
   pat = string( "[\n;](", pkg, "~[^;]+);" );
   matches = eregmatch( pattern:pat, string:rpms );
-  if( isnull( matches ) )
+  if( ! matches[1] )
     return NULL;
 
   # If a kernel package is found this loop will check for every installed version of
@@ -223,125 +323,28 @@ function isrpmvuln( pkg, rpm, rls ) {
 
     foreach pkgs( pkg_name ) {
       if( egrep( string:pkgs, pattern:string( "^", pkg, "~" ) ) ) {
-        a = eregmatch( pattern:"^" + pkg + "~[^;]+", string:pkgs );
-        report = kernel_packge_check( a:a[0], b:rpm, pkg:pkg );
-        if( report )
-          report1 += report + '\n';
+        matches = eregmatch( pattern:"^(" + pkg + "~[^;]+)", string:pkgs );
+        if( ! matches[1] )
+          continue;
+
+        rpminfo = rpmnorm( inst_pkg:matches[1], fixed_pkg:rpm, vuln_pkg:pkg );
+        if( revcomp( a:rpminfo["inst_pkg"], b:rpminfo["fixed_pkg"] ) < 0 ) {
+          report = rpm_check_kernel_overwrite( vuln_pkg:pkg, inst_pkg:rpminfo["norm_inst_pkg"], fixed_pkg:rpminfo["norm_fixed_pkg"] );
+          if( report )
+            report1 += report;
+        }
       }
     }
-    return report1;
+    return chomp( report1 );
   }
 
-  # Ok...revcomp handles almost all situations intellligently. But,
-  # it can get caught on the following two string example:
-  #    a:a="kernel~2.6.9~89.EL"; b="kernel~2.6.9~89.0.20.EL";
-  # One would expect 'a' to be < (older than) 'b'.  However, in this
-  # case revcomp differentiates the 'E' from the '0', and thinks that
-  # that b is as a result older (lexicographically less than) a.
-  # This is the only situation we've seen where this type of suffix
-  # causes problems.  So, as a patch, we solve the problem locally
-  # BEFORE we call revcomp, by stripping from both strings the trailing
-  # '.EL[0-9]*' suffix, but only if both strings have the identical suffix.
-  # If we find other systems where this type of problem occurred, it may
-  # make sense to consider if we should be stripping equal trailing strings
-  # from the a/b parameters within revcomp. For now, though we'll do it here.
-
-  a = matches[1];
-  b = rpm;
-
-  ## Splitting Package name and version
-  ## Because the below replace _ with .(Dot) condition replaces
-  ## _ in package name also
-  asubstr = substr( a, strlen( pkg ) + 1, strlen( a ) );
-  bsubstr = substr( b, strlen( pkg ) + 1, strlen( b ) );
-
-  ## To replace _ with .(Dot)
-  ## Because Version match fails in some case where version is having _(underscore)
-  if( bsubstr =~ 'el[0-9]{1}_[0-9]{1}' && asubstr !~ 'el[0-9]{1}_[0-9]{1}' )
-    bsubstr = str_replace( string:bsubstr, find:'_', replace:'.' );
-
-  else if( asubstr =~ 'el[0-9]{1}_[0-9]{1}' && bsubstr !~ 'el[0-9]{1}_[0-9]{1}' )
-    asubstr = str_replace( string:asubstr, find:'_', replace:'.' );
-
-  ## Combining package name and version
-  a = pkg + '~' + asubstr;
-  b = pkg + '~' + bsubstr;
-
-  checkshorta = eregmatch( pattern:"^(.*)[.]([Ee][Ll][0-9]*)$", string:a );
-  checkshortb = eregmatch( pattern:"^(.*)[.]([Ee][Ll][0-9]*)$", string:b );
-  if( ! isnull( checkshorta ) && ! isnull( checkshortb ) ) {
-    if( checkshorta[2] == checkshortb[2] ) {
-      a = checkshorta[1];
-      b = checkshortb[1];
-    }
-  }
-
-  if( eregmatch( pattern:"\.[0-9]{1}\.el[0-9]{1}", string:a ) && ! eregmatch(pattern:"\.[0-9]{1}\.el[0-9]{1}", string:b ) ) {
-    b = ereg_replace( pattern:"(\.el[0-9]{1})", replace:".0\1", string:b );
-  }
-
+  rpminfo = rpmnorm( inst_pkg:matches[1], fixed_pkg:rpm, vuln_pkg:pkg );
   __pkg_match = TRUE;
 
   # Now proceed with the normal revision comparison
-  rc = revcomp( a:a, b:b );
-  if( rc < 0 ) {
-
-    norm_pkg = "";
-    foreach comp( split(matches[1], sep: "~", keep:FALSE ) ) {
-      norm_pkg = string( norm_pkg, "-", comp );
-    }
-
-    norm_pkg = substr( norm_pkg, 1 );
-    report = "Package " + pkg + " version " + norm_pkg + ' is installed which is known to be vulnerable.\n';
-    return report;
-  }
-  return NULL;
-}
-
-function kernel_packge_check( a, b, pkg ) {
-
-  local_var a, b, pkg;
-  local_var vuln_pkg, asubstr, bsubstr, checkshorta, checkshortb, rc, norm_pkg, report;
-
-  vuln_pkg = a;
-
-  asubstr = substr( a, strlen( pkg ) + 1, strlen( a ) );
-  bsubstr = substr( b, strlen( pkg ) + 1, strlen( b ) );
-
-  ## To replace _ with .(Dot)
-  ## Because Version match fails in some case where version is having _(underscore)
-  if( bsubstr =~ 'el[0-9]{1}_[0-9]{1}' && asubstr !~ 'el[0-9]{1}_[0-9]{1}' )
-    bsubstr = str_replace( string:bsubstr, find:'_', replace:'.' );
-
-  else if( asubstr =~ 'el[0-9]{1}_[0-9]{1}' && bsubstr !~ 'el[0-9]{1}_[0-9]{1}' )
-    asubstr = str_replace( string:asubstr, find:'_', replace:'.' );
-
-  ## Combining package name and version
-  a = pkg + '~' + asubstr;
-  b = pkg + '~' + bsubstr;
-
-  checkshorta = eregmatch( pattern:"^(.*)[.]([Ee][Ll][0-9]*)$", string:a );
-  checkshortb = eregmatch( pattern:"^(.*)[.]([Ee][Ll][0-9]*)$", string:b );
-  if( ! isnull( checkshorta ) && ! isnull( checkshortb ) ) {
-    if( checkshorta[2] == checkshortb[2] ) {
-      a = checkshorta[1];
-      b = checkshortb[1];
-    }
-  }
-
-  __pkg_match = TRUE;
-
-  # Now proceed with the normal revision comparison
-  rc = revcomp( a:a, b:b );
-  if( rc < 0 ) {
-
-    norm_pkg = "";
-    foreach comp( split( vuln_pkg, sep: "~", keep:FALSE ) ) {
-      norm_pkg = string( norm_pkg, "-", comp );
-    }
-
-    norm_pkg = substr( norm_pkg, 1 );
-    report = "Package " + pkg + " version " + norm_pkg + ' is installed which is known to be vulnerable.\n';
+  if( revcomp( a:rpminfo["inst_pkg"], b:rpminfo["fixed_pkg"] ) < 0 ) {
+    # nb: Kernel packages should be already checked above but just to be sure...
+    report = rpm_check_kernel_overwrite( vuln_pkg:pkg, inst_pkg:rpminfo["norm_inst_pkg"], fixed_pkg:rpminfo["norm_fixed_pkg"] );
     return report;
   }
   return NULL;

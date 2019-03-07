@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_display_errors_xss_vuln.nasl 10459 2018-07-09 07:41:24Z cfischer $
+# $Id: gb_php_display_errors_xss_vuln.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # PHP display_errors Cross-Site Scripting Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800334");
-  script_version("$Revision: 10459 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 09:41:24 +0200 (Mon, 09 Jul 2018) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-01-08 07:43:30 +0100 (Thu, 08 Jan 2009)");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
@@ -46,17 +46,14 @@ if(description)
   script_xref(name:"URL", value:"http://jvndb.jvn.jp/en/contents/2008/JVNDB-2008-000084.html");
 
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to inject arbitrary web script
-  or HTML via unspecified vectors and conduct Cross-Site Scripting attacks.
-
-  Impact Level: Application");
+  or HTML via unspecified vectors and conduct Cross-Site Scripting attacks.");
 
   script_tag(name:"affected", value:"PHP version 5.2.7 and prior on all running platform.");
 
   script_tag(name:"insight", value:"The flaw is due to improper handling of certain inputs when
   display_errors settings is enabled.");
 
-  script_tag(name:"solution", value:"Upgrade to version 5.2.8 or later
-  http://www.php.net/downloads.php");
+  script_tag(name:"solution", value:"Upgrade to version 5.2.8 or later.");
 
   script_tag(name:"summary", value:"The host is running PHP and is prone to Cross-Site Scripting
   vulnerability.");
@@ -70,8 +67,11 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-if( isnull( phpPort = get_app_port( cpe:CPE ) ) ) exit( 0 );
-if( ! phpVer = get_app_version( cpe:CPE, port:phpPort ) ) exit( 0 );
+if( isnull( phpPort = get_app_port( cpe:CPE ) ) )
+  exit( 0 );
+
+if( ! phpVer = get_app_version( cpe:CPE, port:phpPort ) )
+  exit( 0 );
 
 if( version_is_less_equal( version:phpVer, test_version:"5.2.7" ) ) {
   report = report_fixed_ver( installed_version:phpVer, fixed_version:"5.2.8" );

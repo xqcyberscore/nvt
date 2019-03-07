@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phpbb_3_0_4.nasl 9332 2018-04-05 12:51:29Z cfischer $
+# $Id: phpbb_3_0_4.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # phpBB 'ucp.php' Cross Site Scripting Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:phpbb:phpbb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100035");
-  script_version("$Revision: 9332 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-05 14:51:29 +0200 (Thu, 05 Apr 2018) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-03-10 08:40:52 +0100 (Tue, 10 Mar 2009)");
   script_bugtraq_id(33995);
   script_tag(name:"cvss_base", value:"4.3");
@@ -73,13 +73,16 @@ exit(66);
 include("version_func.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! vers = get_app_version( cpe:CPE, port:port ) )
+  exit( 0 );
 
 if( version_is_less( version:vers, test_version: "3.0.5" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"3.0.5" );
   security_message( port:port, data:report );
   exit( 0 );
-}  
+}
 
 exit( 99 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_woltlab_burning_board_csrf_vuln.nasl 10795 2018-08-06 14:09:55Z cfischer $
+# $Id: secpod_woltlab_burning_board_csrf_vuln.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # WoltLab Burning Board Cross-Site Request Forgery Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:woltlab:burning_board";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900937");
-  script_version("$Revision: 10795 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-06 16:09:55 +0200 (Mon, 06 Aug 2018) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-09-16 15:34:19 +0200 (Wed, 16 Sep 2009)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -46,9 +46,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/archive/1/487139/100/200/threaded");
 
   script_tag(name:"impact", value:"Attackers can exploit this issue to delete private messages by
-  sending malicious input in the 'pmID' parameter in a delete action in a PM page.
-
-  Impact Level: Application");
+  sending malicious input in the 'pmID' parameter in a delete action in a PM page.");
 
   script_tag(name:"affected", value:"WoltLab Burning Board version 3.x");
 
@@ -72,13 +70,17 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-if( ! port  = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:TRUE ) ) exit(0);
+if( ! port  = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:TRUE ) )
+  exit(0);
+
 vers = infos['version'];
 path = infos['location'];
 
-if( vers =~ "^3\..*" ) {
-  report = report_fixed_ver( installed_version:vers, fixed_version:"WillNotFix", install_path:path );
+if( vers =~ "^3\..+" ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"None", install_path:path );
   security_message( port:port, data:report );
   exit( 0 );
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: php_restriction_bypass.nasl 10459 2018-07-09 07:41:24Z cfischer $
+# $Id: php_restriction_bypass.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # PHP Multiple Restriction-Bypass Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100281");
-  script_version("$Revision: 10459 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 09:41:24 +0200 (Mon, 09 Jul 2018) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-10-01 18:57:31 +0200 (Thu, 01 Oct 2009)");
   script_bugtraq_id(36555, 36554);
   script_cve_id("CVE-2009-3557", "CVE-2009-3558");
@@ -55,8 +55,7 @@ if(description)
 
   script_tag(name:"summary", value:"PHP is prone to a 'safe_mode' and to a 'open_basedir' restriction-bypass vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version of PHP with the help of detect NVT and check
-  the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"This vulnerability would be an issue in shared-hosting configurations
   where multiple users can create and execute arbitrary PHP script code. The 'safe_mode'
@@ -78,8 +77,11 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-if( isnull( port = get_app_port( cpe:CPE ) ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit(0);
+if( isnull( port = get_app_port( cpe:CPE ) ) )
+  exit( 0 );
+
+if( ! vers = get_app_version( cpe:CPE, port:port ) )
+  exit(0);
 
 if( version_is_equal( version:vers, test_version:"5.2.11" ) ||
     version_is_equal( version:vers, test_version:"5.3.0" ) ) {

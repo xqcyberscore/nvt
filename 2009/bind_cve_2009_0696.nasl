@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: bind_cve_2009_0696.nasl 4436 2016-11-08 07:15:44Z cfi $
+# $Id: bind_cve_2009_0696.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # ISC BIND 9 Remote Dynamic Update Message Denial of Service Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:isc:bind";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100251");
-  script_version("$Revision: 4436 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-08 08:15:44 +0100 (Tue, 08 Nov 2016) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-07-29 21:36:35 +0200 (Wed, 29 Jul 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -50,23 +50,17 @@ if(description)
   script_xref(name:"URL", value:"https://www.isc.org/node/474");
   script_xref(name:"URL", value:"http://www.kb.cert.org/vuls/id/725188");
 
-  tag_summary = "ISC BIND is prone to a remote denial-of-service vulnerability because
-  the application fails to properly handle specially crafted dynamic
-  update requests.";
+  script_tag(name:"impact", value:"Successfully exploiting this issue allows remote attackers to crash
+  affected DNS servers, denying further service to legitimate users.");
 
-  tag_impact = "Successfully exploiting this issue allows remote attackers to crash
-  affected DNS servers, denying further service to legitimate users.";
+  script_tag(name:"affected", value:"Versions prior to BIND 9.4.3-P3, 9.5.1-P3, and 9.6.1-P1 are
+  vulnerable.");
 
-  tag_affected = "Versions prior to BIND 9.4.3-P3, 9.5.1-P3, and 9.6.1-P1 are
-  vulnerable.";
+  script_tag(name:"solution", value:"The vendor released an advisory and fixes to address this issue.
+  Please see the references for more information.");
 
-  tag_solution = "The vendor released an advisory and fixes to address this issue.
-  Please see the references for more information.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"ISC BIND is prone to a remote denial-of-service vulnerability because
+  the application fails to properly handle specially crafted dynamic update requests.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -100,8 +94,11 @@ function build_pkt( zone ) {
   return pkt_data;
 }
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! infos = get_app_version_and_proto( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! infos = get_app_version_and_proto( cpe:CPE, port:port ) )
+  exit( 0 );
 
 version = infos["version"];
 proto = infos["proto"];
@@ -118,7 +115,7 @@ if( safe_checks() ) {
       version_in_range( version:version, test_version:"9.5", test_version2:"9.5.1.P2") ||
       version_in_range( version:version, test_version:"9",   test_version2:"9.4.3.P2" ) ) {
 
-     info = 'OpenVAS only check the version number (from TXT record in the\nChaos class) because "safe checks" are enabled.\n';
+     info = 'The scanner only checked the version number (from TXT record in the\nChaos class) because "safe checks" are enabled.';
      security_message( port:port, data:info, proto:proto );
      exit( 0 );
   }
@@ -144,7 +141,7 @@ if( safe_checks() ) {
     send( socket:soc, data:data );
     buf = recv( socket:soc, length:4096 );
     if( buf == 0 ) {
-      info = 'It seems that OpenVAS was able to crash the remote Bind.\nPlease check its status right now.\n';
+      info = 'It seems that the scanner was able to crash the remote Bind. Please check its status right now.';
       security_message( port:port, data:info, proto:proto );
       close( soc );
       exit( 0 );
@@ -158,7 +155,7 @@ if( safe_checks() ) {
         version_in_range( version:version, test_version:"9.5", test_version2:"9.5.1.P2" ) ||
         version_in_range( version:version, test_version:"9",   test_version2:"9.4.3.P2" ) ) {
 
-      info = 'It seems that OpenVAS was not able to crash the remote Bind.\nAccording to its version number the remote version of BIND is\nanyway vulnerable.\nPlease check its status right now.\n';
+      info = 'It seems that the scanner was not able to crash the remote Bind. According to its version number the remote version of BIND is anyway vulnerable. Please check its status right now.';
       security_message( port:port, data:info, proto:proto );
       exit( 0 );
     }

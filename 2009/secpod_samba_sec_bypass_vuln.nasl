@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_samba_sec_bypass_vuln.nasl 10398 2018-07-04 12:11:48Z cfischer $
+# $Id: secpod_samba_sec_bypass_vuln.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # Samba Security Bypass Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:samba:samba";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900685");
-  script_version("$Revision: 10398 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-04 14:11:48 +0200 (Wed, 04 Jul 2018) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-06-30 16:55:49 +0200 (Tue, 30 Jun 2009)");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
@@ -58,17 +58,13 @@ if(description)
   attempts to modify a restricted access control list. This can be exploited
   to modify the ACL of an already writable file without required permissions.");
 
-  script_tag(name:"solution", value:"Upgrade to 3.3.6 of Samba,
-
-  http://us3.samba.org/samba/");
+  script_tag(name:"solution", value:"Upgrade to version 3.3.6 or later.");
 
   script_tag(name:"summary", value:"The host has Samba installed and is prone to Security Bypass
   Vulnerability.");
 
   script_tag(name:"impact", value:"When dos filemode is set to yes in the smb.conf, attackers can exploit this
-  issue to bypass certain security restrictions and compromise a user's system.
-
-  Impact Level: System");
+  issue to bypass certain security restrictions and compromise a user's system.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
@@ -79,8 +75,12 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-if( isnull( port = get_app_port( cpe:CPE ) ) ) exit( 0 );
-if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:TRUE ) ) exit( 0 );
+if( isnull( port = get_app_port( cpe:CPE ) ) )
+  exit( 0 );
+
+if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:TRUE ) )
+  exit( 0 );
+
 vers = infos['version'];
 loc = infos['location'];
 

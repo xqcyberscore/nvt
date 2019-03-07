@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb2597975.nasl 12777 2018-12-12 16:20:50Z santu $
+# $Id: gb_ms_kb2597975.nasl 14027 2019-03-07 07:32:15Z santu $
 #
 # Microsoft PowerPoint Viewer 2007 Remote Code Execution Vulnerability (KB2597975)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814538");
-  script_version("$Revision: 12777 $");
+  script_version("$Revision: 14027 $");
   script_cve_id("CVE-2018-8628");
   script_bugtraq_id(106104);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-12 17:20:50 +0100 (Wed, 12 Dec 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 08:32:15 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-12-12 14:11:59 +0530 (Wed, 12 Dec 2018)");
   script_name("Microsoft PowerPoint Viewer 2007 Remote Code Execution Vulnerability (KB2597975)");
 
@@ -80,10 +80,10 @@ if(!ppviewPath){
   ppviewPath = "Unable to get installation path";
 }
 
-if(ppviewVer =~ "^^14\." && version_is_less(version:ppviewVer, test_version:"12.0.6805.5000"))
+if(ppviewVer =~ "^12\." && version_is_less(version:ppviewVer, test_version:"12.0.6805.5000"))
 {
   report = report_fixed_ver(file_checked:ppviewPath + "\pptview.exe",
-                            file_version:ppviewVer, vulnerable_range:"14.0 - 12.0.6805.4999");
+                            file_version:ppviewVer, vulnerable_range:"12.0 - 12.0.6805.4999");
   security_message(data:report);
 }
 exit(99);

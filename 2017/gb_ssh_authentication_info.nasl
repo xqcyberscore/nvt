@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ssh_authentication_info.nasl 13313 2019-01-26 17:25:41Z cfischer $
+# $Id: gb_ssh_authentication_info.nasl 14040 2019-03-07 14:01:35Z cfischer $
 #
 # Linux/UNIX SSH/LSC Authenticated Scan Info Consolidation
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108162");
-  script_version("$Revision: 13313 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-26 18:25:41 +0100 (Sat, 26 Jan 2019) $");
+  script_version("$Revision: 14040 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 15:01:35 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-10-17 10:31:0 +0200 (Tue, 17 Oct 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -79,6 +79,7 @@ kb_array = make_array( "ssh/login/uname", "Response to 'uname -a' command",
                        "ssh/login/release", "Operating System Key used",
                        "ssh/cisco/broken_autocommand", "Misconfigured CISCO device. No autocommand should be configured for the scanning user.",
                        "ssh/lsc/find_timeout", "Amount of timeouts the 'find' command has reached.",
+                       "ssh/login/kernel_reporting_overwrite/enabled", "Report vulnerabilities of inactive Linux Kernel(s) separately.",
                        "ssh/restricted_shell", "Login on a system with a restricted shell" );
 
 foreach kb_item( keys( kb_array ) ) {

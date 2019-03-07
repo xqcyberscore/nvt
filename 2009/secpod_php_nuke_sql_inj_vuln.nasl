@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_php_nuke_sql_inj_vuln.nasl 5122 2017-01-27 12:16:00Z teissa $
+# $Id: secpod_php_nuke_sql_inj_vuln.nasl 14031 2019-03-07 10:47:29Z cfischer $
 #
 # PHP-Nuke Sections Module SQL Injection Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:phpnuke:php-nuke";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900339");
-  script_version("$Revision: 5122 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-27 13:16:00 +0100 (Fri, 27 Jan 2017) $");
+  script_version("$Revision: 14031 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-04-24 16:23:28 +0200 (Fri, 24 Apr 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -46,14 +46,15 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will let the attacker cause SQL Injection attack, gain
   sensitive information about the database used by the web application or can cause
-  arbitrary code execution inside the context of the web application.
+  arbitrary code execution inside the context of the web application.");
 
-  Impact Level: Application");
-  script_tag(name:"affected", value:"PHP-Nuke version prior to 8.0");
+  script_tag(name:"affected", value:"PHP-Nuke version prior to 8.0.");
+
   script_tag(name:"insight", value:"The flaw is due to improper sanitization of user supplied input through the
   'artid' parameter in a printable action to modules.php");
-  script_tag(name:"solution", value:"Upgrade to PHP-Nuke version 8.0 or later
-  http://phpnuke-downloads.com/phpnuke.html");
+
+  script_tag(name:"solution", value:"Upgrade to PHP-Nuke version 8.0 or later.");
+
   script_tag(name:"summary", value:"This host is running PHP-Nuke and is prone to SQL Injection
   vulnerability.");
 
@@ -67,12 +68,14 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
+
+if( ! vers = get_app_version( cpe:CPE, port:port ) )
+  exit( 0 );
 
 if( version_is_less( version:vers, test_version:"8.0" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"8.0" );

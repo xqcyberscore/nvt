@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_squirrelmail_rce_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
+# $Id: gb_squirrelmail_rce_vuln.nasl 14033 2019-03-07 11:09:35Z cfischer $
 #
 # SquirrelMail < 1.4.23 Multiple Vulnerabilities
 #
@@ -27,18 +27,18 @@
 
 CPE = 'cpe:/a:squirrelmail:squirrelmail';
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106785");
-  script_version("$Revision: 12106 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
+  script_version("$Revision: 14033 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-07 12:09:35 +0100 (Thu, 07 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-04-21 17:09:27 +0200 (Fri, 21 Apr 2017)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
 
   script_cve_id("CVE-2017-7692", "CVE-2018-8741");
 
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
   script_tag(name:"solution_type", value:"Workaround");
 
@@ -52,22 +52,22 @@ if (description)
   script_mandatory_keys("squirrelmail/installed");
 
   script_tag(name:"summary", value:"SquirrelMail is prone to authenticated remote code execution
-and directory traversal vulnerabilities.");
+  and directory traversal vulnerabilities.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"SquirrelMail allows:
 
   - post-authentication remote code execution via a sendmail.cf file that is mishandled in a popen call.
-It's possible to exploit this vulnerability to execute arbitrary shell commands on the remote server.
+  It's possible to exploit this vulnerability to execute arbitrary shell commands on the remote server.
 
   - uploading a mail attachment a temporary file is generated on the server that the client later references
-when sending the mail. The filename is not sanitized in any way, so by passing a filename of the form
-'../../../../some_path/some_filename' one can use this to attach arbitrary files from the server that can
-be accessed by the PHP process to a mail.");
+  when sending the mail. The filename is not sanitized in any way, so by passing a filename of the form
+  '../../../../some_path/some_filename' one can use this to attach arbitrary files from the server that can
+  be accessed by the PHP process to a mail.");
 
   script_tag(name:"impact", value:"An authenticated attacker may execute arbitrary shell commands or
-read files from the filesystem.");
+  read files from the filesystem.");
 
   script_tag(name:"affected", value:"SquirrelMail 1.4.22 and prior as well as the trunk version
   (before r14650).");
