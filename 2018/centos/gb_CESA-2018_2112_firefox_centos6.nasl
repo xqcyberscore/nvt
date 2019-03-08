@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2018_2112_firefox_centos6.nasl 13147 2019-01-18 11:35:50Z mmartin $
+# $Id: gb_CESA-2018_2112_firefox_centos6.nasl 14050 2019-03-08 09:08:09Z cfischer $
 #
 # CentOS Update for firefox CESA-2018:2112 centos6 
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882920");
-  script_version("$Revision: 13147 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-18 12:35:50 +0100 (Fri, 18 Jan 2019) $");
+  script_version("$Revision: 14050 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-07-14 05:51:22 +0200 (Sat, 14 Jul 2018)");
   script_cve_id("CVE-2017-7762", "CVE-2018-5156", "CVE-2018-5188", "CVE-2018-6126",
                 "CVE-2018-12359", "CVE-2018-12360", "CVE-2018-12362", "CVE-2018-12363",
@@ -95,7 +95,7 @@ original reporters.
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS6");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_huawei_dp300_detect.nasl 13624 2019-02-13 10:02:56Z cfischer $
+# $Id: gb_huawei_dp300_detect.nasl 14045 2019-03-08 07:18:46Z cfischer $
 #
 # Huawei DP300 Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141253");
-  script_version("$Revision: 13624 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-13 11:02:56 +0100 (Wed, 13 Feb 2019) $");
+  script_version("$Revision: 14045 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 08:18:46 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-07-02 09:32:17 +0200 (Mon, 02 Jul 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -70,7 +70,7 @@ if (!banner)
 if ("Huawei DP300" >< banner) {
   version = "unknown";
 
-  banner = bin2string(ddata: banner, nonprint_replacement: ' ');
+  banner = bin2string(ddata: banner, noprint_replacement: ' ');
 
   # dddd?H.....R...\u000cHuawei DP300...> DP300 V500R002C00SPC200 Release 2.0.200  Mar 28 2016 00:55:41dddd?L.....\u000bDH_ALGORITH
   vers = eregmatch(pattern: "DP300 (V[^ ]+)", string: banner);
@@ -94,7 +94,6 @@ if ("Huawei DP300" >< banner) {
   log_message(data: build_detection_report(app: "Huawei DP300", version: version, install: port + '/tcp',
                                            cpe: cpe, concluded: vers[0], extra: extra),
               port: port);
-  exit(0);
 }
 
 exit(0);

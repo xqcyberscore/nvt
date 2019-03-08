@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2018_1651_kernel_centos6.nasl 10387 2018-07-04 05:21:03Z cfischer $
+# $Id: gb_CESA-2018_1651_kernel_centos6.nasl 14050 2019-03-08 09:08:09Z cfischer $
 #
 # CentOS Update for kernel CESA-2018:1651 centos6 
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882887");
-  script_version("$Revision: 10387 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-04 07:21:03 +0200 (Wed, 04 Jul 2018) $");
+  script_version("$Revision: 14050 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-05-23 05:40:42 +0200 (Wed, 23 May 2018)");
   script_cve_id("CVE-2018-3639");
   script_tag(name:"cvss_base", value:"4.9");
@@ -89,7 +89,7 @@ operating system no longer hangs. (BZ#1573176)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS6");
   exit(0);
 }
 

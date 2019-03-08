@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2018_1836_plexus-archiver_centos7.nasl 11520 2018-09-21 12:52:31Z cfischer $
+# $Id: gb_CESA-2018_1836_plexus-archiver_centos7.nasl 14050 2019-03-08 09:08:09Z cfischer $
 #
 # CentOS Update for plexus-archiver CESA-2018:1836 centos7 
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882911");
-  script_version("$Revision: 11520 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 14:52:31 +0200 (Fri, 21 Sep 2018) $");
+  script_version("$Revision: 14050 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-06-15 05:47:33 +0200 (Fri, 15 Jun 2018)");
   script_cve_id("CVE-2018-1002200");
   script_tag(name:"cvss_base", value:"4.3");
@@ -64,7 +64,7 @@ Red Hat would like to thank Danny Grander (Snyk) for reporting this issue.
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS7");
   exit(0);
 }
 

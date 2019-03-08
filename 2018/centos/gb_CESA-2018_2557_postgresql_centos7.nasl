@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2018_2557_postgresql_centos7.nasl 11884 2018-10-12 13:33:40Z cfischer $
+# $Id: gb_CESA-2018_2557_postgresql_centos7.nasl 14050 2019-03-08 09:08:09Z cfischer $
 #
 # CentOS Update for postgresql CESA-2018:2557 centos7
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882943");
-  script_version("$Revision: 11884 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:33:40 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 14050 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-08-29 07:13:24 +0200 (Wed, 29 Aug 2018)");
   script_cve_id("CVE-2018-10915");
   script_tag(name:"cvss_base", value:"6.0");
@@ -65,7 +65,7 @@ issue. Upstream acknowledges Andrew Krasichkov as the original reporter.
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS7");
   exit(0);
 }
 

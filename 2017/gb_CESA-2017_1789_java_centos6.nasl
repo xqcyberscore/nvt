@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2017_1789_java_centos6.nasl 6981 2017-08-22 06:39:29Z asteins $
+# $Id: gb_CESA-2017_1789_java_centos6.nasl 14050 2019-03-08 09:08:09Z cfischer $
 #
 # CentOS Update for java CESA-2017:1789 centos6 
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882754");
-  script_version("$Revision: 6981 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-22 08:39:29 +0200 (Tue, 22 Aug 2017) $");
+  script_version("$Revision: 14050 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-07-22 07:21:17 +0200 (Sat, 22 Jul 2017)");
   script_cve_id("CVE-2017-10053", "CVE-2017-10067", "CVE-2017-10074", "CVE-2017-10078", 
                 "CVE-2017-10081", "CVE-2017-10087", "CVE-2017-10089", "CVE-2017-10090", 
@@ -107,7 +107,7 @@ stream could cause Java to consume an excessive amount of memory.
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS6");
   exit(0);
 }
 

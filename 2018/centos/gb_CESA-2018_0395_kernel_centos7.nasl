@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2018_0395_kernel_centos7.nasl 11897 2018-10-15 05:26:22Z cfischer $
+# $Id: gb_CESA-2018_0395_kernel_centos7.nasl 14050 2019-03-08 09:08:09Z cfischer $
 #
 # CentOS Update for kernel CESA-2018:0395 centos7 
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882849");
-  script_version("$Revision: 11897 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 07:26:22 +0200 (Mon, 15 Oct 2018) $");
+  script_version("$Revision: 14050 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-03-14 08:30:16 +0100 (Wed, 14 Mar 2018)");
   script_cve_id("CVE-2017-7518", "CVE-2017-12188");
   script_tag(name:"cvss_base", value:"6.9");
@@ -69,7 +69,7 @@ page(s) listed in the References section.
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS7");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2018_1396_libvirt_centos7.nasl 10086 2018-06-06 04:57:58Z ckuersteiner $
+# $Id: gb_CESA-2018_1396_libvirt_centos7.nasl 14050 2019-03-08 09:08:09Z cfischer $
 #
 # CentOS Update for libvirt CESA-2018:1396 centos7 
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882904");
-  script_version("$Revision: 10086 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-06 06:57:58 +0200 (Wed, 06 Jun 2018) $");
+  script_version("$Revision: 14050 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-06-05 14:03:17 +0530 (Tue, 05 Jun 2018)");
   script_cve_id("CVE-2018-1064", "CVE-2018-5748");
   script_tag(name:"cvss_base", value:"5.0");
@@ -96,7 +96,7 @@ for a PTY device is longer than 32 characters. (BZ#1566525)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS7");
   exit(0);
 }
 

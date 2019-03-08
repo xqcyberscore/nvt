@@ -29,18 +29,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882986");
-  script_version("$Revision: 13338 $");
+  script_version("$Revision: 14050 $");
   script_cve_id("CVE-2018-14665");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-29 08:44:39 +0100 (Tue, 29 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-12-18 07:38:56 +0100 (Tue, 18 Dec 2018)");
   script_name("CentOS Update for xorg-x11-server-common CESA-2018:3410 centos7 ");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS7");
 
   script_xref(name:"CESA", value:"2018:3410");
   script_xref(name:"URL" , value:"http://lists.centos.org/pipermail/centos-announce/2018-December/023131.html");

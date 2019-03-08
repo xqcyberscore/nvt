@@ -21,18 +21,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.883013");
-  script_version("$Revision: 14008 $");
+  script_version("$Revision: 14050 $");
   script_cve_id("CVE-2019-6133");
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-06 08:38:19 +0100 (Wed, 06 Mar 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-02-27 04:14:34 +0100 (Wed, 27 Feb 2019)");
   script_name("CentOS Update for polkit CESA-2019:0420 centos6 ");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS6");
 
   script_xref(name:"CESA", value:"2019:0420");
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2019-February/023210.html");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2018_3406_python-paramiko_centos6.nasl 13032 2019-01-11 07:56:51Z mmartin $
+# $Id: gb_CESA-2018_3406_python-paramiko_centos6.nasl 14050 2019-03-08 09:08:09Z cfischer $
 #
 # CentOS Update for python-paramiko CESA-2018:3406 centos6
 #
@@ -29,18 +29,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882969");
-  script_version("$Revision: 13032 $");
+  script_version("$Revision: 14050 $");
   script_cve_id("CVE-2018-1000805");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-11 08:56:51 +0100 (Fri, 11 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-11-09 06:05:02 +0100 (Fri, 09 Nov 2018)");
   script_name("CentOS Update for python-paramiko CESA-2018:3406 centos6 ");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS6");
 
   script_xref(name:"CESA", value:"2018:3406");
   script_xref(name:"URL" , value:"http://lists.centos.org/pipermail/centos-announce/2018-November/023076.html");

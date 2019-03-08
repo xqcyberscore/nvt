@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2017_2685_bluez_centos7.nasl 7260 2017-09-26 06:48:48Z asteins $
+# $Id: gb_CESA-2017_2685_bluez_centos7.nasl 14050 2019-03-08 09:08:09Z cfischer $
 #
 # CentOS Update for bluez CESA-2017:2685 centos7 
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882767");
-  script_version("$Revision: 7260 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-26 08:48:48 +0200 (Tue, 26 Sep 2017) $");
+  script_version("$Revision: 14050 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-09-14 07:16:10 +0200 (Thu, 14 Sep 2017)");
   script_cve_id("CVE-2017-1000250");
   script_tag(name:"cvss_base", value:"3.3");
@@ -62,7 +62,7 @@ Red Hat would like to thank Armis Labs for reporting this issue.
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS7");
   exit(0);
 }
 

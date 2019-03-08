@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2018_3409_java_centos6.nasl 12496 2018-11-23 03:21:34Z ckuersteiner $
+# $Id: gb_CESA-2018_3409_java_centos6.nasl 14050 2019-03-08 09:08:09Z cfischer $
 #
 # CentOS Update for java CESA-2018:3409 centos6
 #
@@ -29,19 +29,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882972");
-  script_version("$Revision: 12496 $");
+  script_version("$Revision: 14050 $");
   script_cve_id("CVE-2018-3136", "CVE-2018-3139", "CVE-2018-3149", "CVE-2018-3169",
                 "CVE-2018-3180", "CVE-2018-3214");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 04:21:34 +0100 (Fri, 23 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-11-21 06:03:13 +0100 (Wed, 21 Nov 2018)");
   script_name("CentOS Update for java CESA-2018:3409 centos6 ");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS6");
 
   script_xref(name:"CESA", value:"2018:3409");
   script_xref(name:"URL" , value:"http://lists.centos.org/pipermail/centos-announce/2018-November/023081.html");

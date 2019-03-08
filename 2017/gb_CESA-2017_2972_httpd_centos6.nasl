@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2017_2972_httpd_centos6.nasl 11610 2018-09-26 02:42:29Z ckuersteiner $
+# $Id: gb_CESA-2017_2972_httpd_centos6.nasl 14050 2019-03-08 09:08:09Z cfischer $
 #
 # CentOS Update for httpd CESA-2017:2972 centos6 
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882791");
-  script_version("$Revision: 11610 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 04:42:29 +0200 (Wed, 26 Sep 2018) $");
+  script_version("$Revision: 14050 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-10-21 09:24:25 +0200 (Sat, 21 Oct 2017)");
   script_cve_id("CVE-2017-12171", "CVE-2017-9798");
   script_tag(name:"cvss_base", value:"6.4");
@@ -67,7 +67,7 @@ KAWAHARA Masashi for reporting CVE-2017-12171.
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS6");
   exit(0);
 }
 

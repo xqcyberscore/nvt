@@ -124,9 +124,6 @@ function rpm_check_kernel_overwrite( vuln_pkg, inst_pkg, fixed_pkg ) {
   if( inst_pkg_ver[1] >< kernel_uname )
     return report;
 
-  report = chomp( report );
-  report += '\nKernel uname:       ' + kernel_uname + '\n\n';
-
   # Otherwise save it into the KB for separate reporting in a Consolidation-VT with a lower severity
   # nb: Don't use the vuln_pkg variable for the second set_kb_item call below as this string isn't unique.
   set_kb_item( name:"ssh/login/inactive_kernel_vulns/available", value:TRUE );

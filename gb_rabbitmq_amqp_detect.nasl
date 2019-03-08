@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rabbitmq_amqp_detect.nasl 9443 2018-04-11 12:28:11Z cfischer $
+# $Id: gb_rabbitmq_amqp_detect.nasl 14045 2019-03-08 07:18:46Z cfischer $
 #
 # RabbitMQ Detection (AMPQ)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106498");
-  script_version("$Revision: 9443 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-11 14:28:11 +0200 (Wed, 11 Apr 2018) $");
+  script_version("$Revision: 14045 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 08:18:46 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-01-06 16:52:19 +0700 (Fri, 06 Jan 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -55,12 +55,7 @@ include("dump.inc");
 include("host_details.inc");
 include("misc_func.inc");
 
-port = get_kb_item("Services/amqp");
-if (!port)
-  port = 5672;
-
-if (!get_port_state(port))
-  exit( 0 );
+port = get_port_for_service(default: 5672, proto: "amqp");
 
 soc = open_sock_tcp(port);
 if (!soc)
@@ -74,7 +69,7 @@ req = raw_string('AMQP', 0, version_raw);
 send( socket:soc, data:req );
 res = recv( socket:soc, min:8, length:1024 );
 
-res = bin2string(ddata: res, nonprint_replacement: ' ');
+res = bin2string(ddata: res, noprint_replacement: ' ');
 
 if (ereg(pattern: "productSRabbitMQ.", string: res)) {
   version = "unknown";
@@ -86,7 +81,7 @@ if (ereg(pattern: "productSRabbitMQ.", string: res)) {
   }
 
   set_kb_item(name: "rabbitmq/installed", value: TRUE);
-  set_kb_item( name:"rabbitmq/amqp/installed", value:TRUE );
+  set_kb_item(name: "rabbitmq/amqp/installed", value: TRUE);
 
   cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/a:pivotal_software:rabbitmq:");
   if (!cpe)
@@ -97,8 +92,6 @@ if (ereg(pattern: "productSRabbitMQ.", string: res)) {
   log_message(data: build_detection_report(app: "RabbitMQ", version: version, install: port + "/amqp", cpe: cpe,
                                            concluded: res),
               port: port);
-  exit(0);
 }
-
 
 exit(0);

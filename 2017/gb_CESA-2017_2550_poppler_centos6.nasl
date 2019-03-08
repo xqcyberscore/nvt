@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2017_2550_poppler_centos6.nasl 7080 2017-09-08 05:49:48Z asteins $
+# $Id: gb_CESA-2017_2550_poppler_centos6.nasl 14050 2019-03-08 09:08:09Z cfischer $
 #
 # CentOS Update for poppler CESA-2017:2550 centos6 
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882764");
-  script_version("$Revision: 7080 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-08 07:49:48 +0200 (Fri, 08 Sep 2017) $");
+  script_version("$Revision: 14050 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-09-01 06:53:46 +0200 (Fri, 01 Sep 2017)");
   script_cve_id("CVE-2017-9776");
   script_tag(name:"cvss_base", value:"6.8");
@@ -58,7 +58,7 @@ potentially execute arbitrary code when opened. (CVE-2017-9776)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS6");
   exit(0);
 }
 

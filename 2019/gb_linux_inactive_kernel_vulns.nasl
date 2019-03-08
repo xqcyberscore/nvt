@@ -19,8 +19,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108545");
-  script_version("$Revision: 13533 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-08 10:59:37 +0100 (Fri, 08 Feb 2019) $");
+  script_version("$Revision: 14046 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 08:54:49 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-02-07 14:16:55 +0100 (Thu, 07 Feb 2019)");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:N/C:P/I:P/A:P");
   script_tag(name:"cvss_base", value:"3.7");
@@ -56,7 +56,11 @@ report_array = make_array();
 # Sort to not report changes on delta reports if just the order is different
 keys = sort( keys( all_reports ) );
 
-report = 'The vulnerabilities described in the VTs referenced by their OIDs are found within inactive Linux Kernel(s):\n\n';
+uname = get_kb_item( "ssh/login/uname" );
+if( uname )
+  report = 'Current active/running Kernel (uname): ' + uname + '\n\n';
+
+report += 'The vulnerabilities described in the VTs referenced by their OIDs are found within inactive Linux Kernel(s):\n\n';
 
 foreach key( keys ) {
 

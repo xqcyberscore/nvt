@@ -21,18 +21,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.883011");
-  script_version("$Revision: 13913 $");
+  script_version("$Revision: 14050 $");
   script_cve_id("CVE-2019-8308");
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-27 17:43:39 +0100 (Wed, 27 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-02-21 04:04:42 +0100 (Thu, 21 Feb 2019)");
   script_name("CentOS Update for flatpak CESA-2019:0375 centos7 ");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS7");
 
   script_xref(name:"CESA", value:"2019:0375");
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2019-February/023203.html");

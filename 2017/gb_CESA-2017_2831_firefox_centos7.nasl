@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2017_2831_firefox_centos7.nasl 7345 2017-10-05 06:16:00Z santu $
+# $Id: gb_CESA-2017_2831_firefox_centos7.nasl 14050 2019-03-08 09:08:09Z cfischer $
 #
 # CentOS Update for firefox CESA-2017:2831 centos7 
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882778");
-  script_version("$Revision: 7345 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-05 08:16:00 +0200 (Thu, 05 Oct 2017) $");
+  script_version("$Revision: 14050 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-10-05 11:55:18 +0530 (Thu, 05 Oct 2017)");
   script_cve_id("CVE-2017-7793", "CVE-2017-7810", "CVE-2017-7814", "CVE-2017-7818", 
                 "CVE-2017-7819", "CVE-2017-7823", "CVE-2017-7824");
@@ -67,7 +67,7 @@ reporters.
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS7");
   exit(0);
 }
 

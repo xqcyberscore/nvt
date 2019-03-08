@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2018_0515_389-ds-base_centos6.nasl 9271 2018-03-31 07:25:25Z cfischer $
+# $Id: gb_CESA-2018_0515_389-ds-base_centos6.nasl 14050 2019-03-08 09:08:09Z cfischer $
 #
 # CentOS Update for 389-ds-base CESA-2018:0515 centos6 
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882859");
-  script_version("$Revision: 9271 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-31 09:25:25 +0200 (Sat, 31 Mar 2018) $");
+  script_version("$Revision: 14050 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-03-15 08:47:16 +0100 (Thu, 15 Mar 2018)");
   script_cve_id("CVE-2017-15135", "CVE-2018-1054");
   script_tag(name:"cvss_base", value:"5.0");
@@ -66,7 +66,7 @@ The CVE-2017-15135 issue was discovered by Martin Poole (Red Hat).
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS6");
   exit(0);
 }
 

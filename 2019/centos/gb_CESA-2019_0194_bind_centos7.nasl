@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2019_0194_bind_centos7.nasl 13881 2019-02-26 13:01:46Z santu $
+# $Id: gb_CESA-2019_0194_bind_centos7.nasl 14050 2019-03-08 09:08:09Z cfischer $
 #
 # CentOS Update for bind CESA-2019:0194 centos7
 #
@@ -29,18 +29,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.883000");
-  script_version("$Revision: 13881 $");
+  script_version("$Revision: 14050 $");
   script_cve_id("CVE-2018-5742");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-26 14:01:46 +0100 (Tue, 26 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-02-02 04:04:08 +0100 (Sat, 02 Feb 2019)");
   script_name("CentOS Update for bind CESA-2019:0194 centos7 ");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS7");
 
   script_xref(name:"CESA", value:"2019:0194");
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2019-February/023182.html");

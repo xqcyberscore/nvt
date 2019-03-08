@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2018_0094_iwl1000-firmware_centos7.nasl 8493 2018-01-23 06:43:13Z ckuersteiner $
+# $Id: gb_CESA-2018_0094_iwl1000-firmware_centos7.nasl 14050 2019-03-08 09:08:09Z cfischer $
 #
 # CentOS Update for iwl1000-firmware CESA-2018:0094 centos7 
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882829");
-  script_version("$Revision: 8493 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-23 07:43:13 +0100 (Tue, 23 Jan 2018) $");
+  script_version("$Revision: 14050 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-01-18 07:36:03 +0100 (Thu, 18 Jan 2018)");
   script_cve_id("CVE-2017-5715");
   script_tag(name:"cvss_base", value:"4.7");
@@ -66,7 +66,7 @@ kernel from Red Hat and updated microcode from your hardware vendor.
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS7");
   exit(0);
 }
 

@@ -29,18 +29,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882975");
-  script_version("$Revision: 13012 $");
+  script_version("$Revision: 14050 $");
   script_cve_id("CVE-2018-14650");
   script_tag(name:"cvss_base", value:"1.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-10 09:11:33 +0100 (Thu, 10 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-12-18 07:37:12 +0100 (Tue, 18 Dec 2018)");
   script_name("CentOS Update for sos-collector CESA-2018:3663 centos7 ");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS7");
 
   script_xref(name:"CESA", value:"2018:3663");
   script_xref(name:"URL" , value:"http://lists.centos.org/pipermail/centos-announce/2018-December/023126.html");

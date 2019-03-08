@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webmin_rce_vuln.nasl 13183 2019-01-21 10:00:12Z ckuersteiner $
+# $Id: gb_webmin_rce_vuln.nasl 14044 2019-03-08 03:20:20Z ckuersteiner $
 #
 # Webmin <= 1.900 RCE Vulnerability
 #
@@ -30,11 +30,13 @@ CPE = "cpe:/a:webmin:webmin";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141897");
-  script_version("$Revision: 13183 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-21 11:00:12 +0100 (Mon, 21 Jan 2019) $");
+  script_version("$Revision: 14044 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 04:20:20 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-01-21 13:49:37 +0700 (Mon, 21 Jan 2019)");
-  script_tag(name:"cvss_base", value:"9.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+
+  script_cve_id("CVE-2019-9624");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -55,7 +57,7 @@ if (description)
 
   script_tag(name:"affected", value:"Webmin version 1.900 and probably prior.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 21st January, 2019.
+  script_tag(name:"solution", value:"No known solution is available as of 08th March, 2019.
   Information regarding this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/46201");

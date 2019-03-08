@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mult_ip_cameras_mult_vuln.nasl 11962 2018-10-18 10:51:32Z mmartin $
+# $Id: gb_mult_ip_cameras_mult_vuln.nasl 14045 2019-03-08 07:18:46Z cfischer $
 #
 # Multiple IP-Cameras (P2P) WIFICAM Cameras Multiple Vulnerabilities
 #
@@ -25,12 +25,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106636");
-  script_version("$Revision: 11962 $");
+  script_version("$Revision: 14045 $");
   script_cve_id("CVE-2017-8224", "CVE-2017-8222", "CVE-2017-8225", "CVE-2017-8223", "CVE-2017-8221");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:51:32 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 08:18:46 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-03-08 12:16:59 +0700 (Wed, 08 Mar 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -54,7 +54,7 @@ if (description)
   This vulnerability was known to be exploited by the IoT Botnet 'Reaper' in 2017.");
 
   script_tag(name:"vuldetect", value:"Sends a crafted HTTP request to read the system configuration and checks
-the response.");
+  the response.");
 
   script_tag(name:"insight", value:"Multiple IP-Cameras are prone to multiple vulnerabilities:
 
@@ -73,7 +73,7 @@ the response.");
   - Unsecure Cloud functionality");
 
   script_tag(name:"impact", value:"An unauthenticated attacker may execute arbitrary code and read arbitrary
-files.");
+  files.");
 
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
@@ -98,7 +98,7 @@ url = "/system.ini?loginuse&loginpas";
 req = http_get(port: port, item: url);
 res = http_keepalive_send_recv(port: port, data: req, bodyonly: TRUE);
 
-tmp = bin2string(ddata: res, nonprint_replace: " ");
+tmp = bin2string(ddata: res, noprint_replacement: " ");
 if (strlen(res) > 4000 && (egrep(pattern: "([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})", string: tmp) ||
     "IPCAM" >< res || "admin" >< res)) {
   if (http_vuln_check(port: port, url: "login.cgi", pattern: 'var loginpass=".*";', check_header: TRUE)) {

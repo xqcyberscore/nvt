@@ -21,8 +21,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.142078");
-  script_version("$Revision: 14009 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-06 09:10:00 +0100 (Wed, 06 Mar 2019) $");
+  script_version("$Revision: 14052 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:57:15 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-03-06 12:29:16 +0700 (Wed, 06 Mar 2019)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -37,7 +37,8 @@ if(description)
 
   script_copyright("This script is Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("gb_droboaccess_detect.nasl", "gb_drobomysql_detect.nasl", "gb_drobo_nasd_detect.nasl");
+  script_dependencies("gb_droboaccess_detect.nasl", "gb_drobomysql_detect.nasl", "gb_drobo_nasd_detect.nasl",
+                      "gb_drobopix_detect.nasl");
   script_mandatory_keys("drobo/nas/detected");
 
   script_xref(name:"URL", value:"https://www.drobo.com/storage-products/");
@@ -54,7 +55,7 @@ detected_version = "unknown";
 detected_model = "";
 detected_esaid = "";
 
-foreach source (make_list("nasd", "mysqlapp")) {
+foreach source (make_list("nasd", "mysqlapp", "drobopix")) {
   fw_version_list = get_kb_list("drobo/" + source + "/fw_version");
   foreach fw_version (fw_version_list) {
     if (fw_version && detected_version == "unknown") {
@@ -113,6 +114,19 @@ if (get_kb_item("drobo/droboaccess/detected")) {
   extra += 'Drobo DroboAccess:\n';
   if (draccss_ports = get_kb_list("drobo/droboaccess/port")) {
     foreach port (draccss_ports) {
+      extra += "  HTTP(s) on port " + port + '/tcp\n';
+
+      register_product(cpe: hw_cpe, location: "/", port: port, service: "www");
+      register_product(cpe: os_cpe, location: "/", port: port, service: "www");
+      register_product(cpe: app_cpe, location: "/", port: port, service: "www");
+    }
+  }
+}
+
+if (get_kb_item("drobo/drobopix/detected")) {
+  extra += 'Drobo DroboPix:\n';
+  if (drpix_ports = get_kb_list("drobo/drobopix/port")) {
+    foreach port (drpix_ports) {
       extra += "  HTTP(s) on port " + port + '/tcp\n';
 
       register_product(cpe: hw_cpe, location: "/", port: port, service: "www");

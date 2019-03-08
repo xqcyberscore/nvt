@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_schneider_modbus_detect.nasl 10873 2018-08-10 07:37:56Z cfischer $
+# $Id: gb_schneider_modbus_detect.nasl 14045 2019-03-08 07:18:46Z cfischer $
 #
 # Schneider Electric Devices Detection (modbus)
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106542");
-  script_version("$Revision: 10873 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 09:37:56 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 14045 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 08:18:46 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-01-26 10:19:28 +0700 (Thu, 26 Jan 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -41,7 +41,7 @@ if(description)
 
   script_tag(name:"summary", value:"Detection of Schneider Electric Devices over Modbus.
 
-Tries to detect Schneider Electric devices over the Modbus protocol.");
+  Tries to detect Schneider Electric devices over the Modbus protocol.");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
@@ -114,7 +114,7 @@ if (get_port_state(port) && sock = open_sock_tcp(port)) {
 
   if (res && strlen(res) > 169) {
     proj_info = substr(res, 169);
-    proj_info = bin2string(ddata: proj_info, nonprint_replace: " ");
+    proj_info = bin2string(ddata: proj_info, noprint_replacement: " ");
     report += "Project Info: " + proj_info;
   }
 

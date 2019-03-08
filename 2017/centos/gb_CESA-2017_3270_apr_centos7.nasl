@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2017_3270_apr_centos7.nasl 7990 2017-12-05 07:08:14Z asteins $
+# $Id: gb_CESA-2017_3270_apr_centos7.nasl 14050 2019-03-08 09:08:09Z cfischer $
 #
 # CentOS Update for apr CESA-2017:3270 centos7 
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882805");
-  script_version("$Revision: 7990 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-05 08:08:14 +0100 (Tue, 05 Dec 2017) $");
+  script_version("$Revision: 14050 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-12-04 18:48:07 +0530 (Mon, 04 Dec 2017)");
   script_cve_id("CVE-2017-12613");
   script_tag(name:"cvss_base", value:"3.6");
@@ -58,7 +58,7 @@ denial of service or potentially lead to data leak. (CVE-2017-12613)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS7");
   exit(0);
 }
 

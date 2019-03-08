@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2018_2757_389-ds-base_centos7.nasl 12619 2018-12-03 09:51:24Z mmartin $
+# $Id: gb_CESA-2018_2757_389-ds-base_centos7.nasl 14050 2019-03-08 09:08:09Z cfischer $
 #
 # CentOS Update for 389-ds-base CESA-2018:2757 centos7
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882954");
-  script_version("$Revision: 12619 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-03 10:51:24 +0100 (Mon, 03 Dec 2018) $");
+  script_version("$Revision: 14050 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-10-03 17:02:18 +0530 (Wed, 03 Oct 2018)");
   script_cve_id("CVE-2018-10850", "CVE-2018-10935", "CVE-2018-14624", "CVE-2018-14638");
   script_tag(name:"cvss_base", value:"7.1");
@@ -91,7 +91,7 @@ throughput, is improved. (BZ#1615924)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS7");
   exit(0);
 }
 

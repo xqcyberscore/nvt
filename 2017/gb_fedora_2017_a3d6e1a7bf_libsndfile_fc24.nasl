@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.872762");
-  script_version("$Revision: 6634 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 09:32:24 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 14048 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 09:17:06 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-06-16 07:11:21 +0200 (Fri, 16 Jun 2017)");
   script_cve_id("CVE-2017-8363", "CVE-2017-8365", "CVE-2017-8362", "CVE-2017-8361");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for libsndfile FEDORA-2017-a3d6e1a7bf");
   script_tag(name: "summary", value: "Check the version of libsndfile");

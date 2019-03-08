@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_956.nasl 10474 2018-07-10 08:12:26Z cfischer $
+# $Id: deb_dla_956.nasl 14048 2019-03-08 08:17:06Z mmartin $
 #
 # Auto-generated from advisory DLA 956-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.890956");
-  script_version("$Revision: 10474 $");
+  script_version("$Revision: 14048 $");
   script_cve_id("CVE-2017-8361", "CVE-2017-8362", "CVE-2017-8363", "CVE-2017-8365");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 956-1] libsndfile security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-10 10:12:26 +0200 (Tue, 10 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 09:17:06 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-01-25 00:00:00 +0100 (Thu, 25 Jan 2018)");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

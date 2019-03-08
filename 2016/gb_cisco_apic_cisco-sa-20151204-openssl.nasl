@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_apic_cisco-sa-20151204-openssl.nasl 12051 2018-10-24 09:14:54Z asteins $
+# $Id: gb_cisco_apic_cisco-sa-20151204-openssl.nasl 14041 2019-03-08 01:52:05Z ckuersteiner $
 #
 # Cisco Application Policy Infrastructure Controller Multiple Vulnerabilities in OpenSSL
 #
@@ -25,7 +25,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/o:cisco:application_policy_infrastructure_controller_(apic)";
+CPE = "cpe:/a:cisco:application_policy_infrastructure_controller";
 
 if (description)
 {
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2015-3193", "CVE-2015-3194", "CVE-2015-3195", "CVE-2015-3196", "CVE-2015-1794");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 12051 $");
+  script_version("$Revision: 14041 $");
 
   script_name("Cisco Application Policy Infrastructure Controller Multiple Vulnerabilities in OpenSSL");
 
@@ -68,7 +68,7 @@ remote attacker to cause a denial of service (DoS) condition (CVE-2015-1794).");
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 02:52:05 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-09-22 10:06:54 +0700 (Thu, 22 Sep 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");

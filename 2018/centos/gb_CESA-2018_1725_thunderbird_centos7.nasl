@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2018_1725_thunderbird_centos7.nasl 11044 2018-08-18 15:12:40Z cfischer $
+# $Id: gb_CESA-2018_1725_thunderbird_centos7.nasl 14050 2019-03-08 09:08:09Z cfischer $
 #
 # CentOS Update for thunderbird CESA-2018:1725 centos7 
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882889");
-  script_version("$Revision: 11044 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-18 17:12:40 +0200 (Sat, 18 Aug 2018) $");
+  script_version("$Revision: 14050 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-05-30 05:46:17 +0200 (Wed, 30 May 2018)");
   script_cve_id("CVE-2018-5150", "CVE-2018-5154", "CVE-2018-5155", "CVE-2018-5159",
                 "CVE-2018-5161", "CVE-2018-5162", "CVE-2018-5168", "CVE-2018-5170",
@@ -97,7 +97,7 @@ Wladimir Palant, and Root Object as the original reporters.
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS7");
   exit(0);
 }
 

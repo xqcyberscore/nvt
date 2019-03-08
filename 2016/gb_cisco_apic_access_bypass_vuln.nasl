@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_apic_access_bypass_vuln.nasl 11922 2018-10-16 10:24:25Z asteins $
+# $Id: gb_cisco_apic_access_bypass_vuln.nasl 14041 2019-03-08 01:52:05Z ckuersteiner $
 #
 # Cisco Application Policy Infrastructure Controller Access Bypass Vulnerability
 #
@@ -25,17 +25,17 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/o:cisco:application_policy_infrastructure_controller_(apic)";
+CPE = "cpe:/a:cisco:application_policy_infrastructure_controller";
 
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809051");
   script_cve_id("CVE-2015-6424");
   script_bugtraq_id(79410);
-  script_version("$Revision: 11922 $");
+  script_version("$Revision: 14041 $");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:24:25 +0200 (Tue, 16 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 02:52:05 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-09-21 19:23:26 +0530 (Wed, 21 Sep 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Cisco Application Policy Infrastructure Controller Access Bypass Vulnerability");

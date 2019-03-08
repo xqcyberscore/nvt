@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2018_3831_firefox_centos6.nasl 14008 2019-03-06 07:38:19Z mmartin $
+# $Id: gb_CESA-2018_3831_firefox_centos6.nasl 14050 2019-03-08 09:08:09Z cfischer $
 #
 # CentOS Update for firefox CESA-2018:3831 centos6
 #
@@ -29,19 +29,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882990");
-  script_version("$Revision: 14008 $");
+  script_version("$Revision: 14050 $");
   script_cve_id("CVE-2018-12405", "CVE-2018-17466", "CVE-2018-18492",
                 "CVE-2018-18493", "CVE-2018-18494", "CVE-2018-18498");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-06 08:38:19 +0100 (Wed, 06 Mar 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-12-25 04:00:45 +0100 (Tue, 25 Dec 2018)");
   script_name("CentOS Update for firefox CESA-2018:3831 centos6 ");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS6");
 
   script_xref(name:"CESA", value:"2018:3831");
   script_xref(name:"URL" , value:"http://lists.centos.org/pipermail/centos-announce/2018-December/023138.html");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_apic_web_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
+# $Id: gb_cisco_apic_web_detect.nasl 14041 2019-03-08 01:52:05Z ckuersteiner $
 #
 # Cisco Application Policy Infrastructure Controller Detection
 #
@@ -30,9 +30,10 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.105534");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11885 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 14041 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 02:52:05 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-02-10 12:03:48 +0100 (Wed, 10 Feb 2016)");
+
   script_name("Cisco Application Policy Infrastructure Controller Detection");
 
   script_tag(name:"summary", value:"The script sends a connection request to the server and attempts to extract the version number from the reply.");
@@ -66,7 +67,8 @@ buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 if( "insieme.stromboli.meta.Version" >!< buf || "versionString:" >!< buf ) exit( 0 );
 
 set_kb_item( name:"cisco/application_policy_infrastructure_controller/installed", value:TRUE );
-cpe = 'cpe:/o:cisco:application_policy_infrastructure_controller_(apic)';
+
+cpe = 'cpe:/a:cisco:application_policy_infrastructure_controller';
 
 version = eregmatch( pattern:"versionString: '([^']+)'", string:buf ); # for example 1.1(4e), 1.2(0.286), 1.2(1i), 1.1(2h), ...
 if( ! isnull( version[1] ) )

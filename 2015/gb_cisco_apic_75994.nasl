@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_apic_75994.nasl 12106 2018-10-26 06:33:36Z cfischer $
+# $Id: gb_cisco_apic_75994.nasl 14041 2019-03-08 01:52:05Z ckuersteiner $
 #
 # Cisco Application Policy Infrastructure Controller Access Control Vulnerability
 #
@@ -25,7 +25,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/o:cisco:application_policy_infrastructure_controller_(apic)";
+CPE = "cpe:/a:cisco:application_policy_infrastructure_controller";
 
 if (description)
 {
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2015-4235");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_version("$Revision: 12106 $");
+  script_version("$Revision: 14041 $");
 
   script_name("Cisco Application Policy Infrastructure Controller Access Control Vulnerability ");
 
@@ -50,7 +50,7 @@ if (description)
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 02:52:05 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-02-10 12:54:47 +0100 (Wed, 10 Feb 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2018_2001_qemu-img_centos7.nasl 10430 2018-07-06 05:26:03Z cfischer $
+# $Id: gb_CESA-2018_2001_qemu-img_centos7.nasl 14050 2019-03-08 09:08:09Z cfischer $
 #
 # CentOS Update for qemu-img CESA-2018:2001 centos7 
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882914");
-  script_version("$Revision: 10430 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-06 07:26:03 +0200 (Fri, 06 Jul 2018) $");
+  script_version("$Revision: 14050 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-07-04 05:56:10 +0200 (Wed, 04 Jul 2018)");
   script_cve_id("CVE-2018-3639");
   script_tag(name:"cvss_base", value:"4.9");
@@ -70,7 +70,7 @@ Center) and Jann Horn (Google Project Zero) for reporting this issue.
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS7");
   exit(0);
 }
 

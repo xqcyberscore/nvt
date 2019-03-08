@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2018_2737_mod_perl_centos6.nasl 13072 2019-01-15 08:12:06Z asteins $
+# $Id: gb_CESA-2018_2737_mod_perl_centos6.nasl 14050 2019-03-08 09:08:09Z cfischer $
 #
 # CentOS Update for mod_perl CESA-2018:2737 centos6
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882952");
-  script_version("$Revision: 13072 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-15 09:12:06 +0100 (Tue, 15 Jan 2019) $");
+  script_version("$Revision: 14050 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-10-03 17:02:16 +0530 (Wed, 03 Oct 2018)");
   script_cve_id("CVE-2011-2767");
   script_tag(name:"cvss_base", value:"10.0");
@@ -61,7 +61,7 @@ the References section.
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS6");
   exit(0);
 }
 

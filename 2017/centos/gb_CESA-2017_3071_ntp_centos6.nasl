@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2017_3071_ntp_centos6.nasl 7604 2017-11-01 06:48:12Z asteins $
+# $Id: gb_CESA-2017_3071_ntp_centos6.nasl 14050 2019-03-08 09:08:09Z cfischer $
 #
 # CentOS Update for ntp CESA-2017:3071 centos6 
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882794");
-  script_version("$Revision: 7604 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-01 07:48:12 +0100 (Wed, 01 Nov 2017) $");
+  script_version("$Revision: 14050 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-10-27 14:31:55 +0200 (Fri, 27 Oct 2017)");
   script_cve_id("CVE-2017-6462", "CVE-2017-6463", "CVE-2017-6464");
   script_tag(name:"cvss_base", value:"4.6");
@@ -66,7 +66,7 @@ Upstream acknowledges Cure53 as the original reporter of these issues.
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS6");
   exit(0);
 }
 

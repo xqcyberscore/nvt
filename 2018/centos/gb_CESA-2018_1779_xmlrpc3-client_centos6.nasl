@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2018_1779_xmlrpc3-client_centos6.nasl 10127 2018-06-08 02:54:24Z ckuersteiner $
+# $Id: gb_CESA-2018_1779_xmlrpc3-client_centos6.nasl 14050 2019-03-08 09:08:09Z cfischer $
 #
 # CentOS Update for xmlrpc3-client CESA-2018:1779 centos6 
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882910");
-  script_version("$Revision: 10127 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 04:54:24 +0200 (Fri, 08 Jun 2018) $");
+  script_version("$Revision: 14050 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-06-02 05:49:42 +0200 (Sat, 02 Jun 2018)");
   script_cve_id("CVE-2016-5003");
   script_tag(name:"cvss_base", value:"7.5");
@@ -60,7 +60,7 @@ the References section.
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS6");
   exit(0);
 }
 

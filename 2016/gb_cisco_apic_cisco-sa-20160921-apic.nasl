@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_apic_cisco-sa-20160921-apic.nasl 12096 2018-10-25 12:26:02Z asteins $
+# $Id: gb_cisco_apic_cisco-sa-20160921-apic.nasl 14041 2019-03-08 01:52:05Z ckuersteiner $
 #
 # Cisco Application Policy Infrastructure Controller Binary Privilege Escalation Vulnerability
 #
@@ -25,7 +25,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/o:cisco:application_policy_infrastructure_controller_(apic)";
+CPE = "cpe:/a:cisco:application_policy_infrastructure_controller";
 
 if (description)
 {
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2016-6413");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:S/C:C/I:C/A:C");
-  script_version("$Revision: 12096 $");
+  script_version("$Revision: 14041 $");
 
   script_name("Cisco Application Policy Infrastructure Controller Binary Privilege Escalation Vulnerability");
 
@@ -57,7 +57,7 @@ and take full control of the device.");
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 02:52:05 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-09-22 10:06:54 +0700 (Thu, 22 Sep 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");

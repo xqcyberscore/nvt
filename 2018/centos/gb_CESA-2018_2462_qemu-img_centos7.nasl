@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2018_2462_qemu-img_centos7.nasl 11099 2018-08-24 03:13:46Z ckuersteiner $
+# $Id: gb_CESA-2018_2462_qemu-img_centos7.nasl 14050 2019-03-08 09:08:09Z cfischer $
 #
 # CentOS Update for qemu-img CESA-2018:2462 centos7 
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882939");
-  script_version("$Revision: 11099 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 05:13:46 +0200 (Fri, 24 Aug 2018) $");
+  script_version("$Revision: 14050 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-08-21 06:42:12 +0200 (Tue, 21 Aug 2018)");
   script_cve_id("CVE-2018-7550", "CVE-2018-11806");
   script_tag(name:"cvss_base", value:"7.2");
@@ -74,7 +74,7 @@ interrupts are not missed, which prevents the problem from occurring.
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS7");
   exit(0);
 }
 
