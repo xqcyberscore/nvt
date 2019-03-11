@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2017_2838_dnsmasq_centos6.nasl 14050 2019-03-08 09:08:09Z cfischer $
+# $Id: gb_CESA-2017_2838_dnsmasq_centos6.nasl 14058 2019-03-08 13:25:52Z cfischer $
 #
-# CentOS Update for dnsmasq CESA-2017:2838 centos6 
+# CentOS Update for dnsmasq CESA-2017:2838 centos6
 #
 # Authors:
 # System Generated Check
@@ -27,24 +27,23 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882781");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-10-05 11:55:23 +0530 (Thu, 05 Oct 2017)");
   script_cve_id("CVE-2017-14491");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
-  script_name("CentOS Update for dnsmasq CESA-2017:2838 centos6 ");
-  script_tag(name: "summary", value: "Check the version of dnsmasq");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "The dnsmasq packages contain Dnsmasq, 
-a lightweight DNS (Domain Name Server) forwarder and DHCP  (Dynamic Host Configuration Protocol) 
+  script_name("CentOS Update for dnsmasq CESA-2017:2838 centos6");
+  script_tag(name:"summary", value:"Check the version of dnsmasq");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The dnsmasq packages contain Dnsmasq,
+a lightweight DNS (Domain Name Server) forwarder and DHCP  (Dynamic Host Configuration Protocol)
 server.
 
 Security Fix(es):
 
-* A heap buffer overflow was found in dnsmasq in the code responsible for
+  * A heap buffer overflow was found in dnsmasq in the code responsible for
 building DNS replies. An attacker could send crafted DNS packets to dnsmasq
 which would cause it to crash or, potentially, execute arbitrary code.
 (CVE-2017-14491)
@@ -52,13 +51,12 @@ which would cause it to crash or, potentially, execute arbitrary code.
 Red Hat would like to thank Felix Wilhelm (Google Security Team), Fermin J.
 Serna (Google Security Team), Gabriel Campana (Google Security Team), Kevin
 Hamacher (Google Security Team), and Ron Bowes (Google Security Team) for
-reporting this issue.
-");
-  script_tag(name: "affected", value: "dnsmasq on CentOS 6");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+reporting this issue.");
+  script_tag(name:"affected", value:"dnsmasq on CentOS 6");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "CESA", value: "2017:2838");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2017-October/022554.html");
+  script_xref(name:"CESA", value:"2017:2838");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2017-October/022554.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -71,12 +69,11 @@ reporting this issue.
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS6")
 {
@@ -93,6 +90,6 @@ if(release == "CentOS6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

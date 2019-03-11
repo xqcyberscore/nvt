@@ -26,20 +26,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882052");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-10-14 06:06:30 +0200 (Tue, 14 Oct 2014)");
   script_cve_id("CVE-2014-4345");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
-  script_name("CentOS Update for krb5-devel CESA-2014:1255 centos5 ");
+  script_name("CentOS Update for krb5-devel CESA-2014:1255 centos5");
 
-  script_tag(name: "summary", value: "Check the version of krb5-devel");
+  script_tag(name:"summary", value:"Check the version of krb5-devel");
 
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight", value: "Kerberos is an authentication system which
+  script_tag(name:"insight", value:"Kerberos is an authentication system which
 allows clients and services to authenticate to each other with the help of a
 trusted third party, a Kerberos Key Distribution Center (KDC).
 
@@ -51,14 +50,13 @@ code on the system running kadmind. (CVE-2014-4345)
 All krb5 users are advised to upgrade to these updated packages, which
 contain a backported patch to correct this issue. After installing the
 updated packages, the krb5kdc and kadmind daemons will be restarted
-automatically.
-");
-  script_tag(name: "affected", value: "krb5-devel on CentOS 5");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+automatically.");
+  script_tag(name:"affected", value:"krb5-devel on CentOS 5");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "CESA", value: "2014:1255");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2014-October/020678.html");
+  script_xref(name:"CESA", value:"2014:1255");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2014-October/020678.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
@@ -70,12 +68,11 @@ automatically.
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS5")
 {
@@ -116,6 +113,6 @@ if(release == "CentOS5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

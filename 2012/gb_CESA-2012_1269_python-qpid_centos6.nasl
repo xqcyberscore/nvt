@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for python-qpid CESA-2012:1269 centos6 
+# CentOS Update for python-qpid CESA-2012:1269 centos6
 #
 # Authors:
 # System Generated Check
@@ -23,8 +23,28 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "Apache Qpid is a reliable, cross-platform, asynchronous messaging system
+if(description)
+{
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-September/018895.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.881503");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2012-09-22 11:58:03 +0530 (Sat, 22 Sep 2012)");
+  script_cve_id("CVE-2012-2145");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_xref(name:"CESA", value:"2012:1269");
+  script_name("CentOS Update for python-qpid CESA-2012:1269 centos6");
+
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for python-qpid");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
+  script_family("CentOS Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS6");
+  script_tag(name:"affected", value:"python-qpid on CentOS 6");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_tag(name:"insight", value:"Apache Qpid is a reliable, cross-platform, asynchronous messaging system
   that supports the Advanced Message Queuing Protocol (AMQP) in several
   common programming languages.
 
@@ -32,63 +52,34 @@ tag_insight = "Apache Qpid is a reliable, cross-platform, asynchronous messaging
   connections from clients to be restricted. A malicious client could use
   this flaw to open an excessive amount of connections, preventing other
   legitimate clients from establishing a connection to qpidd. (CVE-2012-2145)
-  
+
   To address CVE-2012-2145, new qpidd configuration options were introduced:
   max-negotiate-time defines the time during which initial protocol
   negotiation must succeed, connection-limit-per-user and
   connection-limit-per-ip can be used to limit the number of connections per
   user and client host IP. Refer to the qpidd manual page for additional
   details.
-  
+
   In addition, the qpid-cpp, qpid-qmf, qpid-tools, and python-qpid packages
   have been upgraded to upstream version 0.14, which provides support for Red
   Hat Enterprise MRG 2.2, as well as a number of bug fixes and enhancements
   over the previous version. (BZ#840053, BZ#840055, BZ#840056, BZ#840058)
-  
+
   All users of qpid are advised to upgrade to these updated packages, which
-  fix these issues and add these enhancements.";
-
-tag_affected = "python-qpid on CentOS 6";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2012-September/018895.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.881503");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
-  script_tag(name:"creation_date", value:"2012-09-22 11:58:03 +0530 (Sat, 22 Sep 2012)");
-  script_cve_id("CVE-2012-2145");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_xref(name: "CESA", value: "2012:1269");
-  script_name("CentOS Update for python-qpid CESA-2012:1269 centos6 ");
-
-  script_tag(name: "summary" , value: "Check for the Version of python-qpid");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_family("CentOS Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS6");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  fix these issues and add these enhancements.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS6")
 {
@@ -213,6 +204,6 @@ if(release == "CentOS6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

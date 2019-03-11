@@ -23,8 +23,27 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "OpenOffice.org is an office productivity suite that includes desktop
+if(description)
+{
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2010-February/016499.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.880659");
+  script_version("$Revision: 14056 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_xref(name:"CESA", value:"2010:0101");
+  script_cve_id("CVE-2009-2949", "CVE-2009-2950", "CVE-2009-3301", "CVE-2009-3302");
+  script_name("CentOS Update for openoffice.org-base CESA-2010:0101 centos5 i386");
+
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for openoffice.org-base");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
+  script_family("CentOS Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS5");
+  script_tag(name:"affected", value:"openoffice.org-base on CentOS 5");
+  script_tag(name:"insight", value:"OpenOffice.org is an office productivity suite that includes desktop
   applications, such as a word processor, spreadsheet application,
   presentation manager, formula editor, and a drawing program.
 
@@ -34,7 +53,7 @@ tag_insight = "OpenOffice.org is an office productivity suite that includes desk
   user, could lead to arbitrary code execution with the permissions of the
   user running OpenOffice.org. Note: This flaw affects embedded XPM files in
   OpenOffice.org documents as well as stand-alone XPM files. (CVE-2009-2949)
-  
+
   An integer underflow flaw and a boundary error flaw, both possibly leading
   to a heap-based buffer overflow, were found in the way OpenOffice.org
   parsed certain records in Microsoft Word documents. An attacker could
@@ -42,60 +61,32 @@ tag_insight = "OpenOffice.org is an office productivity suite that includes desk
   local, unsuspecting user, could cause OpenOffice.org to crash or,
   potentially, execute arbitrary code with the permissions of the user
   running OpenOffice.org. (CVE-2009-3301, CVE-2009-3302)
-  
+
   A heap-based buffer overflow flaw, leading to memory corruption, was found
   in the way OpenOffice.org parsed GIF files. An attacker could create a
   specially-crafted document, which once opened by a local, unsuspecting
   user, could cause OpenOffice.org to crash. Note: This flaw affects embedded
   GIF files in OpenOffice.org documents as well as stand-alone GIF files.
   (CVE-2009-2950)
-  
+
   All users of OpenOffice.org are advised to upgrade to these updated
   packages, which contain backported patches to correct these issues. All
   running instances of OpenOffice.org applications must be restarted for this
-  update to take effect.";
-tag_solution = "Please Install the Updated Packages.";
-
-tag_affected = "openoffice.org-base on CentOS 5";
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2010-February/016499.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.880659");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
-  script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
-  script_tag(name:"cvss_base", value:"9.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_xref(name: "CESA", value: "2010:0101");
-  script_cve_id("CVE-2009-2949", "CVE-2009-2950", "CVE-2009-3301", "CVE-2009-3302");
-  script_name("CentOS Update for openoffice.org-base CESA-2010:0101 centos5 i386");
-
-  script_tag(name:"summary", value:"Check for the Version of openoffice.org-base");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_family("CentOS Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS5");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  update to take effect.");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS5")
 {
@@ -562,6 +553,6 @@ if(release == "CentOS5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

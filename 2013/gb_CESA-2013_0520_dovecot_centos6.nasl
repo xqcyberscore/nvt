@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for dovecot CESA-2013:0520 centos6 
+# CentOS Update for dovecot CESA-2013:0520 centos6
 #
 # Authors:
 # System Generated Check
@@ -23,8 +23,28 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "Dovecot is an IMAP server, written with security primarily in mind, for
+if(description)
+{
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-March/019318.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.881675");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2013-03-12 10:02:15 +0530 (Tue, 12 Mar 2013)");
+  script_cve_id("CVE-2011-2166", "CVE-2011-2167", "CVE-2011-4318");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
+  script_xref(name:"CESA", value:"2013:0520");
+  script_name("CentOS Update for dovecot CESA-2013:0520 centos6");
+
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for dovecot");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
+  script_family("CentOS Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS6");
+  script_tag(name:"affected", value:"dovecot on CentOS 6");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_tag(name:"insight", value:"Dovecot is an IMAP server, written with security primarily in mind, for
   Linux and other UNIX-like systems. It also contains a small POP3 server. It
   supports mail in either of maildir or mbox formats. The SQL drivers and
   authentication plug-ins are provided as sub-packages.
@@ -34,15 +54,15 @@ tag_insight = "Dovecot is an IMAP server, written with security primarily in min
   use these flaws to bypass intended access restrictions or conduct a
   directory traversal attack by leveraging login scripts. (CVE-2011-2166,
   CVE-2011-2167)
-  
+
   A flaw was found in the way Dovecot performed remote server identity
   verification, when it was configured to proxy IMAP and POP3 connections to
   remote hosts using TLS/SSL protocols. A remote attacker could use this flaw
   to conduct man-in-the-middle attacks using an X.509 certificate issued by
   a trusted Certificate Authority (for a different name). (CVE-2011-4318)
-  
+
   This update also fixes the following bug:
-  
+
   * When a new user first accessed their IMAP inbox, Dovecot was, under some
   circumstances, unable to change the group ownership of the inbox directory
   in the user's Maildir location to match that of the user's mail spool
@@ -55,53 +75,23 @@ tag_insight = "Dovecot is an IMAP server, written with security primarily in min
   group ownership, Dovecot removes the created directory and generates an
   error message instead of keeping the directory with incorrect group
   ownership. (BZ#697620)
-  
+
   Users of dovecot are advised to upgrade to these updated packages, which
   contain backported patches to correct these issues. After installing the
-  updated packages, the dovecot service will be restarted automatically.";
-
-
-tag_affected = "dovecot on CentOS 6";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2013-March/019318.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.881675");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
-  script_tag(name:"creation_date", value:"2013-03-12 10:02:15 +0530 (Tue, 12 Mar 2013)");
-  script_cve_id("CVE-2011-2166", "CVE-2011-2167", "CVE-2011-4318");
-  script_tag(name:"cvss_base", value:"6.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_xref(name: "CESA", value: "2013:0520");
-  script_name("CentOS Update for dovecot CESA-2013:0520 centos6 ");
-
-  script_tag(name: "summary" , value: "Check for the Version of dovecot");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
-  script_family("CentOS Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS6");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  updated packages, the dovecot service will be restarted automatically.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS6")
 {
@@ -136,6 +126,6 @@ if(release == "CentOS6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

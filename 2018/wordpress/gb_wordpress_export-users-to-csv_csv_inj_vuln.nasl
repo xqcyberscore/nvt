@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_export-users-to-csv_csv_inj_vuln.nasl 12966 2019-01-08 09:04:10Z ckuersteiner $
+# $Id: gb_wordpress_export-users-to-csv_csv_inj_vuln.nasl 14078 2019-03-11 03:25:53Z ckuersteiner $
 #
 # WordPress Export Users to CSV Plugin <= 1.1.1 CSV Injection Vulnerability
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112370");
-  script_version("$Revision: 12966 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-08 10:04:10 +0100 (Tue, 08 Jan 2019) $");
+  script_version("$Revision: 14078 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 04:25:53 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-08-29 11:05:00 +0200 (Wed, 29 Aug 2018)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -38,7 +38,7 @@ if (description)
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_name("WordPress Export Users to CSV Plugin <= 1.1.1 CSV Injection Vulnerability");
 
@@ -54,11 +54,12 @@ if (description)
 
   script_tag(name:"affected", value:"WordPress Export Users to CSV through version 1.1.1.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 08th January, 2019.
-  Information regarding this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"The plugin is not available for download anymore. Therefore no fix will
+be provided. It is advised to remote the plugin.");
 
   script_xref(name:"URL", value:"https://hackpuntes.com/cve-2018-15571-wordpress-plugin-export-users-to-csv-1-1-1-csv-injection/");
   script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/45206/");
+  script_xref(name:"URL", value:"https://wordpress.org/plugins/export-users-to-csv/");
 
   exit(0);
 }
@@ -86,7 +87,7 @@ if ("Export users data and metadata to a csv file." >< res && "Changelog" >< res
   vers = eregmatch(pattern: "Stable tag: ([0-9.]+)", string: res);
 
   if (!isnull(vers[1]) && version_is_less_equal(version: vers[1], test_version: "1.1.1")) {
-    report = report_fixed_ver(installed_version: vers[1], fixed_version: "NoneAvailable");
+    report = report_fixed_ver(installed_version: vers[1], fixed_version: "None");
     security_message(port: port, data: report);
     exit(0);
   }

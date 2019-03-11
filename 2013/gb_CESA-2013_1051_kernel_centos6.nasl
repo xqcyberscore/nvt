@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for kernel CESA-2013:1051 centos6 
+# CentOS Update for kernel CESA-2013:1051 centos6
 #
 # Authors:
 # System Generated Check
@@ -23,40 +23,54 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "The kernel packages contain the Linux kernel, the core of any Linux
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.881773");
+  script_version("$Revision: 14056 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2013-08-01 18:43:39 +0530 (Thu, 01 Aug 2013)");
+  script_cve_id("CVE-2012-6548", "CVE-2013-0914", "CVE-2013-1848", "CVE-2013-2128",
+                "CVE-2013-2634", "CVE-2013-2635", "CVE-2013-2852", "CVE-2013-3222",
+                "CVE-2013-3224", "CVE-2013-3225", "CVE-2013-3301");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
+  script_name("CentOS Update for kernel CESA-2013:1051 centos6");
+
+  script_tag(name:"affected", value:"kernel on CentOS 6");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_tag(name:"insight", value:"The kernel packages contain the Linux kernel, the core of any Linux
 operating system.
 
 This update fixes the following security issues:
 
-* A flaw was found in the tcp_read_sock() function in the Linux kernel's
+  * A flaw was found in the tcp_read_sock() function in the Linux kernel's
 IPv4 TCP/IP protocol suite implementation in the way socket buffers (skb)
 were handled. A local, unprivileged user could trigger this issue via a
 call to splice(), leading to a denial of service. (CVE-2013-2128,
 Moderate)
 
-* Information leak flaws in the Linux kernel could allow a local,
+  * Information leak flaws in the Linux kernel could allow a local,
 unprivileged user to leak kernel memory to user-space. (CVE-2012-6548,
 CVE-2013-2634, CVE-2013-2635, CVE-2013-3222, CVE-2013-3224, CVE-2013-3225,
 Low)
 
-* An information leak was found in the Linux kernel's POSIX signals
+  * An information leak was found in the Linux kernel's POSIX signals
 implementation. A local, unprivileged user could use this flaw to bypass
 the Address Space Layout Randomization (ASLR) security feature.
 (CVE-2013-0914, Low)
 
-* A format string flaw was found in the ext3_msg() function in the Linux
+  * A format string flaw was found in the ext3_msg() function in the Linux
 kernel's ext3 file system implementation. A local user who is able to mount
 an ext3 file system could use this flaw to cause a denial of service or,
 potentially, escalate their privileges. (CVE-2013-1848, Low)
 
-* A format string flaw was found in the b43_do_request_fw() function in the
+  * A format string flaw was found in the b43_do_request_fw() function in the
 Linux kernel's b43 driver implementation. A local user who is able to
 specify the 'fwpostfix' b43 module parameter could use this flaw to cause a
 denial of service or, potentially, escalate their privileges.
 (CVE-2013-2852, Low)
 
-* A NULL pointer dereference flaw was found in the Linux kernel's ftrace
+  * A NULL pointer dereference flaw was found in the Linux kernel's ftrace
 and function tracer implementations. A local user who has the CAP_SYS_ADMIN
 capability could use this flaw to cause a denial of service.
 (CVE-2013-3301, Low)
@@ -69,36 +83,12 @@ References section.
 
 Users should upgrade to these updated packages, which contain backported
 patches to correct these issues. The system must be rebooted for this
-update to take effect.";
-
-
-if(description)
-{
-  script_oid("1.3.6.1.4.1.25623.1.0.881773");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
-  script_tag(name:"creation_date", value:"2013-08-01 18:43:39 +0530 (Thu, 01 Aug 2013)");
-  script_cve_id("CVE-2012-6548", "CVE-2013-0914", "CVE-2013-1848", "CVE-2013-2128",
-                "CVE-2013-2634", "CVE-2013-2635", "CVE-2013-2852", "CVE-2013-3222",
-                "CVE-2013-3224", "CVE-2013-3225", "CVE-2013-3301");
-  script_tag(name:"cvss_base", value:"7.2");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_name("CentOS Update for kernel CESA-2013:1051 centos6 ");
-
-
-  tag_affected = "kernel on CentOS 6";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+update to take effect.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "CESA", value: "2013:1051");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2013-July/019858.html");
-  script_tag(name:"summary", value:"Check for the Version of kernel");
+  script_xref(name:"CESA", value:"2013:1051");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-July/019858.html");
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for kernel");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
@@ -107,15 +97,14 @@ if(description)
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS6")
 {
@@ -174,6 +163,6 @@ if(release == "CentOS6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

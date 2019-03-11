@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for luci CESA-2014:1194 centos5 
+# CentOS Update for luci CESA-2014:1194 centos5
 #
 # Authors:
 # System Generated Check
@@ -26,16 +26,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882048");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-10-01 17:00:09 +0530 (Wed, 01 Oct 2014)");
   script_cve_id("CVE-2012-5485", "CVE-2012-5486", "CVE-2012-5488", "CVE-2012-5497",
                 "CVE-2012-5498", "CVE-2012-5499", "CVE-2012-5500", "CVE-2013-6496",
                 "CVE-2014-3521");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_name("CentOS Update for luci CESA-2014:1194 centos5 ");
-  script_tag(name: "insight", value: "The Conga project is a management system for remote workstations.
+  script_name("CentOS Update for luci CESA-2014:1194 centos5");
+  script_tag(name:"insight", value:"The Conga project is a management system for remote workstations.
 It consists of luci, which is a secure web-based front end, and ricci,
 which is a secure daemon that dispatches incoming messages to underlying
 management modules.
@@ -82,17 +82,17 @@ handle the processing of requests for certain collections. A remote
 attacker could use a specially crafted URL that, when processed, would lead
 to excessive I/O and/or cache resource consumption. (CVE-2012-5498)
 
-It was discovered that Plone, included ... 
+It was discovered that Plone, included ...
 
-  Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "luci on CentOS 5");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  Description truncated, please see the referenced URL(s) for more information.");
+  script_tag(name:"affected", value:"luci on CentOS 5");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name: "CESA", value: "2014:1194");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2014-September/020611.html");
-  script_tag(name:"summary", value:"Check for the Version of luci");
+  script_xref(name:"CESA", value:"2014:1194");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2014-September/020611.html");
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for luci");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
@@ -104,12 +104,11 @@ It was discovered that Plone, included ...
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS5")
 {
@@ -132,6 +131,6 @@ if(release == "CentOS5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

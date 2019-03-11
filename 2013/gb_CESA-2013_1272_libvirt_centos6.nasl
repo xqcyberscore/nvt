@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for libvirt CESA-2013:1272 centos6 
+# CentOS Update for libvirt CESA-2013:1272 centos6
 #
 # Authors:
 # System Generated Check
@@ -23,8 +23,20 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "The libvirt library is a C API for managing and interacting with the
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.881796");
+  script_version("$Revision: 14056 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2013-09-24 11:45:19 +0530 (Tue, 24 Sep 2013)");
+  script_cve_id("CVE-2013-4296", "CVE-2013-4311");
+  script_tag(name:"cvss_base", value:"4.6");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
+  script_name("CentOS Update for libvirt CESA-2013:1272 centos6");
+
+  script_tag(name:"affected", value:"libvirt on CentOS 6");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_tag(name:"insight", value:"The libvirt library is a C API for managing and interacting with the
 virtualization capabilities of Linux and other operating systems. In
 addition, libvirt provides tools for remote management of virtualized
 systems.
@@ -48,19 +60,19 @@ The CVE-2013-4296 issue was discovered by Daniel P. Berrange of Red Hat.
 
 This update also fixes the following bugs:
 
-* Prior to this update, the libvirtd daemon leaked memory in the
+  * Prior to this update, the libvirtd daemon leaked memory in the
 virCgroupMoveTask() function. A fix has been provided which prevents
 libvirtd from incorrect management of memory allocations. (BZ#984556)
 
-* Previously, the libvirtd daemon was accessing one byte before the array
+  * Previously, the libvirtd daemon was accessing one byte before the array
 in the virCgroupGetValueStr() function. This bug has been fixed and
 libvirtd now stays within the array bounds. (BZ#984561)
 
-* When migrating, libvirtd leaked the migration URI (Uniform Resource
+  * When migrating, libvirtd leaked the migration URI (Uniform Resource
 Identifier) on destination. A patch has been provided to fix this bug and
 the migration URI is now freed correctly. (BZ#984578)
 
-* Updating a network interface using virDomainUpdateDeviceFlags API failed
+  * Updating a network interface using virDomainUpdateDeviceFlags API failed
 when a boot order was set for that interface. The update failed even if the
 boot order was set in the provided device XML. The
 virDomainUpdateDeviceFlags API has been fixed to correctly parse the boot
@@ -69,34 +81,12 @@ interfaces with boot orders now works as expected. (BZ#1003934)
 
 Users of libvirt are advised to upgrade to these updated packages, which
 contain backported patches to correct these issues. After installing the
-updated packages, libvirtd will be restarted automatically.";
-
-
-if(description)
-{
-  script_oid("1.3.6.1.4.1.25623.1.0.881796");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
-  script_tag(name:"creation_date", value:"2013-09-24 11:45:19 +0530 (Tue, 24 Sep 2013)");
-  script_cve_id("CVE-2013-4296", "CVE-2013-4311");
-  script_tag(name:"cvss_base", value:"4.6");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_name("CentOS Update for libvirt CESA-2013:1272 centos6 ");
-
-
-  tag_affected = "libvirt on CentOS 6";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+updated packages, libvirtd will be restarted automatically.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "CESA", value: "2013:1272");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2013-September/019948.html");
-  script_tag(name: "summary" , value: "Check for the Version of libvirt");
+  script_xref(name:"CESA", value:"2013:1272");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-September/019948.html");
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for libvirt");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
@@ -105,15 +95,14 @@ if(description)
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS6")
 {
@@ -148,6 +137,6 @@ if(release == "CentOS6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

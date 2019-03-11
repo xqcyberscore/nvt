@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for libvirt CESA-2014:0560 centos6 
+# CentOS Update for libvirt CESA-2014:0560 centos6
 #
 # Authors:
 # System Generated Check
@@ -23,20 +23,19 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.881937");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14056 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-06-02 13:47:28 +0530 (Mon, 02 Jun 2014)");
   script_cve_id("CVE-2014-0179");
   script_tag(name:"cvss_base", value:"1.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:N/I:N/A:P");
-  script_name("CentOS Update for libvirt CESA-2014:0560 centos6 ");
+  script_name("CentOS Update for libvirt CESA-2014:0560 centos6");
 
-  tag_insight = "The libvirt library is a C API for managing and interacting
+  script_tag(name:"affected", value:"libvirt on CentOS 6");
+  script_tag(name:"insight", value:"The libvirt library is a C API for managing and interacting
 with the virtualization capabilities of Linux and other operating systems. In
 addition, libvirt provides tools for remote management of virtualized
 systems.
@@ -54,7 +53,7 @@ original reporters.
 
 This update also fixes the following bugs:
 
-* When hot unplugging a virtual CPU (vCPU), libvirt kept a pointer to
+  * When hot unplugging a virtual CPU (vCPU), libvirt kept a pointer to
 already freed memory if the vCPU was pinned to a host CPU. Consequently,
 when reading the CPU pinning information, libvirt terminated unexpectedly
 due to an attempt to access this memory. This update ensures that libvirt
@@ -62,13 +61,13 @@ releases the pointer to the previously allocated memory when a vCPU is
 being hot unplugged, and it no longer crashes in this situation.
 (BZ#1091206)
 
-* Previously, libvirt passed an incorrect argument to the 'tc' command when
+  * Previously, libvirt passed an incorrect argument to the 'tc' command when
 setting quality of service (QoS) on a network interface controller (NIC).
 As a consequence, QoS was applied only to IP traffic. With this update,
 libvirt constructs the 'tc' command correctly so that QoS is applied to all
 traffic as expected. (BZ#1096806)
 
-* When using the sanlock daemon for managing access to shared storage,
+  * When using the sanlock daemon for managing access to shared storage,
 libvirt expected all QEMU domains to be registered with sanlock. However,
 if a QEMU domain was started prior to enabling sanlock, the domain was not
 registered with sanlock. Consequently, migration of a virtual machine (VM)
@@ -79,22 +78,13 @@ virtual machines works as expected. (BZ#1097227)
 
 All libvirt users are advised to upgrade to these updated packages, which
 contain backported patches to correct these issues. After installing the
-updated packages, libvirtd will be restarted automatically.
-";
-
-  tag_affected = "libvirt on CentOS 6";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+updated packages, libvirtd will be restarted automatically.");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "CESA", value: "2014:0560");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2014-May/020322.html");
-  script_tag(name:"summary", value:"Check for the Version of libvirt");
+  script_xref(name:"CESA", value:"2014:0560");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2014-May/020322.html");
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for libvirt");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
@@ -103,15 +93,14 @@ updated packages, libvirtd will be restarted automatically.
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS6")
 {
@@ -146,6 +135,6 @@ if(release == "CentOS6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

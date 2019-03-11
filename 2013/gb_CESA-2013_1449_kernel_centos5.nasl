@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for kernel CESA-2013:1449 centos5 
+# CentOS Update for kernel CESA-2013:1449 centos5
 #
 # Authors:
 # System Generated Check
@@ -23,40 +23,39 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.881811");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14056 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-10-29 15:31:50 +0530 (Tue, 29 Oct 2013)");
   script_cve_id("CVE-2013-0343", "CVE-2013-4299", "CVE-2013-4345", "CVE-2013-4368");
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
-  script_name("CentOS Update for kernel CESA-2013:1449 centos5 ");
+  script_name("CentOS Update for kernel CESA-2013:1449 centos5");
 
-  tag_insight = "The kernel packages contain the Linux kernel, the core of any Linux
+  script_tag(name:"affected", value:"kernel on CentOS 5");
+  script_tag(name:"insight", value:"The kernel packages contain the Linux kernel, the core of any Linux
 operating system.
 
-* A flaw was found in the way the Linux kernel handled the creation of
+  * A flaw was found in the way the Linux kernel handled the creation of
 temporary IPv6 addresses. If the IPv6 privacy extension was enabled
 (/proc/sys/net/ipv6/conf/eth0/use_tempaddr is set to '2'), an attacker on
 the local network could disable IPv6 temporary address generation, leading
 to a potential information disclosure. (CVE-2013-0343, Moderate)
 
-* An information leak flaw was found in the way Linux kernel's device
+  * An information leak flaw was found in the way Linux kernel's device
 mapper subsystem, under certain conditions, interpreted data written to
 snapshot block devices. An attacker could use this flaw to read data from
 disk blocks in free space, which are normally inaccessible. (CVE-2013-4299,
 Moderate)
 
-* An off-by-one flaw was found in the way the ANSI CPRNG implementation in
+  * An off-by-one flaw was found in the way the ANSI CPRNG implementation in
 the Linux kernel processed non-block size aligned requests. This could lead
 to random numbers being generated with less bits of entropy than expected
 when ANSI CPRNG was used. (CVE-2013-4345, Moderate)
 
-* An information leak flaw was found in the way Xen hypervisor emulated the
+  * An information leak flaw was found in the way Xen hypervisor emulated the
 OUTS instruction for 64-bit paravirtualized guests. A privileged guest user
 could use this flaw to leak hypervisor stack memory to the guest.
 (CVE-2013-4368, Moderate)
@@ -67,7 +66,7 @@ CVE-2013-4368.
 
 This update also fixes the following bug:
 
-* A bug in the GFS2 code prevented glock work queues from freeing
+  * A bug in the GFS2 code prevented glock work queues from freeing
 glock-related memory while the glock memory shrinker repeatedly queued a
 large number of demote requests, for example when performing a simultaneous
 backup of several live GFS2 volumes with a large file count. As a
@@ -80,22 +79,13 @@ extremely high work loads. (BZ#1014714)
 
 All kernel users are advised to upgrade to these updated packages, which
 contain backported patches to correct these issues. The system must be
-rebooted for this update to take effect.
-";
-
-  tag_affected = "kernel on CentOS 5";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+rebooted for this update to take effect.");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "CESA", value: "2013:1449");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2013-October/019981.html");
-  script_tag(name: "summary" , value: "Check for the Version of kernel");
+  script_xref(name:"CESA", value:"2013:1449");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-October/019981.html");
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for kernel");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
@@ -104,15 +94,14 @@ rebooted for this update to take effect.
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS5")
 {
@@ -177,6 +166,6 @@ if(release == "CentOS5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_indusoft_web_studio_priv_escal_vuln_aug17.nasl 11874 2018-10-12 11:28:04Z mmartin $
+# $Id: gb_indusoft_web_studio_priv_escal_vuln_aug17.nasl 14057 2019-03-08 13:02:00Z jschulte $
 #
 # InduSoft Web Studio Privilege Escalation Vulnerability Aug17 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:schneider_electric:indusoft_web_studio";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811264");
-  script_version("$Revision: 11874 $");
+  script_version("$Revision: 14057 $");
   script_cve_id("CVE-2017-7968");
   script_bugtraq_id(98544);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:02:00 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-08-01 17:07:48 +0530 (Tue, 01 Aug 2017)");
   script_name("InduSoft Web Studio Privilege Escalation Vulnerability Aug17 (Windows)");
 
@@ -66,8 +66,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_indusoft_web_studio_detect_win.nasl");
-  script_mandatory_keys("InduSoft/WebStudio/Win/Ver");
+  script_dependencies("gb_schneider_indusoft_consolidation.nasl");
+  script_mandatory_keys("schneider_indusoft/installed");
   script_xref(name:"URL", value:"http://www.indusoft.com/");
   exit(0);
 }
@@ -80,10 +80,9 @@ if(!studioVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Version 8.0 Service Pack 1 == 80.1.0
-if(version_is_less(version:studioVer, test_version:"80.1.0"))
+if(version_is_less(version:studioVer, test_version:"8.0.1.0"))
 {
-  report = report_fixed_ver( installed_version:studioVer, fixed_version:"80.1.0");
+  report = report_fixed_ver( installed_version:studioVer, fixed_version:"8.0.1.0");
   security_message( data:report);
   exit(0);
 }

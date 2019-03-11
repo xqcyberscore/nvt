@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for ibutils CESA-2013:0509 centos6 
+# CentOS Update for ibutils CESA-2013:0509 centos6
 #
 # Authors:
 # System Generated Check
@@ -23,8 +23,28 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "Red Hat Enterprise Linux includes a collection of InfiniBand and iWARP
+if(description)
+{
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-March/019348.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.881670");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2013-03-12 10:02:01 +0530 (Tue, 12 Mar 2013)");
+  script_cve_id("CVE-2012-4517", "CVE-2012-4518");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_xref(name:"CESA", value:"2013:0509");
+  script_name("CentOS Update for ibutils CESA-2013:0509 centos6");
+
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for ibutils");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
+  script_family("CentOS Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS6");
+  script_tag(name:"affected", value:"ibutils on CentOS 6");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_tag(name:"insight", value:"Red Hat Enterprise Linux includes a collection of InfiniBand and iWARP
   utilities, libraries and development packages for writing applications
   that use Remote Direct Memory Access (RDMA) technology.
 
@@ -32,31 +52,31 @@ tag_insight = "Red Hat Enterprise Linux includes a collection of InfiniBand and 
   counts for multicast connections. An attacker could send specially-crafted
   multicast packets that would cause the ibacm daemon to crash.
   (CVE-2012-4517)
-  
+
   It was found that the ibacm daemon created some files with world-writable
   permissions. A local attacker could use this flaw to overwrite the
   contents of the ibacm.log or ibacm.port file, allowing them to mask
   certain actions from the log or cause ibacm to run on a non-default port.
   (CVE-2012-4518)
-  
+
   CVE-2012-4518 was discovered by Florian Weimer of the Red Hat Product
   Security Team and Kurt Seifried of the Red Hat Security Response Team.
-  
+
   The InfiniBand/iWARP/RDMA stack components have been upgraded to more
   recent upstream versions.
-  
+
   This update also fixes the following bugs:
-  
+
   * Previously, the &quot;ibnodes -h&quot; command did not show a proper usage message.
   With this update the problem is fixed and &quot;ibnodes -h&quot; now shows the
   correct usage message. (BZ#818606)
-  
+
   * Previously, the ibv_devinfo utility erroneously showed iWARP cxgb3
   hardware's physical state as invalid even when the device was working. For
   iWARP hardware, the phys_state field has no meaning. This update patches
   the utility to not print out anything for this field when the hardware is
   iWARP hardware. (BZ#822781)
-  
+
   * Prior to the release of Red Hat Enterprise Linux 6.3, the kernel created
   the InfiniBand device files in the wrong place and a udev rules file was
   used to force the devices to be created in the proper place. With the
@@ -70,54 +90,24 @@ tag_insight = "Red Hat Enterprise Linux includes a collection of InfiniBand and 
   update puts a new udev rules file in place. It no longer attempts to create
   the InfiniBand devices since they already exist, but it does correct the
   device permissions on the files. (BZ#834428)
-  
+
   * Previously, using the &quot;perfquery -C&quot; command with a host name caused the
-  perfq ... 
+  perfq ...
 
-  Description truncated, for more information please check the Reference URL";
-
-
-tag_affected = "ibutils on CentOS 6";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2013-March/019348.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.881670");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
-  script_tag(name:"creation_date", value:"2013-03-12 10:02:01 +0530 (Tue, 12 Mar 2013)");
-  script_cve_id("CVE-2012-4517", "CVE-2012-4518");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_xref(name: "CESA", value: "2013:0509");
-  script_name("CentOS Update for ibutils CESA-2013:0509 centos6 ");
-
-  script_tag(name: "summary" , value: "Check for the Version of ibutils");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
-  script_family("CentOS Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS6");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS6")
 {
@@ -140,6 +130,6 @@ if(release == "CentOS6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

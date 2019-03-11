@@ -23,8 +23,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "The GnuTLS library provides support for cryptographic algorithms and for
+if(description)
+{
+  script_tag(name:"affected", value:"gnutls on CentOS 5");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_tag(name:"insight", value:"The GnuTLS library provides support for cryptographic algorithms and for
   protocols such as Transport Layer Security (TLS).
 
   It was discovered that GnuTLS leaked timing information when decrypting
@@ -36,34 +39,21 @@ tag_insight = "The GnuTLS library provides support for cryptographic algorithms 
   Users of GnuTLS are advised to upgrade to these updated packages, which
   contain a backported patch to correct this issue. For the update to take
   effect, all applications linked to the GnuTLS library must be restarted,
-  or the system rebooted.";
-
-
-tag_solution = "Please Install the Updated Packages.";
-tag_affected = "gnutls on CentOS 5";
-
-
-
-
-if(description)
-{
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
-  script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2013-March/019262.html");
+  or the system rebooted.");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-March/019262.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881624");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-03-08 10:20:18 +0530 (Fri, 08 Mar 2013)");
   script_cve_id("CVE-2013-1619");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "CESA", value: "2013:0588");
-  script_name("CentOS Update for gnutls CESA-2013:0588 centos5 ");
+  script_xref(name:"CESA", value:"2013:0588");
+  script_name("CentOS Update for gnutls CESA-2013:0588 centos5");
 
-  script_tag(name: "summary" , value: "Check for the Version of gnutls");
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for gnutls");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
@@ -72,15 +62,14 @@ if(description)
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS5")
 {
@@ -103,6 +92,6 @@ if(release == "CentOS5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

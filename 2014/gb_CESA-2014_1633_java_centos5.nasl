@@ -26,22 +26,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882058");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-10-16 05:59:38 +0200 (Thu, 16 Oct 2014)");
   script_cve_id("CVE-2014-6457", "CVE-2014-6502", "CVE-2014-6504", "CVE-2014-6506",
                 "CVE-2014-6511", "CVE-2014-6512", "CVE-2014-6517", "CVE-2014-6519",
                 "CVE-2014-6531", "CVE-2014-6558");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_name("CentOS Update for java CESA-2014:1633 centos5 ");
+  script_name("CentOS Update for java CESA-2014:1633 centos5");
 
-  script_tag(name: "summary", value: "Check the version of java");
+  script_tag(name:"summary", value:"Check the version of java");
 
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of
-detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight", value: "The java-1.7.0-openjdk packages provide the
+  script_tag(name:"insight", value:"The java-1.7.0-openjdk packages provide the
 OpenJDK 7 Java Runtime Environment and the OpenJDK 7 Java Software Development Kit.
 
 Multiple flaws were discovered in the Libraries, 2D, and Hotspot components
@@ -77,7 +76,7 @@ Security.
 
 This update also fixes the following bug:
 
-* The TLS/SSL implementation in OpenJDK previously failed to handle
+  * The TLS/SSL implementation in OpenJDK previously failed to handle
 Diffie-Hellman (DH) keys with more than 1024 bits. This caused client
 applications using JSSE to fail to establish TLS/SSL connections to servers
 using larger DH keys during the connection handshake. This update adds
@@ -85,14 +84,13 @@ support for DH keys with size up to 2048 bits. (BZ#1148309)
 
 All users of java-1.7.0-openjdk are advised to upgrade to these updated
 packages, which resolve these issues. All running instances of OpenJDK Java
-must be restarted for the update to take effect.
-");
-  script_tag(name: "affected", value: "java on CentOS 5");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+must be restarted for the update to take effect.");
+  script_tag(name:"affected", value:"java on CentOS 5");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "CESA", value: "2014:1633");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2014-October/020683.html");
+  script_xref(name:"CESA", value:"2014:1633");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2014-October/020683.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
@@ -104,12 +102,11 @@ must be restarted for the update to take effect.
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS5")
 {
@@ -144,6 +141,6 @@ if(release == "CentOS5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for kmod-kvm CESA-2017:0454 centos5 
+# CentOS Update for kmod-kvm CESA-2017:0454 centos5
 #
 # Authors:
 # System Generated Check
@@ -26,33 +26,32 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882678");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-03-09 05:01:35 +0100 (Thu, 09 Mar 2017)");
   script_cve_id("CVE-2017-2615", "CVE-2017-2620");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
-  script_name("CentOS Update for kmod-kvm CESA-2017:0454 centos5 ");
-  script_tag(name: "summary", value: "Check the version of kmod-kvm");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "KVM (for Kernel-based Virtual Machine) is 
-a full virtualization solution for Linux on x86 hardware. Using KVM, one can 
-run multiple virtual machines running unmodified Linux or Windows images. 
-Each virtual machine has private virtualized hardware: a network card, disk, 
+  script_name("CentOS Update for kmod-kvm CESA-2017:0454 centos5");
+  script_tag(name:"summary", value:"Check the version of kmod-kvm");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"KVM (for Kernel-based Virtual Machine) is
+a full virtualization solution for Linux on x86 hardware. Using KVM, one can
+run multiple virtual machines running unmodified Linux or Windows images.
+Each virtual machine has private virtualized hardware: a network card, disk,
 graphics adapter, etc.
 
 Security Fix(es):
 
-* Quick emulator (QEMU) built with the Cirrus CLGD 54xx VGA emulator
+  * Quick emulator (QEMU) built with the Cirrus CLGD 54xx VGA emulator
 support is vulnerable to an out-of-bounds access issue. It could occur
 while copying VGA data via bitblt copy in backward mode. A privileged user
 inside a guest could use this flaw to crash the QEMU process resulting in
 DoS or potentially execute arbitrary code on the host with privileges of
 QEMU process on the host. (CVE-2017-2615)
 
-* Quick emulator (QEMU) built with the Cirrus CLGD 54xx VGA Emulator
+  * Quick emulator (QEMU) built with the Cirrus CLGD 54xx VGA Emulator
 support is vulnerable to an out-of-bounds access issue. The issue could
 occur while copying VGA data in cirrus_bitblt_cputovideo. A privileged user
 inside guest could use this flaw to crash the QEMU process OR potentially
@@ -67,13 +66,12 @@ Red Hat would like to thank Wjjzhang (Tencent.com Inc.) and Li Qiang
 For details on how to apply this update, which includes the changes
 described in this advisory, refer to:
 
-'https://access.redhat.com/articles/11258'
-");
-  script_tag(name: "affected", value: "kmod-kvm on CentOS 5");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+'https://access.redhat.com/articles/11258'");
+  script_tag(name:"affected", value:"kmod-kvm on CentOS 5");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "CESA", value: "2017:0454");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2017-March/022325.html");
+  script_xref(name:"CESA", value:"2017:0454");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2017-March/022325.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -86,12 +84,11 @@ described in this advisory, refer to:
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS5")
 {
@@ -126,6 +123,6 @@ if(release == "CentOS5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

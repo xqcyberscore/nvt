@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for squid CESA-2014:1148 centos5 
+# CentOS Update for squid CESA-2014:1148 centos5
 #
 # Authors:
 # System Generated Check
@@ -22,19 +22,18 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
-include("revisions-lib.inc");
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.881993");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-09-04 05:57:49 +0200 (Thu, 04 Sep 2014)");
   script_cve_id("CVE-2013-4115", "CVE-2014-3609");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_name("CentOS Update for squid CESA-2014:1148 centos5 ");
-  script_tag(name: "insight", value: "Squid is a high-performance proxy caching
+  script_name("CentOS Update for squid CESA-2014:1148 centos5");
+  script_tag(name:"insight", value:"Squid is a high-performance proxy caching
 server for web clients, supporting FTP, Gopher, and HTTP data objects.
 
 A flaw was found in the way Squid handled malformed HTTP Range headers.
@@ -51,33 +50,31 @@ reporter.
 
 All Squid users are advised to upgrade to this updated package, which
 contains backported patches to correct these issues. After installing this
-update, the squid service will be restarted automatically.
-");
-  script_tag(name: "affected", value: "squid on CentOS 5");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+update, the squid service will be restarted automatically.");
+  script_tag(name:"affected", value:"squid on CentOS 5");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name: "CESA", value: "2014:1148");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2014-September/020537.html");
-  script_tag(name:"summary", value:"Check for the Version of squid");
+  script_xref(name:"CESA", value:"2014:1148");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2014-September/020537.html");
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for squid");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS5");
-exit(0);
-}
-
-
-include("pkg-lib-rpm.inc");
-
-release = get_kb_item("ssh/login/release");
-
-res = "";
-if(release == NULL){
   exit(0);
 }
+
+include("revisions-lib.inc");
+include("pkg-lib-rpm.inc");
+
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
+
+res = "";
 
 if(release == "CentOS5")
 {
@@ -88,6 +85,6 @@ if(release == "CentOS5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

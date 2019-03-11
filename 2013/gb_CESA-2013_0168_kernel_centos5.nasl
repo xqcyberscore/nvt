@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for kernel CESA-2013:0168 centos5 
+# CentOS Update for kernel CESA-2013:0168 centos5
 #
 # Authors:
 # System Generated Check
@@ -23,85 +23,75 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "The kernel packages contain the Linux kernel, the core of any Linux
-  operating system.
-
-  This update fixes the following security issues:
-  
-  * It was found that the Xen hypervisor implementation did not perform
-  range checking on the guest provided values in multiple hypercalls. A
-  privileged guest user could use this flaw to trigger long loops, leading
-  to a denial of service (Xen hypervisor hang). (CVE-2012-5515, Moderate)
-  
-  * It was found that when running a 32-bit binary that uses a large number
-  of shared libraries, one of the libraries would always be loaded at a
-  predictable address in memory. An attacker could use this flaw to bypass
-  the Address Space Layout Randomization (ASLR) security feature.
-  (CVE-2012-1568, Low)
-  
-  * A flaw was found in the way the Linux kernel's IPv6 implementation
-  handled overlapping, fragmented IPv6 packets. A remote attacker could
-  potentially use this flaw to bypass protection mechanisms (such as a
-  firewall or intrusion detection system (IDS)) when sending network packets
-  to a target system. (CVE-2012-4444, Low)
-  
-  Red Hat would like to thank the Xen project for reporting CVE-2012-5515,
-  and Antonios Atlasis working with Beyond Security's SecuriTeam Secure
-  Disclosure program and Loganaden Velvindron of AFRINIC for reporting
-  CVE-2012-4444.
-  
-  This update also fixes several bugs. Space precludes documenting all of
-  these changes in this advisory. Documentation for these changes will be
-  available shortly from the Red Hat Enterprise Linux 5.9 Technical Notes
-  document linked to in the References section.
-  
-  Users should upgrade to these updated packages, which contain backported
-  patches to correct these issues. The system must be rebooted for this
-  update to take effect.";
-
-
-tag_affected = "kernel on CentOS 5";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
 if(description)
 {
-  script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2013-January/019208.html");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-January/019208.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881581");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-01-24 09:27:46 +0530 (Thu, 24 Jan 2013)");
   script_cve_id("CVE-2012-1568", "CVE-2012-4444", "CVE-2012-5515");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_xref(name: "CESA", value: "2013:0168");
-  script_name("CentOS Update for kernel CESA-2013:0168 centos5 ");
+  script_xref(name:"CESA", value:"2013:0168");
+  script_name("CentOS Update for kernel CESA-2013:0168 centos5");
 
-  script_tag(name:"summary", value:"Check for the Version of kernel");
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for kernel");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS5");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  script_tag(name:"affected", value:"kernel on CentOS 5");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_tag(name:"insight", value:"The kernel packages contain the Linux kernel, the core of any Linux
+  operating system.
+
+  This update fixes the following security issues:
+
+  * It was found that the Xen hypervisor implementation did not perform
+  range checking on the guest provided values in multiple hypercalls. A
+  privileged guest user could use this flaw to trigger long loops, leading
+  to a denial of service (Xen hypervisor hang). (CVE-2012-5515, Moderate)
+
+  * It was found that when running a 32-bit binary that uses a large number
+  of shared libraries, one of the libraries would always be loaded at a
+  predictable address in memory. An attacker could use this flaw to bypass
+  the Address Space Layout Randomization (ASLR) security feature.
+  (CVE-2012-1568, Low)
+
+  * A flaw was found in the way the Linux kernel's IPv6 implementation
+  handled overlapping, fragmented IPv6 packets. A remote attacker could
+  potentially use this flaw to bypass protection mechanisms (such as a
+  firewall or intrusion detection system (IDS)) when sending network packets
+  to a target system. (CVE-2012-4444, Low)
+
+  Red Hat would like to thank the Xen project for reporting CVE-2012-5515,
+  and Antonios Atlasis working with Beyond Security's SecuriTeam Secure
+  Disclosure program and Loganaden Velvindron of AFRINIC for reporting
+  CVE-2012-4444.
+
+  This update also fixes several bugs. Space precludes documenting all of
+  these changes in this advisory. Documentation for these changes will be
+  available shortly from the Red Hat Enterprise Linux 5.9 Technical Notes
+  document linked to in the References section.
+
+  Users should upgrade to these updated packages, which contain backported
+  patches to correct these issues. The system must be rebooted for this
+  update to take effect.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS5")
 {
@@ -166,6 +156,6 @@ if(release == "CentOS5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

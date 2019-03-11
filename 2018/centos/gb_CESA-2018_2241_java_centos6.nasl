@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2018_2241_java_centos6.nasl 14050 2019-03-08 09:08:09Z cfischer $
+# $Id: gb_CESA-2018_2241_java_centos6.nasl 14058 2019-03-08 13:25:52Z cfischer $
 #
-# CentOS Update for java CESA-2018:2241 centos6 
+# CentOS Update for java CESA-2018:2241 centos6
 #
 # Authors:
 # System Generated Check
@@ -27,34 +27,33 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882929");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-07-27 06:00:25 +0200 (Fri, 27 Jul 2018)");
   script_cve_id("CVE-2018-2952");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
-  script_name("CentOS Update for java CESA-2018:2241 centos6 ");
+  script_name("CentOS Update for java CESA-2018:2241 centos6");
   script_tag(name:"summary", value:"Check the version of java");
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present 
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
-  script_tag(name:"insight", value:"The java-1.8.0-openjdk packages provide the 
+  script_tag(name:"insight", value:"The java-1.8.0-openjdk packages provide the
 OpenJDK 8 Java Runtime Environment and the OpenJDK 8 Java Software Development Kit.
 
 Security Fix(es):
 
-* OpenJDK: insufficient index validation in PatternSyntaxException
+  * OpenJDK: insufficient index validation in PatternSyntaxException
 getMessage() (Concurrency, 8199547) (CVE-2018-2952)
 
 For more details about the security issue(s), including the impact, a CVSS
 score, and other related information, refer to the CVE page(s) listed in
-the References section.
-");
+the References section.");
   script_tag(name:"affected", value:"java on CentOS 6");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"CESA", value:"2018:2241");
-  script_xref(name:"URL" , value:"http://lists.centos.org/pipermail/centos-announce/2018-July/022974.html");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2018-July/022974.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -67,12 +66,11 @@ the References section.
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS6")
 {

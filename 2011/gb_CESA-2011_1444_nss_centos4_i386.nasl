@@ -23,8 +23,26 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "Network Security Services (NSS) is a set of libraries designed to support
+if(description)
+{
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2011-November/018185.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.881037");
+  script_version("$Revision: 14056 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2011-11-11 09:54:39 +0530 (Fri, 11 Nov 2011)");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_xref(name:"CESA", value:"2011:1444");
+  script_name("CentOS Update for nss CESA-2011:1444 centos4 i386");
+
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for nss");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
+  script_family("CentOS Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS4");
+  script_tag(name:"affected", value:"nss on CentOS 4");
+  script_tag(name:"insight", value:"Network Security Services (NSS) is a set of libraries designed to support
   the development of security-enabled client and server applications.
 
   It was found that the Malaysia-based Digicert Sdn. Bhd. subordinate
@@ -56,48 +74,21 @@ tag_insight = "Network Security Services (NSS) is a set of libraries designed to
   issue. After installing the update, applications using NSS must be
   restarted for the changes to take effect. In addition, on Red Hat
   Enterprise Linux 6, applications using NSPR and nss-util must also be
-  restarted.";
-tag_solution = "Please Install the Updated Packages.";
-
-tag_affected = "nss on CentOS 4";
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2011-November/018185.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.881037");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
-  script_tag(name:"creation_date", value:"2011-11-11 09:54:39 +0530 (Fri, 11 Nov 2011)");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_xref(name: "CESA", value: "2011:1444");
-  script_name("CentOS Update for nss CESA-2011:1444 centos4 i386");
-
-  script_tag(name:"summary", value:"Check for the Version of nss");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_family("CentOS Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS4");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  restarted.");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS4")
 {
@@ -120,6 +111,6 @@ if(release == "CentOS4")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

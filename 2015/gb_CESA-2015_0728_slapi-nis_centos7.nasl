@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for slapi-nis CESA-2015:0728 centos7 
+# CentOS Update for slapi-nis CESA-2015:0728 centos7
 #
 # Authors:
 # System Generated Check
@@ -26,17 +26,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882144");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-04-01 07:23:35 +0200 (Wed, 01 Apr 2015)");
   script_cve_id("CVE-2015-0283", "CVE-2015-1827");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
-  script_name("CentOS Update for slapi-nis CESA-2015:0728 centos7 ");
-  script_tag(name: "summary", value: "Check the version of slapi-nis");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "Red Hat Identity Management is a centralized authentication, identity
+  script_name("CentOS Update for slapi-nis CESA-2015:0728 centos7");
+  script_tag(name:"summary", value:"Check the version of slapi-nis");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Red Hat Identity Management is a centralized authentication, identity
 management, and authorization solution for both traditional and cloud-based
 enterprise environments. It integrates components of the Red Hat Directory
 Server, MIT Kerberos, Red Hat Certificate System, NTP, and DNS. It provides
@@ -66,19 +66,19 @@ These issues were discovered by Sumit Bose of Red Hat.
 
 This update fixes the following bugs:
 
-* Previously, users of IdM were not properly granted the default permission
+  * Previously, users of IdM were not properly granted the default permission
 to read the 'facsimiletelephonenumber' user attribute. This update adds
 'facsimiletelephonenumber' to the Access Control Instruction (ACI) for user
 data, which makes the attribute readable to authenticated users as
 expected. (BZ#1198430)
 
-* Prior to this update, when a DNS zone was saved in an LDAP database
+  * Prior to this update, when a DNS zone was saved in an LDAP database
 without a dot character (.) at the end, internal DNS commands and
 operations, such as dnsrecord-* or dnszone-*, failed. With this update, DNS
 commands always supply the DNS zone with a dot character at the end, which
 prevents the described problem. (BZ#1198431)
 
-* After a full-server IdM restore operation, the restored server in some
+  * After a full-server IdM restore operation, the restored server in some
 cases contained invalid data. In addition, if the restored server was used
 to reinitialize a replica, the replica then contained invalid data as well.
 To fix this problem, the IdM API is now created correctly during the
@@ -86,13 +86,13 @@ restore operation, and *.ldif files are not skipped during the removal of
 RUV data. As a result, the restored server and its replica no longer
 contain invalid data. (BZ#1199060)
 
-*  ... 
+  * ...
 
-  Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "slapi-nis on CentOS 7");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "CESA", value: "2015:0728");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2015-April/021038.html");
+  Description truncated, please see the referenced URL(s) for more information.");
+  script_tag(name:"affected", value:"slapi-nis on CentOS 7");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_xref(name:"CESA", value:"2015:0728");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2015-April/021038.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -105,12 +105,11 @@ contain invalid data. (BZ#1199060)
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS7")
 {
@@ -121,6 +120,6 @@ if(release == "CentOS7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

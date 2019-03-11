@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for thunderbird CESA-2017:1201 centos7 
+# CentOS Update for thunderbird CESA-2017:1201 centos7
 #
 # Authors:
 # System Generated Check
@@ -26,25 +26,24 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882707");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-05-10 06:50:49 +0200 (Wed, 10 May 2017)");
-  script_cve_id("CVE-2016-10195", "CVE-2016-10196", "CVE-2016-10197", "CVE-2017-5429", 
-                "CVE-2017-5432", "CVE-2017-5433", "CVE-2017-5434", "CVE-2017-5435", 
-                "CVE-2017-5436", "CVE-2017-5438", "CVE-2017-5439", "CVE-2017-5440", 
-                "CVE-2017-5441", "CVE-2017-5442", "CVE-2017-5443", "CVE-2017-5444", 
-                "CVE-2017-5445", "CVE-2017-5446", "CVE-2017-5447", "CVE-2017-5449", 
-                "CVE-2017-5451", "CVE-2017-5454", "CVE-2017-5459", "CVE-2017-5460", 
-                "CVE-2017-5464", "CVE-2017-5465", "CVE-2017-5466", "CVE-2017-5467", 
+  script_cve_id("CVE-2016-10195", "CVE-2016-10196", "CVE-2016-10197", "CVE-2017-5429",
+                "CVE-2017-5432", "CVE-2017-5433", "CVE-2017-5434", "CVE-2017-5435",
+                "CVE-2017-5436", "CVE-2017-5438", "CVE-2017-5439", "CVE-2017-5440",
+                "CVE-2017-5441", "CVE-2017-5442", "CVE-2017-5443", "CVE-2017-5444",
+                "CVE-2017-5445", "CVE-2017-5446", "CVE-2017-5447", "CVE-2017-5449",
+                "CVE-2017-5451", "CVE-2017-5454", "CVE-2017-5459", "CVE-2017-5460",
+                "CVE-2017-5464", "CVE-2017-5465", "CVE-2017-5466", "CVE-2017-5467",
                 "CVE-2017-5469");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
-  script_name("CentOS Update for thunderbird CESA-2017:1201 centos7 ");
-  script_tag(name: "summary", value: "Check the version of thunderbird");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-  of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "Mozilla Thunderbird is a standalone mail 
+  script_name("CentOS Update for thunderbird CESA-2017:1201 centos7");
+  script_tag(name:"summary", value:"Check the version of thunderbird");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Mozilla Thunderbird is a standalone mail
 and newsgroup client.
 
 
@@ -53,7 +52,7 @@ This update upgrades Thunderbird to version 52.1.0.
 Security Fix(es):
 
 
-* Multiple flaws were found in the processing of malformed web content. A
+  * Multiple flaws were found in the processing of malformed web content. A
 web page containing malicious content could cause Thunderbird to crash or,
 potentially, execute arbitrary code with the privileges of the user running
 Thunderbird.
@@ -63,13 +62,12 @@ Red Hat would like to thank the Mozilla project for reporting these issues.
 Upstream acknowledges Petr Cerny, Nils, Ivan Fratric (Google Project Zero),
 Takeshi Terada, Heather Miller (Google Skia team), Chun Han Hsiao, Chamal
 De Silva, Nicolas Gregoire, Holger Fuhrmannek, Atte Kettunen, Haik
-Aftandilian, and Jordi Chancel as the original reporters.
-");
-  script_tag(name: "affected", value: "thunderbird on CentOS 7");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+Aftandilian, and Jordi Chancel as the original reporters.");
+  script_tag(name:"affected", value:"thunderbird on CentOS 7");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "CESA", value: "2017:1201");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2017-May/022406.html");
+  script_xref(name:"CESA", value:"2017:1201");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2017-May/022406.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -82,12 +80,11 @@ Aftandilian, and Jordi Chancel as the original reporters.
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS7")
 {
@@ -98,6 +95,6 @@ if(release == "CentOS7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

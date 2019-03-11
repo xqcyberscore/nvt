@@ -35,8 +35,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2019 XQ Cyber");
   script_family("Compliance");
-  script_dependencies("ssh_authorization.nasl");
-  script_mandatory_keys("login/SSH/success");
+  script_dependencies("2019/linux_anti_malware_consolidation.nasl", "ssh_authorization.nasl");
+  script_mandatory_keys("login/SSH/success", "AV/CLAMSCAN");
 
   exit(0);
 }
@@ -70,8 +70,7 @@ sock_g = ssh_login_or_reuse_connection();
 
 if (! sock_g)
   exit(1);
-
-cmd = string( ' ' + which +' -V' );
+  cmd = string('[ $(host -t txt current.cvd.clamav.net | cut -d ":" -f3) == $(' + which +' -V | cut -d "/" -f2) ] && echo "Clamscan definitions up to date" || echo "Clamscan definitions out of date"');
 buf = ssh_cmd_exec(cmd:cmd);
 
 ssh_close_connection();

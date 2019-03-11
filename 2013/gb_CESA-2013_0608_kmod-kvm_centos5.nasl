@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for kmod-kvm CESA-2013:0608 centos5 
+# CentOS Update for kmod-kvm CESA-2013:0608 centos5
 #
 # Authors:
 # System Generated Check
@@ -23,8 +23,28 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "KVM (Kernel-based Virtual Machine) is a full virtualization solution for
+if(description)
+{
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-March/019272.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.881678");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2013-03-12 10:02:32 +0530 (Tue, 12 Mar 2013)");
+  script_cve_id("CVE-2012-6075");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_xref(name:"CESA", value:"2013:0608");
+  script_name("CentOS Update for kmod-kvm CESA-2013:0608 centos5");
+
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for kmod-kvm");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
+  script_family("CentOS Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS5");
+  script_tag(name:"affected", value:"kmod-kvm on CentOS 5");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_tag(name:"insight", value:"KVM (Kernel-based Virtual Machine) is a full virtualization solution for
   Linux on AMD64 and Intel 64 systems. KVM is a Linux kernel module built for
   the standard Red Hat Enterprise Linux kernel.
 
@@ -33,54 +53,24 @@ tag_insight = "KVM (Kernel-based Virtual Machine) is a full virtualization solut
   guest using the e1000 emulated driver was not. A remote attacker could use
   this flaw to crash the guest or, potentially, execute arbitrary code with
   root privileges in the guest. (CVE-2012-6075)
-  
+
   All users of kvm are advised to upgrade to these updated packages, which
   contain backported patches to correct this issue. Note that the procedure
   in the Solution section must be performed before this update will take
-  effect.";
-
-
-tag_affected = "kmod-kvm on CentOS 5";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2013-March/019272.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.881678");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
-  script_tag(name:"creation_date", value:"2013-03-12 10:02:32 +0530 (Tue, 12 Mar 2013)");
-  script_cve_id("CVE-2012-6075");
-  script_tag(name:"cvss_base", value:"9.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_xref(name: "CESA", value: "2013:0608");
-  script_name("CentOS Update for kmod-kvm CESA-2013:0608 centos5 ");
-
-  script_tag(name: "summary" , value: "Check for the Version of kmod-kvm");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
-  script_family("CentOS Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS5");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  effect.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS5")
 {
@@ -115,6 +105,6 @@ if(release == "CentOS5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

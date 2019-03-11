@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for libreswan CESA-2015:1979 centos7 
+# CentOS Update for libreswan CESA-2015:1979 centos7
 #
 # Authors:
 # System Generated Check
@@ -26,17 +26,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882312");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-11-05 06:16:02 +0100 (Thu, 05 Nov 2015)");
   script_cve_id("CVE-2015-3240");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
-  script_name("CentOS Update for libreswan CESA-2015:1979 centos7 ");
-  script_tag(name: "summary", value: "Check the version of libreswan");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "Libreswan is an implementation of IPsec &amp  IKE for Linux. IPsec is the
+  script_name("CentOS Update for libreswan CESA-2015:1979 centos7");
+  script_tag(name:"summary", value:"Check the version of libreswan");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Libreswan is an implementation of IPsec &amp  IKE for Linux. IPsec is the
 Internet Protocol Security and uses strong cryptography to provide both
 authentication and encryption services. These services allow you to build
 secure tunnels through untrusted networks such as virtual private network
@@ -60,7 +60,7 @@ Security Services (NSS) database.
 
 This update also adds the following enhancements:
 
-* This update adds support for RFC 7383 IKEv2 Fragmentation, RFC 7619 Auth
+  * This update adds support for RFC 7383 IKEv2 Fragmentation, RFC 7619 Auth
 Null and ID Null, INVALID_KE renegotiation, CRL and OCSP support via NSS,
 AES_CTR and AES_GCM support for IKEv2, CAVS testing for FIPS compliance.
 
@@ -75,26 +75,25 @@ Furthermore, compiling on all architectures now enables the '-Werror' GCC
 option, which enhances the security by making all warnings into errors.
 (BZ#1263346)
 
-* This update also fixes several memory leaks and introduces a sub-second
+  * This update also fixes several memory leaks and introduces a sub-second
 packet retransmit option. (BZ#1268773)
 
-* This update improves migration support from Openswan to Libreswan.
+  * This update improves migration support from Openswan to Libreswan.
 Specifically, all Openswan options that can take a time value without a
 suffix are now supported, and several new keywords for use in the
 /etc/ipsec.conf file have been introduced. See the relevant man pages for
 details. (BZ#1268775)
 
-* With this update, loopback support via the 'loopback=' option has been
+  * With this update, loopback support via the 'loopback=' option has been
 deprecated. (BZ#1270673)
 
 All Libreswan users are advised to upgrade to these updated packages, which
 contain backported patches to correct these issues and add these
-enhancements.
-");
-  script_tag(name: "affected", value: "libreswan on CentOS 7");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "CESA", value: "2015:1979");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2015-November/021462.html");
+enhancements.");
+  script_tag(name:"affected", value:"libreswan on CentOS 7");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_xref(name:"CESA", value:"2015:1979");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2015-November/021462.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -107,12 +106,11 @@ enhancements.
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS7")
 {
@@ -123,6 +121,6 @@ if(release == "CentOS7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

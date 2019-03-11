@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2018_1454_dhclient_centos6.nasl 14050 2019-03-08 09:08:09Z cfischer $
+# $Id: gb_CESA-2018_1454_dhclient_centos6.nasl 14058 2019-03-08 13:25:52Z cfischer $
 #
-# CentOS Update for dhclient CESA-2018:1454 centos6 
+# CentOS Update for dhclient CESA-2018:1454 centos6
 #
 # Authors:
 # System Generated Check
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882878");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-05-16 05:42:53 +0200 (Wed, 16 May 2018)");
   script_cve_id("CVE-2018-1111");
   script_tag(name:"cvss_base", value:"7.9");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
-  script_name("CentOS Update for dhclient CESA-2018:1454 centos6 ");
+  script_name("CentOS Update for dhclient CESA-2018:1454 centos6");
   script_tag(name:"summary", value:"Check the version of dhclient");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The Dynamic Host Configuration Protocol (DHCP) is a protocol that allows
@@ -45,7 +45,7 @@ required to enable and administer DHCP on a network.
 
 Security Fix(es):
 
-* A command injection flaw was found in the NetworkManager integration
+  * A command injection flaw was found in the NetworkManager integration
 script included in the DHCP client packages in Red Hat Enterprise Linux. A
 malicious DHCP server, or an attacker on the local network able to spoof
 DHCP responses, could use this flaw to execute arbitrary commands with root
@@ -53,13 +53,12 @@ privileges on systems using NetworkManager and configured to obtain network
 configuration using the DHCP protocol. (CVE-2018-1111)
 
 Red Hat would like to thank Felix Wilhelm (Google Security Team) for
-reporting this issue.
-");
+reporting this issue.");
   script_tag(name:"affected", value:"dhclient on CentOS 6");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"CESA", value:"2018:1454");
-  script_xref(name:"URL" , value:"http://lists.centos.org/pipermail/centos-announce/2018-May/022830.html");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2018-May/022830.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -72,12 +71,11 @@ reporting this issue.
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS6")
 {

@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for squid CESA-2017:0182 centos7 
+# CentOS Update for squid CESA-2017:0182 centos7
 #
 # Authors:
 # System Generated Check
@@ -26,33 +26,31 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882645");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-01-27 05:42:23 +0100 (Fri, 27 Jan 2017)");
   script_cve_id("CVE-2016-10002");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
-  script_name("CentOS Update for squid CESA-2017:0182 centos7 ");
-  script_tag(name: "summary", value: "Check the version of squid");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "Squid is a high-performance proxy caching 
+  script_name("CentOS Update for squid CESA-2017:0182 centos7");
+  script_tag(name:"summary", value:"Check the version of squid");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Squid is a high-performance proxy caching
 server for web clients, supporting FTP, Gopher, and HTTP data objects.
 
 Security Fix(es):
 
-* It was found that squid did not properly remove connection specific
+  * It was found that squid did not properly remove connection specific
 headers when answering conditional requests using a cached request. A
 remote attacker could send a specially crafted request to an HTTP server
 via the squid proxy and steal private data from other connections.
-(CVE-2016-10002)
-");
-  script_tag(name: "affected", value: "squid on CentOS 7");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+(CVE-2016-10002)");
+  script_tag(name:"affected", value:"squid on CentOS 7");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "CESA", value: "2017:0182");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2017-January/022252.html");
+  script_xref(name:"CESA", value:"2017:0182");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2017-January/022252.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -65,12 +63,11 @@ via the squid proxy and steal private data from other connections.
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS7")
 {
@@ -93,6 +90,6 @@ if(release == "CentOS7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

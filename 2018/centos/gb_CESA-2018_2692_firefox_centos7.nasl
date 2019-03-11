@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2018_2692_firefox_centos7.nasl 14050 2019-03-08 09:08:09Z cfischer $
+# $Id: gb_CESA-2018_2692_firefox_centos7.nasl 14058 2019-03-08 13:25:52Z cfischer $
 #
 # CentOS Update for firefox CESA-2018:2692 centos7
 #
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882945");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-09-14 07:34:35 +0200 (Fri, 14 Sep 2018)");
   script_cve_id("CVE-2017-16541", "CVE-2018-12376", "CVE-2018-12377", "CVE-2018-12378",
                 "CVE-2018-12379");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
-  script_name("CentOS Update for firefox CESA-2018:2692 centos7 ");
+  script_name("CentOS Update for firefox CESA-2018:2692 centos7");
   script_tag(name:"summary", value:"Check the version of firefox");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
   on the target host.");
@@ -46,16 +46,16 @@ This update upgrades Firefox to version 60.2.0 ESR.
 
 Security Fix(es):
 
-* Mozilla: Memory safety bugs fixed in Firefox 62 and Firefox ESR 60.2
+  * Mozilla: Memory safety bugs fixed in Firefox 62 and Firefox ESR 60.2
 (CVE-2018-12376)
 
-* Mozilla: Use-after-free in driver timers (CVE-2018-12377)
+  * Mozilla: Use-after-free in driver timers (CVE-2018-12377)
 
-* Mozilla: Use-after-free in IndexedDB (CVE-2018-12378)
+  * Mozilla: Use-after-free in IndexedDB (CVE-2018-12378)
 
-* Mozilla: Proxy bypass using automount and autofs (CVE-2017-16541)
+  * Mozilla: Proxy bypass using automount and autofs (CVE-2017-16541)
 
-* Mozilla: Out-of-bounds write with malicious MAR file (CVE-2018-12379)
+  * Mozilla: Out-of-bounds write with malicious MAR file (CVE-2018-12379)
 
 For more details about the security issue(s), including the impact, a CVSS
 score, and other related information, refer to the CVE page(s) listed in
@@ -65,13 +65,12 @@ Red Hat would like to thank the Mozilla project for reporting these issues.
 Upstream acknowledges Alex Gaynor, Boris Zbarsky, Christoph Diehl,
 Christian Holler, Jason Kratzer, Jed Davis, Tyson Smith, Bogdan Tara, Karl
 Tomlinson, Mats Palmgren, Nika Layzell, Ted Campbell, Nils, Zhanjia Song,
-and Holger Fuhrmannek as the original reporters.
-");
+and Holger Fuhrmannek as the original reporters.");
   script_tag(name:"affected", value:"firefox on CentOS 7");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"CESA", value:"2018:2692");
-  script_xref(name:"URL" , value:"http://lists.centos.org/pipermail/centos-announce/2018-September/023022.html");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2018-September/023022.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -84,12 +83,11 @@ and Holger Fuhrmannek as the original reporters.
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS7")
 {

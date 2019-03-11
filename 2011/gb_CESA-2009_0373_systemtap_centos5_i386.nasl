@@ -23,8 +23,27 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "SystemTap is an instrumentation infrastructure for systems running version
+if(description)
+{
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2009-April/015744.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.880840");
+  script_version("$Revision: 14056 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
+  script_tag(name:"cvss_base", value:"6.9");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
+  script_xref(name:"CESA", value:"2009:0373");
+  script_cve_id("CVE-2009-0784");
+  script_name("CentOS Update for systemtap CESA-2009:0373 centos5 i386");
+
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for systemtap");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
+  script_family("CentOS Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS5");
+  script_tag(name:"affected", value:"systemtap on CentOS 5");
+  script_tag(name:"insight", value:"SystemTap is an instrumentation infrastructure for systems running version
   2.6 of the Linux kernel. SystemTap scripts can collect system operations
   data, greatly simplifying information gathering. Collected data can then
   assist in performance measuring, functional testing, and performance and
@@ -34,57 +53,29 @@ tag_insight = "SystemTap is an instrumentation infrastructure for systems runnin
   stapusr group to elevate privileges to that of members of the stapdev group
   (and hence root), bypassing directory confinement restrictions and allowing
   them to insert arbitrary SystemTap kernel modules. (CVE-2009-0784)
-  
+
   Note: This issue was only exploitable if another SystemTap kernel module
   was placed in the &quot;systemtap/&quot; module directory for the currently running
   kernel.
-  
+
   Red Hat would like to thank Erik Sjölund for reporting this issue.
-  
+
   SystemTap users should upgrade to these updated packages, which contain a
-  backported patch to correct this issue.";
-tag_solution = "Please Install the Updated Packages.";
-
-tag_affected = "systemtap on CentOS 5";
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2009-April/015744.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.880840");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
-  script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
-  script_tag(name:"cvss_base", value:"6.9");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_xref(name: "CESA", value: "2009:0373");
-  script_cve_id("CVE-2009-0784");
-  script_name("CentOS Update for systemtap CESA-2009:0373 centos5 i386");
-
-  script_tag(name:"summary", value:"Check for the Version of systemtap");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_family("CentOS Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS5");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  backported patch to correct this issue.");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS5")
 {
@@ -119,6 +110,6 @@ if(release == "CentOS5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for thunderbird CESA-2016:0460 centos6 
+# CentOS Update for thunderbird CESA-2016:0460 centos6
 #
 # Authors:
 # System Generated Check
@@ -26,23 +26,22 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882430");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-03-17 05:10:56 +0100 (Thu, 17 Mar 2016)");
-  script_cve_id("CVE-2016-1952", "CVE-2016-1954", "CVE-2016-1957", "CVE-2016-1960", 
-                "CVE-2016-1961", "CVE-2016-1964", "CVE-2016-1966", "CVE-2016-1974", 
-                "CVE-2016-1977", "CVE-2016-2790", "CVE-2016-2791", "CVE-2016-2792", 
-                "CVE-2016-2793", "CVE-2016-2794", "CVE-2016-2795", "CVE-2016-2796", 
-                "CVE-2016-2797", "CVE-2016-2798", "CVE-2016-2799", "CVE-2016-2800", 
+  script_cve_id("CVE-2016-1952", "CVE-2016-1954", "CVE-2016-1957", "CVE-2016-1960",
+                "CVE-2016-1961", "CVE-2016-1964", "CVE-2016-1966", "CVE-2016-1974",
+                "CVE-2016-1977", "CVE-2016-2790", "CVE-2016-2791", "CVE-2016-2792",
+                "CVE-2016-2793", "CVE-2016-2794", "CVE-2016-2795", "CVE-2016-2796",
+                "CVE-2016-2797", "CVE-2016-2798", "CVE-2016-2799", "CVE-2016-2800",
                 "CVE-2016-2801", "CVE-2016-2802");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
-  script_name("CentOS Update for thunderbird CESA-2016:0460 centos6 ");
-  script_tag(name: "summary", value: "Check the version of thunderbird");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "Mozilla Thunderbird is a standalone mail and newsgroup client.
+  script_name("CentOS Update for thunderbird CESA-2016:0460 centos6");
+  script_tag(name:"summary", value:"Check the version of thunderbird");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Mozilla Thunderbird is a standalone mail and newsgroup client.
 
 Several flaws were found in the processing of malformed web content. A web
 page containing malicious content could cause Thunderbird to crash or,
@@ -73,13 +72,12 @@ advisories in the References section of this erratum.
 All Thunderbird users should upgrade to this updated package, which
 contains Thunderbird version 38.7.0, which corrects these issues. After
 installing the update, Thunderbird must be restarted for the changes to
-take effect.
-");
-  script_tag(name: "affected", value: "thunderbird on CentOS 6");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+take effect.");
+  script_tag(name:"affected", value:"thunderbird on CentOS 6");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "CESA", value: "2016:0460");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2016-March/021739.html");
+  script_xref(name:"CESA", value:"2016:0460");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2016-March/021739.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -92,12 +90,11 @@ take effect.
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS6")
 {
@@ -108,6 +105,6 @@ if(release == "CentOS6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

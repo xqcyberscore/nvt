@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for freetype CESA-2015:0696 centos6 
+# CentOS Update for freetype CESA-2015:0696 centos6
 #
 # Authors:
 # System Generated Check
@@ -26,17 +26,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882130");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-03-19 05:50:07 +0100 (Thu, 19 Mar 2015)");
   script_cve_id("CVE-2014-9657", "CVE-2014-9658", "CVE-2014-9660", "CVE-2014-9661", "CVE-2014-9663", "CVE-2014-9664", "CVE-2014-9667", "CVE-2014-9669", "CVE-2014-9670", "CVE-2014-9671", "CVE-2014-9673", "CVE-2014-9674", "CVE-2014-9675");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
-  script_name("CentOS Update for freetype CESA-2015:0696 centos6 ");
-  script_tag(name: "summary", value: "Check the version of freetype");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "FreeType is a free, high-quality, portable font engine that can open and
+  script_name("CentOS Update for freetype CESA-2015:0696 centos6");
+  script_tag(name:"summary", value:"Check the version of freetype");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"FreeType is a free, high-quality, portable font engine that can open and
 manage font files. It also loads, hints, and renders individual glyphs
 efficiently.
 
@@ -56,12 +56,11 @@ CVE-2014-9667, CVE-2014-9669, CVE-2014-9670, CVE-2014-9671, CVE-2014-9675)
 
 All freetype users are advised to upgrade to these updated packages, which
 contain backported patches to correct these issues. The X server must be
-restarted (log out, then log back in) for this update to take effect.
-");
-  script_tag(name: "affected", value: "freetype on CentOS 6");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "CESA", value: "2015:0696");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2015-March/020982.html");
+restarted (log out, then log back in) for this update to take effect.");
+  script_tag(name:"affected", value:"freetype on CentOS 6");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_xref(name:"CESA", value:"2015:0696");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2015-March/020982.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -74,12 +73,11 @@ restarted (log out, then log back in) for this update to take effect.
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS6")
 {
@@ -102,6 +100,6 @@ if(release == "CentOS6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

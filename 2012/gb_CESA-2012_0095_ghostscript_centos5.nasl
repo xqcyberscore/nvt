@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for ghostscript CESA-2012:0095 centos5 
+# CentOS Update for ghostscript CESA-2012:0095 centos5
 #
 # Authors:
 # System Generated Check
@@ -23,8 +23,28 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "Ghostscript is a set of software that provides a PostScript interpreter, a
+if(description)
+{
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-February/018414.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.881172");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2012-07-30 16:32:35 +0530 (Mon, 30 Jul 2012)");
+  script_cve_id("CVE-2009-3743", "CVE-2010-2055", "CVE-2010-4054", "CVE-2010-4820");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_xref(name:"CESA", value:"2012:0095");
+  script_name("CentOS Update for ghostscript CESA-2012:0095 centos5");
+
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for ghostscript");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
+  script_family("CentOS Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS5");
+  script_tag(name:"affected", value:"ghostscript on CentOS 5");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_tag(name:"insight", value:"Ghostscript is a set of software that provides a PostScript interpreter, a
   set of C procedures (the Ghostscript library, which implements the graphics
   capabilities in the PostScript language) and an interpreter for Portable
   Document Format (PDF) files.
@@ -33,7 +53,7 @@ tag_insight = "Ghostscript is a set of software that provides a PostScript inter
   interpreter. An attacker could create a specially-crafted PostScript or PDF
   file that, when interpreted, could cause Ghostscript to crash or,
   potentially, execute arbitrary code. (CVE-2009-3743)
-  
+
   It was found that Ghostscript always tried to read Ghostscript system
   initialization files from the current working directory before checking
   other directories, even if a search path that did not contain the current
@@ -42,69 +62,40 @@ tag_insight = "Ghostscript is a set of software that provides a PostScript inter
   If a user ran Ghostscript in an attacker-controlled directory containing a
   system initialization file, it could cause Ghostscript to execute arbitrary
   PostScript code. (CVE-2010-2055)
-  
+
   Ghostscript included the current working directory in its library search
   path by default. If a user ran Ghostscript without the &quot;-P-&quot; option in an
   attacker-controlled directory containing a specially-crafted PostScript
   library file, it could cause Ghostscript to execute arbitrary PostScript
   code. With this update, Ghostscript no longer searches the current working
   directory for library files by default. (CVE-2010-4820)
-  
+
   Note: The fix for CVE-2010-4820 could possibly break existing
   configurations. To use the previous, vulnerable behavior, run Ghostscript
   with the &quot;-P&quot; option (to always search the current working directory
   first).
-  
+
   A flaw was found in the way Ghostscript interpreted PostScript Type 1 and
   PostScript Type 2 font files. An attacker could create a specially-crafted
   PostScript Type 1 or PostScript Type 2 font file that, when interpreted,
   could cause Ghostscript to crash or, potentially, execute arbitrary code.
   (CVE-2010-4054)
-  
+
   Users of Ghostscript are advised to upgrade to these updated packages,
-  which contain backported patches to correct these issues.";
-
-tag_affected = "ghostscript on CentOS 5";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2012-February/018414.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.881172");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
-  script_tag(name:"creation_date", value:"2012-07-30 16:32:35 +0530 (Mon, 30 Jul 2012)");
-  script_cve_id("CVE-2009-3743", "CVE-2010-2055", "CVE-2010-4054", "CVE-2010-4820");
-  script_tag(name:"cvss_base", value:"9.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_xref(name: "CESA", value: "2012:0095");
-  script_name("CentOS Update for ghostscript CESA-2012:0095 centos5 ");
-
-  script_tag(name: "summary" , value: "Check for the Version of ghostscript");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_family("CentOS Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS5");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  which contain backported patches to correct these issues.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS5")
 {
@@ -127,6 +118,6 @@ if(release == "CentOS5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

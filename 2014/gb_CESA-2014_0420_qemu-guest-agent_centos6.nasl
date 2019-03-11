@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for qemu-guest-agent CESA-2014:0420 centos6 
+# CentOS Update for qemu-guest-agent CESA-2014:0420 centos6
 #
 # Authors:
 # System Generated Check
@@ -23,21 +23,20 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.881925");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14056 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-05-02 10:05:16 +0530 (Fri, 02 May 2014)");
   script_cve_id("CVE-2014-0142", "CVE-2014-0143", "CVE-2014-0144", "CVE-2014-0145",
                 "CVE-2014-0146", "CVE-2014-0147", "CVE-2014-0148", "CVE-2014-0150");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:S/C:P/I:P/A:P");
-  script_name("CentOS Update for qemu-guest-agent CESA-2014:0420 centos6 ");
+  script_name("CentOS Update for qemu-guest-agent CESA-2014:0420 centos6");
 
-  tag_insight = "KVM (Kernel-based Virtual Machine) is a full virtualization solution for
+  script_tag(name:"affected", value:"qemu-guest-agent on CentOS 6");
+  script_tag(name:"insight", value:"KVM (Kernel-based Virtual Machine) is a full virtualization solution for
 Linux on AMD64 and Intel 64 systems. The qemu-kvm package provides the
 user-space component for running virtual machines using KVM.
 
@@ -82,22 +81,13 @@ Red Hat.
 All qemu-kvm users are advised to upgrade to these updated packages, which
 contain backported patches to correct these issues. After installing this
 update, shut down all running virtual machines. Once all virtual machines
-have shut down, start them again for this update to take effect.
-";
-
-  tag_affected = "qemu-guest-agent on CentOS 6";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+have shut down, start them again for this update to take effect.");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "CESA", value: "2014:0420");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2014-April/020262.html");
-  script_tag(name:"summary", value:"Check for the Version of qemu-guest-agent");
+  script_xref(name:"CESA", value:"2014:0420");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2014-April/020262.html");
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for qemu-guest-agent");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
@@ -106,15 +96,14 @@ have shut down, start them again for this update to take effect.
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS6")
 {
@@ -143,6 +132,6 @@ if(release == "CentOS6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

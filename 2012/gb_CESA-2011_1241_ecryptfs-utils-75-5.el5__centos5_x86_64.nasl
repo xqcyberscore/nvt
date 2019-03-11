@@ -23,47 +23,68 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "eCryptfs is a stacked, cryptographic file system. It is transparent to the
+if(description)
+{
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2011-September/017812.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.881245");
+  script_version("$Revision: 14056 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2012-07-30 17:08:38 +0530 (Mon, 30 Jul 2012)");
+  script_cve_id("CVE-2011-1831", "CVE-2011-1832", "CVE-2011-1834", "CVE-2011-1835",
+                "CVE-2011-1837", "CVE-2011-3145", "CVE-2011-1833");
+  script_tag(name:"cvss_base", value:"3.3");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:N");
+  script_xref(name:"CESA", value:"2011:1241");
+  script_name("CentOS Update for ecryptfs-utils-75-5.el5_ CESA-2011:1241 centos5 x86_64");
+
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for ecryptfs-utils-75-5.el5_");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
+  script_family("CentOS Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS5");
+  script_tag(name:"affected", value:"ecryptfs-utils-75-5.el5_ on CentOS 5");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_tag(name:"insight", value:"eCryptfs is a stacked, cryptographic file system. It is transparent to the
   underlying file system and provides per-file granularity. eCryptfs is
   released as a Technology Preview for Red Hat Enterprise Linux 5 and 6.
 
   The setuid mount.ecryptfs_private utility allows users to mount an eCryptfs
   file system. This utility can only be run by users in the &quot;ecryptfs&quot; group.
-  
+
   A race condition flaw was found in the way mount.ecryptfs_private checked
   the permissions of a requested mount point when mounting an encrypted file
   system. A local attacker could possibly use this flaw to escalate their
   privileges by mounting over an arbitrary directory. (CVE-2011-1831)
-  
+
   A race condition flaw in umount.ecryptfs_private could allow a local
   attacker to unmount an arbitrary file system. (CVE-2011-1832)
-  
+
   It was found that mount.ecryptfs_private did not handle certain errors
   correctly when updating the mtab (mounted file systems table) file,
   allowing a local attacker to corrupt the mtab file and possibly unmount an
   arbitrary file system. (CVE-2011-1834)
-  
+
   An insecure temporary file use flaw was found in the ecryptfs-setup-private
   script. A local attacker could use this script to insert their own key that
   will subsequently be used by a new user, possibly giving the attacker
   access to the user's encrypted data if existing file permissions allow
   access. (CVE-2011-1835)
-  
+
   A race condition flaw in mount.ecryptfs_private could allow a local
   attacker to overwrite arbitrary files. (CVE-2011-1837)
-  
+
   A race condition flaw in the way temporary files were accessed in
   mount.ecryptfs_private could allow a malicious, local user to make
   arbitrary modifications to the mtab file. (CVE-2011-3145)
-  
+
   A race condition flaw was found in the way mount.ecryptfs_private checked
   the permissions of the directory to mount. A local attacker could use this
   flaw to mount (and then access) a directory they would otherwise not have
   access to. Note: The fix for this issue is incomplete until a kernel-space
   change is made. Future Red Hat Enterprise Linux 5 and 6 kernel updates
   will correct this issue. (CVE-2011-1833)
-  
+
   Red Hat would like to thank the Ubuntu Security Team for reporting these
   issues. The Ubuntu Security Team acknowledges Vasiliy Kulikov of Openwall
   and Dan Rosenberg as the original reporters of CVE-2011-1831,
@@ -71,52 +92,22 @@ tag_insight = "eCryptfs is a stacked, cryptographic file system. It is transpare
   original reporters of CVE-2011-1834; Marc Deslauriers as the original
   reporter of CVE-2011-1835; and Vasiliy Kulikov of Openwall as the original
   reporter of CVE-2011-1837.
-  
+
   Users of ecryptfs-utils are advised to upgrade to these updated packages,
-  which contain backported patches to correct these issues.";
-
-tag_affected = "ecryptfs-utils-75-5.el5_ on CentOS 5";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2011-September/017812.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.881245");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
-  script_tag(name:"creation_date", value:"2012-07-30 17:08:38 +0530 (Mon, 30 Jul 2012)");
-  script_cve_id("CVE-2011-1831", "CVE-2011-1832", "CVE-2011-1834", "CVE-2011-1835",
-                "CVE-2011-1837", "CVE-2011-3145", "CVE-2011-1833");
-  script_tag(name:"cvss_base", value:"3.3");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:N");
-  script_xref(name: "CESA", value: "2011:1241");
-  script_name("CentOS Update for ecryptfs-utils-75-5.el5_ CESA-2011:1241 centos5 x86_64");
-
-  script_tag(name: "summary" , value: "Check for the Version of ecryptfs-utils-75-5.el5_");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_family("CentOS Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS5");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  which contain backported patches to correct these issues.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS5")
 {
@@ -139,6 +130,6 @@ if(release == "CentOS5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

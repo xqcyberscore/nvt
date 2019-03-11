@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2018_2737_mod_perl_centos6.nasl 14050 2019-03-08 09:08:09Z cfischer $
+# $Id: gb_CESA-2018_2737_mod_perl_centos6.nasl 14058 2019-03-08 13:25:52Z cfischer $
 #
 # CentOS Update for mod_perl CESA-2018:2737 centos6
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882952");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-10-03 17:02:16 +0530 (Wed, 03 Oct 2018)");
   script_cve_id("CVE-2011-2767");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
-  script_name("CentOS Update for mod_perl CESA-2018:2737 centos6 ");
+  script_name("CentOS Update for mod_perl CESA-2018:2737 centos6");
   script_tag(name:"summary", value:"Check the version of mod_perl");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
   on the target host.");
@@ -44,18 +44,17 @@ if(description)
 
 Security Fix(es):
 
-* mod_perl: arbitrary Perl code execution in the context of the user
+  * mod_perl: arbitrary Perl code execution in the context of the user
 account via a user-owned .htaccess (CVE-2011-2767)
 
 For more details about the security issue(s), including the impact, a CVSS
 score, and other related information, refer to the CVE page(s) listed in
-the References section.
-");
+the References section.");
   script_tag(name:"affected", value:"mod_perl on CentOS 6");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"CESA", value:"2018:2737");
-  script_xref(name:"URL" , value:"http://lists.centos.org/pipermail/centos-announce/2018-September/023025.html");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2018-September/023025.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -68,12 +67,11 @@ the References section.
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS6")
 {

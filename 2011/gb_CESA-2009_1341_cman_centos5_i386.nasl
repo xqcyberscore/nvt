@@ -23,8 +23,27 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "The Cluster Manager (cman) utility provides services for managing a Linux
+if(description)
+{
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2009-September/016155.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.880860");
+  script_version("$Revision: 14056 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
+  script_tag(name:"cvss_base", value:"6.9");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
+  script_xref(name:"CESA", value:"2009:1341");
+  script_cve_id("CVE-2008-4579", "CVE-2008-6552");
+  script_name("CentOS Update for cman CESA-2009:1341 centos5 i386");
+
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for cman");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
+  script_family("CentOS Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS5");
+  script_tag(name:"affected", value:"cman on CentOS 5");
+  script_tag(name:"insight", value:"The Cluster Manager (cman) utility provides services for managing a Linux
   cluster.
 
   Multiple insecure temporary file use flaws were found in fence_apc_snmp and
@@ -32,115 +51,87 @@ tag_insight = "The Cluster Manager (cman) utility provides services for managing
   file writable by a victim running those utilities (typically root) with
   the output of the utilities via a symbolic link attack. (CVE-2008-4579,
   CVE-2008-6552)
-  
+
   Bug fixes:
-  
+
   * a buffer could overflow if cluster.conf had more than 52 entries per
   block inside the &lt;cman&gt; block. The limit is now 1024.
-  
+
   * the output of the group_tool dump subcommands were NULL padded.
-  
+
   * using device=&quot;&quot; instead of label=&quot;&quot; no longer causes qdiskd to
   incorrectly exit.
-  
+
   * the IPMI fencing agent has been modified to time out after 10 seconds. It
   is also now possible to specify a different timeout value with the '-t'
   option.
-  
+
   * the IPMI fencing agent now allows punctuation in passwords.
-  
+
   * quickly starting and stopping the cman service no longer causes the
   cluster membership to become inconsistent across the cluster.
-  
+
   * an issue with lock syncing caused 'receive_own from' errors to be logged
   to '/var/log/messages'.
-  
+
   * an issue which caused gfs_controld to segfault when mounting hundreds of
   file systems has been fixed.
-  
+
   * the LPAR fencing agent now properly reports status when an LPAR is in
   Open Firmware mode.
-  
+
   * the LPAR fencing agent now works properly with systems using the
   Integrated Virtualization Manager (IVM).
-  
+
   * the APC SNMP fencing agent now properly recognizes outletStatusOn and
   outletStatusOff return codes from the SNMP agent.
-  
+
   * the WTI fencing agent can now connect to fencing devices with no
   password.
-  
+
   * the rps-10 fencing agent now properly performs a reboot when run with no
   options.
-  
+
   * the IPMI fencing agent now supports different cipher types with the '-C'
   option.
-  
+
   * qdisk now properly scans devices and partitions.
-  
+
   * cman now checks to see if a new node has state to prevent killing the
   first node during cluster setup.
-  
+
   * 'service qdiskd start' now works properly.
-  
+
   * the McData fence agent now works properly with the McData Sphereon 4500
   Fabric Switch.
-  
+
   * the Egenera fence agent can now specify an SSH login name.
-  
+
   * the APC fence agent now works with non-admin accounts when using the
   3.5.x firmware.
-  
+
   * fence_xvmd now tries two methods to reboot a virtual machine.
-  
+
   * connections to OpenAIS are now allowed from unprivileged CPG clients with
   the user and group of 'ais'.
-  
-  * groupd no longer allows the default fence d ... 
 
-  Description truncated, for more information please check the Reference URL";
-tag_solution = "Please Install the Updated Packages.";
+  * groupd no longer allows the default fence d ...
 
-tag_affected = "cman on CentOS 5";
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2009-September/016155.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.880860");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
-  script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
-  script_tag(name:"cvss_base", value:"6.9");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_xref(name: "CESA", value: "2009:1341");
-  script_cve_id("CVE-2008-4579", "CVE-2008-6552");
-  script_name("CentOS Update for cman CESA-2009:1341 centos5 i386");
-
-  script_tag(name:"summary", value:"Check for the Version of cman");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_family("CentOS Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS5");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  Description truncated, please see the referenced URL(s) for more information.");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS5")
 {
@@ -157,6 +148,6 @@ if(release == "CentOS5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

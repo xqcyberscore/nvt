@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for augeas CESA-2014:0044 centos6 
+# CentOS Update for augeas CESA-2014:0044 centos6
 #
 # Authors:
 # System Generated Check
@@ -23,20 +23,19 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.881862");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14056 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-01-21 13:00:11 +0530 (Tue, 21 Jan 2014)");
   script_cve_id("CVE-2013-6412");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_name("CentOS Update for augeas CESA-2014:0044 centos6 ");
+  script_name("CentOS Update for augeas CESA-2014:0044 centos6");
 
-  tag_insight = "Augeas is a utility for editing configuration. Augeas parses configuration
+  script_tag(name:"affected", value:"augeas on CentOS 6");
+  script_tag(name:"insight", value:"Augeas is a utility for editing configuration. Augeas parses configuration
 files in their native formats and transforms them into a tree.
 Configuration changes are made by manipulating this tree and saving it back
 into native configuration files. Augeas also uses 'lenses' as basic
@@ -52,22 +51,13 @@ This issue was discovered by the Red Hat Security Response Team.
 
 All augeas users are advised to upgrade to these updated packages, which
 contain a backported patch to correct this issue. All running applications
-using augeas must be restarted for the update to take effect.
-";
-
-  tag_affected = "augeas on CentOS 6";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+using augeas must be restarted for the update to take effect.");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "CESA", value: "2014:0044");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2014-January/020110.html");
-  script_tag(name:"summary", value:"Check for the Version of augeas");
+  script_xref(name:"CESA", value:"2014:0044");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2014-January/020110.html");
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for augeas");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
@@ -76,15 +66,14 @@ using augeas must be restarted for the update to take effect.
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS6")
 {
@@ -107,6 +96,6 @@ if(release == "CentOS6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

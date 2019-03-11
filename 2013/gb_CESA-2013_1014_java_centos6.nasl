@@ -23,8 +23,34 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "These packages provide the OpenJDK 6 Java Runtime Environment and the
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.881762");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2013-07-05 13:04:08 +0530 (Fri, 05 Jul 2013)");
+  script_cve_id("CVE-2013-1500", "CVE-2013-1571", "CVE-2013-2407", "CVE-2013-2412",
+                "CVE-2013-2443", "CVE-2013-2444", "CVE-2013-2445", "CVE-2013-2446",
+                "CVE-2013-2447", "CVE-2013-2448", "CVE-2013-2450", "CVE-2013-2452",
+                "CVE-2013-2453", "CVE-2013-2455", "CVE-2013-2456", "CVE-2013-2457",
+                "CVE-2013-2459", "CVE-2013-2461", "CVE-2013-2463", "CVE-2013-2465",
+                "CVE-2013-2469", "CVE-2013-2470", "CVE-2013-2471", "CVE-2013-2472",
+                "CVE-2013-2473");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_name("CentOS Update for java CESA-2013:1014 centos6");
+
+  script_xref(name:"CESA", value:"2013:1014");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-July/019835.html");
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for java");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
+  script_family("CentOS Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS6");
+  script_tag(name:"affected", value:"java on CentOS 6");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_tag(name:"insight", value:"These packages provide the OpenJDK 6 Java Runtime Environment and the
   OpenJDK 6 Software Development Kit.
 
   Multiple flaws were discovered in the ImagingLib and the image attribute,
@@ -74,54 +100,20 @@ tag_insight = "These packages provide the OpenJDK 6 Java Runtime Environment and
   network, and a remote attacker could trick a user into visiting a
   specially-crafted URL, it would  ...
 
-  Description truncated, for more information please check the Reference URL";
-
-
-tag_affected = "java on CentOS 6";
-tag_solution = "Please Install the Updated Packages.";
-
-if(description)
-{
-  script_oid("1.3.6.1.4.1.25623.1.0.881762");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
-  script_tag(name:"creation_date", value:"2013-07-05 13:04:08 +0530 (Fri, 05 Jul 2013)");
-  script_cve_id("CVE-2013-1500", "CVE-2013-1571", "CVE-2013-2407", "CVE-2013-2412",
-                "CVE-2013-2443", "CVE-2013-2444", "CVE-2013-2445", "CVE-2013-2446",
-                "CVE-2013-2447", "CVE-2013-2448", "CVE-2013-2450", "CVE-2013-2452",
-                "CVE-2013-2453", "CVE-2013-2455", "CVE-2013-2456", "CVE-2013-2457",
-                "CVE-2013-2459", "CVE-2013-2461", "CVE-2013-2463", "CVE-2013-2465",
-                "CVE-2013-2469", "CVE-2013-2470", "CVE-2013-2471", "CVE-2013-2472",
-                "CVE-2013-2473");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_name("CentOS Update for java CESA-2013:1014 centos6 ");
-
-  script_xref(name: "CESA", value: "2013:1014");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2013-July/019835.html");
-  script_tag(name:"summary", value:"Check for the Version of java");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
-  script_family("CentOS Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS6");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS6")
 {
@@ -156,6 +148,6 @@ if(release == "CentOS6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

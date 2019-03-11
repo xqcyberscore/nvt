@@ -23,85 +23,76 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "MySQL is a multi-user, multi-threaded SQL database server. It consists of
+if(description)
+{
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2010-March/016527.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.880613");
+  script_version("$Revision: 14056 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_xref(name:"CESA", value:"2010:0109");
+  script_cve_id("CVE-2009-4019", "CVE-2009-4028", "CVE-2009-4030", "CVE-2008-2079", "CVE-2008-4098");
+  script_name("CentOS Update for mysql CESA-2010:0109 centos5 i386");
+
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for mysql");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
+  script_family("CentOS Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS5");
+  script_tag(name:"affected", value:"mysql on CentOS 5");
+  script_tag(name:"insight", value:"MySQL is a multi-user, multi-threaded SQL database server. It consists of
   the MySQL server daemon (mysqld) and many client programs and libraries.
 
   It was discovered that the MySQL client ignored certain SSL certificate
   verification errors when connecting to servers. A man-in-the-middle
   attacker could use this flaw to trick MySQL clients into connecting to a
   spoofed MySQL server. (CVE-2009-4028)
-  
+
   Note: This fix may uncover previously hidden SSL configuration issues, such
   as incorrect CA certificates being used by clients or expired server
   certificates. This update should be carefully tested in deployments where
   SSL connections are used.
-  
+
   A flaw was found in the way MySQL handled SELECT statements with subqueries
   in the WHERE clause, that assigned results to a user variable. A remote,
   authenticated attacker could use this flaw to crash the MySQL server daemon
   (mysqld). This issue only caused a temporary denial of service, as the
   MySQL daemon was automatically restarted after the crash. (CVE-2009-4019)
-  
+
   When the &quot;datadir&quot; option was configured with a relative path, MySQL did
   not properly check paths used as arguments for the DATA DIRECTORY and INDEX
   DIRECTORY directives. An authenticated attacker could use this flaw to
   bypass the restriction preventing the use of subdirectories of the MySQL
   data directory being used as DATA DIRECTORY and INDEX DIRECTORY paths.
   (CVE-2009-4030)
-  
+
   Note: Due to the security risks and previous security issues related to the
   use of the DATA DIRECTORY and INDEX DIRECTORY directives, users not
   depending on this feature should consider disabling it by adding
   &quot;symbolic-links=0&quot; to the &quot;[mysqld]&quot; section of the &quot;my.cnf&quot; configuration
   file. In this update, an example of such a configuration was added to the
   default &quot;my.cnf&quot; file.
-  
+
   All MySQL users are advised to upgrade to these updated packages, which
   contain backported patches to resolve these issues. After installing this
-  update, the MySQL server daemon (mysqld) will be restarted automatically.";
-tag_solution = "Please Install the Updated Packages.";
-
-tag_affected = "mysql on CentOS 5";
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2010-March/016527.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.880613");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
-  script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_xref(name: "CESA", value: "2010:0109");
-  script_cve_id("CVE-2009-4019", "CVE-2009-4028", "CVE-2009-4030", "CVE-2008-2079", "CVE-2008-4098");
-  script_name("CentOS Update for mysql CESA-2010:0109 centos5 i386");
-
-  script_tag(name:"summary", value:"Check for the Version of mysql");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_family("CentOS Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS5");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  update, the MySQL server daemon (mysqld) will be restarted automatically.");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS5")
 {
@@ -136,6 +127,6 @@ if(release == "CentOS5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

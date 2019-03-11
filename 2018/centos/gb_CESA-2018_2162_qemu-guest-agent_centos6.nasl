@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2018_2162_qemu-guest-agent_centos6.nasl 14050 2019-03-08 09:08:09Z cfischer $
+# $Id: gb_CESA-2018_2162_qemu-guest-agent_centos6.nasl 14058 2019-03-08 13:25:52Z cfischer $
 #
-# CentOS Update for qemu-guest-agent CESA-2018:2162 centos6 
+# CentOS Update for qemu-guest-agent CESA-2018:2162 centos6
 #
 # Authors:
 # System Generated Check
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882923");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-07-14 05:51:56 +0200 (Sat, 14 Jul 2018)");
   script_cve_id("CVE-2017-13672", "CVE-2018-3639", "CVE-2018-5683", "CVE-2018-7858");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
-  script_name("CentOS Update for qemu-guest-agent CESA-2018:2162 centos6 ");
+  script_name("CentOS Update for qemu-guest-agent CESA-2018:2162 centos6");
   script_tag(name:"summary", value:"Check the version of qemu-guest-agent");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Kernel-based Virtual Machine (KVM) is a full
@@ -44,7 +44,7 @@ if(description)
 
 Security Fix(es):
 
-* An industry-wide issue was found in the way many modern microprocessor
+  * An industry-wide issue was found in the way many modern microprocessor
 designs have implemented speculative execution of Load &amp  Store instructions
 (a commonly used performance optimization). It relies on the presence of a
 precisely-defined instruction sequence in the privileged code as well as
@@ -57,27 +57,26 @@ side-channel attacks. (CVE-2018-3639)
 
 Note: This is the qemu-kvm side of the CVE-2018-3639 mitigation.
 
-* QEMU: cirrus: OOB access when updating VGA display (CVE-2018-7858)
+  * QEMU: cirrus: OOB access when updating VGA display (CVE-2018-7858)
 
-* QEMU: vga: OOB read access during display update (CVE-2017-13672)
+  * QEMU: vga: OOB read access during display update (CVE-2017-13672)
 
-* Qemu: Out-of-bounds read in vga_draw_text routine (CVE-2018-5683)
+  * Qemu: Out-of-bounds read in vga_draw_text routine (CVE-2018-5683)
 
 For more details about the security issue(s), including the impact, a CVSS
 score, and other related information, refer to the CVE page(s) listed in
 the References section.
 
 Red Hat would like to thank Ken Johnson (Microsoft Security Response
-Center) and Jann Horn (Google Project Zero) for reporting CVE-2018-3639 
+Center) and Jann Horn (Google Project Zero) for reporting CVE-2018-3639
 Ross Lagerwall (Citrix.com) for reporting CVE-2018-7858  David Buchanan for
 reporting CVE-2017-13672  and Jiang Xin and Lin ZheCheng for reporting
-CVE-2018-5683.
-");
+CVE-2018-5683.");
   script_tag(name:"affected", value:"qemu-guest-agent on CentOS 6");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"CESA", value:"2018:2162");
-  script_xref(name:"URL" , value:"http://lists.centos.org/pipermail/centos-announce/2018-July/022967.html");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2018-July/022967.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -90,12 +89,11 @@ CVE-2018-5683.
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS6")
 {

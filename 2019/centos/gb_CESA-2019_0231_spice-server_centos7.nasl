@@ -21,13 +21,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.883007");
-  script_version("$Revision: 14050 $");
+  script_version("$Revision: 14058 $");
   script_cve_id("CVE-2019-3813");
   script_tag(name:"cvss_base", value:"5.4");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-02-10 04:04:18 +0100 (Sun, 10 Feb 2019)");
-  script_name("CentOS Update for spice-server CESA-2019:0231 centos7 ");
+  script_name("CentOS Update for spice-server CESA-2019:0231 centos7");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
@@ -50,15 +50,14 @@ machine architectures.
 
 Security Fix(es):
 
-* spice: Off-by-one error in array access in spice/server/memslot.c
+  * spice: Off-by-one error in array access in spice/server/memslot.c
 (CVE-2019-3813)
 
 For more details about the security issue(s), including the impact, a CVSS
 score, and other related information, refer to the CVE page(s) listed in
 the References section.
 
-This issue was discovered by Christophe Fergeau (Red Hat).
-");
+This issue was discovered by Christophe Fergeau (Red Hat).");
 
   script_tag(name:"affected", value:"spice-server on CentOS 7.");
 

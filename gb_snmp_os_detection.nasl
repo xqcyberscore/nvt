@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_snmp_os_detection.nasl 13382 2019-01-31 11:07:58Z cfischer $
+# $Id: gb_snmp_os_detection.nasl 14081 2019-03-11 07:43:19Z cfischer $
 #
 # SNMP OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103429");
-  script_version("$Revision: 13382 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-31 12:07:58 +0100 (Thu, 31 Jan 2019) $");
+  script_version("$Revision: 14081 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 08:43:19 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-02-17 10:17:12 +0100 (Fri, 17 Feb 2012)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -57,7 +57,8 @@ BANNER_TYPE = "SNMP SysDesc";
 
 port    = get_snmp_port(default:161);
 sysdesc = get_snmp_sysdesc(port:port);
-if(!sysdesc) exit(0);
+if(!sysdesc)
+  exit(0);
 
 # Linux xy 3.16.0-4-amd64 #1 SMP Debian 3.16.36-1+deb8u2 (2016-10-19) x86_64
 if( sysdesc =~ "Linux" && " Debian " >< sysdesc ) {
@@ -85,29 +86,13 @@ if( sysdesc =~ "Linux" && " Debian " >< sysdesc ) {
   exit( 0 );
 }
 
-# Linux SOA1000 2.6.26.8 #62 SMP Mon Sep 21 18:13:37 CST 2009 i686 unknown
-if( sysdesc =~ "Linux" && "Cisco IOS" >!< sysdesc ) {
-
-  set_kb_item( name:"Host/OS/SNMP", value:"Linux" );
-  set_kb_item( name:"Host/OS/SNMP/Confidence", value:100 );
-
-  version = eregmatch( pattern:"Linux [^ ]* ([0-3]+\.[^ ]*).*", string:sysdesc );
-
-  if( ! isnull( version[1] ) ) {
-    register_and_report_os( os:'Linux', version:version[1], cpe:'cpe:/o:linux:kernel', banner_type:BANNER_TYPE, port:port, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unixoide" );
-  } else {
-    register_and_report_os( os:'Linux', cpe:'cpe:/o:linux:kernel', banner_type:BANNER_TYPE, port:port, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unixoide" );
-  }
-  exit( 0 );
-}
-
 # SINDOH MF 3300_2300 version NR.APS.N434 kernel 2.6.18.5 All-N-1
-if( sysdesc =~ "kernel [0-3]\." ) {
+if( sysdesc =~ " kernel [0-9]\." ) {
 
   set_kb_item( name:"Host/OS/SNMP", value:"Linux" );
   set_kb_item( name:"Host/OS/SNMP/Confidence", value:100 );
 
-  version = eregmatch( pattern:"kernel ([0-3]+\.[^ ]*).*", string:sysdesc );
+  version = eregmatch( pattern:"kernel ([0-9]+\.[^ ]*).*", string:sysdesc );
 
   if( ! isnull( version[1] ) ) {
     register_and_report_os( os:'Linux', version:version[1], cpe:'cpe:/o:linux:kernel', banner_type:BANNER_TYPE, port:port, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unixoide" );
@@ -330,7 +315,7 @@ if( "Base Operating System Runtime AIX" >< sysdesc ) {
 }
 
 # Darwin localhost.localdomain 9.6.0 Darwin Kernel Version 9.6.0: Mon Nov 24 17:37:00 PST 2008; root:xnu-1228.9.59~1/RELEASE_I386 i386
-if( "Darwin Kernel" >< sysdesc ) {
+if( "^Darwin " >< sysdesc || "Darwin Kernel" >< sysdesc ) {
 
   set_kb_item( name:"Host/OS/SNMP", value:"Apple Mac OS X" );
   set_kb_item( name:"Host/OS/SNMP/Confidence", value:100 );
@@ -520,6 +505,70 @@ if( "IBM OS/400" >< sysdesc ) {
     register_and_report_os( os:"IBM OS/400", version:tolower( version[1] ), cpe:"cpe:/o:ibm:os_400", banner_type:BANNER_TYPE, port:port, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unixoide" );
   } else {
     register_and_report_os( os:"IBM OS/400", cpe:"cpe:/o:ibm:os_400", banner_type:BANNER_TYPE, port:port, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  }
+  exit( 0 );
+}
+
+# Linux SOA1000 2.6.26.8 #62 SMP Mon Sep 21 18:13:37 CST 2009 i686 unknown
+if( sysdesc =~ "Linux" && "Cisco IOS" >!< sysdesc ) {
+
+  set_kb_item( name:"Host/OS/SNMP", value:"Linux" );
+  set_kb_item( name:"Host/OS/SNMP/Confidence", value:100 );
+
+  version = eregmatch( pattern:"Linux [^ ]* ([0-9]+\.[^ ]*).*", string:sysdesc );
+  if( version[1] ) {
+
+    # 2.0 SP2:
+    # Linux hostname 3.10.0-327.59.59.37.h22.x86_64 #1 SMP Tue Sep 26 07:38:08 UTC 2017 x86_64
+    # Unknown 2.0 release (SP5?)
+    # Linux hostname 3.10.0-327.62.59.83.h163.x86_64 #1 SMP Wed Jan 16 06:10:00 UTC 2019 x86_64 x86_64 x86_64 GNU/Linux
+    if( version[1] =~ "\.h[0-9]+" ) {
+      register_and_report_os( os:"EulerOS", cpe:"cpe:/o:huawei:euleros", banner_type:BANNER_TYPE, port:port, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      exit( 0 );
+    }
+
+    # Oracle Linux 7.4
+    # Linux hostname 4.1.12-112.14.15.el7uek.x86_64 #2 SMP Thu Feb 8 09:58:19 PST 2018 x86_64 x86_64 x86_64 GNU/Linux
+    if( ".el" >< version[1] && "uek." >< version[1] ) {
+      version = eregmatch( pattern:"\.el([0-9]+)", string:version[1] );
+      if( ! isnull( version[1] ) ) {
+        register_and_report_os( os:"Oracle Linux", version:version[1], cpe:"cpe:/o:oracle:linux", banner_type:BANNER_TYPE, port:port, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      } else {
+        register_and_report_os( os:"Oracle Linux", cpe:"cpe:/o:oracle:linux", banner_type:BANNER_TYPE, port:port, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      }
+      exit( 0 );
+    }
+
+    # e.g. CentOS 7.4 but also on RHEL
+    # Linux hostname 3.10.0-693.el7.x86_64 #1 SMP Tue Aug 22 21:09:27 UTC 2017 x86_64 x86_64 x86_64 GNU/Linux
+    # nb: Keep below the Oracle Linux check above
+    if( ".el" >< version[1] ) {
+      version = eregmatch( pattern:"\.el([0-9]+)", string:version[1] );
+      if( ! isnull( version[1] ) ) {
+        register_and_report_os( os:"Red Hat Enterprise Linux / CentOS", version:version[1], cpe:"cpe:/o:redhat:enterprise_linux", banner_type:BANNER_TYPE, port:port, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      } else {
+        register_and_report_os( os:"Red Hat Enterprise Linux / CentOS", cpe:"cpe:/o:redhat:enterprise_linux", banner_type:BANNER_TYPE, port:port, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      }
+      exit( 0 );
+    }
+
+    # Fedora Core 24
+    # Linux hostname 4.9.6-100.fc24.x86_64 #1 SMP Thu Jan 26 10:21:30 UTC 2017 x86_64 x86_64 x86_64 GNU/Linux
+    if( ".fc" >< version[1] ) {
+      version = eregmatch( pattern:"\.fc([0-9]+)", string:version[1] );
+      if( ! isnull( version[1] ) ) {
+        register_and_report_os( os:"Fedora Core", version:version[1], cpe:"cpe:/o:fedoraproject:fedora_core", banner_type:BANNER_TYPE, port:port, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      } else {
+        register_and_report_os( os:"Fedora Core", cpe:"cpe:/o:fedoraproject:fedora_core", banner_type:BANNER_TYPE, port:port, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      }
+      exit( 0 );
+    }
+  }
+
+  if( ! isnull( version[1] ) ) {
+    register_and_report_os( os:"Linux", version:version[1], cpe:"cpe:/o:linux:kernel", banner_type:BANNER_TYPE, port:port, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  } else {
+    register_and_report_os( os:"Linux", cpe:"cpe:/o:linux:kernel", banner_type:BANNER_TYPE, port:port, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unixoide" );
   }
   exit( 0 );
 }

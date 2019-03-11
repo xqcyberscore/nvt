@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service1.nasl 13737 2019-02-18 12:47:32Z cfischer $
+# $Id: find_service1.nasl 14067 2019-03-09 17:49:36Z cfischer $
 #
 # Service Detection with 'GET' Request
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17975");
-  script_version("$Revision: 13737 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-18 13:47:32 +0100 (Mon, 18 Feb 2019) $");
+  script_version("$Revision: 14067 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-09 18:49:36 +0100 (Sat, 09 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -214,21 +214,26 @@ else
 r_len = strlen( r );
 if( r_len == 0 ) {
   soc = open_sock_tcp( port );
-  if( ! soc ) exit( 0 );
+  if( ! soc )
+    exit( 0 );
+
   send( socket:soc, data:'GET / HTTP/1.0\r\n\r\n' );
   r = recv( socket:soc, length:4096 );
   close( soc );
+
   r_len = strlen( r );
   if( r_len == 0 ) {
     debug_print( 'Service on port ', port, ' does not answer to "GET / HTTP/1.0"\n' );
     exit( 0 );
   }
-  set_kb_item( name:k, value:r );
-  if( '\0' >< r )
-    set_kb_item( name:k + "Hex", value:hexstr( r ) );
-}
 
-rhexstr = hexstr( r );
+  set_kb_item( name:k, value:r );
+  rhexstr = hexstr( r );
+  if( '\0' >< r )
+    set_kb_item( name:k + "Hex", value:rhexstr );
+} else {
+  rhexstr = hexstr( r );
+}
 
 # aka HTTP/0.9
 if( r =~ '^[ \t\r\n]*<HTML>.*</HTML>' ) {
@@ -983,8 +988,8 @@ if( r =~ '^(\\|/dev/[a-z0-9/-]+\\|[^|]*\\|[^|]*\\|[^|]\\|)+$' ) {
 if( rhexstr =~ "^15030[0-3]00020[1-2]..$" ||
     rhexstr =~ "^1500000732$" || # nb: e.g. Novell Zenworks prebootserver on 998/tcp
     rhexstr =~ "^150301$" ) {
-  register_service( port:port, proto:"ssl", message:"A service responding with an unknown SSL/TLS alert seems to be running on this port." );
-  log_message( port:port, data:"A service responding with an unknown SSL/TLS alert seems to be running on this port." );
+  register_service( port:port, proto:"ssl", message:"A service responding with an SSL/TLS alert seems to be running on this port." );
+  log_message( port:port, data:"A service responding with an SSL/TLS alert seems to be running on this port." );
   exit( 0 );
 }
 

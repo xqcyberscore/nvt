@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: host_details.inc 14009 2019-03-06 08:10:00Z ckuersteiner $
+# $Id: host_details.inc 14073 2019-03-10 10:27:47Z cfischer $
 #
 # Centralized and organized host information base
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 14009 $
+# $Revision: 14073 $
 #
 ###############################################################################
 
@@ -115,6 +115,7 @@ OS_CPE_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.103875", # gb_qnap_nas_detect.nasl
     "1.3.6.1.4.1.25623.1.0.103786", # gb_synology_dsm_detect.nasl
     "1.3.6.1.4.1.25623.1.0.142078", # gb_drobo_nas_consolidation.nasl
+    "1.3.6.1.4.1.25623.1.0.108557", # gb_euleros_snmp_detect.nasl
     "1.3.6.1.4.1.25623.1.0.106096", # gb_simatic_s7_version.nasl
     "1.3.6.1.4.1.25623.1.0.140738", # gb_simatic_cp_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.140748", # gb_simatic_scalance_snmp_detect.nasl
@@ -210,6 +211,7 @@ OS_TXT_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.103875", # gb_qnap_nas_detect.nasl
     "1.3.6.1.4.1.25623.1.0.103786", # gb_synology_dsm_detect.nasl
     "1.3.6.1.4.1.25623.1.0.142078", # gb_drobo_nas_consolidation.nasl
+    "1.3.6.1.4.1.25623.1.0.108557", # gb_euleros_snmp_detect.nasl
     "1.3.6.1.4.1.25623.1.0.106096", # gb_simatic_s7_version.nasl
     "1.3.6.1.4.1.25623.1.0.140738", # gb_simatic_cp_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.140748", # gb_simatic_scalance_snmp_detect.nasl
@@ -488,7 +490,7 @@ function host_runs() {
 
   #nb: update this to include possible cpes and txt from ssh_detect.nasl, gb_ssh_os_detection.nasl, gather-package-list.nasl and other *_os_detection.nasl
   if( "linux" >< tolower( ospattern ) )
-    ospattern = '(' + ospattern + '|apc:aos|ubuntu|debian|bsd|opensuse|fedora|suse|red ?hat|centos|mandriva|mandrake|mageia|slackware|connectiva|amazon|oracle|d-link(:| )d|' +
+    ospattern = '(' + ospattern + '|apc:aos|ubuntu|debian|bsd|opensuse|fedora|suse|red ?hat|centos|mandriva|mandrake|mageia|slackware|connectiva|amazon|oracle|d-link(:| )d|euleros|' +
                 'turbolinux|gentoo|cisco|apple|fortios|junos|screenos|univention|esx|xen|pan-?os|qnap|synology|greenbone|hyperip|simatic|ruggedcom|vibnode|avm(:| )fritz|my_?cloud|' +
                 'intelbras(:| )ncloud|ricoh:iwb|nucleus(_| )rtos|vxworks|chip-rtos|simatic(_| )hmi|ibm(:| )os(/|_)400|novell|rockwell ?automation(:| )(micrologix|powermonitor)|beward)';
 

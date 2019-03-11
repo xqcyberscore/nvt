@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2017_1809_tomcat_centos7.nasl 14050 2019-03-08 09:08:09Z cfischer $
+# $Id: gb_CESA-2017_1809_tomcat_centos7.nasl 14058 2019-03-08 13:25:52Z cfischer $
 #
-# CentOS Update for tomcat CESA-2017:1809 centos7 
+# CentOS Update for tomcat CESA-2017:1809 centos7
 #
 # Authors:
 # System Generated Check
@@ -27,38 +27,36 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882757");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-07-28 07:24:11 +0200 (Fri, 28 Jul 2017)");
   script_cve_id("CVE-2017-5648", "CVE-2017-5664");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
-  script_name("CentOS Update for tomcat CESA-2017:1809 centos7 ");
-  script_tag(name: "summary", value: "Check the version of tomcat");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "Apache Tomcat is a servlet container for 
+  script_name("CentOS Update for tomcat CESA-2017:1809 centos7");
+  script_tag(name:"summary", value:"Check the version of tomcat");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Apache Tomcat is a servlet container for
 the Java Servlet and JavaServer Pages (JSP) technologies.
 
 Security Fix(es):
 
-* A vulnerability was discovered in the error page mechanism in Tomcat's
+  * A vulnerability was discovered in the error page mechanism in Tomcat's
 DefaultServlet implementation. A crafted HTTP request could cause undesired
 side effects, possibly including the removal or replacement of the custom
 error page. (CVE-2017-5664)
 
-* A vulnerability was discovered in Tomcat. When running an untrusted
+  * A vulnerability was discovered in Tomcat. When running an untrusted
 application under a SecurityManager it was possible, under some
 circumstances, for that application to retain references to the request or
 response objects and thereby access and/or modify information associated
-with another web application. (CVE-2017-5648)
-");
-  script_tag(name: "affected", value: "tomcat on CentOS 7");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+with another web application. (CVE-2017-5648)");
+  script_tag(name:"affected", value:"tomcat on CentOS 7");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "CESA", value: "2017:1809");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2017-July/022511.html");
+  script_xref(name:"CESA", value:"2017:1809");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2017-July/022511.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -71,12 +69,11 @@ with another web application. (CVE-2017-5648)
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS7")
 {
@@ -141,6 +138,6 @@ if(release == "CentOS7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

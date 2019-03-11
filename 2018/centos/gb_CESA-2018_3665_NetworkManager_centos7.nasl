@@ -29,13 +29,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882980");
-  script_version("$Revision: 14050 $");
+  script_version("$Revision: 14058 $");
   script_cve_id("CVE-2018-15688");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-12-18 07:37:50 +0100 (Tue, 18 Dec 2018)");
-  script_name("CentOS Update for NetworkManager CESA-2018:3665 centos7 ");
+  script_name("CentOS Update for NetworkManager CESA-2018:3665 centos7");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
@@ -43,7 +43,7 @@ if(description)
   script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS7");
 
   script_xref(name:"CESA", value:"2018:3665");
-  script_xref(name:"URL" , value:"http://lists.centos.org/pipermail/centos-announce/2018-December/023116.html");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2018-December/023116.html");
 
   script_tag(name:"summary", value:"The remote host is missing an update for the 'NetworkManager'
   package(s) announced via the CESA-2018:3665 advisory.");
@@ -58,7 +58,7 @@ variety of different VPN services.
 
 Security Fix(es):
 
-* systemd: Out-of-bounds heap write in systemd-networkd dhcpv6 option
+  * systemd: Out-of-bounds heap write in systemd-networkd dhcpv6 option
 handling (CVE-2018-15688)
 
 For more details about the security issue(s), including the impact, a CVSS
@@ -66,8 +66,7 @@ score, and other related information, refer to the CVE page(s) listed in
 the References section.
 
 Red Hat would like to thank Ubuntu Security Team for reporting this issue.
-Upstream acknowledges Felix Wilhelm (Google) as the original reporter.
-");
+Upstream acknowledges Felix Wilhelm (Google) as the original reporter.");
 
   script_tag(name:"affected", value:"NetworkManager on CentOS 7.");
 

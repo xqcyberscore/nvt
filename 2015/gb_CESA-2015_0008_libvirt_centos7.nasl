@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for libvirt CESA-2015:0008 centos7 
+# CentOS Update for libvirt CESA-2015:0008 centos7
 #
 # Authors:
 # System Generated Check
@@ -26,16 +26,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882093");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-01-23 12:56:27 +0100 (Fri, 23 Jan 2015)");
   script_cve_id("CVE-2014-7823");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_name("CentOS Update for libvirt CESA-2015:0008 centos7 ");
-  script_tag(name: "summary", value: "Check the version of libvirt");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "The libvirt library is a C API for managing and interacting with the
+  script_name("CentOS Update for libvirt CESA-2015:0008 centos7");
+  script_tag(name:"summary", value:"Check the version of libvirt");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The libvirt library is a C API for managing and interacting with the
 virtualization capabilities of Linux and other operating systems.
 In addition, libvirt provides tools for remote management of
 virtualized systems.
@@ -51,7 +51,7 @@ This issue was discovered by Eric Blake of Red Hat.
 
 This update also fixes the following bugs:
 
-* In Red Hat Enterprise Linux 6, libvirt relies on the QEMU emulator to
+  * In Red Hat Enterprise Linux 6, libvirt relies on the QEMU emulator to
 supply the error message when an active commit is attempted. However, with
 Red Hat Enterprise Linux 7, QEMU added support for an active commit, but an
 additional interaction from libvirt to fully enable active commits is still
@@ -64,7 +64,7 @@ attempted and instead produces an error message.
 Note that the missing libvirt interaction will be added in Red Hat
 Enterprise Linux 7.1, adding full support for active commits. (BZ#1150379)
 
-* Prior to this update, the libvirt API did not properly check whether a
+  * Prior to this update, the libvirt API did not properly check whether a
 Discretionary Access Control (DAC) security label is non-NULL before trying
 to parse user/group ownership from it. In addition, the DAC security label
 of a transient domain that had just finished migrating to another host is
@@ -74,20 +74,20 @@ unexpectedly. With this update, libvirt properly checks DAC labels before
 trying to parse them, and libvirtd thus no longer crashes in the described
 scenario. (BZ#1171124)
 
-* If a block copy operation was attempted while another block copy was
+  * If a block copy operation was attempted while another block copy was
 already in progress to an explicit raw destination, libvirt previously
 stopped regarding the destination as raw. As a consequence, if the
 qemu.conf file was edited to allow file format probing, triggering the bug
 could allow a malicious guest to bypass sVirt protection by making libvirt
 regard the file as non-raw. With this update, libvirt has been fixed to
 consistently remember when a block copy destination is raw, and guests can
-no longer circumvent sVirt protection when the ... 
+no longer circumvent sVirt protection when the ...
 
-  Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "libvirt on CentOS 7");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "CESA", value: "2015:0008");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2015-January/020859.html");
+  Description truncated, please see the referenced URL(s) for more information.");
+  script_tag(name:"affected", value:"libvirt on CentOS 7");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_xref(name:"CESA", value:"2015:0008");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2015-January/020859.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
   script_category(ACT_GATHER_INFO);
@@ -101,12 +101,11 @@ no longer circumvent sVirt protection when the ...
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS7")
 {
@@ -231,6 +230,6 @@ if(release == "CentOS7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

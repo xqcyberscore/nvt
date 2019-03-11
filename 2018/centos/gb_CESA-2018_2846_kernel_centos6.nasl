@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2018_2846_kernel_centos6.nasl 14050 2019-03-08 09:08:09Z cfischer $
+# $Id: gb_CESA-2018_2846_kernel_centos6.nasl 14058 2019-03-08 13:25:52Z cfischer $
 #
 # CentOS Update for kernel CESA-2018:2846 centos6
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882957");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-10-10 06:50:05 +0200 (Wed, 10 Oct 2018)");
   script_cve_id("CVE-2018-5391", "CVE-2018-14634");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
-  script_name("CentOS Update for kernel CESA-2018:2846 centos6 ");
+  script_name("CentOS Update for kernel CESA-2018:2846 centos6");
   script_tag(name:"summary", value:"Check the version of kernel");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
   on the target host.");
@@ -43,13 +43,13 @@ if(description)
 
 Security Fix(es):
 
-* A flaw named FragmentSmack was found in the way the Linux kernel handled
+  * A flaw named FragmentSmack was found in the way the Linux kernel handled
 reassembly of fragmented IPv4 and IPv6 packets. A remote attacker could use
 this flaw to trigger time and calculation expensive fragment reassembly
 algorithm by sending specially crafted packets which could lead to a CPU
 saturation and hence a denial of service on the system. (CVE-2018-5391)
 
-* kernel: Integer overflow in Linux's create_elf_tables function
+  * kernel: Integer overflow in Linux's create_elf_tables function
 (CVE-2018-14634)
 
 For more details about the security issue(s), including the impact, a CVSS
@@ -68,7 +68,7 @@ precludes documenting all of the bug fixes in this advisory.");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"CESA", value:"2018:2846");
-  script_xref(name:"URL" , value:"http://lists.centos.org/pipermail/centos-announce/2018-October/023062.html");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2018-October/023062.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -81,12 +81,11 @@ precludes documenting all of the bug fixes in this advisory.");
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS6")
 {

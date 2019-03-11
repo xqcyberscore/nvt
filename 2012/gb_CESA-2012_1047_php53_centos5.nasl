@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for php53 CESA-2012:1047 centos5 
+# CentOS Update for php53 CESA-2012:1047 centos5
 #
 # Authors:
 # System Generated Check
@@ -23,8 +23,30 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "PHP is an HTML-embedded scripting language commonly used with the Apache
+if(description)
+{
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-June/018703.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.881144");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2012-07-30 16:21:42 +0530 (Mon, 30 Jul 2012)");
+  script_cve_id("CVE-2010-2950", "CVE-2011-4153", "CVE-2012-0057", "CVE-2012-0789",
+                "CVE-2012-1172", "CVE-2012-2143", "CVE-2012-2336", "CVE-2012-2386",
+                "CVE-2012-1823");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_xref(name:"CESA", value:"2012:1047");
+  script_name("CentOS Update for php53 CESA-2012:1047 centos5");
+
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for php53");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
+  script_family("CentOS Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS5");
+  script_tag(name:"affected", value:"php53 on CentOS 5");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_tag(name:"insight", value:"PHP is an HTML-embedded scripting language commonly used with the Apache
   HTTP Server.
 
   It was discovered that the PHP XSL extension did not restrict the file
@@ -32,92 +54,61 @@ tag_insight = "PHP is an HTML-embedded scripting language commonly used with the
   create or overwrite an arbitrary file that is writable by the user running
   PHP, if a PHP script processed untrusted eXtensible Style Sheet Language
   Transformations (XSLT) content. (CVE-2012-0057)
-  
+
   Note: This update disables file writing by default. A new PHP configuration
   directive, &quot;xsl.security_prefs&quot;, can be used to enable file writing in
   XSLT.
-  
+
   A flaw was found in the way PHP validated file names in file upload
   requests. A remote attacker could possibly use this flaw to bypass the
   sanitization of the uploaded file names, and cause a PHP script to store
   the uploaded file in an unexpected directory, by using a directory
   traversal attack. (CVE-2012-1172)
-  
+
   Multiple integer overflow flaws, leading to heap-based buffer overflows,
   were found in the way the PHP phar extension processed certain fields of
   tar archive files. A remote attacker could provide a specially-crafted tar
   archive file that, when processed by a PHP application using the phar
   extension, could cause the application to crash or, potentially, execute
   arbitrary code with the privileges of the user running PHP. (CVE-2012-2386)
-  
+
   A format string flaw was found in the way the PHP phar extension processed
   certain PHAR files. A remote attacker could provide a specially-crafted
   PHAR file, which once processed in a PHP application using the phar
   extension, could lead to information disclosure and possibly arbitrary code
   execution via a crafted phar:// URI. (CVE-2010-2950)
-  
+
   A flaw was found in the DES algorithm implementation in the crypt()
   password hashing function in PHP. If the password string to be hashed
   contained certain characters, the remainder of the string was ignored when
   calculating the hash, significantly reducing the password strength.
   (CVE-2012-2143)
-  
+
   Note: With this update, passwords are no longer truncated when performing
   DES hashing. Therefore, new hashes of the affected passwords will not match
   stored hashes generated using vulnerable PHP versions, and will need to be
   updated.
-  
+
   It was discovered that the fix for CVE-2012-1823, released via
   RHSA-2012:0547, did not properly filter all php-cgi command line arguments.
   A specially-crafted request to a PHP script could cause the PHP interpreter
   to execute the script in a loop, or output usage information that triggers
-  an Internal Server Error. (CVE-2012 ... 
+  an Internal Server Error. (CVE-2012 ...
 
-  Description truncated, for more information please check the Reference URL";
-
-tag_affected = "php53 on CentOS 5";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2012-June/018703.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.881144");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
-  script_tag(name:"creation_date", value:"2012-07-30 16:21:42 +0530 (Mon, 30 Jul 2012)");
-  script_cve_id("CVE-2010-2950", "CVE-2011-4153", "CVE-2012-0057", "CVE-2012-0789",
-                "CVE-2012-1172", "CVE-2012-2143", "CVE-2012-2336", "CVE-2012-2386",
-                "CVE-2012-1823");
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_xref(name: "CESA", value: "2012:1047");
-  script_name("CentOS Update for php53 CESA-2012:1047 centos5 ");
-
-  script_tag(name: "summary" , value: "Check for the Version of php53");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_family("CentOS Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS5");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS5")
 {
@@ -248,6 +239,6 @@ if(release == "CentOS5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for phonon-backend-gstreamer CESA-2012:0880 centos6 
+# CentOS Update for phonon-backend-gstreamer CESA-2012:0880 centos6
 #
 # Authors:
 # System Generated Check
@@ -23,8 +23,28 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "Qt is a software toolkit that simplifies the task of writing and
+if(description)
+{
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-July/018718.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.881099");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2012-07-30 16:08:03 +0530 (Mon, 30 Jul 2012)");
+  script_cve_id("CVE-2010-5076", "CVE-2011-3922");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_xref(name:"CESA", value:"2012:0880");
+  script_name("CentOS Update for phonon-backend-gstreamer CESA-2012:0880 centos6");
+
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for phonon-backend-gstreamer");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
+  script_family("CentOS Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS6");
+  script_tag(name:"affected", value:"phonon-backend-gstreamer on CentOS 6");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_tag(name:"insight", value:"Qt is a software toolkit that simplifies the task of writing and
   maintaining GUI (Graphical User Interface) applications for the X Window
   System. HarfBuzz is an OpenType text shaping engine.
 
@@ -33,7 +53,7 @@ tag_insight = "Qt is a software toolkit that simplifies the task of writing and
   it could cause the application to crash or, possibly, execute arbitrary
   code with the privileges of the user running the application.
   (CVE-2011-3922)
-  
+
   A flaw was found in the way Qt handled X.509 certificates with IP address
   wildcards. An attacker able to obtain a certificate with a Common Name
   containing an IP wildcard could possibly use this flaw to impersonate an
@@ -41,14 +61,14 @@ tag_insight = "Qt is a software toolkit that simplifies the task of writing and
   introduces more strict handling for hostname wildcard certificates by
   disallowing the wildcard character to match more than one hostname
   component. (CVE-2010-5076)
-  
+
   This update also fixes the following bugs:
-  
+
   * The Phonon API allowed premature freeing of the media object.
   Consequently, GStreamer could terminate unexpectedly as it failed to access
   the released media object. This update modifies the underlying Phonon API
   code and the problem no longer occurs. (BZ#694684)
-  
+
   * Previously, Qt could output the &quot;Unrecognized OpenGL version&quot; error and
   fall back to OpenGL-version-1 compatibility mode. This happened because Qt
   failed to recognize the version of OpenGL installed on the system if the
@@ -56,57 +76,28 @@ tag_insight = "Qt is a software toolkit that simplifies the task of writing and
   use. This update adds the code for recognition of OpenGL versions to Qt and
   if the OpenGL version is unknown, Qt assumes that the last-known version of
   OpenGL is available. (BZ#757793)
-  
+
   * Previously Qt included a compiled-in list of trusted CA (Certificate
   Authority) certificates, that could have been used if Qt failed to open a
   system's ca-bundle.crt file. With this update, Qt no longer includes
   compiled-in CA certificates and only uses the system bundle. (BZ#734444)
-  
+
   Users of Qt should upgrade to these updated packages, which contain
   backported patches to correct these issues. All running applications linked
-  against Qt libraries must be restarted for this update to take effect.";
-
-tag_affected = "phonon-backend-gstreamer on CentOS 6";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2012-July/018718.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.881099");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
-  script_tag(name:"creation_date", value:"2012-07-30 16:08:03 +0530 (Mon, 30 Jul 2012)");
-  script_cve_id("CVE-2010-5076", "CVE-2011-3922");
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_xref(name: "CESA", value: "2012:0880");
-  script_name("CentOS Update for phonon-backend-gstreamer CESA-2012:0880 centos6 ");
-
-  script_tag(name: "summary" , value: "Check for the Version of phonon-backend-gstreamer");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_family("CentOS Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS6");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  against Qt libraries must be restarted for this update to take effect.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS6")
 {
@@ -177,6 +168,6 @@ if(release == "CentOS6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

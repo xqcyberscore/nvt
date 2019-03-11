@@ -21,13 +21,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.883012");
-  script_version("$Revision: 14050 $");
+  script_version("$Revision: 14058 $");
   script_cve_id("CVE-2019-2422");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-02-27 04:14:31 +0100 (Wed, 27 Feb 2019)");
-  script_name("CentOS Update for java CESA-2019:0416 centos6 ");
+  script_name("CentOS Update for java CESA-2019:0416 centos6");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
@@ -47,13 +47,12 @@ Environment and the OpenJDK 8 Java Software Development Kit.
 
 Security Fix(es):
 
-* OpenJDK: memory disclosure in FileChannelImpl (Libraries, 8206290)
+  * OpenJDK: memory disclosure in FileChannelImpl (Libraries, 8206290)
 (CVE-2019-2422)
 
 For more details about the security issue(s), including the impact, a CVSS
 score, and other related information, refer to the CVE page(s) listed in
-the References section.
-");
+the References section.");
 
   script_tag(name:"affected", value:"java on CentOS 6.");
 

@@ -23,8 +23,28 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "OpenSSL is a toolkit that implements the Secure Sockets Layer (SSL v2/v3)
+if(description)
+{
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2009-September/016149.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.880738");
+  script_version("$Revision: 14056 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_xref(name:"CESA", value:"2009:1335");
+  script_cve_id("CVE-2009-0590", "CVE-2009-1377", "CVE-2009-1378", "CVE-2009-1379",
+                "CVE-2009-1386", "CVE-2009-1387");
+  script_name("CentOS Update for openssl CESA-2009:1335 centos5 i386");
+
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for openssl");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
+  script_family("CentOS Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS5");
+  script_tag(name:"affected", value:"openssl on CentOS 5");
+  script_tag(name:"insight", value:"OpenSSL is a toolkit that implements the Secure Sockets Layer (SSL v2/v3)
   and Transport Layer Security (TLS v1) protocols, as well as a full-strength
   general purpose cryptography library. Datagram TLS (DTLS) is a protocol
   based on TLS that is capable of securing datagram transport (for example,
@@ -35,21 +55,21 @@ tag_insight = "OpenSSL is a toolkit that implements the Secure Sockets Layer (SS
   server to use excessive amounts of memory, or crash on an invalid memory
   access or NULL pointer dereference. (CVE-2009-1377, CVE-2009-1378,
   CVE-2009-1379, CVE-2009-1386, CVE-2009-1387)
-  
+
   Note: These flaws only affect applications that use DTLS. Red Hat does not
   ship any DTLS client or server applications in Red Hat Enterprise Linux.
-  
+
   An input validation flaw was found in the handling of the BMPString and
   UniversalString ASN1 string types in OpenSSL's ASN1_STRING_print_ex()
   function. An attacker could use this flaw to create a specially-crafted
   X.509 certificate that could cause applications using the affected function
   to crash when printing certificate contents. (CVE-2009-0590)
-  
+
   Note: The affected function is rarely used. No application shipped with Red
   Hat Enterprise Linux calls this function, for example.
-  
+
   These updated packages also fix the following bugs:
-  
+
   * &quot;openssl smime -verify -in&quot; verifies the signature of the input file and
   the &quot;-verify&quot; switch expects a signed or encrypted input file. Previously,
   running openssl on an S/MIME file that was not encrypted or signed caused
@@ -57,67 +77,38 @@ tag_insight = "OpenSSL is a toolkit that implements the Secure Sockets Layer (SS
   signature or encryption. Consequently, openssl now returns an error and
   quits when attempting to verify an unencrypted or unsigned S/MIME file.
   (BZ#472440)
-  
+
   * when generating RSA keys, pairwise tests were called even in non-FIPS
   mode. This prevented small keys from being generated. With this update,
   generating keys in non-FIPS mode no longer calls the pairwise tests and
   keys as small as 32-bits can be generated in this mode. Note: In FIPS mode,
   pairwise tests are still called and keys generated in this mode must still
   be 1024-bits or larger. (BZ#479817)
-  
+
   As well, these updated packages add the following enhancements:
-  
+
   * both the libcrypto and libssl shared libraries, which are part of the
   OpenSSL FIPS module, are now checked for integrity on initialization of
   FIPS mode. (BZ#475798)
-  
+
   * an issuing Certificate Authority (CA) allows multiple certificate
-  templates to inherit the CA's Common Name (CN). Be ... 
+  templates to inherit the CA's Common Name (CN). Be ...
 
-  Description truncated, for more information please check the Reference URL";
-tag_solution = "Please Install the Updated Packages.";
-
-tag_affected = "openssl on CentOS 5";
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2009-September/016149.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.880738");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
-  script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_xref(name: "CESA", value: "2009:1335");
-  script_cve_id("CVE-2009-0590", "CVE-2009-1377", "CVE-2009-1378", "CVE-2009-1379",
-                "CVE-2009-1386", "CVE-2009-1387");
-  script_name("CentOS Update for openssl CESA-2009:1335 centos5 i386");
-
-  script_tag(name:"summary", value:"Check for the Version of openssl");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_family("CentOS Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS5");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  Description truncated, please see the referenced URL(s) for more information.");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS5")
 {
@@ -140,6 +131,6 @@ if(release == "CentOS5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

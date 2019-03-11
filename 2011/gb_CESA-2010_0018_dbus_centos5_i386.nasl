@@ -23,8 +23,27 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "D-Bus is a system for sending messages between applications. It is used for
+if(description)
+{
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2010-January/016433.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.880595");
+  script_version("$Revision: 14056 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
+  script_tag(name:"cvss_base", value:"3.6");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:P/A:P");
+  script_xref(name:"CESA", value:"2010:0018");
+  script_cve_id("CVE-2009-1189", "CVE-2008-3834");
+  script_name("CentOS Update for dbus CESA-2010:0018 centos5 i386");
+
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for dbus");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
+  script_family("CentOS Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS5");
+  script_tag(name:"affected", value:"dbus on CentOS 5");
+  script_tag(name:"insight", value:"D-Bus is a system for sending messages between applications. It is used for
   the system-wide message bus service and as a per-user-login-session
   messaging facility.
 
@@ -34,57 +53,29 @@ tag_insight = "D-Bus is a system for sending messages between applications. It i
   message with a malformed signature to the bus, causing the bus (and,
   consequently, any process using libdbus to receive messages) to abort.
   (CVE-2009-1189)
-  
+
   Note: Users running any application providing services over the system
   message bus are advised to test this update carefully before deploying it
   in production environments.
-  
+
   All users are advised to upgrade to these updated packages, which contain a
   backported patch to correct this issue. For the update to take effect, all
   running instances of dbus-daemon and all running applications using the
-  libdbus library must be restarted, or the system rebooted.";
-tag_solution = "Please Install the Updated Packages.";
-
-tag_affected = "dbus on CentOS 5";
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2010-January/016433.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.880595");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
-  script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
-  script_tag(name:"cvss_base", value:"3.6");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:P/A:P");
-  script_xref(name: "CESA", value: "2010:0018");
-  script_cve_id("CVE-2009-1189", "CVE-2008-3834");
-  script_name("CentOS Update for dbus CESA-2010:0018 centos5 i386");
-
-  script_tag(name:"summary", value:"Check for the Version of dbus");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_family("CentOS Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS5");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  libdbus library must be restarted, or the system rebooted.");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS5")
 {
@@ -113,6 +104,6 @@ if(release == "CentOS5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

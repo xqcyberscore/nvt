@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_http_os_detection.nasl 13850 2019-02-25 13:11:14Z cfischer $
+# $Id: sw_http_os_detection.nasl 14074 2019-03-10 11:36:56Z cfischer $
 #
 # HTTP OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111067");
-  script_version("$Revision: 13850 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-25 14:11:14 +0100 (Mon, 25 Feb 2019) $");
+  script_version("$Revision: 14074 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-10 12:36:56 +0100 (Sun, 10 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-12-10 16:00:00 +0100 (Thu, 10 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -187,6 +187,11 @@ function check_http_banner( port, banner ) {
         egrep( pattern:"^Server: Payara Server +[0-9.]+ #badassfish$", string:banner ) ) { # Cross-platform, e.g. Server: Payara Server  4.1.2.172 #badassfish
       return;
     }
+
+    # Seen on e.g. EulerOS. There might be others Distros using the same so we're ignoring this for now...
+    # Server: Apache/2.4.6 () mod_auth_gssapi/1.3.1 mod_nss/1.0.14 NSS/3.28.4 mod_wsgi/3.4 Python/2.7.5
+    if( egrep( pattern:"^Server: Apache/[0-9.]+ \(\)(( (mod_auth_gssapi|mod_nss|NSS|mod_wsgi|Python)/[0-9.]+)*)?$", string:banner, icase:TRUE ) )
+      return;
 
     banner_type = "HTTP Server banner";
 
@@ -1238,6 +1243,13 @@ function check_default_page( port ) {
         return;
       }
 
+      check = "on EulerOS Linux</title>";
+
+      if( check >< buf ) {
+        register_and_report_os( os:"EulerOS", cpe:"cpe:/o:huawei:euleros", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        return;
+      }
+      
       check = "on Oracle Linux</title>";
 
       if( check >< buf ) {

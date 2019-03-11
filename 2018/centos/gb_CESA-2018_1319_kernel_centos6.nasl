@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2018_1319_kernel_centos6.nasl 14050 2019-03-08 09:08:09Z cfischer $
+# $Id: gb_CESA-2018_1319_kernel_centos6.nasl 14058 2019-03-08 13:25:52Z cfischer $
 #
-# CentOS Update for kernel CESA-2018:1319 centos6 
+# CentOS Update for kernel CESA-2018:1319 centos6
 #
 # Authors:
 # System Generated Check
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882875");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-05-10 05:45:10 +0200 (Thu, 10 May 2018)");
   script_cve_id("CVE-2017-7645", "CVE-2017-8824", "CVE-2017-13166", "CVE-2017-18017",
                 "CVE-2017-1000410", "CVE-2018-8897", "CVE-2017-5754");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
-  script_name("CentOS Update for kernel CESA-2018:1319 centos6 ");
+  script_name("CentOS Update for kernel CESA-2018:1319 centos6");
   script_tag(name:"summary", value:"Check the version of kernel");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The kernel packages contain the Linux kernel, the core of any Linux
@@ -43,21 +43,21 @@ operating system.
 
 Security Fix(es):
 
-* hw: cpu: speculative execution permission faults handling (CVE-2017-5754)
+  * hw: cpu: speculative execution permission faults handling (CVE-2017-5754)
 
-* Kernel: error in exception handling leads to DoS (CVE-2018-8897)
+  * Kernel: error in exception handling leads to DoS (CVE-2018-8897)
 
-* kernel: nfsd: Incorrect handling of long RPC replies (CVE-2017-7645)
+  * kernel: nfsd: Incorrect handling of long RPC replies (CVE-2017-7645)
 
-* kernel: Use-after-free vulnerability in DCCP socket (CVE-2017-8824)
+  * kernel: Use-after-free vulnerability in DCCP socket (CVE-2017-8824)
 
-* kernel: v4l2: disabled memory access protection mechanism allowing
+  * kernel: v4l2: disabled memory access protection mechanism allowing
 privilege escalation (CVE-2017-13166)
 
-* kernel: netfilter: use-after-free in tcpmss_mangle_packet function in
+  * kernel: netfilter: use-after-free in tcpmss_mangle_packet function in
 net/netfilter/xt_TCPMSS.c (CVE-2017-18017)
 
-* kernel: Stack information leak in the EFS element (CVE-2017-1000410)
+  * kernel: Stack information leak in the EFS element (CVE-2017-1000410)
 
 For more details about the security issue(s), including the impact, a CVSS
 score, and other related information, refer to the CVE page(s) listed in
@@ -73,13 +73,12 @@ Bug Fix(es):
 These updated kernel packages include also numerous bug fixes. Space
 precludes documenting all of these bug fixes in this advisory. See the bug
 fix descriptions in the related Knowledge Article:
-<a  rel='nofollow' href='https://access.redhat.com/articles/3431591'>https://access.redhat.com/articles/3431591</a>
-");
+<a  rel='nofollow' href='https://access.redhat.com/articles/3431591'>https://access.redhat.com/articles/3431591</a>");
   script_tag(name:"affected", value:"kernel on CentOS 6");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"CESA", value:"2018:1319");
-  script_xref(name:"URL" , value:"http://lists.centos.org/pipermail/centos-announce/2018-May/022827.html");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2018-May/022827.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -92,12 +91,11 @@ fix descriptions in the related Knowledge Article:
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS6")
 {

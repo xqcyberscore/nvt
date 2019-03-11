@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for postgresql84 CESA-2013:1475 centos5 
+# CentOS Update for postgresql84 CESA-2013:1475 centos5
 #
 # Authors:
 # System Generated Check
@@ -23,20 +23,19 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.881824");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14056 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-11-08 10:52:36 +0530 (Fri, 08 Nov 2013)");
   script_cve_id("CVE-2013-0255", "CVE-2013-1900");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
-  script_name("CentOS Update for postgresql84 CESA-2013:1475 centos5 ");
+  script_name("CentOS Update for postgresql84 CESA-2013:1475 centos5");
 
-  tag_insight = "PostgreSQL is an advanced object-relational database management system
+  script_tag(name:"affected", value:"postgresql84 on CentOS 5");
+  script_tag(name:"insight", value:"PostgreSQL is an advanced object-relational database management system
 (DBMS).
 
 An array index error, leading to a heap-based out-of-bounds buffer read
@@ -65,32 +64,23 @@ After installing this update, it is advisable to rebuild, using the REINDEX
 command, Generalized Search Tree (GiST) indexes that meet one or more of
 the following conditions:
 
-- - GiST indexes on box, polygon, circle, or point columns
+  - - GiST indexes on box, polygon, circle, or point columns
 
-- - GiST indexes for variable-width data types, that is text, bytea, bit, and
+  - - GiST indexes for variable-width data types, that is text, bytea, bit, and
 numeric
 
-- - GiST multi-column indexes
+  - - GiST multi-column indexes
 
 All PostgreSQL users are advised to upgrade to these updated packages,
 which contain backported patches to correct these issues. If the postgresql
 service is running, it will be automatically restarted after installing
-this update.
-";
-
-  tag_affected = "postgresql84 on CentOS 5";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+this update.");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "CESA", value: "2013:1475");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2013-October/019995.html");
-  script_tag(name:"summary", value:"Check for the Version of postgresql84");
+  script_xref(name:"CESA", value:"2013:1475");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-October/019995.html");
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for postgresql84");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
@@ -99,15 +89,14 @@ this update.
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS5")
 {
@@ -184,6 +173,6 @@ if(release == "CentOS5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

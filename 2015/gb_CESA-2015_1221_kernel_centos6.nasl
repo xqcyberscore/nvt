@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for kernel CESA-2015:1221 centos6 
+# CentOS Update for kernel CESA-2015:1221 centos6
 #
 # Authors:
 # System Generated Check
@@ -26,28 +26,27 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882223");
-  script_version("$Revision: 14050 $");
+  script_version("$Revision: 14058 $");
   script_cve_id("CVE-2011-5321", "CVE-2015-1593", "CVE-2015-2830", "CVE-2015-2922",
                 "CVE-2015-3636");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-07-16 06:19:14 +0200 (Thu, 16 Jul 2015)");
   script_tag(name:"qod_type", value:"package");
-  script_name("CentOS Update for kernel CESA-2015:1221 centos6 ");
-  script_tag(name: "summary", value: "Check the version of kernel");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-  of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "The kernel packages contain the Linux
+  script_name("CentOS Update for kernel CESA-2015:1221 centos6");
+  script_tag(name:"summary", value:"Check the version of kernel");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The kernel packages contain the Linux
   kernel, the core of any Linux
 operating system.
 
-* A NULL pointer dereference flaw was found in the way the Linux kernel's
+  * A NULL pointer dereference flaw was found in the way the Linux kernel's
 virtual console implementation handled reference counting when accessing
 pseudo-terminal device files (/dev/pts/*). A local, unprivileged attacker
 could use this flaw to crash the system. (CVE-2011-5321, Moderate)
 
-* It was found that the Linux kernel's ping socket implementation did not
+  * It was found that the Linux kernel's ping socket implementation did not
 properly handle socket unhashing during spurious disconnects, which could
 lead to a use-after-free flaw. On x86-64 architecture systems, a local user
 able to create ping sockets could use this flaw to crash the system.
@@ -55,17 +54,17 @@ On non-x86-64 architecture systems, a local user able to create ping
 sockets could use this flaw to escalate their privileges on the system.
 (CVE-2015-3636, Moderate)
 
-* An integer overflow flaw was found in the way the Linux kernel randomized
+  * An integer overflow flaw was found in the way the Linux kernel randomized
 the stack for processes on certain 64-bit architecture systems, such as
 x86-64, causing the stack entropy to be reduced by four. (CVE-2015-1593,
 Low)
 
-* A flaw was found in the way the Linux kernel's 32-bit emulation
+  * A flaw was found in the way the Linux kernel's 32-bit emulation
 implementation handled forking or closing of a task with an 'int80' entry.
 A local user could potentially use this flaw to escalate their privileges
 on the system. (CVE-2015-2830, Low)
 
-* It was found that the Linux kernel's TCP/IP protocol suite implementation
+  * It was found that the Linux kernel's TCP/IP protocol suite implementation
 for IPv6 allowed the Hop Limit value to be set to a smaller value than the
 default one. An attacker on a local network could use this flaw to prevent
 systems on that network from sending or receiving network packets.
@@ -80,12 +79,11 @@ are directed to the following article on the Red Hat Customer Portal:
 
 All kernel users are advised to upgrade to these updated packages, which
 contain backported patches to correct these issues and add this
-enhancement. The system must be rebooted for this update to take effect.
-");
-  script_tag(name: "affected", value: "kernel on CentOS 6");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "CESA", value: "2015:1221");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2015-July/021242.html");
+enhancement. The system must be rebooted for this update to take effect.");
+  script_tag(name:"affected", value:"kernel on CentOS 6");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_xref(name:"CESA", value:"2015:1221");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2015-July/021242.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -98,12 +96,11 @@ enhancement. The system must be rebooted for this update to take effect.
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS6")
 {
@@ -168,6 +165,6 @@ if(release == "CentOS6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

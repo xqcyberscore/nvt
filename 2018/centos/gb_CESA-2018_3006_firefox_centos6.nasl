@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2018_3006_firefox_centos6.nasl 14050 2019-03-08 09:08:09Z cfischer $
+# $Id: gb_CESA-2018_3006_firefox_centos6.nasl 14058 2019-03-08 13:25:52Z cfischer $
 #
 # CentOS Update for firefox CESA-2018:3006 centos6
 #
@@ -29,14 +29,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882968");
-  script_version("$Revision: 14050 $");
+  script_version("$Revision: 14058 $");
   script_cve_id("CVE-2018-12389", "CVE-2018-12390", "CVE-2018-12392", "CVE-2018-12393",
                 "CVE-2018-12395", "CVE-2018-12396", "CVE-2018-12397");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:04:40 +0200 (Fri, 26 Oct 2018)");
-  script_name("CentOS Update for firefox CESA-2018:3006 centos6 ");
+  script_name("CentOS Update for firefox CESA-2018:3006 centos6");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
@@ -44,7 +44,7 @@ if(description)
   script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS6");
 
   script_xref(name:"CESA", value:"2018:3006");
-  script_xref(name:"URL" , value:"http://lists.centos.org/pipermail/centos-announce/2018-October/023070.html");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2018-October/023070.html");
 
   script_tag(name:"summary", value:"The remote host is missing an update
   for the 'firefox' package(s) announced via the CESA-2018:3006 advisory.");
@@ -59,23 +59,23 @@ This update upgrades Firefox to version 60.3.0 ESR.
 
 Security Fix(es):
 
-* Mozilla: Memory safety bugs fixed in Firefox 63 and Firefox ESR 60.3
+  * Mozilla: Memory safety bugs fixed in Firefox 63 and Firefox ESR 60.3
 (CVE-2018-12390)
 
-* Mozilla: Crash with nested event loops (CVE-2018-12392)
+  * Mozilla: Crash with nested event loops (CVE-2018-12392)
 
-* Mozilla: Integer overflow during Unicode conversion while loading
+  * Mozilla: Integer overflow during Unicode conversion while loading
 JavaScript (CVE-2018-12393)
 
-* Mozilla: WebExtension bypass of domain restrictions through header
+  * Mozilla: WebExtension bypass of domain restrictions through header
 rewriting (CVE-2018-12395)
 
-* Mozilla: WebExtension content scripts can execute in disallowed contexts
+  * Mozilla: WebExtension content scripts can execute in disallowed contexts
 (CVE-2018-12396)
 
-* Mozilla: WebExtension local file permission check bypass (CVE-2018-12397)
+  * Mozilla: WebExtension local file permission check bypass (CVE-2018-12397)
 
-* Mozilla: Memory safety bugs fixed in Firefox ESR 60.3 (CVE-2018-12389)
+  * Mozilla: Memory safety bugs fixed in Firefox ESR 60.3 (CVE-2018-12389)
 
 For more details about the security issue(s), including the impact, a CVSS
 score, and other related information, refer to the CVE page(s) listed in
@@ -85,8 +85,7 @@ Red Hat would like to thank the Mozilla project for reporting these issues.
 Upstream acknowledges Christian Holler, Bob Owen, Boris Zbarsky, Calixte
 Denizet, Jason Kratzer, Jed Davis, Taegeon Lee, Philipp, Ronald Crane, Raul
 Gurzau, Gary Kwong, Tyson Smith, Raymond Forbes, Bogdan Tara, Nils, r, Rob
-Wu, Andrew Swan, and Daniel Veditz as the original reporters.
-");
+Wu, Andrew Swan, and Daniel Veditz as the original reporters.");
 
   script_tag(name:"affected", value:"firefox on CentOS 6.");
 

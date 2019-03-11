@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for java CESA-2015:0085 centos5 
+# CentOS Update for java CESA-2015:0085 centos5
 #
 # Authors:
 # System Generated Check
@@ -26,16 +26,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882106");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-01-27 05:50:16 +0100 (Tue, 27 Jan 2015)");
   script_cve_id("CVE-2014-3566", "CVE-2014-6585", "CVE-2014-6587", "CVE-2014-6591", "CVE-2014-6593", "CVE-2014-6601", "CVE-2015-0383", "CVE-2015-0395", "CVE-2015-0407", "CVE-2015-0408", "CVE-2015-0410", "CVE-2015-0412");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_name("CentOS Update for java CESA-2015:0085 centos5 ");
-  script_tag(name: "summary", value: "Check the version of java");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "The java-1.6.0-openjdk packages provide the OpenJDK 6 Java Runtime
+  script_name("CentOS Update for java CESA-2015:0085 centos5");
+  script_tag(name:"summary", value:"Check the version of java");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The java-1.6.0-openjdk packages provide the OpenJDK 6 Java Runtime
 Environment and the OpenJDK 6 Java Software Development Kit.
 
 A flaw was found in the way the Hotspot component in OpenJDK verified
@@ -85,13 +85,13 @@ application or applet could possibly use this flaw to bypass certain Java
 sandbox restrictions. (CVE-2014-6587)
 
 Multiple boundary check flaws were found in the font parsing code in the 2D
-component in OpenJDK. A specially crafted font file could allo ... 
+component in OpenJDK. A specially crafted font file could allo ...
 
-  Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "java on CentOS 5");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "CESA", value: "2015:0085");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2015-January/020898.html");
+  Description truncated, please see the referenced URL(s) for more information.");
+  script_tag(name:"affected", value:"java on CentOS 5");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_xref(name:"CESA", value:"2015:0085");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2015-January/020898.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
   script_category(ACT_GATHER_INFO);
@@ -105,12 +105,11 @@ component in OpenJDK. A specially crafted font file could allo ...
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS5")
 {
@@ -145,6 +144,6 @@ if(release == "CentOS5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

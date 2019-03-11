@@ -23,8 +23,28 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "stunnel is a socket wrapper which can provide SSL (Secure Sockets Layer)
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.881712");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2013-04-15 10:13:31 +0530 (Mon, 15 Apr 2013)");
+  script_cve_id("CVE-2013-1762");
+  script_tag(name:"cvss_base", value:"6.6");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:C");
+  script_name("CentOS Update for stunnel CESA-2013:0714 centos6");
+
+  script_xref(name:"CESA", value:"2013:0714");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-April/019681.html");
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for stunnel");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
+  script_family("CentOS Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS6");
+  script_tag(name:"affected", value:"stunnel on CentOS 6");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_tag(name:"insight", value:"stunnel is a socket wrapper which can provide SSL (Secure Sockets Layer)
   support to ordinary applications. For example, it can be used in
   conjunction with imapd to create an SSL-secure IMAP server.
 
@@ -36,48 +56,20 @@ tag_insight = "stunnel is a socket wrapper which can provide SSL (Secure Sockets
   tricking a user into using a malicious proxy. (CVE-2013-1762)
 
   All stunnel users should upgrade to this updated package, which contains a
-  backported patch to correct this issue.";
-
-
-tag_affected = "stunnel on CentOS 6";
-tag_solution = "Please Install the Updated Packages.";
-
-if(description)
-{
-  script_oid("1.3.6.1.4.1.25623.1.0.881712");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
-  script_tag(name:"creation_date", value:"2013-04-15 10:13:31 +0530 (Mon, 15 Apr 2013)");
-  script_cve_id("CVE-2013-1762");
-  script_tag(name:"cvss_base", value:"6.6");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:C");
-  script_name("CentOS Update for stunnel CESA-2013:0714 centos6 ");
-
-  script_xref(name: "CESA", value: "2013:0714");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2013-April/019681.html");
-  script_tag(name: "summary" , value: "Check for the Version of stunnel");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
-  script_family("CentOS Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS6");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  backported patch to correct this issue.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS6")
 {
@@ -88,6 +80,6 @@ if(release == "CentOS6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -23,8 +23,28 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "HAProxy provides high availability, load balancing, and proxying for TCP
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.881739");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2013-05-31 09:51:21 +0530 (Fri, 31 May 2013)");
+  script_cve_id("CVE-2013-1912");
+  script_tag(name:"cvss_base", value:"5.1");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
+  script_name("CentOS Update for haproxy CESA-2013:0868 centos6");
+
+  script_xref(name:"CESA", value:"2013:0868");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-May/019749.html");
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for haproxy");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
+  script_family("CentOS Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS6");
+  script_tag(name:"affected", value:"haproxy on CentOS 6");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_tag(name:"insight", value:"HAProxy provides high availability, load balancing, and proxying for TCP
   and HTTP-based applications.
 
   A buffer overflow flaw was found in the way HAProxy handled pipelined HTTP
@@ -44,48 +64,20 @@ tag_insight = "HAProxy provides high availability, load balancing, and proxying 
   https://access.redhat.com/support/offerings/techpreview
 
   All users of haproxy are advised to upgrade to this updated package, which
-  contains a backported patch to correct this issue.";
-
-
-tag_affected = "haproxy on CentOS 6";
-tag_solution = "Please Install the Updated Packages.";
-
-if(description)
-{
-  script_oid("1.3.6.1.4.1.25623.1.0.881739");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
-  script_tag(name:"creation_date", value:"2013-05-31 09:51:21 +0530 (Fri, 31 May 2013)");
-  script_cve_id("CVE-2013-1912");
-  script_tag(name:"cvss_base", value:"5.1");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
-  script_name("CentOS Update for haproxy CESA-2013:0868 centos6 ");
-
-  script_xref(name: "CESA", value: "2013:0868");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2013-May/019749.html");
-  script_tag(name:"summary", value:"Check for the Version of haproxy");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
-  script_family("CentOS Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS6");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  contains a backported patch to correct this issue.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS6")
 {
@@ -96,6 +88,6 @@ if(release == "CentOS6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

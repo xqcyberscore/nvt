@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for kernel CESA-2016:2006 centos6 
+# CentOS Update for kernel CESA-2016:2006 centos6
 #
 # Authors:
 # System Generated Check
@@ -26,28 +26,27 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882574");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-10-06 06:55:55 +0200 (Thu, 06 Oct 2016)");
   script_cve_id("CVE-2016-4470", "CVE-2016-5829");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
-  script_name("CentOS Update for kernel CESA-2016:2006 centos6 ");
-  script_tag(name: "summary", value: "Check the version of kernel");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "The kernel packages contain the Linux 
+  script_name("CentOS Update for kernel CESA-2016:2006 centos6");
+  script_tag(name:"summary", value:"Check the version of kernel");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The kernel packages contain the Linux
 kernel, the core of any Linux operating system.
 
 Security Fix(es):
 
-* A flaw was found in the Linux kernel's keyring handling code, where in
+  * A flaw was found in the Linux kernel's keyring handling code, where in
 key_reject_and_link() an uninitialized variable would eventually lead to
 arbitrary free address which could allow attacker to use a use-after-free
 style attack. (CVE-2016-4470, Important)
 
-* A heap-based buffer overflow vulnerability was found in the Linux
+  * A heap-based buffer overflow vulnerability was found in the Linux
 kernel's hiddev driver. This flaw could allow a local attacker to corrupt
 kernel memory, possible privilege escalation or crashing the system.
 (CVE-2016-5829, Moderate)
@@ -56,7 +55,7 @@ The CVE-2016-4470 issue was discovered by David Howells (Red Hat Inc.).
 
 Bug Fix(es):
 
-* Previously, when two NFS shares with different security settings were
+  * Previously, when two NFS shares with different security settings were
 mounted, the I/O operations to the kerberos-authenticated mount caused the
 RPC_CRED_KEY_EXPIRE_SOON parameter to be set, but the parameter was not
 unset when performing the I/O operations on the sec=sys mount.
@@ -66,14 +65,14 @@ NO_CRKEY_TIMEOUT parameter to the auth- au_flags field. As a result, NFS
 shares with different security settings are now handled as expected.
 (BZ#1366962)
 
-* In some circumstances, resetting a Fibre Channel over Ethernet (FCoE)
+  * In some circumstances, resetting a Fibre Channel over Ethernet (FCoE)
 interface could lead to a kernel panic, due to invalid information
 extracted from the FCoE header. This update adds santiy checking to the cpu
 number extracted from the FCoE header. This ensures that subsequent
 operations address a valid cpu, and eliminates the kernel panic.
 (BZ#1359036)
 
-* Prior to this update, the following problems occurred with the way GSF2
+  * Prior to this update, the following problems occurred with the way GSF2
 transitioned files and directories from the 'unlinked' state to the 'free'
 state:
 
@@ -92,16 +91,16 @@ With this update, the transition from 'unlinked' to 'free' state has been
 fixed. As a result, none of these three problems occur anymore.
 (BZ#1359037)
 
-* Previously, the GFS2 file system in some cases became unresponsive due to
+  * Previously, the GFS2 file system in some cases became unresponsive due to
 lock dependency problems between inodes and the cluster lock. This occurred
-most frequently on nearly full file systems where files and ... 
+most frequently on nearly full file systems where files and ...
 
-  Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "kernel on CentOS 6");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  Description truncated, please see the referenced URL(s) for more information.");
+  script_tag(name:"affected", value:"kernel on CentOS 6");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "CESA", value: "2016:2006");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2016-October/022117.html");
+  script_xref(name:"CESA", value:"2016:2006");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2016-October/022117.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -114,12 +113,11 @@ most frequently on nearly full file systems where files and ...
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS6")
 {
@@ -184,6 +182,6 @@ if(release == "CentOS6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

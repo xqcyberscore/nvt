@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for firefox CESA-2015:1207 centos6 
+# CentOS Update for firefox CESA-2015:1207 centos6
 #
 # Authors:
 # System Generated Check
@@ -26,7 +26,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882216");
-  script_version("$Revision: 14050 $");
+  script_version("$Revision: 14058 $");
   script_cve_id("CVE-2015-2722", "CVE-2015-2724", "CVE-2015-2725", "CVE-2015-2727",
                 "CVE-2015-2728", "CVE-2015-2729", "CVE-2015-2731", "CVE-2015-2733",
                 "CVE-2015-2734", "CVE-2015-2735", "CVE-2015-2736", "CVE-2015-2737",
@@ -34,14 +34,13 @@ if(description)
                 "CVE-2015-2743");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-07-07 06:42:03 +0200 (Tue, 07 Jul 2015)");
   script_tag(name:"qod_type", value:"package");
-  script_name("CentOS Update for firefox CESA-2015:1207 centos6 ");
-  script_tag(name: "summary", value: "Check the version of firefox");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-  of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "Mozilla Firefox is an open source web
+  script_name("CentOS Update for firefox CESA-2015:1207 centos6");
+  script_tag(name:"summary", value:"Check the version of firefox");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Mozilla Firefox is an open source web
   browser. XULRunner provides the XUL Runtime environment for Mozilla Firefox.
 
 Several flaws were found in the processing of malformed web content. A web
@@ -69,12 +68,11 @@ Ronald Crane, and Jonas Jenwald as the original reporters of these issues.
 
 All Firefox users should upgrade to these updated packages, which contain
 Firefox version 38.1 ESR, which corrects these issues. After installing the
-update, Firefox must be restarted for the changes to take effect.
-");
-  script_tag(name: "affected", value: "firefox on CentOS 6");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "CESA", value: "2015:1207");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2015-July/021233.html");
+update, Firefox must be restarted for the changes to take effect.");
+  script_tag(name:"affected", value:"firefox on CentOS 6");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_xref(name:"CESA", value:"2015:1207");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2015-July/021233.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -87,12 +85,11 @@ update, Firefox must be restarted for the changes to take effect.
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS6")
 {
@@ -103,6 +100,6 @@ if(release == "CentOS6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

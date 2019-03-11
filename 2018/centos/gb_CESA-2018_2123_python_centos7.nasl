@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2018_2123_python_centos7.nasl 14050 2019-03-08 09:08:09Z cfischer $
+# $Id: gb_CESA-2018_2123_python_centos7.nasl 14058 2019-03-08 13:25:52Z cfischer $
 #
-# CentOS Update for python CESA-2018:2123 centos7 
+# CentOS Update for python CESA-2018:2123 centos7
 #
 # Authors:
 # System Generated Check
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882919");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-07-14 05:51:18 +0200 (Sat, 14 Jul 2018)");
   script_cve_id("CVE-2016-2183");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
-  script_name("CentOS Update for python CESA-2018:2123 centos7 ");
+  script_name("CentOS Update for python CESA-2018:2123 centos7");
   script_tag(name:"summary", value:"Check the version of python");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Python is an interpreted, interactive,
@@ -45,7 +45,7 @@ if(description)
 
 Security Fix(es):
 
-* A flaw was found in the way the DES/3DES cipher was used as part of the
+  * A flaw was found in the way the DES/3DES cipher was used as part of the
 TLS/SSL protocol. A man-in-the-middle attacker could use this flaw to
 recover some plaintext data by capturing large amounts of encrypted traffic
 between TLS/SSL server and client if the communication used a DES/3DES
@@ -56,13 +56,12 @@ suites by default.
 
 Red Hat would like to thank OpenVPN for reporting this issue. Upstream
 acknowledges Karthikeyan Bhargavan (Inria) and Gaëtan Leurent (Inria) as
-the original reporters.
-");
+the original reporters.");
   script_tag(name:"affected", value:"python on CentOS 7");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"CESA", value:"2018:2123");
-  script_xref(name:"URL" , value:"http://lists.centos.org/pipermail/centos-announce/2018-July/022964.html");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2018-July/022964.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -75,12 +74,11 @@ the original reporters.
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS7")
 {

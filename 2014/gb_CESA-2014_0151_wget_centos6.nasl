@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for wget CESA-2014:0151 centos6 
+# CentOS Update for wget CESA-2014:0151 centos6
 #
 # Authors:
 # System Generated Check
@@ -23,20 +23,19 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.881878");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14056 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-02-13 11:41:37 +0530 (Thu, 13 Feb 2014)");
   script_cve_id("CVE-2010-2252");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_name("CentOS Update for wget CESA-2014:0151 centos6 ");
+  script_name("CentOS Update for wget CESA-2014:0151 centos6");
 
-  tag_insight = "The wget package provides the GNU Wget file retrieval utility for HTTP,
+  script_tag(name:"affected", value:"wget on CentOS 6");
+  script_tag(name:"insight", value:"The wget package provides the GNU Wget file retrieval utility for HTTP,
 HTTPS, and FTP protocols. Wget provides various useful features, such as
 the ability to work in the background while the user is logged out,
 recursive retrieval of directories, file name wildcard matching or updating
@@ -56,29 +55,20 @@ start-up file.
 
 This update also fixes the following bugs:
 
-* Prior to this update, the wget package did not recognize HTTPS SSL
+  * Prior to this update, the wget package did not recognize HTTPS SSL
 certificates with alternative names (subjectAltName) specified in the
 certificate as valid. As a consequence, running the wget command failed
 with a certificate error. This update fixes wget to recognize such
 certificates as valid. (BZ#1060113)
 
 All users of wget are advised to upgrade to this updated package, which
-contain backported patches to correct these issues.
-";
-
-  tag_affected = "wget on CentOS 6";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+contain backported patches to correct these issues.");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "CESA", value: "2014:0151");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2014-February/020145.html");
-  script_tag(name:"summary", value:"Check for the Version of wget");
+  script_xref(name:"CESA", value:"2014:0151");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2014-February/020145.html");
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for wget");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
@@ -87,15 +77,14 @@ contain backported patches to correct these issues.
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS6")
 {
@@ -106,6 +95,6 @@ if(release == "CentOS6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netwave_inf_disc_vuln.nasl 12966 2019-01-08 09:04:10Z ckuersteiner $
+# $Id: gb_netwave_inf_disc_vuln.nasl 14078 2019-03-11 03:25:53Z ckuersteiner $
 #
 # Netwave IP Camera Information Disclosure Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113254");
-  script_version("$Revision: 12966 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-08 10:04:10 +0100 (Tue, 08 Jan 2019) $");
+  script_version("$Revision: 14078 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 04:25:53 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-08-28 12:50:00 +0200 (Tue, 28 Aug 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -60,7 +60,7 @@ if( description )
 
   script_tag(name:"affected", value:"All versions of Netwave IP camera.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 08th January, 2019.
+  script_tag(name:"solution", value:"No known solution is available as of 11th March, 2019.
   Information regarding this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://github.com/SadFud/Exploits/tree/master/Real%20World/SCADA%20-%20IOT%20Systems/CVE-2018-11653");

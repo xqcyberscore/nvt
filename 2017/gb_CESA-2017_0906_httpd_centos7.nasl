@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for httpd CESA-2017:0906 centos7 
+# CentOS Update for httpd CESA-2017:0906 centos7
 #
 # Authors:
 # System Generated Check
@@ -26,33 +26,32 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882692");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-04-14 06:30:21 +0200 (Fri, 14 Apr 2017)");
   script_cve_id("CVE-2016-0736", "CVE-2016-2161", "CVE-2016-8743");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
-  script_name("CentOS Update for httpd CESA-2017:0906 centos7 ");
-  script_tag(name: "summary", value: "Check the version of httpd");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "The httpd packages provide the Apache HTTP 
+  script_name("CentOS Update for httpd CESA-2017:0906 centos7");
+  script_tag(name:"summary", value:"Check the version of httpd");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The httpd packages provide the Apache HTTP
 Server, a powerful, efficient, and extensible web server.
 
 Security Fix(es):
 
-* It was discovered that the mod_session_crypto module of httpd did not use
+  * It was discovered that the mod_session_crypto module of httpd did not use
 any mechanisms to verify integrity of the encrypted session data stored in
 the user's browser. A remote attacker could use this flaw to decrypt and
 modify session data using a padding oracle attack. (CVE-2016-0736)
 
-* It was discovered that the mod_auth_digest module of httpd did not
+  * It was discovered that the mod_auth_digest module of httpd did not
 properly check for memory allocation failures. A remote attacker could use
 this flaw to cause httpd child processes to repeatedly crash if the server
 used HTTP digest authentication. (CVE-2016-2161)
 
-* It was discovered that the HTTP parser in httpd incorrectly allowed
+  * It was discovered that the HTTP parser in httpd incorrectly allowed
 certain characters not permitted by the HTTP protocol specification to
 appear unencoded in HTTP request headers. If httpd was used in conjunction
 with a proxy or backend server that interpreted those characters
@@ -67,7 +66,7 @@ parsing. However, such setting also re-introduces the CVE-2016-8743 issue.
 
 Bug Fix(es):
 
-* When waking up child processes during a graceful restart, the httpd
+  * When waking up child processes during a graceful restart, the httpd
 parent process could attempt to open more connections than necessary if a
 large number of child processes had been active prior to the restart.
 Consequently, a graceful restart could take a long time to complete. With
@@ -75,25 +74,24 @@ this update, httpd has been fixed to limit the number of connections opened
 during a graceful restart to the number of active children, and the
 described problem no longer occurs. (BZ#1420002)
 
-* Previously, httpd running in a container returned the 500 HTTP status
+  * Previously, httpd running in a container returned the 500 HTTP status
 code (Internal Server Error) when a connection to a WebSocket server was
 closed. As a consequence, the httpd server failed to deliver the correct
 HTTP status and data to a client. With this update, httpd correctly handles
 all proxied requests to the WebSocket server, and the described problem no
 longer occurs. (BZ#1429947)
 
-* In a configuration using LDAP authentication with the mod_authnz_ldap
+  * In a configuration using LDAP authentication with the mod_authnz_ldap
 module, the name set using the AuthLDAPBindDN directive was not correctly
 used to bind to the LDAP server for all queries. Consequently,
 authorization attempts failed. The LDAP modules have been fixed to ensure
 the configured name is correctly bound for LDAP queries, and authorization
-using LDAP no longer fails. (BZ#1420047)
-");
-  script_tag(name: "affected", value: "httpd on CentOS 7");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+using LDAP no longer fails. (BZ#1420047)");
+  script_tag(name:"affected", value:"httpd on CentOS 7");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "CESA", value: "2017:0906");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2017-April/022380.html");
+  script_xref(name:"CESA", value:"2017:0906");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2017-April/022380.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -106,12 +104,11 @@ using LDAP no longer fails. (BZ#1420047)
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS7")
 {
@@ -164,6 +161,6 @@ if(release == "CentOS7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

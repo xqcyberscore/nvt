@@ -29,13 +29,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882978");
-  script_version("$Revision: 14050 $");
+  script_version("$Revision: 14058 $");
   script_cve_id("CVE-2018-1000805");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-12-18 07:37:43 +0100 (Tue, 18 Dec 2018)");
-  script_name("CentOS Update for python-paramiko CESA-2018:3347 centos7 ");
+  script_name("CentOS Update for python-paramiko CESA-2018:3347 centos7");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
@@ -43,7 +43,7 @@ if(description)
   script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS7");
 
   script_xref(name:"CESA", value:"2018:3347");
-  script_xref(name:"URL" , value:"http://lists.centos.org/pipermail/centos-announce/2018-December/023119.html");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2018-December/023119.html");
 
   script_tag(name:"summary", value:"The remote host is missing an update for the 'python-paramiko'
   package(s) announced via the CESA-2018:3347 advisory.");
@@ -59,13 +59,12 @@ an encrypted tunnel.
 
 Security Fix(es):
 
-* python-paramiko: Authentication bypass in auth_handler.py
+  * python-paramiko: Authentication bypass in auth_handler.py
 (CVE-2018-1000805)
 
 For more details about the security issue(s), including the impact, a CVSS
 score, and other related information, refer to the CVE page(s) listed in
-the References section.
-");
+the References section.");
 
   script_tag(name:"affected", value:"python-paramiko on CentOS 7.");
 

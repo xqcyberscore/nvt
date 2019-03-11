@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for golang CESA-2016:1538 centos7 
+# CentOS Update for golang CESA-2016:1538 centos7
 #
 # Authors:
 # System Generated Check
@@ -26,18 +26,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882533");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-08-08 15:11:58 +0530 (Mon, 08 Aug 2016)");
   script_cve_id("CVE-2016-5386");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
-  script_name("CentOS Update for golang CESA-2016:1538 centos7 ");
-  script_tag(name: "summary", value: "Check the version of golang");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "The golang packages provide the 
+  script_name("CentOS Update for golang CESA-2016:1538 centos7");
+  script_tag(name:"summary", value:"Check the version of golang");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The golang packages provide the
 Go programming language compiler.
 
 The following packages have been upgraded to a newer upstream version:
@@ -45,7 +44,7 @@ golang (1.6.3). (BZ#1346331)
 
 Security Fix(es):
 
-* An input-validation flaw was discovered in the Go programming language
+  * An input-validation flaw was discovered in the Go programming language
 built in CGI implementation, which set the environment variable
 'HTTP_PROXY' using the incoming 'Proxy' HTTP-request header. The
 environment variable 'HTTP_PROXY' is used by numerous web clients,
@@ -55,13 +54,12 @@ application ran, an attacker could specify a proxy server which the
 application then used for subsequent outgoing requests, allowing a
 man-in-the-middle attack. (CVE-2016-5386)
 
-Red Hat would like to thank Scott Geary (VendHQ) for reporting this issue.
-");
-  script_tag(name: "affected", value: "golang on CentOS 7");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+Red Hat would like to thank Scott Geary (VendHQ) for reporting this issue.");
+  script_tag(name:"affected", value:"golang on CentOS 7");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "CESA", value: "2016:1538");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2016-August/022005.html");
+  script_xref(name:"CESA", value:"2016:1538");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2016-August/022005.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -74,12 +72,11 @@ Red Hat would like to thank Scott Geary (VendHQ) for reporting this issue.
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS7")
 {
@@ -120,6 +117,6 @@ if(release == "CentOS7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

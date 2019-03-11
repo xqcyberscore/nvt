@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_schneider_indusoft_http_detect.nasl 10888 2018-08-10 12:08:02Z cfischer $
+# $Id: gb_schneider_indusoft_http_detect.nasl 14057 2019-03-08 13:02:00Z jschulte $
 #
 # Schneider Electric InduSoft Web Studio Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141011");
-  script_version("$Revision: 10888 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 14057 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:02:00 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-04-19 13:02:45 +0700 (Thu, 19 Apr 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -40,8 +40,8 @@ if(description)
 
   script_tag(name:"summary", value:"Detection of Schneider Electric InduSoft Web Studio.
 
-The script sends a connection request to the server and attempts to detect Schneider Electric InduSoft Web Studio
-and to extract its version.");
+  The script sends a connection request to the server and attempts to detect Schneider Electric InduSoft Web Studio
+  and to extract its version.");
 
   script_category(ACT_GATHER_INFO);
 
@@ -56,7 +56,6 @@ and to extract its version.");
   exit(0);
 }
 
-include("cpe.inc");
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -66,24 +65,20 @@ port = get_http_port(default: 80);
 res = http_get_cache(port: port, item: "/");
 
 if ("ISSymbol1.ProductName" >< res && "InduSoft Web Studio" >< res) {
+  set_kb_item(name: "schneider_indusoft/installed", value: TRUE);
+  set_kb_item(name: "schneider_indusoft/http/detected", value: TRUE);
+
   version = "unknown";
 
   vers = eregmatch(pattern: 'ProductVersion = "([0-9.]+)', string: res);
   if (!isnull(vers[1]))
     version = vers[1];
 
-  set_kb_item(name: "schneider_indusoft/installed", value: TRUE);
+  set_kb_item(name: "schneider_indusoft/http/version", value: version);
+  set_kb_item(name: "schneider_indusoft/http/concluded", value: vers[0]);
+  set_kb_item(name: "schneider_indusoft/http/location", value: "/");
+  set_kb_item(name: "schneider_indusoft/http/port", value: port);
 
-  cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/a:schneider_electric:indusoft_web_studio:");
-  if (!cpe)
-    cpe = "cpe:/a:schneider_electric:indusoft_web_studio";
-
-  register_product(cpe: cpe, location: "/", port: port, service: "www");
-
-  log_message(data: build_detection_report(app: "Schneider Electric InduSoft Web Soft", version: version,
-                                           install: "/", cpe: cpe, concluded: vers[0]),
-              port: port);
-  exit(0);
 }
 
 exit(0);

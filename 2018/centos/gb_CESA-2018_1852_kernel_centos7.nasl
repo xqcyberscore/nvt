@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2018_1852_kernel_centos7.nasl 14050 2019-03-08 09:08:09Z cfischer $
+# $Id: gb_CESA-2018_1852_kernel_centos7.nasl 14058 2019-03-08 13:25:52Z cfischer $
 #
-# CentOS Update for kernel CESA-2018:1852 centos7 
+# CentOS Update for kernel CESA-2018:1852 centos7
 #
 # Authors:
 # System Generated Check
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882912");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-06-17 05:52:38 +0200 (Sun, 17 Jun 2018)");
   script_cve_id("CVE-2018-3665");
   script_tag(name:"cvss_base", value:"4.7");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
-  script_name("CentOS Update for kernel CESA-2018:1852 centos7 ");
+  script_name("CentOS Update for kernel CESA-2018:1852 centos7");
   script_tag(name:"summary", value:"Check the version of kernel");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The kernel packages contain the Linux kernel, the core of any Linux
@@ -42,7 +42,7 @@ operating system.
 
 Security Fix(es):
 
-* Kernel: FPU state information leakage via lazy FPU restore
+  * Kernel: FPU state information leakage via lazy FPU restore
 (CVE-2018-3665)
 
 For more details about the security issue(s), including the impact, a CVSS
@@ -117,14 +117,14 @@ kernel-doc-3.10.0-862.3.3.el7.noarch.rpm
 x86_64:
 kernel-3.10.0-862.3.3.el7.x86_64.rpm
 kernel-debug-3.10.0-862.3.3.el7.x86_64.rpm
-kernel-debug-debuginfo-3.10.0-862.3 ... 
+kernel-debug-debuginfo-3.10.0-862.3 ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"affected", value:"kernel on CentOS 7");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"CESA", value:"2018:1852");
-  script_xref(name:"URL" , value:"http://lists.centos.org/pipermail/centos-announce/2018-June/022923.html");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2018-June/022923.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -137,12 +137,11 @@ kernel-debug-debuginfo-3.10.0-862.3 ...
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS7")
 {

@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for postgresql CESA-2012:0677 centos5 
+# CentOS Update for postgresql CESA-2012:0677 centos5
 #
 # Authors:
 # System Generated Check
@@ -23,8 +23,28 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "PostgreSQL is an advanced object-relational database management system
+if(description)
+{
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-May/018647.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.881159");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2012-07-30 16:25:39 +0530 (Mon, 30 Jul 2012)");
+  script_cve_id("CVE-2012-0866", "CVE-2012-0868");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_xref(name:"CESA", value:"2012:0677");
+  script_name("CentOS Update for postgresql CESA-2012:0677 centos5");
+
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for postgresql");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
+  script_family("CentOS Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS5");
+  script_tag(name:"affected", value:"postgresql on CentOS 5");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_tag(name:"insight", value:"PostgreSQL is an advanced object-relational database management system
   (DBMS).
 
   The pg_dump utility inserted object names literally into comments in the
@@ -32,58 +52,29 @@ tag_insight = "PostgreSQL is an advanced object-relational database management s
   object whose name includes a newline followed by an SQL command. This SQL
   command might then be executed by a privileged user during later restore of
   the backup dump, allowing privilege escalation. (CVE-2012-0868)
-  
+
   CREATE TRIGGER did not do a permissions check on the trigger function to
   be called. This could possibly allow an authenticated database user to
   call a privileged trigger function on data of their choosing.
   (CVE-2012-0866)
-  
+
   All PostgreSQL users are advised to upgrade to these updated packages,
   which contain backported patches to correct these issues. If the postgresql
   service is running, it will be automatically restarted after installing
-  this update.";
-
-tag_affected = "postgresql on CentOS 5";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2012-May/018647.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.881159");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
-  script_tag(name:"creation_date", value:"2012-07-30 16:25:39 +0530 (Mon, 30 Jul 2012)");
-  script_cve_id("CVE-2012-0866", "CVE-2012-0868");
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_xref(name: "CESA", value: "2012:0677");
-  script_name("CentOS Update for postgresql CESA-2012:0677 centos5 ");
-
-  script_tag(name: "summary" , value: "Check for the Version of postgresql");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_family("CentOS Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS5");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  this update.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS5")
 {
@@ -148,6 +139,6 @@ if(release == "CentOS5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

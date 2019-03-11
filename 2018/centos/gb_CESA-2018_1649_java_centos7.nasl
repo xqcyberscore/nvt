@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2018_1649_java_centos7.nasl 14050 2019-03-08 09:08:09Z cfischer $
+# $Id: gb_CESA-2018_1649_java_centos7.nasl 14058 2019-03-08 13:25:52Z cfischer $
 #
-# CentOS Update for java CESA-2018:1649 centos7 
+# CentOS Update for java CESA-2018:1649 centos7
 #
 # Authors:
 # System Generated Check
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882882");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-05-23 05:40:26 +0200 (Wed, 23 May 2018)");
   script_cve_id("CVE-2018-3639");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
-  script_name("CentOS Update for java CESA-2018:1649 centos7 ");
+  script_name("CentOS Update for java CESA-2018:1649 centos7");
   script_tag(name:"summary", value:"Check the version of java");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The java-1.8.0-openjdk packages provide the OpenJDK 8 Java Runtime
@@ -42,7 +42,7 @@ Environment and the OpenJDK 8 Java Software Development Kit.
 
 Security Fix(es):
 
-* An industry-wide issue was found in the way many modern microprocessor
+  * An industry-wide issue was found in the way many modern microprocessor
 designs have implemented speculative execution of Load &amp  Store instructions
 (a commonly used performance optimization). It relies on the presence of a
 precisely-defined instruction sequence in the privileged code as well as
@@ -56,13 +56,12 @@ side-channel attacks. (CVE-2018-3639)
 Note: This is the OpenJDK side of the CVE-2018-3639 mitigation.
 
 Red Hat would like to thank Ken Johnson (Microsoft Security Response
-Center) and Jann Horn (Google Project Zero) for reporting this issue.
-");
+Center) and Jann Horn (Google Project Zero) for reporting this issue.");
   script_tag(name:"affected", value:"java on CentOS 7");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"CESA", value:"2018:1649");
-  script_xref(name:"URL" , value:"http://lists.centos.org/pipermail/centos-announce/2018-May/022839.html");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2018-May/022839.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -75,12 +74,11 @@ Center) and Jann Horn (Google Project Zero) for reporting this issue.
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS7")
 {

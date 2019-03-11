@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for dnsmasq CESA-2013:0277 centos6 
+# CentOS Update for dnsmasq CESA-2013:0277 centos6
 #
 # Authors:
 # System Generated Check
@@ -23,8 +23,28 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "The dnsmasq packages contain Dnsmasq, a lightweight DNS (Domain Name
+if(description)
+{
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-March/019317.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.881645");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2013-03-12 09:59:32 +0530 (Tue, 12 Mar 2013)");
+  script_cve_id("CVE-2012-3411");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_xref(name:"CESA", value:"2013:0277");
+  script_name("CentOS Update for dnsmasq CESA-2013:0277 centos6");
+
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for dnsmasq");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
+  script_family("CentOS Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS6");
+  script_tag(name:"affected", value:"dnsmasq on CentOS 6");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_tag(name:"insight", value:"The dnsmasq packages contain Dnsmasq, a lightweight DNS (Domain Name
   Server) forwarder and DHCP (Dynamic Host Configuration Protocol) server.
 
   It was discovered that dnsmasq, when used in combination with certain
@@ -32,76 +52,46 @@ tag_insight = "The dnsmasq packages contain Dnsmasq, a lightweight DNS (Domain N
   network interfaces that were intended to be prohibited. A remote,
   unauthenticated attacker could exploit this flaw to cause a denial of
   service via DNS amplification attacks. (CVE-2012-3411)
-  
+
   In order to fully address this issue, libvirt package users are advised to
   install updated libvirt packages. Refer to RHSA-2013:0276 for additional
   information.
-  
+
   This update also fixes the following bug:
-  
+
   * Due to a regression, the lease change script was disabled. Consequently,
   the &quot;dhcp-script&quot; option in the /etc/dnsmasq.conf configuration file did
   not work. This update corrects the problem and the &quot;dhcp-script&quot; option now
   works as expected. (BZ#815819)
-  
+
   This update also adds the following enhancements:
-  
+
   * Prior to this update, dnsmasq did not validate that the tftp directory
   given actually existed and was a directory. Consequently, configuration
   errors were not immediately reported on startup. This update improves the
   code to validate the tftp root directory option. As a result, fault finding
   is simplified especially when dnsmasq is called by external processes such
   as libvirt. (BZ#824214)
-  
+
   * When two or more dnsmasq processes were running with DHCP enabled on one
   interface, DHCP RELEASE packets were sometimes lost. Consequently, when two
   or more dnsmasq processes were running with DHCP enabled on one interface,
-  releasing IP addresses sometimes failed. This  ... 
+  releasing IP addresses sometimes failed. This  ...
 
-  Description truncated, for more information please check the Reference URL";
-
-
-tag_affected = "dnsmasq on CentOS 6";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2013-March/019317.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.881645");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
-  script_tag(name:"creation_date", value:"2013-03-12 09:59:32 +0530 (Tue, 12 Mar 2013)");
-  script_cve_id("CVE-2012-3411");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_xref(name: "CESA", value: "2013:0277");
-  script_name("CentOS Update for dnsmasq CESA-2013:0277 centos6 ");
-
-  script_tag(name:"summary", value:"Check for the Version of dnsmasq");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
-  script_family("CentOS Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS6");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS6")
 {
@@ -118,6 +108,6 @@ if(release == "CentOS6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

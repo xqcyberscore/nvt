@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for glibc CESA-2012:0058 centos6 
+# CentOS Update for glibc CESA-2012:0058 centos6
 #
 # Authors:
 # System Generated Check
@@ -23,8 +23,28 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "The glibc packages contain the standard C libraries used by multiple
+if(description)
+{
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-January/018397.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.881117");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2012-07-30 16:12:09 +0530 (Mon, 30 Jul 2012)");
+  script_cve_id("CVE-2009-5029", "CVE-2011-4609");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_xref(name:"CESA", value:"2012:0058");
+  script_name("CentOS Update for glibc CESA-2012:0058 centos6");
+
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for glibc");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
+  script_family("CentOS Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS6");
+  script_tag(name:"affected", value:"glibc on CentOS 6");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_tag(name:"insight", value:"The glibc packages contain the standard C libraries used by multiple
   programs on the system. These packages contain the standard C and the
   standard math libraries. Without these two libraries, a Linux system cannot
   function properly.
@@ -35,78 +55,49 @@ tag_insight = "The glibc packages contain the standard C libraries used by multi
   glibc, it could cause the application to crash or, potentially, execute
   arbitrary code with the privileges of the user running the application.
   (CVE-2009-5029)
-  
+
   A denial of service flaw was found in the remote procedure call (RPC)
   implementation in glibc. A remote attacker able to open a large number of
   connections to an RPC service that is using the RPC implementation from
   glibc, could use this flaw to make that service use an excessive amount of
   CPU time. (CVE-2011-4609)
-  
+
   This update also fixes the following bugs:
-  
+
   * glibc had incorrect information for numeric separators and groupings for
   specific French, Spanish, and German locales. Therefore, applications
   utilizing glibc's locale support printed numbers with the wrong separators
   and groupings when those locales were in use. With this update, the
   separator and grouping information has been fixed. (BZ#754116)
-  
+
   * The RHBA-2011:1179 glibc update introduced a regression, causing glibc to
   incorrectly parse groups with more than 126 members, resulting in
   applications such as &quot;id&quot; failing to list all the groups a particular user
   was a member of. With this update, group parsing has been fixed.
   (BZ#766484)
-  
+
   * glibc incorrectly allocated too much memory due to a race condition
   within its own malloc routines. This could cause a multi-threaded
   application to allocate more memory than was expected. With this update,
   the race condition has been fixed, and malloc's behavior is now consistent
   with the documentation regarding the MALLOC_ARENA_TEST and MALLOC_ARENA_MAX
   environment variables. (BZ#769594)
-  
+
   Users should upgrade to these updated packages, which contain backported
-  patches to resolve these issues.";
-
-tag_affected = "glibc on CentOS 6";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2012-January/018397.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.881117");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
-  script_tag(name:"creation_date", value:"2012-07-30 16:12:09 +0530 (Mon, 30 Jul 2012)");
-  script_cve_id("CVE-2009-5029", "CVE-2011-4609");
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_xref(name: "CESA", value: "2012:0058");
-  script_name("CentOS Update for glibc CESA-2012:0058 centos6 ");
-
-  script_tag(name: "summary" , value: "Check for the Version of glibc");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_family("CentOS Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS6");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  patches to resolve these issues.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS6")
 {
@@ -153,6 +144,6 @@ if(release == "CentOS6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

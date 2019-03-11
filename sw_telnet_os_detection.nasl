@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_telnet_os_detection.nasl 13624 2019-02-13 10:02:56Z cfischer $
+# $Id: sw_telnet_os_detection.nasl 14075 2019-03-10 16:01:27Z cfischer $
 #
 # Telnet OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111069");
-  script_version("$Revision: 13624 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-13 11:02:56 +0100 (Wed, 13 Feb 2019) $");
+  script_version("$Revision: 14075 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-10 17:01:27 +0100 (Sun, 10 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-12-13 13:00:00 +0100 (Sun, 13 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -219,6 +219,20 @@ if( telnet_has_login_prompt( data:banner ) ) {
 
   if( "Fabric OS" >< banner )
     exit( 0 ); # Covered by gb_brocade_fabricos_telnet_detect.nasl
+
+  # Too generic, e.g.:
+  # hostname login:
+  # nb: Keep at the bottom so the others above are matching first.
+  if( eregmatch( string:banner, pattern:'^\r\n[^ ]+ login: $', icase:FALSE ) )
+    exit( 0 );
+
+  # Seen on e.g. EulerOS. There might be others Distros using the same so we're ignoring this for now...
+  #
+  # Authorized users only. All activities may be monitored and reported.
+  # hostname login:
+  #
+  if( eregmatch( string:banner, pattern:'^\r\nAuthorized users only\\. All activities may be monitored and reported\\.\r\n[^ ]+ login: $', icase:FALSE ) )
+    exit( 0 );
 
   register_unknown_os_banner( banner:banner, banner_type_name:BANNER_TYPE, banner_type_short:"telnet_banner", port:port );
 }

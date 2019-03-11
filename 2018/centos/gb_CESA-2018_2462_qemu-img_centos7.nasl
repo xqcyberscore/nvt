@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2018_2462_qemu-img_centos7.nasl 14050 2019-03-08 09:08:09Z cfischer $
+# $Id: gb_CESA-2018_2462_qemu-img_centos7.nasl 14058 2019-03-08 13:25:52Z cfischer $
 #
-# CentOS Update for qemu-img CESA-2018:2462 centos7 
+# CentOS Update for qemu-img CESA-2018:2462 centos7
 #
 # Authors:
 # System Generated Check
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882939");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-08-21 06:42:12 +0200 (Tue, 21 Aug 2018)");
   script_cve_id("CVE-2018-7550", "CVE-2018-11806");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
-  script_name("CentOS Update for qemu-img CESA-2018:2462 centos7 ");
+  script_name("CentOS Update for qemu-img CESA-2018:2462 centos7");
   script_tag(name:"summary", value:"Check the version of qemu-img");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Kernel-based Virtual Machine (KVM) is a full virtualization solution for
@@ -43,10 +43,10 @@ user-space component for running virtual machines that use KVM.
 
 Security Fix(es):
 
-* QEMU: slirp: heap buffer overflow while reassembling fragmented datagrams
+  * QEMU: slirp: heap buffer overflow while reassembling fragmented datagrams
 (CVE-2018-11806)
 
-* QEMU: i386: multiboot OOB access while loading kernel image
+  * QEMU: i386: multiboot OOB access while loading kernel image
 (CVE-2018-7550)
 
 For more details about the security issue(s), including the impact, a CVSS
@@ -59,16 +59,15 @@ reporting CVE-2018-11806 and Cyrille Chatras (Orange.com) and CERT-CC
 
 Bug Fix(es):
 
-* Previously, live migrating a Windows guest in some cases caused the guest
+  * Previously, live migrating a Windows guest in some cases caused the guest
 to become unresponsive. This update ensures that Real-time Clock (RTC)
 interrupts are not missed, which prevents the problem from occurring.
-(BZ#1596302)
-");
+(BZ#1596302)");
   script_tag(name:"affected", value:"qemu-img on CentOS 7");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"CESA", value:"2018:2462");
-  script_xref(name:"URL" , value:"http://lists.centos.org/pipermail/centos-announce/2018-August/022999.html");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2018-August/022999.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -81,12 +80,11 @@ interrupts are not missed, which prevents the problem from occurring.
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS7")
 {

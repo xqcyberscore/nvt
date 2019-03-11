@@ -23,8 +23,27 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "PHP is an HTML-embedded scripting language commonly used with the Apache
+if(description)
+{
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2011-April/017379.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.880510");
+  script_version("$Revision: 14056 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_xref(name:"CESA", value:"2011:0196");
+  script_cve_id("CVE-2010-3710", "CVE-2010-4156", "CVE-2010-4645");
+  script_name("CentOS Update for php53 CESA-2011:0196 centos5 i386");
+
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for php53");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
+  script_family("CentOS Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS5");
+  script_tag(name:"affected", value:"php53 on CentOS 5");
+  script_tag(name:"insight", value:"PHP is an HTML-embedded scripting language commonly used with the Apache
   HTTP Server.
 
   A flaw was found in the way PHP converted certain floating point values
@@ -32,62 +51,34 @@ tag_insight = "PHP is an HTML-embedded scripting language commonly used with the
   attacker's input in a numeric context, the PHP interpreter could cause high
   CPU usage until the script execution time limit is reached. This issue only
   affected i386 systems. (CVE-2010-4645)
-  
+
   A stack memory exhaustion flaw was found in the way the PHP filter_var()
   function validated email addresses. An attacker could use this flaw to
   crash the PHP interpreter by providing excessively long input to be
   validated as an email address. (CVE-2010-3710)
-  
+
   A memory disclosure flaw was found in the PHP multi-byte string extension.
   If the mb_strcut() function was called with a length argument exceeding the
   input string size, the function could disclose a portion of the PHP
   interpreter's memory. (CVE-2010-4156)
-  
+
   All php53 users should upgrade to these updated packages, which contain
   backported patches to resolve these issues. After installing the updated
-  packages, the httpd daemon must be restarted for the update to take effect.";
-tag_solution = "Please Install the Updated Packages.";
-
-tag_affected = "php53 on CentOS 5";
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2011-April/017379.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.880510");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
-  script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_xref(name: "CESA", value: "2011:0196");
-  script_cve_id("CVE-2010-3710", "CVE-2010-4156", "CVE-2010-4645");
-  script_name("CentOS Update for php53 CESA-2011:0196 centos5 i386");
-
-  script_tag(name:"summary", value:"Check for the Version of php53");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_family("CentOS Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS5");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  packages, the httpd daemon must be restarted for the update to take effect.");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS5")
 {
@@ -218,6 +209,6 @@ if(release == "CentOS5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

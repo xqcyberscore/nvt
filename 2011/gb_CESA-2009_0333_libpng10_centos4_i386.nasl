@@ -23,8 +23,27 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "The libpng packages contain a library of functions for creating and
+if(description)
+{
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2009-April/015812.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.880888");
+  script_version("$Revision: 14056 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_xref(name:"CESA", value:"2009:0333");
+  script_cve_id("CVE-2008-1382", "CVE-2009-0040");
+  script_name("CentOS Update for libpng10 CESA-2009:0333 centos4 i386");
+
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for libpng10");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
+  script_family("CentOS Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS4");
+  script_tag(name:"affected", value:"libpng10 on CentOS 4");
+  script_tag(name:"insight", value:"The libpng packages contain a library of functions for creating and
   manipulating PNG (Portable Network Graphics) image format files.
 
   A flaw was discovered in libpng that could result in libpng trying to
@@ -33,58 +52,30 @@ tag_insight = "The libpng packages contain a library of functions for creating a
   libpng, it could cause the application to crash or, potentially, execute
   arbitrary code with the privileges of the user running the application.
   (CVE-2009-0040)
-  
+
   A flaw was discovered in the way libpng handled PNG images containing
   &quot;unknown&quot; chunks. If an application linked against libpng attempted to
   process a malformed, unknown chunk in a malicious PNG image, it could cause
   the application to crash. (CVE-2008-1382)
-  
+
   Users of libpng and libpng10 should upgrade to these updated packages,
   which contain backported patches to correct these issues. All running
   applications using libpng or libpng10 must be restarted for the update to
-  take effect.";
-tag_solution = "Please Install the Updated Packages.";
-
-tag_affected = "libpng10 on CentOS 4";
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2009-April/015812.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.880888");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
-  script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_xref(name: "CESA", value: "2009:0333");
-  script_cve_id("CVE-2008-1382", "CVE-2009-0040");
-  script_name("CentOS Update for libpng10 CESA-2009:0333 centos4 i386");
-
-  script_tag(name:"summary", value:"Check for the Version of libpng10");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_family("CentOS Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS4");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  take effect.");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS4")
 {
@@ -113,6 +104,6 @@ if(release == "CentOS4")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

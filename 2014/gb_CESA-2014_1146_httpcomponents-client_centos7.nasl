@@ -26,14 +26,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882002");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-09-10 06:19:32 +0200 (Wed, 10 Sep 2014)");
   script_cve_id("CVE-2014-3577", "CVE-2012-6153");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_name("CentOS Update for httpcomponents-client CESA-2014:1146 centos7 ");
-  script_tag(name: "insight", value: "HttpClient is an HTTP/1.1 compliant HTTP
+  script_name("CentOS Update for httpcomponents-client CESA-2014:1146 centos7");
+  script_tag(name:"insight", value:"HttpClient is an HTTP/1.1 compliant HTTP
 agent implementation based on httpcomponents HttpCore.
 
 It was discovered that the HttpClient incorrectly extracted host name from
@@ -119,32 +119,31 @@ https://access.redhat.com/security/team/key/#package
 
 https://www.redhat.com/security/data
 
-  Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "httpcomponents-client on CentOS 7");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  Description truncated, please see the referenced URL(s) for more information.");
+  script_tag(name:"affected", value:"httpcomponents-client on CentOS 7");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name: "CESA", value: "2014:1146");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2014-September/020530.html");
-  script_tag(name:"summary", value:"Check for the Version of httpcomponents-client");
+  script_xref(name:"CESA", value:"2014:1146");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2014-September/020530.html");
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for httpcomponents-client");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS7");
-exit(0);
+  exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS7")
 {
@@ -161,6 +160,6 @@ if(release == "CentOS7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

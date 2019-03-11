@@ -23,8 +23,26 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "Mozilla Firefox is an open source web browser. XULRunner provides the XUL
+if(description)
+{
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2011-September/017714.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.880971");
+  script_version("$Revision: 14056 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2011-09-07 08:58:04 +0200 (Wed, 07 Sep 2011)");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_xref(name:"CESA", value:"2011:1242");
+  script_name("CentOS Update for firefox CESA-2011:1242 centos4 i386");
+
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for firefox");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
+  script_family("CentOS Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS4");
+  script_tag(name:"affected", value:"firefox on CentOS 4");
+  script_tag(name:"insight", value:"Mozilla Firefox is an open source web browser. XULRunner provides the XUL
   Runtime environment for Mozilla Firefox.
 
   It was found that a Certificate Authority (CA) issued a fraudulent HTTPS
@@ -33,51 +51,24 @@ tag_insight = "Mozilla Firefox is an open source web browser. XULRunner provides
   that were issued before July 1, 2011 can be manually re-enabled and used
   again at your own risk in Firefox; however, affected certificates issued
   after this date cannot be re-enabled or used. (BZ#734316)
-  
+
   All Firefox users should upgrade to these updated packages, which contain
   a backported patch. After installing the update, Firefox must be restarted
-  for the changes to take effect.";
-tag_solution = "Please Install the Updated Packages.";
-
-tag_affected = "firefox on CentOS 4";
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2011-September/017714.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.880971");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
-  script_tag(name:"creation_date", value:"2011-09-07 08:58:04 +0200 (Wed, 07 Sep 2011)");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_xref(name: "CESA", value: "2011:1242");
-  script_name("CentOS Update for firefox CESA-2011:1242 centos4 i386");
-
-  script_tag(name:"summary", value:"Check for the Version of firefox");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_family("CentOS Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS4");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  for the changes to take effect.");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS4")
 {
@@ -88,6 +79,6 @@ if(release == "CentOS4")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

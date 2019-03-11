@@ -21,13 +21,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891699");
-  script_version("$Revision: 13950 $");
+  script_version("$Revision: 14086 $");
   script_cve_id("CVE-2019-3824");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1699-1] ldb security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-01 08:31:30 +0100 (Fri, 01 Mar 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 10:05:57 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-03-01 00:00:00 +0100 (Fri, 01 Mar 2019)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

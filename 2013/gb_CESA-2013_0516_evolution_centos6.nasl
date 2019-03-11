@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for evolution CESA-2013:0516 centos6 
+# CentOS Update for evolution CESA-2013:0516 centos6
 #
 # Authors:
 # System Generated Check
@@ -23,8 +23,28 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "Evolution is the GNOME mailer, calendar, contact manager and communication
+if(description)
+{
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-March/019304.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.881642");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2013-03-12 09:59:23 +0530 (Tue, 12 Mar 2013)");
+  script_cve_id("CVE-2011-3201");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_xref(name:"CESA", value:"2013:0516");
+  script_name("CentOS Update for evolution CESA-2013:0516 centos6");
+
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for evolution");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
+  script_family("CentOS Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS6");
+  script_tag(name:"affected", value:"evolution on CentOS 6");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_tag(name:"insight", value:"Evolution is the GNOME mailer, calendar, contact manager and communication
   tool. The components which make up Evolution are tightly integrated with
   one another and act as a seamless personal information-management tool.
 
@@ -34,71 +54,41 @@ tag_insight = "Evolution is the GNOME mailer, calendar, contact manager and comm
   mailto URLs cannot be used to attach certain files, such as hidden files or
   files in hidden directories, files in the /etc/ directory, or files
   specified using a path containing &quot;..&quot;. (CVE-2011-3201)
-  
+
   Red Hat would like to thank Matt McCutchen for reporting this issue.
-  
+
   This update also fixes the following bugs:
-  
+
   * Creating a contact list with contact names encoded in UTF-8 caused these
   names to be displayed in the contact list editor in the ASCII encoding
   instead of UTF-8. This bug has been fixed and the contact list editor now
   displays the names in the correct format. (BZ#707526)
-  
+
   * Due to a bug in the evolution-alarm-notify process, calendar appointment
   alarms did not appear in some types of calendars. The underlying source
   code has been modified and calendar notifications work as expected.
   (BZ#805239)
-  
+
   * An attempt to print a calendar month view as a PDF file caused Evolution
   to terminate unexpectedly. This update applies a patch to fix this bug and
   Evolution no longer crashes in this situation. (BZ#890642)
-  
+
   All evolution users are advised to upgrade to these updated packages, which
   contain backported patches to correct these issues. All running instances
-  of Evolution must be restarted for this update to take effect.";
-
-
-tag_affected = "evolution on CentOS 6";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2013-March/019304.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.881642");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
-  script_tag(name:"creation_date", value:"2013-03-12 09:59:23 +0530 (Tue, 12 Mar 2013)");
-  script_cve_id("CVE-2011-3201");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_xref(name: "CESA", value: "2013:0516");
-  script_name("CentOS Update for evolution CESA-2013:0516 centos6 ");
-
-  script_tag(name: "summary" , value: "Check for the Version of evolution");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
-  script_family("CentOS Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS6");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  of Evolution must be restarted for this update to take effect.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS6")
 {
@@ -145,6 +135,6 @@ if(release == "CentOS6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

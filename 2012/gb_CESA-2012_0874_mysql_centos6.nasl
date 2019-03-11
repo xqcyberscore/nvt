@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for mysql CESA-2012:0874 centos6 
+# CentOS Update for mysql CESA-2012:0874 centos6
 #
 # Authors:
 # System Generated Check
@@ -23,8 +23,28 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "MySQL is a multi-user, multi-threaded SQL database server. It consists of
+if(description)
+{
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-July/018716.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.881061");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2012-07-30 15:59:19 +0530 (Mon, 30 Jul 2012)");
+  script_cve_id("CVE-2012-2102");
+  script_tag(name:"cvss_base", value:"3.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:N/A:P");
+  script_xref(name:"CESA", value:"2012:0874");
+  script_name("CentOS Update for mysql CESA-2012:0874 centos6");
+
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for mysql");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
+  script_family("CentOS Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS6");
+  script_tag(name:"affected", value:"mysql on CentOS 6");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_tag(name:"insight", value:"MySQL is a multi-user, multi-threaded SQL database server. It consists of
   the MySQL server daemon (mysqld) and many client programs and libraries.
 
   A flaw was found in the way MySQL processed HANDLER READ NEXT statements
@@ -32,62 +52,33 @@ tag_insight = "MySQL is a multi-user, multi-threaded SQL database server. It con
   flaw to provide such requests, causing mysqld to crash. This issue only
   caused a temporary denial of service, as mysqld was automatically restarted
   after the crash. (CVE-2012-2102)
-  
+
   This update also adds the following enhancement:
-  
+
   * The InnoDB storage engine is built-in for all architectures. This update
   adds InnoDB Plugin, the InnoDB storage engine as a plug-in for the 32-bit
   x86, AMD64, and Intel 64 architectures. The plug-in offers additional
   features and better performance than when using the built-in InnoDB storage
   engine. Refer to the MySQL documentation, linked to in the References
   section, for information about enabling the plug-in. (BZ#740224)
-  
+
   All MySQL users should upgrade to these updated packages, which add this
   enhancement and contain a backported patch to correct this issue. After
   installing this update, the MySQL server daemon (mysqld) will be restarted
-  automatically.";
-
-tag_affected = "mysql on CentOS 6";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2012-July/018716.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.881061");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
-  script_tag(name:"creation_date", value:"2012-07-30 15:59:19 +0530 (Mon, 30 Jul 2012)");
-  script_cve_id("CVE-2012-2102");
-  script_tag(name:"cvss_base", value:"3.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:N/A:P");
-  script_xref(name: "CESA", value: "2012:0874");
-  script_name("CentOS Update for mysql CESA-2012:0874 centos6 ");
-
-  script_tag(name: "summary" , value: "Check for the Version of mysql");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_family("CentOS Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS6");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  automatically.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS6")
 {
@@ -140,6 +131,6 @@ if(release == "CentOS6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

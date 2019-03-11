@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for kernel CESA-2014:1167 centos6 
+# CentOS Update for kernel CESA-2014:1167 centos6
 #
 # Authors:
 # System Generated Check
@@ -26,36 +26,36 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882012");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-09-10 06:20:23 +0200 (Wed, 10 Sep 2014)");
   script_cve_id("CVE-2014-0205", "CVE-2014-3535", "CVE-2014-3917", "CVE-2014-4667");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_name("CentOS Update for kernel CESA-2014:1167 centos6 ");
-  script_tag(name: "insight", value: "The kernel packages contain the Linux
+  script_name("CentOS Update for kernel CESA-2014:1167 centos6");
+  script_tag(name:"insight", value:"The kernel packages contain the Linux
 kernel, the core of any Linux operating system.
 
-* A flaw was found in the way the Linux kernel's futex subsystem handled
+  * A flaw was found in the way the Linux kernel's futex subsystem handled
 reference counting when requeuing futexes during futex_wait(). A local,
 unprivileged user could use this flaw to zero out the reference counter of
 an inode or an mm struct that backs up the memory area of the futex, which
 could lead to a use-after-free flaw, resulting in a system crash or,
 potentially, privilege escalation. (CVE-2014-0205, Important)
 
-* A NULL pointer dereference flaw was found in the way the Linux kernel's
+  * A NULL pointer dereference flaw was found in the way the Linux kernel's
 networking implementation handled logging while processing certain invalid
 packets coming in via a VxLAN interface. A remote attacker could use this
 flaw to crash the system by sending a specially crafted packet to such an
 interface. (CVE-2014-3535, Important)
 
-* An out-of-bounds memory access flaw was found in the Linux kernel's
+  * An out-of-bounds memory access flaw was found in the Linux kernel's
 system call auditing implementation. On a system with existing audit rules
 defined, a local, unprivileged user could use this flaw to leak kernel
 memory to user space or, potentially, crash the system. (CVE-2014-3917,
 Moderate)
 
-* An integer underflow flaw was found in the way the Linux kernel's Stream
+  * An integer underflow flaw was found in the way the Linux kernel's Stream
 Control Transmission Protocol (SCTP) implementation processed certain
 COOKIE_ECHO packets. By sending a specially crafted SCTP packet, a remote
 attacker could use this flaw to prevent legitimate connections to a
@@ -71,33 +71,31 @@ References section.
 
 All kernel users are advised to upgrade to these updated packages, which
 contain backported patches to correct these issues. The system must be
-rebooted for this update to take effect.
-");
-  script_tag(name: "affected", value: "kernel on CentOS 6");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+rebooted for this update to take effect.");
+  script_tag(name:"affected", value:"kernel on CentOS 6");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name: "CESA", value: "2014:1167");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2014-September/020548.html");
-  script_tag(name:"summary", value:"Check for the Version of kernel");
+  script_xref(name:"CESA", value:"2014:1167");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2014-September/020548.html");
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for kernel");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS6");
-exit(0);
+  exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS6")
 {
@@ -162,6 +160,6 @@ if(release == "CentOS6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

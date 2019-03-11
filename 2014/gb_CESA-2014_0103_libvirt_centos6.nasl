@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for libvirt CESA-2014:0103 centos6 
+# CentOS Update for libvirt CESA-2014:0103 centos6
 #
 # Authors:
 # System Generated Check
@@ -23,20 +23,19 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.881866");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14056 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-01-30 10:44:30 +0530 (Thu, 30 Jan 2014)");
   script_cve_id("CVE-2013-6458", "CVE-2014-1447");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:H/Au:N/C:C/I:C/A:C");
-  script_name("CentOS Update for libvirt CESA-2014:0103 centos6 ");
+  script_name("CentOS Update for libvirt CESA-2014:0103 centos6");
 
-  tag_insight = "The libvirt library is a C API for managing and interacting with the
+  script_tag(name:"affected", value:"libvirt on CentOS 6");
+  script_tag(name:"insight", value:"The libvirt library is a C API for managing and interacting with the
 virtualization capabilities of Linux and other operating systems.
 In addition, libvirt provides tools for remote management of
 virtualized systems.
@@ -55,7 +54,7 @@ resulting in a denial of service. (CVE-2014-1447)
 
 This update also fixes the following bug:
 
-* A race condition was possible between a thread starting a virtual machine
+  * A race condition was possible between a thread starting a virtual machine
 with a guest agent configured (regular start-up or while migrating) and a
 thread that was killing the VM process (or the process crashing). The race
 could cause the monitor object to be freed by the thread that killed the VM
@@ -66,22 +65,13 @@ VM in the meantime exited, no other operations are attempted. (BZ#1055578)
 
 All libvirt users are advised to upgrade to these updated packages, which
 contain backported patches to correct these issues. After installing the
-updated packages, libvirtd will be restarted automatically.
-";
-
-  tag_affected = "libvirt on CentOS 6";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+updated packages, libvirtd will be restarted automatically.");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "CESA", value: "2014:0103");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2014-January/020125.html");
-  script_tag(name:"summary", value:"Check for the Version of libvirt");
+  script_xref(name:"CESA", value:"2014:0103");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2014-January/020125.html");
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for libvirt");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
@@ -90,15 +80,14 @@ updated packages, libvirtd will be restarted automatically.
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS6")
 {
@@ -133,6 +122,6 @@ if(release == "CentOS6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

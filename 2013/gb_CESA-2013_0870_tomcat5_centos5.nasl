@@ -23,8 +23,28 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "Apache Tomcat is a servlet container for the Java Servlet and JavaServer
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.881740");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2013-05-31 09:51:25 +0530 (Fri, 31 May 2013)");
+  script_cve_id("CVE-2013-1976");
+  script_tag(name:"cvss_base", value:"6.9");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
+  script_name("CentOS Update for tomcat5 CESA-2013:0870 centos5");
+
+  script_xref(name:"CESA", value:"2013:0870");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-May/019748.html");
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for tomcat5");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
+  script_family("CentOS Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS5");
+  script_tag(name:"affected", value:"tomcat5 on CentOS 5");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_tag(name:"insight", value:"Apache Tomcat is a servlet container for the Java Servlet and JavaServer
   Pages (JSP) technologies.
 
   A flaw was found in the way the tomcat5 init script handled the
@@ -41,48 +61,20 @@ tag_insight = "Apache Tomcat is a servlet container for the Java Servlet and Jav
 
   Users of Tomcat are advised to upgrade to these updated packages, which
   correct this issue. Tomcat must be restarted for this update to take
-  effect.";
-
-
-tag_affected = "tomcat5 on CentOS 5";
-tag_solution = "Please Install the Updated Packages.";
-
-if(description)
-{
-  script_oid("1.3.6.1.4.1.25623.1.0.881740");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
-  script_tag(name:"creation_date", value:"2013-05-31 09:51:25 +0530 (Fri, 31 May 2013)");
-  script_cve_id("CVE-2013-1976");
-  script_tag(name:"cvss_base", value:"6.9");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_name("CentOS Update for tomcat5 CESA-2013:0870 centos5 ");
-
-  script_xref(name: "CESA", value: "2013:0870");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2013-May/019748.html");
-  script_tag(name:"summary", value:"Check for the Version of tomcat5");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
-  script_family("CentOS Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS5");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  effect.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS5")
 {
@@ -155,6 +147,6 @@ if(release == "CentOS5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

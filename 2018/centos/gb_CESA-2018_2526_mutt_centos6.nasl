@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2018_2526_mutt_centos6.nasl 14050 2019-03-08 09:08:09Z cfischer $
+# $Id: gb_CESA-2018_2526_mutt_centos6.nasl 14058 2019-03-08 13:25:52Z cfischer $
 #
-# CentOS Update for mutt CESA-2018:2526 centos6 
+# CentOS Update for mutt CESA-2018:2526 centos6
 #
 # Authors:
 # System Generated Check
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882937");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-08-21 06:41:28 +0200 (Tue, 21 Aug 2018)");
   script_cve_id("CVE-2018-14354", "CVE-2018-14357", "CVE-2018-14362");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
-  script_name("CentOS Update for mutt CESA-2018:2526 centos6 ");
+  script_name("CentOS Update for mutt CESA-2018:2526 centos6");
   script_tag(name:"summary", value:"Check the version of mutt");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Mutt is a low resource, highly configurable, text-based MIME e-mail client.
@@ -43,22 +43,21 @@ well as most protocols, including POP3 and IMAP.
 
 Security Fix(es):
 
-* mutt: Remote code injection vulnerability to an IMAP mailbox
+  * mutt: Remote code injection vulnerability to an IMAP mailbox
 (CVE-2018-14354)
 
-* mutt: Remote Code Execution via backquote characters (CVE-2018-14357)
+  * mutt: Remote Code Execution via backquote characters (CVE-2018-14357)
 
-* mutt: POP body caching path traversal vulnerability (CVE-2018-14362)
+  * mutt: POP body caching path traversal vulnerability (CVE-2018-14362)
 
 For more details about the security issue(s), including the impact, a CVSS
 score, and other related information, refer to the CVE page(s) listed in
-the References section.
-");
+the References section.");
   script_tag(name:"affected", value:"mutt on CentOS 6");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"CESA", value:"2018:2526");
-  script_xref(name:"URL" , value:"http://lists.centos.org/pipermail/centos-announce/2018-August/022988.html");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2018-August/022988.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -71,12 +70,11 @@ the References section.
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS6")
 {

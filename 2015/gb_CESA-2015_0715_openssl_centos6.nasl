@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for openssl CESA-2015:0715 centos6 
+# CentOS Update for openssl CESA-2015:0715 centos6
 #
 # Authors:
 # System Generated Check
@@ -26,17 +26,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882132");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-03-24 07:10:09 +0100 (Tue, 24 Mar 2015)");
   script_cve_id("CVE-2015-0209", "CVE-2015-0286", "CVE-2015-0287", "CVE-2015-0288", "CVE-2015-0289", "CVE-2015-0292", "CVE-2015-0293");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
-  script_name("CentOS Update for openssl CESA-2015:0715 centos6 ");
-  script_tag(name: "summary", value: "Check the version of openssl");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "OpenSSL is a toolkit that implements the Secure Sockets Layer (SSL v2/v3)
+  script_name("CentOS Update for openssl CESA-2015:0715 centos6");
+  script_tag(name:"summary", value:"Check the version of openssl");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"OpenSSL is a toolkit that implements the Secure Sockets Layer (SSL v2/v3)
 and Transport Layer Security (TLS v1) protocols, as well as a
 full-strength, general purpose cryptography library.
 
@@ -83,13 +83,13 @@ CVE-2015-0286, CVE-2015-0287, CVE-2015-0288, CVE-2015-0289, CVE-2015-0292,
 and CVE-2015-0293. Upstream acknowledges Stephen Henson of the OpenSSL
 development team as the original reporter of CVE-2015-0286, Emilia Kasper
 of the OpenSSL development team as the original reporter of CVE-2015-0287,
-Brian Ca ... 
+Brian Ca ...
 
-  Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "openssl on CentOS 6");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "CESA", value: "2015:0715");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2015-March/020988.html");
+  Description truncated, please see the referenced URL(s) for more information.");
+  script_tag(name:"affected", value:"openssl on CentOS 6");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_xref(name:"CESA", value:"2015:0715");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2015-March/020988.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -102,12 +102,11 @@ Brian Ca ...
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS6")
 {
@@ -136,6 +135,6 @@ if(release == "CentOS6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -29,14 +29,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882984");
-  script_version("$Revision: 14050 $");
-  script_cve_id("CVE-2018-3136", "CVE-2018-3139", "CVE-2018-3149", "CVE-2018-3169", 
-                "CVE-2018-3180", "CVE-2018-3214"); 
+  script_version("$Revision: 14058 $");
+  script_cve_id("CVE-2018-3136", "CVE-2018-3139", "CVE-2018-3149", "CVE-2018-3169",
+                "CVE-2018-3180", "CVE-2018-3214");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-12-18 07:38:36 +0100 (Tue, 18 Dec 2018)");
-  script_name("CentOS Update for java CESA-2018:3350 centos7 ");
+  script_name("CentOS Update for java CESA-2018:3350 centos7");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
@@ -44,7 +44,7 @@ if(description)
   script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS7");
 
   script_xref(name:"CESA", value:"2018:3350");
-  script_xref(name:"URL" , value:"http://lists.centos.org/pipermail/centos-announce/2018-December/023106.html");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2018-December/023106.html");
 
   script_tag(name:"summary", value:"The remote host is missing an update for the 'java'
   package(s) announced via the CESA-2018:3350 advisory.");
@@ -56,27 +56,26 @@ Environment and the OpenJDK 7 Java Software Development Kit.
 
 Security Fix(es):
 
-* OpenJDK: Improper field access checks (Hotspot, 8199226) (CVE-2018-3169)
+  * OpenJDK: Improper field access checks (Hotspot, 8199226) (CVE-2018-3169)
 
-* OpenJDK: Incomplete enforcement of the trustURLCodebase restriction
+  * OpenJDK: Incomplete enforcement of the trustURLCodebase restriction
 (JNDI, 8199177) (CVE-2018-3149)
 
-* OpenJDK: Incorrect handling of unsigned attributes in signed Jar
+  * OpenJDK: Incorrect handling of unsigned attributes in signed Jar
 manifests (Security, 8194534) (CVE-2018-3136)
 
-* OpenJDK: Leak of sensitive header data via HTTP redirect (Networking,
+  * OpenJDK: Leak of sensitive header data via HTTP redirect (Networking,
 8196902) (CVE-2018-3139)
 
-* OpenJDK: Missing endpoint identification algorithm check during TLS
+  * OpenJDK: Missing endpoint identification algorithm check during TLS
 session resumption (JSSE, 8202613) (CVE-2018-3180)
 
-* OpenJDK: Infinite loop in RIFF format reader (Sound, 8205361)
+  * OpenJDK: Infinite loop in RIFF format reader (Sound, 8205361)
 (CVE-2018-3214)
 
 For more details about the security issue(s), including the impact, a CVSS
 score, and other related information, refer to the CVE page(s) listed in
-the References section.
-");
+the References section.");
 
   script_tag(name:"affected", value:"java on CentOS 7.");
 

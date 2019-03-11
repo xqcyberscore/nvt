@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for 389-ds-base CESA-2016:2765 centos6 
+# CentOS Update for 389-ds-base CESA-2016:2765 centos6
 #
 # Authors:
 # System Generated Check
@@ -26,33 +26,32 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882594");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-11-20 05:37:13 +0100 (Sun, 20 Nov 2016)");
   script_cve_id("CVE-2016-4992", "CVE-2016-5405", "CVE-2016-5416");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
-  script_name("CentOS Update for 389-ds-base CESA-2016:2765 centos6 ");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "389 Directory Server is an LDAP version 3 
-(LDAPv3) compliant server. The base packages include the Lightweight Directory 
+  script_name("CentOS Update for 389-ds-base CESA-2016:2765 centos6");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"389 Directory Server is an LDAP version 3
+(LDAPv3) compliant server. The base packages include the Lightweight Directory
 Access Protocol (LDAP) server and command-line utilities for server administration.
 
 Security Fix(es):
 
-* It was found that 389 Directory Server was vulnerable to a flaw in which
+  * It was found that 389 Directory Server was vulnerable to a flaw in which
 the default ACI (Access Control Instructions) could be read by an anonymous
 user. This could lead to leakage of sensitive information. (CVE-2016-5416)
 
-* An information disclosure flaw was found in 389 Directory Server. A user
+  * An information disclosure flaw was found in 389 Directory Server. A user
 with no access to objects in certain LDAP sub-tree could send LDAP ADD
 operations with a specific object name. The error message returned to the
 user was different based on whether the target object existed or not.
 (CVE-2016-4992)
 
-* It was found that 389 Directory Server was vulnerable to a remote
+  * It was found that 389 Directory Server was vulnerable to a remote
 password disclosure via timing attack. A remote attacker could possibly use
 this flaw to retrieve directory server password after many tries.
 (CVE-2016-5405)
@@ -64,13 +63,13 @@ Brown (Red Hat).
 
 Bug Fix(es):
 
-* Previously, a bug in the changelog iterator buffer caused it to point to
+  * Previously, a bug in the changelog iterator buffer caused it to point to
 an incorrect position when reloading the buffer. This caused replication to
 skip parts of the changelog, and consequently some changes were not
 replicated. This bug has been fixed, and replication data loss due to an
 incorrectly reloaded changelog buffer no longer occurs. (BZ#1354331)
 
-* Previously, if internal modifications were generated on a consumer (for
+  * Previously, if internal modifications were generated on a consumer (for
 example by the Account Policy plug-in) and additional changes to the same
 attributes were received from replication, a bug caused Directory Server to
 accumulate state information on the consumer. The bug has been fixed by
@@ -80,7 +79,7 @@ information no longer accumulates in this situation. (BZ#1379599)
 
 Enhancement(s):
 
-* In a multi-master replication environment where multiple masters receive
+  * In a multi-master replication environment where multiple masters receive
 updates at the same time, it was previously possible for a single master to
 obtain exclusive access to a replica and hold it for a very long time due
 to problems such as a slow network connection. During this time, other
@@ -89,14 +88,13 @@ slowed down the replication process. This update adds a new configuration
 attribute, 'nsds5ReplicaReleaseTimeout', which can be used to specify a
 timeout in seconds. After the specified timeout period passes, the master
 releases the replica, allowing other masters to access it and send their
-updates. (BZ#1358390)
-");
-  script_tag(name: "affected", value: "389-ds-base on CentOS 6");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+updates. (BZ#1358390)");
+  script_tag(name:"affected", value:"389-ds-base on CentOS 6");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "CESA", value: "2016:2765");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2016-November/022149.html");
-  script_tag(name: "summary" , value: "Check for the Version of 389-ds-base");
+  script_xref(name:"CESA", value:"2016:2765");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2016-November/022149.html");
+  script_tag(name:"summary", value:"Check for the Version of 389-ds-base");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -109,12 +107,11 @@ updates. (BZ#1358390)
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS6")
 {
@@ -137,6 +134,6 @@ if(release == "CentOS6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

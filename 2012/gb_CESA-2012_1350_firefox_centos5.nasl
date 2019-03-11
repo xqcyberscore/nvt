@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for firefox CESA-2012:1350 centos5 
+# CentOS Update for firefox CESA-2012:1350 centos5
 #
 # Authors:
 # System Generated Check
@@ -23,76 +23,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "Mozilla Firefox is an open source web browser. XULRunner provides the XUL
-  Runtime environment for Mozilla Firefox.
-
-  Several flaws were found in the processing of malformed web content. A web
-  page containing malicious content could cause Firefox to crash or,
-  potentially, execute arbitrary code with the privileges of the user running
-  Firefox. (CVE-2012-3982, CVE-2012-3988, CVE-2012-3990, CVE-2012-3995,
-  CVE-2012-4179, CVE-2012-4180, CVE-2012-4181, CVE-2012-4182, CVE-2012-4183,
-  CVE-2012-4185, CVE-2012-4186, CVE-2012-4187, CVE-2012-4188)
-  
-  Two flaws in Firefox could allow a malicious website to bypass intended
-  restrictions, possibly leading to information disclosure, or Firefox
-  executing arbitrary code. Note that the information disclosure issue could
-  possibly be combined with other flaws to achieve arbitrary code execution.
-  (CVE-2012-3986, CVE-2012-3991)
-  
-  Multiple flaws were found in the location object implementation in Firefox.
-  Malicious content could be used to perform cross-site scripting attacks,
-  script injection, or spoofing attacks. (CVE-2012-1956, CVE-2012-3992,
-  CVE-2012-3994)
-  
-  Two flaws were found in the way Chrome Object Wrappers were implemented.
-  Malicious content could be used to perform cross-site scripting attacks or
-  cause Firefox to execute arbitrary code. (CVE-2012-3993, CVE-2012-4184)
-  
-  For technical details regarding these flaws, refer to the Mozilla security
-  advisories for Firefox 10.0.8 ESR. You can find a link to the Mozilla
-  advisories in the References section of this erratum.
-  
-  Red Hat would like to thank the Mozilla project for reporting these issues.
-  Upstream acknowledges Christian Holler, Jesse Ruderman, Soroush Dalili,
-  miaubiz, Abhishek Arya, Atte Kettunen, Johnny Stenback, Alice White,
-  moz_bug_r_a4, and Mariusz Mlynski as the original reporters of these
-  issues.
-  
-  This update also fixes the following bug:
-  
-  * In certain environments, storing personal Firefox configuration files
-  (~/.mozilla/) on an NFS share, such as when your home directory is on a
-  NFS share, led to Firefox functioning incorrectly, for example, navigation
-  buttons not working as expected, and bookmarks not saving. This update
-  adds a new configuration option, storage.nfs_filesystem, that can be used
-  to resolve this issue.
-  
-  If you experience this issue:
-  
-  1) Start Firefox.
-  
-  2) Type &quot;about:config&quot; (without quotes) into the URL bar and press the
-  Enter key.
-  
-  3) If prompted with &quot;This might void your warranty!&quot;, click the &quot;I'll be
-  careful, I promise!&quot; button.
-  
-  4) Right-click in the  ... 
-
-  Description truncated, for more information please check the Reference URL";
-
-tag_affected = "firefox on CentOS 5";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
 if(description)
 {
-  script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2012-October/018928.html");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-October/018928.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881512");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-10-11 10:02:01 +0530 (Thu, 11 Oct 2012)");
   script_cve_id("CVE-2012-1956", "CVE-2012-3982", "CVE-2012-3986", "CVE-2012-3988",
                 "CVE-2012-3990", "CVE-2012-3991", "CVE-2012-3992", "CVE-2012-3993",
@@ -101,32 +37,87 @@ if(description)
                 "CVE-2012-4185", "CVE-2012-4186", "CVE-2012-4187", "CVE-2012-4188");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_xref(name: "CESA", value: "2012:1350");
-  script_name("CentOS Update for firefox CESA-2012:1350 centos5 ");
+  script_xref(name:"CESA", value:"2012:1350");
+  script_name("CentOS Update for firefox CESA-2012:1350 centos5");
 
-  script_tag(name: "summary" , value: "Check for the Version of firefox");
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for firefox");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS5");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  script_tag(name:"affected", value:"firefox on CentOS 5");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_tag(name:"insight", value:"Mozilla Firefox is an open source web browser. XULRunner provides the XUL
+  Runtime environment for Mozilla Firefox.
+
+  Several flaws were found in the processing of malformed web content. A web
+  page containing malicious content could cause Firefox to crash or,
+  potentially, execute arbitrary code with the privileges of the user running
+  Firefox. (CVE-2012-3982, CVE-2012-3988, CVE-2012-3990, CVE-2012-3995,
+  CVE-2012-4179, CVE-2012-4180, CVE-2012-4181, CVE-2012-4182, CVE-2012-4183,
+  CVE-2012-4185, CVE-2012-4186, CVE-2012-4187, CVE-2012-4188)
+
+  Two flaws in Firefox could allow a malicious website to bypass intended
+  restrictions, possibly leading to information disclosure, or Firefox
+  executing arbitrary code. Note that the information disclosure issue could
+  possibly be combined with other flaws to achieve arbitrary code execution.
+  (CVE-2012-3986, CVE-2012-3991)
+
+  Multiple flaws were found in the location object implementation in Firefox.
+  Malicious content could be used to perform cross-site scripting attacks,
+  script injection, or spoofing attacks. (CVE-2012-1956, CVE-2012-3992,
+  CVE-2012-3994)
+
+  Two flaws were found in the way Chrome Object Wrappers were implemented.
+  Malicious content could be used to perform cross-site scripting attacks or
+  cause Firefox to execute arbitrary code. (CVE-2012-3993, CVE-2012-4184)
+
+  For technical details regarding these flaws, refer to the Mozilla security
+  advisories for Firefox 10.0.8 ESR. You can find a link to the Mozilla
+  advisories in the References section of this erratum.
+
+  Red Hat would like to thank the Mozilla project for reporting these issues.
+  Upstream acknowledges Christian Holler, Jesse Ruderman, Soroush Dalili,
+  miaubiz, Abhishek Arya, Atte Kettunen, Johnny Stenback, Alice White,
+  moz_bug_r_a4, and Mariusz Mlynski as the original reporters of these
+  issues.
+
+  This update also fixes the following bug:
+
+  * In certain environments, storing personal Firefox configuration files
+  (~/.mozilla/) on an NFS share, such as when your home directory is on a
+  NFS share, led to Firefox functioning incorrectly, for example, navigation
+  buttons not working as expected, and bookmarks not saving. This update
+  adds a new configuration option, storage.nfs_filesystem, that can be used
+  to resolve this issue.
+
+  If you experience this issue:
+
+  1) Start Firefox.
+
+  2) Type &quot;about:config&quot; (without quotes) into the URL bar and press the
+  Enter key.
+
+  3) If prompted with &quot;This might void your warranty!&quot;, click the &quot;I'll be
+  careful, I promise!&quot; button.
+
+  4) Right-click in the  ...
+
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS5")
 {
@@ -149,6 +140,6 @@ if(release == "CentOS5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

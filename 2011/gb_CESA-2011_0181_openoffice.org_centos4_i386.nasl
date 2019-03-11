@@ -23,8 +23,27 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "OpenOffice.org is an office productivity suite that includes desktop
+if(description)
+{
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2011-February/017251.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.880469");
+  script_version("$Revision: 14056 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2011-02-11 13:26:17 +0100 (Fri, 11 Feb 2011)");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_xref(name:"CESA", value:"2011:0181");
+  script_cve_id("CVE-2010-3450", "CVE-2010-3451", "CVE-2010-3452", "CVE-2010-3453", "CVE-2010-3454", "CVE-2010-4643");
+  script_name("CentOS Update for openoffice.org CESA-2011:0181 centos4 i386");
+
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for openoffice.org");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
+  script_family("CentOS Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS4");
+  script_tag(name:"affected", value:"openoffice.org on CentOS 4");
+  script_tag(name:"insight", value:"OpenOffice.org is an office productivity suite that includes desktop
   applications, such as a word processor, spreadsheet application,
   presentation manager, formula editor, and a drawing program.
 
@@ -34,14 +53,14 @@ tag_insight = "OpenOffice.org is an office productivity suite that includes desk
   opened, would cause OpenOffice.org to crash or, possibly, execute arbitrary
   code with the privileges of the user running OpenOffice.org.
   (CVE-2010-3451, CVE-2010-3452)
-  
+
   A heap-based buffer overflow flaw and an array index error were found in
   the way OpenOffice.org parsed certain Microsoft Office Word documents. An
   attacker could use these flaws to create a specially-crafted Microsoft
   Office Word document that, when opened, would cause OpenOffice.org to crash
   or, possibly, execute arbitrary code with the privileges of the user
   running OpenOffice.org. (CVE-2010-3453, CVE-2010-3454)
-  
+
   A heap-based buffer overflow flaw was found in the way OpenOffice.org
   parsed certain TARGA (Truevision TGA) files. An attacker could use this
   flaw to create a specially-crafted TARGA file. If a document containing
@@ -49,7 +68,7 @@ tag_insight = "OpenOffice.org is an office productivity suite that includes desk
   the file into an existing document, it would cause OpenOffice.org to crash
   or, possibly, execute arbitrary code with the privileges of the user
   running OpenOffice.org. (CVE-2010-4643)
-  
+
   A directory traversal flaw was found in the way OpenOffice.org handled
   the installation of XSLT filter descriptions packaged in Java Archive (JAR)
   files, as well as the installation of OpenOffice.org Extension (.oxt)
@@ -57,59 +76,31 @@ tag_insight = "OpenOffice.org is an office productivity suite that includes desk
   filter description or extension file that, when opened, would cause the
   OpenOffice.org Extension Manager to modify files accessible to the user
   installing the JAR or extension file. (CVE-2010-3450)
-  
+
   Red Hat would like to thank OpenOffice.org for reporting the CVE-2010-3451,
   CVE-2010-3452, CVE-2010-3453, CVE-2010-3454, and CVE-2010-4643 issues.
   Upstream acknowledges Dan Rosenberg of Virtual Security Research as the
   original reporter of the CVE-2010-3451, CVE-2010-3452, CVE-2010-3453, and
   CVE-2010-3454 issues.
-  
+
   All OpenOffice.org users are advised to upgrade to these updated packages,
   which contain backported patches to correct these issues. All running
   instances of OpenOffice.org applications must be restarted for this update
-  to take effect.";
-tag_solution = "Please Install the Updated Packages.";
-
-tag_affected = "openoffice.org on CentOS 4";
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2011-February/017251.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.880469");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
-  script_tag(name:"creation_date", value:"2011-02-11 13:26:17 +0100 (Fri, 11 Feb 2011)");
-  script_tag(name:"cvss_base", value:"9.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_xref(name: "CESA", value: "2011:0181");
-  script_cve_id("CVE-2010-3450", "CVE-2010-3451", "CVE-2010-3452", "CVE-2010-3453", "CVE-2010-3454", "CVE-2010-4643");
-  script_name("CentOS Update for openoffice.org CESA-2011:0181 centos4 i386");
-
-  script_tag(name:"summary", value:"Check for the Version of openoffice.org");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_family("CentOS Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS4");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  to take effect.");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS4")
 {
@@ -492,6 +483,6 @@ if(release == "CentOS4")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

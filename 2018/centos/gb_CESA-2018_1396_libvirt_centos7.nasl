@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2018_1396_libvirt_centos7.nasl 14050 2019-03-08 09:08:09Z cfischer $
+# $Id: gb_CESA-2018_1396_libvirt_centos7.nasl 14058 2019-03-08 13:25:52Z cfischer $
 #
-# CentOS Update for libvirt CESA-2018:1396 centos7 
+# CentOS Update for libvirt CESA-2018:1396 centos7
 #
 # Authors:
 # System Generated Check
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882904");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-06-05 14:03:17 +0530 (Tue, 05 Jun 2018)");
   script_cve_id("CVE-2018-1064", "CVE-2018-5748");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
-  script_name("CentOS Update for libvirt CESA-2018:1396 centos7 ");
+  script_name("CentOS Update for libvirt CESA-2018:1396 centos7");
   script_tag(name:"summary", value:"Check the version of libvirt");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The libvirt library contains a C API for managing and interacting with the
@@ -44,10 +44,10 @@ systems.
 
 Security Fix(es):
 
-* libvirt: Resource exhaustion via qemuMonitorIORead() method
+  * libvirt: Resource exhaustion via qemuMonitorIORead() method
 (CVE-2018-5748)
 
-* libvirt: Incomplete fix for CVE-2018-5748 triggered by QEMU guest agent
+  * libvirt: Incomplete fix for CVE-2018-5748 triggered by QEMU guest agent
 (CVE-2018-1064)
 
 For more details about the security issue(s), including the impact, a CVSS
@@ -60,7 +60,7 @@ Peter Krempa (Red Hat).
 
 Bug Fix(es):
 
-* Previously, the check for a non-unique device boot order did not properly
+  * Previously, the check for a non-unique device boot order did not properly
 handle updates of existing devices when a new device was attached to a
 guest. Consequently, updating any device with a specified boot order
 failed. With this update, the duplicity check detects correctly handles
@@ -68,29 +68,28 @@ updates and ignores the original device, which avoids reporting false
 conflicts. As a result, updating a device with a boot order succeeds.
 (BZ#1557922)
 
-* In Red Hat Enterprise Linux 7.5, guests with SCSI passthrough enabled
+  * In Red Hat Enterprise Linux 7.5, guests with SCSI passthrough enabled
 failed to boot because of changes in kernel CGroup detection. With this
 update, libvirt fetches dependencies and adds them to the device CGroup. As
 a result, and the affected guests now start as expected. (BZ#1564996)
 
-* The VMX parser in libvirt did not parse more than four network
+  * The VMX parser in libvirt did not parse more than four network
 interfaces. As a consequence, the esx driver did not expose more than four
 network interface cards (NICs) for guests running ESXi. With this update,
 the VMX parser parses all the available NICs in .vmx files. As a result,
 libvirt reports all the NICs of guests running ESXi. (BZ#1566524)
 
-* Previously, user aliases for PTY devices that were longer than 32
+  * Previously, user aliases for PTY devices that were longer than 32
 characters were not supported. Consequently, if a domain included a PTY
 device with a user alias longer than 32 characters, the domain would not
 start. With this update, a static buffer was replaced with a dynamic
 buffer. As a result, the domain starts even if the length of the user alias
-for a PTY device is longer than 32 characters. (BZ#1566525)
-");
+for a PTY device is longer than 32 characters. (BZ#1566525)");
   script_tag(name:"affected", value:"libvirt on CentOS 7");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"CESA", value:"2018:1396");
-  script_xref(name:"URL" , value:"http://lists.centos.org/pipermail/centos-announce/2018-May/022876.html");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2018-May/022876.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -103,12 +102,11 @@ for a PTY device is longer than 32 characters. (BZ#1566525)
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS7")
 {

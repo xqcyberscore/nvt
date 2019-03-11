@@ -23,17 +23,36 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "The kernel packages contain the Linux kernel, the core of any Linux
+if(description)
+{
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2009-August/016062.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.880777");
+  script_version("$Revision: 14056 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_xref(name:"CESA", value:"2009:1193");
+  script_cve_id("CVE-2007-5966", "CVE-2009-1385", "CVE-2009-1388", "CVE-2009-1389", "CVE-2009-1895", "CVE-2009-2406", "CVE-2009-2407");
+  script_name("CentOS Update for kernel CESA-2009:1193 centos5 i386");
+
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for kernel");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
+  script_family("CentOS Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS5");
+  script_tag(name:"affected", value:"kernel on CentOS 5");
+  script_tag(name:"insight", value:"The kernel packages contain the Linux kernel, the core of any Linux
   operating system.
 
   Security fixes:
-  
+
   * the possibility of a timeout value overflow was found in the Linux kernel
   high-resolution timers functionality, hrtimers. This could allow a local,
   unprivileged user to execute arbitrary code, or cause a denial of service
   (kernel panic). (CVE-2007-5966, Important)
-  
+
   * a flaw was found in the Intel PRO/1000 network driver in the Linux
   kernel. Frames with sizes near the MTU of an interface may be split across
   multiple hardware receive descriptors. Receipt of such a frame could leak
@@ -41,84 +60,56 @@ tag_insight = "The kernel packages contain the Linux kernel, the core of any Lin
   remote attacker could use this flaw to send a specially-crafted packet that
   would cause a denial of service or code execution. (CVE-2009-1385,
   Important)
-  
+
   * Michael Tokarev reported a flaw in the Realtek r8169 Ethernet driver in
   the Linux kernel. This driver allowed interfaces using this driver to
   receive frames larger than could be handled, which could lead to a remote
   denial of service or code execution. (CVE-2009-1389, Important)
-  
+
   * the ADDR_COMPAT_LAYOUT and MMAP_PAGE_ZERO flags were not cleared when a
   setuid or setgid program was executed. A local, unprivileged user could use
   this flaw to bypass the mmap_min_addr protection mechanism and perform a
   NULL pointer dereference attack, or bypass the Address Space Layout
   Randomization (ASLR) security feature. (CVE-2009-1895, Important)
-  
+
   * Ramon de Carvalho Valle reported two flaws in the Linux kernel eCryptfs
   implementation. A local attacker with permissions to perform an eCryptfs
   mount could modify the metadata of the files in that eCrypfts mount to
   cause a buffer overflow, leading to a denial of service or privilege
   escalation. (CVE-2009-2406, CVE-2009-2407, Important)
-  
+
   * Konstantin Khlebnikov discovered a race condition in the ptrace
   implementation in the Linux kernel. This race condition can occur when the
   process tracing and the process being traced participate in a core dump. A
   local, unprivileged user could use this flaw to trigger a deadlock,
   resulting in a partial denial of service. (CVE-2009-1388, Moderate)
-  
+
   Bug fixes:
-  
+
   * possible host (dom0) crash when installing a Xen para-virtualized guest
   while another para-virtualized guest was rebooting. (BZ#497812)
-  
+
   * no audit record for a directory removal if the directory and its subtree
   were recursively watched by an audit rule. (BZ#507561)
-  
+
   * running &quot;echo 1 &gt; /proc/sys/vm/drop_caches&quot; on systems under high memory
-  load could cause ... 
+  load could cause ...
 
-  Description truncated, for more information please check the Reference URL";
-tag_solution = "Please Install the Updated Packages.";
-
-tag_affected = "kernel on CentOS 5";
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2009-August/016062.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.880777");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
-  script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
-  script_tag(name:"cvss_base", value:"7.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_xref(name: "CESA", value: "2009:1193");
-  script_cve_id("CVE-2007-5966", "CVE-2009-1385", "CVE-2009-1388", "CVE-2009-1389", "CVE-2009-1895", "CVE-2009-2406", "CVE-2009-2407");
-  script_name("CentOS Update for kernel CESA-2009:1193 centos5 i386");
-
-  script_tag(name:"summary", value:"Check for the Version of kernel");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_family("CentOS Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS5");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  Description truncated, please see the referenced URL(s) for more information.");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS5")
 {
@@ -183,6 +174,6 @@ if(release == "CentOS5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for autocorr-af CESA-2017:0914 centos7 
+# CentOS Update for autocorr-af CESA-2017:0914 centos7
 #
 # Authors:
 # System Generated Check
@@ -26,38 +26,37 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882693");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-04-14 06:30:29 +0200 (Fri, 14 Apr 2017)");
   script_cve_id("CVE-2017-3157");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
-  script_name("CentOS Update for autocorr-af CESA-2017:0914 centos7 ");
-  script_tag(name: "summary", value: "Check the version of autocorr-af");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "LibreOffice is an open source, 
-community-developed office productivity suite. It includes key desktop 
-applications, such as a word processor, a spreadsheet, a presentation manager, 
-a formula editor, and a drawing program. LibreOffice replaces OpenOffice and 
+  script_name("CentOS Update for autocorr-af CESA-2017:0914 centos7");
+  script_tag(name:"summary", value:"Check the version of autocorr-af");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"LibreOffice is an open source,
+community-developed office productivity suite. It includes key desktop
+applications, such as a word processor, a spreadsheet, a presentation manager,
+a formula editor, and a drawing program. LibreOffice replaces OpenOffice and
 provides a similar but enhanced and extended office suite.
 
 Security Fix(es):
 
-* It was found that LibreOffice disclosed contents of a file specified in
+  * It was found that LibreOffice disclosed contents of a file specified in
 an embedded object's preview. An attacker could potentially use this flaw
 to expose details of a system running LibreOffice as an online service via
 a crafted document. (CVE-2017-3157)
 
 Bug Fix(es):
 
-* Previously, an improper resource management caused the LibreOffice Calc
+  * Previously, an improper resource management caused the LibreOffice Calc
 spreadsheet application to terminate unexpectedly after closing a dialog
 window with accessibility support enabled. The resource management has been
 improved, and the described problem no longer occurs. (BZ#1425536)
 
-* Previously, when an incorrect password was entered for a password
+  * Previously, when an incorrect password was entered for a password
 protected document, the document has been considered as valid and a
 fallback attempt to open it as plain text has been made. As a consequence,
 it could appear that the document successfully loaded, while just the
@@ -65,17 +64,16 @@ encrypted unreadable content was shown. A fix has been made to terminate
 import attempts after entering incorrect password, and now nothing is
 loaded when a wrong password is entered. (BZ#1426348)
 
-* Previously, an improper resource management caused the LibreOffice Calc
+  * Previously, an improper resource management caused the LibreOffice Calc
 spreadsheet application to terminate unexpectedly during exit, after the
 Text Import dialog for CSV (Comma-separated Value) files closed, when
 accessibility support was enabled. The resource management has been
-improved, and the described problem no longer occurs. (BZ#1425535)
-");
-  script_tag(name: "affected", value: "autocorr-af on CentOS 7");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+improved, and the described problem no longer occurs. (BZ#1425535)");
+  script_tag(name:"affected", value:"autocorr-af on CentOS 7");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "CESA", value: "2017:0914");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2017-April/022359.html");
+  script_xref(name:"CESA", value:"2017:0914");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2017-April/022359.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -88,12 +86,11 @@ improved, and the described problem no longer occurs. (BZ#1425535)
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS7")
 {
@@ -872,6 +869,6 @@ if(release == "CentOS7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

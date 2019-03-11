@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for 389-ds-base CESA-2013:0628 centos6 
+# CentOS Update for 389-ds-base CESA-2013:0628 centos6
 #
 # Authors:
 # System Generated Check
@@ -23,8 +23,28 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "The 389 Directory Server is an LDAPv3 compliant server. The base packages
+if(description)
+{
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-March/019641.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.881683");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2013-03-15 09:51:36 +0530 (Fri, 15 Mar 2013)");
+  script_cve_id("CVE-2013-0312");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_xref(name:"CESA", value:"2013:0628");
+  script_name("CentOS Update for 389-ds-base CESA-2013:0628 centos6");
+
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for 389-ds-base");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
+  script_family("CentOS Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS6");
+  script_tag(name:"affected", value:"389-ds-base on CentOS 6");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_tag(name:"insight", value:"The 389 Directory Server is an LDAPv3 compliant server. The base packages
   include the Lightweight Directory Access Protocol (LDAP) server and
   command-line utilities for server administration.
 
@@ -33,25 +53,25 @@ tag_insight = "The 389 Directory Server is an LDAPv3 compliant server. The base 
   (even anonymously) and send an LDAP request containing crafted LDAPv3
   control data, they could cause the server to crash, denying service to the
   directory. (CVE-2013-0312)
-  
+
   The CVE-2013-0312 issue was discovered by Thierry Bordaz of Red Hat.
-  
+
   This update also fixes the following bugs:
-  
+
   * After an upgrade from Red Hat Enterprise Linux 6.3 to version 6.4, the
   upgrade script did not update the schema file for the PamConfig object
   class. Consequently, new features for PAM such as configuration of multiple
   instances and pamFilter attribute could not be used because of the schema
   violation. With this update, the upgrade script updates the schema file for
   the PamConfig object class and new features function properly. (BZ#910994)
-  
+
   * Previously, the valgrind test suite reported recurring memory leaks in
   the modify_update_last_modified_attr() function. The size of the leaks
   averaged between 60-80 bytes per modify call. In environments where modify
   operations were frequent, this caused significant problems. Now, memory
   leaks no longer occur in the modify_update_last_modified_attr() function.
   (BZ#910995)
-  
+
   * The Directory Server (DS) failed when multi-valued attributes were
   replaced. The problem occurred when replication was enabled, while the
   server executing the modification was configured as a single master and
@@ -62,59 +82,29 @@ tag_insight = "The 389 Directory Server is an LDAPv3 compliant server. The base 
   one of the new values matched one of the current values of the attribute,
   but had a different letter case. Now, modification requests function
   properly and no longer return code 20 errors. (BZ#910996)
-  
+
   * The DNA (distributed numeric assignment) plug-in, under certain
   conditions, could log error messages with the &quot;DB_LOCK_DEADLOCK&quot; error
   code when attempting to create an entry with a uidNumber attribute. Now,
   DNA handles this case properly and errors no longer occur during attempts
   to create entries with uidNumber attributes. (BZ#911467)
-  
-  * Posix Winsync plugin was calling an internal mo ... 
 
-  Description truncated, for more information please check the Reference URL";
+  * Posix Winsync plugin was calling an internal mo ...
 
-
-tag_affected = "389-ds-base on CentOS 6";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2013-March/019641.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.881683");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
-  script_tag(name:"creation_date", value:"2013-03-15 09:51:36 +0530 (Fri, 15 Mar 2013)");
-  script_cve_id("CVE-2013-0312");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_xref(name: "CESA", value: "2013:0628");
-  script_name("CentOS Update for 389-ds-base CESA-2013:0628 centos6 ");
-
-  script_tag(name: "summary" , value: "Check for the Version of 389-ds-base");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
-  script_family("CentOS Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS6");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS6")
 {
@@ -137,6 +127,6 @@ if(release == "CentOS6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

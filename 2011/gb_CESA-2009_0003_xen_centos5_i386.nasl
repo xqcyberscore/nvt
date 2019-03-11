@@ -23,8 +23,27 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "The xen packages contain the Xen tools and management daemons needed to
+if(description)
+{
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2009-January/015535.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.880804");
+  script_version("$Revision: 14056 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
+  script_xref(name:"CESA", value:"2009:0003");
+  script_cve_id("CVE-2008-4405", "CVE-2008-4993");
+  script_name("CentOS Update for xen CESA-2009:0003 centos5 i386");
+
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for xen");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
+  script_family("CentOS Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS5");
+  script_tag(name:"affected", value:"xen on CentOS 5");
+  script_tag(name:"insight", value:"The xen packages contain the Xen tools and management daemons needed to
   manage virtual machines running on Red Hat Enterprise Linux.
 
   Xen was found to allow unprivileged DomU domains to overwrite xenstore
@@ -34,15 +53,15 @@ tag_insight = "The xen packages contain the Xen tools and management daemons nee
   text console of a different domain running on the same host. This update
   makes certain parts of the xenstore tree read-only to the unprivileged DomU
   domains. (CVE-2008-4405)
-  
+
   It was discovered that the qemu-dm.debug script created a temporary file in
   /tmp in an insecure way. A local attacker in Dom0 could, potentially, use
   this flaw to overwrite arbitrary files via a symlink attack. Note: This
   script is not needed in production deployments and therefore was removed
   and is not shipped with updated xen packages. (CVE-2008-4993)
-  
+
   This update also fixes the following bug:
-  
+
   * xen calculates its running time by adding the hypervisor's up-time to the
   hypervisor's boot-time record. In live migrations of para-virtualized
   guests, however, the guest would over-write the new hypervisor's boot-time
@@ -50,52 +69,24 @@ tag_insight = "The xen packages contain the Xen tools and management daemons nee
   time-dependent processes on the guests to fail (for example, crond would
   fail to start cron jobs). With this update, the new hypervisor's boot-time
   record is no longer over-written during live migrations.
-  
+
   All xen users are advised to upgrade to these updated packages, which
   contain backported patches to resolve these issues. The Xen host must be
-  restarted for the update to take effect.";
-tag_solution = "Please Install the Updated Packages.";
-
-tag_affected = "xen on CentOS 5";
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2009-January/015535.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.880804");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
-  script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
-  script_tag(name:"cvss_base", value:"7.2");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_xref(name: "CESA", value: "2009:0003");
-  script_cve_id("CVE-2008-4405", "CVE-2008-4993");
-  script_name("CentOS Update for xen CESA-2009:0003 centos5 i386");
-
-  script_tag(name:"summary", value:"Check for the Version of xen");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_family("CentOS Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS5");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  restarted for the update to take effect.");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS5")
 {
@@ -118,6 +109,6 @@ if(release == "CentOS5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

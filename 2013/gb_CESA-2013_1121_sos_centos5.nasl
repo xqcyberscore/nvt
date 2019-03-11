@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for sos CESA-2013:1121 centos5 
+# CentOS Update for sos CESA-2013:1121 centos5
 #
 # Authors:
 # System Generated Check
@@ -23,8 +23,20 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "The sos package contains a set of tools that gather information from system
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.881767");
+  script_version("$Revision: 14056 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2013-08-01 18:43:21 +0530 (Thu, 01 Aug 2013)");
+  script_cve_id("CVE-2012-2664");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_name("CentOS Update for sos CESA-2013:1121 centos5");
+
+  script_tag(name:"affected", value:"sos on CentOS 5");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_tag(name:"insight", value:"The sos package contains a set of tools that gather information from system
 hardware, logs and configuration files. The information can then be used
 for diagnostic purposes and debugging.
 
@@ -47,34 +59,12 @@ removed. Passwords embedded within URLs in these files should be manually
 removed or the files excluded from the archive.
 
 All users of sos are advised to upgrade to this updated package, which
-contains a backported patch to correct this issue.";
-
-
-if(description)
-{
-  script_oid("1.3.6.1.4.1.25623.1.0.881767");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
-  script_tag(name:"creation_date", value:"2013-08-01 18:43:21 +0530 (Thu, 01 Aug 2013)");
-  script_cve_id("CVE-2012-2664");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_name("CentOS Update for sos CESA-2013:1121 centos5 ");
-
-
-  tag_affected = "sos on CentOS 5";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+contains a backported patch to correct this issue.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "CESA", value: "2013:1121");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2013-July/019885.html");
-  script_tag(name:"summary", value:"Check for the Version of sos");
+  script_xref(name:"CESA", value:"2013:1121");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-July/019885.html");
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for sos");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
@@ -83,15 +73,14 @@ if(description)
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS5")
 {
@@ -102,6 +91,6 @@ if(release == "CentOS5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

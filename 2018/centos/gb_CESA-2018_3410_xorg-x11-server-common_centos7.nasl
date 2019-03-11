@@ -29,13 +29,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882986");
-  script_version("$Revision: 14050 $");
+  script_version("$Revision: 14058 $");
   script_cve_id("CVE-2018-14665");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-12-18 07:38:56 +0100 (Tue, 18 Dec 2018)");
-  script_name("CentOS Update for xorg-x11-server-common CESA-2018:3410 centos7 ");
+  script_name("CentOS Update for xorg-x11-server-common CESA-2018:3410 centos7");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
@@ -43,7 +43,7 @@ if(description)
   script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS7");
 
   script_xref(name:"CESA", value:"2018:3410");
-  script_xref(name:"URL" , value:"http://lists.centos.org/pipermail/centos-announce/2018-December/023131.html");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2018-December/023131.html");
 
   script_tag(name:"summary", value:"The remote host is missing an update for the 'xorg-x11-server-common'
   package(s) announced via the CESA-2018:3410 advisory.");
@@ -56,15 +56,14 @@ interfaces are designed upon.
 
 Security Fix(es):
 
-* xorg-x11-server: Incorrect permission check in Xorg X server allows for
+  * xorg-x11-server: Incorrect permission check in Xorg X server allows for
 privilege escalation (CVE-2018-14665)
 
 For more details about the security issue(s), including the impact, a CVSS
 score, and other related information, refer to the CVE page(s) listed in
 the References section.
 
-Red Hat would like to thank Narendra Shinde for reporting this issue.
-");
+Red Hat would like to thank Narendra Shinde for reporting this issue.");
 
   script_tag(name:"affected", value:"xorg-x11-server-common on CentOS 7.");
 

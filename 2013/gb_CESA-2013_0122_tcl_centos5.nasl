@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for tcl CESA-2013:0122 centos5 
+# CentOS Update for tcl CESA-2013:0122 centos5
 #
 # Authors:
 # System Generated Check
@@ -23,8 +23,28 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "Tcl (Tool Command Language) provides a powerful platform for creating
+if(description)
+{
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-January/019168.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.881574");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2013-01-21 09:41:48 +0530 (Mon, 21 Jan 2013)");
+  script_cve_id("CVE-2007-4772", "CVE-2007-6067");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
+  script_xref(name:"CESA", value:"2013:0122");
+  script_name("CentOS Update for tcl CESA-2013:0122 centos5");
+
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for tcl");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
+  script_family("CentOS Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS5");
+  script_tag(name:"affected", value:"tcl on CentOS 5");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_tag(name:"insight", value:"Tcl (Tool Command Language) provides a powerful platform for creating
   integration applications that tie together diverse applications, protocols,
   devices, and frameworks. When paired with the Tk toolkit, Tcl provides a
   fast and powerful way to create cross-platform GUI applications.
@@ -33,9 +53,9 @@ tag_insight = "Tcl (Tool Command Language) provides a powerful platform for crea
   handling engine. If Tcl or an application using Tcl processed a
   specially-crafted regular expression, it would lead to excessive CPU and
   memory consumption. (CVE-2007-4772, CVE-2007-6067)
-  
+
   This update also fixes the following bug:
-  
+
   * Due to a suboptimal implementation of threading in the current version of
   the Tcl language interpreter, an attempt to use threads in combination with
   fork in a Tcl script could cause the script to stop responding. At the
@@ -45,52 +65,22 @@ tag_insight = "Tcl (Tool Command Language) provides a powerful platform for crea
   support. Users who need to use fork in their Tcl scripts and do not require
   threading can now switch to the version without threading support by using
   the alternatives command. (BZ#478961)
-  
+
   All users of Tcl are advised to upgrade to these updated packages, which
-  contain backported patches to correct these issues.";
-
-
-tag_affected = "tcl on CentOS 5";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2013-January/019168.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.881574");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
-  script_tag(name:"creation_date", value:"2013-01-21 09:41:48 +0530 (Mon, 21 Jan 2013)");
-  script_cve_id("CVE-2007-4772", "CVE-2007-6067");
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
-  script_xref(name: "CESA", value: "2013:0122");
-  script_name("CentOS Update for tcl CESA-2013:0122 centos5 ");
-
-  script_tag(name: "summary" , value: "Check for the Version of tcl");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
-  script_family("CentOS Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS5");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  contain backported patches to correct these issues.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS5")
 {
@@ -113,6 +103,6 @@ if(release == "CentOS5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

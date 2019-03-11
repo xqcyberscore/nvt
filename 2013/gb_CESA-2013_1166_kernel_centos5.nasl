@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for kernel CESA-2013:1166 centos5 
+# CentOS Update for kernel CESA-2013:1166 centos5
 #
 # Authors:
 # System Generated Check
@@ -23,33 +23,46 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "The kernel packages contain the Linux kernel, the core of any Linux
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.881784");
+  script_version("$Revision: 14056 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2013-08-27 09:56:56 +0530 (Tue, 27 Aug 2013)");
+  script_cve_id("CVE-2013-2147", "CVE-2013-2164", "CVE-2013-2206", "CVE-2013-2224",
+                "CVE-2013-2232", "CVE-2013-2234", "CVE-2013-2237", "CVE-2012-3552");
+  script_tag(name:"cvss_base", value:"6.9");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
+  script_name("CentOS Update for kernel CESA-2013:1166 centos5");
+
+  script_tag(name:"affected", value:"kernel on CentOS 5");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_tag(name:"insight", value:"The kernel packages contain the Linux kernel, the core of any Linux
 operating system.
 
 This update fixes the following security issues:
 
-* A flaw was found in the way the Linux kernel's Stream Control
+  * A flaw was found in the way the Linux kernel's Stream Control
 Transmission Protocol (SCTP) implementation handled duplicate cookies. If a
 local user queried SCTP connection information at the same time a remote
 attacker has initialized a crafted SCTP connection to the system, it could
 trigger a NULL pointer dereference, causing the system to crash.
 (CVE-2013-2206, Important)
 
-* It was found that the fix for CVE-2012-3552 released via RHSA-2012:1540
+  * It was found that the fix for CVE-2012-3552 released via RHSA-2012:1540
 introduced an invalid free flaw in the Linux kernel's TCP/IP protocol suite
 implementation. A local, unprivileged user could use this flaw to corrupt
 kernel memory via crafted sendmsg() calls, allowing them to cause a denial
 of service or, potentially, escalate their privileges on the system.
 (CVE-2013-2224, Important)
 
-* An invalid pointer dereference flaw was found in the Linux kernel's
+  * An invalid pointer dereference flaw was found in the Linux kernel's
 TCP/IP protocol suite implementation. A local, unprivileged user could use
 this flaw to crash the system or, potentially, escalate their privileges on
 the system by using sendmsg() with an IPv6 socket connected to an IPv4
 destination. (CVE-2013-2232, Moderate)
 
-* Information leak flaws in the Linux kernel could allow a privileged,
+  * Information leak flaws in the Linux kernel could allow a privileged,
 local user to leak kernel memory to user-space. (CVE-2013-2164,
 CVE-2013-2147, CVE-2013-2234, CVE-2013-2237, Low)
 
@@ -59,35 +72,12 @@ References section.
 
 Users should upgrade to these updated packages, which contain backported
 patches to correct these issues. The system must be rebooted for this
-update to take effect.";
-
-
-if(description)
-{
-  script_oid("1.3.6.1.4.1.25623.1.0.881784");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
-  script_tag(name:"creation_date", value:"2013-08-27 09:56:56 +0530 (Tue, 27 Aug 2013)");
-  script_cve_id("CVE-2013-2147", "CVE-2013-2164", "CVE-2013-2206", "CVE-2013-2224",
-                "CVE-2013-2232", "CVE-2013-2234", "CVE-2013-2237", "CVE-2012-3552");
-  script_tag(name:"cvss_base", value:"6.9");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_name("CentOS Update for kernel CESA-2013:1166 centos5 ");
-
-
-  tag_affected = "kernel on CentOS 5";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+update to take effect.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "CESA", value: "2013:1166");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2013-August/019910.html");
-  script_tag(name:"summary", value:"Check for the Version of kernel");
+  script_xref(name:"CESA", value:"2013:1166");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-August/019910.html");
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for kernel");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
@@ -96,15 +86,14 @@ if(description)
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS5")
 {
@@ -169,6 +158,6 @@ if(release == "CentOS5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

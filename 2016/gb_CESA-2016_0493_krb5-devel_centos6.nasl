@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for krb5-devel CESA-2016:0493 centos6 
+# CentOS Update for krb5-devel CESA-2016:0493 centos6
 #
 # Authors:
 # System Generated Check
@@ -26,19 +26,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882438");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-03-24 06:15:14 +0100 (Thu, 24 Mar 2016)");
   script_cve_id("CVE-2015-8629", "CVE-2015-8631");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
-  script_name("CentOS Update for krb5-devel CESA-2016:0493 centos6 ");
-  script_tag(name: "summary", value: "Check the version of krb5-devel");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "Kerberos is a networked authentication 
-system which allows clients and servers to authenticate to each other with the 
+  script_name("CentOS Update for krb5-devel CESA-2016:0493 centos6");
+  script_tag(name:"summary", value:"Check the version of krb5-devel");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Kerberos is a networked authentication
+system which allows clients and servers to authenticate to each other with the
 help of a trusted third party, the Kerberos KDC.
 
 A memory leak flaw was found in the krb5_unparse_name() function of the MIT
@@ -58,13 +57,12 @@ The CVE-2015-8631 issue was discovered by Simo Sorce of Red Hat.
 All krb5 users are advised to upgrade to these updated packages, which
 contain backported patches to correct these issues. After installing the
 updated packages, running Kerberos services (krb5kdc, kadmin, and kprop)
-will be restarted automatically.
-");
-  script_tag(name: "affected", value: "krb5-devel on CentOS 6");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+will be restarted automatically.");
+  script_tag(name:"affected", value:"krb5-devel on CentOS 6");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "CESA", value: "2016:0493");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2016-March/021767.html");
+  script_xref(name:"CESA", value:"2016:0493");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2016-March/021767.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -77,12 +75,11 @@ will be restarted automatically.
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS6")
 {
@@ -129,6 +126,6 @@ if(release == "CentOS6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

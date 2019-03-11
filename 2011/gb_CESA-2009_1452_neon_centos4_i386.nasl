@@ -23,8 +23,27 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "neon is an HTTP and WebDAV client library, with a C interface. It provides
+if(description)
+{
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2009-September/016167.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.880913");
+  script_version("$Revision: 14056 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_xref(name:"CESA", value:"2009:1452");
+  script_cve_id("CVE-2009-2473", "CVE-2009-2474");
+  script_name("CentOS Update for neon CESA-2009:1452 centos4 i386");
+
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for neon");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
+  script_family("CentOS Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS4");
+  script_tag(name:"affected", value:"neon on CentOS 4");
+  script_tag(name:"insight", value:"neon is an HTTP and WebDAV client library, with a C interface. It provides
   a high-level interface to HTTP and WebDAV methods along with a low-level
   interface for HTTP request handling. neon supports persistent connections,
   proxy servers, basic, digest and Kerberos authentication, and has complete
@@ -37,59 +56,31 @@ tag_insight = "neon is an HTTP and WebDAV client library, with a C interface. It
   certificate during a man-in-the-middle attack and potentially confuse an
   application using the neon library into accepting it by mistake.
   (CVE-2009-2474)
-  
+
   A denial of service flaw was found in the neon Extensible Markup Language
   (XML) parser. A remote attacker (malicious DAV server) could provide a
   specially-crafted XML document that would cause excessive memory and CPU
   consumption if an application using the neon XML parser was tricked into
   processing it. (CVE-2009-2473)
-  
+
   All neon users should upgrade to these updated packages, which contain
   backported patches to correct these issues. Applications using the neon
   HTTP and WebDAV client library, such as cadaver, must be restarted for this
-  update to take effect.";
-tag_solution = "Please Install the Updated Packages.";
-
-tag_affected = "neon on CentOS 4";
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2009-September/016167.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.880913");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
-  script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_xref(name: "CESA", value: "2009:1452");
-  script_cve_id("CVE-2009-2473", "CVE-2009-2474");
-  script_name("CentOS Update for neon CESA-2009:1452 centos4 i386");
-
-  script_tag(name:"summary", value:"Check for the Version of neon");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_family("CentOS Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS4");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  update to take effect.");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS4")
 {
@@ -106,6 +97,6 @@ if(release == "CentOS4")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -23,31 +23,50 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "The kernel packages contain the Linux kernel, the core of any Linux
+if(description)
+{
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2011-April/017346.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.880553");
+  script_version("$Revision: 14056 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
+  script_tag(name:"cvss_base", value:"7.1");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
+  script_xref(name:"CESA", value:"2011:0163");
+  script_cve_id("CVE-2010-4526");
+  script_name("CentOS Update for kernel CESA-2011:0163 centos5 i386");
+
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for kernel");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
+  script_family("CentOS Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS5");
+  script_tag(name:"affected", value:"kernel on CentOS 5");
+  script_tag(name:"insight", value:"The kernel packages contain the Linux kernel, the core of any Linux
   operating system.
 
   This update fixes the following security issue:
-  
+
   * A flaw was found in the sctp_icmp_proto_unreachable() function in the
   Linux kernel's Stream Control Transmission Protocol (SCTP) implementation.
   A remote attacker could use this flaw to cause a denial of service.
   (CVE-2010-4526, Important)
-  
+
   This update also fixes the following bugs:
-  
+
   * Due to an off-by-one error, gfs2_grow failed to take the very last &quot;rgrp&quot;
   parameter into account when adding up the new free space. With this update,
   the GFS2 kernel properly counts all the new resource groups and fixes the
   &quot;statfs&quot; file correctly. (BZ#666792)
-  
+
   * Prior to this update, a multi-threaded application, which invoked
   popen(3) internally, could cause a thread stall by FILE lock corruption.
   The application program waited for a FILE lock in glibc, but the lock
   seemed to be corrupted, which was caused by a race condition in the COW
   (Copy On Write) logic. With this update, the race condition was corrected
   and FILE lock corruption no longer occurs. (BZ#667050)
-  
+
   * If an error occurred during I/O, the SCSI driver reset the &quot;megaraid_sas&quot;
   controller to restore it to normal state. However, on Red Hat Enterprise
   Linux 5, the waiting time to allow a full reset completion for the
@@ -55,52 +74,24 @@ tag_insight = "The kernel packages contain the Linux kernel, the core of any Lin
   the controller as stalled, and, as a result, the system stalled as well.
   With this update, more time is given to the controller to properly restart,
   thus, the controller operates as expected after being reset. (BZ#667141)
-  
+
   Users should upgrade to these updated packages, which contain backported
   patches to correct these issues. The system must be rebooted for this
-  update to take effect.";
-tag_solution = "Please Install the Updated Packages.";
-
-tag_affected = "kernel on CentOS 5";
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2011-April/017346.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.880553");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
-  script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
-  script_tag(name:"cvss_base", value:"7.1");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
-  script_xref(name: "CESA", value: "2011:0163");
-  script_cve_id("CVE-2010-4526");
-  script_name("CentOS Update for kernel CESA-2011:0163 centos5 i386");
-
-  script_tag(name:"summary", value:"Check for the Version of kernel");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_family("CentOS Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS5");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  update to take effect.");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS5")
 {
@@ -165,6 +156,6 @@ if(release == "CentOS5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

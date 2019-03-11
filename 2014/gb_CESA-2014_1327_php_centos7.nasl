@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for php CESA-2014:1327 centos7 
+# CentOS Update for php CESA-2014:1327 centos7
 #
 # Authors:
 # System Generated Check
@@ -26,16 +26,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882037");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-10-01 16:58:26 +0530 (Wed, 01 Oct 2014)");
   script_cve_id("CVE-2014-2497", "CVE-2014-3478", "CVE-2014-3538", "CVE-2014-3587",
                 "CVE-2014-3597", "CVE-2014-4670", "CVE-2014-4698", "CVE-2014-5120",
                 "CVE-2012-1571");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_name("CentOS Update for php CESA-2014:1327 centos7 ");
-  script_tag(name: "insight", value: "PHP is an HTML-embedded scripting language commonly used with the Apache
+  script_name("CentOS Update for php CESA-2014:1327 centos7");
+  script_tag(name:"insight", value:"PHP is an HTML-embedded scripting language commonly used with the Apache
 HTTP Server. PHP's fileinfo module provides functions used to identify a
 particular file according to the type of data contained by the file.
 
@@ -85,16 +85,15 @@ David Kutlek of the Red Hat BaseOS QE.
 All php users are advised to upgrade to these updated packages, which
 contain backported patches to correct these issues. After installing the
 updated packages, the httpd daemon must be restarted for the update to
-take effect.
-");
-  script_tag(name: "affected", value: "php on CentOS 7");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+take effect.");
+  script_tag(name:"affected", value:"php on CentOS 7");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name: "CESA", value: "2014:1327");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2014-September/020604.html");
-  script_tag(name:"summary", value:"Check for the Version of php");
+  script_xref(name:"CESA", value:"2014:1327");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2014-September/020604.html");
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for php");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
@@ -106,12 +105,11 @@ take effect.
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS7")
 {
@@ -266,6 +264,6 @@ if(release == "CentOS7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

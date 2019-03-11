@@ -23,100 +23,91 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "Mozilla Firefox is an open source web browser.
+if(description)
+{
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2010-June/016746.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.880652");
+  script_version("$Revision: 14056 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_xref(name:"CESA", value:"2010:0501");
+  script_cve_id("CVE-2008-5913", "CVE-2010-0182", "CVE-2010-1121", "CVE-2010-1125", "CVE-2010-1196", "CVE-2010-1197", "CVE-2010-1198", "CVE-2010-1199", "CVE-2010-1200", "CVE-2010-1202", "CVE-2010-1203");
+  script_name("CentOS Update for devhelp CESA-2010:0501 centos5 i386");
+
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for devhelp");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
+  script_family("CentOS Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS5");
+  script_tag(name:"affected", value:"devhelp on CentOS 5");
+  script_tag(name:"insight", value:"Mozilla Firefox is an open source web browser.
 
   Several flaws were found in the processing of malformed web content. A web
   page containing malicious content could cause Firefox to crash or,
   potentially, execute arbitrary code with the privileges of the user running
   Firefox. (CVE-2010-1121, CVE-2010-1200, CVE-2010-1202, CVE-2010-1203)
-  
+
   A flaw was found in the way browser plug-ins interact. It was possible for
   a plug-in to reference the freed memory from a different plug-in, resulting
   in the execution of arbitrary code with the privileges of the user running
   Firefox. (CVE-2010-1198)
-  
+
   Several integer overflow flaws were found in the processing of malformed
   web content. A web page containing malicious content could cause Firefox to
   crash or, potentially, execute arbitrary code with the privileges of the
   user running Firefox. (CVE-2010-1196, CVE-2010-1199)
-  
+
   A focus stealing flaw was found in the way Firefox handled focus changes. A
   malicious website could use this flaw to steal sensitive data from a user,
   such as usernames and passwords. (CVE-2010-1125)
-  
+
   A flaw was found in the way Firefox handled the &quot;Content-Disposition:
   attachment&quot; HTTP header when the &quot;Content-Type: multipart&quot; HTTP header was
   also present. A website that allows arbitrary uploads and relies on the
   &quot;Content-Disposition: attachment&quot; HTTP header to prevent content from being
   displayed inline, could be used by an attacker to serve malicious content
   to users. (CVE-2010-1197)
-  
+
   A flaw was found in the Firefox Math.random() function. This function could
   be used to identify a browsing session and track a user across different
   websites. (CVE-2008-5913)
-  
+
   A flaw was found in the Firefox XML document loading security checks.
   Certain security checks were not being called when an XML document was
   loaded. This could possibly be leveraged later by an attacker to load
   certain resources that violate the security policies of the browser or its
   add-ons. Note that this issue cannot be exploited by only loading an XML
   document. (CVE-2010-0182)
-  
+
   For technical details regarding these flaws, refer to the Mozilla security
   advisories for Firefox 3.6.4. You can find a link to the Mozilla advisories
   in the References section of this erratum.
-  
+
   This erratum upgrades Firefox from version 3.0.19 to version 3.6.4. Due to
   the requirements of Firefox 3.6.4, this erratum also provides a number of
   other updated packages, including esc, totem, and yelp.
-  
+
   This erratum also contains multiple bug fixes and numerous enhancements.
-  Space precludes doc ... 
+  Space precludes doc ...
 
-  Description truncated, for more information please check the Reference URL";
-tag_solution = "Please Install the Updated Packages.";
-
-tag_affected = "devhelp on CentOS 5";
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2010-June/016746.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.880652");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
-  script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_xref(name: "CESA", value: "2010:0501");
-  script_cve_id("CVE-2008-5913", "CVE-2010-0182", "CVE-2010-1121", "CVE-2010-1125", "CVE-2010-1196", "CVE-2010-1197", "CVE-2010-1198", "CVE-2010-1199", "CVE-2010-1200", "CVE-2010-1202", "CVE-2010-1203");
-  script_name("CentOS Update for devhelp CESA-2010:0501 centos5 i386");
-
-  script_tag(name:"summary", value:"Check for the Version of devhelp");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_family("CentOS Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS5");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  Description truncated, please see the referenced URL(s) for more information.");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS5")
 {
@@ -211,6 +202,6 @@ if(release == "CentOS5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

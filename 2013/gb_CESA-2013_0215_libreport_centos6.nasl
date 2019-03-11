@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for libreport CESA-2013:0215 centos6 
+# CentOS Update for libreport CESA-2013:0215 centos6
 #
 # Authors:
 # System Generated Check
@@ -23,8 +23,28 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "ABRT (Automatic Bug Reporting Tool) is a tool to help users to detect
+if(description)
+{
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-February/019225.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.881587");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2013-02-04 09:55:13 +0530 (Mon, 04 Feb 2013)");
+  script_cve_id("CVE-2012-5659", "CVE-2012-5660");
+  script_tag(name:"cvss_base", value:"6.9");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
+  script_xref(name:"CESA", value:"2013:0215");
+  script_name("CentOS Update for libreport CESA-2013:0215 centos6");
+
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for libreport");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
+  script_family("CentOS Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS6");
+  script_tag(name:"affected", value:"libreport on CentOS 6");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_tag(name:"insight", value:"ABRT (Automatic Bug Reporting Tool) is a tool to help users to detect
   defects in applications and to create a bug report with all the information
   needed by a maintainer to fix it. It uses a plug-in system to extend its
   functionality. libreport provides an API for reporting different problems
@@ -36,62 +56,32 @@ tag_insight = "ABRT (Automatic Bug Reporting Tool) is a tool to help users to de
   modules being loaded and run from non-standard directories (such as /tmp/).
   A local attacker could use this flaw to escalate their privileges to that
   of the abrt user. (CVE-2012-5659)
-  
+
   A race condition was found in the way ABRT handled the directories used to
   store information about crashes. A local attacker with the privileges of
   the abrt user could use this flaw to perform a symbolic link attack,
   possibly allowing them to escalate their privileges to root.
   (CVE-2012-5660)
-  
+
   Red Hat would like to thank Martin Carpenter of Citco for reporting the
   CVE-2012-5660 issue. CVE-2012-5659 was discovered by Miloslav Trma of Red
   Hat.
-  
+
   All users of abrt and libreport are advised to upgrade to these updated
-  packages, which correct these issues.";
-
-
-tag_affected = "libreport on CentOS 6";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2013-February/019225.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.881587");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
-  script_tag(name:"creation_date", value:"2013-02-04 09:55:13 +0530 (Mon, 04 Feb 2013)");
-  script_cve_id("CVE-2012-5659", "CVE-2012-5660");
-  script_tag(name:"cvss_base", value:"6.9");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_xref(name: "CESA", value: "2013:0215");
-  script_name("CentOS Update for libreport CESA-2013:0215 centos6 ");
-
-  script_tag(name:"summary", value:"Check for the Version of libreport");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
-  script_family("CentOS Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS6");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  packages, which correct these issues.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS6")
 {
@@ -174,6 +164,6 @@ if(release == "CentOS6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

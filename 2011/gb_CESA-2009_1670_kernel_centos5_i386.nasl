@@ -23,114 +23,105 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "The kernel packages contain the Linux kernel, the core of any Linux
-  operating system.
-
-  Security fixes:
-  
-  * NULL pointer dereference flaws in the r128 driver. Checks to test if the
-  Concurrent Command Engine state was initialized were missing in private
-  IOCTL functions. An attacker could use these flaws to cause a local denial
-  of service or escalate their privileges. (CVE-2009-3620, Important)
-  
-  * a NULL pointer dereference flaw in the NFSv4 implementation. Several
-  NFSv4 file locking functions failed to check whether a file had been opened
-  on the server before performing locking operations on it. A local user on a
-  system with an NFSv4 share mounted could possibly use this flaw to cause a
-  denial of service or escalate their privileges. (CVE-2009-3726, Important)
-  
-  * a flaw in tcf_fill_node(). A certain data structure in this function was
-  not initialized properly before being copied to user-space. This could lead
-  to an information leak. (CVE-2009-3612, Moderate)
-  
-  * unix_stream_connect() did not check if a UNIX domain socket was in the
-  shutdown state. This could lead to a deadlock. A local, unprivileged user
-  could use this flaw to cause a denial of service. (CVE-2009-3621, Moderate)
-  
-  Knowledgebase DOC-20536 has steps to mitigate NULL pointer dereference
-  flaws.
-  
-  Bug fixes:
-  
-  * frequently changing a CPU between online and offline caused a kernel
-  panic on some systems. (BZ#545583)
-  
-  * for the LSI Logic LSI53C1030 Ultra320 SCSI controller, read commands sent
-  could receive incorrect data, preventing correct data transfer. (BZ#529308)
-  
-  * pciehp could not detect PCI Express hot plug slots on some systems.
-  (BZ#530383)
-  
-  * soft lockups: inotify race and contention on dcache_lock. (BZ#533822,
-  BZ#537019)
-  
-  * priority ordered lists are now used for threads waiting for a given
-  mutex. (BZ#533858)
-  
-  * a deadlock in DLM could cause GFS2 file systems to lock up. (BZ#533859)
-  
-  * use-after-free bug in the audit subsystem crashed certain systems when
-  running usermod. (BZ#533861)
-  
-  * on certain hardware configurations, a kernel panic when the Broadcom
-  iSCSI offload driver (bnx2i.ko and cnic.ko) was loaded. (BZ#537014)
-  
-  * qla2xxx: Enabled MSI-X, and correctly handle the module parameter to
-  control it. This improves performance for certain systems. (BZ#537020)
-  
-  * system crash when reading the cpuaffinity file on a system. (BZ#537346)
-  
-  * suspend-resume problems on systems with lots of logical CPUs, e.g. BX-EX.
-  (BZ#539674)
-  
-  * off-by-one error in the legacy PCI bus check. (BZ#539675)
-  
-  * TSC was not made available  ... 
-
-  Description truncated, for more information please check the Reference URL";
-tag_solution = "Please Install the Updated Packages.";
-
-tag_affected = "kernel on CentOS 5";
-
-
 if(description)
 {
-  script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2009-December/016374.html");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2009-December/016374.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880828");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14056 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_xref(name: "CESA", value: "2009:1670");
+  script_xref(name:"CESA", value:"2009:1670");
   script_cve_id("CVE-2009-3612", "CVE-2009-3620", "CVE-2009-3621", "CVE-2009-3726");
   script_name("CentOS Update for kernel CESA-2009:1670 centos5 i386");
 
-  script_tag(name:"summary", value:"Check for the Version of kernel");
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for kernel");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS5");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  script_tag(name:"affected", value:"kernel on CentOS 5");
+  script_tag(name:"insight", value:"The kernel packages contain the Linux kernel, the core of any Linux
+  operating system.
+
+  Security fixes:
+
+  * NULL pointer dereference flaws in the r128 driver. Checks to test if the
+  Concurrent Command Engine state was initialized were missing in private
+  IOCTL functions. An attacker could use these flaws to cause a local denial
+  of service or escalate their privileges. (CVE-2009-3620, Important)
+
+  * a NULL pointer dereference flaw in the NFSv4 implementation. Several
+  NFSv4 file locking functions failed to check whether a file had been opened
+  on the server before performing locking operations on it. A local user on a
+  system with an NFSv4 share mounted could possibly use this flaw to cause a
+  denial of service or escalate their privileges. (CVE-2009-3726, Important)
+
+  * a flaw in tcf_fill_node(). A certain data structure in this function was
+  not initialized properly before being copied to user-space. This could lead
+  to an information leak. (CVE-2009-3612, Moderate)
+
+  * unix_stream_connect() did not check if a UNIX domain socket was in the
+  shutdown state. This could lead to a deadlock. A local, unprivileged user
+  could use this flaw to cause a denial of service. (CVE-2009-3621, Moderate)
+
+  Knowledgebase DOC-20536 has steps to mitigate NULL pointer dereference
+  flaws.
+
+  Bug fixes:
+
+  * frequently changing a CPU between online and offline caused a kernel
+  panic on some systems. (BZ#545583)
+
+  * for the LSI Logic LSI53C1030 Ultra320 SCSI controller, read commands sent
+  could receive incorrect data, preventing correct data transfer. (BZ#529308)
+
+  * pciehp could not detect PCI Express hot plug slots on some systems.
+  (BZ#530383)
+
+  * soft lockups: inotify race and contention on dcache_lock. (BZ#533822,
+  BZ#537019)
+
+  * priority ordered lists are now used for threads waiting for a given
+  mutex. (BZ#533858)
+
+  * a deadlock in DLM could cause GFS2 file systems to lock up. (BZ#533859)
+
+  * use-after-free bug in the audit subsystem crashed certain systems when
+  running usermod. (BZ#533861)
+
+  * on certain hardware configurations, a kernel panic when the Broadcom
+  iSCSI offload driver (bnx2i.ko and cnic.ko) was loaded. (BZ#537014)
+
+  * qla2xxx: Enabled MSI-X, and correctly handle the module parameter to
+  control it. This improves performance for certain systems. (BZ#537020)
+
+  * system crash when reading the cpuaffinity file on a system. (BZ#537346)
+
+  * suspend-resume problems on systems with lots of logical CPUs, e.g. BX-EX.
+  (BZ#539674)
+
+  * off-by-one error in the legacy PCI bus check. (BZ#539675)
+
+  * TSC was not made available  ...
+
+  Description truncated, please see the referenced URL(s) for more information.");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS5")
 {
@@ -195,6 +186,6 @@ if(release == "CentOS5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

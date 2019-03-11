@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2018_2757_389-ds-base_centos7.nasl 14050 2019-03-08 09:08:09Z cfischer $
+# $Id: gb_CESA-2018_2757_389-ds-base_centos7.nasl 14058 2019-03-08 13:25:52Z cfischer $
 #
 # CentOS Update for 389-ds-base CESA-2018:2757 centos7
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882954");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-10-03 17:02:18 +0530 (Wed, 03 Oct 2018)");
   script_cve_id("CVE-2018-10850", "CVE-2018-10935", "CVE-2018-14624", "CVE-2018-14638");
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
-  script_name("CentOS Update for 389-ds-base CESA-2018:2757 centos7 ");
+  script_name("CentOS Update for 389-ds-base CESA-2018:2757 centos7");
   script_tag(name:"summary", value:"Check the version of 389-ds-base");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
   on the target host.");
@@ -44,16 +44,16 @@ if(description)
 
 Security Fix(es):
 
-* 389-ds-base: race condition on reference counter leads to DoS using
+  * 389-ds-base: race condition on reference counter leads to DoS using
 persistent search (CVE-2018-10850)
 
-* 389-ds-base: ldapsearch with server side sort allows users to cause a
+  * 389-ds-base: ldapsearch with server side sort allows users to cause a
 crash (CVE-2018-10935)
 
-* 389-ds-base: Server crash through modify command with large DN
+  * 389-ds-base: Server crash through modify command with large DN
 (CVE-2018-14624)
 
-* 389-ds-base: Crash in delete_passwdPolicy when persistent search
+  * 389-ds-base: Crash in delete_passwdPolicy when persistent search
 connections are terminated unexpectedly (CVE-2018-14638)
 
 For more details about the security issue(s), including the impact, a CVSS
@@ -65,13 +65,13 @@ CVE-2018-14638 issue was discovered by Viktor Ashirov (Red Hat).
 
 Bug Fix(es):
 
-* Previously, the nucn-stans framework was enabled by default in Directory
+  * Previously, the nucn-stans framework was enabled by default in Directory
 Server, but the framework is not stable. As a consequence, deadlocks and
 file descriptor leaks could occur. This update changes the default value of
 the nsslapd-enable-nunc-stans parameter to 'off'. As a result, Directory
 Server is now stable. (BZ#1614836)
 
-* When a search evaluates the 'shadowAccount' entry, Directory Server adds
+  * When a search evaluates the 'shadowAccount' entry, Directory Server adds
 the shadow attributes to the entry. If the fine-grained password policy is
 enabled, the 'shadowAccount' entry can contain its own 'pwdpolicysubentry'
 policy attribute. Previously, to retrieve this attribute, the server
@@ -79,13 +79,12 @@ started an internal search for each 'shadowAccount' entry, which was
 unnecessary because the entry was already known to the server. With this
 update, Directory Server only starts internal searches if the entry is not
 known. As a result, the performance of searches, such as response time and
-throughput, is improved. (BZ#1615924)
-");
+throughput, is improved. (BZ#1615924)");
   script_tag(name:"affected", value:"389-ds-base on CentOS 7");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"CESA", value:"2018:2757");
-  script_xref(name:"URL" , value:"http://lists.centos.org/pipermail/centos-announce/2018-September/023042.html");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2018-September/023042.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -98,12 +97,11 @@ throughput, is improved. (BZ#1615924)
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS7")
 {

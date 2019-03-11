@@ -26,14 +26,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882011");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14056 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-09-10 06:20:21 +0200 (Wed, 10 Sep 2014)");
   script_cve_id("CVE-2014-3560");
   script_tag(name:"cvss_base", value:"7.9");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:C/I:C/A:C");
   script_name("CentOS Update for libsmbclient CESA-2014:1008 centos7");
-  script_tag(name: "insight", value: "Samba is an open-source implementation of
+  script_tag(name:"insight", value:"Samba is an open-source implementation of
 the Server Message Block (SMB) or Common Internet File System (CIFS) protocol,
 which allows PC-compatible machines to share files, printers, and other
 information.
@@ -46,7 +46,7 @@ possibly lead to arbitrary code execution with root privileges.
 
 This update also fixes the following bug:
 
-* Prior to this update, Samba incorrectly used the O_TRUNC flag when using
+  * Prior to this update, Samba incorrectly used the O_TRUNC flag when using
 the open(2) system call to access the contents of a file that was already
 opened by a different process, causing the file's previous contents to be
 removed. With this update, the O_TRUNC flag is no longer used in the above
@@ -54,33 +54,31 @@ scenario, and file corruption no longer occurs. (BZ#1115490)
 
 All Samba users are advised to upgrade to these updated packages, which
 contain backported patches to correct these issues. After installing this
-update, the smb service will be restarted automatically.
-");
-  script_tag(name: "affected", value: "libsmbclient on CentOS 7");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+update, the smb service will be restarted automatically.");
+  script_tag(name:"affected", value:"libsmbclient on CentOS 7");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name: "CESA", value: "2014:1008");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2014-August/020467.html");
-  script_tag(name:"summary", value:"Check for the Version of libsmbclient");
+  script_xref(name:"CESA", value:"2014:1008");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2014-August/020467.html");
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for libsmbclient");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS7");
-exit(0);
+  exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS7")
 {
@@ -253,6 +251,6 @@ if(release == "CentOS7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

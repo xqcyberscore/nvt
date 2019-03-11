@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for kernel CESA-2016:1664 centos6 
+# CentOS Update for kernel CESA-2016:1664 centos6
 #
 # Authors:
 # System Generated Check
@@ -26,18 +26,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882547");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-08-25 05:40:20 +0200 (Thu, 25 Aug 2016)");
   script_cve_id("CVE-2016-5696");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
-  script_name("CentOS Update for kernel CESA-2016:1664 centos6 ");
-  script_tag(name: "summary", value: "Check the version of kernel");
-  script_tag(name: "vuldetect", value: "Get the installed version with the 
-help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "The kernel packages contain the Linux 
+  script_name("CentOS Update for kernel CESA-2016:1664 centos6");
+  script_tag(name:"summary", value:"Check the version of kernel");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The kernel packages contain the Linux
 kernel, the core of any Linux operating system.
 
 Security Fix(es):
@@ -56,46 +55,46 @@ issue.
 
 Bug Fix(es):
 
-* When loading the Direct Rendering Manager (DRM) kernel module, the kernel
+  * When loading the Direct Rendering Manager (DRM) kernel module, the kernel
 panicked if DRM was previously unloaded. The kernel panic was caused by a
 memory leak of the ID Resolver (IDR2). With this update, IDR2 is loaded
 during kernel boot, and the kernel panic no longer occurs in the described
 scenario. (BZ#1353827)
 
-* When more than one process attempted to use the 'configfs' directory
+  * When more than one process attempted to use the 'configfs' directory
 entry at the same time, a kernel panic in some cases occurred. With this
 update, a race condition between a directory entry and a lookup operation
 has been fixed. As a result, the kernel no longer panics in the described
 scenario. (BZ#1353828)
 
-* When shutting down the system by running the halt -p command, a kernel
+  * When shutting down the system by running the halt -p command, a kernel
 panic occurred due to a conflict between the kernel offlining CPUs and the
 sched command, which used the sched group and the sched domain data without
 first checking the data. The underlying source code has been fixed by
 adding a check to avoid the conflict. As a result, the described scenario
 no longer results in a kernel panic. (BZ#1343894)
 
-* In some cases, running the ipmitool command caused a kernel panic due to
+  * In some cases, running the ipmitool command caused a kernel panic due to
 a race condition in the ipmi message handler. This update fixes the race
 condition, and the kernel panic no longer occurs in the described scenario.
 (BZ#1355980)
 
-* Previously, multiple Very Secure FTP daemon (vsftpd) processes on a
+  * Previously, multiple Very Secure FTP daemon (vsftpd) processes on a
 directory with a large number of files led to a high contention rate on
 each inode's spinlock, which caused excessive CPU usage. With this update,
 a spinlock to protect a single memory-to-memory copy has been removed from
 the ext4_getattr() function. As a result, system CPU usage has been reduced
 and is no longer excessive in the described situation. (BZ#1355981)
 
-* When the gfs2_grow utility is used to extend Global File System 2 (GFS2),
-the next block allocation causes the GFS2 kernel modu ... 
+  * When the gfs2_grow utility is used to extend Global File System 2 (GFS2),
+the next block allocation causes the GFS2 kernel modu ...
 
-  Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "kernel on CentOS 6");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  Description truncated, please see the referenced URL(s) for more information.");
+  script_tag(name:"affected", value:"kernel on CentOS 6");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "CESA", value: "2016:1664");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2016-August/022053.html");
+  script_xref(name:"CESA", value:"2016:1664");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2016-August/022053.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -108,12 +107,11 @@ the next block allocation causes the GFS2 kernel modu ...
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS6")
 {
@@ -178,6 +176,6 @@ if(release == "CentOS6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

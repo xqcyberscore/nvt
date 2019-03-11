@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for kernel CESA-2012:1064 centos6 
+# CentOS Update for kernel CESA-2012:1064 centos6
 #
 # Authors:
 # System Generated Check
@@ -23,42 +23,62 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "The kernel packages contain the Linux kernel, the core of any Linux
+if(description)
+{
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-July/018731.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.881073");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2012-07-30 16:01:16 +0530 (Mon, 30 Jul 2012)");
+  script_cve_id("CVE-2012-2744", "CVE-2012-2745");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_xref(name:"CESA", value:"2012:1064");
+  script_name("CentOS Update for kernel CESA-2012:1064 centos6");
+
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for kernel");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
+  script_family("CentOS Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS6");
+  script_tag(name:"affected", value:"kernel on CentOS 6");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_tag(name:"insight", value:"The kernel packages contain the Linux kernel, the core of any Linux
   operating system.
 
   This update fixes the following security issues:
-  
+
   * A NULL pointer dereference flaw was found in the nf_ct_frag6_reasm()
   function in the Linux kernel's netfilter IPv6 connection tracking
   implementation. A remote attacker could use this flaw to send
   specially-crafted packets to a target system that is using IPv6 and also
   has the nf_conntrack_ipv6 kernel module loaded, causing it to crash.
   (CVE-2012-2744, Important)
-  
+
   * A flaw was found in the way the Linux kernel's key management facility
   handled replacement session keyrings on process forks. A local,
   unprivileged user could use this flaw to cause a denial of service.
   (CVE-2012-2745, Moderate)
-  
+
   Red Hat would like to thank an anonymous contributor working with the
   Beyond Security SecuriTeam Secure Disclosure program for reporting
   CVE-2012-2744.
-  
+
   This update also fixes the following bugs:
-  
+
   * Previously introduced firmware files required for new Realtek chipsets
   contained an invalid prefix (&quot;rtl_nic_&quot;) in the file names, for example
   &quot;/lib/firmware/rtl_nic/rtl_nic_rtl8168d-1.fw&quot;. This update corrects these
   file names. For example, the aforementioned file is now correctly named
   &quot;/lib/firmware/rtl_nic/rtl8168d-1.fw&quot;. (BZ#832359)
-  
+
   * This update blacklists the ADMA428M revision of the 2GB ATA Flash Disk
   device. This is due to data corruption occurring on the said device when
   the Ultra-DMA 66 transfer mode is used. When the
-  &quot;libata.force=5:pio0,6:pio0&quot; kernel parameter is set, the aforementioned
+  &quot;libata.force=5:pio0, 6:pio0&quot; kernel parameter is set, the aforementioned
   device works as expected. (BZ#832363)
-  
+
   * On Red Hat Enterprise Linux 6, mounting an NFS export from a server
   running Windows Server 2012 Release Candidate returned the
   NFS4ERR_MINOR_VERS_MISMATCH error because Windows Server 2012 Release
@@ -67,57 +87,28 @@ tag_insight = "The kernel packages contain the Linux kernel, the core of any Lin
   which caused the mount operation to fail. With this update, when the
   NFS4ERR_MINOR_VERS_MISMATCH error is returned, the mount operation properly
   falls back to using NFSv3 and no longer fails. (BZ#832365)
-  
+
   * On ext4 file systems, when fallocate() failed to allocate blocks due to
   the ENOSPC condition (no space left on device) for a file larger than 4 GB,
   the size of the file became corrupted and, consequently, caused file system
   corruption. This was due to a missing cast operator in the
   &quot;ext4_fallocate()&quot; function. With this update, the underlying source code
-  has b ... 
+  has b ...
 
-  Description truncated, for more information please check the Reference URL";
-
-tag_affected = "kernel on CentOS 6";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2012-July/018731.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.881073");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
-  script_tag(name:"creation_date", value:"2012-07-30 16:01:16 +0530 (Mon, 30 Jul 2012)");
-  script_cve_id("CVE-2012-2744", "CVE-2012-2745");
-  script_tag(name:"cvss_base", value:"7.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_xref(name: "CESA", value: "2012:1064");
-  script_name("CentOS Update for kernel CESA-2012:1064 centos6 ");
-
-  script_tag(name: "summary" , value: "Check for the Version of kernel");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_family("CentOS Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS6");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS6")
 {
@@ -176,6 +167,6 @@ if(release == "CentOS6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

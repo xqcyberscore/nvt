@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for kmod-kvm CESA-2014:0163 centos5 
+# CentOS Update for kmod-kvm CESA-2014:0163 centos5
 #
 # Authors:
 # System Generated Check
@@ -23,20 +23,19 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.881880");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14056 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-02-17 11:38:58 +0530 (Mon, 17 Feb 2014)");
   script_cve_id("CVE-2013-6367", "CVE-2013-6368");
   script_tag(name:"cvss_base", value:"6.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:N/C:C/I:C/A:C");
-  script_name("CentOS Update for kmod-kvm CESA-2014:0163 centos5 ");
+  script_name("CentOS Update for kmod-kvm CESA-2014:0163 centos5");
 
-  tag_insight = "KVM (Kernel-based Virtual Machine) is a full virtualization solution for
+  script_tag(name:"affected", value:"kmod-kvm on CentOS 5");
+  script_tag(name:"insight", value:"KVM (Kernel-based Virtual Machine) is a full virtualization solution for
 Linux on AMD64 and Intel 64 systems. KVM is a Linux kernel module built for
 the standard Red Hat Enterprise Linux kernel.
 
@@ -55,22 +54,13 @@ issues.
 
 All kvm users are advised to upgrade to these updated packages, which
 contain backported patches to correct these issues. Note: the procedure in
-the Solution section must be performed before this update will take effect.
-";
-
-  tag_affected = "kmod-kvm on CentOS 5";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+the Solution section must be performed before this update will take effect.");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "CESA", value: "2014:0163");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2014-February/020154.html");
-  script_tag(name:"summary", value:"Check for the Version of kmod-kvm");
+  script_xref(name:"CESA", value:"2014:0163");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2014-February/020154.html");
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for kmod-kvm");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
@@ -79,15 +69,14 @@ the Solution section must be performed before this update will take effect.
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS5")
 {
@@ -122,6 +111,6 @@ if(release == "CentOS5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

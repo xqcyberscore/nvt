@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for qemu-guest-agent CESA-2014:0743 centos6 
+# CentOS Update for qemu-guest-agent CESA-2014:0743 centos6
 #
 # Authors:
 # System Generated Check
@@ -23,22 +23,21 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.881953");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14056 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-06-17 10:03:59 +0530 (Tue, 17 Jun 2014)");
   script_cve_id("CVE-2013-4148", "CVE-2013-4151", "CVE-2013-4535", "CVE-2013-4536",
                 "CVE-2013-4541", "CVE-2013-4542", "CVE-2013-6399", "CVE-2014-0182",
                 "CVE-2014-2894", "CVE-2014-3461");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_name("CentOS Update for qemu-guest-agent CESA-2014:0743 centos6 ");
+  script_name("CentOS Update for qemu-guest-agent CESA-2014:0743 centos6");
 
-  tag_insight = "KVM (Kernel-based Virtual Machine) is a full virtualization
+  script_tag(name:"affected", value:"qemu-guest-agent on CentOS 6");
+  script_tag(name:"insight", value:"KVM (Kernel-based Virtual Machine) is a full virtualization
 solution for Linux on AMD64 and Intel 64 systems. The qemu-kvm package provides
 the user-space component for running virtual machines using KVM.
 
@@ -65,7 +64,7 @@ Anthony Liguori, and Michael Roth.
 
 This update also fixes the following bugs:
 
-* Previously, under certain circumstances, libvirt failed to start guests
+  * Previously, under certain circumstances, libvirt failed to start guests
 which used a non-zero PCI domain and SR-IOV Virtual Functions (VFs), and
 returned the following error message:
 
@@ -75,7 +74,7 @@ support it.
 This update fixes this issue and guests using the aforementioned
 configuration no longer fail to start. (BZ#1099941)
 
-* Due to an incorrect initialization of the cpus_sts bitmap, which holds
+  * Due to an incorrect initialization of the cpus_sts bitmap, which holds
 the enablement status of a vCPU, libvirt could fail to start a guest with
 an unusual vCPU topology (for example, a guest with three cores and two
 sockets). With this update, the initialization of cpus_sts has been
@@ -85,22 +84,13 @@ corrected, and libvirt no longer fails to start the aforementioned guests.
 All qemu-kvm users are advised to upgrade to these updated packages, which
 contain backported patches to correct these issues. After installing this
 update, shut down all running virtual machines. Once all virtual machines
-have shut down, start them again for this update to take effect.
-";
-
-  tag_affected = "qemu-guest-agent on CentOS 6";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+have shut down, start them again for this update to take effect.");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "CESA", value: "2014:0743");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2014-June/020364.html");
-  script_tag(name:"summary", value:"Check for the Version of qemu-guest-agent");
+  script_xref(name:"CESA", value:"2014:0743");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2014-June/020364.html");
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for qemu-guest-agent");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
@@ -109,15 +99,14 @@ have shut down, start them again for this update to take effect.
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS6")
 {
@@ -146,6 +135,6 @@ if(release == "CentOS6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

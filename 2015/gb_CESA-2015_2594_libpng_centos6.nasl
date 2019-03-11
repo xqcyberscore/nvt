@@ -26,18 +26,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882335");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-12-10 06:35:42 +0100 (Thu, 10 Dec 2015)");
   script_cve_id("CVE-2015-7981", "CVE-2015-8126", "CVE-2015-8472");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
-  script_name("CentOS Update for libpng CESA-2015:2594 centos6 ");
-  script_tag(name: "summary", value: "Check the version of libpng");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "The libpng packages contain a library of
+  script_name("CentOS Update for libpng CESA-2015:2594 centos6");
+  script_tag(name:"summary", value:"Check the version of libpng");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The libpng packages contain a library of
 functions for creating and manipulating PNG (Portable Network Graphics) image
 format files.
 
@@ -57,12 +56,11 @@ out-of-bounds read by tricking an unsuspecting user into processing a
 specially crafted PNG image. (CVE-2015-7981)
 
 All libpng users are advised to upgrade to these updated packages, which
-contain backported patches to correct these issues.
-");
-  script_tag(name: "affected", value: "libpng on CentOS 6");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "CESA", value: "2015:2594");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2015-December/021517.html");
+contain backported patches to correct these issues.");
+  script_tag(name:"affected", value:"libpng on CentOS 6");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_xref(name:"CESA", value:"2015:2594");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2015-December/021517.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -75,12 +73,11 @@ contain backported patches to correct these issues.
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS6")
 {
@@ -103,6 +100,6 @@ if(release == "CentOS6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

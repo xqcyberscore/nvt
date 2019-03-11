@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for java CESA-2013:1505 centos5 
+# CentOS Update for java CESA-2013:1505 centos5
 #
 # Authors:
 # System Generated Check
@@ -23,13 +23,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.881822");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14056 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-11-08 10:49:01 +0530 (Fri, 08 Nov 2013)");
   script_cve_id("CVE-2013-3829", "CVE-2013-4002", "CVE-2013-5772", "CVE-2013-5774",
                 "CVE-2013-5778", "CVE-2013-5780", "CVE-2013-5782", "CVE-2013-5783",
@@ -40,9 +38,10 @@ if(description)
                 "CVE-2013-5849", "CVE-2013-5850");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_name("CentOS Update for java CESA-2013:1505 centos5 ");
+  script_name("CentOS Update for java CESA-2013:1505 centos5");
 
-  tag_insight = "The java-1.6.0-openjdk packages provide the OpenJDK 6 Java Runtime
+  script_tag(name:"affected", value:"java on CentOS 5");
+  script_tag(name:"insight", value:"The java-1.6.0-openjdk packages provide the OpenJDK 6 Java Runtime
 Environment and the OpenJDK 6 Java Software Development Kit.
 
 Multiple input checking flaws were found in the 2D component native image
@@ -91,23 +90,15 @@ Virtual Machine memory. (CVE-2013-5778)
 Multiple input sanitization flaws were discovered in javadoc. When javadoc
 documentation was generated from an untrusted Java source code and hosted
 on a domain not controlled by the code author, these issues could make it
-easie ... 
+easie ...
 
-  Description truncated, for more information please check the Reference URL";
-
-  tag_affected = "java on CentOS 5";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  Description truncated, please see the referenced URL(s) for more information.");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "CESA", value: "2013:1505");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2013-November/020016.html");
-  script_tag(name:"summary", value:"Check for the Version of java");
+  script_xref(name:"CESA", value:"2013:1505");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-November/020016.html");
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for java");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
@@ -116,15 +107,14 @@ easie ...
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS5")
 {
@@ -159,6 +149,6 @@ if(release == "CentOS5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

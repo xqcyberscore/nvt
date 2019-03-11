@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2019_0109_perl_centos7.nasl 14050 2019-03-08 09:08:09Z cfischer $
+# $Id: gb_CESA-2019_0109_perl_centos7.nasl 14058 2019-03-08 13:25:52Z cfischer $
 #
 # CentOS Update for perl CESA-2019:0109 centos7
 #
@@ -29,13 +29,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882994");
-  script_version("$Revision: 14050 $");
+  script_version("$Revision: 14058 $");
   script_cve_id("CVE-2018-18311");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-01-25 04:01:48 +0100 (Fri, 25 Jan 2019)");
-  script_name("CentOS Update for perl CESA-2019:0109 centos7 ");
+  script_name("CentOS Update for perl CESA-2019:0109 centos7");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
@@ -55,7 +55,7 @@ administration utilities and web programming.
 
 Security Fix(es):
 
-* perl: Integer overflow leading to buffer overflow in Perl_my_setenv()
+  * perl: Integer overflow leading to buffer overflow in Perl_my_setenv()
 (CVE-2018-18311)
 
 For more details about the security issue(s), including the impact, a CVSS
@@ -63,8 +63,7 @@ score, and other related information, refer to the CVE page(s) listed in
 the References section.
 
 Red Hat would like to thank the Perl project for reporting this issue.
-Upstream acknowledges Jayakrishna Menon as the original reporter.
-");
+Upstream acknowledges Jayakrishna Menon as the original reporter.");
 
   script_tag(name:"affected", value:"perl on CentOS 7.");
 

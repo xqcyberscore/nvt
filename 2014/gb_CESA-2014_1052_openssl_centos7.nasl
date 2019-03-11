@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for openssl CESA-2014:1052 centos7 
+# CentOS Update for openssl CESA-2014:1052 centos7
 #
 # Authors:
 # System Generated Check
@@ -26,15 +26,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882005");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-09-10 06:20:03 +0200 (Wed, 10 Sep 2014)");
   script_cve_id("CVE-2014-3505", "CVE-2014-3506", "CVE-2014-3507", "CVE-2014-3508",
                 "CVE-2014-3509", "CVE-2014-3510", "CVE-2014-3511");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_name("CentOS Update for openssl CESA-2014:1052 centos7 ");
-  script_tag(name: "insight", value: "OpenSSL is a toolkit that implements the
+  script_name("CentOS Update for openssl CESA-2014:1052 centos7");
+  script_tag(name:"insight", value:"OpenSSL is a toolkit that implements the
 Secure Sockets Layer (SSL), Transport Layer Security (TLS), and Datagram
 Transport Layer Security (DTLS) protocols, as well as a full-strength, general
 purpose cryptography library.
@@ -68,33 +68,31 @@ client had anonymous DH cipher suites enabled. (CVE-2014-3510)
 All OpenSSL users are advised to upgrade to these updated packages, which
 contain backported patches to correct these issues. For the update to take
 effect, all services linked to the OpenSSL library (such as httpd and other
-SSL-enabled services) must be restarted or the system rebooted.
-");
-  script_tag(name: "affected", value: "openssl on CentOS 7");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+SSL-enabled services) must be restarted or the system rebooted.");
+  script_tag(name:"affected", value:"openssl on CentOS 7");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name: "CESA", value: "2014:1052");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2014-August/020489.html");
-  script_tag(name:"summary", value:"Check for the Version of openssl");
+  script_xref(name:"CESA", value:"2014:1052");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2014-August/020489.html");
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for openssl");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS7");
-exit(0);
+  exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS7")
 {
@@ -129,6 +127,6 @@ if(release == "CentOS7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

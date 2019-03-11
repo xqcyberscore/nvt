@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: gather-package-list-docker-container.inc 13708 2019-02-16 11:35:52Z cfischer $
+# $Id: gather-package-list-docker-container.inc 14064 2019-03-09 16:54:28Z cfischer $
 #
 # Functions for OS Detection in Docker Containers
 #
@@ -25,7 +25,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301
 # USA.
 #
-# $Revision: 13708 $
+# $Revision: 14064 $
 #
 ###############################################################################
 
@@ -325,81 +325,94 @@ OS_CPE = make_array(
     "NixOS", "cpe:/o:nixos_project:nixos"
 );
 
+function register_detected_docker_os(container_id, os, oskey, oscpe) {
 
-function register_detected_docker_os( container_id, os, oskey ) {
+  local_var container_id, os, oskey, oscpe;
+  local_var cpe;
 
-  local_var container_id, os, oskey;
+  if(!container_id || !os || !oskey || (!OS_CPE[oskey] && !oscpe))
+    return;
 
-  if( ! container_id || ! os || ! oskey || ! OS_CPE[oskey] ) return;
+  if(oscpe)
+    cpe = oscpe;
+  else
+    cpe = OS_CPE[oskey];
 
-  set_kb_item( name:'docker/lsc/container/' + container_id + '/OS', value:os );
-  set_kb_item( name:'docker/lsc/container/' + container_id + '/OS-CPE', value:OS_CPE[oskey] );
+  set_kb_item(name:"docker/lsc/container/" + container_id + "/OS", value:os);
+  set_kb_item(name:"docker/lsc/container/" + container_id + "/OS-CPE", value:cpe);
 
-  return make_array( 'OS', chomp( os ), 'OS-CPE', OS_CPE[oskey] );
+  return make_array("OS", chomp(os), "OS-CPE", cpe);
 }
 
-function get_container_os( container_id, soc ) {
+function get_container_os(container_id, soc) {
 
-  local_var  container_id, soc, bf, base_cmd, rls;
+  local_var container_id, soc;
+  local_var bf, base_cmd, rls;
 
-  if( ! soc || ! container_id ) return;
+  if(! soc || ! container_id)
+    return;
 
-  base_cmd = 'docker exec ' + container_id + ' ';
+  base_cmd = "docker exec " + container_id + " ";
 
-  rls = ssh_cmd( socket:soc, cmd:base_cmd + "cat /etc/system-release" );
+  rls = ssh_cmd(socket:soc, cmd:base_cmd + "cat /etc/system-release");
 
-  if( "Amazon Linux AMI release" >< rls ) {
+  if("Amazon Linux AMI release" >< rls) {
     buf = ssh_cmd( socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
-    ret = register_detected_docker_os(container_id:container_id,  os:"Amazon Linux", oskey:"AMAZON" );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
+    ret = register_detected_docker_os(container_id:container_id,  os:"Amazon Linux", oskey:"AMAZON");
     return ret;
   }
 
   # oraclelinux is almost like rhel .. but ..
   rls = ssh_cmd(socket:soc, cmd:base_cmd + "rpm -qf /etc/redhat-release");
 
-  if( "oraclelinux-release-4" >< rls ) {
+  if("oraclelinux-release-4" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
-    if( match = eregmatch( pattern:"oraclelinux-release-4.([0-9]+)", string:rls ) ) {
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
+    if(match = eregmatch(pattern:"oraclelinux-release-4.([0-9]+)", string:rls)) {
       version = "4." + match[1];
     } else {
       version = "4";
     }
-    ret = register_detected_docker_os(container_id:container_id, os:"Oracle Linux " + version, oskey:"OracleLinux" + version );
+    ret = register_detected_docker_os(container_id:container_id, os:"Oracle Linux " + version, oskey:"OracleLinux" + version);
     return ret;
   }
-  if( "oraclelinux-release-5" >< rls ) {
+  if("oraclelinux-release-5" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
-    if( match = eregmatch( pattern:"oraclelinux-release-5.([0-9]+)", string:rls ) ) {
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
+    if(match = eregmatch(pattern:"oraclelinux-release-5.([0-9]+)", string:rls)) {
       version = "5." + match[1];
     } else {
       version = "5";
     }
-    ret = register_detected_docker_os(container_id:container_id, os:"Oracle Linux " + version, oskey:"OracleLinux" + version );
+    ret = register_detected_docker_os(container_id:container_id, os:"Oracle Linux " + version, oskey:"OracleLinux" + version);
     return ret;
   }
-  if( "oraclelinux-release-6" >< rls ) {
+  if("oraclelinux-release-6" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
-    if( match = eregmatch( pattern:"oraclelinux-release-6.([0-9]+)", string:rls ) ) {
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
+    if(match = eregmatch(pattern:"oraclelinux-release-6.([0-9]+)", string:rls)) {
       version = "6." + match[1];
     } else {
       version = "6";
     }
-    ret = register_detected_docker_os(container_id:container_id, os:"Oracle Linux " + version, oskey:"OracleLinux" + version );
+    ret = register_detected_docker_os(container_id:container_id, os:"Oracle Linux " + version, oskey:"OracleLinux" + version);
     return ret;
   }
-  if( "oraclelinux-release-7" >< rls ) {
+  if("oraclelinux-release-7" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
-    if( match = eregmatch( pattern:"oraclelinux-release-7.([0-9]+)", string:rls ) ) {
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
+    if(match = eregmatch(pattern:"oraclelinux-release-7.([0-9]+)", string:rls)) {
       version = "7." + match[1];
     } else {
       version = "7";
     }
-    ret = register_detected_docker_os(container_id:container_id, os:"Oracle Linux " + version, oskey:"OracleLinux" + version );
+    ret = register_detected_docker_os(container_id:container_id, os:"Oracle Linux " + version, oskey:"OracleLinux" + version);
     return ret;
   }
 
@@ -408,371 +421,432 @@ function get_container_os( container_id, soc ) {
 
   if("Red Hat Linux release 7.3" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:rls, oskey:"RH7.3");
     return ret;
   }
   if("Red Hat Linux release 8.0 (Psyche)" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:rls, oskey:"RH8.0");
     return ret;
   }
   if("Red Hat Linux release 9 (Shrike)" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:rls, oskey:"RH9");
     return ret;
   }
 
   if("Fedora Core release 1 (Yarrow)" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'");
-     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+     if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:rls, oskey:"FC1");
     return ret;
   }
   if("Fedora Core release 2 (Tettnang)" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:rls, oskey:"FC2");
     return ret;
   }
   if("Fedora Core release 3 (Heidelberg)" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:rls, oskey:"FC3");
     return ret;
   }
   if("Fedora Core release 4 (Stentz)" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:rls, oskey:"FC4");
     return ret;
   }
   if("Fedora Core release 5 (Bordeaux)" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:rls, oskey:"FC5");
     return ret;
   }
   if("Fedora Core release 6 (Zod)" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:rls, oskey:"FC6");
     return ret;
   }
   if("Fedora release 7 (Moonshine)" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:rls, oskey:"FC7");
     return ret;
   }
   if("Fedora release 8 (Werewolf)" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:rls, oskey:"FC8");
     return ret;
   }
   if("Fedora release 9 (Sulphur)" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:rls, oskey:"FC9");
     return ret;
   }
   if("Fedora release 10 (Cambridge)" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:rls, oskey:"FC10");
     return ret;
   }
   if("Fedora release 11 (Leonidas)" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:rls, oskey:"FC11");
     return ret;
   }
   if("Fedora release 12 (Constantine)" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:rls, oskey:"FC12");
     return ret;
   }
   if("Fedora release 13 (Goddard)" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:rls, oskey:"FC13");
     return ret;
   }
   if("Fedora release 14 (Laughlin)" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:rls, oskey:"FC14");
     return ret;
   }
   if("Fedora release 15 (Lovelock)" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:rls, oskey:"FC15");
     return ret;
   }
   if("Fedora release 16 (Verne)" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:rls, oskey:"FC16");
     return ret;
   }
   if("Fedora release 17 (Beefy Miracle)" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:rls, oskey:"FC17");
     return ret;
   }
   if("Fedora release 18 (Spherical Cow)" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:rls, oskey:"FC18");
     return ret;
   }
   if("Fedora release 19" >< rls && "Cat" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:rls, oskey:"FC19");
     return ret;
   }
   if("Fedora release 20" >< rls && "(Heisenbug)" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:rls, oskey:"FC20");
     return ret;
   }
   if("Fedora release 21" >< rls && "(Twenty One)" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:rls, oskey:"FC21");
     return ret;
   }
   if("Fedora release 22" >< rls && "(Twenty Two)" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:rls, oskey:"FC22");
     return ret;
   }
   if("Fedora release 23" >< rls && "(Twenty Three)" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:rls, oskey:"FC23");
     return ret;
   }
   if("Fedora release 24" >< rls && "(Twenty Four)" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:rls, oskey:"FC24");
     return ret;
   }
   if("Fedora release 25" >< rls && "(Twenty Five)" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:rls, oskey:"FC25");
     return ret;
   }
   if("Fedora release 26" >< rls && "(Twenty Six)" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:rls, oskey:"FC26");
     return ret;
   }
   if("Fedora release 27" >< rls && "(Twenty Seven)" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:rls, oskey:"FC27");
     return ret;
   }
   if("Fedora release 28" >< rls && "(Twenty Eight)" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:rls, oskey:"FC28");
     return ret;
   }
 
   if("Mandriva Linux Enterprise Server release 5.0" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:rls, oskey:"MNDK_mes5");
     return ret;
   }
   if("Mandriva Linux Enterprise Server release 5.1" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:rls, oskey:"MNDK_mes5.1");
     return ret;
   }
   if("Mandriva Linux Enterprise Server release 5.2" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:rls, oskey:"MNDK_mes5.2");
     return ret;
   }
 
   if("Mandriva Linux release 2011.0" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:rls, oskey:"MNDK_2011.0");
     return ret;
   }
   if("Mandriva Linux release 2010.2" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:rls, oskey:"MNDK_2010.2");
     return ret;
   }
   if("Mandriva Linux release 2010.1" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:rls, oskey:"MNDK_2010.1");
     return ret;
   }
   if("Mandriva Linux release 2010.0" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:rls, oskey:"MNDK_2010.0");
     return ret;
   }
   if("Mandriva Linux release 2009.1" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:rls, oskey:"MNDK_2009.1");
     return ret;
   }
   if("Mandriva Linux release 2009.0" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:rls, oskey:"MNDK_2009.0");
     return ret;
   }
   if("Mandriva Linux release 2008.1" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:rls, oskey:"MNDK_2008.1");
     return ret;
   }
   if("Mandriva Linux release 2008.0" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:rls, oskey:"MNDK_2008.0");
     return ret;
   }
   if("Mandriva Linux release 2007.1" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:rls, oskey:"MNDK_2007.1");
   }
   if("Mandriva Linux release 2007.0" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:rls, oskey:"MNDK_2007.0");
     return ret;
   }
   if("Mandriva Linux release 2006.0" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:rls, oskey:"MNDK_2006.0");
     return ret;
   }
 
   if("Mandrakelinux release 10.1" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:rls, oskey:"MNDK_10.1");
     return ret;
   }
   if("Mandrake Linux release 10.0" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:rls, oskey:"MNDK_10.0");
     return ret;
   }
   if("Mandrake Linux release 9.2" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:rls, oskey:"MNDK_9.2");
     return ret;
   }
   if("Mandrake Linux release 9.1" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:rls, oskey:"MNDK_9.1");
     return ret;
   }
   if("Mandrake Linux release 9.0" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:rls, oskey:"MNDK_9.0");
     return ret;
   }
   if("Mandrake Linux release 8.2" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:rls, oskey:"MNDK_8.2");
     return ret;
   }
   if("Mandrake Linux release 8.1" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:rls, oskey:"MNDK_8.1");
     return ret;
   }
   if("Mandrake Linux release 8.0" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:rls, oskey:"MNDK_8.0");
     return ret;
   }
   if("Mandrake Linux release 7.2" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:rls, oskey:"MNDK_7.2");
     return ret;
   }
 
   if("Mageia release 6" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Mageia release 6", oskey:"MAGEIA6");
     return ret;
   }
   if("Mageia release 5" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Mageia release 5", oskey:"MAGEIA5");
     return ret;
   }
   if("Mageia release 4.1" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Mageia release 4.1", oskey:"MAGEIA4.1");
     return ret;
   }
   if("Mageia release 4" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Mageia release 4", oskey:"MAGEIA4");
     return ret;
   }
   if("Mageia release 3" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Mageia release 3", oskey:"MAGEIA3");
     return ret;
   }
   if("Mageia release 2" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Mageia release 2", oskey:"MAGEIA2");
     return ret;
   }
   if("Mageia release 1" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Mageia release 1", oskey:"MAGEIA1");
     return ret;
   }
@@ -786,37 +860,43 @@ function get_container_os( container_id, soc ) {
 
   if("CentOS Linux release 7" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"CentOS release 7", oskey:"CentOS7");
     return ret;
   }
   if("CentOS release 6" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"CentOS release 6", oskey:"CentOS6");
     return ret;
   }
   if("CentOS release 5" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"CentOS release 5", oskey:"CentOS5");
     return ret;
   }
   if("CentOS release 4" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"CentOS release 4", oskey:"CentOS4");
     return ret;
   }
   if("CentOS release 3" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"CentOS release 3", oskey:"CentOS3");
     return ret;
   }
   if("CentOS release 2" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"CentOS release 2", oskey:"CentOS2");
     return ret;
   }
@@ -824,195 +904,229 @@ function get_container_os( container_id, soc ) {
   # Hmmm...is it Ubuntu?
   rls = ssh_cmd(socket:soc, cmd:base_cmd + "cat /etc/lsb-release");
 
-  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=4.10"><rls) {
+  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=4.10" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Ubuntu 4.10", oskey:"UBUNTU4.1");
     return ret;
   }
-  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=5.04"><rls) {
+  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=5.04" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Ubuntu 5.04", oskey:"UBUNTU5.04");
     return ret;
   }
-  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=5.10"><rls) {
+  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=5.10" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Ubuntu 5.10", oskey:"UBUNTU5.10");
     return ret;
   }
-  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=6.06"><rls) {
+  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=6.06" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Ubuntu 6.06", oskey:"UBUNTU6.06 LTS");
     return ret;
   }
-  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=6.10"><rls) {
+  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=6.10" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Ubuntu 6.10", oskey:"UBUNTU6.10");
     return ret;
   }
-  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=7.04"><rls) {
+  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=7.04" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Ubuntu 7.04", oskey:"UBUNTU7.04");
     return ret;
   }
-  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=7.10"><rls) {
+  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=7.10" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Ubuntu 7.10", oskey:"UBUNTU7.10");
     return ret;
   }
-  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=8.04"><rls) {
+  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=8.04" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Ubuntu 8.04 LTS", oskey:"UBUNTU8.04 LTS");
     return ret;
   }
-  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=8.10"><rls) {
+  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=8.10" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
+    if( buf )
+      set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Ubuntu 8.10", oskey:"UBUNTU8.10");
     return ret;
   }
-  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=9.04"><rls) {
+  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=9.04" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Ubuntu 9.04", oskey:"UBUNTU9.04");
     return ret;
   }
-  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=9.10"><rls) {
+  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=9.10" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Ubuntu 9.10", oskey:"UBUNTU9.10");
     return ret;
   }
-  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=10.04"><rls) {
+  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=10.04" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Ubuntu 10.04 LTS", oskey:"UBUNTU10.04 LTS");
     return ret;
   }
-  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=10.10"><rls) {
+  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=10.10" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Ubuntu 10.10", oskey:"UBUNTU10.10");
     return ret;
   }
-  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=11.04"><rls) {
+  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=11.04" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Ubuntu 11.04", oskey:"UBUNTU11.04");
     return ret;
   }
-  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=11.10"><rls) {
+  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=11.10" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Ubuntu 11.10", oskey:"UBUNTU11.10");
     return ret;
   }
-  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=12.04"><rls) {
+  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=12.04" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Ubuntu 12.04 LTS", oskey:"UBUNTU12.04 LTS");
     return ret;
   }
-  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=12.10"><rls) {
+  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=12.10" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Ubuntu 12.10", oskey:"UBUNTU12.10");
     return ret;
   }
-  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=13.04"><rls) {
+  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=13.04" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Ubuntu 13.04", oskey:"UBUNTU13.04");
     return ret;
   }
-  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=13.10"><rls) {
+  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=13.10" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Ubuntu 13.10", oskey:"UBUNTU13.10");
     return ret;
   }
-  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=14.04"><rls) {
+  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=14.04" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Ubuntu 14.04 LTS", oskey:"UBUNTU14.04 LTS");
     return ret;
   }
-  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=14.10"><rls) {
+  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=14.10" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Ubuntu 14.10", oskey:"UBUNTU14.10");
     return ret;
   }
-  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=15.04"><rls) {
+  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=15.04" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Ubuntu 15.04", oskey:"UBUNTU15.04");
     return ret;
   }
-  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=15.10"><rls) {
+  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=15.10" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Ubuntu 15.10", oskey:"UBUNTU15.10");
     return ret;
   }
-  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=16.04"><rls) {
+  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=16.04" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Ubuntu 16.04 LTS", oskey:"UBUNTU16.04 LTS");
     return ret;
   }
-  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=16.10"><rls) {
+  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=16.10" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Ubuntu 16.10", oskey:"UBUNTU16.10");
     return ret;
   }
-  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=17.04"><rls) {
+  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=17.04" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Ubuntu 17.04", oskey:"UBUNTU17.04");
     return ret;
   }
-  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=17.10"><rls) {
+  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=17.10" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Ubuntu 17.10", oskey:"UBUNTU17.10");
     return ret;
   }
-  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=18.04"><rls) {
+  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=18.04" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Ubuntu 18.04 LTS", oskey:"UBUNTU18.04 LTS");
     return ret;
   }
-  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=18.10"><rls) {
+  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=18.10" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Ubuntu 18.10", oskey:"UBUNTU18.10");
     return ret;
   }
 
   # Check for Univention Corporate Server (UCS)
-  if ( rls =~ 'DISTRIB_ID=("|\')?Univention("|\')?') {
+  if(rls =~ 'DISTRIB_ID=("|\')?Univention("|\')?') {
     ucs_release = eregmatch(string:rls, pattern:'DISTRIB_RELEASE="([1-9][0-9]*[.][0-9]+)-([0-9]+) errata([0-9]+)[^"]*"');
 
-    if( ! isnull( ucs_release[1] ) ) set_kb_item(name:"docker/lsc/container/" + container_id + "/ucs/version", value:ucs_release[1]);
-    if( ! isnull( ucs_release[2] ) ) set_kb_item(name:"docker/lsc/container/" + container_id + "/ucs/patch", value:ucs_release[2]);
-    if( ! isnull( ucs_release[3] ) ) set_kb_item(name:"docker/lsc/container/" + container_id + "/ucs/errata", value:ucs_release[3]);
+    if(!isnull(ucs_release[1]))
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/ucs/version", value:ucs_release[1]);
+
+    if(!isnull(ucs_release[2]))
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/ucs/patch", value:ucs_release[2]);
+
+    if(!isnull(ucs_release[3]))
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/ucs/errata", value:ucs_release[3]);
 
     ucs_desciption = eregmatch(string:rls, pattern:'DISTRIB_DESCRIPTION="([^"]*)"');
 
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'");
 
     if(!isnull(buf) && !isnull(ucs_release[1]) && !isnull(ucs_desciption[1])) {
-      set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
       ret = register_detected_docker_os(container_id:container_id, os:ucs_desciption[1], oskey:"UCS"+ucs_release[1]);
       return ret;
     }
@@ -1020,96 +1134,111 @@ function get_container_os( container_id, soc ) {
 
   rls = ssh_cmd(socket:soc, cmd:base_cmd + "cat /etc/debian_version");
 
-  if("1.1"><rls) {
+  if("1.1" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Debian 1.1", oskey:"DEB1.1");
     return ret;
   }
-  if("1.2"><rls) {
+  if("1.2" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Debian 1.2", oskey:"DEB1.2");
     return ret;
   }
-  if("1.3"><rls) {
+  if("1.3" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Debian 1.3", oskey:"DEB1.3");
     return ret;
   }
-  if("2.0"><rls) {
+  if("2.0" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Debian 2.0", oskey:"DEB2.0");
     return ret;
   }
-  if("2.1"><rls) {
+  if("2.1" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Debian 2.1", oskey:"DEB2.1");
     return ret;
   }
-  if("2.2"><rls) {
+  if("2.2" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Debian 2.2 (Potato)", oskey:"DEB2.2");
     return ret;
   }
-  if("3.0"><rls) {
+  if("3.0" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Debian 3.0 (Woody)", oskey:"DEB3.0");
     return ret;
   }
-  if("3.1"><rls) {
+  if("3.1" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Debian 3.1 (Sarge)", oskey:"DEB3.1");
     return ret;
   }
-  if("4.0"><rls) {
+  if("4.0" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Debian 4.0 (Etch)", oskey:"DEB4.0");
     return ret;
   }
-  if("5.0"><rls) {
+  if("5.0" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Debian 5.0 (Lenny)", oskey:"DEB5.0");
     return ret;
   }
-  if("6.0"><rls) {
+  if("6.0" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Debian 6.0 (Squeeze)", oskey:"DEB6.0");
     return ret;
   }
-  if( match = eregmatch( pattern:"^7\.([0-9]+)$", string:rls ) ) {
+  if(match = eregmatch(pattern:"^7\.([0-9]+)$", string:rls)) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Debian 7." + match[1] + " (Wheezy)", oskey:"DEB7." + match[1]);
     return ret;
   }
-  if( match = eregmatch( pattern:"^8\.([0-9]+)$", string:rls ) ) {
+  if(match = eregmatch(pattern:"^8\.([0-9]+)$", string:rls)) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Debian 8." + match[1] + " (Jessie)", oskey:"DEB8." + match[1]);
     return ret;
   }
-  if( match = eregmatch( pattern:"^9\.([0-9]+)$", string:rls ) ) {
+  if(match = eregmatch(pattern:"^9\.([0-9]+)$", string:rls)) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Debian 9." + match[1] + " (Stretch)", oskey:"DEB9." + match[1]);
     return ret;
   }
 
   # nb: At least Ubuntu 18.10 has "buster/sid" in debian_version so keep this in mind
   # if Ubuntu is wrongly detected and keep the Ubuntu pattern above the Debian ones.
-  if("buster/sid"><rls) {
+  if("buster/sid" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Debian Buster/Sid", oskey:"DEB10.0");
     return ret;
   }
@@ -1117,207 +1246,241 @@ function get_container_os( container_id, soc ) {
   # How about Slackware?
   rls = ssh_cmd(socket:soc, cmd:base_cmd + "cat /etc/slackware-version");
 
-  if("Slackware 14.2"><rls) {
+  if("Slackware 14.2" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "ls /var/log/packages");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/slackpack", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/slackpack", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Slackware 14.2", oskey:"SLK14.2");
     return ret;
   }
-  if("Slackware 14.1"><rls) {
+  if("Slackware 14.1" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "ls /var/log/packages");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/slackpack", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/slackpack", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Slackware 14.1", oskey:"SLK14.1");
     return ret;
   }
-  if("Slackware 14.0"><rls) {
+  if("Slackware 14.0" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "ls /var/log/packages");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/slackpack", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/slackpack", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Slackware 14.0", oskey:"SLK14.0");
     return ret;
   }
-  if("Slackware 13.37"><rls) {
+  if("Slackware 13.37" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "ls /var/log/packages");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/slackpack", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/slackpack", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Slackware 13.37", oskey:"SLK13.37");
     return ret;
   }
-  if("Slackware 13.1"><rls) {
+  if("Slackware 13.1" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "ls /var/log/packages");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/slackpack", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/slackpack", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Slackware 13.1", oskey:"SLK13.1");
     return ret;
   }
-  if("Slackware 13.0"><rls) {
+  if("Slackware 13.0" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "ls /var/log/packages");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/slackpack", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/slackpack", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Slackware 13.0", oskey:"SLK13.0");
     return ret;
   }
-  if("Slackware 12.2"><rls) {
+  if("Slackware 12.2" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "ls /var/log/packages");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/slackpack", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/slackpack", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Slackware 12.2", oskey:"SLK12.2");
     return ret;
   }
-  if("Slackware 12.1"><rls) {
+  if("Slackware 12.1" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "ls /var/log/packages");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/slackpack", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/slackpack", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Slackware 12.1", oskey:"SLK12.1");
     return ret;
   }
-  if("Slackware 12.0"><rls) {
+  if("Slackware 12.0" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "ls /var/log/packages");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/slackpack", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/slackpack", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Slackware 12.0", oskey:"SLK12.0");
     return ret;
   }
-  if("Slackware 11.0"><rls) {
+  if("Slackware 11.0" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "ls /var/log/packages");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/slackpack", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/slackpack", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Slackware 11.0", oskey:"SLK11.0");
     return ret;
   }
-  if("Slackware 10.2"><rls) {
+  if("Slackware 10.2" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "ls /var/log/packages");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/slackpack", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/slackpack", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Slackware 10.2", oskey:"SLK10.2");
     return ret;
   }
-  if("Slackware 10.1"><rls) {
+  if("Slackware 10.1" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "ls /var/log/packages");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/slackpack", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/slackpack", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Slackware 10.1", oskey:"SLK10.1");
     return ret;
   }
-  if("Slackware 10.0"><rls) {
+  if("Slackware 10.0" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "ls /var/log/packages");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/slackpack", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/slackpack", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Slackware 10.0", oskey:"SLK10.0");
     return ret;
   }
-  if("Slackware 9.1"><rls) {
+  if("Slackware 9.1" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "ls /var/log/packages");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/slackpack", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/slackpack", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Slackware 9.1", oskey:"SLK9.1");
     return ret;
   }
-  if("Slackware 9.0"><rls) {
+  if("Slackware 9.0" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "ls /var/log/packages");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/slackpack", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/slackpack", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Slackware 9.0", oskey:"SLK9.0");
     return ret;
   }
-  if("Slackware 8.1"><rls) {
+  if("Slackware 8.1" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "ls /var/log/packages");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/slackpack", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/slackpack", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Slackware 8.1", oskey:"SLK8.1");
     return ret;
   }
-  if("Slackware 8.0"><rls) {
+  if("Slackware 8.0" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "ls /var/log/packages");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/slackpack", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/slackpack", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Slackware 8.0", oskey:"SLK8.0");
     return ret;
   }
-  if("Slackware 7.1"><rls) {
+  if("Slackware 7.1" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "ls /var/log/packages");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/slackpack", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/slackpack", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Slackware 7.1", oskey:"SLK7.1");
     return ret;
   }
-  if("Slackware 7.0"><rls) {
+  if("Slackware 7.0" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "ls /var/log/packages");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/slackpack", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/slackpack", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Slackware 7.0", oskey:"SLK7.0");
     return ret;
   }
-  if("Slackware 4.0"><rls) {
+  if("Slackware 4.0" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "ls /var/log/packages");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/slackpack", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/slackpack", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Slackware 4.0", oskey:"SLK4.0");
     return ret;
   }
-  if("Slackware 3.9"><rls) {
+  if("Slackware 3.9" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "ls /var/log/packages");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/slackpack", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/slackpack", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Slackware 3.9", oskey:"SLK3.9");
     return ret;
   }
-  if("Slackware 3.6"><rls) {
+  if("Slackware 3.6" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "ls /var/log/packages");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/slackpack", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/slackpack", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Slackware 3.6", oskey:"SLK3.6");
     return ret;
   }
-  if("Slackware 3.5"><rls) {
+  if("Slackware 3.5" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "ls /var/log/packages");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/slackpack", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/slackpack", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Slackware 3.5", oskey:"SLK3.5");
     return ret;
   }
-  if("Slackware 3.4"><rls) {
+  if("Slackware 3.4" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "ls /var/log/packages");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/slackpack", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/slackpack", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Slackware 3.4", oskey:"SLK3.4");
     return ret;
   }
-  if("Slackware 3.3"><rls) {
+  if("Slackware 3.3" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "ls /var/log/packages");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/slackpack", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/slackpack", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Slackware 3.3", oskey:"SLK3.3");
     return ret;
   }
-  if("Slackware 3.2"><rls) {
+  if("Slackware 3.2" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "ls /var/log/packages");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/slackpack", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/slackpack", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Slackware 3.2", oskey:"SLK3.2");
     return ret;
   }
-  if("Slackware 3.1"><rls) {
+  if("Slackware 3.1" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "ls /var/log/packages");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/slackpack", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/slackpack", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Slackware 3.1", oskey:"SLK3.1");
     return ret;
   }
-  if("Slackware 3.0"><rls) {
+  if("Slackware 3.0" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "ls /var/log/packages");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/slackpack", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/slackpack", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Slackware 3.0", oskey:"SLK3.0");
     return ret;
   }
-  if("Slackware 2.3"><rls) {
+  if("Slackware 2.3" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "ls /var/log/packages");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/slackpack", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/slackpack", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Slackware 2.3", oskey:"SLK2.3");
     return ret;
   }
-  if("Slackware 2.2"><rls) {
+  if("Slackware 2.2" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "ls /var/log/packages");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/slackpack", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/slackpack", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Slackware 2.2", oskey:"SLK2.2");
     return ret;
   }
-  if("Slackware 2.1"><rls) {
+  if("Slackware 2.1" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "ls /var/log/packages");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/slackpack", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/slackpack", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Slackware 2.1", oskey:"SLK2.1");
     return ret;
   }
-  if("Slackware 2.0"><rls) {
+  if("Slackware 2.0" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "ls /var/log/packages");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/slackpack", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/slackpack", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Slackware 2.0", oskey:"SLK2.0");
     return ret;
   }
-  if("Slackware 1.1"><rls) {
+  if("Slackware 1.1" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "ls /var/log/packages");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/slackpack", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/slackpack", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Slackware 1.1", oskey:"SLK1.1");
     return ret;
   }
-  if("Slackware 1.00"><rls) {
+  if("Slackware 1.00" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "ls /var/log/packages");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/slackpack", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/slackpack", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Slackware 1.00", oskey:"SLK1.00");
     return ret;
   }
@@ -1328,31 +1491,36 @@ function get_container_os( container_id, soc ) {
 
   if("openSUSE Leap 15.0" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"openSUSE Leap 15.0", oskey:"openSUSELeap15.0");
     return ret;
   }
   if("openSUSE Leap 42.3" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"openSUSE Leap 42.3", oskey:"openSUSELeap42.3");
     return ret;
   }
   if("openSUSE Leap 42.2" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"openSUSE Leap 42.2", oskey:"openSUSELeap42.2");
     return ret;
   }
   if("openSUSE Leap 42.1" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"openSUSE Leap 42.1", oskey:"openSUSELeap42.1");
     return ret;
   }
   if("openSUSE Leap 42.0" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"openSUSE Leap 42.0", oskey:"openSUSELeap42.0");
     return ret;
   }
@@ -1363,156 +1531,211 @@ function get_container_os( container_id, soc ) {
     return ret;
   }
 
-  if( "NAME=NixOS" >< rls || "ID=nixos" >< rls ) {
+  if("NAME=NixOS" >< rls || "ID=nixos" >< rls) {
     ret = register_detected_docker_os(container_id:container_id, os:"NixOS", oskey:"NixOS");
     return ret;
   }
 
   rls = ssh_cmd(socket:soc, cmd:base_cmd + "cat /etc/SuSE-release");
-  if("openSUSE 13.2 "><rls) {
+  if("openSUSE 13.2 " >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"openSUSE 13.2", oskey:"openSUSE13.2");
     return ret;
   }
-  if("openSUSE 13.1 "><rls) {
+  if("openSUSE 13.1 " >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"openSUSE 13.1", oskey:"openSUSE13.1");
     return ret;
   }
-  if("openSUSE 12.3 "><rls) {
+  if("openSUSE 12.3 " >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"openSUSE 12.3", oskey:"openSUSE12.3");
     return ret;
   }
-  if("openSUSE 12.2 "><rls) {
+  if("openSUSE 12.2 " >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"openSUSE 12.2", oskey:"openSUSE12.2");
     return ret;
   }
-  if("openSUSE 12.1 "><rls) {
+  if("openSUSE 12.1 " >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"openSUSE 12.1", oskey:"openSUSE12.1");
     return ret;
   }
-  if("openSUSE 11.4 "><rls) {
+  if("openSUSE 11.4 " >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"openSUSE 11.4", oskey:"openSUSE11.4");
     return ret;
   }
-  if("openSUSE 11.3 "><rls) {
+  if("openSUSE 11.3 " >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"openSUSE 11.3", oskey:"openSUSE11.3");
     return ret;
   }
-  if("openSUSE 11.2 "><rls) {
+  if("openSUSE 11.2 " >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"openSUSE 11.2", oskey:"openSUSE11.2");
     return ret;
   }
-  if("openSUSE 11.1 "><rls) {
+  if("openSUSE 11.1 " >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"openSUSE 11.1", oskey:"openSUSE11.1");
     return ret;
   }
-  if("openSUSE 11.0 "><rls) {
+  if("openSUSE 11.0 " >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"openSUSE 11.0", oskey:"openSUSE11.0");
     return ret;
   }
-  if("openSUSE 10.3 "><rls) {
+  if("openSUSE 10.3 " >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"openSUSE 10.3", oskey:"openSUSE10.3");
     return ret;
   }
-  if("openSUSE 10.2 "><rls) {
+  if("openSUSE 10.2 " >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"openSUSE 10.2", oskey:"openSUSE10.2");
     return ret;
   }
 
-  if("SUSE LINUX 10.1 "><rls) {
+  if("SUSE LINUX 10.1 " >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"SuSE Linux 10.1", oskey:"SUSE10.1");
     return ret;
   }
-  if("SUSE LINUX 10.0 "><rls) {
+  if("SUSE LINUX 10.0 " >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"SuSE Linux 10.0", oskey:"SUSE10.0");
     return ret;
   }
-  if("SuSE Linux 9.3 "><rls) {
+  if("SuSE Linux 9.3 " >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"SuSE Linux 9.3", oskey:"SUSE9.3");
     return ret;
   }
-  if("SuSE Linux 9.2 "><rls) {
+  if("SuSE Linux 9.2 " >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"SuSE Linux 9.2", oskey:"SUSE9.2");
     return ret;
   }
-  if("SuSE Linux 9.1 "><rls) {
+  if("SuSE Linux 9.1 " >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"SuSE Linux 9.1", oskey:"SUSE9.1");
     return ret;
   }
-  if("SuSE Linux 9.0 "><rls) {
+  if("SuSE Linux 9.0 " >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"SuSE Linux 9.0", oskey:"SUSE9.0");
     return ret;
   }
-  if("SuSE Linux 8.2 "><rls) {
+  if("SuSE Linux 8.2 " >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"SuSE Linux 8.2", oskey:"SUSE8.2");
     return ret;
   }
-  if("SuSE Linux 8.1 "><rls) {
+  if("SuSE Linux 8.1 " >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"SuSE Linux 8.1", oskey:"SUSE8.1");
     return ret;
   }
-  if("SuSE Linux 8.0 "><rls) {
+  if("SuSE Linux 8.0 " >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"SuSE Linux 8.0", oskey:"SUSE8.0");
     return ret;
   }
-  if("SuSE Linux 7.3 "><rls) {
+  if("SuSE Linux 7.3 " >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"SuSE Linux 7.3", oskey:"SUSE7.3");
     return ret;
   }
 
+  rls = ssh_cmd(socket:soc, cmd:base_cmd + "cat /etc/euleros-release");
+
+  # EulerOS release 2.0
+  # EulerOS release 2.0 (SP2)
+  if(rls =~ "EulerOS release") {
+
+    rls   = chomp(rls);
+    cpe   = "cpe:/o:huawei:euleros";
+    oskey = "EULEROS";
+
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/rpms", value:";" + buf);
+
+    vers_nd_sp = eregmatch(pattern:"^EulerOS release ([0-9]+\.[0-9]+)( \(SP([0-9]+)\))?", string:rls, icase:TRUE);
+    if( vers_nd_sp[1] ) {
+
+      cpe   += vers_nd_sp[1];
+      oskey += vers_nd_sp[1];
+
+      if(vers_nd_sp[3]) {
+        cpe   += ":sp" + vers_nd_sp[3];
+        oskey += "SP" + vers_nd_sp[3];
+      } else {
+        oskey += "SP0";
+      }
+    }
+
+    ret = register_detected_docker_os(container_id:container_id, os:rls, oskey:oskey, oscpe:cpe);
+    return ret;
+  }
+
   rls = ssh_cmd(socket:soc, cmd:base_cmd + "cat /etc/gentoo-release");
-  if("Gentoo"><rls) {
+  if("Gentoo" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + 'find /var/db/pkg -mindepth 2 -maxdepth 2 -printf "%P\\n"');
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/pkg", value: ";" + buf );
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/pkg", value:";" + buf);
     # Determine the list of maintained packages
     buf = ssh_cmd(socket:soc, cmd:base_cmd +  "find /usr/portage/ -wholename '/usr/portage/*-*/*.ebuild' | sed 's,/usr/portage/\([^/]*\)/.*/\([^/]*\)\.ebuild$,\1/\2,'");
-    if(strlen(buf)==0) { # Earlier find used 'path' in place of 'wholename'
+    if(strlen(buf) == 0) { # Earlier find used 'path' in place of 'wholename'
       buf = ssh_cmd(socket:soc, cmd:base_cmd +  "find /usr/portage/ -path '/usr/portage/*-*/*.ebuild' | sed 's,/usr/portage/\([^/]*\)/.*/\([^/]*\)\.ebuild$,\1/\2,'");
     }
-    set_kb_item(name: "docker/lsc/container/" + container_id + "/gentoo_maintained", value: buf);
+    set_kb_item( name:"docker/lsc/container/" + container_id + "/gentoo_maintained", value:buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Gentoo", oskey:"GENTOO");
     return ret;
   }

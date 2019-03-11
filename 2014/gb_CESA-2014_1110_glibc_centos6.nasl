@@ -23,20 +23,19 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.881990");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14056 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-08-30 05:51:00 +0200 (Sat, 30 Aug 2014)");
   script_cve_id("CVE-2014-0475", "CVE-2014-5119");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_name("CentOS Update for glibc CESA-2014:1110 centos6 ");
+  script_name("CentOS Update for glibc CESA-2014:1110 centos6");
 
-  tag_insight = "The glibc packages contain the standard C libraries used by
+  script_tag(name:"affected", value:"glibc on CentOS 6");
+  script_tag(name:"insight", value:"The glibc packages contain the standard C libraries used by
 multiple programs on the system. These packages contain the standard C and the
 standard math libraries. Without these two libraries, a Linux system cannot
 function properly.
@@ -47,7 +46,7 @@ call the iconv_open() function with a specially crafted argument could
 possibly use this flaw to execute arbitrary code with the privileges of
 that application. (CVE-2014-5119)
 
-A directory traveral flaw was found in the way glibc loaded locale files.
+A directory traversal flaw was found in the way glibc loaded locale files.
 An attacker able to make an application use a specially crafted locale name
 value (for example, specified in an LC_* environment variable) could
 possibly use this flaw to execute arbitrary code with the privileges of
@@ -103,21 +102,13 @@ glibc-devel-2.5-118.el5_10.3.i386.rpm
 glibc-devel-2.5-118.el5_10.3.x86_64.rpm
 glibc-headers-2 ...
 
-  Description truncated, for more information please check the Reference URL";
-
-  tag_affected = "glibc on CentOS 6";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  Description truncated, please see the referenced URL(s) for more information.");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "CESA", value: "2014:1110");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2014-August/020518.html");
-  script_tag(name:"summary", value:"Check for the Version of glibc");
+  script_xref(name:"CESA", value:"2014:1110");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2014-August/020518.html");
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for glibc");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
@@ -126,15 +117,14 @@ glibc-headers-2 ...
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS6")
 {
@@ -181,6 +171,6 @@ if(release == "CentOS6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

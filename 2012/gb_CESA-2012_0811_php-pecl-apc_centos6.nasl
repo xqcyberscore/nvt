@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for php-pecl-apc CESA-2012:0811 centos6 
+# CentOS Update for php-pecl-apc CESA-2012:0811 centos6
 #
 # Authors:
 # System Generated Check
@@ -23,7 +23,30 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_insight = "The php-pecl-apc packages contain APC (Alternative PHP Cache), the
+
+
+if(description)
+{
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-July/018713.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.881098");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2012-07-30 16:08:01 +0530 (Mon, 30 Jul 2012)");
+  script_cve_id("CVE-2010-3294");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_xref(name:"CESA", value:"2012:0811");
+  script_name("CentOS Update for php-pecl-apc CESA-2012:0811 centos6");
+
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for php-pecl-apc");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
+  script_family("CentOS Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS6");
+  script_tag(name:"affected", value:"php-pecl-apc on CentOS 6");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_tag(name:"insight", value:"The php-pecl-apc packages contain APC (Alternative PHP Cache), the
   framework for caching and optimization of intermediate PHP code.
 
   A cross-site scripting (XSS) flaw was found in the &quot;apc.php&quot; script, which
@@ -31,47 +54,19 @@ tag_insight = "The php-pecl-apc packages contain APC (Alternative PHP Cache), th
   as part of the APC extension documentation. A remote attacker could
   possibly use this flaw to conduct a cross-site scripting attack.
   (CVE-2010-3294)
-  
+
   Note: The administrative script is not deployed upon package installation.
   It must manually be copied to the web root (the default is
   &quot;/var/www/html/&quot;, for example).
-  
+
   In addition, the php-pecl-apc packages have been upgraded to upstream
   version 3.1.9, which provides a number of bug fixes and enhancements over
   the previous version. (BZ#662655)
-  
+
   All users of php-pecl-apc are advised to upgrade to these updated packages,
   which fix these issues and add these enhancements. If the &quot;apc.php&quot; script
   was previously deployed in the web root, it must manually be re-deployed to
-  replace the vulnerable version to resolve this issue.";
-
-tag_affected = "php-pecl-apc on CentOS 6";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2012-July/018713.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.881098");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
-  script_tag(name:"creation_date", value:"2012-07-30 16:08:01 +0530 (Mon, 30 Jul 2012)");
-  script_cve_id("CVE-2010-3294");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_xref(name: "CESA", value: "2012:0811");
-  script_name("CentOS Update for php-pecl-apc CESA-2012:0811 centos6 ");
-
-  script_tag(name: "summary" , value: "Check for the Version of php-pecl-apc");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_family("CentOS Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS6");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  replace the vulnerable version to resolve this issue.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -80,12 +75,11 @@ if(description)
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS6")
 {
@@ -102,6 +96,6 @@ if(release == "CentOS6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

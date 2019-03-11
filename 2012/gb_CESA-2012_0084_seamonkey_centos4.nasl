@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for seamonkey CESA-2012:0084 centos4 
+# CentOS Update for seamonkey CESA-2012:0084 centos4
 #
 # Authors:
 # System Generated Check
@@ -23,67 +23,58 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "SeaMonkey is an open source web browser, e-mail and newsgroup client, IRC
+if(description)
+{
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-February/018409.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.881071");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2012-07-30 16:00:31 +0530 (Mon, 30 Jul 2012)");
+  script_cve_id("CVE-2011-3670", "CVE-2012-0442");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_xref(name:"CESA", value:"2012:0084");
+  script_name("CentOS Update for seamonkey CESA-2012:0084 centos4");
+
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for seamonkey");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
+  script_family("CentOS Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS4");
+  script_tag(name:"affected", value:"seamonkey on CentOS 4");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_tag(name:"insight", value:"SeaMonkey is an open source web browser, e-mail and newsgroup client, IRC
   chat client, and HTML editor.
 
   A flaw was found in the processing of malformed web content. A web page
   containing malicious content could cause SeaMonkey to crash or,
   potentially, execute arbitrary code with the privileges of the user running
   SeaMonkey. (CVE-2012-0442)
-  
+
   The same-origin policy in SeaMonkey treated <a  rel= &qt nofollow &qt  href= &qt http://example.com &qt >http://example.com</a> and
   <a  rel= &qt nofollow &qt  href= &qt http://[example.com &qt >http://[example.com</a>] as interchangeable. A malicious script could possibly
   use this flaw to gain access to sensitive information (such as a client's
   IP and user e-mail address, or httpOnly cookies) that may be included in
   HTTP proxy error replies, generated in response to invalid URLs using
   square brackets. (CVE-2011-3670)
-  
+
   All SeaMonkey users should upgrade to these updated packages, which correct
   these issues. After installing the update, SeaMonkey must be restarted for
-  the changes to take effect.";
-
-tag_affected = "seamonkey on CentOS 4";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2012-February/018409.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.881071");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
-  script_tag(name:"creation_date", value:"2012-07-30 16:00:31 +0530 (Mon, 30 Jul 2012)");
-  script_cve_id("CVE-2011-3670", "CVE-2012-0442");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_xref(name: "CESA", value: "2012:0084");
-  script_name("CentOS Update for seamonkey CESA-2012:0084 centos4 ");
-
-  script_tag(name: "summary" , value: "Check for the Version of seamonkey");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_family("CentOS Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS4");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  the changes to take effect.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS4")
 {
@@ -124,6 +115,6 @@ if(release == "CentOS4")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

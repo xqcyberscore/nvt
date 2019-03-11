@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2019_0218_firefox_centos6.nasl 14050 2019-03-08 09:08:09Z cfischer $
+# $Id: gb_CESA-2019_0218_firefox_centos6.nasl 14058 2019-03-08 13:25:52Z cfischer $
 #
 # CentOS Update for firefox CESA-2019:0218 centos6
 #
@@ -29,13 +29,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.883001");
-  script_version("$Revision: 14050 $");
+  script_version("$Revision: 14058 $");
   script_cve_id("CVE-2018-18500", "CVE-2018-18501", "CVE-2018-18505");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-02-02 04:04:10 +0100 (Sat, 02 Feb 2019)");
-  script_name("CentOS Update for firefox CESA-2019:0218 centos6 ");
+  script_name("CentOS Update for firefox CESA-2019:0218 centos6");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
@@ -57,12 +57,12 @@ This update upgrades Firefox to version 60.5.0 ESR.
 
 Security Fix(es):
 
-* Mozilla: Use-after-free parsing HTML5 stream (CVE-2018-18500)
+  * Mozilla: Use-after-free parsing HTML5 stream (CVE-2018-18500)
 
-* Mozilla: Memory safety bugs fixed in Firefox 65 and Firefox ESR 60.5
+  * Mozilla: Memory safety bugs fixed in Firefox 65 and Firefox ESR 60.5
 (CVE-2018-18501)
 
-* Mozilla: Privilege escalation through IPC channel messages
+  * Mozilla: Privilege escalation through IPC channel messages
 (CVE-2018-18505)
 
 For more details about the security issue(s), including the impact, a CVSS
@@ -72,8 +72,7 @@ the References section.
 Red Hat would like to thank the Mozilla project for reporting these issues.
 Upstream acknowledges Yaniv Frank (SophosLabs), Alex Gaynor, Christoph
 Diehl, Steven Crane, Jason Kratzer, Gary Kwong, Christian Holler, and Jed
-Davis as the original reporters.
-");
+Davis as the original reporters.");
 
   script_tag(name:"affected", value:"firefox on CentOS 6.");
 

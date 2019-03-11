@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for thunderbird CESA-2012:1351 centos5 
+# CentOS Update for thunderbird CESA-2012:1351 centos5
 #
 # Authors:
 # System Generated Check
@@ -23,58 +23,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "Mozilla Thunderbird is a standalone mail and newsgroup client.
-
-  Several flaws were found in the processing of malformed content. Malicious
-  content could cause Thunderbird to crash or, potentially, execute arbitrary
-  code with the privileges of the user running Thunderbird. (CVE-2012-3982,
-  CVE-2012-3988, CVE-2012-3990, CVE-2012-3995, CVE-2012-4179, CVE-2012-4180,
-  CVE-2012-4181, CVE-2012-4182, CVE-2012-4183, CVE-2012-4185, CVE-2012-4186,
-  CVE-2012-4187, CVE-2012-4188)
-  
-  Two flaws in Thunderbird could allow malicious content to bypass intended
-  restrictions, possibly leading to information disclosure, or Thunderbird
-  executing arbitrary code. Note that the information disclosure issue could
-  possibly be combined with other flaws to achieve arbitrary code execution.
-  (CVE-2012-3986, CVE-2012-3991)
-  
-  Multiple flaws were found in the location object implementation in
-  Thunderbird. Malicious content could be used to perform cross-site
-  scripting attacks, script injection, or spoofing attacks. (CVE-2012-1956,
-  CVE-2012-3992, CVE-2012-3994)
-  
-  Two flaws were found in the way Chrome Object Wrappers were implemented.
-  Malicious content could be used to perform cross-site scripting attacks or
-  cause Thunderbird to execute arbitrary code. (CVE-2012-3993, CVE-2012-4184)
-  
-  Red Hat would like to thank the Mozilla project for reporting these issues.
-  Upstream acknowledges Christian Holler, Jesse Ruderman, Soroush Dalili,
-  miaubiz, Abhishek Arya, Atte Kettunen, Johnny Stenback, Alice White,
-  moz_bug_r_a4, and Mariusz Mlynski as the original reporters of these
-  issues.
-  
-  Note: None of the issues in this advisory can be exploited by a
-  specially-crafted HTML mail message as JavaScript is disabled by default
-  for mail messages. They could be exploited another way in Thunderbird, for
-  example, when viewing the full remote content of an RSS feed.
-  
-  All Thunderbird users should upgrade to this updated package, which
-  contains Thunderbird version 10.0.8 ESR, which corrects these issues. After
-  installing the update, Thunderbird must be restarted for the changes to
-  take effect.";
-
-tag_affected = "thunderbird on CentOS 5";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
 if(description)
 {
-  script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2012-October/018929.html");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-October/018929.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881514");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-10-11 10:03:01 +0530 (Thu, 11 Oct 2012)");
   script_cve_id("CVE-2012-1956", "CVE-2012-3982", "CVE-2012-3986", "CVE-2012-3988",
                 "CVE-2012-3990", "CVE-2012-3991", "CVE-2012-3992", "CVE-2012-3993",
@@ -83,32 +37,69 @@ if(description)
                 "CVE-2012-4185", "CVE-2012-4186", "CVE-2012-4187", "CVE-2012-4188");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_xref(name: "CESA", value: "2012:1351");
-  script_name("CentOS Update for thunderbird CESA-2012:1351 centos5 ");
+  script_xref(name:"CESA", value:"2012:1351");
+  script_name("CentOS Update for thunderbird CESA-2012:1351 centos5");
 
-  script_tag(name: "summary" , value: "Check for the Version of thunderbird");
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for thunderbird");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS5");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  script_tag(name:"affected", value:"thunderbird on CentOS 5");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_tag(name:"insight", value:"Mozilla Thunderbird is a standalone mail and newsgroup client.
+
+  Several flaws were found in the processing of malformed content. Malicious
+  content could cause Thunderbird to crash or, potentially, execute arbitrary
+  code with the privileges of the user running Thunderbird. (CVE-2012-3982,
+  CVE-2012-3988, CVE-2012-3990, CVE-2012-3995, CVE-2012-4179, CVE-2012-4180,
+  CVE-2012-4181, CVE-2012-4182, CVE-2012-4183, CVE-2012-4185, CVE-2012-4186,
+  CVE-2012-4187, CVE-2012-4188)
+
+  Two flaws in Thunderbird could allow malicious content to bypass intended
+  restrictions, possibly leading to information disclosure, or Thunderbird
+  executing arbitrary code. Note that the information disclosure issue could
+  possibly be combined with other flaws to achieve arbitrary code execution.
+  (CVE-2012-3986, CVE-2012-3991)
+
+  Multiple flaws were found in the location object implementation in
+  Thunderbird. Malicious content could be used to perform cross-site
+  scripting attacks, script injection, or spoofing attacks. (CVE-2012-1956,
+  CVE-2012-3992, CVE-2012-3994)
+
+  Two flaws were found in the way Chrome Object Wrappers were implemented.
+  Malicious content could be used to perform cross-site scripting attacks or
+  cause Thunderbird to execute arbitrary code. (CVE-2012-3993, CVE-2012-4184)
+
+  Red Hat would like to thank the Mozilla project for reporting these issues.
+  Upstream acknowledges Christian Holler, Jesse Ruderman, Soroush Dalili,
+  miaubiz, Abhishek Arya, Atte Kettunen, Johnny Stenback, Alice White,
+  moz_bug_r_a4, and Mariusz Mlynski as the original reporters of these
+  issues.
+
+  Note: None of the issues in this advisory can be exploited by a
+  specially-crafted HTML mail message as JavaScript is disabled by default
+  for mail messages. They could be exploited another way in Thunderbird, for
+  example, when viewing the full remote content of an RSS feed.
+
+  All Thunderbird users should upgrade to this updated package, which
+  contains Thunderbird version 10.0.8 ESR, which corrects these issues. After
+  installing the update, Thunderbird must be restarted for the changes to
+  take effect.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS5")
 {
@@ -119,6 +110,6 @@ if(release == "CentOS5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

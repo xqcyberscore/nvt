@@ -2,7 +2,7 @@
 # OpenVAS Vulnerability Test
 # $Id: gb_flash_player_for_ie_edge_apsb18-39.nasl 12938 2019-01-04 07:18:11Z asteins $
 #
-# Microsoft IE And Microsoft Edge Flash Player Information Disclosure Vulnerability (apsb18-19)
+# Microsoft IE And Microsoft Edge Flash Player Information Disclosure Vulnerability (apsb18-39)
 #
 # Authors:
 # Shakeel <bshakeel@secpod.com>
@@ -35,7 +35,7 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"last_modification", value:"$Date: 2019-01-04 08:18:11 +0100 (Fri, 04 Jan 2019) $");
   script_tag(name:"creation_date", value:"2018-11-14 17:24:45 +0530 (Wed, 14 Nov 2018)");
-  script_name("Microsoft IE And Microsoft Edge Flash Player Information Disclosure Vulnerability (apsb18-19)");
+  script_name("Microsoft IE And Microsoft Edge Flash Player Information Disclosure Vulnerability (apsb18-39)");
 
   script_tag(name:"summary", value:"This host is installed with Adobe Flash Player
   within Microsoft Edge or Internet Explorer and is prone to information disclosure

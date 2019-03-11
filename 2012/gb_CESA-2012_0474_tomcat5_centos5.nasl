@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for tomcat5 CESA-2012:0474 centos5 
+# CentOS Update for tomcat5 CESA-2012:0474 centos5
 #
 # Authors:
 # System Generated Check
@@ -23,8 +23,28 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "Apache Tomcat is a servlet container for the Java Servlet and JavaServer
+if(description)
+{
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-April/018570.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.881065");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2012-07-30 15:59:46 +0530 (Mon, 30 Jul 2012)");
+  script_cve_id("CVE-2011-4858", "CVE-2012-0022");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_xref(name:"CESA", value:"2012:0474");
+  script_name("CentOS Update for tomcat5 CESA-2012:0474 centos5");
+
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for tomcat5");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
+  script_family("CentOS Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS5");
+  script_tag(name:"affected", value:"tomcat5 on CentOS 5");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_tag(name:"insight", value:"Apache Tomcat is a servlet container for the Java Servlet and JavaServer
   Pages (JSP) technologies.
 
   It was found that the Java hashCode() method implementation was susceptible
@@ -37,7 +57,7 @@ tag_insight = "Apache Tomcat is a servlet container for the Java Servlet and Jav
   the org.apache.tomcat.util.http.Parameters.MAX_COUNT and
   org.apache.tomcat.util.http.MimeHeaders.MAX_COUNT system properties.
   (CVE-2011-4858)
-  
+
   It was found that Tomcat did not handle large numbers of parameters and
   large parameter values efficiently. A remote attacker could make Tomcat
   use an excessive amount of CPU time by sending an HTTP request containing a
@@ -46,56 +66,27 @@ tag_insight = "Apache Tomcat is a servlet container for the Java Servlet and Jav
   request to address this issue. Refer to the CVE-2011-4858 description for
   information about the org.apache.tomcat.util.http.Parameters.MAX_COUNT and
   org.apache.tomcat.util.http.MimeHeaders.MAX_COUNT system properties.
-  (CVE-2012-0022) 
-  
+  (CVE-2012-0022)
+
   Red Hat would like to thank oCERT for reporting CVE-2011-4858. oCERT
   acknowledges Julian Wälde and Alexander Klink as the original reporters of
   CVE-2011-4858.
-  
+
   Users of Tomcat should upgrade to these updated packages, which correct
-  these issues. Tomcat must be restarted for this update to take effect.";
-
-tag_affected = "tomcat5 on CentOS 5";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2012-April/018570.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.881065");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
-  script_tag(name:"creation_date", value:"2012-07-30 15:59:46 +0530 (Mon, 30 Jul 2012)");
-  script_cve_id("CVE-2011-4858", "CVE-2012-0022");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_xref(name: "CESA", value: "2012:0474");
-  script_name("CentOS Update for tomcat5 CESA-2012:0474 centos5 ");
-
-  script_tag(name: "summary" , value: "Check for the Version of tomcat5");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_family("CentOS Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS5");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  these issues. Tomcat must be restarted for this update to take effect.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS5")
 {
@@ -166,6 +157,6 @@ if(release == "CentOS5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

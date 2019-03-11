@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for jakarta-taglibs-standard CESA-2015:1695 centos7 
+# CentOS Update for jakarta-taglibs-standard CESA-2015:1695 centos7
 #
 # Authors:
 # System Generated Check
@@ -26,17 +26,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882269");
-  script_version("$Revision: 14050 $");
+  script_version("$Revision: 14058 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-09-02 06:59:45 +0200 (Wed, 02 Sep 2015)");
   script_cve_id("CVE-2015-0254");
   script_tag(name:"qod_type", value:"package");
-  script_name("CentOS Update for jakarta-taglibs-standard CESA-2015:1695 centos7 ");
-  script_tag(name: "summary", value: "Check the version of jakarta-taglibs-standard");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "jakarta-taglibs-standard is the Java Standard Tag Library (JSTL).
+  script_name("CentOS Update for jakarta-taglibs-standard CESA-2015:1695 centos7");
+  script_tag(name:"summary", value:"Check the version of jakarta-taglibs-standard");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"jakarta-taglibs-standard is the Java Standard Tag Library (JSTL).
 This library is used in conjunction with Tomcat and Java Server Pages
 (JSP).
 
@@ -119,13 +119,13 @@ Red Hat Enterprise Linux ComputeNode Optional (v. 7):
 Source:
 jakarta-taglibs-standard-1.1.2-14.el7_1.src.rpm
 
-noarc ... 
+noarc ...
 
-  Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "jakarta-taglibs-standard on CentOS 7");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "CESA", value: "2015:1695");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2015-September/021359.html");
+  Description truncated, please see the referenced URL(s) for more information.");
+  script_tag(name:"affected", value:"jakarta-taglibs-standard on CentOS 7");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_xref(name:"CESA", value:"2015:1695");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2015-September/021359.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -138,12 +138,11 @@ noarc ...
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS7")
 {
@@ -160,6 +159,6 @@ if(release == "CentOS7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

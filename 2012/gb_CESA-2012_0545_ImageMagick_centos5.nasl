@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for ImageMagick CESA-2012:0545 centos5 
+# CentOS Update for ImageMagick CESA-2012:0545 centos5
 #
 # Authors:
 # System Generated Check
@@ -23,8 +23,28 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "ImageMagick is an image display and manipulation tool for the X Window
+if(description)
+{
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-May/018612.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.881196");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2012-07-30 16:40:12 +0530 (Mon, 30 Jul 2012)");
+  script_cve_id("CVE-2012-0247", "CVE-2012-0248", "CVE-2012-0260");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_xref(name:"CESA", value:"2012:0545");
+  script_name("CentOS Update for ImageMagick CESA-2012:0545 centos5");
+
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for ImageMagick");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
+  script_family("CentOS Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS5");
+  script_tag(name:"affected", value:"ImageMagick on CentOS 5");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_tag(name:"insight", value:"ImageMagick is an image display and manipulation tool for the X Window
   System that can read and write multiple image formats.
 
   A flaw was found in the way ImageMagick processed images with malformed
@@ -32,76 +52,47 @@ tag_insight = "ImageMagick is an image display and manipulation tool for the X W
   specially-crafted image file that, when opened by a victim, would cause
   ImageMagick to crash or, potentially, execute arbitrary code.
   (CVE-2012-0247)
-  
+
   A denial of service flaw was found in the way ImageMagick processed images
   with malformed Exif metadata. An attacker could create a specially-crafted
   image file that, when opened by a victim, could cause ImageMagick to enter
   an infinite loop. (CVE-2012-0248)
-  
+
   A denial of service flaw was found in the way ImageMagick decoded certain
   JPEG images. A remote attacker could provide a JPEG image with
   specially-crafted sequences of RST0 up to RST7 restart markers (used to
   indicate the input stream to be corrupted), which once processed by
   ImageMagick, would cause it to consume excessive amounts of memory and CPU
   time. (CVE-2012-0260)
-  
+
   Red Hat would like to thank CERT-FI for reporting CVE-2012-0260. CERT-FI
   acknowledges Aleksis Kauppinen, Joonas Kuorilehto, Tuomas Parttimaa and
   Lasse Ylivainio of Codenomicon's CROSS project as the original reporters.
-  
+
   This update also fixes the following bug:
-  
+
   * The fix for Red Hat Bugzilla bug 694922, provided by the RHSA-2012:0301
   ImageMagick update, introduced a regression. Attempting to use the
   &quot;convert&quot; utility to convert a PostScript document could fail with a
   &quot;/undefinedfilename&quot; error. With this update, conversion works as expected.
   (BZ#804546)
-  
+
   Users of ImageMagick are advised to upgrade to these updated packages,
   which contain backported patches to correct these issues. All running
-  instances of ImageMagick must be restarted for this update to take effect.";
-
-tag_affected = "ImageMagick on CentOS 5";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2012-May/018612.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.881196");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
-  script_tag(name:"creation_date", value:"2012-07-30 16:40:12 +0530 (Mon, 30 Jul 2012)");
-  script_cve_id("CVE-2012-0247", "CVE-2012-0248", "CVE-2012-0260");
-  script_tag(name:"cvss_base", value:"9.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_xref(name: "CESA", value: "2012:0545");
-  script_name("CentOS Update for ImageMagick CESA-2012:0545 centos5 ");
-
-  script_tag(name: "summary" , value: "Check for the Version of ImageMagick");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_family("CentOS Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS5");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  instances of ImageMagick must be restarted for this update to take effect.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS5")
 {
@@ -136,6 +127,6 @@ if(release == "CentOS5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

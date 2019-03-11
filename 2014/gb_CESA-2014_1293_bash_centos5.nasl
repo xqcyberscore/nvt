@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for bash CESA-2014:1293 centos5 
+# CentOS Update for bash CESA-2014:1293 centos5
 #
 # Authors:
 # System Generated Check
@@ -26,14 +26,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882027");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-09-25 05:58:31 +0200 (Thu, 25 Sep 2014)");
   script_cve_id("CVE-2014-6271");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_name("CentOS Update for bash CESA-2014:1293 centos5 ");
-  script_tag(name: "insight", value: "The GNU Bourne Again shell (Bash) is a
+  script_name("CentOS Update for bash CESA-2014:1293 centos5");
+  script_tag(name:"insight", value:"The GNU Bourne Again shell (Bash) is a
 shell and command language interpreter compatible with the Bourne shell (sh).
 Bash is the default shell for Red Hat Enterprise Linux.
 
@@ -50,16 +50,15 @@ Knowledgebase article at https://access.redhat.com/articles/1200223
 Red Hat would like to thank Stephane Chazelas for reporting this issue.
 
 All bash users are advised to upgrade to these updated packages, which
-contain a backported patch to correct this issue.
-");
-  script_tag(name: "affected", value: "bash on CentOS 5");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+contain a backported patch to correct this issue.");
+  script_tag(name:"affected", value:"bash on CentOS 5");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name: "CESA", value: "2014:1293");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2014-September/020582.html");
-  script_tag(name:"summary", value:"Check for the Version of bash");
+  script_xref(name:"CESA", value:"2014:1293");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2014-September/020582.html");
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for bash");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
@@ -71,12 +70,11 @@ contain a backported patch to correct this issue.
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS5")
 {
@@ -87,6 +85,6 @@ if(release == "CentOS5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

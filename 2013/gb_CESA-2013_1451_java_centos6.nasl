@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for java CESA-2013:1451 centos6 
+# CentOS Update for java CESA-2013:1451 centos6
 #
 # Authors:
 # System Generated Check
@@ -23,20 +23,19 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.881806");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14056 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-10-29 14:52:25 +0530 (Tue, 29 Oct 2013)");
   script_cve_id("CVE-2013-3829", "CVE-2013-4002", "CVE-2013-5772", "CVE-2013-5774", "CVE-2013-5778", "CVE-2013-5780", "CVE-2013-5782", "CVE-2013-5783", "CVE-2013-5784", "CVE-2013-5790", "CVE-2013-5797", "CVE-2013-5800", "CVE-2013-5802", "CVE-2013-5803", "CVE-2013-5804", "CVE-2013-5809", "CVE-2013-5814", "CVE-2013-5817", "CVE-2013-5820", "CVE-2013-5823", "CVE-2013-5825", "CVE-2013-5829", "CVE-2013-5830", "CVE-2013-5838", "CVE-2013-5840", "CVE-2013-5842", "CVE-2013-5849", "CVE-2013-5850", "CVE-2013-5851");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_name("CentOS Update for java CESA-2013:1451 centos6 ");
+  script_name("CentOS Update for java CESA-2013:1451 centos6");
 
-  tag_insight = "The java-1.7.0-openjdk packages provide the OpenJDK 7 Java Runtime
+  script_tag(name:"affected", value:"java on CentOS 6");
+  script_tag(name:"insight", value:"The java-1.7.0-openjdk packages provide the OpenJDK 7 Java Runtime
 Environment and the OpenJDK 7 Java Software Development Kit.
 
 Multiple input checking flaws were found in the 2D component native image
@@ -85,23 +84,15 @@ Virtual Machine memory. (CVE-2013-5778)
 
 Multiple input sanitization flaws were discovered in javadoc. When javadoc
 documentation was generated from an untrusted Java source code and hosted
-on a domain not controlled b ... 
+on a domain not controlled b ...
 
-  Description truncated, for more information please check the Reference URL";
-
-  tag_affected = "java on CentOS 6";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  Description truncated, please see the referenced URL(s) for more information.");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "CESA", value: "2013:1451");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2013-October/019985.html");
-  script_tag(name: "summary" , value: "Check for the Version of java");
+  script_xref(name:"CESA", value:"2013:1451");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-October/019985.html");
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for java");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
@@ -110,15 +101,14 @@ on a domain not controlled b ...
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS6")
 {
@@ -153,6 +143,6 @@ if(release == "CentOS6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

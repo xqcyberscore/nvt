@@ -26,14 +26,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882020");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-09-10 06:20:46 +0200 (Wed, 10 Sep 2014)");
   script_cve_id("CVE-2014-0119");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_name("CentOS Update for tomcat CESA-2014:1034 centos7 ");
-  script_tag(name: "insight", value: "Apache Tomcat is a servlet container for
+  script_name("CentOS Update for tomcat CESA-2014:1034 centos7");
+  script_tag(name:"insight", value:"Apache Tomcat is a servlet container for
 the Java Servlet and JavaServer Pages (JSP) technologies.
 
 It was found that, in certain circumstances, it was possible for a
@@ -46,33 +46,31 @@ deployed on the same Apache Tomcat instance. (CVE-2014-0119)
 
 All Tomcat users are advised to upgrade to these updated packages, which
 contain a backported patch to correct this issue. Tomcat must be restarted
-for this update to take effect.
-");
-  script_tag(name: "affected", value: "tomcat on CentOS 7");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+for this update to take effect.");
+  script_tag(name:"affected", value:"tomcat on CentOS 7");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name: "CESA", value: "2014:1034");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2014-August/020478.html");
-  script_tag(name:"summary", value:"Check for the Version of tomcat");
+  script_xref(name:"CESA", value:"2014:1034");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2014-August/020478.html");
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for tomcat");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS7");
-exit(0);
+  exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS7")
 {
@@ -137,6 +135,6 @@ if(release == "CentOS7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

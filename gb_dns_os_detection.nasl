@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dns_os_detection.nasl 13813 2019-02-21 13:07:21Z cfischer $
+# $Id: gb_dns_os_detection.nasl 14076 2019-03-10 17:26:11Z cfischer $
 #
 # DNS Server OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108014");
-  script_version("$Revision: 13813 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-21 14:07:21 +0100 (Thu, 21 Feb 2019) $");
+  script_version("$Revision: 14076 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-10 18:26:11 +0100 (Sun, 10 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-11-03 14:13:48 +0100 (Thu, 03 Nov 2016)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -109,6 +109,17 @@ foreach proto( make_list( "udp", "tcp" ) ) {
         register_and_report_os( os:"Fedora Linux", version:version[1], cpe:"cpe:/o:fedoraproject:fedora", banner_type:BANNER_TYPE, port:port, proto:proto, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       } else {
         register_and_report_os( os:"Fedora Linux", cpe:"cpe:/o:fedoraproject:fedora", banner_type:BANNER_TYPE, port:port, proto:proto, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      }
+      continue;
+    }
+
+    # 9.9.4-RedHat-9.9.4-50.1.h2
+    if( banner =~ "-RedHat.+\.h" ) {
+      version = eregmatch( pattern:"[0-9.-]+\.h([1-9])", string:banner );
+      if( ! isnull( version[1] ) ) {
+        register_and_report_os( os:"EulerOS", version:version[1], cpe:"cpe:/o:huawei:euleros", banner_type:BANNER_TYPE, port:port, proto:proto, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      } else {
+        register_and_report_os( os:"EulerOS", cpe:"cpe:/o:huawei:euleros", banner_type:BANNER_TYPE, port:port, proto:proto, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       }
       continue;
     }

@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for bind-dyndb-ldap CESA-2012:1139 centos6 
+# CentOS Update for bind-dyndb-ldap CESA-2012:1139 centos6
 #
 # Authors:
 # System Generated Check
@@ -23,8 +23,28 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "The dynamic LDAP back end is a plug-in for BIND that provides back-end
+if(description)
+{
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-August/018784.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.881456");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2012-08-03 11:16:42 +0530 (Fri, 03 Aug 2012)");
+  script_cve_id("CVE-2012-3429");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_xref(name:"CESA", value:"2012:1139");
+  script_name("CentOS Update for bind-dyndb-ldap CESA-2012:1139 centos6");
+
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for bind-dyndb-ldap");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
+  script_family("CentOS Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS6");
+  script_tag(name:"affected", value:"bind-dyndb-ldap on CentOS 6");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_tag(name:"insight", value:"The dynamic LDAP back end is a plug-in for BIND that provides back-end
   capabilities to LDAP databases. It features support for dynamic updates and
   internal caching that help to reduce the load on LDAP servers.
 
@@ -33,55 +53,26 @@ tag_insight = "The dynamic LDAP back end is a plug-in for BIND that provides bac
   DNS queries to a named server that is configured to use bind-dyndb-ldap
   could use this flaw to cause named to exit unexpectedly with an assertion
   failure. (CVE-2012-3429)
-  
+
   Red Hat would like to thank Sigbjorn Lie of Atea Norway for reporting this
   issue.
-  
+
   All bind-dyndb-ldap users should upgrade to this updated package, which
   contains a backported patch to correct this issue. For the update to take
-  effect, the named service must be restarted.";
-
-tag_affected = "bind-dyndb-ldap on CentOS 6";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2012-August/018784.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.881456");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
-  script_tag(name:"creation_date", value:"2012-08-03 11:16:42 +0530 (Fri, 03 Aug 2012)");
-  script_cve_id("CVE-2012-3429");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_xref(name: "CESA", value: "2012:1139");
-  script_name("CentOS Update for bind-dyndb-ldap CESA-2012:1139 centos6 ");
-
-  script_tag(name: "summary" , value: "Check for the Version of bind-dyndb-ldap");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_family("CentOS Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS6");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  effect, the named service must be restarted.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS6")
 {
@@ -92,6 +83,6 @@ if(release == "CentOS6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

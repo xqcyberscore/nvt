@@ -21,13 +21,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.883005");
-  script_version("$Revision: 14050 $");
+  script_version("$Revision: 14058 $");
   script_cve_id("CVE-2018-16540", "CVE-2018-19475", "CVE-2018-19476", "CVE-2018-19477", "CVE-2019-6116");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-02-10 04:03:52 +0100 (Sun, 10 Feb 2019)");
-  script_name("CentOS Update for ghostscript CESA-2019:0229 centos7 ");
+  script_name("CentOS Update for ghostscript CESA-2019:0229 centos7");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
@@ -48,16 +48,16 @@ so that the code can be displayed or printed.
 
 Security Fix(es):
 
-* ghostscript: use-after-free in copydevice handling (699661)
+  * ghostscript: use-after-free in copydevice handling (699661)
 (CVE-2018-16540)
 
-* ghostscript: access bypass in psi/zdevice2.c (700153) (CVE-2018-19475)
+  * ghostscript: access bypass in psi/zdevice2.c (700153) (CVE-2018-19475)
 
-* ghostscript: access bypass in psi/zicc.c (700169) (CVE-2018-19476)
+  * ghostscript: access bypass in psi/zicc.c (700169) (CVE-2018-19476)
 
-* ghostscript: access bypass in psi/zfjbig2.c (700168) (CVE-2018-19477)
+  * ghostscript: access bypass in psi/zfjbig2.c (700168) (CVE-2018-19477)
 
-* ghostscript: subroutines within pseudo-operators must themselves be
+  * ghostscript: subroutines within pseudo-operators must themselves be
 pseudo-operators (700317) (CVE-2019-6116)
 
 For more details about the security issue(s), including the impact, a CVSS
@@ -69,11 +69,10 @@ reporting CVE-2019-6116.
 
 Bug Fix(es):
 
-* Previously, ghostscript-9.07-31.el7_6.1 introduced a regression during
+  * Previously, ghostscript-9.07-31.el7_6.1 introduced a regression during
 the standard input reading, causing a '/invalidfileaccess in --run--'
 error. With this update, the regression has been fixed and the described
-error no longer occurs. (BZ#1665919)
-");
+error no longer occurs. (BZ#1665919)");
 
   script_tag(name:"affected", value:"ghostscript on CentOS 7.");
 

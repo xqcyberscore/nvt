@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for kernel CESA-2014:0285 centos5 
+# CentOS Update for kernel CESA-2014:0285 centos5
 #
 # Authors:
 # System Generated Check
@@ -23,36 +23,35 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.881900");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14056 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-03-17 13:13:37 +0530 (Mon, 17 Mar 2014)");
   script_cve_id("CVE-2013-2929", "CVE-2013-4483", "CVE-2013-4554", "CVE-2013-6381",
                 "CVE-2013-6383", "CVE-2013-6885", "CVE-2013-7263", "CVE-2013-7265");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_name("CentOS Update for kernel CESA-2014:0285 centos5 ");
+  script_name("CentOS Update for kernel CESA-2014:0285 centos5");
 
-  tag_insight = "The kernel packages contain the Linux kernel, the core of any Linux
+  script_tag(name:"affected", value:"kernel on CentOS 5");
+  script_tag(name:"insight", value:"The kernel packages contain the Linux kernel, the core of any Linux
 operating system.
 
-* A buffer overflow flaw was found in the way the qeth_snmp_command()
+  * A buffer overflow flaw was found in the way the qeth_snmp_command()
 function in the Linux kernel's QETH network device driver implementation
 handled SNMP IOCTL requests with an out-of-bounds length. A local,
 unprivileged user could use this flaw to crash the system or, potentially,
 escalate their privileges on the system. (CVE-2013-6381, Important)
 
-* A flaw was found in the way the ipc_rcu_putref() function in the Linux
+  * A flaw was found in the way the ipc_rcu_putref() function in the Linux
 kernel's IPC implementation handled reference counter decrementing.
 A local, unprivileged user could use this flaw to trigger an Out of Memory
 (OOM) condition and, potentially, crash the system. (CVE-2013-4483,
 Moderate)
 
-* It was found that the Xen hypervisor implementation did not correctly
+  * It was found that the Xen hypervisor implementation did not correctly
 check privileges of hypercall attempts made by HVM guests, allowing
 hypercalls to be invoked from protection rings 1 and 2 in addition to ring
 0. A local attacker in an HVM guest able to execute code on privilege
@@ -62,12 +61,12 @@ of Red Hat Enterprise Linux and Microsoft Windows are not affected by this
 issue because they are known to only use protection rings 0 (kernel) and 3
 (userspace). (CVE-2013-4554, Moderate)
 
-* A flaw was found in the way the Linux kernel's Adaptec RAID controller
+  * A flaw was found in the way the Linux kernel's Adaptec RAID controller
 (aacraid) checked permissions of compat IOCTLs. A local attacker could use
 this flaw to bypass intended security restrictions. (CVE-2013-6383,
 Moderate)
 
-* It was found that, under specific circumstances, a combination of write
+  * It was found that, under specific circumstances, a combination of write
 operations to write-combined memory and locked CPU instructions may cause a
 core hang on certain AMD CPUs (for more information, refer to AMD CPU
 erratum 793 linked in the References section). A privileged user in a guest
@@ -77,30 +76,22 @@ hypervisor implementation, which mitigates the AMD CPU issue. Note: this
 issue only affects AMD Family 16h Models 00h-0Fh Processors. Non-AMD CPUs
 are not vulnerable. (CVE-2013-6885, Moderate)
 
-* It was found that certain protocol handlers in the Linux kernel's
+  * It was found that certain protocol handlers in the Linux kernel's
 networking implementation could set the addr_len value without initializing
 the associated data structure. A local, unprivileged user could use this
 flaw to leak kernel stack memory to user space using the recvmsg, recvfrom,
 and recvmmsg system calls. (CVE-2013-7263, Low)
 
-* A flaw was found in the way the get_dumpable() function return value was
+  * A flaw was found in the way the get_dumpable() function return value was
 interpre ...
 
-  Description truncated, for more information please check the Reference URL";
-
-  tag_affected = "kernel on CentOS 5";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  Description truncated, please see the referenced URL(s) for more information.");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "CESA", value: "2014:0285");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2014-March/020199.html");
-  script_tag(name:"summary", value:"Check for the Version of kernel");
+  script_xref(name:"CESA", value:"2014:0285");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2014-March/020199.html");
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for kernel");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
@@ -109,15 +100,14 @@ interpre ...
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS5")
 {
@@ -182,6 +172,6 @@ if(release == "CentOS5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

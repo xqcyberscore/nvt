@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for python-twisted-web CESA-2016:1978 centos7 
+# CentOS Update for python-twisted-web CESA-2016:1978 centos7
 #
 # Authors:
 # System Generated Check
@@ -26,25 +26,24 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882568");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-10-05 15:43:19 +0530 (Wed, 05 Oct 2016)");
   script_cve_id("CVE-2016-1000111");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
-  script_name("CentOS Update for python-twisted-web CESA-2016:1978 centos7 ");
-  script_tag(name: "summary", value: "Check the version of python-twisted-web");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "Twisted is an event-based framework for 
-internet applications. Twisted Web is a complete web server, aimed at hosting 
-web applications using Twisted and Python, but fully able to serve static pages 
+  script_name("CentOS Update for python-twisted-web CESA-2016:1978 centos7");
+  script_tag(name:"summary", value:"Check the version of python-twisted-web");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Twisted is an event-based framework for
+internet applications. Twisted Web is a complete web server, aimed at hosting
+web applications using Twisted and Python, but fully able to serve static pages
 too.
 
 Security Fix(es):
 
-* It was discovered that python-twisted-web used the value of the Proxy
+  * It was discovered that python-twisted-web used the value of the Proxy
 header from HTTP requests to initialize the HTTP_PROXY environment variable
 for CGI scripts, which in turn was incorrectly used by certain HTTP client
 implementations to configure the proxy for outgoing HTTP requests. A remote
@@ -56,13 +55,12 @@ Note: After this update, python-twisted-web will no longer pass the value
 of the Proxy request header to scripts via the HTTP_PROXY environment
 variable.
 
-Red Hat would like to thank Scott Geary (VendHQ) for reporting this issue.
-");
-  script_tag(name: "affected", value: "python-twisted-web on CentOS 7");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+Red Hat would like to thank Scott Geary (VendHQ) for reporting this issue.");
+  script_tag(name:"affected", value:"python-twisted-web on CentOS 7");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "CESA", value: "2016:1978");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2016-September/022100.html");
+  script_xref(name:"CESA", value:"2016:1978");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2016-September/022100.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -75,12 +73,11 @@ Red Hat would like to thank Scott Geary (VendHQ) for reporting this issue.
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS7")
 {
@@ -91,6 +88,6 @@ if(release == "CentOS7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -21,8 +21,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.142106");
-  script_version("$Revision: 14052 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:57:15 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14088 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 10:16:32 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-03-08 11:46:17 +0700 (Fri, 08 Mar 2019)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -57,7 +57,7 @@ Application:
 
   - Reflected Cross-Site Scripting via MySQL API droboapps.php (CVE-2018-14704)");
 
-  script_tag(name:"solution", value:"No known solution is available as of 08th February, 2019.
+  script_tag(name:"solution", value:"No known solution is available as of 11th March, 2019.
   Information regarding this issue will be updated once solution details are available.");
 
   script_tag(name:"vuldetect", value:"Tries to obtain the root password for MySQL.");

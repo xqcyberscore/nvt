@@ -23,8 +23,27 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "PostgreSQL is an advanced object-relational database management system
+if(description)
+{
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2010-May/016654.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.880663");
+  script_version("$Revision: 14056 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
+  script_tag(name:"cvss_base", value:"8.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
+  script_xref(name:"CESA", value:"2010:0430");
+  script_cve_id("CVE-2010-1169", "CVE-2010-1170");
+  script_name("CentOS Update for postgresql84 CESA-2010:0430 centos5 i386");
+
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for postgresql84");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
+  script_family("CentOS Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS5");
+  script_tag(name:"affected", value:"postgresql84 on CentOS 5");
+  script_tag(name:"insight", value:"PostgreSQL is an advanced object-relational database management system
   (DBMS). PL/Perl and PL/Tcl allow users to write PostgreSQL functions in the
   Perl and Tcl languages, and are installed in trusted mode by default. In
   trusted mode, certain operations, such as operating system level access,
@@ -36,67 +55,39 @@ tag_insight = "PostgreSQL is an advanced object-relational database management s
   a specially-crafted PL/Perl script could use this flaw to bypass intended
   PL/Perl trusted mode restrictions, allowing them to run arbitrary Perl
   scripts with the privileges of the database server. (CVE-2010-1169)
-  
+
   Red Hat would like to thank Tim Bunce for responsibly reporting the
   CVE-2010-1169 flaw.
-  
+
   A flaw was found in the way PostgreSQL enforced permission checks on
   scripts written in PL/Tcl. If the PL/Tcl procedural language was registered
   on a particular database, an authenticated database user running a
   specially-crafted PL/Tcl script could use this flaw to bypass intended
   PL/Tcl trusted mode restrictions, allowing them to run arbitrary Tcl
   scripts with the privileges of the database server. (CVE-2010-1170)
-  
+
   These packages upgrade PostgreSQL to version 8.4.4. Refer to the PostgreSQL
   Release Notes for a list of changes:
-  
+
   http://www.postgresql.org/docs/8.4/static/release.html
-  
+
   All PostgreSQL users are advised to upgrade to these updated packages,
   which correct these issues. If the postgresql service is running, it will
-  be automatically restarted after installing this update.";
-tag_solution = "Please Install the Updated Packages.";
-
-tag_affected = "postgresql84 on CentOS 5";
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2010-May/016654.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.880663");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
-  script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
-  script_tag(name:"cvss_base", value:"8.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
-  script_xref(name: "CESA", value: "2010:0430");
-  script_cve_id("CVE-2010-1169", "CVE-2010-1170");
-  script_name("CentOS Update for postgresql84 CESA-2010:0430 centos5 i386");
-
-  script_tag(name:"summary", value:"Check for the Version of postgresql84");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_family("CentOS Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS5");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  be automatically restarted after installing this update.");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS5")
 {
@@ -173,6 +164,6 @@ if(release == "CentOS5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

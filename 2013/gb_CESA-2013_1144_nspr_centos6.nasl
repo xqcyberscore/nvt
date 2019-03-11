@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for nspr CESA-2013:1144 centos6 
+# CentOS Update for nspr CESA-2013:1144 centos6
 #
 # Authors:
 # System Generated Check
@@ -23,8 +23,20 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "Network Security Services (NSS) is a set of libraries designed to support
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.881780");
+  script_version("$Revision: 14056 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2013-08-08 11:37:16 +0530 (Thu, 08 Aug 2013)");
+  script_cve_id("CVE-2013-0791", "CVE-2013-1620");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_name("CentOS Update for nspr CESA-2013:1144 centos6");
+
+  script_tag(name:"affected", value:"nspr on CentOS 6");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_tag(name:"insight", value:"Network Security Services (NSS) is a set of libraries designed to support
 the cross-platform development of security-enabled client and server
 applications. Netscape Portable Runtime (NSPR) provides platform
 independence for non-GUI operating system facilities. nss-softokn provides
@@ -46,17 +58,17 @@ of CVE-2013-0791.
 
 This update also fixes the following bugs:
 
-* The RHBA-2013:0445 update (which upgraded NSS to version 3.14) prevented
+  * The RHBA-2013:0445 update (which upgraded NSS to version 3.14) prevented
 the use of certificates that have an MD5 signature. This caused problems in
 certain environments. With this update, certificates that have an MD5
 signature are once again allowed. To prevent the use of certificates that
 have an MD5 signature, set the 'NSS_HASH_ALG_SUPPORT' environment variable
 to '-MD5'. (BZ#957603)
 
-* Previously, the sechash.h header file was missing, preventing certain
+  * Previously, the sechash.h header file was missing, preventing certain
 source RPMs (such as firefox and xulrunner) from building. (BZ#948715)
 
-* A memory leak in the nssutil_ReadSecmodDB() function has been fixed.
+  * A memory leak in the nssutil_ReadSecmodDB() function has been fixed.
 (BZ#984967)
 
 In addition, the nss package has been upgraded to upstream version 3.14.3,
@@ -69,34 +81,12 @@ provide a number of bug fixes and enhancements over the previous versions.
 Users of NSS, NSPR, nss-util, and nss-softokn are advised to upgrade to
 these updated packages, which fix these issues and add these enhancements.
 After installing this update, applications using NSS, NSPR, nss-util, or
-nss-softokn must be restarted for this update to take effect.";
-
-
-if(description)
-{
-  script_oid("1.3.6.1.4.1.25623.1.0.881780");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
-  script_tag(name:"creation_date", value:"2013-08-08 11:37:16 +0530 (Thu, 08 Aug 2013)");
-  script_cve_id("CVE-2013-0791", "CVE-2013-1620");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_name("CentOS Update for nspr CESA-2013:1144 centos6 ");
-
-
-  tag_affected = "nspr on CentOS 6";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+nss-softokn must be restarted for this update to take effect.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "CESA", value: "2013:1144");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2013-August/019896.html");
-  script_tag(name: "summary" , value: "Check for the Version of nspr");
+  script_xref(name:"CESA", value:"2013:1144");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-August/019896.html");
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for nspr");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
@@ -105,15 +95,14 @@ if(description)
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS6")
 {
@@ -196,6 +185,6 @@ if(release == "CentOS6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

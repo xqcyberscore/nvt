@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_indusoft_web_studio_detect_win.nasl 11015 2018-08-17 06:31:19Z cfischer $
+# $Id: gb_indusoft_web_studio_detect_win.nasl 14057 2019-03-08 13:02:00Z jschulte $
 #
 # InduSoft Web Studio Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806001");
-  script_version("$Revision: 11015 $");
+  script_version("$Revision: 14057 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:02:00 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-08-19 15:48:22 +0530 (Wed, 19 Aug 2015)");
   script_tag(name:"qod_type", value:"registry");
   script_name("InduSoft Web Studio Version Detection (Windows)");
@@ -52,7 +52,6 @@ if(description)
 
 include("smb_nt.inc");
 include("secpod_smb_func.inc");
-include("cpe.inc");
 include("host_details.inc");
 
 os_arch = get_kb_item("SMB/Windows/Arch");
@@ -82,18 +81,34 @@ foreach key (key_list)
 
     if("InduSoft Web Studio" >< studioName)
     {
-      studioVer = registry_get_sz(key:key + item, item:"DisplayVersion");
+
+      set_kb_item(name:"schneider_indusoft/installed", value:TRUE);
+      set_kb_item(name:"schneider_indusoft/smb/detected", value:TRUE);
+
+      version = "unknown";
+
+      if(studioVer = registry_get_sz(key:key + item, item:"DisplayVersion"))
+        version = studioVer;
+
+      ver = eregmatch(string:version, pattern:'([0-9]+)([0-9])([0-9.]+)');
+      version = ver[1] + "." + ver[2] + ver[3];
+
+      set_kb_item(name:"schneider_indusoft/smb/concluded", value:studioVer);
+      set_kb_item(name:"schneider_indusoft/smb/version", value:version);
 
       studioPath = registry_get_sz(key:key + item, item:"InstallLocation");
-      if(!studioPath){
+      if(!studioPath)
+      {
         studioPath = "Unable to find the install location from registry";
       }
-
-      if(studioVer)
+      else
       {
-        set_kb_item(name:"InduSoft/WebStudio/Win/Ver", value:studioVer);
-        register_and_report_cpe( app:"InduSoft Web Studio", ver:studioVer, base:"cpe:/a:schneider_electric:indusoft_web_studio:", expr:"^([0-9.]+)", insloc:studioPath );
+        set_kb_item(name:"schneider_indusoft/smb/location", value:studioPath);
       }
+
+      exit( 0 );
     }
   }
 }
+
+exit( 0 );

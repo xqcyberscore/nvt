@@ -23,8 +23,27 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "The gzip package provides the GNU gzip data compression program.
+if(description)
+{
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2010-January/016475.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.880616");
+  script_version("$Revision: 14056 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_xref(name:"CESA", value:"2010:0061");
+  script_cve_id("CVE-2010-0001");
+  script_name("CentOS Update for gzip CESA-2010:0061 centos5 i386");
+
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for gzip");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
+  script_family("CentOS Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS5");
+  script_tag(name:"affected", value:"gzip on CentOS 5");
+  script_tag(name:"insight", value:"The gzip package provides the GNU gzip data compression program.
 
   An integer underflow flaw, leading to an array index error, was found in
   the way gzip expanded archive files compressed with the Lempel-Ziv-Welch
@@ -32,54 +51,26 @@ tag_insight = "The gzip package provides the GNU gzip data compression program.
   archive, it could cause gzip to crash or, potentially, execute arbitrary
   code with the privileges of the user running gzip. This flaw only affects
   64-bit systems. (CVE-2010-0001)
-  
+
   Red Hat would like to thank Aki Helin of the Oulu University Secure
   Programming Group for responsibly reporting this flaw.
-  
+
   Users of gzip should upgrade to this updated package, which contains a
-  backported patch to correct this issue.";
-tag_solution = "Please Install the Updated Packages.";
-
-tag_affected = "gzip on CentOS 5";
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2010-January/016475.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.880616");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
-  script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_xref(name: "CESA", value: "2010:0061");
-  script_cve_id("CVE-2010-0001");
-  script_name("CentOS Update for gzip CESA-2010:0061 centos5 i386");
-
-  script_tag(name:"summary", value:"Check for the Version of gzip");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_family("CentOS Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS5");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  backported patch to correct this issue.");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS5")
 {
@@ -90,6 +81,6 @@ if(release == "CentOS5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

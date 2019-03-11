@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2018_2112_firefox_centos6.nasl 14050 2019-03-08 09:08:09Z cfischer $
+# $Id: gb_CESA-2018_2112_firefox_centos6.nasl 14058 2019-03-08 13:25:52Z cfischer $
 #
-# CentOS Update for firefox CESA-2018:2112 centos6 
+# CentOS Update for firefox CESA-2018:2112 centos6
 #
 # Authors:
 # System Generated Check
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882920");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-07-14 05:51:22 +0200 (Sat, 14 Jul 2018)");
   script_cve_id("CVE-2017-7762", "CVE-2018-5156", "CVE-2018-5188", "CVE-2018-6126",
                 "CVE-2018-12359", "CVE-2018-12360", "CVE-2018-12362", "CVE-2018-12363",
@@ -36,7 +36,7 @@ if(description)
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
-  script_name("CentOS Update for firefox CESA-2018:2112 centos6 ");
+  script_name("CentOS Update for firefox CESA-2018:2112 centos6");
   script_tag(name:"summary", value:"Check the version of firefox");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Mozilla Firefox is an open-source web browser,
@@ -46,33 +46,33 @@ This update upgrades Firefox to version 60.1.0 ESR.
 
 Security Fix(es):
 
-* Mozilla: Memory safety bugs fixed in Firefox 61, Firefox ESR 60.1, and
+  * Mozilla: Memory safety bugs fixed in Firefox 61, Firefox ESR 60.1, and
 Firefox ESR 52.9 (CVE-2018-5188)
 
-* Mozilla: Buffer overflow using computed size of canvas element
+  * Mozilla: Buffer overflow using computed size of canvas element
 (CVE-2018-12359)
 
-* Mozilla: Use-after-free using focus() (CVE-2018-12360)
+  * Mozilla: Use-after-free using focus() (CVE-2018-12360)
 
-* Mozilla: Media recorder segmentation fault when track type is changed
+  * Mozilla: Media recorder segmentation fault when track type is changed
 during capture (CVE-2018-5156)
 
-* Skia: Heap buffer overflow rasterizing paths in SVG (CVE-2018-6126)
+  * Skia: Heap buffer overflow rasterizing paths in SVG (CVE-2018-6126)
 
-* Mozilla: Integer overflow in SSSE3 scaler (CVE-2018-12362)
+  * Mozilla: Integer overflow in SSSE3 scaler (CVE-2018-12362)
 
-* Mozilla: Use-after-free when appending DOM nodes (CVE-2018-12363)
+  * Mozilla: Use-after-free when appending DOM nodes (CVE-2018-12363)
 
-* Mozilla: CSRF attacks through 307 redirects and NPAPI plugins
+  * Mozilla: CSRF attacks through 307 redirects and NPAPI plugins
 (CVE-2018-12364)
 
-* Mozilla: address bar username and password spoofing in reader mode
+  * Mozilla: address bar username and password spoofing in reader mode
 (CVE-2017-7762)
 
-* Mozilla: Compromised IPC child process can list local filenames
+  * Mozilla: Compromised IPC child process can list local filenames
 (CVE-2018-12365)
 
-* Mozilla: Invalid data handling during QCMS transformations
+  * Mozilla: Invalid data handling during QCMS transformations
 (CVE-2018-12366)
 
 For more details about the security issue(s), including the impact, a CVSS
@@ -83,13 +83,12 @@ Red Hat would like to thank the Mozilla project for reporting these issues.
 Upstream acknowledges Alex Gaynor, Christoph Diehl, Christian Holler, Jason
 Kratzer, David Major, Jon Coppeard, Nicolas B. Pierron, Marcia Knous,
 Ronald Crane, Nils, F. Alonso (revskills), David Black, and OSS-Fuzz as the
-original reporters.
-");
+original reporters.");
   script_tag(name:"affected", value:"firefox on CentOS 6");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"CESA", value:"2018:2112");
-  script_xref(name:"URL" , value:"http://lists.centos.org/pipermail/centos-announce/2018-July/022962.html");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2018-July/022962.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -102,12 +101,11 @@ original reporters.
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS6")
 {

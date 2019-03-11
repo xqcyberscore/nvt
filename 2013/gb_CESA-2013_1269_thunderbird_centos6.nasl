@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for thunderbird CESA-2013:1269 centos6 
+# CentOS Update for thunderbird CESA-2013:1269 centos6
 #
 # Authors:
 # System Generated Check
@@ -23,8 +23,22 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "Mozilla Thunderbird is a standalone mail and newsgroup client.
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.881790");
+  script_version("$Revision: 14056 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2013-09-18 10:11:26 +0530 (Wed, 18 Sep 2013)");
+  script_cve_id("CVE-2013-1718", "CVE-2013-1722", "CVE-2013-1725",
+                "CVE-2013-1730", "CVE-2013-1732", "CVE-2013-1735",
+                "CVE-2013-1736", "CVE-2013-1737");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_name("CentOS Update for thunderbird CESA-2013:1269 centos6");
+
+  script_tag(name:"affected", value:"thunderbird on CentOS 6");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_tag(name:"insight", value:"Mozilla Thunderbird is a standalone mail and newsgroup client.
 
 Several flaws were found in the processing of malformed content. Malicious
 content could cause Thunderbird to crash or, potentially, execute arbitrary
@@ -49,36 +63,12 @@ viewing the full remote content of an RSS feed.
 All Thunderbird users should upgrade to this updated package, which
 contains Thunderbird version 17.0.9 ESR, which corrects these issues. After
 installing the update, Thunderbird must be restarted for the changes to
-take effect.";
-
-
-if(description)
-{
-  script_oid("1.3.6.1.4.1.25623.1.0.881790");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
-  script_tag(name:"creation_date", value:"2013-09-18 10:11:26 +0530 (Wed, 18 Sep 2013)");
-  script_cve_id("CVE-2013-1718", "CVE-2013-1722", "CVE-2013-1725",
-                "CVE-2013-1730", "CVE-2013-1732", "CVE-2013-1735",
-                "CVE-2013-1736", "CVE-2013-1737");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_name("CentOS Update for thunderbird CESA-2013:1269 centos6 ");
-
-
-  tag_affected = "thunderbird on CentOS 6";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+take effect.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "CESA", value: "2013:1269");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2013-September/019944.html");
-  script_tag(name: "summary" , value: "Check for the Version of thunderbird");
+  script_xref(name:"CESA", value:"2013:1269");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-September/019944.html");
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for thunderbird");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
@@ -87,15 +77,14 @@ if(description)
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS6")
 {
@@ -106,6 +95,6 @@ if(release == "CentOS6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

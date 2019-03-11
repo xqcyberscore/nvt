@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for kernel CESA-2012:0743 centos6 
+# CentOS Update for kernel CESA-2012:0743 centos6
 #
 # Authors:
 # System Generated Check
@@ -23,16 +23,38 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "The kernel packages contain the Linux kernel, the core of any Linux
+if(description)
+{
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-June/018694.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.881125");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2012-07-30 16:16:11 +0530 (Mon, 30 Jul 2012)");
+  script_cve_id("CVE-2012-0044", "CVE-2012-1179", "CVE-2012-2119", "CVE-2012-2121",
+                "CVE-2012-2123", "CVE-2012-2136", "CVE-2012-2137", "CVE-2012-2372",
+                "CVE-2012-2373");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
+  script_xref(name:"CESA", value:"2012:0743");
+  script_name("CentOS Update for kernel CESA-2012:0743 centos6");
+
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for kernel");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
+  script_family("CentOS Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS6");
+  script_tag(name:"affected", value:"kernel on CentOS 6");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_tag(name:"insight", value:"The kernel packages contain the Linux kernel, the core of any Linux
   operating system.
 
   This update fixes the following security issues:
-  
+
   * A local, unprivileged user could use an integer overflow flaw in
   drm_mode_dirtyfb_ioctl() to cause a denial of service or escalate their
   privileges. (CVE-2012-0044, Important)
-  
+
   * A buffer overflow flaw was found in the macvtap device driver, used for
   creating a bridged network between the guest and the host in KVM
   (Kernel-based Virtual Machine) environments. A privileged guest user in a
@@ -41,7 +63,7 @@ tag_insight = "The kernel packages contain the Linux kernel, the core of any Lin
   experimental_zcopytx module option enabled (it is not enabled by default),
   and that also have macvtap configured for at least one guest.
   (CVE-2012-2119, Important)
-  
+
   * When a set user ID (setuid) application is executed, certain personality
   flags for controlling the application's behavior are cleared (that is, a
   privileged application will not be affected by those flags). It was found
@@ -51,71 +73,40 @@ tag_insight = "The kernel packages contain the Linux kernel, the core of any Lin
   intended restrictions. Note that for default installations, no application
   shipped by Red Hat for Red Hat Enterprise Linux is made privileged via file
   system capabilities. (CVE-2012-2123, Important)
-  
+
   * It was found that the data_len parameter of the sock_alloc_send_pskb()
   function in the Linux kernel's networking implementation was not validated
   before use. A privileged guest user in a KVM guest could use this flaw to
   crash the host or, possibly, escalate their privileges on the host.
   (CVE-2012-2136, Important)
-  
+
   * A buffer overflow flaw was found in the setup_routing_entry() function in
   the KVM subsystem of the Linux kernel in the way the Message Signaled
   Interrupts (MSI) routing entry was handled. A local, unprivileged user
   could use this flaw to cause a denial of service or, possibly, escalate
   their privileges. (CVE-2012-2137, Important)
-  
+
   * A race condition was found in the Linux kernel's memory management
   subsystem in the way pmd_none_or_clear_bad(), when called with mmap_sem in
   read mode, and Transparent Huge Pages (THP) page faults interacted. A
   privileged user in a KVM guest with the ballooning functionality enabled
   could potentially use this flaw to crash the host. A local, unprivileged
-  user could use this flaw to crash the system. (CVE-2012-1179, Moderate) ... 
+  user could use this flaw to crash the system. (CVE-2012-1179, Moderate) ...
 
-  Description truncated, for more information please check the Reference URL";
-
-tag_affected = "kernel on CentOS 6";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2012-June/018694.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.881125");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
-  script_tag(name:"creation_date", value:"2012-07-30 16:16:11 +0530 (Mon, 30 Jul 2012)");
-  script_cve_id("CVE-2012-0044", "CVE-2012-1179", "CVE-2012-2119", "CVE-2012-2121",
-                "CVE-2012-2123", "CVE-2012-2136", "CVE-2012-2137", "CVE-2012-2372",
-                "CVE-2012-2373");
-  script_tag(name:"cvss_base", value:"7.2");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_xref(name: "CESA", value: "2012:0743");
-  script_name("CentOS Update for kernel CESA-2012:0743 centos6 ");
-
-  script_tag(name: "summary" , value: "Check for the Version of kernel");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_family("CentOS Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS6");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS6")
 {
@@ -174,6 +165,6 @@ if(release == "CentOS6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

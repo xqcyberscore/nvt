@@ -29,13 +29,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882988");
-  script_version("$Revision: 14050 $");
+  script_version("$Revision: 14058 $");
   script_cve_id("CVE-2018-12327");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-12-20 07:33:21 +0100 (Thu, 20 Dec 2018)");
-  script_name("CentOS Update for ntp CESA-2018:3854 centos6 ");
+  script_name("CentOS Update for ntp CESA-2018:3854 centos6");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
@@ -43,7 +43,7 @@ if(description)
   script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS6");
 
   script_xref(name:"CESA", value:"2018:3854");
-  script_xref(name:"URL" , value:"http://lists.centos.org/pipermail/centos-announce/2018-December/023135.html");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2018-December/023135.html");
 
   script_tag(name:"summary", value:"The remote host is missing an update for the 'ntp'
   package(s) announced via the CESA-2018:3854 advisory.");
@@ -57,13 +57,12 @@ and configure the ntpd service.
 
 Security Fix(es):
 
-* ntp: Stack-based buffer overflow in ntpq and ntpdc allows denial of
+  * ntp: Stack-based buffer overflow in ntpq and ntpdc allows denial of
 service or code execution (CVE-2018-12327)
 
 For more details about the security issue(s), including the impact, a CVSS
 score, and other related information, refer to the CVE page(s) listed in
-the References section.
-");
+the References section.");
 
   script_tag(name:"affected", value:"ntp on CentOS 6.");
 

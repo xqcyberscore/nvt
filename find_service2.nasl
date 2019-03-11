@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service2.nasl 13443 2019-02-04 15:15:49Z cfischer $
+# $Id: find_service2.nasl 14067 2019-03-09 17:49:36Z cfischer $
 #
 # Service Detection with 'HELP' Request
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11153");
-  script_version("$Revision: 13443 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-04 16:15:49 +0100 (Mon, 04 Feb 2019) $");
+  script_version("$Revision: 14067 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-09 18:49:36 +0100 (Sat, 09 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -60,7 +60,8 @@ if( ! get_port_state( port ) ) exit( 0 );
 if( ! service_is_unknown( port:port ) ) exit( 0 );
 
 soc = open_sock_tcp( port );
-if( ! soc ) exit( 0 );
+if( ! soc )
+  exit( 0 );
 
 send( socket:soc, data:'HELP\r\n' );
 r = recv( socket:soc, length:4096 );
@@ -83,8 +84,10 @@ if( ! r ) {
 
 k = "FindService/tcp/" + port + "/help";
 set_kb_item( name:k, value:r );
+
+rhexstr = hexstr( r );
 if( '\0' >< r )
-  set_kb_item( name:k + "Hex", value:hexstr( r ) );
+  set_kb_item( name:k + "Hex", value:rhexstr );
 
 # The full banner is (without end of line:
 # ( success ( 1 2 ( ANONYMOUS ) ( edit-pipeline ) ) )
@@ -250,7 +253,7 @@ if( "%x%s%p%nh%u%c%z%Z%t%i%e%g%f%a%C" >< r ) {
   exit( 0 );
 }
 
-if( "f6ffff10" >< hexstr( r ) && strlen( r ) < 6 ) {
+if( "f6ffff10" >< rhexstr && strlen( r ) < 6 ) {
   register_service( port:port, proto:"BackupExec" );
   log_message( port:port, data:"A BackupExec Agent is running on this port" );
   exit( 0 );
@@ -1554,6 +1557,17 @@ if( "(Thread" >< r && ( "Notify Wlan Link " >< r ||
     ( "WFSAPI" >< r && "File not found" >< r ) ) ) {
   register_service( port:port, proto:"wifiradio-setup", message:"A WiFi radio setup service seems to be running on this port." );
   log_message( port:port, data:"A WiFi radio setup service seems to be running on this port." );
+  exit( 0 );
+}
+
+# Some services are responding with an SSL/TLS alert we currently don't recognize
+# e.g. 0x00:  15 03 03 00 02 02 16                               .......
+# See also "Alert Protocol format" in http://blog.fourthbit.com/2014/12/23/traffic-analysis-of-an-ssl-slash-tls-session/
+if( rhexstr =~ "^15030[0-3]00020[1-2]..$" ||
+    rhexstr =~ "^1500000732$" || # nb: e.g. Novell Zenworks prebootserver on 998/tcp
+    rhexstr =~ "^150301$" ) {
+  register_service( port:port, proto:"ssl", message:"A service responding with an SSL/TLS alert seems to be running on this port." );
+  log_message( port:port, data:"A service responding with an SSL/TLS alert seems to be running on this port." );
   exit( 0 );
 }
 

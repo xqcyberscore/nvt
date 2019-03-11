@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for tomcat6 CESA-2011:1780 centos6 
+# CentOS Update for tomcat6 CESA-2011:1780 centos6
 #
 # Authors:
 # System Generated Check
@@ -23,8 +23,28 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "Apache Tomcat is a servlet container for the Java Servlet and JavaServer
+if(description)
+{
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2011-December/018356.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.881445");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2012-07-30 17:52:50 +0530 (Mon, 30 Jul 2012)");
+  script_cve_id("CVE-2011-1184", "CVE-2011-2204", "CVE-2011-2526", "CVE-2011-3190");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_xref(name:"CESA", value:"2011:1780");
+  script_name("CentOS Update for tomcat6 CESA-2011:1780 centos6");
+
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for tomcat6");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
+  script_family("CentOS Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS6");
+  script_tag(name:"affected", value:"tomcat6 on CentOS 6");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_tag(name:"insight", value:"Apache Tomcat is a servlet container for the Java Servlet and JavaServer
   Pages (JSP) technologies.
 
   APR (Apache Portable Runtime) as mentioned in the CVE-2011-3190 and
@@ -35,13 +55,13 @@ tag_insight = "Apache Tomcat is a servlet container for the Java Servlet and Jav
   includes fixes for users who have elected to use APR with Tomcat by taking
   the Tomcat Native library from a different product. Such a configuration is
   not supported by Red Hat, however.
-  
+
   Multiple flaws were found in the way Tomcat handled HTTP DIGEST
   authentication. These flaws weakened the Tomcat HTTP DIGEST authentication
   implementation, subjecting it to some of the weaknesses of HTTP BASIC
   authentication, for example, allowing remote attackers to perform session
   replay attacks. (CVE-2011-1184)
-  
+
   A flaw was found in the way the Coyote (org.apache.coyote.ajp.AjpProcessor)
   and APR (org.apache.coyote.ajp.AjpAprProcessor) Tomcat AJP (Apache JServ
   Protocol) connectors processed certain POST requests. An attacker could
@@ -52,12 +72,12 @@ tag_insight = "Apache Tomcat is a servlet container for the Java Servlet and Jav
   be unable to access. The JK (org.apache.jk.server.JkCoyoteHandler)
   connector is used by default when the APR libraries are not present. The JK
   connector is not affected by this flaw. (CVE-2011-3190)
-  
+
   A flaw was found in the Tomcat MemoryUserDatabase. If a runtime exception
   occurred when creating a new user with a JMX client, that user's password
   was logged to Tomcat log files. Note: By default, only administrators have
   access to such log files. (CVE-2011-2204)
-  
+
   A flaw was found in the way Tomcat handled sendfile request attributes when
   using the HTTP APR or NIO (Non-Blocking I/O) connector. A malicious web
   application running on a Tomcat instance could use this flaw to bypass
@@ -65,55 +85,26 @@ tag_insight = "Apache Tomcat is a servlet container for the Java Servlet and Jav
   be unable to access, or possibly terminate the Java Virtual Machine (JVM).
   The HTTP blocking IO (BIO) connector, which is not vulnerable to this
   issue, is used by default in Red Hat Enterprise Linux 6. (CVE-2011-2526)
-  
+
   Red Hat would like to thank the Apache Tomcat project for reporting the
   CVE-2011-2526 issue.
-  
-  This update al ... 
 
-  Description truncated, for more information please check the Reference URL";
+  This update al ...
 
-tag_affected = "tomcat6 on CentOS 6";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2011-December/018356.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.881445");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
-  script_tag(name:"creation_date", value:"2012-07-30 17:52:50 +0530 (Mon, 30 Jul 2012)");
-  script_cve_id("CVE-2011-1184", "CVE-2011-2204", "CVE-2011-2526", "CVE-2011-3190");
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_xref(name: "CESA", value: "2011:1780");
-  script_name("CentOS Update for tomcat6 CESA-2011:1780 centos6 ");
-
-  script_tag(name: "summary" , value: "Check for the Version of tomcat6");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_family("CentOS Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS6");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS6")
 {
@@ -172,6 +163,6 @@ if(release == "CentOS6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

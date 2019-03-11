@@ -23,8 +23,27 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "teTeX is an implementation of TeX. TeX takes a text file and a set of
+if(description)
+{
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2010-May/016661.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.880598");
+  script_version("$Revision: 14056 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_xref(name:"CESA", value:"2010:0400");
+  script_cve_id("CVE-2009-0146", "CVE-2009-0147", "CVE-2009-0166", "CVE-2009-0195", "CVE-2009-0791", "CVE-2009-0799", "CVE-2009-0800", "CVE-2009-1179", "CVE-2009-1180", "CVE-2009-1181", "CVE-2009-1182", "CVE-2009-1183", "CVE-2009-3608", "CVE-2009-3609", "CVE-2010-0739", "CVE-2010-0829", "CVE-2010-1440");
+  script_name("CentOS Update for tetex CESA-2010:0400 centos5 i386");
+
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for tetex");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
+  script_family("CentOS Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS5");
+  script_tag(name:"affected", value:"tetex on CentOS 5");
+  script_tag(name:"insight", value:"teTeX is an implementation of TeX. TeX takes a text file and a set of
   formatting commands as input, and creates a typesetter-independent DeVice
   Independent (DVI) file as output.
 
@@ -33,91 +52,63 @@ tag_insight = "teTeX is an implementation of TeX. TeX takes a text file and a se
   could create a malicious DVI file that would cause the dvips executable to
   crash or, potentially, execute arbitrary code. (CVE-2010-0739,
   CVE-2010-1440)
-  
+
   Multiple array index errors were found in the way teTeX converted DVI files
   into the Portable Network Graphics (PNG) format. An attacker could create a
   malicious DVI file that would cause the dvipng executable to crash.
   (CVE-2010-0829)
-  
+
   teTeX embeds a copy of Xpdf, an open source Portable Document Format (PDF)
   file viewer, to allow adding images in PDF format to the generated PDF
   documents. The following issues affect Xpdf code:
-  
+
   Multiple integer overflow flaws were found in Xpdf's JBIG2 decoder. If a
   local user generated a PDF file from a TeX document, referencing a
   specially-crafted PDF file, it would cause Xpdf to crash or, potentially,
   execute arbitrary code with the privileges of the user running pdflatex.
   (CVE-2009-0147, CVE-2009-1179)
-  
+
   Multiple integer overflow flaws were found in Xpdf. If a local user
   generated a PDF file from a TeX document, referencing a specially-crafted
   PDF file, it would cause Xpdf to crash or, potentially, execute arbitrary
   code with the privileges of the user running pdflatex. (CVE-2009-0791,
   CVE-2009-3608, CVE-2009-3609)
-  
+
   A heap-based buffer overflow flaw was found in Xpdf's JBIG2 decoder. If a
   local user generated a PDF file from a TeX document, referencing a
   specially-crafted PDF file, it would cause Xpdf to crash or, potentially,
   execute arbitrary code with the privileges of the user running pdflatex.
   (CVE-2009-0195)
-  
+
   Multiple buffer overflow flaws were found in Xpdf's JBIG2 decoder. If a
   local user generated a PDF file from a TeX document, referencing a
   specially-crafted PDF file, it would cause Xpdf to crash or, potentially,
   execute arbitrary code with the privileges of the user running pdflatex.
   (CVE-2009-0146, CVE-2009-1182)
-  
+
   Multiple flaws were found in Xpdf's JBIG2 decoder that could lead to the
   freeing of arbitrary memory. If a local user generated a PDF file from a
   TeX document, referencing a specially-crafted PDF file, it would cause
   Xpdf to crash or, potentially, execute arbitrary code with the privileges
   of the user running pdflatex. (CVE-2009-0166, CVE-2009-1180)
-  
-  Multiple input validati ... 
 
-  Description truncated, for more information please check the Reference URL";
-tag_solution = "Please Install the Updated Packages.";
+  Multiple input validati ...
 
-tag_affected = "tetex on CentOS 5";
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2010-May/016661.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.880598");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
-  script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
-  script_tag(name:"cvss_base", value:"9.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_xref(name: "CESA", value: "2010:0400");
-  script_cve_id("CVE-2009-0146", "CVE-2009-0147", "CVE-2009-0166", "CVE-2009-0195", "CVE-2009-0791", "CVE-2009-0799", "CVE-2009-0800", "CVE-2009-1179", "CVE-2009-1180", "CVE-2009-1181", "CVE-2009-1182", "CVE-2009-1183", "CVE-2009-3608", "CVE-2009-3609", "CVE-2010-0739", "CVE-2010-0829", "CVE-2010-1440");
-  script_name("CentOS Update for tetex CESA-2010:0400 centos5 i386");
-
-  script_tag(name:"summary", value:"Check for the Version of tetex");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_family("CentOS Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS5");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  Description truncated, please see the referenced URL(s) for more information.");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS5")
 {
@@ -164,6 +155,6 @@ if(release == "CentOS5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

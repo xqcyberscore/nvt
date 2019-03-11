@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_indusoft_web_studio_auth_bypass_vuln_nov17.nasl 12467 2018-11-21 14:04:59Z cfischer $
+# $Id: gb_indusoft_web_studio_auth_bypass_vuln_nov17.nasl 14057 2019-03-08 13:02:00Z jschulte $
 #
 # InduSoft Web Studio Authentication Bypass Vulnerability Nov17 (Windows)
 #
@@ -29,19 +29,19 @@ CPE = "cpe:/a:schneider_electric:indusoft_web_studio";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811889");
-  script_version("$Revision: 12467 $");
+  script_version("$Revision: 14057 $");
   script_cve_id("CVE-2017-13997");
   script_bugtraq_id(100952);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-21 15:04:59 +0100 (Wed, 21 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:02:00 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-11-03 17:54:57 +0530 (Fri, 03 Nov 2017)");
   script_name("InduSoft Web Studio Authentication Bypass Vulnerability Nov17 (Windows)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_indusoft_web_studio_detect_win.nasl");
-  script_mandatory_keys("InduSoft/WebStudio/Win/Ver");
+  script_dependencies("gb_schneider_indusoft_consolidation.nasl");
+  script_mandatory_keys("schneider_indusoft/installed");
 
   script_xref(name:"URL", value:"https://ics-cert.us-cert.gov/advisories/ICSA-17-264-01");
   script_xref(name:"URL", value:"http://download.indusoft.com/80.2.1/IWS80.2.1.zip");
@@ -79,10 +79,9 @@ if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE)) exit(0
 studioVer = infos['version'];
 path = infos['location'];
 
-# nb: Version 8.0 Service Pack 2 == 80.2.0
-if(version_is_less_equal(version:studioVer, test_version:"80.2.0"))
+if(version_is_less_equal(version:studioVer, test_version:"8.0.2.0"))
 {
-  report = report_fixed_ver( installed_version:studioVer, fixed_version:"80.2.1", install_path:path );
+  report = report_fixed_ver( installed_version:studioVer, fixed_version:"8.0.2.1", install_path:path );
   security_message( data:report);
   exit(0);
 }

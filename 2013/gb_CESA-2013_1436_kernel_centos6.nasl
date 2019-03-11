@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for kernel CESA-2013:1436 centos6 
+# CentOS Update for kernel CESA-2013:1436 centos6
 #
 # Authors:
 # System Generated Check
@@ -23,28 +23,27 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.881803");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14056 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-10-18 09:14:44 +0530 (Fri, 18 Oct 2013)");
   script_cve_id("CVE-2013-4162", "CVE-2013-4299");
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
-  script_name("CentOS Update for kernel CESA-2013:1436 centos6 ");
+  script_name("CentOS Update for kernel CESA-2013:1436 centos6");
 
-  tag_insight = "The kernel packages contain the Linux kernel, the core of any Linux
+  script_tag(name:"affected", value:"kernel on CentOS 6");
+  script_tag(name:"insight", value:"The kernel packages contain the Linux kernel, the core of any Linux
 operating system.
 
-* A flaw was found in the way the Linux kernel's TCP/IP protocol suite
+  * A flaw was found in the way the Linux kernel's TCP/IP protocol suite
 implementation handled IPv6 sockets that used the UDP_CORK option. A local,
 unprivileged user could use this flaw to cause a denial of
 service. (CVE-2013-4162, Moderate)
 
-* An information leak flaw was found in the way Linux kernel's device
+  * An information leak flaw was found in the way Linux kernel's device
 mapper subsystem, under certain conditions, interpreted data written to
 snapshot block devices. An attacker could use this flaw to read data from
 disk blocks in free space, which are normally inaccessible. (CVE-2013-4299,
@@ -59,22 +58,13 @@ References section.
 
 All kernel users are advised to upgrade to these updated packages, which
 contain backported patches to correct these issues. The system must be
-rebooted for this update to take effect.
-";
-
-  tag_affected = "kernel on CentOS 6";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+rebooted for this update to take effect.");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "CESA", value: "2013:1436");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2013-October/019976.html");
-  script_tag(name:"summary", value:"Check for the Version of kernel");
+  script_xref(name:"CESA", value:"2013:1436");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-October/019976.html");
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for kernel");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
@@ -83,15 +73,14 @@ rebooted for this update to take effect.
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS6")
 {
@@ -150,6 +139,6 @@ if(release == "CentOS6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

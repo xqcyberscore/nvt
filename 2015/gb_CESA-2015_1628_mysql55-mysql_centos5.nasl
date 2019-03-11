@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for mysql55-mysql CESA-2015:1628 centos5 
+# CentOS Update for mysql55-mysql CESA-2015:1628 centos5
 #
 # Authors:
 # System Generated Check
@@ -26,7 +26,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882250");
-  script_version("$Revision: 14050 $");
+  script_version("$Revision: 14058 $");
   script_cve_id("CVE-2014-6568", "CVE-2015-0374", "CVE-2015-0381", "CVE-2015-0382",
                 "CVE-2015-0391", "CVE-2015-0411", "CVE-2015-0432", "CVE-2015-0433",
                 "CVE-2015-0441", "CVE-2015-0499", "CVE-2015-0501", "CVE-2015-0505",
@@ -35,13 +35,13 @@ if(description)
                 "CVE-2015-4752", "CVE-2015-4757");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-08-18 06:49:53 +0200 (Tue, 18 Aug 2015)");
   script_tag(name:"qod_type", value:"package");
-  script_name("CentOS Update for mysql55-mysql CESA-2015:1628 centos5 ");
-  script_tag(name: "summary", value: "Check the version of mysql55-mysql");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "MySQL is a multi-user, multi-threaded SQL database server. It consists of
+  script_name("CentOS Update for mysql55-mysql CESA-2015:1628 centos5");
+  script_tag(name:"summary", value:"Check the version of mysql55-mysql");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"MySQL is a multi-user, multi-threaded SQL database server. It consists of
 the MySQL server daemon (mysqld) and many client programs and libraries.
 
 This update fixes several vulnerabilities in the MySQL database server.
@@ -59,12 +59,11 @@ changes.
 
 All MySQL users should upgrade to these updated packages, which correct
 these issues. After installing this update, the MySQL server daemon
-(mysqld) will be restarted automatically.
-");
-  script_tag(name: "affected", value: "mysql55-mysql on CentOS 5");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "CESA", value: "2015:1628");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2015-August/021331.html");
+(mysqld) will be restarted automatically.");
+  script_tag(name:"affected", value:"mysql55-mysql on CentOS 5");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_xref(name:"CESA", value:"2015:1628");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2015-August/021331.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -77,12 +76,11 @@ these issues. After installing this update, the MySQL server daemon
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS5")
 {
@@ -123,6 +121,6 @@ if(release == "CentOS5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

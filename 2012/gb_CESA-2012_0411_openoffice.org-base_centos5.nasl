@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for openoffice.org-base CESA-2012:0411 centos5 
+# CentOS Update for openoffice.org-base CESA-2012:0411 centos5
 #
 # Authors:
 # System Generated Check
@@ -23,8 +23,28 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "OpenOffice.org is an office productivity suite that includes desktop
+if(description)
+{
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-March/018519.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.881155");
+  script_version("$Revision: 14058 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2012-07-30 16:24:26 +0530 (Mon, 30 Jul 2012)");
+  script_cve_id("CVE-2012-0037");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_xref(name:"CESA", value:"2012:0411");
+  script_name("CentOS Update for openoffice.org-base CESA-2012:0411 centos5");
+
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for openoffice.org-base");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
+  script_family("CentOS Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS5");
+  script_tag(name:"affected", value:"openoffice.org-base on CentOS 5");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_tag(name:"insight", value:"OpenOffice.org is an office productivity suite that includes desktop
   applications, such as a word processor, spreadsheet application,
   presentation manager, formula editor, and a drawing program. OpenOffice.org
   embeds a copy of Raptor, which provides parsers for Resource Description
@@ -36,58 +56,29 @@ tag_insight = "OpenOffice.org is an office productivity suite that includes desk
   possibly allow a remote attacker to obtain a copy of an arbitrary local
   file that the user running OpenOffice.org had access to. A bug in the way
   Raptor handled external entities could cause OpenOffice.org to crash or,
-  possibly, execute arbitrary code with the privileges of the user running 
+  possibly, execute arbitrary code with the privileges of the user running
   OpenOffice.org. (CVE-2012-0037)
-  
+
   Red Hat would like to thank Timothy D. Morgan of VSR for reporting this
   issue.
-  
+
   All OpenOffice.org users are advised to upgrade to these updated packages,
   which contain backported patches to correct this issue. All running
   instances of OpenOffice.org applications must be restarted for this update
-  to take effect.";
-
-tag_affected = "openoffice.org-base on CentOS 5";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2012-March/018519.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.881155");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
-  script_tag(name:"creation_date", value:"2012-07-30 16:24:26 +0530 (Mon, 30 Jul 2012)");
-  script_cve_id("CVE-2012-0037");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_xref(name: "CESA", value: "2012:0411");
-  script_name("CentOS Update for openoffice.org-base CESA-2012:0411 centos5 ");
-
-  script_tag(name: "summary" , value: "Check for the Version of openoffice.org-base");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_family("CentOS Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS5");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  to take effect.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS5")
 {
@@ -560,6 +551,6 @@ if(release == "CentOS5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

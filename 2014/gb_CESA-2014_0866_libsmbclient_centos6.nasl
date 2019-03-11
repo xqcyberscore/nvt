@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# CentOS Update for libsmbclient CESA-2014:0866 centos6 
+# CentOS Update for libsmbclient CESA-2014:0866 centos6
 #
 # Authors:
 # System Generated Check
@@ -23,20 +23,19 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.881959");
-  script_version("$Revision: 14050 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:08:09 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14056 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-07-15 15:39:14 +0530 (Tue, 15 Jul 2014)");
   script_cve_id("CVE-2014-0244", "CVE-2014-3493");
   script_tag(name:"cvss_base", value:"3.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:P");
-  script_name("CentOS Update for libsmbclient CESA-2014:0866 centos6 ");
+  script_name("CentOS Update for libsmbclient CESA-2014:0866 centos6");
 
-  tag_insight = "Samba is an open-source implementation of the Server Message
+  script_tag(name:"affected", value:"libsmbclient on CentOS 6");
+  script_tag(name:"insight", value:"Samba is an open-source implementation of the Server Message
 Block (SMB) or Common Internet File System (CIFS) protocol, which allows
 PC-compatible machines to share files, printers, and other information.
 
@@ -59,22 +58,13 @@ CVE-2014-3493.
 
 All Samba users are advised to upgrade to these updated packages, which
 contain backported patches to correct these issues. After installing this
-update, the smb service will be restarted automatically.
-";
-
-  tag_affected = "libsmbclient on CentOS 6";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+update, the smb service will be restarted automatically.");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "CESA", value: "2014:0866");
-  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2014-July/020405.html");
-  script_tag(name:"summary", value:"Check for the Version of libsmbclient");
+  script_xref(name:"CESA", value:"2014:0866");
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2014-July/020405.html");
+  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for libsmbclient");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
@@ -83,15 +73,14 @@ update, the smb service will be restarted automatically.
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "CentOS6")
 {
@@ -168,6 +157,6 @@ if(release == "CentOS6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
