@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2009-March/015702.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880799");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -47,8 +47,8 @@ if(description)
   network management.
 
   It was discovered that the snmpd daemon did not use TCP wrappers correctly,
-  causing network hosts access restrictions defined in &quot;/etc/hosts.allow&quot; and
-  &quot;/etc/hosts.deny&quot; to not be honored. A remote attacker could use this flaw
+  causing network hosts access restrictions defined in '/etc/hosts.allow' and
+  '/etc/hosts.deny' to not be honored. A remote attacker could use this flaw
   to bypass intended access restrictions. (CVE-2008-6123)
 
   This issue only affected configurations where hosts.allow and hosts.deny

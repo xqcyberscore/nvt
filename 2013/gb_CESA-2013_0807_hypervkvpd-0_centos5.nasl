@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.881734");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-05-17 09:53:48 +0530 (Fri, 17 May 2013)");
   script_cve_id("CVE-2012-5532");
   script_tag(name:"cvss_base", value:"4.9");
@@ -61,7 +61,7 @@ if(description)
 
   * The hypervkvpd daemon did not close the file descriptors for pool files
   when they were updated. This could eventually lead to hypervkvpd crashing
-  with a &quot;KVP: Failed to open file, pool: 1&quot; error after consuming all
+  with a 'KVP: Failed to open file, pool: 1' error after consuming all
   available file descriptors. With this update, the file descriptors are
   closed, correcting this issue. (BZ#953502)
 

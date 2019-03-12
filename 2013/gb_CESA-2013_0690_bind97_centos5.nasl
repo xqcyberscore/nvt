@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-March/019671.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881701");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-04-02 12:26:49 +0530 (Tue, 02 Apr 2013)");
   script_cve_id("CVE-2013-2266");
   script_tag(name:"cvss_base", value:"7.8");
@@ -45,9 +45,9 @@ if(description)
   script_tag(name:"affected", value:"bind97 on CentOS 5");
   script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"insight", value:"The Berkeley Internet Name Domain (BIND) is an implementation of the
-  Domain Name System (DNS) protocols. BIND includes a DNS server (named); a
+  Domain Name System (DNS) protocols. BIND includes a DNS server (named), a
   resolver library (routines for applications to use when interfacing with
-  DNS); and tools for verifying that the DNS server is operating correctly.
+  DNS), and tools for verifying that the DNS server is operating correctly.
 
   A denial of service flaw was found in the libdns library. A remote attacker
   could use this flaw to send a specially-crafted DNS query to named that,

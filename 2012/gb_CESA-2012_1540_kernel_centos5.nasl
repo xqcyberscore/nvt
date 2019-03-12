@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-December/019024.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881547");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-12-06 10:24:49 +0530 (Thu, 06 Dec 2012)");
   script_cve_id("CVE-2012-2372", "CVE-2012-3552", "CVE-2012-4508", "CVE-2012-4535", "CVE-2012-4537", "CVE-2012-5513");
   script_tag(name:"cvss_base", value:"6.9");
@@ -62,7 +62,7 @@ if(description)
   could allow a local, unprivileged user to cause a denial of service.
   (CVE-2012-2372, Moderate)
 
-  * A race condition in the way access to inet-&gt;opt ip_options was
+  * A race condition in the way access to inet->opt ip_options was
   synchronized in the Linux kernel's TCP/IP protocol suite implementation.
   Depending on the network facing applications running on the system, a
   remote attacker could possibly trigger this flaw to cause a denial of
@@ -81,8 +81,8 @@ if(description)
   fully-virtualized guest user to crash the hypervisor. (CVE-2012-4537,
   Moderate)
 
-  Red Hat would like to thank Theodore Ts'o for reporting CVE-2012-4508; the
-  Xen project for reporting CVE-2012-5513, CVE-2012-4535, and CVE-2012-4537;
+  Red Hat would like to thank Theodore Ts'o for reporting CVE-2012-4508, the
+  Xen project for reporting CVE-2012-5513, CVE-2012-4535, and CVE-2012-4537,
   and Hafid Lin for reporting CVE-2012-3552. Upstream acknowledges Dmitry
   Monakhov as the original reporter of CVE-2012-4508. CVE-2012-2372 was
   discovered by Li Honggang of Red Hat.

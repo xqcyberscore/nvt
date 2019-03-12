@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-July/018717.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881163");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-30 16:27:19 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2012-2141");
   script_tag(name:"cvss_base", value:"3.5");
@@ -54,8 +54,8 @@ if(description)
   An array index error, leading to an out-of-bounds buffer read flaw, was
   found in the way the net-snmp agent looked up entries in the extension
   table. A remote attacker with read privileges to a Management Information
-  Base (MIB) subtree handled by the &quot;extend&quot; directive (in
-  &quot;/etc/snmp/snmpd.conf&quot;) could use this flaw to crash snmpd via a crafted
+  Base (MIB) subtree handled by the 'extend' directive (in
+  '/etc/snmp/snmpd.conf') could use this flaw to crash snmpd via a crafted
   SNMP GET request. (CVE-2012-2141)
 
   These updated net-snmp packages also include numerous bug fixes. Space

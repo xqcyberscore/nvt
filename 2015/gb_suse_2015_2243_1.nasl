@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_2243_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_suse_2015_2243_1.nasl 14110 2019-03-12 09:28:23Z cfischer $
 #
 # SuSE Update for Security openSUSE-SU-2015:2243-1 (Security)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851141");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14110 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 10:28:23 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-12-11 05:50:43 +0100 (Fri, 11 Dec 2015)");
   script_cve_id("CVE-2015-0286", "CVE-2015-0288", "CVE-2015-1789", "CVE-2015-1793",
                 "CVE-2015-3152", "CVE-2015-4730", "CVE-2015-4766", "CVE-2015-4792",
@@ -55,8 +55,7 @@ if(description)
   CVE-2015-4864, CVE-2015-4866, CVE-2015-4870, CVE-2015-4879, CVE-2015-4890,
   CVE-2015-4895, CVE-2015-4904, CVE-2015-4905, CVE-2015-4910, CVE-2015-4913
 
-  Details on these and other changes can be found at:
-  'http://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-27.html'
+  Details on these and other changes can be found at the linked vendor news.
 
   The following security relevant changes are included additionally:
 
@@ -75,6 +74,9 @@ if(description)
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=(openSUSE13\.2|openSUSE13\.1)");
+
+  script_xref(name:"URL", value:"http://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-27.html");
+
   exit(0);
 }
 

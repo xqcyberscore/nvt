@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-June/018703.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881144");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-30 16:21:42 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2010-2950", "CVE-2011-4153", "CVE-2012-0057", "CVE-2012-0789",
                 "CVE-2012-1172", "CVE-2012-2143", "CVE-2012-2336", "CVE-2012-2386",
@@ -56,7 +56,7 @@ if(description)
   Transformations (XSLT) content. (CVE-2012-0057)
 
   Note: This update disables file writing by default. A new PHP configuration
-  directive, &quot;xsl.security_prefs&quot;, can be used to enable file writing in
+  directive, 'xsl.security_prefs', can be used to enable file writing in
   XSLT.
 
   A flaw was found in the way PHP validated file names in file upload

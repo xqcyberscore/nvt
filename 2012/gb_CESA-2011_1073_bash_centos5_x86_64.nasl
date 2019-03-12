@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2011-September/017767.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881347");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-30 17:33:34 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2008-5374");
   script_tag(name:"cvss_base", value:"6.9");
@@ -54,7 +54,7 @@ if(description)
 
   This update fixes the following bugs:
 
-  * When using the source builtin at location &quot;.&quot;, occasionally, bash
+  * When using the source builtin at location '.', occasionally, bash
   opted to preserve internal consistency and abort scripts. This caused
   bash to abort scripts that assigned values to read-only variables.
   This is now fixed to ensure that such scripts are now executed as
@@ -62,14 +62,14 @@ if(description)
 
   * When the tab key was pressed for auto-completion options for the typed
   text, the cursor moved to an unexpected position on a previous line if
-  the prompt contained characters that cannot be viewed and a &quot;\]&quot;. This
+  the prompt contained characters that cannot be viewed and a '\]'. This
   is now fixed to retain the cursor at the expected position at the end of
   the target line after autocomplete options correctly display. (BZ#463880)
 
   * Bash attempted to interpret the NOBITS .dynamic section of the ELF
-  header. This resulted in a &quot;^D: bad ELF interpreter: No such
-  file or directory&quot; message. This is fixed to ensure that the invalid
-  &quot;^D&quot; does not appear in the error message. (BZ#484809)
+  header. This resulted in a '^D: bad ELF interpreter: No such
+  file or directory' message. This is fixed to ensure that the invalid
+  '^D' does not appear in the error message. (BZ#484809)
 
   * The $RANDOM variable in Bash carried over values from a previous
   execution for later jobs. This is fixed and the $RANDOM variable
@@ -80,18 +80,18 @@ if(description)
   bash's source builtin correctly parses shell script null characters.
   (BZ#503701)
 
-  * The bash manual page for &quot;trap&quot; did not mention that signals ignored upon
+  * The bash manual page for 'trap' did not mention that signals ignored upon
   entry cannot be listed later. The manual page was updated for this update
-  and now specifically notes that &quot;Signals ignored upon entry to the shell
-  cannot be trapped, reset or listed&quot;. (BZ#504904)
+  and now specifically notes that 'Signals ignored upon entry to the shell
+  cannot be trapped, reset or listed'. (BZ#504904)
 
   * Bash's readline incorrectly displayed additional text when resizing
   the terminal window when text spanned more than one line, which caused
   incorrect display output. This is now fixed to ensure that text in more
   than one line in a resized window displays as expected. (BZ#525474)
 
-  * Previously, bash incorrectly displayed &quot;Broken pipe&quot; messages for
-  builtins like &quot;echo&quot; and &quot;printf&quot; when output did not succeed due to
+  * Previously, bash incorrectly displayed 'Broken pipe' messages for
+  builtins like 'echo' and 'printf' when output did not succeed due to
   EPIPE. This is fixed t ...
 
   Description truncated, please see the referenced URL(s) for more information.");

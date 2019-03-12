@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2009-August/016109.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880869");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
@@ -66,7 +66,7 @@ if(description)
   * in the dlm code, a socket was allocated in tcp_connect_to_sock(), but was
   not freed in the error exit path. This bug led to a memory leak and an
   unresponsive system. A reported case of this bug occurred after running
-  &quot;cman_tool kill -n [nodename]&quot;. (BZ#515432)
+  'cman_tool kill -n [nodename]'. (BZ#515432)
 
   Users should upgrade to these updated packages, which contain backported
   patches to correct these issues. The system must be rebooted for this

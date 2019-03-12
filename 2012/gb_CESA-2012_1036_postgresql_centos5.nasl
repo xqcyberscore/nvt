@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-June/018698.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881195");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-30 16:40:08 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2012-2143");
   script_tag(name:"cvss_base", value:"4.3");
@@ -57,7 +57,7 @@ if(description)
   (CVE-2012-2143)
 
   Note: With this update, the rest of the string is properly included in the
-  DES hash; therefore, any previously stored password values that are
+  DES hash. Therefore, any previously stored password values that are
   affected by this issue will no longer match. In such cases, it will be
   necessary for those stored password hashes to be updated.
 

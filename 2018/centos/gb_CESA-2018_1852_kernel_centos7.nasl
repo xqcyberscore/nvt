@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2018_1852_kernel_centos7.nasl 14058 2019-03-08 13:25:52Z cfischer $
+# $Id: gb_CESA-2018_1852_kernel_centos7.nasl 14095 2019-03-11 13:54:56Z cfischer $
 #
 # CentOS Update for kernel CESA-2018:1852 centos7
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882912");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14095 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 14:54:56 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-06-17 05:52:38 +0200 (Sun, 17 Jun 2018)");
   script_cve_id("CVE-2018-3665");
   script_tag(name:"cvss_base", value:"4.7");
@@ -56,13 +56,11 @@ issue.
 4. Solution:
 
 For details on how to apply this update, which includes the changes
-described in this advisory, refer to:
-
-<a  rel='nofollow' href='https://access.redhat.com/articles/11258'>https://access.redhat.com/articles/11258</a>
+described in this advisory, refer to the linked article.
 
 The system must be rebooted for this update to take effect.
 
-5. Bugs fixed (<a  rel='nofollow' href='https://bugzilla.redhat.com/'>https://bugzilla.redhat.com/</a>):
+5. Bugs fixed:
 
 1585011 - CVE-2018-3665 Kernel: FPU state information leakage via lazy FPU restore
 
@@ -125,6 +123,7 @@ kernel-debug-debuginfo-3.10.0-862.3 ...
 
   script_xref(name:"CESA", value:"2018:1852");
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2018-June/022923.html");
+  script_xref(name:"URL", value:"https://access.redhat.com/articles/11258");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");

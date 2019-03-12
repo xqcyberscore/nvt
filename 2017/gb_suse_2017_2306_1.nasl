@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_2306_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_suse_2017_2306_1.nasl 14110 2019-03-12 09:28:23Z cfischer $
 #
 # SuSE Update for postgresql93 openSUSE-SU-2017:2306-1 (postgresql93)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851603");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14110 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 10:28:23 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-08-31 07:46:26 +0200 (Thu, 31 Aug 2017)");
   script_cve_id("CVE-2017-7546", "CVE-2017-7547", "CVE-2017-7548");
   script_tag(name:"cvss_base", value:"7.5");
@@ -49,9 +49,7 @@ if(description)
 
   * CVE-2017-7548: lo_put() function ignores ACLs. (bsc#1053259)
 
-  The changelog for the release is here:
-
-  'https://www.postgresql.org/docs/9.3/static/release-9-3-18.html'
+  The changelog for the release is linked in the references.
 
   This update was imported from the SUSE:SLE-12:Update update project.");
   script_tag(name:"affected", value:"postgresql93 on openSUSE Leap 42.3, openSUSE Leap 42.2");
@@ -64,6 +62,9 @@ if(description)
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=(openSUSELeap42\.2|openSUSELeap42\.3)");
+
+  script_xref(name:"URL", value:"https://www.postgresql.org/docs/9.3/static/release-9-3-18.html");
+
   exit(0);
 }
 

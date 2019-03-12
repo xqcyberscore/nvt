@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_1086_3.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_suse_2015_1086_3.nasl 14110 2019-03-12 09:28:23Z cfischer $
 #
 # SuSE Update for Java SUSE-SU-2015:1086-3 (Java)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851032");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14110 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 10:28:23 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-10-16 18:22:11 +0200 (Fri, 16 Oct 2015)");
   script_cve_id("CVE-2015-0138", "CVE-2015-0192", "CVE-2015-0204", "CVE-2015-0458", "CVE-2015-0459", "CVE-2015-0469", "CVE-2015-0477", "CVE-2015-0478", "CVE-2015-0480", "CVE-2015-0488", "CVE-2015-0491", "CVE-2015-1914", "CVE-2015-2808");
   script_tag(name:"cvss_base", value:"10.0");
@@ -40,11 +40,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"IBM Java 1.7.0 was updated to SR9 fixing security issues and bugs.
 
-  Tabulated information can be found on:
-  http://www.ibm.com/developerworks/java/jdk/alerts/#IBM_Security_Update_May_
-  2015
-   http://www.ibm.com/developerworks/java/jdk/alerts/#IBM_Security_Update_May
-  _2015
+  Tabulated information can be found on the linked alert.
 
   CVE-2015-0192 CVE-2015-2808 CVE-2015-1914 CVE-2015-0138 CVE-2015-0491
   CVE-2015-0458 CVE-2015-0459 CVE-2015-0469 CVE-2015-0480 CVE-2015-0488
@@ -58,6 +54,9 @@ if(description)
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=SLES11\.0SP2");
+
+  script_xref(name:"URL", value:"http://www.ibm.com/developerworks/java/jdk/alerts/#IBM_Security_Update_May_2015");
+
   exit(0);
 }
 

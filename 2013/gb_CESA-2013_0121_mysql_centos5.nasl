@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-January/019160.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881559");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-01-21 09:38:02 +0530 (Mon, 21 Jan 2013)");
   script_cve_id("CVE-2012-4452", "CVE-2009-4030");
   script_tag(name:"cvss_base", value:"4.4");
@@ -49,7 +49,7 @@ if(description)
 
   It was found that the fix for the CVE-2009-4030 issue, a flaw in the way
   MySQL checked the paths used as arguments for the DATA DIRECTORY and INDEX
-  DIRECTORY directives when the &quot;datadir&quot; option was configured with a
+  DIRECTORY directives when the 'datadir' option was configured with a
   relative path, was incorrectly removed when the mysql packages in Red Hat
   Enterprise Linux 5 were updated to version 5.0.95 via RHSA-2012:0127. An
   authenticated attacker could use this flaw to bypass the restriction
@@ -58,8 +58,8 @@ if(description)
   for CVE-2009-4030. (CVE-2012-4452)
 
   Note: If the use of the DATA DIRECTORY and INDEX DIRECTORY directives were
-  disabled as described in RHSA-2010:0109 (by adding &quot;symbolic-links=0&quot; to
-  the &quot;[mysqld]&quot; section of the &quot;my.cnf&quot; configuration file), users were not
+  disabled as described in RHSA-2010:0109 (by adding 'symbolic-links=0' to
+  the '[mysqld]' section of the 'my.cnf' configuration file), users were not
   vulnerable to this issue.
 
   This issue was discovered by Karel Volný of the Red Hat Quality Engineering
@@ -69,7 +69,7 @@ if(description)
 
   * Prior to this update, the log file path in the logrotate script did not
   behave as expected. As a consequence, the logrotate function failed to
-  rotate the &quot;/var/log/mysqld.log&quot; file. This update modifies the logrotate
+  rotate the '/var/log/mysqld.log' file. This update modifies the logrotate
   script to allow rotating the mysqld.log file. (BZ#647223)
 
   * Prior to this update, the mysqld daemon could fail when using the EXPLAIN
@@ -81,7 +81,7 @@ if(description)
   update modifies the init script to report the status of the mysqld server
   as expected. (BZ#703476)
 
-  * Prior to this update, the &quot;--enable-profiling&quot; option was by default
+  * Prior to this update, the '--enable-profiling' option was by default
   disabled. This update enables the profiling feature. (BZ#806365)
 
   All MySQL users are advised to upgrade to these updated packages, which

@@ -25,10 +25,9 @@
 
 if(description)
 {
-  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-February/018429.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881185");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14095 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 14:54:56 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-30 16:36:40 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2012-0075", "CVE-2012-0087", "CVE-2012-0101", "CVE-2012-0102",
                 "CVE-2012-0114", "CVE-2012-0484", "CVE-2012-0490");
@@ -36,6 +35,9 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
   script_xref(name:"CESA", value:"2012:0127");
   script_name("CentOS Update for mysql CESA-2012:0127 centos5");
+
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-February/018429.html");
+  script_xref(name:"URL", value:"http://dev.mysql.com/doc/refman/5.0/en/news-5-0-x.html");
 
   script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for mysql");
   script_category(ACT_GATHER_INFO);
@@ -54,10 +56,8 @@ if(description)
   CVE-2012-0087, CVE-2012-0101, CVE-2012-0102, CVE-2012-0114, CVE-2012-0484,
   CVE-2012-0490)
 
-  These updated packages upgrade MySQL to version 5.0.95. Refer to the MySQL
-  release notes for a full list of changes:
-
-  <a  rel= &qt nofollow &qt  href= &qt http://dev.mysql.com/doc/refman/5.0/en/news-5-0-x.html &qt >http://dev.mysql.com/doc/refman/5.0/en/news-5-0-x.html</a>
+  These updated packages upgrade MySQL to version 5.0.95. Refer to the linked MySQL
+  release notes for a full list of changes.
 
   All MySQL users should upgrade to these updated packages, which correct
   these issues. After installing this update, the MySQL server daemon

@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-May/018612.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881196");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-30 16:40:12 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2012-0247", "CVE-2012-0248", "CVE-2012-0260");
   script_tag(name:"cvss_base", value:"9.3");
@@ -73,8 +73,8 @@ if(description)
 
   * The fix for Red Hat Bugzilla bug 694922, provided by the RHSA-2012:0301
   ImageMagick update, introduced a regression. Attempting to use the
-  &quot;convert&quot; utility to convert a PostScript document could fail with a
-  &quot;/undefinedfilename&quot; error. With this update, conversion works as expected.
+  'convert' utility to convert a PostScript document could fail with a
+  '/undefinedfilename' error. With this update, conversion works as expected.
   (BZ#804546)
 
   Users of ImageMagick are advised to upgrade to these updated packages,

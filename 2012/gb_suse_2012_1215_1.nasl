@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_1215_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_suse_2012_1215_1.nasl 14110 2019-03-12 09:28:23Z cfischer $
 #
 # SuSE Update for chromium openSUSE-SU-2012:1215-1 (chromium)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850343");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14110 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 10:28:23 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-12-13 17:02:07 +0530 (Thu, 13 Dec 2012)");
   script_cve_id("CVE-2012-2865", "CVE-2012-2866", "CVE-2012-2867", "CVE-2012-2868",
                 "CVE-2012-2869", "CVE-2012-2870", "CVE-2012-2871", "CVE-2012-2872");
@@ -49,11 +49,12 @@ if(description)
   script_tag(name:"insight", value:"Chromium was updated to 21.0.1180.88 to fix various bugs
   and security issues. Security fixes and rewards:
 
-  Please see the Chromium security
-  http://sites.google.com/a/chromium.org/dev/Home/chromiu &qt >http://sites.google.com/a/chromium.org/dev/Home/chromiu
-  m-security&gt;for more detail. Note that the referenced bugs
+  Please see the referenced Chromium security advisory
+  for more detail. Note that the referenced bugs
   may be kept private until a majority of our users are up to
   date with the fix.");
+
+  script_xref(name:"URL", value:"http://sites.google.com/a/chromium.org/dev/Home/chromium-security");
 
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");

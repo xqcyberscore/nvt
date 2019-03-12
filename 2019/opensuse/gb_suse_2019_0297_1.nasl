@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852333");
-  script_version("$Revision: 14091 $");
+  script_version("$Revision: 14107 $");
   script_cve_id("CVE-2016-1238");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-11 10:24:52 +0100 (Mon, 11 Mar 2019) $");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 08:31:46 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-03-07 04:12:14 +0100 (Thu, 07 Mar 2019)");
   script_name("SuSE Update for amavisd-new openSUSE-SU-2019:0297-1 (amavisd-new)");
   script_category(ACT_GATHER_INFO);

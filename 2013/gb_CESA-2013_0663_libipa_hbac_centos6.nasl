@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-March/019657.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881693");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-03-22 10:40:33 +0530 (Fri, 22 Mar 2013)");
   script_cve_id("CVE-2013-0287");
   script_tag(name:"cvss_base", value:"4.9");
@@ -52,8 +52,8 @@ if(description)
 
   When SSSD was configured as a Microsoft Active Directory client by using
   the new Active Directory provider (introduced in RHSA-2013:0508), the
-  Simple Access Provider (&quot;access_provider = simple in
-  /etc/sssd/sssd.conf&quot;) did not handle access control correctly. If any
+  Simple Access Provider ('access_provider = simple in
+  /etc/sssd/sssd.conf') did not handle access control correctly. If any
   groups were specified with the simple_deny_groups option (in sssd.conf),
   all users were permitted access. (CVE-2013-0287)
 
@@ -70,7 +70,7 @@ if(description)
 
   * The pwd_expiration_warning should have been set for seven days, but
   instead it was set to zero for Kerberos. This incorrect zero setting
-  returned the &quot;always display warning if the server sends one&quot; error message
+  returned the 'always display warning if the server sends one' error message
   and users experienced problems in environments like IPA or Active
   Directory. Currently, the value setting for Kerberos is modified and this
   issue no longer occurs. (BZ#914671)

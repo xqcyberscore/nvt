@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2010-August/016896.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880654");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:S/C:C/I:N/A:N");
@@ -66,7 +66,7 @@ if(description)
   * a Linux software bridge assumes the MAC address of the enslaved interface
   with the numerically lowest MAC address. When the bridge changes its MAC
   address, for a period of time it does not relay packets across network
-  segments, resulting in a temporary network &quot;blackout&quot;. The bridge should
+  segments, resulting in a temporary network 'blackout'. The bridge should
   thus avoid changing its MAC address in order not to disrupt network
   communications.
 
@@ -88,7 +88,7 @@ if(description)
 
   * the xm and virsh management user interfaces for virtual guests can be
   called on the command line to list the number of active guests. However,
-  under certain circumstances, running the &quot;virsh list&quot; command resulted in
+  under certain circumstances, running the 'virsh list' command resulted in
   virsh not listing all of the virtual guests that were active (that is,
   running)  ...
 

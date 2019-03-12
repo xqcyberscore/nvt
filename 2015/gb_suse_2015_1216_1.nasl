@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_1216_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_suse_2015_1216_1.nasl 14110 2019-03-12 09:28:23Z cfischer $
 #
 # SuSE Update for MariaDB openSUSE-SU-2015:1216-1 (MariaDB)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850663");
-  script_version("$Revision: 12381 $");
+  script_version("$Revision: 14110 $");
   script_cve_id("CVE-2014-6464", "CVE-2014-6469", "CVE-2014-6491", "CVE-2014-6494",
                 "CVE-2014-6496", "CVE-2014-6500", "CVE-2014-6507", "CVE-2014-6555",
                 "CVE-2014-6559", "CVE-2014-6568", "CVE-2014-8964", "CVE-2015-0374",
@@ -37,7 +37,7 @@ if(description)
                 "CVE-2015-2571", "CVE-2015-2573", "CVE-2015-3152", "CVE-2015-4000");
   script_tag(name:"cvss_base", value:"8.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 10:28:23 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-07-10 06:06:08 +0200 (Fri, 10 Jul 2015)");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for MariaDB openSUSE-SU-2015:1216-1 (MariaDB)");
@@ -56,15 +56,16 @@ if(description)
 
   On openSUSE 13.2, MariaDB was updated from 10.0.13 to 10.0.20.
 
-  Please read the release notes of MariaDB
-  <a  rel='nofollow' href='https://mariadb.com/kb/en/mariadb/mariadb-10020-release-notes/'>https://mariadb.com/kb/en/mariadb/mariadb-10020-release-notes/
-  <a  rel='nofollow' href='https://mariadb.com/kb/en/mariadb/mariadb-10019-release-notes/'>https://mariadb.com/kb/en/mariadb/mariadb-10019-release-notes/
-  <a  rel='nofollow' href='https://mariadb.com/kb/en/mariadb/mariadb-10018-release-notes/'>https://mariadb.com/kb/en/mariadb/mariadb-10018-release-notes/
-  <a  rel='nofollow' href='https://mariadb.com/kb/en/mariadb/mariadb-10017-release-notes/'>https://mariadb.com/kb/en/mariadb/mariadb-10017-release-notes/
-  <a  rel='nofollow' href='https://mariadb.com/kb/en/mariadb/mariadb-10016-release-notes/'>https://mariadb.com/kb/en/mariadb/mariadb-10016-release-notes/
-  <a  rel='nofollow' href='https://mariadb.com/kb/en/mariadb/mariadb-10015-release-notes/'>https://mariadb.com/kb/en/mariadb/mariadb-10015-release-notes/
-  <a  rel='nofollow' href='https://mariadb.com/kb/en/mariadb/mariadb-10014-release-notes/'>https://mariadb.com/kb/en/mariadb/mariadb-10014-release-notes/ for more
-  information.");
+  Please read the referenced release notes of MariaDB for more information.");
+
+  script_xref(name:"URL", value:"https://mariadb.com/kb/en/mariadb/mariadb-10020-release-notes/");
+  script_xref(name:"URL", value:"https://mariadb.com/kb/en/mariadb/mariadb-10019-release-notes/");
+  script_xref(name:"URL", value:"https://mariadb.com/kb/en/mariadb/mariadb-10018-release-notes/");
+  script_xref(name:"URL", value:"https://mariadb.com/kb/en/mariadb/mariadb-10017-release-notes/");
+  script_xref(name:"URL", value:"https://mariadb.com/kb/en/mariadb/mariadb-10016-release-notes/");
+  script_xref(name:"URL", value:"https://mariadb.com/kb/en/mariadb/mariadb-10015-release-notes/");
+  script_xref(name:"URL", value:"https://mariadb.com/kb/en/mariadb/mariadb-10014-release-notes/");
+
   script_tag(name:"affected", value:"MariaDB on openSUSE 13.1");
   script_tag(name:"solution", value:"Please install the updated packages.");
   script_xref(name:"openSUSE-SU", value:"2015:1216_1");

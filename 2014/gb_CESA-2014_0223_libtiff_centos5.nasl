@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.881890");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14095 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 14:54:56 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-03-04 10:47:23 +0530 (Tue, 04 Mar 2014)");
   script_cve_id("CVE-2013-1960", "CVE-2013-1961", "CVE-2013-4231", "CVE-2013-4232", "CVE-2013-4243", "CVE-2013-4244");
   script_tag(name:"cvss_base", value:"9.3");
@@ -69,10 +69,10 @@ Before applying this update, make sure all previously released errata
 relevant to your system have been applied.
 
 This update is available via the Red Hat Network. Details on how to use the
-Red Hat Network to apply this update are available at
-https://access.redhat.com/site/articles/11258
+Red Hat Network to apply this update are available at the linked references.");
 
-5. Bugs fixed (https://bugzilla.redhat.com/):");
+  script_xref(name:"URL", value:"https://access.redhat.com/site/articles/11258");
+
   script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");

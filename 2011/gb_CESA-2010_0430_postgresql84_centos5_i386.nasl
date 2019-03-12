@@ -25,16 +25,18 @@
 
 if(description)
 {
-  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2010-May/016654.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880663");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14095 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 14:54:56 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
   script_xref(name:"CESA", value:"2010:0430");
   script_cve_id("CVE-2010-1169", "CVE-2010-1170");
   script_name("CentOS Update for postgresql84 CESA-2010:0430 centos5 i386");
+
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2010-May/016654.html");
+  script_xref(name:"URL", value:"http://www.postgresql.org/docs/8.4/static/release.html");
 
   script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for postgresql84");
   script_category(ACT_GATHER_INFO);
@@ -66,10 +68,8 @@ if(description)
   PL/Tcl trusted mode restrictions, allowing them to run arbitrary Tcl
   scripts with the privileges of the database server. (CVE-2010-1170)
 
-  These packages upgrade PostgreSQL to version 8.4.4. Refer to the PostgreSQL
-  Release Notes for a list of changes:
-
-  http://www.postgresql.org/docs/8.4/static/release.html
+  These packages upgrade PostgreSQL to version 8.4.4. Refer to the linked PostgreSQL
+  Release Notes for a list of changes.
 
   All PostgreSQL users are advised to upgrade to these updated packages,
   which correct these issues. If the postgresql service is running, it will

@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2009-January/015556.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880928");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -64,7 +64,7 @@ if(description)
 
   * a buffer underflow flaw was found in the Linux kernel IB700 SBC watchdog
   timer driver. This deficiency could lead to a possible information leak. By
-  default, the &quot;/dev/watchdog&quot; device is accessible only to the root user.
+  default, the '/dev/watchdog' device is accessible only to the root user.
   (CVE-2008-5702, Low)
 
   * the hfs and hfsplus file systems code failed to properly handle corrupted

@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-December/019039.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881552");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-12-26 12:06:49 +0530 (Wed, 26 Dec 2012)");
   script_cve_id("CVE-2012-2100", "CVE-2012-2375", "CVE-2012-4444", "CVE-2012-4565",
                 "CVE-2012-5517", "CVE-2011-4131", "CVE-2009-4307");
@@ -58,7 +58,7 @@ if(description)
   * A divide-by-zero flaw was found in the TCP Illinois congestion control
   algorithm implementation in the Linux kernel. If the TCP Illinois
   congestion control algorithm were in use (the sysctl
-  net.ipv4.tcp_congestion_control variable set to &quot;illinois&quot;), a local,
+  net.ipv4.tcp_congestion_control variable set to 'illinois'), a local,
   unprivileged user could trigger this flaw and cause a denial of service.
   (CVE-2012-4565, Moderate)
 

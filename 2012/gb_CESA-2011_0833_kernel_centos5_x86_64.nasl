@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2011-May/017610.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881248");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-30 17:09:50 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2011-0726", "CVE-2011-1078", "CVE-2011-1079", "CVE-2011-1080",
                 "CVE-2011-1093", "CVE-2011-1163", "CVE-2011-1166", "CVE-2011-1170",
@@ -75,7 +75,7 @@ if(description)
   guest user could use this flaw to cause a denial of service or escalate
   their privileges. (CVE-2011-1763, Moderate)
 
-  * The start_code and end_code values in &quot;/proc/[pid]/stat&quot; were not
+  * The start_code and end_code values in '/proc/[pid]/stat' were not
   protected. In certain scenarios, this flaw could be used to defeat Address
   Space Layout Randomization (ASLR). (CVE-2011-0726, Low)
 

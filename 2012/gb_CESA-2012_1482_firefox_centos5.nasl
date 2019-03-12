@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-November/019003.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881544");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-11-23 11:48:48 +0530 (Fri, 23 Nov 2012)");
   script_cve_id("CVE-2012-4201", "CVE-2012-4202", "CVE-2012-4207", "CVE-2012-4209",
                 "CVE-2012-4210", "CVE-2012-4214", "CVE-2012-4215", "CVE-2012-4216",
@@ -63,8 +63,8 @@ if(description)
   privileges of the user running Firefox. (CVE-2012-4202)
 
   A flaw was found in the way the Style Inspector tool in Firefox handled
-  certain Cascading Style Sheets (CSS). Running the tool (Tools -&gt; Web
-  Developer -&gt; Inspect) on malicious CSS could result in the execution of
+  certain Cascading Style Sheets (CSS). Running the tool (Tools -> Web
+  Developer -> Inspect) on malicious CSS could result in the execution of
   HTML and CSS content with chrome privileges. (CVE-2012-4210)
 
   A flaw was found in the way Firefox decoded the HZ-GB-2312 character

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_2246_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_suse_2015_2246_1.nasl 14110 2019-03-12 09:28:23Z cfischer $
 #
 # SuSE Update for Security openSUSE-SU-2015:2246-1 (Security)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851142");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14110 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 10:28:23 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-12-11 05:51:25 +0100 (Fri, 11 Dec 2015)");
   script_cve_id("CVE-2015-4792", "CVE-2015-4802", "CVE-2015-4807", "CVE-2015-4815",
                 "CVE-2015-4826", "CVE-2015-4830", "CVE-2015-4836", "CVE-2015-4858",
@@ -48,9 +48,11 @@ if(description)
   CVE-2015-4830, CVE-2015-4836, CVE-2015-4858, CVE-2015-4861, CVE-2015-4870,
   CVE-2015-4913, CVE-2015-4792
 
-  A list of upstream changes and release notes can be found here:
-  'https://mariadb.com/kb/en/mariadb/mariadb-5546-release-notes/'
-  'https://mariadb.com/kb/en/mariadb/mariadb-5546-changelog/'");
+  A list of upstream changes and release notes can be found at the linked references.");
+
+  script_xref(name:"URL", value:"https://mariadb.com/kb/en/mariadb/mariadb-5546-release-notes/");
+  script_xref(name:"URL", value:"https://mariadb.com/kb/en/mariadb/mariadb-5546-changelog/");
+
   script_tag(name:"affected", value:"Security on openSUSE 13.1");
   script_tag(name:"solution", value:"Please install the updated packages.");
   script_xref(name:"openSUSE-SU", value:"2015:2246_1");

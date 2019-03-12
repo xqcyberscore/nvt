@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_1618_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_suse_2015_1618_1.nasl 14110 2019-03-12 09:28:23Z cfischer $
 #
 # SuSE Update for flash-player SUSE-SU-2015:1618-1 (flash-player)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850896");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14110 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 10:28:23 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-10-16 13:39:09 +0200 (Fri, 16 Oct 2015)");
   script_cve_id("CVE-2015-5567", "CVE-2015-5568", "CVE-2015-5570", "CVE-2015-5571", "CVE-2015-5572", "CVE-2015-5573", "CVE-2015-5574", "CVE-2015-5575", "CVE-2015-5576", "CVE-2015-5577", "CVE-2015-5578", "CVE-2015-5579", "CVE-2015-5580", "CVE-2015-5581", "CVE-2015-5582", "CVE-2015-5584", "CVE-2015-5587", "CVE-2015-5588", "CVE-2015-6676", "CVE-2015-6677", "CVE-2015-6678", "CVE-2015-6679", "CVE-2015-6682");
   script_tag(name:"cvss_base", value:"10.0");
@@ -39,11 +39,12 @@ if(description)
   package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Adobe Flash Player was updated to 11.2.202.521 (APSB15-23 bsc#946880)
-  fixing several security issues:
+  fixing several security issues.
 
-  More information can be found on:
+  More information can be found at the linked vendor advisory.");
 
-  https://helpx.adobe.com/security/products/flash-player/apsb15-23.html");
+  script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/flash-player/apsb15-23.html");
+
   script_tag(name:"affected", value:"flash-player on SUSE Linux Enterprise Desktop 12");
   script_tag(name:"solution", value:"Please install the updated packages.");
   script_xref(name:"SUSE-SU", value:"2015:1618_1");

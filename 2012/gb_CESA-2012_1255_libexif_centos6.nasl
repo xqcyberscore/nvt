@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-September/018863.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881488");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-09-17 16:43:17 +0530 (Mon, 17 Sep 2012)");
   script_cve_id("CVE-2012-2812", "CVE-2012-2813", "CVE-2012-2814", "CVE-2012-2836",
                 "CVE-2012-2837", "CVE-2012-2840", "CVE-2012-2841");
@@ -58,7 +58,7 @@ if(description)
 
   Red Hat would like to thank Dan Fandrich for reporting these issues.
   Upstream acknowledges Mateusz Jurczyk of the Google Security Team as the
-  original reporter of CVE-2012-2812, CVE-2012-2813, and CVE-2012-2814; and
+  original reporter of CVE-2012-2812, CVE-2012-2813, and CVE-2012-2814, and
   Yunho Kim as the original reporter of CVE-2012-2836 and CVE-2012-2837.
 
   Users of libexif are advised to upgrade to these updated packages, which

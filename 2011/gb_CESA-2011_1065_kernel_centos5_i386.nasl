@@ -25,16 +25,18 @@
 
 if(description)
 {
-  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2011-September/017864.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880988");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14095 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 14:54:56 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-09-23 16:39:49 +0200 (Fri, 23 Sep 2011)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_xref(name:"CESA", value:"2011:1065");
   script_cve_id("CVE-2011-1780", "CVE-2011-2525", "CVE-2011-2689");
   script_name("CentOS Update for kernel CESA-2011:1065 centos5 i386");
+
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2011-September/017864.html");
+  script_xref(name:"URL", value:"https://docs.redhat.com/docs/en-US/Red_Hat_Enterprise_Linux/5/html/5.7_Technical_Notes/kernel.html#RHSA-2011-1065");
 
   script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for kernel");
   script_category(ACT_GATHER_INFO);
@@ -70,10 +72,9 @@ if(description)
 
   These updated kernel packages include a number of bug fixes and
   enhancements. Space precludes documenting all of these changes in this
-  advisory. Refer to the Red Hat Enterprise Linux 5.7 Technical Notes for
+  advisory. Refer to the linked Red Hat Enterprise Linux 5.7 Technical Notes for
   information about the most significant bug fixes and enhancements included
-  in this update:
-  https://docs.redhat.com/docs/en-US/Red_Hat_Enterprise_Linux/5/html/5.7_Technical_Notes/kernel.html#RHSA-2011-1065
+  in this update.
 
   All Red Hat Enterprise Linux 5 users are advised to install these updated
   packages, which correct these issues. The system must be rebooted for this

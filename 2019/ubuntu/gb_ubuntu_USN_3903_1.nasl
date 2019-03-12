@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843926");
-  script_version("$Revision: 14091 $");
+  script_version("$Revision: 14107 $");
   script_cve_id("CVE-2018-16880", "CVE-2018-18397", "CVE-2019-6133");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-11 10:24:52 +0100 (Mon, 11 Mar 2019) $");
+  script_tag(name:"cvss_base", value:"6.9");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 08:31:46 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-03-07 04:11:55 +0100 (Thu, 07 Mar 2019)");
   script_name("Ubuntu Update for linux USN-3903-1");
   script_category(ACT_GATHER_INFO);

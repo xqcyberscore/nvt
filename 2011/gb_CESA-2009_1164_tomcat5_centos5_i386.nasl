@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2009-July/016048.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880716");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -56,7 +56,7 @@ if(description)
   processing behavior: with this update, version 0 cookies that contain
   values that must be quoted to be valid are automatically changed to version
   1 cookies. To reactivate the previous, but insecure behavior, add the
-  following entry to the &quot;/etc/tomcat5/catalina.properties&quot; file:
+  following entry to the '/etc/tomcat5/catalina.properties' file:
 
   org.apache.tomcat.util.http.ServerCookie.VERSION_SWITCH=false
 
@@ -78,7 +78,7 @@ if(description)
 
   A cross-site scripting (XSS) flaw was found in the examples calendar
   application. With some web browsers, remote attackers could use this flaw
-  to inject arbitrary web script or HTML via the &quot;time&quot; parameter.
+  to inject arbitrary web script or HTML via the 'time' parameter.
   (CVE-2009-0781)
 
   It was discovered that web applications containing their own XML parsers

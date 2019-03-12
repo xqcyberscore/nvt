@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-February/018419.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881070");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-30 16:00:20 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2009-3743", "CVE-2010-2055", "CVE-2010-4054", "CVE-2010-4820");
   script_tag(name:"cvss_base", value:"9.3");
@@ -57,14 +57,14 @@ if(description)
   It was found that Ghostscript always tried to read Ghostscript system
   initialization files from the current working directory before checking
   other directories, even if a search path that did not contain the current
-  working directory was specified with the &quot;-I&quot; option, or the &quot;-P-&quot; option
+  working directory was specified with the '-I' option, or the '-P-' option
   was used (to prevent the current working directory being searched first).
   If a user ran Ghostscript in an attacker-controlled directory containing a
   system initialization file, it could cause Ghostscript to execute arbitrary
   PostScript code. (CVE-2010-2055)
 
   Ghostscript included the current working directory in its library search
-  path by default. If a user ran Ghostscript without the &quot;-P-&quot; option in an
+  path by default. If a user ran Ghostscript without the '-P-' option in an
   attacker-controlled directory containing a specially-crafted PostScript
   library file, it could cause Ghostscript to execute arbitrary PostScript
   code. With this update, Ghostscript no longer searches the current working
@@ -72,7 +72,7 @@ if(description)
 
   Note: The fix for CVE-2010-4820 could possibly break existing
   configurations. To use the previous, vulnerable behavior, run Ghostscript
-  with the &quot;-P&quot; option (to always search the current working directory
+  with the '-P' option (to always search the current working directory
   first).
 
   A flaw was found in the way Ghostscript interpreted PostScript Type 1 and

@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2009-August/016072.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880754");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -46,7 +46,7 @@ if(description)
   script_tag(name:"insight", value:"The Apache Portable Runtime (APR) is a portability library used by the
   Apache HTTP Server and other projects. It aims to provide a free library
   of C data structures and routines. apr-util is a utility library used with
-  APR. This library provides additional utility interfaces for APR; including
+  APR. This library provides additional utility interfaces for APR, including
   support for XML parsing, LDAP, database interfaces, URI parsing, and more.
 
   Multiple integer overflow flaws, leading to heap-based buffer overflows,

@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2011-June/017607.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880490");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-06-06 16:56:27 +0200 (Mon, 06 Jun 2011)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -53,9 +53,9 @@ if(description)
   cause a denial of service on an application using the apr_fnmatch()
   function. (CVE-2011-1928)
 
-  Note: This problem affected httpd configurations using the &quot;Location&quot;
+  Note: This problem affected httpd configurations using the 'Location'
   directive with wildcard URLs. The denial of service could have been
-  triggered during normal operation; it did not specifically require a
+  triggered during normal operation. It did not specifically require a
   malicious HTTP request.
 
   This update also addresses additional problems introduced by the rewrite of

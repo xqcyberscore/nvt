@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_0555_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_suse_2016_0555_1.nasl 14110 2019-03-12 09:28:23Z cfischer $
 #
 # SuSE Update for postgresql94 SUSE-SU-2016:0555-1 (postgresql94)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851217");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14110 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 10:28:23 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-02-25 06:25:12 +0100 (Thu, 25 Feb 2016)");
   script_cve_id("CVE-2007-4772", "CVE-2016-0766", "CVE-2016-0773");
   script_tag(name:"cvss_base", value:"9.0");
@@ -89,8 +89,7 @@ if(description)
 
   * Fix erroneous hash calculations in gin_extract_jsonb_path()
 
-  - For the full release notse, see:
-    http://www.postgresql.org/docs/9.4/static/release-9-4-6.html
+  - See the references for the full release note.
 
   - PL/Perl still needs to be linked with rpath, so that it can find
   libperl.so at runtime. bsc#578053, postgresql-plperl-keep-rpath.patch");
@@ -104,6 +103,9 @@ if(description)
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=(SLED12\.0SP0|SLES12\.0SP0)");
+
+  script_xref(name:"URL", value:"http://www.postgresql.org/docs/9.4/static/release-9-4-6.html");
+
   exit(0);
 }
 

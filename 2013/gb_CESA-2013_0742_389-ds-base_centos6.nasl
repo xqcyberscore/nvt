@@ -32,8 +32,8 @@ if(description)
   command-line utilities for server administration.
 
   It was found that the 389 Directory Server did not properly restrict access
-  to entries when the &quot;nsslapd-allow-anonymous-access&quot; configuration setting
-  was set to &quot;rootdse&quot;. An anonymous user could connect to the LDAP database
+  to entries when the 'nsslapd-allow-anonymous-access' configuration setting
+  was set to 'rootdse'. An anonymous user could connect to the LDAP database
   and, if the search scope is set to BASE, obtain access to information
   outside of the rootDSE. (CVE-2013-1897)
 
@@ -55,7 +55,7 @@ if(description)
   (BZ#929111)
 
   * A task manually constructed an exact value to be removed from the
-  configuration if the &quot;replica-force-cleaning&quot; option was used.
+  configuration if the 'replica-force-cleaning' option was used.
   Consequently, the task configuration was not cleaned up, and every time the
   server was restarted, the task behaved in the described manner. This update
   searches the configuration for the exact value to delete, instead of
@@ -79,8 +79,8 @@ if(description)
   which contain backported patches to correct these issues. After installing
   this update, the 389 server service will be restarted automatically.");
   script_oid("1.3.6.1.4.1.25623.1.0.881716");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-04-19 10:05:37 +0530 (Fri, 19 Apr 2013)");
   script_cve_id("CVE-2013-1897");
   script_tag(name:"cvss_base", value:"2.6");

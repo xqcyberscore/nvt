@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2010-March/016531.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880587");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
@@ -52,9 +52,9 @@ if(description)
   arbitrary code with the privileges of the root user. (CVE-2010-0426)
 
   The sudo utility did not properly initialize supplementary groups when the
-  &quot;runas_default&quot; option (in the sudoers file) was used. If a local user
+  'runas_default' option (in the sudoers file) was used. If a local user
   were authorized by the sudoers file to perform their sudo commands under
-  the account specified with &quot;runas_default&quot;, they would receive the root
+  the account specified with 'runas_default', they would receive the root
   user's supplementary groups instead of those of the intended target user,
   giving them unintended privileges. (CVE-2010-0427)
 

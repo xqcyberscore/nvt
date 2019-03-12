@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2010-August/016900.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880609");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"3.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:P/A:P");
@@ -48,7 +48,7 @@ if(description)
   manager that attempts to keep a wired or wireless network connection active
   at all times.
 
-  It was discovered that dbus-glib did not enforce the &quot;access&quot; flag on
+  It was discovered that dbus-glib did not enforce the 'access' flag on
   exported GObject properties. If such a property were read/write internally
   but specified as read-only externally, a malicious, local user could use
   this flaw to modify that property of an application. Such a change could

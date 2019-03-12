@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2013_0675_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_suse_2013_0675_1.nasl 14110 2019-03-12 09:28:23Z cfischer $
 #
 # SuSE Update for flash-player openSUSE-SU-2013:0675-1 (flash-player)
 #
@@ -27,20 +27,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850467");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14110 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 10:28:23 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-11-19 14:05:37 +0530 (Tue, 19 Nov 2013)");
   script_cve_id("CVE-2013-1378", "CVE-2013-1379", "CVE-2013-1380", "CVE-2013-2555");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("SuSE Update for flash-player openSUSE-SU-2013:0675-1 (flash-player)");
   script_tag(name:"affected", value:"flash-player on openSUSE 11.4");
-  script_tag(name:"insight", value:"Adobe Flash Player was updated to 11.2.202.280:
-
-  http://www.adobe.com/support/security/bulletins/apsb13-11.html
+  script_tag(name:"insight", value:"Adobe Flash Player was updated to 11.2.202.280.
 
   * APSB13-11, CVE-2013-1378, CVE-2013-1379, CVE-2013-1380,
-  CVE-2013-2555 ");
+  CVE-2013-2555");
+
+  script_xref(name:"URL", value:"http://www.adobe.com/support/security/bulletins/apsb13-11.html");
+
   script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");

@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-January/019202.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881568");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-01-21 09:41:29 +0530 (Mon, 21 Jan 2013)");
   script_cve_id("CVE-2012-3359");
   script_tag(name:"cvss_base", value:"3.7");
@@ -71,11 +71,11 @@ if(description)
   SSL operation is enabled and allows users to edit that attribute.
   (BZ#832183)
 
-  * Prior to this update, luci did not allow the &quot;identity_file&quot; attribute of
+  * Prior to this update, luci did not allow the 'identity_file' attribute of
   the fence_ilo_mp fence agent to be viewed or edited. As a consequence,
   users could not configure or view an existing configuration for the
-  &quot;identity_file&quot; attribute of the fence_ilo_mp fence agent. This update adds
-  a text input box to show the current state of the &quot;identity_file&quot; attribute
+  'identity_file' attribute of the fence_ilo_mp fence agent. This update adds
+  a text input box to show the current state of the 'identity_file' attribute
   of fence_ilo_mp and allows users to edit that attribute. (BZ#832185)
 
   * Prior to this update, redundant files and directories remained on the
@@ -83,14 +83,14 @@ if(description)
   when the luci package was uninstalled. This update removes these files
   and directories when the luci package is uninstalled. (BZ#835649)
 
-  * Prior to this update, the &quot;restart-disable&quot; recovery policy was not
+  * Prior to this update, the 'restart-disable' recovery policy was not
   displayed in the recovery policy list from which users could select when
   they configure a recovery policy for a failover domain. As a consequence,
-  the &quot;restart-disable&quot; recovery policy could not be set with the luci GUI.
-  This update adds the &quot;restart-disable&quot; recovery option to the recovery
+  the 'restart-disable' recovery policy could not be set with the luci GUI.
+  This update adds the 'restart-disable' recovery option to the recovery
   policy pulldown list. (BZ#839732)
 
-  * Prior to this update, line breaks that were not anticipated in the &quot;yum ...
+  * Prior to this update, line breaks that were not anticipated in the 'yum ...
 
   Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"qod_type", value:"package");

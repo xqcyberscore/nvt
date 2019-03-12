@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-September/018901.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881508");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-09-27 09:07:08 +0530 (Thu, 27 Sep 2012)");
   script_cve_id("CVE-2012-2313", "CVE-2012-2384", "CVE-2012-2390", "CVE-2012-3430", "CVE-2012-3552");
   script_tag(name:"cvss_base", value:"5.4");
@@ -59,7 +59,7 @@ if(description)
   MAP_HUGETLB flag was set. A local, unprivileged user could use this flaw to
   cause a denial of service. (CVE-2012-2390, Moderate)
 
-  * A race condition was found in the way access to inet-&gt;opt ip_options was
+  * A race condition was found in the way access to inet->opt ip_options was
   synchronized in the Linux kernel's TCP/IP protocol suite implementation.
   Depending on the network facing applications running on the system, a
   remote attacker could possibly trigger this flaw to cause a denial of

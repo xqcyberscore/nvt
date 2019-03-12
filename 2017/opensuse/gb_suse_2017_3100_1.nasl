@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_3100_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_suse_2017_3100_1.nasl 14110 2019-03-12 09:28:23Z cfischer $
 #
 # SuSE Update for tboot openSUSE-SU-2017:3100-1 (tboot)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851652");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14110 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 10:28:23 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-11-26 07:32:39 +0100 (Sun, 26 Nov 2017)");
   script_cve_id("CVE-2017-16837");
   script_tag(name:"cvss_base", value:"4.6");
@@ -51,10 +51,8 @@ if(description)
 
   Bug fixes:
 
-  - Update to new upstream version. See release notes for details (1.9.6
-  1.9.5, FATE#321510  1.9.4, FATE#320665  1.8.3, FATE#318542):
-
-  * 'https://sourceforge.net/p/tboot/code/ci/default/tree/CHANGELOG'
+  - Update to new upstream version. See the referenced release notes for details (1.9.6
+  1.9.5, FATE#321510  1.9.4, FATE#320665  1.8.3, FATE#318542).
 
   - Fix some gcc7 warnings that lead to errors. (boo#1041264)
 
@@ -78,6 +76,9 @@ if(description)
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=(openSUSELeap42\.2|openSUSELeap42\.3)");
+
+  script_xref(name:"URL", value:"https://sourceforge.net/p/tboot/code/ci/default/tree/CHANGELOG");
+
   exit(0);
 }
 

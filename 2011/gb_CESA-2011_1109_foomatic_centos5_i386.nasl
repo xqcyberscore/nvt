@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2011-September/017825.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880991");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-09-23 16:39:49 +0200 (Fri, 23 Sep 2011)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -54,7 +54,7 @@ if(description)
   set to appear as a command line option that caused the filter to use a
   specified PostScript printer description (PPD) file, rather than the
   administrator-set one. This could lead to arbitrary code execution with the
-  privileges of the &quot;lp&quot; user. (CVE-2011-2697)
+  privileges of the 'lp' user. (CVE-2011-2697)
 
   All foomatic users should upgrade to this updated package, which contains
   a backported patch to resolve this issue.");

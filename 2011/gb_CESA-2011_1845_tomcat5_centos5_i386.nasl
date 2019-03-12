@@ -1,4 +1,4 @@
-###############################################################################
+##############################################################################
 # OpenVAS Vulnerability Test
 #
 # CentOS Update for tomcat5 CESA-2011:1845 centos5 i386
@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2011-December/018336.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881059");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-12-23 10:34:35 +0530 (Fri, 23 Dec 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");

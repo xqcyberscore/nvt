@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-March/019346.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881628");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-03-12 09:58:36 +0530 (Tue, 12 Mar 2013)");
   script_cve_id("CVE-2012-4517", "CVE-2012-4518");
   script_tag(name:"cvss_base", value:"5.0");
@@ -67,8 +67,8 @@ if(description)
 
   This update also fixes the following bugs:
 
-  * Previously, the &quot;ibnodes -h&quot; command did not show a proper usage message.
-  With this update the problem is fixed and &quot;ibnodes -h&quot; now shows the
+  * Previously, the 'ibnodes -h' command did not show a proper usage message.
+  With this update the problem is fixed and 'ibnodes -h' now shows the
   correct usage message. (BZ#818606)
 
   * Previously, the ibv_devinfo utility erroneously showed iWARP cxgb3
@@ -91,7 +91,7 @@ if(description)
   the InfiniBand devices since they already exist, but it does correct the
   device permissions on the files. (BZ#834428)
 
-  * Previously, using the &quot;perfquery -C&quot; command with a host name caused the
+  * Previously, using the 'perfquery -C' command with a host name caused the
   perfque ...
 
   Description truncated, please see the referenced URL(s) for more information.");

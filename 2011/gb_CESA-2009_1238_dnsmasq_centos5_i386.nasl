@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2009-September/016119.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880761");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -47,19 +47,19 @@ if(description)
   server.
 
   Core Security Technologies discovered a heap overflow flaw in dnsmasq when
-  the TFTP service is enabled (the &quot;--enable-tftp&quot; command line option, or by
-  enabling &quot;enable-tftp&quot; in &quot;/etc/dnsmasq.conf&quot;). If the configured tftp-root
+  the TFTP service is enabled (the '--enable-tftp' command line option, or by
+  enabling 'enable-tftp' in '/etc/dnsmasq.conf'). If the configured tftp-root
   is sufficiently long, and a remote user sends a request that sends a long
   file name, dnsmasq could crash or, possibly, execute arbitrary code with
-  the privileges of the dnsmasq service (usually the unprivileged &quot;nobody&quot;
+  the privileges of the dnsmasq service (usually the unprivileged 'nobody'
   user). (CVE-2009-2957)
 
   A NULL pointer dereference flaw was discovered in dnsmasq when the TFTP
   service is enabled. This flaw could allow a malicious TFTP client to crash
   the dnsmasq service. (CVE-2009-2958)
 
-  Note: The default tftp-root is &quot;/var/ftpd&quot;, which is short enough to make
-  it difficult to exploit the CVE-2009-2957 issue; if a longer directory name
+  Note: The default tftp-root is '/var/ftpd', which is short enough to make
+  it difficult to exploit the CVE-2009-2957 issue. If a longer directory name
   is used, arbitrary code execution may be possible. As well, the dnsmasq
   package distributed by Red Hat does not have TFTP support enabled by
   default.

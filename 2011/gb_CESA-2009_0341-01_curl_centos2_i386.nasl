@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2009-March/015698.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880946");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -50,13 +50,13 @@ if(description)
   David Kierznowski discovered a flaw in libcurl where it would not
   differentiate between different target URLs when handling automatic
   redirects. This caused libcurl to follow any new URL that it understood,
-  including the &quot;file://&quot; URL type. This could allow a remote server to force
+  including the 'file://' URL type. This could allow a remote server to force
   a local libcurl-using application to read a local file instead of the
   remote one, possibly exposing local files that were not meant to be
   exposed. (CVE-2009-0037)
 
   Note: Applications using libcurl that are expected to follow redirects to
-  &quot;file://&quot; protocol must now explicitly call curl_easy_setopt(3) and set the
+  'file://' protocol must now explicitly call curl_easy_setopt(3) and set the
   newly introduced CURLOPT_REDIR_PROTOCOLS option as required.
 
   cURL users should upgrade to these updated packages, which contain

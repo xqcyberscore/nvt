@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2010-August/016859.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880632");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
@@ -56,7 +56,7 @@ if(description)
   stated, provide a fix for CVE-2009-0781, a cross-site scripting (XSS) flaw
   in the examples calendar application. With some web browsers, remote
   attackers could use this flaw to inject arbitrary web script or HTML via
-  the &quot;time&quot; parameter. (CVE-2009-2696)
+  the 'time' parameter. (CVE-2009-2696)
 
   Two directory traversal flaws were found in the Tomcat deployment process.
   A specially-crafted WAR file could, when deployed, cause a file to be

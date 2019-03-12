@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-January/019123.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881567");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-01-21 09:41:01 +0530 (Mon, 21 Jan 2013)");
   script_cve_id("CVE-2011-1958", "CVE-2011-1959", "CVE-2011-2175", "CVE-2011-2698",
                 "CVE-2011-4102", "CVE-2012-0041", "CVE-2012-0042", "CVE-2012-0066",
@@ -72,7 +72,7 @@ if(description)
   packets. If the SSH connection was to a link-local IPv6 address including
   an interface name (for example ssh -X [ipv6addr]%eth0), Wireshark parsed
   this address erroneously, constructed an incorrect capture filter and
-  refused to capture packets. The &quot;Invalid capture filter&quot; message was
+  refused to capture packets. The 'Invalid capture filter' message was
   displayed. With this update, parsing of link-local IPv6 addresses is fixed
   and Wireshark correctly prepares a capture filter to omit SSH packets over
   a link-local IPv6 connection. (BZ#438473)
@@ -88,9 +88,9 @@ if(description)
   Dumpcap exit code and returns a non-zero exit code when Dumpcap fails.
   (BZ#580510)
 
-  * Previously, the TShark &quot;-s&quot; (snapshot length) option worked only for a
+  * Previously, the TShark '-s' (snapshot length) option worked only for a
   value greater than 68 bytes. If a lower value was specified, TShark
-  captured just 68 bytes of incoming packets. With this update, the &quot;-s&quot;
+  captured just 68 bytes of incoming packets. With this update, the '-s'
   option is fixed and sizes lower than 68 bytes work as expected. (BZ#580513)
 
   This update also adds the following enhancement:

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2014_0379_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_suse_2014_0379_1.nasl 14110 2019-03-12 09:28:23Z cfischer $
 #
 # SuSE Update for flash-player openSUSE-SU-2014:0379-1 (flash-player)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850576");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14110 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 10:28:23 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-03-17 13:34:20 +0530 (Mon, 17 Mar 2014)");
   script_cve_id("CVE-2014-0503", "CVE-2014-0504");
   script_tag(name:"cvss_base", value:"6.4");
@@ -44,8 +44,10 @@ if(description)
   CVE-2014-0504: A vulnerability that could be used to read
   the contents of the clipboard was fixed.
 
-  More information can be found on:
-  http://helpx.adobe.com/security/products/flash-player/apsb14-08.html");
+  More information can be found on the referenced vendor advisory.");
+
+  script_xref(name:"URL", value:"http://helpx.adobe.com/security/products/flash-player/apsb14-08.html");
+
   script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");

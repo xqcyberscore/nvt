@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850167");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14110 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 10:28:23 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-06-03 09:20:26 +0200 (Fri, 03 Jun 2011)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -49,8 +49,10 @@ if(description)
   Buffer Errors (CWE-119), Numeric Errors (CWE-189)
   Input Validation (CWE-20)
 
-  More information can be found on:
-  http://www.adobe.com/support/security/bulletins/apsb11-12.html");
+  More information can be found on the referenced vendor advisory.");
+
+  script_xref(name:"URL", value:"http://www.adobe.com/support/security/bulletins/apsb11-12.html");
+
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_tag(name:"qod_type", value:"package");

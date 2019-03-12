@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-October/018911.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881511");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-10-05 09:43:26 +0530 (Fri, 05 Oct 2012)");
   script_cve_id("CVE-2012-2319", "CVE-2012-3412", "CVE-2012-3430", "CVE-2012-3510", "CVE-2009-4020");
   script_tag(name:"cvss_base", value:"7.8");
@@ -78,7 +78,7 @@ if(description)
   This update also fixes the following bugs:
 
   * The cpuid_whitelist() function, masking the Enhanced Intel SpeedStep
-  (EST) flag from all guests, prevented the &quot;cpuspeed&quot; service from working
+  (EST) flag from all guests, prevented the 'cpuspeed' service from working
   in the privileged Xen domain (dom0). CPU scaling was therefore not
   possible. With this update, cpuid_whitelist() is aware whether the domain
   executing CPUID is privileged or not, and enables the EST flag for dom0.

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850172");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14110 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 10:28:23 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-12-05 12:16:08 +0530 (Mon, 05 Dec 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -65,8 +65,10 @@ if(description)
   The following document gives a more detailed explanation about the
   problem in general. Administrators are advised to take the
   opportunity to review security of their wireless networks if 802.11X
-  authentication is used.
-  http://www.suse.de/~lnussel/The_Evil_Twin_problem_with_WPA2-Enterprise_v1.1.pdf");
+  authentication is used.");
+
+  script_xref(name:"URL", value:"http://www.suse.de/~lnussel/The_Evil_Twin_problem_with_WPA2-Enterprise_v1.1.pdf");
+
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_tag(name:"qod_type", value:"package");

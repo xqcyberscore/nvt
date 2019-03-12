@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_2391_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_suse_2016_2391_1.nasl 14110 2019-03-12 09:28:23Z cfischer $
 #
 # SuSE Update for openssl openSUSE-SU-2016:2391-1 (openssl)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851397");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14110 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 10:28:23 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-09-28 05:44:49 +0200 (Wed, 28 Sep 2016)");
   script_cve_id("CVE-2016-2177", "CVE-2016-2178", "CVE-2016-2179", "CVE-2016-2180",
                 "CVE-2016-2181", "CVE-2016-2182", "CVE-2016-2183", "CVE-2016-6302",
@@ -41,7 +41,6 @@ if(description)
   package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"This update for openssl fixes the following issues:
-
 
   OpenSSL Security Advisory [22 Sep 2016] (boo#999665)
 
@@ -74,8 +73,7 @@ if(description)
 
   * Certificate message OOB reads (CVE-2016-6306) (boo#999668)
 
-  More information can be found on
-  'https://www.openssl.org/news/secadv/20160922.txt'
+  More information can be found on the referenced vendor advisory.
 
   * update expired S/MIME certs (boo#979475)
 
@@ -95,6 +93,9 @@ if(description)
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE13\.2");
+
+  script_xref(name:"URL", value:"https://www.openssl.org/news/secadv/20160922.txt");
+
   exit(0);
 }
 

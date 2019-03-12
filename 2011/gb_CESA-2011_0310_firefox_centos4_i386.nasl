@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2011-March/017266.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880476");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-03-07 06:45:55 +0100 (Mon, 07 Mar 2011)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -85,14 +85,14 @@ if(description)
 
   This update also fixes the following bug:
 
-  * On Red Hat Enterprise Linux 4 and 5, running the &quot;firefox
+  * On Red Hat Enterprise Linux 4 and 5, running the 'firefox
 
-  - -setDefaultBrowser&quot; command caused warnings such as the following:
+  - -setDefaultBrowser' command caused warnings such as the following:
 
   libgnomevfs-WARNING **: Deprecated function.  User modifications to the
   MIME database are no longer supported.
 
-  This update disables the &quot;setDefaultBrowser&quot; option. Red Hat Enterprise
+  This update disables the 'setDefaultBrowser' option. Red Hat Enterprise
   Linux 4 users wishing to set a default web browser can ...
 
   Description truncated, please see the referenced URL(s) for more information.");

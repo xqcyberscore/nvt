@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2009-October/016196.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880873");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:N/A:N");
@@ -55,10 +55,10 @@ if(description)
 
   This update also fixes the following bugs:
 
-  * a packet duplication issue was fixed via the RHSA-2008:0665 update;
-  however, the fix introduced a problem for systems using network bonding:
+  * a packet duplication issue was fixed via the RHSA-2008:0665 update.
+  However, the fix introduced a problem for systems using network bonding:
   Backup slaves were unable to receive ARP packets. When using network
-  bonding in the &quot;active-backup&quot; mode and with the &quot;arp_validate=3&quot; option,
+  bonding in the 'active-backup' mode and with the 'arp_validate=3' option,
   the bonding driver considered such backup slaves as being down (since they
   were not receiving ARP packets), preventing successful failover to these
   devices. (BZ#519384)
@@ -89,8 +89,8 @@ if(description)
   and the other using non-blocking mode). (BZ#523930)
 
   * a deadlock was found in the cciss driver. In rare cases, this caused an
-  NMI lockup during boot. Messages such as &quot;cciss: controller cciss[x]
-  failed, stopping.&quot; and &quot;cciss[x]: controller not responding.&quot; may have
+  NMI lockup during boot. Messages such as 'cciss: controller cciss[x]
+  failed, stopping.' and 'cciss[x]: controller not responding.' may have
   been displayed on the co ...
 
   Description truncated, please see the referenced URL(s) for more information.");

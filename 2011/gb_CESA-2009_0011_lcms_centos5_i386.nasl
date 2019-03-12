@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2009-January/015528.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880712");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -43,7 +43,7 @@ if(description)
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS5");
   script_tag(name:"affected", value:"lcms on CentOS 5");
-  script_tag(name:"insight", value:"Little Color Management System (LittleCMS, or simply &quot;lcms&quot;) is a
+  script_tag(name:"insight", value:"Little Color Management System (LittleCMS, or simply 'lcms') is a
   small-footprint, speed-optimized open source color management engine.
 
   Multiple insufficient input validation flaws were discovered in LittleCMS.

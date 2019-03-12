@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2013_0635_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_suse_2013_0635_1.nasl 14110 2019-03-12 09:28:23Z cfischer $
 #
 # SuSE Update for postgresql openSUSE-SU-2013:0635-1 (postgresql)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850464");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14110 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 10:28:23 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-11-19 14:05:30 +0530 (Tue, 19 Nov 2013)");
   script_cve_id("CVE-2013-1899", "CVE-2013-1900", "CVE-2013-1901");
   script_tag(name:"cvss_base", value:"8.5");
@@ -57,8 +57,10 @@ if(description)
   pg_start_backup() or pg_stop_backup(), thus possibly
   interfering with creation of routine backups.
 
-  * See the release notes for the rest of the changes:
-  http://www.postgresql.org/docs/9.0/static/release-9-0-13.htm");
+  * See the referenced release notes for the rest of the changes.");
+
+  script_xref(name:"URL", value:"http://www.postgresql.org/docs/9.0/static/release-9-0-13.htm");
+
   script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");

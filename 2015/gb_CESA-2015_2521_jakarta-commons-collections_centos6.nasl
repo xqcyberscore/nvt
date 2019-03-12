@@ -26,14 +26,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882333");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14095 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 14:54:56 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-12-03 06:32:59 +0100 (Thu, 03 Dec 2015)");
   script_cve_id("CVE-2015-7501");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("CentOS Update for jakarta-commons-collections CESA-2015:2521 centos6");
+
+  script_xref(name:"URL", value:"https://access.redhat.com/solutions/2045023");
+  script_xref(name:"URL", value:"https://access.redhat.com/articles/11258");
+
   script_tag(name:"summary", value:"Check the version of jakarta-commons-collections");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The Jakarta/Apache Commons Collections
@@ -52,8 +56,7 @@ those classes to be deserialized can use the system property
 'org.apache.commons.collections.enableUnsafeSerialization' to re-enable
 their deserialization.
 
-Further information about this security flaw may be found at:
-'https://access.redhat.com/solutions/2045023'
+Further information about this security flaw may be found at the linked references.
 
 All users of jakarta-commons-collections are advised to upgrade to these
 updated packages, which contain a backported patch to correct this issue.
@@ -65,11 +68,9 @@ restarted for the update to take effect.
 Before applying this update, make sure all previously released errata
 relevant to your system have been applied.
 
-For details on how to apply this update, refer to:
+For details on how to apply this update, refer to the linked KB article.
 
-'https://access.redhat.com/articles/11258'
-
-5. Bugs fixed ('https://bugzilla.redhat.com/'):
+5. Bugs fixed:
 
 1279330 - CVE-2015-7501 apache-commons-collections: InvokerTransformer code execution during deserialisation
 

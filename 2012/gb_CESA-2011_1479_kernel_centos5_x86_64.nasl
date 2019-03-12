@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2011-November/018262.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881309");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-30 17:20:21 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2011-1162", "CVE-2011-1898", "CVE-2011-2203", "CVE-2011-2494",
                 "CVE-2011-3363", "CVE-2011-4110");
@@ -82,9 +82,9 @@ if(description)
   confidential information, such as the length of a password used in a
   process. (CVE-2011-2494, Low)
 
-  Red Hat would like to thank Yogesh Sharma for reporting CVE-2011-3363;
-  Peter Huewe for reporting CVE-2011-1162; Clement Lecigne for reporting
-  CVE-2011-2203; and Vasiliy Kulikov of Openwall for reporting CVE-2011-2494.
+  Red Hat would like to thank Yogesh Sharma for reporting CVE-2011-3363,
+  Peter Huewe for reporting CVE-2011-1162, Clement Lecigne for reporting
+  CVE-2011-2203, and Vasiliy Kulikov of Openwall for reporting CVE-2011-2494.
 
   This update also fixes several bugs and adds one enhancement. Documentation
   for these changes will be available shortly from the Technical Notes

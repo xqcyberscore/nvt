@@ -25,16 +25,18 @@
 
 if(description)
 {
-  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2010-September/017018.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880582");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14095 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 14:54:56 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_xref(name:"CESA", value:"2010:0704");
   script_cve_id("CVE-2010-3081");
   script_name("CentOS Update for kernel CESA-2010:0704 centos5 i386");
+
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2010-September/017018.html");
+  script_xref(name:"URL", value:"https://access.redhat.com/kb/docs/DOC-40265");
 
   script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for kernel");
   script_category(ACT_GATHER_INFO);
@@ -58,8 +60,7 @@ if(description)
   Red Hat would like to thank Ben Hawkes for reporting this issue.
 
   Red Hat is aware that a public exploit for this issue is available. Refer
-  to Knowledgebase article DOC-40265 for further details:
-  https://access.redhat.com/kb/docs/DOC-40265
+  to the linked Knowledgebase article DOC-40265 for further details.
 
   Users should upgrade to these updated packages, which contain a backported
   patch to correct this issue. The system must be rebooted for this update to

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_0531_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_suse_2016_0531_1.nasl 14110 2019-03-12 09:28:23Z cfischer $
 #
 # SuSE Update for postgresql93 openSUSE-SU-2016:0531-1 (postgresql93)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851212");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14110 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 10:28:23 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-03-01 11:08:58 +0530 (Tue, 01 Mar 2016)");
   script_cve_id("CVE-2007-4772", "CVE-2016-0766", "CVE-2016-0773");
   script_tag(name:"cvss_base", value:"9.0");
@@ -85,8 +85,10 @@ if(description)
 
   * Fix erroneous hash calculations in gin_extract_jsonb_path()
 
-  - For the full release notse, see:
-  http://www.postgresql.org/docs/9.3/static/release-9-3-11.html");
+  - See the feferences for the full release notes.");
+
+  script_xref(name:"URL", value:"http://www.postgresql.org/docs/9.3/static/release-9-3-11.html");
+
   script_tag(name:"affected", value:"postgresql93 on openSUSE 13.2");
   script_tag(name:"solution", value:"Please install the updated packages.");
 

@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852341");
-  script_version("$Revision: 14091 $");
+  script_version("$Revision: 14107 $");
   script_cve_id("CVE-2019-6109", "CVE-2019-6111");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-11 10:24:52 +0100 (Mon, 11 Mar 2019) $");
+  script_tag(name:"cvss_base", value:"5.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 08:31:46 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-03-09 04:09:29 +0100 (Sat, 09 Mar 2019)");
   script_name("SuSE Update for openssh openSUSE-SU-2019:0307-1 (openssh)");
   script_category(ACT_GATHER_INFO);

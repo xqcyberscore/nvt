@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-August/018827.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881475");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-08-28 10:26:11 +0530 (Tue, 28 Aug 2012)");
   script_cve_id("CVE-2012-0878");
   script_tag(name:"cvss_base", value:"5.1");
@@ -49,7 +49,7 @@ if(description)
   working with and running Python Paste applications.
 
   It was discovered that paster did not drop supplementary group privileges
-  when started by the root user. Running &quot;paster serve&quot; as root to start a
+  when started by the root user. Running 'paster serve' as root to start a
   Python web application that will run as a non-root user and group resulted
   in that application running with root group privileges. This could possibly
   allow a remote attacker to gain access to files that should not be

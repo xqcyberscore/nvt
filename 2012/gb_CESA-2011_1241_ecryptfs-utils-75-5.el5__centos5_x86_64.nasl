@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2011-September/017812.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881245");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-30 17:08:38 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2011-1831", "CVE-2011-1832", "CVE-2011-1834", "CVE-2011-1835",
                 "CVE-2011-1837", "CVE-2011-3145", "CVE-2011-1833");
@@ -50,7 +50,7 @@ if(description)
   released as a Technology Preview for Red Hat Enterprise Linux 5 and 6.
 
   The setuid mount.ecryptfs_private utility allows users to mount an eCryptfs
-  file system. This utility can only be run by users in the &quot;ecryptfs&quot; group.
+  file system. This utility can only be run by users in the 'ecryptfs' group.
 
   A race condition flaw was found in the way mount.ecryptfs_private checked
   the permissions of a requested mount point when mounting an encrypted file
@@ -88,9 +88,9 @@ if(description)
   Red Hat would like to thank the Ubuntu Security Team for reporting these
   issues. The Ubuntu Security Team acknowledges Vasiliy Kulikov of Openwall
   and Dan Rosenberg as the original reporters of CVE-2011-1831,
-  CVE-2011-1832, and CVE-2011-1833; Dan Rosenberg and Marc Deslauriers as the
-  original reporters of CVE-2011-1834; Marc Deslauriers as the original
-  reporter of CVE-2011-1835; and Vasiliy Kulikov of Openwall as the original
+  CVE-2011-1832, and CVE-2011-1833, Dan Rosenberg and Marc Deslauriers as the
+  original reporters of CVE-2011-1834, Marc Deslauriers as the original
+  reporter of CVE-2011-1835, and Vasiliy Kulikov of Openwall as the original
   reporter of CVE-2011-1837.
 
   Users of ecryptfs-utils are advised to upgrade to these updated packages,

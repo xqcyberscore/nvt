@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2009-February/015574.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880927");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
@@ -49,7 +49,7 @@ if(description)
 
   The Google security team discovered a flaw in the way OpenSSL checked the
   verification of certificates. An attacker in control of a malicious server,
-  or able to effect a &quot;man in the middle&quot; attack, could present a malformed
+  or able to effect a 'man in the middle' attack, could present a malformed
   SSL/TLS signature from a certificate chain to a vulnerable client and
   bypass validation. (CVE-2008-5077)
 

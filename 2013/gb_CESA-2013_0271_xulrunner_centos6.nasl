@@ -25,16 +25,19 @@
 
 if(description)
 {
-  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-February/019247.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881608");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14095 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 14:54:56 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-02-22 10:06:03 +0530 (Fri, 22 Feb 2013)");
   script_cve_id("CVE-2013-0775", "CVE-2013-0776", "CVE-2013-0780", "CVE-2013-0782", "CVE-2013-0783");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_xref(name:"CESA", value:"2013:0271");
   script_name("CentOS Update for xulrunner CESA-2013:0271 centos6");
+
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-February/019247.html");
+  script_xref(name:"URL", value:"https://access.redhat.com/knowledge/solutions/294303");
+  script_xref(name:"URL", value:"https://access.redhat.com/knowledge/articles/11258");
 
   script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for xulrunner");
   script_category(ACT_GATHER_INFO);
@@ -67,11 +70,9 @@ if(description)
   advisories for Firefox 17.0.3 ESR. You can find a link to the Mozilla
   advisories in the References section of this erratum.
 
-  Note that due to a Kerberos credentials change, the following configuration
-  steps may be required when using Firefox 17.0.3 ESR with the Enterprise
-  Identity Management (IPA) web interface:
-
-  https://access.redhat.com/knowledge/solutions/294303
+  Note that due to a Kerberos credentials change, the configuration steps
+  described in the linked article may be required when using Firefox 17.0.3 ESR
+  with the Enterprise Identity Management (IPA) web interface.
 
   Important: Firefox 17 is not completely backwards-compatible with all
   Mozilla add-ons and Firefox plug-ins that worked with Firefox 10.0.
@@ -91,7 +92,7 @@ if(description)
 
   This update is available via the Red Hat Network. Details on how to
   use the Red Hat Network to apply this update are available at
-  https://access.redhat.com/knowledge/articles/11258
+  the linked references.
 
   Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"qod_type", value:"package");

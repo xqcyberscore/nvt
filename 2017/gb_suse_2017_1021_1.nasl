@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_1021_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_suse_2017_1021_1.nasl 14110 2019-03-12 09:28:23Z cfischer $
 #
 # SuSE Update for postgresql93 openSUSE-SU-2017:1021-1 (postgresql93)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851536");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14110 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 10:28:23 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-04-16 06:41:07 +0200 (Sun, 16 Apr 2017)");
   script_cve_id("CVE-2016-5423", "CVE-2016-5424");
   script_tag(name:"cvss_base", value:"6.5");
@@ -54,13 +54,7 @@ if(description)
 
   - bsc#1029547: postgresql: fails to build with timezone 2017a
 
-  For additional non-security issues please refer to
-
-  - 'http://www.postgresql.org/docs/9.3/static/release-9-3-14.html'
-
-  - 'http://www.postgresql.org/docs/9.3/static/release-9-3-13.html'
-
-  - 'http://www.postgresql.org/docs/9.4/static/release-9-3-12.html'
+  For additional non-security issues please refer to the linked release notes.
 
   This update was imported from the SUSE:SLE-12:Update update project.");
   script_tag(name:"affected", value:"postgresql93 on openSUSE Leap 42.2, openSUSE Leap 42.1");
@@ -73,6 +67,11 @@ if(description)
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=(openSUSELeap42\.2|openSUSELeap42\.1)");
+
+  script_xref(name:"URL", value:"http://www.postgresql.org/docs/9.3/static/release-9-3-14.html");
+  script_xref(name:"URL", value:"http://www.postgresql.org/docs/9.3/static/release-9-3-13.html");
+  script_xref(name:"URL", value:"http://www.postgresql.org/docs/9.4/static/release-9-3-12.html");
+
   exit(0);
 }
 

@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2011-April/017338.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880502");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
@@ -47,15 +47,15 @@ if(description)
   Cambridge for use on UNIX systems connected to the Internet.
 
   A privilege escalation flaw was discovered in Exim. If an attacker were
-  able to gain access to the &quot;exim&quot; user, they could cause Exim to execute
+  able to gain access to the 'exim' user, they could cause Exim to execute
   arbitrary commands as the root user. (CVE-2010-4345)
 
-  This update adds a new configuration file, &quot;/etc/exim/trusted-configs&quot;. To
+  This update adds a new configuration file, '/etc/exim/trusted-configs'. To
   prevent Exim from running arbitrary commands as root, Exim will now drop
   privileges when run with a configuration file not listed as trusted. This
   could break backwards compatibility with some Exim configurations, as the
-  trusted-configs file only trusts &quot;/etc/exim/exim.conf&quot; and
-  &quot;/etc/exim/exim4.conf&quot; by default. If you are using a configuration file
+  trusted-configs file only trusts '/etc/exim/exim.conf' and
+  '/etc/exim/exim4.conf' by default. If you are using a configuration file
   not listed in the new trusted-configs file, you will need to add it
   manually.
 

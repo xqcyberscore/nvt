@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-March/019498.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881650");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-03-12 10:00:01 +0530 (Tue, 12 Mar 2013)");
   script_cve_id("CVE-2012-1182");
   script_tag(name:"cvss_base", value:"10.0");
@@ -71,15 +71,15 @@ if(description)
   from a Windows system. Because the Cross Realm Kerberos Trust functionality
   is considered a Technology Preview, selected samba4 components are
   considered to be a Technology Preview. For more information on which Samba
-  packages are considered a Technology Preview, refer to Table 5.1, &quot;Samba4
-  Package Support&quot; in the Release Notes, linked to from the References.
+  packages are considered a Technology Preview, refer to Table 5.1, 'Samba4
+  Package Support' in the Release Notes, linked to from the References.
   (BZ#766333, BZ#882188)
 
   This update also fixes the following bug:
 
   * Prior to this update, if the Active Directory (AD) server was rebooted,
-  Winbind sometimes failed to reconnect when requested by &quot;wbinfo -n&quot; or
-  &quot;wbinfo -s&quot; commands. Consequently, looking up users using the wbinfo tool
+  Winbind sometimes failed to reconnect when requested by 'wbinfo -n' or
+  'wbinfo -s' commands. Consequently, looking up users using the wbinfo tool
   failed. This update applies upstream patches to fix this problem and now
   looking up a Security Identifier (SID) for a username, or a username for a
   given SID, works as expected after a domain controller is rebooted.
@@ -90,7 +90,7 @@ if(description)
 
   Warning: If you upgrade from Red Hat Enterprise Linux 6.3 to Red Hat
   Enterprise Linux 6.4 and you have Samba in use, you should make sure that
-  you uninstall the package named &quot;samba4&quot; to avoid conflicts during the
+  you uninstall the package named 'samba4' to avoid conflicts during the
   upgrade.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");

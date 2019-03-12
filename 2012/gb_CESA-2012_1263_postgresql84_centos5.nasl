@@ -25,16 +25,18 @@
 
 if(description)
 {
-  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-September/018870.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881490");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-09-17 16:44:12 +0530 (Mon, 17 Sep 2012)");
   script_cve_id("CVE-2012-3488", "CVE-2012-3489");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:N");
   script_xref(name:"CESA", value:"2012:1263");
   script_name("CentOS Update for postgresql84 CESA-2012:1263 centos5");
+
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-September/018870.html");
+  script_xref(name:"URL", value:"http://www.postgresql.org/docs/8.4/static/release-8-4-13.html");
 
   script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for postgresql84");
   script_category(ACT_GATHER_INFO);
@@ -55,7 +57,7 @@ if(description)
   they would otherwise not have access to by issuing a specially-crafted SQL
   query. (CVE-2012-3488)
 
-  It was found that the &quot;xml&quot; data type allowed local files and remote URLs
+  It was found that the 'xml' data type allowed local files and remote URLs
   to be read with the privileges of the database server to resolve DTD and
   entity references in the provided XML. An unprivileged database user could
   use this flaw to read local files they would otherwise not have access to
@@ -68,9 +70,7 @@ if(description)
   CVE-2012-3488, and Noah Misch as the original reporter of CVE-2012-3489.
 
   These updated packages upgrade PostgreSQL to version 8.4.13. Refer to the
-  PostgreSQL Release Notes for a list of changes:
-
-  <a  rel= &qt nofollow &qt  href= &qt http://www.postgresql.org/docs/8.4/static/release-8-4-13.html &qt >http://www.postgresql.org/docs/8.4/static/release-8-4-13.html</a>
+  linked PostgreSQL Release Notes for a list of changes.
 
   All PostgreSQL users are advised to upgrade to these updated packages,
   which correct these issues. If the postgresql service is running, it will

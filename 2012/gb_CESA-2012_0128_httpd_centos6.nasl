@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-February/018433.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881089");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-30 16:05:13 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2011-3607", "CVE-2011-3639", "CVE-2011-4317", "CVE-2012-0031",
                 "CVE-2012-0053", "CVE-2011-3368");
@@ -62,8 +62,8 @@ if(description)
   found in the way httpd performed substitutions in regular expressions. An
   attacker able to set certain httpd settings, such as a user permitted to
   override the httpd configuration for a specific directory using a
-  &quot;.htaccess&quot; file, could use this flaw to crash the httpd child process or,
-  possibly, execute arbitrary code with the privileges of the &quot;apache&quot; user.
+  '.htaccess' file, could use this flaw to crash the httpd child process or,
+  possibly, execute arbitrary code with the privileges of the 'apache' user.
   (CVE-2011-3607)
 
   A flaw was found in the way httpd handled child process status information.

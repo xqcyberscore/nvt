@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-January/019177.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881572");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-01-21 09:41:41 +0530 (Mon, 21 Jan 2013)");
   script_cve_id("CVE-2012-2124", "CVE-2010-2813");
   script_tag(name:"cvss_base", value:"5.0");
@@ -63,8 +63,8 @@ if(description)
   scenario. (BZ#241861)
 
   * Due to a bug, attachments written in HTML code on the Windows operating
-  system were not displayed properly when accessed with SquirrelMail; the
-  &quot;!=null&quot; string was trimmed to &quot;!ull&quot;. This bug has been fixed and the
+  system were not displayed properly when accessed with SquirrelMail. The
+  '!=null' string was trimmed to '!ull'. This bug has been fixed and the
   attachments are now displayed correctly in such a case. (BZ#359791)
 
   * Previously, e-mail messages with a Unique Identifier (UID) larger than

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_0865_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_suse_2012_0865_1.nasl 14110 2019-03-12 09:28:23Z cfischer $
 #
 # SuSE Update for update openSUSE-SU-2012:0865-1 (update)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850263");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14110 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 10:28:23 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-12-13 17:01:48 +0530 (Thu, 13 Dec 2012)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -45,11 +45,12 @@ if(description)
   script_tag(name:"affected", value:"update on openSUSE 12.1");
   script_tag(name:"insight", value:"- update to 12.00
 
-  * full changelog available at:
-    http://www.opera.com/docs/changelogs/unix/1120/
+  * full changelog available at the linked references.
 
   - fixes [bnc#767045]");
   script_tag(name:"solution", value:"Please install the updated packages.");
+
+  script_xref(name:"URL", value:"http://www.opera.com/docs/changelogs/unix/1120/");
 
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");

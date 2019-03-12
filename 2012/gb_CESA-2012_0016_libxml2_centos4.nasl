@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-January/018369.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881090");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-30 16:05:28 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2011-0216", "CVE-2011-2834", "CVE-2011-3905", "CVE-2011-3919");
   script_tag(name:"cvss_base", value:"9.3");
@@ -69,7 +69,7 @@ if(description)
   (CVE-2011-2834)
 
   Note: Red Hat does not ship any applications that use libxml2 in a way that
-  would allow the CVE-2011-2834 flaw to be exploited; however, third-party
+  would allow the CVE-2011-2834 flaw to be exploited. However, third-party
   applications may allow XPath expressions to be passed which could trigger
   this flaw.
 

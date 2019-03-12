@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.881710");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-04-15 10:13:06 +0530 (Mon, 15 Apr 2013)");
   script_cve_id("CVE-2013-1845", "CVE-2013-1846", "CVE-2013-1847", "CVE-2013-1849");
   script_tag(name:"cvss_base", value:"5.0");
@@ -56,7 +56,7 @@ if(description)
   (CVE-2013-1849)
 
   A flaw was found in the way the mod_dav_svn module handled large numbers
-  of properties (such as those set with the &quot;svn propset&quot; command).
+  of properties (such as those set with the 'svn propset' command).
   A malicious, remote user could use this flaw to cause the httpd process
   serving the request to consume an excessive amount of system memory.
   (CVE-2013-1845)
@@ -74,8 +74,8 @@ if(description)
 
   Red Hat would like to thank the Apache Subversion project for reporting
   these issues. Upstream acknowledges Alexander Klink as the original
-  reporter of CVE-2013-1845; Ben Reser as the original reporter of
-  CVE-2013-1846; and Philip Martin and Ben Reser as the original reporters of
+  reporter of CVE-2013-1845, Ben Reser as the original reporter of
+  CVE-2013-1846, and Philip Martin and Ben Reser as the original reporters of
   CVE-2013-1847.
 
   All subversion users should upgrade to these updated packages, which

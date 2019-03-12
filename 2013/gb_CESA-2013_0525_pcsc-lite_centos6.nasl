@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-March/019466.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881634");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-03-12 09:58:55 +0530 (Tue, 12 Mar 2013)");
   script_cve_id("CVE-2010-4531");
   script_tag(name:"cvss_base", value:"4.4");
@@ -70,7 +70,7 @@ if(description)
   (BZ#834803)
 
   * Previously, the SCardGetAttrib() function did not work properly and
-  always returned the &quot;SCARD_E_INSUFFICIENT_BUFFER&quot; error regardless of the
+  always returned the 'SCARD_E_INSUFFICIENT_BUFFER' error regardless of the
   actual buffer size. This update applies a patch to fix this bug and the
   SCardGetAttrib() function now works as expected. (BZ#891852)
 

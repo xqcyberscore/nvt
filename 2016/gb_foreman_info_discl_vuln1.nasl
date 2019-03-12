@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foreman_info_discl_vuln1.nasl 12338 2018-11-13 14:51:17Z asteins $
+# $Id: gb_foreman_info_discl_vuln1.nasl 14107 2019-03-12 07:31:46Z cfischer $
 #
 # Foreman Information Disclosure Vulnerability-01
 #
@@ -30,11 +30,11 @@ CPE = 'cpe:/a:theforeman:foreman';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106419");
-  script_version("$Revision: 12338 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
+  script_version("$Revision: 14107 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 08:31:46 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-11-29 08:20:28 +0700 (Tue, 29 Nov 2016)");
-  script_tag(name:"cvss_base", value:"2.1");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"3.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:N/A:N");
 
   script_cve_id("CVE-2016-5390");
 

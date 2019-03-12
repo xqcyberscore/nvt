@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-September/018872.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881489");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-09-17 16:44:08 +0530 (Mon, 17 Sep 2012)");
   script_cve_id("CVE-2012-3524");
   script_tag(name:"cvss_base", value:"6.9");
@@ -56,7 +56,7 @@ if(description)
 
   Note: With this update, libdbus ignores environment variables when used by
   setuid or setgid applications. The environment is not ignored when an
-  application gains privileges via file system capabilities; however, no
+  application gains privileges via file system capabilities. However, no
   application shipped in Red Hat Enterprise Linux 6 gains privileges via file
   system capabilities.
 

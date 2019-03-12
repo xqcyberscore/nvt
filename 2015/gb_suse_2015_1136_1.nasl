@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_1136_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_suse_2015_1136_1.nasl 14110 2019-03-12 09:28:23Z cfischer $
 #
 # SuSE Update for flash-player SUSE-SU-2015:1136-1 (flash-player)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850885");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14110 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 10:28:23 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-10-16 13:35:16 +0200 (Fri, 16 Oct 2015)");
   script_cve_id("CVE-2015-3113");
   script_tag(name:"cvss_base", value:"10.0");
@@ -39,9 +39,10 @@ if(description)
   package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Adobe Flash Player was updated to 11.2.202.468, fixing a security issue,
-  where attackers could trigger a heap overflow and could execute code.
+  where attackers could trigger a heap overflow and could execute code.");
 
-  https://helpx.adobe.com/security/products/flash-player/apsb15-14.html");
+  script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/flash-player/apsb15-14.html");
+
   script_tag(name:"affected", value:"flash-player on SUSE Linux Enterprise Desktop 12");
   script_tag(name:"solution", value:"Please install the updated packages.");
   script_xref(name:"SUSE-SU", value:"2015:1136_1");

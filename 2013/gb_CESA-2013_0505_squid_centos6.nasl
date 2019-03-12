@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-March/019514.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881664");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-03-12 10:01:26 +0530 (Tue, 12 Mar 2013)");
   script_cve_id("CVE-2012-5643");
   script_tag(name:"cvss_base", value:"5.0");
@@ -60,11 +60,11 @@ if(description)
   terminate. (BZ#805879)
 
   * Due to an upstream patch, which renamed the HTTP header controlling
-  persistent connections from &quot;Proxy-Connection&quot; to &quot;Connection&quot;, the NTLM
+  persistent connections from 'Proxy-Connection' to 'Connection', the NTLM
   pass-through authentication does not work, thus preventing login. This
-  update adds the new &quot;http10&quot; option to the squid.conf file, which can be
-  used to enable the change in the patch. This option is set to &quot;off&quot; by
-  default. When set to &quot;on&quot;, the NTLM pass-through authentication works
+  update adds the new 'http10' option to the squid.conf file, which can be
+  used to enable the change in the patch. This option is set to 'off' by
+  default. When set to 'on', the NTLM pass-through authentication works
   properly, thus allowing login attempts to succeed. (BZ#844723)
 
   * When the IPv6 protocol was disabled and Squid tried to handle an HTTP GET
@@ -72,7 +72,7 @@ if(description)
   to signal 6. This bug has been fixed and such requests are now handled as
   expected. (BZ#832484)
 
-  * The old &quot;stale if hit&quot; logic did not account for cases where the stored
+  * The old 'stale if hit' logic did not account for cases where the stored
   stale response became fresh due to a successful re-validation with the
   origin server. Consequently, incorrect warning messages were returned. Now,
   Squid no longer marks elements as stale in the described scenario.

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2014_1130_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_suse_2014_1130_1.nasl 14110 2019-03-12 09:28:23Z cfischer $
 #
 # SuSE Update for update openSUSE-SU-2014:1130-1 (update)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850611");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14110 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 10:28:23 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-09-16 06:01:49 +0200 (Tue, 16 Sep 2014)");
   script_cve_id("CVE-2014-0547", "CVE-2014-0548", "CVE-2014-0549", "CVE-2014-0550",
                 "CVE-2014-0551", "CVE-2014-0552", "CVE-2014-0553", "CVE-2014-0554",
@@ -42,8 +42,10 @@ if(description)
   CVE-2014-0551, CVE-2014-0552, CVE-2014-0553, CVE-2014-0554,
   CVE-2014-0555, CVE-2014-0556, CVE-2014-0557, CVE-2014-0559
 
-  More information can be found on:
-  http://helpx.adobe.com/security/products/flash-player/apsb14-21.html");
+  More information can be found on the referenced vendor advisory.");
+
+  script_xref(name:"URL", value:"http://helpx.adobe.com/security/products/flash-player/apsb14-21.html");
+
   script_tag(name:"affected", value:"update on openSUSE 11.4");
   script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");

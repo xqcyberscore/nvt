@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2009-February/015629.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880800");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -44,14 +44,14 @@ if(description)
   script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS3");
   script_tag(name:"affected", value:"vnc on CentOS 3");
   script_tag(name:"insight", value:"Virtual Network Computing (VNC) is a remote display system which allows you
-  to view a computer's &quot;desktop&quot; environment not only on the machine where it
+  to view a computer's 'desktop' environment not only on the machine where it
   is running, but from anywhere on the Internet and from a wide variety of
   machine architectures.
 
   An insufficient input validation flaw was discovered in the VNC client
   application, vncviewer. If an attacker could convince a victim to connect
   to a malicious VNC server, or when an attacker was able to connect to
-  vncviewer running in the &quot;listen&quot; mode, the attacker could cause the
+  vncviewer running in the 'listen' mode, the attacker could cause the
   victim's vncviewer to crash or, possibly, execute arbitrary code.
   (CVE-2008-4770)
 

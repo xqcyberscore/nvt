@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2010-August/016860.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880589");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -55,10 +55,10 @@ if(description)
   requested. (CVE-2010-2251)
 
   To correct this flaw, the following changes were made to lftp: the
-  &quot;xfer:clobber&quot; option now defaults to &quot;no&quot;, causing lftp to not overwrite
-  existing files, and a new option, &quot;xfer:auto-rename&quot;, which defaults to
-  &quot;no&quot;, has been introduced to control whether lftp should use
-  server-suggested file names. Refer to the &quot;Settings&quot; section of the lftp(1)
+  'xfer:clobber' option now defaults to 'no', causing lftp to not overwrite
+  existing files, and a new option, 'xfer:auto-rename', which defaults to
+  'no', has been introduced to control whether lftp should use
+  server-suggested file names. Refer to the 'Settings' section of the lftp(1)
   manual page for additional details on changing lftp settings.
 
   All lftp users should upgrade to this updated package, which contains a

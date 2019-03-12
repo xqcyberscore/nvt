@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2011-September/018086.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881396");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-30 17:43:09 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2011-2372", "CVE-2011-2995", "CVE-2011-2998", "CVE-2011-2999", "CVE-2011-3000");
   script_tag(name:"cvss_base", value:"10.0");
@@ -52,9 +52,9 @@ if(description)
   potentially, execute arbitrary code with the privileges of the user running
   Firefox. (CVE-2011-2995)
 
-  A flaw was found in the way Firefox processed the &quot;Enter&quot; keypress event. A
+  A flaw was found in the way Firefox processed the 'Enter' keypress event. A
   malicious web page could present a download dialog while the key is
-  pressed, activating the default &quot;Open&quot; action. A remote attacker could
+  pressed, activating the default 'Open' action. A remote attacker could
   exploit this vulnerability by causing the browser to open malicious web
   content. (CVE-2011-2372)
 

@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2009-June/015957.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880820");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -46,8 +46,8 @@ if(description)
   script_tag(name:"insight", value:"The Common UNIX Printing System (CUPS) provides a portable printing layer
   for UNIX operating systems. The Internet Printing Protocol (IPP) allows
   users to print and manage printing-related tasks over a network. The CUPS
-  &quot;pdftops&quot; filter converts Portable Document Format (PDF) files to
-  PostScript. &quot;pdftops&quot; is based on Xpdf and the CUPS imaging library.
+  'pdftops' filter converts Portable Document Format (PDF) files to
+  PostScript. 'pdftops' is based on Xpdf and the CUPS imaging library.
 
   A NULL pointer dereference flaw was found in the CUPS IPP routine, used for
   processing incoming IPP requests for the CUPS scheduler. An attacker could
@@ -60,9 +60,9 @@ if(description)
   stop or crash). (CVE-2009-1196)
 
   Multiple integer overflows flaws, leading to heap-based buffer overflows,
-  were found in the CUPS &quot;pdftops&quot; filter. An attacker could create a
-  malicious PDF file that would cause &quot;pdftops&quot; to crash or, potentially,
-  execute arbitrary code as the &quot;lp&quot; user if the file was printed.
+  were found in the CUPS 'pdftops' filter. An attacker could create a
+  malicious PDF file that would cause 'pdftops' to crash or, potentially,
+  execute arbitrary code as the 'lp' user if the file was printed.
   (CVE-2009-0791)
 
   Red Hat would like to thank Anibal Sacco from Core Security Technologies

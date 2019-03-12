@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2009-April/015712.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880702");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
@@ -66,7 +66,7 @@ if(description)
   * a deficiency was found in the Remote BIOS Update (RBU) driver for Dell
   systems. This could allow a local, unprivileged user to cause a denial of
   service by reading zero bytes from the image_type or packet_size files in
-  &quot;/sys/devices/platform/dell_rbu/&quot;. (CVE-2009-0322, Moderate)
+  '/sys/devices/platform/dell_rbu/'. (CVE-2009-0322, Moderate)
 
   * an inverted logic flaw was found in the SysKonnect FDDI PCI adapter
   driver, allowing driver statistics to be reset only when the CAP_NET_ADMIN
@@ -86,7 +86,7 @@ if(description)
 
   * a deficiency was found in the libATA implementation. This could,
   potentially, lead to a local denial of service. Note: by default, the
-  &quot;/dev/sg*&quot; devices are accessible only to the root user.
+  '/dev/sg*' devices are accessible only to the root user.
   (CVE-2008-5700, Low)
 
   Bug fixes:

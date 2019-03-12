@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-June/018673.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881238");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-30 16:54:47 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2012-1033", "CVE-2012-1667");
   script_tag(name:"cvss_base", value:"8.5");
@@ -45,8 +45,8 @@ if(description)
   script_tag(name:"affected", value:"bind97 on CentOS 5");
   script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"insight", value:"The Berkeley Internet Name Domain (BIND) is an implementation of the Domain
-  Name System (DNS) protocols. BIND includes a DNS server (named); a resolver
-  library (routines for applications to use when interfacing with DNS); and
+  Name System (DNS) protocols. BIND includes a DNS server (named), a resolver
+  library (routines for applications to use when interfacing with DNS), and
   tools for verifying that the DNS server is operating correctly.
 
   A flaw was found in the way BIND handled zero length resource data records.

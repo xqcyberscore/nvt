@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2009-October/016235.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880765");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"4.7");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:N/I:N/A:C");
@@ -49,8 +49,8 @@ if(description)
   Security fix:
 
   * a NULL pointer dereference flaw was found in the Multiple Devices (md)
-  driver in the Linux kernel. If the &quot;suspend_lo&quot; or &quot;suspend_hi&quot; file on the
-  sysfs file system (&quot;/sys/&quot;) is modified when the disk array is inactive, it
+  driver in the Linux kernel. If the 'suspend_lo' or 'suspend_hi' file on the
+  sysfs file system ('/sys/') is modified when the disk array is inactive, it
   could lead to a local denial of service or privilege escalation. Note: By
   default, only the root user can write to the files mentioned above.
   (CVE-2009-2849, Moderate)
@@ -78,7 +78,7 @@ if(description)
   best performance. (BZ#520686)
 
   * reading/writing with a serial loopback device on a certain IBM system did
-  not work unless booted with &quot;pnpacpi=off&quot;. (BZ#520905)
+  not work unless booted with 'pnpacpi=off'. (BZ#520905)
 
   * mlx4_core failed to load on systems with more than 32 CPUs. (BZ#520906)
 
@@ -87,18 +87,18 @@ if(description)
   fault in the VLAN stack in the kernel occurred). (BZ#520908)
 
   * due to a lock being held for a long time, some systems may have
-  experienced &quot;BUG: soft lockup&quot; messages under very heavy load. (BZ#520919)
+  experienced 'BUG: soft lockup' messages under very heavy load. (BZ#520919)
 
   * incorrect APIC timer calibration may have caused a system hang during
   boot, as well as the system time becoming faster or slower. A warning is
   now provided. (BZ#521238)
 
-  * a Fibre Channel device re-scan via 'echo &quot;---&quot; &gt; /sys/class/scsi_host/
+  * a Fibre Channel device re-scan via 'echo '---' > /sys/class/scsi_host/
   host[x]/scan' may not complete after hot adding a drive, leading to soft
-  lockups (&quot;BUG: soft lockup detected&quot;). (BZ#521239)
+  lockups ('BUG: soft lockup detected'). (BZ#521239)
 
   * the Broadcom BCM5761 network device was unable to be initialized
-  properly; therefore, the associated interface could not obtain an IP
+  properly, therefore, the associated interface could not obtain an IP
   address via DHCP, ...
 
   Description truncated, please see the referenced URL(s) for more information.");

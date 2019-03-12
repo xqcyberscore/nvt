@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_2247_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_suse_2015_2247_1.nasl 14110 2019-03-12 09:28:23Z cfischer $
 #
 # SuSE Update for flash-player SUSE-SU-2015:2247-1 (flash-player)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851140");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14110 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 10:28:23 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-12-11 05:48:26 +0100 (Fri, 11 Dec 2015)");
   script_cve_id("CVE-2015-8045", "CVE-2015-8047", "CVE-2015-8048", "CVE-2015-8049",
                 "CVE-2015-8050", "CVE-2015-8055", "CVE-2015-8056", "CVE-2015-8057",
@@ -101,8 +101,10 @@ if(description)
   CVE-2015-8069, CVE-2015-8070, CVE-2015-8441, CVE-2015-8442,
   CVE-2015-8447).
 
-  Please also see
-  'https://helpx.adobe.com/security/products/flash-player/apsb15-32.html'");
+  Please also see the referenced vendor advisory.");
+
+  script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/flash-player/apsb15-32.html");
+
   script_tag(name:"affected", value:"flash-player on SUSE Linux Enterprise Desktop 12");
   script_tag(name:"solution", value:"Please install the updated packages.");
   script_xref(name:"SUSE-SU", value:"2015:2247_1");

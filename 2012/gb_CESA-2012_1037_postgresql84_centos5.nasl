@@ -25,16 +25,18 @@
 
 if(description)
 {
-  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-June/018699.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881080");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-30 16:01:54 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2012-2143", "CVE-2012-2655");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_xref(name:"CESA", value:"2012:1037");
   script_name("CentOS Update for postgresql84 CESA-2012:1037 centos5");
+
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-June/018699.html");
+  script_xref(name:"URL", value:"http://www.postgresql.org/docs/8.4/static/release.html");
 
   script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for postgresql84");
   script_category(ACT_GATHER_INFO);
@@ -57,7 +59,7 @@ if(description)
   (CVE-2012-2143)
 
   Note: With this update, the rest of the string is properly included in the
-  DES hash; therefore, any previously stored password values that are
+  DES hash. Therefore, any previously stored password values that are
   affected by this issue will no longer match. In such cases, it will be
   necessary for those stored password hashes to be updated.
 
@@ -73,9 +75,7 @@ if(description)
 
   These updated packages upgrade PostgreSQL to version 8.4.12, which fixes
   these issues as well as several non-security issues. Refer to the
-  PostgreSQL Release Notes for a full list of changes:
-
-  <a  rel= &qt nofollow &qt  href= &qt http://www.postgresql.org/docs/8.4/static/release.html &qt >http://www.postgresql.org/docs/8.4/static/release.html</a>
+  linked PostgreSQL Release Notes for a full list of changes.
 
   All PostgreSQL users are advised to upgrade to these updated packages,
   which correct these issues. If the postgresql service is running, it will

@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2011-April/017372.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881375");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-30 17:37:29 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2008-0564", "CVE-2010-3089", "CVE-2011-0707");
   script_tag(name:"cvss_base", value:"4.3");
@@ -55,7 +55,7 @@ if(description)
   Multiple input sanitization flaws were found in the way Mailman displayed
   mailing list information. A mailing list administrator could use this flaw
   to conduct a cross-site scripting (XSS) attack against victims viewing a
-  list's &quot;listinfo&quot; page. (CVE-2008-0564, CVE-2010-3089)
+  list's 'listinfo' page. (CVE-2008-0564, CVE-2010-3089)
 
   Red Hat would like to thank Mark Sapiro for reporting the CVE-2011-0707 and
   CVE-2010-3089 issues.

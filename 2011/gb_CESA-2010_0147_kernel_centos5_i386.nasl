@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2010-March/016579.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880646");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -62,7 +62,7 @@ if(description)
   * a NULL pointer dereference flaw was found in the ip6_dst_lookup_tail()
   function in the Linux kernel. An attacker on the local network could
   trigger this flaw by sending IPv6 traffic to a target system, leading to a
-  system crash (kernel OOPS) if dst-&gt;neighbour is NULL on the target system
+  system crash (kernel OOPS) if dst->neighbour is NULL on the target system
   when receiving an IPv6 packet. (CVE-2010-0437, Important)
 
   * a NULL pointer dereference flaw was found in the ext4 file system code in
@@ -72,7 +72,7 @@ if(description)
   Moderate)
 
   * an information leak was found in the print_fatal_signal() implementation
-  in the Linux kernel. When &quot;/proc/sys/kernel/print-fatal-signals&quot; is set to
+  in the Linux kernel. When '/proc/sys/kernel/print-fatal-signals' is set to
   1 (the default value is 0), memory that is reachable by the kernel could be
   leaked to user-space. This issue could also result in a system crash. Note
   that this flaw only affected the i386 architecture. (CVE-2010-0003,

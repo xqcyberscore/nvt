@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2009-May/015845.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880841");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:N/A:N");
@@ -57,7 +57,7 @@ if(description)
   * a deficiency was found in the Linux kernel system call auditing
   implementation on 64-bit systems. This could allow a local, unprivileged
   user to circumvent a system call audit configuration, if that configuration
-  filtered based on the &quot;syscall&quot; number or arguments.
+  filtered based on the 'syscall' number or arguments.
   (CVE-2009-0834, Important)
 
   * the exit_notify() function in the Linux kernel did not properly reset the
@@ -88,11 +88,11 @@ if(description)
   * network interfaces using the IBM eHEA Ethernet device driver could not be
   successfully configured under low-memory conditions. (BZ#487035)
 
-  * bonding with the &quot;arp_validate=3&quot; option may have prevented fail overs.
+  * bonding with the 'arp_validate=3' option may have prevented fail overs.
   (BZ#488064)
 
-  * when running under virtualization, the acpi-cpufreq module wrote &quot;Domain
-  attempted WRMSR&quot; errors to the dmesg log. (BZ#488928)
+  * when running under virtualization, the acpi-cpufreq module wrote 'Domain
+  attempted WRMSR' errors to the dmesg log. (BZ#488928)
 
   * NFS clients may have experienced deadlocks during unmount. (BZ#488929)
 

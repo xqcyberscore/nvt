@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882285");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14095 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 14:54:56 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-09-17 06:18:00 +0200 (Thu, 17 Sep 2015)");
   script_cve_id("CVE-2014-9585", "CVE-2015-0275", "CVE-2015-1333", "CVE-2015-3212", "CVE-2015-4700", "CVE-2015-5364", "CVE-2015-5366");
   script_tag(name:"cvss_base", value:"7.8");
@@ -79,10 +79,8 @@ and Canonical for reporting the CVE-2015-1333 issue. The CVE-2015-0275
 issue was discovered by Xiong Zhou of Red Hat, and the CVE-2015-3212 issue
 was discovered by Ji Jianwen of Red Hat Engineering.
 
-This update also fixes several bugs. Refer to the following Knowledgebase
-article for further information:
-
-<a  rel='nofollow' href='https://access.redhat.com/articles/1614563'>https://access.redhat.com/articles/1614563</a>
+This update also fixes several bugs. Refer to the linked Knowledgebase
+article for further information.
 
 All kernel users are advised to upgrade to these updated packages, which
 contain backported patches to correct these issues. The system must be
@@ -91,6 +89,7 @@ rebooted for this update to take effect.");
   script_tag(name:"solution", value:"Please install the updated packages.");
   script_xref(name:"CESA", value:"2015:1778");
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2015-September/021395.html");
+  script_xref(name:"URL", value:"https://access.redhat.com/articles/1614563");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

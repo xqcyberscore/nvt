@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2010-July/016747.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880617");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -54,9 +54,9 @@ if(description)
 
   * a NULL pointer dereference flaw was found in the Fast Userspace Mutexes
   (futexes) implementation. The unlock code path did not check if the futex
-  value associated with pi_state-&gt;owner had been modified. A local user could
+  value associated with pi_state->owner had been modified. A local user could
   use this flaw to modify the futex value, possibly leading to a denial of
-  service or privilege escalation when the pi_state-&gt;owner pointer is
+  service or privilege escalation when the pi_state->owner pointer is
   dereferenced. (CVE-2010-0622, Important)
 
   * a NULL pointer dereference flaw was found in the Linux kernel Network
@@ -83,8 +83,8 @@ if(description)
   on disk in an invalid state. A user with write access to a GFS2 file system
   could trigger this flaw to cause a kernel crash (denial of service) or
   escalate their privileges on the GFS2 server. This issue can only be
-  triggered if the GFS2 file system is mounted with the &quot;quota=on&quot; or
-  &quot;quota=account&quot; mount option. (CVE-2010-1436, Important)
+  triggered if the GFS2 file system is mounted with the 'quota=on' or
+  'quota=account' mount option. (CVE-2010-1436, Important)
 
   * a race condition between finding a keyring by name and destroying a freed
   keyring was found in the Linux kernel key management facility. A local user

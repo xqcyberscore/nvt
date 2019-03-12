@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2010-June/016735.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880585");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -44,13 +44,13 @@ if(description)
   script_mandatory_keys("ssh/login/centos", "ssh/login/rpms", re:"ssh/login/release=CentOS5");
   script_tag(name:"affected", value:"cups on CentOS 5");
   script_tag(name:"insight", value:"The Common UNIX Printing System (CUPS) provides a portable printing layer
-  for UNIX operating systems. The CUPS &quot;texttops&quot; filter converts text files
+  for UNIX operating systems. The CUPS 'texttops' filter converts text files
   to PostScript.
 
   A missing memory allocation failure check flaw, leading to a NULL pointer
-  dereference, was found in the CUPS &quot;texttops&quot; filter. An attacker could
-  create a malicious text file that would cause &quot;texttops&quot; to crash or,
-  potentially, execute arbitrary code as the &quot;lp&quot; user if the file was
+  dereference, was found in the CUPS 'texttops' filter. An attacker could
+  create a malicious text file that would cause 'texttops' to crash or,
+  potentially, execute arbitrary code as the 'lp' user if the file was
   printed. (CVE-2010-0542)
 
   A Cross-Site Request Forgery (CSRF) issue was found in the CUPS web
@@ -71,7 +71,7 @@ if(description)
   Red Hat would like to thank the Apple Product Security team for responsibly
   reporting these issues. Upstream acknowledges regenrecht as the original
   reporter of CVE-2010-0542 Adrian 'pagvac' Pastor of GNUCITIZEN and Tim
-  Starling as the original reporters of CVE-2010-0540; and Luca Carettoni as
+  Starling as the original reporters of CVE-2010-0540, and Luca Carettoni as
   the original reporter of CVE-2010-1748.
 
   Users of cups are advised to upgrade to these updated packages, which

@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2011-January/017226.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881306");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-30 17:20:15 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2010-1623");
   script_tag(name:"cvss_base", value:"5.0");
@@ -46,7 +46,7 @@ if(description)
   script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"insight", value:"The Apache Portable Runtime (APR) is a portability library used by the
   Apache HTTP Server and other projects. apr-util is a library which provides
-  additional utility interfaces for APR; including support for XML parsing,
+  additional utility interfaces for APR, including support for XML parsing,
   LDAP, database interfaces, URI parsing, and more.
 
   It was found that certain input could cause the apr-util library to

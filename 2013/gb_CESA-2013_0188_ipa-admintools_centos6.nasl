@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-January/019213.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881580");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-01-24 09:27:44 +0530 (Thu, 24 Jan 2013)");
   script_cve_id("CVE-2012-5484");
   script_tag(name:"cvss_base", value:"7.9");
@@ -70,7 +70,7 @@ if(description)
   This update must be installed on both the IPA client and IPA server. When
   this update has been applied to the client but not the server,
   ipa-client-install, in unattended mode, will fail if you do not have the
-  correct CA certificate locally, noting that you must use the &quot;--force&quot;
+  correct CA certificate locally, noting that you must use the '--force'
   option to insecurely obtain the certificate. In interactive mode, the
   certificate will try to be obtained securely from LDAP. If this fails, you
   will be prompted to insecurely download the certificate via HTTP. In the

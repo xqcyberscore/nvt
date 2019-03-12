@@ -25,10 +25,9 @@
 
 if(description)
 {
-  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2009-September/016137.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880884");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14095 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 14:54:56 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:C");
@@ -36,6 +35,10 @@ if(description)
   script_cve_id("CVE-2009-0745", "CVE-2009-0746", "CVE-2009-0747", "CVE-2009-0748",
                 "CVE-2009-2847", "CVE-2009-2848");
   script_name("CentOS Update for kernel CESA-2009:1243 centos5 i386");
+
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2009-September/016137.html");
+  script_xref(name:"URL", value:"http://www.redhat.com/docs/en-US/Red_Hat_Enterprise_Linux/5.4/html/Release_Notes/");
+  script_xref(name:"URL", value:"http://www.redhat.com/docs/en-US/Red_Hat_Enterprise_Linux/5.4/html/Technical_Notes/kernel.html");
 
   script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for kernel");
   script_category(ACT_GATHER_INFO);
@@ -70,17 +73,13 @@ if(description)
 
   These updated packages also include several hundred bug fixes for and
   enhancements to the Linux kernel. Space precludes documenting each of these
-  changes in this advisory and users are directed to the Red Hat Enterprise
+  changes in this advisory and users are directed to the linked Red Hat Enterprise
   Linux 5.4 Release Notes for information on the most significant of these
-  changes:
-
-  http://www.redhat.com/docs/en-US/Red_Hat_Enterprise_Linux/5.4/html/Release_Notes/
+  changes.
 
   Also, for details concerning every bug fixed in and every enhancement added
-  to the kernel for this release, see the kernel chapter in the Red Hat
-  Enterprise Linux 5.4 Technical Notes:
-
-  http://www.redhat.com/docs/en-US/Red_Hat_Enterprise_Linux/5.4/html/Technical_Notes/kernel.html
+  to the kernel for this release, see the kernel chapter in the linked Red Hat
+  Enterprise Linux 5.4 Technical Notes.
 
   All Red Hat Enterprise Linux 5 users are advised to install these updated
   packages, which address these vulnerabilities as well as fixing the bugs

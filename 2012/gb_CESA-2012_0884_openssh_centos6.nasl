@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-July/018719.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881183");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-30 16:36:31 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2011-5000");
   script_tag(name:"cvss_base", value:"3.5");
@@ -52,12 +52,12 @@ if(description)
   implementation. A remote, authenticated user could use this flaw to make
   the OpenSSH server daemon (sshd) use an excessive amount of memory, leading
   to a denial of service. GSSAPI authentication is enabled by default
-  (&quot;GSSAPIAuthentication yes&quot; in &quot;/etc/ssh/sshd_config&quot;). (CVE-2011-5000)
+  ('GSSAPIAuthentication yes' in '/etc/ssh/sshd_config'). (CVE-2011-5000)
 
   These updated openssh packages also provide fixes for the following bugs:
 
   * SSH X11 forwarding failed if IPv6 was enabled and the parameter
-  X11UseLocalhost was set to &quot;no&quot;. Consequently, users could not set X
+  X11UseLocalhost was set to 'no'. Consequently, users could not set X
   forwarding. This update fixes sshd and ssh to correctly bind the port for
   the IPv6 protocol. As a result, X11 forwarding now works as expected with
   IPv6. (BZ#732955)
@@ -69,7 +69,7 @@ if(description)
   (BZ#744236)
 
   * If the SSH server is configured with a banner that contains a backslash
-  character, then the client will escape it with another &quot;\&quot; character, so it
+  character, then the client will escape it with another '\' character, so it
   prints double backslashes. An upstream patch has been applied to correct
   the problem and the SSH banner is now correctly displayed. (BZ#809619)
 
@@ -85,7 +85,7 @@ if(description)
   are required for a successful login. For example, to set key and password
   authentication for SSH version 2, type:
 
-  echo &quot;RequiredAuthentications2 publickey, password&quot; &gt;&gt; /etc/ssh/sshd_config
+  echo 'RequiredAuthentications2 publickey, password' >> /etc/ssh/sshd_config
 
   For more information on the aforementioned /etc/ssh/sshd_config options,
   refer to the sshd_config man page. (BZ#657378)

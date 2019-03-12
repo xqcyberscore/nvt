@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_3035_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_suse_2016_3035_1.nasl 14110 2019-03-12 09:28:23Z cfischer $
 #
 # SuSE Update for tiff openSUSE-SU-2016:3035-1 (tiff)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851447");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14110 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 10:28:23 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-12-08 05:33:44 +0100 (Thu, 08 Dec 2016)");
   script_cve_id("CVE-2014-8127", "CVE-2015-7554", "CVE-2015-8665", "CVE-2015-8683",
                 "CVE-2016-3622", "CVE-2016-3658", "CVE-2016-5321", "CVE-2016-5323",
@@ -46,12 +46,10 @@ if(description)
   * libtiff/tif_aux.c
   + Fix crash in TIFFVGetFieldDefaulted() when requesting Predictor tag
   and that the zip/lzw codec is not configured.
-  'http://bugzilla.maptools.org/show_bug.cgi?id=2591'
 
   * libtiff/tif_compress.c
   + Make TIFFNoDecode() return 0 to indicate an error and make upper
   level read routines treat it accordingly.
-  'http://bugzilla.maptools.org/show_bug.cgi?id=2517'
 
   * libtiff/tif_dir.c
   + Discard values of SMinSampleValue and SMaxSampleValue when they have
@@ -78,7 +76,7 @@ if(description)
   TileOffsets/StripOffsets tag, when OJPEG compression is disabled.
   Prevent null pointer dereference in TIFFReadRawStrip1() and other
   functions that expect td_stripbytecount to be non NULL.
-  'http://bugzilla.maptools.org/show_bug.cgi?id=2585'
+
   + When compiled with DEFER_STRILE_LOAD, fix regression, when reading a
   one-strip file without a StripByteCounts tag.
   + Workaround false positive warning of Clang Static Analyzer about

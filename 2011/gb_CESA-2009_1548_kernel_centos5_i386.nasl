@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2009-November/016304.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880731");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -82,7 +82,7 @@ if(description)
 
   Bug fixes:
 
-  * with network bonding in the &quot;balance-tlb&quot; or &quot;balance-alb&quot; mode, the
+  * with network bonding in the 'balance-tlb' or 'balance-alb' mode, the
   primary setting for the primary slave device was lost when said device was
   brought down. Bringing the slave back up did not restore the primary
   setting. (BZ#517971)

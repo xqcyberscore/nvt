@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-January/018384.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881102");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-30 16:08:56 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2012-0056");
   script_tag(name:"cvss_base", value:"6.9");
@@ -60,7 +60,7 @@ if(description)
   This update fixes the following bugs:
 
   * The RHSA-2011:1849 kernel update introduced a bug in the Linux kernel
-  scheduler, causing a &quot;WARNING: at kernel/sched.c:5915 thread_return&quot;
+  scheduler, causing a 'WARNING: at kernel/sched.c:5915 thread_return'
   message and a call trace to be logged. This message was harmless, and was
   not due to any system malfunctions or adverse behavior. With this update,
   the WARN_ON_ONCE() call in the scheduler that caused this harmless message
@@ -75,11 +75,11 @@ if(description)
   the module from functioning correctly. (BZ#769595)
 
   * On some SMP systems the tsc may erroneously be marked as unstable during
-  early system boot or while the system is under heavy load. A &quot;Clocksource
-  tsc unstable&quot; message was logged when this occurred. As a result the system
+  early system boot or while the system is under heavy load. A 'Clocksource
+  tsc unstable' message was logged when this occurred. As a result the system
   would switch to the slower access, but higher precision HPET clock.
 
-  The &quot;tsc=reliable&quot; kernel parameter is supposed to avoid this problem by
+  The 'tsc=reliable' kernel parameter is supposed to avoid this problem by
   indicating that the system has a known good clock, however, the parameter
   only affected run time checks.  A fix has been put in to avoid the boot
   time checks so that the TSC remains as the clock for the duration of

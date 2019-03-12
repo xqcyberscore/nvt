@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2011-September/017961.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881002");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-09-23 16:39:49 +0200 (Fri, 23 Sep 2011)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -45,16 +45,16 @@ if(description)
   script_tag(name:"affected", value:"rsync on CentOS 5");
   script_tag(name:"insight", value:"rsync is a program for synchronizing files over a network.
 
-  A flaw was found in the way the rsync daemon handled the &quot;filter&quot;,
-  &quot;exclude&quot;, and &quot;exclude from&quot; options, used for hiding files and preventing
+  A flaw was found in the way the rsync daemon handled the 'filter',
+  'exclude', and 'exclude from' options, used for hiding files and preventing
   access to them from rsync clients. A remote attacker could use this flaw to
   bypass those restrictions by using certain command line options and
   symbolic links, allowing the attacker to overwrite those files if they knew
   their file names and had write access to them. (CVE-2007-6200)
 
   Note: This issue only affected users running rsync as a writable daemon:
-  &quot;read only&quot; set to &quot;false&quot; in the rsync configuration file (for example,
-  &quot;/etc/rsyncd.conf&quot;). By default, this option is set to &quot;true&quot;.
+  'read only' set to 'false' in the rsync configuration file (for example,
+  '/etc/rsyncd.conf'). By default, this option is set to 'true'.
 
   This update also fixes the following bugs:
 
@@ -64,10 +64,10 @@ if(description)
 
   * When running an rsync daemon that was receiving files, a deferred info,
   error or log message could have been sent directly to the sender instead of
-  being handled by the &quot;rwrite()&quot; function in the generator. Also, under
+  being handled by the 'rwrite()' function in the generator. Also, under
   certain circumstances, a deferred info or error message from the receiver
   could have bypassed the log file and could have been sent only to the
-  client process. As a result, an &quot;unexpected tag 3&quot; fatal error could have
+  client process. As a result, an 'unexpected tag 3' fatal error could have
   been displayed. These problems have been fixed in this update so that an
   rsync daemon receiving files now works as expected. (BZ#471182)
 
@@ -78,13 +78,13 @@ if(description)
   respective timezone-using functions prior to doing a chroot, and proper
   timestamps are now generated as expected. (BZ#575022)
 
-  * When running rsync under a non-root user with the &quot;-A&quot; (&quot;--acls&quot;) option
-  and without using the &quot;--numeric-ids&quot; option, if there was an Access
+  * When running rsync under a non-root user with the '-A' ('--acls') option
+  and without using the '--numeric-ids' option, if there was an Access
   Control List (ACL) that included a group entry for a group that the
   respective user was not a member of on the receiving side, the
-  &quot;acl_set_file()&quot; function returned an invalid argument value (&quot;EINVAL&quot;).
+  'acl_set_file()' function returned an invalid argument value ('EINVAL').
   This was caused by rsync mistakenly mapping the group name to the Group ID
-  &quot;GID_NONE&quot; (&quot;-1&quot;), which failed. The bug has been fixed in this update so
+  'GID_NONE' ('-1'), which failed. The bug has been fixed in this update so
   that no ...
 
   Description truncated, please see the referenced URL(s) for more information.");

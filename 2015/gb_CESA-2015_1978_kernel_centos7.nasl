@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882322");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14095 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 14:54:56 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-11-05 06:17:12 +0100 (Thu, 05 Nov 2015)");
   script_cve_id("CVE-2014-8559", "CVE-2015-5156");
   script_tag(name:"cvss_base", value:"6.1");
@@ -54,9 +54,7 @@ or, although unlikely, elevate their privileges on the system.
 The CVE-2015-5156 issue was discovered by Jason Wang of Red Hat.
 
 This update also fixes several bugs and adds one enhancement. Refer to the
-following Knowledgebase article for further information:
-
-https://access.redhat.com/articles/2039563
+linked Knowledgebase article for further information.
 
 All kernel users are advised to upgrade to these updated packages, which
 contain backported patches to correct these issues and add this
@@ -65,6 +63,7 @@ enhancement. The system must be rebooted for this update to take effect.");
   script_tag(name:"solution", value:"Please install the updated packages.");
   script_xref(name:"CESA", value:"2015:1978");
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2015-November/021463.html");
+  script_xref(name:"URL", value:"https://access.redhat.com/articles/2039563");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

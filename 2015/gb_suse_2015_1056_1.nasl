@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_1056_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_suse_2015_1056_1.nasl 14110 2019-03-12 09:28:23Z cfischer $
 #
 # SuSE Update for cups openSUSE-SU-2015:1056-1 (cups)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850659");
-  script_version("$Revision: 12381 $");
+  script_version("$Revision: 14110 $");
   script_cve_id("CVE-2012-5519", "CVE-2015-1158", "CVE-2015-1159");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 10:28:23 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-06-13 05:55:09 +0200 (Sat, 13 Jun 2015)");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for cups openSUSE-SU-2015:1056-1 (cups)");
@@ -46,9 +46,11 @@ if(description)
   CVE-2015-1159 bugzilla.suse.com bsc#924208). In general it is crucial to
   limit access to CUPS to trustworthy users who do not misuse their
   permission to submit print jobs which means to upload arbitrary data
-  onto the CUPS server, see
-  <a  rel='nofollow' href='https://en.opensuse.org/SDB:CUPS_and_SANE_Firewall_settings'>https://en.opensuse.org/SDB:CUPS_and_SANE_Firewall_settings and cf. the
-  entries about CVE-2012-5519 below.");
+  onto the CUPS server, see the references and cf. the
+  entries about CVE-2012-5519.");
+
+  script_xref(name:"URL", value:"https://en.opensuse.org/SDB:CUPS_and_SANE_Firewall_settings");
+
   script_tag(name:"affected", value:"cups on openSUSE 13.1");
   script_tag(name:"solution", value:"Please install the updated packages.");
   script_xref(name:"openSUSE-SU", value:"2015:1056_1");

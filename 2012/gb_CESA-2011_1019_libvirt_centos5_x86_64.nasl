@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2011-September/017881.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881323");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-30 17:23:25 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2011-2511");
   script_tag(name:"cvss_base", value:"4.0");
@@ -60,8 +60,8 @@ if(description)
   0.7.7 (0.7.x) servers. A libvirt 0.7.x server could send
   VIR_ERR_BUILD_FIREWALL errors where a libvirt 0.8.2 client expected
   VIR_ERR_CONFIG_UNSUPPORTED errors. In other circumstances, a libvirt 0.8.2
-  client saw a &quot;Timed out during operation&quot; message where it should see an
-  &quot;Invalid network filter&quot; error. This update adds a backported patch that
+  client saw a 'Timed out during operation' message where it should see an
+  'Invalid network filter' error. This update adds a backported patch that
   allows libvirt 0.8.2 clients to interoperate with the API as used by
   libvirt 0.7.x servers, ensuring correct error messages are sent.
   (BZ#665075)
@@ -88,9 +88,9 @@ if(description)
   test. With this update you can run rpmbuild successfully when using the Xen
   kernel. (BZ#690459)
 
-  * When a disk was hot unplugged, &quot;ret &gt;= 0&quot; was passed to the qemuAuditDisk
+  * When a disk was hot unplugged, 'ret >= 0' was passed to the qemuAuditDisk
   calls in disk hotunplug operations before ret was, in fact, set to 0. As
-  well, the error path jumped to the &quot;cleanup&q ...
+  well, the error path jumped to the 'cleanup&q ...
 
   Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"qod_type", value:"package");

@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-March/019462.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881657");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-03-12 10:01:03 +0530 (Tue, 12 Mar 2013)");
   script_cve_id("CVE-2011-3148", "CVE-2011-3149");
   script_tag(name:"cvss_base", value:"4.6");
@@ -49,14 +49,14 @@ if(description)
   recompile programs to handle authentication.
 
   A stack-based buffer overflow flaw was found in the way the pam_env module
-  parsed users' &quot;~/.pam_environment&quot; files. If an application's PAM
-  configuration contained &quot;user_readenv=1&quot; (this is not the default), a
+  parsed users' '~/.pam_environment' files. If an application's PAM
+  configuration contained 'user_readenv=1' (this is not the default), a
   local attacker could use this flaw to crash the application or, possibly,
   escalate their privileges. (CVE-2011-3148)
 
   A denial of service flaw was found in the way the pam_env module expanded
   certain environment variables. If an application's PAM configuration
-  contained &quot;user_readenv=1&quot; (this is not the default), a local attacker
+  contained 'user_readenv=1' (this is not the default), a local attacker
   could use this flaw to cause the application to enter an infinite loop.
   (CVE-2011-3149)
 

@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-March/019615.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881663");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-03-12 10:01:23 +0530 (Tue, 12 Mar 2013)");
   script_cve_id("CVE-2012-5689");
   script_tag(name:"cvss_base", value:"7.1");
@@ -45,9 +45,9 @@ if(description)
   script_tag(name:"affected", value:"bind on CentOS 6");
   script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"insight", value:"The Berkeley Internet Name Domain (BIND) is an implementation of the
-  Domain Name System (DNS) protocols. BIND includes a DNS server (named); a
+  Domain Name System (DNS) protocols. BIND includes a DNS server (named), a
   resolver library (routines for applications to use when interfacing with
-  DNS); and tools for verifying that the DNS server is operating correctly.
+  DNS), and tools for verifying that the DNS server is operating correctly.
   DNS64 is used to automatically generate DNS records so IPv6 based clients
   can access IPv4 systems through a NAT64 server.
 
@@ -62,10 +62,10 @@ if(description)
   * Previously, it was impossible to configure the the maximum number of
   responses sent per second to one client. This allowed remote attackers to
   conduct traffic amplification attacks using DNS queries with spoofed source
-  IP addresses. With this update, it is possible to use the new &quot;rate-limit&quot;
+  IP addresses. With this update, it is possible to use the new 'rate-limit'
   configuration option in named.conf and configure the maximum number of
   queries which the server responds to. Refer to the BIND documentation for
-  more details about the &quot;rate-limit&quot; option. (BZ#906312)
+  more details about the 'rate-limit' option. (BZ#906312)
 
   All bind users are advised to upgrade to these updated packages, which
   contain patches to correct this issue and add this enhancement. After

@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2011-May/017527.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881294");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-30 17:19:02 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2010-3450", "CVE-2010-3451", "CVE-2010-3452", "CVE-2010-3453",
                 "CVE-2010-3454", "CVE-2010-3689", "CVE-2010-4253", "CVE-2010-4643");
@@ -87,7 +87,7 @@ if(description)
   installing the JAR or extension file. (CVE-2010-3450)
 
   A flaw was found in the script that launches OpenOffice.org. In some
-  situations, a &quot;.&quot; character could be included in the LD_LIBRARY_PATH
+  situations, a '.' character could be included in the LD_LIBRARY_PATH
   variable, allowing a local attacker to execute ...
 
   Description truncated, please see the referenced URL(s) for more information.");

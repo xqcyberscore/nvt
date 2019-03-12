@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2011-August/017680.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881317");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-30 17:21:56 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2011-0083", "CVE-2011-0085", "CVE-2011-2362", "CVE-2011-2363",
                 "CVE-2011-2364", "CVE-2011-2365", "CVE-2011-2371", "CVE-2011-2373",
@@ -77,7 +77,7 @@ if(description)
 
   It was found that Firefox could treat two separate cookies as
   interchangeable if both were for the same domain name but one of those
-  domain names had a trailing &quot;.&quot; character. This violates the same-origin
+  domain names had a trailing '.' character. This violates the same-origin
   policy and could possibly lead to data being leaked to the wrong domain.
   (CVE-2011-2362)
 
@@ -88,7 +88,7 @@ if(description)
   This update also fixes the following bug:
 
   * With previous versions of Firefox on Red Hat Enterprise Linux 5, the
-  &quot;background-repeat&quot; CSS (Cascading Style Sheets) property did not work
+  'background-repeat' CSS (Cascading Style Sheets) property did not work
   (such images were not displayed and repeated as expected). (BZ#698313)
 
   All Firefox users should upgrade to these updated packages, which contain

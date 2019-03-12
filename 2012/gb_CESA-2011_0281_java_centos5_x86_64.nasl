@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2011-April/017314.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881416");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-30 17:49:38 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2010-4448", "CVE-2010-4450", "CVE-2010-4465", "CVE-2010-4469",
                 "CVE-2010-4470", "CVE-2010-4472", "CVE-2010-4471");
@@ -78,7 +78,7 @@ if(description)
   intercept digital signature operations. (CVE-2010-4472)
 
   Note: All of the above flaws can only be remotely triggered in OpenJDK by
-  calling the &quot;appletviewer&quot; application.
+  calling the 'appletviewer' application.
 
   This update also provides one defense in depth patch. (BZ#676019)
 

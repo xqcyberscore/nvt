@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882678");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14095 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 14:54:56 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-03-09 05:01:35 +0100 (Thu, 09 Mar 2017)");
   script_cve_id("CVE-2017-2615", "CVE-2017-2620");
   script_tag(name:"cvss_base", value:"9.0");
@@ -64,9 +64,9 @@ Red Hat would like to thank Wjjzhang (Tencent.com Inc.) and Li Qiang
 4. Solution:
 
 For details on how to apply this update, which includes the changes
-described in this advisory, refer to:
+described in this advisory, refer to the linked article.");
 
-'https://access.redhat.com/articles/11258'");
+  script_xref(name:"URL", value:"https://access.redhat.com/articles/11258");
   script_tag(name:"affected", value:"kmod-kvm on CentOS 5");
   script_tag(name:"solution", value:"Please Install the Updated Packages.");
 

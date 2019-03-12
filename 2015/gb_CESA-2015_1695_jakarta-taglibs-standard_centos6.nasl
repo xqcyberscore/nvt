@@ -26,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882270");
-  script_version("$Revision: 14058 $");
+  script_version("$Revision: 14095 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 14:54:56 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-09-02 07:00:06 +0200 (Wed, 02 Sep 2015)");
   script_cve_id("CVE-2015-0254");
   script_tag(name:"qod_type", value:"package");
@@ -47,9 +47,7 @@ potentially, allowing arbitrary code execution. (CVE-2015-0254)
 
 Note: jakarta-taglibs-standard users may need to take additional steps
 after applying this update. Detailed instructions on the additional steps
-can be found here:
-
-<a  rel='nofollow' href='https://access.redhat.com/solutions/1584363'>https://access.redhat.com/solutions/1584363</a>
+can be at the linked references.
 
 All jakarta-taglibs-standard users are advised to upgrade to these updated
 packages, which contain a backported patch to correct this issue.
@@ -59,11 +57,9 @@ packages, which contain a backported patch to correct this issue.
 Before applying this update, make sure all previously released errata
 relevant to your system have been applied.
 
-For details on how to apply this update, refer to:
+For details on how to apply this update, refer to the linked article.
 
-<a  rel='nofollow' href='https://access.redhat.com/articles/11258'>https://access.redhat.com/articles/11258</a>
-
-5. Bugs fixed (<a  rel='nofollow' href='https://bugzilla.redhat.com/'>https://bugzilla.redhat.com/</a>):
+5. Bugs fixed:
 
 1198606 - CVE-2015-0254 jakarta-taglibs-standard: XXE and RCE via XSL extension in JSTL XML tags
 
@@ -126,6 +122,8 @@ noarc ...
   script_tag(name:"solution", value:"Please install the updated packages.");
   script_xref(name:"CESA", value:"2015:1695");
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2015-September/021358.html");
+  script_xref(name:"URL", value:"https://access.redhat.com/articles/11258");
+  script_xref(name:"URL", value:"https://access.redhat.com/solutions/1584363");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

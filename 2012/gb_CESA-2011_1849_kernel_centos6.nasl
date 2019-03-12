@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2011-December/018358.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881286");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-30 17:18:39 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2011-4127");
   script_tag(name:"cvss_base", value:"4.6");
@@ -86,10 +86,10 @@ if(description)
   (HPET_Tn_CMP). Consequently, the timers were overdue for up to several
   minutes. Now, a comparison is performed between the value of the counter
   and the comparator in the HPET code. If the counter is beyond the
-  comparator, the &quot;-ETIME&quot; error code is returned. (BZ#756426)
+  comparator, the '-ETIME' error code is returned. (BZ#756426)
 
   * Index allocation in the virtio-blk module was based on a monotonically
-  increasing variable &quot;index&quot;. Consequently, released indexes were not reused
+  increasing variable 'index'. Consequently, released indexes were not reused
   and after a period of time, no new were available. Now, virtio-blk uses the
   ida API to allocate indexes. (BZ#756427)
 

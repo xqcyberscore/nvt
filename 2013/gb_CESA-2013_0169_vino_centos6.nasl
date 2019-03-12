@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-January/019206.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881579");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-01-24 09:27:31 +0530 (Thu, 24 Jan 2013)");
   script_cve_id("CVE-2011-0904", "CVE-2011-0905", "CVE-2011-1164", "CVE-2011-1165",
                "CVE-2012-4429");
@@ -66,8 +66,8 @@ if(description)
   longer displays connectivity and reachable information. (CVE-2011-1164)
 
   There was no warning that Universal Plug and Play (UPnP) was used to open
-  ports on a user's network router when the &quot;Configure network automatically
-  to accept connections&quot; option was enabled (it is disabled by default) in
+  ports on a user's network router when the 'Configure network automatically
+  to accept connections' option was enabled (it is disabled by default) in
   the Vino preferences. This update changes the option's description to avoid
   the risk of a UPnP router configuration change without the user's consent.
   (CVE-2011-1165)

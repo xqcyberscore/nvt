@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2009-September/016155.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880860");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
@@ -55,11 +55,11 @@ if(description)
   Bug fixes:
 
   * a buffer could overflow if cluster.conf had more than 52 entries per
-  block inside the &lt;cman&gt; block. The limit is now 1024.
+  block inside the 'cman' block. The limit is now 1024.
 
   * the output of the group_tool dump subcommands were NULL padded.
 
-  * using device=&quot;&quot; instead of label=&quot;&quot; no longer causes qdiskd to
+  * using device='' instead of label='' no longer causes qdiskd to
   incorrectly exit.
 
   * the IPMI fencing agent has been modified to time out after 10 seconds. It

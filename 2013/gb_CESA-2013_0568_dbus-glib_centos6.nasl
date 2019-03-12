@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-March/019617.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881631");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-03-12 09:58:45 +0530 (Tue, 12 Mar 2013)");
   script_cve_id("CVE-2013-0292");
   script_tag(name:"cvss_base", value:"7.2");
@@ -48,7 +48,7 @@ if(description)
   the GLib main loop and threading model.
 
   A flaw was found in the way dbus-glib filtered the message sender (message
-  source subject) when the &quot;NameOwnerChanged&quot; signal was received. This
+  source subject) when the 'NameOwnerChanged' signal was received. This
   could trick a system service using dbus-glib (such as fprintd) into
   believing a signal was sent from a privileged process, when it was not. A
   local attacker could use this flaw to escalate their privileges.

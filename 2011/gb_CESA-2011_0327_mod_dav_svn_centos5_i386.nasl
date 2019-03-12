@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2011-April/017286.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880548");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -61,9 +61,9 @@ if(description)
   This update also fixes the following bug:
 
   * A regression was found in the handling of repositories which do not have
-  a &quot;db/fsfs.conf&quot; file. The &quot;svnadmin hotcopy&quot; command would fail when
+  a 'db/fsfs.conf' file. The 'svnadmin hotcopy' command would fail when
   trying to produce a copy of such a repository. This command has been fixed
-  to ignore the absence of the &quot;fsfs.conf&quot; file. The &quot;svnadmin hotcopy&quot;
+  to ignore the absence of the 'fsfs.conf' file. The 'svnadmin hotcopy'
   command will now succeed for this type of repository. (BZ#681522)
 
   All Subversion users should upgrade to these updated packages, which

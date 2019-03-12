@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2011-April/017310.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881430");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-30 17:51:33 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2010-3860", "CVE-2010-4351");
   script_tag(name:"cvss_base", value:"6.8");
@@ -51,7 +51,7 @@ if(description)
   A public static field declaration allowed untrusted JNLP (Java Network
   Launching Protocol) applications to read privileged data. A remote attacker
   could directly or indirectly read the values of restricted system
-  properties, such as &quot;user.name&quot;, &quot;user.home&quot;, and &quot;java.home&quot;, which
+  properties, such as 'user.name', 'user.home', and 'java.home', which
   untrusted applications should not be allowed to read. (CVE-2010-3860)
 
   It was found that JNLPSecurityManager could silently return without

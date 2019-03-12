@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2017_3315_kernel_centos7.nasl 14058 2019-03-08 13:25:52Z cfischer $
+# $Id: gb_CESA-2017_3315_kernel_centos7.nasl 14095 2019-03-11 13:54:56Z cfischer $
 #
 # CentOS Update for kernel CESA-2017:3315 centos7
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882810");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14095 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 14:54:56 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-12-07 07:39:22 +0100 (Thu, 07 Dec 2017)");
   script_cve_id("CVE-2017-1000380");
   script_tag(name:"cvss_base", value:"2.1");
@@ -43,8 +43,7 @@ the core of any Linux operating system.
 These updated kernel packages include several security issues and numerous
 bug fixes, some of which you can see below. Space precludes documenting
 all of these bug fixes in this advisory. To see the complete list of bug
-fixes, users are directed to the related Knowledge Article:
-'https://access.redhat.com/articles/3253081'
+fixes, users are directed to the referenced Knowledge Article.
 
 Security Fix(es):
 
@@ -61,6 +60,7 @@ issue.");
 
   script_xref(name:"CESA", value:"2017:3315");
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2017-December/022682.html");
+  script_xref(name:"URL", value:"https://access.redhat.com/articles/3253081");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

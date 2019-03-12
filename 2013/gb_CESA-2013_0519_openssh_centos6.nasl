@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-March/019458.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881646");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-03-12 09:59:37 +0530 (Tue, 12 Mar 2013)");
   script_cve_id("CVE-2012-5536");
   script_tag(name:"cvss_base", value:"6.2");
@@ -78,13 +78,13 @@ if(description)
   remote host. (BZ#836650)
 
   * When SELinux was disabled on the system, no on-disk policy was installed,
-  a user account was used for a connection, and no &quot;~/.ssh&quot; configuration was
+  a user account was used for a connection, and no '~/.ssh' configuration was
   present in that user's home directory, the SSH client terminated
   unexpectedly with a segmentation fault when attempting to connect to
   another system. A patch has been provided to address this issue and the
   crashes no longer occur in the described scenario. (BZ#836655)
 
-  * The &quot;HOWTO&quot; document /usr/share/doc/openssh-ldap-5.3p1/HOWTO.ldap-keys
+  * The 'HOWTO' document /usr/share/doc/openssh-ldap-5.3p1/HOWTO.ldap-keys
   incorrectly documented the use of the AuthorizedKeysCommand directive.
   This update corrects the document. (BZ#857760)
 

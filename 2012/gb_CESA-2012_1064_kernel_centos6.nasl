@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-July/018731.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881073");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-30 16:01:16 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2012-2744", "CVE-2012-2745");
   script_tag(name:"cvss_base", value:"7.8");
@@ -68,15 +68,15 @@ if(description)
   This update also fixes the following bugs:
 
   * Previously introduced firmware files required for new Realtek chipsets
-  contained an invalid prefix (&quot;rtl_nic_&quot;) in the file names, for example
-  &quot;/lib/firmware/rtl_nic/rtl_nic_rtl8168d-1.fw&quot;. This update corrects these
+  contained an invalid prefix ('rtl_nic_') in the file names, for example
+  '/lib/firmware/rtl_nic/rtl_nic_rtl8168d-1.fw'. This update corrects these
   file names. For example, the aforementioned file is now correctly named
-  &quot;/lib/firmware/rtl_nic/rtl8168d-1.fw&quot;. (BZ#832359)
+  '/lib/firmware/rtl_nic/rtl8168d-1.fw'. (BZ#832359)
 
   * This update blacklists the ADMA428M revision of the 2GB ATA Flash Disk
   device. This is due to data corruption occurring on the said device when
   the Ultra-DMA 66 transfer mode is used. When the
-  &quot;libata.force=5:pio0, 6:pio0&quot; kernel parameter is set, the aforementioned
+  'libata.force=5:pio0, 6:pio0' kernel parameter is set, the aforementioned
   device works as expected. (BZ#832363)
 
   * On Red Hat Enterprise Linux 6, mounting an NFS export from a server
@@ -92,7 +92,7 @@ if(description)
   the ENOSPC condition (no space left on device) for a file larger than 4 GB,
   the size of the file became corrupted and, consequently, caused file system
   corruption. This was due to a missing cast operator in the
-  &quot;ext4_fallocate()&quot; function. With this update, the underlying source code
+  'ext4_fallocate()' function. With this update, the underlying source code
   has b ...
 
   Description truncated, please see the referenced URL(s) for more information.");

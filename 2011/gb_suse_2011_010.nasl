@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850160");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14110 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 10:28:23 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-02-28 16:24:14 +0100 (Mon, 28 Feb 2011)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -56,13 +56,12 @@ if(description)
   CVE-2010-4470
   CVE-2010-4447
   CVE-2010-4450
-  CVE-2010-4474
+  CVE-2010-4474");
 
-  Please also see:
-  http://blogs.oracle.com/security/2011/02/security_alert_for_cve-2010-44.html
-  http://www.oracle.com/technetwork/topics/security/alert-cve-2010-4476-305811.html
-  and also the overview page of this February 2011 patch update:
-  http://www.oracle.com/technetwork/topics/security/javacpufeb2011-304611.html");
+  script_xref(name:"URL", value:"http://blogs.oracle.com/security/2011/02/security_alert_for_cve-2010-44.html");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/alert-cve-2010-4476-305811.html");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/javacpufeb2011-304611.html");
+
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_tag(name:"qod_type", value:"package");

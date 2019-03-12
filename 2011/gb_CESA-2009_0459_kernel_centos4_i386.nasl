@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2009-May/015839.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880941");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:N/C:N/I:N/A:C");
@@ -57,7 +57,7 @@ if(description)
   * a deficiency was found in the Linux kernel system call auditing
   implementation on 64-bit systems. This could allow a local, unprivileged
   user to circumvent a system call audit configuration, if that configuration
-  filtered based on the &quot;syscall&quot; number or arguments.
+  filtered based on the 'syscall' number or arguments.
   (CVE-2009-0834, Important)
 
   * Chris Evans reported a deficiency in the Linux kernel signals
@@ -78,13 +78,13 @@ if(description)
   Bug fixes:
 
   * a kernel crash may have occurred for Red Hat Enterprise Linux 4.7 guests
-  if their guest configuration file specified &quot;vif = [ &quot;type=ioemu&quot; ]&quot;. This
-  crash only occurred when starting guests via the &quot;xm create&quot; command.
+  if their guest configuration file specified 'vif = [ 'type=ioemu' ]'. This
+  crash only occurred when starting guests via the 'xm create' command.
   (BZ#477146)
 
   * a bug in IO-APIC NMI watchdog may have prevented Red Hat Enterprise Linux
   4.7 from being installed on HP ProLiant DL580 G5 systems. Hangs during
-  installation and &quot;NMI received for unknown reason [xx]&quot; errors may have
+  installation and 'NMI received for unknown reason [xx]' errors may have
   occurred. (BZ#479184)
 
   * a kernel deadlock on some systems when using netdump through a network

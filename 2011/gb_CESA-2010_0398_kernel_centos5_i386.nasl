@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2010-May/016683.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880586");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -76,20 +76,20 @@ if(description)
 
   This update also fixes the following bugs:
 
-  * in some cases, booting a system with the &quot;iommu=on&quot; kernel parameter
+  * in some cases, booting a system with the 'iommu=on' kernel parameter
   resulted in a Xen hypervisor panic. (BZ#580199)
 
   * the fnic driver flushed the Rx queue instead of the Tx queue after
   fabric login. This caused crashes in some cases. (BZ#580829)
 
-  * &quot;kernel unaligned access&quot; warnings were logged to the dmesg log on some
+  * 'kernel unaligned access' warnings were logged to the dmesg log on some
   systems. (BZ#580832)
 
-  * the &quot;Northbridge Error, node 1, core: -1 K8 ECC error&quot; error occurred on
+  * the 'Northbridge Error, node 1, core: -1 K8 ECC error' error occurred on
   some systems using the amd64_edac driver. (BZ#580836)
 
   * in rare circumstances, when using kdump and booting a kernel with
-  &quot;crashkernel=128M 16M&quot;, the kdump kernel did not boot after a crash.
+  'crashkernel=128M 16M', the kdump kernel did not boot after a crash.
   (BZ#580838)
 
   * TLB page table entry flushing was done incorrectly on IBM System z,

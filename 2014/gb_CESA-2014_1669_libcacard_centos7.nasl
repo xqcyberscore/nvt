@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882065");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14095 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 14:54:56 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-10-22 06:02:26 +0200 (Wed, 22 Oct 2014)");
   script_cve_id("CVE-2014-3615");
   script_tag(name:"cvss_base", value:"2.1");
@@ -66,16 +66,14 @@ Before applying this update, make sure all previously released errata
 relevant to your system have been applied.
 
 This update is available via the Red Hat Network. Details on how to
-use the Red Hat Network to apply this update are available at
-https://access.redhat.com/articles/11258
-
-5. Bugs fixed (https://bugzilla.redhat.com/):");
+use the Red Hat Network to apply this update are available at the linked references.");
   script_tag(name:"affected", value:"libcacard on CentOS 7");
   script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"CESA", value:"2014:1669");
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2014-October/020700.html");
+  script_xref(name:"URL", value:"https://access.redhat.com/articles/11258");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

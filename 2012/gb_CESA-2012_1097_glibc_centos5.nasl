@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-July/018752.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881175");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-30 16:33:43 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2012-3406");
   script_tag(name:"cvss_base", value:"6.8");
@@ -57,7 +57,7 @@ if(description)
   This update also fixes the following bug:
 
   * If a file or a string was in the IBM-930 encoding, and contained the
-  invalid multibyte character &quot;0xffff&quot;, attempting to use iconv() (or the
+  invalid multibyte character '0xffff', attempting to use iconv() (or the
   iconv command) to convert that file or string to another encoding, such as
   UTF-8, resulted in a segmentation fault. With this update, the conversion
   code for the IBM-930 encoding recognizes this invalid character and calls

@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-March/019283.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881677");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-03-12 10:02:28 +0530 (Tue, 12 Mar 2013)");
   script_cve_id("CVE-2012-3386");
   script_tag(name:"cvss_base", value:"4.4");
@@ -50,7 +50,7 @@ if(description)
   It was found that the distcheck rule in Automake-generated Makefiles made a
   directory world-writable when preparing source archives. If a malicious,
   local user could access this directory, they could execute arbitrary code
-  with the privileges of the user running &quot;make distcheck&quot;. (CVE-2012-3386)
+  with the privileges of the user running 'make distcheck'. (CVE-2012-3386)
 
   Red Hat would like to thank Jim Meyering for reporting this issue. Upstream
   acknowledges Stefano Lattarini as the original reporter.

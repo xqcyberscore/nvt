@@ -21,13 +21,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852337");
-  script_version("$Revision: 14091 $");
+  script_version("$Revision: 14107 $");
   script_cve_id("CVE-2019-6212", "CVE-2019-6215", "CVE-2019-6216", "CVE-2019-6217",
                 "CVE-2019-6226", "CVE-2019-6227", "CVE-2019-6229", "CVE-2019-6233",
                 "CVE-2019-6234");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-11 10:24:52 +0100 (Mon, 11 Mar 2019) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 08:31:46 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-03-09 04:08:17 +0100 (Sat, 09 Mar 2019)");
   script_name("SuSE Update for webkit2gtk3 openSUSE-SU-2019:0309-1 (webkit2gtk3)");
   script_category(ACT_GATHER_INFO);

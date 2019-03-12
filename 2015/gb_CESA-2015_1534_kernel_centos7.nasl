@@ -26,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882238");
-  script_version("$Revision: 14058 $");
+  script_version("$Revision: 14095 $");
   script_cve_id("CVE-2014-9715", "CVE-2015-2666", "CVE-2015-2922", "CVE-2015-3636");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 14:54:56 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-08-06 07:01:30 +0200 (Thu, 06 Aug 2015)");
   script_tag(name:"qod_type", value:"package");
   script_name("CentOS Update for kernel CESA-2015:1534 centos7");
@@ -69,10 +69,8 @@ systems on that network from sending or receiving network packets.
 Red Hat would like to thank Nathan Hoad for reporting the CVE-2014-9715
 issue.
 
-This update also fixes several bugs. Refer to the following Knowledgebase
-article for further information:
-
-<a  rel='nofollow' href='https://access.redhat.com/articles/1474193'>https://access.redhat.com/articles/1474193</a>
+This update also fixes several bugs. Refer to the linked Knowledgebase
+article for further information.
 
 All kernel users are advised to upgrade to these updated packages, which
 contain backported patches to correct these issues. The system must be
@@ -81,6 +79,7 @@ rebooted for this update to take effect.");
   script_tag(name:"solution", value:"Please install the updated packages.");
   script_xref(name:"CESA", value:"2015:1534");
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2015-August/021297.html");
+  script_xref(name:"URL", value:"https://access.redhat.com/articles/1474193");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

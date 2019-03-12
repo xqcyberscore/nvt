@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-January/018402.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881094");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-30 16:07:34 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2011-0708", "CVE-2011-1466", "CVE-2011-2202", "CVE-2011-4566", "CVE-2011-4885");
   script_tag(name:"cvss_base", value:"6.4");
@@ -73,7 +73,7 @@ if(description)
 
   An off-by-one flaw was found in PHP. If an attacker uploaded a file with a
   specially-crafted file name it could cause a PHP script to attempt to write
-  a file to the root (/) directory. By default, PHP runs as the &quot;apache&quot;
+  a file to the root (/) directory. By default, PHP runs as the 'apache'
   user, preventing it from writing to the root directory. (CVE-2011-2202)
 
   Red Hat would like to thank oCERT for reporting CVE-2011-4885. oCERT

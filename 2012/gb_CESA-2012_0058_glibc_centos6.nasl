@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-January/018397.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881117");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-30 16:12:09 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2009-5029", "CVE-2011-4609");
   script_tag(name:"cvss_base", value:"6.8");
@@ -72,7 +72,7 @@ if(description)
 
   * The RHBA-2011:1179 glibc update introduced a regression, causing glibc to
   incorrectly parse groups with more than 126 members, resulting in
-  applications such as &quot;id&quot; failing to list all the groups a particular user
+  applications such as 'id' failing to list all the groups a particular user
   was a member of. With this update, group parsing has been fixed.
   (BZ#766484)
 

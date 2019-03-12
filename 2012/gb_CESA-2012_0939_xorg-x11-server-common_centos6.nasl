@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-July/018722.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881153");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-30 16:24:06 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2011-4028", "CVE-2011-4029");
   script_tag(name:"cvss_base", value:"1.9");
@@ -71,13 +71,13 @@ if(description)
   * Prior to this update, absolute input devices, like the stylus of a
   graphic tablet, could become unresponsive in the right-most or bottom-most
   screen if the X server was configured as a multi-screen setup through
-  multiple &quot;Device&quot; sections in the xorg.conf file. This update changes the
+  multiple 'Device' sections in the xorg.conf file. This update changes the
   screen crossing behavior so that absolute devices are always mapped across
   all screens. (BZ#732467)
 
-  * Prior to this update, the misleading message &quot;Session active, not
+  * Prior to this update, the misleading message 'Session active, not
   inhibited, screen idle. If you see this test, your display server is broken
-  and you should notify your distributor.&quot; could be displayed after resuming
+  and you should notify your distributor.' could be displayed after resuming
   the system or re-enabling the display, and included a URL to an external
   web page. This update removes this message. (BZ#748704)
 

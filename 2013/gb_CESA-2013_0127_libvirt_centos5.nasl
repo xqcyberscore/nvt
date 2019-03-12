@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-January/019099.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881576");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-01-21 09:41:56 +0530 (Mon, 21 Jan 2013)");
   script_cve_id("CVE-2012-2693");
   script_tag(name:"cvss_base", value:"3.7");
@@ -61,15 +61,15 @@ if(description)
   now be successfully marked as autostarted. (BZ#675319)
 
   * Prior to this update, the virFileAbsPath() function was not taking into
-  account the slash (&quot;/&quot;) directory separator when allocating memory for
+  account the slash ('/') directory separator when allocating memory for
   combining the cwd() function and a path. This behavior could lead to a
   memory corruption. With this update, a transformation to the virAsprintff()
   function has been introduced into virFileAbsPath(). As a result, the
   aforementioned behavior no longer occurs. (BZ#680289)
 
   * With this update, a man page of the virsh user interface has been
-  enhanced with information on the &quot;domxml-from-native&quot; and
-  &quot;domxml-to-native&quot; commands. A correct notation of the format argument has
+  enhanced with information on the 'domxml-from-native' and
+  'domxml-to-native' commands. A correct notation of the format argument has
   been clarified. As a result, confusion is avoided when setting the format
   argument in the described commands. (BZ#783001)
 

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882712");
-  script_version("$Revision: 14060 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 15:35:46 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14095 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 14:54:56 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-05-10 06:53:28 +0200 (Wed, 10 May 2017)");
   script_cve_id("CVE-2016-9603", "CVE-2017-2633", "CVE-2017-7718", "CVE-2017-7980");
   script_tag(name:"cvss_base", value:"9.0");
@@ -75,9 +75,7 @@ Huawei Inc.) for reporting CVE-2017-7718.
 4. Solution: For details on how to apply this update, which includes the changes
 described in this advisory see the references. After installing this update, shut
 down all running virtual machines. Once all virtual machines have shut down, start
-them again for this update to take effect.
-
-5. Bugs fixed ('https://bugzilla.redhat.com/'):");
+them again for this update to take effect.");
   script_tag(name:"affected", value:"qemu-guest-agent on CentOS 6");
   script_tag(name:"solution", value:"Please Install the Updated Packages.");
 

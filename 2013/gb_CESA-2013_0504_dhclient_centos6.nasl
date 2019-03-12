@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-March/019316.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881659");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-03-12 10:01:11 +0530 (Tue, 12 Mar 2013)");
   script_cve_id("CVE-2012-3955");
   script_tag(name:"cvss_base", value:"7.1");
@@ -66,7 +66,7 @@ if(description)
 
   * Prior to this update, the dhclient rewrote the /etc/resolv.conf file
   with backup data after it was stopped even when the PEERDNS flag was set
-  to &quot;no&quot; before shut down if the configuration file was changed while the
+  to 'no' before shut down if the configuration file was changed while the
   dhclient ran with PEERDNS=yes. This update removes the backing up and
   restoring functions for this configuration file from the dhclient-script.
   Now, the dhclient no longer rewrites the /etc/resolv.conf file when

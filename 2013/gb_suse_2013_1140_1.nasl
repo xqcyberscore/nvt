@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2013_1140_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_suse_2013_1140_1.nasl 14111 2019-03-12 09:34:48Z cfischer $
 #
 # SuSE Update for regular openSUSE-SU-2013:1140-1 (regular)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850493");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14111 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 10:34:48 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-11-19 14:05:57 +0530 (Tue, 19 Nov 2013)");
   script_cve_id("CVE-2013-1682", "CVE-2013-1683", "CVE-2013-1684", "CVE-2013-1685",
                 "CVE-2013-1686", "CVE-2013-1687", "CVE-2013-1688", "CVE-2013-1690",
@@ -69,7 +69,7 @@ if(description)
   push  with multi-part responses
 
   * MFSA 2013-59 XrayWrappers can be bypassed to run user
-  defined  methods in a privileged context ");
+  defined  methods in a privileged context.");
   script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882063");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14095 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 14:54:56 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-10-17 05:58:51 +0200 (Fri, 17 Oct 2014)");
   script_cve_id("CVE-2014-3566");
   script_tag(name:"cvss_base", value:"4.3");
@@ -58,7 +58,7 @@ update  it is recommended that users configure their applications to
 require at least TLS protocol version 1.0 for secure communication.
 
 For additional information about this flaw, see the Knowledgebase article
-at https://access.redhat.com/articles/1232123
+linked at the references.
 
 All OpenSSL users are advised to upgrade to these updated packages, which
 contain a backported patch to mitigate the CVE-2014-3566 issue. For the
@@ -71,6 +71,7 @@ rebooted.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"CESA", value:"2014:1653");
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2014-October/020696.html");
+  script_xref(name:"URL", value:"https://access.redhat.com/articles/1232123");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

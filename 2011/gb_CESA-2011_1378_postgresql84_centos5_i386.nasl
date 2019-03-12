@@ -25,16 +25,18 @@
 
 if(description)
 {
-  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2011-October/018117.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881025");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-10-21 16:31:29 +0200 (Fri, 21 Oct 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_xref(name:"CESA", value:"2011:1378");
   script_cve_id("CVE-2011-2483");
   script_name("CentOS Update for postgresql84 CESA-2011:1378 centos5 i386");
+
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2011-October/018117.html");
+  script_xref(name:"URL", value:"http://www.postgresql.org/docs/8.4/static/release.html");
 
   script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for postgresql84");
   script_category(ACT_GATHER_INFO);
@@ -59,12 +61,10 @@ if(description)
   with Blowfish using the PostgreSQL crypt() function, in a back-end
   PostgreSQL database. Unsafe processing can be re-enabled for specific
   passwords (allowing affected users to log in) by changing their hash prefix
-  to &quot;$2x$&quot;.
+  to '$2x$'.
 
   These updated postgresql84 packages upgrade PostgreSQL to version 8.4.9.
-  Refer to the PostgreSQL Release Notes for a full list of changes:
-
-  http://www.postgresql.org/docs/8.4/static/release.html
+  Refer to the linked PostgreSQL Release Notes for a full list of changes.
 
   All PostgreSQL users are advised to upgrade to these updated packages,
   which correct this issue. If the postgresql service is running, it will be

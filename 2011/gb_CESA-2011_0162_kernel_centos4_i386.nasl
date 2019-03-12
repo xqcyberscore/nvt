@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2011-January/017245.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880459");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-01-31 15:15:14 +0100 (Mon, 31 Jan 2011)");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
@@ -54,7 +54,7 @@ if(description)
   (CVE-2010-3859, Important)
 
   * Missing sanity checks were found in gdth_ioctl_alloc() in the gdth driver
-  in the Linux kernel. A local user with access to &quot;/dev/gdth&quot; on a 64-bit
+  in the Linux kernel. A local user with access to '/dev/gdth' on a 64-bit
   system could use these flaws to cause a denial of service or escalate their
   privileges. (CVE-2010-4157, Moderate)
 
@@ -71,9 +71,9 @@ if(description)
   (CVE-2010-3876, CVE-2010-4072, CVE-2010-4073, CVE-2010-4075, CVE-2010-4080,
   CVE-2010-4083, CVE-2010-4158, Low)
 
-  Red Hat would like to thank Alan Cox for reporting CVE-2010-4242; Vegard
-  Nossum for reporting CVE-2010-4249; Vasiliy Kulikov for reporting
-  CVE-2010-3876; Kees Cook for reporting CVE-2010-4072; and Dan Rosenberg for
+  Red Hat would like to thank Alan Cox for reporting CVE-2010-4242, Vegard
+  Nossum for reporting CVE-2010-4249, Vasiliy Kulikov for reporting
+  CVE-2010-3876, Kees Cook for reporting CVE-2010-4072, and Dan Rosenberg for
   reporting CVE-2010-4073, CVE-2010-4075, CVE-2010-4080, CVE-2010-4083, and
   CVE-2010-4158.
 
@@ -90,7 +90,7 @@ if(description)
   * On Intel I/O Controller Hub 9 (ICH9) hardware, jumbo frame support is
   achieved by using page-based sk_buff buffers without any packet split. The
   entire frame data is copied to the page(s) rather than some to the
-  skb-&gt;data area and some to the page(s) when performing a typical
+  skb->data area and some to the page(s) when performing a typical
   packet-split. This caused problems with the filtering code and frames were
   getting dropped before they were received by list ...
 

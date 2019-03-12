@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_0893_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_suse_2015_0893_1.nasl 14110 2019-03-12 09:28:23Z cfischer $
 #
 # SuSE Update for qemu openSUSE-SU-2015:0893-1 (qemu)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850680");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14110 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 10:28:23 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-09-18 10:37:38 +0200 (Fri, 18 Sep 2015)");
   script_cve_id("CVE-2015-3456");
   script_tag(name:"cvss_base", value:"7.7");
@@ -38,13 +38,13 @@ if(description)
   script_tag(name:"summary", value:"The remote host is missing an update for the 'qemu'
   package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"Qemu was updated to v2.1.3: See <a  rel='nofollow' href='http://wiki.qemu-project.org/ChangeLog/2.1'>http://wiki.qemu-project.org/ChangeLog/2.1
+  script_tag(name:"insight", value:"Qemu was updated to v2.1.3: See the referenced ChangeLog
   for more information.
 
   This update includes a security fix:
 
   * CVE-2015-3456: Fixed a buffer overflow in the floppy drive emulation,
-  which could be   used to denial of service attacks or potential code
+  which could be used to denial of service attacks or potential code
   execution against the host.");
   script_tag(name:"affected", value:"qemu on openSUSE 13.2");
   script_tag(name:"solution", value:"Please install the updated packages.");
@@ -55,6 +55,9 @@ if(description)
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE13\.2");
+
+  script_xref(name:"URL", value:"http://wiki.qemu-project.org/ChangeLog/2.1");
+
   exit(0);
 }
 

@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2009-May/015947.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880771");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -46,9 +46,9 @@ if(description)
   script_tag(name:"insight", value:"SquirrelMail is a standards-based webmail package written in PHP.
 
   A server-side code injection flaw was found in the SquirrelMail
-  &quot;map_yp_alias&quot; function. If SquirrelMail was configured to retrieve a
+  'map_yp_alias' function. If SquirrelMail was configured to retrieve a
   user's IMAP server address from a Network Information Service (NIS) server
-  via the &quot;map_yp_alias&quot; function, an unauthenticated, remote attacker using
+  via the 'map_yp_alias' function, an unauthenticated, remote attacker using
   a specially-crafted username could use this flaw to execute arbitrary code
   with the privileges of the web server. (CVE-2009-1579)
 

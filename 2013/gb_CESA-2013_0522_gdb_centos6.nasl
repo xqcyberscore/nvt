@@ -39,8 +39,8 @@ if(description)
 
   With this update, GDB no longer auto-loads files from the current directory
   and only trusts certain system directories by default. The list of trusted
-  directories can be viewed and modified using the &quot;show auto-load safe-path&quot;
-  and &quot;set auto-load safe-path&quot; GDB commands. Refer to the GDB manual, linked
+  directories can be viewed and modified using the 'show auto-load safe-path'
+  and 'set auto-load safe-path' GDB commands. Refer to the GDB manual, linked
   to in the References, for further information.
 
   This update also fixes the following bugs:
@@ -51,7 +51,7 @@ if(description)
   GDB can access such positions. (BZ#795424)
 
   * When a thread list of the core file became corrupted, GDB did not print
-  this list but displayed the &quot;Cannot find new threads: generic error&quot; error
+  this list but displayed the 'Cannot find new threads: generic error' error
   message instead. With this update, GDB has been modified and it now prints
   the thread list of the core file as expected. (BZ#811648)
 
@@ -65,8 +65,8 @@ if(description)
   contain backported patches to correct these issues.");
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-March/019328.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881661");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-03-12 10:01:18 +0530 (Tue, 12 Mar 2013)");
   script_cve_id("CVE-2011-4355");
   script_tag(name:"cvss_base", value:"6.9");

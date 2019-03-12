@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2009-September/016148.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880676");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -47,38 +47,38 @@ if(description)
   related tools.
 
   It was discovered that nfs-utils did not use tcp_wrappers correctly.
-  Certain hosts access rules defined in &quot;/etc/hosts.allow&quot; and
-  &quot;/etc/hosts.deny&quot; may not have been honored, possibly allowing remote
+  Certain hosts access rules defined in '/etc/hosts.allow' and
+  '/etc/hosts.deny' may not have been honored, possibly allowing remote
   attackers to bypass intended access restrictions. (CVE-2008-4552)
 
   This updated package also fixes the following bugs:
 
-  * the &quot;LOCKD_TCPPORT&quot; and &quot;LOCKD_UDPPORT&quot; options in &quot;/etc/sysconfig/nfs&quot;
+  * the 'LOCKD_TCPPORT' and 'LOCKD_UDPPORT' options in '/etc/sysconfig/nfs'
   were not honored: the lockd daemon continued to use random ports. With this
   update, these options are honored. (BZ#434795)
 
   * it was not possible to mount NFS file systems from a system that has
-  the &quot;/etc/&quot; directory mounted on a read-only file system (this could occur
+  the '/etc/' directory mounted on a read-only file system (this could occur
   on systems with an NFS-mounted root file system). With this update, it is
-  possible to mount NFS file systems from a system that has &quot;/etc/&quot; mounted
+  possible to mount NFS file systems from a system that has '/etc/' mounted
   on a read-only file system. (BZ#450646)
 
-  * arguments specified by &quot;STATDARG=&quot; in &quot;/etc/sysconfig/nfs&quot; were removed
+  * arguments specified by 'STATDARG=' in '/etc/sysconfig/nfs' were removed
   by the nfslock init script, meaning the arguments specified were never
   passed to rpc.statd. With this update, the nfslock init script no longer
   removes these arguments. (BZ#459591)
 
   * when mounting an NFS file system from a host not specified in the NFS
-  server's &quot;/etc/exports&quot; file, a misleading &quot;unknown host&quot; error was logged
+  server's '/etc/exports' file, a misleading 'unknown host' error was logged
   on the server (the hostname lookup did not fail). With this update, a
   clearer error message is provided for these situations. (BZ#463578)
 
   * the nhfsstone benchmark utility did not work with NFS version 3 and 4.
   This update adds support to nhfsstone for NFS version 3 and 4. The new
-  nhfsstone &quot;-2&quot;, &quot;-3&quot;, and &quot;-4&quot; options are used to select an NFS version
+  nhfsstone '-2', '-3', and '-4' options are used to select an NFS version
   (similar to nfsstat(8)). (BZ#465933)
 
-  * the exportfs(8) manual page contained a spelling mistake, &quot;djando&quot;, in
+  * the exportfs(8) manual page contained a spelling mistake, 'djando', in
   the EXAMPLES section. (BZ#474848)
 
   * in some situations the NFS server incorrectly refused mounts to hosts
@@ -86,10 +86,10 @@ if(description)
 
   * in some situations the NFS client used its cache, rather than using
   the latest version of a file or directory from a given export. This update
-  adds a new mount option, &quot;lookupcache=&quot;, which allows the NFS client to
+  adds a new mount option, 'lookupcache=', which allows the NFS client to
   control how it caches files and directories. Note: The Red Hat Enterprise
   Linux 5.4 kernel update (the fourth regular update) must be installed in
-  order to use the &quot;lookupcache=&quot; option.
+  order to use the 'lookupcache=' option.
 
   Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"solution", value:"Please install the updated packages.");

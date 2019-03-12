@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2009-April/015794.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880766");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -50,29 +50,29 @@ if(description)
 
   Multiple integer overflow flaws were found in the CUPS JBIG2 decoder. An
   attacker could create a malicious PDF file that would cause CUPS to crash
-  or, potentially, execute arbitrary code as the &quot;lp&quot; user if the file was
+  or, potentially, execute arbitrary code as the 'lp' user if the file was
   printed. (CVE-2009-0147, CVE-2009-1179)
 
   Multiple buffer overflow flaws were found in the CUPS JBIG2 decoder. An
   attacker could create a malicious PDF file that would cause CUPS to crash
-  or, potentially, execute arbitrary code as the &quot;lp&quot; user if the file was
+  or, potentially, execute arbitrary code as the 'lp' user if the file was
   printed. (CVE-2009-0146, CVE-2009-1182)
 
   Multiple flaws were found in the CUPS JBIG2 decoder that could lead to the
   freeing of arbitrary memory. An attacker could create a malicious PDF file
   that would cause CUPS to crash or, potentially, execute arbitrary code
-  as the &quot;lp&quot; user if the file was printed. (CVE-2009-0166, CVE-2009-1180)
+  as the 'lp' user if the file was printed. (CVE-2009-0166, CVE-2009-1180)
 
   Multiple input validation flaws were found in the CUPS JBIG2 decoder. An
   attacker could create a malicious PDF file that would cause CUPS to crash
-  or, potentially, execute arbitrary code as the &quot;lp&quot; user if the file was
+  or, potentially, execute arbitrary code as the 'lp' user if the file was
   printed. (CVE-2009-0800)
 
   An integer overflow flaw, leading to a heap-based buffer overflow, was
   discovered in the Tagged Image File Format (TIFF) decoding routines used by
-  the CUPS image-converting filters, &quot;imagetops&quot; and &quot;imagetoraster&quot;. An
+  the CUPS image-converting filters, 'imagetops' and 'imagetoraster'. An
   attacker could create a malicious TIFF file that could, potentially,
-  execute arbitrary code as the &quot;lp&quot; user if the file was printed.
+  execute arbitrary code as the 'lp' user if the file was printed.
   (CVE-2009-0163)
 
   Multiple denial of service flaws were found in the CUPS JBIG2 decoder. An

@@ -27,11 +27,11 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2009-August/016115.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880677");
-  script_version("$Revision: 14089 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-11 10:17:28 +0100 (Mon, 11 Mar 2019) $");
+  script_version("$Revision: 14107 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 08:31:46 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_xref(name:"CESA", value:"2009:1232");
   script_cve_id("CVE-2009-2730");
   script_name("CentOS Update for gnutls CESA-2009:1232 centos5 i386");

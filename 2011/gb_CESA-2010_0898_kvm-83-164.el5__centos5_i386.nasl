@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2010-December/017213.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880635");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:S/C:N/I:N/A:C");
@@ -49,7 +49,7 @@ if(description)
 
   A flaw was found in the way QEMU-KVM handled the reloading of fs and gs
   segment registers when they had invalid selectors. A privileged host user
-  with access to &quot;/dev/kvm&quot; could use this flaw to crash the host (denial of
+  with access to '/dev/kvm' could use this flaw to crash the host (denial of
   service). (CVE-2010-3698)
 
   All KVM users should upgrade to these updated packages, which contain a

@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-January/019151.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881560");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-01-21 09:38:06 +0530 (Mon, 21 Jan 2013)");
   script_cve_id("CVE-2011-4339");
   script_tag(name:"cvss_base", value:"3.6");
@@ -61,7 +61,7 @@ if(description)
 
   * Prior to this update, the ipmitool utility first checked the IPMI
   hardware for Dell IPMI extensions and listed only supported commands when
-  printing command usage like the option &quot;ipmtool delloem help&quot;. On a
+  printing command usage like the option 'ipmtool delloem help'. On a
   non-Dell platform, the usage text was incomplete and misleading. This
   update lists all Dell OEM extensions in usage texts on all platforms, which
   allows users to check for command line arguments on non-Dell hardware.
@@ -76,20 +76,20 @@ if(description)
   from the BMC and shows the correct sensor data on these platforms.
   (BZ#671059, BZ#749796)
 
-  * Prior to this update, the exit code of the &quot;ipmitool -o list&quot; option was
-  not set correctly. As a consequence, &quot;ipmitool -o list&quot; always returned the
+  * Prior to this update, the exit code of the 'ipmitool -o list' option was
+  not set correctly. As a consequence, 'ipmitool -o list' always returned the
   value 1 instead of the expected value 0. This update modifies the
   underlying code to return the value 0 as expected. (BZ#740780)
 
-  * Prior to this update, the &quot;ipmi&quot; service init script did not specify the
-  full path to the &quot;/sbin/lsmod&quot; and &quot;/sbin/modprobe&quot; system utilities. As a
+  * Prior to this update, the 'ipmi' service init script did not specify the
+  full path to the '/sbin/lsmod' and '/sbin/modprobe' system utilities. As a
   consequence, the init script failed when it was executed if PATH did not
-  point to /sbin, for example, when running &quot;sudo /etc/init.d/ipmi&quot;. This
+  point to /sbin, for example, when running 'sudo /etc/init.d/ipmi'. This
   update modifies the init script so that it now contains the full path to
   lsmod and modrpobe. Now, it can be executed with sudo. (BZ#829705)
 
-  * Prior to this update, the ipmitool man page did not list the &quot;-b&quot;, &quot;-B&quot;,
-  &quot;-l&qu ...
+  * Prior to this update, the ipmitool man page did not list the '-b', '-B',
+  '-l' ...
 
   Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"qod_type", value:"package");

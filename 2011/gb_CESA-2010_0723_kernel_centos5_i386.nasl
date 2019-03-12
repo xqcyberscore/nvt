@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2010-September/017031.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880648");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"7.9");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:N");
@@ -51,7 +51,7 @@ if(description)
   * A buffer overflow flaw was found in the ecryptfs_uid_hash() function in
   the Linux kernel eCryptfs implementation. On systems that have the eCryptfs
   netlink transport (Red Hat Enterprise Linux 5 does) or where the
-  &quot;/dev/ecryptfs&quot; file has world writable permissions (which it does not, by
+  &'/dev/ecryptfs' file has world writable permissions (which it does not, by
   default, on Red Hat Enterprise Linux 5), a local, unprivileged user could
   use this flaw to cause a denial of service or possibly escalate their
   privileges. (CVE-2010-2492, Important)

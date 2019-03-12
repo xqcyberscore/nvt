@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-July/018721.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881178");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-30 16:33:57 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2012-1586");
   script_tag(name:"cvss_base", value:"2.1");
@@ -64,22 +64,22 @@ if(description)
   added to the manual page. (BZ#769923)
 
   * Previously, the mount.cifs utility did not properly update the
-  &quot;/etc/mtab&quot; system information file when remounting an existing CIFS
+  '/etc/mtab' system information file when remounting an existing CIFS
   mount. Consequently, mount.cifs created a duplicate entry of the existing
   mount entry. This update adds the del_mtab() function to cifs.mount, which
-  ensures that the old mount entry is removed from &quot;/etc/mtab&quot; before adding
+  ensures that the old mount entry is removed from '/etc/mtab' before adding
   the updated mount entry. (BZ#770004)
 
   * The mount.cifs utility did not properly convert user and group names to
-  numeric UIDs and GIDs. Therefore, when the &quot;uid&quot;, &quot;gid&quot; or &quot;cruid&quot; mount
+  numeric UIDs and GIDs. Therefore, when the 'uid', 'gid' or 'cruid' mount
   options were specified with user or group names, CIFS shares were mounted
   with default values. This caused shares to be inaccessible to the intended
-  users because UID and GID is set to &quot;0&quot; by default. With this update, user
+  users because UID and GID is set to '0' by default. With this update, user
   and group names are properly converted so that CIFS shares are now mounted
   with specified user and group ownership as expected. (BZ#796463)
 
-  * The cifs.upcall utility did not respect the &quot;domain_realm&quot; section in
-  the &quot;krb5.conf&quot; file and worked only with the default domain.
+  * The cifs.upcall utility did not respect the 'domain_realm' section in
+  the 'krb5.conf' file and worked only with the default domain.
   Consequently, an attempt to mount a CIFS share from a different than the
   default domain failed with the following error message:
 
@@ -91,7 +91,7 @@ if(description)
 
   In addition, this update adds the following enhancements:
 
-  * The cifs.upcall utility previously always used the &quot;/etc/krb5.conf&quot; file
+  * The cifs.upcall utility previously always used the '/etc/krb5.conf' file
   regardless of whether the user had specified a custom K ...
 
   Description truncated, please see the referenced URL(s) for more information.");

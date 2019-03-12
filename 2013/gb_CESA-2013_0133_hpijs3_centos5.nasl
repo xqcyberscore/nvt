@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-January/019115.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881570");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-01-21 09:41:36 +0530 (Mon, 21 Jan 2013)");
   script_cve_id("CVE-2011-2722");
   script_tag(name:"cvss_base", value:"1.2");
@@ -57,7 +57,7 @@ if(description)
 
   * Previous modifications of the hplip3 package to allow it to be installed
   alongside the original hplip package introduced several problems to fax
-  support; for example, the hp-sendfax utility could become unresponsive.
+  support. For example, the hp-sendfax utility could become unresponsive.
   These problems have been fixed with this update. (BZ#501834)
 
   All users of hplip3 are advised to upgrade to these updated packages, which

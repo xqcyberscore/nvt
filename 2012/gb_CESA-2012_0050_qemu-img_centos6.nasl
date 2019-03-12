@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-January/018383.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881110");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-30 16:09:55 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2012-0029", "CVE-2011-4127");
   script_tag(name:"cvss_base", value:"7.4");
@@ -58,11 +58,11 @@ if(description)
 
   This update also fixes the following bug:
 
-  * qemu-kvm has a &quot;scsi&quot; option, to be used, for example, with the
-  &quot;-device&quot; option: &quot;-device virtio-blk-pci, drive=[drive name], scsi=off&quot;.
+  * qemu-kvm has a 'scsi' option, to be used, for example, with the
+  '-device' option: '-device virtio-blk-pci, drive=[drive name], scsi=off'.
   Previously, however, it only masked the feature bit, and did not reject
   SCSI commands if a malicious guest ignored the feature bit and issued a
-  request. This update corrects this issue. The &quot;scsi=off&quot; option can be
+  request. This update corrects this issue. The 'scsi=off' option can be
   used to mitigate the virtualization aspect of CVE-2011-4127 before the
   RHSA-2011:1849 kernel update is installed on the host.
 
@@ -71,15 +71,15 @@ if(description)
   disks backed by a partition or LVM volume.
 
   If you run guests by invoking /usr/libexec/qemu-kvm directly, use the
-  &quot;-global virtio-blk-pci.scsi=off&quot; option to apply the mitigation. If you
+  '-global virtio-blk-pci.scsi=off' option to apply the mitigation. If you
   are using libvirt, as recommended by Red Hat, and have the RHBA-2012:0013
   libvirt update installed, no manual action is required: guests will
-  automatically use &quot;scsi=off&quot;. (BZ#767721)
+  automatically use 'scsi=off'. (BZ#767721)
 
   Note: After installing the RHSA-2011:1849 kernel update, SCSI requests
   issued by guests via the SG_IO IOCTL will not be passed to the underlying
   block device when using raw format virtio disks backed by a partition or
-  LVM volume, even if &quot;scsi=on&quot; is used.
+  LVM volume, even if 'scsi=on' is used.
 
   As well, this update adds the following enhancement:
 

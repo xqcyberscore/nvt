@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-June/018669.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881109");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-30 16:09:25 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2011-3101", "CVE-2012-1937", "CVE-2012-1938", "CVE-2012-1939",
                 "CVE-2012-1940", "CVE-2012-1941", "CVE-2012-1944", "CVE-2012-1945",
@@ -78,15 +78,15 @@ if(description)
 
   Red Hat would like to thank the Mozilla project for reporting these issues.
   Upstream acknowledges Ken Russell of Google as the original reporter of
-  CVE-2011-3101; Igor Bukanov, Olli Pettay, Boris Zbarsky, and Jesse Ruderman
-  as the original reporters of CVE-2012-1937; Jesse Ruderman, Igor Bukanov,
+  CVE-2011-3101, Igor Bukanov, Olli Pettay, Boris Zbarsky, and Jesse Ruderman
+  as the original reporters of CVE-2012-1937, Jesse Ruderman, Igor Bukanov,
   Bill McCloskey, Christian Holler, Andrew McCreight, and Brian Bondy as the
-  original reporters of CVE-2012-1938; Christian Holler as the original
-  reporter of CVE-2012-1939; security researcher Abhishek Arya of Google as
-  the original reporter of CVE-2012-1940, CVE-2012-1941, and CVE-2012-1947;
+  original reporters of CVE-2012-1938, Christian Holler as the original
+  reporter of CVE-2012-1939, security researcher Abhishek Arya of Google as
+  the original reporter of CVE-2012-1940, CVE-2012-1941, and CVE-2012-1947,
   security researcher Arthur Gerkis as the original reporter of
-  CVE-2012-1946; security researcher Adam Barth as the original reporter of
-  CVE-2012-1944; and security researcher Paul Stone as the original reporter
+  CVE-2012-1946, security researcher Adam Barth as the original reporter of
+  CVE-2012-1944, and security researcher Paul Stone as the original reporter
   of CVE-2012-1945.
 
   All Firefox users should upgrade to these updated packages, which contain

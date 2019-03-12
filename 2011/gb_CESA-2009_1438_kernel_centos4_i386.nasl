@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2009-September/016165.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880935");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
@@ -71,7 +71,7 @@ if(description)
 
   This update also fixes the following bugs:
 
-  * the gcc flag &quot;-fno-delete-null-pointer-checks&quot; was added to the kernel
+  * the gcc flag '-fno-delete-null-pointer-checks' was added to the kernel
   build options. This prevents gcc from optimizing out NULL pointer checks
   after the first use of a pointer. NULL pointer bugs are often exploited by
   attackers. Keeping these checks is a safety measure. (BZ#517964)
@@ -89,8 +89,8 @@ if(description)
   deference bugs. Note that mmap_min_addr is set to zero (disabled) by
   default for backwards compatibility. (BZ#517904)
 
-  * time-outs resulted in I/O errors being logged to &quot;/var/log/messages&quot; when
-  running &quot;mt erase&quot; on tape drives using certain LSI MegaRAID SAS adapters,
+  * time-outs resulted in I/O errors being logged to '/var/log/messages' when
+  running 'mt erase' on tape drives using certain LSI MegaRAID SAS adapters,
   preventing the command from completing. The megaraid_sas driver's timeout
   value is now set to t ...
 

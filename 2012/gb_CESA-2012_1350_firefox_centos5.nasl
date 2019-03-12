@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-October/018928.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881512");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-10-11 10:02:01 +0530 (Thu, 11 Oct 2012)");
   script_cve_id("CVE-2012-1956", "CVE-2012-3982", "CVE-2012-3986", "CVE-2012-3988",
                 "CVE-2012-3990", "CVE-2012-3991", "CVE-2012-3992", "CVE-2012-3993",
@@ -96,11 +96,11 @@ if(description)
 
   1) Start Firefox.
 
-  2) Type &quot;about:config&quot; (without quotes) into the URL bar and press the
+  2) Type 'about:config' (without quotes) into the URL bar and press the
   Enter key.
 
-  3) If prompted with &quot;This might void your warranty!&quot;, click the &quot;I'll be
-  careful, I promise!&quot; button.
+  3) If prompted with 'This might void your warranty!', click the 'I'll be
+  careful, I promise!' button.
 
   4) Right-click in the  ...
 

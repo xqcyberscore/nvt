@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882673");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14095 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 14:54:56 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-03-07 05:44:17 +0100 (Tue, 07 Mar 2017)");
   script_cve_id("CVE-2016-8630", "CVE-2016-8655", "CVE-2016-9083", "CVE-2016-9084");
   script_tag(name:"cvss_base", value:"7.2");
@@ -70,12 +70,13 @@ Additional Changes:
 
 Space precludes documenting all of the bug fixes and enhancements included
 in this advisory. To see the complete list of bug fixes and enhancements,
-refer to the following KnowledgeBase article:
-'https://access.redhat.com/articles/2940041'.");
+refer to the linked KnowledgeBase article.");
+
   script_tag(name:"affected", value:"kernel on CentOS 7");
   script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
   script_xref(name:"CESA", value:"2017:0386");
+  script_xref(name:"URL", value:"https://access.redhat.com/articles/2940041");
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2017-March/022324.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);

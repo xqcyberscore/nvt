@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882025");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14095 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 14:54:56 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-09-16 06:03:45 +0200 (Tue, 16 Sep 2014)");
   script_cve_id("CVE-2014-3596", "CVE-2012-5784");
   script_tag(name:"cvss_base", value:"5.8");
@@ -58,10 +58,9 @@ Before applying this update, make sure all previously released errata
 relevant to your system have been applied.
 
 This update is available via the Red Hat Network. Details on how to use the
-Red Hat Network to apply this update are available at
-https://access.redhat.com/articles/11258
+Red Hat Network to apply this update are available at the linked references.
 
-5. Bugs fixed (https://bugzilla.redhat.com):
+5. Bugs fixed:
 
 1129935 - CVE-2014-3596 axis: SSL hostname verification bypass, incomplete
 CVE-2012-5784 fix
@@ -130,6 +129,7 @@ axis-1.2.1-2jpp.8.el5_10.s390x ...
 
   script_xref(name:"CESA", value:"2014:1193");
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2014-September/020561.html");
+  script_xref(name:"URL", value:"https://access.redhat.com/articles/11258");
   script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for axis");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

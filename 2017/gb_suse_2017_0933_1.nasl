@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_0933_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_suse_2017_0933_1.nasl 14110 2019-03-12 09:28:23Z cfischer $
 #
 # SuSE Update for ruby2.2, openSUSE-SU-2017:0933-1 (ruby2.2,)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851531");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14110 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 10:28:23 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-04-06 06:33:15 +0200 (Thu, 06 Apr 2017)");
   script_cve_id("CVE-2015-7551", "CVE-2016-2339");
   script_tag(name:"cvss_base", value:"7.5");
@@ -47,11 +47,11 @@ if(description)
 
   - CVE-2015-7551: Unsafe tainted string usage in Fiddle and DL (boo#959495)
 
-  Detailed ChangeLog:
+  Detailed ChangeLog are linked in the references.");
 
-  - 'http://svn.ruby-lang.org/repos/ruby/tags/v2_2_6/ChangeLog'
+  script_xref(name:"URL", value:"http://svn.ruby-lang.org/repos/ruby/tags/v2_2_6/ChangeLog");
+  script_xref(name:"URL", value:"http://svn.ruby-lang.org/repos/ruby/tags/v2_3_3/ChangeLog");
 
-  - 'http://svn.ruby-lang.org/repos/ruby/tags/v2_3_3/ChangeLog'.");
   script_tag(name:"affected", value:"ruby2.2, on openSUSE Leap 42.2, openSUSE Leap 42.1");
   script_tag(name:"solution", value:"Please install the updated packages.");
 

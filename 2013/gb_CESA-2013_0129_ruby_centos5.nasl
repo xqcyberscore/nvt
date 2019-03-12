@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-January/019162.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881561");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-01-21 09:38:08 +0530 (Mon, 21 Jan 2013)");
   script_cve_id("CVE-2012-4481", "CVE-2012-4522", "CVE-2011-1005");
   script_tag(name:"cvss_base", value:"5.0");
@@ -63,7 +63,7 @@ if(description)
 
   This update also fixes the following bug:
 
-  * Prior to this update, the &quot;rb_syck_mktime&quot; option could, under certain
+  * Prior to this update, the 'rb_syck_mktime' option could, under certain
   circumstances, terminate with a segmentation fault when installing
   libraries with certain gems. This update modifies the underlying code so
   that Ruby gems can be installed as expected. (BZ#834381)

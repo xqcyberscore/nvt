@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2010-October/017081.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880658");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -85,12 +85,12 @@ if(description)
   UIDefault.ProxyLazyValue had unsafe reflection usage, allowing untrusted
   callers to create objects via ProxyLazyValue values. (CVE-2010-3553)
 
-  HttpURLConnection improperly handled the &quot;chunked&quot; transfer encoding
+  HttpURLConnection improperly handled the 'chunked' transfer encoding
   method, which could allow remote attackers to conduct HTTP response
   splitting attacks. (CVE-2010-3549)
 
   HttpURLConnection improperly checked whether the calling code was granted
-  the &quot;allowHttpTrace&quot; permission, allowing untrusted code to create HTTP
+  the 'allowHttpTrace' permission, allowing untrusted code to create HTTP
   TRACE requests. (CVE-2010-3574)
 
   HttpURLConnection did not validate request headers set by applets, which

@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2011-May/017520.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880556");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
@@ -49,7 +49,7 @@ if(description)
   A flaw was found in the Python urllib and urllib2 libraries where they
   would not differentiate between different target URLs when handling
   automatic redirects. This caused Python applications using these modules to
-  follow any new URL that they understood, including the &quot;file://&quot; URL type.
+  follow any new URL that they understood, including the 'file://' URL type.
   This could allow a remote server to force a local Python application to
   read a local file instead of the remote one, possibly exposing local files
   that were not meant to be exposed. (CVE-2011-1521)
@@ -73,7 +73,7 @@ if(description)
   Expat parser to crash while parsing the file. (CVE-2009-3720)
 
   This update makes Python use the system Expat library rather than its own
-  internal copy; therefore, users must have the version of Expat shipped with
+  internal copy. Therefore, users must have the version of Expat shipped with
   RHSA-2009:1625 installed, or a later version, to resolve the CVE-2009-3720
   issue.
 

@@ -39,7 +39,7 @@ if(description)
   Important)
 
   * A flaw was found in the way file permission checks for the
-  &quot;/dev/cpu/[x]/msr&quot; files were performed in restricted root environments
+  '/dev/cpu/[x]/msr' files were performed in restricted root environments
   (for example, when using a capability-based security model). A local user
   with the ability to write to these files could use this flaw to escalate
   their privileges to kernel level, for example, by writing to the
@@ -56,8 +56,8 @@ if(description)
   Notes. The system must be rebooted for this update to take effect.");
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-March/019646.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881690");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-03-15 09:53:12 +0530 (Fri, 15 Mar 2013)");
   script_cve_id("CVE-2013-0228", "CVE-2013-0268");
   script_tag(name:"cvss_base", value:"6.2");

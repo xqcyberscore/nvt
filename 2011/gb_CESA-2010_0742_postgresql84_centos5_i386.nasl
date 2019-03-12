@@ -25,16 +25,20 @@
 
 if(description)
 {
-  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2010-October/017059.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880657");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14095 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 14:54:56 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
   script_xref(name:"CESA", value:"2010:0742");
   script_cve_id("CVE-2010-3433");
   script_name("CentOS Update for postgresql84 CESA-2010:0742 centos5 i386");
+
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2010-October/017059.html");
+  script_xref(name:"URL", value:"http://www.postgresql.org/docs/7.4/static/release.html");
+  script_xref(name:"URL", value:"http://www.postgresql.org/docs/8.1/static/release.html");
+  script_xref(name:"URL", value:"http://www.postgresql.org/docs/8.4/static/release.html");
 
   script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for postgresql84");
   script_category(ACT_GATHER_INFO);
@@ -60,18 +64,13 @@ if(description)
   privilege escalation. (CVE-2010-3433)
 
   For Red Hat Enterprise Linux 4, the updated postgresql packages upgrade
-  PostgreSQL to version 7.4.30. Refer to the PostgreSQL Release Notes for a
-  list of changes:
-
-  http://www.postgresql.org/docs/7.4/static/release.html
+  PostgreSQL to version 7.4.30. Refer to the linked PostgreSQL Release Notes for a
+  list of changes.
 
   For Red Hat Enterprise Linux 5, the updated postgresql packages upgrade
   PostgreSQL to version 8.1.22, and the updated postgresql84 packages upgrade
-  PostgreSQL to version 8.4.5. Refer to the PostgreSQL Release Notes for a
-  list of changes:
-
-  http://www.postgresql.org/docs/8.1/static/release.html
-  http://www.postgresql.org/docs/8.4/static/release.html
+  PostgreSQL to version 8.4.5. Refer to the linked PostgreSQL Release Notes for a
+  list of changes.
 
   All PostgreSQL users are advised to upgrade to these updated packages,
   which correct this issue. If the postgresql service is running, it will be

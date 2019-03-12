@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-July/018712.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881234");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-30 16:54:03 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2006-1168", "CVE-2011-2716");
   script_tag(name:"cvss_base", value:"7.5");
@@ -68,18 +68,18 @@ if(description)
 
   This update also fixes the following bugs:
 
-  * Prior to this update, the &quot;findfs&quot; command did not recognize Btrfs
+  * Prior to this update, the 'findfs' command did not recognize Btrfs
   partitions. As a consequence, an error message could occur when dumping a
   core file. This update adds support for recognizing such partitions so
   the problem no longer occurs. (BZ#751927)
 
-  * If the &quot;grep&quot; command was used with the &quot;-F&quot; and &quot;-i&quot; options at the
-  same time, the &quot;-i&quot; option was ignored. As a consequence, the &quot;grep -iF&quot;
+  * If the 'grep' command was used with the '-F' and '-i' options at the
+  same time, the '-i' option was ignored. As a consequence, the 'grep -iF'
   command incorrectly performed a case-sensitive search instead of an
   insensitive search. A patch has been applied to ensure that the combination
-  of the &quot;-F&quot; and &quot;-i&quot; options works as expected. (BZ#752134)
+  of the '-F' and '-i' options works as expected. (BZ#752134)
 
-  * Prior to this update, the msh shell did not support the &quot;set -o pipefail&quot;
+  * Prior to this update, the msh shell did not support the 'set -o pipefail'
   command. This update adds support for this command. (BZ#782018)
 
   * Previously, the msh shell could terminate unexpectedly with a

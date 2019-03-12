@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-February/018407.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881236");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14099 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:51:17 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-30 16:54:14 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2011-3659", "CVE-2011-3670", "CVE-2012-0442", "CVE-2012-0444",
                 "CVE-2012-0449");
@@ -70,8 +70,8 @@ if(description)
   could cause Firefox to crash or, potentially, execute arbitrary code with
   the privileges of the user running Firefox. (CVE-2012-0449)
 
-  The same-origin policy in Firefox treated <a  rel= &qt nofollow &qt  href= &qt http://example.com &qt >http://example.com</a> and
-  <a  rel= &qt nofollow &qt  href= &qt http://[example.com &qt >http://[example.com</a>] as interchangeable. A malicious script could possibly
+  The same-origin policy in Firefox treated http://example.com and http://[example.com]
+  as interchangeable. A malicious script could possibly
   use this flaw to gain access to sensitive information (such as a client's
   IP and user e-mail address, or httpOnly cookies) that may be included in
   HTTP proxy error replies, generated in response to invalid URLs using

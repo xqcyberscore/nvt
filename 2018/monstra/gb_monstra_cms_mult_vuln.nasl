@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_monstra_cms_mult_vuln.nasl 13959 2019-03-01 11:27:26Z cfischer $
+# $Id: gb_monstra_cms_mult_vuln.nasl 14102 2019-03-12 03:29:04Z ckuersteiner $
 #
 # Monstra CMS <= 3.0.4 Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113204");
-  script_version("$Revision: 13959 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-01 12:27:26 +0100 (Fri, 01 Mar 2019) $");
+  script_version("$Revision: 14102 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 04:29:04 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-05-29 16:04:31 +0200 (Tue, 29 May 2018)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
@@ -41,7 +41,7 @@ if( description )
   script_cve_id("CVE-2018-11472", "CVE-2018-11473", "CVE-2018-11474", "CVE-2018-11475",
                 "CVE-2018-18048", "CVE-2018-6383", "CVE-2018-6550", "CVE-2018-9037",
                 "CVE-2018-9038", "CVE-2018-10109", "CVE-2018-10118", "CVE-2018-10121",
-                "CVE-2018-11678");
+                "CVE-2018-11678", "CVE-2018-17418");
 
   script_name("Monstra CMS <= 3.0.4 Multiple Vulnerabilities");
 

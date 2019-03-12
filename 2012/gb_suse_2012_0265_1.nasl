@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_0265_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_suse_2012_0265_1.nasl 14110 2019-03-12 09:28:23Z cfischer $
 #
 # SuSE Update for flash-player openSUSE-SU-2012:0265-1 (flash-player)
 #
@@ -27,14 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850292");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14110 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 10:28:23 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-08-02 23:36:37 +0530 (Thu, 02 Aug 2012)");
   script_cve_id("CVE-2012-0751", "CVE-2012-0752", "CVE-2012-0753", "CVE-2012-0754", "CVE-2012-0755", "CVE-2012-0756", "CVE-2012-0767");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_xref(name:"openSUSE-SU", value:"2012:0265_1");
   script_name("SuSE Update for flash-player openSUSE-SU-2012:0265-1 (flash-player)");
+
+  script_xref(name:"URL", value:"https://www.adobe.com/support/security/bulletins/apsb12-03.html");
 
   script_tag(name:"summary", value:"The remote host is missing an update for the 'flash-player'
   package(s) announced via the referenced advisory.");
@@ -51,8 +53,7 @@ if(description)
   It fixes lots of security issues, some already exploited in
   the wild.
 
-  Details can be found on:
-  https://www.adobe.com/support/security/bulletins/apsb12-03.html
+  Details can be found at the linked vendor advisory.
 
   These vulnerabilities could cause a crash and potentially
   allow an attacker to take control of the affected system.

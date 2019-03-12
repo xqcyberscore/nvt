@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-July/018724.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881105");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-30 16:09:14 +0530 (Mon, 30 Jul 2012)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -83,7 +83,7 @@ if(description)
   * Recent changes to NSS re-introduced a problem where applications could
   not use multiple SSL client certificates in the same process. Therefore,
   any attempt to run commands that worked with multiple SSL client
-  certificates, such as the &quot;yum repolist&quot; command, resulted in a
+  certificates, such as the 'yum repolist' command, resulted in a
   re-negotiation handshake failure. With this update, a revised patch
   correcting this problem has been applied to NSS, and using multiple SSL
   client certificates in the same process is now possible again. (BZ#761086)

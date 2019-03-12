@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-July/018707.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881076");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-30 16:01:30 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2012-3375", "CVE-2011-1083");
   script_tag(name:"cvss_base", value:"4.9");
@@ -90,7 +90,7 @@ if(description)
 
   * Under memory pressure, memory pages that are still a part of a
   checkpointing transaction can be invalidated. However, when the pages were
-  invalidated, the journal head was re-filed onto the transactions' &quot;forget&quot;
+  invalidated, the journal head was re-filed onto the transactions' 'forget'
   list, which caused the current running transaction's block to be modified.
   As a result, block accounting was not properly performed on that modified
   block because it appeared to have al ...

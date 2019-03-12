@@ -29,8 +29,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-July/018709.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881097");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-30 16:07:58 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2012-2693");
   script_tag(name:"cvss_base", value:"3.7");
@@ -63,7 +63,7 @@ if(description)
 
   All users of libvirt are advised to upgrade to these updated packages,
   which fix these issues and add these enhancements. After installing the
-  updated packages, libvirtd must be restarted (&quot;service libvirtd restart&quot;)
+  updated packages, libvirtd must be restarted ('service libvirtd restart')
   for this update to take effect.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");

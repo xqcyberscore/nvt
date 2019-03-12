@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_2119_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_suse_2017_2119_1.nasl 14110 2019-03-12 09:28:23Z cfischer $
 #
 # SuSE Update for mariadb openSUSE-SU-2017:2119-1 (mariadb)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851587");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14110 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 10:28:23 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-08-10 07:29:53 +0200 (Thu, 10 Aug 2017)");
   script_cve_id("CVE-2017-3308", "CVE-2017-3309", "CVE-2017-3453", "CVE-2017-3456",
                 "CVE-2017-3464");
@@ -88,11 +88,7 @@ if(description)
 
   - Performance Schema updated to 5.6.36
 
-  Release notes and changelog:
-
-  - 'https://kb.askmonty.org/en/mariadb-10031-release-notes'
-
-  - 'https://kb.askmonty.org/en/mariadb-10031-changelog'
+  Release notes and changelog are linked in the references.
 
   This update was imported from the SUSE:SLE-12-SP1:Update update project.");
   script_tag(name:"affected", value:"mariadb on openSUSE Leap 42.2");
@@ -105,6 +101,10 @@ if(description)
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.2");
+
+  script_xref(name:"URL", value:"https://kb.askmonty.org/en/mariadb-10031-release-notes");
+  script_xref(name:"URL", value:"https://kb.askmonty.org/en/mariadb-10031-changelog");
+
   exit(0);
 }
 

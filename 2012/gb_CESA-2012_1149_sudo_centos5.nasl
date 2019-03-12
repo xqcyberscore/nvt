@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-August/018791.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881468");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-08-09 10:21:39 +0530 (Thu, 09 Aug 2012)");
   script_cve_id("CVE-2012-3440");
   script_tag(name:"cvss_base", value:"5.6");
@@ -50,13 +50,13 @@ if(description)
   An insecure temporary file use flaw was found in the sudo package's
   post-uninstall script. A local attacker could possibly use this flaw to
   overwrite an arbitrary file via a symbolic link attack, or modify the
-  contents of the &quot;/etc/nsswitch.conf&quot; file during the upgrade or removal of
+  contents of the '/etc/nsswitch.conf' file during the upgrade or removal of
   the sudo package. (CVE-2012-3440)
 
   This update also fixes the following bugs:
 
   * Previously, sudo escaped non-alphanumeric characters in commands using
-  &quot;sudo -s&quot; or &quot;sudo -&quot; at the wrong place and interfered with the
+  'sudo -s' or 'sudo -' at the wrong place and interfered with the
   authorization process. Some valid commands were not permitted. Now,
   non-alphanumeric characters escape immediately before the command is
   executed and no longer interfere with the authorization process.
@@ -70,14 +70,14 @@ if(description)
   (BZ#844419)
 
   * The sudo update RHSA-2012:0309 introduced a regression that caused the
-  Security-Enhanced Linux (SELinux) context of the &quot;/etc/nsswitch.conf&quot; file
+  Security-Enhanced Linux (SELinux) context of the '/etc/nsswitch.conf' file
   to change during the installation or upgrade of the sudo package. This
   could cause various services confined by SELinux to no longer be permitted
   to access the file. In reported cases, this issue prevented PostgreSQL and
   Postfix from starting. (BZ#842759)
 
-  * Updating the sudo package resulted in the &quot;sudoers&quot; line in
-  &quot;/etc/nsswitch.conf&quot; being removed. This update corrects the bug in the
+  * Updating the sudo package resulted in the 'sudoers' line in
+  '/etc/nsswitch.conf' being removed. This update corrects the bug in the
   sudo package's post-uninstall script that caused this issue. (BZ#844420)
 
   * Prior to this update, a race condition bug existed in sudo. When a

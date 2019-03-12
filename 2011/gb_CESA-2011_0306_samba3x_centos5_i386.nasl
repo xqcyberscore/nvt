@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2011-April/017391.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880515");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -48,7 +48,7 @@ if(description)
 
   A flaw was found in the way Samba handled file descriptors. If an attacker
   were able to open a large number of file descriptors on the Samba server,
-  they could flip certain stack bits to &quot;1&quot; values, resulting in the Samba
+  they could flip certain stack bits to '1' values, resulting in the Samba
   server (smbd) crashing. (CVE-2011-0719)
 
   Red Hat would like to thank the Samba team for reporting this issue.

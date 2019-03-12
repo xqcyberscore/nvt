@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2009-October/016226.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880813");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
@@ -47,7 +47,7 @@ if(description)
   use over on-demand TCP/IP links, such as SLIP and PPP connections.
 
   It was discovered that fetchmail is affected by the previously published
-  &quot;null prefix attack&quot;, caused by incorrect handling of NULL characters in
+  'null prefix attack', caused by incorrect handling of NULL characters in
   X.509 certificates. If an attacker is able to get a carefully-crafted
   certificate signed by a trusted Certificate Authority, the attacker could
   use the certificate during a man-in-the-middle attack and potentially
@@ -59,18 +59,18 @@ if(description)
   rejected it, fetchmail could crash. (CVE-2007-4565)
 
   A flaw was found in fetchmail. When fetchmail is run in double verbose
-  mode (&quot;-v -v&quot;), it could crash upon receiving certain, malformed mail
+  mode ('-v -v'), it could crash upon receiving certain, malformed mail
   messages with long headers. A remote attacker could use this flaw to cause
-  a denial of service if fetchmail was also running in daemon mode (&quot;-d&quot;).
+  a denial of service if fetchmail was also running in daemon mode ('-d').
   (CVE-2008-2711)
 
   Note: when using SSL-enabled services, it is recommended that the fetchmail
-  &quot;--sslcertck&quot; option be used to enforce strict SSL certificate checking.
+  '--sslcertck' option be used to enforce strict SSL certificate checking.
 
   All fetchmail users should upgrade to this updated package, which contains
   backported patches to correct these issues. If fetchmail is running in
   daemon mode, it must be restarted for this update to take effect (use the
-  &quot;fetchmail --quit&quot; command to stop the fetchmail process).");
+  'fetchmail --quit' command to stop the fetchmail process).");
   script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");

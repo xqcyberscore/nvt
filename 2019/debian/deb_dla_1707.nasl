@@ -21,14 +21,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891707");
-  script_version("$Revision: 14082 $");
+  script_version("$Revision: 14107 $");
   script_cve_id("CVE-2017-16652", "CVE-2017-16654", "CVE-2018-11385", "CVE-2018-11408", "CVE-2018-14773",
                 "CVE-2018-19789", "CVE-2018-19790");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1707-1] symfony security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-11 08:51:53 +0100 (Mon, 11 Mar 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 08:31:46 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-03-11 00:00:00 +0100 (Mon, 11 Mar 2019)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

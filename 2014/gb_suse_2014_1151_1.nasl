@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2014_1151_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_suse_2014_1151_1.nasl 14110 2019-03-12 09:28:23Z cfischer $
 #
 # SuSE Update for chromium openSUSE-SU-2014:1151-1 (chromium)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850614");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14110 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 10:28:23 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-09-23 05:52:38 +0200 (Tue, 23 Sep 2014)");
   script_cve_id("CVE-2014-3168", "CVE-2014-3169", "CVE-2014-3170", "CVE-2014-3171",
                 "CVE-2014-3172", "CVE-2014-3173", "CVE-2014-3174", "CVE-2014-3176",
@@ -39,10 +39,7 @@ if(description)
   script_tag(name:"insight", value:"Chromium was updated to 37.0.2062.94 containing security Fixes
   (bnc#893720).
 
-  A full list of changes is available in the log:
-
-  https://chromium.googlesource.com/chromium/src/+log/36.0.1985.0..37.0.2062.
-  0?pretty=full
+  A full list of changes is available in the referenced vendor log.
 
   This update includes 50 security fixes. Below, we highlight fixes that
   were either contributed by external researchers or particularly
@@ -84,6 +81,9 @@ if(description)
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=(openSUSE12\.3|openSUSE13\.1)");
+
+  script_xref(name:"URL", value:"https://chromium.googlesource.com/chromium/src/+log/36.0.1985.0..37.0.2062.0?pretty=full");
+
   exit(0);
 }
 

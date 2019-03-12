@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882536");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14095 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 14:54:56 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-08-08 15:11:55 +0530 (Mon, 08 Aug 2016)");
   script_cve_id("CVE-2015-8660", "CVE-2016-2143", "CVE-2016-4470");
   script_tag(name:"cvss_base", value:"7.2");
@@ -42,8 +42,7 @@ the core of any Linux operating system.
 These updated kernel packages include several security issues and numerous
 bug fixes, some of which you can see below. Space precludes documenting
 all of these bug fixes in this advisory. To see the complete list of bug
-fixes, users are directed to the related Knowledge Article:
-'https://access.redhat.com/articles/2460971'.
+fixes, users are directed to the linked Knowledge Article.
 
 Security Fix(es):
 
@@ -93,6 +92,7 @@ in the log messages. (BZ# ...
 
   script_xref(name:"CESA", value:"2016:1539");
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2016-August/022025.html");
+  script_xref(name:"URL", value:"https://access.redhat.com/articles/2460971");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

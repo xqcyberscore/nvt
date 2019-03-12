@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882027");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14095 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 14:54:56 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-09-25 05:58:31 +0200 (Thu, 25 Sep 2014)");
   script_cve_id("CVE-2014-6271");
   script_tag(name:"cvss_base", value:"10.0");
@@ -45,7 +45,7 @@ provide environment variables, allowing them to exploit this issue.
 (CVE-2014-6271)
 
 For additional information on the CVE-2014-6271 flaw, refer to the
-Knowledgebase article at https://access.redhat.com/articles/1200223
+Knowledgebase article linked at the references.
 
 Red Hat would like to thank Stephane Chazelas for reporting this issue.
 
@@ -58,6 +58,7 @@ contain a backported patch to correct this issue.");
 
   script_xref(name:"CESA", value:"2014:1293");
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2014-September/020582.html");
+  script_xref(name:"URL", value:"https://access.redhat.com/articles/1200223");
   script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for bash");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2009-April/015739.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880674");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
@@ -61,7 +61,7 @@ if(description)
   Important: the version of the multipathd daemon in Red Hat Enterprise Linux
   5 has a known issue which may cause a machine to become unresponsive when
   the multipathd service is stopped. This issue is tracked in the Bugzilla
-  bug #494582; a link is provided in the References section of this erratum.
+  bug #494582. A link is provided in the References section of this erratum.
   Until this issue is resolved, we recommend restarting the multipathd
   service by issuing the following commands in sequence:
 

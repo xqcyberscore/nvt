@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_2537_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_suse_2016_2537_1.nasl 14110 2019-03-12 09:28:23Z cfischer $
 #
 # SuSE Update for compat-openssl098 openSUSE-SU-2016:2537-1 (compat-openssl098)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851412");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14110 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 10:28:23 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-10-15 05:53:17 +0200 (Sat, 15 Oct 2016)");
   script_cve_id("CVE-2016-2177", "CVE-2016-2178", "CVE-2016-2179", "CVE-2016-2181",
                 "CVE-2016-2182", "CVE-2016-2183", "CVE-2016-6302", "CVE-2016-6303",
@@ -71,8 +71,7 @@ if(description)
 
   * Certificate message OOB reads (CVE-2016-6306) (bsc#999668)
 
-  More information can be found on:
-  'https://www.openssl.org/news/secadv/20160922.txt'
+  More information can be found on the linked vendor advisory.
 
   Bugs fixed:
 
@@ -94,6 +93,9 @@ if(description)
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.1");
+
+  script_xref(name:"URL", value:"https://www.openssl.org/news/secadv/20160922.txt");
+
   exit(0);
 }
 

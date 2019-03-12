@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2009-September/016145.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880867");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
@@ -60,9 +60,9 @@ if(description)
   update any affected mount scripts and /etc/fstab entries for eCryptfs file
   systems.
 
-  A disclosure flaw was found in the way the &quot;ecryptfs-setup-private&quot; script
-  passed passphrases to the &quot;ecryptfs-wrap-passphrase&quot; and
-  &quot;ecryptfs-add-passphrase&quot; commands as command line arguments. A local user
+  A disclosure flaw was found in the way the 'ecryptfs-setup-private' script
+  passed passphrases to the 'ecryptfs-wrap-passphrase' and
+  'ecryptfs-add-passphrase' commands as command line arguments. A local user
   could obtain the passphrases of other users who were running the script
   from the process listing. (CVE-2008-5188)
 
@@ -81,13 +81,13 @@ if(description)
 
   (BZ#500997)
 
-  * the &quot;ecryptfs-rewrite-file&quot; utility is now more intelligent when dealing
-  with non-existent files and with filtering special files such as the &quot;.&quot;
-  directory. In addition, the progress output from &quot;ecryptfs-rewrite-file&quot;
+  * the 'ecryptfs-rewrite-file' utility is now more intelligent when dealing
+  with non-existent files and with filtering special files such as the '.'
+  directory. In addition, the progress output from 'ecryptfs-rewrite-file'
   has been improved and is now more explicit about the success status of each
   target. (BZ#500813)
 
-  * descriptions of the &quot;verbose&quot; flag and the &quot;verbosity=[x]&quot; option, where
+  * descriptions of the 'verbose' flag and the 'verbosity=[x]' option, where
   [x] is either 0 or 1, were missing from a number of eCryptfs manual pages,
   and have been added. Refer to the eCryptfs man pages for important
   information regarding using the verbose and/or verbosity options.

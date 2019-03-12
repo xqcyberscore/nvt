@@ -67,9 +67,9 @@ if(description)
 
   This update is available via the Red Hat Network. Details on how to
   use the Red Hat Network to apply this update are available at
-  https://access.redhat.com/knowledge/articles/11258
+  the linked references.
 
-  5. Bugs fixed (http://bugzilla.redhat.com):
+  5. Bugs fixed:
 
   905874 - CVE-2013-0242 glibc: Buffer overrun (DoS) in regexp matcher
            by processing multibyte characters
@@ -84,8 +84,8 @@ if(description)
 
   Description truncated, please see the referenced URL(s) for more information.");
   script_oid("1.3.6.1.4.1.25623.1.0.881722");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14095 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 14:54:56 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-04-25 10:23:03 +0530 (Thu, 25 Apr 2013)");
   script_cve_id("CVE-2013-0242", "CVE-2013-1914");
   script_tag(name:"cvss_base", value:"5.0");
@@ -96,6 +96,7 @@ if(description)
 
   script_xref(name:"CESA", value:"2013:0769");
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-April/019706.html");
+  script_xref(name:"URL", value:"https://access.redhat.com/knowledge/articles/11258");
   script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for glibc");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");

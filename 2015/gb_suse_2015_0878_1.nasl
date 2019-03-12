@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_0878_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_suse_2015_0878_1.nasl 14110 2019-03-12 09:28:23Z cfischer $
 #
 # SuSE Update for flash-player SUSE-SU-2015:0878-1 (flash-player)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851099");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14110 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 10:28:23 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-10-16 20:00:42 +0200 (Fri, 16 Oct 2015)");
   script_cve_id("CVE-2015-3044", "CVE-2015-3077", "CVE-2015-3078", "CVE-2015-3079", "CVE-2015-3080", "CVE-2015-3081", "CVE-2015-3082", "CVE-2015-3083", "CVE-2015-3084", "CVE-2015-3085", "CVE-2015-3086", "CVE-2015-3087", "CVE-2015-3088", "CVE-2015-3089", "CVE-2015-3090", "CVE-2015-3091", "CVE-2015-3092", "CVE-2015-3093");
   script_tag(name:"cvss_base", value:"10.0");
@@ -49,8 +49,10 @@ if(description)
   CVE-2015-3088, CVE-2015-3089, CVE-2015-3090, CVE-2015-3091,
   CVE-2015-3092, CVE-2015-3093
 
-  More information can be found at the Adobe Security Bulletin APSB15-09:
-  https://helpx.adobe.com/security/products/flash-player/apsb15-09.html");
+  More information can be found at the referenced Adobe Security Bulletin APSB15-09.");
+
+  script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/flash-player/apsb15-09.html");
+
   script_tag(name:"affected", value:"flash-player on SUSE Linux Enterprise Desktop 12");
   script_tag(name:"solution", value:"Please install the updated packages.");
   script_xref(name:"SUSE-SU", value:"2015:0878_1");

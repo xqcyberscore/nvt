@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2011-April/017468.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880526");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -59,7 +59,7 @@ if(description)
 
   An integer overflow flaw was found in the way SeaMonkey handled the HTML
   frameset tag. A web page with a frameset tag containing large values for
-  the &quot;rows&quot; and &quot;cols&quot; attributes could trigger this flaw, possibly leading
+  the 'rows' and 'cols' attributes could trigger this flaw, possibly leading
   to arbitrary code execution with the privileges of the user running
   SeaMonkey. (CVE-2011-0077)
 

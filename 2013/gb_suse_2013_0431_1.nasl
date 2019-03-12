@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2013_0431_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_suse_2013_0431_1.nasl 14111 2019-03-12 09:34:48Z cfischer $
 #
 # SuSE Update for Mozilla openSUSE-SU-2013:0431-1 (Mozilla)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850440");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14111 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 10:34:48 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-11-19 14:05:44 +0530 (Tue, 19 Nov 2013)");
   script_cve_id("CVE-2013-0787");
   script_tag(name:"cvss_base", value:"9.3");
@@ -43,7 +43,7 @@ if(description)
   - Seamonkey 2.16.1
 
   - Thunderbird 17.0.4 which fix a use-after-free in HTML
-  Editor which could allow for arbitrary code execution. ");
+  Editor which could allow for arbitrary code execution.");
   script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");

@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-March/019353.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881635");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-03-12 09:58:58 +0530 (Tue, 12 Mar 2013)");
   script_cve_id("CVE-2012-4546");
   script_tag(name:"cvss_base", value:"4.3");
@@ -55,8 +55,8 @@ if(description)
 
   It was found that the current default configuration of IPA servers did not
   publish correct CRLs (Certificate Revocation Lists). The default
-  configuration specifies that every replica is to generate its own CRL;
-  however, this can result in inconsistencies in the CRL contents provided to
+  configuration specifies that every replica is to generate its own CRL.
+  However, this can result in inconsistencies in the CRL contents provided to
   clients from different Identity Management replicas. More specifically, if
   a certificate is revoked on one Identity Management replica, it will not
   show up on another Identity Management replica. (CVE-2012-4546)

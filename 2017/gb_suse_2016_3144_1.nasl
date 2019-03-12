@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_3144_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_suse_2016_3144_1.nasl 14110 2019-03-12 09:28:23Z cfischer $
 #
 # SuSE Update for tomcat openSUSE-SU-2016:3144-1 (tomcat)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851503");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14110 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 10:28:23 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-02-22 15:16:02 +0100 (Wed, 22 Feb 2017)");
   script_cve_id("CVE-2016-0762", "CVE-2016-5018", "CVE-2016-6794", "CVE-2016-6796",
                 "CVE-2016-6797", "CVE-2016-6816", "CVE-2016-8735");
@@ -67,8 +67,7 @@ if(description)
   Bug fixes:
 
   - Enabled optional setenv.sh script. See section '(3.4) Using the 'setenv'
-  script' in 'http://tomcat.apache.org/tomcat-8.0-doc/RUNNING.txt'.
-  (bsc#1002639)
+  script' in the linked documentation. (bsc#1002639)
 
   This update supplies the new packages apache-commons-pool2 and
   apache-commons-dbcp in version 2 to allow tomcat to use the DBCP 2.0
@@ -85,6 +84,9 @@ if(description)
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.2");
+
+  script_xref(name:"URL", value:"http://tomcat.apache.org/tomcat-8.0-doc/RUNNING.txt");
+
   exit(0);
 }
 

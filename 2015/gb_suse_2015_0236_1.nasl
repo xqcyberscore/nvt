@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_0236_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_suse_2015_0236_1.nasl 14110 2019-03-12 09:28:23Z cfischer $
 #
 # SuSE Update for flash-player SUSE-SU-2015:0236-1 (flash-player)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850957");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14110 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 10:28:23 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-10-16 15:00:43 +0200 (Fri, 16 Oct 2015)");
   script_cve_id("CVE-2015-0313", "CVE-2015-0314", "CVE-2015-0315", "CVE-2015-0316", "CVE-2015-0317", "CVE-2015-0318", "CVE-2015-0319", "CVE-2015-0320", "CVE-2015-0321", "CVE-2015-0322", "CVE-2015-0323", "CVE-2015-0324", "CVE-2015-0325", "CVE-2015-0326", "CVE-2015-0327", "CVE-2015-0328", "CVE-2015-0329", "CVE-2015-0330");
   script_tag(name:"cvss_base", value:"10.0");
@@ -61,8 +61,10 @@ if(description)
   - Null pointer dereference issues (CVE-2015-0325, CVE-2015-0326,
   CVE-2015-0328).
 
-  More information is available at
-  https://helpx.adobe.com/security/products/flash-player/apsb15-04.html");
+  More information is available at the referenced vendor advisory.");
+
+  script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/flash-player/apsb15-04.html");
+
   script_tag(name:"affected", value:"flash-player on SUSE Linux Enterprise Desktop 12");
   script_tag(name:"solution", value:"Please install the updated packages.");
   script_xref(name:"SUSE-SU", value:"2015:0236_1");

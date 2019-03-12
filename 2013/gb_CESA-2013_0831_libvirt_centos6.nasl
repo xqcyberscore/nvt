@@ -45,7 +45,7 @@ if(description)
 
   * Previously, libvirt made control group (cgroup) requests on files that
   it should not have. With older kernels, such nonsensical cgroup requests
-  were ignored; however, newer kernels are stricter, resulting in libvirt
+  were ignored. However, newer kernels are stricter, resulting in libvirt
   logging spurious warnings and failures to the libvirtd and audit logs. The
   audit log failures displayed by the ausearch tool were similar to the
   following:
@@ -58,7 +58,7 @@ if(description)
 
   * Previously, libvirt used the wrong variable when constructing audit
   messages. This led to invalid audit messages, causing ausearch to format
-  certain entries as having path=(null)&quot; instead of the correct path. This
+  certain entries as having path=(null)' instead of the correct path. This
   could prevent ausearch from locating events related to cgroup device ACL
   modifications for guests managed by libvirt. With this update, the audit
   messages are generated correctly, preventing loss of audit coverage.
@@ -68,8 +68,8 @@ if(description)
   which contain backported patches to correct these issues. After installing
   the updated packages, libvirtd will be restarted automatically.");
   script_oid("1.3.6.1.4.1.25623.1.0.881735");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-05-17 09:53:55 +0530 (Fri, 17 May 2013)");
   script_cve_id("CVE-2013-1962");
   script_tag(name:"cvss_base", value:"5.0");

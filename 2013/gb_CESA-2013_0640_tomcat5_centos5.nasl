@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-March/019645.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881687");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-03-15 09:52:23 +0530 (Fri, 15 Mar 2013)");
   script_cve_id("CVE-2012-3546", "CVE-2012-5885", "CVE-2012-5886", "CVE-2012-5887");
   script_tag(name:"cvss_base", value:"5.0");
@@ -50,7 +50,7 @@ if(description)
   another component that calls request.setUserPrincipal() before the call to
   FormAuthenticator#authenticate() (such as the Single-Sign-On valve), it was
   possible to bypass the security constraint checks in the FORM authenticator
-  by appending &quot;/j_security_check&quot; to the end of a URL. A remote attacker
+  by appending '/j_security_check' to the end of a URL. A remote attacker
   with an authenticated session on an affected application could use this
   flaw to circumvent authorization controls, and thereby access resources not
   permitted by the roles associated with their authenticated session.

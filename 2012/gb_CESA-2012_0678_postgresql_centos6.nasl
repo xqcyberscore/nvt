@@ -25,16 +25,18 @@
 
 if(description)
 {
-  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-May/018650.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881063");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14095 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 14:54:56 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-30 15:59:28 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2012-0866", "CVE-2012-0867", "CVE-2012-0868");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_xref(name:"CESA", value:"2012:0678");
   script_name("CentOS Update for postgresql CESA-2012:0678 centos6");
+
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-May/018650.html");
+  script_xref(name:"URL", value:"http://www.postgresql.org/docs/8.4/static/release.html");
 
   script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for postgresql");
   script_category(ACT_GATHER_INFO);
@@ -66,10 +68,8 @@ if(description)
 
   These updated packages upgrade PostgreSQL to version 8.4.11, which fixes
   these issues as well as several data-corruption issues and lesser
-  non-security issues. Refer to the PostgreSQL Release Notes for a full list
-  of changes:
-
-  <a  rel= &qt nofollow &qt  href= &qt http://www.postgresql.org/docs/8.4/static/release.html &qt >http://www.postgresql.org/docs/8.4/static/release.html</a>
+  non-security issues. Refer to the linked PostgreSQL Release Notes for a full list
+  of changes.
 
   All PostgreSQL users are advised to upgrade to these updated packages,
   which correct these issues. If the postgresql service is running, it will

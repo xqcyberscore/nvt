@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.881744");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-06-04 09:19:09 +0530 (Tue, 04 Jun 2013)");
   script_cve_id("CVE-2013-2007");
   script_tag(name:"cvss_base", value:"6.9");
@@ -77,7 +77,7 @@ if(description)
   overflow in the code and qemu-kvm works as expected in the described
   scenario. (BZ#958750)
 
-  * When the set_link flag is set to &quot;off&quot; to change the status of a network
+  * When the set_link flag is set to 'off' to change the status of a network
   card, the status is changed to down on the respective guest. Previously,
   with certain network cards, when such a guest was restarted, the status of
   the network card was unexpectedly reset to up, even though the network

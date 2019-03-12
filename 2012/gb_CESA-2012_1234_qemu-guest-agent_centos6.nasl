@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-September/018848.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881486");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-09-07 11:26:05 +0530 (Fri, 07 Sep 2012)");
   script_cve_id("CVE-2012-3515");
   script_tag(name:"cvss_base", value:"7.2");
@@ -57,11 +57,11 @@ if(description)
   This flaw did not affect the default use of KVM. Affected configurations
   were:
 
-  * When guests were started from the command line (&quot;/usr/libexec/qemu-kvm&quot;)
-  without the &quot;-nodefaults&quot; option, and also without specifying a
+  * When guests were started from the command line ('/usr/libexec/qemu-kvm')
+  without the '-nodefaults' option, and also without specifying a
   serial or parallel device, or a virtio-console device, that specifically
   does not use a virtual console (vc) back-end. (Note that Red Hat does not
-  support invoking &quot;qemu-kvm&quot; from the command line without &quot;-nodefaults&quot; on
+  support invoking 'qemu-kvm' from the command line without '-nodefaults' on
   Red Hat Enterprise Linux 6.)
 
   * Guests that were managed via libvirt, such as when using Virtual Machine

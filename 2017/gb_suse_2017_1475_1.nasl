@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_1475_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_suse_2017_1475_1.nasl 14110 2019-03-12 09:28:23Z cfischer $
 #
 # SuSE Update for mariadb openSUSE-SU-2017:1475-1 (mariadb)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851562");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14110 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 10:28:23 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-06-03 06:54:23 +0200 (Sat, 03 Jun 2017)");
   script_cve_id("CVE-2017-3302", "CVE-2017-3313");
   script_tag(name:"cvss_base", value:"5.0");
@@ -45,11 +45,7 @@ if(description)
   how InnoDB data files are extended * Improvements to InnoDB startup/shutdown to
   make it more robust * MDEV-11233: fix for FULLTEXT index crash * MDEV-6143:
   MariaDB Linux binary tarballs will now always untar to directories that match
-  their filename * release notes and changelog: * <a rel='nofollow'
-  href='https://kb.askmonty.org/en/mariadb-10030-release-notes'>https://kb.askmonty.org/en/mariadb-10030-release-notes
-
-  * <a rel='nofollow'
-  href='https://kb.askmonty.org/en/mariadb-10030-changelog'>https://kb.askmonty.org/en/mariadb-10030-changelog
+  their filename * release notes and changelog are available in the linked references.
 
   * fixes the following CVEs: CVE-2017-3313: unspecified vulnerability affecting
   the MyISAM component [bsc#1020890] CVE-2017-3302: Use after free in
@@ -69,6 +65,10 @@ if(description)
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.2");
+
+  script_xref(name:"URL", value:"https://kb.askmonty.org/en/mariadb-10030-release-notes");
+  script_xref(name:"URL", value:"https://kb.askmonty.org/en/mariadb-10030-changelog");
+
   exit(0);
 }
 

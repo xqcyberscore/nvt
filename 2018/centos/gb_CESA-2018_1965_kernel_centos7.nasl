@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2018_1965_kernel_centos7.nasl 14058 2019-03-08 13:25:52Z cfischer $
+# $Id: gb_CESA-2018_1965_kernel_centos7.nasl 14095 2019-03-11 13:54:56Z cfischer $
 #
 # CentOS Update for kernel CESA-2018:1965 centos7
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882915");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14095 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 14:54:56 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-07-04 05:56:14 +0200 (Wed, 04 Jul 2018)");
   script_cve_id("CVE-2017-11600", "CVE-2018-3639");
   script_tag(name:"cvss_base", value:"6.9");
@@ -67,13 +67,14 @@ Bug Fix(es):
 
 These updated kernel packages include also numerous bug fixes. Space
 precludes documenting all of the bug fixes in this advisory. See the
-descriptions in the related Knowledge Article:
-<a  rel='nofollow' href='https://access.redhat.com/articles/3485871'>https://access.redhat.com/articles/3485871</a>");
+descriptions in the referenced Knowledge Article.");
+
   script_tag(name:"affected", value:"kernel on CentOS 7");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"CESA", value:"2018:1965");
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2018-July/022929.html");
+  script_xref(name:"URL", value:"https://access.redhat.com/articles/3485871");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");

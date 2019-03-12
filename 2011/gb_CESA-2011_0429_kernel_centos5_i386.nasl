@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2011-April/017289.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880518");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
@@ -81,8 +81,8 @@ if(description)
   a denial of service by mounting a disk that contains specially-crafted
   partitions. (CVE-2011-1010, Low)
 
-  Red Hat would like to thank Ryan Sweat for reporting CVE-2011-1478; Tavis
-  Ormandy for reporting CVE-2010-4346; and Timo Warns for reporting
+  Red Hat would like to thank Ryan Sweat for reporting CVE-2011-1478, Tavis
+  Ormandy for reporting CVE-2010-4346, and Timo Warns for reporting
   CVE-2011-1010.
 
   This update also fixes several bugs. Documentation for these bug fixes will

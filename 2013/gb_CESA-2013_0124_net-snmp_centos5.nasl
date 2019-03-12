@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-January/019127.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881563");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-01-21 09:39:45 +0530 (Mon, 21 Jan 2013)");
   script_cve_id("CVE-2012-2141");
   script_tag(name:"cvss_base", value:"3.5");
@@ -49,21 +49,21 @@ if(description)
 
   An out-of-bounds buffer read flaw was found in the net-snmp agent. A remote
   attacker with read privileges to a Management Information Base (MIB)
-  subtree handled by the &quot;extend&quot; directive (in &quot;/etc/snmp/snmpd.conf&quot;) could
+  subtree handled by the 'extend' directive (in '/etc/snmp/snmpd.conf') could
   use this flaw to crash snmpd via a crafted SNMP GET request.
   (CVE-2012-2141)
 
   Bug fixes:
 
   * Devices that used certain file systems were not reported in the
-  &quot;HOST-RESOURCES-MIB::hrStorageTable&quot; table. As a result, the snmpd daemon
+  'HOST-RESOURCES-MIB::hrStorageTable' table. As a result, the snmpd daemon
   did not recognize devices using tmpfs, ReiserFS, and Oracle Cluster File
   System (OCFS2) file systems. This update recognizes these devices and
-  reports them in the &quot;HOST-RESOURCES-MIB::hrStorageTable&quot; table.
+  reports them in the 'HOST-RESOURCES-MIB::hrStorageTable' table.
   (BZ#754652, BZ#755958, BZ#822061)
 
   * The snmptrapd (8) man page did not correctly describe how to load
-  multiple configuration files using the &quot;-c&quot; option. This update describes
+  multiple configuration files using the '-c' option. This update describes
   correctly that multiple configuration files must be separated by a comma.
   (BZ#760001)
 
@@ -85,11 +85,11 @@ if(description)
   in one AgentX packet. This update uses the correct COUNTER64 size and can
   process two or mode COUNTER64 values in AgentX communication. (BZ#803585)
 
-  * snmpd ignored the &quot;-e&quot; parameter of the &quot;trapsess&quot; option in the snmpd
+  * snmpd ignored the '-e' parameter of the 'trapsess' option in the snmpd
   configuration file. As a result, outgoing traps were incorrectly sent with
-  the default EngineID of snmpd when configuring &quot;trapsess&quot; with an explicit
+  the default EngineID of snmpd when configuring 'trapsess' with an explicit
   EngineID. This update modifies the underlying code to send outgoing traps
-  using the EngineID as specified in the &quot;trapsess -e&quot; parameter in the
+  using the EngineID as specified in the 'trapsess -e' parameter in the
   configuration file. (BZ#805689)
 
   * snmpd did not cor ...

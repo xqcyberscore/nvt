@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-July/018777.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881460");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-08-03 11:16:57 +0530 (Fri, 03 Aug 2012)");
   script_cve_id("CVE-2012-1013", "CVE-2012-1015");
   script_tag(name:"cvss_base", value:"9.3");
@@ -55,7 +55,7 @@ if(description)
 
   A NULL pointer dereference flaw was found in the MIT Kerberos
   administration daemon, kadmind. A Kerberos administrator who has the
-  &quot;create&quot; privilege could use this flaw to crash kadmind. (CVE-2012-1013)
+  'create' privilege could use this flaw to crash kadmind. (CVE-2012-1013)
 
   Red Hat would like to thank the MIT Kerberos project for reporting
   CVE-2012-1015. Upstream acknowledges Emmanuel Bouillon (NCI Agency) as the

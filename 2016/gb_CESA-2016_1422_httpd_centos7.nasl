@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882521");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14095 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 14:54:56 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-07-19 05:26:52 +0200 (Tue, 19 Jul 2016)");
   script_cve_id("CVE-2016-5387");
   script_tag(name:"cvss_base", value:"5.1");
@@ -74,14 +74,12 @@ codes, and modules can now be configured to return a 451 error if required.
 4. Solution:
 
 For details on how to apply this update, which includes the changes
-described in this advisory, refer to:
-
-'https://access.redhat.com/articles/11258'
+described in this advisory, refer to the linked article.
 
 After installing the updated packages, the httpd daemon will be restarted
 automatically.
 
-5. Bugs fixed ('https://bugzilla.redhat.com/'):
+5. Bugs fixed:
 
 1347648 - Apache can not cache content if Expires header is modified
 1353269 - Support sending http 451 status code from RewriteRule
@@ -109,6 +107,7 @@ httpd- ...
 
   script_xref(name:"CESA", value:"2016:1422");
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2016-July/021979.html");
+  script_xref(name:"URL", value:"https://access.redhat.com/articles/11258");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

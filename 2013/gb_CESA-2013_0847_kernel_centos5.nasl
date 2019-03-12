@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.881737");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-05-23 09:54:54 +0530 (Thu, 23 May 2013)");
   script_cve_id("CVE-2013-0153");
   script_tag(name:"cvss_base", value:"4.7");
@@ -67,16 +67,16 @@ if(description)
   error. The NFSv4 code did not handle such a situation correctly and allowed
   an NFSv4 client to attempt to use the buffer that should contain the
   GETATTR information. However, the buffer did not contain the valid GETATTR
-  information, which caused the client to return a &quot;-ENOTDIR&quot; error.
+  information, which caused the client to return a '-ENOTDIR' error.
   Consequently, the process failed to open the requested file. This update
   backports a patch that adds a test condition verifying validity of the
   GETATTR information. If the GETATTR information is invalid, it is obtained
   later and the process opens the requested file as expected. (BZ#947736)
 
   * Previously, the xdr routines in NFS version 2 and 3 conditionally updated
-  the res-&gt;count variable. Read retry attempts after a short NFS read() call
-  could fail to update the res-&gt;count variable, resulting in truncated read
-  data being returned. With this update, the res-&gt;count variable is updated
+  the res->count variable. Read retry attempts after a short NFS read() call
+  could fail to update the res->count variable, resulting in truncated read
+  data being returned. With this update, the res->count variable is updated
   unconditionally so this bug can no longer occur. (BZ#952098)
 
   * When handling requests from Intelligent Platform Management Interface

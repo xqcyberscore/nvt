@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_1680_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_suse_2015_1680_1.nasl 14110 2019-03-12 09:28:23Z cfischer $
 #
 # SuSE Update for MozillaFirefox, SUSE-SU-2015:1680-1 (MozillaFirefox,)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850999");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14110 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 10:28:23 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-10-16 16:28:43 +0200 (Fri, 16 Oct 2015)");
   script_cve_id("CVE-2015-4500", "CVE-2015-4501", "CVE-2015-4506", "CVE-2015-4509", "CVE-2015-4511", "CVE-2015-4517", "CVE-2015-4519", "CVE-2015-4520", "CVE-2015-4521", "CVE-2015-4522", "CVE-2015-7174", "CVE-2015-7175", "CVE-2015-7176", "CVE-2015-7177", "CVE-2015-7180");
   script_tag(name:"cvss_base", value:"7.5");
@@ -61,9 +61,6 @@ if(description)
   * MFSA 2015-112/CVE-2015-4517/CVE-2015-4521/CVE-2015-4522
   CVE-2015-7174/CVE-2015-7175/CVE-2015-7176/CVE-2015-7177 CVE-2015-7180
   Vulnerabilities found through code inspection
-
-  More details can be found on
-  https://www.mozilla.org/en-US/security/advisories/
 
   The Mozilla NSPR library was updated to version 4.10.9, fixing various
   bugs.");

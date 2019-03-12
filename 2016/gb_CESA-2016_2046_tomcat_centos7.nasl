@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882575");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14095 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 14:54:56 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-10-12 05:44:31 +0200 (Wed, 12 Oct 2016)");
   script_cve_id("CVE-2014-7810", "CVE-2015-5346", "CVE-2016-5388", "CVE-2016-5425", "CVE-2016-6325");
   script_tag(name:"cvss_base", value:"7.2");
@@ -69,7 +69,7 @@ requestedSessionSSL field. If at least one web application was configured
 to use the SSL session ID as the HTTP session ID, an attacker could reuse a
 previously used session ID for further requests. (CVE-2015-5346)
 
-Red Hat would like to thank Dawid Golunski ('http://legalhackers.com') for
+Red Hat would like to thank Dawid Golunski ('legalhackers.com') for
 reporting CVE-2016-5425 and Scott Geary (VendHQ) for reporting
 CVE-2016-5388. The CVE-2016-6325 issue was discovered by Red Hat Product
 Security.");

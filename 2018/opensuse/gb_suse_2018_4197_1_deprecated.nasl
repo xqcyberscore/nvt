@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_4197_1_deprecated.nasl 13940 2019-02-28 14:10:38Z cfischer $
+# $Id: gb_suse_2018_4197_1_deprecated.nasl 14111 2019-03-12 09:34:48Z cfischer $
 #
 # SuSE Update for salt openSUSE-SU-2018:4197-1 (salt)
 #
@@ -29,12 +29,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852198");
-  script_version("$Revision: 13940 $");
+  script_version("$Revision: 14111 $");
   script_tag(name:"deprecated", value:TRUE);
   script_cve_id("CVE-2018-15750", "CVE-2018-15751");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-28 15:10:38 +0100 (Thu, 28 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 10:34:48 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-12-20 07:33:59 +0100 (Thu, 20 Dec 2018)");
   script_name("SuSE Update for salt openSUSE-SU-2018:4197-1 (salt)");
   script_category(ACT_GATHER_INFO);
@@ -48,7 +48,8 @@ if(description)
 
   script_tag(name:"summary", value:"The remote host is missing an update for the 'salt'
   package(s) announced via the openSUSE-SU-2018:4197_1 advisory.
-  This NVT has been replaced by OID:1.3.6.1.4.1.25623.1.0.814578 ");
+
+  This NVT has been replaced by OID:1.3.6.1.4.1.25623.1.0.814578");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
 
@@ -107,7 +108,6 @@ if(description)
 
   - Fix broken 'resolve_capabilities' on Python 3 (boo#1108995)
 
-
   Patch Instructions:
 
   To install this openSUSE Security Update use the SUSE recommended
@@ -129,6 +129,7 @@ if(description)
 
   exit(0);
 }
+
 exit(66); ## This NVT is deprecated as addressed in OID:1.3.6.1.4.1.25623.1.0.814578
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");

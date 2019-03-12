@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2010-March/016527.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880613");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -62,7 +62,7 @@ if(description)
   (mysqld). This issue only caused a temporary denial of service, as the
   MySQL daemon was automatically restarted after the crash. (CVE-2009-4019)
 
-  When the &quot;datadir&quot; option was configured with a relative path, MySQL did
+  When the 'datadir' option was configured with a relative path, MySQL did
   not properly check paths used as arguments for the DATA DIRECTORY and INDEX
   DIRECTORY directives. An authenticated attacker could use this flaw to
   bypass the restriction preventing the use of subdirectories of the MySQL
@@ -72,9 +72,9 @@ if(description)
   Note: Due to the security risks and previous security issues related to the
   use of the DATA DIRECTORY and INDEX DIRECTORY directives, users not
   depending on this feature should consider disabling it by adding
-  &quot;symbolic-links=0&quot; to the &quot;[mysqld]&quot; section of the &quot;my.cnf&quot; configuration
+  'symbolic-links=0' to the '[mysqld]' section of the 'my.cnf' configuration
   file. In this update, an example of such a configuration was added to the
-  default &quot;my.cnf&quot; file.
+  default 'my.cnf' file.
 
   All MySQL users are advised to upgrade to these updated packages, which
   contain backported patches to resolve these issues. After installing this

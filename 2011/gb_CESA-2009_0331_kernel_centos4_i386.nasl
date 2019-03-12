@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2009-April/015804.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880926");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -60,10 +60,10 @@ if(description)
   * a deficiency was found in the Remote BIOS Update (RBU) driver for Dell
   systems. This could allow a local, unprivileged user to cause a denial of
   service by reading zero bytes from the image_type or packet_size file in
-  &quot;/sys/devices/platform/dell_rbu/&quot;. (CVE-2009-0322, Important)
+  '/sys/devices/platform/dell_rbu/'. (CVE-2009-0322, Important)
 
   * a deficiency was found in the libATA implementation. This could,
-  potentially, lead to a denial of service. Note: by default, &quot;/dev/sg*&quot;
+  potentially, lead to a denial of service. Note: by default, '/dev/sg*'
   devices are accessible only to the root user. (CVE-2008-5700, Low)
 
   This update also fixes the following bugs:
@@ -73,14 +73,14 @@ if(description)
   page immediately following the change caused a spurious page fault. When
   trying to install a para-virtualized Red Hat Enterprise Linux 4 guest on a
   Red Hat Enterprise Linux 5.3 dom0 host, this fault crashed the installer
-  with a kernel backtrace. With this update, the &quot;spurious&quot; page fault is
+  with a kernel backtrace. With this update, the 'spurious' page fault is
   handled properly. (BZ#483748)
 
   * net_rx_action could detect its cpu poll_list as non-empty, but have that
   same list reduced to empty by the poll_napi path. This resulted in garbage
   data being returned when net_rx_action calls list_entry, which subsequently
   resulted in several possible crash conditions. The race condition in the
-  network code which caused this has been fixed. (BZ#475970, BZ#479681 &amp;
+  network code which caused this has been fixed. (BZ#475970, BZ#479681 &
   BZ#480741)
 
   * a misplaced memory barrier at unlock_buffer() could lead to a concurrent

@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882205");
-  script_version("$Revision: 14058 $");
+  script_version("$Revision: 14095 $");
   script_cve_id("CVE-2014-9420", "CVE-2014-9529", "CVE-2014-9584", "CVE-2015-1573",
                 "CVE-2015-1593", "CVE-2015-1805", "CVE-2015-2830");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 14:54:56 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-06-24 06:16:44 +0200 (Wed, 24 Jun 2015)");
   script_tag(name:"qod_type", value:"package");
   script_name("CentOS Update for kernel CESA-2015:1137 centos7");
@@ -85,8 +85,7 @@ and CVE-2014-9584. The security impact of the CVE-2015-1805 issue was
 discovered by Red Hat.
 
 This update also fixes several bugs. Documentation for these changes is
-available from the following Knowledgebase article:
-<a  rel='nofollow' href='https://access.redhat.com/articles/1469163'>https://access.redhat.com/articles/1469163</a>
+available from the linked Knowledgebase article.
 
 All kernel users are advised to upgrade to these updated packages, which
 contain backported patches to correct these issues. The system must be
@@ -95,6 +94,7 @@ rebooted for this update to take effect.");
   script_tag(name:"solution", value:"Please install the updated packages.");
   script_xref(name:"CESA", value:"2015:1137");
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2015-June/021215.html");
+  script_xref(name:"URL", value:"https://access.redhat.com/articles/1469163");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

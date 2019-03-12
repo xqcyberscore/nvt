@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2014_0960_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_suse_2014_0960_1.nasl 14110 2019-03-12 09:28:23Z cfischer $
 #
 # SuSE Update for Mozilla SUSE-SU-2014:0960-1 (Mozilla)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850823");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14110 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 10:28:23 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-10-13 18:35:01 +0530 (Tue, 13 Oct 2015)");
   script_cve_id("CVE-2014-1544", "CVE-2014-1547", "CVE-2014-1548", "CVE-2014-1555", "CVE-2014-1556", "CVE-2014-1557", "CVE-2014-1549", "CVE-2014-1550", "CVE-2014-1551", "CVE-2014-1552", "CVE-2014-1558", "CVE-2014-1559", "CVE-2014-1560", "CVE-2014-1561");
   script_tag(name:"cvss_base", value:"10.0");
@@ -42,38 +42,32 @@ if(description)
 
   Security issues fixed in this release:
 
-  * CVE-2014-1544 -
-https://www.mozilla.org/security/announce/2014/mfsa2014-63.html
-https://www.mozilla.org/security/announce/2014/mfsa2014-63.html
+  * CVE-2014-1544
 
-  * CVE-2014-1548 -
-https://www.mozilla.org/security/announce/2014/mfsa2014-56.html
-https://www.mozilla.org/security/announce/2014/mfsa2014-56.html
+  * CVE-2014-1548
 
-  * CVE-2014-1549 -
-https://www.mozilla.org/security/announce/2014/mfsa2014-57.html
-https://www.mozilla.org/security/announce/2014/mfsa2014-57.html
+  * CVE-2014-1549
 
-  * CVE-2014-1550 -
-https://www.mozilla.org/security/announce/2014/mfsa2014-58.html
-https://www.mozilla.org/security/announce/2014/mfsa2014-58.html
+  * CVE-2014-1550
 
-  * CVE-2014-1551 -
-https://www.mozilla.org/security/announce/2014/mfsa2014-59.html
-https://www.mozilla.org/security/announce/2014/mfsa2014-59.html
+  * CVE-2014-1551
 
-  * CVE-2014-1552 -
-https://www.mozilla.org/security/announce/2014/mfsa2014-66.html
-https://www.mozilla.org/security/announce/2014/mfsa2014-66.html
+  * CVE-2014-1552
 
-  * CVE-2014-1555 -
-https://www.mozilla.org/security/announce/2014/mfsa2014-61.html
-https://www.mozilla.org/security/announce/2014/mfsa2014-61.html
+  * CVE-2014-1555
 
-  * CVE-2014-1556 -
-https://www.mozilla.org/security/announce/2014/mfsa201 ...
+  * CVE-2014-1556
 
   Description truncated, please see the referenced URL(s) for more information.");
+
+  script_xref(name:"URL", value:"https://www.mozilla.org/security/announce/2014/mfsa2014-63.html");
+  script_xref(name:"URL", value:"https://www.mozilla.org/security/announce/2014/mfsa2014-56.html");
+  script_xref(name:"URL", value:"https://www.mozilla.org/security/announce/2014/mfsa2014-57.html");
+  script_xref(name:"URL", value:"https://www.mozilla.org/security/announce/2014/mfsa2014-58.html");
+  script_xref(name:"URL", value:"https://www.mozilla.org/security/announce/2014/mfsa2014-59.html");
+  script_xref(name:"URL", value:"https://www.mozilla.org/security/announce/2014/mfsa2014-66.html");
+  script_xref(name:"URL", value:"https://www.mozilla.org/security/announce/2014/mfsa2014-61.html");
+
   script_tag(name:"affected", value:"Mozilla on SUSE Linux Enterprise Server 11 SP3");
   script_tag(name:"solution", value:"Please install the updated packages.");
   script_xref(name:"SUSE-SU", value:"2014:0960_1");

@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2009-September/016142.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880802");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:N/A:N");
@@ -60,14 +60,14 @@ if(description)
 
   * the ssh client hung when trying to close a session in which a background
   process still held tty file descriptors open. With this update, this
-  so-called &quot;hang on exit&quot; error no longer occurs and the ssh client closes
+  so-called 'hang on exit' error no longer occurs and the ssh client closes
   the session immediately. (BZ#454812)
 
   In addition, this update adds the following enhancements:
 
   * the SFTP server can now chroot users to various directories, including
   a user's home directory, after log in. A new configuration option --
-  ChrootDirectory -- has been added to &quot;/etc/ssh/sshd_config&quot; for setting
+  ChrootDirectory -- has been added to '/etc/ssh/sshd_config' for setting
   this up (the default is not to chroot users). Details regarding configuring
   this new option are in the sshd_config(5) manual page. (BZ#440240)
 

@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2011-June/017614.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880528");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -51,7 +51,7 @@ if(description)
 
   An infinite loop flaw was found in the way the mod_dav_svn module processed
   certain data sets. If the SVNPathAuthz directive was set to
-  &quot;short_circuit&quot;, and path-based access control for files and directories
+  'short_circuit', and path-based access control for files and directories
   was enabled, a malicious, remote user could use this flaw to cause the
   httpd process serving the request to consume an excessive amount of system
   memory. (CVE-2011-1783)
@@ -66,12 +66,12 @@ if(description)
   directories was enabled. A malicious, remote user could possibly use this
   flaw to access certain files in a repository that would otherwise not be
   accessible to them. Note: This vulnerability cannot be triggered if the
-  SVNPathAuthz directive is set to &quot;short_circuit&quot;. (CVE-2011-1921)
+  SVNPathAuthz directive is set to 'short_circuit'. (CVE-2011-1921)
 
   Red Hat would like to thank the Apache Subversion project for reporting
   these issues. Upstream acknowledges Joe Schaefer of the Apache Software
-  Foundation as the original reporter of CVE-2011-1752; Ivan Zhakov of
-  VisualSVN as the original reporter of CVE-2011-1783; and Kamesh
+  Foundation as the original reporter of CVE-2011-1752, Ivan Zhakov of
+  VisualSVN as the original reporter of CVE-2011-1783, and Kamesh
   Jayachandran of CollabNet, Inc. as the original reporter of CVE-2011-1921.
 
   All Subversion users should upgrade to these updated packages, which

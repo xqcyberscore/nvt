@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4338420.nasl 12120 2018-10-26 11:13:20Z mmartin $
+# $Id: gb_ms_kb4338420.nasl 14106 2019-03-12 07:19:07Z santu $
 #
 # Microsoft .NET Framework Multiple Vulnerabilities (KB4338420)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813491");
-  script_version("$Revision: 12120 $");
+  script_version("$Revision: 14106 $");
   script_cve_id("CVE-2018-8356", "CVE-2018-8284", "CVE-2018-8202", "CVE-2018-8260");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 08:19:07 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-07-11 12:46:24 +0530 (Wed, 11 Jul 2018)");
   script_name("Microsoft .NET Framework Multiple Vulnerabilities (KB4338420)");
 
@@ -102,22 +102,9 @@ foreach item (registry_enum_keys(key:key))
       continue;
     }
 
-    if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0 )
+    if(dllVer =~ "^4\.[67]" && version_is_less(version:dllVer, test_version:"4.7.3130.0"))
     {
-      if(dllVer =~ "^(4\.(6|7))" && version_is_less(version:dllVer, test_version:"4.7.3130.0")){
-        VULN = TRUE ;
-      }
-    }
-    else
-    {
-      if(dllVer =~ "^4\.6" && version_is_less(version:dllVer, test_version:"4.7.3130.0")){
-        VULN = TRUE ;
-      }
-    }
-
-    if(VULN)
-    {
-      report = report_fixed_ver(file_checked:dotPath + "system.identitymodel.dll",
+      report = report_fixed_ver(file_checked:dotPath + "system.runtime.remoting.dll",
                                 file_version:dllVer, vulnerable_range:"4.6 - 4.7.3129");
       security_message(data:report);
       exit(0);

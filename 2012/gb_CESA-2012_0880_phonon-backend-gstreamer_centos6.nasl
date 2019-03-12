@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-July/018718.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881099");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-30 16:08:03 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2010-5076", "CVE-2011-3922");
   script_tag(name:"cvss_base", value:"7.5");
@@ -69,7 +69,7 @@ if(description)
   the released media object. This update modifies the underlying Phonon API
   code and the problem no longer occurs. (BZ#694684)
 
-  * Previously, Qt could output the &quot;Unrecognized OpenGL version&quot; error and
+  * Previously, Qt could output the 'Unrecognized OpenGL version' error and
   fall back to OpenGL-version-1 compatibility mode. This happened because Qt
   failed to recognize the version of OpenGL installed on the system if the
   system was using a version of OpenGL released later than the Qt version in

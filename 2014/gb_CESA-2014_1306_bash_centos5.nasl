@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882033");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14095 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 14:54:56 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-10-01 17:00:17 +0530 (Wed, 01 Oct 2014)");
   script_cve_id("CVE-2014-7169", "CVE-2014-6271");
   script_tag(name:"cvss_base", value:"10.0");
@@ -47,8 +47,7 @@ issue. (CVE-2014-7169)
 
 Applications which directly create bash functions as environment variables
 need to be made aware of changes to the way names are handled by this
-update. For more information see the Knowledgebase article at
-https://access.redhat.com/articles/1200223
+update. For more information see the Knowledgebase article at the linked references.
 
 Note: Docker users are advised to use 'yum update' within their containers,
 and to commit the resulting changes.
@@ -65,6 +64,7 @@ contain a backported patch to correct this issue.");
 
   script_xref(name:"CESA", value:"2014:1306");
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2014-September/020591.html");
+  script_xref(name:"URL", value:"https://access.redhat.com/articles/1200223");
   script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for bash");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

@@ -25,16 +25,18 @@
 
 if(description)
 {
-  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2011-November/018166.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881310");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-30 17:20:58 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2011-2483");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_xref(name:"CESA", value:"2011:1377");
   script_name("CentOS Update for postgresql CESA-2011:1377 centos4 x86_64");
+
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2011-November/018166.html");
+  script_xref(name:"URL", value:"http://www.postgresql.org/docs/8.4/static/release.html");
 
   script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for postgresql");
   script_category(ACT_GATHER_INFO);
@@ -60,13 +62,11 @@ if(description)
   with Blowfish using the PostgreSQL crypt() function, in a back-end
   PostgreSQL database. Unsafe processing can be re-enabled for specific
   passwords (allowing affected users to log in) by changing their hash prefix
-  to &quot;$2x$&quot;.
+  to '$2x$'.
 
   For Red Hat Enterprise Linux 6, the updated postgresql packages upgrade
-  PostgreSQL to version 8.4.9. Refer to the PostgreSQL Release Notes for a
-  full list of changes:
-
-  <a  rel= &qt nofollow &qt  href= &qt http://www.postgresql.org/docs/8.4/static/release.html &qt >http://www.postgresql.org/docs/8.4/static/release.html</a>
+  PostgreSQL to version 8.4.9. Refer to the linked PostgreSQL Release Notes for a
+  full list of changes.
 
   For Red Hat Enterprise Linux 4 and 5, the updated postgresql packages
   contain a backported patch.

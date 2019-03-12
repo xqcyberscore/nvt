@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_0151_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_suse_2015_0151_1.nasl 14110 2019-03-12 09:28:23Z cfischer $
 #
 # SuSE Update for flash-player SUSE-SU-2015:0151-1 (flash-player)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850973");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14110 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 10:28:23 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-10-16 15:19:15 +0200 (Fri, 16 Oct 2015)");
   script_cve_id("CVE-2015-0311");
   script_tag(name:"cvss_base", value:"10.0");
@@ -41,11 +41,13 @@ if(description)
   script_tag(name:"insight", value:"Adobe Flash Player was updated to 11.2.202.440 (bsc#914463, APSA15-01,
   CVE-2015-0311).
 
-  More information can be found on
-  https://helpx.adobe.com/security/products/flash-player/apsa15-01.html
+  More information can be found at the linked vendor advisory.
 
   An update of flashplayer (executable binary) for i386 is currently not
   available. Disabled!");
+
+  script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/flash-player/apsa15-01.html");
+
   script_tag(name:"affected", value:"flash-player on SUSE Linux Enterprise Desktop 12");
   script_tag(name:"solution", value:"Please install the updated packages.");
   script_xref(name:"SUSE-SU", value:"2015:0151_1");

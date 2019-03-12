@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_RHSA-2017_3315-01_kernel.nasl 12380 2018-11-16 11:03:48Z cfischer $
+# $Id: gb_RHSA-2017_3315-01_kernel.nasl 14111 2019-03-12 09:34:48Z cfischer $
 #
 # RedHat Update for kernel RHSA-2017:3315-01
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812318");
-  script_version("$Revision: 12380 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14111 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 10:34:48 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-12-01 12:17:14 +0100 (Fri, 01 Dec 2017)");
   script_cve_id("CVE-2017-1000380");
   script_tag(name:"cvss_base", value:"2.1");
@@ -49,7 +49,7 @@ if(description)
   call handlers, resulting in an uninitialized memory disclosure to user space. A
   local user could use this flaw to read information belonging to other users.
   (CVE-2017-1000380, Moderate) Red Hat would like to thank Alexander Potapenko
-  (Google) for reporting this issue. ");
+  (Google) for reporting this issue.");
   script_tag(name:"affected", value:"kernel on Red Hat Enterprise Linux Server (v. 7)");
   script_tag(name:"solution", value:"Please Install the Updated Packages.");
 

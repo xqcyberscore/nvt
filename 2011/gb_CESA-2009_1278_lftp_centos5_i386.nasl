@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2009-September/016139.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880878");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -49,25 +49,25 @@ if(description)
   in parallel. It is designed with reliability in mind.
 
   It was discovered that lftp did not properly escape shell metacharacters
-  when generating shell scripts using the &quot;mirror --script&quot; command. A
+  when generating shell scripts using the 'mirror --script' command. A
   mirroring script generated to download files from a malicious FTP server
   could allow an attacker controlling the FTP server to run an arbitrary
   command as the user running lftp. (CVE-2007-2348)
 
   This update also fixes the following bugs:
 
-  * when using the &quot;mirror&quot; or &quot;get&quot; commands with the &quot;-c&quot; option, lftp did
+  * when using the 'mirror' or 'get' commands with the '-c' option, lftp did
   not check for some specific conditions that could result in the program
   becoming unresponsive, hanging and the command not completing. For example,
-  when waiting for a directory listing, if lftp received a &quot;226&quot; message,
+  when waiting for a directory listing, if lftp received a '226' message,
   denoting an empty directory, it previously ignored the message and kept
   waiting. With this update, these conditions are properly checked for and
-  lftp no longer hangs when &quot;-c&quot; is used with &quot;mirror&quot; or &quot;get&quot;. (BZ#422881)
+  lftp no longer hangs when '-c' is used with 'mirror' or 'get'. (BZ#422881)
 
-  * when using the &quot;put&quot;, &quot;mput&quot; or &quot;reput&quot; commands over a Secure FTP (SFTP)
-  connection, specifying the &quot;-c&quot; option sometimes resulted in corrupted
+  * when using the 'put', 'mput' or 'reput' commands over a Secure FTP (SFTP)
+  connection, specifying the '-c' option sometimes resulted in corrupted
   files of incorrect size. With this update, using these commands over SFTP
-  with the &quot;-c&quot; option works as expected, and transferred files are no
+  with the '-c' option works as expected, and transferred files are no
   longer corrupted in the transfer process. (BZ#434294)
 
   * previously, LFTP linked to the OpenSSL library. OpenSSL's license is,
@@ -77,9 +77,9 @@ if(description)
   GNU LGPL license. Like OpenSSL, GnuTLS implements the SSL and TLS
   protocols, so functionality has not changed. (BZ#458777)
 
-  * running &quot;help mirror&quot; from within lftp only presented a sub-set of the
+  * running 'help mirror' from within lftp only presented a sub-set of the
   available options compared to the full list presented in the man page. With
-  this update, running &quot;help mirror&quot; in lftp presents the same list of mirror
+  this update, running 'help mirror' in lftp presents the same list of mirror
   options as is available in the Commands section of the lftp man page.
   (BZ#461922)
 

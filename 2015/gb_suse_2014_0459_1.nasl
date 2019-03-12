@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2014_0459_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_suse_2014_0459_1.nasl 14110 2019-03-12 09:28:23Z cfischer $
 #
 # SuSE Update for Linux SUSE-SU-2014:0459-1 (Linux)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850750");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14110 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 10:28:23 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-10-13 18:35:00 +0530 (Tue, 13 Oct 2015)");
   script_cve_id("CVE-2013-4470", "CVE-2013-6885", "CVE-2013-7263", "CVE-2013-7264", "CVE-2013-7265", "CVE-2014-0069");
   script_tag(name:"cvss_base", value:"6.9");
@@ -41,29 +41,18 @@ if(description)
   script_tag(name:"insight", value:"The SUSE Linux Enterprise 11 Service Pack 3 kernel was
   updated to fix  various bugs and security issues.
 
-  - -----------------------------------------------------------
-
-  - ----------- WARNING: If you are running KVM with PCI
+  WARNING: If you are running KVM with PCI
   pass-through on a system with one  of the following Intel
   chipsets: 5500 (revision 0x13), 5520 (revision 0x13)  or
   X58 (revisions 0x12, 0x13, 0x22), please make sure to read
-  the following  support document before installing this
-  update:
-https://www.suse.com/support/kb/doc.php?id=7014344
-https://www.suse.com/support/kb/doc.php?id=7014344  . You
-  will have to  update your KVM setup to no longer make use
+  the following referenced support document before installing this
+  update. You will have to update your KVM setup to no longer make use
   of PCI pass-through before  rebooting to the updated
   kernel.
 
-  - -----------------------------------------------------------
-
-  - -----------
-
   The following security bugs were fixed:
 
-  *
-
-  CVE-2013-4470: The Linux kernel before 3.12, when UDP
+  * CVE-2013-4470: The Linux kernel before 3.12, when UDP
   Fragmentation Offload (UFO) is enabled, does not properly
   initialize certain data structures, which allows local
   users to cause a denial of service (memory corruption and
@@ -74,18 +63,14 @@ https://www.suse.com/support/kb/doc.php?id=7014344  . You
   and the ip6_ufo_append_data function in
   net/ipv6/ip6_output.c. (bnc#847672)
 
-  *
-
-  CVE-2013-6885: The microcode on AMD 16h 00h through
+  * CVE-2013-6885: The microcode on AMD 16h 00h through
   0Fh processors does not properly handle the interaction
   between locked instructions and write-combined memory
   types, which allows local users to cause a denial of
   service (system hang) via a crafted application, aka the
   errata 793 issue. (bnc#852967)
 
-  *
-
-  CVE-2013-7263: The Linux kernel before 3.12.4 updates
+  * CVE-2013-7263: The Linux kernel before 3.12.4 updates
   certain length values before ensuring that associated data
   structures have been initialized, which allows local users
   to obtain sensitive information from kernel stack memory
@@ -94,9 +79,7 @@ https://www.suse.com/support/kb/doc.php?id=7014344  . You
   net/ipv4/udp.c, net/ipv6/raw.c, and net/ipv6/udp.c.
   (bnc#857643)
 
-  *
-
-  CVE-2013-7264: The l2tp_ip_recvmsg function in
+  * CVE-2013-7264: The l2tp_ip_recvmsg function in
   net/l2tp/l2tp_ip.c in the Linux kernel before 3.12.4
   updates a certain length value before ensuring that an
   associated data structure has been initialized, which
@@ -104,6 +87,9 @@ https://www.suse.com/support/kb/doc.php?id=7014344  . You
   kernel stack memory via a (1) recvfrom, (2 ...
 
   Description truncated, please see the referenced URL(s) for more information.");
+
+  script_xref(name:"URL", value:"https://www.suse.com/support/kb/doc.php?id=7014344");
+
   script_tag(name:"affected", value:"Linux on SUSE Linux Enterprise Server 11 SP3");
   script_tag(name:"solution", value:"Please install the updated packages.");
   script_xref(name:"SUSE-SU", value:"2014:0459_1");

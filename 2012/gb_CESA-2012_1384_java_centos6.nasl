@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-October/018946.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881526");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-10-19 10:21:40 +0530 (Fri, 19 Oct 2012)");
   script_cve_id("CVE-2012-3216", "CVE-2012-4416", "CVE-2012-5068", "CVE-2012-5069",
                 "CVE-2012-5071", "CVE-2012-5072", "CVE-2012-5073", "CVE-2012-5075",
@@ -94,7 +94,7 @@ if(description)
 
   This update disables Gopher protocol support in the java.net package by
   default. Gopher support can be enabled by setting the newly introduced
-  property, &quot;jdk.net.registerGopherProtocol&quot;, to true. (CVE-2012-5085)
+  property, 'jdk.net.registerGopherProtocol', to true. (CVE-2012-5085)
 
   Note: If the web browser plug-in provided by the icedtea-web package was
   in ...

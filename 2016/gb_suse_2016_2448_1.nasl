@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_2448_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_suse_2016_2448_1.nasl 14110 2019-03-12 09:28:23Z cfischer $
 #
 # SuSE Update for mariadb openSUSE-SU-2016:2448-1 (mariadb)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851403");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14110 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 10:28:23 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-10-05 05:44:57 +0200 (Wed, 05 Oct 2016)");
   script_cve_id("CVE-2016-6662");
   script_tag(name:"cvss_base", value:"10.0");
@@ -46,14 +46,6 @@ if(description)
   create a my.cnf in the datadir and, under certain circumstances, execute
   arbitrary code as mysql (or even root) user. (bsc#998309)
 
-  * release notes:
-
-  * 'https://kb.askmonty.org/en/mariadb-10027-release-notes'
-
-  * changelog:
-
-  * 'https://kb.askmonty.org/en/mariadb-10027-changelog'
-
   Bugs fixed:
 
   - Make ORDER BY optimization functions take into account multiple
@@ -70,6 +62,10 @@ if(description)
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.1");
+
+  script_xref(name:"URL", value:"https://kb.askmonty.org/en/mariadb-10027-release-notes");
+  script_xref(name:"URL", value:"https://kb.askmonty.org/en/mariadb-10027-changelog");
+
   exit(0);
 }
 

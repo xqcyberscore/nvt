@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-January/019175.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881569");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-01-21 09:41:31 +0530 (Mon, 21 Jan 2013)");
   script_cve_id("CVE-2008-0455", "CVE-2008-0456", "CVE-2012-2687");
   script_tag(name:"cvss_base", value:"4.3");
@@ -57,28 +57,28 @@ if(description)
 
   * Previously, no check was made to see if the
   /etc/pki/tls/private/localhost.key file was a valid key prior to running
-  the &quot;%post&quot; script for the &quot;mod_ssl&quot; package. Consequently, when
-  /etc/pki/tls/certs/localhost.crt did not exist and &quot;localhost.key&quot; was
+  the '%post' script for the 'mod_ssl' package. Consequently, when
+  /etc/pki/tls/certs/localhost.crt did not exist and 'localhost.key' was
   present but invalid, upgrading the Apache HTTP Server daemon (httpd) with
-  mod_ssl failed. The &quot;%post&quot; script has been fixed to test for an existing
+  mod_ssl failed. The '%post' script has been fixed to test for an existing
   SSL key. As a result, upgrading httpd with mod_ssl now proceeds as
   expected. (BZ#752618)
 
-  * The &quot;mod_ssl&quot; module did not support operation under FIPS mode.
+  * The 'mod_ssl' module did not support operation under FIPS mode.
   Consequently, when operating Red Hat Enterprise Linux 5 with FIPS mode
   enabled, httpd failed to start. An upstream patch has been applied to
   disable non-FIPS functionality if operating under FIPS mode and httpd now
   starts as expected. (BZ#773473)
 
   * Prior to this update, httpd exit status codes were not Linux Standard
-  Base (LSB) compliant. When the command &quot;service httpd reload&quot; was run and
-  httpd failed, the exit status code returned was &quot;0&quot; and not in the range 1
+  Base (LSB) compliant. When the command 'service httpd reload' was run and
+  httpd failed, the exit status code returned was '0' and not in the range 1
   to 6 as expected. A patch has been applied to the init script and httpd now
-  returns &quot;1&quot; as an exit status code. (BZ#783242)
+  returns '1' as an exit status code. (BZ#783242)
 
   * Chunked Transfer Coding is described in RFC 2616. Previously, the
   Apache server did not correctly handle a chunked encoded POST request with
-  a &quot;chunk-size&quot; or &quot;chunk-extension&quot; value of 32 bytes or more.
+  a 'chunk-size' or 'chunk-extension' value of 32 bytes or more.
   Consequently, when such a POST request was made the server did not respond.
   An upstream patch has been applied and the problem no longer occurs.
   (BZ#840845)

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_1332_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_suse_2016_1332_1.nasl 14110 2019-03-12 09:28:23Z cfischer $
 #
 # SuSE Update for mysql-community-server openSUSE-SU-2016:1332-1 (mysql-community-server)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851316");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14110 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 10:28:23 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-05-19 05:21:43 +0200 (Thu, 19 May 2016)");
   script_cve_id("CVE-2015-3194", "CVE-2016-0639", "CVE-2016-0640", "CVE-2016-0641",
                 "CVE-2016-0642", "CVE-2016-0643", "CVE-2016-0644", "CVE-2016-0646",
@@ -52,9 +52,6 @@ if(description)
   CVE-2016-0646, CVE-2016-0647, CVE-2016-0648, CVE-2016-0649,
   CVE-2016-0650, CVE-2016-0665, CVE-2016-0666, CVE-2016-0641,
   CVE-2016-0642, CVE-2016-0655, CVE-2016-0661, CVE-2016-0668, CVE-2016-0643
-
-  - changes 'http://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-30.html'
-            'http://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-29.html'
 
   Bugs fixed:
 
@@ -82,6 +79,10 @@ if(description)
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE13\.2");
+
+  script_xref(name:"URL", value:"http://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-30.html");
+  script_xref(name:"URL", value:"http://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-29.html");
+
   exit(0);
 }
 

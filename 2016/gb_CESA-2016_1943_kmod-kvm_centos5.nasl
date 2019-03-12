@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882562");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14095 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 14:54:56 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-09-29 05:43:13 +0200 (Thu, 29 Sep 2016)");
   script_cve_id("CVE-2016-3710", "CVE-2016-5403");
   script_tag(name:"cvss_base", value:"7.2");
@@ -63,9 +63,9 @@ for reporting CVE-2016-5403.
 4. Solution:
 
 For details on how to apply this update, which includes the changes
-described in this advisory, refer to:
+described in this advisory, refer to the linked article.");
 
-'https://access.redhat.com/articles/11258'");
+  script_xref(name:"URL", value:"https://access.redhat.com/articles/11258");
   script_tag(name:"affected", value:"kmod-kvm on CentOS 5");
   script_tag(name:"solution", value:"Please Install the Updated Packages.");
 

@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2009-December/016380.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880730");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
@@ -46,7 +46,7 @@ if(description)
   script_tag(name:"insight", value:"acpid is a daemon that dispatches ACPI (Advanced Configuration and Power
   Interface) events to user-space programs.
 
-  It was discovered that acpid could create its log file (&quot;/var/log/acpid&quot;)
+  It was discovered that acpid could create its log file ('/var/log/acpid')
   with random permissions on some systems. A local attacker could use this
   flaw to escalate their privileges if the log file was created as
   world-writable and with the setuid or setgid bit set. (CVE-2009-4033)

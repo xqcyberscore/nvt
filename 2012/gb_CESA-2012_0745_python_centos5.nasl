@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-June/018692.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881128");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-30 16:18:07 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2011-4940", "CVE-2011-4944", "CVE-2012-1150");
   script_tag(name:"cvss_base", value:"5.0");
@@ -58,8 +58,8 @@ if(description)
 
   Note: The hash randomization is not enabled by default as it may break
   applications that incorrectly depend on dictionary ordering. To enable the
-  protection, the new &quot;PYTHONHASHSEED&quot; environment variable or the Python
-  interpreter's &quot;-R&quot; command line option can be used. Refer to the python(1)
+  protection, the new 'PYTHONHASHSEED' environment variable or the Python
+  interpreter's '-R' command line option can be used. Refer to the python(1)
   manual page for details.
 
   The RHSA-2012:0731 expat erratum must be installed with this update, which

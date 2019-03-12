@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2011-July/017647.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881342");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-30 17:27:32 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2010-4649", "CVE-2011-0695", "CVE-2011-0711", "CVE-2011-1044",
                 "CVE-2011-1182", "CVE-2011-1573", "CVE-2011-1576", "CVE-2011-1593",
@@ -62,7 +62,7 @@ if(description)
 
   * A flaw in the Stream Control Transmission Protocol (SCTP) implementation
   could allow a remote attacker to cause a denial of service if the sysctl
-  &quot;net.sctp.addip_enable&quot; variable was turned on (it is off by default).
+  'net.sctp.addip_enable' variable was turned on (it is off by default).
   (CVE-2011-1573, Important)
 
   * Flaws in the AGPGART driver implementation when handling certain IOCTL

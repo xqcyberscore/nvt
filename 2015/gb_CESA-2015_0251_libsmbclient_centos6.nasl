@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882119");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14095 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 14:54:56 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-02-25 05:42:37 +0100 (Wed, 25 Feb 2015)");
   script_cve_id("CVE-2015-0240");
   script_tag(name:"cvss_base", value:"10.0");
@@ -47,7 +47,7 @@ execution with the privileges of the user running smbd (by default, the
 root user). (CVE-2015-0240)
 
 For additional information about this flaw, see the Knowledgebase article
-at <a  rel='nofollow' href='https://access.redhat.com/articles/1346913'>https://access.redhat.com/articles/1346913</a>
+linked at the references.
 
 Red Hat would like to thank the Samba project for reporting this issue.
 Upstream acknowledges Richard van Eeden of Microsoft Vulnerability Research
@@ -60,6 +60,7 @@ update, the smb service will be restarted automatically.");
   script_tag(name:"solution", value:"Please install the updated packages.");
   script_xref(name:"CESA", value:"2015:0251");
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2015-February/020943.html");
+  script_xref(name:"URL", value:"https://access.redhat.com/articles/1346913");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

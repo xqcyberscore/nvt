@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2010-January/016479.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880643");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -74,7 +74,7 @@ if(description)
   do_coredump() function. A local attacker able to guess the file name a
   process is going to dump its core to, prior to the process crashing, could
   use this flaw to append data to the dumped core file. This issue only
-  affects systems that have &quot;/proc/sys/fs/suid_dumpable&quot; set to 2 (the
+  affects systems that have '/proc/sys/fs/suid_dumpable' set to 2 (the
   default value is 0). (CVE-2006-6304, Moderate)
 
   The fix for CVE-2006-6304 changes the expected behavior: With suid_dumpable
@@ -88,7 +88,7 @@ if(description)
 
   * the RHBA-2008:0314 update introduced N_Port ID Virtualization (NPIV)
   support in the qla2xxx driver, resulting in two new sysfs pseudo files,
-  &quot;/sys/class/scsi_host/[a qla2xxx host]/vport_create&quot; and &quot;vport_delete&quot;.
+  '/sys/class/scsi_host/[a qla2xxx host]/vport_create' and 'vport_delete'.
   These two files were world-writable by default, allowing a local user to
   change SCSI host at ...
 

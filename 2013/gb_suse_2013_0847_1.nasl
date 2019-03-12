@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2013_0847_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_suse_2013_0847_1.nasl 14111 2019-03-12 09:34:48Z cfischer $
 #
 # SuSE Update for kernel openSUSE-SU-2013:0847-1 (kernel)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850480");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14111 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 10:34:48 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-11-19 14:05:32 +0530 (Tue, 19 Nov 2013)");
   script_cve_id("CVE-2013-0913", "CVE-2013-1767", "CVE-2013-1774", "CVE-2013-1796",
                 "CVE-2013-1797", "CVE-2013-1798", "CVE-2013-2094", "CVE-2013-1928");
@@ -94,7 +94,7 @@ if(description)
   drivers/gpu/drm/i915/i915_gem_execbuffer.c in the i915
   driver in the Direct Rendering Manager (DRM) subsystem in
   the Linux kernel allowed local users to cause a denial of
-  service (heap-based buffer overflow) or possibly ... ");
+  service (heap-based buffer overflow) or possibly ...");
   script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");

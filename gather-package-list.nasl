@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gather-package-list.nasl 14064 2019-03-09 16:54:28Z cfischer $
+# $Id: gather-package-list.nasl 14093 2019-03-11 11:04:14Z cfischer $
 #
 # Determine OS and list of installed packages via SSH login
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.50282");
-  script_version("$Revision: 14064 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-09 17:54:28 +0100 (Sat, 09 Mar 2019) $");
+  script_version("$Revision: 14093 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 12:04:14 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2008-01-17 22:05:49 +0100 (Thu, 17 Jan 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -3274,6 +3274,11 @@ if( "Gentoo" >< rls ) {
 }
 
 # EulerOS
+# nb: Sometimes there seems to be inconsistencies in the output, this was seen on a 2.0 SP0 (without SP) installation:
+# cat /etc/redhat-release: EulerOS release 2.0
+# rpm -qf /etc/redhat-release: euleros-release-2.0SP2-6.x86_64
+# cat /etc/euleros-release: EulerOS release 2.0
+#
 rls = ssh_cmd( socket:sock, cmd:"cat /etc/euleros-release", return_errors:FALSE );
 
 if( "No such file or directory" >!< rls && strlen( rls ) )

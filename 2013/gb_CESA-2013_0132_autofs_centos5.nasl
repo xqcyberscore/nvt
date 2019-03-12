@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-January/019169.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881558");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-01-21 09:38:00 +0530 (Mon, 21 Jan 2013)");
   script_cve_id("CVE-2012-2697");
   script_tag(name:"cvss_base", value:"4.9");
@@ -81,7 +81,7 @@ if(description)
   checks for invalid keys earlier in the process which has eliminated a
   significant amount of the processing overhead. (BZ#847101)
 
-  * The auto.master(5) man page did not document the &quot;-t, --timeout&quot; option
+  * The auto.master(5) man page did not document the 't, --timeout' option
   in the FORMAT options section. This update adds this information to the man
   page. (BZ#859890)
 

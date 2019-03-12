@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2009-July/016034.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880710");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -54,10 +54,10 @@ if(description)
   permissions of the client (root). (CVE-2009-0692)
 
   An insecure temporary file use flaw was discovered in the DHCP daemon's
-  init script (&quot;/etc/init.d/dhcpd&quot;). A local attacker could use this flaw to
-  overwrite an arbitrary file with the output of the &quot;dhcpd -t&quot; command via
+  init script ('/etc/init.d/dhcpd'). A local attacker could use this flaw to
+  overwrite an arbitrary file with the output of the 'dhcpd -t' command via
   a symbolic link attack, if a system administrator executed the DHCP init
-  script with the &quot;configtest&quot;, &quot;restart&quot;, or &quot;reload&quot; option.
+  script with the 'configtest', &'restart', or 'reload' option.
   (CVE-2009-1893)
 
   Users of DHCP should upgrade to these updated packages, which contain

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_0479_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_suse_2017_0479_1.nasl 14110 2019-03-12 09:28:23Z cfischer $
 #
 # SuSE Update for mysql-community-server openSUSE-SU-2017:0479-1 (mysql-community-server)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851491");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14110 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 10:28:23 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-02-17 05:51:55 +0100 (Fri, 17 Feb 2017)");
   script_cve_id("CVE-2016-8318", "CVE-2016-8327", "CVE-2017-3238", "CVE-2017-3244",
                 "CVE-2017-3257", "CVE-2017-3258", "CVE-2017-3265", "CVE-2017-3273",
@@ -44,7 +44,7 @@ if(description)
   script_tag(name:"insight", value:"mysql-community-server was updated to version 5.6.35 to fix bugs and
   security issues:
 
-  * Changes 'http://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-35.html'
+  * Changes are available in the linked references.
 
   * Fixed CVEs: CVE-2016-8318 [boo#1020872], CVE-2017-3312 [boo#1020873],
   CVE-2017-3258 [boo#1020875], CVE-2017-3273 [boo#1020876], CVE-2017-3244
@@ -62,6 +62,9 @@ if(description)
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.1");
+
+  script_xref(name:"URL", value:"http://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-35.html");
+
   exit(0);
 }
 

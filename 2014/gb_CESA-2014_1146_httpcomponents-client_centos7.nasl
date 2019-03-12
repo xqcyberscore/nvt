@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882002");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14095 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 14:54:56 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-09-10 06:19:32 +0200 (Wed, 10 Sep 2014)");
   script_cve_id("CVE-2014-3577", "CVE-2012-6153");
   script_tag(name:"cvss_base", value:"5.8");
@@ -53,10 +53,9 @@ Before applying this update, make sure all previously released errata
 relevant to your system have been applied.
 
 This update is available via the Red Hat Network. Details on how to use the
-Red Hat Network to apply this update are available at
-https://access.redhat.com/articles/11258
+Red Hat Network to apply this update are available at the linked references.
 
-5. Bugs fixed (https://bugzilla.redhat.com/):
+5. Bugs fixed:
 
 1129074 - CVE-2014-3577 Apache HttpComponents client: SSL hostname verification
 bypass, incomplete CVE-2012-6153 fix
@@ -111,13 +110,8 @@ Red Hat Enterprise Linux Workstation Optional (v. 7):
 noarch:
 httpcomponents-client-javadoc-4.2.5-5.el7_0.noarch.rpm
 
-These packages are GPG signed by Red Hat for security.  Our key and
-details on how to verify the signature are available from
-https://access.redhat.com/security/team/key/#package
-
-7. References:
-
-https://www.redhat.com/security/data
+These packages are GPG signed by Red Hat for security. Our key and
+details on how to verify the signature are available from the references.
 
   Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"affected", value:"httpcomponents-client on CentOS 7");
@@ -127,6 +121,8 @@ https://www.redhat.com/security/data
 
   script_xref(name:"CESA", value:"2014:1146");
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2014-September/020530.html");
+  script_xref(name:"URL", value:"https://access.redhat.com/security/team/key/#package");
+  script_xref(name:"URL", value:"https://access.redhat.com/articles/11258");
   script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for httpcomponents-client");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2009-October/016286.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880684");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
@@ -47,12 +47,12 @@ if(description)
   to run guest operating systems in virtual machines on top of a host
   operating system.
 
-  The pyGrub boot loader did not honor the &quot;password&quot; option in the grub.conf
+  The pyGrub boot loader did not honor the 'password' option in the grub.conf
   file for para-virtualized guests. Users with access to a guest's console
   could use this flaw to bypass intended access restrictions and boot the
   guest with arbitrary kernel boot options, allowing them to get root
   privileges in the guest's operating system. With this update, pyGrub
-  correctly honors the &quot;password&quot; option in grub.conf for para-virtualized
+  correctly honors the 'password' option in grub.conf for para-virtualized
   guests. (CVE-2009-3525)
 
   This update also fixes the following bugs:
@@ -69,7 +69,7 @@ if(description)
   reboot. (BZ#525143)
 
   * attempting to use PCI pass-through to para-virtualized guests on certain
-  kernels failed with a &quot;Function not implemented&quot; error message. As a
+  kernels failed with a 'Function not implemented' error message. As a
   result, users requiring PCI pass-through on para-virtualized guests were
   not able to update the xen packages without also updating the kernel and
   thus requiring a reboot. These updated packages enable PCI pass-through for

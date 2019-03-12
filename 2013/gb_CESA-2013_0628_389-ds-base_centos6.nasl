@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-March/019641.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881683");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-03-15 09:51:36 +0530 (Fri, 15 Mar 2013)");
   script_cve_id("CVE-2013-0312");
   script_tag(name:"cvss_base", value:"5.0");
@@ -77,14 +77,14 @@ if(description)
   server executing the modification was configured as a single master and
   there was at least one replication agreement. Consequently, the
   modification requests were refused by the master server, which returned a
-  code 20 &quot;Type or value exists&quot; error message. These requests were
+  code 20 'Type or value exists' error message. These requests were
   replacements of multi-valued attributes, and the error only occurred when
   one of the new values matched one of the current values of the attribute,
   but had a different letter case. Now, modification requests function
   properly and no longer return code 20 errors. (BZ#910996)
 
   * The DNA (distributed numeric assignment) plug-in, under certain
-  conditions, could log error messages with the &quot;DB_LOCK_DEADLOCK&quot; error
+  conditions, could log error messages with the 'DB_LOCK_DEADLOCK' error
   code when attempting to create an entry with a uidNumber attribute. Now,
   DNA handles this case properly and errors no longer occur during attempts
   to create entries with uidNumber attributes. (BZ#911467)

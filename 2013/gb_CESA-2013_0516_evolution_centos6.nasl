@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-March/019304.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881642");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-03-12 09:59:23 +0530 (Tue, 12 Mar 2013)");
   script_cve_id("CVE-2011-3201");
   script_tag(name:"cvss_base", value:"4.3");
@@ -53,7 +53,7 @@ if(description)
   not notice the attached file before sending the message. With this update,
   mailto URLs cannot be used to attach certain files, such as hidden files or
   files in hidden directories, files in the /etc/ directory, or files
-  specified using a path containing &quot;..&quot;. (CVE-2011-3201)
+  specified using a path containing '..'. (CVE-2011-3201)
 
   Red Hat would like to thank Matt McCutchen for reporting this issue.
 

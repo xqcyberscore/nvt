@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.881731");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-05-17 09:53:11 +0530 (Fri, 17 May 2013)");
   script_cve_id("CVE-2013-2094");
   script_tag(name:"cvss_base", value:"7.2");
@@ -36,6 +36,7 @@ if(description)
 
   script_xref(name:"CESA", value:"2013:0830");
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-May/019733.html");
+  script_xref(name:"URL", value:"https://access.redhat.com/knowledge/articles/11258");
   script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for kernel");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
@@ -73,15 +74,15 @@ if(description)
   relevant to your system have been applied.
 
   This update is available via the Red Hat Network. Details on how to
-  use the Red Hat Network to apply this update are available at
-  https://access.redhat.com/knowledge/articles/11258
+  use the Red Hat Network to apply this update are available at the linked
+  references.
 
-  To install kernel packages manually, use &quot;rpm -ivh [package] Do not
+  To install kernel packages manually, use 'rpm -ivh [package] Do not
   use rpm -Uvh as that will remove the running kernel binaries from
   your system. You may use rpm -e to remove old kernels after
   determining that the new kernel functions properly on your system.
 
-  5. Bugs fixed (http://bugzilla.redhat.com):
+  5. Bugs fixed:
 
   962792 - CVE-2013-2094 kernel: perf_swevent_enabled array out-of-bound access
 

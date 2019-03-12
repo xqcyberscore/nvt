@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.881723");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-04-25 10:23:07 +0530 (Thu, 25 Apr 2013)");
   script_cve_id("CVE-2012-6537", "CVE-2012-6546", "CVE-2012-6547", "CVE-2013-0349",
                 "CVE-2013-0913", "CVE-2013-1767", "CVE-2013-1773", "CVE-2013-1774",
@@ -58,7 +58,7 @@ if(description)
   * A buffer overflow flaw was found in the way UTF-8 characters were
   converted to UTF-16 in the utf8s_to_utf16s() function of the Linux kernel's
   FAT file system implementation. A local user able to mount a FAT file
-  system with the &quot;utf8=1&quot; option could use this flaw to crash the
+  system with the 'utf8=1' option could use this flaw to crash the
   system or, potentially, to escalate their privileges. (CVE-2013-1773,
   Important)
 

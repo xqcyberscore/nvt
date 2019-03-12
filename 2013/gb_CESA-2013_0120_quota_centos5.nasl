@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-January/019098.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881556");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-01-21 09:37:53 +0530 (Mon, 21 Jan 2013)");
   script_cve_id("CVE-2012-3417");
   script_tag(name:"cvss_base", value:"4.0");
@@ -48,8 +48,8 @@ if(description)
   and limiting user and group disk usage on file systems.
 
   It was discovered that the rpc.rquotad service did not use tcp_wrappers
-  correctly. Certain hosts access rules defined in &quot;/etc/hosts.allow&quot; and
-  &quot;/etc/hosts.deny&quot; may not have been honored, possibly allowing remote
+  correctly. Certain hosts access rules defined in '/etc/hosts.allow' and
+  '/etc/hosts.deny' may not have been honored, possibly allowing remote
   attackers to bypass intended access restrictions. (CVE-2012-3417)
 
   This issue was discovered by the Red Hat Security Response Team.

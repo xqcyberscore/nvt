@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850171");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14110 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 10:28:23 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-09-07 08:58:04 +0200 (Wed, 07 Sep 2011)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -55,15 +55,6 @@ if(description)
 
   The updates bring new features, fix bugs and security issues.
 
-  Mozilla Firefox 6:
-  http://www.mozilla.org/security/announce/2011/mfsa2011-29.html
-  Mozilla Firefox 3.6.20:
-  http://www.mozilla.org/security/announce/2011/mfsa2011-30.html
-  Mozilla Seamonkey 2.3:
-  http://www.mozilla.org/security/announce/2011/mfsa2011-33.html
-  Mozilla Thunderbird:
-  http://www.mozilla.org/security/announce/2011/mfsa2011-32.html
-
   * Miscellaneous memory safety hazards:
 
   Mozilla identified and fixed several memory safety bugs in the
@@ -89,7 +80,6 @@ if(description)
   Wargers, Travis Emmitt, Bob Clary and Jonathan Watt reported memory
   safety issues which affected Firefox 4 and Firefox 5. CVE-2011-2985
 
-
   * Unsigned scripts can call script inside signed JAR
 
   Rafael Gieschke reported that unsigned JavaScript could call into
@@ -97,13 +87,11 @@ if(description)
   site that signed the JAR as well as any permissions that a user
   had granted the signed JAR. CVE-2011-2993
 
-
   * String crash using WebGL shaders
 
   Michael Jordon of Context IS reported that an overly long shader
   program could cause a buffer overrun and crash in a string class
   used to store the shader source code. CVE-2011-2988
-
 
   * Heap overflow in ANGLE library
 
@@ -111,6 +99,12 @@ if(description)
   overf ...
 
   Description truncated, please see the referenced URL(s) for more information.");
+
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2011/mfsa2011-29.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2011/mfsa2011-30.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2011/mfsa2011-33.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2011/mfsa2011-32.html");
+
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_tag(name:"qod_type", value:"package");

@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-March/019318.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881675");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-03-12 10:02:15 +0530 (Tue, 12 Mar 2013)");
   script_cve_id("CVE-2011-2166", "CVE-2011-2167", "CVE-2011-4318");
   script_tag(name:"cvss_base", value:"6.5");
@@ -66,7 +66,7 @@ if(description)
   * When a new user first accessed their IMAP inbox, Dovecot was, under some
   circumstances, unable to change the group ownership of the inbox directory
   in the user's Maildir location to match that of the user's mail spool
-  (/var/mail/$USER). This correctly generated an &quot;Internal error occurred&quot;
+  (/var/mail/$USER). This correctly generated an 'Internal error occurred'
   message. However, with a subsequent attempt to access the inbox, Dovecot
   saw that the directory already existed and proceeded with its operation,
   leaving the directory with incorrectly set permissions. This update

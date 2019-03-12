@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2009-September/016157.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880844");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -57,7 +57,7 @@ if(description)
 
   * the GDM Reference Manual is now included with the gdm packages. The
   gdm-docs package installs this document in HTML format in
-  &quot;/usr/share/doc/&quot;. (BZ#196054)
+  '/usr/share/doc/'. (BZ#196054)
 
   * GDM appeared in English on systems using Telugu (te_IN). With this
   update, GDM has been localized in te_IN. (BZ#226931)
@@ -70,7 +70,7 @@ if(description)
   added check to explicitly notify GDM whenever the X server is terminated,
   ensuring that resets are executed reliably. (BZ#441971)
 
-  * the &quot;gdm&quot; user is now part of the &quot;audio&quot; group by default. This enables
+  * the 'gdm' user is now part of the 'audio' group by default. This enables
   audio support at the login screen. (BZ#458331)
 
   * the gui/modules/dwellmouselistener.c source code contained incorrect
@@ -79,11 +79,11 @@ if(description)
   expected. (BZ#473262)
 
   * a bug in the XOpenDevice() function prevented the X server from starting
-  whenever a device defined in &quot;/etc/X11/xorg.conf&quot; was not actually plugged
+  whenever a device defined in '/etc/X11/xorg.conf' was not actually plugged
   in. This update wraps XOpenDevice() in the gdk_error_trap_pop() and
   gdk_error_trap_push() functions, which resolves this bug. This ensures that
   the X server can start properly even when devices defined in
-  &quot;/etc/X11/xorg.conf&quot; are not plugged in. (BZ#474588)
+  '/etc/X11/xorg.conf' are not plugged in. (BZ#474588)
 
   All users should upgrade to these updated packages, which resolve these
   issues. GDM must be restarted for this update to take effect. Rebooting

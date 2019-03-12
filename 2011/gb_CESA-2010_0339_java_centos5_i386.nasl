@@ -25,10 +25,9 @@
 
 if(description)
 {
-  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2010-June/016727.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880601");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -38,6 +37,9 @@ if(description)
                 "CVE-2010-0094", "CVE-2010-0095", "CVE-2010-0837", "CVE-2010-0838",
                 "CVE-2010-0840", "CVE-2010-0845", "CVE-2010-0847", "CVE-2010-0848");
   script_name("CentOS Update for java CESA-2010:0339 centos5 i386");
+
+  script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2010-June/016727.html");
+  script_xref(name:"URL", value:"http://kbase.redhat.com/faq/docs/DOC-20491");
 
   script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for java");
   script_category(ACT_GATHER_INFO);
@@ -60,9 +62,8 @@ if(description)
 
   This update disables renegotiation in the Java Secure Socket Extension
   (JSSE) component. Unsafe renegotiation can be re-enabled using the
-  sun.security.ssl.allowUnsafeRenegotiation property. Refer to the following
-  Knowledgebase article for details:
-  http://kbase.redhat.com/faq/docs/DOC-20491
+  sun.security.ssl.allowUnsafeRenegotiation property. Refer to the linked
+  Knowledgebase article for details.
 
   A number of flaws have been fixed in the Java Virtual Machine (JVM) and in
   various Java class implementations. These flaws could allow an unsigned
@@ -85,7 +86,7 @@ if(description)
   allowing an untrusted applet or application to bypass network access
   restrictions. (CVE-2010-0095)
 
-  In certain cases, type assignments could result in &quot;non-exact&quot; interface
+  In certain cases, type assignments could result in 'non-exact' interface
   types. This could be used to bypass type-safety restrictions.
   (CVE-2010-0845)
 

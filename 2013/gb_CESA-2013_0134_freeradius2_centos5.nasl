@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-January/019141.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881566");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14098 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-01-21 09:41:00 +0530 (Mon, 21 Jan 2013)");
   script_cve_id("CVE-2011-4966");
   script_tag(name:"cvss_base", value:"6.0");
@@ -49,8 +49,8 @@ if(description)
   against the RADIUS server. The RADIUS server may optionally perform
   accounting of its operations using the RADIUS protocol.
 
-  It was found that the &quot;unix&quot; module ignored the password expiration
-  setting in &quot;/etc/shadow&quot;. If FreeRADIUS was configured to use this module
+  It was found that the 'unix' module ignored the password expiration
+  setting in '/etc/shadow'. If FreeRADIUS was configured to use this module
   for user authentication, this flaw could allow users with an expired
   password to successfully authenticate, even though their access should have
   been denied. (CVE-2011-4966)
@@ -63,16 +63,16 @@ if(description)
   radiusd daemon re-initializes and reopens its log files after log rotation
   as expected. (BZ#787111)
 
-  * The radtest script with the &quot;eap-md5&quot; option failed because it passed the
+  * The radtest script with the 'eap-md5' option failed because it passed the
   IP family argument when invoking the radeapclient utility and the
   radeapclient utility did not recognize the IP family. The radeapclient
   utility now recognizes the IP family argument and radtest now works with
   eap-md5 as expected. (BZ#846476)
 
-  * Previously, freeradius was compiled without the &quot;--with-udpfromto&quot;
+  * Previously, freeradius was compiled without the '--with-udpfromto'
   option. Consequently, with a multihomed server and explicitly specifying
   the IP address, freeradius sent the reply with the wrong IP source address.
-  With this update, freeradius has been built with the &quot;--with-udpfromto&quot;
+  With this update, freeradius has been built with the '--with-udpfromto'
   configuration option and the RADIUS reply is always sourced from the IP
   address the request was sent to. (BZ#846471)
 
@@ -81,14 +81,14 @@ if(description)
   been adjusted and the tables are created as expected. (BZ#818885)
 
   * FreeRADIUS has a thread pool that dynamically grows based on load. If
-  multiple threads using the &quot;rlm_perl()&quot; function are spawned in quick
+  multiple threads using the 'rlm_perl()' function are spawned in quick
   succession, the FreeRADIUS server sometimes terminated unexpectedly with a
-  segmentation fault due to parallel calls to the &quot;rlm_perl_clone()&quot;
+  segmentation fault due to parallel calls to the 'rlm_perl_clone()'
   function. With this update, a mutex for the threads has been added and the
   problem no longer occurs. (BZ#846475)
 
-  * The man page for &quot;rlm_dbm_parser&quot; was incorrectly installed as
-  &quot;rlm_dbm_parse&quot;, omitting the trailing &quot;r&quot;. The man page now correctly
+  * The man page for 'rlm_dbm_parser' was incorrectly installed as
+  'rlm_dbm_parse', omitting the trailing 'r'. The man page now correctly
   appears as rlm_dbm ...
 
   Description truncated, please see the referenced URL(s) for more information.");
