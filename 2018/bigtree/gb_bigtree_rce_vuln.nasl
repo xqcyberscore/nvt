@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bigtree_rce_vuln.nasl 10148 2018-06-11 03:14:29Z ckuersteiner $
+# $Id: gb_bigtree_rce_vuln.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # BigTree CMS <= 4.2.22 Remote Upload & Code Execution Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:bigtree:bigtree";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112265");
-  script_version("$Revision: 10148 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-11 05:14:29 +0200 (Mon, 11 Jun 2018) $");
+  script_version("$Revision: 14117 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-05-02 13:38:22 +0200 (Wed, 02 May 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -53,7 +53,7 @@ if(description)
 
   script_tag(name:"affected", value:"BigTree CMS versions through 4.2.22.");
 
-  script_tag(name:"solution", value:"Change the affected storage.php file to disable .htaccess extensions or apply the referenced commit. For further information head to https://github.com/bigtreecms/BigTree-CMS ");
+  script_tag(name:"solution", value:"Change the affected storage.php file to disable .htaccess extensions or apply the referenced commit.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"Workaround");

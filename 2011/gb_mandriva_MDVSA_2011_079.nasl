@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.mandriva.com/security-announce/2011-04/msg00028.php");
   script_oid("1.3.6.1.4.1.25623.1.0.831384");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-05-05 07:14:22 +0200 (Thu, 05 May 2011)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -69,7 +69,7 @@ if(description)
 
   David Remahl of Apple Product Security reported that the Java Embedding
   Plugin (JEP) shipped with the Mac OS X versions of Firefox could be
-  exploited to obtain elevated access to resources on a user&amp;#039;s system
+  exploited to obtain elevated access to resources on a user's system
   (CVE-2011-0076).
 
   Security researcher Paul Stone reported that a Java applet could be
@@ -77,7 +77,7 @@ if(description)
   entries from the form history (CVE-2011-0067).
 
   Security researcher regenrecht reported several dangling pointer
-  vulnerabilities via TippingPoint&amp;#039;s Zero Day Initiative (CVE-2011-0065,
+  vulnerabilities via TippingPoint's Zero Day Initiative (CVE-2011-0065,
   CVE-2011-0066, CVE-2011-0073).
 
   Mozilla developers identified and fixed several memory safety

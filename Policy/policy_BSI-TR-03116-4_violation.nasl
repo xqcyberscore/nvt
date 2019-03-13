@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: policy_BSI-TR-03116-4_violation.nasl 10987 2018-08-15 13:55:40Z cfischer $
+# $Id: policy_BSI-TR-03116-4_violation.nasl 14125 2019-03-13 07:18:45Z cfischer $
 #
 # List negative results from Policy for BSI-TR-03116-4 Test
 #
@@ -28,7 +28,7 @@
 include("misc_func.inc");
 include("version_func.inc");
 
-# nb: includes in the description phase won't work anymore from GOS 4.2.11 (OpenVAS TBD)
+# nb: includes in the description phase won't work anymore from GOS 4.2.11 (GVM TBD)
 # onwards so checking for the defined_func and default to TRUE below if the funcs are undefined
 if( defined_func( "get_local_gos_version" ) &&
     defined_func( "version_is_greater_equal" ) ) {
@@ -46,8 +46,8 @@ if( defined_func( "get_local_gos_version" ) &&
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96179");
-  script_version("$Revision: 10987 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 15:55:40 +0200 (Wed, 15 Aug 2018) $");
+  script_version("$Revision: 14125 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 08:18:45 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-03-07 09:23:42 +0100 (Mon, 07 Mar 2016)");
   if( use_severity ) {
   script_tag(name:"cvss_base", value:"10.0");

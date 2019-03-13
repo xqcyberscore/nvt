@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850158");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-01-11 16:07:49 +0100 (Tue, 11 Jan 2011)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -72,7 +72,7 @@ if(description)
 
   CVE-2010-3771: Security researcher echo reported that
   a web page could open a window with an about:blank location and then
-  inject an &lt;isindex&gt; element into that page which upon submission would
+  inject an <isindex> element into that page which upon submission would
   redirect to a chrome: document. The effect of this defect was that the
   original page would wind up with a reference to a chrome-privileged
   object, the opened window, which could be leveraged for privilege
@@ -83,9 +83,9 @@ if(description)
   arbitrary code with chrome privileges.
 
   CVE-2010-3772: Security researcher wushi of team509
-  reported that when a XUL tree had an HTML &lt;div&gt; element nested inside a
-  &lt;treechildren&gt; element then code attempting to display content in the
-  XUL tree would incorrectly treat the &lt;div&gt; element as a parent node
+  reported that when a XUL tree had an HTML <div> element nested inside a
+  <treechildren> element then code attempting to display content in the
+  XUL tree would incorrectly treat the <div> element as a parent node
   to tree content underneath it resulting in incorrect indexes being
   calculated for the child content. These incorrect indexes were used
   in subsequent array operations which resulted in writing data past

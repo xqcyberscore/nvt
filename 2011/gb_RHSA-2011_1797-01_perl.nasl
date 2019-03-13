@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2011-December/msg00023.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870521");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-12-09 10:51:13 +0530 (Fri, 09 Dec 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -51,7 +51,7 @@ if(description)
   script_tag(name:"insight", value:"Perl is a high-level programming language commonly used for system
   administration utilities and web programming.
 
-  It was found that the &quot;new&quot; constructor of the Digest module used its
+  It was found that the 'new' constructor of the Digest module used its
   argument as part of the string expression passed to the eval() function. An
   attacker could possibly use this flaw to execute arbitrary Perl code with
   the privileges of a Perl program that uses untrusted input as an argument

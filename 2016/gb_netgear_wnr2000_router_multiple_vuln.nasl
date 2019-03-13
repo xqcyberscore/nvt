@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netgear_wnr2000_router_multiple_vuln.nasl 11640 2018-09-27 07:15:20Z asteins $
+# $Id: gb_netgear_wnr2000_router_multiple_vuln.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # NETGEAR WNR2000 Router Multiple Vulnerabilities
 #
@@ -23,15 +23,16 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/h:netgear:wnr2000";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809775");
-  script_version("$Revision: 11640 $");
+  script_version("$Revision: 14117 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-12-30 15:20:48 +0530 (Fri, 30 Dec 2016)");
 
   script_cve_id("CVE-2016-10175", "CVE-2016-10176", "CVE-2016-10174");
@@ -64,8 +65,9 @@ if(description)
 
   script_tag(name:"affected", value:"NETGEAR WNR2000 routers");
 
-  script_tag(name:"solution", value:"NETGEAR has released beta firmware for the affected routers, which can be obtained from :
-  http://kb.netgear.com/000036549/Insecure-Remote-Access-and-Command-Execution-Security-Vulnerability. ");
+  script_tag(name:"solution", value:"NETGEAR has released beta firmware for the affected routers, which can be obtained from the referenced vendor KB entry.");
+
+  script_xref(name:"URL", value:"http://kb.netgear.com/000036549/Insecure-Remote-Access-and-Command-Execution-Security-Vulnerability");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

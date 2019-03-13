@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_oracle_iplanet_web_server_xss_vuln.nasl 11549 2018-09-22 12:11:10Z cfischer $
+# $Id: secpod_oracle_iplanet_web_server_xss_vuln.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Oracle iPlanet Web Server Multiple Cross Site Scripting Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:sun:iplanet_web_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902844");
-  script_version("$Revision: 11549 $");
+  script_version("$Revision: 14117 $");
   script_bugtraq_id(53133);
   script_cve_id("CVE-2012-0516");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-06-29 16:16:16 +0530 (Fri, 29 Jun 2012)");
   script_name("Oracle iPlanet Web Server Multiple Cross Site Scripting Vulnerabilities");
 
@@ -42,6 +42,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/53133");
   script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpuapr2012-366314.html");
   script_xref(name:"URL", value:"http://chingshiong.blogspot.in/2012/04/oracle-iplanet-web-server-709-multiple.html");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpuapr2012-366314.html#AppendixSUNS");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2012 SecPod");
@@ -63,8 +64,8 @@ if(description)
   - Input passed via the 'appName' and 'pathPrefix' parameters to admingui/
     cchelp2/Navigator.jsp is not properly sanitised before being returned to
     the user.");
-  script_tag(name:"solution", value:"Please refer below link for updates,
-  http://www.oracle.com/technetwork/topics/security/cpuapr2012-366314.html#AppendixSUNS");
+  script_tag(name:"solution", value:"Please see the referenced advisory for updates.");
+
   script_tag(name:"summary", value:"This host is running Oracle iPlanet Web Server and is prone to
   multiple cross site scripting vulnerabilities.");
 

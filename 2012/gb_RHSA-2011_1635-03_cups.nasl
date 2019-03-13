@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2011-December/msg00014.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870611");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-09 10:33:58 +0530 (Mon, 09 Jul 2012)");
   script_cve_id("CVE-2011-2896");
   script_tag(name:"cvss_base", value:"5.1");
@@ -54,7 +54,7 @@ if(description)
   decompression algorithm implementation used by the CUPS GIF image format
   reader. An attacker could create a malicious GIF image file that, when
   printed, could possibly cause CUPS to crash or, potentially, execute
-  arbitrary code with the privileges of the &quot;lp&quot; user. (CVE-2011-2896)
+  arbitrary code with the privileges of the 'lp' user. (CVE-2011-2896)
 
   These updated cups packages also provide fixes for the following bugs:
 
@@ -81,7 +81,7 @@ if(description)
   CUPS printer polling daemon (cups-polld) began polling before the network
   interfaces were set up after a system boot. CUPS was then caching the
   failed hostname lookup. As a consequence no printers were found and the
-  error, &quot;Host name lookup failure&quot;, was logged. With this update the code
+  error, 'Host name lookup failure', was logged. With this update the code
   that re-initializes the resolver after failure in cups-polld is fixed and
   as a result CUPS will obtain the correct network settings to use in printer
   discovery. (BZ#712430)

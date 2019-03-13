@@ -29,8 +29,8 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.870785");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-16 11:52:16 +0530 (Mon, 16 Jul 2012)");
   script_cve_id("CVE-2012-2744", "CVE-2012-2745");
   script_xref(name:"RHSA", value:"2012:1064-01");
@@ -71,15 +71,15 @@ if(description)
   This update also fixes the following bugs:
 
   * Previously introduced firmware files required for new Realtek chipsets
-  contained an invalid prefix (&quot;rtl_nic_&quot;) in the file names, for example
-  &quot;/lib/firmware/rtl_nic/rtl_nic_rtl8168d-1.fw&quot;. This update corrects these
+  contained an invalid prefix ('rtl_nic_') in the file names, for example
+  '/lib/firmware/rtl_nic/rtl_nic_rtl8168d-1.fw'. This update corrects these
   file names. For example, the aforementioned file is now correctly named
-  &quot;/lib/firmware/rtl_nic/rtl8168d-1.fw&quot;. (BZ#832359)
+  '/lib/firmware/rtl_nic/rtl8168d-1.fw'. (BZ#832359)
 
   * This update blacklists the ADMA428M revision of the 2GB ATA Flash Disk
   device. This is due to data corruption occurring on the said device when
   the Ultra-DMA 66 transfer mode is used. When the
-  &quot;libata.force=5:pio0, 6:pio0&quot; kernel parameter is set, the aforementioned
+  'libata.force=5:pio0, 6:pio0' kernel parameter is set, the aforementioned
   device works as expected. (BZ#832363)
 
   * On Red Hat Enterprise Linux 6, mounting an NFS export from a server

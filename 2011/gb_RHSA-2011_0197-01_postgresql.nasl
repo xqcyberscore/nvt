@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2011-February/msg00002.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870389");
-  script_version("$Revision: 12382 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-02-04 14:19:53 +0100 (Fri, 04 Feb 2011)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -62,7 +62,7 @@ if(description)
   team for reporting this issue.
 
   For Red Hat Enterprise Linux 4, the updated postgresql packages contain a
-  backported patch for this issue; there are no other changes.
+  backported patch for this issue. There are no other changes.
 
   For Red Hat Enterprise Linux 5, the updated postgresql packages upgrade
   PostgreSQL to version 8.1.23, and contain a backported patch for this

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openx_backdoor_61650.nasl 13659 2019-02-14 08:34:21Z cfischer $
+# $Id: gb_openx_backdoor_61650.nasl 14127 2019-03-13 07:37:35Z ckuersteiner $
 #
 # OpenX 'flowplayer-3.1.1.min.js' Backdoor Vulnerability
 #
@@ -34,15 +34,14 @@ if(description)
   script_cve_id("CVE-2013-4211");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 13659 $");
+  script_version("$Revision: 14127 $");
 
   script_name("OpenX 'flowplayer-3.1.1.min.js' Backdoor Vulnerability");
-
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/61650");
   script_xref(name:"URL", value:"http://blog.openx.org/08/important-update-for-openx-source-2-8-10-users/");
 
-  script_tag(name:"last_modification", value:"$Date: 2019-02-14 09:34:21 +0100 (Thu, 14 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 08:37:35 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-08-09 14:28:44 +0200 (Fri, 09 Aug 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -53,14 +52,19 @@ if(description)
   script_mandatory_keys("openx/installed");
 
   script_tag(name:"impact", value:"Attackers can exploit this issue to execute arbitrary code in the
-context of the application. Successful attacks will compromise the
-affected application.");
+context of the application. Successful attacks will compromise the affected application.");
+
   script_tag(name:"vuldetect", value:"It was possible to execute 'phpinfo()' by sending a special crafted POST request");
+
   script_tag(name:"insight", value:"The security issue is caused due to the distribution of a
 compromised OpenX Source source code package containing a backdoor.");
+
   script_tag(name:"solution", value:"Updates are available.");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_tag(name:"summary", value:"OpenX is prone to a backdoor vulnerability.");
+
   script_tag(name:"affected", value:"OpenX 2.8.10 is vulnerable, other versions may also be affected.");
 
   exit(0);

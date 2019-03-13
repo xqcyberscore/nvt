@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: amap.nasl 12084 2018-10-25 10:02:17Z cfischer $
+# $Id: amap.nasl 14129 2019-03-13 07:40:32Z cfischer $
 #
 # amap (NASL wrapper)
 #
@@ -8,7 +8,7 @@
 # Michel Arboi <arboi@alussinan.org>
 #
 # Copyright:
-# Copyright (C) 2004 Michel Arboi
+# Copyright (C) 2005 Michel Arboi
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2,
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14663");
-  script_version("$Revision: 12084 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 12:02:17 +0200 (Thu, 25 Oct 2018) $");
+  script_version("$Revision: 14129 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 08:40:32 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("amap (NASL wrapper)");
   script_category(ACT_SCANNER);
-  script_copyright("This script is Copyright (C) 2004 Michel Arboi");
+  script_copyright("This script is Copyright (C) 2005 Michel Arboi");
   script_family("Port scanners");
   script_dependencies("toolcheck.nasl", "ping_host.nasl");
   script_mandatory_keys("Tools/Present/amap", "Tools/Present/amap/bin");

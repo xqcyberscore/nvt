@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2012-February/msg00042.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870551");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-02-21 18:56:40 +0530 (Tue, 21 Feb 2012)");
   script_cve_id("CVE-2010-0926");
   script_tag(name:"cvss_base", value:"3.5");
@@ -49,23 +49,23 @@ if(description)
   Common Internet File System (CIFS) protocol, which allows PC-compatible
   machines to share files, printers, and other information.
 
-  The default Samba server configuration enabled both the &quot;wide links&quot; and
-  &quot;unix extensions&quot; options, allowing Samba clients with write access to a
+  The default Samba server configuration enabled both the 'wide links' and
+  'unix extensions' options, allowing Samba clients with write access to a
   share to create symbolic links that point to any location on the file
   system. Clients connecting with CIFS UNIX extensions disabled could have
   such links resolved on the server, allowing them to access and possibly
-  overwrite files outside of the share. With this update, &quot;wide links&quot; is
-  set to &quot;no&quot; by default. In addition, the update ensures &quot;wide links&quot; is
-  disabled for shares that have &quot;unix extensions&quot; enabled. (CVE-2010-0926)
+  overwrite files outside of the share. With this update, 'wide links' is
+  set to 'no' by default. In addition, the update ensures 'wide links' is
+  disabled for shares that have 'unix extensions' enabled. (CVE-2010-0926)
 
   Warning: This update may cause files and directories that are only linked
   to Samba shares using symbolic links to become inaccessible to Samba
   clients. In deployments where support for CIFS UNIX extensions is not
   needed (such as when files are exported to Microsoft Windows clients),
-  administrators may prefer to set the &quot;unix extensions&quot; option to &quot;no&quot; to
+  administrators may prefer to set the 'unix extensions' option to 'no' to
   allow the use of symbolic links to access files out of the shared
   directories. All existing symbolic links in a share should be reviewed
-  before re-enabling &quot;wide links&quot;.
+  before re-enabling 'wide links'.
 
   These updated samba packages also fix the following bug:
 

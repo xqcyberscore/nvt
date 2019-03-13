@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_speedport_02_19.nasl 11867 2018-10-12 10:48:11Z cfischer $
+# $Id: gb_speedport_02_19.nasl 14130 2019-03-13 07:53:41Z mmartin $
 #
 # Speedport DSL-Router Multiple Vulnerabilities
 #
@@ -24,22 +24,22 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = 'cpe:/a:t-com:speedport';
 
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105901");
-  script_version("$Revision: 11867 $");
-  script_tag(name:"cvss_base", value:"6.4");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-
+  script_version("$Revision: 14130 $");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_cve_id("CVE-2014-9727");
   script_name("Speedport DSL-Router Multiple Vulnerabilities");
-
 
   script_xref(name:"URL", value:"http://www.telekom.com/verantwortung/sicherheit/216230");
   script_xref(name:"URL", value:"http://www.heise.de/newsticker/meldung/Fritzbox-Luecke-Vier-Speedport-Modelle-der-Telekom-betroffen-2118595.html");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 08:53:41 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-03-14 12:11:28 +0700 (Fri, 14 Mar 2014)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
@@ -49,11 +49,15 @@ if (description)
   script_mandatory_keys("speedport/model", "speedport/firmware_version");
 
   script_tag(name:"vuldetect", value:"Check the firmware version.");
+
   script_tag(name:"solution", value:"The vendor has released updates. Please see the references section
-for more information.");
+  for more information.");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_tag(name:"summary", value:"Speedport DSL-Router is prone to multiple vulnerabilities");
-  script_tag(name:"affected", value:"See the list at http://www.telekom.com/verantwortung/sicherheit/216230");
+
+  script_tag(name:"affected", value:"See the list at the linked vendor page.");
 
   exit(0);
 }

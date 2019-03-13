@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-052.nasl 11876 2018-10-12 12:20:01Z cfischer $
+# $Id: gb_ms14-052.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Microsoft Internet Explorer Multiple Vulnerabilities (2977629)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802081");
-  script_version("$Revision: 11876 $");
+  script_version("$Revision: 14117 $");
   script_cve_id("CVE-2013-7331", "CVE-2014-2799", "CVE-2014-4059", "CVE-2014-4065",
                 "CVE-2014-4079", "CVE-2014-4080", "CVE-2014-4081", "CVE-2014-4082",
                 "CVE-2014-4083", "CVE-2014-4084", "CVE-2014-4085", "CVE-2014-4086",
@@ -47,7 +47,7 @@ if(description)
                     69615);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-09-10 09:49:48 +0530 (Wed, 10 Sep 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -72,8 +72,8 @@ if(description)
   6.x/7.x/8.x/9.x/10.x/11.x");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed
-  hotfixes or download and update mentioned hotfixes in the advisory from the
-  link, https://technet.microsoft.com/en-us/security/bulletin/ms14-052");
+  hotfixes or download and update mentioned hotfixes from the referenced advisory.");
+
   script_tag(name:"qod_type", value:"registry");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/60981");

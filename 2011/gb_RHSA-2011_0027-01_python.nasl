@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2011-January/msg00008.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870377");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-01-14 16:07:43 +0100 (Fri, 14 Jan 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -74,14 +74,14 @@ if(description)
   the parent process could leak file descriptors if an error occurred. This
   update resolves the issue. (BZ#609017)
 
-  * Prior to Python 2.7, programs that used &quot;ulimit -n&quot; to enable
+  * Prior to Python 2.7, programs that used 'ulimit -n' to enable
   communication with large numbers of subprocesses could still monitor only
   1024 file descriptors at a time, which caused an exception:
 
     ValueError: filedescriptor out of range in select()
 
-  This was due to the subprocess module using the &quot;select&quot; system call. The
-  module now uses the &quot;poll&quot; system call, removing this limitation.
+  This was due to the subprocess module using the 'select' system call. The
+  module now uses the 'poll' system call, removing this limitation.
   (BZ#609020)
 
   * Prior to Python 2.5, the tarfile module failed to unpack tar files if the
@@ -90,8 +90,8 @@ if(description)
 
   * The email module incorrectly implemented the logic for obtaining
   attachment file names: the get_filename() fallback for using the deprecated
-  &quot;name&quot; parameter of the &quot;Content-Type&quot; header erroneously used the
-  &quot;Content-Disposition&quot; header. This update backports a fix from Python 2.6,
+  'name' parameter of the 'Content-Type' header erroneously used the
+  'Content-Disposition' header. This update backports a fix from Python 2.6,
   which resolves this issue. (BZ#644147)
 
   * Prior to version 2.5, Python's ...

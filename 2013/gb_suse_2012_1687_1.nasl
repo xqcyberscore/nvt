@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_1687_1.nasl 12497 2018-11-23 08:28:21Z cfischer $
+# $Id: gb_suse_2012_1687_1.nasl 14114 2019-03-12 11:48:52Z cfischer $
 #
 # SuSE Update for xen openSUSE-SU-2012:1687-1 (xen)
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.opensuse.org/opensuse-security-announce/2012-12/msg00019.html");
   script_oid("1.3.6.1.4.1.25623.1.0.850386");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-03-11 18:29:54 +0530 (Mon, 11 Mar 2013)");
   script_cve_id("CVE-2012-5510", "CVE-2012-5511", "CVE-2012-5512", "CVE-2012-5513",
                 "CVE-2012-5514", "CVE-2012-5515", "CVE-2012-4535", "CVE-2012-4537",
@@ -82,7 +82,7 @@ if(description)
   26150-x86-shadow-unhook-toplevel-check.patch (Replaces
   CVE-2012-4538-xsa23.patch)
 
-  - bnc#777628 - guest &quot;disappears&quot; after live migration
+  - bnc#777628 - guest 'disappears' after live migration
   Updated block-dmmd script
 
 

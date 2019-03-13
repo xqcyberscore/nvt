@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.mandriva.com/security-announce/2011-01/msg00014.php");
   script_oid("1.3.6.1.4.1.25623.1.0.831315");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-01-21 14:59:01 +0100 (Fri, 21 Jan 2011)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
@@ -83,8 +83,8 @@ if(description)
 
   MySQL 5.1 before 5.1.49 and 5.0 before 5.0.92 allows remote
   authenticated users to cause a denial of service (mysqld daemon crash)
-  by using EXPLAIN with crafted &amp;quot;SELECT ... UNION ... ORDER BY \(SELECT
-  ... WHERE ...\)&amp;quot; statements, which triggers a NULL pointer dereference
+  by using EXPLAIN with crafted 'SELECT ... UNION ... ORDER BY \(SELECT
+  ... WHERE ...\)' statements, which triggers a NULL pointer dereference
   in the Item_singlerow_subselect::store function (CVE-2010-3682).
 
   MySQL 5.1 before 5.1.49 and 5.5 before 5.5.5 sends an OK packet when

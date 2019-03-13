@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qnap_qts_qname_param_xss_vuln.nasl 11725 2018-10-02 10:50:50Z asteins $
+# $Id: gb_qnap_qts_qname_param_xss_vuln.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # QNAP QTS 'qname' Parameter Cross Site Scripting Vulnerability
 #
@@ -23,15 +23,16 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/h:qnap";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807882");
-  script_version("$Revision: 11725 $");
+  script_version("$Revision: 14117 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-02 12:50:50 +0200 (Tue, 02 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-08-24 15:53:00 +0530 (Wed, 24 Aug 2016)");
   script_tag(name:"qod_type", value:"remote_analysis");
   script_name("QNAP QTS 'qname' Parameter Cross Site Scripting Vulnerability");
@@ -51,8 +52,9 @@ if(description)
 
   script_tag(name:"affected", value:"All QNAP NAS running QTS firmware version 4.2.0, 4.2.1, or 4.2.2");
 
-  script_tag(name:"solution", value:"Update to QTS 4.2.2 Build 20160901. For details, see https://www.qnap.com/en/tutorial/con_show.php?op=showone&cid=154");
+  script_tag(name:"solution", value:"Update to QTS 4.2.2 Build 20160901. For details see the referenced avdisory.");
 
+  script_xref(name:"URL", value:"https://www.qnap.com/en/tutorial/con_show.php?op=showone&cid=154");
   script_xref(name:"URL", value:"http://seclists.org/bugtraq/2016/Aug/141");
   script_xref(name:"URL", value:"https://www.qnap.com/en/support/con_show.php?cid=96");
 

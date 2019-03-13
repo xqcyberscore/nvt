@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ida_pro_mult_vuln.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: secpod_ida_pro_mult_vuln.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Hex-Rays IDA Pro Multiple Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901189");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 14117 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-02-28 11:12:07 +0100 (Mon, 28 Feb 2011)");
   script_cve_id("CVE-2011-1049", "CVE-2011-1050", "CVE-2011-1051",
                 "CVE-2011-1052", "CVE-2011-1053", "CVE-2011-1054");
@@ -38,6 +38,7 @@ if(description)
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/43190");
   script_xref(name:"URL", value:"https://www.hex-rays.com/vulnfix.shtml");
+  script_xref(name:"URL", value:"https://www.hex-rays.com/machofix.shtml");
   script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2011/0357");
 
   script_tag(name:"qod_type", value:"registry");
@@ -67,8 +68,7 @@ if(description)
   - An unspecified error in the PEF input file loader.");
   script_tag(name:"summary", value:"This host is installed with Hex-Rays IDA Pro and is prone to
   multiple vulnerabilities.");
-  script_tag(name:"solution", value:"Apply patch
-  https://www.hex-rays.com/machofix.shtml
+  script_tag(name:"solution", value:"Apply the patch from the referenced vendor URL.
 
   *****
   NOTE: Ignore this warning, if above mentioned patch is manually applied.

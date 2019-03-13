@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2011-April/msg00025.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870425");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-05-05 07:14:22 +0200 (Thu, 05 May 2011)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -63,7 +63,7 @@ if(description)
 
   An integer overflow flaw was found in the way Firefox handled the HTML
   frameset tag. A web page with a frameset tag containing large values for
-  the &quot;rows&quot; and &quot;cols&quot; attributes could trigger this flaw, possibly leading
+  the 'rows' and 'cols' attributes could trigger this flaw, possibly leading
   to arbitrary code execution with the privileges of the user running
   Firefox. (CVE-2011-0077)
 
@@ -90,7 +90,7 @@ if(description)
   accessible to the user running Firefox. (CVE-2011-0071)
 
   A double free flaw was found in the way Firefox handled
-  &quot;application/http-index-format&quot; documents. A malformed HTTP response could
+  'application/http-index-format' documents. A malformed HTTP response could
   cause Firefox to execute arbitrary code with the privileges of the user
   running Firefox. (CVE-2011-0070)
 

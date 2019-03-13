@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tor_policy_summarize_dos_win.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: gb_tor_policy_summarize_dos_win.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Tor Directory Authority 'policy_summarize' Denial of Service Vulnerability (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802300");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 14117 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-06-20 15:22:27 +0200 (Mon, 20 Jun 2011)");
   script_cve_id("CVE-2011-1924");
   script_bugtraq_id(46618);
@@ -45,8 +45,7 @@ if(description)
   script_tag(name:"affected", value:"Tor version prior to 0.2.1.30 on Windows.");
   script_tag(name:"insight", value:"The flaw is caused by an boundary error within the policy_summarize function
   in Tor, which can be exploited to crash a Tor directory authority.");
-  script_tag(name:"solution", value:"Upgrade to Tor version 0.2.1.30 or later
-  http://www.torproject.org/download/download.html.en");
+  script_tag(name:"solution", value:"Upgrade to Tor version 0.2.1.30 or later.");
   script_tag(name:"summary", value:"This host is installed with Tor and is prone to buffer overflow
   vulnerability.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary

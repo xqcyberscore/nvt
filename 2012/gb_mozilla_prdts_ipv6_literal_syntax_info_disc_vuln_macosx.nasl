@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_ipv6_literal_syntax_info_disc_vuln_macosx.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_mozilla_prdts_ipv6_literal_syntax_info_disc_vuln_macosx.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Mozilla Products IPv6 Literal Syntax Cross Domain Information Disclosure Vulnerability (MAC OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802583");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 14117 $");
   script_cve_id("CVE-2011-3670");
   script_bugtraq_id(51786);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-02-03 17:51:59 +0530 (Fri, 03 Feb 2012)");
   script_name("Mozilla Products IPv6 Literal Syntax Cross Domain Information Disclosure Vulnerability (MAC OS X)");
 
@@ -55,11 +55,11 @@ if(description)
   data.");
   script_tag(name:"summary", value:"The host is installed with Mozilla firefox/thunderbird/seamonkey and is prone
   to information disclosure vulnerability.");
-  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 3.6.27 or 7.0 or later  Upgrade to SeaMonkey version to 2.4 or later
-  http://www.mozilla.org/projects/seamonkey/
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 3.6.27 or 7.0 or later.
 
-  Upgrade to Thunderbird version to 3.1.18 or 7.0 or later
-  http://www.mozilla.org/en-US/thunderbird/");
+  Upgrade to SeaMonkey version to 2.4 or later.
+
+  Upgrade to Thunderbird version to 3.1.18 or 7.0 or later.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");

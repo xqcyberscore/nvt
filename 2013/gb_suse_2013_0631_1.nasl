@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2013_0631_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_suse_2013_0631_1.nasl 14114 2019-03-12 11:48:52Z cfischer $
 #
 # SuSE Update for Mozilla Firefox and others openSUSE-SU-2013:0631-1 (Mozilla Firefox and others)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850463");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-11-19 14:05:38 +0530 (Tue, 19 Nov 2013)");
   script_cve_id("CVE-2013-0788", "CVE-2013-0789", "CVE-2013-0792", "CVE-2013-0793",
                 "CVE-2013-0794", "CVE-2013-0795", "CVE-2013-0796", "CVE-2013-0800",
@@ -58,7 +58,7 @@ if(description)
   to version 4.9.5
 
   * bmo#634793: define NSPR's exact-width integer types
-  PRInt{N} and PRUint{N} types to match the &lt;stdint.h&gt;
+  PRInt{N} and PRUint{N} types to match the <stdint.h&>
   exact-width integer types int{N}_t and uint{N}_t.
 
   * bmo#782815: passing 'int *' to parameter of type
@@ -69,7 +69,7 @@ if(description)
 
   * bmo#824742: NSPR shouldn't require librt on Android.
 
-  * bmo#831793: data race on lib-&gt;refCount in
+  * bmo#831793: data race on lib-&>refCount in
   PR_UnloadLibrary.
 
   mozilla-nss was updated to version 3.14.3:
@@ -83,7 +83,7 @@ if(description)
   This release is a patch release to address CVE-2013-1620
   (bmo#822365)
 
-  * &quot;certutil -a&quot; was not correctly producing ASCII output as
+  * 'certutil -a' was not correctly producing ASCII output as
   requested. (bmo#840714)
 
   * NSS 3.14.2 broke compilation with older versions of
@@ -102,7 +102,7 @@ if(description)
 
   * update to 3.14.2
 
-  * required for Firefox &gt;= 20
+  * required for Firefox &>= 20
 
   * removed obsolete nssckbi update patch
 

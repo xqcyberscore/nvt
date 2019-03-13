@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:066");
   script_oid("1.3.6.1.4.1.25623.1.0.831630");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-08-03 09:56:13 +0530 (Fri, 03 Aug 2012)");
   script_cve_id("CVE-2012-0468", "CVE-2012-0467", "CVE-2012-0469", "CVE-2012-0470", "CVE-2012-0471", "CVE-2012-0472", "CVE-2012-0473", "CVE-2012-0474", "CVE-2012-0477", "CVE-2012-0478", "CVE-2011-3062", "CVE-2012-0479");
   script_tag(name:"cvss_base", value:"10.0");
@@ -92,7 +92,7 @@ if(description)
   site than what is loaded in the window in the addressbar. Security
   researcher Chris McGowen independently reported the same flaw, and
   further demonstrated that this could lead to loading scripts from
-  the attacker&#039;s site, leaving users vulnerable to cross-site scripting
+  the attacker's site, leaving users vulnerable to cross-site scripting
   (XSS) attacks (CVE-2012-0474 ...
 
   Description truncated, please see the referenced URL(s) for more information.");

@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2011-August/msg00000.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870462");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-12 15:49:01 +0200 (Fri, 12 Aug 2011)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -59,7 +59,7 @@ if(description)
   set to appear as a command line option that caused the filter to use a
   specified PostScript printer description (PPD) file, rather than the
   administrator-set one. This could lead to arbitrary code execution with the
-  privileges of the &quot;lp&quot; user. (CVE-2011-2697)
+  privileges of the 'lp' user. (CVE-2011-2697)
 
   All foomatic users should upgrade to this updated package, which contains
   a backported patch to resolve this issue.");

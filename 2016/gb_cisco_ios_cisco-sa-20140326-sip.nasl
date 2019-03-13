@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_cisco-sa-20140326-sip.nasl 12096 2018-10-25 12:26:02Z asteins $
+# $Id: gb_cisco_ios_cisco-sa-20140326-sip.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Cisco IOS Software Session Initiation Protocol Denial of Service Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2014-2106");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_version("$Revision: 12096 $");
+  script_version("$Revision: 14117 $");
 
   script_name("Cisco IOS Software Session Initiation Protocol Denial of Service Vulnerability");
 
@@ -53,7 +53,7 @@ if (description)
 
   Cisco has released software updates that address this vulnerability.
 
-  There are no workarounds for devices that must run SIP; however, mitigations are available to limit exposure to this vulnerability.
+  There are no workarounds for devices that must run SIP. However, mitigations are available to limit exposure to this vulnerability.
 
   Note: The March 26, 2014, Cisco IOS Software Security Advisory bundled publication includes six Cisco Security Advisories.
   All advisories address vulnerabilities in Cisco IOS Software. Each Cisco IOS Software Security Advisory lists the Cisco IOS
@@ -65,7 +65,7 @@ if (description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-05-04 18:52:15 +0200 (Wed, 04 May 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");

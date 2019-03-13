@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.mandriva.com/security-announce/2011-08/msg00009.php");
   script_oid("1.3.6.1.4.1.25623.1.0.831444");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-19 15:17:22 +0200 (Fri, 19 Aug 2011)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -59,7 +59,7 @@ if(description)
   with enough effort at least some of these could be exploited to run
   arbitrary code (CVE-2011-2982).
 
-  Security researcher regenrecht reported via TippingPoint&amp;#039;s Zero Day
+  Security researcher regenrecht reported via TippingPoint's Zero Day
   Initiative that a SVG text manipulation routine contained a dangling
   pointer vulnerability (CVE-2011-0084).
 
@@ -68,7 +68,7 @@ if(description)
   wrong context, including that of a different website or potentially
   in a chrome-privileged context (CVE-2011-2981).
 
-  Security researcher regenrecht reported via TippingPoint&amp;#039;s Zero Day
+  Security researcher regenrecht reported via TippingPoint's Zero Day
   Initiative that appendChild did not correctly account for DOM objects
   it operated upon and could be exploited to dereference an invalid
   pointer (CVE-2011-2378).

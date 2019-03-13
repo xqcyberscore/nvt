@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2012-June/msg00037.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870776");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-06-22 10:26:31 +0530 (Fri, 22 Jun 2012)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
@@ -52,15 +52,15 @@ if(description)
   for diagnostic purposes and debugging.
 
   The sosreport utility collected the Kickstart configuration file
-  (&quot;/root/anaconda-ks.cfg&quot;), but did not remove the root user's password from
+  ('/root/anaconda-ks.cfg'), but did not remove the root user's password from
   it before adding the file to the resulting archive of debugging
   information. An attacker able to access the archive could possibly use this
-  flaw to obtain the root user's password. &quot;/root/anaconda-ks.cfg&quot; usually
+  flaw to obtain the root user's password. '/root/anaconda-ks.cfg' usually
   only contains a hash of the password, not the plain text password.
   (CVE-2012-2664)
 
   Note: This issue affected all installations, not only systems installed via
-  Kickstart. A &quot;/root/anaconda-ks.cfg&quot; file is created by all installation
+  Kickstart. A '/root/anaconda-ks.cfg' file is created by all installation
   types.
 
   This updated sos package also includes numerous bug fixes and enhancements.

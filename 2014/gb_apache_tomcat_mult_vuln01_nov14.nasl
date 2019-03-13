@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_mult_vuln01_nov14.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_apache_tomcat_mult_vuln01_nov14.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Apache Tomcat Multiple Vulnerabilities - 01 - Nov14
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805018");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 14117 $");
   script_cve_id("CVE-2014-0075", "CVE-2014-0096", "CVE-2014-0099");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-11-28 19:36:20 +0530 (Fri, 28 Nov 2014)");
   script_name("Apache Tomcat Multiple Vulnerabilities - 01 Nov14");
   script_category(ACT_GATHER_INFO);
@@ -54,13 +54,13 @@ if(description)
   script_tag(name:"insight", value:"Multiple flaws are due to,
 
   - An  Integer overflow in the parseChunkHeader function in
-    java/org/apache/coyote/http11/filters/ChunkedInputFilter.java
+  java/org/apache/coyote/http11/filters/ChunkedInputFilter.java
 
   - The java/org/apache/catalina/servlets/DefaultServlet.java in the default
-    servlet in does not properly restrict XSLT stylesheets.
+  servlet in does not properly restrict XSLT stylesheets.
 
   - Integer overflow in java/org/apache/tomcat/util/buf/Ascii.java in
-    when operated behind a reverse proxy");
+  when operated behind a reverse proxy");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to cause a denial of service (resource consumption), bypass
@@ -69,8 +69,7 @@ if(description)
 
   script_tag(name:"affected", value:"Apache Tomcat before 6.0.40, 7.x before 7.0.53, and 8.x before 8.0.4");
 
-  script_tag(name:"solution", value:"Upgrade to version 6.0.40, 7.0.53,
-  8.0.4 or later. For updates refer to refer http://tomcat.apache.org");
+  script_tag(name:"solution", value:"Upgrade to version 6.0.40, 7.0.53, 8.0.4 or later.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_vuln_macosx01_feb12.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_mozilla_prdts_mult_vuln_macosx01_feb12.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Mozilla Products Multiple Unspecified Vulnerabilities - Feb12 (MAC OS X 01)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802585");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 14117 $");
   script_cve_id("CVE-2012-0443", "CVE-2012-0445", "CVE-2012-0446", "CVE-2012-0447");
   script_bugtraq_id(51756, 51765, 51752, 51757);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-02-06 14:03:00 +0530 (Mon, 06 Feb 2012)");
   script_name("Mozilla Products Multiple Unspecified Vulnerabilities - Feb12 (MAC OS X 01)");
 
@@ -61,13 +61,16 @@ if(description)
   - Not properly initializing data for image/vnd.microsoft.icon images, which
     allows remote attackers to obtain potentially sensitive information by
     reading a PNG image that was created through conversion from an ICO image.");
-  script_tag(name:"summary", value:"The host is installed with Mozilla firefox/thunderbird/seamonkey and is prone
-  to multiple vulnerabilities.");
-  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 10.0 or later  Upgrade to SeaMonkey version to 2.7 or later
-  http://www.mozilla.org/projects/seamonkey/
 
-  Upgrade to Thunderbird version to 10.0 or later
-  http://www.mozilla.org/en-US/thunderbird/");
+  script_tag(name:"summary", value:"The host is installed with Mozilla firefox/thunderbird/seamonkey and is prone
+
+  to multiple vulnerabilities.");
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 10.0 or later.
+
+  Upgrade to SeaMonkey version to 2.7 or later.
+
+  Upgrade to Thunderbird version to 10.0 or later.");
+
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");

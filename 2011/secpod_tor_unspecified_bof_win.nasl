@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_tor_unspecified_bof_win.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: secpod_tor_unspecified_bof_win.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Tor Unspecified Heap Based Buffer Overflow Vulnerability (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902333");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 14117 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-02-05 04:12:38 +0100 (Sat, 05 Feb 2011)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -47,8 +47,7 @@ if(description)
   script_tag(name:"insight", value:"The issue is caused by an unknown heap overflow error when processing
   user-supplied data, which can be exploited to cause a heap-based buffer
   overflow.");
-  script_tag(name:"solution", value:"Upgrade to version 0.2.1.28 or 0.2.2.20-alpha or later
-  http://www.torproject.org/download/download.html.en");
+  script_tag(name:"solution", value:"Upgrade to version 0.2.1.28 or 0.2.2.20-alpha or later.");
   script_tag(name:"summary", value:"This host is installed with Tor and is prone to heap based buffer overflow
   vulnerability.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary

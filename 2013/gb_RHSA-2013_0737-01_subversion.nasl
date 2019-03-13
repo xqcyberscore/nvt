@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.870978");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-04-15 10:11:59 +0530 (Mon, 15 Apr 2013)");
   script_cve_id("CVE-2013-1845", "CVE-2013-1846", "CVE-2013-1847", "CVE-2013-1849");
   script_tag(name:"cvss_base", value:"5.0");
@@ -77,8 +77,8 @@ if(description)
 
   Red Hat would like to thank the Apache Subversion project for reporting
   these issues. Upstream acknowledges Alexander Klink as the original
-  reporter of CVE-2013-1845; Ben Reser as the original reporter of
-  CVE-2013-1846; and Philip Martin and Ben Reser as the original reporters of
+  reporter of CVE-2013-1845, Ben Reser as the original reporter of
+  CVE-2013-1846, and Philip Martin and Ben Reser as the original reporters of
   CVE-2013-1847.
 
   All subversion users should upgrade to these updated packages, which

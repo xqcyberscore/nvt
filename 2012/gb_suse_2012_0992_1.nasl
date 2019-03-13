@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_0992_1.nasl 14110 2019-03-12 09:28:23Z cfischer $
+# $Id: gb_suse_2012_0992_1.nasl 14114 2019-03-12 11:48:52Z cfischer $
 #
 # SuSE Update for opera openSUSE-SU-2012:0992-1 (opera)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850311");
-  script_version("$Revision: 14110 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-12 10:28:23 +0100 (Tue, 12 Mar 2019) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-12-13 17:01:16 +0530 (Thu, 13 Dec 2012)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -74,13 +74,13 @@ if(description)
 
   Network and Site-Specific
 
-  Fixed an issue where loading would stop at &quot;Document
-  100%&quot; but the page would still be loading tuenti.com:
+  Fixed an issue where loading would stop at 'Document
+  100%' but the page would still be loading tuenti.com:
   Corrected behavior when long content was displayed
   Fixed an issue with secure transaction errors Fixed an issue
   with Google Maps Labs that occurred when compiling top-level loops inside strict evals
   Corrected a problem that could occur with DISQUS Fixed a
-  crash occurring on Lenovo's &quot;Shop now&quot; page Corrected
+  crash occurring on Lenovo's 'Shop now' page Corrected
   issues when calling window.console.log via a variable at
   watch4you Resolved an issue with Yahoo! chat
 
@@ -94,9 +94,9 @@ if(description)
 
   Re-fixed an issue where certain URL constructs could
   allow arbitrary code execution, as reported by Andrey
-  Stroganov; see our advisory Fixed an issue where certain
+  Stroganov. See our advisory Fixed an issue where certain
   characters in HTML could incorrectly be ignored, which
-  could facilitate XSS attacks; see our advisory Fixed
+  could facilitate XSS attacks. See our advisory Fixed
   another issue where small windows could be used to trick
   users into executing downloads as reported by Jordi
   Chancel.

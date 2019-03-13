@@ -40,7 +40,7 @@ if(description)
 
   It was found that the current default configuration of IPA servers did not
   publish correct CRLs (Certificate Revocation Lists). The default
-  configuration specifies that every replica is to generate its own CRL;
+  configuration specifies that every replica is to generate its own CRL.
   however, this can result in inconsistencies in the CRL contents provided to
   clients from different Identity Management replicas. More specifically, if
   a certificate is revoked on one Identity Management replica, it will not
@@ -77,8 +77,8 @@ if(description)
   Description truncated, please see the referenced URL(s) for more information.");
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2013-February/msg00065.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870938");
-  script_version("$Revision: 12382 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-02-22 10:03:01 +0530 (Fri, 22 Feb 2013)");
   script_cve_id("CVE-2012-4546");
   script_bugtraq_id(58083);

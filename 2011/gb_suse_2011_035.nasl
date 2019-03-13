@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850170");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-27 16:37:49 +0200 (Sat, 27 Aug 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -68,40 +68,7 @@ if(description)
   edit the service's password database and change stored hashes from
   $2a to $2x. This will result in crypt() using the old algorithm.
   Users should be required to change their passwords to make sure they
-  are migrated to the correct algorithm.
-
-  FAQ:
-
-  Q: I only use ASCII characters in passwords, am I a affected in any
-  way?
-  A: No.
-
-  Q: What's the meaning of the ids before and after the update?
-  A: Before the update:
-  $2a -&gt; buggy algorithm
-
-  After the update:
-  $2x -&gt; buggy algorithm
-  $2a -&gt; correct algorithm
-  $2y -&gt; correct algorithm
-
-  System logins using PAM have a compat mode enabled by default:
-  $2x -&gt; buggy algorithm
-  $2a -&gt; buggy algorithm
-  $2y -&gt; correct algorithm
-
-  Q: How do I require users to change their password on next login?
-  A: Run the following command as root for each user:
-  chage -d 0 &lt;username&gt;
-
-  Q: I run an application that has $2a hashes in it's password database. Some
-  users complain that they can not log in anymore.
-  A: Edit the password database and change the  &qt $2a &qt  prefix of the affected users'
-  hashes to  &qt $2x &qt . They will be able to log in again but should change their
-  password ASAP.
-
-  Q: How do I turn off the compat mode for system logins?
-  A: Set BLOWFISH_2a2x=no in /etc/default/passwd");
+  are migrated to the correct algorithm.");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_tag(name:"qod_type", value:"package");

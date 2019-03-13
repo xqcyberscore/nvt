@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2011-March/msg00002.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870405");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-03-07 06:45:55 +0100 (Mon, 07 Mar 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -50,7 +50,7 @@ if(description)
 
   A flaw was found in the way Samba handled file descriptors. If an attacker
   were able to open a large number of file descriptors on the Samba server,
-  they could flip certain stack bits to &quot;1&quot; values, resulting in the Samba
+  they could flip certain stack bits to '1' values, resulting in the Samba
   server (smbd) crashing. (CVE-2011-0719)
 
   Red Hat would like to thank the Samba team for reporting this issue.

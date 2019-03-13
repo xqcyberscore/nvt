@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ca_gateway_security_remote_code_execution_vuln.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: gb_ca_gateway_security_remote_code_execution_vuln.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # CA Gateway Security Remote Code Execution Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802337");
-  script_version("$Revision: 11552 $");
+  script_version("$Revision: 14117 $");
   script_cve_id("CVE-2011-0419");
   script_bugtraq_id(48813);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-11-15 12:35:07 +0530 (Tue, 15 Nov 2011)");
   script_name("CA Gateway Security Remote Code Execution Vulnerability");
   script_xref(name:"URL", value:"http://secunia.com/advisories/45332");
@@ -52,8 +52,7 @@ if(description)
   script_tag(name:"affected", value:"CA Gateway Security 8.1");
   script_tag(name:"insight", value:"The flaw is due to an error in the Icihttp.exe module, which can be
   exploited by sending a specially-crafted HTTP request to TCP port 8080.");
-  script_tag(name:"solution", value:"Apply patch for CA Gateway Security r8.1
-  https://support.ca.com/irj/portal/anonymous/phpsupcontent?contentID={5E404992-6B58-4C44-A29D-027D05B6285D}");
+  script_tag(name:"solution", value:"Apply patch for CA Gateway Security r8.1 from the linked references.");
   script_tag(name:"summary", value:"This host is installed with CA Gateway Security and is prone to
   remote code execution Vulnerability.");
 

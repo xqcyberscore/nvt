@@ -29,8 +29,8 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.870681");
   script_tag(name:"cvss_base", value:"5.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:N/A:C");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-06-06 10:46:03 +0530 (Wed, 06 Jun 2012)");
   script_cve_id("CVE-2011-1767", "CVE-2011-1768", "CVE-2011-2479");
   script_xref(name:"RHSA", value:"2011:0928-01");
@@ -59,7 +59,7 @@ if(description)
   the kernel, it could cause a denial of service. (CVE-2011-1767,
   CVE-2011-1768, Moderate)
 
-  * It was found that an mmap() call with the MAP_PRIVATE flag on &quot;/dev/zero&quot;
+  * It was found that an mmap() call with the MAP_PRIVATE flag on '/dev/zero'
   would create transparent hugepages and trigger a certain robustness check.
   A local, unprivileged user could use this flaw to cause a denial of
   service. (CVE-2011-2479, Moderate)

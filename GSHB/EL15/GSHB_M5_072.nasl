@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M5_072.nasl 10397 2018-07-04 09:29:14Z cfischer $
+# $Id: GSHB_M5_072.nasl 14124 2019-03-13 07:14:43Z cfischer $
 #
 # IT-Grundschutz, 14. EL, Maßnahme 5.072
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.95068");
-  script_version("$Revision: 10397 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-04 11:29:14 +0200 (Wed, 04 Jul 2018) $");
+  script_version("$Revision: 14124 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 08:14:43 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -65,12 +65,12 @@ SAMBA = kb_smb_is_samba();
 
 if(SAMBA && SSHNetstat >< "nosock"){
   result = string("Fehler");
-  desc = string('Beim Testen des Systems wurde festgestellt, dass keine\nSSH Verbindung aufgebaut werden konnte.');
+  desc = string('Beim Testen des Systems wurde festgestellt, dass keine SSH Verbindung aufgebaut werden konnte.');
 
 }else if(SAMBA && SSHNetstat >!< "nosock"){
   if (SSHNetstat >!< "none"){
     result = string("unvollständig");
-    desc = string('Bitte prüfen Sie das Ergebnis und deaktivieren ggf. nicht\nbenötigter Netzdienste:\n\n' + SSHNetstat);
+    desc = string('Bitte prüfen Sie das Ergebnis und deaktivieren ggf. nicht benötigter Netzdienste:\n\n' + SSHNetstat);
   }else if (SSHNetstat >< "none"){
     result = string("Fehler");
     desc = string('Es konnte über "netstat" kein Ergebnis ermittelt werden.');
@@ -78,19 +78,19 @@ if(SAMBA && SSHNetstat >< "nosock"){
 }else if(!SAMBA){
   if(WMINetstat >< "nocred"){
     result = string("Fehler");
-    desc = string('Beim Testen des Systems wurde festgestellt,\ndass keine Logindaten angegeben wurden.');
+    desc = string('Beim Testen des Systems wurde festgestellt, dass keine Logindaten angegeben wurden.');
   }else if(WMINetstat >< "toold"){
     result = string("Fehler");
-    desc = string('Ihre OpenVAS - GSM Installation ist zu alt.');
+    desc = string('Ihre GVM/GSM Installation ist zu alt.');
   }else if(WMINetstat >!< ""){
     result = string("unvollständig");
-    desc = string('Bitte prüfen Sie das Ergebnis, und deaktivieren ggf.\nnicht benötigter Netzdienste:\n\n' + WMINetstat);
+    desc = string('Bitte prüfen Sie das Ergebnis, und deaktivieren ggf. nicht benötigter Netzdienste:\n\n' + WMINetstat);
   }
 }
 
 if (!result){
   result = string("Fehler");
-  desc = string('Beim Testen des Systems trat ein unbekannter Fehler auf\nbzw. es konnte kein Ergebnis ermittelt werden.');
+  desc = string('Beim Testen des Systems trat ein unbekannter Fehler auf bzw. es konnte kein Ergebnis ermittelt werden.');
 }
 
 set_kb_item(name:"GSHB/M5_072/result", value:result);
@@ -101,4 +101,3 @@ silence = get_kb_item("GSHB/silence");
 if (!silence) itg_send_details (itg_id: 'GSHB/M5_072');
 
 exit(0);
-

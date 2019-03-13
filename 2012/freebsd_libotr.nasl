@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: freebsd_libotr.nasl 11762 2018-10-05 10:54:12Z cfischer $
+# $Id: freebsd_libotr.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Auto generated from VID c651c898-e90d-11e1-b230-0024e830109b
 #
@@ -32,8 +32,8 @@ if(description)
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
   script_cve_id("CVE-2012-3461");
-  script_version("$Revision: 11762 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 14117 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-08-30 11:34:18 -0400 (Thu, 30 Aug 2012)");
   script_name("FreeBSD Ports: libotr");
   script_category(ACT_GATHER_INFO);
@@ -45,9 +45,9 @@ if(description)
   script_tag(name:"insight", value:"The following package is affected: libotr
 
 CVE-2012-3461
-The (1) otrl_base64_otr_decode function in src/b64.c; (2)
+The (1) otrl_base64_otr_decode function in src/b64.c, (2)
 otrl_proto_data_read_flags and (3) otrl_proto_accept_data functions in
-src/proto.c; and (4) decode function in toolkit/parse.c in libotr
+src/proto.c, and (4) decode function in toolkit/parse.c in libotr
 before 3.2.1 allocates a zero-length buffer when decoding a base64
 string, which allows remote attackers to cause a denial of service
 (application crash) via a message with the value '?OTR:===.', which

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms17-015_exchange_server_prev_esc_vuln.nasl 11795 2018-10-09 13:03:20Z mmartin $
+# $Id: gb_ms17-015_exchange_server_prev_esc_vuln.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Microsoft Exchange Server Remote Privilege Escalation Vulnerability (4013242)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:exchange_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810705");
-  script_version("$Revision: 11795 $");
+  script_version("$Revision: 14117 $");
   script_cve_id("CVE-2017-0110");
   script_bugtraq_id(96621);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-03-15 11:17:25 +0530 (Wed, 15 Mar 2017)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Microsoft Exchange Server Remote Privilege Escalation Vulnerability (4013242)");
@@ -52,11 +52,11 @@ if(description)
   the user into disclosing sensitive information.");
 
   script_tag(name:"affected", value:"Microsoft Exchange Server 2013 Cumulative Update 14
-  Microsoft Exchange Server 2016 Cumulative Update 3 ");
+  Microsoft Exchange Server 2016 Cumulative Update 3");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed
   hotfixes or download and update mentioned hotfixes in the advisory from the
-  https://technet.microsoft.com/library/security/MS17-015");
+  referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

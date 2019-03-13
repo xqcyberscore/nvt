@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2011-February/msg00017.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870392");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-02-18 15:15:05 +0100 (Fri, 18 Feb 2011)");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
@@ -60,10 +60,10 @@ if(description)
 
   * If a child process's PID was the same as the PID of a previously ended
   child process, Bash did not wait for that child process. In some cases this
-  caused &quot;Resource temporarily unavailable&quot; errors. With this update, Bash
+  caused 'Resource temporarily unavailable' errors. With this update, Bash
   recycles PIDs and waits for processes with recycled PIDs. (BZ#521134)
 
-  * Bash's built-in &quot;read&quot; command had a memory leak when &quot;read&quot; failed due
+  * Bash's built-in 'read' command had a memory leak when 'read' failed due
   to no input (pipe for stdin). With this update, the memory is correctly
   freed. (BZ#537029)
 
@@ -71,9 +71,9 @@ if(description)
   the IFS value, causing Bash to crash. With this update, Bash checks the
   multi-byte string and no longer crashes. (BZ#539536)
 
-  * Bash incorrectly set locale settings when using the built-in &quot;export&quot;
+  * Bash incorrectly set locale settings when using the built-in 'export'
   command and setting the locale on the same line (for example, with
-  &quot;LC_ALL=C export LC_ALL&quot;). With this update, Bash correctly sets locale
+  'LC_ALL=C export LC_ALL'). With this update, Bash correctly sets locale
   settings. (BZ#539538)
 
   All bash users should upgrade to these updated packages, which contain

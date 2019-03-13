@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_0760_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_suse_2012_0760_1.nasl 14114 2019-03-12 11:48:52Z cfischer $
 #
 # SuSE Update for MozillaFirefox, openSUSE-SU-2012:0760-1 (MozillaFirefox,)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850247");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-12-13 17:01:39 +0530 (Thu, 13 Dec 2012)");
   script_cve_id("CVE-2011-3101", "CVE-2012-0441", "CVE-2012-1937", "CVE-2012-1938",
                 "CVE-2012-1940", "CVE-2012-1941", "CVE-2012-1944", "CVE-2012-1945",
@@ -118,8 +118,8 @@ if(description)
 
   - POP3 filters (bmo#748090)
 
-  - Message Body not loaded when using &quot;Fetch Headers
-  Only&quot; (bmo#748865)
+  - Message Body not loaded when using 'Fetch Headers
+  Only' (bmo#748865)
 
   - Received messages contain parts of other messages
   with movemail account (bmo#748726)

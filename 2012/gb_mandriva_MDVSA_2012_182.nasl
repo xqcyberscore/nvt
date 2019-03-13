@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:182");
   script_oid("1.3.6.1.4.1.25623.1.0.831759");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-12-26 12:09:31 +0530 (Wed, 26 Dec 2012)");
   script_cve_id("CVE-2009-5031", "CVE-2012-2751", "CVE-2012-4528");
   script_tag(name:"cvss_base", value:"5.0");
@@ -56,7 +56,7 @@ if(description)
   attacks. NOTE: this vulnerability exists because of an incomplete
   fix for CVE-2009-5031 (CVE-2012-2751).
 
-  ModSecurity &lt;= 2.6.8 is vulnerable to multipart/invalid part
+  ModSecurity <= 2.6.8 is vulnerable to multipart/invalid part
   ruleset bypass, this was fixed in 2.7.0 (released on2012-10-16)
   (CVE-2012-4528).
 

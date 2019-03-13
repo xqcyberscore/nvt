@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805178");
-  script_version("$Revision: 11612 $");
+  script_version("$Revision: 14117 $");
   script_cve_id("CVE-2015-1672", "CVE-2015-1673");
   script_bugtraq_id(74482, 74487);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 07:47:26 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-05-13 09:21:10 +0530 (Wed, 13 May 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft .NET Framework Privilege Elevation Vulnerability (3057134)");
@@ -51,15 +51,19 @@ if(description)
   applications that use the .NET framework.");
 
   script_tag(name:"affected", value:"Microsoft .NET Framework 1.1 Service Pack 1
+
   Microsoft .NET Framework 2.0 Service Pack 2
+
   Microsoft .NET Framework 3.5
+
   Microsoft .NET Framework 3.5.1
+
   Microsoft .NET Framework 4
+
   Microsoft .NET Framework 4.5, 4.5.1, and 4.5.2");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the given link https://technet.microsoft.com/library/security/MS15-048");
+  listed hotfixes or download and update mentioned hotfixes from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bigtree_xss_vuln.nasl 10145 2018-06-08 14:34:24Z asteins $
+# $Id: gb_bigtree_xss_vuln.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # BigTree CMS < 4.2.22 XSS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:bigtree:bigtree";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112264");
-  script_version("$Revision: 10145 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 16:34:24 +0200 (Fri, 08 Jun 2018) $");
+  script_version("$Revision: 14117 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-05-02 13:38:22 +0200 (Wed, 02 May 2018)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
@@ -52,7 +52,7 @@ if(description)
 
   script_tag(name:"affected", value:"BigTree CMS versions before 4.2.22.");
 
-  script_tag(name:"solution", value:"Update to version 4.2.22 or later. For further information head to https://github.com/bigtreecms/BigTree-CMS ");
+  script_tag(name:"solution", value:"Update to version 4.2.22 or later.");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");

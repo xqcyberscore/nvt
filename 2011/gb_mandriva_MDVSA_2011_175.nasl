@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.mandriva.com/security-announce/2011-11/msg00029.php");
   script_oid("1.3.6.1.4.1.25623.1.0.831494");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-11-18 09:47:30 +0530 (Fri, 18 Nov 2011)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -98,7 +98,7 @@ if(description)
 
   Multiple integer overflows allow remote attackers to cause a denial
   of service (application crash) or possibly execute arbitrary code
-  via a crafted PDF file, related to (1) glib/poppler-page.cc; (2)
+  via a crafted PDF file, related to (1) glib/poppler-page.cc, (2)
   ArthurOutputDev.cc, (3) CairoOutputDev.cc, (4) GfxState.cc, (5)
   JBIG2Stream.cc, (6) PSO ...
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_partial_http_req_dos_vuln_win.nasl 11888 2018-10-12 15:27:49Z cfischer $
+# $Id: gb_apache_tomcat_partial_http_req_dos_vuln_win.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Apache Tomcat Partial HTTP Requests DoS Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802682");
-  script_version("$Revision: 11888 $");
+  script_version("$Revision: 14117 $");
   script_cve_id("CVE-2012-5568");
   script_bugtraq_id(56686);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 17:27:49 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-12-05 12:17:34 +0530 (Wed, 05 Dec 2012)");
   script_name("Apache Tomcat Partial HTTP Requests DoS Vulnerability (Windows)");
   script_category(ACT_GATHER_INFO);
@@ -49,6 +49,7 @@ if(description)
   script_xref(name:"URL", value:"http://captainholly.wordpress.com/2009/06/19/slowloris-vs-tomcat/");
   script_xref(name:"URL", value:"http://tomcat.10.n6.nabble.com/How-does-Tomcat-handle-a-slow-HTTP-DoS-tc2147776.html");
   script_xref(name:"URL", value:"http://tomcat.10.n6.nabble.com/How-does-Tomcat-handle-a-slow-HTTP-DoS-tc2147779.html");
+  script_xref(name:"URL", value:"https://tomcat.apache.org/security-7.html#Not_a_vulnerability_in_Tomcat");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause
   a denial of service conditions.");
@@ -58,8 +59,9 @@ if(description)
   server.xml.");
   script_tag(name:"summary", value:"The host is running Apache Tomcat Server and is prone to denial of
   service vulnerability. This NVT has been deprecated for the reasons explained by
-  the Apache Tomcat team in https://tomcat.apache.org/security-7.html#Not_a_vulnerability_in_Tomcat");
-  script_tag(name:"solution", value:"Upgrade to Apache Tomcat 7.0.52  or later.");
+  the Apache Tomcat team in the references.");
+
+  script_tag(name:"solution", value:"Upgrade to Apache Tomcat 7.0.52 or later.");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");

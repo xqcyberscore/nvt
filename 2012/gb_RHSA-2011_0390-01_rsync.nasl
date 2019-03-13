@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2011-March/msg00040.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870733");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-06-06 10:57:24 +0530 (Wed, 06 Jun 2012)");
   script_cve_id("CVE-2011-1097");
   script_tag(name:"cvss_base", value:"5.1");
@@ -50,8 +50,8 @@ if(description)
   script_tag(name:"insight", value:"rsync is a program for synchronizing files over a network.
 
   A memory corruption flaw was found in the way the rsync client processed
-  malformed file list data. If an rsync client used the &quot;--recursive&quot; and
-  &quot;--delete&quot; options without the &quot;--owner&quot; option when connecting to a
+  malformed file list data. If an rsync client used the '--recursive' and
+  '--delete' options without the '--owner' option when connecting to a
   malicious rsync server, the malicious server could cause rsync on the
   client system to crash or, possibly, execute arbitrary code with the
   privileges of the user running rsync. (CVE-2011-1097)

@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2011-February/msg00013.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870397");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-02-18 15:15:05 +0100 (Fri, 18 Feb 2011)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
@@ -50,7 +50,7 @@ if(description)
   files and directories while keeping a history of all changes.
 
   A server-side memory leak was found in the Subversion server. If a
-  malicious, remote user performed &quot;svn blame&quot; or &quot;svn log&quot; operations on
+  malicious, remote user performed 'svn blame' or 'svn log' operations on
   certain repository files, it could cause the Subversion server to consume
   a large amount of system memory. (CVE-2010-4644)
 

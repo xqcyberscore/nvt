@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: freebsd_pecl-phar.nasl 11762 2018-10-05 10:54:12Z cfischer $
+# $Id: freebsd_pecl-phar.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Auto generated from VID da3d381b-0ee6-11e0-becc-0022156e8794
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.68831");
-  script_version("$Revision: 11762 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 14117 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-01-24 17:55:59 +0100 (Mon, 24 Jan 2011)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -50,7 +50,7 @@ Multiple format string vulnerabilities in the phar extension in PHP
 information (memory contents) and possibly execute arbitrary code via
 a crafted phar:// URI that is not properly handled by the (1)
 phar_stream_flush, (2) phar_wrapper_unlink, (3) phar_parse_url, or (4)
-phar_wrapper_open_url functions in ext/phar/stream.c; and the (5)
+phar_wrapper_open_url functions in ext/phar/stream.c, and the (5)
 phar_wrapper_open_dir function in ext/phar/dirstream.c, which triggers
 errors in the php_stream_wrapper_log_error function.");
 

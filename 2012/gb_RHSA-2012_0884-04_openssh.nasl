@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2012-June/msg00033.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870763");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-06-22 10:26:01 +0530 (Fri, 22 Jun 2012)");
   script_cve_id("CVE-2011-5000");
   script_tag(name:"cvss_base", value:"3.5");
@@ -60,7 +60,7 @@ if(description)
   These updated openssh packages also provide fixes for the following bugs:
 
   * SSH X11 forwarding failed if IPv6 was enabled and the parameter
-  X11UseLocalhost was set to &quot;no&quot;. Consequently, users could not set X
+  X11UseLocalhost was set to 'no'. Consequently, users could not set X
   forwarding. This update fixes sshd and ssh to correctly bind the port for
   the IPv6 protocol. As a result, X11 forwarding now works as expected with
   IPv6. (BZ#732955)

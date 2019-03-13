@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avm_fritz_box_02_14.nasl 11412 2018-09-16 10:21:40Z cfischer $
+# $Id: gb_avm_fritz_box_02_14.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Multiple AVM FRITZ!Box Multiple Vulnerabilities
 #
@@ -30,13 +30,13 @@ CPE = "cpe:/o:avm:fritz%21_os";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103911");
-  script_version("$Revision: 11412 $");
+  script_version("$Revision: 14117 $");
   script_bugtraq_id(74927, 65520);
   script_cve_id("CVE-2014-9727");
   script_name("Multiple AVM FRITZ!Box Multiple Vulnerabilities");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-16 12:21:40 +0200 (Sun, 16 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-02-19 15:07:20 +0100 (Wed, 19 Feb 2014)");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
@@ -57,7 +57,7 @@ if(description)
 
   script_tag(name:"summary", value:"AVM FRITZ!Box is prone to multiple vulnerabilities");
 
-  script_tag(name:"affected", value:"See the list at http://www.avm.de/de/Sicherheit/liste_update.html");
+  script_tag(name:"affected", value:"See the list at the linked vendor article.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

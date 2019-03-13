@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_support_incident_tracker_46671.nasl 11997 2018-10-20 11:59:41Z mmartin $
+# $Id: gb_support_incident_tracker_46671.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Support Incident Tracker (SiT!) Multiple Cross Site Scripting Vulnerabilities
 #
@@ -24,12 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103105");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("$Revision: 14117 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-03-04 13:25:07 +0100 (Fri, 04 Mar 2011)");
   script_bugtraq_id(46671);
 
@@ -48,18 +47,21 @@ if (description)
   script_dependencies("support_incident_tracker_detect.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
+
   script_tag(name:"summary", value:"Support Incident Tracker (SiT!) is prone to multiple cross-
-site scripting vulnerabilities because it fails to properly
-sanitize user-supplied input.
+  site scripting vulnerabilities because it fails to properly sanitize user-supplied input.");
 
-An attacker may leverage these issues to execute arbitrary script code
-in the browser of an unsuspecting user in the context of the affected
-site. This may let the attacker steal cookie-based authentication
-credentials and launch other attacks.
+  script_tag(name:"impact", value:"An attacker may leverage these issues to execute arbitrary script code
+  in the browser of an unsuspecting user in the context of the affected site. This may let the attacker
+  steal cookie-based authentication credentials and launch other attacks.");
 
-Support Incident Tracker (SiT!) 3.62 is vulnerable; other versions may
-also be affected.");
-  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"affected", value:"Support Incident Tracker (SiT!) 3.62 is vulnerable. Other versions may
+  also be affected.");
+
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
   exit(0);
 }
@@ -69,19 +71,14 @@ include("http_keepalive.inc");
 include("version_func.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
-
-if(!can_host_php(port:port))exit(0);
-
 if(!dir = get_dir_from_kb(port:port,app:"support_incident_tracker"))exit(0);
 
-url = string(dir,"/feedback.php?ax=--><script>alert(/openvas-xss-test/)</script>");
+url = string(dir,"/feedback.php?ax=--><script>alert(/vt-xss-test/)</script>");
 
-if(http_vuln_check(port:port, url:url,pattern:"<script>alert\(/openvas-xss-test/\)</script>",check_header:TRUE)) {
-
-  security_message(port:port);
+if(http_vuln_check(port:port, url:url, pattern:"<script>alert\(/vt-xss-test/\)</script>", check_header:TRUE)) {
+  report = report_vuln_url(port:port, url:url);
+  security_message(port:port, data:report);
   exit(0);
-
 }
 
-exit(0);
+exit(99);

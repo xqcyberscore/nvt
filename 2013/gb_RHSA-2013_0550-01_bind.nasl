@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2013-February/msg00071.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870914");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-02-22 10:01:18 +0530 (Fri, 22 Feb 2013)");
   script_cve_id("CVE-2012-5689");
   script_bugtraq_id(57556);
@@ -49,9 +49,9 @@ if(description)
   Red Hat Enterprise Linux Workstation (v. 6)");
   script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"insight", value:"The Berkeley Internet Name Domain (BIND) is an implementation of the
-  Domain Name System (DNS) protocols. BIND includes a DNS server (named); a
+  Domain Name System (DNS) protocols. BIND includes a DNS server (named), a
   resolver library (routines for applications to use when interfacing with
-  DNS); and tools for verifying that the DNS server is operating correctly.
+  DNS), and tools for verifying that the DNS server is operating correctly.
   DNS64 is used to automatically generate DNS records so IPv6 based clients
   can access IPv4 systems through a NAT64 server.
 
@@ -66,7 +66,7 @@ if(description)
   * Previously, it was impossible to configure the the maximum number of
   responses sent per second to one client. This allowed remote attackers to
   conduct traffic amplification attacks using DNS queries with spoofed source
-  IP addresses. With this update, it is possible to use the new &quot;rate-limit&quot;
+  IP addresses. With this update, it is possible to use the new 'rate-limit'
   configuration option in named.conf and configure the maximum number of
   queries which the server responds to. Refer to the BIND documentation for
   more details about the rate-limit option. (BZ#906312)

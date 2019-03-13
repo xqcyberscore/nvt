@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2012-March/msg00010.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870630");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-09 10:36:29 +0530 (Mon, 09 Jul 2012)");
   script_cve_id("CVE-2012-0451", "CVE-2012-0455", "CVE-2012-0456", "CVE-2012-0457",
                 "CVE-2012-0458", "CVE-2012-0459", "CVE-2012-0460", "CVE-2012-0461",
@@ -63,16 +63,16 @@ if(description)
 
   A flaw could allow malicious content to bypass intended restrictions,
   possibly leading to a cross-site scripting (XSS) attack if a user were
-  tricked into dropping a &quot;javascript:&quot; link onto a frame. (CVE-2012-0455)
+  tricked into dropping a 'javascript:' link onto a frame. (CVE-2012-0455)
 
-  It was found that the home page could be set to a &quot;javascript:&quot; link. If a
+  It was found that the home page could be set to a 'javascript:' link. If a
   user were tricked into setting such a home page by dragging a link to the
   home button, it could cause Firefox to repeatedly crash, eventually leading
   to arbitrary code execution with the privileges of the user running
   Firefox. A similar flaw was found and fixed in Thunderbird. (CVE-2012-0458)
 
   A flaw was found in the way Thunderbird parsed certain, remote content
-  containing &quot;cssText&quot;. Malicious, remote content could cause Thunderbird to
+  containing 'cssText'. Malicious, remote content could cause Thunderbird to
   crash or, potentially, execute arbitrary code with the privileges of the
   user running Thunderbird. (CVE-2012-0459)
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_outlook_ms16-088.nasl 11640 2018-09-27 07:15:20Z asteins $
+# $Id: gb_ms_outlook_ms16-088.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Microsoft Office Outlook Remote Code Execution Vulnerability (3170008)
 #
@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807862");
-  script_version("$Revision: 11640 $");
+  script_version("$Revision: 14117 $");
   script_cve_id("CVE-2016-3278");
   script_bugtraq_id(91574);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-07-13 12:44:21 +0530 (Wed, 13 Jul 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Outlook Remote Code Execution Vulnerability (3170008)");
@@ -49,12 +49,13 @@ if(description)
   affected system.");
 
   script_tag(name:"affected", value:"Microsoft Outlook 2010 Service Pack 2 and prior,
+
   Microsoft Outlook 2013 Service Pack 1 and prior,
+
   Microsoft Outlook 2016.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed
-  hotfixes or download and update mentioned hotfixes in the advisory from the
-  https://technet.microsoft.com/library/security/MS16-088");
+  hotfixes or download and update mentioned hotfixes from the referenced avdisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

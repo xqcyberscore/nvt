@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tp_link_rom_0.nasl 11867 2018-10-12 10:48:11Z cfischer $
+# $Id: gb_tp_link_rom_0.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Multiple Routers 'rom-0' Vulnerability
 #
@@ -25,11 +25,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103886");
   script_bugtraq_id(60682);
-  script_version("$Revision: 11867 $");
+  script_version("$Revision: 14117 $");
   script_tag(name:"cvss_base", value:"9.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:C");
 
@@ -37,9 +37,8 @@ if (description)
 
   script_xref(name:"URL", value:"http://dariusfreamon.wordpress.com/2014/01/20/tp-link-td-w8901g-router-multiple-vulnerabilities/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-01-21 12:05:08 +0100 (Tue, 21 Jan 2014)");
-
 
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -50,27 +49,26 @@ if (description)
   script_mandatory_keys("RomPager/banner");
 
   script_tag(name:"impact", value:"Attackers can exploit this issue to bypass certain security
-restrictions and obtain sensitive information which may aid in further
-attacks.");
+  restrictions and obtain sensitive information which may aid in further attacks.");
 
   script_tag(name:"vuldetect", value:"Request /rom-0 and check the response.");
 
   script_tag(name:"insight", value:"If you request the /rom-0 file it does not require
-authentication. This can be reversed using available tools like the
-one at http://50.57.229.26/zynos.php. The first string returned is the
-admin password.");
+  authentication. This can be reversed using available tools zynos.php. The first string returned is the
+  admin password.");
 
-  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release,
+  disable respective features, remove the product or replace the product by another one.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
-  script_tag(name:"summary", value:"The remote Router is prone to the 'rom-0' Vulnerability ");
+  script_tag(name:"summary", value:"The remote Router is prone to the 'rom-0' Vulnerability.");
 
   exit(0);
 }
 
 include("http_func.inc");
 include("host_details.inc");
-
-
 
 port = get_http_port( default:80 );
 
@@ -87,4 +85,3 @@ if( "dbgarea" >< buf && "spt.dat" >< buf )
 }
 
 exit(99);
-

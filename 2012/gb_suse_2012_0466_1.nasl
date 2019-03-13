@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_0466_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_suse_2012_0466_1.nasl 14114 2019-03-12 11:48:52Z cfischer $
 #
 # SuSE Update for update openSUSE-SU-2012:0466-1 (update)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850298");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-12-13 17:01:34 +0530 (Thu, 13 Dec 2012)");
   script_cve_id("CVE-2011-3045", "CVE-2011-3049", "CVE-2011-3050", "CVE-2011-3051",
                 "CVE-2011-3052", "CVE-2011-3053", "CVE-2011-3054", "CVE-2011-3055",
@@ -98,7 +98,7 @@ if(description)
 
   - Update to 19.0.1074
 
-  - Build Chromium on openSUSE &gt; 12.1 with the gold linker
+  - Build Chromium on openSUSE > 12.1 with the gold linker
 
   - Fix build issues with GCC 4.7
 

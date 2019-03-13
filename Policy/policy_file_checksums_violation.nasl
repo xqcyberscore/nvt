@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: policy_file_checksums_violation.nasl 10958 2018-08-14 13:49:12Z cfischer $
+# $Id: policy_file_checksums_violation.nasl 14125 2019-03-13 07:18:45Z cfischer $
 #
 # List File Checksum Violations
 #
@@ -29,7 +29,7 @@
 include("misc_func.inc");
 include("version_func.inc");
 
-# nb: includes in the description phase won't work anymore from GOS 4.2.11 (OpenVAS TBD)
+# nb: includes in the description phase won't work anymore from GOS 4.2.11 (GVM TBD)
 # onwards so checking for the defined_func and default to TRUE below if the funcs are undefined
 if( defined_func( "get_local_gos_version" ) &&
     defined_func( "version_is_greater_equal" ) ) {
@@ -47,7 +47,7 @@ if( defined_func( "get_local_gos_version" ) &&
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103942");
-  script_version("$Revision: 10958 $");
+  script_version("$Revision: 14125 $");
   script_name("File Checksums: Violations");
   if( use_severity ) {
   script_tag(name:"cvss_base", value:"10.0");
@@ -56,7 +56,7 @@ if(description)
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   }
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 15:49:12 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 08:18:45 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-08-21 10:56:19 +0200 (Wed, 21 Aug 2013)");
   script_category(ACT_GATHER_INFO);
   script_family("Policy");

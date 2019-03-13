@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2011-May/msg00026.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870626");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-06-06 10:35:19 +0530 (Wed, 06 Jun 2012)");
   script_cve_id("CVE-2010-3718", "CVE-2010-4172", "CVE-2011-0013");
   script_tag(name:"cvss_base", value:"4.3");
@@ -69,25 +69,25 @@ if(description)
 
   This update also fixes the following bugs:
 
-  * A bug in the &quot;tomcat6&quot; init script prevented additional Tomcat instances
-  from starting. As well, running &quot;service tomcat6 start&quot; caused
-  configuration options applied from &quot;/etc/sysconfig/tomcat6&quot; to be
-  overwritten with those from &quot;/etc/tomcat6/tomcat6.conf&quot;. With this update,
+  * A bug in the 'tomcat6' init script prevented additional Tomcat instances
+  from starting. As well, running 'service tomcat6 start' caused
+  configuration options applied from '/etc/sysconfig/tomcat6' to be
+  overwritten with those from '/etc/tomcat6/tomcat6.conf'. With this update,
   multiple instances of Tomcat run as expected. (BZ#636997)
 
-  * The &quot;/usr/share/java/&quot; directory was missing a symbolic link to the
-  &quot;/usr/share/tomcat6/bin/tomcat-juli.jar&quot; library. Because this library was
+  * The '/usr/share/java/' directory was missing a symbolic link to the
+  '/usr/share/tomcat6/bin/tomcat-juli.jar' library. Because this library was
   mandatory for certain operations (such as running the Jasper JSP
-  precompiler), the &quot;build-jar-repository&quot; command was unable to compose a
+  precompiler), the 'build-jar-repository' command was unable to compose a
   valid classpath. With this update, the missing symbolic link has been
   added. (BZ#661244)
 
-  * Previously, the &quot;tomcat6&quot; init script failed to start Tomcat with a &quot;This
-  account is currently not available.&quot; message when Tomcat was configured to
+  * Previously, the 'tomcat6' init script failed to start Tomcat with a 'This
+  account is currently not available.' message when Tomcat was configured to
   run under a user that did not have a valid shell configured as a login
   shell. This update modifies the init script to work correctly regardless of
   the daemon user's login shell. Additionally, these new tomcat6 packages now
-  set &quot;/sbin/nologin&quot; as the login shell for the &quot;tomcat&quot; user upon
+  set '/sbin/nologin' as the login shell for the 'tomcat' user upon
   installation, as recommended by deployment best practices. (BZ#678671 ...
 
   Description truncated, please see the referenced URL(s) for more information.");

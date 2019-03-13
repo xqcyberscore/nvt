@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.mandriva.com/security-announce/2011-01/msg00004.php");
   script_oid("1.3.6.1.4.1.25623.1.0.831302");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-01-14 16:07:43 +0100 (Fri, 14 Jan 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -55,13 +55,13 @@ if(description)
 
   MHonArc 2.6.16 allows remote attackers to cause a denial of service
   (CPU consumption) via start tags that are placed within other start
-  tags, as demonstrated by a &amp;lt;bo&amp;lt;bo&amp;lt;bo&amp;lt;bo&amp;lt;body&amp;gt;dy&amp;gt;dy&amp;gt;dy&amp;gt;dy&amp;gt; sequence,
+  tags, as demonstrated by a <bo<bo<bo<bo<body>dy>dy>dy>dy> sequence,
   a different vulnerability than CVE-2010-4524 (CVE-2010-1677).
 
   Cross-site scripting (XSS) vulnerability in lib/mhtxthtml.pl in
   MHonArc 2.6.16 allows remote attackers to inject arbitrary web script
   or HTML via a malformed start tag and end tag for a SCRIPT element,
-  as demonstrated by &amp;lt;scr&amp;lt;body&amp;gt;ipt&amp;gt; and &amp;lt;/scr&amp;lt;body&amp;gt;ipt&amp;gt; sequences
+  as demonstrated by <scr<body>ipt> and </scr<body>ipt> sequences
   (CVE-2010-4524).
 
   Packages for 2009.0 are provided as of the Extended Maintenance

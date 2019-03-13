@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_torque_resource_manager_bof_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_torque_resource_manager_bof_vuln.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # TORQUE Resource Manager Stack Buffer Overflow Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804456");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 14117 $");
   script_cve_id("CVE-2014-0749");
   script_bugtraq_id(67420);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-05-29 14:39:49 +0530 (Thu, 29 May 2014)");
   script_name("TORQUE Resource Manager Stack Buffer Overflow Vulnerability");
   script_category(ACT_DENIAL);
@@ -58,8 +58,7 @@ if(description)
 
   script_tag(name:"affected", value:"TORQUE versions 2.5 through 2.5.13");
 
-  script_tag(name:"solution", value:"Upgrade to TORQUE 4.2 or later,
-  http://www.adaptivecomputing.com/support/download-center/torque-download");
+  script_tag(name:"solution", value:"Upgrade to TORQUE 4.2 or later.");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"VendorFix");

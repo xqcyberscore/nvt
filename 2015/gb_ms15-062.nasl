@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-062.nasl 11876 2018-10-12 12:20:01Z cfischer $
+# $Id: gb_ms15-062.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # MS Active Directory Federation Services Privilege Escalation Vulnerability (3062577)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805197");
-  script_version("$Revision: 11876 $");
+  script_version("$Revision: 14117 $");
   script_cve_id("CVE-2015-1757");
   script_bugtraq_id(75023);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-06-10 08:58:45 +0530 (Wed, 10 Jun 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("MS Active Directory Federation Services Privilege Escalation Vulnerability (3062577)");
@@ -54,8 +54,7 @@ if(description)
   Active Directory Federation Services 2.1 on Windows Server 2012");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed
-  hotfixes or download and update mentioned hotfixes in the advisory from the
-  link, https://technet.microsoft.com/library/security/MS15-062");
+  hotfixes or download and update mentioned hotfixes from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

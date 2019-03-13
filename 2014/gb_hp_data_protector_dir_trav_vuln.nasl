@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_data_protector_dir_trav_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_hp_data_protector_dir_trav_vuln.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # HP (OpenView Storage) Data Protector Backup Client Service Directory Traversal
 #
@@ -33,9 +33,9 @@ if(description)
   script_cve_id("CVE-2013-6194");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 14117 $");
   script_name("HP (OpenView Storage) Data Protector Backup Client Service Directory Traversal");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-02-11 11:34:29 +0700 (Tue, 11 Feb 2014)");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -46,16 +46,20 @@ if(description)
 
   script_xref(name:"URL", value:"https://h20566.www2.hp.com/portal/site/hpsc/public/kb/docDisplay/?docId=emr_na-c03822422");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/31181/");
+  script_xref(name:"URL", value:"https://ovrd.external.hp.com/hpp/hpp2rd");
 
   script_tag(name:"impact", value:"A remote attacker can upload and execute abitrary code.");
+
   script_tag(name:"affected", value:"HP (OpenView Storage) Data Protector 6.21 and prior.");
+
   script_tag(name:"insight", value:"There is a directory traversal vulnerability in HP (OpenView Storage) Data Protector.
-  The vulnerability is in the backup client service when parsing packets with
-  opcode 42.");
+  The vulnerability is in the backup client service when parsing packets with opcode 42.");
+
   script_tag(name:"summary", value:"This host is running HP (OpenView Storage) Data Protector and is prone to a
   directory traversal vulnerability which might lead to execution of arbitrary code.");
-  script_tag(name:"solution", value:"Apply the patch from the link below or update to a newer version.
-  https://ovrd.external.hp.com/hpp/hpp2rd");
+
+  script_tag(name:"solution", value:"Apply the patch from the referenced link or update to a newer version.");
+
   script_tag(name:"vuldetect", value:"Checks the installed version.");
 
   script_tag(name:"solution_type", value:"VendorFix");

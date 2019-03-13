@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2012-February/msg00043.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870555");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-02-21 18:56:47 +0530 (Tue, 21 Feb 2012)");
   script_cve_id("CVE-2008-1198");
   script_tag(name:"cvss_base", value:"7.1");
@@ -65,8 +65,8 @@ if(description)
   client is now terminated when stopping the network service. (BZ#568896)
 
   * Prior to this update, on some systems the rm command failed and reported
-  the error message &quot;rm: cannot remove directory `/var/run/dovecot/login/':
-  Is a directory&quot; during system boot. This update modifies the source so that
+  the error message 'rm: cannot remove directory `/var/run/dovecot/login/':
+  Is a directory' during system boot. This update modifies the source so that
   this error message no longer appears. (BZ#679998)
 
   * Prior to this update, the netconsole script could not discover and
@@ -76,8 +76,8 @@ if(description)
   address of the router more than once. (BZ#744734)
 
   * Prior to this update, the arp_ip_target was, due to a logic error, not
-  correctly removed via sysfs. As a consequence, the error &quot;ifdown-eth: line
-  64: echo: write error: Invalid argument&quot; was reported when attempting to
+  correctly removed via sysfs. As a consequence, the error 'ifdown-eth: line
+  64: echo: write error: Invalid argument' was reported when attempting to
   shut down a bonding device. This update modifies the script so that the
   error no longer appears and arp_ip_target is now correctly removed.
   (BZ#745681)

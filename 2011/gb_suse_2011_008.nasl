@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850159");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-02-16 14:19:17 +0100 (Wed, 16 Feb 2011)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -74,7 +74,7 @@ if(description)
   CVE-2010-2946: fs/jfs/xattr.c in the Linux kernel did not properly
   handle a certain legacy format for storage of extended attributes,
   which might have allowed local users by bypass intended xattr namespace
-  restrictions via an &quot;os2.&quot; substring at the beginning of a name.
+  restrictions via an 'os2.' substring at the beginning of a name.
 
   CVE-2010-3848: Stack-based buffer overflow in the econet_sendmsg
   function in net/econet/af_econet.c in the Linux kernel, when an

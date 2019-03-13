@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_0374_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_suse_2012_0374_1.nasl 14114 2019-03-12 11:48:52Z cfischer $
 #
 # SuSE Update for update openSUSE-SU-2012:0374-1 (update)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850231");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-12-13 17:01:25 +0530 (Thu, 13 Dec 2012)");
   script_cve_id("CVE-2011-3031", "CVE-2011-3032", "CVE-2011-3033", "CVE-2011-3034",
                 "CVE-2011-3035", "CVE-2011-3036", "CVE-2011-3037", "CVE-2011-3038",
@@ -94,7 +94,7 @@ if(description)
   * Fixed gmail seems to redraw itself (all white)
   occasionally  (Issue: 111263)
 
-  * Focus &quot;OK&quot; button on Javascript dialogs (Issue: 111015)
+  * Focus 'OK' button on Javascript dialogs (Issue: 111015)
 
   * Fixed Back button frequently hangs (Issue: 93427)
 
@@ -121,8 +121,8 @@ if(description)
   * Sync: Sessions aren't associating pre-existing tabs
   (Issue: 113319)
 
-  * Fixed All &quot;Extensions&quot; make an entry under the &quot;NTP
-  Apps&quot; page (Issue: 113672)
+  * Fixed All 'Extensions' make an entry under the 'NTP
+  Apps' page (Issue: 113672)
 
   - Security Fixes (bnc#750407):
 

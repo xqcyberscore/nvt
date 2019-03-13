@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.mandriva.com/security-announce/2011-11/msg00011.php");
   script_oid("1.3.6.1.4.1.25623.1.0.831490");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-11-11 10:00:56 +0530 (Fri, 11 Nov 2011)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -57,7 +57,7 @@ if(description)
   was fixed with rootcerts-20111103.00 and nss-3.13. DigiCert
   Sdn. Bhd is a Malaysian subordinate CA under Entrust and Verizon
   (GTE CyberTrust). It bears no affiliation whatsoever with the
-  US-based corporation DigiCert, Inc., which is a member of Mozilla&amp;#039;s
+  US-based corporation DigiCert, Inc., which is a member of Mozilla's
   root program.
 
   Untrusted search path vulnerability in Mozilla Network Security

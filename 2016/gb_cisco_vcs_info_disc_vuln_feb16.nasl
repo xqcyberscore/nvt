@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_vcs_info_disc_vuln_feb16.nasl 11772 2018-10-08 07:20:02Z asteins $
+# $Id: gb_cisco_vcs_info_disc_vuln_feb16.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Cisco Video Communications Server Information Disclosure Vulnerability - Feb16
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:cisco:telepresence_video_communication_server_software";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806683");
-  script_version("$Revision: 11772 $");
+  script_version("$Revision: 14117 $");
   script_cve_id("CVE-2016-1316");
   script_bugtraq_id(82948);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-08 09:20:02 +0200 (Mon, 08 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-02-12 11:59:34 +0530 (Fri, 12 Feb 2016)");
   script_name("Cisco Video Communications Server Information Disclosure Vulnerability - Feb16");
 
@@ -54,9 +54,7 @@ if(description)
   Server (VCS) version X8.1 through X8.7 when used in conjunction with Jabber
   Guest.");
 
-  script_tag(name:"solution", value:"Update to version X8.8 or later. For details refer below links,
-
-  https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160208-vcs");
+  script_tag(name:"solution", value:"Update to version X8.8 or later. For details refer to the linked vendor advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

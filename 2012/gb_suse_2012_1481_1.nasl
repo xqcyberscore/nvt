@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_1481_1.nasl 14110 2019-03-12 09:28:23Z cfischer $
+# $Id: gb_suse_2012_1481_1.nasl 14114 2019-03-12 11:48:52Z cfischer $
 #
 # SuSE Update for opera openSUSE-SU-2012:1481-1 (opera)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850361");
-  script_version("$Revision: 14110 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-12 10:28:23 +0100 (Tue, 12 Mar 2019) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-12-13 17:01:18 +0530 (Thu, 13 Dec 2012)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -48,22 +48,22 @@ if(description)
   issues:
 
   - an issue that could cause Opera not to correctly check for
-  certificate revocation;
+  certificate revocation
 
   - an issue where CORS requests could incorrectly retrieve
-  contents of cross origin pages;
+  contents of cross origin pages
 
   - an issue where data URIs could be used to facilitate
-  Cross-Site Scripting;
+  Cross-Site Scripting
 
-  - a high severity issue, as reported by Gareth Heyes;
-  details will be disclosed at a later date
+  - a high severity issue, as reported by Gareth Heyes.
+  Details will be disclosed at a later date
 
   - an issue where specially crafted SVG images could allow
-  execution of arbitrary code;
+  execution of arbitrary code
 
   - a moderate severity issue, as reported by the Google
-  Security Group; details will be disclosed at a later date
+  Security Group. Details will be disclosed at a later date.
 
   Full changelog available at the references advisory.");
 

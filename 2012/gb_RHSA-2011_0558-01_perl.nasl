@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2011-May/msg00017.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870613");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-09 10:34:05 +0530 (Mon, 09 Jul 2012)");
   script_cve_id("CVE-2010-2761", "CVE-2010-4410", "CVE-2011-1487");
   script_tag(name:"cvss_base", value:"5.0");
@@ -74,10 +74,10 @@ if(description)
 
   This update also fixes the following bugs:
 
-  * When using the &quot;threads&quot; module, an attempt to send a signal to a thread
+  * When using the 'threads' module, an attempt to send a signal to a thread
   that did not have a signal handler specified caused the perl interpreter to
   terminate unexpectedly with a segmentation fault. With this update, the
-  &quot;threads&quot; module has been updated to upstream version 1.82, which fixes
+  'threads' module has been updated to upstream version 1.82, which fixes
   this bug. As a result, sending a signal to a thread that does not have the
   signal handler specified no longer causes perl to crash. (BZ#626330)
 
@@ -93,7 +93,7 @@ if(description)
   perl-Digest-SHA package as a dependency, and cpan no longer displays the
   above message. (BZ#640716)
 
-  * When using the &quot;threads&quot; module, continual  ...
+  * When using the 'threads' module, continual  ...
 
   Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"qod_type", value:"package");

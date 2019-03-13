@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-071.nasl 11876 2018-10-12 12:20:01Z cfischer $
+# $Id: gb_ms15-071.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Microsoft Windows NETLOGON Privilege Elevation Vulnerability (3068457)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805075");
-  script_version("$Revision: 11876 $");
+  script_version("$Revision: 14117 $");
   script_cve_id("CVE-2015-2374");
   script_bugtraq_id(75633);
   script_tag(name:"cvss_base", value:"3.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-07-15 09:12:11 +0530 (Wed, 15 Jul 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows NETLOGON Privilege Elevation Vulnerability (3068457)");
@@ -51,13 +51,15 @@ if(description)
   utilizing SMB Signing enforcement, and decrypt SMB3 communications intercepted.");
 
   script_tag(name:"affected", value:"Microsoft Windows Server 2012/R2
+
   Microsoft Windows 2003 x32/x64 Edition Service Pack 2 and prior
+
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior
+
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2 and prior.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the given link, https://technet.microsoft.com/library/security/MS15-071");
+  listed hotfixes or download and update mentioned hotfixes from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3068457");

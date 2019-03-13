@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2011-October/msg00008.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870503");
-  script_version("$Revision: 12382 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-10-21 16:31:29 +0200 (Fri, 21 Oct 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -64,7 +64,7 @@ if(description)
   with Blowfish using the PostgreSQL crypt() function, in a back-end
   PostgreSQL database. Unsafe processing can be re-enabled for specific
   passwords (allowing affected users to log in) by changing their hash prefix
-  to &quot;$2x$&quot;.
+  to '$2x$'.
 
   For Red Hat Enterprise Linux 6, the updated postgresql packages upgrade
   PostgreSQL to version 8.4.9. Refer to the PostgreSQL Release Notes for a

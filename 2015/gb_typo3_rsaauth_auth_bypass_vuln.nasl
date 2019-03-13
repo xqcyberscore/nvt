@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_rsaauth_auth_bypass_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_typo3_rsaauth_auth_bypass_vuln.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # TYPO3 'rsaauth' extension Authentication Bypass Vulnerability (SA-2015-001)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805295");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 14117 $");
   script_cve_id("CVE-2015-2047");
   script_bugtraq_id(72763);
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-03-02 18:06:26 +0530 (Mon, 02 Mar 2015)");
   script_name("TYPO3 'rsaauth' extension Authentication Bypass Vulnerability (SA-2015-001)");
 
@@ -53,8 +53,7 @@ if(description)
   through 4.4.15, 4.5.0 through 4.5.39, and 4.6.0 through 4.6.18");
 
   script_tag(name:"solution", value:"For 4.5.x series upgrade to TYPO3 version
-  4.5.40 or later, for 4.3.x, 4.4.x and 4.6.x apply the patch as provided in link,
-  http://typo3.org/teams/security/security-bulletins/typo3-core/typo3-core-sa-2015-001");
+  4.5.40 or later, for 4.3.x, 4.4.x and 4.6.x apply the patch as provided in the referenced vendor bulletin.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

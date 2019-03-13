@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: freebsd_linux-f10-flashplugin2.nasl 11762 2018-10-05 10:54:12Z cfischer $
+# $Id: freebsd_linux-f10-flashplugin2.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Auto generated from VID 20923a0d-82ba-11e1-8d7b-003067b2972c
 #
@@ -32,8 +32,8 @@ if(description)
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2012-0724", "CVE-2012-0725", "CVE-2012-0772", "CVE-2012-0773");
-  script_version("$Revision: 11762 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 14117 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-04-30 07:59:26 -0400 (Mon, 30 Apr 2012)");
   script_name("FreeBSD Ports: linux-f10-flashplugin");
   script_category(ACT_GATHER_INFO);
@@ -62,9 +62,9 @@ which allow attackers to execute arbitrary code or cause a denial of
 service (memory corruption) via unknown vectors.
 CVE-2012-0773
 The NetStream class in Adobe Flash Player before 10.3.183.18 and 11.x
-before 11.2.202.228 on Windows, Mac OS X, and Linux; Flash Player
-before 10.3.183.18 and 11.x before 11.2.202.223 on Solaris; Flash
-Player before 11.1.111.8 on Android 2.x and 3.x; and AIR before
+before 11.2.202.228 on Windows, Mac OS X, and Linux, Flash Player
+before 10.3.183.18 and 11.x before 11.2.202.223 on Solaris, Flash
+Player before 11.1.111.8 on Android 2.x and 3.x, and AIR before
 3.2.0.2070 allows attackers to execute arbitrary code or cause a
 denial of service (memory corruption) via unspecified vectors.");
 

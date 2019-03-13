@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-136_ms_sql_remote.nasl 11702 2018-10-01 07:31:38Z asteins $
+# $Id: gb_ms16-136_ms_sql_remote.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Microsoft SQL Server Multiple Vulnerabilities (3199641)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:microsoft:sql_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809096");
-  script_version("$Revision: 11702 $");
+  script_version("$Revision: 14117 $");
   script_cve_id("CVE-2016-7249", "CVE-2016-7250", "CVE-2016-7251", "CVE-2016-7252",
 		"CVE-2016-7253", "CVE-2016-7254");
   script_bugtraq_id(94037, 94060, 94043, 94050, 94061, 94056);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-11-14 15:30:37 +0530 (Mon, 14 Nov 2016)");
   script_name("Microsoft SQL Server Multiple Vulnerabilities (3199641)");
 
@@ -72,8 +72,7 @@ if(description)
   Microsoft SQL Server 2016 x64 Edition.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from this link, https://technet.microsoft.com/library/security/MS16-136");
+  listed hotfixes or download and update mentioned hotfixes from the referenced avdisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

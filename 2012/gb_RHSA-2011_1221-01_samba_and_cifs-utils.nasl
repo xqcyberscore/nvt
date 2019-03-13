@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2011-August/msg00023.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870708");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-09 10:51:10 +0530 (Mon, 09 Jul 2012)");
   script_cve_id("CVE-2011-1678", "CVE-2011-2522", "CVE-2011-2694",
                 "CVE-2011-2724", "CVE-2010-0547");
@@ -88,8 +88,8 @@ if(description)
 
   This update also fixes the following bug:
 
-  * If plain text passwords were used (&quot;encrypt passwords = no&quot; in
-  &quot;/etc/samba/smb.conf&quot;), Samba clients running the Windows XP or Windows
+  * If plain text passwords were used ('encrypt passwords = no' in
+  '/etc/samba/smb.conf'), Samba clients running the Windows XP or Windows
   Server 2003 operating system may not have been able to access Samba shares
   after installing the Micros ...
 

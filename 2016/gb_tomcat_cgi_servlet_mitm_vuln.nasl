@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808629");
-  script_version("$Revision: 11569 $");
+  script_version("$Revision: 14117 $");
   script_cve_id("CVE-2016-5388");
   script_bugtraq_id(91818);
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-24 12:29:54 +0200 (Mon, 24 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-08-02 11:10:26 +0530 (Tue, 02 Aug 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache Tomcat 'CGI Servlet' Man-in-the-Middle Vulnerability");
@@ -54,10 +54,9 @@ if(description)
 
   script_tag(name:"affected", value:"Apache Tomcat versions 8.5.4 and prior.");
 
-  script_tag(name:"solution", value:"Information is available about a
-  configuration or deployment scenario that helps to reduce the risk of the
-  vulnerability.
-  https://www.apache.org/security/asf-httpoxy-response.txt");
+  script_tag(name:"solution", value:"Information is available and linked in the references
+  about a configuration or deployment scenario that helps to reduce the risk of the
+  vulnerability.");
 
   script_tag(name:"solution_type", value:"Mitigation");
 
@@ -70,9 +69,9 @@ if(description)
   script_dependencies("gb_apache_tomcat_detect.nasl");
   script_mandatory_keys("ApacheTomcat/installed");
   script_require_ports("Services/www", 8080);
+
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2012-February/msg00056.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870550");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-02-21 18:56:37 +0530 (Tue, 21 Feb 2012)");
   script_cve_id("CVE-2010-0424");
   script_tag(name:"cvss_base", value:"3.3");
@@ -71,9 +71,9 @@ if(description)
   been applied to address this problem and invalid entries in the cron job
   files now produce warning messages. (BZ#460070)
 
-  * Previously, the &quot;@reboot&quot; crontab macro incorrectly ran jobs when the
+  * Previously, the '@reboot' crontab macro incorrectly ran jobs when the
   crond daemon was restarted. If the user used the macro on multiple
-  machines, all entries with the &quot;@reboot&quot; option were executed every time
+  machines, all entries with the '@reboot' option were executed every time
   the crond daemon was restarted. With this update, jobs are executed only
   when the machine is rebooted. (BZ#476972)
 
@@ -81,9 +81,9 @@ if(description)
   (PIE), which enhances the security of the system. (BZ#480930)
 
   * When the parent crond daemon was stopped, but a child crond daemon was
-  running (executing a program), the &quot;service crond status&quot; command
+  running (executing a program), the 'service crond status' command
   incorrectly reported that crond was running. The source code has been
-  modified, and the &quot;service crond status&quot; command now correctly reports that
+  modified, and the 'service crond status' command now correctly reports that
   crond is stopped. (BZ#529632)
 
   * According to the pam(8) manual page, the cron daemon, crond, supports

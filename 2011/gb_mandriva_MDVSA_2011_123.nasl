@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.mandriva.com/security-announce/2011-08/msg00005.php");
   script_oid("1.3.6.1.4.1.25623.1.0.831438");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-18 14:57:45 +0200 (Thu, 18 Aug 2011)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -56,7 +56,7 @@ if(description)
   Multiple cross-site scripting (XSS) vulnerabilities in SquirrelMail
   1.4.21 and earlier allow remote attackers to inject arbitrary
   web script or HTML via vectors involving (1) drop-down selection
-  lists, (2) the &amp;gt; (greater than) character in the SquirrelSpell
+  lists, (2) the > (greater than) character in the SquirrelSpell
   spellchecking plugin, and (3) errors associated with the Index Order
   (aka options_order) page (CVE-2010-4555).
 

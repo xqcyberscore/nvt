@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.mandriva.com/security-announce/2011-11/msg00001.php");
   script_oid("1.3.6.1.4.1.25623.1.0.831481");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-11-03 12:22:48 +0100 (Thu, 03 Nov 2011)");
   script_xref(name:"MDVSA", value:"2011:163");
   script_tag(name:"cvss_base", value:"7.5");
@@ -49,7 +49,7 @@ if(description)
 
   Input appended to the URL in cmd.php \(when cmd is set to _debug\)
   is not properly sanitised before being returned to the user. This can
-  be exploited to execute arbitrary HTML and script code in a user&amp;#039;s
+  be exploited to execute arbitrary HTML and script code in a user's
   browser session in context of an affected site (CVE-2011-4074).
 
   Input passed to the orderby parameter in cmd.php \(when cmd is set

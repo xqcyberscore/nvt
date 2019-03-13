@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2012-June/msg00036.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870775");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-06-22 10:26:29 +0530 (Fri, 22 Jun 2012)");
   script_tag(name:"cvss_base", value:"1.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:N/A:N");
@@ -74,13 +74,13 @@ if(description)
   * Prior to this update, absolute input devices, like the stylus of a
   graphic tablet, could become unresponsive in the right-most or bottom-most
   screen if the X server was configured as a multi-screen setup through
-  multiple &quot;Device&quot; sections in the xorg.conf file. This update changes the
+  multiple 'Device' sections in the xorg.conf file. This update changes the
   screen crossing behavior so that absolute devices are always mapped across
   all screens. (BZ#732467)
 
-  * Prior to this update, the misleading message &quot;Session active, not
+  * Prior to this update, the misleading message 'Session active, not
   inhibited, screen idle. If you see this test, your display server is broken
-  and you should notify your distributor.&quot; could be displayed after resuming
+  and you should notify your distributor.' could be displayed after resuming
   the system or re-enabling the display, and included a URL to an external
   web page. This update removes this message. (BZ#748704)
 

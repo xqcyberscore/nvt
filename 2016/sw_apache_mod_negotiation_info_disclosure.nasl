@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_apache_mod_negotiation_info_disclosure.nasl 13679 2019-02-15 08:20:11Z cfischer $
+# $Id: sw_apache_mod_negotiation_info_disclosure.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Apache mod_negotiation MultiViews Information Disclosure
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111109");
-  script_version("$Revision: 13679 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-15 09:20:11 +0100 (Fri, 15 Feb 2019) $");
+  script_version("$Revision: 14117 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-07-06 16:00:00 +0200 (Wed, 06 Jul 2016)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -47,7 +47,7 @@ if(description)
   script_tag(name:"summary", value:"The script attempts to identify if the Apache webserver is prone to an
   information disclosure vulnerability.");
 
-  script_tag(name:"insight", value:"By requesting an invalid 'application/vttest; q=1.0' Accept: header the webserver is
+  script_tag(name:"insight", value:"By requesting an invalid 'application/vttest<semicolon> q=1.0' Accept: header the webserver is
   replying with a list of alternative files which exists in the webservers directory. See the reference for more
   background information.");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_glassfish_admin_console_auth_bypass_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: gb_oracle_glassfish_admin_console_auth_bypass_vuln.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Oracle GlassFish Server Administration Console Authentication Bypass Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802411");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 14117 $");
   script_cve_id("CVE-2011-1511");
   script_bugtraq_id(47818);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-01-06 14:03:19 +0530 (Fri, 06 Jan 2012)");
 
   script_name("Oracle GlassFish Server Administration Console Authentication Bypass Vulnerability");
@@ -49,19 +49,18 @@ if(description)
   script_mandatory_keys("GlassFish/installed", "GlassFishAdminConsole/port");
 
   script_tag(name:"impact", value:"Successful exploitation could allow local attackers to access sensitive data
-on the server without being authenticated, by making 'TRACE' requests against the Administration Console.");
+  on the server without being authenticated, by making 'TRACE' requests against the Administration Console.");
 
   script_tag(name:"affected", value:"Oracle GlassFish version 3.0.1 and prior.");
 
   script_tag(name:"insight", value:"The flaw is due to an error in Administration Console, when handling HTTP
-requests using the 'TRACE' method. A remote unauthenticated attacker can get access to the content of restricted
-pages in the Administration Console and also an attacker can create a new Glassfish administrator.");
+  requests using the 'TRACE' method. A remote unauthenticated attacker can get access to the content of restricted
+  pages in the Administration Console and also an attacker can create a new Glassfish administrator.");
 
-  script_tag(name:"solution", value:"Upgrade to Oracle GlassFish 3.1 or later, For updated refer,
-http://glassfish.java.net/downloads/3.1-final.html");
+  script_tag(name:"solution", value:"Upgrade to Oracle GlassFish 3.1 or later.");
 
   script_tag(name:"summary", value:"The host is running Oracle GlassFish Server and is prone to security bypass
-vulnerability.");
+  vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");

@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.mandriva.com/security-announce/2011-09/msg00005.php");
   script_oid("1.3.6.1.4.1.25623.1.0.831451");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-09-12 16:29:49 +0200 (Mon, 12 Sep 2011)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -61,7 +61,7 @@ if(description)
   (CVE-2011-2485).
 
   Certain characters in the nicknames of IRC users can trigger a
-  null pointer dereference in the IRC protocol plugin&amp;#039;s handling of
+  null pointer dereference in the IRC protocol plugin's handling of
   responses to WHO requests. This can cause a crash on some operating
   systems. Clients based on libpurple 2.8.0 through 2.9.0 are affected
   (CVE-2011-2943).
@@ -69,7 +69,7 @@ if(description)
   Incorrect handling of HTTP 100 responses in the MSN protocol plugin
   can cause the application to attempt to access memory that it does
   not have access to. This only affects users who have turned on the
-  HTTP connection method for their accounts (it&amp;#039;s off by default). This
+  HTTP connection method for their accounts (it's off by default). This
   might only be triggerable by a malicious server and not a malicious
   peer. We believe remote code execution is not possible (CVE-2011-3184).
 

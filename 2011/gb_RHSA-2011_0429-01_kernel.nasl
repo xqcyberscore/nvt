@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2011-April/msg00012.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870423");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-04-19 07:58:39 +0200 (Tue, 19 Apr 2011)");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
@@ -83,8 +83,8 @@ if(description)
   a denial of service by mounting a disk that contains specially-crafted
   partitions. (CVE-2011-1010, Low)
 
-  Red Hat would like to thank Ryan Sweat for reporting CVE-2011-1478; Tavis
-  Ormandy for reporting CVE-2010-4346; and Timo Warns for reporting
+  Red Hat would like to thank Ryan Sweat for reporting CVE-2011-1478, Tavis
+  Ormandy for reporting CVE-2010-4346, and Timo Warns for reporting
   CVE-2011-1010.
 
   This update also fixes several bugs. Documentation for these bug fixes will

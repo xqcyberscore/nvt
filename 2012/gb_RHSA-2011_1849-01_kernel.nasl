@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2011-December/msg00044.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870737");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-09 10:58:21 +0530 (Mon, 09 Jul 2012)");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
@@ -89,10 +89,10 @@ if(description)
   (HPET_Tn_CMP). Consequently, the timers were overdue for up to several
   minutes. Now, a comparison is performed between the value of the counter
   and the comparator in the HPET code. If the counter is beyond the
-  comparator, the &quot;-ETIME&quot; error code is returned. (BZ#756426)
+  comparator, the '-ETIME' error code is returned. (BZ#756426)
 
   * Index allocation in the virtio-blk module was based on a monotonically
-  increasing variable &quot;index&quot;. Consequently, released indexes were not reused
+  increasing variable 'index'. Consequently, released indexes were not reused
   and after a period of time, no new were available. Now, virtio-blk uses the
   ida A ...
 

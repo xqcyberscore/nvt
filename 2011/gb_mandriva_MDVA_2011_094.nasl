@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.mandriva.com/security-announce/2011-12/msg00020.php");
   script_oid("1.3.6.1.4.1.25623.1.0.831510");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-12-23 10:36:07 +0530 (Fri, 23 Dec 2011)");
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
@@ -50,10 +50,10 @@ if(description)
   that addresses the following issue(s):
 
   sys.platform should return the name of the platform where the python
-  binary had been built. It usually returns &amp;#039;linux2&amp;#039
+  binary had been built. It usually returns 'linux2'.
   However since the kernel has increased its major number to 3, building
   python on platforms running those new kernels would make sys.platform
-  return &amp;#039;linux3&amp;#039; (#64889).");
+  return 'linux3' (#64889).");
   script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");

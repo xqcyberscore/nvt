@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: policy_file_checksums_win.nasl 10563 2018-07-22 10:40:42Z cfischer $
+# $Id: policy_file_checksums_win.nasl 14126 2019-03-13 07:32:09Z cfischer $
 #
 # Check for File Checksum Violations in Windows
 #
@@ -28,11 +28,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96180");
-  script_version("$Revision: 10563 $");
+  script_version("$Revision: 14126 $");
   script_name("Windows file Checksums");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-22 12:40:42 +0200 (Sun, 22 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 08:32:09 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-07-02 10:55:14 +0530 (Tue, 02 Jul 2013)");
   script_category(ACT_GATHER_INFO);
   script_family("Policy");
@@ -43,6 +43,8 @@ if(description)
   script_exclude_keys("SMB/samba");
 
   script_xref(name:"URL", value:"http://docs.greenbone.net/GSM-Manual/gos-4/en/compliance.html#file-checksums");
+  script_xref(name:"URL", value:"http://sourceforge.net/projects/rehash/files/rehash/0.2/rehash-0.2-src.zip/download");
+  script_xref(name:"URL", value:"http://sourceforge.net/projects/rehash/files/rehash/0.2/rehash-0.2-win.zip/download");
 
   script_add_preference(name:"List all and not only the first 100 entries", type:"checkbox", value:"no");
 
@@ -64,9 +66,7 @@ if(description)
 
   License of the application rehash.exe: BSD 2-Clause License
 
-  Sourcecode for the application rehash.exe: http://sourceforge.net/projects/rehash/files/rehash/0.2/rehash-0.2-src.zip/download
-
-  Binary for the application rehash.exe: http://sourceforge.net/projects/rehash/files/rehash/0.2/rehash-0.2-win.zip/download");
+  Sourcecode and Binary for the application rehash.exe are linked within the references.");
 
   script_tag(name:"qod", value:"98"); # direct authenticated file analysis is pretty reliable
 

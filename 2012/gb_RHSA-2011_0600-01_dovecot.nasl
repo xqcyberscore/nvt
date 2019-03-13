@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2011-May/msg00022.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870607");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-06-06 10:33:45 +0530 (Wed, 06 Jun 2012)");
   script_cve_id("CVE-2010-3707", "CVE-2010-3780");
   script_tag(name:"cvss_base", value:"5.5");
@@ -62,8 +62,8 @@ if(description)
   This update also adds the following enhancement:
 
   * This erratum upgrades Dovecot to upstream version 2.0.9, providing
-  multiple fixes for the &quot;dsync&quot; utility and improving overall performance.
-  Refer to the &quot;/usr/share/doc/dovecot-2.0.9/ChangeLog&quot; file after installing
+  multiple fixes for the 'dsync' utility and improving overall performance.
+  Refer to the '/usr/share/doc/dovecot-2.0.9/ChangeLog' file after installing
   this update for further information about the changes. (BZ#637056)
 
   Users of dovecot are advised to upgrade to these updated packages, which

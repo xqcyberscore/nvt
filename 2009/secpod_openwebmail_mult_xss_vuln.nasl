@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_openwebmail_mult_xss_vuln.nasl 14031 2019-03-07 10:47:29Z cfischer $
+# $Id: secpod_openwebmail_mult_xss_vuln.nasl 14121 2019-03-13 06:21:23Z ckuersteiner $
 #
 # OpenWebMail Multiple XSS Vulnerabilities
 #
@@ -29,14 +29,16 @@ CPE = "cpe:/a:openwebmail.acatysmoof:openwebmail";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900943");
-  script_version("$Revision: 14031 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-07 11:47:29 +0100 (Thu, 07 Mar 2019) $");
+  script_version("$Revision: 14121 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 07:21:23 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-09-22 10:03:41 +0200 (Tue, 22 Sep 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_cve_id("CVE-2008-7202");
   script_bugtraq_id(25175);
+
   script_name("OpenWebMail Multiple XSS Vulnerabilities");
+
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Web application abuses");

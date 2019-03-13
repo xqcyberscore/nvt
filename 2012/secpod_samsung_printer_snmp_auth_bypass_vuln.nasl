@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_samsung_printer_snmp_auth_bypass_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: secpod_samsung_printer_snmp_auth_bypass_vuln.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Samsung Printer SNMP Hardcoded Community String Authentication Bypass Vulnerability
 #
@@ -28,12 +28,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902935");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 14117 $");
   script_cve_id("CVE-2012-4964");
   script_bugtraq_id(56692);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-11-28 13:37:22 +0530 (Wed, 28 Nov 2012)");
   script_name("Samsung Printer SNMP Hardcoded Community String Authentication Bypass Vulnerability");
   script_category(ACT_ATTACK);
@@ -55,8 +55,7 @@ if(description)
   contain a hardcoded SNMP full read-write community string that remains
   active even when SNMP is disabled in the printer management utility.");
 
-  script_tag(name:"solution", value:"Upgrade Samsung Printer to 20121031 or later,
-  http://www.samsung.com/in/consumer/pc-peripherals-printer/laser-printer-multifunction/");
+  script_tag(name:"solution", value:"Upgrade Samsung Printer to 20121031 or later.");
 
   script_tag(name:"summary", value:"This host has Samsung Printer firmware and is prone to authentication bypass
   vulnerability.");

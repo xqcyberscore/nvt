@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2011-August/msg00026.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870476");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-09-07 08:58:04 +0200 (Wed, 07 Sep 2011)");
   script_tag(name:"cvss_base", value:"3.3");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:N");
@@ -50,7 +50,7 @@ if(description)
   released as a Technology Preview for Red Hat Enterprise Linux 5 and 6.
 
   The setuid mount.ecryptfs_private utility allows users to mount an eCryptfs
-  file system. This utility can only be run by users in the &quot;ecryptfs&quot; group.
+  file system. This utility can only be run by users in the 'ecryptfs' group.
 
   A race condition flaw was found in the way mount.ecryptfs_private checked
   the permissions of a requested mount point when mounting an encrypted file
@@ -88,9 +88,9 @@ if(description)
   Red Hat would like to thank the Ubuntu Security Team for reporting these
   issues. The Ubuntu Security Team acknowledges Vasiliy Kulikov of Openwall
   and Dan Rosenberg as the original reporters of CVE-2011-1831,
-  CVE-2011-1832, and CVE-2011-1833; Dan Rosenberg and Marc Deslauriers as the
-  original reporters of CVE-2011-1834; Marc Deslauriers as the original
-  reporter of CVE-2011-1835; and Vasiliy Kulikov of Openwall as the original
+  CVE-2011-1832, and CVE-2011-1833, Dan Rosenberg and Marc Deslauriers as the
+  original reporters of CVE-2011-1834, Marc Deslauriers as the original
+  reporter of CVE-2011-1835, and Vasiliy Kulikov of Openwall as the original
   reporter of CVE-2011-1837.
 
   Users of ecryptfs-utils are advised to upgrade to these updated packages,

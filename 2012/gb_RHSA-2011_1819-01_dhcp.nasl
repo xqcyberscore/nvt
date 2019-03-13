@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2011-December/msg00038.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870728");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-09 10:55:47 +0530 (Mon, 09 Jul 2012)");
   script_cve_id("CVE-2011-4539");
   script_tag(name:"cvss_base", value:"5.0");
@@ -54,7 +54,7 @@ if(description)
 
   A denial of service flaw was found in the way the dhcpd daemon handled DHCP
   request packets when regular expression matching was used in
-  &quot;/etc/dhcp/dhcpd.conf&quot;. A remote attacker could use this flaw to crash
+  '/etc/dhcp/dhcpd.conf'. A remote attacker could use this flaw to crash
   dhcpd. (CVE-2011-4539)
 
   Users of DHCP should upgrade to these updated packages, which contain a

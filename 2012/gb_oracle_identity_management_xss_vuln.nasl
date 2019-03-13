@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_identity_management_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_oracle_identity_management_xss_vuln.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Oracle Identity Management 'username' Cross Site Scripting Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802465");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 14117 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-10-05 15:31:43 +0530 (Fri, 05 Oct 2012)");
   script_name("Oracle Identity Management 'username' Cross Site Scripting Vulnerability");
 
@@ -53,8 +53,8 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to improper validation of user-supplied input
   passed to 'username' parameter via POST method through
   '/usermanagement/forgotpassword/index.jsp' script.");
-  script_tag(name:"solution", value:"Update to version 10.1.4.3 or later,
-  http://www.oracle.com/us/products/middleware/identity-management/overview/index.html");
+  script_tag(name:"solution", value:"Update to version 10.1.4.3 or later.");
+
   script_tag(name:"summary", value:"This host is running Oracle Identity Management and is prone to
   cross site scripting vulnerability.");
 

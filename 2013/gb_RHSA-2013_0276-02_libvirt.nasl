@@ -53,12 +53,12 @@ if(description)
 
   All users of libvirt are advised to upgrade to these updated packages,
   which fix these issues and add these enhancements. After installing the
-  updated packages, libvirtd must be restarted (&quot;service libvirtd restart&quot;)
+  updated packages, libvirtd must be restarted ('service libvirtd restart')
   for this update to take effect.");
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2013-February/msg00040.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870932");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-02-22 10:02:16 +0530 (Fri, 22 Feb 2013)");
   script_cve_id("CVE-2012-3411");
   script_bugtraq_id(54353);

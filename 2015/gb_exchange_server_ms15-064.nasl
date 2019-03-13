@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_exchange_server_ms15-064.nasl 11612 2018-09-26 05:47:26Z cfischer $
+# $Id: gb_exchange_server_ms15-064.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Microsoft Exchange Server Privilege Escalation Vulnerability (3062157)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:exchange_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805198");
-  script_version("$Revision: 11612 $");
+  script_version("$Revision: 14117 $");
   script_cve_id("CVE-2015-1764", "CVE-2015-1771", "CVE-2015-2359");
   script_bugtraq_id(75007, 75011, 75013);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 07:47:26 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-06-10 10:26:35 +0530 (Wed, 10 Jun 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Exchange Server Privilege Escalation Vulnerability (3062157)");
@@ -53,11 +53,11 @@ if(description)
   running on these host systems and exploit host-based authentication services.");
 
   script_tag(name:"affected", value:"Microsoft Exchange Server 2013 SP1
+
   and Microsoft Exchange Server 2013 Cumulative Update 8");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed
-  hotfixes or download and update mentioned hotfixes in the advisory from the
-  link, https://technet.microsoft.com/library/security/MS15-064");
+  hotfixes or download and update mentioned hotfixes from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

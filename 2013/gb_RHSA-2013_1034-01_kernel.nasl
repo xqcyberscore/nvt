@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871016");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-07-11 10:26:51 +0530 (Thu, 11 Jul 2013)");
   script_cve_id("CVE-2012-6544", "CVE-2012-6545", "CVE-2013-0914", "CVE-2013-1929",
                 "CVE-2013-3222", "CVE-2013-3224", "CVE-2013-3231", "CVE-2013-3235");
@@ -79,7 +79,7 @@ if(description)
 
   * Previously, the kernel's futex wait code used timeouts that had
   granularity in milliseconds. Also, when passing these timeouts to system
-  calls, the kernel converted the timeouts to &quot;jiffies&quot;. Consequently,
+  calls, the kernel converted the timeouts to 'jiffies'. Consequently,
   programs could time out inaccurately which could lead to significant
   latency problems in certain environments. This update modifies the futex
   wait code to use a high-resolution timer (hrtimer) so the timeout

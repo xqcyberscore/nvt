@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_policy_cpe_violation.nasl 10958 2018-08-14 13:49:12Z cfischer $
+# $Id: gb_policy_cpe_violation.nasl 14125 2019-03-13 07:18:45Z cfischer $
 #
 # CPE-based Policy Check Violations
 #
@@ -30,7 +30,7 @@
 include("misc_func.inc");
 include("version_func.inc");
 
-# nb: includes in the description phase won't work anymore from GOS 4.2.11 (OpenVAS TBD)
+# nb: includes in the description phase won't work anymore from GOS 4.2.11 (GVM TBD)
 # onwards so checking for the defined_func and default to TRUE below if the funcs are undefined
 if( defined_func( "get_local_gos_version" ) &&
     defined_func( "version_is_greater_equal" ) ) {
@@ -55,9 +55,9 @@ if(description)
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   }
-  script_version("$Revision: 10958 $");
+  script_version("$Revision: 14125 $");
   script_name("CPE-based Policy Check Violations");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 15:49:12 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 08:18:45 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-01-06 11:43:01 +0700 (Mon, 06 Jan 2014)");
   script_category(ACT_END);
   script_family("Policy");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: alas-2016-724.nasl 11703 2018-10-01 08:05:31Z cfischer $
+# $Id: alas-2016-724.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Amazon Linux security check
 #
@@ -27,11 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.120713");
-  script_version("$Revision: 11703 $");
+  script_version("$Revision: 14117 $");
   script_tag(name:"creation_date", value:"2016-10-26 15:38:16 +0300 (Wed, 26 Oct 2016)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 10:05:31 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_name("Amazon Linux Local Check: alas-2016-724");
-  script_tag(name:"insight", value:"It was found that Python's httplib library (used urllib, urllib2 and others) did not properly check HTTP header input in HTTPConnection.putheader(). An attacker could use this flow to inject additional headers in a Python application that allows user provided header name or values. (CVE-2016-5699 )It was found that Python's smtplib library did not return an exception if StartTLS fails to establish correctly in the SMTP.starttls() function. An attacker with ability to launch an active man in the middle attack could strip out the STARTTLS command without generating an exception on the python SMTP client application, preventing the establishment of the TLS layer. (CVE-2016-0772 )A vulnerability was discovered in Python, in the built-in zipimporter.  A specially crafted zip file placed in a module path such that it would be loaded by a later &quot;import&quot; statement could cause a heap overflow, leading to arbitrary code execution. (CVE-2016-5636 )");
+  script_tag(name:"insight", value:"It was found that Python's httplib library (used urllib, urllib2 and others) did not properly
+  check HTTP header input in HTTPConnection.putheader(). An attacker could use this flow to inject additional headers in a Python
+  application that allows user provided header name or values. (CVE-2016-5699 )It was found that Python's smtplib library did not
+  return an exception if StartTLS fails to establish correctly in the SMTP.starttls() function. An attacker with ability to launch
+  an active man in the middle attack could strip out the STARTTLS command without generating an exception on the python SMTP client
+  application, preventing the establishment of the TLS layer. (CVE-2016-0772 )A vulnerability was discovered in Python, in the built-in zipimporter.
+  A specially crafted zip file placed in a module path such that it would be loaded by a later 'import' statement could cause a heap overflow,
+  leading to arbitrary code execution. (CVE-2016-5636 )");
   script_tag(name:"solution", value:"Run yum update python26 to update your system.
                                     Run yum update python27 to update your system.
                                     Run yum update python34 to update your system.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_0583_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_suse_2012_0583_1.nasl 14114 2019-03-12 11:48:52Z cfischer $
 #
 # SuSE Update for update openSUSE-SU-2012:0583-1 (update)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850252");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-12-13 17:02:02 +0530 (Thu, 13 Dec 2012)");
   script_cve_id("CVE-2012-2111");
   script_tag(name:"cvss_base", value:"6.5");
@@ -44,19 +44,19 @@ if(description)
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=(openSUSE11\.4|openSUSE12\.1)");
   script_tag(name:"affected", value:"update on openSUSE 12.1, openSUSE 11.4");
-  script_tag(name:"insight", value:"- docs-xml: fix default name resolve order; (bso#7564).
+  script_tag(name:"insight", value:"- docs-xml: fix default name resolve order (bso#7564).
 
-  - s3-aio-fork: Fix a segfault in vfs_aio_fork; (bso#8836).
+  - s3-aio-fork: Fix a segfault in vfs_aio_fork (bso#8836).
 
-  - docs: remove whitespace in example samba.ldif; (bso#8789).
+  - docs: remove whitespace in example samba.ldif (bso#8789).
 
   - s3-smbd: move print_backend_init() behind
-  init_system_info(); (bso#8845).
+  init_system_info() (bso#8845).
 
-  - s3-docs: Prepend '/' to filename argument; (bso#8826).
+  - s3-docs: Prepend '/' to filename argument (bso#8826).
 
   - Restrict self granting privileges where security=ads for
-  Samba post-3.3.16; CVE-2012-2111; (bnc#757576).");
+  Samba post-3.3.16, CVE-2012-2111 (bnc#757576).");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_tag(name:"qod_type", value:"package");

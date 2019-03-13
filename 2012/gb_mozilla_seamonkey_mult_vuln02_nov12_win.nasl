@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_seamonkey_mult_vuln02_nov12_win.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: gb_mozilla_seamonkey_mult_vuln02_nov12_win.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Mozilla SeaMonkey Multiple Vulnerabilities-02 November12 (Windows)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803353");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 14117 $");
   script_cve_id("CVE-2012-4212", "CVE-2012-4213", "CVE-2012-4217", "CVE-2012-4217",
                 "CVE-2012-4204", "CVE-2012-4205", "CVE-2012-4208", "CVE-2012-5843",
                 "CVE-2012-5836", "CVE-2012-5838");
@@ -35,7 +35,7 @@ if(description)
                     56631, 56636, 56642, 56637, 56635);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-11-26 12:30:03 +0530 (Mon, 26 Nov 2012)");
   script_name("Mozilla SeaMonkey Multiple Vulnerabilities-02 November12 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51358");
@@ -54,8 +54,7 @@ if(description)
   script_dependencies("gb_seamonkey_detect_win.nasl");
   script_mandatory_keys("Seamonkey/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to inject scripts, bypass
-  certain security restrictions, execute arbitrary code in the context of the
-  browser.");
+  certain security restrictions, execute arbitrary code in the context of the browser.");
   script_tag(name:"affected", value:"SeaMonkey version before 2.14 on Windows");
   script_tag(name:"insight", value:"Multiple error exists
 
@@ -66,8 +65,8 @@ if(description)
 
   - Within 'str_unescape' in the Javascript engin and in 'XMLHttpRequest'
     objects created within sandboxes.");
-  script_tag(name:"solution", value:"Upgrade to SeaMonkey version to 2.14 or later,
-  http://www.mozilla.org/projects/seamonkey");
+  script_tag(name:"solution", value:"Upgrade to SeaMonkey version to 2.14 or later.");
+
   script_tag(name:"summary", value:"This host is installed with Mozilla Seamonkey and is prone to multiple
   vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");

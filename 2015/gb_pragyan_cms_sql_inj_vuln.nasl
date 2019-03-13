@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pragyan_cms_sql_inj_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_pragyan_cms_sql_inj_vuln.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Pragyan CMS SQL Injection Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805159");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 14117 $");
   script_cve_id("CVE-2015-1471");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-04-03 11:17:18 +0530 (Fri, 03 Apr 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Pragyan CMS SQL Injection Vulnerability");
@@ -54,15 +54,15 @@ if(description)
   may also be affected.");
 
   script_tag(name:"solution", value:"As a workaround locate the file
-  userprofile.lib.php and use the patch provided in the following link
-  http://pastebin.com/ip2gGYuS");
+  userprofile.lib.php and use the patch provided in the referenced link.");
+
+  script_xref(name:"URL", value:"http://pastebin.com/ip2gGYuS");
 
   script_tag(name:"solution_type", value:"Mitigation");
   script_xref(name:"URL", value:"http://seclists.org/oss-sec/2015/q1/402");
   script_xref(name:"URL", value:"https://github.com/delta/pragyan/issues/206");
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2015/Feb/18");
-# 2016-06-21: 404
-#  script_xref(name:"URL", value:"http://sroesemann.blogspot.de/2015/01/sroeadv-2015-11.html");
+  script_xref(name:"URL", value:"http://sroesemann.blogspot.de/2015/01/sroeadv-2015-11.html");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

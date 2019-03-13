@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_0039_2.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_suse_2012_0039_2.nasl 14114 2019-03-12 11:48:52Z cfischer $
 #
 # SuSE Update for MozillaFirefox openSUSE-SU-2012:0039-2 (MozillaFirefox)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850177");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-08-02 20:16:05 +0530 (Thu, 02 Aug 2012)");
   script_cve_id("CVE-2011-3658", "CVE-2011-3660", "CVE-2011-3661", "CVE-2011-3663", "CVE-2011-3665");
   script_tag(name:"cvss_base", value:"10.0");
@@ -59,7 +59,7 @@ if(description)
   * MFSA 2011-56/CVE-2011-3663: Key detection without
   JavaScript via SVG animation
 
-  * MFSA 2011-58/CVE-2011-3665: Crash scaling &lt;video&gt; to
+  * MFSA 2011-58/CVE-2011-3665: Crash scaling <video> to
   extreme sizes
 
 

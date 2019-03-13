@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2011-May/msg00019.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870642");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-06-06 10:38:49 +0530 (Wed, 06 Jun 2012)");
   script_cve_id("CVE-2010-4647");
   script_tag(name:"cvss_base", value:"4.3");
@@ -129,7 +129,7 @@ if(description)
 
   This update also fixes the following bugs:
 
-  * Incorrect URIs for GNU Tools in the &quot;Help Contents&quot; window have been
+  * Incorrect URIs for GNU Tools in the 'Help Contents' window have been
   fixed. (BZ#622713)
 
   * The profiling of binaries did not work if an Eclipse project was not in

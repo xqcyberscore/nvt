@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_prdts_activex_mult_vuln.nasl 11706 2018-10-01 09:48:48Z cfischer $
+# $Id: gb_cisco_prdts_activex_mult_vuln.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Cisco Products ActiveX Control Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802459");
-  script_version("$Revision: 11706 $");
+  script_version("$Revision: 14117 $");
   script_cve_id("CVE-2012-2493", "CVE-2012-2494", "CVE-2012-2495");
   script_bugtraq_id(54107, 54108);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 11:48:48 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-09-12 13:30:28 +0530 (Wed, 12 Sep 2012)");
   script_name("Cisco Products ActiveX Control Multiple Vulnerabilities");
 
@@ -73,8 +73,7 @@ if(description)
   Cisco ActiveX controls and is prone to multiple vulnerabilities.");
 
   script_tag(name:"solution", value:"Upgrade to AnyConnect 3.0 MR8 (3.0.08057), Hostscan 3.0 MR8 (3.0.08062)
-  and Cisco Secure Desktop 3.6.6020 or later,
-  http://www.cisco.com/
+  and Cisco Secure Desktop 3.6.6020 or later.
 
   Workaround:
   Set the killbit for the following CLSIDs:
@@ -104,7 +103,6 @@ if(!get_kb_item("SMB/WindowsVersion")){
   exit(0);
 }
 
-## CLSID List
 clsids = make_list("{705ec6d4-b138-4079-a307-ef13e4889a82}",
                    "{f8fc1530-0608-11df-2008-0800200c9a66}",
                    "{e34f52fe-7769-46ce-8f8b-5e8abad2e9fc}",

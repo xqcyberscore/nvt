@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_security_advisory_3045755.nasl 11876 2018-10-12 12:20:01Z cfischer $
+# $Id: gb_microsoft_security_advisory_3045755.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Microsoft Update To Improve PKU2U Authentication Security Advisory (3045755)
 #
@@ -26,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805451");
-  script_version("$Revision: 11876 $");
+  script_version("$Revision: 14117 $");
   script_tag(name:"cvss_base", value:"6.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-04-17 16:49:36 +0530 (Fri, 17 Apr 2015)");
   script_name("Microsoft Update To Improve PKU2U Authentication Security Advisory (3045755)");
 
@@ -51,8 +51,7 @@ if(description)
   Microsoft Windows 8.1 x32/x64 Edition");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed
-  hotfixes or download and update mentioned hotfixes in the advisory from the
-  link, https://technet.microsoft.com/library/security/3045755");
+  hotfixes or download and update mentioned hotfixes from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

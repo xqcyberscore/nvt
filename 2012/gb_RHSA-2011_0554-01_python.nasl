@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2011-May/msg00016.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870597");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-06-06 10:31:24 +0530 (Wed, 06 Jun 2012)");
   script_cve_id("CVE-2010-3493", "CVE-2011-1015", "CVE-2011-1521");
   script_tag(name:"cvss_base", value:"6.4");
@@ -53,7 +53,7 @@ if(description)
   A flaw was found in the Python urllib and urllib2 libraries where they
   would not differentiate between different target URLs when handling
   automatic redirects. This caused Python applications using these modules to
-  follow any new URL that they understood, including the &quot;file://&quot; URL type.
+  follow any new URL that they understood, including the 'file://' URL type.
   This could allow a remote server to force a local Python application to
   read a local file instead of the remote one, possibly exposing local files
   that were not meant to be exposed. (CVE-2011-1521)

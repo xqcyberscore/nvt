@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2011-March/msg00041.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870692");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-06-06 10:47:32 +0530 (Wed, 06 Jun 2012)");
   script_cve_id("CVE-2011-1146");
   script_tag(name:"cvss_base", value:"6.9");
@@ -57,9 +57,9 @@ if(description)
   that should be restricted to read-write connections, possibly leading to a
   denial of service or privilege escalation. (CVE-2011-1146)
 
-  Note: Previously, using rpmbuild without the '--define &quot;rhel 5&quot;' option to
+  Note: Previously, using rpmbuild without the '--define 'rhel 5'' option to
   build the libvirt source RPM on Red Hat Enterprise Linux 5 failed with a
-  &quot;Failed build dependencies&quot; error for the device-mapper-devel package, as
+  'Failed build dependencies' error for the device-mapper-devel package, as
   this -devel sub-package is not available on Red Hat Enterprise Linux 5.
   With this update, the -devel sub-package is no longer checked by default as
   a dependency when building on Red Hat Enterprise Linux 5, allowing the
@@ -67,7 +67,7 @@ if(description)
 
   All libvirt users are advised to upgrade to these updated packages, which
   contain a backported patch to resolve this issue. After installing the
-  updated packages, libvirtd must be restarted (&quot;service libvirtd restart&quot;)
+  updated packages, libvirtd must be restarted ('service libvirtd restart')
   for this update to take effect.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");

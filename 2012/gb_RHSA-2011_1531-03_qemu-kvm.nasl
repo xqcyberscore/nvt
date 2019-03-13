@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2011-December/msg00006.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870724");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-09 10:53:34 +0530 (Mon, 09 Jul 2012)");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
@@ -53,7 +53,7 @@ if(description)
 
   It was found that qemu-kvm did not properly drop supplemental group
   privileges when the root user started guests from the command line
-  (&quot;/usr/libexec/qemu-kvm&quot;) with the &quot;-runas&quot; option. A qemu-kvm process
+  ('/usr/libexec/qemu-kvm') with the '-runas' option. A qemu-kvm process
   started this way could use this flaw to gain access to files on the host
   that are accessible to the supplementary groups and not accessible to the
   primary group. (CVE-2011-2527)

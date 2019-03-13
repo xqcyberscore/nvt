@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-016.nasl 11876 2018-10-12 12:20:01Z cfischer $
+# $Id: gb_ms15-016.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Microsoft Graphics Component Information Disclosure Vulnerability (3029944)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805137");
-  script_version("$Revision: 11876 $");
+  script_version("$Revision: 14117 $");
   script_cve_id("CVE-2015-0061");
   script_bugtraq_id(72456);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-02-11 11:58:29 +0530 (Wed, 11 Feb 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Graphics Component Information Disclosure Vulnerability (3029944)");
@@ -58,8 +58,7 @@ if(description)
   Microsoft Windows Server 2012/R2");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the link https://technet.microsoft.com/library/security/MS15-016");
+  listed hotfixes or download and update mentioned hotfixes from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

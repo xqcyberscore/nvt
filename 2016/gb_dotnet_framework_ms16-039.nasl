@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807663");
-  script_version("$Revision: 11493 $");
+  script_version("$Revision: 14117 $");
   script_cve_id("CVE-2016-0145");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-04-13 13:08:50 +0530 (Wed, 13 Apr 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft .NET Framework Remote Code Execution Vulnerability (3148522)");
@@ -50,11 +50,11 @@ if(description)
   accounts with full user rights.");
 
   script_tag(name:"affected", value:"Microsoft .NET Framework 3.0 SP2
+
   Microsoft .NET Framework 3.5 and 3.5.1");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the given link https://technet.microsoft.com/library/security/MS16-039");
+  listed hotfixes or download and update mentioned hotfixes from the referenced avdisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

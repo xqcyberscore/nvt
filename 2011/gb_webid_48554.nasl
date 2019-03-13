@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webid_48554.nasl 12018 2018-10-22 13:31:29Z mmartin $
+# $Id: gb_webid_48554.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # WeBid 'converter.php' Multiple Remote PHP Code Injection Vulnerabilities
 #
@@ -23,13 +23,14 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/a:webidsupport:webid";
 
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103186");
-  script_version("$Revision: 12018 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
+  script_version("$Revision: 14117 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-07-06 13:49:20 +0200 (Wed, 06 Jul 2011)");
   script_bugtraq_id(48554);
   script_tag(name:"cvss_base", value:"7.5");
@@ -49,17 +50,16 @@ if (description)
   script_mandatory_keys("webid/installed");
 
   script_tag(name:"summary", value:"WeBid is prone to multiple vulnerabilities that attackers can leverage
-to execute arbitrary PHP code because the application fails to
-adequately sanitize user-supplied input.
+  to execute arbitrary PHP code because the application fails to
+  adequately sanitize user-supplied input.");
 
-Successful attacks can compromise the affected application and
-possibly the underlying computer.
+  script_tag(name:"impact", value:"Successful attacks can compromise the affected application and
+  possibly the underlying system.");
 
-WeBid 1.0.2 is vulnerable. Other versions may also be affected.");
-  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.
+  script_tag(name:"affected", value:"WeBid 1.0.2 is vulnerable. Other versions may also be affected.");
 
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
 
-*** You should remove the line 'array('from' => 'USD', 'to' => '^@'));print('openvas-c-i-test'//', 'rate' => '')' from includes/currencies.php ***");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
@@ -76,7 +76,7 @@ url = string(dir,"/converter.php");
 
 host = http_host_name(port:port);
 
-postdata = string("action=convert&from=USD&to=%00%27%29%29%3Bprint%28%27openvas-c-i-test%27%2F%2F");
+postdata = string("action=convert&from=USD&to=%00%27%29%29%3Bprint%28%27vt-c-i-test%27%2F%2F");
 
  req = string(
             "POST ", url, " HTTP/1.1\r\n",
@@ -93,9 +93,10 @@ url = string(dir, "/includes/currencies.php");
 req = http_get(item:url, port:port);
 buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
 
-if("openvas-c-i-test" >< buf) {
-  security_message(port:port);
+if("vt-c-i-test" >< buf) {
+  report = report_vuln_url(port:port, url:url);
+  security_message(port:port, data:report);
   exit(0);
 }
 
-exit(0);
+exit(99);

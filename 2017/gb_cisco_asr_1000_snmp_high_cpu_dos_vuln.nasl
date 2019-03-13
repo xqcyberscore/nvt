@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asr_1000_snmp_high_cpu_dos_vuln.nasl 11474 2018-09-19 11:38:50Z mmartin $
+# $Id: gb_cisco_asr_1000_snmp_high_cpu_dos_vuln.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Cisco ASR 1000 Series Aggregation Services Routers SNMP High CPU DoS Vulnerability
 #
@@ -24,17 +24,18 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/h:cisco:asr_1000";
 
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809795");
-  script_version("$Revision: 11474 $");
+  script_version("$Revision: 14117 $");
   script_cve_id("CVE-2017-3820");
   script_bugtraq_id(95934);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:38:50 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-02-06 17:06:10 +0530 (Mon, 06 Feb 2017)");
   script_name("Cisco ASR 1000 Series Aggregation Services Routers SNMP High CPU DoS Vulnerability");
 
@@ -54,8 +55,7 @@ if (description)
   15.6(1)S1.1, 15.4(3)S6, 15.5(3)S2, 15.6(1)S1.");
 
   script_tag(name:"solution", value:"Upgrade to latest release of Cisco ASR 1000
-  Series Aggregation Services router or Cisco IOS XE Software.
-  https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170201-asrsnmp");
+  Series Aggregation Services router or Cisco IOS XE Software.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

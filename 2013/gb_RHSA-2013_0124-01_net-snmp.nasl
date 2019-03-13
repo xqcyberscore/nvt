@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2013-January/msg00007.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870877");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-01-11 16:41:41 +0530 (Fri, 11 Jan 2013)");
   script_cve_id("CVE-2012-2141");
   script_tag(name:"cvss_base", value:"3.5");
@@ -57,7 +57,7 @@ if(description)
   Bug fixes:
 
   * Devices that used certain file systems were not reported in the
-  &quot;HOST-RESOURCES-MIB::hrStorageTable&quot; table. As a result, the snmpd daemon
+  'HOST-RESOURCES-MIB::hrStorageTable' table. As a result, the snmpd daemon
   did not recognize devices using tmpfs, ReiserFS, and Oracle Cluster File
   System (OCFS2) file systems. This update recognizes these devices and
   reports them in the 'HOST-RESOURCES-MIB::hrStorageTable' table.

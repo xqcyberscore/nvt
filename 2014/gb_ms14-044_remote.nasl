@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-044_remote.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_ms14-044_remote.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Microsoft SQL Server Elevation of Privilege Vulnerability (2984340) - Remote
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:sql_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805110");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 14117 $");
   script_cve_id("CVE-2014-1820", "CVE-2014-4061");
   script_bugtraq_id(69071, 69088);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-12-01 16:03:48 +0530 (Mon, 01 Dec 2014)");
   script_name("Microsoft SQL Server Elevation of Privilege Vulnerability (2984340) - Remote");
 
@@ -53,13 +53,15 @@ if(description)
   attackers to cause a Denial of Service or elevation of privilege.");
 
   script_tag(name:"affected", value:"Microsoft SQL Server 2014 x64 Edition,
+
   Microsoft SQL Server 2012 x86/x64 Edition Service Pack 1 and prior,
+
   Microsoft SQL Server 2008 R2 x86/x64 Edition Service Pack 2 and prior,
+
   Microsoft SQL Server 2008 x86/x64 Edition Service Pack 3 and prior.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from this link, https://technet.microsoft.com/library/security/MS14-044");
+  listed hotfixes or download and update mentioned hotfixes from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

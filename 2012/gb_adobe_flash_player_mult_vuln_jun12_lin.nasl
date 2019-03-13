@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_mult_vuln_jun12_lin.nasl 11549 2018-09-22 12:11:10Z cfischer $
+# $Id: gb_adobe_flash_player_mult_vuln_jun12_lin.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Adobe Flash Player Multiple Vulnerabilities June-2012 (Linux)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802873");
-  script_version("$Revision: 11549 $");
+  script_version("$Revision: 14117 $");
   script_cve_id("CVE-2012-2034", "CVE-2012-2035", "CVE-2012-2036", "CVE-2012-2037",
                 "CVE-2012-2039", "CVE-2012-2038", "CVE-2012-2040");
   script_bugtraq_id(53887);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-06-20 10:16:16 +0530 (Wed, 20 Jun 2012)");
   script_name("Adobe Flash Player Multiple Vulnerabilities June-2012 (Linux)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49388");
@@ -60,8 +60,8 @@ if(description)
     bypass the same-origin policy.
 
   - In the installer allows planting a binary file.");
-  script_tag(name:"solution", value:"Update to Adobe Flash Player version 10.3.183.20 or 11.2.202.236 or later,
-  For the updates refer, http://get.adobe.com/flashplayer/");
+  script_tag(name:"solution", value:"Update to Adobe Flash Player version 10.3.183.20 or 11.2.202.236 or later.");
+
   script_tag(name:"summary", value:"This host is installed with Adobe Flash Player and is prone to
   multiple vulnerabilities.");
   script_tag(name:"qod_type", value:"executable_version");

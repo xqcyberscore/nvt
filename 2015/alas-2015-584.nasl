@@ -27,14 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.120509");
-  script_version("$Revision: 11703 $");
+  script_version("$Revision: 14117 $");
   script_tag(name:"creation_date", value:"2015-09-08 13:28:14 +0200 (Tue, 08 Sep 2015)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 10:05:31 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_name("Amazon Linux Local Check: alas-2015-584");
-  script_tag(name:"insight", value:"PHP process crashes when processing an invalid file with the phar extension. (CVE-2015-5589 )As discussed upstream, mysqlnd is vulnerable to the attack described in https://www.duosecurity.com/blog/backronym-mysql-vulnerability.  (CVE-2015-3152 )PHP versions before 5.5.27 and 5.4.43 contain buffer overflow issue. (CVE-2015-5590 )");
+  script_tag(name:"insight", value:"PHP process crashes when processing an invalid file with the phar extension. 
+  (CVE-2015-5589)
+
+  As discussed upstream, mysqlnd is vulnerable to the attack described in the references. (CVE-2015-3152)
+
+  PHP versions before 5.5.27 and 5.4.43 contain buffer overflow issue. (CVE-2015-5590)");
   script_tag(name:"solution", value:"Run yum update php55 to update your system.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://alas.aws.amazon.com/ALAS-2015-584.html");
+  script_xref(name:"URL", value:"https://www.duosecurity.com/blog/backronym-mysql-vulnerability");
   script_cve_id("CVE-2015-5589", "CVE-2015-3152", "CVE-2015-5590");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_sharepoint_sever_n_foundation_ms16-015.nasl 11614 2018-09-26 07:39:28Z asteins $
+# $Id: gb_ms_sharepoint_sever_n_foundation_ms16-015.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # MS SharePoint Server and Foundation Multiple Vulnerabilities (3134226)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:sharepoint_foundation";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809708");
-  script_version("$Revision: 11614 $");
+  script_version("$Revision: 14117 $");
   script_cve_id("CVE-2016-0022", "CVE-2016-0052", "CVE-2016-0053", "CVE-2016-0039");
   script_bugtraq_id(82508, 82652, 82787, 82512);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-10-19 15:25:36 +0530 (Wed, 19 Oct 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("MS SharePoint Server and Foundation Multiple Vulnerabilities (3134226)");
@@ -58,8 +58,7 @@ if(description)
 
   script_tag(name:"solution", value:"Run Windows Update and update the
   listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the given link,
-  https://technet.microsoft.com/library/security/MS16-015");
+  from the given link.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

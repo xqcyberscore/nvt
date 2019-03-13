@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_iis_get_request_dos_vuln.nasl 11580 2018-09-25 06:06:13Z cfischer $
+# $Id: secpod_ms_iis_get_request_dos_vuln.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Microsoft IIS GET Request Denial of Service Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:microsoft:iis';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902914");
-  script_version("$Revision: 11580 $");
+  script_version("$Revision: 14117 $");
   script_cve_id("CVE-1999-0229");
   script_bugtraq_id(2218);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:06:13 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-05-22 12:45:33 +0530 (Tue, 22 May 2012)");
   script_name("Microsoft IIS GET Request Denial of Service Vulnerability");
 
@@ -55,8 +55,8 @@ if(description)
   script_tag(name:"affected", value:"Microsoft Internet Information Server 2.0 and prior on Microsoft Windows NT");
   script_tag(name:"insight", value:"The flaw is due to an error in the handling of HTTP GET requests that
   contain a tunable number of '../' sequences in the URL.");
-  script_tag(name:"solution", value:"Upgrade to latest version of IIS and latest Microsoft Service Packs.
-  For updated refer, http://www.microsoft.com/");
+  script_tag(name:"solution", value:"Upgrade to latest version of IIS and latest Microsoft Service Packs.");
+
   script_tag(name:"summary", value:"The host is running Microsoft IIS Webserver and is prone to
   denial of service vulnerability.");
 

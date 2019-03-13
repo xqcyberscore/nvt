@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2012-February/msg00014.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870537");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-02-03 11:23:27 +0530 (Fri, 03 Feb 2012)");
   script_cve_id("CVE-2009-3743", "CVE-2010-2055", "CVE-2010-4054", "CVE-2010-4820");
   script_tag(name:"cvss_base", value:"9.3");
@@ -56,7 +56,7 @@ if(description)
   potentially, execute arbitrary code. (CVE-2009-3743)
 
   Ghostscript included the current working directory in its library search
-  path by default. If a user ran Ghostscript without the &quot;-P-&quot;
+  path by default. If a user ran Ghostscript without the '-P-'
   option in an attacker-controlled directory containing a specially-crafted
   PostScript library file, it could cause Ghostscript to execute arbitrary
   PostScript code. With this update, Ghostscript no longer searches the
@@ -64,7 +64,7 @@ if(description)
 
   Note: The fix for CVE-2010-4820 could possibly break existing
   configurations. To use the previous, vulnerable behavior, run Ghostscript
-  with the &quot;-P&quot; option (to always search the current working directory
+  with the '-P' option (to always search the current working directory
   first).
 
   A flaw was found in the way Ghostscript interpreted PostScript Type 1 and

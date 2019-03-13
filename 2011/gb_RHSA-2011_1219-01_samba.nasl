@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2011-August/msg00021.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870477");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-09-07 08:58:04 +0200 (Wed, 07 Sep 2011)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -86,11 +86,11 @@ if(description)
   set the setuid bit for mount.cifs.
 
   Red Hat would like to thank the Samba project for reporting CVE-2011-2694
-  and CVE-2011-2522; the Debian Security Team for reporting CVE-2010-0787;
+  and CVE-2011-2522, the Debian Security Team for reporting CVE-2010-0787,
   and Dan Rosenberg for reporting CVE-2011-1678. Upstream acknowledges
   Nobuhiro Tsuji of NTT DATA Security Corporation as the original reporter of
-  CVE-2011-2694; Yoshihiro Ishikawa of LAC Co., Ltd. as the original reporter
-  of CVE-2011-2522; and the Debian Security Team acknowledges Ronald Volgers
+  CVE-2011-2694, Yoshihiro Ishikawa of LAC Co., Ltd. as the original reporter
+  of CVE-2011-2522, and the Debian Security Team acknowledges Ronald Volgers
   as the original reporter of CVE-2010-0787.
   ...
 

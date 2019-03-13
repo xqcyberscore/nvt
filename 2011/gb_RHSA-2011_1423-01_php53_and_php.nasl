@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2011-November/msg00003.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870510");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-11-03 12:22:48 +0100 (Thu, 03 Nov 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -60,7 +60,7 @@ if(description)
   Note: Due to the CVE-2011-2483 fix, after installing this update some users
   may not be able to log in to PHP applications that hash passwords with
   Blowfish using the PHP crypt() function. Refer to the upstream
-  &quot;CRYPT_BLOWFISH security fix details&quot; document, linked to in the
+  'CRYPT_BLOWFISH security fix details' document, linked to in the
   References, for details.
 
   An insufficient input validation flaw, leading to a buffer over-read, was

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.870994");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-05-17 09:49:36 +0530 (Fri, 17 May 2013)");
   script_cve_id("CVE-2013-1962");
   script_tag(name:"cvss_base", value:"5.0");
@@ -65,7 +65,7 @@ if(description)
 
   * Previously, libvirt made control group (cgroup) requests on files that
   it should not have. With older kernels, such nonsensical cgroup requests
-  were ignored; however, newer kernels are stricter, resulting in libvirt
+  were ignored. However, newer kernels are stricter, resulting in libvirt
   logging spurious warnings and failures to the libvirtd and audit logs. The
   audit log failures displayed by the ausearch tool were similar to the
   following:

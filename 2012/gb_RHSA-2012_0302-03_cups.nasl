@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2012-February/msg00058.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870561");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-02-21 18:57:05 +0530 (Tue, 21 Feb 2012)");
   script_cve_id("CVE-2011-2896");
   script_tag(name:"cvss_base", value:"5.1");
@@ -52,12 +52,12 @@ if(description)
   decompression algorithm implementation used by the CUPS GIF image format
   reader. An attacker could create a malicious GIF image file that, when
   printed, could possibly cause CUPS to crash or, potentially, execute
-  arbitrary code with the privileges of the &quot;lp&quot; user. (CVE-2011-2896)
+  arbitrary code with the privileges of the 'lp' user. (CVE-2011-2896)
 
   This update also fixes the following bugs:
 
-  * Prior to this update, the &quot;Show Completed Jobs, &quot; &quot;Show All Jobs, &quot; and
-  &quot;Show Active Jobs&quot; buttons returned results globally across all printers
+  * Prior to this update, the 'Show Completed Jobs, ' 'Show All Jobs, ' and
+  'Show Active Jobs' buttons returned results globally across all printers
   and not the results for the specified printer. With this update, jobs from
   only the selected printer are shown. (BZ#625900)
 

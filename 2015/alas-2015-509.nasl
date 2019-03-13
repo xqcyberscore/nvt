@@ -27,14 +27,24 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.120364");
-  script_version("$Revision: 11703 $");
+  script_version("$Revision: 14117 $");
   script_tag(name:"creation_date", value:"2015-09-08 13:24:39 +0200 (Tue, 08 Sep 2015)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 10:05:31 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_name("Amazon Linux Local Check: alas-2015-509");
-  script_tag(name:"insight", value:"A buffer overflow vulnerability was found in PHP's phar (PHP Archive) implementation.  See https://bugs.php.net/bug.php?id=69324 for more details. (CVE-2015-2783 )A use-after-free flaw was found in PHP's phar (PHP Archive) paths implementation. A malicious script author could possibly use this flaw to disclose certain portions of server memory. (CVE-2015-2301 )A buffer over-read flaw was found in the GD library. A specially crafted GIF file could cause an application using the gdImageCreateFromGif() function to crash. (CVE-2014-9709 )A NULL pointer dereference flaw was found in PHP's pgsql extension. A specially crafted table name passed to function as pg_insert() or pg_select() could cause a PHP application to crash. (CVE-2015-1352 )A buffer overflow flaw was found in the way PHP's Phar extension parsed Phar archives. A specially crafted archive could cause PHP to crash or, possibly, execute arbitrary code when opened. (CVE-2015-3329 )");
+  script_tag(name:"insight", value:"A buffer overflow vulnerability was found in PHP's phar (PHP Archive) implementation. See the referenced bugtracker link for more details. (CVE-2015-2783)
+
+  A use-after-free flaw was found in PHP's phar (PHP Archive) paths implementation. A malicious script author could possibly use this flaw to disclose certain portions of server memory. (CVE-2015-2301)
+
+  A buffer over-read flaw was found in the GD library. A specially crafted GIF file could cause an application using the gdImageCreateFromGif() function to crash. (CVE-2014-9709)
+
+  A NULL pointer dereference flaw was found in PHP's pgsql extension. A specially crafted table name passed to function as pg_insert() or pg_select() could cause a PHP application to crash. (CVE-2015-1352)
+
+  A buffer overflow flaw was found in the way PHP's Phar extension parsed Phar archives. A specially crafted archive could cause PHP to crash or, possibly, execute arbitrary code when opened. (CVE-2015-3329)");
   script_tag(name:"solution", value:"Run yum update php54 to update your system.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://alas.aws.amazon.com/ALAS-2015-509.html");
+  script_xref(name:"URL", value:"https://bugs.php.net/bug.php?id=69324");
+
   script_cve_id("CVE-2015-2783", "CVE-2015-3329", "CVE-2015-2301", "CVE-2015-1352", "CVE-2014-9709");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

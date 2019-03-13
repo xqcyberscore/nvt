@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2011-July/msg00005.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870703");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-06-06 10:50:35 +0530 (Wed, 06 Jun 2012)");
   script_cve_id("CVE-2011-2176");
   script_tag(name:"cvss_base", value:"2.1");
@@ -58,7 +58,7 @@ if(description)
 
   Users of NetworkManager should upgrade to these updated packages, which
   contain a backported patch to correct this issue. Running instances of
-  NetworkManager must be restarted (&quot;service NetworkManager restart&quot;) for
+  NetworkManager must be restarted ('service NetworkManager restart') for
   this update to take effect.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");

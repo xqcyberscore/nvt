@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_exponent_cms_mult_xss_vuln_feb15.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_exponent_cms_mult_xss_vuln_feb15.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Exponent CMS Multiple XSS Vulnerabilities - Feb15
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:exponentcms:exponent_cms";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805139");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 14117 $");
   script_cve_id("CVE-2014-8690");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-02-16 13:11:02 +0530 (Mon, 16 Feb 2015)");
   script_name("Exponent CMS Multiple XSS Vulnerabilities - Feb15");
   script_category(ACT_ATTACK);
@@ -61,8 +61,7 @@ if(description)
   script_tag(name:"affected", value:"Exponent CMS version 2.3.1, Prior versions
   may also be affected.");
 
-  script_tag(name:"solution", value:"Apply the patch version 2.3.1 Patch 4.
-  For patch refer, http://sourceforge.net/projects/exponentcms/files");
+  script_tag(name:"solution", value:"Apply the patch version 2.3.1 Patch 4.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");

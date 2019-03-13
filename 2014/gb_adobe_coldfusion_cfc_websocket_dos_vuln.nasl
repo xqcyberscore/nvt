@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_coldfusion_cfc_websocket_dos_vuln.nasl 11867 2018-10-12 10:48:11Z cfischer $
+# $Id: gb_adobe_coldfusion_cfc_websocket_dos_vuln.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Adobe ColdFusion Components (CFC) Denial Of Service Vulnerability
 #
@@ -23,31 +23,36 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/a:adobe:coldfusion";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804443");
-  script_version("$Revision: 11867 $");
+  script_version("$Revision: 14117 $");
   script_cve_id("CVE-2013-3350");
   script_bugtraq_id(61042);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-05-06 15:14:38 +0530 (Tue, 06 May 2014)");
   script_name("Adobe ColdFusion Components (CFC) Denial Of Service Vulnerability");
 
-
   script_tag(name:"summary", value:"This host is running Adobe ColdFusion and is prone to denial of service
-vulnerability.");
+  vulnerability.");
+
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+
   script_tag(name:"insight", value:"The flaw is due to an error in ColdFusion Components (CFC) public methods
-which can be accessed via WebSockets.");
+  which can be accessed via WebSockets.");
+
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause denial of service
-conditions.");
+  conditions.");
+
   script_tag(name:"affected", value:"Adobe ColdFusion 10 before Update 11");
-  script_tag(name:"solution", value:"Upgrade to Adobe ColdFusion 10 Update 11 or later,
-https://www.adobe.com/cfusion/tdrc/index.cfm?product=coldfusion");
+
+  script_tag(name:"solution", value:"Upgrade to Adobe ColdFusion 10 Update 11 or later.");
+
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name:"URL", value:"http://www.securitytracker.com/id/1028757");
@@ -62,7 +67,6 @@ https://www.adobe.com/cfusion/tdrc/index.cfm?product=coldfusion");
   script_require_ports("Services/www", 80);
   exit(0);
 }
-
 
 include("version_func.inc");
 include("host_details.inc");

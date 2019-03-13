@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_sentinel_log_mangr_sec_bypass_vuln.nasl 11580 2018-09-25 06:06:13Z cfischer $
+# $Id: gb_novell_sentinel_log_mangr_sec_bypass_vuln.nasl 14130 2019-03-13 07:53:41Z mmartin $
 #
 # Novell Sentinel Log Manager Retention Policy Security Bypass Vulnerability
 #
@@ -27,11 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803110");
-  script_version("$Revision: 11580 $");
+  script_version("$Revision: 14130 $");
   script_bugtraq_id(55767);
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:06:13 +0200 (Tue, 25 Sep 2018) $");
+  script_cve_id("CVE-2012-6534");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 08:53:41 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-11-23 15:27:29 +0530 (Fri, 23 Nov 2012)");
   script_name("Novell Sentinel Log Manager Retention Policy Security Bypass Vulnerability");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50797/");
@@ -49,8 +50,8 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to an error when saving a retention policy and can be
   exploited by a report administrator (read only role) to create new
   policies.");
-  script_tag(name:"solution", value:"Apply the patch or upgrade to 1.2.0.3 or later,
-  https://www.netiq.com/products/sentinel-log-manager/");
+  script_tag(name:"solution", value:"Apply the patch or upgrade to 1.2.0.3 or later.");
+
   script_tag(name:"summary", value:"The host is running Novell Sentinel Log Manager and is prone security bypass
   vulnerability.");
   script_tag(name:"solution_type", value:"VendorFix");

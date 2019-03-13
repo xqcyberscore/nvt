@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_vcs_mult_vuln_dec15.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_cisco_vcs_mult_vuln_dec15.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Cisco TelePresence VCS and VCS Expressway Multiple Vulnerabilities Dec15
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:cisco:telepresence_video_communication_server_software";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806650");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 14117 $");
   script_cve_id("CVE-2015-6414", "CVE-2015-6413");
   script_bugtraq_id(79088, 79065);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-12-17 20:00:22 +0530 (Thu, 17 Dec 2015)");
   script_name("Cisco TelePresence VCS and VCS Expressway Multiple Vulnerabilities Dec15");
 
@@ -57,10 +57,7 @@ if(description)
   script_tag(name:"affected", value:"Cisco TelePresence Video Communication Server (VCS) version X8.6
   Cisco TelePresence Video Communication Server (VCS) Expressway version X8.6");
 
-  script_tag(name:"solution", value:"Apply updates from Vendor.
-  For details refer below links,
-  http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20151209-tvc
-  http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20151210-tvcs");
+  script_tag(name:"solution", value:"Apply updates from Vendor. See the references for more details.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

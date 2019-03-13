@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2011-February/msg00016.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870395");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-02-18 15:15:05 +0100 (Fri, 18 Feb 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -58,7 +58,7 @@ if(description)
 
   This update also fixes the following bugs:
 
-  * Python 2.3.4's time.strptime() function did not correctly handle the &quot;%W&quot;
+  * Python 2.3.4's time.strptime() function did not correctly handle the '%W'
   week number format string. This update backports the _strptime
   implementation from Python 2.3.6, fixing this issue. (BZ#436001)
 
@@ -67,7 +67,7 @@ if(description)
 
   * Python 2.3.4's pwd.getpwuid() and grp.getgrgid() functions did not
   support the full range of user and group IDs on 64-bit architectures,
-  leading to &quot;OverflowError&quot; exceptions for large input values. This update
+  leading to 'OverflowError' exceptions for large input values. This update
   adds support for the full range of user and group IDs on 64-bit
   architectures. (BZ#497540)
 

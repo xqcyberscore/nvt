@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-043.nasl 11876 2018-10-12 12:20:01Z cfischer $
+# $Id: gb_ms15-043.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Microsoft Internet Explorer Multiple Vulnerabilities (3049563)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805380");
-  script_version("$Revision: 11876 $");
+  script_version("$Revision: 14117 $");
   script_cve_id("CVE-2015-1658", "CVE-2015-1684", "CVE-2015-1685", "CVE-2015-1686",
                 "CVE-2015-1688", "CVE-2015-1689", "CVE-2015-1691", "CVE-2015-1692",
                 "CVE-2015-1694", "CVE-2015-1703", "CVE-2015-1704", "CVE-2015-1705",
@@ -38,7 +38,7 @@ if(description)
                 "CVE-2015-1717", "CVE-2015-1718");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-05-13 11:36:27 +0530 (Wed, 13 May 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Internet Explorer Multiple Vulnerabilities (3049563)");
@@ -55,7 +55,7 @@ if(description)
 
   - an unspecified flaw that may allow a context-dependent attacker to bypass
   unspecified features and execute code through the use of another vulnerability
-  with higher privileges than would normally be allowed. ");
+  with higher privileges than would normally be allowed.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow context
 
@@ -66,8 +66,7 @@ if(description)
   6.x/7.x/8.x/9.x/10.x/11.x");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed
-  hotfixes or download and update mentioned hotfixes in the advisory from the
-  link, https://technet.microsoft.com/library/security/MS15-043");
+  hotfixes or download and update mentioned hotfixes from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

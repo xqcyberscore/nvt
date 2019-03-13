@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2011-May/msg00035.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870435");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-06-06 16:56:27 +0200 (Mon, 06 Jun 2011)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -58,9 +58,9 @@ if(description)
   cause a denial of service on an application using the apr_fnmatch()
   function. (CVE-2011-1928)
 
-  Note: This problem affected httpd configurations using the &quot;Location&quot;
+  Note: This problem affected httpd configurations using the 'Location'
   directive with wildcard URLs. The denial of service could have been
-  triggered during normal operation; it did not specifically require a
+  triggered during normal operation. It did not specifically require a
   malicious HTTP request.
 
   This update also addresses additional problems introduced by the rewrite of

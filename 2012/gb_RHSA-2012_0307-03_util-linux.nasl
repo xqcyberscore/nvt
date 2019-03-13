@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2012-February/msg00049.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870552");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-02-21 18:56:41 +0530 (Tue, 21 Feb 2012)");
   script_cve_id("CVE-2011-1675", "CVE-2011-1677");
   script_tag(name:"cvss_base", value:"4.6");
@@ -69,12 +69,12 @@ if(description)
   (BZ#650937)
 
   * Prior to this update, the build process of the util-linux package failed
-  in the po directory with the following error message: &quot;@MKINSTALLDIRS@:
-  No such file or directory&quot;. An upstream patch has been applied to address
+  in the po directory with the following error message: '@MKINSTALLDIRS@:
+  No such file or directory'. An upstream patch has been applied to address
   this issue, and the util-linux package now builds successfully. (BZ#677452)
 
   * Previously, the ipcs(1) and ipcrm(1) manual pages mentioned an invalid
-  option, &quot;-b&quot;. With this update, only valid options are listed on those
+  option, '-b'. With this update, only valid options are listed on those
   manual pages. (BZ#678407)
 
   * Previously, the mount(8) manual page contained incomplete information
@@ -90,10 +90,10 @@ if(description)
   phys=(0, 1, 1) logical=(0, 2, 7)
 
   This update enables users to switch off DOS compatible mode (by specifying
-  the &quot;-c&quot; option), and such error messages are no longer displayed.
+  the '-c' option), and such error messages are no longer displayed.
   (BZ#678430)
 
-  * This update adds the &quot;fsfreeze&quot; command which halts access to a file
+  * This update adds the 'fsfreeze' command which halts access to a file
   system on a disk. (BZ#726572)
 
   All users of util-linux are advised to upgrade to this updated package,

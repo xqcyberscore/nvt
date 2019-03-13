@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2011-August/msg00027.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870478");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-09-07 08:58:04 +0200 (Wed, 07 Sep 2011)");
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
@@ -54,7 +54,7 @@ if(description)
   certificate. This update renders any HTTPS certificates signed by that
   CA as untrusted, except for a select few. The now untrusted certificates
   that were issued before July 1, 2011 can be manually re-enabled and used
-  again at your own risk in Firefox; however, affected certificates issued
+  again at your own risk in Firefox. However, affected certificates issued
   after this date cannot be re-enabled or used. (BZ#734316)
 
   All Firefox users should upgrade to these updated packages, which contain

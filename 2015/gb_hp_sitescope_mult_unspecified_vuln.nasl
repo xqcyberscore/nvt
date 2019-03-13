@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_sitescope_mult_unspecified_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_hp_sitescope_mult_unspecified_vuln.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # HP SiteScope Multiple Unspecified Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:hp:sitescope";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805285");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 14117 $");
   script_cve_id("CVE-2014-2614", "CVE-2014-7882");
   script_bugtraq_id(72459, 68361);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-02-23 11:23:51 +0530 (Mon, 23 Feb 2015)");
   script_name("HP SiteScope Multiple Unspecified Vulnerabilities");
 
@@ -51,7 +51,7 @@ if(description)
   script_tag(name:"affected", value:"HP SiteScope 11.1x through 11.13 and
   11.2x through 11.24");
 
-  script_tag(name:"solution", value:"Apply the patch  https://h20564.www2.hp.com/hpsc/doc/public/display?docId=emr_na-c04355129
+  script_tag(name:"solution", value:"Apply the patch linked in the references.
 
   *****
   NOTE : Ignore this warning if above mentioned patch is applied already.

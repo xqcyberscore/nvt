@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2012-August/msg00029.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870818");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-08-30 10:37:45 +0530 (Thu, 30 Aug 2012)");
   script_cve_id("CVE-2012-1970", "CVE-2012-1972", "CVE-2012-1973", "CVE-2012-1974",
                 "CVE-2012-1975", "CVE-2012-1976", "CVE-2012-3956", "CVE-2012-3957",
@@ -77,8 +77,8 @@ if(description)
   Firefox to crash or, under certain conditions, possibly execute arbitrary
   code with the privileges of the user running Firefox. (CVE-2012-3966)
 
-  A flaw was found in the way the &quot;eval&quot; command was handled by the Firefox
-  Web Console. Running &quot;eval&quot; in the Web Console while viewing a web page
+  A flaw was found in the way the 'eval' command was handled by the Firefox
+  Web Console. Running 'eval' in the Web Console while viewing a web page
   containing malicious content could possibly cause Firefox to execute
   arbitrary code with the privileges of the user running Firefox.
   (CVE-2012-3980)

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-058_ms_sql_remote.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_ms15-058_ms_sql_remote.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Microsoft SQL Server Multiple Vulnerabilities (3065718) - Remote
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:microsoft:sql_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805815");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 14117 $");
   script_cve_id("CVE-2015-1761", "CVE-2015-1762", "CVE-2015-1763");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-07-15 12:57:38 +0530 (Wed, 15 Jul 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Microsoft SQL Server Multiple Vulnerabilities (3065718) - Remote");
@@ -53,16 +53,21 @@ if(description)
   attackers to elevate the privileges or execute arbitrary code remotely.");
 
   script_tag(name:"affected", value:"Microsoft SQL Server 2008 for x86/x64 Edition Service Pack 3,
+
   Microsoft SQL Server 2008 for x86/x64 Edition Service Pack 4,
+
   Microsoft SQL Server 2008 R2 for x86/x64 Edition Service Pack 2,
+
   Microsoft SQL Server 2008 R2 for x86/x64 Edition Service Pack 3,
+
   Microsoft SQL Server 2012 for x86/x64 Edition Service Pack 1,
+
   Microsoft SQL Server 2012 for x86/x64 Edition Service Pack 2,
+
   Microsoft SQL Server 2014 for x86/x64 Edition.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from this link, https://technet.microsoft.com/library/security/MS15-058");
+  listed hotfixes or download and update mentioned hotfixes from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

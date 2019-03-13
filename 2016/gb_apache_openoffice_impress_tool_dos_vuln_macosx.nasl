@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_openoffice_impress_tool_dos_vuln_macosx.nasl 11614 2018-09-26 07:39:28Z asteins $
+# $Id: gb_apache_openoffice_impress_tool_dos_vuln_macosx.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Apache OpenOffice 'Impress Tool' Denial of Service Vulnerability (MAC OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:openoffice:openoffice.org";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808654");
-  script_version("$Revision: 11614 $");
+  script_version("$Revision: 14117 $");
   script_cve_id("CVE-2016-1513");
   script_bugtraq_id(92079);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-08-16 14:06:15 +0530 (Tue, 16 Aug 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Apache OpenOffice 'Impress Tool' Denial of Service Vulnerability (MAC OS X)");
@@ -57,8 +57,7 @@ if(description)
   earlier on MAC OS X.");
 
   script_tag(name:"solution", value:"As a workaround it is recommended
-  to consider the actions suggested in the link mentioned below.
-  http://www.openoffice.org/security/cves/CVE-2016-1513.html ");
+  to consider the actions suggested in the the referenced avdisory.");
 
   script_tag(name:"solution_type", value:"Workaround");
 

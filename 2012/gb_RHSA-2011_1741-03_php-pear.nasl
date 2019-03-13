@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2011-December/msg00017.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870625");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-09 10:35:17 +0530 (Mon, 09 Jul 2012)");
   script_cve_id("CVE-2011-1072");
   script_tag(name:"cvss_base", value:"3.3");
@@ -49,10 +49,10 @@ if(description)
   script_tag(name:"insight", value:"The php-pear package contains the PHP Extension and Application Repository
   (PEAR), a framework and distribution system for reusable PHP components.
 
-  It was found that the &quot;pear&quot; command created temporary files in an insecure
+  It was found that the 'pear' command created temporary files in an insecure
   way when installing packages. A malicious, local user could use this flaw
   to conduct a symbolic link attack, allowing them to overwrite the contents
-  of arbitrary files accessible to the victim running the &quot;pear install&quot;
+  of arbitrary files accessible to the victim running the 'pear install'
   command. (CVE-2011-1072)
 
   This update also fixes the following bugs:
@@ -61,7 +61,7 @@ if(description)
   number of bug fixes over the previous version. (BZ#651897)
 
   * Prior to this update, php-pear created a cache in the
-  &quot;/var/cache/php-pear/&quot; directory when attempting to list all packages. As a
+  '/var/cache/php-pear/' directory when attempting to list all packages. As a
   consequence, php-pear failed to create or update the cache file as a
   regular user without sufficient file permissions and could not list all
   packages. With this update, php-pear no longer fails if writing to the

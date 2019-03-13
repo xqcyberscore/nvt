@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2012-September/msg00018.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870832");
-  script_version("$Revision: 12382 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-09-17 16:41:55 +0530 (Mon, 17 Sep 2012)");
   script_cve_id("CVE-2012-3488", "CVE-2012-3489");
   script_tag(name:"cvss_base", value:"4.9");
@@ -59,7 +59,7 @@ if(description)
   they would otherwise not have access to by issuing a specially-crafted SQL
   query. (CVE-2012-3488)
 
-  It was found that the &quot;xml&quot; data type allowed local files and remote URLs
+  It was found that the 'xml' data type allowed local files and remote URLs
   to be read with the privileges of the database server to resolve DTD and
   entity references in the provided XML. An unprivileged database user could
   use this flaw to read local files they would otherwise not have access to

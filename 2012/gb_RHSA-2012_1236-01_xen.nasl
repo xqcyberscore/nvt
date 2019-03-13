@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2012-September/msg00008.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870822");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-09-07 11:25:34 +0530 (Fri, 07 Sep 2012)");
   script_cve_id("CVE-2012-3515");
   script_tag(name:"cvss_base", value:"7.2");
@@ -59,7 +59,7 @@ if(description)
   implementation in Red Hat Enterprise Linux 5. This problem only affected
   fully-virtualized guests that have a serial or parallel device that uses a
   virtual console (vc) back-end. By default, the virtual console back-end is
-  not used for such devices; only guests explicitly configured to use them
+  not used for such devices. Only guests explicitly configured to use them
   in this way were affected.
 
   Red Hat would like to thank the Xen project for reporting this issue.

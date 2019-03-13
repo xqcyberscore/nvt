@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2012-June/msg00040.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870770");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-06-22 10:26:17 +0530 (Fri, 22 Jun 2012)");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:P/I:N/A:N");
@@ -54,15 +54,15 @@ if(description)
   If an LDAP user has changed their password, and the directory server has
   not been restarted since that change, an attacker able to bind to the
   directory server could obtain the plain text version of that user's
-  password via the &quot;unhashed#user#password&quot; attribute. (CVE-2012-2678)
+  password via the 'unhashed#user#password' attribute. (CVE-2012-2678)
 
   It was found that when the password for an LDAP user was changed, and audit
   logging was enabled (it is disabled by default), the new password was
   written to the audit log in plain text form. This update introduces a new
-  configuration parameter, &quot;nsslapd-auditlog-logging-hide-unhashed-pw&quot;, which
-  when set to &quot;on&quot; (the default option), prevents 389 Directory Server from
+  configuration parameter, 'nsslapd-auditlog-logging-hide-unhashed-pw', which
+  when set to 'on' (the default option), prevents 389 Directory Server from
   writing plain text passwords to the audit log. This option can be
-  configured in &quot;/etc/dirsrv/slapd-[ID]/dse.ldif&quot;. (CVE-2012-2746)
+  configured in '/etc/dirsrv/slapd-[ID]/dse.ldif'. (CVE-2012-2746)
 
   All users of 389-ds-base are advised to upgrade to these updated packages,
   which resolve these issues. After installing this update, the 389 server

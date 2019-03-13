@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: opennms_detect.nasl 10906 2018-08-10 14:50:26Z cfischer $
+# $Id: opennms_detect.nasl 14121 2019-03-13 06:21:23Z ckuersteiner $
 #
 # OpenNMS Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806530");
-  script_version("$Revision: 10906 $");
+  script_version("$Revision: 14121 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:50:26 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 07:21:23 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-11-04 17:27:57 +0530 (Wed, 04 Nov 2015)");
   script_name("OpenNMS Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -51,7 +51,6 @@ if(description)
   exit(0);
 }
 
-include("cpe.inc");
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -65,25 +64,18 @@ foreach dir( make_list_unique( "/", "/opennms", cgi_dirs( port:port ) ) ) {
 
   rcvRes = http_get_cache( item: dir + "/login.jsp", port:port );
 
-  if( "OpenNMS Group, Inc." >< rcvRes && "http://www.opennms.com/" >< rcvRes
-      && ">Login" >< rcvRes ) {
-
+  if( "OpenNMS Group, Inc." >< rcvRes && "http://www.opennms.com/" >< rcvRes && ">Login" >< rcvRes ) {
     version = "unknown";
 
-    set_kb_item( name:"www/" + port + "/OpenNms", value:version );
     set_kb_item( name:"OpenNms/Installed", value:TRUE );
 
-    cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:opennms:opennms:" );
-    if( ! cpe )
-      cpe = "cpe:/a:opennms:opennms";
+    cpe = "cpe:/a:opennms:opennms";
 
     register_product( cpe:cpe, location:install, port:port );
 
-    log_message( data:build_detection_report( app:"OpenNms",
-                                              version:version,
-                                              install:install,
-                                              cpe:cpe ),
-                                              port:port );
+    log_message( data:build_detection_report( app:"OpenNms", version:version, install:install, cpe:cpe ),
+                 port:port );
+    exit(0);
   }
 }
 

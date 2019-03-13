@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2011-January/msg00021.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870384");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-01-31 15:15:14 +0100 (Mon, 31 Jan 2011)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -52,7 +52,7 @@ if(description)
   A public static field declaration allowed untrusted JNLP (Java Network
   Launching Protocol) applications to read privileged data. A remote attacker
   could directly or indirectly read the values of restricted system
-  properties, such as &quot;user.name&quot;, &quot;user.home&quot;, and &quot;java.home&quot;, which
+  properties, such as 'user.name', 'user.home', and 'java.home', which
   untrusted applications should not be allowed to read. (CVE-2010-3860)
 
   It was found that JNLPSecurityManager could silently return without

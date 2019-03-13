@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_mult_indexed_search_xss_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_typo3_mult_indexed_search_xss_vuln.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # TYPO3 Indexed Search Cross Site Scripting Vulnerability
 #
@@ -23,33 +23,37 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/a:typo3:typo3";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803982");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 14117 $");
   script_cve_id("CVE-2006-5069");
   script_bugtraq_id(20173);
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-12-20 15:24:19 +0530 (Fri, 20 Dec 2013)");
   script_name("TYPO3 Indexed Search Cross Site Scripting Vulnerability");
 
-
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to steal the
-victim's cookie-based authentication credentials.");
+  victim's cookie-based authentication credentials.");
+
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+
   script_tag(name:"insight", value:"An error exists in the indexed search extension which fails to properly
-validate user supplied input");
-  script_tag(name:"solution", value:"Upgrade to TYPO3 version 4.0.2 or later, or apply the patch mentioned in the
-below link
-http://typo3.org/teams/security/security-bulletins/typo3-core/typo3-20060911-1");
+  validate user supplied input");
+
+  script_tag(name:"solution", value:"Upgrade to TYPO3 version 4.0.2 or later.");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_tag(name:"summary", value:"This host is installed with TYPO3 and is prone to cross site scripting
-vlnerability.");
+  vlnerability.");
+
   script_tag(name:"affected", value:"TYPO3 version before 4.0.2");
 
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/29128");
@@ -65,7 +69,6 @@ vlnerability.");
 
 include("version_func.inc");
 include("host_details.inc");
-
 
 if(!typoPort = get_app_port(cpe:CPE)){
   exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mfc_xss_vuln_jan15.nasl 11422 2018-09-17 07:30:48Z mmartin $
+# $Id: gb_mfc_xss_vuln_jan15.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Brother MFC Administration Reflected Cross-Site Scripting Vulnerabilities - Jan15
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805320");
-  script_version("$Revision: 11422 $");
+  script_version("$Revision: 14117 $");
   script_cve_id("CVE-2015-1056");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:30:48 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-01-12 20:15:26 +0530 (Mon, 12 Jan 2015)");
   script_name("Brother MFC Administration Reflected Cross-Site Scripting Vulnerabilities - Jan15");
 
@@ -50,8 +50,7 @@ if(description)
 
   script_tag(name:"affected", value:"Brother MFC-J4410DW with F/W Versions J and K");
 
-  script_tag(name:"solution", value:"Upgrade to latest firmware version.
-  For updates http://www.brother-usa.com");
+  script_tag(name:"solution", value:"Upgrade to latest firmware version.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

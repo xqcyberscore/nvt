@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: openwebmail_userstat_command_execution.nasl 13975 2019-03-04 09:32:08Z cfischer $
+# $Id: openwebmail_userstat_command_execution.nasl 14121 2019-03-13 06:21:23Z ckuersteiner $
 #
 # Open WebMail userstat.pl Arbitrary Command Execution
 #
@@ -29,14 +29,16 @@ CPE = "cpe:/a:openwebmail.acatysmoof:openwebmail";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.15529");
-  script_version("$Revision: 13975 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-04 10:32:08 +0100 (Mon, 04 Mar 2019) $");
+  script_version("$Revision: 14121 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 07:21:23 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_bugtraq_id(10316);
   script_xref(name:"OSVDB", value:"4201");
+
   script_name("Open WebMail userstat.pl Arbitrary Command Execution");
+
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2004 George A. Theall");
   script_family("Gain a shell remotely");
@@ -48,7 +50,9 @@ if(description)
 
   script_tag(name:"impact", value:"This failure enables remote attackers to execute arbitrary programs on
   the target using the privileges under which the web server operates.");
+
   script_tag(name:"solution", value:"Upgrade to Open WebMail version 2.30 20040127 or later.");
+
   script_tag(name:"summary", value:"The target is running at least one instance of Open WebMail in which
   the userstat.pl component fails to sufficiently validate user input.");
 

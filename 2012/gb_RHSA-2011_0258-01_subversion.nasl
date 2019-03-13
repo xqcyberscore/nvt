@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2011-February/msg00014.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870654");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-06-05 19:35:39 +0530 (Tue, 05 Jun 2012)");
   script_cve_id("CVE-2010-3315", "CVE-2010-4539", "CVE-2010-4644");
   script_tag(name:"cvss_base", value:"6.8");
@@ -53,13 +53,13 @@ if(description)
   Subversion repositories via HTTP.
 
   An access restriction bypass flaw was found in the mod_dav_svn module. If
-  the SVNPathAuthz directive was set to &quot;short_circuit&quot;, certain access rules
+  the SVNPathAuthz directive was set to 'short_circuit', certain access rules
   were not enforced, possibly allowing sensitive repository data to be leaked
-  to remote users. Note that SVNPathAuthz is set to &quot;On&quot; by default.
+  to remote users. Note that SVNPathAuthz is set to 'On' by default.
   (CVE-2010-3315)
 
   A server-side memory leak was found in the Subversion server. If a
-  malicious, remote user performed &quot;svn blame&quot; or &quot;svn log&quot; operations on
+  malicious, remote user performed 'svn blame' or 'svn log' operations on
   certain repository files, it could cause the Subversion server to consume
   a large amount of system memory. (CVE-2010-4644)
 

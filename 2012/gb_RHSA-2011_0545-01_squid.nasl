@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2011-May/msg00015.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870666");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-06-06 10:44:53 +0530 (Wed, 06 Jun 2012)");
   script_cve_id("CVE-2010-3072");
   script_tag(name:"cvss_base", value:"5.0");
@@ -56,8 +56,8 @@ if(description)
 
   This update also fixes the following bugs:
 
-  * A small memory leak in Squid caused multiple &quot;ctx: enter level&quot; messages
-  to be logged to &quot;/var/log/squid/cache.log&quot;. This update resolves the memory
+  * A small memory leak in Squid caused multiple 'ctx: enter level' messages
+  to be logged to '/var/log/squid/cache.log'. This update resolves the memory
   leak. (BZ#666533)
 
   * This erratum upgrades Squid to upstream version 3.1.10. This upgraded

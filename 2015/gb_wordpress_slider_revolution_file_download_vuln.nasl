@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_slider_revolution_file_download_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_wordpress_slider_revolution_file_download_vuln.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Wordpress Revslider Arbitrary File Download Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805670");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 14117 $");
   script_cve_id("CVE-2014-9734");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-07-10 15:54:40 +0530 (Fri, 10 Jul 2015)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Wordpress Revslider Arbitrary File Download Vulnerability");
@@ -56,8 +56,7 @@ if(description)
   plugin before 4.2.");
 
   script_tag(name:"solution", value:"Upgrade to Wordpress Slider Revolution 4.2 or
-  later or apply patch form the link
-  https://plugins.trac.wordpress.org/browser/patch-for-revolution-slider/trunk/revsliderpatch.php. ");
+  later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

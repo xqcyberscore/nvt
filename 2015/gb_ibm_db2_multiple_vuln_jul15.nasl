@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_multiple_vuln_jul15.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_ibm_db2_multiple_vuln_jul15.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # IBM DB2 Multiple Vulnerabilities - July15
 #
@@ -28,13 +28,13 @@ CPE = "cpe:/a:ibm:db2";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805940");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 14117 $");
   script_cve_id("CVE-2015-1935", "CVE-2015-1922", "CVE-2015-1883", "CVE-2015-0157",
                 "CVE-2014-8910");
   script_bugtraq_id(75908, 75911, 75946, 75947, 75949);
   script_tag(name:"cvss_base", value:"8.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-07-29 14:18:25 +0530 (Wed, 29 Jul 2015)");
   script_name("IBM DB2 Multiple Vulnerabilities - July15");
 
@@ -70,13 +70,7 @@ if(description)
 
   IBM DB2 versions 10.5 through FP5");
 
-  script_tag(name:"solution", value:"Apply the appropriate fix  http://www-01.ibm.com/support/docview.wss?uid=swg21697987
-
-  http://www-01.ibm.com/support/docview.wss?uid=swg21698308
-
-  http://www-01.ibm.com/support/docview.wss?uid=swg21959650
-
-  http://www-01.ibm.com/support/docview.wss?uid=swg21902661");
+  script_tag(name:"solution", value:"Apply the appropriate fix from the referenced advisories.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

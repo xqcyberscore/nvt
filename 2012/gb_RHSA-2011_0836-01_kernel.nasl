@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2011-June/msg00000.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870709");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-06-06 10:51:23 +0530 (Wed, 06 Jun 2012)");
   script_cve_id("CVE-2010-3858", "CVE-2011-1598", "CVE-2011-1748", "CVE-2011-1770", "CVE-2011-1771");
   script_tag(name:"cvss_base", value:"7.8");
@@ -73,8 +73,8 @@ if(description)
   user with write access to a CIFS file system could use this flaw to cause a
   denial of service. (CVE-2011-1771, Moderate)
 
-  Red Hat would like to thank Dan Rosenberg for reporting CVE-2011-1770; Brad
-  Spengler for reporting CVE-2010-3858; and Oliver Hartkopp for reporting
+  Red Hat would like to thank Dan Rosenberg for reporting CVE-2011-1770, Brad
+  Spengler for reporting CVE-2010-3858, and Oliver Hartkopp for reporting
   CVE-2011-1748.
 
   This update also fixes various bugs. Documentation for these bug fixes will

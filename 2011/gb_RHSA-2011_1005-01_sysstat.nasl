@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2011-July/msg00023.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870457");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-07-22 14:44:51 +0200 (Fri, 22 Jul 2011)");
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
@@ -58,22 +58,22 @@ if(description)
   following error message if a write() call was unable to write all of the
   requested input:
 
-  &quot;Cannot write data to system activity file: Success.&quot;
+  'Cannot write data to system activity file: Success.'
 
   In this updated package, the sadc utility tries to write the remaining
   input, resolving this issue. (BZ#454617)
 
-  * On the Itanium architecture, the &quot;sar -I&quot; command provided incorrect
+  * On the Itanium architecture, the 'sar -I' command provided incorrect
   information about the interrupt statistics of the system. With this update,
-  the &quot;sar -I&quot; command has been disabled for this architecture, preventing
+  the 'sar -I' command has been disabled for this architecture, preventing
   this bug. (BZ#468340)
 
-  * Previously, the &quot;iostat -n&quot; command used invalid data to create
+  * Previously, the 'iostat -n' command used invalid data to create
   statistics for read and write operations. With this update, the data source
   for these statistics has been fixed, and the iostat utility now returns
   correct information. (BZ#484439)
 
-  * The &quot;sar -d&quot; command used to output invalid data about block devices.
+  * The 'sar -d' command used to output invalid data about block devices.
   With this update, the sar utility recognizes disk registration and disk
   overflow statistics properly, and only correct and relevant data is now
   displayed. (BZ#517490)
@@ -86,7 +86,7 @@ if(description)
 
   * In previous versions of the iostat utility, the number of NFS mount
   points was hard-coded. Consequently, various issues occurred while iostat
-  was running and NFS mount points were mounted or unmounted; certain values
+  was running and NFS mount points were mounted or unmounted. Certain values
   in iostat reports overflowed and some mount points were not reported at
   all. With this update, iostat properly recognizes when an NFS mount point
   mounts or unmounts, fixing these issues. (BZ#675058, BZ#706095, BZ#694767)

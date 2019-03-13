@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_tivoli_dir_proxy_server_dos_vuln.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: gb_ibm_tivoli_dir_proxy_server_dos_vuln.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # IBM Tivoli Directory Proxy Server Denial of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801824");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 14117 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-01-21 14:38:54 +0100 (Fri, 21 Jan 2011)");
   script_cve_id("CVE-2010-4217");
   script_bugtraq_id(44604);
@@ -39,6 +39,8 @@ if(description)
   script_xref(name:"URL", value:"http://secunia.com/advisories/42083");
   script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2010/2861");
   script_xref(name:"URL", value:"http://securitytracker.com/alerts/2010/Nov/1024670.html");
+  script_xref(name:"URL", value:"https://www-304.ibm.com/support/docview.wss?uid=swg1IO13364");
+  script_xref(name:"URL", value:"https://www-304.ibm.com/support/docview.wss?uid=swg1IO13282");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
@@ -53,9 +55,8 @@ if(description)
   script_tag(name:"insight", value:"The flaw is is caused by an error in the Proxy server when constructing LDAP
   search requests, which could allow remote attackers to crash an affected
   server by sending an unbind operation during a page results search.");
-  script_tag(name:"solution", value:"Apply interim fix 6.0.0.8-TIV-ITDS-IF0007 or 6.1.0-TIV-ITDS-FP0005.
-  https://www-304.ibm.com/support/docview.wss?uid=swg1IO13364
-  https://www-304.ibm.com/support/docview.wss?uid=swg1IO13282");
+  script_tag(name:"solution", value:"Apply interim fix 6.0.0.8-TIV-ITDS-IF0007 or 6.1.0-TIV-ITDS-FP0005.");
+
   script_tag(name:"summary", value:"The host is running IBM Tivoli Directory Server and is prone
   to denial of service vulnerability.");
 

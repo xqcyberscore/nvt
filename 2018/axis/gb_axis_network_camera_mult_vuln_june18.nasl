@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_axis_network_camera_mult_vuln_june18.nasl 12026 2018-10-23 08:22:54Z mmartin $
+# $Id: gb_axis_network_camera_mult_vuln_june18.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Axis Network Camera Multiple Vulnerabilities-June18
 #
@@ -28,12 +28,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813446");
-  script_version("$Revision: 12026 $");
+  script_version("$Revision: 14117 $");
   script_cve_id("CVE-2018-10658", "CVE-2018-10659", "CVE-2018-10660", "CVE-2018-10661",
                 "CVE-2018-10662", "CVE-2018-10663", "CVE-2018-10664");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:22:54 +0200 (Tue, 23 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-06-19 15:06:09 +0530 (Tue, 19 Jun 2018)");
   script_name("Axis Network Camera Multiple Vulnerabilities-June18");
 
@@ -46,7 +46,7 @@ if(description)
   script_tag(name:"insight", value:"Multiple flaws exists due to,
 
   - Requests to a world-readable file that are followed by a backslash and end
-    with the '.srv' extension (e.g. http://CAMERA_IP/index.html/a.srv) are treated
+    with the '.srv' extension (e.g. http://example.com/index.html/a.srv) are treated
     by the authorization code as standard requests to the index.html and thus
     granted access, while the requests are also treated as legitimate requests to
     an .srv path, and are thus handled by the .srv handler, simultaneously.
@@ -116,17 +116,18 @@ res = http_get_cache(item: "/", port: axport);
 if('content="Axis Communications AB"' >< res && "<title>AXIS</title>" >< res)
 {
   req = http_post_req( port:axport,
-                       url:"/index.html/OpenVAS_TEST.srv",
-                       data:'action=test&return_page=OpenVAS_Vulnerability_Test',
+                       url:"/index.html/VT_TEST.srv",
+                       data:'action=test&return_page=VT_Vulnerability_Test',
                        add_headers: make_array( "Content-Type", "application/x-www-form-urlencoded"));
 
   res = http_keepalive_send_recv( port:axport, data:req);
 
-  if(res =~ "^(HTTP/1.. 303)" && "Location:" >< res && "Location: OpenVAS_Vulnerability_Test" >< res)
+  if(res =~ "^(HTTP/1.. 303)" && "Location:" >< res && "Location: VT_Vulnerability_Test" >< res)
   {
-    report = report_vuln_url(port:axport, url:"/index.html/OpenVAS_TEST.srv");
+    report = report_vuln_url(port:axport, url:"/index.html/VT_TEST.srv");
     security_message(port:axport, data:report);
     exit(0);
   }
 }
+
 exit(0);

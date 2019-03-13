@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2011-December/msg00005.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870695");
-  script_version("$Revision: 12382 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-09 10:49:44 +0530 (Mon, 09 Jul 2012)");
   script_cve_id("CVE-2011-1020", "CVE-2011-3347", "CVE-2011-3638", "CVE-2011-4110");
   script_tag(name:"cvss_base", value:"4.6");
@@ -71,8 +71,8 @@ if(description)
   unprivileged user could use the keyctl utility to cause a denial of
   service. (CVE-2011-4110, Moderate)
 
-  Red Hat would like to thank Kees Cook for reporting CVE-2011-1020; Somnath
-  Kotur for reporting CVE-2011-3347; and Zheng Liu for reporting
+  Red Hat would like to thank Kees Cook for reporting CVE-2011-1020, Somnath
+  Kotur for reporting CVE-2011-3347, and Zheng Liu for reporting
   CVE-2011-3638.
 
   This update also fixes several hundred bugs and adds enhancements. Refer to
@@ -94,9 +94,9 @@ if(description)
   This update is available via the Red Hat Network. Details on how to
   use the Red Hat Network to apply this update are available at the linked references.
 
-  To install kernel packages manually, use &quot;rpm -ivh [package]&quot;. Do not
-  use &quot;rpm -Uvh&quot; as that will remove the running kernel binaries from
-  your system. You may use &quot;rpm -e&quot; to remove old kernels after
+  To install kernel packages manually, use 'rpm -ivh [package]'. Do not
+  use 'rpm -Uvh' as that will remove the running kernel binaries from
+  your system. You may use 'rpm -e' to remove old kernels after
   determining that the new kernel  ..
 
   Description truncated, please see the referenced URL(s) for more information.");

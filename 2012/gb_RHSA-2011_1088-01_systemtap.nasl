@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2011-July/msg00029.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870636");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-06-06 10:38:24 +0530 (Wed, 06 Jun 2012)");
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
@@ -53,7 +53,7 @@ if(description)
 
   It was found that SystemTap did not perform proper module path sanity
   checking if a user specified a custom path to the uprobes module, used
-  when performing user-space probing (&quot;staprun -u&quot;). A local user who is a
+  when performing user-space probing ('staprun -u'). A local user who is a
   member of the stapusr group could use this flaw to bypass intended
   module-loading restrictions, allowing them to escalate their privileges by
   loading an arbitrary, unsigned module. (CVE-2011-2502)

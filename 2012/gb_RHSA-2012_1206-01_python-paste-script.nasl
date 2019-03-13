@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2012-August/msg00026.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870815");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-08-28 10:25:44 +0530 (Tue, 28 Aug 2012)");
   script_cve_id("CVE-2012-0878");
   script_tag(name:"cvss_base", value:"5.1");
@@ -51,7 +51,7 @@ if(description)
   working with and running Python Paste applications.
 
   It was discovered that paster did not drop supplementary group privileges
-  when started by the root user. Running &quot;paster serve&quot; as root to start a
+  when started by the root user. Running 'paster serve' as root to start a
   Python web application that will run as a non-root user and group resulted
   in that application running with root group privileges. This could possibly
   allow a remote attacker to gain access to files that should not be

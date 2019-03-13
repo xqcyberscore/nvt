@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2012-December/msg00014.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870869");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-12-10 09:46:42 +0530 (Mon, 10 Dec 2012)");
   script_cve_id("CVE-2012-5688");
   script_tag(name:"cvss_base", value:"7.8");
@@ -48,8 +48,8 @@ if(description)
   Red Hat Enterprise Linux Workstation (v. 6)");
   script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"insight", value:"The Berkeley Internet Name Domain (BIND) is an implementation of the Domain
-  Name System (DNS) protocols. BIND includes a DNS server (named); a resolver
-  library (routines for applications to use when interfacing with DNS); and
+  Name System (DNS) protocols. BIND includes a DNS server (named), a resolver
+  library (routines for applications to use when interfacing with DNS), and
   tools for verifying that the DNS server is operating correctly. DNS64 is
   used to automatically generate DNS records so IPv6 based clients can access
   IPv4 systems through a NAT64 server.

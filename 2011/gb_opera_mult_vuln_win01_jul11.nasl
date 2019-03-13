@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mult_vuln_win01_jul11.nasl 12010 2018-10-22 08:23:57Z mmartin $
+# $Id: gb_opera_mult_vuln_win01_jul11.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Opera Browser Multiple Vulnerabilities July-11 (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802111");
-  script_version("$Revision: 12010 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 10:23:57 +0200 (Mon, 22 Oct 2018) $");
+  script_version("$Revision: 14117 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-07-05 13:15:06 +0200 (Tue, 05 Jul 2011)");
   script_cve_id("CVE-2011-2628", "CVE-2011-2629", "CVE-2011-2630",
                 "CVE-2011-2631", "CVE-2011-2632", "CVE-2011-2633");
@@ -57,9 +57,7 @@ if(description)
   - In Cascading Style Sheets (CSS) implementation, when handling the
     column-count property.
 
-  - When error when handling destruction of a silver-light instance.
-
-  - When opening www.falk.de.");
+  - When error when handling destruction of a silver-light instance.");
   script_tag(name:"solution", value:"Upgrade to Opera Web Browser Version 11.11 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"The host is installed with Opera browser and is prone to multiple

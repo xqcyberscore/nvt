@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_1637_1.nasl 12497 2018-11-23 08:28:21Z cfischer $
+# $Id: gb_suse_2012_1637_1.nasl 14114 2019-03-12 11:48:52Z cfischer $
 #
 # SuSE Update for Chromium openSUSE-SU-2012:1637-1 (Chromium)
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.opensuse.org/opensuse-security-announce/2012-12/msg00011.html");
   script_oid("1.3.6.1.4.1.25623.1.0.850385");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-03-11 18:29:42 +0530 (Mon, 11 Mar 2013)");
   script_cve_id("CVE-2012-5130", "CVE-2012-5131", "CVE-2012-5132", "CVE-2012-5133",
                 "CVE-2012-5134", "CVE-2012-5135", "CVE-2012-5136", "CVE-2012-5137",
@@ -76,7 +76,7 @@ if(description)
 
   - Update to 25.0.1335
 
-  * {gtk} Fixed &lt;input&gt; selection renders white text on
+  * {gtk} Fixed <input&> selection renders white text on
   white background in apps. (Issue: 158422)
 
   * Fixed translate infobar button to show selected

@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2011-May/msg00024.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870609");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-06-06 10:33:54 +0530 (Wed, 06 Jun 2012)");
   script_cve_id("CVE-2011-0014");
   script_tag(name:"cvss_base", value:"5.0");
@@ -58,26 +58,26 @@ if(description)
 
   This update fixes the following bugs:
 
-  * The &quot;openssl speed&quot; command (which provides algorithm speed measurement)
+  * The 'openssl speed' command (which provides algorithm speed measurement)
   failed when openssl was running in FIPS (Federal Information Processing
   Standards) mode, even if testing of FIPS approved algorithms was requested.
   FIPS mode disables ciphers and cryptographic hash algorithms that are not
   approved by the NIST (National Institute of Standards and Technology)
-  standards. With this update, the &quot;openssl speed&quot; command no longer fails.
+  standards. With this update, the 'openssl speed' command no longer fails.
   (BZ#619762)
 
-  * The &quot;openssl pkcs12 -export&quot; command failed to export a PKCS#12 file in
+  * The 'openssl pkcs12 -export' command failed to export a PKCS#12 file in
   FIPS mode. The default algorithm for encrypting a certificate in the
   PKCS#12 file was not FIPS approved and thus did not work. The command now
   uses a FIPS approved algorithm by default in FIPS mode. (BZ#673453)
 
   This update also adds the following enhancements:
 
-  * The &quot;openssl s_server&quot; command, which previously accepted connections
+  * The 'openssl s_server' command, which previously accepted connections
   only over IPv4, now accepts connections over IPv6. (BZ#601612)
 
   * For the purpose of allowing certain maintenance commands to be run (such
-  as &quot;rsync&quot;), an &quot;OPENSSL_FIPS_NON_APPROVED_MD5_ALLOW&quot; environment variable
+  as 'rsync'), an 'OPENSSL_FIPS_NON_APPROVED_MD5_ALLOW' environment variable
   has been added. When a system is configured for FIPS mode and is in a
   maintenance state, this newly added environment variable can be set to
   allow software that requires the use of an MD5 cryptographic hash algorithm

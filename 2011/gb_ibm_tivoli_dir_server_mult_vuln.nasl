@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_tivoli_dir_server_mult_vuln.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: gb_ibm_tivoli_dir_server_mult_vuln.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # IBM Tivoli Directory Server Multiple Vulnerabilities
 #
@@ -27,15 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802224");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 14117 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-07-22 12:16:19 +0200 (Fri, 22 Jul 2011)");
   script_cve_id("CVE-2011-2758", "CVE-2011-2759");
   script_bugtraq_id(48512);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_name("IBM Tivoli Directory Server Multiple Vulnerabilities");
-
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/45107");
   script_xref(name:"URL", value:"https://www-304.ibm.com/support/docview.wss?uid=swg24030320");
@@ -59,8 +58,7 @@ if(description)
     workstation.");
   script_tag(name:"summary", value:"The host is running IBM Tivoli Directory Server and is prone
   to multiple vulnerabilities.");
-  script_tag(name:"solution", value:"Apply cumulative interim fix 6.2.0.3-TIV-ITDS-IF0004,
-  https://www-304.ibm.com/support/docview.wss?uid=swg24030320
+  script_tag(name:"solution", value:"Apply cumulative interim fix 6.2.0.3-TIV-ITDS-IF0004.
 
   *****
   NOTE : Ignore this warning, if above mentioned patch is already applied.

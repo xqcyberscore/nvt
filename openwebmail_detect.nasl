@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: openwebmail_detect.nasl 10894 2018-08-10 13:09:25Z cfischer $
+# $Id: openwebmail_detect.nasl 14121 2019-03-13 06:21:23Z ckuersteiner $
 #
 # Open WebMail Detection
 #
@@ -27,12 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14221");
-  script_version("$Revision: 10894 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:09:25 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 14121 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 07:21:23 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
+
   script_name("Open WebMail Detection");
+
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2004 George A. Theall");
   script_family("Product detection");
@@ -53,6 +55,7 @@ if(description)
   exit(0);
 }
 
+include("cpe.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
@@ -70,16 +73,17 @@ installs = 0;
 rel = NULL;
 
 foreach dir( make_list_unique( "/", "/cgi-bin/openwebmail", "/openwebmail-cgi", cgi_dirs( port:port ) ) ) {
-
   install = dir;
   if( dir == "/" ) dir = "";
+
   url = dir + "/openwebmail.pl";
   req = http_get( item:url, port:port );
   res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
   if( isnull( res ) ) continue; # can't connect
 
   # If the page refers to Open WebMail, try to get its version number.
-  if( egrep( string:res, pattern:"^HTTP/1\.[01] 200" ) && egrep( string:res, pattern:"(http://openwebmail\.org|Open WebMail)" ) ) {
+  if( egrep( string:res, pattern:"^HTTP/1\.[01] 200" ) &&
+      egrep( string:res, pattern:"(http://openwebmail\.org|Open WebMail)" ) ) {
 
     version = "unknown";
 
@@ -118,6 +122,7 @@ foreach dir( make_list_unique( "/", "/cgi-bin/openwebmail", "/openwebmail-cgi", 
           foreach match( split( matches ) ) {
             match = chomp( match );
             vers = eregmatch( pattern:"version +(.+).$", string:match );
+            concUrl = url;
             if( isnull( vers[1] ) ) {
               # nb: only first release date matters.
               if( isnull( rel ) ) {
@@ -135,25 +140,17 @@ foreach dir( make_list_unique( "/", "/cgi-bin/openwebmail", "/openwebmail-cgi", 
       }
     }
 
-    tmp_version = version + " under " + install;
-    set_kb_item( name:"www/" + port + "/OpenWebMail", value:tmp_version );
     set_kb_item( name:"OpenWebMail/detected", value:TRUE );
 
-    if( version != "unknown" ) {
-      cpe = "cpe:/a:openwebmail.acatysmoof:openwebmail:" + version;
-    } else {
-      cpe = "cpe:/a:openwebmail.acatysmoof:openwebmail";
-    }
+    cpe = build_cpe(value: version, exp: "^([0-9. ]+)", base: "cpe:/a:openwebmail.acatysmoof:openwebmail:");
+    if (!cpe)
+      cpe = 'cpe:/a:openwebmail.acatysmoof:openwebmail';
 
-    register_product( cpe:cpe, location:install, port:port );
+    register_product( cpe:cpe, location:install, port:port, service: "www" );
 
-    log_message( data:build_detection_report( app:"Open WebMail",
-                                              version:version,
-                                              install:install,
-                                              cpe:cpe,
-                                              concluded:vers[0] ),
-                                              port:port );
-
+    log_message( data:build_detection_report( app:"Open WebMail", version:version, install:install, cpe:cpe,
+                                              concluded:vers[0], concludedUrl: concUrl ),
+                 port:port );
   }
 }
 

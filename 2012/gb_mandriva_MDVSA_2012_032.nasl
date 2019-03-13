@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:032");
   script_oid("1.3.6.1.4.1.25623.1.0.831611");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-08-03 09:54:06 +0530 (Fri, 03 Aug 2012)");
   script_cve_id("CVE-2012-0454", "CVE-2012-0455", "CVE-2012-0457", "CVE-2012-0456",
                 "CVE-2012-0451", "CVE-2012-0458", "CVE-2012-0459", "CVE-2012-0460",
@@ -63,11 +63,11 @@ if(description)
   (CVE-2012-0455).
 
   Security researcher Atte Kettunen from OUSPG found two issues with
-  Firefox&#039;s handling of SVG using the Address Sanitizer tool. The first
+  Firefox's handling of SVG using the Address Sanitizer tool. The first
   issue, critically rated, is a use-after-free in SVG animation that
   could potentially lead to arbitrary code execution. The second issue
   is rated moderate and is an out of bounds read in SVG Filters. This
-  could potentially incorporate data from the user&#039;s memory, making it
+  could potentially incorporate data from the user's memory, making it
   accessible to the page content (CVE-2012-0457, CVE-2012-0456).
 
   Description truncated, please see the referenced URL(s) for more information.");

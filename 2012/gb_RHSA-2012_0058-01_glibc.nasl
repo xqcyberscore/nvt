@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2012-January/msg00020.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870722");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-09 10:53:27 +0530 (Mon, 09 Jul 2012)");
   script_cve_id("CVE-2009-5029", "CVE-2011-4609");
   script_tag(name:"cvss_base", value:"6.8");
@@ -75,7 +75,7 @@ if(description)
 
   * The RHBA-2011:1179 glibc update introduced a regression, causing glibc to
   incorrectly parse groups with more than 126 members, resulting in
-  applications such as &quot;id&quot; failing to list all the groups a particular user
+  applications such as 'id' failing to list all the groups a particular user
   was a member of. With this update, group parsing has been fixed.
   (BZ#766484)
 

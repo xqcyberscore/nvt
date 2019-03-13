@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2011-January/msg00016.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870382");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-01-21 14:59:01 +0100 (Fri, 21 Jan 2011)");
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
@@ -57,10 +57,10 @@ if(description)
 
   This update also fixes the following bugs:
 
-  * Due to an off-by-one error, gfs2_grow failed to take the very last &quot;rgrp&quot;
+  * Due to an off-by-one error, gfs2_grow failed to take the very last 'rgrp'
   parameter into account when adding up the new free space. With this update,
   the GFS2 kernel properly counts all the new resource groups and fixes the
-  &quot;statfs&quot; file correctly. (BZ#666792)
+  'statfs' file correctly. (BZ#666792)
 
   * Prior to this update, a multi-threaded application, which invoked
   popen(3) internally, could cause a thread stall by FILE lock corruption.
@@ -69,10 +69,10 @@ if(description)
   (Copy On Write) logic. With this update, the race condition was corrected
   and FILE lock corruption no longer occurs. (BZ#667050)
 
-  * If an error occurred during I/O, the SCSI driver reset the &quot;megaraid_sas&quot;
+  * If an error occurred during I/O, the SCSI driver reset the 'megaraid_sas'
   controller to restore it to normal state. However, on Red Hat Enterprise
   Linux 5, the waiting time to allow a full reset completion for the
-  &quot;megaraid_sas&quot; controller was too short. The driver incorrectly recognized
+  'megaraid_sas' controller was too short. The driver incorrectly recognized
   the controller as stalled, and, as a result, the system stalled as well.
   With this update, more time is given to the controller to properly restart,
   thus, the controller operates as expected after being reset. (BZ#667141)

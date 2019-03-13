@@ -44,7 +44,7 @@ if(description)
   subsystem handled guests attempting to run with the X86_CR4_OSXSAVE CPU
   feature flag set. On hosts without the XSAVE CPU feature, a local,
   unprivileged user could use this flaw to crash the host system. (The
-  &quot;grep --color xsave /proc/cpuinfo&quot; command can be used to verify if your
+  'grep --color xsave /proc/cpuinfo' command can be used to verify if your
   system has the XSAVE CPU feature.) (CVE-2012-4461, Moderate)
 
   * A memory disclosure flaw was found in the way the load_script() function
@@ -64,8 +64,8 @@ if(description)
   Notes. The system must be rebooted for this update to take effect.");
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2013-February/msg00010.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870903");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-02-08 10:15:50 +0530 (Fri, 08 Feb 2013)");
   script_cve_id("CVE-2012-4398", "CVE-2012-4461", "CVE-2012-4530");
   script_tag(name:"cvss_base", value:"4.9");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_multiple_dos_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_ibm_db2_multiple_dos_vuln.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # IBM DB2 Multiple Denial of Service Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:ibm:db2";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805035");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 14117 $");
   script_cve_id("CVE-2014-6209", "CVE-2014-8901");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-01-08 13:04:41 +0530 (Thu, 08 Jan 2015)");
   script_name("IBM DB2 Multiple Denial of Service Vulnerabilities");
 
@@ -54,12 +54,16 @@ if(description)
   to cause the server to terminate abnormally and cause a denial of service.");
 
   script_tag(name:"affected", value:"IBM DB2 versions 9.5 through FP10
+
   IBM DB2 versions 9.7 through FP10
+
   IBM DB2 versions 9.8 through FP5
+
   IBM DB2 versions 10.1 through FP4
+
   IBM DB2 versions 10.5 through FP4");
 
-  script_tag(name:"solution", value:"Apply the appropriate fix  http://www-01.ibm.com/support/docview.wss?uid=swg21692358");
+  script_tag(name:"solution", value:"Apply the appropriate fix from the referenced advisory.");
 
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/99110");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/98684");

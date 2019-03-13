@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2011-May/msg00021.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870711");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-06-06 10:51:51 +0530 (Wed, 06 Jun 2012)");
   script_cve_id("CVE-2011-0010");
   script_tag(name:"cvss_base", value:"4.4");
@@ -58,10 +58,10 @@ if(description)
 
   This update also fixes the following bugs:
 
-  * When the &quot;/etc/sudoers&quot; file contained entries with multiple hosts,
-  running the &quot;sudo -l&quot; command incorrectly reported that a certain user does
+  * When the '/etc/sudoers' file contained entries with multiple hosts,
+  running the 'sudo -l' command incorrectly reported that a certain user does
   not have permissions to use sudo on the system. With this update, running
-  the &quot;sudo -l&quot; command now produces the correct output. (BZ#603823)
+  the 'sudo -l' command now produces the correct output. (BZ#603823)
 
   * Prior to this update, the manual page for sudoers.ldap was not installed,
   even though it contains important information on how to set up an LDAP
@@ -75,13 +75,13 @@ if(description)
   now looks for these files in the same location as the nss_ldap package.
   (BZ#652726)
 
-  * When a file was edited using the &quot;sudo -e file&quot; or the &quot;sudoedit file&quot;
+  * When a file was edited using the 'sudo -e file' or the 'sudoedit file'
   command, the editor being executed for this task was logged only as
-  &quot;sudoedit&quot;. With this update, the full path to the executable being used as
-  an editor is now logged (instead of &quot;sudoedit&quot;). (BZ#665131)
+  'sudoedit'. With this update, the full path to the executable being used as
+  an editor is now logged (instead of 'sudoedit'). (BZ#665131)
 
-  * A comment regarding the &quot;visiblepw&quot; option of the &quot;Defaults&quot; directive
-  has been added to the default &quot;/etc/sudoers&quot; file to clarify its usage.
+  * A comment regarding the 'visiblepw' option of the 'Defaults' directive
+  has been added to the default '/etc/sudoers' file to clarify its usage.
   (BZ#688640)
 
   * This erratum upgrades sudo to upstream version 1.7.4p5, which provides a

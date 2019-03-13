@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: freebsd_bugzilla14.nasl 11762 2018-10-05 10:54:12Z cfischer $
+# $Id: freebsd_bugzilla14.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Auto generated from VID 0c7a3ee2-3654-11e1-b404-20cf30e32f6d
 #
@@ -30,11 +30,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.70581");
   script_tag(name:"creation_date", value:"2012-02-13 01:48:16 +0100 (Mon, 13 Feb 2012)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-2011-3657", "CVE-2011-3667", "CVE-2011-3668", "CVE-2011-3669");
-  script_version("$Revision: 11762 $");
+  script_version("$Revision: 14117 $");
   script_name("FreeBSD Ports: bugzilla");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 E-Soft Inc. http://www.securityspace.com");
@@ -46,16 +46,16 @@ if(description)
 
 CVE-2011-3657
 Multiple cross-site scripting (XSS) vulnerabilities in Bugzilla 2.x
-and 3.x before 3.4.13; 3.5.x and 3.6.x before 3.6.7; 3.7.x and 4.0.x
-before 4.0.3; and 4.1.x through 4.1.3, when debug mode is used, allow
+and 3.x before 3.4.13, 3.5.x and 3.6.x before 3.6.7, 3.7.x and 4.0.x
+before 4.0.3, and 4.1.x through 4.1.3, when debug mode is used, allow
 remote attackers to inject arbitrary web script or HTML via vectors
 involving a (1) tabular report, (2) graphical report, or (3) new
 chart.
 
 CVE-2011-3667
 The User.offer_account_by_email WebService method in Bugzilla 2.x and
-3.x before 3.4.13; 3.5.x and 3.6.x before 3.6.7; 3.7.x and 4.0.x
-before 4.0.3; and 4.1.x through 4.1.3, when createemailregexp is not
+3.x before 3.4.13, 3.5.x and 3.6.x before 3.6.7, 3.7.x and 4.0.x
+before 4.0.3, and 4.1.x through 4.1.3, when createemailregexp is not
 empty, does not properly handle user_can_create_account settings,
 which allows remote attackers to create user accounts by leveraging a
 token contained in an e-mail message.

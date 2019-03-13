@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: openwebmail_vacation_input_validation.nasl 13975 2019-03-04 09:32:08Z cfischer $
+# $Id: openwebmail_vacation_input_validation.nasl 14121 2019-03-13 06:21:23Z ckuersteiner $
 #
 # Open WebMail vacation.pl Arbitrary Command Execution
 #
@@ -29,15 +29,17 @@ CPE = "cpe:/a:openwebmail.acatysmoof:openwebmail";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12637");
-  script_version("$Revision: 13975 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-04 10:32:08 +0100 (Mon, 04 Mar 2019) $");
+  script_version("$Revision: 14121 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 07:21:23 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2004-2284");
   script_bugtraq_id(10637);
   script_xref(name:"OSVDB", value:"7474");
+
   script_name("Open WebMail vacation.pl Arbitrary Command Execution");
+
   script_category(ACT_MIXED_ATTACK);
   script_copyright("This script is Copyright (C) 2004 George A. Theall");
   script_family("Gain a shell remotely");

@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.mandriva.com/security-announce/2011-08/msg00006.php");
   script_oid("1.3.6.1.4.1.25623.1.0.831441");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-18 14:57:45 +0200 (Thu, 18 Aug 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -72,7 +72,7 @@ if(description)
   in phpMyAdmin 3.x before 3.3.10.2 and 3.4.x before 3.4.3.1, when
   a certain MIME transformation feature is enabled, allows remote
   authenticated users to include and execute arbitrary local files
-  via a .. (dot dot) in a GLOBALS[mime_map][-&amp;gt;name][transformation]
+  via a .. (dot dot) in a GLOBALS[mime_map][->name][transformation]
   parameter (CVE-2011-2508).
 
   Multiple cross-site scripting (XSS) vulnerabilities in the table Print

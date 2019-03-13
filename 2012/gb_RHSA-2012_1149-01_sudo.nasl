@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2012-August/msg00006.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870807");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-08-09 10:21:05 +0530 (Thu, 09 Aug 2012)");
   script_cve_id("CVE-2012-3440");
   script_tag(name:"cvss_base", value:"5.6");
@@ -51,13 +51,13 @@ if(description)
   An insecure temporary file use flaw was found in the sudo package's
   post-uninstall script. A local attacker could possibly use this flaw to
   overwrite an arbitrary file via a symbolic link attack, or modify the
-  contents of the &quot;/etc/nsswitch.conf&quot; file during the upgrade or removal of
+  contents of the '/etc/nsswitch.conf' file during the upgrade or removal of
   the sudo package. (CVE-2012-3440)
 
   This update also fixes the following bugs:
 
   * Previously, sudo escaped non-alphanumeric characters in commands using
-  &quot;sudo -s&quot; or &quot;sudo -&quot; at the wrong place and interfered with the
+  'sudo -s' or 'sudo -' at the wrong place and interfered with the
   authorization process. Some valid commands were not permitted. Now,
   non-alphanumeric characters escape immediately before the command is
   executed and no longer interfere with the authorization process.

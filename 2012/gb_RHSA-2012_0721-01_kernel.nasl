@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2012-June/msg00006.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870752");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-06-15 09:45:29 +0530 (Fri, 15 Jun 2012)");
   script_cve_id("CVE-2012-0217", "CVE-2012-2934");
   script_tag(name:"cvss_base", value:"7.2");
@@ -64,8 +64,8 @@ if(description)
   crash the host. Warning: After installing this update, hosts that are using
   an affected AMD CPU (refer to Red Hat Bugzilla bug #824966 for a list) will
   fail to boot. In order to boot such hosts, the new kernel parameter,
-  allow_unsafe, can be used (&quot;allow_unsafe=on&quot;). This option should only be
-  used with hosts that are running trusted guests, as setting it to &quot;on&quot;
+  allow_unsafe, can be used ('allow_unsafe=on'). This option should only be
+  used with hosts that are running trusted guests, as setting it to 'on'
   reintroduces the flaw (allowing guests to crash the host). (CVE-2012-2934,
   Moderate)
 

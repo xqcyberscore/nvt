@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol31925518.nasl 11961 2018-10-18 10:49:40Z asteins $
+# $Id: gb_f5_big_ip_sol31925518.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # F5 BIG-IP - SOL31925518 - BIG-IP APM access logs vulnerability CVE-2016-1497
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2016-1497");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_version("$Revision: 11961 $");
+  script_version("$Revision: 14117 $");
 
   script_name("F5 BIG-IP - SOL31925518 - BIG-IP APM access logs vulnerability CVE-2016-1497");
 
@@ -44,12 +44,12 @@ if (description)
   script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
   script_tag(name:"summary", value:"A vulnerability in the BIG-IP Configuration utility can be used by an unauthorized BIG-IP administrative user to gain unauthorized access to the Access Policy Manager (APM)
 access logs. This vulnerability requires valid user account credentials and access to the Configuration utility. This flaw exists when APM is configured, and exposes session details within the access logs. If
-the BIG-IP APM system is not in use, the vulnerability still exists; however, there is no data stored in the log files in question when the BIG-IP APM system is not actively in use.");
+the BIG-IP APM system is not in use, the vulnerability still exists. However, there is no data stored in the log files in question when the BIG-IP APM system is not actively in use.");
 
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-08-12 13:37:02 +0200 (Fri, 12 Aug 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("F5 Local Security Checks");

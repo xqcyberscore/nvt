@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.mandriva.com/security-announce/2011-05/msg00005.php");
   script_oid("1.3.6.1.4.1.25623.1.0.831393");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-05-17 15:58:48 +0200 (Tue, 17 May 2011)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -52,7 +52,7 @@ if(description)
   Mandriva Enterprise Server 5,
   Mandriva Enterprise Server 5/X86_64");
   script_tag(name:"insight", value:"It was discovered that the apr_fnmatch() function used an unconstrained
-  recursion when processing patterns with the &amp;#039;*&amp;#039; wildcard. An attacker
+  recursion when processing patterns with the '*' wildcard. An attacker
   could use this flaw to cause an application using this function,
   which also accepted untrusted input as a pattern for matching (such
   as an httpd server using the mod_autoindex module), to exhaust all

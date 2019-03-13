@@ -1,8 +1,8 @@
 ###############################################################################
-# OpenVAS Vulnerability GSHB
-# $Id: GSHB_WMI_removable-media.nasl 10949 2018-08-14 09:36:21Z emoss $
+# OpenVAS Vulnerability Test
+# $Id: GSHB_WMI_removable-media.nasl 14124 2019-03-13 07:14:43Z cfischer $
 #
-# Removable media deaktivated (Windows)
+# Removable media deactivated (Windows)
 #
 # Authors:
 # Thomas Rotter <T.Rotter@dn-systems.de>
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96006");
-  script_version("$Revision: 10949 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 11:36:21 +0200 (Tue, 14 Aug 2018) $");
+  script_version("$Revision: 14124 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 08:14:43 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-04-27 10:02:59 +0200 (Tue, 27 Apr 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"registry");
-  script_name("Removable media deaktivated (Windows)");
+  script_name("Removable media deactivated (Windows)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");
@@ -64,7 +64,7 @@ if(!OSVER || OSVER >< "none"){
   set_kb_item(name:"WMI/SF_driver_start", value:"error");
   set_kb_item(name:"WMI/USB_driver_start", value:"error");
   set_kb_item(name:"WMI/StorageDevicePolicies", value:"error");
-  set_kb_item(name:"WMI/StorageDevicePolicies/log", value:"No access to SMB host.\nFirewall is activated or there is not a Windows system.");
+  set_kb_item(name:"WMI/StorageDevicePolicies/log", value:"No access to SMB host. Firewall is activated or there is not a Windows system.");
   exit(0);
 }
 

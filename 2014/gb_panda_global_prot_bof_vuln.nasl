@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panda_global_prot_bof_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_panda_global_prot_bof_vuln.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Panda Global Protection Heap Based Buffer Overflow Sept14
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:pandasecurity:panda_global_protection_2014";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804906");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 14117 $");
   script_cve_id("CVE-2014-5307");
   script_bugtraq_id(69293);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-09-22 16:48:04 +0530 (Mon, 22 Sep 2014)");
 
   script_name("Panda Global Protection Heap Based Buffer Overflow Sept14");
@@ -53,10 +53,8 @@ if(description)
 
   script_tag(name:"affected", value:"Panda Global Protection 2014 7.01.01");
 
-  script_tag(name:"solution", value:"Apply the hotfix 'hft131306s24_r1'.
-  For more details refer link, http://www.pandasecurity.com
+  script_tag(name:"solution", value:"Apply the hotfix 'hft131306s24_r1'.");
 
-  NOTE: Please ignore the warning if the update is already applied.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/95382");
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/127948/Panda-Security-2014-Privilege-Escalation.html");

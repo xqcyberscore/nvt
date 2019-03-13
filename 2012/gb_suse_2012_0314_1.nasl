@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_0314_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_suse_2012_0314_1.nasl 14114 2019-03-12 11:48:52Z cfischer $
 #
 # SuSE Update for apache2 openSUSE-SU-2012:0314-1 (apache2)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850196");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-08-02 20:28:13 +0530 (Thu, 02 Aug 2012)");
   script_cve_id("CVE-2007-6750", "CVE-2012-0031", "CVE-2012-0053");
   script_tag(name:"cvss_base", value:"5.0");
@@ -55,14 +55,14 @@ if(description)
   parent (invalid free()) during shutdown.
 
   bnc#743743, CVE-2012-0053: Fixed an issue in error
-  responses that could expose &quot;httpOnly&quot; cookies when no
-  custom ErrorDocument is specified for status code 400&quot;.
+  responses that could expose 'httpOnly' cookies when no
+  custom ErrorDocument is specified for status code 400'.
 
-  bnc#738855, CVE-2007-6750: The &quot;mod_reqtimeout&quot; module was
+  bnc#738855, CVE-2007-6750: The 'mod_reqtimeout' module was
   backported from Apache 2.2.21 to help mitigate the
-  &quot;Slowloris&quot; Denial of Service attack.
+  'Slowloris' Denial of Service attack.
 
-  You need to enable the &quot;mod_reqtimeout&quot; module in your
+  You need to enable the 'mod_reqtimeout' module in your
   existing apache configuration to make it effective, e.g. in
   the APACHE_MODULES line in /etc/sysconfig/apache2.");
 

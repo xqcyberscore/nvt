@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kiwix_server_pattern_param_xss_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
+# $Id: gb_kiwix_server_pattern_param_xss_vuln.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Kiwix Server 'pattern' Parameter Cross-Site Scripting Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805131");
-  script_version("$Revision: 11424 $");
+  script_version("$Revision: 14117 $");
   script_cve_id("CVE-2015-1032");
   script_bugtraq_id(72279);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-01-28 13:22:01 +0530 (Wed, 28 Jan 2015)");
   script_name("Kiwix Server 'pattern' Parameter Cross-Site Scripting Vulnerability");
 
@@ -51,8 +51,7 @@ if(description)
 
   script_tag(name:"affected", value:"Kiwix version 0.9 and prior.");
 
-  script_tag(name:"solution", value:"Apply the patch manually from the given link,
-  http://sourceforge.net/p/kiwix/kiwix/ci/d1af5f0375c6db24d4071acf4806735725fd206e");
+  script_tag(name:"solution", value:"Apply the patch manually from the referenced vendor link.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

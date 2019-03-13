@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2011-November/msg00011.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870511");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-11-11 09:53:18 +0530 (Fri, 11 Nov 2011)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -65,7 +65,7 @@ if(description)
 
   * When using mod_nss with the Apache HTTP Server, a bug in NSS on Red Hat
   Enterprise Linux 5 resulted in file descriptors leaking each time the
-  Apache HTTP Server was restarted with the &quot;service httpd reload&quot; command.
+  Apache HTTP Server was restarted with the 'service httpd reload' command.
   This could have prevented the Apache HTTP Server from functioning properly
   if all available file descriptors were consumed. (BZ#743508)
 

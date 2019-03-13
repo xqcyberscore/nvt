@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:096");
   script_oid("1.3.6.1.4.1.25623.1.0.831686");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-06-22 10:32:57 +0530 (Fri, 22 Jun 2012)");
   script_cve_id("CVE-2011-3389", "CVE-2011-4940", "CVE-2011-4944",
                 "CVE-2012-0845", "CVE-2012-0876", "CVE-2012-1150");
@@ -63,7 +63,7 @@ if(description)
   set file permissions during the creation of the .pypirc file. If a
   local user had access to the home directory of another user who is
   running distutils, they could use this flaw to gain access to that
-  user&#039;s .pypirc file, which can contain usernames and passwords for
+  user's .pypirc file, which can contain usernames and passwords for
   code repositories (CVE-2011-4944).
 
   A flaw was found in the way the Python SimpleXMLRPCServer module

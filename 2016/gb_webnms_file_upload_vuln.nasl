@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webnms_file_upload_vuln.nasl 11596 2018-09-25 09:49:46Z asteins $
+# $Id: gb_webnms_file_upload_vuln.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # WebNMS 5.2 / 5.2 SP1 Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:zohocorp:webnms";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106242");
-  script_version("$Revision: 11596 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 11:49:46 +0200 (Tue, 25 Sep 2018) $");
+  script_version("$Revision: 14117 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-09-13 17:11:16 +0700 (Tue, 13 Sep 2016)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -68,12 +68,13 @@ if (description)
   - bypass authentication and impersonate arbitrary users via the UserName HTTP header.");
 
   script_tag(name:"impact", value:"An unauthenticated remote attacker may execute arbitrary code under the
-user which the WebNMS server is running and to gain access to sensitive data on the host.");
+  user which the WebNMS server is running and to gain access to sensitive data on the host.");
 
   script_tag(name:"affected", value:"WebNMS Framework Server 5.2 and 5.2 SP1");
 
-  script_tag(name:"solution", value:"See https://forums.webnms.com/topic/recent-vulnerabilities-in-webnms-and-how-to-protect-the-server-against-them for a mitigation procedure.");
+  script_tag(name:"solution", value:"See the referenced for a mitigation procedure.");
 
+  script_xref(name:"URL", value:"https://forums.webnms.com/topic/recent-vulnerabilities-in-webnms-and-how-to-protect-the-server-against-them");
   script_xref(name:"URL", value:"https://blogs.securiteam.com/index.php/archives/2712");
   script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/40229/");
 

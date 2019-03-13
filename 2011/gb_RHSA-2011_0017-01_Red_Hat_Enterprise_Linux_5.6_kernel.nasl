@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2011-January/msg00006.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870378");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-01-14 16:07:43 +0100 (Fri, 14 Jan 2011)");
   script_tag(name:"cvss_base", value:"6.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:N/C:C/I:C/A:C");
@@ -75,18 +75,18 @@ if(description)
   * A missing initialization flaw was found in the bfa driver used by Brocade
   Fibre Channel Host Bus Adapters. A local, unprivileged user could use this
   flaw to cause a denial of service by reading a file in the
-  &quot;/sys/class/fc_host/host#/statistics/&quot; directory. (CVE-2010-4343, Moderate)
+  '/sys/class/fc_host/host#/statistics/' directory. (CVE-2010-4343, Moderate)
 
   * Missing initialization flaws in the Linux kernel could lead to
   information leaks. (CVE-2010-3296, CVE-2010-3877, CVE-2010-4072,
   CVE-2010-4073, CVE-2010-4075, CVE-2010-4080, CVE-2010-4081, CVE-2010-4158,
   Low)
 
-  Red Hat would like to thank Kosuke Tatsukawa for reporting CVE-2010-4263;
-  Vladymyr Denysov for reporting CVE-2010-4238; Brad Spengler for reporting
-  CVE-2010-4243; Dan Rosenberg for reporting CVE-2010-3296, CVE-2010-4073,
-  CVE-2010-4075, CVE-2010-4080, CVE-2010-4081, and CVE-2010-4158; Vasiliy
-  Kulikov for reporting CVE-2010-3877; and Kees Cook for reporting
+  Red Hat would like to thank Kosuke Tatsukawa for reporting CVE-2010-4263,
+  Vladymyr Denysov for reporting CVE-2010-4238, Brad Spengler for reporting
+  CVE-2010-4243, Dan Rosenberg for reporting CVE-2010-3296, CVE-2010-4073,
+  CVE-2010-4075, CVE-2010-4080, CVE-2010-4081, and CVE-2010-4158, Vasiliy
+  Kulikov for reporting CVE-2010-3877, and Kees Cook for reporting
   CVE-2010-4072.
 
   These updated packages also include several hundred bug fixes for and

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_epolicy_orchestrator_mult_vuln_jan15.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_mcafee_epolicy_orchestrator_mult_vuln_jan15.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # McAfee ePolicy Orchestrator Multiple Vulnerabilities - Jan15
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mcafee:epolicy_orchestrator";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805238");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 14117 $");
   script_cve_id("CVE-2015-0922", "CVE-2015-0921");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-01-12 20:02:18 +0530 (Mon, 12 Jan 2015)");
   script_name("McAfee ePolicy Orchestrator Multiple Vulnerabilities - Jan15");
 
@@ -56,8 +56,7 @@ if(description)
   4.6.9 and 5.x before 5.1.2");
 
   script_tag(name:"solution", value:"Upgrade to McAfee ePolicy Orchestrator
-  version 4.6.9 or 5.1.2 or later. For updates refer
-  www.mcafee.com/uk/products/epolicy-orchestrator.aspx");
+  version 4.6.9 or 5.1.2 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

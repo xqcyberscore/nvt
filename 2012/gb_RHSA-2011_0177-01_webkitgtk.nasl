@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2011-January/msg00022.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870727");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-06-05 19:33:18 +0530 (Tue, 05 Jun 2012)");
   script_cve_id("CVE-2010-1780", "CVE-2010-1782", "CVE-2010-1783", "CVE-2010-1784",
                 "CVE-2010-1785", "CVE-2010-1786", "CVE-2010-1787", "CVE-2010-1788",
@@ -80,12 +80,12 @@ if(description)
   page is actually content controlled by an attacker. (CVE-2010-3115)
 
   It was found that WebKit did not correctly restrict read access to images
-  created from the &quot;canvas&quot; element. Malicious web content could allow a
+  created from the 'canvas' element. Malicious web content could allow a
   remote attacker to bypass the same-origin policy and potentially access
   sensitive image data. (CVE-2010-3259)
 
   A flaw was found in the way WebKit handled DNS prefetching. Even when it
-  was disabled, web content containing certain &quot;link&quot; elements could cause
+  was disabled, web content containing certain 'link' elements could cause
   WebKitGTK+ to perform DNS prefetching. (CVE-2010-3813)
 
   Users of WebKitGTK+ should upgrade to these updated packages, which contain

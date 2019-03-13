@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.mandriva.com/security-announce/2011-03/msg00013.php");
   script_oid("1.3.6.1.4.1.25623.1.0.831354");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-04-01 15:34:04 +0200 (Fri, 01 Apr 2011)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -72,7 +72,7 @@ if(description)
 
   Unspecified vulnerability in the Java Runtime Environment (JRE)
   in Oracle Java SE and Java for Business 6 Update 23 and earlier for
-  Solaris and Linux; 5.0 Update 27 and earlier for Solaris and Linux;
+  Solaris and Linux, 5.0 Update 27 and earlier for Solaris and Linux,
   and 1.4.2_29 and earlier for Solaris and Linux allows local standalone
   applications to affect confidentiality, integrity, and availability via
   unknown vectors related to Launcher. NOTE: the previous information was

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-059.nasl 11569 2018-09-24 10:29:54Z asteins $
+# $Id: gb_ms16-059.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Microsoft Windows Media Center Remote Code Execution Vulnerability (3150220)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807690");
-  script_version("$Revision: 11569 $");
+  script_version("$Revision: 14117 $");
   script_cve_id("CVE-2016-0185");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-24 12:29:54 +0200 (Mon, 24 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-05-11 08:11:30 +0530 (Wed, 11 May 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Media Center Remote Code Execution Vulnerability (3150220)");
@@ -64,7 +64,7 @@ if(description)
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed
   hotfixes or download and update mentioned hotfixes in the advisory from the
-  link, https://technet.microsoft.com/library/security/MS16-059");
+  referenced avdisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

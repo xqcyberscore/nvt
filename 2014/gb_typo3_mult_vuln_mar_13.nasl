@@ -28,34 +28,35 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804203");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 14117 $");
   script_cve_id("CVE-2013-1842", "CVE-2013-1843");
   script_bugtraq_id(58330, 60312);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-01-03 15:01:59 +0530 (Fri, 03 Jan 2014)");
   script_name("TYPO3 Multiple Vulnerabilities Mar13");
 
-
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to get sensitive
-information or execute SQL commands.");
+  information or execute SQL commands.");
+
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+
   script_tag(name:"insight", value:"Multiple error exists in the application,
 
-  - An error exist in Extbase Framework, which fails to sanitize user input
-properly.
+  - An error exist in Extbase Framework, which fails to sanitize user input properly.
 
-  - An error exist in the access tracking mechanism, which fails o validate user
-provided input.");
-  script_tag(name:"solution", value:"Upgrade to TYPO3 version 4.5.24, 4.6.17, 4.7.9 or 6.0.3 or later, or apply the patch
-mentioned in the below link
-http://typo3.org/teams/security/security-bulletins/typo3-core/typo3-core-sa-2013-001");
+  - An error exist in the access tracking mechanism, which fails o validate user provided input.");
+
+  script_tag(name:"solution", value:"Upgrade to TYPO3 version 4.5.24, 4.6.17, 4.7.9 or 6.0.3 or later.");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_tag(name:"summary", value:"This host is installed with TYPO3 and is prone to multiple vulnerabilities.");
+
   script_tag(name:"affected", value:"TYPO3 version 4.5.0 up to 4.5.23, 4.6.0 up to 4.6.16, 4.7.0 up to 4.7.8 and
-6.0.0 up to 6.0.2");
+  6.0.0 up to 6.0.2");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/52638");
   script_xref(name:"URL", value:"http://typo3.org/teams/security/security-bulletins/typo3-core/typo3-core-sa-2013-001");
@@ -68,10 +69,8 @@ http://typo3.org/teams/security/security-bulletins/typo3-core/typo3-core-sa-2013
   exit(0);
 }
 
-
 include("version_func.inc");
 include("host_details.inc");
-
 
 if(!typoPort = get_app_port(cpe:CPE)){
   exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_0981_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_suse_2012_0981_1.nasl 14114 2019-03-12 11:48:52Z cfischer $
 #
 # SuSE Update for icedtea-web openSUSE-SU-2012:0981-1 (icedtea-web)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850308");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-12-13 17:01:37 +0530 (Thu, 13 Dec 2012)");
   script_cve_id("CVE-2012-3422", "CVE-2012-3423");
   script_tag(name:"cvss_base", value:"7.5");
@@ -57,7 +57,7 @@ if(description)
   - NetX
 
   * PR898: signed applications with big jnlp-file doesn't
-  start (webstart affect like &quot;frozen&quot;)
+  start (webstart affect like 'frozen')
 
   * PR811: javaws is not handling urls with spaces (and
   other characters needing encoding) correctly

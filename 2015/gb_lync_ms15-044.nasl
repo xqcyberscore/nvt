@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lync_ms15-044.nasl 11635 2018-09-27 06:07:37Z cfischer $
+# $Id: gb_lync_ms15-044.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Microsoft Lync Remote Code Execution Vulnerability (3057110)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805559");
-  script_version("$Revision: 11635 $");
+  script_version("$Revision: 14117 $");
   script_cve_id("CVE-2015-1671");
   script_bugtraq_id(74490);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 08:07:37 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-05-14 11:44:26 +0530 (Thu, 14 May 2015)");
   script_name("Microsoft Lync Remote Code Execution Vulnerability (3057110)");
 
@@ -51,8 +51,7 @@ if(description)
   Microsoft Lync 2013");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the given link https://technet.microsoft.com/library/security/MS15-044");
+  listed hotfixes or download and update mentioned hotfixes from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

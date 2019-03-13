@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2012-June/msg00001.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870748");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-06-08 10:11:30 +0530 (Fri, 08 Jun 2012)");
   script_cve_id("CVE-2011-3101", "CVE-2012-1937", "CVE-2012-1938", "CVE-2012-1939",
                 "CVE-2012-1940", "CVE-2012-1941", "CVE-2012-1944", "CVE-2012-1945",
@@ -82,15 +82,15 @@ if(description)
 
   Red Hat would like to thank the Mozilla project for reporting these issues.
   Upstream acknowledges Ken Russell of Google as the original reporter of
-  CVE-2011-3101; Igor Bukanov, Olli Pettay, Boris Zbarsky, and Jesse Ruderman
-  as the original reporters of CVE-2012-1937; Jesse Ruderman, Igor Bukanov,
+  CVE-2011-3101, Igor Bukanov, Olli Pettay, Boris Zbarsky, and Jesse Ruderman
+  as the original reporters of CVE-2012-1937, Jesse Ruderman, Igor Bukanov,
   Bill McCloskey, Christian Holler, Andrew McCreight, and Brian Bondy as the
-  original reporters of CVE-2012-1938; Christian Holler as the original
-  reporter of CVE-2012-1939; security researcher Abhishek Arya of Google as
-  the original reporter of CVE-2012-1940, CVE-2012-1941, and CVE-2012-1947;
+  original reporters of CVE-2012-1938, Christian Holler as the original
+  reporter of CVE-2012-1939, security researcher Abhishek Arya of Google as
+  the original reporter of CVE-2012-1940, CVE-2012-1941, and CVE-2012-1947,
   security researcher Arthur Gerkis as the original reporter of
-  CVE-2012-1946; security researcher Adam Barth as the original reporter of
-  CVE-2012-1944; and security researcher Paul Stone as the orig ...
+  CVE-2012-1946, security researcher Adam Barth as the original reporter of
+  CVE-2012-1944, and security researcher Paul Stone as the orig ...
 
   Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"qod_type", value:"package");

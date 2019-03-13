@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_director_cimlistener_dir_trav_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_ibm_director_cimlistener_dir_trav_vuln.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # IBM Director CIM Server CIMListener Directory Traversal Vulnerability (Windows)
 #
@@ -27,15 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802684");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 14117 $");
   script_cve_id("CVE-2009-0880");
   script_bugtraq_id(34065);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-12-11 20:37:46 +0530 (Tue, 11 Dec 2012)");
   script_name("IBM Director CIM Server CIMListener Directory Traversal Vulnerability (Windows)");
-
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_category(ACT_ATTACK);
@@ -51,8 +50,8 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to error in IBM Director CIM Server, which allow remote
   attackers to load and execute arbitrary local DLL code via a .. (dot dot)
   in a /CIMListener/ URI in an M-POST request.");
-  script_tag(name:"solution", value:"Upgrade to IBM Director version 5.20.3 Service Update 2 or later,
-  https://www14.software.ibm.com/webapp/iwm/web/reg/download.do?source=dmp&S_PKG=director_x_520&S_TACT=sms&lang=en_US&cp=UTF-8");
+  script_tag(name:"solution", value:"Upgrade to IBM Director version 5.20.3 Service Update 2 or later.");
+
   script_tag(name:"summary", value:"The host is running IBM Director CIM Server and is prone to
   directory traversal vulnerability.");
   script_tag(name:"solution_type", value:"VendorFix");

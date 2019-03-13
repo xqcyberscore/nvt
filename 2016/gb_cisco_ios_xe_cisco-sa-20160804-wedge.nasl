@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_cisco-sa-20160804-wedge.nasl 11922 2018-10-16 10:24:25Z asteins $
+# $Id: gb_cisco_ios_xe_cisco-sa-20160804-wedge.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Cisco IOS XE Software Crafted Network Time Protocol Packets Denial of Service Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2016-1478");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_version("$Revision: 11922 $");
+  script_version("$Revision: 14117 $");
 
   script_name("Cisco IOS XE Software Crafted Network Time Protocol Packets Denial of Service Vulnerability");
 
@@ -53,12 +53,12 @@ packets to be processed by an affected device. An exploit could allow the attack
 interface wedge and an eventual denial of service (DoS) condition on the affected device.
 
 Cisco has released software updates that address this vulnerability. There are no workarounds that
-address this vulnerability; however, there is a mitigation for this vulnerability.");
+address this vulnerability. However, there is a mitigation for this vulnerability.");
 
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:24:25 +0200 (Tue, 16 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-08-10 15:45:16 +0700 (Wed, 10 Aug 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");

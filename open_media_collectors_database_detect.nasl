@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: open_media_collectors_database_detect.nasl 11028 2018-08-17 09:26:08Z cfischer $
+# $Id: open_media_collectors_database_detect.nasl 14121 2019-03-13 06:21:23Z ckuersteiner $
 #
 # Open Media Collectors Database Detection
 #
@@ -28,11 +28,13 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100468");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11028 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 11:26:08 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 14121 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 07:21:23 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-01-26 20:04:43 +0100 (Tue, 26 Jan 2010)");
   script_tag(name:"cvss_base", value:"0.0");
+
   script_name("Open Media Collectors Database Detection");
+
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_family("Product detection");
@@ -49,6 +51,7 @@ if(description)
   exit(0);
 }
 
+include("cpe.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
@@ -69,24 +72,23 @@ foreach dir( make_list_unique( "/opendb", cgi_dirs( port:port ) ) ) {
  if(egrep(pattern: "<title>Open Media Collectors Database - Login</title>", string: buf, icase: TRUE) &&
     "Powered by OpenDb" >< buf)
  {
-    vers = string("unknown");
+    vers = "unknown";
     version = eregmatch(string: buf, pattern: "Powered by OpenDb ([0-9.]+)",icase:TRUE);
 
-    if ( !isnull(version[1]) ) {
-       vers=chomp(version[1]);
-       register_host_detail(name:"App", value:string("cpe:/a:opendb:opendb:", vers), desc:SCRIPT_DESC);
-    } else {
-       register_host_detail(name:"App", value:string("cpe:/a:opendb:opendb"), desc:SCRIPT_DESC);
-    }
+    if ( !isnull(version[1]) )
+       vers = version[1];
 
-    set_kb_item(name: string("www/", port, "/opendb"), value: string(vers," under ",install));
+    set_kb_item(name: "opendb/detected", value: TRUE);
 
-    info = string("Open Media Collectors Database Version '");
-    info += string(vers);
-    info += string("' was detected on the remote host in the following directory(s):\n\n");
-    info += string(install, "\n");
+    cpe = build_cpe(value: vers, exp: "^([0-9.]+)", base: "cpe:/a:opendb:opendb:");
+    if (!cpe)
+      cpe = 'cpe:/a:opendb:opendb';
 
-    log_message(port:port,data:info);
+    register_product(cpe: cpe, location: install, port: port, service: "www");
+
+    log_message(data: build_detection_report(app: "Open Media Collectors Database", version: vers,
+                                             install: install, cpe: cpe, concluded: version[0]),
+                port: port);
     exit(0);
   }
 }

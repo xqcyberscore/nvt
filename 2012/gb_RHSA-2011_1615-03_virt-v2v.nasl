@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2011-December/msg00013.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870662");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-09 10:44:33 +0530 (Mon, 09 Jul 2012)");
   script_cve_id("CVE-2011-1773");
   script_tag(name:"cvss_base", value:"4.4");
@@ -78,7 +78,7 @@ if(description)
   separate partition by ignoring that partition. (BZ#673066)
 
   * virt-v2v failed to convert a Red Hat Enterprise Linux guest which did not
-  have the symlink &quot;/boot/grub/menu.lst&quot;. With this update, virt-v2v can
+  have the symlink '/boot/grub/menu.lst'. With this update, virt-v2v can
   select a grub configuration file from several places. (BZ#694364)
 
   * This update removes information about the usage of deprecated command
@@ -86,14 +86,14 @@ if(description)
 
   * virt-v2v would fail to correctly change the allocation policy, (sparse or
   preallocated) when converting a guest with QCOW2 image format. The error
-  message &quot;Cannot import VM, The selected disk configuration is not
-  supported&quot; was displayed. With this update, allocation policy changes to a
+  message 'Cannot import VM, The selected disk configuration is not
+  supported' was displayed. With this update, allocation policy changes to a
   guest with QCOW2 storage will work correctly. (BZ#696089)
 
-  * The options &quot;--network&quot; and &quot;--bridge&quot; can not be used
+  * The options '--network' and '--bridge' can not be used
   in conjunction when converting a guest, but no error message was displayed.
   With this update, virt-v2v will now display an error message if the mutually
-  exclusive &quot;--network&quot; and &quot;--bridge&quot; command line opti ...
+  exclusive '--network' and '--bridge' command line opti ...
 
   Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"qod_type", value:"package");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_web_apps_ms16-133.nasl 11614 2018-09-26 07:39:28Z asteins $
+# $Id: gb_ms_office_web_apps_ms16-133.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Microsoft Office Web Apps Multiple Vulnerabilities (3199168)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:office_web_apps";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809726");
-  script_version("$Revision: 11614 $");
+  script_version("$Revision: 14117 $");
   script_cve_id("CVE-2016-7230", "CVE-2016-7233", "CVE-2016-7234");
   script_bugtraq_id(94006, 94031, 94020);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-11-09 16:20:19 +0530 (Wed, 09 Nov 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Web Apps Multiple Vulnerabilities (3199168)");
@@ -59,8 +59,7 @@ if(description)
   Microsoft Office Web Apps Server 2013 Service Pack 1 and prior.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed
-  hotfixes or download and update mentioned hotfixes in the advisory from the
-  https://technet.microsoft.com/library/security/MS16-133");
+  hotfixes or download and update mentioned hotfixes from the referenced avdisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

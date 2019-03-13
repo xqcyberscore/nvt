@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pidgin_ymsg_dos_vuln_win.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: gb_pidgin_ymsg_dos_vuln_win.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Pidgin Yahoo Protocol 'YMSG' NULL Pointer Dereference Denial of Service Vulnerability (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801764");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 14117 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-03-22 08:43:18 +0100 (Tue, 22 Mar 2011)");
   script_cve_id("CVE-2011-1091");
   script_bugtraq_id(46837);
@@ -50,8 +50,7 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to a NULL pointer dereference error when processing
   certain YMSG packets, which can be exploited to crash the process by sending
   specially crafted YMSG packets.");
-  script_tag(name:"solution", value:"Upgrade to Pidgin version 2.7.11 or later
-  http://pidgin.im/download");
+  script_tag(name:"solution", value:"Upgrade to Pidgin version 2.7.11 or later.");
   script_tag(name:"summary", value:"This host has installed with Pidgin and is prone to Denial of
   Service vulnerability.");
   script_tag(name:"qod_type", value:"registry");

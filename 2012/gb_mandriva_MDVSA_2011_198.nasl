@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.mandriva.com/security-announce/2012-01/msg00000.php");
   script_oid("1.3.6.1.4.1.25623.1.0.831522");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-01-09 13:30:32 +0530 (Mon, 09 Jan 2012)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
@@ -58,7 +58,7 @@ if(description)
   dialog. Using a crafted column type, it was possible to produce XSS
   in the table search and create index dialogs (CVE-2011-4634).
 
-  Crafted values entered in the setup interface can produce XSS; also,
+  Crafted values entered in the setup interface can produce XSS. Also,
   if the config directory exists and is writeable, the XSS payload can
   be saved to this directory (CVE-2011-4782).
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_368.nasl 10397 2018-07-04 09:29:14Z cfischer $
+# $Id: GSHB_M4_368.nasl 14124 2019-03-13 07:14:43Z cfischer $
 #
 # IT-Grundschutz, 14. EL, Maßnahme 4.368
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.94250");
-  script_version("$Revision: 10397 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-04 11:29:14 +0200 (Wed, 04 Jul 2018) $");
+  script_version("$Revision: 14124 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 08:14:43 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -71,7 +71,7 @@ if (TSS != "error" && TSS != "none"){
 }
 if (SAMBA){
   result = string("nicht zutreffend");
-  desc = string("Das System ist kein Windows Terminal Server. (Zur Zeit\nkann nur auf Windows Terminal Server getestet werden.)");
+  desc = string("Das System ist kein Windows Terminal Server. (Zur Zeit kann nur auf Windows Terminal Server getestet werden.)");
 }else{
 
   if (!TSS){
@@ -85,7 +85,7 @@ if (SAMBA){
   }
   else if ((OSVER != "none" && OSVER != "error") && TSS == "none"){
     result = string("nicht zutreffend");
-    desc = string("Das System ist kein Windows Terminal Server. (Zur Zeit kann\nnur auf Windows Terminal Server getestet werden.)");
+    desc = string("Das System ist kein Windows Terminal Server. (Zur Zeit kann nur auf Windows Terminal Server getestet werden.)");
   }
   else if (TSS == "error"){
     result = string("Fehler");
@@ -94,11 +94,11 @@ if (SAMBA){
   }
   else if (val[11] == "2" || val[11] == "4" || val[11] == "5"){
     result = string("unvollständig");
-    desc = string("Führen Sie bitte eine OpenVAS-Prüfung Ihres Netzwerkes mit\ndem aktuellen NVT-Set aus.");
+    desc = string("Führen Sie bitte eine Prüfung Ihres Netzwerkes mit dem aktuellen NVT-Set aus.");
   }
   else {
     result = string("nicht zutreffend");
-    desc = string("Das System ist kein Windows Terminal Server. (Zur Zeit kann\nnur auf Windows Terminal Server getestet werden.)");
+    desc = string("Das System ist kein Windows Terminal Server. (Zur Zeit kann nur auf Windows Terminal Server getestet werden.)");
   }
 }
 

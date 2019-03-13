@@ -27,11 +27,12 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.mandriva.com/security-announce/2011-06/msg00001.php");
   script_oid("1.3.6.1.4.1.25623.1.0.831413");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14130 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 08:53:41 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-06-06 16:56:27 +0200 (Mon, 06 Jun 2011)");
-  script_tag(name:"cvss_base", value:"9.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
+  script_cve_id("CVE-2011-1957", "CVE-2011-1958", "CVE-2011-1959", "CVE-2011-2174", "CVE-2011-2175");
   script_xref(name:"MDVSA", value:"2011:105");
   script_name("Mandriva Update for wireshark MDVSA-2011:105 (wireshark)");
 
@@ -60,7 +61,7 @@ if(description)
   that a corrupted snoop file could crash Wireshark. (Bug 5912) Versions
   affected: 1.2.0 to 1.2.16 and 1.4.0 to 1.4.6.
 
-  * David Maciejak of Fortinet&amp;#039;s FortiGuard Labs discovered that
+  * David Maciejak of Fortinet's FortiGuard Labs discovered that
   malformed compressed capture data could crash Wireshark. (Bug 5908)
   Versions affected: 1.2.0 to 1.2.16 and 1.4.0 to 1.4.6.
 

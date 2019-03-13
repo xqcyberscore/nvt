@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2011-May/msg00008.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870632");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-06-06 10:37:21 +0530 (Wed, 06 Jun 2012)");
   script_cve_id("CVE-2010-4250", "CVE-2010-4565", "CVE-2010-4649", "CVE-2011-0006",
                 "CVE-2011-0711", "CVE-2011-0712", "CVE-2011-0726", "CVE-2011-1013",
@@ -75,7 +75,7 @@ if(description)
 
   * A flaw in the Linux kernel's Stream Control Transmission Protocol (SCTP)
   implementation could allow a remote attacker to cause a denial of service
-  if the sysctl &quot;net.sctp.addip_enable&quot; and &quot;auth_enable&quot; variables were
+  if the sysctl 'net.sctp.addip_enable' and 'auth_enable' variables were
   turned on (they are off by default). (CVE-2011-1573, Important)
 
   * A memory leak in the inotify_init() system call. In some cases, it could
@@ -88,7 +88,7 @@ if(description)
 
   * An information leak in bcm_connect() in the Controller Area Network (CAN)
   Broadcast Manager implementation could allow a local, unprivileged user to
-  leak kernel mode addresses in &quot;/proc/net/can-bcm&quot;. (CVE-2010-4565, Low)
+  leak kernel mode addresses in '/proc/net/can-bcm'. (CVE-2010-4565, Low)
 
   * A flaw was found in the Linux kernel's Integrity Measurement Architecture
   (IMA) implementation. When SELinux was disabled, adding an IMA rule which

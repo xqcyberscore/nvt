@@ -1,6 +1,6 @@
 ###############################################################################
-# OpenVAS Vulnerability GSHB
-# $Id: GSHB_M4_190.nasl 10623 2018-07-25 15:14:01Z cfischer $
+# OpenVAS Vulnerability Test
+# $Id: GSHB_M4_190.nasl 14124 2019-03-13 07:14:43Z cfischer $
 #
 # IT-Grundschutz, 11. EL, Maﬂnahme 4.190
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.894190");
-  script_version("$Revision: 10623 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:14:01 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 14124 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 08:14:43 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-01-14 14:29:35 +0100 (Thu, 14 Jan 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");

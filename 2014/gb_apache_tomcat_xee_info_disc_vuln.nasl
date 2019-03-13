@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_xee_info_disc_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_apache_tomcat_xee_info_disc_vuln.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Apache Tomcat XML External Entity Information Disclosure Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805019");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 14117 $");
   script_cve_id("CVE-2014-0119");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-11-28 19:52:03 +0530 (Fri, 28 Nov 2014)");
   script_name("Apache Tomcat XML External Entity Information Disclosure Vulnerability");
   script_category(ACT_GATHER_INFO);
@@ -61,8 +61,7 @@ if(description)
 
   script_tag(name:"affected", value:"Apache Tomcat before 6.0.40, 7.x before 7.0.54, and 8.x before 8.0.6");
 
-  script_tag(name:"solution", value:"Upgrade to version 6.0.40, 7.0.54,
-  8.0.6 or later. For updates refer to refer http://tomcat.apache.org");
+  script_tag(name:"solution", value:"Upgrade to version 6.0.40, 7.0.54, 8.0.6 or later.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");

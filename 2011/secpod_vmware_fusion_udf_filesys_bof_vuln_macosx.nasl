@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_vmware_fusion_udf_filesys_bof_vuln_macosx.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: secpod_vmware_fusion_udf_filesys_bof_vuln_macosx.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # VMware Fusion UDF File Systems Buffer Overflow Vulnerability (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902634");
-  script_version("$Revision: 11552 $");
+  script_version("$Revision: 14117 $");
   script_cve_id("CVE-2011-3868");
   script_bugtraq_id(49942);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-11-17 17:54:28 +0530 (Thu, 17 Nov 2011)");
   script_name("VMware Fusion UDF File Systems Buffer Overflow Vulnerability (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/46241");
@@ -50,8 +50,7 @@ if(description)
   exploited to cause a buffer overflow via a specially crafted ISO image file.");
   script_tag(name:"summary", value:"The host is installed with VMWare Fusion and are prone to
   buffer overflow vulnerability.");
-  script_tag(name:"solution", value:"Upgrade to Vmware Fusion version 3.1.3 or later
-  For Upgrades refer, http://www.vmware.com/security/advisories/VMSA-2011-0011.html");
+  script_tag(name:"solution", value:"Upgrade to Vmware Fusion version 3.1.3 or later.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);

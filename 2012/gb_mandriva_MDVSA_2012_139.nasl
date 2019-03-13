@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:139");
   script_oid("1.3.6.1.4.1.25623.1.0.831725");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-08-21 11:46:08 +0530 (Tue, 21 Aug 2012)");
   script_cve_id("CVE-2012-3488", "CVE-2012-3489");
   script_tag(name:"cvss_base", value:"4.9");
@@ -66,8 +66,8 @@ if(description)
   thus allowing unprivileged database users to attempt to fetch data
   with the privileges of the database server. While the external data
   wouldn't get returned directly to the user, portions of it could
-  be exposed in error messages if the data didn't parse as valid XML;
-  and in any case the mere ability to check existence of a file might
+  be exposed in error messages if the data didn't parse as valid XML.
+  And in any case the mere ability to check existence of a file might
   be useful to an attacker (CVE-2012-3489).
 
   This advisory provides the latest versions of PostgreSQL that is not

@@ -29,8 +29,8 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.870544");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-02-13 16:29:09 +0530 (Mon, 13 Feb 2012)");
   script_cve_id("CVE-2011-3638", "CVE-2011-4086", "CVE-2011-4127", "CVE-2012-0028",
                 "CVE-2012-0207");
@@ -92,7 +92,7 @@ if(description)
 
   * SG_IO ioctls were not implemented correctly in the Red Hat Enterprise
   Linux 5 virtio-blk driver. Sending an SG_IO ioctl request to a virtio-blk
-  disk caused the sending thread to enter an uninterruptible sleep state (&quot;D&quot;
+  disk caused the sending thread to enter an uninterruptible sleep state ('D'
   state). With this update, SG_IO ioctls are rejected by the virtio-blk
   driver: the ioctl system call will simply  ...
 

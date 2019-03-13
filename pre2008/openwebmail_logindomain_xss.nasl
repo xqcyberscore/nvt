@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: openwebmail_logindomain_xss.nasl 13975 2019-03-04 09:32:08Z cfischer $
+# $Id: openwebmail_logindomain_xss.nasl 14121 2019-03-13 06:21:23Z ckuersteiner $
 #
 # Open WebMail Logindomain Parameter Cross-Site Scripting Vulnerability
 #
@@ -29,15 +29,17 @@ CPE = "cpe:/a:openwebmail.acatysmoof:openwebmail";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.16463");
-  script_version("$Revision: 13975 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-04 10:32:08 +0100 (Mon, 04 Mar 2019) $");
+  script_version("$Revision: 14121 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 07:21:23 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_cve_id("CVE-2005-0445");
   script_bugtraq_id(12547);
   script_xref(name:"OSVDB", value:"13788");
+
   script_name("Open WebMail Logindomain Parameter Cross-Site Scripting Vulnerability");
+
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2005 George A. Theall");
   script_family("Web application abuses");
@@ -50,15 +52,13 @@ if(description)
   script_tag(name:"solution", value:"Upgrade to Open WebMail version 2.50 20040212 or later.");
   script_tag(name:"summary", value:"The remote webmail server is affected by a cross-site scripting flaw.
 
-  Description :
-
   The remote host is running at least one instance of Open WebMail that
   fails to sufficiently validate user input supplied to the 'logindomain'
   parameter. This failure enables an attacker to run arbitrary script
   code in the context of a user's web browser.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_tag(name:"qod_type", value:"remote_app");
+  script_tag(name:"qod_type", value:"remote_analysis");
 
   exit(0);
 }

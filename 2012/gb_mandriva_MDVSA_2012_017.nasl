@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:017");
   script_oid("1.3.6.1.4.1.25623.1.0.831539");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-02-13 16:32:53 +0530 (Mon, 13 Feb 2012)");
   script_cve_id("CVE-2012-0452");
   script_tag(name:"cvss_base", value:"7.5");
@@ -50,7 +50,7 @@ if(description)
   attackers to cause a denial of service (application crash) or
   possibly execute arbitrary code via vectors that trigger failure of
   an nsXBLDocumentInfo::ReadPrototypeBindings function call, related
-  to the cycle collector&#039;s access to a hash table containing a stale
+  to the cycle collector's access to a hash table containing a stale
   XBL binding (CVE-2012-0452).");
   script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");

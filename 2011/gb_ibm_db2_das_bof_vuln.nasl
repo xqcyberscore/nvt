@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_das_bof_vuln.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: gb_ibm_db2_das_bof_vuln.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # IBM DB2 Administration Server (DAS) Buffer Overflow Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801589");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 14117 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-02-07 15:21:16 +0100 (Mon, 07 Feb 2011)");
   script_bugtraq_id(46052);
   script_cve_id("CVE-2011-0731");
@@ -38,6 +38,7 @@ if(description)
   script_xref(name:"URL", value:"http://secunia.com/advisories/43059");
   script_xref(name:"URL", value:"https://www-304.ibm.com/support/docview.wss?uid=swg1IC72029");
   script_xref(name:"URL", value:"https://www-304.ibm.com/support/docview.wss?uid=swg1IC72028");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?rs=71&uid=swg27007053");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
@@ -55,8 +56,8 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to a boundary error in the 'receiveDASMessage()'
   function in 'db2dasrrm' and can be exploited to cause a heap-based buffer
   overflow via a specially crafted request sent to TCP port 524.");
-  script_tag(name:"solution", value:"Upgrade to IBM DB2 version 9.1 FP10, 9.5 FP7, 9.7 FP3 or later,
-  http://www-01.ibm.com/support/docview.wss?rs=71&uid=swg27007053");
+  script_tag(name:"solution", value:"Upgrade to IBM DB2 version 9.1 FP10, 9.5 FP7, 9.7 FP3 or later.");
+
   script_tag(name:"summary", value:"The host is running IBM DB2 and is prone to buffer overflow
   vulnerability.");
 

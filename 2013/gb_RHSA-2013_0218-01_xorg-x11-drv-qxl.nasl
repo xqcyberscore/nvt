@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2013-January/msg00065.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870898");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-02-04 09:53:58 +0530 (Mon, 04 Feb 2013)");
   script_cve_id("CVE-2013-0241");
   script_tag(name:"cvss_base", value:"2.1");
@@ -56,7 +56,7 @@ if(description)
   X.Org qxl driver interacted when a SPICE connection terminated. A user able
   to initiate a SPICE connection to a guest could use this flaw to make the
   guest temporarily unavailable or, potentially (if the sysctl
-  kernel.softlockup_panic variable was set to &quot;1&quot; in the guest), crash the
+  kernel.softlockup_panic variable was set to '1' in the guest), crash the
   guest. (CVE-2013-0241)
 
   All users of xorg-x11-drv-qxl are advised to upgrade to this updated

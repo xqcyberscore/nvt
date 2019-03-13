@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2012-February/msg00051.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870559");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-02-21 18:57:01 +0530 (Tue, 21 Feb 2012)");
   script_cve_id("CVE-2011-3588", "CVE-2011-3589", "CVE-2011-3590");
   script_tag(name:"cvss_base", value:"5.7");
@@ -52,7 +52,7 @@ if(description)
   mechanism allows booting a Linux kernel from the context of an already
   running kernel.
 
-  Kdump used the SSH (Secure Shell) &quot;StrictHostKeyChecking=no&quot; option when
+  Kdump used the SSH (Secure Shell) 'StrictHostKeyChecking=no' option when
   dumping to SSH targets, causing the target kdump server's SSH host key not
   to be checked. This could make it easier for a man-in-the-middle attacker
   on the local network to impersonate the kdump SSH target server and
@@ -65,14 +65,14 @@ if(description)
   server when kdump was configured to dump to an SSH target. (CVE-2011-3589)
 
   The mkdumprd utility included unneeded sensitive files (such as all files
-  from the &quot;/root/.ssh/&quot; directory and the host's private SSH keys) in the
+  from the '/root/.ssh/' directory and the host's private SSH keys) in the
   resulting initrd. This could lead to an information leak when initrd
   files were previously created with world-readable permissions. Note: With
   this update, only the SSH client configuration, known hosts files, and the
   SSH key configured via the newly introduced sshkey option in
-  &quot;/etc/kdump.conf&quot; are included in the initrd. The default is the key
-  generated when running the &quot;service kdump propagate&quot; command,
-  &quot;/root/.ssh/kdump_id_rsa&quot;. (CVE-2011-3590)
+  '/etc/kdump.conf' are included in the initrd. The default is the key
+  generated when running the 'service kdump propagate' command,
+  '/root/.ssh/kdump_id_rsa'. (CVE-2011-3590)
 
   Red Hat would like to thank Kevan Carstensen for reporting these issues.
 

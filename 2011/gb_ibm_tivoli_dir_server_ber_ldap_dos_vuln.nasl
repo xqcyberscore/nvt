@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_tivoli_dir_server_ber_ldap_dos_vuln.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: gb_ibm_tivoli_dir_server_ber_ldap_dos_vuln.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # IBM Tivoli Directory Server LDAP BER Denial of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801823");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 14117 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-01-21 14:38:54 +0100 (Fri, 21 Jan 2011)");
   script_cve_id("CVE-2010-4216");
   script_bugtraq_id(44604);
@@ -39,6 +39,7 @@ if(description)
   script_xref(name:"URL", value:"http://secunia.com/advisories/42116");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/62977");
   script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2010/2863");
+  script_xref(name:"URL", value:"https://www-304.ibm.com/support/docview.wss?uid=swg1IO13306");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
@@ -52,8 +53,8 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to a validation error when handling BER-encoded
   LDAP requests and can be exploited to cause a crash via a specially crafted
   request.");
-  script_tag(name:"solution", value:"Apply interim fix 6.0.0.8-TIV-ITDS-IF0007
-  https://www-304.ibm.com/support/docview.wss?uid=swg1IO13306");
+  script_tag(name:"solution", value:"Apply interim fix 6.0.0.8-TIV-ITDS-IF0007.");
+
   script_tag(name:"summary", value:"The host is running IBM Tivoli Directory Server and is prone
   to denial of service vulnerability.");
 

@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2011-December/msg00015.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870683");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-09 10:46:09 +0530 (Mon, 09 Jul 2012)");
   script_cve_id("CVE-2011-1675", "CVE-2011-1677");
   script_tag(name:"cvss_base", value:"4.6");
@@ -60,11 +60,11 @@ if(description)
   This update also fixes the following bugs:
 
   * Due to a hard coded limit of 128 devices, an attempt to run the
-  &quot;blkid -c&quot; command on more than 128 devices caused blkid to terminate
+  'blkid -c' command on more than 128 devices caused blkid to terminate
   unexpectedly. This update increases the maximum number of devices to 8192
   so that blkid no longer crashes in this scenario. (BZ#675999)
 
-  * Previously, the &quot;swapon -a&quot; command did not detect device-mapper
+  * Previously, the 'swapon -a' command did not detect device-mapper
   devices that were already in use. This update corrects the swapon utility
   to detect such devices as expected. (BZ#679741)
 

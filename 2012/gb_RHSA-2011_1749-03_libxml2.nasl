@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2011-December/msg00018.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870741");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-09 10:58:40 +0530 (Mon, 09 Jul 2012)");
   script_cve_id("CVE-2010-4008", "CVE-2010-4494", "CVE-2011-0216",
                 "CVE-2011-1944", "CVE-2011-2821", "CVE-2011-2834");
@@ -75,7 +75,7 @@ if(description)
 
   Note: Red Hat does not ship any applications that use libxml2 in a way that
   would allow the CVE-2011-1944, CVE-2010-4008, CVE-2010-4494, CVE-2011-2821,
-  and CVE-2011-2834 flaws to be exploited; however, third-party applications
+  and CVE-2011-2834 flaws to be exploited. However, third-party applications
   may allow XPath expressions to be passed which could trigger these flaws.
 
   Red Hat would like to thank the Google Security Team for reporting the

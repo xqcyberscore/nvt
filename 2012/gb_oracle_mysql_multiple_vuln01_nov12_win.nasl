@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_mysql_multiple_vuln01_nov12_win.nasl 11580 2018-09-25 06:06:13Z cfischer $
+# $Id: gb_oracle_mysql_multiple_vuln01_nov12_win.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # Oracle MySQL Server Multiple Vulnerabilities-01 Nov12 (Windows)
 #
@@ -28,17 +28,18 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803111");
-  script_version("$Revision: 11580 $");
+  script_version("$Revision: 14117 $");
   script_cve_id("CVE-2012-3197", "CVE-2012-3163", "CVE-2012-3158", "CVE-2012-3150");
   script_bugtraq_id(56036, 56017, 55990, 56005);
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:06:13 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-11-26 16:54:56 +0530 (Mon, 26 Nov 2012)");
   script_name("Oracle MySQL Server Multiple Vulnerabilities-01 Nov12 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51008/");
   script_xref(name:"URL", value:"http://www.securelist.com/en/advisories/51008");
   script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpuoct2012-1515893.html");
+  script_xref(name:"URL", value:"https://support.oracle.com/rs?type=doc&id=1475188.1");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
@@ -55,8 +56,8 @@ if(description)
   script_tag(name:"insight", value:"The flaws are due to multiple unspecified errors in MySQL server component
   related to server replication, information schema, protocol and server
   optimizer.");
-  script_tag(name:"solution", value:"Apply the patch or upgrade to latest version,
-  https://support.oracle.com/rs?type=doc&id=1475188.1");
+  script_tag(name:"solution", value:"Apply the patch from the referenced vendor advisory or upgrade to the latest version.");
+
   script_tag(name:"summary", value:"The host is running Oracle MySQL server and is prone to multiple
   vulnerabilities.");
   script_tag(name:"solution_type", value:"VendorFix");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_revive_adserver_revive-sa-2016-001.nasl 12096 2018-10-25 12:26:02Z asteins $
+# $Id: gb_revive_adserver_revive-sa-2016-001.nasl 14130 2019-03-13 07:53:41Z mmartin $
 #
 # Revive Adserver Multiple Vulnerabilities
 #
@@ -30,11 +30,14 @@ CPE = 'cpe:/a:revive:adserver';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106321");
-  script_version("$Revision: 12096 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
+  script_version("$Revision: 14130 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 08:53:41 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-10-04 11:58:57 +0700 (Tue, 04 Oct 2016)");
-  script_tag(name:"cvss_base", value:"8.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_cve_id("CVE-2016-9124", "CVE-2016-9125", "CVE-2016-9126", "CVE-2016-9127", "CVE-2016-9128",
+                "CVE-2016-9129", "CVE-2016-9130", "CVE-2016-9454", "CVE-2016-9455", "CVE-2016-9456",
+                "CVE-2016-9457");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -79,7 +82,7 @@ specifically crafted URL.
 Revive Adserver instance by examining the message printed by the password recovery system.
 
   - Two vectors for persistent XSS attacks via the Revive Adserver user interface, both requiring a trusted
-(non-admin) account: the website name isn't properly escaped when displayed in the campaign-zone.php script; and
+(non-admin) account: the website name isn't properly escaped when displayed in the campaign-zone.php script and
 the banner image URL for external banners isn't properly escaped when displayed in most of the banner related
 pages.
 

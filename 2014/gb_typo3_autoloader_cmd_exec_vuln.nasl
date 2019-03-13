@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_autoloader_cmd_exec_vuln.nasl 11867 2018-10-12 10:48:11Z cfischer $
+# $Id: gb_typo3_autoloader_cmd_exec_vuln.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # TYPO3 Autoloader Command Execution Vulnerability
 #
@@ -23,32 +23,34 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/a:typo3:typo3";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803993");
-  script_version("$Revision: 11867 $");
+  script_version("$Revision: 14117 $");
   script_cve_id("CVE-2010-1153");
   script_bugtraq_id(39355);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-12-30 17:24:53 +0530 (Mon, 30 Dec 2013)");
   script_name("TYPO3 Autoloader Command Execution Vulnerability");
 
-
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary PHP code.");
+
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"An error exist in autoloader, which does not validate passed arguments
-properly.");
-  script_tag(name:"solution", value:"Upgrade to TYPO3 version 4.3.3 or later, or Apply patch from the below vendor
-advisory link
-http://typo3.org/teams/security/security-bulletins/typo3-core/typo3-sa-2010-008/");
+
+  script_tag(name:"insight", value:"An error exist in autoloader, which does not validate passed arguments properly.");
+
+  script_tag(name:"solution", value:"Upgrade to TYPO3 version 4.3.3 or later.");
+
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"This host is installed with TYPO3 and is prone to command execution
-vulnerability.");
+  vulnerability.");
+
   script_tag(name:"affected", value:"TYPO3 versions 4.3.0 to 4.3.2");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/39287/");
@@ -62,10 +64,8 @@ vulnerability.");
   exit(0);
 }
 
-
 include("version_func.inc");
 include("host_details.inc");
-
 
 if(!typoPort = get_app_port(cpe:CPE)){
   exit(0);

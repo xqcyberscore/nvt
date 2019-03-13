@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2012-June/msg00051.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870779");
-  script_version("$Revision: 12382 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14114 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-06-28 10:35:46 +0530 (Thu, 28 Jun 2012)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -61,7 +61,7 @@ if(description)
   (CVE-2012-2143)
 
   Note: With this update, the rest of the string is properly included in the
-  DES hash; therefore, any previously stored password values that are
+  DES hash. Therefore, any previously stored password values that are
   affected by this issue will no longer match. In such cases, it will be
   necessary for those stored password hashes to be updated.
 

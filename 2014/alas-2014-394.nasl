@@ -27,11 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.120246");
-  script_version("$Revision: 11703 $");
+  script_version("$Revision: 14117 $");
   script_tag(name:"creation_date", value:"2015-09-08 13:21:17 +0200 (Tue, 08 Sep 2015)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 10:05:31 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_name("Amazon Linux Local Check: ALAS-2014-394");
-  script_tag(name:"insight", value:"The implementation of the ORDER BY SQL statement in Zend_Db_Select of Zend Framework 1 contains a potential SQL injection when the query string passed contains parentheses, as discussed in http://framework.zend.com/security/advisory/ZF2014-04.");
+
+  script_tag(name:"insight", value:"The implementation of the ORDER BY SQL statement in Zend_Db_Select of Zend Framework 1 contains a potential SQL injection
+  when the query string passed contains parentheses, as discussed in the referenced vendor advisory.");
+
+  script_xref(name:"URL", value:"http://framework.zend.com/security/advisory/ZF2014-04");
   script_tag(name:"solution", value:"Run yum update php-ZendFramework to update your system.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://alas.aws.amazon.com/ALAS-2014-394.html");

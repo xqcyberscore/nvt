@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-059.nasl 11579 2018-09-25 05:43:52Z cfischer $
+# $Id: gb_ms14-059.nasl 14117 2019-03-12 14:02:42Z cfischer $
 #
 # ASP.NET MVC Security Feature Bypass Vulnerability (2990942)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804778");
-  script_version("$Revision: 11579 $");
+  script_version("$Revision: 14117 $");
   script_cve_id("CVE-2014-4075");
   script_bugtraq_id(70352);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 07:43:52 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-10-15 15:14:33 +0530 (Wed, 15 Oct 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -53,8 +53,8 @@ if(description)
   script_tag(name:"affected", value:"ASP.NET MVC 2.0/3.0/4.0/5.0/5.1");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed
-  hotfixes or download and update mentioned hotfixes in the advisory from the
-  link, https://technet.microsoft.com/en-us/security/bulletin/ms14-059");
+  hotfixes or download and update mentioned hotfixes from the referenced advisory.");
+
   script_tag(name:"qod_type", value:"registry");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/60971");
