@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4093118.nasl 12120 2018-10-26 11:13:20Z mmartin $
+# $Id: gb_ms_kb4093118.nasl 14156 2019-03-13 14:38:13Z cfischer $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4093118)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812863");
-  script_version("$Revision: 12120 $");
+  script_version("$Revision: 14156 $");
   script_cve_id("CVE-2018-0870", "CVE-2018-0887", "CVE-2018-8116", "CVE-2018-0960",
   		"CVE-2018-0967", "CVE-2018-0969", "CVE-2018-0970", "CVE-2018-0971",
 		"CVE-2018-0972", "CVE-2018-0973", "CVE-2018-0974", "CVE-2018-0975",
@@ -38,7 +38,7 @@ if(description)
 		"CVE-2018-0996", "CVE-2018-0997", "CVE-2018-1000", "CVE-2018-1001");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 15:38:13 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-04-11 09:19:32 +0530 (Wed, 11 Apr 2018)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4093118)");
 
@@ -76,7 +76,7 @@ if(description)
     system using RDP and sends specially crafted requests.
 
   - In the Microsoft JET Database Engine that could allow remote code execution on
-    an affected system. ");
+    an affected system.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to take control of the affected system, obtain information to further compromise

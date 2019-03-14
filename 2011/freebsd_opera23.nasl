@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: freebsd_opera23.nasl 11762 2018-10-05 10:54:12Z cfischer $
+# $Id: freebsd_opera23.nasl 14170 2019-03-14 09:24:12Z cfischer $
 #
 # Auto generated from VID 2eda0c54-34ab-11e0-8103-00215c6a37bb
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.68952");
-  script_version("$Revision: 11762 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 14170 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 10:24:12 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-03-05 22:25:39 +0100 (Sat, 05 Mar 2011)");
   script_cve_id("CVE-2011-0450", "CVE-2011-0681", "CVE-2011-0682", "CVE-2011-0683", "CVE-2011-0684", "CVE-2011-0685", "CVE-2011-0686", "CVE-2011-0687");
   script_tag(name:"cvss_base", value:"9.3");
@@ -101,7 +101,7 @@ crafted WAP document.");
   script_xref(name:"URL", value:"http://www.opera.com/support/kb/view/982/");
   script_xref(name:"URL", value:"http://www.opera.com/support/kb/view/983/");
   script_xref(name:"URL", value:"http://www.opera.com/support/kb/view/984/");
-  script_xref(name:"URL", value:"secunia.com/advisories/43023");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/43023");
   script_xref(name:"URL", value:"http://www.vuxml.org/freebsd/2eda0c54-34ab-11e0-8103-00215c6a37bb.html");
 
   script_tag(name:"summary", value:"The remote host is missing an update to the system

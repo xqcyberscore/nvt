@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2291_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_ubuntu_USN_2291_1.nasl 14140 2019-03-13 12:26:09Z cfischer $
 #
 # Ubuntu Update for mysql-5.5 USN-2291-1
 #
@@ -24,19 +24,16 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841905");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14140 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 13:26:09 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-07-21 18:10:14 +0530 (Mon, 21 Jul 2014)");
   script_cve_id("CVE-2014-2494", "CVE-2014-4207", "CVE-2014-4258", "CVE-2014-4260");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
   script_name("Ubuntu Update for mysql-5.5 USN-2291-1");
-
 
   script_tag(name:"affected", value:"mysql-5.5 on Ubuntu 14.04 LTS,
   Ubuntu 12.04 LTS");
@@ -47,9 +44,11 @@ been updated to 5.5.38.
 In addition to security fixes, the updated packages contain bug fixes,
 new features, and possibly incompatible changes.
 
-Please see the following for more information:
-http://dev.mysql.com/doc/relnotes/mysql/5.5/en/news-5-5-38.html
-http://www.oracle.com/technetwork/topics/security/cpujul2014-1972956.html");
+Please see the references for more information.");
+
+  script_xref(name:"URL", value:"http://dev.mysql.com/doc/relnotes/mysql/5.5/en/news-5-5-38.html");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpujul2014-1972956.html");
+
   script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -62,18 +61,18 @@ http://www.oracle.com/technetwork/topics/security/cpujul2014-1972956.html");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(14\.04 LTS|12\.04 LTS)");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
 release = dpkg_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "UBUNTU14.04 LTS")
 {

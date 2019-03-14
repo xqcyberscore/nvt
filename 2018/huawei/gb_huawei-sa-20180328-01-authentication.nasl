@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_huawei-sa-20180328-01-authentication.nasl 12045 2018-10-24 06:51:17Z mmartin $
+# $Id: gb_huawei-sa-20180328-01-authentication.nasl 14156 2019-03-13 14:38:13Z cfischer $
 #
 # Huawei Switches Improper Authorization Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112259");
-  script_version("$Revision: 12045 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 08:51:17 +0200 (Wed, 24 Oct 2018) $");
+  script_version("$Revision: 14156 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 15:38:13 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-04-24 11:11:11 +0200 (Tue, 24 Apr 2018)");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
@@ -50,7 +50,7 @@ if( description )
   script_mandatory_keys("huawei_switch/detected", "huawei_switch/model", "huawei_switch/version");
 
   script_tag(name:"summary", value:"There is an improper authorization vulnerability on Huawei switch products.
-  The system incorrectly performs an authorization check when a normal user attempts to access certain information which is supposed to be accessed only by authenticated user. ");
+  The system incorrectly performs an authorization check when a normal user attempts to access certain information which is supposed to be accessed only by authenticated user.");
   script_tag(name:"vuldetect", value:"The script checks if the target host is an affected product that has a vulnerable firmware version installed.");
   script_tag(name:"impact", value:"Successful exploit could cause information disclosure.");
   script_tag(name:"affected", value:"Following Huawei Switch models and firmware versions are affected:

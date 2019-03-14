@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3752_3.nasl 12806 2018-12-17 06:39:00Z ckuersteiner $
+# $Id: gb_ubuntu_USN_3752_3.nasl 14140 2019-03-13 12:26:09Z cfischer $
 #
 # Ubuntu Update for linux-azure USN-3752-3
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843630");
-  script_version("$Revision: 12806 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-17 07:39:00 +0100 (Mon, 17 Dec 2018) $");
+  script_version("$Revision: 14140 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 13:26:09 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-08-29 07:13:34 +0200 (Wed, 29 Aug 2018)");
   script_cve_id("CVE-2018-1000200", "CVE-2018-10323", "CVE-2018-10840", "CVE-2018-10881",
                 "CVE-2018-1093", "CVE-2018-1108", "CVE-2018-1120", "CVE-2018-11412",
@@ -106,6 +106,7 @@ Shankara Pailoor discovered that a race condition existed in the  ...
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(18\.04 LTS|16\.04 LTS)");
+
   exit(0);
 }
 
@@ -113,11 +114,10 @@ include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
 release = dpkg_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "UBUNTU18.04 LTS")
 {

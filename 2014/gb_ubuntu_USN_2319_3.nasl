@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2319_3.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_ubuntu_USN_2319_3.nasl 14140 2019-03-13 12:26:09Z cfischer $
 #
 # Ubuntu Update for openjdk-7 USN-2319-3
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841968");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14140 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 13:26:09 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-09-17 05:58:22 +0200 (Wed, 17 Sep 2014)");
   script_cve_id("CVE-2014-2483", "CVE-2014-2490", "CVE-2014-4216", "CVE-2014-4219",
                 "CVE-2014-4223", "CVE-2014-4262", "CVE-2014-4209", "CVE-2014-4244",
@@ -77,6 +77,7 @@ data over the network. (CVE-2014-4221, CVE-2014-4252, CVE-2014-4268)");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU14\.04 LTS");
+
   exit(0);
 }
 
@@ -84,11 +85,10 @@ include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
 release = dpkg_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "UBUNTU14.04 LTS")
 {

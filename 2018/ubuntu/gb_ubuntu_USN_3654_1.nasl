@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3654_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_ubuntu_USN_3654_1.nasl 14140 2019-03-13 12:26:09Z cfischer $
 #
 # Ubuntu Update for linux USN-3654-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843531");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14140 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 13:26:09 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-05-22 12:41:50 +0200 (Tue, 22 May 2018)");
   script_cve_id("CVE-2018-3639", "CVE-2017-17975", "CVE-2017-18193", "CVE-2017-18222",
                 "CVE-2018-1065", "CVE-2018-1068", "CVE-2018-1130", "CVE-2018-5803",
@@ -106,6 +106,7 @@ cause a denial of service (system crash) or possibly execute arbitr ...
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU16\.04 LTS");
+
   exit(0);
 }
 
@@ -113,11 +114,10 @@ include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
 release = dpkg_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "UBUNTU16.04 LTS")
 {

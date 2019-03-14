@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842953");
-  script_version("$Revision: 12637 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-04 09:36:44 +0100 (Tue, 04 Dec 2018) $");
+  script_version("$Revision: 14140 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 13:26:09 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-11-19 05:36:56 +0100 (Sat, 19 Nov 2016)");
   script_cve_id("CVE-2016-5289", "CVE-2016-5290", "CVE-2016-5291", "CVE-2016-5292",
 		"CVE-2016-5296", "CVE-2016-5297", "CVE-2016-9063", "CVE-2016-9064",
@@ -107,6 +107,7 @@ circumstance ...
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(14\.04 LTS|12\.04 LTS|16\.04 LTS|16\.10)");
+
   exit(0);
 }
 
@@ -114,11 +115,10 @@ include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
 release = dpkg_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "UBUNTU14.04 LTS")
 {

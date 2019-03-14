@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sangoma_nsc_rce_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
+# $Id: gb_sangoma_nsc_rce_vuln.nasl 14157 2019-03-13 14:44:46Z cfischer $
 #
 # Sangoma NetBorder/Vega Session Controller Remote Code Execution Vulnerability
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112184");
-  script_version("$Revision: 12116 $");
+  script_version("$Revision: 14157 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 15:44:46 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-01-11 12:32:00 +0100 (Thu, 11 Jan 2018)");
 
   script_cve_id("CVE-2017-17430");
@@ -62,17 +62,21 @@ if(description)
 CPE = "cpe:/o:sangoma:netborder";
 
 include("http_func.inc");
-
 include("misc_func.inc");
 include("host_details.inc");
 
 if ( ! port =  get_app_port( cpe:CPE ) )
   exit( 0 );
 
-soc = open_sock_tcp( port );
-if( ! soc ) exit( 0 );
+if ( ! get_app_location( port:port, cpe:CPE ) )
+  exit( 0 );
 
-check = "_OpenVAS_" + rand_str( length:6 );
+soc = open_sock_tcp( port );
+if( ! soc )
+  exit( 0 );
+
+vtstrings = get_vt_strings();
+check = vtstrings["ping_string"];
 pattern = hexstr( check );
 pingcmd = "ping -c 3 -p " + pattern + " " + this_host();
 
@@ -97,4 +101,4 @@ if( data && check >< data ) {
   exit( 0 );
 }
 
-exit( 0 );
+exit( 99 );

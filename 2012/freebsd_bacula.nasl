@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: freebsd_bacula.nasl 11762 2018-10-05 10:54:12Z cfischer $
+# $Id: freebsd_bacula.nasl 14170 2019-03-14 09:24:12Z cfischer $
 #
 # Auto generated from VID 143f6932-fedb-11e1-ad4a-003067b2972c
 #
@@ -32,8 +32,8 @@ if(description)
   script_cve_id("CVE-2012-4430");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_version("$Revision: 11762 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 14170 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 10:24:12 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-09-15 04:25:48 -0400 (Sat, 15 Sep 2012)");
   script_name("FreeBSD Ports: bacula");
   script_category(ACT_GATHER_INFO);
@@ -49,7 +49,7 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.bacula.org/git/cgit.cgi/bacula/commit/?id=67debcecd3d530c429e817e1d778e79dcd1db905");
   script_xref(name:"URL", value:"https://secunia.com/advisories/50535/");
-  script_xref(name:"URL", value:"sourceforge.net/projects/bacula/files/bacula/5.2.11/ReleaseNotes/view");
+  script_xref(name:"URL", value:"http://sourceforge.net/projects/bacula/files/bacula/5.2.11/ReleaseNotes/view");
   script_xref(name:"URL", value:"http://www.vuxml.org/freebsd/143f6932-fedb-11e1-ad4a-003067b2972c.html");
 
   script_tag(name:"summary", value:"The remote host is missing an update to the system

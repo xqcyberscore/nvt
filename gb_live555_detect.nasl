@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_live555_detect.nasl 13650 2019-02-14 06:48:40Z cfischer $
+# $Id: gb_live555_detect.nasl 14169 2019-03-14 09:23:14Z jschulte $
 #
 # LIVE555 Streaming Media Server Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107180");
-  script_version("$Revision: 13650 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-14 07:48:40 +0100 (Thu, 14 Feb 2019) $");
+  script_version("$Revision: 14169 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 10:23:14 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-05-22 12:42:40 +0200 (Mon, 22 May 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -49,16 +49,20 @@ if(description)
   exit(0);
 }
 
-include("http_func.inc");
+CPE = "cpe:/a:live555:streaming_media:";
 
-include("cpe.inc");
-include("host_details.inc");
+include( "http_func.inc" );
+include( "misc_func.inc" );
+include( "cpe.inc" );
+include( "host_details.inc" );
 
-if (!port = get_kb_item("Services/rtsp"))
-  port = 8554;
+port = get_port_for_service( proto: "rtsp", default: 8854 );
 
+#nb: HTTP GET against RTSP port request may deliver the Server Banner
+#    even if RTSP fails to do so
 if (!banner = get_kb_item("RTSP/" + port + "/Server"))
-  exit( 0 );
+  if(!banner = get_kb_item("www/banner/" + port))
+    exit( 0 );
 
 if ("LIVE555 Streaming Media" >< banner ) {
 
@@ -70,17 +74,14 @@ if ("LIVE555 Streaming Media" >< banner ) {
   }
   set_kb_item( name:"live555_streaming_media/installed", value:TRUE );
 
-  cpe = build_cpe(value:Ver, exp:"^([0-9.]+)", base:"cpe:/a:live555:streaming_media:");
-
-  if(!cpe)
-    cpe = 'cpe:/a:live555:streaming_media';
-
-  register_product( cpe:cpe, location:port + '/rtsp',port: port );
-  log_message( data:build_detection_report( app:"LIVE555 Streaming Media",
-                                            version:Ver[1],
-                                            install:port + '/rtsp',
-                                            cpe:cpe, concluded: Ver ),
-                                            port:port);
+  register_and_report_cpe(app:"LIVE555 Streaming media",
+                          ver: version,
+                          concluded: Ver[0],
+                          base: CPE,
+                          expr: '([0-9.]+)',
+                          insloc: port + '/rtsp',
+                          regPort: port,
+                          regService: 'RTSP');
 }
 
 exit( 0 );

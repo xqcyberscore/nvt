@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2126_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_ubuntu_USN_2126_1.nasl 14140 2019-03-13 12:26:09Z cfischer $
 #
 # Ubuntu Update for php5 USN-2126-1
 #
@@ -24,20 +24,17 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841728");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14140 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 13:26:09 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-03-04 10:48:58 +0530 (Tue, 04 Mar 2014)");
   script_cve_id("CVE-2014-1943", "CVE-2013-7226", "CVE-2013-7327", "CVE-2013-7328",
                 "CVE-2014-2020");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_name("Ubuntu Update for php5 USN-2126-1");
-
 
   script_tag(name:"affected", value:"php5 on Ubuntu 13.10,
   Ubuntu 12.10,
@@ -65,18 +62,18 @@ Ubuntu 13.10. (CVE-2013-7226, CVE-2013-7327, CVE-2013-7328, CVE-2014-2020)");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(12\.04 LTS|10\.04 LTS|13\.10|12\.10)");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
 release = dpkg_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "UBUNTU12.04 LTS")
 {

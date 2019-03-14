@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1355_2.nasl 12379 2018-11-16 10:51:56Z cfischer $
+# $Id: gb_ubuntu_USN_1355_2.nasl 14132 2019-03-13 09:25:59Z cfischer $
 #
 # Ubuntu Update for mozvoikko USN-1355-2
 #
@@ -24,16 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
-
-
 if(description)
 {
   script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1355-2/");
   script_oid("1.3.6.1.4.1.25623.1.0.840886");
-  script_version("$Revision: 12379 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 11:51:56 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14132 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 10:25:59 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-02-06 12:40:22 +0530 (Mon, 06 Feb 2012)");
   script_cve_id("CVE-2012-0450", "CVE-2012-0449", "CVE-2012-0444", "CVE-2012-0447",
                 "CVE-2012-0446", "CVE-2011-3659", "CVE-2012-0445", "CVE-2012-0442",
@@ -74,7 +70,7 @@ if(description)
   application crash, or potentially execute code with the privileges of the
   user invoking Firefox. (CVE-2012-0444)
 
-  Tim Abraldes discovered that when encoding certain images types the
+  Tim Abraldes discovered that when encoding certain image types the
   resulting data was always a fixed size. There is the possibility of
   sensitive data from uninitialized memory being appended to these images.
   (CVE-2012-0447)
@@ -104,18 +100,18 @@ if(description)
   Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
 release = dpkg_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "UBUNTU10.10")
 {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3797_2.nasl 12806 2018-12-17 06:39:00Z ckuersteiner $
+# $Id: gb_ubuntu_USN_3797_2.nasl 14140 2019-03-13 12:26:09Z cfischer $
 #
 # Ubuntu Update for linux-aws USN-3797-2
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843666");
-  script_version("$Revision: 12806 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-17 07:39:00 +0100 (Mon, 17 Dec 2018) $");
+  script_version("$Revision: 14140 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 13:26:09 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-10-23 11:56:58 +0200 (Tue, 23 Oct 2018)");
   script_cve_id("CVE-2018-14734", "CVE-2018-16658", "CVE-2018-9363", "CVE-2018-10938");
   script_tag(name:"cvss_base", value:"7.2");
@@ -71,18 +71,18 @@ could cause a denial of service (infinite loop). (CVE-2018-10938)");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU14\.04 LTS");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "UBUNTU14.04 LTS")
 {

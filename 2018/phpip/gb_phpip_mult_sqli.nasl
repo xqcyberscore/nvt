@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpip_mult_sqli.nasl 12025 2018-10-23 08:16:52Z mmartin $
+# $Id: gb_phpip_mult_sqli.nasl 14157 2019-03-13 14:44:46Z cfischer $
 #
 # phpIP Management 'CVE-2008-0538' Multiple SQL Injection Vulnerabilities
 #
@@ -33,10 +33,10 @@ CPE = "cpe:/a:phpip:phpip_management";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108432");
-  script_version("$Revision: 12025 $");
+  script_version("$Revision: 14157 $");
   script_bugtraq_id(27468);
   script_cve_id("CVE-2008-0538");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:16:52 +0200 (Tue, 23 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 15:44:46 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-03-15 11:36:56 +0100 (Thu, 15 Mar 2018)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -80,17 +80,22 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("misc_func.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! dir  = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) )
+  exit( 0 );
 
-if( dir == "/" ) dir = "";
+if( ! dir  = get_app_location( cpe:CPE, port:port ) )
+  exit( 0 );
+
+if( dir == "/" )
+  dir = "";
+
 url = dir + "/login.php?req=validate";
-data = "username=openvas'&password=openvas&x=0&y=0&action=login";
+data = "username=vt-test'&password=vt-test&x=0&y=0&action=login";
 
 req = http_post_req( port:port, url:url, data:data, add_headers:make_array( "Content-Type", "application/x-www-form-urlencoded" ) );
 res = http_keepalive_send_recv( port:port, data:req );
 
-if( "mysql_num_rows(): supplied argument is not a valid MySQL result resource" >< res ) {
+if( res && "mysql_num_rows(): supplied argument is not a valid MySQL result resource" >< res ) {
 
   err = egrep( pattern:"mysql_num_rows", string:res );
 

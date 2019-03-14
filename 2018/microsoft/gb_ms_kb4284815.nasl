@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4284815.nasl 12120 2018-10-26 11:13:20Z mmartin $
+# $Id: gb_ms_kb4284815.nasl 14156 2019-03-13 14:38:13Z cfischer $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4284815)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813532");
-  script_version("$Revision: 12120 $");
+  script_version("$Revision: 14156 $");
   script_cve_id("CVE-2018-0978", "CVE-2018-1036", "CVE-2018-1040", "CVE-2018-8169",
                 "CVE-2018-8205", "CVE-2018-8207", "CVE-2018-8210", "CVE-2018-8225",
                 "CVE-2018-8249", "CVE-2018-8251", "CVE-2018-8267");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 15:38:13 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-06-13 09:16:31 +0530 (Wed, 13 Jun 2018)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4284815)");
 
@@ -62,7 +62,7 @@ if(description)
 
   - In Windows Domain Name System (DNS) DNSAPI.
 
-  - In the way that the Windows Code Integrity Module performs hashing. ");
+  - In the way that the Windows Code Integrity Module performs hashing.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to gain elevated privileges, execute arbitrary code, install programs, view,
@@ -70,6 +70,7 @@ if(description)
   a denial of service condition.");
 
   script_tag(name:"affected", value:"Microsoft Windows 8.1 for 32-bit/x64
+
   Microsoft Windows Server 2012 R2");
 
   script_tag(name:"solution", value:"Run Windows Update and update the

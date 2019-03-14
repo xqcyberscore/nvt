@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1231_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
+# $Id: gb_ubuntu_USN_1231_1.nasl 14132 2019-03-13 09:25:59Z cfischer $
 #
 # Ubuntu Update for php5 USN-1231-1
 #
@@ -24,15 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
-
 if(description)
 {
   script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1231-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.840782");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 14132 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 10:25:59 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-10-21 16:31:29 +0200 (Fri, 21 Oct 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -55,7 +52,7 @@ if(description)
   script_tag(name:"insight", value:"Mateusz Kocielski, Marek Kroemeke and Filip Palian discovered that a
   stack-based buffer overflow existed in the socket_connect function's
   handling of long pathnames for AF_UNIX sockets. A remote attacker
-  might be able to exploit this to execute arbitrary code; however,
+  might be able to exploit this to execute arbitrary code. However,
   the default compiler options for affected releases should reduce
   the vulnerability to a denial of service. This issue affected Ubuntu
   10.04 LTS, Ubuntu 10.10 and Ubuntu 11.04. (CVE-2011-1938)
@@ -101,19 +98,18 @@ if(description)
   issue affected Ubuntu 8.04 LTS. (CVE-2010-2484)");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
 release = dpkg_get_ssh_release();
-
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "UBUNTU10.10")
 {

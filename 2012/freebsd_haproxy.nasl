@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: freebsd_haproxy.nasl 11762 2018-10-05 10:54:12Z cfischer $
+# $Id: freebsd_haproxy.nasl 14170 2019-03-14 09:24:12Z cfischer $
 #
 # Auto generated from VID 617959ce-a5f6-11e1-a284-0023ae8e59f0
 #
@@ -30,8 +30,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.71366");
   script_cve_id("CVE-2012-2391");
-  script_version("$Revision: 11762 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 14170 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 10:24:12 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-05-31 11:53:50 -0400 (Thu, 31 May 2012)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -48,7 +48,7 @@ if(description)
   software upgrades.");
 
   script_xref(name:"URL", value:"https://secunia.com/advisories/49261/");
-  script_xref(name:"URL", value:"haproxy.1wt.eu/download/1.4/src/CHANGELOG");
+  script_xref(name:"URL", value:"http://haproxy.1wt.eu/download/1.4/src/CHANGELOG");
   script_xref(name:"URL", value:"http://haproxy.1wt.eu/git?p=haproxy-1.4.git;a=commit;h=30297cb17147a8d339eb160226bcc08c91d9530a");
   script_xref(name:"URL", value:"http://haproxy.1wt.eu/news.html");
   script_xref(name:"URL", value:"http://www.vuxml.org/freebsd/617959ce-a5f6-11e1-a284-0023ae8e59f0.html");

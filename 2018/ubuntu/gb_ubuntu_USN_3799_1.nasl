@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3799_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_ubuntu_USN_3799_1.nasl 14140 2019-03-13 12:26:09Z cfischer $
 #
 # Ubuntu Update for mysql-5.7 USN-3799-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843667");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14140 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 13:26:09 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-10-24 06:34:42 +0200 (Wed, 24 Oct 2018)");
   script_cve_id("CVE-2018-3133", "CVE-2018-3143", "CVE-2018-3144", "CVE-2018-3155", "CVE-2018-3156", "CVE-2018-3161", "CVE-2018-3162", "CVE-2018-3171", "CVE-2018-3173", "CVE-2018-3174", "CVE-2018-3185", "CVE-2018-3187", "CVE-2018-3200", "CVE-2018-3247", "CVE-2018-3251", "CVE-2018-3276", "CVE-2018-3277", "CVE-2018-3278", "CVE-2018-3282", "CVE-2018-3283", "CVE-2018-3284");
   script_tag(name:"cvss_base", value:"5.5");
@@ -60,18 +60,18 @@ features, and possibly incompatible changes.");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(14\.04 LTS|18\.04 LTS|16\.04 LTS)");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "UBUNTU14.04 LTS")
 {

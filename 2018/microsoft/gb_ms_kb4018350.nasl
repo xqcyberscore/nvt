@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4018350.nasl 12120 2018-10-26 11:13:20Z mmartin $
+# $Id: gb_ms_kb4018350.nasl 14156 2019-03-13 14:38:13Z cfischer $
 #
 # Microsoft Excel 2013 Service Pack 1 Multiple Vulnerabilities (KB4018350)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812859");
-  script_version("$Revision: 12120 $");
+  script_version("$Revision: 14156 $");
   script_cve_id("CVE-2018-1011", "CVE-2018-1027", "CVE-2018-1029");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 15:38:13 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-04-11 08:53:50 +0530 (Wed, 11 Apr 2018)");
   script_name("Microsoft Excel 2013 Service Pack 1 Multiple Vulnerabilities (KB4018350)");
 
@@ -41,7 +41,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaw exists when microsoft excel
-  software when the software fails to properly handle objects in memory. ");
+  software when the software fails to properly handle objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   who successfully exploited the vulnerability could run arbitrary code in the

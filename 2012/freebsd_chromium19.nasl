@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: freebsd_chromium19.nasl 11762 2018-10-05 10:54:12Z cfischer $
+# $Id: freebsd_chromium19.nasl 14170 2019-03-14 09:24:12Z cfischer $
 #
 # Auto generated from VID 5bae2ab4-0820-11e2-be5f-00262d5ed8ee
 #
@@ -32,8 +32,8 @@ if(description)
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-2012-2889", "CVE-2012-2886", "CVE-2012-2881", "CVE-2012-2876", "CVE-2012-2883", "CVE-2012-2887", "CVE-2012-2888", "CVE-2012-2894", "CVE-2012-2877", "CVE-2012-2879", "CVE-2012-2884", "CVE-2012-2874", "CVE-2012-2875", "CVE-2012-2878", "CVE-2012-2880", "CVE-2012-2882", "CVE-2012-2885", "CVE-2012-2890", "CVE-2012-2891", "CVE-2012-2892", "CVE-2012-2893", "CVE-2012-2895");
-  script_version("$Revision: 11762 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 14170 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 10:24:12 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-10-03 11:11:06 -0400 (Wed, 03 Oct 2012)");
   script_name("FreeBSD Ports: chromium");
   script_category(ACT_GATHER_INFO);
@@ -76,70 +76,8 @@ CVE-2012-2888
 Use-after-free vulnerability in Google Chrome before 22.0.1229.79
 allows remote attackers to cause a denial of service or possibly have
 unspecified other impact via vectors involving SVG text references.
-CVE-2012-2894
-Google Chrome before 22.0.1229.79 does not properly handle
-graphics-context data structures, which allows remote attackers to
-cause a denial of service (application crash) or possibly have
-unspecified other impact via unknown vectors.
-CVE-2012-2877
-The extension system in Google Chrome before 22.0.1229.79 does not
-properly handle modal dialogs, which allows remote attackers to cause
-a denial of service (application crash) via unspecified vectors.
-CVE-2012-2879
-Google Chrome before 22.0.1229.79 allows remote attackers to cause a
-denial of service (DOM topology corruption) via a crafted document.
-CVE-2012-2884
-Skia, as used in Google Chrome before 22.0.1229.79, allows remote
-attackers to cause a denial of service (out-of-bounds read) via
-unspecified vectors.
-CVE-2012-2874
-Skia, as used in Google Chrome before 22.0.1229.79, allows remote
-attackers to cause a denial of service or possibly have unspecified
-other impact via vectors that trigger an out-of-bounds write
-operation, a different vulnerability than CVE-2012-2883.
-CVE-2012-2875
-Multiple unspecified vulnerabilities in the PDF functionality in
-Google Chrome before 22.0.1229.79 allow remote attackers to have an
-unknown impact via a crafted document.
-CVE-2012-2878
-Use-after-free vulnerability in Google Chrome before 22.0.1229.79
-allows remote attackers to cause a denial of service or possibly have
-unspecified other impact via vectors related to plug-in handling.
-CVE-2012-2880
-Race condition in Google Chrome before 22.0.1229.79 allows remote
-attackers to cause a denial of service or possibly have unspecified
-other impact via vectors related to the plug-in paint buffer.
-CVE-2012-2882
-FFmpeg, as used in Google Chrome before 22.0.1229.79, does not
-properly handle OGG containers, which allows remote attackers to cause
-a denial of service or possibly have unspecified other impact via
-unknown vectors, related to a 'wild pointer' issue.
-CVE-2012-2885
-Double free vulnerability in Google Chrome before 22.0.1229.79 allows
-remote attackers to cause a denial of service or possibly have
-unspecified other impact via vectors related to application exit.
-CVE-2012-2890
-Use-after-free vulnerability in the PDF functionality in Google Chrome
-before 22.0.1229.79 allows remote attackers to cause a denial of
-service or possibly have unspecified other impact via a crafted
-document.
-CVE-2012-2891
-The IPC implementation in Google Chrome before 22.0.1229.79 allows
-attackers to obtain potentially sensitive information about memory
-addresses via unspecified vectors.
-CVE-2012-2892
-Unspecified vulnerability in Google Chrome before 22.0.1229.79 allows
-remote attackers to bypass the pop-up blocker via unknown vectors.
-CVE-2012-2893
-Double free vulnerability in libxslt, as used in Google Chrome before
-22.0.1229.79, allows remote attackers to cause a denial of service or
-possibly have unspecified other impact via vectors related to XSL
-transforms.
-CVE-2012-2895
-The PDF functionality in Google Chrome before 22.0.1229.79 allows
-remote attackers to cause a denial of service or possibly have
-unspecified other impact via vectors that trigger out-of-bounds write
-operations.");
+
+Text truncated. Please see the references for more information.");
 
   script_tag(name:"solution", value:"Update your system with the appropriate patches or
   software upgrades.");

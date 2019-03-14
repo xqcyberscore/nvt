@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1306_2.nasl 11037 2018-08-17 11:51:16Z cfischer $
+# $Id: gb_ubuntu_USN_1306_2.nasl 14132 2019-03-13 09:25:59Z cfischer $
 #
 # Ubuntu Update for mozvoikko USN-1306-2
 #
@@ -24,15 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
-
 if(description)
 {
   script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1306-2/");
   script_oid("1.3.6.1.4.1.25623.1.0.840859");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 14132 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 10:25:59 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-01-09 13:30:14 +0530 (Mon, 09 Jan 2012)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -73,22 +70,21 @@ if(description)
   believed scripting was disabled. (CVE-2011-3663)
 
   It was discovered that it was possible to crash Firefox when scaling an OGG
-  &lt;video&gt; element to extreme sizes. (CVE-2011-3665)");
+  <video> element to extreme sizes. (CVE-2011-3665)");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
 release = dpkg_get_ssh_release();
-
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "UBUNTU11.04")
 {

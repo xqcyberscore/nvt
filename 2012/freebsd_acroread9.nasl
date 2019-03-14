@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: freebsd_acroread9.nasl 11762 2018-10-05 10:54:12Z cfischer $
+# $Id: freebsd_acroread9.nasl 14170 2019-03-14 09:24:12Z cfischer $
 #
 # Auto generated from VID fa2f386f-4814-11e1-89b4-001ec9578670
 #
@@ -32,8 +32,8 @@ if(description)
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2011-2462", "CVE-2011-1353", "CVE-2011-2431", "CVE-2011-2432", "CVE-2011-2433", "CVE-2011-2434", "CVE-2011-2435", "CVE-2011-2436", "CVE-2011-2437", "CVE-2011-2438", "CVE-2011-2439", "CVE-2011-2440", "CVE-2011-2441", "CVE-2011-2442");
-  script_version("$Revision: 11762 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 14170 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 10:24:12 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-02-12 07:27:20 -0500 (Sun, 12 Feb 2012)");
   script_name("FreeBSD Ports: acroread9");
   script_category(ACT_GATHER_INFO);
@@ -77,49 +77,7 @@ Heap-based buffer overflow in Adobe Reader and Acrobat 8.x before
 execute arbitrary code via unspecified vectors, a different
 vulnerability than CVE-2011-2433 and CVE-2011-2437.
 
-CVE-2011-2435
-Buffer overflow in Adobe Reader and Acrobat 8.x before 8.3.1, 9.x
-before 9.4.6, and 10.x before 10.1.1 allows attackers to execute
-arbitrary code via unspecified vectors.
-
-CVE-2011-2436
-Heap-based buffer overflow in the image-parsing library in Adobe
-Reader and Acrobat 8.x before 8.3.1, 9.x before 9.4.6, and 10.x before
-10.1.1 allows attackers to execute arbitrary code via unspecified
-vectors.
-
-CVE-2011-2437
-Heap-based buffer overflow in Adobe Reader and Acrobat 8.x before
-8.3.1, 9.x before 9.4.6, and 10.x before 10.1.1 allows attackers to
-execute arbitrary code via unspecified vectors, a different
-vulnerability than CVE-2011-2433 and CVE-2011-2434.
-
-CVE-2011-2438
-Multiple stack-based buffer overflows in the image-parsing library in
-Adobe Reader and Acrobat 8.x before 8.3.1, 9.x before 9.4.6, and 10.x
-before 10.1.1 allow attackers to execute arbitrary code via
-unspecified vectors.
-
-CVE-2011-2439
-Adobe Reader and Acrobat 8.x before 8.3.1, 9.x before 9.4.6, and 10.x
-before 10.1.1 allow attackers to execute arbitrary code via
-unspecified vectors, related to a 'memory leakage condition
-vulnerability.'
-
-CVE-2011-2440
-Use-after-free vulnerability in Adobe Reader and Acrobat 8.x before
-8.3.1, 9.x before 9.4.6, and 10.x before 10.1.1 allows attackers to
-execute arbitrary code via unspecified vectors.
-
-CVE-2011-2441
-Multiple stack-based buffer overflows in CoolType.dll in Adobe Reader
-and Acrobat 8.x before 8.3.1, 9.x before 9.4.6, and 10.x before 10.1.1
-allow attackers to execute arbitrary code via unspecified vectors.
-
-CVE-2011-2442
-Adobe Reader and Acrobat 8.x before 8.3.1, 9.x before 9.4.6, and 10.x
-before 10.1.1 allow attackers to execute arbitrary code via
-unspecified vectors, related to a 'logic error vulnerability.'");
+Text truncated. Please see the references for more information.");
 
   script_tag(name:"solution", value:"Update your system with the appropriate patches or
   software upgrades.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1350_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
+# $Id: gb_ubuntu_USN_1350_1.nasl 14132 2019-03-13 09:25:59Z cfischer $
 #
 # Ubuntu Update for thunderbird USN-1350-1
 #
@@ -24,16 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
-
-
 if(description)
 {
   script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1350-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.840889");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 14132 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 10:25:59 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-02-13 16:31:10 +0530 (Mon, 13 Feb 2012)");
   script_cve_id("CVE-2012-0442", "CVE-2011-3659", "CVE-2012-0444", "CVE-2012-0449", "CVE-2011-3670");
   script_tag(name:"cvss_base", value:"10.0");
@@ -81,18 +77,18 @@ if(description)
   use this to read sensitive data from the error messages. (CVE-2011-3670)");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
 release = dpkg_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "UBUNTU10.10")
 {

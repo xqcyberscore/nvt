@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: freebsd_puppet.nasl 11762 2018-10-05 10:54:12Z cfischer $
+# $Id: freebsd_puppet.nasl 14170 2019-03-14 09:24:12Z cfischer $
 #
 # Auto generated from VID 607d2108-a0e4-423a-bf78-846f2a8f01b0
 #
@@ -32,8 +32,8 @@ if(description)
   script_cve_id("CVE-2012-1906", "CVE-2012-1986", "CVE-2012-1987", "CVE-2012-1988", "CVE-2012-1989");
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
-  script_version("$Revision: 11762 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 14170 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 10:24:12 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-04-30 07:59:26 -0400 (Mon, 30 Apr 2012)");
   script_name("FreeBSD Ports: puppet");
   script_category(ACT_GATHER_INFO);
@@ -48,10 +48,10 @@ if(description)
   software upgrades.");
 
   script_xref(name:"URL", value:"http://puppetlabs.com/security/cve/cve-2012-1906/");
-  script_xref(name:"URL", value:"puppetlabs.com/security/cve/cve-2012-1986/");
-  script_xref(name:"URL", value:"puppetlabs.com/security/cve/cve-2012-1987/");
-  script_xref(name:"URL", value:"puppetlabs.com/security/cve/cve-2012-1988/");
-  script_xref(name:"URL", value:"puppetlabs.com/security/cve/cve-2012-1989/");
+  script_xref(name:"URL", value:"http://puppetlabs.com/security/cve/cve-2012-1986/");
+  script_xref(name:"URL", value:"http://puppetlabs.com/security/cve/cve-2012-1987/");
+  script_xref(name:"URL", value:"http://puppetlabs.com/security/cve/cve-2012-1988/");
+  script_xref(name:"URL", value:"http://puppetlabs.com/security/cve/cve-2012-1989/");
   script_xref(name:"URL", value:"http://www.vuxml.org/freebsd/607d2108-a0e4-423a-bf78-846f2a8f01b0.html");
 
   script_tag(name:"summary", value:"The remote host is missing an update to the system

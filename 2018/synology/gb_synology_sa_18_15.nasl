@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_synology_sa_18_15.nasl 12116 2018-10-26 10:01:35Z mmartin $
+# $Id: gb_synology_sa_18_15.nasl 14156 2019-03-13 14:38:13Z cfischer $
 #
 # Synology Photo Station Multiple Vulnerabilities (Synology_SA_18_15)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:synology:synology_photo_station";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112305");
-  script_version("$Revision: 12116 $");
+  script_version("$Revision: 14156 $");
   script_cve_id("CVE-2018-8925", "CVE-2018-8926");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 15:38:13 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-06-13 14:14:05 +0200 (Wed, 13 Jun 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -50,7 +50,7 @@ if(description)
   - Permissive regular expression vulnerability in synophoto_dsm_user in Synology Photo Station allows remote authenticated users
   to conduct privilege escalation attacks via the fullname parameter.");
 
-  script_tag(name:"affected", value:"Synology Photo Station before 6.8.5-3471 and before 6.3-2975 ");
+  script_tag(name:"affected", value:"Synology Photo Station before 6.8.5-3471 and before 6.3-2975.");
 
   script_tag(name:"solution", value:"Upgrade to Synology Photo Station version 6.8.5-3471 or 6.3-2975 respectively.");
 

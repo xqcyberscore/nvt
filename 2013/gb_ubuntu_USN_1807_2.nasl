@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1807_2.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_ubuntu_USN_1807_2.nasl 14132 2019-03-13 09:25:59Z cfischer $
 #
 # Ubuntu Update for mysql-5.5 USN-1807-2
 #
@@ -24,13 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841410");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14132 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 10:25:59 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-06-14 12:49:04 +0530 (Fri, 14 Jun 2013)");
   script_cve_id("CVE-2012-0553", "CVE-2013-1492", "CVE-2013-1502", "CVE-2013-1506",
                 "CVE-2013-1511", "CVE-2013-1512", "CVE-2013-1521", "CVE-2013-1523",
@@ -66,24 +64,26 @@ if(description)
   In addition to security fixes, the updated packages contain bug fixes,
   new features, and possibly incompatible changes.
 
-  Please see the following for more information:
-  http://dev.mysql.com/doc/relnotes/mysql/5.1/en/news-5-1-69.html
-  http://dev.mysql.com/doc/relnotes/mysql/5.5/en/news-5-5-31.html
-  http://www.oracle.com/technetwork/topics/security/cpuapr2013-1899555.html");
+  Please see the references for more information.");
+
+  script_xref(name:"URL", value:"http://dev.mysql.com/doc/relnotes/mysql/5.1/en/news-5-1-69.html");
+  script_xref(name:"URL", value:"http://dev.mysql.com/doc/relnotes/mysql/5.5/en/news-5-5-31.html");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpuapr2013-1899555.html");
+
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
 release = dpkg_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "UBUNTU13.04")
 {

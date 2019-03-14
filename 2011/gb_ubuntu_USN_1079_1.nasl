@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1079_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
+# $Id: gb_ubuntu_USN_1079_1.nasl 14132 2019-03-13 09:25:59Z cfischer $
 #
 # Ubuntu Update for openjdk-6 vulnerabilities USN-1079-1
 #
@@ -24,15 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
-
 if(description)
 {
   script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1079-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.840607");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 14132 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 10:25:59 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-03-07 06:45:55 +0100 (Mon, 07 Mar 2011)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -81,7 +78,7 @@ if(description)
   replace the XML Digital Signature Transform or C14N algorithm
   implementations. (CVE-2010-4472)
 
-  Konstantin Prei&#223;er and others discovered that specific double literals
+  Konstantin Preisser and others discovered that specific double literals
   were improperly handled, allowing a remote attacker to cause a denial
   of service. (CVE-2010-4476)
 
@@ -90,19 +87,18 @@ if(description)
   assignment of an inappropriate security descriptor. (CVE-2011-0706)");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
 release = dpkg_get_ssh_release();
-
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "UBUNTU9.10")
 {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: freebsd_chromium2.nasl 11762 2018-10-05 10:54:12Z cfischer $
+# $Id: freebsd_chromium2.nasl 14170 2019-03-14 09:24:12Z cfischer $
 #
 # Auto generated from VID fe1976c2-5317-11e1-9e99-00262d5ed8ee
 #
@@ -32,8 +32,8 @@ if(description)
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2011-3953", "CVE-2011-3954", "CVE-2011-3955", "CVE-2011-3956", "CVE-2011-3957", "CVE-2011-3958", "CVE-2011-3959", "CVE-2011-3960", "CVE-2011-3961", "CVE-2011-3962", "CVE-2011-3963", "CVE-2011-3964", "CVE-2011-3965", "CVE-2011-3966", "CVE-2011-3967", "CVE-2011-3968", "CVE-2011-3969", "CVE-2011-3970", "CVE-2011-3971", "CVE-2011-3972");
-  script_version("$Revision: 11762 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 14170 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 10:24:12 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-02-12 07:27:19 -0500 (Sun, 12 Feb 2012)");
   script_name("FreeBSD Ports: chromium");
   script_category(ACT_GATHER_INFO);
@@ -77,79 +77,7 @@ variables during handling of a column span, which allows remote
 attackers to cause a denial of service or possibly have unspecified
 other impact via a crafted document.
 
-CVE-2011-3959
-Buffer overflow in the locale implementation in Google Chrome before
-17.0.963.46 allows remote attackers to cause a denial of service or
-possibly have unspecified other impact via unknown vectors.
-
-CVE-2011-3960
-Google Chrome before 17.0.963.46 does not properly decode audio data,
-which allows remote attackers to cause a denial of service
-(out-of-bounds read) via unspecified vectors.
-
-CVE-2011-3961
-Race condition in Google Chrome before 17.0.963.46 allows remote
-attackers to execute arbitrary code via vectors that trigger a crash
-of a utility process.
-
-CVE-2011-3962
-Google Chrome before 17.0.963.46 does not properly perform path
-clipping, which allows remote attackers to cause a denial of service
-(out-of-bounds read) via unspecified vectors.
-
-CVE-2011-3963
-Google Chrome before 17.0.963.46 does not properly handle PDF FAX
-images, which allows remote attackers to cause a denial of service
-(out-of-bounds read) via unspecified vectors.
-
-CVE-2011-3964
-Google Chrome before 17.0.963.46 does not properly implement the
-drag-and-drop feature, which makes it easier for remote attackers to
-spoof the URL bar via unspecified vectors.
-
-CVE-2011-3965
-Google Chrome before 17.0.963.46 does not properly check signatures,
-which allows remote attackers to cause a denial of service
-(application crash) via unspecified vectors.
-
-CVE-2011-3966
-Use-after-free vulnerability in Google Chrome before 17.0.963.46
-allows remote attackers to cause a denial of service or possibly have
-unspecified other impact via vectors related to error handling for
-Cascading Style Sheets (CSS) token-sequence data.
-
-CVE-2011-3967
-Unspecified vulnerability in Google Chrome before 17.0.963.46 allows
-remote attackers to cause a denial of service (application crash) via
-a crafted certificate.
-
-CVE-2011-3968
-Use-after-free vulnerability in Google Chrome before 17.0.963.46
-allows remote attackers to cause a denial of service or possibly have
-unspecified other impact via vectors involving Cascading Style Sheets
-(CSS) token sequences.
-
-CVE-2011-3969
-Use-after-free vulnerability in Google Chrome before 17.0.963.46
-allows remote attackers to cause a denial of service or possibly have
-unspecified other impact via vectors related to layout of SVG
-documents.
-
-CVE-2011-3970
-libxslt, as used in Google Chrome before 17.0.963.46, allows remote
-attackers to cause a denial of service (out-of-bounds read) via
-unspecified vectors.
-
-CVE-2011-3971
-Use-after-free vulnerability in Google Chrome before 17.0.963.46
-allows user-assisted remote attackers to cause a denial of service or
-possibly have unspecified other impact via vectors related to
-mousemove events.
-
-CVE-2011-3972
-The shader translator implementation in Google Chrome before
-17.0.963.46 allows remote attackers to cause a denial of service
-(out-of-bounds read) via unspecified vectors.");
+Text truncated. Please see the references for more information.");
 
   script_tag(name:"solution", value:"Update your system with the appropriate patches or
   software upgrades.");

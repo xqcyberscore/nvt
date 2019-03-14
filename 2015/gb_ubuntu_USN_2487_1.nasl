@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842078");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14140 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 13:26:09 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-01-28 06:11:16 +0100 (Wed, 28 Jan 2015)");
   script_cve_id("CVE-2014-3566", "CVE-2014-6587", "CVE-2014-6601", "CVE-2015-0395",
                 "CVE-2015-0408", "CVE-2015-0412", "CVE-2014-6585", "CVE-2014-6591",
@@ -76,6 +76,7 @@ integrity. (CVE-2015-0413)");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(14\.10|14\.04 LTS)");
+
   exit(0);
 }
 
@@ -83,11 +84,10 @@ include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
 release = dpkg_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "UBUNTU14.10")
 {

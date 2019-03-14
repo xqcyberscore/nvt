@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_export-users-to-csv_csv_inj_vuln.nasl 14078 2019-03-11 03:25:53Z ckuersteiner $
+# $Id: gb_wordpress_export-users-to-csv_csv_inj_vuln.nasl 14157 2019-03-13 14:44:46Z cfischer $
 #
 # WordPress Export Users to CSV Plugin <= 1.1.1 CSV Injection Vulnerability
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112370");
-  script_version("$Revision: 14078 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-11 04:25:53 +0100 (Mon, 11 Mar 2019) $");
+  script_version("$Revision: 14157 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 15:44:46 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-08-29 11:05:00 +0200 (Wed, 29 Aug 2018)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -54,8 +54,11 @@ if (description)
 
   script_tag(name:"affected", value:"WordPress Export Users to CSV through version 1.1.1.");
 
-  script_tag(name:"solution", value:"The plugin is not available for download anymore. Therefore no fix will
-be provided. It is advised to remote the plugin.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+  Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove
+  the product or replace the product by another one.
+
+  NOTE: The plugin is not available for download anymore. Therefore no fix will be provided. It is advised to remote the plugin.");
 
   script_xref(name:"URL", value:"https://hackpuntes.com/cve-2018-15571-wordpress-plugin-export-users-to-csv-1-1-1-csv-injection/");
   script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/45206/");

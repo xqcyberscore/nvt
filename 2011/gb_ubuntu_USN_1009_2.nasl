@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1009_2.nasl 11037 2018-08-17 11:51:16Z cfischer $
+# $Id: gb_ubuntu_USN_1009_2.nasl 14132 2019-03-13 09:25:59Z cfischer $
 #
 # Ubuntu Update for eglibc, glibc vulnerability USN-1009-2
 #
@@ -24,15 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
-
 if(description)
 {
   script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1009-2/");
   script_oid("1.3.6.1.4.1.25623.1.0.840567");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 14132 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 10:25:59 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-01-14 16:07:43 +0100 (Fri, 14 Jan 2011)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
@@ -54,8 +51,8 @@ if(description)
   script_tag(name:"insight", value:"USN-1009-1 fixed vulnerabilities in the GNU C library. Colin Watson
   discovered that the fixes were incomplete and introduced flaws with
   setuid programs loading libraries that used dynamic string tokens in their
-  RPATH. If the &quot;man&quot; program was installed setuid, a local attacker could
-  exploit this to gain &quot;man&quot; user privileges, potentially leading to further
+  RPATH. If the 'man' program was installed setuid, a local attacker could
+  exploit this to gain 'man' user privileges, potentially leading to further
   privilege escalations. Default Ubuntu installations were not affected.
 
   Original advisory details:
@@ -66,19 +63,18 @@ if(description)
   CVE-2010-3856)");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
 release = dpkg_get_ssh_release();
-
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "UBUNTU9.10")
 {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: freebsd_chromium6.nasl 11762 2018-10-05 10:54:12Z cfischer $
+# $Id: freebsd_chromium6.nasl 14170 2019-03-14 09:24:12Z cfischer $
 #
 # Auto generated from VID 99aef698-66ed-11e1-8288-00262d5ed8ee
 #
@@ -32,8 +32,8 @@ if(description)
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-2011-3031", "CVE-2011-3032", "CVE-2011-3033", "CVE-2011-3034", "CVE-2011-3035", "CVE-2011-3036", "CVE-2011-3037", "CVE-2011-3038", "CVE-2011-3039", "CVE-2011-3040", "CVE-2011-3041", "CVE-2011-3042", "CVE-2011-3043", "CVE-2011-3044");
-  script_version("$Revision: 11762 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 14170 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 10:24:12 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-03-12 11:35:07 -0400 (Mon, 12 Mar 2012)");
   script_name("FreeBSD Ports: chromium");
   script_category(ACT_GATHER_INFO);
@@ -77,49 +77,7 @@ an unspecified variable during handling of line boxes, which allows
 remote attackers to cause a denial of service or possibly have unknown
 other impact via a crafted document.
 
-CVE-2011-3037
-Google Chrome before 17.0.963.65 does not properly perform casts of
-unspecified variables during the splitting of anonymous blocks, which
-allows remote attackers to cause a denial of service or possibly have
-unknown other impact via a crafted document.
-
-CVE-2011-3038
-Use-after-free vulnerability in Google Chrome before 17.0.963.65
-allows remote attackers to cause a denial of service or possibly have
-unspecified other impact via vectors related to multi-column handling.
-
-CVE-2011-3039
-Use-after-free vulnerability in Google Chrome before 17.0.963.65
-allows remote attackers to cause a denial of service or possibly have
-unspecified other impact via vectors related to quote handling.
-
-CVE-2011-3040
-Google Chrome before 17.0.963.65 does not properly handle text, which
-allows remote attackers to cause a denial of service (out-of-bounds
-read) via a crafted document.
-
-CVE-2011-3041
-Use-after-free vulnerability in Google Chrome before 17.0.963.65
-allows remote attackers to cause a denial of service or possibly have
-unspecified other impact via vectors related to the handling of class
-attributes.
-
-CVE-2011-3042
-Use-after-free vulnerability in Google Chrome before 17.0.963.65
-allows remote attackers to cause a denial of service or possibly have
-unspecified other impact via vectors related to the handling of table
-sections.
-
-CVE-2011-3043
-Use-after-free vulnerability in Google Chrome before 17.0.963.65
-allows remote attackers to cause a denial of service or possibly have
-unspecified other impact via vectors involving a flexbox (aka flexible
-box) in conjunction with the floating of elements.
-
-CVE-2011-3044
-Use-after-free vulnerability in Google Chrome before 17.0.963.65
-allows remote attackers to cause a denial of service or possibly have
-unspecified other impact via vectors involving SVG animation elements.");
+Text truncated. Please see the references for more information.");
 
   script_tag(name:"solution", value:"Update your system with the appropriate patches or
   software upgrades.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: freebsd_wireshark7.nasl 11762 2018-10-05 10:54:12Z cfischer $
+# $Id: freebsd_wireshark7.nasl 14170 2019-03-14 09:24:12Z cfischer $
 #
 # Auto generated from VID 4cdfe875-e8d6-11e1-bea0-002354ed89bc
 #
@@ -32,8 +32,8 @@ if(description)
   script_tag(name:"cvss_base", value:"8.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2012-4048", "CVE-2012-4049", "CVE-2012-4285", "CVE-2012-4286", "CVE-2012-4287", "CVE-2012-4288", "CVE-2012-4289", "CVE-2012-4290", "CVE-2012-4291", "CVE-2012-4292", "CVE-2012-4293", "CVE-2012-4294", "CVE-2012-4295", "CVE-2012-4296", "CVE-2012-4297", "CVE-2012-4298");
-  script_version("$Revision: 11762 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 14170 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 10:24:12 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-08-30 11:34:18 -0400 (Thu, 30 Aug 2012)");
   script_name("FreeBSD Ports: wireshark");
   script_category(ACT_GATHER_INFO);
@@ -76,64 +76,8 @@ epan/dissectors/packet-mongo.c in the MongoDB dissector in Wireshark
 1.8.x before 1.8.2 allows remote attackers to cause a denial of
 service (loop and CPU consumption) via a small value for a BSON
 document length.
-CVE-2012-4288
-Integer overflow in the dissect_xtp_ecntl function in
-epan/dissectors/packet-xtp.c in the XTP dissector in Wireshark 1.4.x
-before 1.4.15, 1.6.x before 1.6.10, and 1.8.x before 1.8.2 allows
-remote attackers to cause a denial of service (loop or application
-crash) via a large value for a span length.
-CVE-2012-4289
-epan/dissectors/packet-afp.c in the AFP dissector in Wireshark 1.4.x
-before 1.4.15, 1.6.x before 1.6.10, and 1.8.x before 1.8.2 allows
-remote attackers to cause a denial of service (loop and CPU
-consumption) via a large number of ACL entries.
-CVE-2012-4290
-The CTDB dissector in Wireshark 1.4.x before 1.4.15, 1.6.x before
-1.6.10, and 1.8.x before 1.8.2 allows remote attackers to cause a
-denial of service (loop and CPU consumption) via a malformed packet.
-CVE-2012-4291
-The CIP dissector in Wireshark 1.4.x before 1.4.15, 1.6.x before
-1.6.10, and 1.8.x before 1.8.2 allows remote attackers to cause a
-denial of service (memory consumption) via a malformed packet.
-CVE-2012-4292
-The dissect_stun_message function in epan/dissectors/packet-stun.c in
-the STUN dissector in Wireshark 1.4.x before 1.4.15, 1.6.x before
-1.6.10, and 1.8.x before 1.8.2 does not properly interact with
-key-destruction behavior in a certain tree library, which allows
-remote attackers to cause a denial of service (application crash) via
-a malformed packet.
-CVE-2012-4293
-plugins/ethercat/packet-ecatmb.c in the EtherCAT Mailbox dissector in
-Wireshark 1.4.x before 1.4.15, 1.6.x before 1.6.10, and 1.8.x before
-1.8.2 does not properly handle certain integer fields, which allows
-remote attackers to cause a denial of service (application exit) via a
-malformed packet.
-CVE-2012-4294
-Buffer overflow in the channelised_fill_sdh_g707_format function in
-epan/dissectors/packet-erf.c in the ERF dissector in Wireshark 1.8.x
-before 1.8.2 allows remote attackers to execute arbitrary code via a
-large speed (aka rate) value.
-CVE-2012-4295
-Array index error in the channelised_fill_sdh_g707_format function in
-epan/dissectors/packet-erf.c in the ERF dissector in Wireshark 1.8.x
-before 1.8.2 might allow remote attackers to cause a denial of service
-(application crash) via a crafted speed (aka rate) value.
-CVE-2012-4296
-Buffer overflow in epan/dissectors/packet-rtps2.c in the RTPS2
-dissector in Wireshark 1.4.x before 1.4.15, 1.6.x before 1.6.10, and
-1.8.x before 1.8.2 allows remote attackers to cause a denial of
-service (CPU consumption) via a malformed packet.
-CVE-2012-4297
-Buffer overflow in the dissect_gsm_rlcmac_downlink function in
-epan/dissectors/packet-gsm_rlcmac.c in the GSM RLC MAC dissector in
-Wireshark 1.6.x before 1.6.10 and 1.8.x before 1.8.2 allows remote
-attackers to execute arbitrary code via a malformed packet.
-CVE-2012-4298
-Integer signedness error in the vwr_read_rec_data_ethernet function in
-wiretap/vwr.c in the Ixia IxVeriWave file parser in Wireshark 1.8.x
-before 1.8.2 allows user-assisted remote attackers to execute
-arbitrary code via a crafted packet-trace file that triggers a buffer
-overflow.");
+
+Text truncated. Please see the references for more information.");
 
   script_tag(name:"solution", value:"Update your system with the appropriate patches or
   software upgrades.");

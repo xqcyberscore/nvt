@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: freebsd_firefox59.nasl 11762 2018-10-05 10:54:12Z cfischer $
+# $Id: freebsd_firefox59.nasl 14170 2019-03-14 09:24:12Z cfischer $
 #
 # Auto generated from VID 1fade8a3-e9e8-11e0-9580-4061862b8c22
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.70413");
-  script_version("$Revision: 11762 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 14170 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 10:24:12 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-10-16 23:01:53 +0200 (Sun, 16 Oct 2011)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -75,53 +75,8 @@ Firefox 6, Thunderbird before 7.0, and SeaMonkey before 2.4 allow
 remote attackers to cause a denial of service (memory corruption and
 application crash) or possibly execute arbitrary code via unknown
 vectors.
-CVE-2011-2999
-Mozilla Firefox before 3.6.23 and 4.x through 5, Thunderbird before
-6.0, and SeaMonkey before 2.3 do not properly handle 'location' as the
-name of a frame, which allows remote attackers to bypass the Same
-Origin Policy via a crafted web site, a different vulnerability than
-CVE-2010-0170.
-CVE-2011-3000
-Mozilla Firefox before 3.6.23 and 4.x through 6, Thunderbird before
-7.0, and SeaMonkey before 2.4 do not properly handle HTTP responses
-that contain multiple Location, Content-Length, or Content-Disposition
-headers, which makes it easier for remote attackers to conduct HTTP
-response splitting attacks via crafted header values.
-CVE-2011-3001
-Mozilla Firefox 4.x through 6, Thunderbird before 7.0, and SeaMonkey
-before 2.4 do not prevent manual add-on installation in response to
-the holding of the Enter key, which allows user-assisted remote
-attackers to bypass intended access restrictions via a crafted web
-site that triggers an unspecified internal error.
-CVE-2011-3002
-Almost Native Graphics Layer Engine (ANGLE), as used in Mozilla
-Firefox before 7.0 and SeaMonkey before 2.4, does not validate the
-return value of a GrowAtomTable function call, which allows remote
-attackers to cause a denial of service (application crash) or possibly
-execute arbitrary code via vectors that trigger a memory-allocation
-error and a resulting buffer overflow.
-CVE-2011-3003
-Mozilla Firefox before 7.0 and SeaMonkey before 2.4 allow remote
-attackers to cause a denial of service (application crash) or possibly
-execute arbitrary code via an unspecified WebGL test case that
-triggers a memory-allocation error and a resulting out-of-bounds write
-operation.
-CVE-2011-3004
-The JSSubScriptLoader in Mozilla Firefox 4.x through 6 and SeaMonkey
-before 2.4 does not properly handle XPCNativeWrappers during calls to
-the loadSubScript method in an add-on, which makes it easier for
-remote attackers to gain privileges via a crafted web site that
-leverages certain unwrapping behavior.
-CVE-2011-3005
-Use-after-free vulnerability in Mozilla Firefox 4.x through 6,
-Thunderbird before 7.0, and SeaMonkey before 2.4 allows remote
-attackers to cause a denial of service (application crash) or possibly
-execute arbitrary code via crafted OGG headers in a .ogg file.
-CVE-2011-3232
-YARR, as used in Mozilla Firefox before 7.0, Thunderbird before 7.0,
-and SeaMonkey before 2.4, allows remote attackers to cause a denial of
-service (application crash) or possibly execute arbitrary code via
-crafted JavaScript.");
+
+Text truncated. Please see the references for more information.");
 
   script_tag(name:"solution", value:"Update your system with the appropriate patches or
   software upgrades.");

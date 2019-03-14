@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpunit_rce.nasl 12143 2018-10-29 08:53:57Z cfischer $
+# $Id: gb_phpunit_rce.nasl 14161 2019-03-13 17:56:04Z cfischer $
 #
 # PHPUnit 'CVE-2017-9841' Remote Code Execution Vulnerability
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108439");
-  script_version("$Revision: 12143 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-29 09:53:57 +0100 (Mon, 29 Oct 2018) $");
+  script_version("$Revision: 14161 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 18:56:04 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-04-14 15:29:22 +0200 (Sat, 14 Apr 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -80,7 +80,8 @@ include("misc_func.inc");
 include("host_details.inc");
 
 port = get_http_port( default:80 );
-if( ! can_host_php( port:port ) ) exit(0);
+if( ! can_host_php( port:port ) )
+  exit(0);
 
 urls = make_list();
 
@@ -155,15 +156,20 @@ foreach dir( make_list( "/", cgi_dirs( port:port ) ) ) {
 # ...and make it "unique" so we don't check duplicated folders
 urls = make_list_unique( urls );
 
+vtstrings = get_vt_strings();
+check = vtstrings["default"] + " RCE Test";
+check64 = base64( str:check );
+data = '<?php echo(base64_decode("' + check64 + '"));';
+
 foreach url( url ) {
 
-  data = '<?php echo(base64_decode("T3BlblZBUyBSQ0UgVGVzdAo="));'; # OpenVAS RCE Test
   req  = http_post_req( port:port, url:url, data:data,
                         accept_header:"*/*",
                         add_headers:make_array( "Content-Type", "application/x-www-form-urlencoded" ) );
   res = http_keepalive_send_recv( port:port, data:req, bodyonly:TRUE );
 
-  if( "OpenVAS RCE Test" >< res ) {
+  if( res && check >< res ) {
+
     info['"HTTP POST" body'] = data;
     info['URL'] = report_vuln_url( port:port, url:url, url_only:TRUE );
 

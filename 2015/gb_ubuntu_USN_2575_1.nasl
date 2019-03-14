@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842173");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14140 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 13:26:09 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-04-22 07:23:53 +0200 (Wed, 22 Apr 2015)");
   script_cve_id("CVE-2015-0433", "CVE-2015-0441", "CVE-2015-0499", "CVE-2015-0501",
                 "CVE-2015-0505", "CVE-2015-2568", "CVE-2015-2571", "CVE-2015-2573");
@@ -45,10 +45,12 @@ MySQL has been updated to 5.5.43.
 In addition to security fixes, the updated packages contain bug fixes,
 new features, and possibly incompatible changes.
 
-Please see the following for more information:
-http://dev.mysql.com/doc/relnotes/mysql/5.5/en/news-5-5-42.html
-http://dev.mysql.com/doc/relnotes/mysql/5.5/en/news-5-5-43.html
-http://www.oracle.com/technetwork/topics/security/cpuapr2015-2365600.html");
+Please see the references for more information.");
+
+  script_xref(name:"URL", value:"http://dev.mysql.com/doc/relnotes/mysql/5.5/en/news-5-5-42.html");
+  script_xref(name:"URL", value:"http://dev.mysql.com/doc/relnotes/mysql/5.5/en/news-5-5-43.html");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpuapr2015-2365600.html");
+
   script_tag(name:"affected", value:"mysql-5.5 on Ubuntu 14.10,
   Ubuntu 14.04 LTS,
   Ubuntu 12.04 LTS");
@@ -61,6 +63,7 @@ http://www.oracle.com/technetwork/topics/security/cpuapr2015-2365600.html");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(14\.10|14\.04 LTS|12\.04 LTS)");
+
   exit(0);
 }
 
@@ -68,11 +71,10 @@ include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
 release = dpkg_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "UBUNTU14.10")
 {

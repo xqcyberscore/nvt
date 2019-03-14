@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_printers_fax_rce_vuln.nasl 12130 2018-10-26 13:59:17Z cfischer $
+# $Id: gb_hp_printers_fax_rce_vuln.nasl 14156 2019-03-13 14:38:13Z cfischer $
 #
 # HP Ink Printers RCE Vulnerabilities (Faxploit)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141380");
-  script_version("$Revision: 12130 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 15:59:17 +0200 (Fri, 26 Oct 2018) $");
+  script_version("$Revision: 14156 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 15:38:13 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-08-17 10:33:30 +0700 (Fri, 17 Aug 2018)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -50,7 +50,7 @@ if(description)
 
   script_tag(name:"summary", value:"Two security vulnerabilities have been identified with certain HP Inkjet
 printers. A maliciously crafted file sent to an affected device can cause a stack or static buffer overflow, which
-could allow remote code execution. ");
+could allow remote code execution.");
 
   script_tag(name:"vuldetect", value:"The script checks if the target host is a vulnerable device running a
 vulnerable firmware version.");

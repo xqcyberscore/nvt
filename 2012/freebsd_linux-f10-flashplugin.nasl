@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: freebsd_linux-f10-flashplugin.nasl 11762 2018-10-05 10:54:12Z cfischer $
+# $Id: freebsd_linux-f10-flashplugin.nasl 14170 2019-03-14 09:24:12Z cfischer $
 #
 # Auto generated from VID 0e8e1212-0ce5-11e1-849b-003067b2972c
 #
@@ -30,11 +30,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.70604");
   script_tag(name:"creation_date", value:"2012-02-13 01:48:16 +0100 (Mon, 13 Feb 2012)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 10:24:12 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2011-2445", "CVE-2011-2450", "CVE-2011-2451", "CVE-2011-2452", "CVE-2011-2453", "CVE-2011-2454", "CVE-2011-2455", "CVE-2011-2456", "CVE-2011-2457", "CVE-2011-2458", "CVE-2011-2459", "CVE-2011-2460");
-  script_version("$Revision: 11762 $");
+  script_version("$Revision: 14170 $");
   script_name("FreeBSD Ports: linux-f10-flashplugin");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 E-Soft Inc. http://www.securityspace.com");
@@ -78,69 +78,7 @@ unspecified vectors, a different vulnerability than CVE-2011-2445,
 CVE-2011-2451, CVE-2011-2453, CVE-2011-2454, CVE-2011-2455,
 CVE-2011-2459, and CVE-2011-2460.
 
-CVE-2011-2453
-Adobe Flash Player before 10.3.183.11 and 11.x before 11.1.102.55 on
-Windows, Mac OS X, Linux, and Solaris and before 11.1.102.59 on
-Android, and Adobe AIR before 3.1.0.4880, allows attackers to execute
-arbitrary code or cause a denial of service (memory corruption) via
-unspecified vectors, a different vulnerability than CVE-2011-2445,
-CVE-2011-2451, CVE-2011-2452, CVE-2011-2454, CVE-2011-2455,
-CVE-2011-2459, and CVE-2011-2460.
-
-CVE-2011-2454
-Adobe Flash Player before 10.3.183.11 and 11.x before 11.1.102.55 on
-Windows, Mac OS X, Linux, and Solaris and before 11.1.102.59 on
-Android, and Adobe AIR before 3.1.0.4880, allows attackers to execute
-arbitrary code or cause a denial of service (memory corruption) via
-unspecified vectors, a different vulnerability than CVE-2011-2445,
-CVE-2011-2451, CVE-2011-2452, CVE-2011-2453, CVE-2011-2455,
-CVE-2011-2459, and CVE-2011-2460.
-
-CVE-2011-2455
-Adobe Flash Player before 10.3.183.11 and 11.x before 11.1.102.55 on
-Windows, Mac OS X, Linux, and Solaris and before 11.1.102.59 on
-Android, and Adobe AIR before 3.1.0.4880, allows attackers to execute
-arbitrary code or cause a denial of service (memory corruption) via
-unspecified vectors, a different vulnerability than CVE-2011-2445,
-CVE-2011-2451, CVE-2011-2452, CVE-2011-2453, CVE-2011-2454,
-CVE-2011-2459, and CVE-2011-2460.
-
-CVE-2011-2456
-Buffer overflow in Adobe Flash Player before 10.3.183.11 and 11.x
-before 11.1.102.55 on Windows, Mac OS X, Linux, and Solaris and before
-11.1.102.59 on Android, and Adobe AIR before 3.1.0.4880, allows
-attackers to execute arbitrary code via unspecified vectors.
-
-CVE-2011-2457
-Stack-based buffer overflow in Adobe Flash Player before 10.3.183.11
-and 11.x before 11.1.102.55 on Windows, Mac OS X, Linux, and Solaris
-and before 11.1.102.59 on Android, and Adobe AIR before 3.1.0.4880,
-allows attackers to execute arbitrary code via unspecified vectors.
-
-CVE-2011-2458
-Adobe Flash Player before 10.3.183.11 and 11.x before 11.1.102.55 on
-Windows, Mac OS X, Linux, and Solaris and before 11.1.102.59 on
-Android, and Adobe AIR before 3.1.0.4880, when Internet Explorer is
-used, allows remote attackers to bypass the cross-domain policy via a
-crafted web site.
-
-CVE-2011-2459
-Adobe Flash Player before 10.3.183.11 and 11.x before 11.1.102.55 on
-Windows, Mac OS X, Linux, and Solaris and before 11.1.102.59 on
-Android, and Adobe AIR before 3.1.0.4880, allows attackers to execute
-arbitrary code or cause a denial of service (memory corruption) via
-unspecified vectors, a different vulnerability than CVE-2011-2445,
-CVE-2011-2451, CVE-2011-2452, CVE-2011-2453, CVE-2011-2454,
-CVE-2011-2455, and CVE-2011-2460.
-
-CVE-2011-2460
-Adobe Flash Player before 10.3.183.11 and 11.x before 11.1.102.55 on
-Windows, Mac OS X, Linux, and Solaris and before 11.1.102.59 on
-Android, and Adobe AIR before 3.1.0.4880, allows attackers to execute
-arbitrary code or cause a denial of service (memory corruption) via
-unspecified vectors, a different vulnerability than CVE-2011-2445,
-CVE-2011-2451, CVE-2011-2452, CVE-2011-2453, CVE-2011-2454,
-CVE-2011-2455, and CVE-2011-2459.");
+Text truncated. Please see the references for more information.");
 
   script_tag(name:"solution", value:"Update your system with the appropriate patches or
   software upgrades.");

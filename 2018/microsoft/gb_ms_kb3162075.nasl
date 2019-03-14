@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb3162075.nasl 12120 2018-10-26 11:13:20Z mmartin $
+# $Id: gb_ms_kb3162075.nasl 14156 2019-03-13 14:38:13Z cfischer $
 #
 # Microsoft Infopath 2013 Service Pack 1 Elevation of Privilege Vulnerability (KB3162075)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813182");
-  script_version("$Revision: 12120 $");
+  script_version("$Revision: 14156 $");
   script_cve_id("CVE-2018-8173");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 15:38:13 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-05-09 14:32:27 +0530 (Wed, 09 May 2018)");
   script_name("Microsoft Infopath 2013 Service Pack 1 Elevation of Privilege Vulnerability (KB3162075)");
 
@@ -41,7 +41,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to error in Microsoft
-  InfoPath when the software fails to properly handle objects in memory. ");
+  InfoPath when the software fails to properly handle objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to run arbitrary code in the context of the current user.");

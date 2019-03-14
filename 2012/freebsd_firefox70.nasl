@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: freebsd_firefox70.nasl 11762 2018-10-05 10:54:12Z cfischer $
+# $Id: freebsd_firefox70.nasl 14170 2019-03-14 09:24:12Z cfischer $
 #
 # Auto generated from VID 6e5a9afd-12d3-11e2-b47d-c8600054b392
 #
@@ -32,8 +32,8 @@ if(description)
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2012-3982", "CVE-2012-3983", "CVE-2012-3984", "CVE-2012-3985", "CVE-2012-3986", "CVE-2012-3987", "CVE-2012-3988", "CVE-2012-3989", "CVE-2012-3990", "CVE-2012-3991", "CVE-2012-3992", "CVE-2012-3993", "CVE-2012-3994", "CVE-2012-3995", "CVE-2012-4179", "CVE-2012-4180", "CVE-2012-4181", "CVE-2012-4182", "CVE-2012-4183", "CVE-2012-4184", "CVE-2012-4186", "CVE-2012-4187", "CVE-2012-4188", "CVE-2012-4190", "CVE-2012-4191", "CVE-2012-4192", "CVE-2012-4193");
-  script_version("$Revision: 11762 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 14170 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 10:24:12 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-10-13 02:35:34 -0400 (Sat, 13 Oct 2012)");
   script_name("FreeBSD Ports: firefox");
   script_category(ACT_GATHER_INFO);
@@ -77,157 +77,8 @@ before 2.13 do not properly implement the HTML5 Same Origin Policy,
 which allows remote attackers to conduct cross-site scripting (XSS)
 attacks by leveraging initial-origin access after document.domain has
 been set.
-CVE-2012-3986
-Mozilla Firefox before 16.0, Firefox ESR 10.x before 10.0.8,
-Thunderbird before 16.0, Thunderbird ESR 10.x before 10.0.8, and
-SeaMonkey before 2.13 do not properly restrict calls to DOMWindowUtils
-(aka nsDOMWindowUtils) methods, which allows remote attackers to
-bypass intended access restrictions via crafted JavaScript code.
-CVE-2012-3987
-Mozilla Firefox before 16.0 on Android assigns chrome privileges to
-Reader Mode pages, which allows user-assisted remote attackers to
-bypass intended access restrictions via a crafted web site.
-CVE-2012-3988
-Use-after-free vulnerability in Mozilla Firefox before 16.0, Firefox
-ESR 10.x before 10.0.8, Thunderbird before 16.0, Thunderbird ESR 10.x
-before 10.0.8, and SeaMonkey before 2.13 might allow user-assisted
-remote attackers to execute arbitrary code via vectors involving use
-of mozRequestFullScreen to enter full-screen mode, and use of the
-history.back method for backwards history navigation.
-CVE-2012-3989
-Mozilla Firefox before 16.0, Thunderbird before 16.0, and SeaMonkey
-before 2.13 do not properly perform a cast of an unspecified variable
-during use of the instanceof operator on a JavaScript object, which
-allows remote attackers to execute arbitrary code or cause a denial of
-service (assertion failure) via a crafted web site.
-CVE-2012-3990
-Use-after-free vulnerability in the IME State Manager implementation
-in Mozilla Firefox before 16.0, Firefox ESR 10.x before 10.0.8,
-Thunderbird before 16.0, Thunderbird ESR 10.x before 10.0.8, and
-SeaMonkey before 2.13 allows remote attackers to execute arbitrary
-code via unspecified vectors, related to the
-nsIContent::GetNameSpaceID function.
-CVE-2012-3991
-Mozilla Firefox before 16.0, Firefox ESR 10.x before 10.0.8,
-Thunderbird before 16.0, Thunderbird ESR 10.x before 10.0.8, and
-SeaMonkey before 2.13 do not properly restrict JSAPI access to the
-GetProperty function, which allows remote attackers to bypass the Same
-Origin Policy and possibly have unspecified other impact via a crafted
-web site.
-CVE-2012-3992
-Mozilla Firefox before 16.0, Firefox ESR 10.x before 10.0.8,
-Thunderbird before 16.0, Thunderbird ESR 10.x before 10.0.8, and
-SeaMonkey before 2.13 do not properly manage history data, which
-allows remote attackers to conduct cross-site scripting (XSS) attacks
-or obtain sensitive POST content via vectors involving a location.hash
-write operation and history navigation that triggers the loading of a
-URL into the history object.
-CVE-2012-3993
-The Chrome Object Wrapper (COW) implementation in Mozilla Firefox
-before 16.0, Firefox ESR 10.x before 10.0.8, Thunderbird before 16.0,
-Thunderbird ESR 10.x before 10.0.8, and SeaMonkey before 2.13 does not
-properly interact with failures of InstallTrigger methods, which
-allows remote attackers to execute arbitrary JavaScript code with
-chrome privileges via a crafted web site, related to an 'XrayWrapper
-pollution' issue.
-CVE-2012-3994
-Mozilla Firefox before 16.0, Firefox ESR 10.x before 10.0.8,
-Thunderbird before 16.0, Thunderbird ESR 10.x before 10.0.8, and
-SeaMonkey before 2.13 allow remote attackers to conduct cross-site
-scripting (XSS) attacks via a binary plugin that uses
-Object.defineProperty to shadow the top object, and leverages the
-relationship between top.location and the location property.
-CVE-2012-3995
-The IsCSSWordSpacingSpace function in Mozilla Firefox before 16.0,
-Firefox ESR 10.x before 10.0.8, Thunderbird before 16.0, Thunderbird
-ESR 10.x before 10.0.8, and SeaMonkey before 2.13 allows remote
-attackers to execute arbitrary code or cause a denial of service
-(out-of-bounds read) via unspecified vectors.
-CVE-2012-4179
-Use-after-free vulnerability in the
-nsHTMLCSSUtils::CreateCSSPropertyTxn function in Mozilla Firefox
-before 16.0, Firefox ESR 10.x before 10.0.8, Thunderbird before 16.0,
-Thunderbird ESR 10.x before 10.0.8, and SeaMonkey before 2.13 allows
-remote attackers to execute arbitrary code or cause a denial of
-service (heap memory corruption) via unspecified vectors.
-CVE-2012-4180
-Heap-based buffer overflow in the
-nsHTMLEditor::IsPrevCharInNodeWhitespace function in Mozilla Firefox
-before 16.0, Firefox ESR 10.x before 10.0.8, Thunderbird before 16.0,
-Thunderbird ESR 10.x before 10.0.8, and SeaMonkey before 2.13 allows
-remote attackers to execute arbitrary code via unspecified vectors.
-CVE-2012-4181
-Use-after-free vulnerability in the
-nsSMILAnimationController::DoSample function in Mozilla Firefox before
-16.0, Firefox ESR 10.x before 10.0.8, Thunderbird before 16.0,
-Thunderbird ESR 10.x before 10.0.8, and SeaMonkey before 2.13 allows
-remote attackers to execute arbitrary code or cause a denial of
-service (heap memory corruption) via unspecified vectors.
-CVE-2012-4182
-Use-after-free vulnerability in the nsTextEditRules::WillInsert
-function in Mozilla Firefox before 16.0, Firefox ESR 10.x before
-10.0.8, Thunderbird before 16.0, Thunderbird ESR 10.x before 10.0.8,
-and SeaMonkey before 2.13 allows remote attackers to execute arbitrary
-code or cause a denial of service (heap memory corruption) via
-unspecified vectors.
-CVE-2012-4183
-Use-after-free vulnerability in the DOMSVGTests::GetRequiredFeatures
-function in Mozilla Firefox before 16.0, Firefox ESR 10.x before
-10.0.8, Thunderbird before 16.0, Thunderbird ESR 10.x before 10.0.8,
-and SeaMonkey before 2.13 allows remote attackers to execute arbitrary
-code or cause a denial of service (heap memory corruption) via
-unspecified vectors.
-CVE-2012-4184
-The Chrome Object Wrapper (COW) implementation in Mozilla Firefox
-before 16.0, Firefox ESR 10.x before 10.0.8, Thunderbird before 16.0,
-Thunderbird ESR 10.x before 10.0.8, and SeaMonkey before 2.13 does not
-prevent access to properties of a prototype for a standard class,
-which allows remote attackers to execute arbitrary JavaScript code
-with chrome privileges via a crafted web site.
-CVE-2012-4186
-Heap-based buffer overflow in the nsWaveReader::DecodeAudioData
-function in Mozilla Firefox before 16.0, Firefox ESR 10.x before
-10.0.8, Thunderbird before 16.0, Thunderbird ESR 10.x before 10.0.8,
-and SeaMonkey before 2.13 allows remote attackers to execute arbitrary
-code via unspecified vectors.
-CVE-2012-4187
-Mozilla Firefox before 16.0, Firefox ESR 10.x before 10.0.8,
-Thunderbird before 16.0, Thunderbird ESR 10.x before 10.0.8, and
-SeaMonkey before 2.13 do not properly manage a certain insPos
-variable, which allows remote attackers to execute arbitrary code or
-cause a denial of service (heap memory corruption and assertion
-failure) via unspecified vectors.
-CVE-2012-4188
-Heap-based buffer overflow in the Convolve3x3 function in Mozilla
-Firefox before 16.0, Firefox ESR 10.x before 10.0.8, Thunderbird
-before 16.0, Thunderbird ESR 10.x before 10.0.8, and SeaMonkey before
-2.13 allows remote attackers to execute arbitrary code via unspecified
-vectors.
-CVE-2012-4190
-The FT2FontEntry::CreateFontEntry function in FreeType, as used in the
-Android build of Mozilla Firefox before 16.0.1 on CyanogenMod 10,
-allows remote attackers to cause a denial of service (memory
-corruption and application crash) or possibly execute arbitrary code
-via unspecified vectors.
-CVE-2012-4191
-The mozilla::net::FailDelayManager::Lookup function in the WebSockets
-implementation in Mozilla Firefox before 16.0.1, Thunderbird before
-16.0.1, and SeaMonkey before 2.13.1 allows remote attackers to cause a
-denial of service (memory corruption and application crash) or
-possibly execute arbitrary code via unspecified vectors.
-CVE-2012-4192
-Mozilla Firefox 16.0, Thunderbird 16.0, and SeaMonkey 2.13 allow
-remote attackers to bypass the Same Origin Policy and read the
-properties of a Location object via a crafted web site, a related
-issue to CVE-2012-4193.
-CVE-2012-4193
-Mozilla Firefox before 16.0.1, Firefox ESR 10.x before 10.0.9,
-Thunderbird before 16.0.1, Thunderbird ESR 10.x before 10.0.9, and
-SeaMonkey before 2.13.1 omit a security check in the defaultValue
-function during the unwrapping of security wrappers, which allows
-remote attackers to bypass the Same Origin Policy and read the
-properties of a Location object, or execute arbitrary JavaScript code,
-via a crafted web site.");
+
+Text truncated. Please see the references for more information.");
 
   script_tag(name:"solution", value:"Update your system with the appropriate patches or
   software upgrades.");

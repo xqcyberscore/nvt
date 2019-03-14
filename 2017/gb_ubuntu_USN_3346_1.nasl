@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843230");
-  script_version("$Revision: 13654 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-14 08:51:59 +0100 (Thu, 14 Feb 2019) $");
+  script_version("$Revision: 14140 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 13:26:09 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-06-30 05:13:24 +0200 (Fri, 30 Jun 2017)");
   script_cve_id("CVE-2017-3143", "CVE-2017-3142");
   script_tag(name:"cvss_base", value:"4.3");
@@ -37,10 +37,10 @@ if(description)
   script_tag(name:"summary", value:"The remote host is missing an update for the 'bind9'
   package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"Cl&#233 ment Berthaux discovered that Bind
+  script_tag(name:"insight", value:"Clement Berthaux discovered that Bind
   did not correctly check TSIG authentication for zone update requests. An
   attacker could use this to improperly perform zone updates. (CVE-2017-3143)
-  Cl&#233 ment Berthaux discovered that Bind did not correctly check TSIG
+  Clement Berthaux discovered that Bind did not correctly check TSIG
   authentication for zone transfer requests. An attacker could use this to
   improperly transfer entire zones. (CVE-2017-3142)");
   script_tag(name:"affected", value:"bind9 on Ubuntu 17.04,
@@ -57,6 +57,7 @@ if(description)
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(14\.04 LTS|17\.04|16\.10|16\.04 LTS)");
+
   exit(0);
 }
 
@@ -64,11 +65,10 @@ include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
 release = dpkg_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "UBUNTU14.04 LTS")
 {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1397_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
+# $Id: gb_ubuntu_USN_1397_1.nasl 14132 2019-03-13 09:25:59Z cfischer $
 #
 # Ubuntu Update for mysql-5.1 USN-1397-1
 #
@@ -24,16 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
-
-
 if(description)
 {
   script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1397-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.840944");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 14132 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 10:25:59 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-03-16 10:51:25 +0530 (Fri, 16 Mar 2012)");
   script_cve_id("CVE-2007-5925", "CVE-2008-3963", "CVE-2008-4098", "CVE-2008-4456",
                 "CVE-2008-7247", "CVE-2009-2446", "CVE-2009-4019", "CVE-2009-4030",
@@ -72,24 +68,26 @@ if(description)
   In addition to security fixes, the updated packages contain bug fixes, new
   features, and possibly incompatible changes.
 
-  Please see the following for more information:
-  http://dev.mysql.com/doc/refman/5.1/en/news-5-1-x.html
-  http://dev.mysql.com/doc/refman/5.0/en/news-5-0-x.html
-  http://www.oracle.com/technetwork/topics/security/cpujan2012-366304.html");
+  Please see the references for more information.");
+
+  script_xref(name:"URL", value:"http://dev.mysql.com/doc/refman/5.1/en/news-5-1-x.html");
+  script_xref(name:"URL", value:"http://dev.mysql.com/doc/refman/5.0/en/news-5-0-x.html");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpujan2012-366304.html");
+
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
 release = dpkg_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "UBUNTU10.10")
 {

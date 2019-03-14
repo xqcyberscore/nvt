@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: glsa_201006_17.nasl 11671 2018-09-28 10:44:05Z cfischer $
+# $Id: glsa_201006_17.nasl 14171 2019-03-14 10:22:03Z cfischer $
 #
 # Auto generated from Gentoo's XML based advisory
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.69020");
-  script_version("$Revision: 11671 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 12:44:05 +0200 (Fri, 28 Sep 2018) $");
+  script_version("$Revision: 14171 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 11:22:03 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-03-09 05:54:11 +0100 (Wed, 09 Mar 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -47,10 +47,10 @@ if(description)
   script_tag(name:"solution", value:"All lighttpd users should upgrade to the latest version:
 
     # emerge --sync
-    # emerge --ask --oneshot --verbose '>=www-servers/lighttpd-1.4.25-r1'
+    # emerge --ask --oneshot --verbose '>=www-servers/lighttpd-1.4.25-r1'");
 
-http://www.securityspace.com/smysecure/catid.html?in=GLSA%20201006-17
-http://bugs.gentoo.org/show_bug.cgi?id=303213");
+  script_xref(name:"URL", value:"http://www.securityspace.com/smysecure/catid.html?in=GLSA%20201006-17");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=303213");
   script_tag(name:"summary", value:"The remote host is missing updates announced in
 advisory GLSA 201006-17.");
   script_tag(name:"qod_type", value:"package");

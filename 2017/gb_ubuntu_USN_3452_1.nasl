@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3452_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_ubuntu_USN_3452_1.nasl 14140 2019-03-13 12:26:09Z cfischer $
 #
 # Ubuntu Update for ceph USN-3452-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843337");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14140 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 13:26:09 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-10-12 10:27:28 +0200 (Thu, 12 Oct 2017)");
   script_cve_id("CVE-2016-5009", "CVE-2016-7031", "CVE-2016-8626", "CVE-2016-9579");
   script_tag(name:"cvss_base", value:"6.8");
@@ -45,9 +45,9 @@ if(description)
   ACL. A remote attacker could possibly use this issue to list bucket contents via
   a URL. (CVE-2016-7031) Diluga Salome discovered that Ceph incorrectly handled
   certain POST objects with null conditions. A remote attacker could possibly use
-  this issue to cuase Ceph to crash, resulting in a denial of service.
+  this issue to cause Ceph to crash, resulting in a denial of service.
   (CVE-2016-8626) Yang Liu discovered that Ceph incorrectly handled invalid HTTP
-  Origin headers. A remote attacker could possibly use this issue to cuase Ceph to
+  Origin headers. A remote attacker could possibly use this issue to cause Ceph to
   crash, resulting in a denial of service. (CVE-2016-9579)");
   script_tag(name:"affected", value:"ceph on Ubuntu 14.04 LTS");
   script_tag(name:"solution", value:"Please Install the Updated Packages.");
@@ -60,6 +60,7 @@ if(description)
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU14\.04 LTS");
+
   exit(0);
 }
 
@@ -67,11 +68,10 @@ include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
 release = dpkg_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "UBUNTU14.04 LTS")
 {

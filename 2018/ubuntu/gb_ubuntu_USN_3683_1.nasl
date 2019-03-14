@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3683_1.nasl 13837 2019-02-25 07:45:05Z mmartin $
+# $Id: gb_ubuntu_USN_3683_1.nasl 14140 2019-03-13 12:26:09Z cfischer $
 #
 # Ubuntu Update for bind9 USN-3683-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843560");
-  script_version("$Revision: 13837 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-25 08:45:05 +0100 (Mon, 25 Feb 2019) $");
+  script_version("$Revision: 14140 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 13:26:09 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-06-14 05:49:45 +0200 (Thu, 14 Jun 2018)");
   script_cve_id("CVE-2018-5738");
   script_tag(name:"cvss_base", value:"5.0");
@@ -54,6 +54,7 @@ expectations.");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU18\.04 LTS");
+
   exit(0);
 }
 
@@ -61,11 +62,10 @@ include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
 release = dpkg_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "UBUNTU18.04 LTS")
 {

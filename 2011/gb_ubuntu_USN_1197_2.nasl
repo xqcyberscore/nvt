@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1197_2.nasl 11037 2018-08-17 11:51:16Z cfischer $
+# $Id: gb_ubuntu_USN_1197_2.nasl 14132 2019-03-13 09:25:59Z cfischer $
 #
 # Ubuntu Update for thunderbird USN-1197-2
 #
@@ -24,15 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
-
 if(description)
 {
   script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1197-2/");
   script_oid("1.3.6.1.4.1.25623.1.0.840732");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 14132 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 10:25:59 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-09-07 08:58:04 +0200 (Wed, 07 Sep 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -65,7 +62,7 @@ if(description)
 
   It was discovered that Dutch Certificate Authority DigiNotar had
   mis-issued multiple fraudulent certificates. These certificates could allow
-  an attacker to perform a &quot;man in the middle&quot; (MITM) attack which would make
+  an attacker to perform a 'man in the middle' (MITM) attack which would make
   the user believe their connection is secure, but is actually being
   monitored.
 
@@ -75,22 +72,24 @@ if(description)
 
   We are currently aware of a regression that blocks one of two Staat der
   Nederlanden root certificates which are believed to still be secure. This
-  regression is being tracked at https://launchpad.net/bugs/838322");
+  regression is being tracked at the referenced bugtracker.");
+
+  script_xref(name:"URL", value:"https://launchpad.net/bugs/838322");
+
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
 release = dpkg_get_ssh_release();
-
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "UBUNTU10.10")
 {

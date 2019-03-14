@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1140_2.nasl 11037 2018-08-17 11:51:16Z cfischer $
+# $Id: gb_ubuntu_USN_1140_2.nasl 14132 2019-03-13 09:25:59Z cfischer $
 #
 # Ubuntu Update for pam USN-1140-2
 #
@@ -24,15 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
-
 if(description)
 {
   script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1140-2/");
   script_oid("1.3.6.1.4.1.25623.1.0.840673");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 14132 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 10:25:59 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-06-06 16:56:27 +0200 (Mon, 06 Jun 2011)");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
@@ -52,7 +49,7 @@ if(description)
   Ubuntu 8.04 LTS");
   script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"insight", value:"USN-1140-1 fixed vulnerabilities in PAM. A regression was found that caused
-  cron to stop working with a &quot;Module is unknown&quot; error. As a result, systems
+  cron to stop working with a 'Module is unknown' error. As a result, systems
   configured with automatic updates will not receive updates until cron is
   restarted, these updates are installed or the system is rebooted. This
   update fixes the problem.
@@ -85,19 +82,18 @@ if(description)
   denial of service. (CVE-2010-4707)");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
 release = dpkg_get_ssh_release();
-
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "UBUNTU10.10")
 {

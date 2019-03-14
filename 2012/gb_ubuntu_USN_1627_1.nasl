@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1627_1.nasl 11973 2018-10-19 05:51:32Z cfischer $
+# $Id: gb_ubuntu_USN_1627_1.nasl 14132 2019-03-13 09:25:59Z cfischer $
 #
 # Ubuntu Update for apache2 USN-1627-1
 #
@@ -24,14 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
 if(description)
 {
   script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1627-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.841209");
-  script_version("$Revision: 11973 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 07:51:32 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 14132 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 10:25:59 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-11-09 09:34:28 +0530 (Fri, 09 Nov 2012)");
   script_cve_id("CVE-2012-2687", "CVE-2012-4929");
   script_tag(name:"cvss_base", value:"2.6");
@@ -59,7 +57,7 @@ if(description)
   this to modify the contents, or steal confidential data (such as
   passwords), within the same domain. (CVE-2012-2687)
 
-  It was discovered that the Apache HTTP Server was vulnerable to the &quot;CRIME&quot;
+  It was discovered that the Apache HTTP Server was vulnerable to the 'CRIME'
   SSL data compression attack. Although this issue had been mitigated on the
   client with newer web browsers, this update also disables SSL data
   compression on the server. A new SSLCompression directive for Apache has
@@ -68,18 +66,18 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"http://httpd.apache.org/docs/2.4/mod/mod_ssl.html");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
 release = dpkg_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "UBUNTU12.04 LTS")
 {

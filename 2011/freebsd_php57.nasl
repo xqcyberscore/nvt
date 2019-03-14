@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: freebsd_php57.nasl 11762 2018-10-05 10:54:12Z cfischer $
+# $Id: freebsd_php57.nasl 14170 2019-03-14 09:24:12Z cfischer $
 #
 # Auto generated from VID b2a6fc0e-070f-11e0-a6e9-00215c6a37bb
 #
@@ -8,7 +8,7 @@
 # Thomas Reinke <reinke@securityspace.com>
 #
 # Copyright:
-# Copyright (c) 2010 E-Soft Inc. http://www.securityspace.com
+# Copyright (c) 2011 E-Soft Inc. http://www.securityspace.com
 # Text descriptions are largely excerpted from the referenced
 # advisories, and are Copyright (c) the respective author(s)
 #
@@ -29,15 +29,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.68689");
-  script_version("$Revision: 11762 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 14170 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 10:24:12 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-01-24 17:55:59 +0100 (Mon, 24 Jan 2011)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-2006-7243", "CVE-2010-2950", "CVE-2010-3436", "CVE-2010-3709", "CVE-2010-4150");
   script_name("FreeBSD Ports: php5");
   script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2010 E-Soft Inc. http://www.securityspace.com");
+  script_copyright("Copyright (c) 2011 E-Soft Inc. http://www.securityspace.com");
   script_family("FreeBSD Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/freebsd", "ssh/login/freebsdrel");

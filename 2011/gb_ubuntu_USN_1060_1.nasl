@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1060_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
+# $Id: gb_ubuntu_USN_1060_1.nasl 14132 2019-03-13 09:25:59Z cfischer $
 #
 # Ubuntu Update for exim4 vulnerabilities USN-1060-1
 #
@@ -24,15 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
-
 if(description)
 {
   script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1060-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.840582");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 14132 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 10:25:59 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-02-11 13:26:17 +0100 (Fri, 11 Feb 2011)");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
@@ -54,7 +51,7 @@ if(description)
   script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"insight", value:"It was discovered that Exim contained a design flaw in the way it processed
   alternate configuration files. An attacker that obtained privileges of the
-  &quot;Debian-exim&quot; user could use an alternate configuration file to obtain
+  'Debian-exim' user could use an alternate configuration file to obtain
   root privileges. (CVE-2010-4345)
 
   It was discovered that Exim incorrectly handled certain return values when
@@ -73,19 +70,18 @@ if(description)
   applied to Ubuntu 6.06 LTS, 8.04 LTS, 9.10, and 10.04 LTS. (CVE-2010-2024)");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
 release = dpkg_get_ssh_release();
-
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "UBUNTU9.10")
 {

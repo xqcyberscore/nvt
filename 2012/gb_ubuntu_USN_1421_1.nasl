@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1421_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
+# $Id: gb_ubuntu_USN_1421_1.nasl 14132 2019-03-13 09:25:59Z cfischer $
 #
 # Ubuntu Update for linux-lts-backport-maverick USN-1421-1
 #
@@ -24,18 +24,14 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
-
-
 if(description)
 {
   script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1421-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.840983");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 14132 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 10:25:59 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-04-13 10:33:35 +0530 (Fri, 13 Apr 2012)");
   script_cve_id("CVE-2011-4347", "CVE-2012-0045", "CVE-2012-1097", "CVE-2012-1146");
   script_xref(name:"USN", value:"1421-1");
@@ -54,7 +50,7 @@ if(description)
   could use this flaw to crash the system causing a denial of service.
   (CVE-2011-4347)
 
-  Stephan B&#195;&#164;rwolf discovered a flaw in the KVM (kernel-based virtual
+  Stephan Baerwolf discovered a flaw in the KVM (kernel-based virtual
   machine) subsystem of the Linux kernel. A local unprivileged user can crash
   use this flaw to crash VMs causing a deny of service. (CVE-2012-0045)
 
@@ -66,18 +62,18 @@ if(description)
   attacker could use this flaw to crash the system. (CVE-2012-1146)");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
 release = dpkg_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "UBUNTU10.04 LTS")
 {

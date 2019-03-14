@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842786");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14140 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 13:26:09 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-06-11 05:25:29 +0200 (Sat, 11 Jun 2016)");
   script_cve_id("CVE-2016-2117", "CVE-2016-1583", "CVE-2015-8839", "CVE-2016-2187", "CVE-2016-3961", "CVE-2016-4485", "CVE-2016-4486", "CVE-2016-4558", "CVE-2016-4565", "CVE-2016-4581");
   script_tag(name:"cvss_base", value:"7.2");
@@ -100,6 +100,7 @@ to cause a denial of service (system crash). (CVE-2016-4581)");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU16\.04 LTS");
+
   exit(0);
 }
 
@@ -107,11 +108,10 @@ include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
 release = dpkg_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "UBUNTU16.04 LTS")
 {

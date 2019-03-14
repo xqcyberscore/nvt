@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3803_1.nasl 12767 2018-12-12 08:39:09Z asteins $
+# $Id: gb_ubuntu_USN_3803_1.nasl 14166 2019-03-14 07:20:11Z cfischer $
 #
 # Ubuntu Update for ghostscript USN-3803-1
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843801");
-  script_version("$Revision: 12767 $");
+  script_version("$Revision: 14166 $");
   script_cve_id("CVE-2018-17961", "CVE-2018-18073", "CVE-2018-18284");
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-12 09:39:09 +0100 (Wed, 12 Dec 2018) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 08:20:11 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-11-01 06:05:18 +0100 (Thu, 01 Nov 2018)");
   script_name("Ubuntu Update for ghostscript USN-3803-1");
   script_category(ACT_GATHER_INFO);

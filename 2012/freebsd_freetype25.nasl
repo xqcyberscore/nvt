@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: freebsd_freetype25.nasl 11762 2018-10-05 10:54:12Z cfischer $
+# $Id: freebsd_freetype25.nasl 14170 2019-03-14 09:24:12Z cfischer $
 #
 # Auto generated from VID 462e2d6c-8017-11e1-a571-bcaec565249c
 #
@@ -32,8 +32,8 @@ if(description)
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2012-1126", "CVE-2012-1127", "CVE-2012-1128", "CVE-2012-1129", "CVE-2012-1130", "CVE-2012-1131", "CVE-2012-1132", "CVE-2012-1133", "CVE-2012-1134", "CVE-2012-1135", "CVE-2012-1136", "CVE-2012-1137", "CVE-2012-1138", "CVE-2012-1139", "CVE-2012-1140", "CVE-2012-1141", "CVE-2012-1142", "CVE-2012-1143", "CVE-2012-1144");
-  script_version("$Revision: 11762 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 14170 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 10:24:12 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-04-30 07:59:26 -0400 (Mon, 30 Apr 2012)");
   script_name("FreeBSD Ports: freetype2");
   script_category(ACT_GATHER_INFO);
@@ -73,85 +73,8 @@ and other products, allows remote attackers to cause a denial of
 service (invalid heap read operation and memory corruption) or
 possibly execute arbitrary code via crafted property data in a PCF
 font.
-CVE-2012-1131
-FreeType before 2.4.9, as used in Mozilla Firefox Mobile before 10.0.4
-and other products, on 64-bit platforms allows remote attackers to
-cause a denial of service (invalid heap read operation and memory
-corruption) or possibly execute arbitrary code via vectors related to
-the cell table of a font.
-CVE-2012-1132
-FreeType before 2.4.9, as used in Mozilla Firefox Mobile before 10.0.4
-and other products, allows remote attackers to cause a denial of
-service (invalid heap read operation and memory corruption) or
-possibly execute arbitrary code via crafted dictionary data in a Type
-1 font.
-CVE-2012-1133
-FreeType before 2.4.9, as used in Mozilla Firefox Mobile before 10.0.4
-and other products, allows remote attackers to cause a denial of
-service (invalid heap write operation and memory corruption) or
-possibly execute arbitrary code via crafted glyph or bitmap data in a
-BDF font.
-CVE-2012-1134
-FreeType before 2.4.9, as used in Mozilla Firefox Mobile before 10.0.4
-and other products, allows remote attackers to cause a denial of
-service (invalid heap write operation and memory corruption) or
-possibly execute arbitrary code via crafted private-dictionary data in
-a Type 1 font.
-CVE-2012-1135
-FreeType before 2.4.9, as used in Mozilla Firefox Mobile before 10.0.4
-and other products, allows remote attackers to cause a denial of
-service (invalid heap read operation and memory corruption) or
-possibly execute arbitrary code via vectors involving the NPUSHB and
-NPUSHW instructions in a TrueType font.
-CVE-2012-1136
-FreeType before 2.4.9, as used in Mozilla Firefox Mobile before 10.0.4
-and other products, allows remote attackers to cause a denial of
-service (invalid heap write operation and memory corruption) or
-possibly execute arbitrary code via crafted glyph or bitmap data in a
-BDF font that lacks an ENCODING field.
-CVE-2012-1137
-FreeType before 2.4.9, as used in Mozilla Firefox Mobile before 10.0.4
-and other products, allows remote attackers to cause a denial of
-service (invalid heap read operation and memory corruption) or
-possibly execute arbitrary code via a crafted header in a BDF font.
-CVE-2012-1138
-FreeType before 2.4.9, as used in Mozilla Firefox Mobile before 10.0.4
-and other products, allows remote attackers to cause a denial of
-service (invalid heap read operation and memory corruption) or
-possibly execute arbitrary code via vectors involving the MIRP
-instruction in a TrueType font.
-CVE-2012-1139
-Array index error in FreeType before 2.4.9, as used in Mozilla Firefox
-Mobile before 10.0.4 and other products, allows remote attackers to
-cause a denial of service (invalid stack read operation and memory
-corruption) or possibly execute arbitrary code via crafted glyph data
-in a BDF font.
-CVE-2012-1140
-FreeType before 2.4.9, as used in Mozilla Firefox Mobile before 10.0.4
-and other products, allows remote attackers to cause a denial of
-service (invalid heap read operation and memory corruption) or
-possibly execute arbitrary code via a crafted PostScript font object.
-CVE-2012-1141
-FreeType before 2.4.9, as used in Mozilla Firefox Mobile before 10.0.4
-and other products, allows remote attackers to cause a denial of
-service (invalid heap read operation and memory corruption) or
-possibly execute arbitrary code via a crafted ASCII string in a BDF
-font.
-CVE-2012-1142
-FreeType before 2.4.9, as used in Mozilla Firefox Mobile before 10.0.4
-and other products, allows remote attackers to cause a denial of
-service (invalid heap write operation and memory corruption) or
-possibly execute arbitrary code via crafted glyph-outline data in a
-font.
-CVE-2012-1143
-FreeType before 2.4.9, as used in Mozilla Firefox Mobile before 10.0.4
-and other products, allows remote attackers to cause a denial of
-service (divide-by-zero error) via a crafted font.
-CVE-2012-1144
-FreeType before 2.4.9, as used in Mozilla Firefox Mobile before 10.0.4
-and other products, allows remote attackers to cause a denial of
-service (invalid heap write operation and memory corruption) or
-possibly execute arbitrary code via a crafted TrueType font.");
+
+Text truncated. Please see the references for more information.");
 
   script_tag(name:"solution", value:"Update your system with the appropriate patches or
   software upgrades.");

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842906");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14140 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 13:26:09 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-10-08 05:44:27 +0200 (Sat, 08 Oct 2016)");
   script_cve_id("CVE-2016-5170", "CVE-2016-5171", "CVE-2016-5172", "CVE-2016-5175",
 		"CVE-2016-5178", "CVE-2016-5177", "CVE-2016-7549");
@@ -50,7 +50,7 @@ crash, or execute arbitrary code. (CVE-2016-5171)
 
 An issue was discovered in V8. If a user were tricked in to opening a
 specially crafted website, an attacker could potentially exploit this to
-ontain sensitive information from arbitrary memory locations.
+contain sensitive information from arbitrary memory locations.
 (CVE-2016-5172)
 
 Multiple security issues were discovered in Chromium. If a user were
@@ -80,6 +80,7 @@ crash, or execute arbitrary code. (CVE-2016-7549)");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(14\.04 LTS|16\.04 LTS)");
+
   exit(0);
 }
 
@@ -87,11 +88,10 @@ include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
 release = dpkg_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "UBUNTU14.04 LTS")
 {

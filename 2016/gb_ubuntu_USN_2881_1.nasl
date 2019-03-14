@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842616");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14140 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 13:26:09 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-01-27 05:12:51 +0100 (Wed, 27 Jan 2016)");
   script_cve_id("CVE-2016-0503", "CVE-2016-0504", "CVE-2016-0505", "CVE-2016-0546",
                 "CVE-2016-0595", "CVE-2016-0596", "CVE-2016-0597", "CVE-2016-0598",
@@ -49,10 +49,11 @@ if(description)
   In addition to security fixes, the updated packages contain bug fixes,
   new features, and possibly incompatible changes.
 
-  Please see the following for more information:
-  http://dev.mysql.com/doc/relnotes/mysql/5.5/en/news-5-5-47.html
-  http://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-28.html
-  http://www.oracle.com/technetwork/topics/security/cpujan2016-2367955.html</A>");
+  Please see the references for more information.");
+
+  script_xref(name:"URL", value:"http://dev.mysql.com/doc/relnotes/mysql/5.5/en/news-5-5-47.html");
+  script_xref(name:"URL", value:"http://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-28.html");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpujan2016-2367955.html");
 
   script_tag(name:"affected", value:"mysql-5.6 on Ubuntu 15.10,
   Ubuntu 15.04,
@@ -68,6 +69,7 @@ if(description)
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(15\.04|14\.04 LTS|12\.04 LTS|15\.10)");
+
   exit(0);
 }
 
@@ -75,11 +77,10 @@ include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
 release = dpkg_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "UBUNTU15.04")
 {

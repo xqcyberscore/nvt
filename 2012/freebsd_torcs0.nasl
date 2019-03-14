@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: freebsd_torcs0.nasl 11762 2018-10-05 10:54:12Z cfischer $
+# $Id: freebsd_torcs0.nasl 14170 2019-03-14 09:24:12Z cfischer $
 #
 # Auto generated from VID ba51c2f7-5b43-11e1-8288-00262d5ed8ee
 #
@@ -32,8 +32,8 @@ if(description)
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2011-4620");
-  script_version("$Revision: 11762 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 14170 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 10:24:12 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-03-12 11:35:07 -0400 (Mon, 12 Mar 2012)");
   script_name("FreeBSD Ports: torcs");
   script_category(ACT_GATHER_INFO);
@@ -58,7 +58,7 @@ NOTE: some of these details are obtained from third party information.");
   software upgrades.");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/47297/");
-  script_xref(name:"URL", value:"torcs.sourceforge.net/index.php?name=News&file=article&sid=79");
+  script_xref(name:"URL", value:"http://torcs.sourceforge.net/index.php?name=News&file=article&sid=79");
   script_xref(name:"URL", value:"http://www.vuxml.org/freebsd/ba51c2f7-5b43-11e1-8288-00262d5ed8ee.html");
 
   script_tag(name:"summary", value:"The remote host is missing an update to the system

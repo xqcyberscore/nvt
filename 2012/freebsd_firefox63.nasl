@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: freebsd_firefox63.nasl 11762 2018-10-05 10:54:12Z cfischer $
+# $Id: freebsd_firefox63.nasl 14170 2019-03-14 09:24:12Z cfischer $
 #
 # Auto generated from VID 0a9e2b72-4cb7-11e1-9146-14dae9ebcf89
 #
@@ -32,8 +32,8 @@ if(description)
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2012-0442", "CVE-2012-0443", "CVE-2011-3670", "CVE-2012-0445", "CVE-2011-3659", "CVE-2012-0446", "CVE-2012-0447", "CVE-2012-0449", "CVE-2012-0450");
-  script_version("$Revision: 11762 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 14170 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 10:24:12 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-02-12 07:27:19 -0500 (Sun, 12 Feb 2012)");
   script_name("FreeBSD Ports: firefox");
   script_category(ACT_GATHER_INFO);
@@ -78,41 +78,7 @@ SeaMonkey before 2.7 allow remote attackers to bypass the HTML5
 frame-navigation policy and replace arbitrary sub-frames by creating a
 form submission target with a sub-frame's name attribute.
 
-CVE-2011-3659
-Use-after-free vulnerability in Mozilla Firefox before 3.6.26 and 4.x
-through 9.0, Thunderbird before 3.1.18 and 5.0 through 9.0, and
-SeaMonkey before 2.7 might allow remote attackers to execute arbitrary
-code via vectors related to incorrect AttributeChildRemoved
-notifications that affect access to removed nsDOMAttribute child
-nodes.
-
-CVE-2012-0446
-Multiple cross-site scripting (XSS) vulnerabilities in Mozilla Firefox
-4.x through 9.0, Thunderbird 5.0 through 9.0, and SeaMonkey before 2.7
-allow remote attackers to inject arbitrary web script or HTML via a
-(1) web page or (2) Firefox extension, related to improper enforcement
-of XPConnect security restrictions for frame scripts that call
-untrusted objects.
-
-CVE-2012-0447
-Mozilla Firefox 4.x through 9.0, Thunderbird 5.0 through 9.0, and
-SeaMonkey before 2.7 do not properly initialize data for
-image/vnd.microsoft.icon images, which allows remote attackers to
-obtain potentially sensitive information by reading a PNG image that
-was created through conversion from an ICO image.
-
-CVE-2012-0449
-Mozilla Firefox before 3.6.26 and 4.x through 9.0, Thunderbird before
-3.1.18 and 5.0 through 9.0, and SeaMonkey before 2.7 allow remote
-attackers to cause a denial of service (memory corruption and
-application crash) or possibly execute arbitrary code via a malformed
-XSLT stylesheet that is embedded in a document.
-
-CVE-2012-0450
-Mozilla Firefox 4.x through 9.0 and SeaMonkey before 2.7 on Linux and
-Mac OS X set weak permissions for Firefox Recovery Key.html, which
-might allow local users to read a Firefox Sync key via standard
-filesystem operations.");
+Text truncated. Please see the references for more information.");
 
   script_tag(name:"solution", value:"Update your system with the appropriate patches or
   software upgrades.");

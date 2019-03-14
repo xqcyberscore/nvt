@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3777_3.nasl 12619 2018-12-03 09:51:24Z mmartin $
+# $Id: gb_ubuntu_USN_3777_3.nasl 14140 2019-03-13 12:26:09Z cfischer $
 #
 # Ubuntu Update for linux-azure USN-3777-3
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843664");
-  script_version("$Revision: 12619 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-03 10:51:24 +0100 (Mon, 03 Dec 2018) $");
+  script_version("$Revision: 14140 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 13:26:09 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-10-23 11:50:44 +0200 (Tue, 23 Oct 2018)");
   script_cve_id("CVE-2018-17182", "CVE-2018-15594", "CVE-2018-15572", "CVE-2017-5715", "CVE-2018-14633", "CVE-2018-3639", "CVE-2018-6554", "CVE-2018-6555");
   script_tag(name:"cvss_base", value:"8.3");
@@ -92,18 +92,18 @@ code. (CVE-2018-6555)");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(18\.04 LTS|16\.04 LTS)");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "UBUNTU18.04 LTS")
 {

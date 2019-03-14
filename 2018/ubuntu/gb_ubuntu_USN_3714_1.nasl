@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3714_1.nasl 12912 2018-12-31 08:46:47Z asteins $
+# $Id: gb_ubuntu_USN_3714_1.nasl 14140 2019-03-13 12:26:09Z cfischer $
 #
 # Ubuntu Update for thunderbird USN-3714-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843592");
-  script_version("$Revision: 12912 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-31 09:46:47 +0100 (Mon, 31 Dec 2018) $");
+  script_version("$Revision: 14140 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 13:26:09 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-07-13 05:49:11 +0200 (Fri, 13 Jul 2018)");
   script_cve_id("CVE-2018-12359", "CVE-2018-12360", "CVE-2018-12362", "CVE-2018-12363",
                 "CVE-2018-12364", "CVE-2018-12365", "CVE-2018-12366", "CVE-2018-12372",
@@ -73,6 +73,7 @@ exploit this to obtain sensitive information. (CVE-2018-12374)");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(14\.04 LTS|17\.10|18\.04 LTS|16\.04 LTS)");
+
   exit(0);
 }
 
@@ -80,11 +81,10 @@ include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
 release = dpkg_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "UBUNTU14.04 LTS")
 {

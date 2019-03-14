@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: freebsd_chromium22.nasl 11762 2018-10-05 10:54:12Z cfischer $
+# $Id: freebsd_chromium22.nasl 14170 2019-03-14 09:24:12Z cfischer $
 #
 # Auto generated from VID 209c068d-28be-11e2-9160-00262d5ed8ee
 #
@@ -32,8 +32,8 @@ if(description)
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-2012-5127", "CVE-2012-5120", "CVE-2012-5116", "CVE-2012-5118", "CVE-2012-5121", "CVE-2012-5117", "CVE-2012-5119", "CVE-2012-5122", "CVE-2012-5123", "CVE-2012-5124", "CVE-2012-5125", "CVE-2012-5126", "CVE-2012-5128");
-  script_version("$Revision: 11762 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 14170 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 10:24:12 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-11-26 12:47:33 -0500 (Mon, 26 Nov 2012)");
   script_name("FreeBSD Ports: chromium");
   script_category(ACT_GATHER_INFO);
@@ -76,35 +76,8 @@ CVE-2012-5119
 Race condition in Pepper, as used in Google Chrome before
 23.0.1271.64, allows remote attackers to cause a denial of service or
 possibly have unspecified other impact via vectors related to buffers.
-CVE-2012-5122
-Google Chrome before 23.0.1271.64 does not properly perform a cast of
-an unspecified variable during handling of input, which allows remote
-attackers to cause a denial of service or possibly have other impact
-via unknown vectors.
-CVE-2012-5123
-Skia, as used in Google Chrome before 23.0.1271.64, allows remote
-attackers to cause a denial of service (out-of-bounds read) via
-unspecified vectors.
-CVE-2012-5124
-Google Chrome before 23.0.1271.64 does not properly handle textures,
-which allows remote attackers to cause a denial of service (memory
-corruption) or possibly have unspecified other impact via unknown
-vectors.
-CVE-2012-5125
-Use-after-free vulnerability in Google Chrome before 23.0.1271.64
-allows remote attackers to cause a denial of service or possibly have
-unspecified other impact via vectors related to the handling of
-extension tabs.
-CVE-2012-5126
-Use-after-free vulnerability in Google Chrome before 23.0.1271.64
-allows remote attackers to cause a denial of service or possibly have
-unspecified other impact via vectors related to the handling of
-plug-in placeholders.
-CVE-2012-5128
-Google V8 before 3.13.7.5, as used in Google Chrome before
-23.0.1271.64, does not properly perform write operations, which allows
-remote attackers to cause a denial of service or possibly have
-unspecified other impact via unknown vectors.");
+
+Text truncated. Please see the references for more information.");
 
   script_tag(name:"solution", value:"Update your system with the appropriate patches or
   software upgrades.");

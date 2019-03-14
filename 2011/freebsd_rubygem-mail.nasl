@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: freebsd_rubygem-mail.nasl 11762 2018-10-05 10:54:12Z cfischer $
+# $Id: freebsd_rubygem-mail.nasl 14170 2019-03-14 09:24:12Z cfischer $
 #
 # Auto generated from VID 1cae628c-3569-11e0-8e81-0022190034c0
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.68946");
-  script_version("$Revision: 11762 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 14170 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 10:24:12 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-03-05 22:25:39 +0100 (Sat, 05 Mar 2011)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -55,7 +55,7 @@ commands via shell metacharacters in an e-mail address.");
   software upgrades.");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/43077/");
-  script_xref(name:"URL", value:"groups.google.com/group/mail-ruby/browse_thread/thread/e93bbd05706478dd?pli=1");
+  script_xref(name:"URL", value:"http://groups.google.com/group/mail-ruby/browse_thread/thread/e93bbd05706478dd?pli=1");
   script_xref(name:"URL", value:"http://www.vuxml.org/freebsd/1cae628c-3569-11e0-8e81-0022190034c0.html");
 
   script_tag(name:"summary", value:"The remote host is missing an update to the system

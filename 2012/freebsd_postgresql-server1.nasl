@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: freebsd_postgresql-server1.nasl 11762 2018-10-05 10:54:12Z cfischer $
+# $Id: freebsd_postgresql-server1.nasl 14170 2019-03-14 09:24:12Z cfischer $
 #
 # Auto generated from VID a8864f8f-aa9e-11e1-a284-0023ae8e59f0
 #
@@ -32,8 +32,8 @@ if(description)
   script_cve_id("CVE-2012-2143");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_version("$Revision: 11762 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 14170 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 10:24:12 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-05-31 11:53:50 -0400 (Thu, 31 May 2012)");
   script_name("FreeBSD Ports: postgresql-server");
   script_category(ACT_GATHER_INFO);
@@ -48,7 +48,7 @@ if(description)
   software upgrades.");
 
   script_xref(name:"URL", value:"http://www.postgresql.org/about/news/1397/");
-  script_xref(name:"URL", value:"git.postgresql.org/gitweb/?p=postgresql.git;a=patch;h=932ded2ed51e8333852e370c7a6dad75d9f236f9");
+  script_xref(name:"URL", value:"http://git.postgresql.org/gitweb/?p=postgresql.git;a=patch;h=932ded2ed51e8333852e370c7a6dad75d9f236f9");
   script_xref(name:"URL", value:"http://www.vuxml.org/freebsd/a8864f8f-aa9e-11e1-a284-0023ae8e59f0.html");
 
   script_tag(name:"summary", value:"The remote host is missing an update to the system

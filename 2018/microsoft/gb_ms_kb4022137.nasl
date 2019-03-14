@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4022137.nasl 12120 2018-10-26 11:13:20Z mmartin $
+# $Id: gb_ms_kb4022137.nasl 14156 2019-03-13 14:38:13Z cfischer $
 #
 # Microsoft Office 2010 Service Pack 2 Information Disclosure Vulnerability (KB4022137)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813169");
-  script_version("$Revision: 12120 $");
+  script_version("$Revision: 14156 $");
   script_cve_id("CVE-2018-8160");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 15:38:13 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-05-09 08:41:30 +0530 (Wed, 09 May 2018)");
   script_name("Microsoft Office 2010 Service Pack 2 Information Disclosure Vulnerability (KB4022137)");
 
@@ -41,7 +41,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to an error in Outlook
-  when a message is opened. ");
+  when a message is opened.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a remote
   attacker to gain access to potentially sensitive information.");

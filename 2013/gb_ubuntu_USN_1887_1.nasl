@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1887_1.nasl 13784 2019-02-20 11:51:39Z cfischer $
+# $Id: gb_ubuntu_USN_1887_1.nasl 14140 2019-03-13 12:26:09Z cfischer $
 #
 # Ubuntu Update for swift USN-1887-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841485");
-  script_version("$Revision: 13784 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-20 12:51:39 +0100 (Wed, 20 Feb 2019) $");
+  script_version("$Revision: 14140 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 13:26:09 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-06-24 15:06:42 +0530 (Mon, 24 Jun 2013)");
   script_cve_id("CVE-2012-4406", "CVE-2013-2161");
   script_tag(name:"cvss_base", value:"7.5");
@@ -76,11 +76,10 @@ include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
 release = dpkg_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "UBUNTU12.04 LTS")
 {

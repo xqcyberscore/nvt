@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: glsa_201006_19.nasl 11671 2018-09-28 10:44:05Z cfischer $
+# $Id: glsa_201006_19.nasl 14171 2019-03-14 10:22:03Z cfischer $
 #
 # Auto generated from Gentoo's XML based advisory
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.69022");
-  script_version("$Revision: 11671 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 12:44:05 +0200 (Fri, 28 Sep 2018) $");
+  script_version("$Revision: 14171 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 11:22:03 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-03-09 05:54:11 +0100 (Wed, 09 Mar 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -50,15 +50,15 @@ if(description)
 
 Bugzilla 2.x and 3.0 have reached their end of life. There will be no
     more security updates. All Bugzilla 2.x and 3.0 users should update to
-    a supported Bugzilla 3.x version.
+    a supported Bugzilla 3.x version.");
 
-http://www.securityspace.com/smysecure/catid.html?in=GLSA%20201006-19
-http://bugs.gentoo.org/show_bug.cgi?id=239564
-http://bugs.gentoo.org/show_bug.cgi?id=258592
-http://bugs.gentoo.org/show_bug.cgi?id=264572
-http://bugs.gentoo.org/show_bug.cgi?id=284824
-http://bugs.gentoo.org/show_bug.cgi?id=303437
-http://bugs.gentoo.org/show_bug.cgi?id=303725");
+  script_xref(name:"URL", value:"http://www.securityspace.com/smysecure/catid.html?in=GLSA%20201006-19");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=239564");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=258592");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=264572");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=284824");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=303437");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=303725");
   script_tag(name:"summary", value:"The remote host is missing updates announced in
 advisory GLSA 201006-19.");
   script_tag(name:"qod_type", value:"package");

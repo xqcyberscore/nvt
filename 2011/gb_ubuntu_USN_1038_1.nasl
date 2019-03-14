@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1038_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
+# $Id: gb_ubuntu_USN_1038_1.nasl 14132 2019-03-13 09:25:59Z cfischer $
 #
 # Ubuntu Update for dpkg vulnerability USN-1038-1
 #
@@ -8,7 +8,7 @@
 # System Generated Check
 #
 # Copyright:
-# Copyright (c) 2010 Greenbone Networks GmbH, http://www.greenbone.net
+# Copyright (c) 2011 Greenbone Networks GmbH, http://www.greenbone.net
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -24,15 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
-
 if(description)
 {
   script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1038-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.840559");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 14132 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 10:25:59 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-01-11 16:07:49 +0100 (Tue, 11 Jan 2011)");
   script_xref(name:"USN", value:"1038-1");
   script_tag(name:"cvss_base", value:"6.8");
@@ -41,7 +38,7 @@ if(description)
   script_name("Ubuntu Update for dpkg vulnerability USN-1038-1");
 
   script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
+  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(9\.10|10\.10|10\.04 LTS)");
@@ -50,7 +47,7 @@ if(description)
   Ubuntu 10.04 LTS,
   Ubuntu 10.10");
   script_tag(name:"solution", value:"Please Install the Updated Packages.");
-  script_tag(name:"insight", value:"Jakub Wilk and Rapha&#235;l Hertzog discovered that dpkg-source did not
+  script_tag(name:"insight", value:"Jakub Wilk and Raphael Hertzog discovered that dpkg-source did not
   correctly handle certain paths and symlinks when unpacking source-format
   version 3.0 packages. If a user or an automated system were tricked into
   unpacking a specially crafted source package, a remote attacker could
@@ -58,19 +55,18 @@ if(description)
   of service or potentially gaining access to the system.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
 release = dpkg_get_ssh_release();
-
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "UBUNTU9.10")
 {

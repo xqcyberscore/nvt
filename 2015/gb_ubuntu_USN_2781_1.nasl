@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842503");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14140 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 13:26:09 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-10-27 07:08:00 +0100 (Tue, 27 Oct 2015)");
   script_cve_id("CVE-2015-4730", "CVE-2015-4766", "CVE-2015-4792", "CVE-2015-4800",
                 "CVE-2015-4802", "CVE-2015-4815", "CVE-2015-4816", "CVE-2015-4819",
@@ -51,12 +51,14 @@ Ubuntu 15.04 and Ubuntu 15.10 have been updated to MySQL 5.6.27.
 In addition to security fixes, the updated packages contain bug fixes,
 new features, and possibly incompatible changes.
 
-Please see the following for more information:
-http://dev.mysql.com/doc/relnotes/mysql/5.5/en/news-5-5-45.html
-http://dev.mysql.com/doc/relnotes/mysql/5.5/en/news-5-5-46.html
-http://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-26.html
-http://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-27.html
-http://www.oracle.com/technetwork/topics/security/cpuoct2015-2367953.html");
+Please see the references for more information.");
+
+  script_xref(name:"URL", value:"http://dev.mysql.com/doc/relnotes/mysql/5.5/en/news-5-5-45.html");
+  script_xref(name:"URL", value:"http://dev.mysql.com/doc/relnotes/mysql/5.5/en/news-5-5-46.html");
+  script_xref(name:"URL", value:"http://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-26.html");
+  script_xref(name:"URL", value:"http://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-27.html");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpuoct2015-2367953.html");
+
   script_tag(name:"affected", value:"mysql-5.6 on Ubuntu 15.10,
   Ubuntu 15.04,
   Ubuntu 14.04 LTS,
@@ -70,6 +72,7 @@ http://www.oracle.com/technetwork/topics/security/cpuoct2015-2367953.html");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(15\.04|14\.04 LTS|12\.04 LTS|15\.10)");
+
   exit(0);
 }
 
@@ -77,11 +80,10 @@ include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
 release = dpkg_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "UBUNTU15.04")
 {

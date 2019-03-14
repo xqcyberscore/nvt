@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2384_1.nasl 12858 2018-12-21 08:05:36Z ckuersteiner $
+# $Id: gb_ubuntu_USN_2384_1.nasl 14140 2019-03-13 12:26:09Z cfischer $
 #
 # Ubuntu Update for mysql-5.5 USN-2384-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842009");
-  script_version("$Revision: 12858 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-21 09:05:36 +0100 (Fri, 21 Dec 2018) $");
+  script_version("$Revision: 14140 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 13:26:09 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-10-16 06:00:46 +0200 (Thu, 16 Oct 2014)");
   script_cve_id("CVE-2012-5615", "CVE-2014-4274", "CVE-2014-4287", "CVE-2014-6463",
                 "CVE-2014-6464", "CVE-2014-6469", "CVE-2014-6478", "CVE-2014-6484",
@@ -51,10 +51,12 @@ MySQL has been updated to 5.5.40.
 In addition to security fixes, the updated packages contain bug fixes,
 new features, and possibly incompatible changes.
 
-Please see the following for more information:
-http://dev.mysql.com/doc/relnotes/mysql/5.5/en/news-5-5-39.html
-http://dev.mysql.com/doc/relnotes/mysql/5.5/en/news-5-5-40.html
-http://www.oracle.com/technetwork/topics/security/cpuoct2014-1972960.html");
+Please see the references for more information.");
+
+  script_xref(name:"URL", value:"http://dev.mysql.com/doc/relnotes/mysql/5.5/en/news-5-5-39.html");
+  script_xref(name:"URL", value:"http://dev.mysql.com/doc/relnotes/mysql/5.5/en/news-5-5-40.html");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpuoct2014-1972960.html");
+
   script_tag(name:"affected", value:"mysql-5.5 on Ubuntu 14.04 LTS,
   Ubuntu 12.04 LTS");
   script_tag(name:"solution", value:"Please Install the Updated Packages.");
@@ -67,6 +69,7 @@ http://www.oracle.com/technetwork/topics/security/cpuoct2014-1972960.html");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(14\.04 LTS|12\.04 LTS)");
+
   exit(0);
 }
 
@@ -74,11 +77,10 @@ include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
 release = dpkg_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "UBUNTU14.04 LTS")
 {

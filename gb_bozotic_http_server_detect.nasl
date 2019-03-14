@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bozotic_http_server_detect.nasl 11028 2018-08-17 09:26:08Z cfischer $
+# $Id: gb_bozotic_http_server_detect.nasl 14165 2019-03-14 06:59:37Z cfischer $
 #
 # bozotic HTTP server Version Detection
 #
@@ -27,14 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801244");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11028 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 11:26:08 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 14165 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 07:59:37 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-08-06 17:02:44 +0200 (Fri, 06 Aug 2010)");
   script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("bozotic HTTP server Version Detection");
   script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Product detection");
   script_dependencies("gb_get_http_banner.nasl");
@@ -44,6 +43,8 @@ if(description)
   script_tag(name:"summary", value:"This script finds the running bozotic HTTP server version and saves
   the result in KB.");
 
+  script_tag(name:"qod_type", value:"remote_banner");
+
   exit(0);
 }
 
@@ -51,24 +52,18 @@ include("http_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-SCRIPT_DESC = "bozotic HTTP server Version Detection";
-
 port = get_http_port(default:80);
 banner = get_http_banner(port:port);
+if(! banner || "erver: bozohttpd" >!< banner)
+  exit(0);
 
-if("Server: bozohttpd" >< banner)
-{
-  ver = eregmatch(pattern:"bozohttpd/([0-9.]+)",string:banner);
+version = "unknown";
+ver = eregmatch(pattern:"bozohttpd/([0-9.]+)", string:banner);
+if(ver[1])
+  version = ver[1];
 
-  if(ver[1] != NULL)
-  {
-    set_kb_item(name:"www/" + port + "/bozohttpd", value:ver[1]);
-    log_message(data:"bozotic HTTP server version " + ver[1] +
-                       " was detected on the host", port:port);
+set_kb_item(name:"bozohttpd/detected", value:TRUE);
 
-    cpe = build_cpe(value:ver[1], exp:"^([0-9.]+)", base:"cpe:/a:eterna:bozohttpd:");
-    if(!isnull(cpe))
-       register_host_detail(name:"App", value:cpe, desc:SCRIPT_DESC);
+register_and_report_cpe(app:"bozotic HTTP server", ver:version, concluded:ver[0], regService:"www", regPort:port, base:"cpe:/a:eterna:bozohttpd:", expr:"^([0-9.]+)", insloc:port + "/tcp");
 
-  }
-}
+exit(0);

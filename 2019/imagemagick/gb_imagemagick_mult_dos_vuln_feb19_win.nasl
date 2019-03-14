@@ -21,8 +21,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107611");
-  script_version("$Revision: 14069 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-09 19:43:39 +0100 (Sat, 09 Mar 2019) $");
+  script_version("$Revision: 14134 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 10:46:53 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-03-09 19:33:51 +0100 (Sat, 09 Mar 2019)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -53,15 +53,8 @@ if( description )
 
   - A denial of service (DoS) vulnerability exists in coders/dib.c due to a memory leak in WriteDIBImage.");
 
-  script_tag(name:"impact", value:"An unauthenticated, remote attacker can exploit these issues to achieve:
-
-  - via null PNG Images, to cause the application to stop responding. (CVE-2018-16749) (CVE-2019-7395)
-
-  - to cause the application to stop responding.(CVE-2019-7396)
-
-  - to cause the application to stop responding.(CVE-2019-7397)
-
-  - to cause the application to stop responding.(CVE-2019-7398)");
+  script_tag(name:"impact", value:"An unauthenticated, remote attacker can exploit these issues to cause the
+  application to stop responding.");
 
   script_tag(name:"affected", value:"ImageMagick prior to version 7.0.8-25.");
   script_tag(name:"solution", value:"Upgrade to ImageMagick version 7.0.8-25 or later.");

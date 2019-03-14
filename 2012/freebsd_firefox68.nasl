@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: freebsd_firefox68.nasl 11762 2018-10-05 10:54:12Z cfischer $
+# $Id: freebsd_firefox68.nasl 14170 2019-03-14 09:24:12Z cfischer $
 #
 # Auto generated from VID bfecf7c1-af47-11e1-9580-4061862b8c22
 #
@@ -32,8 +32,8 @@ if(description)
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2011-3101", "CVE-2012-0441", "CVE-2012-1938", "CVE-2012-1939", "CVE-2012-1937", "CVE-2012-1940", "CVE-2012-1941", "CVE-2012-1944", "CVE-2012-1945", "CVE-2012-1946", "CVE-2012-1947");
-  script_version("$Revision: 11762 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 14170 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 10:24:12 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-08-10 03:22:17 -0400 (Fri, 10 Aug 2012)");
   script_name("FreeBSD Ports: firefox");
   script_category(ACT_GATHER_INFO);
@@ -73,62 +73,8 @@ corruption and application crash) or possibly execute arbitrary code
 via vectors related to (1) methodjit/ImmutableSync.cpp, (2) the
 JSObject::makeDenseArraySlow function in js/src/jsarray.cpp, and
 unknown other components.
-CVE-2012-1939
-jsinfer.cpp in Mozilla Firefox ESR 10.x before 10.0.5 and Thunderbird
-ESR 10.x before 10.0.5 does not properly determine data types, which
-allows remote attackers to cause a denial of service (memory
-corruption and application crash) or possibly execute arbitrary code
-via crafted JavaScript code.
-CVE-2012-1937
-Multiple unspecified vulnerabilities in the browser engine in Mozilla
-Firefox 4.x through 12.0, Firefox ESR 10.x before 10.0.5, Thunderbird
-5.0 through 12.0, Thunderbird ESR 10.x before 10.0.5, and SeaMonkey
-before 2.10 allow remote attackers to cause a denial of service
-(memory corruption and application crash) or possibly execute
-arbitrary code via unknown vectors.
-CVE-2012-1940
-Use-after-free vulnerability in the nsFrameList::FirstChild function
-in Mozilla Firefox 4.x through 12.0, Firefox ESR 10.x before 10.0.5,
-Thunderbird 5.0 through 12.0, Thunderbird ESR 10.x before 10.0.5, and
-SeaMonkey before 2.10 allows remote attackers to execute arbitrary
-code or cause a denial of service (heap memory corruption and
-application crash) by changing the size of a container of absolutely
-positioned elements in a column.
-CVE-2012-1941
-Heap-based buffer overflow in the
-nsHTMLReflowState::CalculateHypotheticalBox function in Mozilla
-Firefox 4.x through 12.0, Firefox ESR 10.x before 10.0.5, Thunderbird
-5.0 through 12.0, Thunderbird ESR 10.x before 10.0.5, and SeaMonkey
-before 2.10 allows remote attackers to execute arbitrary code by
-resizing a window displaying absolutely positioned and relatively
-positioned elements in nested columns.
-CVE-2012-1944
-The Content Security Policy (CSP) implementation in Mozilla Firefox
-4.x through 12.0, Firefox ESR 10.x before 10.0.5, Thunderbird 5.0
-through 12.0, Thunderbird ESR 10.x before 10.0.5, and SeaMonkey before
-2.10 does not block inline event handlers, which makes it easier for
-remote attackers to conduct cross-site scripting (XSS) attacks via a
-crafted HTML document.
-CVE-2012-1945
-Mozilla Firefox 4.x through 12.0, Firefox ESR 10.x before 10.0.5,
-Thunderbird 5.0 through 12.0, Thunderbird ESR 10.x before 10.0.5, and
-SeaMonkey before 2.10 allow local users to obtain sensitive
-information via an HTML document that loads a shortcut (aka .lnk) file
-for display within an IFRAME element, as demonstrated by a network
-share implemented by (1) Microsoft Windows or (2) Samba.
-CVE-2012-1946
-Use-after-free vulnerability in the nsINode::ReplaceOrInsertBefore
-function in Mozilla Firefox 4.x through 12.0, Firefox ESR 10.x before
-10.0.5, Thunderbird 5.0 through 12.0, Thunderbird ESR 10.x before
-10.0.5, and SeaMonkey before 2.10 might allow remote attackers to
-execute arbitrary code via document changes involving replacement or
-insertion of a node.
-CVE-2012-1947
-Heap-based buffer overflow in the utf16_to_isolatin1 function in
-Mozilla Firefox 4.x through 12.0, Firefox ESR 10.x before 10.0.5,
-Thunderbird 5.0 through 12.0, Thunderbird ESR 10.x before 10.0.5, and
-SeaMonkey before 2.10 allows remote attackers to execute arbitrary
-code via vectors that trigger a character-set conversion failure.");
+
+Text truncated. Please see the references for more information.");
 
   script_tag(name:"solution", value:"Update your system with the appropriate patches or
   software upgrades.");

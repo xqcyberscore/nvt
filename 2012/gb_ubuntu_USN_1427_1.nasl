@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1427_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
+# $Id: gb_ubuntu_USN_1427_1.nasl 14132 2019-03-13 09:25:59Z cfischer $
 #
 # Ubuntu Update for mysql-5.1 USN-1427-1
 #
@@ -24,16 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
-
-
 if(description)
 {
   script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1427-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.840989");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 14132 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 10:25:59 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-04-26 10:36:27 +0530 (Thu, 26 Apr 2012)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -60,23 +56,25 @@ if(description)
   In addition to security fixes, the updated packages contain bug fixes, new
   features, and possibly incompatible changes.
 
-  Please see the following for more information:
-  http://dev.mysql.com/doc/refman/5.1/en/news-5-1-62.html
-  http://dev.mysql.com/doc/refman/5.0/en/news-5-0-96.html");
+  Please see the references for more information.");
+
+  script_xref(name:"URL", value:"http://dev.mysql.com/doc/refman/5.1/en/news-5-1-62.html");
+  script_xref(name:"URL", value:"http://dev.mysql.com/doc/refman/5.0/en/news-5-0-96.html");
+
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
 release = dpkg_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "UBUNTU10.04 LTS")
 {

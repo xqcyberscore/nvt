@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1611_1.nasl 12379 2018-11-16 10:51:56Z cfischer $
+# $Id: gb_ubuntu_USN_1611_1.nasl 14132 2019-03-13 09:25:59Z cfischer $
 #
 # Ubuntu Update for thunderbird USN-1611-1
 #
@@ -24,16 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
-
-
 if(description)
 {
   script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1611-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.841190");
-  script_version("$Revision: 12379 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 11:51:56 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14132 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 10:25:59 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-10-16 09:46:00 +0530 (Tue, 16 Oct 2012)");
   script_cve_id("CVE-2012-3982", "CVE-2012-3983", "CVE-2012-3988", "CVE-2012-3989",
                 "CVE-2012-4191", "CVE-2012-3984", "CVE-2012-3985", "CVE-2012-3986",
@@ -67,7 +63,7 @@ if(description)
   CVE-2012-4191)
 
   David Bloom and Jordi Chancel discovered that Thunderbird did not always
-  properly handle the &lt;select&gt; element. If a user were tricked into opening a
+  properly handle the <select> element. If a user were tricked into opening a
   malicious website and had JavaScript enabled, a remote attacker could
   exploit this to conduct URL spoofing and clickjacking attacks.
   (CVE-2012-3984)
@@ -107,18 +103,18 @@ if(description)
   Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
 release = dpkg_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "UBUNTU10.04 LTS")
 {

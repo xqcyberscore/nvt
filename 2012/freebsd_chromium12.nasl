@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: freebsd_chromium12.nasl 11762 2018-10-05 10:54:12Z cfischer $
+# $Id: freebsd_chromium12.nasl 14170 2019-03-14 09:24:12Z cfischer $
 #
 # Auto generated from VID 1449af37-9eba-11e1-b9c1-00262d5ed8ee
 #
@@ -32,8 +32,8 @@ if(description)
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2011-3083", "CVE-2011-3084", "CVE-2011-3085", "CVE-2011-3086", "CVE-2011-3087", "CVE-2011-3088", "CVE-2011-3089", "CVE-2011-3090", "CVE-2011-3091", "CVE-2011-3092", "CVE-2011-3093", "CVE-2011-3094", "CVE-2011-3095", "CVE-2011-3096", "CVE-2011-3097", "CVE-2011-3099", "CVE-2011-3100");
-  script_version("$Revision: 11762 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 14170 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 10:24:12 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-05-31 11:53:51 -0400 (Thu, 31 May 2012)");
   script_name("FreeBSD Ports: chromium");
   script_category(ACT_GATHER_INFO);
@@ -78,47 +78,8 @@ CVE-2011-3090
 Race condition in Google Chrome before 19.0.1084.46 allows remote
 attackers to cause a denial of service or possibly have unspecified
 other impact via vectors related to worker processes.
-CVE-2011-3091
-Use-after-free vulnerability in the IndexedDB implementation in Google
-Chrome before 19.0.1084.46 allows remote attackers to cause a denial
-of service or possibly have unspecified other impact via unknown
-vectors.
-CVE-2011-3092
-The regex implementation in Google V8, as used in Google Chrome before
-19.0.1084.46, allows remote attackers to cause a denial of service
-(invalid write operation) or possibly have unspecified other impact
-via unknown vectors.
-CVE-2011-3093
-Google Chrome before 19.0.1084.46 does not properly handle glyphs,
-which allows remote attackers to cause a denial of service
-(out-of-bounds read) via unspecified vectors.
-CVE-2011-3094
-Google Chrome before 19.0.1084.46 does not properly handle Tibetan
-text, which allows remote attackers to cause a denial of service
-(out-of-bounds read) via unspecified vectors.
-CVE-2011-3095
-The OGG container in Google Chrome before 19.0.1084.46 allows remote
-attackers to cause a denial of service or possibly have unspecified
-other impact via unknown vectors that trigger an out-of-bounds write.
-CVE-2011-3096
-Use-after-free vulnerability in Google Chrome before 19.0.1084.46 on
-Linux allows remote attackers to cause a denial of service or possibly
-have unspecified other impact by leveraging an error in the GTK
-implementation of the omnibox.
-CVE-2011-3097
-The PDF functionality in Google Chrome before 19.0.1084.46 allows
-remote attackers to cause a denial of service or possibly have
-unspecified other impact by leveraging an out-of-bounds write error in
-the implementation of sampled functions.
-CVE-2011-3099
-Use-after-free vulnerability in the PDF functionality in Google Chrome
-before 19.0.1084.46 allows remote attackers to cause a denial of
-service or possibly have unspecified other impact via vectors
-involving a malformed name for the font encoding.
-CVE-2011-3100
-Google Chrome before 19.0.1084.46 does not properly draw dash paths,
-which allows remote attackers to cause a denial of service
-(out-of-bounds read) via unspecified vectors.");
+
+Text truncated. Please see the references for more information.");
 
   script_tag(name:"solution", value:"Update your system with the appropriate patches or
   software upgrades.");

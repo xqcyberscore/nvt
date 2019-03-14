@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1162_1.nasl 12379 2018-11-16 10:51:56Z cfischer $
+# $Id: gb_ubuntu_USN_1162_1.nasl 14132 2019-03-13 09:25:59Z cfischer $
 #
 # Ubuntu Update for linux-mvl-dove USN-1162-1
 #
@@ -24,15 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
-
 if(description)
 {
   script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1162-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.840696");
-  script_version("$Revision: 12379 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 11:51:56 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14132 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 10:25:59 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-07-08 16:31:28 +0200 (Fri, 08 Jul 2011)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
@@ -93,7 +90,7 @@ if(description)
   handle a signed comparison. A local attacker could exploit this to crash
   the system or possibly gain root privileges. (CVE-2011-1013)
 
-  Marek Ol&#353;&#225;k discovered that the Radeon GPU drivers did not correctly
+  Marek Olsaak discovered that the Radeon GPU drivers did not correctly
   validate certain registers. On systems with specific hardware, a local
   attacker could exploit this to write to arbitrary video memory.
   (CVE-2011-1016)
@@ -103,19 +100,18 @@ if(description)
   Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
 release = dpkg_get_ssh_release();
-
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "UBUNTU10.04 LTS")
 {

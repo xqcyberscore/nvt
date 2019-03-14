@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samsung_web_viewer_dvr_default_credentials.nasl 13489 2019-02-06 09:12:08Z cfischer $
+# $Id: gb_samsung_web_viewer_dvr_default_credentials.nasl 14161 2019-03-13 17:56:04Z cfischer $
 #
 # Samsung Web Viewer DVR Default Credentials
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114047");
-  script_version("$Revision: 13489 $");
+  script_version("$Revision: 14161 $");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-06 10:12:08 +0100 (Wed, 06 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 18:56:04 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-11-12 19:25:24 +0100 (Mon, 12 Nov 2018)");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2018 Greenbone Networks GmbH");
@@ -184,7 +184,7 @@ foreach cred(keys(creds)) {
     #which the Samsung Web Viewer also uses. It's hard to verify if the generated hashes are as
     #expected, though. So if there's a problem, the function might need to get corrected or upgraded.
 
-    #Note: Change 'pad: "TRUE"' to 'pad: TRUE' once OpenVAS / GVM 9 is retired!
+    #Note: Change 'pad: "TRUE"' to 'pad: TRUE' once GVM 9 is retired!
     pass = hexstr(rsa_public_encrypt(data: password, e: rsa_exponent, n: rsa_modulus, pad: "TRUE"));
 
     data = "lang=en&port=0&close_user_session=0&data1=" + base64(str: username) + "%3D&data2=" + pass + "&data3=" + data3Num + "&data4=" + data4Num + "&remote_addr=" + remote_address;

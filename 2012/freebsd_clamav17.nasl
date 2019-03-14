@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: freebsd_clamav17.nasl 11762 2018-10-05 10:54:12Z cfischer $
+# $Id: freebsd_clamav17.nasl 14170 2019-03-14 09:24:12Z cfischer $
 #
 # Auto generated from VID eb12ebee-b7af-11e1-b5e0-000c299b62e1
 #
@@ -32,8 +32,8 @@ if(description)
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_cve_id("CVE-2012-1419", "CVE-2012-1457", "CVE-2012-1458", "CVE-2012-1459");
-  script_version("$Revision: 11762 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 14170 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 10:24:12 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-08-10 03:22:17 -0400 (Fri, 10 Aug 2012)");
   script_name("FreeBSD Ports: clamav");
   script_category(ACT_GATHER_INFO);
@@ -74,36 +74,8 @@ with a length field that exceeds the total TAR file size.  NOTE: this
 may later be SPLIT into multiple CVEs if additional information is
 published showing that the error occurred independently in different
 TAR parser implementations.
-CVE-2012-1458
-The Microsoft CHM file parser in ClamAV 0.96.4 and Sophos Anti-Virus
-4.61.0 allows remote attackers to bypass malware detection via a
-crafted reset interval in the LZXC header of a CHM file.  NOTE: this
-may later be SPLIT into multiple CVEs if additional information is
-published showing that the error occurred independently in different
-CHM parser implementations.
-CVE-2012-1459
-The TAR file parser in AhnLab V3 Internet Security 2011.01.18.00,
-Avira AntiVir 7.11.1.163, Antiy Labs AVL SDK 2.0.3.7, avast! Antivirus
-4.8.1351.0 and 5.0.677.0, AVG Anti-Virus 10.0.0.1190, Bitdefender 7.2,
-Quick Heal (aka Cat QuickHeal) 11.00, ClamAV 0.96.4, Command Antivirus
-5.2.11.5, Comodo Antivirus 7424, Emsisoft Anti-Malware 5.1.0.1, F-Prot
-Antivirus 4.6.2.117, F-Secure Anti-Virus 9.0.16160.0, Fortinet
-Antivirus 4.2.254.0, G Data AntiVirus 21, Ikarus Virus Utilities T3
-Command Line Scanner 1.1.97.0, Jiangmin Antivirus 13.0.900, K7
-AntiVirus 9.77.3565, Kaspersky Anti-Virus 7.0.0.125, McAfee Anti-Virus
-Scanning Engine 5.400.0.1158, McAfee Gateway (formerly Webwasher)
-2010.1C, Antimalware Engine 1.1.6402.0 in Microsoft Security
-Essentials 2.0, NOD32 Antivirus 5795, Norman Antivirus 6.06.12,
-nProtect Anti-Virus 2011-01-17.01, Panda Antivirus 10.0.2.7, PC Tools
-AntiVirus 7.0.3.5, Rising Antivirus 22.83.00.03, Sophos Anti-Virus
-4.61.0, AVEngine 20101.3.0.103 in Symantec Endpoint Protection 11,
-Trend Micro AntiVirus 9.120.0.1004, Trend Micro HouseCall
-9.120.0.1004, VBA32 3.12.14.2, and VirusBuster 13.6.151.0 allows
-remote attackers to bypass malware detection via a TAR archive entry
-with a length field corresponding to that entire entry, plus part of
-the header of the next entry.  NOTE: this may later be SPLIT into
-multiple CVEs if additional information is published showing that the
-error occurred independently in different TAR parser implementations.");
+
+Text truncated. Please see the references for more information.");
 
   script_tag(name:"solution", value:"Update your system with the appropriate patches or
   software upgrades.");

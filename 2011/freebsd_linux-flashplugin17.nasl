@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: freebsd_linux-flashplugin17.nasl 11762 2018-10-05 10:54:12Z cfischer $
+# $Id: freebsd_linux-flashplugin17.nasl 14170 2019-03-14 09:24:12Z cfischer $
 #
 # Auto generated from VID d226626c-857f-11e0-95cc-001b2134ef46
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.69763");
-  script_version("$Revision: 11762 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 14170 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 10:24:12 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-03 04:36:20 +0200 (Wed, 03 Aug 2011)");
   script_cve_id("CVE-2011-0579", "CVE-2011-0618", "CVE-2011-0619", "CVE-2011-0620", "CVE-2011-0621", "CVE-2011-0622", "CVE-2011-0623", "CVE-2011-0624", "CVE-2011-0625", "CVE-2011-0626", "CVE-2011-0627");
   script_tag(name:"cvss_base", value:"9.3");
@@ -77,49 +77,7 @@ Solaris and before 10.3.185.21 on Android allows attackers to execute
 arbitrary code or cause a denial of service (memory corruption) via
 unspecified vectors, a different vulnerability than CVE-2011-0619,
 
-CVE-2011-0620, and CVE-2011-0622.
-CVE-2011-0622
-Adobe Flash Player before 10.3.181.14 on Windows, Mac OS X, Linux, and
-Solaris and before 10.3.185.21 on Android allows attackers to execute
-arbitrary code or cause a denial of service (memory corruption) via
-unspecified vectors, a different vulnerability than CVE-2011-0619,
-
-CVE-2011-0620, and CVE-2011-0621.
-CVE-2011-0623
-Adobe Flash Player before 10.3.181.14 on Windows, Mac OS X, Linux, and
-Solaris and before 10.3.185.21 on Android allows attackers to execute
-arbitrary code via unspecified vectors, related to a 'bounds checking'
-issue, a different vulnerability than CVE-2011-0624, CVE-2011-0625,
-and CVE-2011-0626.
-
-CVE-2011-0624
-Adobe Flash Player before 10.3.181.14 on Windows, Mac OS X, Linux, and
-Solaris and before 10.3.185.21 on Android allows attackers to execute
-arbitrary code via unspecified vectors, related to a 'bounds checking'
-issue, a different vulnerability than CVE-2011-0623, CVE-2011-0625,
-and CVE-2011-0626.
-
-CVE-2011-0625
-Adobe Flash Player before 10.3.181.14 on Windows, Mac OS X, Linux, and
-Solaris and before 10.3.185.21 on Android allows attackers to execute
-arbitrary code via unspecified vectors, related to a 'bounds checking'
-issue, a different vulnerability than CVE-2011-0623, CVE-2011-0624,
-and CVE-2011-0626.
-
-CVE-2011-0626
-Adobe Flash Player before 10.3.181.14 on Windows, Mac OS X, Linux, and
-Solaris and before 10.3.185.21 on Android allows attackers to execute
-arbitrary code via unspecified vectors, related to a 'bounds checking'
-issue, a different vulnerability than CVE-2011-0623, CVE-2011-0624,
-and CVE-2011-0625.
-
-CVE-2011-0627
-Adobe Flash Player before 10.3.181.14 on Windows, Mac OS X, Linux, and
-Solaris and before 10.3.185.21 on Android allows remote attackers to
-execute arbitrary code or cause a denial of service (memory
-corruption) via crafted Flash content, as possibly exploited in the
-wild in May 2011 by a Microsoft Office document with an embedded .swf
-file.");
+Text truncated. Please see the references for more information.");
 
   script_tag(name:"solution", value:"Update your system with the appropriate patches or
   software upgrades.");

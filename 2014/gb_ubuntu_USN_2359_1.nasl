@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2359_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_ubuntu_USN_2359_1.nasl 14140 2019-03-13 12:26:09Z cfischer $
 #
 # Ubuntu Update for linux USN-2359-1
 #
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841976");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14140 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 13:26:09 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-09-24 06:02:50 +0200 (Wed, 24 Sep 2014)");
   script_cve_id("CVE-2014-3601", "CVE-2014-5077", "CVE-2014-5471", "CVE-2014-5472");
   script_tag(name:"cvss_base", value:"5.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:N/A:C");
   script_name("Ubuntu Update for linux USN-2359-1");
   script_tag(name:"insight", value:"Jack Morgenstein reported a flaw in the
-page handling of the KVM (Kerenl Virtual Machine) subsystem in the Linux kernel.
+page handling of the KVM (Kernel Virtual Machine) subsystem in the Linux kernel.
 A guest OS user could exploit this flaw to cause a denial of service (host OS
 memory corruption) or possibly have other unspecified impact on the host OS.
 (CVE-2014-3601)
@@ -68,6 +68,7 @@ process). (CVE-2014-5472)");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU14\.04 LTS");
+
   exit(0);
 }
 
@@ -75,11 +76,10 @@ include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
 release = dpkg_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "UBUNTU14.04 LTS")
 {

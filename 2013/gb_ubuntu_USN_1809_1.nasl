@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1809_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_ubuntu_USN_1809_1.nasl 14132 2019-03-13 09:25:59Z cfischer $
 #
 # Ubuntu Update for linux USN-1809-1
 #
@@ -24,13 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841408");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14132 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 10:25:59 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-06-14 12:51:04 +0530 (Fri, 14 Jun 2013)");
   script_cve_id("CVE-2012-6548", "CVE-2012-6549", "CVE-2013-0913", "CVE-2013-1796",
                 "CVE-2013-1797", "CVE-2013-1798", "CVE-2013-1848", "CVE-2013-1860",
@@ -69,7 +67,7 @@ if(description)
   potential escalate privilege to the host kernel level. (CVE-2013-1796)
 
   Andrew Honig discovered a use after free error in guest OS time updates in
-  the Linux kernel;s KVM (Kernel-based Virtual Machine). A privileged guest
+  the Linux kernel's KVM (Kernel-based Virtual Machine). A privileged guest
   user could exploit this flaw to escalate privilege to the host kernel
   level. (CVE-2013-1797)
 
@@ -96,18 +94,18 @@ if(description)
   kernel stack. (CVE-2013-2635)");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
 release = dpkg_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "UBUNTU12.04 LTS")
 {

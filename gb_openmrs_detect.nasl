@@ -21,8 +21,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.142135");
-  script_version("$Revision: 14119 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-13 04:45:27 +0100 (Wed, 13 Mar 2019) $");
+  script_version("$Revision: 14154 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-13 15:31:28 +0100 (Wed, 13 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-03-13 08:31:54 +0700 (Wed, 13 Mar 2019)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -33,7 +33,7 @@ if (description)
 
   script_tag(name:"summary", value:"Detection of OpenMRS.
 
-The script sends a connection request to the server and attempts to detect OpenMRS and to extract its version.");
+  The script sends a connection request to the server and attempts to detect OpenMRS and to extract its version.");
 
   script_category(ACT_GATHER_INFO);
 
@@ -62,9 +62,11 @@ foreach dir (make_list_unique("/openmrs", cgi_dirs(port: port))) {
     dir = "";
 
   res = http_get_cache(port: port, item: dir + "/login.htm");
+  res2 = http_get_cache(port: port, item: dir + "/index.htm");
 
   if (("OPENMRS_CONTEXT_PATH" >< res && "referenceapplication/home.page" >< res) ||
-       "<title>OpenMRS - Login" >< res && "openmrs.js" >< res) {
+      ("<title>OpenMRS - Login" >< res && "openmrs.js" >< res) ||
+      (">OpenMRS - Home<" >< res2 && ">Powered by OpenMRS <" >< res2)) {
     version = "unknown";
 
     # < 2.x
