@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mgasa-2016-0063.nasl 11692 2018-09-28 16:55:19Z cfischer $
+# $Id: mgasa-2016-0063.nasl 14180 2019-03-14 12:29:16Z cfischer $
 #
 # Mageia Linux security check
 #
@@ -8,7 +8,7 @@
 # Eero Volotinen <eero.volotinen@solinor.com>
 #
 # Copyright:
-# Copyright (c) 2015 Eero Volotinen, http://www.solinor.com
+# Copyright (c) 2016 Eero Volotinen, http://www.solinor.com
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -27,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.131239");
-  script_version("$Revision: 11692 $");
+  script_version("$Revision: 14180 $");
   script_tag(name:"creation_date", value:"2016-02-18 07:27:44 +0200 (Thu, 18 Feb 2016)");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 18:55:19 +0200 (Fri, 28 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 13:29:16 +0100 (Thu, 14 Mar 2019) $");
   script_name("Mageia Linux Local Check: mgasa-2016-0063");
   script_tag(name:"insight", value:"Updated cpio package fixes security vulnerability: An out-of-bounds write in cpio was found in the parsing of cpio files, in the process_copy_in() function in src/copyin.c (CVE-2016-2037).");
   script_tag(name:"solution", value:"Update the affected packages to the latest available version.");

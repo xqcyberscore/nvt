@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panos_pan_sa-2017_0005.nasl 12106 2018-10-26 06:33:36Z cfischer $
+# $Id: gb_panos_pan_sa-2017_0005.nasl 14175 2019-03-14 11:27:57Z cfischer $
 #
 # Palo Alto PAN-OS Detail Information Disclosure in the Management Web Interface
 #
@@ -33,23 +33,24 @@ if (description)
   script_cve_id("CVE-2017-5583");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_version("$Revision: 12106 $");
+  script_version("$Revision: 14175 $");
 
   script_name("Palo Alto PAN-OS Detail Information Disclosure in the Management Web Interface");
 
   script_xref(name:"URL", value:"https://securityadvisories.paloaltonetworks.com/Home/Detail/75");
 
-  script_tag(name:"summary", value:"PAN-OS contains a post-authentication vulnerability that may allow for Information Disclosure. Successful exploitation allows an attacker to download arbitrary files from a folder.");
+  script_tag(name:"summary", value:"PAN-OS contains a post-authentication vulnerability that may allow
+  for Information Disclosure. Successful exploitation allows an attacker to download arbitrary files from a folder.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"solution", value:"Update to PAN-OS 6.1.16 and later, PAN-OS 7.0.13 and later, PAN-OS 7.1.8 and later ");
+  script_tag(name:"solution", value:"Update to PAN-OS 6.1.16 and later, PAN-OS 7.0.13 and later, PAN-OS 7.1.8 and later.");
 
-  script_tag(name:"affected", value:"PAN-OS 6.1.15 and earlier, PAN-OS 7.0.12 and earlier, PAN-OS 7.1.7 and earlier ");
+  script_tag(name:"affected", value:"PAN-OS 6.1.15 and earlier, PAN-OS 7.0.12 and earlier, PAN-OS 7.1.7 and earlier.");
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 12:27:57 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-02-22 16:10:55 +0100 (Wed, 22 Feb 2017)");
   script_category(ACT_GATHER_INFO);
   script_family("Palo Alto PAN-OS Local Security Checks");

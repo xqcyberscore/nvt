@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4011108.nasl 11959 2018-10-18 10:33:40Z mmartin $
+# $Id: gb_ms_kb4011108.nasl 14175 2019-03-14 11:27:57Z cfischer $
 #
 # Microsoft Excel 2013 Service Pack 1 Multiple Vulnerabilities (KB4011108)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811680");
-  script_version("$Revision: 11959 $");
+  script_version("$Revision: 14175 $");
   script_cve_id("CVE-2017-8631", "CVE-2017-8632");
   script_bugtraq_id(100751, 100734);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:33:40 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 12:27:57 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-09-13 10:45:48 +0530 (Wed, 13 Sep 2017)");
   script_name("Microsoft Excel 2013 Service Pack 1 Multiple Vulnerabilities (KB4011108)");
 
@@ -42,7 +42,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaw exists due to Microsoft Office
-  fails to properly handle objects in memory. ");
+  fails to properly handle objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to use a specially crafted file to perform actions in the security context of the

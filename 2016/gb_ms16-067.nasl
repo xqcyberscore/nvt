@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-067.nasl 12149 2018-10-29 10:48:30Z asteins $
+# $Id: gb_ms16-067.nasl 14181 2019-03-14 12:59:41Z cfischer $
 #
 # Microsoft Windows RDP Drive Information Disclosure Vulnerability (3155784)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807325");
-  script_version("$Revision: 12149 $");
+  script_version("$Revision: 14181 $");
   script_cve_id("CVE-2016-0190");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 13:59:41 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-05-11 10:30:07 +0530 (Wed, 11 May 2016)");
   script_name("Microsoft Windows RDP Drive Information Disclosure Vulnerability (3155784)");
 
@@ -42,13 +42,14 @@ if(description)
 
   script_tag(name:"insight", value:"The flaw exists when a USB disk mounted
   over Remote Desktop Protocol (RDP) via Microsoft RemoteFX is not correctly
-  tied to the session of the mounting user. ");
+  tied to the session of the mounting user.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an
   attacker to obtain access to file and directory information on the mounting
   user's USB disk.");
 
   script_tag(name:"affected", value:"Microsoft Windows 8.1 x32/x64 Edition
+
   Microsoft Windows Server 2012/2012R2");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
@@ -67,10 +68,9 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
-  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS16-067");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");

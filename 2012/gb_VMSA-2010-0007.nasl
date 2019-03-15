@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2010-0007.nasl 11694 2018-09-28 17:49:45Z cfischer $
+# $Id: gb_VMSA-2010-0007.nasl 14187 2019-03-14 14:09:52Z cfischer $
 #
 # VMSA-2010-0007 VMware hosted products, vCenter Server and ESX patches resolve multiple security issues
 #
@@ -28,12 +28,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103467");
-  script_cve_id("CVE-2010-1142", "CVE-2010-1140", "CVE-2009-2042", "CVE-2009-1564", "CVE-2009-1565", "CVE-2009-3732", "CVE-2009-3707", "CVE-2010-1138", "CVE-2010-1139", "CVE-2010-1141");
+  script_cve_id("CVE-2010-1142", "CVE-2010-1140", "CVE-2009-2042", "CVE-2009-1564", "CVE-2009-1565",
+                "CVE-2009-3732", "CVE-2009-3707", "CVE-2010-1138", "CVE-2010-1139", "CVE-2010-1141");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11694 $");
+  script_version("$Revision: 14187 $");
   script_name("VMSA-2010-0007: VMware hosted products, vCenter Server and ESX patches resolve multiple security issues");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 19:49:45 +0200 (Fri, 28 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 15:09:52 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-04-16 10:53:01 +0100 (Mon, 16 Apr 2012)");
   script_category(ACT_GATHER_INFO);
   script_family("VMware Local Security Checks");
@@ -144,18 +145,10 @@ if(description)
 
   e. VMware VMnc Codec heap overflow vulnerabilities
 
-  The VMware movie decoder contains the VMnc media codec that is required to play back movies recorded with VMware Workstation,
-  VMware Player and VMware ACE, in any compatible media player. The movie decoder is installed as part of VMware Workstation, VMware
-  Player and VMware ACE, or can be downloaded as a stand alone package.
-
   f. VMware Remote Console format string vulnerability
 
   VMware Remote Console (VMrc) contains a format string vulnerability. Exploitation of this issue may lead to arbitrary code execution on
   the system where VMrc is installed.
-
-  VMrc is present on a system if the VMrc browser plug-in has been installed. This plug-in is required when using the console feature in
-  WebAccess. Installation of the plug-in follows after visiting the console tab in WebAccess and choosing 'Install plug-in'. The plug-
-  in can only be installed on Internet Explorer and Firefox.
 
   Under the following two conditions your version of VMrc is likely to be affected:
 

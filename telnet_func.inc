@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: telnet_func.inc 13673 2019-02-14 14:56:45Z cfischer $
+# $Id: telnet_func.inc 14176 2019-03-14 11:29:33Z tpassfeld $
 #
 # Methods to handle Telnet
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 13673 $
+# $Revision: 14176 $
 #
 ###############################################################################
 
@@ -351,7 +351,8 @@ function telnet_close_socket( socket, data ) {
 
   # nb: Some devices need a separate exit to accept subsequent requests
   if( ( "Sollae Systems" >< data && ( data =~ "lsh>$" || data =~ "msh>$" || "password" >< data ) ) ||
-      ( 'Please type "menu" for the MENU system,' >< data || 'or "?" for help, or "/" for current settings' >< data ) ) { # nb: HP JetDirect
+    'Please type "menu" for the MENU system,' >< data || 'or "?" for help, or "/" for current settings' >< data || # nb: HP JetDirect
+    "Welcome to NetLinx" >< data || "Local devices for system" >< data ) { # nb: Both for AMX NetLinx
     send( socket:socket, data:'exit\r\n' );
   }
 
@@ -458,9 +459,9 @@ function telnet_verify_banner( data ) {
 # @param data The data to be verified.
 #
 # @note You need to include misc_func.inc and dump.inc (for @ref telnet_verify_banner) into your VT if you want to use this function.
-# @note Pattern where extracted from e.g. w_apc_default_telnet_credentials.nasl, sw_zebra_telnet_default_password.nasl,
+# @note Pattern were extracted from e.g. w_apc_default_telnet_credentials.nasl, sw_zebra_telnet_default_password.nasl,
 #       gb_zxv10_w300_hardcoded_credentials_2014.nasl, gb_audemat_fmb80_default_telnet_credentials.nasl,
-#       gb_lantronix_unprotected_telnet.nasl, gb_windows_ce_unprotected_telnet.nasl
+#       gb_lantronix_unprotected_telnet.nasl, gb_windows_ce_unprotected_telnet.nasl, gb_netlinx_telnet_detect.nasl
 #
 # @return TRUE if the passed data contains a login/shell prompt of a Telnet connection / server, FALSE otherwise.
 #
@@ -471,7 +472,7 @@ function telnet_has_login_prompt( data ) {
   if( ! telnet_verify_banner( data:data ) )
     return FALSE;
 
-  if( data !~ "(Pocket CMD.+\\>|Kernel|login|password|user ?name|user|press enter.+setup mode|polycom command shell|welcome to viewstation|hi, my name is.+here is what i know about myself|you are logged in|management console.+sollae systems|lsh>|Welcome\. Type <return>, enter password at # prompt|BusyBox|list of built-in commands) ?:?" )
+  if( data !~ "(Pocket CMD.+\\>|Kernel|login|password|user ?name|user|press enter.+setup mode|polycom command shell|welcome to viewstation|hi, my name is.+here is what i know about myself|you are logged in|management console.+sollae systems|lsh>|Welcome\. Type <return>, enter password at # prompt|BusyBox|list of built-in commands|Welcome to NetLinx) ?:?" )
     return FALSE;
 
   return TRUE;

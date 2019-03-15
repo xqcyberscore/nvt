@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_trendmicro_officescan_url_filt_bof_vuln.nasl 12602 2018-11-30 14:36:58Z cfischer $
+# $Id: secpod_trendmicro_officescan_url_filt_bof_vuln.nasl 14192 2019-03-14 14:54:41Z cfischer $
 #
 # Trend Micro OfficeScan URL Filtering Engine Buffer Overflow Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900231");
-  script_version("$Revision: 12602 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
+  script_version("$Revision: 14192 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 15:54:41 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-02-19 11:58:13 +0100 (Fri, 19 Feb 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -45,8 +45,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2010 SecPod");
   script_family("Buffer overflow");
-  script_dependencies("smb_reg_service_pack.nasl");
-  script_mandatory_keys("SMB/WindowsVersion");
+  script_dependencies("gb_trend_micro_office_scan_detect.nasl");
+  script_mandatory_keys("Trend/Micro/Officescan/Ver");
   script_require_ports(139, 445);
 
   script_tag(name:"impact", value:"Successful exploitation lets the attackers to cause a denial of service
@@ -78,34 +78,33 @@ include("smb_nt.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-if(!get_kb_item("SMB/WindowsVersion")){
-  exit(0);
-}
-
 trendMicroOffKey = "SOFTWARE\TrendMicro\OfficeScan\service\Information";
-trendMicroOffVer = registry_get_sz(key:trendMicroOffKey,
-                                   item:"Server_Version");
+trendMicroOffVer = registry_get_sz(key:trendMicroOffKey, item:"Server_Version");
+if(!trendMicroOffVer)
+  exit(0);
 
 if(trendMicroOffVer =~ "^(8|10)")
 {
   if(trendMicroOffVer =~ "^8"){
     minRequireVer = "3.0.0.1029";
-  }else{
+  } else{
     minRequireVer = "2.0.0.1049";
   }
 
   trendMicroOffPath = registry_get_sz(key:trendMicroOffKey, item:"Local_Path");
-  if(!trendMicroOffPath){
+  if(!trendMicroOffPath)
     exit(0);
-  }
 
-  share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$",
-                       string:trendMicroOffPath);
-  file = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1",
-                      string:trendMicroOffPath + "Pccnt\Common\tmufeng.dll");
+  share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:trendMicroOffPath);
+  file = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:trendMicroOffPath + "Pccnt\Common\tmufeng.dll");
   dllVer = GetVer(file:file, share:share);
+  if(!dllver)
+    exit(0);
 
   if(version_is_less(version:dllVer, test_version:minRequireVer)){
     security_message( port: 0, data: "The target host was found to be vulnerable" );
+    exit(0);
   }
 }
+
+exit(99);

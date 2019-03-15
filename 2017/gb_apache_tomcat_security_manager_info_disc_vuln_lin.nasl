@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810765");
-  script_version("$Revision: 11888 $");
+  script_version("$Revision: 14173 $");
   script_cve_id("CVE-2017-5648");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 17:27:49 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 11:56:52 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-04-21 15:57:53 +0530 (Fri, 21 Apr 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache Tomcat 'SecurityManager' Information Disclosure Vulnerability (Linux)");
@@ -54,8 +54,11 @@ if(description)
   attackers to obtain sensitive information from requests other then their own.");
 
   script_tag(name:"affected", value:"Apache Tomcat versions 9.0.0.M1 to 9.0.0.M17,
+
   Apache Tomcat versions 8.5.0 to 8.5.11,
+
   Apache Tomcat versions 8.0.0.RC1 to 8.0.41 and
+
   Apache Tomcat versions 7.0.0 to 7.0.75 on Linux.");
 
   script_tag(name:"solution", value:"Upgrade to version 9.0.0.M18,
@@ -65,30 +68,27 @@ if(description)
   script_xref(name:"URL", value:"http://tomcat.apache.org/security-9.html");
   script_xref(name:"URL", value:"http://tomcat.apache.org/security-8.html");
   script_xref(name:"URL", value:"http://tomcat.apache.org/security-7.html");
-  script_xref(name:"URL", value:"://lists.apache.org/thread.html/d0e00f2e147a9e9b13a6829133092f349b2882bf6860397368a52600@%3Cannounce.tomcat.apache.org%3E");
+  script_xref(name:"URL", value:"http://lists.apache.org/thread.html/d0e00f2e147a9e9b13a6829133092f349b2882bf6860397368a52600@%3Cannounce.tomcat.apache.org%3E");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web Servers");
   script_dependencies("gb_apache_tomcat_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("ApacheTomcat/installed", "Host/runs_unixoide");
   script_require_ports("Services/www", 8080);
-  script_xref(name:"URL", value:"http://tomcat.apache.org");
+
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");
 
-if(!tomPort = get_app_port(cpe:CPE)){
+if(!tomPort = get_app_port(cpe:CPE))
   exit(0);
-}
 
-if(!appVer = get_app_version(cpe:CPE, port:tomPort)){
+if(!appVer = get_app_version(cpe:CPE, port:tomPort))
   exit(0);
-}
 
-if(appVer =~ "^(7|8|9)")
+if(appVer =~ "^[7-9]\.")
 {
   if(version_in_range(version:appVer, test_version:"7.0.0", test_version2:"7.0.75"))
   {

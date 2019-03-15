@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xpolog_zsl_2016_5334.nasl 12363 2018-11-15 09:51:15Z asteins $
+# $Id: gb_xpolog_zsl_2016_5334.nasl 14181 2019-03-14 12:59:41Z cfischer $
 #
 # XpoLog Center V6 Multiple Remote Vulnerabilities
 #
@@ -27,10 +27,10 @@
 
 CPE = "cpe:/a:xpolog:xpolog_center";
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105808");
-  script_version("$Revision: 12363 $");
+  script_version("$Revision: 14181 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_name("XpoLog Center V6 Multiple Remote Vulnerabilities ");
@@ -38,12 +38,12 @@ if (description)
   script_xref(name:"URL", value:"http://zeroscience.mk/en/vulnerabilities/ZSL-2016-5334.php");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"solution", value:"Ask the vendor for an update");
-  script_tag(name:"summary", value:"XpoLog suffers from multiple vulnerabilities including XSS, Open Redirection and Cross-Site Request Forgery. ");
+  script_tag(name:"solution", value:"Ask the vendor for an update.");
+  script_tag(name:"summary", value:"XpoLog suffers from multiple vulnerabilities including XSS, Open Redirection and Cross-Site Request Forgery.");
   script_tag(name:"affected", value:"XpoLog <= 6.4469");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 13:59:41 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-07-12 14:56:54 +0200 (Tue, 12 Jul 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");

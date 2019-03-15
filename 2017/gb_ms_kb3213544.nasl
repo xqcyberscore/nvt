@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb3213544.nasl 11836 2018-10-11 08:56:08Z mmartin $
+# $Id: gb_ms_kb3213544.nasl 14175 2019-03-14 11:27:57Z cfischer $
 #
 # Microsoft SharePoint Enterprise Server 2016 Elevation of Privilege Vulnerability (KB3213544)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811230");
-  script_version("$Revision: 11836 $");
+  script_version("$Revision: 14175 $");
   script_cve_id("CVE-2017-8569");
   script_bugtraq_id(99447);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:56:08 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 12:27:57 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-07-12 11:58:37 +0530 (Wed, 12 Jul 2017)");
   script_name("Microsoft SharePoint Enterprise Server 2016 Elevation of Privilege Vulnerability (KB3213544)");
 
@@ -43,7 +43,7 @@ if(description)
 
   script_tag(name:"insight", value:"The flaw exists due to an error when
   Microsoft SharePoint Server does not properly sanitize a specially
-  crafted web request to an affected SharePoint server. ");
+  crafted web request to an affected SharePoint server.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker
   to perform cross-site scripting attacks on affected systems and run script in

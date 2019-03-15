@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_hadoop_arbi_code_exec_vuln.nasl 11811 2018-10-10 09:55:00Z asteins $
+# $Id: gb_apache_hadoop_arbi_code_exec_vuln.nasl 14181 2019-03-14 12:59:41Z cfischer $
 #
 # Apache Hadoop Arbitrary Command Execution Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:hadoop";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810318");
-  script_version("$Revision: 11811 $");
+  script_version("$Revision: 14181 $");
   script_cve_id("CVE-2016-5393");
   script_bugtraq_id(94574);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 11:55:00 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 13:59:41 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-12-23 15:26:24 +0530 (Fri, 23 Dec 2016)");
   script_name("Apache Hadoop Arbitrary Command Execution Vulnerability");
 
@@ -56,7 +56,7 @@ if(description)
   and 2.7.x before 2.7.3");
 
   script_tag(name:"solution", value:"Upgrade to Apache Hadoop version 2.6.5
-  or 2.7.3 or later. ");
+  or 2.7.3 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -68,7 +68,7 @@ if(description)
   script_dependencies("gb_apache_hadoop_detect.nasl");
   script_mandatory_keys("Apache/Hadoop/Installed");
   script_require_ports("Services/www", 50070);
-  script_xref(name:"URL", value:"http://www.hadoop.apache.org");
+
   exit(0);
 }
 

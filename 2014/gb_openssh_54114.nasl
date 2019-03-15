@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssh_54114.nasl 12095 2018-10-25 12:00:24Z cfischer $
+# $Id: gb_openssh_54114.nasl 14185 2019-03-14 13:43:25Z cfischer $
 #
 # OpenSSH 'ssh_gssapi_parse_ename()' Function Denial of Service Vulnerability
 #
@@ -34,9 +34,9 @@ if(description)
   script_cve_id("CVE-2011-5000");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:N/A:P");
-  script_version("$Revision: 12095 $");
+  script_version("$Revision: 14185 $");
   script_name("OpenSSH 'ssh_gssapi_parse_ename()' Function Denial of Service Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:00:24 +0200 (Thu, 25 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 14:43:25 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-04-09 12:03:56 +0200 (Wed, 09 Apr 2014)");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -49,11 +49,15 @@ if(description)
   script_xref(name:"URL", value:"http://www.openssh.com");
 
   script_tag(name:"impact", value:"Exploiting this issue allows remote attackers to trigger
-  denial-of-service conditions due to excessive memory consumption. ");
+  denial-of-service conditions due to excessive memory consumption.");
+
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+
   script_tag(name:"solution", value:"Updates are available. Please see the references for details.");
+
   script_tag(name:"summary", value:"OpenSSH is prone to a remote denial-of-service vulnerability.");
-  script_tag(name:"affected", value:"OpenSSH 5.8 and prior are vulnerable. ");
+
+  script_tag(name:"affected", value:"OpenSSH 5.8 and prior are vulnerable.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");

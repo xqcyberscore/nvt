@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-031.nasl 11876 2018-10-12 12:20:01Z cfischer $
+# $Id: gb_ms15-031.nasl 14184 2019-03-14 13:29:04Z cfischer $
 #
 # Microsoft Schannel Security Feature Bypass Vulnerability (3046049)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805490");
-  script_version("$Revision: 11876 $");
+  script_version("$Revision: 14184 $");
   script_cve_id("CVE-2015-1637");
   script_bugtraq_id(72965);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 14:29:04 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-03-11 11:44:31 +0530 (Wed, 11 Mar 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Schannel Security Feature Bypass Vulnerability (3046049)");
@@ -43,20 +43,28 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to a error in schannel
-  which does not properly restrict TLS state transitions ");
+  which does not properly restrict TLS state transitions.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attacker to conduct cipher-downgrade attacks to EXPORT_RSA ciphers via
   crafted TLS traffic.");
 
   script_tag(name:"affected", value:"Microsoft Windows 2003 x32/x64 Edition Service Pack 2
+
   Microsoft Windows Vista x32/x64 Edition Service Pack 2
+
   Microsoft Windows Server 2008 x32 Edition Service Pack 2
+
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1
+
   Microsoft Windows Server 2008 x64 Edition Service Pack 2
+
   Microsoft Windows 7 x32/x64 Edition Service Pack 1
+
   Microsoft Windows 8 x32/x64
+
   Microsoft Windows 8.1 x32/x64 Edition
+
   Microsoft Windows Server 2012/2012R2");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
@@ -71,10 +79,9 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
-  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS15-031");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");

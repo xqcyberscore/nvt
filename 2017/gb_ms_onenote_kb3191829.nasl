@@ -29,18 +29,18 @@ CPE = "cpe:/a:microsoft:onenote";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810855");
-  script_version("$Revision: 11959 $");
+  script_version("$Revision: 14175 $");
   script_cve_id("CVE-2017-0197");
   script_bugtraq_id(97411);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:33:40 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 12:27:57 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-04-12 15:58:01 +0530 (Wed, 12 Apr 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft OneNote DLL Loading RCE Vulnerability Vulnerability (KB3191829)");
 
   script_tag(name:"summary", value:"This host is missing an important security
-  update according to Microsoft security updates KB3191829 ");
+  update according to Microsoft security updates KB3191829.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 

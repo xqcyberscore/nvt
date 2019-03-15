@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mgasa-2016-0052.nasl 11692 2018-09-28 16:55:19Z cfischer $
+# $Id: mgasa-2016-0052.nasl 14180 2019-03-14 12:29:16Z cfischer $
 #
 # Mageia Linux security check
 #
@@ -8,7 +8,7 @@
 # Eero Volotinen <eero.volotinen@solinor.com>
 #
 # Copyright:
-# Copyright (c) 2015 Eero Volotinen, http://www.solinor.com
+# Copyright (c) 2016 Eero Volotinen, http://www.solinor.com
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -27,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.131208");
-  script_version("$Revision: 11692 $");
+  script_version("$Revision: 14180 $");
   script_tag(name:"creation_date", value:"2016-02-08 19:55:15 +0200 (Mon, 08 Feb 2016)");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 18:55:19 +0200 (Fri, 28 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 13:29:16 +0100 (Thu, 14 Mar 2019) $");
   script_name("Mageia Linux Local Check: mgasa-2016-0052");
   script_tag(name:"insight", value:"In all versions of MIT krb5, an authenticated attacker can cause kadmind to read beyond the end of allocated memory by sending a string without a terminating zero byte. Information leakage may be possible for an attacker with permission to modify the database (CVE-2015-8629). In MIT krb5 1.12 and later, an authenticated attacker with permission to modify a principal entry can cause kadmind to dereference a null pointer by supplying a null policy value but including KADM5_POLICY in the mask (CVE-2015-8630). In all versions of MIT krb5, an authenticated attacker can cause kadmind to leak memory by supplying a null principal name in a request which uses one. Repeating these requests will eventually cause kadmind to exhaust all available memory (CVE-2015-8631).");
   script_tag(name:"solution", value:"Update the affected packages to the latest available version.");

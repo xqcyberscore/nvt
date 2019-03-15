@@ -8,7 +8,7 @@
 # Eero Volotinen <eero.volotinen@iki.fi>
 #
 # Copyright:
-# Copyright (c) 2015 Eero Volotinen, http://ping-viini.org
+# Copyright (c) 2016 Eero Volotinen, http://ping-viini.org
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -27,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.120660");
-  script_version("$Revision: 11856 $");
+  script_version("$Revision: 14180 $");
   script_tag(name:"creation_date", value:"2016-03-17 16:05:04 +0200 (Thu, 17 Mar 2016)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:45:29 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 13:29:16 +0100 (Thu, 14 Mar 2019) $");
   script_name("Amazon Linux Local Check: alas-2016-670");
   script_tag(name:"insight", value:"A NULL pointer dereference flaw was found in the XSLTProcessor class in PHP. An attacker could use this flaw to cause a PHP application to crash if it performed Extensible Stylesheet Language (XSL) transformations using untrusted XSLT files and allowed the use of PHP functions to be used as XSLT functions within XSL stylesheets. (CVE-2015-6837, CVE-2015-6838 )A flaw was discovered in the way PHP performed object unserialization. Specially crafted input processed by the unserialize() function could cause a PHP application to crash or, possibly, execute arbitrary code. (CVE-2015-6834, CVE-2015-6835, CVE-2015-6836 )");
   script_tag(name:"solution", value:"Run yum update php54 to update your system.");

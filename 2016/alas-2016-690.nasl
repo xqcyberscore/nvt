@@ -8,7 +8,7 @@
 # Eero Volotinen <eero.volotinen@iki.fi>
 #
 # Copyright:
-# Copyright (c) 2015 Eero Volotinen, http://ping-viini.org
+# Copyright (c) 2016 Eero Volotinen, http://ping-viini.org
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -27,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.120680");
-  script_version("$Revision: 11856 $");
+  script_version("$Revision: 14180 $");
   script_tag(name:"creation_date", value:"2016-05-09 14:11:55 +0300 (Mon, 09 May 2016)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:45:29 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 13:29:16 +0100 (Thu, 14 Mar 2019) $");
   script_name("Amazon Linux Local Check: alas-2016-690");
   script_tag(name:"insight", value:"It was discovered that foomatic-rip failed to remove all shell special characters from inputs used to construct command lines for external programs run by the filter. An attacker could possibly use this flaw to execute arbitrary commands. (CVE-2015-8560 )It was discovered that the unhtmlify() function of foomatic-rip did not correctly calculate buffer sizes, possibly leading to a heap-based memory corruption. A malicious attacker could exploit this flaw to cause foomatic-rip to crash or, possibly, execute arbitrary code. (CVE-2010-5325 )");
   script_tag(name:"solution", value:"Run yum update foomatic to update your system.");

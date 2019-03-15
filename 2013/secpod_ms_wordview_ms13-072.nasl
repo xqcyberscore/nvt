@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_wordview_ms13-072.nasl 11878 2018-10-12 12:40:08Z cfischer $
+# $Id: secpod_ms_wordview_ms13-072.nasl 14186 2019-03-14 13:57:54Z cfischer $
 #
 # Microsoft Office Word Viewer Remote Code Execution Vulnerabilities (2845537)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903403");
-  script_version("$Revision: 11878 $");
+  script_version("$Revision: 14186 $");
   script_cve_id("CVE-2013-3160", "CVE-2013-3847", "CVE-2013-3848", "CVE-2013-3849",
                 "CVE-2013-3850", "CVE-2013-3851", "CVE-2013-3852", "CVE-2013-3853",
                 "CVE-2013-3854", "CVE-2013-3855", "CVE-2013-3856", "CVE-2013-3857",
@@ -36,21 +36,26 @@ if(description)
                     62222, 62223, 62224, 62226);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 14:57:54 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-09-11 17:10:50 +0530 (Wed, 11 Sep 2013)");
   script_name("Microsoft Office Word Viewer Remote Code Execution Vulnerabilities (2845537)");
 
-
   script_tag(name:"summary", value:"This host is missing an important security update according to
-Microsoft Bulletin MS13-072.");
+  Microsoft Bulletin MS13-072.");
+
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and install
   the hotfixes from the referenced advisory.");
+
   script_tag(name:"insight", value:"Multiple flaws are due to error exists when processing XML data and some
-unspecified errors.");
-  script_tag(name:"affected", value:"Microsoft Word Viewer 2003 ");
+  unspecified errors.");
+
+  script_tag(name:"affected", value:"Microsoft Word Viewer 2003");
+
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute the arbitrary
-code, cause memory corruption and compromise the system.");
+  code, cause memory corruption and compromise the system.");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -62,12 +67,10 @@ code, cause memory corruption and compromise the system.");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_office_products_version_900032.nasl");
   script_mandatory_keys("SMB/Office/WordView/Version");
-  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/security/bulletin/ms13-072");
+
   exit(0);
 }
 
-
-include("secpod_reg.inc");
 include("version_func.inc");
 
 wordviewVer = get_kb_item("SMB/Office/WordView/Version");

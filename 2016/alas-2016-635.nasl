@@ -8,7 +8,7 @@
 # Eero Volotinen <eero.volotinen@iki.fi>
 #
 # Copyright:
-# Copyright (c) 2015 Eero Volotinen, http://ping-viini.org
+# Copyright (c) 2016 Eero Volotinen, http://ping-viini.org
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -27,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.120625");
-  script_version("$Revision: 11703 $");
+  script_version("$Revision: 14180 $");
   script_tag(name:"creation_date", value:"2016-01-20 07:22:44 +0200 (Wed, 20 Jan 2016)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 10:05:31 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 13:29:16 +0100 (Thu, 14 Mar 2019) $");
   script_name("Amazon Linux Local Check: alas-2016-635");
   script_tag(name:"insight", value:"It was found that SSSD's Privilege Attribute Certificate (PAC) responder plug-in would leak a small amount of memory on each authentication request. A remote attacker could potentially use this flaw to exhaust all available memory on the system by making repeated requests to a Kerberized daemon application configured to authenticate using the PAC responder plug-in.");
   script_tag(name:"solution", value:"Run yum update sssd to update your system.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_vcs_76326.nasl 12106 2018-10-26 06:33:36Z cfischer $
+# $Id: gb_cisco_vcs_76326.nasl 14184 2019-03-14 13:29:04Z cfischer $
 #
 # Cisco TelePresence Video Communication Server Expressway Information Disclosure Vulnerability
 #
@@ -27,14 +27,14 @@
 
 CPE = "cpe:/a:cisco:telepresence_video_communication_server_software";
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105334");
   script_bugtraq_id(76326);
   script_cve_id("CVE-2015-4314");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_version("$Revision: 12106 $");
+  script_version("$Revision: 14184 $");
 
   script_name("Cisco TelePresence Video Communication Server Expressway Information Disclosure Vulnerability");
 
@@ -48,7 +48,7 @@ an authenticated, remote attacker to view sensitive data. The vulnerability is d
 vulnerability by downloading the snapshot file and viewing the password hashes contained. An exploit could allow the attacker to crack the password hashes and
 use credentials to launch further attacks.
 
-This issue is being tracked by Cisco BugId CSCuv40422. ");
+This issue is being tracked by Cisco BugId CSCuv40422.");
   script_tag(name:"solution", value:"Update to version X8.7 or later.");
   script_tag(name:"summary", value:"Cisco TelePresence Video Communication Server Expressway is prone to an information-disclosure vulnerability.");
   script_tag(name:"affected", value:"Cisco TelePresence Video Communication Server Expressway X8.5.1");
@@ -56,7 +56,7 @@ This issue is being tracked by Cisco BugId CSCuv40422. ");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 14:29:04 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-08-27 15:44:02 +0200 (Thu, 27 Aug 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -80,4 +80,3 @@ if( version =~ "^8\.5\.1($|[^0-9])" )
 }
 
 exit( 99 );
-

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_graphics_component_ms14-036.nasl 11878 2018-10-12 12:40:08Z cfischer $
+# $Id: gb_ms_graphics_component_ms14-036.nasl 14185 2019-03-14 13:43:25Z cfischer $
 #
 # Microsoft Windows Graphics Component Multiple Vulnerabilities (2967487)
 #
@@ -27,37 +27,50 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804596");
-  script_version("$Revision: 11878 $");
+  script_version("$Revision: 14185 $");
   script_cve_id("CVE-2014-1817", "CVE-2014-1818");
   script_bugtraq_id(67897, 67904);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 14:43:25 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-06-11 10:52:36 +0530 (Wed, 11 Jun 2014)");
   script_name("Microsoft Windows Graphics Component Multiple Vulnerabilities (2967487)");
 
-
   script_tag(name:"summary", value:"This host is missing a critical security update according to Microsoft
-Bulletin MS14-036.");
+  Bulletin MS14-036.");
+
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+
   script_tag(name:"insight", value:"Multiple flaws are due to,
 
   - An error within Unicode Scripts Processor.
 
   - An error within GDI+ when validating images.");
+
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code
-and compromise a user's system.");
+  and compromise a user's system.");
+
   script_tag(name:"affected", value:"Microsoft Windows 8 x32/x64
-Microsoft Windows 8.1 x32/x64
-Microsoft Windows Server 2012
-Microsoft Windows Server 2012 R2
-Microsoft Windows 2003 x32 Edition Service Pack 2 and prior
-Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior
-Microsoft Windows Vista x32/x64 Edition Service Pack 2 and prior
-Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior
-Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2 and prior ");
+
+  Microsoft Windows 8.1 x32/x64
+
+  Microsoft Windows Server 2012
+
+  Microsoft Windows Server 2012 R2
+
+  Microsoft Windows 2003 x32 Edition Service Pack 2 and prior
+
+  Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior
+
+  Microsoft Windows Vista x32/x64 Edition Service Pack 2 and prior
+
+  Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior
+
+  Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2 and prior");
+
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-install the hotfixes from the referenced advisory.");
+  install the hotfixes from the referenced advisory.");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -71,10 +84,9 @@ install the hotfixes from the referenced advisory.");
   script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
-  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/security/bulletin/ms14-036");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");

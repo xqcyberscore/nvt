@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb3191833.nasl 11835 2018-10-11 08:38:49Z mmartin $
+# $Id: gb_ms_kb3191833.nasl 14175 2019-03-14 11:27:57Z cfischer $
 #
 # Microsoft Excel Viewer 2007 Service Pack 3 Remote Code Execution Vulnerability (KB3191833)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811462");
-  script_version("$Revision: 11835 $");
+  script_version("$Revision: 14175 $");
   script_cve_id("CVE-2017-8501");
   script_bugtraq_id(99441);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:38:49 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 12:27:57 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-07-12 08:41:03 +0530 (Wed, 12 Jul 2017)");
   script_name("Microsoft Excel Viewer 2007 Service Pack 3 Remote Code Execution Vulnerability (KB3191833)");
 
@@ -42,7 +42,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to the software fails
-  to properly handle objects in memory. ");
+  to properly handle objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker to
   run arbitrary code in the context of the current user.");

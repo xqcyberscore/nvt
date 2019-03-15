@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mgasa-2016-0091.nasl 11856 2018-10-12 07:45:29Z cfischer $
+# $Id: mgasa-2016-0091.nasl 14180 2019-03-14 12:29:16Z cfischer $
 #
 # Mageia Linux security check
 #
@@ -8,7 +8,7 @@
 # Eero Volotinen <eero.volotinen@solinor.com>
 #
 # Copyright:
-# Copyright (c) 2015 Eero Volotinen, http://www.solinor.com
+# Copyright (c) 2016 Eero Volotinen, http://www.solinor.com
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -27,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.131246");
-  script_version("$Revision: 11856 $");
+  script_version("$Revision: 14180 $");
   script_tag(name:"creation_date", value:"2016-03-03 14:39:16 +0200 (Thu, 03 Mar 2016)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:45:29 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 13:29:16 +0100 (Thu, 14 Mar 2019) $");
   script_name("Mageia Linux Local Check: mgasa-2016-0091");
   script_tag(name:"insight", value:"Updated wireshark packages fix security vulnerabilities: ASN.1 BER dissector crash (CVE-2016-2522). DNP dissector infinite loop (CVE-2016-2523). X.509AF dissector crash (CVE-2016-2524). HTTP/2 dissector crash (CVE-2016-2525). HiQnet dissector crash (CVE-2016-2526). 3GPP TS 32.423 Trace file parser crash (CVE-2016-2527). LBMC dissector crash (CVE-2016-2528). iSeries file parser crash (CVE-2016-2529). RSL dissector crash (CVE-2016-2530, CVE-2016-2531). LLRP dissector crash (CVE-2016-2532). The wireshark package has been updated to version 2.0.2, fixing these issues as well as other dissector crashes, a dissector loop issue, another file parser crash, and several other bugs. See the upstream release notes for details.");
   script_tag(name:"solution", value:"Update the affected packages to the latest available version.");

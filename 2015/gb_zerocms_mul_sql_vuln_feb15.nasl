@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zerocms_mul_sql_vuln_feb15.nasl 11449 2018-09-18 10:04:42Z mmartin $
+# $Id: gb_zerocms_mul_sql_vuln_feb15.nasl 14184 2019-03-14 13:29:04Z cfischer $
 #
 # ZeroCMS Multiple SQL Injection Vulnerabilities - Feb 2015
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805331");
-  script_version("$Revision: 11449 $");
+  script_version("$Revision: 14184 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 12:04:42 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 14:29:04 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-02-03 10:44:23 +0530 (Tue, 03 Feb 2015)");
   script_name("ZeroCMS Multiple SQL Injection Vulnerabilities - Feb 2015");
 
@@ -43,10 +43,10 @@ if(description)
   script_tag(name:"insight", value:"The flaw exists as input passed via
 
   - 'article_id' parameter used in 'zero_view_article.php' script is
-     not properly sanitised before being used.
+  not properly sanitised before being used.
 
   - 'user_id' parameter used in 'zero_user_transact.php' script is
-     not properly sanitised before being used. ");
+  not properly sanitised before being used.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow
   attackers to inject or manipulate SQL queries in the back-end database,
@@ -55,8 +55,8 @@ if(description)
   script_tag(name:"affected", value:"ZeroCMS version 1.3.3 and prior.");
 
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
-Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the
+  product or replace the product by another one.");
 
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2015/Feb/4");
   script_xref(name:"URL", value:"https://packetstormsecurity.com/files/130192/");
@@ -69,7 +69,6 @@ General solution options are to upgrade to a newer release, disable respective f
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"solution_type", value:"WillNotFix");
-
   script_tag(name:"qod_type", value:"remote_app");
 
   exit(0);

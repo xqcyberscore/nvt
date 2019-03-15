@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zabbix_62794.nasl 11041 2018-08-17 14:03:47Z mmartin $
+# $Id: gb_zabbix_62794.nasl 14186 2019-03-14 13:57:54Z cfischer $
 #
 # ZABBIX API and Frontend  Multiple SQL Injection Vulnerabilities
 #
@@ -34,9 +34,9 @@ if(description)
   script_cve_id("CVE-2013-5743");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11041 $");
+  script_version("$Revision: 14186 $");
   script_name("ZABBIX API and Frontend  Multiple SQL Injection Vulnerabilities");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 16:03:47 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 14:57:54 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-10-15 14:09:10 +0200 (Tue, 15 Oct 2013)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -49,19 +49,23 @@ if(description)
   script_xref(name:"URL", value:"https://support.zabbix.com/browse/ZBX-7091");
 
   script_tag(name:"impact", value:"A successful exploit may allow an attacker to compromise the
-  application, access or modify data, or exploit latent vulnerabilities
-  in the underlying database.");
+  application, access or modify data, or exploit latent vulnerabilities in the underlying database.");
+
   script_tag(name:"vuldetect", value:"Send a special crafted HTTP GET request and check the response.");
+
   script_tag(name:"insight", value:"A remote attacker could send specially-crafted SQL statements
   to multiple API methods using multiple parameters, which could allow the
   attacker to view, add, modify or delete information in the back-end database.");
+
   script_tag(name:"solution", value:"Updates are available. Please see the references or vendor advisory
   for more information.");
+
   script_tag(name:"summary", value:"ZABBIX API and Frontend are prone to multiple SQL-injection
   vulnerabilities.");
+
   script_tag(name:"affected", value:"ZABBIX prior to 2.0.9
 
-  ZABBIX prior to 1.8.18 ");
+  ZABBIX prior to 1.8.18");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");

@@ -8,7 +8,7 @@
 # Eero Volotinen <eero.volotinen@iki.fi>
 #
 # Copyright:
-# Copyright (c) 2015 Eero Volotinen, http://ping-viini.org
+# Copyright (c) 2016 Eero Volotinen, http://ping-viini.org
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -27,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.120631");
-  script_version("$Revision: 11703 $");
+  script_version("$Revision: 14180 $");
   script_tag(name:"creation_date", value:"2016-01-20 07:22:48 +0200 (Wed, 20 Jan 2016)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 10:05:31 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 13:29:16 +0100 (Thu, 14 Mar 2019) $");
   script_name("Amazon Linux Local Check: alas-2016-641");
   script_tag(name:"insight", value:"Specific APL RR data could cause a server to exit due to an INSIST failure in apl_42.c when performing certain string formatting operations. (CVE-2015-8704 )CVE-2015-8705  was also issued today for bind, but the Amazon Linux AMI's version of bind is not impacted by that CVE.");
   script_tag(name:"solution", value:"Run yum update bind to update your system.");

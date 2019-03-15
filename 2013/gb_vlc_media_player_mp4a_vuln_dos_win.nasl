@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_mp4a_vuln_dos_win.nasl 11865 2018-10-12 10:03:43Z cfischer $
+# $Id: gb_vlc_media_player_mp4a_vuln_dos_win.nasl 14186 2019-03-14 13:57:54Z cfischer $
 #
 # VLC Media Player mp4a Denial of Service Vulnerability (Windows)
 #
@@ -23,30 +23,36 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/a:videolan:vlc_media_player";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803954");
-  script_version("$Revision: 11865 $");
+  script_version("$Revision: 14186 $");
   script_cve_id("CVE-2013-4388");
   script_bugtraq_id(62724);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 14:57:54 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-10-22 19:22:32 +0530 (Tue, 22 Oct 2013)");
   script_name("VLC Media Player mp4a Denial of Service Vulnerability (Windows)");
 
-
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to overflow buffer, cause denial
-of service.");
+  of service.");
+
   script_tag(name:"affected", value:"VLC media player version 2.0.7 and prior on Windows");
+
   script_tag(name:"insight", value:"A flaw exist in mpeg4audio.c file, which to perform adequate boundary checks
-on user-supplied input. ");
+  on user-supplied input.");
+
   script_tag(name:"solution", value:"Upgrade to VLC media player version 2.0.8 or later.");
+
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+
   script_tag(name:"summary", value:"This host is installed with VLC Media Player and is prone to denial of service
-vulnerability.");
+  vulnerability.");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -58,10 +64,9 @@ vulnerability.");
   script_family("General");
   script_dependencies("secpod_vlc_media_player_detect_win.nasl");
   script_mandatory_keys("VLCPlayer/Win/Installed");
-  script_xref(name:"URL", value:"http://www.videolan.org/vlc");
+
   exit(0);
 }
-
 
 include("version_func.inc");
 include("host_details.inc");

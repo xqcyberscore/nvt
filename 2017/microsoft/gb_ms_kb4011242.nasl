@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4011242.nasl 11983 2018-10-19 10:04:45Z mmartin $
+# $Id: gb_ms_kb4011242.nasl 14175 2019-03-14 11:27:57Z cfischer $
 #
 # Microsoft Word 2016 Defense in Depth Update (KB4011242)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812085");
-  script_version("$Revision: 11983 $");
+  script_version("$Revision: 14175 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 12:27:57 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-11-15 07:15:57 +0530 (Wed, 15 Nov 2017)");
   script_name("Microsoft Word 2016 Defense in Depth Update (KB4011242)");
 
@@ -41,7 +41,7 @@ if(description)
 
   script_tag(name:"insight", value:"The flaw exists as Microsoft has released
   an update for Microsoft Office that provides enhanced security as a
-  defense-in-depth measure. ");
+  defense-in-depth measure.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to
   compromise availability, integrity, and confidentiality of the system.");

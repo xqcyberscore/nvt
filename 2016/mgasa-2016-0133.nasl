@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mgasa-2016-0133.nasl 11856 2018-10-12 07:45:29Z cfischer $
+# $Id: mgasa-2016-0133.nasl 14180 2019-03-14 12:29:16Z cfischer $
 #
 # Mageia Linux security check
 #
@@ -8,7 +8,7 @@
 # Eero Volotinen <eero.volotinen@solinor.com>
 #
 # Copyright:
-# Copyright (c) 2015 Eero Volotinen, http://www.solinor.com
+# Copyright (c) 2016 Eero Volotinen, http://www.solinor.com
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -27,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.131313");
-  script_version("$Revision: 11856 $");
+  script_version("$Revision: 14180 $");
   script_tag(name:"creation_date", value:"2016-05-09 14:18:14 +0300 (Mon, 09 May 2016)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:45:29 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 13:29:16 +0100 (Thu, 14 Mar 2019) $");
   script_name("Mageia Linux Local Check: mgasa-2016-0133");
   script_tag(name:"insight", value:"Updated squid packages fix security vulnerabilities: Due to a buffer overrun, the Squid pinger binary in Squid before 3.5.16 is vulnerable to a denial of service or information leak attack when processing ICMPv6 packets. This bug also permits the server response to manipulate other ICMP and ICMPv6 queries processing to cause information leaks (CVE-2016-3947). Due to incorrect bounds checking, Squid before 3.5.16 is vulnerable to a denial of service attack when processing HTTP responses (CVE-2016-3948).");
   script_tag(name:"solution", value:"Update the affected packages to the latest available version.");

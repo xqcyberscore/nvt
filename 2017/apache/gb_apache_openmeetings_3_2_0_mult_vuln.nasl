@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_openmeetings_3_2_0_mult_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
+# $Id: gb_apache_openmeetings_3_2_0_mult_vuln.nasl 14175 2019-03-14 11:27:57Z cfischer $
 #
 # Apache OpenMeetings 3.2.x Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112063");
-  script_version("$Revision: 11983 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 14175 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 12:27:57 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-10-05 14:45:22 +0200 (Thu, 05 Oct 2017)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
@@ -56,7 +56,7 @@ if(description)
 
   - Both global and Room chat are vulnerable to XSS attack (CVE-2017-7663).
 
-  - Apache OpenMeetings is vulnerable to parameter manipulation attacks, as a result attacker has access to restricted areas (CVE-2017-7682). ");
+  - Apache OpenMeetings is vulnerable to parameter manipulation attacks, as a result attacker has access to restricted areas (CVE-2017-7682).");
   script_tag(name:"affected", value:"Apache OpenMeetings versions 3.2.x");
   script_tag(name:"solution", value:"Update your software to version 3.3.0 to fix the issue");
 

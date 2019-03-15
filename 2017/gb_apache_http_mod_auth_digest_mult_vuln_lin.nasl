@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_http_mod_auth_digest_mult_vuln_lin.nasl 11977 2018-10-19 07:28:56Z mmartin $
+# $Id: gb_apache_http_mod_auth_digest_mult_vuln_lin.nasl 14173 2019-03-14 10:56:52Z cfischer $
 #
 # Apache HTTP Server 'mod_auth_digest' Multiple Vulnerabilities (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811237");
-  script_version("$Revision: 11977 $");
+  script_version("$Revision: 14173 $");
   script_cve_id("CVE-2017-9788");
   script_bugtraq_id(99569);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 11:56:52 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-07-17 17:33:56 +0530 (Mon, 17 Jul 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache HTTP Server 'mod_auth_digest' Multiple Vulnerabilities (Linux)");
@@ -60,9 +60,9 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name:"URL", value:"www.securitytracker.com/id/1038906");
-  script_xref(name:"URL", value:"httpd.apache.org/security/vulnerabilities_22.html");
-  script_xref(name:"URL", value:"httpd.apache.org/security/vulnerabilities_24.html");
+  script_xref(name:"URL", value:"http://www.securitytracker.com/id/1038906");
+  script_xref(name:"URL", value:"http://httpd.apache.org/security/vulnerabilities_22.html");
+  script_xref(name:"URL", value:"http://httpd.apache.org/security/vulnerabilities_24.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -70,21 +70,18 @@ if(description)
   script_dependencies("secpod_apache_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("apache/installed", "Host/runs_unixoide");
   script_require_ports("Services/www", 80);
-  script_xref(name:"URL", value:"https://httpd.apache.org");
+
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");
 
-if(!httpd_port = get_app_port(cpe:CPE)){
+if(!httpd_port = get_app_port(cpe:CPE))
   exit(0);
-}
 
-if(!httpd_ver = get_app_version(cpe:CPE, port:httpd_port)){
+if(!httpd_ver = get_app_version(cpe:CPE, port:httpd_port))
   exit(0);
-}
 
 if(httpd_ver =~ "^2\.4")
 {

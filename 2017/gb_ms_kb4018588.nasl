@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4018588.nasl 11874 2018-10-12 11:28:04Z mmartin $
+# $Id: gb_ms_kb4018588.nasl 14175 2019-03-14 11:27:57Z cfischer $
 #
 # Microsoft Exchange Server Multiple Vulnerabilities (KB4018588)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:exchange_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811227");
-  script_version("$Revision: 11874 $");
+  script_version("$Revision: 14175 $");
   script_cve_id("CVE-2017-8621", "CVE-2017-8559", "CVE-2017-8560");
   script_bugtraq_id(99533, 99448, 99449);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 12:27:57 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-07-12 10:07:15 +0530 (Wed, 12 Jul 2017)");
   script_name("Microsoft Exchange Server Multiple Vulnerabilities (KB4018588)");
 
@@ -48,7 +48,7 @@ if(description)
   - An error in Microsoft Exchange that could lead to spoofing.
 
   - An error when Microsoft Exchange Outlook Web Access (OWA) fails to properly
-    handle web requests. ");
+    handle web requests.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker
   to perform script/content injection attacks and attempt to trick the user into

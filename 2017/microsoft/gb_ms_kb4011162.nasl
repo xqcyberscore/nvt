@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4011162.nasl 11983 2018-10-19 10:04:45Z mmartin $
+# $Id: gb_ms_kb4011162.nasl 14175 2019-03-14 11:27:57Z cfischer $
 #
 # Microsoft Outlook 2016 Multiple Vulnerabilities (KB4011162)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811922");
-  script_version("$Revision: 11983 $");
+  script_version("$Revision: 14175 $");
   script_cve_id("CVE-2017-11774", "CVE-2017-11776");
   script_bugtraq_id(101098, 101106);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 12:27:57 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-10-11 09:33:40 +0530 (Wed, 11 Oct 2017)");
   script_name("Microsoft Outlook 2016 Multiple Vulnerabilities (KB4011162)");
 
@@ -45,7 +45,7 @@ if(description)
 
   - Microsoft Outlook fails to establish a secure connection.
 
-  - Microsoft Office improperly handles objects in memory. ");
+  - Microsoft Office improperly handles objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to obtain the email content of a user, also could execute arbitrary commands.");

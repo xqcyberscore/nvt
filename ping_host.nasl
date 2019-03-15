@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ping_host.nasl 13981 2019-03-04 14:49:43Z cfischer $
+# $Id: ping_host.nasl 14190 2019-03-14 14:21:54Z cfischer $
 #
 # Ping Host
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100315");
-  script_version("$Revision: 13981 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-04 15:49:43 +0100 (Mon, 04 Mar 2019) $");
+  script_version("$Revision: 14190 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 15:21:54 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-10-26 10:02:32 +0100 (Mon, 26 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -50,7 +50,7 @@ if(description)
   script_add_preference(name:"Use ARP", type:"checkbox", value:"no", id:4);
   script_add_preference(name:"Do a TCP ping", type:"checkbox", value:"no", id:1);
   script_add_preference(name:"TCP ping tries also TCP-SYN ping", type:"checkbox", value:"no", id:2);
-  script_add_preference(name:"TCP ping tries only TCP-SYN ping", type:"checkbox", value:"no");
+  script_add_preference(name:"TCP ping tries only TCP-SYN ping", type:"checkbox", value:"no", id:7);
   script_add_preference(name:"Do an ICMP ping", type:"checkbox", value:"yes", id:3);
   script_add_preference(name:"nmap additional ports for -PA", type:"entry", value:"137,587,3128,8081");
   script_add_preference(name:"nmap: try also with only -sP", type:"checkbox", value:"no");
@@ -185,7 +185,7 @@ tcp_syn_ping = script_get_preference("TCP ping tries also TCP-SYN ping", id:2);
 if( isnull( tcp_syn_ping ) )
   tcp_syn_ping = "no";
 
-tcp_syn_ping_only = script_get_preference("TCP ping tries only TCP-SYN ping");
+tcp_syn_ping_only = script_get_preference("TCP ping tries only TCP-SYN ping", id:7);
 if( isnull( tcp_syn_ping_only ) )
   tcp_syn_ping_only = "no";
 

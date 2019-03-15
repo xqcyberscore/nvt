@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ssl_cert_in_chain_soonexpired.nasl 7242 2017-09-23 14:58:39Z cfischer $
+# $Id: gb_ssl_cert_in_chain_soonexpired.nasl 14181 2019-03-14 12:59:41Z cfischer $
 #
 # SSL/TLS: Certificate In Chain Will Soon Expire
 #
@@ -31,10 +31,10 @@ lookahead = 60;
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105891");
-  script_version("$Revision: 7242 $");
+  script_version("$Revision: 14181 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-23 16:58:39 +0200 (Sat, 23 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 13:59:41 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-09-16 11:11:32 +0200 (Fri, 16 Sep 2016)");
   script_name("SSL/TLS: Certificate In Chain Will Soon Expire");
   script_category(ACT_GATHER_INFO);
@@ -116,4 +116,3 @@ if( ret = check_validity( port: port, now:future ) ) {
 }
 
 exit(0);
-

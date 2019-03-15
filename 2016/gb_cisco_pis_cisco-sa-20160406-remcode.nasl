@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_pis_cisco-sa-20160406-remcode.nasl 12051 2018-10-24 09:14:54Z asteins $
+# $Id: gb_cisco_pis_cisco-sa-20160406-remcode.nasl 14181 2019-03-14 12:59:41Z cfischer $
 #
 # Cisco Prime Infrastructure Remote Code Execution Vulnerability
 #
@@ -27,29 +27,32 @@
 
 CPE = "cpe:/a:cisco:prime_infrastructure";
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105615");
   script_cve_id("CVE-2016-1291");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 12051 $");
+  script_version("$Revision: 14181 $");
 
   script_name("Cisco Prime Infrastructure Remote Code Execution Vulnerability");
 
   script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160406-remcode");
 
-  script_tag(name:"impact", value:"An attacker could exploit this vulnerability by sending an HTTP POST with crafted deserialized user data. An exploit could allow the attacker to execute arbitrary code with root-level privileges on the affected system, which could be used to conduct further attacks.");
+  script_tag(name:"impact", value:"An attacker could exploit this vulnerability by sending an HTTP POST with crafted deserialized
+  user data. An exploit could allow the attacker to execute arbitrary code with root-level privileges on the affected system, which
+  could be used to conduct further attacks.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"The vulnerability is due to insufficient sanitization of HTTP user-supplied input. ");
+  script_tag(name:"insight", value:"The vulnerability is due to insufficient sanitization of HTTP user-supplied input.");
   script_tag(name:"solution", value:"Update to Cisco Prime Infrastructure 3.0.2 or newer");
-  script_tag(name:"summary", value:"A vulnerability in the web interface of Cisco Prime Infrastructure could allow an unauthenticated, remote attacker to execute arbitrary code on a targeted system.");
+  script_tag(name:"summary", value:"A vulnerability in the web interface of Cisco Prime Infrastructure could allow an unauthenticated,
+  remote attacker to execute arbitrary code on a targeted system.");
   script_tag(name:"affected", value:"Cisco Prime Infrastructure prior to 3.0.2");
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 13:59:41 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-04-21 11:49:04 +0200 (Thu, 21 Apr 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -78,7 +81,6 @@ if( version =~ "^2\." )
   }
 }
 
-
 if( fix )
 {
   report = report_fixed_ver(  installed_version:version, fixed_version:fix );
@@ -87,4 +89,3 @@ if( fix )
 }
 
 exit( 99 );
-

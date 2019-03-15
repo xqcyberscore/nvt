@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4011078.nasl 11901 2018-10-15 08:47:18Z mmartin $
+# $Id: gb_ms_kb4011078.nasl 14175 2019-03-14 11:27:57Z cfischer $
 #
 # Microsoft Outlook 2013 Service Pack 1 Multiple Vulnerabilities (KB4011078)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811262");
-  script_version("$Revision: 11901 $");
+  script_version("$Revision: 14175 $");
   script_cve_id("CVE-2017-8571", "CVE-2017-8572", "CVE-2017-8663");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 10:47:18 +0200 (Mon, 15 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 12:27:57 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-07-28 15:59:49 +0530 (Fri, 28 Jul 2017)");
   script_name("Microsoft Outlook 2013 Service Pack 1 Multiple Vulnerabilities (KB4011078)");
 
@@ -47,7 +47,7 @@ if(description)
   - An error when Microsoft Office improperly discloses the contents of its memory.
 
   - An error in the way that Microsoft Outlook parses specially crafted email
-    messages. ");
+    messages.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a remote
   attacker to execute arbitrary commands, gain access to potentially sensitive

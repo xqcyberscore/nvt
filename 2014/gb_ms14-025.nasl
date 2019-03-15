@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-025.nasl 11878 2018-10-12 12:40:08Z cfischer $
+# $Id: gb_ms14-025.nasl 14185 2019-03-14 13:43:25Z cfischer $
 #
 # Microsoft Group Policy Preferences Privilege Elevation Vulnerability (2962486)
 #
@@ -27,34 +27,46 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802073");
-  script_version("$Revision: 11878 $");
+  script_version("$Revision: 14185 $");
   script_cve_id("CVE-2014-1812");
   script_bugtraq_id(67275);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 14:43:25 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-05-14 12:36:12 +0530 (Wed, 14 May 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("Microsoft Group Policy Preferences Privilege Elevation Vulnerability (2962486)");
 
-
   script_tag(name:"summary", value:"This host is missing an important security update according to Microsoft
-Bulletin MS14-025.");
+  Bulletin MS14-025.");
+
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+
   script_tag(name:"insight", value:"Flaw is due the way Active Directory distributes passwords that are configured
-using Group Policy preferences.");
+  using Group Policy preferences.");
+
   script_tag(name:"impact", value:"Successful exploitation will allow attacker could decrypt the passwords and
-use them to elevate privileges on the domain.");
+  use them to elevate privileges on the domain.");
+
   script_tag(name:"affected", value:"Microsoft Windows 8 x32/x64
-Microsoft Windows 8.1 x32/x64
-Microsoft Windows Server 2012
-Microsoft Windows Server 2012 R2
-Microsoft Windows 7 x32/x64 Service Pack 1 and prior
-Microsoft Windows Vista x32/x64 Service Pack 2 and prior
-Microsoft Windows Server 2008 R2 x64 Service Pack 1 and prior
-Microsoft Windows Server 2008 x32/x64 Service Pack 2 and prior ");
+
+  Microsoft Windows 8.1 x32/x64
+
+  Microsoft Windows Server 2012
+
+  Microsoft Windows Server 2012 R2
+
+  Microsoft Windows 7 x32/x64 Service Pack 1 and prior
+
+  Microsoft Windows Vista x32/x64 Service Pack 2 and prior
+
+  Microsoft Windows Server 2008 R2 x64 Service Pack 1 and prior
+
+  Microsoft Windows Server 2008 x32/x64 Service Pack 2 and prior");
+
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-install the hotfixes from the referenced advisory.");
+  install the hotfixes from the referenced advisory.");
+
   script_tag(name:"qod_type", value:"registry");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/58256");
@@ -67,9 +79,9 @@ install the hotfixes from the referenced advisory.");
   script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");

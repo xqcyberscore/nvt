@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mgasa-2016-0152.nasl 11856 2018-10-12 07:45:29Z cfischer $
+# $Id: mgasa-2016-0152.nasl 14180 2019-03-14 12:29:16Z cfischer $
 #
 # Mageia Linux security check
 #
@@ -8,7 +8,7 @@
 # Eero Volotinen <eero.volotinen@solinor.com>
 #
 # Copyright:
-# Copyright (c) 2015 Eero Volotinen, http://www.solinor.com
+# Copyright (c) 2016 Eero Volotinen, http://www.solinor.com
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -27,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.131297");
-  script_version("$Revision: 11856 $");
+  script_version("$Revision: 14180 $");
   script_tag(name:"creation_date", value:"2016-05-09 14:18:00 +0300 (Mon, 09 May 2016)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:45:29 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 13:29:16 +0100 (Thu, 14 Mar 2019) $");
   script_name("Mageia Linux Local Check: mgasa-2016-0152");
   script_tag(name:"insight", value:"Updated libgd packages fix security vulnerability: A signedness vulnerability exists in libgd 2.1.1 and earlier which may result in a heap overflow when processing compressed gd2 data (CVE-2016-3074).");
   script_tag(name:"solution", value:"Update the affected packages to the latest available version.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_portal_xss_vuln_swg22000152.nasl 11977 2018-10-19 07:28:56Z mmartin $
+# $Id: gb_ibm_websphere_portal_xss_vuln_swg22000152.nasl 14175 2019-03-14 11:27:57Z cfischer $
 #
 # IBM WebSphere Portal Cross Site Scripting Vulnerability(swg22000152)
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:ibm:websphere_portal';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810732");
-  script_version("$Revision: 11977 $");
+  script_version("$Revision: 14175 $");
   script_cve_id("CVE-2017-1120");
   script_bugtraq_id(97075);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 12:27:57 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-04-07 16:26:30 +0530 (Fri, 07 Apr 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("IBM WebSphere Portal Cross Site Scripting Vulnerability(swg22000152)");
@@ -57,7 +57,7 @@ if(description)
   IBM WebSphere Portal 9.0.0 before Cumulative Fix 14 (CF14)");
 
   script_tag(name:"solution", value:"Upgrade to IBM WebSphere Portal
-  8.5.0 with Cumulative Fix 14 (CF14), 9.0.0 with Cumulative Fix 14 (CF14) or later. ");
+  8.5.0 with Cumulative Fix 14 (CF14), 9.0.0 with Cumulative Fix 14 (CF14) or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg22000152");

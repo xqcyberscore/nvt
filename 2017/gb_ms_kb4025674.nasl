@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4025674.nasl 11977 2018-10-19 07:28:56Z mmartin $
+# $Id: gb_ms_kb4025674.nasl 14175 2019-03-14 11:27:57Z cfischer $
 #
 # Microsoft Windows Explorer Denial of Service Vulnerability (KB4025674)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811460");
-  script_version("$Revision: 11977 $");
+  script_version("$Revision: 14175 $");
   script_cve_id("CVE-2017-8587");
   script_bugtraq_id(99413);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 12:27:57 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-07-12 08:31:15 +0530 (Wed, 12 Jul 2017)");
   script_name("Microsoft Windows Explorer Denial of Service Vulnerability (KB4025674)");
 
@@ -42,7 +42,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to error when Windows
-  Explorer attempts to open a non-existent file. ");
+  Explorer attempts to open a non-existent file.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to cause a denial of service condition.");

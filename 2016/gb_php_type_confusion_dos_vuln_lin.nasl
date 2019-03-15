@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_type_confusion_dos_vuln_lin.nasl 11811 2018-10-10 09:55:00Z asteins $
+# $Id: gb_php_type_confusion_dos_vuln_lin.nasl 14181 2019-03-14 12:59:41Z cfischer $
 #
 # PHP 'type confusion' Denial of Service Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808673");
-  script_version("$Revision: 11811 $");
+  script_version("$Revision: 14181 $");
   script_cve_id("CVE-2015-4601");
   script_bugtraq_id(75246);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 11:55:00 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 13:59:41 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-08-31 14:59:18 +0530 (Wed, 31 Aug 2016)");
   script_name("PHP 'type confusion' Denial of Service Vulnerability (Linux)");
 
@@ -52,7 +52,7 @@ if(description)
   script_tag(name:"affected", value:"PHP versions prior to 5.6.7 on Linux");
 
   script_tag(name:"solution", value:"Upgrade to PHP version 5.6.7
-  or later. ");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -66,7 +66,6 @@ if(description)
   script_dependencies("gb_php_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("php/installed", "Host/runs_unixoide");
 
-  script_xref(name:"URL", value:"http://www.php.net");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mgasa-2016-0028.nasl 11692 2018-09-28 16:55:19Z cfischer $
+# $Id: mgasa-2016-0028.nasl 14180 2019-03-14 12:29:16Z cfischer $
 #
 # Mageia Linux security check
 #
@@ -8,7 +8,7 @@
 # Eero Volotinen <eero.volotinen@solinor.com>
 #
 # Copyright:
-# Copyright (c) 2015 Eero Volotinen, http://www.solinor.com
+# Copyright (c) 2016 Eero Volotinen, http://www.solinor.com
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -27,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.131191");
-  script_version("$Revision: 11692 $");
+  script_version("$Revision: 14180 $");
   script_tag(name:"creation_date", value:"2016-01-21 07:32:03 +0200 (Thu, 21 Jan 2016)");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 18:55:19 +0200 (Fri, 28 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 13:29:16 +0100 (Thu, 14 Mar 2019) $");
   script_name("Mageia Linux Local Check: mgasa-2016-0028");
   script_tag(name:"insight", value:"A badly formed packet with an invalid IPv4 UDP length field can cause an ISC DHCP server, client, or relay program to terminate abnormally (CVE-2015-8605). The dhcp package has been updated to version 4.3.3-P1, which fixes this issue and several other bugs. Also, the package has also been enhanced to provide better support for running a DHCPv6 server (mga#17177).");
   script_tag(name:"solution", value:"Update the affected packages to the latest available version.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sap_netweaver_mult_vuln_jun16.nasl 12096 2018-10-25 12:26:02Z asteins $
+# $Id: gb_sap_netweaver_mult_vuln_jun16.nasl 14181 2019-03-14 12:59:41Z cfischer $
 #
 # SAP NetWeaver Multiple Vulnerabilities
 #
@@ -27,11 +27,11 @@
 
 CPE = 'cpe:/a:sap:netweaver';
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106104");
-  script_version("$Revision: 12096 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
+  script_version("$Revision: 14181 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 13:59:41 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-06-21 15:14:09 +0700 (Tue, 21 Jun 2016)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -73,7 +73,7 @@ escalation.");
 
   script_tag(name:"affected", value:"Version 7.1 - 7.5");
 
-  script_tag(name:"solution", value:"Check the references for solutions ");
+  script_tag(name:"solution", value:"Check the references for solutions.");
 
   script_xref(name:"URL", value:"https://service.sap.com/sap/support/notes/2235994");
   script_xref(name:"URL", value:"https://service.sap.com/sap/support/notes/2234971");

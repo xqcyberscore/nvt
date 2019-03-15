@@ -8,7 +8,7 @@
 # Eero Volotinen <eero.volotinen@iki.fi>
 #
 # Copyright:
-# Copyright (c) 2015 Eero Volotinen, http://ping-viini.org
+# Copyright (c) 2016 Eero Volotinen, http://ping-viini.org
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -27,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.120633");
-  script_version("$Revision: 11711 $");
+  script_version("$Revision: 14180 $");
   script_tag(name:"creation_date", value:"2016-02-11 07:16:42 +0200 (Thu, 11 Feb 2016)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 14:30:57 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 13:29:16 +0100 (Thu, 14 Mar 2019) $");
   script_name("Amazon Linux Local Check: alas-2016-643");
   script_tag(name:"insight", value:"Multiple flaws were found in OpenJDK. Please see the references for more information.");
   script_tag(name:"solution", value:"Run yum update java-1.7.0-openjdk to update your system.");

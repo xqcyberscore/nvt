@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4022883.nasl 11879 2018-10-12 12:48:49Z mmartin $
+# $Id: gb_ms_kb4022883.nasl 14175 2019-03-14 11:27:57Z cfischer $
 #
 # Microsoft Windows Kernel Information Disclosure Vulnerability (KB4022883)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810793");
-  script_version("$Revision: 11879 $");
+  script_version("$Revision: 14175 $");
   script_cve_id("CVE-2017-8483");
   script_bugtraq_id(98859);
   script_tag(name:"cvss_base", value:"1.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:48:49 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 12:27:57 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-06-14 12:53:59 +0530 (Wed, 14 Jun 2017)");
   script_name("Microsoft Windows Kernel Information Disclosure Vulnerability (KB4022883)");
 
@@ -42,7 +42,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists when the Windows kernel
-  improperly initializes objects in memory. ");
+  improperly initializes objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to
   obtain information to further compromise the users system.");

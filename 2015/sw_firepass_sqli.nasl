@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_firepass_sqli.nasl 12106 2018-10-26 06:33:36Z cfischer $
+# $Id: sw_firepass_sqli.nasl 14184 2019-03-14 13:29:04Z cfischer $
 #
 # F5 Firepass SQL injection vulnerability in my.activation.php3
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/h:f5:firepass';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111017");
-  script_version("$Revision: 12106 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
+  script_version("$Revision: 14184 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 14:29:04 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-04-17 08:00:00 +0100 (Fri, 17 Apr 2015)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -47,9 +47,9 @@ if(description)
   script_mandatory_keys("firepass/installed");
 
   script_tag(name:"summary", value:"SQL injection vulnerability in my.activation.php3 allows remote
-  attackers to execute arbitrary SQL commands via the state parameter. ");
+  attackers to execute arbitrary SQL commands via the state parameter.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"affected", value:"F5 Firepass from 6.0.0 to 6.1.0 and 7.0.0");
+  script_tag(name:"affected", value:"F5 Firepass from 6.0.0 to 6.1.0 and 7.0.0.");
   script_tag(name:"solution", value:"The vendor has released a Hotfix HF-377712-1 listened in the referred advisory.");
 
   script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/13000/400/sol13463.html");
@@ -57,7 +57,6 @@ if(description)
   script_xref(name:"URL", value:"https://www.sec-consult.com/files/20120328-0_F5_FirePass_SSL_VPN_unauthenticated_remote_root_v1.0.txt");
 
   script_tag(name:"solution_type", value:"VendorFix");
-
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
   exit(0);

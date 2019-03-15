@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2016-0001_remote.nasl 11922 2018-10-16 10:24:25Z asteins $
+# $Id: gb_VMSA-2016-0001_remote.nasl 14181 2019-03-14 12:59:41Z cfischer $
 #
 # VMSA-2016-0001 VMware ESXi, Fusion, Player, and Workstation updates address important guest privilege escalation vulnerability (remote check)
 #
@@ -25,32 +25,35 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105509");
   script_cve_id("CVE-2015-6933");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_version("$Revision: 11922 $");
+  script_version("$Revision: 14181 $");
   script_name("VMSA-2016-0001 VMware ESXi, Fusion, Player, and Workstation updates address important guest privilege escalation vulnerability (remote check)");
 
   script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2016-0001.html");
 
   script_tag(name:"vuldetect", value:"Check the build number");
 
-  script_tag(name:"insight", value:"Important Windows-based guest privilege escalation in VMware Tools
-A kernel memory corruption vulnerability is present in the VMware Tools 'Shared Folders' (HGFS) feature running on Microsoft Windows. Successful exploitation of this issue could lead to an escalation of privilege in the guest operating system.");
+  script_tag(name:"insight", value:"A kernel memory corruption vulnerability is present in the VMware Tools 'Shared Folders' (HGFS) feature running on Microsoft Windows.
+  Successful exploitation of this issue could lead to an escalation of privilege in the guest operating system.");
 
   script_tag(name:"solution", value:"Apply the missing patch(es).");
 
   script_tag(name:"summary", value:"VMware ESXi, Fusion, Player, and Workstation updates address important guest privilege escalation vulnerability");
 
   script_tag(name:"affected", value:"VMware ESXi 6.0 without patch ESXi600-201512102-SG
-VMware ESXi 5.5 without patch ESXi550-201512102-SG
-VMware ESXi 5.1 without patch ESXi510-201510102-SG
-VMware ESXi 5.0 without patch ESXi500-201510102-SG ");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:24:25 +0200 (Tue, 16 Oct 2018) $");
+  VMware ESXi 5.5 without patch ESXi550-201512102-SG
+
+  VMware ESXi 5.1 without patch ESXi510-201510102-SG
+
+  VMware ESXi 5.0 without patch ESXi500-201510102-SG");
+
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 13:59:41 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-01-14 10:45:54 +0100 (Thu, 14 Jan 2016)");
 
   script_tag(name:"qod_type", value:"remote_banner");
@@ -76,7 +79,6 @@ fixed_builds = make_array( "5.0.0", "3021432",
                            "5.5.0", "3247226",
                            "6.0.0", "3341439");
 
-
 if( ! fixed_builds[esxVersion] ) exit( 0 );
 
 if( int( esxBuild ) < int( fixed_builds[esxVersion] ) )
@@ -86,4 +88,3 @@ if( int( esxBuild ) < int( fixed_builds[esxVersion] ) )
 }
 
 exit( 99 );
-

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_office_web_apps_ms14-001.nasl 11878 2018-10-12 12:40:08Z cfischer $
+# $Id: secpod_ms_office_web_apps_ms14-001.nasl 14185 2019-03-14 13:43:25Z cfischer $
 #
 # Microsoft Office Web Apps Remote Code Execution vulnerability (2916605)
 #
@@ -29,27 +29,33 @@ CPE = "cpe:/a:microsoft:office_web_apps";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903428");
-  script_version("$Revision: 11878 $");
+  script_version("$Revision: 14185 $");
   script_cve_id("CVE-2014-0258", "CVE-2014-0259", "CVE-2014-0260");
   script_bugtraq_id(64726, 64727, 64728);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 14:43:25 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-01-15 12:12:54 +0530 (Wed, 15 Jan 2014)");
   script_name("Microsoft Office Web Apps Remote Code Execution vulnerability (2916605)");
 
   script_tag(name:"summary", value:"This host is missing an important security update according to
-Microsoft Bulletin MS14-001.");
+  Microsoft Bulletin MS14-001.");
+
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-install the hotfixes from the referenced advisory.");
+  install the hotfixes from the referenced advisory.");
+
   script_tag(name:"insight", value:"Multiple flaws are due to error exists when processing specially crafted
-office file.");
+  office file.");
+
   script_tag(name:"affected", value:"Microsoft Web Applications 2013
 
-Microsoft Web Applications 2010 Service Pack 2 and prior ");
+  Microsoft Web Applications 2010 Service Pack 2 and prior");
+
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute the arbitrary
-code, cause memory corruption and compromise the system.");
+  code, cause memory corruption and compromise the system.");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -63,7 +69,7 @@ code, cause memory corruption and compromise the system.");
   script_dependencies("gb_ms_office_web_apps_detect.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("MS/Office/Web/Apps/Ver");
-  script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/ms14-001");
+
   exit(0);
 }
 

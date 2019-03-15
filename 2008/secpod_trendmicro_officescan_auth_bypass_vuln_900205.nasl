@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_trendmicro_officescan_auth_bypass_vuln_900205.nasl 12602 2018-11-30 14:36:58Z cfischer $
+# $Id: secpod_trendmicro_officescan_auth_bypass_vuln_900205.nasl 14192 2019-03-14 14:54:41Z cfischer $
 # Description: Trend Micro Web Management Authentication Bypass Vulnerability
 #
 # Authors:
@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900205");
-  script_version("$Revision: 12602 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
+  script_version("$Revision: 14192 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 15:54:41 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2008-08-27 11:53:45 +0200 (Wed, 27 Aug 2008)");
   script_bugtraq_id(30792);
   script_cve_id("CVE-2008-2433");
@@ -38,8 +38,8 @@ if(description)
   script_tag(name:"qod_type", value:"registry");
   script_family("Privilege escalation");
   script_name("Trend Micro Web Management Authentication Bypass Vulnerability");
-  script_dependencies("smb_reg_service_pack.nasl");
-  script_mandatory_keys("SMB/WindowsVersion");
+  script_dependencies("gb_trend_micro_office_scan_detect.nasl");
+  script_mandatory_keys("Trend/Micro/Officescan/Ver");
   script_require_ports(139, 445);
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/31373/");
@@ -76,16 +76,13 @@ if(description)
 
 include("smb_nt.inc");
 
- if(!get_kb_item("SMB/WindowsVersion")){
-        exit(0);
- }
+scanVer = registry_get_sz(key:"SOFTWARE\TrendMicro\OfficeScan\service\Information", item:"Server_Version");
+if(!scanVer)
+  exit(0);
 
- scanVer = registry_get_sz(key:"SOFTWARE\TrendMicro\OfficeScan\service" +
-                               "\Information", item:"Server_Version");
- if(!scanVer){
-	exit(0);
- }
+if(egrep(pattern:"^([0-7]\..*|8\.0)$", string:scanVer)){
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
+  exit(0);
+}
 
- if(egrep(pattern:"^([0-7]\..*|8\.0)$", string:scanVer)){
-	security_message( port: 0, data: "The target host was found to be vulnerable" );
- }
+exit(99);

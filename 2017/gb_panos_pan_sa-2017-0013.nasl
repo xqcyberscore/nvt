@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panos_pan_sa-2017-0013.nasl 11863 2018-10-12 09:42:02Z mmartin $
+# $Id: gb_panos_pan_sa-2017-0013.nasl 14175 2019-03-14 11:27:57Z cfischer $
 #
 # Palo Alto Networks PAN-OS CVE-2017-7644 Information Disclosure Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/o:paloaltonetworks:pan-os';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107175");
-  script_version("$Revision: 11863 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 14175 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 12:27:57 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-05-19 12:42:40 +0200 (Fri, 19 May 2017)");
 
   script_cve_id("CVE-2017-7644");
@@ -41,7 +41,7 @@ if(description)
   script_tag(name:"qod_type", value:"package");
 
   script_name("Palo Alto Networks PAN-OS CVE-2017-7644 Information Disclosure Vulnerability ");
-  script_tag(name:"summary", value:"A vulnerability exists in the Management Web Interface of PAN-OS, that could allow for Information Disclosure. ");
+  script_tag(name:"summary", value:"A vulnerability exists in the Management Web Interface of PAN-OS, that could allow for Information Disclosure.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The Management Web Interface does not properly validate certain permissions which could allow for Information Disclosure.");

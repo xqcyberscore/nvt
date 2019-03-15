@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpads_auth_bypass_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
+# $Id: gb_phpads_auth_bypass_vuln.nasl 14184 2019-03-14 13:29:04Z cfischer $
 #
 # PHPads Authentication Bypass Vulnerabilities - Jan15
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805321");
-  script_version("$Revision: 11424 $");
+  script_version("$Revision: 14184 $");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 14:29:04 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-01-13 13:48:08 +0530 (Tue, 13 Jan 2015)");
   script_name("PHPads Authentication Bypass Vulnerabilities - Jan15");
 
@@ -47,11 +47,11 @@ if(description)
   the authentication mechanism by creating the cookies 'user' and 'pass'
   and assigning them the corresponding values taken from the 'ads.dat' file.");
 
-  script_tag(name:"affected", value:"PHPads version 2.0 ");
+  script_tag(name:"affected", value:"PHPads version 2.0.");
 
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
-Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the
+  product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_app");

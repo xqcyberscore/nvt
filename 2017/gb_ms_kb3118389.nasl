@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb3118389.nasl 11919 2018-10-16 09:49:19Z mmartin $
+# $Id: gb_ms_kb3118389.nasl 14175 2019-03-14 11:27:57Z cfischer $
 #
 # Microsoft Office 2010 Service Pack 2 Remote Code Execution Vulnerability (KB3118389)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811153");
-  script_version("$Revision: 11919 $");
+  script_version("$Revision: 14175 $");
   script_cve_id("CVE-2017-8509");
   script_bugtraq_id(98812);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-16 11:49:19 +0200 (Tue, 16 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 12:27:57 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-06-14 08:41:08 +0530 (Wed, 14 Jun 2017)");
   script_name("Microsoft Office 2010 Service Pack 2 Remote Code Execution Vulnerability (KB3118389)");
 
@@ -43,7 +43,7 @@ if(description)
 
   script_tag(name:"insight", value:"The flaw exists due to the remote code
   execution vulnerability exist in Microsoft Office software when the Office
-  software fails to properly handle objects in memory. ");
+  software fails to properly handle objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an
   attacker to perform actions in the security context of the current user.");

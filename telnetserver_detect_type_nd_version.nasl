@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: telnetserver_detect_type_nd_version.nasl 13638 2019-02-13 12:52:39Z cfischer $
+# $Id: telnetserver_detect_type_nd_version.nasl 14176 2019-03-14 11:29:33Z tpassfeld $
 #
 # Telnet Banner Reporting
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10281");
-  script_version("$Revision: 13638 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-13 13:52:39 +0100 (Wed, 13 Feb 2019) $");
+  script_version("$Revision: 14176 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 12:29:33 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -117,6 +117,11 @@ if( strlen( banner ) ) {
   if( "VxWorks login:" >< banner ) {
     set_kb_item( name:"telnet/vxworks/detected", value:TRUE );
     guess += '\n- VxWorks Embedded Device';
+  }
+
+  if( "Welcome to NetLinx" >< banner ) {
+    set_kb_item( name:"telnet/netlinx/detected", value:TRUE);
+    guess += '\n- NetLinx Controller';
   }
 
   if( banner =~ "Model name\s*:\s*MiiNePort " ) {

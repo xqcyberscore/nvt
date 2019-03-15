@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_mult_vuln01_may16.nasl 11811 2018-10-10 09:55:00Z asteins $
+# $Id: gb_typo3_mult_vuln01_may16.nasl 14181 2019-03-14 12:59:41Z cfischer $
 #
 # TYPO3 Multiple Vulnerabilities-01 May16
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807824");
-  script_version("$Revision: 11811 $");
+  script_version("$Revision: 14181 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 11:55:00 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 13:59:41 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-05-20 16:46:03 +0530 (Fri, 20 May 2016)");
   script_name("TYPO3 Multiple Vulnerabilities-01 May16");
 
@@ -54,10 +54,10 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow
   remote attackers to conduct SQL injection and XSS attacks.");
 
-  script_tag(name:"affected", value:"TYPO3 versions 6.2.0 to 6.2.17");
+  script_tag(name:"affected", value:"TYPO3 versions 6.2.0 to 6.2.17.");
 
   script_tag(name:"solution", value:"Upgrade to TYPO3 version 6.2.18
-  or later. ");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -73,10 +73,9 @@ if(description)
   script_dependencies("gb_typo3_detect.nasl");
   script_mandatory_keys("TYPO3/installed");
   script_require_ports("Services/www", 80);
-  script_xref(name:"URL", value:"https://typo3.org/typo3-cms");
+
   exit(0);
 }
-
 
 include("version_func.inc");
 include("host_details.inc");

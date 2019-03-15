@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_centreon_file_upload_vuln_june16.nasl 12363 2018-11-15 09:51:15Z asteins $
+# $Id: gb_centreon_file_upload_vuln_june16.nasl 14181 2019-03-14 12:59:41Z cfischer $
 #
 # Centreon 'POST' Parameter File Upload Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:centreon:centreon";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808216");
-  script_version("$Revision: 12363 $");
+  script_version("$Revision: 14181 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 13:59:41 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-06-07 16:34:51 +0530 (Tue, 07 Jun 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Centreon 'POST' Parameter File Upload Vulnerability");
@@ -43,14 +43,14 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to the POST parameter 'persistant' which serves for making a
-new service run  in the background is not properly sanitised before being used to execute commands.");
+  new service run  in the background is not properly sanitised before being used to execute commands.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary PHP code by
-uploading a malicious PHP script file.");
+  uploading a malicious PHP script file.");
 
   script_tag(name:"affected", value:"Centreon version 2.6.1");
 
-  script_tag(name:"solution", value:"Upgrad to Centreon version 2.6.2 or later. ");
+  script_tag(name:"solution", value:"Upgrad to Centreon version 2.6.2 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -63,7 +63,7 @@ uploading a malicious PHP script file.");
   script_dependencies("centreon_detect.nasl");
   script_mandatory_keys("centreon/installed");
   script_require_ports("Services/www", 80);
-  script_xref(name:"URL", value:"https://www.centreon.com");
+
   exit(0);
 }
 

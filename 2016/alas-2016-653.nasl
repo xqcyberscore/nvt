@@ -8,7 +8,7 @@
 # Eero Volotinen <eero.volotinen@iki.fi>
 #
 # Copyright:
-# Copyright (c) 2015 Eero Volotinen, http://ping-viini.org
+# Copyright (c) 2016 Eero Volotinen, http://ping-viini.org
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -27,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.120643");
-  script_version("$Revision: 11703 $");
+  script_version("$Revision: 14180 $");
   script_tag(name:"creation_date", value:"2016-02-17 11:37:59 +0200 (Wed, 17 Feb 2016)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 10:05:31 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 13:29:16 +0100 (Thu, 14 Mar 2019) $");
   script_name("Amazon Linux Local Check: alas-2016-653");
   script_tag(name:"insight", value:"A stack-based buffer overflow flaw was found in the send_dg() and send_vc() functions, used by getaddrinfo() and other higher-level interfaces of glibc. A remote attacker able to cause an application to call either of these functions could use this flaw to execute arbitrary code with the permissions of the user running the application.");
   script_tag(name:"solution", value:"Run yum update glibc to update your system.  Note that you may need to run yum clean all first.  Once this update has been applied, reboot your instance to ensure that all processes and daemons that link against glibc are using the updated version.  On new instance launches prior to Amazon Linux AMI 2015.09.2, you should still reboot after cloud-init has automatically applied this update.");

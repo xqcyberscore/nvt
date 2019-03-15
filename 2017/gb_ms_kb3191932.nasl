@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb3191932.nasl 11835 2018-10-11 08:38:49Z mmartin $
+# $Id: gb_ms_kb3191932.nasl 14175 2019-03-14 11:27:57Z cfischer $
 #
 # Microsoft Outlook 2016 Multiple Vulnerabilities (KB3191932)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810796");
-  script_version("$Revision: 11835 $");
+  script_version("$Revision: 14175 $");
   script_cve_id("CVE-2017-8506", "CVE-2017-8507", "CVE-2017-8508");
   script_bugtraq_id(98811, 98827, 98828);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:38:49 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 12:27:57 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-06-14 13:29:30 +0530 (Wed, 14 Jun 2017)");
   script_name("Microsoft Outlook 2016 Multiple Vulnerabilities (KB3191932)");
 
@@ -51,7 +51,7 @@ if(description)
     Outlook parses  specially crafted email messages.
 
   - A security feature bypass vulnerability  exists in Microsoft Office
-    software when it improperly handles the parsing of file formats. ");
+    software when it improperly handles the parsing of file formats.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow to
   take control of an affected system and execute arbitrary code.");
@@ -70,9 +70,9 @@ if(description)
   script_dependencies("secpod_office_products_version_900032.nasl");
   script_mandatory_keys("SMB/Office/Outlook/Version");
   script_require_ports(139, 445);
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("host_details.inc");

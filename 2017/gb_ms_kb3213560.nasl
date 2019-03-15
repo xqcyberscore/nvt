@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb3213560.nasl 11962 2018-10-18 10:51:32Z mmartin $
+# $Id: gb_ms_kb3213560.nasl 14175 2019-03-14 11:27:57Z cfischer $
 #
 # Microsoft SharePoint Server 2013 Service Pack 1 Remote Code Execution Vulnerability (KB3213560)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811669");
-  script_version("$Revision: 11962 $");
+  script_version("$Revision: 14175 $");
   script_cve_id("CVE-2017-8742");
   script_bugtraq_id(100741);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:51:32 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 12:27:57 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-09-13 09:21:36 +0530 (Wed, 13 Sep 2017)");
   script_name("Microsoft SharePoint Server 2013 Service Pack 1 Remote Code Execution Vulnerability (KB3213560)");
 
@@ -42,7 +42,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to Microsoft Office software
-  fails to properly handle objects in memory. ");
+  fails to properly handle objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to run arbitrary code in the context of the current user.");

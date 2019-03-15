@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vcenter_VMSA-2016-0005.nasl 11702 2018-10-01 07:31:38Z asteins $
+# $Id: gb_vcenter_VMSA-2016-0005.nasl 14181 2019-03-14 12:59:41Z cfischer $
 #
 # VMSA-2016-0005 VMware product updates address critical and important security issues
 #
@@ -25,38 +25,41 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105731");
   script_cve_id("CVE-2016-3427", "CVE-2016-2077");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11702 $");
+  script_version("$Revision: 14181 $");
   script_name("VMSA-2016-0005 VMware product updates address critical and important security issues");
 
   script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2016-0005.html");
 
   script_tag(name:"vuldetect", value:"Check the build number");
 
-  script_tag(name:"insight", value:"Critical JMX issue when deserializing authentication credentials
-
-The RMI server of Oracle JRE JMX deserializes any class when deserializing authentication credentials. This may allow a remote,
-unauthenticated attacker to cause deserialization flaws and execute their commands.");
+  script_tag(name:"insight", value:"The RMI server of Oracle JRE JMX deserializes any class when deserializing
+  authentication credentials. This may allow a remote, unauthenticated attacker to cause deserialization flaws
+  and execute their commands.");
 
   script_tag(name:"solution", value:"Updates are available.");
 
   script_tag(name:"summary", value:"Mware product updates address critical and important security issues.");
 
   script_tag(name:"affected", value:"vCenter Server 6.0 on Windows without workaround of KB 2145343
-vCenter Server 6.0 on Linux (VCSA) prior to 6.0.0b
-vCenter Server 5.5 prior to 5.5 U3d (on Windows), 5.5 U3 (VCSA)
-vCenter Server 5.1 prior to 5.1 U3b
-vCenter Server 5.0 prior to 5.0 U3e ");
+
+  vCenter Server 6.0 on Linux (VCSA) prior to 6.0.0b
+
+  vCenter Server 5.5 prior to 5.5 U3d (on Windows), 5.5 U3 (VCSA)
+
+  vCenter Server 5.1 prior to 5.1 U3b
+
+  vCenter Server 5.0 prior to 5.0 U3e");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 13:59:41 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-05-26 11:51:22 +0200 (Thu, 26 May 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -101,4 +104,3 @@ if( fix )
 }
 
 exit(99);
-

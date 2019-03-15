@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4011089.nasl 11874 2018-10-12 11:28:04Z mmartin $
+# $Id: gb_ms_kb4011089.nasl 14175 2019-03-14 11:27:57Z cfischer $
 #
 # Microsoft Outlook 2010 Service Pack 2 Defense in Depth Vulnerability (KB4011089)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811741");
-  script_version("$Revision: 11874 $");
+  script_version("$Revision: 14175 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 12:27:57 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-09-13 08:49:58 +0530 (Wed, 13 Sep 2017)");
   script_name("Microsoft Outlook 2010 Service Pack 2 Defense in Depth Vulnerability (KB4011089)");
 
@@ -41,7 +41,7 @@ if(description)
 
   script_tag(name:"insight", value:"The flaw exists as Microsoft has released an
   update for Microsoft Office that provides enhanced security as a defense-in-depth
-  measure. ");
+  measure.");
 
   script_tag(name:"impact", value:"Microsoft has released an update for Microsoft
   Office that provides enhanced security as a defense-in-depth measure.");

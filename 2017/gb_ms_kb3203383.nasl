@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb3203383.nasl 11835 2018-10-11 08:38:49Z mmartin $
+# $Id: gb_ms_kb3203383.nasl 14175 2019-03-14 11:27:57Z cfischer $
 #
 # Microsoft Office Remote Code Execution Vulnerability (KB3203383)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811212");
-  script_version("$Revision: 11835 $");
+  script_version("$Revision: 14175 $");
   script_cve_id("CVE-2017-8510");
   script_bugtraq_id(98813);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:38:49 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 12:27:57 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-06-21 15:13:34 +0530 (Wed, 21 Jun 2017)");
   script_name("Microsoft Office Remote Code Execution Vulnerability (KB3203383)");
 
@@ -43,7 +43,7 @@ if(description)
 
   script_tag(name:"insight", value:"The flaw exists due to an error in Microsoft
   Office software when the Office software fails to properly handle objects in
-  memory. ");
+  memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to use a specially crafted file and perform actions in the security context of

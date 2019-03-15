@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_dos_vuln03_jan17_win.nasl 11835 2018-10-11 08:38:49Z mmartin $
+# $Id: gb_php_dos_vuln03_jan17_win.nasl 14175 2019-03-14 11:27:57Z cfischer $
 #
 # PHP Denial of Service Vulnerability - 03 - Jan17 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108057");
-  script_version("$Revision: 11835 $");
+  script_version("$Revision: 14175 $");
   script_cve_id("CVE-2016-10162");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:38:49 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 12:27:57 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-01-25 11:00:00 +0100 (Wed, 25 Jan 2017)");
   script_name("PHP Denial of Service Vulnerability - 03 - Jan17 (Windows)");
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
@@ -60,7 +60,7 @@ if(description)
   script_tag(name:"affected", value:"PHP versions 7.0.x before 7.0.15 and 7.1.x before 7.1.1.");
 
   script_tag(name:"solution", value:"Upgrade to PHP version 7.0.15, 7.1.1
-  or later. ");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

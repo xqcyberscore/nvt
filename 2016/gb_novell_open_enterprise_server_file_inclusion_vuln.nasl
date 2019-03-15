@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_open_enterprise_server_file_inclusion_vuln.nasl 11811 2018-10-10 09:55:00Z asteins $
+# $Id: gb_novell_open_enterprise_server_file_inclusion_vuln.nasl 14181 2019-03-14 12:59:41Z cfischer $
 #
 # Novell Open Enterprise Server File Inclusion Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:novell:open_enterprise_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809480");
-  script_version("$Revision: 11811 $");
+  script_version("$Revision: 14181 $");
   script_cve_id("CVE-2016-5763");
   script_bugtraq_id(94348);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 11:55:00 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 13:59:41 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-11-25 10:29:09 +0530 (Fri, 25 Nov 2016)");
   script_name("Novell Open Enterprise Server File Inclusion Vulnerability");
 
@@ -50,14 +50,17 @@ if(description)
   remote attackers to gain unauthorized file access and perform modification.");
 
   script_tag(name:"affected", value:"Novell OES2015 SP1 before Scheduled Maintenance Update 10992,
+
   Novell OES2015 before Scheduled Maintenance Update 10990,
+
   Novell OES11 SP3 before Scheduled Maintenance Update 10991,
+
   Novell OES11 SP2 before Scheduled Maintenance Update 10989.");
 
   script_tag(name:"solution", value:"Upgrade to Novell OES2015 SP1 Scheduled
   Maintenance Update 10992, OES2015 Scheduled Maintenance Update 10990,
   OES11 SP3 Scheduled Maintenance Update 10991, OES11 SP2 Scheduled Maintenance
-  Update 10989 or later. ");
+  Update 10989 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
@@ -71,7 +74,7 @@ if(description)
   script_dependencies("gb_novell_open_enterprise_server_remote_detect.nasl");
   script_mandatory_keys("Novell/Open/Enterprise/Server/Installed");
   script_require_ports("Services/www", 80);
-  script_xref(name:"URL", value:"http://download.novell.com");
+
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nitro_pro_code_exec_vuln.nasl 11977 2018-10-19 07:28:56Z mmartin $
+# $Id: gb_nitro_pro_code_exec_vuln.nasl 14173 2019-03-14 10:56:52Z cfischer $
 #
 # Nitro Pro 'saveAs and launchURL' Code Execution Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:nitro_software:nitro_pro";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811274");
-  script_version("$Revision: 11977 $");
+  script_version("$Revision: 14173 $");
   script_cve_id("CVE-2017-7442");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 11:56:52 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-08-08 14:54:42 +0530 (Tue, 08 Aug 2017)");
   script_name("Nitro Pro 'saveAs and launchURL' Code Execution Vulnerability (Windows)");
 
@@ -61,17 +61,16 @@ if(description)
   script_tag(name:"qod_type", value:"registry");
 
   script_xref(name:"URL", value:"https://www.rapid7.com/db/modules/exploit/windows/fileformat/nitro_reader_jsapi");
-  script_xref(name:"URL", value:"www.exploit-db.com/exploits/42418");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/42418");
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_nitro_pro_detect_win.nasl");
   script_mandatory_keys("Nitro/Pro/Win/Ver");
-  script_xref(name:"URL", value:"https://www.gonitro.com");
+
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

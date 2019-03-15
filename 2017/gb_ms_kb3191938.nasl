@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810794");
-  script_version("$Revision: 11977 $");
+  script_version("$Revision: 14175 $");
   script_cve_id("CVE-2017-8506", "CVE-2017-8507", "CVE-2017-8508");
   script_bugtraq_id(98811, 98827, 98828);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 12:27:57 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-06-14 13:18:20 +0530 (Wed, 14 Jun 2017)");
   script_name("Microsoft Outlook 2013 Service Pack 1 Multiple Vulnerabilities (KB3191938)");
 
@@ -51,7 +51,7 @@ if(description)
     Microsoft Outlook parses specially crafted email messages.
 
   - A security feature bypass vulnerability exists in Microsoft Office
-    software when it improperly handles the parsing of file formats. ");
+    software when it improperly handles the parsing of file formats.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow to
   take control of an affected system and execute arbitrary code.");

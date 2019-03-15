@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nextcloud_mult_xss_vuln_lin.nasl 11816 2018-10-10 10:42:56Z mmartin $
+# $Id: gb_nextcloud_mult_xss_vuln_lin.nasl 14175 2019-03-14 11:27:57Z cfischer $
 #
 # nextCloud Multiple XSS Vulnerabilities (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:nextcloud:nextcloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811137");
-  script_version("$Revision: 11816 $");
+  script_version("$Revision: 14175 $");
   script_cve_id("CVE-2017-0893", "CVE-2017-0891");
   script_bugtraq_id(98423, 98411);
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:42:56 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 12:27:57 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-05-30 16:57:47 +0530 (Tue, 30 May 2017)");
   script_name("nextCloud Multiple XSS Vulnerabilities (Linux)");
 
@@ -57,7 +57,7 @@ if(description)
   before 10.0.5 and 11.0.x before 11.0.3 on Linux.");
 
   script_tag(name:"solution", value:"Upgrade to nextCloud Server 9.0.58, or 10.0.5,
-  or 11.0.3 or later. ");
+  or 11.0.3 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
@@ -69,7 +69,7 @@ if(description)
   script_dependencies("gb_nextcloud_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("nextcloud/installed", "Host/runs_unixoide");
   script_require_ports("Services/www", 80);
-  script_xref(name:"URL", value:"http://nextcloud.com");
+
   exit(0);
 }
 

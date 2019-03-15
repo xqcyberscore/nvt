@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jboss_eap_server_xml_ext_ent_inj_vuln.nasl 11936 2018-10-17 09:05:37Z mmartin $
+# $Id: gb_jboss_eap_server_xml_ext_ent_inj_vuln.nasl 14175 2019-03-14 11:27:57Z cfischer $
 #
 # RedHat JBoss Enterprise Application Platform XML External Entity Injection Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:redhat:jboss_enterprise_application_platform";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107199");
-  script_version("$Revision: 11936 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-17 11:05:37 +0200 (Wed, 17 Oct 2018) $");
+  script_version("$Revision: 14175 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 12:27:57 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-05-22 17:05:17 +0200 (Mon, 22 May 2017)");
   script_cve_id("CVE-2017-7464");
   script_bugtraq_id(98450);
@@ -41,7 +41,7 @@ if(description)
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("RedHat JBoss Enterprise Application Platform XML External Entity Injection Vulnerability");
   script_tag(name:"summary", value:"RedHat JBoss Enterprise Application Platform (EAP) is prone to an
-  XML External Entity injection vulnerability. ");
+  XML External Entity injection vulnerability.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"When parsing XML which does entity expansion the SAXParserFactory
   used in EAP expands external entities, even when XMLConstants.FEATURE_SECURE_PROCESSING is set to true.");

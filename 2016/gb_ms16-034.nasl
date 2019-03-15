@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-034.nasl 11938 2018-10-17 10:08:39Z asteins $
+# $Id: gb_ms16-034.nasl 14181 2019-03-14 12:59:41Z cfischer $
 #
 # Microsoft Kernel-Mode Drivers Privilege Elevation Vulnerabilities (3143145)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807308");
-  script_version("$Revision: 11938 $");
+  script_version("$Revision: 14181 $");
   script_cve_id("CVE-2016-0093", "CVE-2016-0094", "CVE-2016-0095", "CVE-2016-0096");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-17 12:08:39 +0200 (Wed, 17 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 13:59:41 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-03-09 09:19:37 +0530 (Wed, 09 Mar 2016)");
   script_name("Microsoft Kernel-Mode Drivers Privilege Elevation Vulnerabilities (3143145)");
 
@@ -41,7 +41,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaws exist in Windows when the
-  Windows kernel-mode driver fails to properly handle objects in memory. ");
+  Windows kernel-mode driver fails to properly handle objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an
   attacker to run arbitrary code in kernel mode.");

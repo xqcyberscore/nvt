@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms14-005.nasl 11878 2018-10-12 12:40:08Z cfischer $
+# $Id: secpod_ms14-005.nasl 14185 2019-03-14 13:43:25Z cfischer $
 #
 # Microsoft Window XML Core Services Information Disclosure Vulnerability (2916036)
 #
@@ -27,37 +27,51 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903510");
-  script_version("$Revision: 11878 $");
+  script_version("$Revision: 14185 $");
   script_cve_id("CVE-2014-0266");
   script_bugtraq_id(65407);
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 14:43:25 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-02-12 08:44:58 +0530 (Wed, 12 Feb 2014)");
   script_name("Microsoft Window XML Core Services Information Disclosure Vulnerability (2916036)");
 
-
   script_tag(name:"summary", value:"This host is missing an important security update according to Microsoft
-Bulletin MS14-005.");
+  Bulletin MS14-005.");
+
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+
   script_tag(name:"insight", value:"The flaw is due to an unspecified error which improperly enforce cross-domain
-policies.");
+  policies.");
+
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to read files on the
-local file system of the user or read content of web domains where the user
-is currently authenticated.");
+  local file system of the user or read content of web domains where the user is currently authenticated.");
+
   script_tag(name:"affected", value:"Microsoft Windows 8 x32/x64
-Microsoft Windows 8.1 x32/x64
-Microsoft Windows Server 2012
-Microsoft Windows Server 2012 R2
-Microsoft Windows XP Service Pack 3 and prior
-Microsoft Windows 7 x32/x64 Service Pack 1 and prior
-Microsoft Windows 2003 x32/x64 Service Pack 2 and prior
-Microsoft Windows Vista x32/x64 Service Pack 2 and prior
-Microsoft Windows XP x64 Edition Service Pack 2 and prior
-Microsoft Windows Server 2008 x32/x64 Service Pack 2 and prior
-Microsoft Windows Server 2008 R2 x64 Service Pack 1 and prior ");
+
+  Microsoft Windows 8.1 x32/x64
+
+  Microsoft Windows Server 2012
+
+  Microsoft Windows Server 2012 R2
+
+  Microsoft Windows XP Service Pack 3 and prior
+
+  Microsoft Windows 7 x32/x64 Service Pack 1 and prior
+
+  Microsoft Windows 2003 x32/x64 Service Pack 2 and prior
+
+  Microsoft Windows Vista x32/x64 Service Pack 2 and prior
+
+  Microsoft Windows XP x64 Edition Service Pack 2 and prior
+
+  Microsoft Windows Server 2008 x32/x64 Service Pack 2 and prior
+
+  Microsoft Windows Server 2008 R2 x64 Service Pack 1 and prior");
+
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-install the hotfixes from the referenced advisory.");
+  install the hotfixes from the referenced advisory.");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -73,7 +87,6 @@ install the hotfixes from the referenced advisory.");
 
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");

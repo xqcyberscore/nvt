@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samba_smbd_n_nmbd_mult_dos_vuln.nasl 11959 2018-10-18 10:33:40Z mmartin $
+# $Id: gb_samba_smbd_n_nmbd_mult_dos_vuln.nasl 14173 2019-03-14 10:56:52Z cfischer $
 #
 # Samba 'smbd and nmbd' Multiple Denial-of-Service Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:samba:samba";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811219");
-  script_version("$Revision: 11959 $");
+  script_version("$Revision: 14173 $");
   script_cve_id("CVE-2014-0244", "CVE-2014-3493");
   script_bugtraq_id(68148, 68150);
   script_tag(name:"cvss_base", value:"3.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:33:40 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 11:56:52 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-06-22 12:27:14 +0530 (Thu, 22 Jun 2017)");
   script_name("Samba 'smbd and nmbd' Multiple Denial-of-Service Vulnerabilities");
   script_category(ACT_GATHER_INFO);
@@ -43,9 +43,9 @@ if(description)
   script_dependencies("smb_nativelanman.nasl", "gb_samba_detect.nasl");
   script_mandatory_keys("samba/smb_or_ssh/detected");
 
-  script_xref(name:"URL", value:"www.securitytracker.com/id/1030455");
-  script_xref(name:"URL", value:"www.samba.org/samba/security/CVE-2014-3493");
-  script_xref(name:"URL", value:"www.samba.org/samba/security/CVE-2014-0244");
+  script_xref(name:"URL", value:"http://www.securitytracker.com/id/1030455");
+  script_xref(name:"URL", value:"http://www.samba.org/samba/security/CVE-2014-3493");
+  script_xref(name:"URL", value:"http://www.samba.org/samba/security/CVE-2014-0244");
 
   script_tag(name:"summary", value:"This host is running Samba and is prone
   to multiple denial-of-service vulnerabilities.");
@@ -68,12 +68,11 @@ if(description)
   4.0.x before 4.0.19, and 4.1.x before 4.1.9.");
 
   script_tag(name:"solution", value:"Upgrade to Samba 3.6.24 or 4.0.19 or 4.1.9
-  or later. ");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_xref(name:"URL", value:"https://www.samba.org");
   exit(0);
 }
 

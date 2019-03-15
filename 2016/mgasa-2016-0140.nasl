@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mgasa-2016-0140.nasl 11856 2018-10-12 07:45:29Z cfischer $
+# $Id: mgasa-2016-0140.nasl 14180 2019-03-14 12:29:16Z cfischer $
 #
 # Mageia Linux security check
 #
@@ -8,7 +8,7 @@
 # Eero Volotinen <eero.volotinen@solinor.com>
 #
 # Copyright:
-# Copyright (c) 2015 Eero Volotinen, http://www.solinor.com
+# Copyright (c) 2016 Eero Volotinen, http://www.solinor.com
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -27,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.131307");
-  script_version("$Revision: 11856 $");
+  script_version("$Revision: 14180 $");
   script_tag(name:"creation_date", value:"2016-05-09 14:18:09 +0300 (Mon, 09 May 2016)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:45:29 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 13:29:16 +0100 (Thu, 14 Mar 2019) $");
   script_name("Mageia Linux Local Check: mgasa-2016-0140");
   script_tag(name:"insight", value:"Updated imlib2 packages fix security vulnerabilities: An out-of-bounds read caused by an off-by-one error in __imlib_MergeUpdate() in src/lib/updates.c in imlib2 1.4.8 and earlier (CVE-2016-3993). An out-of-bounds read from colormap in the GIF loader in imlib2 1.4.8 and earlier can result in denial of service and potential host memory exposure (CVE-2016-3994). Attempting to draw a 2x1 ellipse with e.g. imlib_image_draw_ellipse(x, y, 2, 1) causes a divide-by-zero in imlib2 1.4.8 and earlier, resulting in a denial of service if an application uses the draw command with untrusted input (CVE-2011-5326).");
   script_tag(name:"solution", value:"Update the affected packages to the latest available version.");

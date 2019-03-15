@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_cucm_cisco-sa-201600208-ucm.nasl 12149 2018-10-29 10:48:30Z asteins $
+# $Id: gb_cisco_cucm_cisco-sa-201600208-ucm.nasl 14181 2019-03-14 12:59:41Z cfischer $
 #
 # Cisco Unified Communications Manager Information Disclosure Vulnerability
 #
@@ -27,31 +27,33 @@
 
 CPE = "cpe:/a:cisco:unified_communications_manager";
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105542");
   script_cve_id("CVE-2016-1317");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_version("$Revision: 12149 $");
+  script_version("$Revision: 14181 $");
 
   script_name("Cisco Unified Communications Manager Information Disclosure Vulnerability");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/83103");
   script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-201600208-ucm");
 
-  script_tag(name:"impact", value:"An attacker could exploit this vulnerability by browsing to a specific URL. An exploit could allow the attacker to view entity and table names.");
+  script_tag(name:"impact", value:"An attacker could exploit this vulnerability by browsing to a specific URL.
+  An exploit could allow the attacker to view entity and table names.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"The vulnerability is due to insufficient protection of database tables. ");
+  script_tag(name:"insight", value:"The vulnerability is due to insufficient protection of database tables.");
   script_tag(name:"solution", value:"Updates are available. Please see the vendor advisory for more information.");
-  script_tag(name:"summary", value:"A vulnerability in the web framework of Cisco Unified Communications Manager could allow an authenticated, remote attacker to view sensitive data.");
+  script_tag(name:"summary", value:"A vulnerability in the web framework of Cisco Unified Communications Manager could
+  allow an authenticated, remote attacker to view sensitive data.");
   script_tag(name:"affected", value:"Cisco Unified Communications Manager Release 11.5(0.98000.480) is vulnerable.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 13:59:41 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-02-12 14:48:29 +0100 (Fri, 12 Feb 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -78,4 +80,3 @@ if( vers == '11.5.0.98000.480' )
 }
 
 exit( 99 );
-

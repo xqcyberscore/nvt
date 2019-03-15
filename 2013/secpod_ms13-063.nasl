@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-063.nasl 11878 2018-10-12 12:40:08Z cfischer $
+# $Id: secpod_ms13-063.nasl 14186 2019-03-14 13:57:54Z cfischer $
 #
 # Microsoft Windows Kernel Privilege Elevation Vulnerabilities (2859537)
 #
@@ -27,36 +27,47 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902990");
-  script_version("$Revision: 11878 $");
+  script_version("$Revision: 14186 $");
   script_cve_id("CVE-2013-2556", "CVE-2013-3196", "CVE-2013-3197", "CVE-2013-3198");
   script_bugtraq_id(58566, 61682, 61683, 1684);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 14:57:54 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-08-14 08:43:13 +0530 (Wed, 14 Aug 2013)");
   script_name("Microsoft Windows Kernel Privilege Elevation Vulnerabilities (2859537)");
 
-
   script_tag(name:"summary", value:"This host is missing an important security update according to
-Microsoft Bulletin MS13-063.");
+  Microsoft Bulletin MS13-063.");
+
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and install
   the hotfixes from the referenced advisory.");
+
   script_tag(name:"insight", value:"Multiple flaws are due to,
 
   - An error within Address Space Layout Randomization (ASLR) implementation
   can be exploited to bypass the ASLR security feature.
 
   - Multiple error within the NT Virtual DOS Machine (NTVDM) subsystem.");
+
   script_tag(name:"affected", value:"Microsoft Windows 8
-Microsoft Windows XP x32 Edition Service Pack 3 and prior
-Microsoft Windows 2003 x32 Edition Service Pack 2 and prior
-Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior
-Microsoft Windows Vista x32/x64 Edition Service Pack 2 and prior
-Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior
-Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2 and prior ");
+
+  Microsoft Windows XP x32 Edition Service Pack 3 and prior
+
+  Microsoft Windows 2003 x32 Edition Service Pack 2 and prior
+
+  Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior
+
+  Microsoft Windows Vista x32/x64 Edition Service Pack 2 and prior
+
+  Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior
+
+  Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2 and prior");
+
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary
-code with kernel-mode privileges and or corrupt memory.");
+  code with kernel-mode privileges and or corrupt memory.");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -72,7 +83,6 @@ code with kernel-mode privileges and or corrupt memory.");
 
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");

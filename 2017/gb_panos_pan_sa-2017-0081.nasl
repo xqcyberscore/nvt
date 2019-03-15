@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panos_pan_sa-2017-0081.nasl 11863 2018-10-12 09:42:02Z mmartin $
+# $Id: gb_panos_pan_sa-2017-0081.nasl 14175 2019-03-14 11:27:57Z cfischer $
 #
 # Palo Alto Networks PAN-OS CVE-2017-7409 Cross Site Scripting Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/o:paloaltonetworks:pan-os';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107161");
-  script_version("$Revision: 11863 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 14175 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 12:27:57 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-05-02 14:04:20 +0200 (Tue, 02 May 2017)");
   script_cve_id("CVE-2017-7409");
   script_bugtraq_id(97953);
@@ -42,7 +42,7 @@ if(description)
 
   script_name("Palo Alto Networks PAN-OS CVE-2017-7409 Cross Site Scripting Vulnerability");
   script_tag(name:"summary", value:"Palo Alto Networks PAN-OS is prone to a cross-site scripting
-  vulnerability because it fails to properly sanitize user-supplied input. ");
+  vulnerability because it fails to properly sanitize user-supplied input.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The bug is due to unappropiate validation of specific request

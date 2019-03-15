@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_security_advisory_2914486.nasl 11878 2018-10-12 12:40:08Z cfischer $
+# $Id: gb_microsoft_security_advisory_2914486.nasl 14186 2019-03-14 13:57:54Z cfischer $
 #
 # Microsoft Windows Kernel Privilege Escalation Vulnerability (2914368)
 #
@@ -30,30 +30,37 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803971");
-  script_version("$Revision: 11878 $");
+  script_version("$Revision: 14186 $");
   script_cve_id("CVE-2013-5065");
   script_bugtraq_id(63971);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 14:57:54 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-12-02 15:40:48 +0530 (Mon, 02 Dec 2013)");
   script_name("Microsoft Windows Kernel Privilege Escalation Vulnerability (2914368)");
 
-
   script_tag(name:"summary", value:"This host is missing an important security update according to
-Microsoft Bulletin MS14-002");
+  Microsoft Bulletin MS14-002");
+
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and install
   the hotfixes from the referenced advisory.");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_tag(name:"insight", value:"The flaw is  due to an input validation error within the NDPROXY (NDProxy.sys)
-kernel component and can be exploited to execute arbitrary code with kernel
-privileges.");
+  kernel component and can be exploited to execute arbitrary code with kernel privileges.");
+
   script_tag(name:"affected", value:"Microsoft Windows XP x32 Edition Service Pack 3 and prior
-Microsoft Windows XP x64 Edition Service Pack 2 and prior
-Microsoft Windows 2003 x32/x64 Edition Service Pack 2 and prior ");
+
+  Microsoft Windows XP x64 Edition Service Pack 2 and prior
+
+  Microsoft Windows 2003 x32/x64 Edition Service Pack 2 and prior");
+
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to gain escalated
-privileges.");
+  privileges.");
+
   script_xref(name:"URL", value:"http://secunia.com/advisories/55809");
   script_xref(name:"URL", value:"https://support.microsoft.com/kb/2914368");
   script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/security/bulletin/ms14-002");
@@ -65,15 +72,14 @@ privileges.");
   script_dependencies("smb_reg_service_pack.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
-
 
 if(hotfix_check_sp(xp:4, xpx64:3, win2003:3, win2003x64:3) <= 0){
   exit(0);

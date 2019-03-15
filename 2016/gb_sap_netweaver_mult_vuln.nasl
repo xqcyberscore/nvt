@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sap_netweaver_mult_vuln.nasl 12096 2018-10-25 12:26:02Z asteins $
+# $Id: gb_sap_netweaver_mult_vuln.nasl 14181 2019-03-14 12:59:41Z cfischer $
 #
 # SAP NetWeaver Multiple Vulnerabilities
 #
@@ -27,11 +27,11 @@
 
 CPE = 'cpe:/a:sap:netweaver';
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106082");
-  script_version("$Revision: 12096 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
+  script_version("$Revision: 14181 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 13:59:41 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-05-23 09:47:56 +0700 (Mon, 23 May 2016)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -56,29 +56,29 @@ if (description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"SAP NetWeaver contains multiple vulnerabilities:
-Multiple directory traversal vulnerabilities in SAP NetWeaver 7.0 allow remote authenticated users to read
-arbitrary files via a .. (dot dot) in the logfilename parameter to b2b/admin/log.jsp, b2b/admin/log_view.jsp
-in the Internet Sales (crm.b2b) component, or ipc/admin/log.jsp or ipc/admin/log_view.jsp in the Application
-Administration (com.sap.ipc.webapp.ipc) component. (CVE-2012-1289)
+  Multiple directory traversal vulnerabilities in SAP NetWeaver 7.0 allow remote authenticated users to read
+  arbitrary files via a .. (dot dot) in the logfilename parameter to b2b/admin/log.jsp, b2b/admin/log_view.jsp
+  in the Internet Sales (crm.b2b) component, or ipc/admin/log.jsp or ipc/admin/log_view.jsp in the Application
+  Administration (com.sap.ipc.webapp.ipc) component. (CVE-2012-1289)
 
-Cross-site scripting (XSS) vulnerability in b2b/auction/container.jsp in the Internet Sales (crm.b2b) module
-in SAP NetWeaver 7.0 allows remote attackers to inject arbitrary web script or HTML via the _loadPage parameter.
-(CVE-2012-1290)
+  Cross-site scripting (XSS) vulnerability in b2b/auction/container.jsp in the Internet Sales (crm.b2b) module
+  in SAP NetWeaver 7.0 allows remote attackers to inject arbitrary web script or HTML via the _loadPage parameter.
+  (CVE-2012-1290)
 
-Unspecified vulnerability in the com.sap.aii.mdt.amt.web.AMTPageProcessor servlet in SAP NetWeaver 7.0 allows
-remote attackers to obtain sensitive information about the Adapter Monitor via unspecified vectors, possibly
-related to the EnableInvokerServletGlobally property in the servlet_jsp service. (CVE-2012-1291)
+  Unspecified vulnerability in the com.sap.aii.mdt.amt.web.AMTPageProcessor servlet in SAP NetWeaver 7.0 allows
+  remote attackers to obtain sensitive information about the Adapter Monitor via unspecified vectors, possibly
+  related to the EnableInvokerServletGlobally property in the servlet_jsp service. (CVE-2012-1291)
 
-Unspecified vulnerability in the MessagingSystem servlet in SAP NetWeaver 7.0 allows remote attackers to
-obtain sensitive information about the MessagingSystem Performance Data via unspecified vectors.
-(CVE-2012-1292)");
+  Unspecified vulnerability in the MessagingSystem servlet in SAP NetWeaver 7.0 allows remote attackers to
+  obtain sensitive information about the MessagingSystem Performance Data via unspecified vectors.
+  (CVE-2012-1292)");
 
   script_tag(name:"impact", value:"A remote attacker may obtain sensitive information. An authenticated remote
-attacker may read arbitrary files.");
+  attacker may read arbitrary files.");
 
   script_tag(name:"affected", value:"Version 7.0");
 
-  script_tag(name:"solution", value:"Check the references for solutions ");
+  script_tag(name:"solution", value:"Check the references for solutions.");
 
   script_xref(name:"URL", value:"https://service.sap.com/sap/support/notes/1585527");
   script_xref(name:"URL", value:"https://service.sap.com/sap/support/notes/1583300");

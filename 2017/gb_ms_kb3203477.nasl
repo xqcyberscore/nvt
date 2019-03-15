@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb3203477.nasl 11977 2018-10-19 07:28:56Z mmartin $
+# $Id: gb_ms_kb3203477.nasl 14175 2019-03-14 11:27:57Z cfischer $
 #
 # Microsoft Excel 2016 Multiple Vulnerabilities (KB3203477)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811507");
-  script_version("$Revision: 11977 $");
+  script_version("$Revision: 14175 $");
   script_cve_id("CVE-2017-8501", "CVE-2017-8502");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 12:27:57 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-07-12 09:00:18 +0530 (Wed, 12 Jul 2017)");
   script_name("Microsoft Excel 2016 Multiple Vulnerabilities (KB3203477)");
 
@@ -42,7 +42,7 @@ if(description)
 
   script_tag(name:"insight", value:"Multiple flaws exists due to error in
   Microsoft Office software when the software fails to properly handle objects
-  in memory. ");
+  in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow
   an attacker who successfully exploited the vulnerability to run arbitrary

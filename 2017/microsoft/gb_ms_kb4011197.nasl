@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4011197.nasl 11983 2018-10-19 10:04:45Z mmartin $
+# $Id: gb_ms_kb4011197.nasl 14175 2019-03-14 11:27:57Z cfischer $
 #
 # Microsoft Excel 2010 Service Pack 2 Multiple Vulnerabilities (KB4011197)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812131");
-  script_version("$Revision: 11983 $");
+  script_version("$Revision: 14175 $");
   script_cve_id("CVE-2017-11877", "CVE-2017-11878");
   script_bugtraq_id(101747, 101756);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 12:27:57 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-11-15 00:53:26 +0530 (Wed, 15 Nov 2017)");
   script_name("Microsoft Excel 2010 Service Pack 2 Multiple Vulnerabilities (KB4011197)");
 
@@ -46,7 +46,7 @@ if(description)
   - An error in Microsoft Office software by not enforcing macro settings on
     an Excel document.
 
-  - The software fails to properly handle objects in memory. ");
+  - The software fails to properly handle objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to run arbitrary code in the context of the current user.");
@@ -68,13 +68,10 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
-
-excelVer = "";
 
 excelVer = get_kb_item("SMB/Office/Excel/Version");
 if(!excelVer){

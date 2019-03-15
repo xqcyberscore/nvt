@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asus_router_multiple_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_asus_router_multiple_vuln.nasl 14184 2019-03-14 13:29:04Z cfischer $
 #
 # ASUS Router Multiple Vulnerabilities Aug-2015
 #
@@ -27,18 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805945");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 14184 $");
   script_bugtraq_id(73294);
   script_cve_id("CVE-2015-2676");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 14:29:04 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-08-05 13:27:24 +0530 (Wed, 05 Aug 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("ASUS Router Multiple Vulnerabilities Aug-2015");
 
   script_tag(name:"summary", value:"This host is running ASUS Router and is prone
-  to multiple vulnerabilities. ");
+  to multiple vulnerabilities.");
 
   script_tag(name:"vuldetect", value:"Send a crafted request via HTTP GET and
   check whether it is able to read cookie or not.");
@@ -72,6 +72,7 @@ if(description)
   script_dependencies("gb_get_http_banner.nasl");
   script_mandatory_keys("RT-G32/banner");
   script_require_ports("Services/www", 80);
+
   exit(0);
 }
 
@@ -83,9 +84,7 @@ banner = get_http_banner(port: asport);
 
 if(banner =~ 'WWW-Authenticate: Basic realm="RT-G32"')
 {
-  ## Exploit URL
   url = "/start_apply.htm?next_page=%27%2balert(document.cookie)%2b%27";
-
   if(http_vuln_check(port:asport, url:url, pattern:"alert\(document.cookie\)",
      extra_check:make_list("restart_time")))
   {

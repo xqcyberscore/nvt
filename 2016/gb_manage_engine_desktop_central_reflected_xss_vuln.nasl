@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manage_engine_desktop_central_reflected_xss_vuln.nasl 11811 2018-10-10 09:55:00Z asteins $
+# $Id: gb_manage_engine_desktop_central_reflected_xss_vuln.nasl 14181 2019-03-14 12:59:41Z cfischer $
 #
 # Manage Engine Desktop Central Reflected Cross Site Scripting Vulnerability
 #
@@ -27,13 +27,13 @@
 
 CPE = "cpe:/a:zohocorp:manageengine_desktop_central";
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807741");
-  script_version("$Revision: 11811 $");
+  script_version("$Revision: 14181 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 11:55:00 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 13:59:41 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-04-19 12:07:40 +0530 (Tue, 19 Apr 2016)");
 
   script_name("Manage Engine Desktop Central Reflected Cross Site Scripting Vulnerability");
@@ -53,7 +53,7 @@ if (description)
   Build 91099.");
 
   script_tag(name:"solution", value:"Upgrade to ManageEngine Desktop Central version
-  92026 or later. ");
+  92026 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -68,7 +68,6 @@ if (description)
   script_mandatory_keys("ManageEngine/Desktop_Central/installed");
   script_require_ports("Services/www", 8040);
 
-  script_xref(name:"URL", value:"https://www.manageengine.com");
   exit(0);
 }
 

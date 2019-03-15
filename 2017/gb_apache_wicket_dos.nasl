@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_wicket_dos.nasl 11923 2018-10-16 10:38:56Z mmartin $
+# $Id: gb_apache_wicket_dos.nasl 14175 2019-03-14 11:27:57Z cfischer $
 #
 # Apache Wicket Denial-of-Service Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:wicket";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107117");
-  script_version("$Revision: 11923 $");
+  script_version("$Revision: 14175 $");
   script_cve_id("CVE-2016-6793");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:38:56 +0200 (Tue, 16 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 12:27:57 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-01-02 13:26:09 +0100 (Mon, 02 Jan 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Apache Wicket Denial-of-Service Vulnerability");
@@ -49,9 +49,10 @@ if(description)
   enter an infinite loop.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to cause the application to enter an infinite loop and consume excessive CPU resources, resulting in denial-of-service conditions.");
+  attackers to cause the application to enter an infinite loop and consume excessive CPU resources,
+  resulting in denial-of-service conditions.");
 
-  script_tag(name:"affected", value:"Apache Wicket versions 6.x and 1.5.x are vulnerable. ");
+  script_tag(name:"affected", value:"Apache Wicket versions 6.x and 1.5.x are vulnerable.");
 
   script_tag(name:"solution", value:"Update to 1.5.17 or 6.25.0.");
 

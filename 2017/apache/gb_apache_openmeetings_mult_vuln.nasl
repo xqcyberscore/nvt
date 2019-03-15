@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_openmeetings_mult_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
+# $Id: gb_apache_openmeetings_mult_vuln.nasl 14175 2019-03-14 11:27:57Z cfischer $
 #
 # Apache OpenMeetings < 3.3.0 Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112062");
-  script_version("$Revision: 11983 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 14175 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 12:27:57 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-10-05 12:31:22 +0200 (Thu, 05 Oct 2017)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -62,7 +62,7 @@ if(description)
   - Apache OpenMeetings has an overly permissive crossdomain.xml file. This allows for flash content to be loaded from untrusted domains (CVE-2017-7680).
 
   - Apache OpenMeetings is vulnerable to SQL injection. This allows authenticated users to modify the structure of the existing query
-      and leak the structure of other queries being made by the application in the back-end (CVE-2017-7681).
+  and leak the structure of other queries being made by the application in the back-end (CVE-2017-7681).
 
   - Apache OpenMeetings displays Tomcat version and detailed error stack trace which is not secure (CVE.2017-7683).
 
@@ -70,7 +70,7 @@ if(description)
 
   - Apache OpenMeetingsrespond to the following insecure HTTP Methods: PUT, DELETE, HEAD, and PATCH (CVE-2017-7685).
 
-  - Apache OpenMeetings updates user password in insecure manner ");
+  - Apache OpenMeetings updates user password in insecure manner.");
   script_tag(name:"affected", value:"Apache OpenMeetings prior to 3.3.0");
   script_tag(name:"solution", value:"Update your software to version 3.3.0 to fix the issue");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb3203390.nasl 11863 2018-10-12 09:42:02Z mmartin $
+# $Id: gb_ms_kb3203390.nasl 14175 2019-03-14 11:27:57Z cfischer $
 #
 # Microsoft SharePoint Enterprise Server Excel Services Multiple Vulnerabilities (KB3203390)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811156");
-  script_version("$Revision: 11863 $");
+  script_version("$Revision: 14175 $");
   script_cve_id("CVE-2017-8511", "CVE-2017-8512");
   script_bugtraq_id(98815, 98816);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 12:27:57 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-06-14 12:37:51 +0530 (Wed, 14 Jun 2017)");
   script_name("Microsoft SharePoint Enterprise Server Excel Services Multiple Vulnerabilities (KB3203390)");
 
@@ -45,7 +45,7 @@ if(description)
 
   - when the Office software fails to properly handle objects in memory.
 
-  - when the Office software fails to properly handle objects in memory. ");
+  - when the Office software fails to properly handle objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to use a specially crafted file to perform actions in the security context of

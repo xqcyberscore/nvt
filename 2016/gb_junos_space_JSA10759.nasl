@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_space_JSA10759.nasl 12313 2018-11-12 08:53:51Z asteins $
+# $Id: gb_junos_space_JSA10759.nasl 14181 2019-03-14 12:59:41Z cfischer $
 #
 # Junos Space OpenSSL Security Updates
 #
@@ -27,16 +27,20 @@
 
 CPE = "cpe:/a:juniper:junos_space";
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140019");
-  script_version("$Revision: 12313 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
+  script_version("$Revision: 14181 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 13:59:41 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-10-26 14:51:46 +0200 (Wed, 26 Oct 2016)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
-  script_cve_id("CVE-2016-0703", "CVE-2016-0800", "CVE-2016-2108", "CVE-2016-6304", "CVE-2015-3194", "CVE-2015-3195", "CVE-2016-0704", "CVE-2015-3197", "CVE-2016-0702", "CVE-2016-0797", "CVE-2016-0799", "CVE-2016-2105", "CVE-2016-2106", "CVE-2016-2109", "CVE-2016-6303", "CVE-2016-2179", "CVE-2016-2182", "CVE-2016-2180", "CVE-2016-2181", "CVE-2016-6302", "CVE-2016-2177", "CVE-2016-2178", "CVE-2016-6306");
+  script_cve_id("CVE-2016-0703", "CVE-2016-0800", "CVE-2016-2108", "CVE-2016-6304", "CVE-2015-3194",
+                "CVE-2015-3195", "CVE-2016-0704", "CVE-2015-3197", "CVE-2016-0702", "CVE-2016-0797",
+                "CVE-2016-0799", "CVE-2016-2105", "CVE-2016-2106", "CVE-2016-2109", "CVE-2016-6303",
+                "CVE-2016-2179", "CVE-2016-2182", "CVE-2016-2180", "CVE-2016-2181", "CVE-2016-6302",
+                "CVE-2016-2177", "CVE-2016-2178", "CVE-2016-6306");
 
   script_tag(name:"qod_type", value:"package");
 
@@ -55,7 +59,7 @@ if (description)
 
   script_tag(name:"affected", value:"Junos Space < 16.1R1");
 
-  script_tag(name:"solution", value:"OpenSSL software has been upgraded to 1.0.1t in Junos Space 16.1R1 (pending release) to resolve all the issues ");
+  script_tag(name:"solution", value:"OpenSSL software has been upgraded to 1.0.1t in Junos Space 16.1R1 (pending release) to resolve all the issues.");
 
   script_xref(name:"URL", value:"https://kb.juniper.net/InfoCenter/index?page=content&id=JSA10759");
 
@@ -79,4 +83,3 @@ if( check_js_version( ver:version, fix:"16.1R1" ) )
 }
 
 exit( 99 );
-

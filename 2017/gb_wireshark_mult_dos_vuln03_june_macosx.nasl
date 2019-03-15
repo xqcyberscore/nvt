@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_dos_vuln03_june_macosx.nasl 11923 2018-10-16 10:38:56Z mmartin $
+# $Id: gb_wireshark_mult_dos_vuln03_june_macosx.nasl 14196 2019-03-15 07:20:59Z mmartin $
 #
 # Wireshark Multiple Denial-of-Service Vulnerabilities-03 June17 (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810963");
-  script_version("$Revision: 11923 $");
+  script_version("$Revision: 14196 $");
   script_cve_id("CVE-2017-9616", "CVE-2017-9617");
   script_bugtraq_id(99087, 99085);
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:38:56 +0200 (Tue, 16 Oct 2018) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 08:20:59 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-06-27 16:34:23 +0530 (Tue, 27 Jun 2017)");
   script_name("Wireshark Multiple Denial-of-Service Vulnerabilities-03 June17 (Mac OS X)");
 

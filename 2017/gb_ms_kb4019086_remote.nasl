@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4019086_remote.nasl 11874 2018-10-12 11:28:04Z mmartin $
+# $Id: gb_ms_kb4019086_remote.nasl 14175 2019-03-14 11:27:57Z cfischer $
 #
 # Microsoft SQL Server 2016 CU Information Disclosure Vulnerability-KB4019086(Remote)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:sql_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811568");
-  script_version("$Revision: 11874 $");
+  script_version("$Revision: 14175 $");
   script_cve_id("CVE-2017-8516");
   script_bugtraq_id(100041);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 12:27:57 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-08-09 16:24:37 +0530 (Wed, 09 Aug 2017)");
   script_name("Microsoft SQL Server 2016 CU Information Disclosure Vulnerability-KB4019086(Remote)");
 
@@ -45,7 +45,7 @@ if(description)
 
   script_tag(name:"insight", value:"The flaw exists due to
   Microsoft SQL Server Analysis Services when it improperly enforces
-  permissions. ");
+  permissions.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow
   an attacker to access to an affected SQL server database.");

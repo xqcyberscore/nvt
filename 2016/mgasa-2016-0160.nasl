@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mgasa-2016-0160.nasl 11856 2018-10-12 07:45:29Z cfischer $
+# $Id: mgasa-2016-0160.nasl 14180 2019-03-14 12:29:16Z cfischer $
 #
 # Mageia Linux security check
 #
@@ -8,7 +8,7 @@
 # Eero Volotinen <eero.volotinen@solinor.com>
 #
 # Copyright:
-# Copyright (c) 2015 Eero Volotinen, http://www.solinor.com
+# Copyright (c) 2016 Eero Volotinen, http://www.solinor.com
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -27,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.131292");
-  script_version("$Revision: 11856 $");
+  script_version("$Revision: 14180 $");
   script_tag(name:"creation_date", value:"2016-05-09 14:17:54 +0300 (Mon, 09 May 2016)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:45:29 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 13:29:16 +0100 (Thu, 14 Mar 2019) $");
   script_name("Mageia Linux Local Check: mgasa-2016-0160");
   script_tag(name:"insight", value:"Chromium-browser-stable 50.0.2661.94 fixes several security issues: an out-of-bounds write problem in Blink (CVE-2016-1660), memory corruption in cross-process frames (CVE-2016-1661), use-after-free bugs in extensions (CVE-2016-1662) and in Blink's V8 bindings (CVE-2016-1663), an address bar spoofing vulnerability (CVE-2016-1664), an information leak in V8 (CVE-2016-1665), and various fixes from upstream's internal audits, fuzzing, and other initiatives (CVE-2015-1666).");
   script_tag(name:"solution", value:"Update the affected packages to the latest available version.");

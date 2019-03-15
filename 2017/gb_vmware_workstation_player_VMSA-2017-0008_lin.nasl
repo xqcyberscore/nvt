@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_workstation_player_VMSA-2017-0008_lin.nasl 11835 2018-10-11 08:38:49Z mmartin $
+# $Id: gb_vmware_workstation_player_VMSA-2017-0008_lin.nasl 14175 2019-03-14 11:27:57Z cfischer $
 #
 # VMware Workstation VMSA-2017-0008.2 Multiple Security Vulnerabilities (Linux)
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:vmware:player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107209");
-  script_version("$Revision: 11835 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:38:49 +0200 (Thu, 11 Oct 2018) $");
+  script_version("$Revision: 14175 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 12:27:57 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-05-29 18:50:37 +0200 (Mon, 29 May 2017)");
   script_cve_id("CVE-2017-4912", "CVE-2017-4908", "CVE-2017-4909", "CVE-2017-4910",
                 "CVE-2017-4911", "CVE-2017-4913", "CVE-2017-4925");
@@ -52,7 +52,7 @@ if(description)
   attackers to execute arbitrary code in the context of the affected application.
   Failed exploits will result in denial-of-service conditions.");
 
-  script_tag(name:"affected", value:"VMware Workstation 12.x versions prior to 12.5.3 ");
+  script_tag(name:"affected", value:"VMware Workstation 12.x versions prior to 12.5.3.");
   script_tag(name:"solution", value:"Update to Workstation 12.5.3.");
 
   script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2017-0008.html");

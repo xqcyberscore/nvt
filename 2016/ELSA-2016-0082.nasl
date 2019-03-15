@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ELSA-2016-0082.nasl 11688 2018-09-28 13:36:28Z cfischer $
+# $Id: ELSA-2016-0082.nasl 14180 2019-03-14 12:29:16Z cfischer $
 #
 # Oracle Linux Local Check
 #
@@ -8,7 +8,7 @@
 # Eero Volotinen <eero.volotinen@solinor.com>
 #
 # Copyright:
-# Copyright (c) 2015 Eero Volotinen, http://solinor.com
+# Copyright (c) 2016 Eero Volotinen, http://solinor.com
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -27,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.122865");
-  script_version("$Revision: 11688 $");
+  script_version("$Revision: 14180 $");
   script_tag(name:"creation_date", value:"2016-01-29 07:28:02 +0200 (Fri, 29 Jan 2016)");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 15:36:28 +0200 (Fri, 28 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 13:29:16 +0100 (Thu, 14 Mar 2019) $");
   script_name("Oracle Linux Local Check: ELSA-2016-0082");
   script_tag(name:"insight", value:"ELSA-2016-0082 - qemu-kvm security update. Please see the references for more insight.");
   script_tag(name:"solution", value:"Update the affected packages to the latest available version.");

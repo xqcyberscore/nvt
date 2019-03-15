@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_trendmicro_officescan_cgiparsing_bof_vuln_900164.nasl 12602 2018-11-30 14:36:58Z cfischer $
+# $Id: secpod_trendmicro_officescan_cgiparsing_bof_vuln_900164.nasl 14192 2019-03-14 14:54:41Z cfischer $
 # Description: Trend Micro OfficeScan CGI Parsing Buffer Overflow Vulnerability
 #
 # Authors:
@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900164");
-  script_version("$Revision: 12602 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
+  script_version("$Revision: 14192 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 15:54:41 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2008-10-29 14:53:11 +0100 (Wed, 29 Oct 2008)");
   script_bugtraq_id(31859);
   script_cve_id("CVE-2008-3862");
@@ -38,6 +38,9 @@ if(description)
   script_tag(name:"qod_type", value:"executable_version");
   script_family("Buffer overflow");
   script_name("Trend Micro OfficeScan CGI Parsing Buffer Overflow Vulnerability");
+  script_dependencies("gb_trend_micro_office_scan_detect.nasl");
+  script_mandatory_keys("Trend/Micro/Officescan/Ver");
+  script_require_ports(139, 445);
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/32005/");
   script_xref(name:"URL", value:"http://seclists.org/bugtraq/2008/Oct/0169.html");
@@ -45,10 +48,6 @@ if(description)
   script_xref(name:"URL", value:"http://www.trendmicro.com/ftp/documentation/readme/OSCE_8.0_sp1p1_CriticalPatch_B3110_readme.txt");
   script_xref(name:"URL", value:"http://www.trendmicro.com/ftp/products/patches/OSCE_8.0_SP1_Patch1_Win_EN_CriticalPatch_B3110.exe");
   script_xref(name:"URL", value:"http://www.trendmicro.com/ftp/products/patches/OSCE_7.3_Win_EN_CriticalPatch_B1374.exe");
-
-  script_dependencies("smb_reg_service_pack.nasl");
-  script_mandatory_keys("SMB/WindowsVersion");
-  script_require_ports(139, 445);
 
   script_tag(name:"impact", value:"Allows an attacker to execute arbitrary code, which may facilitate a complete
   compromise of vulnerable system.");
@@ -73,19 +72,12 @@ if(description)
 include("smb_nt.inc");
 include("secpod_smb_func.inc");
 
-if(!get_kb_item("SMB/WindowsVersion")){
-  exit(0);
-}
-
 key = "SOFTWARE\TrendMicro\NSC\PFW";
 scanPath = registry_get_sz(key:key, item:"InstallPath");
-
-if(!scanPath){
+if(!scanPath)
   exit(0);
-}
 
 scanPath += "PccNTMon.exe";
-
 share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:scanPath);
 file = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:scanPath);
 
@@ -96,9 +88,8 @@ domain =  kb_smb_domain();
 port   =  kb_smb_transport();
 
 soc = open_sock_tcp(port);
-if(!soc){
+if(!soc)
   exit(0);
-}
 
 r = smb_session_request(soc:soc, remote:name);
 if(!r){
@@ -112,8 +103,7 @@ if(!prot){
   exit(0);
 }
 
-r = smb_session_setup(soc:soc, login:login, password:pass, domain:domain,
-                      prot:prot);
+r = smb_session_setup(soc:soc, login:login, password:pass, domain:domain, prot:prot);
 if(!r){
   close(soc);
   exit(0);
@@ -140,7 +130,9 @@ if(!fid){
 
 fileVer = GetVersion(socket:soc, uid:uid, tid:tid, fid:fid);
 
-if(egrep(pattern:"^(8\.0(\.0(\.[0-2]?[0-9]?[0-9]?[0-9]|\.30[0-9][0-9]|\.310" +
-                 "[0-9])?)?)$", string:fileVer)){
+if(fileVer && egrep(pattern:"^(8\.0(\.0(\.[0-2]?[0-9]?[0-9]?[0-9]|\.30[0-9][0-9]|\.310[0-9])?)?)$", string:fileVer)){
   security_message( port: 0, data: "The target host was found to be vulnerable" );
+  exit(0);
 }
+
+exit(99);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb3203467.nasl 11863 2018-10-12 09:42:02Z mmartin $
+# $Id: gb_ms_kb3203467.nasl 14175 2019-03-14 11:27:57Z cfischer $
 #
 # Microsoft Outlook 2010 Service Pack 2 Multiple Vulnerabilities (KB3203467)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811151");
-  script_version("$Revision: 11863 $");
+  script_version("$Revision: 14175 $");
   script_cve_id("CVE-2017-8506", "CVE-2017-8507", "CVE-2017-8508");
   script_bugtraq_id(98811, 98827, 98828);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 12:27:57 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-06-14 08:25:15 +0530 (Wed, 14 Jun 2017)");
   script_name("Microsoft Outlook 2010 Service Pack 2 Multiple Vulnerabilities (KB3203467)");
 
@@ -48,7 +48,7 @@ if(description)
 
   - The way that Microsoft Outlook parses specially crafted email messages.
 
-  - When it improperly handles the parsing of file formats. ");
+  - When it improperly handles the parsing of file formats.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow
   an attacker to take control of an affected system.");

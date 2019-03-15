@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vcenter_VMSA-2013-0003.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_vcenter_VMSA-2013-0003.nasl 14185 2019-03-14 13:43:25Z cfischer $
 #
 # VMware Security Updates for vCenter Server (VMSA-2013-0003)
 #
@@ -25,19 +25,18 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103874");
   script_cve_id("CVE-2013-1659");
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 14185 $");
   script_name("VMware Security Updates for vCenter Server (VMSA-2013-0003)");
-
 
   script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2013-0003.html");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 14:43:25 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-01-09 13:04:01 +0100 (Thu, 09 Jan 2014)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
@@ -56,7 +55,7 @@ between vCenter Server and the client or ESXi/ESX and the client.
 Exploitation of the issue may lead to code execution.
 
 To reduce the likelihood of exploitation, vSphere components should be
-deployed on an isolated management network ");
+deployed on an isolated management network.");
   script_tag(name:"solution", value:"Apply the missing patch(es).");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"VMware has updated VMware vCenter Server to address a vulnerability
@@ -65,7 +64,6 @@ in the Network File Copy (NFC) Protocol.");
 VMware vCenter Server 5.0 prior to 5.0 Update 2");
 
  exit(0);
-
 }
 
 include("vmware_esx.inc");
@@ -85,4 +83,3 @@ if ( int( vcenter_build ) < int( fixed_builds[ vcenter_version ] ) )
 }
 
 exit(99);
-

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4034034.nasl 11977 2018-10-19 07:28:56Z mmartin $
+# $Id: gb_ms_kb4034034.nasl 14175 2019-03-14 11:27:57Z cfischer $
 #
 # Windows Search Remote Code Execution Vulnerability (KB4034034)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811278");
-  script_version("$Revision: 11977 $");
+  script_version("$Revision: 14175 $");
   script_cve_id("CVE-2017-8620");
   script_bugtraq_id(100034);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 12:27:57 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-08-09 08:51:06 +0530 (Wed, 09 Aug 2017)");
   script_name("Windows Search Remote Code Execution Vulnerability (KB4034034)");
 
@@ -42,7 +42,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to an error in Windows
-  Search while handling objects in memory. ");
+  Search while handling objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to take control of the affected system.");

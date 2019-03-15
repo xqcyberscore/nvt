@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openldap_ber_get_next_dos_vuln.nasl 11982 2018-10-19 08:49:21Z mmartin $
+# $Id: gb_openldap_ber_get_next_dos_vuln.nasl 14175 2019-03-14 11:27:57Z cfischer $
 #
 # OpenLDAP 'ber_get_next' Denial of Service Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809787");
-  script_version("$Revision: 11982 $");
+  script_version("$Revision: 14175 $");
   script_cve_id("CVE-2015-6908");
   script_bugtraq_id(76714);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 12:27:57 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-01-25 16:44:08 +0530 (Wed, 25 Jan 2017)");
   script_name("OpenLDAP ber_get_next Denial of Service Vulnerability");
   script_category(ACT_DENIAL);
@@ -54,7 +54,7 @@ if(description)
 
   script_tag(name:"insight", value:"The flaw is due to an 'assert' function
   call within the ber_get_next method (io.c line 682) that is hit when decoding
-  tampered BER data. ");
+  tampered BER data.");
 
   script_tag(name:"impact", value:"Successful exploitation may allow remote
   attackers to cause the application to crash, creating a denial-of-service

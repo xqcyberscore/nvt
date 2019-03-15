@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mgasa-2016-0055.nasl 11692 2018-09-28 16:55:19Z cfischer $
+# $Id: mgasa-2016-0055.nasl 14180 2019-03-14 12:29:16Z cfischer $
 #
 # Mageia Linux security check
 #
@@ -8,7 +8,7 @@
 # Eero Volotinen <eero.volotinen@solinor.com>
 #
 # Copyright:
-# Copyright (c) 2015 Eero Volotinen, http://www.solinor.com
+# Copyright (c) 2016 Eero Volotinen, http://www.solinor.com
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -27,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.131223");
-  script_version("$Revision: 11692 $");
+  script_version("$Revision: 14180 $");
   script_tag(name:"creation_date", value:"2016-02-11 07:22:21 +0200 (Thu, 11 Feb 2016)");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 18:55:19 +0200 (Fri, 28 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 13:29:16 +0100 (Thu, 14 Mar 2019) $");
   script_name("Mageia Linux Local Check: mgasa-2016-0055");
   script_tag(name:"insight", value:"This update fixes two denial-of-service vulnerabilities that have been discovered in privoxy 3.0.23: The remove_chunked_transfer_coding function in filters.c in Privoxy before 3.0.24 allows remote attackers to cause a denial of service (invalid read and crash) via crafted chunk-encoded content. (CVE-2016-1982) The client_host function in parsers.c in Privoxy before 3.0.24 allows remote attackers to cause a denial of service (invalid read and crash) via an empty HTTP Host header. (CVE-2016-1983)");
   script_tag(name:"solution", value:"Update the affected packages to the latest available version.");

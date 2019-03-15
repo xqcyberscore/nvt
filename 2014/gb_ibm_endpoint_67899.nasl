@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_endpoint_67899.nasl 12095 2018-10-25 12:00:24Z cfischer $
+# $Id: gb_ibm_endpoint_67899.nasl 14185 2019-03-14 13:43:25Z cfischer $
 #
 # IBM Endpoint Manager 9.1 OpenSSL Man in the Middle Security Bypass Vulnerability
 #
@@ -27,14 +27,14 @@
 
 CPE = "cpe:/a:ibm:tivoli_endpoint_manager";
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105129");
   script_bugtraq_id(67899);
   script_cve_id("CVE-2014-0224");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 12095 $");
+  script_version("$Revision: 14185 $");
 
   script_name("IBM Endpoint Manager 9.1 OpenSSL Man in the Middle Security Bypass Vulnerability");
 
@@ -54,14 +54,14 @@ and Proxy Agent communications. An eavesdropping attacker can obtain console log
   script_tag(name:"solution", value:"Upgrade all components to version 9.1.1117.");
 
   script_tag(name:"summary", value:"There is an OpenSSL vulnerability that could allow an attacker to decrypt
-and modify traffic from a vulnerable client and server. ");
+and modify traffic from a vulnerable client and server.");
 
   script_tag(name:"affected", value:"IBM Endpoint Manager 9.1 (9.1.1065, 9.1.1082, and 9.1.1088) are the only
-affected versions. Previous versions are not affected");
+affected versions. Previous versions are not affected.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:00:24 +0200 (Thu, 25 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 14:43:25 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-12-03 13:45:19 +0100 (Wed, 03 Dec 2014)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
@@ -76,7 +76,6 @@ affected versions. Previous versions are not affected");
 
 include("http_func.inc");
 include("host_details.inc");
-
 include("version_func.inc");
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
@@ -98,4 +97,3 @@ if( int( ck_version ) < int( 1117 ) )
 }
 
 exit( 99 );
-

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_tiv_tsm_info_disclosure_vuln_lin.nasl 11816 2018-10-10 10:42:56Z mmartin $
+# $Id: gb_ibm_tiv_tsm_info_disclosure_vuln_lin.nasl 14175 2019-03-14 11:27:57Z cfischer $
 #
 # IBM Tivoli Storage Manager Information Disclosure Vulnerability - Linux
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:tivoli_storage_manager";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811127");
-  script_version("$Revision: 11816 $");
+  script_version("$Revision: 14175 $");
   script_cve_id("CVE-2016-8916");
   script_bugtraq_id(98335);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:42:56 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 12:27:57 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-06-02 15:14:28 +0530 (Fri, 02 Jun 2017)");
   script_name("IBM Tivoli Storage Manager Information Disclosure Vulnerability - Linux");
 
@@ -59,7 +59,7 @@ if(description)
   - ----");
 
   script_tag(name:"solution", value:"Upgrade to IBM Tivoli Storage Manager version
-  6.4.3.5, 7.1.6.5 or later. ");
+  6.4.3.5, 7.1.6.5 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

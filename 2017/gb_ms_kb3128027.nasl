@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb3128027.nasl 11863 2018-10-12 09:42:02Z mmartin $
+# $Id: gb_ms_kb3128027.nasl 14175 2019-03-14 11:27:57Z cfischer $
 #
 # Microsoft PowerPoint 2010 Service Pack 2 Remote Code Execution Vulnerability (KB3128027)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811679");
-  script_version("$Revision: 11863 $");
+  script_version("$Revision: 14175 $");
   script_cve_id("CVE-2017-8742");
   script_bugtraq_id(100741);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 12:27:57 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-09-13 10:43:17 +0530 (Wed, 13 Sep 2017)");
   script_name("Microsoft PowerPoint 2010 Service Pack 2 Remote Code Execution Vulnerability (KB3128027)");
 
@@ -42,7 +42,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to Microsoft Office software
-  fails to properly handle objects in memory. ");
+  fails to properly handle objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to run arbitrary code in the context of the current user.");

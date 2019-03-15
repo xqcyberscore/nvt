@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tandberg_release_42827.nasl 11053 2018-08-20 11:27:29Z asteins $
+# $Id: gb_tandberg_release_42827.nasl 14186 2019-03-14 13:57:54Z cfischer $
 #
 # TANDBERG MXP Series Video Conferencing Device Remote Denial Of Service Vulnerability
 #
@@ -32,11 +32,11 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.103788");
   script_bugtraq_id(42827);
   script_cve_id("CVE-2009-3947");
-  script_version("$Revision: 11053 $");
+  script_version("$Revision: 14186 $");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_name("TANDBERG MXP Series Video Conferencing Device Remote Denial Of Service Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 13:27:29 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 14:57:54 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-09-12 13:33:18 +0200 (Thu, 12 Sep 2013)");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
@@ -51,12 +51,17 @@ if(description)
 
   script_tag(name:"impact", value:"A successful exploit will cause the device to crash, denying service
   to legitimate users.");
-  script_tag(name:"vuldetect", value:"Check if Codec Release is <= F8.2 ");
+
+  script_tag(name:"vuldetect", value:"Check if Codec Release is <= F8.2.");
+
   script_tag(name:"insight", value:"The devices are exposed to a remote denial of service issue because
   they fail to properly validate user-supplied data.");
+
   script_tag(name:"solution", value:"Updates are available. Please see the references for more details.");
+
   script_tag(name:"summary", value:"TANDBERG MXP Series devices are prone to a remote denial-of-service
   vulnerability.");
+
   script_tag(name:"affected", value:"TANDBERG MXP Series devices with version F8.2 is vulnerable, other
   versions may also be affected.");
 
@@ -70,16 +75,15 @@ include("host_details.inc");
 include("version_func.inc");
 
 if(!port = get_app_port(cpe:CPE))exit(0);
-
 if(vers = get_kb_item("tandberg_codec_release")) {
 
   version = eregmatch(pattern:"F([0-9.]+)", string:vers);
   if(isnull(version[1]))exit(0);
 
   if(version_is_less_equal(version: version[1], test_version: "8.2")) {
-      report = report_fixed_ver(installed_version:version[1], fixed_version:"9.0");
-      security_message(port:port,data:report);
-      exit(0);
+    report = report_fixed_ver(installed_version:version[1], fixed_version:"9.0");
+    security_message(port:port,data:report);
+    exit(0);
   }
 }
 

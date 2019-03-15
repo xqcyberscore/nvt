@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mgasa-2016-0061.nasl 11692 2018-09-28 16:55:19Z cfischer $
+# $Id: mgasa-2016-0061.nasl 14180 2019-03-14 12:29:16Z cfischer $
 #
 # Mageia Linux security check
 #
@@ -8,7 +8,7 @@
 # Eero Volotinen <eero.volotinen@solinor.com>
 #
 # Copyright:
-# Copyright (c) 2015 Eero Volotinen, http://www.solinor.com
+# Copyright (c) 2016 Eero Volotinen, http://www.solinor.com
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -27,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.131218");
-  script_version("$Revision: 11692 $");
+  script_version("$Revision: 14180 $");
   script_tag(name:"creation_date", value:"2016-02-11 07:22:17 +0200 (Thu, 11 Feb 2016)");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 18:55:19 +0200 (Fri, 28 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 13:29:16 +0100 (Thu, 14 Mar 2019) $");
   script_name("Mageia Linux Local Check: mgasa-2016-0061");
   script_tag(name:"insight", value:"Updated nettle2.7 and nettle packages fix security vulnerabilities: Two carry propagation bugs in elliptic curve scalar multiplications that affect the NIST P-256 curve. The bugs are in the C code and affect multiple architectures (CVE-2015-8803, CVE-2015-8805). A carry propagation bug in elliptic curve scalar multiplications that affect the NIST P-384 curve. The bug is in the assembly code and only affects the x86_64 architecture (CVE-2015-8804).");
   script_tag(name:"solution", value:"Update the affected packages to the latest available version.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_space_JSA10770.nasl 12106 2018-10-26 06:33:36Z cfischer $
+# $Id: gb_junos_space_JSA10770.nasl 14175 2019-03-14 11:27:57Z cfischer $
 #
 # Junos Space Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:juniper:junos_space";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106510");
-  script_version("$Revision: 12106 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
+  script_version("$Revision: 14175 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 12:27:57 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-01-12 11:36:50 +0700 (Thu, 12 Jan 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -59,10 +59,10 @@ if (description)
   script_tag(name:"summary", value:"Junos Space is prone to multiple vulnerabilities.");
 
   script_tag(name:"insight", value:"Junos Space is prone to multiple vulnerabilities in OpenSSH, MySQL, Apache
-HTTP Server, OpenJDK, LibXML, OpenSSL, Linux Kernel and Junos Space itself. ");
+  HTTP Server, OpenJDK, LibXML, OpenSSL, Linux Kernel and Junos Space itself.");
 
   script_tag(name:"affected", value:"This issue can affect any product or platform running Junos Space before
-16.1R1.");
+  16.1R1.");
 
   script_tag(name:"solution", value:"Update to version 16.1R1 or later.");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mgasa-2016-0109.nasl 11856 2018-10-12 07:45:29Z cfischer $
+# $Id: mgasa-2016-0109.nasl 14180 2019-03-14 12:29:16Z cfischer $
 #
 # Mageia Linux security check
 #
@@ -8,7 +8,7 @@
 # Eero Volotinen <eero.volotinen@solinor.com>
 #
 # Copyright:
-# Copyright (c) 2015 Eero Volotinen, http://www.solinor.com
+# Copyright (c) 2016 Eero Volotinen, http://www.solinor.com
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -27,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.131264");
-  script_version("$Revision: 11856 $");
+  script_version("$Revision: 14180 $");
   script_tag(name:"creation_date", value:"2016-03-14 15:57:14 +0200 (Mon, 14 Mar 2016)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:45:29 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 13:29:16 +0100 (Thu, 14 Mar 2019) $");
   script_name("Mageia Linux Local Check: mgasa-2016-0109");
   script_tag(name:"insight", value:"Adobe Flash Player 11.2.202.577 contains fixes to critical security vulnerabilities found in earlier versions that could potentially allow an attacker to take control of the affected system. This update resolves integer overflow vulnerabilities that could lead to code execution (CVE-2016-0963, CVE-2016-0993, CVE-2016-1010). This update resolves use-after-free vulnerabilities that could lead to code execution (CVE-2016-0987, CVE-2016-0988, CVE-2016-0990, CVE-2016-0991, CVE-2016-0994, CVE-2016-0995, CVE-2016-0996, CVE-2016-1000). This update resolves a heap overflow vulnerability that could lead to code execution (CVE-2016-1001). This update resolves memory corruption vulnerabilities that could lead to code execution (CVE-2016-0960, CVE-2016-0961, CVE-2016-0962, CVE-2016-0986, CVE-2016-0989, CVE-2016-1005). Adobe reports that an exploit for CVE-2016-1010 is being used in limited, targeted attacks.");
   script_tag(name:"solution", value:"Update the affected packages to the latest available version.");

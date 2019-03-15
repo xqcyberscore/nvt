@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_HT209446_03.nasl 13245 2019-01-23 14:22:53Z santu $
+# $Id: gb_apple_macosx_HT209446_03.nasl 14196 2019-03-15 07:20:59Z mmartin $
 #
 # Apple MacOSX Security Updates(HT209446)-03
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814818");
-  script_version("$Revision: 13245 $");
+  script_version("$Revision: 14196 $");
   script_cve_id("CVE-2019-6218", "CVE-2019-6208", "CVE-2019-6210", "CVE-2019-6205",
                 "CVE-2019-6213", "CVE-2019-6214", "CVE-2019-6220", "CVE-2019-6230",
                 "CVE-2019-6231", "CVE-2019-6225" );
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-23 15:22:53 +0100 (Wed, 23 Jan 2019) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 08:20:59 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-01-23 10:31:23 +0530 (Wed, 23 Jan 2019)");
   script_name("Apple MacOSX Security Updates(HT209446)-03");
 

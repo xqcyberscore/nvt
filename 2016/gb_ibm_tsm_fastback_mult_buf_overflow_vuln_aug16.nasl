@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_tsm_fastback_mult_buf_overflow_vuln_aug16.nasl 11811 2018-10-10 09:55:00Z asteins $
+# $Id: gb_ibm_tsm_fastback_mult_buf_overflow_vuln_aug16.nasl 14181 2019-03-14 12:59:41Z cfischer $
 #
 # IBM Tivoli Storage Manager FastBack Server Multiple Buffer Overflow Vulnerabilities Aug16
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:tivoli_storage_manager_fastback";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808635");
-  script_version("$Revision: 11811 $");
+  script_version("$Revision: 14181 $");
   script_cve_id("CVE-2016-0212", "CVE-2016-0213", "CVE-2016-0216");
   script_bugtraq_id(83280, 83281, 83278);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 11:55:00 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 13:59:41 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-08-04 13:00:07 +0530 (Thu, 04 Aug 2016)");
   script_name("IBM Tivoli Storage Manager FastBack Server Multiple Buffer Overflow Vulnerabilities Aug16");
 
@@ -54,7 +54,7 @@ if(description)
   version 5.5 and 6.1 through 6.1.11.1");
 
   script_tag(name:"solution", value:"Upgrade to IBM Tivoli Storage Manager FastBack
-  server version 6.1.12 or later. ");
+  server version 6.1.12 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -67,10 +67,9 @@ if(description)
   script_family("Buffer overflow");
   script_dependencies("gb_ibm_tsm_fastback_detect.nasl");
   script_mandatory_keys("IBM/Tivoli/Storage/Manager/FastBack/Win/Ver");
-  script_xref(name:"URL", value:"https://www.ibm.com");
+
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

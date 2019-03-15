@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4034775.nasl 11879 2018-10-12 12:48:49Z mmartin $
+# $Id: gb_ms_kb4034775.nasl 14175 2019-03-14 11:27:57Z cfischer $
 #
 # Microsoft JET Database Engine Remote Code Execution Vulnerability (KB4034775)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811560");
-  script_version("$Revision: 11879 $");
+  script_version("$Revision: 14175 $");
   script_cve_id("CVE-2017-0250");
   script_bugtraq_id(98100);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:48:49 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 12:27:57 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-08-09 09:37:46 +0530 (Wed, 09 Aug 2017)");
   script_name("Microsoft JET Database Engine Remote Code Execution Vulnerability (KB4034775)");
 
@@ -42,7 +42,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to a buffer overflow
-  error in Microsoft JET Database Engine. ");
+  error in Microsoft JET Database Engine.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow
   an attacker who successfully exploited this vulnerability to take complete

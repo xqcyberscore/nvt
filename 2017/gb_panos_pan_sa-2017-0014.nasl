@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panos_pan_sa-2017-0014.nasl 11835 2018-10-11 08:38:49Z mmartin $
+# $Id: gb_panos_pan_sa-2017-0014.nasl 14175 2019-03-14 11:27:57Z cfischer $
 #
 # Palo Alto Networks PAN-OS CVE-2017-7945 Brute Force Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/o:paloaltonetworks:pan-os';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107176");
-  script_version("$Revision: 11835 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:38:49 +0200 (Thu, 11 Oct 2018) $");
+  script_version("$Revision: 14175 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 12:27:57 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-05-19 12:42:40 +0200 (Fri, 19 May 2017)");
 
   script_cve_id("CVE-2017-7945");
@@ -41,10 +41,11 @@ if(description)
   script_tag(name:"qod_type", value:"package");
 
   script_name("Palo Alto Networks PAN-OS CVE-2017-7945 Brute Force Vulnerability");
-  script_tag(name:"summary", value:"A vulnerability exists in PAN-OS GlobalProtect external interface that could allow for an attacker to brute force a username on PAN-OS GlobalProtect external Interface.");
+  script_tag(name:"summary", value:"A vulnerability exists in PAN-OS GlobalProtect external interface
+  that could allow for an attacker to brute force a username on PAN-OS GlobalProtect external Interface.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"The vulnerability is caused by PAN-OS provided different responses when supplying login credentials. ");
+  script_tag(name:"insight", value:"The vulnerability is caused by PAN-OS provided different responses when supplying login credentials.");
 
   script_tag(name:"impact", value:"Successfully exploiting this issue would require an attacker to be authenticated.");
   script_tag(name:"affected", value:"PAN-OS 6.1.16 and earlier, PAN-OS 7.0.14 and earlier, PAN-OS 7.1.8 and earlier, PAN-OS 8.0.1 and earlier");

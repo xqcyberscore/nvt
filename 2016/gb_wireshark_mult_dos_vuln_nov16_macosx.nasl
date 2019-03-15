@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_dos_vuln_nov16_macosx.nasl 11811 2018-10-10 09:55:00Z asteins $
+# $Id: gb_wireshark_mult_dos_vuln_nov16_macosx.nasl 14181 2019-03-14 12:59:41Z cfischer $
 #
 # Wireshark Multiple Denial of Service Vulnerabilities Nov16 (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809810");
-  script_version("$Revision: 11811 $");
+  script_version("$Revision: 14181 $");
   script_cve_id("CVE-2016-9374", "CVE-2016-9376", "CVE-2016-9373", "CVE-2016-9375");
   script_bugtraq_id(94369);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 11:55:00 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 13:59:41 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-11-18 12:48:56 +0530 (Fri, 18 Nov 2016)");
   script_name("Wireshark Multiple Denial of Service Vulnerabilities Nov16 (Mac OS X)");
 
@@ -64,7 +64,7 @@ if(description)
   2.0.0 to 2.0.7 on Mac OS X.");
 
   script_tag(name:"solution", value:"Upgrade to Wireshark version 2.2.2 or
-  or 2.0.8 later. ");
+  or 2.0.8 later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -80,10 +80,9 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("gb_wireshark_detect_macosx.nasl");
   script_mandatory_keys("Wireshark/MacOSX/Version");
-  script_xref(name:"URL", value:"https://www.wireshark.org");
+
   exit(0);
 }
-
 
 include("version_func.inc");
 include("host_details.inc");

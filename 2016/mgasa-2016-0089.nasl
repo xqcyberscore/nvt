@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mgasa-2016-0089.nasl 11856 2018-10-12 07:45:29Z cfischer $
+# $Id: mgasa-2016-0089.nasl 14180 2019-03-14 12:29:16Z cfischer $
 #
 # Mageia Linux security check
 #
@@ -8,7 +8,7 @@
 # Eero Volotinen <eero.volotinen@solinor.com>
 #
 # Copyright:
-# Copyright (c) 2015 Eero Volotinen, http://www.solinor.com
+# Copyright (c) 2016 Eero Volotinen, http://www.solinor.com
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -27,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.131248");
-  script_version("$Revision: 11856 $");
+  script_version("$Revision: 14180 $");
   script_tag(name:"creation_date", value:"2016-03-03 14:39:18 +0200 (Thu, 03 Mar 2016)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:45:29 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 13:29:16 +0100 (Thu, 14 Mar 2019) $");
   script_name("Mageia Linux Local Check: mgasa-2016-0089");
   script_tag(name:"insight", value:"Updated fcgi packages fix security vulnerability: FCGI does not perform range checks for file descriptors before use of the FD_SET macro. This FD_SET macro could allow for more than 1024 total file descriptors to be monitored in the closing state. This may allow remote attackers to cause a denial of service (stack memory corruption, and infinite loop or daemon crash) by opening many socket connections to the host and crashing the service (CVE-2012-6687).");
   script_tag(name:"solution", value:"Update the affected packages to the latest available version.");

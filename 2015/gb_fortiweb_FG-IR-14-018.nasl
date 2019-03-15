@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortiweb_FG-IR-14-018.nasl 12106 2018-10-26 06:33:36Z cfischer $
+# $Id: gb_fortiweb_FG-IR-14-018.nasl 14184 2019-03-14 13:29:04Z cfischer $
 #
 # FortiOS: Multiple Vulnerabilities in OpenSSL
 #
@@ -27,13 +27,13 @@
 
 CPE = "cpe:/a:fortinet:fortiweb";
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105209");
   script_cve_id("CVE-2014-0224", "CVE-2014-0221", "CVE-2014-0195");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 12106 $");
+  script_version("$Revision: 14184 $");
 
   script_name("FortiOS: Multiple Vulnerabilities in OpenSSL");
 
@@ -53,7 +53,7 @@ CVE-2014-3470 may allow an attacker to trigger a denial of service in SSL client
 does not affect Fortinet products.
 
 CVE-2014-0076 can be used to discover ECDSA nonces on multi-user systems by exploiting timing attacks in CPU L3 caches. This does not apply
-to Fortinet products. ");
+to Fortinet products.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"solution", value:"Upgrade to FortiWeb 5.3.1 or higher.");
@@ -65,7 +65,7 @@ to Fortinet products. ");
 
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 14:29:04 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-02-11 12:17:13 +0100 (Wed, 11 Feb 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("FortiOS Local Security Checks");
@@ -97,4 +97,3 @@ if( version_is_less( version:version, test_version:fix ) )
 }
 
 exit( 99 );
-

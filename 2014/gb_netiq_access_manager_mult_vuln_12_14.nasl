@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netiq_access_manager_mult_vuln_12_14.nasl 11867 2018-10-12 10:48:11Z cfischer $
+# $Id: gb_netiq_access_manager_mult_vuln_12_14.nasl 14185 2019-03-14 13:43:25Z cfischer $
 #
 # NetIQ Access Manager XSS / CSRF / XXE Injection / Disclosure
 #
@@ -31,11 +31,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105149");
   script_cve_id("CVE-2014-5214", "CVE-2014-5216", "CVE-2014-5217", "CVE-2014-5215");
-  script_version("$Revision: 11867 $");
+  script_version("$Revision: 14185 $");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_name("NetIQ Access Manager XSS / CSRF / XXE Injection / Disclosure");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 14:43:25 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-12-19 15:05:33 +0100 (Fri, 19 Dec 2014)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -64,7 +64,7 @@ if(description)
   script_tag(name:"summary", value:"NetIQ Access Manager suffers from cross site request forgery, external entity
   injection, information disclosure, and cross site scripting vulnerabilities.");
 
-  script_tag(name:"affected", value:"NetIQ Access Manager version 4.0 SP1 ");
+  script_tag(name:"affected", value:"NetIQ Access Manager version 4.0 SP1.");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -77,6 +77,7 @@ include("host_details.inc");
 include("http_keepalive.inc");
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! get_app_location( port:port, cpe:CPE ) ) exit( 0 );
 
 url = '/nidp/jsp/x509err.jsp?error=%3Cscript%3Ealert%28%27openvas-xss-test%27%29%3C/script%3E';
 if( http_vuln_check( port:port, url:url, pattern:"<script>alert\('openvas-xss-test'\)</script>", extra_check:"HTTP/1.. 200" ) ) {

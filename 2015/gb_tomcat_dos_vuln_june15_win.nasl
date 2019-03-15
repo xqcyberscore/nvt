@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805703");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 14184 $");
   script_cve_id("CVE-2014-0230");
   script_bugtraq_id(74475);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 14:29:04 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-06-16 15:04:10 +0530 (Tue, 16 Jun 2015)");
   script_name("Apache Tomcat Denial Of Service Vulnerability - Jun15 (Windows)");
 
@@ -45,7 +45,7 @@ if(description)
 
   script_tag(name:"insight", value:"The flaw is due to improper handling of
   cases where an HTTP response occurs before finishing the reading of an
-  entire request body ");
+  entire request body.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to conduct denial of service attack.");
@@ -68,9 +68,9 @@ if(description)
   script_dependencies("gb_apache_tomcat_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("ApacheTomcat/installed", "Host/runs_windows");
   script_require_ports("Services/www", 8080);
+
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

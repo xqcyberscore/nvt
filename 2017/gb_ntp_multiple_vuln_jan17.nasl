@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ntp_multiple_vuln_jan17.nasl 11982 2018-10-19 08:49:21Z mmartin $
+# $Id: gb_ntp_multiple_vuln_jan17.nasl 14175 2019-03-14 11:27:57Z cfischer $
 #
 # NTP Multiple Vulnerabilities - Jan 2017
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ntp:ntp";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809779");
-  script_version("$Revision: 11982 $");
+  script_version("$Revision: 14175 $");
   script_cve_id("CVE-2014-9296", "CVE-2014-9295");
   script_bugtraq_id(71758, 71761);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 12:27:57 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-01-16 17:05:06 +0530 (Mon, 16 Jan 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("NTP Multiple Vulnerabilities - Jan 2017");
@@ -50,7 +50,7 @@ if(description)
     which continues to execute even after detecting a certain authentication error.
 
   - Multiple erros in ntpd functions 'crypto_recv' (when using autokey
-    authentication), 'ctl_putdata', and 'configure'. ");
+    authentication), 'ctl_putdata', and 'configure'.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary code and other unspecified effect on the affected
@@ -72,7 +72,7 @@ if(description)
   script_dependencies("ntp_open.nasl");
   script_mandatory_keys("NTP/Running", "NTP/Linux/Ver");
   script_require_udp_ports(123);
-  script_xref(name:"URL", value:"http://www.ntp.org");
+
   exit(0);
 }
 

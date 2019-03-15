@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xiongmai_net_surveillance_default_credentials.nasl 13888 2019-02-26 14:37:24Z cfischer $
+# $Id: gb_xiongmai_net_surveillance_default_credentials.nasl 14176 2019-03-14 11:29:33Z tpassfeld $
 #
 # Xiongmai Net Surveillance Default Credentials
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114039");
-  script_version("$Revision: 13888 $");
-  script_tag(name:"cvss_base", value:"9.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-26 15:37:24 +0100 (Tue, 26 Feb 2019) $");
+  script_version("$Revision: 14176 $");
+  script_tag(name:"cvss_base", value:"6.4");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 12:29:33 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-10-09 19:58:10 +0200 (Tue, 09 Oct 2018)");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2018 Greenbone Networks GmbH");
@@ -42,6 +42,7 @@ if(description)
   script_mandatory_keys("xiongmai/net_surveillance/detected");
 
   script_xref(name:"URL", value:"https://www.sec-consult.com/en/blog/2018/10/millions-of-xiongmai-video-surveillance-devices-can-be-hacked-via-cloud-feature-xmeye-p2p-cloud/");
+  script_xref(name:"URL", value:"https://krebsonsecurity.com/tag/xc3511/");
 
   script_tag(name:"summary", value:"The remote installation of Xiongmai Net Surveillance is prone to
   a default account authentication bypass vulnerability.");
@@ -77,7 +78,8 @@ if(!get_app_location(cpe: CPE, port: port)) # nb: Unused but added to have a ref
   exit(0);
 
 creds = make_array("admin", "",
-                   "default", "tluafed");
+                   "default", "tluafed",
+                   "root", "xc3511");
 
 url = "/Login.htm";
 
@@ -100,11 +102,6 @@ foreach username(keys(creds)) {
     if(!password)
       password = "<no/empty password>";
     report += '\n' + username + ':' + password;
-
-    #var g_SoftWareVersion="V4.02.R11.34500140.12001.131600.00000"
-    ver = eregmatch(pattern: 'g_SoftWareVersion="V([0-9.a-zA-Z]+)"', string: res);
-    if(!isnull(ver[1]))
-      set_kb_item(name: "xiongmai/net_surveillance/version", value: ver[1]);
   }
 }
 

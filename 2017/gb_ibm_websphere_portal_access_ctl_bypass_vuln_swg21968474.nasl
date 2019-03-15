@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_portal_access_ctl_bypass_vuln_swg21968474.nasl 11863 2018-10-12 09:42:02Z mmartin $
+# $Id: gb_ibm_websphere_portal_access_ctl_bypass_vuln_swg21968474.nasl 14175 2019-03-14 11:27:57Z cfischer $
 #
 # IBM WebSphere Portal Access Control Bypass Vulnerability(swg22000152)
 #
@@ -29,11 +29,11 @@ CPE = 'cpe:/a:ibm:websphere_portal';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810733");
-  script_version("$Revision: 11863 $");
+  script_version("$Revision: 14175 $");
   script_cve_id("CVE-2015-4997");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 12:27:57 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-04-07 17:09:57 +0530 (Fri, 07 Apr 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("IBM WebSphere Portal Access Control Bypass Vulnerability(swg22000152)");
@@ -55,7 +55,7 @@ if(description)
   script_tag(name:"affected", value:"IBM WebSphere Portal 8.5.0 before Cumulative Fix 08 (CF08)");
 
   script_tag(name:"solution", value:"Upgrade to IBM WebSphere Portal
-  8.5.0 with Cumulative Fix 08 (CF08) later. ");
+  8.5.0 with Cumulative Fix 08 (CF08) later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg21968474");

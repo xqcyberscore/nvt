@@ -8,7 +8,7 @@
 # Eero Volotinen <eero.volotinen@iki.fi>
 #
 # Copyright:
-# Copyright (c) 2015 Eero Volotinen, http://ping-viini.org
+# Copyright (c) 2016 Eero Volotinen, http://ping-viini.org
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -27,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.120632");
-  script_version("$Revision: 11703 $");
+  script_version("$Revision: 14180 $");
   script_tag(name:"creation_date", value:"2016-01-20 07:22:48 +0200 (Wed, 20 Jan 2016)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 10:05:31 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 13:29:16 +0100 (Thu, 14 Mar 2019) $");
   script_name("Amazon Linux Local Check: alas-2016-642");
   script_tag(name:"insight", value:"Perception Point Research identified a use-after-free vulnerability, representing a local privilege escalation vulnerability in the Linux kernel. Their post contains a detailed analysis of the bug.kernel-4.1.13-19.30.amzn1 and earlier versions are impacted.");
   script_tag(name:"solution", value:"Run yum clean all followed by yum update kernel to update your system. You will need to reboot your system in order for the new kernel to be running.");

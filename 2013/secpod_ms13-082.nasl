@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-082.nasl 11878 2018-10-12 12:40:08Z cfischer $
+# $Id: secpod_ms13-082.nasl 14186 2019-03-14 13:57:54Z cfischer $
 #
 # Microsoft .NET Framework Remote Code Execution Vulnerabilities (2878890)
 #
@@ -27,21 +27,23 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903412");
-  script_version("$Revision: 11878 $");
+  script_version("$Revision: 14186 $");
   script_cve_id("CVE-2013-3128", "CVE-2013-3860", "CVE-2013-3861");
   script_bugtraq_id(62819, 62820, 62807);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 14:57:54 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-10-09 12:14:29 +0530 (Wed, 09 Oct 2013)");
   script_name("Microsoft .NET Framework Remote Code Execution Vulnerabilities (2878890)");
 
-
   script_tag(name:"summary", value:"This host is missing an critical security update according to
-Microsoft Bulletin MS13-082.");
+  Microsoft Bulletin MS13-082.");
+
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and install
   the hotfixes from the referenced advisory.");
+
   script_tag(name:"insight", value:"Multiple flaws are due to,
 
   - An unspecified error when handling OpenType fonts (OTF).
@@ -49,12 +51,16 @@ Microsoft Bulletin MS13-082.");
   - An error when when expanding entity references.
 
   - An unspecified error when parsing JSON data.");
+
   script_tag(name:"affected", value:"Microsoft .NET Framework 2.x
-Microsoft .NET Framework 3.x
-Microsoft .NET Framework 4.x ");
+
+  Microsoft .NET Framework 3.x
+
+  Microsoft .NET Framework 4.x");
+
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute the arbitrary
-code, exhaust available system resource, cause a DoS (Denial of Service)
-and compromise the system.");
+  code, exhaust available system resource, cause a DoS (Denial of Service) and compromise the system.");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -67,10 +73,9 @@ and compromise the system.");
   script_dependencies("smb_reg_service_pack.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
-  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/security/bulletin/ms13-082");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");

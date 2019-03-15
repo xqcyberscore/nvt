@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_webex_meetings_server_rce_vuln.nasl 12149 2018-10-29 10:48:30Z asteins $
+# $Id: gb_cisco_webex_meetings_server_rce_vuln.nasl 14181 2019-03-14 12:59:41Z cfischer $
 #
 # Cisco WebEx Meetings Server Java Deserialization Vulnerability
 #
@@ -27,15 +27,15 @@
 
 CPE = "cpe:/a:cisco:webex_meetings_server";
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809053");
   script_cve_id("CVE-2015-6420");
   script_bugtraq_id(78872);
-  script_version("$Revision: 12149 $");
+  script_version("$Revision: 14181 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 13:59:41 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-09-22 13:01:32 +0530 (Thu, 22 Sep 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Cisco WebEx Meetings Server Java Deserialization Vulnerability");
@@ -54,7 +54,7 @@ if (description)
   unauthenticated, remote attacker to execute arbitrary code.");
 
   script_tag(name:"affected", value:"Cisco WebEx Meetings Server 2.5 before
-  2.5.1.6183, 2.6 before 2.6.1.45 and 2.0 before ");
+  2.5.1.6183, 2.6 before 2.6.1.45 and 2.0 versions.");
 
   script_tag(name:"solution", value:"Upgrade to Cisco WebEx Meetings Server
   version 2.5.1.6183 or 2.6.1.1099 or 2.6.1.45 or later.");
@@ -68,7 +68,7 @@ if (description)
   script_family("CISCO");
   script_dependencies("gb_cisco_webex_meetings_server_detect.nasl");
   script_mandatory_keys("cisco/webex/detected");
-  script_xref(name:"URL", value:"http://www.cisco.com");
+
   exit(0);
 }
 

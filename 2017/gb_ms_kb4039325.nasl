@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4039325.nasl 11982 2018-10-19 08:49:21Z mmartin $
+# $Id: gb_ms_kb4039325.nasl 14175 2019-03-14 11:27:57Z cfischer $
 #
 # Microsoft Hyper-V Information Disclosure Vulnerability (KB4039325)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811672");
-  script_version("$Revision: 11982 $");
+  script_version("$Revision: 14175 $");
   script_cve_id("CVE-2017-8707");
   script_bugtraq_id(100790);
   script_tag(name:"cvss_base", value:"1.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 12:27:57 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-09-13 09:36:28 +0530 (Wed, 13 Sep 2017)");
   script_name("Microsoft Hyper-V Information Disclosure Vulnerability (KB4039325)");
 
@@ -43,7 +43,7 @@ if(description)
 
   script_tag(name:"insight", value:"The flaw exists due to Windows Hyper-V on
   a host operating system fails to properly validate input from an authenticated
-  user on a guest operating system. ");
+  user on a guest operating system.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to gain access to information on the Hyper-V host operating system.");

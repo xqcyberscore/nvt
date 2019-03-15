@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_mar15_win.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_google_chrome_mult_vuln01_mar15_win.nasl 14183 2019-03-14 13:19:22Z cfischer $
 #
 # Google Chrome Multiple Vulnerabilities-01 Mar15 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805503");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 14183 $");
   script_cve_id("CVE-2015-1213", "CVE-2015-1214", "CVE-2015-1215", "CVE-2015-1216",
                 "CVE-2015-1217", "CVE-2015-1218", "CVE-2015-1219", "CVE-2015-1220",
                 "CVE-2015-1221", "CVE-2015-1222", "CVE-2015-1223", "CVE-2015-1224",
@@ -40,7 +40,7 @@ if(description)
   script_bugtraq_id(72901, 72916);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 14:19:22 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-03-13 14:45:49 +0530 (Fri, 13 Mar 2015)");
   script_name("Google Chrome Multiple Vulnerabilities-01 Mar15 (Windows)");
 
@@ -70,17 +70,16 @@ if(description)
 
   script_xref(name:"URL", value:"https://code.google.com/p/chromium/issues/detail?id=444957");
   script_xref(name:"URL", value:"https://code.google.com/p/chromium/issues/detail?id=463349");
-  script_xref(name:"URL", value:"googlechromereleases.blogspot.com/2015/03/stable-channel-update.html");
+  script_xref(name:"URL", value:"https://googlechromereleases.blogspot.com/2015/03/stable-channel-update.html");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_google_chrome_detect_portable_win.nasl");
   script_mandatory_keys("GoogleChrome/Win/Ver");
-  script_xref(name:"URL", value:"http://www.google.com/chrome");
+
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

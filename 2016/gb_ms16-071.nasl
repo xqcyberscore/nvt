@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-071.nasl 11961 2018-10-18 10:49:40Z asteins $
+# $Id: gb_ms16-071.nasl 14181 2019-03-14 12:59:41Z cfischer $
 #
 # Microsoft Windows DNS Server Remote Code Execution Vulnerability (3164065)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808161");
-  script_version("$Revision: 11961 $");
+  script_version("$Revision: 14181 $");
   script_cve_id("CVE-2016-3227");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 13:59:41 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-06-15 08:10:05 +0530 (Wed, 15 Jun 2016)");
   script_name("Microsoft Windows DNS Server Remote Code Execution Vulnerability (3164065)");
 
@@ -41,7 +41,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to improper handling of requests
-  in Dns severs. ");
+  in DNS severs.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attacker to run arbitrary code in the context of the Local System Account.");
@@ -49,7 +49,7 @@ if(description)
   script_tag(name:"affected", value:"Microsoft Windows Server 2012/2012R2");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory");
+  listed hotfixes or download and update mentioned hotfixes in the advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -66,7 +66,6 @@ if(description)
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");

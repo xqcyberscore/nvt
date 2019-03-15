@@ -8,7 +8,7 @@
 # Eero Volotinen <eero.volotinen@iki.fi>
 #
 # Copyright:
-# Copyright (c) 2015 Eero Volotinen, http://ping-viini.org
+# Copyright (c) 2016 Eero Volotinen, http://ping-viini.org
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -27,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.120624");
-  script_version("$Revision: 11703 $");
+  script_version("$Revision: 14180 $");
   script_tag(name:"creation_date", value:"2016-01-20 07:22:43 +0200 (Wed, 20 Jan 2016)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 10:05:31 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 13:29:16 +0100 (Thu, 14 Mar 2019) $");
   script_name("Amazon Linux Local Check: alas-2016-634");
   script_tag(name:"insight", value:"A missing access control flaw was found in Samba. A remote, authenticated attacker could use this flaw to view the current snapshot on a Samba share, despite not having DIRECTORY_LIST access rights.An access flaw was found in the way Samba verified symbolic links when creating new files on a Samba share. A remote attacker could exploit this flaw to gain access to files outside of Samba's share path. A memory-read flaw was found in the way the libldb library processed LDB DN records with a null byte. An authenticated, remote attacker could use this flaw to read heap-memory pages from the server. A man-in-the-middle vulnerability was found in the way 'connection signing' was implemented by Samba. A remote attacker could use this flaw to downgrade an existing Samba client connection and force the use of plain text.");
   script_tag(name:"solution", value:"Run yum update samba to update your system.");

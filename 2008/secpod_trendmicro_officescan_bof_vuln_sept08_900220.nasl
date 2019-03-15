@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_trendmicro_officescan_bof_vuln_sept08_900220.nasl 12603 2018-11-30 14:57:24Z cfischer $
+# $Id: secpod_trendmicro_officescan_bof_vuln_sept08_900220.nasl 14192 2019-03-14 14:54:41Z cfischer $
 # Description: Trend Micro OfficeScan Server cgiRecvFile.exe Buffer Overflow Vulnerability
 #
 # Authors:
@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900220");
-  script_version("$Revision: 12603 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:57:24 +0100 (Fri, 30 Nov 2018) $");
+  script_version("$Revision: 14192 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 15:54:41 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2008-09-25 09:10:39 +0200 (Thu, 25 Sep 2008)");
   script_bugtraq_id(31139);
   script_cve_id("CVE-2008-2437");
@@ -39,8 +39,8 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_family("Buffer overflow");
   script_name("Trend Micro OfficeScan Server cgiRecvFile.exe Buffer Overflow Vulnerability.");
-  script_dependencies("smb_reg_service_pack.nasl");
-  script_mandatory_keys("SMB/WindowsVersion");
+  script_dependencies("gb_trend_micro_office_scan_detect.nasl");
+  script_mandatory_keys("Trend/Micro/Officescan/Ver");
   script_require_ports(139, 445);
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/31342/");
@@ -76,117 +76,94 @@ if(description)
   exit(0);
 }
 
- include("smb_nt.inc");
- include("secpod_smb_func.inc");
+include("smb_nt.inc");
+include("secpod_smb_func.inc");
 
- if(!get_kb_item("SMB/WindowsVersion")){
-        exit(0);
- }
+scanVer = registry_get_sz(key:"SOFTWARE\TrendMicro\OfficeScan\service\Information", item:"Server_Version");
+if(!scanVer)
+  exit(0);
 
- scanVer = registry_get_sz(key:"SOFTWARE\TrendMicro\OfficeScan\service" +
-                               "\Information", item:"Server_Version");
- if(!scanVer){
-	exit(0);
- }
+if(!egrep(pattern:"^([0-7]\..*|8\.0)$", string:scanVer))
+  exit(0);
 
- if(!egrep(pattern:"^([0-7]\..*|8\.0)$", string:scanVer)){
-	exit(0);
- }
+offPath = registry_get_sz(key:"SOFTWARE\TrendMicro\OfficeScan\service\Information", item:"Local_Path");
+if(!offPath)
+  exit(0);
 
- offPath = registry_get_sz(key:"SOFTWARE\TrendMicro\OfficeScan\service" +
-                               "\Information", item:"Local_Path");
- if(!offPath){
-	exit(0);
- }
+# For Trend Micro Client Server Messaging Security and Office Scan 8 or 7.0
+if(registry_key_exists(key:"SOFTWARE\TrendMicro\CSM") || scanVer =~ "^(8\..*|[0-7]\.[0-2](\..*)?)$"){
+  security_message(port:0);
+  exit(0);
+}
 
- report = string("\n *****\n NOTE : Ignore this warning if the above mentioned" +
-                 "patch is already applied.\n *****\n");
+share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:offPath);
+file =  ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:offPath + "Web\CGI\cgiRecvFile.exe");
 
- # For Trend Micro Client Server Messaging Security and Office Scan 8 or 7.0
- if(registry_key_exists(key:"SOFTWARE\TrendMicro\CSM") ||
-                        scanVer =~ "^(8\..*|[0-7]\.[0-2](\..*)?)$"){
-        security_message(port:0, data:report);
-        exit(0);
- }
+name    =  kb_smb_name();
+login   =  kb_smb_login();
+pass    =  kb_smb_password();
+domain  =  kb_smb_domain();
+port    =  kb_smb_transport();
 
- share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:offPath);
- file =  ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1",
-                      string:offPath + "Web\CGI\cgiRecvFile.exe");
+if(!port)
+  port = 139;
 
- name    =  kb_smb_name();
- login   =  kb_smb_login();
- pass    =  kb_smb_password();
- domain  =  kb_smb_domain();
- port    =  kb_smb_transport();
+if(!get_port_state(port))
+  exit(0);
 
- if(!port){
-	port = 139;
- }
+soc = open_sock_tcp(port);
+if(!soc)
+  exit(0);
 
- if(!get_port_state(port)){
-        exit(0);
- }
+r = smb_session_request(soc:soc, remote:name);
+if(!r) {
+  close(soc);
+  exit(0);
+}
 
- soc = open_sock_tcp(port);
- if(!soc){
-        exit(0);
- }
+prot = smb_neg_prot(soc:soc);
+if(!prot) {
+  close(soc);
+  exit(0);
+}
 
- r = smb_session_request(soc:soc, remote:name);
- if(!r)
- {
-        close(soc);
-        exit(0);
- }
+r = smb_session_setup(soc:soc, login:login, password:pass, domain:domain, prot:prot);
+if(!r) {
+  close(soc);
+  exit(0);
+}
 
- prot = smb_neg_prot(soc:soc);
- if(!prot)
- {
-        close(soc);
-        exit(0);
- }
+uid = session_extract_uid(reply:r);
+if(!uid) {
+  close(soc);
+  exit(0);
+}
 
- r = smb_session_setup(soc:soc, login:login, password:pass, domain:domain, prot:prot);
- if(!r)
- {
-        close(soc);
-        exit(0);
- }
+r = smb_tconx(soc:soc, name:name, uid:uid, share:share);
+if(!r) {
+  close(soc);
+  exit(0);
+}
 
- uid = session_extract_uid(reply:r);
- if(!uid)
- {
-        close(soc);
-        exit(0);
- }
+tid = tconx_extract_tid(reply:r);
+if(!tid) {
+  close(soc);
+  exit(0);
+}
 
- r = smb_tconx(soc:soc, name:name, uid:uid, share:share);
- if(!r)
- {
-        close(soc);
-        exit(0);
- }
+fid = OpenAndX(socket:soc, uid:uid, tid:tid, file:file);
+if(!fid) {
+  close(soc);
+  exit(0);
+}
 
- tid = tconx_extract_tid(reply:r);
- if(!tid)
- {
-        close(soc);
-        exit(0);
- }
+fileVersion = GetVersion(socket:soc, uid:uid, tid:tid, fid:fid);
+if(!fileVersion)
+  exit(0);
 
- fid = OpenAndX(socket:soc, uid:uid, tid:tid, file:file);
- if(!fid)
- {
-        close(soc);
-        exit(0);
- }
+if(egrep(pattern:"^7\.3\.0\.(0?[0-9]?[0-9]?[0-9]|1[0-2][0-9][0-9]|13[0-5][0-9]|136[0-6])$", string:scanVer)){
+  security_message(port:0);
+  exit(0);
+}
 
- fileVersion = GetVersion(socket:soc, uid:uid, tid:tid, fid:fid);
- if(!fileVersion){
-        exit(0);
- }
-
- if(egrep(pattern:"^7\.3\.0\.(0?[0-9]?[0-9]?[0-9]|1[0-2][0-9][0-9]|" +
-                  "13[0-5][0-9]|136[0-6])$", string:scanVer)){
-        security_message(port:0);
- }
+exit(99);

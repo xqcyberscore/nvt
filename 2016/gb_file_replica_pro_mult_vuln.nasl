@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_file_replica_pro_mult_vuln.nasl 11969 2018-10-18 14:53:42Z asteins $
+# $Id: gb_file_replica_pro_mult_vuln.nasl 14181 2019-03-14 12:59:41Z cfischer $
 #
 # File Replication Pro Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:file:replication:pro";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806689");
-  script_version("$Revision: 11969 $");
+  script_version("$Revision: 14181 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-14 13:59:41 +0100 (Thu, 14 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-03-01 14:45:28 +0530 (Tue, 01 Mar 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("File Replication Pro Multiple Vulnerabilities");
@@ -53,7 +53,7 @@ if(description)
   script_tag(name:"affected", value:"File Replication Pro version 7.2.0 and prior.");
 
   script_tag(name:"solution", value:"Upgrade to File Replication Pro
-  version 7.3.0 or later. ");
+  version 7.3.0 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -65,7 +65,7 @@ if(description)
   script_dependencies("gb_file_replica_pro_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("FileReplicationPro/Installed");
   script_require_ports("Services/www", 9100);
-  script_xref(name:"URL", value:"http://www.filereplicationpro.com");
+
   exit(0);
 }
 
@@ -74,18 +74,18 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-if(!http_port = get_app_port(cpe:CPE)){
+if(!http_port = get_app_port(cpe:CPE))
   exit(0);
-}
+
+if(!get_app_location(port:http_port, cpe:CPE))
+  exit(0);
 
 files = traversal_files();
 
 foreach file (keys(files))
 {
-  url = "/DetailedLogReader.jsp?log_path=" + crap(data: "../", length: 3*15) +
-        files[file];
+  url = "/DetailedLogReader.jsp?log_path=" + crap(data: "../", length: 3*15) + files[file];
 
-  ##  Confirm exploit worked properly or not
   if(http_vuln_check(port:http_port, url:url, pattern:file))
   {
     report = report_vuln_url( port:http_port, url:url);
