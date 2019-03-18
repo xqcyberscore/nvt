@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2017_e4609f71f6_cyrus-imapd_fc26.nasl 7260 2017-09-26 06:48:48Z asteins $
+# $Id: gb_fedora_2017_e4609f71f6_cyrus-imapd_fc26.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for cyrus-imapd FEDORA-2017-e4609f71f6
 #
@@ -27,61 +27,39 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.873375");
-  script_version("$Revision: 7260 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-26 08:48:48 +0200 (Tue, 26 Sep 2017) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-09-16 07:45:04 +0200 (Sat, 16 Sep 2017)");
   script_cve_id("CVE-2017-14230");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for cyrus-imapd FEDORA-2017-e4609f71f6");
-  script_tag(name: "summary", value: "Check the version of cyrus-imapd");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "The Cyrus IMAP (Internet Message Access Protocol) 
-server provides access to personal mail, system-wide bulletin boards, 
-news-feeds, calendar and contacts through the IMAP, JMAP, NNTP, CalDAV 
-and CardDAV protocols. The Cyrus IMAP server is a scalable enterprise groupware 
-system designed for use from small to large enterprise environments using 
-technologies based on well-established Open Standards.
-
-A full Cyrus IMAP implementation allows a seamless mail and bulletin board
-environment to be set up across one or more nodes. It differs from other IMAP
-server implementations in that it is run on sealed nodes, where users are not
-normally permitted to log in. The mailbox database is stored in parts of the
-filesystem that are private to the Cyrus IMAP system. All user access to mail
-is through software using the IMAP, IMAPS, JMAP, POP3, POP3S, KPOP, CalDAV
-and/or CardDAV protocols.
-
-The private mailbox database design gives the Cyrus IMAP server large
-advantages in efficiency, scalability, and administratability. Multiple
-concurrent read/write connections to the same mailbox are permitted. The server
-supports access control lists on mailboxes and storage quotas on mailbox
-hierarchies.
-");
-  script_tag(name: "affected", value: "cyrus-imapd on Fedora 26");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-
-  script_xref(name: "FEDORA", value: "2017-e4609f71f6");
-  script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/IDN2HFBNT6XBGUJ63XTOLAC3RTZSCGRN");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'cyrus-imapd'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"affected", value:"cyrus-imapd on Fedora 26");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
+  script_xref(name:"FEDORA", value:"2017-e4609f71f6");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/IDN2HFBNT6XBGUJ63XTOLAC3RTZSCGRN");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC26");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC26")
 {
@@ -92,6 +70,6 @@ if(release == "FC26")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

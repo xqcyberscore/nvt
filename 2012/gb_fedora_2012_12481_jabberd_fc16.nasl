@@ -23,60 +23,41 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "The jabberd project aims to provide an open-source server implementation of
-  the Jabber protocols for instant messaging and XML routing. The goal of this
-  project is to provide a scalable, reliable, efficient and extensible server
-  that provides a complete set of features and is up to date with the latest
-  protocol revisions.
-
-  jabberd2 is the next generation of the jabberd server. It has been
-  rewritten from the ground up to be scalable, architecturally sound, and to
-  support the latest protocol extensions coming out of the JSF.
-  
-  This package defaults to use pam and sqlite.";
-
-tag_affected = "jabberd on Fedora 16";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
 if(description)
 {
-  script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2012-September/085911.html");
+  script_xref(name:"URL", value:"http://lists.fedoraproject.org/pipermail/package-announce/2012-September/085911.html");
   script_oid("1.3.6.1.4.1.25623.1.0.864683");
-  script_version("$Revision: 9352 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-09-04 11:32:22 +0530 (Tue, 04 Sep 2012)");
   script_cve_id("CVE-2012-3525");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_xref(name: "FEDORA", value: "2012-12481");
+  script_xref(name:"FEDORA", value:"2012-12481");
   script_name("Fedora Update for jabberd FEDORA-2012-12481");
-
-  script_tag(name: "summary" , value: "Check for the Version of jabberd");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'jabberd'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC16");
+  script_tag(name:"affected", value:"jabberd on Fedora 16");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC16")
 {
@@ -87,6 +68,6 @@ if(release == "FC16")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

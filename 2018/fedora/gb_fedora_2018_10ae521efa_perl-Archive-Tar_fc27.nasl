@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_10ae521efa_perl-Archive-Tar_fc27.nasl 10645 2018-07-27 05:27:50Z cfischer $
+# $Id: gb_fedora_2018_10ae521efa_perl-Archive-Tar_fc27.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for perl-Archive-Tar FEDORA-2018-10ae521efa
 #
@@ -27,45 +27,40 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874697");
-  script_version("$Revision: 10645 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-27 07:27:50 +0200 (Fri, 27 Jul 2018) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-06-19 06:13:09 +0200 (Tue, 19 Jun 2018)");
   script_cve_id("CVE-2018-12015");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for perl-Archive-Tar FEDORA-2018-10ae521efa");
-  script_tag(name:"summary", value:"Check the version of perl-Archive-Tar");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'perl-Archive-Tar'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"Archive::Tar provides an object oriented mechanism for handling tar
-files.  It provides class methods for quick and easy files handling
-while also allowing for the creation of tar file objects for custom
-manipulation.  If you have the IO::Zlib module installed, Archive::Tar
-will also support compressed or gzipped tar files.
-");
   script_tag(name:"affected", value:"perl-Archive-Tar on Fedora 27");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"FEDORA", value:"2018-10ae521efa");
-  script_xref(name:"URL" , value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/CAK5NG6PNKLQLPSKQBIAMV77Y73FNJMC");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/CAK5NG6PNKLQLPSKQBIAMV77Y73FNJMC");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC27");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC27")
 {

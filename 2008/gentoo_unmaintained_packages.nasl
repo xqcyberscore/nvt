@@ -1,10 +1,9 @@
 # OpenVAS Vulnerability Test
-# $Id: gentoo_unmaintained_packages.nasl 6521 2017-07-04 14:51:10Z cfischer $
+# $Id: gentoo_unmaintained_packages.nasl 14240 2019-03-17 15:50:45Z cfischer $
 # Description: Unmaintained Gentoo packages
 #
 # Authors:
 # Michel Arboi <mikhail@nessus.org>
-# 2008/10/08 Updated by Thomas Reinke to work with OpenVAS.
 #
 # Copyright:
 # Copyright (C) 2007 Michel Arboi <mikhail@nessus.org>
@@ -23,68 +22,52 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "The remote operating system contains obsolete software
-
-The remote Gentoo system contains several packages or versions 
-which have been marked as obsolete and have been removed from 
-the portage tree.
-These versions are therefore unmaintained, which means that if
-any security flaw is found in them, no patch will be made 
-available.
-
-In addition to this, these packages might break after a library 
-upgrade and it will be impossible to recompile them.";
-
-if (description)
+if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.24017");
- script_version("$Revision: 6521 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-04 16:51:10 +0200 (Tue, 04 Jul 2017) $");
- script_tag(name:"creation_date", value:"2008-10-08 21:18:44 +0200 (Wed, 08 Oct 2008)");
- script_tag(name:"cvss_base", value:"6.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
+  script_oid("1.3.6.1.4.1.25623.1.0.24017");
+  script_version("$Revision: 14240 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-17 16:50:45 +0100 (Sun, 17 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2008-10-08 21:18:44 +0200 (Wed, 08 Oct 2008)");
+  script_tag(name:"cvss_base", value:"6.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
+  script_copyright("Copyright (C) 2007 Michel Arboi <mikhail@nessus.org>");
+  script_name("Unmaintained Gentoo packages");
+  script_category(ACT_GATHER_INFO);
+  script_tag(name:"qod_type", value:"package");
+  script_family("Gentoo Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/pkg", "ssh/login/gentoo_maintained");
 
- script_copyright("Copyright (C) 2007 Michel Arboi <mikhail@nessus.org>");
- script_name( "Unmaintained Gentoo packages");
- script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"executable_version");
- script_family( "Gentoo Local Security Checks");
- script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("ssh/login/pkg", "ssh/login/gentoo_maintained");
- script_tag(name: "solution", value: "Remove or upgrade those packages.");
- script_tag(name: "summary", value:"The remote operating system contains obsolete software
+  script_tag(name:"solution", value:"Remove or upgrade those packages.");
 
-Description :
+  script_tag(name:"summary", value:"The remote Gentoo system contains several packages or versions
+  which have been marked as obsolete and have been removed from the portage tree.
 
-The remote Gentoo system contains several packages or versions~
-which have been marked as obsolete and have been removed from~
-the portage tree.
-These versions are therefore unmaintained, which means that if
-any security flaw is found in them, no patch will be made~
-available.
+  These versions are therefore unmaintained, which means that if any security flaw is found in them,
+  no patch will be made available.
 
-In addition to this, these packages might break after a library~
-upgrade and it will be impossible to recompile them." );
+  In addition to this, these packages might break after a library upgrade and it will be impossible to recompile them.");
 
- exit(0);
+  script_tag(name:"solution_type", value:"VendorFix");
 
+  exit(0);
 }
 
-include('global_settings.inc');
+include("global_settings.inc");
 
-installed = get_kb_item('ssh/login/pkg');
-maintained = get_kb_item('ssh/login/gentoo_maintained');
+installed = get_kb_item("ssh/login/pkg");
+maintained = get_kb_item("ssh/login/gentoo_maintained");
 
-# 
+#
 # Debug only
 # function exec(cmd)
 # {
 #  return pread(cmd: "/bin/sh", argv: make_list("sh", "-c", cmd));
 # }
-# 
+#
 # installed = exec(cmd: 'find /var/db/pkg/ -mindepth 2 -maxdepth 2 -printf "%P\\n"');
 # maintained = exec(cmd: "find /usr/portage/ -wholename '/usr/portage/*-*/*.ebuild' | sed 's,/usr/portage/\([^/]*\)/.*/\([^/]*\)\.ebuild$,\1/\2,'");
-# 
+#
 
 if (isnull(installed) || isnull(maintained)) exit(0);
 
@@ -138,7 +121,7 @@ for (i2 = 0; i2 < n2; i2 ++)
  }
 }
 
-if (bad > 0) 
+if (bad > 0)
 {
  desc = '';
  if (strlen(obs_l) > 0)

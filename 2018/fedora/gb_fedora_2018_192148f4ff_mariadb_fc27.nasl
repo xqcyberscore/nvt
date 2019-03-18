@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_192148f4ff_mariadb_fc27.nasl 12665 2018-12-05 12:28:29Z mmartin $
+# $Id: gb_fedora_2018_192148f4ff_mariadb_fc27.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for mariadb FEDORA-2018-192148f4ff
 #
@@ -29,7 +29,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875288");
-  script_version("$Revision: 12665 $");
+  script_version("$Revision: 14223 $");
   script_cve_id("CVE-2018-3282", "CVE-2016-9843", "CVE-2018-3174", "CVE-2018-3143",
                   "CVE-2018-3156", "CVE-2018-3251", "CVE-2018-3185", "CVE-2018-3277", "CVE-2018-3162",
                   "CVE-2018-3173", "CVE-2018-3200", "CVE-2018-3284", "CVE-2018-3060", "CVE-2018-3064",
@@ -41,29 +41,22 @@ if(description)
   script_bugtraq_id(106054);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-05 13:28:29 +0100 (Wed, 05 Dec 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-12-04 12:40:37 +0530 (Tue, 04 Dec 2018)");
   script_name("Fedora Update for mariadb FEDORA-2018-192148f4ff");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC27");
 
   script_xref(name:"FEDORA", value:"2018-192148f4ff");
-  script_xref(name:"URL" , value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/VA7N3SMG43EHYFMZCVRJ6KVKUKK2VFUJ");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/VA7N3SMG43EHYFMZCVRJ6KVKUKK2VFUJ");
 
   script_tag(name:"summary", value:"The remote host is missing an update for the 'mariadb'
   package(s) announced via the FEDORA-2018-192148f4ff advisory.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
-
-  script_tag(name:"insight", value:"MariaDB is a community developed branch of MySQL.
-MariaDB is a multi-user, multi-threaded SQL database server.
-It is a client/server implementation consisting of a server daemon (mysqld)
-and many different client programs and libraries. The base package
-contains the standard MariaDB/MySQL client programs and generic MySQL files.
-");
 
   script_tag(name:"affected", value:"mariadb on Fedora 27.");
 
@@ -79,7 +72,8 @@ include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
 release = rpm_get_ssh_release();
-if(!release) exit(0);
+if(!release)
+  exit(0);
 
 res = "";
 

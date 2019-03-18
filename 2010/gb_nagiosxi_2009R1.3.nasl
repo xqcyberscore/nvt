@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nagiosxi_2009R1.3.nasl 8447 2018-01-17 16:12:19Z teissa $
+# $Id: gb_nagiosxi_2009R1.3.nasl 14233 2019-03-16 13:32:43Z mmartin $
 #
 # Nagios XI < 2009R1.3 multiple vulnerabilities
 #
@@ -24,7 +24,32 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Nagios XI is prone to multiple vulnerabilities.
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.100778");
+  script_version("$Revision: 14233 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-16 14:32:43 +0100 (Sat, 16 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2010-09-02 16:10:00 +0200 (Thu, 02 Sep 2010)");
+  script_bugtraq_id(42604);
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_name("Nagios XI < 2009R1.3 multiple vulnerabilities");
+
+  script_xref(name:"URL", value:"https://www.securityfocus.com/bid/42604");
+  script_xref(name:"URL", value:"http://www.nagios.com/products/nagiosxi");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/513248");
+
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_category(ACT_GATHER_INFO);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
+  script_dependencies("gb_nagios_XI_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution", value:"Reportedly, these issues have been fixed in Nagios XI 2009R1.3. Please
+see the references for more information.");
+  script_tag(name:"summary", value:"Nagios XI is prone to multiple vulnerabilities.
 
 1. Nagios XI is prone to multiple cross-site scripting vulnerabilities
 because it fails to properly sanitize user-supplied input.
@@ -42,40 +67,12 @@ Exploiting this issue could allow an attacker to compromise the
 application, access or modify data, or exploit latent vulnerabilities
 in the underlying database.
 
-Versions prior to Nagios XI 2009R1.3 are vulnerable.";
-
-tag_solution = "Reportedly, these issues have been fixed in Nagios XI 2009R1.3. Please
-see the references for more information.";
-
-if (description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.100778");
- script_version("$Revision: 8447 $");
- script_tag(name:"last_modification", value:"$Date: 2018-01-17 17:12:19 +0100 (Wed, 17 Jan 2018) $");
- script_tag(name:"creation_date", value:"2010-09-02 16:10:00 +0200 (Thu, 02 Sep 2010)");
- script_bugtraq_id(42604);
- script_tag(name:"cvss_base", value:"4.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
- script_name("Nagios XI < 2009R1.3 multiple vulnerabilities");
-
- script_xref(name : "URL" , value : "https://www.securityfocus.com/bid/42604");
- script_xref(name : "URL" , value : "http://www.nagios.com/products/nagiosxi");
- script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/513248");
-
- script_tag(name:"qod_type", value:"remote_banner");
- script_category(ACT_GATHER_INFO);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("gb_nagios_XI_detect.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+Versions prior to Nagios XI 2009R1.3 are vulnerable.");
+  exit(0);
 }
 
 include("http_func.inc");
-include("http_keepalive.inc");
+
 include("version_func.inc");
 
 port = get_http_port(default:80);

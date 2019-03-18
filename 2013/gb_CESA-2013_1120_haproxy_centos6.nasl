@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.881772");
-  script_version("$Revision: 14095 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-11 14:54:56 +0100 (Mon, 11 Mar 2019) $");
+  script_version("$Revision: 14222 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 13:50:48 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-08-01 18:43:37 +0530 (Thu, 01 Aug 2013)");
   script_cve_id("CVE-2013-2175");
   script_tag(name:"cvss_base", value:"5.0");
@@ -57,7 +57,8 @@ contains a backported patch to correct this issue.");
   script_xref(name:"CESA", value:"2013:1120");
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-July/019884.html");
   script_xref(name:"URL", value:"https://access.redhat.com/support/offerings/techpreview/");
-  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for haproxy");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'haproxy'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

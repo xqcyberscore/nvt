@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: esoft_slk_ssa_2004_223_01.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: esoft_slk_ssa_2004_223_01.nasl 14202 2019-03-15 09:16:15Z cfischer $
 # Description: Auto-generated from the corresponding slackware advisory
 #
 # Authors:
@@ -25,8 +25,25 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-include("revisions-lib.inc");
-tag_insight = "New Mozilla packages are available for Slackware 9.1, 10.0, and -current
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.53919");
+  script_tag(name:"creation_date", value:"2012-09-11 01:34:21 +0200 (Tue, 11 Sep 2012)");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 10:16:15 +0100 (Fri, 15 Mar 2019) $");
+  script_cve_id("CVE-2004-0597", "CVE-2004-0598", "CVE-2004-0599", "CVE-2004-0763", "CVE-2004-0758", "CVE-2004-0718", "CVE-2004-0722", "CVE-2004-0757", "CVE-2004-0759", "CVE-2004-0760", "CVE-2004-0761", "CVE-2004-0762", "CVE-2004-0764", "CVE-2004-0765");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 14202 $");
+  script_name("Slackware Advisory SSA:2004-223-01 Mozilla ");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 E-Soft Inc. http://www.securityspace.com");
+  script_family("Slackware Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/slackware_linux", "ssh/login/slackpack", re:"ssh/login/release=SLK(9\.1|10\.0)");
+
+  script_xref(name:"URL", value:"https://secure1.securityspace.com/smysecure/catid.html?in=SSA:2004-223-01");
+
+  script_tag(name:"insight", value:"New Mozilla packages are available for Slackware 9.1, 10.0, and -current
 to fix a number of security issues.  Slackware 10.0 and -current were
 upgraded to Mozilla 1.7.2, and Slackware 9.1 was upgraded to Mozilla 1.4.3.
 As usual, new versions of Mozilla require new versions of things that link
@@ -42,70 +59,49 @@ issues.  If you still use Slackware 9.0 or earlier, you may want to
 consider removing Mozilla or upgrading to a newer version.
 
 For more details on the outsanding problems, please visit
-the referenced security advisory.";
-tag_summary = "The remote host is missing an update as announced
-via advisory SSA:2004-223-01.";
+the referenced security advisory.");
 
-tag_solution = "https://secure1.securityspace.com/smysecure/catid.html?in=SSA:2004-223-01";
-                                                                                
-if(description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.53919");
- script_tag(name:"creation_date", value:"2012-09-11 01:34:21 +0200 (Tue, 11 Sep 2012)");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
- script_cve_id("CVE-2004-0597", "CVE-2004-0598", "CVE-2004-0599", "CVE-2004-0763", "CVE-2004-0758", "CVE-2004-0718", "CVE-2004-0722", "CVE-2004-0757", "CVE-2004-0759", "CVE-2004-0760", "CVE-2004-0761", "CVE-2004-0762", "CVE-2004-0764", "CVE-2004-0765");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 9352 $");
- name = "Slackware Advisory SSA:2004-223-01 Mozilla  ";
- script_name(name);
+  script_tag(name:"solution", value:"Upgrade to the new package(s).");
 
+  script_tag(name:"summary", value:"The remote host is missing an update as announced
+via advisory SSA:2004-223-01.");
 
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_category(ACT_GATHER_INFO);
-
- script_copyright("Copyright (c) 2012 E-Soft Inc. http://www.securityspace.com");
- script_family("Slackware Local Security Checks");
- script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("ssh/login/slackware_linux", "ssh/login/slackpack");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
- exit(0);
+  exit(0);
 }
 
-#
-# The script code starts here
-#
-
+include("revisions-lib.inc");
 include("pkg-lib-slack.inc");
-vuln = 0;
-if(isslkpkgvuln(pkg:"mozilla", ver:"1.4.3-i486-1", rls:"SLK9.1")) {
-    vuln = 1;
+
+report = "";
+res = "";
+
+if((res = isslkpkgvuln(pkg:"mozilla", ver:"1.4.3-i486-1", rls:"SLK9.1")) != NULL) {
+  report += res;
 }
-if(isslkpkgvuln(pkg:"mozilla-plugins", ver:"1.4.3-noarch-1", rls:"SLK9.1")) {
-    vuln = 1;
+if((res = isslkpkgvuln(pkg:"mozilla-plugins", ver:"1.4.3-noarch-1", rls:"SLK9.1")) != NULL) {
+  report += res;
 }
-if(isslkpkgvuln(pkg:"mozilla", ver:"1.7.2-i486-1", rls:"SLK10.0")) {
-    vuln = 1;
+if((res = isslkpkgvuln(pkg:"mozilla", ver:"1.7.2-i486-1", rls:"SLK10.0")) != NULL) {
+  report += res;
 }
-if(isslkpkgvuln(pkg:"mozilla-plugins", ver:"1.7.2-noarch-1", rls:"SLK10.0")) {
-    vuln = 1;
+if((res = isslkpkgvuln(pkg:"mozilla-plugins", ver:"1.7.2-noarch-1", rls:"SLK10.0")) != NULL) {
+  report += res;
 }
-if(isslkpkgvuln(pkg:"epiphany", ver:"1.2.7-i486-1", rls:"SLK10.0")) {
-    vuln = 1;
+if((res = isslkpkgvuln(pkg:"epiphany", ver:"1.2.7-i486-1", rls:"SLK10.0")) != NULL) {
+  report += res;
 }
-if(isslkpkgvuln(pkg:"gaim", ver:"0.81-i486-1", rls:"SLK10.0")) {
-    vuln = 1;
+if((res = isslkpkgvuln(pkg:"gaim", ver:"0.81-i486-1", rls:"SLK10.0")) != NULL) {
+  report += res;
 }
-if(isslkpkgvuln(pkg:"galeon", ver:"1.3.17-i486-1", rls:"SLK10.0")) {
-    vuln = 1;
+if((res = isslkpkgvuln(pkg:"galeon", ver:"1.3.17-i486-1", rls:"SLK10.0")) != NULL) {
+  report += res;
 }
 
-if(vuln) {
-    security_message(0);
-} else if (__pkg_match) {
-    exit(99); # Not vulnerable.
+if(report != "") {
+  security_message(data:report);
+} else if(__pkg_match) {
+  exit(99);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2017_9ae6e39bde_mupdf_fc25.nasl 8091 2017-12-13 06:22:57Z teissa $
+# $Id: gb_fedora_2017_9ae6e39bde_mupdf_fc25.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for mupdf FEDORA-2017-9ae6e39bde
 #
@@ -27,53 +27,40 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.873897");
-  script_version("$Revision: 8091 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-13 07:22:57 +0100 (Wed, 13 Dec 2017) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-12-11 08:04:47 +0100 (Mon, 11 Dec 2017)");
-  script_cve_id("CVE-2017-15369", "CVE-2017-15587", "CVE-2017-9216", "CVE-2017-14685", 
+  script_cve_id("CVE-2017-15369", "CVE-2017-15587", "CVE-2017-9216", "CVE-2017-14685",
                 "CVE-2017-14686", "CVE-2017-14687");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for mupdf FEDORA-2017-9ae6e39bde");
-  script_tag(name: "summary", value: "Check the version of mupdf");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "MuPDF is a lightweight PDF viewer and 
-toolkit written in portable C. The renderer in MuPDF is tailored for high 
-quality anti-aliased graphics.  MuPDF renders text with metrics and spacing 
-accurate to within fractions of a pixel for the highest fidelity in reproducing
-the look of a printed page on screen. MuPDF has a small footprint. 
-A binary that includes the standard Roman fonts is only one megabyte. A build 
-with full CJK support (including an Asian font) is approximately five megabytes.
-MuPDF has support for all non-interactive PDF 1.7 features, and the toolkit 
-provides a simple API for accessing the internal structures of the PDF document.  
-Example code for navigating interactive links and bookmarks, encrypting PDF 
-files, extracting fonts, images, and searchable text, and rendering pages to 
-image files is provided.");
-  script_tag(name: "affected", value: "mupdf on Fedora 25");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-
-  script_xref(name: "FEDORA", value: "2017-9ae6e39bde");
-  script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/P5HUMQDKNC7MAYB5VDA6XA5BVYTZFZQY");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'mupdf'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"affected", value:"mupdf on Fedora 25");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
+  script_xref(name:"FEDORA", value:"2017-9ae6e39bde");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/P5HUMQDKNC7MAYB5VDA6XA5BVYTZFZQY");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC25");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC25")
 {
@@ -84,6 +71,6 @@ if(release == "FC25")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

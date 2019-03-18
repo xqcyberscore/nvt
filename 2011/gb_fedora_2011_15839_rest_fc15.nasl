@@ -23,55 +23,41 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_affected = "rest on Fedora 15";
-tag_insight = "This library was designed to make it easier to access web services that
-  claim to be &quot;RESTful&quot;. A RESTful service should have urls that represent
-  remote objects, which methods can then be called on. The majority of services
-  don't actually adhere to this strict definition. Instead, their RESTful end
-  point usually has an API that is just simpler to use compared to other types
-  of APIs they may support (XML-RPC, for instance). It is this kind of API that
-  this library is attempting to support.";
-tag_solution = "Please Install the Updated Packages.";
-
-
 if(description)
 {
-  script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2011-November/070086.html");
+  script_xref(name:"URL", value:"http://lists.fedoraproject.org/pipermail/package-announce/2011-November/070086.html");
   script_oid("1.3.6.1.4.1.25623.1.0.863648");
-  script_version("$Revision: 9371 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:55:06 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-12-02 13:28:05 +0530 (Fri, 02 Dec 2011)");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_xref(name: "FEDORA", value: "2011-15839");
+  script_xref(name:"FEDORA", value:"2011-15839");
   script_cve_id("CVE-2011-4129");
   script_name("Fedora Update for rest FEDORA-2011-15839");
-
-  script_tag(name:"summary", value:"Check for the Version of rest");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'rest'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC15");
+  script_tag(name:"affected", value:"rest on Fedora 15");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC15")
 {
@@ -82,6 +68,6 @@ if(release == "FC15")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

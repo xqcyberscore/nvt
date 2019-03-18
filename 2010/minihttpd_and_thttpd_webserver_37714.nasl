@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: minihttpd_and_thttpd_webserver_37714.nasl 8338 2018-01-09 08:00:38Z teissa $
+# $Id: minihttpd_and_thttpd_webserver_37714.nasl 14233 2019-03-16 13:32:43Z mmartin $
 #
 # Acme thttpd and mini_httpd Terminal Escape Sequence in Logs Command Injection Vulnerability
 #
@@ -24,44 +24,48 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Acme 'thttpd' and 'mini_httpd' are prone to a command-injection
+
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.100447");
+  script_version("$Revision: 14233 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-16 14:32:43 +0100 (Sat, 16 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2010-01-13 11:20:27 +0100 (Wed, 13 Jan 2010)");
+  script_bugtraq_id(37714);
+  script_cve_id("CVE-2009-4490", "CVE-2009-4491");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+
+  script_name("Acme thttpd and mini_httpd Terminal Escape Sequence in Logs Command Injection Vulnerability");
+
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/37714");
+  script_xref(name:"URL", value:"http://www.acme.com/software/mini_httpd/");
+  script_xref(name:"URL", value:"http://www.acme.com/software/thttpd/");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/508830");
+
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_category(ACT_GATHER_INFO);
+  script_family("Web Servers");
+  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
+  script_dependencies("gb_get_http_banner.nasl");
+  script_mandatory_keys("mini_httpd/banner");
+  script_require_ports("Services/www", 80);
+  script_tag(name:"summary", value:"Acme 'thttpd' and 'mini_httpd' are prone to a command-injection
 vulnerability because they fail to adequately sanitize user-supplied
 input in logfiles.
 
 Attackers can exploit this issue to execute arbitrary commands in
 a terminal.
 
-This issue affects thttpd 2.25b and mini_httpd 1.19; other versions
-may also be affected.";
+This issue affects thttpd 2.25b and mini_httpd 1.19. Other versions
+may also be affected.");
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
+  since the disclosure of this vulnerability. Likely none will be provided anymore.
+  General solution options are to upgrade to a newer release, disable respective features,
+  remove the product or replace the product by another one.");
 
-
-if (description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.100447");
- script_version("$Revision: 8338 $");
- script_tag(name:"last_modification", value:"$Date: 2018-01-09 09:00:38 +0100 (Tue, 09 Jan 2018) $");
- script_tag(name:"creation_date", value:"2010-01-13 11:20:27 +0100 (Wed, 13 Jan 2010)");
- script_bugtraq_id(37714);
- script_cve_id("CVE-2009-4490","CVE-2009-4491");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-
- script_name("Acme thttpd and mini_httpd Terminal Escape Sequence in Logs Command Injection Vulnerability");
-
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/37714");
- script_xref(name : "URL" , value : "http://www.acme.com/software/mini_httpd/");
- script_xref(name : "URL" , value : "http://www.acme.com/software/thttpd/");
- script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/508830");
-
- script_tag(name:"qod_type", value:"remote_banner");
- script_category(ACT_GATHER_INFO);
- script_family("Web Servers");
- script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("gb_get_http_banner.nasl");
- script_mandatory_keys("mini_httpd/banner");
- script_require_ports("Services/www", 80);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");
@@ -79,17 +83,17 @@ if("Server: mini_httpd/" >< banner) {
     if(version_is_less_equal(version: version[1], test_version: "1.19")) {
       security_message(port:port);
       exit(0);
-    }  
-  }  
-} 
+    }
+  }
+}
 else if("Server: thttpd/" >< banner) {
    version = eregmatch(pattern:"Server: thttpd/([0-9.]+[a-z]*)", string: banner);
    if(!isnull(version[1])) {
      if(version_is_less_equal(version: version[1], test_version: "2.25b")) {
        security_message(port:port);
        exit(0);
-     }  
-   }  
-}  
+     }
+   }
+}
 
 exit(0);

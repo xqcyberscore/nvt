@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tinywebgallery_45025.nasl 8495 2018-01-23 07:57:49Z teissa $
+# $Id: gb_tinywebgallery_45025.nasl 14233 2019-03-16 13:32:43Z mmartin $
 #
 # TinyWebGallery Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -24,7 +24,32 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "TinyWebGallery is prone to multiple cross-site scripting
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.100915");
+  script_version("$Revision: 14233 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-16 14:32:43 +0100 (Sat, 16 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2010-11-25 12:46:25 +0100 (Thu, 25 Nov 2010)");
+  script_bugtraq_id(45025);
+
+  script_name("TinyWebGallery Multiple Cross-Site Scripting Vulnerabilities");
+
+  script_xref(name:"URL", value:"https://www.securityfocus.com/bid/45025");
+  script_xref(name:"URL", value:"http://www.tinywebgallery.com/en/overview.php");
+  script_xref(name:"URL", value:"http://www.tinywebgallery.com/blog/2010/11/twg-1-8-3-is-available/");
+
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_category(ACT_GATHER_INFO);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
+  script_dependencies("TinyWebGallery_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
+  script_tag(name:"summary", value:"TinyWebGallery is prone to multiple cross-site scripting
 vulnerabilities because it fails to properly sanitize user-
 supplied input.
 
@@ -33,37 +58,9 @@ in the browser of an unsuspecting user in the context of the affected
 site. This can allow the attacker to steal cookie-based authentication
 credentials and launch other attacks.
 
-TinyWebGallery 1.8.2 is vulnerable; other versions may also be
-affected.";
-
-tag_solution = "Updates are available. Please see the references for more information.";
-
-if (description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.100915");
- script_version("$Revision: 8495 $");
- script_tag(name:"last_modification", value:"$Date: 2018-01-23 08:57:49 +0100 (Tue, 23 Jan 2018) $");
- script_tag(name:"creation_date", value:"2010-11-25 12:46:25 +0100 (Thu, 25 Nov 2010)");
- script_bugtraq_id(45025);
-
- script_name("TinyWebGallery Multiple Cross-Site Scripting Vulnerabilities");
-
- script_xref(name : "URL" , value : "https://www.securityfocus.com/bid/45025");
- script_xref(name : "URL" , value : "http://www.tinywebgallery.com/en/overview.php");
- script_xref(name : "URL" , value : "http://www.tinywebgallery.com/blog/2010/11/twg-1-8-3-is-available/");
-
- script_tag(name:"cvss_base", value:"4.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
- script_tag(name:"qod_type", value:"remote_banner");
- script_category(ACT_GATHER_INFO);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("TinyWebGallery_detect.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+TinyWebGallery 1.8.2 is vulnerable. Other versions may also be
+affected.");
+  exit(0);
 }
 
 include("http_func.inc");

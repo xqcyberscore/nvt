@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_418e67c843_libsamplerate_fc27.nasl 8998 2018-03-01 12:47:58Z cfischer $
+# $Id: gb_fedora_2018_418e67c843_libsamplerate_fc27.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for libsamplerate FEDORA-2018-418e67c843
 #
@@ -27,46 +27,40 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874157");
-  script_version("$Revision: 8998 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-01 13:47:58 +0100 (Thu, 01 Mar 2018) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-02-28 08:39:46 +0100 (Wed, 28 Feb 2018)");
   script_cve_id("CVE-2017-7697");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for libsamplerate FEDORA-2018-418e67c843");
-  script_tag(name: "summary", value: "Check the version of libsamplerate");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "Secret Rabbit Code is a sample rate 
-converter for audio. It is capable of arbitrary and time varying conversions. 
-It can downsample by a factor of 12 and upsample by the same factor. 
-The ratio of input and output sample rates can be a real number. The conversion 
-ratio can also vary with time for speeding up and slowing down effects.
-");
-  script_tag(name: "affected", value: "libsamplerate on Fedora 27");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'libsamplerate'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"affected", value:"libsamplerate on Fedora 27");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
 
-  script_xref(name: "FEDORA", value: "2018-418e67c843");
-  script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/V46MIQHSTLTCN2GR2F66P7FKU5Y7A3TK");
+  script_xref(name:"FEDORA", value:"2018-418e67c843");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/V46MIQHSTLTCN2GR2F66P7FKU5Y7A3TK");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC27");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC27")
 {
@@ -77,6 +71,6 @@ if(release == "FC27")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

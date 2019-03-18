@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.881953");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14222 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 13:50:48 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-06-17 10:03:59 +0530 (Tue, 17 Jun 2014)");
   script_cve_id("CVE-2013-4148", "CVE-2013-4151", "CVE-2013-4535", "CVE-2013-4536",
                 "CVE-2013-4541", "CVE-2013-4542", "CVE-2013-6399", "CVE-2014-0182",
@@ -90,7 +90,8 @@ have shut down, start them again for this update to take effect.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"CESA", value:"2014:0743");
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2014-June/020364.html");
-  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for qemu-guest-agent");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'qemu-guest-agent'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

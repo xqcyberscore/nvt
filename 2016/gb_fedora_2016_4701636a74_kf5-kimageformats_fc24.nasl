@@ -26,44 +26,39 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808810");
-  script_version("$Revision: 6631 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:36:10 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-08-02 10:58:03 +0530 (Tue, 02 Aug 2016)");
   script_cve_id("CVE-2016-6232");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for kf5-kimageformats FEDORA-2016-4701636a74");
-  script_tag(name: "summary", value: "Check the version of kf5-kimageformats");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "This framework provides additional image format plugins for QtGui.  As
-such it is not required for the compilation of any other software, but
-may be a runtime requirement for Qt-based software to support certain
-image formats.
-");
-  script_tag(name: "affected", value: "kf5-kimageformats on Fedora 24");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-
-  script_xref(name: "FEDORA", value: "2016-4701636a74");
-  script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/KXN7K7H4KQZ6AOJ7J7IQI3R7DDS7APH4");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'kf5-kimageformats'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"affected", value:"kf5-kimageformats on Fedora 24");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
+  script_xref(name:"FEDORA", value:"2016-4701636a74");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/KXN7K7H4KQZ6AOJ7J7IQI3R7DDS7APH4");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC24");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC24")
 {
@@ -74,6 +69,6 @@ if(release == "FC24")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -21,19 +21,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875464");
-  script_version("$Revision: 13913 $");
+  script_version("$Revision: 14223 $");
   script_cve_id("CVE-2018-16865", "CVE-2018-16864", "CVE-2018-16866", "CVE-2018-15687",
                 "CVE-2018-15686", "CVE-2018-15688");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-27 17:43:39 +0100 (Wed, 27 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-02-18 04:07:26 +0100 (Mon, 18 Feb 2019)");
   script_name("Fedora Update for systemd FEDORA-2019-e0eb3d797e");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC28");
 
   script_xref(name:"FEDORA", value:"2019-e0eb3d797e");
   script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/XUX2VFQ5ZOLCOLUYLW52BQYNSNQCOJKI");
@@ -43,20 +43,6 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is
   present on the target host.");
-
-  script_tag(name:"insight", value:"systemd is a system and service manager that
-  runs as PID 1 and starts the rest of the system. It provides aggressive
-  parallelization capabilities, uses socket and D-Bus activation for starting
-  services, offers on-demand starting of daemons, keeps track of processes using
-  Linux control groups, maintains mount and automount points, and implements an
-  elaborate transactional dependency-based service control logic. systemd
-  supports SysV and LSB init scripts and works as a replacement for sysvinit.
-  Other parts of this package are a logging daemon, utilities to control basic
-  system configuration like the hostname, date, locale, maintain a list of
-  logged-in users and running containers and virtual machines, system accounts,
-  runtime directories and settings, and daemons to manage simple network
-  configuration, network time synchronization, log forwarding, and name resolution.
-");
 
   script_tag(name:"affected", value:"systemd on Fedora 28.");
 
@@ -72,7 +58,8 @@ include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
 release = rpm_get_ssh_release();
-if(!release) exit(0);
+if(!release)
+  exit(0);
 
 res = "";
 

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.872356");
-  script_version("$Revision: 6634 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 09:32:24 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-02-20 11:38:47 +0100 (Mon, 20 Feb 2017)");
   script_cve_id("CVE-2017-3238", "CVE-2017-3243", "CVE-2017-3244", "CVE-2017-3257",
                 "CVE-2017-3258", "CVE-2017-3265", "CVE-2017-3291", "CVE-2017-3312",
@@ -36,37 +36,31 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for mariadb FEDORA-2017-801e01d1ed");
-  script_tag(name: "summary", value: "Check the version of mariadb");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "MariaDB is a community developed branch of MySQL.
-MariaDB is a multi-user, multi-threaded SQL database server.
-It is a client/server implementation consisting of a server daemon (mysqld)
-and many different client programs and libraries. The base package
-contains the standard MariaDB/MySQL client programs and generic MySQL files.
-");
-  script_tag(name: "affected", value: "mariadb on Fedora 25");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-
-  script_xref(name: "FEDORA", value: "2017-801e01d1ed");
-  script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/FJPGXCDBERIBJEP5CZBRIZH3IH2KTCZ6");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'mariadb'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"affected", value:"mariadb on Fedora 25");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
+  script_xref(name:"FEDORA", value:"2017-801e01d1ed");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/FJPGXCDBERIBJEP5CZBRIZH3IH2KTCZ6");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC25");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC25")
 {
@@ -77,6 +71,6 @@ if(release == "FC25")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

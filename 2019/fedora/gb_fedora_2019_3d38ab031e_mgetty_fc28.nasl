@@ -21,18 +21,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875481");
-  script_version("$Revision: 14008 $");
+  script_version("$Revision: 14223 $");
   script_cve_id("CVE-2018-16741", "CVE-2018-16744", "CVE-2018-16745");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-06 08:38:19 +0100 (Wed, 06 Mar 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-02-27 04:17:56 +0100 (Wed, 27 Feb 2019)");
   script_name("Fedora Update for mgetty FEDORA-2019-3d38ab031e");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC28");
 
   script_xref(name:"FEDORA", value:"2019-3d38ab031e");
   script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/EEJBWOKPL2IPQDNQFS66U7MSO64T2ZGA");
@@ -41,18 +41,6 @@ if(description)
   package(s) announced via the FEDORA-2019-3d38ab031e advisory.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
-
-  script_tag(name:"insight", value:"The mgetty package contains a 'smart' getty which allows logins over a
-serial line (i.e., through a modem). If you&#39 re using a Class 2 or 2.0
-modem, mgetty can receive faxes. If you also need to send faxes,
-you&#39 ll need to install the sendfax program.
-
-If you&#39 ll be dialing in to your system using a modem, you should
-install the mgetty package. If you&#39 d like to send faxes using mgetty
-and your modem, you&#39 ll need to install the mgetty-sendfax program. If
-you need a viewer for faxes, you&#39 ll also need to install the
-mgetty-viewfax package.
-");
 
   script_tag(name:"affected", value:"mgetty on Fedora 28.");
 
@@ -68,7 +56,8 @@ include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
 release = rpm_get_ssh_release();
-if(!release) exit(0);
+if(!release)
+  exit(0);
 
 res = "";
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_399bce9f8f_libtiff_fc27.nasl 12697 2018-12-07 07:56:28Z mmartin $
+# $Id: gb_fedora_2018_399bce9f8f_libtiff_fc27.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for libtiff FEDORA-2018-399bce9f8f
 #
@@ -29,7 +29,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875294");
-  script_version("$Revision: 12697 $");
+  script_version("$Revision: 14223 $");
   script_cve_id("CVE-2018-17100", "CVE-2018-17101", "CVE-2018-10779",
                   "CVE-2017-11613", "CVE-2017-9935", "CVE-2017-18013", "CVE-2018-8905",
                   "CVE-2018-10963", "CVE-2018-7456", "CVE-2018-5784", "CVE-2018-18661",
@@ -37,31 +37,22 @@ if(description)
   script_bugtraq_id(106054);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-07 08:56:28 +0100 (Fri, 07 Dec 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-12-04 12:40:41 +0530 (Tue, 04 Dec 2018)");
   script_name("Fedora Update for libtiff FEDORA-2018-399bce9f8f");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC27");
 
   script_xref(name:"FEDORA", value:"2018-399bce9f8f");
-  script_xref(name:"URL" , value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/Y4XDS4ASFUN75CXGD4A6LIXCBAL3H2HN");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/Y4XDS4ASFUN75CXGD4A6LIXCBAL3H2HN");
 
   script_tag(name:"summary", value:"The remote host is missing an update for the 'libtiff'
   package(s) announced via the FEDORA-2018-399bce9f8f advisory.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
-
-  script_tag(name:"insight", value:"The libtiff package contains a library of functions for manipulating
-TIFF (Tagged Image File Format) image format files.  TIFF is a widely
-used file format for bitmapped images.  TIFF files usually end in the
-.tif extension and they are often quite large.
-
-The libtiff package should be installed if you need to manipulate TIFF
-format image files.
-");
 
   script_tag(name:"affected", value:"libtiff on Fedora 27.");
 
@@ -77,7 +68,8 @@ include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
 release = rpm_get_ssh_release();
-if(!release) exit(0);
+if(!release)
+  exit(0);
 
 res = "";
 

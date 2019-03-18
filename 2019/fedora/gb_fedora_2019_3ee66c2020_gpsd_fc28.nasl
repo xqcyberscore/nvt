@@ -21,18 +21,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875495");
-  script_version("$Revision: 14091 $");
+  script_version("$Revision: 14245 $");
   script_cve_id("CVE-2018-17937");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-11 10:24:52 +0100 (Mon, 11 Mar 2019) $");
+  script_tag(name:"cvss_base", value:"5.8");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 07:33:51 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-03-07 04:16:14 +0100 (Thu, 07 Mar 2019)");
   script_name("Fedora Update for gpsd FEDORA-2019-3ee66c2020");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC28");
 
   script_xref(name:"FEDORA", value:"2019-3ee66c2020");
   script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/VPRXVWICQRKHHYI2QH2EDTJQ4DXTYVC3");
@@ -42,15 +42,6 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is
   present on the target host.");
-
-  script_tag(name:"insight", value:"gpsd is a service daemon that mediates access
-  to a GPS sensor connected to the host computer by serial or USB interface, making
-  its data on the location/course/velocity of the sensor available to be queried on
-  TCP port 2947 of the host computer.  With gpsd, multiple GPS client applications
-  (such as navigational and war-driving software) can share access to a GPS without
-  contention or loss of data.  Also, gpsd responds to queries with a format that is
-  substantially easier to parse than NMEA 0183.
-");
 
   script_tag(name:"affected", value:"gpsd on Fedora 28.");
 
@@ -66,7 +57,8 @@ include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
 release = rpm_get_ssh_release();
-if(!release) exit(0);
+if(!release)
+  exit(0);
 
 res = "";
 

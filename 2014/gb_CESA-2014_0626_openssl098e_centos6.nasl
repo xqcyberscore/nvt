@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.881944");
-  script_version("$Revision: 14095 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-11 14:54:56 +0100 (Mon, 11 Mar 2019) $");
+  script_version("$Revision: 14222 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 13:50:48 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-06-09 12:29:43 +0530 (Mon, 09 Jun 2014)");
   script_cve_id("CVE-2014-0224");
   script_tag(name:"cvss_base", value:"6.8");
@@ -110,7 +110,8 @@ openssl097a-debuginfo-0.9.7a-12.el5_10.1.ia6 ...
   script_xref(name:"CESA", value:"2014:0626");
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2014-June/020345.html");
   script_xref(name:"URL", value:"https://access.redhat.com/site/articles/11258");
-  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for openssl098e");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'openssl098e'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

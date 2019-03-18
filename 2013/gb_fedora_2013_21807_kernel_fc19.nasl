@@ -23,55 +23,43 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.867089");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-11-26 10:20:46 +0530 (Tue, 26 Nov 2013)");
   script_cve_id("CVE-2013-4563", "CVE-2013-4348", "CVE-2013-4470", "CVE-2013-4387", "CVE-2013-4345", "CVE-2013-4350", "CVE-2013-4343", "CVE-2013-2888", "CVE-2013-2889", "CVE-2013-2891", "CVE-2013-2892", "CVE-2013-2893", "CVE-2013-2894", "CVE-2013-2895", "CVE-2013-2896", "CVE-2013-2897", "CVE-2013-2899", "CVE-2013-0343", "CVE-2013-4254", "CVE-2013-4125", "CVE-2013-2232", "CVE-2013-1059", "CVE-2013-2234");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_name("Fedora Update for kernel FEDORA-2013-21807");
 
-  tag_insight = "The kernel package contains the Linux kernel (vmlinuz), the core of any
-Linux operating system.  The kernel handles the basic functions
-of the operating system: memory allocation, process allocation, device
-input and output, etc.
-";
 
-  tag_affected = "kernel on Fedora 19";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  script_tag(name:"affected", value:"kernel on Fedora 19");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "FEDORA", value: "2013-21807");
-  script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2013-November/122543.html");
-  script_tag(name: "summary" , value: "Check for the Version of kernel");
+  script_xref(name:"FEDORA", value:"2013-21807");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/pipermail/package-announce/2013-November/122543.html");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'kernel'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC19");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC19")
 {
@@ -82,6 +70,6 @@ if(release == "FC19")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

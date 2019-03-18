@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-February/018427.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881217");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14222 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 13:50:48 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-30 16:48:09 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2009-5029", "CVE-2009-5064", "CVE-2010-0296", "CVE-2010-0830",
                 "CVE-2011-1071", "CVE-2011-1089", "CVE-2011-1095", "CVE-2011-1659",
@@ -38,7 +38,8 @@ if(description)
   script_xref(name:"CESA", value:"2012:0125");
   script_name("CentOS Update for glibc CESA-2012:0125 centos4");
 
-  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for glibc");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'glibc'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

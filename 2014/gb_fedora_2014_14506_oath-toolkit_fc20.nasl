@@ -26,45 +26,37 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.868491");
-  script_version("$Revision: 6759 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-11-19 06:34:32 +0100 (Wed, 19 Nov 2014)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("Fedora Update for oath-toolkit FEDORA-2014-14506");
-  script_tag(name: "summary", value: "Check the version of oath-toolkit");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "The OATH Toolkit provide components for building one-time password
-authentication systems. It contains shared libraries, command line tools and a
-PAM module. Supported technologies include the event-based HOTP algorithm
-(RFC4226) and the time-based TOTP algorithm (RFC6238). OATH stands for Open
-AuTHentication, which is the organization that specify the algorithms. For
-managing secret key files, the Portable Symmetric Key Container (PSKC) format
-described in RFC6030 is supported.
-");
-  script_tag(name: "affected", value: "oath-toolkit on Fedora 20");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"summary", value:"Check the version of oath-toolkit");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"affected", value:"oath-toolkit on Fedora 20");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "FEDORA", value: "2014-14506");
-  script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2014-November/144210.html");
+  script_xref(name:"FEDORA", value:"2014-14506");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/pipermail/package-announce/2014-November/144210.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC20");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC20")
 {
@@ -75,6 +67,6 @@ if(release == "FC20")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

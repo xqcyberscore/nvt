@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_3236af7d00_zchunk_fc27.nasl 12314 2018-11-12 09:01:54Z santu $
+# $Id: gb_fedora_2018_3236af7d00_zchunk_fc27.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for zchunk FEDORA-2018-3236af7d00
 #
@@ -29,32 +29,25 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875249");
-  script_version("$Revision: 12314 $");
+  script_version("$Revision: 14223 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-12 10:01:54 +0100 (Mon, 12 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-11-12 06:20:22 +0100 (Mon, 12 Nov 2018)");
   script_name("Fedora Update for zchunk FEDORA-2018-3236af7d00");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC27");
 
   script_xref(name:"FEDORA", value:"2018-3236af7d00");
-  script_xref(name:"URL" , value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/OTQFXL4HP3HTGRKJPJEOTMXFOX5F5PO2");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/OTQFXL4HP3HTGRKJPJEOTMXFOX5F5PO2");
 
   script_tag(name:"summary", value:"The remote host is missing an update for the 'zchunk'
   package(s) announced via the FEDORA-2018-3236af7d00 advisory.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
-
-  script_tag(name:"insight", value:"zchunk is a compressed file format that splits the file into independent
-chunks.  This allows you to only download the differences when downloading a
-new version of the file, and also makes zchunk files efficient over rsync.
-zchunk files are protected with strong checksums to verify that the file you
-downloaded is in fact the file you wanted.
-");
 
   script_tag(name:"affected", value:"zchunk on Fedora 27.");
 
@@ -70,7 +63,8 @@ include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
 release = rpm_get_ssh_release();
-if(!release) exit(0);
+if(!release)
+  exit(0);
 
 res = "";
 

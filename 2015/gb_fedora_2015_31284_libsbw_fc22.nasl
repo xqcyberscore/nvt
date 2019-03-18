@@ -26,51 +26,38 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806544");
-  script_version("$Revision: 6630 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:34:32 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-11-05 06:14:18 +0100 (Thu, 05 Nov 2015)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for libsbw FEDORA-2015-31284");
-  script_tag(name: "summary", value: "Check the version of libsbw");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "The Systems Biology Workbench (SBW) is a
-framework for application intercommunications. It uses a broker-based,
-distributed, message-passing architecture, supports many languages including
-Java, C++, Perl &amp  Python, and runs under Linux,OSX &amp  Win32. By default,
-the Broker opens a port for inter-Broker communications by searching for the
-first free port in the range 10102 through 10202, inclusive. By default, in
-Fedora this port range is not opened. See man-page for further informations.
-
-libSBW is the C++ Broker port from the original SBW Broker (written in Java)
-to C++. The current version implements all the functionality for the local side.
-Meaning if you will just use the Broker on a single machine you should be fine
-using the C++ Broker.
-");
-  script_tag(name: "affected", value: "libsbw on Fedora 22");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "FEDORA", value: "2015-31284");
-  script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-November/170873.html");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'libsbw'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"affected", value:"libsbw on Fedora 22");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
+  script_xref(name:"FEDORA", value:"2015-31284");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/pipermail/package-announce/2015-November/170873.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC22");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC22")
 {
@@ -81,6 +68,6 @@ if(release == "FC22")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: gather-package-list-docker-container.inc 14064 2019-03-09 16:54:28Z cfischer $
+# $Id: gather-package-list-docker-container.inc 14252 2019-03-18 09:01:25Z cfischer $
 #
 # Functions for OS Detection in Docker Containers
 #
@@ -25,7 +25,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301
 # USA.
 #
-# $Revision: 14064 $
+# $Revision: 14252 $
 #
 ###############################################################################
 
@@ -149,53 +149,6 @@ OS_CPE = make_array(
     "FC3",  "cpe:/o:fedoraproject:fedora_core:3",
     "FC2",  "cpe:/o:fedoraproject:fedora_core:2",
     "FC1",  "cpe:/o:fedoraproject:fedora_core:1",
-
-    # Debian
-    "DEB10.0", "cpe:/o:debian:debian_linux:10.0",
-    "DEB9.8", "cpe:/o:debian:debian_linux:9.8",
-    "DEB9.7", "cpe:/o:debian:debian_linux:9.7",
-    "DEB9.6", "cpe:/o:debian:debian_linux:9.6",
-    "DEB9.5", "cpe:/o:debian:debian_linux:9.5",
-    "DEB9.4", "cpe:/o:debian:debian_linux:9.4",
-    "DEB9.3", "cpe:/o:debian:debian_linux:9.3",
-    "DEB9.2", "cpe:/o:debian:debian_linux:9.2",
-    "DEB9.1", "cpe:/o:debian:debian_linux:9.1",
-    "DEB9.0", "cpe:/o:debian:debian_linux:9.0",
-    "DEB8.11", "cpe:/o:debian:debian_linux:8.11",
-    "DEB8.10", "cpe:/o:debian:debian_linux:8.10",
-    "DEB8.9", "cpe:/o:debian:debian_linux:8.9",
-    "DEB8.8", "cpe:/o:debian:debian_linux:8.8",
-    "DEB8.7", "cpe:/o:debian:debian_linux:8.7",
-    "DEB8.6", "cpe:/o:debian:debian_linux:8.6",
-    "DEB8.5", "cpe:/o:debian:debian_linux:8.5",
-    "DEB8.4", "cpe:/o:debian:debian_linux:8.4",
-    "DEB8.3", "cpe:/o:debian:debian_linux:8.3",
-    "DEB8.2", "cpe:/o:debian:debian_linux:8.2",
-    "DEB8.1", "cpe:/o:debian:debian_linux:8.1",
-    "DEB8.0", "cpe:/o:debian:debian_linux:8.0",
-    "DEB7.11", "cpe:/o:debian:debian_linux:7.11",
-    "DEB7.10", "cpe:/o:debian:debian_linux:7.10",
-    "DEB7.9", "cpe:/o:debian:debian_linux:7.9",
-    "DEB7.8", "cpe:/o:debian:debian_linux:7.8",
-    "DEB7.7", "cpe:/o:debian:debian_linux:7.7",
-    "DEB7.6", "cpe:/o:debian:debian_linux:7.6",
-    "DEB7.5", "cpe:/o:debian:debian_linux:7.5",
-    "DEB7.4", "cpe:/o:debian:debian_linux:7.4",
-    "DEB7.3", "cpe:/o:debian:debian_linux:7.3",
-    "DEB7.2", "cpe:/o:debian:debian_linux:7.2",
-    "DEB7.1", "cpe:/o:debian:debian_linux:7.1",
-    "DEB7.0", "cpe:/o:debian:debian_linux:7.0",
-    "DEB6.0", "cpe:/o:debian:debian_linux:6.0",
-    "DEB5.0", "cpe:/o:debian:debian_linux:5.0",
-    "DEB4.0", "cpe:/o:debian:debian_linux:4.0",
-    "DEB3.1", "cpe:/o:debian:debian_linux:3.1",
-    "DEB3.0", "cpe:/o:debian:debian_linux:3.0",
-    "DEB2.2", "cpe:/o:debian:debian_linux:2.2",
-    "DEB2.1", "cpe:/o:debian:debian_linux:2.1",
-    "DEB2.0", "cpe:/o:debian:debian_linux:2.0",
-    "DEB1.3", "cpe:/o:debian:debian_linux:1.3",
-    "DEB1.2", "cpe:/o:debian:debian_linux:1.2",
-    "DEB1.1", "cpe:/o:debian:debian_linux:1.1",
 
     # Mandriva
     "MNDK_2011.0",  "cpe:/o:mandriva:linux:2011.0",
@@ -1134,112 +1087,36 @@ function get_container_os(container_id, soc) {
 
   rls = ssh_cmd(socket:soc, cmd:base_cmd + "cat /etc/debian_version");
 
-  if("1.1" >< rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if(buf)
-      set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
-    ret = register_detected_docker_os(container_id:container_id, os:"Debian 1.1", oskey:"DEB1.1");
-    return ret;
-  }
-  if("1.2" >< rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if(buf)
-      set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
-    ret = register_detected_docker_os(container_id:container_id, os:"Debian 1.2", oskey:"DEB1.2");
-    return ret;
-  }
-  if("1.3" >< rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if(buf)
-      set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
-    ret = register_detected_docker_os(container_id:container_id, os:"Debian 1.3", oskey:"DEB1.3");
-    return ret;
-  }
-  if("2.0" >< rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if(buf)
-      set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
-    ret = register_detected_docker_os(container_id:container_id, os:"Debian 2.0", oskey:"DEB2.0");
-    return ret;
-  }
-  if("2.1" >< rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if(buf)
-      set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
-    ret = register_detected_docker_os(container_id:container_id, os:"Debian 2.1", oskey:"DEB2.1");
-    return ret;
-  }
-  if("2.2" >< rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if(buf)
-      set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
-    ret = register_detected_docker_os(container_id:container_id, os:"Debian 2.2 (Potato)", oskey:"DEB2.2");
-    return ret;
-  }
-  if("3.0" >< rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if(buf)
-      set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
-    ret = register_detected_docker_os(container_id:container_id, os:"Debian 3.0 (Woody)", oskey:"DEB3.0");
-    return ret;
-  }
-  if("3.1" >< rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if(buf)
-      set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
-    ret = register_detected_docker_os(container_id:container_id, os:"Debian 3.1 (Sarge)", oskey:"DEB3.1");
-    return ret;
-  }
-  if("4.0" >< rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if(buf)
-      set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
-    ret = register_detected_docker_os(container_id:container_id, os:"Debian 4.0 (Etch)", oskey:"DEB4.0");
-    return ret;
-  }
-  if("5.0" >< rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if(buf)
-      set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
-    ret = register_detected_docker_os(container_id:container_id, os:"Debian 5.0 (Lenny)", oskey:"DEB5.0");
-    return ret;
-  }
-  if("6.0" >< rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if(buf)
-      set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
-    ret = register_detected_docker_os(container_id:container_id, os:"Debian 6.0 (Squeeze)", oskey:"DEB6.0");
-    return ret;
-  }
-  if(match = eregmatch(pattern:"^7\.([0-9]+)$", string:rls)) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if(buf)
-      set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
-    ret = register_detected_docker_os(container_id:container_id, os:"Debian 7." + match[1] + " (Wheezy)", oskey:"DEB7." + match[1]);
-    return ret;
-  }
-  if(match = eregmatch(pattern:"^8\.([0-9]+)$", string:rls)) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if(buf)
-      set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
-    ret = register_detected_docker_os(container_id:container_id, os:"Debian 8." + match[1] + " (Jessie)", oskey:"DEB8." + match[1]);
-    return ret;
-  }
-  if(match = eregmatch(pattern:"^9\.([0-9]+)$", string:rls)) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if(buf)
-      set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
-    ret = register_detected_docker_os(container_id:container_id, os:"Debian 9." + match[1] + " (Stretch)", oskey:"DEB9." + match[1]);
-    return ret;
-  }
-
   # nb: At least Ubuntu 18.10 has "buster/sid" in debian_version so keep this in mind
   # if Ubuntu is wrongly detected and keep the Ubuntu pattern above the Debian ones.
-  if("buster/sid" >< rls) {
+  if(rls =~ "^[0-9]+[0-9.]+" || "buster/sid" >< rls) {
+
+    rls   = chomp(rls);
+    cpe   = "cpe:/o:debian:debian_linux";
+    oskey = "DEB";
+
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if(buf)
       set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
-    ret = register_detected_docker_os(container_id:container_id, os:"Debian Buster/Sid", oskey:"DEB10.0");
+
+    vers = eregmatch(pattern:"^([0-9]+)([0-9.]+)", string:rls, icase:FALSE);
+    if(vers[1]) {
+      cpe   += ":" + vers[1];
+      oskey += vers[1]; # nb: We only want to save the "major" release like 6, 7 and so on in ssh/login/release...
+    }
+
+    if(vers[2]) {
+      cpe += vers[2];
+      if(vers[1] =~ "^[1-3]$")
+        oskey += "." + vers[2]; # nb: but the older releases needs the second digit as well...
+    }
+
+    if(!vers && "buster/sid" >< rls) {
+      cpe   += ":10.0";
+      oskey += "10";
+    }
+
+    ret = register_detected_docker_os(container_id:container_id, os:"Debian " + rls, oskey:oskey, oscpe:cpe);
     return ret;
   }
 

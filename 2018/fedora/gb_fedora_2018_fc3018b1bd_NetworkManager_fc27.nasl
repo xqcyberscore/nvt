@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_fc3018b1bd_NetworkManager_fc27.nasl 12799 2018-12-14 07:38:54Z ckuersteiner $
+# $Id: gb_fedora_2018_fc3018b1bd_NetworkManager_fc27.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for NetworkManager FEDORA-2018-fc3018b1bd
 #
@@ -29,33 +29,26 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875282");
-  script_version("$Revision: 12799 $");
+  script_version("$Revision: 14223 $");
   script_cve_id("CVE-2018-15688");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-14 08:38:54 +0100 (Fri, 14 Dec 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-11-20 06:28:00 +0100 (Tue, 20 Nov 2018)");
   script_name("Fedora Update for NetworkManager FEDORA-2018-fc3018b1bd");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC27");
 
   script_xref(name:"FEDORA", value:"2018-fc3018b1bd");
-  script_xref(name:"URL" , value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/IIORNVJ3LRLCNPZWBPYIS3NJF5WXIQQ6");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/IIORNVJ3LRLCNPZWBPYIS3NJF5WXIQQ6");
 
   script_tag(name:"summary", value:"The remote host is missing an update for the 'NetworkManager'
   package(s) announced via the FEDORA-2018-fc3018b1bd advisory.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
-
-  script_tag(name:"insight", value:"NetworkManager is a system service that manages network interfaces and
-connections based on user or automatic configuration. It supports
-Ethernet, Bridge, Bond, VLAN, Team, InfiniBand, Wi-Fi, mobile broadband
-(WWAN), PPPoE and other devices, and supports a variety of different VPN
-services.
-");
 
   script_tag(name:"affected", value:"NetworkManager on Fedora 27.");
 
@@ -71,7 +64,8 @@ include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
 release = rpm_get_ssh_release();
-if(!release) exit(0);
+if(!release)
+  exit(0);
 
 res = "";
 

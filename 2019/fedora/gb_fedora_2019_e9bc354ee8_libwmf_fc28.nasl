@@ -21,18 +21,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875451");
-  script_version("$Revision: 13750 $");
+  script_version("$Revision: 14223 $");
   script_cve_id("CVE-2019-6978");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-19 08:33:36 +0100 (Tue, 19 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-02-10 04:06:09 +0100 (Sun, 10 Feb 2019)");
   script_name("Fedora Update for libwmf FEDORA-2019-e9bc354ee8");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC28");
 
   script_xref(name:"FEDORA", value:"2019-e9bc354ee8");
   script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/N6H5ZFHH5O5AEGGMYAJ553JGDJZY7YXL");
@@ -43,10 +43,6 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version
   is present on the target host.");
-
-  script_tag(name:"insight", value:"A library for reading and converting
-  Windows MetaFile vector graphics (WMF).
-");
 
   script_tag(name:"affected", value:"libwmf on Fedora 28.");
 
@@ -62,7 +58,8 @@ include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
 release = rpm_get_ssh_release();
-if(!release) exit(0);
+if(!release)
+  exit(0);
 
 res = "";
 

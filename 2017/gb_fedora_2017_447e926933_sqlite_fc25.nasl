@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2017_447e926933_sqlite_fc25.nasl 6757 2017-07-19 05:57:31Z cfischer $
+# $Id: gb_fedora_2017_447e926933_sqlite_fc25.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for sqlite FEDORA-2017-447e926933
 #
@@ -27,48 +27,39 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.872884");
-  script_version("$Revision: 6757 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-19 07:57:31 +0200 (Wed, 19 Jul 2017) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-07-16 07:38:24 +0200 (Sun, 16 Jul 2017)");
   script_cve_id("CVE-2017-10989");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for sqlite FEDORA-2017-447e926933");
-  script_tag(name: "summary", value: "Check the version of sqlite");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "SQLite is a C library that implements an 
-SQL database engine. A large subset of SQL92 is supported. A complete database 
-is stored in a single disk file. The API is designed for convenience and ease 
-of use. Applications that link against SQLite can enjoy the power and
-flexibility of an SQL database without the administrative hassles of
-supporting a separate database server.  Version 2 and version 3 binaries
-are named to permit each to be installed on a single host
-");
-  script_tag(name: "affected", value: "sqlite on Fedora 25");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-
-  script_xref(name: "FEDORA", value: "2017-447e926933");
-  script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/5LTI7HXMO72BGOW6GWY4GIWPZBXLF3UH");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'sqlite'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"affected", value:"sqlite on Fedora 25");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
+  script_xref(name:"FEDORA", value:"2017-447e926933");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/5LTI7HXMO72BGOW6GWY4GIWPZBXLF3UH");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC25");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC25")
 {
@@ -79,6 +70,6 @@ if(release == "FC25")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

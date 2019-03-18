@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpunity_newsmanager_lfi_vuln.nasl 5373 2017-02-20 16:27:48Z teissa $
+# $Id: gb_phpunity_newsmanager_lfi_vuln.nasl 14233 2019-03-16 13:32:43Z mmartin $
 #
 # Phpunity Newsmanager Local File Inclusion Vulnerability
 #
@@ -27,16 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800484");
-  script_version("$Revision: 5373 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:27:48 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 14233 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-16 14:32:43 +0100 (Sat, 16 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-03-10 15:48:25 +0100 (Wed, 10 Mar 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_cve_id("CVE-2010-0799");
   script_name("Phpunity Newsmanager Local File Inclusion Vulnerability");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/38409");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/11290");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.org/1001-exploits/phpunity-lfi.txt");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/38409");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/11290");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/1001-exploits/phpunity-lfi.txt");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
@@ -45,21 +45,18 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "affected" , value : "Phpunity.Newsmanager");
-  script_tag(name : "insight" , value : "Input passed to the 'id' parameter in 'misc/tell_a_friend/tell.php' is not
+  script_tag(name:"affected", value:"Phpunity.Newsmanager");
+  script_tag(name:"insight", value:"Input passed to the 'id' parameter in 'misc/tell_a_friend/tell.php' is not
   properly verified before being used to read files. This can be exploited to
   partially disclose content of arbitrary files via directory traversal attacks
   and URL-encoded NULL bytes.");
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
-  script_tag(name : "summary" , value : "This host is running Phpunity Newsmanager and is prone to local
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"This host is running Phpunity Newsmanager and is prone to local
   file inclusion vulnerability.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow attacker to disclose potentially sensitive
-  information.
-
-  Impact level: Application");
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to disclose potentially sensitive
+  information.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_app");
@@ -72,7 +69,6 @@ include("http_keepalive.inc");
 
 pnPort = get_http_port(default:80);
 
-## Check Host Supports PHP
 if(!can_host_php(port:pnPort)){
   exit(0);
 }

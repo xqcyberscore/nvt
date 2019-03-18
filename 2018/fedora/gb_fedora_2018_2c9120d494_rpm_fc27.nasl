@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_2c9120d494_rpm_fc27.nasl 12314 2018-11-12 09:01:54Z santu $
+# $Id: gb_fedora_2018_2c9120d494_rpm_fc27.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for rpm FEDORA-2018-2c9120d494
 #
@@ -29,32 +29,25 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875248");
-  script_version("$Revision: 12314 $");
+  script_version("$Revision: 14223 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-12 10:01:54 +0100 (Mon, 12 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-11-12 06:20:22 +0100 (Mon, 12 Nov 2018)");
   script_name("Fedora Update for rpm FEDORA-2018-2c9120d494");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC27");
 
   script_xref(name:"FEDORA", value:"2018-2c9120d494");
-  script_xref(name:"URL" , value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/NDDCX3XL53P6MS3HUZXEG635XDEL7AGU");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/NDDCX3XL53P6MS3HUZXEG635XDEL7AGU");
 
   script_tag(name:"summary", value:"The remote host is missing an update for the 'rpm'
   package(s) announced via the FEDORA-2018-2c9120d494 advisory.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
-
-  script_tag(name:"insight", value:"The RPM Package Manager (RPM) is a powerful command line driven
-package management system capable of installing, uninstalling,
-verifying, querying, and updating software packages. Each software
-package consists of an archive of files along with information about
-the package like its version, a description, etc.
-");
 
   script_tag(name:"affected", value:"rpm on Fedora 27.");
 
@@ -70,7 +63,8 @@ include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
 release = rpm_get_ssh_release();
-if(!release) exit(0);
+if(!release)
+  exit(0);
 
 res = "";
 

@@ -21,18 +21,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875505");
-  script_version("$Revision: 14166 $");
+  script_version("$Revision: 14223 $");
   script_cve_id("CVE-2019-8980", "CVE-2019-9162", "CVE-2019-9213");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-14 08:20:11 +0100 (Thu, 14 Mar 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-03-12 04:12:20 +0100 (Tue, 12 Mar 2019)");
   script_name("Fedora Update for kernel-headers FEDORA-2019-196ab64d65");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC28");
 
   script_xref(name:"FEDORA", value:"2019-196ab64d65");
   script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/GI6YTN6SENQC7IZSHWB2HILUZEN3EFKP");
@@ -41,13 +41,6 @@ if(description)
   package(s) announced via the FEDORA-2019-196ab64d65 advisory.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
-
-  script_tag(name:"insight", value:"Kernel-headers includes the C header files that specify the interface
-between the Linux kernel and userspace libraries and programs.  The
-header files define structures and constants that are needed for
-building most standard programs and are also needed for rebuilding the
-glibc package.
-");
 
   script_tag(name:"affected", value:"kernel-headers on Fedora 28.");
 
@@ -63,7 +56,8 @@ include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
 release = rpm_get_ssh_release();
-if(!release) exit(0);
+if(!release)
+  exit(0);
 
 res = "";
 

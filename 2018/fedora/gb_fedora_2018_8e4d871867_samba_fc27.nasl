@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_8e4d871867_samba_fc27.nasl 12296 2018-11-09 15:51:28Z mmartin $
+# $Id: gb_fedora_2018_8e4d871867_samba_fc27.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for samba FEDORA-2018-8e4d871867
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874979");
-  script_version("$Revision: 12296 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:51:28 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-08-22 06:58:16 +0200 (Wed, 22 Aug 2018)");
   script_cve_id("CVE-2018-1139", "CVE-2018-1140", "CVE-2018-10858", "CVE-2018-10918",
                 "CVE-2018-10919", "CVE-2018-1050", "CVE-2018-1057", "CVE-2017-14746",
@@ -37,35 +37,33 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for samba FEDORA-2018-8e4d871867");
-  script_tag(name:"summary", value:"Check the version of samba");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'samba'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
-  script_tag(name:"insight", value:"Samba is the standard Windows interoperability
-suite of programs for Linux and Unix.
-");
   script_tag(name:"affected", value:"samba on Fedora 27");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"FEDORA", value:"2018-8e4d871867");
-  script_xref(name:"URL" , value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/7YJYQHQW2OGFNOT7P6SZ5G7A4EDHC2ND");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/7YJYQHQW2OGFNOT7P6SZ5G7A4EDHC2ND");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC27");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC27")
 {

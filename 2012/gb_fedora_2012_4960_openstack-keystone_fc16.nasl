@@ -23,61 +23,41 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "Keystone is a Python implementation of the OpenStack
-  (<A HREF= &qt http://www.openstack.org &qt >http://www.openstack.org</A>) identity service API.
-
-  Services included are:
-  * Keystone    - identity store and authentication service
-  * Auth_Token  - WSGI middleware that can be used to handle token auth protocol
-                  (WSGI or remote proxy)
-  * Auth_Basic  - Stub for WSGI middleware that will be used to handle basic auth
-  * Auth_OpenID - Stub for WSGI middleware that will be used to handle openid
-                  auth protocol
-  * RemoteAuth  - WSGI middleware that can be used in services (like Swift, Nova,
-                  and Glance) when Auth middleware is running remotely";
-
-tag_affected = "openstack-keystone on Fedora 16";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
 if(description)
 {
-  script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2012-April/077041.html");
+  script_xref(name:"URL", value:"http://lists.fedoraproject.org/pipermail/package-announce/2012-April/077041.html");
   script_oid("1.3.6.1.4.1.25623.1.0.864130");
-  script_version("$Revision: 9352 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-04-11 10:42:42 +0530 (Wed, 11 Apr 2012)");
   script_cve_id("CVE-2012-1572");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_xref(name: "FEDORA", value: "2012-4960");
+  script_xref(name:"FEDORA", value:"2012-4960");
   script_name("Fedora Update for openstack-keystone FEDORA-2012-4960");
-
-  script_tag(name: "summary" , value: "Check for the Version of openstack-keystone");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'openstack-keystone'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC16");
+  script_tag(name:"affected", value:"openstack-keystone on Fedora 16");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC16")
 {
@@ -88,6 +68,6 @@ if(release == "FC16")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

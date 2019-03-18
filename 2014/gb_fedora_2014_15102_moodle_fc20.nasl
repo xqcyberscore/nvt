@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.868521");
-  script_version("$Revision: 6759 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-11-26 06:44:08 +0100 (Wed, 26 Nov 2014)");
   script_cve_id("CVE-2014-3541", "CVE-2014-3542", "CVE-2014-3543", "CVE-2014-3544",
                 "CVE-2014-3545", "CVE-2014-3546", "CVE-2014-3547", "CVE-2014-3548",
@@ -39,35 +39,31 @@ if(description)
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Fedora Update for moodle FEDORA-2014-15102");
-  script_tag(name: "summary", value: "Check the version of moodle");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "Moodle is a course management system (CMS) - a free, Open Source software
-package designed using sound pedagogical principles, to help educators create
-effective online learning communities.
-");
-  script_tag(name: "affected", value: "moodle on Fedora 20");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"summary", value:"Check the version of moodle");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"affected", value:"moodle on Fedora 20");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
-  script_xref(name: "FEDORA", value: "2014-15102");
-  script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2014-November/144901.html");
+  script_xref(name:"FEDORA", value:"2014-15102");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/pipermail/package-announce/2014-November/144901.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC20");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC20")
 {
@@ -78,6 +74,6 @@ if(release == "FC20")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

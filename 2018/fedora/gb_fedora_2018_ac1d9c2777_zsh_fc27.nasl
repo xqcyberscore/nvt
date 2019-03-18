@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_ac1d9c2777_zsh_fc27.nasl 9939 2018-05-23 14:50:30Z cfischer $
+# $Id: gb_fedora_2018_ac1d9c2777_zsh_fc27.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for zsh FEDORA-2018-ac1d9c2777
 #
@@ -27,48 +27,42 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874417");
-  script_version("$Revision: 9939 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-23 16:50:30 +0200 (Wed, 23 May 2018) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-05-06 05:45:03 +0200 (Sun, 06 May 2018)");
-  script_cve_id("CVE-2018-1100", "CVE-2018-1083", "CVE-2018-1071", "CVE-2018-7549", 
+  script_cve_id("CVE-2018-1100", "CVE-2018-1083", "CVE-2018-1071", "CVE-2018-7549",
                 "CVE-2018-7548");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for zsh FEDORA-2018-ac1d9c2777");
-  script_tag(name:"summary", value:"Check the version of zsh");
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present 
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'zsh'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
-  script_tag(name:"insight", value:"The zsh shell is a command interpreter 
-usable as an interactive login shell and as a shell script command processor.  
-Zsh resembles the ksh shell (the Korn shell), but includes many enhancements.  
-Zsh supports command line editing, built-in spelling correction, programmable
-command completion, shell functions (with autoloading), a history mechanism, 
-and more.
-");
   script_tag(name:"affected", value:"zsh on Fedora 27");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"FEDORA", value:"2018-ac1d9c2777");
-  script_xref(name:"URL" , value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/FG2P7HVEUA4US3FX5XFHINOCK5AKLJL4");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/FG2P7HVEUA4US3FX5XFHINOCK5AKLJL4");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC27");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC27")
 {

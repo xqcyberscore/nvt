@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_5d6e80ab82_dislocker_fc28.nasl 11933 2018-10-17 07:09:44Z asteins $
+# $Id: gb_fedora_2018_5d6e80ab82_dislocker_fc28.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for dislocker FEDORA-2018-5d6e80ab82
 #
@@ -27,54 +27,41 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875183");
-  script_version("$Revision: 11933 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-17 09:09:44 +0200 (Wed, 17 Oct 2018) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-10-13 07:07:43 +0200 (Sat, 13 Oct 2018)");
   script_cve_id("CVE-2018-0497");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for dislocker FEDORA-2018-5d6e80ab82");
-  script_tag(name:"summary", value:"Check the version of dislocker");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'dislocker'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
   on the target host.");
-  script_tag(name:"insight", value:"Dislocker has been designed to read BitLocker
-  encrypted partitions ('drives') under a Linux system. The driver has the
-  capability to read/write partitions encrypted using Microsoft Windows Vista,
-  7, 8, 8.1 and 10 (AES-CBC, AES-XTS, 128 or 256 bits, with or without the Elephant
-  diffuser, encrypted partitions) BitLocker-To-Go encrypted partitions (USB/FAT32 partitions).
-
-The file name where the BitLocker encrypted partition will be decrypted needs
-to be given. This may take a long time, depending on the size of the encrypted
-partition. But afterward, once the partition is decrypted, the access to the
-NTFS partition will be faster than with FUSE. Another thing to think about is
-the size of the disk (same size as the volume that is tried to be decrypted).
-Nevertheless, once the partition is decrypted, the file can be mounted as any
-NTFS partition and won&#39 t have any link to the original BitLocker partition.
-");
   script_tag(name:"affected", value:"dislocker on Fedora 28");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"FEDORA", value:"2018-5d6e80ab82");
-  script_xref(name:"URL" , value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6NNIXS7UKQLOJUG7FEVPT6VW2CUKQ65S");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6NNIXS7UKQLOJUG7FEVPT6VW2CUKQ65S");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC28");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC28")
 {

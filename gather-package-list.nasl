@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gather-package-list.nasl 14093 2019-03-11 11:04:14Z cfischer $
+# $Id: gather-package-list.nasl 14252 2019-03-18 09:01:25Z cfischer $
 #
 # Determine OS and list of installed packages via SSH login
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.50282");
-  script_version("$Revision: 14093 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-11 12:04:14 +0100 (Mon, 11 Mar 2019) $");
+  script_version("$Revision: 14252 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 10:01:25 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2008-01-17 22:05:49 +0100 (Thu, 17 Jan 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -220,53 +220,6 @@ OS_CPE = make_array(
     "FC3",  "cpe:/o:fedoraproject:fedora_core:3",
     "FC2",  "cpe:/o:fedoraproject:fedora_core:2",
     "FC1",  "cpe:/o:fedoraproject:fedora_core:1",
-
-    # Debian
-    "DEB10.0", "cpe:/o:debian:debian_linux:10.0",
-    "DEB9.8", "cpe:/o:debian:debian_linux:9.8",
-    "DEB9.7", "cpe:/o:debian:debian_linux:9.7",
-    "DEB9.6", "cpe:/o:debian:debian_linux:9.6",
-    "DEB9.5", "cpe:/o:debian:debian_linux:9.5",
-    "DEB9.4", "cpe:/o:debian:debian_linux:9.4",
-    "DEB9.3", "cpe:/o:debian:debian_linux:9.3",
-    "DEB9.2", "cpe:/o:debian:debian_linux:9.2",
-    "DEB9.1", "cpe:/o:debian:debian_linux:9.1",
-    "DEB9.0", "cpe:/o:debian:debian_linux:9.0",
-    "DEB8.11", "cpe:/o:debian:debian_linux:8.11",
-    "DEB8.10", "cpe:/o:debian:debian_linux:8.10",
-    "DEB8.9", "cpe:/o:debian:debian_linux:8.9",
-    "DEB8.8", "cpe:/o:debian:debian_linux:8.8",
-    "DEB8.7", "cpe:/o:debian:debian_linux:8.7",
-    "DEB8.6", "cpe:/o:debian:debian_linux:8.6",
-    "DEB8.5", "cpe:/o:debian:debian_linux:8.5",
-    "DEB8.4", "cpe:/o:debian:debian_linux:8.4",
-    "DEB8.3", "cpe:/o:debian:debian_linux:8.3",
-    "DEB8.2", "cpe:/o:debian:debian_linux:8.2",
-    "DEB8.1", "cpe:/o:debian:debian_linux:8.1",
-    "DEB8.0", "cpe:/o:debian:debian_linux:8.0",
-    "DEB7.11", "cpe:/o:debian:debian_linux:7.11",
-    "DEB7.10", "cpe:/o:debian:debian_linux:7.10",
-    "DEB7.9", "cpe:/o:debian:debian_linux:7.9",
-    "DEB7.8", "cpe:/o:debian:debian_linux:7.8",
-    "DEB7.7", "cpe:/o:debian:debian_linux:7.7",
-    "DEB7.6", "cpe:/o:debian:debian_linux:7.6",
-    "DEB7.5", "cpe:/o:debian:debian_linux:7.5",
-    "DEB7.4", "cpe:/o:debian:debian_linux:7.4",
-    "DEB7.3", "cpe:/o:debian:debian_linux:7.3",
-    "DEB7.2", "cpe:/o:debian:debian_linux:7.2",
-    "DEB7.1", "cpe:/o:debian:debian_linux:7.1",
-    "DEB7.0", "cpe:/o:debian:debian_linux:7.0",
-    "DEB6.0", "cpe:/o:debian:debian_linux:6.0",
-    "DEB5.0", "cpe:/o:debian:debian_linux:5.0",
-    "DEB4.0", "cpe:/o:debian:debian_linux:4.0",
-    "DEB3.1", "cpe:/o:debian:debian_linux:3.1",
-    "DEB3.0", "cpe:/o:debian:debian_linux:3.0",
-    "DEB2.2", "cpe:/o:debian:debian_linux:2.2",
-    "DEB2.1", "cpe:/o:debian:debian_linux:2.1",
-    "DEB2.0", "cpe:/o:debian:debian_linux:2.0",
-    "DEB1.3", "cpe:/o:debian:debian_linux:1.3",
-    "DEB1.2", "cpe:/o:debian:debian_linux:1.2",
-    "DEB1.1", "cpe:/o:debian:debian_linux:1.1",
 
     # Mandriva
     "MNDK_2011.0",  "cpe:/o:mandriva:linux:2011.0",
@@ -2451,130 +2404,41 @@ rls = ssh_cmd( socket:sock, cmd:"cat /etc/debian_version", return_errors:FALSE )
 if( "No such file or directory" >!< rls && strlen( rls ) )
   _unknown_os_info += '/etc/debian_version: ' + rls + '\n\n';
 
-if( "1.1" >< rls ) {
-  set_kb_item( name:"ssh/login/debian_linux", value:TRUE );
-  buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
-  if( ! isnull( buf ) ) register_packages( buf:buf );
-  log_message( port:port, data:"We are able to login and detect that you are running Debian 1.1" );
-  register_detected_os( os:"Debian 1.1", oskey:"DEB1.1" );
-  exit( 0 );
-}
-if( "1.2" >< rls ) {
-  set_kb_item( name:"ssh/login/debian_linux", value:TRUE );
-  buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
-  if( ! isnull( buf ) ) register_packages( buf:buf );
-  log_message( port:port, data:"We are able to login and detect that you are running Debian 1.2" );
-  register_detected_os( os:"Debian 1.2", oskey:"DEB1.2" );
-  exit( 0 );
-}
-if( "1.3" >< rls ) {
-  set_kb_item( name:"ssh/login/debian_linux", value:TRUE );
-  buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
-  if( ! isnull( buf ) ) register_packages( buf:buf );
-  log_message( port:port, data:"We are able to login and detect that you are running Debian 1.3" );
-  register_detected_os( os:"Debian 1.3", oskey:"DEB1.3" );
-  exit( 0 );
-}
-if( "2.0" >< rls ) {
-  set_kb_item( name:"ssh/login/debian_linux", value:TRUE );
-  buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
-  if( ! isnull( buf ) ) register_packages( buf:buf );
-  log_message( port:port, data:"We are able to login and detect that you are running Debian 2.0" );
-  register_detected_os( os:"Debian 2.0", oskey:"DEB2.0" );
-  exit( 0 );
-}
-if( "2.1" >< rls ) {
-  set_kb_item( name:"ssh/login/debian_linux", value:TRUE );
-  buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
-  if( ! isnull( buf ) ) register_packages( buf:buf );
-  log_message( port:port, data:"We are able to login and detect that you are running Debian 2.1" );
-  register_detected_os( os:"Debian 2.1", oskey:"DEB2.1" );
-  exit( 0 );
-}
-if( "2.2" >< rls ) {
-  set_kb_item( name:"ssh/login/debian_linux", value:TRUE );
-  buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
-  if( ! isnull( buf ) ) register_packages( buf:buf );
-  log_message( port:port, data:"We are able to login and detect that you are running Debian 2.2 (Potato)" );
-  register_detected_os( os:"Debian 2.2 (Potato)", oskey:"DEB2.2" );
-  exit( 0 );
-}
-if( "3.0" >< rls ) {
-  set_kb_item( name:"ssh/login/debian_linux", value:TRUE );
-  buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
-  if( ! isnull( buf ) ) register_packages( buf:buf );
-  log_message( port:port, data:"We are able to login and detect that you are running Debian 3.0 (Woody)" );
-  register_detected_os( os:"Debian 3.0 (Woody)", oskey:"DEB3.0" );
-  exit( 0 );
-}
-if( "3.1" >< rls ) {
-  set_kb_item( name:"ssh/login/debian_linux", value:TRUE );
-  buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
-  if( ! isnull( buf ) ) register_packages( buf:buf );
-  log_message( port:port, data:"We are able to login and detect that you are running Debian 3.1 (Sarge)" );
-  register_detected_os( os:"Debian 3.1 (Sarge)", oskey:"DEB3.1" );
-  exit( 0 );
-}
-if( "4.0" >< rls ) {
-  set_kb_item( name:"ssh/login/debian_linux", value:TRUE );
-  buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
-  if( ! isnull( buf ) ) register_packages( buf:buf );
-  log_message( port:port, data:"We are able to login and detect that you are running Debian 4.0 (Etch)" );
-  register_detected_os( os:"Debian 4.0 (Etch)", oskey:"DEB4.0" );
-  exit( 0 );
-}
-if( "5.0" >< rls ) {
-  set_kb_item( name:"ssh/login/debian_linux", value:TRUE );
-  buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
-  if( ! isnull( buf ) ) register_packages( buf:buf );
-  log_message( port:port, data:"We are able to login and detect that you are running Debian 5.0 (Lenny)" );
-  register_detected_os( os:"Debian 5.0 (Lenny)", oskey:"DEB5.0" );
-  exit( 0 );
-}
-if( "6.0" >< rls ) {
-  set_kb_item( name:"ssh/login/debian_linux", value:TRUE );
-  buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
-  if( ! isnull( buf ) ) register_packages( buf:buf );
-  log_message( port:port, data:"We are able to login and detect that you are running Debian 6.0 (Squeeze)" );
-  register_detected_os( os:"Debian 6.0 (Squeeze)", oskey:"DEB6.0" );
-  exit( 0 );
-}
-
-if( match = eregmatch( pattern:"^7\.([0-9]+)$", string:rls ) ) {
-  set_kb_item( name:"ssh/login/debian_linux", value:TRUE );
-  buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
-  if( ! isnull( buf ) ) register_packages( buf:buf );
-  log_message( port:port, data:"We are able to login and detect that you are running Debian 7." + match[1] + " (Wheezy)" );
-  register_detected_os( os:"Debian 7." + match[1] + " (Wheezy)", oskey:"DEB7." + match[1] );
-  exit( 0 );
-}
-
-if( match = eregmatch( pattern:"^8\.([0-9]+)$", string:rls ) ) {
-  set_kb_item( name:"ssh/login/debian_linux", value:TRUE );
-  buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
-  if( ! isnull( buf ) ) register_packages( buf:buf );
-  log_message( port:port, data:"We are able to login and detect that you are running Debian 8." + match[1] + " (Jessie)" );
-  register_detected_os( os:"Debian 8." + match[1] + " (Jessie)", oskey:"DEB8." + match[1] );
-  exit( 0 );
-}
-
-if( match = eregmatch( pattern:"^9\.([0-9]+)$", string:rls ) ) {
-  set_kb_item( name:"ssh/login/debian_linux", value:TRUE );
-  buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
-  if( ! isnull( buf ) ) register_packages( buf:buf );
-  log_message( port:port, data:"We are able to login and detect that you are running Debian 9." + match[1] + " (Stretch)" );
-  register_detected_os( os:"Debian 9." + match[1] + " (Stretch)", oskey:"DEB9." + match[1] );
-  exit( 0 );
-}
-
 # nb: At least Ubuntu 18.10 has "buster/sid" in debian_version so keep this in mind
 # if Ubuntu is wrongly detected and keep the Ubuntu pattern above the Debian ones.
-if( "buster/sid" >< rls ) {
+if( rls =~ "^[0-9]+[0-9.]+" || "buster/sid" >< rls ) {
+
+  rls   = chomp( rls );
+  cpe   = "cpe:/o:debian:debian_linux";
+  oskey = "DEB";
+
   set_kb_item( name:"ssh/login/debian_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
-  if( ! isnull( buf ) ) register_packages( buf:buf );
-  log_message( port:port, data:"We are able to login and detect that you are running Debian Buster/Sid" );
-  register_detected_os( os:"Debian Buster/Sid", oskey:"DEB10.0" );
+  if( buf )
+    register_packages( buf:buf );
+
+  log_message( port:port, data:"We are able to login and detect that you are running Debian " + rls );
+
+  vers = eregmatch( pattern:"^([0-9]+)([0-9.]+)", string:rls, icase:FALSE );
+  if( vers[1] ) {
+    cpe   += ":" + vers[1];
+    oskey += vers[1]; # nb: We only want to save the "major" release like 6, 7 and so on in ssh/login/release...
+  }
+
+  if( vers[2] ) {
+    cpe += vers[2];
+    if( vers[1] =~ "^[1-3]$" )
+      oskey += "." + vers[2]; # nb: but the older releases needs the second digit as well...
+  }
+
+  if( ! vers && "buster/sid" >< rls ) {
+    cpe   += ":10.0";
+    oskey += "10";
+  }
+
+  set_kb_item( name:"ssh/login/release", value:oskey );
+  register_and_report_os( os:"Debian GNU/Linux " + rls, cpe:cpe, banner_type:"SSH login", desc:SCRIPT_DESC, runs_key:"unixoide" );
+
   exit( 0 );
 }
 

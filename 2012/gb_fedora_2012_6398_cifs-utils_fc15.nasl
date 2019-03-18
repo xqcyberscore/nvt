@@ -23,54 +23,41 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_affected = "cifs-utils on Fedora 15";
-tag_insight = "The SMB/CIFS protocol is a standard file sharing protocol widely deployed
-  on Microsoft Windows machines. This package contains tools for mounting
-  shares on Linux using the SMB/CIFS protocol. The tools in this package
-  work in conjunction with support in the kernel to allow one to mount a
-  SMB/CIFS share onto a client and use it as if it were a standard Linux
-  file system.";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
 if(description)
 {
-  script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2012-May/079452.html");
+  script_xref(name:"URL", value:"http://lists.fedoraproject.org/pipermail/package-announce/2012-May/079452.html");
   script_oid("1.3.6.1.4.1.25623.1.0.864211");
   script_tag(name:"cvss_base", value:"2.1");
- script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
- script_version("$Revision: 9352 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-05-04 10:46:39 +0530 (Fri, 04 May 2012)");
   script_cve_id("CVE-2012-1586");
-  script_xref(name: "FEDORA", value: "2012-6398");
+  script_xref(name:"FEDORA", value:"2012-6398");
   script_name("Fedora Update for cifs-utils FEDORA-2012-6398");
-
-  script_tag(name: "summary" , value: "Check for the Version of cifs-utils");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'cifs-utils'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC15");
+  script_tag(name:"affected", value:"cifs-utils on Fedora 15");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC15")
 {
@@ -81,6 +68,6 @@ if(release == "FC15")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2019_b8ffb3768d_python37_fc28.nasl 13368 2019-01-30 14:30:18Z santu $
+# $Id: gb_fedora_2019_b8ffb3768d_python37_fc28.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for python37 FEDORA-2019-b8ffb3768d
 #
@@ -29,18 +29,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875432");
-  script_version("$Revision: 13368 $");
+  script_version("$Revision: 14223 $");
   script_cve_id("CVE-2019-5010", "CVE-2018-14647");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-30 15:30:18 +0100 (Wed, 30 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-01-28 04:02:46 +0100 (Mon, 28 Jan 2019)");
   script_name("Fedora Update for python37 FEDORA-2019-b8ffb3768d");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC28");
 
   script_xref(name:"FEDORA", value:"2019-b8ffb3768d");
   script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/LQRXJIHNMOV573P6TBSOKOZVCS3SW5UQ");
@@ -50,14 +50,6 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is
   present on the target host.");
-
-  script_tag(name:"insight", value:"Python 3.7 package for developers.
-
-This package exists to allow developers to test their code against a newer
-version of Python. This is not a full Python stack and if you wish to run
-your applications with Python 3.7, update your Fedora to a newer
-version once Python 3.7 is stable.
-");
 
   script_tag(name:"affected", value:"python37 on Fedora 28.");
 
@@ -73,7 +65,8 @@ include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
 release = rpm_get_ssh_release();
-if(!release) exit(0);
+if(!release)
+  exit(0);
 
 res = "";
 

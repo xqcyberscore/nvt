@@ -26,49 +26,39 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808529");
-  script_version("$Revision: 6631 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:36:10 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-07-02 06:39:07 +0200 (Sat, 02 Jul 2016)");
   script_cve_id("CVE-2016-4980");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for xguest FEDORA-2016-2a66f41200");
-  script_tag(name: "summary", value: "Check the version of xguest");
-
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-  of detect NVT and check if the version is vulnerable or not.");
-
-  script_tag(name: "insight", value: "Installing this package sets up the xguest
-  user to be used as a temporary account to switch to or as a kiosk user account.
-  The account is disabled unless SELinux is in enforcing mode. The user is only
-  allowed to log in via graphical login program.
-  The home and temporary directories of the user will be polyinstantiated and
-  mounted on tmpfs.");
-
-  script_tag(name: "affected", value: "xguest on Fedora 23");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-
-  script_xref(name: "FEDORA", value: "2016-2a66f41200");
-  script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/AVW2QJFNZUZYBN4M4YUE7S2NZBWWMGES");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'xguest'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"affected", value:"xguest on Fedora 23");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
+  script_xref(name:"FEDORA", value:"2016-2a66f41200");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/AVW2QJFNZUZYBN4M4YUE7S2NZBWWMGES");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC23");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC23")
 {
@@ -79,6 +69,6 @@ if(release == "FC23")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

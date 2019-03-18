@@ -26,50 +26,38 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869898");
-  script_version("$Revision: 6630 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:34:32 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-08-20 06:45:18 +0200 (Thu, 20 Aug 2015)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for uwsgi FEDORA-2015-12020");
-  script_tag(name: "summary", value: "Check the version of uwsgi");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "uWSGI is a fast (pure C), self-healing,
-developer/sysadmin-friendly application container server.  Born as a WSGI-only
-server, over time it has evolved in a complete stack for networked/clustered
-web applications, implementing message/object passing, caching, RPC and process
-management. It uses the uwsgi (all lowercase, already included by default in the
-Nginx and Cherokee releases) protocol for all the networking/interprocess
-communications.  Can be run in preforking mode, threaded, asynchronous/evented
-and supports various form of green threads/co-routine (like uGreen and Fiber).
-Sysadmin will love it as it can be configured via command line, environment
-variables, xml, .ini and yaml files and via LDAP. Being fully modular can use
-tons of different technology on top of the same core.
-");
-  script_tag(name: "affected", value: "uwsgi on Fedora 22");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "FEDORA", value: "2015-12020");
-  script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-August/163933.html");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'uwsgi'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"affected", value:"uwsgi on Fedora 22");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
+  script_xref(name:"FEDORA", value:"2015-12020");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/pipermail/package-announce/2015-August/163933.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC22");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC22")
 {
@@ -80,6 +68,6 @@ if(release == "FC22")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

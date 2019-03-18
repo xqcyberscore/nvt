@@ -26,43 +26,39 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.872714");
-  script_version("$Revision: 6634 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 09:32:24 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-05-27 07:02:10 +0200 (Sat, 27 May 2017)");
   script_cve_id("CVE-2017-7489", "CVE-2017-7490", "CVE-2017-7491");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for moodle FEDORA-2017-1f15fde598");
-  script_tag(name: "summary", value: "Check the version of moodle");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of 
-  detect NVT and check if the version is vulnerable or not."); 
-  script_tag(name: "insight", value: "Moodle is a course management system (CMS) - 
-  a free, Open Source software package designed using sound pedagogical 
-  principles, to help educators create effective online learning communities. "); 
-  script_tag(name: "affected", value: "moodle on Fedora 24");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-
-  script_xref(name: "FEDORA", value: "2017-1f15fde598");
-  script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UNNQ25SWGZ76CGEIEYB6XHESXYZUBQVV");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'moodle'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"affected", value:"moodle on Fedora 24");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
+  script_xref(name:"FEDORA", value:"2017-1f15fde598");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UNNQ25SWGZ76CGEIEYB6XHESXYZUBQVV");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC24");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC24")
 {
@@ -73,6 +69,6 @@ if(release == "FC24")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

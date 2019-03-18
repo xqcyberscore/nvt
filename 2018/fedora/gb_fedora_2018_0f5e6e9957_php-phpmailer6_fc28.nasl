@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_0f5e6e9957_php-phpmailer6_fc28.nasl 12851 2018-12-21 01:34:55Z ckuersteiner $
+# $Id: gb_fedora_2018_0f5e6e9957_php-phpmailer6_fc28.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for php-phpmailer6 FEDORA-2018-0f5e6e9957
 #
@@ -29,52 +29,26 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875315");
-  script_version("$Revision: 12851 $");
+  script_version("$Revision: 14223 $");
   script_cve_id("CVE-2018-19296");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-21 02:34:55 +0100 (Fri, 21 Dec 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-12-04 08:28:01 +0100 (Tue, 04 Dec 2018)");
   script_name("Fedora Update for php-phpmailer6 FEDORA-2018-0f5e6e9957");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC28");
 
   script_xref(name:"FEDORA", value:"2018-0f5e6e9957");
-  script_xref(name:"URL" , value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/ZXE5CR2VWTH7XFU3CHRXPFVHMGA7ZJX2");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/ZXE5CR2VWTH7XFU3CHRXPFVHMGA7ZJX2");
 
   script_tag(name:"summary", value:"The remote host is missing an update for the 'php-phpmailer6'
   package(s) announced via the FEDORA-2018-0f5e6e9957 advisory.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
-
-  script_tag(name:"insight", value:"PHPMailer - A full-featured email creation and transfer class for PHP
-
-Class Features
-* Probably the world&#39 s most popular code for sending email from PHP!
-* Used by many open-source projects:
-  WordPress, Drupal, 1CRM, SugarCRM, Yii, Joomla! and many more
-* Integrated SMTP support - send without a local mail server
-* Send emails with multiple To, CC, BCC and Reply-to addresses
-* Multipart/alternative emails for mail clients that do not read HTML email
-* Add attachments, including inline
-* Support for UTF-8 content and 8bit, base64, binary, and quoted-printable
-  encodings
-* SMTP authentication with LOGIN, PLAIN, CRAM-MD5 and XOAUTH2 mechanisms
-  over SSL and SMTP+STARTTLS transports
-* Validates email addresses automatically
-* Protect against header injection attacks
-* Error messages in 47 languages!
-* DKIM and S/MIME signing support
-* Compatible with PHP 5.5 and later
-* Namespaced to prevent name clashes
-* Much more!
-
-
-Autoloader: /usr/share/php/PHPMailer/PHPMailer6/autoload.php
-");
 
   script_tag(name:"affected", value:"php-phpmailer6 on Fedora 28.");
 
@@ -90,7 +64,8 @@ include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
 release = rpm_get_ssh_release();
-if(!release) exit(0);
+if(!release)
+  exit(0);
 
 res = "";
 

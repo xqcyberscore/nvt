@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2019_4002b91800_kernel-tools_fc28.nasl 13517 2019-02-07 07:51:12Z mmartin $
+# $Id: gb_fedora_2019_4002b91800_kernel-tools_fc28.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for kernel-tools FEDORA-2019-4002b91800
 #
@@ -29,18 +29,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875439");
-  script_version("$Revision: 13517 $");
+  script_version("$Revision: 14223 $");
   script_cve_id("CVE-2018-16880");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-07 08:51:12 +0100 (Thu, 07 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-02-02 04:08:18 +0100 (Sat, 02 Feb 2019)");
   script_name("Fedora Update for kernel-tools FEDORA-2019-4002b91800");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC28");
 
   script_xref(name:"FEDORA", value:"2019-4002b91800");
   script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/N2JZF5UYO4IWNTLAE3P2PGFVJ4GTMPBD");
@@ -50,10 +50,6 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is
   present on the target host.");
-
-  script_tag(name:"insight", value:"This package contains the tools/ directory
-  from the kernel source and the supporting documentation.
-");
 
   script_tag(name:"affected", value:"kernel-tools on Fedora 28.");
 
@@ -69,7 +65,8 @@ include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
 release = rpm_get_ssh_release();
-if(!release) exit(0);
+if(!release)
+  exit(0);
 
 res = "";
 

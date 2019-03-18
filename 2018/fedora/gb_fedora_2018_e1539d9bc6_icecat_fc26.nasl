@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_e1539d9bc6_icecat_fc26.nasl 8473 2018-01-19 15:49:03Z gveerendra $
+# $Id: gb_fedora_2018_e1539d9bc6_icecat_fc26.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for icecat FEDORA-2018-e1539d9bc6
 #
@@ -27,64 +27,39 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874031");
-  script_version("$Revision: 8473 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-19 16:49:03 +0100 (Fri, 19 Jan 2018) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-01-18 07:38:25 +0100 (Thu, 18 Jan 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for icecat FEDORA-2018-e1539d9bc6");
-  script_tag(name: "summary", value: "Check the version of icecat");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "GNUZilla Icecat is a fully-free fork of 
-Mozilla Firefox ESR. Extensions included to this version of IceCat:
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'icecat'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"affected", value:"icecat on Fedora 26");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
 
- * LibreJS
-   GNU LibreJS aims to address the JavaScript problem described in Richard
-   Stallman&#39 s article The JavaScript Trap.
-
- * SpyBlock
-   Blocks privacy trackers while in normal browsing mode, and all third party
-   requests when in private browsing mode. Based on Adblock Plus.
-
- * AboutIceCat
-   Adds a custom 'about:icecat' homepage with links to information about the
-   free software and privacy features in IceCat, and check-boxes to enable
-   and disable the ones more prone to break websites.
-
- * HTML5-video-everywhere
-   Uses the native video player to play embedded videos from different sources
-
- * Fingerprinting countermeasures: Fingerprinting is a series of techniques
-   allowing to uniquely identify a browser based on specific characteristics of
-   that particular instance (like what fonts are available in that machine).
-   Unlike cookies the user cannot opt-out of being tracked this way,
-   so the browser has to avoid giving away that kind of hints.
-");
-  script_tag(name: "affected", value: "icecat on Fedora 26");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-
-  script_xref(name: "FEDORA", value: "2018-e1539d9bc6");
-  script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/CZAOU6HTI35BOGKLUL34XAUOM5IAVLEW");
+  script_xref(name:"FEDORA", value:"2018-e1539d9bc6");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/CZAOU6HTI35BOGKLUL34XAUOM5IAVLEW");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC26");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC26")
 {
@@ -95,6 +70,6 @@ if(release == "FC26")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

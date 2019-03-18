@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2017_ab57a100f3_rpm_fc25.nasl 11933 2018-10-17 07:09:44Z asteins $
+# $Id: gb_fedora_2017_ab57a100f3_rpm_fc25.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for rpm FEDORA-2017-ab57a100f3
 #
@@ -27,45 +27,39 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.873824");
-  script_version("$Revision: 11933 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-17 09:09:44 +0200 (Wed, 17 Oct 2018) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-12-04 18:47:58 +0530 (Mon, 04 Dec 2017)");
   script_cve_id("CVE-2017-7500", "CVE-2017-7501");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for rpm FEDORA-2017-ab57a100f3");
-  script_tag(name: "summary", value: "Check the version of rpm");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "The RPM Package Manager (RPM) is a powerful 
-command line driven package management system capable of installing, 
-uninstalling, verifying, querying, and updating software packages. Each software
-package consists of an archive of files along with information about the package 
-like its version, a description, etc.");
-  script_tag(name: "affected", value: "rpm on Fedora 25");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-
-  script_xref(name: "FEDORA", value: "2017-ab57a100f3");
-  script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/ZDTWP3MAJYZYFU2SKY5WNNBP4ITNUFMN");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'rpm'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"affected", value:"rpm on Fedora 25");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
+  script_xref(name:"FEDORA", value:"2017-ab57a100f3");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/ZDTWP3MAJYZYFU2SKY5WNNBP4ITNUFMN");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC25");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC25")
 {
@@ -76,6 +70,6 @@ if(release == "FC25")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

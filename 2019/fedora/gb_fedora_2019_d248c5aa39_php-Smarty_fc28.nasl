@@ -21,18 +21,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875499");
-  script_version("$Revision: 14107 $");
+  script_version("$Revision: 14223 $");
   script_cve_id("CVE-2018-16831", "CVE-2017-1000480", "CVE-2018-13982");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-12 08:31:46 +0100 (Tue, 12 Mar 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-03-07 04:16:23 +0100 (Thu, 07 Mar 2019)");
   script_name("Fedora Update for php-Smarty FEDORA-2019-d248c5aa39");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC28");
 
   script_xref(name:"FEDORA", value:"2019-d248c5aa39");
   script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/5STJPMWOQKY4KNS4ISHS4DMOLTJOTMHB");
@@ -42,14 +42,6 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is
   present on the target host.");
-
-  script_tag(name:"insight", value:"Smarty is a template engine for PHP,
-  facilitating the separation of presentation (HTML/CSS) from application logic.
-  This implies that PHP code is application logic, and is separated from the
-  presentation.
-
-Autoloader: /usr/share/php/Smarty/autoload.php
-");
 
   script_tag(name:"affected", value:"php-Smarty on Fedora 28.");
 
@@ -65,7 +57,8 @@ include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
 release = rpm_get_ssh_release();
-if(!release) exit(0);
+if(!release)
+  exit(0);
 
 res = "";
 

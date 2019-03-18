@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_373bbbd408_nodejs-JSV_fc28.nasl 10597 2018-07-25 05:30:00Z cfischer $
+# $Id: gb_fedora_2018_373bbbd408_nodejs-JSV_fc28.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for nodejs-JSV FEDORA-2018-373bbbd408
 #
@@ -27,56 +27,41 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874691");
-  script_version("$Revision: 10597 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 07:30:00 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-06-17 06:06:39 +0200 (Sun, 17 Jun 2018)");
   script_cve_id("CVE-2017-16021");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for nodejs-JSV FEDORA-2018-373bbbd408");
-  script_tag(name:"summary", value:"Check the version of nodejs-JSV");
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present 
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'nodejs-JSV'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
-  script_tag(name:"insight", value:"JSV is a JavaScript implementation of a 
-extendable, fully compliant JSON Schema validator with the following features:
-
-* The fastest extendable JSON validator available!
-* Complete implementation of all current JSON Schema draft revisions.
-* Supports creating individual environments (sandboxes) that validate
-  using a particular schema specification.
-* Provides an intuitive API for creating new validating schema
-  attributes, or whole new custom schema schemas.
-* Supports self, full and described by hyper links.
-* Validates itself, and is bootstrapped from the JSON Schema schemas.
-* Includes over 1100 unit tests for testing all parts of the specifications.
-* Works in all ECMAScript 3 environments, including all web browsers
-  and Node.js.
-* Licensed under the FreeBSD License, a very open license.
-");
   script_tag(name:"affected", value:"nodejs-JSV on Fedora 28");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"FEDORA", value:"2018-373bbbd408");
-  script_xref(name:"URL" , value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/DRDWTKMSD55QU6DW6DC7Q7ZZAONMI6X6");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/DRDWTKMSD55QU6DW6DC7Q7ZZAONMI6X6");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC28");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC28")
 {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpnagios_lfi_vuln.nasl 8296 2018-01-05 07:28:01Z teissa $
+# $Id: gb_phpnagios_lfi_vuln.nasl 14233 2019-03-16 13:32:43Z mmartin $
 #
 # phpNagios 'conf[lang]' Parameter Local File Inclusion Vulnerability
 #
@@ -24,33 +24,19 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation could allow remote attackers to obtain sensitive
-information or execute arbitrary code on the vulnerable web server.
-
-Impact Level: Application.";
-tag_affected = "phpNagios version 1.2.0 and prior.";
-tag_insight = "The flaw is due to error in 'menu.php' and is not properly sanitising
-  user supplied input data via 'conf[lang]' parameter.";
-tag_solution = "No solution or patch was made available for at least one year
-since disclosure of this vulnerability. Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.";
-tag_summary = "The host is running phpNagios and is prone to local file include
-  Vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800438");
-  script_version("$Revision: 8296 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-05 08:28:01 +0100 (Fri, 05 Jan 2018) $");
+  script_version("$Revision: 14233 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-16 14:32:43 +0100 (Sat, 16 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-01-22 09:23:45 +0100 (Fri, 22 Jan 2010)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-2009-4626");
   script_name("phpNagios 'conf[lang]' Parameter Local File Inclusion Vulnerability");
-  script_xref(name : "URL" , value : "http://www.milw0rm.com/exploits/9611");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/53119");
-  script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2009/2615");
+  script_xref(name:"URL", value:"http://www.milw0rm.com/exploits/9611");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/53119");
+  script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2009/2615");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
@@ -58,11 +44,16 @@ if(description)
   script_dependencies("gb_phpnagios_detect.nasl");
   script_family("Web application abuses");
   script_require_ports("Services/www", 80);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to obtain sensitive
+information or execute arbitrary code on the vulnerable web server.");
+  script_tag(name:"affected", value:"phpNagios version 1.2.0 and prior.");
+  script_tag(name:"insight", value:"The flaw is due to error in 'menu.php' and is not properly sanitising
+  user supplied input data via 'conf[lang]' parameter.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"The host is running phpNagios and is prone to local file include
+  Vulnerabilities.");
   script_tag(name:"solution_type", value:"WillNotFix");
   exit(0);
 }

@@ -21,18 +21,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875509");
-  script_version("$Revision: 14131 $");
+  script_version("$Revision: 14223 $");
   script_cve_id("CVE-2018-1340");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-13 09:59:27 +0100 (Wed, 13 Mar 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-03-13 04:13:47 +0100 (Wed, 13 Mar 2019)");
   script_name("Fedora Update for guacamole-server FEDORA-2019-6c52489ec5");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC28");
 
   script_xref(name:"FEDORA", value:"2019-6c52489ec5");
   script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/KIYWUNA7NGFISE6AFQELGW37IYQDUSTV");
@@ -41,18 +41,6 @@ if(description)
   package(s) announced via the FEDORA-2019-6c52489ec5 advisory.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
-
-  script_tag(name:"insight", value:"Guacamole is an HTML5 remote desktop gateway.
-
-Guacamole provides access to desktop environments using remote desktop protocols
-like VNC and RDP. A centralized server acts as a tunnel and proxy, allowing
-access to multiple desktops through a web browser.
-
-No browser plugins are needed, and no client software needs to be installed. The
-client requires nothing more than a web browser supporting HTML5 and AJAX.
-
-The main web application is provided by the 'guacamole-client' package.
-");
 
   script_tag(name:"affected", value:"guacamole-server on Fedora 28.");
 
@@ -68,7 +56,8 @@ include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
 release = rpm_get_ssh_release();
-if(!release) exit(0);
+if(!release)
+  exit(0);
 
 res = "";
 

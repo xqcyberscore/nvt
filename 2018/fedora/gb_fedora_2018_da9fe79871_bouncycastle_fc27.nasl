@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_da9fe79871_bouncycastle_fc27.nasl 10824 2018-08-08 02:52:53Z ckuersteiner $
+# $Id: gb_fedora_2018_da9fe79871_bouncycastle_fc27.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for bouncycastle FEDORA-2018-da9fe79871
 #
@@ -27,43 +27,40 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874701");
-  script_version("$Revision: 10824 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-08 04:52:53 +0200 (Wed, 08 Aug 2018) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-06-19 06:13:38 +0200 (Tue, 19 Jun 2018)");
   script_cve_id("CVE-2017-13098", "CVE-2018-1000180");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for bouncycastle FEDORA-2018-da9fe79871");
-  script_tag(name:"summary", value:"Check the version of bouncycastle");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'bouncycastle'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"The Bouncy Castle Crypto package is a Java implementation of cryptographic
-algorithms. This jar contains JCE provider and lightweight API for the
-Bouncy Castle Cryptography APIs for JDK 1.5 to JDK 1.8.
-");
   script_tag(name:"affected", value:"bouncycastle on Fedora 27");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"FEDORA", value:"2018-da9fe79871");
-  script_xref(name:"URL" , value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/J53P6VWTYNQGZOY4BEOV5L6R6YH5FHDK");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/J53P6VWTYNQGZOY4BEOV5L6R6YH5FHDK");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC27");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC27")
 {

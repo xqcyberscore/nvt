@@ -23,82 +23,41 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "This suite is primarily a set of APIs and tools
-  to improve the developer experience.
-  It also contains a module called the Page Manager whose job is to manage pages.
-  In particular it manages panel pages,
-  but as it grows it will be able to manage far more than just Panels.
-
-  For the moment, it includes the following tools:
-
-  Plug-ins -- tools to make it easy for modules
-  to let other modules implement plug-ins from .inc files.
-
-  Ex-portables -- tools to make it easier for modules to have objects
-  that live in database or live in code, such as 'default views'.
-
-  AJAX responder -- tools to make it easier for the server to handle AJAX requests
-  and tell the client what to do with them.
-
-  Form tools -- tools to make it easier for forms to deal with AJAX.
-
-  Object caching -- tool to make it easier to edit an object
-  across multiple page requests and cache the editing work.
-
-  Modal dialog -- tool to make it simple to put a form in a modal dialog.
-
-  Dependent -- a simple form widget to make form items appear
-  and disappear based upon the selections in another item.
-
-  Content -- plug-gable content types used as panes in Panels
-  and other modules like Dashboard.
-
-  Form wizard -- an API to make multiple-step forms much easier.
-
-  CSS tools -- tools to cache and sanitize CSS easily to make user-input CSS safe.";
-
-tag_affected = "drupal6-ctools on Fedora 17";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
 if(description)
 {
-  script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2012-December/094624.html");
+  script_xref(name:"URL", value:"http://lists.fedoraproject.org/pipermail/package-announce/2012-December/094624.html");
   script_oid("1.3.6.1.4.1.25623.1.0.864941");
-  script_version("$Revision: 9352 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-12-14 09:50:48 +0530 (Fri, 14 Dec 2012)");
   script_cve_id("CVE-2012-5559");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
-  script_xref(name: "FEDORA", value: "2012-19464");
+  script_xref(name:"FEDORA", value:"2012-19464");
   script_name("Fedora Update for drupal6-ctools FEDORA-2012-19464");
-
-  script_tag(name: "summary" , value: "Check for the Version of drupal6-ctools");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'drupal6-ctools'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC17");
+  script_tag(name:"affected", value:"drupal6-ctools on Fedora 17");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC17")
 {
@@ -109,6 +68,6 @@ if(release == "FC17")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

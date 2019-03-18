@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2017_6f8fcff58c_systemd_fc26.nasl 7629 2017-11-02 12:23:12Z santu $
+# $Id: gb_fedora_2017_6f8fcff58c_systemd_fc26.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for systemd FEDORA-2017-6f8fcff58c
 #
@@ -27,51 +27,38 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.873553");
-  script_version("$Revision: 7629 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-02 13:23:12 +0100 (Thu, 02 Nov 2017) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-11-02 18:05:32 +0530 (Thu, 02 Nov 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for systemd FEDORA-2017-6f8fcff58c");
-  script_tag(name: "summary", value: "Check the version of systemd");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "systemd is a system and service manager 
-that runs as PID 1 and starts the rest of the system. It provides aggressive 
-parallelization capabilities, uses socket and D-Bus activation for starting 
-services, offers on-demand starting of daemons, keeps track of processes using
-Linux control groups, maintains mount and automount points, and implements an 
-elaborate transactional dependency-based service control logic. systemd 
-supports SysV and LSB init scripts and works as a replacement for sysvinit. 
-Other parts of this package are a logging daemon, utilities to control basic 
-system configuration like the hostname, date, locale, maintain a list of 
-logged-in users and running containers and virtual machines, system accounts, 
-runtime directories and settings, and daemons to manage simple network 
-configuration, network time synchronization, log forwarding, and name resolution.");
-  script_tag(name: "affected", value: "systemd on Fedora 26");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-
-  script_xref(name: "FEDORA", value: "2017-6f8fcff58c");
-  script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/24WHGHQKYWNRTG24LVUGEH5BGOLBCJVZ");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'systemd'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"affected", value:"systemd on Fedora 26");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
+  script_xref(name:"FEDORA", value:"2017-6f8fcff58c");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/24WHGHQKYWNRTG24LVUGEH5BGOLBCJVZ");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC26");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC26")
 {
@@ -82,6 +69,6 @@ if(release == "FC26")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

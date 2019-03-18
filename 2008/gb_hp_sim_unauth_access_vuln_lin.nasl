@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_sim_unauth_access_vuln_lin.nasl 11116 2018-08-26 13:08:29Z cfischer $
+# $Id: gb_hp_sim_unauth_access_vuln_lin.nasl 14240 2019-03-17 15:50:45Z cfischer $
 #
 # HP Systems Insight Manager Unauthorized Access Vulnerability (Linux)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800034");
-  script_version("$Revision: 11116 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-26 15:08:29 +0200 (Sun, 26 Aug 2018) $");
+  script_version("$Revision: 14240 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-17 16:50:45 +0100 (Sun, 17 Mar 2019) $");
   script_tag(name:"creation_date", value:"2008-10-21 16:25:40 +0200 (Tue, 21 Oct 2008)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -44,19 +44,17 @@ if(description)
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/32287/");
   script_xref(name:"URL", value:"http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?objectID=c01571962");
+  script_xref(name:"URL", value:"http://h20392.www2.hp.com/portal/swdepot/index.do");
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to gain unauthorized
-  access to the data.
-
-  Impact Level: Application");
+  access to the data.");
 
   script_tag(name:"affected", value:"HP SIM prior to 5.2 with Update 2 (C.05.02.02.00) on Linux");
 
   script_tag(name:"insight", value:"The flaw is due to an error in the application which allows unauthorized
   access to certain data.");
 
-  script_tag(name:"solution", value:"Update to HP SIM version 5.2 with Update 2 (C.05.02.02.00)
-  http://h20392.www2.hp.com/portal/swdepot/index.do");
+  script_tag(name:"solution", value:"Update to HP SIM version 5.2 with Update 2 (C.05.02.02.00)");
 
   script_tag(name:"summary", value:"This host is running HP Systems Insight Manager (SIM) and is prone
   to security bypass vulnerability.");

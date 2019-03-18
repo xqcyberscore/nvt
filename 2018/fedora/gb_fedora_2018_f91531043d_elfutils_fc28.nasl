@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_f91531043d_elfutils_fc28.nasl 10204 2018-06-15 02:21:57Z ckuersteiner $
+# $Id: gb_fedora_2018_f91531043d_elfutils_fc28.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for elfutils FEDORA-2018-f91531043d
 #
@@ -27,47 +27,41 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874661");
-  script_version("$Revision: 10204 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-15 04:21:57 +0200 (Fri, 15 Jun 2018) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-06-09 06:01:36 +0200 (Sat, 09 Jun 2018)");
   script_cve_id("CVE-2018-8769");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for elfutils FEDORA-2018-f91531043d");
-  script_tag(name:"summary", value:"Check the version of elfutils");
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present 
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'elfutils'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
-  script_tag(name:"insight", value:"Elfutils is a collection of utilities, 
-including stack (to show backtraces), nm (for listing symbols from object files), 
-size (for listing the section sizes of an object or archive file), 
-strip (for discarding symbols), readelf (to see the raw ELF file structures), 
-elflint (to check for well-formed ELF files) and elfcompress (to compress or 
-decompress ELF sections).
-");
   script_tag(name:"affected", value:"elfutils on Fedora 28");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"FEDORA", value:"2018-f91531043d");
-  script_xref(name:"URL" , value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/EP43TAFBHQYHEVFEGFYOXUFAUCL3CQVB");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/EP43TAFBHQYHEVFEGFYOXUFAUCL3CQVB");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC28");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC28")
 {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_690535d30b_moodle_fc28.nasl 12697 2018-12-07 07:56:28Z mmartin $
+# $Id: gb_fedora_2018_690535d30b_moodle_fc28.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for moodle FEDORA-2018-690535d30b
 #
@@ -27,44 +27,41 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875102");
-  script_version("$Revision: 12697 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-07 08:56:28 +0100 (Fri, 07 Dec 2018) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-09-27 08:47:31 +0200 (Thu, 27 Sep 2018)");
   script_cve_id("CVE-2018-14630");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for moodle FEDORA-2018-690535d30b");
-  script_tag(name:"summary", value:"Check the version of moodle");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'moodle'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
   on the target host.");
-  script_tag(name:"insight", value:"Moodle is a course management system (CMS)
-  - a free, Open Source software package designed using sound pedagogical
- principles, to help educators create effective online learning communities.
-");
   script_tag(name:"affected", value:"moodle on Fedora 28");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"FEDORA", value:"2018-690535d30b");
-  script_xref(name:"URL" , value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/FAVD2O5OK7OJS5MK4OBP2ZHVMC4DPRY6");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/FAVD2O5OK7OJS5MK4OBP2ZHVMC4DPRY6");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC28");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC28")
 {

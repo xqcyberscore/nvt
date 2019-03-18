@@ -23,59 +23,41 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.867614");
-  script_version("$Revision: 9373 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:57:18 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-03-20 09:42:01 +0530 (Thu, 20 Mar 2014)");
   script_cve_id("CVE-2014-1838", "CVE-2014-1839");
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
   script_name("Fedora Update for pylint FEDORA-2014-3300");
-
-  tag_insight = "Pylint is a python tool that checks if a module satisfy a coding standard.
-Pylint can be seen as another PyChecker since nearly all tests you can do
-with PyChecker can also be done with Pylint. But Pylint offers some more
-features, like checking line-code's length, checking if variable names are
-well-formed according to your coding standard, or checking if declared
-interfaces are truly implemented, and much more. The big advantage with
-Pylint is that it is highly configurable, customizable, and you can easily
-write a small plugin to add a personal feature.
-";
-
-  tag_affected = "pylint on Fedora 20";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  script_tag(name:"affected", value:"pylint on Fedora 20");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "FEDORA", value: "2014-3300");
-  script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2014-March/130323.html");
-  script_tag(name:"summary", value:"Check for the Version of pylint");
+  script_xref(name:"FEDORA", value:"2014-3300");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/pipermail/package-announce/2014-March/130323.html");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'pylint'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC20");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC20")
 {
@@ -86,6 +68,6 @@ if(release == "FC20")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

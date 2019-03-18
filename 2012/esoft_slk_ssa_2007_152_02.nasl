@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: esoft_slk_ssa_2007_152_02.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: esoft_slk_ssa_2007_152_02.nasl 14202 2019-03-15 09:16:15Z cfischer $
 # Description: Auto-generated from the corresponding slackware advisory
 #
 # Authors:
@@ -25,73 +25,67 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-include("revisions-lib.inc");
-tag_insight = "New mozilla-firefox and seamonkey packages are available for Slackware 10.2,
-11.0, and -current to fix security issues.  New thunderbird packages are
-are available for Slackware 10.2 and 11.0 to fix security issues.
-
-More details about this issue may be found at these links:
-http://www.mozilla.org/projects/security/known-vulnerabilities.html#firefox
-http://www.mozilla.org/projects/security/known-vulnerabilities.html#seamonkey
-http://www.mozilla.org/projects/security/known-vulnerabilities.html#thunderbird";
-tag_summary = "The remote host is missing an update as announced
-via advisory SSA:2007-152-02.";
-
-tag_solution = "https://secure1.securityspace.com/smysecure/catid.html?in=SSA:2007-152-02";
-                                                                                
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.58308");
- script_tag(name:"creation_date", value:"2012-09-11 01:34:21 +0200 (Tue, 11 Sep 2012)");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
- script_version("$Revision: 9352 $");
- script_cve_id("CVE-2007-1362", "CVE-2007-1558", "CVE-2007-2867", "CVE-2007-2868",
+  script_oid("1.3.6.1.4.1.25623.1.0.58308");
+  script_tag(name:"creation_date", value:"2012-09-11 01:34:21 +0200 (Tue, 11 Sep 2012)");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 10:16:15 +0100 (Fri, 15 Mar 2019) $");
+  script_version("$Revision: 14202 $");
+  script_cve_id("CVE-2007-1362", "CVE-2007-1558", "CVE-2007-2867", "CVE-2007-2868",
                "CVE-2007-2869", "CVE-2007-2870", "CVE-2007-2871");
- script_tag(name:"cvss_base", value:"9.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
- name = "Slackware Advisory SSA:2007-152-02 firefox-seamonkey-thunderbird ";
- script_name(name);
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_name("Slackware Advisory SSA:2007-152-02 firefox-seamonkey-thunderbird");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 E-Soft Inc. http://www.securityspace.com");
+  script_family("Slackware Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/slackware_linux", "ssh/login/slackpack", re:"ssh/login/release=SLK(10\.2|11\.0)");
 
+  script_xref(name:"URL", value:"https://secure1.securityspace.com/smysecure/catid.html?in=SSA:2007-152-02");
+  script_xref(name:"URL", value:"http://www.mozilla.org/projects/security/known-vulnerabilities.html#firefox");
+  script_xref(name:"URL", value:"http://www.mozilla.org/projects/security/known-vulnerabilities.html#seamonkey");
+  script_xref(name:"URL", value:"http://www.mozilla.org/projects/security/known-vulnerabilities.html#thunderbird");
 
+  script_tag(name:"insight", value:"New mozilla-firefox and seamonkey packages are available for Slackware 10.2,
+11.0, and -current to fix security issues.  New thunderbird packages are
+are available for Slackware 10.2 and 11.0 to fix security issues.");
 
- script_category(ACT_GATHER_INFO);
+  script_tag(name:"solution", value:"Upgrade to the new package(s).");
 
- script_copyright("Copyright (c) 2012 E-Soft Inc. http://www.securityspace.com");
- script_family("Slackware Local Security Checks");
- script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("ssh/login/slackware_linux", "ssh/login/slackpack");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
- exit(0);
+  script_tag(name:"summary", value:"The remote host is missing an update as announced
+via advisory SSA:2007-152-02.");
+
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
+
+  exit(0);
 }
 
-#
-# The script code starts here
-#
-
+include("revisions-lib.inc");
 include("pkg-lib-slack.inc");
-vuln = 0;
-if(isslkpkgvuln(pkg:"mozilla-firefox", ver:"1.5.0.12-i686-1", rls:"SLK10.2")) {
-    vuln = 1;
+
+report = "";
+res = "";
+
+if((res = isslkpkgvuln(pkg:"mozilla-firefox", ver:"1.5.0.12-i686-1", rls:"SLK10.2")) != NULL) {
+  report += res;
 }
-if(isslkpkgvuln(pkg:"mozilla-thunderbird", ver:"1.5.0.12-i686-1", rls:"SLK10.2")) {
-    vuln = 1;
+if((res = isslkpkgvuln(pkg:"mozilla-thunderbird", ver:"1.5.0.12-i686-1", rls:"SLK10.2")) != NULL) {
+  report += res;
 }
-if(isslkpkgvuln(pkg:"mozilla-firefox", ver:"2.0.0.4-i686-1", rls:"SLK11.0")) {
-    vuln = 1;
+if((res = isslkpkgvuln(pkg:"mozilla-firefox", ver:"2.0.0.4-i686-1", rls:"SLK11.0")) != NULL) {
+  report += res;
 }
-if(isslkpkgvuln(pkg:"mozilla-thunderbird", ver:"1.5.0.12-i686-1", rls:"SLK11.0")) {
-    vuln = 1;
+if((res = isslkpkgvuln(pkg:"mozilla-thunderbird", ver:"1.5.0.12-i686-1", rls:"SLK11.0")) != NULL) {
+  report += res;
 }
-if(isslkpkgvuln(pkg:"seamonkey", ver:"1.1.2-i486-1_slack11.0", rls:"SLK11.0")) {
-    vuln = 1;
+if((res = isslkpkgvuln(pkg:"seamonkey", ver:"1.1.2-i486-1_slack11.0", rls:"SLK11.0")) != NULL) {
+  report += res;
 }
 
-if(vuln) {
-    security_message(0);
-} else if (__pkg_match) {
-    exit(99); # Not vulnerable.
+if(report != "") {
+  security_message(data:report);
+} else if(__pkg_match) {
+  exit(99);
 }

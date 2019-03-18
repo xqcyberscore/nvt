@@ -21,18 +21,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875498");
-  script_version("$Revision: 14107 $");
+  script_version("$Revision: 14223 $");
   script_cve_id("CVE-2012-2922", "CVE-2018-7602");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-12 08:31:46 +0100 (Tue, 12 Mar 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-03-07 04:16:17 +0100 (Thu, 07 Mar 2019)");
   script_name("Fedora Update for drupal7 FEDORA-2019-82df33e428");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC28");
 
   script_xref(name:"FEDORA", value:"2019-82df33e428");
   script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/NSOCWBFM4P67FW6Q7VWMJUVBGDWNNURQ");
@@ -42,12 +42,6 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is
   present on the target host.");
-
-  script_tag(name:"insight", value:"Equipped with a powerful blend of features,
-  Drupal is a Content Management System written in PHP that can support a variety
-  of websites ranging from personal weblogs to large community-driven websites.
-  Drupal is highly configurable, skinnable, and secure.
-");
 
   script_tag(name:"affected", value:"drupal7 on Fedora 28.");
 
@@ -63,7 +57,8 @@ include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
 release = rpm_get_ssh_release();
-if(!release) exit(0);
+if(!release)
+  exit(0);
 
 res = "";
 

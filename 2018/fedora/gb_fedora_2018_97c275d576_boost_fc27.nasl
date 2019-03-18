@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_97c275d576_boost_fc27.nasl 9662 2018-04-27 13:18:30Z santu $
+# $Id: gb_fedora_2018_97c275d576_boost_fc27.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for boost FEDORA-2018-97c275d576
 #
@@ -27,47 +27,39 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874393");
-  script_version("$Revision: 9662 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 15:18:30 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-04-27 05:32:15 +0200 (Fri, 27 Apr 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for boost FEDORA-2018-97c275d576");
-  script_tag(name: "summary", value: "Check the version of boost");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "Boost provides free peer-reviewed portable 
-C++ source libraries.  The emphasis is on libraries which work well with the C++ 
-Standard Library, in the hopes of establishing 'existing practice' for extensions 
-and providing reference implementations so that the Boost libraries are suitable 
-for eventual standardization. (Some of the libraries have already been included 
-in the C++ 2011 standard and others have been proposed to the C++ Standards 
-Committee for inclusion in future standards.)
-");
-  script_tag(name: "affected", value: "boost on Fedora 27");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'boost'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"affected", value:"boost on Fedora 27");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
 
-  script_xref(name: "FEDORA", value: "2018-97c275d576");
-  script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/342ZTGQCOLK4EMJYROXHMDXITBWJISIU");
+  script_xref(name:"FEDORA", value:"2018-97c275d576");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/342ZTGQCOLK4EMJYROXHMDXITBWJISIU");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC27");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC27")
 {

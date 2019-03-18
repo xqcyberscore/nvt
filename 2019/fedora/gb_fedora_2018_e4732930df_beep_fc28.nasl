@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_e4732930df_beep_fc28.nasl 13147 2019-01-18 11:35:50Z mmartin $
+# $Id: gb_fedora_2018_e4732930df_beep_fc28.nasl 14225 2019-03-15 14:32:03Z cfischer $
 #
 # Fedora Update for beep FEDORA-2018-e4732930df
 #
@@ -29,18 +29,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875393");
-  script_version("$Revision: 13147 $");
+  script_version("$Revision: 14225 $");
   script_cve_id("CVE-2018-1000532", "CVE-2018-0492");
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-18 12:35:50 +0100 (Fri, 18 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 15:32:03 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-01-11 04:01:49 +0100 (Fri, 11 Jan 2019)");
   script_name("Fedora Update for beep FEDORA-2018-e4732930df");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC28");
 
   script_xref(name:"FEDORA", value:"2018-e4732930df");
   script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/VXTLEITT6EGPZYB2OZVJHSXL3Z7P4INH");
@@ -50,14 +50,6 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is
   present on the target host.");
-
-  script_tag(name:"insight", value:"Beep allows the user to control the PC speaker
-  with precision, allowing different sounds to indicate different events. While it
-  can be run quite happily on the command line, its intended place of residence is
-  within shell/Perl scripts, notifying the user when something interesting occurs.
-  Of course, it has no notion of what&#39 s interesting, but it&#39 s real good at
-  that notifying part.
-");
 
   script_tag(name:"affected", value:"beep on Fedora 28.");
 
@@ -73,7 +65,8 @@ include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
 release = rpm_get_ssh_release();
-if(!release) exit(0);
+if(!release)
+  exit(0);
 
 res = "";
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_2a33c35fea_thunderbird_fc28.nasl 12314 2018-11-12 09:01:54Z santu $
+# $Id: gb_fedora_2018_2a33c35fea_thunderbird_fc28.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for thunderbird FEDORA-2018-2a33c35fea
 #
@@ -29,28 +29,25 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875245");
-  script_version("$Revision: 12314 $");
+  script_version("$Revision: 14223 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-12 10:01:54 +0100 (Mon, 12 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-11-08 06:37:11 +0100 (Thu, 08 Nov 2018)");
   script_name("Fedora Update for thunderbird FEDORA-2018-2a33c35fea");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC28");
 
   script_xref(name:"FEDORA", value:"2018-2a33c35fea");
-  script_xref(name:"URL" , value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6MU6KKJSB35FMF57LI7ELTT3FG4KHCX6");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6MU6KKJSB35FMF57LI7ELTT3FG4KHCX6");
 
   script_tag(name:"summary", value:"The remote host is missing an update for the 'thunderbird'
   package(s) announced via the FEDORA-2018-2a33c35fea advisory.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
-
-  script_tag(name:"insight", value:"Mozilla Thunderbird is a standalone mail and newsgroup client.
-");
 
   script_tag(name:"affected", value:"thunderbird on Fedora 28.");
 
@@ -66,7 +63,8 @@ include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
 release = rpm_get_ssh_release();
-if(!release) exit(0);
+if(!release)
+  exit(0);
 
 res = "";
 

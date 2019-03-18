@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882005");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14222 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 13:50:48 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-09-10 06:20:03 +0200 (Wed, 10 Sep 2014)");
   script_cve_id("CVE-2014-3505", "CVE-2014-3506", "CVE-2014-3507", "CVE-2014-3508",
                 "CVE-2014-3509", "CVE-2014-3510", "CVE-2014-3511");
@@ -76,7 +76,8 @@ SSL-enabled services) must be restarted or the system rebooted.");
 
   script_xref(name:"CESA", value:"2014:1052");
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2014-August/020489.html");
-  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for openssl");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'openssl'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

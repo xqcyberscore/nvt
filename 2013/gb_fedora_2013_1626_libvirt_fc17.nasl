@@ -23,52 +23,41 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
-tag_affected = "libvirt on Fedora 17";
-tag_insight = "Libvirt is a C toolkit to interact with the virtualization capabilities
-  of recent versions of Linux (and other OSes). The main package includes
-  the libvirtd server exporting the virtualization support.";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
 if(description)
 {
-  script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2013-February/098398.html");
+  script_xref(name:"URL", value:"http://lists.fedoraproject.org/pipermail/package-announce/2013-February/098398.html");
   script_oid("1.3.6.1.4.1.25623.1.0.865328");
-  script_version("$Revision: 9372 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:56:37 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-02-08 10:15:30 +0530 (Fri, 08 Feb 2013)");
   script_cve_id("CVE-2013-0170", "CVE-2012-3411", "CVE-2012-4423", "CVE-2012-3445", "CVE-2012-2693");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_xref(name: "FEDORA", value: "2013-1626");
+  script_xref(name:"FEDORA", value:"2013-1626");
   script_name("Fedora Update for libvirt FEDORA-2013-1626");
-
-  script_tag(name:"summary", value:"Check for the Version of libvirt");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'libvirt'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC17");
+  script_tag(name:"affected", value:"libvirt on Fedora 17");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC17")
 {
@@ -79,6 +68,6 @@ if(release == "FC17")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

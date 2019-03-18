@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_1424_1.nasl 14114 2019-03-12 11:48:52Z cfischer $
+# $Id: gb_suse_2012_1424_1.nasl 14231 2019-03-16 10:56:51Z mmartin $
 #
 # SuSE Update for java-1_6_0-openjdk openSUSE-SU-2012:1424-1 (java-1_6_0-openjdk)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850360");
-  script_version("$Revision: 14114 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
+  script_version("$Revision: 14231 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-16 11:56:51 +0100 (Sat, 16 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-12-13 17:01:26 +0530 (Thu, 13 Dec 2012)");
   script_cve_id("CVE-2012-3216", "CVE-2012-4416", "CVE-2012-5068", "CVE-2012-5069",
                 "CVE-2012-5071", "CVE-2012-5072", "CVE-2012-5073", "CVE-2012-5075",
@@ -107,7 +107,7 @@ if(description)
 
   * Backports
 
-  - S7175845: 'jar uf' changes file permissions unexpectedly
+  - S7175845:'jar uf' changes file permissions unexpectedly
 
   - S7177216: native2ascii changes file permissions of
   input file

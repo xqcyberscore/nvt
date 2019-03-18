@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: host_details.inc 14073 2019-03-10 10:27:47Z cfischer $
+# $Id: host_details.inc 14244 2019-03-17 19:55:30Z cfischer $
 #
 # Centralized and organized host information base
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 14073 $
+# $Revision: 14244 $
 #
 ###############################################################################
 
@@ -158,6 +158,7 @@ OS_CPE_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.111068", # sw_mail_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.111069", # sw_telnet_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.108192", # gb_mysql_mariadb_os_detection.nasl
+    "1.3.6.1.4.1.25623.1.0.100292", # apcnisd_detect.nasl
     "1.3.6.1.4.1.25623.1.0.10884",  # ntp_open.nasl
     "1.3.6.1.4.1.25623.1.0.101013", # remote-detect-MDNS.nasl
     "1.3.6.1.4.1.25623.1.0.10144",  # mssqlserver_detect.nasl
@@ -264,6 +265,7 @@ OS_TXT_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.111068", # sw_mail_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.111069", # sw_telnet_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.108192", # gb_mysql_mariadb_os_detection.nasl
+    "1.3.6.1.4.1.25623.1.0.100292", # apcnisd_detect.nasl
     "1.3.6.1.4.1.25623.1.0.10884",  # ntp_open.nasl
     "1.3.6.1.4.1.25623.1.0.101013", # remote-detect-MDNS.nasl
     "1.3.6.1.4.1.25623.1.0.10144",  # mssqlserver_detect.nasl

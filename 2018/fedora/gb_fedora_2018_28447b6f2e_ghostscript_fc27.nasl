@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_28447b6f2e_ghostscript_fc27.nasl 12193 2018-11-02 03:47:13Z ckuersteiner $
+# $Id: gb_fedora_2018_28447b6f2e_ghostscript_fc27.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for ghostscript FEDORA-2018-28447b6f2e
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875044");
-  script_version("$Revision: 12193 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-02 04:47:13 +0100 (Fri, 02 Nov 2018) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-09-08 07:29:00 +0200 (Sat, 08 Sep 2018)");
   script_cve_id("CVE-2018-10194", "CVE-2018-15909", "CVE-2018-16541",
                 "CVE-2018-16540", "CVE-2018-16539", "CVE-2018-15911", "CVE-2018-16542");
@@ -36,45 +36,33 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for ghostscript FEDORA-2018-28447b6f2e");
-  script_tag(name:"summary", value:"Check the version of ghostscript");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'ghostscript'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
   on the target host.");
-  script_tag(name:"insight", value:"Ghostscript is a set of software that provides
-  a PostScript interpreter, a set of C procedures (the Ghostscript library, which
-  implements the graphics capabilities in the PostScript language) and an interpreter
-  for Portable Document Format (PDF) files. Ghostscript translates PostScript code
-  into many common, bitmapped formats, like those understood by your printer or screen.
-  Ghostscript is normally used to display PostScript files and to print PostScript
-  files to non-PostScript printers.
-
-If you need to display PostScript files or print them to
-non-PostScript printers, you should install ghostscript. If you
-install ghostscript, you also need to install the urw-base35-fonts
-package.
-");
   script_tag(name:"affected", value:"ghostscript on Fedora 27");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"FEDORA", value:"2018-28447b6f2e");
-  script_xref(name:"URL" , value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/XCUEPMWEHXY26URUPAWY7TL5DUC4SSCT");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/XCUEPMWEHXY26URUPAWY7TL5DUC4SSCT");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC27");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC27")
 {

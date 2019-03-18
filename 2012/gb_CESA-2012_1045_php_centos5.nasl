@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-June/018702.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881154");
-  script_version("$Revision: 14098 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
+  script_version("$Revision: 14222 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 13:50:48 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-30 16:24:11 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2011-4153", "CVE-2012-0057", "CVE-2012-0789", "CVE-2012-1172",
                 "CVE-2012-2336", "CVE-2012-1823");
@@ -37,7 +37,8 @@ if(description)
   script_xref(name:"CESA", value:"2012:1045");
   script_name("CentOS Update for php CESA-2012:1045 centos5");
 
-  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for php");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'php'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

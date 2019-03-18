@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2017_bb4c07b01a_file_fc26.nasl 7336 2017-10-04 05:42:02Z asteins $
+# $Id: gb_fedora_2017_bb4c07b01a_file_fc26.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for file FEDORA-2017-bb4c07b01a
 #
@@ -27,44 +27,39 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.873362");
-  script_version("$Revision: 7336 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-04 07:42:02 +0200 (Wed, 04 Oct 2017) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-09-12 07:38:32 +0200 (Tue, 12 Sep 2017)");
   script_cve_id("CVE-2017-1000249");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for file FEDORA-2017-bb4c07b01a");
-  script_tag(name: "summary", value: "Check the version of file");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "The file command is used to identify a particular file according to the
-type of data contained by the file.  File can identify many different
-file types, including ELF binaries, system libraries, RPM packages, and
-different graphics formats.
-");
-  script_tag(name: "affected", value: "file on Fedora 26");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-
-  script_xref(name: "FEDORA", value: "2017-bb4c07b01a");
-  script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/7KXY57KR3NMEE5QB2QMJJKHTV424HL3M");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'file'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"affected", value:"file on Fedora 26");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
+  script_xref(name:"FEDORA", value:"2017-bb4c07b01a");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/7KXY57KR3NMEE5QB2QMJJKHTV424HL3M");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC26");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC26")
 {
@@ -75,6 +70,6 @@ if(release == "FC26")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

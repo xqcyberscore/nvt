@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_JBoss_enterprise_aplication_server_39710.nasl 4216 2016-10-05 11:05:57Z cfi $
+# $Id: gb_JBoss_enterprise_aplication_server_39710.nasl 14233 2019-03-16 13:32:43Z mmartin $
 #
 # JBoss Enterprise Application Platform Multiple Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100610");
-  script_version("$Revision: 4216 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-05 13:05:57 +0200 (Wed, 05 Oct 2016) $");
+  script_version("$Revision: 14233 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-16 14:32:43 +0100 (Sat, 16 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-04-28 14:05:27 +0200 (Wed, 28 Apr 2010)");
   script_bugtraq_id(39710);
-  script_cve_id("CVE-2010-0738","CVE-2010-1428","CVE-2010-1429");
+  script_cve_id("CVE-2010-0738", "CVE-2010-1428", "CVE-2010-1429");
   script_name("JBoss Enterprise Application Platform Multiple Vulnerabilities");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -45,19 +45,13 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/39710");
   script_xref(name:"URL", value:"http://www.jboss.org");
 
-  tag_summary = "JBoss Enterprise Application Platform is prone to multiple
-  vulnerabilities, including an information-disclosure issue and
-  multiple authentication-bypass issues.";
-
-  tag_impact = "An attacker can exploit these issues to bypass certain security
+  script_tag(name:"impact", value:"An attacker can exploit these issues to bypass certain security
   restrictions to obtain sensitive information or gain unauthorized
-  access to the application.";
-
-  tag_solution = "Updates are available. Please see the references for details.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  access to the application.");
+  script_tag(name:"solution", value:"Updates are available. Please see the references for details.");
+  script_tag(name:"summary", value:"JBoss Enterprise Application Platform is prone to multiple
+  vulnerabilities, including an information-disclosure issue and
+  multiple authentication-bypass issues.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -68,7 +62,6 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Get JBoss port set by JBoss_enterprise_aplication_server_detect.nasl
 if( ! port = get_kb_item( "jboss/port" ) ) exit( 0 );
 
 url = "/jmx-console";

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moodle_xss_n_csrf_vuln.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: gb_moodle_xss_n_csrf_vuln.nasl 14233 2019-03-16 13:32:43Z mmartin $
 #
 # Moodle Cross Site Scripting and Cross Site Request Forgery Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800798");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 14233 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-16 14:32:43 +0100 (Sat, 16 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-07-12 09:42:32 +0200 (Mon, 12 Jul 2010)");
   script_cve_id("CVE-2010-2229", "CVE-2010-2228",
                 "CVE-2010-2231", "CVE-2010-2230");
@@ -63,8 +63,7 @@ if(description)
     performing any validity checks to verify the requests. This can be
     exploited to delete certain quiz reports by tricking a user into visiting
     a specially crafted site.");
-  script_tag(name:"solution", value:"Upgrade to Moodle version 1.8.13 or 1.9.9 or later
-  For updates refer to http://moodle.org/downloads/");
+  script_tag(name:"solution", value:"Upgrade to Moodle version 1.8.13 or 1.9.9 or later");
   script_tag(name:"summary", value:"This host is running Moodle and is prone to Cross-Site Scripting
   and Cross Site Request Forgery Vulnerabilities.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary HTML and
@@ -74,6 +73,7 @@ if(description)
   script_tag(name:"affected", value:"Moodle version 1.8.x prior to 1.8.13
   Moodle version 1.9.x prior to 1.9.9");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://moodle.org/downloads/");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_cbf621a53c_mingw-leptonica_fc27.nasl 10012 2018-05-30 03:37:26Z ckuersteiner $
+# $Id: gb_fedora_2018_cbf621a53c_mingw-leptonica_fc27.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for mingw-leptonica FEDORA-2018-cbf621a53c
 #
@@ -27,41 +27,40 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874203");
-  script_version("$Revision: 10012 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-30 05:37:26 +0200 (Wed, 30 May 2018) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-03-14 08:40:23 +0100 (Wed, 14 Mar 2018)");
   script_cve_id("CVE-2017-18196", "CVE-2018-3836", "CVE-2018-7186", "CVE-2018-7247");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for mingw-leptonica FEDORA-2018-cbf621a53c");
-  script_tag(name: "summary", value: "Check the version of mingw-leptonica");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "MinGW Windows Leptonica library.
-");
-  script_tag(name: "affected", value: "mingw-leptonica on Fedora 27");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'mingw-leptonica'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"affected", value:"mingw-leptonica on Fedora 27");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
 
-  script_xref(name: "FEDORA", value: "2018-cbf621a53c");
-  script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/2573FSZPX5QE4FLIWOPGTTCIKDHYOWYV");
+  script_xref(name:"FEDORA", value:"2018-cbf621a53c");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/2573FSZPX5QE4FLIWOPGTTCIKDHYOWYV");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC27");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC27")
 {

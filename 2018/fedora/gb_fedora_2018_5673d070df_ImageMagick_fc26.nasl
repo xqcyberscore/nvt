@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_5673d070df_ImageMagick_fc26.nasl 9390 2018-04-06 13:21:32Z santu $
+# $Id: gb_fedora_2018_5673d070df_ImageMagick_fc26.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for ImageMagick FEDORA-2018-5673d070df
 #
@@ -27,52 +27,39 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874316");
-  script_version("$Revision: 9390 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 15:21:32 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-04-03 09:00:30 +0200 (Tue, 03 Apr 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for ImageMagick FEDORA-2018-5673d070df");
-  script_tag(name: "summary", value: "Check the version of ImageMagick");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "ImageMagick is an image display and 
-manipulation tool for the X Window System. ImageMagick can read and write JPEG, 
-TIFF, PNM, GIF, and Photo CD image formats. It can resize, rotate, sharpen, color
-reduce, or add special effects to an image, and when finished you can either 
-save the completed work in the original format or a different one. ImageMagick 
-also includes command line programs for creating animated or transparent .gifs, 
-creating composite images, creating thumbnail images, and more.
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'ImageMagick'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"affected", value:"ImageMagick on Fedora 26");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
 
-ImageMagick is one of your choices if you need a program to manipulate
-and display images. If you want to develop your own applications
-which use ImageMagick code or APIs, you need to install
-ImageMagick-devel as well.
-");
-  script_tag(name: "affected", value: "ImageMagick on Fedora 26");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-
-  script_xref(name: "FEDORA", value: "2018-5673d070df");
-  script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/753JOLFY5HTSF6R6UOKJEGZF5X5QSK3N");
+  script_xref(name:"FEDORA", value:"2018-5673d070df");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/753JOLFY5HTSF6R6UOKJEGZF5X5QSK3N");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC26");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC26")
 {
@@ -83,6 +70,6 @@ if(release == "FC26")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

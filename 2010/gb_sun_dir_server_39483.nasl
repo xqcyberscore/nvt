@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sun_dir_server_39483.nasl 6606 2017-07-07 11:29:00Z cfischer $
+# $Id: gb_sun_dir_server_39483.nasl 14233 2019-03-16 13:32:43Z mmartin $
 #
 # Oracle Java System Directory Server CVE-2010-0897 Multiple Remote Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100577");
-  script_version("$Revision: 6606 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-07 13:29:00 +0200 (Fri, 07 Jul 2017) $");
+  script_version("$Revision: 14233 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-16 14:32:43 +0100 (Sat, 16 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-04-15 19:15:10 +0200 (Thu, 15 Apr 2010)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -48,27 +48,19 @@ if(description)
   script_xref(name:"URL", value:"http://www.zerodayinitiative.com/advisories/ZDI-10-075/");
   script_xref(name:"URL", value:"http://www.oracle.com/technology/deploy/security/critical-patch-updates/cpuapr2010.html");
 
-  tag_summary = "Oracle Java System Directory Server is prone to multiple remote
-  vulnerabilities.";
-
-  tag_impact = "These vulnerabilities can be exploited over the 'LDAP' and 'HTTP'
+  script_tag(name:"solution", value:"Vendor updates are available. Please contact the vendor for more
+  information.");
+  script_tag(name:"summary", value:"Oracle Java System Directory Server is prone to multiple remote
+  vulnerabilities.");
+  script_tag(name:"impact", value:"These vulnerabilities can be exploited over the 'LDAP' and 'HTTP'
   protocols. Remote attackers can exploit these issues without
   authenticating.
 
   Successful exploits will allow attackers to exploit arbitrary code in
   the context of the vulnerable application or cause denial-of-service
-  conditions.";
-
-  tag_affected = "These vulnerabilities affect the following supported versions:
-  5.2, 6.0, 6.1, 6.2, 6.3, 6.3.1";
-
-  tag_solution = "Vendor updates are available. Please contact the vendor for more
-  information.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
+  conditions.");
+  script_tag(name:"affected", value:"These vulnerabilities affect the following supported versions:
+  5.2, 6.0, 6.1, 6.2, 6.3, 6.3.1");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -88,7 +80,7 @@ if(!isnull(version)) {
      version_is_equal(version: version, test_version: "5.2")) {
        security_message(port: port);
        exit(0);
-  }     
-}  
+  }
+}
 
 exit(99);

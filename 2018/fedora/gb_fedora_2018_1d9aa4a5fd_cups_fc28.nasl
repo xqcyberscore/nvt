@@ -29,33 +29,27 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875372");
-  script_version("$Revision: 12873 $");
-  script_cve_id("CVE-2018-4700", "CVE-2018-4180", "CVE-2018-4181", "CVE-2018-4182", 
-                "CVE-2018-4183"); 
+  script_version("$Revision: 14223 $");
+  script_cve_id("CVE-2018-4700", "CVE-2018-4180", "CVE-2018-4181", "CVE-2018-4182",
+                "CVE-2018-4183");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-21 15:42:20 +0100 (Fri, 21 Dec 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-12-21 07:57:35 +0100 (Fri, 21 Dec 2018)");
   script_name("Fedora Update for cups FEDORA-2018-1d9aa4a5fd");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC28");
 
   script_xref(name:"FEDORA", value:"2018-1d9aa4a5fd");
-  script_xref(name:"URL" , value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/GA2OBRREMQ4AO3ZZCYI7D3CCG3FSMLW6");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/GA2OBRREMQ4AO3ZZCYI7D3CCG3FSMLW6");
 
   script_tag(name:"summary", value:"The remote host is missing an update for the 'cups'
   package(s) announced via the FEDORA-2018-1d9aa4a5fd advisory.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
-
-  script_tag(name:"insight", value:"CUPS printing system provides a portable printing layer for
-UNIX operating systems. It has been developed by Apple Inc.
-to promote a standard printing solution for all UNIX vendors and users.
-CUPS provides the System V and Berkeley command-line interfaces.
-");
 
   script_tag(name:"affected", value:"cups on Fedora 28.");
 
@@ -71,7 +65,8 @@ include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
 release = rpm_get_ssh_release();
-if(!release) exit(0);
+if(!release)
+  exit(0);
 
 res = "";
 

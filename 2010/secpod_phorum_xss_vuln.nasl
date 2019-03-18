@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_phorum_xss_vuln.nasl 8250 2017-12-27 07:29:15Z teissa $
+# $Id: secpod_phorum_xss_vuln.nasl 14233 2019-03-16 13:32:43Z mmartin $
 #
 # Phorum Cross-Site Scripting Vulnerability
 #
@@ -24,32 +24,19 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_insight = "The flaw is due to error in handling email address.
-
-  NOTE: Further information is not available.";
-
-tag_impact = "Successful exploitation will allow attacker to execute arbitrary code in
-  the context of an application.
-  Impact Level: Application";
-tag_affected = "Phorum version prior to 5.2.15";
-tag_solution = "Upgrade Phorum to 5.2.15 or later,
-  For updates refer to http://www.phorum.org/downloads.php";
-tag_summary = "This host is running Phorum and is prone to cross-site
-  scripting vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902179");
-  script_version("$Revision: 8250 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-27 08:29:15 +0100 (Wed, 27 Dec 2017) $");
+  script_version("$Revision: 14233 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-16 14:32:43 +0100 (Sat, 16 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-05-25 13:56:16 +0200 (Tue, 25 May 2010)");
   script_cve_id("CVE-2010-1629");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_name("Phorum Cross-Site Scripting Vulnerability");
-  script_xref(name : "URL" , value : "http://www.facebook.com/note.php?note_id=371190874581");
-  script_xref(name : "URL" , value : "http://www.openwall.com/lists/oss-security/2010/05/16/2");
-  script_xref(name : "URL" , value : "http://www.openwall.com/lists/oss-security/2010/05/18/11");
+  script_xref(name:"URL", value:"http://www.facebook.com/note.php?note_id=371190874581");
+  script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2010/05/16/2");
+  script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2010/05/18/11");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
@@ -57,11 +44,17 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("phorum_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "insight" , value : tag_insight);
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary code in
+  the context of an application.");
+  script_tag(name:"affected", value:"Phorum version prior to 5.2.15");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution", value:"Upgrade Phorum to 5.2.15 or later.");
+  script_tag(name:"summary", value:"This host is running Phorum and is prone to cross-site
+  scripting vulnerability.");
+  script_tag(name:"insight", value:"The flaw is due to error in handling email address.
+
+  NOTE: Further information is not available.");
+  script_xref(name:"URL", value:"http://www.phorum.org/downloads.php");
   exit(0);
 }
 
@@ -80,7 +73,6 @@ if(!phorumVer[1]){
   exit(0);
 }
 
-# Check for Phorum Version < 5.2.15
 if(version_is_less(version:phorumVer[1], test_version:"5.2.15")){
   security_message(phorumPort);
 }

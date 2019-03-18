@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_inventory_mult_vuln.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_php_inventory_mult_vuln.nasl 14233 2019-03-16 13:32:43Z mmartin $
 #
 # PHP Inventory Multiple Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800983");
-  script_version("$Revision: 5323 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+  script_version("$Revision: 14233 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-16 14:32:43 +0100 (Sat, 16 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-01-22 16:43:14 +0100 (Fri, 22 Jan 2010)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -47,17 +47,16 @@ if(description)
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/10370");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to include arbitrary
-  HTML or web scripts in the scope of the browser and allows to obtain and manipulate sensitive information.
-
-  Impact Level: Application.");
+  HTML or web scripts in the scope of the browser and allows to obtain and manipulate sensitive information.");
   script_tag(name:"affected", value:"PHP Inventory version 1.2 and prior.");
   script_tag(name:"insight", value:"The Multiple flaws due to,
+
   - Input passed via the 'user_id' parameter to 'index.php' and via the 'sup_id'
     parameter is not properly sanitised before being used in an SQL query.
+
   - Input passed via the 'user' and 'pass' form field to 'index.php' is not
     properly sanitised before being used in an SQL query.");
-  script_tag(name:"solution", value:"Update to PHP Inventory version 1.3.2 or later.
-  For updates refer to http://www.phpwares.com/content/php-inventory");
+  script_tag(name:"solution", value:"Update to PHP Inventory version 1.3.2 or later.");
   script_tag(name:"summary", value:"This host is running PHP inventory and is prone to multiple
   vulnerabilities.
 
@@ -69,6 +68,7 @@ if(description)
 
   script_tag(name:"deprecated", value:TRUE);
 
+  script_xref(name:"URL", value:"http://www.phpwares.com/content/php-inventory");
   exit(0);
 }
 

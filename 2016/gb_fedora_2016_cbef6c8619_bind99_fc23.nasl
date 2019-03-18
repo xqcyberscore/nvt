@@ -26,47 +26,39 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809948");
-  script_version("$Revision: 6631 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:36:10 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-11-14 18:00:49 +0530 (Mon, 14 Nov 2016)");
   script_cve_id("CVE-2016-2776");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for bind99 FEDORA-2016-cbef6c8619");
-  script_tag(name: "summary", value: "Check the version of bind99");
-
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-  of detect NVT and check if the version is vulnerable or not.");
-
-  script_tag(name: "insight", value: "BIND (Berkeley Internet Name Domain) is
-  an implementation of the DNS (Domain Name System) protocols. This package
-  set contains only export version of BIND libraries, that are used for
-  building ISC DHCP.");
-
-  script_tag(name: "affected", value: "bind99 on Fedora 23");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-
-  script_xref(name: "FEDORA", value: "2016-cbef6c8619");
-  script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/5X67RYUPEGML7DZT7FSUUOB5ZP3PFPOT");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'bind99'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"affected", value:"bind99 on Fedora 23");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
+  script_xref(name:"FEDORA", value:"2016-cbef6c8619");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/5X67RYUPEGML7DZT7FSUUOB5ZP3PFPOT");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC23");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC23")
 {
@@ -77,6 +69,6 @@ if(release == "FC23")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

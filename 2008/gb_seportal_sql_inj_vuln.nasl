@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_seportal_sql_inj_vuln.nasl 5795 2017-03-30 14:04:00Z cfi $
+# $Id: gb_seportal_sql_inj_vuln.nasl 14240 2019-03-17 15:50:45Z cfischer $
 #
 # SePortal poll.php SQL Injection Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800143");
-  script_version("$Revision: 5795 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 16:04:00 +0200 (Thu, 30 Mar 2017) $");
+  script_version("$Revision: 14240 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-17 16:50:45 +0100 (Sun, 17 Mar 2019) $");
   script_tag(name:"creation_date", value:"2008-11-27 14:04:10 +0100 (Thu, 27 Nov 2008)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -37,8 +37,8 @@ if(description)
   script_bugtraq_id(29996);
   script_name("SePortal poll.php SQL Injection Vulnerability");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/30865");
-  script_xref(name : "URL" , value : "http://www.milw0rm.com/exploits/5960");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/30865");
+  script_xref(name:"URL", value:"http://www.milw0rm.com/exploits/5960");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
@@ -47,40 +47,39 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "impact" , value : "Successful attack could lead to execution of arbitrary SQL queries.
-  Impact Level: Application");
-  script_tag(name : "affected" , value : "SePortal Version 2.4 and prior on all running platform.");
-  script_tag(name : "insight" , value : "Input passed to the poll_id parameter in poll.php and to sp_id parameter
-  in staticpages.php files are not properly sanitised before being used in
-  an SQL query.");
-  script_tag(name : "solution" , value : "Upgrade to SePortal Version 2.5 or later
-  For updates refer to http://www.seportal.org/");
-  script_tag(name : "summary" , value : "The host is running SePortal which is prone to SQL Injection
+  script_tag(name:"impact", value:"Successful attack could lead to execution of arbitrary SQL queries.");
+  script_tag(name:"affected", value:"SePortal Version 2.4 and prior on all running platform.");
+  script_tag(name:"insight", value:"Input passed to the poll_id parameter in poll.php and to sp_id parameter
+  in staticpages.php files are not properly sanitised before being used in an SQL query.");
+  script_tag(name:"solution", value:"Upgrade to SePortal Version 2.5 or later");
+  script_tag(name:"summary", value:"The host is running SePortal which is prone to SQL Injection
   Vulnerability.");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
 include("http_func.inc");
-include("version_func.inc");
 include("http_keepalive.inc");
+include("version_func.inc");
 
 port = get_http_port(default:80);
+if(!can_host_php(port:port))
+  exit(0);
 
 foreach dir( make_list_unique( "/seportal", cgi_dirs( port:port ) ) ) {
 
   if( dir == "/" ) dir = "";
   rcvRes = http_get_cache(item:string(dir + "/index.php"), port:port);
-  if(rcvRes == NULL) continue;
+  if(!rcvRes) continue;
 
-  if("SePortal" >< rcvRes)
+  if("SePortal<" >< rcvRes)
   {
     sepVer = eregmatch(string:rcvRes, pattern:"SePortal<.+ ([0-9]\.[0-9.]+)");
     if(sepVer[1] != NULL)
     {
-      # Check for SePortal Version <= 2.4
       if(version_is_less_equal(version:sepVer[1], test_version:"2.4")){
         security_message(port:port);
       }

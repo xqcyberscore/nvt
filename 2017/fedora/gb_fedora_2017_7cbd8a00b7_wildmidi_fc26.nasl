@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2017_7cbd8a00b7_wildmidi_fc26.nasl 8091 2017-12-13 06:22:57Z teissa $
+# $Id: gb_fedora_2017_7cbd8a00b7_wildmidi_fc26.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for wildmidi FEDORA-2017-7cbd8a00b7
 #
@@ -27,42 +27,39 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.873881");
-  script_version("$Revision: 8091 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-13 07:22:57 +0100 (Wed, 13 Dec 2017) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-12-10 08:10:44 +0100 (Sun, 10 Dec 2017)");
   script_cve_id("CVE-2017-11661", "CVE-2017-11662", "CVE-2017-11663", "CVE-2017-11664");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for wildmidi FEDORA-2017-7cbd8a00b7");
-  script_tag(name: "summary", value: "Check the version of wildmidi");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "WildMidi is a software midi player which 
-has a core softsynth library that can be used with other applications.");
-  script_tag(name: "affected", value: "wildmidi on Fedora 26");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-
-  script_xref(name: "FEDORA", value: "2017-7cbd8a00b7");
-  script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/XGAZHDTXXL3RFRCNGE4XLOHD4MASNLBB");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'wildmidi'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"affected", value:"wildmidi on Fedora 26");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
+  script_xref(name:"FEDORA", value:"2017-7cbd8a00b7");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/XGAZHDTXXL3RFRCNGE4XLOHD4MASNLBB");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC26");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC26")
 {
@@ -73,6 +70,6 @@ if(release == "FC26")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

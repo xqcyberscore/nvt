@@ -26,48 +26,39 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808528");
-  script_version("$Revision: 6631 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:36:10 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-07-02 06:38:43 +0200 (Sat, 02 Jul 2016)");
   script_cve_id("CVE-2016-0772");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for python3 FEDORA-2016-105b80d1be");
-  script_tag(name: "summary", value: "Check the version of python3");
-
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-  of detect NVT and check if the version is vulnerable or not.");
-
-  script_tag(name: "insight", value: "Python 3 is a new version of the language
-  that is incompatible with the 2.x line of releases. The language is mostly
-  the same, but many details, especially how built-in objects like dictionaries
-  and strings work, have changed considerably, and a lot of deprecated features
-  have finally been removed.");
-
-  script_tag(name: "affected", value: "python3 on Fedora 24");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-
-  script_xref(name: "FEDORA", value: "2016-105b80d1be");
-  script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/ML2DT7KXRWNL7UXBIJIYO5E3QVM5VG35");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'python3'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"affected", value:"python3 on Fedora 24");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
+  script_xref(name:"FEDORA", value:"2016-105b80d1be");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/ML2DT7KXRWNL7UXBIJIYO5E3QVM5VG35");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC24");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC24")
 {
@@ -78,6 +69,6 @@ if(release == "FC24")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

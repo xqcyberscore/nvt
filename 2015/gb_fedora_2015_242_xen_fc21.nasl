@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806582");
-  script_version("$Revision: 6630 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:34:32 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-11-10 06:10:25 +0100 (Tue, 10 Nov 2015)");
   script_cve_id("CVE-2015-7969", "CVE-2015-7970", "CVE-2015-7813", "CVE-2015-7814",
                 "CVE-2015-7812", "CVE-2015-7971", "CVE-2015-7835", "CVE-2015-7972");
@@ -35,35 +35,31 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for xen FEDORA-2015-242");
-  script_tag(name: "summary", value: "Check the version of xen");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "This package contains the XenD daemon and
-xm command line tools, needed to manage virtual machines running under the Xen
-hypervisor
-");
-  script_tag(name: "affected", value: "xen on Fedora 21");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "FEDORA", value: "2015-242");
-  script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-November/171249.html");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'xen'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"affected", value:"xen on Fedora 21");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
+  script_xref(name:"FEDORA", value:"2015-242");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/pipermail/package-announce/2015-November/171249.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC21");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC21")
 {
@@ -74,6 +70,6 @@ if(release == "FC21")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

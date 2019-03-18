@@ -23,67 +23,41 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.868132");
-  script_version("$Revision: 9373 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:57:18 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-08-27 05:55:01 +0200 (Wed, 27 Aug 2014)");
   script_cve_id("CVE-2014-3577", "CVE-2012-6153", "CVE-2012-5783");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
   script_name("Fedora Update for jakarta-commons-httpclient FEDORA-2014-9581");
-
-  tag_insight = "The Hyper-Text Transfer Protocol (HTTP) is perhaps the most significant
-protocol used on the Internet today. Web services, network-enabled
-appliances and the growth of network computing continue to expand the
-role of the HTTP protocol beyond user-driven web browsers, and increase
-the number of applications that may require HTTP support.
-Although the java.net package provides basic support for accessing
-resources via HTTP, it doesn't provide the full flexibility or
-functionality needed by many applications. The Jakarta Commons HTTP
-Client component seeks to fill this void by providing an efficient,
-up-to-date, and feature-rich package implementing the client side of the
-most recent HTTP standards and recommendations.
-Designed for extension while providing robust support for the base HTTP
-protocol, the HTTP Client component may be of interest to anyone
-building HTTP-aware client applications such as web browsers, web
-service clients, or systems that leverage or extend the HTTP protocol
-for distributed communication.
-";
-
-  tag_affected = "jakarta-commons-httpclient on Fedora 20";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  script_tag(name:"affected", value:"jakarta-commons-httpclient on Fedora 20");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "FEDORA", value: "2014-9581");
-  script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2014-August/137032.html");
-  script_tag(name:"summary", value:"Check for the Version of jakarta-commons-httpclient");
+  script_xref(name:"FEDORA", value:"2014-9581");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/pipermail/package-announce/2014-August/137032.html");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'jakarta-commons-httpclient'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC20");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC20")
 {
@@ -94,6 +68,6 @@ if(release == "FC20")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

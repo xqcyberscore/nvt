@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_particle_wiki_18273.nasl 11449 2018-09-18 10:04:42Z mmartin $
+# $Id: gb_particle_wiki_18273.nasl 14233 2019-03-16 13:32:43Z mmartin $
 #
 # Particle Wiki Index.PHP SQL Injection Vulnerability
 #
@@ -27,8 +27,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100837");
-  script_version("$Revision: 11449 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 12:04:42 +0200 (Tue, 18 Sep 2018) $");
+  script_version("$Revision: 14233 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-16 14:32:43 +0100 (Sat, 16 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-10-04 14:08:22 +0200 (Mon, 04 Oct 2010)");
   script_bugtraq_id(18273);
   script_tag(name:"cvss_base", value:"7.5");
@@ -58,7 +58,7 @@ supplied input before using it in an SQL query.
 A successful exploit could allow an attacker to compromise the
 application, access or modify data, or exploit vulnerabilities in the
 underlying database implementation.");
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

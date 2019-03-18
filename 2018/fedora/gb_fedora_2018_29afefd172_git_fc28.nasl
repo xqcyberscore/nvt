@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_29afefd172_git_fc28.nasl 13032 2019-01-11 07:56:51Z mmartin $
+# $Id: gb_fedora_2018_29afefd172_git_fc28.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for git FEDORA-2018-29afefd172
 #
@@ -29,35 +29,26 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875331");
-  script_version("$Revision: 13032 $");
+  script_version("$Revision: 14223 $");
   script_cve_id("CVE-2018-19486", "CVE-2018-17456", "CVE-2018-11233", "CVE-2018-11235");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-11 08:56:51 +0100 (Fri, 11 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-12-04 08:34:05 +0100 (Tue, 04 Dec 2018)");
   script_name("Fedora Update for git FEDORA-2018-29afefd172");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC28");
 
   script_xref(name:"FEDORA", value:"2018-29afefd172");
-  script_xref(name:"URL" , value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/SIQD4R3AXAVLC7I56GWWF23JHSCDSW2J");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/SIQD4R3AXAVLC7I56GWWF23JHSCDSW2J");
 
   script_tag(name:"summary", value:"The remote host is missing an update for the 'git'
   package(s) announced via the FEDORA-2018-29afefd172 advisory.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
-
-  script_tag(name:"insight", value:"Git is a fast, scalable, distributed revision control system with an
-unusually rich command set that provides both high-level operations
-and full access to internals.
-
-The git rpm installs common set of tools which are usually using with
-small amount of dependencies. To install all git packages, including
-tools for integrating with other SCMs, install the git-all meta-package.
-");
 
   script_tag(name:"affected", value:"git on Fedora 28.");
 
@@ -73,7 +64,8 @@ include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
 release = rpm_get_ssh_release();
-if(!release) exit(0);
+if(!release)
+  exit(0);
 
 res = "";
 

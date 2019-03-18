@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_cb337fb199_libmspack_fc28.nasl 13374 2019-01-31 07:19:48Z asteins $
+# $Id: gb_fedora_2018_cb337fb199_libmspack_fc28.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for libmspack FEDORA-2018-cb337fb199
 #
@@ -29,31 +29,27 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875260");
-  script_version("$Revision: 13374 $");
+  script_version("$Revision: 14223 $");
   script_cve_id("CVE-2018-14680", "CVE-2018-14681", "CVE-2018-14682",
                 "CVE-2018-18584", "CVE-2018-18585", "CVE-2018-14679");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-31 08:19:48 +0100 (Thu, 31 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-11-13 06:19:12 +0100 (Tue, 13 Nov 2018)");
   script_name("Fedora Update for libmspack FEDORA-2018-cb337fb199");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC28");
 
   script_xref(name:"FEDORA", value:"2018-cb337fb199");
-  script_xref(name:"URL" , value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/GQ74QNU46BU7FNK7VJ5B7HQLX37AVARD");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/GQ74QNU46BU7FNK7VJ5B7HQLX37AVARD");
 
   script_tag(name:"summary", value:"The remote host is missing an update for the 'libmspack'
   package(s) announced via the FEDORA-2018-cb337fb199 advisory.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
-
-  script_tag(name:"insight", value:"The purpose of libmspack is to provide both compression and decompression of
-some loosely related file formats used by Microsoft.
-");
 
   script_tag(name:"affected", value:"libmspack on Fedora 28.");
 
@@ -69,7 +65,8 @@ include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
 release = rpm_get_ssh_release();
-if(!release) exit(0);
+if(!release)
+  exit(0);
 
 res = "";
 

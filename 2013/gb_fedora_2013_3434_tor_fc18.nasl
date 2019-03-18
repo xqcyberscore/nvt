@@ -23,66 +23,41 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "Tor is a connection-based low-latency anonymous communication system.
-
-  Applications connect to the local Tor proxy using the SOCKS protocol. The
-  local proxy chooses a path through a set of relays, in which each relay
-  knows its predecessor and successor, but no others. Traffic flowing down
-  the circuit is unwrapped by a symmetric key at each relay, which reveals
-  the downstream relay.
-
-  Warnings: Tor does no protocol cleaning.  That means there is a danger
-  that application protocols and associated programs can be induced to
-  reveal information about the initiator. Tor depends on Privoxy and
-  similar protocol cleaners to solve this problem. This is alpha code,
-  and is even more likely than released code to have anonymity-spoiling
-  bugs. The present network is very small -- this further reduces the
-  strength of the anonymity provided. Tor is not presently suitable for
-  high-stakes anonymity.";
-
-
-tag_affected = "tor on Fedora 18";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
 if(description)
 {
-  script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2013-March/100215.html");
+  script_xref(name:"URL", value:"http://lists.fedoraproject.org/pipermail/package-announce/2013-March/100215.html");
   script_oid("1.3.6.1.4.1.25623.1.0.865478");
-  script_version("$Revision: 9372 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:56:37 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-03-19 09:37:11 +0530 (Tue, 19 Mar 2013)");
   script_cve_id("CVE-2012-5573");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_xref(name: "FEDORA", value: "2013-3434");
+  script_xref(name:"FEDORA", value:"2013-3434");
   script_name("Fedora Update for tor FEDORA-2013-3434");
-
-  script_tag(name:"summary", value:"Check for the Version of tor");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'tor'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC18");
+  script_tag(name:"affected", value:"tor on Fedora 18");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC18")
 {
@@ -93,6 +68,6 @@ if(release == "FC18")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

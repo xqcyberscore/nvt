@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2009-July/016054.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880678");
-  script_version("$Revision: 14098 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
+  script_version("$Revision: 14233 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-16 14:32:43 +0100 (Sat, 16 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -36,7 +36,8 @@ if(description)
   script_cve_id("CVE-2009-0696");
   script_name("CentOS Update for bind CESA-2009:1181 centos3 i386");
 
-  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for bind");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'bind'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
@@ -59,7 +60,7 @@ if(description)
 
   This update also fixes the following bug:
 
-  * the following message could have been logged: 'internal_accept: fcntl()
+  * the following message could have been logged:'internal_accept: fcntl()
   failed: Too many open files'. With these updated packages, timeout queries
   are aborted in order to reduce the number of open UDP sockets, and when the
   accept() function returns an EMFILE error value, that situation is now

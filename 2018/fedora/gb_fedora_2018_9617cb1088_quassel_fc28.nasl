@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_9617cb1088_quassel_fc28.nasl 9863 2018-05-16 12:29:42Z santu $
+# $Id: gb_fedora_2018_9617cb1088_quassel_fc28.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for quassel FEDORA-2018-9617cb1088
 #
@@ -27,44 +27,40 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874495");
-  script_version("$Revision: 9863 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-16 14:29:42 +0200 (Wed, 16 May 2018) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-05-16 05:59:14 +0200 (Wed, 16 May 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for quassel FEDORA-2018-9617cb1088");
-  script_tag(name:"summary", value:"Check the version of quassel");
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present 
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'quassel'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
-  script_tag(name:"insight", value:"Quassel IRC is a modern, distributed IRC client,
-meaning that one (or multiple) client(s) can attach to and detach from a central 
-core -- much like the popular combination of screen and a text-based IRC client 
-such as WeeChat, but graphical
-");
   script_tag(name:"affected", value:"quassel on Fedora 28");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"FEDORA", value:"2018-9617cb1088");
-  script_xref(name:"URL" , value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/4TSYKBTJ7NPIN7J5D2VUDIRQ5XEHLBVW");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/4TSYKBTJ7NPIN7J5D2VUDIRQ5XEHLBVW");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC28");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC28")
 {

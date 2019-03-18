@@ -23,64 +23,41 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "Zabbix is software that monitors numerous parameters of a network and the
-  health and integrity of servers. Zabbix uses a flexible notification mechanism
-  that allows users to configure e-mail based alerts for virtually any event.
-  This allows a fast reaction to server problems. Zabbix offers excellent
-  reporting and data visualization features based on the stored data.
-  This makes Zabbix ideal for capacity planning.
-
-  Zabbix supports both polling and trapping. All Zabbix reports and statistics,
-  as well as configuration parameters are accessed through a web-based front end.
-  A web-based front end ensures that the status of your network and the health of
-  your servers can be assessed from any location. Properly configured, Zabbix can
-  play an important role in monitoring IT infrastructure. This is equally true
-  for small organizations with a few servers and for large companies with a
-  multitude of servers.";
-
-
-tag_affected = "zabbix on Fedora 18";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
 if(description)
 {
-  script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2013-January/097656.html");
+  script_xref(name:"URL", value:"http://lists.fedoraproject.org/pipermail/package-announce/2013-January/097656.html");
   script_oid("1.3.6.1.4.1.25623.1.0.865267");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-01-31 09:24:59 +0530 (Thu, 31 Jan 2013)");
   script_cve_id("CVE-2013-1364");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_xref(name: "FEDORA", value: "2013-1082");
+  script_xref(name:"FEDORA", value:"2013-1082");
   script_name("Fedora Update for zabbix FEDORA-2013-1082");
-
-  script_tag(name: "summary" , value: "Check for the Version of zabbix");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'zabbix'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC18");
+  script_tag(name:"affected", value:"zabbix on Fedora 18");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC18")
 {
@@ -91,6 +68,6 @@ if(release == "FC18")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

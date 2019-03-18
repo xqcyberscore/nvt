@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-October/018947.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881525");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14222 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 13:50:48 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-10-19 10:20:49 +0530 (Fri, 19 Oct 2012)");
   script_cve_id("CVE-2012-3216", "CVE-2012-4416", "CVE-2012-5068", "CVE-2012-5069",
                 "CVE-2012-5070", "CVE-2012-5071", "CVE-2012-5072", "CVE-2012-5073",
@@ -40,7 +40,8 @@ if(description)
   script_xref(name:"CESA", value:"2012:1386");
   script_name("CentOS Update for java CESA-2012:1386 centos6");
 
-  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for java");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'java'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

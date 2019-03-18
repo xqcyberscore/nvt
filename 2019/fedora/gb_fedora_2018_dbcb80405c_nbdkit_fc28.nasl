@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_dbcb80405c_nbdkit_fc28.nasl 13173 2019-01-21 06:39:39Z santu $
+# $Id: gb_fedora_2018_dbcb80405c_nbdkit_fc28.nasl 14225 2019-03-15 14:32:03Z cfischer $
 #
 # Fedora Update for nbdkit FEDORA-2018-dbcb80405c
 #
@@ -29,17 +29,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875408");
-  script_version("$Revision: 13173 $");
+  script_version("$Revision: 14225 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-21 07:39:39 +0100 (Mon, 21 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 15:32:03 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-01-15 04:03:20 +0100 (Tue, 15 Jan 2019)");
   script_name("Fedora Update for nbdkit FEDORA-2018-dbcb80405c");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC28");
 
   script_xref(name:"FEDORA", value:"2018-dbcb80405c");
   script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/4CC257C54YT73RUK5RM4DCOJLQ756K52");
@@ -49,27 +49,6 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is
   present on the target host.");
-
-  script_tag(name:"insight", value:"NBD is a protocol for accessing block devices
-  (hard disks and disk-like things) over the network.
-
-&#39 nbdkit&#39  is a toolkit for creating NBD servers.
-
-The key features are:
-
-* Multithreaded NBD server written in C with good performance.
-
-* Well-documented, simple plugin API with a stable ABI guarantee.
-  Allows you to export 'unconventional' block devices easily.
-
-* Liberal license (BSD) allows nbdkit to be linked to proprietary
-  libraries or included in proprietary code.
-
-You probably want to install one of more plugins (nbdkit-plugin-*).
-
-To develop plugins, install the nbdkit-devel package and start by
-reading the nbdkit(1) and nbdkit-plugin(3) manual pages.
-");
 
   script_tag(name:"affected", value:"nbdkit on Fedora 28.");
 
@@ -85,7 +64,8 @@ include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
 release = rpm_get_ssh_release();
-if(!release) exit(0);
+if(!release)
+  exit(0);
 
 res = "";
 

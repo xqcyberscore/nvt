@@ -26,59 +26,38 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.868946");
-  script_version("$Revision: 6630 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:34:32 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-01-26 05:30:21 +0100 (Mon, 26 Jan 2015)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("Fedora Update for xdg-utils FEDORA-2015-0954");
-  script_tag(name: "summary", value: "Check the version of xdg-utils");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "The xdg-utils package is a set of simple
-scripts that provide basic desktop integration functions for any Free Desktop,
-such as Linux. They are intended to provide a set of defacto standards. This
-means that:
-*  Third party software developers can rely on these xdg-utils
-   for all of their simple integration needs.
-*  Developers of desktop environments can make sure that their
-   environments are well supported
-*  Distribution vendors can provide custom versions of these utilities
-
-The following scripts are provided at this time:
-* xdg-desktop-icon      Install icons to the desktop
-* xdg-desktop-menu      Install desktop menu items
-* xdg-email             Send mail using the user's preferred e-mail composer
-* xdg-icon-resource     Install icon resources
-* xdg-mime              Query information about file type handling and
-                        install descriptions for new file types
-* xdg-open              Open a file or URL in the user's preferred application
-* xdg-screensaver       Control the screensaver
-* xdg-settings          Get various settings from the desktop environment
-");
-  script_tag(name: "affected", value: "xdg-utils on Fedora 21");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "FEDORA", value: "2015-0954");
-  script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-January/148488.html");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'xdg-utils'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"affected", value:"xdg-utils on Fedora 21");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
+  script_xref(name:"FEDORA", value:"2015-0954");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/pipermail/package-announce/2015-January/148488.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC21");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC21")
 {
@@ -89,6 +68,6 @@ if(release == "FC21")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

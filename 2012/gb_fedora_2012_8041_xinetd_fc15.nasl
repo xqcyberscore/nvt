@@ -23,56 +23,41 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_affected = "xinetd on Fedora 15";
-tag_insight = "Xinetd is a secure replacement for inetd, the Internet services
-  daemon. Xinetd provides access control for all services based on the
-  address of the remote host and/or on time of access and can prevent
-  denial-of-access attacks. Xinetd provides extensive logging, has no
-  limit on the number of server arguments, and lets you bind specific
-  services to specific IP addresses on your host machine. Each service
-  has its own specific configuration file for Xinetd; the files are
-  located in the /etc/xinetd.d directory.";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
 if(description)
 {
-  script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2012-May/081446.html");
+  script_xref(name:"URL", value:"http://lists.fedoraproject.org/pipermail/package-announce/2012-May/081446.html");
   script_oid("1.3.6.1.4.1.25623.1.0.864264");
-  script_version("$Revision: 9352 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-06-01 09:50:12 +0530 (Fri, 01 Jun 2012)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
   script_cve_id("CVE-2012-0862");
-  script_xref(name: "FEDORA", value: "2012-8041");
+  script_xref(name:"FEDORA", value:"2012-8041");
   script_name("Fedora Update for xinetd FEDORA-2012-8041");
-
-  script_tag(name: "summary" , value: "Check for the Version of xinetd");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'xinetd'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC15");
+  script_tag(name:"affected", value:"xinetd on Fedora 15");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC15")
 {
@@ -83,6 +68,6 @@ if(release == "FC15")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

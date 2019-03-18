@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-August/018822.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881474");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14222 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 13:50:48 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-08-24 09:56:01 +0530 (Fri, 24 Aug 2012)");
   script_cve_id("CVE-2010-2642", "CVE-2010-3702", "CVE-2010-3704", "CVE-2011-0433",
                 "CVE-2011-0764", "CVE-2011-1552", "CVE-2011-1553", "CVE-2011-1554");
@@ -37,7 +37,8 @@ if(description)
   script_xref(name:"CESA", value:"2012:1201");
   script_name("CentOS Update for tetex CESA-2012:1201 centos5");
 
-  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for tetex");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'tetex'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

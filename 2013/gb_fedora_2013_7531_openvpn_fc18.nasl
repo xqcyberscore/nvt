@@ -23,52 +23,41 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
-tag_affected = "openvpn on Fedora 18";
-tag_insight = "OpenVPN is a robust and highly flexible tunneling application that uses all
-  of the encryption, authentication, and certification features of the
-  OpenSSL library to securely tunnel IP networks over a single UDP or TCP
-  port.  It can use the Marcus Franz Xaver Johannes Oberhumer's LZO library
-  for compression.";
-tag_solution = "Please Install the Updated Packages.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.865625");
-  script_version("$Revision: 9372 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:56:37 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-05-17 09:49:11 +0530 (Fri, 17 May 2013)");
   script_cve_id("CVE-2013-2061");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:N/A:N");
   script_name("Fedora Update for openvpn FEDORA-2013-7531");
-
-  script_xref(name: "FEDORA", value: "2013-7531");
-  script_xref(name: "URL" , value: "http://lists.fedoraproject.org/pipermail/package-announce/2013-May/105609.html");
-  script_tag(name:"summary", value:"Check for the Version of openvpn");
+  script_xref(name:"FEDORA", value:"2013-7531");
+  script_xref(name:"URL", value:"http://lists.fedoraproject.org/pipermail/package-announce/2013-May/105609.html");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'openvpn'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC18");
+  script_tag(name:"affected", value:"openvpn on Fedora 18");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC18")
 {
@@ -79,6 +68,6 @@ if(release == "FC18")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

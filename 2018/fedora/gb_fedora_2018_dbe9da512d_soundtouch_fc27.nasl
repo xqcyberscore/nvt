@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_dbe9da512d_soundtouch_fc27.nasl 12687 2018-12-06 13:46:21Z mmartin $
+# $Id: gb_fedora_2018_dbe9da512d_soundtouch_fc27.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for soundtouch FEDORA-2018-dbe9da512d
 #
@@ -29,37 +29,26 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875343");
-  script_version("$Revision: 12687 $");
+  script_version("$Revision: 14223 $");
   script_cve_id("CVE-2018-17098", "CVE-2018-17096", "CVE-2018-17097", "CVE-2018-14044", "CVE-2018-14045", "CVE-2018-1000223", "CVE-2017-9258", "CVE-2017-9259", "CVE-2017-9260");
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-06 14:46:21 +0100 (Thu, 06 Dec 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-12-04 08:38:34 +0100 (Tue, 04 Dec 2018)");
   script_name("Fedora Update for soundtouch FEDORA-2018-dbe9da512d");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC27");
 
   script_xref(name:"FEDORA", value:"2018-dbe9da512d");
-  script_xref(name:"URL" , value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/BLVHYN336V62EESIQBTWQWCTHSAWBV72");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/BLVHYN336V62EESIQBTWQWCTHSAWBV72");
 
   script_tag(name:"summary", value:"The remote host is missing an update for the 'soundtouch'
   package(s) announced via the FEDORA-2018-dbe9da512d advisory.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
-
-  script_tag(name:"insight", value:"SoundTouch is a LGPL-licensed open-source audio processing library for
-changing the Tempo, Pitch and Playback Rates of audio streams or
-files. The SoundTouch library is suited for application developers
-writing sound processing tools that require tempo/pitch control
-functionality, or just for playing around with the sound effects.
-
-The SoundTouch library source kit includes an example utility
-SoundStretch which allows processing .wav audio files from a
-command-line interface.
-");
 
   script_tag(name:"affected", value:"soundtouch on Fedora 27.");
 
@@ -75,7 +64,8 @@ include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
 release = rpm_get_ssh_release();
-if(!release) exit(0);
+if(!release)
+  exit(0);
 
 res = "";
 

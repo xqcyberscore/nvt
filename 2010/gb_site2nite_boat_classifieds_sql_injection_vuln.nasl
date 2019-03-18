@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_site2nite_boat_classifieds_sql_injection_vuln.nasl 6000 2017-04-21 11:07:29Z cfi $
+# $Id: gb_site2nite_boat_classifieds_sql_injection_vuln.nasl 14233 2019-03-16 13:32:43Z mmartin $
 #
 # Site2Nite Boat Classifieds Multiple SQL Injection Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801378");
-  script_version("$Revision: 6000 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-21 13:07:29 +0200 (Fri, 21 Apr 2017) $");
+  script_version("$Revision: 14233 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-16 14:32:43 +0100 (Sat, 16 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-07-16 19:44:55 +0200 (Fri, 16 Jul 2010)");
   script_cve_id("CVE-2010-2687", "CVE-2010-2688");
   script_bugtraq_id(41046, 41059);
@@ -47,9 +47,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2010/1576");
 
   script_tag(name:"impact", value:"Successful exploitation will let attackers to gain unauthorized
-  access and obtain sensitive information.
-
-  Impact Level: Application");
+  access and obtain sensitive information.");
 
   script_tag(name:"affected", value:"Site2Nite Boat Classifieds");
 
@@ -57,10 +55,9 @@ if(description)
   input via the 'id' parameter in 'detail.asp' and 'printdetail.asp' that allows
   attackers to manipulate SQL queries by injecting arbitrary SQL code.");
 
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"summary", value:"The host is running Site2Nite Boat Classifieds and is prone to
   SQL injection vulnerabilities.");
@@ -92,7 +89,6 @@ foreach dir( make_list_unique( "/boat-webdesign", "/products/boat-webdesign/www"
 
   if( res !~ "HTTP/1\.. 200" ) continue;
 
-  ## Confirm the application and Exploit
   if(('/boat-webdesign/' >< res) && (("DELETE" >< res) ||("SELECT" >< res))) {
     report = report_vuln_url( port:port, url:url );
     security_message( port:port, data:report );
@@ -106,7 +102,6 @@ foreach dir( make_list_unique( "/boat-webdesign", "/products/boat-webdesign/www"
 
   if( res !~ "HTTP/1\.. 200" ) exit( 99 );
 
-  # Confirm the application and exploit
   if(('>BOAT DETAILS - Site Id' >< res) && (">Seller Information:<" >< res)) {
     report = report_vuln_url( port:port, url:url );
     security_message( port:port, data:report );

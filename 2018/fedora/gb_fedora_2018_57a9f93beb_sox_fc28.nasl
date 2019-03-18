@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_57a9f93beb_sox_fc28.nasl 10696 2018-08-01 02:23:21Z ckuersteiner $
+# $Id: gb_fedora_2018_57a9f93beb_sox_fc28.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for sox FEDORA-2018-57a9f93beb
 #
@@ -27,44 +27,41 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874858");
-  script_version("$Revision: 10696 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-01 04:23:21 +0200 (Wed, 01 Aug 2018) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-07-28 06:08:15 +0200 (Sat, 28 Jul 2018)");
   script_cve_id("CVE-2017-11332", "CVE-2017-11358", "CVE-2017-11359");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for sox FEDORA-2018-57a9f93beb");
-  script_tag(name:"summary", value:"Check the version of sox");
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present 
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'sox'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
-  script_tag(name:"insight", value:"SoX (Sound eXchange) is a sound file format 
-converter. SoX can convert between many different digitized sound formats and 
-perform simple sound manipulation functions, including sound effects.
-");
   script_tag(name:"affected", value:"sox on Fedora 28");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"FEDORA", value:"2018-57a9f93beb");
-  script_xref(name:"URL" , value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/JA2AXBEF6CS2T4CZB4KAMGUXVAQDJEBR");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/JA2AXBEF6CS2T4CZB4KAMGUXVAQDJEBR");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC28");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC28")
 {

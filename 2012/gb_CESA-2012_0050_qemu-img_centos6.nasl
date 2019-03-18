@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-January/018383.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881110");
-  script_version("$Revision: 14098 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
+  script_version("$Revision: 14231 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-16 11:56:51 +0100 (Sat, 16 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-30 16:09:55 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2012-0029", "CVE-2011-4127");
   script_tag(name:"cvss_base", value:"7.4");
@@ -36,7 +36,8 @@ if(description)
   script_xref(name:"CESA", value:"2012:0050");
   script_name("CentOS Update for qemu-img CESA-2012:0050 centos6");
 
-  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for qemu-img");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'qemu-img'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
@@ -59,7 +60,7 @@ if(description)
   This update also fixes the following bug:
 
   * qemu-kvm has a 'scsi' option, to be used, for example, with the
-  '-device' option: '-device virtio-blk-pci, drive=[drive name], scsi=off'.
+  '-device' option:'-device virtio-blk-pci, drive=[drive name], scsi=off'.
   Previously, however, it only masked the feature bit, and did not reject
   SCSI commands if a malicious guest ignored the feature bit and issued a
   request. This update corrects this issue. The 'scsi=off' option can be

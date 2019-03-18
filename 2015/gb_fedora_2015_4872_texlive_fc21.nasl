@@ -26,47 +26,39 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869215");
-  script_version("$Revision: 7658 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-06 06:53:53 +0100 (Mon, 06 Nov 2017) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-04-09 07:07:33 +0200 (Thu, 09 Apr 2015)");
   script_cve_id("CVE-2015-0296");
   script_tag(name:"cvss_base", value:"1.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for texlive FEDORA-2015-4872");
-  script_tag(name: "summary", value: "Check the version of texlive");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "The TeX Live software distribution offers a complete TeX system for a
-variety of Unix, Macintosh, Windows and other platforms. It
-encompasses programs for editing, typesetting, previewing and printing
-of TeX documents in many different languages, and a large collection
-of TeX macros and font libraries.
-
-The distribution includes extensive general documentation about TeX,
-as well as the documentation for the included software packages.
-");
-  script_tag(name: "affected", value: "texlive on Fedora 21");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "FEDORA", value: "2015-4872");
-  script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-April/154424.html");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'texlive'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"affected", value:"texlive on Fedora 21");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
+  script_xref(name:"FEDORA", value:"2015-4872");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/pipermail/package-announce/2015-April/154424.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC21");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC21")
 {
@@ -77,6 +69,6 @@ if(release == "FC21")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

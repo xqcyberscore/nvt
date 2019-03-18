@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: netscaler_web_cookie_info.nasl 11555 2018-09-22 15:24:22Z cfischer $
+# $Id: netscaler_web_cookie_info.nasl 14240 2019-03-17 15:50:45Z cfischer $
 # Description: NetScaler web management cookie information
 #
 # Authors:
@@ -22,16 +22,15 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-if (description) {
+if (description)
+{
   script_oid("1.3.6.1.4.1.25623.1.0.80023");
-  script_version("$Revision: 11555 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:24:22 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 14240 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-17 16:50:45 +0100 (Sun, 17 Mar 2019) $");
   script_tag(name:"creation_date", value:"2008-10-24 20:15:31 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-
   script_name("NetScaler web management cookie information");
-
   script_family("Web Servers");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_analysis");
@@ -39,19 +38,20 @@ if (description) {
   script_xref(name:"OSVDB", value:"44155");
   script_copyright("This script is Copyright (c) 2008 nnposter");
   script_dependencies("netscaler_web_login.nasl");
-  script_mandatory_keys("citrix_netscaler/http/detected");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("citrix_netscaler/http/detected");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/484182/100/0/threaded");
 
-  script_tag(name:"summary", value:"The remote web server is prone to an information disclosure attack.
+  script_tag(name:"summary", value:"It is possible to extract information about the remote Citrix NetScaler appliance
+  obtained from the web management interface's session cookie, including the appliance's main IP address and software version.");
 
-Description :
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
-It is possible to extract information about the remote Citrix NetScaler appliance obtained from the web management
-interface's session cookie, including the appliance's main IP address and software version.");
-
- exit(0);
+  exit(0);
 }
 
 include("misc_func.inc");
@@ -60,12 +60,12 @@ include("http_func.inc");
 
 function cookie_extract (cookie,parm)
 {
-local_var match;
-match=eregmatch(string:cookie,pattern:' '+parm+'=([^; \r\n]*)',icase:TRUE);
-if (isnull(match)) return;
-return match[1];
+  local_var match;
+  match=eregmatch(string:cookie,pattern:' '+parm+'=([^; \r\n]*)',icase:TRUE);
+  if (isnull(match))
+    return;
+  return match[1];
 }
-
 
 port = get_kb_item("citrix_netscaler/http/port");
 if (!port || !get_tcp_port_state(port))

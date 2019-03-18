@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_5a82282e4e_gmic_fc27.nasl 11829 2018-10-11 02:52:58Z ckuersteiner $
+# $Id: gb_fedora_2018_5a82282e4e_gmic_fc27.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for gmic FEDORA-2018-5a82282e4e
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875148");
-  script_version("$Revision: 11829 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 04:52:58 +0200 (Thu, 11 Oct 2018) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-10-06 08:42:37 +0200 (Sat, 06 Oct 2018)");
   script_cve_id("CVE-2018-7587", "CVE-2018-7588", "CVE-2018-7589", "CVE-2018-7637",
                 "CVE-2018-7638", "CVE-2018-7639", "CVE-2018-7640", "CVE-2018-7641");
@@ -36,37 +36,33 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for gmic FEDORA-2018-5a82282e4e");
-  script_tag(name:"summary", value:"Check the version of gmic");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'gmic'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
   on the target host.");
-  script_tag(name:"insight", value:"G&#39 MIC is an open and full-featured framework
-  for image processing, providing several different user interfaces to
-  convert/manipulate/filter/visualize generic image datasets, from 1d scalar
-  signals to 3d+t sequences of multi-spectral volumetric images.
-");
   script_tag(name:"affected", value:"gmic on Fedora 27");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"FEDORA", value:"2018-5a82282e4e");
-  script_xref(name:"URL" , value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6Z4EMB7JFEKIYRFRANRNDD7ZIIZP6T4Z");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6Z4EMB7JFEKIYRFRANRNDD7ZIIZP6T4Z");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC27");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC27")
 {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_22776e8ca9_mongodb_fc27.nasl 11897 2018-10-15 05:26:22Z cfischer $
+# $Id: gb_fedora_2018_22776e8ca9_mongodb_fc27.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for mongodb FEDORA-2018-22776e8ca9
 #
@@ -27,57 +27,41 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875174");
-  script_version("$Revision: 11897 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 07:26:22 +0200 (Mon, 15 Oct 2018) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-10-11 08:54:13 +0200 (Thu, 11 Oct 2018)");
   script_cve_id("CVE-2017-5950");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for mongodb FEDORA-2018-22776e8ca9");
-  script_tag(name:"summary", value:"Check the version of mongodb");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'mongodb'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
   on the target host.");
-  script_tag(name:"insight", value:"Mongo (from 'humongous') is a high-performance,
-  open source, schema-free document-oriented database. MongoDB is written in C++
-  and offers the following features:
-    * Collection oriented storage: easy storage of object/JSON-style data
-    * Dynamic queries
-    * Full index support, including on inner objects and embedded arrays
-    * Query profiling
-    * Replication and fail-over support
-    * Efficient storage of binary data including large objects (e.g. photos
-    and videos)
-    * Auto-sharding for cloud-level scalability (currently in early alpha)
-    * Commercial Support Available
-
-A key goal of MongoDB is to bridge the gap between key/value stores (which are
-fast and highly scalable) and traditional RDBMS systems (which are deep in
-functionality).
-");
   script_tag(name:"affected", value:"mongodb on Fedora 27");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"FEDORA", value:"2018-22776e8ca9");
-  script_xref(name:"URL" , value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/TOKWJX7QHL4HXNYG26CN5STJBMLUZGN5");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/TOKWJX7QHL4HXNYG26CN5STJBMLUZGN5");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC27");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC27")
 {

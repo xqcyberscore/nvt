@@ -23,69 +23,43 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.867173");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-12-17 11:51:46 +0530 (Tue, 17 Dec 2013)");
   script_cve_id("CVE-2012-4571");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
   script_name("Fedora Update for python-keyring FEDORA-2013-22694");
 
-  tag_insight = "The Python keyring lib provides a easy way to access the system keyring
-service from python. It can be used in any application that needs safe
-password storage.
 
-The keyring services supported by the Python keyring lib:
-
-* **OSXKeychain**: supports the Keychain service in Mac OS X.
-* **KDEKWallet**: supports the KDE's Kwallet service.
-* **GnomeKeyring**: for Gnome 2 environment.
-* **SecretServiceKeyring**: for newer GNOME and KDE environments.
-* **WinVaultKeyring**: supports the Windows Credential Vault
-
-Besides these native password storing services provided by operating systems.
-Python keyring lib also provides following build-in keyrings.
-
-* **Win32CryptoKeyring**: for Windows 2k+.
-* **CryptedFileKeyring**: a command line interface keyring base on PyCrypto.
-* **UncryptedFileKeyring**: a keyring which leaves passwords directly in file.
-";
-
-  tag_affected = "python-keyring on Fedora 19";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  script_tag(name:"affected", value:"python-keyring on Fedora 19");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "FEDORA", value: "2013-22694");
-  script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2013-December/123117.html");
-  script_tag(name: "summary" , value: "Check for the Version of python-keyring");
+  script_xref(name:"FEDORA", value:"2013-22694");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/pipermail/package-announce/2013-December/123117.html");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'python-keyring'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC19");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC19")
 {
@@ -96,6 +70,6 @@ if(release == "FC19")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2019_541a12b809_python3_fc28.nasl 13245 2019-01-23 14:22:53Z santu $
+# $Id: gb_fedora_2019_541a12b809_python3_fc28.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for python3 FEDORA-2019-541a12b809
 #
@@ -29,17 +29,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875419");
-  script_version("$Revision: 13245 $");
+  script_version("$Revision: 14223 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-23 15:22:53 +0100 (Wed, 23 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-01-19 04:04:38 +0100 (Sat, 19 Jan 2019)");
   script_name("Fedora Update for python3 FEDORA-2019-541a12b809");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC28");
 
   script_xref(name:"FEDORA", value:"2019-541a12b809");
   script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/L3WE6ZKTLTN47JRX4GYTBMFOCRE5Q255");
@@ -49,25 +49,6 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is
   present on the target host.");
-
-  script_tag(name:"insight", value:"Python is an accessible, high-level,
-  dynamically typed, interpreted programming language, designed with an emphasis
-  on code readability. It includes an extensive standard library, and has a vast
-  ecosystem of third-party libraries.
-
-The python3 package provides the 'python3' executable: the reference
-interpreter for the Python language, version 3.
-The majority of its standard library is provided in the python3-libs package,
-which should be installed automatically along with python3.
-The remaining parts of the Python standard library are broken out into the
-python3-tkinter and python3-test packages, which may need to be installed
-separately.
-
-Documentation for Python is provided in the python3-docs package.
-
-Packages containing additional libraries for Python are generally named with
-the 'python3-' prefix.
-");
 
   script_tag(name:"affected", value:"python3 on Fedora 28.");
 
@@ -83,7 +64,8 @@ include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
 release = rpm_get_ssh_release();
-if(!release) exit(0);
+if(!release)
+  exit(0);
 
 res = "";
 

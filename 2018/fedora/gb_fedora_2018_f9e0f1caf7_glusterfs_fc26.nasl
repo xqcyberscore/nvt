@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_f9e0f1caf7_glusterfs_fc26.nasl 9974 2018-05-28 03:25:02Z ckuersteiner $
+# $Id: gb_fedora_2018_f9e0f1caf7_glusterfs_fc26.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for glusterfs FEDORA-2018-f9e0f1caf7
 #
@@ -27,52 +27,41 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874434");
-  script_version("$Revision: 9974 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-28 05:25:02 +0200 (Mon, 28 May 2018) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-05-13 05:45:03 +0200 (Sun, 13 May 2018)");
   script_cve_id("CVE-2018-1088");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for glusterfs FEDORA-2018-f9e0f1caf7");
-  script_tag(name:"summary", value:"Check the version of glusterfs");
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present 
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'glusterfs'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
-  script_tag(name:"insight", value:"GlusterFS is a distributed file-system 
-capable of scaling to several petabytes. It aggregates various storage bricks 
-over Infiniband RDMA or TCP/IP interconnect into one large parallel network file
-system. GlusterFS is one of the most sophisticated file systems in terms of 
-features and extensibility.  It borrows a powerful concept called Translators 
-from GNU Hurd kernel. Much of the code in GlusterFS is in user space and easily 
-manageable.
-
-This package includes the glusterfs binary, the glusterfsd daemon and the
-libglusterfs and glusterfs translator modules common to both GlusterFS server
-and client framework.
-");
   script_tag(name:"affected", value:"glusterfs on Fedora 26");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"FEDORA", value:"2018-f9e0f1caf7");
-  script_xref(name:"URL" , value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/NSUXP7GIHXVAH7YVAMMXDMS7RK5FJWMY");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/NSUXP7GIHXVAH7YVAMMXDMS7RK5FJWMY");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC26");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC26")
 {

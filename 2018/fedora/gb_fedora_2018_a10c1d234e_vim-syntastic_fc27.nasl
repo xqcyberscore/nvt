@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_a10c1d234e_vim-syntastic_fc27.nasl 10909 2018-08-10 15:03:01Z cfischer $
+# $Id: gb_fedora_2018_a10c1d234e_vim-syntastic_fc27.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for vim-syntastic FEDORA-2018-a10c1d234e
 #
@@ -27,45 +27,40 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874909");
-  script_version("$Revision: 10909 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:03:01 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-08-09 06:06:32 +0200 (Thu, 09 Aug 2018)");
   script_cve_id("CVE-2018-11319");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for vim-syntastic FEDORA-2018-a10c1d234e");
-  script_tag(name:"summary", value:"Check the version of vim-syntastic");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'vim-syntastic'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"Syntastic is a syntax checking plugin that runs files through external syntax
-checkers and displays any resulting errors to the user. This can be done on
-demand, or automatically as files are saved. If syntax errors are detected, the
-user is notified and is happy because they didn&#39 t have to compile their code or
-execute their script to find them.
-");
   script_tag(name:"affected", value:"vim-syntastic on Fedora 27");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"FEDORA", value:"2018-a10c1d234e");
-  script_xref(name:"URL" , value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/XQG3TJ7OXOQ45IEY62NV5VMGNK5CV7WQ");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/XQG3TJ7OXOQ45IEY62NV5VMGNK5CV7WQ");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC27");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC27")
 {

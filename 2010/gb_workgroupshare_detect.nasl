@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_workgroupshare_detect.nasl 8246 2017-12-26 07:29:20Z teissa $
+# $Id: gb_workgroupshare_detect.nasl 14233 2019-03-16 13:32:43Z mmartin $
 #
 # WorkgroupShare Detection
 #
@@ -24,28 +24,26 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This host is running a WorkgroupShare Server. WorkgroupShare lets the
-people share their personal Outlook folders, such as calendar,
-contact, task and notes information by using standard internet
-protocols.";
-
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.100518");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 8246 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-26 08:29:20 +0100 (Tue, 26 Dec 2017) $");
- script_tag(name:"creation_date", value:"2010-03-05 14:01:46 +0100 (Fri, 05 Mar 2010)");
- script_tag(name:"cvss_base", value:"0.0");
- script_name("WorkgroupShare Detection");
- script_tag(name:"qod_type", value:"remote_banner");
- script_category(ACT_GATHER_INFO);
- script_family("Service detection");
- script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl","find_service1.nasl");
- script_require_ports("Services/WorkgroupShare", 8100);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  script_oid("1.3.6.1.4.1.25623.1.0.100518");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 14233 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-16 14:32:43 +0100 (Sat, 16 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2010-03-05 14:01:46 +0100 (Fri, 05 Mar 2010)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_name("WorkgroupShare Detection");
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_category(ACT_GATHER_INFO);
+  script_family("Service detection");
+  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "find_service1.nasl");
+  script_require_ports("Services/WorkgroupShare", 8100);
+  script_tag(name:"summary", value:"This host is running a WorkgroupShare Server. WorkgroupShare lets the
+people share their personal Outlook folders, such as calendar,
+contact, task and notes information by using standard internet
+protocols.");
+  exit(0);
 }
 
 port = get_kb_item("Services/WorkgroupShare");
@@ -69,7 +67,7 @@ if("OK WorkgroupShare" >< buf) {
     log_message(port:port, data:info);
   }  else {
     log_message(port:port);
-  } 
-}  
+  }
+}
 
 exit(0);

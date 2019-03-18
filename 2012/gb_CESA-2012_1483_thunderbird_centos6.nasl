@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-November/019009.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881543");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14222 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 13:50:48 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-11-23 11:46:46 +0530 (Fri, 23 Nov 2012)");
   script_cve_id("CVE-2012-4201", "CVE-2012-4202", "CVE-2012-4207", "CVE-2012-4209",
                 "CVE-2012-4214", "CVE-2012-4215", "CVE-2012-4216", "CVE-2012-5829",
@@ -39,7 +39,8 @@ if(description)
   script_xref(name:"CESA", value:"2012:1483");
   script_name("CentOS Update for thunderbird CESA-2012:1483 centos6");
 
-  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for thunderbird");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'thunderbird'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

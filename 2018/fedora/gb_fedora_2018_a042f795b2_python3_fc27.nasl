@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_a042f795b2_python3_fc27.nasl 10965 2018-08-15 03:42:43Z ckuersteiner $
+# $Id: gb_fedora_2018_a042f795b2_python3_fc27.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for python3 FEDORA-2018-a042f795b2
 #
@@ -27,58 +27,40 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874355");
-  script_version("$Revision: 10965 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 05:42:43 +0200 (Wed, 15 Aug 2018) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-04-10 08:56:28 +0200 (Tue, 10 Apr 2018)");
   script_cve_id("CVE-2018-1060", "CVE-2018-1061");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for python3 FEDORA-2018-a042f795b2");
-  script_tag(name: "summary", value: "Check the version of python3");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "Python is an accessible, high-level, 
-dynamically typed, interpreted programming language, designed with an emphasis 
-on code readibility. It includes an extensive standard library, and has a vast 
-ecosystem of third-party libraries.
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'python3'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"affected", value:"python3 on Fedora 27");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
 
-The python3 package provides the 'python3' executable: the reference
-interpreter for the Python language, version 3.
-The majority of its standard library is provided in the python3-libs package,
-which should be installed automatically along with python3.
-The remaining parts of the Python standard library are broken out into the
-python3-tkinter and python3-test packages, which may need to be installed
-separately.
-
-Documentation for Python is provided in the python3-docs package.
-
-Packages containing additional libraries for Python are generally named with
-the 'python3-' prefix.
-");
-  script_tag(name: "affected", value: "python3 on Fedora 27");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-
-  script_xref(name: "FEDORA", value: "2018-a042f795b2");
-  script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/CCVDPYS7WEXGSBKZEHCXRPDAZ3ZKV6AU");
+  script_xref(name:"FEDORA", value:"2018-a042f795b2");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/CCVDPYS7WEXGSBKZEHCXRPDAZ3ZKV6AU");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC27");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC27")
 {
@@ -89,6 +71,6 @@ if(release == "FC27")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

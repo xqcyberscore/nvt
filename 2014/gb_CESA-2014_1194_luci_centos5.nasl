@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882048");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14222 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 13:50:48 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-10-01 17:00:09 +0530 (Wed, 01 Oct 2014)");
   script_cve_id("CVE-2012-5485", "CVE-2012-5486", "CVE-2012-5488", "CVE-2012-5497",
                 "CVE-2012-5498", "CVE-2012-5499", "CVE-2012-5500", "CVE-2013-6496",
@@ -92,7 +92,8 @@ It was discovered that Plone, included ...
 
   script_xref(name:"CESA", value:"2014:1194");
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2014-September/020611.html");
-  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for luci");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'luci'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

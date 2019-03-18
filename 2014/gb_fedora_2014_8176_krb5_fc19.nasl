@@ -23,55 +23,42 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.868063");
-  script_version("$Revision: 9373 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:57:18 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-08-08 05:59:36 +0200 (Fri, 08 Aug 2014)");
   script_cve_id("CVE-2014-4341", "CVE-2014-4342", "CVE-2014-4343", "CVE-2014-4344",
                 "CVE-2013-1417", "CVE-2013-1418", "CVE-2013-6800");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_name("Fedora Update for krb5 FEDORA-2014-8176");
-
-  tag_insight = "Kerberos V5 is a trusted-third-party network authentication system,
-which can improve your network's security by eliminating the insecure
-practice of sending passwords over the network in unencrypted form.
-";
-
-  tag_affected = "krb5 on Fedora 19";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  script_tag(name:"affected", value:"krb5 on Fedora 19");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "FEDORA", value: "2014-8176");
-  script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2014-August/136308.html");
-  script_tag(name:"summary", value:"Check for the Version of krb5");
+  script_xref(name:"FEDORA", value:"2014-8176");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/pipermail/package-announce/2014-August/136308.html");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'krb5'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC19");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC19")
 {
@@ -82,6 +69,6 @@ if(release == "FC19")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

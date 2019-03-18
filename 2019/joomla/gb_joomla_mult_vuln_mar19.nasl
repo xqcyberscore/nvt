@@ -23,11 +23,11 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.142138");
-  script_version("$Revision: 14120 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-13 05:36:37 +0100 (Wed, 13 Mar 2019) $");
+  script_version("$Revision: 14245 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 07:33:51 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-03-13 11:33:01 +0700 (Wed, 13 Mar 2019)");
-  script_tag(name:"cvss_base", value:"5.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2019-9711", "CVE-2019-9712", "CVE-2019-9713", "CVE-2019-9714");
 

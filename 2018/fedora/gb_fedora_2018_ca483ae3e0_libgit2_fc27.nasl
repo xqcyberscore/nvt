@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_ca483ae3e0_libgit2_fc27.nasl 11317 2018-09-11 08:57:27Z asteins $
+# $Id: gb_fedora_2018_ca483ae3e0_libgit2_fc27.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for libgit2 FEDORA-2018-ca483ae3e0
 #
@@ -27,45 +27,41 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874968");
-  script_version("$Revision: 11317 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 10:57:27 +0200 (Tue, 11 Sep 2018) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-08-19 06:50:29 +0200 (Sun, 19 Aug 2018)");
   script_cve_id("CVE-2018-10887", "CVE-2018-10888", "CVE-2018-11235");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for libgit2 FEDORA-2018-ca483ae3e0");
-  script_tag(name:"summary", value:"Check the version of libgit2");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'libgit2'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
-  script_tag(name:"insight", value:"libgit2 is a portable, pure C implementation
-of the Git core methods provided as a re-entrant linkable library with a solid API,
-allowing you to write native speed custom Git applications in any language with
-bindings.
-");
   script_tag(name:"affected", value:"libgit2 on Fedora 27");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"FEDORA", value:"2018-ca483ae3e0");
-  script_xref(name:"URL" , value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/CM5WCC5TEFHVNXMJDTRRAD6VFTJLCDA4");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/CM5WCC5TEFHVNXMJDTRRAD6VFTJLCDA4");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC27");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC27")
 {

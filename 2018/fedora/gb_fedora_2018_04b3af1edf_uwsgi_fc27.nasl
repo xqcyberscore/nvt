@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_04b3af1edf_uwsgi_fc27.nasl 10597 2018-07-25 05:30:00Z cfischer $
+# $Id: gb_fedora_2018_04b3af1edf_uwsgi_fc27.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for uwsgi FEDORA-2018-04b3af1edf
 #
@@ -27,52 +27,41 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874837");
-  script_version("$Revision: 10597 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 07:30:00 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-07-21 06:05:30 +0200 (Sat, 21 Jul 2018)");
   script_cve_id("CVE-2018-6758", "CVE-2018-7490");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for uwsgi FEDORA-2018-04b3af1edf");
-  script_tag(name:"summary", value:"Check the version of uwsgi");
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present 
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'uwsgi'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
-  script_tag(name:"insight", value:"uWSGI is a fast (pure C), self-healing, 
-developer/sysadmin-friendly application container server.  Born as a WSGI-only 
-server, over time it has evolved in a complete stack for networked/clustered 
-web applications, implementing message/object passing, caching, RPC and process 
-management. It uses the uwsgi (all lowercase, already included by default in 
-the Nginx and Cherokee releases) protocol for all the networking/interprocess
-communications.  Can be run in preforking mode, threaded, asynchronous/evented 
-and supports various form of green threads/co-routine (like uGreen and Fiber).  
-Sysadmin will love it as it can be configured via command line, environment 
-variables, xml, .ini and yaml files and via LDAP. Being fully modular can use 
-tons of different technology on top of the same core.
-");
   script_tag(name:"affected", value:"uwsgi on Fedora 27");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"FEDORA", value:"2018-04b3af1edf");
-  script_xref(name:"URL" , value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/XRNUJCDU6EUVLTPG3WT6EIQO35XN3LHW");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/XRNUJCDU6EUVLTPG3WT6EIQO35XN3LHW");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC27");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC27")
 {

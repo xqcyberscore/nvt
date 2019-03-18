@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: php_fusion_6_00_206_sql_injection.nasl 9349 2018-04-06 07:02:25Z cfischer $
+# $Id: php_fusion_6_00_206_sql_injection.nasl 14240 2019-03-17 15:50:45Z cfischer $
 # Description: PHP-Fusion <= 6.00.206 Forum SQL Injection Vulnerability
 #
 # Authors:
@@ -23,24 +23,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "Description :
-  A vulnerability is reported in the forum module of PHP-Fusion
-  6.00.206 and some early released versions.
-  When the forum module is activated, a registered user
-  can execute arbitrary SQL injection commands.
-
-  The failure exists because the application does not properly
-  sanitize user-supplied input in 'options.php' and 'viewforum.php'
-  before using it in the SQL query, and magic_quotes_gpc is set to off.";
-
-tag_solution = "Apply the patch from the php-fusion main site:
-  http://www.php-fusion.co.uk/downloads.php?cat_id=3";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.200010");
-  script_version("$Revision: 9349 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 14240 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-17 16:50:45 +0100 (Sun, 17 Mar 2019) $");
   script_tag(name:"creation_date", value:"2008-08-22 16:09:14 +0200 (Fri, 22 Aug 2008)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -55,28 +42,35 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("php-fusion/installed");
 
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/15502");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/17664/");
+  script_tag(name:"solution", value:"Apply the patch from the php-fusion main site.");
+
+  script_tag(name:"summary", value:"A vulnerability is reported in the forum module of PHP-Fusion
+  6.00.206 and some early released versions.");
+
+  script_tag(name:"impact", value:"When the forum module is activated, a registered user can execute
+  arbitrary SQL injection commands.");
+
+  script_tag(name:"insight", value:"The failure exists because the application does not properly sanitize
+  user-supplied input in 'options.php' and 'viewforum.php' before using it in the SQL query, and
+  magic_quotes_gpc is set to off.");
+
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/15502");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/17664/");
+  script_xref(name:"URL", value:"http://www.php-fusion.co.uk/downloads.php?cat_id=3");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("version_func.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port)){
-  exit(0);
-}
-
 version = get_kb_item("www/" + port + "/php-fusion");
-if(!version){
+if(!version)
   exit(0);
-}
 
 if(version_is_less_equal(version:version, test_version:"6.00.206")){
   security_message(port);
 }
-

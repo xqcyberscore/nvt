@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simpnews_mult_vuln.nasl 8287 2018-01-04 07:28:11Z teissa $
+# $Id: gb_simpnews_mult_vuln.nasl 14233 2019-03-16 13:32:43Z mmartin $
 #
 # SimpNews Multiple Vulnerabilities
 #
@@ -24,36 +24,20 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow remote attackers to execute arbitrary web
-  scripts and to obtain sensitive information.
-  Impact Level: Application.";
-tag_affected = "SimpNews Version 2.47.03 and prior.";
-
-tag_insight = "The flaws are exists due to:
-  - An error 'news.php', allow remote attackers to inject arbitrary web scripts
-    via the 'layout' and 'sortorder' parameters.
-  - An error in 'news.php' allows remote attackers to obtain sensitive
-    information via an invalid lang parameter, which reveals the installation
-    path in an error message.";
-tag_solution = "Upgrade to the SimpNews version 2.48 or later,
-  For updates refer to http://www.boesch-it.de/sw/simpnews.php";
-tag_summary = "This host is running SimpNews and is prone to multiple
-  vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801391");
-  script_version("$Revision: 8287 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-04 08:28:11 +0100 (Thu, 04 Jan 2018) $");
+  script_version("$Revision: 14233 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-16 14:32:43 +0100 (Sat, 16 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-08-02 12:38:17 +0200 (Mon, 02 Aug 2010)");
   script_cve_id("CVE-2010-2858", "CVE-2010-2859");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_name("SimpNews Multiple Vulnerabilities");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/40501");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/60244");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.org/1007-exploits/simpnews-xss.txt");
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/archive/1/512271/100/0/threaded");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/40501");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/60244");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/1007-exploits/simpnews-xss.txt");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/archive/1/512271/100/0/threaded");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
@@ -61,11 +45,22 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_simpnews_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
+  script_tag(name:"insight", value:"The flaws are exists due to:
+
+  - An error 'news.php', allow remote attackers to inject arbitrary web scripts
+    via the 'layout' and 'sortorder' parameters.
+
+  - An error in 'news.php' allows remote attackers to obtain sensitive
+    information via an invalid lang parameter, which reveals the installation
+    path in an error message.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution", value:"Upgrade to the SimpNews version 2.48 or later.");
+  script_tag(name:"summary", value:"This host is running SimpNews and is prone to multiple
+  vulnerabilities.");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary web
+  scripts and to obtain sensitive information.");
+  script_tag(name:"affected", value:"SimpNews Version 2.47.03 and prior.");
+  script_xref(name:"URL", value:"http://www.boesch-it.de/sw/simpnews.php");
   exit(0);
 }
 

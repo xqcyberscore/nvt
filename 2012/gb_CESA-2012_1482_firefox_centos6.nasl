@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-November/019006.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881542");
-  script_version("$Revision: 14098 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
+  script_version("$Revision: 14222 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 13:50:48 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-11-23 11:45:16 +0530 (Fri, 23 Nov 2012)");
   script_cve_id("CVE-2012-4201", "CVE-2012-4202", "CVE-2012-4207", "CVE-2012-4209",
                 "CVE-2012-4210", "CVE-2012-4214", "CVE-2012-4215", "CVE-2012-4216",
@@ -39,7 +39,8 @@ if(description)
   script_xref(name:"CESA", value:"2012:1482");
   script_name("CentOS Update for firefox CESA-2012:1482 centos6");
 
-  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for firefox");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'firefox'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

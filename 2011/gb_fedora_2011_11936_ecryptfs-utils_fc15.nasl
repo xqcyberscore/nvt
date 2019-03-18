@@ -23,56 +23,42 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "eCryptfs is a stacked cryptographic filesystem that ships in Linux
-  kernel versions 2.6.19 and above. This package provides the mount
-  helper and supporting libraries to perform key management and mount
-  functions.
-
-  Install ecryptfs-utils if you would like to mount eCryptfs.";
-tag_solution = "Please Install the Updated Packages.";
-
-tag_affected = "ecryptfs-utils on Fedora 15";
-
-
 if(description)
 {
-  script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2011-September/065965.html");
+  script_xref(name:"URL", value:"http://lists.fedoraproject.org/pipermail/package-announce/2011-September/065965.html");
   script_oid("1.3.6.1.4.1.25623.1.0.863505");
-  script_version("$Revision: 9371 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:55:06 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-09-16 17:22:17 +0200 (Fri, 16 Sep 2011)");
   script_tag(name:"cvss_base", value:"3.3");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:N");
-  script_xref(name: "FEDORA", value: "2011-11936");
+  script_xref(name:"FEDORA", value:"2011-11936");
   script_cve_id("CVE-2011-3145", "CVE-2011-1831", "CVE-2011-1832", "CVE-2011-1833",
                 "CVE-2011-1834", "CVE-2011-1835", "CVE-2011-1836", "CVE-2011-1837");
   script_name("Fedora Update for ecryptfs-utils FEDORA-2011-11936");
-
-  script_tag(name:"summary", value:"Check for the Version of ecryptfs-utils");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'ecryptfs-utils'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC15");
+  script_tag(name:"affected", value:"ecryptfs-utils on Fedora 15");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC15")
 {
@@ -83,6 +69,6 @@ if(release == "FC15")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

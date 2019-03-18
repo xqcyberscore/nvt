@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_weborf_41064.nasl 8356 2018-01-10 08:00:39Z teissa $
+# $Id: gb_weborf_41064.nasl 14233 2019-03-16 13:32:43Z mmartin $
 #
 # Weborf HTTP Header Processing Denial Of Service Vulnerability
 #
@@ -27,46 +27,43 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Weborf is prone to a denial-of-service vulnerability.
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.100691");
+  script_version("$Revision: 14233 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-16 14:32:43 +0100 (Sat, 16 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2010-06-23 16:49:06 +0200 (Wed, 23 Jun 2010)");
+  script_cve_id("CVE-2010-2435");
+  script_bugtraq_id(41064);
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+
+  script_name("Weborf HTTP Header Processing Denial Of Service Vulnerability");
+
+
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_category(ACT_GATHER_INFO);
+  script_family("Web Servers");
+  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
+  script_dependencies("gb_weborf_webserver_detect.nasl");
+  script_require_ports("Services/www", 8080);
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution", value:"Updates are available. Please see the references for details.");
+  script_tag(name:"summary", value:"Weborf is prone to a denial-of-service vulnerability.
 
 Remote attackers can exploit this issue to cause the application to
 crash, denying service to legitimate users.
 
-Weborf 0.12.1 is vulnerable; prior versions may also be affected.";
-
-tag_solution = "Updates are available. Please see the references for details.";
-
-if (description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.100691");
- script_version("$Revision: 8356 $");
- script_tag(name:"last_modification", value:"$Date: 2018-01-10 09:00:39 +0100 (Wed, 10 Jan 2018) $");
- script_tag(name:"creation_date", value:"2010-06-23 16:49:06 +0200 (Wed, 23 Jun 2010)");
- script_cve_id("CVE-2010-2435");
- script_bugtraq_id(41064);
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- 
-script_name("Weborf HTTP Header Processing Denial Of Service Vulnerability");
-
-
- script_tag(name:"qod_type", value:"remote_banner");
- script_category(ACT_GATHER_INFO);
- script_family("Web Servers");
- script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("gb_weborf_webserver_detect.nasl");
- script_require_ports("Services/www", 8080);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_xref(name : "URL" , value : "https://www.securityfocus.com/bid/41064");
- script_xref(name : "URL" , value : "http://freshmeat.net/projects/weborf/releases/318531");
- script_xref(name : "URL" , value : "http://code.google.com/p/weborf/source/browse/branches/0.12.2/CHANGELOG?spec=svn437&r=437");
- exit(0);
+Weborf 0.12.1 is vulnerable. Prior versions may also be affected.");
+  script_xref(name:"URL", value:"https://www.securityfocus.com/bid/41064");
+  script_xref(name:"URL", value:"http://freshmeat.net/projects/weborf/releases/318531");
+  script_xref(name:"URL", value:"http://code.google.com/p/weborf/source/browse/branches/0.12.2/CHANGELOG?spec=svn437&r=437");
+  exit(0);
 }
 
 
 include("http_func.inc");
-include("http_keepalive.inc");
+
 include("version_func.inc");
 
 port = get_http_port(default:8080);

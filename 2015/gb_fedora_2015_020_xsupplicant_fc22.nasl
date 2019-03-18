@@ -26,45 +26,38 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806910");
-  script_version("$Revision: 6632 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:48:18 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-12-20 05:39:03 +0100 (Sun, 20 Dec 2015)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for xsupplicant FEDORA-2015-020");
-  script_tag(name: "summary", value: "Check the version of xsupplicant");
-
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-  of detect NVT and check if the version is vulnerable or not.");
-
-  script_tag(name: "insight", value: "This software allows a GNU/Linux or BSD
-  workstation to authenticate with a RADIUS server using 802.1x and various EAP
-  protocols.  The intended use is for computers with wireless LAN connections
-  to complete a strong authentication before joining the network.");
-
-  script_tag(name: "affected", value: "xsupplicant on Fedora 22");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "FEDORA", value: "2015-020");
-  script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-December/174199.html");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'xsupplicant'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"affected", value:"xsupplicant on Fedora 22");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
+  script_xref(name:"FEDORA", value:"2015-020");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/pipermail/package-announce/2015-December/174199.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC22");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC22")
 {
@@ -73,6 +66,6 @@ if(release == "FC22")
     security_message(data:res);
     exit(0);
   }
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

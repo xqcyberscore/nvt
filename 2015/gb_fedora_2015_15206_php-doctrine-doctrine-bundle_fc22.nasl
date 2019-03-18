@@ -26,47 +26,39 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869937");
-  script_version("$Revision: 6637 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-10-07 18:39:16 +0530 (Wed, 07 Oct 2015)");
   script_cve_id("CVE-2015-5723");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for php-doctrine-doctrine-bundle FEDORA-2015-15206");
-  script_tag(name: "summary", value: "Check the version of php-doctrine-doctrine-bundle");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "Doctrine DBAL &amp  ORM Bundle for the
-Symfony Framework.
-
-Optional:
-* Doctrine ORM (2.3  = php-doctrine-orm   3.0)
-* Symfony Web Profile Bundle (2.3  = php-symfony-web-profiler-bundle   4.0)
-* Twig (1.10  = php-twig   2.0)
-");
-  script_tag(name: "affected", value: "php-doctrine-doctrine-bundle on Fedora 22");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "FEDORA", value: "2015-15206");
-  script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-September/166345.html");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'php-doctrine-doctrine-bundle'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"affected", value:"php-doctrine-doctrine-bundle on Fedora 22");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
+  script_xref(name:"FEDORA", value:"2015-15206");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/pipermail/package-announce/2015-September/166345.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC22");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC22")
 {
@@ -77,6 +69,6 @@ if(release == "FC22")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

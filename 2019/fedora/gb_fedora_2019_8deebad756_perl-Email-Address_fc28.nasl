@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2019_8deebad756_perl-Email-Address_fc28.nasl 13209 2019-01-22 08:11:01Z mmartin $
+# $Id: gb_fedora_2019_8deebad756_perl-Email-Address_fc28.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for perl-Email-Address FEDORA-2019-8deebad756
 #
@@ -29,18 +29,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875415");
-  script_version("$Revision: 13209 $");
+  script_version("$Revision: 14223 $");
   script_cve_id("CVE-2015-7686", "CVE-2018-12558");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-22 09:11:01 +0100 (Tue, 22 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-01-18 04:04:42 +0100 (Fri, 18 Jan 2019)");
   script_name("Fedora Update for perl-Email-Address FEDORA-2019-8deebad756");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC28");
 
   script_xref(name:"FEDORA", value:"2019-8deebad756");
   script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/JHXVGROXKTGDPUB6DC7GEOKGESOCFBAN");
@@ -50,12 +50,6 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is
   present on the target host.");
-
-  script_tag(name:"insight", value:"This class implements a regex-based RFC 2822
-  parser that locates email addresses in strings and returns a list of Email::Address
-  objects found. Alternatively you may construct objects manually. The goal of this
-  software is to be correct, and very very fast.
-");
 
   script_tag(name:"affected", value:"perl-Email-Address on Fedora 28.");
 
@@ -71,7 +65,8 @@ include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
 release = rpm_get_ssh_release();
-if(!release) exit(0);
+if(!release)
+  exit(0);
 
 res = "";
 

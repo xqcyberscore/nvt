@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_bba8fed5ab_procps-ng_fc28.nasl 10349 2018-06-27 15:50:28Z cfischer $
+# $Id: gb_fedora_2018_bba8fed5ab_procps-ng_fc28.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for procps-ng FEDORA-2018-bba8fed5ab
 #
@@ -27,57 +27,41 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874595");
-  script_version("$Revision: 10349 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-27 17:50:28 +0200 (Wed, 27 Jun 2018) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-05-23 05:52:06 +0200 (Wed, 23 May 2018)");
   script_cve_id("CVE-2018-1124", "CVE-2018-1126");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for procps-ng FEDORA-2018-bba8fed5ab");
-  script_tag(name:"summary", value:"Check the version of procps-ng");
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is 
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'procps-ng'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is
 present on the target host.");
-  script_tag(name:"insight", value:"The procps package contains a set of system 
-utilities that provide system information. Procps includes ps, free, skill, pkill, 
-pgrep,snice, tload, top, uptime, vmstat, w, watch and pwdx. The ps command
-displays a snapshot of running processes. The top command provides a repetitive 
-update of the statuses of running processes. The free command displays the amounts 
-of free and used memory on your system. The skill command sends a terminate 
-command (or another specified signal) to a specified set of processes. 
-The snice command is used to change the scheduling priority of specified
-processes. The tload command prints a graph of the current system load average to 
-a specified tty. The uptime command displays the current time, how long the 
-system has been running, how many users are logged on, and system load averages 
-for the past one, five, and fifteen minutes. The w command displays a list of 
-the users who are currently logged on and what they are running. The watch
-program watches a running program. The vmstat command displays virtual memory 
-statistics about processes, memory, paging, block I/O, traps, and CPU activity. 
-The pwdx command reports the current working directory of a process or processes.
-");
   script_tag(name:"affected", value:"procps-ng on Fedora 28");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"FEDORA", value:"2018-bba8fed5ab");
-  script_xref(name:"URL" , value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/PKA4NZVL4XP3ZQDPHESLQBNXEWUKJLPT");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/PKA4NZVL4XP3ZQDPHESLQBNXEWUKJLPT");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC28");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC28")
 {

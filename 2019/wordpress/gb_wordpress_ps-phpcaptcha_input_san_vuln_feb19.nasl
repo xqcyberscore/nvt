@@ -19,8 +19,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112534");
-  script_version("$Revision: 14016 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-06 12:34:51 +0100 (Wed, 06 Mar 2019) $");
+  script_version("$Revision: 14255 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 10:17:51 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-03-06 12:00:00 +0100 (Wed, 06 Mar 2019)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -40,7 +40,7 @@ if (description)
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_mandatory_keys("wordpress/installed");
 
-  script_tag(name:"summary", value:"The Wordpress plugin PS PHPCaptcha mishandles sanitization of input values..");
+  script_tag(name:"summary", value:"The Wordpress plugin PS PHPCaptcha mishandles sanitization of input values.");
   script_tag(name:"affected", value:"WordPress PS PHPCaptcha plugin before version 1.2.0.");
   script_tag(name:"solution", value:"Update to version 1.2.0.");
 

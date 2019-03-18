@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2017_f0e5ad250c_heimdal_fc27.nasl 8493 2018-01-23 06:43:13Z ckuersteiner $
+# $Id: gb_fedora_2017_f0e5ad250c_heimdal_fc27.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for heimdal FEDORA-2017-f0e5ad250c
 #
@@ -27,49 +27,40 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.873993");
-  script_version("$Revision: 8493 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-23 07:43:13 +0100 (Tue, 23 Jan 2018) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-01-10 07:43:10 +0100 (Wed, 10 Jan 2018)");
   script_cve_id("CVE-2017-17439");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for heimdal FEDORA-2017-f0e5ad250c");
-  script_tag(name: "summary", value: "Check the version of heimdal");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "Kerberos 5 is a network authentication 
-and single sign-on system. Heimdal is a free Kerberos 5 implementation without 
-export restrictions written from the spec (rfc1510 and successors) including 
-advanced features like thread safety, IPv6, master-slave replication of Kerberos 
-Key Distribution Center server and support for ticket delegation (S4U2Self,
-S4U2Proxy).
-This package can coexist with MIT Kerberos 5 packages. Hesiod is disabled
-by default since it is deemed too big a security risk by the packager.
-");
-  script_tag(name: "affected", value: "heimdal on Fedora 27");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'heimdal'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"affected", value:"heimdal on Fedora 27");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
 
-  script_xref(name: "FEDORA", value: "2017-f0e5ad250c");
-  script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/YWC25VXGQDBBVSCTKFZUB4CD3GQO5VX4");
+  script_xref(name:"FEDORA", value:"2017-f0e5ad250c");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/YWC25VXGQDBBVSCTKFZUB4CD3GQO5VX4");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC27");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC27")
 {
@@ -80,6 +71,6 @@ if(release == "FC27")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

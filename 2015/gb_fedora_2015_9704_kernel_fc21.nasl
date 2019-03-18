@@ -26,40 +26,39 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869459");
-  script_version("$Revision: 6630 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:34:32 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-06-21 05:55:37 +0200 (Sun, 21 Jun 2015)");
   script_cve_id("CVE-2015-1420", "CVE-2015-3636", "CVE-2015-3339", "CVE-2015-2150", "CVE-2015-2666", "CVE-2014-8159", "CVE-2015-2042", "CVE-2015-1421", "CVE-2015-0275", "CVE-2015-1593", "CVE-2015-0239", "CVE-2014-9585", "CVE-2014-9529", "CVE-2014-9419", "CVE-2014-9428", "CVE-2014-8989", "CVE-2014-8559", "CVE-2014-8133", "CVE-2014-8134", "CVE-2014-9090");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for kernel FEDORA-2015-9704");
-  script_tag(name: "summary", value: "Check the version of kernel");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "The kernel meta package
-");
-  script_tag(name: "affected", value: "kernel on Fedora 21");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "FEDORA", value: "2015-9704");
-  script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-June/160328.html");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'kernel'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"affected", value:"kernel on Fedora 21");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
+  script_xref(name:"FEDORA", value:"2015-9704");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/pipermail/package-announce/2015-June/160328.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC21");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC21")
 {
@@ -70,6 +69,6 @@ if(release == "FC21")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

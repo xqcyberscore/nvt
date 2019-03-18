@@ -23,68 +23,41 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "An open source asynchronous task queue/job queue based on
-  distributed message passing. It is focused on real-time
-  operation, but supports scheduling as well.
-
-  The execution units, called tasks, are executed concurrently
-  on one or more worker nodes using multiprocessing, Eventlet
-  or gevent. Tasks can execute asynchronously (in the background)
-  or synchronously (wait until ready).
-
-  Celery is used in production systems to process millions of
-  tasks a day.
-
-  Celery is written in Python, but the protocol can be implemented
-  in any language. It can also operate with other languages using
-  webhooks.
-
-  The recommended message broker is RabbitMQ, but limited support
-  for Redis, Beanstalk, MongoDB, CouchDB and databases
-  (using SQLAlchemy or the Django ORM) is also available.";
-
-tag_affected = "python-celery on Fedora 16";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
 if(description)
 {
-  script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2011-December/070796.html");
+  script_xref(name:"URL", value:"http://lists.fedoraproject.org/pipermail/package-announce/2011-December/070796.html");
   script_oid("1.3.6.1.4.1.25623.1.0.863777");
-  script_version("$Revision: 8671 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-05 17:38:48 +0100 (Mon, 05 Feb 2018) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-03-19 12:15:09 +0530 (Mon, 19 Mar 2012)");
   script_cve_id("CVE-2011-4356");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_xref(name: "FEDORA", value: "2011-16539");
+  script_xref(name:"FEDORA", value:"2011-16539");
   script_name("Fedora Update for python-celery FEDORA-2011-16539");
-
-  script_tag(name: "summary" , value: "Check for the Version of python-celery");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'python-celery'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC16");
+  script_tag(name:"affected", value:"python-celery on Fedora 16");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC16")
 {
@@ -95,6 +68,6 @@ if(release == "FC16")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

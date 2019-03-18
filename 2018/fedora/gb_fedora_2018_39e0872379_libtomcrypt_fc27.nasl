@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_39e0872379_libtomcrypt_fc27.nasl 10965 2018-08-15 03:42:43Z ckuersteiner $
+# $Id: gb_fedora_2018_39e0872379_libtomcrypt_fc27.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for libtomcrypt FEDORA-2018-39e0872379
 #
@@ -27,50 +27,41 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874838");
-  script_version("$Revision: 10965 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 05:42:43 +0200 (Wed, 15 Aug 2018) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-07-21 06:05:37 +0200 (Sat, 21 Jul 2018)");
   script_cve_id("CVE-2018-12437", "CVE-2018-0739");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for libtomcrypt FEDORA-2018-39e0872379");
-  script_tag(name:"summary", value:"Check the version of libtomcrypt");
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present 
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'libtomcrypt'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
-  script_tag(name:"insight", value:"A comprehensive, modular and portable 
-cryptographic toolkit that provides developers with a vast array of well known 
-published block ciphers, one-way hash functions, chaining modes, pseudo-random 
-number generators, public key cryptography and a plethora of other routines.
-
-Designed from the ground up to be very simple to use. It has a modular and
-standard API that allows new ciphers, hashes and PRNGs to be added or removed
-without change to the overall end application. It features easy to use functions
-and a complete user manual which has many source snippet examples.
-");
   script_tag(name:"affected", value:"libtomcrypt on Fedora 27");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"FEDORA", value:"2018-39e0872379");
-  script_xref(name:"URL" , value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/YBUWSJFVQNQXFVT7AZKRWQS443JMZDDQ");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/YBUWSJFVQNQXFVT7AZKRWQS443JMZDDQ");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC27");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC27")
 {

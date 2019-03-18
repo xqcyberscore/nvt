@@ -23,22 +23,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_affected = "mysql on Fedora 15";
-tag_insight = "MySQL is a multi-user, multi-threaded SQL database server. MySQL is a
-  client/server implementation consisting of a server daemon (mysqld)
-  and many different client programs and libraries. The base package
-  contains the standard MySQL client programs and generic MySQL files.";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
 if(description)
 {
-  script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2012-February/073182.html");
+  script_xref(name:"URL", value:"http://lists.fedoraproject.org/pipermail/package-announce/2012-February/073182.html");
   script_oid("1.3.6.1.4.1.25623.1.0.863725");
-  script_version("$Revision: 9352 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-02-13 16:22:45 +0530 (Mon, 13 Feb 2012)");
   script_cve_id("CVE-2011-2262", "CVE-2012-0075", "CVE-2012-0112", "CVE-2012-0113",
                 "CVE-2012-0114", "CVE-2012-0115", "CVE-2012-0116", "CVE-2012-0117",
@@ -48,32 +38,31 @@ if(description)
                 "CVE-2012-0493", "CVE-2012-0494", "CVE-2012-0495", "CVE-2012-0496");
   script_tag(name:"cvss_base", value:"5.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:P");
-  script_xref(name: "FEDORA", value: "2012-0987");
+  script_xref(name:"FEDORA", value:"2012-0987");
   script_name("Fedora Update for mysql FEDORA-2012-0987");
-
-  script_tag(name: "summary" , value: "Check for the Version of mysql");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'mysql'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC15");
+  script_tag(name:"affected", value:"mysql on Fedora 15");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC15")
 {
@@ -84,6 +73,6 @@ if(release == "FC15")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

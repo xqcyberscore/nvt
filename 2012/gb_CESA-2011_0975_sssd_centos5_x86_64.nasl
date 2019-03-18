@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.881420");
-  script_version("$Revision: 14095 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-11 14:54:56 +0100 (Mon, 11 Mar 2019) $");
+  script_version("$Revision: 14222 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 13:50:48 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-30 17:50:09 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2010-4341");
   script_tag(name:"cvss_base", value:"2.1");
@@ -38,7 +38,8 @@ if(description)
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2011-September/017983.html");
   script_xref(name:"URL", value:"https://docs.redhat.com/docs/en-US/Red_Hat_Enterprise_Linux/5/html/5.7_Technical_Notes/sssd.html#RHSA-2011-0975");
 
-  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for sssd");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'sssd'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.881899");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14222 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 13:50:48 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-03-17 13:12:30 +0530 (Mon, 17 Mar 2014)");
   script_cve_id("CVE-2014-0004");
   script_tag(name:"cvss_base", value:"6.9");
@@ -54,7 +54,8 @@ contain a backported patch to correct this issue.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"CESA", value:"2014:0293");
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2014-March/020200.html");
-  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for udisks");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'udisks'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

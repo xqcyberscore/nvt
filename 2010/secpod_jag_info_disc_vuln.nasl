@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_jag_info_disc_vuln.nasl 8258 2017-12-29 07:28:57Z teissa $
+# $Id: secpod_jag_info_disc_vuln.nasl 14233 2019-03-16 13:32:43Z mmartin $
 #
 # JAG (Just Another Guestbook) Information Disclosure Vulnerability
 #
@@ -24,25 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow remote attackers to download the backup
-database and obtain sensitive information.
-
-Impact Level: Application";
-tag_affected = "JAG (Just Another Guestbook) version 1.14 and prior.";
-tag_insight = "The flaw is caused by improper restrictions on the 'database.sql file'. By
-sending a direct request, this can exploited to download the backup database.";
-tag_solution = "No solution or patch was made available for at least one year
-since disclosure of this vulnerability. Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.";
-tag_summary = "The host is running JAG and is prone to Information Disclosure
-  vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900745");
-  script_version("$Revision: 8258 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-29 08:28:57 +0100 (Fri, 29 Dec 2017) $");
+  script_version("$Revision: 14233 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-16 14:32:43 +0100 (Sat, 16 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-02-26 10:13:54 +0100 (Fri, 26 Feb 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -56,14 +42,19 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("secpod_jag_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to download the backup
+database and obtain sensitive information.");
+  script_tag(name:"affected", value:"JAG (Just Another Guestbook) version 1.14 and prior.");
+  script_tag(name:"insight", value:"The flaw is caused by improper restrictions on the 'database.sql file'. By
+sending a direct request, this can exploited to download the backup database.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"The host is running JAG and is prone to Information Disclosure
+  vulnerability.");
   script_tag(name:"solution_type", value:"WillNotFix");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/56228");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/11406");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/56228");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/11406");
   exit(0);
 }
 

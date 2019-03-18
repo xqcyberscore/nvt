@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2017_a95dd74301_shellinabox_fc27.nasl 8264 2017-12-29 17:15:40Z santu $
+# $Id: gb_fedora_2017_a95dd74301_shellinabox_fc27.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for shellinabox FEDORA-2017-a95dd74301
 #
@@ -27,44 +27,38 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.873956");
-  script_version("$Revision: 8264 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-29 18:15:40 +0100 (Fri, 29 Dec 2017) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-12-29 08:05:22 +0100 (Fri, 29 Dec 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for shellinabox FEDORA-2017-a95dd74301");
-  script_tag(name: "summary", value: "Check the version of shellinabox");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "Shell In A Box implements a web server 
-that can export arbitrary command line tools to a web based terminal emulator. 
-This emulator is accessible to any JavaScript and CSS enabled web browser and 
-does not require any additional browser plugins.
-");
-  script_tag(name: "affected", value: "shellinabox on Fedora 27");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-
-  script_xref(name: "FEDORA", value: "2017-a95dd74301");
-  script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/CUOWJQZL4ZFAZHM45L7DQYXB62KJARQA");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'shellinabox'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"affected", value:"shellinabox on Fedora 27");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
+  script_xref(name:"FEDORA", value:"2017-a95dd74301");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/CUOWJQZL4ZFAZHM45L7DQYXB62KJARQA");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC27");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC27")
 {
@@ -75,6 +69,6 @@ if(release == "FC27")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

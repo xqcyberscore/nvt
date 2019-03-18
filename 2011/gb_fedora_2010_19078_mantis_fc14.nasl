@@ -23,59 +23,41 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "Mantis is a free popular web-based issue tracking system.
-  It is written in the PHP scripting language and works with MySQL, MS SQL,
-  and PostgreSQL databases and a web server.
-  Almost any web browser should be able to function as a client.
-
-  Documentation can be found in: /usr/share/doc/mantis-1.1.8
-  
-  When the package has finished installing, you will need to perform some
-  additional configuration steps; these are described in:
-  /usr/share/doc/mantis-1.1.8/README.Fedora";
-tag_solution = "Please Install the Updated Packages.";
-
-tag_affected = "mantis on Fedora 14";
-
-
 if(description)
 {
-  script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2010-December/052730.html");
+  script_xref(name:"URL", value:"http://lists.fedoraproject.org/pipermail/package-announce/2010-December/052730.html");
   script_oid("1.3.6.1.4.1.25623.1.0.862757");
-  script_version("$Revision: 9371 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:55:06 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-01-04 09:11:34 +0100 (Tue, 04 Jan 2011)");
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
-  script_xref(name: "FEDORA", value: "2010-19078");
+  script_xref(name:"FEDORA", value:"2010-19078");
   script_cve_id("CVE-2010-3763", "CVE-2010-4348", "CVE-2010-4349", "CVE-2010-4350");
   script_name("Fedora Update for mantis FEDORA-2010-19078");
-
-  script_tag(name:"summary", value:"Check for the Version of mantis");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'mantis'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC14");
+  script_tag(name:"affected", value:"mantis on Fedora 14");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC14")
 {
@@ -86,6 +68,6 @@ if(release == "FC14")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

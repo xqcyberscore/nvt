@@ -26,47 +26,38 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.868170");
-  script_version("$Revision: 9373 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:57:18 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-09-10 06:18:42 +0200 (Wed, 10 Sep 2014)");
   script_cve_id("CVE-2012-2146");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
   script_name("Fedora Update for python-elixir FEDORA-2014-9763");
-  script_tag(name: "insight", value: "Elixir is a declarative layer on top of SQLAlchemy. It is a fairly thin
-wrapper, which provides the ability to define model objects following the
-Active Record design pattern, and using a DSL syntax similar to that of the
-Ruby on Rails ActiveRecord system.
-
-Elixir does not intend to replace SQLAlchemy's core features, but instead
-focuses on providing a simpler syntax for defining model objects when you do
-not need the full expressiveness of SQLAlchemy's manual mapper definitions.
-");
-  script_tag(name: "affected", value: "python-elixir on Fedora 20");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"python-elixir on Fedora 20");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-
-  script_xref(name: "FEDORA", value: "2014-9763");
-  script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2014-September/137376.html");
-  script_tag(name:"summary", value:"Check for the Version of python-elixir");
+  script_xref(name:"FEDORA", value:"2014-9763");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/pipermail/package-announce/2014-September/137376.html");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'python-elixir'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
-exit(0);
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC20");
+
+  exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC20")
 {
@@ -77,6 +68,6 @@ if(release == "FC20")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

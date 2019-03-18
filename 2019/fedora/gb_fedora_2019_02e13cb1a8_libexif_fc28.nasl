@@ -21,18 +21,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875489");
-  script_version("$Revision: 14008 $");
+  script_version("$Revision: 14223 $");
   script_cve_id("CVE-2018-20030");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-06 08:38:19 +0100 (Wed, 06 Mar 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-03-02 04:15:43 +0100 (Sat, 02 Mar 2019)");
   script_name("Fedora Update for libexif FEDORA-2019-02e13cb1a8");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC28");
 
   script_xref(name:"FEDORA", value:"2019-02e13cb1a8");
   script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/X6IJA5UL4LQOV3XUTQMKAFBEHBSRVRDW");
@@ -41,11 +41,6 @@ if(description)
   package(s) announced via the FEDORA-2019-02e13cb1a8 advisory.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
-
-  script_tag(name:"insight", value:"Most digital cameras produce EXIF files, which are JPEG files with
-extra tags that contain information about the image. The EXIF library
-allows you to parse an EXIF file and read the data from those tags.
-");
 
   script_tag(name:"affected", value:"libexif on Fedora 28.");
 
@@ -61,7 +56,8 @@ include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
 release = rpm_get_ssh_release();
-if(!release) exit(0);
+if(!release)
+  exit(0);
 
 res = "";
 

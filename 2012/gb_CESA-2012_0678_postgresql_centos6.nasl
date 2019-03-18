@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.881063");
-  script_version("$Revision: 14095 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-11 14:54:56 +0100 (Mon, 11 Mar 2019) $");
+  script_version("$Revision: 14222 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 13:50:48 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-30 15:59:28 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2012-0866", "CVE-2012-0867", "CVE-2012-0868");
   script_tag(name:"cvss_base", value:"6.8");
@@ -38,7 +38,8 @@ if(description)
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-May/018650.html");
   script_xref(name:"URL", value:"http://www.postgresql.org/docs/8.4/static/release.html");
 
-  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for postgresql");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'postgresql'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

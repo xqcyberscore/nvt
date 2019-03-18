@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: firewall_detect.nasl 7176 2017-09-18 12:01:01Z cfischer $
+# $Id: firewall_detect.nasl 14240 2019-03-17 15:50:45Z cfischer $
 #
 # Firewall Enabled
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80059");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 7176 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 14:01:01 +0200 (Mon, 18 Sep 2017) $");
+  script_version("$Revision: 14240 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-17 16:50:45 +0100 (Sun, 17 Mar 2019) $");
   script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Firewall Enabled");
   script_category(ACT_GATHER_INFO);
@@ -38,26 +38,18 @@ if(description)
   script_family("Firewalls");
   script_mandatory_keys("Host/scanners/openvas_tcp_scanner"); # This plugin only works if openvas_tcp_scanner has run
 
-  tag_summary = "The remote host is behind a firewall
-
-  Description :
-
-  Based on the responses obtained by the TCP scanner, it was possible to
+  script_tag(name:"summary", value:"Based on the responses obtained by the TCP scanner, it was possible to
   determine that the remote host seems to be protected by a firewall.
 
-  Important: This plugin only works if OpenVAS TCP Scanner was used.";
-
-  tag_solution = "None";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  Important: This plugin only works if OpenVAS TCP Scanner was used.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
   exit(0);
 }
 
-if ( ! get_kb_item("Host/scanners/openvas_tcp_scanner") ) exit(0); # This plugin only works if openvas_tcp_scanner has run
+if ( ! get_kb_item("Host/scanners/openvas_tcp_scanner") )
+  exit(0); # This plugin only works if openvas_tcp_scanner has run
 
 open = int(get_kb_item("TCPScanner/OpenPortsNb"));
 closed = int(get_kb_item("TCPScanner/ClosedPortsNb"));
@@ -71,6 +63,6 @@ if ( get_kb_item("TCPScanner/RSTRateLimit") ) exit(0);
 
 if ( filtered > ( closed * 4 ) )
 {
-	log_message(0);
-	set_kb_item(name:"Host/firewalled", value:TRUE);
+  log_message(port:0);
+  set_kb_item(name:"Host/firewalled", value:TRUE);
 }

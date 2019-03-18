@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_pi3web_isapi_request_dos_vuln_900402.nasl 13220 2019-01-22 12:45:52Z cfischer $
+# $Id: secpod_pi3web_isapi_request_dos_vuln_900402.nasl 14240 2019-03-17 15:50:45Z cfischer $
 # Description: Pi3Web ISAPI Requests Handling DoS Vulnerability
 #
 # Authors:
@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900402");
-  script_version("$Revision: 13220 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-22 13:45:52 +0100 (Tue, 22 Jan 2019) $");
+  script_version("$Revision: 14240 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-17 16:50:45 +0100 (Sun, 17 Mar 2019) $");
   script_tag(name:"creation_date", value:"2008-12-02 11:52:55 +0100 (Tue, 02 Dec 2008)");
   script_cve_id("CVE-2008-6938");
   script_bugtraq_id(32287);
@@ -67,7 +67,6 @@ if(description)
 }
 
 include("http_func.inc");
-include("http_keepalive.inc");
 
 port = get_http_port(default:80);
 banner = get_http_banner(port:port);

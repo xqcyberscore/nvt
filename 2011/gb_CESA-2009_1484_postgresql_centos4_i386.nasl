@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.880949");
-  script_version("$Revision: 14095 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-11 14:54:56 +0100 (Mon, 11 Mar 2019) $");
+  script_version("$Revision: 14222 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 13:50:48 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -39,7 +39,8 @@ if(description)
   script_xref(name:"URL", value:"http://www.postgresql.org/docs/7.4/static/release.html");
   script_xref(name:"URL", value:"http://www.postgresql.org/docs/8.1/static/release.html");
 
-  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for postgresql");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'postgresql'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

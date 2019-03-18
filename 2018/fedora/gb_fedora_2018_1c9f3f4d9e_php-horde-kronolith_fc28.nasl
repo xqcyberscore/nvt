@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_1c9f3f4d9e_php-horde-kronolith_fc28.nasl 11820 2018-10-10 12:13:33Z santu $
+# $Id: gb_fedora_2018_1c9f3f4d9e_php-horde-kronolith_fc28.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for php-horde-kronolith FEDORA-2018-1c9f3f4d9e
 #
@@ -27,46 +27,40 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875156");
-  script_version("$Revision: 11820 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 14:13:33 +0200 (Wed, 10 Oct 2018) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-10-08 08:25:50 +0200 (Mon, 08 Oct 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for php-horde-kronolith FEDORA-2018-1c9f3f4d9e");
-  script_tag(name:"summary", value:"Check the version of php-horde-kronolith");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'php-horde-kronolith'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
   on the target host.");
-  script_tag(name:"insight", value:"Kronolith is the Horde calendar application.
-  It provides web-based calendars backed by a SQL database or a Kolab server.
-  Supported features include Ajax and mobile interfaces, shared calendars, remote
-  calendars, invitation management (iCalendar/iTip), free/busy management,
-  resource management, alarms, recurring events, and a sophisticated day/week view
-  which handles arbitrary numbers of overlapping events.
-");
   script_tag(name:"affected", value:"php-horde-kronolith on Fedora 28");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"FEDORA", value:"2018-1c9f3f4d9e");
-  script_xref(name:"URL" , value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/3WX4HTHHNRTWF3XVWNCHPLB5DURX5T2U");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/3WX4HTHHNRTWF3XVWNCHPLB5DURX5T2U");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC28");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC28")
 {

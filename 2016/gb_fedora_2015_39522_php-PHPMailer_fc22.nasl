@@ -26,65 +26,39 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807263");
-  script_version("$Revision: 6631 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:36:10 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-02-12 06:14:58 +0100 (Fri, 12 Feb 2016)");
   script_cve_id("CVE-2015-8476");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for php-PHPMailer FEDORA-2015-39522");
-  script_tag(name: "summary", value: "Check the version of php-PHPMailer");
-
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-  of detect NVT and check if the version is vulnerable or not.");
-
-  script_tag(name: "insight", value: "Full Featured Email Transfer Class for
-  PHP. PHPMailer features:
-
-  * Supports emails digitally signed with S/MIME encryption!
-  * Supports emails with multiple TOs, CCs, BCCs and REPLY-TOs
-  * Works on any platform.
-  * Supports Text &amp  HTML emails.
-  * Embedded image support.
-  * Multipart/alternative emails for mail clients that do not read
-    HTML email.
-  * Flexible debugging.
-  * Custom mail headers.
-  * Redundant SMTP servers.
-  * Support for 8bit, base64, binary, and quoted-printable encoding. 
-  * Word wrap.
-  * Multiple fs, string, and binary attachments (those from database,
-    string, etc).
-  * SMTP authentication.
-  * Tested on multiple SMTP servers: Sendmail, qmail, Postfix, Gmail,
-    Imail, Exchange, etc.
-  * Good documentation, many examples included in download.
-  * It's swift, small, and simple.");
-
-  script_tag(name: "affected", value: "php-PHPMailer on Fedora 22");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-
-  script_xref(name: "FEDORA", value: "2015-39522");
-  script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2016-February/177139.html");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'php-PHPMailer'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"affected", value:"php-PHPMailer on Fedora 22");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
+  script_xref(name:"FEDORA", value:"2015-39522");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/pipermail/package-announce/2016-February/177139.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC22");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC22")
 {
@@ -95,6 +69,6 @@ if(release == "FC22")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

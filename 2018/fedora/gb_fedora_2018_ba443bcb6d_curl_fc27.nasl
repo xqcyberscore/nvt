@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_ba443bcb6d_curl_fc27.nasl 13237 2019-01-23 10:24:40Z asteins $
+# $Id: gb_fedora_2018_ba443bcb6d_curl_fc27.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for curl FEDORA-2018-ba443bcb6d
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875089");
-  script_version("$Revision: 13237 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-23 11:24:40 +0100 (Wed, 23 Jan 2019) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-09-22 08:12:29 +0200 (Sat, 22 Sep 2018)");
   script_cve_id("CVE-2018-14618", "CVE-2018-1000300", "CVE-2018-1000301", "CVE-2018-1000120",
                 "CVE-2018-1000121", "CVE-2018-1000122", "CVE-2018-1000005", "CVE-2018-1000007",
@@ -37,39 +37,33 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for curl FEDORA-2018-ba443bcb6d");
-  script_tag(name:"summary", value:"Check the version of curl");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'curl'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
   on the target host.");
-  script_tag(name:"insight", value:"curl is a command line tool for transferring
-  data with URL syntax, supporting FTP, FTPS, HTTP, HTTPS, SCP, SFTP, TFTP, TELNET,
-  DICT, LDAP, LDAPS, FILE, IMAP, SMTP, POP3 and RTSP.  curl supports SSL certificates,
-  HTTP POST, HTTP PUT, FTP uploading, HTTP form based upload, proxies, cookies,
-  user+password authentication (Basic, Digest, NTLM, Negotiate, kerberos...), file
-  transfer resume, proxy tunneling and a busload of other useful tricks.
-");
   script_tag(name:"affected", value:"curl on Fedora 27");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"FEDORA", value:"2018-ba443bcb6d");
-  script_xref(name:"URL" , value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/P4CPYBJNZ43GUMZI5MTLBBPGT44TLYQK");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/P4CPYBJNZ43GUMZI5MTLBBPGT44TLYQK");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC27");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC27")
 {

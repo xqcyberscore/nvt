@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openldap_41770.nasl 5190 2017-02-03 11:52:51Z cfi $
+# $Id: gb_openldap_41770.nasl 14233 2019-03-16 13:32:43Z mmartin $
 #
 # OpenLDAP 'modrdn' Request Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100720");
-  script_version("$Revision: 5190 $");
+  script_version("$Revision: 14233 $");
   script_bugtraq_id(41770);
-  script_cve_id("CVE-2010-0211","CVE-2010-0212");
+  script_cve_id("CVE-2010-0211", "CVE-2010-0212");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-03 12:52:51 +0100 (Fri, 03 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-16 14:32:43 +0100 (Sat, 16 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-07-20 13:16:59 +0200 (Tue, 20 Jul 2010)");
   script_name("OpenLDAP 'modrdn' Request Multiple Vulnerabilities");
   script_category(ACT_DENIAL);
@@ -46,21 +46,13 @@ if(description)
   script_xref(name:"URL", value:"http://www.openldap.org/software/release/changes.html");
   script_xref(name:"URL", value:"http://www.openldap.org/its/index.cgi/Software%20Bugs?id=6570");
 
-  tag_summary = "OpenLDAP is prone to multiple vulnerabilities.";
-
-  tag_impact = "Successfully exploiting these issues allows remote attackers to
+  script_tag(name:"solution", value:"The vendor has released an update to address this issue. Please see
+  the references for more information.");
+  script_tag(name:"summary", value:"OpenLDAP is prone to multiple vulnerabilities.");
+  script_tag(name:"impact", value:"Successfully exploiting these issues allows remote attackers to
   execute arbitrary code in the context of the application or cause denial-of-
-  service conditions.";
-
-  tag_affected = "OpenLDAP 2.4.22 is vulnerable; other versions may also be affected.";
-
-  tag_solution = "The vendor has released an update to address this issue. Please see
-  the references for more information.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
+  service conditions.");
+  script_tag(name:"affected", value:"OpenLDAP 2.4.22 is vulnerable. Other versions may also be affected.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -100,9 +92,9 @@ if(ldap_alive(port:port)) {
     if(!ldap_alive(port:port)) {
       security_message(port:port);
       exit(0);
-    }  
+    }
 
-  }  
+  }
 }
 
 exit(0);

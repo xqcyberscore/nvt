@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_0ad6e73ac0_w3m_fc27.nasl 8849 2018-02-16 14:02:28Z asteins $
+# $Id: gb_fedora_2018_0ad6e73ac0_w3m_fc27.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for w3m FEDORA-2018-0ad6e73ac0
 #
@@ -27,50 +27,40 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874112");
-  script_version("$Revision: 8849 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-16 15:02:28 +0100 (Fri, 16 Feb 2018) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-02-10 07:57:10 +0100 (Sat, 10 Feb 2018)");
   script_cve_id("CVE-2018-6196", "CVE-2018-6197", "CVE-2018-6198");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for w3m FEDORA-2018-0ad6e73ac0");
-  script_tag(name: "summary", value: "Check the version of w3m");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "The w3m program is a pager (or text file 
-viewer) that can also be used as a text-mode Web browser. W3m features include 
-the following: when reading an HTML document, you can follow links and view 
-images using an external image viewer  its internet message mode determines the
-type of document from the header  if the Content-Type field of the document is 
-text/html, the document is displayed as an HTML document  you can change a URL 
-description like &#39 http://hogege.net&#39  in plain text into a link to that 
-URL. If you want to display the inline images on w3m, you need to install w3m-img 
-package as well.
-");
-  script_tag(name: "affected", value: "w3m on Fedora 27");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'w3m'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"affected", value:"w3m on Fedora 27");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
 
-  script_xref(name: "FEDORA", value: "2018-0ad6e73ac0");
-  script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/2XBJ7YSI7YUIFUICUS25Q5MT73QWGPFK");
+  script_xref(name:"FEDORA", value:"2018-0ad6e73ac0");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/2XBJ7YSI7YUIFUICUS25Q5MT73QWGPFK");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC27");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC27")
 {
@@ -81,6 +71,6 @@ if(release == "FC27")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

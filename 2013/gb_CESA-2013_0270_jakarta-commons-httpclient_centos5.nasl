@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-February/019241.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881604");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14222 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 13:50:48 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-02-22 10:04:51 +0530 (Fri, 22 Feb 2013)");
   script_cve_id("CVE-2012-5783");
   script_tag(name:"cvss_base", value:"5.8");
@@ -36,7 +36,8 @@ if(description)
   script_xref(name:"CESA", value:"2013:0270");
   script_name("CentOS Update for jakarta-commons-httpclient CESA-2013:0270 centos5");
 
-  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for jakarta-commons-httpclient");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'jakarta-commons-httpclient'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

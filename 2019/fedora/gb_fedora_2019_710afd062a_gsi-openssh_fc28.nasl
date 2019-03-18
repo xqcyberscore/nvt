@@ -21,18 +21,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875463");
-  script_version("$Revision: 13949 $");
+  script_version("$Revision: 14223 $");
   script_cve_id("CVE-2019-7639");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-01 08:26:12 +0100 (Fri, 01 Mar 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-02-18 04:07:23 +0100 (Mon, 18 Feb 2019)");
   script_name("Fedora Update for gsi-openssh FEDORA-2019-710afd062a");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC28");
 
   script_xref(name:"FEDORA", value:"2019-710afd062a");
   script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/N4WVQF5H2XN6IBTNGSM5IT5HWWRQMZQJ");
@@ -42,22 +42,6 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present
   on the target host.");
-
-  script_tag(name:"insight", value:"SSH (Secure SHell) is a program for logging into
-  and executing commands on a remote machine. SSH is intended to replace rlogin and
-  rsh, and to provide secure encrypted communications between two untrusted hosts
-  over an insecure network. X11 connections and arbitrary TCP/IP ports can also be
-  forwarded over the secure channel.
-
-OpenSSH is OpenBSD&#39 s version of the last free version of SSH, bringing
-it up to date in terms of security and features.
-
-This version of OpenSSH has been modified to support GSI authentication.
-
-This package includes the core files necessary for both the gsissh
-client and server. To make this package useful, you should also
-install gsi-openssh-clients, gsi-openssh-server, or both.
-");
 
   script_tag(name:"affected", value:"gsi-openssh on Fedora 28.");
 
@@ -73,7 +57,8 @@ include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
 release = rpm_get_ssh_release();
-if(!release) exit(0);
+if(!release)
+  exit(0);
 
 res = "";
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ejabberd_38003.nasl 8338 2018-01-09 08:00:38Z teissa $
+# $Id: ejabberd_38003.nasl 14233 2019-03-16 13:32:43Z mmartin $
 #
 # ejabberd 'client2server' Message Remote Denial of Service Vulnerability
 #
@@ -24,45 +24,41 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "The 'ejabberd' application is prone to a denial-of-service
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.100487");
+  script_version("$Revision: 14233 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-16 14:32:43 +0100 (Sat, 16 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2010-02-08 23:29:56 +0100 (Mon, 08 Feb 2010)");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_cve_id("CVE-2010-0305");
+  script_bugtraq_id(38003);
+
+  script_name("ejabberd 'client2server' Message Remote Denial of Service Vulnerability");
+
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/38003");
+  script_xref(name:"URL", value:"https://support.process-one.net/browse/EJAB/fixforversion/10453");
+  script_xref(name:"URL", value:"http://www.process-one.net/en/ejabberd/");
+
+  script_category(ACT_GATHER_INFO);
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_family("Denial of Service");
+  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
+  script_dependencies("ejabberd_detect.nasl");
+  script_require_ports("Services/xmpp", 5222);
+  script_tag(name:"solution", value:"The vendor has released an update. Please see the references
+for details.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"The 'ejabberd' application is prone to a denial-of-service
 vulnerability.
 
 An attacker can exploit this issue to crash the affected application,
 denying service to legitimate users.
 
-Versions prior to ejabberd 2.1.3 are vulnerable; other versions may
-also be affected.";
-
-
-tag_solution = "The vendor has released an update. Please see the references
-for details.";
-
-if (description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.100487");
- script_version("$Revision: 8338 $");
- script_tag(name:"last_modification", value:"$Date: 2018-01-09 09:00:38 +0100 (Tue, 09 Jan 2018) $");
- script_tag(name:"creation_date", value:"2010-02-08 23:29:56 +0100 (Mon, 08 Feb 2010)");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_cve_id("CVE-2010-0305");
- script_bugtraq_id(38003);
-
- script_name("ejabberd 'client2server' Message Remote Denial of Service Vulnerability");
-
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/38003");
- script_xref(name : "URL" , value : "https://support.process-one.net/browse/EJAB/fixforversion/10453");
- script_xref(name : "URL" , value : "http://www.process-one.net/en/ejabberd/");
-
- script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_banner");
- script_family("Denial of Service");
- script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("ejabberd_detect.nasl");
- script_require_ports("Services/xmpp", 5222);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+Versions prior to ejabberd 2.1.3 are vulnerable. Other versions may
+also be affected.");
+  exit(0);
 }
 
 include("version_func.inc");

@@ -23,55 +23,41 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
-tag_solution = "Please Install the Updated Packages.";
-tag_insight = "Provides a set of daemons to manage access to remote directories and
-  authentication mechanisms. It provides an NSS and PAM interface toward
-  the system and a pluggable backend system to connect to multiple different
-  account sources. It is also the basis to provide client auditing and policy
-  services for projects like FreeIPA.";
-tag_affected = "sssd on Fedora 18";
-
-
-
-
 if(description)
 {
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2013-February/098434.html");
+  script_tag(name:"affected", value:"sssd on Fedora 18");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
+  script_xref(name:"URL", value:"http://lists.fedoraproject.org/pipermail/package-announce/2013-February/098434.html");
   script_oid("1.3.6.1.4.1.25623.1.0.865331");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-02-11 10:10:20 +0530 (Mon, 11 Feb 2013)");
   script_cve_id("CVE-2013-0220", "CVE-2013-0219");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "FEDORA", value: "2013-1795");
+  script_xref(name:"FEDORA", value:"2013-1795");
   script_name("Fedora Update for sssd FEDORA-2013-1795");
-
-  script_tag(name: "summary" , value: "Check for the Version of sssd");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'sssd'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC18");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC18")
 {
@@ -82,6 +68,6 @@ if(release == "FC18")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

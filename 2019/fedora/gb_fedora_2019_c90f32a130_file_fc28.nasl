@@ -21,18 +21,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875507");
-  script_version("$Revision: 14166 $");
+  script_version("$Revision: 14223 $");
   script_cve_id("CVE-2019-8907", "CVE-2019-8905", "CVE-2019-8906", "CVE-2018-10360");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-14 08:20:11 +0100 (Thu, 14 Mar 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-03-13 04:13:33 +0100 (Wed, 13 Mar 2019)");
   script_name("Fedora Update for file FEDORA-2019-c90f32a130");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC28");
 
   script_xref(name:"FEDORA", value:"2019-c90f32a130");
   script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/5DKJLTXLQCKG4GQNC5JUDGVGAJAJJ2K3");
@@ -41,12 +41,6 @@ if(description)
   package(s) announced via the FEDORA-2019-c90f32a130 advisory.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
-
-  script_tag(name:"insight", value:"The file command is used to identify a particular file according to the
-type of data contained by the file.  File can identify many different
-file types, including ELF binaries, system libraries, RPM packages, and
-different graphics formats.
-");
 
   script_tag(name:"affected", value:"file on Fedora 28.");
 
@@ -62,7 +56,8 @@ include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
 release = rpm_get_ssh_release();
-if(!release) exit(0);
+if(!release)
+  exit(0);
 
 res = "";
 

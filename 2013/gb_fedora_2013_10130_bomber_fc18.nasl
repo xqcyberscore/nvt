@@ -23,52 +23,41 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
-tag_affected = "bomber on Fedora 18";
-tag_insight = "Bomber is a single player arcade game. The player is invading various
-  cities in a plane that is decreasing in height. The goal of the game is
-  to destroy all the buildings and advance to the next level. Each level
-  gets a harder by increasing the speed of the plane and the height of the
-  buildings.";
-tag_solution = "Please Install the Updated Packages.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.865828");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-06-13 10:04:20 +0530 (Thu, 13 Jun 2013)");
   script_cve_id("CVE-2013-2120");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Fedora Update for bomber FEDORA-2013-10130");
-
-  script_xref(name: "FEDORA", value: "2013-10130");
-  script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2013-June/108516.html");
-  script_tag(name: "summary" , value: "Check for the Version of bomber");
+  script_xref(name:"FEDORA", value:"2013-10130");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/pipermail/package-announce/2013-June/108516.html");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'bomber'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC18");
+  script_tag(name:"affected", value:"bomber on Fedora 18");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC18")
 {
@@ -79,6 +68,6 @@ if(release == "FC18")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

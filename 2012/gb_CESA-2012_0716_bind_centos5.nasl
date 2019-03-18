@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-June/018674.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881103");
-  script_version("$Revision: 14098 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
+  script_version("$Revision: 14222 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 13:50:48 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-30 16:08:58 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2012-1033", "CVE-2012-1667");
   script_tag(name:"cvss_base", value:"8.5");
@@ -36,7 +36,8 @@ if(description)
   script_xref(name:"CESA", value:"2012:0716");
   script_name("CentOS Update for bind CESA-2012:0716 centos5");
 
-  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for bind");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'bind'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

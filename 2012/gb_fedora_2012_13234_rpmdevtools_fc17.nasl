@@ -23,63 +23,41 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_affected = "rpmdevtools on Fedora 17";
-tag_insight = "This package contains scripts and (X)Emacs support files to aid in
-  development of RPM packages.
-  rpmdev-setuptree    Create RPM build tree within user's home directory
-  rpmdev-diff         Diff contents of two archives
-  rpmdev-newspec      Creates new .spec from template
-  rpmdev-rmdevelrpms  Find (and optionally remove) &quot;development&quot; RPMs
-  rpmdev-checksig     Check package signatures using alternate RPM keyring
-  rpminfo             Print information about executables and libraries
-  rpmdev-md5/sha*     Display checksums of all files in an archive file
-  rpmdev-vercmp       RPM version comparison checker
-  spectool            Expand and download sources and patches in specfiles
-  rpmdev-wipetree     Erase all files within dirs created by rpmdev-setuptree
-  rpmdev-extract      Extract various archives, &quot;tar xvf&quot; style
-  rpmdev-bumpspec     Bump revision in specfile
-  ...and many more.";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
 if(description)
 {
-  script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2012-September/086138.html");
+  script_xref(name:"URL", value:"http://lists.fedoraproject.org/pipermail/package-announce/2012-September/086138.html");
   script_oid("1.3.6.1.4.1.25623.1.0.864702");
-  script_version("$Revision: 9352 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-09-17 16:39:33 +0530 (Mon, 17 Sep 2012)");
   script_cve_id("CVE-2012-3500");
   script_tag(name:"cvss_base", value:"1.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:N/C:N/I:P/A:N");
-  script_xref(name: "FEDORA", value: "2012-13234");
+  script_xref(name:"FEDORA", value:"2012-13234");
   script_name("Fedora Update for rpmdevtools FEDORA-2012-13234");
-
-  script_tag(name: "summary" , value: "Check for the Version of rpmdevtools");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'rpmdevtools'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC17");
+  script_tag(name:"affected", value:"rpmdevtools on Fedora 17");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC17")
 {
@@ -90,6 +68,6 @@ if(release == "FC17")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

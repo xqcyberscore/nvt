@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_3a3c660bfa_community-mysql_fc27.nasl 11398 2018-09-14 18:00:26Z cfischer $
+# $Id: gb_fedora_2018_3a3c660bfa_community-mysql_fc27.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for community-mysql FEDORA-2018-3a3c660bfa
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875053");
-  script_version("$Revision: 11398 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-14 20:00:26 +0200 (Fri, 14 Sep 2018) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-09-12 07:18:11 +0200 (Wed, 12 Sep 2018)");
   script_cve_id("CVE-2018-2767", "CVE-2018-3056", "CVE-2018-3058", "CVE-2018-3060",
                 "CVE-2018-3061", "CVE-2018-3062", "CVE-2018-3064", "CVE-2018-3065",
@@ -48,36 +48,33 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for community-mysql FEDORA-2018-3a3c660bfa");
-  script_tag(name:"summary", value:"Check the version of community-mysql");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'community-mysql'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
   on the target host.");
-  script_tag(name:"insight", value:"MySQL is a multi-user, multi-threaded SQL
-  database server. MySQL is a client/server implementation consisting of a server
-  daemon (mysqld) and many different client programs and libraries. The base package
-  contains the standard MySQL client programs and generic MySQL files.");
   script_tag(name:"affected", value:"community-mysql on Fedora 27");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"FEDORA", value:"2018-3a3c660bfa");
-  script_xref(name:"URL" , value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/CMFLV7EQQMQLID4QLMAD66RUMXI776RR");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/CMFLV7EQQMQLID4QLMAD66RUMXI776RR");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC27");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC27")
 {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_36320c03cd_electron-cash_fc28.nasl 13108 2019-01-17 07:34:03Z santu $
+# $Id: gb_fedora_2018_36320c03cd_electron-cash_fc28.nasl 14225 2019-03-15 14:32:03Z cfischer $
 #
 # Fedora Update for electron-cash FEDORA-2018-36320c03cd
 #
@@ -29,17 +29,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875399");
-  script_version("$Revision: 13108 $");
+  script_version("$Revision: 14225 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-17 08:34:03 +0100 (Thu, 17 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 15:32:03 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-01-12 04:03:56 +0100 (Sat, 12 Jan 2019)");
   script_name("Fedora Update for electron-cash FEDORA-2018-36320c03cd");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC28");
 
   script_xref(name:"FEDORA", value:"2018-36320c03cd");
   script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/KDVTR3FKX3WKWEZC5EA6NGNVXHGGJJPO");
@@ -48,14 +48,7 @@ if(description)
   'electron-cash' package(s) announced via the FEDORA-2018-36320c03cd advisory.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is
- present on the target host.");
-
-  script_tag(name:"insight", value:"Electron Cash is an easy to use Bitcoin Cash
- client. It protects you from losing coins in a backup mistake or computer failure,
- because your wallet can be recovered from a secret phrase that you can write on
- paper or learn by heart. There is no waiting time when you start the client,
- because it does not download the Bitcoin block chain.
-");
+  present on the target host.");
 
   script_tag(name:"affected", value:"electron-cash on Fedora 28.");
 
@@ -71,7 +64,8 @@ include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
 release = rpm_get_ssh_release();
-if(!release) exit(0);
+if(!release)
+  exit(0);
 
 res = "";
 

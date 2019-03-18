@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_cdccabb23d_glpi_fc27.nasl 11228 2018-09-05 02:44:21Z ckuersteiner $
+# $Id: gb_fedora_2018_cdccabb23d_glpi_fc27.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for glpi FEDORA-2018-cdccabb23d
 #
@@ -27,47 +27,41 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874795");
-  script_version("$Revision: 11228 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 04:44:21 +0200 (Wed, 05 Sep 2018) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-07-15 06:00:35 +0200 (Sun, 15 Jul 2018)");
   script_cve_id("CVE-2018-13049", "CVE-2018-7563");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for glpi FEDORA-2018-cdccabb23d");
-  script_tag(name:"summary", value:"Check the version of glpi");
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present 
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'glpi'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
-  script_tag(name:"insight", value:"GLPI is the Information Resource-Manager 
-with an additional Administration-Interface. You can use it to build up a 
-database with an inventory for your company (computer, software, printers...). 
-It has enhanced functions to make the daily life for the administrators easier, 
-like a job-tracking-system with mail-notification and methods to build a 
-database with basic information about your network-topology.
-");
   script_tag(name:"affected", value:"glpi on Fedora 27");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"FEDORA", value:"2018-cdccabb23d");
-  script_xref(name:"URL" , value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/45ZBDWBMNJVPQ6FZVBLDLZRLJNSTTEWL");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/45ZBDWBMNJVPQ6FZVBLDLZRLJNSTTEWL");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC27");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC27")
 {

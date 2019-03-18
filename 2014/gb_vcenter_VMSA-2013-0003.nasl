@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vcenter_VMSA-2013-0003.nasl 14185 2019-03-14 13:43:25Z cfischer $
+# $Id: gb_vcenter_VMSA-2013-0003.nasl 14231 2019-03-16 10:56:51Z mmartin $
 #
 # VMware Security Updates for vCenter Server (VMSA-2013-0003)
 #
@@ -31,12 +31,12 @@ if(description)
   script_cve_id("CVE-2013-1659");
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 14185 $");
+  script_version("$Revision: 14231 $");
   script_name("VMware Security Updates for vCenter Server (VMSA-2013-0003)");
 
   script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2013-0003.html");
 
-  script_tag(name:"last_modification", value:"$Date: 2019-03-14 14:43:25 +0100 (Thu, 14 Mar 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-16 11:56:51 +0100 (Sat, 16 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-01-09 13:04:01 +0100 (Thu, 09 Jan 2014)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
@@ -63,7 +63,7 @@ in the Network File Copy (NFC) Protocol.");
   script_tag(name:"affected", value:"VMware vCenter Server 5.1 prior to 5.1.0b
 VMware vCenter Server 5.0 prior to 5.0 Update 2");
 
- exit(0);
+  exit(0);
 }
 
 include("vmware_esx.inc");

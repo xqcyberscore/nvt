@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.868474");
-  script_version("$Revision: 6724 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-11-11 06:21:45 +0100 (Tue, 11 Nov 2014)");
   script_cve_id("CVE-2014-7815", "CVE-2014-3689", "CVE-2014-3640", "CVE-2014-3615",
                 "CVE-2014-0222", "CVE-2014-0223", "CVE-2014-3461", "CVE-2014-0182",
@@ -35,43 +35,31 @@ if(description)
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Fedora Update for qemu FEDORA-2014-14033");
-  script_tag(name: "summary", value: "Check the version of qemu");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "QEMU is a generic and open source processor emulator which achieves a good
-emulation speed by using dynamic translation. QEMU has two operating modes:
-
- * Full system emulation. In this mode, QEMU emulates a full system (for
-   example a PC), including a processor and various peripherials. It can be
-   used to launch different Operating Systems without rebooting the PC or
-   to debug system code.
- * User mode emulation. In this mode, QEMU can launch Linux processes compiled
-   for one CPU on another CPU.
-
-As QEMU requires no host kernel patches to run, it is safe and easy to use.
-");
-  script_tag(name: "affected", value: "qemu on Fedora 20");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"summary", value:"Check the version of qemu");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"affected", value:"qemu on Fedora 20");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "FEDORA", value: "2014-14033");
-  script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2014-November/143312.html");
+  script_xref(name:"FEDORA", value:"2014-14033");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/pipermail/package-announce/2014-November/143312.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC20");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC20")
 {
@@ -82,6 +70,6 @@ if(release == "FC20")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2017_6be762ea64_python_fc25.nasl 8091 2017-12-13 06:22:57Z teissa $
+# $Id: gb_fedora_2017_6be762ea64_python_fc25.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for python FEDORA-2017-6be762ea64
 #
@@ -27,56 +27,39 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.873858");
-  script_version("$Revision: 8091 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-13 07:22:57 +0100 (Wed, 13 Dec 2017) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-12-05 07:55:01 +0100 (Tue, 05 Dec 2017)");
   script_cve_id("CVE-2017-1000158");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for python FEDORA-2017-6be762ea64");
-  script_tag(name: "summary", value: "Check the version of python");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "Python is an interpreted, interactive, 
-object-oriented programming language often compared to Tcl, Perl, Scheme or 
-Java. Python includes modules, classes, exceptions, very high level dynamic data 
-types and dynamic typing. Python supports interfaces to many system calls and
-libraries, as well as to various windowing systems (X11, Motif, Tk, Mac and MFC).
-
-Programmers can write new built-in modules for Python in C or C++.
-Python can be used as an extension language for applications that need
-a programmable interface.
-
-Note that documentation for Python is provided in the python-docs
-package.
-
-This package provides the 'python' executable  most of the actual
-implementation is within the 'python-libs' package.
-");
-  script_tag(name: "affected", value: "python on Fedora 25");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-
-  script_xref(name: "FEDORA", value: "2017-6be762ea64");
-  script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/SK7FMWFGIIAUTIUHVDV2SPCV7IVQLPVT");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'python'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"affected", value:"python on Fedora 25");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
+  script_xref(name:"FEDORA", value:"2017-6be762ea64");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/SK7FMWFGIIAUTIUHVDV2SPCV7IVQLPVT");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC25");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC25")
 {
@@ -87,6 +70,6 @@ if(release == "FC25")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -66,8 +66,8 @@ if(description)
   updated packages, you must restart the httpd daemon, if you are using
   mod_dav_svn, for the update to take effect.");
   script_oid("1.3.6.1.4.1.25623.1.0.881711");
-  script_version("$Revision: 14098 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
+  script_version("$Revision: 14222 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 13:50:48 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-04-15 10:13:14 +0530 (Mon, 15 Apr 2013)");
   script_cve_id("CVE-2013-1845", "CVE-2013-1846", "CVE-2013-1847", "CVE-2013-1849");
   script_tag(name:"cvss_base", value:"5.0");
@@ -78,7 +78,8 @@ if(description)
 
   script_xref(name:"CESA", value:"2013:0737");
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-April/019688.html");
-  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for mod_dav_svn");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'mod_dav_svn'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

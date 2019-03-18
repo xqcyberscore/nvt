@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2012-January/018395.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881199");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14222 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 13:50:48 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-30 16:40:59 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2010-2642", "CVE-2011-0433", "CVE-2011-0764", "CVE-2011-1552",
                 "CVE-2011-1553", "CVE-2011-1554");
@@ -37,7 +37,8 @@ if(description)
   script_xref(name:"CESA", value:"2012:0062");
   script_name("CentOS Update for t1lib CESA-2012:0062 centos6");
 
-  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for t1lib");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 't1lib'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

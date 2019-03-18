@@ -21,18 +21,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875477");
-  script_version("$Revision: 13881 $");
+  script_version("$Revision: 14223 $");
   script_cve_id("CVE-2018-16476");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-26 14:01:46 +0100 (Tue, 26 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-02-26 04:17:25 +0100 (Tue, 26 Feb 2019)");
   script_name("Fedora Update for rubygem-activejob FEDORA-2019-31e6f6e545");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC28");
 
   script_xref(name:"FEDORA", value:"2019-31e6f6e545");
   script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/OYUVBMGRXQ3BRKBJMZMX6MXEKTPCCHL4");
@@ -41,9 +41,6 @@ if(description)
   package(s) announced via the FEDORA-2019-31e6f6e545 advisory.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
-
-  script_tag(name:"insight", value:"Declare job classes that can be run by a variety of queueing backends.
-");
 
   script_tag(name:"affected", value:"rubygem-activejob on Fedora 28.");
 
@@ -59,7 +56,8 @@ include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
 release = rpm_get_ssh_release();
-if(!release) exit(0);
+if(!release)
+  exit(0);
 
 res = "";
 

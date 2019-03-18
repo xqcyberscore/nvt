@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2017_fe95a5b88b_bluez_fc26.nasl 7260 2017-09-26 06:48:48Z asteins $
+# $Id: gb_fedora_2017_fe95a5b88b_bluez_fc26.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for bluez FEDORA-2017-fe95a5b88b
 #
@@ -27,59 +27,39 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.873368");
-  script_version("$Revision: 7260 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-26 08:48:48 +0200 (Tue, 26 Sep 2017) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-09-14 07:41:48 +0200 (Thu, 14 Sep 2017)");
   script_cve_id("CVE-2017-1000250");
   script_tag(name:"cvss_base", value:"3.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for bluez FEDORA-2017-fe95a5b88b");
-  script_tag(name: "summary", value: "Check the version of bluez");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "Utilities for use in Bluetooth applications:
-	- hcitool
-	- hciattach
-	- hciconfig
-	- bluetoothd
-	- l2ping
-	- rfcomm
-	- sdptool
-	- bccmd
-	- bluetoothctl
-	- btmon
-	- hcidump
-	- l2test
-	- rctest
-	- gatttool
-	- start scripts (Red Hat)
-	- pcmcia configuration files
-
-The BLUETOOTH trademarks are owned by Bluetooth SIG, Inc., U.S.A.
-");
-  script_tag(name: "affected", value: "bluez on Fedora 26");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-
-  script_xref(name: "FEDORA", value: "2017-fe95a5b88b");
-  script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/AWVMZIXGZ564SXHHRWGEALD7LRSJGI5Q");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'bluez'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"affected", value:"bluez on Fedora 26");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
+  script_xref(name:"FEDORA", value:"2017-fe95a5b88b");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/AWVMZIXGZ564SXHHRWGEALD7LRSJGI5Q");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC26");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC26")
 {
@@ -90,6 +70,6 @@ if(release == "FC26")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

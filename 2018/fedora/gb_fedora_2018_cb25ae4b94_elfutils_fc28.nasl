@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_cb25ae4b94_elfutils_fc28.nasl 13517 2019-02-07 07:51:12Z mmartin $
+# $Id: gb_fedora_2018_cb25ae4b94_elfutils_fc28.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for elfutils FEDORA-2018-cb25ae4b94
 #
@@ -29,34 +29,26 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875322");
-  script_version("$Revision: 13517 $");
+  script_version("$Revision: 14223 $");
   script_cve_id("CVE-2018-18310", "CVE-2018-18520", "CVE-2018-18521", "CVE-2018-16062", "CVE-2018-16402", "CVE-2018-16403");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-07 08:51:12 +0100 (Thu, 07 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-12-04 08:32:03 +0100 (Tue, 04 Dec 2018)");
   script_name("Fedora Update for elfutils FEDORA-2018-cb25ae4b94");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC28");
 
   script_xref(name:"FEDORA", value:"2018-cb25ae4b94");
-  script_xref(name:"URL" , value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/ANJQREMUOYS2D54BXYEKNN3H6Q2FOUMG");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/ANJQREMUOYS2D54BXYEKNN3H6Q2FOUMG");
 
   script_tag(name:"summary", value:"The remote host is missing an update for the 'elfutils'
   package(s) announced via the FEDORA-2018-cb25ae4b94 advisory.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
-
-  script_tag(name:"insight", value:"Elfutils is a collection of utilities, including stack (to show
-backtraces), nm (for listing symbols from object files), size
-(for listing the section sizes of an object or archive file),
-strip (for discarding symbols), readelf (to see the raw ELF file
-structures), elflint (to check for well-formed ELF files) and
-elfcompress (to compress or decompress ELF sections).
-");
 
   script_tag(name:"affected", value:"elfutils on Fedora 28.");
 
@@ -72,7 +64,8 @@ include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
 release = rpm_get_ssh_release();
-if(!release) exit(0);
+if(!release)
+  exit(0);
 
 res = "";
 

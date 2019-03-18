@@ -23,82 +23,41 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "==================================
-  **  ABOUT CERTIFICATE SYSTEM  **
-  ==================================
-
-  Certificate System (CS) is an enterprise software system designed
-  to manage enterprise Public Key Infrastructure (PKI) deployments.
-
-  PKI Core contains fundamental packages required by Certificate System,
-  and consists of the following components:
-
-    * pki-setup
-    * pki-symkey
-    * pki-native-tools
-    * pki-util
-    * pki-util-javadoc
-    * pki-java-tools
-    * pki-java-tools-javadoc
-    * pki-common
-    * pki-common-javadoc
-    * pki-selinux
-    * pki-ca
-    * pki-silent
-
-  which comprise the following PKI subsystems:
-
-    * Certificate Authority (CA)
-
-  For deployment purposes, Certificate System requires ONE AND ONLY ONE
-  of the following &quot;Mutually-Exclusive&quot; PKI Theme packages:
-
-    * ipa-pki-theme    (IPA deployments)
-    * dogtag-pki-theme (Dogtag Certificate System deployments)
-    * redhat-pki-theme (Red Hat Certificate System deployments)";
-
-tag_affected = "pki-core on Fedora 17";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
 if(description)
 {
-  script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2012-December/094652.html");
+  script_xref(name:"URL", value:"http://lists.fedoraproject.org/pipermail/package-announce/2012-December/094652.html");
   script_oid("1.3.6.1.4.1.25623.1.0.864944");
-  script_version("$Revision: 9352 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-12-18 09:58:09 +0530 (Tue, 18 Dec 2012)");
   script_cve_id("CVE-2012-4543");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_xref(name: "FEDORA", value: "2012-20220");
+  script_xref(name:"FEDORA", value:"2012-20220");
   script_name("Fedora Update for pki-core FEDORA-2012-20220");
-
-  script_tag(name: "summary" , value: "Check for the Version of pki-core");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'pki-core'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC17");
+  script_tag(name:"affected", value:"pki-core on Fedora 17");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC17")
 {
@@ -109,6 +68,6 @@ if(release == "FC17")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

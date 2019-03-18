@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.120509");
-  script_version("$Revision: 14117 $");
+  script_version("$Revision: 14225 $");
   script_tag(name:"creation_date", value:"2015-09-08 13:28:14 +0200 (Tue, 08 Sep 2015)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 15:32:03 +0100 (Fri, 15 Mar 2019) $");
   script_name("Amazon Linux Local Check: alas-2015-584");
-  script_tag(name:"insight", value:"PHP process crashes when processing an invalid file with the phar extension. 
+  script_tag(name:"insight", value:"PHP process crashes when processing an invalid file with the phar extension.
   (CVE-2015-5589)
 
   As discussed upstream, mysqlnd is vulnerable to the attack described in the references. (CVE-2015-3152)

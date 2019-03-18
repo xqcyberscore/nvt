@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2011-April/017311.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880552");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14222 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 13:50:48 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -36,7 +36,8 @@ if(description)
   script_cve_id("CVE-2010-4476");
   script_name("CentOS Update for java CESA-2011:0214 centos5 i386");
 
-  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for java");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'java'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

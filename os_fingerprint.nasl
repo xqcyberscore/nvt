@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: os_fingerprint.nasl 14073 2019-03-10 10:27:47Z cfischer $
+# $Id: os_fingerprint.nasl 14244 2019-03-17 19:55:30Z cfischer $
 #
 # ICMP based OS Fingerprinting
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102002");
-  script_version("$Revision: 14073 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-10 11:27:47 +0100 (Sun, 10 Mar 2019) $");
+  script_version("$Revision: 14244 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-17 20:55:30 +0100 (Sun, 17 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-05-19 12:05:50 +0200 (Tue, 19 May 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -82,6 +82,7 @@ if(description)
                       "smb_nativelanman.nasl", "gb_ucs_detect.nasl",
                       "sw_http_os_detection.nasl", "sw_mail_os_detection.nasl",
                       "sw_telnet_os_detection.nasl", "gb_mysql_mariadb_os_detection.nasl",
+                      "apcnisd_detect.nasl",
                       "ntp_open.nasl", "remote-detect-MDNS.nasl",
                       "mssqlserver_detect.nasl", "gb_apple_tv_version.nasl",
                       "gb_apple_tv_detect.nasl", "gb_upnp_os_detection.nasl",

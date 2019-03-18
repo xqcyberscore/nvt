@@ -29,37 +29,26 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875359");
-  script_version("$Revision: 13517 $");
+  script_version("$Revision: 14223 $");
   script_cve_id("CVE-2018-19935", "CVE-2018-19518");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-07 08:51:12 +0100 (Thu, 07 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-12-18 08:05:31 +0100 (Tue, 18 Dec 2018)");
   script_name("Fedora Update for php FEDORA-2018-dfe1f0bac6");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC28");
 
   script_xref(name:"FEDORA", value:"2018-dfe1f0bac6");
-  script_xref(name:"URL" , value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/KADZQIMUMMEK77ZYFQJ5QKS33ZIQPSSF");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/KADZQIMUMMEK77ZYFQJ5QKS33ZIQPSSF");
 
   script_tag(name:"summary", value:"The remote host is missing an update for the 'php'
   package(s) announced via the FEDORA-2018-dfe1f0bac6 advisory.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
-
-  script_tag(name:"insight", value:"PHP is an HTML-embedded scripting language. PHP attempts to make it
-easy for developers to write dynamically generated web pages. PHP also
-offers built-in database integration for several commercial and
-non-commercial database management systems, so writing a
-database-enabled webpage with PHP is fairly simple. The most common
-use of PHP coding is probably as a replacement for CGI scripts.
-
-The php package contains the module (often referred to as mod_php)
-which adds support for the PHP language to Apache HTTP Server.
-");
 
   script_tag(name:"affected", value:"php on Fedora 28.");
 
@@ -75,7 +64,8 @@ include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
 release = rpm_get_ssh_release();
-if(!release) exit(0);
+if(!release)
+  exit(0);
 
 res = "";
 

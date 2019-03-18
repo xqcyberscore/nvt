@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882044");
-  script_version("$Revision: 14058 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14222 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 13:50:48 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-10-01 16:59:26 +0530 (Wed, 01 Oct 2014)");
   script_cve_id("CVE-2014-2497", "CVE-2014-3587", "CVE-2014-3597", "CVE-2014-4670", "CVE-2014-4698", "CVE-2012-1571");
   script_tag(name:"cvss_base", value:"6.8");
@@ -73,7 +73,8 @@ take effect.");
 
   script_xref(name:"CESA", value:"2014:1326");
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2014-September/020602.html");
-  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for php");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'php'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

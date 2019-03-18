@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_dd98177cad_python-markdown2_fc28.nasl 11897 2018-10-15 05:26:22Z cfischer $
+# $Id: gb_fedora_2018_dd98177cad_python-markdown2_fc28.nasl 14225 2019-03-15 14:32:03Z cfischer $
 #
 # Fedora Update for python-markdown2 FEDORA-2018-dd98177cad
 #
@@ -27,45 +27,40 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875169");
-  script_version("$Revision: 11897 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 07:26:22 +0200 (Mon, 15 Oct 2018) $");
+  script_version("$Revision: 14225 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 15:32:03 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-10-11 08:44:22 +0200 (Thu, 11 Oct 2018)");
   script_cve_id("CVE-2018-5773");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for python-markdown2 FEDORA-2018-dd98177cad");
-  script_tag(name:"summary", value:"Check the version of python-markdown2");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'python-markdown2'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
   on the target host.");
-  script_tag(name:"insight", value:"Markdown is a text-to-HTML filter  it translates
-  an easy-to-read / easy-to-write structured text format into HTML. Markdown&#39 s
-  text format is most similar to that of plain text email, and supports features
-  such as headers, emphasis, code blocks, blockquotes, and links.");
-
   script_tag(name:"affected", value:"python-markdown2 on Fedora 28");
   script_tag(name:"solution", value:"Please install the updated packages.");
-
   script_xref(name:"FEDORA", value:"2018-dd98177cad");
-  script_xref(name:"URL" , value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/QDGX4AK6JZBIQRZBH3H2ZNCZ7ZDCITFH");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/QDGX4AK6JZBIQRZBH3H2ZNCZ7ZDCITFH");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC28");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC28")
 {

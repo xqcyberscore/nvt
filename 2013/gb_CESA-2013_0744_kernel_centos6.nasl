@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.881723");
-  script_version("$Revision: 14098 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-11 16:47:16 +0100 (Mon, 11 Mar 2019) $");
+  script_version("$Revision: 14222 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 13:50:48 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-04-25 10:23:07 +0530 (Thu, 25 Apr 2013)");
   script_cve_id("CVE-2012-6537", "CVE-2012-6546", "CVE-2012-6547", "CVE-2013-0349",
                 "CVE-2013-0913", "CVE-2013-1767", "CVE-2013-1773", "CVE-2013-1774",
@@ -39,7 +39,8 @@ if(description)
 
   script_xref(name:"CESA", value:"2013:0744");
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2013-April/019701.html");
-  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for kernel");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'kernel'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

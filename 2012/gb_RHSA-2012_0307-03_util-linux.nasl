@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2012-February/msg00049.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870552");
-  script_version("$Revision: 14114 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
+  script_version("$Revision: 14231 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-16 11:56:51 +0100 (Sat, 16 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-02-21 18:56:41 +0530 (Tue, 21 Feb 2012)");
   script_cve_id("CVE-2011-1675", "CVE-2011-1677");
   script_tag(name:"cvss_base", value:"4.6");
@@ -69,7 +69,7 @@ if(description)
   (BZ#650937)
 
   * Prior to this update, the build process of the util-linux package failed
-  in the po directory with the following error message: '@MKINSTALLDIRS@:
+  in the po directory with the following error message:'@MKINSTALLDIRS@:
   No such file or directory'. An upstream patch has been applied to address
   this issue, and the util-linux package now builds successfully. (BZ#677452)
 

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: fs_policy_manager_7_dos.nasl 10033 2018-05-31 07:51:19Z ckuersteiner $
+# $Id: fs_policy_manager_7_dos.nasl 14240 2019-03-17 15:50:45Z cfischer $
 # Description: F-Secure Policy Manager Server fsmsh.dll module DoS
 #
 # Authors:
@@ -25,19 +25,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80061");
-  script_version("$Revision: 10033 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-31 09:51:19 +0200 (Thu, 31 May 2018) $");
+  script_version("$Revision: 14240 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-17 16:50:45 +0100 (Sun, 17 Mar 2019) $");
   script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
-
   script_cve_id("CVE-2007-2964");
   script_bugtraq_id(24233);
   script_xref(name:"OSVDB", value:"36723");
-
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-
   script_name("F-Secure Policy Manager Server fsmsh.dll module DoS");
-
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("This script is Copyright (C) 2007 David Maciejak");
@@ -47,18 +43,16 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name: "solution", value: "Upgrade to F-Secure Policy Manager Server 7.01 or later.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution", value:"Upgrade to F-Secure Policy Manager Server 7.01 or later.");
 
-  script_tag(name: "summary", value: "The remote host is an F-Secure Policy Manager Server.
+  script_tag(name:"summary", value:"The remote host is running a version a F-Secure Policy Manager Server which
+  is vulnerable to a denial of service.");
 
-Description :
+  script_tag(name:"impact", value:"A malicious user can forge a request to query a MS-DOS device name through the
+  'fsmsh.dll' CGI module, which will prevent legitimate users from accessing the service using the Manager Console.");
 
-The remote host is running a version a F-Secure Policy Manager Server which is vulnerable to a denial of service.
-
-A malicious user can forge a request to query a MS-DOS device name through the 'fsmsh.dll' CGI module, which will
-prevent legitimate users from accessing the service using the Manager Console.");
-
-  script_xref(name: "URL", value: "http://www.f-secure.com/security/fsc-2007-4.shtml");
+  script_xref(name:"URL", value:"http://www.f-secure.com/security/fsc-2007-4.shtml");
 
   exit(0);
 }
@@ -71,7 +65,8 @@ port = get_http_port(default:80);
 
 # only check FSMSH.DLL version
 buf = http_get(item:"/fsms/fsmsh.dll?FSMSCommand=GetVersion", port:port);
-r = http_keepalive_send_recv(port:port, data:buf, bodyonly:1);
-if( r == NULL )exit(0);
+r = http_keepalive_send_recv(port:port, data:buf, bodyonly:TRUE);
+if(!r)
+  exit(0);
 
 if (r =~ "^([0-6]\.|7\.00)") security_message(port);

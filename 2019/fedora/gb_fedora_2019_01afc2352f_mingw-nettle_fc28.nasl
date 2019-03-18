@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2019_01afc2352f_mingw-nettle_fc28.nasl 13455 2019-02-05 07:38:02Z mmartin $
+# $Id: gb_fedora_2019_01afc2352f_mingw-nettle_fc28.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for mingw-nettle FEDORA-2019-01afc2352f
 #
@@ -29,18 +29,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875397");
-  script_version("$Revision: 13455 $");
+  script_version("$Revision: 14223 $");
   script_cve_id("CVE-2018-16869");
   script_tag(name:"cvss_base", value:"3.3");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-05 08:38:02 +0100 (Tue, 05 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-01-12 04:03:53 +0100 (Sat, 12 Jan 2019)");
   script_name("Fedora Update for mingw-nettle FEDORA-2019-01afc2352f");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC28");
 
   script_xref(name:"FEDORA", value:"2019-01afc2352f");
   script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/NQELWRIMEMSYRZWGRZM2KCZIQRJCDUN5");
@@ -50,12 +50,6 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is
   present on the target host.");
-
-  script_tag(name:"insight", value:"Nettle is a cryptographic library that is
-  designed to fit easily in more or less any context: In crypto toolkits for
-  object-oriented languages (C++, Python, Pike, ...), in applications like LSH or
-  GNUPG, or even in kernel space.
-");
 
   script_tag(name:"affected", value:"mingw-nettle on Fedora 28.");
 
@@ -71,7 +65,8 @@ include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
 release = rpm_get_ssh_release();
-if(!release) exit(0);
+if(!release)
+  exit(0);
 
 res = "";
 

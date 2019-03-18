@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_e69d2aaa60_wordpress_fc28.nasl 12954 2019-01-07 07:56:42Z cfischer $
+# $Id: gb_fedora_2018_e69d2aaa60_wordpress_fc28.nasl 14225 2019-03-15 14:32:03Z cfischer $
 #
 # Fedora Update for wordpress FEDORA-2018-e69d2aaa60
 #
@@ -29,32 +29,26 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875386");
-  script_version("$Revision: 12954 $");
+  script_version("$Revision: 14225 $");
   script_cve_id("CVE-2018-12895");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-07 08:56:42 +0100 (Mon, 07 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 15:32:03 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-01-01 04:23:47 +0100 (Tue, 01 Jan 2019)");
   script_name("Fedora Update for wordpress FEDORA-2018-e69d2aaa60");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC28");
 
   script_xref(name:"FEDORA", value:"2018-e69d2aaa60");
-  script_xref(name:"URL" , value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/4BTPIX4IVIFPDTJAFFVCZKEGG7WPK76T");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/4BTPIX4IVIFPDTJAFFVCZKEGG7WPK76T");
 
   script_tag(name:"summary", value:"The remote host is missing an update for the 'wordpress'
   package(s) announced via the FEDORA-2018-e69d2aaa60 advisory.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
-
-  script_tag(name:"insight", value:"Wordpress is an online publishing / weblog package that makes it very easy,
-almost trivial, to get information out to people on the web.
-
-Important information in /usr/share/doc/wordpress/README.fedora
-");
 
   script_tag(name:"affected", value:"wordpress on Fedora 28.");
 

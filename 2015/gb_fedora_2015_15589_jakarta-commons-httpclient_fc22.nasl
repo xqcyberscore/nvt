@@ -26,54 +26,39 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869974");
-  script_version("$Revision: 6630 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:34:32 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-10-02 07:09:18 +0200 (Fri, 02 Oct 2015)");
   script_cve_id("CVE-2015-5262");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for jakarta-commons-httpclient FEDORA-2015-15589");
-  script_tag(name: "summary", value: "Check the version of jakarta-commons-httpclient");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "The Hyper-Text Transfer Protocol (HTTP)
-is perhaps the most significant protocol used on the Internet today. Web
-services, network-enabled appliances and the growth of network computing
-continue to expand the role of the HTTP protocol beyond user-driven web browsers,
-and increase the number of applications that may require HTTP support. Although
-the java.net package provides basic support for accessing resources via HTTP,
-it doesn't provide the full flexibility or functionality needed by many
-applications. The Jakarta Commons HTTP Client component seeks to fill this void
-by providing an efficient, up-to-date, and feature-rich package implementing
-the client side of the most recent HTTP standards and recommendations. Designed
-for extension while providing robust support for the base HTTP protocol, the
-HTTP Client component may be of interest to anyone building HTTP-aware client
-applications such as web browsers, web service clients, or systems that
-leverage or extend the HTTP protocol for distributed communication.
-");
-  script_tag(name: "affected", value: "jakarta-commons-httpclient on Fedora 22");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "FEDORA", value: "2015-15589");
-  script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-October/167999.html");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'jakarta-commons-httpclient'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"affected", value:"jakarta-commons-httpclient on Fedora 22");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
+  script_xref(name:"FEDORA", value:"2015-15589");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/pipermail/package-announce/2015-October/167999.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC22");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC22")
 {
@@ -84,6 +69,6 @@ if(release == "FC22")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

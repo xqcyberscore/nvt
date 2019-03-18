@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_e8d19367cb_mingw-SDL2_image_fc28.nasl 12832 2018-12-19 07:49:53Z asteins $
+# $Id: gb_fedora_2018_e8d19367cb_mingw-SDL2_image_fc28.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for mingw-SDL2_image FEDORA-2018-e8d19367cb
 #
@@ -29,32 +29,26 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875274");
-  script_version("$Revision: 12832 $");
+  script_version("$Revision: 14223 $");
   script_cve_id("CVE-2018-3977", "CVE-2018-3837", "CVE-2017-2887");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-19 08:49:53 +0100 (Wed, 19 Dec 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-11-15 06:23:26 +0100 (Thu, 15 Nov 2018)");
   script_name("Fedora Update for mingw-SDL2_image FEDORA-2018-e8d19367cb");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC28");
 
   script_xref(name:"FEDORA", value:"2018-e8d19367cb");
-  script_xref(name:"URL" , value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/O6RWOV4GBZFLOKSR3LKMJGPGA4QC6GSB");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/O6RWOV4GBZFLOKSR3LKMJGPGA4QC6GSB");
 
   script_tag(name:"summary", value:"The remote host is missing an update for the 'mingw-SDL2_image'
   package(s) announced via the FEDORA-2018-e8d19367cb advisory.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
-
-  script_tag(name:"insight", value:"Simple DirectMedia Layer (SDL2) is a cross-platform multimedia library
-designed to provide fast access to the graphics frame buffer and audio
-device.  This package contains a simple library for loading images of
-various formats (BMP, PPM, PCX, GIF, JPEG, PNG) as SDL2 surfaces.
-");
 
   script_tag(name:"affected", value:"mingw-SDL2_image on Fedora 28.");
 
@@ -70,7 +64,8 @@ include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
 release = rpm_get_ssh_release();
-if(!release) exit(0);
+if(!release)
+  exit(0);
 
 res = "";
 

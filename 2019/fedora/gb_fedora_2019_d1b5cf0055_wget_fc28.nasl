@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2019_d1b5cf0055_wget_fc28.nasl 13750 2019-02-19 07:33:36Z mmartin $
+# $Id: gb_fedora_2019_d1b5cf0055_wget_fc28.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for wget FEDORA-2019-d1b5cf0055
 #
@@ -29,18 +29,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875400");
-  script_version("$Revision: 13750 $");
+  script_version("$Revision: 14223 $");
   script_cve_id("CVE-2018-20483", "CVE-2018-0494");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-19 08:33:36 +0100 (Tue, 19 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-01-12 04:03:56 +0100 (Sat, 12 Jan 2019)");
   script_name("Fedora Update for wget FEDORA-2019-d1b5cf0055");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC28");
 
   script_xref(name:"FEDORA", value:"2019-d1b5cf0055");
   script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/QAM3YR42PN36LOMRP6DSTKSDQECD5XBO");
@@ -50,14 +50,6 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is
   present on the target host.");
-
-  script_tag(name:"insight", value:"GNU Wget is a file retrieval utility which can
-  use either the HTTP or FTP protocols. Wget features include the ability to work
-  in the background while you are logged out, recursive retrieval of directories,
-  file name wildcard matching, remote file timestamp storage and comparison, use
-  of Rest with FTP servers and Range with HTTP servers to retrieve files over slow
-  or unstable connections, support for Proxy servers, and configurability.
-");
 
   script_tag(name:"affected", value:"wget on Fedora 28.");
 
@@ -73,7 +65,8 @@ include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
 release = rpm_get_ssh_release();
-if(!release) exit(0);
+if(!release)
+  exit(0);
 
 res = "";
 

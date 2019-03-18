@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2012-January/msg00017.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870661");
-  script_version("$Revision: 14114 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-12 12:48:52 +0100 (Tue, 12 Mar 2019) $");
+  script_version("$Revision: 14231 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-16 11:56:51 +0100 (Sat, 16 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-07-09 10:44:31 +0530 (Mon, 09 Jul 2012)");
   script_cve_id("CVE-2012-0029", "CVE-2011-4127");
   script_tag(name:"cvss_base", value:"7.4");
@@ -62,7 +62,7 @@ if(description)
   This update also fixes the following bug:
 
   * qemu-kvm has a 'scsi' option, to be used, for example, with the
-  '-device' option: '-device virtio-blk-pci, drive=[drive name], scsi=off'.
+  '-device' option:'-device virtio-blk-pci, drive=[drive name], scsi=off'.
   Previously, however, it only masked the feature bit, and did not reject
   SCSI commands if a malicious guest ignored the feature bit and issued a
   request. This update corrects this issue. The 'scsi=off' option can be

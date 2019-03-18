@@ -21,18 +21,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875453");
-  script_version("$Revision: 13750 $");
+  script_version("$Revision: 14223 $");
   script_cve_id("CVE-2018-14447");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-19 08:33:36 +0100 (Tue, 19 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-02-12 04:09:09 +0100 (Tue, 12 Feb 2019)");
   script_name("Fedora Update for mingw-libconfuse FEDORA-2019-a8f918005c");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC28");
 
   script_xref(name:"FEDORA", value:"2019-a8f918005c");
   script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/V5JBHW74QTAYRGUE6ZX3VLXW4KH2PJF4");
@@ -42,19 +42,6 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is
   present on the target host.");
-
-  script_tag(name:"insight", value:"libConfuse is a configuration file parser
-  library, licensed under the terms of the ISC license, and written in C.
-  It supports sections and (lists of) values (strings, integers, floats, booleans
-  or other sections), as well as some other features (such as single/double-quoted
-  strings, environment variable expansion,functions and nested include statements).
-  It makes it very easy to add configuration file capability to a program using
-  a simple API.
-
-The goal of libConfuse is not to be the configuration file parser
-library with a gazillion of features. Instead, it aims to be
-easy to use and quick to integrate with your code.
-");
 
   script_tag(name:"affected", value:"mingw-libconfuse on Fedora 28.");
 
@@ -70,7 +57,8 @@ include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
 release = rpm_get_ssh_release();
-if(!release) exit(0);
+if(!release)
+  exit(0);
 
 res = "";
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2019_596813cc59_electrum_fc28.nasl 13368 2019-01-30 14:30:18Z santu $
+# $Id: gb_fedora_2019_596813cc59_electrum_fc28.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for electrum FEDORA-2019-596813cc59
 #
@@ -29,17 +29,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875430");
-  script_version("$Revision: 13368 $");
+  script_version("$Revision: 14223 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-30 15:30:18 +0100 (Wed, 30 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-01-25 04:04:14 +0100 (Fri, 25 Jan 2019)");
   script_name("Fedora Update for electrum FEDORA-2019-596813cc59");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC28");
 
   script_xref(name:"FEDORA", value:"2019-596813cc59");
   script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/7O4AFTXD2HBLC4QELGMKO7JNJZ434E4R");
@@ -49,13 +49,6 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is
   present on the target host.");
-
-  script_tag(name:"insight", value:"Electrum is an easy to use Bitcoin client.
-  It protects you from losing coins in a backup mistake or computer failure,
-  because your wallet can be recovered from a secret phrase that you can write
-  on paper or learn by heart. There is no waiting time when you start the client,
-  because it does not download the Bitcoin block chain.
-");
 
   script_tag(name:"affected", value:"electrum on Fedora 28.");
 
@@ -71,7 +64,8 @@ include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
 release = rpm_get_ssh_release();
-if(!release) exit(0);
+if(!release)
+  exit(0);
 
 res = "";
 

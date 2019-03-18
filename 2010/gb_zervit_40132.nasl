@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zervit_40132.nasl 8457 2018-01-18 07:58:32Z teissa $
+# $Id: gb_zervit_40132.nasl 14233 2019-03-16 13:32:43Z mmartin $
 #
 # Zervit HTTP Server Source Code Information Disclosure Vulnerability
 #
@@ -24,44 +24,48 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Zervit is prone to a vulnerability that lets attackers access source
+
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.100637");
+  script_version("$Revision: 14233 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-16 14:32:43 +0100 (Sat, 16 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2010-05-14 12:04:31 +0200 (Fri, 14 May 2010)");
+  script_bugtraq_id(40132);
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_name("Zervit HTTP Server Source Code Information Disclosure Vulnerability");
+
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/40132");
+  script_xref(name:"URL", value:"http://zervit.sourceforge.net/");
+
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_category(ACT_GATHER_INFO);
+  script_family("Web Servers");
+  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
+  script_dependencies("gb_get_http_banner.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("Zervit/banner");
+  script_tag(name:"summary", value:"Zervit is prone to a vulnerability that lets attackers access source
 code files.
 
 An attacker can exploit this vulnerability to retrieve certain files
 from the vulnerable computer in the context of the webserver process.
 Information obtained may aid in further attacks.
 
-Zervit 0.4 is vulnerable; other versions may also be affected.";
+Zervit 0.4 is vulnerable. Other versions may also be affected.");
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
+  since the disclosure of this vulnerability. Likely none will be provided anymore.
+  General solution options are to upgrade to a newer release, disable respective features,
+  remove the product or replace the product by another one.");
 
-
-if (description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.100637");
- script_version("$Revision: 8457 $");
- script_tag(name:"last_modification", value:"$Date: 2018-01-18 08:58:32 +0100 (Thu, 18 Jan 2018) $");
- script_tag(name:"creation_date", value:"2010-05-14 12:04:31 +0200 (Fri, 14 May 2010)");
- script_bugtraq_id(40132);
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_name("Zervit HTTP Server Source Code Information Disclosure Vulnerability");
-
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/40132");
- script_xref(name : "URL" , value : "http://zervit.sourceforge.net/");
-
- script_tag(name:"qod_type", value:"remote_banner");
- script_category(ACT_GATHER_INFO);
- script_family("Web Servers");
- script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("gb_get_http_banner.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("Zervit/banner");
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  exit(0);
 }
 
-     
+
 include("http_func.inc");
-include("http_keepalive.inc");
+
 include("version_func.inc");
 
 port = get_http_port(default:80);

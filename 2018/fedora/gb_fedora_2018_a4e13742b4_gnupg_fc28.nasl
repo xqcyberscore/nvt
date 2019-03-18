@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_a4e13742b4_gnupg_fc28.nasl 10778 2018-08-06 02:57:15Z ckuersteiner $
+# $Id: gb_fedora_2018_a4e13742b4_gnupg_fc28.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for gnupg FEDORA-2018-a4e13742b4
 #
@@ -27,46 +27,40 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874711");
-  script_version("$Revision: 10778 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-06 04:57:15 +0200 (Mon, 06 Aug 2018) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-06-20 06:21:22 +0200 (Wed, 20 Jun 2018)");
   script_cve_id("CVE-2018-12020");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for gnupg FEDORA-2018-a4e13742b4");
-  script_tag(name:"summary", value:"Check the version of gnupg");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'gnupg'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"GnuPG (GNU Privacy Guard) is a GNU utility for encrypting data and
-creating digital signatures. GnuPG has advanced key management
-capabilities and is compliant with the proposed OpenPGP Internet
-standard described in RFC2440. Since GnuPG doesn&#39 t use any patented
-algorithm, it is not compatible with any version of PGP2 (PGP2.x uses
-only IDEA for symmetric-key encryption, which is patented worldwide).
-");
   script_tag(name:"affected", value:"gnupg on Fedora 28");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"FEDORA", value:"2018-a4e13742b4");
-  script_xref(name:"URL" , value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/TM65JCD6SYPGZS3OXVWSM5K44DMQJKSE");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/TM65JCD6SYPGZS3OXVWSM5K44DMQJKSE");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC28");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC28")
 {

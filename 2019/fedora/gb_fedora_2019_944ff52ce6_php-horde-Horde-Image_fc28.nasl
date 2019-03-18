@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2019_944ff52ce6_php-horde-Horde-Image_fc28.nasl 13108 2019-01-17 07:34:03Z santu $
+# $Id: gb_fedora_2019_944ff52ce6_php-horde-Horde-Image_fc28.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for php-horde-Horde-Image FEDORA-2019-944ff52ce6
 #
@@ -29,17 +29,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875396");
-  script_version("$Revision: 13108 $");
+  script_version("$Revision: 14223 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-17 08:34:03 +0100 (Thu, 17 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-01-12 04:03:53 +0100 (Sat, 12 Jan 2019)");
   script_name("Fedora Update for php-horde-Horde-Image FEDORA-2019-944ff52ce6");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC28");
 
   script_xref(name:"FEDORA", value:"2019-944ff52ce6");
   script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/EOGDOCBSDM5L2ZJ2TI6VGCIVC2MBCRZX");
@@ -50,18 +50,6 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is
   present on the target host.");
-
-  script_tag(name:"insight", value:"An Image utility API, with backends for:
-* GD
-* GIF
-* PNG
-* SVG
-* SWF
-* ImageMagick convert command line tool
-* Imagick Extension
-
-Optional dependency: php-pecl-imagick
-");
 
   script_tag(name:"affected", value:"php-horde-Horde-Image on Fedora 28.");
 
@@ -77,7 +65,8 @@ include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
 release = rpm_get_ssh_release();
-if(!release) exit(0);
+if(!release)
+  exit(0);
 
 res = "";
 

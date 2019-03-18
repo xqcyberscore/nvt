@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.881955");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14222 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 13:50:48 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-06-23 15:31:16 +0530 (Mon, 23 Jun 2014)");
   script_cve_id("CVE-2013-6378", "CVE-2014-0203", "CVE-2014-1737", "CVE-2014-1738",
                 "CVE-2014-1874", "CVE-2014-2039", "CVE-2014-3153");
@@ -93,7 +93,8 @@ acknowledges Pinkie Pie as th ...
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"CESA", value:"2014:0771");
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2014-June/020379.html");
-  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for kernel");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'kernel'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

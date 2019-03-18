@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_geccbblite_mult_xss_vuln.nasl 11498 2018-09-20 10:34:34Z jschulte $
+# $Id: secpod_geccbblite_mult_xss_vuln.nasl 14233 2019-03-16 13:32:43Z mmartin $
 #
 # geccBBlite Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900747");
-  script_version("$Revision: 11498 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 12:34:34 +0200 (Thu, 20 Sep 2018) $");
+  script_version("$Revision: 14233 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-16 14:32:43 +0100 (Sat, 16 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-02-26 10:13:54 +0100 (Fri, 26 Feb 2010)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -51,10 +51,10 @@ if(description)
   scripts. This can be exploited using the 'postatoda' parameter to inject
   malicious script into a Web page.");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_tag(name:"solution", value:"Upgrade to geccBBlite version 0.2 or later.
-  For updates refer to http://sourceforge.net/projects/geccnuke/");
+  script_tag(name:"solution", value:"Upgrade to geccBBlite version 0.2 or later.");
   script_tag(name:"summary", value:"The host is running geccBBlite and is prone to multiple Cross-Site
   Scripting vulnerabilities.");
+  script_xref(name:"URL", value:"http://sourceforge.net/projects/geccnuke/");
   exit(0);
 }
 

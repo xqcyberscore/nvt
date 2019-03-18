@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sybase_asa_ping.nasl 8236 2017-12-22 10:28:23Z cfischer $
+# $Id: sybase_asa_ping.nasl 14240 2019-03-17 15:50:45Z cfischer $
 #
 # Sybase ASA Ping
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80089");
-  script_version("$Revision: 8236 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-22 11:28:23 +0100 (Fri, 22 Dec 2017) $");
+  script_version("$Revision: 14240 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-17 16:50:45 +0100 (Sun, 17 Mar 2019) $");
   script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -41,23 +41,15 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.sybase.com/products/databasemanagement/sqlanywhere");
 
-  tag_summary = "The remote database server is affected by an information disclosure
-  vulnerability. 
+  script_tag(name:"solution", value:"Switch off broadcast listening via the '-sb' switch when starting
+  Sybase.");
 
-  Description :
-
-  The remote Sybase SQL Anywhere / Adaptive Server Anywhere database is
-  configured to listen for client connection broadcasts, which allows an
-  attacker to see the name and port that the Sybase SQL Anywhere /
-  Adaptive Server Anywhere server is running on.";
-
-  tag_solution = "Switch off broadcast listening via the '-sb' switch when starting
-  Sybase.";
-
-  script_tag(name:"solution" , value:tag_solution);
-  script_tag(name:"summary" , value:tag_summary);
+  script_tag(name:"summary", value:"The remote Sybase SQL Anywhere / Adaptive Server Anywhere database is
+  configured to listen for client connection broadcasts, which allows an attacker to see the name and port
+  that the Sybase SQL Anywhere / Adaptive Server Anywhere server is running on.");
 
   script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"solution_type", value:"Mitigation");
 
   exit(0);
 }
@@ -82,7 +74,7 @@ if( soc ) {
   r = recv( socket:soc, length:4096 );
   close( soc );
   if( ! r ) exit( 0 );
- 
+
   name="";
   length = ord( r[0x27] );
   for( i = 0x28; i < 0x27 + length ; i++ ) {
@@ -96,7 +88,6 @@ if( soc ) {
 
   security_message( port:port, protocol:"udp", data:report );
   exit( 0 );
-   
 }
 
 exit( 99 );

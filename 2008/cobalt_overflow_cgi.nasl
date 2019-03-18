@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: cobalt_overflow_cgi.nasl 10033 2018-05-31 07:51:19Z ckuersteiner $
+# $Id: cobalt_overflow_cgi.nasl 14240 2019-03-17 15:50:45Z cfischer $
 # Description: overflow.cgi detection
 #
 # Authors:
@@ -24,36 +24,33 @@
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.80051");
- script_version("$Revision: 10033 $");
- script_tag(name:"last_modification", value:"$Date: 2018-05-31 09:51:19 +0200 (Thu, 31 May 2018) $");
- script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_tag(name:"qod_type", value:"remote_banner_unreliable");
+  script_oid("1.3.6.1.4.1.25623.1.0.80051");
+  script_version("$Revision: 14240 $");
+  script_cve_id("CVE-2002-1361");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-17 16:50:45 +0100 (Sun, 17 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
+  script_name("overflow.cgi detection");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 2002 Renaud Deraison");
+  script_family("Web application abuses");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 81, 444);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_name("overflow.cgi detection");
+  script_tag(name:"solution", value:"Get a newer software from Cobalt.");
 
- script_category(ACT_GATHER_INFO);
- script_copyright("This script is Copyright (C) 2002 Renaud Deraison");
- script_family("Web application abuses");
- script_dependencies("find_service1.nasl", "no404.nasl");
- script_require_ports("Services/www", 81, 444);
- script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"summary", value:"/cgi-bin/.cobalt/overflow/overflow.cgi was detected.
 
- script_tag(name: "solution", value: "get a newer software from Cobalt");
+  Some versions of this CGI allow remote users to execute arbitrary commands with the privileges of the web server.");
 
- script_tag(name: "summary", value: "/cgi-bin/.cobalt/overflow/overflow.cgi was detected.
+  script_xref(name:"URL", value:"https://web.archive.org/web/20131107165109/http://www.cert.org/advisories/CA-2002-35.html");
 
-Some versions of this CGI allow remote users to execute arbitrary commands with the privileges of the web server.
+  script_tag(name:"solution_type", value:"VendorFix");
 
-*** OpenVAS just checked the presence of this file
-*** but did not try to exploit the flaw, so this might
-*** be a false positive
-  
-See: http://www.cert.org/advisories/CA-2002-35.html");
-
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

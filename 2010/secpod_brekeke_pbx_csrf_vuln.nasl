@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_brekeke_pbx_csrf_vuln.nasl 8440 2018-01-17 07:58:46Z teissa $
+# $Id: secpod_brekeke_pbx_csrf_vuln.nasl 14233 2019-03-16 13:32:43Z mmartin $
 #
 # Brekeke PBX Cross-Site Request Forgery Vulnerability
 #
@@ -24,37 +24,18 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow attackers to change the
-administrator's password by tricking a logged in administrator into visiting a
-malicious web site.
-
-Impact Level: Application.";
-
-tag_affected = "Brekeke PBX version 2.4.4.8";
-
-tag_insight = "The flaw exists in the application which fails to perform
-validity checks on certain 'HTTP reqests', which allows an attacker to hijack
-the authentication of users for requests that change passwords via the
-pbxadmin.web.PbxUserEdit bean.";
-
-tag_solution = "Upgrade to Brekeke PBX version 2.4.6.7 or later.
-For updates refer to http://www.brekeke.com/";
-
-tag_summary = "This host is running Brekeke PBX and is prone to Cross-Site
-Request Forgery Vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902066");
-  script_version("$Revision: 8440 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-17 08:58:46 +0100 (Wed, 17 Jan 2018) $");
+  script_version("$Revision: 14233 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-16 14:32:43 +0100 (Sat, 16 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-06-01 15:40:11 +0200 (Tue, 01 Jun 2010)");
   script_cve_id("CVE-2010-2114");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
   script_name("Brekeke PBX Cross-Site Request Forgery Vulnerability");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/39952");
-  script_xref(name : "URL" , value : "http://cross-site-scripting.blogspot.com/2010/05/brekeke-pbx-2448-cross-site-request.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/39952");
+  script_xref(name:"URL", value:"http://cross-site-scripting.blogspot.com/2010/05/brekeke-pbx-2448-cross-site-request.html");
 
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
@@ -62,11 +43,19 @@ if(description)
   script_require_ports("Services/www", 28080);
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_family("Web application abuses");
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
+  script_tag(name:"insight", value:"The flaw exists in the application which fails to perform
+validity checks on certain 'HTTP reqests', which allows an attacker to hijack
+the authentication of users for requests that change passwords via the
+pbxadmin.web.PbxUserEdit bean.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution", value:"Upgrade to Brekeke PBX version 2.4.6.7 or later.");
+  script_tag(name:"summary", value:"This host is running Brekeke PBX and is prone to Cross-Site
+Request Forgery Vulnerability.");
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to change the
+administrator's password by tricking a logged in administrator into visiting a
+malicious web site.");
+  script_tag(name:"affected", value:"Brekeke PBX version 2.4.4.8");
+  script_xref(name:"URL", value:"http://www.brekeke.com/");
   exit(0);
 }
 
@@ -83,19 +72,15 @@ if(!get_port_state(pbxPort)){
   exit(0);
 }
 
-## Send and receive response
 sndReq = http_get(item:string("/pbx/gate?bean=pbxadmin.web.PbxLogin"),
                                port:pbxPort);
 rcvRes = http_send_recv(port:pbxPort, data:sndReq);
 
-## Confirm the application
 if(">Brekeke PBX<" >< rcvRes)
 {
-  ## Grep for the version
   pbxVer = eregmatch(pattern:"Version ([0-9.]+)" , string:rcvRes);
   if(pbxVer[1] != NULL)
   {
-    ## Check for Brekeke PBX version equal to 2.4.4.8
     if(version_is_equal(version:pbxVer[1], test_version:"2.4.4.8")){
       security_message(pbxPort);
     }

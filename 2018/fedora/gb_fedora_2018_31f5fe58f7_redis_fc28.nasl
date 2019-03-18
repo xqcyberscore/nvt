@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_31f5fe58f7_redis_fc28.nasl 10324 2018-06-26 07:40:01Z santu $
+# $Id: gb_fedora_2018_31f5fe58f7_redis_fc28.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for redis FEDORA-2018-31f5fe58f7
 #
@@ -27,63 +27,40 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874732");
-  script_version("$Revision: 10324 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-26 09:40:01 +0200 (Tue, 26 Jun 2018) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-06-24 06:01:12 +0200 (Sun, 24 Jun 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for redis FEDORA-2018-31f5fe58f7");
-  script_tag(name:"summary", value:"Check the version of redis");
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present 
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'redis'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
-  script_tag(name:"insight", value:"Redis is an advanced key-value store. 
-It is often referred to as a data structure server since keys can contain strings, 
-hashes, lists, sets and sorted sets.
-
-You can run atomic operations on these types, like appending to a string 
-incrementing the value in a hash  pushing to a list  computing set
-intersection, union and difference  or getting the member with highest
-ranking in a sorted set.
-
-In order to achieve its outstanding performance, Redis works with an
-in-memory dataset. Depending on your use case, you can persist it either
-by dumping the dataset to disk every once in a while, or by appending
-each command to a log.
-
-Redis also supports trivial-to-setup master-slave replication, with very
-fast non-blocking first synchronization, auto-reconnection on net split
-and so forth.
-
-Other features include Transactions, Pub/Sub, Lua scripting, Keys with a
-limited time-to-live, and configuration settings to make Redis behave like
-a cache.
-
-You can use Redis from most programming languages also.
-");
   script_tag(name:"affected", value:"redis on Fedora 28");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"FEDORA", value:"2018-31f5fe58f7");
-  script_xref(name:"URL" , value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/QG6UC5EDIO5M7FLY747SVADVEP5WRU24");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/QG6UC5EDIO5M7FLY747SVADVEP5WRU24");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC28");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC28")
 {

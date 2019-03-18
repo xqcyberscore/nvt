@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service6.nasl 13643 2019-02-13 15:33:08Z cfischer $
+# $Id: find_service6.nasl 14246 2019-03-18 07:20:13Z cfischer $
 #
 # Service Detection with 'BINARY' Request
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108204");
-  script_version("$Revision: 13643 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-13 16:33:08 +0100 (Wed, 13 Feb 2019) $");
+  script_version("$Revision: 14246 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 08:20:13 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-08-04 09:08:04 +0200 (Fri, 04 Aug 2017)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -72,10 +72,12 @@ if( ! r ) {
   exit( 0 );
 }
 
+rhexstr = hexstr( r );
+
 k = "FindService/tcp/" + port + "/bin";
 set_kb_item( name:k, value:r );
 if( '\0' >< r )
-  set_kb_item( name:k + "Hex", value:hexstr( r ) );
+  set_kb_item( name:k + "Hex", value:rhexstr );
 
 if( "rlogind: Permission denied." >< r ) {
   register_service( port:port, proto:"rlogin", message:"A rlogin service seems to be running on this port." );
@@ -107,6 +109,14 @@ if( r =~ '^SSH-2.0-libssh[_-][0-9.]+[^\\r\\n]+$' ||
   # nb3: Neither ssh_detect.nasl nor get_ssh_banner() is sometimes able to get the text
   # banner above so set the SSH banner manually here...
   replace_kb_item( name:"SSH/server_banner/" + port, value:chomp( r ) );
+  exit( 0 );
+}
+
+# 0x00:  00 11 49 6E 76 61 6C 69 64 20 63 6F 6D 6D 61 6E    ..Invalid comman
+# 0x10:  64 0A 00 00 00                                     d....
+if( rhexstr == "0011496e76616c696420636f6d6d616e640a000000" ) {
+  register_service( port:port, proto:"apcupsd", message:"A apcupsd service seems to be running on this port." );
+  log_message( port:port, data:"A apcupsd service seems to be running on this port." );
   exit( 0 );
 }
 

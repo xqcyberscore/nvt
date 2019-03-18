@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_5f88837c1b_firefox_fc27.nasl 11764 2018-10-05 12:21:04Z santu $
+# $Id: gb_fedora_2018_5f88837c1b_firefox_fc27.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for firefox FEDORA-2018-5f88837c1b
 #
@@ -27,42 +27,40 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875134");
-  script_version("$Revision: 11764 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 14:21:04 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-10-03 08:29:13 +0200 (Wed, 03 Oct 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for firefox FEDORA-2018-5f88837c1b");
-  script_tag(name:"summary", value:"Check the version of firefox");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'firefox'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
   on the target host.");
-  script_tag(name:"insight", value:"Mozilla Firefox is an open-source web browser,
-  designed for standards compliance, performance and portability.
-");
   script_tag(name:"affected", value:"firefox on Fedora 27");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"FEDORA", value:"2018-5f88837c1b");
-  script_xref(name:"URL" , value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6W7TM4JN7WAQKZOPHIOSMTWMXIBZ6ELL");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6W7TM4JN7WAQKZOPHIOSMTWMXIBZ6ELL");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC27");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC27")
 {

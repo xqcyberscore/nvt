@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2019_b6ce519120_gitolite3_fc28.nasl 13245 2019-01-23 14:22:53Z santu $
+# $Id: gb_fedora_2019_b6ce519120_gitolite3_fc28.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for gitolite3 FEDORA-2019-b6ce519120
 #
@@ -29,17 +29,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875420");
-  script_version("$Revision: 13245 $");
+  script_version("$Revision: 14223 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-23 15:22:53 +0100 (Wed, 23 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-01-19 04:04:38 +0100 (Sat, 19 Jan 2019)");
   script_name("Fedora Update for gitolite3 FEDORA-2019-b6ce519120");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC28");
 
   script_xref(name:"FEDORA", value:"2019-b6ce519120");
   script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/B7ZHXFE6G4U3POJQNEAK7O5DDUQNH55X");
@@ -49,20 +49,6 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is
   present on the target host.");
-
-  script_tag(name:"insight", value:"Gitolite allows a server to host many git
-  repositories and provide access to many developers, without having to give them
-  real userids on the server. The essential magic in doing this is ssh&#39 s pubkey
-  access and the authorized keys file, and the inspiration was an older program
-  called gitosis.
-
-Gitolite can restrict who can read from (clone/fetch) or write to (push) a
-repository. It can also restrict who can push to what branch or tag, which
-is very important in a corporate environment. Gitolite can be installed
-without requiring root permissions, and with no additional software than git
-itself and perl. It also has several other neat features described below and
-elsewhere in the doc/ directory.
-");
 
   script_tag(name:"affected", value:"gitolite3 on Fedora 28.");
 
@@ -78,7 +64,8 @@ include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
 release = rpm_get_ssh_release();
-if(!release) exit(0);
+if(!release)
+  exit(0);
 
 res = "";
 

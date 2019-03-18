@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_a0914af224_kernel-headers_fc28.nasl 13427 2019-02-04 08:52:52Z mmartin $
+# $Id: gb_fedora_2018_a0914af224_kernel-headers_fc28.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for kernel-headers FEDORA-2018-a0914af224
 #
@@ -29,33 +29,26 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875356");
-  script_version("$Revision: 13427 $");
+  script_version("$Revision: 14223 $");
   script_cve_id("CVE-2018-19824", "CVE-2018-19406");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-04 09:52:52 +0100 (Mon, 04 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-12-13 08:03:30 +0100 (Thu, 13 Dec 2018)");
   script_name("Fedora Update for kernel-headers FEDORA-2018-a0914af224");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC28");
 
   script_xref(name:"FEDORA", value:"2018-a0914af224");
-  script_xref(name:"URL" , value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/R7TV2XQKIU2SNDO45DBAWQQC4KTZ3633");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/R7TV2XQKIU2SNDO45DBAWQQC4KTZ3633");
 
   script_tag(name:"summary", value:"The remote host is missing an update for the 'kernel-headers'
   package(s) announced via the FEDORA-2018-a0914af224 advisory.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
-
-  script_tag(name:"insight", value:"Kernel-headers includes the C header files that specify the interface
-between the Linux kernel and userspace libraries and programs.  The
-header files define structures and constants that are needed for
-building most standard programs and are also needed for rebuilding the
-glibc package.
-");
 
   script_tag(name:"affected", value:"kernel-headers on Fedora 28.");
 
@@ -71,7 +64,8 @@ include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
 release = rpm_get_ssh_release();
-if(!release) exit(0);
+if(!release)
+  exit(0);
 
 res = "";
 

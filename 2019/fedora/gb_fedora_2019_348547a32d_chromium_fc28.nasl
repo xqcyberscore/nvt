@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2019_348547a32d_chromium_fc28.nasl 13209 2019-01-22 08:11:01Z mmartin $
+# $Id: gb_fedora_2019_348547a32d_chromium_fc28.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for chromium FEDORA-2019-348547a32d
 #
@@ -29,7 +29,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875411");
-  script_version("$Revision: 13209 $");
+  script_version("$Revision: 14223 $");
   script_cve_id("CVE-2018-17480", "CVE-2018-17481", "CVE-2018-18335", "CVE-2018-18336",
                 "CVE-2018-18337", "CVE-2018-18338", "CVE-2018-18339", "CVE-2018-18340",
                 "CVE-2018-18341", "CVE-2018-18342", "CVE-2018-18343", "CVE-2018-18344",
@@ -39,14 +39,14 @@ if(description)
                 "CVE-2018-18357", "CVE-2018-18358", "CVE-2018-18359");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-22 09:11:01 +0100 (Tue, 22 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-01-16 04:03:50 +0100 (Wed, 16 Jan 2019)");
   script_name("Fedora Update for chromium FEDORA-2019-348547a32d");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC28");
 
   script_xref(name:"FEDORA", value:"2019-348547a32d");
   script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/GPF6NWCKSBWW66XSYJGJYFDN4NBYOZ2U");
@@ -56,10 +56,6 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is
   present on the target host.");
-
-  script_tag(name:"insight", value:"Chromium is an open-source web browser,
-  powered by WebKit (Blink).
-");
 
   script_tag(name:"affected", value:"chromium on Fedora 28.");
 
@@ -75,7 +71,8 @@ include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
 release = rpm_get_ssh_release();
-if(!release) exit(0);
+if(!release)
+  exit(0);
 
 res = "";
 

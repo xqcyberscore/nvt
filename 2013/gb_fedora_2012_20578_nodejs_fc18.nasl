@@ -23,52 +23,41 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
-tag_affected = "nodejs on Fedora 18";
-tag_insight = "Node.js is a platform built on Chrome's JavaScript runtime
-  for easily building fast, scalable network applications.
-  Node.js uses an event-driven, non-blocking I/O model that
-  makes it lightweight and efficient, perfect for data-intensive
-  real-time applications that run across distributed devices.";
-tag_solution = "Please Install the Updated Packages.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.865530");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-04-08 10:32:26 +0530 (Mon, 08 Apr 2013)");
   script_cve_id("CVE-2012-5153", "CVE-2013-0836", "CVE-2013-2632");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Fedora Update for nodejs FEDORA-2012-20578");
-
-  script_xref(name: "FEDORA", value: "2012-20578");
-  script_xref(name: "URL" , value: "http://lists.fedoraproject.org/pipermail/package-announce/2013-April/101468.html");
-  script_tag(name: "summary" , value: "Check for the Version of nodejs");
+  script_xref(name:"FEDORA", value:"2012-20578");
+  script_xref(name:"URL", value:"http://lists.fedoraproject.org/pipermail/package-announce/2013-April/101468.html");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'nodejs'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC18");
+  script_tag(name:"affected", value:"nodejs on Fedora 18");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC18")
 {
@@ -79,6 +68,6 @@ if(release == "FC18")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

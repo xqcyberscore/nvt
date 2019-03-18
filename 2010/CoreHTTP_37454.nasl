@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: CoreHTTP_37454.nasl 8438 2018-01-16 17:38:23Z teissa $
+# $Id: CoreHTTP_37454.nasl 14233 2019-03-16 13:32:43Z mmartin $
 #
 # CoreHTTP CGI Support Remote Command Execution Vulnerability
 #
@@ -24,39 +24,42 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "CoreHTTP is prone to a remote command-execution vulnerability because
+
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.100418");
+  script_version("$Revision: 14233 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-16 14:32:43 +0100 (Sat, 16 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2010-01-04 18:09:12 +0100 (Mon, 04 Jan 2010)");
+  script_bugtraq_id(37454);
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_name("CoreHTTP CGI Support Remote Command Execution Vulnerability");
+
+
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_category(ACT_GATHER_INFO);
+  script_family("Web Servers");
+  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
+  script_dependencies("gb_get_http_banner.nasl");
+  script_mandatory_keys("corehttp/banner");
+  script_require_ports("Services/www", 5555);
+  script_tag(name:"summary", value:"CoreHTTP is prone to a remote command-execution vulnerability because
 the software fails to adequately sanitize user-supplied input.
 
 Successful attacks can compromise the affected software and possibly
 the computer.
 
-CoreHTTP 0.5.3.1 is vulnerable; other versions may also be affected.";
-
-
-if (description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.100418");
- script_version("$Revision: 8438 $");
- script_tag(name:"last_modification", value:"$Date: 2018-01-16 18:38:23 +0100 (Tue, 16 Jan 2018) $");
- script_tag(name:"creation_date", value:"2010-01-04 18:09:12 +0100 (Mon, 04 Jan 2010)");
- script_bugtraq_id(37454);
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_name("CoreHTTP CGI Support Remote Command Execution Vulnerability");
-
-
- script_tag(name:"qod_type", value:"remote_banner");
- script_category(ACT_GATHER_INFO);
- script_family("Web Servers");
- script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("gb_get_http_banner.nasl");
- script_mandatory_keys("corehttp/banner");
- script_require_ports("Services/www", 5555);
- script_tag(name : "summary" , value : tag_summary);
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/37454");
- script_xref(name : "URL" , value : "http://corehttp.sourceforge.net/");
- script_xref(name : "URL" , value : "http://aconole.brad-x.com/advisories/corehttp.txt");
- exit(0);
+CoreHTTP 0.5.3.1 is vulnerable. Other versions may also be affected.");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/37454");
+  script_xref(name:"URL", value:"http://corehttp.sourceforge.net/");
+  script_xref(name:"URL", value:"http://aconole.brad-x.com/advisories/corehttp.txt");
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
+  since the disclosure of this vulnerability. Likely none will be provided anymore.
+  General solution options are to upgrade to a newer release, disable respective features,
+  remove the product or replace the product by another one.");
+  exit(0);
 }
 
 include("http_func.inc");

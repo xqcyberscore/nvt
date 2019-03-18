@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2011-November/018143.html");
   script_oid("1.3.6.1.4.1.25623.1.0.881029");
-  script_version("$Revision: 14056 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:00:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("$Revision: 14222 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 13:50:48 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-11-03 12:22:48 +0100 (Thu, 03 Nov 2011)");
   script_xref(name:"CESA", value:"2011:1422");
   script_cve_id("CVE-2011-4073");
@@ -36,7 +36,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
   script_name("CentOS Update for openswan CESA-2011:1422 centos5 i386");
 
-  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for openswan");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'openswan'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

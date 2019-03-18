@@ -21,17 +21,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875497");
-  script_version("$Revision: 14091 $");
+  script_version("$Revision: 14223 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-11 10:24:52 +0100 (Mon, 11 Mar 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-03-07 04:16:17 +0100 (Thu, 07 Mar 2019)");
   script_name("Fedora Update for drupal7-link FEDORA-2019-ff4e1a73a5");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC28");
 
   script_xref(name:"FEDORA", value:"2019-ff4e1a73a5");
   script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/JPMJB6AYY4RFYFCL7NHJVAG6F4DJNCUA");
@@ -41,18 +41,6 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is
   present on the target host.");
-
-  script_tag(name:"insight", value:"The link module can be count to the top 50
-  modules in Drupal installations and provides a standard custom content field
-  for links. With this module links can be added easily to any content types
-  and profiles and include advanced validating and different ways of storing
-  internal or external links and URLs. It also supports additional link text
-  title, site wide tokens for titles and title attributes, target attributes,
-  CSS class attribution, static repeating values, input conversion, and many more.
-
-This package provides the following Drupal module:
-* link
-");
 
   script_tag(name:"affected", value:"drupal7-link on Fedora 28.");
 
@@ -68,7 +56,8 @@ include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
 release = rpm_get_ssh_release();
-if(!release) exit(0);
+if(!release)
+  exit(0);
 
 res = "";
 

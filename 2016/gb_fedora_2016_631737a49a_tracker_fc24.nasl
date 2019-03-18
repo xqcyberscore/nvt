@@ -26,53 +26,38 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807386");
-  script_version("$Revision: 6631 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:36:10 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-12-30 06:02:27 +0100 (Fri, 30 Dec 2016)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for tracker FEDORA-2016-631737a49a");
-  script_tag(name: "summary", value: "Check the version of tracker");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-  of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "Tracker is a powerful desktop-neutral
-  first class object database, tag/metadata database, search tool and indexer.
-
-It consists of a common object database that allows entities to have an
-almost infinite number of properties, metadata (both embedded/harvested as
-well as user definable), a comprehensive database of keywords/tags and
-links to other entities.
-
-It provides additional features for file based objects including context
-linking and audit trails for a file object.
-
-It has the ability to index, store, harvest metadata. retrieve and search
-all types of files and other first class objects
-");
-  script_tag(name: "affected", value: "tracker on Fedora 24");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-
-  script_xref(name: "FEDORA", value: "2016-631737a49a");
-  script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/XCQYGKYYWYCSLO64PIBO3CT5SFL74T2R");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'tracker'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"affected", value:"tracker on Fedora 24");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
+  script_xref(name:"FEDORA", value:"2016-631737a49a");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/XCQYGKYYWYCSLO64PIBO3CT5SFL74T2R");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC24");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC24")
 {
@@ -83,6 +68,6 @@ if(release == "FC24")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

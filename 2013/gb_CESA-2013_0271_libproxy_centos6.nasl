@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.881603");
-  script_version("$Revision: 14095 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-11 14:54:56 +0100 (Mon, 11 Mar 2019) $");
+  script_version("$Revision: 14222 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 13:50:48 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-02-22 10:04:19 +0530 (Fri, 22 Feb 2013)");
   script_cve_id("CVE-2013-0775", "CVE-2013-0776", "CVE-2013-0780", "CVE-2013-0782", "CVE-2013-0783");
   script_tag(name:"cvss_base", value:"10.0");
@@ -39,7 +39,8 @@ if(description)
   script_xref(name:"URL", value:"https://access.redhat.com/knowledge/solutions/294303");
   script_xref(name:"URL", value:"https://access.redhat.com/knowledge/articles/11258");
 
-  script_tag(name:"summary", value:"The remote host is missing an update as announced in the referenced advisory for libproxy");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'libproxy'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

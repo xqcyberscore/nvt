@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openengine_lfi_12_10.nasl 8187 2017-12-20 07:30:09Z teissa $
+# $Id: gb_openengine_lfi_12_10.nasl 14233 2019-03-16 13:32:43Z mmartin $
 #
 # openEngine Local File Include Vulnerability
 #
@@ -24,7 +24,29 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "openEngine is prone to a local file-include vulnerability and a cross-site
+
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.100880");
+  script_version("$Revision: 14233 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-16 14:32:43 +0100 (Sat, 16 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2010-10-29 12:58:08 +0200 (Fri, 29 Oct 2010)");
+  script_bugtraq_id(44888);
+  script_tag(name:"cvss_base", value:"5.1");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
+
+  script_name("openEngine Local File Include Vulnerability");
+
+  script_xref(name:"URL", value:"http://www.openengine.de");
+
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
+  script_dependencies("gb_openengine_detect.nasl", "os_detection.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"summary", value:"openEngine is prone to a local file-include vulnerability and a cross-site
 scripting vulnerability because it fails to properly sanitize user-supplied
 input.
 
@@ -37,32 +59,14 @@ script code in the browser of an unsuspecting user in the context of the
 affected site. This may let the attacker steal cookie-based authentication
 credentials and launch other attacks.
 
-openEngine 2.0 100226 is vulnerable; other versions may also be affected.";
+openEngine 2.0 100226 is vulnerable. Other versions may also be affected.");
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
+  since the disclosure of this vulnerability. Likely none will be provided anymore.
+  General solution options are to upgrade to a newer release, disable respective features,
+  remove the product or replace the product by another one.");
 
-
-if (description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.100880");
- script_version("$Revision: 8187 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-20 08:30:09 +0100 (Wed, 20 Dec 2017) $");
- script_tag(name:"creation_date", value:"2010-10-29 12:58:08 +0200 (Fri, 29 Oct 2010)");
- script_bugtraq_id(44888);
- script_tag(name:"cvss_base", value:"5.1");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
-
- script_name("openEngine Local File Include Vulnerability");
-
- script_xref(name : "URL" , value : "http://www.openengine.de");
-
- script_tag(name:"qod_type", value:"remote_vul");
- script_category(ACT_ATTACK);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("gb_openengine_detect.nasl", "os_detection.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  exit(0);
 }
 
 include("misc_func.inc");
@@ -70,7 +74,7 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 include("version_func.inc");
-   
+
 port = get_http_port(default:80);
 if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
@@ -80,10 +84,10 @@ files = traversal_files();
 
 foreach file (keys(files)) {
 
-  url = string(dir,"/cms/website.php?template=",crap(data:"../",length:3*9),files[file],"%00"); 
+  url = string(dir,"/cms/website.php?template=",crap(data:"../",length:3*9),files[file],"%00");
 
   if(http_vuln_check(port:port, url:url, pattern:file)) {
-     
+
     security_message(port:port);
     exit(0);
 

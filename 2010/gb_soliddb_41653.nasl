@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_soliddb_41653.nasl 8457 2018-01-18 07:58:32Z teissa $
+# $Id: gb_soliddb_41653.nasl 14233 2019-03-16 13:32:43Z mmartin $
 #
 # IBM SolidDB 'solid.exe' Handshake Remote Code Execution Vulnerability
 #
@@ -24,45 +24,42 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "IBM SolidDB is prone to a remote code-execution vulnerability.
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.100722");
+  script_version("$Revision: 14233 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-16 14:32:43 +0100 (Sat, 16 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2010-07-21 19:56:46 +0200 (Wed, 21 Jul 2010)");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_cve_id("CVE-2010-2771");
+  script_bugtraq_id(41653);
+
+  script_name("IBM SolidDB 'solid.exe' Handshake Remote Code Execution Vulnerability");
+
+  script_xref(name:"URL", value:"https://www.securityfocus.com/bid/41653");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg21439148");
+  script_xref(name:"URL", value:"http://www.solidtech.com/en/products/relationaldatabasemanagementsoftware/embed.asp");
+  script_xref(name:"URL", value:"http://www.zerodayinitiative.com/advisories/ZDI-10-125/");
+
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_category(ACT_GATHER_INFO);
+  script_family("Databases");
+  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
+  script_dependencies("gb_ibm_soliddb_detect.nasl");
+  script_require_ports("Services/soliddb", 1315);
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution", value:"The vendor released updates to address this issue. Please see the
+references for more information.");
+  script_tag(name:"summary", value:"IBM SolidDB is prone to a remote code-execution vulnerability.
 
 An attacker can exploit this issue to execute arbitrary code with
 SYSTEM user privileges. Failed exploit attempts will result in a denial-of-
 service condition.
 
 The vulnerability is reported in version 6.5 FP1 (6.5.0.1). Prior
-versions may also be affected.";
-
-tag_solution = "The vendor released updates to address this issue. Please see the
-references for more information.";
-
-if (description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.100722");
- script_version("$Revision: 8457 $");
- script_tag(name:"last_modification", value:"$Date: 2018-01-18 08:58:32 +0100 (Thu, 18 Jan 2018) $");
- script_tag(name:"creation_date", value:"2010-07-21 19:56:46 +0200 (Wed, 21 Jul 2010)");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_cve_id("CVE-2010-2771");
- script_bugtraq_id(41653);
-
- script_name("IBM SolidDB 'solid.exe' Handshake Remote Code Execution Vulnerability");
-
- script_xref(name : "URL" , value : "https://www.securityfocus.com/bid/41653");
- script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21439148");
- script_xref(name : "URL" , value : "http://www.solidtech.com/en/products/relationaldatabasemanagementsoftware/embed.asp");
- script_xref(name : "URL" , value : "http://www.zerodayinitiative.com/advisories/ZDI-10-125/");
-
- script_tag(name:"qod_type", value:"remote_banner");
- script_category(ACT_GATHER_INFO);
- script_family("Databases");
- script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("gb_ibm_soliddb_detect.nasl");
- script_require_ports("Services/soliddb", 1315);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+versions may also be affected.");
+  exit(0);
 }
 
 include("version_func.inc");
@@ -79,9 +76,9 @@ if("Build" >< v) {
   version = version[0];
 } else {
   version = v;
-}  
+}
 
 if(version_is_equal(version:version, test_version:"6.5.0.1")) {
   security_message(port:port);
   exit(0);
-}  
+}

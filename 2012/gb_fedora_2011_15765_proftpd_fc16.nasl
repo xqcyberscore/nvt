@@ -23,57 +23,41 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "ProFTPD is an enhanced FTP server with a focus toward simplicity, security,
-  and ease of configuration. It features a very Apache-like configuration
-  syntax, and a highly customizable server infrastructure, including support for
-  multiple 'virtual' FTP servers, anonymous FTP, and permission-based directory
-  visibility.
-
-  This package defaults to the standalone behavior of ProFTPD, but all the
-  needed scripts to have it run by xinetd instead are included.";
-
-tag_affected = "proftpd on Fedora 16";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
 if(description)
 {
-  script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2011-November/069449.html");
+  script_xref(name:"URL", value:"http://lists.fedoraproject.org/pipermail/package-announce/2011-November/069449.html");
   script_oid("1.3.6.1.4.1.25623.1.0.863897");
-  script_version("$Revision: 9352 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-04-02 12:30:38 +0530 (Mon, 02 Apr 2012)");
   script_cve_id("CVE-2011-4130");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_xref(name: "FEDORA", value: "2011-15765");
+  script_xref(name:"FEDORA", value:"2011-15765");
   script_name("Fedora Update for proftpd FEDORA-2011-15765");
-
-  script_tag(name: "summary" , value: "Check for the Version of proftpd");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'proftpd'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC16");
+  script_tag(name:"affected", value:"proftpd on Fedora 16");
+  script_tag(name:"solution", value:"Please install the updated package(s).");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC16")
 {
@@ -84,6 +68,6 @@ if(release == "FC16")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

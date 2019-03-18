@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_35d435f362_libtiff_fc28.nasl 10262 2018-06-20 02:57:24Z ckuersteiner $
+# $Id: gb_fedora_2018_35d435f362_libtiff_fc28.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for libtiff FEDORA-2018-35d435f362
 #
@@ -27,49 +27,42 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874685");
-  script_version("$Revision: 10262 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-20 04:57:24 +0200 (Wed, 20 Jun 2018) $");
+  script_version("$Revision: 14223 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-06-16 06:02:02 +0200 (Sat, 16 Jun 2018)");
-  script_cve_id("CVE-2017-11613", "CVE-2017-9935", "CVE-2017-18013", "CVE-2018-8905", 
+  script_cve_id("CVE-2017-11613", "CVE-2017-9935", "CVE-2017-18013", "CVE-2018-8905",
                 "CVE-2018-10963", "CVE-2018-7456");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for libtiff FEDORA-2018-35d435f362");
-  script_tag(name:"summary", value:"Check the version of libtiff");
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present 
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'libtiff'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
-  script_tag(name:"insight", value:"The libtiff package contains a library of 
-functions for manipulating TIFF (Tagged Image File Format) image format files.  
-TIFF is a widely used file format for bitmapped images.  TIFF files usually end 
-in the .tif extension and they are often quite large.
-
-The libtiff package should be installed if you need to manipulate TIFF
-format image files.
-");
   script_tag(name:"affected", value:"libtiff on Fedora 28");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"FEDORA", value:"2018-35d435f362");
-  script_xref(name:"URL" , value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/IZBELT74XEGJ573EWJE6SWITWEQGFK4B");
+  script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/IZBELT74XEGJ573EWJE6SWITWEQGFK4B");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms", re:"ssh/login/release=FC28");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release)
+  exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "FC28")
 {
