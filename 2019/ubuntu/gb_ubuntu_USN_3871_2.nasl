@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3871_2.nasl 13517 2019-02-07 07:51:12Z mmartin $
+# $Id: gb_ubuntu_USN_3871_2.nasl 14288 2019-03-18 16:34:17Z cfischer $
 #
 # Ubuntu Update for linux USN-3871-2
 #
@@ -29,14 +29,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843897");
-  script_version("$Revision: 13517 $");
+  script_version("$Revision: 14288 $");
   script_cve_id("CVE-2018-10876", "CVE-2018-10879", "CVE-2018-10877", "CVE-2018-10878",
                 "CVE-2018-10882", "CVE-2018-10880", "CVE-2018-10883", "CVE-2018-14625",
                 "CVE-2018-16882", "CVE-2018-17972", "CVE-2018-18281", "CVE-2018-19407",
                 "CVE-2018-9516");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-07 08:51:12 +0100 (Thu, 07 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 17:34:17 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-02-05 04:04:54 +0100 (Tue, 05 Feb 2019)");
   script_name("Ubuntu Update for linux USN-3871-2");
   script_category(ACT_GATHER_INFO);
@@ -130,49 +130,49 @@ res = "";
 if(release == "UBUNTU18.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"linux-image-4.15.0-45-generic", ver:"4.15.0-45.48", rls:"UBUNTU18.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"linux-image-4.15.0-45-generic", ver:"4.15.0-45.48", rls:"UBUNTU18.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"linux-image-4.15.0-45-generic-lpae", ver:"4.15.0-45.48", rls:"UBUNTU18.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"linux-image-4.15.0-45-generic-lpae", ver:"4.15.0-45.48", rls:"UBUNTU18.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"linux-image-4.15.0-45-lowlatency", ver:"4.15.0-45.48", rls:"UBUNTU18.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"linux-image-4.15.0-45-lowlatency", ver:"4.15.0-45.48", rls:"UBUNTU18.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"linux-image-4.15.0-45-snapdragon", ver:"4.15.0-45.48", rls:"UBUNTU18.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"linux-image-4.15.0-45-snapdragon", ver:"4.15.0-45.48", rls:"UBUNTU18.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"linux-image-generic", ver:"4.15.0.45.47", rls:"UBUNTU18.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"linux-image-generic", ver:"4.15.0.45.47", rls:"UBUNTU18.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"linux-image-generic-lpae", ver:"4.15.0.45.47", rls:"UBUNTU18.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"linux-image-generic-lpae", ver:"4.15.0.45.47", rls:"UBUNTU18.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"linux-image-lowlatency", ver:"4.15.0.45.47", rls:"UBUNTU18.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"linux-image-lowlatency", ver:"4.15.0.45.47", rls:"UBUNTU18.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"linux-image-snapdragon", ver:"4.15.0.45.47", rls:"UBUNTU18.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"linux-image-snapdragon", ver:"4.15.0.45.47", rls:"UBUNTU18.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);

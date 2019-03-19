@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3130.nasl 9355 2018-04-06 07:16:07Z cfischer $
+# $Id: deb_3130.nasl 14278 2019-03-18 14:47:26Z cfischer $
 # Auto-generated from advisory DSA 3130-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -26,38 +26,27 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-
 if(description)
 {
-    script_oid("1.3.6.1.4.1.25623.1.0.703130");
-    script_version("$Revision: 9355 $");
-    script_cve_id("CVE-2014-8990");
-    script_name("Debian Security Advisory DSA 3130-1 (lsyncd - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2018-04-06 09:16:07 +0200 (Fri, 06 Apr 2018) $");
-    script_tag(name: "creation_date", value: "2015-01-16 00:00:00 +0100 (Fri, 16 Jan 2015)");
-    script_tag(name:"cvss_base", value:"7.5");
-    script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-    script_tag(name: "solution_type", value: "VendorFix");
+  script_oid("1.3.6.1.4.1.25623.1.0.703130");
+  script_version("$Revision: 14278 $");
+  script_cve_id("CVE-2014-8990");
+  script_name("Debian Security Advisory DSA 3130-1 (lsyncd - security update)");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:47:26 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2015-01-16 00:00:00 +0100 (Fri, 16 Jan 2015)");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"solution_type", value:"VendorFix");
 
-    script_xref(name: "URL", value: "http://www.debian.org/security/2015/dsa-3130.html");
+  script_xref(name:"URL", value:"http://www.debian.org/security/2015/dsa-3130.html");
 
-
-    script_category(ACT_GATHER_INFO);
-
-    script_copyright("Copyright (c) 2015 Greenbone Networks GmbH http://greenbone.net");
-    script_family("Debian Local Security Checks");
-    script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
-    script_tag(name: "affected",  value: "lsyncd on Debian Linux");
-    script_tag(name: "insight",   value: "Lsyncd (Live syncing mirror daemon)
-uses rsync to synchronize local directories with a remote machine running rsyncd.
-Lsyncd watches multiple directories trees through inotify. The first step after
-adding the watches is to rsync all directories with the remote host,
-and then sync single file by collecting the inotify events. So lsyncd
-is a light-weight live mirror solution that should be easy to install
-and use while blending
-well with your system.");
-    script_tag(name: "solution",  value: "For the stable distribution (wheezy),
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2015 Greenbone Networks GmbH http://greenbone.net");
+  script_family("Debian Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB7");
+  script_tag(name:"affected", value:"lsyncd on Debian Linux");
+  script_tag(name:"solution", value:"For the stable distribution (wheezy),
 this problem has been fixed in version 2.0.7-3+deb7u1.
 
 For the upcoming stable distribution (jessie), this problem has been
@@ -67,13 +56,14 @@ For the unstable distribution (sid), this problem has been fixed in
 version 2.1.5-2.
 
 We recommend that you upgrade your lsyncd packages.");
-    script_tag(name: "summary",   value: "It was discovered that lsyncd,
+  script_tag(name:"summary", value:"It was discovered that lsyncd,
 a daemon to synchronize local directories using rsync, performed insufficient
 sanitising of filenames which might result in the execution of arbitrary
 commands.");
-    script_tag(name: "vuldetect", value: "This check tests the installed software version using the apt package manager.");
-    script_tag(name:"qod_type", value:"package");
-    exit(0);
+  script_tag(name:"vuldetect", value:"This check tests the installed software version using the apt package manager.");
+  script_tag(name:"qod_type", value:"package");
+
+  exit(0);
 }
 
 include("revisions-lib.inc");
@@ -81,12 +71,12 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"lsyncd", ver:"2.0.7-3+deb7u1", rls_regex:"DEB7.[0-9]")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"lsyncd", ver:"2.0.7-3+deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
-    security_message(data:report);
+if(report != "") {
+  security_message(data:report);
 } else if (__pkg_match) {
-    exit(99); # Not vulnerable.
+  exit(99);
 }

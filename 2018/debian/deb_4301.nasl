@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4301.nasl 12590 2018-11-30 07:32:04Z asteins $
+# $Id: deb_4301.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DSA 4301-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704301");
-  script_version("$Revision: 12590 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2018-0503", "CVE-2018-0504", "CVE-2018-0505");
   script_name("Debian Security Advisory DSA 4301-1 (mediawiki - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-30 08:32:04 +0100 (Fri, 30 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-09-22 00:00:00 +0200 (Sat, 22 Sep 2018)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
@@ -48,22 +48,18 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB9\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB9");
   script_tag(name:"affected", value:"mediawiki on Debian Linux");
-  script_tag(name:"insight", value:"MediaWiki is a wiki engine (a program for creating a collaboratively
-edited website). It is designed to handle heavy websites containing
-library-like document collections, and supports user uploads of
-images/sounds, multilingual content, TOC autogeneration, ISBN links,
-etc.");
   script_tag(name:"solution", value:"For the stable distribution (stretch), these problems have been fixed in
 version 1:1.27.5-1~deb9u1.
 
 We recommend that you upgrade your mediawiki packages.
 
 For the detailed security status of mediawiki please refer to
-its security tracker page at:
-https://security-tracker.debian.org/tracker/mediawiki");
-  script_tag(name:"summary",  value:"Multiple security vulnerabilities have been discovered in MediaWiki, a
+its security tracker page linked in the references.");
+
+  script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/mediawiki");
+  script_tag(name:"summary", value:"Multiple security vulnerabilities have been discovered in MediaWiki, a
 website engine for collaborative work, which result in incorrectly
 configured rate limits, information disclosure in Special:Redirect/logid
 and bypass of an account lock.");
@@ -77,15 +73,15 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"mediawiki", ver:"1:1.27.5-1~deb9u1", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"mediawiki", ver:"1:1.27.5-1~deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"mediawiki-classes", ver:"1:1.27.5-1~deb9u1", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"mediawiki-classes", ver:"1:1.27.5-1~deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
+} else if(__pkg_match) {
   exit(99);
 }

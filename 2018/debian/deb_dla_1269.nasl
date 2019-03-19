@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1269.nasl 10474 2018-07-10 08:12:26Z cfischer $
+# $Id: deb_dla_1269.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DLA 1269-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891269");
-  script_version("$Revision: 10474 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2017-18123");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1269-1] dokuwiki security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-10 10:12:26 +0200 (Tue, 10 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-02-21 00:00:00 +0100 (Wed, 21 Feb 2018)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -48,18 +48,13 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB7\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB7");
   script_tag(name:"affected", value:"dokuwiki on Debian Linux");
-  script_tag(name:"insight", value:"DokuWiki is a wiki mainly aimed at creating documentation of any kind.
-It is targeted at developer teams, workgroups and small companies. It
-has a simple but powerful syntax which makes sure the datafiles remain
-readable outside the wiki and eases the creation of structured texts.
-All data is stored in plain text files -- no database is required.");
   script_tag(name:"solution", value:"For Debian 7 'Wheezy', this issue has been fixed in dokuwiki version
 0.0.20120125b-2+deb7u2.
 
 We recommend that you upgrade your dokuwiki packages.");
-  script_tag(name:"summary",  value:"It was discovered that an XHR/AJAX call did not properly encode user
+  script_tag(name:"summary", value:"It was discovered that an XHR/AJAX call did not properly encode user
 input in the 'dokuwiki' wiki platform. This resulted in a reflected file
 download vulnerability.");
   script_tag(name:"vuldetect", value:"This check tests the installed software version using the apt package manager.");
@@ -72,12 +67,12 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"dokuwiki", ver:"0.0.20120125b-2+deb7u2", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"dokuwiki", ver:"0.0.20120125b-2+deb7u2", rls:"DEB7")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
+} else if(__pkg_match) {
   exit(99);
 }

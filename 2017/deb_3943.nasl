@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_3943.nasl 6961 2017-08-18 09:07:02Z cfischer $
+# $Id: deb_3943.nasl 14280 2019-03-18 14:50:45Z cfischer $
 #
 # Auto-generated from advisory DSA 3943-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.703943");
-  script_version("$Revision: 6961 $");
+  script_version("$Revision: 14280 $");
   script_cve_id("CVE-2016-10376");
   script_name("Debian Security Advisory DSA 3943-1 (gajim - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-18 11:07:02 +0200 (Fri, 18 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:50:45 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-08-14 00:00:00 +0200 (Mon, 14 Aug 2017)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:N/A:N");
@@ -48,11 +48,8 @@ if(description)
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8");
   script_tag(name:"affected", value:"gajim on Debian Linux");
-  script_tag(name:"insight", value:"Gajim is a Jabber client. It has a tabbed user interface with normal chats,
-group chats, and has many features such as, TLS, GPG, SSL, multiple accounts,
-avatars, file transfers, audio/video call, D-Bus and Metacontacts.");
   script_tag(name:"solution", value:"For the oldstable distribution (jessie), this problem has been fixed
 in version 0.16-1+deb8u2.
 
@@ -60,11 +57,11 @@ For the stable distribution (stretch), this problem has been fixed prior
 to the initial release.
 
 We recommend that you upgrade your gajim packages.");
-  script_tag(name:"summary",  value:"Gajim, a GTK+-based XMPP/Jabber client, unconditionally implements the
+  script_tag(name:"summary", value:"Gajim, a GTK+-based XMPP/Jabber client, unconditionally implements the
 'XEP-0146: Remote Controlling Clients' extension, allowing a malicious
 XMPP server to trigger commands to leak private conversations from
 encrypted sessions. With this update XEP-0146 support has been disabled
-by default and made opt-in via the remote_commands 
+by default and made opt-in via the remote_commands
 option.");
   script_tag(name:"vuldetect", value:"This check tests the installed software version using the apt package manager.");
 
@@ -76,12 +73,12 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"gajim", ver:"0.16-1+deb8u2", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"gajim", ver:"0.16-1+deb8u2", rls:"DEB8")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
-  exit(99); # Not vulnerable.
+} else if(__pkg_match) {
+  exit(99);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4147.nasl 9180 2018-03-22 15:38:54Z cfischer $
+# $Id: deb_4147.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DSA 4147-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704147");
-  script_version("$Revision: 9180 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2017-18187", "CVE-2018-0487", "CVE-2018-0488");
   script_name("Debian Security Advisory DSA 4147-1 (polarssl - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-22 16:38:54 +0100 (Thu, 22 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-03-21 00:00:00 +0100 (Wed, 21 Mar 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -48,19 +48,18 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8");
   script_tag(name:"affected", value:"polarssl on Debian Linux");
-  script_tag(name:"insight", value:"PolarSSL is a fork of the abandoned project XySSL. It is a lean crypto
-library providing SSL and TLS support in your programs.");
   script_tag(name:"solution", value:"For the oldstable distribution (jessie), these problems have been fixed
 in version 1.3.9-2.1+deb8u3.
 
 We recommend that you upgrade your polarssl packages.
 
 For the detailed security status of polarssl please refer to
-its security tracker page at:
-https://security-tracker.debian.org/tracker/polarssl");
-  script_tag(name:"summary",  value:"Several vulnerabilities were discovered in PolarSSL, a lightweight
+its security tracker page linked in the references.");
+
+  script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/polarssl");
+  script_tag(name:"summary", value:"Several vulnerabilities were discovered in PolarSSL, a lightweight
 crypto and SSL/TLS library, that allowed a remote attacker to either
 cause a denial-of-service by application crash, or execute arbitrary
 code.");
@@ -74,18 +73,18 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"libpolarssl-dev", ver:"1.3.9-2.1+deb8u3", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libpolarssl-dev", ver:"1.3.9-2.1+deb8u3", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libpolarssl-runtime", ver:"1.3.9-2.1+deb8u3", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libpolarssl-runtime", ver:"1.3.9-2.1+deb8u3", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libpolarssl7", ver:"1.3.9-2.1+deb8u3", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libpolarssl7", ver:"1.3.9-2.1+deb8u3", rls:"DEB8")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
-  exit(99); # Not vulnerable.
+} else if(__pkg_match) {
+  exit(99);
 }

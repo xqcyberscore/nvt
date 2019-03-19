@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_950.nasl 10474 2018-07-10 08:12:26Z cfischer $
+# $Id: deb_dla_950.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DLA 950-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.890950");
-  script_version("$Revision: 10474 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2017-6891");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 950-1] libtasn1-3 security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-10 10:12:26 +0200 (Tue, 10 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-01-25 00:00:00 +0100 (Thu, 25 Jan 2018)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -48,22 +48,13 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB7\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB7");
   script_tag(name:"affected", value:"libtasn1-3 on Debian Linux");
-  script_tag(name:"insight", value:"Manage ASN1 (Abstract Syntax Notation One) structures.
-The main features of this library are:
-
-* on-line ASN1 structure management that doesn't require any C code
-file generation.
-* off-line ASN1 structure management with C code file generation
-containing an array.
-* DER (Distinguish Encoding Rules) encoding
-* no limits for INTEGER and ENUMERATED values");
   script_tag(name:"solution", value:"For Debian 7 'Wheezy', this problem has been fixed in version
 2.13-2+deb7u4.
 
 We recommend that you upgrade your libtasn1-3 packages.");
-  script_tag(name:"summary",  value:"Secunia Research has discovered multiple vulnerabilities in GnuTLS
+  script_tag(name:"summary", value:"Secunia Research has discovered multiple vulnerabilities in GnuTLS
 libtasn1, which can be exploited by malicious people to compromise
 a vulnerable system.
 
@@ -83,21 +74,21 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"libtasn1-3", ver:"2.13-2+deb7u4", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libtasn1-3", ver:"2.13-2+deb7u4", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libtasn1-3-bin", ver:"2.13-2+deb7u4", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libtasn1-3-bin", ver:"2.13-2+deb7u4", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libtasn1-3-dbg", ver:"2.13-2+deb7u4", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libtasn1-3-dbg", ver:"2.13-2+deb7u4", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libtasn1-3-dev", ver:"2.13-2+deb7u4", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libtasn1-3-dev", ver:"2.13-2+deb7u4", rls:"DEB7")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
+} else if(__pkg_match) {
   exit(99);
 }

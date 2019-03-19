@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3668_1.nasl 14140 2019-03-13 12:26:09Z cfischer $
+# $Id: gb_ubuntu_USN_3668_1.nasl 14288 2019-03-18 16:34:17Z cfischer $
 #
 # Ubuntu Update for exempi USN-3668-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843542");
-  script_version("$Revision: 14140 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-13 13:26:09 +0100 (Wed, 13 Mar 2019) $");
+  script_version("$Revision: 14288 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 17:34:17 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-06-05 12:55:29 +0200 (Tue, 05 Jun 2018)");
   script_cve_id("CVE-2017-18233", "CVE-2017-18234", "CVE-2017-18236", "CVE-2017-18238",
                 "CVE-2018-7728", "CVE-2018-7729", "CVE-2018-7730", "CVE-2018-7731");
@@ -73,13 +73,13 @@ res = "";
 if(release == "UBUNTU14.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"exempi", ver:"2.2.1-1ubuntu1.1", rls:"UBUNTU14.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"exempi", ver:"2.2.1-1ubuntu1.1", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libexempi3", ver:"2.2.1-1ubuntu1.1", rls:"UBUNTU14.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libexempi3", ver:"2.2.1-1ubuntu1.1", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -93,13 +93,13 @@ if(release == "UBUNTU14.04 LTS")
 if(release == "UBUNTU17.10")
 {
 
-  if ((res = isdpkgvuln(pkg:"exempi", ver:"2.4.3-1ubuntu1.1", rls:"UBUNTU17.10", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"exempi", ver:"2.4.3-1ubuntu1.1", rls:"UBUNTU17.10")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libexempi3", ver:"2.4.3-1ubuntu1.1", rls:"UBUNTU17.10", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libexempi3", ver:"2.4.3-1ubuntu1.1", rls:"UBUNTU17.10")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -113,13 +113,13 @@ if(release == "UBUNTU17.10")
 if(release == "UBUNTU16.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"exempi", ver:"2.2.2-2ubuntu0.1", rls:"UBUNTU16.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"exempi", ver:"2.2.2-2ubuntu0.1", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libexempi3", ver:"2.2.2-2ubuntu0.1", rls:"UBUNTU16.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libexempi3", ver:"2.2.2-2ubuntu0.1", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);

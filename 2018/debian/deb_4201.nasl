@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4201.nasl 10307 2018-06-25 05:05:34Z asteins $
+# $Id: deb_4201.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DSA 4201-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704201");
-  script_version("$Revision: 10307 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2018-10471", "CVE-2018-10472", "CVE-2018-10981", "CVE-2018-10982", "CVE-2018-8897");
   script_name("Debian Security Advisory DSA 4201-1 (xen - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-25 07:05:34 +0200 (Mon, 25 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-05-15 00:00:00 +0200 (Tue, 15 May 2018)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
@@ -48,19 +48,18 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB9\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB9");
   script_tag(name:"affected", value:"xen on Debian Linux");
-  script_tag(name:"insight", value:"Xen is a hypervisor providing services that allow multiple computer operating
-systems to execute on the same computer hardware concurrently.");
   script_tag(name:"solution", value:"For the stable distribution (stretch), these problems have been fixed in
 version 4.8.3+xsa262+shim4.10.0+comet3-1+deb9u6.
 
 We recommend that you upgrade your xen packages.
 
 For the detailed security status of xen please refer to its
-security tracker page at:
-https://security-tracker.debian.org/tracker/xen");
-  script_tag(name:"summary",  value:"Multiple vulnerabilities have been discovered in the Xen hypervisor:
+security tracker page linked in the references.");
+
+  script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/xen");
+  script_tag(name:"summary", value:"Multiple vulnerabilities have been discovered in the Xen hypervisor:
 
 CVE-2018-8897
 Andy Lutomirski and Nick Peterson discovered that incorrect handling
@@ -93,33 +92,33 @@ include("pkg-lib-deb.inc");
 res = "";
 report = "";
 # nb: Note that the initial DSA-4201-1 is stating that "4.8.3+xsa262+shim4.10.0+comet3-1+deb9u6" is fixing this which is currently wrong.
-if ((res = isdpkgvuln(pkg:"libxen-4.8", ver:"4.8.3+xsa262+shim4.10.0+comet3-1+deb9u6", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libxen-4.8", ver:"4.8.3+xsa262+shim4.10.0+comet3-1+deb9u6", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libxen-dev", ver:"4.8.3+xsa262+shim4.10.0+comet3-1+deb9u6", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libxen-dev", ver:"4.8.3+xsa262+shim4.10.0+comet3-1+deb9u6", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libxenstore3.0", ver:"4.8.3+xsa262+shim4.10.0+comet3-1+deb9u6", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libxenstore3.0", ver:"4.8.3+xsa262+shim4.10.0+comet3-1+deb9u6", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"xen-hypervisor-4.8-amd64", ver:"4.8.3+xsa262+shim4.10.0+comet3-1+deb9u6", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"xen-hypervisor-4.8-amd64", ver:"4.8.3+xsa262+shim4.10.0+comet3-1+deb9u6", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"xen-system-amd64", ver:"4.8.3+xsa262+shim4.10.0+comet3-1+deb9u6", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"xen-system-amd64", ver:"4.8.3+xsa262+shim4.10.0+comet3-1+deb9u6", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"xen-utils-4.8", ver:"4.8.3+xsa262+shim4.10.0+comet3-1+deb9u6", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"xen-utils-4.8", ver:"4.8.3+xsa262+shim4.10.0+comet3-1+deb9u6", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"xen-utils-common", ver:"4.8.3+xsa262+shim4.10.0+comet3-1+deb9u6", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"xen-utils-common", ver:"4.8.3+xsa262+shim4.10.0+comet3-1+deb9u6", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"xenstore-utils", ver:"4.8.3+xsa262+shim4.10.0+comet3-1+deb9u6", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"xenstore-utils", ver:"4.8.3+xsa262+shim4.10.0+comet3-1+deb9u6", rls:"DEB9")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
+} else if(__pkg_match) {
   exit(99);
 }

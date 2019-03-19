@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4101.nasl 14196 2019-03-15 07:20:59Z mmartin $
+# $Id: deb_4101.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DSA 4101-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704101");
-  script_version("$Revision: 14196 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2018-5334", "CVE-2018-5335", "CVE-2018-5336");
   script_name("Debian Security Advisory DSA 4101-1 (wireshark - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-15 08:20:59 +0100 (Fri, 15 Mar 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-01-28 00:00:00 +0100 (Sun, 28 Jan 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -48,11 +48,8 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB(8|9)");
   script_tag(name:"affected", value:"wireshark on Debian Linux");
-  script_tag(name:"insight", value:"Wireshark is a network 'sniffer' - a tool that captures and analyzes
-packets off the wire. Wireshark can decode too many protocols to list
-here.");
   script_tag(name:"solution", value:"For the oldstable distribution (jessie), these problems have been fixed
 in version 1.12.1+g01b65bf-4+deb8u13.
 
@@ -62,9 +59,10 @@ version 2.2.6+g32dac6a-2+deb9u2.
 We recommend that you upgrade your wireshark packages.
 
 For the detailed security status of wireshark please refer to
-its security tracker page at:
-https://security-tracker.debian.org/tracker/wireshark");
-  script_tag(name:"summary",  value:"It was discovered that wireshark, a network protocol analyzer, contained
+its security tracker page linked in the references.");
+
+  script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/wireshark");
+  script_tag(name:"summary", value:"It was discovered that wireshark, a network protocol analyzer, contained
 several vulnerabilities in the dissectors/file parsers for IxVeriWave,
 WCP, JSON, XML, NTP, XMPP and GDB, which could result in denial of
 service or the execution of arbitrary code.");
@@ -78,96 +76,96 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"libwireshark-data", ver:"1.12.1+g01b65bf-4+deb8u13", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libwireshark-data", ver:"1.12.1+g01b65bf-4+deb8u13", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libwireshark-dev", ver:"1.12.1+g01b65bf-4+deb8u13", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libwireshark-dev", ver:"1.12.1+g01b65bf-4+deb8u13", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libwireshark5", ver:"1.12.1+g01b65bf-4+deb8u13", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libwireshark5", ver:"1.12.1+g01b65bf-4+deb8u13", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libwiretap-dev", ver:"1.12.1+g01b65bf-4+deb8u13", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libwiretap-dev", ver:"1.12.1+g01b65bf-4+deb8u13", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libwiretap4", ver:"1.12.1+g01b65bf-4+deb8u13", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libwiretap4", ver:"1.12.1+g01b65bf-4+deb8u13", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libwsutil-dev", ver:"1.12.1+g01b65bf-4+deb8u13", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libwsutil-dev", ver:"1.12.1+g01b65bf-4+deb8u13", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libwsutil4", ver:"1.12.1+g01b65bf-4+deb8u13", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libwsutil4", ver:"1.12.1+g01b65bf-4+deb8u13", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"tshark", ver:"1.12.1+g01b65bf-4+deb8u13", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"tshark", ver:"1.12.1+g01b65bf-4+deb8u13", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"wireshark", ver:"1.12.1+g01b65bf-4+deb8u13", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"wireshark", ver:"1.12.1+g01b65bf-4+deb8u13", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"wireshark-common", ver:"1.12.1+g01b65bf-4+deb8u13", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"wireshark-common", ver:"1.12.1+g01b65bf-4+deb8u13", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"wireshark-dbg", ver:"1.12.1+g01b65bf-4+deb8u13", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"wireshark-dbg", ver:"1.12.1+g01b65bf-4+deb8u13", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"wireshark-dev", ver:"1.12.1+g01b65bf-4+deb8u13", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"wireshark-dev", ver:"1.12.1+g01b65bf-4+deb8u13", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"wireshark-doc", ver:"1.12.1+g01b65bf-4+deb8u13", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"wireshark-doc", ver:"1.12.1+g01b65bf-4+deb8u13", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"wireshark-qt", ver:"1.12.1+g01b65bf-4+deb8u13", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"wireshark-qt", ver:"1.12.1+g01b65bf-4+deb8u13", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libwireshark-data", ver:"2.2.6+g32dac6a-2+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libwireshark-data", ver:"2.2.6+g32dac6a-2+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libwireshark-dev", ver:"2.2.6+g32dac6a-2+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libwireshark-dev", ver:"2.2.6+g32dac6a-2+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libwireshark8", ver:"2.2.6+g32dac6a-2+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libwireshark8", ver:"2.2.6+g32dac6a-2+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libwiretap-dev", ver:"2.2.6+g32dac6a-2+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libwiretap-dev", ver:"2.2.6+g32dac6a-2+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libwiretap6", ver:"2.2.6+g32dac6a-2+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libwiretap6", ver:"2.2.6+g32dac6a-2+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libwscodecs1", ver:"2.2.6+g32dac6a-2+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libwscodecs1", ver:"2.2.6+g32dac6a-2+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libwsutil-dev", ver:"2.2.6+g32dac6a-2+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libwsutil-dev", ver:"2.2.6+g32dac6a-2+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libwsutil7", ver:"2.2.6+g32dac6a-2+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libwsutil7", ver:"2.2.6+g32dac6a-2+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"tshark", ver:"2.2.6+g32dac6a-2+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"tshark", ver:"2.2.6+g32dac6a-2+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"wireshark", ver:"2.2.6+g32dac6a-2+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"wireshark", ver:"2.2.6+g32dac6a-2+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"wireshark-common", ver:"2.2.6+g32dac6a-2+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"wireshark-common", ver:"2.2.6+g32dac6a-2+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"wireshark-dev", ver:"2.2.6+g32dac6a-2+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"wireshark-dev", ver:"2.2.6+g32dac6a-2+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"wireshark-doc", ver:"2.2.6+g32dac6a-2+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"wireshark-doc", ver:"2.2.6+g32dac6a-2+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"wireshark-gtk", ver:"2.2.6+g32dac6a-2+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"wireshark-gtk", ver:"2.2.6+g32dac6a-2+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"wireshark-qt", ver:"2.2.6+g32dac6a-2+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"wireshark-qt", ver:"2.2.6+g32dac6a-2+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
-  exit(99); # Not vulnerable.
+} else if(__pkg_match) {
+  exit(99);
 }

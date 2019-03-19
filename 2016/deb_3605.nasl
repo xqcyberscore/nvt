@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3605.nasl 8154 2017-12-18 07:30:14Z teissa $
+# $Id: deb_3605.nasl 14279 2019-03-18 14:48:34Z cfischer $
 # Auto-generated from advisory DSA 3605-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -26,45 +26,39 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-
 if(description)
 {
-    script_oid("1.3.6.1.4.1.25623.1.0.703605");
-    script_version("$Revision: 8154 $");
-    script_cve_id("CVE-2015-7995", "CVE-2016-1683", "CVE-2016-1684");
-    script_name("Debian Security Advisory DSA 3605-1 (libxslt - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-12-18 08:30:14 +0100 (Mon, 18 Dec 2017) $");
-    script_tag(name: "creation_date", value: "2016-06-19 00:00:00 +0200 (Sun, 19 Jun 2016)");
-    script_tag(name:"cvss_base", value:"5.1");
-    script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
-    script_tag(name: "solution_type", value: "VendorFix");
-    script_tag(name: "qod_type", value: "package");
+  script_oid("1.3.6.1.4.1.25623.1.0.703605");
+  script_version("$Revision: 14279 $");
+  script_cve_id("CVE-2015-7995", "CVE-2016-1683", "CVE-2016-1684");
+  script_name("Debian Security Advisory DSA 3605-1 (libxslt - security update)");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:48:34 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2016-06-19 00:00:00 +0200 (Sun, 19 Jun 2016)");
+  script_tag(name:"cvss_base", value:"5.1");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
 
-    script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3605.html");
+  script_xref(name:"URL", value:"http://www.debian.org/security/2016/dsa-3605.html");
 
-
-    script_category(ACT_GATHER_INFO);
-
-    script_copyright("Copyright (c) 2016 Greenbone Networks GmbH http://greenbone.net");
-    script_family("Debian Local Security Checks");
-    script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
-    script_tag(name: "affected",  value: "libxslt on Debian Linux");
-    script_tag(name: "insight",   value: "XSLT is an XML language for defining
-transformations of XML files from XML to some other arbitrary format, such as
-XML, HTML, plain text, etc. using standard XSLT stylesheets. libxslt is a C
-library which implements XSLT version 1.0.");
-    script_tag(name: "solution",  value: "For the stable distribution (jessie),
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2016 Greenbone Networks GmbH http://greenbone.net");
+  script_family("Debian Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8");
+  script_tag(name:"affected", value:"libxslt on Debian Linux");
+  script_tag(name:"solution", value:"For the stable distribution (jessie),
 these problems have been fixed in version 1.1.28-2+deb8u1.
 
 We recommend that you upgrade your libxslt packages.");
-    script_tag(name: "summary",   value: "Several vulnerabilities were discovered
+  script_tag(name:"summary", value:"Several vulnerabilities were discovered
 in libxslt, an XSLT processing runtime library, which could lead to information
 disclosure or denial-of-service (application crash) against an application
 using the libxslt library.");
-    script_tag(name: "vuldetect", value: "This check tests the installed software
+  script_tag(name:"vuldetect", value:"This check tests the installed software
 version using the apt package manager.");
-    exit(0);
+
+  exit(0);
 }
 
 include("revisions-lib.inc");
@@ -72,39 +66,39 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"libxslt1-dbg:amd64", ver:"1.1.28-2+deb8u1", rls_regex:"DEB8.[0-9]+")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libxslt1-dbg:amd64", ver:"1.1.28-2+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libxslt1-dbg:i386", ver:"1.1.28-2+deb8u1", rls_regex:"DEB8.[0-9]+")) != NULL) {
-    report += res;
-}
-
-if ((res = isdpkgvuln(pkg:"libxslt1-dev:amd64", ver:"1.1.28-2+deb8u1", rls_regex:"DEB8.[0-9]+")) != NULL) {
-    report += res;
-}
-if ((res = isdpkgvuln(pkg:"libxslt1-dev:i386", ver:"1.1.28-2+deb8u1", rls_regex:"DEB8.[0-9]+")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libxslt1-dbg:i386", ver:"1.1.28-2+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
 
-if ((res = isdpkgvuln(pkg:"libxslt1.1:amd64", ver:"1.1.28-2+deb8u1", rls_regex:"DEB8.[0-9]+")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libxslt1-dev:amd64", ver:"1.1.28-2+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libxslt1.1:i386", ver:"1.1.28-2+deb8u1", rls_regex:"DEB8.[0-9]+")) != NULL) {
-    report += res;
-}
-
-if ((res = isdpkgvuln(pkg:"python-libxslt1", ver:"1.1.28-2+deb8u1", rls_regex:"DEB8.[0-9]+")) != NULL) {
-    report += res;
-}
-if ((res = isdpkgvuln(pkg:"python-libxslt1-dbg", ver:"1.1.28-2+deb8u1", rls_regex:"DEB8.[0-9]+")) != NULL) {
-    report += res;
-}
-if ((res = isdpkgvuln(pkg:"xsltproc", ver:"1.1.28-2+deb8u1", rls_regex:"DEB8.[0-9]+")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libxslt1-dev:i386", ver:"1.1.28-2+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
-    security_message(data:report);
+if((res = isdpkgvuln(pkg:"libxslt1.1:amd64", ver:"1.1.28-2+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
+}
+if((res = isdpkgvuln(pkg:"libxslt1.1:i386", ver:"1.1.28-2+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
+}
+
+if((res = isdpkgvuln(pkg:"python-libxslt1", ver:"1.1.28-2+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
+}
+if((res = isdpkgvuln(pkg:"python-libxslt1-dbg", ver:"1.1.28-2+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
+}
+if((res = isdpkgvuln(pkg:"xsltproc", ver:"1.1.28-2+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
+}
+
+if(report != "") {
+  security_message(data:report);
 } else if (__pkg_match) {
-    exit(99); # Not vulnerable.
+  exit(99);
 }

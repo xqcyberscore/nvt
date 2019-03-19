@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843910");
-  script_version("$Revision: 13881 $");
+  script_version("$Revision: 14288 $");
   script_cve_id("CVE-2019-6454");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-26 14:01:46 +0100 (Tue, 26 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 17:34:17 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-02-19 04:04:27 +0100 (Tue, 19 Feb 2019)");
   script_name("Ubuntu Update for systemd USN-3891-1");
   script_category(ACT_GATHER_INFO);
@@ -69,13 +69,13 @@ res = "";
 if(release == "UBUNTU18.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"libsystemd0", ver:"237-3ubuntu10.13", rls:"UBUNTU18.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libsystemd0", ver:"237-3ubuntu10.13", rls:"UBUNTU18.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"systemd", ver:"237-3ubuntu10.13", rls:"UBUNTU18.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"systemd", ver:"237-3ubuntu10.13", rls:"UBUNTU18.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -89,13 +89,13 @@ if(release == "UBUNTU18.04 LTS")
 if(release == "UBUNTU18.10")
 {
 
-  if ((res = isdpkgvuln(pkg:"libsystemd0", ver:"239-7ubuntu10.8", rls:"UBUNTU18.10", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libsystemd0", ver:"239-7ubuntu10.8", rls:"UBUNTU18.10")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"systemd", ver:"239-7ubuntu10.8", rls:"UBUNTU18.10", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"systemd", ver:"239-7ubuntu10.8", rls:"UBUNTU18.10")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -109,13 +109,13 @@ if(release == "UBUNTU18.10")
 if(release == "UBUNTU16.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"libsystemd0", ver:"229-4ubuntu21.16", rls:"UBUNTU16.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libsystemd0", ver:"229-4ubuntu21.16", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"systemd", ver:"229-4ubuntu21.16", rls:"UBUNTU16.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"systemd", ver:"229-4ubuntu21.16", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);

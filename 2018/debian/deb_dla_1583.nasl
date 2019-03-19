@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1583.nasl 12473 2018-11-22 03:34:31Z ckuersteiner $
+# $Id: deb_dla_1583.nasl 14270 2019-03-18 14:24:29Z cfischer $
 #
 # Auto-generated from advisory DLA 1583-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,11 +31,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891583");
-  script_version("$Revision: 12473 $");
+  script_version("$Revision: 14270 $");
   script_cve_id("CVE-2015-5203", "CVE-2015-5221", "CVE-2016-8690", "CVE-2016-8884", "CVE-2016-8885",
                 "CVE-2017-13748", "CVE-2017-14132");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1583-1] jasper security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-22 04:34:31 +0100 (Thu, 22 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:24:29 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-11-21 00:00:00 +0100 (Wed, 21 Nov 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -49,13 +49,13 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8");
   script_tag(name:"affected", value:"jasper on Debian Linux");
   script_tag(name:"solution", value:"For Debian 8 'Jessie', these problems have been fixed in version
 1.900.1-debian1-2.4+deb8u4.
 
 We recommend that you upgrade your jasper packages.");
-  script_tag(name:"summary",  value:"Several security vulnerabilities were discovered in the JasPer
+  script_tag(name:"summary", value:"Several security vulnerabilities were discovered in the JasPer
 JPEG-2000 library.
 
 CVE-2015-5203
@@ -99,18 +99,18 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"libjasper-dev", ver:"1.900.1-debian1-2.4+deb8u4", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libjasper-dev", ver:"1.900.1-debian1-2.4+deb8u4", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libjasper-runtime", ver:"1.900.1-debian1-2.4+deb8u4", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libjasper-runtime", ver:"1.900.1-debian1-2.4+deb8u4", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libjasper1", ver:"1.900.1-debian1-2.4+deb8u4", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libjasper1", ver:"1.900.1-debian1-2.4+deb8u4", rls:"DEB8")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
+} else if(__pkg_match) {
   exit(99);
 }

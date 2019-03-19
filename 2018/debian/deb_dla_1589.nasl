@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1589.nasl 13032 2019-01-11 07:56:51Z mmartin $
+# $Id: deb_dla_1589.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DLA 1589-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891589");
-  script_version("$Revision: 13032 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2018-19115");
   script_name("Debian LTS Advisory ([SECURITY] [DLA-1589-1] keepalived security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-11 08:56:51 +0100 (Fri, 11 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-11-26 00:00:00 +0100 (Mon, 26 Nov 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -48,16 +48,13 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8");
   script_tag(name:"affected", value:"keepalived on Debian Linux");
-  script_tag(name:"insight", value:"keepalived is used for monitoring real servers within a Linux Virtual Server (LVS)
-  cluster. keepalived can be configured to remove real servers from the cluster pool if it stops responding, as well
-  as send a notification email to make the admin aware of the service failure.");
   script_tag(name:"solution", value:"For Debian 8 'Jessie', this problem has been fixed in version
 1:1.2.13-1+deb8u1.
 
 We recommend that you upgrade your keepalived packages.");
-  script_tag(name:"summary",  value:"keepalived has a heap-based buffer overflow when parsing HTTP status
+  script_tag(name:"summary", value:"keepalived has a heap-based buffer overflow when parsing HTTP status
 codes resulting in DoS or possibly unspecified other impact, because
 extract_status_code in lib/html.c has no validation of the status code
 and instead writes an unlimited amount of data to the heap.");
@@ -72,12 +69,12 @@ include("pkg-lib-deb.inc");
 res = "";
 report = "";
 # nb: Advisory-Mail says "Package        : icecast2" which is wrong and causing a wrong version check here.
-if ((res = isdpkgvuln(pkg:"keepalived", ver:"1:1.2.13-1+deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"keepalived", ver:"1:1.2.13-1+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
+} else if(__pkg_match) {
   exit(99);
 }

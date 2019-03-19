@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3711_1.nasl 14140 2019-03-13 12:26:09Z cfischer $
+# $Id: gb_ubuntu_USN_3711_1.nasl 14288 2019-03-18 16:34:17Z cfischer $
 #
 # Ubuntu Update for imagemagick USN-3711-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843588");
-  script_version("$Revision: 14140 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-13 13:26:09 +0100 (Wed, 13 Mar 2019) $");
+  script_version("$Revision: 14288 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 17:34:17 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-07-12 05:57:23 +0200 (Thu, 12 Jul 2018)");
   script_cve_id("CVE-2018-12599", "CVE-2018-12600", "CVE-2018-13153");
   script_tag(name:"cvss_base", value:"6.8");
@@ -74,25 +74,25 @@ res = "";
 if(release == "UBUNTU14.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"imagemagick", ver:"8:6.7.7.10-6ubuntu3.12", rls:"UBUNTU14.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"imagemagick", ver:"8:6.7.7.10-6ubuntu3.12", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libmagick++5", ver:"8:6.7.7.10-6ubuntu3.12", rls:"UBUNTU14.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libmagick++5", ver:"8:6.7.7.10-6ubuntu3.12", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libmagickcore5", ver:"8:6.7.7.10-6ubuntu3.12", rls:"UBUNTU14.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libmagickcore5", ver:"8:6.7.7.10-6ubuntu3.12", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libmagickcore5-extra", ver:"8:6.7.7.10-6ubuntu3.12", rls:"UBUNTU14.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libmagickcore5-extra", ver:"8:6.7.7.10-6ubuntu3.12", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -106,31 +106,31 @@ if(release == "UBUNTU14.04 LTS")
 if(release == "UBUNTU17.10")
 {
 
-  if ((res = isdpkgvuln(pkg:"imagemagick", ver:"8:6.9.7.4+dfsg-16ubuntu2.3", rls:"UBUNTU17.10", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"imagemagick", ver:"8:6.9.7.4+dfsg-16ubuntu2.3", rls:"UBUNTU17.10")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"imagemagick-6.q16", ver:"8:6.9.7.4+dfsg-16ubuntu2.3", rls:"UBUNTU17.10", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"imagemagick-6.q16", ver:"8:6.9.7.4+dfsg-16ubuntu2.3", rls:"UBUNTU17.10")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libmagick++-6.q16-7", ver:"8:6.9.7.4+dfsg-16ubuntu2.3", rls:"UBUNTU17.10", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libmagick++-6.q16-7", ver:"8:6.9.7.4+dfsg-16ubuntu2.3", rls:"UBUNTU17.10")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libmagickcore-6.q16-3", ver:"8:6.9.7.4+dfsg-16ubuntu2.3", rls:"UBUNTU17.10", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libmagickcore-6.q16-3", ver:"8:6.9.7.4+dfsg-16ubuntu2.3", rls:"UBUNTU17.10")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libmagickcore-6.q16-3-extra", ver:"8:6.9.7.4+dfsg-16ubuntu2.3", rls:"UBUNTU17.10", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libmagickcore-6.q16-3-extra", ver:"8:6.9.7.4+dfsg-16ubuntu2.3", rls:"UBUNTU17.10")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -144,31 +144,31 @@ if(release == "UBUNTU17.10")
 if(release == "UBUNTU18.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"imagemagick", ver:"8:6.9.7.4+dfsg-16ubuntu6.3", rls:"UBUNTU18.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"imagemagick", ver:"8:6.9.7.4+dfsg-16ubuntu6.3", rls:"UBUNTU18.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"imagemagick-6.q16", ver:"8:6.9.7.4+dfsg-16ubuntu6.3", rls:"UBUNTU18.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"imagemagick-6.q16", ver:"8:6.9.7.4+dfsg-16ubuntu6.3", rls:"UBUNTU18.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libmagick++-6.q16-7", ver:"8:6.9.7.4+dfsg-16ubuntu6.3", rls:"UBUNTU18.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libmagick++-6.q16-7", ver:"8:6.9.7.4+dfsg-16ubuntu6.3", rls:"UBUNTU18.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libmagickcore-6.q16-3", ver:"8:6.9.7.4+dfsg-16ubuntu6.3", rls:"UBUNTU18.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libmagickcore-6.q16-3", ver:"8:6.9.7.4+dfsg-16ubuntu6.3", rls:"UBUNTU18.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libmagickcore-6.q16-3-extra", ver:"8:6.9.7.4+dfsg-16ubuntu6.3", rls:"UBUNTU18.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libmagickcore-6.q16-3-extra", ver:"8:6.9.7.4+dfsg-16ubuntu6.3", rls:"UBUNTU18.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -182,31 +182,31 @@ if(release == "UBUNTU18.04 LTS")
 if(release == "UBUNTU16.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"imagemagick", ver:"8:6.8.9.9-7ubuntu5.12", rls:"UBUNTU16.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"imagemagick", ver:"8:6.8.9.9-7ubuntu5.12", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"imagemagick-6.q16", ver:"8:6.8.9.9-7ubuntu5.12", rls:"UBUNTU16.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"imagemagick-6.q16", ver:"8:6.8.9.9-7ubuntu5.12", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libmagick++-6.q16-5v5", ver:"8:6.8.9.9-7ubuntu5.12", rls:"UBUNTU16.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libmagick++-6.q16-5v5", ver:"8:6.8.9.9-7ubuntu5.12", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libmagickcore-6.q16-2", ver:"8:6.8.9.9-7ubuntu5.12", rls:"UBUNTU16.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libmagickcore-6.q16-2", ver:"8:6.8.9.9-7ubuntu5.12", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libmagickcore-6.q16-2-extra", ver:"8:6.8.9.9-7ubuntu5.12", rls:"UBUNTU16.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libmagickcore-6.q16-2-extra", ver:"8:6.8.9.9-7ubuntu5.12", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);

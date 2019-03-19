@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4051.nasl 8192 2017-12-20 09:53:28Z teissa $
+# $Id: deb_4051.nasl 14284 2019-03-18 15:02:15Z cfischer $
 #
 # Auto-generated from advisory DSA 4051-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704051");
-  script_version("$Revision: 8192 $");
+  script_version("$Revision: 14284 $");
   script_cve_id("CVE-2017-8816", "CVE-2017-8817");
   script_name("Debian Security Advisory DSA 4051-1 (curl - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-20 10:53:28 +0100 (Wed, 20 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 16:02:15 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-11-29 00:00:00 +0100 (Wed, 29 Nov 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -48,11 +48,8 @@ if(description)
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB(8|9)");
   script_tag(name:"affected", value:"curl on Debian Linux");
-  script_tag(name:"insight", value:"curl is a command line tool for transferring data with URL syntax, supporting
-DICT, FILE, FTP, FTPS, GOPHER, HTTP, HTTPS, IMAP, IMAPS, LDAP, LDAPS, POP3,
-POP3S, RTMP, RTSP, SCP, SFTP, SMTP, SMTPS, TELNET and TFTP.");
   script_tag(name:"solution", value:"For the oldstable distribution (jessie), these problems have been fixed
 in version 7.38.0-4+deb8u8.
 
@@ -62,16 +59,17 @@ version 7.52.1-5+deb9u3.
 We recommend that you upgrade your curl packages.
 
 For the detailed security status of curl please refer to
-its security tracker page at:
-https://security-tracker.debian.org/tracker/curl");
-  script_tag(name:"summary",  value:"Two vulnerabilities were discovered in cURL, an URL transfer library.
+its security tracker page linked in the references.");
 
-CVE-2017-8816 
+  script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/curl");
+  script_tag(name:"summary", value:"Two vulnerabilities were discovered in cURL, an URL transfer library.
+
+CVE-2017-8816
 Alex Nichols discovered a buffer overrun flaw in the NTLM authentication
 code which can be triggered on 32bit systems where an integer overflow
 might occur when calculating the size of a memory allocation.
 
-CVE-2017-8817 
+CVE-2017-8817
 Fuzzing by the OSS-Fuzz project led to the discovery of a read out of
 bounds flaw in the FTP wildcard function in libcurl. A malicious server
 could redirect a libcurl-based client to an URL using a wildcard pattern,
@@ -86,63 +84,63 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"curl", ver:"7.38.0-4+deb8u8", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"curl", ver:"7.38.0-4+deb8u8", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libcurl3", ver:"7.38.0-4+deb8u8", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libcurl3", ver:"7.38.0-4+deb8u8", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libcurl3-dbg", ver:"7.38.0-4+deb8u8", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libcurl3-dbg", ver:"7.38.0-4+deb8u8", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libcurl3-gnutls", ver:"7.38.0-4+deb8u8", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libcurl3-gnutls", ver:"7.38.0-4+deb8u8", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libcurl3-nss", ver:"7.38.0-4+deb8u8", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libcurl3-nss", ver:"7.38.0-4+deb8u8", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libcurl4-doc", ver:"7.38.0-4+deb8u8", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libcurl4-doc", ver:"7.38.0-4+deb8u8", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libcurl4-gnutls-dev", ver:"7.38.0-4+deb8u8", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libcurl4-gnutls-dev", ver:"7.38.0-4+deb8u8", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libcurl4-nss-dev", ver:"7.38.0-4+deb8u8", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libcurl4-nss-dev", ver:"7.38.0-4+deb8u8", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libcurl4-openssl-dev", ver:"7.38.0-4+deb8u8", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libcurl4-openssl-dev", ver:"7.38.0-4+deb8u8", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"curl", ver:"7.52.1-5+deb9u3", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"curl", ver:"7.52.1-5+deb9u3", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libcurl3", ver:"7.52.1-5+deb9u3", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libcurl3", ver:"7.52.1-5+deb9u3", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libcurl3-dbg", ver:"7.52.1-5+deb9u3", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libcurl3-dbg", ver:"7.52.1-5+deb9u3", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libcurl3-gnutls", ver:"7.52.1-5+deb9u3", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libcurl3-gnutls", ver:"7.52.1-5+deb9u3", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libcurl3-nss", ver:"7.52.1-5+deb9u3", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libcurl3-nss", ver:"7.52.1-5+deb9u3", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libcurl4-doc", ver:"7.52.1-5+deb9u3", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libcurl4-doc", ver:"7.52.1-5+deb9u3", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libcurl4-gnutls-dev", ver:"7.52.1-5+deb9u3", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libcurl4-gnutls-dev", ver:"7.52.1-5+deb9u3", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libcurl4-nss-dev", ver:"7.52.1-5+deb9u3", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libcurl4-nss-dev", ver:"7.52.1-5+deb9u3", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libcurl4-openssl-dev", ver:"7.52.1-5+deb9u3", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libcurl4-openssl-dev", ver:"7.52.1-5+deb9u3", rls:"DEB9")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
-  exit(99); # Not vulnerable.
+} else if(__pkg_match) {
+  exit(99);
 }

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2930.nasl 13784 2019-02-20 11:51:39Z cfischer $
+# $Id: deb_2930.nasl 14302 2019-03-19 08:28:48Z cfischer $
 # Auto-generated from advisory DSA 2930-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -29,10 +29,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.702930");
-  script_version("$Revision: 13784 $");
+  script_version("$Revision: 14302 $");
   script_cve_id("CVE-2014-1740", "CVE-2014-1741", "CVE-2014-1742");
   script_name("Debian Security Advisory DSA 2930-1 (chromium-browser - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-20 12:51:39 +0100 (Wed, 20 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 09:28:48 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-05-17 00:00:00 +0200 (Sat, 17 May 2014)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -42,12 +42,9 @@ if(description)
   script_copyright("Copyright (c) 2014 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB7");
 
   script_tag(name:"affected", value:"chromium-browser on Debian Linux");
-  script_tag(name:"insight", value:"Chromium is an open-source browser project that aims to build a safer, faster,
-  and more stable way for all Internet users to experience the web.");
-
   script_tag(name:"solution", value:"For the stable distribution (wheezy), these problems have been fixed in
   version 34.0.1847.137-1~deb7u1.
 
@@ -83,105 +80,33 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"chromium", ver:"34.0.1847.137-1~deb7u1", rls:"DEB7.0")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"chromium", ver:"34.0.1847.137-1~deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"chromium-browser", ver:"34.0.1847.137-1~deb7u1", rls:"DEB7.0")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"chromium-browser", ver:"34.0.1847.137-1~deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"chromium-browser-dbg", ver:"34.0.1847.137-1~deb7u1", rls:"DEB7.0")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"chromium-browser-dbg", ver:"34.0.1847.137-1~deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"chromium-browser-inspector", ver:"34.0.1847.137-1~deb7u1", rls:"DEB7.0")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"chromium-browser-inspector", ver:"34.0.1847.137-1~deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"chromium-browser-l10n", ver:"34.0.1847.137-1~deb7u1", rls:"DEB7.0")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"chromium-browser-l10n", ver:"34.0.1847.137-1~deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"chromium-dbg", ver:"34.0.1847.137-1~deb7u1", rls:"DEB7.0")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"chromium-dbg", ver:"34.0.1847.137-1~deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"chromium-inspector", ver:"34.0.1847.137-1~deb7u1", rls:"DEB7.0")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"chromium-inspector", ver:"34.0.1847.137-1~deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"chromium-l10n", ver:"34.0.1847.137-1~deb7u1", rls:"DEB7.0")) != NULL) {
-    report += res;
-}
-if ((res = isdpkgvuln(pkg:"chromium", ver:"34.0.1847.137-1~deb7u1", rls:"DEB7.1")) != NULL) {
-    report += res;
-}
-if ((res = isdpkgvuln(pkg:"chromium-browser", ver:"34.0.1847.137-1~deb7u1", rls:"DEB7.1")) != NULL) {
-    report += res;
-}
-if ((res = isdpkgvuln(pkg:"chromium-browser-dbg", ver:"34.0.1847.137-1~deb7u1", rls:"DEB7.1")) != NULL) {
-    report += res;
-}
-if ((res = isdpkgvuln(pkg:"chromium-browser-inspector", ver:"34.0.1847.137-1~deb7u1", rls:"DEB7.1")) != NULL) {
-    report += res;
-}
-if ((res = isdpkgvuln(pkg:"chromium-browser-l10n", ver:"34.0.1847.137-1~deb7u1", rls:"DEB7.1")) != NULL) {
-    report += res;
-}
-if ((res = isdpkgvuln(pkg:"chromium-dbg", ver:"34.0.1847.137-1~deb7u1", rls:"DEB7.1")) != NULL) {
-    report += res;
-}
-if ((res = isdpkgvuln(pkg:"chromium-inspector", ver:"34.0.1847.137-1~deb7u1", rls:"DEB7.1")) != NULL) {
-    report += res;
-}
-if ((res = isdpkgvuln(pkg:"chromium-l10n", ver:"34.0.1847.137-1~deb7u1", rls:"DEB7.1")) != NULL) {
-    report += res;
-}
-if ((res = isdpkgvuln(pkg:"chromium", ver:"34.0.1847.137-1~deb7u1", rls:"DEB7.2")) != NULL) {
-    report += res;
-}
-if ((res = isdpkgvuln(pkg:"chromium-browser", ver:"34.0.1847.137-1~deb7u1", rls:"DEB7.2")) != NULL) {
-    report += res;
-}
-if ((res = isdpkgvuln(pkg:"chromium-browser-dbg", ver:"34.0.1847.137-1~deb7u1", rls:"DEB7.2")) != NULL) {
-    report += res;
-}
-if ((res = isdpkgvuln(pkg:"chromium-browser-inspector", ver:"34.0.1847.137-1~deb7u1", rls:"DEB7.2")) != NULL) {
-    report += res;
-}
-if ((res = isdpkgvuln(pkg:"chromium-browser-l10n", ver:"34.0.1847.137-1~deb7u1", rls:"DEB7.2")) != NULL) {
-    report += res;
-}
-if ((res = isdpkgvuln(pkg:"chromium-dbg", ver:"34.0.1847.137-1~deb7u1", rls:"DEB7.2")) != NULL) {
-    report += res;
-}
-if ((res = isdpkgvuln(pkg:"chromium-inspector", ver:"34.0.1847.137-1~deb7u1", rls:"DEB7.2")) != NULL) {
-    report += res;
-}
-if ((res = isdpkgvuln(pkg:"chromium-l10n", ver:"34.0.1847.137-1~deb7u1", rls:"DEB7.2")) != NULL) {
-    report += res;
-}
-if ((res = isdpkgvuln(pkg:"chromium", ver:"34.0.1847.137-1~deb7u1", rls:"DEB7.3")) != NULL) {
-    report += res;
-}
-if ((res = isdpkgvuln(pkg:"chromium-browser", ver:"34.0.1847.137-1~deb7u1", rls:"DEB7.3")) != NULL) {
-    report += res;
-}
-if ((res = isdpkgvuln(pkg:"chromium-browser-dbg", ver:"34.0.1847.137-1~deb7u1", rls:"DEB7.3")) != NULL) {
-    report += res;
-}
-if ((res = isdpkgvuln(pkg:"chromium-browser-inspector", ver:"34.0.1847.137-1~deb7u1", rls:"DEB7.3")) != NULL) {
-    report += res;
-}
-if ((res = isdpkgvuln(pkg:"chromium-browser-l10n", ver:"34.0.1847.137-1~deb7u1", rls:"DEB7.3")) != NULL) {
-    report += res;
-}
-if ((res = isdpkgvuln(pkg:"chromium-dbg", ver:"34.0.1847.137-1~deb7u1", rls:"DEB7.3")) != NULL) {
-    report += res;
-}
-if ((res = isdpkgvuln(pkg:"chromium-inspector", ver:"34.0.1847.137-1~deb7u1", rls:"DEB7.3")) != NULL) {
-    report += res;
-}
-if ((res = isdpkgvuln(pkg:"chromium-l10n", ver:"34.0.1847.137-1~deb7u1", rls:"DEB7.3")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"chromium-l10n", ver:"34.0.1847.137-1~deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
-    security_message(data:report);
-} else if (__pkg_match) {
-    exit(99);
+if(report != "") {
+  security_message(data:report);
+} else if(__pkg_match) {
+  exit(99);
 }

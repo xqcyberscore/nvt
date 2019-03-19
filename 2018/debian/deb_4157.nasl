@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4157.nasl 9643 2018-04-27 07:20:03Z cfischer $
+# $Id: deb_4157.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DSA 4157-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704157");
-  script_version("$Revision: 9643 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2017-3738", "CVE-2018-0739");
   script_name("Debian Security Advisory DSA 4157-1 (openssl - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 09:20:03 +0200 (Fri, 27 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-03-29 00:00:00 +0200 (Thu, 29 Mar 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
@@ -48,14 +48,11 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB[89]\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB[89]");
   script_tag(name:"affected", value:"openssl on Debian Linux");
-  script_tag(name:"insight", value:"This package is part of the OpenSSL project's implementation of the SSL
-and TLS cryptographic protocols for secure communication over the
-Internet.");
   script_tag(name:"solution", value:"For the oldstable distribution (jessie), these problems have been fixed
 in version 1.0.1t-1+deb8u8. The oldstable distribution is not affected
-by CVE-2017-3738 
+by CVE-2017-3738
 .
 
 For the stable distribution (stretch), these problems have been fixed in
@@ -64,24 +61,22 @@ version 1.1.0f-3+deb9u2.
 We recommend that you upgrade your openssl packages.
 
 For the detailed security status of openssl please refer to its security
-tracker page at:
-https://security-tracker.debian.org/tracker/openssl");
-  script_tag(name:"summary",  value:"Multiple vulnerabilities have been discovered in OpenSSL, a Secure
+tracker page linked in the references.");
+
+  script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/openssl");
+  script_tag(name:"summary", value:"Multiple vulnerabilities have been discovered in OpenSSL, a Secure
 Sockets Layer toolkit. The Common Vulnerabilities and Exposures project
 identifies the following issues:
 
-CVE-2017-3738 
+CVE-2017-3738
 David Benjamin of Google reported an overflow bug in the AVX2
 Montgomery multiplication procedure used in exponentiation with
 1024-bit moduli.
 
-CVE-2018-0739 
+CVE-2018-0739
 It was discovered that constructed ASN.1 types with a recursive
 definition could exceed the stack, potentially leading to a denial
-of service.
-
-Details can be found in the upstream advisory:
-https://www.openssl.org/news/secadv/20180327.txt");
+of service.");
   script_tag(name:"vuldetect", value:"This check tests the installed software version using the apt package manager.");
 
   exit(0);
@@ -92,36 +87,36 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"libssl-dev", ver:"1.1.0f-3+deb9u2", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libssl-dev", ver:"1.1.0f-3+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libssl-doc", ver:"1.1.0f-3+deb9u2", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libssl-doc", ver:"1.1.0f-3+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libssl1.1", ver:"1.1.0f-3+deb9u2", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libssl1.1", ver:"1.1.0f-3+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"openssl", ver:"1.1.0f-3+deb9u2", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"openssl", ver:"1.1.0f-3+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libssl-dev", ver:"1.0.1t-1+deb8u8", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libssl-dev", ver:"1.0.1t-1+deb8u8", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libssl-doc", ver:"1.0.1t-1+deb8u8", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libssl-doc", ver:"1.0.1t-1+deb8u8", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libssl1.0.0", ver:"1.0.1t-1+deb8u8", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libssl1.0.0", ver:"1.0.1t-1+deb8u8", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libssl1.0.0-dbg", ver:"1.0.1t-1+deb8u8", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libssl1.0.0-dbg", ver:"1.0.1t-1+deb8u8", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"openssl", ver:"1.0.1t-1+deb8u8", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"openssl", ver:"1.0.1t-1+deb8u8", rls:"DEB8")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
-  exit(99); # Not vulnerable.
+} else if(__pkg_match) {
+  exit(99);
 }

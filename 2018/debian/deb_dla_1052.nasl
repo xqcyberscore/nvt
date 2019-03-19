@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1052.nasl 10474 2018-07-10 08:12:26Z cfischer $
+# $Id: deb_dla_1052.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DLA 1052-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891052");
-  script_version("$Revision: 10474 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2017-9800");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1052-1] subversion security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-10 10:12:26 +0200 (Tue, 10 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-02-07 00:00:00 +0100 (Wed, 07 Feb 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -48,19 +48,13 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB7\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB7");
   script_tag(name:"affected", value:"subversion on Debian Linux");
-  script_tag(name:"insight", value:"Subversion, also known as svn, is a version control system much like
-the Concurrent Versions System (CVS). Version control systems allow
-many individuals (who may be distributed geographically) to
-collaborate on a set of files (typically source code). Subversion has
-all the major features of CVS, plus certain new features that CVS
-users often wish they had.");
   script_tag(name:"solution", value:"For Debian 7 'Wheezy', this issue has been fixed in subversion
 version 1.6.17dfsg-4+deb7u12.
 
 We recommend that you upgrade your subversion packages.");
-  script_tag(name:"summary",  value:"It was discovered that there was a arbitrary code execution
+  script_tag(name:"summary", value:"It was discovered that there was a arbitrary code execution
 vulnerability in the subversion revision control system via
 malicious 'svn+ssh' URLs in 'svn:externals' and
 'svn:sync-from-url'.");
@@ -74,42 +68,42 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"libapache2-svn", ver:"1.6.17dfsg-4+deb7u12", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libapache2-svn", ver:"1.6.17dfsg-4+deb7u12", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libsvn-dev", ver:"1.6.17dfsg-4+deb7u12", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libsvn-dev", ver:"1.6.17dfsg-4+deb7u12", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libsvn-doc", ver:"1.6.17dfsg-4+deb7u12", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libsvn-doc", ver:"1.6.17dfsg-4+deb7u12", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libsvn-java", ver:"1.6.17dfsg-4+deb7u12", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libsvn-java", ver:"1.6.17dfsg-4+deb7u12", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libsvn-perl", ver:"1.6.17dfsg-4+deb7u12", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libsvn-perl", ver:"1.6.17dfsg-4+deb7u12", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libsvn-ruby", ver:"1.6.17dfsg-4+deb7u12", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libsvn-ruby", ver:"1.6.17dfsg-4+deb7u12", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libsvn-ruby1.8", ver:"1.6.17dfsg-4+deb7u12", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libsvn-ruby1.8", ver:"1.6.17dfsg-4+deb7u12", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libsvn1", ver:"1.6.17dfsg-4+deb7u12", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libsvn1", ver:"1.6.17dfsg-4+deb7u12", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"python-subversion", ver:"1.6.17dfsg-4+deb7u12", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"python-subversion", ver:"1.6.17dfsg-4+deb7u12", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"subversion", ver:"1.6.17dfsg-4+deb7u12", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"subversion", ver:"1.6.17dfsg-4+deb7u12", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"subversion-tools", ver:"1.6.17dfsg-4+deb7u12", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"subversion-tools", ver:"1.6.17dfsg-4+deb7u12", rls:"DEB7")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
+} else if(__pkg_match) {
   exit(99);
 }

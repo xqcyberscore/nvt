@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_999.nasl 10474 2018-07-10 08:12:26Z cfischer $
+# $Id: deb_dla_999.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DLA 999-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.890999");
-  script_version("$Revision: 10474 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2017-7520");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 999-1] openvpn security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-10 10:12:26 +0200 (Tue, 10 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-01-29 00:00:00 +0100 (Mon, 29 Jan 2018)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:N/A:P");
@@ -48,16 +48,13 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB7\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB7");
   script_tag(name:"affected", value:"openvpn on Debian Linux");
-  script_tag(name:"insight", value:"OpenVPN is an application to securely tunnel IP networks over a
-single UDP or TCP port. It can be used to access remote sites, make
-secure point-to-point connections, enhance wireless security, etc.");
   script_tag(name:"solution", value:"For Debian 7 'Wheezy', this issue has been fixed in openvpn version
 2.2.1-8+deb7u5.
 
 We recommend that you upgrade your openvpn packages.");
-  script_tag(name:"summary",  value:"It was discovered that there were multiple out-of-bounds memory read
+  script_tag(name:"summary", value:"It was discovered that there were multiple out-of-bounds memory read
 vulnerabilities in openvpn, a popular virtual private network (VPN) daemon.
 
 If clients used a HTTP proxy with NTLM authentication, a man-in-the-middle
@@ -73,12 +70,12 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"openvpn", ver:"2.2.1-8+deb7u5", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"openvpn", ver:"2.2.1-8+deb7u5", rls:"DEB7")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
+} else if(__pkg_match) {
   exit(99);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4189.nasl 10231 2018-06-18 03:58:33Z ckuersteiner $
+# $Id: deb_4189.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DSA 4189-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704189");
-  script_version("$Revision: 10231 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2018-1000178", "CVE-2018-1000179");
   script_name("Debian Security Advisory DSA 4189-1 (quassel - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-18 05:58:33 +0200 (Mon, 18 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-05-02 00:00:00 +0200 (Wed, 02 May 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -48,12 +48,8 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB[89]\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB[89]");
   script_tag(name:"affected", value:"quassel on Debian Linux");
-  script_tag(name:"insight", value:"Quassel is a modern, cross-platform, distributed IRC client, meaning that
-one or more clients can attach to and detach from the central core. It's
-much like the popular combination of screen and a text-based IRC client
-such as WeeChat or irssi, but graphical.");
   script_tag(name:"solution", value:"For the oldstable distribution (jessie), these problems have been fixed
 in version 1:0.10.0-2.3+deb8u4.
 
@@ -63,12 +59,13 @@ version 1:0.12.4-2+deb9u1.
 We recommend that you upgrade your quassel packages.
 
 For the detailed security status of quassel please refer to
-its security tracker page at:
-https://security-tracker.debian.org/tracker/quassel");
-  script_tag(name:"summary",  value:"Two vulnerabilities were found in the Quassel IRC client, which could
+its security tracker page linked in the references.");
+
+  script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/quassel");
+  script_tag(name:"summary", value:"Two vulnerabilities were found in the Quassel IRC client, which could
 result in the execution of arbitrary code or denial of service.
 
-Note that you need to restart the quasselcore 
+Note that you need to restart the quasselcore
 service after upgrading
 the Quassel packages.");
   script_tag(name:"vuldetect", value:"This check tests the installed software version using the apt package manager.");
@@ -81,48 +78,48 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"quassel", ver:"1:0.10.0-2.3+deb8u4", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"quassel", ver:"1:0.10.0-2.3+deb8u4", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"quassel-client", ver:"1:0.10.0-2.3+deb8u4", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"quassel-client", ver:"1:0.10.0-2.3+deb8u4", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"quassel-client-kde4", ver:"1:0.10.0-2.3+deb8u4", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"quassel-client-kde4", ver:"1:0.10.0-2.3+deb8u4", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"quassel-core", ver:"1:0.10.0-2.3+deb8u4", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"quassel-core", ver:"1:0.10.0-2.3+deb8u4", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"quassel-data", ver:"1:0.10.0-2.3+deb8u4", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"quassel-data", ver:"1:0.10.0-2.3+deb8u4", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"quassel-data-kde4", ver:"1:0.10.0-2.3+deb8u4", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"quassel-data-kde4", ver:"1:0.10.0-2.3+deb8u4", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"quassel-kde4", ver:"1:0.10.0-2.3+deb8u4", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"quassel-kde4", ver:"1:0.10.0-2.3+deb8u4", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"quassel", ver:"1:0.12.4-2+deb9u1", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"quassel", ver:"1:0.12.4-2+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"quassel-client", ver:"1:0.12.4-2+deb9u1", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"quassel-client", ver:"1:0.12.4-2+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"quassel-client-kde4", ver:"1:0.12.4-2+deb9u1", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"quassel-client-kde4", ver:"1:0.12.4-2+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"quassel-core", ver:"1:0.12.4-2+deb9u1", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"quassel-core", ver:"1:0.12.4-2+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"quassel-data", ver:"1:0.12.4-2+deb9u1", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"quassel-data", ver:"1:0.12.4-2+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"quassel-kde4", ver:"1:0.12.4-2+deb9u1", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"quassel-kde4", ver:"1:0.12.4-2+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
+} else if(__pkg_match) {
   exit(99);
 }

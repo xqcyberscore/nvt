@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_3994.nasl 7405 2017-10-12 05:25:10Z asteins $
+# $Id: deb_3994.nasl 14280 2019-03-18 14:50:45Z cfischer $
 #
 # Auto-generated from advisory DSA 3994-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.703994");
-  script_version("$Revision: 7405 $");
+  script_version("$Revision: 14280 $");
   script_cve_id("CVE-2017-14604");
   script_name("Debian Security Advisory DSA 3994-1 (nautilus - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-12 07:25:10 +0200 (Thu, 12 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:50:45 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-10-07 00:00:00 +0200 (Sat, 07 Oct 2017)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
@@ -48,12 +48,8 @@ if(description)
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB(10|9)");
   script_tag(name:"affected", value:"nautilus on Debian Linux");
-  script_tag(name:"insight", value:"Nautilus is the official file manager for the GNOME desktop. It allows
-one to browse directories, preview files and launch applications
-associated with them. It is also responsible for handling the icons on
-the GNOME desktop. It works on local and remote filesystems.");
   script_tag(name:"solution", value:"For the oldstable distribution (jessie), this problem has not been fixed yet.
 
 For the stable distribution (stretch), this problem has been fixed in
@@ -66,7 +62,7 @@ For the unstable distribution (sid), this problem has been fixed in
 version 3.26.0-1.
 
 We recommend that you upgrade your nautilus packages.");
-  script_tag(name:"summary",  value:"Christian Boxdörfer discovered a vulnerability in the handling of
+  script_tag(name:"summary", value:"Christian Boxdörfer discovered a vulnerability in the handling of
 FreeDesktop.org .desktop files in Nautilus, a file manager for the GNOME
 desktop environment. An attacker can craft a .desktop file intended to run
 malicious commands but displayed as a innocuous document file in Nautilus. An
@@ -84,39 +80,39 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"gir1.2-nautilus-3.0", ver:"3.26.0-1", rls_regex:"DEB10.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"gir1.2-nautilus-3.0", ver:"3.26.0-1", rls:"DEB10")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libnautilus-extension-dev", ver:"3.26.0-1", rls_regex:"DEB10.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libnautilus-extension-dev", ver:"3.26.0-1", rls:"DEB10")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libnautilus-extension1a", ver:"3.26.0-1", rls_regex:"DEB10.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libnautilus-extension1a", ver:"3.26.0-1", rls:"DEB10")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"nautilus", ver:"3.26.0-1", rls_regex:"DEB10.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"nautilus", ver:"3.26.0-1", rls:"DEB10")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"nautilus-data", ver:"3.26.0-1", rls_regex:"DEB10.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"nautilus-data", ver:"3.26.0-1", rls:"DEB10")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"gir1.2-nautilus-3.0", ver:"3.22.3-1+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"gir1.2-nautilus-3.0", ver:"3.22.3-1+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libnautilus-extension-dev", ver:"3.22.3-1+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libnautilus-extension-dev", ver:"3.22.3-1+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libnautilus-extension1a", ver:"3.22.3-1+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libnautilus-extension1a", ver:"3.22.3-1+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"nautilus", ver:"3.22.3-1+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"nautilus", ver:"3.22.3-1+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"nautilus-data", ver:"3.22.3-1+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"nautilus-data", ver:"3.22.3-1+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
-  exit(99); # Not vulnerable.
+} else if(__pkg_match) {
+  exit(99);
 }

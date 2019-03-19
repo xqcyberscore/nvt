@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_952.nasl 10474 2018-07-10 08:12:26Z cfischer $
+# $Id: deb_dla_952.nasl 14270 2019-03-18 14:24:29Z cfischer $
 #
 # Auto-generated from advisory DLA 952-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.890952");
-  script_version("$Revision: 10474 $");
+  script_version("$Revision: 14270 $");
   script_cve_id("CVE-2013-2074", "CVE-2017-6410", "CVE-2017-8422");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 952-1] kde4libs security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-10 10:12:26 +0200 (Tue, 10 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:24:29 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-01-25 00:00:00 +0100 (Thu, 25 Jan 2018)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
@@ -48,13 +48,13 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB7\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB7");
   script_tag(name:"affected", value:"kde4libs on Debian Linux");
   script_tag(name:"solution", value:"For Debian 7 'Wheezy', these problems have been fixed in version
 4:4.8.4-4+deb7u3.
 
 We recommend that you upgrade your kde4libs packages.");
-  script_tag(name:"summary",  value:"Several vulnerabilities were discovered in kde4libs, the core libraries
+  script_tag(name:"summary", value:"Several vulnerabilities were discovered in kde4libs, the core libraries
 for all KDE 4 applications. The Common Vulnerabilities and Exposures
 project identifies the following problems:
 
@@ -86,132 +86,132 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"kdelibs-bin", ver:"4:4.8.4-4+deb7u3", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"kdelibs-bin", ver:"4:4.8.4-4+deb7u3", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"kdelibs5-data", ver:"4:4.8.4-4+deb7u3", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"kdelibs5-data", ver:"4:4.8.4-4+deb7u3", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"kdelibs5-dbg", ver:"4:4.8.4-4+deb7u3", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"kdelibs5-dbg", ver:"4:4.8.4-4+deb7u3", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"kdelibs5-dev", ver:"4:4.8.4-4+deb7u3", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"kdelibs5-dev", ver:"4:4.8.4-4+deb7u3", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"kdelibs5-plugins", ver:"4:4.8.4-4+deb7u3", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"kdelibs5-plugins", ver:"4:4.8.4-4+deb7u3", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"kdoctools", ver:"4:4.8.4-4+deb7u3", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"kdoctools", ver:"4:4.8.4-4+deb7u3", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libkcmutils4", ver:"4:4.8.4-4+deb7u3", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libkcmutils4", ver:"4:4.8.4-4+deb7u3", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libkde3support4", ver:"4:4.8.4-4+deb7u3", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libkde3support4", ver:"4:4.8.4-4+deb7u3", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libkdeclarative5", ver:"4:4.8.4-4+deb7u3", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libkdeclarative5", ver:"4:4.8.4-4+deb7u3", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libkdecore5", ver:"4:4.8.4-4+deb7u3", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libkdecore5", ver:"4:4.8.4-4+deb7u3", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libkdesu5", ver:"4:4.8.4-4+deb7u3", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libkdesu5", ver:"4:4.8.4-4+deb7u3", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libkdeui5", ver:"4:4.8.4-4+deb7u3", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libkdeui5", ver:"4:4.8.4-4+deb7u3", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libkdewebkit5", ver:"4:4.8.4-4+deb7u3", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libkdewebkit5", ver:"4:4.8.4-4+deb7u3", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libkdnssd4", ver:"4:4.8.4-4+deb7u3", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libkdnssd4", ver:"4:4.8.4-4+deb7u3", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libkemoticons4", ver:"4:4.8.4-4+deb7u3", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libkemoticons4", ver:"4:4.8.4-4+deb7u3", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libkfile4", ver:"4:4.8.4-4+deb7u3", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libkfile4", ver:"4:4.8.4-4+deb7u3", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libkhtml5", ver:"4:4.8.4-4+deb7u3", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libkhtml5", ver:"4:4.8.4-4+deb7u3", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libkidletime4", ver:"4:4.8.4-4+deb7u3", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libkidletime4", ver:"4:4.8.4-4+deb7u3", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libkimproxy4", ver:"4:4.8.4-4+deb7u3", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libkimproxy4", ver:"4:4.8.4-4+deb7u3", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libkio5", ver:"4:4.8.4-4+deb7u3", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libkio5", ver:"4:4.8.4-4+deb7u3", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libkjsapi4", ver:"4:4.8.4-4+deb7u3", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libkjsapi4", ver:"4:4.8.4-4+deb7u3", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libkjsembed4", ver:"4:4.8.4-4+deb7u3", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libkjsembed4", ver:"4:4.8.4-4+deb7u3", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libkmediaplayer4", ver:"4:4.8.4-4+deb7u3", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libkmediaplayer4", ver:"4:4.8.4-4+deb7u3", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libknewstuff2-4", ver:"4:4.8.4-4+deb7u3", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libknewstuff2-4", ver:"4:4.8.4-4+deb7u3", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libknewstuff3-4", ver:"4:4.8.4-4+deb7u3", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libknewstuff3-4", ver:"4:4.8.4-4+deb7u3", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libknotifyconfig4", ver:"4:4.8.4-4+deb7u3", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libknotifyconfig4", ver:"4:4.8.4-4+deb7u3", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libkntlm4", ver:"4:4.8.4-4+deb7u3", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libkntlm4", ver:"4:4.8.4-4+deb7u3", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libkparts4", ver:"4:4.8.4-4+deb7u3", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libkparts4", ver:"4:4.8.4-4+deb7u3", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libkprintutils4", ver:"4:4.8.4-4+deb7u3", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libkprintutils4", ver:"4:4.8.4-4+deb7u3", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libkpty4", ver:"4:4.8.4-4+deb7u3", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libkpty4", ver:"4:4.8.4-4+deb7u3", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libkrosscore4", ver:"4:4.8.4-4+deb7u3", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libkrosscore4", ver:"4:4.8.4-4+deb7u3", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libkrossui4", ver:"4:4.8.4-4+deb7u3", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libkrossui4", ver:"4:4.8.4-4+deb7u3", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libktexteditor4", ver:"4:4.8.4-4+deb7u3", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libktexteditor4", ver:"4:4.8.4-4+deb7u3", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libkunitconversion4", ver:"4:4.8.4-4+deb7u3", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libkunitconversion4", ver:"4:4.8.4-4+deb7u3", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libkutils4", ver:"4:4.8.4-4+deb7u3", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libkutils4", ver:"4:4.8.4-4+deb7u3", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libnepomuk4", ver:"4:4.8.4-4+deb7u3", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libnepomuk4", ver:"4:4.8.4-4+deb7u3", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libnepomukquery4a", ver:"4:4.8.4-4+deb7u3", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libnepomukquery4a", ver:"4:4.8.4-4+deb7u3", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libnepomukutils4", ver:"4:4.8.4-4+deb7u3", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libnepomukutils4", ver:"4:4.8.4-4+deb7u3", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libplasma3", ver:"4:4.8.4-4+deb7u3", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libplasma3", ver:"4:4.8.4-4+deb7u3", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libsolid4", ver:"4:4.8.4-4+deb7u3", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libsolid4", ver:"4:4.8.4-4+deb7u3", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libthreadweaver4", ver:"4:4.8.4-4+deb7u3", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libthreadweaver4", ver:"4:4.8.4-4+deb7u3", rls:"DEB7")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
+} else if(__pkg_match) {
   exit(99);
 }

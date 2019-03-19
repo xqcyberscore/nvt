@@ -21,21 +21,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814670");
-  script_version("$Revision: 13540 $");
+  script_version("$Revision: 14292 $");
   script_cve_id("CVE-2019-6223", "CVE-2019-7286", "CVE-2019-7288");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-08 14:07:49 +0100 (Fri, 08 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 19:39:37 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-02-08 10:02:49 +0530 (Fri, 08 Feb 2019)");
   script_name("Apple MacOSX Security Updates(HT209521)");
 
   script_tag(name:"summary", value:"This host is installed with Apple Mac OS X
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
   on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exists due to,
 
   - A logic issue existed in the handling of Group FaceTime calls.
 
@@ -43,35 +43,32 @@ if(description)
 
   - An improper input validation on FaceTime server.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary code and circumvent sandbox restrictions.");
 
-  script_tag(name: "affected" , value:"Apple Mac OS X versions 10.14.x through
+  script_tag(name:"affected", value:"Apple Mac OS X versions 10.14.x through
   10.14.3 build 18D43.");
 
-  script_tag(name: "solution" , value:"Upgrade to Apple Mac OS X 10.14.3 build
+  script_tag(name:"solution", value:"Upgrade to Apple Mac OS X 10.14.3 build
   18D109 or later. For updates refer to Reference links.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
-  script_xref(name : "URL" , value : "https://support.apple.com/en-us/HT209521");
-  script_xref(name : "URL" , value : "http://www.apple.com/support");
+  script_xref(name:"URL", value:"https://support.apple.com/en-us/HT209521");
+  script_xref(name:"URL", value:"http://www.apple.com/support");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Mac OS X Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/osx_name", "ssh/login/osx_version");
+  script_mandatory_keys("ssh/login/osx_name", "ssh/login/osx_version", re:"ssh/login/osx_version=^10\.14");
   exit(0);
 }
 
-
 include("version_func.inc");
-include("ssh_func.inc");
 
 osName = get_kb_item("ssh/login/osx_name");
-if(!osName){
-  exit (0);
-}
+if(!osName)
+  exit(0);
 
 osVer = get_kb_item("ssh/login/osx_version");
 
@@ -101,4 +98,4 @@ if(fix)
   exit(0);
 }
 
-exit(0);
+exit(99);

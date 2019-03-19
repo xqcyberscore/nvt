@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3772_1.nasl 12590 2018-11-30 07:32:04Z asteins $
+# $Id: gb_ubuntu_USN_3772_1.nasl 14288 2019-03-18 16:34:17Z cfischer $
 #
 # Ubuntu Update for udisks2 USN-3772-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843641");
-  script_version("$Revision: 12590 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-30 08:32:04 +0100 (Fri, 30 Nov 2018) $");
+  script_version("$Revision: 14288 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 17:34:17 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-09-27 08:10:59 +0200 (Thu, 27 Sep 2018)");
   script_cve_id("CVE-2018-17336");
   script_tag(name:"cvss_base", value:"4.6");
@@ -66,7 +66,7 @@ res = "";
 if(release == "UBUNTU18.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"udisks2", ver:"2.7.6-3ubuntu0.2", rls:"UBUNTU18.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"udisks2", ver:"2.7.6-3ubuntu0.2", rls:"UBUNTU18.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);

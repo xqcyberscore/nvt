@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3803_1.nasl 14166 2019-03-14 07:20:11Z cfischer $
+# $Id: gb_ubuntu_USN_3803_1.nasl 14288 2019-03-18 16:34:17Z cfischer $
 #
 # Ubuntu Update for ghostscript USN-3803-1
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843801");
-  script_version("$Revision: 14166 $");
+  script_version("$Revision: 14288 $");
   script_cve_id("CVE-2018-17961", "CVE-2018-18073", "CVE-2018-18284");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-14 08:20:11 +0100 (Thu, 14 Mar 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 17:34:17 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-11-01 06:05:18 +0100 (Thu, 01 Nov 2018)");
   script_name("Ubuntu Update for ghostscript USN-3803-1");
   script_category(ACT_GATHER_INFO);
@@ -80,13 +80,13 @@ res = "";
 if(release == "UBUNTU14.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"ghostscript", ver:"9.25~dfsg+1-0ubuntu0.14.04.2", rls:"UBUNTU14.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"ghostscript", ver:"9.25~dfsg+1-0ubuntu0.14.04.2", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libgs9", ver:"9.25~dfsg+1-0ubuntu0.14.04.2", rls:"UBUNTU14.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libgs9", ver:"9.25~dfsg+1-0ubuntu0.14.04.2", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -100,13 +100,13 @@ if(release == "UBUNTU14.04 LTS")
 if(release == "UBUNTU18.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"ghostscript", ver:"9.25~dfsg+1-0ubuntu0.18.04.2", rls:"UBUNTU18.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"ghostscript", ver:"9.25~dfsg+1-0ubuntu0.18.04.2", rls:"UBUNTU18.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libgs9", ver:"9.25~dfsg+1-0ubuntu0.18.04.2", rls:"UBUNTU18.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libgs9", ver:"9.25~dfsg+1-0ubuntu0.18.04.2", rls:"UBUNTU18.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -120,13 +120,13 @@ if(release == "UBUNTU18.04 LTS")
 if(release == "UBUNTU18.10")
 {
 
-  if ((res = isdpkgvuln(pkg:"ghostscript", ver:"9.25~dfsg+1-0ubuntu1.1", rls:"UBUNTU18.10", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"ghostscript", ver:"9.25~dfsg+1-0ubuntu1.1", rls:"UBUNTU18.10")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libgs9", ver:"9.25~dfsg+1-0ubuntu1.1", rls:"UBUNTU18.10", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libgs9", ver:"9.25~dfsg+1-0ubuntu1.1", rls:"UBUNTU18.10")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -140,13 +140,13 @@ if(release == "UBUNTU18.10")
 if(release == "UBUNTU16.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"ghostscript", ver:"9.25~dfsg+1-0ubuntu0.16.04.2", rls:"UBUNTU16.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"ghostscript", ver:"9.25~dfsg+1-0ubuntu0.16.04.2", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libgs9", ver:"9.25~dfsg+1-0ubuntu0.16.04.2", rls:"UBUNTU16.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libgs9", ver:"9.25~dfsg+1-0ubuntu0.16.04.2", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);

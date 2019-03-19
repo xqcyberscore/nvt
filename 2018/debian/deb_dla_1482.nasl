@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1482.nasl 12033 2018-10-23 11:14:43Z asteins $
+# $Id: deb_dla_1482.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DLA 1482-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891482");
-  script_version("$Revision: 12033 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2018-14598", "CVE-2018-14599", "CVE-2018-14600");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1482-1] libx11 security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-23 13:14:43 +0200 (Tue, 23 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-09-03 00:00:00 +0200 (Mon, 03 Sep 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -48,16 +48,13 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8");
   script_tag(name:"affected", value:"libx11 on Debian Linux");
-  script_tag(name:"insight", value:"libX11 provides a client interface to the X Window System, otherwise
-known as 'Xlib'.  It provides a complete API for the basic functions of the
-window system.");
   script_tag(name:"solution", value:"For Debian 8 'Jessie', these problems have been fixed in version
 2:1.6.2-3+deb8u2.
 
 We recommend that you upgrade your libx11 packages.");
-  script_tag(name:"summary",  value:"Several issues were discovered in libx11, the client interface to the
+  script_tag(name:"summary", value:"Several issues were discovered in libx11, the client interface to the
 X Windows System. The functions XGetFontPath, XListExtensions, and
 XListFonts are vulnerable to an off-by-one override on malicious
 server responses. A malicious server could also send a reply in which
@@ -77,33 +74,33 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"libx11-6", ver:"2:1.6.2-3+deb8u2", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libx11-6", ver:"2:1.6.2-3+deb8u2", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libx11-6-dbg", ver:"2:1.6.2-3+deb8u2", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libx11-6-dbg", ver:"2:1.6.2-3+deb8u2", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libx11-data", ver:"2:1.6.2-3+deb8u2", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libx11-data", ver:"2:1.6.2-3+deb8u2", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libx11-dev", ver:"2:1.6.2-3+deb8u2", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libx11-dev", ver:"2:1.6.2-3+deb8u2", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libx11-doc", ver:"2:1.6.2-3+deb8u2", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libx11-doc", ver:"2:1.6.2-3+deb8u2", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libx11-xcb-dev", ver:"2:1.6.2-3+deb8u2", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libx11-xcb-dev", ver:"2:1.6.2-3+deb8u2", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libx11-xcb1", ver:"2:1.6.2-3+deb8u2", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libx11-xcb1", ver:"2:1.6.2-3+deb8u2", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libx11-xcb1-dbg", ver:"2:1.6.2-3+deb8u2", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libx11-xcb1-dbg", ver:"2:1.6.2-3+deb8u2", rls:"DEB8")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
+} else if(__pkg_match) {
   exit(99);
 }

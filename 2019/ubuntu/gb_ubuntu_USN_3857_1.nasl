@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3857_1.nasl 13654 2019-02-14 07:51:59Z mmartin $
+# $Id: gb_ubuntu_USN_3857_1.nasl 14288 2019-03-18 16:34:17Z cfischer $
 #
 # Ubuntu Update for php-pear USN-3857-1
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843870");
-  script_version("$Revision: 13654 $");
+  script_version("$Revision: 14288 $");
   script_cve_id("CVE-2018-1000888");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-14 08:51:59 +0100 (Thu, 14 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 17:34:17 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-01-15 04:00:46 +0100 (Tue, 15 Jan 2019)");
   script_name("Ubuntu Update for php-pear USN-3857-1");
   script_category(ACT_GATHER_INFO);
@@ -78,7 +78,7 @@ res = "";
 if(release == "UBUNTU18.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"php-pear", ver:"1:1.10.5+submodules+notgz-1ubuntu1.18.04.1", rls:"UBUNTU18.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"php-pear", ver:"1:1.10.5+submodules+notgz-1ubuntu1.18.04.1", rls:"UBUNTU18.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -92,7 +92,7 @@ if(release == "UBUNTU18.04 LTS")
 if(release == "UBUNTU18.10")
 {
 
-  if ((res = isdpkgvuln(pkg:"php-pear", ver:"1:1.10.5+submodules+notgz-1ubuntu1.18.10.1", rls:"UBUNTU18.10", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"php-pear", ver:"1:1.10.5+submodules+notgz-1ubuntu1.18.10.1", rls:"UBUNTU18.10")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -106,7 +106,7 @@ if(release == "UBUNTU18.10")
 if(release == "UBUNTU16.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"php-pear", ver:"1:1.10.1+submodules+notgz-6ubuntu0.1", rls:"UBUNTU16.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"php-pear", ver:"1:1.10.1+submodules+notgz-6ubuntu0.1", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);

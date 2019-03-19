@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3707_1.nasl 14140 2019-03-13 12:26:09Z cfischer $
+# $Id: gb_ubuntu_USN_3707_1.nasl 14288 2019-03-18 16:34:17Z cfischer $
 #
 # Ubuntu Update for ntp USN-3707-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843586");
-  script_version("$Revision: 14140 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-13 13:26:09 +0100 (Wed, 13 Mar 2019) $");
+  script_version("$Revision: 14288 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 17:34:17 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-07-10 05:56:31 +0200 (Tue, 10 Jul 2018)");
   script_cve_id("CVE-2018-7182", "CVE-2018-7183", "CVE-2018-7184", "CVE-2018-7185");
   script_tag(name:"cvss_base", value:"7.5");
@@ -85,7 +85,7 @@ res = "";
 if(release == "UBUNTU14.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"ntp", ver:"1:4.2.6.p5+dfsg-3ubuntu2.14.04.13", rls:"UBUNTU14.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"ntp", ver:"1:4.2.6.p5+dfsg-3ubuntu2.14.04.13", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -99,7 +99,7 @@ if(release == "UBUNTU14.04 LTS")
 if(release == "UBUNTU17.10")
 {
 
-  if ((res = isdpkgvuln(pkg:"ntp", ver:"1:4.2.8p10+dfsg-5ubuntu3.3", rls:"UBUNTU17.10", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"ntp", ver:"1:4.2.8p10+dfsg-5ubuntu3.3", rls:"UBUNTU17.10")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -113,7 +113,7 @@ if(release == "UBUNTU17.10")
 if(release == "UBUNTU18.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"ntp", ver:"1:4.2.8p10+dfsg-5ubuntu7.1", rls:"UBUNTU18.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"ntp", ver:"1:4.2.8p10+dfsg-5ubuntu7.1", rls:"UBUNTU18.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -127,7 +127,7 @@ if(release == "UBUNTU18.04 LTS")
 if(release == "UBUNTU16.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"ntp", ver:"1:4.2.8p4+dfsg-3ubuntu5.9", rls:"UBUNTU16.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"ntp", ver:"1:4.2.8p4+dfsg-3ubuntu5.9", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);

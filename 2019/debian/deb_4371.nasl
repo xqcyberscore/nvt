@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4371.nasl 13837 2019-02-25 07:45:05Z mmartin $
+# $Id: deb_4371.nasl 14282 2019-03-18 14:55:18Z cfischer $
 #
 # Auto-generated from advisory DSA 4371-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704371");
-  script_version("$Revision: 13837 $");
+  script_version("$Revision: 14282 $");
   script_cve_id("CVE-2019-3462");
   script_name("Debian Security Advisory DSA 4371-1 (apt - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-25 08:45:05 +0100 (Mon, 25 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:55:18 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-01-22 00:00:00 +0100 (Tue, 22 Jan 2019)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -48,11 +48,8 @@ if(description)
   script_copyright("Copyright (c) 2019 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB9\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB9");
   script_tag(name:"affected", value:"apt on Debian Linux");
-  script_tag(name:"insight", value:"This package provides commandline tools for searching and
-managing as well as querying information about packages
-as a low-level access to all features of the libapt-pkg library.");
   script_tag(name:"solution", value:"For the stable distribution (stretch), this problem has been fixed in
 version 1.4.9.
 
@@ -76,32 +73,32 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"apt", ver:"1.4.9", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"apt", ver:"1.4.9", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"apt-doc", ver:"1.4.9", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"apt-doc", ver:"1.4.9", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"apt-transport-https", ver:"1.4.9", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"apt-transport-https", ver:"1.4.9", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"apt-utils", ver:"1.4.9", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"apt-utils", ver:"1.4.9", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libapt-inst2.0", ver:"1.4.9", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libapt-inst2.0", ver:"1.4.9", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libapt-pkg-dev", ver:"1.4.9", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libapt-pkg-dev", ver:"1.4.9", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libapt-pkg-doc", ver:"1.4.9", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libapt-pkg-doc", ver:"1.4.9", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libapt-pkg5.0", ver:"1.4.9", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libapt-pkg5.0", ver:"1.4.9", rls:"DEB9")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
 } else if (__pkg_match) {
   exit(99);

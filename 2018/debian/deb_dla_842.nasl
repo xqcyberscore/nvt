@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_842.nasl 11317 2018-09-11 08:57:27Z asteins $
+# $Id: deb_dla_842.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DLA 842-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.890842");
-  script_version("$Revision: 11317 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2016-9921", "CVE-2017-2615", "CVE-2017-2620", "CVE-2017-5898", "CVE-2017-5973");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 842-1] qemu-kvm security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 10:57:27 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-01-08 00:00:00 +0100 (Mon, 08 Jan 2018)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
@@ -48,16 +48,13 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB7\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB7");
   script_tag(name:"affected", value:"qemu-kvm on Debian Linux");
-  script_tag(name:"insight", value:"Using KVM, one can run multiple virtual PCs, each running unmodified Linux or
-Windows images. Each virtual machine has private virtualized hardware: a
-network card, disk, graphics adapter, etc.");
   script_tag(name:"solution", value:"For Debian 7 'Wheezy', these problems have been fixed in version
 1.1.2+dfsg-6+deb7u20.
 
 We recommend that you upgrade your qemu-kvm packages.");
-  script_tag(name:"summary",  value:"Several vulnerabilities were discovered in qemu-kvm, a full
+  script_tag(name:"summary", value:"Several vulnerabilities were discovered in qemu-kvm, a full
 virtualization solution for Linux hosts on x86 hardware with x86 guests.
 
 CVE-2017-2615
@@ -114,18 +111,18 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"kvm", ver:"1.1.2+dfsg-6+deb7u20", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"kvm", ver:"1.1.2+dfsg-6+deb7u20", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"qemu-kvm", ver:"1.1.2+dfsg-6+deb7u20", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"qemu-kvm", ver:"1.1.2+dfsg-6+deb7u20", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"qemu-kvm-dbg", ver:"1.1.2+dfsg-6+deb7u20", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"qemu-kvm-dbg", ver:"1.1.2+dfsg-6+deb7u20", rls:"DEB7")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
+} else if(__pkg_match) {
   exit(99);
 }

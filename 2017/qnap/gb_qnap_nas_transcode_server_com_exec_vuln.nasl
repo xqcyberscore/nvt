@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qnap_nas_transcode_server_com_exec_vuln.nasl 12260 2018-11-08 12:46:52Z cfischer $
+# $Id: gb_qnap_nas_transcode_server_com_exec_vuln.nasl 14300 2019-03-19 07:52:26Z mmartin $
 #
 # QNAP NAS 'Transcode Server' Command Execution Vulnerability
 #
@@ -30,11 +30,11 @@ CPE_PREFIX = "cpe:/h:qnap";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811727");
-  script_version("$Revision: 12260 $");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 14300 $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-2017-13067");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:46:52 +0100 (Thu, 08 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 08:52:26 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-09-01 10:43:16 +0530 (Fri, 01 Sep 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("QNAP NAS 'Transcode Server' Command Execution Vulnerability");

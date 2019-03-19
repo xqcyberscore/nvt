@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3852_1.nasl 13108 2019-01-17 07:34:03Z santu $
+# $Id: gb_ubuntu_USN_3852_1.nasl 14288 2019-03-18 16:34:17Z cfischer $
 #
 # Ubuntu Update for exiv2 USN-3852-1
 #
@@ -29,13 +29,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843867");
-  script_version("$Revision: 13108 $");
+  script_version("$Revision: 14288 $");
   script_cve_id("CVE-2017-9239", "CVE-2017-11591", "CVE-2017-11683", "CVE-2017-14859",
                 "CVE-2017-14862", "CVE-2017-14864", "CVE-2017-17669", "CVE-2018-16336",
                 "CVE-2018-1758", "CVE-2018-17581");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-17 08:34:03 +0100 (Thu, 17 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 17:34:17 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-01-11 04:00:25 +0100 (Fri, 11 Jan 2019)");
   script_name("Ubuntu Update for exiv2 USN-3852-1");
   script_category(ACT_GATHER_INFO);
@@ -83,13 +83,13 @@ res = "";
 if(release == "UBUNTU14.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"exiv2", ver:"0.23-1ubuntu2.2", rls:"UBUNTU14.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"exiv2", ver:"0.23-1ubuntu2.2", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libexiv2-12", ver:"0.23-1ubuntu2.2", rls:"UBUNTU14.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libexiv2-12", ver:"0.23-1ubuntu2.2", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -103,13 +103,13 @@ if(release == "UBUNTU14.04 LTS")
 if(release == "UBUNTU18.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"exiv2", ver:"0.25-3.1ubuntu0.18.04.2", rls:"UBUNTU18.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"exiv2", ver:"0.25-3.1ubuntu0.18.04.2", rls:"UBUNTU18.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libexiv2-14", ver:"0.25-3.1ubuntu0.18.04.2", rls:"UBUNTU18.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libexiv2-14", ver:"0.25-3.1ubuntu0.18.04.2", rls:"UBUNTU18.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -123,13 +123,13 @@ if(release == "UBUNTU18.04 LTS")
 if(release == "UBUNTU18.10")
 {
 
-  if ((res = isdpkgvuln(pkg:"exiv2", ver:"0.25-4ubuntu0.1", rls:"UBUNTU18.10", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"exiv2", ver:"0.25-4ubuntu0.1", rls:"UBUNTU18.10")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libexiv2-14", ver:"0.25-4ubuntu0.1", rls:"UBUNTU18.10", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libexiv2-14", ver:"0.25-4ubuntu0.1", rls:"UBUNTU18.10")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -143,13 +143,13 @@ if(release == "UBUNTU18.10")
 if(release == "UBUNTU16.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"exiv2", ver:"0.25-2.1ubuntu16.04.3", rls:"UBUNTU16.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"exiv2", ver:"0.25-2.1ubuntu16.04.3", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libexiv2-14", ver:"0.25-2.1ubuntu16.04.3", rls:"UBUNTU16.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libexiv2-14", ver:"0.25-2.1ubuntu16.04.3", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);

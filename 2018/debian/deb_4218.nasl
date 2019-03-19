@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4218.nasl 10127 2018-06-08 02:54:24Z ckuersteiner $
+# $Id: deb_4218.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DSA 4218-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704218");
-  script_version("$Revision: 10127 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2017-9951", "CVE-2018-1000115", "CVE-2018-1000127");
   script_name("Debian Security Advisory DSA 4218-1 (memcached - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 04:54:24 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-06-06 00:00:00 +0200 (Wed, 06 Jun 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -48,14 +48,8 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB[89]\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB[89]");
   script_tag(name:"affected", value:"memcached on Debian Linux");
-  script_tag(name:"insight", value:"Danga Interactive developed memcached to enhance the speed of LiveJournal.com,
-a site which was already doing 20 million+ dynamic page views per day for 1
-million users with a bunch of webservers and a bunch of database servers.
-memcached dropped the database load to almost nothing, yielding faster page
-load times for users, better resource utilization, and faster access to the
-databases on a memcache miss.");
   script_tag(name:"solution", value:"For the oldstable distribution (jessie), these problems have been fixed
 in version 1.4.21-1.1+deb8u2.
 
@@ -65,9 +59,10 @@ version 1.4.33-1+deb9u1.
 We recommend that you upgrade your memcached packages.
 
 For the detailed security status of memcached please refer to its
-security tracker page at:
-https://security-tracker.debian.org/tracker/memcached");
-  script_tag(name:"summary",  value:"Several vulnerabilities were discovered in memcached, a high-performance
+security tracker page linked in the references.");
+
+  script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/memcached");
+  script_tag(name:"summary", value:"Several vulnerabilities were discovered in memcached, a high-performance
 memory object caching system. The Common Vulnerabilities and Exposures
 project identifies the following problems:
 
@@ -77,7 +72,7 @@ Daniel Shapira reported a heap-based buffer over-read in memcached
 specially crafted requests to add/set a key and allowing a remote
 attacker to cause a denial of service.
 
-CVE-2018-1000115 
+CVE-2018-1000115
 It was reported that memcached listens to UDP by default. A remote
 attacker can take advantage of it to use the memcached service as a
 DDoS amplifier.
@@ -88,7 +83,7 @@ This update disables the UDP port by default. Listening on the UDP
 can be re-enabled in the /etc/memcached.conf (cf.
 /usr/share/doc/memcached/NEWS.Debian.gz).
 
-CVE-2018-1000127 
+CVE-2018-1000127
 An integer overflow was reported in memcached, resulting in resource
 leaks, data corruption, deadlocks or crashes.");
   script_tag(name:"vuldetect", value:"This check tests the installed software version using the apt package manager.");
@@ -101,15 +96,15 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"memcached", ver:"1.4.21-1.1+deb8u2", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"memcached", ver:"1.4.21-1.1+deb8u2", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"memcached", ver:"1.4.33-1+deb9u1", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"memcached", ver:"1.4.33-1+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
+} else if(__pkg_match) {
   exit(99);
 }

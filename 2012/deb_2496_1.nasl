@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2496_1.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: deb_2496_1.nasl 14275 2019-03-18 14:39:45Z cfischer $
 # Description: Auto-generated from advisory DSA 2496-1 (mysql-5.1)
 #
 # Authors:
@@ -25,13 +25,26 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-include("revisions-lib.inc");
-tag_insight = "Several issues have been discovered in the MySQL database server. The
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.71475");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
+  script_cve_id("CVE-2012-0583", "CVE-2012-1688", "CVE-2012-1690", "CVE-2012-1703", "CVE-2012-2122");
+  script_version("$Revision: 14275 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:39:45 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2012-08-10 03:06:25 -0400 (Fri, 10 Aug 2012)");
+  script_name("Debian Security Advisory DSA 2496-1 (mysql-5.1)");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 E-Soft Inc. http://www.securityspace.com");
+  script_family("Debian Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB6");
+  script_xref(name:"URL", value:"https://secure1.securityspace.com/smysecure/catid.html?in=DSA%202496-1");
+  script_tag(name:"insight", value:"Several issues have been discovered in the MySQL database server. The
 vulnerabilities are addressed by upgrading MySQL to a new upstream
 version, 5.1.63, which includes additional changes, such as performance
-improvements and corrections for data loss defects.  These changes are
-described in the MySQL release notes at:
-http://dev.mysql.com/doc/refman/5.1/en/news-5-1-x.html
+improvements and corrections for data loss defects.
 
 CVE-2012-2122, an authentication bypass vulnerability, occurs only when
 MySQL has been built in with certain optimisations enabled. The packages
@@ -44,81 +57,55 @@ version 5.1.63-0+squeeze1.
 
 For the testing distribution (wheezy), these problems has been fixed
 in version 5.1.62-1 of the mysql-5.1 package and version 5.5.24+dfsg-1
-of the mysql-5.5 package.
+of the mysql-5.5 package.");
 
-We recommend that you upgrade your MySQL packages.";
-tag_summary = "The remote host is missing an update to mysql-5.1
-announced via advisory DSA 2496-1.";
+  script_tag(name:"solution", value:"We recommend that you upgrade your MySQL packages.");
+  script_tag(name:"summary", value:"The remote host is missing an update to mysql-5.1
+announced via advisory DSA 2496-1.");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
-tag_solution = "https://secure1.securityspace.com/smysecure/catid.html?in=DSA%202496-1";
-
-if(description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.71475");
- script_tag(name:"cvss_base", value:"6.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
- script_cve_id("CVE-2012-0583", "CVE-2012-1688", "CVE-2012-1690", "CVE-2012-1703", "CVE-2012-2122");
- script_version("$Revision: 9352 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2012-08-10 03:06:25 -0400 (Fri, 10 Aug 2012)");
- script_name("Debian Security Advisory DSA 2496-1 (mysql-5.1)");
-
-
-
- script_category(ACT_GATHER_INFO);
-
- script_copyright("Copyright (c) 2012 E-Soft Inc. http://www.securityspace.com");
- script_family("Debian Local Security Checks");
- script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
- exit(0);
+  exit(0);
 }
 
-#
-# The script code starts here
-#
-
+include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
+
 res = "";
 report = "";
-if((res = isdpkgvuln(pkg:"libmysqlclient-dev", ver:"5.1.63-0+squeeze1", rls:"DEB6.0")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libmysqlclient-dev", ver:"5.1.63-0+squeeze1", rls:"DEB6")) != NULL) {
+  report += res;
 }
-if((res = isdpkgvuln(pkg:"libmysqlclient16", ver:"5.1.63-0+squeeze1", rls:"DEB6.0")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libmysqlclient16", ver:"5.1.63-0+squeeze1", rls:"DEB6")) != NULL) {
+  report += res;
 }
-if((res = isdpkgvuln(pkg:"libmysqld-dev", ver:"5.1.63-0+squeeze1", rls:"DEB6.0")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libmysqld-dev", ver:"5.1.63-0+squeeze1", rls:"DEB6")) != NULL) {
+  report += res;
 }
-if((res = isdpkgvuln(pkg:"libmysqld-pic", ver:"5.1.63-0+squeeze1", rls:"DEB6.0")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libmysqld-pic", ver:"5.1.63-0+squeeze1", rls:"DEB6")) != NULL) {
+  report += res;
 }
-if((res = isdpkgvuln(pkg:"mysql-client", ver:"5.1.63-0+squeeze1", rls:"DEB6.0")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"mysql-client", ver:"5.1.63-0+squeeze1", rls:"DEB6")) != NULL) {
+  report += res;
 }
-if((res = isdpkgvuln(pkg:"mysql-client-5.1", ver:"5.1.63-0+squeeze1", rls:"DEB6.0")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"mysql-client-5.1", ver:"5.1.63-0+squeeze1", rls:"DEB6")) != NULL) {
+  report += res;
 }
-if((res = isdpkgvuln(pkg:"mysql-common", ver:"5.1.63-0+squeeze1", rls:"DEB6.0")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"mysql-common", ver:"5.1.63-0+squeeze1", rls:"DEB6")) != NULL) {
+  report += res;
 }
-if((res = isdpkgvuln(pkg:"mysql-server", ver:"5.1.63-0+squeeze1", rls:"DEB6.0")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"mysql-server", ver:"5.1.63-0+squeeze1", rls:"DEB6")) != NULL) {
+  report += res;
 }
-if((res = isdpkgvuln(pkg:"mysql-server-5.1", ver:"5.1.63-0+squeeze1", rls:"DEB6.0")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"mysql-server-5.1", ver:"5.1.63-0+squeeze1", rls:"DEB6")) != NULL) {
+  report += res;
 }
-if((res = isdpkgvuln(pkg:"mysql-server-core-5.1", ver:"5.1.63-0+squeeze1", rls:"DEB6.0")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"mysql-server-core-5.1", ver:"5.1.63-0+squeeze1", rls:"DEB6")) != NULL) {
+  report += res;
 }
 
 if(report != "") {
-    security_message(data:report);
+  security_message(data:report);
 } else if (__pkg_match) {
-    exit(99); # Not vulnerable.
+  exit(99);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3810_1.nasl 12497 2018-11-23 08:28:21Z cfischer $
+# $Id: gb_ubuntu_USN_3810_1.nasl 14288 2019-03-18 16:34:17Z cfischer $
 #
 # Ubuntu Update for ppp USN-3810-1
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843810");
-  script_version("$Revision: 12497 $");
+  script_version("$Revision: 14288 $");
   script_cve_id("CVE-2018-11574");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 17:34:17 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-11-07 06:02:45 +0100 (Wed, 07 Nov 2018)");
   script_name("Ubuntu Update for ppp USN-3810-1");
   script_category(ACT_GATHER_INFO);
@@ -78,7 +78,7 @@ res = "";
 if(release == "UBUNTU14.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"ppp", ver:"2.4.5-5.1ubuntu2.3", rls:"UBUNTU14.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"ppp", ver:"2.4.5-5.1ubuntu2.3", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -92,7 +92,7 @@ if(release == "UBUNTU14.04 LTS")
 if(release == "UBUNTU18.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"ppp", ver:"2.4.7-2+2ubuntu1.1", rls:"UBUNTU18.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"ppp", ver:"2.4.7-2+2ubuntu1.1", rls:"UBUNTU18.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -106,7 +106,7 @@ if(release == "UBUNTU18.04 LTS")
 if(release == "UBUNTU16.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"ppp", ver:"2.4.7-1+2ubuntu1.16.04.1", rls:"UBUNTU16.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"ppp", ver:"2.4.7-1+2ubuntu1.16.04.1", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);

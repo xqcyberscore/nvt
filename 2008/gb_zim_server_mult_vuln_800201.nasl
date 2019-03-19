@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zim_server_mult_vuln_800201.nasl 12602 2018-11-30 14:36:58Z cfischer $
+# $Id: gb_zim_server_mult_vuln_800201.nasl 14293 2019-03-18 18:52:01Z cfischer $
 #
 # ZIM Server Multiple Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800201");
-  script_version("$Revision: 12602 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
+  script_version("$Revision: 14293 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 19:52:01 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2008-12-03 15:02:49 +0100 (Wed, 03 Dec 2008)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -65,7 +65,7 @@ if(description)
   script_tag(name:"summary", value:"The host is installed with ZIM Server and is prone to multiple
   vulnerabilities.");
 
-  script_xref(name:"URL", value:"http://www.zilab.com/zim.shtml.");
+  script_xref(name:"URL", value:"http://www.zilab.com/zim.shtml");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1584.nasl 12832 2018-12-19 07:49:53Z asteins $
+# $Id: deb_dla_1584.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DLA 1584-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891584");
-  script_version("$Revision: 12832 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2014-10077");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1584-1] ruby-i18n security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-19 08:49:53 +0100 (Wed, 19 Dec 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-11-21 00:00:00 +0100 (Wed, 21 Nov 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -48,17 +48,13 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8");
   script_tag(name:"affected", value:"ruby-i18n on Debian Linux");
-  script_tag(name:"insight", value:"Implementation of the Ruby on Rails I18n core API. This is the same I18n
-library included in the Ruby on Rails framework, but provided outside of
-that framework for those who wish to use it without pulling the entire
-Ruby on Rails framework.");
   script_tag(name:"solution", value:"For Debian 8 'Jessie', this issue has been fixed in ruby-i18n version
 0.6.9-2+deb8u1.
 
 We recommend that you upgrade your ruby-i18n packages.");
-  script_tag(name:"summary",  value:"It was discovered that there was a remote denial-of-service vulnerability
+  script_tag(name:"summary", value:"It was discovered that there was a remote denial-of-service vulnerability
 in ruby-i18n, a I18n and localization solution for Ruby.
 
 An application crash could be engineering a situation where `:some_key` is
@@ -73,12 +69,12 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"ruby-i18n", ver:"0.6.9-2+deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"ruby-i18n", ver:"0.6.9-2+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
+} else if(__pkg_match) {
   exit(99);
 }

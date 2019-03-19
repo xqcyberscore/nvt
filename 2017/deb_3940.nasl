@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_3940.nasl 7101 2017-09-12 06:15:03Z asteins $
+# $Id: deb_3940.nasl 14280 2019-03-18 14:50:45Z cfischer $
 #
 # Auto-generated from advisory DSA 3940-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.703940");
-  script_version("$Revision: 7101 $");
+  script_version("$Revision: 14280 $");
   script_cve_id("CVE-2017-12836");
   script_name("Debian Security Advisory DSA 3940-1 (cvs - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-12 08:15:03 +0200 (Tue, 12 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:50:45 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-08-13 00:00:00 +0200 (Sun, 13 Aug 2017)");
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
@@ -48,15 +48,8 @@ if(description)
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB(9|8)");
   script_tag(name:"affected", value:"cvs on Debian Linux");
-  script_tag(name:"insight", value:"CVS is a version control system, which allows you to keep access
-to old versions of files (usually source code), keep a log of
-who, when, and why changes occurred, etc., like RCS or SCCS.
-It handles multiple developers, multiple directories, triggers to
-enable/log/control various operations, and can work over a wide
-area network. The texinfo manual provides further information on
-more tasks that it can perform.");
   script_tag(name:"solution", value:"For the oldstable distribution (jessie), this problem has been fixed
 in version 2:1.12.13+real-15+deb8u1.
 
@@ -64,7 +57,7 @@ For the stable distribution (stretch), this problem has been fixed in
 version 2:1.12.13+real-22+deb9u1.
 
 We recommend that you upgrade your cvs packages.");
-  script_tag(name:"summary",  value:"It was discovered that CVS, a centralised version control system, did
+  script_tag(name:"summary", value:"It was discovered that CVS, a centralised version control system, did
 not correctly handle maliciously constructed repository URLs, which
 allowed an attacker to run an arbitrary shell command.");
   script_tag(name:"vuldetect", value:"This check tests the installed software version using the apt package manager.");
@@ -77,15 +70,15 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"cvs", ver:"2:1.12.13+real-22+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"cvs", ver:"2:1.12.13+real-22+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"cvs", ver:"2:1.12.13+real-15+deb8u1", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"cvs", ver:"2:1.12.13+real-15+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
-  exit(99); # Not vulnerable.
+} else if(__pkg_match) {
+  exit(99);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4126.nasl 9226 2018-03-28 03:48:50Z ckuersteiner $
+# $Id: deb_4126.nasl 14275 2019-03-18 14:39:45Z cfischer $
 #
 # Auto-generated from advisory DSA 4126-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704126");
-  script_version("$Revision: 9226 $");
+  script_version("$Revision: 14275 $");
   script_cve_id("CVE-2018-0489");
   script_name("Debian Security Advisory DSA 4126-1 (xmltooling - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-28 05:48:50 +0200 (Wed, 28 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:39:45 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-02-27 00:00:00 +0100 (Tue, 27 Feb 2018)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
@@ -48,7 +48,7 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB(9|8)");
   script_tag(name:"affected", value:"xmltooling on Debian Linux");
   script_tag(name:"solution", value:"For the oldstable distribution (jessie), this problem has been fixed
 in version 1.5.3-2+deb8u3.
@@ -59,13 +59,12 @@ version 1.6.0-4+deb9u1.
 We recommend that you upgrade your xmltooling packages.
 
 For the detailed security status of xmltooling please refer to its
-security tracker page at:
-https://security-tracker.debian.org/tracker/xmltooling");
-  script_tag(name:"summary",  value:"Kelby Ludwig and Scott Cantor discovered that the Shibboleth service
+security tracker page linked in the references.");
+
+  script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/xmltooling");
+  script_tag(name:"summary", value:"Kelby Ludwig and Scott Cantor discovered that the Shibboleth service
 provider is vulnerable to impersonation attacks and information
-disclosure due to incorrect XML parsing. For additional details please
-refer to the upstream advisory at
-https://shibboleth.net/community/advisories/secadv_20180227.txt");
+disclosure due to incorrect XML parsing.");
   script_tag(name:"vuldetect", value:"This check tests the installed software version using the apt package manager.");
 
   exit(0);
@@ -76,33 +75,33 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"libxmltooling-dev", ver:"1.6.0-4+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libxmltooling-dev", ver:"1.6.0-4+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libxmltooling-doc", ver:"1.6.0-4+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libxmltooling-doc", ver:"1.6.0-4+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libxmltooling7", ver:"1.6.0-4+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libxmltooling7", ver:"1.6.0-4+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"xmltooling-schemas", ver:"1.6.0-4+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"xmltooling-schemas", ver:"1.6.0-4+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libxmltooling-dev", ver:"1.5.3-2+deb8u3", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libxmltooling-dev", ver:"1.5.3-2+deb8u3", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libxmltooling-doc", ver:"1.5.3-2+deb8u3", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libxmltooling-doc", ver:"1.5.3-2+deb8u3", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libxmltooling6", ver:"1.5.3-2+deb8u3", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libxmltooling6", ver:"1.5.3-2+deb8u3", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"xmltooling-schemas", ver:"1.5.3-2+deb8u3", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"xmltooling-schemas", ver:"1.5.3-2+deb8u3", rls:"DEB8")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
-  exit(99); # Not vulnerable.
+} else if(__pkg_match) {
+  exit(99);
 }

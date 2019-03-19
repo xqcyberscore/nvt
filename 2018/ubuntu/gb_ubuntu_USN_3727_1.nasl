@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3727_1.nasl 14140 2019-03-13 12:26:09Z cfischer $
+# $Id: gb_ubuntu_USN_3727_1.nasl 14288 2019-03-18 16:34:17Z cfischer $
 #
 # Ubuntu Update for bouncycastle USN-3727-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843603");
-  script_version("$Revision: 14140 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-13 13:26:09 +0100 (Wed, 13 Mar 2019) $");
+  script_version("$Revision: 14288 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 17:34:17 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-08-02 05:48:07 +0200 (Thu, 02 Aug 2018)");
   script_cve_id("CVE-2015-6644", "CVE-2015-7940", "CVE-2016-1000338", "CVE-2016-1000339",
                 "CVE-2016-1000341", "CVE-2016-1000342", "CVE-2016-1000343", "CVE-2016-1000345",
@@ -71,25 +71,25 @@ res = "";
 if(release == "UBUNTU14.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"libbcmail-java", ver:"1.49+dfsg-2ubuntu0.1", rls:"UBUNTU14.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libbcmail-java", ver:"1.49+dfsg-2ubuntu0.1", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libbcpg-java", ver:"1.49+dfsg-2ubuntu0.1", rls:"UBUNTU14.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libbcpg-java", ver:"1.49+dfsg-2ubuntu0.1", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libbcpkix-java", ver:"1.49+dfsg-2ubuntu0.1", rls:"UBUNTU14.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libbcpkix-java", ver:"1.49+dfsg-2ubuntu0.1", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libbcprov-java", ver:"1.49+dfsg-2ubuntu0.1", rls:"UBUNTU14.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libbcprov-java", ver:"1.49+dfsg-2ubuntu0.1", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);

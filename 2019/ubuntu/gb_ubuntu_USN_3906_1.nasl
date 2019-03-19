@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843931");
-  script_version("$Revision: 14166 $");
+  script_version("$Revision: 14288 $");
   script_cve_id("CVE-2018-10779", "CVE-2018-12900", "CVE-2018-17000", "CVE-2018-19210", "CVE-2019-6128", "CVE-2019-7663");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-14 08:20:11 +0100 (Thu, 14 Mar 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 17:34:17 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-03-13 04:09:14 +0100 (Wed, 13 Mar 2019)");
   script_name("Ubuntu Update for tiff USN-3906-1");
   script_category(ACT_GATHER_INFO);
@@ -71,13 +71,13 @@ res = "";
 if(release == "UBUNTU14.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"libtiff-tools", ver:"4.0.3-7ubuntu0.11", rls:"UBUNTU14.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libtiff-tools", ver:"4.0.3-7ubuntu0.11", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libtiff5", ver:"4.0.3-7ubuntu0.11", rls:"UBUNTU14.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libtiff5", ver:"4.0.3-7ubuntu0.11", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -91,13 +91,13 @@ if(release == "UBUNTU14.04 LTS")
 if(release == "UBUNTU18.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"libtiff-tools", ver:"4.0.9-5ubuntu0.2", rls:"UBUNTU18.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libtiff-tools", ver:"4.0.9-5ubuntu0.2", rls:"UBUNTU18.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libtiff5", ver:"4.0.9-5ubuntu0.2", rls:"UBUNTU18.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libtiff5", ver:"4.0.9-5ubuntu0.2", rls:"UBUNTU18.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -111,13 +111,13 @@ if(release == "UBUNTU18.04 LTS")
 if(release == "UBUNTU18.10")
 {
 
-  if ((res = isdpkgvuln(pkg:"libtiff-tools", ver:"4.0.9-6ubuntu0.2", rls:"UBUNTU18.10", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libtiff-tools", ver:"4.0.9-6ubuntu0.2", rls:"UBUNTU18.10")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libtiff5", ver:"4.0.9-6ubuntu0.2", rls:"UBUNTU18.10", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libtiff5", ver:"4.0.9-6ubuntu0.2", rls:"UBUNTU18.10")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -131,13 +131,13 @@ if(release == "UBUNTU18.10")
 if(release == "UBUNTU16.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"libtiff-tools", ver:"4.0.6-1ubuntu0.6", rls:"UBUNTU16.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libtiff-tools", ver:"4.0.6-1ubuntu0.6", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libtiff5", ver:"4.0.6-1ubuntu0.6", rls:"UBUNTU16.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libtiff5", ver:"4.0.6-1ubuntu0.6", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);

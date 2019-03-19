@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1628.nasl 13177 2019-01-21 07:53:27Z mmartin $
+# $Id: deb_dla_1628.nasl 14274 2019-03-18 14:38:37Z cfischer $
 #
 # Auto-generated from advisory DLA 1628-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,11 +31,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891628");
-  script_version("$Revision: 13177 $");
+  script_version("$Revision: 14274 $");
   script_cve_id("CVE-2018-18873", "CVE-2018-19139", "CVE-2018-19539", "CVE-2018-19540", "CVE-2018-19541",
                 "CVE-2018-19542", "CVE-2018-20570", "CVE-2018-20584", "CVE-2018-20622");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1628-1] jasper security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-21 08:53:27 +0100 (Mon, 21 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:38:37 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-01-03 00:00:00 +0100 (Thu, 03 Jan 2019)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -49,7 +49,7 @@ if(description)
   script_copyright("Copyright (c) 2019 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8");
   script_tag(name:"affected", value:"jasper on Debian Linux");
   script_tag(name:"solution", value:"For Debian 8 'Jessie', these problems have been fixed in version
 1.900.1-debian1-2.4+deb8u5.
@@ -69,17 +69,17 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"libjasper-dev", ver:"1.900.1-debian1-2.4+deb8u5", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libjasper-dev", ver:"1.900.1-debian1-2.4+deb8u5", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libjasper-runtime", ver:"1.900.1-debian1-2.4+deb8u5", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libjasper-runtime", ver:"1.900.1-debian1-2.4+deb8u5", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libjasper1", ver:"1.900.1-debian1-2.4+deb8u5", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libjasper1", ver:"1.900.1-debian1-2.4+deb8u5", rls:"DEB8")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
 } else if (__pkg_match) {
   exit(99);

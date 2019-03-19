@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3880_1.nasl 13517 2019-02-07 07:51:12Z mmartin $
+# $Id: gb_ubuntu_USN_3880_1.nasl 14288 2019-03-18 16:34:17Z cfischer $
 #
 # Ubuntu Update for linux USN-3880-1
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843896");
-  script_version("$Revision: 13517 $");
+  script_version("$Revision: 14288 $");
   script_cve_id("CVE-2018-1066", "CVE-2018-17972", "CVE-2018-18281", "CVE-2018-9568");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-07 08:51:12 +0100 (Thu, 07 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 17:34:17 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-02-05 04:04:44 +0100 (Tue, 05 Feb 2019)");
   script_name("Ubuntu Update for linux USN-3880-1");
   script_category(ACT_GATHER_INFO);
@@ -93,97 +93,97 @@ res = "";
 if(release == "UBUNTU14.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"linux-image-3.13.0-165-generic", ver:"3.13.0-165.215", rls:"UBUNTU14.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"linux-image-3.13.0-165-generic", ver:"3.13.0-165.215", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"linux-image-3.13.0-165-generic-lpae", ver:"3.13.0-165.215", rls:"UBUNTU14.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"linux-image-3.13.0-165-generic-lpae", ver:"3.13.0-165.215", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"linux-image-3.13.0-165-lowlatency", ver:"3.13.0-165.215", rls:"UBUNTU14.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"linux-image-3.13.0-165-lowlatency", ver:"3.13.0-165.215", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"linux-image-3.13.0-165-powerpc-e500", ver:"3.13.0-165.215", rls:"UBUNTU14.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"linux-image-3.13.0-165-powerpc-e500", ver:"3.13.0-165.215", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"linux-image-3.13.0-165-powerpc-e500mc", ver:"3.13.0-165.215", rls:"UBUNTU14.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"linux-image-3.13.0-165-powerpc-e500mc", ver:"3.13.0-165.215", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"linux-image-3.13.0-165-powerpc-smp", ver:"3.13.0-165.215", rls:"UBUNTU14.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"linux-image-3.13.0-165-powerpc-smp", ver:"3.13.0-165.215", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"linux-image-3.13.0-165-powerpc64-emb", ver:"3.13.0-165.215", rls:"UBUNTU14.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"linux-image-3.13.0-165-powerpc64-emb", ver:"3.13.0-165.215", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"linux-image-3.13.0-165-powerpc64-smp", ver:"3.13.0-165.215", rls:"UBUNTU14.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"linux-image-3.13.0-165-powerpc64-smp", ver:"3.13.0-165.215", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"linux-image-generic", ver:"3.13.0.165.175", rls:"UBUNTU14.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"linux-image-generic", ver:"3.13.0.165.175", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"linux-image-generic-lpae", ver:"3.13.0.165.175", rls:"UBUNTU14.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"linux-image-generic-lpae", ver:"3.13.0.165.175", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"linux-image-lowlatency", ver:"3.13.0.165.175", rls:"UBUNTU14.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"linux-image-lowlatency", ver:"3.13.0.165.175", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"linux-image-powerpc-e500", ver:"3.13.0.165.175", rls:"UBUNTU14.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"linux-image-powerpc-e500", ver:"3.13.0.165.175", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"linux-image-powerpc-e500mc", ver:"3.13.0.165.175", rls:"UBUNTU14.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"linux-image-powerpc-e500mc", ver:"3.13.0.165.175", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"linux-image-powerpc-smp", ver:"3.13.0.165.175", rls:"UBUNTU14.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"linux-image-powerpc-smp", ver:"3.13.0.165.175", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"linux-image-powerpc64-emb", ver:"3.13.0.165.175", rls:"UBUNTU14.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"linux-image-powerpc64-emb", ver:"3.13.0.165.175", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"linux-image-powerpc64-smp", ver:"3.13.0.165.175", rls:"UBUNTU14.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"linux-image-powerpc64-smp", ver:"3.13.0.165.175", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);

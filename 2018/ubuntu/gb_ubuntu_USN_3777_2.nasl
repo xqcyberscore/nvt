@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3777_2.nasl 12619 2018-12-03 09:51:24Z mmartin $
+# $Id: gb_ubuntu_USN_3777_2.nasl 14288 2019-03-18 16:34:17Z cfischer $
 #
 # Ubuntu Update for linux-gcp USN-3777-2
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843644");
-  script_version("$Revision: 12619 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-03 10:51:24 +0100 (Mon, 03 Dec 2018) $");
+  script_version("$Revision: 14288 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 17:34:17 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-10-02 08:07:24 +0200 (Tue, 02 Oct 2018)");
   script_cve_id("CVE-2018-17182", "CVE-2018-15594", "CVE-2018-15572", "CVE-2018-10853",
                 "CVE-2018-14633", "CVE-2018-6554", "CVE-2018-6555");
@@ -101,61 +101,61 @@ res = "";
 if(release == "UBUNTU16.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"linux-image-4.15.0-1021-gcp", ver:"4.15.0-1021.22~16.04.1", rls:"UBUNTU16.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"linux-image-4.15.0-1021-gcp", ver:"4.15.0-1021.22~16.04.1", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"linux-image-4.15.0-36-generic", ver:"4.15.0-36.39~16.04.1", rls:"UBUNTU16.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"linux-image-4.15.0-36-generic", ver:"4.15.0-36.39~16.04.1", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"linux-image-4.15.0-36-generic-lpae", ver:"4.15.0-36.39~16.04.1", rls:"UBUNTU16.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"linux-image-4.15.0-36-generic-lpae", ver:"4.15.0-36.39~16.04.1", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"linux-image-4.15.0-36-lowlatency", ver:"4.15.0-36.39~16.04.1", rls:"UBUNTU16.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"linux-image-4.15.0-36-lowlatency", ver:"4.15.0-36.39~16.04.1", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"linux-image-gcp", ver:"4.15.0.1021.35", rls:"UBUNTU16.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"linux-image-gcp", ver:"4.15.0.1021.35", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"linux-image-generic-hwe-16.04", ver:"4.15.0.36.59", rls:"UBUNTU16.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"linux-image-generic-hwe-16.04", ver:"4.15.0.36.59", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"linux-image-generic-lpae-hwe-16.04", ver:"4.15.0.36.59", rls:"UBUNTU16.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"linux-image-generic-lpae-hwe-16.04", ver:"4.15.0.36.59", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"linux-image-gke", ver:"4.15.0.1021.35", rls:"UBUNTU16.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"linux-image-gke", ver:"4.15.0.1021.35", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"linux-image-lowlatency-hwe-16.04", ver:"4.15.0.36.59", rls:"UBUNTU16.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"linux-image-lowlatency-hwe-16.04", ver:"4.15.0.36.59", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"linux-image-oem", ver:"4.15.0.36.59", rls:"UBUNTU16.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"linux-image-oem", ver:"4.15.0.36.59", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);

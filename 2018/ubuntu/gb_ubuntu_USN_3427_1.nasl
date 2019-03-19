@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3427_1.nasl 12130 2018-10-26 13:59:17Z cfischer $
+# $Id: gb_ubuntu_USN_3427_1.nasl 14288 2019-03-18 16:34:17Z cfischer $
 #
 # Ubuntu Update for emacs24 USN-3427-1
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843794");
-  script_version("$Revision: 12130 $");
+  script_version("$Revision: 14288 $");
   script_cve_id("CVE-2017-14482");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 15:59:17 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 17:34:17 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:21:14 +0200 (Fri, 26 Oct 2018)");
   script_name("Ubuntu Update for emacs24 USN-3427-1");
   script_category(ACT_GATHER_INFO);
@@ -76,7 +76,7 @@ res = "";
 if(release == "UBUNTU14.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"emacs24", ver:"24.3+1-2ubuntu1.1", rls:"UBUNTU14.04 LTS", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"emacs24", ver:"24.3+1-2ubuntu1.1", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -90,7 +90,7 @@ if(release == "UBUNTU14.04 LTS")
 if(release == "UBUNTU16.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"emacs24", ver:"24.5+1-6ubuntu1.1", rls:"UBUNTU16.04 LTS", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"emacs24", ver:"24.5+1-6ubuntu1.1", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);

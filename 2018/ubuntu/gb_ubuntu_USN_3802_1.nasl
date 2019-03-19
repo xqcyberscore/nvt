@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3802_1.nasl 13338 2019-01-29 07:44:39Z mmartin $
+# $Id: gb_ubuntu_USN_3802_1.nasl 14288 2019-03-18 16:34:17Z cfischer $
 #
 # Ubuntu Update for xorg-server USN-3802-1
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843800");
-  script_version("$Revision: 13338 $");
+  script_version("$Revision: 14288 $");
   script_cve_id("CVE-2018-14665");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-29 08:44:39 +0100 (Tue, 29 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 17:34:17 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-10-27 06:24:24 +0200 (Sat, 27 Oct 2018)");
   script_name("Ubuntu Update for xorg-server USN-3802-1");
   script_category(ACT_GATHER_INFO);
@@ -79,7 +79,7 @@ res = "";
 if(release == "UBUNTU18.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"xserver-xorg-core", ver:"2:1.19.6-1ubuntu4.2", rls:"UBUNTU18.04 LTS", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"xserver-xorg-core", ver:"2:1.19.6-1ubuntu4.2", rls:"UBUNTU18.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -93,7 +93,7 @@ if(release == "UBUNTU18.04 LTS")
 if(release == "UBUNTU18.10")
 {
 
-  if ((res = isdpkgvuln(pkg:"xserver-xorg-core", ver:"2:1.20.1-3ubuntu2.1", rls:"UBUNTU18.10", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"xserver-xorg-core", ver:"2:1.20.1-3ubuntu2.1", rls:"UBUNTU18.10")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -107,7 +107,7 @@ if(release == "UBUNTU18.10")
 if(release == "UBUNTU16.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"xserver-xorg-core-hwe-16.04", ver:"2:1.19.6-1ubuntu4.1~16.04.2", rls:"UBUNTU16.04 LTS", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"xserver-xorg-core-hwe-16.04", ver:"2:1.19.6-1ubuntu4.1~16.04.2", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);

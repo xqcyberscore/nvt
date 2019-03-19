@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_3933.nasl 6906 2017-08-11 13:21:18Z cfischer $
+# $Id: deb_3933.nasl 14275 2019-03-18 14:39:45Z cfischer $
 #
 # Auto-generated from advisory DSA 3933-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.703933");
-  script_version("$Revision: 6906 $");
+  script_version("$Revision: 14275 $");
   script_cve_id("CVE-2017-9359", "CVE-2017-9372");
   script_name("Debian Security Advisory DSA 3933-1 (pjproject - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-11 15:21:18 +0200 (Fri, 11 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:39:45 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-08-10 00:00:00 +0200 (Thu, 10 Aug 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -48,7 +48,7 @@ if(description)
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8");
   script_tag(name:"affected", value:"pjproject on Debian Linux");
   script_tag(name:"solution", value:"For the oldstable distribution (jessie), these problems have been fixed
 in version 2.1.0.0.ast20130823-1+deb8u1.
@@ -57,7 +57,7 @@ For the stable distribution (stretch), these problems had been fixed
 prior to the initial release.
 
 We recommend that you upgrade your pjproject packages.");
-  script_tag(name:"summary",  value:"Two vulnerabilities were found in the PJSIP/PJProject communication
+  script_tag(name:"summary", value:"Two vulnerabilities were found in the PJSIP/PJProject communication
 library, which may result in denial of service.");
   script_tag(name:"vuldetect", value:"This check tests the installed software version using the apt package manager.");
 
@@ -69,45 +69,45 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"libpj2", ver:"2.1.0.0.ast20130823-1+deb8u1", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libpj2", ver:"2.1.0.0.ast20130823-1+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libpjlib-util2", ver:"2.1.0.0.ast20130823-1+deb8u1", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libpjlib-util2", ver:"2.1.0.0.ast20130823-1+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libpjmedia-audiodev2", ver:"2.1.0.0.ast20130823-1+deb8u1", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libpjmedia-audiodev2", ver:"2.1.0.0.ast20130823-1+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libpjmedia-codec2", ver:"2.1.0.0.ast20130823-1+deb8u1", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libpjmedia-codec2", ver:"2.1.0.0.ast20130823-1+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libpjmedia-videodev2", ver:"2.1.0.0.ast20130823-1+deb8u1", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libpjmedia-videodev2", ver:"2.1.0.0.ast20130823-1+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libpjmedia2", ver:"2.1.0.0.ast20130823-1+deb8u1", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libpjmedia2", ver:"2.1.0.0.ast20130823-1+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libpjnath2", ver:"2.1.0.0.ast20130823-1+deb8u1", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libpjnath2", ver:"2.1.0.0.ast20130823-1+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libpjproject-dev", ver:"2.1.0.0.ast20130823-1+deb8u1", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libpjproject-dev", ver:"2.1.0.0.ast20130823-1+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libpjsip-simple2", ver:"2.1.0.0.ast20130823-1+deb8u1", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libpjsip-simple2", ver:"2.1.0.0.ast20130823-1+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libpjsip-ua2", ver:"2.1.0.0.ast20130823-1+deb8u1", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libpjsip-ua2", ver:"2.1.0.0.ast20130823-1+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libpjsip2", ver:"2.1.0.0.ast20130823-1+deb8u1", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libpjsip2", ver:"2.1.0.0.ast20130823-1+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libpjsua2", ver:"2.1.0.0.ast20130823-1+deb8u1", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libpjsua2", ver:"2.1.0.0.ast20130823-1+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
-  exit(99); # Not vulnerable.
+} else if(__pkg_match) {
+  exit(99);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4077.nasl 8493 2018-01-23 06:43:13Z ckuersteiner $
+# $Id: deb_4077.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DSA 4077-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704077");
-  script_version("$Revision: 8493 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2017-17784", "CVE-2017-17785", "CVE-2017-17786", "CVE-2017-17787", "CVE-2017-17788", "CVE-2017-17789");
   script_name("Debian Security Advisory DSA 4077-1 (gimp - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-23 07:43:13 +0100 (Tue, 23 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-12-30 00:00:00 +0100 (Sat, 30 Dec 2017)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -48,14 +48,8 @@ if(description)
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB(9|8)");
   script_tag(name:"affected", value:"gimp on Debian Linux");
-  script_tag(name:"insight", value:"GIMP is an advanced picture editor. You can use it to edit, enhance, and
-retouch photos and scans, create drawings, and make your own images.
-It has a large collection of professional-level editing tools and
-filters, similar to the ones you might find in Photoshop. Numerous
-fine-control settings and features like layers, paths, masks, and
-scripting give you total control over your images.");
   script_tag(name:"solution", value:"For the oldstable distribution (jessie), these problems have been fixed
 in version 2.8.14-1+deb8u2.
 
@@ -65,9 +59,10 @@ version 2.8.18-1+deb9u1.
 We recommend that you upgrade your gimp packages.
 
 For the detailed security status of gimp please refer to its security
-tracker page at:
-https://security-tracker.debian.org/tracker/gimp");
-  script_tag(name:"summary",  value:"Several vulnerabilities were discovered in GIMP, the GNU Image
+tracker page linked in the references.");
+
+  script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/gimp");
+  script_tag(name:"summary", value:"Several vulnerabilities were discovered in GIMP, the GNU Image
 Manipulation Program, which could result in denial of service
 (application crash) or potentially the execution of arbitrary code if
 malformed files are opened.");
@@ -81,45 +76,45 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"gimp", ver:"2.8.18-1+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"gimp", ver:"2.8.18-1+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"gimp-data", ver:"2.8.18-1+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"gimp-data", ver:"2.8.18-1+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"gimp-dbg", ver:"2.8.18-1+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"gimp-dbg", ver:"2.8.18-1+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libgimp2.0", ver:"2.8.18-1+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libgimp2.0", ver:"2.8.18-1+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libgimp2.0-dev", ver:"2.8.18-1+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libgimp2.0-dev", ver:"2.8.18-1+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libgimp2.0-doc", ver:"2.8.18-1+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libgimp2.0-doc", ver:"2.8.18-1+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"gimp", ver:"2.8.14-1+deb8u2", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"gimp", ver:"2.8.14-1+deb8u2", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"gimp-data", ver:"2.8.14-1+deb8u2", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"gimp-data", ver:"2.8.14-1+deb8u2", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"gimp-dbg", ver:"2.8.14-1+deb8u2", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"gimp-dbg", ver:"2.8.14-1+deb8u2", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libgimp2.0", ver:"2.8.14-1+deb8u2", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libgimp2.0", ver:"2.8.14-1+deb8u2", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libgimp2.0-dev", ver:"2.8.14-1+deb8u2", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libgimp2.0-dev", ver:"2.8.14-1+deb8u2", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libgimp2.0-doc", ver:"2.8.14-1+deb8u2", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libgimp2.0-doc", ver:"2.8.14-1+deb8u2", rls:"DEB8")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
-  exit(99); # Not vulnerable.
+} else if(__pkg_match) {
+  exit(99);
 }

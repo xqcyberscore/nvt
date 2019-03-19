@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3844_1.nasl 14008 2019-03-06 07:38:19Z mmartin $
+# $Id: gb_ubuntu_USN_3844_1.nasl 14288 2019-03-18 16:34:17Z cfischer $
 #
 # Ubuntu Update for firefox USN-3844-1
 #
@@ -29,13 +29,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843853");
-  script_version("$Revision: 14008 $");
+  script_version("$Revision: 14288 $");
   script_cve_id("CVE-2018-12405", "CVE-2018-12406", "CVE-2018-12407",
                   "CVE-2018-17466", "CVE-2018-18492", "CVE-2018-18493", "CVE-2018-18494",
                 "CVE-2018-18498", "CVE-2018-18495", "CVE-2018-18497");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-06 08:38:19 +0100 (Wed, 06 Mar 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 17:34:17 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-12-12 07:47:50 +0100 (Wed, 12 Dec 2018)");
   script_name("Ubuntu Update for firefox USN-3844-1");
   script_category(ACT_GATHER_INFO);
@@ -88,7 +88,7 @@ res = "";
 if(release == "UBUNTU14.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"firefox", ver:"64.0+build3-0ubuntu0.14.04.1", rls:"UBUNTU14.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"firefox", ver:"64.0+build3-0ubuntu0.14.04.1", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -102,7 +102,7 @@ if(release == "UBUNTU14.04 LTS")
 if(release == "UBUNTU18.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"firefox", ver:"64.0+build3-0ubuntu0.18.04.1", rls:"UBUNTU18.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"firefox", ver:"64.0+build3-0ubuntu0.18.04.1", rls:"UBUNTU18.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -116,7 +116,7 @@ if(release == "UBUNTU18.04 LTS")
 if(release == "UBUNTU18.10")
 {
 
-  if ((res = isdpkgvuln(pkg:"firefox", ver:"64.0+build3-0ubuntu0.18.10.1", rls:"UBUNTU18.10", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"firefox", ver:"64.0+build3-0ubuntu0.18.10.1", rls:"UBUNTU18.10")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -130,7 +130,7 @@ if(release == "UBUNTU18.10")
 if(release == "UBUNTU16.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"firefox", ver:"64.0+build3-0ubuntu0.16.04.1", rls:"UBUNTU16.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"firefox", ver:"64.0+build3-0ubuntu0.16.04.1", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);

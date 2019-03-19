@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4302.nasl 12496 2018-11-23 03:21:34Z ckuersteiner $
+# $Id: deb_4302.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DSA 4302-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704302");
-  script_version("$Revision: 12496 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2018-16947", "CVE-2018-16948", "CVE-2018-16949");
   script_name("Debian Security Advisory DSA 4302-1 (openafs - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 04:21:34 +0100 (Fri, 23 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-09-23 00:00:00 +0200 (Sun, 23 Sep 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -48,42 +48,39 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB9\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB9");
   script_tag(name:"affected", value:"openafs on Debian Linux");
-  script_tag(name:"insight", value:"AFS is a distributed filesystem allowing cross-platform sharing of files
-among multiple computers.");
   script_tag(name:"solution", value:"For the stable distribution (stretch), these problems have been fixed in
 version 1.6.20-2+deb9u2.
 
 We recommend that you upgrade your openafs packages.
 
 For the detailed security status of openafs please refer to its security
-tracker page at:
-https://security-tracker.debian.org/tracker/openafs");
-  script_tag(name:"summary",  value:"Several vulnerabilities were discovered in openafs, an implementation of
+tracker page linked in the references.");
+
+  script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/openafs");
+  script_tag(name:"summary", value:"Several vulnerabilities were discovered in openafs, an implementation of
 the distributed filesystem AFS. The Common Vulnerabilities and Exposures
 project identifies the following problems:
 
-CVE-2018-16947 
+CVE-2018-16947
 Jeffrey Altman reported that the backup tape controller (butc)
 process does accept incoming RPCs but does not require (or allow
 for) authentication of those RPCs, allowing an unauthenticated
 attacker to perform volume operations with administrator
 credentials.
 
-https://openafs.org/pages/security/OPENAFS-SA-2018-001.txtCVE-2018-16948 
+CVE-2018-16948
 Mark Vitale reported that several RPC server routines do not fully
 initialize output variables, leaking memory contents (from both
 the stack and the heap) to the remote caller for
 otherwise-successful RPCs.
 
-https://openafs.org/pages/security/OPENAFS-SA-2018-002.txtCVE-2018-16949 
+CVE-2018-16949
 Mark Vitale reported that an unauthenticated attacker can consume
 large amounts of server memory and network bandwidth via
 specially crafted requests, resulting in denial of service to
-legitimate clients.
-
-https://openafs.org/pages/security/OPENAFS-SA-2018-003.txt");
+legitimate clients.");
   script_tag(name:"vuldetect", value:"This check tests the installed software version using the apt package manager.");
 
   exit(0);
@@ -94,51 +91,51 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"libafsauthent1", ver:"1.6.20-2+deb9u2", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libafsauthent1", ver:"1.6.20-2+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libafsrpc1", ver:"1.6.20-2+deb9u2", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libafsrpc1", ver:"1.6.20-2+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libkopenafs1", ver:"1.6.20-2+deb9u2", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libkopenafs1", ver:"1.6.20-2+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libopenafs-dev", ver:"1.6.20-2+deb9u2", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libopenafs-dev", ver:"1.6.20-2+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libpam-openafs-kaserver", ver:"1.6.20-2+deb9u2", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libpam-openafs-kaserver", ver:"1.6.20-2+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"openafs-client", ver:"1.6.20-2+deb9u2", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"openafs-client", ver:"1.6.20-2+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"openafs-dbserver", ver:"1.6.20-2+deb9u2", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"openafs-dbserver", ver:"1.6.20-2+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"openafs-doc", ver:"1.6.20-2+deb9u2", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"openafs-doc", ver:"1.6.20-2+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"openafs-fileserver", ver:"1.6.20-2+deb9u2", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"openafs-fileserver", ver:"1.6.20-2+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"openafs-fuse", ver:"1.6.20-2+deb9u2", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"openafs-fuse", ver:"1.6.20-2+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"openafs-kpasswd", ver:"1.6.20-2+deb9u2", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"openafs-kpasswd", ver:"1.6.20-2+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"openafs-krb5", ver:"1.6.20-2+deb9u2", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"openafs-krb5", ver:"1.6.20-2+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"openafs-modules-dkms", ver:"1.6.20-2+deb9u2", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"openafs-modules-dkms", ver:"1.6.20-2+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"openafs-modules-source", ver:"1.6.20-2+deb9u2", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"openafs-modules-source", ver:"1.6.20-2+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
+} else if(__pkg_match) {
   exit(99);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1435.nasl 10566 2018-07-23 07:41:10Z cfischer $
+# $Id: deb_dla_1435.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DLA 1435-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,9 +31,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891435");
-  script_version("$Revision: 10566 $");
+  script_version("$Revision: 14281 $");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1435-1] dnsmasq regression update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-23 09:41:10 +0200 (Mon, 23 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-07-23 00:00:00 +0200 (Mon, 23 Jul 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -47,21 +47,13 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8");
   script_tag(name:"affected", value:"dnsmasq on Debian Linux");
-  script_tag(name:"insight", value:"Dnsmasq is a lightweight, easy to configure, DNS forwarder and DHCP
-server. It is designed to provide DNS and optionally, DHCP, to a
-small network. It can serve the names of local machines which are
-not in the global DNS. The DHCP server integrates with the DNS
-server and allows machines with DHCP-allocated addresses
-to appear in the DNS with names configured either in each host or
-in a central configuration file. Dnsmasq supports static and dynamic
-DHCP leases and BOOTP/TFTP for network booting of diskless machines.");
   script_tag(name:"solution", value:"For Debian 8 'Jessie', this problem has been fixed in version
 2.72-3+deb8u3.
 
 We recommend that you upgrade your dnsmasq packages.");
-  script_tag(name:"summary",  value:"The dns-root-data update to 2017072601~deb8u2 broke dnsmasq's
+  script_tag(name:"summary", value:"The dns-root-data update to 2017072601~deb8u2 broke dnsmasq's
 init script, making dnsmasq no longer start when dns-root-data
 was installed.
 
@@ -76,18 +68,18 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"dnsmasq", ver:"2.72-3+deb8u3", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"dnsmasq", ver:"2.72-3+deb8u3", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"dnsmasq-base", ver:"2.72-3+deb8u3", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"dnsmasq-base", ver:"2.72-3+deb8u3", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"dnsmasq-utils", ver:"2.72-3+deb8u3", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"dnsmasq-utils", ver:"2.72-3+deb8u3", rls:"DEB8")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
+} else if(__pkg_match) {
   exit(99);
 }

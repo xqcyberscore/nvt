@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3720_1.nasl 12126 2018-10-26 13:00:10Z cfischer $
+# $Id: gb_ubuntu_USN_3720_1.nasl 14288 2019-03-18 16:34:17Z cfischer $
 #
 # Ubuntu Update for python-cryptography USN-3720-1
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843683");
-  script_version("$Revision: 12126 $");
+  script_version("$Revision: 14288 $");
   script_cve_id("CVE-2018-10903");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 15:00:10 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 17:34:17 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:06:41 +0200 (Fri, 26 Oct 2018)");
   script_name("Ubuntu Update for python-cryptography USN-3720-1");
   script_category(ACT_GATHER_INFO);
@@ -75,13 +75,13 @@ res = "";
 if(release == "UBUNTU18.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"python-cryptography", ver:"2.1.4-1ubuntu1.2", rls:"UBUNTU18.04 LTS", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"python-cryptography", ver:"2.1.4-1ubuntu1.2", rls:"UBUNTU18.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"python3-cryptography", ver:"2.1.4-1ubuntu1.2", rls:"UBUNTU18.04 LTS", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"python3-cryptography", ver:"2.1.4-1ubuntu1.2", rls:"UBUNTU18.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);

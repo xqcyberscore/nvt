@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3873_1.nasl 13451 2019-02-05 05:56:56Z santu $
+# $Id: gb_ubuntu_USN_3873_1.nasl 14288 2019-03-18 16:34:17Z cfischer $
 #
 # Ubuntu Update for openvswitch USN-3873-1
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843886");
-  script_version("$Revision: 13451 $");
+  script_version("$Revision: 14288 $");
   script_cve_id("CVE-2018-17204", "CVE-2018-17205", "CVE-2018-17206");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-05 06:56:56 +0100 (Tue, 05 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 17:34:17 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-01-31 04:02:39 +0100 (Thu, 31 Jan 2019)");
   script_name("Ubuntu Update for openvswitch USN-3873-1");
   script_category(ACT_GATHER_INFO);
@@ -86,7 +86,7 @@ res = "";
 if(release == "UBUNTU18.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"openvswitch-common", ver:"2.9.2-0ubuntu0.18.04.3", rls:"UBUNTU18.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"openvswitch-common", ver:"2.9.2-0ubuntu0.18.04.3", rls:"UBUNTU18.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -100,7 +100,7 @@ if(release == "UBUNTU18.04 LTS")
 if(release == "UBUNTU16.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"openvswitch-common", ver:"2.5.5-0ubuntu0.16.04.2", rls:"UBUNTU16.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"openvswitch-common", ver:"2.5.5-0ubuntu0.16.04.2", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3770_1.nasl 12252 2018-11-08 07:19:31Z asteins $
+# $Id: gb_ubuntu_USN_3770_1.nasl 14288 2019-03-18 16:34:17Z cfischer $
 #
 # Ubuntu Update for lcms2 USN-3770-1
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843704");
-  script_version("$Revision: 12252 $");
+  script_version("$Revision: 14288 $");
   script_cve_id("CVE-2016-10165", "CVE-2018-16435");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 08:19:31 +0100 (Thu, 08 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 17:34:17 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:08:52 +0200 (Fri, 26 Oct 2018)");
   script_name("Ubuntu Update for lcms2 USN-3770-1");
   script_category(ACT_GATHER_INFO);
@@ -81,13 +81,13 @@ res = "";
 if(release == "UBUNTU14.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"liblcms2-2", ver:"2.5-0ubuntu4.2", rls:"UBUNTU14.04 LTS", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"liblcms2-2", ver:"2.5-0ubuntu4.2", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"liblcms2-utils", ver:"2.5-0ubuntu4.2", rls:"UBUNTU14.04 LTS", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"liblcms2-utils", ver:"2.5-0ubuntu4.2", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -101,13 +101,13 @@ if(release == "UBUNTU14.04 LTS")
 if(release == "UBUNTU18.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"liblcms2-2", ver:"2.9-1ubuntu0.1", rls:"UBUNTU18.04 LTS", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"liblcms2-2", ver:"2.9-1ubuntu0.1", rls:"UBUNTU18.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"liblcms2-utils", ver:"2.9-1ubuntu0.1", rls:"UBUNTU18.04 LTS", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"liblcms2-utils", ver:"2.9-1ubuntu0.1", rls:"UBUNTU18.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -121,13 +121,13 @@ if(release == "UBUNTU18.04 LTS")
 if(release == "UBUNTU16.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"liblcms2-2", ver:"2.6-3ubuntu2.1", rls:"UBUNTU16.04 LTS", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"liblcms2-2", ver:"2.6-3ubuntu2.1", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"liblcms2-utils", ver:"2.6-3ubuntu2.1", rls:"UBUNTU16.04 LTS", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"liblcms2-utils", ver:"2.6-3ubuntu2.1", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_mult_vuln_oct10.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: gb_ibm_db2_mult_vuln_oct10.nasl 14286 2019-03-18 15:20:15Z ckuersteiner $
 #
 # IBM DB2 Multiple Vulnerabilities (Oct10)
 #
@@ -24,18 +24,22 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:ibm:db2";
+
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801522");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 14286 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 16:20:15 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-10-08 08:29:14 +0200 (Fri, 08 Oct 2010)");
   script_cve_id("CVE-2010-3734", "CVE-2010-3731", "CVE-2010-3732", "CVE-2010-3733",
                 "CVE-2010-3736", "CVE-2010-3735", "CVE-2010-3737", "CVE-2010-3738",
                 "CVE-2010-3740", "CVE-2010-3739");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+
   script_name("IBM DB2 Multiple Vulnerabilities (Oct10)");
+
   script_xref(name:"URL", value:"http://secunia.com/advisories/41686");
   script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2010/2544");
   script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg1IC62856");
@@ -47,10 +51,13 @@ if(description)
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Databases");
   script_dependencies("gb_ibm_db2_remote_detect.nasl");
-  script_mandatory_keys("IBM-DB2/Remote/ver");
+  script_mandatory_keys("IBM-DB2/installed");
+
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to bypass security restrictions,
   gain knowledge of sensitive information or cause a denial of service.");
+
   script_tag(name:"affected", value:"IBM DB2 versions 9.5 before Fix Pack 6a");
+
   script_tag(name:"insight", value:"Multiple flaws are due to,
 
   - An error in 'Install' component, which enforces an unintended limit on
@@ -83,28 +90,32 @@ if(description)
   - The audit facility in the 'Security' component uses instance-level audit
     settings to capture connection (aka CONNECT and AUTHENTICATION) events in
     certain circumstances in which database-level audit settings were intended.");
-  script_tag(name:"solution", value:"Update DB2 version 9.5 Fix Pack 6a,
-  For updates refer to http://www-933.ibm.com/support/fixcentral/swg/downloadFixes");
-  script_tag(name:"summary", value:"The host is running IBM DB2 and is prone to multiple
-  vulnerabilities.");
+
+  script_tag(name:"solution", value:"Update DB2 version 9.5 Fix Pack 6a");
+
+  script_tag(name:"summary", value:"The host is running IBM DB2 and is prone to multiple vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);
 }
 
-
+include("host_details.inc");
 include("version_func.inc");
 
-ibmVer = get_kb_item("IBM-DB2/Remote/ver");
-if(!ibmVer){
+if (!port = get_app_port(cpe: CPE))
   exit(0);
-}
 
-if(ibmVer =~ "^0905\.*")
-{
-  # IBM DB2 9.5 FP 6a => 09056
-  if(version_is_less(version:ibmVer, test_version:"09056")){
-    security_message( port: 0, data: "The target host was found to be vulnerable" );
+infos = get_app_version_and_proto(cpe: CPE, port: port, exit_no_version: TRUE);
+version = infos["version"];
+proto = infos["proto"];
+
+if (version =~ "^09\.05\.") {
+  if (version_is_less(version: version, test_version: "09.05.6")) {
+    report = report_fixed_ver(installed_version: version, fixed_version: "09.05.6");
+    security_message(port: port, data: report, proto: proto);
+    exit(0);
   }
 }
+
+exit(99);

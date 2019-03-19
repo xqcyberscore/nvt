@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: pkg-lib-deb.inc 13533 2019-02-08 09:59:37Z cfischer $
+# $Id: pkg-lib-deb.inc 14272 2019-03-18 14:29:52Z cfischer $
 #
 # Check if debian package is up to date
 #
@@ -22,7 +22,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #
-# $Revision: 13533 $
+# $Revision: 14272 $
 #
 ###############################################################################
 
@@ -217,23 +217,17 @@ function dpkgnorm( str, rls ) {
 # @param pkg         the package name (e.g. cups from the example in dpkgnorm) to check.
 # @param ver         the version of the package (e.g. 1.3.8-1+lenny6 from the example
 #                    in dpkgnorm) which contains a fix for the related vulnerability.
-# @param rls         a release string in a form of e.g. "DEB6.0" which needs to exactly
+# @param rls         a release string in a form of e.g. "DEB6" which needs to exactly
 #                    match the collected release (set by gather-package-list.nasl) so
-#                    that the vulnerability is checked. rls_regex has priority over rls.
-# @param rls_regex   a release regex in a form of e.g. "DEB7\.[0-9]+" which needs to
-#                    match the collected release (set by gather-package-list.nasl) so
-#                    that the vulnerability is checked. rls_regex has priority over rls.
-# @param remove_arch if set to TRUE an possible architecture string will be removed from
-#                    the package name (e.g. cups:amd64). Currently only removes amd64
-#                    and i386.
+#                    that the vulnerability is checked.
 #
 # @return NULL if a package is not installed or is installed but up to date, a string
 #         containing a report about found package and the current installed version of
 #         it if it is installed and vulnerable.
 #
-function isdpkgvuln( pkg, ver, rls, rls_regex, remove_arch ) {
+function isdpkgvuln( pkg, ver, rls ) {
 
-  local_var kbrls, pkgs, pat, matches, rc, pat_a, pat_b, report, remove_arch;
+  local_var kbrls, pkgs, pat, matches, rc, pat_a, pat_b, report;
 
   if( ! pkg ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#isdpkgvuln#-#pkg" );
@@ -245,31 +239,24 @@ function isdpkgvuln( pkg, ver, rls, rls_regex, remove_arch ) {
     return NULL;
   }
 
-  if( ! rls && ! rls_regex ) {
-    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#isdpkgvuln#-#rls/rls_regex" );
+  if( ! rls ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#isdpkgvuln#-#rls" );
     return NULL;
   }
 
   # Check that we have the data for this release.
   kbrls = dpkg_get_ssh_release();
-  if( ! rls_regex && kbrls != rls )
+  if( kbrls != rls )
     return NULL;
-
-  if( rls_regex ) {
-    if( ! ereg( pattern:rls_regex, string:kbrls ) )
-      return NULL;
-  }
 
   pkgs = dpkg_get_ssh_pkgs();
   if( ! pkgs )
     return NULL;
 
-  if( remove_arch ) {
-    # TBD: What about other ARCH variants like arm?
-    # TODO: Consider moving to dpkgnorm
-    pkgs = ereg_replace( pattern:":i386", replace:"", string:pkgs );
-    pkgs = ereg_replace( pattern:":amd64", replace:"", string:pkgs );
-  }
+  # TBD: What about other ARCH variants like arm?
+  # TODO: Consider moving to dpkgnorm
+  pkgs = ereg_replace( pattern:":i386", replace:"", string:pkgs );
+  pkgs = ereg_replace( pattern:":amd64", replace:"", string:pkgs );
 
   pat = string("ii  (", pkg, ") +([0-9]:)?([^ ]+)");
   matches = eregmatch( pattern:pat, string:pkgs );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4092.nasl 8493 2018-01-23 06:43:13Z ckuersteiner $
+# $Id: deb_4092.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DSA 4092-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704092");
-  script_version("$Revision: 8493 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2017-1000501");
   script_name("Debian Security Advisory DSA 4092-1 (awstats - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-23 07:43:13 +0100 (Tue, 23 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-01-19 00:00:00 +0100 (Fri, 19 Jan 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -48,15 +48,8 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB(9|8)");
   script_tag(name:"affected", value:"awstats on Debian Linux");
-  script_tag(name:"insight", value:"Advanced Web Statistics (AWStats) is a powerful web server logfile
-analyzer written in perl that shows you all your web statistics including
-visits, unique visitors, pages, hits, rush hours, search engines, keywords
-used to find your site, robots, broken links and more. Gives more detailed
-information and better graphical charts than webalizer, and is easier to use.
-Works with several web server log format as a CGI and/or from command line.
-Supports more than 30 languages.");
   script_tag(name:"solution", value:"For the oldstable distribution (jessie), this problem has been fixed
 in version 7.2+dfsg-1+deb8u1.
 
@@ -66,9 +59,10 @@ version 7.6+dfsg-1+deb9u1.
 We recommend that you upgrade your awstats packages.
 
 For the detailed security status of awstats please refer to
-its security tracker page at:
-https://security-tracker.debian.org/tracker/awstats");
-  script_tag(name:"summary",  value:"The cPanel Security Team discovered that awstats, a log file analyzer,
+its security tracker page linked in the references.");
+
+  script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/awstats");
+  script_tag(name:"summary", value:"The cPanel Security Team discovered that awstats, a log file analyzer,
 was vulnerable to path traversal attacks. A remote unauthenticated
 attacker could leverage that to perform arbitrary code execution.");
   script_tag(name:"vuldetect", value:"This check tests the installed software version using the apt package manager.");
@@ -81,15 +75,15 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"awstats", ver:"7.6+dfsg-1+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"awstats", ver:"7.6+dfsg-1+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"awstats", ver:"7.2+dfsg-1+deb8u1", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"awstats", ver:"7.2+dfsg-1+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
-  exit(99); # Not vulnerable.
+} else if(__pkg_match) {
+  exit(99);
 }

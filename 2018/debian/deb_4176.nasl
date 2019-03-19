@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4176.nasl 9681 2018-05-02 02:36:53Z ckuersteiner $
+# $Id: deb_4176.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DSA 4176-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,11 +31,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704176");
-  script_version("$Revision: 9681 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2018-2755", "CVE-2018-2761", "CVE-2018-2771", "CVE-2018-2773", "CVE-2018-2781",
                 "CVE-2018-2813", "CVE-2018-2817", "CVE-2018-2818", "CVE-2018-2819");
   script_name("Debian Security Advisory DSA 4176-1 (mysql-5.5 - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-02 04:36:53 +0200 (Wed, 02 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-04-20 00:00:00 +0200 (Fri, 20 Apr 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -49,27 +49,20 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8");
   script_tag(name:"affected", value:"mysql-5.5 on Debian Linux");
-  script_tag(name:"insight", value:"MySQL is a fast, stable and true multi-user, multi-threaded SQL database
-server.");
   script_tag(name:"solution", value:"For the oldstable distribution (jessie), these problems have been fixed
 in version 5.5.60-0+deb8u1.
 
 We recommend that you upgrade your mysql-5.5 packages.
 
 For the detailed security status of mysql-5.5 please refer to
-its security tracker page at:
-https://security-tracker.debian.org/tracker/mysql-5.5");
-  script_tag(name:"summary",  value:"Several issues have been discovered in the MySQL database server. The
+its security tracker page linked in the references.");
+
+  script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/mysql-5.5");
+  script_tag(name:"summary", value:"Several issues have been discovered in the MySQL database server. The
 vulnerabilities are addressed by upgrading MySQL to the new upstream
-version 5.5.60, which includes additional changes. Please see the MySQL
-5.5 Release Notes and Oracle's Critical Patch Update advisory for
-further details:
-
-https://dev.mysql.com/doc/relnotes/mysql/5.5/en/news-5-5-60.html
-
-http://www.oracle.com/technetwork/security-advisory/cpuapr2018-3678067.html");
+version 5.5.60, which includes additional changes.");
   script_tag(name:"vuldetect", value:"This check tests the installed software version using the apt package manager.");
 
   exit(0);
@@ -80,48 +73,48 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"libmysqlclient-dev", ver:"5.5.60-0+deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libmysqlclient-dev", ver:"5.5.60-0+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libmysqlclient18", ver:"5.5.60-0+deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libmysqlclient18", ver:"5.5.60-0+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libmysqld-dev", ver:"5.5.60-0+deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libmysqld-dev", ver:"5.5.60-0+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libmysqld-pic", ver:"5.5.60-0+deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libmysqld-pic", ver:"5.5.60-0+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"mysql-client", ver:"5.5.60-0+deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"mysql-client", ver:"5.5.60-0+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"mysql-client-5.5", ver:"5.5.60-0+deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"mysql-client-5.5", ver:"5.5.60-0+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"mysql-common", ver:"5.5.60-0+deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"mysql-common", ver:"5.5.60-0+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"mysql-server", ver:"5.5.60-0+deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"mysql-server", ver:"5.5.60-0+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"mysql-server-5.5", ver:"5.5.60-0+deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"mysql-server-5.5", ver:"5.5.60-0+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"mysql-server-core-5.5", ver:"5.5.60-0+deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"mysql-server-core-5.5", ver:"5.5.60-0+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"mysql-source-5.5", ver:"5.5.60-0+deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"mysql-source-5.5", ver:"5.5.60-0+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"mysql-testsuite", ver:"5.5.60-0+deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"mysql-testsuite", ver:"5.5.60-0+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"mysql-testsuite-5.5", ver:"5.5.60-0+deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"mysql-testsuite-5.5", ver:"5.5.60-0+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
-  exit(99); # Not vulnerable.
+} else if(__pkg_match) {
+  exit(99);
 }

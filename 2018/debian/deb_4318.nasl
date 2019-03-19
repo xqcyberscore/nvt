@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4318.nasl 12637 2018-12-04 08:36:44Z mmartin $
+# $Id: deb_4318.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DSA 4318-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704318");
-  script_version("$Revision: 12637 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2017-5934");
   script_name("Debian Security Advisory DSA 4318-1 (moin - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-04 09:36:44 +0100 (Tue, 04 Dec 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-10-15 00:00:00 +0200 (Mon, 15 Oct 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -48,21 +48,18 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB9\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB9");
   script_tag(name:"affected", value:"moin on Debian Linux");
-  script_tag(name:"insight", value:"A WikiWikiWeb is a collaborative hypertext environment, with an
-emphasis on easy access to and modification of information. MoinMoin
-is a Python WikiClone that allows you to easily set up your own wiki,
-only requiring a Web server and a Python installation.");
   script_tag(name:"solution", value:"For the stable distribution (stretch), this problem has been fixed in
 version 1.9.9-1+deb9u1.
 
 We recommend that you upgrade your moin packages.
 
 For the detailed security status of moin please refer to its security
-tracker page at:
-https://security-tracker.debian.org/tracker/moin");
-  script_tag(name:"summary",  value:"Nitin Venkatesh discovered a cross-site scripting vulnerability in moin,
+tracker page linked in the references.");
+
+  script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/moin");
+  script_tag(name:"summary", value:"Nitin Venkatesh discovered a cross-site scripting vulnerability in moin,
 a Python clone of WikiWiki. A remote attacker can conduct cross-site
 scripting attacks via the GUI editor's link dialogue. This only affects
 installations which have set up fckeditor (not enabled by default).");
@@ -76,12 +73,12 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"python-moinmoin", ver:"1.9.9-1+deb9u1", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"python-moinmoin", ver:"1.9.9-1+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
+} else if(__pkg_match) {
   exit(99);
 }

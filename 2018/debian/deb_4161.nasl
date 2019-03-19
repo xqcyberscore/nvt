@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4161.nasl 9281 2018-04-03 11:41:23Z cfischer $
+# $Id: deb_4161.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DSA 4161-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704161");
-  script_version("$Revision: 9281 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2018-7536", "CVE-2018-7537");
   script_name("Debian Security Advisory DSA 4161-1 (python-django - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-03 13:41:23 +0200 (Tue, 03 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-04-01 00:00:00 +0200 (Sun, 01 Apr 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -48,10 +48,8 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB[89]\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB[89]");
   script_tag(name:"affected", value:"python-django on Debian Linux");
-  script_tag(name:"insight", value:"Django is a high-level web application framework that loosely follows the
-model-view-controller design pattern.");
   script_tag(name:"solution", value:"For the oldstable distribution (jessie), these problems have been fixed
 in version 1.7.11-1+deb8u3.
 
@@ -61,9 +59,10 @@ version 1:1.10.7-2+deb9u1.
 We recommend that you upgrade your python-django packages.
 
 For the detailed security status of python-django please refer to
-its security tracker page at:
-https://security-tracker.debian.org/tracker/python-django");
-  script_tag(name:"summary",  value:"James Davis discovered two issues in Django, a high-level Python web
+its security tracker page linked in the references.");
+
+  script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/python-django");
+  script_tag(name:"summary", value:"James Davis discovered two issues in Django, a high-level Python web
 development framework, that can lead to a denial-of-service attack.
 An attacker with control on the input of the django.utils.html.urlize()
 function or django.utils.text.Truncator's chars() and words() methods
@@ -78,33 +77,33 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"python-django", ver:"1.7.11-1+deb8u3", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"python-django", ver:"1.7.11-1+deb8u3", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"python-django-common", ver:"1.7.11-1+deb8u3", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"python-django-common", ver:"1.7.11-1+deb8u3", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"python-django-doc", ver:"1.7.11-1+deb8u3", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"python-django-doc", ver:"1.7.11-1+deb8u3", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"python3-django", ver:"1.7.11-1+deb8u3", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"python3-django", ver:"1.7.11-1+deb8u3", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"python-django", ver:"1:1.10.7-2+deb9u1", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"python-django", ver:"1:1.10.7-2+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"python-django-common", ver:"1:1.10.7-2+deb9u1", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"python-django-common", ver:"1:1.10.7-2+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"python-django-doc", ver:"1:1.10.7-2+deb9u1", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"python-django-doc", ver:"1:1.10.7-2+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"python3-django", ver:"1:1.10.7-2+deb9u1", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"python3-django", ver:"1:1.10.7-2+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
-  exit(99); # Not vulnerable.
+} else if(__pkg_match) {
+  exit(99);
 }

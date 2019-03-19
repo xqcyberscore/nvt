@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1449.nasl 10965 2018-08-15 03:42:43Z ckuersteiner $
+# $Id: deb_dla_1449.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DLA 1449-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891449");
-  script_version("$Revision: 10965 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2018-0732", "CVE-2018-0737");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1449-1] openssl security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 05:42:43 +0200 (Wed, 15 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-07-30 00:00:00 +0200 (Mon, 30 Jul 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -48,16 +48,13 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8");
   script_tag(name:"affected", value:"openssl on Debian Linux");
-  script_tag(name:"insight", value:"This package is part of the OpenSSL project's implementation of the SSL
-and TLS cryptographic protocols for secure communication over the
-Internet.");
   script_tag(name:"solution", value:"For Debian 8 'Jessie', these problems have been fixed in version
 1.0.1t-1+deb8u9.
 
 We recommend that you upgrade your openssl packages.");
-  script_tag(name:"summary",  value:"Two issues were discovered in OpenSSL, the Secure Sockets Layer toolkit.
+  script_tag(name:"summary", value:"Two issues were discovered in OpenSSL, the Secure Sockets Layer toolkit.
 
 CVE-2018-0732
 
@@ -82,24 +79,24 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"libssl-dev", ver:"1.0.1t-1+deb8u9", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libssl-dev", ver:"1.0.1t-1+deb8u9", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libssl-doc", ver:"1.0.1t-1+deb8u9", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libssl-doc", ver:"1.0.1t-1+deb8u9", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libssl1.0.0", ver:"1.0.1t-1+deb8u9", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libssl1.0.0", ver:"1.0.1t-1+deb8u9", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libssl1.0.0-dbg", ver:"1.0.1t-1+deb8u9", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libssl1.0.0-dbg", ver:"1.0.1t-1+deb8u9", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"openssl", ver:"1.0.1t-1+deb8u9", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"openssl", ver:"1.0.1t-1+deb8u9", rls:"DEB8")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
+} else if(__pkg_match) {
   exit(99);
 }

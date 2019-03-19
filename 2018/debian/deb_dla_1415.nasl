@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1415.nasl 10478 2018-07-11 06:07:00Z ckuersteiner $
+# $Id: deb_dla_1415.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DLA 1415-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,12 +31,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891415");
-  script_version("$Revision: 10478 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2016-6609", "CVE-2016-6614", "CVE-2016-6615", "CVE-2016-6616", "CVE-2016-6618",
                 "CVE-2016-6619", "CVE-2016-6620", "CVE-2016-6621", "CVE-2016-6622", "CVE-2016-9865",
                 "CVE-2017-18264");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1415-1] phpmyadmin security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-11 08:07:00 +0200 (Wed, 11 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-07-10 00:00:00 +0200 (Tue, 10 Jul 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -50,14 +50,13 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8");
   script_tag(name:"affected", value:"phpmyadmin on Debian Linux");
-  script_tag(name:"insight", value:"This package allows administering of MySQL or MariaDB with a web interface.");
   script_tag(name:"solution", value:"For Debian 8 'Jessie', these problems have been fixed in version
 4:4.2.12-2+deb8u3.
 
 We recommend that you upgrade your phpmyadmin packages.");
-  script_tag(name:"summary",  value:"Several vulnerabilities were found in phpMyAdmin, the web-based MySQL
+  script_tag(name:"summary", value:"Several vulnerabilities were found in phpMyAdmin, the web-based MySQL
 administration interface, including SQL injection attacks, denial of
 service, arbitrary code execution, cross-site scripting, server-side
 request forgery, authentication bypass, and file system traversal.");
@@ -71,12 +70,12 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"phpmyadmin", ver:"4:4.2.12-2+deb8u3", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"phpmyadmin", ver:"4:4.2.12-2+deb8u3", rls:"DEB8")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
+} else if(__pkg_match) {
   exit(99);
 }

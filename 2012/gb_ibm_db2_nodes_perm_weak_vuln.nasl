@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_nodes_perm_weak_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_ibm_db2_nodes_perm_weak_vuln.nasl 14286 2019-03-18 15:20:15Z ckuersteiner $
 #
 # IBM DB2 'nodes.reg' Permission Weakness Vulnerability
 #
@@ -24,17 +24,19 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:ibm:db2";
+
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802727");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 14286 $");
   script_cve_id("CVE-2012-1797");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 16:20:15 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-04-03 10:43:50 +0530 (Tue, 03 Apr 2012)");
-  script_name("IBM DB2 'nodes.reg' Permission Weakness Vulnerability");
 
+  script_name("IBM DB2 'nodes.reg' Permission Weakness Vulnerability");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
@@ -42,29 +44,41 @@ if(description)
   script_family("Databases");
   script_tag(name:"solution_type", value:"VendorFix");
   script_dependencies("gb_ibm_db2_remote_detect.nasl");
-  script_mandatory_keys("IBM-DB2/Remote/ver");
-  script_tag(name:"impact", value:"Unknown impact.");
+  script_mandatory_keys("IBM-DB2/installed");
+
   script_tag(name:"affected", value:"IBM DB2 version 9.5");
+
   script_tag(name:"insight", value:"The flaw is due to the 'nodes.reg' file, which is having insecure
 world writable permissions.");
+
   script_tag(name:"solution", value:"Upgrade to IBM DB2 version 9.5 Fix Pack 9.");
+
   script_tag(name:"summary", value:"The host is running IBM DB2 and is prone to permission weakness
 vulnerability.");
+
   script_xref(name:"URL", value:"http://secunia.com/advisories/48279/");
   script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?crawler=1&uid=swg1IC79518");
   script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?rs=71&uid=swg27007053");
+
   exit(0);
 }
 
-
+include("host_details.inc");
 include("version_func.inc");
 
-ibmVer = get_kb_item("IBM-DB2/Remote/ver");
-if(!ibmVer){
+if (!port = get_app_port(cpe: CPE))
   exit(0);
+
+infos = get_app_version_and_proto(cpe: CPE, port: port, exit_no_version: TRUE);
+version = infos["version"];
+proto = infos["proto"];
+
+if (version =~ "^09\.05\.") {
+  if (version_is_less(version: version, test_version: "09.05.9")) {
+    report = report_fixed_ver(installed_version: version, fixed_version: "09.05.09");
+    security_message(port: port, data: report, proto: proto);
+    exit(0);
+  }
 }
 
-# IBM DB2 9.5 => 0905
-if(version_is_equal(version:ibmVer, test_version:"0905")){
-  security_message( port: 0, data: "The target host was found to be vulnerable" );
-}
+exit(99);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4088.nasl 8493 2018-01-23 06:43:13Z ckuersteiner $
+# $Id: deb_4088.nasl 14275 2019-03-18 14:39:45Z cfischer $
 #
 # Auto-generated from advisory DSA 4088-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704088");
-  script_version("$Revision: 8493 $");
+  script_version("$Revision: 14275 $");
   script_cve_id("CVE-2017-1000422", "CVE-2017-6312", "CVE-2017-6313", "CVE-2017-6314");
   script_name("Debian Security Advisory DSA 4088-1 (gdk-pixbuf - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-23 07:43:13 +0100 (Tue, 23 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:39:45 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-01-15 00:00:00 +0100 (Mon, 15 Jan 2018)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -48,22 +48,23 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB(9|8)");
   script_tag(name:"affected", value:"gdk-pixbuf on Debian Linux");
   script_tag(name:"solution", value:"For the oldstable distribution (jessie), this problem has been fixed
 in version 2.31.1-2+deb8u7.
 
 For the stable distribution (stretch), this problem has been fixed in
 version 2.36.5-2+deb9u2. In addition this update provides fixes for
-CVE-2017-6312, CVE-2017-6313 and CVE-2017-6314 
+CVE-2017-6312, CVE-2017-6313 and CVE-2017-6314
 .
 
 We recommend that you upgrade your gdk-pixbuf packages.
 
 For the detailed security status of gdk-pixbuf please refer to
-its security tracker page at:
-https://security-tracker.debian.org/tracker/gdk-pixbuf");
-  script_tag(name:"summary",  value:"It was discovered that multiple integer overflows in the GIF image loader
+its security tracker page linked in the references.");
+
+  script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/gdk-pixbuf");
+  script_tag(name:"summary", value:"It was discovered that multiple integer overflows in the GIF image loader
 in the GDK Pixbuf library may result in denial of service and potentially
 the execution of arbitrary code if a malformed image file is opened.");
   script_tag(name:"vuldetect", value:"This check tests the installed software version using the apt package manager.");
@@ -76,42 +77,42 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"gir1.2-gdkpixbuf-2.0", ver:"2.36.5-2+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"gir1.2-gdkpixbuf-2.0", ver:"2.36.5-2+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libgdk-pixbuf2.0-0", ver:"2.36.5-2+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libgdk-pixbuf2.0-0", ver:"2.36.5-2+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libgdk-pixbuf2.0-common", ver:"2.36.5-2+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libgdk-pixbuf2.0-common", ver:"2.36.5-2+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libgdk-pixbuf2.0-dev", ver:"2.36.5-2+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libgdk-pixbuf2.0-dev", ver:"2.36.5-2+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libgdk-pixbuf2.0-doc", ver:"2.36.5-2+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libgdk-pixbuf2.0-doc", ver:"2.36.5-2+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"gir1.2-gdkpixbuf-2.0", ver:"2.31.1-2+deb8u7", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"gir1.2-gdkpixbuf-2.0", ver:"2.31.1-2+deb8u7", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libgdk-pixbuf2.0-0", ver:"2.31.1-2+deb8u7", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libgdk-pixbuf2.0-0", ver:"2.31.1-2+deb8u7", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libgdk-pixbuf2.0-0-dbg", ver:"2.31.1-2+deb8u7", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libgdk-pixbuf2.0-0-dbg", ver:"2.31.1-2+deb8u7", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libgdk-pixbuf2.0-common", ver:"2.31.1-2+deb8u7", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libgdk-pixbuf2.0-common", ver:"2.31.1-2+deb8u7", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libgdk-pixbuf2.0-dev", ver:"2.31.1-2+deb8u7", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libgdk-pixbuf2.0-dev", ver:"2.31.1-2+deb8u7", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libgdk-pixbuf2.0-doc", ver:"2.31.1-2+deb8u7", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libgdk-pixbuf2.0-doc", ver:"2.31.1-2+deb8u7", rls:"DEB8")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
-  exit(99); # Not vulnerable.
+} else if(__pkg_match) {
+  exit(99);
 }

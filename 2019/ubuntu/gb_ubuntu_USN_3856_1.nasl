@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3856_1.nasl 13750 2019-02-19 07:33:36Z mmartin $
+# $Id: gb_ubuntu_USN_3856_1.nasl 14288 2019-03-18 16:34:17Z cfischer $
 #
 # Ubuntu Update for gnome-bluetooth USN-3856-1
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843869");
-  script_version("$Revision: 13750 $");
+  script_version("$Revision: 14288 $");
   script_cve_id("CVE-2018-10910");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-19 08:33:36 +0100 (Tue, 19 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 17:34:17 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-01-15 04:00:44 +0100 (Tue, 15 Jan 2019)");
   script_name("Ubuntu Update for gnome-bluetooth USN-3856-1");
   script_category(ACT_GATHER_INFO);
@@ -77,13 +77,13 @@ res = "";
 if(release == "UBUNTU18.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"gnome-bluetooth", ver:"3.28.0-2ubuntu0.1", rls:"UBUNTU18.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"gnome-bluetooth", ver:"3.28.0-2ubuntu0.1", rls:"UBUNTU18.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libgnome-bluetooth13", ver:"3.28.0-2ubuntu0.1", rls:"UBUNTU18.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libgnome-bluetooth13", ver:"3.28.0-2ubuntu0.1", rls:"UBUNTU18.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);

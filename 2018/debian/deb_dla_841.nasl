@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_841.nasl 10219 2018-06-15 12:00:55Z cfischer $
+# $Id: deb_dla_841.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DLA 841-2 using nvtgen 1.0
 # Script version:2.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.890841");
-  script_version("$Revision: 10219 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2015-0253", "CVE-2016-8743");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 841-2] apache2 regression update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-15 14:00:55 +0200 (Fri, 15 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-02-08 00:00:00 +0100 (Thu, 08 Feb 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -48,16 +48,13 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB7\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB7");
   script_tag(name:"affected", value:"apache2 on Debian Linux");
-  script_tag(name:"insight", value:"The Apache Software Foundation's goal is to build a secure, efficient and
-extensible HTTP server as standards-compliant open source software. The
-result has long been the number one web server on the Internet.");
   script_tag(name:"solution", value:"For Debian 7 'Wheezy', these
 problems have been fixed in version 2.2.22-13+deb7u11.
 
 We recommend that you upgrade your apache2 packages.");
-  script_tag(name:"summary",  value:"The fix for CVE-2016-8743 introduced a regression which would segfault
+  script_tag(name:"summary", value:"The fix for CVE-2016-8743 introduced a regression which would segfault
 apache workers under certain conditions (#858373), an issue similar to
 previously fixed CVE-2015-0253.
 
@@ -73,51 +70,51 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"apache2", ver:"2.2.22-13+deb7u11", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"apache2", ver:"2.2.22-13+deb7u11", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"apache2-dbg", ver:"2.2.22-13+deb7u11", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"apache2-dbg", ver:"2.2.22-13+deb7u11", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"apache2-doc", ver:"2.2.22-13+deb7u11", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"apache2-doc", ver:"2.2.22-13+deb7u11", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"apache2-mpm-event", ver:"2.2.22-13+deb7u11", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"apache2-mpm-event", ver:"2.2.22-13+deb7u11", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"apache2-mpm-itk", ver:"2.2.22-13+deb7u11", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"apache2-mpm-itk", ver:"2.2.22-13+deb7u11", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"apache2-mpm-prefork", ver:"2.2.22-13+deb7u11", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"apache2-mpm-prefork", ver:"2.2.22-13+deb7u11", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"apache2-mpm-worker", ver:"2.2.22-13+deb7u11", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"apache2-mpm-worker", ver:"2.2.22-13+deb7u11", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"apache2-prefork-dev", ver:"2.2.22-13+deb7u11", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"apache2-prefork-dev", ver:"2.2.22-13+deb7u11", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"apache2-suexec", ver:"2.2.22-13+deb7u11", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"apache2-suexec", ver:"2.2.22-13+deb7u11", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"apache2-suexec-custom", ver:"2.2.22-13+deb7u11", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"apache2-suexec-custom", ver:"2.2.22-13+deb7u11", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"apache2-threaded-dev", ver:"2.2.22-13+deb7u11", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"apache2-threaded-dev", ver:"2.2.22-13+deb7u11", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"apache2-utils", ver:"2.2.22-13+deb7u11", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"apache2-utils", ver:"2.2.22-13+deb7u11", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"apache2.2-bin", ver:"2.2.22-13+deb7u11", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"apache2.2-bin", ver:"2.2.22-13+deb7u11", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"apache2.2-common", ver:"2.2.22-13+deb7u11", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"apache2.2-common", ver:"2.2.22-13+deb7u11", rls:"DEB7")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
+} else if(__pkg_match) {
   exit(99);
 }

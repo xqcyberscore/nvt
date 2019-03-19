@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1395.nasl 10478 2018-07-11 06:07:00Z ckuersteiner $
+# $Id: deb_dla_1395.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DLA 1395-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891395");
-  script_version("$Revision: 10478 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2017-14650", "CVE-2017-9774");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1395-1] php-horde-image security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-11 08:07:00 +0200 (Wed, 11 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-07-10 00:00:00 +0200 (Tue, 10 Jul 2018)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -48,32 +48,24 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8");
   script_tag(name:"affected", value:"php-horde-image on Debian Linux");
-  script_tag(name:"insight", value:"An Image utility API, with backends for:
-* GD
-* GIF
-* PNG
-* SVG
-* SWF
-* ImageMagick convert command line tool
-* Imagick Extension");
   script_tag(name:"solution", value:"For Debian 8 'Jessie', these issues have been fixed in php-horde-image
 version 2.1.0-4+deb8u1.
 
 We recommend that you upgrade your php-horde-image packages.");
-  script_tag(name:"summary",  value:"It was discovered that there were two remote code execution
+  script_tag(name:"summary", value:"It was discovered that there were two remote code execution
 vulnerabilities in php-horde-image, the image processing library for the
-Horde https://www.horde.org/ groupware tool:
+Horde groupware tool:
 
- * CVE-2017-9774: A remote code execution vulnerability (RCE) that was
+  * CVE-2017-9774: A remote code execution vulnerability (RCE) that was
    exploitable by a logged-in user sending a maliciously crafted HTTP GET
    request to various image backends.
-   
-   Note that the fix applied upstream has a regression in that it ignores
-   the 'force aspect ratio' option. See https://github.com/horde/Image/pull/1.
 
- * CVE-2017-14650: Another RCE that was exploitable by a logged-in
+   Note that the fix applied upstream has a regression in that it ignores
+   the 'force aspect ratio' option.
+
+  * CVE-2017-14650: Another RCE that was exploitable by a logged-in
    user sending a maliciously crafted GET request specifically to the 'im'
    image backend.");
   script_tag(name:"vuldetect", value:"This check tests the installed software version using the apt package manager.");
@@ -86,12 +78,12 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"php-horde-image", ver:"2.1.0-4+deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"php-horde-image", ver:"2.1.0-4+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
+} else if(__pkg_match) {
   exit(99);
 }

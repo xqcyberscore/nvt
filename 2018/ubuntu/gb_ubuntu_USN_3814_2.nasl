@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3814_2.nasl 13374 2019-01-31 07:19:48Z asteins $
+# $Id: gb_ubuntu_USN_3814_2.nasl 14288 2019-03-18 16:34:17Z cfischer $
 #
 # Ubuntu Update for clamav USN-3814-2
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843815");
-  script_version("$Revision: 13374 $");
+  script_version("$Revision: 14288 $");
   script_cve_id("CVE-2018-18584", "CVE-2018-18585");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-31 08:19:48 +0100 (Thu, 31 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 17:34:17 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-11-13 06:00:40 +0100 (Tue, 13 Nov 2018)");
   script_name("Ubuntu Update for clamav USN-3814-2");
   script_category(ACT_GATHER_INFO);
@@ -84,7 +84,7 @@ res = "";
 if(release == "UBUNTU14.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"clamav", ver:"0.100.2+dfsg-1ubuntu0.14.04.2", rls:"UBUNTU14.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"clamav", ver:"0.100.2+dfsg-1ubuntu0.14.04.2", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);

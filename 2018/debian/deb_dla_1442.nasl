@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1442.nasl 11561 2018-09-24 06:20:05Z cfischer $
+# $Id: deb_dla_1442.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DLA 1442-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891442");
-  script_version("$Revision: 11561 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2018-0618", "CVE-2018-13796");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1442-1] mailman security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-24 08:20:05 +0200 (Mon, 24 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-07-25 00:00:00 +0200 (Wed, 25 Jul 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -48,18 +48,13 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8");
   script_tag(name:"affected", value:"mailman on Debian Linux");
-  script_tag(name:"insight", value:"The GNU Mailing List Manager, which manages email discussion lists
-much like Majordomo and Smartmail. Unlike most similar products,
-Mailman gives each mailing list a web page, and allows users to
-subscribe, unsubscribe, etc. over the web. Even the list manager can
-administer his or her list entirely from the web.");
   script_tag(name:"solution", value:"For Debian 8 'Jessie', these problems have been fixed in version
 1:2.1.18-2+deb8u3.
 
 We recommend that you upgrade your mailman packages.");
-  script_tag(name:"summary",  value:"Two flaws were discovered in mailman, a web-based mailing list manager.
+  script_tag(name:"summary", value:"Two flaws were discovered in mailman, a web-based mailing list manager.
 
 CVE-2018-0618
 
@@ -82,12 +77,12 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"mailman", ver:"1:2.1.18-2+deb8u3", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"mailman", ver:"1:2.1.18-2+deb8u3", rls:"DEB8")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
+} else if(__pkg_match) {
   exit(99);
 }

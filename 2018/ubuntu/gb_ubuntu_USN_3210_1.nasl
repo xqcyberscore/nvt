@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3210_1.nasl 12130 2018-10-26 13:59:17Z cfischer $
+# $Id: gb_ubuntu_USN_3210_1.nasl 14288 2019-03-18 16:34:17Z cfischer $
 #
 # Ubuntu Update for libreoffice USN-3210-1
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843670");
-  script_version("$Revision: 12130 $");
+  script_version("$Revision: 14288 $");
   script_cve_id("CVE-2017-3157");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 15:59:17 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 17:34:17 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:05:05 +0200 (Fri, 26 Oct 2018)");
   script_name("Ubuntu Update for libreoffice USN-3210-1");
   script_category(ACT_GATHER_INFO);
@@ -77,49 +77,49 @@ res = "";
 if(release == "UBUNTU14.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"libreoffice", ver:"1:4.2.8-0ubuntu5", rls:"UBUNTU14.04 LTS", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"libreoffice", ver:"1:4.2.8-0ubuntu5", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libreoffice-base", ver:"1:4.2.8-0ubuntu5", rls:"UBUNTU14.04 LTS", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"libreoffice-base", ver:"1:4.2.8-0ubuntu5", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libreoffice-base-core", ver:"1:4.2.8-0ubuntu5", rls:"UBUNTU14.04 LTS", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"libreoffice-base-core", ver:"1:4.2.8-0ubuntu5", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libreoffice-calc", ver:"1:4.2.8-0ubuntu5", rls:"UBUNTU14.04 LTS", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"libreoffice-calc", ver:"1:4.2.8-0ubuntu5", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libreoffice-common", ver:"1:4.2.8-0ubuntu5", rls:"UBUNTU14.04 LTS", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"libreoffice-common", ver:"1:4.2.8-0ubuntu5", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libreoffice-core", ver:"1:4.2.8-0ubuntu5", rls:"UBUNTU14.04 LTS", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"libreoffice-core", ver:"1:4.2.8-0ubuntu5", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libreoffice-math", ver:"1:4.2.8-0ubuntu5", rls:"UBUNTU14.04 LTS", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"libreoffice-math", ver:"1:4.2.8-0ubuntu5", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libreoffice-writer", ver:"1:4.2.8-0ubuntu5", rls:"UBUNTU14.04 LTS", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"libreoffice-writer", ver:"1:4.2.8-0ubuntu5", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -133,49 +133,49 @@ if(release == "UBUNTU14.04 LTS")
 if(release == "UBUNTU12.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"libreoffice", ver:"1:3.5.7-0ubuntu13", rls:"UBUNTU12.04 LTS", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"libreoffice", ver:"1:3.5.7-0ubuntu13", rls:"UBUNTU12.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libreoffice-base", ver:"1:3.5.7-0ubuntu13", rls:"UBUNTU12.04 LTS", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"libreoffice-base", ver:"1:3.5.7-0ubuntu13", rls:"UBUNTU12.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libreoffice-base-core", ver:"1:3.5.7-0ubuntu13", rls:"UBUNTU12.04 LTS", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"libreoffice-base-core", ver:"1:3.5.7-0ubuntu13", rls:"UBUNTU12.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libreoffice-calc", ver:"1:3.5.7-0ubuntu13", rls:"UBUNTU12.04 LTS", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"libreoffice-calc", ver:"1:3.5.7-0ubuntu13", rls:"UBUNTU12.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libreoffice-common", ver:"1:3.5.7-0ubuntu13", rls:"UBUNTU12.04 LTS", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"libreoffice-common", ver:"1:3.5.7-0ubuntu13", rls:"UBUNTU12.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libreoffice-core", ver:"1:3.5.7-0ubuntu13", rls:"UBUNTU12.04 LTS", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"libreoffice-core", ver:"1:3.5.7-0ubuntu13", rls:"UBUNTU12.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libreoffice-math", ver:"1:3.5.7-0ubuntu13", rls:"UBUNTU12.04 LTS", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"libreoffice-math", ver:"1:3.5.7-0ubuntu13", rls:"UBUNTU12.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libreoffice-writer", ver:"1:3.5.7-0ubuntu13", rls:"UBUNTU12.04 LTS", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"libreoffice-writer", ver:"1:3.5.7-0ubuntu13", rls:"UBUNTU12.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -189,49 +189,49 @@ if(release == "UBUNTU12.04 LTS")
 if(release == "UBUNTU16.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"libreoffice", ver:"1:5.1.6~rc2-0ubuntu1~xenial1", rls:"UBUNTU16.04 LTS", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"libreoffice", ver:"1:5.1.6~rc2-0ubuntu1~xenial1", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libreoffice-base", ver:"1:5.1.6~rc2-0ubuntu1~xenial1", rls:"UBUNTU16.04 LTS", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"libreoffice-base", ver:"1:5.1.6~rc2-0ubuntu1~xenial1", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libreoffice-base-core", ver:"1:5.1.6~rc2-0ubuntu1~xenial1", rls:"UBUNTU16.04 LTS", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"libreoffice-base-core", ver:"1:5.1.6~rc2-0ubuntu1~xenial1", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libreoffice-calc", ver:"1:5.1.6~rc2-0ubuntu1~xenial1", rls:"UBUNTU16.04 LTS", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"libreoffice-calc", ver:"1:5.1.6~rc2-0ubuntu1~xenial1", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libreoffice-common", ver:"1:5.1.6~rc2-0ubuntu1~xenial1", rls:"UBUNTU16.04 LTS", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"libreoffice-common", ver:"1:5.1.6~rc2-0ubuntu1~xenial1", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libreoffice-core", ver:"1:5.1.6~rc2-0ubuntu1~xenial1", rls:"UBUNTU16.04 LTS", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"libreoffice-core", ver:"1:5.1.6~rc2-0ubuntu1~xenial1", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libreoffice-math", ver:"1:5.1.6~rc2-0ubuntu1~xenial1", rls:"UBUNTU16.04 LTS", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"libreoffice-math", ver:"1:5.1.6~rc2-0ubuntu1~xenial1", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libreoffice-writer", ver:"1:5.1.6~rc2-0ubuntu1~xenial1", rls:"UBUNTU16.04 LTS", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"libreoffice-writer", ver:"1:5.1.6~rc2-0ubuntu1~xenial1", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);

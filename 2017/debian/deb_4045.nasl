@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4045.nasl 7900 2017-11-24 10:35:02Z asteins $
+# $Id: deb_4045.nasl 14284 2019-03-18 15:02:15Z cfischer $
 #
 # Auto-generated from advisory DSA 4045-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704045");
-  script_version("$Revision: 7900 $");
+  script_version("$Revision: 14284 $");
   script_cve_id("CVE-2017-10699", "CVE-2017-9300");
   script_name("Debian Security Advisory DSA 4045-1 (vlc - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-24 11:35:02 +0100 (Fri, 24 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 16:02:15 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-11-21 00:00:00 +0100 (Tue, 21 Nov 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -48,11 +48,8 @@ if(description)
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB(8|9)");
   script_tag(name:"affected", value:"vlc on Debian Linux");
-  script_tag(name:"insight", value:"VLC is the VideoLAN project's media player. It plays MPEG, MPEG-2, MPEG-4,
-DivX, MOV, WMV, QuickTime, WebM, FLAC, MP3, Ogg/Vorbis files, DVDs, VCDs,
-podcasts, and multimedia streams from various network sources.");
   script_tag(name:"solution", value:"For the oldstable distribution (jessie), these problems have been fixed
 in version 2.2.7-1~deb8u1.
 
@@ -62,9 +59,10 @@ version 2.2.7-1~deb9u1.
 We recommend that you upgrade your vlc packages.
 
 For the detailed security status of vlc please refer to
-its security tracker page at:
-https://security-tracker.debian.org/tracker/vlc");
-  script_tag(name:"summary",  value:"Several vulnerabilities have been found in VLC, the VideoLAN project's
+its security tracker page linked in the references.");
+
+  script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/vlc");
+  script_tag(name:"summary", value:"Several vulnerabilities have been found in VLC, the VideoLAN project's
 media player. Processing malformed media files could lead to denial of
 service and potentially the execution of arbitrary code.");
   script_tag(name:"vuldetect", value:"This check tests the installed software version using the apt package manager.");
@@ -77,129 +75,129 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"libvlc-dev", ver:"2.2.7-1~deb8u1", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libvlc-dev", ver:"2.2.7-1~deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libvlc5", ver:"2.2.7-1~deb8u1", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libvlc5", ver:"2.2.7-1~deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libvlccore-dev", ver:"2.2.7-1~deb8u1", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libvlccore-dev", ver:"2.2.7-1~deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libvlccore8", ver:"2.2.7-1~deb8u1", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libvlccore8", ver:"2.2.7-1~deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"vlc", ver:"2.2.7-1~deb8u1", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"vlc", ver:"2.2.7-1~deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"vlc-data", ver:"2.2.7-1~deb8u1", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"vlc-data", ver:"2.2.7-1~deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"vlc-dbg", ver:"2.2.7-1~deb8u1", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"vlc-dbg", ver:"2.2.7-1~deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"vlc-nox", ver:"2.2.7-1~deb8u1", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"vlc-nox", ver:"2.2.7-1~deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"vlc-plugin-fluidsynth", ver:"2.2.7-1~deb8u1", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"vlc-plugin-fluidsynth", ver:"2.2.7-1~deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"vlc-plugin-jack", ver:"2.2.7-1~deb8u1", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"vlc-plugin-jack", ver:"2.2.7-1~deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"vlc-plugin-notify", ver:"2.2.7-1~deb8u1", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"vlc-plugin-notify", ver:"2.2.7-1~deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"vlc-plugin-pulse", ver:"2.2.7-1~deb8u1", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"vlc-plugin-pulse", ver:"2.2.7-1~deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"vlc-plugin-samba", ver:"2.2.7-1~deb8u1", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"vlc-plugin-samba", ver:"2.2.7-1~deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"vlc-plugin-sdl", ver:"2.2.7-1~deb8u1", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"vlc-plugin-sdl", ver:"2.2.7-1~deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"vlc-plugin-svg", ver:"2.2.7-1~deb8u1", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"vlc-plugin-svg", ver:"2.2.7-1~deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"vlc-plugin-zvbi", ver:"2.2.7-1~deb8u1", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"vlc-plugin-zvbi", ver:"2.2.7-1~deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libvlc-bin", ver:"2.2.7-1~deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libvlc-bin", ver:"2.2.7-1~deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libvlc-dev", ver:"2.2.7-1~deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libvlc-dev", ver:"2.2.7-1~deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libvlc5", ver:"2.2.7-1~deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libvlc5", ver:"2.2.7-1~deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libvlccore-dev", ver:"2.2.7-1~deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libvlccore-dev", ver:"2.2.7-1~deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libvlccore8", ver:"2.2.7-1~deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libvlccore8", ver:"2.2.7-1~deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"vlc", ver:"2.2.7-1~deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"vlc", ver:"2.2.7-1~deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"vlc-bin", ver:"2.2.7-1~deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"vlc-bin", ver:"2.2.7-1~deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"vlc-data", ver:"2.2.7-1~deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"vlc-data", ver:"2.2.7-1~deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"vlc-l10n", ver:"2.2.7-1~deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"vlc-l10n", ver:"2.2.7-1~deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"vlc-nox", ver:"2.2.7-1~deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"vlc-nox", ver:"2.2.7-1~deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"vlc-plugin-access-extra", ver:"2.2.7-1~deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"vlc-plugin-access-extra", ver:"2.2.7-1~deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"vlc-plugin-base", ver:"2.2.7-1~deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"vlc-plugin-base", ver:"2.2.7-1~deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"vlc-plugin-fluidsynth", ver:"2.2.7-1~deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"vlc-plugin-fluidsynth", ver:"2.2.7-1~deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"vlc-plugin-jack", ver:"2.2.7-1~deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"vlc-plugin-jack", ver:"2.2.7-1~deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"vlc-plugin-notify", ver:"2.2.7-1~deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"vlc-plugin-notify", ver:"2.2.7-1~deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"vlc-plugin-qt", ver:"2.2.7-1~deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"vlc-plugin-qt", ver:"2.2.7-1~deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"vlc-plugin-samba", ver:"2.2.7-1~deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"vlc-plugin-samba", ver:"2.2.7-1~deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"vlc-plugin-sdl", ver:"2.2.7-1~deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"vlc-plugin-sdl", ver:"2.2.7-1~deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"vlc-plugin-skins2", ver:"2.2.7-1~deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"vlc-plugin-skins2", ver:"2.2.7-1~deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"vlc-plugin-svg", ver:"2.2.7-1~deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"vlc-plugin-svg", ver:"2.2.7-1~deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"vlc-plugin-video-output", ver:"2.2.7-1~deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"vlc-plugin-video-output", ver:"2.2.7-1~deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"vlc-plugin-video-splitter", ver:"2.2.7-1~deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"vlc-plugin-video-splitter", ver:"2.2.7-1~deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"vlc-plugin-visualization", ver:"2.2.7-1~deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"vlc-plugin-visualization", ver:"2.2.7-1~deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"vlc-plugin-zvbi", ver:"2.2.7-1~deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"vlc-plugin-zvbi", ver:"2.2.7-1~deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
-  exit(99); # Not vulnerable.
+} else if(__pkg_match) {
+  exit(99);
 }

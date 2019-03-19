@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3921.nasl 9356 2018-04-06 07:17:02Z cfischer $
+# $Id: deb_3921.nasl 14280 2019-03-18 14:50:45Z cfischer $
 # Auto-generated from advisory DSA 3921-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -26,44 +26,41 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-
 if(description)
 {
-    script_oid("1.3.6.1.4.1.25623.1.0.703921");
-    script_version("$Revision: 9356 $");
-    
-    script_name("Debian Security Advisory DSA 3921-1 (enigmail - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2018-04-06 09:17:02 +0200 (Fri, 06 Apr 2018) $");
-    script_tag(name: "creation_date", value: "2017-07-28 00:00:00 +0200 (Fri, 28 Jul 2017)");
-    script_tag(name: "cvss_base", value: "10.0");
-    script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
-    script_tag(name: "solution_type", value: "VendorFix");
-    script_tag(name: "qod_type", value: "package");
+  script_oid("1.3.6.1.4.1.25623.1.0.703921");
+  script_version("$Revision: 14280 $");
 
-    script_xref(name: "URL", value: "http://www.debian.org/security/2017/dsa-3921.html");
+  script_name("Debian Security Advisory DSA 3921-1 (enigmail - security update)");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:50:45 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2017-07-28 00:00:00 +0200 (Fri, 28 Jul 2017)");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
 
-    script_category(ACT_GATHER_INFO);
+  script_xref(name:"URL", value:"http://www.debian.org/security/2017/dsa-3921.html");
 
-    script_copyright("Copyright (c) 2017 Greenbone Networks GmbH http://greenbone.net");
-    script_family("Debian Local Security Checks");
-    script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
-    script_tag(name: "affected",  value: "enigmail on Debian Linux");
-        script_tag(name: "insight",   value: "OpenPGP extension for Thunderbird. Enigmail allows users to access the
-features provided by the popular GnuPG software from within Thunderbird.");
-    script_tag(name: "solution",  value: "For the oldstable distribution (jessie), this problem has been fixed
+  script_category(ACT_GATHER_INFO);
+
+  script_copyright("Copyright (c) 2017 Greenbone Networks GmbH http://greenbone.net");
+  script_family("Debian Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB(9|8)");
+  script_tag(name:"affected", value:"enigmail on Debian Linux");
+  script_tag(name:"solution", value:"For the oldstable distribution (jessie), this problem has been fixed
 in version 2:1.9.8.1-1~deb8u1.
 
 For the stable distribution (stretch), this problem has been fixed in
 version 2:1.9.8.1-1~deb9u1.
 
 We recommend that you upgrade your enigmail packages.");
-    script_tag(name: "summary",   value: "In DSA 3918 Thunderbird was upgraded to the latest ESR series. This
-update upgrades Enigmail, the OpenPGP extention for Thunderbird,
+  script_tag(name:"summary", value:"In DSA 3918 Thunderbird was upgraded to the latest ESR series. This
+update upgrades Enigmail, the OpenPGP extension for Thunderbird,
 to version 1.9.8.1 to restore full compatibility.");
-    script_tag(name: "vuldetect", value: "This check tests the installed software version using the apt package manager.");
+  script_tag(name:"vuldetect", value:"This check tests the installed software version using the apt package manager.");
 
-    exit(0);
+  exit(0);
 }
 
 include("revisions-lib.inc");
@@ -71,15 +68,15 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"enigmail", ver:"2:1.9.8.1-1~deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"enigmail", ver:"2:1.9.8.1-1~deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"enigmail", ver:"2:1.9.8.1-1~deb8u1", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"enigmail", ver:"2:1.9.8.1-1~deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
-    security_message(data:report);
-} else if (__pkg_match) {
-    exit(99); # Not vulnerable.
+if(report != "") {
+  security_message(data:report);
+} else if(__pkg_match) {
+  exit(99);
 }

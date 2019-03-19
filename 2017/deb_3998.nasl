@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_3998.nasl 10824 2018-08-08 02:52:53Z ckuersteiner $
+# $Id: deb_3998.nasl 14280 2019-03-18 14:50:45Z cfischer $
 #
 # Auto-generated from advisory DSA 3998-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.703998");
-  script_version("$Revision: 10824 $");
+  script_version("$Revision: 14280 $");
   script_cve_id("CVE-2017-7805");
   script_name("Debian Security Advisory DSA 3998-1 (nss - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-08 04:52:53 +0200 (Wed, 08 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:50:45 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-10-11 00:00:00 +0200 (Wed, 11 Oct 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -48,10 +48,8 @@ if(description)
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB(10|9|8)");
   script_tag(name:"affected", value:"nss on Debian Linux");
-  script_tag(name:"insight", value:"nss is a set of libraries designed to support cross-platform development
-of security-enabled client and server applications.");
   script_tag(name:"solution", value:"For the oldstable distribution (jessie), this problem has been fixed
 in version 2:3.26-1+debu8u3.
 
@@ -65,7 +63,7 @@ For the unstable distribution (sid), this problem has been fixed in
 version 2:3.33-1.
 
 We recommend that you upgrade your nss packages.");
-  script_tag(name:"summary",  value:"Martin Thomson discovered that nss, the Mozilla Network Security Service
+  script_tag(name:"summary", value:"Martin Thomson discovered that nss, the Mozilla Network Security Service
 library, is prone to a use-after-free vulnerability in the TLS 1.2
 implementation when handshake hashes are generated. A remote attacker
 can take advantage of this flaw to cause an application using the nss
@@ -81,48 +79,48 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"libnss3", ver:"2:3.33-1", rls_regex:"DEB10.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libnss3", ver:"2:3.33-1", rls:"DEB10")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libnss3-dbg", ver:"2:3.33-1", rls_regex:"DEB10.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libnss3-dbg", ver:"2:3.33-1", rls:"DEB10")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libnss3-dev", ver:"2:3.33-1", rls_regex:"DEB10.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libnss3-dev", ver:"2:3.33-1", rls:"DEB10")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libnss3-tools", ver:"2:3.33-1", rls_regex:"DEB10.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libnss3-tools", ver:"2:3.33-1", rls:"DEB10")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libnss3", ver:"2:3.26.2-1.1+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libnss3", ver:"2:3.26.2-1.1+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libnss3-dbg", ver:"2:3.26.2-1.1+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libnss3-dbg", ver:"2:3.26.2-1.1+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libnss3-dev", ver:"2:3.26.2-1.1+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libnss3-dev", ver:"2:3.26.2-1.1+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libnss3-tools", ver:"2:3.26.2-1.1+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libnss3-tools", ver:"2:3.26.2-1.1+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libnss3", ver:"2:3.26-1+debu8u3", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libnss3", ver:"2:3.26-1+debu8u3", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libnss3-1d", ver:"2:3.26-1+debu8u3", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libnss3-1d", ver:"2:3.26-1+debu8u3", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libnss3-dbg", ver:"2:3.26-1+debu8u3", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libnss3-dbg", ver:"2:3.26-1+debu8u3", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libnss3-dev", ver:"2:3.26-1+debu8u3", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libnss3-dev", ver:"2:3.26-1+debu8u3", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libnss3-tools", ver:"2:3.26-1+debu8u3", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libnss3-tools", ver:"2:3.26-1+debu8u3", rls:"DEB8")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
-  exit(99); # Not vulnerable.
+} else if(__pkg_match) {
+  exit(99);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_HT209446_01.nasl 14086 2019-03-11 09:05:57Z mmartin $
+# $Id: gb_apple_macosx_HT209446_01.nasl 14292 2019-03-18 18:39:37Z cfischer $
 #
 # Apple MacOSX Security Updates(HT209446)-01
 #
@@ -27,59 +27,55 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814816");
-  script_version("$Revision: 14086 $");
+  script_version("$Revision: 14292 $");
   script_cve_id("CVE-2019-6202", "CVE-2019-6221", "CVE-2019-6209", "CVE-2019-6200",
                 "CVE-2019-6224");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-11 10:05:57 +0100 (Mon, 11 Mar 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 19:39:37 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-01-23 10:31:06 +0530 (Wed, 23 Jan 2019)");
   script_name("Apple MacOSX Security Updates(HT209446)-01");
 
   script_tag(name:"summary", value:"This host is installed with Apple Mac OS X
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
   on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exist due to,
+  script_tag(name:"insight", value:"Multiple flaws exist due to,
 
   - Multiple out-of-bounds read errors.
 
   - A buffer overflow issue.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to elevate prilvileges, execute arbitrary code and determine the
   kernel memory layout.");
 
-  script_tag(name: "affected" , value:"Apple Mac OS X versions,
+  script_tag(name:"affected", value:"Apple Mac OS X versions,
   10.13.x through 10.13.6 build 17G4015, 10.14.x through 10.14.2");
 
-  script_tag(name: "solution" , value:"Upgrade to Apple Mac OS X 10.14.3 or later,
+  script_tag(name:"solution", value:"Upgrade to Apple Mac OS X 10.14.3 or later,
   or Apply appropriate patch for 10.13.x version.
   For updates refer to Reference links.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
-  script_xref(name : "URL" , value : "https://support.apple.com/en-in/HT209446");
-  script_xref(name : "URL" , value : "http://www.apple.com/support");
+  script_xref(name:"URL", value:"https://support.apple.com/en-in/HT209446");
+  script_xref(name:"URL", value:"http://www.apple.com/support");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Mac OS X Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/osx_name", "ssh/login/osx_version");
+  script_mandatory_keys("ssh/login/osx_name", "ssh/login/osx_version", re:"ssh/login/osx_version=^10\.1[34]");
   exit(0);
 }
 
-
-
 include("version_func.inc");
-include("ssh_func.inc");
 
 osName = get_kb_item("ssh/login/osx_name");
-if(!osName){
-  exit (0);
-}
+if(!osName)
+  exit(0);
 
 osVer = get_kb_item("ssh/login/osx_version");
 if(!osVer|| osVer !~ "^10\.1[34]"|| "Mac OS X" >!< osName){
@@ -88,7 +84,7 @@ if(!osVer|| osVer !~ "^10\.1[34]"|| "Mac OS X" >!< osName){
 
 buildVer = get_kb_item("ssh/login/osx_build");
 
-if(osVer =~ "^10.13")
+if(osVer =~ "^10\.13")
 {
   if(version_in_range(version:osVer, test_version:"10.13", test_version2:"10.13.5")){
     fix = "Upgrade to latest OS release and Apply patch from vendor";
@@ -114,4 +110,5 @@ if(fix)
   security_message(data:report);
   exit(0);
 }
+
 exit(99);

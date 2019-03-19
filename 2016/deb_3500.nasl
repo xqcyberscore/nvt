@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3500.nasl 8131 2017-12-15 07:30:28Z teissa $
+# $Id: deb_3500.nasl 14279 2019-03-18 14:48:34Z cfischer $
 # Auto-generated from advisory DSA 3500-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -26,32 +26,28 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-
 if(description)
 {
-    script_oid("1.3.6.1.4.1.25623.1.0.703500");
-    script_version("$Revision: 8131 $");
-    script_cve_id("CVE-2015-7575", "CVE-2016-0702", "CVE-2016-0705", "CVE-2016-0797", "CVE-2016-0798", "CVE-2016-0799", "CVE-2016-0800");
-    script_name("Debian Security Advisory DSA 3500-1 (openssl - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-12-15 08:30:28 +0100 (Fri, 15 Dec 2017) $");
-    script_tag(name:"creation_date", value:"2016-03-08 12:37:52 +0530 (Tue, 08 Mar 2016)");
-    script_tag(name: "cvss_base", value: "10.0");
-    script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
-    script_tag(name: "solution_type", value: "VendorFix");
-    script_tag(name: "qod_type", value: "package");
+  script_oid("1.3.6.1.4.1.25623.1.0.703500");
+  script_version("$Revision: 14279 $");
+  script_cve_id("CVE-2015-7575", "CVE-2016-0702", "CVE-2016-0705", "CVE-2016-0797", "CVE-2016-0798", "CVE-2016-0799", "CVE-2016-0800");
+  script_name("Debian Security Advisory DSA 3500-1 (openssl - security update)");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:48:34 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2016-03-08 12:37:52 +0530 (Tue, 08 Mar 2016)");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
 
-    script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3500.html");
+  script_xref(name:"URL", value:"http://www.debian.org/security/2016/dsa-3500.html");
 
-
-    script_category(ACT_GATHER_INFO);
-
-    script_copyright("Copyright (c) 2016 Greenbone Networks GmbH http://greenbone.net");
-    script_family("Debian Local Security Checks");
-    script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
-    script_tag(name: "affected",  value: "openssl on Debian Linux");
-        script_tag(name: "insight",   value: "This package contains the openssl binary and related tools.");
-    script_tag(name: "solution",  value: "For the oldstable distribution (wheezy), these problems have been fixed
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2016 Greenbone Networks GmbH http://greenbone.net");
+  script_family("Debian Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB(7|8)");
+  script_tag(name:"affected", value:"openssl on Debian Linux");
+  script_tag(name:"solution", value:"For the oldstable distribution (wheezy), these problems have been fixed
 in version 1.0.1e-2+deb7u20.
 
 For the stable distribution (jessie), these problems have been fixed in
@@ -60,10 +56,10 @@ version 1.0.1k-3+deb8u4.
 For the unstable distribution (sid), these problems will be fixed shortly.
 
 We recommend that you upgrade your openssl packages.");
-    script_tag(name: "summary",   value: "Several vulnerabilities were discovered in OpenSSL, a Secure Socket Layer
+  script_tag(name:"summary", value:"Several vulnerabilities were discovered in OpenSSL, a Secure Socket Layer
 toolkit.
 
-CVE-2016-0702 
+CVE-2016-0702
 Yuval Yarom from the University of Adelaide and NICTA, Daniel Genkin
 from Technion and Tel Aviv University, and Nadia Heninger from the
 University of Pennsylvania discovered a side-channel attack which
@@ -71,27 +67,27 @@ makes use of cache-bank conflicts on the Intel Sandy-Bridge
 microarchitecture. This could allow local attackers to recover RSA
 private keys.
 
-CVE-2016-0705 
+CVE-2016-0705
 Adam Langley from Google discovered a double free bug when parsing
 malformed DSA private keys. This could allow remote attackers to
 cause a denial of service or memory corruption in applications
 parsing DSA private keys received from untrusted sources.
 
-CVE-2016-0797 
+CVE-2016-0797
 Guido Vranken discovered an integer overflow in the BN_hex2bn and
 BN_dec2bn functions that can lead to a NULL pointer dereference and
 heap corruption. This could allow remote attackers to cause a denial
 of service or memory corruption in applications processing hex or
 dec data received from untrusted sources.
 
-CVE-2016-0798 
+CVE-2016-0798
 Emilia Kasper of the OpenSSL development team discovered a memory
 leak in the SRP database lookup code. To mitigate the memory leak,
 the seed handling in SRP_VBASE_get_by_user is now disabled even if
 the user has configured a seed. Applications are advised to migrate
 to the SRP_VBASE_get1_by_user function.
 
-CVE-2016-0799 
+CVE-2016-0799
 Guido Vranken discovered an integer overflow in the BIO_*printf
 functions that could lead to an OOB read when printing very long
 strings. Additionally the internal doapr_outch function can attempt
@@ -106,14 +102,14 @@ Additionally the EXPORT and LOW ciphers were disabled since thay could
 be used as part of the DROWN
 (CVE-2016-0800)
 and SLOTH
-(CVE-2015-7575 
+(CVE-2015-7575
 )
 attacks, but note that the oldstable (wheezy) and stable (jessie)
 distributions are not affected by those attacks since the SSLv2 protocol
 has already been dropped in the openssl package version 1.0.0c-2.");
-    script_tag(name: "vuldetect", value: "This check tests the installed software version using the apt package manager.");
+  script_tag(name:"vuldetect", value:"This check tests the installed software version using the apt package manager.");
 
-    exit(0);
+  exit(0);
 }
 
 include("revisions-lib.inc");
@@ -121,42 +117,42 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"libssl-dev", ver:"1.0.1e-2+deb7u20", rls_regex:"DEB7.[0-9]+")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libssl-dev", ver:"1.0.1e-2+deb7u20", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libssl-doc", ver:"1.0.1e-2+deb7u20", rls_regex:"DEB7.[0-9]+")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libssl-doc", ver:"1.0.1e-2+deb7u20", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libssl1.0.0", ver:"1.0.1e-2+deb7u20", rls_regex:"DEB7.[0-9]+")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libssl1.0.0", ver:"1.0.1e-2+deb7u20", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libssl1.0.0-dbg", ver:"1.0.1e-2+deb7u20", rls_regex:"DEB7.[0-9]+")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libssl1.0.0-dbg", ver:"1.0.1e-2+deb7u20", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"openssl", ver:"1.0.1e-2+deb7u20", rls_regex:"DEB7.[0-9]+")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"openssl", ver:"1.0.1e-2+deb7u20", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libssl-dev", ver:"1.0.1k-3+deb8u4", rls_regex:"DEB8.[0-9]+")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libssl-dev", ver:"1.0.1k-3+deb8u4", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libssl-doc", ver:"1.0.1k-3+deb8u4", rls_regex:"DEB8.[0-9]+")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libssl-doc", ver:"1.0.1k-3+deb8u4", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libssl1.0.0", ver:"1.0.1k-3+deb8u4", rls_regex:"DEB8.[0-9]+")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libssl1.0.0", ver:"1.0.1k-3+deb8u4", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libssl1.0.0-dbg", ver:"1.0.1k-3+deb8u4", rls_regex:"DEB8.[0-9]+")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libssl1.0.0-dbg", ver:"1.0.1k-3+deb8u4", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"openssl", ver:"1.0.1k-3+deb8u4", rls_regex:"DEB8.[0-9]+")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"openssl", ver:"1.0.1k-3+deb8u4", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"openssl-dbgsym", ver:"1.0.1k-3+deb8u4", rls_regex:"DEB8.[0-9]+")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"openssl-dbgsym", ver:"1.0.1k-3+deb8u4", rls:"DEB8")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
-    security_message(data:report);
+if(report != "") {
+  security_message(data:report);
 } else if (__pkg_match) {
-    exit(99); # Not vulnerable.
+  exit(99);
 }

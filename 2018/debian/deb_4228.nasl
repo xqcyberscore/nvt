@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4228.nasl 10243 2018-06-19 05:46:10Z cfischer $
+# $Id: deb_4228.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DSA 4228-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704228");
-  script_version("$Revision: 10243 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2017-15736");
   script_name("Debian Security Advisory DSA 4228-1 (spip - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-19 07:46:10 +0200 (Tue, 19 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-06-14 00:00:00 +0200 (Thu, 14 Jun 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -48,11 +48,8 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB[89]\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB[89]");
   script_tag(name:"affected", value:"spip on Debian Linux");
-  script_tag(name:"insight", value:"SPIP is a publishing system for the Internet in which great importance
-is attached to collaborative working, to multilingual environments,
-and to simplicity of use for web authors.");
   script_tag(name:"solution", value:"For the oldstable distribution (jessie), this problem has been fixed
 in version 3.0.17-2+deb8u4.
 
@@ -62,9 +59,10 @@ version 3.1.4-4~deb9u1.
 We recommend that you upgrade your spip packages.
 
 For the detailed security status of spip please refer to
-its security tracker page at:
-https://security-tracker.debian.org/tracker/spip");
-  script_tag(name:"summary",  value:"Several vulnerabilities were found in SPIP, a website engine for
+its security tracker page linked in the references.");
+
+  script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/spip");
+  script_tag(name:"summary", value:"Several vulnerabilities were found in SPIP, a website engine for
 publishing, resulting in cross-site scripting and PHP injection.");
   script_tag(name:"vuldetect", value:"This check tests the installed software version using the apt package manager.");
 
@@ -76,15 +74,15 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"spip", ver:"3.0.17-2+deb8u4", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"spip", ver:"3.0.17-2+deb8u4", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"spip", ver:"3.1.4-4~deb9u1", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"spip", ver:"3.1.4-4~deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
+} else if(__pkg_match) {
   exit(99);
 }

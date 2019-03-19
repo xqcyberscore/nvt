@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1507.nasl 13072 2019-01-15 08:12:06Z asteins $
+# $Id: deb_dla_1507.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DLA 1507-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891507");
-  script_version("$Revision: 13072 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2011-2767");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1507-1] libapache2-mod-perl2 security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-15 09:12:06 +0100 (Tue, 15 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-09-19 00:00:00 +0200 (Wed, 19 Sep 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -48,17 +48,13 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8");
   script_tag(name:"affected", value:"libapache2-mod-perl2 on Debian Linux");
-  script_tag(name:"insight", value:"mod_perl allows the use of Perl for just about anything
-Apache-related, including <Perl> sections in the config
-files and the famous Apache::Registry module for caching
-compiled scripts.");
   script_tag(name:"solution", value:"For Debian 8 'Jessie', this problem has been fixed in version
 2.0.9~1624218-2+deb8u3.
 
 We recommend that you upgrade your libapache2-mod-perl2 packages.");
-  script_tag(name:"summary",  value:"Jan Ingvoldstad discovered that libapache2-mod-perl2 allows attackers to
+  script_tag(name:"summary", value:"Jan Ingvoldstad discovered that libapache2-mod-perl2 allows attackers to
 execute arbitrary Perl code by placing it in a user-owned .htaccess
 file, because (contrary to the documentation) there is no configuration
 option that permits Perl code for the administrator's control of HTTP
@@ -75,18 +71,18 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"libapache2-mod-perl2", ver:"2.0.9~1624218-2+deb8u3", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libapache2-mod-perl2", ver:"2.0.9~1624218-2+deb8u3", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libapache2-mod-perl2-dev", ver:"2.0.9~1624218-2+deb8u3", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libapache2-mod-perl2-dev", ver:"2.0.9~1624218-2+deb8u3", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libapache2-mod-perl2-doc", ver:"2.0.9~1624218-2+deb8u3", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libapache2-mod-perl2-doc", ver:"2.0.9~1624218-2+deb8u3", rls:"DEB8")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
+} else if(__pkg_match) {
   exit(99);
 }

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2398_2.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: deb_2398_2.nasl 14275 2019-03-18 14:39:45Z cfischer $
 # Description: Auto-generated from advisory DSA 2398-2 (curl)
 #
 # Authors:
@@ -25,79 +25,69 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-include("revisions-lib.inc");
-tag_insight = "cURL is a command-line tool and library for transferring data with URL
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.71249");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_cve_id("CVE-2011-3389");
+  script_version("$Revision: 14275 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:39:45 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2012-04-30 07:55:40 -0400 (Mon, 30 Apr 2012)");
+  script_name("Debian Security Advisory DSA 2398-2 (curl)");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 E-Soft Inc. http://www.securityspace.com");
+  script_family("Debian Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB6");
+  script_xref(name:"URL", value:"https://secure1.securityspace.com/smysecure/catid.html?in=DSA%202398-2");
+  script_tag(name:"insight", value:"cURL is a command-line tool and library for transferring data with URL
 syntax.  It was discovered that the countermeasures against the
 Dai/Rogaway chosen-plaintext attack on SSL/TLS (CVE-2011-3389,
 BEAST) cause interoperability issues with some server
 implementations.  This update ads the the CURLOPT_SSL_OPTIONS and
 CURLSSLOPT_ALLOW_BEAST options to the library, and the
-- --ssl-allow-beast option to the curl program.
+
+  - --ssl-allow-beast option to the curl program.
 
 For the stable distribution (squeeze), this problem has been fixed in
-version 7.21.0-2.1+squeeze2.
+version 7.21.0-2.1+squeeze2.");
 
-We recommend that you upgrade your curl packages.";
-tag_summary = "The remote host is missing an update to curl
-announced via advisory DSA 2398-2.";
+  script_tag(name:"solution", value:"We recommend that you upgrade your curl packages.");
+  script_tag(name:"summary", value:"The remote host is missing an update to curl
+announced via advisory DSA 2398-2.");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
-tag_solution = "https://secure1.securityspace.com/smysecure/catid.html?in=DSA%202398-2";
-
-if(description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.71249");
- script_tag(name:"cvss_base", value:"4.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
- script_cve_id("CVE-2011-3389");
- script_version("$Revision: 9352 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2012-04-30 07:55:40 -0400 (Mon, 30 Apr 2012)");
- script_name("Debian Security Advisory DSA 2398-2 (curl)");
-
-
-
- script_category(ACT_GATHER_INFO);
-
- script_copyright("Copyright (c) 2012 E-Soft Inc. http://www.securityspace.com");
- script_family("Debian Local Security Checks");
- script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
- exit(0);
+  exit(0);
 }
 
-#
-# The script code starts here
-#
-
+include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
+
 res = "";
 report = "";
-if((res = isdpkgvuln(pkg:"curl", ver:"7.21.0-2.1+squeeze2", rls:"DEB6.0")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"curl", ver:"7.21.0-2.1+squeeze2", rls:"DEB6")) != NULL) {
+  report += res;
 }
-if((res = isdpkgvuln(pkg:"libcurl3", ver:"7.21.0-2.1+squeeze2", rls:"DEB6.0")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libcurl3", ver:"7.21.0-2.1+squeeze2", rls:"DEB6")) != NULL) {
+  report += res;
 }
-if((res = isdpkgvuln(pkg:"libcurl3-dbg", ver:"7.21.0-2.1+squeeze2", rls:"DEB6.0")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libcurl3-dbg", ver:"7.21.0-2.1+squeeze2", rls:"DEB6")) != NULL) {
+  report += res;
 }
-if((res = isdpkgvuln(pkg:"libcurl3-gnutls", ver:"7.21.0-2.1+squeeze2", rls:"DEB6.0")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libcurl3-gnutls", ver:"7.21.0-2.1+squeeze2", rls:"DEB6")) != NULL) {
+  report += res;
 }
-if((res = isdpkgvuln(pkg:"libcurl4-gnutls-dev", ver:"7.21.0-2.1+squeeze2", rls:"DEB6.0")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libcurl4-gnutls-dev", ver:"7.21.0-2.1+squeeze2", rls:"DEB6")) != NULL) {
+  report += res;
 }
-if((res = isdpkgvuln(pkg:"libcurl4-openssl-dev", ver:"7.21.0-2.1+squeeze2", rls:"DEB6.0")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libcurl4-openssl-dev", ver:"7.21.0-2.1+squeeze2", rls:"DEB6")) != NULL) {
+  report += res;
 }
 
 if(report != "") {
-    security_message(data:report);
+  security_message(data:report);
 } else if (__pkg_match) {
-    exit(99); # Not vulnerable.
+  exit(99);
 }

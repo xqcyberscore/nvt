@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1512.nasl 12236 2018-11-07 05:34:17Z ckuersteiner $
+# $Id: deb_dla_1512.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DLA 1512-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891512");
-  script_version("$Revision: 12236 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2018-1000671");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1512-1] sympa security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-07 06:34:17 +0100 (Wed, 07 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-09-21 00:00:00 +0200 (Fri, 21 Sep 2018)");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
@@ -48,15 +48,13 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8");
   script_tag(name:"affected", value:"sympa on Debian Linux");
-  script_tag(name:"insight", value:"Sympa is a scalable and highly customizable modern mailing list manager
-capable of handling big setups: 20.000 lists with 700,000 subscribers.");
   script_tag(name:"solution", value:"For Debian 8 'Jessie', this problem has been fixed in version
 6.1.23~dfsg-2+deb8u3.
 
 We recommend that you upgrade your sympa packages.");
-  script_tag(name:"summary",  value:"n Open Redirect vulnerability has been discovered in sympa. The
+  script_tag(name:"summary", value:"n Open Redirect vulnerability has been discovered in sympa. The
 'referer' parameter of the wwsympa.fcgi login action can result in
 Open redirection and potential Cross Site Scripting via data URIs.
 This attack appear to be exploitable via Victim browser opening a
@@ -71,12 +69,12 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"sympa", ver:"6.1.23~dfsg-2+deb8u3", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"sympa", ver:"6.1.23~dfsg-2+deb8u3", rls:"DEB8")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
+} else if(__pkg_match) {
   exit(99);
 }

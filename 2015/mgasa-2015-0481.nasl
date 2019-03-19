@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mgasa-2015-0481.nasl 11692 2018-09-28 16:55:19Z cfischer $
+# $Id: mgasa-2015-0481.nasl 14289 2019-03-18 16:38:27Z cfischer $
 #
 # Mageia Linux security check
 #
@@ -27,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.131159");
-  script_version("$Revision: 11692 $");
+  script_version("$Revision: 14289 $");
   script_tag(name:"creation_date", value:"2015-12-21 14:43:00 +0200 (Mon, 21 Dec 2015)");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 18:55:19 +0200 (Fri, 28 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 17:38:27 +0100 (Mon, 18 Mar 2019) $");
 
   script_name("Mageia Linux Local Check: mgasa-2015-0481");
 
@@ -60,14 +60,10 @@ possible and could be used as a denial-of-service vector against servers perform
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 
 res = "";
-
-if(release == NULL)
-{
- exit(0);
-}
 
 if(release == "MAGEIA5")
 {

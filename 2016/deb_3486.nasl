@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3486.nasl 8154 2017-12-18 07:30:14Z teissa $
+# $Id: deb_3486.nasl 14275 2019-03-18 14:39:45Z cfischer $
 # Auto-generated from advisory DSA 3486-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -26,32 +26,29 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-
 if(description)
 {
-    script_oid("1.3.6.1.4.1.25623.1.0.703486");
-    script_version("$Revision: 8154 $");
-    script_cve_id("CVE-2016-1622", "CVE-2016-1623", "CVE-2016-1624", "CVE-2016-1625",
+  script_oid("1.3.6.1.4.1.25623.1.0.703486");
+  script_version("$Revision: 14275 $");
+  script_cve_id("CVE-2016-1622", "CVE-2016-1623", "CVE-2016-1624", "CVE-2016-1625",
                   "CVE-2016-1626", "CVE-2016-1627", "CVE-2016-1628", "CVE-2016-1629");
-    script_name("Debian Security Advisory DSA 3486-1 (chromium-browser - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-12-18 08:30:14 +0100 (Mon, 18 Dec 2017) $");
-    script_tag(name: "creation_date", value: "2016-02-21 00:00:00 +0100 (Sun, 21 Feb 2016)");
-    script_tag(name: "cvss_base", value: "10.0");
-    script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
-    script_tag(name: "solution_type", value: "VendorFix");
-    script_tag(name: "qod_type", value: "package");
+  script_name("Debian Security Advisory DSA 3486-1 (chromium-browser - security update)");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:39:45 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2016-02-21 00:00:00 +0100 (Sun, 21 Feb 2016)");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
 
-    script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3486.html");
+  script_xref(name:"URL", value:"http://www.debian.org/security/2016/dsa-3486.html");
 
-
-    script_category(ACT_GATHER_INFO);
-
-    script_copyright("Copyright (c) 2016 Greenbone Networks GmbH http://greenbone.net");
-    script_family("Debian Local Security Checks");
-    script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
-    script_tag(name: "affected",  value: "chromium-browser on Debian Linux");
-    script_tag(name: "solution",  value: "For the stable distribution (jessie),
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2016 Greenbone Networks GmbH http://greenbone.net");
+  script_family("Debian Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8");
+  script_tag(name:"affected", value:"chromium-browser on Debian Linux");
+  script_tag(name:"solution", value:"For the stable distribution (jessie),
 these problems have been fixed in version 48.0.2564.116-1~deb8u1.
 
 For the testing distribution (stretch), these problems will be fixed soon.
@@ -60,7 +57,7 @@ For the unstable distribution (sid), these problems have been fixed in
 version 48.0.2564.116-1.
 
 We recommend that you upgrade your chromium-browser packages.");
-    script_tag(name: "summary",   value: "Several vulnerabilities have been
+  script_tag(name:"summary", value:"Several vulnerabilities have been
 discovered in the chromium web browser.
 
 CVE-2016-1622
@@ -89,9 +86,10 @@ An out-of-bounds read issue was discovered in the pdfium library.
 CVE-2016-1629
 A way to bypass the Same Origin Policy was discovered in Blink/WebKit,
 along with a way to escape the chromium sandbox.");
-    script_tag(name: "vuldetect", value: "This check tests the installed software
+  script_tag(name:"vuldetect", value:"This check tests the installed software
 version using the apt package manager.");
-    exit(0);
+
+  exit(0);
 }
 
 include("revisions-lib.inc");
@@ -99,24 +97,24 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"chromedriver", ver:"48.0.2564.116-1~deb8u1", rls_regex:"DEB8.[0-9]+")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"chromedriver", ver:"48.0.2564.116-1~deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"chromium", ver:"48.0.2564.116-1~deb8u1", rls_regex:"DEB8.[0-9]+")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"chromium", ver:"48.0.2564.116-1~deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"chromium-dbg", ver:"48.0.2564.116-1~deb8u1", rls_regex:"DEB8.[0-9]+")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"chromium-dbg", ver:"48.0.2564.116-1~deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"chromium-inspector", ver:"48.0.2564.116-1~deb8u1", rls_regex:"DEB8.[0-9]+")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"chromium-inspector", ver:"48.0.2564.116-1~deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"chromium-l10n", ver:"48.0.2564.116-1~deb8u1", rls_regex:"DEB8.[0-9]+")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"chromium-l10n", ver:"48.0.2564.116-1~deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
-    security_message(data:report);
+if(report != "") {
+  security_message(data:report);
 } else if (__pkg_match) {
-    exit(99); # Not vulnerable.
+  exit(99);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4123.nasl 9226 2018-03-28 03:48:50Z ckuersteiner $
+# $Id: deb_4123.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DSA 4123-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704123");
-  script_version("$Revision: 9226 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2017-6927", "CVE-2017-6928", "CVE-2017-6929", "CVE-2017-6932");
   script_name("Debian Security Advisory DSA 4123-1 (drupal7 - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-28 05:48:50 +0200 (Wed, 28 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-02-24 00:00:00 +0100 (Sat, 24 Feb 2018)");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
@@ -48,13 +48,8 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB(8|9)");
   script_tag(name:"affected", value:"drupal7 on Debian Linux");
-  script_tag(name:"insight", value:"Drupal is a dynamic web site platform which allows an individual or
-community of users to publish, manage and organize a variety of
-content, Drupal integrates many popular features of content
-management systems, weblogs, collaborative tools and discussion-based
-community software into one easy-to-use package.");
   script_tag(name:"solution", value:"For the oldstable distribution (jessie), this problem has been fixed
 in version 7.32-1+deb8u10.
 
@@ -64,11 +59,11 @@ version 7.52-2+deb9u2.
 We recommend that you upgrade your drupal7 packages.
 
 For the detailed security status of drupal7 please refer to
-its security tracker page at:
-https://security-tracker.debian.org/tracker/drupal7");
-  script_tag(name:"summary",  value:"Multiple vulnerabilities have been found in the Drupal content management
-framework. For additional information, please refer to the upstream
-advisory at https://www.drupal.org/sa-core-2018-001");
+its security tracker page linked in the references.");
+
+  script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/drupal7");
+  script_tag(name:"summary", value:"Multiple vulnerabilities have been found in the Drupal content management
+framework.");
   script_tag(name:"vuldetect", value:"This check tests the installed software version using the apt package manager.");
 
   exit(0);
@@ -79,15 +74,15 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"drupal7", ver:"7.32-1+deb8u10", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"drupal7", ver:"7.32-1+deb8u10", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"drupal7", ver:"7.52-2+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"drupal7", ver:"7.52-2+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
-  exit(99); # Not vulnerable.
+} else if(__pkg_match) {
+  exit(99);
 }

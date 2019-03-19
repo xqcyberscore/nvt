@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1368.nasl 10965 2018-08-15 03:42:43Z ckuersteiner $
+# $Id: deb_dla_1368.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DLA 1368-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891368");
-  script_version("$Revision: 10965 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2017-11333", "CVE-2017-14632", "CVE-2017-14633", "CVE-2018-5146");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1368-1] libvorbis security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 05:42:43 +0200 (Wed, 15 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-05-02 00:00:00 +0200 (Wed, 02 May 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -48,16 +48,13 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB7\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB7");
   script_tag(name:"affected", value:"libvorbis on Debian Linux");
-  script_tag(name:"insight", value:"Ogg Vorbis is a fully open, non-proprietary, patent-and-royalty-free,
-general-purpose compressed audio format for audio and music at fixed
-and variable bitrates from 16 to 128 kbps/channel.");
   script_tag(name:"solution", value:"For Debian 7 'Wheezy', these problems have been fixed in version
 1.3.2-1.3+deb7u1.
 
 We recommend that you upgrade your libvorbis packages.");
-  script_tag(name:"summary",  value:"Serious vulnerabilities were found in the libvorbis library, commonly
+  script_tag(name:"summary", value:"Serious vulnerabilities were found in the libvorbis library, commonly
 used to encode and decode audio in OGG containers.
 
 2017-14633
@@ -95,24 +92,24 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"libvorbis-dbg", ver:"1.3.2-1.3+deb7u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libvorbis-dbg", ver:"1.3.2-1.3+deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libvorbis-dev", ver:"1.3.2-1.3+deb7u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libvorbis-dev", ver:"1.3.2-1.3+deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libvorbis0a", ver:"1.3.2-1.3+deb7u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libvorbis0a", ver:"1.3.2-1.3+deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libvorbisenc2", ver:"1.3.2-1.3+deb7u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libvorbisenc2", ver:"1.3.2-1.3+deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libvorbisfile3", ver:"1.3.2-1.3+deb7u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libvorbisfile3", ver:"1.3.2-1.3+deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
+} else if(__pkg_match) {
   exit(99);
 }

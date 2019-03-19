@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4329.nasl 13338 2019-01-29 07:44:39Z mmartin $
+# $Id: deb_4329.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DSA 4329-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704329");
-  script_version("$Revision: 13338 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2018-18541");
   script_name("Debian Security Advisory DSA 4329-1 (teeworlds - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-29 08:44:39 +0100 (Tue, 29 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-10-28 00:00:00 +0200 (Sun, 28 Oct 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -48,18 +48,18 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB9\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB9");
   script_tag(name:"affected", value:"teeworlds on Debian Linux");
-  script_tag(name:"insight", value:"This package contains the client binary for Teeworlds.");
   script_tag(name:"solution", value:"For the stable distribution (stretch), this problem has been fixed in
 version 0.6.5+dfsg-1~deb9u1.
 
 We recommend that you upgrade your teeworlds packages.
 
 For the detailed security status of teeworlds please refer to
-its security tracker page at:
-https://security-tracker.debian.org/tracker/teeworlds");
-  script_tag(name:"summary",  value:"It was discovered that incorrect connection setup in the server for
+its security tracker page linked in the references.");
+
+  script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/teeworlds");
+  script_tag(name:"summary", value:"It was discovered that incorrect connection setup in the server for
 Teeworlds, an online multi-player platform 2D shooter, could result in
 denial of service via forged connection packets (rendering all game
 server slots occupied).");
@@ -73,18 +73,18 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"teeworlds", ver:"0.6.5+dfsg-1~deb9u1", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"teeworlds", ver:"0.6.5+dfsg-1~deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"teeworlds-data", ver:"0.6.5+dfsg-1~deb9u1", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"teeworlds-data", ver:"0.6.5+dfsg-1~deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"teeworlds-server", ver:"0.6.5+dfsg-1~deb9u1", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"teeworlds-server", ver:"0.6.5+dfsg-1~deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
+} else if(__pkg_match) {
   exit(99);
 }

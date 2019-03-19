@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3496_1.nasl 12130 2018-10-26 13:59:17Z cfischer $
+# $Id: gb_ubuntu_USN_3496_1.nasl 14288 2019-03-18 16:34:17Z cfischer $
 #
 # Ubuntu Update for python2.7 USN-3496-1
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843674");
-  script_version("$Revision: 12130 $");
+  script_version("$Revision: 14288 $");
   script_cve_id("CVE-2017-1000158");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 15:59:17 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 17:34:17 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:05:19 +0200 (Fri, 26 Oct 2018)");
   script_name("Ubuntu Update for python2.7 USN-3496-1");
   script_category(ACT_GATHER_INFO);
@@ -77,13 +77,13 @@ res = "";
 if(release == "UBUNTU14.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"python2.7", ver:"2.7.6-8ubuntu0.4", rls:"UBUNTU14.04 LTS", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"python2.7", ver:"2.7.6-8ubuntu0.4", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"python2.7-minimal", ver:"2.7.6-8ubuntu0.4", rls:"UBUNTU14.04 LTS", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"python2.7-minimal", ver:"2.7.6-8ubuntu0.4", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -97,13 +97,13 @@ if(release == "UBUNTU14.04 LTS")
 if(release == "UBUNTU17.04")
 {
 
-  if ((res = isdpkgvuln(pkg:"python2.7", ver:"2.7.13-2ubuntu0.1", rls:"UBUNTU17.04", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"python2.7", ver:"2.7.13-2ubuntu0.1", rls:"UBUNTU17.04")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"python2.7-minimal", ver:"2.7.13-2ubuntu0.1", rls:"UBUNTU17.04", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"python2.7-minimal", ver:"2.7.13-2ubuntu0.1", rls:"UBUNTU17.04")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -117,13 +117,13 @@ if(release == "UBUNTU17.04")
 if(release == "UBUNTU16.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"python2.7", ver:"2.7.12-1ubuntu0~16.04.2", rls:"UBUNTU16.04 LTS", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"python2.7", ver:"2.7.12-1ubuntu0~16.04.2", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"python2.7-minimal", ver:"2.7.12-1ubuntu0~16.04.2", rls:"UBUNTU16.04 LTS", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"python2.7-minimal", ver:"2.7.12-1ubuntu0~16.04.2", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3729.nasl 8154 2017-12-18 07:30:14Z teissa $
+# $Id: deb_3729.nasl 14279 2019-03-18 14:48:34Z cfischer $
 # Auto-generated from advisory DSA 3729-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -26,38 +26,34 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-
 if(description)
 {
-    script_oid("1.3.6.1.4.1.25623.1.0.703729");
-    script_version("$Revision: 8154 $");
-    script_cve_id("CVE-2016-7777", "CVE-2016-9379", "CVE-2016-9380", "CVE-2016-9382",
+  script_oid("1.3.6.1.4.1.25623.1.0.703729");
+  script_version("$Revision: 14279 $");
+  script_cve_id("CVE-2016-7777", "CVE-2016-9379", "CVE-2016-9380", "CVE-2016-9382",
                   "CVE-2016-9383", "CVE-2016-9385", "CVE-2016-9386");
-    script_name("Debian Security Advisory DSA 3729-1 (xen - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-12-18 08:30:14 +0100 (Mon, 18 Dec 2017) $");
-    script_tag(name: "creation_date", value: "2016-12-07 00:00:00 +0100 (Wed, 07 Dec 2016)");
-    script_tag(name:"cvss_base", value:"7.2");
-    script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-    script_tag(name: "solution_type", value: "VendorFix");
-    script_tag(name: "qod_type", value: "package");
+  script_name("Debian Security Advisory DSA 3729-1 (xen - security update)");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:48:34 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2016-12-07 00:00:00 +0100 (Wed, 07 Dec 2016)");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
 
-    script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3729.html");
+  script_xref(name:"URL", value:"http://www.debian.org/security/2016/dsa-3729.html");
 
-    script_category(ACT_GATHER_INFO);
+  script_category(ACT_GATHER_INFO);
 
-    script_copyright("Copyright (c) 2016 Greenbone Networks GmbH http://greenbone.net");
-    script_family("Debian Local Security Checks");
-    script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
-    script_tag(name: "affected",  value: "xen on Debian Linux");
-    script_tag(name: "insight",   value: "Xen is a hypervisor providing services
-that allow multiple computer operating systems to execute on the same computer
-hardware concurrently.");
-    script_tag(name: "solution",  value: "For the stable distribution (jessie),
+  script_copyright("Copyright (c) 2016 Greenbone Networks GmbH http://greenbone.net");
+  script_family("Debian Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8");
+  script_tag(name:"affected", value:"xen on Debian Linux");
+  script_tag(name:"solution", value:"For the stable distribution (jessie),
 these problems have been fixed in version 4.4.1-9+deb8u8.
 
 We recommend that you upgrade your xen packages.");
-    script_tag(name: "summary",   value: "Multiple vulnerabilities have been
+  script_tag(name:"summary", value:"Multiple vulnerabilities have been
 discovered in the Xen hypervisor. The Common Vulnerabilities and Exposures project
 identifies the following problems:
 
@@ -107,9 +103,10 @@ Andrew Cooper of Citrix discovered that x86 null segments are not
 always treated as unusable. An unprivileged guest user program
 may be able to elevate its privilege to that of the guest
 operating system.");
-    script_tag(name: "vuldetect", value: "This check tests the installed
+  script_tag(name:"vuldetect", value:"This check tests the installed
 software version using the apt package manager.");
-    exit(0);
+
+  exit(0);
 }
 
 include("revisions-lib.inc");
@@ -117,53 +114,53 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"libxen-4.4:amd64", ver:"4.4.1-9+deb8u8", rls_regex:"DEB8.[0-9]+")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libxen-4.4:amd64", ver:"4.4.1-9+deb8u8", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libxen-4.4:amd64", ver:"4.4.1-9+deb8u8", rls_regex:"DEB8.[0-9]+")) != NULL) {
-    report += res;
-}
-
-if ((res = isdpkgvuln(pkg:"libxen-dev", ver:"4.4.1-9+deb8u8", rls_regex:"DEB8.[0-9]+")) != NULL) {
-    report += res;
-}
-if ((res = isdpkgvuln(pkg:"libxenstore3.0:amd64", ver:"4.4.1-9+deb8u8", rls_regex:"DEB8.[0-9]+")) != NULL) {
-    report += res;
-}
-if ((res = isdpkgvuln(pkg:"libxenstore3.0:i386", ver:"4.4.1-9+deb8u8", rls_regex:"DEB8.[0-9]+")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libxen-4.4:amd64", ver:"4.4.1-9+deb8u8", rls:"DEB8")) != NULL) {
+  report += res;
 }
 
-if ((res = isdpkgvuln(pkg:"xen-hypervisor-4.4-amd64", ver:"4.4.1-9+deb8u8", rls_regex:"DEB8.[0-9]+")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libxen-dev", ver:"4.4.1-9+deb8u8", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"xen-hypervisor-4.4-arm64", ver:"4.4.1-9+deb8u8", rls_regex:"DEB8.[0-9]+")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libxenstore3.0:amd64", ver:"4.4.1-9+deb8u8", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"xen-hypervisor-4.4-armhf", ver:"4.4.1-9+deb8u8", rls_regex:"DEB8.[0-9]+")) != NULL) {
-    report += res;
-}
-if ((res = isdpkgvuln(pkg:"xen-system-amd64", ver:"4.4.1-9+deb8u8", rls_regex:"DEB8.[0-9]+")) != NULL) {
-    report += res;
-}
-if ((res = isdpkgvuln(pkg:"xen-system-arm64", ver:"4.4.1-9+deb8u8", rls_regex:"DEB8.[0-9]+")) != NULL) {
-    report += res;
-}
-if ((res = isdpkgvuln(pkg:"xen-system-armhf", ver:"4.4.1-9+deb8u8", rls_regex:"DEB8.[0-9]+")) != NULL) {
-    report += res;
-}
-if ((res = isdpkgvuln(pkg:"xen-utils-4.4", ver:"4.4.1-9+deb8u8", rls_regex:"DEB8.[0-9]+")) != NULL) {
-    report += res;
-}
-if ((res = isdpkgvuln(pkg:"xen-utils-common", ver:"4.4.1-9+deb8u8", rls_regex:"DEB8.[0-9]+")) != NULL) {
-    report += res;
-}
-if ((res = isdpkgvuln(pkg:"xenstore-utils", ver:"4.4.1-9+deb8u8", rls_regex:"DEB8.[0-9]+")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libxenstore3.0:i386", ver:"4.4.1-9+deb8u8", rls:"DEB8")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
-    security_message(data:report);
+if((res = isdpkgvuln(pkg:"xen-hypervisor-4.4-amd64", ver:"4.4.1-9+deb8u8", rls:"DEB8")) != NULL) {
+  report += res;
+}
+if((res = isdpkgvuln(pkg:"xen-hypervisor-4.4-arm64", ver:"4.4.1-9+deb8u8", rls:"DEB8")) != NULL) {
+  report += res;
+}
+if((res = isdpkgvuln(pkg:"xen-hypervisor-4.4-armhf", ver:"4.4.1-9+deb8u8", rls:"DEB8")) != NULL) {
+  report += res;
+}
+if((res = isdpkgvuln(pkg:"xen-system-amd64", ver:"4.4.1-9+deb8u8", rls:"DEB8")) != NULL) {
+  report += res;
+}
+if((res = isdpkgvuln(pkg:"xen-system-arm64", ver:"4.4.1-9+deb8u8", rls:"DEB8")) != NULL) {
+  report += res;
+}
+if((res = isdpkgvuln(pkg:"xen-system-armhf", ver:"4.4.1-9+deb8u8", rls:"DEB8")) != NULL) {
+  report += res;
+}
+if((res = isdpkgvuln(pkg:"xen-utils-4.4", ver:"4.4.1-9+deb8u8", rls:"DEB8")) != NULL) {
+  report += res;
+}
+if((res = isdpkgvuln(pkg:"xen-utils-common", ver:"4.4.1-9+deb8u8", rls:"DEB8")) != NULL) {
+  report += res;
+}
+if((res = isdpkgvuln(pkg:"xenstore-utils", ver:"4.4.1-9+deb8u8", rls:"DEB8")) != NULL) {
+  report += res;
+}
+
+if(report != "") {
+  security_message(data:report);
 } else if (__pkg_match) {
-    exit(99); # Not vulnerable.
+  exit(99);
 }

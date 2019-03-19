@@ -21,10 +21,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704390");
-  script_version("$Revision: 13867 $");
+  script_version("$Revision: 14285 $");
   script_cve_id("CVE-2019-8308");
   script_name("Debian Security Advisory DSA 4390-1 (flatpak - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-26 10:05:01 +0100 (Tue, 26 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 16:08:34 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-02-12 00:00:00 +0100 (Tue, 12 Feb 2019)");
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
@@ -38,23 +38,17 @@ if(description)
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB9\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB9");
   script_tag(name:"affected", value:"flatpak on Debian Linux");
-  script_tag(name:"insight", value:"Flatpak installs, manages and runs sandboxed desktop application bundles.
-Application bundles run partially isolated from the wider system, using
-containerization techniques such as namespaces to prevent direct access
-to system resources. Resources from outside the sandbox can be accessed
-via 'portal' services, which are responsible for access control. For
-example, the Documents portal displays an 'Open' dialog outside the
-sandbox, then allows the application to access only the selected file.");
   script_tag(name:"solution", value:"For the stable distribution (stretch), this problem has been fixed in
 version 0.8.9-0+deb9u2.
 
 We recommend that you upgrade your flatpak packages.
 
 For the detailed security status of flatpak please refer to
-its security tracker page at:
-https://security-tracker.debian.org/tracker/flatpak");
+its security tracker page linked in the references.");
+
+  script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/flatpak");
   script_tag(name:"summary", value:"It was discovered that Flatpak, an application deployment framework for
 desktop apps, insufficiently restricted the execution of apply_extra
 scripts which could potentially result in privilege escalation.
@@ -70,29 +64,29 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"flatpak", ver:"0.8.9-0+deb9u2", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"flatpak", ver:"0.8.9-0+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"flatpak-builder", ver:"0.8.9-0+deb9u2", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"flatpak-builder", ver:"0.8.9-0+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"flatpak-tests", ver:"0.8.9-0+deb9u2", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"flatpak-tests", ver:"0.8.9-0+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"gir1.2-flatpak-1.0", ver:"0.8.9-0+deb9u2", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"gir1.2-flatpak-1.0", ver:"0.8.9-0+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libflatpak-dev", ver:"0.8.9-0+deb9u2", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libflatpak-dev", ver:"0.8.9-0+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libflatpak-doc", ver:"0.8.9-0+deb9u2", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libflatpak-doc", ver:"0.8.9-0+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libflatpak0", ver:"0.8.9-0+deb9u2", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libflatpak0", ver:"0.8.9-0+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
 } else if (__pkg_match) {
   exit(99);

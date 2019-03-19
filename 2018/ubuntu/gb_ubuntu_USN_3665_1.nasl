@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3665_1.nasl 14140 2019-03-13 12:26:09Z cfischer $
+# $Id: gb_ubuntu_USN_3665_1.nasl 14288 2019-03-18 16:34:17Z cfischer $
 #
 # Ubuntu Update for tomcat8 USN-3665-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843539");
-  script_version("$Revision: 14140 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-13 13:26:09 +0100 (Wed, 13 Mar 2019) $");
+  script_version("$Revision: 14288 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 17:34:17 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-06-05 14:03:23 +0530 (Tue, 05 Jun 2018)");
   script_cve_id("CVE-2017-12616", "CVE-2017-12617", "CVE-2017-15706", "CVE-2018-1304",
                 "CVE-2018-1305", "CVE-2018-8014");
@@ -95,13 +95,13 @@ res = "";
 if(release == "UBUNTU14.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"libtomcat7-java", ver:"7.0.52-1ubuntu0.14", rls:"UBUNTU14.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libtomcat7-java", ver:"7.0.52-1ubuntu0.14", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"tomcat7", ver:"7.0.52-1ubuntu0.14", rls:"UBUNTU14.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"tomcat7", ver:"7.0.52-1ubuntu0.14", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -115,13 +115,13 @@ if(release == "UBUNTU14.04 LTS")
 if(release == "UBUNTU17.10")
 {
 
-  if ((res = isdpkgvuln(pkg:"libtomcat8-java", ver:"8.5.21-1ubuntu1.1", rls:"UBUNTU17.10", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libtomcat8-java", ver:"8.5.21-1ubuntu1.1", rls:"UBUNTU17.10")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"tomcat8", ver:"8.5.21-1ubuntu1.1", rls:"UBUNTU17.10", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"tomcat8", ver:"8.5.21-1ubuntu1.1", rls:"UBUNTU17.10")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -135,13 +135,13 @@ if(release == "UBUNTU17.10")
 if(release == "UBUNTU18.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"libtomcat8-java", ver:"8.5.30-1ubuntu1.2", rls:"UBUNTU18.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libtomcat8-java", ver:"8.5.30-1ubuntu1.2", rls:"UBUNTU18.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"tomcat8", ver:"8.5.30-1ubuntu1.2", rls:"UBUNTU18.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"tomcat8", ver:"8.5.30-1ubuntu1.2", rls:"UBUNTU18.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -155,13 +155,13 @@ if(release == "UBUNTU18.04 LTS")
 if(release == "UBUNTU16.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"libtomcat8-java", ver:"8.0.32-1ubuntu1.6", rls:"UBUNTU16.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libtomcat8-java", ver:"8.0.32-1ubuntu1.6", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"tomcat8", ver:"8.0.32-1ubuntu1.6", rls:"UBUNTU16.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"tomcat8", ver:"8.0.32-1ubuntu1.6", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);

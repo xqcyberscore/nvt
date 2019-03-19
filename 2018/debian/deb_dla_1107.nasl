@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1107.nasl 10474 2018-07-10 08:12:26Z cfischer $
+# $Id: deb_dla_1107.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DLA 1107-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891107");
-  script_version("$Revision: 10474 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2013-2099", "CVE-2017-14176");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1107-1] bzr security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-10 10:12:26 +0200 (Tue, 10 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-02-07 00:00:00 +0100 (Wed, 07 Feb 2018)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -48,16 +48,13 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB7\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB7");
   script_tag(name:"affected", value:"bzr on Debian Linux");
-  script_tag(name:"insight", value:"Bazaar is a distributed version control system designed to be easy to
-use and intuitive, able to adapt to many workflows, reliable, and
-easily extendable.");
   script_tag(name:"solution", value:"For Debian 7 'Wheezy', these problems have been fixed in version
 2.6.0~bzr6526-1+deb7u1.
 
 We recommend that you upgrade your bzr packages.");
-  script_tag(name:"summary",  value:"CVE-2013-2099
+  script_tag(name:"summary", value:"CVE-2013-2099
 
 Bazaar bundles SSL certificate checking code from Python, which
 had a bug that could cause a denial of service via resource
@@ -79,24 +76,24 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"bzr", ver:"2.6.0~bzr6526-1+deb7u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"bzr", ver:"2.6.0~bzr6526-1+deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"bzr-doc", ver:"2.6.0~bzr6526-1+deb7u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"bzr-doc", ver:"2.6.0~bzr6526-1+deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"python-bzrlib", ver:"2.6.0~bzr6526-1+deb7u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"python-bzrlib", ver:"2.6.0~bzr6526-1+deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"python-bzrlib-dbg", ver:"2.6.0~bzr6526-1+deb7u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"python-bzrlib-dbg", ver:"2.6.0~bzr6526-1+deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"python-bzrlib.tests", ver:"2.6.0~bzr6526-1+deb7u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"python-bzrlib.tests", ver:"2.6.0~bzr6526-1+deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
+} else if(__pkg_match) {
   exit(99);
 }

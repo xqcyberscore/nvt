@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3554_1.nasl 12130 2018-10-26 13:59:17Z cfischer $
+# $Id: gb_ubuntu_USN_3554_1.nasl 14288 2019-03-18 16:34:17Z cfischer $
 #
 # Ubuntu Update for curl USN-3554-1
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843756");
-  script_version("$Revision: 12130 $");
+  script_version("$Revision: 14288 $");
   script_cve_id("CVE-2018-1000007", "CVE-2018-1000005");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 15:59:17 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 17:34:17 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:15:38 +0200 (Fri, 26 Oct 2018)");
   script_name("Ubuntu Update for curl USN-3554-1");
   script_category(ACT_GATHER_INFO);
@@ -82,25 +82,25 @@ res = "";
 if(release == "UBUNTU14.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"curl", ver:"7.35.0-1ubuntu2.14", rls:"UBUNTU14.04 LTS", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"curl", ver:"7.35.0-1ubuntu2.14", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libcurl3", ver:"7.35.0-1ubuntu2.14", rls:"UBUNTU14.04 LTS", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"libcurl3", ver:"7.35.0-1ubuntu2.14", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libcurl3-gnutls", ver:"7.35.0-1ubuntu2.14", rls:"UBUNTU14.04 LTS", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"libcurl3-gnutls", ver:"7.35.0-1ubuntu2.14", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libcurl3-nss", ver:"7.35.0-1ubuntu2.14", rls:"UBUNTU14.04 LTS", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"libcurl3-nss", ver:"7.35.0-1ubuntu2.14", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -114,25 +114,25 @@ if(release == "UBUNTU14.04 LTS")
 if(release == "UBUNTU17.10")
 {
 
-  if ((res = isdpkgvuln(pkg:"curl", ver:"7.55.1-1ubuntu2.3", rls:"UBUNTU17.10", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"curl", ver:"7.55.1-1ubuntu2.3", rls:"UBUNTU17.10")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libcurl3", ver:"7.55.1-1ubuntu2.3", rls:"UBUNTU17.10", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"libcurl3", ver:"7.55.1-1ubuntu2.3", rls:"UBUNTU17.10")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libcurl3-gnutls", ver:"7.55.1-1ubuntu2.3", rls:"UBUNTU17.10", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"libcurl3-gnutls", ver:"7.55.1-1ubuntu2.3", rls:"UBUNTU17.10")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libcurl3-nss", ver:"7.55.1-1ubuntu2.3", rls:"UBUNTU17.10", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"libcurl3-nss", ver:"7.55.1-1ubuntu2.3", rls:"UBUNTU17.10")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -146,25 +146,25 @@ if(release == "UBUNTU17.10")
 if(release == "UBUNTU16.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"curl", ver:"7.47.0-1ubuntu2.6", rls:"UBUNTU16.04 LTS", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"curl", ver:"7.47.0-1ubuntu2.6", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libcurl3", ver:"7.47.0-1ubuntu2.6", rls:"UBUNTU16.04 LTS", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"libcurl3", ver:"7.47.0-1ubuntu2.6", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libcurl3-gnutls", ver:"7.47.0-1ubuntu2.6", rls:"UBUNTU16.04 LTS", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"libcurl3-gnutls", ver:"7.47.0-1ubuntu2.6", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libcurl3-nss", ver:"7.47.0-1ubuntu2.6", rls:"UBUNTU16.04 LTS", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"libcurl3-nss", ver:"7.47.0-1ubuntu2.6", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);

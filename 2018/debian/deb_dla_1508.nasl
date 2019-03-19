@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1508.nasl 11610 2018-09-26 02:42:29Z ckuersteiner $
+# $Id: deb_dla_1508.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DLA 1508-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891508");
-  script_version("$Revision: 11610 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2016-10728");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1508-1] suricata security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 04:42:29 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-09-20 00:00:00 +0200 (Thu, 20 Sep 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
@@ -48,16 +48,13 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8");
   script_tag(name:"affected", value:"suricata on Debian Linux");
-  script_tag(name:"insight", value:"Suricata is a network Intrusion Detection System (IDS). It is based on
-rules (and is fully compatible with snort rules) to detect a variety of
-attacks / probes by searching packet content.");
   script_tag(name:"solution", value:"For Debian 8 'Jessie', this problem has been fixed in version
 2.0.7-2+deb8u1.
 
 We recommend that you upgrade your suricata packages.");
-  script_tag(name:"summary",  value:"CVE-2016-10728
+  script_tag(name:"summary", value:"CVE-2016-10728
 If an ICMPv4 error packet is received as the first packet on a flow
 in the to_client direction, it can lead to missed TCP/UDP detection
 in packets arriving afterwards.");
@@ -71,12 +68,12 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"suricata", ver:"2.0.7-2+deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"suricata", ver:"2.0.7-2+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
+} else if(__pkg_match) {
   exit(99);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1458.nasl 10869 2018-08-10 06:10:37Z cfischer $
+# $Id: deb_dla_1458.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DLA 1458-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891458");
-  script_version("$Revision: 10869 $");
+  script_version("$Revision: 14281 $");
   #TODO: CVE requested but none was assigned yet
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1458-1] xml-security-c security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 08:10:37 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-08-10 00:00:00 +0200 (Fri, 10 Aug 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -48,16 +48,13 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8");
   script_tag(name:"affected", value:"xml-security-c on Debian Linux");
-  script_tag(name:"insight", value:"XML-Security-C is a library for the XML Digital Security specification.
-It provides processing and handling of XML Key Management Specifications
-(XKMS) messages.");
   script_tag(name:"solution", value:"For Debian 8 'Jessie', this problem has been fixed in version
 1.7.2-3+deb8u1.
 
 We recommend that you upgrade your xml-security-c packages.");
-  script_tag(name:"summary",  value:"It was discovered that the Apache XML Security for C++ library performed
+  script_tag(name:"summary", value:"It was discovered that the Apache XML Security for C++ library performed
 insufficient validation of KeyInfo hints, which could result in denial
 of service via NULL pointer dereferences when processing malformed XML
 data.");
@@ -71,18 +68,18 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"libxml-security-c-dev", ver:"1.7.2-3+deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libxml-security-c-dev", ver:"1.7.2-3+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libxml-security-c17", ver:"1.7.2-3+deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libxml-security-c17", ver:"1.7.2-3+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"xml-security-c-utils", ver:"1.7.2-3+deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"xml-security-c-utils", ver:"1.7.2-3+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
+} else if(__pkg_match) {
   exit(99);
 }

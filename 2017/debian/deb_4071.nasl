@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4071.nasl 8291 2018-01-04 09:51:36Z asteins $
+# $Id: deb_4071.nasl 14284 2019-03-18 15:02:15Z cfischer $
 #
 # Auto-generated from advisory DSA 4071-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704071");
-  script_version("$Revision: 8291 $");
+  script_version("$Revision: 14284 $");
   script_cve_id("CVE-2017-17512");
   script_name("Debian Security Advisory DSA 4071-1 (sensible-utils - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-04 10:51:36 +0100 (Thu, 04 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 16:02:15 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-12-21 00:00:00 +0100 (Thu, 21 Dec 2017)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -48,11 +48,8 @@ if(description)
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB(8|9)");
   script_tag(name:"affected", value:"sensible-utils on Debian Linux");
-  script_tag(name:"insight", value:"This package provides a number of small utilities which are used
-by programs to sensibly select and spawn an appropriate browser,
-editor, or pager.");
   script_tag(name:"solution", value:"For the oldstable distribution (jessie), this problem has been fixed
 in version 0.0.9+deb8u1.
 
@@ -62,9 +59,10 @@ version 0.0.9+deb9u1.
 We recommend that you upgrade your sensible-utils packages.
 
 For the detailed security status of sensible-utils please refer to its
-security tracker page at:
-https://security-tracker.debian.org/tracker/sensible-utils");
-  script_tag(name:"summary",  value:"Gabriel Corona reported that sensible-browser from sensible-utils, a
+security tracker page linked in the references.");
+
+  script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/sensible-utils");
+  script_tag(name:"summary", value:"Gabriel Corona reported that sensible-browser from sensible-utils, a
 collection of small utilities used to sensibly select and spawn an
 appropriate browser, editor or pager, does not validate strings before
 launching the program specified by the BROWSER environment variable,
@@ -80,15 +78,15 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"sensible-utils", ver:"0.0.9+deb8u1", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"sensible-utils", ver:"0.0.9+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"sensible-utils", ver:"0.0.9+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"sensible-utils", ver:"0.0.9+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
-  exit(99); # Not vulnerable.
+} else if(__pkg_match) {
+  exit(99);
 }

@@ -21,10 +21,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891704");
-  script_version("$Revision: 13984 $");
+  script_version("$Revision: 14282 $");
   script_cve_id("CVE-2018-12404", "CVE-2018-18508");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1704-1] nss security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-05 07:45:09 +0100 (Tue, 05 Mar 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:55:18 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-03-05 00:00:00 +0100 (Tue, 05 Mar 2019)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -38,10 +38,8 @@ if(description)
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8");
   script_tag(name:"affected", value:"nss on Debian Linux");
-  script_tag(name:"insight", value:"nss is a set of libraries designed to support cross-platform development
-of security-enabled client and server applications.");
   script_tag(name:"solution", value:"For Debian 8 'Jessie', these problems have been fixed in version
 2:3.26-1+debu8u4.
 
@@ -67,23 +65,23 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"libnss3", ver:"2:3.26-1+debu8u4", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libnss3", ver:"2:3.26-1+debu8u4", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libnss3-1d", ver:"2:3.26-1+debu8u4", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libnss3-1d", ver:"2:3.26-1+debu8u4", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libnss3-dbg", ver:"2:3.26-1+debu8u4", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libnss3-dbg", ver:"2:3.26-1+debu8u4", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libnss3-dev", ver:"2:3.26-1+debu8u4", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libnss3-dev", ver:"2:3.26-1+debu8u4", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libnss3-tools", ver:"2:3.26-1+debu8u4", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libnss3-tools", ver:"2:3.26-1+debu8u4", rls:"DEB8")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
 } else if (__pkg_match) {
   exit(99);

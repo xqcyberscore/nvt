@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1560.nasl 12236 2018-11-07 05:34:17Z ckuersteiner $
+# $Id: deb_dla_1560.nasl 14270 2019-03-18 14:24:29Z cfischer $
 #
 # Auto-generated from advisory DLA 1560-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891560");
-  script_version("$Revision: 12236 $");
+  script_version("$Revision: 14270 $");
   script_cve_id("CVE-2018-10844", "CVE-2018-10845", "CVE-2018-10846");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1560-1] gnutls28 security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-07 06:34:17 +0100 (Wed, 07 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:24:29 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-11-05 00:00:00 +0100 (Mon, 05 Nov 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
@@ -48,7 +48,7 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8");
   script_tag(name:"affected", value:"gnutls28 on Debian Linux");
   script_tag(name:"solution", value:"For Debian 8 'Jessie', these problems have been fixed in version
 3.3.30-0+deb8u1. It was found to be more practical to update to the
@@ -59,25 +59,25 @@ will facilitate future LTS updates as well.
 This change therefore also includes the following major policy
 changes, as documented in the NEWS file:
 
-* ARCFOUR (RC4) and SSL 3.0 are no longer included in the default
+  * ARCFOUR (RC4) and SSL 3.0 are no longer included in the default
 priorities list. Those have to be explicitly enabled, e.g., with
 a string like 'NORMAL:+ARCFOUR-128' or 'NORMAL:+VERS-SSL3.0',
 respectively.
 
-* The ciphers utilizing HMAC-SHA384 and SHA256 have been removed
+  * The ciphers utilizing HMAC-SHA384 and SHA256 have been removed
 from the default priority strings. They are not necessary for
 compatibility or other purpose and provide no advantage over
 their SHA1 counter-parts, as they all depend on the legacy TLS
 CBC block mode.
 
-* Follow closely RFC5280 recommendations and use UTCTime for dates
+  * Follow closely RFC5280 recommendations and use UTCTime for dates
 prior to 2050.
 
-* Require strict DER encoding for certificates, OCSP requests,
+  * Require strict DER encoding for certificates, OCSP requests,
 private keys, CRLs and certificate requests, in order to reduce
 issues due to the complexity of BER rules.
 
-* Refuse to import v1 or v2 certificates that contain extensions.
+  * Refuse to import v1 or v2 certificates that contain extensions.
 
 API and ABI compatibility is retained, however, although new symbols
 have been added. Many bugfixes are also included in the upload. See
@@ -85,7 +85,7 @@ the provided upstream changelog for more details.
 
 We recommend that you upgrade your gnutls28 packages and do not expect
 significant breakage.");
-  script_tag(name:"summary",  value:"A set of vulnerabilities was discovered in GnuTLS which allowed
+  script_tag(name:"summary", value:"A set of vulnerabilities was discovered in GnuTLS which allowed
 attackers to do plain text recovery on TLS connections with certain
 cipher types.
 
@@ -122,33 +122,33 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"gnutls-bin", ver:"3.3.30-0+deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"gnutls-bin", ver:"3.3.30-0+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"gnutls-doc", ver:"3.3.30-0+deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"gnutls-doc", ver:"3.3.30-0+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"guile-gnutls", ver:"3.3.30-0+deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"guile-gnutls", ver:"3.3.30-0+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libgnutls-deb0-28", ver:"3.3.30-0+deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libgnutls-deb0-28", ver:"3.3.30-0+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libgnutls-openssl27", ver:"3.3.30-0+deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libgnutls-openssl27", ver:"3.3.30-0+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libgnutls28-dbg", ver:"3.3.30-0+deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libgnutls28-dbg", ver:"3.3.30-0+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libgnutls28-dev", ver:"3.3.30-0+deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libgnutls28-dev", ver:"3.3.30-0+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libgnutlsxx28", ver:"3.3.30-0+deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libgnutlsxx28", ver:"3.3.30-0+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
+} else if(__pkg_match) {
   exit(99);
 }

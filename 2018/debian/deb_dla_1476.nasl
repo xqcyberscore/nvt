@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1476.nasl 11184 2018-09-03 09:04:45Z cfischer $
+# $Id: deb_dla_1476.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DLA 1476-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891476");
-  script_version("$Revision: 11184 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2018-15473", "CVE-2018-15599");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1476-1] dropbear security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 11:04:45 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-09-03 00:00:00 +0200 (Mon, 03 Sep 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -48,16 +48,13 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8");
   script_tag(name:"affected", value:"dropbear on Debian Linux");
-  script_tag(name:"insight", value:"dropbear is a SSH 2 server and client designed to be small enough to
-be used in small memory environments, while still being functional and
-secure enough for general use.");
   script_tag(name:"solution", value:"For Debian 8 'Jessie', this problem has been fixed in version
 2014.65-1+deb8u3.
 
 We recommend that you upgrade your dropbear packages.");
-  script_tag(name:"summary",  value:"vulnerability in dropbear, a lightweight SSH2 server and client, making it
+  script_tag(name:"summary", value:"vulnerability in dropbear, a lightweight SSH2 server and client, making it
 possible to guess valid usernames has been found:
 
 CVE-2018-15599:
@@ -74,12 +71,12 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"dropbear", ver:"2014.65-1+deb8u3", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"dropbear", ver:"2014.65-1+deb8u3", rls:"DEB8")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
+} else if(__pkg_match) {
   exit(99);
 }

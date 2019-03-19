@@ -21,12 +21,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843900");
-  script_version("$Revision: 13648 $");
+  script_version("$Revision: 14288 $");
   script_cve_id("CVE-2018-10119", "CVE-2018-10120", "CVE-2018-11790", "CVE-2018-10583",
                 "CVE-2018-16858");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-14 06:25:08 +0100 (Thu, 14 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 17:34:17 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-02-07 04:03:44 +0100 (Thu, 07 Feb 2019)");
   script_name("Ubuntu Update for libreoffice USN-3883-1");
   script_category(ACT_GATHER_INFO);
@@ -81,7 +81,7 @@ res = "";
 if(release == "UBUNTU14.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"libreoffice-core", ver:"1:4.2.8-0ubuntu5.5", rls:"UBUNTU14.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libreoffice-core", ver:"1:4.2.8-0ubuntu5.5", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -95,7 +95,7 @@ if(release == "UBUNTU14.04 LTS")
 if(release == "UBUNTU16.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"libreoffice-core", ver:"1:5.1.6~rc2-0ubuntu1~xenial6", rls:"UBUNTU16.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libreoffice-core", ver:"1:5.1.6~rc2-0ubuntu1~xenial6", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);

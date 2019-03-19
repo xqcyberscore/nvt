@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3855_1.nasl 13595 2019-02-12 08:06:21Z mmartin $
+# $Id: gb_ubuntu_USN_3855_1.nasl 14288 2019-03-18 16:34:17Z cfischer $
 #
 # Ubuntu Update for systemd USN-3855-1
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843868");
-  script_version("$Revision: 13595 $");
+  script_version("$Revision: 14288 $");
   script_cve_id("CVE-2018-16864", "CVE-2018-16865", "CVE-2018-16866");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-12 09:06:21 +0100 (Tue, 12 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 17:34:17 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-01-12 04:00:33 +0100 (Sat, 12 Jan 2019)");
   script_name("Ubuntu Update for systemd USN-3855-1");
   script_category(ACT_GATHER_INFO);
@@ -87,7 +87,7 @@ res = "";
 if(release == "UBUNTU18.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"systemd", ver:"237-3ubuntu10.11", rls:"UBUNTU18.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"systemd", ver:"237-3ubuntu10.11", rls:"UBUNTU18.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -101,7 +101,7 @@ if(release == "UBUNTU18.04 LTS")
 if(release == "UBUNTU18.10")
 {
 
-  if ((res = isdpkgvuln(pkg:"systemd", ver:"239-7ubuntu10.6", rls:"UBUNTU18.10", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"systemd", ver:"239-7ubuntu10.6", rls:"UBUNTU18.10")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -115,7 +115,7 @@ if(release == "UBUNTU18.10")
 if(release == "UBUNTU16.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"systemd", ver:"229-4ubuntu21.15", rls:"UBUNTU16.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"systemd", ver:"229-4ubuntu21.15", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);

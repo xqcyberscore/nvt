@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3813_1.nasl 13072 2019-01-15 08:12:06Z asteins $
+# $Id: gb_ubuntu_USN_3813_1.nasl 14288 2019-03-18 16:34:17Z cfischer $
 #
 # Ubuntu Update for pyopenssl USN-3813-1
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843812");
-  script_version("$Revision: 13072 $");
+  script_version("$Revision: 14288 $");
   script_cve_id("CVE-2018-1000807", "CVE-2018-1000808");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-15 09:12:06 +0100 (Tue, 15 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 17:34:17 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-11-09 06:05:26 +0100 (Fri, 09 Nov 2018)");
   script_name("Ubuntu Update for pyopenssl USN-3813-1");
   script_category(ACT_GATHER_INFO);
@@ -82,13 +82,13 @@ res = "";
 if(release == "UBUNTU16.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"python-openssl", ver:"0.15.1-2ubuntu0.2", rls:"UBUNTU16.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"python-openssl", ver:"0.15.1-2ubuntu0.2", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"python3-openssl", ver:"0.15.1-2ubuntu0.2", rls:"UBUNTU16.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"python3-openssl", ver:"0.15.1-2ubuntu0.2", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);

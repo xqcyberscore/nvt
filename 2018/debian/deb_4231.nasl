@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4231.nasl 10965 2018-08-15 03:42:43Z ckuersteiner $
+# $Id: deb_4231.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DSA 4231-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704231");
-  script_version("$Revision: 10965 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2018-0495");
   script_name("Debian Security Advisory DSA 4231-1 (libgcrypt20 - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 05:42:43 +0200 (Wed, 15 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-06-17 00:00:00 +0200 (Sun, 17 Jun 2018)");
   script_tag(name:"cvss_base", value:"1.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:N/A:N");
@@ -48,20 +48,18 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB9\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB9");
   script_tag(name:"affected", value:"libgcrypt20 on Debian Linux");
-  script_tag(name:"insight", value:"libgcrypt contains cryptographic functions. Many important free
-ciphers, hash algorithms and public key signing algorithms have been
-implemented:");
   script_tag(name:"solution", value:"For the stable distribution (stretch), this problem has been fixed in
 version 1.7.6-2+deb9u3.
 
 We recommend that you upgrade your libgcrypt20 packages.
 
 For the detailed security status of libgcrypt20 please refer to its
-security tracker page at:
-https://security-tracker.debian.org/tracker/libgcrypt20");
-  script_tag(name:"summary",  value:"It was discovered that Libgcrypt is prone to a local side-channel attack
+security tracker page linked in the references.");
+
+  script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/libgcrypt20");
+  script_tag(name:"summary", value:"It was discovered that Libgcrypt is prone to a local side-channel attack
 allowing recovery of ECDSA private keys.");
   script_tag(name:"vuldetect", value:"This check tests the installed software version using the apt package manager.");
 
@@ -73,26 +71,26 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"libgcrypt-mingw-w64-dev", ver:"1.7.6-2+deb9u3", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libgcrypt-mingw-w64-dev", ver:"1.7.6-2+deb9u3", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libgcrypt20", ver:"1.7.6-2+deb9u3", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libgcrypt20", ver:"1.7.6-2+deb9u3", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libgcrypt20-dev", ver:"1.7.6-2+deb9u3", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libgcrypt20-dev", ver:"1.7.6-2+deb9u3", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libgcrypt20-doc", ver:"1.7.6-2+deb9u3", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libgcrypt20-doc", ver:"1.7.6-2+deb9u3", rls:"DEB9")) != NULL) {
+  report += res;
 }
 
 # nb: This is using a different version scheme, take care of this when overwriting this LSC...
-if ((res = isdpkgvuln(pkg:"libgcrypt11-dev", ver:"1.5.4-3+really1.7.6-2+deb9u3", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libgcrypt11-dev", ver:"1.5.4-3+really1.7.6-2+deb9u3", rls:"DEB9")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
+} else if(__pkg_match) {
   exit(99);
 }

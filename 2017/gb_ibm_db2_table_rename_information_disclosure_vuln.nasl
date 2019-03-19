@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_table_rename_information_disclosure_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
+# $Id: gb_ibm_db2_table_rename_information_disclosure_vuln.nasl 14286 2019-03-18 15:20:15Z ckuersteiner $
 #
 # IBM DB2 Table Rename Information Disclosure Vulnerability
 #
@@ -29,17 +29,18 @@ CPE = "cpe:/a:ibm:db2";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810704");
-  script_version("$Revision: 11863 $");
+  script_version("$Revision: 14286 $");
   script_cve_id("CVE-2017-1150");
   script_bugtraq_id(96597);
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 16:20:15 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-03-09 15:35:12 +0530 (Thu, 09 Mar 2017)");
+
   script_name("IBM DB2 Table Rename Information Disclosure Vulnerability");
 
-  script_tag(name:"summary", value:"This host is running IBM DB2 and is
-  prone to information disclosure vulnerability.");
+  script_tag(name:"summary", value:"This host is running IBM DB2 and is prone to information disclosure
+  vulnerability.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
@@ -51,9 +52,8 @@ if(description)
   authenticated attacker with specialized access to tables that they should
   not be permitted to view.");
 
-  script_tag(name:"affected", value:"IBM DB2 versions 11.1
-  IBM DB2 versions 10.1 through FP5
-  IBM DB2 versions 10.5 through FP7");
+  script_tag(name:"affected", value:"IBM DB2 versions 11.1, IBM DB2 versions 10.1 through FP5 and IBM DB2 versions
+  10.5 through FP7");
 
   script_tag(name:"solution", value:"Apply the appropriate fix");
 
@@ -65,51 +65,42 @@ if(description)
   script_family("Databases");
   script_dependencies("gb_ibm_db2_remote_detect.nasl");
   script_mandatory_keys("IBM-DB2/installed");
+
   exit(0);
 }
 
-include("http_func.inc");
 include("host_details.inc");
 include("version_func.inc");
 
-if(!ibmPort = get_app_port(cpe:CPE)){
+if (!port = get_app_port(cpe: CPE))
   exit(0);
-}
 
-if(!ibmVer = get_app_version(cpe:CPE, port:ibmPort)){
-  exit(0);
-}
+infos = get_app_version_and_proto(cpe: CPE, port: port, exit_no_version: TRUE);
+version = infos["version"];
+proto = infos["proto"];
 
-if(ibmVer =~ "^1001\.*")
-{
-  ## IBM DB2 10.1 through FP5
-  ## IBM DB2 10.1 FP5  => 10015
-  if(version_is_less_equal(version:ibmVer, test_version:"10015")){
-    VULN = TRUE;
+if (version =~ "^10\.01\.") {
+  if (version_is_less(version: version, test_version: "10.01.6")) {
+    report = report_fixed_ver(installed_version: version, fixed_version: "10.01.6");
+    security_message(port: port, data: report, proto: proto);
+    exit(0);
   }
 }
 
-if(ibmVer =~ "^1005\.*")
-{
-  ## IBM DB2 10.5 through FP7
-  ## IBM DB2 10.5 FP7 => 10057
-  if(version_is_less_equal(version:ibmVer, test_version:"10057")){
-    VULN = TRUE;
+if (version =~ "^10\.05\.") {
+  if (version_is_less(version: version, test_version: "10.05.9")) {
+    report = report_fixed_ver(installed_version: version, fixed_version: "10.05.9");
+    security_message(port: port, data: report, proto: proto);
+    exit(0);
   }
 }
 
-if(ibmVer =~ "^1101\.*")
-{
-  ## IBM DB2 11.1 FP 0
-  ## IBM DB2 11.1 FP0 => 11010
-  if(version_is_less_equal(version:ibmVer, test_version:"11010")){
-    VULN = TRUE;
+if (version =~ "^11\.01\.") {
+  if (version_is_less_equal(version: version, test_version: "11.01.1")) {
+    report = report_fixed_ver(installed_version: version, fixed_version: "Interim Fix IT19400");
+    security_message(port: port, data: report, proto: proto);
+    exit(0);
   }
 }
 
-if(VULN)
-{
-  report = report_fixed_ver(installed_version:ibmVer, fixed_version:"Apply appropriate fix");
-  security_message(data:report, port:ibmPort);
-  exit(0);
-}
+exit(99);

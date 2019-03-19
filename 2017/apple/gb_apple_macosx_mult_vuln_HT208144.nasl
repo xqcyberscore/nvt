@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_mult_vuln_HT208144.nasl 10824 2018-08-08 02:52:53Z ckuersteiner $
+# $Id: gb_apple_macosx_mult_vuln_HT208144.nasl 14295 2019-03-18 20:16:46Z cfischer $
 #
 # Apple Mac OS X Multiple Vulnerabilities-HT208144
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811790");
-  script_version("$Revision: 10824 $");
+  script_version("$Revision: 14295 $");
   script_cve_id("CVE-2017-7084", "CVE-2017-7074", "CVE-2017-7143", "CVE-2017-7083",
                 "CVE-2017-0381", "CVE-2017-7138", "CVE-2017-7121", "CVE-2017-7122",
                 "CVE-2017-7123", "CVE-2017-7124", "CVE-2017-7125", "CVE-2017-7126",
@@ -43,16 +43,16 @@ if(description)
                     97058, 94337, 97045, 95248, 97046, 97052, 97050, 97051);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-08 04:52:53 +0200 (Wed, 08 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 21:16:46 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-09-26 12:22:46 +0530 (Tue, 26 Sep 2017)");
   script_name("Apple Mac OS X Multiple Vulnerabilities-HT208144");
 
-  script_tag(name: "summary" , value:"This host is running Apple Mac OS X and
+  script_tag(name:"summary", value:"This host is running Apple Mac OS X and
   is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exists due to,
 
   - Multiple issues in zlib, SQLite, ntp, expat and files.
 
@@ -78,51 +78,47 @@ if(description)
 
   - Some unspecified errors.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow attacker
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker
   to cause a denial of service, read unencrypted  password over the network, gain
   access to potentially sensitive information, determine the Apple ID of the owner
   of the computer, impersonate a service, execute arbitrary code with system
   privileges, execute arbitrary code with kernel privileges, able to intercept
-  mail contents, revoked certificate to be trusted and have other unknown impacts.
+  mail contents, revoked certificate to be trusted and have other unknown impacts.");
 
-  Impact Level: System");
-
-  script_tag(name: "affected" , value:"Apple Mac OS X version 10.8 through 10.12.x
+  script_tag(name:"affected", value:"Apple Mac OS X version 10.8 through 10.12.x
   prior to 10.13");
 
-  script_tag(name: "solution" , value:"Upgrade to Apple Mac OS X version
-  10.13 or later. For more updates refer to https://www.apple.com
-
-  Note: According to the vendor an upgrade to version 10.13 is required to
+  script_tag(name:"solution", value:"Upgrade to Apple Mac OS X version
+  10.13 or later.  Note: According to the vendor an upgrade to version 10.13 is required to
   mitigate this vulnerabilities. Please see the advisory (HT208144) for more info.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"package");
 
-  script_xref(name : "URL" , value : "https://support.apple.com/en-us/HT208144");
+  script_xref(name:"URL", value:"https://support.apple.com/en-us/HT208144");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Mac OS X Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/osx_name", "ssh/login/osx_version");
+  script_mandatory_keys("ssh/login/osx_name", "ssh/login/osx_version", re:"ssh/login/osx_version=^10\.(8|9|10|11|12)");
+  script_xref(name:"URL", value:"https://www.apple.com");
   exit(0);
 }
 
 include("version_func.inc");
 
 osName = get_kb_item("ssh/login/osx_name");
-if(!osName){
-  exit (0);
-}
+if(!osName)
+  exit(0);
 
 osVer = get_kb_item("ssh/login/osx_version");
 if(!osVer){
   exit(0);
 }
 
-if("Mac OS X" >< osName && osVer =~ "^10\."){
+if("Mac OS X" >< osName && osVer =~ "^10\.(8|9|10|11|12)"){
   if(version_in_range(version:osVer, test_version:"10.8", test_version2:"10.12.9")){
     report = report_fixed_ver(installed_version:osVer, fixed_version:"According to the vendor an upgrade to version 10.13 is required to mitigate this vulnerabilities. Please see the advisory (HT208144) for more info.");
     security_message(port:0, data:report);

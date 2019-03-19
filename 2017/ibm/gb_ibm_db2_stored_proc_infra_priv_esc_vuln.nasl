@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_stored_proc_infra_priv_esc_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
+# $Id: gb_ibm_db2_stored_proc_infra_priv_esc_vuln.nasl 14286 2019-03-18 15:20:15Z ckuersteiner $
 #
 # IBM DB2 Stored Procedure Infrastructure Privilege Escalation Vulnerability
 #
@@ -29,13 +29,14 @@ CPE = "cpe:/a:ibm:db2";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812242");
-  script_version("$Revision: 11983 $");
+  script_version("$Revision: 14286 $");
   script_cve_id("CVE-2013-6744");
   script_bugtraq_id(67616);
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 16:20:15 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-12-12 18:25:48 +0530 (Tue, 12 Dec 2017)");
+
   script_name("IBM DB2 Stored Procedure Infrastructure Privilege Escalation Vulnerability");
 
   script_tag(name:"summary", value:"This host is running IBM DB2 and is
@@ -53,7 +54,9 @@ if(description)
   and 10.5 before FP3a");
 
   script_tag(name:"solution", value:"Apply the appropriate fix from reference link");
+
   script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg22007183");
+
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
@@ -64,56 +67,44 @@ if(description)
   exit(0);
 }
 
-
-include("http_func.inc");
 include("host_details.inc");
 include("version_func.inc");
 
-if(!ibmPort = get_app_port(cpe:CPE)){
+if (!port = get_app_port(cpe: CPE))
+  exit(0);
+
+infos = get_app_version_and_proto(cpe: CPE, port: port, exit_no_version: TRUE);
+version = infos["version"];
+proto = infos["proto"];
+
+if (version =~ "^10\.05\.") {
+  if (version_is_less_equal(version: version, test_version: "10.05.3")) {
+    report = report_fixed_ver(installed_version: version, fixed_version: "10.05.3a");
+    security_message(port: port, data: report, proto: proto);
+    exit(0);
+  }
+}
+
+if (version =~ "^10\.01\.") {
+  if (version_is_less_equal(version: version, test_version: "10.01.3")) {
+    report = report_fixed_ver(installed_version: version, fixed_version: "10.01.3a");
+    security_message(port: port, data: report, proto: proto);
+    exit(0);
+  }
+}
+
+if (version =~ "^09\.07\.") {
+  if (version_is_less_equal(version: version, test_version: "09.07.9")) {
+    report = report_fixed_ver(installed_version: version, fixed_version: "09.07.9a");
+    security_message(port: port, data: report, proto: proto);
+    exit(0);
+  }
+}
+
+if (version =~ "^09\.05\.") {
+  report = report_fixed_ver(installed_version: version, fixed_version: "Apply patch");
+  security_message(port: port, data: report, proto: proto);
   exit(0);
 }
 
-if(!infos = get_app_version_and_location( cpe:CPE, port:ibmPort, exit_no_version:TRUE)) exit(0);
-ibmVer = infos['version'];
-path = infos['location'];
-
-if(ibmVer =~ "^1005\.*")
-{
-  ## IBM DB2 10.5 before FP3a
-  ## IBM DB2 10.5 FP3 => 10053
-  if(version_is_less_equal(version:ibmVer, test_version:"10053")){
-    fix  = "IBM DB2 10.5 FP3a";
-  }
-}
-
-else if(ibmVer =~ "^1001\.*")
-{
-  ## IBM DB2 10.1 before FP3a
-  ## IBM DB2 10.1 FP3 => 10013
-  if(version_is_less_equal(version:ibmVer, test_version:"10013")){
-    fix  = "IBM DB2 10.1 FP3a";
-  }
-}
-
-else if(ibmVer =~ "^0907\.*")
-{
-
-  ## IBM DB2 9.7 before FP9a
-  ## IBM DB2 9.7 FP9 => 09079
-  if(version_is_less_equal(version:ibmVer, test_version:"09079")){
-    fix  = "IBM DB2 9.7 FP9a";
-  }
-}
-
-else if(ibmVer =~ "^0905\.*"){
-  ## A special build with an interim patch for this issue may be requested for DB2 and DB2 Connect V9.5 FP9 & FP10
-  fix  = "Apply the appropriate patch from vendor";
-}
-
-if(fix)
-{
-  report = report_fixed_ver(installed_version:ibmVer, fixed_version:fix, install_path:path);
-  security_message(data:report, port:ibmPort);
-  exit(0);
-}
-exit(0);
+exit(99);

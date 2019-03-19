@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_mult_vuln01_HT208465.nasl 9762 2018-05-09 02:09:11Z ckuersteiner $
+# $Id: gb_apple_macosx_mult_vuln01_HT208465.nasl 14292 2019-03-18 18:39:37Z cfischer $
 #
 # Apple Mac OS X Multiple Vulnerabilities-01 (HT208465)
 #
@@ -27,23 +27,22 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812661");
-  script_version("$Revision: 9762 $");
+  script_version("$Revision: 14292 $");
   script_cve_id("CVE-2018-4096", "CVE-2018-4088", "CVE-2018-4089", "CVE-2018-4091",
                 "CVE-2018-4093", "CVE-2018-4092", "CVE-2018-4090", "CVE-2017-8817");
   script_bugtraq_id(102057);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-09 04:09:11 +0200 (Wed, 09 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 19:39:37 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-01-24 10:37:13 +0530 (Wed, 24 Jan 2018)");
   script_name("Apple Mac OS X Multiple Vulnerabilities-01 (HT208465)");
 
-  script_tag(name: "summary" , value:"This host is running Apple Mac OS X and
+  script_tag(name:"summary", value:"This host is running Apple Mac OS X and
   is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exists due to,
 
   - An out-of-bounds read issue existed in the curl.
 
@@ -57,37 +56,32 @@ if(description)
 
   - Multiple memory corruption issues.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow an attacker
+  script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to execute arbitrary code on the affected system, bypass sandbox restrictions and
-  read restricted memory.
+  read restricted memory.");
 
-  Impact Level: System");
-
-  script_tag(name: "affected" , value:"Apple Mac OS X version 10.13.x prior to
+  script_tag(name:"affected", value:"Apple Mac OS X version 10.13.x prior to
   10.13.3");
 
-  script_tag(name: "solution" , value:"Upgrade to Apple Mac OS X version
-  10.13.3 or later. For more updates refer to https://www.apple.com");
+  script_tag(name:"solution", value:"Upgrade to Apple Mac OS X version
+  10.13.3 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"package");
 
-  script_xref(name : "URL" , value : "https://support.apple.com/en-us/HT208465");
+  script_xref(name:"URL", value:"https://support.apple.com/en-us/HT208465");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Mac OS X Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/osx_name", "ssh/login/osx_version");
+  script_xref(name:"URL", value:"https://www.apple.com", re:"ssh/login/osx_version=^10\.13");
   exit(0);
 }
 
-
 include("version_func.inc");
-
-osName = "";
-osVer = "";
 
 osName = get_kb_item("ssh/login/osx_name");
 if(!osName || "Mac OS X" >!< osName){
@@ -95,7 +89,7 @@ if(!osName || "Mac OS X" >!< osName){
 }
 
 osVer = get_kb_item("ssh/login/osx_version");
-if(!osVer || osVer != "10.13"){
+if(!osVer || osVer !~ "^10\.13"){
   exit(0);
 }
 
@@ -105,4 +99,5 @@ if(version_in_range(version:osVer, test_version:"10.13", test_version2:"10.13.2"
   security_message(data:report);
   exit(0);
 }
-exit(0);
+
+exit(99);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1399.nasl 11151 2018-08-29 03:47:27Z ckuersteiner $
+# $Id: deb_dla_1399.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DLA 1399-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891399");
-  script_version("$Revision: 11151 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2015-7519", "CVE-2018-12029");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1399-1] ruby-passenger security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 05:47:27 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-07-10 00:00:00 +0200 (Tue, 10 Jul 2018)");
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
@@ -48,16 +48,13 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8");
   script_tag(name:"affected", value:"ruby-passenger on Debian Linux");
-  script_tag(name:"insight", value:"Phusion Passenger ? a.k.a. mod_rails or mod_rack ? makes
-deployment of Ruby web applications, such as those built on the
-revolutionary Ruby on Rails web framework, a breeze.");
   script_tag(name:"solution", value:"For Debian 8 'Jessie', these problems have been fixed in version
 4.0.53-1+deb8u1.
 
 We recommend that you upgrade your ruby-passenger packages.");
-  script_tag(name:"summary",  value:"Two flaws were discovered in ruby-passenger for Ruby Rails and Rack
+  script_tag(name:"summary", value:"Two flaws were discovered in ruby-passenger for Ruby Rails and Rack
 support that allowed attackers to spoof HTTP headers or exploit a race
 condition which made privilege escalation under certain conditions
 possible.
@@ -86,18 +83,18 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"libapache2-mod-passenger", ver:"4.0.53-1+deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libapache2-mod-passenger", ver:"4.0.53-1+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"ruby-passenger", ver:"4.0.53-1+deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"ruby-passenger", ver:"4.0.53-1+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"ruby-passenger-doc", ver:"4.0.53-1+deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"ruby-passenger-doc", ver:"4.0.53-1+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
+} else if(__pkg_match) {
   exit(99);
 }

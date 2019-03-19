@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_3950.nasl 7013 2017-08-25 13:17:51Z asteins $
+# $Id: deb_3950.nasl 14275 2019-03-18 14:39:45Z cfischer $
 #
 # Auto-generated from advisory DSA 3950-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.703950");
-  script_version("$Revision: 7013 $");
+  script_version("$Revision: 14275 $");
   script_cve_id("CVE-2017-6886", "CVE-2017-6887");
   script_name("Debian Security Advisory DSA 3950-1 (libraw - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-25 15:17:51 +0200 (Fri, 25 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:39:45 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-08-21 00:00:00 +0200 (Mon, 21 Aug 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -48,7 +48,7 @@ if(description)
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB(8|9)");
   script_tag(name:"affected", value:"libraw on Debian Linux");
   script_tag(name:"solution", value:"For the oldstable distribution (jessie), these problems have been fixed
 in version 0.16.0-9+deb8u3.
@@ -57,7 +57,7 @@ For the stable distribution (stretch), these problems have been fixed in
 version 0.17.2-6+deb9u1.
 
 We recommend that you upgrade your libraw packages.");
-  script_tag(name:"summary",  value:"Hossein Lotfi and Jakub Jirasek from Secunia Research have discovered
+  script_tag(name:"summary", value:"Hossein Lotfi and Jakub Jirasek from Secunia Research have discovered
 multiple vulnerabilities in LibRaw, a library for reading RAW images. An
 attacker could cause a memory corruption leading to a DoS (Denial of
 Service) with craft KDC or TIFF file.");
@@ -71,33 +71,33 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"libraw-bin", ver:"0.16.0-9+deb8u3", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libraw-bin", ver:"0.16.0-9+deb8u3", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libraw-dev", ver:"0.16.0-9+deb8u3", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libraw-dev", ver:"0.16.0-9+deb8u3", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libraw-doc", ver:"0.16.0-9+deb8u3", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libraw-doc", ver:"0.16.0-9+deb8u3", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libraw10", ver:"0.16.0-9+deb8u3", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libraw10", ver:"0.16.0-9+deb8u3", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libraw-bin", ver:"0.17.2-6+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libraw-bin", ver:"0.17.2-6+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libraw-dev", ver:"0.17.2-6+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libraw-dev", ver:"0.17.2-6+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libraw-doc", ver:"0.17.2-6+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libraw-doc", ver:"0.17.2-6+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libraw15", ver:"0.17.2-6+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libraw15", ver:"0.17.2-6+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
-  exit(99); # Not vulnerable.
+} else if(__pkg_match) {
+  exit(99);
 }

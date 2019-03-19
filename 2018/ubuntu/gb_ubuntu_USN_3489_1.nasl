@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3489_1.nasl 12130 2018-10-26 13:59:17Z cfischer $
+# $Id: gb_ubuntu_USN_3489_1.nasl 14288 2019-03-18 16:34:17Z cfischer $
 #
 # Ubuntu Update for db5.3 USN-3489-1
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843770");
-  script_version("$Revision: 12130 $");
+  script_version("$Revision: 14288 $");
   script_cve_id("CVE-2017-10140");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 15:59:17 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 17:34:17 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:17:25 +0200 (Fri, 26 Oct 2018)");
   script_name("Ubuntu Update for db5.3 USN-3489-1");
   script_category(ACT_GATHER_INFO);
@@ -77,13 +77,13 @@ res = "";
 if(release == "UBUNTU14.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"db5.3-util", ver:"5.3.28-3ubuntu3.1", rls:"UBUNTU14.04 LTS", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"db5.3-util", ver:"5.3.28-3ubuntu3.1", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libdb5.3", ver:"5.3.28-3ubuntu3.1", rls:"UBUNTU14.04 LTS", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"libdb5.3", ver:"5.3.28-3ubuntu3.1", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -97,13 +97,13 @@ if(release == "UBUNTU14.04 LTS")
 if(release == "UBUNTU17.04")
 {
 
-  if ((res = isdpkgvuln(pkg:"db5.3-util", ver:"5.3.28-12ubuntu0.1", rls:"UBUNTU17.04", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"db5.3-util", ver:"5.3.28-12ubuntu0.1", rls:"UBUNTU17.04")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libdb5.3", ver:"5.3.28-12ubuntu0.1", rls:"UBUNTU17.04", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"libdb5.3", ver:"5.3.28-12ubuntu0.1", rls:"UBUNTU17.04")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -117,13 +117,13 @@ if(release == "UBUNTU17.04")
 if(release == "UBUNTU16.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"db5.3-util", ver:"5.3.28-11ubuntu0.1", rls:"UBUNTU16.04 LTS", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"db5.3-util", ver:"5.3.28-11ubuntu0.1", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libdb5.3", ver:"5.3.28-11ubuntu0.1", rls:"UBUNTU16.04 LTS", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"libdb5.3", ver:"5.3.28-11ubuntu0.1", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);

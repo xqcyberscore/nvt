@@ -21,12 +21,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891689");
-  script_version("$Revision: 13913 $");
+  script_version("$Revision: 14282 $");
   script_cve_id("CVE-2017-7608", "CVE-2017-7610", "CVE-2017-7611", "CVE-2017-7612", "CVE-2017-7613",
                 "CVE-2018-16062", "CVE-2018-18310", "CVE-2018-18520", "CVE-2018-18521", "CVE-2019-7149",
                 "CVE-2019-7150", "CVE-2019-7665");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1689-1] elfutils security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-27 17:43:39 +0100 (Wed, 27 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:55:18 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-02-26 00:00:00 +0100 (Tue, 26 Feb 2019)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -40,19 +40,14 @@ if(description)
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8");
   script_tag(name:"affected", value:"elfutils on Debian Linux");
-  script_tag(name:"insight", value:"Elfutils is a collection of utilities, including eu-ld (a linker),
-eu-nm (for listing symbols from object files), eu-size (for listing the
-section sizes of an object or archive file), eu-strip (for discarding
-symbols), eu-readelf (to see the raw ELF file structures), and eu-elflint
-(to check for well-formed ELF files).");
   script_tag(name:"solution", value:"For Debian 8 'Jessie', these problems have been fixed in version
 0.159-4.2+deb8u1.
 
 We recommend that you upgrade your elfutils packages.");
-  script_tag(name:"summary", value:"Several issues in elfutils, a collection of utilities to handle ELF 
-objects, have been found either by fuzzing or by using an 
+  script_tag(name:"summary", value:"Several issues in elfutils, a collection of utilities to handle ELF
+objects, have been found either by fuzzing or by using an
 AddressSanitizer.
 
 CVE-2019-7665
@@ -110,29 +105,29 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"elfutils", ver:"0.159-4.2+deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"elfutils", ver:"0.159-4.2+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libasm-dev", ver:"0.159-4.2+deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libasm-dev", ver:"0.159-4.2+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libasm1", ver:"0.159-4.2+deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libasm1", ver:"0.159-4.2+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libdw-dev", ver:"0.159-4.2+deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libdw-dev", ver:"0.159-4.2+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libdw1", ver:"0.159-4.2+deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libdw1", ver:"0.159-4.2+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libelf-dev", ver:"0.159-4.2+deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libelf-dev", ver:"0.159-4.2+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libelf1", ver:"0.159-4.2+deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libelf1", ver:"0.159-4.2+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
 } else if (__pkg_match) {
   exit(99);

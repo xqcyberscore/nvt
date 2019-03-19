@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4041.nasl 7827 2017-11-20 10:16:32Z teissa $
+# $Id: deb_4041.nasl 14284 2019-03-18 15:02:15Z cfischer $
 #
 # Auto-generated from advisory DSA 4041-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704041");
-  script_version("$Revision: 7827 $");
+  script_version("$Revision: 14284 $");
   script_cve_id("CVE-2017-16844");
   script_name("Debian Security Advisory DSA 4041-1 (procmail - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-20 11:16:32 +0100 (Mon, 20 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 16:02:15 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-11-19 00:00:00 +0100 (Sun, 19 Nov 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -48,14 +48,8 @@ if(description)
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB(9|8)");
   script_tag(name:"affected", value:"procmail on Debian Linux");
-  script_tag(name:"insight", value:"Can be used to create mail-servers, mailing lists, sort your incoming
-mail into separate folders/files (very convenient when subscribing to one
-or more mailing lists or for prioritising your mail), preprocess your
-mail, start any programs upon mail arrival (e.g. to generate different
-chimes on your workstation for different types of mail) or selectively
-forward certain incoming mail automatically to someone.");
   script_tag(name:"solution", value:"For the oldstable distribution (jessie), this problem has been fixed
 in version 3.22-24+deb8u1.
 
@@ -65,9 +59,10 @@ version 3.22-25+deb9u1.
 We recommend that you upgrade your procmail packages.
 
 For the detailed security status of procmail please refer to its
-security tracker page at:
-https://security-tracker.debian.org/tracker/procmail");
-  script_tag(name:"summary",  value:"Jakub Wilk reported a heap-based buffer overflow vulnerability in
+security tracker page linked at the references.");
+
+  script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/procmail");
+  script_tag(name:"summary", value:"Jakub Wilk reported a heap-based buffer overflow vulnerability in
 procmail's formail utility when processing specially-crafted email
 headers. A remote attacker could use this flaw to cause formail to
 crash, resulting in a denial of service or data loss.");
@@ -81,15 +76,15 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"procmail", ver:"3.22-25+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"procmail", ver:"3.22-25+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"procmail", ver:"3.22-24+deb8u1", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"procmail", ver:"3.22-24+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
-  exit(99); # Not vulnerable.
+} else if(__pkg_match) {
+  exit(99);
 }

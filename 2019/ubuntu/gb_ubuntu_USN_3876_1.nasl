@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3876_1.nasl 13500 2019-02-06 13:03:57Z santu $
+# $Id: gb_ubuntu_USN_3876_1.nasl 14288 2019-03-18 16:34:17Z cfischer $
 #
 # Ubuntu Update for avahi USN-3876-1
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843890");
-  script_version("$Revision: 13500 $");
+  script_version("$Revision: 14288 $");
   script_cve_id("CVE-2017-6519", "CVE-2018-1000845");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-06 14:03:57 +0100 (Wed, 06 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 17:34:17 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-02-01 04:03:11 +0100 (Fri, 01 Feb 2019)");
   script_name("Ubuntu Update for avahi USN-3876-1");
   script_category(ACT_GATHER_INFO);
@@ -78,13 +78,13 @@ res = "";
 if(release == "UBUNTU14.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"avahi-daemon", ver:"0.6.31-4ubuntu1.3", rls:"UBUNTU14.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"avahi-daemon", ver:"0.6.31-4ubuntu1.3", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libavahi-core7", ver:"0.6.31-4ubuntu1.3", rls:"UBUNTU14.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libavahi-core7", ver:"0.6.31-4ubuntu1.3", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -98,13 +98,13 @@ if(release == "UBUNTU14.04 LTS")
 if(release == "UBUNTU18.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"avahi-daemon", ver:"0.7-3.1ubuntu1.2", rls:"UBUNTU18.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"avahi-daemon", ver:"0.7-3.1ubuntu1.2", rls:"UBUNTU18.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libavahi-core7", ver:"0.7-3.1ubuntu1.2", rls:"UBUNTU18.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libavahi-core7", ver:"0.7-3.1ubuntu1.2", rls:"UBUNTU18.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -118,13 +118,13 @@ if(release == "UBUNTU18.04 LTS")
 if(release == "UBUNTU18.10")
 {
 
-  if ((res = isdpkgvuln(pkg:"avahi-daemon", ver:"0.7-4ubuntu2.1", rls:"UBUNTU18.10", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"avahi-daemon", ver:"0.7-4ubuntu2.1", rls:"UBUNTU18.10")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libavahi-core7", ver:"0.7-4ubuntu2.1", rls:"UBUNTU18.10", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libavahi-core7", ver:"0.7-4ubuntu2.1", rls:"UBUNTU18.10")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -138,13 +138,13 @@ if(release == "UBUNTU18.10")
 if(release == "UBUNTU16.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"avahi-daemon", ver:"0.6.32~rc+dfsg-1ubuntu2.3", rls:"UBUNTU16.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"avahi-daemon", ver:"0.6.32~rc+dfsg-1ubuntu2.3", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libavahi-core7", ver:"0.6.32~rc+dfsg-1ubuntu2.3", rls:"UBUNTU16.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libavahi-core7", ver:"0.6.32~rc+dfsg-1ubuntu2.3", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1653.nasl 13595 2019-02-12 08:06:21Z mmartin $
+# $Id: deb_dla_1653.nasl 14282 2019-03-18 14:55:18Z cfischer $
 #
 # Auto-generated from advisory DLA 1653-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891653");
-  script_version("$Revision: 13595 $");
+  script_version("$Revision: 14282 $");
   script_cve_id("CVE-2017-18359");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1653-1] postgis security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-12 09:06:21 +0100 (Tue, 12 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:55:18 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-02-01 00:00:00 +0100 (Fri, 01 Feb 2019)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -48,14 +48,8 @@ if(description)
   script_copyright("Copyright (c) 2019 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8");
   script_tag(name:"affected", value:"postgis on Debian Linux");
-  script_tag(name:"insight", value:"PostGIS adds support for geographic objects to the PostgreSQL
-object-relational database. In effect, PostGIS 'spatially enables'
-the PostgreSQL server, allowing it to be used as a backend spatial
-database for geographic information systems (GIS), much like ESRI's
-SDE or Oracle's Spatial extension. PostGIS follows the OpenGIS
-'Simple Features Specification for SQL'.");
   script_tag(name:"solution", value:"For Debian 8 'Jessie', this problem has been fixed in version
 2.1.4+dfsg-3+deb8u1.
 
@@ -74,35 +68,35 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"liblwgeom-2.1.4", ver:"2.1.4+dfsg-3+deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"liblwgeom-2.1.4", ver:"2.1.4+dfsg-3+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"liblwgeom-dev", ver:"2.1.4+dfsg-3+deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"liblwgeom-dev", ver:"2.1.4+dfsg-3+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libpostgis-java", ver:"2.1.4+dfsg-3+deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libpostgis-java", ver:"2.1.4+dfsg-3+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libpostgis-java-doc", ver:"2.1.4+dfsg-3+deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libpostgis-java-doc", ver:"2.1.4+dfsg-3+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"postgis", ver:"2.1.4+dfsg-3+deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"postgis", ver:"2.1.4+dfsg-3+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"postgis-doc", ver:"2.1.4+dfsg-3+deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"postgis-doc", ver:"2.1.4+dfsg-3+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"postgresql-9.4-postgis-2.1", ver:"2.1.4+dfsg-3+deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"postgresql-9.4-postgis-2.1", ver:"2.1.4+dfsg-3+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"postgresql-9.4-postgis-2.1-scripts", ver:"2.1.4+dfsg-3+deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"postgresql-9.4-postgis-2.1-scripts", ver:"2.1.4+dfsg-3+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"postgresql-9.4-postgis-scripts", ver:"2.1.4+dfsg-3+deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"postgresql-9.4-postgis-scripts", ver:"2.1.4+dfsg-3+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
 } else if (__pkg_match) {
   exit(99);

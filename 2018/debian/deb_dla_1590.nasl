@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1590.nasl 12512 2018-11-23 14:21:52Z mmartin $
+# $Id: deb_dla_1590.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DLA 1590-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,11 +31,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891590");
-  script_version("$Revision: 12512 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2018-2952", "CVE-2018-3136", "CVE-2018-3139", "CVE-2018-3149", "CVE-2018-3169",
                 "CVE-2018-3180", "CVE-2018-3214");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1590-1] openjdk-7 security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 15:21:52 +0100 (Fri, 23 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-11-23 00:00:00 +0100 (Fri, 23 Nov 2018)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -49,15 +49,13 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8");
   script_tag(name:"affected", value:"openjdk-7 on Debian Linux");
-  script_tag(name:"insight", value:"OpenJDK is a development environment for building applications,
-applets, and components using the Java programming language.");
   script_tag(name:"solution", value:"For Debian 8 'Jessie', these problems have been fixed in version
 7u181-2.6.14-2~deb8u1.
 
 We recommend that you upgrade your openjdk-7 packages.");
-  script_tag(name:"summary",  value:"Several vulnerabilities have been discovered in OpenJDK, an
+  script_tag(name:"summary", value:"Several vulnerabilities have been discovered in OpenJDK, an
 implementation of the Oracle Java platform, resulting in denial of
 service, sandbox bypass, incomplete TLS identity verification,
 information disclosure or the execution of arbitrary code.");
@@ -71,39 +69,39 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"icedtea-7-jre-jamvm", ver:"7u181-2.6.14-2~deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"icedtea-7-jre-jamvm", ver:"7u181-2.6.14-2~deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"openjdk-7-dbg", ver:"7u181-2.6.14-2~deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"openjdk-7-dbg", ver:"7u181-2.6.14-2~deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"openjdk-7-demo", ver:"7u181-2.6.14-2~deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"openjdk-7-demo", ver:"7u181-2.6.14-2~deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"openjdk-7-doc", ver:"7u181-2.6.14-2~deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"openjdk-7-doc", ver:"7u181-2.6.14-2~deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"openjdk-7-jdk", ver:"7u181-2.6.14-2~deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"openjdk-7-jdk", ver:"7u181-2.6.14-2~deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"openjdk-7-jre", ver:"7u181-2.6.14-2~deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"openjdk-7-jre", ver:"7u181-2.6.14-2~deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"openjdk-7-jre-headless", ver:"7u181-2.6.14-2~deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"openjdk-7-jre-headless", ver:"7u181-2.6.14-2~deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"openjdk-7-jre-lib", ver:"7u181-2.6.14-2~deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"openjdk-7-jre-lib", ver:"7u181-2.6.14-2~deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"openjdk-7-jre-zero", ver:"7u181-2.6.14-2~deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"openjdk-7-jre-zero", ver:"7u181-2.6.14-2~deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"openjdk-7-source", ver:"7u181-2.6.14-2~deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"openjdk-7-source", ver:"7u181-2.6.14-2~deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
+} else if(__pkg_match) {
   exit(99);
 }

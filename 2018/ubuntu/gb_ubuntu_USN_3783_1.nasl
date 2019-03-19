@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3783_1.nasl 13284 2019-01-25 08:13:29Z mmartin $
+# $Id: gb_ubuntu_USN_3783_1.nasl 14288 2019-03-18 16:34:17Z cfischer $
 #
 # Ubuntu Update for apache2 USN-3783-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843652");
-  script_version("$Revision: 13284 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-25 09:13:29 +0100 (Fri, 25 Jan 2019) $");
+  script_version("$Revision: 14288 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 17:34:17 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-10-04 08:32:19 +0200 (Thu, 04 Oct 2018)");
   script_cve_id("CVE-2018-1302", "CVE-2018-1333", "CVE-2018-11763");
   script_tag(name:"cvss_base", value:"5.0");
@@ -78,7 +78,7 @@ res = "";
 if(release == "UBUNTU18.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"apache2-bin", ver:"2.4.29-1ubuntu4.4", rls:"UBUNTU18.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"apache2-bin", ver:"2.4.29-1ubuntu4.4", rls:"UBUNTU18.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);

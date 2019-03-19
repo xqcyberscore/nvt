@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3781_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_ubuntu_USN_3781_1.nasl 14288 2019-03-18 16:34:17Z cfischer $
 #
 # Ubuntu Update for webkit2gtk USN-3781-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843650");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 14288 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 17:34:17 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-10-04 08:26:27 +0200 (Thu, 04 Oct 2018)");
   script_cve_id("CVE-2018-4191", "CVE-2018-4197", "CVE-2018-4207", "CVE-2018-4208",
                   "CVE-2018-4209", "CVE-2018-4210", "CVE-2018-4212", "CVE-2018-4213",
@@ -74,13 +74,13 @@ res = "";
 if(release == "UBUNTU18.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"libjavascriptcoregtk-4.0-18", ver:"2.22.2-0ubuntu0.18.04.1", rls:"UBUNTU18.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libjavascriptcoregtk-4.0-18", ver:"2.22.2-0ubuntu0.18.04.1", rls:"UBUNTU18.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libwebkit2gtk-4.0-37", ver:"2.22.2-0ubuntu0.18.04.1", rls:"UBUNTU18.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libwebkit2gtk-4.0-37", ver:"2.22.2-0ubuntu0.18.04.1", rls:"UBUNTU18.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);

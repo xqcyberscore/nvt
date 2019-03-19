@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4294.nasl 12193 2018-11-02 03:47:13Z ckuersteiner $
+# $Id: deb_4294.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DSA 4294-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704294");
-  script_version("$Revision: 12193 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2018-16509", "CVE-2018-16802");
   script_name("Debian Security Advisory DSA 4294-1 (ghostscript - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-02 04:47:13 +0100 (Fri, 02 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-09-16 00:00:00 +0200 (Sun, 16 Sep 2018)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -48,20 +48,18 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB9\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB9");
   script_tag(name:"affected", value:"ghostscript on Debian Linux");
-  script_tag(name:"insight", value:"GPL Ghostscript is used for PostScript/PDF preview and printing.
-Usually as a back-end to a program such as ghostview, it can display
-PostScript and PDF documents in an X11 environment.");
   script_tag(name:"solution", value:"For the stable distribution (stretch), these problems have been fixed in
 version 9.20~dfsg-3.2+deb9u5.
 
 We recommend that you upgrade your ghostscript packages.
 
 For the detailed security status of ghostscript please refer to
-its security tracker page at:
-https://security-tracker.debian.org/tracker/ghostscript");
-  script_tag(name:"summary",  value:"Tavis Ormandy discovered multiple vulnerabilities in Ghostscript, an
+its security tracker page linked in the references.");
+
+  script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/ghostscript");
+  script_tag(name:"summary", value:"Tavis Ormandy discovered multiple vulnerabilities in Ghostscript, an
 interpreter for the PostScript language, which could result in the
 execution of arbitrary code if a malformed Postscript file is processed
 (despite the dSAFER sandbox being enabled).");
@@ -75,30 +73,30 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"ghostscript", ver:"9.20~dfsg-3.2+deb9u5", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"ghostscript", ver:"9.20~dfsg-3.2+deb9u5", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"ghostscript-dbg", ver:"9.20~dfsg-3.2+deb9u5", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"ghostscript-dbg", ver:"9.20~dfsg-3.2+deb9u5", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"ghostscript-doc", ver:"9.20~dfsg-3.2+deb9u5", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"ghostscript-doc", ver:"9.20~dfsg-3.2+deb9u5", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"ghostscript-x", ver:"9.20~dfsg-3.2+deb9u5", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"ghostscript-x", ver:"9.20~dfsg-3.2+deb9u5", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libgs-dev", ver:"9.20~dfsg-3.2+deb9u5", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libgs-dev", ver:"9.20~dfsg-3.2+deb9u5", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libgs9", ver:"9.20~dfsg-3.2+deb9u5", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libgs9", ver:"9.20~dfsg-3.2+deb9u5", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libgs9-common", ver:"9.20~dfsg-3.2+deb9u5", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libgs9-common", ver:"9.20~dfsg-3.2+deb9u5", rls:"DEB9")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
+} else if(__pkg_match) {
   exit(99);
 }

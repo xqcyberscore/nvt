@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4109.nasl 8849 2018-02-16 14:02:28Z asteins $
+# $Id: deb_4109.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DSA 4109-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704109");
-  script_version("$Revision: 8849 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2017-18076");
   script_name("Debian Security Advisory DSA 4109-1 (ruby-omniauth - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-16 15:02:28 +0100 (Fri, 16 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-02-09 00:00:00 +0100 (Fri, 09 Feb 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -48,14 +48,8 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB(8|9)");
   script_tag(name:"affected", value:"ruby-omniauth on Debian Linux");
-  script_tag(name:"insight", value:"OmniAuth is a Ruby library that standardizes multi-provider
-authentication for web applications. It was created to be powerful,
-flexible, and do as little as possible. Any developer can create
-strategies for OmniAuth that can authenticate users via disparate
-systems. OmniAuth strategies have been created for everything from
-Facebook to LDAP.");
   script_tag(name:"solution", value:"For the oldstable distribution (jessie), this problem has been fixed
 in version 1.2.1-1+deb8u1.
 
@@ -65,9 +59,10 @@ version 1.3.1-1+deb9u1.
 We recommend that you upgrade your ruby-omniauth packages.
 
 For the detailed security status of ruby-omniauth please refer to
-its security tracker page at:
-https://security-tracker.debian.org/tracker/ruby-omniauth");
-  script_tag(name:"summary",  value:"Lalith Rallabhandi discovered that OmniAuth, a Ruby library for
+its security tracker page linked in the references.");
+
+  script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/ruby-omniauth");
+  script_tag(name:"summary", value:"Lalith Rallabhandi discovered that OmniAuth, a Ruby library for
 implementing multi-provider authentication in web applications,
 mishandled and leaked sensitive information. An attacker with access to
 the callback environment, such as in the case of a crafted web
@@ -83,15 +78,15 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"ruby-omniauth", ver:"1.2.1-1+deb8u1", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"ruby-omniauth", ver:"1.2.1-1+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"ruby-omniauth", ver:"1.3.1-1+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"ruby-omniauth", ver:"1.3.1-1+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
-  exit(99); # Not vulnerable.
+} else if(__pkg_match) {
+  exit(99);
 }

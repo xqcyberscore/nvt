@@ -21,10 +21,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891660");
-  script_version("$Revision: 13867 $");
+  script_version("$Revision: 14282 $");
   script_cve_id("CVE-2019-3463", "CVE-2019-3464");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1660-1] rssh security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-26 10:05:01 +0100 (Tue, 26 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:55:18 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-02-07 00:00:00 +0100 (Thu, 07 Feb 2019)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -38,12 +38,8 @@ if(description)
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8");
   script_tag(name:"affected", value:"rssh on Debian Linux");
-  script_tag(name:"insight", value:"rssh is a restricted shell, used as a login shell, that allows users to
-perform only scp, sftp, cvs, svnserve (Subversion), rdist, and/or rsync
-operations. It can also optionally chroot user logins into a restricted
-jail.");
   script_tag(name:"solution", value:"For Debian 8 'Jessie', these problems have been fixed in version
 2.3.4-4+deb8u2.
 
@@ -70,11 +66,11 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"rssh", ver:"2.3.4-4+deb8u2", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"rssh", ver:"2.3.4-4+deb8u2", rls:"DEB8")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
 } else if (__pkg_match) {
   exit(99);

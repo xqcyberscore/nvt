@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1518.nasl 11732 2018-10-03 08:05:04Z cfischer $
+# $Id: deb_dla_1518.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DLA 1518-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891518");
-  script_version("$Revision: 11732 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2013-0169", "CVE-2018-0497", "CVE-2018-0498", "CVE-2018-9988", "CVE-2018-9989");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1518-1] polarssl security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-03 10:05:04 +0200 (Wed, 03 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-09-26 00:00:00 +0200 (Wed, 26 Sep 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -48,15 +48,13 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8");
   script_tag(name:"affected", value:"polarssl on Debian Linux");
-  script_tag(name:"insight", value:"PolarSSL is a fork of the abandoned project XySSL. It is a lean crypto
-library providing SSL and TLS support in your programs.");
   script_tag(name:"solution", value:"For Debian 8 'Jessie', these problems have been fixed in version
 1.3.9-2.1+deb8u4.
 
 We recommend that you upgrade your polarssl packages.");
-  script_tag(name:"summary",  value:"Two vulnerabilities were discovered in polarssl, a lightweight crypto and
+  script_tag(name:"summary", value:"Two vulnerabilities were discovered in polarssl, a lightweight crypto and
 SSL/TLS library (nowadays continued under the name mbedtls) which could
 result in plain text recovery via side-channel attacks.
 
@@ -114,18 +112,18 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"libpolarssl-dev", ver:"1.3.9-2.1+deb8u4", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libpolarssl-dev", ver:"1.3.9-2.1+deb8u4", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libpolarssl-runtime", ver:"1.3.9-2.1+deb8u4", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libpolarssl-runtime", ver:"1.3.9-2.1+deb8u4", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libpolarssl7", ver:"1.3.9-2.1+deb8u4", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libpolarssl7", ver:"1.3.9-2.1+deb8u4", rls:"DEB8")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
+} else if(__pkg_match) {
   exit(99);
 }

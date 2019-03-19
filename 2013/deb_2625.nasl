@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2625.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: deb_2625.nasl 14276 2019-03-18 14:43:56Z cfischer $
 # Auto-generated from advisory DSA 2625-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -26,77 +26,63 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-include("revisions-lib.inc");
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.892625");
+  script_version("$Revision: 14276 $");
+  script_cve_id("CVE-2013-1588", "CVE-2013-1586", "CVE-2013-1590", "CVE-2013-1582");
+  script_name("Debian Security Advisory DSA 2625-1 (wireshark - several vulnerabilities)");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:43:56 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2013-02-17 00:00:00 +0100 (Sun, 17 Feb 2013)");
+  script_tag(name:"cvss_base", value:"2.9");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:N/I:N/A:P");
 
-tag_affected  = "wireshark on Debian Linux";
-tag_insight   = "Wireshark is a network 'sniffer' - a tool that captures and analyzes
-packets off the wire. Wireshark can decode too many protocols to list
-here.";
-tag_solution  = "For the stable distribution (squeeze), these problems have been fixed in
+  script_xref(name:"URL", value:"http://www.debian.org/security/2013/dsa-2625.html");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2013 Greenbone Networks GmbH http://greenbone.net");
+  script_family("Debian Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB6");
+  script_tag(name:"affected", value:"wireshark on Debian Linux");
+  script_tag(name:"solution", value:"For the stable distribution (squeeze), these problems have been fixed in
 version 1.2.11-6+squeeze9.
 
 For the unstable distribution (sid), these problems will be fixed soon.
 
-We recommend that you upgrade your wireshark packages.";
-tag_summary   = "Multiple vulnerabilities were discovered in the dissectors for the CLNP,
+We recommend that you upgrade your wireshark packages.");
+  script_tag(name:"summary", value:"Multiple vulnerabilities were discovered in the dissectors for the CLNP,
 DTLS, DCP-ETSI and NTLMSSP protocols, which could result in denial of
-service or the execution of arbitrary code.";
-tag_vuldetect = "This check tests the installed software version using the apt package manager.";
+service or the execution of arbitrary code.");
+  script_tag(name:"vuldetect", value:"This check tests the installed software version using the apt package manager.");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
-if(description)
-{
-    script_oid("1.3.6.1.4.1.25623.1.0.892625");
-    script_version("$Revision: 9353 $");
-    script_cve_id("CVE-2013-1588", "CVE-2013-1586", "CVE-2013-1590", "CVE-2013-1582");
-    script_name("Debian Security Advisory DSA 2625-1 (wireshark - several vulnerabilities)");
-    script_tag(name: "last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
-    script_tag(name: "creation_date", value:"2013-02-17 00:00:00 +0100 (Sun, 17 Feb 2013)");
-    script_tag(name: "cvss_base", value:"2.9");
-    script_tag(name: "cvss_base_vector", value:"AV:A/AC:M/Au:N/C:N/I:N/A:P");
-
-    script_xref(name: "URL", value: "http://www.debian.org/security/2013/dsa-2625.html");
-
-
-    script_category(ACT_GATHER_INFO);
-
-    script_copyright("Copyright (c) 2013 Greenbone Networks GmbH http://greenbone.net");
-    script_family("Debian Local Security Checks");
-    script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
-    script_tag(name: "affected",  value: tag_affected);
-    script_tag(name: "insight",   value: tag_insight);
-#    script_tag(name: "impact",    value: tag_impact);
-    script_tag(name: "solution",  value: tag_solution);
-    script_tag(name: "summary",   value: tag_summary);
-    script_tag(name: "vuldetect", value: tag_vuldetect);
-    script_tag(name:"qod_type", value:"package");
-    script_tag(name:"solution_type", value:"VendorFix");
-
-    exit(0);
+  exit(0);
 }
 
+include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"tshark", ver:"1.2.11-6+squeeze9", rls:"DEB6.0")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"tshark", ver:"1.2.11-6+squeeze9", rls:"DEB6")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"wireshark", ver:"1.2.11-6+squeeze9", rls:"DEB6.0")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"wireshark", ver:"1.2.11-6+squeeze9", rls:"DEB6")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"wireshark-common", ver:"1.2.11-6+squeeze9", rls:"DEB6.0")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"wireshark-common", ver:"1.2.11-6+squeeze9", rls:"DEB6")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"wireshark-dbg", ver:"1.2.11-6+squeeze9", rls:"DEB6.0")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"wireshark-dbg", ver:"1.2.11-6+squeeze9", rls:"DEB6")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"wireshark-dev", ver:"1.2.11-6+squeeze9", rls:"DEB6.0")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"wireshark-dev", ver:"1.2.11-6+squeeze9", rls:"DEB6")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
-    security_message(data:report);
-} else if (__pkg_match) {
-    exit(99); # Not vulnerable.
+if(report != "") {
+  security_message(data:report);
+} else if(__pkg_match) {
+  exit(99);
 }

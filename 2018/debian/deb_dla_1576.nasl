@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1576.nasl 13374 2019-01-31 07:19:48Z asteins $
+# $Id: deb_dla_1576.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DLA 1576-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891576");
-  script_version("$Revision: 13374 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2018-16837");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1576-1] ansible security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-31 08:19:48 +0100 (Thu, 31 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-11-12 00:00:00 +0100 (Mon, 12 Nov 2018)");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
@@ -48,18 +48,13 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8");
   script_tag(name:"affected", value:"ansible on Debian Linux");
-  script_tag(name:"insight", value:"Ansible is a radically simple model-driven configuration management,
-multi-node deployment, and remote task execution system. Ansible works
-over SSH and does not require any software or daemons to be installed
-on remote nodes. Extension modules can be written in any language and
-are transferred to managed machines automatically.");
   script_tag(name:"solution", value:"For Debian 8 'Jessie', this issue has been fixed in ansible version
 1.7.2+dfsg-2+deb8u1.
 
 We recommend that you upgrade your ansible packages.");
-  script_tag(name:"summary",  value:"It was discovered that there was a potential SSH passphrase disclosure
+  script_tag(name:"summary", value:"It was discovered that there was a potential SSH passphrase disclosure
 vulnerability in the ansible configuration management system,
 
 The 'User' module leaked data that was passed as a parameter to the
@@ -75,21 +70,21 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"ansible", ver:"1.7.2+dfsg-2+deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"ansible", ver:"1.7.2+dfsg-2+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"ansible-doc", ver:"1.7.2+dfsg-2+deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"ansible-doc", ver:"1.7.2+dfsg-2+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"ansible-fireball", ver:"1.7.2+dfsg-2+deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"ansible-fireball", ver:"1.7.2+dfsg-2+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"ansible-node-fireball", ver:"1.7.2+dfsg-2+deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"ansible-node-fireball", ver:"1.7.2+dfsg-2+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
+} else if(__pkg_match) {
   exit(99);
 }

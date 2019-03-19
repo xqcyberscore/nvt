@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4094.nasl 8525 2018-01-25 03:27:12Z ckuersteiner $
+# $Id: deb_4094.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DSA 4094-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704094");
-  script_version("$Revision: 8525 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2017-1000480");
   script_name("Debian Security Advisory DSA 4094-1 (smarty3 - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-25 04:27:12 +0100 (Thu, 25 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-01-22 00:00:00 +0100 (Mon, 22 Jan 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -48,11 +48,8 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB(9|8)");
   script_tag(name:"affected", value:"smarty3 on Debian Linux");
-  script_tag(name:"insight", value:"Smarty is a template engine for PHP. More specifically, it
-facilitates a manageable way to separate application logic and content
-from its presentation.");
   script_tag(name:"solution", value:"For the oldstable distribution (jessie), this problem has been fixed
 in version 3.1.21-1+deb8u1.
 
@@ -62,9 +59,10 @@ version 3.1.31+20161214.1.c7d42e4+selfpack1-2+deb9u1.
 We recommend that you upgrade your smarty3 packages.
 
 For the detailed security status of smarty3 please refer to
-its security tracker page at:
-https://security-tracker.debian.org/tracker/smarty3");
-  script_tag(name:"summary",  value:"It was discovered that Smarty, a PHP template engine, was vulnerable to
+its security tracker page linked in the references.");
+
+  script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/smarty3");
+  script_tag(name:"summary", value:"It was discovered that Smarty, a PHP template engine, was vulnerable to
 code-injection attacks. An attacker was able to craft a filename in
 comments that could lead to arbitrary code execution on the host running
 Smarty.");
@@ -78,15 +76,15 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"smarty3", ver:"3.1.31+20161214.1.c7d42e4+selfpack1-2+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"smarty3", ver:"3.1.31+20161214.1.c7d42e4+selfpack1-2+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"smarty3", ver:"3.1.21-1+deb8u1", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"smarty3", ver:"3.1.21-1+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
-  exit(99); # Not vulnerable.
+} else if(__pkg_match) {
+  exit(99);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_multiple_dos_vuln.nasl 14117 2019-03-12 14:02:42Z cfischer $
+# $Id: gb_ibm_db2_multiple_dos_vuln.nasl 14286 2019-03-18 15:20:15Z ckuersteiner $
 #
 # IBM DB2 Multiple Denial of Service Vulnerabilities
 #
@@ -29,12 +29,13 @@ CPE = "cpe:/a:ibm:db2";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805035");
-  script_version("$Revision: 14117 $");
+  script_version("$Revision: 14286 $");
   script_cve_id("CVE-2014-6209", "CVE-2014-8901");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-12 15:02:42 +0100 (Tue, 12 Mar 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 16:20:15 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-01-08 13:04:41 +0530 (Thu, 08 Jan 2015)");
+
   script_name("IBM DB2 Multiple Denial of Service Vulnerabilities");
 
   script_tag(name:"summary", value:"This host is running IBM DB2 and is
@@ -44,11 +45,9 @@ if(description)
 
   script_tag(name:"insight", value:"The flaws are due to
 
-  - An error during the handling of a specially crafted ALTER TABLE statement
-    on an identity column.
+  - An error during the handling of a specially crafted ALTER TABLE statement on an identity column.
 
-  - An error when handling a specially crafted XML query, which can result in
-    a consumption of CPU resources.");
+  - An error when handling a specially crafted XML query, which can result in a consumption of CPU resources.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker
   to cause the server to terminate abnormally and cause a denial of service.");
@@ -77,69 +76,58 @@ if(description)
   script_family("Databases");
   script_dependencies("gb_ibm_db2_remote_detect.nasl");
   script_mandatory_keys("IBM-DB2/installed");
-  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg21690787");
+
   exit(0);
 }
 
-
-include("http_func.inc");
 include("host_details.inc");
 include("version_func.inc");
 
-if(!ibmPort = get_app_port(cpe:CPE)){
+if (!port = get_app_port(cpe: CPE))
   exit(0);
-}
 
-if(!ibmVer = get_app_version(cpe:CPE, port:ibmPort)){
-  exit(0);
-}
+infos = get_app_version_and_proto(cpe: CPE, port: port, exit_no_version: TRUE);
+version = infos["version"];
+proto = infos["proto"];
 
-if(ibmVer =~ "^0905\.*")
-{
-  ## IBM DB2 9.5 through FP10
-  ## IBM DB2 9.5 FP10 => 090510
-  if(version_is_less_equal(version:ibmVer, test_version:"090510")){
-    security_message(port:ibmPort);
-  }
-}
-
-
-if(ibmVer =~ "^0907\.*")
-{
-  ## IBM DB2 9.7 through FP10
-  ## IBM DB2 9.7 FP10 => 090710
-  if(version_is_less_equal(version:ibmVer, test_version:"090710")){
-    security_message(port:ibmPort);
-  }
-}
-
-if(ibmVer =~ "^0908\.*")
-{
-  ## IBM DB2 9.8 through FP5
-  ## IBM DB2 9.8 FP5 => 09085
-  if(version_is_less_equal(version:ibmVer, test_version:"09085")){
-    security_message(port:ibmPort);
-  }
-}
-
-if(ibmVer =~ "^1001\.*")
-{
-  ## IBM DB2 10.1 through FP4
-  ## IBM DB2 10.1 FP4  => 10014
-  if(version_is_less_equal(version:ibmVer, test_version:"10014"))
-  {
-    security_message(port:ibmPort);
+if (version =~ "^09\.05\.") {
+  if (version_is_less_equal(version: version, test_version: "09.05.10")) {
+    report = report_fixed_ver(installed_version: version, fixed_version: "See advisory");
+    security_message(port: port, data: report, proto: proto);
     exit(0);
   }
 }
 
-if(ibmVer =~ "^1005\.*")
-{
-  ## IBM DB2 10.5 through FP4
-  ## IBM DB2 10.5 FP4 => 10054
-  if(version_is_less_equal(version:ibmVer, test_version:"10054"))
-  {
-    security_message(port:ibmPort);
+if (version =~ "^09\.07\.") {
+  if (version_is_less_equal(version: version, test_version: "09.07.10")) {
+    report = report_fixed_ver(installed_version: version, fixed_version: "See advisory");
+    security_message(port: port, data: report, proto: proto);
     exit(0);
   }
 }
+
+if (version =~ "^09\.08\.") {
+  if (version_is_less_equal(version: version, test_version: "09.08.5")) {
+    report = report_fixed_ver(installed_version: version, fixed_version: "See advisory");
+    security_message(port: port, data: report, proto: proto);
+    exit(0);
+  }
+}
+
+if (version =~ "^10\.01\.") {
+  if (version_is_less_equal(version: version, test_version: "10.01.4")) {
+    report = report_fixed_ver(installed_version: version, fixed_version: "See advisory");
+    security_message(port: port, data: report, proto: proto);
+    exit(0);
+  }
+}
+
+if (version =~ "^10\.05\.") {
+  if (version_is_less_equal(version: version, test_version: "10.05.4")) {
+    report = report_fixed_ver(installed_version: version, fixed_version: "See advisory");
+    security_message(port: port, data: report, proto: proto);
+    exit(0);
+  }
+}
+
+exit(99);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1447.nasl 10685 2018-07-31 02:28:47Z ckuersteiner $
+# $Id: deb_dla_1447.nasl 14270 2019-03-18 14:24:29Z cfischer $
 #
 # Auto-generated from advisory DLA 1447-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891447");
-  script_version("$Revision: 10685 $");
+  script_version("$Revision: 14270 $");
   script_cve_id("CVE-2017-14062");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1447-1] libidn security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-31 04:28:47 +0200 (Tue, 31 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:24:29 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-07-30 00:00:00 +0200 (Mon, 30 Jul 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -48,13 +48,13 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8");
   script_tag(name:"affected", value:"libidn on Debian Linux");
   script_tag(name:"solution", value:"For Debian 8 'Jessie', this problem has been fixed in version
 1.29-1+deb8u3.
 
 We recommend that you upgrade your libidn packages.");
-  script_tag(name:"summary",  value:"An integer overflow vulnerability was discovered in libidn, the GNU library for
+  script_tag(name:"summary", value:"An integer overflow vulnerability was discovered in libidn, the GNU library for
 Internationalized Domain Names (IDNs), in its Punycode handling (a Unicode
 characters to ASCII encoding) allowing a remote attacker to cause a denial of
 service against applications using the library.");
@@ -68,21 +68,21 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"idn", ver:"1.29-1+deb8u3", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"idn", ver:"1.29-1+deb8u3", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libidn11", ver:"1.29-1+deb8u3", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libidn11", ver:"1.29-1+deb8u3", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libidn11-dev", ver:"1.29-1+deb8u3", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libidn11-dev", ver:"1.29-1+deb8u3", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libidn11-java", ver:"1.29-1+deb8u3", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libidn11-java", ver:"1.29-1+deb8u3", rls:"DEB8")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
+} else if(__pkg_match) {
   exit(99);
 }

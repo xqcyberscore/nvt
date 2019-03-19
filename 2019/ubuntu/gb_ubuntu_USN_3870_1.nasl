@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3870_1.nasl 13532 2019-02-08 07:51:34Z mmartin $
+# $Id: gb_ubuntu_USN_3870_1.nasl 14288 2019-03-18 16:34:17Z cfischer $
 #
 # Ubuntu Update for spice USN-3870-1
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843883");
-  script_version("$Revision: 13532 $");
+  script_version("$Revision: 14288 $");
   script_cve_id("CVE-2019-3813");
   script_tag(name:"cvss_base", value:"5.4");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-08 08:51:34 +0100 (Fri, 08 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 17:34:17 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-01-29 04:02:07 +0100 (Tue, 29 Jan 2019)");
   script_name("Ubuntu Update for spice USN-3870-1");
   script_category(ACT_GATHER_INFO);
@@ -78,7 +78,7 @@ res = "";
 if(release == "UBUNTU14.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"libspice-server1", ver:"0.12.4-0nocelt2ubuntu1.8", rls:"UBUNTU14.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libspice-server1", ver:"0.12.4-0nocelt2ubuntu1.8", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -92,7 +92,7 @@ if(release == "UBUNTU14.04 LTS")
 if(release == "UBUNTU18.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"libspice-server1", ver:"0.14.0-1ubuntu2.4", rls:"UBUNTU18.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libspice-server1", ver:"0.14.0-1ubuntu2.4", rls:"UBUNTU18.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -106,7 +106,7 @@ if(release == "UBUNTU18.04 LTS")
 if(release == "UBUNTU18.10")
 {
 
-  if ((res = isdpkgvuln(pkg:"libspice-server1", ver:"0.14.0-1ubuntu4.2", rls:"UBUNTU18.10", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libspice-server1", ver:"0.14.0-1ubuntu4.2", rls:"UBUNTU18.10")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -120,7 +120,7 @@ if(release == "UBUNTU18.10")
 if(release == "UBUNTU16.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"libspice-server1", ver:"0.12.6-4ubuntu0.4", rls:"UBUNTU16.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libspice-server1", ver:"0.12.6-4ubuntu0.4", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);

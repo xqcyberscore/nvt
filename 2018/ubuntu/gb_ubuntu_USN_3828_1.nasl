@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3828_1.nasl 12577 2018-11-29 11:43:34Z santu $
+# $Id: gb_ubuntu_USN_3828_1.nasl 14288 2019-03-18 16:34:17Z cfischer $
 #
 # Ubuntu Update for webkit2gtk USN-3828-1
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843832");
-  script_version("$Revision: 12577 $");
+  script_version("$Revision: 14288 $");
   script_cve_id("CVE-2018-4345", "CVE-2018-4372", "CVE-2018-4386");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-29 12:43:34 +0100 (Thu, 29 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 17:34:17 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-11-28 07:55:04 +0100 (Wed, 28 Nov 2018)");
   script_name("Ubuntu Update for webkit2gtk USN-3828-1");
   script_category(ACT_GATHER_INFO);
@@ -78,13 +78,13 @@ res = "";
 if(release == "UBUNTU18.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"libjavascriptcoregtk-4.0-18", ver:"2.22.4-0ubuntu0.18.04.1", rls:"UBUNTU18.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libjavascriptcoregtk-4.0-18", ver:"2.22.4-0ubuntu0.18.04.1", rls:"UBUNTU18.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libwebkit2gtk-4.0-37", ver:"2.22.4-0ubuntu0.18.04.1", rls:"UBUNTU18.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libwebkit2gtk-4.0-37", ver:"2.22.4-0ubuntu0.18.04.1", rls:"UBUNTU18.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -98,13 +98,13 @@ if(release == "UBUNTU18.04 LTS")
 if(release == "UBUNTU18.10")
 {
 
-  if ((res = isdpkgvuln(pkg:"libjavascriptcoregtk-4.0-18", ver:"2.22.4-0ubuntu0.18.10.1", rls:"UBUNTU18.10", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libjavascriptcoregtk-4.0-18", ver:"2.22.4-0ubuntu0.18.10.1", rls:"UBUNTU18.10")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libwebkit2gtk-4.0-37", ver:"2.22.4-0ubuntu0.18.10.1", rls:"UBUNTU18.10", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libwebkit2gtk-4.0-37", ver:"2.22.4-0ubuntu0.18.10.1", rls:"UBUNTU18.10")) != NULL)
   {
     security_message(data:res);
     exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1484.nasl 11790 2018-10-09 08:36:59Z ckuersteiner $
+# $Id: deb_dla_1484.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DLA 1484-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891484");
-  script_version("$Revision: 11790 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2018-14950", "CVE-2018-14951", "CVE-2018-14952", "CVE-2018-14953", "CVE-2018-14954", "CVE-2018-14955");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1484-1] squirrelmail security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-09 10:36:59 +0200 (Tue, 09 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-09-03 00:00:00 +0200 (Mon, 03 Sep 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -48,18 +48,13 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8");
   script_tag(name:"affected", value:"squirrelmail on Debian Linux");
-  script_tag(name:"insight", value:"SquirrelMail is a standards-based webmail package written in PHP. It
-includes built-in pure PHP support for the IMAP and SMTP protocols, and
-is designed for maximum compatibility across browsers. SquirrelMail has
-few requirements and is easy to configure and install. It runs on top of
-any IMAP server.");
   script_tag(name:"solution", value:"For Debian 8 'Jessie', these issues has been fixed in squirrelmail
 version 2:1.4.23~svn20120406-2+deb8u3.
 
 We recommend that you upgrade your squirrelmail packages.");
-  script_tag(name:"summary",  value:"It was discovered that there were a number of Cross Site Scripting
+  script_tag(name:"summary", value:"It was discovered that there were a number of Cross Site Scripting
 (XSS) vulnerabilities in the squirrelmail webmail client.");
   script_tag(name:"vuldetect", value:"This check tests the installed software version using the apt package manager.");
 
@@ -71,12 +66,12 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"squirrelmail", ver:"2:1.4.23~svn20120406-2+deb8u3", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"squirrelmail", ver:"2:1.4.23~svn20120406-2+deb8u3", rls:"DEB8")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
+} else if(__pkg_match) {
   exit(99);
 }

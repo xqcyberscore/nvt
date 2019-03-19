@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1578.nasl 12767 2018-12-12 08:39:09Z asteins $
+# $Id: deb_dla_1578.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DLA 1578-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891578");
-  script_version("$Revision: 12767 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2016-1238", "CVE-2017-15705", "CVE-2018-11780", "CVE-2018-11781");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1578-1] spamassassin security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-12 09:39:09 +0100 (Wed, 12 Dec 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-11-15 00:00:00 +0100 (Thu, 15 Nov 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -48,13 +48,8 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8");
   script_tag(name:"affected", value:"spamassassin on Debian Linux");
-  script_tag(name:"insight", value:"SpamAssassin is a very powerful and fully configurable spam filter
-with numerous features including automatic white-listing, RBL
-testing, Bayesian analysis, header and body text analysis. It is
-designed to be called from a user's .procmail or .forward file, but
-can also be integrated into a Mail Transport Agent (MTA).");
   script_tag(name:"solution", value:"For Debian 8 'Jessie', these problems have been fixed in version
 3.4.2-0+deb8u1. Upstream strongly advocates upgrading to the latest
 upstream version so we are following that recommendation and
@@ -62,7 +57,7 @@ backported the version published as part of the 9.6 stretch release,
 which also fixes many critical bugs.
 
 We recommend that you upgrade your spamassassin packages.");
-  script_tag(name:"summary",  value:"Multiple vulnerabilities were found in Spamassassin, which could lead
+  script_tag(name:"summary", value:"Multiple vulnerabilities were found in Spamassassin, which could lead
 to Remote Code Execution and Denial of Service attacks under certain
 circumstances.
 
@@ -101,18 +96,18 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"sa-compile", ver:"3.4.2-0+deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"sa-compile", ver:"3.4.2-0+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"spamassassin", ver:"3.4.2-0+deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"spamassassin", ver:"3.4.2-0+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"spamc", ver:"3.4.2-0+deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"spamc", ver:"3.4.2-0+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
+} else if(__pkg_match) {
   exit(99);
 }

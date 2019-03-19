@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_alter_table_dos_vuln.nasl 12142 2018-10-29 08:28:54Z cfischer $
+# $Id: gb_ibm_db2_alter_table_dos_vuln.nasl 14286 2019-03-18 15:20:15Z ckuersteiner $
 #
 # IBM DB2 'ALTER TABLE' Denial of Service Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:db2";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812267");
-  script_version("$Revision: 12142 $");
+  script_version("$Revision: 14286 $");
   script_cve_id("CVE-2014-6159");
   script_bugtraq_id(71006);
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-29 09:28:54 +0100 (Mon, 29 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 16:20:15 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-12-15 15:44:32 +0530 (Fri, 15 Dec 2017)");
   script_name("IBM DB2 'ALTER TABLE' Denial of Service Vulnerability");
 
@@ -54,7 +54,9 @@ if(description)
   10.1 through FP4, and 10.5 through FP4.");
 
   script_tag(name:"solution", value:"Apply the appropriate fix from reference link");
+
   script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg21688051");
+
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
@@ -62,6 +64,7 @@ if(description)
   script_family("Databases");
   script_dependencies("gb_ibm_db2_remote_detect.nasl");
   script_mandatory_keys("IBM-DB2/installed");
+
   exit(0);
 }
 
@@ -69,56 +72,43 @@ include("http_func.inc");
 include("host_details.inc");
 include("version_func.inc");
 
-if(!ibmPort = get_app_port(cpe:CPE)){
+if (!port = get_app_port(cpe: CPE))
   exit(0);
-}
 
-if(!infos = get_app_version_and_location( cpe:CPE, port:ibmPort, exit_no_version:TRUE)) exit(0);
-ibmVer = infos['version'];
-path = infos['location'];
+infos = get_app_version_and_proto(cpe: CPE, port: port, exit_no_version: TRUE);
+version = infos["version"];
+proto = infos["proto"];
 
-if(ibmVer =~ "^1005\.*")
-{
-  ## IBM DB2 10.5 through FP4
-  ## IBM DB2 10.5 FP4 => 10054
-  if(version_is_less_equal(version:ibmVer, test_version:"10054")){
-    fix  = "Apply the appropriate patch from vendor";
+if (version =~ "^10\.05\.") {
+  if (version_is_less_equal(version: version, test_version: "10.05.4")) {
+    report = report_fixed_ver(installed_version: version, fixed_version: "Apply patch");
+    security_message(port: port, data: report, proto: proto);
+    exit(0);
   }
 }
 
-else if(ibmVer =~ "^1001\.*")
-{
-  ## IBM DB2 10.1 through FP4
-  ## IBM DB2 10.1 FP4 => 10014
-  if(version_is_less_equal(version:ibmVer, test_version:"10014")){
-    fix  = "Apply the appropriate patch from vendor";
+if (version =~ "^10\.01\.") {
+  if (version_is_less_equal(version: version, test_version: "10.01.4")) {
+    report = report_fixed_ver(installed_version: version, fixed_version: "Apply patch");
+    security_message(port: port, data: report, proto: proto);
+    exit(0);
   }
 }
 
-else if(ibmVer =~ "^0908\.*")
-{
-
-  ## IBM DB2 9.8 through FP5
-  ## IBM DB2 9.8 FP5 => 09085
-  if(version_is_less_equal(version:ibmVer, test_version:"09085")){
-    fix  = "Apply the appropriate patch from vendor";
+if (version =~ "^09\.08\.") {
+  if (version_is_less_equal(version: version, test_version: "09.08.5")) {
+    report = report_fixed_ver(installed_version: version, fixed_version: "Apply patch");
+    security_message(port: port, data: report, proto: proto);
+    exit(0);
   }
 }
 
-else if(ibmVer =~ "^0907\.*")
-{
-
-  ## IBM DB2 9.7 before FP10
-  ## IBM DB2 9.7 FP10 => 090710
-  if(version_is_less(version:ibmVer, test_version:"090710")){
-    fix  = "IBM DB2 9.7 FP10";
+if (version =~ "^09\.07\.") {
+  if (version_is_less(version: version, test_version: "09.07.10")) {
+    report = report_fixed_ver(installed_version: version, fixed_version: "09.07.10");
+    security_message(port: port, data: report, proto: proto);
+    exit(0);
   }
 }
 
-if(fix)
-{
-  report = report_fixed_ver(installed_version:ibmVer, fixed_version:fix, install_path:path);
-  security_message(data:report, port:ibmPort);
-  exit(0);
-}
-exit(0);
+exit(99);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3860_1.nasl 13147 2019-01-18 11:35:50Z mmartin $
+# $Id: gb_ubuntu_USN_3860_1.nasl 14288 2019-03-18 16:34:17Z cfischer $
 #
 # Ubuntu Update for libcaca USN-3860-1
 #
@@ -29,12 +29,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843872");
-  script_version("$Revision: 13147 $");
+  script_version("$Revision: 14288 $");
   script_cve_id("CVE-2018-20544", "CVE-2018-20545", "CVE-2018-20548", "CVE-2018-20459",
                 "CVE-2018-20546", "CVE-2018-20547", "CVE-2018-20549");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-18 12:35:50 +0100 (Fri, 18 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 17:34:17 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-01-16 04:01:39 +0100 (Wed, 16 Jan 2019)");
   script_name("Ubuntu Update for libcaca USN-3860-1");
   script_category(ACT_GATHER_INFO);
@@ -89,13 +89,13 @@ res = "";
 if(release == "UBUNTU14.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"caca-utils", ver:"0.99.beta18-1ubuntu5.1", rls:"UBUNTU14.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"caca-utils", ver:"0.99.beta18-1ubuntu5.1", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libcaca0", ver:"0.99.beta18-1ubuntu5.1", rls:"UBUNTU14.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libcaca0", ver:"0.99.beta18-1ubuntu5.1", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -109,13 +109,13 @@ if(release == "UBUNTU14.04 LTS")
 if(release == "UBUNTU18.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"caca-utils", ver:"0.99.beta19-2ubuntu0.18.04.1", rls:"UBUNTU18.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"caca-utils", ver:"0.99.beta19-2ubuntu0.18.04.1", rls:"UBUNTU18.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libcaca0", ver:"0.99.beta19-2ubuntu0.18.04.1", rls:"UBUNTU18.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libcaca0", ver:"0.99.beta19-2ubuntu0.18.04.1", rls:"UBUNTU18.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -129,13 +129,13 @@ if(release == "UBUNTU18.04 LTS")
 if(release == "UBUNTU18.10")
 {
 
-  if ((res = isdpkgvuln(pkg:"caca-utils", ver:"0.99.beta19-2ubuntu0.18.10.1", rls:"UBUNTU18.10", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"caca-utils", ver:"0.99.beta19-2ubuntu0.18.10.1", rls:"UBUNTU18.10")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libcaca0", ver:"0.99.beta19-2ubuntu0.18.10.1", rls:"UBUNTU18.10", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libcaca0", ver:"0.99.beta19-2ubuntu0.18.10.1", rls:"UBUNTU18.10")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -149,13 +149,13 @@ if(release == "UBUNTU18.10")
 if(release == "UBUNTU16.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"caca-utils", ver:"0.99.beta19-2ubuntu0.16.04.1", rls:"UBUNTU16.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"caca-utils", ver:"0.99.beta19-2ubuntu0.16.04.1", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"libcaca0", ver:"0.99.beta19-2ubuntu0.16.04.1", rls:"UBUNTU16.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libcaca0", ver:"0.99.beta19-2ubuntu0.16.04.1", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);

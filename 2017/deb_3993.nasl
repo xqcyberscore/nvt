@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_3993.nasl 7405 2017-10-12 05:25:10Z asteins $
+# $Id: deb_3993.nasl 14280 2019-03-18 14:50:45Z cfischer $
 #
 # Auto-generated from advisory DSA 3993-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.703993");
-  script_version("$Revision: 7405 $");
+  script_version("$Revision: 14280 $");
   script_cve_id("CVE-2017-0380");
   script_name("Debian Security Advisory DSA 3993-1 (tor - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-12 07:25:10 +0200 (Thu, 12 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:50:45 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-10-06 00:00:00 +0200 (Fri, 06 Oct 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
@@ -48,15 +48,14 @@ if(description)
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB9");
   script_tag(name:"affected", value:"tor on Debian Linux");
-  script_tag(name:"insight", value:"Tor is a connection-based low-latency anonymous communication system.");
   script_tag(name:"solution", value:"For the stable distribution (stretch), this problem has been fixed in
 version 0.2.9.12-1.
 
 We recommend that you upgrade your tor packages.");
-  script_tag(name:"summary",  value:"It was discovered that the Tor onion service could leak sensitive
-information to log files if the SafeLogging 
+  script_tag(name:"summary", value:"It was discovered that the Tor onion service could leak sensitive
+information to log files if the SafeLogging
 option is set to '0'.
 
 The oldstable distribution (jessie) is not affected.");
@@ -70,18 +69,18 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"tor", ver:"0.2.9.12-1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"tor", ver:"0.2.9.12-1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"tor-dbg", ver:"0.2.9.12-1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"tor-dbg", ver:"0.2.9.12-1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"tor-geoipdb", ver:"0.2.9.12-1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"tor-geoipdb", ver:"0.2.9.12-1", rls:"DEB9")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
-  exit(99); # Not vulnerable.
+} else if(__pkg_match) {
+  exit(99);
 }

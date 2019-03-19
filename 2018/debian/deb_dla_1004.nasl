@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1004.nasl 13721 2019-02-18 07:47:09Z asteins $
+# $Id: deb_dla_1004.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DLA 1004-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891004");
-  script_version("$Revision: 13721 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2017-6922");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1004-1] drupal7 security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-18 08:47:09 +0100 (Mon, 18 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-01-29 00:00:00 +0100 (Mon, 29 Jan 2018)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
@@ -48,18 +48,13 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB7\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB7");
   script_tag(name:"affected", value:"drupal7 on Debian Linux");
-  script_tag(name:"insight", value:"Drupal is a dynamic web site platform which allows an individual or
-community of users to publish, manage and organize a variety of
-content, Drupal integrates many popular features of content
-management systems, weblogs, collaborative tools and discussion-based
-community software into one easy-to-use package.");
   script_tag(name:"solution", value:"For Debian 7 'Wheezy', these problems have been fixed in version
 7.14-2+deb7u16.
 
 We recommend that you upgrade your drupal7 packages.");
-  script_tag(name:"summary",  value:"Private files that have been uploaded by an anonymous user but not permanently
+  script_tag(name:"summary", value:"Private files that have been uploaded by an anonymous user but not permanently
 attached to content on the site should only be visible to the anonymous user
 that uploaded them, rather than all anonymous users. Drupal core did not
 previously provide this protection, allowing an access bypass vulnerability to
@@ -75,12 +70,12 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"drupal7", ver:"7.14-2+deb7u16", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"drupal7", ver:"7.14-2+deb7u16", rls:"DEB7")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
+} else if(__pkg_match) {
   exit(99);
 }

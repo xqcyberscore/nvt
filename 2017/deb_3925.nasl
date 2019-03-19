@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3925.nasl 9356 2018-04-06 07:17:02Z cfischer $
+# $Id: deb_3925.nasl 14280 2019-03-18 14:50:45Z cfischer $
 # Auto-generated from advisory DSA 3925-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -26,54 +26,48 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-
 if(description)
 {
-    script_oid("1.3.6.1.4.1.25623.1.0.703925");
-    script_version("$Revision: 9356 $");
-    script_cve_id("CVE-2017-10806", "CVE-2017-11334", "CVE-2017-11434", "CVE-2017-9524");
-    script_name("Debian Security Advisory DSA 3925-1 (qemu - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2018-04-06 09:17:02 +0200 (Fri, 06 Apr 2018) $");
-    script_tag(name: "creation_date", value: "2017-08-04 00:00:00 +0200 (Fri, 04 Aug 2017)");
-    script_tag(name:"cvss_base", value:"5.0");
-    script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-    script_tag(name: "solution_type", value: "VendorFix");
-    script_tag(name: "qod_type", value: "package");
+  script_oid("1.3.6.1.4.1.25623.1.0.703925");
+  script_version("$Revision: 14280 $");
+  script_cve_id("CVE-2017-10806", "CVE-2017-11334", "CVE-2017-11434", "CVE-2017-9524");
+  script_name("Debian Security Advisory DSA 3925-1 (qemu - security update)");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:50:45 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2017-08-04 00:00:00 +0200 (Fri, 04 Aug 2017)");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
 
-    script_xref(name: "URL", value: "http://www.debian.org/security/2017/dsa-3925.html");
+  script_xref(name:"URL", value:"http://www.debian.org/security/2017/dsa-3925.html");
 
-    script_category(ACT_GATHER_INFO);
+  script_category(ACT_GATHER_INFO);
 
-    script_copyright("Copyright (c) 2017 Greenbone Networks GmbH http://greenbone.net");
-    script_family("Debian Local Security Checks");
-    script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
-    script_tag(name: "affected",  value: "qemu on Debian Linux");
-        script_tag(name: "insight",   value: "QEMU is a fast processor emulator: currently the package supports
-ARM, CRIS, i386, M68k (ColdFire), MicroBlaze, MIPS, PowerPC, SH4,
-SPARC and x86-64 emulation. By using dynamic translation it achieves
-reasonable speed while being easy to port on new host CPUs. QEMU has
-two operating modes:");
-    script_tag(name: "solution",  value: "For the stable distribution (stretch), these problems have been fixed in
+  script_copyright("Copyright (c) 2017 Greenbone Networks GmbH http://greenbone.net");
+  script_family("Debian Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB9");
+  script_tag(name:"affected", value:"qemu on Debian Linux");
+  script_tag(name:"solution", value:"For the stable distribution (stretch), these problems have been fixed in
 version 1:2.8+dfsg-6+deb9u2.
 
 We recommend that you upgrade your qemu packages.");
-    script_tag(name: "summary",   value: "Multiple vulnerabilities were found in qemu, a fast processor emulator:
+  script_tag(name:"summary", value:"Multiple vulnerabilities were found in qemu, a fast processor emulator:
 
-CVE-2017-9524 
+CVE-2017-9524
 Denial of service in qemu-nbd server
 
-CVE-2017-10806 
+CVE-2017-10806
 Buffer overflow in USB redirector
 
-CVE-2017-11334 
+CVE-2017-11334
 Out-of-band memory access in DMA operations
 
-CVE-2017-11434 
+CVE-2017-11434
 Out-of-band memory access in SLIRP/DHCP");
-    script_tag(name: "vuldetect", value: "This check tests the installed software version using the apt package manager.");
+  script_tag(name:"vuldetect", value:"This check tests the installed software version using the apt package manager.");
 
-    exit(0);
+  exit(0);
 }
 
 include("revisions-lib.inc");
@@ -81,57 +75,57 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"qemu", ver:"1:2.8+dfsg-6+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"qemu", ver:"1:2.8+dfsg-6+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"qemu-block-extra", ver:"1:2.8+dfsg-6+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"qemu-block-extra", ver:"1:2.8+dfsg-6+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"qemu-guest-agent", ver:"1:2.8+dfsg-6+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"qemu-guest-agent", ver:"1:2.8+dfsg-6+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"qemu-kvm", ver:"1:2.8+dfsg-6+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"qemu-kvm", ver:"1:2.8+dfsg-6+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"qemu-system", ver:"1:2.8+dfsg-6+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"qemu-system", ver:"1:2.8+dfsg-6+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"qemu-system-arm", ver:"1:2.8+dfsg-6+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"qemu-system-arm", ver:"1:2.8+dfsg-6+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"qemu-system-common", ver:"1:2.8+dfsg-6+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"qemu-system-common", ver:"1:2.8+dfsg-6+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"qemu-system-mips", ver:"1:2.8+dfsg-6+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"qemu-system-mips", ver:"1:2.8+dfsg-6+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"qemu-system-misc", ver:"1:2.8+dfsg-6+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"qemu-system-misc", ver:"1:2.8+dfsg-6+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"qemu-system-ppc", ver:"1:2.8+dfsg-6+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"qemu-system-ppc", ver:"1:2.8+dfsg-6+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"qemu-system-sparc", ver:"1:2.8+dfsg-6+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"qemu-system-sparc", ver:"1:2.8+dfsg-6+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"qemu-system-x86", ver:"1:2.8+dfsg-6+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"qemu-system-x86", ver:"1:2.8+dfsg-6+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"qemu-user", ver:"1:2.8+dfsg-6+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"qemu-user", ver:"1:2.8+dfsg-6+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"qemu-user-binfmt", ver:"1:2.8+dfsg-6+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"qemu-user-binfmt", ver:"1:2.8+dfsg-6+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"qemu-user-static", ver:"1:2.8+dfsg-6+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"qemu-user-static", ver:"1:2.8+dfsg-6+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"qemu-utils", ver:"1:2.8+dfsg-6+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"qemu-utils", ver:"1:2.8+dfsg-6+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
-    security_message(data:report);
-} else if (__pkg_match) {
-    exit(99); # Not vulnerable.
+if(report != "") {
+  security_message(data:report);
+} else if(__pkg_match) {
+  exit(99);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4307.nasl 12889 2018-12-28 07:52:20Z mmartin $
+# $Id: deb_4307.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DSA 4307-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704307");
-  script_version("$Revision: 12889 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2017-1000158", "CVE-2018-1060", "CVE-2018-1061", "CVE-2018-14647");
   script_name("Debian Security Advisory DSA 4307-1 (python3.5 - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-28 08:52:20 +0100 (Fri, 28 Dec 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-09-28 00:00:00 +0200 (Fri, 28 Sep 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -48,20 +48,18 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB9\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB9");
   script_tag(name:"affected", value:"python3.5 on Debian Linux");
-  script_tag(name:"insight", value:"Python is a high-level, interactive, object-oriented language. Its 3.5 version
-includes an extensive class library with lots of goodies for
-network programming, system administration, sounds and graphics.");
   script_tag(name:"solution", value:"For the stable distribution (stretch), these problems have been fixed in
 version 3.5.3-1+deb9u1.
 
 We recommend that you upgrade your python3.5 packages.
 
 For the detailed security status of python3.5 please refer to
-its security tracker page at:
-https://security-tracker.debian.org/tracker/python3.5");
-  script_tag(name:"summary",  value:"Multiple security issues were discovered in Python: ElementTree failed
+its security tracker page linked in the references.");
+
+  script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/python3.5");
+  script_tag(name:"summary", value:"Multiple security issues were discovered in Python: ElementTree failed
 to initialise Expat's hash salt, two denial of service issues were found
 in difflib and poplib and a buffer overflow in PyString_DecodeEscape.");
   script_tag(name:"vuldetect", value:"This check tests the installed software version using the apt package manager.");
@@ -74,51 +72,51 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"idle-python3.5", ver:"3.5.3-1+deb9u1", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"idle-python3.5", ver:"3.5.3-1+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libpython3.5", ver:"3.5.3-1+deb9u1", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libpython3.5", ver:"3.5.3-1+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libpython3.5-dbg", ver:"3.5.3-1+deb9u1", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libpython3.5-dbg", ver:"3.5.3-1+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libpython3.5-dev", ver:"3.5.3-1+deb9u1", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libpython3.5-dev", ver:"3.5.3-1+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libpython3.5-minimal", ver:"3.5.3-1+deb9u1", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libpython3.5-minimal", ver:"3.5.3-1+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libpython3.5-stdlib", ver:"3.5.3-1+deb9u1", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libpython3.5-stdlib", ver:"3.5.3-1+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libpython3.5-testsuite", ver:"3.5.3-1+deb9u1", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libpython3.5-testsuite", ver:"3.5.3-1+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"python3.5", ver:"3.5.3-1+deb9u1", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"python3.5", ver:"3.5.3-1+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"python3.5-dbg", ver:"3.5.3-1+deb9u1", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"python3.5-dbg", ver:"3.5.3-1+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"python3.5-dev", ver:"3.5.3-1+deb9u1", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"python3.5-dev", ver:"3.5.3-1+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"python3.5-doc", ver:"3.5.3-1+deb9u1", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"python3.5-doc", ver:"3.5.3-1+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"python3.5-examples", ver:"3.5.3-1+deb9u1", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"python3.5-examples", ver:"3.5.3-1+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"python3.5-minimal", ver:"3.5.3-1+deb9u1", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"python3.5-minimal", ver:"3.5.3-1+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"python3.5-venv", ver:"3.5.3-1+deb9u1", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"python3.5-venv", ver:"3.5.3-1+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
+} else if(__pkg_match) {
   exit(99);
 }

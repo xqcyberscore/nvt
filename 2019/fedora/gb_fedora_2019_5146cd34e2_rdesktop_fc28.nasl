@@ -21,15 +21,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875456");
-  script_version("$Revision: 14223 $");
+  script_version("$Revision: 14300 $");
   script_cve_id("CVE-2018-8794", "CVE-2018-8795", "CVE-2018-8797", "CVE-2018-20175",
                 "CVE-2018-20176", "CVE-2018-8791", "CVE-2018-8792", "CVE-2018-8793",
                 "CVE-2018-8796", "CVE-2018-8798", "CVE-2018-8799", "CVE-2018-8800",
                 "CVE-2018-20174", "CVE-2018-20177", "CVE-2018-20178", "CVE-2018-20179",
                 "CVE-2018-20180", "CVE-2018-20181", "CVE-2018-20182");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 08:52:26 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-02-14 04:08:04 +0100 (Thu, 14 Feb 2019)");
   script_name("Fedora Update for rdesktop FEDORA-2019-5146cd34e2");
   script_category(ACT_GATHER_INFO);

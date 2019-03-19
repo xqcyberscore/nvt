@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1277.nasl 10474 2018-07-10 08:12:26Z cfischer $
+# $Id: deb_dla_1277.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DLA 1277-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891277");
-  script_version("$Revision: 10474 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2016-2540");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1277-1] audacity security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-10 10:12:26 +0200 (Tue, 10 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-02-21 00:00:00 +0100 (Wed, 21 Feb 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -48,18 +48,13 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB7\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB7");
   script_tag(name:"affected", value:"audacity on Debian Linux");
-  script_tag(name:"insight", value:"Audacity is a multi-track audio editor for Linux/Unix, MacOS and
-Windows. It is designed for easy recording, playing and editing of
-digital audio. Audacity features digital effects and spectrum
-analysis tools. Editing is very fast and provides unlimited
-undo/redo.");
   script_tag(name:"solution", value:"For Debian 7 'Wheezy', these problems have been fixed in version
 2.0.1-1+deb7u1.
 
 We recommend that you upgrade your audacity packages.");
-  script_tag(name:"summary",  value:"Chris Navarrete from Fortinet's FortiGuard Labs discovered that Audacity,
+  script_tag(name:"summary", value:"Chris Navarrete from Fortinet's FortiGuard Labs discovered that Audacity,
 a multi-track audio editor, contains a vulnerability such that a .wav
 file with a crafted FORMATCHUNK structure (many channels) can result in
 a denial of service (memory corruption and application crash).");
@@ -73,18 +68,18 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"audacity", ver:"2.0.1-1+deb7u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"audacity", ver:"2.0.1-1+deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"audacity-data", ver:"2.0.1-1+deb7u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"audacity-data", ver:"2.0.1-1+deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"audacity-dbg", ver:"2.0.1-1+deb7u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"audacity-dbg", ver:"2.0.1-1+deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
+} else if(__pkg_match) {
   exit(99);
 }

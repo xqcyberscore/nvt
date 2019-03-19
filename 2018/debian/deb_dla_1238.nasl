@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1238.nasl 10474 2018-07-10 08:12:26Z cfischer $
+# $Id: deb_dla_1238.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DLA 1238-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891238");
-  script_version("$Revision: 10474 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2017-1000501");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1238-1] awstats security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-10 10:12:26 +0200 (Tue, 10 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-01-12 00:00:00 +0100 (Fri, 12 Jan 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -48,20 +48,13 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB7\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB7");
   script_tag(name:"affected", value:"awstats on Debian Linux");
-  script_tag(name:"insight", value:"Advanced Web Statistics (AWStats) is a powerful web server logfile
-analyzer written in perl that shows you all your web statistics including
-visits, unique visitors, pages, hits, rush hours, search engines, keywords
-used to find your site, robots, broken links and more. Gives more detailed
-information and better graphical charts than webalizer, and is easier to use.
-Works with several web server log format as a CGI and/or from command line.
-Supports more than 30 languages.");
   script_tag(name:"solution", value:"For Debian 7 'Wheezy', these problems have been fixed in version
 7.0~dfsg-7+deb7u1.
 
 We recommend that you upgrade your awstats packages.");
-  script_tag(name:"summary",  value:"Awstats version 7.6 and earlier is vulnerable to a path traversal flaw in the
+  script_tag(name:"summary", value:"Awstats version 7.6 and earlier is vulnerable to a path traversal flaw in the
 handling of the 'config' and 'migrate' parameters resulting in unauthenticated
 remote code execution.");
   script_tag(name:"vuldetect", value:"This check tests the installed software version using the apt package manager.");
@@ -74,12 +67,12 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"awstats", ver:"7.0~dfsg-7+deb7u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"awstats", ver:"7.0~dfsg-7+deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
+} else if(__pkg_match) {
   exit(99);
 }

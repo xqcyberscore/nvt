@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_3982.nasl 7336 2017-10-04 05:42:02Z asteins $
+# $Id: deb_3982.nasl 14280 2019-03-18 14:50:45Z cfischer $
 #
 # Auto-generated from advisory DSA 3982-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.703982");
-  script_version("$Revision: 7336 $");
+  script_version("$Revision: 14280 $");
   script_cve_id("CVE-2017-12837", "CVE-2017-12883");
   script_name("Debian Security Advisory DSA 3982-1 (perl - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-04 07:42:02 +0200 (Wed, 04 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:50:45 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-09-21 00:00:00 +0200 (Thu, 21 Sep 2017)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
@@ -48,12 +48,8 @@ if(description)
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB(9|8|10)");
   script_tag(name:"affected", value:"perl on Debian Linux");
-  script_tag(name:"insight", value:"Perl is a highly capable, feature-rich programming language with over
-20 years of development. Perl 5 runs on over 100 platforms from
-portables to mainframes. Perl is suitable for both rapid prototyping
-and large scale development projects.");
   script_tag(name:"solution", value:"For the oldstable distribution (jessie), these problems have been fixed
 in version 5.20.2-3+deb8u9.
 
@@ -67,17 +63,17 @@ For the unstable distribution (sid), these problems have been fixed in
 version 5.26.0-8.
 
 We recommend that you upgrade your perl packages.");
-  script_tag(name:"summary",  value:"Multiple vulnerabilities were discovered in the implementation of the
+  script_tag(name:"summary", value:"Multiple vulnerabilities were discovered in the implementation of the
 Perl programming language. The Common Vulnerabilities and Exposures
 project identifies the following problems:
 
-CVE-2017-12837 
+CVE-2017-12837
 Jakub Wilk reported a heap buffer overflow flaw in the regular
 expression compiler, allowing a remote attacker to cause a denial of
 service via a specially crafted regular expression with the
 case-insensitive modifier.
 
-CVE-2017-12883 
+CVE-2017-12883
 Jakub Wilk reported a buffer over-read flaw in the regular
 expression parser, allowing a remote attacker to cause a denial of
 service or information leak.");
@@ -91,72 +87,72 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"libperl-dev", ver:"5.24.1-3+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libperl-dev", ver:"5.24.1-3+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libperl5.24", ver:"5.24.1-3+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libperl5.24", ver:"5.24.1-3+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"perl", ver:"5.24.1-3+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"perl", ver:"5.24.1-3+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"perl-base", ver:"5.24.1-3+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"perl-base", ver:"5.24.1-3+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"perl-debug", ver:"5.24.1-3+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"perl-debug", ver:"5.24.1-3+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"perl-doc", ver:"5.24.1-3+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"perl-doc", ver:"5.24.1-3+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"perl-modules-5.24", ver:"5.24.1-3+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"perl-modules-5.24", ver:"5.24.1-3+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libperl-dev", ver:"5.20.2-3+deb8u9", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libperl-dev", ver:"5.20.2-3+deb8u9", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libperl5.20", ver:"5.20.2-3+deb8u9", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libperl5.20", ver:"5.20.2-3+deb8u9", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"perl", ver:"5.20.2-3+deb8u9", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"perl", ver:"5.20.2-3+deb8u9", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"perl-base", ver:"5.20.2-3+deb8u9", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"perl-base", ver:"5.20.2-3+deb8u9", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"perl-debug", ver:"5.20.2-3+deb8u9", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"perl-debug", ver:"5.20.2-3+deb8u9", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"perl-doc", ver:"5.20.2-3+deb8u9", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"perl-doc", ver:"5.20.2-3+deb8u9", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"perl-modules", ver:"5.20.2-3+deb8u9", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"perl-modules", ver:"5.20.2-3+deb8u9", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libperl-dev", ver:"5.26.0-8", rls_regex:"DEB10.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libperl-dev", ver:"5.26.0-8", rls:"DEB10")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libperl5.26", ver:"5.26.0-8", rls_regex:"DEB10.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libperl5.26", ver:"5.26.0-8", rls:"DEB10")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"perl", ver:"5.26.0-8", rls_regex:"DEB10.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"perl", ver:"5.26.0-8", rls:"DEB10")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"perl-base", ver:"5.26.0-8", rls_regex:"DEB10.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"perl-base", ver:"5.26.0-8", rls:"DEB10")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"perl-debug", ver:"5.26.0-8", rls_regex:"DEB10.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"perl-debug", ver:"5.26.0-8", rls:"DEB10")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"perl-doc", ver:"5.26.0-8", rls_regex:"DEB10.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"perl-doc", ver:"5.26.0-8", rls:"DEB10")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"perl-modules-5.26", ver:"5.26.0-8", rls_regex:"DEB10.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"perl-modules-5.26", ver:"5.26.0-8", rls:"DEB10")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
-  exit(99); # Not vulnerable.
+} else if(__pkg_match) {
+  exit(99);
 }

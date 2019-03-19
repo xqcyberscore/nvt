@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4140.nasl 10965 2018-08-15 03:42:43Z ckuersteiner $
+# $Id: deb_4140.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DSA 4140-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704140");
-  script_version("$Revision: 10965 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2018-5146");
   script_name("Debian Security Advisory DSA 4140-1 (libvorbis - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 05:42:43 +0200 (Wed, 15 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-03-16 00:00:00 +0100 (Fri, 16 Mar 2018)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -48,11 +48,8 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB(9|8)");
   script_tag(name:"affected", value:"libvorbis on Debian Linux");
-  script_tag(name:"insight", value:"Ogg Vorbis is a fully open, non-proprietary, patent-and-royalty-free,
-general-purpose compressed audio format for audio and music at fixed
-and variable bitrates from 16 to 128 kbps/channel.");
   script_tag(name:"solution", value:"For the oldstable distribution (jessie), this problem has been fixed
 in version 1.3.4-2+deb8u1.
 
@@ -62,9 +59,10 @@ version 1.3.5-4+deb9u2.
 We recommend that you upgrade your libvorbis packages.
 
 For the detailed security status of libvorbis please refer to its
-security tracker page at:
-https://security-tracker.debian.org/tracker/libvorbis");
-  script_tag(name:"summary",  value:"Richard Zhu discovered that an out-of-bounds memory write in the
+security tracker page linked in the references.");
+
+  script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/libvorbis");
+  script_tag(name:"summary", value:"Richard Zhu discovered that an out-of-bounds memory write in the
 codebook parsing code of the Libvorbis multimedia library could result
 in the execution of arbitrary code if a malformed Vorbis file is opened.");
   script_tag(name:"vuldetect", value:"This check tests the installed software version using the apt package manager.");
@@ -77,39 +75,39 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"libvorbis-dbg", ver:"1.3.5-4+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libvorbis-dbg", ver:"1.3.5-4+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libvorbis-dev", ver:"1.3.5-4+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libvorbis-dev", ver:"1.3.5-4+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libvorbis0a", ver:"1.3.5-4+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libvorbis0a", ver:"1.3.5-4+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libvorbisenc2", ver:"1.3.5-4+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libvorbisenc2", ver:"1.3.5-4+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libvorbisfile3", ver:"1.3.5-4+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libvorbisfile3", ver:"1.3.5-4+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libvorbis-dbg", ver:"1.3.4-2+deb8u1", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libvorbis-dbg", ver:"1.3.4-2+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libvorbis-dev", ver:"1.3.4-2+deb8u1", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libvorbis-dev", ver:"1.3.4-2+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libvorbis0a", ver:"1.3.4-2+deb8u1", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libvorbis0a", ver:"1.3.4-2+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libvorbisenc2", ver:"1.3.4-2+deb8u1", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libvorbisenc2", ver:"1.3.4-2+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libvorbisfile3", ver:"1.3.4-2+deb8u1", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libvorbisfile3", ver:"1.3.4-2+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
-  exit(99); # Not vulnerable.
+} else if(__pkg_match) {
+  exit(99);
 }

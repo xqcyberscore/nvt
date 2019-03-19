@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3176.nasl 9355 2018-04-06 07:16:07Z cfischer $
+# $Id: deb_3176.nasl 14278 2019-03-18 14:47:26Z cfischer $
 # Auto-generated from advisory DSA 3176-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -26,42 +26,34 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-
 if(description)
 {
-    script_oid("1.3.6.1.4.1.25623.1.0.703176");
-    script_version("$Revision: 9355 $");
-    script_cve_id("CVE-2014-9472", "CVE-2015-1165", "CVE-2015-1464");
-    script_name("Debian Security Advisory DSA 3176-1 (request-tracker4 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2018-04-06 09:16:07 +0200 (Fri, 06 Apr 2018) $");
-    script_tag(name: "creation_date", value: "2015-02-26 00:00:00 +0100 (Thu, 26 Feb 2015)");
-    script_tag(name:"cvss_base", value:"7.1");
-    script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
-    script_tag(name: "solution_type", value: "VendorFix");
+  script_oid("1.3.6.1.4.1.25623.1.0.703176");
+  script_version("$Revision: 14278 $");
+  script_cve_id("CVE-2014-9472", "CVE-2015-1165", "CVE-2015-1464");
+  script_name("Debian Security Advisory DSA 3176-1 (request-tracker4 - security update)");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:47:26 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2015-02-26 00:00:00 +0100 (Thu, 26 Feb 2015)");
+  script_tag(name:"cvss_base", value:"7.1");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
+  script_tag(name:"solution_type", value:"VendorFix");
 
-    script_xref(name: "URL", value: "http://www.debian.org/security/2015/dsa-3176.html");
+  script_xref(name:"URL", value:"http://www.debian.org/security/2015/dsa-3176.html");
 
-
-    script_category(ACT_GATHER_INFO);
-
-    script_copyright("Copyright (c) 2015 Greenbone Networks GmbH http://greenbone.net");
-    script_family("Debian Local Security Checks");
-    script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
-    script_tag(name: "affected",  value: "request-tracker4 on Debian Linux");
-    script_tag(name: "insight",   value: "Request Tracker (RT) is a ticketing
-system which enables a group of people to intelligently and efficiently manage
-tasks, issues, and requests submitted by a community of users. It
-features web, email, and command-line interfaces (see the package
-rt4-clients).");
-    script_tag(name: "solution",  value: "For the stable distribution (wheezy),
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2015 Greenbone Networks GmbH http://greenbone.net");
+  script_family("Debian Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB7");
+  script_tag(name:"affected", value:"request-tracker4 on Debian Linux");
+  script_tag(name:"solution", value:"For the stable distribution (wheezy),
 these problems have been fixed in version 4.0.7-5+deb7u3.
 
 For the unstable distribution (sid), these problems have been fixed in
 version 4.2.8-3.
 
 We recommend that you upgrade your request-tracker4 packages.");
-    script_tag(name: "summary",   value: "Multiple vulnerabilities have been
+  script_tag(name:"summary", value:"Multiple vulnerabilities have been
 discovered in Request Tracker, an extensible trouble-ticket tracking system. The
 Common Vulnerabilities and Exposures project identifies the following problems:
 
@@ -80,10 +72,11 @@ CVE-2015-1464
 It was discovered that RSS feed URLs can be leveraged to perform
 session hijacking, allowing a user with the URL to log in as the
 user that created the feed.");
-    script_tag(name: "vuldetect", value: "This check tests the installed software
+  script_tag(name:"vuldetect", value:"This check tests the installed software
 version using the apt package manager.");
-    script_tag(name:"qod_type", value:"package");
-    exit(0);
+  script_tag(name:"qod_type", value:"package");
+
+  exit(0);
 }
 
 include("revisions-lib.inc");
@@ -91,30 +84,30 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"request-tracker4", ver:"4.0.7-5+deb7u3", rls_regex:"DEB7.[0-9]")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"request-tracker4", ver:"4.0.7-5+deb7u3", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"rt4-apache2", ver:"4.0.7-5+deb7u3", rls_regex:"DEB7.[0-9]")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"rt4-apache2", ver:"4.0.7-5+deb7u3", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"rt4-clients", ver:"4.0.7-5+deb7u3", rls_regex:"DEB7.[0-9]")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"rt4-clients", ver:"4.0.7-5+deb7u3", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"rt4-db-mysql", ver:"4.0.7-5+deb7u3", rls_regex:"DEB7.[0-9]")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"rt4-db-mysql", ver:"4.0.7-5+deb7u3", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"rt4-db-postgresql", ver:"4.0.7-5+deb7u3", rls_regex:"DEB7.[0-9]")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"rt4-db-postgresql", ver:"4.0.7-5+deb7u3", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"rt4-db-sqlite", ver:"4.0.7-5+deb7u3", rls_regex:"DEB7.[0-9]")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"rt4-db-sqlite", ver:"4.0.7-5+deb7u3", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"rt4-fcgi", ver:"4.0.7-5+deb7u3", rls_regex:"DEB7.[0-9]")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"rt4-fcgi", ver:"4.0.7-5+deb7u3", rls:"DEB7")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
-    security_message(data:report);
+if(report != "") {
+  security_message(data:report);
 } else if (__pkg_match) {
-    exit(99); # Not vulnerable.
+  exit(99);
 }

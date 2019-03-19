@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2567_1.nasl 8649 2018-02-03 12:16:43Z teissa $
+# $Id: deb_2567_1.nasl 14275 2019-03-18 14:39:45Z cfischer $
 # Description: Auto-generated from advisory DSA 2567-1 (request-tracker3.8)
 #
 # Authors:
@@ -25,8 +25,23 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-include("revisions-lib.inc");
-tag_insight = "Several vulnerabilities were discovered in Request Tracker, an issue
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.72538");
+  script_cve_id("CVE-2012-4730", "CVE-2012-4732", "CVE-2012-4734", "CVE-2012-4735", "CVE-2012-4884");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 14275 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:39:45 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2012-10-29 10:21:35 -0400 (Mon, 29 Oct 2012)");
+  script_name("Debian Security Advisory DSA 2567-1 (request-tracker3.8)");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 E-Soft Inc. http://www.securityspace.com");
+  script_family("Debian Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB6");
+  script_xref(name:"URL", value:"https://secure1.securityspace.com/smysecure/catid.html?in=DSA%202567-1");
+  script_tag(name:"insight", value:"Several vulnerabilities were discovered in Request Tracker, an issue
 tracking system.
 
 CVE-2012-4730
@@ -59,69 +74,43 @@ For the stable distribution (squeeze), these problems have been fixed
 in version 3.8.8-7+squeeze6.
 
 For the unstable distribution (sid), these problems have been fixed in
-version 4.0.7-2 of the request-tracker4 package.
+version 4.0.7-2 of the request-tracker4 package.");
 
-We recommend that you upgrade your request-tracker3.8 packages.";
-tag_summary = "The remote host is missing an update to request-tracker3.8
-announced via advisory DSA 2567-1.";
+  script_tag(name:"solution", value:"We recommend that you upgrade your request-tracker3.8 packages.");
+  script_tag(name:"summary", value:"The remote host is missing an update to request-tracker3.8
+announced via advisory DSA 2567-1.");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
-tag_solution = "https://secure1.securityspace.com/smysecure/catid.html?in=DSA%202567-1";
-
-if(description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.72538");
- script_cve_id("CVE-2012-4730", "CVE-2012-4732", "CVE-2012-4734", "CVE-2012-4735", "CVE-2012-4884");
- script_tag(name:"cvss_base", value:"6.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version("$Revision: 8649 $");
- script_tag(name:"last_modification", value:"$Date: 2018-02-03 13:16:43 +0100 (Sat, 03 Feb 2018) $");
- script_tag(name:"creation_date", value:"2012-10-29 10:21:35 -0400 (Mon, 29 Oct 2012)");
- script_name("Debian Security Advisory DSA 2567-1 (request-tracker3.8)");
-
-
-
- script_category(ACT_GATHER_INFO);
-
- script_copyright("Copyright (c) 2012 E-Soft Inc. http://www.securityspace.com");
- script_family("Debian Local Security Checks");
- script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
- exit(0);
+  exit(0);
 }
 
-#
-# The script code starts here
-#
-
+include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
+
 res = "";
 report = "";
-if((res = isdpkgvuln(pkg:"request-tracker3.8", ver:"3.8.8-7+squeeze6", rls:"DEB6.0")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"request-tracker3.8", ver:"3.8.8-7+squeeze6", rls:"DEB6")) != NULL) {
+  report += res;
 }
-if((res = isdpkgvuln(pkg:"rt3.8-apache2", ver:"3.8.8-7+squeeze6", rls:"DEB6.0")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"rt3.8-apache2", ver:"3.8.8-7+squeeze6", rls:"DEB6")) != NULL) {
+  report += res;
 }
-if((res = isdpkgvuln(pkg:"rt3.8-clients", ver:"3.8.8-7+squeeze6", rls:"DEB6.0")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"rt3.8-clients", ver:"3.8.8-7+squeeze6", rls:"DEB6")) != NULL) {
+  report += res;
 }
-if((res = isdpkgvuln(pkg:"rt3.8-db-mysql", ver:"3.8.8-7+squeeze6", rls:"DEB6.0")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"rt3.8-db-mysql", ver:"3.8.8-7+squeeze6", rls:"DEB6")) != NULL) {
+  report += res;
 }
-if((res = isdpkgvuln(pkg:"rt3.8-db-postgresql", ver:"3.8.8-7+squeeze6", rls:"DEB6.0")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"rt3.8-db-postgresql", ver:"3.8.8-7+squeeze6", rls:"DEB6")) != NULL) {
+  report += res;
 }
-if((res = isdpkgvuln(pkg:"rt3.8-db-sqlite", ver:"3.8.8-7+squeeze6", rls:"DEB6.0")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"rt3.8-db-sqlite", ver:"3.8.8-7+squeeze6", rls:"DEB6")) != NULL) {
+  report += res;
 }
 
 if(report != "") {
-    security_message(data:report);
+  security_message(data:report);
 } else if (__pkg_match) {
-    exit(99); # Not vulnerable.
+  exit(99);
 }

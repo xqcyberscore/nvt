@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1441.nasl 11099 2018-08-24 03:13:46Z ckuersteiner $
+# $Id: deb_dla_1441.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DLA 1441-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891441");
-  script_version("$Revision: 11099 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2018-1000550");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1441-1] sympa security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 05:13:46 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-07-25 00:00:00 +0200 (Wed, 25 Jul 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -48,15 +48,13 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8");
   script_tag(name:"affected", value:"sympa on Debian Linux");
-  script_tag(name:"insight", value:"Sympa is a scalable and highly customizable modern mailing list manager
-capable of handling big setups: 20.000 lists with 700,000 subscribers.");
   script_tag(name:"solution", value:"For Debian 8 'Jessie', this problem has been fixed in version
 6.1.23~dfsg-2+deb8u2.
 
 We recommend that you upgrade your sympa packages.");
-  script_tag(name:"summary",  value:"A vulnerability has been discovered in Sympa, a modern mailing list
+  script_tag(name:"summary", value:"A vulnerability has been discovered in Sympa, a modern mailing list
 manager, that allows write access to files on the server filesystem.
 This flaw allows to create or modify any file writable by the Sympa
 user, located on the server filesystem, using the function of Sympa
@@ -71,12 +69,12 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"sympa", ver:"6.1.23~dfsg-2+deb8u2", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"sympa", ver:"6.1.23~dfsg-2+deb8u2", rls:"DEB8")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
+} else if(__pkg_match) {
   exit(99);
 }

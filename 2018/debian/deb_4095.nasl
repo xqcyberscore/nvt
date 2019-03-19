@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4095.nasl 8560 2018-01-29 07:24:45Z cfischer $
+# $Id: deb_4095.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DSA 4095-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704095");
-  script_version("$Revision: 8560 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2018-5345");
   script_name("Debian Security Advisory DSA 4095-1 (gcab - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-29 08:24:45 +0100 (Mon, 29 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-01-24 00:00:00 +0100 (Wed, 24 Jan 2018)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -48,19 +48,18 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB9");
   script_tag(name:"affected", value:"gcab on Debian Linux");
-  script_tag(name:"insight", value:"gcab can list, extract and create cabinet (.cab) files, commonly used
-as archives to distribute software on Windows.");
   script_tag(name:"solution", value:"For the stable distribution (stretch), this problem has been fixed in
 version 0.7-2+deb9u1.
 
 We recommend that you upgrade your gcab packages.
 
 For the detailed security status of gcab please refer to its security
-tracker page at:
-https://security-tracker.debian.org/tracker/gcab");
-  script_tag(name:"summary",  value:"It was discovered that gcab, a Microsoft Cabinet file manipulation tool,
+tracker page linked in the references.");
+
+  script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/gcab");
+  script_tag(name:"summary", value:"It was discovered that gcab, a Microsoft Cabinet file manipulation tool,
 is prone to a stack-based buffer overflow vulnerability when extracting
 .cab files. An attacker can take advantage of this flaw to cause a
 denial-of-service or, potentially the execution of arbitrary code with
@@ -76,24 +75,24 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"gcab", ver:"0.7-2+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"gcab", ver:"0.7-2+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"gir1.2-libgcab-1.0", ver:"0.7-2+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"gir1.2-libgcab-1.0", ver:"0.7-2+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libgcab-1.0-0", ver:"0.7-2+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libgcab-1.0-0", ver:"0.7-2+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libgcab-dev", ver:"0.7-2+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libgcab-dev", ver:"0.7-2+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libgcab-doc", ver:"0.7-2+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libgcab-doc", ver:"0.7-2+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
-  exit(99); # Not vulnerable.
+} else if(__pkg_match) {
+  exit(99);
 }

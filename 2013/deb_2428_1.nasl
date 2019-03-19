@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2428_1.nasl 13784 2019-02-20 11:51:39Z cfischer $
+# $Id: deb_2428_1.nasl 14284 2019-03-18 15:02:15Z cfischer $
 # Auto-generated from advisory DSA 2428-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -29,10 +29,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.892428");
-  script_version("$Revision: 13784 $");
+  script_version("$Revision: 14284 $");
   script_cve_id("CVE-2012-1136", "CVE-2012-1142", "CVE-2012-1133", "CVE-2012-1144", "CVE-2012-1134");
   script_name("Debian Security Advisory DSA 2428-1 (freetype - several vulnerabilities)");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-20 12:51:39 +0100 (Wed, 20 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 16:02:15 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2013-09-18 11:53:02 +0200 (Wed, 18 Sep 2013)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -41,12 +41,9 @@ if(description)
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB6");
 
   script_tag(name:"affected", value:"freetype on Debian Linux");
-
-  script_tag(name:"insight", value:"The FreeType 2 library is a software font engine.");
-
   script_tag(name:"solution", value:"For the stable distribution (squeeze), this problem has been fixed in
   version 2.4.2-2.1+squeeze4. The updated packages are already available
   since yesterday, but the advisory text couldn't be send earlier.
@@ -72,21 +69,21 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"freetype2-demos", ver:"2.4.2-2.1+squeeze4", rls:"DEB6.0")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"freetype2-demos", ver:"2.4.2-2.1+squeeze4", rls:"DEB6")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libfreetype6", ver:"2.4.2-2.1+squeeze4", rls:"DEB6.0")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libfreetype6", ver:"2.4.2-2.1+squeeze4", rls:"DEB6")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libfreetype6-dev", ver:"2.4.2-2.1+squeeze4", rls:"DEB6.0")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libfreetype6-dev", ver:"2.4.2-2.1+squeeze4", rls:"DEB6")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libfreetype6-udeb", ver:"2.4.2-2.1+squeeze4", rls:"DEB6.0")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libfreetype6-udeb", ver:"2.4.2-2.1+squeeze4", rls:"DEB6")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
-    security_message(data:report);
-} else if (__pkg_match) {
-    exit(99);
+if(report != "") {
+  security_message(data:report);
+} else if(__pkg_match) {
+  exit(99);
 }

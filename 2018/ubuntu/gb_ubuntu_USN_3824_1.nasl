@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3824_1.nasl 12497 2018-11-23 08:28:21Z cfischer $
+# $Id: gb_ubuntu_USN_3824_1.nasl 14288 2019-03-18 16:34:17Z cfischer $
 #
 # Ubuntu Update for openjdk-7 USN-3824-1
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843826");
-  script_version("$Revision: 12497 $");
+  script_version("$Revision: 14288 $");
   script_cve_id("CVE-2018-3136", "CVE-2018-3139", "CVE-2018-3149", "CVE-2018-3169", "CVE-2018-3180");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 17:34:17 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-11-16 06:00:09 +0100 (Fri, 16 Nov 2018)");
   script_name("Ubuntu Update for openjdk-7 USN-3824-1");
   script_category(ACT_GATHER_INFO);
@@ -98,31 +98,31 @@ res = "";
 if(release == "UBUNTU14.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"icedtea-7-jre-jamvm", ver:"7u181-2.6.14-0ubuntu0.3", rls:"UBUNTU14.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"icedtea-7-jre-jamvm", ver:"7u181-2.6.14-0ubuntu0.3", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"openjdk-7-jdk", ver:"7u181-2.6.14-0ubuntu0.3", rls:"UBUNTU14.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"openjdk-7-jdk", ver:"7u181-2.6.14-0ubuntu0.3", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"openjdk-7-jre", ver:"7u181-2.6.14-0ubuntu0.3", rls:"UBUNTU14.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"openjdk-7-jre", ver:"7u181-2.6.14-0ubuntu0.3", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"openjdk-7-jre-headless", ver:"7u181-2.6.14-0ubuntu0.3", rls:"UBUNTU14.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"openjdk-7-jre-headless", ver:"7u181-2.6.14-0ubuntu0.3", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"openjdk-7-jre-lib", ver:"7u181-2.6.14-0ubuntu0.3", rls:"UBUNTU14.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"openjdk-7-jre-lib", ver:"7u181-2.6.14-0ubuntu0.3", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);

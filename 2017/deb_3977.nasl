@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_3977.nasl 7336 2017-10-04 05:42:02Z asteins $
+# $Id: deb_3977.nasl 14280 2019-03-18 14:50:45Z cfischer $
 #
 # Auto-generated from advisory DSA 3977-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.703977");
-  script_version("$Revision: 7336 $");
+  script_version("$Revision: 14280 $");
   script_cve_id("CVE-2017-14500");
   script_name("Debian Security Advisory DSA 3977-1 (newsbeuter - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-04 07:42:02 +0200 (Wed, 04 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:50:45 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-09-18 00:00:00 +0200 (Mon, 18 Sep 2017)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -48,12 +48,8 @@ if(description)
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB(9|8)");
   script_tag(name:"affected", value:"newsbeuter on Debian Linux");
-  script_tag(name:"insight", value:"newsbeuter is an innovative RSS feed reader for the text console.
-It supports OPML import/exports, HTML rendering, podcast (podbeuter),
-offline reading, searching and storing articles to your filesystem,
-and many more features.");
   script_tag(name:"solution", value:"For the oldstable distribution (jessie), this problem has been fixed
 in version 2.8-2+deb8u2.
 
@@ -64,7 +60,7 @@ For the unstable distribution (sid), this problem has been fixed in
 version 2.9-7.
 
 We recommend that you upgrade your newsbeuter packages.");
-  script_tag(name:"summary",  value:"It was discovered that podbeuter, the podcast fetcher in newsbeuter, a
+  script_tag(name:"summary", value:"It was discovered that podbeuter, the podcast fetcher in newsbeuter, a
 text-mode RSS feed reader, did not properly escape the name of the media
 enclosure (the podcast file), allowing a remote attacker to run an
 arbitrary shell command on the client machine. This is only exploitable
@@ -79,18 +75,18 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"newsbeuter", ver:"2.9-5+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"newsbeuter", ver:"2.9-5+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"newsbeuter", ver:"2.8-2+deb8u2", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"newsbeuter", ver:"2.8-2+deb8u2", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"newsbeuter-dbg", ver:"2.8-2+deb8u2", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"newsbeuter-dbg", ver:"2.8-2+deb8u2", rls:"DEB8")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
-  exit(99); # Not vulnerable.
+} else if(__pkg_match) {
+  exit(99);
 }

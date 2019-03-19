@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_RHSA-2017_1950-01_samba.nasl 12497 2018-11-23 08:28:21Z cfischer $
+# $Id: gb_RHSA-2017_1950-01_samba.nasl 14300 2019-03-19 07:52:26Z mmartin $
 #
 # RedHat Update for samba RHSA-2017:1950-01
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871870");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 14300 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 08:52:26 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-08-04 12:46:10 +0530 (Fri, 04 Aug 2017)");
   script_cve_id("CVE-2017-9461");
-  script_tag(name:"cvss_base", value:"7.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for samba RHSA-2017:1950-01");
   script_tag(name:"summary", value:"The remote host is missing an update for the 'samba'

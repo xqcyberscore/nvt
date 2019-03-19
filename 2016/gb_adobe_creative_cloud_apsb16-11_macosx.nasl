@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_creative_cloud_apsb16-11_macosx.nasl 12455 2018-11-21 09:17:27Z cfischer $
+# $Id: gb_adobe_creative_cloud_apsb16-11_macosx.nasl 14293 2019-03-18 18:52:01Z cfischer $
 #
 # Adobe Creative Cloud Security Updates APSB16-11 (MAC OS X)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:adobe:creative_cloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807672");
-  script_version("$Revision: 12455 $");
+  script_version("$Revision: 14293 $");
   script_cve_id("CVE-2016-1034");
   script_tag(name:"cvss_base", value:"9.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 19:52:01 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-04-18 16:13:45 +0530 (Mon, 18 Apr 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Adobe Creative Cloud Security Updates APSB16-11 (MAC OS X)");
@@ -64,10 +64,9 @@ if(description)
   script_family("General");
   script_dependencies("gb_adobe_creative_cloud_detect_macosx.nasl");
   script_mandatory_keys("AdobeCreativeCloud/MacOSX/Version");
-  script_xref(name:"URL", value:"https://www.adobe.com/creativecloud/desktop-app.html.");
+  script_xref(name:"URL", value:"https://www.adobe.com/creativecloud/desktop-app.html");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

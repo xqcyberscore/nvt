@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4195.nasl 10224 2018-06-15 14:29:06Z cfischer $
+# $Id: deb_4195.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DSA 4195-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704195");
-  script_version("$Revision: 10224 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2018-0494");
   script_name("Debian Security Advisory DSA 4195-1 (wget - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-15 16:29:06 +0200 (Fri, 15 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-05-08 00:00:00 +0200 (Tue, 08 May 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -48,15 +48,8 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB[89]\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB[89]");
   script_tag(name:"affected", value:"wget on Debian Linux");
-  script_tag(name:"insight", value:"Wget is a network utility to retrieve files from the web
-using HTTP(S) and FTP, the two most widely used internet
-protocols. It works non-interactively, so it will work in
-the background, after having logged off. The program supports
-recursive retrieval of web-authoring pages as well as FTP
-sites -- you can use Wget to make mirrors of archives and
-home pages or to travel the web like a WWW robot.");
   script_tag(name:"solution", value:"For the oldstable distribution (jessie), this problem has been fixed
 in version 1.16-1+deb8u5.
 
@@ -66,9 +59,10 @@ version 1.18-5+deb9u2.
 We recommend that you upgrade your wget packages.
 
 For the detailed security status of wget please refer to its security
-tracker page at:
-https://security-tracker.debian.org/tracker/wget");
-  script_tag(name:"summary",  value:"Harry Sintonen discovered that wget, a network utility to retrieve files
+tracker page linked in the references.");
+
+  script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/wget");
+  script_tag(name:"summary", value:"Harry Sintonen discovered that wget, a network utility to retrieve files
 from the web, does not properly handle '\r\n' from continuation lines
 while parsing the Set-Cookie HTTP header. A malicious web server could
 use this flaw to inject arbitrary cookies to the cookie jar file, adding
@@ -83,15 +77,15 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"wget", ver:"1.16-1+deb8u5", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"wget", ver:"1.16-1+deb8u5", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"wget", ver:"1.18-5+deb9u2", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"wget", ver:"1.18-5+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
+} else if(__pkg_match) {
   exit(99);
 }

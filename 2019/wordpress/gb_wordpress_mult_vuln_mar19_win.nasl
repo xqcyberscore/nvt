@@ -21,12 +21,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108559");
-  script_version("$Revision: 14229 $");
+  script_version("$Revision: 14300 $");
   script_cve_id("CVE-2019-9787");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-16 08:54:05 +0100 (Sat, 16 Mar 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 08:52:26 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-03-15 08:35:17 +0100 (Fri, 15 Mar 2019)");
-  script_tag(name:"cvss_base", value:"6.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_name("WordPress Multiple Vulnerabilities - March19 (Windows)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4365.nasl 13828 2019-02-22 09:35:28Z mmartin $
+# $Id: deb_4365.nasl 14285 2019-03-18 15:08:34Z cfischer $
 #
 # Auto-generated from advisory DSA 4365-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704365");
-  script_version("$Revision: 13828 $");
+  script_version("$Revision: 14285 $");
   script_cve_id("CVE-2019-3461");
   script_name("Debian Security Advisory DSA 4365-1 (tmpreaper - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-22 10:35:28 +0100 (Fri, 22 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 16:08:34 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-01-10 00:00:00 +0100 (Thu, 10 Jan 2019)");
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
@@ -48,24 +48,17 @@ if(description)
   script_copyright("Copyright (c) 2019 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB9\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB9");
   script_tag(name:"affected", value:"tmpreaper on Debian Linux");
-  script_tag(name:"insight", value:"This package provides a program that can be used to clean out temporary-file
-directories. It recursively searches the directory, refusing to chdir()
-across symlinks, and removes files that haven't been accessed in a
-user-specified amount of time. You can specify a set of files to protect
-from deletion with a shell pattern. It will not remove files owned by the
-process EUID that have the `w' bit clear, unless you ask it to, much like
-`rm -f'. `tmpreaper' will not remove symlinks, sockets, fifos, or special
-files unless given a command line option enabling it to.");
   script_tag(name:"solution", value:"For the stable distribution (stretch), this problem has been fixed in
 version 1.6.13+nmu1+deb9u1.
 
 We recommend that you upgrade your tmpreaper packages.
 
 For the detailed security status of tmpreaper please refer to
-its security tracker page at:
-https://security-tracker.debian.org/tracker/tmpreaper");
+its security tracker page linked in the references.");
+
+  script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/tmpreaper");
   script_tag(name:"summary", value:"Stephen Roettger discovered a race condition in tmpreaper, a program that
 cleans up files in directories based on their age, which could result in
 local privilege escalation.");
@@ -79,11 +72,11 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"tmpreaper", ver:"1.6.13+nmu1+deb9u1", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"tmpreaper", ver:"1.6.13+nmu1+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
 } else if (__pkg_match) {
   exit(99);

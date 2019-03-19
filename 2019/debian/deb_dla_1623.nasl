@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1623.nasl 13750 2019-02-19 07:33:36Z mmartin $
+# $Id: deb_dla_1623.nasl 14282 2019-03-18 14:55:18Z cfischer $
 #
 # Auto-generated from advisory DLA 1623-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891623");
-  script_version("$Revision: 13750 $");
+  script_version("$Revision: 14282 $");
   script_cve_id("CVE-2018-20482");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1623-1] tar security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-19 08:33:36 +0100 (Tue, 19 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:55:18 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-01-03 00:00:00 +0100 (Thu, 03 Jan 2019)");
   script_tag(name:"cvss_base", value:"1.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:N/I:N/A:P");
@@ -48,13 +48,8 @@ if(description)
   script_copyright("Copyright (c) 2019 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8");
   script_tag(name:"affected", value:"tar on Debian Linux");
-  script_tag(name:"insight", value:"Tar is a program for packaging a set of files as a single archive in tar
-format. The function it performs is conceptually similar to cpio, and to
-things like PKZIP in the DOS world. It is heavily used by the Debian package
-management system, and is useful for performing system backups and exchanging
-sets of files with others.");
   script_tag(name:"solution", value:"For Debian 8 'Jessie', this issue has been fixed in tar version
 1.27.1-2+deb8u2.
 
@@ -76,14 +71,14 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"tar", ver:"1.27.1-2+deb8u2", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"tar", ver:"1.27.1-2+deb8u2", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"tar-scripts", ver:"1.27.1-2+deb8u2", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"tar-scripts", ver:"1.27.1-2+deb8u2", rls:"DEB8")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
 } else if (__pkg_match) {
   exit(99);

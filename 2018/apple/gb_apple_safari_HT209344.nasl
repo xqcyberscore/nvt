@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_HT209344.nasl 12688 2018-12-06 13:59:18Z santu $
+# $Id: gb_apple_safari_HT209344.nasl 14292 2019-03-18 18:39:37Z cfischer $
 #
 # Apple Safari Security Updates(HT209344)
 #
@@ -29,22 +29,22 @@ CPE = "cpe:/a:apple:safari";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814601");
-  script_version("$Revision: 12688 $");
+  script_version("$Revision: 14292 $");
   script_cve_id("CVE-2018-4440", "CVE-2018-4439", "CVE-2018-4445", "CVE-2018-4437",
                 "CVE-2018-4464", "CVE-2018-4441", "CVE-2018-4442", "CVE-2018-4443",
                 "CVE-2018-4438");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-06 14:59:18 +0100 (Thu, 06 Dec 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 19:39:37 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-12-06 10:43:13 +0530 (Thu, 06 Dec 2018)");
   script_name("Apple Safari Security Updates(HT209344)");
 
   script_tag(name:"summary", value:"This host is installed with Apple Safari
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exists due to,
 
   - A logic issue was addressed with improved state management.
 
@@ -56,18 +56,18 @@ if(description)
 
   - A logic issue existed resulting in memory corruption.");
 
-  script_tag(name: "impact" , value:"Successful exploitation allow attackers to
+  script_tag(name:"impact", value:"Successful exploitation allow attackers to
   conduct spoofing attacks, arbitrary code execution and bypass security
   restrictions.");
 
-  script_tag(name: "affected" , value:"Apple Safari versions before 12.0.2");
+  script_tag(name:"affected", value:"Apple Safari versions before 12.0.2");
 
-  script_tag(name: "solution" , value:"Upgrade to Apple Safari 12.0.2 or later.
+  script_tag(name:"solution", value:"Upgrade to Apple Safari 12.0.2 or later.
   For updates refer to Reference links.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.apple.com/en-us/HT209344");
+  script_xref(name:"URL", value:"https://support.apple.com/en-us/HT209344");
   script_xref(name:"URL", value:"https://www.apple.com");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -76,7 +76,6 @@ if(description)
   script_mandatory_keys("AppleSafari/MacOSX/Version", "ssh/login/osx_name", "ssh/login/osx_version");
   exit(0);
 }
-
 
 include("version_func.inc");
 include("host_details.inc");
@@ -122,4 +121,5 @@ if(fix)
   security_message(data:report);
   exit(0);
 }
+
 exit(99);

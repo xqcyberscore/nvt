@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1340.nasl 10474 2018-07-10 08:12:26Z cfischer $
+# $Id: deb_dla_1340.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DLA 1340-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891340");
-  script_version("$Revision: 10474 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2018-7487", "CVE-2018-7551", "CVE-2018-7552", "CVE-2018-7553", "CVE-2018-7554");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1340-1] sam2p security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-10 10:12:26 +0200 (Tue, 10 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-04-09 00:00:00 +0200 (Mon, 09 Apr 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -48,17 +48,13 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB7\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB7");
   script_tag(name:"affected", value:"sam2p on Debian Linux");
-  script_tag(name:"insight", value:"sam2p is a command line utility that converts many raster
-(bitmap) image formats like GIF, JPG/JPEG, and PNG into
-PostScript or PDF files. PS or EPS files created by sam2p are
-usually not much larger than the source file.");
   script_tag(name:"solution", value:"For Debian 7 'Wheezy', these problems have been fixed in version
 0.49.1-1+deb7u3.
 
 We recommend that you upgrade your sam2p packages.");
-  script_tag(name:"summary",  value:"Multiple invalid frees and buffer-overflow vulnerabilities were
+  script_tag(name:"summary", value:"Multiple invalid frees and buffer-overflow vulnerabilities were
 discovered in sam2p, a utility to convert raster images and
 other image formats, that may lead to a denial-of-service (application
 crash) or unspecified other impact.");
@@ -72,12 +68,12 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"sam2p", ver:"0.49.1-1+deb7u3", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"sam2p", ver:"0.49.1-1+deb7u3", rls:"DEB7")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
+} else if(__pkg_match) {
   exit(99);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_3985.nasl 7801 2017-11-17 07:10:11Z asteins $
+# $Id: deb_3985.nasl 14275 2019-03-18 14:39:45Z cfischer $
 #
 # Auto-generated from advisory DSA 3985-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.703985");
-  script_version("$Revision: 7801 $");
+  script_version("$Revision: 14275 $");
   script_cve_id("CVE-2017-5111", "CVE-2017-5112", "CVE-2017-5113", "CVE-2017-5114", "CVE-2017-5115", "CVE-2017-5116", "CVE-2017-5117", "CVE-2017-5118", "CVE-2017-5119", "CVE-2017-5120", "CVE-2017-5121", "CVE-2017-5122");
   script_name("Debian Security Advisory DSA 3985-1 (chromium-browser - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-17 08:10:11 +0100 (Fri, 17 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:39:45 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-09-28 00:00:00 +0200 (Thu, 28 Sep 2017)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -48,7 +48,7 @@ if(description)
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB9");
   script_tag(name:"affected", value:"chromium-browser on Debian Linux");
   script_tag(name:"solution", value:"For the stable distribution (stretch), these problems have been fixed in
 version 61.0.3163.100-1~deb9u1.
@@ -59,47 +59,47 @@ For the unstable distribution (sid), these problems have been fixed in
 version 61.0.3163.100-1.
 
 We recommend that you upgrade your chromium-browser packages.");
-  script_tag(name:"summary",  value:"Several vulnerabilities have been discovered in the chromium web browser.
+  script_tag(name:"summary", value:"Several vulnerabilities have been discovered in the chromium web browser.
 
-CVE-2017-5111 
+CVE-2017-5111
 Luat Nguyen discovered a use-after-free issue in the pdfium library.
 
-CVE-2017-5112 
+CVE-2017-5112
 Tobias Klein discovered a buffer overflow issue in the webgl
 library.
 
-CVE-2017-5113 
+CVE-2017-5113
 A buffer overflow issue was discovered in the skia library.
 
-CVE-2017-5114 
+CVE-2017-5114
 Ke Liu discovered a memory issue in the pdfium library.
 
-CVE-2017-5115 
+CVE-2017-5115
 Marco Giovannini discovered a type confusion issue in the v8
 javascript library.
 
-CVE-2017-5116 
+CVE-2017-5116
 Guang Gong discovered a type confusion issue in the v8 javascript
 library.
 
-CVE-2017-5117 
+CVE-2017-5117
 Tobias Klein discovered an uninitialized value in the skia library.
 
-CVE-2017-5118 
+CVE-2017-5118
 WenXu Wu discovered a way to bypass the Content Security Policy.
 
-CVE-2017-5119 
+CVE-2017-5119
 Another uninitialized value was discovered in the skia library.
 
-CVE-2017-5120 
+CVE-2017-5120
 Xiaoyin Liu discovered a way downgrade HTTPS connections during
 redirection.
 
-CVE-2017-5121 
+CVE-2017-5121
 Jordan Rabet discovered an out-of-bounds memory access in the v8
 javascript library.
 
-CVE-2017-5122 
+CVE-2017-5122
 Choongwoo Han discovered an out-of-bounds memory access in the v8
 javascript library.");
   script_tag(name:"vuldetect", value:"This check tests the installed software version using the apt package manager.");
@@ -112,27 +112,27 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"chromedriver", ver:"61.0.3163.100-1~deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"chromedriver", ver:"61.0.3163.100-1~deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"chromium", ver:"61.0.3163.100-1~deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"chromium", ver:"61.0.3163.100-1~deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"chromium-driver", ver:"61.0.3163.100-1~deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"chromium-driver", ver:"61.0.3163.100-1~deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"chromium-l10n", ver:"61.0.3163.100-1~deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"chromium-l10n", ver:"61.0.3163.100-1~deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"chromium-shell", ver:"61.0.3163.100-1~deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"chromium-shell", ver:"61.0.3163.100-1~deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"chromium-widevine", ver:"61.0.3163.100-1~deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"chromium-widevine", ver:"61.0.3163.100-1~deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
-  exit(99); # Not vulnerable.
+} else if(__pkg_match) {
+  exit(99);
 }

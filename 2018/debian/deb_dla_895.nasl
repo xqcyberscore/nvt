@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_895.nasl 10474 2018-07-10 08:12:26Z cfischer $
+# $Id: deb_dla_895.nasl 14270 2019-03-18 14:24:29Z cfischer $
 #
 # Auto-generated from advisory DLA 895-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,9 +31,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.890895");
-  script_version("$Revision: 10474 $");
+  script_version("$Revision: 14270 $");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 895-1] openoffice.org-dictionaries update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-10 10:12:26 +0200 (Tue, 10 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:24:29 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-01-17 00:00:00 +0100 (Wed, 17 Jan 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -47,13 +47,13 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB7\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB7");
   script_tag(name:"affected", value:"openoffice.org-dictionaries on Debian Linux");
   script_tag(name:"solution", value:"For Debian 7 'Wheezy', this problem has been fixed in version
 3.3.0~rc10-4+deb7u1.
 
 We recommend that you upgrade your openoffice.org-dictionaries packages.");
-  script_tag(name:"summary",  value:"The dictionaries provided by this package had an unversioned conflict
+  script_tag(name:"summary", value:"The dictionaries provided by this package had an unversioned conflict
 against the thunderbird package (which so far was not part of wheezy).
 
 Since the next update of Icedove introduces a thunderbird package the
@@ -75,126 +75,126 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"hunspell-da", ver:"3.3.0~rc10-4+deb7u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"hunspell-da", ver:"3.3.0~rc10-4+deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"hunspell-de-at-frami", ver:"3.3.0~rc10-4+deb7u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"hunspell-de-at-frami", ver:"3.3.0~rc10-4+deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"hunspell-de-ch-frami", ver:"3.3.0~rc10-4+deb7u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"hunspell-de-ch-frami", ver:"3.3.0~rc10-4+deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"hunspell-de-de-frami", ver:"3.3.0~rc10-4+deb7u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"hunspell-de-de-frami", ver:"3.3.0~rc10-4+deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"hunspell-en-ca", ver:"3.3.0~rc10-4+deb7u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"hunspell-en-ca", ver:"3.3.0~rc10-4+deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"hunspell-fr", ver:"3.3.0~rc10-4+deb7u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"hunspell-fr", ver:"3.3.0~rc10-4+deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"hunspell-hu", ver:"3.3.0~rc10-4+deb7u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"hunspell-hu", ver:"3.3.0~rc10-4+deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"hunspell-ne", ver:"3.3.0~rc10-4+deb7u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"hunspell-ne", ver:"3.3.0~rc10-4+deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"hunspell-ro", ver:"3.3.0~rc10-4+deb7u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"hunspell-ro", ver:"3.3.0~rc10-4+deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"hunspell-sh", ver:"3.3.0~rc10-4+deb7u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"hunspell-sh", ver:"3.3.0~rc10-4+deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"hunspell-sr", ver:"3.3.0~rc10-4+deb7u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"hunspell-sr", ver:"3.3.0~rc10-4+deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"hunspell-vi", ver:"3.3.0~rc10-4+deb7u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"hunspell-vi", ver:"3.3.0~rc10-4+deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"hyphen-af", ver:"3.3.0~rc10-4+deb7u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"hyphen-af", ver:"3.3.0~rc10-4+deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"hyphen-ca", ver:"3.3.0~rc10-4+deb7u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"hyphen-ca", ver:"3.3.0~rc10-4+deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"hyphen-de", ver:"3.3.0~rc10-4+deb7u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"hyphen-de", ver:"3.3.0~rc10-4+deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"hyphen-fr", ver:"3.3.0~rc10-4+deb7u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"hyphen-fr", ver:"3.3.0~rc10-4+deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"hyphen-hu", ver:"3.3.0~rc10-4+deb7u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"hyphen-hu", ver:"3.3.0~rc10-4+deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"hyphen-it", ver:"3.3.0~rc10-4+deb7u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"hyphen-it", ver:"3.3.0~rc10-4+deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"hyphen-ro", ver:"3.3.0~rc10-4+deb7u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"hyphen-ro", ver:"3.3.0~rc10-4+deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"hyphen-sh", ver:"3.3.0~rc10-4+deb7u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"hyphen-sh", ver:"3.3.0~rc10-4+deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"hyphen-sl", ver:"3.3.0~rc10-4+deb7u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"hyphen-sl", ver:"3.3.0~rc10-4+deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"hyphen-sr", ver:"3.3.0~rc10-4+deb7u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"hyphen-sr", ver:"3.3.0~rc10-4+deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"hyphen-zu", ver:"3.3.0~rc10-4+deb7u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"hyphen-zu", ver:"3.3.0~rc10-4+deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"myspell-af", ver:"3.3.0~rc10-4+deb7u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"myspell-af", ver:"3.3.0~rc10-4+deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"myspell-en-gb", ver:"3.3.0~rc10-4+deb7u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"myspell-en-gb", ver:"3.3.0~rc10-4+deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"myspell-en-us", ver:"3.3.0~rc10-4+deb7u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"myspell-en-us", ver:"3.3.0~rc10-4+deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"myspell-en-za", ver:"3.3.0~rc10-4+deb7u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"myspell-en-za", ver:"3.3.0~rc10-4+deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"myspell-it", ver:"3.3.0~rc10-4+deb7u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"myspell-it", ver:"3.3.0~rc10-4+deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"myspell-sw", ver:"3.3.0~rc10-4+deb7u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"myspell-sw", ver:"3.3.0~rc10-4+deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"myspell-th", ver:"3.3.0~rc10-4+deb7u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"myspell-th", ver:"3.3.0~rc10-4+deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"mythes-ca", ver:"3.3.0~rc10-4+deb7u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"mythes-ca", ver:"3.3.0~rc10-4+deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"mythes-cs", ver:"3.3.0~rc10-4+deb7u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"mythes-cs", ver:"3.3.0~rc10-4+deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"mythes-en-us", ver:"3.3.0~rc10-4+deb7u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"mythes-en-us", ver:"3.3.0~rc10-4+deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"mythes-fr", ver:"3.3.0~rc10-4+deb7u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"mythes-fr", ver:"3.3.0~rc10-4+deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"mythes-hu", ver:"3.3.0~rc10-4+deb7u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"mythes-hu", ver:"3.3.0~rc10-4+deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"mythes-ne", ver:"3.3.0~rc10-4+deb7u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"mythes-ne", ver:"3.3.0~rc10-4+deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"mythes-ro", ver:"3.3.0~rc10-4+deb7u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"mythes-ro", ver:"3.3.0~rc10-4+deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"mythes-ru", ver:"3.3.0~rc10-4+deb7u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"mythes-ru", ver:"3.3.0~rc10-4+deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"mythes-sk", ver:"3.3.0~rc10-4+deb7u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"mythes-sk", ver:"3.3.0~rc10-4+deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
+} else if(__pkg_match) {
   exit(99);
 }

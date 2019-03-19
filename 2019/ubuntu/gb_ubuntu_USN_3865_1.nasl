@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3865_1.nasl 13255 2019-01-24 07:43:16Z mmartin $
+# $Id: gb_ubuntu_USN_3865_1.nasl 14288 2019-03-18 16:34:17Z cfischer $
 #
 # Ubuntu Update for poppler USN-3865-1
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843876");
-  script_version("$Revision: 13255 $");
+  script_version("$Revision: 14288 $");
   script_cve_id("CVE-2018-20481", "CVE-2018-20650");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-24 08:43:16 +0100 (Thu, 24 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 17:34:17 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-01-23 04:01:39 +0100 (Wed, 23 Jan 2019)");
   script_name("Ubuntu Update for poppler USN-3865-1");
   script_category(ACT_GATHER_INFO);
@@ -78,13 +78,13 @@ res = "";
 if(release == "UBUNTU14.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"libpoppler44", ver:"0.24.5-2ubuntu4.15", rls:"UBUNTU14.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libpoppler44", ver:"0.24.5-2ubuntu4.15", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"poppler-utils", ver:"0.24.5-2ubuntu4.15", rls:"UBUNTU14.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"poppler-utils", ver:"0.24.5-2ubuntu4.15", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -98,13 +98,13 @@ if(release == "UBUNTU14.04 LTS")
 if(release == "UBUNTU18.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"libpoppler73", ver:"0.62.0-2ubuntu2.6", rls:"UBUNTU18.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libpoppler73", ver:"0.62.0-2ubuntu2.6", rls:"UBUNTU18.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"poppler-utils", ver:"0.62.0-2ubuntu2.6", rls:"UBUNTU18.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"poppler-utils", ver:"0.62.0-2ubuntu2.6", rls:"UBUNTU18.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -118,13 +118,13 @@ if(release == "UBUNTU18.04 LTS")
 if(release == "UBUNTU18.10")
 {
 
-  if ((res = isdpkgvuln(pkg:"libpoppler79", ver:"0.68.0-0ubuntu1.4", rls:"UBUNTU18.10", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libpoppler79", ver:"0.68.0-0ubuntu1.4", rls:"UBUNTU18.10")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"poppler-utils", ver:"0.68.0-0ubuntu1.4", rls:"UBUNTU18.10", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"poppler-utils", ver:"0.68.0-0ubuntu1.4", rls:"UBUNTU18.10")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -138,13 +138,13 @@ if(release == "UBUNTU18.10")
 if(release == "UBUNTU16.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"libpoppler58", ver:"0.41.0-0ubuntu1.11", rls:"UBUNTU16.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"libpoppler58", ver:"0.41.0-0ubuntu1.11", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"poppler-utils", ver:"0.41.0-0ubuntu1.11", rls:"UBUNTU16.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"poppler-utils", ver:"0.41.0-0ubuntu1.11", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);

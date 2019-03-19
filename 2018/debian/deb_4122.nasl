@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4122.nasl 9081 2018-03-12 07:31:35Z cfischer $
+# $Id: deb_4122.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DSA 4122-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704122");
-  script_version("$Revision: 9081 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2018-1000024", "CVE-2018-1000027");
   script_name("Debian Security Advisory DSA 4122-1 (squid3 - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-12 08:31:35 +0100 (Mon, 12 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-02-23 00:00:00 +0100 (Fri, 23 Feb 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -48,10 +48,8 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB(9|8)");
   script_tag(name:"affected", value:"squid3 on Debian Linux");
-  script_tag(name:"insight", value:"Squid is a high-performance proxy caching server for web clients, supporting
-FTP, gopher, ICY and HTTP data objects.");
   script_tag(name:"solution", value:"For the oldstable distribution (jessie), these problems have been fixed
 in version 3.4.8-6+deb8u5.
 
@@ -61,27 +59,26 @@ version 3.5.23-5+deb9u1.
 We recommend that you upgrade your squid3 packages.
 
 For the detailed security status of squid3 please refer to
-its security tracker page at:
-https://security-tracker.debian.org/tracker/squid3");
-  script_tag(name:"summary",  value:"Several vulnerabilities have been discovered in Squid3, a fully featured
+its security tracker page linked in the references.");
+
+  script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/squid3");
+  script_tag(name:"summary", value:"Several vulnerabilities have been discovered in Squid3, a fully featured
 web proxy cache. The Common Vulnerabilities and Exposures project
 identifies the following issues:
 
-CVE-2018-1000024 
+CVE-2018-1000024
 Louis Dion-Marcil discovered that Squid does not properly handle
 processing of certain ESI responses. A remote server delivering
 certain ESI response syntax can take advantage of this flaw to cause
 a denial of service for all clients accessing the Squid service.
 This problem is limited to the Squid custom ESI parser.
 
-http://www.squid-cache.org/Advisories/SQUID-2018_1.txtCVE-2018-1000027 
+CVE-2018-1000027
 Louis Dion-Marcil discovered that Squid is prone to a denial of
 service vulnerability when processing ESI responses or downloading
 intermediate CA certificates. A remote attacker can take advantage
 of this flaw to cause a denial of service for all clients accessing
-the Squid service.
-
-http://www.squid-cache.org/Advisories/SQUID-2018_2.txt");
+the Squid service.");
   script_tag(name:"vuldetect", value:"This check tests the installed software version using the apt package manager.");
 
   exit(0);
@@ -92,48 +89,48 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"squid", ver:"3.5.23-5+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"squid", ver:"3.5.23-5+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"squid-cgi", ver:"3.5.23-5+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"squid-cgi", ver:"3.5.23-5+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"squid-common", ver:"3.5.23-5+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"squid-common", ver:"3.5.23-5+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"squid-dbg", ver:"3.5.23-5+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"squid-dbg", ver:"3.5.23-5+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"squid-purge", ver:"3.5.23-5+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"squid-purge", ver:"3.5.23-5+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"squid3", ver:"3.5.23-5+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"squid3", ver:"3.5.23-5+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"squidclient", ver:"3.5.23-5+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"squidclient", ver:"3.5.23-5+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"squid-cgi", ver:"3.4.8-6+deb8u5", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"squid-cgi", ver:"3.4.8-6+deb8u5", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"squid-purge", ver:"3.4.8-6+deb8u5", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"squid-purge", ver:"3.4.8-6+deb8u5", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"squid3", ver:"3.4.8-6+deb8u5", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"squid3", ver:"3.4.8-6+deb8u5", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"squid3-common", ver:"3.4.8-6+deb8u5", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"squid3-common", ver:"3.4.8-6+deb8u5", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"squid3-dbg", ver:"3.4.8-6+deb8u5", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"squid3-dbg", ver:"3.4.8-6+deb8u5", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"squidclient", ver:"3.4.8-6+deb8u5", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"squidclient", ver:"3.4.8-6+deb8u5", rls:"DEB8")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
-  exit(99); # Not vulnerable.
+} else if(__pkg_match) {
+  exit(99);
 }

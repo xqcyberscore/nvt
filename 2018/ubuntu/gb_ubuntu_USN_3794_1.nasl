@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3794_1.nasl 12637 2018-12-04 08:36:44Z mmartin $
+# $Id: gb_ubuntu_USN_3794_1.nasl 14288 2019-03-18 16:34:17Z cfischer $
 #
 # Ubuntu Update for moin USN-3794-1
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843688");
-  script_version("$Revision: 12637 $");
+  script_version("$Revision: 14288 $");
   script_cve_id("CVE-2017-5934");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-04 09:36:44 +0100 (Tue, 04 Dec 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 17:34:17 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:07:06 +0200 (Fri, 26 Oct 2018)");
   script_name("Ubuntu Update for moin USN-3794-1");
   script_category(ACT_GATHER_INFO);
@@ -77,7 +77,7 @@ res = "";
 if(release == "UBUNTU14.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"python-moinmoin", ver:"1.9.7-1ubuntu2.2", rls:"UBUNTU14.04 LTS", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"python-moinmoin", ver:"1.9.7-1ubuntu2.2", rls:"UBUNTU14.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -91,7 +91,7 @@ if(release == "UBUNTU14.04 LTS")
 if(release == "UBUNTU18.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"python-moinmoin", ver:"1.9.9-1ubuntu1.1", rls:"UBUNTU18.04 LTS", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"python-moinmoin", ver:"1.9.9-1ubuntu1.1", rls:"UBUNTU18.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -105,7 +105,7 @@ if(release == "UBUNTU18.04 LTS")
 if(release == "UBUNTU16.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"python-moinmoin", ver:"1.9.8-1ubuntu1.16.04.2", rls:"UBUNTU16.04 LTS", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"python-moinmoin", ver:"1.9.8-1ubuntu1.16.04.2", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);

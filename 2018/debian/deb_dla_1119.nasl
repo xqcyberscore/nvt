@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1119.nasl 10474 2018-07-10 08:12:26Z cfischer $
+# $Id: deb_dla_1119.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DLA 1119-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891119");
-  script_version("$Revision: 10474 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2014-1695", "CVE-2014-2553", "CVE-2014-2554", "CVE-2017-14635");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1119-1] otrs2 security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-10 10:12:26 +0200 (Tue, 10 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-02-07 00:00:00 +0100 (Wed, 07 Feb 2018)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -48,19 +48,13 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB7\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB7");
   script_tag(name:"affected", value:"otrs2 on Debian Linux");
-  script_tag(name:"insight", value:"OTRS is an Open source Ticket Request System (also well known as
-trouble ticket system) with many features to manage customer telephone
-calls and e-mails. The system is built to allow your support, sales,
-pre-sales, billing, internal IT, helpdesk, etc. department to react
-quickly to inbound inquiries. For a detailed documentation see package
-otrs-doc-en or otrs-doc-de.");
   script_tag(name:"solution", value:"For Debian 7 'Wheezy', these problems have been fixed in version
 3.3.18-1~deb7u1.
 
 We recommend that you upgrade your otrs2 packages.");
-  script_tag(name:"summary",  value:"n attacker who is logged into OTRS, a Ticket Request System, as an
+  script_tag(name:"summary", value:"n attacker who is logged into OTRS, a Ticket Request System, as an
 agent with write permissions for statistics can inject arbitrary code
 into the system. This can lead to serious problems like privilege
 escalation, data loss, and denial of service. This issue is also known
@@ -105,15 +99,15 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"otrs", ver:"3.3.18-1~deb7u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"otrs", ver:"3.3.18-1~deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"otrs2", ver:"3.3.18-1~deb7u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"otrs2", ver:"3.3.18-1~deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
+} else if(__pkg_match) {
   exit(99);
 }

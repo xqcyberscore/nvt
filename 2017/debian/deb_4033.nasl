@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4033.nasl 8018 2017-12-07 07:32:50Z teissa $
+# $Id: deb_4033.nasl 14284 2019-03-18 15:02:15Z cfischer $
 #
 # Auto-generated from advisory DSA 4033-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704033");
-  script_version("$Revision: 8018 $");
+  script_version("$Revision: 14284 $");
   script_cve_id("CVE-2017-15923");
   script_name("Debian Security Advisory DSA 4033-1 (konversation - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-07 08:32:50 +0100 (Thu, 07 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 16:02:15 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-11-13 00:00:00 +0100 (Mon, 13 Nov 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -48,11 +48,8 @@ if(description)
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB(8|9)");
   script_tag(name:"affected", value:"konversation on Debian Linux");
-  script_tag(name:"insight", value:"Konversation is a client for the Internet Relay Chat (IRC) protocol.
-It is easy to use and well-suited for novice IRC users, but novice
-and experienced users alike will appreciate its many features:");
   script_tag(name:"solution", value:"For the oldstable distribution (jessie), this problem has been fixed
 in version 1.5-2+deb8u1.
 
@@ -60,7 +57,7 @@ For the stable distribution (stretch), this problem has been fixed in
 version 1.6.2-2+deb9u1.
 
 We recommend that you upgrade your konversation packages.");
-  script_tag(name:"summary",  value:"Joseph Bisch discovered that Konversation, an user friendly Internet
+  script_tag(name:"summary", value:"Joseph Bisch discovered that Konversation, an user friendly Internet
 Relay Chat (IRC) client for KDE, could crash when parsing certain IRC
 color formatting codes.");
   script_tag(name:"vuldetect", value:"This check tests the installed software version using the apt package manager.");
@@ -73,24 +70,24 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"konversation", ver:"1.5-2+deb8u1", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"konversation", ver:"1.5-2+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"konversation-data", ver:"1.5-2+deb8u1", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"konversation-data", ver:"1.5-2+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"konversation-dbg", ver:"1.5-2+deb8u1", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"konversation-dbg", ver:"1.5-2+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"konversation", ver:"1.6.2-2+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"konversation", ver:"1.6.2-2+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"konversation-data", ver:"1.6.2-2+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"konversation-data", ver:"1.6.2-2+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
-  exit(99); # Not vulnerable.
+} else if(__pkg_match) {
+  exit(99);
 }

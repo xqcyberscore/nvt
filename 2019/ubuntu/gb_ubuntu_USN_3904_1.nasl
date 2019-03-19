@@ -21,10 +21,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843928");
-  script_version("$Revision: 14091 $");
+  script_version("$Revision: 14288 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-11 10:24:52 +0100 (Mon, 11 Mar 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 17:34:17 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-03-08 04:08:31 +0100 (Fri, 08 Mar 2019)");
   script_name("Ubuntu Update for nvidia-graphics-drivers-390 USN-3904-1");
   script_category(ACT_GATHER_INFO);
@@ -70,7 +70,7 @@ res = "";
 if(release == "UBUNTU18.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"xserver-xorg-video-nvidia-390", ver:"390.116-0ubuntu0.18.04.1", rls:"UBUNTU18.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"xserver-xorg-video-nvidia-390", ver:"390.116-0ubuntu0.18.04.1", rls:"UBUNTU18.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -84,7 +84,7 @@ if(release == "UBUNTU18.04 LTS")
 if(release == "UBUNTU18.10")
 {
 
-  if ((res = isdpkgvuln(pkg:"xserver-xorg-video-nvidia-390", ver:"390.116-0ubuntu0.18.10.1", rls:"UBUNTU18.10", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"xserver-xorg-video-nvidia-390", ver:"390.116-0ubuntu0.18.10.1", rls:"UBUNTU18.10")) != NULL)
   {
     security_message(data:res);
     exit(0);

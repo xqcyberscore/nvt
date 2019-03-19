@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: http_func.inc 13994 2019-03-05 12:23:37Z cfischer $
+# $Id: http_func.inc 14291 2019-03-18 17:18:50Z cfischer $
 #
 # Methods to handle HTTP
 #
@@ -24,7 +24,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 13994 $
+# $Revision: 14291 $
 #
 ###############################################################################
 
@@ -82,7 +82,6 @@ function http_get_user_agent( vt_string, dont_add_oid ) {
 
   # nb: Only used if the function is called by a VT running via openvas-nasl
   # and if global_settings.nasl wasn't called before that VT.
-  # TBD: On master we don't have a "OPENVAS_VERSION" defined...
   if( OPENVAS_VERSION )
     default = "Mozilla/5.0 [en] (X11, U; " + ua_vt_string + " " + OPENVAS_VERSION + ")";
   else

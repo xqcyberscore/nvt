@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1603.nasl 12687 2018-12-06 13:46:21Z mmartin $
+# $Id: deb_dla_1603.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DLA 1603-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891603");
-  script_version("$Revision: 12687 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2017-15377", "CVE-2017-7177", "CVE-2018-6794");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1603-1] suricata security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-06 14:46:21 +0100 (Thu, 06 Dec 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-12-05 00:00:00 +0100 (Wed, 05 Dec 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -48,16 +48,13 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8");
   script_tag(name:"affected", value:"suricata on Debian Linux");
-  script_tag(name:"insight", value:"Suricata is a network Intrusion Detection System (IDS). It is based on
-rules (and is fully compatible with snort rules) to detect a variety of
-attacks / probes by searching packet content.");
   script_tag(name:"solution", value:"For Debian 8 'Jessie', these problems have been fixed in version
 2.0.7-2+deb8u3.
 
 We recommend that you upgrade your suricata packages.");
-  script_tag(name:"summary",  value:"Several issues were found in suricata, an intrusion detection and
+  script_tag(name:"summary", value:"Several issues were found in suricata, an intrusion detection and
 prevention tool.
 
 CVE-2017-7177
@@ -71,7 +68,7 @@ It was possible to trigger lots of redundant checks on the content
 of crafted network traffic with a certain signature, because of
 DetectEngineContentInspection in detect-engine-content-inspection.c.
 The search engine doesn't stop when it should after no match is
-found; instead, it stops only upon reaching inspection-recursion-
+found. Instead, it stops only upon reaching inspection-recursion-
 limit (3000 by default).
 
 CVE-2018-6794
@@ -82,7 +79,7 @@ TCP flow and sends data before the 3-way handshake is complete,
 then the data sent by the malicious server will be accepted by web
 clients such as a web browser or Linux CLI utilities, but ignored
 by Suricata IDS signatures. This mostly affects IDS signatures for
-the HTTP protocol and TCP stream content; signatures for TCP packets
+the HTTP protocol and TCP stream content. Signatures for TCP packets
 will inspect such network traffic as usual.
 
 TEMP-0856648-2BC2C9 (no CVE assigned yet)
@@ -101,12 +98,12 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"suricata", ver:"2.0.7-2+deb8u3", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"suricata", ver:"2.0.7-2+deb8u3", rls:"DEB8")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
+} else if(__pkg_match) {
   exit(99);
 }

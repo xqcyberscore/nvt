@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4317.nasl 12523 2018-11-26 09:24:07Z mmartin $
+# $Id: deb_4317.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DSA 4317-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704317");
-  script_version("$Revision: 12523 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2018-14593", "CVE-2018-16586", "CVE-2018-16587");
   script_name("Debian Security Advisory DSA 4317-1 (otrs2 - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-26 10:24:07 +0100 (Mon, 26 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-10-14 00:00:00 +0200 (Sun, 14 Oct 2018)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -48,22 +48,18 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB9\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB9");
   script_tag(name:"affected", value:"otrs2 on Debian Linux");
-  script_tag(name:"insight", value:"OTRS is an Open source Ticket Request System (also well known as
-trouble ticket system) with many features to manage customer telephone
-calls and e-mails. The system is built to allow your support, sales,
-pre-sales, billing, internal IT, helpdesk, etc. department to react
-quickly to inbound inquiries.");
   script_tag(name:"solution", value:"For the stable distribution (stretch), these problems have been fixed in
 version 5.0.16-1+deb9u6.
 
 We recommend that you upgrade your otrs2 packages.
 
 For the detailed security status of otrs2 please refer to
-its security tracker page at:
-https://security-tracker.debian.org/tracker/otrs2");
-  script_tag(name:"summary",  value:"Three vulnerabilities were discovered in the Open Ticket Request System
+its security tracker page linked in the references.");
+
+  script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/otrs2");
+  script_tag(name:"summary", value:"Three vulnerabilities were discovered in the Open Ticket Request System
 which could result in privilege escalation or denial of service.");
   script_tag(name:"vuldetect", value:"This check tests the installed software version using the apt package manager.");
 
@@ -75,15 +71,15 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"otrs", ver:"5.0.16-1+deb9u6", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"otrs", ver:"5.0.16-1+deb9u6", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"otrs2", ver:"5.0.16-1+deb9u6", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"otrs2", ver:"5.0.16-1+deb9u6", rls:"DEB9")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
+} else if(__pkg_match) {
   exit(99);
 }

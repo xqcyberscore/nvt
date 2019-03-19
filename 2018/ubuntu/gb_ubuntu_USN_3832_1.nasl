@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3832_1.nasl 13427 2019-02-04 08:52:52Z mmartin $
+# $Id: gb_ubuntu_USN_3832_1.nasl 14288 2019-03-18 16:34:17Z cfischer $
 #
 # Ubuntu Update for linux-aws USN-3832-1
 #
@@ -29,13 +29,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843840");
-  script_version("$Revision: 13427 $");
+  script_version("$Revision: 14288 $");
   script_cve_id("CVE-2018-17972", "CVE-2018-18281", "CVE-2018-18445",
                 "CVE-2018-18653", "CVE-2018-18955", "CVE-2018-6559");
   script_bugtraq_id(106054);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-04 09:52:52 +0100 (Mon, 04 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 17:34:17 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-12-04 12:40:51 +0530 (Tue, 04 Dec 2018)");
   script_name("Ubuntu Update for linux-aws USN-3832-1");
   script_category(ACT_GATHER_INFO);
@@ -104,13 +104,13 @@ res = "";
 if(release == "UBUNTU18.10")
 {
 
-  if ((res = isdpkgvuln(pkg:"linux-image-4.18.0-1006-aws", ver:"4.18.0-1006.7", rls:"UBUNTU18.10", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"linux-image-4.18.0-1006-aws", ver:"4.18.0-1006.7", rls:"UBUNTU18.10")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"linux-image-aws", ver:"4.18.0.1006.6", rls:"UBUNTU18.10", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"linux-image-aws", ver:"4.18.0.1006.6", rls:"UBUNTU18.10")) != NULL)
   {
     security_message(data:res);
     exit(0);

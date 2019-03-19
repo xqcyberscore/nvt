@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_HT209341_01.nasl 12688 2018-12-06 13:59:18Z santu $
+# $Id: gb_apple_macosx_HT209341_01.nasl 14292 2019-03-18 18:39:37Z cfischer $
 #
 # Apple MacOSX Security Updates(HT209341)-01
 #
@@ -27,22 +27,22 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814604");
-  script_version("$Revision: 12688 $");
+  script_version("$Revision: 14292 $");
   script_cve_id("CVE-2018-4462", "CVE-2018-4465", "CVE-2018-4435", "CVE-2018-4449",
                 "CVE-2018-4450", "CVE-2018-4447");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-06 14:59:18 +0100 (Thu, 06 Dec 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 19:39:37 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-12-06 11:30:11 +0530 (Thu, 06 Dec 2018)");
   script_name("Apple MacOSX Security Updates(HT209341)-01");
 
   script_tag(name:"summary", value:"This host is installed with Apple Mac OS X
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is
   present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exists due to,
 
   - A validation issue was addressed with improved input sanitization.
 
@@ -52,46 +52,43 @@ if(description)
 
   - A memory corruption issue was addressed with improved state management.");
 
-  script_tag(name: "impact" , value:"Successful exploitation allow attackers to
+  script_tag(name:"impact", value:"Successful exploitation allow attackers to
   to read restricted memory and execute arbitrary code with elevated privileges.");
 
-  script_tag(name: "affected" , value:"Apple Mac OS X versions 10.12.x through
+  script_tag(name:"affected", value:"Apple Mac OS X versions 10.12.x through
   10.12.6 build 16G1618, 10.13.x through 10.13.6 build 17G3025 and 10.14.x through
   10.14.1.");
 
-  script_tag(name: "solution" , value:"Upgrade to Apple Mac OS X 10.14.2 or later
+  script_tag(name:"solution", value:"Upgrade to Apple Mac OS X 10.14.2 or later
   or apply appropriate patch for 10.12.x or 10.13.x versions.
   For updates refer to Reference links.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
-  script_xref(name : "URL" , value : "https://support.apple.com/en-us/HT209341");
-  script_xref(name : "URL" , value : "http://www.apple.com/support");
+  script_xref(name:"URL", value:"https://support.apple.com/en-us/HT209341");
+  script_xref(name:"URL", value:"http://www.apple.com/support");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Mac OS X Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/osx_name", "ssh/login/osx_version");
+  script_mandatory_keys("ssh/login/osx_name", "ssh/login/osx_version", re:"ssh/login/osx_version=^10\.1[2-4]\.");
   exit(0);
 }
 
-
 include("version_func.inc");
-include("ssh_func.inc");
 
 osName = get_kb_item("ssh/login/osx_name");
-if(!osName){
-  exit (0);
-}
+if(!osName)
+  exit(0);
 
 osVer = get_kb_item("ssh/login/osx_version");
-if(!osVer || osVer !~ "^(10\.1[234]\.)" || "Mac OS X" >!< osName){
+if(!osVer || osVer !~ "^10\.1[2-4]\." || "Mac OS X" >!< osName){
   exit(0);
 }
 
 buildVer = get_kb_item("ssh/login/osx_build");
 
-if(osVer =~ "^(10.12)")
+if(osVer =~ "^10\.12")
 {
   if(version_in_range(version:osVer, test_version:"10.12", test_version2:"10.12.5")){
     fix = "Upgrade to latest OS release and apply patch from vendor";
@@ -108,7 +105,7 @@ if(osVer =~ "^(10.12)")
 }
 
 
-if(osVer =~ "^(10.13)")
+if(osVer =~ "^10\.13")
 {
   if(version_in_range(version:osVer, test_version:"10.13", test_version2:"10.13.5")){
     fix = "Upgrade to latest OS release and apply patch from vendor";
@@ -134,4 +131,5 @@ if(fix)
   security_message(data:report);
   exit(0);
 }
+
 exit(99);

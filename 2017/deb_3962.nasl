@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_3962.nasl 7058 2017-09-05 05:59:09Z asteins $
+# $Id: deb_3962.nasl 14280 2019-03-18 14:50:45Z cfischer $
 #
 # Auto-generated from advisory DSA 3962-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.703962");
-  script_version("$Revision: 7058 $");
+  script_version("$Revision: 14280 $");
   script_cve_id("CVE-2017-11185");
   script_name("Debian Security Advisory DSA 3962-1 (strongswan - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-05 07:59:09 +0200 (Tue, 05 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:50:45 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-09-03 00:00:00 +0200 (Sun, 03 Sep 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -48,10 +48,8 @@ if(description)
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB(8|10|9)");
   script_tag(name:"affected", value:"strongswan on Debian Linux");
-  script_tag(name:"insight", value:"The strongSwan VPN suite uses the native IPsec stack in the standard Linux
-kernel. It supports both the IKEv1 and IKEv2 protocols.");
   script_tag(name:"solution", value:"For the oldstable distribution (jessie), this problem has been fixed
 in version 5.2.1-6+deb8u5.
 
@@ -65,7 +63,7 @@ For the unstable distribution (sid), this problem has been fixed in
 version 5.6.0-1.
 
 We recommend that you upgrade your strongswan packages.");
-  script_tag(name:"summary",  value:"A denial of service vulnerability was identified in strongSwan, an IKE/IPsec
+  script_tag(name:"summary", value:"A denial of service vulnerability was identified in strongSwan, an IKE/IPsec
 suite, using Google's OSS-Fuzz fuzzing project.
 
 The gmp plugin in strongSwan had insufficient input validation when verifying
@@ -81,153 +79,153 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"charon-cmd", ver:"5.2.1-6+deb8u5", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"charon-cmd", ver:"5.2.1-6+deb8u5", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libcharon-extra-plugins", ver:"5.2.1-6+deb8u5", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libcharon-extra-plugins", ver:"5.2.1-6+deb8u5", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libstrongswan", ver:"5.2.1-6+deb8u5", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libstrongswan", ver:"5.2.1-6+deb8u5", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libstrongswan-extra-plugins", ver:"5.2.1-6+deb8u5", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libstrongswan-extra-plugins", ver:"5.2.1-6+deb8u5", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libstrongswan-standard-plugins", ver:"5.2.1-6+deb8u5", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libstrongswan-standard-plugins", ver:"5.2.1-6+deb8u5", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"strongswan", ver:"5.2.1-6+deb8u5", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"strongswan", ver:"5.2.1-6+deb8u5", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"strongswan-charon", ver:"5.2.1-6+deb8u5", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"strongswan-charon", ver:"5.2.1-6+deb8u5", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"strongswan-dbg", ver:"5.2.1-6+deb8u5", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"strongswan-dbg", ver:"5.2.1-6+deb8u5", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"strongswan-ike", ver:"5.2.1-6+deb8u5", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"strongswan-ike", ver:"5.2.1-6+deb8u5", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"strongswan-ikev1", ver:"5.2.1-6+deb8u5", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"strongswan-ikev1", ver:"5.2.1-6+deb8u5", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"strongswan-ikev2", ver:"5.2.1-6+deb8u5", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"strongswan-ikev2", ver:"5.2.1-6+deb8u5", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"strongswan-libcharon", ver:"5.2.1-6+deb8u5", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"strongswan-libcharon", ver:"5.2.1-6+deb8u5", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"strongswan-nm", ver:"5.2.1-6+deb8u5", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"strongswan-nm", ver:"5.2.1-6+deb8u5", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"strongswan-starter", ver:"5.2.1-6+deb8u5", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"strongswan-starter", ver:"5.2.1-6+deb8u5", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"charon-cmd", ver:"5.6.0-1", rls_regex:"DEB10.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"charon-cmd", ver:"5.6.0-1", rls:"DEB10")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"charon-systemd", ver:"5.6.0-1", rls_regex:"DEB10.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"charon-systemd", ver:"5.6.0-1", rls:"DEB10")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libcharon-extra-plugins", ver:"5.6.0-1", rls_regex:"DEB10.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libcharon-extra-plugins", ver:"5.6.0-1", rls:"DEB10")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libstrongswan", ver:"5.6.0-1", rls_regex:"DEB10.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libstrongswan", ver:"5.6.0-1", rls:"DEB10")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libstrongswan-extra-plugins", ver:"5.6.0-1", rls_regex:"DEB10.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libstrongswan-extra-plugins", ver:"5.6.0-1", rls:"DEB10")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libstrongswan-standard-plugins", ver:"5.6.0-1", rls_regex:"DEB10.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libstrongswan-standard-plugins", ver:"5.6.0-1", rls:"DEB10")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"strongswan", ver:"5.6.0-1", rls_regex:"DEB10.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"strongswan", ver:"5.6.0-1", rls:"DEB10")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"strongswan-charon", ver:"5.6.0-1", rls_regex:"DEB10.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"strongswan-charon", ver:"5.6.0-1", rls:"DEB10")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"strongswan-ike", ver:"5.6.0-1", rls_regex:"DEB10.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"strongswan-ike", ver:"5.6.0-1", rls:"DEB10")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"strongswan-ikev1", ver:"5.6.0-1", rls_regex:"DEB10.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"strongswan-ikev1", ver:"5.6.0-1", rls:"DEB10")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"strongswan-ikev2", ver:"5.6.0-1", rls_regex:"DEB10.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"strongswan-ikev2", ver:"5.6.0-1", rls:"DEB10")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"strongswan-libcharon", ver:"5.6.0-1", rls_regex:"DEB10.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"strongswan-libcharon", ver:"5.6.0-1", rls:"DEB10")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"strongswan-nm", ver:"5.6.0-1", rls_regex:"DEB10.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"strongswan-nm", ver:"5.6.0-1", rls:"DEB10")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"strongswan-pki", ver:"5.6.0-1", rls_regex:"DEB10.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"strongswan-pki", ver:"5.6.0-1", rls:"DEB10")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"strongswan-scepclient", ver:"5.6.0-1", rls_regex:"DEB10.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"strongswan-scepclient", ver:"5.6.0-1", rls:"DEB10")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"strongswan-starter", ver:"5.6.0-1", rls_regex:"DEB10.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"strongswan-starter", ver:"5.6.0-1", rls:"DEB10")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"strongswan-swanctl", ver:"5.6.0-1", rls_regex:"DEB10.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"strongswan-swanctl", ver:"5.6.0-1", rls:"DEB10")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"charon-cmd", ver:"5.5.1-4+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"charon-cmd", ver:"5.5.1-4+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"charon-systemd", ver:"5.5.1-4+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"charon-systemd", ver:"5.5.1-4+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libcharon-extra-plugins", ver:"5.5.1-4+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libcharon-extra-plugins", ver:"5.5.1-4+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libstrongswan", ver:"5.5.1-4+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libstrongswan", ver:"5.5.1-4+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libstrongswan-extra-plugins", ver:"5.5.1-4+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libstrongswan-extra-plugins", ver:"5.5.1-4+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libstrongswan-standard-plugins", ver:"5.5.1-4+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libstrongswan-standard-plugins", ver:"5.5.1-4+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"strongswan", ver:"5.5.1-4+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"strongswan", ver:"5.5.1-4+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"strongswan-charon", ver:"5.5.1-4+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"strongswan-charon", ver:"5.5.1-4+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"strongswan-ike", ver:"5.5.1-4+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"strongswan-ike", ver:"5.5.1-4+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"strongswan-ikev1", ver:"5.5.1-4+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"strongswan-ikev1", ver:"5.5.1-4+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"strongswan-ikev2", ver:"5.5.1-4+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"strongswan-ikev2", ver:"5.5.1-4+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"strongswan-libcharon", ver:"5.5.1-4+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"strongswan-libcharon", ver:"5.5.1-4+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"strongswan-nm", ver:"5.5.1-4+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"strongswan-nm", ver:"5.5.1-4+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"strongswan-pki", ver:"5.5.1-4+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"strongswan-pki", ver:"5.5.1-4+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"strongswan-scepclient", ver:"5.5.1-4+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"strongswan-scepclient", ver:"5.5.1-4+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"strongswan-starter", ver:"5.5.1-4+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"strongswan-starter", ver:"5.5.1-4+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"strongswan-swanctl", ver:"5.5.1-4+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"strongswan-swanctl", ver:"5.5.1-4+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
-  exit(99); # Not vulnerable.
+} else if(__pkg_match) {
+  exit(99);
 }

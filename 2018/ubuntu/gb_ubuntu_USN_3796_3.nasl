@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3796_3.nasl 13032 2019-01-11 07:56:51Z mmartin $
+# $Id: gb_ubuntu_USN_3796_3.nasl 14288 2019-03-18 16:34:17Z cfischer $
 #
 # Ubuntu Update for paramiko USN-3796-3
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843713");
-  script_version("$Revision: 13032 $");
+  script_version("$Revision: 14288 $");
   script_cve_id("CVE-2018-1000805");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-11 08:56:51 +0100 (Fri, 11 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 17:34:17 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:10:11 +0200 (Fri, 26 Oct 2018)");
   script_name("Ubuntu Update for paramiko USN-3796-3");
   script_category(ACT_GATHER_INFO);
@@ -80,13 +80,13 @@ res = "";
 if(release == "UBUNTU18.10")
 {
 
-  if ((res = isdpkgvuln(pkg:"python-paramiko", ver:"2.4.1-0ubuntu3.1", rls:"UBUNTU18.10", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"python-paramiko", ver:"2.4.1-0ubuntu3.1", rls:"UBUNTU18.10")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"python3-paramiko", ver:"2.4.1-0ubuntu3.1", rls:"UBUNTU18.10", remove_arch:TRUE)) != NULL)
+  if ((res = isdpkgvuln(pkg:"python3-paramiko", ver:"2.4.1-0ubuntu3.1", rls:"UBUNTU18.10")) != NULL)
   {
     security_message(data:res);
     exit(0);

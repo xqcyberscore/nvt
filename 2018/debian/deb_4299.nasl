@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4299.nasl 12447 2018-11-21 04:17:12Z ckuersteiner $
+# $Id: deb_4299.nasl 14270 2019-03-18 14:24:29Z cfischer $
 #
 # Auto-generated from advisory DSA 4299-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704299");
-  script_version("$Revision: 12447 $");
+  script_version("$Revision: 14270 $");
   script_cve_id("CVE-2018-17407");
   script_name("Debian Security Advisory DSA 4299-1 (texlive-bin - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-21 05:17:12 +0100 (Wed, 21 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:24:29 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-09-21 00:00:00 +0200 (Fri, 21 Sep 2018)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -48,7 +48,7 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB9\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB9");
   script_tag(name:"affected", value:"texlive-bin on Debian Linux");
   script_tag(name:"solution", value:"For the stable distribution (stretch), this problem has been fixed in
 version 2016.20160513.41080.dfsg-2+deb9u1.
@@ -56,9 +56,10 @@ version 2016.20160513.41080.dfsg-2+deb9u1.
 We recommend that you upgrade your texlive-bin packages.
 
 For the detailed security status of texlive-bin please refer to
-its security tracker page at:
-https://security-tracker.debian.org/tracker/texlive-bin");
-  script_tag(name:"summary",  value:"Nick Roessler from the University of Pennsylvania has found a buffer overflow
+its security tracker page linked in the references.");
+
+  script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/texlive-bin");
+  script_tag(name:"summary", value:"Nick Roessler from the University of Pennsylvania has found a buffer overflow
 in texlive-bin, the executables for TexLive, the popular distribution of TeX
 document production system.
 
@@ -75,42 +76,42 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"libkpathsea-dev", ver:"2016.20160513.41080.dfsg-2+deb9u1", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libkpathsea-dev", ver:"2016.20160513.41080.dfsg-2+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libkpathsea6", ver:"2016.20160513.41080.dfsg-2+deb9u1", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libkpathsea6", ver:"2016.20160513.41080.dfsg-2+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libptexenc-dev", ver:"2016.20160513.41080.dfsg-2+deb9u1", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libptexenc-dev", ver:"2016.20160513.41080.dfsg-2+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libptexenc1", ver:"2016.20160513.41080.dfsg-2+deb9u1", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libptexenc1", ver:"2016.20160513.41080.dfsg-2+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libsynctex-dev", ver:"2016.20160513.41080.dfsg-2+deb9u1", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libsynctex-dev", ver:"2016.20160513.41080.dfsg-2+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libsynctex1", ver:"2016.20160513.41080.dfsg-2+deb9u1", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libsynctex1", ver:"2016.20160513.41080.dfsg-2+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libtexlua52", ver:"2016.20160513.41080.dfsg-2+deb9u1", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libtexlua52", ver:"2016.20160513.41080.dfsg-2+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libtexlua52-dev", ver:"2016.20160513.41080.dfsg-2+deb9u1", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libtexlua52-dev", ver:"2016.20160513.41080.dfsg-2+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libtexluajit-dev", ver:"2016.20160513.41080.dfsg-2+deb9u1", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libtexluajit-dev", ver:"2016.20160513.41080.dfsg-2+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libtexluajit2", ver:"2016.20160513.41080.dfsg-2+deb9u1", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libtexluajit2", ver:"2016.20160513.41080.dfsg-2+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"texlive-binaries", ver:"2016.20160513.41080.dfsg-2+deb9u1", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"texlive-binaries", ver:"2016.20160513.41080.dfsg-2+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
+} else if(__pkg_match) {
   exit(99);
 }

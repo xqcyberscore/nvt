@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4234.nasl 10965 2018-08-15 03:42:43Z ckuersteiner $
+# $Id: deb_4234.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DSA 4234-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704234");
-  script_version("$Revision: 10965 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2018-12564", "CVE-2018-12565");
   script_name("Debian Security Advisory DSA 4234-1 (lava-server - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 05:42:43 +0200 (Wed, 15 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-06-22 00:00:00 +0200 (Fri, 22 Jun 2018)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -48,23 +48,18 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB9\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB9");
   script_tag(name:"affected", value:"lava-server on Debian Linux");
-  script_tag(name:"insight", value:"LAVA is a continuous integration system for deploying operating
-systems onto physical and virtual hardware for running tests.
-Tests can be simple boot testing, bootloader testing and system
-level testing. Extra hardware may be required for some
-system tests. Results are tracked over time and data can be
-exported for further analysis.");
   script_tag(name:"solution", value:"For the stable distribution (stretch), these problems have been fixed in
 version 2016.12-3.
 
 We recommend that you upgrade your lava-server packages.
 
 For the detailed security status of lava-server please refer to
-its security tracker page at:
-https://security-tracker.debian.org/tracker/lava-server");
-  script_tag(name:"summary",  value:"Two vulnerabilities were discovered in LAVA, a continuous integration
+its security tracker page linked in the references.");
+
+  script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/lava-server");
+  script_tag(name:"summary", value:"Two vulnerabilities were discovered in LAVA, a continuous integration
 system for deploying operating systems for running tests, which could
 result in information disclosure of files readable by the lavaserver
 system user or the execution of arbitrary code via a XMLRPC call.");
@@ -78,21 +73,21 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"lava", ver:"2016.12-3", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"lava", ver:"2016.12-3", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"lava-dev", ver:"2016.12-3", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"lava-dev", ver:"2016.12-3", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"lava-server", ver:"2016.12-3", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"lava-server", ver:"2016.12-3", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"lava-server-doc", ver:"2016.12-3", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"lava-server-doc", ver:"2016.12-3", rls:"DEB9")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
+} else if(__pkg_match) {
   exit(99);
 }

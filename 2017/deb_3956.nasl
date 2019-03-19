@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_3956.nasl 7088 2017-09-11 05:01:45Z asteins $
+# $Id: deb_3956.nasl 14280 2019-03-18 14:50:45Z cfischer $
 #
 # Auto-generated from advisory DSA 3956-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.703956");
-  script_version("$Revision: 7088 $");
+  script_version("$Revision: 14280 $");
   script_cve_id("CVE-2017-12865");
   script_name("Debian Security Advisory DSA 3956-1 (connman - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-11 07:01:45 +0200 (Mon, 11 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:50:45 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-08-27 00:00:00 +0200 (Sun, 27 Aug 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -48,14 +48,8 @@ if(description)
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB(10|9|8)");
   script_tag(name:"affected", value:"connman on Debian Linux");
-  script_tag(name:"insight", value:"The Linux Connection Manager project provides a daemon for managing
-Internet connections within embedded devices running the Linux
-operating system. The Connection Manager is designed to be slim and to
-use as few resources as possible. It is fully modular system that
-can be extended through plug-ins. The plug-in approach allows for
-easy adaption and modification for various use cases.");
   script_tag(name:"solution", value:"For the oldstable distribution (jessie), this problem has been fixed
 in version 1.21-1.2+deb8u1.
 
@@ -69,7 +63,7 @@ For the unstable distribution (sid), this problem has been fixed in
 version 1.35-1.
 
 We recommend that you upgrade your connman packages.");
-  script_tag(name:"summary",  value:"Security consultants in NRI Secure Technologies discovered a stack
+  script_tag(name:"summary", value:"Security consultants in NRI Secure Technologies discovered a stack
 overflow vulnerability in ConnMan, a network manager for embedded
 devices. An attacker with control of the DNS responses to the DNS proxy
 in ConnMan might crash the service and, in same cases, remotely execute
@@ -84,45 +78,45 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"connman", ver:"1.33-3+deb9u1", rls_regex:"DEB10.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"connman", ver:"1.33-3+deb9u1", rls:"DEB10")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"connman-dev", ver:"1.33-3+deb9u1", rls_regex:"DEB10.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"connman-dev", ver:"1.33-3+deb9u1", rls:"DEB10")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"connman-doc", ver:"1.33-3+deb9u1", rls_regex:"DEB10.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"connman-doc", ver:"1.33-3+deb9u1", rls:"DEB10")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"connman-vpn", ver:"1.33-3+deb9u1", rls_regex:"DEB10.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"connman-vpn", ver:"1.33-3+deb9u1", rls:"DEB10")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"connman", ver:"1.33-3+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"connman", ver:"1.33-3+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"connman-dev", ver:"1.33-3+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"connman-dev", ver:"1.33-3+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"connman-doc", ver:"1.33-3+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"connman-doc", ver:"1.33-3+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"connman-vpn", ver:"1.33-3+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"connman-vpn", ver:"1.33-3+deb9u1", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"connman", ver:"1.21-1.2+deb8u1", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"connman", ver:"1.21-1.2+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"connman-dev", ver:"1.21-1.2+deb8u1", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"connman-dev", ver:"1.21-1.2+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"connman-doc", ver:"1.21-1.2+deb8u1", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"connman-doc", ver:"1.21-1.2+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"connman-vpn", ver:"1.21-1.2+deb8u1", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"connman-vpn", ver:"1.21-1.2+deb8u1", rls:"DEB8")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
-  exit(99); # Not vulnerable.
+} else if(__pkg_match) {
+  exit(99);
 }

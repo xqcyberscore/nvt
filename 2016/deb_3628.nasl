@@ -26,38 +26,31 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-
 if(description)
 {
-    script_oid("1.3.6.1.4.1.25623.1.0.703628");
-    script_version("$Revision: 8115 $");
-    script_cve_id("CVE-2016-1238", "CVE-2016-6185");
-    script_name("Debian Security Advisory DSA 3628-1 (perl - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-12-14 08:30:22 +0100 (Thu, 14 Dec 2017) $");
-    script_tag(name:"creation_date", value:"2016-08-02 10:56:30 +0530 (Tue, 02 Aug 2016)");
-    script_tag(name:"cvss_base", value:"7.2");
-    script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-    script_tag(name: "solution_type", value: "VendorFix");
-    script_tag(name: "qod_type", value: "package");
+  script_oid("1.3.6.1.4.1.25623.1.0.703628");
+  script_version("$Revision: 14279 $");
+  script_cve_id("CVE-2016-1238", "CVE-2016-6185");
+  script_name("Debian Security Advisory DSA 3628-1 (perl - security update)");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:48:34 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2016-08-02 10:56:30 +0530 (Tue, 02 Aug 2016)");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
 
-    script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3628.html");
+  script_xref(name:"URL", value:"http://www.debian.org/security/2016/dsa-3628.html");
 
-
-    script_category(ACT_GATHER_INFO);
-
-    script_copyright("Copyright (c) 2016 Greenbone Networks GmbH http://greenbone.net");
-    script_family("Debian Local Security Checks");
-    script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
-    script_tag(name: "affected",  value: "perl on Debian Linux");
-    script_tag(name: "insight",   value: "Perl is a highly capable, feature-rich
-programming language with over 20 years of development. Perl 5 runs on over 100
-platforms from portables to mainframes. Perl is suitable for both rapid prototyping
-and large scale development projects.");
-    script_tag(name: "solution",  value: "For the stable distribution (jessie),
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2016 Greenbone Networks GmbH http://greenbone.net");
+  script_family("Debian Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8");
+  script_tag(name:"affected", value:"perl on Debian Linux");
+  script_tag(name:"solution", value:"For the stable distribution (jessie),
 these problems have been fixed in version 5.20.2-3+deb8u6. Additionally this update
 includes the following updated packages to address optional module loading
-vulnerabilities related to CVE-2016-1238 
+vulnerabilities related to CVE-2016-1238
 ,
 or to address build failures which occur when '.' is removed from @INC:
 
@@ -65,13 +58,13 @@ cdbs 0.4.130+deb8u1debhelper 9.20150101+deb8u2devscripts 2.15.3+deb8u12exim4
 4.84.2-2+deb8u12libintl-perl 1.23-1+deb8u12libmime-charset-perl
 1.011.1-1+deb8u22libmime-encwords-perl 1.014.3-1+deb8u12libmodule-build-perl
 0.421000-2+deb8u12libnet-dns-perl 0.81-2+deb8u12libsys-syslog-perl
-0.33-1+deb8u12libunicode-linebreak-perl 0.0.20140601-2+deb8u22 
+0.33-1+deb8u12libunicode-linebreak-perl 0.0.20140601-2+deb8u22
 We recommend that you upgrade your perl packages.");
-    script_tag(name: "summary",   value: "Multiple vulnerabilities were discovered in
+  script_tag(name:"summary", value:"Multiple vulnerabilities were discovered in
 the implementation of the Perl programming language. The Common Vulnerabilities and
 Exposures project identifies the following problems:
 
-CVE-2016-1238 
+CVE-2016-1238
 John Lightsey and Todd Rinaldo reported that the opportunistic
 loading of optional modules can make many programs unintentionally
 load code from the current working directory (which might be changed
@@ -81,7 +74,7 @@ certain combinations of installed packages.
 
 The problem relates to Perl loading modules from the includes
 directory array ('@INC') in which the last element is the current
-directory ('.'). That means that, when perl 
+directory ('.'). That means that, when perl
 wants to load a module
 (during first compilation or during lazy loading of a module in run
 time), perl will look for the module in the current directory at the
@@ -104,16 +97,17 @@ It is planned to switch to the default removal of '.' in @INC in a
 subsequent update to perl via a point release if possible, and in
 any case for the upcoming stable release Debian 9 (stretch).
 
-CVE-2016-6185 
+CVE-2016-6185
 It was discovered that XSLoader, a core module from Perl to
 dynamically load C libraries into Perl code, could load shared
 library from incorrect location. XSLoader uses caller() information
 to locate the .so file to load. This can be incorrect if
 XSLoader::load() is called in a string eval. An attacker can take
 advantage of this flaw to execute arbitrary code.");
-    script_tag(name: "vuldetect", value: "This check tests the installed software
+  script_tag(name:"vuldetect", value:"This check tests the installed software
 version using the apt package manager.");
-    exit(0);
+
+  exit(0);
 }
 
 include("revisions-lib.inc");
@@ -121,30 +115,30 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"libperl-dev", ver:"5.20.2-3+deb8u6", rls_regex:"DEB8.[0-9]+")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libperl-dev", ver:"5.20.2-3+deb8u6", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libperl5.20", ver:"5.20.2-3+deb8u6", rls_regex:"DEB8.[0-9]+")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libperl5.20", ver:"5.20.2-3+deb8u6", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"perl", ver:"5.20.2-3+deb8u6", rls_regex:"DEB8.[0-9]+")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"perl", ver:"5.20.2-3+deb8u6", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"perl-base", ver:"5.20.2-3+deb8u6", rls_regex:"DEB8.[0-9]+")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"perl-base", ver:"5.20.2-3+deb8u6", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"perl-debug", ver:"5.20.2-3+deb8u6", rls_regex:"DEB8.[0-9]+")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"perl-debug", ver:"5.20.2-3+deb8u6", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"perl-doc", ver:"5.20.2-3+deb8u6", rls_regex:"DEB8.[0-9]+")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"perl-doc", ver:"5.20.2-3+deb8u6", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"perl-modules", ver:"5.20.2-3+deb8u6", rls_regex:"DEB8.[0-9]+")) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"perl-modules", ver:"5.20.2-3+deb8u6", rls:"DEB8")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
-    security_message(data:report);
+if(report != "") {
+  security_message(data:report);
 } else if (__pkg_match) {
-    exit(99); # Not vulnerable.
+  exit(99);
 }

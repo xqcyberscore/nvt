@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_856.nasl 10219 2018-06-15 12:00:55Z cfischer $
+# $Id: deb_dla_856.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DLA 856-1 using nvtgen 1.0
 # Script version:1.1
@@ -31,9 +31,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.890856");
-  script_version("$Revision: 10219 $");
+  script_version("$Revision: 14281 $");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 856-1] tzdata new upstream version)");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-15 14:00:55 +0200 (Fri, 15 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-01-15 00:00:00 +0100 (Mon, 15 Jan 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -47,21 +47,18 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB7\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB7");
   script_tag(name:"affected", value:"tzdata on Debian Linux");
-  script_tag(name:"insight", value:"This package contains data required for the implementation of
-standard local time for many representative locations around the
-globe. It is updated periodically to reflect changes made by
-political bodies to time zone boundaries, UTC offsets, and
-daylight-saving rules.");
   script_tag(name:"solution", value:"For Debian 7 'Wheezy', these problems have been fixed in version
 2017a-0+deb7u1.
 
 We recommend that you upgrade your tzdata packages.");
-  script_tag(name:"summary",  value:"This update includes the changes in tzdata 2017a. Notable
+  script_tag(name:"summary", value:"This update includes the changes in tzdata 2017a. Notable
 changes are:
-- Mongolia no longer observes DST.
-- Magallanes region diverges from Santiago starting 2017-05-13,
+
+  - Mongolia no longer observes DST.
+
+  - Magallanes region diverges from Santiago starting 2017-05-13,
 the America/Punta_Arenas zone has been added.
 
   This NVT has been deprecated as it doesn't have any security relevance.");
@@ -79,15 +76,15 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"tzdata", ver:"2017a-0+deb7u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"tzdata", ver:"2017a-0+deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"tzdata-java", ver:"2017a-0+deb7u1", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"tzdata-java", ver:"2017a-0+deb7u1", rls:"DEB7")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
+} else if(__pkg_match) {
   exit(99);
 }

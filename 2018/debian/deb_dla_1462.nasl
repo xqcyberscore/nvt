@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1462.nasl 12004 2018-10-22 05:34:04Z cfischer $
+# $Id: deb_dla_1462.nasl 14270 2019-03-18 14:24:29Z cfischer $
 #
 # Auto-generated from advisory DLA 1462-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891462");
-  script_version("$Revision: 12004 $");
+  script_version("$Revision: 14270 $");
   script_cve_id("CVE-2018-14526");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1462-1] wpa security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 07:34:04 +0200 (Mon, 22 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:24:29 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-08-10 00:00:00 +0200 (Fri, 10 Aug 2018)");
   script_tag(name:"cvss_base", value:"3.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:N/A:N");
@@ -48,13 +48,13 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8");
   script_tag(name:"affected", value:"wpa on Debian Linux");
   script_tag(name:"solution", value:"For Debian 8 'Jessie', this problem has been fixed in version
 2.3-1+deb8u6.
 
 We recommend that you upgrade your wpa packages.");
-  script_tag(name:"summary",  value:"The following vulnerability was discovered in wpa_supplicant.
+  script_tag(name:"summary", value:"The following vulnerability was discovered in wpa_supplicant.
 
 CVE-2018-14526:
 An issue was discovered in rsn_supp/wpa.c in wpa_supplicant 2.0
@@ -73,18 +73,18 @@ include("pkg-lib-deb.inc");
 res = "";
 report = "";
 
-if ((res = isdpkgvuln(pkg:"hostapd", ver:"2.3-1+deb8u6", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"hostapd", ver:"2.3-1+deb8u6", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"wpagui", ver:"2.3-1+deb8u6", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"wpagui", ver:"2.3-1+deb8u6", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"wpasupplicant", ver:"2.3-1+deb8u6", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"wpasupplicant", ver:"2.3-1+deb8u6", rls:"DEB8")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
+} else if(__pkg_match) {
   exit(99);
 }

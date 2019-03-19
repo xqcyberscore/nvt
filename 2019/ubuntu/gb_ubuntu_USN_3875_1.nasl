@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3875_1.nasl 13451 2019-02-05 05:56:56Z santu $
+# $Id: gb_ubuntu_USN_3875_1.nasl 14288 2019-03-18 16:34:17Z cfischer $
 #
 # Ubuntu Update for openjdk-lts USN-3875-1
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843888");
-  script_version("$Revision: 13451 $");
+  script_version("$Revision: 14288 $");
   script_cve_id("CVE-2019-2422");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-05 06:56:56 +0100 (Tue, 05 Feb 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 17:34:17 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-01-31 04:03:05 +0100 (Thu, 31 Jan 2019)");
   script_name("Ubuntu Update for openjdk-lts USN-3875-1");
   script_category(ACT_GATHER_INFO);
@@ -77,19 +77,19 @@ res = "";
 if(release == "UBUNTU18.10")
 {
 
-  if ((res = isdpkgvuln(pkg:"openjdk-11-jdk", ver:"11.0.1+13-3ubuntu3.18.10.1", rls:"UBUNTU18.10", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"openjdk-11-jdk", ver:"11.0.1+13-3ubuntu3.18.10.1", rls:"UBUNTU18.10")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"openjdk-11-jre", ver:"11.0.1+13-3ubuntu3.18.10.1", rls:"UBUNTU18.10", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"openjdk-11-jre", ver:"11.0.1+13-3ubuntu3.18.10.1", rls:"UBUNTU18.10")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"openjdk-11-jre-headless", ver:"11.0.1+13-3ubuntu3.18.10.1", rls:"UBUNTU18.10", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"openjdk-11-jre-headless", ver:"11.0.1+13-3ubuntu3.18.10.1", rls:"UBUNTU18.10")) != NULL)
   {
     security_message(data:res);
     exit(0);
@@ -103,25 +103,25 @@ if(release == "UBUNTU18.10")
 if(release == "UBUNTU16.04 LTS")
 {
 
-  if ((res = isdpkgvuln(pkg:"openjdk-8-jdk", ver:"8u191-b12-2ubuntu0.16.04.1", rls:"UBUNTU16.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"openjdk-8-jdk", ver:"8u191-b12-2ubuntu0.16.04.1", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"openjdk-8-jre", ver:"8u191-b12-2ubuntu0.16.04.1", rls:"UBUNTU16.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"openjdk-8-jre", ver:"8u191-b12-2ubuntu0.16.04.1", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"openjdk-8-jre-headless", ver:"8u191-b12-2ubuntu0.16.04.1", rls:"UBUNTU16.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"openjdk-8-jre-headless", ver:"8u191-b12-2ubuntu0.16.04.1", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);
   }
 
-  if ((res = isdpkgvuln(pkg:"openjdk-8-jre-jamvm", ver:"8u191-b12-2ubuntu0.16.04.1", rls:"UBUNTU16.04 LTS", remove_arch:TRUE )) != NULL)
+  if ((res = isdpkgvuln(pkg:"openjdk-8-jre-jamvm", ver:"8u191-b12-2ubuntu0.16.04.1", rls:"UBUNTU16.04 LTS")) != NULL)
   {
     security_message(data:res);
     exit(0);

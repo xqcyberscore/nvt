@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1138.nasl 10824 2018-08-08 02:52:53Z ckuersteiner $
+# $Id: deb_dla_1138.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DLA 1138-1 using nvtgen 1.0
 # Script version:1.1
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891138");
-  script_version("$Revision: 10824 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2017-7805");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1138-1] nss security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-08 04:52:53 +0200 (Wed, 08 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-02-08 00:00:00 +0100 (Thu, 08 Feb 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -48,19 +48,13 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB7\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB7");
   script_tag(name:"affected", value:"nss on Debian Linux");
-  script_tag(name:"insight", value:"nss is a set of libraries designed to support cross-platform development
-of security-enabled client and server applications.");
   script_tag(name:"solution", value:"For Debian 7 'Wheezy', these problems have been fixed in version
 2:3.26-1+debu7u5.
 
-We recommend that you upgrade your nss packages.
-
-Further information about Debian LTS security advisories, how to apply
-these updates to your system and frequently asked questions can be
-found at: https://wiki.debian.org/LTS.");
-  script_tag(name:"summary",  value:"Martin Thomson discovered that nss, the Mozilla Network Security Service
+We recommend that you upgrade your nss packages.");
+  script_tag(name:"summary", value:"Martin Thomson discovered that nss, the Mozilla Network Security Service
 library, is prone to a use-after-free vulnerability in the TLS 1.2
 implementation when handshake hashes are generated. A remote attacker
 can take advantage of this flaw to cause an application using the nss
@@ -76,24 +70,24 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"libnss3", ver:"2:3.26-1+debu7u5", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libnss3", ver:"2:3.26-1+debu7u5", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libnss3-1d", ver:"2:3.26-1+debu7u5", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libnss3-1d", ver:"2:3.26-1+debu7u5", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libnss3-dbg", ver:"2:3.26-1+debu7u5", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libnss3-dbg", ver:"2:3.26-1+debu7u5", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libnss3-dev", ver:"2:3.26-1+debu7u5", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libnss3-dev", ver:"2:3.26-1+debu7u5", rls:"DEB7")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"libnss3-tools", ver:"2:3.26-1+debu7u5", rls_regex:"DEB7\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"libnss3-tools", ver:"2:3.26-1+debu7u5", rls:"DEB7")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
+} else if(__pkg_match) {
   exit(99);
 }

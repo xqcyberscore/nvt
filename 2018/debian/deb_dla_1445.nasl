@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1445.nasl 10650 2018-07-27 09:00:20Z cfischer $
+# $Id: deb_dla_1445.nasl 14270 2019-03-18 14:24:29Z cfischer $
 #
 # Auto-generated from advisory DLA 1445-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,12 +31,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891445");
-  script_version("$Revision: 10650 $");
+  script_version("$Revision: 14270 $");
   script_cve_id("CVE-2011-5325", "CVE-2013-1813", "CVE-2014-4607", "CVE-2014-9645", "CVE-2015-9261",
                 "CVE-2015-9621", "CVE-2016-2147", "CVE-2016-2148", "CVE-2017-15873", "CVE-2017-16544",
                 "CVE-2018-1000517");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1445-1] busybox security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-27 11:00:20 +0200 (Fri, 27 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:24:29 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-07-27 00:00:00 +0200 (Fri, 27 Jul 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -50,20 +50,14 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8\.[0-9]+");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB8");
   script_tag(name:"affected", value:"busybox on Debian Linux");
-  script_tag(name:"insight", value:"BusyBox combines tiny versions of many common UNIX utilities into a single
-small executable. It provides minimalist replacements for the most common
-utilities you would usually find on your desktop system (i.e., ls, cp, mv,
-mount, tar, etc.). The utilities in BusyBox generally have fewer options than
-their full-featured GNU cousins; however, the options that are included
-provide the expected functionality and behave very much like their GNU
-counterparts.");
+
   script_tag(name:"solution", value:"For Debian 8 'Jessie', these problems have been fixed in version
 1:1.22.0-9+deb8u2.
 
 We recommend that you upgrade your busybox packages.");
-  script_tag(name:"summary",  value:"Busybox, utility programs for small and embedded systems, was affected
+  script_tag(name:"summary", value:"Busybox, utility programs for small and embedded systems, was affected
 by several security vulnerabilities. The Common Vulnerabilities and
 Exposures project identifies the following issues.
 
@@ -144,24 +138,24 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"busybox", ver:"1:1.22.0-9+deb8u2", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"busybox", ver:"1:1.22.0-9+deb8u2", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"busybox-static", ver:"1:1.22.0-9+deb8u2", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"busybox-static", ver:"1:1.22.0-9+deb8u2", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"busybox-syslogd", ver:"1:1.22.0-9+deb8u2", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"busybox-syslogd", ver:"1:1.22.0-9+deb8u2", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"udhcpc", ver:"1:1.22.0-9+deb8u2", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"udhcpc", ver:"1:1.22.0-9+deb8u2", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"udhcpd", ver:"1:1.22.0-9+deb8u2", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"udhcpd", ver:"1:1.22.0-9+deb8u2", rls:"DEB8")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
+} else if(__pkg_match) {
   exit(99);
 }

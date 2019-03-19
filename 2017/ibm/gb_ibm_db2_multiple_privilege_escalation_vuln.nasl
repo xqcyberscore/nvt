@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_multiple_privilege_escalation_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
+# $Id: gb_ibm_db2_multiple_privilege_escalation_vuln.nasl 14286 2019-03-18 15:20:15Z ckuersteiner $
 #
 # IBM DB2 Multiple Privilege Escalation Vulnerabilities
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:ibm:db2";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811693");
-  script_version("$Revision: 11983 $");
+  script_version("$Revision: 14286 $");
   script_cve_id("CVE-2017-1520", "CVE-2017-1451", "CVE-2017-1452", "CVE-2017-1439",
                 "CVE-2017-1438");
   script_bugtraq_id(100684, 100690, 100698, 100685);
@@ -37,6 +37,7 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"last_modification", value:"$Date: 2017-09-25 07:48:36 +0200 (Mo, 25 Sep 2017)$");
   script_tag(name:"creation_date", value:"2017-09-14 12:39:29 +0530 (Thu, 14 Sep 2017)");
+
   script_name("IBM DB2 Multiple Privilege Escalation Vulnerabilities");
 
   script_tag(name:"summary", value:"This host is running IBM DB2 and is
@@ -68,6 +69,7 @@ if(description)
   script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg22007186");
   script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg22006885");
   script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg22006061");
+
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
@@ -79,54 +81,46 @@ if(description)
   exit(0);
 }
 
-include("http_func.inc");
 include("host_details.inc");
 include("version_func.inc");
 
-if(!ibmPort = get_app_port(cpe:CPE)){
+if (!port = get_app_port(cpe: CPE))
   exit(0);
-}
 
-if(!ibmVer = get_app_version(cpe:CPE, port:ibmPort)){
-  exit(0);
-}
+infos = get_app_version_and_proto(cpe: CPE, port: port, exit_no_version: TRUE);
+version = infos["version"];
+proto = infos["proto"];
 
-if(ibmVer =~ "^0907\.*"){
-  ## IBM DB2 9.7 before FP11
-  ## IBM DB2 9.7 FP11 => 090711
-  if(version_is_less(version:ibmVer, test_version:"090711")){
-    fix = "IBM DB2 9.7 FP11";
+if (version =~ "^09\.07\.") {
+  if (version_is_less(version: version, test_version: "09.07.11")) {
+    report = report_fixed_ver(installed_version: version, fixed_version: "09.07.11");
+    security_message(port: port, data: report, proto: proto);
+    exit(0);
   }
 }
 
-else if(ibmVer =~ "^1001\.*"){
-  ## IBM DB2 10.1 before FP6
-  ## IBM DB2 10.1 FP6  => 10016
-  if(version_is_less(version:ibmVer, test_version:"10016")){
-    fix = "IBM DB2 10.1 FP6";
+if (version =~ "^10\.01\.") {
+  if (version_is_less(version: version, test_version: "10.01.6")) {
+    report = report_fixed_ver(installed_version: version, fixed_version: "10.01.6");
+    security_message(port: port, data: report, proto: proto);
+    exit(0);
   }
 }
 
-else if(ibmVer =~ "^1005\.*"){
-  ## IBM DB2 10.5 before FP8
-  ## IBM DB2 10.5 FP8 => 10058
-  if(version_is_less(version:ibmVer, test_version:"10058")){
-    fix = "IBM DB2 10.5 FP8";
+if (version =~ "^10\.05\.") {
+  if (version_is_less(version: version, test_version: "10.05.8")) {
+    report = report_fixed_ver(installed_version: version, fixed_version: "10.05.8");
+    security_message(port: port, data: report, proto: proto);
+    exit(0);
   }
 }
 
-else if(ibmVer =~ "^110122\.*"){
-  ## IBM DB2 11.1.2.2 before FP2
-  ## IBM DB2 11.1.2.2 FP2 => 1101222
-  if(version_is_less(version:ibmVer, test_version:"1101222")){
-    fix = "IBM DB2 11.1.2.2 FP2";
+if (version =~ "^11\.01\.") {
+  if (version_is_less(version: version, test_version: "11.01.22")) {
+    report = report_fixed_ver(installed_version: version, fixed_version: "11.01.22");
+    security_message(port: port, data: report, proto: proto);
+    exit(0);
   }
-}
-
-if(fix){
-  report = report_fixed_ver(installed_version:ibmVer, fixed_version:fix);
-  security_message(data:report, port:ibmPort);
-  exit(0);
 }
 
 exit(99);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_HT208692_03.nasl 9940 2018-05-23 15:46:09Z cfischer $
+# $Id: gb_apple_macosx_HT208692_03.nasl 14293 2019-03-18 18:52:01Z cfischer $
 #
 # Apple MacOSX Security Updates(HT208692)-03
 #
@@ -27,60 +27,54 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813114");
-  script_version("$Revision: 9940 $");
-  script_cve_id("CVE-2017-8816", "CVE-2017-13890" );
+  script_version("$Revision: 14293 $");
+  script_cve_id("CVE-2017-8816", "CVE-2017-13890");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-23 17:46:09 +0200 (Wed, 23 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 19:52:01 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-04-02 10:46:36 +0530 (Mon, 02 Apr 2018)");
   script_name("Apple MacOSX Security Updates(HT208692)-03");
 
   script_tag(name:"summary", value:"This host is installed with Apple Mac OS X
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exists due to,
+
   - An integer overflow in curl.
 
   - A logic issue due to improper restrictions.");
 
-  script_tag(name: "impact" , value:"Successful exploitation of this vulnerability
+  script_tag(name:"impact", value:"Successful exploitation of this vulnerability
   will allow remote attackers into mounting of a disk image, code execution and
-  denial-of-service condition.
+  denial-of-service condition.");
 
-  Impact Level: System/Application");
-
-  script_tag(name: "affected" , value:"Apple Mac OS X versions 10.11.x through
+  script_tag(name:"affected", value:"Apple Mac OS X versions 10.11.x through
   10.11.6, 10.12.x through 10.12.6");
 
-  script_tag(name: "solution" , value:"Apply the appropriate patch. For updates
-  refer to https://www.apple.com.");
+  script_tag(name:"solution", value:"Apply the appropriate patch.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
-  script_xref(name : "URL" , value : "https://support.apple.com/en-us/HT208692");
+  script_xref(name:"URL", value:"https://support.apple.com/en-us/HT208692");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Mac OS X Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/osx_name", "ssh/login/osx_version");
+  script_mandatory_keys("ssh/login/osx_name", "ssh/login/osx_version", re:"ssh/login/osx_version=^10\.1[12]");
+  script_xref(name:"URL", value:"https://www.apple.com");
   exit(0);
 }
 
 include("version_func.inc");
-include("ssh_func.inc");
-
-osName = "";
-osVer = "";
 
 osName = get_kb_item("ssh/login/osx_name");
-if(!osName){
-  exit (0);
-}
+if(!osName)
+  exit(0);
 
 osVer = get_kb_item("ssh/login/osx_version");
-if(!osVer || osVer !~ "^(10\.(11|12))" || "Mac OS X" >!< osName){
+if(!osVer || osVer !~ "^10\.1[12]" || "Mac OS X" >!< osName){
   exit(0);
 }
 
@@ -104,14 +98,14 @@ if((osVer == "10.11.6") || (osVer == "10.12.6"))
   }
 }
 
-if(osVer =~ "^(10.11)")
+if(osVer =~ "^10\.11")
 {
   if(version_is_less(version:osVer, test_version:"10.11.6")){
     fix = "Upgrade to latest OS release 10.11.6 and apply patch from vendor";
   }
 }
 
-else if(osVer =~ "^(10.12)")
+else if(osVer =~ "^10\.12")
 {
   if(version_is_less(version:osVer, test_version:"10.12.6")){
     fix = "Upgrade to latest OS release 10.12.6 and apply patch from vendor";
@@ -124,4 +118,5 @@ if(fix)
   security_message(data:report);
   exit(0);
 }
-exit(0);
+
+exit(99);

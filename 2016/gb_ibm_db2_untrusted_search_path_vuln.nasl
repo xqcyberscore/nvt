@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_untrusted_search_path_vuln.nasl 11837 2018-10-11 09:17:05Z asteins $
+# $Id: gb_ibm_db2_untrusted_search_path_vuln.nasl 14286 2019-03-18 15:20:15Z ckuersteiner $
 #
 # IBM DB2 Untrusted Search Path Vulnerability
 #
@@ -29,12 +29,13 @@ CPE = "cpe:/a:ibm:db2";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809431");
-  script_version("$Revision: 11837 $");
+  script_version("$Revision: 14286 $");
   script_cve_id("CVE-2016-5995");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 11:17:05 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 16:20:15 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-10-04 17:08:20 +0530 (Tue, 04 Oct 2016)");
+
   script_name("IBM DB2 Untrusted Search Path Vulnerability");
 
   script_tag(name:"summary", value:"This host is running IBM DB2 and is
@@ -42,11 +43,9 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"The flaw exists due to loading libraries
-  from insecure locations.");
+  script_tag(name:"insight", value:"The flaw exists due to loading libraries from insecure locations.");
 
-  script_tag(name:"impact", value:"Successful exploitation will allow local
-  user to gain elevated privilege.");
+  script_tag(name:"impact", value:"Successful exploitation will allow local user to gain elevated privilege.");
 
   script_tag(name:"affected", value:"IBM DB2 versions 9.7 through FP11,
 
@@ -67,51 +66,42 @@ if(description)
   script_family("Databases");
   script_dependencies("gb_ibm_db2_remote_detect.nasl");
   script_mandatory_keys("IBM-DB2/installed");
+
   exit(0);
 }
 
-include("http_func.inc");
 include("host_details.inc");
 include("version_func.inc");
 
-if(!ibmPort = get_app_port(cpe:CPE)){
+if (!port = get_app_port(cpe: CPE))
   exit(0);
-}
 
-if(!ibmVer = get_app_version(cpe:CPE, port:ibmPort)){
-  exit(0);
-}
+infos = get_app_version_and_proto(cpe: CPE, port: port, exit_no_version: TRUE);
+version = infos["version"];
+proto = infos["proto"];
 
-if(ibmVer =~ "^0907\.*"){
-  ## IBM DB2 9.7 through FP11
-  ## IBM DB2 9.7 FP11 => 090711
-  if(version_is_less_equal(version:ibmVer, test_version:"090711")){
-    VULN = TRUE;
-  }
-}
-##Only Enterprise Server Edition V9.8 is vulnerable
-##Not considering that, as no way to confirm that
-
-if(ibmVer =~ "^1001\.*"){
-  ## IBM DB2 10.1 through FP5
-  ## IBM DB2 10.1 FP5  => 10015
-  if(version_is_less_equal(version:ibmVer, test_version:"10015")){
-    VULN = TRUE;
+if (version =~ "^09\.07\.") {
+  if (version_is_less_equal(version: version, test_version: "09.07.11")) {
+    report = report_fixed_ver(installed_version: version, fixed_version: "See advisory");
+    security_message(port: port, data: report, proto: proto);
+    exit(0);
   }
 }
 
-if(ibmVer =~ "^1005\.*"){
-  ## IBM DB2 10.5 through FP7
-  ## IBM DB2 10.5 FP7 => 10057
-  if(version_is_less_equal(version:ibmVer, test_version:"10057")){
-    VULN = TRUE;
+if (version =~ "^10\.01\.") {
+  if (version_is_less_equal(version: version, test_version: "10.01.5")) {
+    report = report_fixed_ver(installed_version: version, fixed_version: "See advisory");
+    security_message(port: port, data: report, proto: proto);
+    exit(0);
   }
 }
 
-if(VULN){
-  report = report_fixed_ver(installed_version:ibmVer, fixed_version:"Apply appropriate fix");
-  security_message(port:ibmPort, data:report);
-  exit(0);
+if (version =~ "^10\.05\.") {
+  if (version_is_less_equal(version: version, test_version: "10.05.7")) {
+    report = report_fixed_ver(installed_version: version, fixed_version: "See advisory");
+    security_message(port: port, data: report, proto: proto);
+    exit(0);
+  }
 }
 
 exit(99);

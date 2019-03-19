@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4115.nasl 9135 2018-03-19 12:37:31Z asteins $
+# $Id: deb_4115.nasl 14281 2019-03-18 14:53:48Z cfischer $
 #
 # Auto-generated from advisory DSA 4115-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704115");
-  script_version("$Revision: 9135 $");
+  script_version("$Revision: 14281 $");
   script_cve_id("CVE-2018-5378", "CVE-2018-5379", "CVE-2018-5380", "CVE-2018-5381");
   script_name("Debian Security Advisory DSA 4115-1 (quagga - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-19 13:37:31 +0100 (Mon, 19 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:53:48 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-02-15 00:00:00 +0100 (Thu, 15 Feb 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -48,11 +48,8 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH http://greenbone.net");
   script_family("Debian Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", re:"ssh/login/release=DEB(9|8)");
   script_tag(name:"affected", value:"quagga on Debian Linux");
-  script_tag(name:"insight", value:"GNU Quagga is free software which manages TCP/IP based routing protocols.
-It supports BGP4, BGP4+, OSPFv2, OSPFv3, IS-IS, RIPv1, RIPv2, and RIPng as
-well as the IPv6 versions of these.");
   script_tag(name:"solution", value:"For the oldstable distribution (jessie), these problems have been fixed
 in version 0.99.23.1-1+deb8u5.
 
@@ -61,44 +58,39 @@ version 1.1.1-3+deb9u2.
 
 We recommend that you upgrade your quagga packages.
 
-For the detailed security status of quagga please refer to its security
-tracker page at: https://security-tracker.debian.org/tracker/quagga");
-  script_tag(name:"summary",  value:"Several vulnerabilities have been discovered in Quagga, a routing
+For the detailed security status of quagga  please refer to
+its security tracker page linked in the references.");
+
+  script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/quagga");
+  script_tag(name:"summary", value:"Several vulnerabilities have been discovered in Quagga, a routing
 daemon. The Common Vulnerabilities and Exposures project identifies the
 following issues:
 
-CVE-2018-5378 
+CVE-2018-5378
 It was discovered that the Quagga BGP daemon, bgpd, does not
 properly bounds check data sent with a NOTIFY to a peer, if an
 attribute length is invalid. A configured BGP peer can take
 advantage of this bug to read memory from the bgpd process or cause
 a denial of service (daemon crash).
 
-https://www.quagga.net/security/Quagga-2018-0543.txt
-
-CVE-2018-5379 
+CVE-2018-5379
 It was discovered that the Quagga BGP daemon, bgpd, can double-free
 memory when processing certain forms of UPDATE message, containing
 cluster-list and/or unknown attributes, resulting in a denial of
 service (bgpd daemon crash).
 
-https://www.quagga.net/security/Quagga-2018-1114.txt
-
-CVE-2018-5380 
+CVE-2018-5380
 It was discovered that the Quagga BGP daemon, bgpd, does not
 properly handle internal BGP code-to-string conversion tables.
 
-https://www.quagga.net/security/Quagga-2018-1550.txt
 
-CVE-2018-5381 
+CVE-2018-5381
 It was discovered that the Quagga BGP daemon, bgpd, can enter an
 infinite loop if sent an invalid OPEN message by a configured peer.
 A configured peer can take advantage of this flaw to cause a denial
-of service (bgpd daemon not responding to any other events; BGP
-sessions will drop and not be reestablished; unresponsive CLI
-interface).
-
-https://www.quagga.net/security/Quagga-2018-1975.txt");
+of service (bgpd daemon not responding to any other events, BGP
+sessions will drop and not be reestablished, unresponsive CLI
+interface).");
   script_tag(name:"vuldetect", value:"This check tests the installed software version using the apt package manager.");
 
   exit(0);
@@ -109,48 +101,48 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"quagga", ver:"1.1.1-3+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"quagga", ver:"1.1.1-3+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"quagga-bgpd", ver:"1.1.1-3+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"quagga-bgpd", ver:"1.1.1-3+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"quagga-core", ver:"1.1.1-3+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"quagga-core", ver:"1.1.1-3+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"quagga-doc", ver:"1.1.1-3+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"quagga-doc", ver:"1.1.1-3+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"quagga-isisd", ver:"1.1.1-3+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"quagga-isisd", ver:"1.1.1-3+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"quagga-ospf6d", ver:"1.1.1-3+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"quagga-ospf6d", ver:"1.1.1-3+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"quagga-ospfd", ver:"1.1.1-3+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"quagga-ospfd", ver:"1.1.1-3+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"quagga-pimd", ver:"1.1.1-3+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"quagga-pimd", ver:"1.1.1-3+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"quagga-ripd", ver:"1.1.1-3+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"quagga-ripd", ver:"1.1.1-3+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"quagga-ripngd", ver:"1.1.1-3+deb9u2", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"quagga-ripngd", ver:"1.1.1-3+deb9u2", rls:"DEB9")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"quagga", ver:"0.99.23.1-1+deb8u5", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"quagga", ver:"0.99.23.1-1+deb8u5", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"quagga-dbg", ver:"0.99.23.1-1+deb8u5", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"quagga-dbg", ver:"0.99.23.1-1+deb8u5", rls:"DEB8")) != NULL) {
+  report += res;
 }
-if ((res = isdpkgvuln(pkg:"quagga-doc", ver:"0.99.23.1-1+deb8u5", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
+if((res = isdpkgvuln(pkg:"quagga-doc", ver:"0.99.23.1-1+deb8u5", rls:"DEB8")) != NULL) {
+  report += res;
 }
 
-if (report != "") {
+if(report != "") {
   security_message(data:report);
-} else if (__pkg_match) {
-  exit(99); # Not vulnerable.
+} else if(__pkg_match) {
+  exit(99);
 }
