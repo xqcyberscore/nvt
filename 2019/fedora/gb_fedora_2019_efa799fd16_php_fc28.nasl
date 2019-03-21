@@ -24,7 +24,7 @@ if(description)
   script_version("$Revision: 14312 $");
   script_cve_id("CVE-2018-19935");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"last_modification", value:"$Date: 2019-03-19 11:46:59 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-03-16 04:13:26 +0100 (Sat, 16 Mar 2019)");
   script_name("Fedora Update for php FEDORA-2019-efa799fd16");

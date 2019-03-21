@@ -31,8 +31,8 @@ if(description)
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1715-1] linux-4.9 security update)");
   script_tag(name:"last_modification", value:"$Date: 2019-03-19 08:35:21 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-03-19 00:00:00 +0100 (Tue, 19 Mar 2019)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

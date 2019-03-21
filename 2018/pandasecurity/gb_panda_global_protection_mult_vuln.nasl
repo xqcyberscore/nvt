@@ -36,7 +36,7 @@ if( description )
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_cve_id("CVE-2018-6321", "CVE-2018-6322");
 
@@ -67,9 +67,10 @@ the target system.");
 
   script_tag(name:"affected", value:"Panda Global Protection through version 17.0.1");
 
-  script_tag(name:"solution", value:"No known solution is available as of 18th February, 2019.
-  Information regarding this issue will be updated once solution details are available.");
-
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure 
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer 
+  release, disable respective features, remove the product or replace the product by another one.");
+  
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2018/Mar/25");
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2018/Mar/26");
 
