@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ssl_weak_hash_algo.nasl 8810 2018-02-14 12:36:00Z cfischer $
+# $Id: gb_ssl_weak_hash_algo.nasl 11524 2018-09-21 15:17:10Z cfischer $
 #
 # SSL/TLS: Certificate Signed Using A Weak Signature Algorithm
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105880");
-  script_version("$Revision: 8810 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-14 13:36:00 +0100 (Wed, 14 Feb 2018) $");
+  script_version("$Revision: 11524 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 17:17:10 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-08-22 17:35:50 +0200 (Mon, 22 Aug 2016)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:N");
   script_tag(name:"cvss_base", value:"4.0");

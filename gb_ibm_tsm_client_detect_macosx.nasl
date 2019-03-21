@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_tsm_client_detect_macosx.nasl 11698 2018-09-29 03:57:28Z santu $
+# $Id: gb_ibm_tsm_client_detect_macosx.nasl 14305 2019-03-19 09:17:40Z cfischer $
 #
 # IBM Tivoli Storage Manager Client Version Detection (Mac OS X)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811062");
-  script_version("$Revision: 11698 $");
+  script_version("$Revision: 14305 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-29 05:57:28 +0200 (Sat, 29 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 10:17:40 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2017-06-02 15:14:25 +0530 (Fri, 02 Jun 2017)");
   script_name("IBM Tivoli Storage Manager Client Version Detection (Mac OS X)");
 
@@ -69,7 +69,6 @@ if(!ibmVer || "does not exist" >< ibmVer)
              "IBM\ Spectrum\ Protect/IBM\ Spectrum\ Protect.app/Contents/" +
              "Info CFBundleShortVersionString"));
 }
-## Close Socket
 close(sock);
 
 if(isnull(ibmVer) || "does not exist" >< ibmVer){

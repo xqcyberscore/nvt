@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: moodle_sql_inject.nasl 11556 2018-09-22 15:37:40Z cfischer $
+# $Id: moodle_sql_inject.nasl 14336 2019-03-19 14:53:10Z mmartin $
 # Description: Moodle SQL injection flaws
 #
 # Authors:
@@ -27,8 +27,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.15639");
-  script_version("$Revision: 11556 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:37:40 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 14336 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:53:10 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2004-1424", "CVE-2004-1425", "CVE-2004-2232");
   script_bugtraq_id(11608, 11691, 12120);
@@ -52,7 +52,7 @@ course management system written in PHP, which is older than version 1.4.3.
 The remote version of this software is vulnerable to SQL injection issue
 in 'glossary' module due to a lack of user input sanitization.");
   script_tag(name:"solution_type", value:"VendorFix");
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

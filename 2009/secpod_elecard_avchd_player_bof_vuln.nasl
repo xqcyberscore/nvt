@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_elecard_avchd_player_bof_vuln.nasl 11554 2018-09-22 15:11:42Z cfischer $
+# $Id: secpod_elecard_avchd_player_bof_vuln.nasl 14325 2019-03-19 13:35:02Z asteins $
 #
 # Elecard AVC HD  Player Buffer Overflow Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900627");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 14325 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:35:02 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-04-30 06:40:16 +0200 (Thu, 30 Apr 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -50,13 +50,13 @@ if(description)
   script_tag(name:"insight", value:"Application fails to perform adequate boundary checks on user-supplied input
   which results in a buffer overflow while processing playlist(.xpl) containing
   long MP3 filenames.");
-  script_tag(name:"solution", value:"Upgrade to Elecard AVC HD Player version 5.6.90515 or later
-  For updates refer to http://www.elecard.com/download/index.php");
+  script_tag(name:"solution", value:"Upgrade to Elecard AVC HD Player version 5.6.90515 or later");
   script_tag(name:"summary", value:"This host is installed Elecard AVC HD Player and is prone to Buffer
   Overflow Vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.elecard.com/download/index.php");
   exit(0);
 }
 

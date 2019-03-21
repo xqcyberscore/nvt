@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_b2evolution_detect.nasl 5816 2017-03-31 10:16:41Z cfi $
+# $Id: secpod_b2evolution_detect.nasl 14325 2019-03-19 13:35:02Z asteins $
 #
 # b2evolution Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900712");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 5816 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-31 12:16:41 +0200 (Fri, 31 Mar 2017) $");
+  script_version("$Revision: 14325 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:35:02 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-06-02 08:16:42 +0200 (Tue, 02 Jun 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("b2evolution Version Detection");
@@ -40,7 +40,7 @@ if(description)
   script_require_ports("Services/www", 80, 8080);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "summary" , value : "This script finds the installed b2evolution script and saves the
+  script_tag(name:"summary", value:"This script finds the installed b2evolution script and saves the
   version in KB.");
 
   script_tag(name:"qod_type", value:"remote_banner");
@@ -65,7 +65,7 @@ foreach path (make_list_unique("/blogs/htsrv", "/b2evolution/blogs/htsrv", cgi_d
   if(path == "/") path = "";
 
   response = http_get_cache(item: path + "/login.php", port:b2Port);
- 
+
   if("b2evolution" >< response)
   {
     b2Ver = eregmatch(pattern:"b2evolution ([0-9.]+)", string:response);
@@ -76,8 +76,7 @@ foreach path (make_list_unique("/blogs/htsrv", "/b2evolution/blogs/htsrv", cgi_d
                   value:tmp_version);
       log_message(data:"b2evolution Version " + b2Ver[1] +
                 " running at location " + install +  " was detected on the host");
-   
-      ## build cpe and store it as host_detail
+
       cpe = build_cpe(value:tmp_version, exp:"^([0-9.]+)", base:"cpe:/a:b2evolution:b2evolution:");
       if(!isnull(cpe))
          register_host_detail(name:"App", value:cpe);

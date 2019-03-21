@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: PHPRecipeBook_sql_injection.nasl 11449 2018-09-18 10:04:42Z mmartin $
+# $Id: PHPRecipeBook_sql_injection.nasl 14330 2019-03-19 13:59:11Z asteins $
 #
 # PHPRecipeBook 'base_id' Parameter SQL Injection Vulnerability
 #
@@ -27,8 +27,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100042");
-  script_version("$Revision: 11449 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 12:04:42 +0200 (Tue, 18 Sep 2018) $");
+  script_version("$Revision: 14330 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:59:11 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-03-13 06:42:27 +0100 (Fri, 13 Mar 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -54,9 +54,9 @@ if (description)
   application, access or modify data, or exploit latent
   vulnerabilities in the underlying database.
 
-  PHPRecipeBook 2.24 is vulnerable; other versions may also be affected.");
+  PHPRecipeBook 2.24 is vulnerable, other versions may also be affected.");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/34052");
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_symantec_im_manager_xss_vuln.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: secpod_symantec_im_manager_xss_vuln.nasl 14323 2019-03-19 13:19:09Z jschulte $
 #
 # Symantec IM Manager Console Cross Site Scripting Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902132");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 14323 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:19:09 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-03-02 12:02:59 +0100 (Tue, 02 Mar 2010)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -51,13 +51,13 @@ if(description)
   script_tag(name:"insight", value:"The flaw is caused due input validation error in the 'management console',
   which fails to properly filter/validate external input from non-privileged
   users with authorized access to the console.");
-  script_tag(name:"solution", value:"Update to Symantec IM Manager version 8.4.13
-  For updates refer to http://www.symantec.com/business/im-manager");
+  script_tag(name:"solution", value:"Update to Symantec IM Manager version 8.4.13");
   script_tag(name:"summary", value:"This host is installed with Symantec IM Manager and is prone to
   Cross Site Scripting vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.symantec.com/business/im-manager");
   exit(0);
 }
 

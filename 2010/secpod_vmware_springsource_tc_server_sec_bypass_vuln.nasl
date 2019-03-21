@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_vmware_springsource_tc_server_sec_bypass_vuln.nasl 8495 2018-01-23 07:57:49Z teissa $
+# $Id: secpod_vmware_springsource_tc_server_sec_bypass_vuln.nasl 14326 2019-03-19 13:40:32Z jschulte $
 #
 # SpringSource tc Server 'JMX' Interface Security Bypass Vulnerability
 #
@@ -24,26 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow attacker to obtain JMX interface access
-  via a blank password.
-  Impact Level: Application";
-tag_affected = "VMware SpringSource tc Server Runtime 6.0.19 and 6.0.20 before 6.0.20.D and
-  6.0.25.A before 6.0.25.A-SR01.";
-tag_insight = "The flaw is cused due to error in,
-  'com.springsource.tcserver.serviceability.rmi.JmxSocketListener', if the
-  listener is configured to use an encrypted password then entering either the
-  correct password or an empty string will allow authenticated access to the
-  JMX interface.";
-tag_solution = "Update to SpringSource tc Server Runtime to 6.0.20.D or 6.0.25.A-SR01,
-  For updates refer to http://www.springsource.com/products/tcserver";
-tag_summary = "This host is running SpringSource tc Server and is prone to security
-  bypass vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902188");
-  script_version("$Revision: 8495 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-23 08:57:49 +0100 (Tue, 23 Jan 2018) $");
+  script_version("$Revision: 14326 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:40:32 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-05-25 13:56:16 +0200 (Tue, 25 May 2010)");
   script_cve_id("CVE-2010-1454");
   script_bugtraq_id(40205);
@@ -58,13 +43,22 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("secpod_vmware_springsource_tc_server_detect.nasl");
   script_require_ports("Services/www", 8080);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/39778");
-  script_xref(name : "URL" , value : "http://www.springsource.com/security/cve-2010-1454");
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to obtain JMX interface access
+  via a blank password.");
+  script_tag(name:"affected", value:"VMware SpringSource tc Server Runtime 6.0.19 and 6.0.20 before 6.0.20.D and
+  6.0.25.A before 6.0.25.A-SR01.");
+  script_tag(name:"insight", value:"The flaw is cused due to error in,
+  'com.springsource.tcserver.serviceability.rmi.JmxSocketListener', if the
+  listener is configured to use an encrypted password then entering either the
+  correct password or an empty string will allow authenticated access to the
+  JMX interface.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution", value:"Update to SpringSource tc Server Runtime to 6.0.20.D or 6.0.25.A-SR01.");
+  script_tag(name:"summary", value:"This host is running SpringSource tc Server and is prone to security
+  bypass vulnerability.");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/39778");
+  script_xref(name:"URL", value:"http://www.springsource.com/security/cve-2010-1454");
+  script_xref(name:"URL", value:"http://www.springsource.com/products/tcserver");
   exit(0);
 }
 

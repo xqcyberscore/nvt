@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_mult_vuln01_feb16.nasl 11969 2018-10-18 14:53:42Z asteins $
+# $Id: gb_apple_macosx_mult_vuln01_feb16.nasl 14304 2019-03-19 09:10:40Z cfischer $
 #
 # Apple Mac OS X Multiple Vulnerabilities-01 February-2016
 #
@@ -27,39 +27,41 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806677");
-  script_version("$Revision: 11969 $");
+  script_version("$Revision: 14304 $");
   script_cve_id("CVE-2016-1716", "CVE-2016-1717", "CVE-2016-1718", "CVE-2016-1719",
                 "CVE-2016-1720", "CVE-2016-1721", "CVE-2016-1722", "CVE-2016-1729",
                 "CVE-2015-7995");
   script_bugtraq_id(81274, 81277, 77325);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 10:10:40 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-02-03 18:07:12 +0530 (Wed, 03 Feb 2016)");
   script_name("Apple Mac OS X Multiple Vulnerabilities-01 February-2016");
 
-  script_tag(name: "summary" , value:"This host is running Apple Mac OS X and
+  script_tag(name:"summary", value:"This host is running Apple Mac OS X and
   is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exist due to,
+  script_tag(name:"insight", value:"Multiple flaws exist due to,
+
   - Multiple memory corruption errors in the parsing of disk images and IOHIDFamily
     API.
+
   - A type confusion error within libxslt.
+
   - Other multiple memory corruption errors.
+
   - An error when searching for scripting libraries.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow attacker
-  to execute arbitrary code, override OSA script libraries.
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker
+  to execute arbitrary code, override OSA script libraries.");
 
-  Impact Level: System");
-
-  script_tag(name: "affected" , value:"Apple Mac OS X versions 10.9.x through
+  script_tag(name:"affected", value:"Apple Mac OS X versions 10.9.x through
   10.9.5 prior to build 13F1603, 10.10.x through 10.10.5 prior to build 14F1605
   and 10.11.x before 10.11.3");
 
-  script_tag(name: "solution" , value:"Upgrade Apple Mac OS X 10.11.x to version
+  script_tag(name:"solution", value:"Upgrade Apple Mac OS X 10.11.x to version
   10.11.3 or later or apply appropriate patch for Apple Mac OS X 10.9.x and 10.10.x.
   For updates refer to Reference links.");
 
@@ -67,17 +69,17 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "https://support.apple.com/en-us/HT205731");
-  script_xref(name : "URL" , value : "http://lists.apple.com/archives/security-announce/2016/Jan/msg00003.html");
+  script_xref(name:"URL", value:"https://support.apple.com/en-us/HT205731");
+  script_xref(name:"URL", value:"http://lists.apple.com/archives/security-announce/2016/Jan/msg00003.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Mac OS X Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/osx_name", "ssh/login/osx_version");
+  script_mandatory_keys("ssh/login/osx_name", "ssh/login/osx_version", re:"ssh/login/osx_version=^10\.1[1-3]");
+
   exit(0);
 }
-
 
 include("version_func.inc");
 
@@ -87,11 +89,11 @@ if(!osName || "Mac OS X" >!< osName){
 }
 
 osVer = get_kb_item("ssh/login/osx_version");
-if(!osVer || osVer !~ "^(10\.(11|12|13))"){
+if(!osVer || osVer !~ "^10\.1[1-3]"){
   exit(0);
 }
 
-if(osVer =~ "^(10\.(9|10))")
+if(osVer =~ "^10\.(9|10)")
 {
   if(version_in_range(version:osVer, test_version:"10.9", test_version2:"10.9.4") ||
      version_in_range(version:osVer, test_version:"10.10", test_version2:"10.10.4")){
@@ -123,4 +125,5 @@ if(fix)
   security_message(data:report);
   exit(0);
 }
-exit(0);
+
+exit(99);

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mcafee_encrypt_usb_mngr_sec_bypass_vuln_900026.nasl 11570 2018-09-24 11:54:11Z cfischer $
+# $Id: secpod_mcafee_encrypt_usb_mngr_sec_bypass_vuln_900026.nasl 14310 2019-03-19 10:27:27Z cfischer $
 #
 # McAfee Encrypted USB Manager Remote Security Bypass Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900026");
-  script_version("$Revision: 11570 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-24 13:54:11 +0200 (Mon, 24 Sep 2018) $");
+  script_version("$Revision: 14310 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 11:27:27 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2008-08-22 10:29:01 +0200 (Fri, 22 Aug 2008)");
   script_cve_id("CVE-2008-3605");
   script_bugtraq_id(30630);
@@ -52,13 +52,7 @@ if(description)
   script_tag(name:"summary", value:"The host is running McAfee Encrypted USB Manager, which is prone
   to sensitive information disclosure vulnerability.");
 
-  script_tag(name:"solution", value:"Apply Service Pack 1,
-  http://download.nai.com/products/patches/EncryptedUSB/ServicePack1-McAfeeEncryptedUSBManagerv3.zip
-
-  OR
-
-  Upgrade to latest McAfee Encrypted USB Manager,
-  http://mcafee.com");
+  script_tag(name:"solution", value:"Apply Service Pack 1 or upgrade to latest McAfee Encrypted USB Manager.");
 
   script_tag(name:"impact", value:"Remote exploitation could lead an attacker towards password
   guessing.");

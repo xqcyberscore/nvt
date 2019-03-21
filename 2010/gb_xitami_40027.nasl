@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xitami_40027.nasl 4803 2016-12-19 13:00:35Z mime $
+# $Id: gb_xitami_40027.nasl 14326 2019-03-19 13:40:32Z jschulte $
 #
 # Xitami '/AUX' Request Remote Denial Of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100633");
-  script_version("$Revision: 4803 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-19 14:00:35 +0100 (Mon, 19 Dec 2016) $");
+  script_version("$Revision: 14326 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:40:32 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-05-11 20:07:01 +0200 (Tue, 11 May 2010)");
   script_bugtraq_id(40027);
   script_tag(name:"cvss_base", value:"5.0");
@@ -44,18 +44,18 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/40027");
   script_xref(name:"URL", value:"http://www.imatix.com/products");
 
-  tag_summary = "Xitami is prone to a denial-of-service vulnerability.";
-
-  tag_impact = "Attackers can exploit this issue to crash the affected application,
-  denying service to legitimate users.";
-
-  tag_affected = "Xitami 5.0a0 is vulnerable.";
-
-  script_tag(name:"summary" , value:tag_summary);
-  script_tag(name:"impact" , value:tag_impact);
-  script_tag(name:"affected" , value:tag_affected);
+  script_tag(name:"summary", value:"Xitami is prone to a denial-of-service vulnerability.");
+  script_tag(name:"impact", value:"Attackers can exploit this issue to crash the affected application,
+  denying service to legitimate users.");
+  script_tag(name:"affected", value:"Xitami 5.0a0 is vulnerable.");
 
   script_tag(name:"qod_type", value:"remote_vul");
+
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
+  since the disclosure of this vulnerability. Likely none will be provided anymore.
+  General solution options are to upgrade to a newer release, disable respective features,
+  remove the product or replace the product by another one.");
 
   exit(0);
 }

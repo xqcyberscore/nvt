@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: finger_akfingerd.nasl 9348 2018-04-06 07:01:19Z cfischer $
+# $Id: finger_akfingerd.nasl 14336 2019-03-19 14:53:10Z mmartin $
 # Description: akfingerd
 #
 # Authors:
@@ -23,52 +23,49 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "The remote finger service appears to vulnerable to a remote
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.11193");
+  script_version("$Revision: 14336 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:53:10 +0100 (Tue, 19 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_cve_id("CVE-2002-2243");
+  script_bugtraq_id(6323);
+  script_name("akfingerd");
+
+
+  script_category(ACT_GATHER_INFO);
+  script_tag(name:"qod_type", value:"remote_analysis"); #This script should not disrupt the machine at all
+
+
+  script_copyright("This script is Copyright (C) 2002 Andrew Hintz");
+  script_family("Finger abuses");
+  script_dependencies("find_service.nasl");
+  script_require_ports("Services/finger", 79);
+  script_tag(name:"summary", value:"The remote finger service appears to vulnerable to a remote
 attack which can disrupt the service of the finger daemon.
 This denial of service does not effect other services that
 may be running on the remote computer, only the finger
 service can be disrupted.
 
 akfingerd version 0.5 or earlier is running on the remote
-host.  This daemon has a history of security problems, 
-make sure that you are running the latest version of 
+host.  This daemon has a history of security problems,
+make sure that you are running the latest version of
 akfingerd.
 
 Versions 0.5 and earlier of akfingerd are vulnerable to a
 remote denial of service attack.  They are also vulnerable
-to several local attacks.";
+to several local attacks.");
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
+  since the disclosure of this vulnerability. Likely none will be provided anymore.
+  General solution options are to upgrade to a newer release, disable respective features,
+  remove the product or replace the product by another one.");
 
-if(description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.11193");
- script_version("$Revision: 9348 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_cve_id("CVE-2002-2243");
- script_bugtraq_id(6323);
-
- name = "akfingerd";
- script_name(name);
-
- 
- script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_analysis"); #This script should not disrupt the machine at all
- 
- 
- script_copyright("This script is Copyright (C) 2002 Andrew Hintz");
- family = "Finger abuses";
- script_family(family);
- script_dependencies("find_service.nasl");
- script_require_ports("Services/finger", 79);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  exit(0);
 }
-
-#
-# The script code starts here
-#
 
 port = get_kb_item("Services/finger");
 if(!port)port = 79;

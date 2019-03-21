@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_httpdx_38638.nasl 8469 2018-01-19 07:58:21Z teissa $
+# $Id: gb_httpdx_38638.nasl 14323 2019-03-19 13:19:09Z jschulte $
 #
 # httpdx PNG File Handling Remote Denial of Service Vulnerability
 #
@@ -26,35 +26,41 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.100525");
- script_version("$Revision: 8469 $");
- script_tag(name:"last_modification", value:"$Date: 2018-01-19 08:58:21 +0100 (Fri, 19 Jan 2018) $");
- script_tag(name:"creation_date", value:"2010-03-11 12:36:18 +0100 (Thu, 11 Mar 2010)");
- script_bugtraq_id(38638);
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_oid("1.3.6.1.4.1.25623.1.0.100525");
+  script_version("$Revision: 14323 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:19:09 +0100 (Tue, 19 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2010-03-11 12:36:18 +0100 (Thu, 11 Mar 2010)");
+  script_bugtraq_id(38638);
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 
- script_name("httpdx PNG File Handling Remote Denial of Service Vulnerability");
+  script_name("httpdx PNG File Handling Remote Denial of Service Vulnerability");
 
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/38638");
- script_xref(name : "URL" , value : "http://sourceforge.net/projects/httpdx/");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/38638");
+  script_xref(name:"URL", value:"http://sourceforge.net/projects/httpdx/");
 
- script_category(ACT_MIXED_ATTACK);
- script_family("Denial of Service");
- script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("gb_get_http_banner.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("httpdx/banner");
- script_tag(name : "summary" , value : "The 'httpdx' program is prone to a denial-of-service vulnerbaility.
+  script_category(ACT_MIXED_ATTACK);
+  script_family("Denial of Service");
+  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
+  script_dependencies("gb_get_http_banner.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("httpdx/banner");
+  script_tag(name:"summary", value:"The 'httpdx' program is prone to a denial-of-service vulnerbaility.
 
 Remote attackers can exploit this issue to cause the server to stop
 responding, denying service to legitimate users.
 
-This issue affects httpdx 1.5.3; other versions may also be affected.");
+This issue affects httpdx 1.5.3, other versions may also be affected.");
 
- script_tag(name:"qod_type", value:"remote_vul");
+  script_tag(name:"qod_type", value:"remote_vul");
 
- exit(0);
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
+  since the disclosure of this vulnerability. Likely none will be provided anymore.
+  General solution options are to upgrade to a newer release, disable respective features,
+  remove the product or replace the product by another one.");
+
+  exit(0);
 }
 
 
@@ -80,17 +86,17 @@ if(safe_checks()) {
     exit(0);
   }
 
-}  
+}
 
 else {
- 
+
    url = string("GET /res~httpdx.conf/image/php.png");
    req = http_get(item:url, port:port);
    res = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
 
    if(http_is_dead(port:port)) {
         security_message(port:port);
-        exit(0); 
+        exit(0);
    }
  }
 

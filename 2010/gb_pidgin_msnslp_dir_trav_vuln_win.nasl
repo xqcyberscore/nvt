@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pidgin_msnslp_dir_trav_vuln_win.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: gb_pidgin_msnslp_dir_trav_vuln_win.nasl 14331 2019-03-19 14:03:05Z jschulte $
 #
 # Pidgin MSN Custom Smileys File Disclosure Vulnerability (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800421");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 14331 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:03:05 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-01-16 12:13:24 +0100 (Sat, 16 Jan 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -38,6 +38,7 @@ if(description)
   script_xref(name:"URL", value:"http://secunia.com/advisories/37953/");
   script_xref(name:"URL", value:"http://www.pidgin.im/news/security/?id=42");
   script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2009/3662");
+  script_xref(name:"URL", value:"http://developer.pidgin.im/viewmtn/revision/info/c64a1adc8bda2b4aeaae1f273541afbc4f71b810");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
@@ -53,8 +54,6 @@ if(description)
   script_tag(name:"summary", value:"This host has Pidgin installed and is prone to File Disclosure
   vulnerability");
   script_tag(name:"solution", value:"Apply the patch or upgrade to Pidgin version 2.6.5
-  http://pidgin.im/download
-  http://developer.pidgin.im/viewmtn/revision/info/c64a1adc8bda2b4aeaae1f273541afbc4f71b810
 
   *****
   NOTE: Please ignore this warning if the patch is already applied.

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_cowon_jetaudio_wav_dos_vuln.nasl 11554 2018-09-22 15:11:42Z cfischer $
+# $Id: secpod_cowon_jetaudio_wav_dos_vuln.nasl 14332 2019-03-19 14:22:43Z asteins $
 #
 # COWON Media Center JetAudio .wav File Denial Of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900977");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 14332 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:22:43 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-11-20 06:52:52 +0100 (Fri, 20 Nov 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -46,8 +46,7 @@ if(description)
   script_tag(name:"impact", value:"Attackers can exploit this issue to corrupt memory and cause the application
   to crash.");
   script_tag(name:"affected", value:"COWON Media Center JetAudio 7.5.3 on Windows.");
-  script_tag(name:"solution", value:"Upgrade to COWON Media Center JetAudio version 8.0.6 or later
-  For updates refer to http://www.jetaudio.com/");
+  script_tag(name:"solution", value:"Upgrade to COWON Media Center JetAudio version 8.0.6 or later");
   script_tag(name:"summary", value:"This host has COWON Media Center JetAudio installed and is prone
   to Denial of Service vulnerability.
 
@@ -57,6 +56,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.jetaudio.com/");
   exit(0);
 }
 

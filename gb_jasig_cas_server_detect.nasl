@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jasig_cas_server_detect.nasl 10905 2018-08-10 14:32:11Z cfischer $
+# $Id: gb_jasig_cas_server_detect.nasl 14334 2019-03-19 14:35:43Z cfischer $
 #
-# Jasig Cas Server Version Detection
+# Jasig Central Authentication Service Server Version Detection
 #
 # Authors:
 # Rinu Kuriaksoe <krinu@secpod.com>
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806501");
-  script_version("$Revision: 10905 $");
+  script_version("$Revision: 14334 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:32:11 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:35:43 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-10-19 13:01:26 +0530 (Mon, 19 Oct 2015)");
-  script_name("Jasig Cas Server Version Detection");
+  script_name("Jasig Central Authentication Service Server Version Detection");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Product detection");
@@ -41,7 +41,7 @@ if(description)
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"summary", value:"Detects the installed version of
-  Jasig Cas Server.
+  Jasig Central Authentication Service Server.
 
   This script sends HTTP GET request and try to get the version from the
   response, and sets the result in KB.");
@@ -50,7 +50,6 @@ if(description)
 
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -83,7 +82,7 @@ foreach dir( make_list_unique( "/", "/cas", "/cas-server-webapp", cgi_dirs( port
 
     register_product( cpe:cpe, location:install, port:port );
 
-    log_message( data:build_detection_report( app:"Jasig CAS server",
+    log_message( data:build_detection_report( app:"Jasig Central Authentication Service Server",
                                               version:version,
                                               install:install,
                                               cpe:cpe,

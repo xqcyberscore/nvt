@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qtweb_js_n_data_uri_xss_vuln.nasl 11554 2018-09-22 15:11:42Z cfischer $
+# $Id: gb_qtweb_js_n_data_uri_xss_vuln.nasl 14325 2019-03-19 13:35:02Z asteins $
 #
 # QtWeb 'javascript:' And 'data:' URI XSS Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800899");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 14325 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:35:02 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-09-08 18:25:53 +0200 (Tue, 08 Sep 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -50,13 +50,13 @@ if(description)
   URIs in Refresh headers or Location headers in HTTP responses, which can be
   exploited via vectors related to injecting a Refresh header or Location HTTP
   response header.");
-  script_tag(name:"solution", value:"Upgrade to QtWeb version 3.2 or later
-  For updates refer to http://www.qtweb.net/");
+  script_tag(name:"solution", value:"Upgrade to QtWeb version 3.2 or later");
   script_tag(name:"summary", value:"This host is installed with QtWeb Browser and is prone to
   Cross-Site Scripting vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.qtweb.net/");
   exit(0);
 }
 

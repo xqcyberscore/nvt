@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_viart_cms_xss_vuln.nasl 5388 2017-02-21 15:13:30Z teissa $
+# $Id: gb_viart_cms_xss_vuln.nasl 14326 2019-03-19 13:40:32Z jschulte $
 #
 # ViArt CMS 'admin_articles.php' Cross Site Scripting Vulnerability
 #
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801238");
-  script_version("$Revision: 5388 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 16:13:30 +0100 (Tue, 21 Feb 2017) $");
+  script_version("$Revision: 14326 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:40:32 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-07-26 16:14:51 +0200 (Mon, 26 Jul 2010)");
   script_bugtraq_id(41700);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_name("ViArt CMS 'admin_articles.php' Cross Site Scripting Vulnerability");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/40621");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/60408");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/40621");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/60408");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2010 Greenbone Networks GmbH");
@@ -44,22 +44,19 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow attacker to execute arbitrary
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary
   script code in the browser of an unsuspecting user in the context of the
   affected site. This may let the attacker steal cookie-based authentication
-  credentials and launch other attacks.
-
-  Impact Level: Application");
-  script_tag(name : "affected" , value : "ViArt CMS Version 3.6");
-  script_tag(name : "insight" , value : "The flaw is caused by improper validation of user-supplied input
+  credentials and launch other attacks.");
+  script_tag(name:"affected", value:"ViArt CMS Version 3.6");
+  script_tag(name:"insight", value:"The flaw is caused by improper validation of user-supplied input
   via the 's' parameter to 'admin/admin_articles.php' that allows the attackers
   to execute arbitrary HTML and script code in a logged-in user's browser session
   in context of an affected site.");
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
-  script_tag(name : "summary" , value : "This host is running ViArt CMS and is prone to cross site
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"This host is running ViArt CMS and is prone to cross site
   scripting vulnerability.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
@@ -72,10 +69,8 @@ include("http_func.inc");
 include("version_func.inc");
 include("http_keepalive.inc");
 
-## Get HTTP Port
 port = get_http_port(default:80);
 
-## Check the php support
 if(!can_host_php(port:port)){
   exit(0);
 }
@@ -85,18 +80,14 @@ foreach dir (make_list_unique("/viart_shop", "/viart_cms", "/", cgi_dirs(port:po
 
   if(dir == "/") dir = "";
 
-  ## Send and Receive the response
   req = http_get(item: dir + "/viart_shop.xml", port:port);
   res = http_keepalive_send_recv(port:port, data:req);
 
-  ## Confirm the application
   if(">ViArt Shop PHP Shopping Cart<" >< res)
   {
-    ## Get ViArt CMS Version
     ver = eregmatch(pattern:"<Program_Version>([0-9.]+)<", string:res);
     if(ver[1])
     {
-      ## Check for ViArt CMS Version 3.6
       if(version_is_equal(version:ver[1], test_version:"3.6")){
         security_message(port:port);
         exit(0);

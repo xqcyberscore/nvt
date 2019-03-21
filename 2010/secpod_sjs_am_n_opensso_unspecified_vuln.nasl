@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_sjs_am_n_opensso_unspecified_vuln.nasl 10864 2018-08-09 15:04:27Z cfischer $
+# $Id: secpod_sjs_am_n_opensso_unspecified_vuln.nasl 14326 2019-03-19 13:40:32Z jschulte $
 #
 # Sun JS Access Manager And OpenSSO Unspecified Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902165");
-  script_version("$Revision: 10864 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-09 17:04:27 +0200 (Thu, 09 Aug 2018) $");
+  script_version("$Revision: 14326 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:40:32 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-04-29 10:04:32 +0200 (Thu, 29 Apr 2010)");
   script_cve_id("CVE-2010-0894");
   script_bugtraq_id(39457);
@@ -43,12 +43,11 @@ if(description)
 
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/57750");
   script_xref(name:"URL", value:"http://www.us-cert.gov/cas/techalerts/TA10-103B.html");
+  script_xref(name:"URL", value:"http://sunsolve.sun.com/search/document.do?assetkey=1-66-267568-1");
   script_xref(name:"URL", value:"http://www.oracle.com/technology/deploy/security/critical-patch-updates/cpuapr2010.html");
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to affect confidentiality
-  and integrity via unknown vectors.
-
-  Impact Level: System/Application");
+  and integrity via unknown vectors.");
 
   script_tag(name:"affected", value:"Sun OpenSSO Enterprise version 8.0,
 
@@ -61,7 +60,6 @@ if(description)
   unspecified vulnerability.");
 
   script_tag(name:"solution", value:"Apply the security updates.
-  http://sunsolve.sun.com/search/document.do?assetkey=1-66-267568-1
 
   *****
   NOTE: Ignore this warning if above mentioned patch is already applied.

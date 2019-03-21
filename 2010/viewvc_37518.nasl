@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: viewvc_37518.nasl 8187 2017-12-20 07:30:09Z teissa $
+# $Id: viewvc_37518.nasl 14326 2019-03-19 13:40:32Z jschulte $
 #
 # ViewVC Versions Prior to 1.1.3 Multiple Remote Vulnerabilities
 #
@@ -27,49 +27,47 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "ViewVC is prone to these security vulnerabilities:
-
-- A security vulnerability that involves root listing of per-root
-  authorization configuration.
-- A security vulnerability in 'query.py' involving the 'forbidden'
-  authorizer (or none).
-
-Versions prior to ViewVC 1.1.3 are vulnerable.";
-
-tag_solution = "Vendor updates are available. Please see the references for details.";
-
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.100414");
- script_version("$Revision: 8187 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-20 08:30:09 +0100 (Wed, 20 Dec 2017) $");
- script_tag(name:"creation_date", value:"2010-01-04 18:09:12 +0100 (Mon, 04 Jan 2010)");
- script_cve_id("CVE-2010-0004", "CVE-2010-0005");
- script_bugtraq_id(37518);
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- 
+  script_oid("1.3.6.1.4.1.25623.1.0.100414");
+  script_version("$Revision: 14326 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:40:32 +0100 (Tue, 19 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2010-01-04 18:09:12 +0100 (Mon, 04 Jan 2010)");
+  script_cve_id("CVE-2010-0004", "CVE-2010-0005");
+  script_bugtraq_id(37518);
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
- script_name("ViewVC Versions Prior to 1.1.3 Multiple Remote Vulnerabilities");
 
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/37518");
- script_xref(name : "URL" , value : "http://viewvc.tigris.org/source/browse/viewvc/trunk/CHANGES?rev=HEAD");
- script_xref(name : "URL" , value : "http://viewvc.tigris.org/");
+  script_name("ViewVC Versions Prior to 1.1.3 Multiple Remote Vulnerabilities");
 
- script_tag(name:"qod_type", value:"remote_banner");
- script_category(ACT_GATHER_INFO);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("viewvc_detect.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/37518");
+  script_xref(name:"URL", value:"http://viewvc.tigris.org/source/browse/viewvc/trunk/CHANGES?rev=HEAD");
+  script_xref(name:"URL", value:"http://viewvc.tigris.org/");
+
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_category(ACT_GATHER_INFO);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
+  script_dependencies("viewvc_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution", value:"Vendor updates are available. Please see the references for details.");
+  script_tag(name:"summary", value:"ViewVC is prone to these security vulnerabilities:
+
+  - A security vulnerability that involves root listing of per-root
+  authorization configuration.
+
+  - A security vulnerability in 'query.py' involving the 'forbidden'
+  authorizer (or none).
+
+Versions prior to ViewVC 1.1.3 are vulnerable.");
+  exit(0);
 }
 
 include("http_func.inc");
-include("http_keepalive.inc");
+
 include("version_func.inc");
 
 port = get_http_port(default:80);

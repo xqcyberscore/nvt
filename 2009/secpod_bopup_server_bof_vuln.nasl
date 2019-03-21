@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_bopup_server_bof_vuln.nasl 11554 2018-09-22 15:11:42Z cfischer $
+# $Id: secpod_bopup_server_bof_vuln.nasl 14330 2019-03-19 13:59:11Z asteins $
 #
 # Bopup Communication Server Remote Buffer Overflow Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900687");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 14330 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:59:11 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-07-07 11:58:41 +0200 (Tue, 07 Jul 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -50,13 +50,13 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to a boundary error that can be exploited to cause
   a stack-based buffer overflow via a specially crafted TCP packet sent to
   port 19810.");
-  script_tag(name:"solution", value:"Upgrade to Bopup Communications Server version 3.3.14.8456 or later
-  For updates refer to http://www.blabsoft.com/products/server");
+  script_tag(name:"solution", value:"Upgrade to Bopup Communications Server version 3.3.14.8456 or later");
   script_tag(name:"summary", value:"This host has Bopup Communication Server installed and is prone to Buffer
   Overflow Vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.blabsoft.com/products/server");
   exit(0);
 }
 

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: novell_netbasic_directory_traversal.nasl 9348 2018-04-06 07:01:19Z cfischer $
+# $Id: novell_netbasic_directory_traversal.nasl 14336 2019-03-19 14:53:10Z mmartin $
 # Description: Novell Netbasic Scripting Server Directory Traversal
 #
 # Authors:
@@ -22,50 +22,41 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "Novell Netbasic Scripting Server Directory Traversal
-
-It is possible to escape out of the root directory of the scripting server by 
-substituting a forward or backward slash for %5C. As a result, system 
-information, such as environment and user information, could be obtained from 
-the Netware server.
-
-Example: http://server/nsn/..%5Cutil/userlist.bas";
-
-tag_solution = "Apply the relevant patch and remove all default files from their
-respective directories.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12050");
-  script_version("$Revision: 9348 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 14336 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:53:10 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(5523);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_cve_id("CVE-2002-1417");
+  script_name("Novell Netbasic Scripting Server Directory Traversal");
 
- name = "Novell Netbasic Scripting Server Directory Traversal";
- script_name(name);
- 
 
- 
- 
- script_category(ACT_GATHER_INFO);
+
+
+  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_analysis");
- script_copyright("This script is Copyright (C) 2004 David Kyger");
- family = "Netware";
- script_family(family);
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  script_copyright("This script is Copyright (C) 2004 David Kyger");
+  script_family("Netware");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution", value:"Apply the relevant patch and remove all default files from their
+respective directories.");
+  script_tag(name:"summary", value:"Novell Netbasic Scripting Server Directory Traversal
+
+It is possible to escape out of the root directory of the scripting server by
+substituting a forward or backward slash for %5C. As a result, system
+information, such as environment and user information, could be obtained from
+the Netware server.
+
+Example: http://server/nsn/..%5Cutil/userlist.bas");
+  exit(0);
 }
 
-#
-# The script code starts here
-#
 include("http_func.inc");
 include("http_keepalive.inc");
 
@@ -91,9 +82,9 @@ function check(req)
 flag = 0;
 
 warning = string("
-It is possible to escape out of the root directory of the scripting server by 
-substituting a forward or backward slash for %5C. As a result, system 
-information, such as environment and user information, could be obtained from 
+It is possible to escape out of the root directory of the scripting server by
+substituting a forward or backward slash for %5C. As a result, system
+information, such as environment and user information, could be obtained from
 the Netware server.
 
 The following Novell scripts can be executed on the server:");
@@ -112,7 +103,7 @@ if(get_port_state(port)) {
         pat8 = "Interrupt Secondary";
         pat9 = "SYS:NSN\\WEB\\";
         pat10 = "SYS:NSN\\TEMP\\";
-        pat11 = "NOT-LOGGED-IN"; 
+        pat11 = "NOT-LOGGED-IN";
         pat12 = "--------------";
         pat13 = "ADMSERV_ROOT";
         pat14 = "ADMSERV_PWD";
@@ -126,7 +117,7 @@ if(get_port_state(port)) {
 	fl[4] = "/nsn/..%5Cutil/set.bas";
 	fl[5] = "/nsn/..%5Cutil/userlist.bas";
 	fl[6] = "/nsn/..%5Cweb/env.bas";
-	fl[7] = "/nsn/..%5Cwebdemo/fdir.bas"; 
+	fl[7] = "/nsn/..%5Cwebdemo/fdir.bas";
 
    for(i=0;fl[i];i=i+1) {
    req = http_get(item:fl[i], port:port);

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webcamxp_dir_trav_vuln.nasl 11546 2018-09-22 11:30:16Z cfischer $
+# $Id: gb_webcamxp_dir_trav_vuln.nasl 14332 2019-03-19 14:22:43Z asteins $
 #
 # webcamXP URL Directory Traversal Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800222");
-  script_version("$Revision: 11546 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 13:30:16 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 14332 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:22:43 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-01-09 13:48:55 +0100 (Fri, 09 Jan 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -54,14 +54,14 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to improper handling of URL-encoded forward-slashes i.e, ../
   which causes execution of malicious URI into the context of the application.");
 
-  script_tag(name:"solution", value:"Upgrade to webcamXP version 5.5.0.8 or later
-  For updates refer to http://www.webcamxp.com");
+  script_tag(name:"solution", value:"Upgrade to webcamXP version 5.5.0.8 or later");
 
   script_tag(name:"summary", value:"This host is installed with webcamXP and is prone to Directory
   Traversal Vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.webcamxp.com");
   exit(0);
 }
 

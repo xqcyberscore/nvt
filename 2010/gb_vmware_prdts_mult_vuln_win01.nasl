@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_prdts_mult_vuln_win01.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: gb_vmware_prdts_mult_vuln_win01.nasl 14331 2019-03-19 14:03:05Z jschulte $
 #
 # VMware Products Multiple Vulnerabilities (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801319");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 14331 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:03:05 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-04-16 16:17:26 +0200 (Fri, 16 Apr 2010)");
   script_cve_id("CVE-2010-1139", "CVE-2009-1564", "CVE-2009-1565");
   script_bugtraq_id(39345, 39363, 39364);
@@ -61,13 +61,10 @@ if(description)
   script_tag(name:"summary", value:"The host is installed with VMWare products and are prone to multiple
   vulnerabilities.");
   script_tag(name:"solution", value:"Upgrade to workstation version 6.5.4 build 246459,
-  http://www.vmware.com/products/ws/
 
   Upgrade to VMware player version 6.5.4 build 246459,
-  http://www.vmware.com/products/player/
 
   Apply workaround for VMware Server version 2.x,
-  http://www.vmware.com/resources/techresources/726
 
   *****
   NOTE: Ignore this warning, if above mentioned workaround is manually applied.

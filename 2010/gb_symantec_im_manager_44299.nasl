@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_im_manager_44299.nasl 8495 2018-01-23 07:57:49Z teissa $
+# $Id: gb_symantec_im_manager_44299.nasl 14326 2019-03-19 13:40:32Z jschulte $
 #
 # Symantec IM Manager Multiple SQL Injection Vulnerabilities
 #
@@ -24,7 +24,31 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Symantec IM Manager is prone to multiple SQL-injection vulnerabilities
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.100876");
+  script_version("$Revision: 14326 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:40:32 +0100 (Tue, 19 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2010-10-28 13:41:07 +0200 (Thu, 28 Oct 2010)");
+  script_bugtraq_id(44299);
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_cve_id("CVE-2010-0112");
+
+  script_name("Symantec IM Manager Multiple SQL Injection Vulnerabilities");
+
+
+  script_tag(name:"qod_type", value:"registry");
+  script_category(ACT_GATHER_INFO);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
+  script_dependencies("secpod_symantec_prdts_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("Symantec/IM/Manager");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution", value:"Vendor updates are available. Please see the references for more
+information.");
+  script_tag(name:"summary", value:"Symantec IM Manager is prone to multiple SQL-injection vulnerabilities
 because it fails to sufficiently sanitize user-supplied data before
 using it in an SQL query.
 
@@ -32,45 +56,18 @@ A successful exploit can allow an attacker to compromise the
 application, access or modify data, or exploit latent vulnerabilities
 in the underlying database.
 
-Symantec IM Manager versions 8.4.15 and prior are vulnerable.";
-
-tag_solution = "Vendor updates are available. Please see the references for more
-information.";
-
-if (description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.100876");
- script_version("$Revision: 8495 $");
- script_tag(name:"last_modification", value:"$Date: 2018-01-23 08:57:49 +0100 (Tue, 23 Jan 2018) $");
- script_tag(name:"creation_date", value:"2010-10-28 13:41:07 +0200 (Thu, 28 Oct 2010)");
- script_bugtraq_id(44299);
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_cve_id("CVE-2010-0112");
-
- script_name("Symantec IM Manager Multiple SQL Injection Vulnerabilities");
-
-
- script_tag(name:"qod_type", value:"registry");
- script_category(ACT_GATHER_INFO);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("secpod_symantec_prdts_detect.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("Symantec/IM/Manager");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_xref(name : "URL" , value : "https://www.securityfocus.com/bid/44299");
- script_xref(name : "URL" , value : "http://www.symantec.com");
- script_xref(name : "URL" , value : "http://www.symantec.com/business/security_response/securityupdates/detail.jsp?fid=security_advisory&pvid=security_advisory&year=2010&suid=20101027_01");
- script_xref(name : "URL" , value : "http://www.zerodayinitiative.com/advisories/ZDI-10-220/");
- script_xref(name : "URL" , value : "http://www.zerodayinitiative.com/advisories/ZDI-10-221/");
- script_xref(name : "URL" , value : "http://www.zerodayinitiative.com/advisories/ZDI-10-222/");
- script_xref(name : "URL" , value : "http://www.zerodayinitiative.com/advisories/ZDI-10-223/");
- script_xref(name : "URL" , value : "http://www.zerodayinitiative.com/advisories/ZDI-10-224/");
- script_xref(name : "URL" , value : "http://www.zerodayinitiative.com/advisories/ZDI-10-225/");
- script_xref(name : "URL" , value : "http://www.zerodayinitiative.com/advisories/ZDI-10-226/");
- exit(0);
+Symantec IM Manager versions 8.4.15 and prior are vulnerable.");
+  script_xref(name:"URL", value:"https://www.securityfocus.com/bid/44299");
+  script_xref(name:"URL", value:"http://www.symantec.com");
+  script_xref(name:"URL", value:"http://www.symantec.com/business/security_response/securityupdates/detail.jsp?fid=security_advisory&pvid=security_advisory&year=2010&suid=20101027_01");
+  script_xref(name:"URL", value:"http://www.zerodayinitiative.com/advisories/ZDI-10-220/");
+  script_xref(name:"URL", value:"http://www.zerodayinitiative.com/advisories/ZDI-10-221/");
+  script_xref(name:"URL", value:"http://www.zerodayinitiative.com/advisories/ZDI-10-222/");
+  script_xref(name:"URL", value:"http://www.zerodayinitiative.com/advisories/ZDI-10-223/");
+  script_xref(name:"URL", value:"http://www.zerodayinitiative.com/advisories/ZDI-10-224/");
+  script_xref(name:"URL", value:"http://www.zerodayinitiative.com/advisories/ZDI-10-225/");
+  script_xref(name:"URL", value:"http://www.zerodayinitiative.com/advisories/ZDI-10-226/");
+  exit(0);
 }
 
 include("http_func.inc");
@@ -93,7 +90,7 @@ if(!imVer){
   exit(0);
 }
 
-if(version_is_less(version:imVer, test_version:"8.4.16")) { 
+if(version_is_less(version:imVer, test_version:"8.4.16")) {
   security_message(port:httpPort);
   exit(0);
 }

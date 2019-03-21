@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_2532gigs_mult_vuln_aug09.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: gb_2532gigs_mult_vuln_aug09.nasl 14335 2019-03-19 14:46:57Z asteins $
 #
 # 2532|Gigs Directory Traversal And SQL Injection Multiple Vulnerabilities
 #
@@ -24,46 +24,20 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow attacker to cause directory
-traversal or SQL injection attacks, and can execute arbitrary code when
-register_globals is enabled and magic_quotes_gpc is disabled.
-
-Impact level: System/Application";
-
-tag_affected = "2532-Gigs version 1.2.2 and prior.";
-
-tag_insight = "- Vulnerability exists in activateuser.php, manage_venues.php,
-mini_calendar.php, deleteuser.php, settings.php, and manage_gigs.php files when
-input passed to the 'language' parameter is not properly verified before being
-used to include files via a .. (dot dot).
-- Input passed to the 'username' and 'password' parameters in checkuser.php
-is not properly sanitised before being used in SQL queries.
-- Error in upload_flyer.php which can be exploited by uploading a file with an
-executable extension, then accessing it via a direct request to the file in
-flyers/.";
-
-tag_solution = "No solution or patch was made available for at least one year
-since disclosure of this vulnerability. Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.";
-
-tag_summary = "This host is running 2532-Gigs and is prone to Directory Traversal and
-SQL Injection Vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800682");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 14335 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:46:57 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-08-20 09:27:17 +0200 (Thu, 20 Aug 2009)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-2008-6901", "CVE-2008-6902", "CVE-2008-6907");
   script_bugtraq_id(32911, 32913);
   script_name("2532|Gigs Directory Traversal And SQL Injection Multiple Vulnerabilities");
-  script_xref(name : "URL" , value : "http://milw0rm.com/exploits/7511");
-  script_xref(name : "URL" , value : "http://milw0rm.com/exploits/7510");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/26585");
+  script_xref(name:"URL", value:"http://milw0rm.com/exploits/7511");
+  script_xref(name:"URL", value:"http://milw0rm.com/exploits/7510");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/26585");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_MIXED_ATTACK);
@@ -71,11 +45,26 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_2532gigs_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "impact" , value : tag_impact);
+  script_tag(name:"affected", value:"2532-Gigs version 1.2.2 and prior.");
+  script_tag(name:"insight", value:"- Vulnerability exists in activateuser.php, manage_venues.php,
+mini_calendar.php, deleteuser.php, settings.php, and manage_gigs.php files when
+input passed to the 'language' parameter is not properly verified before being
+used to include files via a .. (dot dot).
+
+  - Input passed to the 'username' and 'password' parameters in checkuser.php
+is not properly sanitised before being used in SQL queries.
+
+  - Error in upload_flyer.php which can be exploited by uploading a file with an
+executable extension, then accessing it via a direct request to the file in
+flyers/.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"This host is running 2532-Gigs and is prone to Directory Traversal and
+SQL Injection Vulnerabilities.");
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to cause directory
+traversal or SQL injection attacks, and can execute arbitrary code when
+register_globals is enabled and magic_quotes_gpc is disabled.");
   script_tag(name:"solution_type", value:"WillNotFix");
   exit(0);
 }
@@ -94,7 +83,7 @@ gigsVer = eregmatch(pattern:"^(.+) under (/.*)$", string:gigsVer);
 
 if((gigsVer[2] != NULL) && (!safe_checks()))
 {
-  attack = make_list("/deleteuser.php?language=../../../../../../../../../../", 
+  attack = make_list("/deleteuser.php?language=../../../../../../../../../../",
                      "/settings.php?language=../../../../../../../../../../",
                      "/mini_calendar?language=../../../../../../../../../../",
                      "/manage_venues.php?language=../../../../../../../../../../",

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_beanstalkd_remote_cmd_exec_vuln.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: secpod_beanstalkd_remote_cmd_exec_vuln.nasl 14326 2019-03-19 13:40:32Z jschulte $
 #
 # Beanstalkd Job Data Remote Command Execution Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901122");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 14326 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:40:32 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-06-21 15:32:44 +0200 (Mon, 21 Jun 2010)");
   script_cve_id("CVE-2010-2060");
   script_bugtraq_id(40516);
@@ -52,13 +52,13 @@ if(description)
   by the dispatch_cmd function. A remote attacker could exploit this
   vulnerability using a specially-crafted job payload data to execute
   arbitrary Beanstalk commands.");
-  script_tag(name:"solution", value:"Upgrade to Beanstalkd version 1.4.6 or later,
-  For updates refer to http://kr.github.com/beanstalkd/download.html");
+  script_tag(name:"solution", value:"Upgrade to Beanstalkd version 1.4.6 or later.");
   script_tag(name:"summary", value:"This host is running Beanstalkd and is prone to remote command
   execution vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://kr.github.com/beanstalkd/download.html");
   exit(0);
 }
 

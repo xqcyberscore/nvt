@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GScripts_cve_2009_1361.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: GScripts_cve_2009_1361.nasl 14332 2019-03-19 14:22:43Z asteins $
 #
 # GScripts.net DNS Tools 'dig.php' Remote Command Execution
 # Vulnerability
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100182");
-  script_version("$Revision: 7577 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+  script_version("$Revision: 14332 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:22:43 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-05-02 19:46:33 +0200 (Sat, 02 May 2009)");
   script_bugtraq_id(34559);
   script_cve_id("CVE-2009-1361", "CVE-2009-1916");
@@ -44,18 +44,20 @@ if(description)
   script_mandatory_keys("Host/runs_unixoide");
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  tag_summary = "GScripts.net DNS Tools is prone to a remote command-execution
-  vulnerability because the software fails to adequately sanitize user-supplied input.";
-
-  tag_impact = "Successful attacks can compromise the affected software and possibly
-  the computer.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
+  script_tag(name:"summary", value:"GScripts.net DNS Tools is prone to a remote command-execution
+  vulnerability because the software fails to adequately sanitize user-supplied input.");
+  script_tag(name:"impact", value:"Successful attacks can compromise the affected software and possibly
+  the computer.");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/34559");
 
   script_tag(name:"qod_type", value:"remote_vul");
+
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
+  since the disclosure of this vulnerability. Likely none will be provided anymore.
+  General solution options are to upgrade to a newer release, disable respective features,
+  remove the product or replace the product by another one.");
 
   exit(0);
 }
@@ -70,7 +72,7 @@ if(!can_host_php(port:port))exit(0);
 
 files = traversal_files( "linux" );
 
-foreach dir( make_list_unique( "/whois", "/dns_tools", cgi_dirs( port:port ) ) ) { 
+foreach dir( make_list_unique( "/whois", "/dns_tools", cgi_dirs( port:port ) ) ) {
 
   if( dir == "/" ) dir = "";
 

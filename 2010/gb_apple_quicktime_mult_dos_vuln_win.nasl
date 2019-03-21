@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_quicktime_mult_dos_vuln_win.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: gb_apple_quicktime_mult_dos_vuln_win.nasl 14331 2019-03-19 14:03:05Z jschulte $
 #
 # Apple QuickTime Multiple Denial Of Service Vulnerabilities (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800494");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 14331 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:03:05 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-04-06 08:47:09 +0200 (Tue, 06 Apr 2010)");
   script_cve_id("CVE-2010-0527", "CVE-2010-0529", "CVE-2010-0528", "CVE-2010-0536");
   script_tag(name:"cvss_base", value:"9.3");
@@ -55,8 +55,7 @@ if(description)
   - An integer overflow in the handling of 'PICT' images.
 
   - A memory corruption the handling of color tables in movie files.");
-  script_tag(name:"solution", value:"Upgrade to Apple QuickTime version 7.6.6 or later,
-  http://www.apple.com/quicktime/download/");
+  script_tag(name:"solution", value:"Upgrade to Apple QuickTime version 7.6.6 or later.");
   script_tag(name:"summary", value:"The host is installed with Apple QuickTime and is prone to
    multiple Denial Of Service vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ez_dos.nasl 4830 2016-12-21 11:48:51Z cfi $
+# $Id: ez_dos.nasl 14336 2019-03-19 14:53:10Z mmartin $
 #
 # eZ/eZphotoshare Denial of Service
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14682");
-  script_version("$Revision: 4830 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-21 12:48:51 +0100 (Wed, 21 Dec 2016) $");
+  script_version("$Revision: 14336 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:53:10 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(11129);
   script_tag(name:"cvss_base", value:"5.0");
@@ -44,19 +44,14 @@ if(description)
   script_dependencies("find_service.nasl");
   script_require_ports(10101);
 
-  tag_summary = "The remote host runs eZ/eZphotoshare, a service for sharing and exchanging 
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution", value:"Upgrade to the latest version of this software.");
+  script_tag(name:"summary", value:"The remote host runs eZ/eZphotoshare, a service for sharing and exchanging
   digital photos.
 
-  This version is vulnerable to a denial of service attack.";
-
-  tag_impact = "An attacker could prevent the remote service from accepting requests 
-  from users by establishing quickly multiple connections from the same host.";
-
-  tag_solution = "Upgrade to the latest version of this software.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
+  This version is vulnerable to a denial of service attack.");
+  script_tag(name:"impact", value:"An attacker could prevent the remote service from accepting requests
+  from users by establishing quickly multiple connections from the same host.");
 
   script_tag(name:"qod_type", value:"remote_vul");
 
@@ -65,11 +60,11 @@ if(description)
 
 port = 10101;
 
-if( get_port_state( port ) ) { 
+if( get_port_state( port ) ) {
 
   soc = open_sock_tcp(port);
   if (! soc) exit(0);
-  
+
   s[0] = soc;
 
   #80 connections should be enough, we just add few one :)

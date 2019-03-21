@@ -20,8 +20,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112538");
-  script_version("$Revision: 14303 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 09:52:47 +0100 (Tue, 19 Mar 2019) $");
+  script_version("$Revision: 14313 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 11:54:46 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-03-19 09:51:12 +0100 (Tue, 19 Mar 2019)");
   script_tag(name:"cvss_base", value:"5.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:P");
@@ -48,7 +48,8 @@ if( description )
   script_tag(name:"affected", value:"OTRS version 6.0.13 and 5.0.31.");
   script_tag(name:"solution", value:"Update to OTRS version 6.0.14 or 5.0.32 respectively.
 
-  As a workaround after a performed migration, users can restore the user_preferences table from their backup and
+
+  NOTE: If the system has been affected by the data loss, users can restore the user_preferences table from their backup and
   delete the OTRS cache via otrs/bin/otrs.Console.pl Maint::Delete::Cache. If the LDAP Sync module is used,
   it is sufficient to log in to the system again.");
 
@@ -65,13 +66,13 @@ include( "version_func.inc" );
 if( ! port = get_app_port( cpe: CPE ) ) exit( 0 );
 if( ! version = get_app_version( cpe: CPE, port: port ) ) exit( 0 );
 
-if( version_in_range( version: version, test_version: "5.0.31" ) ) {
+if( version_in_range( version: version, test_version: "5.0.0", test_version2: "5.0.31" ) ) {
   report = report_fixed_ver( installed_version: version, fixed_version: "5.0.32" );
   security_message( data: report, port: port );
   exit( 0 );
 }
 
-if( version_is_equal( version: version, test_version: "6.0.13" ) ) {
+if( version_in_range( version: version, test_version: "6.0.0", test_version2: "6.0.13" ) ) {
   report = report_fixed_ver( installed_version: version, fixed_version: "6.0.14" );
   security_message( data: report, port: port );
   exit( 0 );

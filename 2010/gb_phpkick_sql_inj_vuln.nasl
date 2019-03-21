@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpkick_sql_inj_vuln.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_phpkick_sql_inj_vuln.nasl 14326 2019-03-19 13:40:32Z jschulte $
 #
 # PHPKick 'statistics.php' SQL Injection Vulnerability
 #
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801431");
-  script_version("$Revision: 5323 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+  script_version("$Revision: 14326 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:40:32 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-08-19 10:23:11 +0200 (Thu, 19 Aug 2010)");
   script_cve_id("CVE-2010-3029");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("PHPKick 'statistics.php' SQL Injection Vulnerability");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/14578/");
-  script_xref(name : "URL" , value : "http://securityreason.com/exploitalert/8639");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/14578/");
+  script_xref(name:"URL", value:"http://securityreason.com/exploitalert/8639");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2010 Greenbone Networks GmbH");
@@ -44,19 +44,16 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "insight" , value : "The flaw exists due to an error in 'statistics.php', which fails
+  script_tag(name:"insight", value:"The flaw exists due to an error in 'statistics.php', which fails
   to properly sanitise input data passed via the 'gameday' parameter in overview action.");
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
-  script_tag(name : "summary" , value : "This host is running PHPKick and is prone SQL injection
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"This host is running PHPKick and is prone SQL injection
   vulnerability.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow attacker to view, add, modify
-  or delete information in the back-end database.
-
-  Impact Level: Application.");
-  script_tag(name : "affected" , value : "PHPKick version 0.8");
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to view, add, modify
+  or delete information in the back-end database.");
+  script_tag(name:"affected", value:"PHPKick version 0.8");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_app");
@@ -67,10 +64,8 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Get HTTP Port
 phpPort = get_http_port(default:80);
 
-## Check the php support
 if(!can_host_php(port:phpPort)){
   exit(0);
 }
@@ -80,13 +75,10 @@ foreach dir (make_list_unique("/phpkick", "/PHPKick", "/", cgi_dirs(port:phpPort
 
   if(dir == "/") dir = "";
 
-  ## Send and Receive request
   rcvRes = http_get_cache(item: dir + "/index.php", port:phpPort);
 
-  ## Confirm application is PHPKick
   if("<TITLE>PHPKick</TITLE>" >< rcvRes)
   {
-    ## Try exploit and check response to confirm vulnerability
     sndReq = http_get(item:string(dir, "/statistics.php?action=overview" +
                            "&gameday=,"), port:phpPort);
     rcvRes = http_keepalive_send_recv(port:phpPort, data:sndReq);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: postgresql_detect.nasl 11665 2018-09-28 07:14:18Z cfischer $
+# $Id: postgresql_detect.nasl 14324 2019-03-19 13:31:53Z cfischer $
 #
 # PostgreSQL Detection
 #
@@ -33,8 +33,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100151");
-  script_version("$Revision: 11665 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 09:14:18 +0200 (Fri, 28 Sep 2018) $");
+  script_version("$Revision: 14324 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:31:53 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-04-23 21:21:19 +0200 (Thu, 23 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -47,8 +47,10 @@ if(description)
   script_add_preference(name:"Postgres Username:", value:"postgres", type:"entry");
   script_add_preference(name:"Postgres Password:", value:"postgres", type:"password");
 
+  script_xref(name:"URL", value:"http://http://www.postgresql.org");
+
   script_tag(name:"summary", value:"Detection of PostgreSQL, a open source object-relational
-  database system (http://www.postgresql.org).
+  database system.
 
   The script sends a connection request to the server (user:postgres, DB:postgres)
   and attempts to extract the version number from the reply.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_mult_vuln05_oct15.nasl 9940 2018-05-23 15:46:09Z cfischer $
+# $Id: gb_apple_macosx_mult_vuln05_oct15.nasl 14304 2019-03-19 09:10:40Z cfischer $
 #
 # Apple Mac OS X Multiple Vulnerabilities-05 October-15
 #
@@ -27,37 +27,35 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806149");
-  script_version("$Revision: 9940 $");
+  script_version("$Revision: 14304 $");
   script_cve_id("CVE-2014-4416", "CVE-2014-4403", "CVE-2014-4402", "CVE-2014-4401",
                 "CVE-2014-4400", "CVE-2014-4399", "CVE-2014-4398", "CVE-2014-4397",
                 "CVE-2014-4396", "CVE-2014-4395", "CVE-2014-4394", "CVE-2014-4393",
                 "CVE-2014-4390", "CVE-2014-4376", "CVE-2014-4350", "CVE-2014-1391");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-23 17:46:09 +0200 (Wed, 23 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 10:10:40 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-10-29 14:23:09 +0530 (Thu, 29 Oct 2015)");
   script_name("Apple Mac OS X Multiple Vulnerabilities-05 October-15");
 
-  script_tag(name: "summary" , value:"This host is running Apple Mac OS X and
+  script_tag(name:"summary", value:"This host is running Apple Mac OS X and
   is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exists. For details refer
+  script_tag(name:"insight", value:"Multiple flaws exists. For details refer
   reference section.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow attacker
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker
   to obtain sensitive information, execute arbitrary code, bypass intended launch
   restrictions and access restrictions, cause a denial of service, write to
-  arbitrary files,  execute arbitrary code with system privilege.
+  arbitrary files, execute arbitrary code with system privilege.");
 
-  Impact Level: System/Application");
-
-  script_tag(name: "affected" , value:"Apple Mac OS X versions 10.7.x through
+  script_tag(name:"affected", value:"Apple Mac OS X versions 10.7.x through
   10.7.5 prior to security update 2014-004, 10.8.x through 10.8.5 prior to
   security update 2014-004 and 10.9.x before 10.9.5");
 
-  script_tag(name: "solution" , value:"Upgrade Apple Mac OS X 10.9.x to version
+  script_tag(name:"solution", value:"Upgrade Apple Mac OS X 10.9.x to version
   10.9.5 or later or apply appropriate patch for Apple Mac OS X 10.7.x and 10.8.x.
   For updates refer to Reference links.");
 
@@ -65,15 +63,15 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "https://support.apple.com/en-us/HT204532");
+  script_xref(name:"URL", value:"https://support.apple.com/en-us/HT204532");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Mac OS X Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/osx_name", "ssh/login/osx_version");
+  script_mandatory_keys("ssh/login/osx_name", "ssh/login/osx_version", re:"ssh/login/osx_version=^10\.[7-9]");
+
   exit(0);
 }
-
 
 include("version_func.inc");
 
@@ -83,11 +81,11 @@ if(!osName || "Mac OS X" >!< osName){
 }
 
 osVer = get_kb_item("ssh/login/osx_version");
-if(!osVer || osVer !~ "^(10\.(7|8|9))"){
+if(!osVer || osVer !~ "^10\.[7-9]"){
   exit(0);
 }
 
-if(osVer =~ "^(10\.(7|8))")
+if(osVer =~ "^10\.[78]")
 {
   if(version_in_range(version:osVer, test_version:"10.7", test_version2:"10.8.4") ||
      version_in_range(version:osVer, test_version:"10.8", test_version2:"10.7.4")){
@@ -119,4 +117,5 @@ if(fix)
   security_message(data:report);
   exit(0);
 }
-exit(0);
+
+exit(99);

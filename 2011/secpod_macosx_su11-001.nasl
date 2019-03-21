@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_macosx_su11-001.nasl 10023 2018-05-30 09:57:40Z cfischer $
+# $Id: secpod_macosx_su11-001.nasl 14307 2019-03-19 10:09:27Z cfischer $
 #
 # Mac OS X v10.6.6 Multiple Vulnerabilities (2011-001)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902470");
-  script_version("$Revision: 10023 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-30 11:57:40 +0200 (Wed, 30 May 2018) $");
+  script_version("$Revision: 14307 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 11:09:27 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-08-26 14:59:42 +0200 (Fri, 26 Aug 2011)");
   script_cve_id("CVE-2011-0172", "CVE-2010-1452", "CVE-2010-2068", "CVE-2011-0173",
                 "CVE-2011-0174", "CVE-2011-0175", "CVE-2011-0176", "CVE-2011-0177",
@@ -53,22 +53,19 @@ if(description)
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("Mac OS X v10.6.6 Multiple Vulnerabilities (2011-001)");
-  script_xref(name : "URL" , value : "http://support.apple.com/kb/HT1222");
-  script_xref(name : "URL" , value : "http://lists.apple.com/archives/security-announce//2011//Mar/msg00006.html");
+  script_xref(name:"URL", value:"http://support.apple.com/kb/HT1222");
+  script_xref(name:"URL", value:"http://lists.apple.com/archives/security-announce//2011//Mar/msg00006.html");
 
   script_copyright("Copyright (c) 2011 SecPod");
   script_category(ACT_GATHER_INFO);
   script_family("Mac OS X Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_require_ports("Services/ssh", 22);
-  script_mandatory_keys("ssh/login/osx_name", "ssh/login/osx_version");
+  script_mandatory_keys("ssh/login/osx_name", "ssh/login/osx_version", re:"ssh/login/osx_version=^10\.[0-6]\.");
 
-  script_tag(name : "impact" , value : "Successful exploitation could allow attackers to execute arbitrary code in
+  script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary code in
   the context of the browser, inject scripts, bypass certain security
-  restrictions or cause a denial-of-service condition.
-
-  Impact Level: System/Application");
-  script_tag(name : "affected" , value : "X11,
+  restrictions or cause a denial-of-service condition.");
+  script_tag(name:"affected", value:"X11,
 
   ATS,
 
@@ -119,12 +116,10 @@ if(description)
   AppleScript,
 
   File Quarantine");
-  script_tag(name : "insight" , value : "For more information on the vulnerabilities refer to the links below.");
-  script_tag(name : "solution" , value : "Upgrade to Mac OS X 10.6.7 or Run Mac Updates and update the Security
-  Update 2011-001
-
-  For updates refer to http://support.apple.com/kb/HT1222");
-  script_tag(name : "summary" , value : "This host is missing an important security update according to
+  script_tag(name:"insight", value:"Please see the references for more information on the vulnerabilities.");
+  script_tag(name:"solution", value:"Upgrade to Mac OS X 10.6.7 or Run Mac Updates and update the Security
+  Update 2011-001");
+  script_tag(name:"summary", value:"This host is missing an important security update according to
   Mac OS X 10.6.6 Update/Mac OS X Security Update 2011-001.");
 
   script_tag(name:"qod_type", value:"package");

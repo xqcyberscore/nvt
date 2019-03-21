@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sun_dir_server_37699.nasl 6606 2017-07-07 11:29:00Z cfischer $
+# $Id: sun_dir_server_37699.nasl 14326 2019-03-19 13:40:32Z jschulte $
 #
 # Sun Java System Directory Server 'core_get_proxyauth_dn' Denial of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100438");
-  script_version("$Revision: 6606 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-07 13:29:00 +0200 (Fri, 07 Jul 2017) $");
+  script_version("$Revision: 14326 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:40:32 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-01-12 12:22:08 +0100 (Tue, 12 Jan 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -46,20 +46,20 @@ if(description)
   script_xref(name:"URL", value:"http://intevydis.blogspot.com/2010/01/sun-directory-server-70.html");
   script_xref(name:"URL", value:"http://www.sun.com/software/products/directory_srvr/home_directory.xml");
 
-  tag_summary = "Sun Java System Directory Server is prone to a denial-of-service
-  vulnerability.";
-
-  tag_impact = "An attacker can exploit this issue to crash the effected application,
-  denying service to legitimate users.";
-
-  tag_affected = "Directory Server 7.0 is vulnerable; other versions may also be
-  affected.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
+  script_tag(name:"summary", value:"Sun Java System Directory Server is prone to a denial-of-service
+  vulnerability.");
+  script_tag(name:"impact", value:"An attacker can exploit this issue to crash the effected application,
+  denying service to legitimate users.");
+  script_tag(name:"affected", value:"Directory Server 7.0 is vulnerable, other versions may also be
+  affected.");
 
   script_tag(name:"qod_type", value:"remote_vul");
+
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
+  since the disclosure of this vulnerability. Likely none will be provided anymore.
+  General solution options are to upgrade to a newer release, disable respective features,
+  remove the product or replace the product by another one.");
 
   exit(0);
 }
@@ -83,7 +83,6 @@ if(safe_checks()) {
 
   if(!ldap_alive(port:port))exit(0);
 
-  # Try to kill the server
   req = raw_string(0x30,0x82,0x01,0x15,0x02,0x01,0x01,0x63,0x82,0x01,0x0e,0x04,0x00,0x0a,0x01,0x02,
 		   0x0a,0x01,0x00,0x02,0x01,0x00,0x02,0x01,0x00,0x01,0x01,0x00,0x87,0x0b,0x6f,0x62,
 		   0x6a,0x65,0x63,0x74,0x43,0x6c,0x61,0x73,0x73,0x30,0x02,0x04,0x00,0xa0,0x81,0xe9,

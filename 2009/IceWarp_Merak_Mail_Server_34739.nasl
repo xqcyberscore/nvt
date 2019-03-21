@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: IceWarp_Merak_Mail_Server_34739.nasl 7098 2017-09-12 05:23:08Z cfischer $
+# $Id: IceWarp_Merak_Mail_Server_34739.nasl 14330 2019-03-19 13:59:11Z asteins $
 #
 # IceWarp Merak Mail Server 'Base64FileEncode()' Stack-Based Buffer Overflow Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:icewarp:mail_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100168");
-  script_version("$Revision: 7098 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-12 07:23:08 +0200 (Tue, 12 Sep 2017) $");
+  script_version("$Revision: 14330 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:59:11 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-05-02 19:46:33 +0200 (Sat, 02 May 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -53,7 +53,7 @@ if(description)
   the context of the affected application. Failed exploit attempts will likely result in
   denial-of-service conditions.");
 
-  script_tag(name:"affected", value:"IceWarp Merak Mail Server 9.4.1 is vulnerable; other versions may
+  script_tag(name:"affected", value:"IceWarp Merak Mail Server 9.4.1 is vulnerable, other versions may
   also be affected.");
 
   script_tag(name:"solution", value:"Upgrade to Merak Mail Server 9.4.2");

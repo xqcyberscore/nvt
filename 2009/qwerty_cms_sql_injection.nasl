@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: qwerty_cms_sql_injection.nasl 11449 2018-09-18 10:04:42Z mmartin $
+# $Id: qwerty_cms_sql_injection.nasl 14335 2019-03-19 14:46:57Z asteins $
 #
 # Qwerty CMS 'index.php' SQL Injection Vulnerability
 #
@@ -27,8 +27,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100013");
-  script_version("$Revision: 11449 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 12:04:42 +0200 (Tue, 18 Sep 2018) $");
+  script_version("$Revision: 14335 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:46:57 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-03-06 13:13:19 +0100 (Fri, 06 Mar 2009)");
   script_bugtraq_id(33885);
   script_tag(name:"cvss_base", value:"7.5");
@@ -49,7 +49,7 @@ if (description)
   Exploiting this issue could allow an attacker to compromise the application,
   access or modify data, or exploit latent vulnerabilities in the underlying
   database.");
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

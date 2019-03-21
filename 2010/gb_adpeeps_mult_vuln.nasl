@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adpeeps_mult_vuln.nasl 5794 2017-03-30 13:52:29Z cfi $
+# $Id: gb_adpeeps_mult_vuln.nasl 14326 2019-03-19 13:40:32Z jschulte $
 #
 # AdPeeps 'index.php' Multiple Vulnerabilities.
 #
@@ -27,17 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801414");
-  script_version("$Revision: 5794 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 15:52:29 +0200 (Thu, 30 Mar 2017) $");
+  script_version("$Revision: 14326 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:40:32 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-08-02 12:38:17 +0200 (Mon, 02 Aug 2010)");
   script_cve_id("CVE-2009-4939", "CVE-2009-4943", "CVE-2009-4945");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("AdPeeps 'index.php' Multiple Vulnerabilities.");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/35262");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/50824");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/50822");
-  script_xref(name : "URL" , value : "http://forum.intern0t.net/intern0t-advisories/1049-adpeeps-8-5d1-cross-site-scripting-html-injection-vulnerabilities.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/35262");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/50824");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/50822");
+  script_xref(name:"URL", value:"http://forum.intern0t.net/intern0t-advisories/1049-adpeeps-8-5d1-cross-site-scripting-html-injection-vulnerabilities.html");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2010 Greenbone Networks GmbH");
@@ -46,25 +46,25 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow attackers to insert arbitrary
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to insert arbitrary
   HTML and script code, which will be executed in a user's browser session in the
-  context of an affected site when malicious data is viewed.
+  context of an affected site when malicious data is viewed.");
+  script_tag(name:"affected", value:"Adpeeps version 8.6.5d1 and prior.");
+  script_tag(name:"insight", value:"The flaws are due to
 
-  Impact Level: Application");
-  script_tag(name : "affected" , value : "Adpeeps version 8.6.5d1 and prior.");
-  script_tag(name : "insight" , value : "The flaws are due to
   - Improper validation of user supplied data to the 'index.php' page via
   various parameters.
+
   - 'view_adrates' action with an invalid uid parameter, in 'index.php' reveals
   the installation path in an error message.
+
   - Application having a default password of 'admin' for the 'admin' account,
   which makes it easier for remote attackers to obtain access via requests
   to 'index.php'.");
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
-  script_tag(name : "summary" , value : "This host is running AdPeeps and is prone to multiple
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"This host is running AdPeeps and is prone to multiple
   vulnerabilities.");
 
   script_tag(name:"qod_type", value:"remote_app");
@@ -86,16 +86,13 @@ foreach path (make_list_unique("/", "/adpeeps", cgi_dirs(port:adPort)))
 
   rcvRes = http_get_cache(item:string(path, "/index.php"), port:adPort);
 
-  ## Confirm application is Ad peeps
   if(">Ad Peeps" >< rcvRes ||
      ">Advertisement Management Control Panel<" >< rcvRes)
   {
-    ## Try Exploit on Ad peeps
     sndReq = http_get(item:string(path,
                      "/index.php?loc=view_adrates&uid=1000000"), port:adPort);
     rcvRes = http_keepalive_send_recv(port:adPort, data:sndReq);
 
-    ## Check the response to confirm vulnerability
     if("mysql_result()" >< rcvRes &&
        "Unable to jump to row 0 on MySQL result" >< rcvRes)
     {

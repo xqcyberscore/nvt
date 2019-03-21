@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: cisco_vpn_client_detect.nasl 11279 2018-09-07 09:08:31Z cfischer $
+# $Id: cisco_vpn_client_detect.nasl 14329 2019-03-19 13:57:49Z cfischer $
 # Description: Cisco VPN Client Version Detection
 #
 # Authors:
@@ -26,14 +26,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80037");
-  script_version("$Revision: 11279 $");
+  script_version("$Revision: 14329 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:08:31 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:57:49 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2008-10-24 20:38:19 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Cisco VPN Client Version Detection");
-
 
   script_tag(name:"summary", value:"Detects the installed version of Cisco VPN Client.
 
@@ -63,7 +62,6 @@ if(!registry_key_exists(key:"SOFTWARE\Cisco Systems\VPN Client") &&
   exit(0);
 }
 
-## if os is 32 bit iterate over comman path
 if("x86" >< osArch){
   vpnKey = "SOFTWARE\Cisco Systems\VPN Client";
 }
@@ -106,4 +104,3 @@ log_message(data: build_detection_report(app: "Cisco Systems VPN Client",
                                          install: vpnPath,
                                          cpe: cpe,
                                          concluded: vpnVer));
-

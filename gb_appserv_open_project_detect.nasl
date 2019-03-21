@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_appserv_open_project_detect.nasl 11407 2018-09-15 11:02:05Z cfischer $
+# $Id: gb_appserv_open_project_detect.nasl 14324 2019-03-19 13:31:53Z cfischer $
 #
 # AppServ Open Project Version Detection
 #
@@ -27,11 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802428");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11407 $");
+  script_version("$Revision: 14324 $");
   script_tag(name:"cvss_base", value:"0.0");
-
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 13:02:05 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:31:53 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-04-16 13:02:43 +0530 (Mon, 16 Apr 2012)");
   script_name("AppServ Open Project Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -41,8 +40,10 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
+  script_xref(name:"URL", value:"http://www.appservnetwork.com/?appserv");
+
   script_tag(name:"summary", value:"Detection of AppServ Open Project, a open source web
-  server (http://www.appservnetwork.com/?appserv).
+  server.
 
   The script sends a connection request to the web server and attempts to
   extract the version number from the reply.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ikiwiki_htmlscrubber_xss_vuln.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: gb_ikiwiki_htmlscrubber_xss_vuln.nasl 14331 2019-03-19 14:03:05Z jschulte $
 #
 # Ikiwiki 'htmlscrubber' Cross Site Scripting Vulnerability
 #
@@ -27,13 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800746");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 14331 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:03:05 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-04-06 08:47:09 +0200 (Tue, 06 Apr 2010)");
   script_cve_id("CVE-2010-1195");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_name("Ikiwiki 'htmlscrubber' Cross Site Scripting Vulnerability");
+  script_xref(name:"URL", value:"http://ikiwiki.info/download/");
   script_xref(name:"URL", value:"http://secunia.com/advisories/38983");
   script_xref(name:"URL", value:"http://ikiwiki.info/security/#index36h2");
   script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2010/0662");
@@ -50,9 +51,7 @@ if(description)
   script_tag(name:"affected", value:"ikiwiki versions 2.x through 2.53.4 and 3.x through 3.20100311");
   script_tag(name:"insight", value:"The flaw is caused by an input validation error in the htmlscrubber component
   when processing 'data:image/svg+xml' URIs.");
-  script_tag(name:"solution", value:"Upgrade to ikiwiki version 2.53.5 or 3.20100312
-
-  http://ikiwiki.info/download/");
+  script_tag(name:"solution", value:"Upgrade to ikiwiki version 2.53.5 or 3.20100312");
   script_tag(name:"summary", value:"This host is installed Ikiwiki and is prone to Cross Site
   Scripting vulnerability.");
 

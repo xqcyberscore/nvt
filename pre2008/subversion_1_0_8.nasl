@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: subversion_1_0_8.nasl 9348 2018-04-06 07:01:19Z cfischer $
+# $Id: subversion_1_0_8.nasl 14336 2019-03-19 14:53:10Z mmartin $
 # Description: Subversion Module unreadeable path information disclosure
 #
 # Authors:
@@ -23,45 +23,39 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "You are running a version of Subversion which is older than 1.0.8 or 1.1.0-rc4.
+# ref: Subversion team September 2004
+
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.14800");
+  script_version("$Revision: 14336 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:53:10 +0100 (Tue, 19 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_bugtraq_id(11243);
+  script_cve_id("CVE-2004-0749");
+  script_name("Subversion Module unreadeable path information disclosure");
+
+
+
+  script_category(ACT_GATHER_INFO);
+  script_tag(name:"qod_type", value:"remote_banner");
+
+  script_copyright("This script is Copyright (C) 2004 David Maciejak");
+  script_family("Remote file access");
+  script_dependencies("find_service2.nasl");
+  script_require_ports("Services/subversion");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution", value:"Upgrade to subversion 1.0.8, 1.1.0-rc4 or newer");
+  script_tag(name:"summary", value:"You are running a version of Subversion which is older than 1.0.8 or 1.1.0-rc4.
 
 A flaw exist in older version, in the apache module mod_authz_svn,
 which fails to properly restrict access to metadata within unreadable paths.
 
 An attacker can read metadata in unreadable paths, which can contain sensitive
-information such as logs and paths.";
-
-tag_solution = "Upgrade to subversion 1.0.8, 1.1.0-rc4 or newer";
-
-# ref: Subversion team September 2004
-
-if(description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.14800");
- script_version("$Revision: 9348 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_bugtraq_id(11243);
- script_cve_id("CVE-2004-0749");
-
- name = "Subversion Module unreadeable path information disclosure";
- script_name(name);
-
-
-
- script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_banner");
-
- script_copyright("This script is Copyright (C) 2004 David Maciejak");
- family = "Remote file access";
- script_family(family);
- script_dependencies("find_service2.nasl");
- script_require_ports("Services/subversion");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+information such as logs and paths.");
+  exit(0);
 }
 
 

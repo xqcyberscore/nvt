@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ocs_inventory_ng_mult_sql_inj_vuln_may10.nasl 8528 2018-01-25 07:57:36Z teissa $
+# $Id: secpod_ocs_inventory_ng_mult_sql_inj_vuln_may10.nasl 14323 2019-03-19 13:19:09Z jschulte $
 #
 # OCS Inventory NG Multiple SQL Injection Vulnerabilities
 #
@@ -24,32 +24,18 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow remote attackers to to view, add, modify
-  or delete information in the back-end database.
-  Impact Level: Application.";
-tag_affected = "OCS Inventory NG prior to 1.02.3";
-
-tag_insight = "The flaws are due to the error in the 'index.php' page, which fails to
-  properly varify the user supplied input via the 'search' form for the various
-  inventory fields and via the All softwares search form for the 'Software name'
-  field.";
-tag_solution = "Upgrade to OCS Inventory NG version 1.02.3
-  For updates refer to http://www.ocsinventory-ng.org/";
-tag_summary = "This host is running OCS Inventory NG and is prone to multiple SQL
-  injection vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902059");
-  script_version("$Revision: 8528 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:57:36 +0100 (Thu, 25 Jan 2018) $");
+  script_version("$Revision: 14323 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:19:09 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-06-01 15:40:11 +0200 (Tue, 01 Jun 2010)");
   script_cve_id("CVE-2010-1733");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_name("OCS Inventory NG Multiple SQL Injection Vulnerabilities");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/38311");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/55873");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/38311");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/55873");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
@@ -57,14 +43,21 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("secpod_ocs_inventory_ng_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
+  script_tag(name:"insight", value:"The flaws are due to the error in the 'index.php' page, which fails to
+  properly varify the user supplied input via the 'search' form for the various
+  inventory fields and via the All softwares search form for the 'Software name'
+  field.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution", value:"Upgrade to OCS Inventory NG version 1.02.3");
+  script_tag(name:"summary", value:"This host is running OCS Inventory NG and is prone to multiple SQL
+  injection vulnerabilities.");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to to view, add, modify
+  or delete information in the back-end database.");
+  script_tag(name:"affected", value:"OCS Inventory NG prior to 1.02.3");
+  script_xref(name:"URL", value:"http://www.ocsinventory-ng.org/");
   exit(0);
 }
-		
+
 
 include("http_func.inc");
 include("version_func.inc");
@@ -82,7 +75,6 @@ if(isnull(ocsVer)){
 ocsVer = eregmatch(pattern:"^(.+) under (/.*)$", string:ocsVer);
 if(ocsVer[1] != NULL)
 {
-  ## Check the OCS_Inventory_NG version less than 1.02.3
   if(version_is_less(version:ocsVer[1], test_version:"1.02.3")){
     security_message(ocsPort);
   }

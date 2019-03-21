@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_irfanview_bof_vuln.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: gb_irfanview_bof_vuln.nasl 14323 2019-03-19 13:19:09Z jschulte $
 #
 # IrfanView Buffer Overflow Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801338");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 14323 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:19:09 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-05-19 14:50:39 +0200 (Wed, 19 May 2010)");
   script_cve_id("CVE-2010-1510", "CVE-2010-1509");
   script_tag(name:"cvss_base", value:"5.0");
@@ -46,8 +46,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to allow execution of arbitrary
   code or to compromise a user's system.");
   script_tag(name:"affected", value:"IrfanView version prior to 4.27");
-  script_tag(name:"solution", value:"Upgrade to version 4.27 or later,
-  For updates refer to http://www.irfanview.com");
+  script_tag(name:"solution", value:"Upgrade to version 4.27 or later.");
   script_tag(name:"summary", value:"This host has IrfanView installed and is prone to buffer overflow
   vulnerabilities.");
   script_tag(name:"insight", value:"The flaws are due to,
@@ -61,6 +60,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.irfanview.com");
   exit(0);
 }
 

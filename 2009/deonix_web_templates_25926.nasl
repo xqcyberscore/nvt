@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deonix_web_templates_25926.nasl 11449 2018-09-18 10:04:42Z mmartin $
+# $Id: deonix_web_templates_25926.nasl 14330 2019-03-19 13:59:11Z asteins $
 #
 # Deonix Web Templates Management Index.PHP SQL Injection Vulnerability
 #
@@ -27,8 +27,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100247");
-  script_version("$Revision: 11449 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 12:04:42 +0200 (Tue, 18 Sep 2018) $");
+  script_version("$Revision: 14330 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:59:11 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-07-26 19:54:54 +0200 (Sun, 26 Jul 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -54,9 +54,9 @@ Exploiting this issue could allow an attacker to compromise the
 application, access or modify data, or exploit latent vulnerabilities
 in the underlying database.
 
-This issue affects Web Templates Management 1.3; other versions may
+This issue affects Web Templates Management 1.3, other versions may
 also be vulnerable.");
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moodle_mult_vuln.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: gb_moodle_mult_vuln.nasl 14331 2019-03-19 14:03:05Z jschulte $
 #
 # Moodle Multiple Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800766");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 14331 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:03:05 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-05-19 14:50:39 +0200 (Wed, 19 May 2010)");
   script_cve_id("CVE-2010-1614", "CVE-2010-1615",
                 "CVE-2010-1617", "CVE-2010-1618", "CVE-2010-1619");
@@ -59,8 +59,7 @@ if(description)
   - Error in 'fix_non_standard_entities' function in the
     'KSES HTML text cleaning library', allows remote attackers to inject
     arbitrary web script or HTML via crafted HTML entities.");
-  script_tag(name:"solution", value:"Upgrade to latest version 1.8.12, 1.9.8
-  http://download.moodle.org/");
+  script_tag(name:"solution", value:"Upgrade to latest version 1.8.12, 1.9.8.");
   script_tag(name:"summary", value:"This host is running Moodle and is prone to multiple
   vulnerabilities.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to inject arbitrary web

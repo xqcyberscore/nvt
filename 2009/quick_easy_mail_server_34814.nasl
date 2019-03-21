@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: quick_easy_mail_server_34814.nasl 13144 2019-01-18 10:33:22Z cfischer $
+# $Id: quick_easy_mail_server_34814.nasl 14332 2019-03-19 14:22:43Z asteins $
 #
 # Quick 'n Easy Mail Server SMTP Request Remote Denial Of Service Vulnerability
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100185");
-  script_version("$Revision: 13144 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-18 11:33:22 +0100 (Fri, 18 Jan 2019) $");
+  script_version("$Revision: 14332 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:22:43 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-05-06 14:55:27 +0200 (Wed, 06 May 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -93,7 +93,7 @@ for(i = 0; i < 35; i++) {
   soc = smtp_open(port:port);
   if(!soc)
     exit(0);
-  
+
   send(socket:soc, data:data);
   ehlotxt = smtp_recv_line(socket:soc);
   smtp_close(socket:soc, check_data:ehlotxt);

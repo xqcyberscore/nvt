@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_changetrack_priv_escalation_vuln.nasl 11554 2018-09-22 15:11:42Z cfischer $
+# $Id: secpod_changetrack_priv_escalation_vuln.nasl 14332 2019-03-19 14:22:43Z asteins $
 #
 # Changetrack Local Privilege Escalation Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900868");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 14332 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:22:43 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-09-24 10:05:51 +0200 (Thu, 24 Sep 2009)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
@@ -52,13 +52,13 @@ if(description)
   script_tag(name:"affected", value:"Changetrack version 4.3");
   script_tag(name:"insight", value:"This flaw is generated because the application does not properly handle
   certain file names.");
-  script_tag(name:"solution", value:"Upgrade to Changetrack version 4.7 or later
-  For updates refer to http://changetrack.sourceforge.net/");
+  script_tag(name:"solution", value:"Upgrade to Changetrack version 4.7 or later");
   script_tag(name:"summary", value:"This host has Changetrack installed and is prone to Local Privilege
   Escalation vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://changetrack.sourceforge.net/");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_soliddb_44158.nasl 8495 2018-01-23 07:57:49Z teissa $
+# $Id: gb_ibm_soliddb_44158.nasl 14323 2019-03-19 13:19:09Z jschulte $
 #
 # IBM solidDB Multiple Denial of Service Vulnerabilities
 #
@@ -24,38 +24,42 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "IBM solidDB is prone to multiple denial-of-service vulnerabilities.
+
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.100861");
+  script_version("$Revision: 14323 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:19:09 +0100 (Tue, 19 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2010-10-19 12:49:22 +0200 (Tue, 19 Oct 2010)");
+  script_bugtraq_id(44158);
+  script_cve_id("CVE-2010-4055", "CVE-2010-4056", "CVE-2010-4057");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_name("IBM solidDB Multiple Denial of Service Vulnerabilities");
+
+  script_xref(name:"URL", value:"https://www.securityfocus.com/bid/44158");
+  script_xref(name:"URL", value:"http://www.solidtech.com/en/products/relationaldatabasemanagementsoftware/embed.asp");
+  script_xref(name:"URL", value:"http://aluigi.altervista.org/adv.htm");
+
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_category(ACT_MIXED_ATTACK);
+  script_family("Denial of Service");
+  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
+  script_dependencies("gb_ibm_soliddb_detect.nasl");
+  script_require_ports("Services/soliddb", 1315);
+  script_tag(name:"summary", value:"IBM solidDB is prone to multiple denial-of-service vulnerabilities.
 
 Attackers can exploit these issues to crash the affected application,
 denying service to legitimate users.
 
-solidDB 6.5.0.3 is vulnerable; other versions may also be affected.";
+solidDB 6.5.0.3 is vulnerable, other versions may also be affected.");
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
+  since the disclosure of this vulnerability. Likely none will be provided anymore.
+  General solution options are to upgrade to a newer release, disable respective features,
+  remove the product or replace the product by another one.");
 
-
-if (description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.100861");
- script_version("$Revision: 8495 $");
- script_tag(name:"last_modification", value:"$Date: 2018-01-23 08:57:49 +0100 (Tue, 23 Jan 2018) $");
- script_tag(name:"creation_date", value:"2010-10-19 12:49:22 +0200 (Tue, 19 Oct 2010)");
- script_bugtraq_id(44158);
- script_cve_id("CVE-2010-4055", "CVE-2010-4056", "CVE-2010-4057");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_name("IBM solidDB Multiple Denial of Service Vulnerabilities");
-
- script_xref(name : "URL" , value : "https://www.securityfocus.com/bid/44158");
- script_xref(name : "URL" , value : "http://www.solidtech.com/en/products/relationaldatabasemanagementsoftware/embed.asp");
- script_xref(name : "URL" , value : "http://aluigi.altervista.org/adv.htm");
-
- script_tag(name:"qod_type", value:"remote_vul");
- script_category(ACT_MIXED_ATTACK);
- script_family("Denial of Service");
- script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("gb_ibm_soliddb_detect.nasl");
- script_require_ports("Services/soliddb", 1315);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  exit(0);
 }
 
 include("byte_func.inc");
@@ -92,7 +96,7 @@ function soliddb_alive() {
   close(soc1);
   if(!ret || isnull(ret))return FALSE;
 
-  if((strlen(ret) == 35 || strlen(ret) >= 27) && hexstr(substr(ret, 0, 6)) == "02000100000000" && hexstr(substr(ret, 6, 7)) == "0001") { 
+  if((strlen(ret) == 35 || strlen(ret) >= 27) && hexstr(substr(ret, 0, 6)) == "02000100000000" && hexstr(substr(ret, 6, 7)) == "0001") {
 
     return TRUE;
 
@@ -113,12 +117,12 @@ if(safe_checks()) {
     version = version[0];
   } else {
     version = v;
-  }  
+  }
 
-  if(version_is_less_equal(version:version, test_version:"6.5.0.3")) {  
+  if(version_is_less_equal(version:version, test_version:"6.5.0.3")) {
     security_message(port:port);
     exit(0);
-  }  
+  }
 
 
 } else {

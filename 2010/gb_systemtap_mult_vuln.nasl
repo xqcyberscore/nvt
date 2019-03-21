@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_systemtap_mult_vuln.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: gb_systemtap_mult_vuln.nasl 14326 2019-03-19 13:40:32Z jschulte $
 #
 # SystemTap Multiple Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800294");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 14326 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:40:32 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-02-11 16:37:59 +0100 (Thu, 11 Feb 2010)");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:C");
@@ -53,8 +53,7 @@ if(description)
   a large number of arguments.");
   script_tag(name:"summary", value:"This host has SystemTap installed and is prone to multiple
   vulnerabilities.");
-  script_tag(name:"solution", value:"Apply the available patch from below link,
-  http://sourceware.org/git/gitweb.cgi?p=systemtap.git;a=patch;h=a2d399c87a642190f08ede63dc6fc434a5a8363a
+  script_tag(name:"solution", value:"Apply the available patch a=patch, h=a2d399c87a642190f08ede63dc6fc434a5a8363a
 
   *****
   NOTE: Ignore this warning if above mentioned patch is already applied.
@@ -62,6 +61,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://sourceware.org/git/gitweb.cgi?p=systemtap.git,");
   exit(0);
 }
 

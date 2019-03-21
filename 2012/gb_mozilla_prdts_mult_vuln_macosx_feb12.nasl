@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_vuln_macosx_feb12.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_mozilla_prdts_mult_vuln_macosx_feb12.nasl 14317 2019-03-19 11:39:17Z cfischer $
 #
 # Mozilla Products Multiple Unspecified Vulnerabilities - Feb12 (MAC OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802584");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 14317 $");
   script_cve_id("CVE-2012-0442", "CVE-2012-0444", "CVE-2012-0449", "CVE-2011-3659");
   script_bugtraq_id(51756, 51753, 51754, 51755);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 12:39:17 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2012-02-06 13:59:08 +0530 (Mon, 06 Feb 2012)");
   script_name("Mozilla Products Multiple Unspecified Vulnerabilities - Feb12 (MAC OS X)");
 
@@ -63,17 +63,14 @@ if(description)
     the application.");
   script_tag(name:"summary", value:"The host is installed with Mozilla firefox/thunderbird/seamonkey and is prone
   to multiple vulnerabilities.");
-  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 3.6.26 or 10.0 or later  Upgrade to SeaMonkey version to 2.7 or later
-  http://www.mozilla.org/projects/seamonkey/
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 3.6.26 or 10.0 or later  Upgrade to SeaMonkey version to 2.7 or later.
 
-  Upgrade to Thunderbird version to 3.1.18 or 10.0 or later
-  http://www.mozilla.org/en-US/thunderbird/");
+  Upgrade to Thunderbird version to 3.1.18 or 10.0 or later.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
+
   exit(0);
 }
-
 
 include("version_func.inc");
 

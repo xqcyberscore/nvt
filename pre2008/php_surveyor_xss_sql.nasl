@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: php_surveyor_xss_sql.nasl 7287 2017-09-27 06:56:51Z cfischer $
+# $Id: php_surveyor_xss_sql.nasl 14336 2019-03-19 14:53:10Z mmartin $
 #
 # Multiple vulnerabilities in PHP Surveyor
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.19494");
-  script_version("$Revision: 7287 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-27 08:56:51 +0200 (Wed, 27 Sep 2017) $");
+  script_version("$Revision: 14336 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:53:10 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_cve_id("CVE-2005-2380", "CVE-2005-2381", "CVE-2005-2398", "CVE-2005-2399");
   script_bugtraq_id(14329, 14331);
@@ -65,17 +65,16 @@ if(description)
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_xref(name:"URL", value:"http://securityfocus.com/archive/1/405735");
-
-  tag_summary = "The remote host is running PHP Surveyor, a set of PHP scripts used to
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
+  since the disclosure of this vulnerability. Likely none will be provided anymore. General solution
+  options are to upgrade to a newer release, disable respective features, remove the product or
+  replace the product by another one.");
+  script_tag(name:"summary", value:"The remote host is running PHP Surveyor, a set of PHP scripts used to
   develop, publish and collect responses from surveys.
 
   The remote version of this software contains multiple vulnerabilities
-  that can lead to SQL injection, path disclosure and cross-site scripting.";
-
-  tag_solution = "Unknown at this time.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  that can lead to SQL injection, path disclosure and cross-site scripting.");
 
   script_tag(name:"qod_type", value:"remote_active");
 

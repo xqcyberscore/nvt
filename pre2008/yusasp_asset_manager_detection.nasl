@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: yusasp_asset_manager_detection.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: yusasp_asset_manager_detection.nasl 14336 2019-03-19 14:53:10Z mmartin $
 #
 # YusASP Web Asset Manager Vulnerability
 #
@@ -31,12 +31,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.18192");
-  script_version("$Revision: 6063 $");
+  script_version("$Revision: 14336 $");
   script_bugtraq_id(13501);
   script_cve_id("CVE-2005-1668");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:53:10 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_name("YusASP Web Asset Manager Vulnerability");
   script_category(ACT_GATHER_INFO);
@@ -51,6 +51,12 @@ if(description)
   download files, etc.");
 
   script_tag(name:"qod_type", value:"remote_vul");
+
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
+  since the disclosure of this vulnerability. Likely none will be provided anymore.
+  General solution options are to upgrade to a newer release, disable respective features,
+  remove the product or replace the product by another one.");
 
   exit(0);
 }

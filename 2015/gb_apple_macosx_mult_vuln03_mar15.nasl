@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_mult_vuln03_mar15.nasl 9940 2018-05-23 15:46:09Z cfischer $
+# $Id: gb_apple_macosx_mult_vuln03_mar15.nasl 14304 2019-03-19 09:10:40Z cfischer $
 #
 # Apple Mac OS X Multiple Vulnerabilities -03 Mar15
 #
@@ -27,44 +27,45 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805496");
-  script_version("$Revision: 9940 $");
+  script_version("$Revision: 14304 $");
   script_cve_id("CVE-2015-1066", "CVE-2015-1061");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-23 17:46:09 +0200 (Wed, 23 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 10:10:40 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-03-19 10:56:24 +0530 (Thu, 19 Mar 2015)");
   script_name("Apple Mac OS X Multiple Vulnerabilities -03 Mar15");
 
-  script_tag(name: "summary" , value:"This host is running Apple Mac OS X and
+  script_tag(name:"summary", value:"This host is running Apple Mac OS X and
   is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws are due to,
+  script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - The off-by-one overflow condition in the IOAcceleratorFamily component that
     is triggered as user-supplied input is not properly validated
+
   - The flaw in IOSurface that is triggered during the handling of a specially
     crafted serialized object.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary code on the targeted system, to conduct denial
-  of service and local user can obtain root privileges on the target system.
+  of service and local user can obtain root privileges on the target system.");
 
-  Impact Level: System/Application");
-
-  script_tag(name: "affected" , value:"Apple Mac OS X version through
+  script_tag(name:"affected", value:"Apple Mac OS X version through
   10.10.2");
 
-  script_tag(name: "solution" , value:"Apply the fix from Apple Security Update
-  2015-002. For more updates refer to https://support.apple.com/");
+  script_tag(name:"solution", value:"Apply the fix from Apple Security Update
+  2015-002.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
-  script_xref(name : "URL" , value : "https://support.apple.com/en-us/HT204413");
+  script_xref(name:"URL", value:"https://support.apple.com/en-us/HT204413");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Mac OS X Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/osx_name", "ssh/login/osx_version");
+  script_mandatory_keys("ssh/login/osx_name", "ssh/login/osx_version", re:"ssh/login/osx_version=^10\.([89]|10)");
+
   exit(0);
 }
 
@@ -76,7 +77,7 @@ if(!osName || "Mac OS X" >!< osName){
 }
 
 osVer = get_kb_item("ssh/login/osx_version");
-if(!osVer || osVer !~ "^(10\.(8|9|10))"){
+if(!osVer || osVer !~ "^10\.([89]|10)"){
   exit(0);
 }
 
@@ -112,4 +113,5 @@ if(fix)
   security_message(data:report);
   exit(0);
 }
-exit(0);
+
+exit(99);

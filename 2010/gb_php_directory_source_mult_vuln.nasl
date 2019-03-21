@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_directory_source_mult_vuln.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_php_directory_source_mult_vuln.nasl 14326 2019-03-19 13:40:32Z jschulte $
 #
 # phpDirectorySource Multiple Vulnerabilities
 #
@@ -27,16 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800738");
-  script_version("$Revision: 5323 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+  script_version("$Revision: 14326 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:40:32 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-03-18 15:44:57 +0100 (Thu, 18 Mar 2010)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_bugtraq_id(35760);
-  script_cve_id("CVE-2009-4680","CVE-2009-4681");
+  script_cve_id("CVE-2009-4680", "CVE-2009-4681");
   script_name("phpDirectorySource Multiple Vulnerabilities");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/35941");
-  script_xref(name : "URL" , value : "http://www.milw0rm.com/exploits/9226");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/35941");
+  script_xref(name:"URL", value:"http://www.milw0rm.com/exploits/9226");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2010 Greenbone Networks GmbH");
@@ -45,19 +45,16 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "insight" , value : "Input passed to 'search.php' through 'st' parameter is not properly
+  script_tag(name:"insight", value:"Input passed to 'search.php' through 'st' parameter is not properly
   sanitised before being returned to the user and before being used in SQL queries.");
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
-  script_tag(name : "summary" , value : "This host is running phpDirectorySource and is prone to multiple
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"This host is running phpDirectorySource and is prone to multiple
   vulnerabilities.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow attacker to execute arbitrary HTML or
-  execute arbitrary SQL commands in the context of an affected site.
-
-  Impact Level: Application.");
-  script_tag(name : "affected" , value : "phpDirectorySource version 1.x");
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML or
+  execute arbitrary SQL commands in the context of an affected site.");
+  script_tag(name:"affected", value:"phpDirectorySource version 1.x");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_app");
@@ -68,10 +65,8 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Get HTTP Port
 phpPort = get_http_port(default:80);
 
-## Check the php support
 if(!can_host_php(port:phpPort)){
   exit(0);
 }
@@ -81,13 +76,10 @@ foreach dir (make_list_unique("/pds", "/" , cgi_dirs(port:phpPort)))
 
   if(dir == "/") dir = "";
 
-  ## Send and Receive request
   rcvRes = http_get_cache(item: dir + "/index.php", port:phpPort);
 
-  ## Confirm application is phpDirectorySource
   if("phpDirectorySource" >< rcvRes)
   {
-    ## Try XSS attack on phpDirectorySource application
     sndReq = http_get(item:string(dir, '/search.php?sa=site&sk=a&nl=11&st=">'+
             '<script>alert("OpenVASExploitTesting");</script>'), port:phpPort);
     rcvRes = http_keepalive_send_recv(port:phpPort, data:sndReq);

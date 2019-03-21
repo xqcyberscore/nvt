@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_kolibri_bof_vuln.nasl 6696 2017-07-12 11:30:15Z cfischer $
+# $Id: secpod_kolibri_bof_vuln.nasl 14326 2019-03-19 13:40:32Z jschulte $
 #
 # Kolibri Webserver 'HEAD' Request Processing Buffer Overflow Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901171");
-  script_version("$Revision: 6696 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:30:15 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 14326 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:40:32 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-12-31 07:04:16 +0100 (Fri, 31 Dec 2010)");
   script_bugtraq_id(45579);
   script_tag(name:"cvss_base", value:"5.0");
@@ -42,17 +42,14 @@ if(description)
   script_mandatory_keys("kolibri/banner");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to crash the
-  server process, resulting in a denial-of-service condition.
-
-  Impact Level: Application");
+  server process, resulting in a denial-of-service condition.");
   script_tag(name:"affected", value:"Kolibri Webserver version 2.0");
   script_tag(name:"insight", value:"This flaw is caused by a buffer overflow error when handling
   overly long 'HEAD' requests, which could allow remote unauthenticated attackers
   to compromise a vulnerable web server via a specially crafted request.");
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"summary", value:"This host is running Kolibri Webserver and is prone to buffer
   overflow vulnerability.");
 
@@ -67,13 +64,10 @@ if(description)
 
 include("http_func.inc");
 
-## Get HTTP Port
 port = get_http_port(default:8080);
 
-## Get Banner
 banner = get_http_banner(port:port);
 
-## Confirm Application
 if("erver: kolibri" >< banner) {
 
   host = http_host_name(port:port);
@@ -83,7 +77,6 @@ if("erver: kolibri" >< banner) {
           "Host: " + host + "\r\n\r\n";
   http_send_recv(port:port, data:crash);
 
-  ## Check Port Status
   if (http_is_dead(port:port)) {
     security_message(port:port);
     exit(0);

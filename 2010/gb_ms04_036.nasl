@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms04_036.nasl 10957 2018-08-14 13:26:50Z mmartin $
+# $Id: gb_ms04_036.nasl 14323 2019-03-19 13:19:09Z jschulte $
 #
 # Windows NT NNTP Component Buffer Overflow
 #
@@ -27,8 +27,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100608");
-  script_version("$Revision: 10957 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 15:26:50 +0200 (Tue, 14 Aug 2018) $");
+  script_version("$Revision: 14323 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:19:09 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-04-26 19:54:51 +0200 (Mon, 26 Apr 2010)");
   script_cve_id("CVE-2004-0574");
 
@@ -53,7 +53,7 @@ Exchange 2000 Server, and Exchange Server 2003 allows remote attackers
 to execute arbitrary code via XPAT patterns, possibly related to
 improper length validation and an unchecked buffer, leading to
 off-by-one and heap-based buffer overflows.");
-exit(0);
+  exit(0);
 }
 
 include("version_func.inc");

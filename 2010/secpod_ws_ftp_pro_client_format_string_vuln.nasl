@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ws_ftp_pro_client_format_string_vuln.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: secpod_ws_ftp_pro_client_format_string_vuln.nasl 14323 2019-03-19 13:19:09Z jschulte $
 #
 # Ipswitch WS_FTP Professional 'HTTP' Response Format String Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902171");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 14323 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:19:09 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-04-23 17:57:39 +0200 (Fri, 23 Apr 2010)");
   script_cve_id("CVE-2009-4775");
   script_bugtraq_id(36297);
@@ -54,13 +54,13 @@ if(description)
   properly sanitize user supplied input before passing it as the format
   specifier. Specifically, the issue presents itself when the client parses
   specially crafted responses for a malicious HTTP server.");
-  script_tag(name:"solution", value:"Upgrade to WS_FTP Professional version 12.2,
-  For updates refer to http://www.ipswitchft.com/Individual/Products/Ws_Ftp_Pro/");
+  script_tag(name:"solution", value:"Upgrade to WS_FTP Professional version 12.2.");
   script_tag(name:"summary", value:"This host is installed with WS_FTP professinal client and is prone to
   format string vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.ipswitchft.com/Individual/Products/Ws_Ftp_Pro/");
   exit(0);
 }
 

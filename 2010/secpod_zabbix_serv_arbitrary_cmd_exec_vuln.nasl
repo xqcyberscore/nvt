@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_zabbix_serv_arbitrary_cmd_exec_vuln.nasl 7649 2017-11-03 13:09:14Z cfischer $
+# $Id: secpod_zabbix_serv_arbitrary_cmd_exec_vuln.nasl 14326 2019-03-19 13:40:32Z jschulte $
 #
 # Zabbix Arbitrary Command Execution Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:zabbix:zabbix";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900226");
-  script_version("$Revision: 7649 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-03 14:09:14 +0100 (Fri, 03 Nov 2017) $");
+  script_version("$Revision: 14326 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:40:32 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-01-28 16:24:05 +0100 (Thu, 28 Jan 2010)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -44,31 +44,19 @@ if(description)
   script_require_keys("Zabbix/AgentServer/installed");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/37740/3/");
+  script_xref(name:"URL", value:"http://www.zabbix.com/download.php");
   script_xref(name:"URL", value:"https://support.zabbix.com/browse/ZBX-1030");
   script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2009/3514");
 
-  tag_impact = "Successful exploitation will allow attackers to execute arbitrary commands
-  via specially crafted data.
-
-  Impact level: Application";
-
-  tag_affected = "Zabbix Server versions prior to 1.8";
-
-  tag_insight = "This issue is due to an error in the 'node_process_command()'
+  script_tag(name:"affected", value:"Zabbix Server versions prior to 1.8");
+  script_tag(name:"insight", value:"This issue is due to an error in the 'node_process_command()'
   function, which can be exploited to execute arbitrary commands via
-  specially crafted data.";
-
-  tag_solution = "Update to version 1.8 or above,
-  http://www.zabbix.com/download.php";
-
-  tag_summary = "This host is installed with Zabbix Server and is prone to arbitrary command
-  execution vulnerability.";
-
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
+  specially crafted data.");
+  script_tag(name:"solution", value:"Update to version 1.8 or above");
+  script_tag(name:"summary", value:"This host is installed with Zabbix Server and is prone to arbitrary command
+  execution vulnerability.");
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary commands
+  via specially crafted data.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");

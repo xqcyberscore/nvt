@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: digital_scribe_37292.nasl 11449 2018-09-18 10:04:42Z mmartin $
+# $Id: digital_scribe_37292.nasl 14325 2019-03-19 13:35:02Z asteins $
 #
 # Digital Scribe Multiple SQL Injection Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100398");
-  script_version("$Revision: 11449 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 12:04:42 +0200 (Tue, 18 Sep 2018) $");
+  script_version("$Revision: 14325 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:35:02 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-12-15 19:11:56 +0100 (Tue, 15 Dec 2009)");
   script_bugtraq_id(37292);
   script_tag(name:"cvss_base", value:"7.5");
@@ -58,9 +58,9 @@ Exploiting these issues could allow an attacker to compromise the
 application, access or modify data, or exploit latent vulnerabilities
 in the underlying database.
 
-Digital Scribe 1.4.1 is vulnerable; other versions may also be
+Digital Scribe 1.4.1 is vulnerable, other versions may also be
 affected.");
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

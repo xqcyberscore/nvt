@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_macosx_su10-007.nasl 10023 2018-05-30 09:57:40Z cfischer $
+# $Id: gb_macosx_su10-007.nasl 14307 2019-03-19 10:09:27Z cfischer $
 #
 # Mac OS X v10.6.4 Multiple Vulnerabilities (2010-007)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802144");
-  script_version("$Revision: 10023 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-30 11:57:40 +0200 (Wed, 30 May 2018) $");
+  script_version("$Revision: 14307 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 11:09:27 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2011-09-07 08:36:57 +0200 (Wed, 07 Sep 2011)");
   script_cve_id("CVE-2010-1828", "CVE-2010-1829", "CVE-2010-1830", "CVE-2009-0796",
                 "CVE-2010-0408", "CVE-2010-0434", "CVE-2010-1842", "CVE-2010-1831",
@@ -81,25 +81,23 @@ if(description)
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("Mac OS X v10.6.4 Multiple Vulnerabilities (2010-007)");
-  script_xref(name : "URL" , value : "http://support.apple.com/kb/HT4435");
-  script_xref(name : "URL" , value : "http://www.securitytracker.com/id?1024723");
-  script_xref(name : "URL" , value : "http://lists.apple.com/archives/security-announce//2011//Jul/msg00003.html");
-  script_xref(name : "URL" , value : "http://lists.apple.com/archives/security-announce//2011//Mar/msg00000.html");
-  script_xref(name : "URL" , value : "http://lists.apple.com/archives/security-announce//2011//Apr/msg00004.html");
+  script_xref(name:"URL", value:"http://support.apple.com/kb/HT4435");
+  script_xref(name:"URL", value:"http://www.securitytracker.com/id?1024723");
+  script_xref(name:"URL", value:"http://lists.apple.com/archives/security-announce//2011//Jul/msg00003.html");
+  script_xref(name:"URL", value:"http://lists.apple.com/archives/security-announce//2011//Mar/msg00000.html");
+  script_xref(name:"URL", value:"http://lists.apple.com/archives/security-announce//2011//Apr/msg00004.html");
 
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Mac OS X Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_require_ports("Services/ssh", 22);
-  script_mandatory_keys("ssh/login/osx_name", "ssh/login/osx_version");
+  script_mandatory_keys("ssh/login/osx_name", "ssh/login/osx_version", re:"ssh/login/osx_version=^10\.[0-5]\.");
 
-  script_tag(name : "impact" , value : "Successful exploitation could allow attackers to execute arbitrary code in
+  script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary code in
   the context of the browser, obtain potentially sensitive information or cause
-  a denial-of-service condition.
-
-  Impact Level: System/Application");
-  script_tag(name : "affected" , value : "AFP Server
+  a denial-of-service condition.");
+  script_tag(name:"affected", value:"AFP Server
 
   Apache mod_perl
 
@@ -160,11 +158,9 @@ if(description)
   Time Machine
 
   WebKit Open Source");
-  script_tag(name : "insight" , value : "For more information on the vulnerabilities refer to the links below.");
-  script_tag(name : "solution" , value : "Run Mac Updates and update the Security Update 2010-007
-
-  For updates refer to http://support.apple.com/kb/HT4435");
-  script_tag(name : "summary" , value : "This host is missing an important security update according to
+  script_tag(name:"insight", value:"Please see the references for more information on the vulnerabilities.");
+  script_tag(name:"solution", value:"Run Mac Updates and update the Security Update 2010-007");
+  script_tag(name:"summary", value:"This host is missing an important security update according to
   Mac OS X 10.6.5 Update/Mac OS X Security Update 2010-007");
 
   script_tag(name:"qod_type", value:"package");

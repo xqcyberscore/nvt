@@ -21,10 +21,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891716");
-  script_version("$Revision: 14297 $");
+  script_version("$Revision: 14308 $");
   script_cve_id("CVE-2019-9187");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1716-1] ikiwiki security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 08:35:21 +0100 (Tue, 19 Mar 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 11:12:26 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-03-19 00:00:00 +0100 (Tue, 19 Mar 2019)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -72,19 +72,19 @@ by authorized wiki editors.
 This is addressed in ikiwiki 3.20190228 as follows, with the same fixes
 backported to Debian 9 in version 3.20170111.1:
 
-* URI schemes other than http: and https: are not accepted, preventing access
+  * URI schemes other than http: and https: are not accepted, preventing access
 to file:, gopher:, etc.
 
-* If a proxy is configured in the ikiwiki setup file, it is used for all
+  * If a proxy is configured in the ikiwiki setup file, it is used for all
 outgoing http: and https: requests. In this case the proxy is responsible for
 blocking any requests that are undesired, including loopback or RFC 1918
 addresses.
 
-* If a proxy is not configured, and liblwpx-paranoidagent-perl is installed, it
+  * If a proxy is not configured, and liblwpx-paranoidagent-perl is installed, it
 will be used. This prevents loopback and RFC 1918 IP addresses, and sets a
 timeout to avoid denial of service via 'tarpit' URIs.
 
-* Otherwise, the ordinary LWP user-agent will be used. This allows requests to
+  * Otherwise, the ordinary LWP user-agent will be used. This allows requests to
 loopback and RFC 1918 IP addresses, and has less robust timeout behaviour.
 We are not treating this as a vulnerability: if this behaviour is not
 acceptable for your site, please make sure to install LWPx::ParanoidAgent or

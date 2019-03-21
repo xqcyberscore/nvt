@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: iis5_printer.nasl 9348 2018-04-06 07:01:19Z cfischer $
+# $Id: iis5_printer.nasl 14336 2019-03-19 14:53:10Z mmartin $
 # Description: NT IIS 5.0 Malformed HTTP Printer Request Header Buffer Overflow Vulnerability
 #
 # Authors:
@@ -22,57 +22,50 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "There is a buffer overflow in the remote IIS web server.  
-It is possible to overflow the remote Web server and execute 
-commands as the SYSTEM user.
-
-At attacker may make use of this vulnerability and use it to
-gain access to confidential data and/or escalate their privileges
-on the Web server.
- 
-See http://www.eeye.com/html/Research/Advisories/AD20010501.html 
-for more details.";
-
-tag_solution = "See http://www.microsoft.com/technet/security/bulletin/ms01-023.mspx";
-
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.10657");
- script_version("$Revision: 9348 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_xref(name:"IAVA", value:"2001-a-0005");
- script_bugtraq_id(2674);
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_cve_id("CVE-2001-0241");
- name = "NT IIS 5.0 Malformed HTTP Printer Request Header Buffer Overflow Vulnerability";
+  script_oid("1.3.6.1.4.1.25623.1.0.10657");
+  script_version("$Revision: 14336 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:53:10 +0100 (Tue, 19 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_xref(name:"IAVA", value:"2001-a-0005");
+  script_bugtraq_id(2674);
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_cve_id("CVE-2001-0241");
 
 
- script_name(name);
+  script_name("NT IIS 5.0 Malformed HTTP Printer Request Header Buffer Overflow Vulnerability");
 
 
  # Summary
 
  # Category
- script_category(ACT_DESTRUCTIVE_ATTACK);
+  script_category(ACT_DESTRUCTIVE_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
 
  # Dependencie(s)
- script_dependencies("gb_get_http_banner.nasl");
- script_mandatory_keys("IIS/banner");
+  script_dependencies("gb_get_http_banner.nasl");
+  script_mandatory_keys("IIS/banner");
 
  # Family
- family = "Gain a shell remotely";
- script_family(family);
+  script_family("Gain a shell remotely");
 
  # Copyright
- script_copyright("This script is Copyright (C) 2001 John Lampe");
+  script_copyright("This script is Copyright (C) 2001 John Lampe");
 
- script_require_ports("Services/www", 80);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  script_require_ports("Services/www", 80);
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution", value:"Upgrade to the latest version.");
+  script_tag(name:"summary", value:"There is a buffer overflow in the remote IIS web server.
+  It is possible to overflow the remote Web server and execute commands as the SYSTEM user.
+
+  An attacker may make use of this vulnerability and use it to
+  gain access to confidential data and/or escalate their privileges
+  on the Web server.");
+
+
+  exit(0);
 }
 
 # The attack starts here
@@ -88,7 +81,7 @@ if ( sig && "IIS" >!< sig ) exit(0);
 
 if(get_port_state(port)) {
     if(http_is_dead(port:port))exit(0);
-    
+
     mystring = string("GET /NULL.printer HTTP/1.1\r\n");
     mystring = string (mystring, "Host: ", crap(420), "\r\n\r\n");
     mystring2 = http_get(item:"/", port:port);
@@ -98,7 +91,7 @@ if(get_port_state(port)) {
       send(socket:soc, data:mystring);
       r = http_recv(socket:soc);
       http_close_socket(soc);
-      
+
       if(http_is_dead(port:port))
       {
         security_message(port);

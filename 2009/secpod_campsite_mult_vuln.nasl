@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_campsite_mult_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: secpod_campsite_mult_vuln.nasl 14330 2019-03-19 13:59:11Z asteins $
 #
 # Campsite 'g_campsiteDir' Remote and Local File Inclusion Vulnerabilities
 #
@@ -24,34 +24,19 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow attacker to execute arbitrary local
-  files, and cause XSS attack, Directory Traversal attack and remote File
-  Injection attack on the affected application.
-  Impact Level: Application";
-tag_affected = "Campware, Campsite version 3.3.0 RC1 and prior";
-tag_insight = "The multiple flaws are due to,
-  - Input validation errors in the 'admin-files','conf/liveuser_configuration.php'
-    'include/phorum_load.php',scripts when processing the 'g_campsiteDir'
-    parameter.
-  - Input validation error in the 'admin-files/templates/list_dir.php' script
-    when,processing the 'listbasedir' parameter.";
-tag_solution = "Upgrade to Campsite version 3.3.6 or later
-  For updates refer to http://campware.org/";
-tag_summary = "This host is running Campsite and is prone to multiple vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900385");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 14330 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:59:11 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-06-30 16:55:49 +0200 (Tue, 30 Jun 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-2009-2181", "CVE-2009-2182", "CVE-2009-2183");
   script_bugtraq_id(35456);
   script_name("Campsite 'g_campsiteDir' Remote and Local File Inclusion Vulnerabilities");
-  script_xref(name : "URL" , value : "http://www.milw0rm.com/exploits/8995");
-  script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2009/1650");
+  script_xref(name:"URL", value:"http://www.milw0rm.com/exploits/8995");
+  script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2009/1650");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_MIXED_ATTACK);
@@ -59,11 +44,22 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("secpod_campsite_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary local
+  files, and cause XSS attack, Directory Traversal attack and remote File
+  Injection attack on the affected application.");
+  script_tag(name:"affected", value:"Campware, Campsite version 3.3.0 RC1 and prior");
+  script_tag(name:"insight", value:"The multiple flaws are due to,
+
+  - Input validation errors in the 'admin-files', 'conf/liveuser_configuration.php'
+    'include/phorum_load.php', scripts when processing the 'g_campsiteDir'
+    parameter.
+
+  - Input validation error in the 'admin-files/templates/list_dir.php' script
+    when, processing the 'listbasedir' parameter.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution", value:"Upgrade to Campsite version 3.3.6 or later");
+  script_tag(name:"summary", value:"This host is running Campsite and is prone to multiple vulnerabilities.");
+  script_xref(name:"URL", value:"http://campware.org/");
   exit(0);
 }
 
@@ -83,7 +79,6 @@ if(campsiteVer == NULL){
 
 ver = eregmatch(pattern:"^(.+) under (/.*)$", string:campsiteVer);
 
-# Check for RFI
 if(ver[2] != NULL)
 {
   if(!safe_checks())
@@ -101,7 +96,6 @@ if(ver[2] != NULL)
 
 if(ver[1] != NULL)
 {
-  # Check for Campsite version 3.3.0 RC1
   if(version_is_less_equal(version:ver[1], test_version:"3.3.0.RC1")){
     security_message(campsitePort);
   }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: DHCart_multiple_xss.nasl 4655 2016-12-01 15:18:13Z teissa $
+# $Id: DHCart_multiple_xss.nasl 14330 2019-03-19 13:59:11Z asteins $
 #
 # DHCart Multiple Cross Site Scripting And HTML Injection Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100028");
-  script_version("$Revision: 4655 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-01 16:18:13 +0100 (Thu, 01 Dec 2016) $");
+  script_version("$Revision: 14330 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:59:11 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-03-10 08:40:52 +0100 (Tue, 10 Mar 2009)");
   script_bugtraq_id(32117);
   script_cve_id("CVE-2008-6297");
@@ -46,8 +46,8 @@ if(description)
   vulnerabilities because it fails to sufficiently sanitize user-supplied data.");
   script_tag(name:"impact", value:"Attacker-supplied HTML or JavaScript code could run in the context of the affected site,
   potentially allowing the attacker to steal cookie-based authentication credentials and to control how the site
-  is rendered to the user; other attacks are also possible.");
-  script_tag(name:"affected", value:"DHCart 3.84 is vulnerable; other versions may also be affected.");
+  is rendered to the user, other attacks are also possible.");
+  script_tag(name:"affected", value:"DHCart 3.84 is vulnerable, other versions may also be affected.");
   script_tag(name:"solution", value:"Update DHCart to version 3.88 or newer.");
 
   script_tag(name:"qod", value:"50"); # Prone to false positives

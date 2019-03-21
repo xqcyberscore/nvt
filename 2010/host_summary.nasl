@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: host_summary.nasl 8287 2018-01-04 07:28:11Z teissa $
+# $Id: host_summary.nasl 14326 2019-03-19 13:40:32Z jschulte $
 #
 # Host Summary
 #
@@ -24,15 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This NVT summarizes technical information about the scanned host
-collected during the scan.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810003");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 8287 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-04 08:28:11 +0100 (Thu, 04 Jan 2018) $");
+  script_version("$Revision: 14326 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:40:32 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-08-10 14:49:09 +0200 (Tue, 10 Aug 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Host Summary");
@@ -41,7 +38,8 @@ if(description)
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secspace_traceroute.nasl", "secpod_open_tcp_ports.nasl");
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"summary", value:"This NVT summarizes technical information about the scanned host
+collected during the scan.");
   exit(0);
 }
 

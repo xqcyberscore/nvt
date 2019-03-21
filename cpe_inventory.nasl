@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cpe_inventory.nasl 12413 2018-11-19 11:11:31Z cfischer $
+# $Id: cpe_inventory.nasl 14324 2019-03-19 13:31:53Z cfischer $
 #
 # CPE Inventory
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810002");
-  script_version("$Revision: 12413 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-19 12:11:31 +0100 (Mon, 19 Nov 2018) $");
+  script_version("$Revision: 14324 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:31:53 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-11-18 11:43:05 +0100 (Wed, 18 Nov 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -37,8 +37,10 @@ if(description)
   script_copyright("Copyright (c) 2009 Greenbone Networks GmbH");
   script_family("Service detection");
 
+  script_xref(name:"URL", value:"http://cpe.mitre.org/");
+
   script_tag(name:"summary", value:"This routine uses information collected by other routines about
-  CPE identities (http://cpe.mitre.org/) of operating systems, services and
+  CPE identities of operating systems, services and
   applications detected during the scan.");
 
   script_tag(name:"qod_type", value:"remote_banner");

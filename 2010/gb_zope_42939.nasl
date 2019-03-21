@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zope_42939.nasl 8440 2018-01-17 07:58:46Z teissa $
+# $Id: gb_zope_42939.nasl 14323 2019-03-19 13:19:09Z jschulte $
 #
 # Zope Unspecified Denial Of Service Vulnerability
 #
@@ -24,42 +24,39 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Zope is prone to an unspecified denial-of-service vulnerability.
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.100779");
+  script_version("$Revision: 14323 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:19:09 +0100 (Tue, 19 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2010-09-03 15:15:12 +0200 (Fri, 03 Sep 2010)");
+  script_bugtraq_id(42939);
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
+  script_cve_id("CVE-2010-3198");
+
+  script_name("Zope Unspecified Denial Of Service Vulnerability");
+
+  script_xref(name:"URL", value:"https://www.securityfocus.com/bid/42939");
+  script_xref(name:"URL", value:"https://mail.zope.org/pipermail/zope-announce/2010-September/002247.html");
+  script_xref(name:"URL", value:"http://www.zope.org/");
+
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_category(ACT_GATHER_INFO);
+  script_family("Denial of Service");
+  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
+  script_dependencies("gb_get_http_banner.nasl");
+  script_mandatory_keys("zope/banner");
+  script_require_ports("Services/www", 8080);
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution", value:"Updates are available, please see the references for more information.");
+  script_tag(name:"summary", value:"Zope is prone to an unspecified denial-of-service vulnerability.
 
 An attacker can exploit this issue to cause the vulnerable application
 to crash, denying service to legitimate users.
 
-Versions prior to Zope 2.10.12 and Zope 2.11.7 are vulnerable.";
-
-tag_solution = "Updates are available; please see the references for more information.";
-
-if (description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.100779");
- script_version("$Revision: 8440 $");
- script_tag(name:"last_modification", value:"$Date: 2018-01-17 08:58:46 +0100 (Wed, 17 Jan 2018) $");
- script_tag(name:"creation_date", value:"2010-09-03 15:15:12 +0200 (Fri, 03 Sep 2010)");
- script_bugtraq_id(42939);
- script_tag(name:"cvss_base", value:"4.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_cve_id("CVE-2010-3198");
-
- script_name("Zope Unspecified Denial Of Service Vulnerability");
-
- script_xref(name : "URL" , value : "https://www.securityfocus.com/bid/42939");
- script_xref(name : "URL" , value : "https://mail.zope.org/pipermail/zope-announce/2010-September/002247.html");
- script_xref(name : "URL" , value : "http://www.zope.org/");
-
- script_tag(name:"qod_type", value:"remote_banner");
- script_category(ACT_GATHER_INFO);
- script_family("Denial of Service");
- script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("gb_get_http_banner.nasl");
- script_mandatory_keys("zope/banner");
- script_require_ports("Services/www", 8080);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+Versions prior to Zope 2.10.12 and Zope 2.11.7 are vulnerable.");
+  exit(0);
 }
 
 include("http_func.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_money_detect.nasl 11420 2018-09-17 06:33:13Z cfischer $
+# $Id: gb_ms_money_detect.nasl 14329 2019-03-19 13:57:49Z cfischer $
 #
 # Microsoft Money Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800217");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11420 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 08:33:13 +0200 (Mon, 17 Sep 2018) $");
+  script_version("$Revision: 14329 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:57:49 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-01-08 14:06:04 +0100 (Thu, 08 Jan 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"qod_type", value:"registry");
@@ -64,7 +64,6 @@ if(!osArch){
   exit(0);
 }
 
-## if os is 32 bit iterate over comman path
 if("x86" >< osArch){
   key_list = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\";
 }

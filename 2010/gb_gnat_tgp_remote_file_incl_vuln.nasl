@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gnat_tgp_remote_file_incl_vuln.nasl 7573 2017-10-26 09:18:50Z cfischer $
+# $Id: gb_gnat_tgp_remote_file_incl_vuln.nasl 14323 2019-03-19 13:19:09Z jschulte $
 #
 # Gnat-TGP 'DOCUMENT_ROOT' Parameter Remote File Include Vulnerability
 #
@@ -27,16 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800758");
-  script_version("$Revision: 7573 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
+  script_version("$Revision: 14323 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:19:09 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-04-16 16:17:26 +0200 (Fri, 16 Apr 2010)");
   script_cve_id("CVE-2010-1272");
   script_bugtraq_id(38522);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Gnat-TGP 'DOCUMENT_ROOT' Parameter Remote File Include Vulnerability");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/56675");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/11621");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/56675");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/11621");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
@@ -45,18 +45,15 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "impact" , value : "Successful exploitation will let attackers to execute arbitrary
-  code in a user's browser session in the context of an affected site.
-
-  Impact Level: Application");
-  script_tag(name : "affected" , value : "Gnat-TGP version 1.2.20 and prior");
-  script_tag(name : "insight" , value : "The flaw is due to the error in the 'DOCUMENT_ROOT' parameter,
+  script_tag(name:"impact", value:"Successful exploitation will let attackers to execute arbitrary
+  code in a user's browser session in the context of an affected site.");
+  script_tag(name:"affected", value:"Gnat-TGP version 1.2.20 and prior");
+  script_tag(name:"insight", value:"The flaw is due to the error in the 'DOCUMENT_ROOT' parameter,
   which allows remote attackers to send a specially-crafted URL request to the 'tgpinc.php' script.");
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
-  script_tag(name : "summary" , value : "This host is running Gnat-TGP and is prone remote file include
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"This host is running Gnat-TGP and is prone remote file include
   vulnerability");
 
   script_tag(name:"solution_type", value:"WillNotFix");
@@ -69,10 +66,8 @@ include("http_func.inc");
 include("version_func.inc");
 include("http_keepalive.inc");
 
-## Get HTTP port
 gnatPort = get_http_port(default:80);
 
-## Check the php support
 if(!can_host_php(port:gnatPort)){
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_an_image_gallery_xss_vuln.nasl 5055 2017-01-20 14:08:39Z teissa $
+# $Id: secpod_an_image_gallery_xss_vuln.nasl 14330 2019-03-19 13:59:11Z asteins $
 #
 # An Image Gallery Multiple Cross-Site Scripting Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901038");
-  script_version("$Revision: 5055 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-20 15:08:39 +0100 (Fri, 20 Jan 2017) $");
+  script_version("$Revision: 14330 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:59:11 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-10-01 12:15:29 +0200 (Thu, 01 Oct 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -44,16 +44,13 @@ if(description)
   script_xref(name:"URL", value:"http://secunia.com/advisories/36680");
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to execute
-  arbitrary HTML and script code in a user's browser session in the context of an affected site.
-
-  Impact Level:System/Application.");
+  arbitrary HTML and script code in a user's browser session in the context of an affected site.");
   script_tag(name:"affected", value:"An Image Gallery version 1.0 and prior.");
   script_tag(name:"insight", value:"Input passed to the 'path' parameter in 'index.php' and 'main.php'
   and to the 'show' parameter in 'main.php' is not properly sanitised before being returned to the user.");
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore. General solution options
-  are to upgrade to a newer release, disable respective features, remove the product or replace the
-  product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"summary", value:"The host is running An Image Gallery and is prone to Multiple
   Cross-Site Scripting Vulnerability.");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_xss_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: gb_apache_struts_xss_vuln.nasl 14332 2019-03-19 14:22:43Z asteins $
 #
 # Apache Struts Cross Site Scripting Vulnerability
 #
@@ -24,31 +24,18 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will let the attacker issue malicious URL or can inject
-  malicious codes inside the web page contents to gain sensitive information.
-  Impact Level: Application";
-tag_affected = "Apache Struts version 2.0 and prior to 2.0.11.1
-  Apache Struts version 2.1 and prior to 2.1.1";
-tag_insight = "This flaw is due to improper sanitization of the user supplied input
-  in '<s:url>' and '<s:a ...>' tag which doesn't encode the URL parameter when
-  specified in the action attribute which causes XSS attacks.";
-tag_solution = "Upgrade to Apache Struts version 2.1.1 or 2.0.11.1.
-  http://struts.apache.org/download.cgi";
-tag_summary = "This host is running Apache Struts and is prone to Cross Site Scripting
-  Vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800278");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 14332 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:22:43 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-04-23 08:16:04 +0200 (Thu, 23 Apr 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_cve_id("CVE-2008-6682");
   script_name("Apache Struts Cross Site Scripting Vulnerability");
-  script_xref(name : "URL" , value : "https://issues.apache.org/struts/browse/WW-2414");
-  script_xref(name : "URL" , value : "https://issues.apache.org/struts/browse/WW-2427");
+  script_xref(name:"URL", value:"https://issues.apache.org/struts/browse/WW-2414");
+  script_xref(name:"URL", value:"https://issues.apache.org/struts/browse/WW-2427");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_category(ACT_GATHER_INFO);
@@ -56,11 +43,17 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_apache_struts2_detection.nasl");
   script_require_ports("Services/www", 8080);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation will let the attacker issue malicious URL or can inject
+  malicious codes inside the web page contents to gain sensitive information.");
+  script_tag(name:"affected", value:"Apache Struts version 2.0 and prior to 2.0.11.1
+  Apache Struts version 2.1 and prior to 2.1.1");
+  script_tag(name:"insight", value:"This flaw is due to improper sanitization of the user supplied input
+  in '<s:url>' and '<s:a ...>' tag which doesn't encode the URL parameter when
+  specified in the action attribute which causes XSS attacks.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution", value:"Upgrade to Apache Struts version 2.1.1 or 2.0.11.1.");
+  script_tag(name:"summary", value:"This host is running Apache Struts and is prone to a Cross Site Scripting
+  Vulnerability.");
   exit(0);
 }
 
@@ -81,5 +74,8 @@ if(!strutsVer[1]){
 
 if(version_in_range(version:strutsVer[1], test_version:"2.0", test_version2:"2.0.11") ||
    version_in_range(version:strutsVer[1], test_version:"2.1", test_version2:"2.1.0")){
-  security_message(strutsPort);
+  security_message(port:strutsPort, data:"The target host was found to be vulnerable.");
+  exit(0);
 }
+
+exit(99);

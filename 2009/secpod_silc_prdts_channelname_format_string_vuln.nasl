@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_silc_prdts_channelname_format_string_vuln.nasl 11554 2018-09-22 15:11:42Z cfischer $
+# $Id: secpod_silc_prdts_channelname_format_string_vuln.nasl 14335 2019-03-19 14:46:57Z asteins $
 #
 # SILC Client & Toolkit Channel Name Format String Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900958");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 14335 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:46:57 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-09-29 09:16:03 +0200 (Tue, 29 Sep 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -53,15 +53,13 @@ if(description)
   processing format string specifiers in the channel name field.");
   script_tag(name:"summary", value:"This host has SILC Client installed and is prone to Format
   String vulnerability.");
-  script_tag(name:"solution", value:"Apply the patch or upgrade to SILC Toolkit 1.1.10.
-  For updates refer to http://silcnet.org/
-
-  *****
+  script_tag(name:"solution", value:"Apply the patch or upgrade to SILC Toolkit 1.1.10.  *****
   NOTE: Please ignore this warning if the patch is already applied.
   *****");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://silcnet.org/");
   exit(0);
 }
 

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: yapig_multiple_flaws.nasl 9348 2018-04-06 07:01:19Z cfischer $
+# $Id: yapig_multiple_flaws.nasl 14336 2019-03-19 14:53:10Z mmartin $
 # Description: YaPiG Multiple Flaws
 #
 # Authors:
@@ -22,51 +22,50 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "The remote web server contains a PHP application that is affected by
-multiple flaws. 
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.18523");
+  script_version("$Revision: 14336 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:53:10 +0100 (Tue, 19 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_cve_id("CVE-2005-1881", "CVE-2005-1882", "CVE-2005-1883", "CVE-2005-1884", "CVE-2005-1885", "CVE-2005-1886");
+  script_bugtraq_id(13871, 13874, 13875, 13876, 13877);
+  script_xref(name:"OSVDB", value:"17115");
+  script_xref(name:"OSVDB", value:"17116");
+  script_xref(name:"OSVDB", value:"17117");
+  script_xref(name:"OSVDB", value:"17118");
+  script_xref(name:"OSVDB", value:"17119");
+  script_xref(name:"OSVDB", value:"17120");
+  script_xref(name:"OSVDB", value:"17121");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_name("YaPiG Multiple Flaws");
+  script_category(ACT_GATHER_INFO);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_copyright("This script is Copyright (C) 2005 David Maciejak");
+  script_family("Web application abuses");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution", value:"Update to YaPiG 0.95b or later.");
+  script_tag(name:"summary", value:"The remote web server contains a PHP application that is affected by
+multiple flaws.
 
 Description :
 
 The remote host is running YaPiG, a web-based image gallery written in
-PHP. 
+PHP.
 
 The installed version of YaPiG is vulnerable to multiple flaws:
 
   - Remote and local file inclusion.
+
   - Cross-site scripting and HTML injection flaws through 'view.php'.
-  - Directory traversal flaw through 'upload.php'.";
 
-tag_solution = "Update to YaPiG 0.95b or later.";
-
-if(description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.18523");
- script_version("$Revision: 9348 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_cve_id("CVE-2005-1881", "CVE-2005-1882", "CVE-2005-1883", "CVE-2005-1884", "CVE-2005-1885", "CVE-2005-1886");
- script_bugtraq_id(13871, 13874, 13875, 13876, 13877);
- script_xref(name:"OSVDB", value:"17115");
- script_xref(name:"OSVDB", value:"17116");
- script_xref(name:"OSVDB", value:"17117");
- script_xref(name:"OSVDB", value:"17118");
- script_xref(name:"OSVDB", value:"17119");
- script_xref(name:"OSVDB", value:"17120");
- script_xref(name:"OSVDB", value:"17121");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_name("YaPiG Multiple Flaws");
- script_category(ACT_GATHER_INFO);
- script_tag(name:"qod_type", value:"remote_vul");
- script_copyright("This script is Copyright (C) 2005 David Maciejak");
- script_family("Web application abuses");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_xref(name : "URL" , value : "http://secwatch.org/advisories/secwatch/20050530_yapig.txt");
- exit(0);
+  - Directory traversal flaw through 'upload.php'.");
+  script_xref(name:"URL", value:"http://secwatch.org/advisories/secwatch/20050530_yapig.txt");
+  exit(0);
 }
 
 include("http_func.inc");

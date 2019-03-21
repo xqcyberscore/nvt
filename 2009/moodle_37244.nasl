@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: moodle_37244.nasl 10674 2018-07-30 08:24:18Z asteins $
+# $Id: moodle_37244.nasl 14332 2019-03-19 14:22:43Z asteins $
 #
 # Moodle Multiple Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100384");
-  script_version("$Revision: 10674 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-30 10:24:18 +0200 (Mon, 30 Jul 2018) $");
+  script_version("$Revision: 14332 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:22:43 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-12-09 12:14:51 +0100 (Wed, 09 Dec 2009)");
   script_cve_id("CVE-2009-4297");
   script_bugtraq_id(37244);
@@ -64,7 +64,7 @@ data, or exploit latent vulnerabilities in the underlying database.");
 }
 
 include("http_func.inc");
-include("http_keepalive.inc");
+
 include("version_func.inc");
 
 port = get_http_port(default:80);

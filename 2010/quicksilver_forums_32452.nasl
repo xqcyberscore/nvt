@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: quicksilver_forums_32452.nasl 8495 2018-01-23 07:57:49Z teissa $
+# $Id: quicksilver_forums_32452.nasl 14326 2019-03-19 13:40:32Z jschulte $
 #
 # Quicksilver Forums Local File Include and Arbitrary File Upload Vulnerabilities
 #
@@ -24,7 +24,31 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Quicksilver Forums is prone to a local file-include vulnerability and
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.100504");
+  script_version("$Revision: 14326 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:40:32 +0100 (Tue, 19 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2010-02-23 17:05:07 +0100 (Tue, 23 Feb 2010)");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_cve_id("CVE-2008-7064");
+  script_bugtraq_id(32452);
+
+  script_name("Quicksilver Forums Local File Include and Arbitrary File Upload Vulnerabilities");
+
+
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_category(ACT_GATHER_INFO);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
+  script_dependencies("os_detection.nasl", "quicksilver_forums_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_mandatory_keys("Host/runs_windows");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
+  script_tag(name:"summary", value:"Quicksilver Forums is prone to a local file-include vulnerability and
 an arbitrary-file-upload vulnerability because the application fails
 to sufficiently sanitize user-supplied input.
 
@@ -34,45 +58,18 @@ webserver, and obtain sensitive information. By exploiting the arbitrary-file-
 upload and local file-include vulnerabilities at the same time, the
 attacker may be able to execute remote code.
 
-Quicksilver Forums 1.4.2 is vulnerable; other versions may also be
+Quicksilver Forums 1.4.2 is vulnerable, other versions may also be
 affected. Note that these issues affect only versions running on
-Windows platforms.";
-
-tag_solution = "Updates are available. Please see the references for more information.";
-
-if (description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.100504");
- script_version("$Revision: 8495 $");
- script_tag(name:"last_modification", value:"$Date: 2018-01-23 08:57:49 +0100 (Tue, 23 Jan 2018) $");
- script_tag(name:"creation_date", value:"2010-02-23 17:05:07 +0100 (Tue, 23 Feb 2010)");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_cve_id("CVE-2008-7064");
- script_bugtraq_id(32452);
-
- script_name("Quicksilver Forums Local File Include and Arbitrary File Upload Vulnerabilities");
-
-
- script_tag(name:"qod_type", value:"remote_banner");
- script_category(ACT_GATHER_INFO);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("os_detection.nasl","quicksilver_forums_detect.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_mandatory_keys("Host/runs_windows");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/32452");
- script_xref(name : "URL" , value : "http://pdnsadmin.iguanadons.net/index.php?a=newspost&t=85");
- script_xref(name : "URL" , value : "http://www.quicksilverforums.com/");
- exit(0);
+Windows platforms.");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/32452");
+  script_xref(name:"URL", value:"http://pdnsadmin.iguanadons.net/index.php?a=newspost&t=85");
+  script_xref(name:"URL", value:"http://www.quicksilverforums.com/");
+  exit(0);
 }
 
 include("http_func.inc");
 include("host_details.inc");
-include("http_keepalive.inc");
+
 include("version_func.inc");
 
 port = get_http_port(default:80);

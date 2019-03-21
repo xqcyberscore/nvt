@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ghostScripter_amazon_shop_multiple_vulnerabilities.nasl 4970 2017-01-09 15:00:59Z teissa $
+# $Id: ghostScripter_amazon_shop_multiple_vulnerabilities.nasl 14335 2019-03-19 14:46:57Z asteins $
 #
 # GhostScripter Amazon Shop Multiple Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100024");
-  script_version("$Revision: 4970 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-09 16:00:59 +0100 (Mon, 09 Jan 2017) $");
+  script_version("$Revision: 14335 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:46:57 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-03-10 08:40:52 +0100 (Tue, 10 Mar 2009)");
   script_bugtraq_id(33994);
   script_tag(name:"cvss_base", value:"7.5");
@@ -46,10 +46,16 @@ if(description)
   because it fails to sufficiently sanitize user-supplied data.");
   script_tag(name:"impact", value:"An attacker can exploit these issues to run malicious PHP code in
   the context of the webserver process, run script code in an unsuspecting user's browser, steal
-  cookie-based authentication credentials, or obtain sensitive information; other attacks are also
+  cookie-based authentication credentials, or obtain sensitive information, other attacks are also
   possible.");
 
   script_tag(name:"qod_type", value:"remote_probe");
+
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
+  since the disclosure of this vulnerability. Likely none will be provided anymore.
+  General solution options are to upgrade to a newer release, disable respective features,
+  remove the product or replace the product by another one.");
 
   exit(0);
 }
@@ -60,11 +66,11 @@ include("http_keepalive.inc");
 port = get_http_port( default:80 );
 if( ! can_host_php( port:port ) ) exit( 0 );
 
-foreach dir( make_list_unique("/amazon", cgi_dirs( port:port ) ) ) { 
+foreach dir( make_list_unique("/amazon", cgi_dirs( port:port ) ) ) {
 
   if( dir == "/" ) dir = "";
   url = dir +  "/search.php?query=1<script>alert(document.cookie);</script>&mode=all";
- 
+
   if( http_vuln_check( port:port, url:url, pattern:"<script>alert\(document.cookie\);</script>", check_header:TRUE ) ) {
     report = report_vuln_url( port:port, url:url  );
     security_message( port:port, data:report );

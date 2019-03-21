@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_glfusion_mult_sql_injecton_vuln.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: secpod_glfusion_mult_sql_injecton_vuln.nasl 14323 2019-03-19 13:19:09Z jschulte $
 #
 # glFusion Multiple SQL Injection Vulnerabilities
 #
@@ -27,17 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901111");
-  script_version("$Revision: 5394 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+  script_version("$Revision: 14323 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:19:09 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-04-29 10:04:32 +0200 (Thu, 29 Apr 2010)");
   script_cve_id("CVE-2009-4796");
   script_bugtraq_id(34281);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("glFusion Multiple SQL Injection Vulnerabilities");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/34519");
-  script_xref(name : "URL" , value : "http://retrogod.altervista.org/9sg_glfusion_sql.html");
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/archive/1/502260/100/0/threaded");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/34519");
+  script_xref(name:"URL", value:"http://retrogod.altervista.org/9sg_glfusion_sql.html");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/archive/1/502260/100/0/threaded");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2010 SecPod");
@@ -46,21 +46,19 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "impact" , value : "Successful exploitation will let the attacker cause SQL injection attack and
-  gain sensitive information.
-
-  Impact Level: Application");
-  script_tag(name : "affected" , value : "glFusion version 1.1.2 and prior.");
-  script_tag(name : "insight" , value : "The flaws are due to improper validation of user supplied input via
+  script_tag(name:"impact", value:"Successful exploitation will let the attacker cause SQL injection attack and
+  gain sensitive information.");
+  script_tag(name:"affected", value:"glFusion version 1.1.2 and prior.");
+  script_tag(name:"insight", value:"The flaws are due to improper validation of user supplied input via
   the 'order' and 'direction' parameters to 'search.php' that allows attacker
   to manipulate SQL queries by injecting arbitrary SQL code.");
-  script_tag(name : "solution" , value : "Upgrade to the latest version of glFusion 1.1.8 or later,
-  For updates refer to http://www.glfusion.org/filemgmt/index.php");
-  script_tag(name : "summary" , value : "This host is running glFusion and is prone to multiple SQL
+  script_tag(name:"solution", value:"Upgrade to the latest version of glFusion 1.1.8 or later.");
+  script_tag(name:"summary", value:"This host is running glFusion and is prone to multiple SQL
   injection vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
+  script_xref(name:"URL", value:"http://www.glfusion.org/filemgmt/index.php");
   exit(0);
 }
 
@@ -69,10 +67,8 @@ include("http_func.inc");
 include("version_func.inc");
 include("http_keepalive.inc");
 
-## Get HTTP Port
 port = get_http_port(default:80);
 
-## Check the php support
 if(!can_host_php(port:port)){
   exit(0);
 }
@@ -82,17 +78,13 @@ foreach dir (make_list_unique("/", "/glFusion", "/glfusion/public_html", cgi_dir
 
   if(dir == "/") dir = "";
 
-  ## Send and Receive the response
   res = http_get_cache(item: dir + "/index.php",  port:port);
 
-  ## Confirm the application
   if('>glFusion' >< res)
   {
-    ## Get glFusion Version
     ver = eregmatch(pattern:"glFusion v([0-9.]+)", string:res);
     if(ver[1]!= NULL)
     {
-      ## Check for version before 1.1.2
       if(version_is_less_equal(version:ver[1], test_version:"1.1.2"))
       {
         security_message(port:port);

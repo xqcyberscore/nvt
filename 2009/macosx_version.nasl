@@ -1,12 +1,12 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: macosx_version.nasl 5085 2017-01-24 11:32:37Z cfi $
+# $Id: macosx_version.nasl 14325 2019-03-19 13:35:02Z asteins $
 #
 # Mac OS X Version
 #
 # Developed by LSS Security Team <http://security.lss.hr>
 #
-# Copyright (C) 2010 LSS <http://www.lss.hr>
+# Copyright (C) 2009 LSS <http://www.lss.hr>
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -25,8 +25,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102005");
-  script_version("$Revision: 5085 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:32:37 +0100 (Tue, 24 Jan 2017) $");
+  script_version("$Revision: 14325 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:35:02 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-11-17 12:37:40 +0100 (Tue, 17 Nov 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -45,7 +45,6 @@ if(description)
   exit(0);
 }
 
-# get the os string
 osx_name = get_kb_item( "ssh/login/osx_name" );
 osx_version = get_kb_item( "ssh/login/osx_version" );
 os = osx_name + " " + osx_version;

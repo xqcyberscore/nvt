@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_mult_vuln01_oct15.nasl 10029 2018-05-30 13:29:18Z santu $
+# $Id: gb_apple_macosx_mult_vuln01_oct15.nasl 14304 2019-03-19 09:10:40Z cfischer $
 #
 # Apple Mac OS X Multiple Vulnerabilities-01 October-15
 #
@@ -30,7 +30,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806148");
-  script_version("$Revision: 10029 $");
+  script_version("$Revision: 14304 $");
   script_cve_id("CVE-2015-5943", "CVE-2015-6983", "CVE-2015-7061", "CVE-2015-7060",
                 "CVE-2015-7059", "CVE-2015-7007", "CVE-2015-5945", "CVE-2015-6563",
                 "CVE-2014-3565", "CVE-2012-6151", "CVE-2015-7988", "CVE-2015-6994",
@@ -40,42 +40,41 @@ if(description)
                 "CVE-2015-7006", "CVE-2015-7003");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-30 15:29:18 +0200 (Wed, 30 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 10:10:40 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-10-29 12:54:16 +0530 (Thu, 29 Oct 2015)");
   script_name("Apple Mac OS X Multiple Vulnerabilities-01 October-15");
 
-  script_tag(name: "summary" , value:"This host is running Apple Mac OS X and
+  script_tag(name:"summary", value:"This host is running Apple Mac OS X and
   is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exists. For details refer
+  script_tag(name:"insight", value:"Multiple flaws exists. For details refer
   reference section.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow attacker
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker
   to execute arbitrary code, overwrite cookies, elevate privileges, execute
   arbitrary code with system privileges, cause unexpected application termination,
   read kernel memory, conduct impersonation attacks, run arbitrary AppleScript,
-  overwrite arbitrary files and control keychain access prompts.
+  overwrite arbitrary files and control keychain access prompts.");
 
-  Impact Level: System");
-
-  script_tag(name: "affected" , value:"Apple OS X El Capitan versions before
+  script_tag(name:"affected", value:"Apple OS X El Capitan versions before
   10.11.1");
 
-  script_tag(name: "solution" , value:"Upgrade Apple OS X El Capitan to version
+  script_tag(name:"solution", value:"Upgrade Apple OS X El Capitan to version
   10.11.1 or later. For updates refer to Reference links.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "https://support.apple.com/en-us/HT205375");
+  script_xref(name:"URL", value:"https://support.apple.com/en-us/HT205375");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Mac OS X Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/osx_name", "ssh/login/osx_version");
+  script_mandatory_keys("ssh/login/osx_name", "ssh/login/osx_version", re:"ssh/login/osx_version=^10\.11");
+
   exit(0);
 }
 
@@ -87,7 +86,7 @@ if(!osName || "Mac OS X" >!< osName){
 }
 
 osVer = get_kb_item("ssh/login/osx_version");
-if(osVer && osVer =~ "^(10\.11)")
+if(osVer && osVer =~ "^10\.11")
 {
 
   if(version_is_less(version:osVer, test_version:"10.11.1"))
@@ -97,4 +96,5 @@ if(osVer && osVer =~ "^(10\.11)")
     exit(0);
   }
 }
+
 exit(99);

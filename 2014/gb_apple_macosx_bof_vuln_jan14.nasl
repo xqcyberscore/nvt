@@ -27,62 +27,57 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804062");
-  script_version("$Revision: 9860 $");
+  script_version("$Revision: 14304 $");
   script_cve_id("CVE-2013-0984", "CVE-2013-0155", "CVE-2013-0276", "CVE-2013-0277",
                 "CVE-2013-0333", "CVE-2013-1854", "CVE-2013-1855", "CVE-2013-1856",
                 "CVE-2013-1857");
   script_bugtraq_id(60328);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-16 11:27:39 +0200 (Wed, 16 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 10:10:40 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2014-01-20 20:19:58 +0530 (Mon, 20 Jan 2014)");
   script_name("Apple Mac OS X Directory Service Remote Buffer Overflow Vulnerability");
 
-  script_tag(name: "summary" , value:"This host is running Apple Mac OS X and 
+  script_tag(name:"summary", value:"This host is running Apple Mac OS X and
   is prone to buffer overflow vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws are due to improper 
+  script_tag(name:"insight", value:"Multiple flaws are due to improper
   handling of network messages and multiple errors in ruby on rails.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow 
-  attackers to, execute arbitrary code or cause a denial of service.
+  script_tag(name:"impact", value:"Successful exploitation will allow
+  attackers to, execute arbitrary code or cause a denial of service.");
 
-  Impact Level: System/Application");
+  script_tag(name:"affected", value:"Apple Mac OS X version 10.6.8");
 
-  script_tag(name: "affected" , value:"Apple Mac OS X version 10.6.8");
-
-  script_tag(name: "solution" , value:"Apply the Mac Security Update 2013-002.
+  script_tag(name:"solution", value:"Apply the Mac Security Update 2013-002.
   For updates refer to Reference links.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 
-  script_xref(name : "URL" , value : "http://support.apple.com/kb/HT5784");
+  script_xref(name:"URL", value:"http://support.apple.com/kb/HT5784");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Mac OS X Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/osx_name", "ssh/login/osx_version");
+  script_mandatory_keys("ssh/login/osx_name", "ssh/login/osx_version", re:"ssh/login/osx_version=^10\.6\.8");
+
   exit(0);
 }
-
 
 include("version_func.inc");
 include("ssh_func.inc");
 
 osName = get_kb_item("ssh/login/osx_name");
-if(!osName || "Mac OS X" >!< osName){
-  exit (0);
-}
+if(!osName || "Mac OS X" >!< osName)
+  exit(0);
 
 osVer = get_kb_item("ssh/login/osx_version");
-if(!osVer){
- exit(0);
-}
+if(!osVer)
+  exit(0);
 
 if(osVer == "10.6.8")
 {
@@ -98,5 +93,7 @@ if(osVer == "10.6.8")
     security_message(data:report);
     exit(0);
   }
+  exit(99);
 }
+
 exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_remote_help_38875.nasl 6696 2017-07-12 11:30:15Z cfischer $
+# $Id: gb_remote_help_38875.nasl 14326 2019-03-19 13:40:32Z jschulte $
 #
 # Remote Help HTTP GET Request Format String Denial Of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100548");
-  script_version("$Revision: 6696 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:30:15 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 14326 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:40:32 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-03-23 13:24:50 +0100 (Tue, 23 Mar 2010)");
   script_bugtraq_id(38875);
   script_tag(name:"cvss_base", value:"5.0");
@@ -45,19 +45,19 @@ if(description)
   script_xref(name:"URL", value:"http://www.corelan.be:8800/index.php/forum/security-advisories/remote-help-httpd-denial-of-service/");
   script_xref(name:"URL", value:"http://www.softpedia.com/get/Internet/Servers/WEB-Servers/Remote-Help.shtml");
 
-  tag_summary = "Remote Help is prone to a denial-of-service vulnerability.";
-
-  tag_impact = "Remote attackers can exploit this issue to cause the application to
+  script_tag(name:"summary", value:"Remote Help is prone to a denial-of-service vulnerability.");
+  script_tag(name:"impact", value:"Remote attackers can exploit this issue to cause the application to
   crash, denying service to legitimate users. Due to the nature of this
-  issue arbitrary code-execution may be possible; however this has not been confirmed.";
-
-  tag_affected = "Remote Help 0.0.7 is vulnerable; other versions may also be affected.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
+  issue arbitrary code-execution may be possible, however this has not been confirmed.");
+  script_tag(name:"affected", value:"Remote Help 0.0.7 is vulnerable, other versions may also be affected.");
 
   script_tag(name:"qod_type", value:"remote_banner");
+
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
+  since the disclosure of this vulnerability. Likely none will be provided anymore.
+  General solution options are to upgrade to a newer release, disable respective features,
+  remove the product or replace the product by another one.");
 
   exit(0);
 }

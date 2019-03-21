@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openoffice_mult_code_exec_vuln_win_feb10.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: gb_openoffice_mult_code_exec_vuln_win_feb10.nasl 14331 2019-03-19 14:03:05Z jschulte $
 #
 # OpenOffice Multiple Remote Code Execution Vulnerabilities - Feb10
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800167");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 14331 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:03:05 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-02-19 11:58:13 +0100 (Fri, 19 Feb 2010)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -60,8 +60,7 @@ if(description)
   - Microsoft Word document in filter/ww8/ww8par2.cxx leading to application
     crash or execute arbitrary code via crafted sprmTSetBrc table property
     in a Word document.");
-  script_tag(name:"solution", value:"Upgrade to OpenOffice.org version 3.2 or later,
-  http://download.openoffice.org/index.html");
+  script_tag(name:"solution", value:"Upgrade to OpenOffice.org version 3.2 or later.");
   script_tag(name:"summary", value:"This host has OpenOffice running which is prone to multiple
   remote code execution vulnerabilities.");
 

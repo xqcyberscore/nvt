@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ocs_inventory_ng_rem_sh_upl_vuln.nasl 13590 2019-02-12 02:34:37Z ckuersteiner $
+# $Id: gb_ocs_inventory_ng_rem_sh_upl_vuln.nasl 13699 2019-02-15 14:29:50Z cfischer $
 #
 # OCS Inventory NG <= 2.5.0 Remote Shell Upload Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:ocsinventory-ng:ocs_inventory_ng";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107374");
-  script_version("$Revision: 13590 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-12 03:34:37 +0100 (Tue, 12 Feb 2019) $");
+  script_version("$Revision: 13699 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 15:29:50 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-11-23 11:45:49 +0100 (Fri, 23 Nov 2018)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");

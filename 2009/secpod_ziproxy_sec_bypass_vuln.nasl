@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ziproxy_sec_bypass_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: secpod_ziproxy_sec_bypass_vuln.nasl 14332 2019-03-19 14:22:43Z asteins $
 #
 # Ziproxy Security Bypass Vulnerability
 #
@@ -27,16 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900523");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 14332 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:22:43 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-03-26 11:19:12 +0100 (Thu, 26 Mar 2009)");
   script_tag(name:"cvss_base", value:"5.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:N/A:N");
   script_cve_id("CVE-2009-0804");
   script_bugtraq_id(33858);
   script_name("Ziproxy Security Bypass Vulnerability");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/34018/");
-  script_xref(name : "URL" , value : "http://www.kb.cert.org/vuls/id/435052");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/34018/");
+  script_xref(name:"URL", value:"http://www.kb.cert.org/vuls/id/435052");
 
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
@@ -46,17 +46,17 @@ if(description)
   script_require_ports("Services/www", 8080);
   script_mandatory_keys("Ziproxy/installed");
 
-  script_tag(name : "impact" , value : "This can be exploited to restrict websites or bypass a browser's
+  script_tag(name:"impact", value:"This can be exploited to restrict websites or bypass a browser's
   security context protection mechanism by sending HTTP requests with
-  forged HTTP Host header.
-  Impact Level: System/Application");
-  script_tag(name : "affected" , value : "Ziproxy version 2.6.0 and prior on Linux.");
-  script_tag(name : "insight" , value : "This vulnerability arises because ziproxy depends on HTTP Host headers
+  forged HTTP Host header.");
+  script_tag(name:"affected", value:"Ziproxy version 2.6.0 and prior on Linux.");
+  script_tag(name:"insight", value:"This vulnerability arises because ziproxy depends on HTTP Host headers
   to determine the remote endpoints while acting as a transparent proxy.");
-  script_tag(name : "solution" , value : "Upgrade to Ziproxy version 3.1.0 or later,
-  For updates refer to http://ziproxy.sourceforge.net/");
-  script_tag(name : "summary" , value : "This host is running Ziproxy server and is prone to security
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution", value:"Upgrade to Ziproxy version 3.1.0 or later.");
+  script_tag(name:"summary", value:"This host is running Ziproxy server and is prone to security
   bypass vulnerability.");
+  script_xref(name:"URL", value:"http://ziproxy.sourceforge.net/");
   exit(0);
 }
 

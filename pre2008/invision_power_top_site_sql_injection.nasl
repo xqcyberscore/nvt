@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: invision_power_top_site_sql_injection.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: invision_power_top_site_sql_injection.nasl 14336 2019-03-19 14:53:10Z mmartin $
 #
 # Invision Power Top Site List SQL Injection
 #
@@ -31,8 +31,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11956");
-  script_version("$Revision: 6040 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+  script_version("$Revision: 14336 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:53:10 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(9229);
   script_tag(name:"cvss_base", value:"7.5");
@@ -45,6 +45,7 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"solution", value:"Upgrade to the latest version of this CGI suite");
   script_tag(name:"summary", value:"The remote host is running 'Invision Power Top Site List', a site ranking
   script written in PHP.

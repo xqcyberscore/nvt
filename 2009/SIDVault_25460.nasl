@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: SIDVault_25460.nasl 5190 2017-02-03 11:52:51Z cfi $
+# $Id: SIDVault_25460.nasl 14332 2019-03-19 14:22:43Z asteins $
 #
 # SIDVault 'simple_bind()' Function Multiple Remote Buffer Overflow Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100270");
-  script_version("$Revision: 5190 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-03 12:52:51 +0100 (Fri, 03 Feb 2017) $");
+  script_version("$Revision: 14332 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:22:43 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-09-07 09:47:24 +0200 (Mon, 07 Sep 2009)");
   script_bugtraq_id(25460);
   script_cve_id("CVE-2007-4566");
@@ -46,24 +46,16 @@ if(description)
   script_xref(name:"URL", value:"http://www.alphacentauri.co.nz/sidvault/index.htm");
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/477821");
 
-  tag_summary = "SIDVault is prone to multiple remote buffer-overflow vulnerabilities because
+  script_tag(name:"solution", value:"The vendor released SIDVault 2.0f to address this issue. Please see
+  the references for more information.");
+  script_tag(name:"summary", value:"SIDVault is prone to multiple remote buffer-overflow vulnerabilities because
   the application fails to properly bounds- check user-supplied input before
-  copying it to an insufficiently sized memory buffer.";
-
-  tag_impact = "An attacker can exploit these issues to execute arbitrary code with superuser
+  copying it to an insufficiently sized memory buffer.");
+  script_tag(name:"impact", value:"An attacker can exploit these issues to execute arbitrary code with superuser
   privileges. Successfully exploiting these issues will result in the complete
   compromise of affected computers. Failed exploit attempts will result in a
-  denial-of-service condition.";
-
-  tag_affected = "These issues affect versions prior to SIDVault 2.0f.";
-
-  tag_solution = "The vendor released SIDVault 2.0f to address this issue. Please see
-  the references for more information.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
+  denial-of-service condition.");
+  script_tag(name:"affected", value:"These issues affect versions prior to SIDVault 2.0f.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -101,6 +93,6 @@ sleep(5);
 if(!ldap_alive(port:port)) {
   security_message(port:port);
   exit(0);
-} 
+}
 
 exit(0);

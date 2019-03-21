@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: remote-MS03-034.nasl 9328 2018-04-05 11:14:07Z cfischer $
+# $Id: remote-MS03-034.nasl 14325 2019-03-19 13:35:02Z asteins $
 #
 # Microsoft Security Bulletin MS03-034 Flaw in NetBIOS Could Lead to Information Disclosure
 #
@@ -39,8 +39,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.101015");
-  script_version("$Revision: 9328 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-05 13:14:07 +0200 (Thu, 05 Apr 2018) $");
+  script_version("$Revision: 14325 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:35:02 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-03-16 23:15:41 +0100 (Mon, 16 Mar 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -53,28 +53,16 @@ if(description)
   script_require_udp_ports(137);
   script_mandatory_keys("Host/runs_windows");
 
-  script_tag(name:"solution", value:"Microsoft has released a patch to fix this issue, download it from the following website:
+  script_tag(name:"solution", value:"Microsoft has released patches to fix this issue.
+  Please see the references for more information.");
 
-  Windows Server 2003
-  http://www.microsoft.com/downloads/details.aspx?FamilyId=A59CC2AC-F182-4CD5-ACE7-3D4C2E3F1326&displaylang=en
-
-  Windows Server 2003 64 bit Edition
-  http://www.microsoft.com/downloads/details.aspx?FamilyId=140CF7BE-0371-4D17-8F4C-951B76AC3024&displaylang=en
-
-  Windows XP
-  http://www.microsoft.com/downloads/details.aspx?FamilyId=1C9D8E86-5B8C-401A-88B2-4443FFB9EDC3&displaylang=en
-
-  Windows XP 64 bit Edition
-  http://www.microsoft.com/downloads/details.aspx?FamilyId=378D4B58-BF2C-4406-9D88-E6A3C4601795&displaylang=en
-
-  Windows 2000
-  http://www.microsoft.com/downloads/details.aspx?FamilyId=D0564162-4EAE-42C8-B26C-E4D4D496EAD8&displaylang=en
-
-  Windows NT Server 4.0
-  http://www.microsoft.com/downloads/details.aspx?FamilyId=F131D63A-F74F-4CAF-95BD-D7FA37ADCF38&displaylang=en
-
-  Windows NT Server 4.0, Terminal Server Edition
-  http://www.microsoft.com/downloads/details.aspx?FamilyId=22379951-64A9-446B-AC8F-3F2F080383A9&displaylang=en");
+  script_xref(name:"URL", value:"http://www.microsoft.com/downloads/details.aspx?FamilyId=A59CC2AC-F182-4CD5-ACE7-3D4C2E3F1326&displaylang=en");
+  script_xref(name:"URL", value:"http://www.microsoft.com/downloads/details.aspx?FamilyId=140CF7BE-0371-4D17-8F4C-951B76AC3024&displaylang=en");
+  script_xref(name:"URL", value:"http://www.microsoft.com/downloads/details.aspx?FamilyId=1C9D8E86-5B8C-401A-88B2-4443FFB9EDC3&displaylang=en");
+  script_xref(name:"URL", value:"http://www.microsoft.com/downloads/details.aspx?FamilyId=378D4B58-BF2C-4406-9D88-E6A3C4601795&displaylang=en");
+  script_xref(name:"URL", value:"http://www.microsoft.com/downloads/details.aspx?FamilyId=D0564162-4EAE-42C8-B26C-E4D4D496EAD8&displaylang=en");
+  script_xref(name:"URL", value:"http://www.microsoft.com/downloads/details.aspx?FamilyId=F131D63A-F74F-4CAF-95BD-D7FA37ADCF38&displaylang=en");
+  script_xref(name:"URL", value:"http://www.microsoft.com/downloads/details.aspx?FamilyId=22379951-64A9-446B-AC8F-3F2F080383A9&displaylang=en");
 
   script_tag(name:"summary", value:"Under certain conditions, the response to a NetBT Name Service query may, in addition to the typical reply,
   contain random data from the target system's memory. This data could, for example, be a segment of HTML
@@ -96,7 +84,6 @@ if( ! get_udp_port_state( port ) ) exit( 0 );
 
 matrix = make_array();
 
-# Build the malicious packet
 request = raw_string("\x7c\x54\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00",
                      "\x20\x43\x4B\x41\x41\x41\x41\x41\x41\x41\x41\x41",
                      "\x41\x41\x41\x41\x41\x41\x41\x41\x41\x41\x41\x41",

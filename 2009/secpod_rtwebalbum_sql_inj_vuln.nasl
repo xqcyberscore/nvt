@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_rtwebalbum_sql_inj_vuln.nasl 5122 2017-01-27 12:16:00Z teissa $
+# $Id: secpod_rtwebalbum_sql_inj_vuln.nasl 14335 2019-03-19 14:46:57Z asteins $
 #
 # RTWebalbum SQL Injection Vulnerability
 #
@@ -27,17 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900373");
-  script_version("$Revision: 5122 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-27 13:16:00 +0100 (Fri, 27 Jan 2017) $");
+  script_version("$Revision: 14335 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:46:57 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-06-23 10:30:45 +0200 (Tue, 23 Jun 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-2009-1910");
   script_bugtraq_id(34888);
   script_name("RTWebalbum SQL Injection Vulnerability");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/35022");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/50406");
-  script_xref(name : "URL" , value : "http://rtwebalbum.svn.sourceforge.net/viewvc/rtwebalbum");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/35022");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/50406");
+  script_xref(name:"URL", value:"http://rtwebalbum.svn.sourceforge.net/viewvc/rtwebalbum");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2009 SecPod");
@@ -46,17 +46,13 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow attacker to manipulate SQL queries by
-  injecting arbitrary SQL code.
-
-  Impact Level: Application");
-  script_tag(name : "affected" , value : "RTWebalbum versions prior to 1.0.574");
-  script_tag(name : "insight" , value : "Input passed to the 'AlbumId' parameter in index.php is not properly sanitised
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to manipulate SQL queries by
+  injecting arbitrary SQL code.");
+  script_tag(name:"affected", value:"RTWebalbum versions prior to 1.0.574");
+  script_tag(name:"insight", value:"Input passed to the 'AlbumId' parameter in index.php is not properly sanitised
   before being used in SQL queries");
-  script_tag(name : "solution" , value : "Upgrade to RTWebalbum version 1.0.574 or Apply SVN Repositories
-  http://sourceforge.net/projects/rtwebalbum
-  http://rtwebalbum.svn.sourceforge.net/viewvc/rtwebalbum/index.php?view=log");
-  script_tag(name : "summary" , value : "This host is running RTWebalbum and is prone to SQL Injection
+  script_tag(name:"solution", value:"Upgrade to RTWebalbum version 1.0.574.");
+  script_tag(name:"summary", value:"This host is running RTWebalbum and is prone to an SQL Injection
   vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -64,14 +60,11 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Get HTTP port
 rtwebPort = get_http_port(default:80);
 
-## Check the php support
 if(!can_host_php(port:rtwebPort)){
   exit(0);
 }
@@ -88,7 +81,6 @@ foreach rtwebDir (make_list_unique("/rtwebalbum", cgi_dirs(port:rtwebPort)))
     rcvRes = http_get_cache(item: rtwebDir + "/index.php", port:rtwebPort);
   }
 
-  # Check for http://sourceforge.net/projects/rtwebalbum/
   if(egrep(pattern:"<a\ href=?[^?]+:\/\/sourceforge.net\/projects\/rtwebalbum",
      string:rcvRes) && egrep(pattern:"^HTTP/.* 200 OK", string:rcvRes))
   {
@@ -101,7 +93,7 @@ foreach rtwebDir (make_list_unique("/rtwebalbum", cgi_dirs(port:rtwebPort)))
     if(rcvRes =~ "<div\ id=.?descrp.?>[^<]" ||
        rcvRes =~ "<div\ id=.?descrp2.?>[^<]")
     {
-      security_message(port:rtwebPort);
+      security_message(port:rtwebPort, data:"The target host was found to be vulnerable.");
       exit(0);
     }
   }

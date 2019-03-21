@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_justsystems_ichitaro_code_exec_vuln.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: gb_justsystems_ichitaro_code_exec_vuln.nasl 14326 2019-03-19 13:40:32Z jschulte $
 #
 # JustSystems Ichitaro 'character attribute' Code Execution Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800794");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 14326 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:40:32 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-06-11 14:27:58 +0200 (Fri, 11 Jun 2010)");
   script_cve_id("CVE-2010-2152");
   script_bugtraq_id(40472);
@@ -50,14 +50,13 @@ if(description)
   script_tag(name:"affected", value:"JustSystems Ichitaro 2004 through 2009");
   script_tag(name:"insight", value:"The flaw is due to unspecified memory corruption error when processing
   'character attributes'.");
-  script_tag(name:"solution", value:"Apply the patch, available from below link
-
-  http://www.justsystems.com/jp/info/js10002.html");
+  script_tag(name:"solution", value:"Apply the patch, available");
   script_tag(name:"summary", value:"This host is installed JustSystems Ichitaro and is prone to code
   execution vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.justsystems.com/jp/info/js10002.html");
   exit(0);
 }
 

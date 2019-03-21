@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moodle_39150.nasl 10674 2018-07-30 08:24:18Z asteins $
+# $Id: gb_moodle_39150.nasl 14323 2019-03-19 13:19:09Z jschulte $
 #
 # Moodle Prior to 1.9.8/1.8.12 Multiple Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100569");
-  script_version("$Revision: 10674 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-30 10:24:18 +0200 (Mon, 30 Jul 2018) $");
+  script_version("$Revision: 14323 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:19:09 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-04-12 18:40:45 +0200 (Mon, 12 Apr 2010)");
   script_bugtraq_id(39150);
   script_tag(name:"cvss_base", value:"2.6");
@@ -51,17 +51,17 @@ if (description)
   script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
   script_tag(name:"summary", value:"Moodle is prone to multiple vulnerabilities, including:
 
-- multiple cross-site scripting issues
+  - multiple cross-site scripting issues
 
-- a security-bypass issue
+  - a security-bypass issue
 
-- an information-disclosure issue
+  - an information-disclosure issue
 
-- multiple SQL-injection issues
+  - multiple SQL-injection issues
 
-- an HTML-injection issue
+  - an HTML-injection issue
 
-- a session-fixation issue");
+  - a session-fixation issue");
 
   script_tag(name:"impact", value:"Attackers can exploit these issues to bypass certain security
 restrictions, obtain sensitive information, perform unauthorized

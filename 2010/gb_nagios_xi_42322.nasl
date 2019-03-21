@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nagios_xi_42322.nasl 8266 2018-01-01 07:28:32Z teissa $
+# $Id: gb_nagios_xi_42322.nasl 14326 2019-03-19 13:40:32Z jschulte $
 #
 # Nagios XI Multiple Cross Site Request Forgery Vulnerabilities
 #
@@ -24,51 +24,48 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Nagios XI is prone to multiple cross-site request-forgery
-vulnerabilities because the application fails to properly validate
-HTTP requests.
-
-Successful exploit requires that the 'nagiosadmin' be logged into the
-web interface.
-
-Attackers can exploit these issues to gain unauthorized access to the
-affected application and perform certain administrative actions.
-
-Nagios XI 2009R1.2B is vulnerable; other versions may also be
-affected.";
-
-tag_solution = "Reportedly, these issues have been fixed in Nagios XI 2009R1.2C.
-Please see the references for more information.";
-
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.100753");
- script_version("$Revision: 8266 $");
- script_tag(name:"last_modification", value:"$Date: 2018-01-01 08:28:32 +0100 (Mon, 01 Jan 2018) $");
- script_tag(name:"creation_date", value:"2010-08-10 14:55:08 +0200 (Tue, 10 Aug 2010)");
- script_bugtraq_id(42322);
- script_tag(name:"cvss_base", value:"4.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
- script_name("Nagios XI Multiple Cross Site Request Forgery Vulnerabilities");
+  script_oid("1.3.6.1.4.1.25623.1.0.100753");
+  script_version("$Revision: 14326 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:40:32 +0100 (Tue, 19 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2010-08-10 14:55:08 +0200 (Tue, 10 Aug 2010)");
+  script_bugtraq_id(42322);
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_name("Nagios XI Multiple Cross Site Request Forgery Vulnerabilities");
 
- script_xref(name : "URL" , value : "https://www.securityfocus.com/bid/42322");
- script_xref(name : "URL" , value : "http://www.nagios.com/products/nagiosxi");
- script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/512967");
+  script_xref(name:"URL", value:"https://www.securityfocus.com/bid/42322");
+  script_xref(name:"URL", value:"http://www.nagios.com/products/nagiosxi");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/512967");
 
- script_tag(name:"qod_type", value:"remote_banner");
- script_category(ACT_GATHER_INFO);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("gb_nagios_XI_detect.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_category(ACT_GATHER_INFO);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
+  script_dependencies("gb_nagios_XI_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution", value:"Reportedly, these issues have been fixed in Nagios XI 2009R1.2C.
+  Please see the references for more information.");
+  script_tag(name:"summary", value:"Nagios XI is prone to multiple cross-site request-forgery
+  vulnerabilities because the application fails to properly validate
+  HTTP requests.
+
+  Successful exploit requires that the 'nagiosadmin' be logged into the
+  web interface.
+
+  Attackers can exploit these issues to gain unauthorized access to the
+  affected application and perform certain administrative actions.
+
+  Nagios XI 2009R1.2B is vulnerable, other versions may also be
+  affected.");
+  exit(0);
 }
 
 include("http_func.inc");
-include("http_keepalive.inc");
+
 include("version_func.inc");
 
 port = get_http_port(default:80);

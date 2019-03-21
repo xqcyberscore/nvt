@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: realserver_malformed_request_dos.nasl 9348 2018-04-06 07:01:19Z cfischer $
+# $Id: realserver_malformed_request_dos.nasl 14336 2019-03-19 14:53:10Z mmartin $
 # Description: Check for RealServer DoS
 #
 # Authors:
@@ -22,16 +22,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "It is possible to crash a RealServer version 7 by sending a malformed http
-request.";
-
-tag_solution = "Upgrade to the most recent version of RealServer";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10461");
-  script_version("$Revision: 9348 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 14336 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:53:10 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(1288);
   script_tag(name:"cvss_base", value:"7.8");
@@ -45,24 +40,24 @@ if(description)
   script_copyright("Copyright (C) 2000 John Lampe....j_lampe@bellsouth.net");
   script_dependencies("find_service.nasl");
   script_require_ports("Services/realserver", 7070, 8080);   #port 7070, which may be indicative of server on 8080
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution", value:"Upgrade to the most recent version of RealServer");
+  script_tag(name:"summary", value:"It is possible to crash a RealServer version 7 by sending a malformed http
+request.");
   exit(0);
 }
 
 
 
-#
-# The script code starts here
 include("http_func.inc");
 
 port = 8080;
-if(get_port_state(port)) 
+if(get_port_state(port))
 {
     if(http_is_dead(port:port))exit(0);
-    
+
     mysoc = http_open_socket(port);
-    if (mysoc) { 
+    if (mysoc) {
       mystring = http_get(item:"/viewsource/template.html?",
       			  port:port);
       send(socket:mysoc, data:mystring);

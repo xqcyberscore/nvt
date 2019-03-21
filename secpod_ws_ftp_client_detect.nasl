@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ws_ftp_client_detect.nasl 10890 2018-08-10 12:30:06Z cfischer $
+# $Id: secpod_ws_ftp_client_detect.nasl 14329 2019-03-19 13:57:49Z cfischer $
 #
 # Iswitch WS-FTP Client Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902170");
-  script_version("$Revision: 10890 $");
+  script_version("$Revision: 14329 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:30:06 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:57:49 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-04-23 17:57:39 +0200 (Fri, 23 Apr 2010)");
   script_name("Iswitch WS-FTP Client Version Detection");
 
@@ -68,7 +68,6 @@ if(!registry_key_exists(key:"SOFTWARE\Ipswitch\WS_FTP") &&
 }
 
 
-## if os is 32 bit iterate over comman path
 if("x86" >< osArch){
   key_list = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\";
 }

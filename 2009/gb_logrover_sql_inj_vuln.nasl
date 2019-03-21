@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_logrover_sql_inj_vuln.nasl 6000 2017-04-21 11:07:29Z cfi $
+# $Id: gb_logrover_sql_inj_vuln.nasl 14325 2019-03-19 13:35:02Z asteins $
 #
 # LogRover 'uname' and 'pword' SQL Injection Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801012");
-  script_version("$Revision: 6000 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-21 13:07:29 +0200 (Fri, 21 Apr 2017) $");
+  script_version("$Revision: 14325 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:35:02 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-10-12 07:28:01 +0200 (Mon, 12 Oct 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -44,29 +44,16 @@ if(description)
   script_xref(name:"URL", value:"http://secunia.com/advisories/35821/");
   script_xref(name:"URL", value:"http://www.packetstormsecurity.org/0907-advisories/DDIVRT-2009-26.txt");
 
-  tag_impact = "Successful exploitation will allow remote attackers to conduct SQL
-  injection attacks.
-
-  Impact Level: Application";
-
-  tag_affected = "LogRover version 2.3.3 and prior";
-
-  tag_insight = "Input passed to the 'uname' and 'pword' parameters in 'login.asp'
-  is not properly sanitised before being used in SQL queries.";
-
-  tag_solution = "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.";
-
-  tag_summary = "This host is installed with LogRover and is prone to SQL Injection
-  vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to conduct SQL
+  injection attacks.");
+  script_tag(name:"affected", value:"LogRover version 2.3.3 and prior");
+  script_tag(name:"insight", value:"Input passed to the 'uname' and 'pword' parameters in 'login.asp'
+  is not properly sanitised before being used in SQL queries.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"This host is installed with LogRover and is prone to SQL Injection
+  vulnerability.");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"WillNotFix");

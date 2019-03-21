@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pegasus_mail_pop3_bof_vuln.nasl 11554 2018-09-22 15:11:42Z cfischer $
+# $Id: gb_pegasus_mail_pop3_bof_vuln.nasl 14330 2019-03-19 13:59:11Z asteins $
 #
 # Pegasus Mail POP3 Response Buffer Overflow Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800970");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 14330 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:59:11 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-11-05 12:25:48 +0100 (Thu, 05 Nov 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -51,13 +51,13 @@ from a remote POP3 server to the affected mail client.");
   script_tag(name:"affected", value:"Pegasus Mail 4.51 and prior.");
   script_tag(name:"insight", value:"A stack based buffer overflow error occus due to improper bounds
 checking when processing POP3 responses.");
-  script_tag(name:"solution", value:"Upgrade to version 4.51 or higher,
-For updates refer to http://www.pmail.com/downloads_s3_t.htm");
+  script_tag(name:"solution", value:"Upgrade to version 4.51 or higher.");
   script_tag(name:"summary", value:"This host is running Pegasus Mail which is prone to stack-based
 Buffer Overflow vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.pmail.com/downloads_s3_t.htm");
   exit(0);
 }
 

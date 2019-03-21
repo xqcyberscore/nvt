@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_shockwave_player_mult_vuln_aug10.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: secpod_adobe_shockwave_player_mult_vuln_aug10.nasl 14331 2019-03-19 14:03:05Z jschulte $
 #
 # Adobe Shockwave Player Multiple Vulnerabilities Aug-10
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902237");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 14331 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:03:05 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-09-01 09:34:36 +0200 (Wed, 01 Sep 2010)");
   script_cve_id("CVE-2010-2863", "CVE-2010-2864", "CVE-2010-2865", "CVE-2010-2866",
                 "CVE-2010-2867", "CVE-2010-2868", "CVE-2010-2869", "CVE-2010-2870",
@@ -56,8 +56,7 @@ if(description)
   the context of the affected application.");
   script_tag(name:"affected", value:"Adobe Shockwave Player prior to 11.5.8.612 on Windows");
   script_tag(name:"insight", value:"Multiple memory corruption vulnerabilities are present in the application.");
-  script_tag(name:"solution", value:"Upgrade to Adobe Shockwave Player 11.5.8.612
-  http://get.adobe.com/shockwave/otherversions/");
+  script_tag(name:"solution", value:"Upgrade to Adobe Shockwave Player 11.5.8.612");
   script_tag(name:"summary", value:"This host is installed with Adobe Shockwave Player and is prone
   to multiple vulnerabilities.");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ajaxportal_file_inc_vuln.nasl 4865 2016-12-28 16:16:43Z teissa $
+# $Id: gb_ajaxportal_file_inc_vuln.nasl 14330 2019-03-19 13:59:11Z asteins $
 #
 # AjaxPortal 'di.php' File Inclusion Vulnerability
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800817");
-  script_version("$Revision: 4865 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-28 17:16:43 +0100 (Wed, 28 Dec 2016) $");
+  script_version("$Revision: 14330 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:59:11 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-07-03 15:23:01 +0200 (Fri, 03 Jul 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-2009-2262");
   script_name("AjaxPortal 'di.php' File Inclusion Vulnerability");
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/archive/1/504618/100/0/threaded");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/archive/1/504618/100/0/threaded");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
@@ -43,18 +43,15 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "impact" , value : "Successful exploitation will let the remote attacker to execute
-  arbitrary PHP code via a URL in the pathtoserverdata parameter.
-
-  Impact Level: Application");
-  script_tag(name : "affected" , value : "MyioSoft, AjaxPortal version 3.0");
-  script_tag(name : "insight" , value : "The flaw is due to error in the 'pathtoserverdata' parameter in
+  script_tag(name:"impact", value:"Successful exploitation will let the remote attacker to execute
+  arbitrary PHP code via a URL in the pathtoserverdata parameter.");
+  script_tag(name:"affected", value:"MyioSoft, AjaxPortal version 3.0");
+  script_tag(name:"insight", value:"The flaw is due to error in the 'pathtoserverdata' parameter in
   install/di.php and it can exploited to cause PHP remote file inclusion.");
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
-  script_tag(name : "summary" , value : "The host is running AjaxPortal and is prone to File Inclusion
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"The host is running AjaxPortal and is prone to File Inclusion
   vulnerability.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
@@ -69,7 +66,6 @@ include("http_keepalive.inc");
 
 ajaxPort = get_http_port(default:80);
 
-## Check the php support
 if(!can_host_php(port:ajaxPort)){
   exit(0);
 }

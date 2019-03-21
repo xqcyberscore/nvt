@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moodle_session_fixation_vuln.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: gb_moodle_session_fixation_vuln.nasl 14331 2019-03-19 14:03:05Z jschulte $
 #
 # Moodle Session Fixation Vulnerability
 #
@@ -27,13 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800767");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 14331 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:03:05 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-05-19 14:50:39 +0200 (Wed, 19 May 2010)");
   script_cve_id("CVE-2010-1613", "CVE-2010-1616");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_name("Moodle Session Fixation Vulnerability");
+  script_xref(name:"URL", value:"http://download.moodle.org");
   script_xref(name:"URL", value:"http://moodle.org/security/");
   script_xref(name:"URL", value:"http://tracker.moodle.org/browse/MDL-17207");
 
@@ -53,8 +54,7 @@ if(description)
 
   - creating new roles when restoring a course, which allows teachers to create
     new accounts if they do not have the 'moodle/user:create' capability.");
-  script_tag(name:"solution", value:"Upgrade to latest version 1.9.8
-  http://download.moodle.org/");
+  script_tag(name:"solution", value:"Upgrade to latest version 1.9.8");
   script_tag(name:"summary", value:"This host is running Moodle and is prone to session fixation vulnerability");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to conduct session
   fixation attacks.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mcshoutbox_sql_inj_n_xss_vuln.nasl 5055 2017-01-20 14:08:39Z teissa $
+# $Id: secpod_mcshoutbox_sql_inj_n_xss_vuln.nasl 14335 2019-03-19 14:46:57Z asteins $
 #
 # MCshoutbox Multiple SQL Injection And XSS Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900883");
-  script_version("$Revision: 5055 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-20 15:08:39 +0100 (Fri, 20 Jan 2017) $");
+  script_version("$Revision: 14335 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:46:57 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-10-29 07:53:15 +0100 (Thu, 29 Oct 2009)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -47,22 +47,21 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to bypass the
   authentication mechanism when 'magic_quotes_gpc' is disabled or can cause arbitrary code
-  execution by uploading the shell code in the context of the web application.
-
-  Impact Level: Application");
+  execution by uploading the shell code in the context of the web application.");
   script_tag(name:"affected", value:"MCshoutbox version 1.1 on all running platform");
   script_tag(name:"insight", value:"- Input passed via the 'loginerror' to admin_login.php is not
   properly sanitised before being returned to the user. This can be exploited to execute arbitrary
   HTML and script code in a user's browser session in the context of an affected site.
+
   - Input passed via the 'username' and 'password' parameters to scr_login.php
     is not properly sanitised before being used in an SQL query. This can be
     exploited to manipulate SQL queries by injecting arbitrary SQL code.
+
   - The application does not properly check extensions of uploaded 'smilie'
     image files. This can be exploited to upload and execute arbitrary PHP code.");
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore. General solution
-  options are to upgrade to a newer release, disable respective features, remove the product or
-  replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"summary", value:"This host is running MCshoutbox and is prone to multiple SQL
   Injection and Cross-Site Scripting vulnerabilities.");
 

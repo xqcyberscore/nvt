@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webcalendar_mult_css_n_csrf_vuln.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: gb_webcalendar_mult_css_n_csrf_vuln.nasl 14326 2019-03-19 13:40:32Z jschulte $
 #
 # WebCalendar Multiple CSS and CSRF Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800472");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 14326 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:40:32 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-02-19 11:58:13 +0100 (Fri, 19 Feb 2010)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -59,13 +59,13 @@ if(description)
     exploited to delete an event, ban an IP address from posting, or change the
     administrative password if a logged-in administrative user visits a malicious
     web site.");
-  script_tag(name:"solution", value:"Upgrade to WebCalendar version 1.2.1 or later
-  For updates refer to http://www.k5n.us/webcalendar.php?topic=Download");
+  script_tag(name:"solution", value:"Upgrade to WebCalendar version 1.2.1 or later");
   script_tag(name:"summary", value:"The host is running WebCalendar and is prone to multiple CSS and
   CSRF Vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.k5n.us/webcalendar.php?topic=Download");
   exit(0);
 }
 

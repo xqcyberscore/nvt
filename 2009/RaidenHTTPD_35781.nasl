@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: RaidenHTTPD_35781.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: RaidenHTTPD_35781.nasl 14332 2019-03-19 14:22:43Z asteins $
 #
 # RaidenHTTPD Cross Site Scripting and Local File Include Vulnerabilities
 #
@@ -24,7 +24,30 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "RaidenHTTPD is prone to local file-include and cross-site scripting
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.100245");
+  script_version("$Revision: 14332 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:22:43 +0100 (Tue, 19 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2009-07-26 19:54:54 +0200 (Sun, 26 Jul 2009)");
+  script_bugtraq_id(35781);
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+
+  script_name("RaidenHTTPD Cross Site Scripting and Local File Include Vulnerabilities");
+
+
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_category(ACT_GATHER_INFO);
+  script_family("Web Servers");
+  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
+  script_dependencies("gb_get_http_banner.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("RaidenHTTPD/banner");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution", value:"The vendor has released an update to address these issues. Please see
+the references for more information.");
+  script_tag(name:"summary", value:"RaidenHTTPD is prone to local file-include and cross-site scripting
 vulnerabilities because the application fails to properly sanitize user-
 supplied input. These issues affect the WebAdmin component.
 
@@ -37,40 +60,14 @@ Exploiting the local file-include issue allows remote attackers to
 view and subsequently execute local files within the context of the
 webserver process.
 
-RaidenHTTPD 2.0 build 26 and prior versions are affected.";
-
-tag_solution = "The vendor has released an update to address these issues. Please see
-the references for more information.";
-
-if (description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.100245");
- script_version("$Revision: 9350 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2009-07-26 19:54:54 +0200 (Sun, 26 Jul 2009)");
- script_bugtraq_id(35781);
- script_tag(name:"cvss_base", value:"4.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-
- script_name("RaidenHTTPD Cross Site Scripting and Local File Include Vulnerabilities");
-
-
- script_tag(name:"qod_type", value:"remote_banner");
- script_category(ACT_GATHER_INFO);
- script_family("Web Servers");
- script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
- script_dependencies("gb_get_http_banner.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("RaidenHTTPD/banner");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/35781");
- script_xref(name : "URL" , value : "http://raidenhttpd.com/changelog.txt");
- script_xref(name : "URL" , value : "http://www.raidenhttpd.com/");
- exit(0);
+RaidenHTTPD 2.0 build 26 and prior versions are affected.");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/35781");
+  script_xref(name:"URL", value:"http://raidenhttpd.com/changelog.txt");
+  script_xref(name:"URL", value:"http://www.raidenhttpd.com/");
+  exit(0);
 }
 
-     
+
 include("http_func.inc");
 include("version_func.inc");
 

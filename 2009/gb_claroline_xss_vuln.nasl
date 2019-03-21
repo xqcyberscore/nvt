@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_claroline_xss_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: gb_claroline_xss_vuln.nasl 14335 2019-03-19 14:46:57Z asteins $
 #
 # Claroline 'notfound.php' Cross-Site Scripting Vulnerability
 #
@@ -24,36 +24,20 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow attacker to compromise the application,
-  access or modify data, or exploit latent vulnerabilities in the underlying
-  database.
-  Impact Level: Application";
-tag_affected = "Claroline Version 1.8.11 and prior";
-tag_insight = "The flaw is due to,
-  - error in 'claroline/linker/notfound.php' which is not properly sanitising
-    input data passed via the 'Referer' header, before being returned to the
-    user.
-  - error in 'group/group.php' which is not properly sanitising input data
-    passed to the 'sort' parameter, before being used in an SQL query.";
-tag_solution = "upgrade to the version version 1.8.12 or later
-  For updates refer tohttp://www.claroline.net/download/stable.html";
-tag_summary = "The host is running Claroline and is prone to SQL Injection
-  Vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800628");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 14335 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:46:57 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-06-19 09:45:44 +0200 (Fri, 19 Jun 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_cve_id("CVE-2009-1907");
   script_bugtraq_id(34883);
   script_name("Claroline 'notfound.php' Cross-Site Scripting Vulnerability");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/35019");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/50404");
-  script_xref(name : "URL" , value : "http://gsasec.blogspot.com/2009/05/claroline-v1811-cross-site-scripting.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/35019");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/50404");
+  script_xref(name:"URL", value:"http://gsasec.blogspot.com/2009/05/claroline-v1811-cross-site-scripting.html");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
@@ -61,11 +45,23 @@ if(description)
   script_dependencies("gb_claroline_detect.nasl");
   script_family("Web application abuses");
   script_require_ports("Services/www", 80);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to compromise the application,
+  access or modify data, or exploit latent vulnerabilities in the underlying
+  database.");
+  script_tag(name:"affected", value:"Claroline Version 1.8.11 and prior");
+  script_tag(name:"insight", value:"The flaw is due to,
+
+  - error in 'claroline/linker/notfound.php' which is not properly sanitising
+    input data passed via the 'Referer' header, before being returned to the
+    user.
+
+  - error in 'group/group.php' which is not properly sanitising input data
+    passed to the 'sort' parameter, before being used in an SQL query.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution", value:"upgrade to the version version 1.8.12 or later");
+  script_tag(name:"summary", value:"The host is running Claroline and is prone to SQL Injection
+  Vulnerability.");
+  script_xref(name:"URL", value:"http://www.claroline.net/download/stable.html");
   exit(0);
 }
 

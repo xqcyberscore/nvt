@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sun_java_web_console_xss_vuln.nasl 14037 2019-03-07 11:35:56Z cfischer $
+# $Id: gb_sun_java_web_console_xss_vuln.nasl 14335 2019-03-19 14:46:57Z asteins $
 #
 # Sun Java Web Console Multiple XSS Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800826");
-  script_version("$Revision: 14037 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-07 12:35:56 +0100 (Thu, 07 Mar 2019) $");
+  script_version("$Revision: 14335 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:46:57 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-07-09 10:58:23 +0200 (Thu, 09 Jul 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -74,7 +74,7 @@ if(!jwcVer)
 if(version_in_range(version:jwcVer, test_version:"3.0.2", test_version2:"3.0.5")) {
   report = report_fixed_ver(installed_version:jwcVer, fixed_version:"See references");
   security_message(port:jwcPort, data:report);
-  exit(0);  
+  exit(0);
 }
 
 exit(99);

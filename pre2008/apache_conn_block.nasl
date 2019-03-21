@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: apache_conn_block.nasl 7551 2017-10-24 12:24:05Z cfischer $
+# $Id: apache_conn_block.nasl 14336 2019-03-19 14:53:10Z mmartin $
 # Description: Apache Connection Blocking Denial of Service
 #
 # Authors:
@@ -24,20 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "The remote web server appears to be running a version of 
-Apache that is less that 2.0.49 or 1.3.31.
-
-These versions are vulnerable to a denial of service attack where a remote 
-attacker can block new connections to the server by connecting to a listening 
-socket on a rarely accessed port.";
-
-tag_solution = "Upgrade to Apache 2.0.49 or 1.3.31.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12280");
-  script_version("$Revision: 7551 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:24:05 +0200 (Tue, 24 Oct 2017) $");
+  script_version("$Revision: 14336 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:53:10 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(9921);
   script_cve_id("CVE-2004-0174");
@@ -51,8 +42,13 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("www/apache", "Host/runs_unixoide");
 
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"solution", value:"Upgrade to Apache 2.0.49 or 1.3.31.");
+  script_tag(name:"summary", value:"The remote web server appears to be running a version of
+Apache that is less that 2.0.49 or 1.3.31.
+
+These versions are vulnerable to a denial of service attack where a remote
+attacker can block new connections to the server by connecting to a listening
+socket on a rarely accessed port.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

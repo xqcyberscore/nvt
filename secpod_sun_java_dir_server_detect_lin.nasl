@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_sun_java_dir_server_detect_lin.nasl 11015 2018-08-17 06:31:19Z cfischer $
+# $Id: secpod_sun_java_dir_server_detect_lin.nasl 14334 2019-03-19 14:35:43Z cfischer $
 #
 # Sun Java Directory Server Version Detection (Linux)
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900705");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11015 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 14334 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:35:43 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-04-30 06:40:16 +0200 (Thu, 30 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Sun Java Directory Server Version Detection (Linux)");
@@ -63,18 +63,18 @@ dirPaths = find_file(file_name:"directoryserver", file_path:"/", useregex:TRUE,
                      regexpar:"$", sock:sock);
 foreach dirBin (dirPaths)
 {
-  dirVer = get_bin_version(full_prog_name:chomp(dirBin), sock:sock,
-                           version_argv:"-g",
-                           ver_pattern:"Default is: ([0-9]\.[0-9]+)");
-  if(dirVer[1] != NULL)
+  vers = get_bin_version(full_prog_name:chomp(dirBin), sock:sock,
+                         version_argv:"-g",
+                         ver_pattern:"Default is: ([0-9]\.[0-9]+)");
+  if(vers[1] != NULL)
   {
-    set_kb_item(name:"Sun/JavaDirServer/Linux/Ver", value:dirVer[1]);
-    log_message(data:"Sun Java Directory Server version " + dirVer[1] +
+    set_kb_item(name:"Sun/JavaDirServer/Linux/Ver", value:vers[1]);
+    log_message(data:"Sun Java Directory Server version " + vers[1] +
                        " running at location " + dirBin +
                        " was detected on the host");
     ssh_close_connection();
 
-    cpe = build_cpe(value:dirVer[1], exp:"^([0-9.]+)", base:"cpe:/a:sun:java_system_directory_server:");
+    cpe = build_cpe(value:vers[1], exp:"^([0-9.]+)", base:"cpe:/a:sun:java_system_directory_server:");
     if(!isnull(cpe))
        register_host_detail(name:"App", value:cpe, desc:SCRIPT_DESC);
 

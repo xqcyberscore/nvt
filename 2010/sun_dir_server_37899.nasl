@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sun_dir_server_37899.nasl 6606 2017-07-07 11:29:00Z cfischer $
+# $Id: sun_dir_server_37899.nasl 14323 2019-03-19 13:19:09Z jschulte $
 #
 # Sun Java System Directory Server LDAP Search Request Denial of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100510");
-  script_version("$Revision: 6606 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-07 13:29:00 +0200 (Fri, 07 Jul 2017) $");
+  script_version("$Revision: 14323 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:19:09 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-02-26 12:01:21 +0100 (Fri, 26 Feb 2010)");
   script_bugtraq_id(37899);
   script_cve_id("CVE-2010-0708");
@@ -46,13 +46,11 @@ if (description)
   script_xref(name:"URL", value:"http://www.sun.com/software/products/directory_srvr/home_directory.xml");
   script_xref(name:"URL", value:"http://sunsolve.sun.com/search/document.do?assetkey=1-66-275711-1");
 
-  tag_summary = "Sun Java System Directory Server is prone to a denial-of-service
-  vulnerability.";
-
-  tag_impact = "An attacker can exploit this issue to crash the effected application,
-  denying service to legitimate users.";
-
-  tag_affected = "- Sun Directory Server Enterprise Edition 7.0
+  script_tag(name:"summary", value:"Sun Java System Directory Server is prone to a denial-of-service
+  vulnerability.");
+  script_tag(name:"impact", value:"An attacker can exploit this issue to crash the effected application,
+  denying service to legitimate users.");
+  script_tag(name:"affected", value:"- Sun Directory Server Enterprise Edition 7.0
 
   - Sun Java System Directory Server Enterprise Edition 6.3.1
 
@@ -64,14 +62,8 @@ if (description)
 
   - Sun Java System Directory Server Enterprise Edition 6.0
 
-  - Sun Java System Directory Server 5.2";
-
-  tag_solution = "Updates are available. Please see the references for more information.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
+  - Sun Java System Directory Server 5.2");
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -85,7 +77,7 @@ include("ldap.inc");
 port = get_ldap_port( default:389 );
 
 if(!version = get_kb_item(string("ldap/",port,"/SunJavaDirServer")))exit(0);
-  
+
 if(!isnull(version)) {
   if(version_is_equal(version: version, test_version: "7.0") ||
      version_in_range(version: version, test_version: "6", test_version2: "6.3.1") ||

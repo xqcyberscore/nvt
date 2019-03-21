@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: pivot_file_inclusion.nasl 6056 2017-05-02 09:02:50Z teissa $
+# $Id: pivot_file_inclusion.nasl 14336 2019-03-19 14:53:10Z mmartin $
 # Description: File Inclusion Vulnerability in Pivot
 #
 # Authors:
@@ -32,8 +32,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12282");
-  script_version("$Revision: 6056 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
+  script_version("$Revision: 14336 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:53:10 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -45,8 +45,8 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "solution" , value : "Upgrade to Pivot 1.14.1 or disable this CGI altogether");
-  script_tag(name : "summary" , value : "Pivot is a set of PHP scripts designed to maintain dynamic web pages.
+  script_tag(name:"solution", value:"Upgrade to Pivot 1.14.1 or disable this CGI altogether");
+  script_tag(name:"summary", value:"Pivot is a set of PHP scripts designed to maintain dynamic web pages.
 
   There is a flaw in the file module_db.php which may let an attacker execute
   arbitrary commands on the remote host by forcing the remote Pivot installation

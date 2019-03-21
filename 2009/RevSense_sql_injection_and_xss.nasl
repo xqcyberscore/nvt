@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: RevSense_sql_injection_and_xss.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: RevSense_sql_injection_and_xss.nasl 14332 2019-03-19 14:22:43Z asteins $
 #
 # RevSense SQL Injection and Cross Site Scripting Vulnerabilities
 #
@@ -24,7 +24,25 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "RevSense is prone to an SQL-injection vulnerability and a cross-site
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.100038");
+  script_version("$Revision: 14332 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:22:43 +0100 (Tue, 19 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2009-03-13 06:42:27 +0100 (Fri, 13 Mar 2009)");
+  script_bugtraq_id(32624);
+  script_cve_id("CVE-2008-6385");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_name("RevSense SQL Injection and Cross Site Scripting Vulnerabilities");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"summary", value:"RevSense is prone to an SQL-injection vulnerability and a cross-site
   scripting vulnerability because it fails to sufficiently sanitize
   user-supplied data.
 
@@ -33,29 +51,15 @@ tag_summary = "RevSense is prone to an SQL-injection vulnerability and a cross-s
   access or modify data, or exploit latent vulnerabilities in the
   underlying database.
 
-  RevSense 1.0 is vulnerable; other versions may also be affected.";
+  RevSense 1.0 is vulnerable, other versions may also be affected.");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/32624");
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
+  since the disclosure of this vulnerability. Likely none will be provided anymore.
+  General solution options are to upgrade to a newer release, disable respective features,
+  remove the product or replace the product by another one.");
 
-if (description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.100038");
- script_version("$Revision: 9350 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2009-03-13 06:42:27 +0100 (Fri, 13 Mar 2009)");
- script_bugtraq_id(32624);
- script_cve_id("CVE-2008-6385");
- script_tag(name:"cvss_base", value:"4.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
- script_name("RevSense SQL Injection and Cross Site Scripting Vulnerabilities");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : tag_summary);
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/32624");
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

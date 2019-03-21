@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_irokez_cms_sql_inj_vuln.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_irokez_cms_sql_inj_vuln.nasl 14323 2019-03-19 13:19:09Z jschulte $
 #
 # Irokez CMS 'id' Parameter SQL Injection Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801445");
-  script_version("$Revision: 5306 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+  script_version("$Revision: 14323 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:19:09 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-09-08 14:19:28 +0200 (Wed, 08 Sep 2010)");
   script_cve_id("CVE-2009-4982");
   script_bugtraq_id(35957);
@@ -36,8 +36,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_name("Irokez CMS 'id' Parameter SQL Injection Vulnerability");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/23497");
-  script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2009/2167");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/23497");
+  script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2009/2167");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2010 Greenbone Networks GmbH");
@@ -46,22 +46,20 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "insight" , value : "The flaw is caused by an input validation error in the 'select()'
+  script_tag(name:"insight", value:"The flaw is caused by an input validation error in the 'select()'
   function when processing the 'id' parameter, which could be exploited by
   malicious people to conduct SQL injection attacks.");
-  script_tag(name : "solution" , value : "Upgrade to version 0.8b or later,
-  For updates refer to http://www.irokez.org/download/cms");
-  script_tag(name : "summary" , value : "This host is running Irokez CMS and is prone SQL injection
+  script_tag(name:"solution", value:"Upgrade to version 0.8b or later.");
+  script_tag(name:"summary", value:"This host is running Irokez CMS and is prone SQL injection
   vulnerability.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow attacker to access or modify
-  data, or exploit latent vulnerabilities in the underlying database.
-
-  Impact Level: Application.");
-  script_tag(name : "affected" , value : "Irokez CMS version 0.7.1 and prior");
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to access or modify
+  data, or exploit latent vulnerabilities in the underlying database.");
+  script_tag(name:"affected", value:"Irokez CMS version 0.7.1 and prior");
 
   script_tag(name:"qod_type", value:"remote_app");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.irokez.org/download/cms");
   exit(0);
 }
 
@@ -69,7 +67,6 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Get HTTP Port
 cmsPort = get_http_port(default:80);
 
 foreach dir (make_list_unique("/irokez", "/cms", "/", cgi_dirs(port:cmsPort)))
@@ -77,14 +74,11 @@ foreach dir (make_list_unique("/irokez", "/cms", "/", cgi_dirs(port:cmsPort)))
 
   if(dir == "/") dir = "";
 
-  ## Send and Receive request
   sndReq = http_get(item:string(dir, "/ru/"), port:cmsPort);
   rcvRes = http_keepalive_send_recv(port:cmsPort, data:sndReq);
 
-  ## Confirm application is Irokez CMS
   if("<title>Irokez" >< rcvRes)
   {
-    ## Try exploit and check response to confirm vulnerability
     sndReq = http_get(item:string(dir, "/ru/news/7'"), port:cmsPort);
     rcvRes = http_keepalive_send_recv(port:cmsPort, data:sndReq);
     if("You have an error" >< rcvRes && "syntax" >< rcvRes)

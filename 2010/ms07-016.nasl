@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ms07-016.nasl 11546 2018-09-22 11:30:16Z cfischer $
+# $Id: ms07-016.nasl 14331 2019-03-19 14:03:05Z jschulte $
 #
 # Cumulative Security Update for Internet Explorer (928090)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102054");
-  script_version("$Revision: 11546 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 13:30:16 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 14331 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:03:05 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-07-08 10:59:30 +0200 (Thu, 08 Jul 2010)");
   script_cve_id("CVE-2006-4697", "CVE-2007-0217", "CVE-2007-0219");
   script_bugtraq_id(22486, 22489, 22504);
@@ -43,15 +43,15 @@ if(description)
   script_require_ports(139, 445);
   script_mandatory_keys("MS/IE/EXE/Ver");
 
-  script_tag(name:"solution", value:"Microsoft has released an update to correct this issue,
-  you can download it from the following web site:
-  http://www.microsoft.com/technet/security/bulletin/ms07-016.mspx");
+  script_tag(name:"solution", value:"Microsoft has released an update to correct this issue.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"summary", value:"Microsoft Internet Explorer is affected by multiple critical vulnerabilities.
   These vulnerabilities could allow remote code execution each via a different
   attack vector.");
+
+  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/bulletin/ms07-016.mspx");
 
   exit(0);
 }

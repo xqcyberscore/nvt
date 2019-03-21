@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_mult_vuln01_sep16.nasl 10090 2018-06-06 08:06:04Z cfischer $
+# $Id: gb_apple_macosx_mult_vuln01_sep16.nasl 14304 2019-03-19 09:10:40Z cfischer $
 #
 # Apple Mac OS X Multiple Vulnerabilities-01 September-2016
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807888");
-  script_version("$Revision: 10090 $");
+  script_version("$Revision: 14304 $");
   script_cve_id("CVE-2016-4694", "CVE-2016-5768", "CVE-2016-5769", "CVE-2016-5770",
                 "CVE-2016-5771", "CVE-2016-5772", "CVE-2016-5773", "CVE-2016-6174",
                 "CVE-2016-6288", "CVE-2016-6289", "CVE-2016-6290", "CVE-2016-6291",
@@ -50,29 +50,27 @@ if(description)
                     92111, 91403, 92115, 91401, 93060, 93056);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-06 10:06:04 +0200 (Wed, 06 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 10:10:40 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2016-09-28 12:22:55 +0530 (Wed, 28 Sep 2016)");
   script_name("Apple Mac OS X Multiple Vulnerabilities-01 September-2016");
 
-  script_tag(name: "summary" , value:"This host is running Apple Mac OS X and
+  script_tag(name:"summary", value:"This host is running Apple Mac OS X and
   is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exists. For details
+  script_tag(name:"insight", value:"Multiple flaws exists. For details
   refer the reference links.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow attacker
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker
   to execute arbitrary code or cause a denial of service (memory corruption),
   gain access to potentially sensitive information, bypass certain protection
-  mechanism and have other impacts.
+  mechanism and have other impacts.");
 
-  Impact Level: System");
-
-  script_tag(name: "affected" , value:"Apple Mac OS X versions 10.7.5 through 10.11.x
+  script_tag(name:"affected", value:"Apple Mac OS X versions 10.7.5 through 10.11.x
   prior to 10.12");
 
-  script_tag(name: "solution" , value:"Upgrade to Apple Mac OS X version
+  script_tag(name:"solution", value:"Upgrade to Apple Mac OS X version
   10.12 or later. For updates refer to Reference links.
 
   Note: According to the vendor an upgrade to version 10.12 is required to
@@ -82,29 +80,28 @@ if(description)
 
   script_tag(name:"qod_type", value:"package");
 
-  script_xref(name : "URL" , value : "https://support.apple.com/en-us/HT207170");
+  script_xref(name:"URL", value:"https://support.apple.com/en-us/HT207170");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Mac OS X Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/osx_name", "ssh/login/osx_version");
+  script_mandatory_keys("ssh/login/osx_name", "ssh/login/osx_version", re:"ssh/login/osx_version=^10\.([7-9]|1[01])");
+
   exit(0);
 }
 
 include("version_func.inc");
 
 osName = get_kb_item("ssh/login/osx_name");
-if(!osName){
-  exit (0);
-}
+if(!osName)
+  exit(0);
 
 osVer = get_kb_item("ssh/login/osx_version");
-if(!osVer){
+if(!osVer)
   exit(0);
-}
 
-if("Mac OS X" >< osName && osVer =~ "^10\."){
+if("Mac OS X" >< osName && osVer =~ "^10\.([7-9]|1[01])"){
   if(version_in_range(version:osVer, test_version: "10.7.5", test_version2:"10.11.6")){
     report = report_fixed_ver(installed_version:osVer, fixed_version:"According to the vendor an upgrade to version 10.12 is required to mitigate this vulnerabilities. Please see the advisory (HT207170) for more info.");
     security_message(port:0, data:report);

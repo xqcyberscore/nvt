@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ms07-017.nasl 11546 2018-09-22 11:30:16Z cfischer $
+# $Id: ms07-017.nasl 14331 2019-03-19 14:03:05Z jschulte $
 #
 # Microsoft Windows GDI Multiple Vulnerabilities (925902)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102055");
-  script_version("$Revision: 11546 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 13:30:16 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 14331 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:03:05 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-07-08 10:59:30 +0200 (Thu, 08 Jul 2010)");
   script_bugtraq_id(23273, 23276, 23278, 23275, 20940, 23277);
   script_cve_id("CVE-2006-5586", "CVE-2006-5758", "CVE-2007-1211",
@@ -36,6 +36,7 @@ if(description)
   script_name("Microsoft Windows GDI Multiple Vulnerabilities (925902)");
   script_xref(name:"URL", value:"http://www.argeniss.com/research/ARGENISS-ADV-110604.txt");
   script_xref(name:"URL", value:"http://projects.info-pull.com/mokb/MOKB-06-11-2006.html");
+  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/bulletin/ms07-017.mspx");
   script_xref(name:"URL", value:"http://labs.idefense.com/intelligence/vulnerabilities/display.php?id=499");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"cvss_base", value:"7.2");
@@ -47,9 +48,7 @@ if(description)
   script_require_ports(139, 445);
   script_mandatory_keys("MS/IE/Version");
 
-  script_tag(name:"solution", value:"Run Windows Update or apply patches available from the following
-  website:
-  http://www.microsoft.com/technet/security/bulletin/ms07-017.mspx");
+  script_tag(name:"solution", value:"Run Windows Update or apply available patches.");
 
   script_tag(name:"summary", value:"Stack-based buffer overflow in the animated cursor code in Microsoft
   Windows 2000 SP4 through Vista allows remote attackers to execute

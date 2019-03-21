@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: BlindBlog_1_3_1.nasl 11449 2018-09-18 10:04:42Z mmartin $
+# $Id: BlindBlog_1_3_1.nasl 14330 2019-03-19 13:59:11Z asteins $
 #
 # BlindBlog Multiple Local File Include and SQL Injection
 # Vulnerabilities
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100031");
-  script_version("$Revision: 11449 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 12:04:42 +0200 (Tue, 18 Sep 2018) $");
+  script_version("$Revision: 14330 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:59:11 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-03-10 08:40:52 +0100 (Tue, 10 Mar 2009)");
   script_bugtraq_id(33980);
   script_tag(name:"cvss_base", value:"7.5");
@@ -57,8 +57,8 @@ if(description)
   compromise the application, access or modify data, or exploit latent
   vulnerabilities in the underlying database.
 
-  BlindBlog 1.3.1 is vulnerable; other versions may also be affected.");
- exit(0);
+  BlindBlog 1.3.1 is vulnerable, other versions may also be affected.");
+  exit(0);
 }
 
 include("http_func.inc");

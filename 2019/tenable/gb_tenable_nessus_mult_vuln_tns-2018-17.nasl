@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tenable_nessus_mult_vuln_tns-2018-17.nasl 12995 2019-01-09 11:38:38Z mmartin $
+# $Id: gb_tenable_nessus_mult_vuln_tns-2018-17.nasl 13699 2019-02-15 14:29:50Z cfischer $
 #
 # Tenable Nessus < 7.1.4 Multiple Vulnerabilities (tns-2018-17)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:tenable:nessus";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107444");
-  script_version("$Revision: 12995 $");
+  script_version("$Revision: 13699 $");
   script_cve_id("CVE-2018-0732", "CVE-2018-0734", "CVE-2018-0737", "CVE-2018-5407");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-09 12:38:38 +0100 (Wed, 09 Jan 2019) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 15:29:50 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-09 12:29:11 +0100 (Wed, 09 Jan 2019)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Tenable Nessus < 7.1.4 Multiple Vulnerabilities(tns-2018-17)");

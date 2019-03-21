@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nubuilder_42027.nasl 8447 2018-01-17 16:12:19Z teissa $
+# $Id: gb_nubuilder_42027.nasl 14323 2019-03-19 13:19:09Z jschulte $
 #
 # nuBuilder 'report.php' Remote File Include Vulnerability
 #
@@ -24,40 +24,44 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "nuBuilder is prone to a remote file-include vulnerability because it
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.100730");
+  script_version("$Revision: 14323 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:19:09 +0100 (Tue, 19 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2010-08-02 14:28:14 +0200 (Mon, 02 Aug 2010)");
+  script_bugtraq_id(42027);
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_name("nuBuilder 'report.php' Remote File Include Vulnerability");
+
+  script_xref(name:"URL", value:"https://www.securityfocus.com/bid/42027");
+  script_xref(name:"URL", value:"http://www.nubuilder.com/nubuilderwww/");
+
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"summary", value:"nuBuilder is prone to a remote file-include vulnerability because it
 fails to properly sanitize user-supplied input.
 
 An attacker can exploit this vulnerability to obtain potentially
 sensitive information or to execute arbitrary script code in the
 context of the webserver process. This may allow the attacker to
-compromise the application and the computer; other attacks are
+compromise the application and the computer, other attacks are
 also possible.
 
-nuBuilder 10.04.20 is vulnerable; other versions may also be affected.";
+nuBuilder 10.04.20 is vulnerable, other versions may also be affected.");
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
+  since the disclosure of this vulnerability. Likely none will be provided anymore.
+  General solution options are to upgrade to a newer release, disable respective features,
+  remove the product or replace the product by another one.");
 
-if(description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.100730");
- script_version("$Revision: 8447 $");
- script_tag(name:"last_modification", value:"$Date: 2018-01-17 17:12:19 +0100 (Wed, 17 Jan 2018) $");
- script_tag(name:"creation_date", value:"2010-08-02 14:28:14 +0200 (Mon, 02 Aug 2010)");
- script_bugtraq_id(42027);
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_name("nuBuilder 'report.php' Remote File Include Vulnerability");
-
- script_xref(name : "URL" , value : "https://www.securityfocus.com/bid/42027");
- script_xref(name : "URL" , value : "http://www.nubuilder.com/nubuilderwww/");
-
- script_tag(name:"qod_type", value:"remote_vul");
- script_category(ACT_ATTACK);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  exit(0);
 }
 
 include("misc_func.inc");

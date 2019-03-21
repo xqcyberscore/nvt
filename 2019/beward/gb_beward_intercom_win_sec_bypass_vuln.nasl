@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_beward_intercom_win_sec_bypass_vuln.nasl 13326 2019-01-28 11:38:50Z asteins $
+# $Id: gb_beward_intercom_win_sec_bypass_vuln.nasl 13699 2019-02-15 14:29:50Z cfischer $
 #
 # BEWARD Intercom <= 2.3.1.34471 Security Bypass Vulnerability (Windows)
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107484");
-  script_version("$Revision: 13326 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-28 12:38:50 +0100 (Mon, 28 Jan 2019) $");
+  script_version("$Revision: 13699 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 15:29:50 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2019-01-28 11:45:50 +0100 (Mon, 28 Jan 2019)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:S/C:C/I:C/A:C");

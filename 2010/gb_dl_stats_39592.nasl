@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dl_stats_39592.nasl 11449 2018-09-18 10:04:42Z mmartin $
+# $Id: gb_dl_stats_39592.nasl 14326 2019-03-19 13:40:32Z jschulte $
 #
 # dl_stats Cross Site Scripting and SQL Injection Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100591");
-  script_version("$Revision: 11449 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 12:04:42 +0200 (Tue, 18 Sep 2018) $");
+  script_version("$Revision: 14326 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:40:32 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-04-21 13:10:07 +0200 (Wed, 21 Apr 2010)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -59,8 +59,8 @@ authentication credentials, control how the site is rendered to the
 user, compromise the application, access or modify data, or exploit
 latent vulnerabilities in the underlying database.
 
-dl_stats 2.0 is vulnerable; other versions may also be affected.");
- exit(0);
+dl_stats 2.0 is vulnerable, other versions may also be affected.");
+  exit(0);
 }
 
 include("http_func.inc");

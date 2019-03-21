@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: packeteer_web_login.nasl 12413 2018-11-19 11:11:31Z cfischer $
+# $Id: packeteer_web_login.nasl 14328 2019-03-19 13:54:40Z cfischer $
 # Description: Packeteer Web Management Interface Login
 #
 # Authors:
@@ -26,8 +26,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80032");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 12413 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-19 12:11:31 +0100 (Mon, 19 Nov 2018) $");
+  script_version("$Revision: 14328 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:54:40 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2008-10-24 20:15:31 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Packeteer Web Management Interface Login");
@@ -49,7 +49,7 @@ if(description)
 # Notes:
 # - logins.nasl will not process the HTTP password preference if the HTTP
 #   username is left blank. To compensate for this behavior this script assumes
-#   that a username tha consists of a single non-alphanumeric character is not
+#   that a username that consists of a single non-alphanumeric character is not
 #   really meant to be used.
 # - Does not work with http_keepalive_send_recv() for some reason.
 #   Resorting to http_send_recv()

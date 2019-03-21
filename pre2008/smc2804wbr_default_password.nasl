@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: smc2804wbr_default_password.nasl 6046 2017-04-28 09:02:54Z teissa $
+# $Id: smc2804wbr_default_password.nasl 14336 2019-03-19 14:53:10Z mmartin $
 # Description: SMC2804WBR Default Password
 #
 # Authors:
@@ -24,34 +24,34 @@
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.12069");
- script_version("$Revision: 6046 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_tag(name:"cvss_base", value:"7.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_name("SMC2804WBR Default Password");
- 
- script_category(ACT_GATHER_INFO);
- 
- script_copyright("This script is Copyright (C) 2004 Audun Larsen");
- script_family("Privilege escalation");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_tag(name : "solution" , value : "Change the administrator password");
- script_tag(name : "summary" , value : "The remote host is a SMC2804WBR access point.
+  script_oid("1.3.6.1.4.1.25623.1.0.12069");
+  script_version("$Revision: 14336 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:53:10 +0100 (Tue, 19 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_name("SMC2804WBR Default Password");
 
- This host is installed with a default administrator 
- password (smcadmin) which has not been modifed.");
- script_tag(name : "impact" , value : "An attacker may exploit this flaw to gain control over
+  script_category(ACT_GATHER_INFO);
+
+  script_copyright("This script is Copyright (C) 2004 Audun Larsen");
+  script_family("Privilege escalation");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_tag(name:"solution", value:"Change the administrator password");
+  script_tag(name:"solution_type", value:"Workaround");
+  script_tag(name:"summary", value:"The remote host is a SMC2804WBR access point.
+
+ This host is installed with a default administrator
+ password (smcadmin) which has not been modified.");
+  script_tag(name:"impact", value:"An attacker may exploit this flaw to gain control over
  this host using the default password.");
 
- script_tag(name:"qod_type", value:"remote_app");
+  script_tag(name:"qod_type", value:"remote_app");
 
- exit(0);
+  exit(0);
 }
 
-# Check starts here
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -63,9 +63,9 @@ if("SMC2804WBR" >< res && "Please enter correct password for Administrator Acces
 
   host = http_host_name( port:port );
   variables = string("page=login&pws=smcadmin");
-  req = string("POST /login.htm HTTP/1.1\r\n", 
-  	      "Host: ", host, "\r\n", 
-	      "Content-Type: application/x-www-form-urlencoded\r\n", 
+  req = string("POST /login.htm HTTP/1.1\r\n",
+  	      "Host: ", host, "\r\n",
+	      "Content-Type: application/x-www-form-urlencoded\r\n",
 	      "Content-Length: ", strlen(variables), "\r\n\r\n", variables);
 
   buf = http_keepalive_send_recv(port:port, data:req);
@@ -74,7 +74,7 @@ if("SMC2804WBR" >< res && "Please enter correct password for Administrator Acces
   {
    security_message(port:port);
    exit(0);
-  } 
+  }
 }
 
 exit(99);

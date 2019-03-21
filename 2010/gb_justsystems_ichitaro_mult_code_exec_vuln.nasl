@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_justsystems_ichitaro_mult_code_exec_vuln.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: gb_justsystems_ichitaro_mult_code_exec_vuln.nasl 14326 2019-03-19 13:40:32Z jschulte $
 #
 # JustSystems Ichitaro Multiple Remote Code Execution Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801642");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 14326 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:40:32 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-11-30 12:42:12 +0100 (Tue, 30 Nov 2010)");
   script_cve_id("CVE-2010-3915", "CVE-2010-3916");
   script_bugtraq_id(44637);
@@ -54,15 +54,13 @@ if(description)
   document, which could be exploited to execute arbitrary code.");
   script_tag(name:"summary", value:"This host is installed JustSystems Ichitaro and is prone to
   multiple code execution vulnerabilities.");
-  script_tag(name:"solution", value:"Apply the patch, available from below link
-  http://www.justsystems.com/jp/info/js10003.html
-
-  *****
+  script_tag(name:"solution", value:"Apply the patch, available  *****
   NOTE: Ignore this warning, if above mentioned workaround is manually applied.
   *****");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.justsystems.com/jp/info/js10003.html");
   exit(0);
 }
 

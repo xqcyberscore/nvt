@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: vBulletin_3_7_3_pl1_sql_injection.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: vBulletin_3_7_3_pl1_sql_injection.nasl 14335 2019-03-19 14:46:57Z asteins $
 #
 # vBulletin 'admincalendar.php' SQL Injection Vulnerability
 #
@@ -24,7 +24,28 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "vBulletin is prone to an SQL-injection vulnerability because it
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.100020");
+  script_version("$Revision: 14335 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:46:57 +0100 (Tue, 19 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2009-03-10 08:40:52 +0100 (Tue, 10 Mar 2009)");
+  script_bugtraq_id(32348);
+  script_cve_id("CVE-2008-6256");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
+
+  script_name("vBulletin 'admincalendar.php' SQL Injection Vulnerability");
+  script_category(ACT_GATHER_INFO);
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
+  script_dependencies("vbulletin_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("vBulletin/installed");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution", value:"Upgrade to newest Version of VBulletin.");
+  script_tag(name:"summary", value:"vBulletin is prone to an SQL-injection vulnerability because it
   fails to sufficiently sanitize user-supplied data before using it in
   an SQL query.
 
@@ -35,32 +56,8 @@ tag_summary = "vBulletin is prone to an SQL-injection vulnerability because it
   Note that to succeed, the attacker must have an administrative
   account with 'calendar' administrator access.
 
-  vBulletin 3.7.3.pl1 is vulnerable; other versions may also be affected.";
-
-tag_solution = "Upgrade to newest Version of VBulletin.";
-
-if (description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.100020");
- script_version("$Revision: 9350 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2009-03-10 08:40:52 +0100 (Tue, 10 Mar 2009)");
- script_bugtraq_id(32348);
- script_cve_id("CVE-2008-6256");
- script_tag(name:"cvss_base", value:"6.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-
- script_name("vBulletin 'admincalendar.php' SQL Injection Vulnerability");
- script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_banner");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
- script_dependencies("vbulletin_detect.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("vBulletin/installed");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  vBulletin 3.7.3.pl1 is vulnerable, other versions may also be affected.");
+  exit(0);
 }
 
 include("http_func.inc");
@@ -77,7 +74,7 @@ if (!isnull(matches)) {
  if ( ver <= "3.7.3.pl1" ) {
 	security_message(port:port);
 	exit(0);
- }  
-}  
+ }
+}
 
 exit(0);

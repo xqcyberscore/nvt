@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cilemhaber_info_disc_vuln.nasl 5993 2017-04-20 15:45:39Z cfi $
+# $Id: gb_cilemhaber_info_disc_vuln.nasl 14323 2019-03-19 13:19:09Z jschulte $
 #
 # Cilem Haber Information Disclosure Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801605");
-  script_version("$Revision: 5993 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-20 17:45:39 +0200 (Thu, 20 Apr 2017) $");
+  script_version("$Revision: 14323 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:19:09 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-10-18 15:37:53 +0200 (Mon, 18 Oct 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -44,9 +44,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/15199/");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to download
-  the database and obtain sensitive information.
-
-  Impact Level: Application");
+  the database and obtain sensitive information.");
 
   script_tag(name:"affected", value:"Cilem Haber Version 1.4.4");
 
@@ -54,10 +52,9 @@ if(description)
   'cilemhaber.mdb' database file. By sending a direct request, a remote attacker
   could download the database and obtain sensitive information.");
 
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"summary", value:"The host is running Cilem Haber and is prone to information
   disclosure vulnerability.");
@@ -86,7 +83,7 @@ foreach dir( make_list_unique( "/cilemhaber", "/", cgi_dirs( port:port ) ) ) {
     url = dir + "/db/cilemhaber.mdb";
     req = http_get( item:url, port:port );
     res = http_keepalive_send_recv( port:port, data:req );
- 
+
     if( res =~ "HTTP/1.[0-1] 200" && 'Standard Jet DB' >< res ) {
       report = report_vuln_url( port:port, url:url );
       security_message( port:port, data:report );

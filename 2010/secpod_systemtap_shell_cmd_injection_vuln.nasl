@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_systemtap_shell_cmd_injection_vuln.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: secpod_systemtap_shell_cmd_injection_vuln.nasl 14323 2019-03-19 13:19:09Z jschulte $
 #
 # SystemTap 'stap-server' Remote Shell Command Injection Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902017");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 14323 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:19:09 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-02-02 07:26:26 +0100 (Tue, 02 Feb 2010)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -48,13 +48,13 @@ malicious shell commands or compromise a system.");
   script_tag(name:"affected", value:"SystemTap versions prior to 1.1");
   script_tag(name:"insight", value:"The flaw is due to input validation error in the 'stap-server' component
 when processing user-supplied requests.");
-  script_tag(name:"solution", value:"Upgrade to version 1.1 or later
-For updates refer to http://sourceware.org/systemtap/");
+  script_tag(name:"solution", value:"Upgrade to version 1.1 or later");
   script_tag(name:"summary", value:"This host has SystemTap installed and is prone to Arbitrary Command
 Execution vulnerability");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://sourceware.org/systemtap/");
   exit(0);
 }
 

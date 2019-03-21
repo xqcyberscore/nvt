@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moodle_40944.nasl 10674 2018-07-30 08:24:18Z asteins $
+# $Id: gb_moodle_40944.nasl 14326 2019-03-19 13:40:32Z jschulte $
 #
 # Moodle Multiple Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100686");
-  script_version("$Revision: 10674 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-30 10:24:18 +0200 (Mon, 30 Jul 2018) $");
+  script_version("$Revision: 14326 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:40:32 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-06-21 20:36:15 +0200 (Mon, 21 Jun 2010)");
   script_bugtraq_id(40944);
   script_cve_id("CVE-2010-2228", "CVE-2010-2229", "CVE-2010-2230", "CVE-2010-2231");
@@ -54,16 +54,16 @@ if (description)
   script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
   script_tag(name:"summary", value:"Moodle is prone to multiple vulnerabilities, including:
 
-- a cross-site scripting issue
+  - a cross-site scripting issue
 
-- a security-bypass issue
+  - a security-bypass issue
 
-- an HTML-injection issue");
+  - an HTML-injection issue");
 
   script_tag(name:"impact", value:"Attacker-supplied HTML or JavaScript code could run in the context of
 the affected site, potentially allowing an attacker to steal cookie-
 based authentication credentials and to control how the site is
-rendered to the user; other attacks are also possible.");
+rendered to the user, other attacks are also possible.");
 
   script_tag(name:"affected", value:"These issues affect versions prior to Moodle 1.9.9 and 1.8.13.");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -72,7 +72,7 @@ rendered to the user; other attacks are also possible.");
 }
 
 include("http_func.inc");
-include("http_keepalive.inc");
+
 include("version_func.inc");
 
 port = get_http_port(default:80);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_frontaccounting_mult_sql_inj_vuln_1.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: secpod_frontaccounting_mult_sql_inj_vuln_1.nasl 14330 2019-03-19 13:59:11Z asteins $
 #
 # FrontAccounting Multiple SQL Injection Vulnerabilities
 #
@@ -24,30 +24,18 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow attackers to access and modify the backend
-  database by conducting SQL injection attacks.
-  Impact Level: Application";
-tag_affected = "FrontAccounting versions prior to 2.1.7";
-tag_insight = "Input passed via multiple unspecified parameters to various scripts is not
-  properly sanitised before being used in SQL queries. This can be exploited
-  to manipulate SQL queries by injecting arbitrary SQL code.";
-tag_solution = "Upgrade to FrontAccounting version 2.1.7
-  http://frontaccounting.net/wb3/pages/download.php";
-tag_summary = "This host is running FrontAccounting and is prone to multiple SQL Injection
-  vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900257");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 14330 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:59:11 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-11-30 15:32:46 +0100 (Mon, 30 Nov 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-2009-4037", "CVE-2009-4045");
   script_name("FrontAccounting Multiple SQL Injection Vulnerabilities");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/37327");
-  script_xref(name : "URL" , value : "http://frontaccounting.net/wb3/pages/posts/2.1.7-security-release103.php");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/37327");
+  script_xref(name:"URL", value:"http://frontaccounting.net/wb3/pages/posts/2.1.7-security-release103.php");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
@@ -55,11 +43,16 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("secpod_frontaccounting_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to access and modify the backend
+  database by conducting SQL injection attacks.");
+  script_tag(name:"affected", value:"FrontAccounting versions prior to 2.1.7");
+  script_tag(name:"insight", value:"Input passed via multiple unspecified parameters to various scripts is not
+  properly sanitised before being used in SQL queries. This can be exploited
+  to manipulate SQL queries by injecting arbitrary SQL code.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution", value:"Upgrade to FrontAccounting version 2.1.7.");
+  script_tag(name:"summary", value:"This host is running FrontAccounting and is prone to multiple SQL Injection
+  vulnerabilities.");
   exit(0);
 }
 
@@ -77,11 +70,13 @@ if(!faVer){
   exit(0);
 }
 
-# Check for FrontAccounting veriosn < 2.1.7
 faVer = eregmatch(pattern:"^(.+) under (/.*)$", string:faVer);
 if(faVer[1])
 {
   if(version_is_less(version:faVer[1], test_version:"2.1.7")){
-    security_message(faPort);
+    security_message(port:faPort, data:"The target host was found to be vulnerable.");
+    exit(0);
   }
 }
+
+exit(99);

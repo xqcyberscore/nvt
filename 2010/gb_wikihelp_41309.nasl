@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wikihelp_41309.nasl 8228 2017-12-22 07:29:52Z teissa $
+# $Id: gb_wikihelp_41309.nasl 14323 2019-03-19 13:19:09Z jschulte $
 #
 # Wiki Web Help 'uploadimage.php' Arbitrary File Upload Vulnerability
 #
@@ -24,43 +24,40 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Wiki Web Help is prone to an arbitrary-file-upload vulnerability
-because it fails to properly sanitize user-supplied input.
-
-An attacker may leverage this issue to upload arbitrary files to the
-affected computer; this can result in arbitrary code execution within
-the context of the vulnerable application.
-
-Wiki Web Help 0.2.7 is vulnerable; other versions may also be
-affected.";
-
-tag_solution = "The vendor released a patch. Please see the references for more
-information.";
-
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.100702");
- script_version("$Revision: 8228 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-22 08:29:52 +0100 (Fri, 22 Dec 2017) $");
- script_tag(name:"creation_date", value:"2010-07-06 13:44:35 +0200 (Tue, 06 Jul 2010)");
- script_bugtraq_id(41309);
- script_tag(name:"cvss_base", value:"4.6");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:P/I:P/A:P");
- script_name("Wiki Web Help 'uploadimage.php' Arbitrary File Upload Vulnerability");
+  script_oid("1.3.6.1.4.1.25623.1.0.100702");
+  script_version("$Revision: 14323 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:19:09 +0100 (Tue, 19 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2010-07-06 13:44:35 +0200 (Tue, 06 Jul 2010)");
+  script_bugtraq_id(41309);
+  script_tag(name:"cvss_base", value:"4.6");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:P/I:P/A:P");
+  script_name("Wiki Web Help 'uploadimage.php' Arbitrary File Upload Vulnerability");
 
- script_tag(name:"qod_type", value:"remote_vul");
- script_category(ACT_ATTACK);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_xref(name : "URL" , value : "https://www.securityfocus.com/bid/41309");
- script_xref(name : "URL" , value : "http://sourceforge.net/tracker/?func=detail&atid=1296085&aid=3025530&group_id=307693");
- script_xref(name : "URL" , value : "http://sourceforge.net/projects/wwh/");
- exit(0);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution", value:"The vendor released a patch. Please see the references for more
+  information.");
+  script_tag(name:"summary", value:"Wiki Web Help is prone to an arbitrary-file-upload vulnerability
+  because it fails to properly sanitize user-supplied input.
+
+  An attacker may leverage this issue to upload arbitrary files to the
+  affected computer, this can result in arbitrary code execution within
+  the context of the vulnerable application.
+
+  Wiki Web Help 0.2.7 is vulnerable, other versions may also be
+  affected.");
+  script_xref(name:"URL", value:"https://www.securityfocus.com/bid/41309");
+  script_xref(name:"URL", value:"http://sourceforge.net/tracker/?func=detail&atid=1296085&aid=3025530&group_id=307693");
+  script_xref(name:"URL", value:"http://sourceforge.net/projects/wwh/");
+  exit(0);
 }
 
 include("http_func.inc");
@@ -81,11 +78,11 @@ foreach dir( make_list_unique( "/wwh", "/wikihelp", cgi_dirs( port:port ) ) ) {
     host = http_host_name( port:port );
 
     rand = rand();
-    file = string("OpenVAS_TEST_DELETE_ME_", rand, ".php"); 
+    file = string("OpenVAS_TEST_DELETE_ME_", rand, ".php");
 
     len = 175 + strlen(file);
 
-    req = string(  
+    req = string(
         "POST ", dir, "/handlers/uploadimage.php HTTP/1.1\r\n",
         "Content-Type: multipart/form-data; boundary=----x\r\n",
         "Host: ", host, "\r\n",
@@ -106,12 +103,12 @@ foreach dir( make_list_unique( "/wwh", "/wikihelp", cgi_dirs( port:port ) ) ) {
     url = string(dir,"/images/",file);
 
     if(http_vuln_check(port:port, url:url,pattern:"OpenVAS-Upload-Test")) {
-      report = string( 
+      report = string(
         "Note :\n\n",
         "## It was possible to upload and execute a file on the remote webserver.\n",
         "## The file is placed in directory: ", '"', dir, '/images/"', "\n",
         "## and is named: ", '"', file, '"', "\n",
-        "## You should delete this file as soon as possible!\n");    
+        "## You should delete this file as soon as possible!\n");
       security_message(port:port,data:report);
       exit(0);
     }

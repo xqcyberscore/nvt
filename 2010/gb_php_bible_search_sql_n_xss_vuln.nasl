@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_bible_search_sql_n_xss_vuln.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_php_bible_search_sql_n_xss_vuln.nasl 14326 2019-03-19 13:40:32Z jschulte $
 #
 # PHP Bible Search 'bible.php' SQL Injection and Cross Site Scripting Vulnerabilities
 #
@@ -27,17 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801401");
-  script_version("$Revision: 5323 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+  script_version("$Revision: 14326 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:40:32 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-07-12 09:42:32 +0200 (Mon, 12 Jul 2010)");
   script_cve_id("CVE-2010-2616", "CVE-2010-2617");
   script_bugtraq_id(41197);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("PHP Bible Search 'bible.php' SQL Injection and Cross Site Scripting Vulnerabilities");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/59842");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/59843");
-  script_xref(name : "URL" , value : "http://www.packetstormsecurity.com/1006-exploits/phpbiblesearch-sqlxss.txt");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/59842");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/59843");
+  script_xref(name:"URL", value:"http://www.packetstormsecurity.com/1006-exploits/phpbiblesearch-sqlxss.txt");
 
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_category(ACT_ATTACK);
@@ -46,19 +46,16 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "impact" , value : "Successful exploitation could allow the attackers to view, add,
+  script_tag(name:"impact", value:"Successful exploitation could allow the attackers to view, add,
   modify or delete information in the back-end database amd to execute arbitrary
-  HTML and script code in a user's browser session in the context of an affected site.
-
-  Impact Level: Application");
-  script_tag(name : "affected" , value : "PHP Bible Search version 0.99");
-  script_tag(name : "insight" , value : "Input passed to the 'chapter' parameter in 'bible.php' script is
+  HTML and script code in a user's browser session in the context of an affected site.");
+  script_tag(name:"affected", value:"PHP Bible Search version 0.99");
+  script_tag(name:"insight", value:"Input passed to the 'chapter' parameter in 'bible.php' script is
   not properly sanitised before being returned to the user.");
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
-  script_tag(name : "summary" , value : "The host is running PHP Bible Search and is prone to SQL
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"The host is running PHP Bible Search and is prone to SQL
   injection and cross site scripting vulnerabilities.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
@@ -70,10 +67,8 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Get HTTP Port
 phpPort = get_http_port(default:80);
 
-## Check the php support
 if(!can_host_php(port:phpPort)){
   exit(0);
 }
@@ -83,14 +78,11 @@ foreach dir (make_list_unique("/phpbiblesearch", "/" , cgi_dirs(port:phpPort)))
 
   if(dir == "/") dir = "";
 
-  ## Send and Receive request
   sndReq = http_get(item: dir + "/bible.php", port:phpPort);
   rcvRes = http_keepalive_send_recv(port:phpPort, data:sndReq);
 
-  ## Confirm application is PHP Bible Search
   if(">PHP Bible Search ::<" >< rcvRes)
   {
-    ## Try XSS attack on PHP Bible Search application
     sndReq = http_get(item:string(dir, "/bible.php?string=&book=2&chapter=" +
                         "<script>alert('OpenVAS-XSS-Testing')</script>"), port:phpPort);
     rcvRes = http_keepalive_send_recv(port:phpPort, data:sndReq);

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: www_too_long_header10.nasl 9348 2018-04-06 07:01:19Z cfischer $
+# $Id: www_too_long_header10.nasl 14336 2019-03-19 14:53:10Z mmartin $
 # Description: HTTP 1.0 header overflow
 #
 # Authors:
@@ -22,15 +22,6 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "It was possible to kill the web server by
-sending an invalid request with a too long header
-(From, If-Modified-Since, Referer or Content-Type)
-
-A cracker may exploit this vulnerability to make your web server
-crash continually or even execute arbitrary code on your system.";
-
-tag_solution = "upgrade your software or protect it with a filtering reverse proxy";
-
 # I don't even know if it crashes any web server...
 # Cf. RFC 1945
 # Other references:
@@ -39,7 +30,7 @@ tag_solution = "upgrade your software or protect it with a filtering reverse pro
 # To: <vuln-dev@securityfocus.com>
 # Date: Mon, 2 Dec 2002 23:31:27 +0100
 # Reply-To: "at4r" <at4r@3wdesign.es>
-# 
+#
 # From: "Matthew Murphy" <mattmurphy@kc.rr.com>
 # Subject: Multiple pServ Remote Buffer Overflow Vulnerabilities
 # To: "BugTraq" <bugtraq@securityfocus.com>
@@ -47,36 +38,37 @@ tag_solution = "upgrade your software or protect it with a filtering reverse pro
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.11127");
- script_version("$Revision: 9348 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- name = "HTTP 1.0 header overflow";
- script_name(name);
- 
-
- 
- script_category(ACT_DENIAL);
+  script_oid("1.3.6.1.4.1.25623.1.0.11127");
+  script_version("$Revision: 14336 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:53:10 +0100 (Tue, 19 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_name("HTTP 1.0 header overflow");
+  script_category(ACT_DENIAL);
   script_tag(name:"qod_type", value:"remote_vul");
-# All the www_too_long_*.nasl scripts were first declared as 
+# All the www_too_long_*.nasl scripts were first declared as
 # ACT_DESTRUCTIVE_ATTACK, but many web servers are vulnerable to them:
 # The web server might be killed by those generic tests before OpenVAS
 # has a chance to perform known attacks for which a patch exists
 # As ACT_DENIAL are performed one at a time (not in parallel), this reduces
 # the risk of false positives.
- 
- script_copyright("This script is Copyright (C) 2002 Michel Arboi");
- family = "Gain a shell remotely";
- script_family(family);
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  script_copyright("This script is Copyright (C) 2002 Michel Arboi");
+  script_family("Gain a shell remotely");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
+  script_tag(name:"solution", value:"Upgrade your software or protect it with a filtering reverse proxy");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"It was possible to kill the web server by
+  sending an invalid request with a too long header
+  (From, If-Modified-Since, Referer or Content-Type)
+
+A cracker may exploit this vulnerability to make your web server
+crash continually or even execute arbitrary code on your system.");
+  exit(0);
 }
 
 include("http_func.inc");
@@ -103,7 +95,7 @@ close(soc);
 soc = http_open_socket(port);
 if (! soc)  {  security_message(port); exit(0); }
 
-r = string(r1, "If-Modified-Since: Sat, 29 Oct 1994 19:43:31 ", 
+r = string(r1, "If-Modified-Since: Sat, 29 Oct 1994 19:43:31 ",
 	crap(data: "GMT", length: 1024), "\r\n\r\n");
 
 send(socket:soc, data: r);
@@ -152,7 +144,7 @@ if (! soc)  {  security_message(port); exit(0); }
 r = string(r1, "Content-Type: application/x-www-form-urlencoded\r\n",
 	"Content-Length: 56\r\n",
 	# Yes, Content-Type appears twice!
-	"Accept-Language: en", 
+	"Accept-Language: en",
 	"Content-Type:", crap(32769), "\r\n\r\n");
 
 send(socket:soc, data: r);

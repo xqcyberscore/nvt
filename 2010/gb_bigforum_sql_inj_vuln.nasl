@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bigforum_sql_inj_vuln.nasl 5263 2017-02-10 13:45:51Z teissa $
+# $Id: gb_bigforum_sql_inj_vuln.nasl 14326 2019-03-19 13:40:32Z jschulte $
 #
 # Bigforum 'profil.php' SQL Injection Vulnerability
 #
@@ -27,18 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801151");
-  script_version("$Revision: 5263 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+  script_version("$Revision: 14326 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:40:32 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-03-18 15:44:57 +0100 (Thu, 18 Mar 2010)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_bugtraq_id(38597);
   script_cve_id("CVE-2010-0948");
   script_name("Bigforum 'profil.php' SQL Injection Vulnerability");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/38872");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/56723");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/11646");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.org/1003-exploits/bigforum-sql.txt");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/38872");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/56723");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/11646");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/1003-exploits/bigforum-sql.txt");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2010 Greenbone Networks GmbH");
@@ -47,23 +47,20 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "insight" , value : "The flaw exists in 'profil.php'. Input passed to the 'id'
+  script_tag(name:"insight", value:"The flaw exists in 'profil.php'. Input passed to the 'id'
   parameter is not properly sanitised before being used in SQL queries.
   A remote attacker can execute arbitrary SQL commands.");
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
-  script_tag(name : "summary" , value : "This host is running Bigforum and is prone to SQL Injection
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"This host is running Bigforum and is prone to SQL Injection
   vulnerability.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to execute
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute
   arbitrary SQL statements on the vulnerable system, which may lead to view,
   add, modify data, or delete information in the back-end database.
 
-  Impact Level: Application.
-
   NOTE: Successful exploitation requires that 'magic_quotes_gpc' is disabled.");
-  script_tag(name : "affected" , value : "Bigforum version 4.5 and prior");
+  script_tag(name:"affected", value:"Bigforum version 4.5 and prior");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_app");
@@ -74,21 +71,17 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Get HTTP port
 bigPort = get_http_port(default:80);
 
-## Check the php support
 if(!can_host_php(port:bigPort)){
   exit(0);
 }
 
-## Check for the exploit on Bigforum
 foreach dir (make_list_unique("/bigforum", "/bf", "/" , cgi_dirs(port:bigPort)))
 {
 
   if(dir == "/") dir = "";
 
-  ## Send and Receive request
   rcvRes = http_get_cache(item: dir + "/index.php", port:bigPort);
 
   if(">Bigforum" >< rcvRes)
@@ -100,7 +93,6 @@ foreach dir (make_list_unique("/bigforum", "/bf", "/" , cgi_dirs(port:bigPort)))
                       "23,24,25,26,27,28,29+from+users+--+"), port:bigPort);
     rcvRes = http_keepalive_send_recv(port:bigPort, data:sndReq);
 
-    ## Check the response for SQL cmds results
     if((rcvRes =~ ":::.:admin:"))
     {
       security_message(port:bigPort);

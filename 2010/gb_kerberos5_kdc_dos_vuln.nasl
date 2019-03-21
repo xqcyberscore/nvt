@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kerberos5_kdc_dos_vuln.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: gb_kerberos5_kdc_dos_vuln.nasl 14326 2019-03-19 13:40:32Z jschulte $
 #
 # Kerberos5 KDC Cross Realm Referral Denial of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800441");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 14326 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:40:32 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-01-22 09:23:45 +0100 (Fri, 22 Jan 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -36,6 +36,7 @@ if(description)
   script_bugtraq_id(37486);
   script_name("Kerberos5 KDC Cross Realm Referral Denial of Service Vulnerability");
 
+  script_xref(name:"URL", value:"http://web.mit.edu/kerberos/advisories/2009-003-patch.txt");
   script_xref(name:"URL", value:"http://secunia.com/advisories/37977");
   script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2009/3652");
   script_xref(name:"URL", value:"http://web.mit.edu/kerberos/advisories/MITKRB5-SA-2009-003.txt");
@@ -54,14 +55,13 @@ if(description)
   attacker to cause KDC to crash.");
   script_tag(name:"summary", value:"This host is installed with Kerberos5 and is prone to Denial of
   Service vulnerability.");
-  script_tag(name:"solution", value:"Upgrade kerberos5 version 1.7.1 or Apply patch from below link,
-  http://web.mit.edu/kerberos/www/
-  http://web.mit.edu/kerberos/advisories/2009-003-patch.txt
+  script_tag(name:"solution", value:"Upgrade kerberos5 version 1.7.1
 
   *****
   NOTE: Ignore this warning if above mentioned patch is already applied.
   *****");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to cause a denial of service.");
+  script_xref(name:"URL", value:"http://web.mit.edu/kerberos/www/");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phpDatingClub_35454.nasl 11449 2018-09-18 10:04:42Z mmartin $
+# $Id: phpDatingClub_35454.nasl 14325 2019-03-19 13:35:02Z asteins $
 #
 # phpDatingClub 'search.php' Cross-Site Scripting and SQL Injection
 # Vulnerabilities
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100231");
-  script_version("$Revision: 11449 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 12:04:42 +0200 (Tue, 18 Sep 2018) $");
+  script_version("$Revision: 14325 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:35:02 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-07-08 19:01:22 +0200 (Wed, 08 Jul 2009)");
   script_bugtraq_id(35454);
   script_cve_id("CVE-2009-2179", "CVE-2009-2178");
@@ -54,10 +54,10 @@ if(description)
   access or modify data, or exploit latent vulnerabilities in the
   underlying database.
 
-  phpDatingClub 3.7 is vulnerable; other versions may also be
+  phpDatingClub 3.7 is vulnerable, other versions may also be
   affected.");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/35454");
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

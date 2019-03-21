@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_aria2_metalink_dir_traversal_vuln.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: gb_aria2_metalink_dir_traversal_vuln.nasl 14326 2019-03-19 13:40:32Z jschulte $
 #
 # Aria2 metalink 'name' Directory Traversal Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801341");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 14326 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:40:32 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-05-25 13:56:16 +0200 (Tue, 25 May 2010)");
   script_cve_id("CVE-2010-1512");
   script_bugtraq_id(40142);
@@ -49,13 +49,13 @@ if(description)
   script_tag(name:"affected", value:"Aria2 version prior to 1.9.3");
   script_tag(name:"insight", value:"The flaw is due to an error in the handling of metalink files. The 'name'
   attribute of a 'file' element in a metalink file is not properly sanitised.");
-  script_tag(name:"solution", value:"Upgrade to Aria2 1.9.3,
-  For updates refer to http://sourceforge.net/projects/aria2/files/");
+  script_tag(name:"solution", value:"Upgrade to Aria2 1.9.3.");
   script_tag(name:"summary", value:"The Remote host is installed with Aria2 and is prone to directory
   traversal vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://sourceforge.net/projects/aria2/files/");
   exit(0);
 }
 

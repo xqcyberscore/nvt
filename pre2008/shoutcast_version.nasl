@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: shoutcast_version.nasl 9348 2018-04-06 07:01:19Z cfischer $
+# $Id: shoutcast_version.nasl 14336 2019-03-19 14:53:10Z mmartin $
 # Description: SHOUTcast Server DoS detector vulnerability
 #
 # Authors:
@@ -23,39 +23,36 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_solution = "Upgrade to the latest version of SHOUTcast Server.
-
-Additional information:
-http://www.securiteam.com/exploits/5YP031555Q.html";
-
-tag_summary = "This detects SHOUTcast Server's version. If the version equals 
-1.8.2 it is vulnerable to a denial of service attack.";
-
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.10717"); 
- script_version("$Revision: 9348 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
-script_cve_id("CVE-2001-1304");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- 
- script_name("SHOUTcast Server DoS detector vulnerability");
- script_category(ACT_GATHER_INFO);
+  script_oid("1.3.6.1.4.1.25623.1.0.10717");
+  script_version("$Revision: 14336 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:53:10 +0100 (Tue, 19 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_cve_id("CVE-2001-1304");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+
+  script_name("SHOUTcast Server DoS detector vulnerability");
+  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_active");
- 
- script_copyright("This script is Copyright (C) 2001 SecuriTeam");
- script_family("General");
 
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 8000);
- script_exclude_keys("Settings/disable_cgi_scanning");
+  script_copyright("This script is Copyright (C) 2001 SecuriTeam");
+  script_family("General");
 
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name : "solution" , value : tag_solution);
- exit(0);
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 8000);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
+  script_tag(name:"summary", value:"This detects SHOUTcast Server's version. If the version equals
+1.8.2 it is vulnerable to a denial of service attack.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution", value:"Upgrade to the latest version of SHOUTcast Server.
+
+Additional information:
+http://www.securiteam.com/exploits/5YP031555Q.html");
+  exit(0);
 }
 
 include("http_func.inc");
@@ -86,4 +83,4 @@ port = get_http_port( default:8000 );
     {
      log_message(port:port, data:report);
     }
-   } 
+   }

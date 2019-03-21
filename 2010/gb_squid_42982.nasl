@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_squid_42982.nasl 6891 2017-08-10 12:44:59Z cfischer $
+# $Id: gb_squid_42982.nasl 14326 2019-03-19 13:40:32Z jschulte $
 #
 # Squid Proxy String Processing NULL Pointer Dereference Denial Of Service Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:squid-cache:squid";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100789");
-  script_version("$Revision: 6891 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-10 14:44:59 +0200 (Thu, 10 Aug 2017) $");
+  script_version("$Revision: 14326 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:40:32 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-09-07 15:26:31 +0200 (Tue, 07 Sep 2010)");
   script_bugtraq_id(42982);
   script_tag(name:"cvss_base", value:"5.0");
@@ -54,7 +54,7 @@ if(description)
   NULL pointer dereference.");
 
   script_tag(name:"impact", value:"An attacker can exploit this issue to cause the application to crash,
-  denying service to legitimate users. Due to the nature of the issue, code execution may be possible; however,
+  denying service to legitimate users. Due to the nature of the issue, code execution may be possible, however,
   it has not been confirmed.");
 
   script_tag(name:"affected", value:"Squid 3.0 to 3.0.STABLE25 Squid 3.1 to 3.1.7 Squid 3.2 to 3.2.0.1 are affected.");

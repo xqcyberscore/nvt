@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_f-prot_av_mult_vuln_900018.nasl 11570 2018-09-24 11:54:11Z cfischer $
+# $Id: secpod_f-prot_av_mult_vuln_900018.nasl 14310 2019-03-19 10:27:27Z cfischer $
 #
 # F-PROT Antivirus Multiple Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900018");
-  script_version("$Revision: 11570 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-24 13:54:11 +0200 (Mon, 24 Sep 2018) $");
+  script_version("$Revision: 14310 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 11:27:27 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2008-08-22 10:29:01 +0200 (Fri, 22 Aug 2008)");
   script_cve_id("CVE-2008-3244");
   script_bugtraq_id(30253, 30258);
@@ -57,8 +57,7 @@ if(description)
 
   script_tag(name:"affected", value:"F-Prot Antivirus for Windows prior to 6.0.9.0 on Windows (All).");
 
-  script_tag(name:"solution", value:"Upgrade to latest F-PROT Antivirus or later.
-  http://www.f-prot.com/download/");
+  script_tag(name:"solution", value:"Upgrade to latest F-PROT Antivirus or later.");
 
   script_tag(name:"impact", value:"Remote attackers can easily crash the engine/service via
   specially crafted files.");

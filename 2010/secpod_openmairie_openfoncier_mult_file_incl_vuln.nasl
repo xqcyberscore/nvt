@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_openmairie_openfoncier_mult_file_incl_vuln.nasl 8168 2017-12-19 07:30:15Z teissa $
+# $Id: secpod_openmairie_openfoncier_mult_file_incl_vuln.nasl 14323 2019-03-19 13:19:09Z jschulte $
 #
 # openMairie openFoncier Multiple File Inclusion Vulnerabilities
 #
@@ -24,38 +24,18 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow remote attackers to include
-remote scripts and execute arbitrary commands with the privileges of the web
-server.
-
-Impact Level: Application.";
-
-tag_affected = "OpenMairie openFoncier version 2.00 and prior";
-
-tag_insight = "Input passed to the parameter 'path_om' in various files and to
-the parameter 'dsn[phptype]' in 'scr/soustab.php' are not properly verified
-before being used to include files.";
-
-tag_solution = "No solution or patch was made available for at least one year
-since disclosure of this vulnerability. Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.";
-
-tag_summary = "This host is running openMairie openFoncier and is prone to
-multiple file inclusion vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902049");
-  script_version("$Revision: 8168 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 08:30:15 +0100 (Tue, 19 Dec 2017) $");
+  script_version("$Revision: 14323 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:19:09 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-05-25 13:56:16 +0200 (Tue, 25 May 2010)");
   script_cve_id("CVE-2010-1945");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_name("openMairie openFoncier Multiple File Inclusion Vulnerabilities");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/39607");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/12366");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/39607");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/12366");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_category(ACT_ATTACK);
@@ -63,11 +43,18 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_openmairie_prdts_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
+  script_tag(name:"insight", value:"Input passed to the parameter 'path_om' in various files and to
+the parameter 'dsn[phptype]' in 'scr/soustab.php' are not properly verified
+before being used to include files.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"This host is running openMairie openFoncier and is prone to
+multiple file inclusion vulnerabilities.");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to include
+remote scripts and execute arbitrary commands with the privileges of the web
+server.");
+  script_tag(name:"affected", value:"OpenMairie openFoncier version 2.00 and prior");
   script_tag(name:"solution_type", value:"WillNotFix");
   exit(0);
 }
@@ -89,12 +76,10 @@ openVer = eregmatch(pattern:"^(.+) under (/.*)$", string:openVer);
 
 if(openVer[2] != NULL)
 {
-  ## Check the exploit
   sndReq = http_get(item:string(openVer[2], "/scr/soustab.php?dsn[phptype]=" +
                     "../../../../../../../../OpenVas-rfi.txt"),port:openPort);
   rcvRes = http_send_recv(port:openPort, data:sndReq);
 
-  ## Check attack response
   if("/OpenVas-rfi.txt/" >< rcvRes && "failed to open stream" >< rcvRes){
     security_message(openPort);
   }

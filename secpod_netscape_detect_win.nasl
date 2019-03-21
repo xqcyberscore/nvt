@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_netscape_detect_win.nasl 11279 2018-09-07 09:08:31Z cfischer $
+# $Id: secpod_netscape_detect_win.nasl 14329 2019-03-19 13:57:49Z cfischer $
 #
 # Netscape Version Detection (Windows)
 #
@@ -27,14 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900392");
-  script_version("$Revision: 11279 $");
+  script_version("$Revision: 14329 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:08:31 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:57:49 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-07-29 08:37:44 +0200 (Wed, 29 Jul 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Netscape Version Detection (Windows)");
-
 
   script_tag(name:"summary", value:"Detects the installed version of Netscape.
 
@@ -60,19 +59,16 @@ if(!osArch){
   exit(0);
 }
 
-## common key will be created for 32 and 64 bit
 if(!registry_key_exists(key:"SOFTWARE\Netscape")){
   if(!registry_key_exists(key:"SOFTWARE\Wow6432Node\Netscape")){
     exit(0);
   }
 }
 
-## if os is 32 bit iterate over comman path
 if("x86" >< osArch){
   key_list = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\";
 }
 
-## 64 bit app is not available, but added code by assuming.
 else if("x64" >< osArch){
  key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\",
                       "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\");

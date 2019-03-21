@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: powerportal_path_disclosure.nasl 6046 2017-04-28 09:02:54Z teissa $
+# $Id: powerportal_path_disclosure.nasl 14336 2019-03-19 14:53:10Z mmartin $
 #
 # PowerPortal Path Dislcosure
 #
@@ -31,8 +31,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12292");
-  script_version("$Revision: 6046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
+  script_version("$Revision: 14336 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:53:10 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2004-0662", "CVE-2004-0664");
   script_bugtraq_id(10622);
@@ -46,6 +46,7 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"solution", value:"Upgrade to the latest version of this software.");
   script_tag(name:"summary", value:"The remote host is using PowerPortal, a content management system,
   written in PHP.

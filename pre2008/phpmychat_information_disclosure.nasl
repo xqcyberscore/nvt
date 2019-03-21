@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: phpmychat_information_disclosure.nasl 6056 2017-05-02 09:02:50Z teissa $
+# $Id: phpmychat_information_disclosure.nasl 14336 2019-03-19 14:53:10Z mmartin $
 # Description: phpMyChat Information Disclosure
 #
 # Authors:
@@ -24,25 +24,25 @@
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.16056");
- script_version("$Revision: 6056 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_name("phpMyChat Information Disclosure");
- 
- script_category(ACT_ATTACK);
- 
- script_copyright("This script is Copyright (C) 2004 Noam Rathaus");
- script_family("Web application abuses");
- script_dependencies("http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+  script_oid("1.3.6.1.4.1.25623.1.0.16056");
+  script_version("$Revision: 14336 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:53:10 +0100 (Tue, 19 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_name("phpMyChat Information Disclosure");
 
- script_xref(name : "URL" , value : "http://www.securiteam.com/unixfocus/6D00S0KC0S.html");
- 
- script_tag(name : "summary" , value : "phpMyChat is an easy-to-install, easy-to-use multi-room
+  script_category(ACT_ATTACK);
+
+  script_copyright("This script is Copyright (C) 2004 Noam Rathaus");
+  script_family("Web application abuses");
+  script_dependencies("http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
+  script_xref(name:"URL", value:"http://www.securiteam.com/unixfocus/6D00S0KC0S.html");
+
+  script_tag(name:"summary", value:"phpMyChat is an easy-to-install, easy-to-use multi-room
  chat based on PHP and a database, supporting MySQL,
  PostgreSQL, and ODBC.
 
@@ -51,13 +51,15 @@ if(description)
  program to reveal the SQL username and password, the phpMyChat's
  administrative password, and other sensitive information.");
 
- script_tag(name:"qod_type", value:"remote_app");
- exit(0);
-}
+  script_tag(name:"qod_type", value:"remote_app");
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
+  since the disclosure of this vulnerability. Likely none will be provided anymore.
+  General solution options are to upgrade to a newer release, disable respective features,
+  remove the product or replace the product by another one.");
 
-#
-# The script code starts here
-#
+  exit(0);
+}
 
 debug = 0;
 

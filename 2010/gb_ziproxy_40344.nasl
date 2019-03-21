@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ziproxy_40344.nasl 8528 2018-01-25 07:57:36Z teissa $
+# $Id: gb_ziproxy_40344.nasl 14323 2019-03-19 13:19:09Z jschulte $
 #
 # Ziproxy Image Parsing Multiple Integer Overflow Vulnerabilities
 #
@@ -24,44 +24,41 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Ziproxy is prone to multiple integer-overflow vulnerabilities because
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.100650");
+  script_version("$Revision: 14323 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:19:09 +0100 (Tue, 19 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2010-05-25 13:42:13 +0200 (Tue, 25 May 2010)");
+  script_bugtraq_id(40344);
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_cve_id("CVE-2010-1513");
+
+  script_name("Ziproxy Image Parsing Multiple Integer Overflow Vulnerabilities");
+
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/40344");
+  script_xref(name:"URL", value:"http://secunia.com/secunia_research/2010-75/");
+  script_xref(name:"URL", value:"http://ziproxy.sourceforge.net/");
+
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_category(ACT_GATHER_INFO);
+  script_family("Buffer overflow");
+  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
+  script_dependencies("secpod_ziproxy_server_detect.nasl");
+  script_require_ports("Services/www", 8080);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
+  script_tag(name:"summary", value:"Ziproxy is prone to multiple integer-overflow vulnerabilities because
 it fails to properly validate user-supplied data.
 
 Successful exploits may allow attackers to execute arbitrary code in
 the context of the application. Failed exploit attempts will likely
 result in denial-of-service conditions.
 
-Ziproxy 3.0 is vulnerable; other versions may also be affected.";
-
-tag_solution = "Updates are available. Please see the references for more information.";
-
-if (description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.100650");
- script_version("$Revision: 8528 $");
- script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:57:36 +0100 (Thu, 25 Jan 2018) $");
- script_tag(name:"creation_date", value:"2010-05-25 13:42:13 +0200 (Tue, 25 May 2010)");
- script_bugtraq_id(40344);
- script_tag(name:"cvss_base", value:"6.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_cve_id("CVE-2010-1513");
-
- script_name("Ziproxy Image Parsing Multiple Integer Overflow Vulnerabilities");
-
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/40344");
- script_xref(name : "URL" , value : "http://secunia.com/secunia_research/2010-75/");
- script_xref(name : "URL" , value : "http://ziproxy.sourceforge.net/");
-
- script_tag(name:"qod_type", value:"remote_banner");
- script_category(ACT_GATHER_INFO);
- script_family("Buffer overflow");
- script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("secpod_ziproxy_server_detect.nasl");
- script_require_ports("Services/www", 8080);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+Ziproxy 3.0 is vulnerable, other versions may also be affected.");
+  exit(0);
 }
 
 include("http_func.inc");

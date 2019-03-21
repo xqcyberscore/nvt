@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zabbix_42017.nasl 11498 2018-09-20 10:34:34Z jschulte $
+# $Id: gb_zabbix_42017.nasl 14323 2019-03-19 13:19:09Z jschulte $
 #
 # ZABBIX 'formatQuery()' Cross Site Scripting Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:zabbix:zabbix";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100729");
-  script_version("$Revision: 11498 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 12:34:34 +0200 (Thu, 20 Sep 2018) $");
+  script_version("$Revision: 14323 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:19:09 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-08-02 14:28:14 +0200 (Mon, 02 Aug 2010)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -54,7 +54,7 @@ if(description)
   in the browser of an unsuspecting user in the context of the affected
   site. This may allow the attacker to steal cookie-based authentication
   credentials and to launch other attacks.");
-  script_tag(name:"affected", value:"ZABBIX version 1.8.2 is vulnerable; other versions may also be
+  script_tag(name:"affected", value:"ZABBIX version 1.8.2 is vulnerable, other versions may also be
   affected.");
   script_tag(name:"solution", value:"Updates are available. Please see the reference for more details.");
 

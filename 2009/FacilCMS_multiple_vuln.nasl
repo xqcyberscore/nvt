@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: FacilCMS_multiple_vuln.nasl 11449 2018-09-18 10:04:42Z mmartin $
+# $Id: FacilCMS_multiple_vuln.nasl 14325 2019-03-19 13:35:02Z asteins $
 #
 # FacilCMS Multiple SQL Injection And Information Disclosure
 # Vulnerabilities
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100065");
-  script_version("$Revision: 11449 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 12:04:42 +0200 (Tue, 18 Sep 2018) $");
+  script_version("$Revision: 14325 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:35:02 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-03-20 13:11:29 +0100 (Fri, 20 Mar 2009)");
   script_bugtraq_id(34177);
   script_tag(name:"cvss_base", value:"7.5");
@@ -42,18 +42,20 @@ if(description)
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
-  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since
+  the disclosure of this vulnerability. Likely none will be provided anymore. General solution options
+  are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"summary", value:"FacilCMS is prone to multiple SQL-injection and
-  information-disclosure vulnerabilities.
+  information-disclosure vulnerabilities.");
 
-  Exploiting these issues could allow an attacker to obtain sensitive
+  script_tag(name:"impact", value:"Exploiting these issues could allow an attacker to obtain sensitive
   information, compromise the application, access or modify data, or
-  exploit latent vulnerabilities in the underlying database.
+  exploit latent vulnerabilities in the underlying database.");
 
-  FacilCMS 0.1RC2 is vulnerable; other versions may also be affected.");
+  script_tag(name:"affected", value:"FacilCMS 0.1RC2 is vulnerable. Other versions may also be affected.");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/34177");
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

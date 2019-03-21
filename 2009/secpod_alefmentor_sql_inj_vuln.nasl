@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_alefmentor_sql_inj_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: secpod_alefmentor_sql_inj_vuln.nasl 14335 2019-03-19 14:46:57Z asteins $
 #
 # AlefMentor Multiple SQL Injection Vulnerabilities
 #
@@ -24,33 +24,19 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation could allow remote attackers to conduct SQL injection
-  attacks.
-  Impact Level: Application.";
-tag_affected = "AlefMentor version 2.0 to 2.2 on all running platform.";
-tag_insight = "Input passed via the 'cont_id' and 'courc_id' parameters to 'cource.php' is
-  not properly sanitised before being used in a SQL query. This flaw can be
-  exploited to manipulate SQL queries by injecting arbitrary SQL code.";
-tag_solution = "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.";
-tag_summary = "The host is running AlefMentor and is prone to SQL Injection
-  Vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901071");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 14335 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:46:57 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-12-21 07:14:17 +0100 (Mon, 21 Dec 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-2009-4256");
   script_name("AlefMentor Multiple SQL Injection Vulnerabilities");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/37626");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/54624");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/10358");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/37626");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/54624");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/10358");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_MIXED_ATTACK);
@@ -58,11 +44,17 @@ if(description)
   script_dependencies("secpod_alefmentor_detect.nasl");
   script_family("Web application abuses");
   script_require_ports("Services/www", 80);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to conduct SQL injection
+  attacks.");
+  script_tag(name:"affected", value:"AlefMentor version 2.0 to 2.2 on all running platform.");
+  script_tag(name:"insight", value:"Input passed via the 'cont_id' and 'courc_id' parameters to 'cource.php' is
+  not properly sanitised before being used in a SQL query. This flaw can be
+  exploited to manipulate SQL queries by injecting arbitrary SQL code.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"The host is running AlefMentor and is prone to SQL Injection
+  Vulnerability.");
   script_tag(name:"solution_type", value:"WillNotFix");
   exit(0);
 }

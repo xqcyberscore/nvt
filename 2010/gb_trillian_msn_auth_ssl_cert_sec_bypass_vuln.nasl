@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trillian_msn_auth_ssl_cert_sec_bypass_vuln.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: gb_trillian_msn_auth_ssl_cert_sec_bypass_vuln.nasl 14331 2019-03-19 14:03:05Z jschulte $
 #
 # Trillian MSN SSL Certificate Validation Security Bypass Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800177");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 14331 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:03:05 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-05-05 15:59:12 +0200 (Wed, 05 May 2010)");
   script_bugtraq_id(35509);
   script_cve_id("CVE-2009-4831");
@@ -52,7 +52,6 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with Trillian and is prone to security bypass
   vulnerability.");
   script_tag(name:"solution", value:"Upgrade to Cerulean Studios Trillian version 4.2 or later
-  For more info refer, http://www.trillian.im/
 
   NOTE: Ignore this warning, if it's Trillian Pro Edition");
 

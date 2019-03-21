@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: tcp_timestamps.nasl 10411 2018-07-05 10:15:10Z cfischer $
+# $Id: tcp_timestamps.nasl 14310 2019-03-19 10:27:27Z cfischer $
 #
 # TCP timestamps
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80091");
-  script_version("$Revision: 10411 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-05 12:15:10 +0200 (Thu, 05 Jul 2018) $");
+  script_version("$Revision: 14310 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 11:27:27 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:N/A:N");
@@ -43,6 +43,7 @@ if(description)
   script_add_preference(name:"Delay (seconds):", value:"1", type:"entry");
 
   script_xref(name:"URL", value:"http://www.ietf.org/rfc/rfc1323.txt");
+  script_xref(name:"URL", value:"http://www.microsoft.com/en-us/download/details.aspx?id=9152");
 
   script_tag(name:"summary", value:"The remote host implements TCP timestamps and therefore allows to compute
   the uptime.");
@@ -61,7 +62,7 @@ if(description)
   Timestamp options when initiating TCP connections, but use them if the TCP peer
   that is initiating communication includes them in their synchronize (SYN) segment.
 
-  See also: http://www.microsoft.com/en-us/download/details.aspx?id=9152");
+  See the references for more information.");
 
   script_tag(name:"affected", value:"TCP/IPv4 implementations that implement RFC1323.");
 

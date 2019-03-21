@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_shockwave_player_mult_code_exe_vuln_may10.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: gb_adobe_shockwave_player_mult_code_exe_vuln_may10.nasl 14331 2019-03-19 14:03:05Z jschulte $
 #
 # Adobe Shockwave Player Multiple Remote Code Execution Vulnerabilities May-10
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801335");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 14331 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:03:05 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-05-19 14:50:39 +0200 (Wed, 19 May 2010)");
   script_cve_id("CVE-2010-0127", "CVE-2010-0128", "CVE-2010-0129", "CVE-2010-0130",
                 "CVE-2010-1280", "CVE-2010-1281", "CVE-2010-1282", "CVE-2010-1283",
@@ -62,8 +62,7 @@ if(description)
   'Shockwave' or 'Director' files, which could be exploited by attackers to
   execute arbitrary code by tricking a user into visiting a specially crafted
   web page.");
-  script_tag(name:"solution", value:"Upgrade to Adobe Shockwave Player 11.5.7.609
-  http://get.adobe.com/shockwave/otherversions/");
+  script_tag(name:"solution", value:"Upgrade to Adobe Shockwave Player 11.5.7.609.");
   script_tag(name:"summary", value:"This host is installed with Adobe Shockwave Player and is prone
   to multiple remote code execution vulnerabilities.");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_security_bypass_vuln.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: gb_phpmyadmin_security_bypass_vuln.nasl 14331 2019-03-19 14:03:05Z jschulte $
 #
 # phpMyAdmin 'phpinfo.php' Security bypass Vulnerability
 #
@@ -28,8 +28,8 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801494");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 14331 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:03:05 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-12-27 09:55:05 +0100 (Mon, 27 Dec 2010)");
   script_cve_id("CVE-2010-4481");
   script_tag(name:"cvss_base", value:"5.0");
@@ -37,6 +37,7 @@ if(description)
   script_name("phpMyAdmin 'phpinfo.php' Security bypass Vulnerability");
   script_xref(name:"URL", value:"http://secunia.com/advisories/42485");
   script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2010/3238");
+  script_xref(name:"URL", value:"http://www.phpmyadmin.net/home_page/downloads.php");
   script_xref(name:"URL", value:"http://www.phpmyadmin.net/home_page/security/PMASA-2010-10.php");
 
   script_tag(name:"qod_type", value:"remote_vul");
@@ -52,8 +53,7 @@ if(description)
   script_tag(name:"insight", value:"The flaw is caused by missing authentication in the 'phpinfo.php' script
   when 'PMA_MINIMUM_COMMON' is defined. This can be exploited to gain knowledge
   of sensitive information by requesting the file directly.");
-  script_tag(name:"solution", value:"Upgrade to phpMyAdmin version 3.4.0-beta1 or later
-  http://www.phpmyadmin.net/home_page/downloads.php");
+  script_tag(name:"solution", value:"Upgrade to phpMyAdmin version 3.4.0-beta1 or later");
   script_tag(name:"summary", value:"The host is running phpMyAdmin and is prone to security bypass
   vulnerability.");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phorum_34551.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: phorum_34551.nasl 14330 2019-03-19 13:59:11Z asteins $
 #
 # Phorum Multiple Cross Site Scripting Vulnerabilities
 #
@@ -24,40 +24,44 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "According to its version number, the remote version of Phorum is
+
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.100164");
+  script_version("$Revision: 14330 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:59:11 +0100 (Tue, 19 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2009-04-24 20:04:08 +0200 (Fri, 24 Apr 2009)");
+  script_bugtraq_id(34551);
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+
+  script_name("Phorum Multiple Cross Site Scripting Vulnerabilities");
+
+
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_category(ACT_GATHER_INFO);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
+  script_dependencies("phorum_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"summary", value:"According to its version number, the remote version of Phorum is
   prone to multiple cross-site scripting vulnerabilities because the
   application fails to sufficiently sanitize user-supplied input.
 
   An attacker can exploit these issues to steal cookie-based
   authentication credentials and launch other attacks.
 
-  Phorum 5.2.10 and 5.2-dev are vulnerable; other versions may also be
-  affected.";
+  Phorum 5.2.10 and 5.2-dev are vulnerable, other versions may also be
+  affected.");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/34551");
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
+  since the disclosure of this vulnerability. Likely none will be provided anymore.
+  General solution options are to upgrade to a newer release, disable respective features,
+  remove the product or replace the product by another one.");
 
-
-if (description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.100164");
- script_version("$Revision: 9350 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2009-04-24 20:04:08 +0200 (Fri, 24 Apr 2009)");
- script_bugtraq_id(34551);
- script_tag(name:"cvss_base", value:"4.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-
- script_name("Phorum Multiple Cross Site Scripting Vulnerabilities");
-
-
- script_tag(name:"qod_type", value:"remote_banner");
- script_category(ACT_GATHER_INFO);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
- script_dependencies("phorum_detect.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : tag_summary);
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/34551");
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");
@@ -80,8 +84,8 @@ if(!isnull(vers) && vers >!< "unknown") {
   {
       security_message(port:port);
       exit(0);
-  }  
+  }
 
-}   
+}
 
 exit(0);

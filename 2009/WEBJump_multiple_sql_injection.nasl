@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: WEBJump_multiple_sql_injection.nasl 11449 2018-09-18 10:04:42Z mmartin $
+# $Id: WEBJump_multiple_sql_injection.nasl 14335 2019-03-19 14:46:57Z asteins $
 #
 # WEBJump! Multiple SQL Injection Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100045");
-  script_version("$Revision: 11449 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 12:04:42 +0200 (Tue, 18 Sep 2018) $");
+  script_version("$Revision: 14335 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:46:57 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-03-16 12:53:50 +0100 (Mon, 16 Mar 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -52,7 +52,7 @@ if(description)
   application, access or modify data, or exploit latent
   vulnerabilities in the underlying database.");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/34058");
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

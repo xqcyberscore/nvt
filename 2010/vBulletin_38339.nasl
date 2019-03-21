@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: vBulletin_38339.nasl 8274 2018-01-03 07:28:17Z teissa $
+# $Id: vBulletin_38339.nasl 14326 2019-03-19 13:40:32Z jschulte $
 #
 # vBulletin 4.0.2 Multiple Cross Site Scripting Vulnerabilities
 #
@@ -24,7 +24,30 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "vBulletin is prone to multiple cross-site scripting vulnerabilities
+
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.100501");
+  script_version("$Revision: 14326 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:40:32 +0100 (Tue, 19 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2010-02-22 14:49:01 +0100 (Mon, 22 Feb 2010)");
+  script_bugtraq_id(38339);
+  script_tag(name:"cvss_base", value:"2.6");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
+  script_name("vBulletin 4.0.2 Multiple Cross Site Scripting Vulnerabilities");
+
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/38339");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/56459");
+  script_xref(name:"URL", value:"http://www.vbulletin.com/");
+
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_category(ACT_GATHER_INFO);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
+  script_dependencies("vbulletin_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("vBulletin/installed");
+  script_tag(name:"summary", value:"vBulletin is prone to multiple cross-site scripting vulnerabilities
 because it fails to sufficiently sanitize user-supplied data.
 
 An attacker may leverage these issues to execute arbitrary script code
@@ -32,38 +55,19 @@ in the browser of an unsuspecting user in the context of the affected
 site. This may allow the attacker to steal cookie-based authentication
 credentials and to launch other attacks.
 
-These issues affect vBulletin 4.0.2; other versions may also be
-affected.";
+These issues affect vBulletin 4.0.2, other versions may also be
+affected.");
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
+  since the disclosure of this vulnerability. Likely none will be provided anymore.
+  General solution options are to upgrade to a newer release, disable respective features,
+  remove the product or replace the product by another one.");
 
-
-if (description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.100501");
- script_version("$Revision: 8274 $");
- script_tag(name:"last_modification", value:"$Date: 2018-01-03 08:28:17 +0100 (Wed, 03 Jan 2018) $");
- script_tag(name:"creation_date", value:"2010-02-22 14:49:01 +0100 (Mon, 22 Feb 2010)");
- script_bugtraq_id(38339);
- script_tag(name:"cvss_base", value:"2.6");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
- script_name("vBulletin 4.0.2 Multiple Cross Site Scripting Vulnerabilities");
-
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/38339");
- script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/56459");
- script_xref(name : "URL" , value : "http://www.vbulletin.com/");
-
- script_tag(name:"qod_type", value:"remote_banner");
- script_category(ACT_GATHER_INFO);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("vbulletin_detect.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("vBulletin/installed");
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");
-include("http_keepalive.inc");
+
 include("version_func.inc");
 
 port = get_http_port(default:80);

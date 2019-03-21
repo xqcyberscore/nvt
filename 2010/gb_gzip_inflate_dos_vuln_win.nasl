@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gzip_inflate_dos_vuln_win.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: gb_gzip_inflate_dos_vuln_win.nasl 14331 2019-03-19 14:03:05Z jschulte $
 #
 # GZip 'huft_build()' in 'inflate.c' Input Validation Vulnerability (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800452");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 14331 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:03:05 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-02-04 12:53:38 +0100 (Thu, 04 Feb 2010)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -36,9 +36,11 @@ if(description)
   script_bugtraq_id(37888);
   script_name("GZip 'huft_build()' in 'inflate.c' Input Validation Vulnerability (Windows)");
 
+  script_xref(name:"URL", value:"http://www.gzip.org/index-f.html#sources");
   script_xref(name:"URL", value:"http://secunia.com/advisories/38132");
   script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2010/0185");
   script_xref(name:"URL", value:"https://bugzilla.redhat.com/show_bug.cgi?id=514711");
+  script_xref(name:"URL", value:"http://git.savannah.gnu.org/cgit/gzip.git/commit/?id=39a362ae9d9b007473381dba5032f4dfc1744cf2");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
@@ -54,8 +56,6 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with GZip and is prone to Input Validation
   Vulnerability");
   script_tag(name:"solution", value:"Apply the patch or Upgrade to GZip version 1.3.13
-  http://www.gzip.org/index-f.html#sources
-  http://git.savannah.gnu.org/cgit/gzip.git/commit/?id=39a362ae9d9b007473381dba5032f4dfc1744cf2
 
   *****
   NOTE: Ignore this warning, if above mentioned patch is already applied.

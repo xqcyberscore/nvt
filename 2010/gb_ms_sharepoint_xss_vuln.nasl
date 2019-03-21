@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_sharepoint_xss_vuln.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: gb_ms_sharepoint_xss_vuln.nasl 14326 2019-03-19 13:40:32Z jschulte $
 #
 # Microsoft SharePoint Cross Site Scripting Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800481");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 14326 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:40:32 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-03-05 10:09:57 +0100 (Fri, 05 Mar 2010)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
@@ -50,13 +50,13 @@ uploading TXT files.");
   script_tag(name:"insight", value:"This flaw is due to insufficient validation of user supplied data
   passed into 'SourceUrl' and 'Source' parameters in the 'download.aspx' in
   SharePoint Team Services.");
-  script_tag(name:"solution", value:"Upgrade to SharePoint Server 2010 or later.
-For updates refer to http://sharepoint.microsoft.com/Pages/Default.aspx");
+  script_tag(name:"solution", value:"Upgrade to SharePoint Server 2010 or later.");
   script_tag(name:"summary", value:"This host is running Microsoft SharePoint Server and is prone to
   Cross Site Scripting vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://sharepoint.microsoft.com/Pages/Default.aspx");
   exit(0);
 }
 

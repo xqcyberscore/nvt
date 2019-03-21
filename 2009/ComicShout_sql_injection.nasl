@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ComicShout_sql_injection.nasl 11449 2018-09-18 10:04:42Z mmartin $
+# $Id: ComicShout_sql_injection.nasl 14325 2019-03-19 13:35:02Z asteins $
 #
 # ComicShout 'news.php' SQL Injection Vulnerability
 #
@@ -27,8 +27,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100044");
-  script_version("$Revision: 11449 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 12:04:42 +0200 (Tue, 18 Sep 2018) $");
+  script_version("$Revision: 14325 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:35:02 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-03-16 12:53:50 +0100 (Mon, 16 Mar 2009)");
   script_bugtraq_id(29464);
   script_cve_id("CVE-2008-6425");
@@ -42,19 +42,22 @@ if (description)
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
-  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since
+  the disclosure of this vulnerability. Likely none will be provided anymore. General solution options
+  are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"summary", value:"ComicShout is prone to an SQL-injection vulnerability because it
   fails to sufficiently sanitize user-supplied data before using it in
-  an SQL query.
+  an SQL query.");
 
-  Exploiting this issue could allow an attacker to compromise the
+  script_tag(name:"impact", value:"Exploiting this issue could allow an attacker to compromise the
   application, access or modify data, or exploit latent
-  vulnerabilities in the underlying database.
+  vulnerabilities in the underlying database.");
 
-  ComicShout 2.8 is vulnerable; other versions may also be affected.");
+  script_tag(name:"affected", value:"ComicShout 2.8 is vulnerable. Other versions may also be affected.");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/29464");
- exit(0);
+
+  exit(0);
 }
 
 include("http_func.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dameware_mini_rc_bof_vuln.nasl 12530 2018-11-26 12:52:20Z asteins $
+# $Id: gb_dameware_mini_rc_bof_vuln.nasl 13699 2019-02-15 14:29:50Z cfischer $
 #
 # DameWare Mini Remote Control < 12.1 Buffer Overflow Vulnerability (Windows)
 #
@@ -28,9 +28,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107379");
-  script_version("$Revision: 12530 $");
+  script_version("$Revision: 13699 $");
   script_cve_id("CVE-2018-12897");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-26 13:52:20 +0100 (Mon, 26 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-02-15 15:29:50 +0100 (Fri, 15 Feb 2019) $");
   script_tag(name:"creation_date", value:"2018-11-24 13:15:04 +0100 (Sat, 24 Nov 2018)");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");

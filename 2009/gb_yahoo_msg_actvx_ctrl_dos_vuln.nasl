@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_yahoo_msg_actvx_ctrl_dos_vuln.nasl 8601 2018-01-31 12:07:42Z cfischer $
+# $Id: gb_yahoo_msg_actvx_ctrl_dos_vuln.nasl 14330 2019-03-19 13:59:11Z asteins $
 #
 # Yahoo! Messenger 'YahooBridgeLib.dll' ActiveX Control DOS Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801150");
-  script_version("$Revision: 8601 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-31 13:07:42 +0100 (Wed, 31 Jan 2018) $");
+  script_version("$Revision: 14330 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:59:11 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-12-08 05:49:24 +0100 (Tue, 08 Dec 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -42,31 +42,20 @@ if(description)
   script_mandatory_keys("YahooMessenger/Ver");
   script_require_ports("Services/yahoo_messenger", 5101);
 
-  tag_impact = "Successful exploitation will allow remote attackers to cause Denial of
-  Service condition on the affected applicaion.
-
-  Impact Level: Application";
-
-  tag_affected = "Yahoo! Messenger version 9.x to 9.0.0.2162 on Windows.";
-
-  tag_insight = "The flaw is due to a NULL pointer dereference error in 'RegisterMe()' method
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause Denial of
+  Service condition on the affected applicaion.");
+  script_tag(name:"affected", value:"Yahoo! Messenger version 9.x to 9.0.0.2162 on Windows.");
+  script_tag(name:"insight", value:"The flaw is due to a NULL pointer dereference error in 'RegisterMe()' method
   in 'YahooBridgeLib.dll', which can be exploited by causing victim to visit a
-  specially crafted Web page.";
-
-  tag_solution = "Upgrade to Yahoo! Messenger version 10.0.0.1270 or later
-  For updates refer to http://messenger.yahoo.com/download/";
-  tag_summary = "This host is installed with Yahoo! Messenger and is prone to Denial
-  of Service Vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  specially crafted Web page.");
+  script_tag(name:"solution", value:"Upgrade to Yahoo! Messenger version 10.0.0.1270 or later");
+  script_tag(name:"summary", value:"This host is installed with Yahoo! Messenger and is prone to Denial
+  of Service Vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
 
+  script_xref(name:"URL", value:"http://messenger.yahoo.com/download/");
   exit(0);
 }
 
@@ -79,7 +68,6 @@ if( ! get_port_state( ymsgPort ) ) exit( 0 );
 ymsgVer = get_kb_item( "YahooMessenger/Ver" );
 if( ! ymsgVer ) exit( 0 );
 
-# Check for Yahoo! Messenger version 9.x to 9.0.0.2162
 if( version_in_range( version:ymsgVer, test_version:"9.0", test_version2:"9.0.0.2162" ) ) {
   report = report_fixed_ver( installed_version:ymsgVer, fixed_version:"10.0.0.1270" );
   security_message( port:ymsgPort, data:report );

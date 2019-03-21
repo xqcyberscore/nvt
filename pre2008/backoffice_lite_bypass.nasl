@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: backoffice_lite_bypass.nasl 7275 2017-09-26 11:46:31Z cfischer $
+# $Id: backoffice_lite_bypass.nasl 14336 2019-03-19 14:53:10Z mmartin $
 #
 # Comersus BackOffice Lite Administrative Bypass
 #
@@ -31,12 +31,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.16227");
-  script_version("$Revision: 7275 $");
+  script_version("$Revision: 14336 $");
   script_cve_id("CVE-2005-0301");
   script_bugtraq_id(12362);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-26 13:46:31 +0200 (Tue, 26 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:53:10 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_name("Comersus BackOffice Lite Administrative Bypass");
   script_category(ACT_GATHER_INFO);
@@ -49,7 +49,7 @@ if(description)
   script_tag(name:"solution", value:"Delete the file '/comersus_backoffice_install10.asp' from the
   server as it is not needed after the installation process has been completed.");
 
-  script_tag(name:"summary", value:"Comersus ASP shopping cart is a set of ASP scripts creating an online 
+  script_tag(name:"summary", value:"Comersus ASP shopping cart is a set of ASP scripts creating an online
   shoppingcart. It works on a database of your own choosing, default is msaccess, and includes online
   administration tools.");
 

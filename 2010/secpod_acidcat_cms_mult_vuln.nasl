@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_acidcat_cms_mult_vuln.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: secpod_acidcat_cms_mult_vuln.nasl 14326 2019-03-19 13:40:32Z jschulte $
 #
 # Acidcat CMS Multiple Vulnerabilities
 #
@@ -27,17 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900750");
-  script_version("$Revision: 5394 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+  script_version("$Revision: 14326 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:40:32 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-03-23 15:59:14 +0100 (Tue, 23 Mar 2010)");
   script_cve_id("CVE-2010-0976", "CVE-2010-0984");
   script_name("Acidcat CMS Multiple Vulnerabilities");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/38084");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/55329");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/55331");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/10972");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/38084");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/55329");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/55331");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/10972");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2010 SecPod");
@@ -46,25 +46,24 @@ if(description)
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "insight" , value : "The flaws are due to,
+  script_tag(name:"insight", value:"The flaws are due to,
+
   - 'install.asp' and other 'install_*.asp' scripts which can be accessed
   even after the installation finishes, which might allow remote attackers
   to restart the installation process.
+
   - improper access restrictions to the 'acidcat_3.mdb' database file in
   the databases directory. An attacker can download the database containing
   credentials via a direct request for databases/acidcat_3.mdb.");
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
-  script_tag(name : "summary" , value : "This host is running Acidcat CMS and is prone to multiple
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"This host is running Acidcat CMS and is prone to multiple
   vulnerabilities.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to restart
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to restart
   the installation process and an attacker can download the database containing
-  credentials via a direct request for databases/acidcat_3.mdb.
-
-  Impact Level: Application.");
-  script_tag(name : "affected" , value : "Acidcat CMS 3.5.3 and prior");
+  credentials via a direct request for databases/acidcat_3.mdb.");
+  script_tag(name:"affected", value:"Acidcat CMS 3.5.3 and prior");
 
   script_tag(name:"qod_type", value:"remote_app");
   script_tag(name:"solution_type", value:"WillNotFix");
@@ -76,12 +75,10 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Get HTTP port
 acidPort = get_http_port(default:80);
 
 if (!can_host_asp(port:acidPort)) exit(0);
 
-## Check for the Acidcat CMS
 foreach dir (make_list_unique("/acidcat", "/Acidcat" ,"/", cgi_dirs(port:acidPort)))
 {
 
@@ -96,7 +93,6 @@ foreach dir (make_list_unique("/acidcat", "/Acidcat" ,"/", cgi_dirs(port:acidPor
     sndReq = http_get(item:string(dir, "/install.asp"), port:acidPort);
     rcvRes = http_keepalive_send_recv(port:acidPort, data:sndReq);
 
-    ## Check the response for installation guide
     if("Welcome to the Acidcat CMS installation guide" >< rcvRes)
     {
       security_message(port:acidPort);

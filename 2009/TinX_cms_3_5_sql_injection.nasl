@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: TinX_cms_3_5_sql_injection.nasl 11449 2018-09-18 10:04:42Z mmartin $
+# $Id: TinX_cms_3_5_sql_injection.nasl 14335 2019-03-19 14:46:57Z asteins $
 #
 # TinX CMS 'rss.php' SQL Injection Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100029");
-  script_version("$Revision: 11449 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 12:04:42 +0200 (Tue, 18 Sep 2018) $");
+  script_version("$Revision: 14335 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:46:57 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-03-10 08:40:52 +0100 (Tue, 10 Mar 2009)");
   script_bugtraq_id(34021);
   script_cve_id("CVE-2009-0825");
@@ -42,9 +42,7 @@ if(description)
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
-  script_tag(name:"solution", value:"The vendor has released an update.
-  See http://sourceforge.net/project/showfiles.php?group_id=133415 for more
-  information.");
+  script_tag(name:"solution", value:"The vendor has released an update.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"TinX CMS is prone to an SQL-injection vulnerability because it fails
   to sufficiently sanitize user-supplied data before using it in an
@@ -55,7 +53,8 @@ if(description)
   vulnerabilities in the underlying database.
 
   Versions prior to TinX CMS 3.5.1 are vulnerable.");
- exit(0);
+  script_xref(name:"URL", value:"http://sourceforge.net/project/showfiles.php?group_id=133415");
+  exit(0);
 }
 
 include("http_func.inc");

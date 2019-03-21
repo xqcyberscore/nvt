@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mysql_dos_vuln_900221.nasl 11555 2018-09-22 15:24:22Z cfischer $
+# $Id: secpod_mysql_dos_vuln_900221.nasl 14310 2019-03-19 10:27:27Z cfischer $
 # Description: MySQL Empty Bit-String Literal Denial of Service Vulnerability
 #
 # Authors:
@@ -27,8 +27,8 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900221");
-  script_version("$Revision: 11555 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:24:22 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 14310 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 11:27:27 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2008-09-25 09:10:39 +0200 (Thu, 25 Sep 2008)");
   script_bugtraq_id(31081);
   script_cve_id("CVE-2008-3963");
@@ -47,14 +47,12 @@ if(description)
   script_xref(name:"URL", value:"http://bugs.mysql.com/bug.php?id=35658");
   script_xref(name:"URL", value:"http://dev.mysql.com/doc/refman/5.1/en/news-5-1-26.html");
   script_tag(name:"summary", value:"This host is running MySQL, which is prone to Denial of Service
- Vulnerability.");
+  Vulnerability.");
   script_tag(name:"insight", value:"Issue is due to error while processing an empty bit string literal via
-        a specially crafted SQL statement.");
+  a specially crafted SQL statement.");
   script_tag(name:"affected", value:"MySQL versions prior to 5.0.x - 5.0.66,
-                                5.1.x - 5.1.26, and
-                                6.0.x - 6.0.5 on all running platform.");
-  script_tag(name:"solution", value:"Update to version 5.0.66 or 5.1.26 or 6.0.6 or later.
- http://dev.mysql.com/downloads/");
+  5.1.x - 5.1.26, and 6.0.x - 6.0.5 on all running platform.");
+  script_tag(name:"solution", value:"Update to version 5.0.66 or 5.1.26 or 6.0.6 or later.");
   script_tag(name:"impact", value:"Successful exploitation by remote attackers could cause denying
   access to legitimate users.");
 

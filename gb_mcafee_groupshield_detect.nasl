@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_groupshield_detect.nasl 10922 2018-08-10 19:21:48Z cfischer $
+# $Id: gb_mcafee_groupshield_detect.nasl 14329 2019-03-19 13:57:49Z cfischer $
 #
 # McAfee GroupShield Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800618");
-  script_version("$Revision: 10922 $");
+  script_version("$Revision: 14329 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 21:21:48 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:57:49 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-05-22 10:20:17 +0200 (Fri, 22 May 2009)");
   script_name("McAfee GroupShield Version Detection");
 
@@ -58,7 +58,6 @@ if(!osArch){
   exit(0);
 }
 
-## if os is 32 bit iterate over comman path
 if("x86" >< osArch){
   key_list = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\";
 }

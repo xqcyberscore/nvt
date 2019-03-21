@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wikihelp_41344.nasl 11449 2018-09-18 10:04:42Z mmartin $
+# $Id: gb_wikihelp_41344.nasl 14326 2019-03-19 13:40:32Z jschulte $
 #
 # Wiki Web Help 'getpage.php' SQL Injection Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100701");
-  script_version("$Revision: 11449 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 12:04:42 +0200 (Tue, 18 Sep 2018) $");
+  script_version("$Revision: 14326 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:40:32 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-07-06 13:44:35 +0200 (Tue, 06 Jul 2010)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -48,7 +48,7 @@ if(description)
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
-  script_tag(name:"solution", value:"Updates are available; please see the references for more information.");
+  script_tag(name:"solution", value:"Updates are available, please see the references for more information.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"Wiki Web Help is prone to an SQL-injection vulnerability because it
 fails to sufficiently sanitize user-supplied data before using it in
@@ -58,9 +58,9 @@ Exploiting this issue could allow an attacker to compromise the
 application, access or modify data, or exploit latent vulnerabilities
 in the underlying database.
 
-Wiki Web Help 0.2.8 is vulnerable; other versions may also be
+Wiki Web Help 0.2.8 is vulnerable, other versions may also be
 affected.");
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

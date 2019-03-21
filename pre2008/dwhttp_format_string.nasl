@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: dwhttp_format_string.nasl 6695 2017-07-12 11:17:53Z cfischer $
+# $Id: dwhttp_format_string.nasl 14336 2019-03-19 14:53:10Z mmartin $
 #
 # dwhttpd format string
 #
@@ -43,8 +43,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11075");
-  script_version("$Revision: 6695 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:17:53 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 14336 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:53:10 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(5384);
   script_cve_id("CVE-1999-1417");
@@ -57,17 +57,11 @@ if(description)
   script_dependencies("gb_get_http_banner.nasl");
   script_mandatory_keys("dwhttp/banner");
   script_require_ports("Services/www", 8888);
-
-  tag_summary = "The remote web server is vulnerable to a format string attack.";
-
-  tag_impact = "A cracker may exploit this vulnerability to make your web server
-  crash continually or even execute arbirtray code on your system.";
-
-  tag_solution = "Upgrade your software or protect it with a filtering reverse proxy";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution", value:"Upgrade your software or protect it with a filtering reverse proxy");
+  script_tag(name:"summary", value:"The remote web server is vulnerable to a format string attack.");
+  script_tag(name:"impact", value:"A cracker may exploit this vulnerability to make your web server
+  crash continually or even execute arbirtray code on your system.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

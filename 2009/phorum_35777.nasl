@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phorum_35777.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: phorum_35777.nasl 14332 2019-03-19 14:22:43Z asteins $
 #
 # Phorum Multiple BBCode HTML Injection Vulnerabilities
 #
@@ -24,49 +24,46 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Phorum is prone to multiple HTML-injection vulnerabilities because it
-fails to sufficiently sanitize user-supplied data.
-
-Attacker-supplied HTML or JavaScript code could run in the context of
-the affected site, potentially allowing the attacker to steal cookie-
-based authentication credentials and to control how the site is
-rendered to the user; other attacks are also possible.
-
-Versions prior to Phorum 5.2.12a are vulnerable.";
-
-tag_solution = "Vendor fixes are available. Please see the references for details.";
-
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.100248");
- script_version("$Revision: 9350 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2009-07-26 19:54:54 +0200 (Sun, 26 Jul 2009)");
- script_bugtraq_id(35777);
- script_tag(name:"cvss_base", value:"4.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_oid("1.3.6.1.4.1.25623.1.0.100248");
+  script_version("$Revision: 14332 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:22:43 +0100 (Tue, 19 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2009-07-26 19:54:54 +0200 (Sun, 26 Jul 2009)");
+  script_bugtraq_id(35777);
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
- script_name("Phorum Multiple BBCode HTML Injection Vulnerabilities");
+  script_name("Phorum Multiple BBCode HTML Injection Vulnerabilities");
 
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/35777");
- script_xref(name : "URL" , value : "http://www.phorum.org/");
- script_xref(name : "URL" , value : "http://www.phorum.org/phorum5/read.php?64,139411");
- script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/505186");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/35777");
+  script_xref(name:"URL", value:"http://www.phorum.org/");
+  script_xref(name:"URL", value:"http://www.phorum.org/phorum5/read.php?64,139411");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/505186");
 
- script_tag(name:"qod_type", value:"remote_banner");
- script_category(ACT_GATHER_INFO);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
- script_dependencies("phorum_detect.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_category(ACT_GATHER_INFO);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
+  script_dependencies("phorum_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"solution", value:"Vendor fixes are available. Please see the references for details.");
+  script_tag(name:"summary", value:"Phorum is prone to multiple HTML-injection vulnerabilities because it
+fails to sufficiently sanitize user-supplied data.");
+
+  script_tag(name:"impact", value:"Attacker-supplied HTML or JavaScript code could run in the context of
+the affected site, potentially allowing the attacker to steal cookie-
+based authentication credentials and to control how the site is
+rendered to the user, other attacks are also possible.");
+
+  script_tag(name:"affected", value:"Versions prior to Phorum 5.2.12a are vulnerable.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  exit(0);
 }
 
 include("http_func.inc");
-include("http_keepalive.inc");
+
 include("version_func.inc");
 
 port = get_http_port(default:80);
@@ -82,10 +79,9 @@ vers = matches[1];
 if(!isnull(vers) && vers >!< "unknown") {
 
   if(version_is_less(version: vers, test_version: "5.2.12a")) {
-      security_message(port:port);
+      security_message(port:port, data:"The target host was found to be vulnerable.");
       exit(0);
   }
-
 }
 
-exit(0);
+exit(99);

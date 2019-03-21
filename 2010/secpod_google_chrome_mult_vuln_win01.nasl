@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_google_chrome_mult_vuln_win01.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: secpod_google_chrome_mult_vuln_win01.nasl 14331 2019-03-19 14:03:05Z jschulte $
 #
 # Google Chrome Multiple Vulnerabilities - (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902121");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 14331 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:03:05 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-02-22 13:34:53 +0100 (Mon, 22 Feb 2010)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -51,8 +51,7 @@ if(description)
   script_tag(name:"affected", value:"Google Chrome version prior to 4.0.249.78");
   script_tag(name:"insight", value:"For more information about vulnerabilities on Google Chrome, refer to the
   links mentioned in References section.");
-  script_tag(name:"solution", value:"Upgrade to version 4.0.249.78 or later.
-  http://www.google.com/chrome");
+  script_tag(name:"solution", value:"Upgrade to version 4.0.249.78 or later");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"This host is installed with Google Chrome and is prone to multiple
   vulnerabilities.");

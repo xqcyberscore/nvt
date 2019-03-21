@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_an_image_gallery_dir_trav_vuln.nasl 5055 2017-01-20 14:08:39Z teissa $
+# $Id: secpod_an_image_gallery_dir_trav_vuln.nasl 14332 2019-03-19 14:22:43Z asteins $
 #
 # An Image Gallery Directory Traversal Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901037");
-  script_version("$Revision: 5055 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-20 15:08:39 +0100 (Fri, 20 Jan 2017) $");
+  script_version("$Revision: 14332 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:22:43 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-10-01 12:15:29 +0200 (Thu, 01 Oct 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -46,16 +46,13 @@ if(description)
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/53148");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to gain information
-  about directory and file locations.
-
-  Impact Level: System/Application.");
+  about directory and file locations.");
   script_tag(name:"affected", value:"An Image Gallery version 1.0 and prior.");
   script_tag(name:"insight", value:"Input passed to the 'path' parameter in 'navigation.php' is not
   properly verified before being used to generate and display folder contents.");
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"summary", value:"This host is running An Image Gallery and is prone to Directory
   Traversal vulnerability.");
 

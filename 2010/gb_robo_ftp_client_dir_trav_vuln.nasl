@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_robo_ftp_client_dir_trav_vuln.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: gb_robo_ftp_client_dir_trav_vuln.nasl 14326 2019-03-19 13:40:32Z jschulte $
 #
 # Robo-FTP Directory Traversal Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801626");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 14326 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:40:32 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-11-16 10:37:01 +0100 (Tue, 16 Nov 2010)");
   script_bugtraq_id(44073);
   script_cve_id("CVE-2010-4095");
@@ -52,13 +52,13 @@ if(description)
   directories containing files with directory traversal specifiers in the
   filename. This can be exploited to download files to an arbitrary location
   on a user's system.");
-  script_tag(name:"solution", value:"Upgrade to Robo-FTP version 3.7.5 or later,
-  For updates refer to http://www.robo-ftp.com/download/");
+  script_tag(name:"solution", value:"Upgrade to Robo-FTP version 3.7.5 or later.");
   script_tag(name:"summary", value:"This host is installed with Robo-FTP and is prone to directory
   traversal vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.robo-ftp.com/download/");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_prdts_usb_service_local_prv_esc_vuln_win.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: gb_vmware_prdts_usb_service_local_prv_esc_vuln_win.nasl 14331 2019-03-19 14:03:05Z jschulte $
 #
 # VMware Products USB Service Local Privilege Escalation Vulnerability (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801322");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 14331 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:03:05 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-04-16 16:17:26 +0200 (Fri, 16 Apr 2010)");
   script_cve_id("CVE-2010-1140");
   script_bugtraq_id(39397);
@@ -53,10 +53,8 @@ if(description)
   script_tag(name:"summary", value:"The host is installed with VMWare products and are prone to local
   privilege escalation vulnerability.");
   script_tag(name:"solution", value:"Upgrade to Vmware Player 3.0.1 build 227600,
-  http://www.vmware.com/products/player/
 
-  upgrade VMware Workstation 7.0.1 build 227600,
-  http://www.vmware.com/products/ws/");
+  upgrade VMware Workstation 7.0.1 build 227600");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_isc_dhcp_client_bof_vuln.nasl 11554 2018-09-22 15:11:42Z cfischer $
+# $Id: secpod_isc_dhcp_client_bof_vuln.nasl 14330 2019-03-19 13:59:11Z asteins $
 #
 # ISC DHCP Client Buffer Overflow Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900694");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 14330 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:59:11 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-07-23 21:05:26 +0200 (Thu, 23 Jul 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -58,10 +58,10 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to a boundary error within the 'script_write_params()'
   function in 'client/dhclient.c' which can be exploited to cause a stack-based
   buffer overflow by sending an overly long subnet-mask option.");
-  script_tag(name:"solution", value:"Upgrade to version 4.1.0p1, 4.0.1p1, or 3.1.2p1 or later
-  For updates refer to https://www.isc.org/downloadables/");
+  script_tag(name:"solution", value:"Upgrade to version 4.1.0p1, 4.0.1p1, or 3.1.2p1 or later");
   script_tag(name:"summary", value:"This host has installed ISC DHCP Client and is prone to Buffer
   overflow Vulnerability.");
+  script_xref(name:"URL", value:"https://www.isc.org/downloadables/");
   exit(0);
 }
 

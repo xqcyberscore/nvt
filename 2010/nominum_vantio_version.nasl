@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: nominum_vantio_version.nasl 4460 2016-11-09 15:19:22Z cfi $
+# $Id: nominum_vantio_version.nasl 14326 2019-03-19 13:40:32Z jschulte $
 #
 # Nominum Vantio Detection
 #
@@ -8,7 +8,7 @@
 # Michael Meyer <michael.meyer@greenbone.net>
 #
 # Copyright:
-# Copyright (c) 2009 Greenbone Networks GmbH
+# Copyright (c) 2010 Greenbone Networks GmbH
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -28,16 +28,16 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100675");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 4460 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-09 16:19:22 +0100 (Wed, 09 Nov 2016) $");
+  script_version("$Revision: 14326 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:40:32 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-06-14 14:19:59 +0200 (Mon, 14 Jun 2010)");
   script_tag(name:"cvss_base", value:"0.0");
-  script_name("Nominum Vantio Detection");  
+  script_name("Nominum Vantio Detection");
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_dependencies("find_service.nasl", "dns_server.nasl");
   script_mandatory_keys("DNS/identified");
-  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
+  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
 
   script_xref(name:"URL", value:"http://www.nominum.com/");
 

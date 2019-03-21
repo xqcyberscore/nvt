@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_online_grades_44399.nasl 8457 2018-01-18 07:58:32Z teissa $
+# $Id: gb_online_grades_44399.nasl 14323 2019-03-19 13:19:09Z jschulte $
 #
 # Online Grades Multiple Local File Include Vulnerabilities
 #
@@ -24,49 +24,53 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Online Grades is prone to multiple local file-include vulnerabilities
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.100875");
+  script_version("$Revision: 14323 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:19:09 +0100 (Tue, 19 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2010-10-28 13:41:07 +0200 (Thu, 28 Oct 2010)");
+  script_bugtraq_id(44399);
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_cve_id("CVE-2009-2037");
+
+  script_name("Online Grades Multiple Local File Include Vulnerabilities");
+
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/44399");
+  script_xref(name:"URL", value:"http://www.onlinegrades.org/");
+
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"summary", value:"Online Grades is prone to multiple local file-include vulnerabilities
 because it fails to properly sanitize user-supplied input.
 
 An attacker with admin access can exploit these vulnerabilities to
 obtain potentially sensitive information and to execute arbitrary
 local scripts in the context of the webserver process. This may allow
-the attacker to compromise the application and the computer; other
+the attacker to compromise the application and the computer, other
 attacks are also possible.
 
-Online Grades 3.2.5 and prior are vulnerable.";
+Online Grades 3.2.5 and prior are vulnerable.");
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
+  since the disclosure of this vulnerability. Likely none will be provided anymore.
+  General solution options are to upgrade to a newer release, disable respective features,
+  remove the product or replace the product by another one.");
 
-if(description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.100875");
- script_version("$Revision: 8457 $");
- script_tag(name:"last_modification", value:"$Date: 2018-01-18 08:58:32 +0100 (Thu, 18 Jan 2018) $");
- script_tag(name:"creation_date", value:"2010-10-28 13:41:07 +0200 (Thu, 28 Oct 2010)");
- script_bugtraq_id(44399);
- script_tag(name:"cvss_base", value:"6.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_cve_id("CVE-2009-2037");
-
- script_name("Online Grades Multiple Local File Include Vulnerabilities");
-
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/44399");
- script_xref(name : "URL" , value : "http://www.onlinegrades.org/");
-
- script_tag(name:"qod_type", value:"remote_vul");
- script_category(ACT_ATTACK);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  exit(0);
 }
 
 include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-   
+
 port = get_http_port(default:80);
 if(!can_host_php(port:port))exit(0);
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wsftp_server_sec_bypass_vuln.nasl 11256 2018-09-06 07:32:15Z cfischer $
+# $Id: secpod_wsftp_server_sec_bypass_vuln.nasl 14310 2019-03-19 10:27:27Z cfischer $
 #
 # WS_FTP Server Manager Security Bypass Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:ipswitch:ws_ftp";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900451");
-  script_version("$Revision: 11256 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 09:32:15 +0200 (Thu, 06 Sep 2018) $");
+  script_version("$Revision: 14310 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 11:27:27 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2008-12-26 14:23:17 +0100 (Fri, 26 Dec 2008)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -56,9 +56,7 @@ if(description)
   - less access control in custom ASP Files in WSFTPSVR/ via a request with the
     appended dot characters which causes disclosure of .asp file contents.");
 
-  script_tag(name:"solution", value:"Upgrade to the latest version 6.1.1 or higher.
-
-  http://www.ipswitchft.com/products/ws_ftp_server");
+  script_tag(name:"solution", value:"Upgrade to the latest version 6.1.1 or later.");
 
   script_tag(name:"summary", value:"This host is installed with WS_FTP Server and is prone to Security
   Bypass Vulnerability.");
@@ -71,7 +69,6 @@ if(description)
 
   exit(0);
 }
-
 
 include("version_func.inc");
 include("host_details.inc");

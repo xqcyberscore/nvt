@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_libesmtp_mult_vuln.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: gb_libesmtp_mult_vuln.nasl 14323 2019-03-19 13:19:09Z jschulte $
 #
 # libESMTP multiple vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800497");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 14323 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:19:09 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-04-06 08:47:09 +0200 (Tue, 06 Apr 2010)");
   script_cve_id("CVE-2010-1194", "CVE-2010-1192");
   script_tag(name:"cvss_base", value:"6.8");
@@ -48,9 +48,7 @@ if(description)
   script_tag(name:"impact", value:"Attackers can exploit this issue to conduct man-in-the-middle attacks to
   spoof arbitrary SSL servers and to spoof trusted certificates.");
   script_tag(name:"affected", value:"libESMTP version 1.0.4 and prior.");
-  script_tag(name:"solution", value:"Apply patch from below links,
-  https://bugzilla.redhat.com/attachment.cgi?id=399131&action=edit
-  https://bugzilla.redhat.com/attachment.cgi?id=398839&action=edit
+  script_tag(name:"solution", value:"Apply patch
 
   *****
   NOTE: Ignore this warning, if above mentioned patch is manually applied.
@@ -73,6 +71,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"https://bugzilla.redhat.com/attachment.cgi?id=399131&action=edit");
   exit(0);
 }
 

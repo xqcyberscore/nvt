@@ -19,8 +19,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108560");
-  script_version("$Revision: 14230 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-16 10:44:55 +0100 (Sat, 16 Mar 2019) $");
+  script_version("2019-03-20T18:49:53+0000");
+  script_tag(name:"last_modification", value:"2019-03-20 18:49:53 +0000 (Wed, 20 Mar 2019)");
   script_tag(name:"creation_date", value:"2019-03-16 08:57:17 +0100 (Sat, 16 Mar 2019)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -42,7 +42,7 @@ if(description)
 
   - missing functionalities
 
-  - solved issues/bugs
+  - missing bugfixes
 
   - incompatibilities within the feed.");
 

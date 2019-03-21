@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_altiris_ns_unauth_access_vuln.nasl 8510 2018-01-24 07:57:42Z teissa $
+# $Id: gb_symantec_altiris_ns_unauth_access_vuln.nasl 14326 2019-03-19 13:40:32Z jschulte $
 #
 # Symantec Altiris NS Key Unauthorized Access Vulnerability
 #
@@ -24,23 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation let attackers to access certain encrypted credentials
-  and encryption keys and also execute code, obtain sensitive information, or
-  perform actions with elevated privileges.
-  Impact Level: Application";
-tag_affected = "Symantec Altiris Notification Server versions 6.0.x before 6.0 SP3 R12";
-tag_insight = "The flaw is due to the application using a static encryption key to
-  encrypt and store certain credentials.";
-tag_solution = "Update to Symantec Altiris Notification Server 6.0 SP3 R12
-  For updates refer to https://kb.altiris.com/article.asp?article=46763&p=1";
-tag_summary = "This host is installed with Symantec Altiris Notification Server
-  and is prone to unauthorized access vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800985");
-  script_version("$Revision: 8510 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-24 08:57:42 +0100 (Wed, 24 Jan 2018) $");
+  script_version("$Revision: 14326 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:40:32 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-02-11 16:37:59 +0100 (Thu, 11 Feb 2010)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:S/C:P/I:P/A:P");
@@ -56,14 +44,20 @@ if(description)
   script_dependencies("gb_symantec_altiris_ns_detect.nasl");
   script_mandatory_keys("Symantec/AltirisNS/Ver", "Symantec/AltirisNS/SP");
   script_require_ports("Services/www", 80);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/38356");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/55952");
-  script_xref(name : "URL" , value : "http://www.symantec.com/business/security_response/securityupdates/detail.jsp?fid=security_advisory&pvid=security_advisory&year=2010&suid=20100128_00");
+  script_tag(name:"impact", value:"Successful exploitation let attackers to access certain encrypted credentials
+  and encryption keys and also execute code, obtain sensitive information, or
+  perform actions with elevated privileges.");
+  script_tag(name:"affected", value:"Symantec Altiris Notification Server versions 6.0.x before 6.0 SP3 R12");
+  script_tag(name:"insight", value:"The flaw is due to the application using a static encryption key to
+  encrypt and store certain credentials.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution", value:"Update to Symantec Altiris Notification Server 6.0 SP3 R12");
+  script_tag(name:"summary", value:"This host is installed with Symantec Altiris Notification Server
+  and is prone to unauthorized access vulnerability.");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/38356");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/55952");
+  script_xref(name:"URL", value:"http://www.symantec.com/business/security_response/securityupdates/detail.jsp?fid=security_advisory&pvid=security_advisory&year=2010&suid=20100128_00");
+  script_xref(name:"URL", value:"https://kb.altiris.com/article.asp?article=46763&p=1");
   exit(0);
 }
 
@@ -77,7 +71,6 @@ if(!httpPort){
   exit(0);
 }
 
-## Send Request and Receive Response
 sndReq = http_get(item:"/Altiris/NS/logview.asp", port:httpPort);
 rcvRes = http_keepalive_send_recv(port:httpPort, data:sndReq, bodyonly:0);
 if((isnull(rcvRes)) && ("Altiris NS " >!< rcvRes)){
@@ -92,18 +85,16 @@ if(!altirisVer){
 spVer= get_kb_item("Symantec/AltirisNS/SP");
 if((spVer == NULL) && (altirisVer =~ "^6\.0"))
 {
-  # Grep for Altiris version prior to 6.0(6.0.6074)
   if(version_is_less_equal(version:altirisVer, test_version:"6.0.6074"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }
 
 else if(spVer =~ "^6\.0")
 {
-  # Grep for Altiris 6.0 SP prior to 6.0 SP3 R12(6.0.1210.0)
   if(version_is_less(version:spVer, test_version:"6.0.1210.0")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
 }

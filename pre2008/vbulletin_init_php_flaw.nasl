@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: vbulletin_init_php_flaw.nasl 11556 2018-09-22 15:37:40Z cfischer $
+# $Id: vbulletin_init_php_flaw.nasl 14336 2019-03-19 14:53:10Z mmartin $
 # Description: vBulletin Init.PHP unspecified vulnerability
 #
 # Authors:
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.16203");
-  script_version("$Revision: 11556 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:37:40 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 14336 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:53:10 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(12299);
   script_tag(name:"cvss_base", value:"7.5");
@@ -41,6 +41,7 @@ if(description)
   script_dependencies("http_version.nasl", "vbulletin_detect.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("vBulletin/installed");
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"solution", value:"Upgrade to vBulletin 3.0.5 or newer");
   script_tag(name:"summary", value:"The remote host is running vBulletin, a web based bulletin board system written
 in PHP.

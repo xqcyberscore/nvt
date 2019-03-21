@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_prdts_vmx_info_disc_vuln_lin.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: gb_vmware_prdts_vmx_info_disc_vuln_lin.nasl 14331 2019-03-19 14:03:05Z jschulte $
 #
 # VMware Products 'vmware-vmx' Information Disclosure Vulnerability (Linux)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801321");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 14331 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:03:05 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-04-16 16:17:26 +0200 (Fri, 16 Apr 2010)");
   script_cve_id("CVE-2010-1138");
   script_bugtraq_id(39395);
@@ -37,6 +37,7 @@ if(description)
   script_name("VMware Products 'vmware-vmx' Information Disclosure Vulnerability (Linux)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/39215");
   script_xref(name:"URL", value:"http://secunia.com/advisories/39206");
+  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2010-0007.html");
   script_xref(name:"URL", value:"http://lists.vmware.com/pipermail/security-announce/2010/000090.html");
 
   script_category(ACT_GATHER_INFO);
@@ -57,8 +58,7 @@ if(description)
   information from memory on the host OS by examining received network packets.");
   script_tag(name:"summary", value:"The host is installed with VMWare products and are prone to
   information disclosure vulnerability.");
-  script_tag(name:"solution", value:"For Upgrades refer the below link,
-  http://www.vmware.com/security/advisories/VMSA-2010-0007.html");
+  script_tag(name:"solution", value:"Apply upgrades.");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);

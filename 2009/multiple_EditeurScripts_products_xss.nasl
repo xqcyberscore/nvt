@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: multiple_EditeurScripts_products_xss.nasl 9040 2018-03-07 11:52:54Z cfischer $
+# $Id: multiple_EditeurScripts_products_xss.nasl 14330 2019-03-19 13:59:11Z asteins $
 #
 # Multiple EditeurScripts Products 'msg' Parameter Cross Site Scripting Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100049");
-  script_version("$Revision: 9040 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-07 12:52:54 +0100 (Wed, 07 Mar 2018) $");
+  script_version("$Revision: 14330 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:59:11 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2009-03-16 12:53:50 +0100 (Mon, 16 Mar 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -44,32 +44,32 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/34112/discuss");
 
-  tag_summary = "Multiple EditeurScripts products are prone to a cross-site scripting
+  script_tag(name:"summary", value:"Multiple EditeurScripts products are prone to a cross-site scripting
   vulnerability because they fail to sufficiently sanitize
-  user-supplied data.";
-
-  tag_impact = "An attacker may leverage this issue to execute arbitrary script code
+  user-supplied data.");
+  script_tag(name:"impact", value:"An attacker may leverage this issue to execute arbitrary script code
   in the browser of an unsuspecting user in the context of the
   affected site. This may allow the attacker to steal cookie-based
-  authentication credentials and to launch other attacks.";
+  authentication credentials and to launch other attacks.");
+  script_tag(name:"affected", value:"The following products and versions are affected:
 
-  tag_affected ="The following products and versions are affected:
+  - EScontacts v1.0
 
-  -EScontacts v1.0
+  - EsBaseAdmin v2.1
 
-  -EsBaseAdmin v2.1
+  - EsPartenaires v1.0
 
-  -EsPartenaires v1.0
+  - EsNews v1.2
 
-  -EsNews v1.2
-
-  Other versions may also be affected.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
+  Other versions may also be affected.");
 
   script_tag(name:"qod", value:"50"); # No extra check, prone to false positives and doesn't match existing qod_types
+
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
+  since the disclosure of this vulnerability. Likely none will be provided anymore.
+  General solution options are to upgrade to a newer release, disable respective features,
+  remove the product or replace the product by another one.");
 
   exit(0);
 }

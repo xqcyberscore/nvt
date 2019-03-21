@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_se_mult_vuln_lin_apr10.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: gb_oracle_java_se_mult_vuln_lin_apr10.nasl 14331 2019-03-19 14:03:05Z jschulte $
 #
 # Oracle Java SE Multiple Vulnerabilities (Linux)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800500");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 14331 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:03:05 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-04-07 16:20:50 +0200 (Wed, 07 Apr 2010)");
   script_cve_id("CVE-2009-3555", "CVE-2010-0082", "CVE-2010-0084", "CVE-2010-0085",
                 "CVE-2010-0087", "CVE-2010-0088", "CVE-2010-0089", "CVE-2010-0090",
@@ -49,7 +49,6 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
-
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
@@ -75,8 +74,7 @@ if(description)
   - Sound and
 
   - imageIO components");
-  script_tag(name:"solution", value:"Upgrade to SE 6 Update 19, JDK and JRE 5.0 Update 24,
-  http://www.oracle.com/technology/deploy/security/critical-patch-updates/javacpumar2010.html");
+  script_tag(name:"solution", value:"Upgrade to SE 6 Update 19, JDK and JRE 5.0 Update 24.");
   script_tag(name:"summary", value:"This host is installed with Sun Java SE and is prone to multiple
   vulnerabilities.");
   exit(0);

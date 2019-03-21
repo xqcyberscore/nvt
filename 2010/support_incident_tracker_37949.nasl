@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: support_incident_tracker_37949.nasl 8244 2017-12-25 07:29:28Z teissa $
+# $Id: support_incident_tracker_37949.nasl 14326 2019-03-19 13:40:32Z jschulte $
 #
 # Support Incident Tracker Blank Password Authentication Bypass Vulnerability
 #
@@ -24,44 +24,41 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Support Incident Tracker (SiT!) is prone to an authentication-bypass
-vulnerability.
-
-An attacker can exploit this issue to gain unauthorized access to the
-affected application.
-
-Versions prior to Support Incident Tracker (SiT!) 3.51 are vulnerable.";
-
-tag_solution = "The vendor has released an update. Please see the references for more
-information.";
-
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.100467");
- script_version("$Revision: 8244 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-25 08:29:28 +0100 (Mon, 25 Dec 2017) $");
- script_tag(name:"creation_date", value:"2010-01-26 20:04:43 +0100 (Tue, 26 Jan 2010)");
- script_tag(name:"cvss_base", value:"6.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_cve_id("CVE-2010-1596");
- script_bugtraq_id(37949);
+  script_oid("1.3.6.1.4.1.25623.1.0.100467");
+  script_version("$Revision: 14326 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:40:32 +0100 (Tue, 19 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2010-01-26 20:04:43 +0100 (Tue, 26 Jan 2010)");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_cve_id("CVE-2010-1596");
+  script_bugtraq_id(37949);
 
- script_name("Support Incident Tracker Blank Password Authentication Bypass Vulnerability");
+  script_name("Support Incident Tracker Blank Password Authentication Bypass Vulnerability");
 
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/37949");
- script_xref(name : "URL" , value : "http://sitracker.sourceforge.net");
- script_xref(name : "URL" , value : "http://sitracker.org/wiki/ReleaseNotes351");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/37949");
+  script_xref(name:"URL", value:"http://sitracker.sourceforge.net");
+  script_xref(name:"URL", value:"http://sitracker.org/wiki/ReleaseNotes351");
 
- script_tag(name:"qod_type", value:"remote_banner");
- script_category(ACT_GATHER_INFO);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("support_incident_tracker_detect.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_category(ACT_GATHER_INFO);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
+  script_dependencies("support_incident_tracker_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution", value:"The vendor has released an update. Please see the references for more
+  information.");
+  script_tag(name:"summary", value:"Support Incident Tracker (SiT!) is prone to an authentication-bypass
+  vulnerability.
+
+  An attacker can exploit this issue to gain unauthorized access to the
+  affected application.
+
+  Versions prior to Support Incident Tracker (SiT!) 3.51 are vulnerable.");
+  exit(0);
 }
 
 include("http_func.inc");

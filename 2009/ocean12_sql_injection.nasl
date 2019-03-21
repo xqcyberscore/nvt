@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ocean12_sql_injection.nasl 5771 2017-03-29 15:14:22Z cfi $
+# $Id: ocean12_sql_injection.nasl 14330 2019-03-19 13:59:11Z asteins $
 #
 # Ocean12 Membership Manager Pro 'login.asp' SQL Injection
 # Vulnerability
@@ -27,30 +27,36 @@
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.100037");
- script_version("$Revision: 5771 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-29 17:14:22 +0200 (Wed, 29 Mar 2017) $");
- script_tag(name:"creation_date", value:"2009-03-13 06:42:27 +0100 (Fri, 13 Mar 2009)");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_cve_id("CVE-2008-6371");
- script_bugtraq_id(32508);
- script_name("Ocean12 Membership Manager Pro 'login.asp' SQL Injection Vulnerability");
- script_category(ACT_ATTACK);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : "Ocean12 Membership Manager Pro is prone to an SQL-injection
+  script_oid("1.3.6.1.4.1.25623.1.0.100037");
+  script_version("$Revision: 14330 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:59:11 +0100 (Tue, 19 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2009-03-13 06:42:27 +0100 (Fri, 13 Mar 2009)");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_cve_id("CVE-2008-6371");
+  script_bugtraq_id(32508);
+  script_name("Ocean12 Membership Manager Pro 'login.asp' SQL Injection Vulnerability");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"summary", value:"Ocean12 Membership Manager Pro is prone to an SQL-injection
  vulnerability because it fails to sufficiently sanitize user-supplied data.");
- script_tag(name : "impact" , value : "A successful exploit may allow an attacker to compromise the
+  script_tag(name:"impact", value:"A successful exploit may allow an attacker to compromise the
  application, access or modify data, or exploit latent
  vulnerabilities in the underlying database.");
 
- script_tag(name:"qod_type", value:"remote_app");
+  script_tag(name:"qod_type", value:"remote_app");
 
- exit(0);
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
+  since the disclosure of this vulnerability. Likely none will be provided anymore.
+  General solution options are to upgrade to a newer release, disable respective features,
+  remove the product or replace the product by another one.");
+
+  exit(0);
 }
 
 include("http_func.inc");
@@ -74,12 +80,12 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
     url = string(dir + "/login.asp");
 
     req = string(
-      "POST ", url, " HTTP/1.0\r\n", 
+      "POST ", url, " HTTP/1.0\r\n",
       "Referer: ","http://", host, url, "\r\n",
-      "Host: ", host, "\r\n", 
-      "Content-Type: application/x-www-form-urlencoded\r\n", 
-      "Content-Length: ", strlen(variables), 
-      "\r\n\r\n", 
+      "Host: ", host, "\r\n",
+      "Content-Type: application/x-www-form-urlencoded\r\n",
+      "Content-Length: ", strlen(variables),
+      "\r\n\r\n",
       variables );
     res = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
 

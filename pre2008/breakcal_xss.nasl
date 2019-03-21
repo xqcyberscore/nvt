@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: breakcal_xss.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: breakcal_xss.nasl 14336 2019-03-19 14:53:10Z mmartin $
 #
 # BreakCalendar XSS
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14225");
-  script_version("$Revision: 6040 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+  script_version("$Revision: 14336 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:53:10 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(10847);
   script_tag(name:"cvss_base", value:"4.3");
@@ -42,7 +42,8 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  tag_summary = "The remote web server contains a CGI which is vulnerable to a cross site
+  script_tag(name:"solution", value:"Update or disable this CGI suite");
+  script_tag(name:"summary", value:"The remote web server contains a CGI which is vulnerable to a cross site
   scripting vulnerability.
 
   Description :
@@ -51,12 +52,7 @@ if(description)
 
   The remote version of this software is vulnerable to cross site scripting
   vulnerability which may allow an attacker to use the remote host to perform
-  attacks against third party users.";
-
-  tag_solution = "Update or disable this CGI suite";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  attacks against third party users.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

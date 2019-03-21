@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ms07-057.nasl 11546 2018-09-22 11:30:16Z cfischer $
+# $Id: ms07-057.nasl 14331 2019-03-19 14:03:05Z jschulte $
 #
 # Cumulative Security Update for Internet Explorer (939653)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102060");
-  script_version("$Revision: 11546 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 13:30:16 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 14331 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:03:05 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2010-07-08 10:59:30 +0200 (Thu, 08 Jul 2010)");
   script_bugtraq_id(25915, 25916, 24911);
   script_cve_id("CVE-2007-3892", "CVE-2007-3893", "CVE-2007-3826");
@@ -44,9 +44,7 @@ if(description)
   script_require_ports(139, 445);
   script_mandatory_keys("MS/IE/Version");
 
-  script_tag(name:"solution", value:"Run Windows update or apply patches available from the following
-  website:
-  http://www.microsoft.com/technet/security/bulletin/ms07-057.mspx");
+  script_tag(name:"solution", value:"Run Windows update or apply available patches.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -57,6 +55,8 @@ if(description)
   using Internet Explorer. Users whose accounts are configured to have
   fewer user rights on the system could be less impacted than users
   who operate with administrative user rights.");
+
+  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/bulletin/ms07-057.mspx");
 
   exit(0);
 }

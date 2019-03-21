@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: doc_browsable.nasl 4288 2016-10-17 10:28:03Z cfi $
+# $Id: doc_browsable.nasl 14336 2019-03-19 14:53:10Z mmartin $
 #
 # /doc directory browsable
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10056");
-  script_version("$Revision: 4288 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-17 12:28:03 +0200 (Mon, 17 Oct 2016) $");
+  script_version("$Revision: 14336 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 15:53:10 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(318);
   script_tag(name:"cvss_base", value:"5.0");
@@ -42,21 +42,17 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  tag_summary = "The /doc directory is browsable.
-  /doc shows the content of the /usr/doc directory and therefore it shows which programs and - important! - the version of the installed programs.";
-
-  tag_solution = "Use access restrictions for the /doc directory.
+  script_tag(name:"solution", value:"Use access restrictions for the /doc directory.
   If you use Apache you might use this in your access.conf:
 
   <Directory /usr/doc>
   AllowOverride None
-  order deny,allow
+  order deny, allow
   deny from all
   allow from localhost
-  </Directory>";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  </Directory>");
+  script_tag(name:"summary", value:"The /doc directory is browsable.
+  /doc shows the content of the /usr/doc directory and therefore it shows which programs and - important! - the version of the installed programs.");
 
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_banner");

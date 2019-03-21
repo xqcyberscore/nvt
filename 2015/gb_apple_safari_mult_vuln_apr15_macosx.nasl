@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_mult_vuln_apr15_macosx.nasl 11424 2018-09-17 08:03:52Z mmartin $
+# $Id: gb_apple_safari_mult_vuln_apr15_macosx.nasl 14319 2019-03-19 11:49:19Z cfischer $
 #
 # Apple Safari Multiple Vulnerabilities -01 Apr15 (Mac OS X)
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:apple:safari";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805467");
-  script_version("$Revision: 11424 $");
+  script_version("$Revision: 14319 $");
   script_cve_id("CVE-2015-1112", "CVE-2015-1119", "CVE-2015-1120", "CVE-2015-1121",
                 "CVE-2015-1122", "CVE-2015-1124", "CVE-2015-1126", "CVE-2015-1127",
                 "CVE-2015-1128", "CVE-2015-1129");
   script_bugtraq_id(73972, 73973, 73974, 73975, 73976, 73977);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 12:49:19 +0100 (Tue, 19 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-04-23 17:30:41 +0530 (Thu, 23 Apr 2015)");
   script_name("Apple Safari Multiple Vulnerabilities -01 Apr15 (Mac OS X)");
 
@@ -73,7 +73,7 @@ if(description)
   before 7.1.5 and 8.x before 8.0.5");
 
   script_tag(name:"solution", value:"Upgrade to Apple Safari version 6.2.5 or
-  7.1.5 or 8.0.5 or later. For updates refer link, http://www.apple.com/support.");
+  7.1.5 or 8.0.5 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -89,8 +89,6 @@ if(description)
   exit(0);
 }
 
-
-#Code starts from here
 include("version_func.inc");
 include("host_details.inc");
 

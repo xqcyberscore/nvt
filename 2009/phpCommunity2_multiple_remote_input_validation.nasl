@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phpCommunity2_multiple_remote_input_validation.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: phpCommunity2_multiple_remote_input_validation.nasl 14330 2019-03-19 13:59:11Z asteins $
 #
 # phpCommunity2 Multiple Remote Input Validation Vulnerabilities
 #
@@ -24,7 +24,26 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "phpCommunity2 is prone to multiple input-validation vulnerabilities,
+
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.100041");
+  script_version("$Revision: 14330 $");
+  script_tag(name:"last_modification", value:"$Date: 2019-03-19 14:59:11 +0100 (Tue, 19 Mar 2019) $");
+  script_tag(name:"creation_date", value:"2009-03-13 06:42:27 +0100 (Fri, 13 Mar 2009)");
+  script_cve_id("CVE-2009-4884", "CVE-2009-4885", "CVE-2009-4886");
+  script_bugtraq_id(34056);
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_name("phpCommunity2 Multiple Remote Input Validation Vulnerabilities");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"summary", value:"phpCommunity2 is prone to multiple input-validation vulnerabilities,
   including multiple directory-traversal issues and SQL-injection issues,
   and a cross-site scripting issue.
 
@@ -32,30 +51,15 @@ tag_summary = "phpCommunity2 is prone to multiple input-validation vulnerabiliti
   local files within the context of the webserver, steal cookie-based
   authentication credentials, compromise the application, access or
   modify data, or exploit latent vulnerabilities in the underlying
-  database.";
+  database.");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/34056/");
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
+  since the disclosure of this vulnerability. Likely none will be provided anymore.
+  General solution options are to upgrade to a newer release, disable respective features,
+  remove the product or replace the product by another one.");
 
-
-if (description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.100041");
- script_version("$Revision: 9350 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2009-03-13 06:42:27 +0100 (Fri, 13 Mar 2009)");
- script_cve_id("CVE-2009-4884", "CVE-2009-4885", "CVE-2009-4886");
- script_bugtraq_id(34056);
- script_tag(name:"cvss_base", value:"6.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_name("phpCommunity2 Multiple Remote Input Validation Vulnerabilities");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : tag_summary);
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/34056/");
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");
