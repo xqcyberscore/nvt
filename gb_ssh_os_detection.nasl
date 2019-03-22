@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105586");
-  script_version("$Revision: 13892 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-26 17:58:03 +0100 (Tue, 26 Feb 2019) $");
+  script_version("2019-03-22T07:10:47+0000");
+  script_tag(name:"last_modification", value:"2019-03-22 07:10:47 +0000 (Fri, 22 Mar 2019)");
   script_tag(name:"creation_date", value:"2016-03-23 14:28:40 +0100 (Wed, 23 Mar 2016)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -502,6 +502,13 @@ else if( "SSH-2.0-moxa_" >< banner )
 
 # SolarWinds Network Configuration Manager (NCM) running on Windows only.
 else if( "Network ConfigManager SCP Server" >< banner )
+{
+  register_and_report_os( os:"Microsoft Windows", cpe:"cpe:/o:microsoft:windows", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
+  exit( 0 );
+}
+
+# SSH-2.0-OpenSSH_for_Windows_7.9
+else if( "OpenSSH_for_Windows" >< banner )
 {
   register_and_report_os( os:"Microsoft Windows", cpe:"cpe:/o:microsoft:windows", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
   exit( 0 );

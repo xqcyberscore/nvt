@@ -6696,7 +6696,7 @@ ba7944ef48819b0f93bb7c11f7258f1a  2010/secpod_beanstalkd_remote_cmd_exec_vuln.na
 513c6dbf3291693e197a533c7fd10c25  2010/secpod_firefox_mult_dos_vuln_win.nasl
 689bac292a09a14c932b95ec68874446  2010/gb_trillian_msn_auth_ssl_cert_sec_bypass_vuln.nasl
 3d3fa86923db45e0cfc2a7d8e921aa2a  2010/gb_firefox_dos_vuln_win_jan10.nasl
-a5b7aac61090846076b65448e18047a5  2010/secpod_php_raincheck_sql_injection_vuln.nasl
+801c8360cc578622381f9b7172aca1a3  2010/secpod_php_raincheck_sql_injection_vuln.nasl
 8f3da474f5aa12550df8c4c9cc1dc5ab  2010/gb_adaptcms_41116.nasl
 bdfd5210eb7463ee254d7a9b849b488b  2010/gb_justVisual_38970.nasl
 8c4c62707c8b8e70e6afe7f9e4daaf43  2010/gb_cms_made_simple_41565.nasl
@@ -7693,7 +7693,7 @@ eef31c567deedd5990228e6847839b41  2010/macosx_upd_10_5_1.nasl
 9d7afaed4354158a8b720e8dc41ef727  2010/gb_mantis_xss_vuln.nasl
 257d12225b29d29a5829301fc1587904  2010/gb_rn_helix_39490.nasl
 b87f2dc88a2cd042feadc015a1397878  2010/gb_truc_xss_vuln.nasl
-4f766d1251f50caa2cf627b727d05f33  2010/gb_simple_search_xss_vuln.nasl
+7f3701b6b76f672af4fe644b4c76c016  2010/gb_simple_search_xss_vuln.nasl
 ee1e9038eeff2bfc12d5b8a74a2dc768  2010/secpod_justsystems_ichitaro_unspecified_vuln.nasl
 aedc9f84505c5461fbb196a2bd140bbf  2010/gb_squid_42645.nasl
 6381823b154eb5bfb491ff5848b204e6  2010/gb_podcast_generator_41473.nasl
@@ -7934,7 +7934,7 @@ db54f737aeca22e77e33f5dd79efc2a5  gb_emc_avamar_detect.nasl
 569372e634dac843f3eb1d55567d5fd6  gb_soda_pdf_detect_win.nasl
 2873f9c063683c8d92333c7484514ebb  gb_arkeia_virtual_appliance_detect.nasl
 786b20471cbef6bc8018d1900b00bdf6  gb_sap_rfc_detect.nasl
-92eaa05d331160b2253f19e71064dbbb  plugin_feed_info.inc
+2bb3121907f0789e72137b277e8f2e0d  plugin_feed_info.inc
 b208d24a32ff6c01003e344339f555a7  gb_orion_ipam_detect.nasl
 32cca097943e8d31c1dffccabc091803  gb_magnicomp_sysinfo_detect_lin.nasl
 94021900f53a3547fee8cc94c8b0abd8  gb_ibm_lotus_notes_detect_macosx.nasl
@@ -20758,6 +20758,7 @@ aa85ed651c04b32f286bd2d1f7ac147a  secpod_adobe_prdts_detect_win.nasl
 38ffb170a215c25ccd1208d507762a03  gb_xerox_printer_detect.nasl
 28fb738f5aee33c54323f575f15f3cf9  gb_ms_live_meeting_detect.nasl
 71905c849327d1a1bc45b3e7c02de46b  gb_adobe_acrobat_reader_dc_cont_detect_win.nasl
+41b1458524cb664ada901434a8b9c636  gb_intellio_visus_detect.nasl
 de1bd4a329e9d825145b9cad285261ba  gb_wmi_get-dns_name.nasl
 a3ab5b6eca25363c22118da136c2e076  gb_moxa_edr_devices_web_detect.nasl
 015e5dd82edb9feeb5bd3d0442fa1da9  gb_cisco_intercloud_fabric_detect.nasl
@@ -20868,7 +20869,7 @@ a32e08d879baf687e6e849b09a46c55b  secpod_beanstalkd_detect.nasl
 a97bed95ec26b1b90b867fea57656505  gb_winrm_detect.nasl
 126ed67a12f3ec6e231c84f9206adbe2  gb_checkpoint_fw_version.nasl
 41fdc9aa619af59b76feb0225db1b432  gb_apache_ranger_detect.nasl
-d7aee398701f022f8dbb4a3e061b43b8  gb_ssh_os_detection.nasl
+ada2ce0462238faf6d965b059ffa52b6  gb_ssh_os_detection.nasl
 886ccc5d411073306f53d78d9ce6ffcc  gb_ganglia_detect.nasl
 c29f5a2a9f006c1789ff90c85bd1daee  secpod_php_calendar_detect.nasl
 4dc1354578681f353ec6b95f5a25e352  gb_cisco_par_detect.nasl
@@ -36504,7 +36505,7 @@ b49603563d98aac6254507a102080c63  gb_sysaid_detect.nasl
 4cc2d75bdc331315b598a5fe9063907e  vmware_server_detect.nasl
 8f484a57dccd2643dc7c54caa3c286da  ssh_func.inc
 29e46a51113eb2ca7bcc0be61c2800e5  ping_host.nasl
-9fd9c5e99b97fbc6af731c5fcd8fdeee  ssh_detect.nasl
+e71cd39ac7b1e3e851ab76809f514bbb  ssh_detect.nasl
 0733c5884eedb1d93c827572ae1cfc1d  gb_peazip_detect_lin.nasl
 6fcec592d842884598fac9e1f650197d  gb_cisco_imc_detect.nasl
 3dc1f55b98047fa15207ca40c7da535d  secpod_hp_smh_detect.nasl
@@ -48982,6 +48983,7 @@ f6a1bfcb02fbb3f8d32e256dc32890c7  2019/live555/gb_live555_streaming_media_mult_v
 1be391d7773480a8f41a2aacc0eea6ed  2019/wordpress/gb_wordpress_social-pug_xss_vuln_dec16.nasl
 42ccb847915240c66a2b885b9e28720f  2019/wordpress/gb_wordpress_woocommerce_xss_vuln_feb19_lin.nasl
 bd19add19eca76c08360e2b55516ddeb  2019/wordpress/gb_wordpress_woocommerce_priv_esc_vuln_win.nasl
+5c6e6fa54619e3de57ee4d720b474425  2019/wordpress/gb_wordpress_hrm_mult_vuln_feb19.nasl
 5e96102983f9288270206a6599eaee48  2019/wordpress/gb_wordpress_import-users-from-csv-with-meta_xss_vuln_dec18.nasl
 8c0456370e793c8bfacd50d020adb281  2019/wordpress/gb_wordpress_media-file-manager_mult_vuln_may18.nasl
 63db7e43b5992826faf085e8ab150004  2019/wordpress/gb_wordpress_rce_vuln_win.nasl
@@ -49056,6 +49058,7 @@ cdc62a7ba3027d4c47cbf733245e420a  2019/libreoffice/gb_libreoffice_rce_vuln_feb19
 694d3e069a5d4c47d26187ff9623fb28  2019/gb_vnc_unencrypted_data_transmission.nasl
 218453248c313fcb181a57421e892200  2019/avtech/gb_avtech_ip_camera_default_credentials.nasl
 501c1566a4db17214672b0501374d5de  2019/kubernetes/gb_kubernetes_dashboard_auth_bypass_vuln.nasl
+f99d0b8a36167ac9831b0718f6a22285  2019/intellio/gb_intellio_visus_default_credentials.nasl
 61dc8437fb173f5e3f808dcb0bfa6955  2019/sugarcrm/gb_sugarcrm_mult_vuln01.nasl
 a00fcdac61bd1230110a20376dafed6f  2019/sugarcrm/gb_sugarcrm_sugarcrm-sa-2018-002.nasl
 5c40e308e54a700b6ab2d572aef74119  2019/sugarcrm/gb_sugarcrm_mult_vuln02.nasl
@@ -49122,6 +49125,7 @@ dc99d69ec6b519eaf24443d801aaf0e2  2019/debian/deb_dla_1624.nasl
 ddc68fde61e4c31aa9df7ea3f8526b27  2019/debian/deb_4399.nasl
 595191a2cf51fef766fee278820d8051  2019/debian/deb_dla_1686.nasl
 c43c39b68aeb9b8d37f101d91dac8134  2019/debian/deb_dla_1676.nasl
+d6a7d2f17d67f4032baefc3582bf3305  2019/debian/deb_4409.nasl
 5c4d0b7481dd35e14f6ac48876ae42e5  2019/debian/deb_dla_1710.nasl
 81e1baba5fd293fb60f85ce8ed889e0a  2019/debian/deb_4370.nasl
 5c036f1631d8b3e0c1970864a6d111a6  2019/debian/deb_dla_1635.nasl
@@ -49166,6 +49170,7 @@ afa2ecaf8aa02547c2a8a98548c75f20  2019/debian/deb_dla_1661.nasl
 aa4563182e9af1beb05bd36ab3585d6c  2019/debian/deb_dla_1720.nasl
 0536a811aa53d09c1ce73c1674fc3928  2019/debian/deb_4371.nasl
 1be8dca03ebca119b62b5b251ed8dce6  2019/debian/deb_dla_1698.nasl
+bd4ce96b727dd1eb01cf0f79eeb9d39a  2019/debian/deb_dla_1722.nasl
 f8479551a5fea419d309ec497af542cc  2019/debian/deb_dla_1717.nasl
 881669da21b1920528bceae029299e71  2019/debian/deb_dla_1644.nasl
 3cebff79112b5c9550b479f0458f0ca3  2019/debian/deb_4387.nasl
