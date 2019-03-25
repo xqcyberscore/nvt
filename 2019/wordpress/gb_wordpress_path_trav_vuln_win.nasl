@@ -23,8 +23,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.142031");
-  script_version("$Revision: 13826 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-22 08:18:35 +0100 (Fri, 22 Feb 2019) $");
+  script_version("2019-03-25T09:51:34+0000");
+  script_tag(name:"last_modification", value:"2019-03-25 09:51:34 +0000 (Mon, 25 Mar 2019)");
   script_tag(name:"creation_date", value:"2019-02-22 14:15:14 +0700 (Fri, 22 Feb 2019)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
@@ -53,7 +53,7 @@ image extensions and ../ sequences, such as a filename ending with the .jpg?/../
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 22nd February, 2019.
+  script_tag(name:"solution", value:"No known solution is available as of 25th March, 2019.
 Information regarding this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://blog.ripstech.com/2019/wordpress-image-remote-code-execution/");

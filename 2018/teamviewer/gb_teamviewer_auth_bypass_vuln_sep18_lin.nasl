@@ -29,19 +29,19 @@ CPE = "cpe:/a:teamviewer:teamviewer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813899");
-  script_version("$Revision: 12998 $");
+  script_version("2019-03-22T15:58:59+0000");
   script_cve_id("CVE-2018-16550");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-09 14:46:07 +0100 (Wed, 09 Jan 2019) $");
+  script_tag(name:"last_modification", value:"2019-03-22 15:58:59 +0000 (Fri, 22 Mar 2019)");
   script_tag(name:"creation_date", value:"2018-09-07 13:42:31 +0530 (Fri, 07 Sep 2018)");
+
   script_name("TeamViewer Authentication Bypass Vulnerability Sep18 (Linux)");
 
   script_tag(name:"summary", value:"The host is installed with TeamViewer
   Premium is prone to an authentication bypass vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
-  on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to an improper brute-force
   authentication protection mechanism.");
@@ -52,9 +52,8 @@ if(description)
 
   script_tag(name:"affected", value:"TeamViewer versions 10.x through 13.x on Linux.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 09th
-  January, 2019. Information regarding this issue will be updated once solution
-  details are available. For updates refer to Reference links.");
+  script_tag(name:"solution", value:"No known solution is available as of 22nd March, 2019.
+  Information regarding this issue will be updated once solution details are available.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
 
@@ -68,6 +67,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_teamviewer_detect_lin.nasl");
   script_mandatory_keys("TeamViewer/Linux/Ver");
+
   exit(0);
 }
 
@@ -81,7 +81,7 @@ teamPath = infos['location'];
 
 if(teamVer =~ "^(10|13)\.")
 {
-  report = report_fixed_ver(installed_version:teamVer, fixed_version:"NoneAvailable", install_path:teamPath);
+  report = report_fixed_ver(installed_version:teamVer, fixed_version:"None", install_path:teamPath);
   security_message(data:report);
   exit(0);
 }

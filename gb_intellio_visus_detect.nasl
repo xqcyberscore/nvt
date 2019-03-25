@@ -54,12 +54,12 @@ url = "/index.html";
 
 res = http_get_cache(port: port, item: url);
 
-if("icam.login" >!< res && res !~ "[Ii]ntellio [Cc]amera [Ll]ogin") {
+if("icam.login" >!< res || res !~ "[Ii]ntellio [Cc]amera [Ll]ogin") {
   url = "/login.html"; #Fallback-URL if the host uses this one instead.
   res = http_get_cache(port: port, item: url);
 
-  if(res !~ "Ii]ntellio [Cc]amera [Ll]ogin" && "window.onload = function()" >!< res
-    && "<td>User:" >!< res && "<td>Password:" >!< res) {
+  if(res !~ "[Ii]ntellio [Cc]amera [Ll]ogin" || "window.onload = function()" >!< res
+    || "<td>User:" >!< res || "<td>Password:" >!< res) {
     exit(0); #Software was not detected.
   }
 }

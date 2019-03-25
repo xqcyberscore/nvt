@@ -27,13 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813880");
-  script_version("$Revision: 12998 $");
+  script_version("2019-03-22T15:58:59+0000");
   script_cve_id("CVE-2017-12575");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-09 14:46:07 +0100 (Wed, 09 Jan 2019) $");
+  script_tag(name:"last_modification", value:"2019-03-22 15:58:59 +0000 (Fri, 22 Mar 2019)");
   script_tag(name:"creation_date", value:"2018-09-07 18:21:50 +0530 (Fri, 07 Sep 2018)");
+
   script_name("NEC Aterm WG2600HP2 Incorrect Access Control Vulnerability");
+
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -49,17 +51,15 @@ if(description)
   script_tag(name:"vuldetect", value:"Sends a crafted HTTP POST request and checks
   whether it is able to access sensitive information or not.");
 
-  script_tag(name:"insight", value:"The flaw exist due to an incorrect access
-  control for some web service APIs.");
+  script_tag(name:"insight", value:"The flaw exist due to an incorrect access control for some web service APIs.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a remote
   attacker to access configurations. This may aid to launch further attacks.");
 
   script_tag(name:"affected", value:"NEC Aterm WG2600HP2 wireless LAN router");
 
-  script_tag(name:"solution", value:"No known solution is available as of 09th
-  January, 2019. Information regarding this issue will be updated once solution
-  details are available. For updates refer to Reference links.");
+  script_tag(name:"solution", value:"No known solution is available as of 22nd March, 2019.
+  Information regarding this issue will be updated once solution details are available.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
   script_tag(name:"qod_type", value:"exploit");

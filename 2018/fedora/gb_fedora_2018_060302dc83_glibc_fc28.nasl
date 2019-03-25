@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875304");
-  script_version("$Revision: 14223 $");
+  script_version("2019-03-25T09:51:34+0000");
   script_cve_id("CVE-2018-19591", "CVE-2018-11237", "CVE-2018-11236");
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-03-25 09:51:34 +0000 (Mon, 25 Mar 2019)");
   script_tag(name:"creation_date", value:"2018-12-04 08:23:10 +0100 (Tue, 04 Dec 2018)");
   script_name("Fedora Update for glibc FEDORA-2018-060302dc83");
   script_category(ACT_GATHER_INFO);

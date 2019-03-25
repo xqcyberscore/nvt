@@ -30,12 +30,12 @@ CPE = 'cpe:/a:splunk:splunk';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106715");
-  script_version("$Revision: 12106 $");
+  script_version("2019-03-25T09:51:34+0000");
   script_cve_id("CVE-2017-5607");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-03-25 09:51:34 +0000 (Mon, 25 Mar 2019)");
   script_tag(name:"creation_date", value:"2017-04-03 09:45:47 +0700 (Mon, 03 Apr 2017)");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"3.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:N/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
