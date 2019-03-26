@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843937");
-  script_version("2019-03-25T10:39:54+0000");
+  script_version("2019-03-26T08:16:24+0000");
   script_cve_id("CVE-2017-12447");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-03-25 10:39:54 +0000 (Mon, 25 Mar 2019)");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-03-26 08:16:24 +0000 (Tue, 26 Mar 2019)");
   script_tag(name:"creation_date", value:"2019-03-21 09:50:58 +0100 (Thu, 21 Mar 2019)");
   script_name("Ubuntu Update for gdk-pixbuf USN-3912-1");
   script_category(ACT_GATHER_INFO);

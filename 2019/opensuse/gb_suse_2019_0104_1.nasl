@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852267");
-  script_version("$Revision: 13500 $");
+  script_version("2019-03-26T08:16:24+0000");
   script_cve_id("CVE-2019-6116");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-06 14:03:57 +0100 (Wed, 06 Feb 2019) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-03-26 08:16:24 +0000 (Tue, 26 Mar 2019)");
   script_tag(name:"creation_date", value:"2019-02-01 04:03:36 +0100 (Fri, 01 Feb 2019)");
   script_name("SuSE Update for ghostscript openSUSE-SU-2019:0104-1 (ghostscript)");
   script_category(ACT_GATHER_INFO);

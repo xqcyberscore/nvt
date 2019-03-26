@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851645");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("2019-03-26T08:16:24+0000");
+  script_tag(name:"last_modification", value:"2019-03-26 08:16:24 +0000 (Tue, 26 Mar 2019)");
   script_tag(name:"creation_date", value:"2017-11-11 07:31:25 +0100 (Sat, 11 Nov 2017)");
   script_cve_id("CVE-2016-7586", "CVE-2016-7589", "CVE-2016-7592", "CVE-2016-7599",
                 "CVE-2016-7623", "CVE-2016-7632", "CVE-2016-7635", "CVE-2016-7639",
@@ -40,8 +40,8 @@ if(description)
                 "CVE-2017-2539", "CVE-2017-7018", "CVE-2017-7030", "CVE-2017-7034",
                 "CVE-2017-7037", "CVE-2017-7039", "CVE-2017-7046", "CVE-2017-7048",
                 "CVE-2017-7055", "CVE-2017-7056", "CVE-2017-7061", "CVE-2017-7064");
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for webkit2gtk3 openSUSE-SU-2017:2991-1 (webkit2gtk3)");
   script_tag(name:"summary", value:"The remote host is missing an update for the 'webkit2gtk3'

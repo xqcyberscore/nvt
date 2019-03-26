@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843812");
-  script_version("$Revision: 14288 $");
+  script_version("2019-03-26T08:16:24+0000");
   script_cve_id("CVE-2018-1000807", "CVE-2018-1000808");
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 17:34:17 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-03-26 08:16:24 +0000 (Tue, 26 Mar 2019)");
   script_tag(name:"creation_date", value:"2018-11-09 06:05:26 +0100 (Fri, 09 Nov 2018)");
   script_name("Ubuntu Update for pyopenssl USN-3813-1");
   script_category(ACT_GATHER_INFO);

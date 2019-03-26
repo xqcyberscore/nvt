@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843266");
-  script_version("$Revision: 14140 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-13 13:26:09 +0100 (Wed, 13 Mar 2019) $");
+  script_version("2019-03-26T08:16:24+0000");
+  script_tag(name:"last_modification", value:"2019-03-26 08:16:24 +0000 (Tue, 26 Mar 2019)");
   script_tag(name:"creation_date", value:"2017-08-03 07:16:13 +0200 (Thu, 03 Aug 2017)");
   script_cve_id("CVE-2017-2538", "CVE-2017-7018", "CVE-2017-7030", "CVE-2017-7034",
                 "CVE-2017-7037", "CVE-2017-7039", "CVE-2017-7046", "CVE-2017-7048",
                 "CVE-2017-7052", "CVE-2017-7055", "CVE-2017-7056", "CVE-2017-7061",
                 "CVE-2017-7064");
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for webkit2gtk USN-3376-1");
   script_tag(name:"summary", value:"The remote host is missing an update for the 'webkit2gtk'

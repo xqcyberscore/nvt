@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875428");
-  script_version("$Revision: 14223 $");
+  script_version("2019-03-26T08:16:24+0000");
   script_cve_id("CVE-2019-5885", "CVE-2018-12291");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"2019-03-26 08:16:24 +0000 (Tue, 26 Mar 2019)");
   script_tag(name:"creation_date", value:"2019-01-23 04:04:05 +0100 (Wed, 23 Jan 2019)");
   script_name("Fedora Update for matrix-synapse FEDORA-2019-c6044b3fce");
   script_category(ACT_GATHER_INFO);

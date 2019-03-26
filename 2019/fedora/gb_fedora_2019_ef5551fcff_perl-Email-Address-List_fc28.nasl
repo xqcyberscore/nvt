@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875455");
-  script_version("$Revision: 14223 $");
+  script_version("2019-03-26T08:16:24+0000");
   script_cve_id("CVE-2018-18898");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"2019-03-26 08:16:24 +0000 (Tue, 26 Mar 2019)");
   script_tag(name:"creation_date", value:"2019-02-14 04:08:01 +0100 (Thu, 14 Feb 2019)");
   script_name("Fedora Update for perl-Email-Address-List FEDORA-2019-ef5551fcff");
   script_category(ACT_GATHER_INFO);

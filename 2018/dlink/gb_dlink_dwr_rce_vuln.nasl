@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113294");
-  script_version("$Revision: 14234 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-17 08:48:10 +0100 (Sun, 17 Mar 2019) $");
+  script_version("2019-03-25T12:00:38+0000");
+  script_tag(name:"last_modification", value:"2019-03-25 12:00:38 +0000 (Mon, 25 Mar 2019)");
   script_tag(name:"creation_date", value:"2018-11-08 17:13:37 +0100 (Thu, 08 Nov 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -38,7 +38,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"exploit");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("D-Link DWR/DAP Remote Code Execution Vulnerability");
 
@@ -52,6 +52,7 @@ if(description)
 
   script_xref(name:"URL", value:"https://community.greenbone.net/t/cve-2018-19300-remote-command-execution-vulnerability-in-d-link-dwr-and-dap-routers/1772");
   script_xref(name:"URL", value:"https://www.greenbone.net/schwerwiegende-sicherheitsluecke-in-d-link-routern-entdeckt/");
+  script_xref(name:"URL", value:"https://eu.dlink.com/de/de/support/support-news/2019/march/19/remote-command-execution-vulnerability-in-d-link-dwr-and-dap-routers");
 
   script_tag(name:"summary", value:"D-Link DWR and DAP Routers are prone to a Remote Code Execution (RCE) vulnerability.");
 
@@ -64,10 +65,11 @@ if(description)
   over the target system.");
 
   script_tag(name:"affected", value:"D-Link DWR and DAP Routers. Other devices and vendors might be
-  affected as well.");
+  affected as well. Please see the referenced vendor advisory for a complete list of affected
+  devices.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 15th March, 2019.
-  Information regarding this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"The vendor has started to release firmware updates to address this issue.
+  Please see the references for more information.");
 
   exit(0);
 }
