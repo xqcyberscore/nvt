@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107305");
-  script_version("$Revision: 12573 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-29 10:52:12 +0100 (Thu, 29 Nov 2018) $");
+  script_version("2019-03-27T07:53:00+0000");
+  script_tag(name:"last_modification", value:"2019-03-27 07:53:00 +0000 (Wed, 27 Mar 2019)");
   script_tag(name:"creation_date", value:"2018-04-20 16:04:01 +0200 (Fri, 20 Apr 2018)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"cvss_base", value:"5.0");
@@ -74,6 +74,7 @@ include("misc_func.inc");
 # array index = the file to check
 # array value = the description and the regex of the checked file separated with #-#. Optional a third entry separated by #-# containing an "extra_check" for http_vuln_check()
 genericfiles = make_array(
+"/.git-credentials", 'Git Credential Storage File containing a username and/or password.#-#^[ ]*https?://[^:@]+[:@]',
 "/.idea/WebServers.xml", 'IntelliJ Platform Configuration File containing a username and/or password.#-#<component name="WebServers">#-#(password|username)=',
 "/config/databases.yml", 'Symfony Framework Database Configuration File containing a username and/or password.#-#(param|class) ?:#-#(username|password) ?:',
 "/config/database.yml", 'Rails Database Configuration File containing a username and/or password.#-#(adapter|database) ?:#-#(username|password) ?:',

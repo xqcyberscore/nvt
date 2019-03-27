@@ -29,8 +29,8 @@ CPE = "cpe:/a:eclipse:jetty";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800286");
-  script_version("$Revision: 13960 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-01 14:18:27 +0100 (Fri, 01 Mar 2019) $");
+  script_version("2019-03-27T10:04:16+0000");
+  script_tag(name:"last_modification", value:"2019-03-27 10:04:16 +0000 (Wed, 27 Mar 2019)");
   script_tag(name:"creation_date", value:"2010-02-02 07:26:26 +0100 (Tue, 02 Feb 2010)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -91,7 +91,7 @@ urls = make_list("/jspsnoop/ERROR/",
 foreach url (urls) {
  url = url + xss;
 
- if(http_vuln_check(port: port, url: url, pattern: pattern)) {
+ if(http_vuln_check(port: port, url: url, pattern: pattern, check_header: TRUE)) {
    report = report_vuln_url(port: port, url: url);
    security_message(port: port, data: report);
    exit(0);
