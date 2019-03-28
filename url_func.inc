@@ -64,9 +64,9 @@ function url_hex2raw( s ) {
 # Function Name 'urlencode'
 ###############################################################
 
-function urlencode( str, unreserved ) {
+function urlencode( str, uppercase, unreserved ) {
 
-  local_var i, j, str, estr, char_set, num_set, specl_char_set, unreserv_chars, unreserved, flag;
+  local_var i, j, str, uppercase, estr, char_set, num_set, specl_char_set, unreserv_chars, unreserved, flag;
 
   if( ! str ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#str#-#urlencode" );
 
@@ -91,9 +91,12 @@ function urlencode( str, unreserved ) {
     }
 
     if( flag == "non_word" ) {
-      estr = estr + '%' + hexstr( str[i] );
+      if( uppercase )
+        estr = estr + '%' + toupper( hexstr( str[i] ) );
+      else
+        estr = estr + '%' + hexstr( str[i] );
     } else {
-      estr = estr + str[i];
+        estr = estr + str[i];
     }
   }
   return( estr );

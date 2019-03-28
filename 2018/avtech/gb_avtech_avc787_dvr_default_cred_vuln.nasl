@@ -24,35 +24,34 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/o:avtech:avc7xx_dvr";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813818");
-  script_version("$Revision: 12928 $");
+  script_version("2019-03-27T10:56:08+0000");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-03 09:54:17 +0100 (Thu, 03 Jan 2019) $");
+  script_tag(name:"last_modification", value:"2019-03-27 10:56:08 +0000 (Wed, 27 Mar 2019)");
   script_tag(name:"creation_date", value:"2018-08-07 12:34:02 +0530 (Tue, 07 Aug 2018)");
   script_tag(name:"qod_type", value:"remote_vul");
 
   script_name("AVTech AVC 787 DVR Web Interface Default Credentials Vulnerability");
 
-  script_tag(name:"summary", value:"This host is running AVTech AVC 787 DVR
-  device and is prone to default credentials vulnerability.");
+  script_tag(name:"summary", value:"This host is running an AVTech AVC 787 DVR
+  device and is prone to a default account authentication bypass vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Send crafted data via 'HTTP POST' request
-  and check whether it is able to login or not.");
+  script_tag(name:"vuldetect", value:"Sends crafted data via an HTTP POST request
+  and checks whether it is possible to login or not.");
 
-  script_tag(name:"insight", value:"The flaw is due to an existence of hard
-  coded credentials.");
+  script_tag(name:"insight", value:"The installation of Amcrest's IP camera software is lacking a proper
+  password configuration, which makes critical information and actions accessible for people with knowledge
+  of the default credentials.");
 
-  script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attacker to bypass authentication and launch further attacks.");
+  script_tag(name:"impact", value:"Successful exploitation would allow a remote attacker
+  to bypass authentication and launch further attacks.");
 
-  script_tag(name:"affected", value:"AVTech AVC 787 DVR device");
+  script_tag(name:"affected", value:"All AVTech AVC 787 DVR devices.");
 
-  script_tag(name:"solution", value:"Change the password.");
+  script_tag(name:"solution", value:"Change the passwords for user and admin access.");
 
   script_tag(name:"solution_type", value:"Mitigation");
 
@@ -64,37 +63,56 @@ if(description)
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
   script_dependencies("gb_avtech_avc7xx_dvr_device_detect.nasl");
-  script_mandatory_keys("AVTech/AVC7xx/DVR/Device/Detected");
+  script_mandatory_keys("avtech/avc7xx/dvr/detected");
   exit(0);
 }
 
+include("url_func.inc");
 include("host_details.inc");
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-if (!avPort = get_app_port(cpe:CPE))
-  exit(0);
+CPE = "cpe:/o:avtech:avc7xx_dvr";
 
-if(!dir = get_app_location(cpe: CPE, port: avPort)) exit(0);
+if(!port = get_app_port(cpe: CPE)) exit(0);
+if(!get_app_location(cpe: CPE, port: port)) exit(0); # nb: Unused but added to have a reference to the Detection-NVT
 
-if (dir == "/")
-  dir = "";
+creds = make_array("admin", "admin");
 
-url = dir + "home.htm";
-postData = "username=admin&password=admin&Submit=Submit";
+url = "/home.cgi";
 
-req = string("POST ", url, " HTTP/1.1\r\n",
-             "Host: ", get_host_ip(), "\r\n\r\n",
-              postData);
-buf = http_keepalive_send_recv(port:avPort, data:req);
+hostType = get_kb_item("avtech/avc7xx/dvr/host_type");
 
-if(buf =~ "HTTP/1.. 200 OK" && 'Server: AVTECH-WEBCAM' >< buf &&
-   buf =~ "<title>.*Video Web Server.*</title>" && 'Next Channel' >< buf &&
-  "Change Quality" >< buf && "Change Resolution" >< buf)
-{
-  report = 'It was possible to log directly into the AVTech AVC 787 DVR device' +
-           ' with the following credentials:\n\nUsername: admin\nPassword: admin';
-  security_message(port:avPort, data:report);
+foreach cred(keys(creds)) {
+
+  if(hostType == "SQ_Webcam") {
+    url = "/home.htm";
+    #username=admin&password=admin&Submit=Submit
+    data = "username=" + cred + "&password=" + creds[cred] + "&Submit=Submit";
+  } else if(hostType == "Video_Web_Server") {
+    baseURL = report_vuln_url(port: port, url: "/", url_only: TRUE);
+
+    #username=admin&password=abc&url=http%3A%2F%2F69.159.77.249%2F&Submit=Submit
+    data = "username=" + cred + "&password=" + creds[cred] + "&url=" + urlencode(str: baseURL, uppercase: TRUE) + "&Submit=Submit";
+  } else exit(0);
+
+  req = http_post_req(port: port, url: url, data: data, add_headers: make_array("Content-Type", "application/x-www-form-urlencoded"));
+
+  res = http_keepalive_send_recv(port: port, data: req);
+
+  if(res =~ "---\s*Video Web Server\s*---") {
+    VULN = TRUE;
+    if(!password)
+      password = "<no/empty password>";
+    report += '\n' + cred + ':' + creds[cred];
+  }
+
+}
+
+if(VULN) {
+  report = 'It was possible to login with the following default credentials (username:password):\n' + report;
+  security_message(port: port, data: report);
   exit(0);
 }
 

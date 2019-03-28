@@ -19,8 +19,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107623");
-  script_version("$Revision: 14191 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-14 15:23:24 +0100 (Thu, 14 Mar 2019) $");
+  script_version("2019-03-27T16:00:09+0000");
+  script_tag(name:"last_modification", value:"2019-03-27 16:00:09 +0000 (Wed, 27 Mar 2019)");
   script_tag(name:"creation_date", value:"2019-03-14 14:26:32 +0100 (Thu, 14 Mar 2019)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -63,8 +63,8 @@ foreach key (key_list) {
   foreach item (registry_enum_keys(key:key)) {
 
     appName = registry_get_sz(key:key + item, item:"DisplayName");
-    if(!appName || appName !~ "") continue;
-    pub =registry_get_sz(key:key + item, item:"Publisher");
+    if(!appName || appName !~ "PrimeDrive [0-9.]+") continue;
+    pub = registry_get_sz(key:key + item, item:"Publisher");
     if(!pub || pub !~ "Softbank") continue;
 
     concluded = appName;
@@ -83,8 +83,8 @@ foreach key (key_list) {
 
     set_kb_item(name:"softbank/primedrive_desktop_app/win/detected", value:TRUE);
 
-    register_and_report_cpe(app:"SoftBank " + appName, ver:version, concluded:concluded,
-                          base:"cpe:/a:softbank:primedrive_desktop_app:", expr:"^([0-9.]+)", insloc:location, regService:"smb-login", regPort:0);
+    register_and_report_cpe(app:pub + " " + appName, ver:version, concluded:concluded,
+                            base:"cpe:/a:softbank:primedrive_desktop_app:", expr:"^([0-9.]+)", insloc:location, regService:"smb-login", regPort:0);
     exit(0);
   }
 }

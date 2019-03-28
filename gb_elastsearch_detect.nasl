@@ -28,12 +28,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105031");
-  script_version("$Revision: 10400 $");
+  script_version("2019-03-27T22:08:25+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-04 16:14:24 +0200 (Wed, 04 Jul 2018) $");
+  script_tag(name:"last_modification", value:"2019-03-27 22:08:25 +0000 (Wed, 27 Mar 2019)");
   script_tag(name:"creation_date", value:"2014-05-22 15:00:02 +0200 (Thu, 22 May 2014)");
+
   script_name("Elasticsearch and Logstash Detection");
+
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
@@ -86,9 +88,9 @@ if( "application/json" >< buf && ( "build_hash" >< buf || "build_timestamp" >< b
 
   # nb: Note that we're registering Logstash here as well until
   # we're finding a way to detect Logstash on port 5044/tcp
-  set_kb_item( name:"www/" + port + "/elasticsearch", value:vers );
+  set_kb_item( name:"www/" + port + "/elasticsearch", value:version );
   set_kb_item( name:"elasticsearch/installed", value:TRUE );
-  set_kb_item( name:"www/" + port + "/logstash", value:vers );
+  set_kb_item( name:"www/" + port + "/logstash", value:version );
   set_kb_item( name:"logstash/installed", value:TRUE );
 
   register_product( cpe:elastic_cpe, location:install, port:port );

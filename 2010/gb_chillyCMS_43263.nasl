@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100809");
-  script_version("$Revision: 13660 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-14 10:48:45 +0100 (Thu, 14 Feb 2019) $");
+  script_version("2019-03-27T12:59:30+0000");
+  script_tag(name:"last_modification", value:"2019-03-27 12:59:30 +0000 (Wed, 27 Mar 2019)");
   script_tag(name:"creation_date", value:"2010-09-16 16:08:48 +0200 (Thu, 16 Sep 2010)");
   script_bugtraq_id(43263);
   script_tag(name:"cvss_base", value:"4.6");
@@ -47,7 +47,6 @@ if(description)
   script_xref(name:"URL", value:"http://www.chillycms.bplaced.net/chillyCMS/");
 
   script_tag(name:"summary", value:"chillyCMS is prone to a vulnerability that lets attackers upload
-
   arbitrary files. The issue occurs because the application fails to
   adequately sanitize user-supplied input.");
 
