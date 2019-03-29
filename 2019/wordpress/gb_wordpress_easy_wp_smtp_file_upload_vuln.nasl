@@ -23,8 +23,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.142166");
-  script_version("2019-03-26T09:49:34+0000");
-  script_tag(name:"last_modification", value:"2019-03-26 09:49:34 +0000 (Tue, 26 Mar 2019)");
+  script_version("2019-03-29T09:25:06+0000");
+  script_tag(name:"last_modification", value:"2019-03-29 09:25:06 +0000 (Fri, 29 Mar 2019)");
   script_tag(name:"creation_date", value:"2019-03-26 09:35:55 +0000 (Tue, 26 Mar 2019)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -70,16 +70,17 @@ if (!dir = get_app_location(cpe: CPE, port: port))
 if (dir == "/")
   dir = "";
 
-res = http_get_cache(port: port, item: dir + "/wp-content/plugins/easy-wp-smtp/readme.txt");
+url = dir + "/wp-content/plugins/easy-wp-smtp/readme.txt";
+res = http_get_cache(port: port, item: url);
 
 if ("Easy WP SMTP" >< res && "Changelog" >< res) {
+
   vers = eregmatch(pattern: "Stable tag: ([0-9.]+)", string: res);
-  if (!isnull(vers[1])) {
-    if (version_is_equal(version: vers[1], test_version: "1.3.9")) {
-      report = report_fixed_ver(installed_version: vers[1], fixed_version: "1.3.9.1");
-      security_message(port: port, data: report);
-      exit(0);
-    }
+
+  if (vers[1] && version_is_equal(version: vers[1], test_version: "1.3.9")) {
+    report = report_fixed_ver(installed_version: vers[1], fixed_version: "1.3.9.1", file_checked: url);
+    security_message(port: port, data: report);
+    exit(0);
   }
 }
 

@@ -18,20 +18,20 @@
 
 if (description)
 {
-  script_oid("1.3.6.1.4.1.25623.1.0.112519");
+  script_oid("1.3.6.1.4.1.25623.1.0.112548");
   script_version("2019-03-29T09:25:06+0000");
   script_tag(name:"last_modification", value:"2019-03-29 09:25:06 +0000 (Fri, 29 Mar 2019)");
-  script_tag(name:"creation_date", value:"2019-02-18 10:23:00 +0100 (Mon, 18 Feb 2019)");
-  script_tag(name:"cvss_base", value:"3.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
+  script_tag(name:"creation_date", value:"2019-03-28 23:28:11 +0100 (Thu, 28 Mar 2019)");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
 
-  script_cve_id("CVE-2018-14846");
+  script_cve_id("CVE-2018-20556");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_name("WordPress Multi Step Form Plugin before 1.2.8 XSS Vulnerability");
+  script_name("WordPress Booking Calendar Plugin < 8.4.5 SQL Injection Vulnerability");
 
   script_category(ACT_GATHER_INFO);
 
@@ -40,13 +40,13 @@ if (description)
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_mandatory_keys("wordpress/installed");
 
-  script_tag(name:"summary", value:"The Wordpress plugin Multi Step Form is prone to a cross-site scripting vulnerability.");
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"affected", value:"WordPress Multi Step Form plugin before version 1.2.8.");
-  script_tag(name:"solution", value:"Upgrade to version 1.2.8 or later.");
+  script_tag(name:"summary", value:"The Wordpress plugin Booking Calendar is prone to an SQL injection vulnerability.");
+  script_tag(name:"impact", value:"Successful exploitation would allow an authenticated attacker to read arbitrary data from the database.");
+  script_tag(name:"affected", value:"WordPress Booking Calendar plugin before version 8.4.5.");
+  script_tag(name:"solution", value:"Update to version 8.4.5 or later.");
 
-  script_xref(name:"URL", value:"https://wordpress.org/plugins/multi-step-form/#developers");
-  script_xref(name:"URL", value:"https://ansawaf.blogspot.com/2018/10/cve-2018-14846-multiple-stored-xss-in.html");
+  script_xref(name:"URL", value:"https://packetstormsecurity.com/files/151692/WordPress-Booking-Calendar-8.4.3-SQL-Injection.html");
+  script_xref(name:"URL", value:"https://wordpress.org/plugins/booking/#developers");
 
   exit(0);
 }
@@ -67,15 +67,15 @@ if(!dir = get_app_location(cpe: CPE, port: port))
 if(dir == "/")
   dir = "";
 
-url = dir + "/wp-content/plugins/two-factor-authentication/readme.txt";
+url = dir + "/wp-content/plugins/booking/readme.txt";
 res = http_get_cache(port: port, item: url);
 
-if("=== Multi Step Form ===" >< res && "Changelog" >< res) {
+if("=== Booking Calendar ===" >< res && "Changelog" >< res) {
 
   vers = eregmatch(pattern: "Stable tag: ([0-9.]+)", string: res);
 
-  if(vers[1] && version_is_less(version: vers[1], test_version: "1.2.8")) {
-    report = report_fixed_ver(installed_version: vers[1], fixed_version: "1.2.8", file_checked: url);
+  if(vers[1] && version_is_less(version: vers[1], test_version: "8.4.5")) {
+    report = report_fixed_ver(installed_version: vers[1], fixed_version: "8.4.5", file_checked: url);
     security_message(port: port, data: report);
     exit(0);
   }

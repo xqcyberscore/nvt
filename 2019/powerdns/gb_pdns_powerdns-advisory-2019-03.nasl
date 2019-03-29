@@ -23,11 +23,11 @@ CPE = 'cpe:/a:powerdns:authoritative_server';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.142146");
-  script_version("$Revision: 14306 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 10:51:06 +0100 (Tue, 19 Mar 2019) $");
+  script_version("2019-03-29T08:13:51+0000");
+  script_tag(name:"last_modification", value:"2019-03-29 08:13:51 +0000 (Fri, 29 Mar 2019)");
   script_tag(name:"creation_date", value:"2019-03-19 09:39:57 +0100 (Tue, 19 Mar 2019)");
-  script_tag(name:"cvss_base", value:"6.4");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
 
   script_cve_id("CVE-2019-3871");
 

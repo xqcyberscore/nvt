@@ -19,8 +19,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112539");
-  script_version("2019-03-21T13:38:28+0000");
-  script_tag(name:"last_modification", value:"2019-03-21 13:38:28 +0000 (Thu, 21 Mar 2019)");
+  script_version("2019-03-29T09:25:06+0000");
+  script_tag(name:"last_modification", value:"2019-03-29 09:25:06 +0000 (Fri, 29 Mar 2019)");
   script_tag(name:"creation_date", value:"2019-03-21 12:10:56 +0100 (Thu, 21 Mar 2019)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
@@ -65,14 +65,15 @@ if(!dir = get_app_location(cpe: CPE, port: port))
 if(dir == "/")
   dir = "";
 
-res = http_get_cache(port: port, item: dir + "/wp-content/plugins/hrm/readme.txt");
+url = dir + "/wp-content/plugins/hrm/readme.txt";
+res = http_get_cache(port: port, item: url);
 
 if("=== WP Human Resource Management ===" >< res && "Changelog" >< res) {
 
   vers = eregmatch(pattern: "= ([0-9.]+) -", string: res);
 
-  if(!isnull(vers[1]) && version_is_less(version: vers[1], test_version: "2.2.6")) {
-    report = report_fixed_ver(installed_version: vers[1], fixed_version: "2.2.6");
+  if(vers[1] && version_is_less(version: vers[1], test_version: "2.2.6")) {
+    report = report_fixed_ver(installed_version: vers[1], fixed_version: "2.2.6", file_checked: url);
     security_message(port: port, data: report);
     exit(0);
   }

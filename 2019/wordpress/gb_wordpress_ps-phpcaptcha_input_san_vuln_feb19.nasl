@@ -19,8 +19,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112534");
-  script_version("$Revision: 14255 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 10:17:51 +0100 (Mon, 18 Mar 2019) $");
+  script_version("2019-03-29T09:25:06+0000");
+  script_tag(name:"last_modification", value:"2019-03-29 09:25:06 +0000 (Fri, 29 Mar 2019)");
   script_tag(name:"creation_date", value:"2019-03-06 12:00:00 +0100 (Wed, 06 Mar 2019)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -66,14 +66,15 @@ if(!dir = get_app_location(cpe: CPE, port: port))
 if(dir == "/")
   dir = "";
 
-res = http_get_cache(port: port, item: dir + "/wp-content/plugins/ps-phpcaptcha/readme.txt");
+url = dir + "/wp-content/plugins/ps-phpcaptcha/readme.txt";
+res = http_get_cache(port: port, item: url);
 
 if("=== PS PHPCaptcha WP ===" >< res && "Changelog" >< res) {
 
   vers = eregmatch(pattern: "= ([0-9.]+) =", string: res);
 
-  if(!isnull(vers[1]) && version_is_less(version: vers[1], test_version: "1.2.0")) {
-    report = report_fixed_ver(installed_version: vers[1], fixed_version: "1.2.0");
+  if(vers[1] && version_is_less(version: vers[1], test_version: "1.2.0")) {
+    report = report_fixed_ver(installed_version: vers[1], fixed_version: "1.2.0", file_checked: url);
     security_message(port: port, data: report);
     exit(0);
   }

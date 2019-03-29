@@ -30,10 +30,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112487");
-  script_version("$Revision: 13595 $");
+  script_version("2019-03-29T09:25:06+0000");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-12 09:06:21 +0100 (Tue, 12 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-03-29 09:25:06 +0000 (Fri, 29 Mar 2019)");
   script_tag(name:"creation_date", value:"2019-01-16 11:33:11 +0100 (Wed, 16 Jan 2019)");
 
   script_cve_id("CVE-2017-18356");
@@ -72,18 +72,24 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("version_func.inc");
 
-if(!port = get_app_port(cpe: CPE)) exit(0);
-if(!dir = get_app_location(cpe: CPE, port:port)) exit(0);
+if(!port = get_app_port(cpe: CPE))
+  exit(0);
 
-if(dir == "/") dir = "";
+if(!dir = get_app_location(cpe: CPE, port:port))
+  exit(0);
 
-res = http_get_cache(port:port, item:dir + "/wp-content/plugins/woocommerce/readme.txt");
+if(dir == "/")
+  dir = "";
+
+url = dir + "/wp-content/plugins/woocommerce/readme.txt";
+res = http_get_cache(port:port, item:url);
 
 if("WooCommerce" >< res && "Changelog" >< res) {
+
   vers = eregmatch(pattern: "Stable tag: ([0-9.]+)", string: res);
 
-  if(!isnull(vers[1]) && version_is_less(version:vers[1], test_version:"3.2.4")) {
-    report = report_fixed_ver(installed_version:vers[1], fixed_version:"3.2.4", install_path:dir);
+  if(vers[1] && version_is_less(version:vers[1], test_version:"3.2.4")) {
+    report = report_fixed_ver(installed_version:vers[1], fixed_version:"3.2.4", file_checked:url);
     security_message(port:port, data:report);
     exit(0);
   }

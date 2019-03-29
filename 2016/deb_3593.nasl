@@ -29,16 +29,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.703593");
-  script_version("$Revision: 14279 $");
+  script_version("2019-03-29T08:13:51+0000");
   script_cve_id("CVE-2015-8806", "CVE-2016-1762", "CVE-2016-1833", "CVE-2016-1834",
                   "CVE-2016-1835", "CVE-2016-1836", "CVE-2016-1837", "CVE-2016-1838",
                   "CVE-2016-1839", "CVE-2016-1840", "CVE-2016-2073", "CVE-2016-3627",
                   "CVE-2016-3705", "CVE-2016-4447", "CVE-2016-4449", "CVE-2016-4483");
   script_name("Debian Security Advisory DSA 3593-1 (libxml2 - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:48:34 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-03-29 08:13:51 +0000 (Fri, 29 Mar 2019)");
   script_tag(name:"creation_date", value:"2016-06-02 00:00:00 +0200 (Thu, 02 Jun 2016)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

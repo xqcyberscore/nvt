@@ -19,8 +19,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112518");
-  script_version("$Revision: 13730 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-18 11:06:01 +0100 (Mon, 18 Feb 2019) $");
+  script_version("2019-03-29T09:25:06+0000");
+  script_tag(name:"last_modification", value:"2019-03-29 09:25:06 +0000 (Fri, 29 Mar 2019)");
   script_tag(name:"creation_date", value:"2019-02-18 10:18:00 +0100 (Mon, 18 Feb 2019)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -67,14 +67,15 @@ if(!dir = get_app_location(cpe: CPE, port: port))
 if(dir == "/")
   dir = "";
 
-res = http_get_cache(port: port, item: dir + "/wp-content/plugins/two-factor-authentication/readme.txt");
+url = dir + "/wp-content/plugins/two-factor-authentication/readme.txt";
+res = http_get_cache(port: port, item: url);
 
 if("=== Two Factor Authentication ===" >< res && "Changelog" >< res) {
 
   vers = eregmatch(pattern: "Stable tag: ([0-9.]+)", string: res);
 
-  if(!isnull(vers[1]) && version_is_less(version: vers[1], test_version: "1.3.13")) {
-    report = report_fixed_ver(installed_version: vers[1], fixed_version: "1.3.13");
+  if(vers[1] && version_is_less(version: vers[1], test_version: "1.3.13")) {
+    report = report_fixed_ver(installed_version: vers[1], fixed_version: "1.3.13", file_checked: url);
     security_message(port: port, data: report);
     exit(0);
   }

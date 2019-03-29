@@ -19,8 +19,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112533");
-  script_version("$Revision: 14024 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-07 08:16:22 +0100 (Thu, 07 Mar 2019) $");
+  script_version("2019-03-29T09:25:06+0000");
+  script_tag(name:"last_modification", value:"2019-03-29 09:25:06 +0000 (Fri, 29 Mar 2019)");
   script_tag(name:"creation_date", value:"2019-03-06 11:54:00 +0100 (Wed, 06 Mar 2019)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -68,14 +68,15 @@ if(!dir = get_app_location(cpe: CPE, port: port))
 if(dir == "/")
   dir = "";
 
-res = http_get_cache(port: port, item: dir + "/wp-content/plugins/media-file-manager/readme.txt");
+url = dir + "/wp-content/plugins/media-file-manager/readme.txt";
+res = http_get_cache(port: port, item: url);
 
 if("Media File Manager" >< res && "Changelog" >< res) {
 
   vers = eregmatch(pattern: "Stable tag: ([0-9.]+)", string: res);
 
-  if(!isnull(vers[1]) && version_is_less_equal(version: vers[1], test_version: "1.4.2")) {
-    report = report_fixed_ver(installed_version: vers[1], fixed_version: "NoneAvailable");
+  if(vers[1] && version_is_less_equal(version: vers[1], test_version: "1.4.2")) {
+    report = report_fixed_ver(installed_version: vers[1], fixed_version: "NoneAvailable", file_checked: url);
     security_message(port: port, data: report);
     exit(0);
   }

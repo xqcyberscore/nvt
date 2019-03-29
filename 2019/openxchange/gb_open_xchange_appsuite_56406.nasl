@@ -30,11 +30,11 @@ CPE = "cpe:/a:open-xchange:open-xchange_appsuite";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141951");
-  script_version("$Revision: 13381 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-31 11:15:33 +0100 (Thu, 31 Jan 2019) $");
+  script_version("2019-03-29T08:13:51+0000");
+  script_tag(name:"last_modification", value:"2019-03-29 08:13:51 +0000 (Fri, 29 Mar 2019)");
   script_tag(name:"creation_date", value:"2019-01-31 17:11:41 +0700 (Thu, 31 Jan 2019)");
-  script_tag(name:"cvss_base", value:"2.6");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"3.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
 
   script_cve_id("CVE-2018-13104");
 
