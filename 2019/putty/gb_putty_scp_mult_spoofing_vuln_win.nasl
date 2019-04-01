@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_putty_scp_mult_spoofing_vuln_win.nasl 13532 2019-02-08 07:51:34Z mmartin $
 #
 # PuTTY SCP Multiple Spoofing Vulnerabilities (Windows)
 #
@@ -29,13 +28,14 @@ CPE = "cpe:/a:putty:putty";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814661");
-  script_version("$Revision: 13532 $");
+  script_version("2019-03-29T14:00:56+0000");
   script_cve_id("CVE-2019-6109", "CVE-2019-6110");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-08 08:51:34 +0100 (Fri, 08 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-03-29 14:00:56 +0000 (Fri, 29 Mar 2019)");
   script_tag(name:"creation_date", value:"2019-01-17 15:17:22 +0530 (Thu, 17 Jan 2019)");
   script_tag(name:"qod_type", value:"registry");
+
   script_name("PuTTY SCP Multiple Spoofing Vulnerabilities (Windows)");
 
   script_tag(name:"summary", value:"The host is installed with PuTTY and is
@@ -56,13 +56,12 @@ if(description)
 
   script_tag(name:"affected", value:"PuTTY version 0.70 and earlier on Windows.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 17th
-  January, 2019. Information regarding this issue will be updated once solution
-  details are available. For updates refer to Reference links.");
+  script_tag(name:"solution", value:"Update to version 0.71 or later.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
+
   script_xref(name:"URL", value:"https://sintonen.fi/advisories/scp-client-multiple-vulnerabilities.txt");
-  script_xref(name:"URL", value:"https://www.putty.org");
+  script_xref(name:"URL", value:"https://www.chiark.greenend.org.uk/~sgtatham/putty/wishlist/pscp-unsanitised-server-output.html");
 
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
@@ -72,7 +71,6 @@ if(description)
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
 
@@ -80,10 +78,10 @@ infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE);
 putVer = infos['version'];
 path = infos['location'];
 
-if(version_is_less_equal(version:putVer, test_version:"0.70"))
-{
-  report = report_fixed_ver(installed_version:putVer, fixed_version:"No fix is available yet", install_path:path);
+if(version_is_less(version:putVer, test_version:"0.71")) {
+  report = report_fixed_ver(installed_version:putVer, fixed_version:"0.71", install_path:path);
   security_message(data:report);
   exit(0);
 }
+
 exit(99);

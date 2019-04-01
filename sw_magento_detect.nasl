@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105227");
-  script_version("$Revision: 11276 $");
+  script_version("2019-03-29T12:36:57+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 10:18:40 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"2019-03-29 12:36:57 +0000 (Fri, 29 Mar 2019)");
   script_tag(name:"creation_date", value:"2015-02-09 12:00:00 +0100 (Mon, 09 Feb 2015)");
   script_name("Magento Shop Detection");
   script_category(ACT_GATHER_INFO);
@@ -87,7 +87,7 @@ foreach dir( make_list_unique( "/", "/magento", "/shop", cgi_dirs( port:port ) )
   url4 = dir + "/downloader/";
   res4 = http_get_cache( item:url4, port:port );
 
-  if( res1 && "Magento Inc." >< res1 || res2 && "/skin/frontend/" >< res2 ||
+  if( res1 && "Magento Inc." >< res1 || res2 && ("/skin/frontend/" >< res2 || "text/x-magento-init" >< res2) ||
       res3 && "=== Improvements ===" >< res3 || res4 && "Magento Connect Manager ver." >< res4 ) {
 
     version = "unknown";
@@ -95,9 +95,10 @@ foreach dir( make_list_unique( "/", "/magento", "/shop", cgi_dirs( port:port ) )
 
     ver = eregmatch( pattern:"==== ([0-9\.]+) ====", string:res3 );
 
-    #nb: The RELEASE_NOTES.txt is not updated anymore in versions later then 1.7.0.2
-    if( ver[1] && version_is_less_equal( version:ver[1], test_version:"1.7.0.2" ) &&
-        "NOTE: Current Release Notes are maintained at:" >!< res3 ) {
+    #nb: The RELEASE_NOTES.txt is not updated between version 1.7.0.2 and 1.9.1.0
+    if( ver[1] && ( version_is_less_equal( version:ver[1], test_version:"1.7.0.2" ) &&
+        "NOTE: Current Release Notes are maintained at:" >!< res3 ) ||
+        version_is_greater_equal( version:ver[1], test_version:"1.9.1.0" )) {
       conclUrl = report_vuln_url( port:port, url:url3, url_only:TRUE );
       version  = ver[1];
       flag     = TRUE;

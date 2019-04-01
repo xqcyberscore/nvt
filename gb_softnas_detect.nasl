@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141347");
-  script_version("$Revision: 10901 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:09:57 +0200 (Fri, 10 Aug 2018) $");
+  script_version("2019-03-31T11:24:51+0000");
+  script_tag(name:"last_modification", value:"2019-03-31 11:24:51 +0000 (Sun, 31 Mar 2019)");
   script_tag(name:"creation_date", value:"2018-08-03 14:38:20 +0700 (Fri, 03 Aug 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -64,17 +64,19 @@ port = get_http_port(default: 443);
 res = http_get_cache(port: port, item: "/softnas/login.php");
 
 if ("SoftNAS Login</title>" >< res && "SoftNAS StorageCenter" >< res) {
+
+  install = "/softnas";
   version = "unknown";
 
   set_kb_item(name: "softnas_cloud/detected", value: TRUE);
+  set_kb_item(name: "softnas_cloud/www/detected", value: TRUE);
 
   cpe = 'cpe:/a:softnas:cloud';
 
-  register_product(cpe: cpe, location: "/softnas", port: port);
+  register_product(cpe: cpe, location: install, port: port, service: "www");
 
-  log_message(data: build_detection_report(app: "SoftNAS Cloud", version: version, install: "/softnas", cpe: cpe),
+  log_message(data: build_detection_report(app: "SoftNAS Cloud", version: version, install: install, cpe: cpe),
               port: port);
-  exit(0);
 }
 
 exit(0);
