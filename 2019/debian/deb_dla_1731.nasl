@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891731");
-  script_version("2019-03-27T23:00:00+0100");
+  script_version("2019-04-02T06:16:35+0000");
   script_cve_id("CVE-2016-10741", "CVE-2017-13305", "CVE-2017-5753", "CVE-2018-12896", "CVE-2018-13053", "CVE-2018-16862", "CVE-2018-16884", "CVE-2018-17972", "CVE-2018-18281", "CVE-2018-18690", "CVE-2018-18710", "CVE-2018-19824", "CVE-2018-19985", "CVE-2018-20169", "CVE-2018-20511", "CVE-2018-3639", "CVE-2018-5848", "CVE-2018-5953", "CVE-2019-3701", "CVE-2019-3819", "CVE-2019-6974", "CVE-2019-7221", "CVE-2019-7222", "CVE-2019-9213");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-03-27 23:00:00 +0100 (Wed, 27 Mar 2019)");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"2019-04-02 06:16:35 +0000 (Tue, 02 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-03-27 23:00:00 +0100 (Wed, 27 Mar 2019)");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1731-1] linux security update)");
   script_category(ACT_GATHER_INFO);
@@ -118,7 +118,7 @@ CVE-2018-17972
 
 Jann Horn reported that the /proc/*/stack files in procfs leaked
 sensitive data from the kernel. These files are now only readable
-by users with the CAP_SYS_AD ... 
+by users with the CAP_SYS_AD ...
 
   Description truncated. Please see the references for more information.");
 

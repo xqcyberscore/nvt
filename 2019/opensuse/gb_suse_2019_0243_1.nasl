@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852316");
-  script_version("$Revision: 13881 $");
+  script_version("2019-04-02T06:16:35+0000");
   script_cve_id("CVE-2019-3814");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-26 14:01:46 +0100 (Tue, 26 Feb 2019) $");
+  script_tag(name:"cvss_base", value:"4.9");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:N");
+  script_tag(name:"last_modification", value:"2019-04-02 06:16:35 +0000 (Tue, 02 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-02-26 04:11:58 +0100 (Tue, 26 Feb 2019)");
   script_name("SuSE Update for dovecot23 openSUSE-SU-2019:0243-1 (dovecot23)");
   script_category(ACT_GATHER_INFO);

@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813231");
-  script_version("$Revision: 12120 $");
+  script_version("2019-03-29T14:43:50+0000");
   script_cve_id("CVE-2018-4990", "CVE-2018-4947", "CVE-2018-4948", "CVE-2018-4966",
                 "CVE-2018-4968", "CVE-2018-4978", "CVE-2018-4982", "CVE-2018-4984",
                 "CVE-2018-4996", "CVE-2018-4952", "CVE-2018-4954", "CVE-2018-4958",
@@ -41,10 +41,11 @@ if(description)
                 "CVE-2018-4969", "CVE-2018-4970", "CVE-2018-4972", "CVE-2018-4973",
                 "CVE-2018-4975", "CVE-2018-4976", "CVE-2018-4981", "CVE-2018-4986",
                 "CVE-2018-4985", "CVE-2018-4953", "CVE-2018-4987", "CVE-2018-4965",
-                "CVE-2018-4993", "CVE-2018-4995", "CVE-2018-4960");
+                "CVE-2018-4993", "CVE-2018-4995", "CVE-2018-4960", "CVE-2018-12812",
+                "CVE-2018-12815");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-03-29 14:43:50 +0000 (Fri, 29 Mar 2019)");
   script_tag(name:"creation_date", value:"2018-05-15 12:13:36 +0530 (Tue, 15 May 2018)");
   script_name("Adobe Reader 2017 Security Updates(apsb18-09)-Windows");
 
@@ -78,20 +79,23 @@ if(description)
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_win.nasl");
   script_mandatory_keys("Adobe/Reader/Win/Ver");
+
   exit(0);
 }
 
 include("host_details.inc");
 include("version_func.inc");
 
-infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
-readerVer = infos['version'];
-InstallPath = infos['location'];
+if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE))
+  exit(0);
 
-if(version_in_range(version:readerVer, test_version:"17.0", test_version2:"17.011.30079"))
-{
-  report = report_fixed_ver(installed_version:readerVer, fixed_version:"2017.011.30080", install_path:InstallPath);
+vers = infos["version"];
+path = infos["location"];
+
+if(version_in_range(version:vers, test_version:"17.0", test_version2:"17.011.30079")) {
+  report = report_fixed_ver(installed_version:vers, fixed_version:"2017.011.30080", install_path:path);
   security_message(data:report);
   exit(0);
 }
-exit(0);
+
+exit(99);

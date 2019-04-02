@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852295");
-  script_version("$Revision: 13849 $");
+  script_version("2019-04-01T07:47:16+0000");
   script_cve_id("CVE-2018-20340");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-25 13:56:39 +0100 (Mon, 25 Feb 2019) $");
+  script_tag(name:"cvss_base", value:"4.6");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-04-01 07:47:16 +0000 (Mon, 01 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-02-19 04:04:33 +0100 (Tue, 19 Feb 2019)");
   script_name("SuSE Update for libu2f-host openSUSE-SU-2019:0199-1 (libu2f-host)");
   script_category(ACT_GATHER_INFO);

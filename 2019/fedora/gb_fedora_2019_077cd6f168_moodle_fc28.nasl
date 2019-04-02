@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875437");
-  script_version("$Revision: 14223 $");
+  script_version("2019-04-01T07:47:16+0000");
   script_cve_id("CVE-2019-3810", "CVE-2019-3809", "CVE-2019-3808");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-04-01 07:47:16 +0000 (Mon, 01 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-01-31 04:08:04 +0100 (Thu, 31 Jan 2019)");
   script_name("Fedora Update for moodle FEDORA-2019-077cd6f168");
   script_category(ACT_GATHER_INFO);

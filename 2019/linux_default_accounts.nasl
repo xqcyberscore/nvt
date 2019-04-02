@@ -118,8 +118,7 @@ user_re = str_replace(find:'
 ', replace:'|', string:users);
 
 # unixoid
-cmd = string('echo "'+ password +'"|sudo -S 2>/dev/null grep -oE \'^('+ user_re +'):[^\\*]*?:\' /etc/shadow|sed -re \'s/^([^:]+):.*/\\1/\'');
-
+cmd = string('echo "'+ password +'"|sudo -S 2>/dev/null grep -oE \'^('+ user_re +'):[^\\*\\!]*?:\' /etc/shadow|sed -re \'s/^([^:]+):.*/\\1/\'');
 # switch for mac
 if(get_kb_item("ssh/login/osx_name")){
 	cmd = string('dscacheutil -q user|grep -E \'^(name|shell|password)\'|sed \'N;N;s/\\n/ /g\'|grep -vE \'password: \\* shell: /usr/bin/false\'|grep -vE \'^name: (_uucp|root|_mbsetupuser)\'|grep -E \'^name: (_[[:alpha:]]+|daemon|nobody)\'|sed -E \'s/^name: ([[:graph:]]+) .*/\\1/\'');

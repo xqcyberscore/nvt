@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108507");
-  script_version("$Revision: 13857 $");
-  script_cve_id("CVE-2018-19518", "CVE-2018-20783");
+  script_version("2019-03-29T15:39:23+0000");
+  script_cve_id("CVE-2018-19518", "CVE-2018-20783", "CVE-2018-19396");
   script_bugtraq_id(106018);
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-26 04:40:29 +0100 (Tue, 26 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-03-29 15:39:23 +0000 (Fri, 29 Mar 2019)");
   script_tag(name:"creation_date", value:"2018-12-11 09:08:47 +0100 (Tue, 11 Dec 2018)");
   script_name("PHP Multiple Vulnerabilities - Dec18 (Linux)");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -61,10 +61,14 @@ if(description)
 
   - the imap_open functions which allows to run arbitrary shell commands via mailbox parameter.
 
-  - a Heap Buffer Overflow (READ: 4) in phar_parse_pharfile.");
+  - a Heap Buffer Overflow (READ: 4) in phar_parse_pharfile.
+
+  - ext/standard/var_unserializer.c allows attackers to cause a denial of service (application crash)
+  via an unserialize call for the com, dotnet, or variant class.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to execute remote code on affected application/system.");
+  attackers to execute remote code on the affected application/system and/or
+  cause a cause a denial of service.");
 
   script_tag(name:"affected", value:"PHP versions 5.x before 5.6.39, 7.0.x before 7.0.33, 7.1.x before 7.1.25
   and 7.2.x before 7.2.13.");

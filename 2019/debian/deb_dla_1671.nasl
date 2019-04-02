@@ -21,13 +21,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891671");
-  script_version("$Revision: 14282 $");
+  script_version("2019-04-01T07:47:16+0000");
   script_cve_id("CVE-2018-4056", "CVE-2018-4058", "CVE-2018-4059");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1671-1] coturn security update)");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 15:55:18 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-04-01 07:47:16 +0000 (Mon, 01 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-02-11 00:00:00 +0100 (Mon, 11 Feb 2019)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

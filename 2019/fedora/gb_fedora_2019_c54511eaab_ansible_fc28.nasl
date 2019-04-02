@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875491");
-  script_version("$Revision: 14223 $");
+  script_version("2019-04-02T06:16:35+0000");
   script_cve_id("CVE-2019-3828", "CVE-2018-10874", "CVE-2018-10875", "CVE-2018-10855");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-04-02 06:16:35 +0000 (Tue, 02 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-03-04 04:11:36 +0100 (Mon, 04 Mar 2019)");
   script_name("Fedora Update for ansible FEDORA-2019-c54511eaab");
   script_category(ACT_GATHER_INFO);

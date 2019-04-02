@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852342");
-  script_version("$Revision: 14131 $");
+  script_version("2019-04-01T07:47:16+0000");
   script_cve_id("CVE-2019-3817");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-13 09:59:27 +0100 (Wed, 13 Mar 2019) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-04-01 07:47:16 +0000 (Mon, 01 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-03-12 04:08:57 +0100 (Tue, 12 Mar 2019)");
   script_name("SuSE Update for libcomps openSUSE-SU-2019:0323-1 (libcomps)");
   script_category(ACT_GATHER_INFO);

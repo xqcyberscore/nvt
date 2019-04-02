@@ -29,13 +29,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852240");
-  script_version("$Revision: 13943 $");
+  script_version("2019-04-02T06:16:35+0000");
   script_cve_id("CVE-2018-12232", "CVE-2018-14625", "CVE-2018-16862", "CVE-2018-16884",
                 "CVE-2018-18397", "CVE-2018-19407", "CVE-2018-19824", "CVE-2018-19854",
                 "CVE-2018-19985", "CVE-2018-20169", "CVE-2018-9568", "CVE-2013-2547");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-28 16:28:52 +0100 (Thu, 28 Feb 2019) $");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"2019-04-02 06:16:35 +0000 (Tue, 02 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-01-18 04:02:14 +0100 (Fri, 18 Jan 2019)");
   script_name("SuSE Update for the Linux Kernel openSUSE-SU-2019:0065-1 (kernel)");
   script_category(ACT_GATHER_INFO);

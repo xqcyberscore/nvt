@@ -23,11 +23,11 @@ CPE = "cpe:/a:libreoffice:libreoffice";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814904");
-  script_version("$Revision: 13540 $");
+  script_version("2019-04-01T07:47:16+0000");
   script_cve_id("CVE-2018-16858");
-  script_tag(name:"cvss_base", value:"9.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-08 14:07:49 +0100 (Fri, 08 Feb 2019) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-04-01 07:47:16 +0000 (Mon, 01 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-02-07 10:41:49 +0530 (Thu, 07 Feb 2019)");
   script_name("LibreOffice Remote Code Execution Vulnerability Feb19 (Mac OS X)");
 

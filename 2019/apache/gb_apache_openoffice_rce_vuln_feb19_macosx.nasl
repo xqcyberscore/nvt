@@ -23,11 +23,11 @@ CPE = "cpe:/a:openoffice:openoffice.org";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814828");
-  script_version("$Revision: 13540 $");
+  script_version("2019-04-01T13:09:44+0000");
   script_cve_id("CVE-2018-16858");
-  script_tag(name:"cvss_base", value:"9.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-08 14:07:49 +0100 (Fri, 08 Feb 2019) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-04-01 13:09:44 +0000 (Mon, 01 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-02-07 11:49:32 +0530 (Thu, 07 Feb 2019)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Apache OpenOffice Remote Code Execution Vulnerability Feb19 (Mac OS X)");
@@ -59,15 +59,16 @@ if(description)
   script_family("General");
   script_dependencies("gb_openoffice_detect_macosx.nasl");
   script_mandatory_keys("OpenOffice/MacOSX/Version");
+
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");
 
-log_message(data:"");
-infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE);
+if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE))
+  exit(0);
+
 opver = infos['version'];
 opath = infos['location'];
 
@@ -76,4 +77,5 @@ if(version_is_less_equal(version: opver, test_version:"4.1.6")) {
   security_message(data:report);
   exit(0);
 }
+
 exit(99);

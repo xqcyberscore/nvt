@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843934");
-  script_version("$Revision: 14312 $");
+  script_version("2019-04-02T06:16:35+0000");
   script_cve_id("CVE-2017-18241", "CVE-2018-1120", "CVE-2018-19985", "CVE-2018-7740", "CVE-2019-6133");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-19 11:46:59 +0100 (Tue, 19 Mar 2019) $");
+  script_tag(name:"cvss_base", value:"4.9");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:C");
+  script_tag(name:"last_modification", value:"2019-04-02 06:16:35 +0000 (Tue, 02 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-03-16 04:08:49 +0100 (Sat, 16 Mar 2019)");
   script_name("Ubuntu Update for linux-aws USN-3910-2");
   script_category(ACT_GATHER_INFO);

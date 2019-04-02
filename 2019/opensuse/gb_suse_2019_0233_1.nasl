@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852312");
-  script_version("$Revision: 13924 $");
+  script_version("2019-04-02T06:16:35+0000");
   script_cve_id("CVE-2018-12546", "CVE-2018-12550", "CVE-2018-12551");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-28 10:54:35 +0100 (Thu, 28 Feb 2019) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-04-02 06:16:35 +0000 (Tue, 02 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-02-23 04:07:40 +0100 (Sat, 23 Feb 2019)");
   script_name("SuSE Update for mosquitto openSUSE-SU-2019:0233-1 (mosquitto)");
   script_category(ACT_GATHER_INFO);
