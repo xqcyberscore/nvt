@@ -1,14 +1,6 @@
-###############################################################################
-# OpenVAS Vulnerability Test
-# $Id: gb_java_prdts_detect_win.nasl 11941 2018-10-17 12:58:16Z santu $
-#
-# Sun/Oracle Java Products Version Detection (Windows)
-#
-# Authors:
-# Sharath S <sharaths@secpod.com>
-#
-# Copyright:
 # Copyright (c) 2009 Greenbone Networks GmbH, http://www.greenbone.net
+#
+# SPDX-License-Identifier: GPL-2.0-or-later
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -22,15 +14,14 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-###############################################################################
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800383");
-  script_version("$Revision: 11941 $");
+  script_version("2019-04-02T09:22:30+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-17 14:58:16 +0200 (Wed, 17 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-04-02 09:22:30 +0000 (Tue, 02 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-04-23 08:16:04 +0200 (Thu, 23 Apr 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Sun/Oracle Java Products Version Detection (Windows)");
@@ -82,7 +73,7 @@ foreach jreKey(adkeylist){
         pattern = "([0-9.]+)";
         flagjre9plus = TRUE;
       }else{
-        pattern = "([0-9.]\.[0-9]\.[0-9._]+)";
+        pattern = "([0-9]+\.[0-9]+\.[0-9._]+)";
       }
 
       jreVer = eregmatch(pattern:pattern, string:item);
@@ -168,8 +159,6 @@ foreach jreKey(adkeylist){
   }
 }
 
-jdkKey = "SOFTWARE\JavaSoft\Java Development Kit";
-
 if("x86" >< osArch){
   adkeylist = make_list("SOFTWARE\JavaSoft\Java Development Kit",
                         "SOFTWARE\JavaSoft\JDK");
@@ -191,7 +180,7 @@ foreach jdkKey(adkeylist){
         pattern = "([0-9.]+)";
         flagjdk9plus = TRUE;
       }else{
-        pattern = "([0-9.]\.[0-9]\.[0-9._]+)";
+        pattern = "([0-9]+\.[0-9]+\.[0-9._]+)";
       }
 
       jdkVer = eregmatch(pattern:pattern, string:item);

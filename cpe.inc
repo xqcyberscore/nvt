@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: cpe.inc 13888 2019-02-26 14:37:24Z cfischer $
 #
 # CPE Support Functions
 #
@@ -23,8 +22,6 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 13888 $
-#
 ###############################################################################
 
 # @brief Extends a given CPE base (like e.g. cpe:/a:vendor:product:) with
@@ -42,20 +39,23 @@ function build_cpe( value, exp, base ) {
   local_var value, exp, base;
   local_var res, last;
 
-  if( isnull( value ) ) {
+  if( ! value ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#value#-#build_cpe" );
     return NULL;
   }
 
-  if( isnull( exp ) ) {
+  if( ! exp ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#exp#-#build_cpe" );
     return NULL;
   }
 
-  if( isnull( base ) ) {
+  if( ! base ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#base#-#build_cpe" );
     return NULL;
   }
+
+  if( value == "unknown" || value == "Unknown" || strlen( value ) < 1 )
+    return NULL;
 
   res = eregmatch( string:value, pattern:exp, icase:TRUE );
   if( res[1] ) {

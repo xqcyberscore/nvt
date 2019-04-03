@@ -7,9 +7,6 @@
 # Authors:
 # Sujit Ghosal <sghosal@secpod.com>
 #
-# Updated By: Madhuri D <dmadhuri@secpod.com> on 2010-09-09
-# - Modified the script to detect the recent versions
-#
 # Copyright:
 # Copyright (c) 2009 Greenbone Networks GmbH, http://www.greenbone.net
 #
@@ -138,15 +135,17 @@ foreach dir( make_list_unique("/", "/struts", cgi_dirs( port:asPort ) ) )
           "Apache Struts" >< rcvRes5  || "var StrutsUtils =" >< rcvRes6 )
     {
 
+      strutsVersion = "unknown";
+
       strutsVer = eregmatch( pattern:"Struts 2 Core ([0-9A-Z.-]+) API", string:rcvRes1);
       if(strutsVer[1]){
-        strutsVersion = strutsVer[1] ;
+        strutsVersion = strutsVer[1];
       } else
       {
         strutsdata = eregmatch( pattern:"<modelVersion(.*)<packaging>", string:rcvRes2);
         strutsVer = eregmatch( pattern:"<version>([0-9A-Z.-]+)</version>", string:strutsdata[1]);
         if(strutsVer[1]){
-          strutsVersion = strutsVer[1] ;
+          strutsVersion = strutsVer[1];
         } else
         {
           strutsVer = eregmatch( pattern:">Version Notes (([0-9]+).([0-9]+).([0-9.]+))", string:rcvRes4);
@@ -155,12 +154,12 @@ foreach dir( make_list_unique("/", "/struts", cgi_dirs( port:asPort ) ) )
           ## So if version is less than 2.5.10.1 , version detection is proper.
           ## Else if version detected is 2.5.10.1, it can be 2.5.10.1 or later.
           if(strutsVer[1] && version_is_less(version: strutsVer[1], test_version: "2.5.10.1")){
-            strutsVersion = strutsVer[1] ;
+            strutsVersion = strutsVer[1];
           } else
           {
             strutsVer = eregmatch( pattern:"Release Notes ([0-9]\.[0-9.]+)", string:rcvRes3);
             if(strutsVer[1]){
-              strutsVersion = strutsVer[1] ;
+              strutsVersion = strutsVer[1];
             } else
             {
               strutsVer = eregmatch( pattern:"Release Notes ([0-9]\.[0-9.]+)", string:rcvRes4 );
@@ -169,7 +168,7 @@ foreach dir( make_list_unique("/", "/struts", cgi_dirs( port:asPort ) ) )
               ## 2.0.14, version detection is proper. Else if version detected is 2.0.14,it can be
               ## 2.0.14 or later.
               if(strutsVer[1] && version_is_less(version: strutsVer[1], test_version: "2.0.14")){
-                strutsVersion = strutsVer[1] ;
+                strutsVersion = strutsVer[1];
               } else
               {
                 strutsVer = eregmatch( pattern:">version ([0-9.]+)", string:rcvRes5 );

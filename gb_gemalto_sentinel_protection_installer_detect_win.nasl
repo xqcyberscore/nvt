@@ -57,7 +57,7 @@ if( "x86" >< os_arch ) {
                        "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\" );
 }
 
-if( isnull( key_list ) ) 
+if( isnull( key_list ) )
   exit( 0 );
 
 foreach key ( key_list ) {

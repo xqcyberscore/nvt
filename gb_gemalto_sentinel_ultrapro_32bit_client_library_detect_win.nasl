@@ -83,4 +83,3 @@ set_kb_item( name:"gemalto/sentinel_ultrapro_32bit_client_library/win/detected",
 register_and_report_cpe( app:appName, ver:version, concluded:concluded,
                         base:"cpe:/a:gemalto:sentinel_ultrapro_32bit_client_library:", expr:"^([0-9.]+)", insloc:location, regService:"smb-login", regPort:0 );
 exit( 0 );
-
