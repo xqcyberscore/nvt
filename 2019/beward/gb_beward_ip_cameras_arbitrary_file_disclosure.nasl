@@ -19,10 +19,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114073");
-  script_version("$Revision: 13906 $");
+  script_version("2019-04-03T09:59:09+0000");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-27 13:16:09 +0100 (Wed, 27 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-04-03 09:59:09 +0000 (Wed, 03 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-02-18 14:02:55 +0100 (Mon, 18 Feb 2019)");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2019 Greenbone Networks GmbH");
@@ -48,7 +48,7 @@ if(description)
 
   script_tag(name:"affected", value:"At least versions M2.1.6.04C014 and before.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 27th February, 2019.
+  script_tag(name:"solution", value:"No known solution is available as of 03rd April, 2019.
   Information regarding this issue will be updated once solution details are available.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");

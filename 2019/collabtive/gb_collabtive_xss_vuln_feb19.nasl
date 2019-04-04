@@ -21,8 +21,8 @@ CPE = "cpe:/a:collabtive:collabtive";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113341");
-  script_version("$Revision: 13853 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-25 15:54:56 +0100 (Mon, 25 Feb 2019) $");
+  script_version("2019-04-03T09:59:09+0000");
+  script_tag(name:"last_modification", value:"2019-04-03 09:59:09 +0000 (Wed, 03 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-02-21 12:54:51 +0200 (Thu, 21 Feb 2019)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
@@ -47,7 +47,7 @@ if(description)
 
   script_tag(name:"affected", value:"Collabtive through version 3.1.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 25th February, 2019.
+  script_tag(name:"solution", value:"No known solution is available as of 03rd April, 2019.
   Information regarding this issue will be updated once solution details are available.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

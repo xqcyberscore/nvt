@@ -17,13 +17,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112509");
-  script_version("$Revision: 13867 $");
+  script_version("2019-04-03T09:59:09+0000");
 
   script_cve_id("CVE-2019-1000001");
 
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-26 10:05:01 +0100 (Tue, 26 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-04-03 09:59:09 +0000 (Wed, 03 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-02-06 14:11:00 +0100 (Wed, 06 Feb 2019)");
 
   script_name("TeamPass <= 2.1.27 Information Disclosure Vulnerability");
@@ -41,7 +41,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker that bypassed authentication
   to have access to all shared passwords a registered user has access to.");
   script_tag(name:"affected", value:"TeamPass through version 2.1.27.");
-  script_tag(name:"solution", value:"No known solution is available as of 06th February, 2019.
+  script_tag(name:"solution", value:"No known solution is available as of 03rd April, 2019.
   Information regarding this issue will be updated once solution details are available.");
 
   script_tag(name:"qod_type", value:"remote_banner");

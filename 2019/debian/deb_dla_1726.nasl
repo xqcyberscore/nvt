@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891726");
-  script_version("2019-03-25T23:00:00+0100");
+  script_version("2019-04-04T06:31:10+0000");
   script_cve_id("CVE-2016-9401", "CVE-2019-9924");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-03-25 23:00:00 +0100 (Mon, 25 Mar 2019)");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"2019-04-04 06:31:10 +0000 (Thu, 04 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-03-25 23:00:00 +0100 (Mon, 25 Mar 2019)");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1726-1] bash security update)");
   script_category(ACT_GATHER_INFO);

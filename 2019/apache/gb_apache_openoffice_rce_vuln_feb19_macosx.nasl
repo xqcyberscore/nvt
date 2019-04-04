@@ -23,11 +23,11 @@ CPE = "cpe:/a:openoffice:openoffice.org";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814828");
-  script_version("2019-04-01T13:09:44+0000");
+  script_version("2019-04-03T09:59:09+0000");
   script_cve_id("CVE-2018-16858");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-04-01 13:09:44 +0000 (Mon, 01 Apr 2019)");
+  script_tag(name:"last_modification", value:"2019-04-03 09:59:09 +0000 (Wed, 03 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-02-07 11:49:32 +0530 (Thu, 07 Feb 2019)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Apache OpenOffice Remote Code Execution Vulnerability Feb19 (Mac OS X)");
@@ -46,7 +46,7 @@ if(description)
   script_tag(name:"affected", value:"Apache OpenOffice Writer version 4.1.6 on
   Mac OS X");
 
-  script_tag(name:"solution", value:"No known solution is available as of 07th February, 2019.
+  script_tag(name:"solution", value:"No known solution is available as of 03rd April, 2019.
   Information regarding this issue will be updated once solution details are available.
   For updates refer to Reference links.");
 

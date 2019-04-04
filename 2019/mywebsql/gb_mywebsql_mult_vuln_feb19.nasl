@@ -19,8 +19,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113334");
-  script_version("$Revision: 13635 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-13 13:07:58 +0100 (Wed, 13 Feb 2019) $");
+  script_version("2019-04-03T09:59:09+0000");
+  script_tag(name:"last_modification", value:"2019-04-03 09:59:09 +0000 (Wed, 03 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-02-13 10:50:14 +0200 (Wed, 13 Feb 2019)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -56,7 +56,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation would allow an attacker to execute arbitrary code
   on the target machine.");
   script_tag(name:"affected", value:"MyWebSQL through version 3.7.");
-  script_tag(name:"solution", value:"No known solution is available as of 13th February, 2019.
+  script_tag(name:"solution", value:"No known solution is available as of 03rd April, 2019.
   Information regarding this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://github.com/eddietcc/CVEnotes/blob/master/MyWebSQL/CSRF/readme.md");

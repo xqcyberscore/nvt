@@ -1,19 +1,13 @@
-###############################################################################
-# OpenVAS Vulnerability Test
-# $Id: gb_zoneminder_mult_vuln_jan19.nasl 13532 2019-02-08 07:51:34Z mmartin $
-#
-# ZoneMinder <= 1.33.1 Multiple Vulnerabilities
-#
-# Authors:
-# Adrian Steins <adrian.steins@greenbone.net>
-#
-# Copyright:
 # Copyright (C) 2019 Greenbone Networks GmbH
+# Text descriptions are largely excerpted from the referenced
+# advisory, and are Copyright (C) the respective author(s)
 #
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or
-# (at your option) any later version.
+# SPDX-License-Identifier: GPL-2.0-or-later
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
 #
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -23,13 +17,12 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-###############################################################################
 
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112506");
-  script_version("$Revision: 13532 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-08 08:51:34 +0100 (Fri, 08 Feb 2019) $");
+  script_version("2019-04-03T09:59:09+0000");
+  script_tag(name:"last_modification", value:"2019-04-03 09:59:09 +0000 (Wed, 03 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-02-05 11:16:13 +0100 (Tue, 05 Feb 2019)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -69,7 +62,7 @@ if (description)
   HTML or JavaScript code via multiple parameters, to access and modify records (add/delete Monitors, Users, etc.),
   to inject log messages, to hijack another user's account or to have other unspecified impact on the application and its host system.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"solution", value:"No known solution is available as of 05th February, 2019.
+  script_tag(name:"solution", value:"No known solution is available as of 03rd April, 2019.
   Information regarding this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://github.com/ZoneMinder/zoneminder/issues/2447");
@@ -100,6 +93,7 @@ if (description)
   script_xref(name:"URL", value:"https://github.com/ZoneMinder/zoneminder/issues/2471");
   script_xref(name:"URL", value:"https://github.com/ZoneMinder/zoneminder/issues/2475");
   script_xref(name:"URL", value:"https://github.com/ZoneMinder/zoneminder/issues/2450");
+  script_xref(name:"URL", value:"https://github.com/ZoneMinder/zoneminder/commit/b2a97ee190c6dc3e30b9c36b9c33c33348dde4d6");
 
   exit(0);
 }

@@ -23,11 +23,11 @@ CPE = "cpe:/a:openoffice:openoffice.org";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814827");
-  script_version("2019-04-01T07:47:16+0000");
+  script_version("2019-04-03T09:59:09+0000");
   script_cve_id("CVE-2018-16858");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-04-01 07:47:16 +0000 (Mon, 01 Apr 2019)");
+  script_tag(name:"last_modification", value:"2019-04-03 09:59:09 +0000 (Wed, 03 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-02-07 11:33:21 +0530 (Thu, 07 Feb 2019)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Apache OpenOffice Remote Code Execution Vulnerability Feb19 (Windows)");
@@ -46,13 +46,12 @@ if(description)
   script_tag(name:"affected", value:"Apache OpenOffice Writer version 4.1.6 on
   Windows.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 07th February, 2019.
-  Information regarding this issue will be updated once solution details are available.
-  For updates refer to Reference links.");
+  script_tag(name:"solution", value:"Micropatch is available.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://thehackernews.com/2019/02/hacking-libreoffice-openoffice.html");
   script_xref(name:"URL", value:"https://www.openoffice.org/");
+  script_xref(name:"URL", value:"https://www.bleepingcomputer.com/news/security/openoffice-zero-day-code-execution-flaw-gets-free-micropatch/");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
@@ -72,7 +71,7 @@ opath = infos['location'];
 
 # 4.1.6 == 4.16.9790
 if(version_is_less_equal(version: opver, test_version: "4.16.9790")){
-  report = report_fixed_ver(installed_version:opver, fixed_version:"NoneAvailable", install_path:opath);
+  report = report_fixed_ver(installed_version:opver, fixed_version:"Install the micropatch", install_path:opath);
   security_message(data:report);
   exit(0);
 }
