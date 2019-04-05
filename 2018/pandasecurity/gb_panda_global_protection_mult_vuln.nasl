@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113138");
-  script_version("$Revision: 13783 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-20 12:12:24 +0100 (Wed, 20 Feb 2019) $");
+  script_version("2019-04-04T14:50:45+0000");
+  script_tag(name:"last_modification", value:"2019-04-04 14:50:45 +0000 (Thu, 04 Apr 2019)");
   script_tag(name:"creation_date", value:"2018-03-20 10:20:20 +0100 (Tue, 20 Mar 2018)");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
@@ -67,10 +67,10 @@ the target system.");
 
   script_tag(name:"affected", value:"Panda Global Protection through version 17.0.1");
 
-  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure 
-  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer 
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
   release, disable respective features, remove the product or replace the product by another one.");
-  
+
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2018/Mar/25");
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2018/Mar/26");
 

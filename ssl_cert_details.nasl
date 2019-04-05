@@ -91,8 +91,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103692");
-  script_version("$Revision: 13434 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-04 10:55:38 +0100 (Mon, 04 Feb 2019) $");
+  script_version("2019-04-04T13:38:03+0000");
+  script_tag(name:"last_modification", value:"2019-04-04 13:38:03 +0000 (Thu, 04 Apr 2019)");
   script_tag(name:"creation_date", value:"2013-04-09 14:14:14 +0200 (Tue, 09 Apr 2013)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -116,7 +116,6 @@ include("global_settings.inc");
 include("misc_func.inc");
 include("ssl_funcs.inc");
 include("byte_func.inc");
-
 include("mysql.inc"); # For recv_mysql_server_handshake() in open_ssl_socket()
 include("xml.inc"); # Both for report_host_detail_single()
 include("host_details.inc");
@@ -249,7 +248,7 @@ function report_ssl_cert_details() {
 
 portlist = get_kb_list( "ssl_tls/port" );
 foreach port( portlist ) {
-  cert = get_server_cert( port:port, encoding:"der" );
+  cert = get_server_cert( port:port );
   if( cert ) {
     read_and_parse_certs( cert:cert, port:port );
   }

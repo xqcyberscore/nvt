@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.centos.org/pipermail/centos-announce/2009-July/016058.html");
   script_oid("1.3.6.1.4.1.25623.1.0.880855");
-  script_version("$Revision: 14222 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-15 13:50:48 +0100 (Fri, 15 Mar 2019) $");
+  script_version("2019-04-04T14:50:45+0000");
+  script_tag(name:"last_modification", value:"2019-04-04 14:50:45 +0000 (Thu, 04 Apr 2019)");
   script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -60,7 +60,7 @@ if(description)
 
   This update also fixes the following bug:
 
-  * when running on a system receiving a large number of (greater than 4,000)
+  * when running on a system receiving a large number of (greater than 4.000)
   DNS requests per second, the named DNS nameserver became unresponsive, and
   the named service had to be restarted in order for it to continue serving
   requests. This was caused by a deadlock occurring between two threads that

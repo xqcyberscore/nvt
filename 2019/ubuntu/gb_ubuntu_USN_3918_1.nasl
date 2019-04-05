@@ -21,7 +21,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843938");
-  script_version("2019-03-28T13:45:24+0000");
+  script_version("2019-04-04T14:50:45+0000");
   script_cve_id("CVE-2019-9788", "CVE-2019-9789", "CVE-2019-9790", "CVE-2019-9791",
                   "CVE-2019-9792", "CVE-2019-9795", "CVE-2019-9796", "CVE-2019-9797",
                   "CVE-2019-9799", "CVE-2019-9802", "CVE-2019-9805", "CVE-2019-9806",
@@ -29,7 +29,7 @@ if(description)
                   "CVE-2019-9803");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-03-28 13:45:24 +0000 (Thu, 28 Mar 2019)");
+  script_tag(name:"last_modification", value:"2019-04-04 14:50:45 +0000 (Thu, 04 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-03-28 13:45:24 +0000 (Thu, 28 Mar 2019)");
   script_name("Ubuntu Update for firefox USN-3918-1");
   script_category(ACT_GATHER_INFO);
@@ -39,7 +39,7 @@ if(description)
   script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(18\.04 LTS|18\.10|16\.04 LTS)");
 
   script_xref(name:"USN", value:"3918-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3918-1/");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3918-1/");
 
   script_tag(name:"summary", value:"The remote host is missing an update for the 'firefox'
   package(s) announced via the USN-3918-1 advisory.");
@@ -67,8 +67,8 @@ It was discovered that Upgrade-Insecure-Requests was incorrectly enforced
 for same-origin navigation. An attacker could potentially exploit this to
 conduct man-in-the-middle (MITM) attacks. (CVE-2019-9803)");
 
-  script_tag(name:"affected", value:"'firefox' package(s) on Ubuntu 18.10 ,
-  Ubuntu 18.04 LTS ,
+  script_tag(name:"affected", value:"'firefox' package(s) on Ubuntu 18.10,
+  Ubuntu 18.04 LTS,
   Ubuntu 16.04 LTS.");
 
   script_tag(name:"solution", value:"Please install the updated package(s).");

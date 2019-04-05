@@ -775,45 +775,54 @@ function get_cert_from_port( port, extensions )
   return;
 }
 
-function get_server_cert(port, format)
-{
-    local_var mesgoffset, off, mesgsize;
+# @brief Gets the SSL/TLS certificate from a remote service.
+#
+# @param port the port of the remote service.
+#
+# @return The SSL/TLS certificate as a "raw" string or NULL if no certificate was extracted
+#         or no port parameter was passed.
+#
+function get_server_cert( port ) {
 
-    if( ! port ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#get_server_cert" );
+  local_var port;
+  local_var cert, transport, soc;
 
-    if(get_port_state(port))
-    {
-      if( cert = get_kb_item( "ssl/" + port + "/server_cert" ) ) return base64_decode( str:cert );
+  if( ! port ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#get_server_cert" );
+    return;
+  }
 
-      # remote host supports sni, so get the cert for the target hostname
-      if( get_kb_item( "sni/" + port + "/supported" ) )
-        return get_cert_from_port( port:port );
+  if( get_port_state( port ) ) {
 
-      if( defined_func( 'socket_get_cert' ) && ! get_kb_item( "starttls_typ/" + port ) ) # r19165
-      {
-        transport = get_port_transport( port );
+    if( cert = get_kb_item( "ssl/" + port + "/server_cert" ) )
+      return base64_decode( str:cert );
 
-        if( transport < 2 ) # not ssl encapsulated
-          return;
+    # remote host supports sni, so get the cert for the target hostname
+    if( get_kb_item( "sni/" + port + "/supported" ) )
+      return get_cert_from_port( port:port );
 
-        soc = open_sock_tcp(port, transport:transport );
-        if( soc )
-        {
-          cert = socket_get_cert( socket:soc );
-          close( soc );
+    if( defined_func( "socket_get_cert" ) && ! get_kb_item( "starttls_typ/" + port ) ) { # r19165
 
-          if( cert )
-          {
-            set_kb_item( name:"ssl/" + port + "/server_cert", value:base64( str:cert ) );
-            return cert;
-          }
+      transport = get_port_transport( port );
 
-          return;
+      if( transport < 2 ) # not ssl encapsulated
+        return;
+
+      soc = open_sock_tcp( port, transport:transport );
+      if( soc ) {
+        cert = socket_get_cert( socket:soc );
+        close( soc );
+
+        if( cert ) {
+          set_kb_item( name:"ssl/" + port + "/server_cert", value:base64( str:cert ) );
+          return cert;
         }
         return;
       }
-      else
-        return get_cert_from_port( port:port );
+      return;
+    } else {
+      return get_cert_from_port( port:port );
+    }
   }
 }
 

@@ -21,11 +21,11 @@ CPE = "cpe:/a:limesurvey:limesurvey";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.142168");
-  script_version("2019-03-26T13:13:44+0000");
-  script_tag(name:"last_modification", value:"2019-03-26 13:13:44 +0000 (Tue, 26 Mar 2019)");
+  script_version("2019-04-05T06:55:01+0000");
+  script_tag(name:"last_modification", value:"2019-04-05 06:55:01 +0000 (Fri, 05 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-03-26 12:23:38 +0000 (Tue, 26 Mar 2019)");
-  script_tag(name:"cvss_base", value:"4.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2019-9960");
 

@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.883024");
-  script_version("2019-03-28T13:44:46+0000");
+  script_version("2019-04-05T06:55:01+0000");
   script_cve_id("CVE-2019-3835", "CVE-2019-3838");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-03-28 13:44:46 +0000 (Thu, 28 Mar 2019)");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"2019-04-05 06:55:01 +0000 (Fri, 05 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-03-28 13:44:46 +0000 (Thu, 28 Mar 2019)");
   script_name("CentOS Update for ghostscript CESA-2019:0633 centos7 ");
   script_category(ACT_GATHER_INFO);
@@ -48,9 +48,9 @@ so that the code can be displayed or printed.
 
 Security Fix(es):
 
-* ghostscript: superexec operator is available (700585) (CVE-2019-3835)
+  * ghostscript: superexec operator is available (700585) (CVE-2019-3835)
 
-* ghostscript: forceput in DefineResource is still accessible (700576)
+  * ghostscript: forceput in DefineResource is still accessible (700576)
 (CVE-2019-3838)
 
 For more details about the security issue(s), including the impact, a CVSS
@@ -59,9 +59,8 @@ page(s) listed in the References section.
 
 Bug Fix(es):
 
-* ghostscript: Regression: double comment chars '%%' in gs_init.ps leading
-to missing metadata (BZ#1673915)
-");
+  * ghostscript: Regression: double comment chars '%%' in gs_init.ps leading
+to missing metadata (BZ#1673915)");
 
   script_tag(name:"affected", value:"'ghostscript' package(s) on CentOS 7.");
 

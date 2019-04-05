@@ -1,28 +1,20 @@
-###############################################################################
-# OpenVAS Vulnerability Test support library
-# $Id: policy_functions.inc 13583 2019-02-11 14:35:09Z emoss $
+# Copyright (C) 2019 Greenbone Networks GmbH
 #
-# Supporting methods for Policy NVTs.
+# SPDX-License-Identifier: GPL-2.0-or-later
 #
-# Authors:
-# Emanuel Moss <emanuel.moss@greenbone.net>
-#
-# Copyright:
-# Copyright (c) 2018 Greenbone Networks GmbH, http://www.greenbone.net
-#
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License version 2
-# (or any later version), as published by the Free Software Foundation.
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
 #
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-###############################################################################
 
 function policy_logging(text)
 {
@@ -83,12 +75,12 @@ function policy_control_name(title){
 }
 
 function policy_logging_registry(type,key,item,value){
-	local_var type,key,item,value;
-	policy_logging(text:'Registry value ' + type + '\\' + key + '!' + item + ' is set to: ' + value);
+  local_var type,key,item,value;
+  policy_logging(text:'Registry value ' + type + '\\' + key + '!' + item + ' is set to: ' + value);
 }
 
 function rsop_securitysettingsboolean(select,keyname){
-	# rsop only delivers results for domain admins
+  # rsop only delivers results for domain admins
   local_var select,keyname;
 
   host = get_host_ip();
@@ -109,7 +101,7 @@ function rsop_securitysettingsboolean(select,keyname){
   res = wmi_query_rsop(wmi_handle:handle, query:query);
   splitRes = split(res, sep:"|", keep:FALSE);
   if(max_index(splitRes) < 4){
-  	return('');
+    return('');
   }
   returnValue = splitRes[4];
 
@@ -118,7 +110,7 @@ function rsop_securitysettingsboolean(select,keyname){
 }
 
 function rsop_securitysettingsnumeric(select,keyname){
-	# rsop only delivers results for domain admins
+  # rsop only delivers results for domain admins
   local_var select,keyname;
 
   host = get_host_ip();
@@ -139,7 +131,7 @@ function rsop_securitysettingsnumeric(select,keyname){
   res = wmi_query_rsop(wmi_handle:handle, query:query);
   splitRes = split(res, sep:"|", keep:FALSE);
   if(max_index(splitRes) < 4){
-  	return('');
+    return('');
   }
   returnValue = splitRes[4];
 
@@ -186,9 +178,9 @@ function rsop_userprivilegeright(select,keyname){
 }
 
 function win32_useraccount(select,name){
-	local_var select,name;
+  local_var select,name;
 
-	host = get_host_ip();
+  host = get_host_ip();
   usrname = kb_smb_login();
   passwd  = kb_smb_password();
   domain  = kb_smb_domain();
@@ -206,7 +198,7 @@ function win32_useraccount(select,name){
   res = wmi_query(wmi_handle:handle, query:query);
   wmi_close(wmi_handle:handle);
 
-	return(res);
+  return(res);
 }
 
 # @brief Checks for a package whether it is installed and if so, which version
@@ -216,157 +208,175 @@ function win32_useraccount(select,name){
 #
 # @return A string with the version or NULL if not installed on host
 function get_package_version(package){
-	local_var package;
-	if(!package){
-		set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#package_version#-#package" );
-		return;
-	}
+  local_var package;
+  if(!package){
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#package_version#-#package" );
+    return;
+  }
 
-	if(get_kb_item('ssh/login/rpms')){
-		packages_string = get_kb_item('ssh/login/rpms');
-		packages_list = split(packages_string, sep:';', keep:FALSE);
-		foreach pak (packages_list){
-			package_split = split(pak, sep:'~', keep:FALSE);
-			name = package_split[0];
-			version = package_split[1];
-			if(name == package){
-				return version;
-			}
-		}
-	}else if(get_kb_item('ssh/login/packages')){
-		packages_string = get_kb_item('ssh/login/packages');
-		packages_list = split(packages_string, keep:FALSE);
-		foreach line (packages_list){
-			if(line =~ "^ii"){
-				line_split = ereg_replace(string:line, pattern:'\\s+', replace:'|');
-				packages_info = split(line_split, sep:'|', keep:FALSE);
-				name = packages_info[1];
-				version = packages_info[2];
-				if(name == package){
-					return version;
-				}
-			}
-		}
-	}
-	return;
+  if(get_kb_item('ssh/login/rpms')){
+    packages_string = get_kb_item('ssh/login/rpms');
+    packages_list = split(packages_string, sep:';', keep:FALSE);
+    foreach pak (packages_list){
+      package_split = split(pak, sep:'~', keep:FALSE);
+      name = package_split[0];
+      version = package_split[1];
+      if(name == package){
+        return version;
+      }
+    }
+  }else if(get_kb_item('ssh/login/packages')){
+    packages_string = get_kb_item('ssh/login/packages');
+    packages_list = split(packages_string, keep:FALSE);
+    foreach line (packages_list){
+      if(line =~ "^ii"){
+        line_split = ereg_replace(string:line, pattern:'\\s+', replace:'|');
+        packages_info = split(line_split, sep:'|', keep:FALSE);
+        name = packages_info[1];
+        version = packages_info[2];
+        if(name == package){
+          return version;
+        }
+      }
+    }
+  }
+  return;
 }
 
 # @brief Tries to find a GRUB bootloader config file on the host.
-#				 Searches for grub.conf, grub.cfg or menu.lst in directories
-#				 /boot/grub/ or /boot/grub2/.
+#        Searches for grub.conf, grub.cfg or menu.lst in directories
+#        /boot/grub/ or /boot/grub2/.
 #
 # @return Filepath if config file found or NULL if not found
-# 				(maybe because of denied read permisisons)
+#         (maybe because of denied read permisisons)
 function get_grub_config_file(){
-	local_var config_file;
+  local_var config_file;
 
-	grub_config_files = make_list('grub.conf', 'grub.cfg', 'menu.lst');
-	grub_config_dirs = make_list('/boot/grub/', '/boot/grub2/');
+  grub_config_files = make_list('grub.conf', 'grub.cfg', 'menu.lst');
+  grub_config_dirs = make_list('/boot/grub/', '/boot/grub2/');
 
-	foreach dir (grub_config_dirs){
-		foreach file (grub_config_files){
-			config_file = find_file(file_name:file, file_path:dir);
-			if(config_file) return config_file[0];
-		}
-	}
-	return;
+  foreach dir (grub_config_dirs){
+    foreach file (grub_config_files){
+      config_file = find_file(file_name:file, file_path:dir);
+      if(config_file) return config_file[0];
+    }
+  }
+  return;
 }
 
 # @brief sends a ssh_cmd and filters errors in return values.
 #
 # @param socket the socket for the ssh command
-#				 cmd the bash command
+#        cmd the bash command
 #
 # @return return of the command or NULL if file not found or
-# 				other error occurred
+#         other error occurred
 function ssh_cmd_without_errors(socket, cmd){
-	local_var socket, cmd;
-	ret = ssh_cmd(socket:socket, cmd:cmd, return_errors:FALSE);
-	
-	if('No such file or directory' >< ret) return;
-	if('command not found' >< ret) return;
+  local_var socket, cmd;
+  ret = ssh_cmd(socket:socket, cmd:cmd, return_errors:FALSE);
 
-	return(ret);
+  if('No such file or directory' >< ret) return;
+  if('command not found' >< ret) return;
+
+  return(ret);
 }
 
 # @brief checks the file permissions, gid and uid with stat command
-#				 on a linux host
+#        on a linux host
 #
 # @param file the file to check
-#				 sock socket for the ssh command
+#        sock socket for the ssh command
 #
 # @return an array with keys permissions, gid and uid
 
 function linux_file_permissions(file, socket){
-	local_var socket, file;
+  local_var socket, file;
 
-	if(!socket){
-		set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#linux_file_permissions#-#socket" );
-		return;
-	}
+  if(!socket){
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#linux_file_permissions#-#socket" );
+    return;
+  }
 
-	if(!file){
-		set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#linux_file_permissions#-#file" );
-		return;
-	}
+  if(!file){
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#linux_file_permissions#-#file" );
+    return;
+  }
 
-	stat_cmd = 'stat ' + file;
-	stat = ssh_cmd_without_errors(socket:socket,cmd:stat_cmd);
-	if(stat && ('permission denied' >!< tolower(stat))){
-		return_array = make_list();
-		access = eregmatch(string:stat, pattern:'(Access:.+Uid.+Gid.+\\))');
-		gid = eregmatch(string:access[0], pattern:'Gid: \\((.+)\\)');
-		uid = eregmatch(string:access[0], pattern:'Uid: \\(([^\\)]*)\\)');
-		permissions = eregmatch(string:access[0], pattern:'Access: \\(([0-9]+)');
+  stat_cmd = 'stat ' + file;
+  stat = ssh_cmd_without_errors(socket:socket,cmd:stat_cmd);
+  if(stat && ('permission denied' >!< tolower(stat))){
+    return_array = make_list();
+    access = eregmatch(string:stat, pattern:'(Access:.+Uid.+Gid.+\\))');
+    gid = eregmatch(string:access[0], pattern:'Gid: \\((.+)\\)');
+    uid = eregmatch(string:access[0], pattern:'Uid: \\(([^\\)]*)\\)');
+    permissions = eregmatch(string:access[0], pattern:'Access: \\(([0-9]+)');
 
-		return_array['permissions'] = permissions[1];
-		return_array['gid'] = str_replace(string:gid[1], find:' ', replace:'');
-		return_array['uid'] = str_replace(string:uid[1], find:' ', replace:'');
+    return_array['permissions'] = permissions[1];
+    return_array['gid'] = str_replace(string:gid[1], find:' ', replace:'');
+    return_array['uid'] = str_replace(string:uid[1], find:' ', replace:'');
 
-		return (return_array);
-	}
-	return;
+    return (return_array);
+  }
+  return;
 }
 
 # @brief check if a service is enabled on a Linux host.
-#				 Uses systemctl is-enabled, chkconfig --list and
-#				 at last search for service in /etc/rc*.d files
+#        Uses systemctl is-enabled, chkconfig --list and
+#        at last search for service in /etc/rc*.d files
 #
 # @param service the service to search for
-#				 socket socket for the ssh command
+#        socket socket for the ssh command
 #
 # @return TRUE if service is enabled, nothing if not
 function linux_service_is_enabled(service, socket){
-	local_var service, socket;
+  local_var service, socket;
 
-	if(!socket){
-		set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#linux_file_permissions#-#socket" );
-		return;
-	}
+  if(!socket){
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#linux_file_permissions#-#socket" );
+    return;
+  }
 
-	if(!service){
-		set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#linux_file_permissions#-#service" );
-		return;
-	}
+  if(!service){
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#linux_file_permissions#-#service" );
+    return;
+  }
 
-	systemctl_cmd = 'systemctl is-enabled ' + service;
-	systemctl = ssh_cmd_without_errors(socket:socket, cmd:systemctl_cmd);
-	if('enabled' >< systemctl){
-		return TRUE;
-	}
+  systemctl_cmd = 'systemctl is-enabled ' + service;
+  systemctl = ssh_cmd_without_errors(socket:socket, cmd:systemctl_cmd);
+  if('enabled' >< systemctl){
+    return TRUE;
+  }
 
-	chkconfig_cmd = 'chkconfig --list ' + service;
-	chkconfig = ssh_cmd_without_errors(socket:socket, cmd:chkconfig_cmd);
-	if('2:on' >< chkconfig && '3:on' >< chkconfig && '4:on' >< chkconfig && '5:on' >< chkconfig){
-		return TRUE;
-	}
+  chkconfig_cmd = 'chkconfig --list ' + service;
+  chkconfig = ssh_cmd_without_errors(socket:socket, cmd:chkconfig_cmd);
+  if('2:on' >< chkconfig && '3:on' >< chkconfig && '4:on' >< chkconfig && '5:on' >< chkconfig){
+    return TRUE;
+  }
 
-	ls_grep_cmd = 'ls /etc/rc*.d | grep ' + service;
-	ls_grep = ssh_cmd_without_errors(socket:socket, cmd:ls_grep_cmd);
-	enabled = eregmatch(string:ls_grep, pattern:'[\\^S][^\n\r]*');
-	if(enabled){
-		return TRUE;
-	}
+  ls_grep_cmd = 'ls /etc/rc*.d | grep ' + service;
+  ls_grep = ssh_cmd_without_errors(socket:socket, cmd:ls_grep_cmd);
+  enabled = eregmatch(string:ls_grep, pattern:'[\\^S][^\n\r]*');
+  if(enabled){
+    return TRUE;
+  }
 
-	return;
+  return;
+}
+
+# @brief check if a service is enabled on a Linux host.
+#        Uses systemctl is-enabled, chkconfig --list and
+#        at last search for service in /etc/rc*.d files
+#
+# @param service the service to search for
+#        socket socket for the ssh command
+#
+# @return TRUE if service is enabled, nothing if not
+function check_permission_denied(value, file){
+  local_var value, file, ret;
+
+  if('permission denied' >< tolower(value)){
+    ret = 'No permission to read in file "' + file + '".';
+    return (ret);
+  }
+  return;
 }

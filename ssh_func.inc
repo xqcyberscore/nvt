@@ -1952,7 +1952,8 @@ function ssh_cmd( socket, cmd, timeout, nosh, return_errors, pty, pattern, retry
     # e.g.:
     # /bin/sh: 1: /usr/share/bash-completion/completions/xfreerdp: Permission denied
     # grep: /usr/include/freetype2/freetype/freetype.h: No such file or directory
-    if( ": not found" >< ret_ssh_buf || ": Permission denied" >< ret_ssh_buf || "No such file or directory" >< ret_ssh_buf ) {
+    if( ": not found" >< ret_ssh_buf || ": Permission denied" >< ret_ssh_buf
+    	|| "No such file or directory" >< ret_ssh_buf || "command not found" >< tolower(ret_ssh_buf)) {
       if( ! return_errors )
         return '';
     }

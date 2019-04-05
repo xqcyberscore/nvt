@@ -19,10 +19,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114087");
-  script_version("2019-03-21T12:19:01+0000");
+  script_version("2019-04-04T14:50:45+0000");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:C");
-  script_tag(name:"last_modification", value:"2019-03-21 12:19:01 +0000 (Thu, 21 Mar 2019)");
+  script_tag(name:"last_modification", value:"2019-04-04 14:50:45 +0000 (Thu, 04 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-03-20 14:57:35 +0100 (Wed, 20 Mar 2019)");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2019 Greenbone Networks GmbH");
@@ -79,7 +79,7 @@ else
   hostType = "GET_authorize";
 
 foreach cred(keys(creds)) {
-  
+
   if(hostType == "GET_authorize") {
     #Example:
     #/authorize?user=admin&password=admin
@@ -89,7 +89,7 @@ foreach cred(keys(creds)) {
 
   } else if(hostType == "POST_login") {
     #URL is still "/login" from above
-    
+
     #Example:
     #{"User":"admin","Password":"admin"}
     data = '{"User":"' + cred + '","Password":"' + creds[cred] + '"}';
@@ -102,8 +102,8 @@ foreach cred(keys(creds)) {
   res = http_keepalive_send_recv(port: port, data: req);
 
   #Example response for hostType "GET_authorize":
-  #Set-Cookie: session=a8f6745c4882403fa61bbca679805005; http-only
-  #Set-Cookie: user=admin
+  #- Set-Cookie: session=a8f6745c4882403fa61bbca679805005; http-only
+  #- Set-Cookie: user=admin
 
   #Example response for hostType "POST_login":
   #"Type" : "Response",

@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.883025");
-  script_version("2019-03-28T13:44:52+0000");
+  script_version("2019-04-04T14:50:45+0000");
   script_cve_id("CVE-2018-18506", "CVE-2019-9788", "CVE-2019-9790", "CVE-2019-9791", "CVE-2019-9792", "CVE-2019-9793", "CVE-2019-9795", "CVE-2019-9796");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-03-28 13:44:52 +0000 (Thu, 28 Mar 2019)");
+  script_tag(name:"last_modification", value:"2019-04-04 14:50:45 +0000 (Thu, 04 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-03-28 13:44:52 +0000 (Thu, 28 Mar 2019)");
   script_name("CentOS Update for firefox CESA-2019:0623 centos6 ");
   script_category(ACT_GATHER_INFO);
@@ -49,31 +49,30 @@ This update upgrades Firefox to version 60.6.0 ESR.
 
 Security Fix(es):
 
-* Mozilla: Memory safety bugs fixed in Firefox 66 and Firefox ESR 60.6
+  * Mozilla: Memory safety bugs fixed in Firefox 66 and Firefox ESR 60.6
 (CVE-2019-9788)
 
-* Mozilla: Use-after-free when removing in-use DOM elements (CVE-2019-9790)
+  * Mozilla: Use-after-free when removing in-use DOM elements (CVE-2019-9790)
 
-* Mozilla: Type inference is incorrect for constructors entered through
+  * Mozilla: Type inference is incorrect for constructors entered through
 on-stack replacement with IonMonkey (CVE-2019-9791)
 
-* Mozilla: IonMonkey leaks JS_OPTIMIZED_OUT magic value to script
+  * Mozilla: IonMonkey leaks JS_OPTIMIZED_OUT magic value to script
 (CVE-2019-9792)
 
-* Mozilla: Improper bounds checks when Spectre mitigations are disabled
+  * Mozilla: Improper bounds checks when Spectre mitigations are disabled
 (CVE-2019-9793)
 
-* Mozilla: Type-confusion in IonMonkey JIT compiler (CVE-2019-9795)
+  * Mozilla: Type-confusion in IonMonkey JIT compiler (CVE-2019-9795)
 
-* Mozilla: Use-after-free with SMIL animation controller (CVE-2019-9796)
+  * Mozilla: Use-after-free with SMIL animation controller (CVE-2019-9796)
 
-* Mozilla: Proxy Auto-Configuration file can define localhost access to be
+  * Mozilla: Proxy Auto-Configuration file can define localhost access to be
 proxied (CVE-2018-18506)
 
 For more details about the security issue(s), including the impact, a CVSS
 score, acknowledgments, and other related information, refer to the CVE
-page(s) listed in the References section.
-");
+page(s) listed in the References section.");
 
   script_tag(name:"affected", value:"'firefox' package(s) on CentOS 6.");
 

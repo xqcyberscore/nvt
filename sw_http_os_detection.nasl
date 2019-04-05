@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111067");
-  script_version("$Revision: 14074 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-10 12:36:56 +0100 (Sun, 10 Mar 2019) $");
+  script_version("2019-04-04T14:50:45+0000");
+  script_tag(name:"last_modification", value:"2019-04-04 14:50:45 +0000 (Thu, 04 Apr 2019)");
   script_tag(name:"creation_date", value:"2015-12-10 16:00:00 +0100 (Thu, 10 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -1249,7 +1249,7 @@ function check_default_page( port ) {
         register_and_report_os( os:"EulerOS", cpe:"cpe:/o:huawei:euleros", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
         return;
       }
-      
+
       check = "on Oracle Linux</title>";
 
       if( check >< buf ) {

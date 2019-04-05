@@ -21,8 +21,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113329");
-  script_version("2019-04-03T09:59:09+0000");
-  script_tag(name:"last_modification", value:"2019-04-03 09:59:09 +0000 (Wed, 03 Apr 2019)");
+  script_version("2019-04-04T14:50:45+0000");
+  script_tag(name:"last_modification", value:"2019-04-04 14:50:45 +0000 (Thu, 04 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-01-23 14:38:54 +0200 (Wed, 23 Jan 2019)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
@@ -56,7 +56,7 @@ if( description )
 
   script_xref(name:"URL", value:"https://github.com/domainmod/domainmod/issues/66");
   script_xref(name:"URL", value:"https://github.com/domainmod/domainmod/issues/66#issuecomment-460099901");
-  
+
   exit(0);
 }
 

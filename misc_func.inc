@@ -1554,6 +1554,9 @@ function fancy_date( datestr ) {
 #        against the response of these commands as the array value. The function will chose the
 #        returned commands if the remote system is running on Windows, Linux or if the OS is unknown.
 #
+# @param _FCT_ANON_ARGS[0] Allows (optional) to pass either "windows" or "linux" as an anonymous function parameter
+#                          to define directly which kind of files should be returned.
+#
 # @note Add a dependency to os_detection.nasl if you want to use this function. The VT calling this
 #       function needs to also include host_details.inc (for host_runs());
 #
@@ -1562,7 +1565,17 @@ function fancy_date( datestr ) {
 function exploit_commands() {
 
   local_var res;
-  res = host_runs( "windows" );
+
+  if( _FCT_ANON_ARGS[0] ) {
+
+    if( tolower( _FCT_ANON_ARGS[0] ) == "windows" ) {
+      res = "yes";
+    } else if( tolower( _FCT_ANON_ARGS[0] ) == "linux" ) {
+      res = "no";
+    }
+  } else {
+    res = host_runs( "windows" );
+  }
 
   if( res == "yes" ) {
     return make_array( "Windows.IP..onfiguration", "ipconfig" );

@@ -21,10 +21,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875530");
-  script_version("2019-03-28T13:55:38+0000");
+  script_version("2019-04-04T14:50:45+0000");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-03-28 13:55:38 +0000 (Thu, 28 Mar 2019)");
+  script_tag(name:"last_modification", value:"2019-04-04 14:50:45 +0000 (Thu, 04 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-03-28 13:55:38 +0000 (Thu, 28 Mar 2019)");
   script_name("Fedora Update for libzip FEDORA-2019-0b73bd3e5d");
   script_category(ACT_GATHER_INFO);
@@ -45,8 +45,7 @@ if(description)
   script_tag(name:"insight", value:"libzip is a C library for reading, creating,
   and modifying zip archives. Files can be added from data buffers, files, or
   compressed data copied directly from other zip archives. Changes made without
-  closing the archive can be reverted. The API is documented by man pages.
-");
+  closing the archive can be reverted. The API is documented by man pages.");
 
   script_tag(name:"affected", value:"'libzip' package(s) on Fedora 28.");
 

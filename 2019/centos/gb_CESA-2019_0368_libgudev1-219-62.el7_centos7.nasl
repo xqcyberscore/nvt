@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.883009");
-  script_version("$Revision: 14058 $");
+  script_version("2019-04-05T06:55:01+0000");
   script_cve_id("CVE-2019-6454");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:25:52 +0100 (Fri, 08 Mar 2019) $");
+  script_tag(name:"cvss_base", value:"4.9");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:C");
+  script_tag(name:"last_modification", value:"2019-04-05 06:55:01 +0000 (Fri, 05 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-02-21 04:04:33 +0100 (Thu, 21 Feb 2019)");
   script_name("CentOS Update for libgudev1-219-62.el7_ CESA-2019:0368 centos7");
   script_category(ACT_GATHER_INFO);
