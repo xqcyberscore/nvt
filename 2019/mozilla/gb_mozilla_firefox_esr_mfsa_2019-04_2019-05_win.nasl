@@ -71,17 +71,14 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE)) exit(0);
 ffVer = infos['version'];
-if(!ffVer){
-  exit(0);
-}
-
 ffPath = infos['location'];
+
 if(version_is_less(version:ffVer, test_version:"60.5.1"))
 {
   report = report_fixed_ver(installed_version:ffVer, fixed_version:"60.5.1", install_path:ffPath);
   security_message(data:report);
   exit(0);
 }
-exit(0);
+exit(99);

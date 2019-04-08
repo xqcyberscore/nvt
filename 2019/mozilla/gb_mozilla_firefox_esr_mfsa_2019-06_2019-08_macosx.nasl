@@ -22,7 +22,7 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 
 if(description)
 {
-  script_oid("1.3.6.1.4.1.25623.1.0.815005");
+  script_oid("1.3.6.1.4.1.25623.1.0.814949");
   script_version("2019-03-22T10:32:36+0000");
   script_cve_id("CVE-2019-9790", "CVE-2019-9791", "CVE-2019-9792", "CVE-2019-9793",
                 "CVE-2018-1850", "CVE-2019-9795", "CVE-2019-9796", "CVE-2019-9788");
