@@ -16,181 +16,192 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 
-function policy_logging(text)
-{
-  # This function is used by basic policy tests. The silence value is set in
-  # compliance_tests.nasl. If you start the test within a standard policy like
-  # IT-Grundschutz, the results are silent by default. If you start the basic
-  # policy test by themselves, they are verbose.
+
+# @brief This function is used by basic policy tests. The silence value is set in
+# compliance_tests.nasl. If you start the test within a standard policy like
+# IT-Grundschutz, the results are silent by default. If you start the basic
+# policy test by themselves, they are verbose.
+#
+# @param text the text to log
+#
+function policy_logging(text) {
+
   local_var verbose, text;
+
   verbose = get_kb_item("Compliance/verbose");
-  if(verbose){
+  if(verbose) {
     log_message(data:text, port:0);
   }
 }
 
-function policy_add_oid(){
+function policy_add_oid() {
   set_kb_item(name:"PolicyOIDs", value:get_script_oid());
 }
 
-function policy_set_compliance(compliant){
-  local_var compliant, name;
-  name = get_script_oid() + "/COMPLIANT";
-  set_kb_item(name:name, value:compliant);
+function policy_set_compliance(compliant) {
+
+  local_var compliant;
+
+  set_kb_item(name:get_script_oid() + "/COMPLIANT", value:compliant);
 }
 
-function policy_set_kb(val){
+function policy_set_kb(val) {
+
   local_var val;
-  name = get_script_oid() + "/RESULT";
-  # save as string, because value can be "0", which would lead to not set the kb_entry
-  set_kb_item(name:name, value:chomp(string(val)));
+
+  # nb: save as string, because value can be "0", which would lead to not set the kb_entry
+  set_kb_item(name:get_script_oid() + "/RESULT", value:chomp(string(val)));
 }
 
-function policy_set_kb_hcu(id, val){
+function policy_set_kb_hcu(id, val) {
+
   local_var id, val;
-  name = get_script_oid() + "/RESULT/" + id;
-  # save as string, because value can be "0", which would lead to not set the kb_entry
-  set_kb_item(name:name, value:chomp(string(val)));
+
+  # nb: save as string, because value can be "0", which would lead to not set the kb_entry
+  set_kb_item(name:get_script_oid() + "/RESULT/" + id, value:chomp(string(val)));
 }
 
-function policy_set_dval(dval){
+function policy_set_dval(dval) {
+
   local_var dval;
-  name = get_script_oid() + "/DEFAULT";
-  # save as string, because value can be "0", which would lead to not set the kb_entry
-  set_kb_item(name:name, value:chomp(string(dval)));
+
+  # nb: save as string, because value can be "0", which would lead to not set the kb_entry
+  set_kb_item(name:get_script_oid() + "/DEFAULT", value:chomp(string(dval)));
 }
 
-function policy_fixtext(fixtext){
-  local_var fixtext, name;
-  name = get_script_oid() + '/FIX';
-  fixtext = str_replace(string:fixtext,find:'\n', replace:' ');
-  set_kb_item(name:name, value:fixtext);
+function policy_fixtext(fixtext) {
+
+  local_var fixtext;
+
+  fixtext = str_replace(string:fixtext, find:'\n', replace:' ');
+  set_kb_item(name:get_script_oid() + "/FIX", value:fixtext);
 }
 
-function policy_control_name(title){
-  local_var title, name;
-  name = get_script_oid() + '/NAME';
-  title = str_replace(string:title,find:'\n', replace:' ');
-  set_kb_item(name:name, value:title);
+function policy_control_name(title) {
+
+  local_var title;
+
+  title = str_replace(string:title, find:'\n', replace:' ');
+  set_kb_item(name:get_script_oid() + "/NAME", value:title);
 }
 
-function policy_logging_registry(type,key,item,value){
-  local_var type,key,item,value;
+function policy_logging_registry(type, key, item, value) {
+
+  local_var type, key, item, value;
+
   policy_logging(text:'Registry value ' + type + '\\' + key + '!' + item + ' is set to: ' + value);
 }
 
-function rsop_securitysettingsboolean(select,keyname){
-  # rsop only delivers results for domain admins
-  local_var select,keyname;
+function rsop_securitysettingsboolean(select, keyname) {
 
-  host = get_host_ip();
-  usrname = kb_smb_login();
-  passwd  = kb_smb_password();
-  domain  = kb_smb_domain();
-  if( domain ) usrname = domain + "\" + usrname;
+  # nb: rsop only delivers results for domain admins
 
-  handle = wmi_connect(host:host, username:usrname, password:passwd, ns:'root\\rsop\\computer');
-    if(!handle){
+  local_var select, keyname;
+  local_var infos, handle, query, res, splitRes, returnValue;
+
+  infos = kb_smb_wmi_connectinfo();
+  if(!infos)
+    exit(0);
+
+  handle = wmi_connect(host:infos["host"], username:infos["username_wmi_smb"], password:infos["password"], ns:'root\\rsop\\computer');
+  if(!handle) {
     policy_logging(text:'WMI Connect to host failed.');
     policy_set_kb(val:'error');
-    wmi_close(wmi_handle:handle);
     exit(0);
   }
 
   query = "SELECT " + select + " FROM RSOP_SecuritySettingBoolean WHERE KeyName = '" + keyname + "' AND precedence = '1'";
   res = wmi_query_rsop(wmi_handle:handle, query:query);
-  splitRes = split(res, sep:"|", keep:FALSE);
-  if(max_index(splitRes) < 4){
-    return('');
-  }
-  returnValue = splitRes[4];
-
   wmi_close(wmi_handle:handle);
+
+  splitRes = split(res, sep:"|", keep:FALSE);
+  if(max_index(splitRes) < 4)
+    return('');
+
+  returnValue = splitRes[4];
   return(string(returnValue));
 }
 
-function rsop_securitysettingsnumeric(select,keyname){
-  # rsop only delivers results for domain admins
-  local_var select,keyname;
+function rsop_securitysettingsnumeric(select,keyname) {
 
-  host = get_host_ip();
-  usrname = kb_smb_login();
-  passwd  = kb_smb_password();
-  domain  = kb_smb_domain();
-  if( domain ) usrname = domain + "\" + usrname;
+  # nb: rsop only delivers results for domain admins
 
-  handle = wmi_connect(host:host, username:usrname, password:passwd, ns:'root\\rsop\\computer');
-    if(!handle){
+  local_var select, keyname;
+  local_var infos, handle, query, res, splitRes, returnValue;
+
+  infos = kb_smb_wmi_connectinfo();
+  if(!infos)
+    exit(0);
+
+  handle = wmi_connect(host:infos["host"], username:infos["username_wmi_smb"], password:infos["password"], ns:'root\\rsop\\computer');
+  if(!handle) {
     policy_logging(text:'WMI Connect to host failed.');
     policy_set_kb(val:'error');
-    wmi_close(wmi_handle:handle);
     exit(0);
   }
 
   query = "SELECT " + select + " FROM RSOP_SecuritySettingNumeric WHERE KeyName = '" + keyname + "' AND precedence = '1'";
   res = wmi_query_rsop(wmi_handle:handle, query:query);
-  splitRes = split(res, sep:"|", keep:FALSE);
-  if(max_index(splitRes) < 4){
-    return('');
-  }
-  returnValue = splitRes[4];
-
   wmi_close(wmi_handle:handle);
+
+  splitRes = split(res, sep:"|", keep:FALSE);
+  if(max_index(splitRes) < 4)
+    return('');
+
+  returnValue = splitRes[4];
   return(string(returnValue));
 }
 
-function rsop_userprivilegeright(select,keyname){
-  # rsop only delivers results for domain admins
-  local_var select,keyname;
+function rsop_userprivilegeright(select, keyname) {
 
-  host = get_host_ip();
-  usrname = kb_smb_login();
-  passwd  = kb_smb_password();
-  domain  = kb_smb_domain();
-  if( domain ) usrname = domain + "\" + usrname;
+  # nb: rsop only delivers results for domain admins
 
-  handle = wmi_connect(host:host, username:usrname, password:passwd, ns:'root\\rsop\\computer');
-    if(!handle){
+  local_var select, keyname;
+  local_var infos, handle, query, res, splitRes, accountList, MaxIndexAccountList, i, returnValue;
+
+  infos = kb_smb_wmi_connectinfo();
+  if(!infos)
+    exit(0);
+
+  handle = wmi_connect(host:infos["host"], username:infos["username_wmi_smb"], password:infos["password"], ns:'root\\rsop\\computer');
+  if(!handle) {
     policy_logging(text:'WMI Connect to host failed.');
     policy_set_kb(val:'error');
-    wmi_close(wmi_handle:handle);
     exit(0);
   }
 
   query = "SELECT " + select + " FROM RSOP_UserPrivilegeRight WHERE UserRight = '" + keyname + "'";
   res = wmi_query_rsop(wmi_handle:handle, query:query);
-  if(res == ''){
+  wmi_close(wmi_handle:handle);
+  if(res == '')
     return "None";
-  }
 
   splitRes = split(res, keep:FALSE);
   accountList = split(splitRes[1], sep:"|", keep:FALSE);
   MaxIndexAccountList = max_index(accountList);
-  for(i=0;i<MaxIndexAccountList-2;i++){
+  for(i=0; i<MaxIndexAccountList-2; i++) {
     returnValue += accountList[i];
-    if(i<MaxIndexAccountList-3){
+    if(i<MaxIndexAccountList-3) {
       returnValue += ', ';
     }
   }
 
-  wmi_close(wmi_handle:handle);
   return(string(returnValue));
 }
 
-function win32_useraccount(select,name){
-  local_var select,name;
+function win32_useraccount(select, name) {
 
-  host = get_host_ip();
-  usrname = kb_smb_login();
-  passwd  = kb_smb_password();
-  domain  = kb_smb_domain();
-  if( domain ) usrname = domain + "\" + usrname;
+  local_var select, name;
+  local_var infos, handle, query, res;
 
-  handle = wmi_connect(host:host, username:usrname, password:passwd);
-    if(!handle){
+  infos = kb_smb_wmi_connectinfo();
+  if(!infos)
+    exit(0);
+
+  handle = wmi_connect(host:infos["host"], username:infos["username_wmi_smb"], password:infos["password"]);
+  if(!handle) {
     policy_logging(text:'WMI Connect to host failed.');
     policy_set_kb(val:'error');
-    wmi_close(wmi_handle:handle);
     exit(0);
   }
 
@@ -204,37 +215,39 @@ function win32_useraccount(select,name){
 # @brief Checks for a package whether it is installed and if so, which version
 #
 # @param package The package to check the existence / version
-#        maintainer The package maintainer (RPM or DEB)
+# @param maintainer The package maintainer (RPM or DEB)
 #
 # @return A string with the version or NULL if not installed on host
-function get_package_version(package){
+#
+function get_package_version(package) {
+
   local_var package;
-  if(!package){
+  if(!package) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#package_version#-#package" );
     return;
   }
 
-  if(get_kb_item('ssh/login/rpms')){
+  if(get_kb_item('ssh/login/rpms')) {
     packages_string = get_kb_item('ssh/login/rpms');
     packages_list = split(packages_string, sep:';', keep:FALSE);
-    foreach pak (packages_list){
+    foreach pak (packages_list) {
       package_split = split(pak, sep:'~', keep:FALSE);
       name = package_split[0];
       version = package_split[1];
-      if(name == package){
+      if(name == package) {
         return version;
       }
     }
-  }else if(get_kb_item('ssh/login/packages')){
+  } else if(get_kb_item('ssh/login/packages')) {
     packages_string = get_kb_item('ssh/login/packages');
     packages_list = split(packages_string, keep:FALSE);
-    foreach line (packages_list){
-      if(line =~ "^ii"){
+    foreach line (packages_list) {
+      if(line =~ "^ii") {
         line_split = ereg_replace(string:line, pattern:'\\s+', replace:'|');
         packages_info = split(line_split, sep:'|', keep:FALSE);
         name = packages_info[1];
         version = packages_info[2];
-        if(name == package){
+        if(name == package) {
           return version;
         }
       }
@@ -249,16 +262,19 @@ function get_package_version(package){
 #
 # @return Filepath if config file found or NULL if not found
 #         (maybe because of denied read permisisons)
-function get_grub_config_file(){
-  local_var config_file;
+#
+function get_grub_config_file() {
+
+  local_var grub_config_files, grub_config_dirs, dir, file, config_file;
 
   grub_config_files = make_list('grub.conf', 'grub.cfg', 'menu.lst');
   grub_config_dirs = make_list('/boot/grub/', '/boot/grub2/');
 
-  foreach dir (grub_config_dirs){
-    foreach file (grub_config_files){
+  foreach dir (grub_config_dirs) {
+    foreach file (grub_config_files) {
       config_file = find_file(file_name:file, file_path:dir);
-      if(config_file) return config_file[0];
+      if(config_file)
+        return config_file[0];
     }
   }
   return;
@@ -267,16 +283,19 @@ function get_grub_config_file(){
 # @brief sends a ssh_cmd and filters errors in return values.
 #
 # @param socket the socket for the ssh command
-#        cmd the bash command
+# @param cmd the bash command
 #
 # @return return of the command or NULL if file not found or
 #         other error occurred
-function ssh_cmd_without_errors(socket, cmd){
-  local_var socket, cmd;
+#
+function ssh_cmd_without_errors(socket, cmd) {
+
+  local_var socket, cmd, ret;
+
   ret = ssh_cmd(socket:socket, cmd:cmd, return_errors:FALSE);
 
-  if('No such file or directory' >< ret) return;
-  if('command not found' >< ret) return;
+  if('No such file or directory' >< ret || 'command not found' >< ret)
+    return;
 
   return(ret);
 }
@@ -285,26 +304,28 @@ function ssh_cmd_without_errors(socket, cmd){
 #        on a linux host
 #
 # @param file the file to check
-#        sock socket for the ssh command
+# @param sock socket for the ssh command
 #
 # @return an array with keys permissions, gid and uid
+#
+function linux_file_permissions(file, socket) {
 
-function linux_file_permissions(file, socket){
   local_var socket, file;
+  local_var stat_cmd, stat, return_array, access, gid, uid, permissions;
 
-  if(!socket){
-    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#linux_file_permissions#-#socket" );
+  if(!socket) {
+    set_kb_item(name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#linux_file_permissions#-#socket");
     return;
   }
 
-  if(!file){
-    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#linux_file_permissions#-#file" );
+  if(!file) {
+    set_kb_item(name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#linux_file_permissions#-#file");
     return;
   }
 
   stat_cmd = 'stat ' + file;
-  stat = ssh_cmd_without_errors(socket:socket,cmd:stat_cmd);
-  if(stat && ('permission denied' >!< tolower(stat))){
+  stat = ssh_cmd_without_errors(socket:socket, cmd:stat_cmd);
+  if(stat && ('permission denied' >!< tolower(stat))) {
     return_array = make_list();
     access = eregmatch(string:stat, pattern:'(Access:.+Uid.+Gid.+\\))');
     gid = eregmatch(string:access[0], pattern:'Gid: \\((.+)\\)');
@@ -325,40 +346,43 @@ function linux_file_permissions(file, socket){
 #        at last search for service in /etc/rc*.d files
 #
 # @param service the service to search for
-#        socket socket for the ssh command
+# @param socket socket for the ssh command
 #
-# @return TRUE if service is enabled, nothing if not
-function linux_service_is_enabled(service, socket){
-  local_var service, socket;
+# @return TRUE if service is enabled, NULL if not
+#
+function linux_service_is_enabled(service, socket) {
 
-  if(!socket){
-    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#linux_file_permissions#-#socket" );
+  local_var service, socket;
+  local_var systemctl_cmd, systemctl, chkconfig_cmd, chkconfig;
+  local_var ls_grep_cmd, ls_grep, enabled;
+
+  if(!socket) {
+    set_kb_item(name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#linux_file_permissions#-#socket");
     return;
   }
 
-  if(!service){
-    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#linux_file_permissions#-#service" );
+  if(!service) {
+    set_kb_item(name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#linux_file_permissions#-#service");
     return;
   }
 
   systemctl_cmd = 'systemctl is-enabled ' + service;
   systemctl = ssh_cmd_without_errors(socket:socket, cmd:systemctl_cmd);
-  if('enabled' >< systemctl){
+  if('enabled' >< systemctl) {
     return TRUE;
   }
 
   chkconfig_cmd = 'chkconfig --list ' + service;
   chkconfig = ssh_cmd_without_errors(socket:socket, cmd:chkconfig_cmd);
-  if('2:on' >< chkconfig && '3:on' >< chkconfig && '4:on' >< chkconfig && '5:on' >< chkconfig){
+  if('2:on' >< chkconfig && '3:on' >< chkconfig && '4:on' >< chkconfig && '5:on' >< chkconfig) {
     return TRUE;
   }
 
   ls_grep_cmd = 'ls /etc/rc*.d | grep ' + service;
   ls_grep = ssh_cmd_without_errors(socket:socket, cmd:ls_grep_cmd);
   enabled = eregmatch(string:ls_grep, pattern:'[\\^S][^\n\r]*');
-  if(enabled){
+  if(enabled)
     return TRUE;
-  }
 
   return;
 }
@@ -368,15 +392,17 @@ function linux_service_is_enabled(service, socket){
 #        at last search for service in /etc/rc*.d files
 #
 # @param service the service to search for
-#        socket socket for the ssh command
+# @param socket socket for the ssh command
 #
-# @return TRUE if service is enabled, nothing if not
-function check_permission_denied(value, file){
+# @return TRUE if service is enabled, NULL if not
+#
+function check_permission_denied(value, file) {
+
   local_var value, file, ret;
 
-  if('permission denied' >< tolower(value)){
+  if('permission denied' >< tolower(value)) {
     ret = 'No permission to read in file "' + file + '".';
-    return (ret);
+    return(ret);
   }
   return;
 }

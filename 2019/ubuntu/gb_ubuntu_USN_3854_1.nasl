@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843865");
-  script_version("$Revision: 14288 $");
+  script_version("2019-04-09T07:15:29+0000");
   script_cve_id("CVE-2018-4437");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 17:34:17 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-04-09 07:15:29 +0000 (Tue, 09 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-01-11 04:00:20 +0100 (Fri, 11 Jan 2019)");
   script_name("Ubuntu Update for webkit2gtk USN-3854-1");
   script_category(ACT_GATHER_INFO);

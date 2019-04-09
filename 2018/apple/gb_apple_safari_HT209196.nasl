@@ -29,13 +29,13 @@ CPE = "cpe:/a:apple:safari";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814320");
-  script_version("$Revision: 12176 $");
+  script_version("2019-04-09T07:15:29+0000");
   script_cve_id("CVE-2018-4374", "CVE-2018-4377", "CVE-2018-4372", "CVE-2018-4373",
                 "CVE-2018-4375", "CVE-2018-4376", "CVE-2018-4382", "CVE-2018-4386",
                 "CVE-2018-4392", "CVE-2018-4416", "CVE-2018-4409", "CVE-2018-4378");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-31 08:39:16 +0100 (Wed, 31 Oct 2018) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-04-09 07:15:29 +0000 (Tue, 09 Apr 2019)");
   script_tag(name:"creation_date", value:"2018-10-31 10:06:26 +0530 (Wed, 31 Oct 2018)");
   script_name("Apple Safari Security Updates(HT209196)");
 

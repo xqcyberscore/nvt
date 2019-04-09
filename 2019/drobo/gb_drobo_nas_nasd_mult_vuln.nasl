@@ -21,8 +21,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.142111");
-  script_version("$Revision: 14052 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 10:57:15 +0100 (Fri, 08 Mar 2019) $");
+  script_version("2019-04-08T08:02:40+0000");
+  script_tag(name:"last_modification", value:"2019-04-08 08:02:40 +0000 (Mon, 08 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-03-08 16:17:19 +0700 (Fri, 08 Mar 2019)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -49,7 +49,7 @@ if (description)
 
   - Insufficient Authentication in Client-Server Communications Between Drobo Dashboard and NASd (CVE-2018-14709)");
 
-  script_tag(name:"solution", value:"No known solution is available as of 08th March, 2019.
+  script_tag(name:"solution", value:"No known solution is available as of 08th April, 2019.
   Information regarding this issue will be updated once solution details are available.");
 
   script_tag(name:"vuldetect", value:"Sends a crafted request and checks the response.");

@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852082");
-  script_version("$Revision: 12497 $");
+  script_version("2019-04-09T07:15:29+0000");
   script_cve_id("CVE-2018-12911", "CVE-2018-4261", "CVE-2018-4262", "CVE-2018-4263", "CVE-2018-4264", "CVE-2018-4265", "CVE-2018-4266", "CVE-2018-4267", "CVE-2018-4270", "CVE-2018-4271", "CVE-2018-4272", "CVE-2018-4273", "CVE-2018-4278", "CVE-2018-4284");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-04-09 07:15:29 +0000 (Tue, 09 Apr 2019)");
   script_tag(name:"creation_date", value:"2018-10-26 06:42:25 +0200 (Fri, 26 Oct 2018)");
   script_name("SuSE Update for webkit2gtk3 openSUSE-SU-2018:2781-1 (webkit2gtk3)");
   script_category(ACT_GATHER_INFO);

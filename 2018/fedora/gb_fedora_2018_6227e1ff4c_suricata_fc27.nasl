@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874854");
-  script_version("$Revision: 14223 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
+  script_version("2019-04-09T07:15:29+0000");
+  script_tag(name:"last_modification", value:"2019-04-09 07:15:29 +0000 (Tue, 09 Apr 2019)");
   script_tag(name:"creation_date", value:"2018-07-28 06:08:00 +0200 (Sat, 28 Jul 2018)");
   script_cve_id("CVE-2018-10242", "CVE-2018-10243", "CVE-2018-10244");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for suricata FEDORA-2018-6227e1ff4c");
   script_tag(name:"summary", value:"The remote host is missing an update for the 'suricata'

@@ -29,12 +29,12 @@ CPE = "cpe:/a:apple:icloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814603");
-  script_version("$Revision: 12688 $");
+  script_version("2019-04-09T07:15:29+0000");
   script_cve_id("CVE-2018-4440", "CVE-2018-4439", "CVE-2018-4437", "CVE-2018-4464",
                 "CVE-2018-4441", "CVE-2018-4442", "CVE-2018-4443", "CVE-2018-4438");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-06 14:59:18 +0100 (Thu, 06 Dec 2018) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-04-09 07:15:29 +0000 (Tue, 09 Apr 2019)");
   script_tag(name:"creation_date", value:"2018-12-06 11:23:39 +0530 (Thu, 06 Dec 2018)");
   script_name("Apple iCloud Security Updates(HT209346)-Windows");
 

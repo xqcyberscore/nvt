@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.104062");
-  script_version("$Revision: 12117 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:50:36 +0200 (Fri, 26 Oct 2018) $");
+  script_version("2019-04-08T06:04:46+0000");
+  script_tag(name:"last_modification", value:"2019-04-08 06:04:46 +0000 (Mon, 08 Apr 2019)");
   script_tag(name:"creation_date", value:"2011-06-01 16:32:46 +0200 (Wed, 01 Jun 2011)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
@@ -44,7 +44,6 @@ if(description)
 
   script_add_preference(name:"http.pipeline", value:"", type:"entry");
   script_add_preference(name:"whodb", value:"", type:"entry");
-  script_add_preference(name:"http.useragent", value:"", type:"entry");
   script_add_preference(name:"http-max-cache-size", value:"", type:"entry");
 
   script_tag(name:"summary", value:"Queries the WHOIS services of Regional Internet Registries (RIR) and attempts to retrieve
@@ -70,11 +69,6 @@ whodb:  Takes any of the following values, which may be combined:
 
   - 'whodb=[service-ids]' Redefine the default services to query.  Implies 'nofile'.
 
-http.useragent:  The value of the User-Agent header field sent with
-requests. By default it is
-''Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)''.
-A value of the empty string disables sending the User-Agent header field.
-
 http-max-cache-size:  The maximum memory size (in bytes) of the cache.");
 
   script_tag(name:"solution_type", value:"Mitigation");
@@ -83,6 +77,7 @@ http-max-cache-size:  The maximum memory size (in bytes) of the cache.");
 }
 
 include("nmap.inc");
+include("http_func.inc");
 
 phase = 0;
 if (defined_func("scan_phase")) {
@@ -100,7 +95,7 @@ if (phase == 1) {
     if (!isnull(pref) && pref != "") {
         argv["whodb"] = string('"', pref, '"');
     }
-    pref = script_get_preference("http.useragent");
+    pref = http_get_user_agent();
     if (!isnull(pref) && pref != "") {
         argv["http.useragent"] = string('"', pref, '"');
     }

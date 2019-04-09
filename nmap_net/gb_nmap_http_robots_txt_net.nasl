@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.104081");
-  script_version("$Revision: 11527 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 17:59:27 +0200 (Fri, 21 Sep 2018) $");
+  script_version("2019-04-08T06:04:46+0000");
+  script_tag(name:"last_modification", value:"2019-04-08 06:04:46 +0000 (Mon, 08 Apr 2019)");
   script_tag(name:"creation_date", value:"2011-06-01 16:32:46 +0200 (Wed, 01 Jun 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -43,13 +43,11 @@ if(description)
   script_mandatory_keys("Tools/Launch/nmap_nse_net");
 
   script_add_preference(name:"http.pipeline", value:"", type:"entry");
-  script_add_preference(name:"http.useragent", value:"", type:"entry");
   script_add_preference(name:"http-max-cache-size", value:"", type:"entry");
 
   script_tag(name:"summary", value:"Checks for disallowed entries in '/robots.txt' on a web server.
 
 The higher the verbosity or debug level, the more disallowed entries are shown.
-
 
 SYNTAX:
 
@@ -58,20 +56,13 @@ pipelined (ie, sent in a single request). This can be set low to make
 debugging easier, or it can be set high to test how a server reacts (its
 chosen max is ignored).
 
-
-http.useragent:  The value of the User-Agent header field sent with
-requests. By default it is
-''Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)''.
-A value of the empty string disables sending the User-Agent header field.
-
-
-
 http-max-cache-size:  The maximum memory size (in bytes) of the cache.");
 
   exit(0);
 }
 
 include("nmap.inc");
+include("http_func.inc");
 
 phase = 0;
 if (defined_func("scan_phase")) {
@@ -85,7 +76,7 @@ if (phase == 1) {
     if (!isnull(pref) && pref != "") {
         argv["http.pipeline"] = string('"', pref, '"');
     }
-    pref = script_get_preference("http.useragent");
+    pref = http_get_user_agent();
     if (!isnull(pref) && pref != "") {
         argv["http.useragent"] = string('"', pref, '"');
     }

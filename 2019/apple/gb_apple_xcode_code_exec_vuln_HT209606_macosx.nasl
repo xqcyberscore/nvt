@@ -23,11 +23,11 @@ CPE = "cpe:/a:apple:xcode";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.815010");
-  script_version("2019-03-28T06:50:51+0000");
+  script_version("2019-04-09T07:15:29+0000");
   script_cve_id("CVE-2018-4461");
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-03-28 06:50:51 +0000 (Thu, 28 Mar 2019)");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"2019-04-09 07:15:29 +0000 (Tue, 09 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-03-27 17:59:12 +0530 (Wed, 27 Mar 2019)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Apple Xcode Arbitrary Code Execution Vulnerability (HT209606)");

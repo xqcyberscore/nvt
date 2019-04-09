@@ -29,10 +29,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803541");
-  script_version("$Revision: 12127 $");
+  script_version("2019-04-08T06:04:46+0000");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 15:14:31 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-04-08 06:04:46 +0000 (Mon, 08 Apr 2019)");
   script_tag(name:"creation_date", value:"2013-02-28 19:00:30 +0530 (Thu, 28 Feb 2013)");
   script_name("Nmap NSE 6.01: sql-injection");
   script_category(ACT_ATTACK);
@@ -51,7 +51,6 @@ if(description)
   script_add_preference(name:"httpspider.url", value:"", type:"entry");
   script_add_preference(name:"sql-injection.start", value:"", type:"entry");
   script_add_preference(name:"http.pipeline", value:"", type:"entry");
-  script_add_preference(name:"http.useragent", value:"", type:"entry");
   script_add_preference(name:"sql-injection.maxdepth", value:"", type:"entry");
   script_add_preference(name:"http-max-cache-size", value:"", type:"entry");
   script_add_preference(name:"httpspider.noblacklist", value:"", type:"entry");
@@ -91,14 +90,6 @@ http.pipeline:  If set, it represents the number of HTTP requests that'll be
 pipelined (ie, sent in a single request). This can be set low to make
 debugging easier, or it can be set high to test how a server reacts (its
 chosen max is ignored).
-
-TODO
-Implement cache system for http pipelines
-
-http.useragent:  The value of the User-Agent header field sent with
-requests. By default it is
-''Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)''.
-A value of the empty string disables sending the User-Agent header field.
 
 sql-injection.maxdepth:  The maximum depth to spider, default 10.
 
@@ -148,7 +139,7 @@ pref = script_get_preference("http.pipeline");
 if (!isnull(pref) && pref != "") {
   args[i++] = string('"', 'http.pipeline', '=', pref, '"');
 }
-pref = script_get_preference("http.useragent");
+pref = http_get_user_agent();
 if (!isnull(pref) && pref != "") {
   args[i++] = string('"', 'http.useragent', '=', pref, '"');
 }

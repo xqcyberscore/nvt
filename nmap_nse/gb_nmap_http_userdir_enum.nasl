@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801297");
-  script_version("$Revision: 12115 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 11:30:41 +0200 (Fri, 26 Oct 2018) $");
+  script_version("2019-04-08T06:04:46+0000");
+  script_tag(name:"last_modification", value:"2019-04-08 06:04:46 +0000 (Mon, 08 Apr 2019)");
   script_tag(name:"creation_date", value:"2010-10-25 14:34:05 +0200 (Mon, 25 Oct 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -45,7 +45,6 @@ if(description)
   script_mandatory_keys("Tools/Launch/nmap_nse", "Tools/Present/nmap");
 
   script_add_preference(name:"http-max-cache-size :", value:"", type:"entry");
-  script_add_preference(name:"http.useragent :", value:"", type:"entry");
   script_add_preference(name:"pipeline :", value:"", type:"entry");
 
   script_tag(name:"summary", value:"This script attempts to enumerate valid usernames on web servers
@@ -75,8 +74,8 @@ if( pref = script_get_preference("http-max-cache-size :")){
   args[i++] = "http-max-cache-size="+pref;
 }
 
-if( pref = script_get_preference("http.useragent :")){
-  args[i++] = "http.useragent="+pref;
+if( pref = http_get_user_agent()){
+  args[i++] = "http.useragent=" + pref;
 }
 
 if( pref = script_get_preference("pipeline :")){

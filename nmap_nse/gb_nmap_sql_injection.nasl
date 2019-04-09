@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801804");
-  script_version("$Revision: 12115 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 11:30:41 +0200 (Fri, 26 Oct 2018) $");
+  script_version("2019-04-08T06:04:46+0000");
+  script_tag(name:"last_modification", value:"2019-04-08 06:04:46 +0000 (Mon, 08 Apr 2019)");
   script_tag(name:"creation_date", value:"2011-01-20 07:52:11 +0100 (Thu, 20 Jan 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -47,7 +47,6 @@ if(description)
   script_add_preference(name:"sql-injection.maxdepth :", value:"", type:"entry");
   script_add_preference(name:"sql-injection.start :", value:"", type:"entry");
   script_add_preference(name:"http-max-cache-size :", value:"", type:"entry");
-  script_add_preference(name:"http.useragent :", value:"", type:"entry");
   script_add_preference(name:"http.pipeline :", value:"", type:"entry");
 
   script_tag(name:"summary", value:"This script attempts to spiders an HTTP server looking for URLs
@@ -85,8 +84,8 @@ if( pref = script_get_preference("http-max-cache-size :")){
   args[i++] = "http-max-cache-size="+pref;
 }
 
-if( pref = script_get_preference("http.useragent :")){
-  args[i++] = "http.useragent="+pref;
+if( pref = http_get_user_agent()){
+  args[i++] = "http.useragent=" + pref;
 }
 
 if( pref = script_get_preference("http.pipeline :")){

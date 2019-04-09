@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.104087");
-  script_version("$Revision: 12117 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:50:36 +0200 (Fri, 26 Oct 2018) $");
+  script_version("2019-04-08T06:04:46+0000");
+  script_tag(name:"last_modification", value:"2019-04-08 06:04:46 +0000 (Mon, 08 Apr 2019)");
   script_tag(name:"creation_date", value:"2011-06-01 16:32:46 +0200 (Wed, 01 Jun 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -47,7 +47,6 @@ if(description)
   script_add_preference(name:"brute.retries", value:"", type:"entry");
   script_add_preference(name:"http.pipeline", value:"", type:"entry");
   script_add_preference(name:"brute.credfile", value:"", type:"entry");
-  script_add_preference(name:"http.useragent", value:"", type:"entry");
   script_add_preference(name:"brute.threads", value:"", type:"entry");
   script_add_preference(name:"http-form-brute.passvar", value:"", type:"entry");
   script_add_preference(name:"http-form-brute.uservar", value:"", type:"entry");
@@ -79,11 +78,6 @@ chosen max is ignored).
 
 brute.credfile:  a file containing username and password pairs delimited
 by '/'
-
-http.useragent:  The value of the User-Agent header field sent with
-requests. By default it is
-''Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)''.
-A value of the empty string disables sending the User-Agent header field.
 
 brute.threads:  the number of initial worker threads, the number of
 active threads will be automatically adjusted.
@@ -134,6 +128,7 @@ brute.delay:  the number of seconds to wait between guesses (default: 0)");
 }
 
 include("nmap.inc");
+include("http_func.inc");
 
 # The corresponding NSE script doesn't belong to the 'safe' category
 if (safe_checks()) exit(0);
@@ -166,7 +161,7 @@ if (phase == 1) {
     if (!isnull(pref) && pref != "") {
         argv["brute.credfile"] = string('"', pref, '"');
     }
-    pref = script_get_preference("http.useragent");
+    pref = http_get_user_agent();
     if (!isnull(pref) && pref != "") {
         argv["http.useragent"] = string('"', pref, '"');
     }

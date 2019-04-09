@@ -29,10 +29,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803521");
-  script_version("$Revision: 12127 $");
+  script_version("2019-04-08T06:04:46+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 15:14:31 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-04-08 06:04:46 +0000 (Mon, 08 Apr 2019)");
   script_tag(name:"creation_date", value:"2013-02-28 19:00:10 +0530 (Thu, 28 Feb 2013)");
   script_name("Nmap NSE 6.01: whois");
   script_category(ACT_ATTACK);
@@ -44,7 +44,6 @@ if(description)
 
   script_add_preference(name:"http.pipeline", value:"", type:"entry");
   script_add_preference(name:"whodb", value:"", type:"entry");
-  script_add_preference(name:"http.useragent", value:"", type:"entry");
   script_add_preference(name:"http-max-cache-size", value:"", type:"entry");
 
   script_tag(name:"summary", value:"Queries the WHOIS services of Regional Internet Registries (RIR)and attempts to retrieve
@@ -75,18 +74,12 @@ address assignments applicable to the target because a cached response is accept
 sending a Whois query.  When it is important to ensure that the most accurate information about the
 may use a cached record to a size that helps ensure that smaller assignments will be discovered.
 
-
 SYNTAX:
 
 http.pipeline:  If set, it represents the number of HTTP requests that'll be
 pipelined (ie, sent in a single request). This can be set low to make
 debugging easier, or it can be set high to test how a server reacts (its
 chosen max is ignored).
-
-TODO
-Implement cache system for http pipelines
-
-
 
 whodb:  Takes any of the following values, which may be combined:
 
@@ -98,18 +91,12 @@ whodb:  Takes any of the following values, which may be combined:
 
   - 'whodb=[service-ids]' Redefine the default services to query.  Implies 'nofile'.
 
-
-http.useragent:  The value of the User-Agent header field sent with
-requests. By default it is
-''Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)''.
-A value of the empty string disables sending the User-Agent header field.
-
-
-
 http-max-cache-size:  The maximum memory size (in bytes) of the cache.");
 
   exit(0);
 }
+
+include("http_func.inc");
 
 i = 0;
 
@@ -121,7 +108,7 @@ pref = script_get_preference("whodb");
 if (!isnull(pref) && pref != "") {
   args[i++] = string('"', 'whodb', '=', pref, '"');
 }
-pref = script_get_preference("http.useragent");
+pref = http_get_user_agent();
 if (!isnull(pref) && pref != "") {
   args[i++] = string('"', 'http.useragent', '=', pref, '"');
 }
