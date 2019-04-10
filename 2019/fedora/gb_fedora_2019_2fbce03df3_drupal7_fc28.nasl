@@ -37,16 +37,15 @@ if(description)
   script_xref(name:"FEDORA", value:"2019-2fbce03df3");
   script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/Y4SVTVIJ33XCFQ6X6XTVMQM3NPLP2WFS");
 
-  script_tag(name:"summary", value:"The remote host is missing an update for the
-  'drupal7' package(s) announced via the FEDORA-2019-2fbce03df3 advisory.");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'drupal7'
+  package(s) announced via the FEDORA-2019-2fbce03df3 advisory.");
 
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is
-  present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
 
-  script_tag(name:"insight", value:"Equipped with a powerful blend of features,
-  Drupal is a Content Management System written in PHP that can support a variety
-  of websites ranging from personal weblogs to large community-driven websites.
-  Drupal is highly configurable, skinnable, and secure.");
+  script_tag(name:"insight", value:"Equipped with a powerful blend of features, Drupal is a Content Management
+System written in PHP that can support a variety of websites ranging from
+personal weblogs to large community-driven websites.  Drupal is highly
+configurable, skinnable, and secure.");
 
   script_tag(name:"affected", value:"'drupal7' package(s) on Fedora 28.");
 

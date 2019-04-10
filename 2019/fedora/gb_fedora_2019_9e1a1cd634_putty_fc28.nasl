@@ -37,14 +37,12 @@ if(description)
   script_xref(name:"FEDORA", value:"2019-9e1a1cd634");
   script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/36LWQ3NPFIV7DC7TC4KFPRYRH2OR7SZ2");
 
-  script_tag(name:"summary", value:"The remote host is missing an update for the
-  'putty' package(s) announced via the FEDORA-2019-9e1a1cd634 advisory.");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'putty'
+  package(s) announced via the FEDORA-2019-9e1a1cd634 advisory.");
 
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is
-  present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
 
-  script_tag(name:"insight", value:"Putty is a SSH, Telnet & Rlogin client - this
-  time for Linux.");
+  script_tag(name:"insight", value:"Putty is a SSH, Telnet & Rlogin client - this time for Linux.");
 
   script_tag(name:"affected", value:"'putty' package(s) on Fedora 28.");
 

@@ -37,11 +37,10 @@ if(description)
   script_xref(name:"FEDORA", value:"2019-8b5e704a73");
   script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/BI7NLDN2HUEU4ZW3D7XPHOAEGT2CKDRO");
 
-  script_tag(name:"summary", value:"The remote host is missing an update for the
-  'poppler' package(s) announced via the FEDORA-2019-8b5e704a73 advisory.");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'poppler'
+  package(s) announced via the FEDORA-2019-8b5e704a73 advisory.");
 
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is
-  present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
 
   script_tag(name:"insight", value:"poppler is a PDF rendering library.");
 

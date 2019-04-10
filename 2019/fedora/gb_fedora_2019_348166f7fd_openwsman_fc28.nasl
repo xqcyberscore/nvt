@@ -37,18 +37,18 @@ if(description)
   script_xref(name:"FEDORA", value:"2019-348166f7fd");
   script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/2V5HJ355RSKMFQ7GRJAHRZNDVXASF7TA");
 
-  script_tag(name:"summary", value:"The remote host is missing an update for the
-  'openwsman' package(s) announced via the FEDORA-2019-348166f7fd advisory.");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'openwsman'
+  package(s) announced via the FEDORA-2019-348166f7fd advisory.");
 
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is
-  present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
 
-  script_tag(name:"insight", value:"Openwsman is a project intended to provide
-  an open-source implementation of the Web Services Management specification
-  (WS-Management) and to expose system management information on the Linux
-  operating system using the WS-Management protocol. WS-Management is based on
-  a suite of web services specifications and usage requirements that exposes
-  a set of operations focused on and covers all system management aspects.");
+  script_tag(name:"insight", value:"Openwsman is a project intended to provide an open-source
+implementation of the Web Services Management specification
+(WS-Management) and to expose system management information on the
+Linux operating system using the WS-Management protocol. WS-Management
+is based on a suite of web services specifications and usage
+requirements that exposes a set of operations focused on and covers
+all system management aspects.");
 
   script_tag(name:"affected", value:"'openwsman' package(s) on Fedora 28.");
 

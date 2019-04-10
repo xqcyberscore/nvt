@@ -22,8 +22,7 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875537");
   script_version("2019-04-03T06:52:05+0000");
-  script_cve_id("CVE-2019-5010", "CVE-2018-20406", "CVE-2018-1060", "CVE-2018-1061",
-                "CVE-2019-9636", "CVE-2018-14647");
+  script_cve_id("CVE-2019-5010", "CVE-2018-20406", "CVE-2018-1060", "CVE-2018-1061", "CVE-2019-9636", "CVE-2018-14647");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"last_modification", value:"2019-04-03 06:52:05 +0000 (Wed, 03 Apr 2019)");
@@ -38,11 +37,10 @@ if(description)
   script_xref(name:"FEDORA", value:"2019-cf725dd20b");
   script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/AEZ5IQT7OF7Q2NCGIVABOWYGKO7YU3NJ");
 
-  script_tag(name:"summary", value:"The remote host is missing an update for the
-  'python35' package(s) announced via the FEDORA-2019-cf725dd20b advisory.");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'python35'
+  package(s) announced via the FEDORA-2019-cf725dd20b advisory.");
 
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is
-  present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
 
   script_tag(name:"insight", value:"Python 3.5 package for developers.
 

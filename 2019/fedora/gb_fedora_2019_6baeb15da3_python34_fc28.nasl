@@ -37,11 +37,10 @@ if(description)
   script_xref(name:"FEDORA", value:"2019-6baeb15da3");
   script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/D3LXPABKVLFYUHRYJPM3CSS5MS6FXKS7");
 
-  script_tag(name:"summary", value:"The remote host is missing an update for the
-  'python34' package(s) announced via the FEDORA-2019-6baeb15da3 advisory.");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'python34'
+  package(s) announced via the FEDORA-2019-6baeb15da3 advisory.");
 
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is
-  present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
 
   script_tag(name:"insight", value:"Python 3.4 package for developers.
 

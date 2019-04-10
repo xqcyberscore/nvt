@@ -37,14 +37,12 @@ if(description)
   script_xref(name:"FEDORA", value:"2019-b5e690b96e");
   script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/2C5FHCR4A636BLTAXL76WWDJLOAHGNYG");
 
-  script_tag(name:"summary", value:"The remote host is missing an update for the
-  'qt' package(s) announced via the FEDORA-2019-b5e690b96e advisory.");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'qt'
+  package(s) announced via the FEDORA-2019-b5e690b96e advisory.");
 
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is
-  present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
 
-  script_tag(name:"insight", value:"Qt is a software toolkit for developing
-  applications.
+  script_tag(name:"insight", value:"Qt is a software toolkit for developing applications.
 
 This package contains base tools, like string, xml, and network
 handling.");

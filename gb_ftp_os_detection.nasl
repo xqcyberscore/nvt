@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105355");
-  script_version("$Revision: 13813 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-21 14:07:21 +0100 (Thu, 21 Feb 2019) $");
+  script_version("2019-04-09T12:20:38+0000");
+  script_tag(name:"last_modification", value:"2019-04-09 12:20:38 +0000 (Tue, 09 Apr 2019)");
   script_tag(name:"creation_date", value:"2015-09-15 15:57:03 +0200 (Tue, 15 Sep 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -315,6 +315,13 @@ if( eregmatch( pattern:"^220[- ]QTCP at .+", string:banner, icase:FALSE ) ) {
 # e.g. 220 devicename IOS-FTP server (version 1.00) ready.
 if( "IOS-FTP server" >< banner && "ready." >< banner ) {
   register_and_report_os( os:"Cisco IOS", cpe:"cpe:/o:cisco:ios", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  exit( 0 );
+}
+
+# e.g. 220 Titan FTP Server 6.26.632 Ready.
+# nb: Only runs on Windows. Note that it still reports a SYST banner as 215 UNIX Type: L8
+if( "220 Titan FTP Server" >< banner ) {
+  register_and_report_os( os:"Microsoft Windows", cpe:"cpe:/o:microsoft:windows", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
   exit( 0 );
 }
 

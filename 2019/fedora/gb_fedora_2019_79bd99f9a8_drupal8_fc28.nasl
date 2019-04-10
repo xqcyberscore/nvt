@@ -22,8 +22,7 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875534");
   script_version("2019-04-03T06:51:54+0000");
-  script_cve_id("CVE-2018-7602", "CVE-2018-9861", "CVE-2018-7600", "CVE-2017-6926",
-                "CVE-2017-6927", "CVE-2017-6930", "CVE-2017-6931", "CVE-2019-6341");
+  script_cve_id("CVE-2018-7602", "CVE-2018-9861", "CVE-2018-7600", "CVE-2017-6926", "CVE-2017-6927", "CVE-2017-6930", "CVE-2017-6931", "CVE-2019-6341");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"last_modification", value:"2019-04-03 06:51:54 +0000 (Wed, 03 Apr 2019)");
@@ -38,15 +37,14 @@ if(description)
   script_xref(name:"FEDORA", value:"2019-79bd99f9a8");
   script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/QNTLCBAN6T7WYR5C4TNEYQD65IIR3V4P");
 
-  script_tag(name:"summary", value:"The remote host is missing an update for the
-  'drupal8' package(s) announced via the FEDORA-2019-79bd99f9a8 advisory.");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'drupal8'
+  package(s) announced via the FEDORA-2019-79bd99f9a8 advisory.");
 
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is
-  present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
 
-  script_tag(name:"insight", value:"Drupal is an open source content management
-  platform powering millions of websites and applications. Its built, used, and
-  supported by an active and diverse community of people around the world.");
+  script_tag(name:"insight", value:"Drupal is an open source content management platform powering millions of
+websites and applications. Its built, used, and supported by an active and
+diverse community of people around the world.");
 
   script_tag(name:"affected", value:"'drupal8' package(s) on Fedora 28.");
 

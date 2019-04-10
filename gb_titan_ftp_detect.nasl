@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_titan_ftp_detect.nasl 13499 2019-02-06 12:55:20Z cfischer $
 #
 # Titan FTP Server Version Detection
 #
@@ -27,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800236");
-  script_version("$Revision: 13499 $");
+  script_version("2019-04-09T13:55:37+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-06 13:55:20 +0100 (Wed, 06 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-04-09 13:55:37 +0000 (Tue, 09 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-02-11 16:51:00 +0100 (Wed, 11 Feb 2009)");
   script_name("Titan FTP Server Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -53,32 +52,31 @@ include("cpe.inc");
 include("ftp_func.inc");
 include("host_details.inc");
 
-ftpPort = get_ftp_port(default:21);
-banner = get_ftp_banner(port:ftpPort);
-if(banner && "220 Titan FTP Server " >< banner) {
+port = get_ftp_port(default:21);
+banner = get_ftp_banner(port:port);
 
+if (banner && "220 Titan FTP Server " >< banner) {
   version = "unknown";
+  install = port + "/tcp";
 
   titanVer = eregmatch(pattern:"Titan FTP Server ([0-9.]+)", string:banner);
-  if(!isnull(titanVer[1])) {
+  if (!isnull(titanVer[1]))
     version = titanVer[1];
-    set_kb_item(name:"TitanFTP/Server/Ver", value:version);
-  }
 
-  set_kb_item(name:"TitanFTP/installed", value:TRUE);
+  set_kb_item(name:"TitanFTP/detected", value:TRUE);
 
   cpe = build_cpe(value:version, exp:"^([0-9.]+)", base:"cpe:/a:southrivertech:titan_ftp_server:");
   if (!cpe)
-    cpe = 'cpe:/a:southrivertech:titan_ftp_server';
+    cpe = "cpe:/a:southrivertech:titan_ftp_server";
 
-  register_product(cpe:cpe, location:ftpPort + '/tcp', port:ftpPort, service:"ftp");
+  register_product(cpe:cpe, location:install, port:port, service:"ftp");
 
   log_message(data:build_detection_report(app:"Titan FTP Server",
                                           version:version,
-                                          install:ftpPort + '/tcp',
+                                          install:install,
                                           cpe:cpe,
                                           concluded:banner),
-              port:ftpPort);
+              port:port);
 }
 
 exit(0);

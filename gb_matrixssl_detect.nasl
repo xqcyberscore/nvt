@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106346");
-  script_version("$Revision: 11885 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
+  script_version("2019-04-09T08:37:50+0000");
+  script_tag(name:"last_modification", value:"2019-04-09 08:37:50 +0000 (Tue, 09 Apr 2019)");
   script_tag(name:"creation_date", value:"2016-10-12 11:13:38 +0700 (Wed, 12 Oct 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -68,10 +68,8 @@ if (banner =~ "Server: .*MatrixSSL") {
   version = "unknown";
 
   vers = eregmatch(pattern: "MatrixSSL\/([0-9.]+)", string: banner);
-  if (!isnull(vers[1])) {
+  if (!isnull(vers[1]))
     version =  vers[1];
-    set_kb_item(name: "matrixssl/version", value: version);
-  }
 
   set_kb_item(name: "matrixssl/installed", value: TRUE);
 

@@ -37,14 +37,13 @@ if(description)
   script_xref(name:"FEDORA", value:"2019-87e2fa8e0f");
   script_xref(name:"URL", value:"https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/F7YP4QUEYGHI4Q7GIAVFVKWQ7DJMBYLU");
 
-  script_tag(name:"summary", value:"The remote host is missing an update for the
-  'libjpeg-turbo' package(s) announced via the FEDORA-2019-87e2fa8e0f advisory.");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'libjpeg-turbo'
+  package(s) announced via the FEDORA-2019-87e2fa8e0f advisory.");
 
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is
-  present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
 
-  script_tag(name:"insight", value:"The libjpeg-turbo package contains a library
-  of functions for manipulating JPEG images.");
+  script_tag(name:"insight", value:"The libjpeg-turbo package contains a library of functions for manipulating JPEG
+images.");
 
   script_tag(name:"affected", value:"'libjpeg-turbo' package(s) on Fedora 28.");
 
