@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141011");
-  script_version("$Revision: 14057 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:02:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("2019-04-11T08:41:23+0000");
+  script_tag(name:"last_modification", value:"2019-04-11 08:41:23 +0000 (Thu, 11 Apr 2019)");
   script_tag(name:"creation_date", value:"2018-04-19 13:02:45 +0700 (Thu, 19 Apr 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -66,19 +66,21 @@ res = http_get_cache(port: port, item: "/");
 
 if ("ISSymbol1.ProductName" >< res && "InduSoft Web Studio" >< res) {
   set_kb_item(name: "schneider_indusoft/installed", value: TRUE);
-  set_kb_item(name: "schneider_indusoft/http/detected", value: TRUE);
+  set_kb_item(name: "schneider_indusoft/http/" + port + "/detected", value: TRUE);
 
   version = "unknown";
+  concluded = "HTTP Request";
 
   vers = eregmatch(pattern: 'ProductVersion = "([0-9.]+)', string: res);
-  if (!isnull(vers[1]))
+  if (!isnull(vers[1])) {
     version = vers[1];
+    concluded = vers[0];
+  }
 
-  set_kb_item(name: "schneider_indusoft/http/version", value: version);
-  set_kb_item(name: "schneider_indusoft/http/concluded", value: vers[0]);
-  set_kb_item(name: "schneider_indusoft/http/location", value: "/");
+  set_kb_item(name: "schneider_indusoft/http/" + port + "/version", value: version);
+  set_kb_item(name: "schneider_indusoft/http/" + port + "/concluded", value: vers[0]);
+  set_kb_item(name: "schneider_indusoft/http/" + port + "/location", value: "/");
   set_kb_item(name: "schneider_indusoft/http/port", value: port);
-
 }
 
 exit(0);

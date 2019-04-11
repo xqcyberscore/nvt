@@ -32,8 +32,8 @@ if(description)
                 "CVE-2018-4400", "CVE-2018-4402", "CVE-2018-4422", "CVE-2018-4423",
                 "CVE-2018-4420", "CVE-2018-3640", "CVE-2018-4368", "CVE-2018-4413",
                 "CVE-2018-4410", "CVE-2018-4415", "CVE-2018-4398", "CVE-2018-4394");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"last_modification", value:"$Date: 2019-03-18 19:39:37 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2018-11-02 10:56:30 +0530 (Fri, 02 Nov 2018)");
   script_name("Apple MacOSX Security Updates(HT209193)-02");

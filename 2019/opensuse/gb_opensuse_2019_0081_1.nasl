@@ -41,8 +41,8 @@ if(description)
                 "CVE-2018-4378", "CVE-2018-4382", "CVE-2018-4386", "CVE-2018-4392",
                 "CVE-2018-4416", "CVE-2018-4437", "CVE-2018-4438", "CVE-2018-4441",
                 "CVE-2018-4442", "CVE-2018-4443", "CVE-2018-4464");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"last_modification", value:"$Date: 2019-01-25 15:07:05 +0100 (Fri, 25 Jan 2019) $");
   script_tag(name:"creation_date", value:"2019-01-24 04:02:18 +0100 (Thu, 24 Jan 2019)");
   script_name("SuSE Update for webkit2gtk3 openSUSE-SU-2019:0081-1 (webkit2gtk3)");

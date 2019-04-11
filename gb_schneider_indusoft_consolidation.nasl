@@ -19,8 +19,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113350");
-  script_version("$Revision: 14057 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-08 14:02:00 +0100 (Fri, 08 Mar 2019) $");
+  script_version("2019-04-11T08:41:23+0000");
+  script_tag(name:"last_modification", value:"2019-04-11 08:41:23 +0000 (Thu, 11 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-03-06 13:15:32 +0100 (Wed, 06 Mar 2019)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -44,44 +44,55 @@ if(description)
   exit(0);
 }
 
-CPE = "cpe:/a:schneider_electric:indusoft_web_studio:";
+CPE = "cpe:/a:schneider_electric:indusoft_web_studio";
 
 include( "host_details.inc" );
-include( "cpe.inc" );
 
 version = "unknown";
+extra = '\nConcluded from:';
 
-extra = 'Concluded from:';
-concluded = "";
-
-
-foreach proto ( make_list( "smb", "http" ) ) {
-  if( ! get_kb_item( "schneider_indusoft/" + proto + "/detected" ) ) continue;
-  if( ( ver = get_kb_item( "schneider_indusoft/" + proto + "/version" ) )  && ver != "unknown" ) {
-    concl = get_kb_item( "schneider_indusoft/" + proto + "/concluded" );
-    extra += '\n\n' + toupper( proto ) + ':\n' + concl;
-    if( version == "unknown" )
+foreach proto( make_list( "smb", "http" ) ) {
+  version_list = get_kb_list( "schneider_indusoft/" + proto + "/*/version" );
+  foreach ver( version_list ) {
+    if( ver != "unknown" && version == "unknown" ) {
       version = ver;
-    if( concluded == "")
-      concluded = toupper( proto );
-    else
-      concluded += ", " + toupper( proto );
+      CPE += ":" + version;
+      break;
+    }
   }
 }
 
-regPort = get_kb_item( "schneider_indusoft/http/port" );
-conclUrl = get_kb_item( "schneider_indusoft/http/location" );
-insloc = get_kb_item( "schneider_indusoft/smb/location" );
+if( ! isnull( concl = get_kb_item( "schneider_indusoft/smb/0/concluded" ) ) ) {
+  insloc = get_kb_item( "schneider_indusoft/smb/0/location" );
+  extra += '\nLocal Detection over SMB:\n';
+  extra += '  Concluded: ' + concl + '\n';
+  extra += '  Location: ' + insloc + '\n';
 
-register_and_report_cpe( app: "Schneider Electric InduSoft Web Studio",
-                         ver: version,
-                         concluded: concluded,
-                         base: CPE,
-                         expr: '([0-9.]+)',
-                         insloc: insloc,
-                         regPort: regPort,
-                         regProto: concluded,
-                         conclUrl: conclUrl,
-                         extra: extra );
+  register_product( cpe: CPE, location: insloc, port: 0, service: "smb-login" );
+}
+
+if( http_ports = get_kb_list( "schneider_indusoft/http/port" ) ) {
+  extra += '\nRemote Detection over HTTP(s):\n';
+
+  foreach port( http_ports ) {
+    concl = get_kb_item( "schneider_indusoft/http/" + port + "/concluded" );
+    loc = get_kb_item( "schneider_indusoft/http/" + port + "/location" );
+
+    extra += '  Port: ' + port + '/tcp\n';
+    extra += '  Concluded: ' + concl + '\n';
+    extra += '  Location: ' + loc + '\n';
+
+    register_product( cpe: CPE, location: loc, port: port, service: "www" );
+  }
+}
+
+report = build_detection_report( app: "Schneider Electric InduSoft Web Studio",
+                                 version: version,
+                                 install: "/",
+                                 cpe: CPE );
+if( extra )
+  report += '\n' + extra;
+
+log_message( port: 0, data: report );
 
 exit( 0 );

@@ -30,8 +30,8 @@ if(description)
   script_version("$Revision: 14294 $");
   script_cve_id("CVE-2019-6219", "CVE-2019-6211", "CVE-2018-20346", "CVE-2018-20505",
                 "CVE-2018-20506", "CVE-2019-6235");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"last_modification", value:"$Date: 2019-03-18 20:06:13 +0100 (Mon, 18 Mar 2019) $");
   script_tag(name:"creation_date", value:"2019-01-23 10:31:18 +0530 (Wed, 23 Jan 2019)");
   script_name("Apple MacOSX Security Updates(HT209446)-02");

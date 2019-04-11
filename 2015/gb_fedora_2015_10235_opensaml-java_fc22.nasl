@@ -30,8 +30,8 @@ if(description)
   script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
   script_tag(name:"creation_date", value:"2015-08-08 09:04:12 +0200 (Sat, 08 Aug 2015)");
   script_cve_id("CVE-2014-3603");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for opensaml-java FEDORA-2015-10235");
   script_tag(name:"summary", value:"The remote host is missing an update for the 'opensaml-java'

@@ -35,8 +35,8 @@ if(description)
                 "CVE-2018-4319", "CVE-2018-4309", "CVE-2018-4197", "CVE-2018-4306",
                 "CVE-2018-4312", "CVE-2018-4314", "CVE-2018-4315", "CVE-2018-4317",
                 "CVE-2018-4318", "CVE-2018-4345", "CVE-2018-4361");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"last_modification", value:"$Date: 2018-10-09 10:34:17 +0200 (Tue, 09 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-10-09 10:19:54 +0530 (Tue, 09 Oct 2018)");
   script_name("Apple iCloud Security Updates(HT209141)-Windows");

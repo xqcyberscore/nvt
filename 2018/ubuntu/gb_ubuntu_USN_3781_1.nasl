@@ -36,8 +36,8 @@ if(description)
                   "CVE-2018-4312", "CVE-2018-4314", "CVE-2018-4315", "CVE-2018-4316",
                   "CVE-2018-4317", "CVE-2018-4318", "CVE-2018-4319", "CVE-2018-4323",
                   "CVE-2018-4328", "CVE-2018-4358", "CVE-2018-4359", "CVE-2018-4361");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for webkit2gtk USN-3781-1");
   script_tag(name:"summary", value:"The remote host is missing an update for the 'webkit2gtk'

@@ -34,8 +34,8 @@ if(description)
                 "CVE-2019-6216", "CVE-2019-6221", "CVE-2019-6227", "CVE-2019-6229",
                 "CVE-2019-6233", "CVE-2018-20506", "CVE-2019-6217", "CVE-2019-6234",
                 "CVE-2019-6235", "CVE-2019-6226");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"last_modification", value:"$Date: 2019-01-25 15:07:05 +0100 (Fri, 25 Jan 2019) $");
   script_tag(name:"creation_date", value:"2019-01-25 14:09:57 +0530 (Fri, 25 Jan 2019)");
   script_name("Apple iTunes Security Updates (HT209450)");

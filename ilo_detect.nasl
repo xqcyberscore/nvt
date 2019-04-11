@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ilo_detect.nasl 10800 2018-08-07 04:21:36Z ckuersteiner $
 #
 # HP Integrated Lights-Out Detection
 #
@@ -14,7 +13,7 @@
 #   order of Copyright and &copy;
 #
 # Copyright:
-# Copyright (C) 2005 David Maciejak
+# Copyright (C) 2006 David Maciejak
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2,
@@ -33,8 +32,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.20285");
-  script_version("$Revision: 10800 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-07 06:21:36 +0200 (Tue, 07 Aug 2018) $");
+  script_version("2019-04-10T08:02:39+0000");
+  script_tag(name:"last_modification", value:"2019-04-10 08:02:39 +0000 (Wed, 10 Apr 2019)");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -42,7 +41,7 @@ if(description)
   script_name("HP Integrated Lights-Out Detection");
 
   script_category(ACT_GATHER_INFO);
-  script_copyright("This script is Copyright (C) 2005 David Maciejak");
+  script_copyright("This script is Copyright (C) 2006 David Maciejak");
   script_family("Product detection");
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 443);
@@ -71,7 +70,8 @@ if ((r =~ "(<title>HP iLO Login</title>|<title>iLO [0-9]+</title>)" &&
     ("<title>HP Remote Insight<" >< r && egrep(pattern: "Hewlett-Packard Development Company", string: r)) ||
     (r =~ ">HP Integrated Lights-Out [0-9]+ Login<" && r =~ "Copyright.*Hewlett Packard Enterprise Development") ||
     "Server: HP-iLO-Server" >< r || "Server: HPE-iLO-Server" >< r ||
-    ("iLO.getSVG" >< r && "iLO.getCookie" >< r)) {
+    ("iLO.getSVG" >< r && "iLO.getCookie" >< r) ||
+    ("EVT_ILO_RESET_PULSE" >< r && "iLOGlobal" >< r)) {
 
   fw_vers  = "unknown";
   ilo_vers = "unknown";

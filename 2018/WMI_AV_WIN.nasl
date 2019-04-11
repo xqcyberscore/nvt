@@ -62,13 +62,13 @@ OSNAME = get_kb_item("WMI/WMI_OSNAME");
 
 if(!OSVER || OSVER >< "none"){
     log_message(data:"No access to SMB host or firewall is activated or this is not a Windows system.");
-    exit(0);
+    exit(1);
 }
 
 if((OSVER == '5.2' || OSVER == '6.0' || OSVER == '6.1' || OSVER == '6.2') && OSTYPE > 1){ #Windows Server 2000, 2003, 2008, 2008 R2 and Server 2012
     AntiVir = "Host appears to be a Windows server.";
 	log_message(data:AntiVir);
-	exit(0);
+	exit(1);
 }
 
 handle = wmi_connect(host:host, username:usrname, password:passwd);
@@ -77,29 +77,27 @@ if(!handle){
     set_kb_item(name:"WMI/Antivir", value:"error");
     set_kb_item(name:"WMI/Antivir/log", value:"wmi_connect: WMI Connect failed.");
     wmi_close(wmi_handle:handle);
-    exit(0);
+    exit(1);
 }
 
 ns = 'root\\SecurityCenter2';
-query = 'select displayName, productState from AntiSpywareProduct';
 
+# Query AntivirusProduct
+query = 'select displayName, productState from AntivirusProduct';
 handle = wmi_connect(host:host, username:usrname, password:passwd, ns:ns);
-
 if(!handle){
     log_message(port:0, data:"wmi_connect: WMI Connect failed to query security center.");
     set_kb_item(name:"WMI/Antivir", value:"error");
-    exit(0);
+    exit(1);
 }
-
-AntiVir = wmi_query(wmi_handle:handle, query:query);
-
+AntiVirus = wmi_query(wmi_handle:handle, query:query);
 wmi_close(wmi_handle:handle);
 
-if(AntiVir == ""){
+# If the returned data is null, report the error
+if(AntiVirus == ""){
     log_message(data:"WMI Connect returned an empty string.");
-    exit(0);
+    exit(1);
 }
 
-log_message(data:AntiVir);
-
+log_message(data:AntiVirus);
 exit(0);
