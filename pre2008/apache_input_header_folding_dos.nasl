@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12293");
-  script_version("$Revision: 9228 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-28 08:22:51 +0200 (Wed, 28 Mar 2018) $");
+  script_version("2019-04-10T13:42:28+0000");
+  script_tag(name:"last_modification", value:"2019-04-10 13:42:28 +0000 (Wed, 10 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(10619, 12877);
   script_tag(name:"cvss_base", value:"6.4");
@@ -46,26 +46,23 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("apache/installed");
 
-  tag_summary = "The remote host appears to be running a version of Apache 2.x which is
-  older than 2.0.50.";
+  script_xref(name:"URL", value:"http://www.guninski.com/httpd1.html");
 
-  tag_insight = "There is denial of service in apache httpd 2.0.x by sending a
+  script_tag(name:"summary", value:"The remote host appears to be running a version of Apache 2.x which is
+  older than 2.0.50.");
+
+  script_tag(name:"insight", value:"There is denial of service in apache httpd 2.0.x by sending a
   specially crafted HTTP request. It is possible to consume arbitrary
   amount of memory. On 64 bit systems with more than 4GB virtual memory
-  this may lead to heap based buffer overflow. See also
-  http://www.guninski.com/httpd1.html
+  this may lead to heap based buffer overflow.
 
   There is also a denial of service vulnerability in mod_ssl's
   ssl_io_filter_cleanup function. By sending a request to vulnerable
   server over SSL and closing the connection before the server can send
   a response, an attacker can cause a memory violation that crashes the
-  server.";
+  server.");
 
-  tag_solution = "Upgrade to Apache/2.0.50 or newer";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"solution", value:"Upgrade to Apache/2.0.50 or newer");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -77,7 +74,8 @@ include("http_func.inc");
 
 port = get_http_port( default:80 );
 banner = get_http_banner( port:port );
-if( ! banner ) exit( 0 );
+if( ! banner )
+  exit( 0 );
 
 if( egrep( pattern:"^Server:.*Apache(-AdvancedExtranetServer)?/2\.0\.(([0-9][^0-9])([0-3][0-9][^0-9])|(4[0-9][^0-9])).*", string:banner ) ) {
   security_message( port:port );

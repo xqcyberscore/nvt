@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11884");
-  script_version("$Revision: 8236 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-22 11:28:23 +0100 (Fri, 22 Dec 2017) $");
+  script_version("2019-04-11T14:06:24+0000");
+  script_tag(name:"last_modification", value:"2019-04-11 14:06:24 +0000 (Thu, 11 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -42,31 +42,35 @@ if(description)
   script_require_udp_ports(514);
   script_mandatory_keys("Host/runs_windows");
 
-  tag_summary = "WinSyslog is an enhanced syslog server for Windows. A vulnerability in the product allows 
-  remote attackers to cause the WinSyslog to freeze, which in turn will also freeze the operating 
-  system on which the product executes.";
-	
-  tag_affected = "WinSyslog Version 4.21 SP1 (http://www.winsyslog.com)";
+  script_tag(name:"affected", value:"WinSyslog Version 4.21 SP1.");
 
-  tag_solution = "Contact vendor http://www.winsyslog.com";
+  script_tag(name:"solution", value:"Contact the vendor for an update.");
 
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"WinSyslog is an enhanced syslog server for Windows. A vulnerability in the product allows
+  remote attackers to cause the WinSyslog to freeze, which in turn will also freeze the operating
+  system on which the product executes.");
 
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
   exit(0);
 }
 
-include("global_settings.inc");
 include("host_details.inc");
 
+start_denial();
+sleep( 1);
+up = end_denial();
+if(!up)
+  exit(0);
+
 port = 514;
-if( ! get_udp_port_state( port ) ) exit( 0 );
+if( ! get_udp_port_state( port ) )
+  exit( 0 );
 
 soc = open_sock_udp( port );
-if( ! soc ) exit( 0 );
+if( ! soc )
+  exit( 0 );
 
 start_denial();
 

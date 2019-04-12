@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891750");
-  script_version("2019-04-08T02:00:07+0000");
+  script_version("2019-04-12T06:46:08+0000");
   script_cve_id("CVE-2019-10904");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-04-08 02:00:07 +0000 (Mon, 08 Apr 2019)");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"2019-04-12 06:46:08 +0000 (Fri, 12 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-04-08 02:00:07 +0000 (Mon, 08 Apr 2019)");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1750-1] roundup security update)");
   script_category(ACT_GATHER_INFO);

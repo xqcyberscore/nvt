@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11902");
-  script_version("$Revision: 10411 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-05 12:15:10 +0200 (Thu, 05 Jul 2018) $");
+  script_version("2019-04-11T14:06:24+0000");
+  script_tag(name:"last_modification", value:"2019-04-11 14:06:24 +0000 (Thu, 11 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(1312);
   script_tag(name:"cvss_base", value:"5.0");
@@ -47,7 +47,7 @@ if(description)
 
   script_tag(name:"summary", value:"The machine (or a gateway on the network path) crashed when
   flooded with incorrectly fragmented packets.
- 
+
   This is known as the 'jolt2' denial of service attack.");
 
   script_tag(name:"impact", value:"An attacker may use this flaw to shut down this server or router,
@@ -59,7 +59,15 @@ if(description)
   exit(0);
 }
 
-if(TARGET_IS_IPV6())exit(0);
+if(TARGET_IS_IPV6())
+  exit(0);
+
+# Ensure that the host is still up
+start_denial();
+sleep( 2 );
+up = end_denial();
+if( ! up )
+  exit( 0 );
 
 src = this_host();
 id = 0x455;
@@ -77,8 +85,9 @@ start_denial();
 send_packet(icmp, pcap_active: 0) x 10000;
 
 alive = end_denial();
-if(!alive)
-{
-	security_message();
-	set_kb_item( name:"Host/dead", value:TRUE );
+if(!alive) {
+  security_message(port:0, proto:"icmp");
+  set_kb_item( name:"Host/dead", value:TRUE );
 }
+
+exit(0);

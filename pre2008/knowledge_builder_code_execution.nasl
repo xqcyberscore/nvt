@@ -22,15 +22,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-# From: Zero_X www.lobnan.de Team [zero-x@linuxmail.org]
-# Subject: Remote Code Execution in Knowledge Builder
-# Date: Wednesday 24/12/2003 15:45
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11959");
-  script_version("$Revision: 6056 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
+  script_version("2019-04-11T14:06:24+0000");
+  script_tag(name:"last_modification", value:"2019-04-11 14:06:24 +0000 (Thu, 11 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -38,18 +34,20 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2003 Noam Rathaus");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "solution" , value : "Upgrade to the latest version or disable this CGI altogether");
-  script_tag(name : "summary" , value : "KnowledgeBuilder is a feature-packed knowledge base solution CGI suite. 
+  script_tag(name:"solution", value:"Upgrade to the latest version or disable this CGI altogether.");
 
-  A vulnerability in this product may allow a remote attacker to execute 
+  script_tag(name:"summary", value:"KnowledgeBuilder is a feature-packed knowledge base solution CGI suite.
+
+  A vulnerability in this product may allow a remote attacker to execute
   arbitrary commands on this host.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
+
   exit(0);
 }
 
@@ -57,30 +55,36 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-if (! can_host_php(port:port) ) exit(0);
-
-function check_dir(path)
-{
-
- if(path == "/") path = "";
-
- req = http_get(item:string(path, "/index.php?page=http://xxxxxxxxxxxxx/openvas"), port:port);
- res = http_keepalive_send_recv(port:port, data:req);
- if ( res == NULL ) exit(0);
- find = string("operation error");
- find_alt = string("getaddrinfo failed");
-
- if (find >< res || find_alt >< res )
- {
-  req = http_get(item:string(path, "/index.php?page=index.php"), port:port);
-  res = http_keepalive_send_recv(port:port, data:req);
-  if ( res == NULL ) exit(0);
-  if ( find >< res || find_alt >< res ) exit(0);
-  security_message(port:port);
+if(!can_host_php(port:port))
   exit(0);
- }
-}
 
-foreach dir (make_list_unique("/kb", cgi_dirs(port:port))) check_dir(path:dir);
+foreach path(make_list_unique("/kb", cgi_dirs(port:port))) {
+
+  if(path == "/")
+   path = "";
+
+  url = path + "/index.php?page=http://xxxxxxxxxxxxx/vt-test";
+  req = http_get(item:url, port:port);
+  res = http_keepalive_send_recv(port:port, data:req);
+  if(!res)
+    continue;
+
+  find = string("operation error");
+  find_alt = string("getaddrinfo failed");
+
+  if(find >< res || find_alt >< res ) {
+    req = http_get(item:path + "/index.php?page=index.php", port:port);
+    res = http_keepalive_send_recv(port:port, data:req);
+    if(!res)
+      continue;
+
+    if( find >< res || find_alt >< res )
+      continue;
+
+    report = report_vuln_url(port:port, url:url);
+    security_message(port:port, data:report);
+    exit(0);
+  }
+}
 
 exit(99);

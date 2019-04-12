@@ -25,13 +25,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-# Ref: Reported by vendor
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14223");
-  script_version("$Revision: 9348 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
+  script_version("2019-04-11T14:06:24+0000");
+  script_tag(name:"last_modification", value:"2019-04-11 14:06:24 +0000 (Thu, 11 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(10938);
   script_cve_id("CVE-2004-0792");
@@ -44,32 +42,19 @@ if(description)
   script_dependencies("rsync_modules.nasl");
   script_require_ports("Services/rsync", 873);
 
-  tag_summary = "A vulnerability has been reported in rsync, which potentially can be exploited 
-  by malicious users to read or write arbitrary files on a vulnerable system.
+  script_tag(name:"summary", value:"A vulnerability has been reported in rsync, which potentially can be exploited
+  by malicious users to read or write arbitrary files on a vulnerable system.");
 
-  rsync is a software product for keeping files synched across multiple
-  systems.  Rsync is a network-based program and typically communicates
-  over TCP port 873.";
+  script_tag(name:"impact", value:"There is a flaw in this version of rsync which, due to an input validation
+  error, would allow a remote attacker to gain access to the remote system.");
 
-  tag_impact = "There is a flaw in this version of rsync which, due to an input validation
-  error, would allow a remote attacker to gain access to the remote system.";
+  script_tag(name:"insight", value:"An attacker, exploiting this flaw, would need network access to the TCP port.
 
-  tag_insight = "An attacker, exploiting this flaw, would need network access to the TCP port.  
+  Successful exploitation requires that the rsync daemon is *not* running chrooted.");
 
-  Successful exploitation requires that the rsync daemon is *not* running chrooted.
+  script_tag(name:"solution", value:"Upgrade to rsync 2.6.3 or newer.");
 
-  *** Since rsync does not advertise its version number
-  *** and since there are little details about this flaw at
-  *** this time, this might be a false positive";
-
-  tag_solution = "Upgrade to rsync 2.6.3 or newer.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-
-  script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
   exit(0);

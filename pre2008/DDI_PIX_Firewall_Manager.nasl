@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10819");
-  script_version("$Revision: 6040 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+  script_version("2019-04-11T14:06:24+0000");
+  script_tag(name:"last_modification", value:"2019-04-11 14:06:24 +0000 (Thu, 11 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(691);
   script_tag(name:"cvss_base", value:"5.0");
@@ -45,28 +45,28 @@ if(description)
   script_require_ports("Services/www", 8181);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  tag_summary = "It is possible to read arbitrary files on the remote host
-  through the remote web server.";
+  script_tag(name:"solution", value:"No solution was made available by the vendor. General solution options
+  are to upgrade to a newer release, disable respective features, remove the product or replace the
+  product by another one.
 
-  tag_insight = "It is possible to read arbitrary files on this machine by using
+  Note: Cisco originally recommended upgrading to version 4.1.6b or version 4.2, however the same
+  vulnerability has been found in version 4.3.
+
+  Cisco now recommends to disable the software completely and to migrate to the new PIX Device
+  Manager software.");
+
+  script_tag(name:"summary", value:"It is possible to read arbitrary files on the remote host
+  through the remote web server.");
+
+  script_tag(name:"impact", value:"This flaw can be used to bypass the
+  management software's password protection and possibly retrieve the enable password for the Cisco PIX.");
+
+  script_tag(name:"insight", value:"It is possible to read arbitrary files on this machine by using
   relative paths in the URL.
 
-  This vulnerability has been assigned Cisco Bug ID: CSCdk39378.";
+  This vulnerability has been assigned Cisco Bug ID: CSCdk39378.");
 
-  tag_impact = "This flaw can be used to bypass the
-  management software's password protection and possibly retrieve
-  the enable password for the Cisco PIX.";
-
-  tag_solution = "Cisco originally recommended upgrading to version 4.1.6b or version
-  4.2, however the same vulnerability has been found in version 4.3.
-  Cisco now recommends that you disable the software completely and
-  migrate to the new PIX Device Manager software.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"insight", value:tag_insight);
-
+  script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_vul");
 
   exit(0);

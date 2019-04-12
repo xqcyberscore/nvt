@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12104");
-  script_version("$Revision: 8402 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-12 15:03:40 +0100 (Fri, 12 Jan 2018) $");
+  script_version("2019-04-11T14:06:24+0000");
+  script_tag(name:"last_modification", value:"2019-04-11 14:06:24 +0000 (Thu, 11 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -42,16 +42,12 @@ if(description)
 
   script_xref(name:"URL", value:"http://support.novell.com/cgi-bin/search/searchtid.cgi?/10077872.htm");
 
-  tag_summary = "The server's directory base is set to NULL.";
+  script_tag(name:"solution", value:"Disable or restrict anonymous binds in LDAP if not required.");
 
-  tag_impact = "This allows information to be enumerated without any prior
-  knowledge of the directory structure.";
+  script_tag(name:"summary", value:"The server's directory base is set to NULL.");
 
-  tag_solution = "Disable or restrict anonymous binds in LDAP if not required";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
+  script_tag(name:"impact", value:"This allows information to be enumerated without any prior
+  knowledge of the directory structure.");
 
   script_tag(name:"solution_type", value:"Workaround");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -69,9 +65,9 @@ flag = FALSE;
 report = 'The following information was pulled from the server via a LDAP request:\n';
 
 senddata = raw_string(
-0x30, 0x25, 0x02, 0x01, 0x02, 0x63, 0x20, 0x04, 0x00, 0x0a, 
-0x01, 0x02, 0x0a, 0x01, 0x00, 0x02, 0x01, 0x00, 0x02, 0x01, 
-0x00, 0x01, 0x01, 0x00, 0x87, 0x0b, 0x6f, 0x62, 0x6a, 0x65, 
+0x30, 0x25, 0x02, 0x01, 0x02, 0x63, 0x20, 0x04, 0x00, 0x0a,
+0x01, 0x02, 0x0a, 0x01, 0x00, 0x02, 0x01, 0x00, 0x02, 0x01,
+0x00, 0x01, 0x01, 0x00, 0x87, 0x0b, 0x6f, 0x62, 0x6a, 0x65,
 0x63, 0x74, 0x63, 0x6c, 0x61, 0x73, 0x73, 0x30, 0x00
 			);
 soc = open_sock_tcp( port );

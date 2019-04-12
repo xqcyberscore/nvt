@@ -39,8 +39,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10751");
-  script_version("$Revision: 6695 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:17:53 +0200 (Wed, 12 Jul 2017) $");
+  script_version("2019-04-10T13:42:28+0000");
+  script_tag(name:"last_modification", value:"2019-04-10 13:42:28 +0000 (Wed, 10 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -49,21 +49,19 @@ if(description)
   script_family("Peer-To-Peer File Sharing");
   script_copyright("This script is Copyright (C) 2001 SecuriTeam");
   script_dependencies("gb_get_http_banner.nasl");
-  script_mandatory_keys("X-Kazaa-Username/banner");
   script_require_ports("Services/www", 1214);
+  script_mandatory_keys("X-Kazaa-Username/banner");
 
-  tag_summary = "The Kazaa / Morpheus HTTP Server is running.
+  script_xref(name:"URL", value:"http://www.securiteam.com/securitynews/5UP0L2K55W.html");
+
+  script_tag(name:"solution", value:"Currently there is no way to limit this exposure.
+  Filter incoming traffic to this port.");
+
+  script_tag(name:"summary", value:"The Kazaa / Morpheus HTTP Server is running.
   This server is used to provide other clients with a
-  connection point. However, it also exposes sensitive system files.";
+  connection point. However, it also exposes sensitive system files.");
 
-  tag_solution = "Currently there is no way to limit this exposure.
-  Filter incoming traffic to this port.
-
-  More Information: http://www.securiteam.com/securitynews/5UP0L2K55W.html";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-
+  script_tag(name:"solution_type", value:"Workaround");
   script_tag(name:"qod_type", value:"remote_banner");
 
   exit(0);
@@ -72,7 +70,6 @@ if(description)
 include("http_func.inc");
 
 port = get_http_port( default:1214 );
-
 banner = get_http_banner( port:port );
 if( ! banner ) exit( 0 );
 
@@ -84,6 +81,8 @@ if( "X-Kazaa-Username: " >< banner ) {
   subbuf = strstr( buf, string( "\r\n" ) );
   buf = buf - subbuf;
   username = buf;
+  if(!username)
+    exit(0);
 
   buf = "Remote host reported that the username used is: ";
   buf = buf + username;

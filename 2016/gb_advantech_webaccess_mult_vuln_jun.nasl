@@ -30,8 +30,8 @@ CPE = "cpe:/a:advantech:advantech_webaccess";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106108");
-  script_version("$Revision: 12149 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
+  script_version("2019-04-06T12:52:40+0000");
+  script_tag(name:"last_modification", value:"2019-04-06 12:52:40 +0000 (Sat, 06 Apr 2019)");
   script_tag(name:"creation_date", value:"2016-06-24 11:38:08 +0700 (Fri, 24 Jun 2016)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -48,8 +48,8 @@ if (description)
 
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_advantech_webaccess_detect.nasl");
-  script_mandatory_keys("Advantech/WebAccess/installed");
+  script_dependencies("gb_advantech_webaccess_consolidation.nasl");
+  script_mandatory_keys("advantech/webaccess/detected");
 
   script_tag(name:"summary", value:"Advantech WebAccess is prone to multiple vulnerabilities.");
 
@@ -76,19 +76,21 @@ system. A authenticated administrator may view passwords from other administrato
   exit(0);
 }
 
-include("host_details.inc");
-include("version_func.inc");
+include( "version_func.inc" );
+include( "host_details.inc" );
 
-if (!port = get_app_port(cpe: CPE))
-  exit(0);
+if( isnull( port = get_app_port(cpe: CPE ) ) )
+  exit( 0 );
 
-if (!version = get_app_version(cpe: CPE, port: port))
-  exit(0);
+if( ! infos = get_app_version_and_location(cpe: CPE, port: port ) )
+  exit( 0 );
 
-if (version_is_less(version: version, test_version: "8.1.2016.05.19")) {
-  report = report_fixed_ver(installed_version: version, fixed_version: "8.1.2016.05.19");
-  security_message(data: report, port: port);
-  exit(0);
+path = infos["location"];
+vers = infos["version"];
+
+if( version_is_less( version: vers, test_version: "8.1.2016.05.19" ) ) {
+  report = report_fixed_ver( installed_version: vers, fixed_version: "8.1.2016.05.19", install_path: path );
+  security_message( data: report, port: port );
+  exit( 0 );
 }
-
-exit(0);
+exit( 99 );

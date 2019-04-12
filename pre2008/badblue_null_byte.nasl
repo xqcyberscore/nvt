@@ -25,48 +25,51 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "It was possible to read the content of /EXT.INI
-(BadBlue configuration file) by sending an invalid GET request.
-
-A cracker may exploit this vulnerability to steal the passwords.";
-
-tag_solution = "upgrade your software or protect it with a filtering reverse proxy";
-
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.11064");
- script_version("$Revision: 9348 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_bugtraq_id(5226);
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_tag(name:"qod_type", value:"remote_banner_unreliable");
- script_cve_id("CVE-2002-1021");
- name = "BadBlue invalid null byte vulnerability";
- script_name(name);
- script_category(ACT_ATTACK);
- script_copyright("This script is Copyright (C) 2002 Michel Arboi");
- family = "Web Servers";
- script_family(family);
- script_require_ports("Services/www", 80);
- script_dependencies("gb_get_http_banner.nasl", "no404.nasl");
- script_mandatory_keys("BadBlue/banner");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  script_oid("1.3.6.1.4.1.25623.1.0.11064");
+  script_version("2019-04-10T13:42:28+0000");
+  script_tag(name:"last_modification", value:"2019-04-10 13:42:28 +0000 (Wed, 10 Apr 2019)");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_bugtraq_id(5226);
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_cve_id("CVE-2002-1021");
+  script_name("BadBlue invalid null byte vulnerability");
+  script_category(ACT_ATTACK);
+  script_copyright("This script is Copyright (C) 2002 Michel Arboi");
+  script_family("Web Servers");
+  script_dependencies("gb_get_http_banner.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("BadBlue/banner");
+
+  script_tag(name:"solution", value:"Upgrade your software or protect it with a filtering reverse proxy.");
+
+  script_tag(name:"summary", value:"It was possible to read the content of /EXT.INI
+  (BadBlue configuration file) by sending an invalid GET request.");
+
+  script_tag(name:"impact", value:"An attacker may exploit this vulnerability to steal the passwords.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
+
+  exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-if ( ! port ) exit(0);
 banner = get_http_banner(port:port);
-if ( ! banner ) exit(0);
-if ("BadBlue" >!< banner ) exit(0);
+if(! banner || "BadBlue" >!< banner )
+  exit(0);
 
+url = string("/ext.ini.%00.txt");
+res = is_cgi_installed_ka(item:url, port:port);
+if(res) {
+  report = report_vuln_url(port:port, url:url);
+  security_message(port:port, data:report);
+  exit(0);
+}
 
-r = string("/ext.ini.%00.txt");
-res = is_cgi_installed_ka(item:r, port:port);
-if( res ) security_message(port);
+exit(99);

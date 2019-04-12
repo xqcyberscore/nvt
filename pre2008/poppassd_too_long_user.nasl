@@ -22,80 +22,75 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "The remote poppassd daemon crashes when a too 
-long name is sent after the USER command.
-
-It might be possible for a remote cracker to run 
-arbitrary code on this machine.";
-
-tag_solution = "upgrade your software or use another one";
-
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.17295");
- script_version("$Revision: 9348 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_tag(name:"qod_type", value:"remote_banner_unreliable");
- script_cve_id("CVE-1999-1113");
- script_bugtraq_id(75);
+  script_oid("1.3.6.1.4.1.25623.1.0.17295");
+  script_version("2019-04-10T13:42:28+0000");
+  script_tag(name:"last_modification", value:"2019-04-10 13:42:28 +0000 (Wed, 10 Apr 2019)");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_cve_id("CVE-1999-1113");
+  script_bugtraq_id(75);
+  script_name("poppassd USER overflow");
+  script_category(ACT_DESTRUCTIVE_ATTACK);
+  script_copyright("This script is Copyright (C) 2005 Michel Arboi");
+  script_family("Gain a shell remotely");
+  script_dependencies("find_service1.nasl", "find_service_3digits.nasl");
+  script_require_ports("Services/pop3pw", 106);
 
- name = "poppassd USER overflow";
- 
- script_name(name);
- 
+  script_tag(name:"solution", value:"Upgrade your software or use another one.");
 
- 
- script_category(ACT_DESTRUCTIVE_ATTACK);
- 
- script_copyright("This script is Copyright (C) 2005 Michel Arboi");
- family = "Gain a shell remotely";
- script_family(family);
+  script_tag(name:"summary", value:"The remote poppassd daemon crashes when a too
+  long name is sent after the USER command.");
 
- script_require_ports(106, "Services/pop3pw");
- script_dependencies('find_service1.nasl', 'find_service_3digits.nasl');
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  script_tag(name:"impact", value:"It might be possible for a remote attacker to run
+  arbitrary code on this machine.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
+
+  exit(0);
 }
 
-port = get_kb_item("Services/pop3pw");
-if (! port) port = 106;
+include("misc_func.inc");
 
-if (! get_port_state(port)) exit(0);
+port = get_port_for_service(default:106, proto:"pop3pw");
 
 soc = open_sock_tcp(port);
-if (! soc) exit(0);
+if(! soc)
+  exit(0);
 
 r = recv_line(socket:soc, length:4096);
-if (r !~ '^200 ') exit (0);
+if(r !~ '^200 ') {
+  close(soc);
+  exit(0);
+}
 
-send(socket: soc, data: 'USER openvas\r\n');
-r = recv_line(socket: soc, length: 4096);
-if (r !~ '^200 ') exit (0);
+vt_strings = get_vt_strings();
 
-send(socket: soc, data: 'PASS '+crap(4096)+'\r\n');
-line = recv_line(socket: soc, length: 4096);
+send(socket:soc, data:'USER ' + vt_strings["lowercase"] + '\r\n');
+r = recv_line(socket:soc, length:4096);
+if(r !~ '^200 ') {
+  close(soc);
+  exit(0);
+}
+
+send(socket:soc, data:'PASS '+crap(4096)+'\r\n');
+line = recv_line(socket:soc, length:4096);
 close(soc);
 
 sleep(1);
 
 soc = open_sock_tcp(port);
-if (! soc) { security_message(port); exit(0); }
+if (! soc) {
+  security_message(port);
+  exit(0);
+}
 
-if (! line)
-security_message(port: port, data: "
-The remote poppassd daemon abruptly closes the connection
-when it receives a too long USER command.
+if(! line) {
+  security_message(port:port, data:"Note that the scanner did not crash the service, so this might be a false positive. However, if the poppassd service is run through inetd it is impossible to reliably test this kind of flaw.");
+  exit(0);
+}
 
-It might be vulnerable to an exploitable buffer overflow; 
-so a cracker might run arbitrary code on this machine.
-
-*** Note that OpenVAS did not crash the service, so this
-*** might be a false positive.
-*** However, if the poppassd service is run through inetd
-*** it is impossible to reliably test this kind of flaw.
-
-Solution: upgrade your software or use another one");
+exit(99);

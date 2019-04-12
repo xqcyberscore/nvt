@@ -22,76 +22,67 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "Requesting a URL with '%00', '%2e', '%2f' or '%5c' appended to it
-makes some WebLogic servers dump the listing of the page 
-directory, thus showing potentially sensitive files.
-
-An attacker may also use this flaw to view
-the source code of JSP files, or other dynamic content.
-
-Reference : http://www.securityfocus.com/bid/2513";
-
-tag_solution = "upgrade to WebLogic 6.0 with Service Pack 1";
-
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.10698");
- script_version("$Revision: 9348 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_bugtraq_id(2513);
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- name = "WebLogic Server /%00/ bug";
- 
- script_name(name);
- 
+  script_oid("1.3.6.1.4.1.25623.1.0.10698");
+  script_version("2019-04-10T13:42:28+0000");
+  script_tag(name:"last_modification", value:"2019-04-10 13:42:28 +0000 (Wed, 10 Apr 2019)");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_bugtraq_id(2513);
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_name("WebLogic Server /%00/ bug");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 2001 StrongHoldNet");
+  script_family("Remote file access");
+  script_dependencies("http_version.nasl", "oracle_webLogic_server_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("OracleWebLogicServer/installed");
 
- 
- script_category(ACT_GATHER_INFO);
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/2513");
+
+  script_tag(name:"solution", value:"Upgrade to WebLogic 6.0 with Service Pack 1.");
+
+  script_tag(name:"summary", value:"Requesting a URL with '%00', '%2e', '%2f' or '%5c' appended to it
+  makes some WebLogic servers dump the listing of the page directory, thus showing potentially sensitive files.");
+
+  script_tag(name:"impact", value:"An attacker may also use this flaw to view
+  the source code of JSP files, or other dynamic content.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_probe");
- 
- 
- script_copyright("This script is Copyright (C) 2001 StrongHoldNet");
- family = "Remote file access";
- script_family(family);
- script_dependencies("http_version.nasl","oracle_webLogic_server_detect.nasl");
- script_require_ports("Services/www", 80);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+
+  exit(0);
 }
 
-#
-# The script code starts here
-#
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 
 function http_getdirlist(itemstr, port) {
- buffer = http_get(item:itemstr, port:port);
- rbuf   = http_keepalive_send_recv(port:port, data:buffer);
- if (! rbuf ) exit(0);
- data = tolower(rbuf);
- debug_print(level: 2, 'Answer to GET ', itemstr, ' on port ', port, ': ', rbuf);
-  if(("directory listing of" >< data) || ("index of" >< data))
-  {
-   log_print('Found directory listing: itemstr=', itemstr, ', port=', port, '\n');
-   if(strlen(itemstr) > 1) security_message(port:port);
-   # If itemstr = / we exit the test to avoid FP.
-   exit(0);
+
+  buffer = http_get(item:itemstr, port:port);
+  rbuf = http_keepalive_send_recv(port:port, data:buffer);
+  if(!rbuf)
+    return;
+
+  data = tolower(rbuf);
+  if(("directory listing of" >< data) || ("index of" >< data)) {
+    if(strlen(itemstr) > 1) {
+      report = report_vuln_url(port:port, url:itemstr);
+      security_message(port:port, data:report);
+    } else if(strlen(itemstr) == 1) { # If itemstr = / we exit the test to avoid FP.
+      exit(0);
+    }
   }
 }
 
 port = get_http_port(default:80);
-if(!get_kb_item(string("www/", port, "/WebLogic_Server")))exit(0); # make sure it is a WebLogic Server at this port.
 
-if(get_port_state(port))
-{
-  http_getdirlist(itemstr:"/", port:port);	# Anti FP
-  http_getdirlist(itemstr:"/%2e/", port:port);
-  http_getdirlist(itemstr:"/%2f/", port:port);
-  http_getdirlist(itemstr:"/%5c/", port:port);
-  http_getdirlist(itemstr:"/%00/", port:port);
-}
+if(!get_kb_item("www/" + port + "/WebLogic_Server"))
+  exit(0); # make sure it is a WebLogic Server at this port.
+
+http_getdirlist(itemstr:"/", port:port); # Anti FP
+http_getdirlist(itemstr:"/%2e/", port:port);
+http_getdirlist(itemstr:"/%2f/", port:port);
+http_getdirlist(itemstr:"/%5c/", port:port);
+http_getdirlist(itemstr:"/%00/", port:port);

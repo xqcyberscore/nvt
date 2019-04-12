@@ -29,12 +29,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11317");
-  script_version("$Revision: 7239 $");
+  script_version("2019-04-10T13:42:28+0000");
   script_bugtraq_id(5331, 7001);
   script_cve_id("CVE-2002-1048");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-22 18:10:31 +0200 (Fri, 22 Sep 2017) $");
+  script_tag(name:"last_modification", value:"2019-04-10 13:42:28 +0000 (Wed, 10 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_name("Discover HP JetDirect EWS Password via SNMP");
   script_category(ACT_GATHER_INFO);
@@ -49,7 +49,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.iss.net/security_center/static/9693.php");
   script_xref(name:"URL", value:"http://www.iss.net/issEn/delivery/xforce/alertdetail.jsp?id=advise15");
 
-  tag_summary = "This script attempts to obtain the password of the remote
+  script_tag(name:"summary", value:"This script attempts to obtain the password of the remote
   HP JetDirect web server (available in some printers)
   by requesting the OID :
 
@@ -60,10 +60,14 @@ if(description)
   An attacker may use this flaw to gain administrative access on
   that printer.
 
-  See the references for more information.";
-
-  script_tag(name:"summary", value:tag_summary);
+  See the references for more information.");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
+
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
+  since the disclosure of this vulnerability. Likely none will be provided anymore.
+  General solution options are to upgrade to a newer release, disable respective features,
+  remove the product or replace the product by another one.");
 
   exit(0);
 }
@@ -81,13 +85,13 @@ function get( community, object ) {
 
   len = strlen( community );
   len = len % 256;
- 
+
   tot_len = 23 + strlen( community ) + strlen( object );
   packet = raw_string( 0x30, tot_len, 0x02, 0x01, 0x00, 0x04, len );
   object_len = strlen( object ) + 2;
 
   pack_len = 16 + strlen( object );
-  packet = packet + community + 
+  packet = packet + community +
            raw_string( 0xA0, pack_len, 0x02, 0x04, 0x5e, 0xa4, 0x3f, 0x0c, 0x02, 0x01, 0x00, 0x02,
            0x01, 0x00, 0x30, object_len ) + object + raw_string( 0x05, 0x00 );
   return( packet );
@@ -141,7 +145,7 @@ if( ! get_udp_port_state( snmpport ) ) exit( 0 );
 soc = open_sock_udp( snmpport );
 if( ! soc ) exit( 0 );
 
-MIB = raw_string( 0x30, 0x11, 0x06, 
+MIB = raw_string( 0x30, 0x11, 0x06,
                   0x0D, 0x2B, 0x06, 0x01, 0x04, 0x01, 0x0B, 0x02,
                   0x03, 0x09, 0x01, 0x01, 0x0D, 0x00 );
 

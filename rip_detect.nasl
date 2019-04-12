@@ -8,7 +8,7 @@
 # Michel Arboi <arboi@alussinan.org>
 #
 # Copyright:
-# Copyright (C) 2003 Michel Arboi
+# Copyright (C) 2005 Michel Arboi
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2,
@@ -69,14 +69,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11822");
-  script_version("$Revision: 13541 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-08 14:21:52 +0100 (Fri, 08 Feb 2019) $");
+  script_version("2019-04-11T14:27:11+0000");
+  script_tag(name:"last_modification", value:"2019-04-11 14:27:11 +0000 (Thu, 11 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("RIP detection");
   script_category(ACT_GATHER_INFO);
-  script_copyright("This script is Copyright (C) 2003 Michel Arboi");
+  script_copyright("This script is Copyright (C) 2005 Michel Arboi");
   script_family("Service detection");
   script_require_udp_ports(520);
 
@@ -90,7 +90,6 @@ if(description)
 
 include("host_details.inc");
 ##include("dump.inc");
-
 include("network_func.inc");
 include("misc_func.inc");
 
@@ -172,6 +171,7 @@ function rip_test( port, priv ) {
 
   if( n > 0 ) report += 'This information on your network topology may help an attacker\n';
 
+  set_kb_item( name:"RIP/detected", value:TRUE );
   log_message( port:port, data:report, protocol:"udp" );
   register_service( port:port, ipproto:"udp", proto:"rip" );
 

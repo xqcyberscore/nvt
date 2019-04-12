@@ -22,62 +22,54 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "The web server is probably susceptible to a common IIS vulnerability discovered by
-'Rain Forest Puppy'. This vulnerability enables an attacker to execute arbitrary
-commands on the server with Administrator Privileges. 
-
-*** OpenVAS solely relied on the presence of the file /msadc/msadcs.dll
-*** so this might be a false positive
-
-See Microsoft security bulletin (MS99-025) for patch information.
-Also, BUGTRAQ ID 529 on www.securityfocus.com ( http://www.securityfocus.com/bid/529 )";
- 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.10357");
- script_version("$Revision: 9348 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_bugtraq_id(529);
- script_xref(name:"IAVA", value:"1999-a-0010");
- script_xref(name:"IAVA", value:"1999-t-0003");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_tag(name:"qod_type", value:"remote_banner_unreliable");
- script_cve_id("CVE-1999-1011");
+  script_oid("1.3.6.1.4.1.25623.1.0.10357");
+  script_version("2019-04-10T13:42:28+0000");
+  script_tag(name:"last_modification", value:"2019-04-10 13:42:28 +0000 (Wed, 10 Apr 2019)");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_bugtraq_id(529);
+  script_xref(name:"IAVA", value:"1999-a-0010");
+  script_xref(name:"IAVA", value:"1999-t-0003");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_cve_id("CVE-1999-1011");
+  script_name("RDS / MDAC Vulnerability (msadcs.dll) located");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 2000 Roelof Temmingh <roelof@sensepost.com>");
+  script_family("Web Servers");
+  script_dependencies("gb_get_http_banner.nasl");
+  script_mandatory_keys("IIS/banner");
+  script_require_ports("Services/www", 80);
 
- name = "RDS / MDAC Vulnerability (msadcs.dll) located";
- script_name(name);
+  script_tag(name:"summary", value:"The web server is probably susceptible to a common IIS vulnerability discovered by
+  'Rain Forest Puppy'.");
 
- script_category(ACT_GATHER_INFO);
- 
- script_copyright("This script is Copyright (C) 2000 Roelof Temmingh <roelof@sensepost.com>");
+  script_tag(name:"impact", value:"This vulnerability enables an attacker to execute arbitrary
+  commands on the server with Administrator Privileges.");
 
- family = "Web Servers";
- script_family(family);
- 
- script_dependencies("gb_get_http_banner.nasl");
- script_mandatory_keys("IIS/banner");
- script_require_ports("Services/www", 80);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  script_tag(name:"solution", value:"See Microsoft security bulletin (MS99-025) for patch information.");
+
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
+  script_tag(name:"solution_type", value:"VendorFix");
+
+  exit(0);
 }
-
-#
-# The script code starts here
-#
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 
 port = get_http_port(default:80);
-
-if ( ! get_port_state(port) )  exit(0);
 sig = get_http_banner(port:port);
-if ( sig && "IIS" >!< sig ) exit(0);
+if(!sig || "IIS" >!< sig )
+  exit(0);
 
 cgi = "/msadc/msadcs.dll";
 res = is_cgi_installed_ka(item:cgi, port:port);
-if(res)security_message(port);
+if(res) {
+  report = report_vuln_url(port:port, url:cgi);
+  security_message(port:port, data:report);
+  exit(0);
+}
+
+exit(99);

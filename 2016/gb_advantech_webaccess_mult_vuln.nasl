@@ -28,14 +28,14 @@ CPE = "cpe:/a:advantech:advantech_webaccess";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807033");
-  script_version("$Revision: 12313 $");
+  script_version("2019-04-06T12:52:40+0000");
   script_cve_id("CVE-2015-3948", "CVE-2015-3943", "CVE-2015-3946", "CVE-2015-3947",
                 "CVE-2015-6467", "CVE-2016-0851", "CVE-2016-0852", "CVE-2016-0853",
                 "CVE-2016-0854", "CVE-2016-0855", "CVE-2016-0856", "CVE-2016-0857",
                 "CVE-2016-0858", "CVE-2016-0859", "CVE-2016-0860");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-04-06 12:52:40 +0000 (Sat, 06 Apr 2019)");
   script_tag(name:"creation_date", value:"2016-01-22 10:47:51 +0530 (Fri, 22 Jan 2016)");
   script_name("Advantech WebAccess Multiple Vulnerabilities Jan16");
 
@@ -93,29 +93,26 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
-  script_dependencies("gb_advantech_webaccess_detect.nasl");
-  script_mandatory_keys("Advantech/WebAccess/installed");
-  script_require_ports("Services/www", 80);
-  script_xref(name:"URL", value:"http://www.advantech.com/industrial-automation/webaccess");
+  script_dependencies("gb_advantech_webaccess_consolidation.nasl");
+  script_mandatory_keys("advantech/webaccess/detected");
   exit(0);
 }
 
-include("version_func.inc");
-include("host_details.inc");
+include( "version_func.inc" );
+include( "host_details.inc" );
 
-if(!adPort = get_app_port(cpe:CPE)){
-  exit(0);
+if( isnull( port = get_app_port( cpe: CPE ) ) )
+  exit( 0 );
+
+if( ! infos = get_app_version_and_location( cpe: CPE, port: port ) )
+  exit( 0 );
+
+path = infos["location"];
+vers = infos["version"];
+
+if( version_is_less( version: vers, test_version: "8.1" ) ) {
+  report = report_fixed_ver( installed_version: vers, fixed_version: "8.1", install_path: path );
+  security_message( data: report, port: port );
+  exit( 0 );
 }
-
-if(!adVer = get_app_version(cpe:CPE, port:adPort)){
-  exit(0);
-}
-
-if(version_is_less(version:adVer, test_version:"8.1"))
-{
-  report = 'Installed Version: ' + adVer + '\n' +
-           'Fixed Version:     8.1\n';
-
-  security_message(data:report, port:adPort);
-  exit(0);
-}
+exit( 99 );

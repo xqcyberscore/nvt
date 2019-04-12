@@ -24,13 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-#  Ref: Megasky <magasky@hotmail.com>
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.18259");
-  script_version("$Revision: 6053 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
+  script_version("2019-04-11T14:06:24+0000");
+  script_tag(name:"last_modification", value:"2019-04-11 14:06:24 +0000 (Thu, 11 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2005-1612", "CVE-2005-1613");
   script_bugtraq_id(13624, 13625);
@@ -44,20 +42,13 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  tag_summary = "The remote host seems to be running OpenBB, a forum management system written
-  in PHP.
+  script_tag(name:"solution", value:"Upgrade to version 1.0.9 of this software or newer.");
 
-  The remote version of this software is vulnerable to cross-site scripting
-  attacks, and SQL injection flaws.
+  script_tag(name:"summary", value:"The remote version of OpenBB is vulnerable to cross-site scripting
+  attacks, and SQL injection flaws.");
 
-  Using a specially crafted URL, an attacker may execute arbitrary commands against
-  the remote SQL database or use the remote server to set up a cross site scripting
-  attack.";
-
-  tag_solution = "Upgrade to version 1.0.9 of this software or newer";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"impact", value:"Using a specially crafted URL, an attacker may execute arbitrary commands
+  against the remote SQL database or use the remote server to set up a cross site scripting attack.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -69,11 +60,14 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port( default:80 );
-if( ! can_host_php( port:port ) ) exit( 0 );
+if( ! can_host_php( port:port ) )
+  exit( 0 );
 
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
-  if( dir == "/" ) dir = "";
+  if( dir == "/" )
+    dir = "";
+
   url = dir + "/index.php";
 
   res = http_get_cache( item:url, port:port );

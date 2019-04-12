@@ -22,55 +22,58 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "The remote host is running a version of RaidenHTTPD which is 
-vulnerable to a remote directory traversal bug.  An attacker
-exploiting this bug would be able to gain access to potentially 
-confidential material outside of the web root.";
-
-tag_solution = "Upgrade to RaidenHTTPD version 1.1.31";
-
-#  Ref: Donato Ferrante <fdonato autistici org>
-
-if (description)
+if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.16313");
- script_version("$Revision: 9348 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_bugtraq_id(12451);
- script_xref(name:"OSVDB", value:"13575");
- script_tag(name:"cvss_base", value:"7.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
- script_name("RaidenHTTPD directory traversal");
+  script_oid("1.3.6.1.4.1.25623.1.0.16313");
+  script_version("2019-04-11T14:06:24+0000");
+  script_tag(name:"last_modification", value:"2019-04-11 14:06:24 +0000 (Thu, 11 Apr 2019)");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_bugtraq_id(12451);
+  script_xref(name:"OSVDB", value:"13575");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
+  script_name("RaidenHTTPD directory traversal");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2005 David Maciejak");
+  script_dependencies("gb_get_http_banner.nasl");
+  script_mandatory_keys("RaidenHTTPD/banner");
+  script_require_ports("Services/www", 80);
 
- script_category(ACT_GATHER_INFO);
+  script_tag(name:"solution", value:"Upgrade to RaidenHTTPD version 1.1.31.");
+
+  script_tag(name:"summary", value:"The remote host is running a version of RaidenHTTPD which is
+  vulnerable to a remote directory traversal bug.");
+
+  script_tag(name:"impact", value:"An attacker exploiting this bug would be able to gain access to potentially
+  confidential material outside of the web root.");
+
   script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2005 David Maciejak");
- script_dependencies("gb_get_http_banner.nasl");
- script_mandatory_keys("RaidenHTTPD/banner");
- script_require_ports("Services/www", 80);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  script_tag(name:"solution_type", value:"VendorFix");
+
+  exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-if (! get_port_state(port) ) exit(0);
 
 banner = get_http_banner(port:port);
 # Server: RaidenHTTPD/1.1.31 (Shareware)
-if ( ! banner  || "RaidenHTTP" >!< banner ) exit(0);
+if( ! banner || "RaidenHTTP" >!< banner )
+  exit(0);
 
+foreach file(make_list("windows/system.ini", "winnt/system.ini")) {
 
-res1 = http_keepalive_send_recv(data:http_get(item:"windows/system.ini", port:port), port:port);
-res2 = http_keepalive_send_recv(data:http_get(item:"winnt/system.ini", port:port), port:port);
+  req = http_get(item:file, port:port);
+  res = http_keepalive_send_recv(data:req, port:port);
 
-if ("[drivers]" >< tolower(res1) ||
-    "[drivers]" >< tolower(res2)) {
-		security_message(port);
-		exit(0);
+  if("[drivers]" >< tolower(res)) {
+    report = report_vuln_url(port:port, data:report);
+    security_message(port:port, data:report);
+    exit(0);
+  }
 }
+
+exit(99);

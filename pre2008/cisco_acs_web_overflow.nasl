@@ -31,8 +31,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11556");
-  script_version("$Revision: 6040 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+  script_version("2019-04-11T14:06:24+0000");
+  script_tag(name:"last_modification", value:"2019-04-11 14:06:24 +0000 (Thu, 11 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(7413);
   script_tag(name:"cvss_base", value:"7.5");
@@ -46,14 +46,11 @@ if(description)
   script_require_ports("Services/www", 2002);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  tag_summary = "It may be possible to make this Cisco Secure ACS web
+  script_tag(name:"solution", value:"Cisco has already released a patch for this problem.");
+
+  script_tag(name:"summary", value:"It may be possible to make this Cisco Secure ACS web
   server(login.exe) execute arbitrary code by sending
-  it a too long login url.";
-
-  tag_solution = "Cisco has already released a patch for this problem";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  it a too long login url.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -65,8 +62,8 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port( default:2002 );
-
-if( http_is_dead( port:port ) ) exit( 0 );
+if( http_is_dead( port:port ) )
+  exit( 0 );
 
 if( is_cgi_installed_ka( port:port, item:"/login.exe" ) ) {
 

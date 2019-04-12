@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14377");
-  script_version("$Revision: 4831 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-21 13:32:45 +0100 (Wed, 21 Dec 2016) $");
+  script_version("2019-04-11T11:45:42+0000");
+  script_tag(name:"last_modification", value:"2019-04-11 11:45:42 +0000 (Thu, 11 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -41,34 +41,27 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.arkoon.net");
 
-  tag_summary = "The remote host has the three TCP ports 822, 1750, 1751
+  script_tag(name:"solution", value:"Do not allow any connection on the firewall itself,
+  except for the firewall protocol, and allow that for trusted sources only.
+
+  If you have a router which performs packet filtering, then add ACL that disallows the
+  connection to these ports for unauthorized systems.");
+
+  script_tag(name:"summary", value:"The remote host has the three TCP ports 822, 1750, 1751
   open.
 
-  It's very likely that this host is an Arkoon security dedicated
-  appliance with ports
+  It's very likely that this host is an Arkoon security dedicated appliance with ports:
 
   TCP/822  dedicated to ssh service
+
   TCP/1750 dedicated to Arkoon Manager
-  TCP/1751 dedicated to Arkoon Monitoring
 
-  Letting attackers know that you are using an Arkoon 
-  appliance will help them to focus their attack or will 
-  make them change their strategy. 
+  TCP/1751 dedicated to Arkoon Monitoring");
 
-  You should not let them know such information.";
+  script_tag(name:"impact", value:"Letting attackers know that you are using an Arkoon
+  appliance will help them to focus their attack or will make them change their strategy.
 
-  tag_solution = "do not allow any connection on the
-  firewall itself, except for the firewall 
-  protocol, and allow that for trusted sources
-  only.
-
-  If you have a router which performs packet 
-  filtering, then add ACL that disallows the
-  connection to these ports for unauthorized
-  systems.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  You should not let them know such information.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -93,7 +86,7 @@ if( ( get_port_state( 822 ) ) &&
   soc3 = open_sock_tcp( 1751 );
   if( ! soc3 ) exit( 0 );
   close( soc3 );
- 
+
   # post the warning on every port
   log_message( port:0 );
 }

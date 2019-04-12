@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10321");
-  script_version("$Revision: 6063 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+  script_version("2019-04-11T14:06:24+0000");
+  script_tag(name:"last_modification", value:"2019-04-11 14:06:24 +0000 (Thu, 11 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(649, 12453);
   script_tag(name:"cvss_base", value:"10.0");
@@ -45,30 +45,20 @@ if(description)
   script_xref(name:"URL", value:"http://archives.neohapsis.com/archives/bugtraq/1998_3/0746.html");
   script_xref(name:"URL", value:"http://archives.neohapsis.com/archives/bugtraq/1999-q3/0993.html");
 
-  tag_summary = "The remote web server contains a CGI application that is prone to
-  information disclosure.
+  script_tag(name:"solution", value:"Configure the wwwadmin.pl script to change the name and location of
+  'passwd.txt'.");
 
-  Description :
+  script_tag(name:"summary", value:"This WWWBoard board system comes with a password file (passwd.txt) installed
+  next to the file 'wwwboard.html'.");
 
-  The remote host is running WWWBoard, a bulletin board system written
-  by Matt Wright.
-
-  This board system comes with a password file (passwd.txt) installed
-  next to the file 'wwwboard.html'.  An attacker may obtain the content
-  of this file and decode the password to modify the remote www board.";
-
-  tag_solution = "Configure the wwwadmin.pl script to change the name and location of
-  'passwd.txt'.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"impact", value:"An attacker may obtain the content of this file and decode the password to
+  modify the remote www board.");
 
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_banner");
 
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");

@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14224");
-  script_version("$Revision: 6046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
+  script_version("2019-04-10T13:42:28+0000");
+  script_tag(name:"last_modification", value:"2019-04-10 13:42:28 +0000 (Wed, 10 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(10917);
   script_tag(name:"cvss_base", value:"6.8");
@@ -60,23 +60,20 @@ if(description)
   exit(0);
 }
 
-include("global_settings.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port( default:80 );
 host = http_host_name( port:port );
 
-if( debug_level ) display("debug: searching for mail relaying vulnerability in Simple Form on ", host, ".\n");
-
-# Check for the form in each of the CGI dirs.
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
-  if( dir == "/" ) dir = "";
+  if( dir == "/" )
+    dir = "";
+
   url = dir + "/s_form.cgi";
 
   if( is_cgi_installed_ka( item:url , port:port ) ) {
-    if( debug_level ) display("debug: checking ", url, "...\n");
 
     # Exploit the form and *preview* the message to determine if the
     # vulnerability exists. Note: this doesn't actually try to inject
@@ -135,7 +132,7 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
     boundary, "\r\n",
     'Content-Disposition: form-data; name="form_email_subject"', "\r\n",
     "\r\n",
-    "OpenVAS Plugin Test\nBCC: postmaster@example.com\r\n",
+    "VT Plugin Test\nBCC: postmaster@example.com\r\n",
 
     boundary, "\r\n",
     'Content-Disposition: form-data; name="msg"', "\r\n",
@@ -153,9 +150,7 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
                   "Content-Length: ", strlen(postdata), "\r\n",
                   "\r\n", postdata );
 
-    if( debug_level ) display("debug: sending =>>", req, "<<\n");
     res = http_keepalive_send_recv( port:port, data:req );
-    if( debug_level ) display("debug: received =>>", res, "<<\n");
 
     # Look at the preview and see whether there's a BCC: header.
     if( egrep( string:res, pattern:"PREVIEW of Form Submission", icase:TRUE ) &&

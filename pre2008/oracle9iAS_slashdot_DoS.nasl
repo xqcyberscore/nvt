@@ -27,29 +27,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-# References:
-# Date:  Thu, 18 Oct 2001 16:16:20 +0200
-# From: "andreas junestam" <andreas.junestam@defcom.com>
-# Affiliation: Defcom
-# To: "bugtraq" <bugtraq@securityfocus.com>
-# Subject: def-2001-30
-#
-# From: "@stake advisories" <advisories@atstake.com>
-# To: vulnwatch@vulnwatch.org
-# Date: Mon, 28 Oct 2002 13:30:54 -0500
-# Subject: Oracle9iAS Web Cache Denial of Service (a102802-1)
-#
-# http://www.atstake.com/research/advisories/2002/a102802-1.txt
-# http://otn.oracle.com/deploy/security/pdf/2002alert43rev1.pdf
-#
-# Affected:
-# Oracle9iAS Web Cache/2.0.0.1.0
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11076");
-  script_version("$Revision: 6695 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:17:53 +0200 (Wed, 12 Jul 2017) $");
+  script_version("2019-04-11T14:06:24+0000");
+  script_tag(name:"last_modification", value:"2019-04-11 14:06:24 +0000 (Thu, 11 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(3765, 5902);
   script_tag(name:"cvss_base", value:"5.0");
@@ -63,19 +45,20 @@ if(description)
   script_dependencies("gb_get_http_banner.nasl", "httpver.nasl");
   script_mandatory_keys("OracleAS-Web-Cache/banner");
 
-  tag_summary = "It was possible to kill the web server by
-  requesting '/.' or '/../', or sending an invalid request
-  using chunked content encoding";
+  script_xref(name:"URL", value:"http://www.atstake.com/research/advisories/2002/a102802-1.txt");
+  script_xref(name:"URL", value:"http://otn.oracle.com/deploy/security/pdf/2002alert43rev1.pdf");
 
-  tag_impact = "A cracker may exploit this vulnerability to make your web server
-  crash continually.";
+  script_tag(name:"solution", value:"Upgrade your software or protect it with a filtering reverse proxy.");
 
-  tag_solution = "Upgrade your software or protect it with a filtering reverse proxy";
+  script_tag(name:"summary", value:"It was possible to kill the web server by requesting '/.' or '/../',
+  or sending an invalid request using chunked content encoding");
 
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
+  script_tag(name:"impact", value:"An attacker may exploit this vulnerability to make your web server
+  crash continually.");
 
+  script_tag(name:"affected", value:"Oracle9iAS Web Cache/2.0.0.1.0");
+
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
 
   exit(0);
@@ -84,11 +67,12 @@ if(description)
 include("http_func.inc");
 
 port = get_http_port( default:4000 );
-
-if( http_is_dead( port:port ) ) exit( 0 );
-
 banner = get_http_banner( port:port );
-if( ! banner || "OracleAS-Web-Cache" >!< banner ) exit( 0 );
+if( ! banner || "OracleAS-Web-Cache" >!< banner )
+  exit( 0 );
+
+if( http_is_dead( port:port ) )
+  exit( 0 );
 
 # The advisory says "GET /. HTTP/1.0" - however this won't get
 # past some transparent proxies, so it's better to use http_get()

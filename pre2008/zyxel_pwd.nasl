@@ -8,7 +8,7 @@
 # Giovanni Fiaschi <giovaf@sysoft.it>
 # Script audit and contributions from Carmichael Security <http://www.carmichaelsecurity.com>
 # Erik Anderson <eanders@carmichaelsecurity.com>
-# Added BugtraqID.  
+# Added BugtraqID.
 #
 # Copyright:
 # Copyright (C) 2001 Giovanni Fiaschi
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10714");
-  script_version("$Revision: 4904 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-02 13:45:48 +0100 (Mon, 02 Jan 2017) $");
+  script_version("2019-04-11T14:06:24+0000");
+  script_tag(name:"last_modification", value:"2019-04-11 14:06:24 +0000 (Thu, 11 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(3161);
   script_tag(name:"cvss_base", value:"10.0");
@@ -43,18 +43,15 @@ if(description)
   script_family("Default Accounts");
   script_dependencies("telnetserver_detect_type_nd_version.nasl");
   script_require_ports(23);
+  script_mandatory_keys("telnet/banner/available");
 
-  tag_summary = "The remote host is a Zyxel router with its default password set.";
+  script_tag(name:"solution", value:"Telnet to this router and set a password immediately.");
 
-  tag_impact = "An attacker could telnet to it and reconfigure it to lock the owner out and to 
-  prevent him from using his Internet connection, or create a dial-in user to 
-  connect directly to the LAN attached to it.";
+  script_tag(name:"summary", value:"The remote host is a Zyxel router with its default password set.");
 
-  tag_solution = "Telnet to this router and set a password immediately.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
+  script_tag(name:"impact", value:"An attacker could telnet to it and reconfigure it to lock the owner out and to
+  prevent him from using his Internet connection, or create a dial-in user to
+  connect directly to the LAN attached to it.");
 
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_vul");

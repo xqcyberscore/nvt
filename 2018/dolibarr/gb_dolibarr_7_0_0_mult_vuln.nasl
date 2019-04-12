@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dolibarr_7_0_0_mult_vuln.nasl 13559 2019-02-11 04:37:23Z ckuersteiner $
 #
 # Dolibarr 7.0.0 Multiple Vulnerabilities
 #
@@ -28,15 +27,15 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113155");
-  script_version("$Revision: 13559 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-11 05:37:23 +0100 (Mon, 11 Feb 2019) $");
+  script_version("2019-04-12T07:30:49+0000");
+  script_tag(name:"last_modification", value:"2019-04-12 07:30:49 +0000 (Fri, 12 Apr 2019)");
   script_tag(name:"creation_date", value:"2018-04-11 13:19:33 +0200 (Wed, 11 Apr 2018)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_cve_id("CVE-2017-18259", "CVE-2017-18260");
 
@@ -61,8 +60,9 @@ parameter) or comm/propal/list.php (propal_statut parameter, aka search_statut p
 
   script_tag(name:"affected", value:"Dolibarr through version 7.0.0");
 
-  script_tag(name:"solution", value:"No known solution is available as of 11th February, 2019.
-  Information regarding this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
   script_xref(name:"URL", value:"https://www.wizlynxgroup.com/security-research-advisories/vuln/WLX-2017-010");
 

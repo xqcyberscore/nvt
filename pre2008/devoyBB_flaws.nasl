@@ -24,13 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-# Ref: Positive Technologies - www.maxpatrol.com
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.15556");
-  script_version("$Revision: 6056 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
+  script_version("2019-04-11T14:06:24+0000");
+  script_tag(name:"last_modification", value:"2019-04-11 14:06:24 +0000 (Thu, 11 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2004-2177", "CVE-2004-2178");
   script_bugtraq_id(11428);
@@ -44,16 +42,12 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  tag_summary = "The remote host is running DevoyBB, a web based forum  written in PHP.
+  script_tag(name:"solution", value:"Upgrade to the latest version.");
 
-  This version is vulnerable to XSS and SQL injection attacks. A malicious
-  user can access users cookies including authentication cookies and inject SQL
-  commands to be executed on the underlying database.";
+  script_tag(name:"summary", value:"The DevoyBB version is vulnerable to XSS and SQL injection attacks.");
 
-  tag_solution = "Upgrade to the latest version.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"impact", value:"A malicious user can access users cookies including authentication cookies
+  and inject SQL commands to be executed on the underlying database.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

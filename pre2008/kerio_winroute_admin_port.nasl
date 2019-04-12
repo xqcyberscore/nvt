@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.18185");
-  script_version("$Revision: 4829 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-21 12:05:16 +0100 (Wed, 21 Dec 2016) $");
+  script_version("2019-04-10T13:42:28+0000");
+  script_tag(name:"last_modification", value:"2019-04-10 13:42:28 +0000 (Wed, 10 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(13458);
   script_cve_id("CVE-2005-1062", "CVE-2005-1063");
@@ -42,24 +42,22 @@ if(description)
   script_dependencies("find_service.nasl");
   script_require_ports(44333);
 
-  tag_summary = "The administrative interface of a personal firewall is listening 
+  script_tag(name:"solution", value:"If this service is not needed, disable it or filter incoming traffic
+  to this port.");
+
+  script_tag(name:"summary", value:"The administrative interface of a personal firewall is listening
   on the remote port.
 
   Description :
 
-  The remote host appears to be running Kerio Winroute Firewall 
+  The remote host appears to be running Kerio Winroute Firewall
   Admin service. It is recommended to block incoming traffic
   to this port.
 
   Also, make sure the use of this software matches your corporate
-  security policy.";
+  security policy.");
 
-  tag_solution = "If this service is not needed, disable it or filter incoming traffic
-  to this port.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-
+  script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_active");
 
   exit(0);
@@ -94,8 +92,8 @@ function kwf_isWeakAdminProtocol( port ) {
 }
 
 port = 44333; # default kwf port
-
-if( ! get_port_state( port ) ) exit( 0 );
+if( ! get_port_state( port ) )
+  exit( 0 );
 
 if( kwf_isWeakAdminProtocol( port ) ) {
   security_message( port:port );

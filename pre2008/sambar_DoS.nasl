@@ -24,22 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-# References:
-# From: "Tamer Sahin" <ts@securityoffice.net>
-# To: bugtraq@securityfocus.com
-# Subject: Sambar Webserver v5.1 DoS Vulnerability
-# Date: Wed, 16 Jan 2002 01:57:17 +0200
-# Affiliation: http://www.securityoffice.net
-#
-# Vulnerables:
-# Sambar WebServer v5.1 
-# NB: this version of Sambar is also vulnerable to a too long HTTP field.
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11131");
-  script_version("$Revision: 5134 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-30 09:20:15 +0100 (Mon, 30 Jan 2017) $");
+  script_version("2019-04-11T14:06:24+0000");
+  script_tag(name:"last_modification", value:"2019-04-11 14:06:24 +0000 (Thu, 11 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -53,23 +42,21 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("www/sambar");
 
-  tag_summary = "It is possible to kill the Sambar web server 'server.exe'
+  script_tag(name:"impact", value:"An attacker may use this flaw to make your server crash
+  continuously, preventing you from working properly.");
+
+  script_tag(name:"solution", value:"Upgrade your server to Sambar 51p or delete those CGI.");
+
+  script_tag(name:"summary", value:"It is possible to kill the Sambar web server 'server.exe'
   by sending it a long request like:
 
   - /cgi-win/testcgi.exe?XXXX...X
 
   - /cgi-win/cgitest.exe?XXXX...X
 
-  - /cgi-win/Pbcgi.exe?XXXXX...X (or maybe in /cgi-bin/)";
+  - /cgi-win/Pbcgi.exe?XXXXX...X (or maybe in /cgi-bin/)");
 
-  tag_impact = "A cracker may use this flaw to make your server crash 
-  continuously, preventing you from working properly.";
-
-  tag_solution = "Upgrade your server to Sambar 51p or delete those CGI.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"affected", value:"Sambar WebServer v5.1.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -78,10 +65,10 @@ if(description)
 }
 
 include("http_func.inc");
-include("http_keepalive.inc");
 
 port = get_http_port( default:80 );
-if( http_is_dead( port:port ) ) exit( 0 );
+if( http_is_dead( port:port ) )
+  exit( 0 );
 
 function test_port( port, cgi ) {
   url = string( cgi, "?", crap( 4096 ) );

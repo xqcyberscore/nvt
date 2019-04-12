@@ -24,15 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-# From: Zero_X www.lobnan.de Team [zero-x@linuxmail.org]
-# Subject: Remote Code Execution in ezContents
-# Date: Saturday 10/01/2004 19:14
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12021");
-  script_version("$Revision: 6046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
+  script_version("2019-04-11T14:06:24+0000");
+  script_tag(name:"last_modification", value:"2019-04-11 14:06:24 +0000 (Thu, 11 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2004-0070");
   script_bugtraq_id(9396);
@@ -46,15 +42,18 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name:"summary", value:"ezContents is an Open-Source website content management system based
-  on PHP and MySQL. Features include maintaining menus and sub-menus, adding authors that write contents,
-  permissions, workflow, and layout possibilities for the entire look of the site by simple use of settings.
+  script_tag(name:"summary", value:"ezContents has been found to contain a vulnerability that would
+  allow a remote attacker to cause the PHP script to include an external PHP file and execute its content.");
 
-  The product has been found to contain a vulnerability that would allow a remote attacker to cause the PHP
-  script to include an external PHP file and execute its content. This would allow an attacker to cause
-  the server to execute arbitrary code.");
+  script_tag(name:"impact", value:"This would allow an attacker to cause the server to execute arbitrary code.");
 
   script_tag(name:"qod_type", value:"remote_vul");
+
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
+  since the disclosure of this vulnerability. Likely none will be provided anymore.
+  General solution options are to upgrade to a newer release, disable respective features,
+  remove the product or replace the product by another one.");
 
   exit(0);
 }
@@ -63,7 +62,8 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port( default:80 );
-if( ! can_host_php( port:port ) ) exit( 0 );
+if( ! can_host_php( port:port ) )
+  exit( 0 );
 
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 

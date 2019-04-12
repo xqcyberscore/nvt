@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140170");
-  script_version("$Revision: 13630 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-13 12:03:59 +0100 (Wed, 13 Feb 2019) $");
+  script_version("2019-04-10T13:42:28+0000");
+  script_tag(name:"last_modification", value:"2019-04-10 13:42:28 +0000 (Wed, 10 Apr 2019)");
   script_tag(name:"creation_date", value:"2017-02-21 11:53:19 +0100 (Tue, 21 Feb 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -387,5 +387,6 @@ set_mandatory_key( key:"Mongoose", regex: "Server: Mongoose", banner:banner );
 set_mandatory_key( key:"LogitechMediaServer", regex: "Server: Logitech Media Server", banner:banner );
 set_mandatory_key( key:"HttpServer", regex: "Server: HttpServer", banner:banner );
 set_mandatory_key( key:"coturn", regex: "Server: Coturn", banner:banner );
+set_mandatory_key( key:"WebLogic", regex: "^Server:.*WebLogic", banner:banner );
 
 exit( 0 );

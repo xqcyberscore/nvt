@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10879");
-  script_version("$Revision: 6063 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+  script_version("2019-04-11T14:06:24+0000");
+  script_tag(name:"last_modification", value:"2019-04-11 14:06:24 +0000 (Thu, 11 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -39,16 +39,12 @@ if(description)
   script_dependencies("secpod_open_tcp_ports.nasl");
   script_mandatory_keys("TCP/PORTS");
 
-  tag_summary = "The remote port seems to be running some form of shell script,
+  script_tag(name:"solution", value:"Make sure all meta characters are filtered out, or close the port
+  for access from untrusted networks");
+
+  script_tag(name:"summary", value:"The remote port seems to be running some form of shell script,
   with some provided user input. The input is not stripped for such meta
-  characters as `';, etc. This would allow a remote attacker to
-  execute arbitrary code.";
-
-  tag_solution = "Make sure all meta characters are filtered out, or close the port
-  for access from untrusted networks";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  characters as `' etc. This would allow a remote attacker to execute arbitrary code.");
 
   script_tag(name:"solution_type", value:"Workaround");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -71,6 +67,8 @@ function test_port( port, command ) {
     close( soc );
 
     if( looking_for >< buf ) {
+      report  = "Sent request:      " + data + '\n';
+      report += "Received response: " + buf;
       security_message( port:port );
       exit( 0 );
     }
@@ -94,6 +92,8 @@ function test_for_backtick( port ) {
     close( soc );
 
     if( looking_for >< buf ) {
+      report  = "Sent request:      " + data + '\n';
+      report += "Received response: " + buf;
       security_message( port:port );
       exit( 0 );
     }

@@ -31,8 +31,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.20377");
-  script_version("$Revision: 6000 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-21 13:07:29 +0200 (Fri, 21 Apr 2017) $");
+  script_version("2019-04-11T14:06:24+0000");
+  script_tag(name:"last_modification", value:"2019-04-11 14:06:24 +0000 (Thu, 11 Apr 2019)");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -46,15 +46,13 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.microsoft.com/windowsserversystem/updateservices/default.mspx");
 
-  tag_summary = "The remote host appears to be running Windows Server Update
+  script_tag(name:"summary", value:"The remote host appears to be running Windows Server Update
   Services.
 
   Description:
 
-  This product is used to deploy easily and quickly latest 
-  Microsoft product updates.";
-
-  script_tag(name:"summary", value:tag_summary);
+  This product is used to deploy easily and quickly latest
+  Microsoft product updates.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -65,11 +63,13 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port( default:8530 );
-if( ! can_host_asp( port:port ) ) exit( 0 );
+if( ! can_host_asp( port:port ) )
+  exit( 0 );
 
 req = http_get( item:"/Wsusadmin/Errors/BrowserSettings.aspx", port:port );
 r = http_keepalive_send_recv( port:port, data:req );
-if( r == NULL ) exit(0);
+if(!r)
+  exit(0);
 
 if( egrep( pattern:'<title>Windows Server Update Services error</title>.*href="/WsusAdmin/Common/Common.css"', string:r ) ||
     egrep( pattern:'<div class="CurrentNavigation">Windows Server Update Services error</div>', string:r ) ) {

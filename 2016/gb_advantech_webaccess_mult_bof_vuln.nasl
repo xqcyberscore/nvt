@@ -28,11 +28,11 @@ CPE = "cpe:/a:advantech:advantech_webaccess";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807041");
-  script_version("$Revision: 11903 $");
+  script_version("2019-04-06T12:52:40+0000");
   script_cve_id("CVE-2014-9202", "CVE-2014-9208");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 12:26:16 +0200 (Mon, 15 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-04-06 12:52:40 +0000 (Sat, 06 Apr 2019)");
   script_tag(name:"creation_date", value:"2016-01-25 12:23:44 +0530 (Mon, 25 Jan 2016)");
   script_name("Advantech WebAccess Multiple Buffer Overflow Vulnerabilities Jan16");
 
@@ -63,27 +63,26 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
-  script_dependencies("gb_advantech_webaccess_detect.nasl");
-  script_mandatory_keys("Advantech/WebAccess/installed");
-  script_require_ports("Services/www", 80);
-  script_xref(name:"URL", value:"http://www.advantech.com/industrial-automation/webaccess");
+  script_dependencies("gb_advantech_webaccess_consolidation.nasl");
+  script_mandatory_keys("advantech/webaccess/detected");
   exit(0);
 }
 
-include("version_func.inc");
-include("host_details.inc");
+include( "version_func.inc" );
+include( "host_details.inc" );
 
-if(!adPort = get_app_port(cpe:CPE)){
-  exit(0);
-}
+if( isnull( port = get_app_port( cpe: CPE ) ) )
+  exit( 0 );
 
-if(!adVer = get_app_version(cpe:CPE, port:adPort)){
-  exit(0);
-}
+if( ! infos = get_app_version_and_location( cpe: CPE, port: port ) )
+  exit( 0 );
 
-if(version_is_less(version:adVer, test_version:"8.0.2015.08.16"))
-{
-  report = report_fixed_ver(installed_version:adVer, fixed_version:"8.0.2015.08.16");
-  security_message(data:report, port:adPort);
-  exit(0);
+path = infos["location"];
+vers = infos["version"];
+
+if( version_is_less( version: vers, test_version: "8.0.2015.08.16" ) ) {
+  report = report_fixed_ver( installed_version: vers, fixed_version: "8.0.2015.08.16", install_path: path );
+  security_message( data: report, port: port );
+  exit( 0 );
 }
+exit( 99 );

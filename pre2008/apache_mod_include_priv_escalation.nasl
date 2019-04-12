@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.15554");
-  script_version("$Revision: 9229 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-28 08:24:54 +0200 (Wed, 28 Mar 2018) $");
+  script_version("2019-04-11T14:06:24+0000");
+  script_tag(name:"last_modification", value:"2019-04-11 14:06:24 +0000 (Thu, 11 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(11471);
   script_cve_id("CVE-2004-0940");
@@ -45,22 +45,17 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("apache/installed");
 
-  tag_summary = "The remote web server appears to be running a version of Apache that is older
-  than version 1.3.33.";
+  script_tag(name:"summary", value:"The remote web server appears to be running a version of Apache that is older
+  than version 1.3.33.");
 
-  tag_insight = "This version is vulnerable to a local buffer overflow in the get_tag()
-  function of the module 'mod_include' when a specially crafted document 
-  with malformed server-side includes is requested though an HTTP session.";
+  script_tag(name:"insight", value:"This version is vulnerable to a local buffer overflow in the get_tag()
+  function of the module 'mod_include' when a specially crafted document
+  with malformed server-side includes is requested though an HTTP session.");
 
-  tag_impact = "Successful exploitation can lead to execution of arbitrary code with 
-  escalated privileges, but requires that server-side includes (SSI) is enabled.";
+  script_tag(name:"impact", value:"Successful exploitation can lead to execution of arbitrary code with
+  escalated privileges, but requires that server-side includes (SSI) is enabled.");
 
-  tag_solution = "Disable SSI or upgrade to a newer version when available.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"solution", value:"Disable SSI or upgrade to a newer version when available.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");

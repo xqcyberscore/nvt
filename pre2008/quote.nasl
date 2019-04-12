@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10198");
-  script_version("$Revision: 4827 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-21 11:31:05 +0100 (Wed, 21 Dec 2016) $");
+  script_version("2019-04-11T14:06:24+0000");
+  script_tag(name:"last_modification", value:"2019-04-11 14:06:24 +0000 (Thu, 11 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   #Remark: NIST don't see "configuration issues" as software flaws so this CVSS has a value of 0.0.
   #However we still should report such a configuration issue with a criticality so this has been commented
   #out to avoid that the automatic CVSS score correction is setting the CVSS back to 0.0
-  #script_cve_id("CVE-1999-0103");
+  #  script_cve_id("CVE-1999-0103");
   script_name("Check for Quote of the day Service (TCP)");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 1999 Mathieu Perrin");
@@ -45,36 +45,34 @@ if(description)
 
   script_xref(name:"URL", value:"https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-1999-0103");
 
-  tag_solution = "- Under Unix systems, comment out the 'qotd' line in /etc/inetd.conf
-  and restart the inetd process
-
-  - Under Windows systems, set the following registry keys to 0 :
-    HKLM\System\CurrentControlSet\Services\SimpTCP\Parameters\EnableTcpQotd
-    HKLM\System\CurrentControlSet\Services\SimpTCP\Parameters\EnableUdpQotd
-
-  Then launch cmd.exe and type :
-
-    net stop simptcp
-    net start simptcp
-
-  To restart the service.";
-
-  tag_summary = "The quote service (qotd) is running on this host.
+  script_tag(name:"summary", value:"The quote service (qotd) is running on this host.
 
   Description :
 
   A server listens for TCP connections on TCP port 17. Once a connection
   is established a short message is sent out the connection (and any
   data received is thrown away). The service closes the connection
-  after sending the quote.";
+  after sending the quote.");
 
-  tag_impact = "An easy attack is 'pingpong' which IP spoofs a packet between two machines
+  script_tag(name:"solution", value:"- Under Unix systems, comment out the 'qotd' line in /etc/inetd.conf
+  and restart the inetd process
+
+  - Under Windows systems, set the following registry keys to 0 :
+
+  HKLM\System\CurrentControlSet\Services\SimpTCP\Parameters\EnableTcpQotd
+
+  HKLM\System\CurrentControlSet\Services\SimpTCP\Parameters\EnableUdpQotd
+
+  Then launch cmd.exe and type :
+
+  net stop simptcp
+
+  net start simptcp
+
+  To restart the service.");
+  script_tag(name:"impact", value:"An easy attack is 'pingpong' which IP spoofs a packet between two machines
   running qotd. This will cause them to spew characters at each other,
-  slowing the machines down and saturating the network.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"impact", value:tag_impact);
+  slowing the machines down and saturating the network.");
 
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -93,7 +91,8 @@ if( get_port_state( port ) ) {
     soc = open_sock_tcp( port );
     if( soc ) {
       a = recv_line( socket:soc, length:1024 );
-      if( a ) security_message( port:port );
+      if( a )
+        security_message( port:port );
       close( soc );
     }
   }

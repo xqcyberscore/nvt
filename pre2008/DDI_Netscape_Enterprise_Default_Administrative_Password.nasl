@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11208");
-  script_version("$Revision: 6695 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:17:53 +0200 (Wed, 12 Jul 2017) $");
+  script_version("2019-04-11T14:06:24+0000");
+  script_tag(name:"last_modification", value:"2019-04-11 14:06:24 +0000 (Thu, 11 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -41,19 +41,15 @@ if(description)
   script_mandatory_keys("Netscape_iPlanet/banner");
   script_require_ports("Services/www", 8888);
 
-  tag_summary = "This host is running the Netscape Enterprise Server. The Administrative
+  script_tag(name:"solution", value:"Please assign the web administration console a difficult to guess
+  password.");
+
+  script_tag(name:"summary", value:"This host is running the Netscape Enterprise Server. The Administrative
   interface for this web server, which operates on port 8888/TCP, is using
-  the default username and password of 'admin'.";
+  the default username and password of 'admin'.");
 
-  tag_impact = "An attacker can use this to reconfigure the web server, cause a denial
-  of service condition, or gain access to this host.";
-
-  tag_solution = "Please assign the web administration console a difficult to guess
-  password.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
+  script_tag(name:"impact", value:"An attacker can use this to reconfigure the web server, cause a denial
+  of service condition, or gain access to this host.");
 
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -67,8 +63,8 @@ include("http_keepalive.inc");
 port = get_http_port( default:8888 );
 
 banner = get_http_banner( port:port );
-
-if( ! banner || ( "Netscape" >!< banner && "iPlanet" >!< banner ) ) exit( 0 );
+if( ! banner || ( "Netscape" >!< banner && "iPlanet" >!< banner ) )
+  exit( 0 );
 
 url = "/https-admserv/bin/index";
 req = http_get( item:url, port:port );

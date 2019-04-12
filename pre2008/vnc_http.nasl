@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10758");
-  script_version("$Revision: 6695 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:17:53 +0200 (Wed, 12 Jul 2017) $");
+  script_version("2019-04-11T14:06:24+0000");
+  script_tag(name:"last_modification", value:"2019-04-11 14:06:24 +0000 (Thu, 11 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -40,14 +40,11 @@ if(description)
   script_mandatory_keys("vncviewer_jc/banner");
   script_require_ports("Services/www", 5800, 5801, 5802);
 
-  tag_summary = "The remote server is running VNC.
-  VNC permits a console to be displayed remotely.";
+  script_tag(name:"solution", value:"Disable VNC access from the network by
+  using a firewall, or stop VNC service if not needed.");
 
-  tag_solution = "Disable VNC access from the network by
-  using a firewall, or stop VNC service if not needed.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"The remote server is running VNC.
+  VNC permits a console to be displayed remotely.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

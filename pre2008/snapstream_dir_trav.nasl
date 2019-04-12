@@ -25,71 +25,52 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "It is possible to read arbitrary files on the remote 
-Snapstream PVS server by prepending ../../ in front on the 
-file name.
-It may also be possible to read ../ssd.ini which contains
-many informations on the system (base directory, usernames &
-passwords).";
-
-tag_solution = "Upgrade your software or change it!";
-
-# I wonder if this script should not be merged with web_traversal.nasl
-# References:
-# From: john@interrorem.com
-# Subject: Snapstream PVS vulnerability
-# To: bugtraq@securityfocus.com
-# Date: Thu, 26 Jul 2001 08:23:51 +0100 (BST)
-
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.11079");
- script_version("$Revision: 9348 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_bugtraq_id(3100);
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_tag(name:"qod_type", value:"remote_banner_unreliable");
- script_cve_id("CVE-2001-1108");
- 
- name = "Snapstream PVS web directory traversal";
- script_name(name);
- 
+  script_oid("1.3.6.1.4.1.25623.1.0.11079");
+  script_version("2019-04-11T14:06:24+0000");
+  script_tag(name:"last_modification", value:"2019-04-11 14:06:24 +0000 (Thu, 11 Apr 2019)");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_bugtraq_id(3100);
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_cve_id("CVE-2001-1108");
+  script_name("Snapstream PVS web directory traversal");
+  script_category(ACT_ATTACK);
+  script_copyright("This script is Copyright (C) 2002 Michel Arboi");
+  script_family("Web application abuses");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 8129);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
- 
- script_category(ACT_ATTACK);
- 
- script_copyright("This script is Copyright (C) 2002 Michel Arboi");
+  script_tag(name:"solution", value:"Upgrade your software or change it!");
 
- family = "Web application abuses";
- script_family(family);
- script_dependencies("find_service.nasl", "no404.nasl", "http_version.nasl");
- script_require_ports("Services/www", 8129);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  script_tag(name:"summary", value:"It is possible to read arbitrary files on the remote
+  Snapstream PVS server by prepending ../../ in front on the file name.
+
+  It may also be possible to read ../ssd.ini which contains many information on the
+  system (base directory, usernames & passwords).");
+
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
+  script_tag(name:"solution_type", value:"VendorFix");
+
+  exit(0);
 }
-
-# FP + other Directory Traversal scripts do the same thing
-exit (0);
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 
 port = get_http_port(default:8129);
-if(!port) exit(0);
 
-if(!get_port_state(port)) exit(0);
+files = make_list( "/../ssd.ini", "/../../../../autoexec.bat", "/../../../winnt/repair/sam" );
 
-fil[0] = "/../ssd.ini";
-fil[1] = "/../../../../autoexec.bat";
-fil[2] = "/../../../winnt/repair/sam";
-
-for (i=0; i<3; i=i+1) {
-  ok = is_cgi_installed_ka(port:port, item:fil[i]);
-  if (ok) { security_message(port); exit(0); }
+foreach file(files) {
+  ok = is_cgi_installed_ka(port:port, item:file);
+  if(ok){
+    report = report_vuln_url(port:port, url:file);
+    security_message(port:port, data:report);
+    exit(0);
+  }
 }
 
-
+exit(99);

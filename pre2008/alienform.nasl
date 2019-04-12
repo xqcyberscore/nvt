@@ -31,8 +31,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11027");
-  script_version("$Revision: 6046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
+  script_version("2019-04-10T13:42:28+0000");
+  script_tag(name:"last_modification", value:"2019-04-10 13:42:28 +0000 (Wed, 10 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(4983);
   script_tag(name:"cvss_base", value:"6.4");
@@ -46,21 +46,22 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  tag_summary = "The AlienForm CGI script allows an attacker
+  script_xref(name:"URL", value:"http://online.securityfocus.com/archive/1/276248/2002-06-08/2002-06-14/0");
+
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+
+  script_tag(name:"summary", value:"The AlienForm CGI script allows an attacker
   to view any file on the target computer, append arbitrary data
   to an existing file, and write arbitrary data to a new file.
 
   The AlienForm CGI script is installed as either af.cgi or
   alienform.cgi
 
-  For more details, please see:
-  http://online.securityfocus.com/archive/1/276248/2002-06-08/2002-06-14/0";
+  For more details, please see the references.");
 
-  tag_solution = "Disable AlienForm";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-
+  script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_vul");
 
   exit(0);

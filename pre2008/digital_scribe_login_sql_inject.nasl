@@ -22,28 +22,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "The remote web server contains a PHP script which is vulnerable to a SQL
-injection. 
-
-Description : 
-
-The remote web server hosts Digital Scribe, a student-teacher set of
-scripts written in PHP.
-
-The version of Digital Scribe installed on the remote host is prone to
-SQL injection attacks through the 'login.php' script.  A malicious
-user may be able to exploit this issue to manipulate database queries
-to, say, bypass authentication.";
-
-tag_solution = "Unknown at this time.";
-
-# Ref: retrogod at aliceposta.it
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.19770");
-  script_version("$Revision: 9348 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
+  script_version("2019-04-11T14:06:24+0000");
+  script_tag(name:"last_modification", value:"2019-04-11 14:06:24 +0000 (Thu, 11 Apr 2019)");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_cve_id("CVE-2005-2987");
   script_bugtraq_id(14843);
@@ -51,15 +34,27 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Digital Scribe login.php SQL Injection flaw");
   script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_active");
   script_copyright("This script is Copyright (C) 2005 David Maciejak");
   script_family("Web application abuses");
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
-  script_xref(name : "URL" , value : "http://retrogod.altervista.org/dscribe14.html");
+
+  script_xref(name:"URL", value:"http://retrogod.altervista.org/dscribe14.html");
+
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+
+  script_tag(name:"summary", value:"The version of Digital Scribe installed on the remote host is prone to
+  SQL injection attacks through the 'login.php' script.");
+
+  script_tag(name:"impact", value:"A malicious user may be able to exploit this issue to manipulate database queries
+  to, say, bypass authentication.");
+
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"qod_type", value:"remote_app");
+
   exit(0);
 }
 
@@ -67,16 +62,22 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-if(!can_host_php(port:port))exit(0);
+if(!can_host_php(port:port))
+  exit(0);
 
 foreach dir( make_list_unique( "/DigitalScribe", "/scribe", cgi_dirs( port:port ) )) {
 
-  if( dir == "/" ) dir = "";
-  r = http_get_cache(item:string(dir,"/login.php"), port:port);
-  if( r == NULL ) continue;
+  if( dir == "/" )
+    dir = "";
 
-  if (("<TITLE>Login Page</TITLE>" >< r) && (egrep(pattern:"www\.digital-scribe\.org>Digital Scribe v\.1\.[0-4]$</A>", string:r))) {
-    security_message( port:port );
+  url = dir + "/login.php";
+  r = http_get_cache(item:url, port:port);
+  if(!r)
+    continue;
+
+  if( "<TITLE>Login Page</TITLE>" >< r && egrep(pattern:"www\.digital-scribe\.org>Digital Scribe v\.1\.[0-4]$</A>", string:r)) {
+    report = report_vuln_url(port:port, url:url);
+    security_message(port:port, data:report);
     exit( 0 );
   }
 }

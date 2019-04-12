@@ -22,48 +22,50 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "It is possible to read the include file of PCCS-Mysql, 
-dbconnect.inc on the remote server.
-
-This include file contains information such as the
-username and password used to connect to the database.";
-
-tag_solution = "Versions 1.2.5 and later are not vulnerable to this issue.
-A workaround is to restrict access to the .inc file.";
-
 if(description)
 {
- name = "PCCS-Mysql User/Password Exposure";
- 
- script_name(name);
- script_oid("1.3.6.1.4.1.25623.1.0.10783");
- script_version("$Revision: 9348 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_bugtraq_id(1557);
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_tag(name:"qod_type", value:"remote_banner_unreliable");
- script_cve_id("CVE-2000-0707");
- 
+  script_oid("1.3.6.1.4.1.25623.1.0.10783");
+  script_version("2019-04-10T13:42:28+0000");
+  script_tag(name:"last_modification", value:"2019-04-10 13:42:28 +0000 (Wed, 10 Apr 2019)");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_bugtraq_id(1557);
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_cve_id("CVE-2000-0707");
+  script_category(ACT_GATHER_INFO);
+  script_name("PCCS-Mysql User/Password Exposure");
+  script_copyright("This script is Copyright (C) 2001 Alert4Web.com");
+  script_family("Web application abuses");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
- 
- script_category(ACT_GATHER_INFO);
- 
- 
- script_copyright("This script is Copyright (C) 2001 Alert4Web.com");
- family = "Web application abuses";
- script_family(family);
- script_dependencies("find_service.nasl", "no404.nasl");
- script_require_ports("Services/www", 80);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  script_tag(name:"solution", value:"Versions 1.2.5 and later are not vulnerable to this issue.
+  A workaround is to restrict access to the .inc file.");
+
+  script_tag(name:"summary", value:"It is possible to read the include file of PCCS-Mysql,
+  dbconnect.inc on the remote server.
+
+  This include file contains information such as the username and password used to connect to
+  the database.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
+
+  exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-res = is_cgi_installed_ka(port:port, item:"/pccsmysqladm/incs/dbconnect.inc");
-if( res )security_message(port);
+
+cgi = "/pccsmysqladm/incs/dbconnect.inc";
+res = is_cgi_installed_ka(port:port, item:cgi);
+if(res) {
+  report = report_vuln_url(port:port, url:cgi);
+  security_message(port:port);
+  exit(0);
+}
+
+exit(99);

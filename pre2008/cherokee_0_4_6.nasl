@@ -23,65 +23,49 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "The remote host is running Cherokee - a fast and tiny web server.
-
-The remote version of this software is vulnerable to remote denial 
-of service vulnerability when handling a specially-crafted HTTP 
-'POST' request.
-
-An attacker may exploit this flaw to disable this service remotely.";
-
-tag_solution = "Upgrade to Cherokee 0.4.7 or newer";
-
-#  Ref: <vnull@pcnet.com.pl>
-
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.15620");
- script_version("$Revision: 9348 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_cve_id("CVE-2003-1198");
- script_bugtraq_id(9345);
- script_xref(name:"OSVDB", value:3306);
+  script_oid("1.3.6.1.4.1.25623.1.0.15620");
+  script_version("2019-04-11T14:06:24+0000");
+  script_tag(name:"last_modification", value:"2019-04-11 14:06:24 +0000 (Thu, 11 Apr 2019)");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_cve_id("CVE-2003-1198");
+  script_bugtraq_id(9345);
+  script_xref(name:"OSVDB", value:3306);
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_name("Cherokee POST request DoS");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 2004 David Maciejak");
+  script_family("Denial of Service");
+  script_dependencies("gb_get_http_banner.nasl");
+  script_mandatory_keys("Cherokee/banner");
+  script_require_ports("Services/www", 443);
 
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- name = "Cherokee POST request DoS";
+  script_tag(name:"solution", value:"Upgrade to Cherokee 0.4.7 or newer.");
 
- script_name(name);
- 
+  script_tag(name:"summary", value:"The remote version of tCherokee is vulnerable to remote denial
+  of service vulnerability when handling a specially-crafted HTTP 'POST' request.");
 
- 
- 
- script_category(ACT_GATHER_INFO);
+  script_tag(name:"impact", value:"An attacker may exploit this flaw to disable this service remotely.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
- 
- 
- script_copyright("This script is Copyright (C) 2004 David Maciejak");
- family = "Denial of Service";
- script_family(family);
- script_dependencies("gb_get_http_banner.nasl");
- script_mandatory_keys("Cherokee/banner");
- script_require_ports("Services/www", 443);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+
+  exit(0);
 }
 
-#
-# The script code starts here
-#
 include("http_func.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
-
 banner = get_http_banner(port: port);
-if(!banner)exit(0);
- 
+if(!banner || "Cherokee" >!< banner)
+  exit(0);
+
 serv = strstr(banner, "Server");
-if(ereg(pattern:"^Server:.*Cherokee/0\.([0-3]\.|4\.[0-6])[^0-9]", string:serv))
- {
-   security_message(port);
- }
+if(ereg(pattern:"^Server:.*Cherokee/0\.([0-3]\.|4\.[0-6])[^0-9]", string:serv)) {
+  security_message(port:port);
+  exit(0);
+}
+
+exit(99);

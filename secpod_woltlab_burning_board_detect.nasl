@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800936");
-  script_version("$Revision: 10851 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-09 10:19:54 +0200 (Thu, 09 Aug 2018) $");
+  script_version("2019-04-11T08:59:06+0000");
+  script_tag(name:"last_modification", value:"2019-04-11 08:59:06 +0000 (Thu, 11 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-09-16 15:34:19 +0200 (Wed, 16 Sep 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -56,12 +56,14 @@ include("cpe.inc");
 include("host_details.inc");
 
 port = get_http_port( default:80 );
-if( ! can_host_php( port:port ) ) exit( 0 );
+if( ! can_host_php( port:port ) )
+  exit( 0 );
 
 foreach dir( make_list_unique( "/", "/wbb", cgi_dirs( port:port ) ) ) {
 
   install = dir;
-  if( dir == "/" ) dir = "";
+  if( dir == "/" )
+    dir = "";
 
   res = http_get_cache( item:dir + "/upload/index.php", port:port );
   res2 = http_get_cache( item:dir + "/index.php", port:port );
@@ -75,6 +77,7 @@ foreach dir( make_list_unique( "/", "/wbb", cgi_dirs( port:port ) ) ) {
 
     ver = eregmatch( pattern:">Burning Board[&a-z; ]+(Lite )?([0-9.]+([A-Za-z0-9 ]+)?)<", string:res );
     ver[2] = ereg_replace( pattern:" ", replace:".", string:ver[2] );
+    ver[2] = ereg_replace( pattern:"\.$", replace:"", string:ver[2] ); # nb: For some unknown reason the pattern above contained an empty space sometimes causing an trailing space added to the version.
     if( ! isnull( ver[2] ) ) {
       if( ver[1] == "Lite " ) {
         app_name = "WoltLab Burning Board Lite";
@@ -87,6 +90,7 @@ foreach dir( make_list_unique( "/", "/wbb", cgi_dirs( port:port ) ) ) {
     } else {
       ver = eregmatch( pattern:"strong>Burning Board[&a-z; ]+(Lite )?([0-9.]+([A-Za-z0-9 ]+)?)<", string:res2 );
       ver[2] = ereg_replace( pattern:" ", replace:".", string:ver[2] );
+      ver[2] = ereg_replace( pattern:"\.$", replace:"", string:ver[2] ); # nb: For some unknown reason the pattern above contained an empty space sometimes causing an trailing space added to the version.
       if( ! isnull( ver[2] ) ) {
         if( ver[1] == "Lite " ) {
           app_name = "WoltLab Burning Board Lite";
@@ -97,16 +101,21 @@ foreach dir( make_list_unique( "/", "/wbb", cgi_dirs( port:port ) ) ) {
         }
         version = ver[2];
       } else {
+        app_name = "WoltLab Burning Board";
+        base_cpe = "cpe:/a:woltlab:burning_board";
+        # <p align="center">WoltLab Burning Board 2.2.2 - Admin Control Panel</p>
         ver = eregmatch( pattern:"Burning Board ([0-9.]+([A-Za-z0-9 ]+)?)", string:res3 );
         ver[1] = ereg_replace( pattern:" ", replace:".", string:ver[1] );
-        if( ! isnull( ver[1] ) ) version = ver[1];
+        ver[1] = ereg_replace( pattern:"\.$", replace:"", string:ver[1] ); # nb: For some unknown reason the pattern above contained an empty space sometimes causing an trailing space added to the version.
+        if( ! isnull( ver[1] ) )
+          version = ver[1];
       }
     }
 
     set_kb_item( name:"www/can_host_tapatalk", value:TRUE ); # nb: Used in sw_tapatalk_detect.nasl for plugin scheduling optimization
     set_kb_item( name:"WoltLabBurningBoard/detected", value:TRUE );
 
-    cpe = build_cpe( value:version, exp:"^([0-9.]+)\.([0-9a-zA-Z.]+)", base:base_cpe + ":" );
+    cpe = build_cpe( value:version, exp:"^([0-9.]+)([0-9a-zA-Z.]+)?", base:base_cpe + ":" );
     if( isnull( cpe ) )
       cpe = base_cpe;
 

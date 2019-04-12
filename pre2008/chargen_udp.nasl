@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108030");
-  script_version("$Revision: 8236 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-22 11:28:23 +0100 (Fri, 22 Dec 2017) $");
+  script_version("2019-04-11T14:06:24+0000");
+  script_tag(name:"last_modification", value:"2019-04-11 14:06:24 +0000 (Thu, 11 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   #Remark: NIST don't see "configuration issues" as software flaws so this CVSS has a value of 0.0.
   #However we still should report such a configuration issue with a criticality so this has been commented
   #out to avoid that the automatic CVSS score correction is setting the CVSS back to 0.0
-  #script_cve_id("CVE-1999-0103");
+  #  script_cve_id("CVE-1999-0103");
   script_name("Check for Chargen Service (UDP)");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 1999 Mathieu Perrin");
@@ -44,21 +44,7 @@ if(description)
 
   script_xref(name:"URL", value:"https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-1999-0103");
 
-  tag_solution = "- Under Unix systems, comment out the 'chargen' line in /etc/inetd.conf
-  and restart the inetd process
-
-  - Under Windows systems, set the following registry keys to 0 :
-    HKLM\System\CurrentControlSet\Services\SimpTCP\Parameters\EnableTcpChargen
-    HKLM\System\CurrentControlSet\Services\SimpTCP\Parameters\EnableUdpChargen
-
-   Then launch cmd.exe and type :
-
-   net stop simptcp
-   net start simptcp
-
-  To restart the service.";
-
-  tag_summary = "The remote host is running a 'chargen' service.
+  script_tag(name:"summary", value:"The remote host is running a 'chargen' service.
 
   Description :
 
@@ -70,15 +56,27 @@ if(description)
   by itself, to make sure that all the packets were arriving at their
   destination unaltered. It is unused these days, so it is suggested
   you disable it, as an attacker may use it to set up an attack against
-  this host, or against a third party host using this host as a relay.";
+  this host, or against a third party host using this host as a relay.");
+  script_tag(name:"solution", value:"- Under Unix systems, comment out the 'chargen' line in /etc/inetd.conf
+  and restart the inetd process
 
-  tag_impact = "An easy attack is 'ping-pong' in which an attacker spoofs a packet between
+  - Under Windows systems, set the following registry keys to 0 :
+
+  HKLM\System\CurrentControlSet\Services\SimpTCP\Parameters\EnableTcpChargen
+
+  HKLM\System\CurrentControlSet\Services\SimpTCP\Parameters\EnableUdpChargen
+
+  Then launch cmd.exe and type :
+
+  net stop simptcp
+ 
+  net start simptcp
+
+  To restart the service.");
+
+  script_tag(name:"impact", value:"An easy attack is 'ping-pong' in which an attacker spoofs a packet between
   two machines running chargen. This will cause them to spew characters at
-  each other, slowing the machines down and saturating the network.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"impact", value:tag_impact);
+  each other, slowing the machines down and saturating the network.");
 
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_active");
@@ -97,7 +95,8 @@ if( get_udp_port_state( port ) ) {
   data = string( "\r\n" );
   send( socket:udpsoc, data:data );
   b = recv( socket:udpsoc, length:1024 );
-  if( strlen( b ) > 255 ) security_message( port:port, protocol:"udp" );
+  if( strlen( b ) > 255 )
+    security_message( port:port, protocol:"udp" );
   close( udpsoc );
 }
 

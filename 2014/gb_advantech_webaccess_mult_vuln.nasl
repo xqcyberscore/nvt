@@ -29,7 +29,7 @@ CPE = "cpe:/a:advantech:advantech_webaccess";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804430");
-  script_version("$Revision: 14185 $");
+  script_version("2019-04-06T12:52:40+0000");
   script_cve_id("CVE-2014-0763", "CVE-2014-0764", "CVE-2014-0765", "CVE-2014-0766",
                 "CVE-2014-0767", "CVE-2014-0768", "CVE-2014-0770", "CVE-2014-0771",
                 "CVE-2014-0772", "CVE-2014-0773");
@@ -37,7 +37,7 @@ if(description)
                     66732, 66733, 66750, 66749, 66742);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-14 14:43:25 +0100 (Thu, 14 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-04-06 12:52:40 +0000 (Sat, 06 Apr 2019)");
   script_tag(name:"creation_date", value:"2014-04-16 14:52:28 +0530 (Wed, 16 Apr 2014)");
   script_name("Advantech WebAccess Multiple Vulnerabilities");
 
@@ -77,27 +77,27 @@ if(description)
   script_tag(name:"qod_type", value:"remote_banner");
   script_family("Web application abuses");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
-  script_dependencies("gb_advantech_webaccess_detect.nasl");
-  script_mandatory_keys("Advantech/WebAccess/installed");
-  script_require_ports("Services/www", 80);
+  script_dependencies("gb_advantech_webaccess_consolidation.nasl");
+  script_mandatory_keys("advantech/webaccess/detected");
 
   exit(0);
 }
 
-include("version_func.inc");
-include("host_details.inc");
+include( "version_func.inc" );
+include( "host_details.inc" );
 
-if(!awPort = get_app_port(cpe:CPE)){
-  exit(0);
-}
+if( isnull( port = get_app_port( cpe: CPE ) ) )
+  exit( 0 );
 
-awVer = get_app_version(cpe:CPE, port:awPort);
-if(!awVer){
-  exit(0);
-}
+if( ! infos = get_app_version_and_location( cpe: CPE, port: port ) )
+  exit( 0 );
 
-if(version_is_less(version:awVer, test_version:"7.2"))
-{
-  security_message(port:awPort);
-  exit(0);
+path = infos["location"];
+vers = infos["version"];
+
+if( version_is_less( version: vers, test_version: "7.2" ) ) {
+  report = report_fixed_ver( installed_version: vers, fixed_version: "7.2", install_path: path );
+  security_message( data: report, port: port );
+  exit( 0 );
 }
+exit( 99 );

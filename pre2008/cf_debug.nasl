@@ -24,13 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-# v. 1.06 (last update 07.11.01)
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10797");
-  script_version("$Revision: 6056 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
+  script_version("2019-04-11T14:06:24+0000");
+  script_tag(name:"last_modification", value:"2019-04-11 14:06:24 +0000 (Thu, 11 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -42,21 +40,17 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  tag_summary = "It is possible to see the ColdFusion Debug Information
-  by appending ?Mode=debug at the end of the request
-  (like GET /index.cfm?Mode=debug).
+  script_tag(name:"solution", value:"Enter a IP (e.g. 127.0.0.1) in the Debug Settings
+  within the ColdFusion Admin.");
+
+  script_tag(name:"summary", value:"It is possible to see the ColdFusion Debug Information
+  by appending ?Mode=debug at the end of the request (like GET /index.cfm?Mode=debug).
 
   4.5 and 5.0 are definitely concerned (probably in
   addition older versions).
 
   The Debug Information usually contain sensitive data such
-  as Template Path or Server Version.";
-
-  tag_solution = "Enter a IP (e.g. 127.0.0.1) in the Debug Settings
-  within the ColdFusion Admin.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  as Template Path or Server Version.");
 
   script_tag(name:"solution_type", value:"Workaround");
   script_tag(name:"qod_type", value:"remote_vul");

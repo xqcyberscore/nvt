@@ -29,13 +29,13 @@ CPE = "cpe:/a:advantech:advantech_webaccess";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804478");
-  script_version("$Revision: 11867 $");
+  script_version("2019-04-06T12:52:40+0000");
   script_cve_id("CVE-2014-0985", "CVE-2014-0986", "CVE-2014-0987", "CVE-2014-0988",
                 "CVE-2014-0989", "CVE-2014-0990", "CVE-2014-0991", "CVE-2014-0992");
   script_bugtraq_id(69529, 69531, 69532, 69533, 69534, 69535, 69536, 69538);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"2019-04-06 12:52:40 +0000 (Sat, 06 Apr 2019)");
   script_tag(name:"creation_date", value:"2014-09-08 12:07:35 +0530 (Mon, 08 Sep 2014)");
 
   script_name("Advantech WebAccess Multiple Stack Based Buffer Overflow Vulnerabilities");
@@ -64,28 +64,27 @@ if(description)
   script_tag(name:"qod_type", value:"remote_banner");
   script_family("Web application abuses");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
-  script_dependencies("gb_advantech_webaccess_detect.nasl");
-  script_mandatory_keys("Advantech/WebAccess/installed");
-  script_require_ports("Services/www", 80);
-  script_xref(name:"URL", value:"http://webaccess.advantech.com");
+  script_dependencies("gb_advantech_webaccess_consolidation.nasl");
+  script_mandatory_keys("advantech/webaccess/detected");
   exit(0);
 }
 
 
-include("version_func.inc");
-include("host_details.inc");
+include( "version_func.inc" );
+include( "host_details.inc" );
 
-if(!awPort = get_app_port(cpe:CPE)){
-  exit(0);
-}
+if( isnull( port = get_app_port( cpe: CPE ) ) )
+  exit( 0 );
 
-awVer = get_app_version(cpe:CPE, port:awPort);
-if(!awVer){
-  exit(0);
-}
+if( ! infos = get_app_version_and_location( cpe: CPE, port: port ) )
+  exit( 0 );
 
-if(version_is_less(version:awVer, test_version:"7.3"))
-{
-  security_message(port:awPort);
-  exit(0);
+path = infos["location"];
+vers = infos["version"];
+
+if( version_is_less( version: vers, test_version: "7.3" ) ) {
+  report = report_fixed_ver( installed_version: vers, fixed_version: "7.3", install_path: path );
+  security_message( data: report, port: port );
+  exit( 0 );
 }
+exit( 99 );

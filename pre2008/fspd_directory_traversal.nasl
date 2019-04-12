@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11988");
-  script_version("$Revision: 4922 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-02 17:28:42 +0100 (Mon, 02 Jan 2017) $");
+  script_version("2019-04-11T14:06:24+0000");
+  script_tag(name:"last_modification", value:"2019-04-11 14:06:24 +0000 (Thu, 11 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2003-1022");
   script_bugtraq_id(9377);
@@ -43,14 +43,18 @@ if(description)
 
   script_tag(name:"summary", value:"The FSP Suite (daemon) has been found to improperly filter out
   paths with trailing / or starting with /. This would allow an attacker
-  access to files that reside outside the bounding FSP root diretory.");
+  access to files that reside outside the bounding FSP root directory.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
+  since the disclosure of this vulnerability. Likely none will be provided anymore.
+  General solution options are to upgrade to a newer release, disable respective features,
+  remove the product or replace the product by another one.");
+
   exit(0);
 }
-
-# This is UDP based protocol ...
 
 banners = get_kb_list( "fsp/banner/*" );
 if( isnull( banners ) ) exit( 0 );

@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12113");
-  script_version("$Revision: 10418 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-05 13:22:00 +0200 (Thu, 05 Jul 2018) $");
+  script_version("2019-04-10T13:42:28+0000");
+  script_tag(name:"last_modification", value:"2019-04-10 13:42:28 +0000 (Wed, 10 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:N/A:N");
@@ -41,15 +41,16 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("keys/is_private_addr", "Settings/disable_cgi_scanning");
 
-  script_tag(name:"solution", value:"see http://support.microsoft.com/default.aspx?scid=KB%3BEN-US%3BQ218180&ID=KB%3BEN-US%3BQ218180");
+  script_xref(name:"URL", value:"http://support.microsoft.com/default.aspx?scid=KB%3BEN-US%3BQ218180&ID=KB%3BEN-US%3BQ218180");
+  script_xref(name:"URL", value:"http://www.nextgenss.com/papers/iisrconfig.pdf");
+
+  script_tag(name:"solution", value:"See the references for an update / more information.");
 
   script_tag(name:"summary", value:"The remote web server leaks a private IP address through the WebDAV interface. If this
   web server is behind a Network Address Translation (NAT) firewall or proxy server, then
   the internal IP addressing scheme has been leaked.
 
-  This is typical of IIS 5.0 installations that are not configured properly.
-
-  Detail: http://www.nextgenss.com/papers/iisrconfig.pdf");
+  This is typical of IIS 5.0 installations that are not configured properly.");
 
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_banner_unreliable"); #TBD: remote_banner?
@@ -59,10 +60,10 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 include("network_func.inc");
 
-if( is_private_addr() ) exit( 0 );
+if( is_private_addr() )
+  exit( 0 );
 
 port = get_http_port( default:80 );
 host = http_host_name( port:port );
@@ -78,7 +79,7 @@ buf = http_keepalive_send_recv( port:port, data:req );
 # TBD: regex for all IPv6 addresses and then pass to is_private_addr(addr, use_globals:FALSE) ?
 private_ip = eregmatch( pattern:"([^12]10\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}|172\.(1[6-9]|2[0-9]|3[0-1])\.[0-9]{1,3}\.[0-9]{1,3}|192\.168\.[0-9]{1,3}\.[0-9]{1,3})", string:buf );
 if( ! isnull( private_ip ) && private_ip !~ "Oracle.*/10\." ) {
-  report = "This web server leaks the following private IP address : " + private_ip[0] + '\n\n';
+  report = "This web server leaks the following private IP address: " + private_ip[0] + '\n\n';
   report += report_vuln_url( port:port, url:"/" );
   security_message( port:port, data:report );
   exit( 0 );

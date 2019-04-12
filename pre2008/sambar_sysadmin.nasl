@@ -9,7 +9,7 @@
 # Script audit and contributions from Carmichael Security <http://www.carmichaelsecurity.com>
 # Erik Anderson <eanders@carmichaelsecurity.com>
 # Added BugtraqID
-# Changes by rd : use ereg() insted of ><
+# Changes by rd : use ereg() instead of ><
 #
 # Copyright:
 # Copyright (C) 2000 Hendrik Scholz
@@ -31,8 +31,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10416");
-  script_version("$Revision: 5134 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-30 09:20:15 +0100 (Mon, 30 Jan 2017) $");
+  script_version("2019-04-10T13:42:28+0000");
+  script_tag(name:"last_modification", value:"2019-04-10 13:42:28 +0000 (Wed, 10 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(2255);
   script_tag(name:"cvss_base", value:"5.0");
@@ -45,20 +45,18 @@ if(description)
   script_require_ports("Services/www", 3135);
   script_mandatory_keys("www/sambar");
 
-  tag_summary = "The Sambar webserver is running.
+  script_tag(name:"solution", value:"Change the passwords via the webinterface or use a real webserver
+  like Apache.");
+
+  script_tag(name:"summary", value:"The Sambar webserver is running.
+
   It provides a web interface for configuration purposes.
+
   The admin user has no password and there are some other default users without
-  passwords.
-  Everyone could set the HTTP-Root to c:\ and delete your files!
+  passwords. Everyone could set the HTTP-Root to c:\ and delete existing files!
 
-  *** this may be a false positive - go to http://the_server/sysadmin/ and
-  have a look at it by yourself";
-
-  tag_solution = "Change the passwords via the webinterface or use a real webserver
-  like Apache.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  *** This may be a false positive - go to http://example.com/sysadmin/ and
+  have a look at it by yourself.");
 
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_active");

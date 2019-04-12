@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ident_backdoor2.nasl 5274 2017-02-12 13:52:52Z cfi $
 #
 # IRC bot detection
 #
@@ -29,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.18392");
-  script_version("$Revision: 5274 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-12 14:52:52 +0100 (Sun, 12 Feb 2017) $");
+  script_version("2019-04-12T08:51:24+0000");
+  script_tag(name:"last_modification", value:"2019-04-12 08:51:24 +0000 (Fri, 12 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -41,18 +40,13 @@ if(description)
   script_require_ports("Services/fake-identd", 113);
   script_dependencies("find_service1.nasl");
 
-  tag_summary = "This host seems to be running an ident server, but before any 
-  request is sent, the server gives an answer about a connection to port 6667.";
+  script_tag(name:"summary", value:"This host seems to be running an ident server, but before any
+  request is sent, the server gives an answer about a connection to port 6667.");
 
-  tag_insight = "It is very likely this system has heen compromised by an IRC 
-  bot and is now a 'zombi' that can participate into 'distributed 
-  denial of service' (DDoS).";
+  script_tag(name:"insight", value:"It is very likely this system has heen compromised by an IRC
+  bot and is now a 'zombi' that can participate into 'distributed denial of service' (DDoS).");
 
-  tag_solution = "Desinfect or re-install your system";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"solution", value:"Desinfect or re-install your system");
 
   script_tag(name:"solution_type", value:"Workaround");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -60,14 +54,12 @@ if(description)
   exit(0);
 }
 
-regex = '^[0-9]+ *, *6667 *: *USERID *: *UNIX *: *[A-Za-z0-9]+';
+include("misc_func.inc");
 
-port = get_kb_item( 'Services/fake-identd' );
-if( ! port ) port = 113;
-if( ! get_port_state( port ) ) exit( 0 );
-
+port = get_port_for_service(default:113, proto:"fake-identd");
 b = get_kb_item( "FindService/tcp/" + port + "/spontaneous" );
-if( ! b ) exit( 0 );
+if( ! b )
+  exit( 0 );
 
 if( b =~ '^[0-9]+ *, *6667 *: *USERID *: *UNIX *: *[A-Za-z0-9]+' ) {
   security_message( port:port );

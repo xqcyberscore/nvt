@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10818");
-  script_version("$Revision: 5901 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-09 15:17:48 +0200 (Sun, 09 Apr 2017) $");
+  script_version("2019-04-10T13:42:28+0000");
+  script_tag(name:"last_modification", value:"2019-04-10 13:42:28 +0000 (Wed, 10 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(3599);
   script_tag(name:"cvss_base", value:"7.5");
@@ -40,24 +40,20 @@ if(description)
   script_copyright("This script is Copyright (C) 2001 H D Moore & Drew Hintz ( http://guh.nu )");
   script_family("Web application abuses");
   script_dependencies("find_service.nasl", "http_version.nasl");
-  script_mandatory_keys("www/alchemy");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("www/alchemy");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/243404");
 
-  tag_summary = "Alchemy Eye and Alchemy Network Monitor are network management
+  script_tag(name:"summary", value:"Alchemy Eye and Alchemy Network Monitor are network management
   tools for Microsoft Windows. The product contains a built-in HTTP
   server for remote monitoring and control. This HTTP server allows
-  arbitrary commands to be run on the server by a remote attacker.
-  (Taken from the security announcement by http://www.rapid7.com.)";
+  arbitrary commands to be run on the server by a remote attacker.");
 
-  tag_solution = "Either disable HTTP access in Alchemy Eye, or require
-  authentication for Alchemy Eye. Both of these can be set in the
-  Alchemy Eye preferences.";
+  script_tag(name:"solution", value:"Either disable HTTP access in Alchemy Eye, or require
+  authentication for Alchemy Eye. Both of these can be set in the Alchemy Eye preferences.");
 
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"solution", value:tag_solution);
-
+  script_tag(name:"solution_type", value:"Workaround");
   script_tag(name:"qod_type", value:"remote_vul");
 
   exit(0);
@@ -74,7 +70,8 @@ foreach dir( make_list( "/PRN", "/NUL", "" ) ) {
 
   req = http_get( item:url, port:port );
   res = http_keepalive_send_recv( port:port, data:req );
-  if( isnull( res ) ) continue;
+  if(!res)
+    continue;
 
   if( "ACCOUNTS | COMPUTER" >< res ) {
     report = report_vuln_url( port:port, url:url );

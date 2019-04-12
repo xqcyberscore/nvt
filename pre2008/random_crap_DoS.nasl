@@ -24,17 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-# References
-#
-# http://www.securityfocus.com/bid/158/
-# Exceed Denial of Service Vulnerability
-# CVE-1999-1196
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17296");
-  script_version("$Revision: 6046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
+  script_version("2019-04-11T14:06:24+0000");
+  script_tag(name:"last_modification", value:"2019-04-11 14:06:24 +0000 (Thu, 11 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(158);
   script_cve_id("CVE-1999-1196");
@@ -48,20 +42,17 @@ if(description)
   script_mandatory_keys("TCP/PORTS");
   script_dependencies("find_service.nasl", "find_service2.nasl", "secpod_open_tcp_ports.nasl");
 
-  tag_summary = "It was possible to crash the remote service by sending it
-  a few kilobytes of random data.";
+  script_tag(name:"solution", value:"Upgrade your software or contact your vendor and inform it of this
+  vulnerability.");
 
-  tag_impact = "An attacker may use this flaw to make this service crash continuously,
+  script_tag(name:"summary", value:"It was possible to crash the remote service by sending it
+  a few kilobytes of random data.");
+
+  script_tag(name:"impact", value:"An attacker may use this flaw to make this service crash continuously,
   preventing this service from working properly. It may also be possible
-  to exploit this flaw to execute arbitrary code on this host.";
+  to exploit this flaw to execute arbitrary code on this host.");
 
-  tag_solution = "Upgrade your software or contact your vendor and inform it of this
-  vulnerability";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
 
   exit(0);

