@@ -1,5 +1,4 @@
 # OpenVAS Vulnerability Test
-# $Id: http_w98_devname_dos.nasl 9348 2018-04-06 07:01:19Z cfischer $
 # Description: HTTP Windows 98 MS/DOS device names DOS
 #
 # Authors:
@@ -29,15 +28,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10930");
-  script_version("2019-04-11T14:06:24+0000");
-  script_tag(name:"last_modification", value:"2019-04-11 14:06:24 +0000 (Thu, 11 Apr 2019)");
+  script_version("2019-04-13T13:01:50+0000");
+  script_tag(name:"last_modification", value:"2019-04-13 13:01:50 +0000 (Sat, 13 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(1043, 2575, 2608, 2622, 2649, 2704, 3929, 6659, 6662);
   script_xref(name:"IAVA", value:"2003-t-0003");
   script_cve_id("CVE-2001-0386", "CVE-2001-0493", "CVE-2001-0391", "CVE-2001-0558", "CVE-2002-0200",
                 "CVE-2000-0168", "CVE-2003-0016", "CVE-2001-0602", "CVE-2003-0421", "CVE-2003-0502");
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("HTTP Windows 98 MS/DOS device names DOS");
   script_category(ACT_KILL_HOST);
   script_copyright("This script is Copyright (C) 2001 Michel Arboi");

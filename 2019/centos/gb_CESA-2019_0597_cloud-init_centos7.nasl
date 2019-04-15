@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.883023");
-  script_version("2019-03-27T07:32:46+0000");
+  script_version("2019-04-15T07:08:44+0000");
   script_cve_id("CVE-2019-0816");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-03-27 07:32:46 +0000 (Wed, 27 Mar 2019)");
+  script_tag(name:"cvss_base", value:"1.9");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"2019-04-15 07:08:44 +0000 (Mon, 15 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-03-21 09:50:53 +0100 (Thu, 21 Mar 2019)");
   script_name("CentOS Update for cloud-init CESA-2019:0597 centos7 ");
   script_category(ACT_GATHER_INFO);

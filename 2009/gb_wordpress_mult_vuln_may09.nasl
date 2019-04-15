@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_mult_vuln_may09.nasl 14012 2019-03-06 09:13:44Z cfischer $
 #
 # Wordpress Multiple Vulnerabilities
 #
@@ -29,8 +28,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800704");
-  script_version("$Revision: 14012 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-06 10:13:44 +0100 (Wed, 06 Mar 2019) $");
+  script_version("2019-04-12T12:22:59+0000");
+  script_tag(name:"last_modification", value:"2019-04-12 12:22:59 +0000 (Fri, 12 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-05-11 08:41:11 +0200 (Mon, 11 May 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -68,15 +67,15 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-if(!wordpressPort = get_app_port(cpe:CPE))
+if(!port = get_app_port(cpe:CPE))
   exit(0);
 
-if(!version = get_app_version(cpe:CPE, port:wordpressPort))
+if(!version = get_app_version(cpe:CPE, port:port))
   exit(0);
 
 if(version_in_range(version:version, test_version:"2.6", test_version2:"2.6.3")){
   report = report_fixed_ver(installed_version:version, fixed_version:"2.7.1");
-  security_message(port:wordpressPort);
+  security_message(port:port, data:report);
   exit(0);
 }
 

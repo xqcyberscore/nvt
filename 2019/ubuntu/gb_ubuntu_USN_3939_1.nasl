@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843969");
-  script_version("2019-04-09T02:00:53+0000");
+  script_version("2019-04-15T07:08:44+0000");
   script_cve_id("CVE-2019-3880");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-04-09 02:00:53 +0000 (Tue, 09 Apr 2019)");
+  script_tag(name:"cvss_base", value:"5.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:P");
+  script_tag(name:"last_modification", value:"2019-04-15 07:08:44 +0000 (Mon, 15 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-04-09 02:00:53 +0000 (Tue, 09 Apr 2019)");
   script_name("Ubuntu Update for samba USN-3939-1");
   script_category(ACT_GATHER_INFO);

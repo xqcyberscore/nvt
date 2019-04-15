@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: DDI_Compaq_Mgmt_Proxy.nasl 9445 2018-04-11 12:46:27Z cfischer $
 #
 # Compaq Web Based Management Agent Proxy Vulnerability
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10963");
-  script_version("2019-04-11T14:06:24+0000");
-  script_tag(name:"last_modification", value:"2019-04-11 14:06:24 +0000 (Thu, 11 Apr 2019)");
+  script_version("2019-04-12T12:22:59+0000");
+  script_tag(name:"last_modification", value:"2019-04-12 12:22:59 +0000 (Fri, 12 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -40,7 +39,6 @@ if(description)
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 2301);
   script_mandatory_keys("www/compaq");
-  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_xref(name:"URL", value:"http://www.compaq.com/products/servers/management/SSRT0758.html");
 

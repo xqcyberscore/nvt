@@ -51,7 +51,7 @@ if(description)
   If you do not use this service, then disable it as it may become
   a security threat in the future, if a vulnerability is discovered.");
 
-  script_tag(name:"solution_type", value:"Mitigaiton");
+  script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_banner");
 
   exit(0);

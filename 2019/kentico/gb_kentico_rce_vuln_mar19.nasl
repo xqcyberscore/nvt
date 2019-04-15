@@ -19,8 +19,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113366");
-  script_version("2019-04-03T09:02:33+0000");
-  script_tag(name:"last_modification", value:"2019-04-03 09:02:33 +0000 (Wed, 03 Apr 2019)");
+  script_version("2019-04-12T12:22:59+0000");
+  script_tag(name:"last_modification", value:"2019-04-12 12:22:59 +0000 (Fri, 12 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-04-03 10:44:31 +0000 (Wed, 03 Apr 2019)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -49,7 +49,7 @@ if(description)
   where the Kentico instance is hosted.
 
   This vulnerability only exists if the Staging Service authentication is not set to X.509.");
-  script_tag(name:"impact", value:"Successful exploitation would allow an attacker to execute arbitary code on the target system.");
+  script_tag(name:"impact", value:"Successful exploitation would allow an attacker to execute arbitrary code on the target system.");
   script_tag(name:"affected", value:"Kentico through version 12.0.14.");
   script_tag(name:"solution", value:"Update to version 12.0.15.");
 

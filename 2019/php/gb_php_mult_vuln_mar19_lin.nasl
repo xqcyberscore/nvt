@@ -23,8 +23,8 @@ CPE = "cpe:/a:php:php";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.142131");
-  script_version("$Revision: 14102 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-12 04:29:04 +0100 (Tue, 12 Mar 2019) $");
+  script_version("2019-04-12T12:22:59+0000");
+  script_tag(name:"last_modification", value:"2019-04-12 12:22:59 +0000 (Fri, 12 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-03-12 09:48:02 +0700 (Tue, 12 Mar 2019)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -44,11 +44,11 @@ if (description)
   script_dependencies("gb_php_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("php/installed", "Host/runs_unixoide");
 
-  script_tag(name:"summary", value:"PHP is prone to multiple vulnerabilties.");
+  script_tag(name:"summary", value:"PHP is prone to multiple vulnerabilities.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"PHP is prone to multiple vulnerabilties:
+  script_tag(name:"insight", value:"PHP is prone to multiple vulnerabilities:
 
   - Due to the way rename() across filesystems is implemented, it is possible that file being renamed is briefly
     available with wrong permissions while the rename is ongoing, thus enabling unauthorized users to access the

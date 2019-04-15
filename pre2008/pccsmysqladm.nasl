@@ -1,5 +1,4 @@
 # OpenVAS Vulnerability Test
-# $Id: pccsmysqladm.nasl 9348 2018-04-06 07:01:19Z cfischer $
 # Description: PCCS-Mysql User/Password Exposure
 #
 # Authors:
@@ -25,8 +24,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10783");
-  script_version("2019-04-10T13:42:28+0000");
-  script_tag(name:"last_modification", value:"2019-04-10 13:42:28 +0000 (Wed, 10 Apr 2019)");
+  script_version("2019-04-12T12:22:59+0000");
+  script_tag(name:"last_modification", value:"2019-04-12 12:22:59 +0000 (Fri, 12 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(1557);
   script_tag(name:"cvss_base", value:"7.5");
@@ -64,7 +63,7 @@ cgi = "/pccsmysqladm/incs/dbconnect.inc";
 res = is_cgi_installed_ka(port:port, item:cgi);
 if(res) {
   report = report_vuln_url(port:port, url:cgi);
-  security_message(port:port);
+  security_message(port:port, data:report);
   exit(0);
 }
 

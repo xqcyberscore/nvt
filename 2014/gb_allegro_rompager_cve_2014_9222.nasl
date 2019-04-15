@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_allegro_rompager_cve_2014_9222.nasl 13994 2019-03-05 12:23:37Z cfischer $
 #
 # Allegro RomPager `Misfortune Cookie` Vulnerability
 #
@@ -33,7 +32,7 @@ if (description)
   script_cve_id("CVE-2014-9222");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 13994 $");
+  script_version("2019-04-12T12:22:59+0000");
 
   script_name("Allegro RomPager `Misfortune Cookie` Vulnerability");
 
@@ -48,7 +47,7 @@ if (description)
 
   script_tag(name:"affected", value:"RomPager services with versions before 4.34");
 
-  script_tag(name:"last_modification", value:"$Date: 2019-03-05 13:23:37 +0100 (Tue, 05 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-04-12 12:22:59 +0000 (Fri, 12 Apr 2019)");
   script_tag(name:"creation_date", value:"2014-12-23 10:22:44 +0100 (Tue, 23 Dec 2014)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -81,7 +80,7 @@ cookie = 'C107373883=' + rand;
 
 if( http_vuln_check( port:port, url:url, pattern:rand, extra_check:'was not found on the RomPager', cookie:cookie ) ) {
   report = report_vuln_url( port:port, url:url );
-  security_message( port:port );
+  security_message( port:port, data:report );
   exit( 0 );
 }
 
