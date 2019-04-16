@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852327");
-  script_version("$Revision: 13991 $");
+  script_version("2019-04-16T07:10:04+0000");
   script_cve_id("CVE-2018-5391", "CVE-2019-3459", "CVE-2019-3460", "CVE-2019-7221", "CVE-2019-7222");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-05 11:29:52 +0100 (Tue, 05 Mar 2019) $");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_tag(name:"last_modification", value:"2019-04-16 07:10:04 +0000 (Tue, 16 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-03-02 04:07:53 +0100 (Sat, 02 Mar 2019)");
   script_name("SuSE Update for the openSUSE-SU-2019:0274-1 (the)");
   script_category(ACT_GATHER_INFO);
