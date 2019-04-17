@@ -24,9 +24,12 @@
 #
 # @param text the text to log
 #
+# @return NULL
+#
 function policy_logging(text) {
 
-  local_var verbose, text;
+  local_var text;
+  local_var verbose;
 
   verbose = get_kb_item("Compliance/verbose");
   if(verbose) {
@@ -34,10 +37,22 @@ function policy_logging(text) {
   }
 }
 
+# @brief set kb entry for policy control oid
+#
+# @param oid of the policy control
+#
+# @return NULL
+#
 function policy_add_oid() {
   set_kb_item(name:"PolicyOIDs", value:get_script_oid());
 }
 
+# @brief set kb entry for policy control compliance status
+#
+# @param compliant if result is compliant with the policy control default value
+#
+# @return NULL
+#
 function policy_set_compliance(compliant) {
 
   local_var compliant;
@@ -45,6 +60,12 @@ function policy_set_compliance(compliant) {
   set_kb_item(name:get_script_oid() + "/COMPLIANT", value:compliant);
 }
 
+# @brief set kb entry for policy control result
+#
+# @param result of the policy control
+#
+# @return NULL
+#
 function policy_set_kb(val) {
 
   local_var val;
@@ -53,6 +74,13 @@ function policy_set_kb(val) {
   set_kb_item(name:get_script_oid() + "/RESULT", value:chomp(string(val)));
 }
 
+# @brief set kb entry for policy control result if one result per user (like hku reg queries)
+#
+# @param id of the user
+# @param val result for the user
+#
+# @return NULL
+#
 function policy_set_kb_hcu(id, val) {
 
   local_var id, val;
@@ -61,6 +89,12 @@ function policy_set_kb_hcu(id, val) {
   set_kb_item(name:get_script_oid() + "/RESULT/" + id, value:chomp(string(val)));
 }
 
+# @brief set kb entry for policy control default value (compliance value)
+#
+# @param default of the policy control
+#
+# @return NULL
+#
 function policy_set_dval(dval) {
 
   local_var dval;
@@ -69,6 +103,12 @@ function policy_set_dval(dval) {
   set_kb_item(name:get_script_oid() + "/DEFAULT", value:chomp(string(dval)));
 }
 
+# @brief set kb entry for policy control fixtext
+#
+# @param fixtext of the policy control
+#
+# @return NULL
+#
 function policy_fixtext(fixtext) {
 
   local_var fixtext;
@@ -77,6 +117,12 @@ function policy_fixtext(fixtext) {
   set_kb_item(name:get_script_oid() + "/FIX", value:fixtext);
 }
 
+# @brief set kb entry for policy control title
+#
+# @param title of the policy control
+#
+# @return NULL
+#
 function policy_control_name(title) {
 
   local_var title;
@@ -85,6 +131,30 @@ function policy_control_name(title) {
   set_kb_item(name:get_script_oid() + "/NAME", value:title);
 }
 
+# @brief set kb entry for policy control test type and command
+#
+# @param type what type of test used in Policy Control (RegKey, SSH_Cmd etc.)
+#        cmd what command was used to get the result
+#
+# @return NULL
+#
+function policy_testtype(type, cmd) {
+
+  local_var type, cmd;
+
+  set_kb_item(name:type_key, value:get_script_oid() + "/TEST_TYPE");
+  set_kb_item(name:cmd_key, value:get_script_oid() + "/CMD");
+}
+
+# @brief deprecated function for logging regkey entries
+#
+# @param type of regkey (HKU / HKLM / HKCU)
+# @param key of regkey
+# @param item of regkey
+# @param value result found on host
+#
+# @return NULL
+#
 function policy_logging_registry(type, key, item, value) {
 
   local_var type, key, item, value;
@@ -92,9 +162,77 @@ function policy_logging_registry(type, key, item, value) {
   policy_logging(text:'Registry value ' + type + '\\' + key + '!' + item + ' is set to: ' + value);
 }
 
-function rsop_securitysettingsboolean(select, keyname) {
+# @brief build report for Policy Controls
+#
+# @param result what result found on host
+# @param default what need to be set to be compliant
+# @param compliant compliance status (yes, no, error)
+# @param fixtext how to fix non-compliance
+# @param type of test (RegKey, SSH_Cmd etc.)
+# @param test command to run / regkey etc.
+# @param info additional information like comments
+#
+# @return NULL
+#
+function policy_reporting(result, default, compliant, fixtext, type, test, info) {
 
-  # nb: rsop only delivers results for domain admins
+  local_var result, default, compliant, fixtext, type, test, info;
+  local_var report;
+
+  if(!result) {
+    set_kb_item(name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#policy_reporting#-#result");
+    return;
+  }
+
+  if(!default) {
+    set_kb_item(name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#policy_reporting#-#default");
+    return;
+  }
+
+  if(!compliant) {
+    set_kb_item(name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#policy_reporting#-#compliant");
+    return;
+  }
+
+  if(!fixtext) {
+    set_kb_item(name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#policy_reporting#-#fixtext");
+    return;
+  }
+
+  if(!type) {
+    set_kb_item(name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#policy_reporting#-#type");
+    return;
+  }
+
+  if(!test) {
+    set_kb_item(name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#policy_reporting#-#test");
+    return;
+  }
+
+  test = str_replace(string:test, find:'\n', replace: " ");
+  fixtext = str_replace(string:fixtext, find:'\n', replace: " ");
+
+  report += "Compliant: " + toupper(compliant) + '\n';
+  report += "Result: " + result + '\n';
+  report += "Required: " + default + '\n';
+  report += "Type of test: " + type + '\n';
+  report += "Test: " + test + '\n';
+  report += "Fixtext: " + fixtext + '\n';
+  report += "Comments: " + info;
+
+  policy_logging(text:report);
+}
+
+# @brief query wmi db RSOP_SecuritySettingBoolean for key
+#
+# @param select what to show from db
+# @param keyname which key to search for
+#
+# @note rsop only delivers results for domain admins
+#
+# @return wmi query result
+#
+function rsop_securitysettingsboolean(select, keyname) {
 
   local_var select, keyname;
   local_var infos, handle, query, res, splitRes, returnValue;
@@ -105,8 +243,8 @@ function rsop_securitysettingsboolean(select, keyname) {
 
   handle = wmi_connect(host:infos["host"], username:infos["username_wmi_smb"], password:infos["password"], ns:'root\\rsop\\computer');
   if(!handle) {
-    policy_logging(text:'WMI Connect to host failed.');
-    policy_set_kb(val:'error');
+    policy_logging(text:"WMI Connect to host failed.");
+    policy_set_kb(val:"error");
     exit(0);
   }
 
@@ -122,9 +260,16 @@ function rsop_securitysettingsboolean(select, keyname) {
   return(string(returnValue));
 }
 
-function rsop_securitysettingsnumeric(select,keyname) {
-
-  # nb: rsop only delivers results for domain admins
+# @brief query wmi db RSOP_SecuritySettingNumeric for key
+#
+# @param select what to show from db
+# @param keyname which key to search for
+#
+# @note rsop only delivers results for domain admins
+#
+# @return wmi query result
+#
+function rsop_securitysettingsnumeric(select, keyname) {
 
   local_var select, keyname;
   local_var infos, handle, query, res, splitRes, returnValue;
@@ -135,8 +280,8 @@ function rsop_securitysettingsnumeric(select,keyname) {
 
   handle = wmi_connect(host:infos["host"], username:infos["username_wmi_smb"], password:infos["password"], ns:'root\\rsop\\computer');
   if(!handle) {
-    policy_logging(text:'WMI Connect to host failed.');
-    policy_set_kb(val:'error');
+    policy_logging(text:"WMI Connect to host failed.");
+    policy_set_kb(val:"error");
     exit(0);
   }
 
@@ -152,9 +297,16 @@ function rsop_securitysettingsnumeric(select,keyname) {
   return(string(returnValue));
 }
 
+# @brief query wmi db RSOP_UserPrivilegeRight for specific right
+#
+# @param select what to show from db
+# @param keyname which user right to search for
+#
+# @note rsop only delivers results for domain admins
+#
+# @return accounts as string
+#
 function rsop_userprivilegeright(select, keyname) {
-
-  # nb: rsop only delivers results for domain admins
 
   local_var select, keyname;
   local_var infos, handle, query, res, splitRes, accountList, MaxIndexAccountList, i, returnValue;
@@ -165,8 +317,8 @@ function rsop_userprivilegeright(select, keyname) {
 
   handle = wmi_connect(host:infos["host"], username:infos["username_wmi_smb"], password:infos["password"], ns:'root\\rsop\\computer');
   if(!handle) {
-    policy_logging(text:'WMI Connect to host failed.');
-    policy_set_kb(val:'error');
+    policy_logging(text:"WMI Connect to host failed.");
+    policy_set_kb(val:"error");
     exit(0);
   }
 
@@ -179,16 +331,23 @@ function rsop_userprivilegeright(select, keyname) {
   splitRes = split(res, keep:FALSE);
   accountList = split(splitRes[1], sep:"|", keep:FALSE);
   MaxIndexAccountList = max_index(accountList);
-  for(i=0; i<MaxIndexAccountList-2; i++) {
+  for(i = 0; i < MaxIndexAccountList - 2; i++) {
     returnValue += accountList[i];
-    if(i<MaxIndexAccountList-3) {
-      returnValue += ', ';
+    if( i < MaxIndexAccountList - 3 ) {
+      returnValue += ", ";
     }
   }
 
   return(string(returnValue));
 }
 
+# @brief gets the status of a user account on windows hosts
+#
+# @param select what to return from WMI query
+# @param name of the user account
+#
+# @return the selection from the wmi db
+#
 function win32_useraccount(select, name) {
 
   local_var select, name;
@@ -200,8 +359,8 @@ function win32_useraccount(select, name) {
 
   handle = wmi_connect(host:infos["host"], username:infos["username_wmi_smb"], password:infos["password"]);
   if(!handle) {
-    policy_logging(text:'WMI Connect to host failed.');
-    policy_set_kb(val:'error');
+    policy_logging(text:"WMI Connect to host failed.");
+    policy_set_kb(val:"error");
     exit(0);
   }
 
@@ -222,29 +381,31 @@ function win32_useraccount(select, name) {
 function get_package_version(package) {
 
   local_var package;
+  local_var packages_string, packages_list, pak, packages_split, name, version, line, line_split;
+
   if(!package) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#package_version#-#package" );
     return;
   }
 
-  if(get_kb_item('ssh/login/rpms')) {
-    packages_string = get_kb_item('ssh/login/rpms');
-    packages_list = split(packages_string, sep:';', keep:FALSE);
-    foreach pak (packages_list) {
-      package_split = split(pak, sep:'~', keep:FALSE);
+  if(get_kb_item("ssh/login/rpms")) {
+    packages_string = get_kb_item("ssh/login/rpms");
+    packages_list = split(packages_string, sep:";", keep:FALSE);
+    foreach pak(packages_list) {
+      package_split = split(pak, sep:"~", keep:FALSE);
       name = package_split[0];
       version = package_split[1];
       if(name == package) {
         return version;
       }
     }
-  } else if(get_kb_item('ssh/login/packages')) {
-    packages_string = get_kb_item('ssh/login/packages');
+  } else if(get_kb_item("ssh/login/packages")) {
+    packages_string = get_kb_item("ssh/login/packages");
     packages_list = split(packages_string, keep:FALSE);
-    foreach line (packages_list) {
+    foreach line(packages_list) {
       if(line =~ "^ii") {
         line_split = ereg_replace(string:line, pattern:'\\s+', replace:'|');
-        packages_info = split(line_split, sep:'|', keep:FALSE);
+        packages_info = split(line_split, sep:"|", keep:FALSE);
         name = packages_info[1];
         version = packages_info[2];
         if(name == package) {
@@ -270,8 +431,8 @@ function get_grub_config_file() {
   grub_config_files = make_list('grub.conf', 'grub.cfg', 'menu.lst');
   grub_config_dirs = make_list('/boot/grub/', '/boot/grub2/');
 
-  foreach dir (grub_config_dirs) {
-    foreach file (grub_config_files) {
+  foreach dir(grub_config_dirs) {
+    foreach file(grub_config_files) {
       config_file = find_file(file_name:file, file_path:dir);
       if(config_file)
         return config_file[0];
@@ -282,6 +443,9 @@ function get_grub_config_file() {
 
 # @brief sends a ssh_cmd and filters errors in return values.
 #
+# @deprecated Please use @ref ssh_cmd from ssh_func.inc and add possible
+#             pattern to filter out directly into that function.
+#
 # @param socket the socket for the ssh command
 # @param cmd the bash command
 #
@@ -290,7 +454,8 @@ function get_grub_config_file() {
 #
 function ssh_cmd_without_errors(socket, cmd) {
 
-  local_var socket, cmd, ret;
+  local_var socket, cmd;
+  local_var ret;
 
   ret = ssh_cmd(socket:socket, cmd:cmd, return_errors:FALSE);
 
@@ -306,11 +471,11 @@ function ssh_cmd_without_errors(socket, cmd) {
 # @param file the file to check
 # @param sock socket for the ssh command
 #
-# @return an array with keys permissions, gid and uid
+# @return an array with keys permissions, gid and uid or NULL if none found.
 #
 function linux_file_permissions(file, socket) {
 
-  local_var socket, file;
+  local_var file, socket;
   local_var stat_cmd, stat, return_array, access, gid, uid, permissions;
 
   if(!socket) {
@@ -353,8 +518,7 @@ function linux_file_permissions(file, socket) {
 function linux_service_is_enabled(service, socket) {
 
   local_var service, socket;
-  local_var systemctl_cmd, systemctl, chkconfig_cmd, chkconfig;
-  local_var ls_grep_cmd, ls_grep, enabled;
+  local_var systemctl_cmd, systemctl, chkconfig_cmd, chkconfig, ls_grep_cmd, ls_grep, enabled;
 
   if(!socket) {
     set_kb_item(name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#linux_file_permissions#-#socket");
@@ -398,7 +562,8 @@ function linux_service_is_enabled(service, socket) {
 #
 function check_permission_denied(value, file) {
 
-  local_var value, file, ret;
+  local_var value, file;
+  local_var ret;
 
   if('permission denied' >< tolower(value)) {
     ret = 'No permission to read in file "' + file + '".';
