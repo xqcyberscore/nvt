@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samsung_web_viewer_dvr_default_credentials.nasl 14161 2019-03-13 17:56:04Z cfischer $
 #
 # Samsung Web Viewer DVR Default Credentials
 #
@@ -28,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114047");
-  script_version("$Revision: 14161 $");
+  script_version("2019-04-17T13:05:40+0000");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-13 18:56:04 +0100 (Wed, 13 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-04-17 13:05:40 +0000 (Wed, 17 Apr 2019)");
   script_tag(name:"creation_date", value:"2018-11-12 19:25:24 +0100 (Mon, 12 Nov 2018)");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2018 Greenbone Networks GmbH");
@@ -190,7 +189,6 @@ foreach cred(keys(creds)) {
     data = "lang=en&port=0&close_user_session=0&data1=" + base64(str: username) + "%3D&data2=" + pass + "&data3=" + data3Num + "&data4=" + data4Num + "&remote_addr=" + remote_address;
 
     req = http_post_req(port: port, url: loginUrl, data: data, add_headers: make_array("Accept-Encoding", "gzip, deflate",
-                                                                                       "User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
                                                                                        "Cache-Control", "max-age=0",
                                                                                        "Upgrade-Insecure-Requests", "1",
                                                                                        "Content-Type", "application/x-www-form-urlencoded",

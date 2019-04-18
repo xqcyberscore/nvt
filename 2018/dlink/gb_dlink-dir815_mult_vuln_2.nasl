@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink-dir815_mult_vuln_2.nasl 13559 2019-02-11 04:37:23Z ckuersteiner $
 #
 # D-Link DIR-815 Rev.B Multiple Vulnerabilities
 #
@@ -31,8 +30,8 @@ HW_CPE = "cpe:/h:d-link:dir-815";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112258");
-  script_version("$Revision: 13559 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-11 05:37:23 +0100 (Mon, 11 Feb 2019) $");
+  script_version("2019-04-18T07:49:40+0000");
+  script_tag(name:"last_modification", value:"2019-04-18 07:49:40 +0000 (Thu, 18 Apr 2019)");
   script_tag(name:"creation_date", value:"2018-04-17 10:05:29 +0200 (Tue, 17 Apr 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -63,11 +62,12 @@ firmware version.");
 
   script_tag(name:"affected", value:"D-Link DIR-815 Rev.B up to and including version 2.07.B01");
 
-  script_tag(name:"solution", value:"No known solution is available as of 11th February, 2019.
-  Information regarding this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this
+  vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable
+  respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   exit(0);
 }

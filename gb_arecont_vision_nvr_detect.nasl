@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_arecont_vision_nvr_detect.nasl 12881 2018-12-25 16:53:59Z tpassfeld $
 #
 # Arecont Vision NVR Detection
 #
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114050");
-  script_version("$Revision: 12881 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-25 17:53:59 +0100 (Tue, 25 Dec 2018) $");
+  script_version("2019-04-18T05:55:23+0000");
+  script_tag(name:"last_modification", value:"2019-04-18 05:55:23 +0000 (Thu, 18 Apr 2019)");
   script_tag(name:"creation_date", value:"2018-12-21 15:38:32 +0100 (Fri, 21 Dec 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -64,7 +63,8 @@ include("http_keepalive.inc");
 port = get_http_port(default: 80);
 
 url = "/";
-req = http_get_req(port: port, url: url, add_headers: make_array("User-Agent", "Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0"));
+#nb: Using the default user-agent results in an empty response.
+req = http_get_req(port: port, url: url, user_agent: "Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0");
 res = http_send_recv(port: port, data: req);
 
 if("content='0; url=ErrBrowserNotSupported.htm'>" >< res) {
@@ -77,9 +77,9 @@ if('var var_brand="Arecont Vision";' >< res || 'alt="Arecont Vision logo" src=' 
    model = "unknown";
    install = "/";
 
-   #The goal is a response like "</h1>Your client does not have permission to get URL from this server.</body></html>"
-   req = http_get_req(port: port, url: "/models/all-cmd.js", add_headers: make_array("User-Agent", "Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0",
-                                                                                     "Cookie", "Auto=1; Auth=Basic%20YZ%3D"));
+   # The goal is a response like "</h1>Your client does not have permission to get URL from this server.</body></html>"
+   # nb: For this request the default user-agent works.
+   req = http_get_req(port: port, url: "/models/all-cmd.js", add_headers: make_array("Cookie", "Auto=1; Auth=Basic%20YZ%3D"));
    res = http_send_recv(port: port, data: req);
 
    #WWW-Authenticate: Basic realm="AV800"
@@ -105,6 +105,7 @@ if('var var_brand="Arecont Vision";' >< res || 'alt="Arecont Vision logo" src=' 
                            expr: "^([0-9.]+)",
                            insloc: install,
                            regPort: port,
+                           regService: "www",
                            conclUrl: conclUrl,
                            extra: "Model: " + model + ", Version detection requires successful login.");
 }
