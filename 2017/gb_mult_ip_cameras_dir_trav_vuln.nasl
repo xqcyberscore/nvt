@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mult_ip_cameras_dir_trav_vuln.nasl 13543 2019-02-08 14:43:51Z cfischer $
 #
 # Multiple IP-Cameras Directory Traversal Vulnerability
 #
@@ -28,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106907");
-  script_version("$Revision: 13543 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-08 15:43:51 +0100 (Fri, 08 Feb 2019) $");
+  script_version("2019-04-23T06:31:54+0000");
+  script_tag(name:"last_modification", value:"2019-04-23 06:31:54 +0000 (Tue, 23 Apr 2019)");
   script_tag(name:"creation_date", value:"2017-06-26 14:23:36 +0700 (Mon, 26 Jun 2017)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
 
   script_cve_id("CVE-2017-9833");
 

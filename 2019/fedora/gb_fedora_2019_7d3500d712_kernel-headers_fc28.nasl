@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2019_7d3500d712_kernel-headers_fc28.nasl 14223 2019-03-15 13:49:35Z cfischer $
 #
 # Fedora Update for kernel-headers FEDORA-2019-7d3500d712
 #
@@ -29,11 +28,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875442");
-  script_version("$Revision: 14223 $");
+  script_version("2019-04-23T06:31:54+0000");
   script_cve_id("CVE-2019-7308");
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-15 14:49:35 +0100 (Fri, 15 Mar 2019) $");
+  script_tag(name:"cvss_base", value:"4.7");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:N/A:N");
+  script_tag(name:"last_modification", value:"2019-04-23 06:31:54 +0000 (Tue, 23 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-02-05 04:08:20 +0100 (Tue, 05 Feb 2019)");
   script_name("Fedora Update for kernel-headers FEDORA-2019-7d3500d712");
   script_category(ACT_GATHER_INFO);

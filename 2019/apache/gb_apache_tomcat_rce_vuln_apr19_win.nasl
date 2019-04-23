@@ -23,11 +23,11 @@ CPE = "cpe:/a:apache:tomcat";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.142265");
-  script_version("2019-04-16T07:25:45+0000");
-  script_tag(name:"last_modification", value:"2019-04-16 07:25:45 +0000 (Tue, 16 Apr 2019)");
+  script_version("2019-04-23T06:31:54+0000");
+  script_tag(name:"last_modification", value:"2019-04-23 06:31:54 +0000 (Tue, 23 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-04-16 07:15:39 +0000 (Tue, 16 Apr 2019)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
 
   script_cve_id("CVE-2019-0232");
 

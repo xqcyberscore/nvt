@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_spip_multiple_vuln.nasl 12455 2018-11-21 09:17:27Z cfischer $
 #
 # SPIP Multiple Vulnerabilities
 #
@@ -30,15 +29,17 @@ CPE = "cpe:/a:spip:spip";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809305");
-  script_version("$Revision: 12455 $");
+  script_version("2019-04-17T12:01:26+0000");
   script_cve_id("CVE-2016-7998", "CVE-2016-7999", "CVE-2016-7982", "CVE-2016-7980",
  		"CVE-2016-7981");
   script_bugtraq_id(93451);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-04-17 12:01:26 +0000 (Wed, 17 Apr 2019)");
   script_tag(name:"creation_date", value:"2016-11-08 15:15:46 +0530 (Tue, 08 Nov 2016)");
-  script_tag(name:"qod_type", value:"remote_banner");
+
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
+
   script_name("SPIP Multiple Vulnerabilities");
 
   script_tag(name:"summary", value:"This host is installed with SPIP
@@ -46,10 +47,9 @@ if (description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"Multiple flaws are due to
+  script_tag(name:"insight", value:"SPIP is prone to multiple vulnerabilities:
 
-  - The SPIP template composer/compiler does not correctly handle SPIP
-    'INCLUDE/INCLURE' tags.
+  - The SPIP template composer/compiler does not correctly handle SPIP 'INCLUDE/INCLURE' tags.
 
   - The 'var_url' parameter of the 'valider_xml' file is not correctly sanitized.");
 
@@ -57,9 +57,9 @@ if (description)
   attackers to execute arbitrary script code in a user's browser session within
   the trust relationship between their browser and the server, trick an
   administrator to open the malicious link, retrieve arbitrary files, bypass
-  security restrictions and other attacks are also possible.");
+  security restrictions and possibly have other unknown impact on the target system.");
 
-  script_tag(name:"affected", value:"SPIP version prior to 3.1.3");
+  script_tag(name:"affected", value:"SPIP version prior to 3.1.3.");
 
   script_tag(name:"solution", value:"Upgrade to SPIP version 3.1.3 or later.");
 
@@ -75,27 +75,28 @@ if (description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_spip_detect.nasl");
-  script_mandatory_keys("spip/installed");
+  script_mandatory_keys("spip/detected");
   script_require_ports("Services/www", 80);
-  script_xref(name:"URL", value:"http://www.spip.net");
+
   exit(0);
 }
-
 
 include("version_func.inc");
 include("host_details.inc");
 
-if(!sp_port = get_app_port(cpe:CPE)){
+if (!sp_port = get_app_port(cpe:CPE))
   exit(0);
-}
 
-if(!sp_Ver = get_app_version(cpe:CPE, port:sp_port)){
+if (!infos = get_app_version_and_location(cpe:CPE, port:sp_port, exit_no_version: TRUE))
   exit(0);
-}
 
-if(version_is_less(version:sp_Ver, test_version:"3.1.3"))
-{
-  report = report_fixed_ver(installed_version:sp_Ver, fixed_version:"3.1.3");
+version = infos['version'];
+path = infos['location'];
+
+if (version_is_less(version:version, test_version:"3.1.3")) {
+  report = report_fixed_ver(installed_version:version, fixed_version:"3.1.3", install_path:path);
   security_message(port:sp_port, data:report);
   exit(0);
 }
+
+exit(99);

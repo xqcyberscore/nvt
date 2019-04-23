@@ -18,10 +18,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800383");
-  script_version("2019-04-02T09:22:30+0000");
+  script_version("2019-04-22T07:09:02+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-04-02 09:22:30 +0000 (Tue, 02 Apr 2019)");
+  script_tag(name:"last_modification", value:"2019-04-22 07:09:02 +0000 (Mon, 22 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-04-23 08:16:04 +0200 (Thu, 23 Apr 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Sun/Oracle Java Products Version Detection (Windows)");
@@ -69,7 +69,7 @@ foreach jreKey(adkeylist){
     keys = registry_enum_keys(key:jreKey);
     foreach item(keys){
 
-      if("JRE" >< jreKey && item =~ "^(9|10|11)"){
+      if("JRE" >< jreKey && item =~ "^(9|10|11|12)"){
         pattern = "([0-9.]+)";
         flagjre9plus = TRUE;
       }else{
@@ -105,8 +105,8 @@ foreach jreKey(adkeylist){
             }
           }
 
-          if(version_is_less(version:jrVer, test_version:"1.4.2.38") ||
-             version_in_range(version:jrVer, test_version:"1.5", test_version2:"1.5.0.33") ||
+          if(version_is_less(version:jrVer, test_version:"1.4.2.38")||
+             version_in_range(version:jrVer, test_version:"1.5", test_version2:"1.5.0.33")||
              version_in_range(version:jrVer, test_version:"1.6", test_version2:"1.6.0.18")){
 
             java_name = "Sun Java JRE 32-bit";
@@ -126,8 +126,8 @@ foreach jreKey(adkeylist){
 
           if(!isnull(jreVer[1]) && "x64" >< osArch && "Wow6432Node" >!< jreKey){
             set_kb_item(name:"Sun/Java64/JRE64/Win/Ver", value:jreVer[1]);
-            if(version_is_less(version:jrVer, test_version:"1.4.2.38") ||
-               version_in_range(version:jrVer, test_version:"1.5", test_version2:"1.5.0.33") ||
+            if(version_is_less(version:jrVer, test_version:"1.4.2.38")||
+               version_in_range(version:jrVer, test_version:"1.5", test_version2:"1.5.0.33")||
                version_in_range(version:jrVer, test_version:"1.6", test_version2:"1.6.0.18")){
 
               java_name = "Sun Java JRE 64-bit";
@@ -176,7 +176,7 @@ foreach jdkKey(adkeylist){
     keys = registry_enum_keys(key:jdkKey);
     foreach item(keys){
 
-      if("JDK" >< jdkKey && item =~ "^(9|10|11)"){
+      if("JDK" >< jdkKey && item =~ "^(9|10|11|12)"){
         pattern = "([0-9.]+)";
         flagjdk9plus = TRUE;
       }else{
@@ -213,8 +213,8 @@ foreach jdkKey(adkeylist){
             jdkVer_or = jdkVer1[1] + ":update_" + jdkVer1[2];
           }
 
-          if(version_is_less(version:jdVer, test_version:"1.4.2.38") ||
-             version_in_range(version:jdVer, test_version:"1.5", test_version2:"1.5.0.33") ||
+          if(version_is_less(version:jdVer, test_version:"1.4.2.38")||
+             version_in_range(version:jdVer, test_version:"1.5", test_version2:"1.5.0.33")||
              version_in_range(version:jdVer, test_version:"1.6", test_version2:"1.6.0.18")){
 
             jdk_name= "Sun Java JDK 32-bit";
@@ -235,8 +235,8 @@ foreach jdkKey(adkeylist){
 
             set_kb_item(name:"Sun/Java64/JDK64/Win/Ver", value:jdkVer[1]);
 
-            if(version_is_less(version:jdVer, test_version:"1.4.2.38") ||
-               version_in_range(version:jdVer, test_version:"1.5", test_version2:"1.5.0.33") ||
+            if(version_is_less(version:jdVer, test_version:"1.4.2.38")||
+               version_in_range(version:jdVer, test_version:"1.5", test_version2:"1.5.0.33")||
                version_in_range(version:jdVer, test_version:"1.6", test_version2:"1.6.0.18")){
 
               jdk_name = "Sun Java JDK 64-bit";
