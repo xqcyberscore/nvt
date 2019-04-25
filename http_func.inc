@@ -82,7 +82,14 @@ function http_get_user_agent( vt_string, dont_add_oid ) {
 
   # nb: Only used if the function is called by a VT running via openvas-nasl
   # and if global_settings.nasl wasn't called before that VT.
-  if( OPENVAS_VERSION )
+  if( defined_func( "vendor_version" ) )
+    vendor = vendor_version();
+  else
+    vendor = NULL;
+
+  if( ! isnull( vendor ) && vendor != "" )
+    default = "Mozilla/5.0 [en] (X11, U; " + vendor + ")";
+  else if( OPENVAS_VERSION )
     default = "Mozilla/5.0 [en] (X11, U; " + ua_vt_string + " " + OPENVAS_VERSION + ")";
   else
     default = "Mozilla/5.0 [en] (X11, U; " + ua_vt_string + ")";

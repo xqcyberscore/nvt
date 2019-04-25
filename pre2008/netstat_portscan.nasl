@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: netstat_portscan.nasl 13568 2019-02-11 10:22:27Z cfischer $
 # Description: Netstat 'scanner'
 #
 # Authors:
@@ -26,11 +25,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14272");
-  script_version("$Revision: 13568 $");
+  script_version("2019-04-18T12:07:56+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"executable_version");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-11 11:22:27 +0100 (Mon, 11 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-04-18 12:07:56 +0000 (Thu, 18 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_name("Netstat 'scanner'");
 
@@ -185,11 +184,11 @@ foreach line (lines)
 	    if (id)
 	    {
 	      ids = split(id, sep: ':');
-	      if ("USERID" >< ids[1])
+	      if (ids && "USERID" >< ids[1])
               {
-		identd_n ++;
-		set_kb_item(name: "Ident/tcp/"+port, value: ids[3]);
-		log_message(port: port, data: 'identd reveals that this service is running as user '+ids[3]);
+		identd_n++;
+		set_kb_item(name: "ident/tcp/" + port, value: ids[3]);
+		log_message(port: port, data: 'identd reveals that this service is running as user ' + ids[3]);
 	      }
 	    }
 	  }

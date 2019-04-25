@@ -171,7 +171,7 @@ OS_CPE_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.105330", # gb_apache_activemq_detect.nasl
     "1.3.6.1.4.1.25623.1.0.108044", # dcetest.nasl
     "1.3.6.1.4.1.25623.1.0.108284", # gb_hnap_os_detection.nasl
-    "1.3.6.1.4.1.25623.1.0.14674",  # ident_process_owner.nasl
+    "1.3.6.1.4.1.25623.1.0.108565", # gb_ident_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.108342", # gb_pihole_detect.nasl
     "1.3.6.1.4.1.25623.1.0.105112", # gb_dropbear_ssh_detect.nasl
     "1.3.6.1.4.1.25623.1.0.108451", # gb_rtsp_os_detection.nasl
@@ -278,7 +278,7 @@ OS_TXT_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.105330", # gb_apache_activemq_detect.nasl
     "1.3.6.1.4.1.25623.1.0.108044", # dcetest.nasl
     "1.3.6.1.4.1.25623.1.0.108284", # gb_hnap_os_detection.nasl
-    "1.3.6.1.4.1.25623.1.0.14674",  # ident_process_owner.nasl
+    "1.3.6.1.4.1.25623.1.0.108565", # gb_ident_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.108342", # gb_pihole_detect.nasl
     "1.3.6.1.4.1.25623.1.0.105112", # gb_dropbear_ssh_detect.nasl
     "1.3.6.1.4.1.25623.1.0.108451", # gb_rtsp_os_detection.nasl

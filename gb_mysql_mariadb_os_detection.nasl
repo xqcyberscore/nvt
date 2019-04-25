@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_mariadb_os_detection.nasl 12965 2019-01-08 08:32:10Z cfischer $
 #
 # MySQL/MariaDB Server OS Identification
 #
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108192");
-  script_version("$Revision: 12965 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-08 09:32:10 +0100 (Tue, 08 Jan 2019) $");
+  script_version("2019-04-24T11:19:50+0000");
+  script_tag(name:"last_modification", value:"2019-04-24 11:19:50 +0000 (Wed, 24 Apr 2019)");
   script_tag(name:"creation_date", value:"2017-07-17 09:13:48 +0100 (Mon, 17 Jul 2017)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -62,9 +61,9 @@ port = infos['port'];
 if( ! banner = get_kb_item( "mysql_mariadb/full_banner/" + port ) )
   exit( 0 );
 
-# MariaDB e.g. 5.5.5-10.1.19-MariaDB, 5.5.49-MariaDB or 5.5.5-10.2.21-MariaDB-log
+# MariaDB e.g. 5.5.5-10.1.19-MariaDB, 5.5.49-MariaDB, 5.5.5-10.3.13-MariaDB-2 or 5.5.5-10.2.21-MariaDB-log
 # MySQL e.g. 5.5.54-38.6-log, 5.6.25-log, 5.0.46-enterprise-gpl-log, 5.1.26-rc
-if( egrep( pattern:"^[0-9.]+(-[0-9.]+)?-(rc|MariaDB|MariaDB-log|log|enterprise-gpl-log|enterprise-gpl-pro|enterprise-gpl-pro-log|enterprise-gpl-advanced|enterprise-commercial-advanced-log|enterprise-commercial-advanced)$", string:banner ) )
+if( egrep( pattern:"^[0-9.]+(-[0-9.]+)?-(rc|MariaDB|MariaDB-log|MariaDB-[0-9]+|log|enterprise-gpl-log|enterprise-gpl-pro|enterprise-gpl-pro-log|enterprise-gpl-advanced|enterprise-commercial-advanced-log|enterprise-commercial-advanced)$", string:banner ) )
   exit( 0 );
 
 if( egrep( pattern:"^[0-9.]+$", string:banner ) )
@@ -160,6 +159,13 @@ if( "ubuntu0.04.10" >< banner || "~warty" >< banner || ".warty." >< banner ) {
   exit( 0 );
 } else if( "ubuntu0.18.04" >< banner || "~bionic" >< banner || ".bionic." >< banner ) {
   register_and_report_os( os:"Ubuntu", version:"18.04", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  exit( 0 );
+} else if( "10.1.29-6ubuntu2" >< banner || "~cosmic" >< banner || ".cosmic." >< banner ) {
+  register_and_report_os( os:"Ubuntu", version:"18.10", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  exit( 0 );
+# nb: 19.04 had initially 5.5.5-10.3.13-MariaDB-2, we still add the disco pattern which might show up in the future
+} else if( "~disco" >< banner || ".disco." >< banner ) {
+  register_and_report_os( os:"Ubuntu", version:"19.04", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
   exit( 0 );
 }
 

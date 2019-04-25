@@ -77,6 +77,7 @@ OS_CPE = make_array(
     "UCS2.0", "cpe:/o:univention:univention_corporate_server:2.0",
 
     # Ubuntu
+    "UBUNTU19.04",    "cpe:/o:canonical:ubuntu_linux:19.04",
     "UBUNTU18.10",    "cpe:/o:canonical:ubuntu_linux:18.10",
     "UBUNTU18.04 LTS","cpe:/o:canonical:ubuntu_linux:18.04:-:lts",
     "UBUNTU17.10",    "cpe:/o:canonical:ubuntu_linux:17.10",
@@ -1058,6 +1059,13 @@ function get_container_os(container_id, soc) {
     if(buf)
       set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
     ret = register_detected_docker_os(container_id:container_id, os:"Ubuntu 18.10", oskey:"UBUNTU18.10");
+    return ret;
+  }
+  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=19.04" >< rls) {
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
+    if(buf)
+      set_kb_item(name:"docker/lsc/container/" + container_id + "/packages", value:";" + buf);
+    ret = register_detected_docker_os(container_id:container_id, os:"Ubuntu 19.04", oskey:"UBUNTU19.04");
     return ret;
   }
 

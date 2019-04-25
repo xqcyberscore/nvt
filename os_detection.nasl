@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: os_detection.nasl 14244 2019-03-17 19:55:30Z cfischer $
 #
 # OS Detection Consolidation and Reporting
 #
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105937");
-  script_version("$Revision: 14244 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-17 20:55:30 +0100 (Sun, 17 Mar 2019) $");
+  script_version("2019-04-18T11:10:26+0000");
+  script_tag(name:"last_modification", value:"2019-04-18 11:10:26 +0000 (Thu, 18 Apr 2019)");
   script_tag(name:"creation_date", value:"2016-02-19 11:19:54 +0100 (Fri, 19 Feb 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -90,7 +89,7 @@ if(description)
                       "gb_sip_os_detection.nasl", "gb_check_mk_agent_detect.nasl",
                       "ms_rdp_detect.nasl", "gb_apache_activemq_detect.nasl",
                       "dcetest.nasl", "gb_hnap_os_detection.nasl",
-                      "ident_process_owner.nasl", "gb_pihole_detect.nasl",
+                      "gb_ident_os_detection.nasl", "gb_pihole_detect.nasl",
                       "gb_dropbear_ssh_detect.nasl", "gb_rtsp_os_detection.nasl",
                       "gb_nntp_os_detection.nasl", "gb_android_adb_detect.nasl",
                       "netbios_name_get.nasl",

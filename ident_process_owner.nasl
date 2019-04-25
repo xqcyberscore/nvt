@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ident_process_owner.nasl 11399 2018-09-15 07:45:12Z cfischer $
 #
 # Identd scan
 #
@@ -8,7 +7,7 @@
 # Michel Arboi <arboi@alussinan.org>
 #
 # Copyright:
-# Copyright (C) 2004 Michel Arboi
+# Copyright (C) 2005 Michel Arboi
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2,
@@ -27,24 +26,26 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14674");
-  script_version("$Revision: 11399 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 09:45:12 +0200 (Sat, 15 Sep 2018) $");
+  script_version("2019-04-24T08:54:04+0000");
+  script_tag(name:"last_modification", value:"2019-04-24 08:54:04 +0000 (Wed, 24 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_name("Identd scan");
+  script_name("Identification Protocol (ident) Service Detection");
   script_category(ACT_GATHER_INFO);
-  script_copyright("This script is Copyright (C) 2004 Michel Arboi");
+  script_copyright("This script is Copyright (C) 2005 Michel Arboi");
   script_family("Service detection");
   script_dependencies("find_service1.nasl", "slident.nasl", "secpod_open_tcp_ports.nasl");
   script_require_ports("Services/auth", 113);
   script_mandatory_keys("TCP/PORTS");
-  #  script_exclude_keys("Host/ident_scanned");
 
-  script_tag(name:"summary", value:"This plugin uses identd (RFC 1413) to determine which user is
-  running each service");
+  script_xref(name:"URL", value:"https://tools.ietf.org/html/rfc1413");
 
-  script_tag(name:"qod_type", value:"remote_active");
+  script_tag(name:"summary", value:"This plugin tries to detect services supporting the
+  Identification Protocol (ident) and determines which user is running each service exposed
+  by the remote host.");
+
+  script_tag(name:"qod_type", value:"remote_banner");
 
   exit(0);
 }
@@ -52,30 +53,21 @@ if(description)
 include("misc_func.inc");
 include("host_details.inc");
 
-SCRIPT_DESC = "Identd scan";
-banner_type = "Identd scan OS report";
-
-#if (get_kb_item("Host/ident_scanned")) exit(0);
-
 ports = get_all_tcp_ports_list();
-if( isnull( ports ) ) exit( 0 );
+if( ! ports )
+  exit( 0 );
 
-# Should we only use the first found identd?
-list = get_kb_list( "Services/auth" );
-if( ! isnull( list ) ) {
-  list = make_list( 113, list );
-} else {
-  list = make_list( 113 );
-}
-
+list = get_ports_for_service( default_list:make_list( 113 ), proto:"auth" );
 foreach iport( list ) {
   if( get_port_state( iport ) && ! get_kb_item( "fake_identd/" + iport ) ) {
     isoc = open_sock_tcp( iport );
-    if( isoc ) break;
+    if( isoc )
+      break;
   }
 }
 
-if( ! isoc ) exit( 0 );
+if( ! isoc )
+  exit( 0 );
 
 identd_n = 0;
 os_reported = FALSE;
@@ -87,7 +79,7 @@ for( i = 1; i <= 6 && ! isnull( ports ); i++ ) {
   j = 0;
 
   foreach port( ports ) {
-    if( get_port_state( port ) && ! get_kb_item( "Ident/tcp" + port ) ) {
+    if( get_port_state( port ) && ! get_kb_item( "ident/tcp" + port ) ) {
       soc = open_sock_tcp( port );
       if( soc ) {
         req = strcat( port, ',', get_source_port( soc ), '\r\n' );
@@ -102,40 +94,35 @@ for( i = 1; i <= 6 && ! isnull( ports ); i++ ) {
           send( socket:isoc, data:req );
         }
         res = recv_line( socket:isoc, length:1024 );
-        if( res ) {
-          _res = split( chomp( res ), sep:":" );
-          os = chomp( _res[2] );
-          id = chomp( _res[3] );
-          # e.g.
-          # 53,35089:USERID:UNIX:pdns
-          # 113 , 60954 : USERID : 20 : oidentd
-          # see also https://tools.ietf.org/html/rfc1413
-          if( "USERID" >< _res[1] && strlen( id ) < 30 ) {
-            identd_n++;
-            set_kb_item( name:"Ident/tcp/" + port, value:id );
-            report  = "identd reveals that this service is running as user '" + id + "'.";
-            report += ' Response:\n\n' + res;
-            log_message( port:port, data:report );
+        res = chomp( res );
+        if( res && "USERID" >< res ) {
+          _res = split( res , sep:":", keep:FALSE );
+          if( max_index( _res ) > 2 ) {
 
-            # nb: try go gather the Host OS. See https://www.iana.org/assignments/operating-system-names/operating-system-names.xhtml#operating-system-names-1 for identifiers
+            os = chomp( _res[2] );
+            os = ereg_replace( string:os, pattern:"^(\s+)", replace:"" );
+            id = chomp( _res[3] );
+            id = ereg_replace( string:id, pattern:"^(\s+)", replace:"" );
+            # e.g.
+            # 53,35089:USERID:UNIX:pdns
+            # 113 , 60954 : USERID : 20 : oidentd
+            # 113,60662 : USERID : WIN32 :<spaces>
+            # see also https://tools.ietf.org/html/rfc1413
+            if( "USERID" >< _res[1] && strlen( id ) && strlen( id ) < 30 ) {
+              identd_n++;
+              set_kb_item( name:"ident/tcp/" + port, value:id );
+              report  = "identd reveals that this service is running as user '" + id + "'.";
+              report += ' Response:\n\n' + res;
+              log_message( port:port, data:report );
+            }
+
             # nb: Some ident services are just reporting a number
             if( os && ! egrep( string:os, pattern:"^[0-9]+$" ) && ! os_reported ) {
-              os = tolower( os );
-              if( "windows" >< os || "win32" >< os ) {
-                register_and_report_os( os:"Microsoft Windows", cpe:"cpe:/o:microsoft:windows", banner_type:banner_type, banner:res, port:iport, desc:SCRIPT_DESC, runs_key:"windows" );
-                os_reported = TRUE;
-              } else if( "linux" >< os || "unix" >< os ) {
-                register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, banner:res, port:iport, desc:SCRIPT_DESC, runs_key:"unixoide" );
-                os_reported = TRUE;
-              } else if( "freebsd" >< os ) {
-                register_and_report_os( os:"FreeBSD", cpe:"cpe:/o:freebsd:freebsd", banner_type:banner_type, banner:res, port:iport, desc:SCRIPT_DESC, runs_key:"unixoide" );
-                os_reported = TRUE;
-              } else {
-                if( "unknown" >!< os && "other" >!< os ) {
-                  register_unknown_os_banner( banner:res, banner_type_name:banner_type, banner_type_short:"identd_os_banner", port:iport );
-                  os_reported = TRUE;
-                }
-              }
+              set_kb_item( name:"ident/os_banner/available", value:TRUE );
+              os_reported = TRUE;
+              # nb: Using replace_kb_item here to avoid having multiple OS banners for different services saved within the kb if e.g. the process owner or source port was changed.
+              replace_kb_item( name:"ident/" + iport + "/os_banner/full", value:res );
+              replace_kb_item( name:"ident/" + iport + "/os_banner/os_only", value:os );
             }
           } else {
             bad[j++] = port;
@@ -149,13 +136,21 @@ for( i = 1; i <= 6 && ! isnull( ports ); i++ ) {
   }
 
   # Exit if we are running in circles
-  if( prev_ident_n == identd_n ) break;
+  if( prev_ident_n == identd_n )
+    break;
 
   ports = NULL;
-  foreach j( bad ) ports[j] = j;
+  foreach j( bad )
+    ports[j] = j;
   bad = NULL;
 }
 
 close( isoc );
 set_kb_item( name:"Host/ident_scanned", value:TRUE );
+
+if( identd_n > 0 ) {
+  log_message( port:iport, data:"A service supporting the Identification Protocol (ident) seems to be running on this port." );
+  register_service( port:iport, proto:"auth", message:"A service supporting the Identification Protocol (ident) seems to be running on this port." );
+}
+
 exit( 0 );

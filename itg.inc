@@ -133,7 +133,7 @@ function itg_report(title, status, details) {
   report += '\nStatus: ' + toupper(status);
   report += '\nTag: ' + tag;
   report += '\n________________\n';
-  report += '\nDetails:\n\n' + details;
+  report += '\nDetails:' + details;
 
   log_message(port:0, proto:'IT-Grundschutz/Requirement', data:report);
 }
@@ -171,4 +171,41 @@ function itg_start_requirement(level) {
     return TRUE;
   }
   return FALSE;
+}
+
+# @brief creates the report for each Policy Control for the ITG Anforderung
+#
+# @param oid_list list of all Policy Controls included
+#
+# @return array with keys itg_detail_report, which is the detailed report for each Policy Control.
+#         desc is the description as set for summary vt, compliant is the compliance status.
+#
+function itg_get_policy_control_result(oid_list){
+  local_var oid_list, oid, result, title, default, compliant, status, itg_detail_report, desc, ret, compliance_status;
+
+  compliance_status = TRUE;
+
+  foreach oid (oid_list){
+    result = get_kb_item(oid + "/RESULT");
+    title = get_kb_item(oid + "/NAME");
+    default = get_kb_item(oid + "/DEFAULT");
+    compliant = get_kb_item(oid + "/COMPLIANT");
+
+    if(tolower(compliant) != "yes"){
+      compliance_status = FALSE;
+      status = "Nicht erfuellt";
+    }else{
+      status = "Erfuellt";
+    }
+
+    itg_detail_report += '\n\nTest: ' + '\t\t' + title + " (OID: " + oid + ')\n';
+    itg_detail_report += "Ergebnis: " + '\t' + result + '\n';
+    itg_detail_report += "Vorgabe: " + '\t' + default + '\n';
+    itg_detail_report += "Umgesetzt: " + '\t' + toupper(compliant);
+
+    desc += '\n' + title + ": " + status;
+  }
+
+  ret = make_array("itg_detail_report", itg_detail_report, "desc", desc, "compliant", compliance_status);
+  return(ret);
 }

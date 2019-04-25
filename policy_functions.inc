@@ -142,8 +142,8 @@ function policy_testtype(type, cmd) {
 
   local_var type, cmd;
 
-  set_kb_item(name:type_key, value:get_script_oid() + "/TEST_TYPE");
-  set_kb_item(name:cmd_key, value:get_script_oid() + "/CMD");
+  set_kb_item(name:get_script_oid() + "/TEST_TYPE", value:type);
+  set_kb_item(name:get_script_oid() + "/CMD", value:cmd);
 }
 
 # @brief deprecated function for logging regkey entries
@@ -570,4 +570,37 @@ function check_permission_denied(value, file) {
     return(ret);
   }
   return;
+}
+
+# @brief Tests if key SMB/WindowsVersion is at least a given Windows Version.
+#
+# @param min_ver minimal Windows version (as string)
+#
+# @return TRUE if SMB/WindowsVersion is set and meets at least the given version, FALSE if not
+#
+function policy_verify_win_ver(min_ver){
+  local_var min_ver, cur_ver;
+
+  if(min_ver && min_ver !~ "^[0-9.]+$") {
+    set_kb_item(name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#policy_verify_win_ver: wrong syntax in 'min_ver', passed: " + min_ver + ", expected e.g. 6{.2}" );
+    return NULL; # To differ between "FALSE" (its not a windows) and "NULL" (we don't know because syntax is wrong)
+  }
+
+  cur_ver = get_kb_item("SMB/WindowsVersion");
+
+  if(!cur_ver)
+    return FALSE;
+
+  if(cur_ver && cur_ver !~ "^[0-9.]+$") {
+    set_kb_item(name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#policy_verify_win_ver: wrong syntax in 'cur_ver', extracted: " + cur_ver + ", expected e.g. 6{.2}" );
+    return NULL; # To differ between "FALSE" (its not a windows) and "NULL" (we don't know because syntax is wrong)
+  }
+
+  if(!min_ver && cur_ver)
+    return TRUE;
+
+  if(version_is_greater_equal(version:cur_ver, test_version:min_ver))
+    return TRUE;
+
+  return FALSE;
 }

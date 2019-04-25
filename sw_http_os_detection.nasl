@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_http_os_detection.nasl 14074 2019-03-10 11:36:56Z cfischer $
 #
 # HTTP OS Identification
 #
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111067");
-  script_version("2019-04-04T14:50:45+0000");
-  script_tag(name:"last_modification", value:"2019-04-04 14:50:45 +0000 (Thu, 04 Apr 2019)");
+  script_version("2019-04-24T11:06:32+0000");
+  script_tag(name:"last_modification", value:"2019-04-24 11:06:32 +0000 (Wed, 24 Apr 2019)");
   script_tag(name:"creation_date", value:"2015-12-10 16:00:00 +0100 (Thu, 10 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -265,6 +264,8 @@ function check_http_banner( port, banner ) {
         register_and_report_os( os:"Ubuntu", version:"18.04", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       } else if( "Ubuntu/cosmic" >< banner ) {
         register_and_report_os( os:"Ubuntu", version:"18.10", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      } else if( "Ubuntu/disco" >< banner ) {
+        register_and_report_os( os:"Ubuntu", version:"19.04", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       } else {
         register_and_report_os( os:"Ubuntu", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       }
@@ -711,7 +712,10 @@ function check_http_banner( port, banner ) {
       #
       # nb: Keep the PHP/ banner in sync with the one of check_php_banner()
       if( "(Ubuntu)" >< banner || ( "PHP/" >< banner && "ubuntu" >< banner ) ) {
-        if( "Apache/2.4.34 (Ubuntu)" >< banner || "PHP/7.2.10-0ubuntu1" >< banner || "nginx/1.15.5 (Ubuntu)" >< banner ) {
+        # Server: Apache/2.4.38 (Ubuntu) PHP/7.2.17-0ubuntu0.19.04.1
+        if( "Apache/2.4.38 (Ubuntu)" >< banner || "ubuntu0.19.04" >< banner || "nginx/1.15.9 (Ubuntu)" >< banner ) {
+          register_and_report_os( os:"Ubuntu", version:"19.04", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        } else if( "Apache/2.4.34 (Ubuntu)" >< banner || "PHP/7.2.10-0ubuntu1" >< banner || "nginx/1.15.5 (Ubuntu)" >< banner ) {
           register_and_report_os( os:"Ubuntu", version:"18.10", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
         } else if( "Apache/2.4.29 (Ubuntu)" >< banner || "PHP/7.2.3-1ubuntu1" >< banner || "nginx/1.14.0 (Ubuntu)" >< banner ) {
           register_and_report_os( os:"Ubuntu", version:"18.04", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
@@ -1090,6 +1094,9 @@ function check_php_banner( port, host ) {
     } else if( "~cosmic" >< phpBanner ) {
       register_and_report_os( os:"Ubuntu", version:"18.10", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:phpBanner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       return;
+    } else if( "~disco" >< phpBanner ) {
+      register_and_report_os( os:"Ubuntu", version:"19.04", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:phpBanner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      return;
     }
 
     # X-Powered-By: PHP/7.2.3-1ubuntu1
@@ -1101,7 +1108,10 @@ function check_php_banner( port, host ) {
     #
     # nb: Keep in sync with the PHP banner in check_http_banner()
     if( "ubuntu" >< phpBanner ) {
-      if( "PHP/7.2.10-0ubuntu1" >< phpBanner ) {
+      # X-Powered-By: PHP/7.2.17-0ubuntu0.19.04.1
+      if( "ubuntu0.19.04" >< phpBanner ) {
+        register_and_report_os( os:"Ubuntu", version:"19.04", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:phpBanner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      } else if( "PHP/7.2.10-0ubuntu1" >< phpBanner ) {
         register_and_report_os( os:"Ubuntu", version:"18.10", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:phpBanner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       } else if( "PHP/7.2.3-1ubuntu1" >< phpBanner ) {
         register_and_report_os( os:"Ubuntu", version:"18.04", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:phpBanner, desc:SCRIPT_DESC, runs_key:"unixoide" );

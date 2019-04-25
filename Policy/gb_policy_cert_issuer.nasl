@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_policy_cert_issuer.nasl 11659 2018-09-27 15:16:14Z cfischer $
 #
 # SSL/TLS: Cert Issuer Policy Check
 #
@@ -27,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140038");
-  script_version("$Revision: 11659 $");
+  script_version("2019-04-18T08:49:33+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 17:16:14 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"2019-04-18 08:49:33 +0000 (Thu, 18 Apr 2019)");
   script_tag(name:"creation_date", value:"2016-11-01 09:34:04 +0100 (Tue, 01 Nov 2016)");
   script_name("SSL/TLS: Cert Issuer Policy Check");
   script_category(ACT_GATHER_INFO);
@@ -55,21 +54,26 @@ include("ssl_funcs.inc");
 include("misc_func.inc");
 
 pf = script_get_preference("Perform check:");
-if( pf != "yes" ) exit( 0 );
+if( pf != "yes" )
+  exit( 0 );
 
 set_kb_item( name:"policy_cert_issuer/run_test", value:TRUE );
 
 check_issuer = script_get_preference("Certificate Issuer");
-if( ! check_issuer ) exit( 0 );
+if( ! check_issuer )
+  exit( 0 );
 
 check_issuer = ereg_replace( pattern:'^\\s*', replace:"", string:check_issuer );
 check_issuer = ereg_replace( pattern:'\\s*$', replace:"", string:check_issuer );
 check_issuer = ereg_replace( pattern:'\r', replace:"", string:check_issuer );
 check_issuer = ereg_replace( pattern:'\n', replace:"", string:check_issuer );
 
-chomp( check_issuer );
+check_issuer = chomp( check_issuer );
+if( ! check_issuer )
+  exit( 0 );
 
-if( ! port = get_ssl_port() ) exit( 0 );
+if( ! port = get_ssl_port() )
+  exit( 0 );
 
 rpt = script_get_preference("Report passed tests:");
 if( rpt == 'yes' )
@@ -78,13 +82,16 @@ if( rpt == 'yes' )
 set_kb_item( name:"policy_cert_issuer/check_issuer", value:check_issuer );
 
 server_cert = get_kb_item( "cert_chain/" + port + '/server_cert' );
-if( ! server_cert ) exit( 0 );
+if( ! server_cert )
+  exit( 0 );
 
 server_cert = base64_decode( str:server_cert );
 
-if( ! certobj = cert_open( server_cert ) ) exit( 0 );
+if( ! certobj = cert_open( server_cert ) )
+  exit( 0 );
 
-if( ! issuer = cert_query( certobj, "issuer" ) ) exit( 0 );
+if( ! issuer = cert_query( certobj, "issuer" ) )
+  exit( 0 );
 
 set_kb_item( name:"policy_cert_issuer/" + port + "/issuer", value:issuer );
 

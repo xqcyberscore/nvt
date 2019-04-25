@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sonos_info_discl_vuln.nasl 13450 2019-02-05 03:52:29Z ckuersteiner $
 #
 # Sonos Speaker Information Disclosure Vulnerability
 #
@@ -30,15 +29,15 @@ CPE_PREFIX = 'cpe:/a:sonos';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141020");
-  script_version("$Revision: 13450 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-05 04:52:29 +0100 (Tue, 05 Feb 2019) $");
+  script_version("2019-04-24T06:59:00+0000");
+  script_tag(name:"last_modification", value:"2019-04-24 06:59:00 +0000 (Wed, 24 Apr 2019)");
   script_tag(name:"creation_date", value:"2018-04-24 10:15:48 +0700 (Tue, 24 Apr 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_tag(name:"qod_type", value:"remote_vul");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_name("Sonos Speaker Information Disclosure Vulnerability");
 
@@ -57,8 +56,9 @@ if(description)
   to gather information about the device settings and possible other information. This may lead to further
   attacks.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 05th February, 2019.
-  Information regarding this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
   script_xref(name:"URL", value:"https://conference.hitb.org/hitbsecconf2018ams/materials/D1%20COMMSEC%20-%20Stephen%20Hilt%20-%20Hacking%20IoT%20Speakers.pdf");
 

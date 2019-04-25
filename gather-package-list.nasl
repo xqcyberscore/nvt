@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gather-package-list.nasl 14252 2019-03-18 09:01:25Z cfischer $
 #
 # Determine OS and list of installed packages via SSH login
 #
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.50282");
-  script_version("$Revision: 14252 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 10:01:25 +0100 (Mon, 18 Mar 2019) $");
+  script_version("2019-04-24T11:06:32+0000");
+  script_tag(name:"last_modification", value:"2019-04-24 11:06:32 +0000 (Wed, 24 Apr 2019)");
   script_tag(name:"creation_date", value:"2008-01-17 22:05:49 +0100 (Thu, 17 Jan 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -140,6 +139,7 @@ OS_CPE = make_array(
     "SLED10.0SP0", "cpe:/o:suse:linux_enterprise_desktop:10:SP0",
 
     # Ubuntu
+    "UBUNTU19.04","cpe:/o:canonical:ubuntu_linux:19.04",
     "UBUNTU18.10","cpe:/o:canonical:ubuntu_linux:18.10",
     "UBUNTU18.04 LTS","cpe:/o:canonical:ubuntu_linux:18.04:-:lts",
     "UBUNTU17.10",    "cpe:/o:canonical:ubuntu_linux:17.10",
@@ -2287,6 +2287,14 @@ if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=18.10" >< rls ) {
   if( ! isnull( buf ) ) register_packages( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running Ubuntu 18.10" );
   register_detected_os( os:"Ubuntu 18.10", oskey:"UBUNTU18.10" );
+  exit( 0 );
+}
+if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=19.04" >< rls ) {
+  set_kb_item( name:"ssh/login/ubuntu_linux", value:TRUE );
+  buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
+  if( ! isnull( buf ) ) register_packages( buf:buf );
+  log_message( port:port, data:"We are able to login and detect that you are running Ubuntu 19.04" );
+  register_detected_os( os:"Ubuntu 19.04", oskey:"UBUNTU19.04" );
   exit( 0 );
 }
 

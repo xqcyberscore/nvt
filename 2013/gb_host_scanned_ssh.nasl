@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_host_scanned_ssh.nasl 12724 2018-12-09 16:45:47Z cfischer $
 #
 # Leave information on scanned hosts
 #
@@ -28,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103625");
-  script_version("$Revision: 12724 $");
+  script_version("2019-04-18T08:49:33+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-09 17:45:47 +0100 (Sun, 09 Dec 2018) $");
+  script_tag(name:"last_modification", value:"2019-04-18 08:49:33 +0000 (Thu, 18 Apr 2019)");
   script_tag(name:"creation_date", value:"2012-12-14 10:37:58 +0100 (Fri, 14 Dec 2012)");
   script_name("Leave information on scanned hosts");
   script_category(ACT_END);
@@ -88,7 +87,8 @@ if(description)
 include("ssh_func.inc");
 
 enabled = script_get_preference("Enable");
-if("yes" >!< enabled)exit(0);
+if("yes" >!< enabled)
+  exit(0);
 
 if(get_kb_item("ssh/no_linux_shell")){
   log_message(port:0, data:"Target system does not offer a standard shell. Can not continue.");
@@ -96,7 +96,8 @@ if(get_kb_item("ssh/no_linux_shell")){
 }
 
 soc = ssh_login_or_reuse_connection();
-if(!soc)exit(0);
+if(!soc)
+  exit(0);
 
 file_security_token = "b3BlbnZhcy1zY2FubmVyLXRydXN0Cg";
 
@@ -122,11 +123,8 @@ function check_file(file) { # check given file for disallowed sign
   disallowed = make_list("..", "/", disallowed);
 
   foreach ua (disallowed) {
-
     if(ua >< file) return FALSE;
-
   }
-
   return TRUE;
 }
 
@@ -135,11 +133,8 @@ function check_message(message) {
   disallowed = get_disallowed_signs();
 
   foreach ua (disallowed) {
-
     if(ua >< message) return FALSE;
-
   }
-
   return TRUE;
 }
 
@@ -147,7 +142,8 @@ function fancy_date() {
   local_var datestr;
 
   datestr =  _FCT_ANON_ARGS[0];
-  if (int (datestr ) < 10) return string ("0", datestr);
+  if (int (datestr ) < 10)
+    return string ("0", datestr);
 
   return datestr;
 }
@@ -178,13 +174,11 @@ function replace_placeholders(message) {
 
     if(start) {
       scan_start = make_date_str(date:start);
-    }
-    else {
+    } else {
       scan_start = 'Scan start unknown (ping_host.nasl not launched?)';
     }
 
     message = str_replace(string:message, find:"::SCAN_START::",replace:scan_start);
-
   }
 
   if("::SCAN_STOP::" >< message) {
@@ -193,8 +187,7 @@ function replace_placeholders(message) {
 
     if(stop) {
       scan_stop = make_date_str(date:stop);
-    }
-    else { # if there is no stop time in kb, create it.
+    } else { # if there is no stop time in kb, create it.
       scan_stop = make_date_str(date:unixtime());
     }
 
@@ -272,8 +265,7 @@ if("yes" >< syslog) {
 
   if(send_message_int > 0) {
     log_message(port:0, data:"Sending message to syslog failed. Error: " + chomp(send_message));
-  }
-  else {
+  } else {
     log_message(port:0, data:"Message '" + message + "' successfully send to syslog.");
   }
 } ## end syslog
@@ -287,7 +279,7 @@ if("yes" >< filelog) {
   path = script_get_preference("File name /tmp/");
   append = script_get_preference("Append to File");
 
-  chomp(path);
+  path = chomp(path);
 
   if(!check_file(file:path)) {
     log_message(port:0, data:"Forbidden sign in filename '" + path  +
@@ -357,8 +349,7 @@ if("yes" >< filelog) {
     log_message(port:0, data:"Sending message to '" + path + "' failed.");
     ssh_close_connection();
     exit(1);
-  }
-  else {
+  } else {
     log_message(port:0, data:"Message '" + message +
       "' successfully send to '" + path  + "'.");
     ssh_close_connection();

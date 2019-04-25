@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: slident.nasl 10902 2018-08-10 14:20:55Z cfischer $
 #
 # Detect slident and or fake identd
 #
@@ -27,89 +26,94 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.18373");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 10902 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:20:55 +0200 (Fri, 10 Aug 2018) $");
+  script_version("2019-04-24T08:59:56+0000");
+  script_tag(name:"last_modification", value:"2019-04-24 08:59:56 +0000 (Wed, 24 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
-  script_name("Detect slident and or fake identd");
-  script_family("General");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_name("Detect slident and/or fake identd");
+  script_family("Service detection");
   script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("This script is Copyright (C) 2005 Michel Arboi");
-  script_require_ports("Services/auth", 113);
   script_dependencies("find_service1.nasl", "secpod_open_tcp_ports.nasl");
+  script_require_ports("Services/auth", 113);
   script_mandatory_keys("TCP/PORTS");
 
   script_tag(name:"summary", value:"The remote ident server returns random token instead of
   leaking real user IDs. This is a good thing.");
 
+  script_tag(name:"qod_type", value:"remote_banner");
+
   exit(0);
 }
 
-include('global_settings.inc');
-include('misc_func.inc');
+include("misc_func.inc");
+include("host_details.inc");
 
-iport = get_kb_item( "Services/auth" );
-if( ! iport ) iport = 113;
-if( ! get_port_state( iport ) ) exit(0);
-
+iport = get_port_for_service(default:113, proto:"auth");
 port = get_host_open_tcp_port();
-if( ! port ) port = iport;
-
-debug_print(level: 2, 'port=', port, ', iport=', iport);
+if(!port || port == 139 || port == 445)
+  port = iport;
 
 j = 0;
-for (i = 0; i < 3; i ++)	# Try more than twice, just in case
-{
- soc = open_sock_tcp(port);
- if (soc)
- {
+os_reported = FALSE;
+
+for(i = 0; i < 3; i++) { # Try more than twice, just in case
+  soc = open_sock_tcp(port);
+  if(!soc)
+    continue;
+
   req = strcat(port, ',', get_source_port(soc), '\r\n');
   isoc = open_sock_tcp(iport);
-  if (isoc)
-  {
-   send(socket: isoc, data: req);
-   id = recv_line(socket: isoc, length: 1024);
-   if (id)
-   {
-    ids = split(id, sep: ':');
-    if ("USERID" >< ids[1])
-    {
-     got_id[j ++] = ids[3];
-     debug_print('ID=', ids[3], '\n');
-    }
-   }
-   close(isoc);
+  if(!isoc) {
+    close(soc);
+    continue;
   }
-  close(soc);
- }
+
+  send(socket:isoc, data:req);
+  res = recv_line(socket:isoc, length:1024);
+  res = chomp(res);
+  if(res && "USERID" >< res) {
+    ids = split(res, sep:":", keep:FALSE);
+    if(max_index(ids) > 2) {
+
+      os = chomp(ids[2]);
+      os = ereg_replace(string:os, pattern:"^(\s+)", replace:"");
+      id = chomp(ids[3]);
+      id = ereg_replace(string:id, pattern:"^(\s+)", replace:"");
+
+      if(strlen(id))
+        got_id[j++] = id;
+
+      # nb: Some ident services are just reporting a number
+      if(os && !egrep(string:os, pattern:"^[0-9]+$" ) && !os_reported) {
+        set_kb_item(name:"ident/os_banner/available", value:TRUE);
+        os_reported = TRUE;
+        # nb: Using replace_kb_item here to avoid having multiple OS banners for different services saved within the kb if e.g. the process owner or source port was changed.
+        replace_kb_item(name:"ident/" + iport + "/os_banner/full", value:res);
+        replace_kb_item(name:"ident/" + iport + "/os_banner/os_only", value:os);
+      }
+    }
+  }
 }
 
 slident = 0;
-if (j == 1)
-{
- # This is slidentd
- if (got_id[0] =~ '^[a-f0-9]{32}$')
- {
-  debug_print('slident detected on port ', iport, '\n');
-  slident = 1;
- }
-}
-else
- for (i = 1; i < j; i ++)
-  if (got_id[i-1] != got_id[i])
-  {
-   slident = 1;	# Maybe not slident, but a fake ident anyway
-   debug_print('Ident server on port ', iport, ' returns random tokens: ',
-	chomp(got_id[i-1]), ' != ', chomp(got_id[i]), '\n');
-   break;
+if(j == 1) {
+  # This is slidentd
+  if(got_id[0] =~ '^[a-f0-9]{32}$') {
+    slident = 1;
   }
-
-if (slident)
-{
-  if ( report_verbosity > 1 ) log_message(port: iport);
-  log_print('Ident server on port ', iport, ' is not usable\n');
-  set_kb_item(name: 'fake_identd/'+iport, value: TRUE);
+} else {
+  for(i = 1; i < j; i++) {
+    if(got_id[i-1] != got_id[i]) { # nb: Returns random tokens
+      slident = 1; # Maybe not slident, but a fake ident anyway
+      break;
+    }
+  }
 }
 
+if(slident) {
+  log_message(port:iport, data:"A service supporting the Identification Protocol (ident) seems to be running on this port.");
+  register_service(port:iport, proto:"auth", message:"A service supporting the Identification Protocol (ident) seems to be running on this port.");
+  set_kb_item(name:"fake_identd/" + iport, value:TRUE);
+}

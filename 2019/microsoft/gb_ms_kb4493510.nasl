@@ -21,15 +21,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814797");
-  script_version("2019-04-11T13:19:56+0000");
+  script_version("2019-04-17T10:35:07+0000");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"2019-04-11 13:19:56 +0000 (Thu, 11 Apr 2019)");
+  script_tag(name:"last_modification", value:"2019-04-17 10:35:07 +0000 (Wed, 17 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-04-11 15:48:50 +0530 (Thu, 11 Apr 2019)");
   script_name("Microsoft Windows Latest Servicing Stack Updates-Defense in Depth (KB4493510)");
 
   script_tag(name:"summary", value:"This host is missing an important security
-  update according to Microsoft KBgb_ms_kb4493510");
+  update according to Microsoft KB4493510.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
   on the target host.");
@@ -40,7 +40,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow an attackers
   to bypass a security control or take advantage of a vulnerability.");
 
-  script_tag(name:"affected", value:"Windows 10 Version 1809 32-bit Systems,
+  script_tag(name:"affected", value:"Windows 10 Version 1809 32-bit Systems
 
   Windows 10 Version 1809 for x64-based Systems");
 
@@ -58,6 +58,7 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl", "gb_wmi_access.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion", "WMI/access_successful");
+
   exit(0);
 }
 
@@ -66,40 +67,38 @@ include("version_func.inc");
 include("misc_func.inc");
 include("wmi_file.inc");
 include("secpod_reg.inc");
+include("secpod_smb_func.inc");
 
-if(hotfix_check_sp(win10:1, win10x64:1) <= 0){
+if(hotfix_check_sp(win10:1, win10x64:1) <= 0)
   exit(0);
-}
+
 sysPath = smb_get_system32root();
-if(!sysPath ){
+if(!sysPath)
   exit(0);
-}
+
 edgeVer = fetch_file_version(sysPath:sysPath, file_name:"edgehtml.dll");
-if(!edgeVer){
+if(!edgeVer)
   exit(0);
-}
 
-if(edgeVer =~ "11\.0\.17763")
-{
+if(edgeVer =~ "11\.0\.17763") {
   infos = kb_smb_wmi_connectinfo();
-  if( ! infos ) exit( 0 );
+  if(!infos)
+    exit(0);
 
-  handle = wmi_connect( host:infos["host"], username:infos["username_wmi_smb"], password:infos["password"] );
-  if( ! handle ) exit( 0 );
+  handle = wmi_connect(host:infos["host"], username:infos["username_wmi_smb"], password:infos["password"]);
+  if(!handle)
+    exit(0);
 
-  fileList = wmi_file_fileversion( handle:handle, fileName:"smiengine", fileExtn:"dll", includeHeader:FALSE );
-  wmi_close( wmi_handle:handle );
-  if( ! fileList|| ! is_array( fileList ) ) {
-    exit( 0 );
-  }
+  fileList = wmi_file_fileversion(handle:handle, fileName:"smiengine", fileExtn:"dll", includeHeader:FALSE);
+  wmi_close(wmi_handle:handle);
+  if(!fileList || !is_array(fileList))
+    exit(0);
 
   max_version = 0; # Avoid passing null to the version function below
-  foreach filePath( keys( fileList ) )
-  {
+  foreach filePath(keys(fileList)) {
     vers = fileList[filePath];
-    if(vers =~ "^10\.0" && version = eregmatch( string:vers, pattern:"^([0-9.]+)" ) )
-    {
-      if(version_is_less_equal(version:version[1], test_version:max_version)){
+    if(vers =~ "^10\.0" && version = eregmatch(string:vers, pattern:"^([0-9.]+)")) {
+      if(version_is_less_equal(version:version[1], test_version:max_version)) {
         continue;
       } else {
         max_version = version[1];
@@ -108,12 +107,11 @@ if(edgeVer =~ "11\.0\.17763")
     }
   }
 
-  if(max_version && version_is_less(version:max_version, test_version:"10.0.17763.402"))
-  {
-    report = report_fixed_ver(file_checked: path,
-                              file_version:max_version, vulnerable_range:"Less than 10.0.17763.402");
+  if(max_version && version_is_less(version:max_version, test_version:"10.0.17763.402")) {
+    report = report_fixed_ver(file_checked:path, file_version:max_version, vulnerable_range:"Less than 10.0.17763.402");
     security_message(data:report);
     exit(0);
   }
 }
+
 exit(99);

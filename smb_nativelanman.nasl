@@ -1,6 +1,5 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: smb_nativelanman.nasl 13813 2019-02-21 13:07:21Z cfischer $
 #
 # SMB NativeLanMan
 #
@@ -27,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102011");
-  script_version("$Revision: 13813 $");
+  script_version("2019-04-24T11:06:32+0000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2019-02-21 14:07:21 +0100 (Thu, 21 Feb 2019) $");
+  script_tag(name:"last_modification", value:"2019-04-24 11:06:32 +0000 (Wed, 24 Apr 2019)");
   script_tag(name:"creation_date", value:"2009-09-18 16:06:42 +0200 (Fri, 18 Sep 2009)");
   script_name("SMB NativeLanMan");
   script_category(ACT_GATHER_INFO);
@@ -248,6 +247,9 @@ for( x = l-3; x > 0 && c < 3; x = x - 2 ) {
             # Cosmic
             } else if( "Samba 4.8.4-Ubuntu" >< smb_str ) {
               os_str = "Ubuntu 18.10";
+            # Disco
+            } else if( "Samba 4.10.0-Ubuntu" >< smb_str ) {
+              os_str = "Ubuntu 19.04";
             } else {
               # nb: Versions without the the -Ubuntu pattern:
               # Dapper and Edgy: Samba 3.0.22
@@ -388,7 +390,9 @@ for( x = l-3; x > 0 && c < 3; x = x - 2 ) {
             register_and_report_os( os:"Debian GNU/Linux", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
           }
         } else if( "ubuntu" >< os_str_lo ) {
-          if( "18.10" >< os_str ) {
+          if( "19.04" >< os_str ) {
+            register_and_report_os( os:"Ubuntu", version:"19.04", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          } else if( "18.10" >< os_str ) {
             register_and_report_os( os:"Ubuntu", version:"18.10", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
           } else if( "18.04" >< os_str ) {
             register_and_report_os( os:"Ubuntu", version:"18.04", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
