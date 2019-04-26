@@ -1,10 +1,9 @@
 # OpenVAS Vulnerability Test
-# $Id: jserv_execute.nasl 9348 2018-04-06 07:01:19Z cfischer $
 # Description: Oracle Jserv Executes outside of doc_root
 #
 # Authors:
 # Michael Scheidell <scheidell at secnap.net>
-# based on a script written by Hendrik Scholz <hendrik@scholz.net> 
+# based on a script written by Hendrik Scholz <hendrik@scholz.net>
 #
 # Copyright:
 # Copyright (C) 2002 Michael Scheidell
@@ -23,73 +22,67 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "Detects Vulnerability in the execution of JSPs outside
-doc_root.
-
-A potential security vulnerability has been discovered in
-Oracle JSP releases 1.0.x through 1.1.1 (in
-Apache/Jserv). This vulnerability permits access to and
-execution of unintended JSP files outside the doc_root in
-Apache/Jserv. For example, accessing
-http://www.example.com/a.jsp//..//..//..//..//..//../b.jsp
-will execute b.jsp outside the doc_root instead of a.jsp
-if there is a b.jsp file in the matching directory.
-
-Further, Jserv Releases 1.0.x - 1.0.2 have additional
-vulnerability:
-
-Due to a bug in Apache/Jserv path translation, any
-URL that looks like:
-http://host:port/servlets/a.jsp, makes Oracle JSP
-execute 'd:\servlets\a.jsp' if such a directory
-path actually exists. Thus, a URL virtual path, an
-actual directory path and the Oracle JSP name
-(when using Oracle Apache/JServ) must match for
-this potential vulnerability to occur.
-
-Vulnerable systems:
-Oracle8i Release 8.1.7, iAS Release version 1.0.2
-Oracle JSP, Apache/JServ Releases version 1.0.x - 1.1.1";
-
-tag_solution = "Upgrade to OJSP Release 1.1.2.0.0, available on Oracle
-Technology Network's OJSP web site.";
-
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.10925");
- script_version("$Revision: 9348 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_cve_id("CVE-2001-0307");
- 
- name = "Oracle Jserv Executes outside of doc_root";
- script_name(name);
- 
- 
- script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_banner");
- 
- script_copyright("This script is Copyright (C) 2002 Michael Scheidell");
- family = "General";
- script_family(family);
+  script_oid("1.3.6.1.4.1.25623.1.0.10925");
+  script_version("2019-04-24T07:26:10+0000");
+  script_tag(name:"last_modification", value:"2019-04-24 07:26:10 +0000 (Wed, 24 Apr 2019)");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_cve_id("CVE-2001-0307");
+  script_name("Oracle Jserv Executes outside of doc_root");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 2002 Michael Scheidell");
+  script_family("Web Servers");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("www/apache");
 
- script_dependencies("find_service.nasl", "httpver.nasl", "no404.nasl",  "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_require_keys("www/apache");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  script_tag(name:"solution", value:"Upgrade to OJSP Release 1.1.2.0.0, available on Oracle
+  Technology Network's OJSP web site.");
+
+  script_tag(name:"summary", value:"Detects Vulnerability in the execution of JSPs outside
+  doc_root.");
+
+  script_tag(name:"insight", value:"A potential security vulnerability has been discovered in
+  Oracle JSP releases 1.0.x through 1.1.1 (in Apache/Jserv). This vulnerability permits access
+  to and execution of unintended JSP files outside the doc_root in Apache/Jserv. For example,
+  accessing:
+
+  http://www.example.com/a.jsp//..//..//..//..//..//../b.jsp
+
+  will execute b.jsp outside the doc_root instead of a.jsp if there is a b.jsp file in the
+  matching directory.
+
+  Further, Jserv Releases 1.0.x - 1.0.2 have additional vulnerability:
+
+  Due to a bug in Apache/Jserv path translation, any URL that looks like:
+
+  http://example.com:port/servlets/a.jsp,
+
+  makes Oracle JSP execute 'd:\servlets\a.jsp' if such a directory path actually exists. Thus,
+  a URL virtual path, an actual directory path and the Oracle JSP name (when using Oracle Apache/JServ)
+  must match for this potential vulnerability to occur.");
+
+  script_tag(name:"affected", value:"Oracle8i Release 8.1.7, iAS Release version 1.0.2
+
+  Oracle JSP, Apache/JServ Releases version 1.0.x - 1.1.1");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_banner");
+
+  exit(0);
 }
 
-#
-# The script code starts here
-#
 include("http_func.inc");
-include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-str = http_get_cache(item:"/", port:port);
-if(ereg(pattern:".*apachejserv/1\.(0|1\.[0-1][^0-9])",string:str))
-      security_message(port);
+str = get_http_banner(port:port);
+
+if(ereg(pattern:".*apachejserv/1\.(0|1\.[0-1][^0-9])", string:str)) {
+  security_message(port:port);
+  exit(0);
+}
+
+exit(99);

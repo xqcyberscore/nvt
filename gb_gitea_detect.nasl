@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gitea_detect.nasl 12326 2018-11-13 05:25:34Z ckuersteiner $
 #
 # Gitea Detection
 #
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141676");
-  script_version("$Revision: 12326 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-13 06:25:34 +0100 (Tue, 13 Nov 2018) $");
+  script_version("2019-04-25T08:58:41+0000");
+  script_tag(name:"last_modification", value:"2019-04-25 08:58:41 +0000 (Thu, 25 Apr 2019)");
   script_tag(name:"creation_date", value:"2018-11-13 11:18:05 +0700 (Tue, 13 Nov 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -70,9 +69,13 @@ if ("Gitea - Git with a cup of tea" >< res && "i_like_gitea" >< res) {
 
   # Gitea Version: 1.4.0
   # Gitea Version: 274ff0d
+  # Gitea Version: 1.8.0&#43;rc2
+  # Gitea Version: 1.8.0-rc2
   vers = eregmatch(pattern: 'Gitea Version: ([^ ]+)', string: res);
-  if (!isnull(vers[1]))
-    version = vers[1];
+  if (!isnull(vers[1])) {
+    version = str_replace(string: vers[1], find: "&#43;", replace: ".");
+    version = str_replace(string: version, find: "-", replace: ".");
+  }
 
   set_kb_item(name: "gitea/detected", value: TRUE);
 

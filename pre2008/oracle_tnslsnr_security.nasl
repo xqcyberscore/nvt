@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: oracle_tnslsnr_security.nasl 9992 2018-05-29 05:51:26Z cfischer $
 #
 # Oracle tnslsnr security
 #
@@ -30,29 +29,33 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10660");
-  script_version("$Revision: 9992 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-29 07:51:26 +0200 (Tue, 29 May 2018) $");
+  script_version("2019-04-24T07:26:10+0000");
+  script_tag(name:"last_modification", value:"2019-04-24 07:26:10 +0000 (Wed, 24 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_name("Oracle tnslsnr security");
   script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_analysis");
   script_family("Databases");
   script_copyright("Copyright (C) 2001 James W. Abendschan <jwa@jammed.com>");
   script_dependencies("oracle_tnslsnr_version.nasl");
   script_require_ports("Services/oracle_tnslsnr", 1521);
   script_require_keys("OracleDatabaseServer/installed");
 
-  script_tag(name : "summary" , value : "The remote Oracle tnslsnr has no password assigned.");
-  script_tag(name : "impact" , value : "An attacker may use this fact to shut it down arbitrarily,
-thus preventing legitimate users from using it properly.");
-  script_tag(name : "solution" , value : "use the lsnrctrl SET PASSWORD command to assign a password to, the tnslsnr.");
+  script_tag(name:"summary", value:"The remote Oracle tnslsnr has no password assigned.");
 
+  script_tag(name:"impact", value:"An attacker may use this fact to shut it down arbitrarily,
+  thus preventing legitimate users from using it properly.");
+
+  script_tag(name:"solution", value:"use the lsnrctrl SET PASSWORD command to assign a password to, the tnslsnr.");
+
+  script_tag(name:"qod_type", value:"remote_analysis");
   script_tag(name:"solution_type", value:"Workaround");
 
   exit(0);
 }
+
+include("misc_func.inc");
 
 function tnscmd(sock, command)
 {
@@ -68,7 +71,6 @@ function tnscmd(sock, command)
   clen_h = command_length / 256;
   clen_l = 256 * clen_h;
   clen_l = command_length - clen_l;
-
 
   packet = raw_string(
     plen_h, plen_l, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00,
@@ -116,8 +118,5 @@ function oracle_tnslsnr_security(port)
   }
 }
 
-# tnslsnr runs on different ports . . .
-port = get_kb_item( "Services/oracle_tnslsnr" );
-if( ! port ) port = 1521;
-if( ! get_port_state( port ) ) exit( 0 );
+port = get_port_for_service( default:1521, proto:"oracle_tnslsnr" );
 oracle_tnslsnr_security(port:port);

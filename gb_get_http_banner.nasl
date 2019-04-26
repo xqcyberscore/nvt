@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_get_http_banner.nasl 13630 2019-02-13 11:03:59Z cfischer $
 #
 # HTTP Banner
 #
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140170");
-  script_version("2019-04-10T13:42:28+0000");
-  script_tag(name:"last_modification", value:"2019-04-10 13:42:28 +0000 (Wed, 10 Apr 2019)");
+  script_version("2019-04-24T07:26:10+0000");
+  script_tag(name:"last_modification", value:"2019-04-24 07:26:10 +0000 (Wed, 24 Apr 2019)");
   script_tag(name:"creation_date", value:"2017-02-21 11:53:19 +0100 (Tue, 21 Feb 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -388,5 +387,6 @@ set_mandatory_key( key:"LogitechMediaServer", regex: "Server: Logitech Media Ser
 set_mandatory_key( key:"HttpServer", regex: "Server: HttpServer", banner:banner );
 set_mandatory_key( key:"coturn", regex: "Server: Coturn", banner:banner );
 set_mandatory_key( key:"WebLogic", regex: "^Server:.*WebLogic", banner:banner );
+set_mandatory_key( key:"QuickTime_Darwin", regex: "(QuickTime|DSS/)", banner:banner );
 
 exit( 0 );

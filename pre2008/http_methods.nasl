@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: http_methods.nasl 9335 2018-04-05 13:50:33Z cfischer $
 #
 # Test HTTP dangerous methods
 #
@@ -24,8 +23,6 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-# Check for bad permissions on a web server
-#
 # RFCs:
 # 1945 Hypertext Transfer Protocol -- HTTP/1.0. T. Berners-Lee, R.
 #      Fielding, H. Frystyk. May 1996. (Format: TXT=137582 bytes) (Status:
@@ -41,8 +38,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10498");
-  script_version("$Revision: 9335 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-05 15:50:33 +0200 (Thu, 05 Apr 2018) $");
+  script_version("2019-04-24T07:26:10+0000");
+  script_tag(name:"last_modification", value:"2019-04-24 07:26:10 +0000 (Wed, 24 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -52,24 +49,21 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2000 Michel Arboi");
   script_family("Remote file access");
-  script_dependencies("find_service.nasl", "no404.nasl", "http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  tag_summary = "Misconfigured web servers allows remote clients to perform
-  dangerous HTTP methods such as PUT and DELETE. This script
-  checks if they are enabled and can be misused to upload or delete files.";
+  script_tag(name:"solution", value:"Use access restrictions to these dangerous HTTP methods
+  or disable them completely.");
 
-  tag_solution = "Use access restrictions to these dangerous HTTP methods
-  or disable them completely.";
+  script_tag(name:"summary", value:"Misconfigured web servers allows remote clients to perform
+  dangerous HTTP methods such as PUT and DELETE.
 
-  tag_impact = "- Enabled PUT method: This might allow an attacker to upload and run arbitrary code on this web server.
+  This script checks if they are enabled and can be misused to upload or delete files.");
 
-  - Enabled DELETE method: This might allow an attacker to delete additional files on this web server.";
+  script_tag(name:"impact", value:"- Enabled PUT method: This might allow an attacker to upload and run arbitrary code on this web server.
 
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
+  - Enabled DELETE method: This might allow an attacker to delete additional files on this web server.");
 
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -127,7 +121,7 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
   for( i = 1; exists( file:url + "puttest" + i + ".html", port:port ); i++ ) {
     if( i > 3 ) continue; # We could not test this server - really strange.
-    # TBD: This was 20 previously but thats way too much from my PoV.
+    # TBD: This was 20 previously but that's way too much from my PoV.
     # I also doubt that this working as expected as the exists() function
     # is also checking for a text pattern...
   }
@@ -152,9 +146,8 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
     }
   }
 
-  # Check if file exists before trying to DELETE it
   if( exists( port:port, file:file ) ) {
- 
+
     req = http_delete( item:file, port:port );
     res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 

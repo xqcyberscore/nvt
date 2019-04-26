@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: unprotected_webadmin_php.nasl 6040 2017-04-27 09:02:38Z teissa $
 #
 # webadmin.php detection
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.18586");
-  script_version("$Revision: 6040 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+  script_version("2019-04-24T07:26:10+0000");
+  script_tag(name:"last_modification", value:"2019-04-24 07:26:10 +0000 (Wed, 24 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
@@ -40,15 +39,13 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  tag_summary = "webadmin.php was found on your web server.
+  script_tag(name:"solution", value:"Restrict access to this CGI or remove it.");
+
+  script_tag(name:"summary", value:"webadmin.php was found on your web server.
   In its current configuration, this file manager CGI gives access
-  to the whole filesystem of the machine to anybody.";
+  to the whole filesystem of the machine to anybody.");
 
-  tag_solution = "Restrict access to this CGI or remove it";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-
+  script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_vul");
 
   exit(0);
@@ -57,17 +54,22 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-if( get_kb_item( 'http/auth' ) ) exit( 0 ); # CGI might be protected
+if( get_kb_item( "http/auth" ) )
+  exit( 0 ); # CGI might be protected
 
 port = get_http_port( default:80 );
 
-if( get_kb_item( '/tmp/http/auth/' + port ) ) exit( 0 ); # CGI might be protected
+if( get_kb_item( '/tmp/http/auth/' + port ) )
+  exit( 0 ); # CGI might be protected
 
-if( ! can_host_php( port:port ) ) exit( 0 );
+if( ! can_host_php( port:port ) )
+  exit( 0 );
 
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
-  if( dir == "/" ) dir = "";
+  if( dir == "/" )
+    dir = "";
+
   url = dir + '/webadmin.php?show=%2Fetc%2Fpasswd';
 
   if( http_vuln_check( port:port, url:url, pattern:".*root:.*:0:[01]:.*" ) ) {

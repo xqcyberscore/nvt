@@ -23,11 +23,11 @@ CPE = "cpe:/a:microsoft:.net_core";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814698");
-  script_version("2019-04-25T10:19:44+0000");
+  script_version("2019-04-26T06:52:17+0000");
   script_cve_id("CVE-2019-0757");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"2019-04-25 10:19:44 +0000 (Thu, 25 Apr 2019)");
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"2019-04-26 06:52:17 +0000 (Fri, 26 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-03-13 08:37:41 +0530 (Wed, 13 Mar 2019)");
   script_name("Microsoft .NET Core NuGet Package Manager Tampering Vulnerability - Linux");
 

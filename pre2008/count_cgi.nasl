@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: count_cgi.nasl 6040 2017-04-27 09:02:38Z teissa $
 #
 # Count.cgi
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10049");
-  script_version("$Revision: 6040 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+  script_version("2019-04-24T07:26:10+0000");
+  script_tag(name:"last_modification", value:"2019-04-24 07:26:10 +0000 (Wed, 24 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(128);
   script_tag(name:"cvss_base", value:"7.5");
@@ -42,14 +41,11 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  tag_summary = "An old version of 'Count.cgi' cgi is installed.
+  script_tag(name:"solution", value:"Upgrade to wwwcount 2.4 or later.");
+
+  script_tag(name:"summary", value:"An old version of 'Count.cgi' cgi is installed.
   It has a well known security flaw that lets anyone execute arbitrary
-  commands with the privileges of the http daemon (root, nobody, www...)";
-
-  tag_solution = "Upgrade to wwwcount 2.4 or later.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  commands with the privileges of the http daemon (root, www, nobody...)");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -64,7 +60,9 @@ port = get_http_port( default:80 );
 
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
-  if( dir == "/" ) dir = "";
+  if( dir == "/" )
+    dir = "";
+
   url = strcat( dir, "/Count.cgi?align=topcenter" );
 
   req = http_get( port:port, item:url );

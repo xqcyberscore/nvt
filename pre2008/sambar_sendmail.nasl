@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sambar_sendmail.nasl 8601 2018-01-31 12:07:42Z cfischer $
 #
 # Sambar sendmail /session/sendmail
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10415");
-  script_version("$Revision: 8601 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-31 13:07:42 +0100 (Wed, 31 Jan 2018) $");
+  script_version("2019-04-24T07:26:10+0000");
+  script_tag(name:"last_modification", value:"2019-04-24 07:26:10 +0000 (Wed, 24 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"1.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:N/C:N/I:P/A:N");
@@ -40,14 +39,11 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("www/sambar");
 
-  tag_summary = "The Sambar webserver is running. It provides a web interface for sending emails.
+  script_tag(name:"solution", value:"Try to disable this module. There might be a patch in the future.");
+
+  script_tag(name:"summary", value:"The Sambar webserver is running. It provides a web interface for sending emails.
   You may simply pass a POST request to /session/sendmail and by this send mails to anyone you want.
-  Due to the fact that Sambar does not check HTTP referrers you do not need direct access to the server!";
-
-  tag_solution = "Try to disable this module. There might be a patch in the future.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  Due to the fact that Sambar does not check HTTP referrers you do not need direct access to the server!");
 
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_banner");

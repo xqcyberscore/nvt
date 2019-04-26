@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ece_flag.nasl 10411 2018-07-05 10:15:10Z cfischer $
 #
 # Firewall ECE-bit bypass
 #
@@ -28,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12118");
-  script_version("$Revision: 10411 $");
+  script_version("2019-04-24T07:26:10+0000");
   script_cve_id("CVE-2001-0183");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-05 12:15:10 +0200 (Thu, 05 Jul 2018) $");
+  script_tag(name:"last_modification", value:"2019-04-24 07:26:10 +0000 (Wed, 24 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(2293);
   script_name("Firewall ECE-bit bypass");
@@ -51,7 +50,7 @@ if(description)
   script_tag(name:"affected", value:"At least one firewall (ipfw) is known to exhibit this sort
   of behavior.
 
-  Known vulnerable systems include all FreeBSD 3.x ,4.x, 3.5-STABLE, and 4.2-STABLE.");
+  Known vulnerable systems include all FreeBSD 3.x, 4.x, 3.5-STABLE, and 4.2-STABLE.");
 
   script_tag(name:"solution", value:"If you are running FreeBSD 3.X, 4.x, 3.5-STABLE,
   4.2-STABLE, upgrade your firewall. If you are not running FreeBSD,
@@ -65,11 +64,12 @@ if(description)
 
 include("host_details.inc");
 
-if( islocalnet() || islocalhost() ) exit( 0 );
-if( TARGET_IS_IPV6() ) exit( 0 );
+if( islocalnet() || islocalhost() || TARGET_IS_IPV6() )
+  exit( 0 );
 
 # nb: Doesn't make much sense these days to run this against any other system out there...
-if( host_runs( "freebsd" ) != "yes" ) exit( 0 );
+if( host_runs( "freebsd" ) != "yes" )
+  exit( 0 );
 
 sport = ( rand() % 64511 ) + 1024;
 ipid  = 1234;

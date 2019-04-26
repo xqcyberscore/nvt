@@ -1,5 +1,4 @@
 # OpenVAS Vulnerability Test
-# $Id: mssql_blank_password.nasl 6063 2017-05-03 09:03:05Z teissa $
 # Description: Microsoft's SQL Blank Password
 #
 # Authors:
@@ -22,54 +21,57 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-# this script attempts to log in to a SQL server using the 
+# this script attempts to log in to a SQL server using the
 # "sa" account with a blank password.
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.10673");
- script_version("$Revision: 6063 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_bugtraq_id(1281, 4797);
- script_cve_id("CVE-2000-1209");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_name("Microsoft's SQL Blank Password");
- script_category(ACT_ATTACK);
- script_copyright("This script is Copyright (C) 2001 H D Moore");
- script_family("Default Accounts");
- script_require_ports("Services/mssql", 1433); 
- script_dependencies("mssqlserver_detect.nasl");
+  script_oid("1.3.6.1.4.1.25623.1.0.10673");
+  script_version("2019-04-24T07:26:10+0000");
+  script_tag(name:"last_modification", value:"2019-04-24 07:26:10 +0000 (Wed, 24 Apr 2019)");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_bugtraq_id(1281, 4797);
+  script_cve_id("CVE-2000-1209");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_name("Microsoft's SQL Blank Password");
+  script_category(ACT_ATTACK);
+  script_copyright("This script is Copyright (C) 2001 H D Moore");
+  script_family("Default Accounts");
+  script_require_ports("Services/mssql", 1433);
+  script_dependencies("mssqlserver_detect.nasl");
 
- script_tag(name : "solution" , value : "Disable this account, or set a password to it. In addition
- to this, it is suggested you filter incoming tcp traffic to this port.
+  script_tag(name:"solution", value:"Disable this account, or set a password to it. In addition
+  to this, it is suggested you filter incoming tcp traffic to this port.
 
- For MSDE (OEM versions without MSQL console) : 
+  For MSDE (OEM versions without MSQL console) :
 
- C:\MSSQL7\BINN\osql -U sa
+  C:\MSSQL7\BINN\osql -U sa
 
- At the Password: prompt press <Enter>.
+  At the Password: prompt press <Enter>.
 
- Type the following replacing .password. with the password you wish to
- assign, in single quotes:
+  Type the following replacing .password. with the password you wish to
+  assign, in single quotes:
 
- EXEC sp_password NULL, .password., .sa.
- go
- exit");
- script_tag(name : "summary" , value : "The remote MS SQL server has the default 'sa' account
- enabled without any password.");
- script_tag(name : "impact" , value : "An attacker may use this flaw to execute commands against
- the remote host, as well as read your database content.");
+  EXEC sp_password NULL, .password., .sa.
 
- script_tag(name : "solution_type", value : "Workaround");
- script_tag(name: "qod_type", value: "remote_vul");
- exit(0);
+  go
+
+  exit");
+
+  script_tag(name:"summary", value:"The remote MS SQL server has the default 'sa' account
+  enabled without any password.");
+
+  script_tag(name:"impact", value:"An attacker may use this flaw to execute commands against
+  the remote host, as well as read your database content.");
+
+  script_tag(name:"solution_type", value:"Workaround");
+  script_tag(name:"qod_type", value:"remote_vul");
+
+  exit(0);
 }
 
-#
-# The script code starts here
-#
+include("misc_func.inc");
 
 pkt_hdr = raw_string(
     0x02, 0x00, 0x02, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00,
@@ -135,28 +137,28 @@ function make_sql_login_pkt (username, password)
 {
     ulen = strlen(username);
     plen = strlen(password);
-    
+
     upad = 30 - ulen;
     ppad = 30 - plen;
-    
+
     ubuf = "";
     pbuf = "";
-    
+
     nul = raw_string(0x00);
-    
+
     if(ulen)
     {
         ublen = raw_string(ulen % 255);
     } else {
         ublen = raw_string(0x00);
     }
-    
+
     if(plen)
     {
         pblen = raw_string(plen % 255);
     } else {
         pblen = raw_string(0x00);
-    }  
+    }
 
     ubuf = string(username, crap(data:nul, length:upad));
     pbuf = string(password, crap(data:nul, length:ppad));
@@ -167,30 +169,25 @@ function make_sql_login_pkt (username, password)
     return sql_packet;
 }
 
+port = get_port_for_service( default:1433, proto:"mssql" );
 
-port = get_kb_item("Services/mssql");
-if(!port)port = 1433;
+soc = open_sock_tcp(port);
+if(!soc)
+  exit(0);
 
-if(get_port_state(port)) {
+# this creates a variable called sql_packet
+sql_packet = make_sql_login_pkt(username:"sa", password:"");
 
-  soc = open_sock_tcp(port);
+send(socket:soc, data:sql_packet);
+send(socket:soc, data:pkt_lang);
 
-  if(soc) {
-    # this creates a variable called sql_packet
-    sql_packet = make_sql_login_pkt(username:"sa", password:"");
+r = recv(socket:soc, length:255);
+close(soc);
 
-    send(socket:soc, data:sql_packet);
-    send(socket:soc, data:pkt_lang);
-
-    r  = recv(socket:soc, length:255);
-    close(soc);
-
-    if(strlen(r) > 10 && ord(r[8]) == 0xE3) {
-      report = "The SQL Server has a blank password for the 'sa' account.";
-      security_message(port:port, data:report);
-      exit(0);
-    }
-  }
+if(strlen(r) > 10 && ord(r[8]) == 0xE3) {
+  report = "The SQL Server has a blank password for the 'sa' account.";
+  security_message(port:port, data:report);
+  exit(0);
 }
 
 exit(99);

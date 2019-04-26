@@ -1,6 +1,5 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: yahoo_dos.nasl 6053 2017-05-01 09:02:51Z teissa $
 #
 # Yahoo Messenger Denial of Service attack
 #
@@ -29,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10326");
-  script_version("$Revision: 6053 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
+  script_version("2019-04-24T07:26:10+0000");
+  script_tag(name:"last_modification", value:"2019-04-24 07:26:10 +0000 (Wed, 24 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -46,19 +45,16 @@ if(description)
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/3869");
 
   script_tag(name:"impact", value:"Successful attacks can cause Yahoo Messenger to crash by sending a few
-  bytes of garbage into its listening port TCP 5101.
-
-  Impact Level: Application");
+  bytes of garbage into its listening port TCP 5101.");
 
   script_tag(name:"affected", value:"Yahoo Messenger/Pager");
 
   script_tag(name:"insight", value:"The flaw is cause due to buffer overflow error while sending a long URL
   within a message.");
 
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year since
-  disclosure of this vulnerability. Likely none will be provided anymore. General
-  solution options are to upgrade to a newer release, disable respective features,
-  remove the product or replace the product by another one");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"summary", value:"This host has Yahoo Messenger or Pager installed and is prone to
   Denial of Service Vulnerability.");
@@ -69,25 +65,22 @@ if(description)
   exit(0);
 }
 
-port = get_kb_item( "Services/yahoo_messenger" );
-if( ! port ) port = 5101;
+include("misc_func.inc");
 
-if( get_port_state( port ) ) {
+port = get_port_for_service(default:5101, proto:"yahoo_messenger");
 
-  soc = open_sock_tcp(port);
-  if( soc ) {
-    send( socket:soc, data:crap( 2048 ) );
-    close( soc );
+soc = open_sock_tcp(port);
+if(!soc)
+  exit(0);
 
-    soc_sec = open_sock_tcp( port );
-    if( ! soc_sec ) {
-      security_message( port:port );
-      exit( 0 );
-    } else {
-      close( soc_sec );
-      exit( 99 );
-    }
-  }
+send( socket:soc, data:crap( 2048 ) );
+close( soc );
+
+soc_sec = open_sock_tcp( port );
+if( ! soc_sec ) {
+  security_message( port:port );
+  exit( 0 );
+} else {
+  close( soc_sec );
+  exit( 99 );
 }
-
-exit( 0 );

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: NDS_Object_Enum.nasl 8392 2018-01-12 10:46:21Z cfischer $
 #
 # Netware NDS Object Enumeration
 #
@@ -24,24 +23,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-# This script attempts to retrieve Novell server info via ncp (524).
-
-# CHANGELOG:
-# v1.2: Added code to enumerate users.
-# v1.1: Fixed Server Name issue.  If server name contained an underscroll,
-#       it would be removed.
-# v1.0: Initial Release
-
-# TODO:
-# Figure out how to login to NDS via Nasl.
-# See if a chknull can be re-written into a openvas plugin.
-# See if "Security equal to admin" can be enumerated.
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10988");
-  script_version("$Revision: 8392 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-12 11:46:21 +0100 (Fri, 12 Jan 2018) $");
+  script_version("2019-04-24T07:26:10+0000");
+  script_tag(name:"last_modification", value:"2019-04-24 07:26:10 +0000 (Wed, 24 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -53,22 +39,17 @@ if(description)
   script_require_ports("Services/ncp", 524);
   script_mandatory_keys("netware/ncp/detected");
 
-  tag_solution = "The NDS object PUBLIC should not have Browse rights the tree should
+  script_tag(name:"solution", value:"The NDS object PUBLIC should not have Browse rights the tree should
   be restricted to authenticated users only.
 
-  Removing Browse rights from the object will fix this issue. If this
-  is an external system it is recommended that access 
-  to port 524 be blocked from the Internet.";
+  Removing Browse rights from the object will fix this issue. If this is an external system it is
+  recommended that access to port 524 be blocked from the Internet.");
 
-  tag_summary = "This host is a Novell Netware (eDirectory) server, and has browse
-  rights on the PUBLIC object."; 
+  script_tag(name:"summary", value:"This host is a Novell Netware (eDirectory) server, and has browse
+  rights on the PUBLIC object.");
 
-  tag_impact = "It is possible to enumerate all NDS objects, including users, with 
-  crafted queries. An attacker can use this to gain information about this host.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
+  script_tag(name:"impact", value:"It is possible to enumerate all NDS objects, including users, with
+  crafted queries. An attacker can use this to gain information about this host.");
 
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_active");
@@ -76,12 +57,12 @@ if(description)
   exit(0);
 }
 
-port = get_kb_item( "Services/ncp" );
-if( ! port ) port = 524;
-if( ! get_port_state( port ) ) exit( 0 );
+include("misc_func.inc");
 
+port = get_port_for_service( default:524, proto:"ncp" );
 soc = open_sock_tcp( port );
-if( ! soc ) exit( 0 );
+if( ! soc )
+  exit( 0 );
 
 # Some vars.
 nds_seq_num = raw_string( 0x00 );
@@ -103,13 +84,12 @@ conn_create = raw_string( 0x44, 0x6d, 0x64, 0x54,  # NCP over IP signature: Dema
                           0xff,                    # Connection Number high, 0xff (255) wildcard
                           0x04 );                  # Group: Connection
 
-# Build the NCP connection
 send( socket:soc, data:conn_create );
 r = recv( socket:soc, length:4096 );
 
-# Check for successful connection
 # NCP over IP signature: 0x744e6350 = "tNcP"
 if( "tNcP" >< r ) {
+
   # Grab the connection number from the Connection Request Reply
   # 12th and 14th byte of the raw_string r
   conn_number_low = 1;
@@ -125,7 +105,6 @@ if( "tNcP" >< r ) {
   # Increment nds_seq_num
   nds_seq_num = raw_string( ord( nds_seq_num ) + 1 );
 
-  # Build our info req string
   # 20th byte is conn_number_low
   # 22nd byte is conn_numger_high
   server_info_req = raw_string( 0x44, 0x6d, 0x64, 0x54,  # NCP over IP signature: Demand Transport
@@ -144,10 +123,8 @@ if( "tNcP" >< r ) {
   send( socket:soc, data:server_info_req );
   r = recv( socket:soc, length:4096 );
 
-  # Check for successful request
   # NCP over IP signature: 0x744e6350 = "tNcP"
   if( "tNcP" >< r ) {
-    # Build server name.
     for( i = 16; i < 63; i++ ) {
       if( ord(r[i]) != 0 )
         server_name = string( server_name, r[i] );
@@ -162,7 +139,6 @@ if( "tNcP" >< r ) {
   # Increment nds_seq_num
   nds_seq_num = raw_string( ord( nds_seq_num ) + 1 );
 
-  # Build our NDS_Ping string
   # 20th byte is conn_number_low
   # 22nd byte is conn_numger_high
   nds_ping_req = raw_string( 0x44, 0x6d, 0x64, 0x54,  # NCP over IP signature: Demand Transport
@@ -182,10 +158,8 @@ if( "tNcP" >< r ) {
   send( socket:soc, data:nds_ping_req );
   r = recv( socket:soc, length:4096 );
 
-  # Check for successful request
   # NCP over IP signature: 0x744e6350 = "tNcP"
   if( "tNcP" >< r ) {
-    # Build NDS Tree Name.
     for( i = 24; i < 45; i++ ) {
       if( ( r[i] >< "_" ) && ( r[i+1] >< "_" ) ) {
         # do nothing :)
@@ -209,7 +183,6 @@ if( "tNcP" >< r ) {
     # Increment nds_seq_num
     nds_seq_num = raw_string( ord( nds_seq_num ) + 1 );
 
-    # Build our NDS_Ping string
     # 20th byte is conn_number_low
     # 22nd byte is conn_numger_high
     # 27th - 30th byte is the Object ID.
@@ -226,9 +199,9 @@ if( "tNcP" >< r ) {
                                0x00, 0x09,              # Packet Length
                                0x37,                    # Subfunction
                                # Object ID
-                               ord(nds_object_id[0]), ord(nds_object_id[1]), ord(nds_object_id[2]), ord(nds_object_id[3]), 
+                               ord(nds_object_id[0]), ord(nds_object_id[1]), ord(nds_object_id[2]), ord(nds_object_id[3]),
                                0x00, 0x01,              # Object Type: 0x0001 = "User Novell - Provo Corp HQ"
-                               # Want more? Search for "List of Publicly Registered SAP Types" at 
+                               # Want more? Search for "List of Publicly Registered SAP Types" at
                                # http://support.novell.com/
                                0x01, 0x2a               # Object Name: *
                                );
@@ -237,13 +210,11 @@ if( "tNcP" >< r ) {
     send( socket:soc, data:nds_user_req );
     r = recv( socket:soc, length:4096 );
 
-    # Check for successful request
     # NCP over IP signature: 0x744e6350 = "tNcP"
     if( ( "tNcP" >< r ) && ( ! ( r[14] >< raw_string( 0xfc ) ) ) ) {
       nds_object_id = raw_string( ord(r[16] ), ord( r[17] ), ord( r[18] ), ord( r[19] ) );
       nds_object_name = "";
 
-      # Build Object Name.
       # object name begins at 22 and is 48 bytes max.
       for( i = 22; i < 71; i++ ) {
         if( ord(r[i]) == 0 ) {
@@ -267,7 +238,7 @@ if( "tNcP" >< r ) {
       report = string(report, "NDS Users: ", report_users);
     }
 
-    report = 'It was possible to gather the following information about the remote host : \n\n' + report;
+    report = 'It was possible to gather the following information about the remote host:\n\n' + report;
     security_message( port:port, data:report );
     exit( 0 );
   }

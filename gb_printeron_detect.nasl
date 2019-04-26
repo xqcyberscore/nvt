@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_printeron_detect.nasl 10911 2018-08-10 15:16:34Z cfischer $
 #
 # PrinterOn Detection
 #
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141109");
-  script_version("$Revision: 10911 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:16:34 +0200 (Fri, 10 Aug 2018) $");
+  script_version("2019-04-25T12:09:35+0000");
+  script_tag(name:"last_modification", value:"2019-04-25 12:09:35 +0000 (Thu, 25 Apr 2019)");
   script_tag(name:"creation_date", value:"2018-05-18 14:11:47 +0700 (Fri, 18 May 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -66,7 +65,7 @@ port = get_http_port(default: 443);
 url = '/cps/Login';
 res = http_get_cache(port: port, item: url);
 
-if ("<title>PrinterOn Printing Service</title>" >< res && ">GUEST LOG IN<" >< res) {
+if ("<title>PrinterOn Printing Service</title>" >< res && "GUEST LOG IN" >< res) {
   version = "unknown";
 
   vers = eregmatch(pattern: 'both;">v([0-9.]+)', string: res);

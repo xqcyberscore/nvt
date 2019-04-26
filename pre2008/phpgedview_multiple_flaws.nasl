@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phpgedview_multiple_flaws.nasl 6053 2017-05-01 09:02:51Z teissa $
 #
 # phpGedView Code injection Vulnerability
 #
@@ -24,15 +23,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-# From: Vietnamese Security Group [security@security.com.vn]
-# Subject: Vuln in PHPGEDVIEW 2.61 Multi-Problem
-# Date: Tuesday 06/01/2004 08:20
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11982");
-  script_version("$Revision: 6053 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
+  script_version("2019-04-24T07:26:10+0000");
+  script_tag(name:"last_modification", value:"2019-04-24 07:26:10 +0000 (Wed, 24 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -44,11 +39,13 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name:"solution", value:"Upgrade to the latest version of this software");
+  script_tag(name:"solution", value:"Upgrade to the latest version of this software.");
+
   script_tag(name:"summary", value:"The remote host is running phpGedView, a set of CGI scripts which
   parse GEDCOM 5.5 genealogy files and display them on the internet in a format similar to desktop programs.
 
   There are multiple vulnerabilities in this product :
+
   - A path disclosure vulnerability, which will give more information about this host to a remote attacker
 
   - A cross site scripting vulnerability, which may allow an attacker inject malicious HTML code in it
@@ -56,6 +53,9 @@ if(description)
   - A code injection vulnerability, which may allow an attacker to make this server execute arbitrary PHP
   code hosted on a third party website.");
 
+  script_tag(name:"affected", value:"phpGedView version 2.61. Other versions might be affected as well.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
 
   exit(0);
@@ -65,13 +65,15 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port( default:80 );
-if( ! can_host_php( port:port ) ) exit( 0 );
+if( ! can_host_php( port:port ) )
+  exit( 0 );
 
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
-  if( dir == "/" ) dir = "";
-  url = dir + "/authentication_index.php?PGV_BASE_DIRECTORY=http://xxxxxxx/";
+  if( dir == "/" )
+    dir = "";
 
+  url = dir + "/authentication_index.php?PGV_BASE_DIRECTORY=http://xxxxxxx/";
   if( http_vuln_check( port:port, url:url, pattern:"http://xxxxxxx/authenticate.php" ) ) {
     report = report_vuln_url( port:port, url:url );
     security_message( port:port, data:report );

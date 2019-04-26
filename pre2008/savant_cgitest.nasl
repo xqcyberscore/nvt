@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: savant_cgitest.nasl 7273 2017-09-26 11:17:25Z cfischer $
 #
 # Savant cgitest.exe buffer overflow
 #
@@ -24,18 +23,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-# References:
-#
-# Date: Fri, 13 Sep 2002 19:55:05 +0000
-# From "Auriemma Luigi" <aluigi@pivx.com>
-# To: bugtraq@securityfocus.com
-# Subject: Savant 3.1 multiple vulnerabilities
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11173");
-  script_version("$Revision: 7273 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-26 13:17:25 +0200 (Tue, 26 Sep 2017) $");
+  script_version("2019-04-24T07:26:10+0000");
+  script_tag(name:"last_modification", value:"2019-04-24 07:26:10 +0000 (Wed, 24 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2002-2146");
   script_bugtraq_id(5706);
@@ -49,15 +41,15 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  tag_summary = "cgitest.exe from Savant web server is installed. This CGI is
-  vulnerable to a buffer overflow which may allow a cracker to
-  crash your server or even run code on your system.";
+  script_tag(name:"solution", value:"Upgrade your web server or remove this CGI.");
 
-  tag_solution = "Upgrade your web server or remove this CGI.";
+  script_tag(name:"summary", value:"cgitest.exe from Savant web server is installed. This CGI is
+  vulnerable to a buffer overflow which may allow an attacker to crash the server or even run
+  code on it.");
 
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"affected", value:"Savant version 3.1. Other versions might be affected as well.");
 
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
 
   exit(0);
@@ -68,7 +60,8 @@ include("http_keepalive.inc");
 
 port = get_http_port( default:80 );
 
-host = http_host_name( port:port );
+if( http_is_dead( port:port ) )
+  exit( 0 );
 
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
@@ -82,7 +75,7 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
     len = 256; # 136 should be enough
     req = string( "POST ", url, " HTTP/1.0\r\n",
-                  "Host: ", host,
+                  "Host: ", get_host_ip(),
                   "\r\nContent-Length: ", len,
                   "\r\n\r\n", crap( len ), "\r\n" );
     send( socket:soc, data:req );

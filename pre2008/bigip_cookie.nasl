@@ -1,5 +1,4 @@
 # OpenVAS Vulnerability Test
-# $Id: bigip_cookie.nasl 9348 2018-04-06 07:01:19Z cfischer $
 # Description: F5 BIG-IP Cookie Persistence
 #
 # Authors:
@@ -22,49 +21,38 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "The remote load balancer suffers from an information disclosure
-vulnerability. 
-
-Description :
-
-The remote host appears to be a F5 BigIP load balancer which encodes
-within a cookie the IP address of the actual web server it is acting
-on behalf of.  Additionally, information after 'BIGipServer' is
-configured by the user and may be the logical name of the device. 
-These values may disclose sensitive information, such as internal IP
-addresses and names.";
-
-tag_solution = "http://asia.f5.com/solutions/archives/techbriefs/cookie.html";
-
-# BIG-IP(R) is a registered trademark of F5 Networks, Inc.
-# F5 BIG-IP Cookie Persistence Decoder
-
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.20089");
- script_version("$Revision: 9348 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
- script_tag(name:"cvss_base", value:"2.1");
- script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:P");
- 
- name = "F5 BIG-IP Cookie Persistence";
- script_name(name);
+  script_oid("1.3.6.1.4.1.25623.1.0.20089");
+  script_version("2019-04-24T07:26:10+0000");
+  script_tag(name:"last_modification", value:"2019-04-24 07:26:10 +0000 (Wed, 24 Apr 2019)");
+  script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
+  script_tag(name:"cvss_base", value:"2.1");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:P");
+  script_name("F5 BIG-IP Cookie Persistence");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 2005 Shavlik Technologies, LLC");
+  script_family("Web Servers");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
+  script_xref(name:"URL", value:"https://web.archive.org/web/20051214144937/asia.f5.com/solutions/archives/techbriefs/cookie.html");
 
+  script_tag(name:"solution", value:"Change the Cookie mode. Please see the references for more information.");
 
- script_category(ACT_GATHER_INFO);
+  script_tag(name:"summary", value:"The remote load balancer suffers from an information disclosure
+  vulnerability.");
+
+  script_tag(name:"insight", value:"The remote host appears to be a F5 BigIP load balancer which encodes
+  within a cookie the IP address of the actual web server it is acting on behalf of. Additionally, information
+  after 'BIGipServer' is configured by the user and may be the logical name of the device. These values may
+  disclose sensitive information, such as internal IP addresses and names.");
+
+  script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_analysis");
 
- script_copyright("This script is Copyright (C) 2005 Shavlik Technologies, LLC");
- family = "Web Servers";
- script_family(family);
- script_require_ports("Services/www", 80);
- script_dependencies("find_service.nasl", "http_version.nasl");
-
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  exit(0);
 }
 
 
@@ -72,8 +60,6 @@ include("global_settings.inc");
 include("http_func.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port)) exit(0);
-
 
 # Number of HTTP connections.
 # - gets reset if a new cookie is found.
@@ -83,15 +69,15 @@ max_retries = 10;
 flag = 0;
 
 while(retries-- && max_retries--) {
-  # Get a cookie.
   soc = http_open_socket(port);
-  if ( ! soc && flag == 0 ) exit(0);
+  if ( ! soc && flag == 0 )
+    exit(0);
   else if( ! soc )  {
-	report_error = 1;
-	break;
-	}
-  flag ++;
- 
+    report_error = 1;
+    break;
+  }
+  flag++;
+
   req = http_get(item:"/", port:port);
   send(socket:soc, data:req);
   http_headers = http_recv_headers2(socket:soc);
@@ -151,33 +137,17 @@ while(retries-- && max_retries--) {
 
 # Generate a report if we got at least one cookie.
 if (this_cookie) {
-  if(report_error == 1) 
-    report = "
-The script failed in making a socket connection to the target system
-after a previous connection worked.  This may affect the completeness
-of the report and you might wish to rerun this test again on the
-targeted system. 
-";
+  if(report_error == 1)
+    report = " The script failed in making a socket connection to the target system after a previous connection worked. This may affect the completeness of the report and you might wish to rerun this test again on the targeted system.";
+  else if(report_error == 2)
+    report = "The script failed in finding a BIG-IP cookie on the target system after a previous cookie was found.  This may affect the completeness of the report and you might wish to rerun this test again on the targeted system.";
 
-  if(report_error == 2)
-    report = "
-The script failed in finding a BIG-IP cookie on the target system
-after a previous cookie was found.  This may affect the completeness
-of the report and you might wish to rerun this test again on the
-targeted system. 
-";
-
-  report = report + "
-The first column is the original cookie, the second the IP address and
-the third the TCP port:
-";
-
+  report += "The first column is the original cookie, the second the IP address and the third the TCP port:";
   foreach cookie (keys(cookie_jar)) {
-    report = string(
-      report, "\n",
-      "  ", cookie, "\t", ips[cookie], "\t", ports[cookie]
-    );
+    report = string(report, "\n", "  ", cookie, "\t", ips[cookie], "\t", ports[cookie]);
   }
-
   security_message(port:port, data:report);
+  exit(0);
 }
+
+exit(99);

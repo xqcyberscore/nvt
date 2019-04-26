@@ -1,5 +1,4 @@
 # OpenVAS Vulnerability Test
-# $Id: nimda.nasl 9348 2018-04-06 07:01:19Z cfischer $
 # Description: Tests for Nimda Worm infected HTML files
 #
 # Authors:
@@ -25,63 +24,62 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "Your server appears to have been compromised by the 
-Nimda mass mailing worm. It uses various known IIS 
-vulnerabilities to compromise the server.
-
-Anyone visiting compromised Web servers will be prompted to
-download an .eml (Outlook Express) email file, which
-contains the worm as an attachment. 
-
-Also, the worm will create open network shares on the infected 
-computer, allowing access to the system. During this process
-the worm creates the guest account with Administrator privileges.";
-
-tag_solution = "Take this server offline immediately, rebuild it and
-apply ALL vendor patches and security updates before reconnecting
-server to the internet, as well as security settings discussed in 
-Additional Information section of Microsoft's web site at
-
-http://www.microsoft.com/technet/security/bulletin/ms01-044.mspx
-
-Check ALL of your local Microsoft based workstations for infection.
-Note: this worm has already infected more than 500,000 computers
-worldwide since its release in late 2001.
-
-See:  http://www.cert.org/advisories/CA-2001-26.html";
-
-
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.10767");
- script_version("$Revision: 9348 $");
- script_cve_id("CVE-2001-0545", "CVE-2001-0508", "CVE-2001-0544", "CVE-2001-0506",
-               "CVE-2001-0507");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_tag(name:"cvss_base", value:"7.2");
- script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
- name = "Tests for Nimda Worm infected HTML files";
- script_name(name);
- script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_analysis");
- script_copyright("This script is Copyright (C) 2001 Matt Moore");
- family = "Web application abuses";
- script_family(family);
- script_dependencies("find_service.nasl", "no404.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
-}
+  script_oid("1.3.6.1.4.1.25623.1.0.10767");
+  script_version("2019-04-24T07:26:10+0000");
+  script_cve_id("CVE-2001-0545", "CVE-2001-0508", "CVE-2001-0544", "CVE-2001-0506", "CVE-2001-0507");
+  script_tag(name:"last_modification", value:"2019-04-24 07:26:10 +0000 (Wed, 24 Apr 2019)");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
+  script_name("Tests for Nimda Worm infected HTML files");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 2001 Matt Moore");
+  script_family("Malware");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
-# Check for references to readme.eml in default HTML page..
+  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/bulletin/ms01-044.mspx");
+  script_xref(name:"URL", value:"http://www.cert.org/advisories/CA-2001-26.html");
+
+  script_tag(name:"solution", value:"Take this server offline immediately, rebuild it and
+  apply ALL vendor patches and security updates before reconnecting server to the internet,
+  as well as security settings discussed in
+
+  Additional Information section of Microsoft's web site linked in the references.
+
+  Check ALL of your local Microsoft based workstations for infection.");
+
+  script_tag(name:"summary", value:"Your server appears to have been compromised by the
+  Nimda mass mailing worm. It uses various known IIS vulnerabilities to compromise the
+  server.");
+
+  script_tag(name:"insight", value:"Anyone visiting compromised Web servers will be prompted to
+  download an .eml (Outlook Express) email file, which contains the worm as an attachment.
+
+  Also, the worm will create open network shares on the infected
+  computer, allowing access to the system. During this process
+  the worm creates the guest account with Administrator privileges.
+
+  Note: this worm has already infected more than 500.000 computers
+  worldwide since its release in late 2001.");
+
+  script_tag(name:"solution_type", value:"Mitigation");
+  script_tag(name:"qod_type", value:"remote_probe");
+
+  exit(0);
+}
 
 include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
- r = http_get_cache(item:"/", port:port);
- if(r && "readme.eml" >< r)	
- 	security_message(port);
+r = http_get_cache(item:"/", port:port);
+if(r && "readme.eml" >< r) {
+  security_message(port:port);
+  exit(0);
+}
+
+exit(99);

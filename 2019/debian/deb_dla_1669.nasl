@@ -21,13 +21,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891669");
-  script_version("2019-04-01T07:47:16+0000");
+  script_version("2019-04-26T06:52:17+0000");
   script_cve_id("CVE-2018-16858");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1669-1] libreoffice security update)");
-  script_tag(name:"last_modification", value:"2019-04-01 07:47:16 +0000 (Mon, 01 Apr 2019)");
+  script_tag(name:"last_modification", value:"2019-04-26 06:52:17 +0000 (Fri, 26 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-02-11 00:00:00 +0100 (Mon, 11 Feb 2019)");
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

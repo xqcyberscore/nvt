@@ -1,11 +1,10 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: db2_dos.nasl 4902 2017-01-02 10:59:52Z cfi $
 #
 # DB2 DOS
 #
 # Authors:
-# Michel Arboi <arboi@alussinan.org>, starting 
+# Michel Arboi <arboi@alussinan.org>, starting
 # from miscflood.nasl
 #
 # Copyright:
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10871");
-  script_version("$Revision: 4902 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-02 11:59:52 +0100 (Mon, 02 Jan 2017) $");
+  script_version("2019-04-24T07:26:10+0000");
+  script_tag(name:"last_modification", value:"2019-04-24 07:26:10 +0000 (Wed, 24 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(3010);
   script_tag(name:"cvss_base", value:"5.0");
@@ -42,16 +41,12 @@ if(description)
   script_dependencies("find_service.nasl");
   script_require_ports(6789, 6790);
 
-  tag_summary = "It was possible to crash the DB2 database by sending just one byte to it.";
+  script_tag(name:"solution", value:"Upgrade your software.");
 
-  tag_impact = "An attacker  may use this attack to make this service crash continuously, preventing you
-  from working properly.";
+  script_tag(name:"summary", value:"It was possible to crash the DB2 database by sending just one byte to it.");
 
-  tag_solution = "Upgrade your software";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
+  script_tag(name:"impact", value:"An attacker may use this attack to make this service crash continuously, preventing you
+  from working properly.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -61,9 +56,12 @@ if(description)
 
 function test_db2_port( port ) {
 
-  if( ! get_port_state( port ) ) return;
+  if( ! get_port_state( port ) )
+    return;
+
   soc = open_sock_tcp( port );
-  if( ! soc ) return;
+  if( ! soc )
+    return;
 
   for( i = 0; i < 100; i++ ) {
 

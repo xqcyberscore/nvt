@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: osX_apache_finder.nasl 9094 2018-03-14 07:52:16Z cfischer $
 #
 # MacOS X Finder '.DS_Store' Information Disclosure
 #
@@ -28,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10756");
-  script_version("$Revision: 9094 $");
+  script_version("2019-04-24T07:26:10+0000");
   script_cve_id("CVE-2016-1776", "CVE-2018-6470");
   script_bugtraq_id(3316, 3324, 85054);
-  script_tag(name:"last_modification", value:"$Date: 2018-03-14 08:52:16 +0100 (Wed, 14 Mar 2018) $");
+  script_tag(name:"last_modification", value:"2019-04-24 07:26:10 +0000 (Wed, 24 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -49,15 +48,12 @@ if(description)
   script_xref(name:"URL", value:"https://helpx.adobe.com/dreamweaver/kb/remove-ds-store-files-mac.html");
   script_xref(name:"URL", value:"https://support.apple.com/en-us/HT1629");
 
-  tag_summary = "MacOS X creates a hidden file '.DS_Store', in each directory that has been viewed
+  script_tag(name:"solution", value:"Block access to hidden files (starting with a dot) within your webservers
+  configuration");
+
+  script_tag(name:"summary", value:"MacOS X creates a hidden file '.DS_Store', in each directory that has been viewed
   with the 'Finder'. This file contains a list of the contents of the directory, giving an attacker
-  information on the structure and contents of your website.";
-
-  tag_solution = "Block access to hidden files (starting with a dot) within your webservers
-  configuration";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  information on the structure and contents of your website.");
 
   script_tag(name:"solution_type", value:"Workaround");
   script_tag(name:"qod_type", value:"remote_analysis");
@@ -74,11 +70,11 @@ port = get_http_port( default:80 );
 
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
-  if( dir == "/" ) dir = "";
+  if( dir == "/" )
+    dir = "";
+
   url = dir + "/.DS_Store";
-
   res = http_get_cache( port:port, item:url );
-
   if( res =~ "^HTTP/1\.[01] 200" && "Bud1" >< res ) {
     report += '\n' + report_vuln_url( port:port, url:url, url_only:TRUE );
     found   = TRUE;

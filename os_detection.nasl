@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105937");
-  script_version("2019-04-18T11:10:26+0000");
-  script_tag(name:"last_modification", value:"2019-04-18 11:10:26 +0000 (Thu, 18 Apr 2019)");
+  script_version("2019-04-25T09:49:09+0000");
+  script_tag(name:"last_modification", value:"2019-04-25 09:49:09 +0000 (Thu, 25 Apr 2019)");
   script_tag(name:"creation_date", value:"2016-02-19 11:19:54 +0100 (Fri, 19 Feb 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -49,7 +49,7 @@ if(description)
                       "gb_cisco_csma_version.nasl", "gb_cisco_ip_phone_detect.nasl",
                       "gb_cisco_ios_xr_version.nasl", "gb_ssh_junos_get_version.nasl",
                       "gb_palo_alto_panOS_version.nasl", "gb_screenos_version.nasl",
-                      "gb_extremeos_snmp_detect.nasl",
+                      "gb_extremeos_snmp_detect.nasl", "gb_tippingpoint_sms_consolidation.nasl",
                       "gb_cisco_asa_version_snmp.nasl", "gb_cisco_asa_version.nasl",
                       "gb_cisco_asa_detect.nasl",
                       "gb_arista_eos_snmp_detect.nasl", "gb_netgear_prosafe_consolidation.nasl",

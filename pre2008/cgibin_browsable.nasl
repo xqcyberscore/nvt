@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cgibin_browsable.nasl 4386 2016-10-31 07:02:07Z cfi $
 #
 # /cgi-bin directory browsable
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10039");
-  script_version("$Revision: 4386 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-31 08:02:07 +0100 (Mon, 31 Oct 2016) $");
+  script_version("2019-04-24T07:26:10+0000");
+  script_tag(name:"last_modification", value:"2019-04-24 07:26:10 +0000 (Wed, 24 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -40,17 +39,14 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  tag_summary = "The /cgi-bin directory is browsable.
-  This will show you the name of the installed common scripts
-  and those which are written by the webmaster and thus may be
-  exploitable.
+  script_tag(name:"solution", value:"Make the /cgi-bin non-browsable.");
 
-  This NVT has been replaced by NVT 'Enabled Directory Listing Detection' (OID: 1.3.6.1.4.1.25623.1.0.111074).";
+  script_tag(name:"summary", value:"The /cgi-bin directory is browsable.
 
-  tag_solution = "Make the /cgi-bin non-browsable.";
+  This NVT has been replaced by NVT 'Enabled Directory Listing Detection' (OID: 1.3.6.1.4.1.25623.1.0.111074).");
 
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"impact", value:"This will show you the name of the installed common scripts
+  and those which are written by the webmaster and thus may be exploitable.");
 
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -60,44 +56,4 @@ if(description)
   exit(0);
 }
 
-include("http_func.inc");
-include("http_keepalive.inc");
-
 exit(66);
-
-port = get_http_port( default:80 );
-
-dirs = NULL;
-report_head = 'The following CGI directories are browsable:\n\n';
-
-report_tail = '\nThis shows an attacker the name of the installed common scripts and those
-which are written by the webmaster and thus may be exploitable.';
-
-foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
-
-  if( dir == "/" ) dir = "";
-  url = dir + "/";
-
-  buf = http_get_cache( item:url, port:port );
-
-  if( ereg( pattern:"^HTTP/[0-9]\.[0-9] 200 ", string:buf ) ) {
-
-    buf = tolower( buf );
-    if( dir == "" ) {
-      must_see = "index of";
-    } else {
-      must_see = string( "<title>", dir );
-    }
-
-    if( must_see >< buf ) {
-      dirs += report_vuln_url( port:port, url:url, url_only:TRUE ) + '\n';
-    }
-  }
-}
-
-if( dirs != NULL ) {
-  security_message( port:port, data:report_head + dirs + report_tail );
-  exit( 0 );
-}
-
-exit( 99 );

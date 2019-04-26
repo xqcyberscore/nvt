@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.50282");
-  script_version("2019-04-24T11:06:32+0000");
-  script_tag(name:"last_modification", value:"2019-04-24 11:06:32 +0000 (Wed, 24 Apr 2019)");
+  script_version("2019-04-25T09:49:09+0000");
+  script_tag(name:"last_modification", value:"2019-04-25 09:49:09 +0000 (Thu, 25 Apr 2019)");
   script_tag(name:"creation_date", value:"2008-01-17 22:05:49 +0100 (Thu, 17 Jan 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -450,6 +450,32 @@ if( ( uname =~ "Lights-Out.*Management" && ( uname =~ "Copyright .+ ServerEngine
   exit( 0 );
 }
 
+# Initial setup:
+# Welcome to the TippingPoint Technologies SMS Initial Setup wizard.
+#
+# Configured device:
+# Welcome to TippingPoint Technologies SMS !
+if( _uname = egrep( pattern:"Welcome to (the )?TippingPoint Technologies SMS", string:uname ) ) {
+
+  version = ssh_cmd( socket:sock, cmd:"version", nosh:TRUE, return_errors:FALSE, pty:TRUE, timeout:20, retry:10, pattern:"Version:" );
+
+  # Version:
+  #     5.0.0.106258
+  #
+  # Patch:
+  #     5.0.0.106258.1
+  if( "Version:" >< version )
+    set_kb_item( name:"tippingpoint/sms/ssh-login/" + port + "/version_cmd", value:version );
+
+  set_kb_item( name:"tippingpoint/sms/ssh-login/" + port + "/uname", value:chomp( _uname ) );
+  set_kb_item( name:"tippingpoint/sms/ssh-login/version_cmd_or_uname", value:TRUE );
+  set_kb_item( name:"tippingpoint/sms/ssh-login/port", value:port );
+
+  set_kb_item( name:"ssh/restricted_shell", value:TRUE );
+  set_kb_item( name:"ssh/no_linux_shell", value:TRUE );
+  exit( 0 );
+}
+
 if( "HyperIP Command Line Interface" >< uname ) {
 
   replace_kb_item( name:"ssh/send_extra_cmd", value:'\n' );
@@ -523,12 +549,15 @@ if( "linux" >< tolower( uname ) ) {
   }
 }
 
-if( "(Cisco Controller)" >< uname ) exit( 0 );
+if( "(Cisco Controller)" >< uname )
+  exit( 0 );
 
 # To catch the uname above before doing an exit
-if( get_kb_item( "greenbone/gos" ) ) exit( 0 );
+if( get_kb_item( "greenbone/gos" ) )
+  exit( 0 );
 
-# nb: It wasn't clear if this was only seen on GOS so keep this for now
+# nb: It wasn't clear if this was only seen on GOS so keep this for now.
+# nb2: This exists at least on TippingPoint Security Management System (SMS) as well.
 if( "restricted: cannot specify" >< uname ) {
   set_kb_item( name:"ssh/restricted_shell", value:TRUE );
   exit( 0 );

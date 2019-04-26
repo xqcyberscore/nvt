@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ospf_detect.nasl 10411 2018-07-05 10:15:10Z cfischer $
 #
 # OSPF detection
 #
@@ -33,14 +32,14 @@
 #    1      Hello                  Discover/maintain  neighbors
 #    2      Database Description   Summarize database contents
 #    3      Link State Request     Database download
-#    4      Link State Update      Database update  
+#    4      Link State Update      Database update
 #    5      Link State Ack         Flooding acknowledgment
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11906");
-  script_version("$Revision: 10411 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-05 12:15:10 +0200 (Thu, 05 Jul 2018) $");
+  script_version("2019-04-24T07:26:10+0000");
+  script_tag(name:"last_modification", value:"2019-04-24 07:26:10 +0000 (Wed, 24 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -67,8 +66,8 @@ if(description)
 
 ##include("dump.inc");
 
-if ( islocalhost() ) exit(0);
-if ( ! islocalnet() ) exit(0);
+if( islocalhost() || ! islocalnet() )
+  exit(0);
 
 join_multicast_group("224.0.0.5");	# AllSPFRouters
 join_multicast_group("224.0.0.6");	# AllDRouters

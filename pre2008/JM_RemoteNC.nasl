@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: JM_RemoteNC.nasl 4817 2016-12-20 15:32:25Z cfi $
 #
 # RemoteNC detection
 #
@@ -30,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11855");
-  script_version("$Revision: 4817 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-20 16:32:25 +0100 (Tue, 20 Dec 2016) $");
+  script_version("2019-04-24T07:26:10+0000");
+  script_tag(name:"last_modification", value:"2019-04-24 07:26:10 +0000 (Wed, 24 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -42,18 +41,15 @@ if(description)
   script_dependencies("find_service2.nasl", "JM_FsSniffer.nasl");
   script_require_ports("Services/RemoteNC", 19340);
 
-  tag_summary = "This host appears to be running RemoteNC on this port
+  script_xref(name:"URL", value:"http://www.rapter.net/jm2.htm");
 
-  RemoteNC is a Backdoor which allows an intruder gain
-  remote control of your computer.";
+  script_tag(name:"solution", value:"See the references for details on the removal.");
 
-  tag_impact = "An attacker may use it to steal your passwords.";
+  script_tag(name:"impact", value:"An attacker may use it to steal your passwords.");
 
-  tag_solution = "See www.rapter.net/jm2.htm for details on removal";
+  script_tag(name:"summary", value:"This host appears to be running RemoteNC on this port.
 
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"summary", value:tag_summary);
+  RemoteNC is a Backdoor which allows an intruder gain remote control of your computer.");
 
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_analysis");
@@ -63,17 +59,15 @@ if(description)
 
 include("misc_func.inc");
 
-port = get_kb_item("Services/RemoteNC");
-if( ! port ) port = 19340;
-
-if( ! get_port_state( port ) ) exit( 0 );
-
+port = get_port_for_service( default:19340, proto:"RemoteNC" );
 soc = open_sock_tcp( port );
-if( ! soc ) exit( 0 );
+if( ! soc )
+  exit( 0 );
 
 r = recv( socket:soc, min:1, length:30 );
 close( soc );
-if( ! r ) exit( 0 );
+if( ! r )
+  exit( 0 );
 
 if( "RemoteNC Control Password:" >< r ) {
   security_message( port:port );

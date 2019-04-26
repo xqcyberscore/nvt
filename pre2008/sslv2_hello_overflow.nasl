@@ -1,7 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sslv2_hello_overflow.nasl 6053 2017-05-01 09:02:51Z teissa $
-# 
+#
 # NSS Library SSLv2 Challenge Overflow
 #
 # Authors:
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14361");
-  script_version("$Revision: 6053 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
+  script_version("2019-04-24T07:26:10+0000");
+  script_tag(name:"last_modification", value:"2019-04-24 07:26:10 +0000 (Wed, 24 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2004-0826");
   script_bugtraq_id(11015);
@@ -59,53 +58,57 @@ if(description)
 include("http_func.inc");
 include("ssl_funcs.inc");
 
-if( ! port = get_ssl_port() ) exit( 0 );
+if( ! port = get_ssl_port() )
+  exit( 0 );
 
 banner = get_http_banner( port:port );
 
 if( safe_checks() ) {
-  TestOF = 0;
+  test = 0;
 } else {
-  TestOF = 1;
+  test = 1;
 }
 
 if( banner ) {
   if( egrep( pattern:".*(Netscape.Enterprise|Sun-ONE).*", string:banner ) ) {
-    TestOF++;
+    test++;
   }
 }
 
-if( ! TestOF ) exit( 0 );
+if( ! test )
+  exit( 0 );
 
 soc = open_sock_tcp( port, transport:ENCAPS_IP );
-if( ! soc ) exit( 0 );
+if( ! soc )
+  exit( 0 );
 
 # First we try a normal hello
-req = raw_string( 0x80, 0x1c, 0x01, 0x00, 
+req = raw_string( 0x80, 0x1c, 0x01, 0x00,
                   0x02, 0x00, 0x03, 0x00,
                   0x00, 0x00, 0x10, 0x07,
                   0x00, 0xc0 )
-                  + crap(16, "OpenVAS" );
+                  + crap(16, "VT-Test" );
 
 send( socket:soc, data:req );
 res = recv( socket:soc, length:64 );
+close( soc );
 
 # SSLv2 servers should respond back with the certificate at this point
-if( strlen( res ) < 64 ) exit( 0 );
-
-close( soc );
+if( strlen( res ) < 64 )
+  exit( 0 );
 
 # Now we try to overwrite most of the SSL response packet
 # this should result in some of our data leaking back to us
 
 soc = open_sock_tcp( port, transport:ENCAPS_IP );
-if( ! soc ) exit( 0 );
+if( ! soc )
+  exit( 0 );
 
-req = raw_string( 0x80, 0x44, 0x01, 0x00, 
+req = raw_string( 0x80, 0x44, 0x01, 0x00,
                   0x02, 0x00, 0x03, 0x00,
                   0x00, 0x00, 0x38, 0x07,
                   0x00, 0xc0 )
-                  + crap( 16, data:"OpenVAS" )
+                  + crap( 16, data:"VT-Test" )
                   + crap( 40, data:"VULN" );
 
 send( socket:soc, data:req );
@@ -127,4 +130,3 @@ exit( 99 );
 #8.?.....
 #(/..5._.2..I....S@J\i.......wK..H.....v4.o..T.......f......3V>.o.l.O."....X.G..:G7.....9a...... ....V...t.Sf
 #|....8...VULNVULNVULNVULNh
-

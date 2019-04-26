@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: compaq_web_mgmt_password.nasl 6300 2017-06-09 21:31:52Z cfischer $
 #
 # Compaq Web-based Management Login
 #
@@ -32,8 +31,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11879");
-  script_version("$Revision: 6300 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-09 23:31:52 +0200 (Fri, 09 Jun 2017) $");
+  script_version("2019-04-24T07:26:10+0000");
+  script_tag(name:"last_modification", value:"2019-04-24 07:26:10 +0000 (Wed, 24 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -60,7 +59,7 @@ if(description)
   host it may disclose the SNMP community strings in use, allowing an attacker to set device configuration if the 'write'
   community string is uncovered.
 
-  To manually test for this bug, you can log into the Compaq web server via a browser (https://host:2381/).
+  To manually test for this bug, you can log into the Compaq web server via a browser (https://example.com:2381/).
   Log in with a username/password combination of administrator/");
 
   script_tag(name:"qod_type", value:"remote_app");
@@ -78,14 +77,16 @@ port = get_http_port( default:8086 );
 
 req = http_get( item:"/cpqlogin.htm?RedirectUrl=/&RedirectQueryString=", port:port );
 res = http_keepalive_send_recv( port:port, data:req );
-if( isnull( res ) ) exit( 0 );
+if( ! res )
+  exit( 0 );
 
 if( ( res =~ "^HTTP/1\.[01] 200" ) && ( "Server: CompaqHTTPServer/" >< res ) && ( "Set-Cookie: Compaq" >< res ) ) {
 
   foreach pass( passlist ) {
 
     cookie = eregmatch( pattern:"Set-Cookie: (.*);", string:res );
-    if( isnull( cookie[1] ) ) exit( 0 );
+    if( isnull( cookie[1] ) )
+      exit( 0 );
 
     poststr = string( "redirecturl=&redirectquerystring=&user=administrator&password=", pass );
     req = string( "POST /proxy/ssllogin HTTP/1.0\r\n",
@@ -95,7 +96,7 @@ if( ( res =~ "^HTTP/1\.[01] 200" ) && ( "Server: CompaqHTTPServer/" >< res ) && 
                   poststr, "\r\n" );
     res = http_keepalive_send_recv( port:port, data:req );
     if( "CpqElm-Login: success" >< res ) {
-      report = "It was possible to login with the password'" + pass + "'."; 
+      report = "It was possible to login with the password'" + pass + "'.";
       security_message( port:port, data:report );
       exit( 0 );
     }

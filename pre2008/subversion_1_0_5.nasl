@@ -1,5 +1,4 @@
 # OpenVAS Vulnerability Test
-# $Id: subversion_1_0_5.nasl 9348 2018-04-06 07:01:19Z cfischer $
 # Description: Subversion SVN Protocol Parser Remote Integer Overflow
 #
 # Authors:
@@ -23,81 +22,64 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_solution = "Upgrade to version 1.0.5 or newer";
-
-tag_summary = "A remote overflow exists in Subversion. svnserver fails to validate 
-svn:// requests resulting in a heap overflow. With a specially 
-crafted request, an attacker can cause arbitrary code execution 
-resulting in a loss of integrity.";
-
-# ref: ned <nd@felinemenace.org>
-
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.12284");
- script_version("$Revision: 9348 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_bugtraq_id(10519);
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_cve_id("CVE-2004-0413");
- script_xref(name:"OSVDB", value:"6935");
- script_xref(name:"GLSA", value:"GLSA 200406-07");
- script_xref(name:"SuSE", value:"SUSE-SA:2004:018");
+  script_oid("1.3.6.1.4.1.25623.1.0.12284");
+  script_version("2019-04-24T07:26:10+0000");
+  script_tag(name:"last_modification", value:"2019-04-24 07:26:10 +0000 (Wed, 24 Apr 2019)");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_bugtraq_id(10519);
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_cve_id("CVE-2004-0413");
+  script_xref(name:"OSVDB", value:"6935");
+  script_xref(name:"GLSA", value:"GLSA 200406-07");
+  script_xref(name:"SuSE", value:"SUSE-SA:2004:018");
+  script_name("Subversion SVN Protocol Parser Remote Integer Overflow");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 2004 David Maciejak");
+  script_family("Remote file access");
+  script_dependencies("find_service2.nasl");
+  script_require_ports("Services/subversion", 3690);
 
- name = "Subversion SVN Protocol Parser Remote Integer Overflow";
- script_name(name);
+  script_tag(name:"solution", value:"Upgrade to version 1.0.5 or newer.");
 
+  script_tag(name:"summary", value:"A remote overflow exists in Subversion. svnserver fails to validate
+  svn:// requests resulting in a heap overflow.");
 
+  script_tag(name:"impact", value:"With a specially crafted request, an attacker can cause arbitrary code
+  execution resulting in a loss of integrity.");
 
- script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_copyright("This script is Copyright (C) 2004 David Maciejak");
- family = "Remote file access";
- script_family(family);
- script_dependencies("find_service2.nasl");
- script_require_ports("Services/subversion");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  exit(0);
 }
 
+include("misc_func.inc");
 
-
-# start check
-# mostly horked from MetaSploit Framework subversion overflow check
-
-port = get_kb_item("Services/subversion");
-if ( ! port ) port = 3690;
-
-if (! get_tcp_port_state(port))
-	exit(0);
-
-dat = string("( 2 ( edit-pipeline ) 24:svn://host/svn/OpenVASr0x ) ");
+port = get_port_for_service(default:3690, proto:"subversion");
 
 soc = open_sock_tcp(port);
-if (!soc)
-        exit(0);
+if(!soc)
+  exit(0);
 
 r = recv_line(socket:soc, length:1024);
-
-if (! r)
-	exit(0);
-
-send(socket:soc, data:dat);
-r = recv_line(socket:soc, length:256);
-
-if (! r)
-	exit(0);
-
-#display(r);
-
-if (egrep(string:r, pattern:".*subversion-1\.0\.[0-4][^0-9].*"))
-{
-	security_message(port);
+if(!r) {
+  close(soc);
+  exit(0);
 }
 
+dat = string("( 2 ( edit-pipeline ) 24:svn://host/svn/VT-Testr0x ) ");
+send(socket:soc, data:dat);
+r = recv_line(socket:soc, length:256);
 close(soc);
-exit(0);
+if(!r)
+  exit(0);
+
+if(egrep(string:r, pattern:".*subversion-1\.0\.[0-4][^0-9].*")) {
+  security_message(port:port);
+  exit(0);
+}
+
+exit(99);

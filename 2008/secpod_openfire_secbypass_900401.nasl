@@ -1,6 +1,5 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_openfire_secbypass_900401.nasl 14240 2019-03-17 15:50:45Z cfischer $
 # Description: Openfire 'AuthCheck' Filter Security Bypass Vulnerability
 #
 # Authors:
@@ -26,21 +25,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900401");
-  script_version("$Revision: 14240 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-17 16:50:45 +0100 (Sun, 17 Mar 2019) $");
-  script_tag(name:"creation_date", value:"2008-12-02 11:52:55 +0100 (Tue, 02 Dec 2008)");
+  script_version("2019-04-26T06:11:32+0000");
   script_cve_id("CVE-2008-6508");
   script_bugtraq_id(32189);
-  script_copyright("Copyright (C) 2008 SecPod");
+  script_tag(name:"last_modification", value:"2019-04-26 06:11:32 +0000 (Fri, 26 Apr 2019)");
+  script_tag(name:"creation_date", value:"2008-12-02 11:52:55 +0100 (Tue, 02 Dec 2008)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_copyright("Copyright (C) 2008 SecPod");
   script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_banner");
   script_family("Web application abuses");
   script_name("Openfire 'AuthCheck Filter' Security Bypass Vulnerability");
-  script_dependencies("find_service.nasl", "http_version.nasl");
-  script_require_ports(9090);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_dependencies("gb_openfire_detect.nasl");
+  script_require_ports("Services/www", 9090);
+  script_mandatory_keys("OpenFire/Installed");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/32478/");
   script_xref(name:"URL", value:"http://www.igniterealtime.org/downloads/index.jsp");
@@ -54,26 +52,16 @@ if(description)
   imposing access restrictions via a specially crafted URL using 'setup/setup-' and followed by the
   directory traversal sequences. These can be exploited to cause underlying database, access or modify data.");
 
-  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"solution", value:"Upgrade to 3.6.1 or later.");
 
   script_tag(name:"summary", value:"The host is running Openfire and is prone to security bypass vulnerability.");
 
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"solution_type", value:"VendorFix");
+
+  script_tag(name:"deprecated", value:TRUE);
+
   exit(0);
 }
 
-include("http_func.inc");
-include("http_keepalive.inc");
-
-port = 9090;
-response = http_get_cache(item:"/login.jsp", port:port);
-if(!response)
-  exit(0);
-
-if("Openfire Admin Console" >< response)
-{
-  pattern = "Version: ([0-2]\..*|3\.[0-5](\..*)?|3\.6(\.0)?)($|[^.0-9])";
-  if(egrep(pattern:pattern, string:response)){
-    security_message(port);
-  }
-}
+exit(66);

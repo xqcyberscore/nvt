@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sgallery_sql_injection.nasl 6040 2017-04-27 09:02:38Z teissa $
 #
 # SGallery idimage SQL Injection
 #
@@ -24,15 +23,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-# From: Janek Vind <come2waraxe@yahoo.com>
-# Subject: Critical Sql Injection in Sgallery module for PhpNuke
-# Date: 2005-01-13 05:08
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.16164");
-  script_version("$Revision: 6040 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+  script_version("2019-04-24T07:26:10+0000");
+  script_tag(name:"last_modification", value:"2019-04-24 07:26:10 +0000 (Wed, 24 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -42,11 +37,13 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2005 Noam Rathaus");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_dependencies("secpod_php_nuke_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_mandatory_keys("php-nuke/installed"); # Critical Sql Injection in Sgallery module for PhpNuke
 
-  script_tag(name:"solution", value:"Upgrade to the latest version of this software.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"summary", value:"The remote host is running SGallery, a module for PHP-Nuke.
 
   A critical SQL injection in the remote version of this module has been found, this
@@ -63,11 +60,14 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port( default:80 );
-if( ! can_host_php( port:port ) ) exit( 0 );
+if(! can_host_php( port:port ) )
+  exit( 0 );
 
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
-  if( dir == "/" ) dir = "";
+  if( dir == "/" )
+    dir = "";
+
   url = dir + "/imageview.php?idimage='";
 
   if( http_vuln_check( port:port, url:url, pattern:"You have an error in your SQL syntax near '\'' at line 1" ) ) {

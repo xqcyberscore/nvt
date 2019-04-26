@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: htsearch_location.nasl 4809 2016-12-19 16:51:13Z cfi $
 #
 # ht://Dig's htsearch reveals web server path
 #
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10385");
-  script_version("$Revision: 4809 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-19 17:51:13 +0100 (Mon, 19 Dec 2016) $");
+  script_version("2019-04-24T07:26:10+0000");
+  script_tag(name:"last_modification", value:"2019-04-24 07:26:10 +0000 (Wed, 24 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -49,9 +48,9 @@ if(description)
 
   script_tag(name:"impact", value:"This allows attacker to gather sensitive information about the remote host.");
 
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year since disclosure of this vulnerability.
-  Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features,
-  remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -66,10 +65,12 @@ port = get_http_port( default:80 );
 
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
-  if( dir == "/" ) dir = "";
+  if( dir == "/" )
+    dir = "";
+
   VULN = FALSE;
 
-  url = dir + "/htsearch?config=openvas&restrict=&exclude=&method=and&format=builtin-long&sort=score&words=";
+  url = dir + "/htsearch?config=vt-test&restrict=&exclude=&method=and&format=builtin-long&sort=score&words=";
   req = http_get( item:url, port:port );
   res = http_keepalive_send_recv( port:port, data:req );
 

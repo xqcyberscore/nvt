@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: oracle_web_admin_server.nasl 6040 2017-04-27 09:02:38Z teissa $
 #
 # Oracle Web Administration Server Detection
 #
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10738");
-  script_version("$Revision: 6040 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+  script_version("2019-04-24T07:26:10+0000");
+  script_tag(name:"last_modification", value:"2019-04-24 07:26:10 +0000 (Wed, 24 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"1.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:N/I:P/A:N");
@@ -41,17 +40,15 @@ if(description)
   script_require_ports("Services/www", 8888);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  tag_summary = "We detected the remote web server as an Oracle
+  script_tag(name:"solution", value:"Disable the Oracle Administration web server if it is unnecessary,
+  or block the web server's port number on your Firewall.");
+
+  script_tag(name:"summary", value:"We detected the remote web server as an Oracle
   Administration web server. This web server enables attackers to configure
   your Oracle Database server if they gain access to a valid authentication
-  username and password.";
+  username and password.");
 
-  tag_solution = "Disable the Oracle Administration web server if it is unnecessary,
-  or block the web server's port number on your Firewall.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-
+  script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_banner");
 
   exit(0);

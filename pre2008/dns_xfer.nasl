@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: dns_xfer.nasl 4463 2016-11-10 08:01:39Z cfi $
 #
 # DNS AXFR
 #
@@ -31,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10595");
-  script_version("$Revision: 4463 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-10 09:01:39 +0100 (Thu, 10 Nov 2016) $");
+  script_version("2019-04-24T07:26:10+0000");
+  script_tag(name:"last_modification", value:"2019-04-24 07:26:10 +0000 (Wed, 24 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -41,24 +40,21 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2000 j_lampe@bellsouth.net");
   script_family("General");
-  script_mandatory_keys("DNS/identified");
   script_dependencies("dns_server.nasl", "msdns-server-hostname-disclosure.nasl");
+  script_mandatory_keys("DNS/identified");
 
-  tag_summary = "The remote name server allows DNS zone transfers to be performed.
-  A zone transfer will allow the remote attacker to instantly populate
-  a list of potential targets. In addition, companies often use a
-  naming convention which can give hints as to a servers primary application
-  (for instance, proxy.company.com, payroll.company.com, b2b.company.com, etc.).";
+  script_tag(name:"impact", value:"A zone transfer will allow the remote attacker to instantly
+  populate a list of potential targets. In addition, companies often use a naming convention
+  which can give hints as to a servers primary application (for instance, proxy.company.com,
+  payroll.company.com, b2b.company.com, etc.).
 
-  tag_impact = "As such, this information is of great use to an attacker who may use
-  it to gain information about the topology of your network and spot new targets.";
+  As such, this information is of great use to an attacker who may use it to gain information
+  about the topology of your network and spot new targets.");
 
-  tag_solution = "Restrict DNS zone transfers to only the servers that
-  absolutely need it.";
+  script_tag(name:"solution", value:"Restrict DNS zone transfers to only the servers that
+  absolutely need it.");
 
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"The remote name server allows DNS zone transfers to be performed.");
 
   script_tag(name:"qod_type", value:"remote_analysis");
 
@@ -117,7 +113,7 @@ get_host_by_addr = get_host_by_addr +  raw_string( 0x07, 0x69, 0x6E, 0x2D, 0x61,
 
 get_host_by_addr = get_host_by_addr + raw_string( 0x00, 0x00, 0x0C, 0x00, 0x01 );
 
-# fetch big-endian 16-bit value (string s, offset o)
+# nb: big-endian 16-bit value (string s, offset o)
 function ntohs( s, o ) {
 
   local_var ret_hi, ret_lo;
@@ -148,7 +144,7 @@ function skiplabels( buf, buflen, jump ) {
  return jump;
 }
 
-# fetch one chain of labels
+# nb: fetch one chain of labels
 # returns the chain of labels (decompressed) or NULL if error
 # skips "skip" leading labels
 function fetchlabels( buf, buflen, jump, skip ) {
@@ -228,7 +224,7 @@ for( theta = 0; ( theta < ancount ) && ( jump < myretlen ); theta ++ ) {
 
     if( debug_level ) display( "debug: UDP answer RR rtype=", rtype, " rclass=", rclass, "\n" );
 
-    # check type 12 (PTR) & class 1 (IN)
+    # nb: check type 12 (PTR) & class 1 (IN)
     # XXX we might get multiple PTR records
     if( rtype == 12 && rclass == 1 ) {
       found_answer = 1;

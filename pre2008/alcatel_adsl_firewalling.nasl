@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: alcatel_adsl_firewalling.nasl 7175 2017-09-18 11:55:15Z cfischer $
 #
 # Alcatel ADSL modem with firewalling off
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10760");
-  script_version("$Revision: 7175 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:55:15 +0200 (Mon, 18 Sep 2017) $");
+  script_version("2019-04-24T07:26:10+0000");
+  script_tag(name:"last_modification", value:"2019-04-24 07:26:10 +0000 (Wed, 24 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2001-1424", "CVE-2001-1425");
   script_bugtraq_id(2568);
@@ -41,23 +40,24 @@ if(description)
   script_dependencies("telnetserver_detect_type_nd_version.nasl");
   script_require_ports(23); # alcatel's ADSL modem telnet module can't bind to something else
 
-  tag_summary = "On the Alcatel Speed Touch Pro ADSL modem, a protection mechanism 
-  feature is available to ensure that nobody can gain remote access 
-  to the modem (via the WAN/DSL interface). This mechanism guarantees 
-  that nobody from outside your network can access the modem and 
-  change its settings.
+  script_xref(name:"URL", value:"http://www.alcatel.com/consumer/dsl/security.htm");
 
-  The protection is currently not activated on your system.";
-
-  tag_solution = "Telnet to this modem and adjust the security
+  script_tag(name:"solution", value:"Telnet to this modem and adjust the security
   settings as follows:
+
   => ip config firewalling on
+
   => config save
 
-  More information : http://www.alcatel.com/consumer/dsl/security.htm";
- 
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  Please see the reference for more information.");
+
+  script_tag(name:"summary", value:"On the Alcatel Speed Touch Pro ADSL modem, a protection mechanism
+  feature is available to ensure that nobody can gain remote access to the modem (via the WAN/DSL interface).
+
+  This mechanism guarantees that nobody from outside your network can access the modem and
+  change its settings.
+
+  The protection is currently not activated on your system.");
 
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_analysis");
@@ -65,12 +65,16 @@ if(description)
   exit(0);
 }
 
-if( ! ereg( pattern:"^10\.0\.0\..*", string:get_host_ip() ) ) exit( 0 );
+if( ! ereg( pattern:"^10\.0\.0\..*", string:get_host_ip() ) )
+  exit( 0 );
 
 port = 23; # alcatel's ADSL modem telnet module can't bind to something else
-if( ! get_port_state( port ) ) exit( 0 );
+if( ! get_port_state( port ) )
+  exit( 0 );
+
 soc = open_sock_tcp( port );
-if( ! soc ) exit( 0 );
+if( ! soc )
+  exit( 0 );
 
 r = recv( socket:soc, length:160 );
 

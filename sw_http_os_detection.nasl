@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111067");
-  script_version("2019-04-24T11:06:32+0000");
-  script_tag(name:"last_modification", value:"2019-04-24 11:06:32 +0000 (Wed, 24 Apr 2019)");
+  script_version("2019-04-25T09:49:09+0000");
+  script_tag(name:"last_modification", value:"2019-04-25 09:49:09 +0000 (Thu, 25 Apr 2019)");
   script_tag(name:"creation_date", value:"2015-12-10 16:00:00 +0100 (Thu, 10 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -140,6 +140,7 @@ function check_http_banner( port, banner ) {
         banner == "Server: Apache" ||
         banner == "Server: lighttpd" ||
         banner == "Server: sfcHttpd" ||
+        banner == "Server: Web" || # Seen on TrendMicro TippingPoint Security Management System (SMS) but might exist on other products as well...
         banner == "Server: Allegro-Software-RomPager" || # Vendor: "Works with any OS vendor and will function without an OS if needed"
         banner == "Server: Apache-Coyote/1.0" ||
         banner == "Server: Apache-Coyote/1.1" ||

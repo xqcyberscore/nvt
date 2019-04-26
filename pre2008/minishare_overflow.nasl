@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: minishare_overflow.nasl 9328 2018-04-05 11:14:07Z cfischer $
 #
 # MiniShare webserver buffer overflow
 #
@@ -31,11 +30,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.18424");
-  script_version("$Revision: 9328 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-05 13:14:07 +0200 (Thu, 05 Apr 2018) $");
+  script_version("2019-04-24T07:26:10+0000");
+  script_tag(name:"last_modification", value:"2019-04-24 07:26:10 +0000 (Wed, 24 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2004-2271");
-  script_bugtraq_id (11620);
+  script_bugtraq_id(11620);
   script_xref(name:"OSVDB", value:"11530");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -54,7 +53,7 @@ if(description)
 
   script_tag(name:"affected", value:"Version 1.3.4 and below do not seem to be vulnerable.");
 
-  script_tag(name:"solution", value:"Upgrade to MiniShare 1.4.2 or higher.");
+  script_tag(name:"solution", value:"Upgrade to MiniShare 1.4.2 or later.");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -68,9 +67,8 @@ include("http_keepalive.inc");
 port = get_http_port( default:80 );
 
 res = http_get_cache( item:"/", port:port );
-if( isnull( res ) ) exit( 0 );
-
-if( "<title>MiniShare</title>" >!< res ) exit( 0 );
+if(!res || "<title>MiniShare</title>" >!< res)
+  exit( 0 );
 
 if( egrep( string:res, pattern:'<p class="versioninfo"><a href="http://minishare\\.sourceforge\\.net/">MiniShare 1\\.(3\\.([4-9][^0-9]|[0-9][0-9])|4\\.[0-1][^0-9])' ) ) {
   security_message( port:port );

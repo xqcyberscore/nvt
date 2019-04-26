@@ -1,5 +1,4 @@
 # OpenVAS Vulnerability Test
-# $Id: bofra_detect.nasl 9348 2018-04-06 07:01:19Z cfischer $
 # Description: Bofra Virus Detection
 #
 # Authors:
@@ -23,68 +22,56 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "The remote host seems to have been infected with the Bofra virus or one of its 
-variants, which infects machines via an Internet Explorer IFRAME exploit.  
-It is very likely this system has been compromised.";
-
-tag_solution = "Re-install the remote system.
-";
-# Created: 11/15/04
-# Last Updated: 11/15/04
-
 if(description)
 {
-        script_oid("1.3.6.1.4.1.25623.1.0.15746");
-        script_version("$Revision: 9348 $");
-        script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
-        script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
-        script_tag(name:"cvss_base", value:"10.0");
-        script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-	script_cve_id("CVE-2004-1050");
-	script_bugtraq_id(11515);
-        name = "Bofra Virus Detection";
+  script_oid("1.3.6.1.4.1.25623.1.0.15746");
+  script_version("2019-04-24T07:26:10+0000");
+  script_tag(name:"last_modification", value:"2019-04-24 07:26:10 +0000 (Wed, 24 Apr 2019)");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_cve_id("CVE-2004-1050");
+  script_bugtraq_id(11515);
+  script_name("Bofra Virus Detection");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 2004 Brian Smith-Sweeney");
+  script_family("Malware");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports(1639);
 
-        summary = "Determines the presence of a Bofra virus infection resulting from an IFrame exploit";
-        family = "Malware";
-        script_name(name);
-        script_category(ACT_GATHER_INFO);
+  script_xref(name:"URL", value:"http://securityresponse.symantec.com/avcenter/venc/data/w32.bofra.c@mm.html");
+
+  script_tag(name:"solution", value:"Re-install the remote system.");
+
+  script_tag(name:"summary", value:"The remote host seems to have been infected with the Bofra virus or one of its
+  variants, which infects machines via an Internet Explorer IFRAME exploit.
+
+  It is very likely this system has been compromised.");
+
   script_tag(name:"qod_type", value:"remote_analysis");
-        script_copyright("This script is Copyright (C) 2004 Brian Smith-Sweeney");
-        script_family(family);
-	script_dependencies('http_version.nasl');
-	script_require_ports(1639);
-        script_tag(name : "solution" , value : tag_solution);
-        script_tag(name : "summary" , value : tag_summary);
-        script_xref(name : "URL" , value : "http://securityresponse.symantec.com/avcenter/venc/data/w32.bofra.c@mm.html");
-        exit(0);
+  script_tag(name:"solution_type", value:"Workaround");
+
+  exit(0);
 }
- 
-#
-# User-defined variables
-#
-# This is where we saw Bofra; YMMV
-port=1639;
 
-#
-# End user-defined variables; you should not have to touch anything below this
-#
-
-# Get the appropriate http functions
 include("http_func.inc");
 include("http_keepalive.inc");
 
+port = 1639; # This is where we saw Bofra; YMMV
+if(!get_port_state(port))
+  exit(0);
 
-if ( ! get_port_state ( port ) ) exit(0);
-
-# Prep & send the http get request, quit if you get no answer
-req = http_get(item:"/reactor",port:port);
+url = "/reactor";
+req = http_get(item:url, port:port);
 res = http_keepalive_send_recv(port:port, data:req);
-if ( res == NULL ) exit(0);
-hex_res=hexstr(res);
-if ("3c0049004600520041004d00450020005300520043003d00660069006c0065003a002f002f00" >< hex_res )
-	security_message(port);
-else {
-	if (egrep(pattern:"<IFRAME SRC=file://",string:res)){
-		security_message(port);
-	}
+if(!res)
+  exit(0);
+
+hex_res = hexstr(res);
+if(egrep(pattern:"<IFRAME SRC=file://",string:res) || "3c0049004600520041004d00450020005300520043003d00660069006c0065003a002f002f00" >< hex_res) {
+  report = report_vuln_url(port:port, url:url);
+  security_message(port:port, data:report);
+  exit(0);
 }
+
+exit(99);

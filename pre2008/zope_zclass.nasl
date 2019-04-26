@@ -1,5 +1,4 @@
 # OpenVAS Vulnerability Test
-# $Id: zope_zclass.nasl 6540 2017-07-05 12:42:02Z cfischer $
 # Description: Zope ZClass Permission Mapping Bug
 #
 # Authors:
@@ -22,28 +21,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "The remote web server contains an application server that is prone
-to a privilege escalation flaw.
-
-Description :
-
-The remote web server uses a version of Zope which is older than
-version 2.3.3.  In such versions, any user can visit a ZClass
-declaration and change the ZClass permission mappings for methods and
-other objects defined within the ZClass, possibly allowing for
-unauthorized access within the Zope instance. 
-
-*** OpenVAS solely relied on the version number of your server, so if 
-*** the hotfix has already been applied, this might be a false positive";
-
-tag_solution = "Upgrade to Zope 2.3.3 or apply the hotfix referenced in the vendor
-advisory above.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10777");
-  script_version("$Revision: 6540 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-05 14:42:02 +0200 (Wed, 05 Jul 2017) $");
+  script_version("2019-04-24T07:26:10+0000");
+  script_tag(name:"last_modification", value:"2019-04-24 07:26:10 +0000 (Wed, 24 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
@@ -56,8 +38,13 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("zope/banner");
 
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"solution", value:"Upgrade to Zope 2.3.3 or apply the hotfix referenced in the vendor
+  advisory above.");
+
+  script_tag(name:"summary", value:"The remote web server uses a version of Zope which is older than
+  version 2.3.3. In such versions, any user can visit a ZClass declaration and change the ZClass
+  permission mappings for methods and other objects defined within the ZClass, possibly allowing for
+  unauthorized access within the Zope instance.");
 
   script_xref(name:"URL", value:"http://www.zope.org/Products/Zope/Hotfix_2001-05-01/security_alert");
 
@@ -72,10 +59,12 @@ include("http_func.inc");
 port = get_http_port(default:80);
 
 banner = get_http_banner(port:port);
+if(!banner || "Zope" >!< banner)
+  exit(0);
 
-if(banner)
-{
-  if(egrep(pattern:"Server: .*Zope 2\.((0\..*)|(1\..*)|(2\..*)|(3\.[0-2]))", 
-  		string:banner))
-     security_message(port);
+if(egrep(pattern:"Server: .*Zope 2\.((0\..*)|(1\..*)|(2\..*)|(3\.[0-2]))", string:banner)) {
+  security_message(port:port);
+  exit(0);
 }
+
+exit(99);

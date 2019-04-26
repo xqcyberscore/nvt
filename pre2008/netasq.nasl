@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: netasq.nasl 4830 2016-12-21 11:48:51Z cfi $
 #
 # NetAsq identification
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14378");
-  script_version("$Revision: 4830 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-21 12:48:51 +0100 (Wed, 21 Dec 2016) $");
+  script_version("2019-04-24T07:26:10+0000");
+  script_tag(name:"last_modification", value:"2019-04-24 07:26:10 +0000 (Wed, 24 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -41,21 +40,16 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.netasq.com");
 
-  tag_summary = "It's very likely that this remote host is a NetAsq IPS-Firewalls
-  with port TCP/1300 open to allow Firewall Manager tool to
-  remotely configure it.
+  script_tag(name:"solution", value:"Do not allow any connection on the
+  firewall itself, except from trusted network.");
 
-  Letting attackers know that you are using a NetAsq 
-  will help them to focus their attack or will 
-  make them change their strategy. 
+  script_tag(name:"summary", value:"It's very likely that this remote host is a NetAsq IPS-Firewalls
+  with port TCP/1300 open to allow Firewall Manager tool to remotely configure it.
 
-  You should not let them know such information.";
+  Letting attackers know that you are using a NetAsq will help them to focus their attack or will
+  make them change their strategy.
 
-  tag_solution = "Do not allow any connection on the
-  firewall itself, except from trusted network.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  You should not let them know such information.");
 
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_analysis");
@@ -64,15 +58,17 @@ if(description)
 }
 
 port = 1300;
+if( ! get_port_state( port ) )
+  exit( 0 );
 
-if( ! get_port_state( port ) ) exit( 0 );
 soc = open_sock_tcp( port);
-if( ! soc ) exit( 0 );
+if( ! soc )
+  exit( 0 );
 
-req = string( "OPENVAS\r\n" );
+req = string( "VT-TEST\r\n" );
 send( socket:soc, data:req );
 r = recv( socket:soc, length:512 );
- 
+
 if( ereg( pattern:"^200 code=[0-9]+ msg=.*", string:r ) ) {
   req = string( "QUIT\r\n" );
   send(socket:soc, data:req);
@@ -83,5 +79,4 @@ if( ereg( pattern:"^200 code=[0-9]+ msg=.*", string:r ) ) {
 }
 
 close( soc );
-
 exit( 0 );

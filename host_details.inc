@@ -97,6 +97,7 @@ OS_CPE_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.105263", # gb_palo_alto_panOS_version.nasl
     "1.3.6.1.4.1.25623.1.0.105266", # gb_screenos_version.nasl
     "1.3.6.1.4.1.25623.1.0.106413", # gb_extremeos_snmp_detect.nasl
+    "1.3.6.1.4.1.25623.1.0.108566", # gb_tippingpoint_sms_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.106513", # gb_cisco_asa_version_snmp.nasl
     "1.3.6.1.4.1.25623.1.0.105222", # gb_cisco_asa_version.nasl
     "1.3.6.1.4.1.25623.1.0.105033", # gb_cisco_asa_detect.nasl
@@ -204,6 +205,7 @@ OS_TXT_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.105263", # gb_palo_alto_panOS_version.nasl
     "1.3.6.1.4.1.25623.1.0.105266", # gb_screenos_version.nasl
     "1.3.6.1.4.1.25623.1.0.106413", # gb_extremeos_snmp_detect.nasl
+    "1.3.6.1.4.1.25623.1.0.108566", # gb_tippingpoint_sms_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.106513", # gb_cisco_asa_version_snmp.nasl
     "1.3.6.1.4.1.25623.1.0.105222", # gb_cisco_asa_version.nasl
     "1.3.6.1.4.1.25623.1.0.105033", # gb_cisco_asa_detect.nasl
@@ -494,7 +496,8 @@ function host_runs() {
   if( "linux" >< tolower( ospattern ) )
     ospattern = '(' + ospattern + '|apc:aos|ubuntu|debian|bsd|opensuse|fedora|suse|red ?hat|centos|mandriva|mandrake|mageia|slackware|connectiva|amazon|oracle|d-link(:| )d|euleros|' +
                 'turbolinux|gentoo|cisco|apple|fortios|junos|screenos|univention|esx|xen|pan-?os|qnap|synology|greenbone|hyperip|simatic|ruggedcom|vibnode|avm(:| )fritz|my_?cloud|' +
-                'intelbras(:| )ncloud|ricoh:iwb|nucleus(_| )rtos|vxworks|chip-rtos|simatic(_| )hmi|ibm(:| )os(/|_)400|novell|rockwell ?automation(:| )(micrologix|powermonitor)|beward)';
+                'intelbras(:| )ncloud|ricoh:iwb|nucleus(_| )rtos|vxworks|chip-rtos|simatic(_| )hmi|ibm(:| )os(/|_)400|novell|rockwell ?automation(:| )(micrologix|powermonitor)|beward|' +
+                'tippingpoint(_| )operating(_| )system)';
 
   if( eregmatch( pattern:ospattern, string:best_os, icase:TRUE ) )
     return "yes";

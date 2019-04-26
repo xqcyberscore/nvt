@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: worldclient_server_detection.nasl 6695 2017-07-12 11:17:53Z cfischer $
 #
 # WorldClient for MDaemon Server Detection
 #
@@ -29,12 +28,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10745");
-  script_version("$Revision: 6695 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:17:53 +0200 (Wed, 12 Jul 2017) $");
+  script_version("2019-04-24T07:26:10+0000");
+  script_tag(name:"last_modification", value:"2019-04-24 07:26:10 +0000 (Wed, 24 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2000-0660");
   script_bugtraq_id(1462, 2478, 4687, 4689, 823);
@@ -48,25 +46,22 @@ if(description)
   script_mandatory_keys("WDaemon/banner");
   script_require_ports("Services/www", 3000);
 
-  tag_summary = "We detected the remote web server is
+  script_xref(name:"URL", value:"http://www.securiteam.com/cgi-bin/htsearch?config=htdigSecuriTeam&words=WorldClient");
+
+  script_tag(name:"solution", value:"Make sure all usernames and passwords are adequately long and
+  that only authorized networks have access to this web server's port number
+  (block the web server's port number on your firewall).");
+
+  script_tag(name:"summary", value:"We detected the remote web server is
   running WorldClient for MDaemon. This web server enables attackers
   with the proper username and password combination to access locally
   stored mailboxes.
 
   In addition, earlier versions of WorldClient suffer from buffer overflow
   vulnerabilities, and web traversal problems (if those are found the Risk
-  factor is higher).";
+  factor is higher).");
 
-  tag_solution = "Make sure all usernames and passwords are adequately long and
-  that only authorized networks have access to this web server's port number
-  (block the web server's port number on your firewall).
-
-  For more information see:
-  http://www.securiteam.com/cgi-bin/htsearch?config=htdigSecuriTeam&words=WorldClient";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-
+  script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_banner");
 
   exit(0);
@@ -75,9 +70,7 @@ if(description)
 include("http_func.inc");
 
 port = get_http_port( default:3000 );
-
 banner = get_http_banner( port:port );
-
 if( banner && egrep( pattern:"^Server: WDaemon/", string:banner ) ) {
 
   log_message( port:port );
@@ -92,8 +85,7 @@ if( banner && egrep( pattern:"^Server: WDaemon/", string:banner ) ) {
   buf = buf + version;
   if( version < "4" ) {
     # I'm wondering if this should not be in another plugin (rd)
-    report = string("\nThis version of WorldClient contains serious security vulnerabilities.\n",
-    "It is advisable that you upgrade to the latest version\n" );
+    report = string("This version of WorldClient contains serious security vulnerabilities.\n", "It is advisable that you upgrade to the latest version." );
     security_message( data:report, port:port );
     exit( 0 );
   }
