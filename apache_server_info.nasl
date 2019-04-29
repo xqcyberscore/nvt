@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: apache_server_info.nasl 6411 2017-06-23 08:20:27Z cfischer $
 #
 # Apache /server-info accessible
 #
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10678");
-  script_version("$Revision: 6411 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-23 10:20:27 +0200 (Fri, 23 Jun 2017) $");
+  script_version("2019-04-26T12:19:11+0000");
+  script_tag(name:"last_modification", value:"2019-04-26 12:19:11 +0000 (Fri, 26 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -41,21 +40,25 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name:"solution", value:"If you don't use this feature, comment the appropriate section in
-  your httpd.conf file. If you really need it, limit its access to the administrator's machine.");
+  script_xref(name:"URL", value:"https://httpd.apache.org/docs/current/mod/mod_info.html");
 
-  script_tag(name:"summary", value:"Requesting the URI /server-info gives information about
-  your Apache configuration.");
+  script_tag(name:"summary", value:"Requesting the URI /server-info provides a comprehensive overview
+  of the server configuration.");
 
-  script_tag(name:"vuldetect", value:"Check if /server-info page exist.");
+  script_tag(name:"insight", value:"server-info is a Apache HTTP Server handler provided by the
+  'mod_info' module and used to retrieve the server's configuration.");
 
-  script_tag(name:"insight", value:"server-info is a built-in Apache HTTP Server handler used to
-  retrieve the server's status report.");
+  script_tag(name:"impact", value:"Requesting the URI /server-info gives throughout information about
+  the currently running Apache to an attacker.");
 
-  script_tag(name:"affected", value:"All Apache versions.");
+  script_tag(name:"affected", value:"All Apache installations with an enabled 'mod_info' module.");
 
-  script_tag(name:"impact", value:"Requesting the URI /server-info gives information about
-  the currently running Apache.");
+  script_tag(name:"vuldetect", value:"Checks if the /server-info page of Apache is accessible.");
+
+  script_tag(name:"solution", value:"- If this feature is unused commenting out the appropriate section in
+  the web servers configuration is recommended.
+
+  - If this feature is used restricting access to trusted clients is recommended.");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"Workaround");

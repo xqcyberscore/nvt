@@ -21,13 +21,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852385");
-  script_version("2019-04-03T06:42:23+0000");
+  script_version("2019-04-26T08:24:31+0000");
   script_cve_id("CVE-2019-3855", "CVE-2019-3856", "CVE-2019-3857", "CVE-2019-3858",
                 "CVE-2019-3859", "CVE-2019-3860", "CVE-2019-3861", "CVE-2019-3862",
                 "CVE-2019-3863");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-04-03 06:42:23 +0000 (Wed, 03 Apr 2019)");
+  script_tag(name:"last_modification", value:"2019-04-26 08:24:31 +0000 (Fri, 26 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-04-03 06:42:23 +0000 (Wed, 03 Apr 2019)");
   script_name("openSUSE Update for libssh2_org openSUSE-SU-2019:1109-1 (libssh2_org)");
   script_category(ACT_GATHER_INFO);
@@ -50,25 +50,33 @@ if(description)
 
   - CVE-2019-3861: Fixed Out-of-bounds reads with specially crafted SSH
   packets (bsc#1128490).
+
   - CVE-2019-3862: Fixed Out-of-bounds memory comparison with specially
   crafted message channel request packet (bsc#1128492).
+
   - CVE-2019-3860: Fixed Out-of-bounds reads with specially crafted SFTP
   packets (bsc#1128481).
+
   - CVE-2019-3863: Fixed an Integer overflow in user authenicate keyboard
   interactive which could allow out-of-bounds writes with specially
   crafted keyboard responses (bsc#1128493).
+
   - CVE-2019-3856: Fixed a potential Integer overflow in keyboard
   interactive handling which could allow out-of-bounds write with
   specially crafted payload (bsc#1128472).
+
   - CVE-2019-3859: Fixed Out-of-bounds reads with specially crafted payloads
   due to unchecked use of _libssh2_packet_require and
   _libssh2_packet_requirev (bsc#1128480).
+
   - CVE-2019-3855: Fixed a potential Integer overflow in transport read
   which could allow out-of-bounds write with specially crafted payload
   (bsc#1128471).
+
   - CVE-2019-3858: Fixed a potential zero-byte allocation which could lead
   to an out-of-bounds read with a specially crafted SFTP packet
   (bsc#1128476).
+
   - CVE-2019-3857: Fixed a potential Integer overflow which could lead to
   zero-byte allocation and out-of-bounds with specially crafted message
   channel request SSH packet (bsc#1128474).

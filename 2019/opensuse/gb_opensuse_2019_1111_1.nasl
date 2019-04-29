@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852374");
-  script_version("2019-04-12T12:22:59+0000");
+  script_version("2019-04-26T08:24:31+0000");
   script_cve_id("CVE-2019-3816", "CVE-2019-3833");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-04-12 12:22:59 +0000 (Fri, 12 Apr 2019)");
+  script_tag(name:"last_modification", value:"2019-04-26 08:24:31 +0000 (Fri, 26 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-04-03 06:41:57 +0000 (Wed, 03 Apr 2019)");
   script_name("openSUSE Update for openwsman openSUSE-SU-2019:1111-1 (openwsman)");
   script_category(ACT_GATHER_INFO);
@@ -48,6 +48,7 @@ if(description)
 
   - CVE-2019-3816: Fixed a vulnerability in openwsmand daemon which could
   lead to arbitrary file disclosure (bsc#1122623).
+
   - CVE-2019-3833: Fixed a vulnerability in process_connection() which could
   allow an attacker to trigger an infinite loop which leads to Denial of
   Service (bsc#1122623).
@@ -55,7 +56,9 @@ if(description)
   Other issues addressed:
 
   - Added OpenSSL 1.1 compatibility
+
   - Compilation in debug mode fixed
+
   - Directory listing without authentication fixed (bsc#1092206).
 
   This update was imported from the SUSE:SLE-15:Update update project.

@@ -21,12 +21,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852359");
-  script_version("2019-04-03T06:41:20+0000");
+  script_version("2019-04-26T08:24:31+0000");
   script_cve_id("CVE-2017-13672", "CVE-2017-13673", "CVE-2018-16872", "CVE-2018-18954",
                 "CVE-2018-19364", "CVE-2018-19489", "CVE-2018-7858", "CVE-2019-6778");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-04-03 06:41:20 +0000 (Wed, 03 Apr 2019)");
+  script_tag(name:"last_modification", value:"2019-04-26 08:24:31 +0000 (Fri, 26 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-04-03 06:41:20 +0000 (Wed, 03 Apr 2019)");
   script_name("openSUSE Update for qemu openSUSE-SU-2019:1074-1 (qemu)");
   script_category(ACT_GATHER_INFO);
@@ -48,17 +48,24 @@ if(description)
   Security vulnerabilities addressed:
 
   - CVE-2019-6778: Fixed an out-of-bounds access in slirp (bsc#1123156)
+
   - CVE-2018-16872: Fixed a host security vulnerability related to handling
   symlinks in usb-mtp (bsc#1119493)
+
   - CVE-2018-19489: Fixed a Denial-of-Service in virtfs (bsc#1117275)
+
   - CVE-2018-19364: Fixed an use-after-free vulnerability if virtfs
   interface is deliberately abused (bsc#1116717)
+
   - CVE-2018-18954: Fixed an out-of-bounds access performing PowerNV memory
   operations (bsc#1114957)
+
   - CVE-2017-13673: Fixed a reachable assert failure during during display
   update (bsc#1056386)
+
   - CVE-2017-13672: Fixed an out-of-bounds read access during display update
   (bsc#1056334)
+
   - CVE-2018-7858: Fixed an out-of-bounds access in cirrus when updating vga
   display allowing for Denial-of-Service (bsc#1084604)
 
@@ -66,6 +73,7 @@ if(description)
 
   - Fix pwrite64/pread64/write to return 0 over -1 for a zero length NULL
   buffer in qemu (bsc#1121600)
+
   - Fix bad guest time after migration (bsc#1113231)
 
   This update was imported from the SUSE:SLE-12-SP3:Update update project.

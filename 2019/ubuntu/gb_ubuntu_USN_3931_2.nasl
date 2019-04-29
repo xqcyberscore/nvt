@@ -21,13 +21,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843960");
-  script_version("2019-04-03T06:40:49+0000");
+  script_version("2019-04-26T08:24:31+0000");
   script_cve_id("CVE-2018-14678", "CVE-2018-18021", "CVE-2018-19824", "CVE-2019-3459",
                 "CVE-2019-3460", "CVE-2019-6974", "CVE-2019-7221", "CVE-2019-7222",
                 "CVE-2019-7308", "CVE-2019-8912", "CVE-2019-8980", "CVE-2019-9213");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"2019-04-03 06:40:49 +0000 (Wed, 03 Apr 2019)");
+  script_tag(name:"last_modification", value:"2019-04-26 08:24:31 +0000 (Fri, 26 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-04-03 06:40:49 +0000 (Wed, 03 Apr 2019)");
   script_name("Ubuntu Update for linux-aws-hwe USN-3931-2");
   script_category(ACT_GATHER_INFO);
@@ -37,7 +37,7 @@ if(description)
   script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=(UBUNTU14\.04 LTS|UBUNTU16\.04 LTS)");
 
   script_xref(name:"USN", value:"3931-2");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3931-2/");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3931-2/");
 
   script_tag(name:"summary", value:"The remote host is missing an update for the 'linux-aws-hwe'
   package(s) announced via the USN-3931-2 advisory.");

@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852367");
-  script_version("2019-04-03T06:41:40+0000");
+  script_version("2019-04-26T08:24:31+0000");
   script_cve_id("CVE-2018-20105");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-04-03 06:41:40 +0000 (Wed, 03 Apr 2019)");
+  script_tag(name:"last_modification", value:"2019-04-26 08:24:31 +0000 (Fri, 26 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-04-03 06:41:40 +0000 (Wed, 03 Apr 2019)");
   script_name("openSUSE Update for yast2-rmt openSUSE-SU-2019:1089-1 (yast2-rmt)");
   script_category(ACT_GATHER_INFO);
@@ -52,6 +52,7 @@ if(description)
   Non-security issues fixed:
 
   - Launch as root from gnome-shell menu (bsc#1123562)
+
   - Remove broken hyperlink from help (bsc#1120672)
 
   This update was imported from the SUSE:SLE-15:Update update project.

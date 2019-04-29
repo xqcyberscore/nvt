@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_advantech_95410.nasl 12387 2018-11-16 14:06:23Z cfischer $
 #
 # Advantech WebAccess 'updateTemplate.aspx' SQL Injection and Authentication Bypass Vulnerabilities
 #
@@ -34,7 +33,7 @@ if (description)
   script_cve_id("CVE-2017-5154", "CVE-2017-5152");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("2019-04-06T12:52:40+0000");
+  script_version("2019-04-26T08:24:31+0000");
 
   script_name("Advantech WebAccess 'updateTemplate.aspx' SQL Injection and Authentication Bypass Vulnerabilities");
 
@@ -58,7 +57,7 @@ if (description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_active");
 
-  script_tag(name:"last_modification", value:"2019-04-06 12:52:40 +0000 (Sat, 06 Apr 2019)");
+  script_tag(name:"last_modification", value:"2019-04-26 08:24:31 +0000 (Fri, 26 Apr 2019)");
   script_tag(name:"creation_date", value:"2017-01-31 16:34:49 +0100 (Tue, 31 Jan 2017)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -88,14 +87,14 @@ asp_session = "ASP.NET_SessionId=" + crap( data:rand_str( charset:"abcdefghijklm
 req = http_get_req( port: port, url: "/WaExlViewer/templateList.aspx", add_headers: make_array( "Cookie", asp_session ) );
 buf = http_keepalive_send_recv( port: port, data: req, bodyonly: FALSE );
 
-if( "signinonly.asp" >!< buf ) 
+if( "signinonly.asp" >!< buf )
   exit( 0 );
 
 req = http_post_req( port: port, url: "/WaExlViewer/openRpt.aspx", data: data, add_headers: make_array( "Cookie", asp_session,
                                                                                                     "Content-Type", "application/x-www-form-urlencoded" ) );
 buf = http_keepalive_send_recv( port: port, data: req, bodyonly: FALSE );
 
-if( buf !~ "HTTP/1\.. 200" ) 
+if( buf !~ "HTTP/1\.. 200" )
   exit( 99 );
 
 req1 = http_get_req( port: port, url: "/WaExlViewer/templateList.aspx", add_headers: make_array( "Cookie", asp_session ) );

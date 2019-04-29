@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_LIVE555_streaming_media_rce_vuln_win.nasl 13338 2019-01-29 07:44:39Z mmartin $
 #
 # VLC Media Player LIVE555 RTSP Server code execution vulnerability (Windows)
 #
@@ -29,15 +28,18 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814317");
-  script_version("$Revision: 13338 $");
+  script_version("2019-04-26T13:30:35+0000");
   script_cve_id("CVE-2018-4013");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-29 08:44:39 +0100 (Tue, 29 Jan 2019) $");
+  script_tag(name:"last_modification", value:"2019-04-26 13:30:35 +0000 (Fri, 26 Apr 2019)");
   script_tag(name:"creation_date", value:"2018-11-02 13:55:59 +0530 (Fri, 02 Nov 2018)");
+
   script_name("VLC Media Player LIVE555 RTSP Server code execution vulnerability (Windows)");
 
-  script_tag(name:"summary", value:"The host is installed with VLC Media Player
+  script_tag(name:"summary", value:"This VT has been deprecated since VLC Media player is not affected.
+
+  The host is installed with VLC Media Player
   and is prone to remote code execution vulnerability.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
@@ -55,22 +57,28 @@ if(description)
   script_tag(name:"affected", value:"VLC Media Player versions 3.0.4 and
   before on Windows.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 28th January, 2019.
-  Information regarding this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"registry");
   script_xref(name:"URL", value:"https://blog.talosintelligence.com/2018/10/vulnerability-spotlight-live-networks.html");
   script_xref(name:"URL", value:"http://www.live555.com/liveMedia/public/");
-  script_xref(name:"URL", value:"https://www.videolan.org/");
+  script_xref(name:"URL", value:"https://it.slashdot.org/comments.pl?sid=12787146&cid=57515512");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_vlc_media_player_detect_win.nasl");
   script_mandatory_keys("VLCPlayer/Win/Ver");
+
+  script_tag(name:"deprecated", value:TRUE);
+
   exit(0);
 }
+
+exit(66);
 
 include("host_details.inc");
 include("version_func.inc");

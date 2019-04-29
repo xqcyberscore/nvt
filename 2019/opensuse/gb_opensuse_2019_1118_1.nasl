@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852362");
-  script_version("2019-04-03T06:41:32+0000");
+  script_version("2019-04-26T08:24:31+0000");
   script_cve_id("CVE-2018-1152", "CVE-2018-11813", "CVE-2018-14498");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"2019-04-03 06:41:32 +0000 (Wed, 03 Apr 2019)");
+  script_tag(name:"last_modification", value:"2019-04-26 08:24:31 +0000 (Fri, 26 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-04-03 06:41:32 +0000 (Wed, 03 Apr 2019)");
   script_name("openSUSE Update for libjpeg-turbo openSUSE-SU-2019:1118-1 (libjpeg-turbo)");
   script_category(ACT_GATHER_INFO);
@@ -49,9 +49,11 @@ if(description)
   - CVE-2018-14498: Fixed a heap-based buffer over read in get_8bit_row
   function which could allow to an attacker to cause denial of service
   (bsc#1128712).
+
   - CVE-2018-11813: Fixed the end-of-file mishandling in read_pixel in
   rdtarga.c, which allowed remote attackers to cause a denial-of-service
   via crafted JPG files due to a large loop (bsc#1096209)
+
   - CVE-2018-1152: Fixed a denial of service in start_input_bmp() rdbmp.c
   caused by a divide by zero when processing a crafted BMP image
   (bsc#1098155)

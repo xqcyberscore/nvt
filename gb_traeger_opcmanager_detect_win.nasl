@@ -19,8 +19,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107646");
-  script_version("2019-04-23T09:32:24+0000");
-  script_tag(name:"last_modification", value:"2019-04-23 09:32:24 +0000 (Tue, 23 Apr 2019)");
+  script_version("2019-04-26T08:24:31+0000");
+  script_tag(name:"last_modification", value:"2019-04-26 08:24:31 +0000 (Fri, 26 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-04-23 11:30:34 +0200 (Tue, 23 Apr 2019)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -80,7 +80,7 @@ foreach key ( key_list ) {
       loc3 = ereg_replace( string:loc2, pattern:'"', replace:'' );
       if( !isnull( loc3 ) ) location = loc3;
     }
-   
+
    if( ! version = fetch_file_version( sysPath:location, file_name:"OPCmanager.exe" ) ) {
     version = "unknown";
    }

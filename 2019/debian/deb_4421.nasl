@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704421");
-  script_version("2019-04-06T02:00:31+0000");
+  script_version("2019-04-26T08:24:31+0000");
   script_cve_id("CVE-2019-5787", "CVE-2019-5788", "CVE-2019-5789", "CVE-2019-5790", "CVE-2019-5791", "CVE-2019-5792", "CVE-2019-5793", "CVE-2019-5794", "CVE-2019-5795", "CVE-2019-5796", "CVE-2019-5797", "CVE-2019-5798", "CVE-2019-5799", "CVE-2019-5800", "CVE-2019-5802", "CVE-2019-5803");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-04-06 02:00:31 +0000 (Sat, 06 Apr 2019)");
+  script_tag(name:"last_modification", value:"2019-04-26 08:24:31 +0000 (Fri, 26 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-04-06 02:00:31 +0000 (Sat, 06 Apr 2019)");
   script_name("Debian Security Advisory DSA 4421-1 (chromium - security update)");
   script_category(ACT_GATHER_INFO);
@@ -44,57 +44,57 @@ if(description)
 
   script_tag(name:"insight", value:"Several vulnerabilities have been discovered in the chromium web browser.
 
-CVE-2019-5787 
+CVE-2019-5787
 Zhe Jin discovered a use-after-free issue.
 
-CVE-2019-5788 
+CVE-2019-5788
 Mark Brand discovered a use-after-free issue in the FileAPI
 implementation.
 
-CVE-2019-5789 
+CVE-2019-5789
 Mark Brand discovered a use-after-free issue in the WebMIDI
 implementation.
 
-CVE-2019-5790 
+CVE-2019-5790
 Dimitri Fourny discovered a buffer overflow issue in the v8 javascript
 library.
 
-CVE-2019-5791 
+CVE-2019-5791
 Choongwoo Han discovered a type confusion issue in the v8 javascript
 library.
 
-CVE-2019-5792 
+CVE-2019-5792
 pdknsk discovered an integer overflow issue in the pdfium library.
 
-CVE-2019-5793 
+CVE-2019-5793
 Jun Kokatsu discovered a permissions issue in the Extensions
 implementation.
 
-CVE-2019-5794 
+CVE-2019-5794
 Juno Im of Theori discovered a user interface spoofing issue.
 
-CVE-2019-5795 
+CVE-2019-5795
 pdknsk discovered an integer overflow issue in the pdfium library.
 
-CVE-2019-5796 
+CVE-2019-5796
 Mark Brand discovered a race condition in the Extensions implementation.
 
-CVE-2019-5797 
+CVE-2019-5797
 Mark Brand discovered a race condition in the DOMStorage implementation.
 
-CVE-2019-5798 
+CVE-2019-5798
 Tran Tien Hung discovered an out-of-bounds read issue in the skia library.
 
-CVE-2019-5799 
+CVE-2019-5799
 sohalt discovered a way to bypass the Content Security Policy.
 
-CVE-2019-5800 
+CVE-2019-5800
 Jun Kokatsu discovered a way to bypass the Content Security Policy.
 
-CVE-2019-5802 
+CVE-2019-5802
 Ronni Skansing discovered a user interface spoofing issue.
 
-CVE-2019-5803 
+CVE-2019-5803
 Andrew Comminos discovered a way to bypass the Content Security Policy.");
 
   script_tag(name:"affected", value:"'chromium' package(s) on Debian Linux.");

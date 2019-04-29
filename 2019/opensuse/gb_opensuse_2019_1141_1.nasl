@@ -21,12 +21,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852393");
-  script_version("2019-04-05T02:00:37+0000");
+  script_version("2019-04-26T08:24:31+0000");
   script_cve_id("CVE-2018-16412", "CVE-2018-18544", "CVE-2018-20467", "CVE-2019-7175",
                 "CVE-2019-7395", "CVE-2019-7396", "CVE-2019-7397", "CVE-2019-7398");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-04-05 02:00:37 +0000 (Fri, 05 Apr 2019)");
+  script_tag(name:"last_modification", value:"2019-04-26 08:24:31 +0000 (Fri, 26 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-04-05 02:00:37 +0000 (Fri, 05 Apr 2019)");
   script_name("openSUSE Update for ImageMagick openSUSE-SU-2019:1141-1 (ImageMagick)");
   script_category(ACT_GATHER_INFO);
@@ -49,23 +49,30 @@ if(description)
 
   - CVE-2019-7175: Fixed multiple memory leaks in DecodeImage function
   (bsc#1128649).
+
   - CVE-2018-18544: Fixed a memory leak in the function WriteMSLImage
   (bsc#1113064).
+
   - CVE-2018-20467: Fixed an infinite loop in coders/bmp.c (bsc#1120381).
+
   - CVE-2019-7398: Fixed a memory leak in the function WriteDIBImage
   (bsc#1124365).
+
   - CVE-2019-7396: Fixed a memory leak in the function ReadSIXELImage
   (bsc#1124367).
+
   - CVE-2019-7395: Fixed a memory leak in the function WritePSDChannel
   (bsc#1124368).
+
   - CVE-2019-7397: Fixed a memory leak in the function WritePDFImage
   (bsc#1124366).
+
   - CVE-2018-16412: Prevent heap-based buffer over-read in the
   ParseImageResourceBlocks function leading to DOS (bsc#1106996).
 
   Non-security issue fixed:
 
-  - Fixed a regression in regards to the 'edge' comand line flag
+  - Fixed a regression in regards to the 'edge' command line flag
   (bsc#1106415)
 
   This update was imported from the SUSE:SLE-15:Update update project.

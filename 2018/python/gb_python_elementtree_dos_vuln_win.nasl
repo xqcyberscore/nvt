@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_python_elementtree_dos_vuln_win.nasl 13259 2019-01-24 09:33:14Z ckuersteiner $
 #
 # Python Elementtree Denial of Service Vulnerability (Windows)
 #
@@ -30,11 +29,12 @@ CPE = 'cpe:/a:python:python';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814304");
-  script_version("$Revision: 13259 $");
+  script_version("2019-04-26T13:30:35+0000");
   script_cve_id("CVE-2018-14647");
+  script_bugtraq_id(105396);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-24 10:33:14 +0100 (Thu, 24 Jan 2019) $");
+  script_tag(name:"last_modification", value:"2019-04-26 13:30:35 +0000 (Fri, 26 Apr 2019)");
   script_tag(name:"creation_date", value:"2018-10-03 17:02:15 +0530 (Wed, 03 Oct 2018)");
 
   script_name("Python Elementtree Denial of Service Vulnerability (Windows)");
@@ -45,10 +45,9 @@ if(description)
   script_dependencies("gb_python_detect_win.nasl");
   script_mandatory_keys("python6432/win/detected");
 
+  script_xref(name:"URL", value:"https://python-security.readthedocs.io/vuln/elementree_salt.html");
   script_xref(name:"URL", value:"https://bugs.python.org/issue34623");
   script_xref(name:"URL", value:"https://bugzilla.redhat.com/show_bug.cgi?id=CVE-2018-14647");
-  script_xref(name:"URL", value:"https://www.python.org");
-  script_xref(name:"URL", value:"https://www.securityfocus.com/bid/105396/info");
 
   script_tag(name:"summary", value:"This host is running Python and is prone
   to denial of service vulnerability.");
@@ -64,11 +63,10 @@ if(description)
 
   script_tag(name:"affected", value:"Python versions 3.8, 3.7, 3.6, 3.5, 3.4 and 2.7 on Windows");
 
-  script_tag(name:"solution", value:"No known solution is available as of 24th January, 2019.
-  Information regarding this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"Update to version 2.7.16, 3.6.7, 3.7.1 or later");
 
   script_tag(name:"qod_type", value:"registry");
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);
 }
@@ -76,13 +74,28 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE)) exit(0);
+if (!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE))
+  exit(0);
+
 pyVer = infos['version'];
 pypath = infos['location'];
 
-if(pyVer =~ "^(2.7|3.4|3.5|3.6|3.7|3.8)"){
-  report = report_fixed_ver(installed_version:pyVer, fixed_version:"None", install_path:pypath);
-  security_message(data:report);
+if (version_is_less(version: pyVer, test_version: "2.7.16")) {
+  report = report_fixed_ver(installed_version: pyVer, fixed_version: "2.7.16", install_path: pypath);
+  security_message(port: 0, data: report);
+  exit(0);
+}
+
+if (version_in_range(version: pyVer, test_version: "3.4", test_version: "3.6.6")) {
+  report = report_fixed_ver(installed_version: pyVer, fixed_version: "3.6.7", install_path: pypath);
+  security_message(port: 0, data:report);
+  exit(0);
+}
+
+if (version_is_equal(version: pyVer, test_version: "3.7.0")) {
+  report = report_fixed_ver(installed_version: pyVer, fixed_version: "3.7.1", install_path: pypath);
+  security_message(port: 0, data:report);
+  exit(0);
 }
 
 exit(0);

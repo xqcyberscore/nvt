@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704430");
-  script_version("2019-04-13T02:00:11+0000");
+  script_version("2019-04-26T08:24:31+0000");
   script_cve_id("CVE-2014-9496", "CVE-2019-9494", "CVE-2019-9495", "CVE-2019-9497", "CVE-2019-9498", "CVE-2019-9499");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-04-13 02:00:11 +0000 (Sat, 13 Apr 2019)");
+  script_tag(name:"last_modification", value:"2019-04-26 08:24:31 +0000 (Fri, 26 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-04-13 02:00:11 +0000 (Sat, 13 Apr 2019)");
   script_name("Debian Security Advisory DSA 4430-1 (wpa - security update)");
   script_category(ACT_GATHER_INFO);
@@ -45,17 +45,17 @@ if(description)
   script_tag(name:"insight", value:"Mathy Vanhoef (NYUAD) and Eyal Ronen (Tel Aviv University & KU Leuven) found
 multiple vulnerabilities in the WPA implementation found in wpa_supplication
 (station) and hostapd (access point). These vulnerability are also collectively
-known as Dragonblood 
+known as Dragonblood
 .
 
-CVE-2019-9495 
+CVE-2019-9495
 Cache-based side-channel attack against the EAP-pwd implementation: an
 attacker able to run unprivileged code on the target machine (including for
 example javascript code in a browser on a smartphone) during the handshake
 could deduce enough information to discover the password in a dictionary
 attack.
 
-CVE-2019-9497 
+CVE-2019-9497
 Reflection attack against EAP-pwd server implementation: a lack of
 validation of received scalar and elements value in the EAP-pwd-Commit
 messages could result in attacks that would be able to complete EAP-pwd
@@ -63,7 +63,7 @@ authentication exchange without the attacker having to know the password.
 This does not result in the attacker being able to derive the session key,
 complete the following key exchange and access the network.
 
-CVE-2019-9498 
+CVE-2019-9498
 EAP-pwd server missing commit validation for scalar/element: hostapd
 doesn't validate values received in the EAP-pwd-Commit message, so an
 attacker could use a specially crafted commit message to manipulate the
@@ -71,7 +71,7 @@ exchange in order for hostapd to derive a session key from a limited set of
 possible values. This could result in an attacker being able to complete
 authentication and gain access to the network.
 
-CVE-2019-9499 
+CVE-2019-9499
 EAP-pwd peer missing commit validation for scalar/element: wpa_supplicant
 doesn't validate values received in the EAP-pwd-Commit message, so an
 attacker could use a specially crafted commit message to manipulate the
@@ -80,7 +80,7 @@ set of possible values. This could result in an attacker being able to
 complete authentication and operate as a rogue AP.
 
 Note that the Dragonblood moniker also applies to
-CVE-2019-9494 and CVE-2014-9496 
+CVE-2019-9494 and CVE-2014-9496
 which are vulnerabilities in the SAE protocol in WPA3. SAE is not
 enabled in Debian stretch builds of wpa, which is thus not vulnerable by default.
 

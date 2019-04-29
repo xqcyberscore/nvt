@@ -21,7 +21,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852369");
-  script_version("2019-04-03T06:41:42+0000");
+  script_version("2019-04-26T08:24:31+0000");
   script_cve_id("CVE-2019-5787", "CVE-2019-5788", "CVE-2019-5789", "CVE-2019-5790",
                 "CVE-2019-5791", "CVE-2019-5792", "CVE-2019-5793", "CVE-2019-5794",
                 "CVE-2019-5795", "CVE-2019-5796", "CVE-2019-5797", "CVE-2019-5798",
@@ -29,7 +29,7 @@ if(description)
                 "CVE-2019-5803", "CVE-2019-5804");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-04-03 06:41:42 +0000 (Wed, 03 Apr 2019)");
+  script_tag(name:"last_modification", value:"2019-04-26 08:24:31 +0000 (Fri, 26 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-04-03 06:41:42 +0000 (Wed, 03 Apr 2019)");
   script_name("openSUSE Update for chromium openSUSE-SU-2019:1062-1 (chromium)");
   script_category(ACT_GATHER_INFO);
@@ -52,22 +52,39 @@ if(description)
   Security issues fixed (bsc#1129059):
 
   - CVE-2019-5787: Fixed a use after free in Canvas.
+
   - CVE-2019-5788: Fixed a use after free in FileAPI.
+
   - CVE-2019-5789: Fixed a use after free in WebMIDI.
+
   - CVE-2019-5790: Fixed a heap buffer overflow in V8.
+
   - CVE-2019-5791: Fixed a type confusion in V8.
+
   - CVE-2019-5792: Fixed an integer overflow in PDFium.
+
   - CVE-2019-5793: Fixed excessive permissions for private API in Extensions.
+
   - CVE-2019-5794: Fixed security UI spoofing.
+
   - CVE-2019-5795: Fixed an integer overflow in PDFium.
+
   - CVE-2019-5796: Fixed a race condition in Extensions.
+
   - CVE-2019-5797: Fixed a race condition in DOMStorage.
+
   - CVE-2019-5798: Fixed an out of bounds read in Skia.
+
   - CVE-2019-5799: Fixed a CSP bypass with blob URL.
+
   - CVE-2019-5800: Fixed a CSP bypass with blob URL.
+
   - CVE-2019-5801: Fixed an incorrect Omnibox display on iOS.
+
   - CVE-2019-5802: Fixed security UI spoofing.
+
   - CVE-2019-5803: Fixed a CSP bypass with Javascript URLs'.
+
   - CVE-2019-5804: Fixed a command line injection on Windows.
 
   Patch Instructions:

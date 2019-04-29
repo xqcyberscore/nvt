@@ -21,12 +21,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843958");
-  script_version("2019-04-03T06:40:31+0000");
+  script_version("2019-04-26T08:24:31+0000");
   script_cve_id("CVE-2018-1000100", "CVE-2018-13005", "CVE-2018-13006", "CVE-2018-20760",
                 "CVE-2018-20761", "CVE-2018-20762", "CVE-2018-20763", "CVE-2018-7752");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-04-03 06:40:31 +0000 (Wed, 03 Apr 2019)");
+  script_tag(name:"last_modification", value:"2019-04-26 08:24:31 +0000 (Fri, 26 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-04-03 06:40:31 +0000 (Wed, 03 Apr 2019)");
   script_name("Ubuntu Update for gpac USN-3926-1");
   script_category(ACT_GATHER_INFO);
@@ -36,7 +36,7 @@ if(description)
   script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=(UBUNTU18\.04 LTS|UBUNTU18\.10|UBUNTU16\.04 LTS)");
 
   script_xref(name:"USN", value:"3926-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3926-1/");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3926-1/");
 
   script_tag(name:"summary", value:"The remote host is missing an update for the 'gpac'
   package(s) announced via the USN-3926-1 advisory.");

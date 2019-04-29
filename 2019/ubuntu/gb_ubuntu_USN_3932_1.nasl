@@ -21,7 +21,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843957");
-  script_version("2019-04-03T06:40:15+0000");
+  script_version("2019-04-26T08:24:31+0000");
   script_cve_id("CVE-2017-18249", "CVE-2018-13097", "CVE-2018-13099", "CVE-2018-13100",
                 "CVE-2018-14614", "CVE-2018-14616", "CVE-2018-14610", "CVE-2018-14611",
                 "CVE-2018-14612", "CVE-2018-14613", "CVE-2018-16884", "CVE-2018-9517",
@@ -29,7 +29,7 @@ if(description)
                 "CVE-2019-7222", "CVE-2019-9213", "CVE-2019-3701", "CVE-2019-3819");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-04-03 06:40:15 +0000 (Wed, 03 Apr 2019)");
+  script_tag(name:"last_modification", value:"2019-04-26 08:24:31 +0000 (Fri, 26 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-04-03 06:40:15 +0000 (Wed, 03 Apr 2019)");
   script_name("Ubuntu Update for linux USN-3932-1");
   script_category(ACT_GATHER_INFO);
@@ -39,7 +39,7 @@ if(description)
   script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU16\.04 LTS");
 
   script_xref(name:"USN", value:"3932-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3932-1/");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3932-1/");
 
   script_tag(name:"summary", value:"The remote host is missing an update for the 'linux'
   package(s) announced via the USN-3932-1 advisory.");

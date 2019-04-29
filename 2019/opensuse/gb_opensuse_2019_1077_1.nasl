@@ -21,13 +21,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852357");
-  script_version("2019-04-03T06:41:10+0000");
+  script_version("2019-04-26T08:24:31+0000");
   script_cve_id("CVE-2018-18506", "CVE-2019-9788", "CVE-2019-9790", "CVE-2019-9791",
                 "CVE-2019-9792", "CVE-2019-9793", "CVE-2019-9794", "CVE-2019-9795",
                 "CVE-2019-9796", "CVE-2019-9810", "CVE-2019-9813");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"2019-04-03 06:41:10 +0000 (Wed, 03 Apr 2019)");
+  script_tag(name:"last_modification", value:"2019-04-26 08:24:31 +0000 (Fri, 26 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-04-03 06:41:10 +0000 (Wed, 03 Apr 2019)");
   script_name("openSUSE Update for MozillaFirefox openSUSE-SU-2019:1077-1 (MozillaFirefox)");
   script_category(ACT_GATHER_INFO);
@@ -49,21 +49,30 @@ if(description)
   Mozilla Firefox was updated to 60.6.1esr / MFSA 2019-10 (bsc#1130262)
 
   * CVE-2019-9810: IonMonkey MArraySlice has incorrect alias information
+
   * CVE-2019-9813: Ionmonkey type confusion with __proto__ mutations
 
   Mozilla Firefox was updated to 60.6.0esr / MFSA 2019-08 (boo#1129821)
 
   * CVE-2019-9790: Use-after-free when removing in-use DOM elements
+
   * CVE-2019-9791: Type inference is incorrect for constructors entered
   through on-stack replacement with IonMonkey
+
   * CVE-2019-9792: IonMonkey leaks JS_OPTIMIZED_OUT magic value to script
+
   * CVE-2019-9793: Improper bounds checks when Spectre mitigations are
   disabled
+
   * CVE-2019-9794: Command line arguments not discarded during execution
+
   * CVE-2019-9795: Type-confusion in IonMonkey JIT compiler
+
   * CVE-2019-9796: Use-after-free with SMIL animation controller
+
   * CVE-2018-18506: Proxy Auto-Configuration file can define localhost
   access to be proxied
+
   * CVE-2019-9788: Memory safety bugs fixed in Firefox 66 and Firefox ESR
   60.6
 

@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852383");
-  script_version("2019-04-03T06:42:21+0000");
+  script_version("2019-04-26T08:24:31+0000");
   script_cve_id("CVE-2019-6798", "CVE-2019-6799");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-04-03 06:42:21 +0000 (Wed, 03 Apr 2019)");
+  script_tag(name:"last_modification", value:"2019-04-26 08:24:31 +0000 (Fri, 26 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-04-03 06:42:21 +0000 (Wed, 03 Apr 2019)");
   script_name("openSUSE Update for phpMyAdmin openSUSE-SU-2019:0194-1 (phpMyAdmin)");
   script_category(ACT_GATHER_INFO);
@@ -47,16 +47,21 @@ if(description)
   Security issues fixed:
 
   - CVE-2019-6799: Fixed an arbitrary file read vulnerability (boo#1123272)
+
   - CVE-2019-6798: Fixed a SQL injection in the designer interface
   (boo#1123271)
 
   Other changes:
 
   * Fix rxport to SQL format not available
+
   * Fix QR code not shown when adding two-factor authentication to a user
   account
+
   * Fix issue with adding a new user in MySQL 8.0.11 and newer
+
   * Fix frozen interface relating to Text_Plain_Sql plugin
+
   * Fix missing table level operations tab
 
 

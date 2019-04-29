@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704422");
-  script_version("2019-04-06T02:00:17+0000");
+  script_version("2019-04-26T08:24:31+0000");
   script_cve_id("CVE-2018-17189", "CVE-2018-17199", "CVE-2019-0196", "CVE-2019-0211", "CVE-2019-0217", "CVE-2019-0220");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"2019-04-06 02:00:17 +0000 (Sat, 06 Apr 2019)");
+  script_tag(name:"last_modification", value:"2019-04-26 08:24:31 +0000 (Fri, 26 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-04-06 02:00:17 +0000 (Sat, 06 Apr 2019)");
   script_name("Debian Security Advisory DSA 4422-1 (apache2 - security update)");
   script_category(ACT_GATHER_INFO);
@@ -44,33 +44,33 @@ if(description)
 
   script_tag(name:"insight", value:"Several vulnerabilities have been found in the Apache HTTP server.
 
-CVE-2018-17189 
+CVE-2018-17189
 Gal Goldshtein of F5 Networks discovered a denial of service
 vulnerability in mod_http2. By sending malformed requests, the
 http/2 stream for that request unnecessarily occupied a server
 thread cleaning up incoming data, resulting in denial of service.
 
-CVE-2018-17199 
+CVE-2018-17199
 Diego Angulo from ImExHS discovered that mod_session_cookie does not
 respect expiry time.
 
-CVE-2019-0196 
+CVE-2019-0196
 Craig Young discovered that the http/2 request handling in mod_http2
 could be made to access freed memory in string comparison when
 determining the method of a request and thus process the request
 incorrectly.
 
-CVE-2019-0211 
+CVE-2019-0211
 Charles Fol discovered a privilege escalation from the
 less-privileged child process to the parent process running as root.
 
-CVE-2019-0217 
+CVE-2019-0217
 A race condition in mod_auth_digest when running in a threaded
 server could allow a user with valid credentials to authenticate
 using another username, bypassing configured access control
 restrictions. The issue was discovered by Simon Kappel.
 
-CVE-2019-0220 
+CVE-2019-0220
 Bernhard Lorenz of Alpha Strike Labs GmbH reported that URL
 normalizations were inconsistently handled. When the path component
 of a request URL contains multiple consecutive slashes ('/'),

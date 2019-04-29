@@ -21,10 +21,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852384");
-  script_version("2019-04-03T06:42:23+0000");
+  script_version("2019-04-26T08:24:31+0000");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-04-03 06:42:23 +0000 (Wed, 03 Apr 2019)");
+  script_tag(name:"last_modification", value:"2019-04-26 08:24:31 +0000 (Fri, 26 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-04-03 06:42:23 +0000 (Wed, 03 Apr 2019)");
   script_name("openSUSE Update for ucode-intel openSUSE-SU-2019:1084-1 (ucode-intel)");
   script_category(ACT_GATHER_INFO);
@@ -48,35 +48,54 @@ if(description)
   New Platforms:
 
   - AML-Y22      H0       6-8e-9/10           0000009e Core Gen8 Mobile
+
   - WHL-U        W0       6-8e-b/d0           000000a4 Core Gen8 Mobile
+
   - WHL-U        V0       6-8e-d/94           000000b2 Core Gen8 Mobile
+
   - CFL-S        P0       6-9e-c/22           000000a2 Core Gen9 Desktop
+
   - CFL-H        R0       6-9e-d/22           000000b0 Core Gen9 Mobile
 
   Updated Platforms:
 
   - HSX-E/EP     Cx/M1    6-3f-2/6f 0000003d->00000041 Core Gen4 X series,
   Xeon E5 v3
+
   - HSX-EX       E0       6-3f-4/80 00000012->00000013 Xeon E7 v3
+
   - SKX-SP       H0/M0/U0 6-55-4/b7 0200004d->0000005a Xeon Scalable
+
   - SKX-D        M1       6-55-4/b7 0200004d->0000005a Xeon D-21xx
+
   - BDX-DE       V1       6-56-2/10 00000017->00000019 Xeon D-1520/40
+
   - BDX-DE       V2/3     6-56-3/10 07000013->07000016 Xeon
   D-1518/19/21/27/28/31/33/37/41/48, Pentium D1507/08/09/17/19
+
   - BDX-DE       Y0       6-56-4/10 0f000012->0f000014 Xeon
   D-1557/59/67/71/77/81/87
+
   - BDX-NS       A0       6-56-5/10 0e00000a->0e00000c Xeon
   D-1513N/23/33/43/53
+
   - APL          D0       6-5c-9/03 00000032->00000036 Pentium N/J4xxx,
   Celeron N/J3xxx, Atom x5/7-E39xx
+
   - APL          E0       6-5c-a/03 0000000c->00000010 Atom x5/7-E39xx
+
   - GLK          B0       6-7a-1/01 00000028->0000002c Pentium Silver
   N/J5xxx, Celeron N/J4xxx
+
   - KBL-U/Y      H0       6-8e-9/c0 0000008e->0000009a Core Gen7 Mobile
+
   - CFL-U43e     D0       6-8e-a/c0 00000096->0000009e Core Gen8 Mobile
+
   - KBL-H/S/E3   B0       6-9e-9/2a 0000008e->0000009a Core Gen7, Xeon E3 v6
+
   - CFL-H/S/E3   U0       6-9e-a/22 00000096->000000aa Core Gen8 Desktop,
   Mobile, Xeon E
+
   - CFL-S B0 6-9e-b/02 0000008e->000000aa Core Gen8
 
   This update was imported from the SUSE:SLE-15:Update update project.

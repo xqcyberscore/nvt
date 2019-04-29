@@ -21,8 +21,8 @@ CPE = "cpe:/a:limesurvey:limesurvey";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.142168");
-  script_version("2019-04-05T06:55:01+0000");
-  script_tag(name:"last_modification", value:"2019-04-05 06:55:01 +0000 (Fri, 05 Apr 2019)");
+  script_version("2019-04-29T05:57:09+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 05:57:09 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-03-26 12:23:38 +0000 (Tue, 26 Mar 2019)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -31,9 +31,9 @@ if (description)
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
 
-  script_name("LimeSurvey <= 3.16.1 Relative Path Vulnerability");
+  script_name("LimeSurvey < 3.16.1 Relative Path Vulnerability");
 
   script_category(ACT_GATHER_INFO);
 
@@ -49,10 +49,10 @@ LimeSurvey allows a relative path.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 26th March, 2019.
-Information regarding this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"Update to LimeSurvey version 3.16.1 or later.");
 
   script_xref(name:"URL", value:"https://github.com/LimeSurvey/LimeSurvey/commit/1ed10d3c423187712b8f6a8cb2bc9d5cc3b2deb8");
+  script_xref(name:"URL", value:"https://github.com/LimeSurvey/LimeSurvey/blob/master/docs/release_notes.txt");
 
   exit(0);
 }
@@ -69,8 +69,8 @@ if (!infos = get_app_version_and_location(cpe: CPE, port: port, exit_no_version:
 version = infos['version'];
 path = infos['location'];
 
-if (version_is_less_equal(version: version, test_version: "3.16.1")) {
-  report = report_fixed_ver(installed_version: version, fixed_version: "None", install_path: path);
+if (version_is_less(version: version, test_version: "3.16.1")) {
+  report = report_fixed_ver(installed_version: version, fixed_version: "3.16.1", install_path: path);
   security_message(port: port, data: report);
   exit(0);
 }

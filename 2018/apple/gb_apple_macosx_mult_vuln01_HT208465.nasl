@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_mult_vuln01_HT208465.nasl 14292 2019-03-18 18:39:37Z cfischer $
 #
 # Apple Mac OS X Multiple Vulnerabilities-01 (HT208465)
 #
@@ -27,13 +26,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812661");
-  script_version("$Revision: 14292 $");
+  script_version("2019-04-29T05:39:50+0000");
   script_cve_id("CVE-2018-4096", "CVE-2018-4088", "CVE-2018-4089", "CVE-2018-4091",
                 "CVE-2018-4093", "CVE-2018-4092", "CVE-2018-4090", "CVE-2017-8817");
   script_bugtraq_id(102057);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2019-03-18 19:39:37 +0100 (Mon, 18 Mar 2019) $");
+  script_tag(name:"last_modification", value:"2019-04-29 05:39:50 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2018-01-24 10:37:13 +0530 (Wed, 24 Jan 2018)");
   script_name("Apple Mac OS X Multiple Vulnerabilities-01 (HT208465)");
 
@@ -76,25 +75,22 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Mac OS X Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/osx_name", "ssh/login/osx_version");
-  script_xref(name:"URL", value:"https://www.apple.com", re:"ssh/login/osx_version=^10\.13");
+  script_mandatory_keys("ssh/login/osx_name", "ssh/login/osx_version", re:"ssh/login/osx_version=^10\.13");
+
   exit(0);
 }
 
 include("version_func.inc");
 
 osName = get_kb_item("ssh/login/osx_name");
-if(!osName || "Mac OS X" >!< osName){
+if(!osName || "Mac OS X" >!< osName)
   exit(0);
-}
 
 osVer = get_kb_item("ssh/login/osx_version");
-if(!osVer || osVer !~ "^10\.13"){
+if(!osVer || osVer !~ "^10\.13")
   exit(0);
-}
 
-if(version_in_range(version:osVer, test_version:"10.13", test_version2:"10.13.2"))
-{
+if(version_in_range(version:osVer, test_version:"10.13", test_version2:"10.13.2")) {
   report = report_fixed_ver(installed_version:osVer, fixed_version:"10.13.3");
   security_message(data:report);
   exit(0);

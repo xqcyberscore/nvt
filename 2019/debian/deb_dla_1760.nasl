@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891760");
-  script_version("2019-04-23T02:00:09+0000");
+  script_version("2019-04-26T08:24:31+0000");
   script_cve_id("CVE-2019-5953");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-04-23 02:00:09 +0000 (Tue, 23 Apr 2019)");
+  script_tag(name:"last_modification", value:"2019-04-26 08:24:31 +0000 (Fri, 26 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-04-23 02:00:09 +0000 (Tue, 23 Apr 2019)");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1760-1] wget security update)");
   script_category(ACT_GATHER_INFO);
@@ -42,10 +42,10 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
 
-  script_tag(name:"insight", value:"Kusano Kazuhiko discovered a buffer overflow vulnerability in the handling 
-of Internationalized Resource Identifiers (IRI) in wget, a network utility 
-to retrieve files from the web, which could result in the execution of 
-arbitrary code or denial of service when recursively downloading from an 
+  script_tag(name:"insight", value:"Kusano Kazuhiko discovered a buffer overflow vulnerability in the handling
+of Internationalized Resource Identifiers (IRI) in wget, a network utility
+to retrieve files from the web, which could result in the execution of
+arbitrary code or denial of service when recursively downloading from an
 untrusted server.");
 
   script_tag(name:"affected", value:"'wget' package(s) on Debian Linux.");

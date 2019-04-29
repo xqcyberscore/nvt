@@ -19,8 +19,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107638");
-  script_version("2019-04-11T10:25:03+0000");
-  script_tag(name:"last_modification", value:"2019-04-11 10:25:03 +0000 (Thu, 11 Apr 2019)");
+  script_version("2019-04-26T08:24:31+0000");
+  script_tag(name:"last_modification", value:"2019-04-26 08:24:31 +0000 (Fri, 26 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-04-06 10:57:32 +0200 (Sat, 06 Apr 2019)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -77,7 +77,7 @@ foreach key ( key_list ) {
     location = "unknown";
 
     loc = registry_get_sz( key:key + item, item:"InstallLocation" );
-    if( loc ) 
+    if( loc )
       location = loc;
 
     if( !version = registry_get_sz( key:key + item, item:"DisplayVersion" ) )

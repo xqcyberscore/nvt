@@ -21,13 +21,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852366");
-  script_version("2019-04-03T06:41:38+0000");
+  script_version("2019-04-26T08:24:31+0000");
   script_cve_id("CVE-2018-1000807", "CVE-2018-1000808");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-04-03 06:41:38 +0000 (Wed, 03 Apr 2019)");
+  script_tag(name:"last_modification", value:"2019-04-26 08:24:31 +0000 (Fri, 26 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-04-03 06:41:38 +0000 (Wed, 03 Apr 2019)");
-  script_name("openSUSE Update for python-cryptography, openSUSE-SU-2019:1104-1 (python-cryptography,)");
+  script_name("openSUSE Update for python-cryptography, openSUSE-SU-2019:1104-1 (python-cryptography, python-pyOpenSSL)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2019 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
@@ -37,7 +37,7 @@ if(description)
   script_xref(name:"openSUSE-SU", value:"2019:1104_1");
   script_xref(name:"URL", value:"http://lists.opensuse.org/opensuse-security-announce/2019-04/msg00014.html");
 
-  script_tag(name:"summary", value:"The remote host is missing an update for the 'python-cryptography,'
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'python-cryptography, python-pyOpenSSL'
   package(s) announced via the openSUSE-SU-2019:1104_1 advisory.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
@@ -49,14 +49,17 @@ if(description)
 
   - CVE-2018-1000808: A memory leak due to missing reference checking in
   PKCS#12 store handling was fixed (bsc#1111634)
+
   - CVE-2018-1000807: A use-after-free in X509 object handling was fixed
   (bsc#1111635)
 
   This update also contains the following tracked bug fixes:
 
   - avoid bad interaction with python-cryptography package. (bsc#1021578)
+
   - Avoid regression accessesing non-existing attribute _from_raw_x509_ptr
   in object X509 (bsc#1119077)
+
   - Add python-setuptools as a requirement. (bsc#1052927)
 
   This update was imported from the SUSE:SLE-12-SP2:Update update project.
@@ -74,7 +77,7 @@ if(description)
 
   zypper in -t patch openSUSE-2019-1104=1");
 
-  script_tag(name:"affected", value:"'python-cryptography,' package(s) on openSUSE Leap 42.3.");
+  script_tag(name:"affected", value:"'python-cryptography, python-pyOpenSSL' package(s) on openSUSE Leap 42.3.");
 
   script_tag(name:"solution", value:"Please install the updated package(s).");
 

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_modx_cms_xss_vuln1.nasl 13259 2019-01-24 09:33:14Z ckuersteiner $
 #
 # MODX Revolution <= 2.6.5 XSS Vulnerability
 #
@@ -30,8 +29,8 @@ CPE = "cpe:/a:modx:revolution";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141542");
-  script_version("$Revision: 13259 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-24 10:33:14 +0100 (Thu, 24 Jan 2019) $");
+  script_version("2019-04-26T13:30:35+0000");
+  script_tag(name:"last_modification", value:"2019-04-26 13:30:35 +0000 (Fri, 26 Apr 2019)");
   script_tag(name:"creation_date", value:"2018-10-01 16:49:26 +0700 (Mon, 01 Oct 2018)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
@@ -40,9 +39,9 @@ if (description)
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
 
-  script_name("MODX Revolution <= 2.6.5 XSS Vulnerability");
+  script_name("MODX Revolution < 2.7.1 XSS Vulnerability");
 
   script_category(ACT_GATHER_INFO);
 
@@ -55,12 +54,12 @@ if (description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"affected", value:"MODX Revolution version 2.6.5 and prior.");
+  script_tag(name:"affected", value:"MODX Revolution prior to 2.7.1.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 24th January, 2019.
-  Information regarding this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"Update to version 2.7.1 or later.");
 
   script_xref(name:"URL", value:"https://github.com/modxcms/revolution/issues/14094");
+  script_xref(name:"URL", value:"https://github.com/modxcms/revolution/pull/14335");
 
   exit(0);
 }
@@ -71,13 +70,16 @@ include("version_func.inc");
 if (!port = get_app_port(cpe: CPE))
   exit(0);
 
-if (!version = get_app_version(cpe: CPE, port: port))
+if (!infos = get_app_version_and_location(cpe: CPE, port: port, exit_no_version: TRUE))
   exit(0);
 
-if (version_is_less_equal(version: version, test_version: "2.6.5")) {
-  report = report_fixed_ver(installed_version: version, fixed_version: "None");
+version = infos['version'];
+path = infos['location'];
+
+if (version_is_less(version: version, test_version: "2.7.1")) {
+  report = report_fixed_ver(installed_version: version, fixed_version: "2.7.1", install_path: path);
   security_message(port: port, data: report);
   exit(0);
 }
 
-exit(0);
+exit(99);

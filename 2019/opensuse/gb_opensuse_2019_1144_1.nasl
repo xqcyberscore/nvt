@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852399");
-  script_version("2019-04-05T02:00:54+0000");
+  script_version("2019-04-26T08:24:31+0000");
   script_cve_id("CVE-2018-20544", "CVE-2018-20545", "CVE-2018-20546", "CVE-2018-20547", "CVE-2018-20548", "CVE-2018-20549");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-04-05 02:00:54 +0000 (Fri, 05 Apr 2019)");
+  script_tag(name:"last_modification", value:"2019-04-26 08:24:31 +0000 (Fri, 26 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-04-05 02:00:54 +0000 (Fri, 05 Apr 2019)");
   script_name("openSUSE Update for libcaca openSUSE-SU-2019:1144-1 (libcaca)");
   script_category(ACT_GATHER_INFO);
@@ -48,14 +48,19 @@ if(description)
 
   - CVE-2018-20544: Fixed a floating point exception at caca/dither.c
   (bsc#1120502)
+
   - CVE-2018-20545: Fixed a WRITE memory access in the load_image function
   at common-image.c for 4bpp (bsc#1120584)
+
   - CVE-2018-20546: Fixed a READ memory access in the get_rgba_default
   function at caca/dither.c for bpp (bsc#1120503)
+
   - CVE-2018-20547: Fixed a READ memory access in the get_rgba_default
   function at caca/dither.c for 24bpp (bsc#1120504)
+
   - CVE-2018-20548: Fixed a WRITE memory access in the load_image function
   at common-image.c for 1bpp (bsc#1120589)
+
   - CVE-2018-20549: Fixed a WRITE memory access in the caca_file_read
   function at caca/file.c (bsc#1120470)
 

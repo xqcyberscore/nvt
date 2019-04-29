@@ -21,12 +21,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843965");
-  script_version("2019-04-05T02:00:26+0000");
+  script_version("2019-04-26T08:24:31+0000");
   script_cve_id("CVE-2019-0211", "CVE-2018-17189", "CVE-2018-17199", "CVE-2019-0196",
                 "CVE-2019-0217", "CVE-2019-0220");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"2019-04-05 02:00:26 +0000 (Fri, 05 Apr 2019)");
+  script_tag(name:"last_modification", value:"2019-04-26 08:24:31 +0000 (Fri, 26 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-04-05 02:00:26 +0000 (Fri, 05 Apr 2019)");
   script_name("Ubuntu Update for apache2 USN-3937-1");
   script_category(ACT_GATHER_INFO);
@@ -36,7 +36,7 @@ if(description)
   script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=(UBUNTU14\.04 LTS|UBUNTU18\.04 LTS|UBUNTU18\.10|UBUNTU16\.04 LTS)");
 
   script_xref(name:"USN", value:"3937-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3937-1/");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3937-1/");
 
   script_tag(name:"summary", value:"The remote host is missing an update for the 'apache2'
   package(s) announced via the USN-3937-1 advisory.");

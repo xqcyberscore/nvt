@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852365");
-  script_version("2019-04-03T06:41:36+0000");
+  script_version("2019-04-26T08:24:31+0000");
   script_cve_id("CVE-2018-12178", "CVE-2018-12180", "CVE-2018-3630");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"2019-04-03 06:41:36 +0000 (Wed, 03 Apr 2019)");
+  script_tag(name:"last_modification", value:"2019-04-26 08:24:31 +0000 (Fri, 26 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-04-03 06:41:36 +0000 (Wed, 03 Apr 2019)");
   script_name("openSUSE Update for ovmf openSUSE-SU-2019:1083-1 (ovmf)");
   script_category(ACT_GATHER_INFO);
@@ -48,8 +48,10 @@ if(description)
 
   - CVE-2018-12180: Fixed a buffer overflow in BlockIo service, which could
   lead to memory read/write overrun (bsc#1127820).
+
   - CVE-2018-12178: Fixed an improper DNS check upon receiving a new DNS
   packet (bsc#1127821).
+
   - CVE-2018-3630: Fixed a logic error in FV parsing which could allow a
   local attacker to bypass the chain of trust checks (bsc#1127822).
 

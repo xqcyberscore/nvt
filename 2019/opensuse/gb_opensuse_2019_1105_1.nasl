@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852363");
-  script_version("2019-04-03T06:41:34+0000");
+  script_version("2019-04-26T08:24:31+0000");
   script_cve_id("CVE-2019-1559");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-04-03 06:41:34 +0000 (Wed, 03 Apr 2019)");
+  script_tag(name:"last_modification", value:"2019-04-26 08:24:31 +0000 (Fri, 26 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-04-03 06:41:34 +0000 (Wed, 03 Apr 2019)");
   script_name("openSUSE Update for openssl-1_0_0 openSUSE-SU-2019:1105-1 (openssl-1_0_0)");
   script_category(ACT_GATHER_INFO);
@@ -48,6 +48,7 @@ if(description)
 
   - The 9 Lives of Bleichenbacher's CAT: Cache Attacks on TLS
   Implementations (bsc#1117951)
+
   - CVE-2019-1559: Fixed OpenSSL 0-byte Record Padding Oracle which under
   certain circumstances a TLS server can be forced to respond differently
   to a client and lead to the decryption of the data (bsc#1127080).

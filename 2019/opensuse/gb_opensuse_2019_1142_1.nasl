@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852394");
-  script_version("2019-04-05T02:00:44+0000");
+  script_version("2019-04-26T08:24:31+0000");
   script_cve_id("CVE-2018-6196", "CVE-2018-6197", "CVE-2018-6198");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"2019-04-05 02:00:44 +0000 (Fri, 05 Apr 2019)");
+  script_tag(name:"last_modification", value:"2019-04-26 08:24:31 +0000 (Fri, 26 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-04-05 02:00:44 +0000 (Fri, 05 Apr 2019)");
   script_name("openSUSE Update for w3m openSUSE-SU-2019:1142-1 (w3m)");
   script_category(ACT_GATHER_INFO);
@@ -49,8 +49,10 @@ if(description)
   - CVE-2018-6196: Prevent infinite recursion in HTMLlineproc0 caused by the
   feed_table_block_tag function which did not prevent a negative indent
   value (bsc#1077559)
+
   - CVE-2018-6197: Prevent NULL pointer dereference in formUpdateBuffer
   (bsc#1077568)
+
   - CVE-2018-6198: w3m did not properly handle temporary files when the
   ~/.w3m directory is unwritable, which allowed a local attacker to craft
   a symlink attack to overwrite arbitrary files (bsc#1077572)

@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852361");
-  script_version("2019-04-03T06:41:30+0000");
+  script_version("2019-04-26T08:24:31+0000");
   script_cve_id("CVE-2019-2024", "CVE-2019-9213");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"2019-04-03 06:41:30 +0000 (Wed, 03 Apr 2019)");
+  script_tag(name:"last_modification", value:"2019-04-26 08:24:31 +0000 (Fri, 26 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-04-03 06:41:30 +0000 (Wed, 03 Apr 2019)");
   script_name("openSUSE Update for the openSUSE-SU-2019:1085-1 (the)");
   script_category(ACT_GATHER_INFO);
@@ -51,49 +51,76 @@ if(description)
   minimum address, which made it easier for attackers to exploit kernel
   NULL pointer dereferences on non-SMAP platforms. This is related to a
   capability check for the wrong task (bnc#1128166).
+
   - CVE-2019-2024: A use-after-free when disconnecting a source was fixed
   which could lead to crashes. bnc#1129179).
 
   The following non-security bugs were fixed:
 
   - ax25: fix possible use-after-free (bnc#1012382).
+
   - block_dev: fix crash on chained bios with O_DIRECT (bsc#1090435).
+
   - block: do not use bio->bi_vcnt to figure out segment number
   (bsc#1128893).
+
   - bnxt_re: Fix couple of memory leaks that could lead to IOMMU call traces
   (bsc#1020413).
+
   - bpf: fix replace_map_fd_with_map_ptr's ldimm64 second imm field
   (bsc#1012382).
+
   - btrfs: ensure that a DUP or RAID1 block group has exactly two stripes
   (bsc#1128452).
+
   - ceph: avoid repeatedly adding inode to mdsc->snap_flush_list
   (bsc#1126773).
+
   - ch: add missing mutex_lock()/mutex_unlock() in ch_release()
   (bsc#1124235).
+
   - ch: fixup refcounting imbalance for SCSI devices (bsc#1124235).
+
   - copy_mount_string: Limit string length to PATH_MAX (bsc#1082943).
+
   - device property: Fix the length used in PROPERTY_ENTRY_STRING()
   (bsc#1129770).
+
   - Drivers: hv: vmbus: Check for ring when getting debug info (bsc#1126389).
+
   - drm: Fix error handling in drm_legacy_addctx (bsc#1106929)
+
   - drm/nouveau/bios/ramcfg: fix missing parentheses when calculating RON
   (bsc#1106929)
+
   - drm/nouveau/pmu: do not print reply values if exec is false (bsc#1106929)
+
   - drm/radeon/evergreen_cs: fix missing break in switch statement
   (bsc#1106929)
+
   - drm/vmwgfx: Do not double-free the mode stored in par->set_mode
   (bsc#1103429)
+
   - enic: add wq clean up budget (bsc#1075697, bsc#1120691. bsc#1102959).
+
   - enic: do not overwrite error code (bnc#1012382).
+
   - fbdev: chipsfb: remove set but not used variable 'size' (bsc#1106929)
+
   - ibmvnic: Report actual backing device speed and duplex values
   (bsc#1129923).
+
   - ibmvscsi: Fix empty event pool access during host removal (bsc#1119019).
+
   - Input: mms114 - fix license module information (bsc#1087092).
+
   - iommu/dmar: Fix buffer overflow during PCI bus notification
   (bsc#1129237).
+
   - iommu/io-pgtable-arm-v7s: Only kmemleak_ignore L2 tables (bsc#1129238).
+
   - iommu/vt-d: Check identity map for hot-added devices (bsc#1129239).
+
   - iommu/vt-d: Fix NULL pointer reference in intel_svm_bind_mm ...
 
   Description truncated. Please see the references for more information.");

@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_firefox_ftp_clnt_xss_vuln_win.nasl 12623 2018-12-03 13:11:38Z cfischer $
 #
 # Firefox Web Browser FTP Client XSS Vulnerability (Windows)
 #
@@ -27,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800042");
-  script_version("$Revision: 12623 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-03 14:11:38 +0100 (Mon, 03 Dec 2018) $");
+  script_version("2019-04-26T10:13:49+0000");
+  script_tag(name:"last_modification", value:"2019-04-26 10:13:49 +0000 (Fri, 26 Apr 2019)");
   script_tag(name:"creation_date", value:"2008-10-24 15:11:55 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -45,27 +44,30 @@ if(description)
 
   script_tag(name:"impact", value:"Successful remote attack result in injection of arbitrary web
   script or HTML code.");
+
   script_tag(name:"affected", value:"Firefox version 3.0.1 to 3.0.3 on Windows.");
+
   script_tag(name:"insight", value:"The flaw is due to the way browser handles web script or html via
-  ftp://URL for an html document within a JPG, PDF, or TXT files.");
+  ftp:// URL for an html document within a JPG, PDF, or TXT files.");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year
   since the disclosure of this vulnerability. Likely none will be provided anymore.
   General solution options are to upgrade to a newer release, disable respective
   features, remove the product or replace the product by another one.");
+
   script_tag(name:"summary", value:"The host is installed with Mozilla Firefox browser and is prone
   to Cross Site Scripting (XSS) Vulnerability.");
 
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"WillNotFix");
 
-  script_xref(name:"URL", value:"http://www.mozilla.org/en-US");
   exit(0);
 }
 
-
 include("version_func.inc");
 
-if(!ver = get_kb_item("Firefox/Win/Ver")) exit(0);
+if(!ver = get_kb_item("Firefox/Win/Ver"))
+  exit(0);
 
 if(version_in_range(version:ver, test_version:"3.0.1", test_version2:"3.0.3")){
   report = report_fixed_ver(installed_version:ver, fixed_version:"N/A");

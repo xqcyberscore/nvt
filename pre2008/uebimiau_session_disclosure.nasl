@@ -24,8 +24,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.16279");
-  script_version("2019-04-24T07:26:10+0000");
-  script_tag(name:"last_modification", value:"2019-04-24 07:26:10 +0000 (Wed, 24 Apr 2019)");
+  script_version("2019-04-29T06:01:01+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 06:01:01 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -40,7 +40,7 @@ if(description)
   script_tag(name:"summary", value:"Uebimiau in default installation create one temporary folder
   to store 'sessions' and other files. This folder is defined  in 'inc/config.php' as './database/'.");
 
-  script_tag(name:"inpact", value:"If the web administrator don't change this folder, an attacker
+  script_tag(name:"impact", value:"If the web administrator don't change this folder, an attacker
   can exploit this using the follow request:
 
   http://example.com/database/_sessions/");

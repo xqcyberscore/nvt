@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852356");
-  script_version("2019-04-03T06:41:09+0000");
+  script_version("2019-04-26T08:24:31+0000");
   script_cve_id("CVE-2019-5786");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-04-03 06:41:09 +0000 (Wed, 03 Apr 2019)");
+  script_tag(name:"last_modification", value:"2019-04-26 08:24:31 +0000 (Fri, 26 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-04-03 06:41:09 +0000 (Wed, 03 Apr 2019)");
   script_name("openSUSE Update for chromium openSUSE-SU-2019:0298-1 (chromium)");
   script_category(ACT_GATHER_INFO);
@@ -47,6 +47,7 @@ if(description)
   Chromium was updated: to 72.0.3626.121:
 
   * CVE-2019-5786: Use-after-free in FileReader fixed (boo#1127602)
+
   * Feature fixes update only
 
 

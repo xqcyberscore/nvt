@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.883028");
-  script_version("2019-04-03T06:38:52+0000");
+  script_version("2019-04-26T08:24:31+0000");
   script_cve_id("CVE-2019-3855", "CVE-2019-3856", "CVE-2019-3857", "CVE-2019-3863");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"2019-04-03 06:38:52 +0000 (Wed, 03 Apr 2019)");
+  script_tag(name:"last_modification", value:"2019-04-26 08:24:31 +0000 (Fri, 26 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-04-03 06:38:52 +0000 (Wed, 03 Apr 2019)");
   script_name("CentOS Update for libssh2 CESA-2019:0679 centos7 ");
   script_category(ACT_GATHER_INFO);
@@ -46,16 +46,16 @@ if(description)
 
 Security Fix(es):
 
-* libssh2: Integer overflow in transport read resulting in out of bounds
+  * libssh2: Integer overflow in transport read resulting in out of bounds
 write (CVE-2019-3855)
 
-* libssh2: Integer overflow in keyboard interactive handling resulting in
+  * libssh2: Integer overflow in keyboard interactive handling resulting in
 out of bounds write (CVE-2019-3856)
 
-* libssh2: Integer overflow in SSH packet processing channel resulting in
+  * libssh2: Integer overflow in SSH packet processing channel resulting in
 out of bounds write (CVE-2019-3857)
 
-* libssh2: Integer overflow in user authenticate keyboard interactive
+  * libssh2: Integer overflow in user authenticate keyboard interactive
 allows out-of-bounds writes (CVE-2019-3863)
 
 For more details about the security issue(s), including the impact, a CVSS
