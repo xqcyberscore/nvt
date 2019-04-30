@@ -21,11 +21,11 @@ CPE = "cpe:/a:eclipse:jetty";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.142313");
-  script_version("2019-04-25T13:38:20+0000");
-  script_tag(name:"last_modification", value:"2019-04-25 13:38:20 +0000 (Thu, 25 Apr 2019)");
+  script_version("2019-04-30T06:00:47+0000");
+  script_tag(name:"last_modification", value:"2019-04-30 06:00:47 +0000 (Tue, 30 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-04-25 13:36:58 +0000 (Thu, 25 Apr 2019)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2019-10241");
 

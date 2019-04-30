@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotcms_v411_stored_xss_vuln.nasl 12239 2018-11-07 08:22:09Z cfischer $
 #
 # dotCMS 4.1.1 Stored Cross-Site Scripting (XSS) Vulnerability
 #
@@ -30,17 +29,13 @@ CPE = "cpe:/a:dotcms:dotcms";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112090");
-  script_version("$Revision: 12239 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-07 09:22:09 +0100 (Wed, 07 Nov 2018) $");
+  script_version("2019-04-29T07:32:42+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 07:32:42 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2017-10-20 11:47:18 +0200 (Fri, 20 Oct 2017)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
 
   script_cve_id("CVE-2017-15219");
-
-  script_tag(name:"qod_type", value:"remote_banner");
-
-  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_name("dotCMS 4.1.1 Stored Cross-Site Scripting (XSS) Vulnerability");
 
@@ -63,13 +58,14 @@ if (description)
 
   script_tag(name:"affected", value:"dotCMS version 4.1.1.");
 
-  script_tag(name:"solution_type", value:"WillNotFix");
-
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the
   disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to
   upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_xref(name:"URL", value:"https://raw.githubusercontent.com/badbiddy/Vulnerability-Disclosure/master/dotCMS%20%3E%204.1.1%20-%20Stored%20XSS");
+
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   exit(0);
 }

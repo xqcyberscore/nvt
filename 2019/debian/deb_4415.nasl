@@ -21,11 +21,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704415");
-  script_version("2019-04-03T11:45:59+0000");
+  script_version("2019-04-30T06:00:47+0000");
   script_cve_id("CVE-2017-16355");
-  script_tag(name:"cvss_base", value:"2.1");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"2019-04-03 11:45:59 +0000 (Wed, 03 Apr 2019)");
+  script_tag(name:"cvss_base", value:"1.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"2019-04-30 06:00:47 +0000 (Tue, 30 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-03-23 22:00:00 +0000 (Sat, 23 Mar 2019)");
   script_name("Debian Security Advisory DSA 4415-1 (passenger - security update)");
   script_category(ACT_GATHER_INFO);

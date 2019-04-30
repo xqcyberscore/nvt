@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_magento_xss_vuln.nasl 12239 2018-11-07 08:22:09Z cfischer $
 #
 # Magento 1.9.0.1 Cross-Site Scripting Vulnerability
 #
@@ -30,16 +29,12 @@ CPE = "cpe:/a:magentocommerce:magento";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112055");
-  script_version("$Revision: 12239 $");
+  script_version("2019-04-29T07:32:42+0000");
   script_cve_id("CVE-2014-9758");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-07 09:22:09 +0100 (Wed, 07 Nov 2018) $");
+  script_tag(name:"last_modification", value:"2019-04-29 07:32:42 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2017-09-27 08:35:44 +0200 (Wed, 27 Sep 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-
-  script_tag(name:"qod_type", value:"remote_banner");
-
-  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_name("Magento 1.9.0.1 Cross-Site Scripting Vulnerability");
 
@@ -49,6 +44,8 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("sw_magento_detect.nasl");
   script_mandatory_keys("magento/installed");
+
+  script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2015/12/05/4");
 
   script_tag(name:"summary", value:"Magento Web E-Commerce Platform is prone to a cross-site scripting (XSS) vulnerability.");
 
@@ -61,13 +58,12 @@ if(description)
 
   script_tag(name:"affected", value:"Magento E-Commerce version 1.9.0.1.");
 
-  script_tag(name:"solution_type", value:"WillNotFix");
-
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the
   disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to
   upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
-  script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2015/12/05/4");
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   exit(0);
 }

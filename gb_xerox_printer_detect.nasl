@@ -1,6 +1,5 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xerox_printer_detect.nasl 12940 2019-01-04 09:23:20Z ckuersteiner $
 #
 # Xerox Printer Detection (HTTP)
 #
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103648");
-  script_version("$Revision: 12940 $");
-  script_tag(name:"last_modification", value:"$Date: 2019-01-04 10:23:20 +0100 (Fri, 04 Jan 2019) $");
+  script_version("2019-04-29T13:13:49+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 13:13:49 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2013-01-30 14:31:24 +0100 (Wed, 30 Jan 2013)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -97,6 +96,31 @@ foreach url (keys(urls)) {
         set_kb_item(name: "xerox_printer/http/" + port + "/fw_version", value: vers[1]);
         set_kb_item(name: "xerox_printer/http/" + port + "/concluded", value: vers[0]);
         set_kb_item(name: "xerox_printer/http/" + port + "/concludedUrl", value: url);
+      }
+      else {
+        # ColorQube 8700/8900
+        # System Software:</td><td>072.162.004.09100</td></tr>
+        url = "/properties/configuration.php?tab=Status#heading2";
+        res = http_get_cache(port: port, item: url);
+        vers = eregmatch(pattern: "System Software:</td><td>([0-9.]+)<", string: res);
+        if (!isnull(vers[1])) {
+          set_kb_item(name: "xerox_printer/http/" + port + "/fw_version", value: vers[1]);
+          set_kb_item(name: "xerox_printer/http/" + port + "/concluded", value: vers[0]);
+          set_kb_item(name: "xerox_printer/http/" + port + "/concludedUrl", value: url);
+        }
+        else {
+          # ColorQube
+          # <td>System Version</td>
+          # <td>1.3.8.P</td>
+          url = "/aboutprinter.html";
+          res = http_get_cache(port: port, item: url);
+          vers = eregmatch(pattern: "System Version</td>[^<]+<td>([^<]+)</td>", string: res);
+          if (!isnull(vers[1])) {
+            set_kb_item(name: "xerox_printer/http/" + port + "/fw_version", value: vers[1]);
+            set_kb_item(name: "xerox_printer/http/" + port + "/concluded", value: vers[0]);
+            set_kb_item(name: "xerox_printer/http/" + port + "/concludedUrl", value: url);
+          }
+        }
       }
     }
 

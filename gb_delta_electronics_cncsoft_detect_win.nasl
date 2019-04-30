@@ -19,8 +19,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107644");
-  script_version("2019-04-29T09:46:22+0000");
-  script_tag(name:"last_modification", value:"2019-04-29 09:46:22 +0000 (Mon, 29 Apr 2019)");
+  script_version("2019-04-29T10:16:01+0000");
+  script_tag(name:"last_modification", value:"2019-04-29 10:16:01 +0000 (Mon, 29 Apr 2019)");
   script_tag(name:"creation_date", value:"2019-04-24 12:50:31 +0200 (Wed, 24 Apr 2019)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -86,18 +86,20 @@ foreach key( key_list ) {
     loc = registry_get_sz( key:key + item, item:"UninstallString" );
     if( loc ) {
       split = split( loc, sep:"\" );
-      location = ereg_replace( string:loc, pattern:split[max_index( split ) - 1], replace:'' );
+      if( split && max_index( split ) > 0 ) {
+        location = ereg_replace( string:loc, pattern:split[max_index( split ) - 1], replace:'' );
+        set_kb_item( name:"delta_electronics/cncsoft/suite/location", value:location );
 
-      filename = "CNCSoftMain.exe";
-      vers = fetch_file_version( sysPath:location, file_name:filename );
-      if( vers ) {
-        version = vers;
-        concluded = version + " from file " + location + filename;
+        filename = "CNCSoftMain.exe";
+        vers = fetch_file_version( sysPath:location, file_name:filename );
+        if( vers ) {
+          version = vers;
+          concluded = version + " from file " + location + filename;
+        }
       }
     }
 
     set_kb_item( name:"delta_electronics/cncsoft/suite/detected", value:TRUE );
-    set_kb_item( name:"delta_electronics/cncsoft/suite/location", value:location );
 
     register_and_report_cpe( app:"Delta Electronics CNCSoft Suite", ver:version, concluded:concluded,
                              base:"cpe:/a:delta_electronics:cncsoft_suite:", expr:"^([0-9.]+)", insloc:location, regService:"smb-login", regPort:0 );
