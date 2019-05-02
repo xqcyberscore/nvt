@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
 #
-# Microsoft IE And Microsoft Edge Flash Player Information Disclosure Vulnerability (apsb18-19)
+# Microsoft IE And Microsoft Edge Flash Player Information Disclosure Vulnerability (apsb18-39)
 #
 # Authors:
 # Shakeel <bshakeel@secpod.com>
@@ -34,7 +34,7 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"last_modification", value:"2019-04-26 09:28:56 +0000 (Fri, 26 Apr 2019)");
   script_tag(name:"creation_date", value:"2018-11-14 17:24:45 +0530 (Wed, 14 Nov 2018)");
-  script_name("Microsoft IE And Microsoft Edge Flash Player Information Disclosure Vulnerability (apsb18-19)");
+  script_name("Microsoft IE And Microsoft Edge Flash Player Information Disclosure Vulnerability (apsb18-39)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
